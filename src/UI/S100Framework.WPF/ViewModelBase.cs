@@ -240,6 +240,8 @@ namespace S100Framework.WPF.ViewModel
             }
         }
 
+        public override string ToString() => string.IsNullOrEmpty(_informationType) ? "RefId" : $"{_informationType}: {RefId}";
+
         [Browsable(false)]
         public ObservableCollection<string> RefIds { get; set; } = new ObservableCollection<string>();
 
@@ -261,6 +263,8 @@ namespace S100Framework.WPF.ViewModel
                     RefIds.Add(e);
             }
         }
+
+        public override string ToString() => string.IsNullOrEmpty(_featureType) ? "RefId" : $"{_featureType}: {RefId}";
 
         [Browsable(false)]
         public ObservableCollection<string> RefIds { get; set; } = new ObservableCollection<string>();
@@ -284,11 +288,7 @@ namespace S100Framework.WPF.ViewModel
             OnPropertyChanged(propertyName);
         }
 
-        //[Browsable(false)]
-        //public ObservableCollection<string> RefIds { get; set; } = new ObservableCollection<string>();
-
-        //[Browsable(false)]
-        //public string[] InformationTypes { get; set; } = [];
+        public abstract void Load(S100Framework.DomainModel.RefId[] refIds);
     }
 
     public abstract class InformationBindingViewModel<T> : InformationBindingViewModel where T : InformationRefIdViewModel
@@ -311,9 +311,15 @@ namespace S100Framework.WPF.ViewModel
             get { return _refId; }
             set { this.SetValue(ref _refId, value); }
         }
+
+        public override void Load(S100Framework.DomainModel.RefId[] refIds) {
+            var v = refIds.FirstOrDefault();
+            this.RefId.RefId = v?.Value!;
+            this.RefId.InformationType = v?.Type;
+        }
     }
 
-    public class OptionalInformationBindingViewModel<T> : InformationBindingViewModel<T> where T : InformationRefIdViewModel
+    public class OptionalInformationBindingViewModel<T> : InformationBindingViewModel<T> where T : InformationRefIdViewModel, new()
     {
         private string _displayName;
 
@@ -329,6 +335,17 @@ namespace S100Framework.WPF.ViewModel
             get { return _refId; }
             set { this.SetValue(ref _refId, value); }
         }
+
+        public override void Load(S100Framework.DomainModel.RefId[] refIds) {
+            var v = refIds.FirstOrDefault();
+            if (v != default) {
+                if (RefId is null) {
+                    RefId = new();
+                }
+                this.RefId.RefId = v?.Value!;
+                this.RefId.InformationType = v?.Type;
+            }
+        }
     }
 
     public class MultiInformationBindingViewModel<T> : InformationBindingViewModel<T> where T : InformationRefIdViewModel, new()
@@ -342,6 +359,15 @@ namespace S100Framework.WPF.ViewModel
 
         [Editor(typeof(RefIdEditor), typeof(RefIdEditor))]
         public ObservableCollection<T> RefId { get; set; } = new ObservableCollection<T>();
+
+        public override void Load(S100Framework.DomainModel.RefId[] refIds) {
+            foreach (var e in refIds) {
+                RefId.Add(new T {
+                    InformationType = e.Type,
+                    RefId = e.Value,
+                });
+            }
+        }
     }
 
     public abstract class FeatureBindingViewModel : INotifyPropertyChanged
@@ -360,16 +386,11 @@ namespace S100Framework.WPF.ViewModel
             OnPropertyChanged(propertyName);
         }
 
-        //[Browsable(false)]
-        //public ObservableCollection<string> RefIds { get; set; } = new ObservableCollection<string>();
-
-        //[Browsable(false)]
-        //public string[] FeatureTypes { get; set; } = [];
+        public abstract void Load(S100Framework.DomainModel.RefId[] refIds);
     }
 
     public abstract class FeatureBindingViewModel<T> : FeatureBindingViewModel where T : FeatureRefIdViewModel
     {
-        public abstract void Load(S100Framework.DomainModel.RefId[] refIds);
     }
 
     public class SingleFeatureBindingViewModel<T> : FeatureBindingViewModel<T> where T : FeatureRefIdViewModel, new()
@@ -391,11 +412,11 @@ namespace S100Framework.WPF.ViewModel
         public override void Load(S100Framework.DomainModel.RefId[] refIds) {
             var v = refIds.FirstOrDefault();
             this.RefId.RefId = v?.Value!;
-            //this.RefId.FeatureType = ???
+            this.RefId.FeatureType = v?.Type;
         }
     }
 
-    public class OptionalFeatureBindingViewModel<T> : FeatureBindingViewModel<T> where T : FeatureRefIdViewModel
+    public class OptionalFeatureBindingViewModel<T> : FeatureBindingViewModel<T> where T : FeatureRefIdViewModel, new()
     {
         private string _displayName;
 
@@ -413,7 +434,13 @@ namespace S100Framework.WPF.ViewModel
 
         public override void Load(S100Framework.DomainModel.RefId[] refIds) {
             var v = refIds.FirstOrDefault();
-            //this.RefId.RefId = v?.Value!;
+            if (v != default) {
+                if (RefId is null) {
+                    RefId = new();
+                }
+                this.RefId.RefId = v?.Value!;
+                this.RefId.FeatureType = v?.Type;
+            }
         }
     }
 
@@ -427,7 +454,12 @@ namespace S100Framework.WPF.ViewModel
         public ObservableCollection<T> RefId { get; set; } = new ObservableCollection<T>();
 
         public override void Load(S100Framework.DomainModel.RefId[] refIds) {
-
+            foreach (var e in refIds) {
+                RefId.Add(new T {
+                    FeatureType = e.Type,
+                    RefId = e.Value,
+                });
+            }
         }
     }
 }

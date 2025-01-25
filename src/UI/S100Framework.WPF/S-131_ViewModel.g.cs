@@ -11,7 +11,8 @@ using Xceed.Wpf.Toolkit.PropertyGrid.Attributes;
 #nullable enable
 namespace S100Framework.WPF.ViewModel.S131
 {
-    internal static class Preamble {
+    internal static class Preamble
+    {
         public static ImmutableDictionary<string, Func<ViewModelBase>> _creators => ImmutableDictionary.Create<string, Func<ViewModelBase>>().AddRange(new Dictionary<string, Func<ViewModelBase>> { { typeof(DomainModel.S131.InformationTypes.Applicability).Name, () =>
         {
             return new ApplicabilityViewModel();
@@ -124,9 +125,10 @@ namespace S100Framework.WPF.ViewModel.S131
         {
             return new TextPlacementViewModel();
         } }, });
-        }
+    }
 
-    public class Handles : iHandles {
+    public class Handles : iHandles
+    {
         public static IDictionary<Type, Func<InformationAssociationConnector[]>> AssociationConnectorInformations => new Dictionary<Type, Func<InformationAssociationConnector[]>>
         {
             {
@@ -2089,12 +2091,13 @@ namespace S100Framework.WPF.ViewModel.S131
                 ]
             },
         };
-        }
+    }
 
     [CategoryOrder("contactAddress", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class contactAddressViewModel : ViewModelBase {
+    public partial class contactAddressViewModel : ViewModelBase
+    {
         [Category("contactAddress")]
         public ObservableCollection<String> deliveryPoint { get; set; } = new();
 
@@ -2103,48 +2106,48 @@ namespace S100Framework.WPF.ViewModel.S131
         public String cityName {
             get {
                 return _cityName;
-                }
+            }
 
             set {
                 SetValue(ref _cityName, value);
-                }
             }
+        }
 
         private String _administrativeDivision = string.Empty;
         [Category("contactAddress")]
         public String administrativeDivision {
             get {
                 return _administrativeDivision;
-                }
+            }
 
             set {
                 SetValue(ref _administrativeDivision, value);
-                }
             }
+        }
 
         private String _countryName = string.Empty;
         [Category("contactAddress")]
         public String countryName {
             get {
                 return _countryName;
-                }
+            }
 
             set {
                 SetValue(ref _countryName, value);
-                }
             }
+        }
 
         private String _postalCode = string.Empty;
         [Category("contactAddress")]
         public String postalCode {
             get {
                 return _postalCode;
-                }
+            }
 
             set {
                 SetValue(ref _postalCode, value);
-                }
             }
+        }
 
         public void Load(DomainModel.S131.ComplexAttributes.contactAddress instance) {
             deliveryPoint.Clear();
@@ -2155,162 +2158,159 @@ namespace S100Framework.WPF.ViewModel.S131
             administrativeDivision = instance.administrativeDivision;
             countryName = instance.countryName;
             postalCode = instance.postalCode;
-            }
+        }
 
         public override string Serialize() {
-            var instance = new DomainModel.S131.ComplexAttributes.contactAddress
-                {
+            var instance = new DomainModel.S131.ComplexAttributes.contactAddress {
                 deliveryPoint = this.deliveryPoint.ToList(),
                 cityName = this.cityName,
                 administrativeDivision = this.administrativeDivision,
                 countryName = this.countryName,
                 postalCode = this.postalCode,
-                };
+            };
             return System.Text.Json.JsonSerializer.Serialize(instance);
-            }
+        }
 
         [Browsable(false)]
-        public DomainModel.S131.ComplexAttributes.contactAddress Model => new()
-            {
+        public DomainModel.S131.ComplexAttributes.contactAddress Model => new() {
             deliveryPoint = this.deliveryPoint.ToList(),
             cityName = this._cityName,
             administrativeDivision = this._administrativeDivision,
             countryName = this._countryName,
             postalCode = this._postalCode,
-            };
+        };
 
         public contactAddressViewModel() : base() {
             deliveryPoint.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
                 OnPropertyChanged(nameof(deliveryPoint));
             };
-            }
         }
+    }
 
     [CategoryOrder("featureName", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class featureNameViewModel : ViewModelBase {
+    public partial class featureNameViewModel : ViewModelBase
+    {
         private Boolean? _displayName = default;
         [Category("featureName")]
         public Boolean? displayName {
             get {
                 return _displayName;
-                }
+            }
 
             set {
                 SetValue(ref _displayName, value);
-                }
             }
+        }
 
         private String _language = string.Empty;
         [Category("featureName")]
         public String language {
             get {
                 return _language;
-                }
+            }
 
             set {
                 SetValue(ref _language, value);
-                }
             }
+        }
 
         private String _name = string.Empty;
         [Category("featureName")]
         public String name {
             get {
                 return _name;
-                }
+            }
 
             set {
                 SetValue(ref _name, value);
-                }
             }
+        }
 
         public void Load(DomainModel.S131.ComplexAttributes.featureName instance) {
             displayName = instance.displayName;
             language = instance.language;
             name = instance.name;
-            }
+        }
 
         public override string Serialize() {
-            var instance = new DomainModel.S131.ComplexAttributes.featureName
-                {
+            var instance = new DomainModel.S131.ComplexAttributes.featureName {
                 displayName = this.displayName,
                 language = this.language,
                 name = this.name,
-                };
+            };
             return System.Text.Json.JsonSerializer.Serialize(instance);
-            }
+        }
 
         [Browsable(false)]
-        public DomainModel.S131.ComplexAttributes.featureName Model => new()
-            {
+        public DomainModel.S131.ComplexAttributes.featureName Model => new() {
             displayName = this._displayName,
             language = this._language,
             name = this._name,
-            };
+        };
 
         public featureNameViewModel() : base() {
-            }
         }
+    }
 
     [CategoryOrder("fixedDateRange", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class fixedDateRangeViewModel : ViewModelBase {
+    public partial class fixedDateRangeViewModel : ViewModelBase
+    {
         private DateOnly? _dateStart = default;
         [Category("fixedDateRange")]
         public DateOnly? dateStart {
             get {
                 return _dateStart;
-                }
+            }
 
             set {
                 SetValue(ref _dateStart, value);
-                }
             }
+        }
 
         private DateOnly? _dateEnd = default;
         [Category("fixedDateRange")]
         public DateOnly? dateEnd {
             get {
                 return _dateEnd;
-                }
+            }
 
             set {
                 SetValue(ref _dateEnd, value);
-                }
             }
+        }
 
         public void Load(DomainModel.S131.ComplexAttributes.fixedDateRange instance) {
             dateStart = instance.dateStart;
             dateEnd = instance.dateEnd;
-            }
+        }
 
         public override string Serialize() {
-            var instance = new DomainModel.S131.ComplexAttributes.fixedDateRange
-                {
+            var instance = new DomainModel.S131.ComplexAttributes.fixedDateRange {
                 dateStart = this.dateStart,
                 dateEnd = this.dateEnd,
-                };
+            };
             return System.Text.Json.JsonSerializer.Serialize(instance);
-            }
+        }
 
         [Browsable(false)]
-        public DomainModel.S131.ComplexAttributes.fixedDateRange Model => new()
-            {
+        public DomainModel.S131.ComplexAttributes.fixedDateRange Model => new() {
             dateStart = this._dateStart,
             dateEnd = this._dateEnd,
-            };
+        };
 
         public fixedDateRangeViewModel() : base() {
-            }
         }
+    }
 
     [CategoryOrder("frequencyPair", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class frequencyPairViewModel : ViewModelBase {
+    public partial class frequencyPairViewModel : ViewModelBase
+    {
         [Category("frequencyPair")]
         public ObservableCollection<Int32> frequencyShoreStationTransmits { get; set; } = new();
 
@@ -2333,25 +2333,23 @@ namespace S100Framework.WPF.ViewModel.S131
             if (instance.contactInstructions is not null)
                 foreach (var e in instance.contactInstructions)
                     contactInstructions.Add(e);
-            }
+        }
 
         public override string Serialize() {
-            var instance = new DomainModel.S131.ComplexAttributes.frequencyPair
-                {
+            var instance = new DomainModel.S131.ComplexAttributes.frequencyPair {
                 frequencyShoreStationTransmits = this.frequencyShoreStationTransmits.ToList(),
                 frequencyShoreStationReceives = this.frequencyShoreStationReceives.ToList(),
                 contactInstructions = this.contactInstructions.ToList(),
-                };
+            };
             return System.Text.Json.JsonSerializer.Serialize(instance);
-            }
+        }
 
         [Browsable(false)]
-        public DomainModel.S131.ComplexAttributes.frequencyPair Model => new()
-            {
+        public DomainModel.S131.ComplexAttributes.frequencyPair Model => new() {
             frequencyShoreStationTransmits = this.frequencyShoreStationTransmits.ToList(),
             frequencyShoreStationReceives = this.frequencyShoreStationReceives.ToList(),
             contactInstructions = this.contactInstructions.ToList(),
-            };
+        };
 
         public frequencyPairViewModel() : base() {
             frequencyShoreStationTransmits.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
@@ -2363,61 +2361,60 @@ namespace S100Framework.WPF.ViewModel.S131
             contactInstructions.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
                 OnPropertyChanged(nameof(contactInstructions));
             };
-            }
         }
+    }
 
     [CategoryOrder("horizontalPositionUncertainty", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class horizontalPositionUncertaintyViewModel : ViewModelBase {
+    public partial class horizontalPositionUncertaintyViewModel : ViewModelBase
+    {
         private Decimal _uncertaintyFixed;
         [Category("horizontalPositionUncertainty")]
         public Decimal uncertaintyFixed {
             get {
                 return _uncertaintyFixed;
-                }
+            }
 
             set {
                 SetValue(ref _uncertaintyFixed, value);
-                }
             }
+        }
 
         private Decimal? _uncertaintyVariableFactor = default;
         [Category("horizontalPositionUncertainty")]
         public Decimal? uncertaintyVariableFactor {
             get {
                 return _uncertaintyVariableFactor;
-                }
+            }
 
             set {
                 SetValue(ref _uncertaintyVariableFactor, value);
-                }
             }
+        }
 
         public void Load(DomainModel.S131.ComplexAttributes.horizontalPositionUncertainty instance) {
             uncertaintyFixed = instance.uncertaintyFixed;
             uncertaintyVariableFactor = instance.uncertaintyVariableFactor;
-            }
+        }
 
         public override string Serialize() {
-            var instance = new DomainModel.S131.ComplexAttributes.horizontalPositionUncertainty
-                {
+            var instance = new DomainModel.S131.ComplexAttributes.horizontalPositionUncertainty {
                 uncertaintyFixed = this.uncertaintyFixed,
                 uncertaintyVariableFactor = this.uncertaintyVariableFactor,
-                };
+            };
             return System.Text.Json.JsonSerializer.Serialize(instance);
-            }
+        }
 
         [Browsable(false)]
-        public DomainModel.S131.ComplexAttributes.horizontalPositionUncertainty Model => new()
-            {
+        public DomainModel.S131.ComplexAttributes.horizontalPositionUncertainty Model => new() {
             uncertaintyFixed = this._uncertaintyFixed,
             uncertaintyVariableFactor = this._uncertaintyVariableFactor,
-            };
+        };
 
         public horizontalPositionUncertaintyViewModel() : base() {
-            }
         }
+    }
 
 #pragma warning disable CS8981 // The type name only contains lower-cased ascii characters. Such names may become reserved for the language.
 
@@ -2432,24 +2429,24 @@ namespace S100Framework.WPF.ViewModel.S131
         public String fileLocator {
             get {
                 return _fileLocator;
-                }
+            }
 
             set {
                 SetValue(ref _fileLocator, value);
-                }
             }
+        }
 
         private String _fileReference = string.Empty;
         [Category("information")]
         public String fileReference {
             get {
                 return _fileReference;
-                }
+            }
 
             set {
                 SetValue(ref _fileReference, value);
-                }
             }
+        }
 
         [Category("information")]
         public ObservableCollection<String> headline { get; set; } = new();
@@ -2459,24 +2456,24 @@ namespace S100Framework.WPF.ViewModel.S131
         public String language {
             get {
                 return _language;
-                }
+            }
 
             set {
                 SetValue(ref _language, value);
-                }
             }
+        }
 
         private String _text = string.Empty;
         [Category("information")]
         public String text {
             get {
                 return _text;
-                }
+            }
 
             set {
                 SetValue(ref _text, value);
-                }
             }
+        }
 
         public void Load(DomainModel.S131.ComplexAttributes.information instance) {
             fileLocator = instance.fileLocator;
@@ -2487,124 +2484,123 @@ namespace S100Framework.WPF.ViewModel.S131
                     headline.Add(e);
             language = instance.language;
             text = instance.text;
-            }
+        }
 
         public override string Serialize() {
-            var instance = new DomainModel.S131.ComplexAttributes.information
-                {
+            var instance = new DomainModel.S131.ComplexAttributes.information {
                 fileLocator = this.fileLocator,
                 fileReference = this.fileReference,
                 headline = this.headline.ToList(),
                 language = this.language,
                 text = this.text,
-                };
+            };
             return System.Text.Json.JsonSerializer.Serialize(instance);
-            }
+        }
 
         [Browsable(false)]
-        public DomainModel.S131.ComplexAttributes.information Model => new()
-            {
+        public DomainModel.S131.ComplexAttributes.information Model => new() {
             fileLocator = this._fileLocator,
             fileReference = this._fileReference,
             headline = this.headline.ToList(),
             language = this._language,
             text = this._text,
-            };
+        };
 
         public informationViewModel() : base() {
             headline.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
                 OnPropertyChanged(nameof(headline));
             };
-            }
         }
+    }
 
     [CategoryOrder("onlineResource", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class onlineResourceViewModel : ViewModelBase {
+    public partial class onlineResourceViewModel : ViewModelBase
+    {
         private String _onlineResourceLinkageURL = string.Empty;
         [Category("onlineResource")]
         public String onlineResourceLinkageURL {
             get {
                 return _onlineResourceLinkageURL;
-                }
+            }
 
             set {
                 SetValue(ref _onlineResourceLinkageURL, value);
-                }
             }
+        }
 
         private String _protocol = string.Empty;
         [Category("onlineResource")]
         public String protocol {
             get {
                 return _protocol;
-                }
+            }
 
             set {
                 SetValue(ref _protocol, value);
-                }
             }
+        }
 
         private String _applicationProfile = string.Empty;
         [Category("onlineResource")]
         public String applicationProfile {
             get {
                 return _applicationProfile;
-                }
+            }
 
             set {
                 SetValue(ref _applicationProfile, value);
-                }
             }
+        }
 
         private String _nameOfResource = string.Empty;
         [Category("onlineResource")]
         public String nameOfResource {
             get {
                 return _nameOfResource;
-                }
+            }
 
             set {
                 SetValue(ref _nameOfResource, value);
-                }
             }
+        }
 
         private String _onlineResourceDescription = string.Empty;
         [Category("onlineResource")]
         public String onlineResourceDescription {
             get {
                 return _onlineResourceDescription;
-                }
+            }
 
             set {
                 SetValue(ref _onlineResourceDescription, value);
-                }
             }
+        }
 
         private onlineFunction? _onlineFunction = default;
         [Category("onlineResource")]
         public onlineFunction? onlineFunction {
             get {
                 return _onlineFunction;
-                }
+            }
 
             set {
                 SetValue(ref _onlineFunction, value);
-                }
             }
+        }
 
         private String _protocolRequest = string.Empty;
         [Category("onlineResource")]
         public String protocolRequest {
             get {
                 return _protocolRequest;
-                }
+            }
 
             set {
                 SetValue(ref _protocolRequest, value);
-                }
             }
+        }
 
         public void Load(DomainModel.S131.ComplexAttributes.onlineResource instance) {
             onlineResourceLinkageURL = instance.onlineResourceLinkageURL;
@@ -2614,11 +2610,10 @@ namespace S100Framework.WPF.ViewModel.S131
             onlineResourceDescription = instance.onlineResourceDescription;
             onlineFunction = instance.onlineFunction;
             protocolRequest = instance.protocolRequest;
-            }
+        }
 
         public override string Serialize() {
-            var instance = new DomainModel.S131.ComplexAttributes.onlineResource
-                {
+            var instance = new DomainModel.S131.ComplexAttributes.onlineResource {
                 onlineResourceLinkageURL = this.onlineResourceLinkageURL,
                 protocol = this.protocol,
                 applicationProfile = this.applicationProfile,
@@ -2626,13 +2621,12 @@ namespace S100Framework.WPF.ViewModel.S131
                 onlineResourceDescription = this.onlineResourceDescription,
                 onlineFunction = this.onlineFunction,
                 protocolRequest = this.protocolRequest,
-                };
+            };
             return System.Text.Json.JsonSerializer.Serialize(instance);
-            }
+        }
 
         [Browsable(false)]
-        public DomainModel.S131.ComplexAttributes.onlineResource Model => new()
-            {
+        public DomainModel.S131.ComplexAttributes.onlineResource Model => new() {
             onlineResourceLinkageURL = this._onlineResourceLinkageURL,
             protocol = this._protocol,
             applicationProfile = this._applicationProfile,
@@ -2640,11 +2634,11 @@ namespace S100Framework.WPF.ViewModel.S131
             onlineResourceDescription = this._onlineResourceDescription,
             onlineFunction = this._onlineFunction,
             protocolRequest = this._protocolRequest,
-            };
+        };
 
         public onlineResourceViewModel() : base() {
-            }
         }
+    }
 
 #pragma warning disable CS8981 // The type name only contains lower-cased ascii characters. Such names may become reserved for the language.
 
@@ -2659,107 +2653,105 @@ namespace S100Framework.WPF.ViewModel.S131
         public Decimal? orientationUncertainty {
             get {
                 return _orientationUncertainty;
-                }
+            }
 
             set {
                 SetValue(ref _orientationUncertainty, value);
-                }
             }
+        }
 
         private Decimal _orientationValue;
         [Category("orientation")]
         public Decimal orientationValue {
             get {
                 return _orientationValue;
-                }
+            }
 
             set {
                 SetValue(ref _orientationValue, value);
-                }
             }
+        }
 
         public void Load(DomainModel.S131.ComplexAttributes.orientation instance) {
             orientationUncertainty = instance.orientationUncertainty;
             orientationValue = instance.orientationValue;
-            }
+        }
 
         public override string Serialize() {
-            var instance = new DomainModel.S131.ComplexAttributes.orientation
-                {
+            var instance = new DomainModel.S131.ComplexAttributes.orientation {
                 orientationUncertainty = this.orientationUncertainty,
                 orientationValue = this.orientationValue,
-                };
+            };
             return System.Text.Json.JsonSerializer.Serialize(instance);
-            }
+        }
 
         [Browsable(false)]
-        public DomainModel.S131.ComplexAttributes.orientation Model => new()
-            {
+        public DomainModel.S131.ComplexAttributes.orientation Model => new() {
             orientationUncertainty = this._orientationUncertainty,
             orientationValue = this._orientationValue,
-            };
+        };
 
         public orientationViewModel() : base() {
-            }
         }
+    }
 
     [CategoryOrder("periodicDateRange", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class periodicDateRangeViewModel : ViewModelBase {
+    public partial class periodicDateRangeViewModel : ViewModelBase
+    {
         private DateOnly _dateStart;
         [Category("periodicDateRange")]
         public DateOnly dateStart {
             get {
                 return _dateStart;
-                }
+            }
 
             set {
                 SetValue(ref _dateStart, value);
-                }
             }
+        }
 
         private DateOnly _dateEnd;
         [Category("periodicDateRange")]
         public DateOnly dateEnd {
             get {
                 return _dateEnd;
-                }
+            }
 
             set {
                 SetValue(ref _dateEnd, value);
-                }
             }
+        }
 
         public void Load(DomainModel.S131.ComplexAttributes.periodicDateRange instance) {
             dateStart = instance.dateStart;
             dateEnd = instance.dateEnd;
-            }
+        }
 
         public override string Serialize() {
-            var instance = new DomainModel.S131.ComplexAttributes.periodicDateRange
-                {
+            var instance = new DomainModel.S131.ComplexAttributes.periodicDateRange {
                 dateStart = this.dateStart,
                 dateEnd = this.dateEnd,
-                };
+            };
             return System.Text.Json.JsonSerializer.Serialize(instance);
-            }
+        }
 
         [Browsable(false)]
-        public DomainModel.S131.ComplexAttributes.periodicDateRange Model => new()
-            {
+        public DomainModel.S131.ComplexAttributes.periodicDateRange Model => new() {
             dateStart = this._dateStart,
             dateEnd = this._dateEnd,
-            };
+        };
 
         public periodicDateRangeViewModel() : base() {
-            }
         }
+    }
 
     [CategoryOrder("rxNCode", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class rxNCodeViewModel : ViewModelBase {
+    public partial class rxNCodeViewModel : ViewModelBase
+    {
         private categoryOfRxN? _categoryOfRxN;
         [DomainModel.CodeList(nameof(categoryOfRxNList))]
         [Editor(typeof(Editors.CodeListComboEditor), typeof(Editors.CodeListComboEditor))]
@@ -2767,12 +2759,12 @@ namespace S100Framework.WPF.ViewModel.S131
         public categoryOfRxN? categoryOfRxN {
             get {
                 return _categoryOfRxN;
-                }
+            }
 
             set {
                 SetValue(ref _categoryOfRxN, value);
-                }
             }
+        }
 
         private actionOrActivity? _actionOrActivity;
         [DomainModel.CodeList(nameof(actionOrActivityList))]
@@ -2781,12 +2773,12 @@ namespace S100Framework.WPF.ViewModel.S131
         public actionOrActivity? actionOrActivity {
             get {
                 return _actionOrActivity;
-                }
+            }
 
             set {
                 SetValue(ref _actionOrActivity, value);
-                }
             }
+        }
 
         [Category("rxNCode")]
         public ObservableCollection<String> headline { get; set; } = new();
@@ -2804,101 +2796,99 @@ namespace S100Framework.WPF.ViewModel.S131
             if (instance.headline is not null)
                 foreach (var e in instance.headline)
                     headline.Add(e);
-            }
+        }
 
         public override string Serialize() {
-            var instance = new DomainModel.S131.ComplexAttributes.rxNCode
-                {
+            var instance = new DomainModel.S131.ComplexAttributes.rxNCode {
                 categoryOfRxN = this.categoryOfRxN,
                 actionOrActivity = this.actionOrActivity,
                 headline = this.headline.ToList(),
-                };
+            };
             return System.Text.Json.JsonSerializer.Serialize(instance);
-            }
+        }
 
         [Browsable(false)]
-        public DomainModel.S131.ComplexAttributes.rxNCode Model => new()
-            {
+        public DomainModel.S131.ComplexAttributes.rxNCode Model => new() {
             categoryOfRxN = this._categoryOfRxN,
             actionOrActivity = this._actionOrActivity,
             headline = this.headline.ToList(),
-            };
+        };
 
         public rxNCodeViewModel() : base() {
             headline.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
                 OnPropertyChanged(nameof(headline));
             };
-            }
         }
+    }
 
     [CategoryOrder("surveyDateRange", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class surveyDateRangeViewModel : ViewModelBase {
+    public partial class surveyDateRangeViewModel : ViewModelBase
+    {
         private DateOnly? _dateStart = default;
         [Category("surveyDateRange")]
         public DateOnly? dateStart {
             get {
                 return _dateStart;
-                }
+            }
 
             set {
                 SetValue(ref _dateStart, value);
-                }
             }
+        }
 
         private DateOnly _dateEnd;
         [Category("surveyDateRange")]
         public DateOnly dateEnd {
             get {
                 return _dateEnd;
-                }
+            }
 
             set {
                 SetValue(ref _dateEnd, value);
-                }
             }
+        }
 
         public void Load(DomainModel.S131.ComplexAttributes.surveyDateRange instance) {
             dateStart = instance.dateStart;
             dateEnd = instance.dateEnd;
-            }
+        }
 
         public override string Serialize() {
-            var instance = new DomainModel.S131.ComplexAttributes.surveyDateRange
-                {
+            var instance = new DomainModel.S131.ComplexAttributes.surveyDateRange {
                 dateStart = this.dateStart,
                 dateEnd = this.dateEnd,
-                };
+            };
             return System.Text.Json.JsonSerializer.Serialize(instance);
-            }
+        }
 
         [Browsable(false)]
-        public DomainModel.S131.ComplexAttributes.surveyDateRange Model => new()
-            {
+        public DomainModel.S131.ComplexAttributes.surveyDateRange Model => new() {
             dateStart = this._dateStart,
             dateEnd = this._dateEnd,
-            };
+        };
 
         public surveyDateRangeViewModel() : base() {
-            }
         }
+    }
 
     [CategoryOrder("textContent", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class textContentViewModel : ViewModelBase {
+    public partial class textContentViewModel : ViewModelBase
+    {
         private categoryOfText? _categoryOfText = default;
         [Category("textContent")]
         public categoryOfText? categoryOfText {
             get {
                 return _categoryOfText;
-                }
+            }
 
             set {
                 SetValue(ref _categoryOfText, value);
-                }
             }
+        }
 
         [Category("textContent")]
         public ObservableCollection<information> information { get; set; } = new();
@@ -2909,48 +2899,48 @@ namespace S100Framework.WPF.ViewModel.S131
         public onlineResourceViewModel? onlineResource {
             get {
                 return _onlineResource;
-                }
+            }
 
             set {
                 SetValue(ref _onlineResource, value);
-                }
             }
+        }
 
         private String _source = string.Empty;
         [Category("textContent")]
         public String source {
             get {
                 return _source;
-                }
+            }
 
             set {
                 SetValue(ref _source, value);
-                }
             }
+        }
 
         private sourceType? _sourceType = default;
         [Category("textContent")]
         public sourceType? sourceType {
             get {
                 return _sourceType;
-                }
+            }
 
             set {
                 SetValue(ref _sourceType, value);
-                }
             }
+        }
 
         private DateOnly? _reportedDate = default;
         [Category("textContent")]
         public DateOnly? reportedDate {
             get {
                 return _reportedDate;
-                }
+            }
 
             set {
                 SetValue(ref _reportedDate, value);
-                }
             }
+        }
 
         public void Load(DomainModel.S131.ComplexAttributes.textContent instance) {
             categoryOfText = instance.categoryOfText;
@@ -2962,48 +2952,47 @@ namespace S100Framework.WPF.ViewModel.S131
             if (instance.onlineResource != null) {
                 onlineResource = new();
                 onlineResource.Load(instance.onlineResource);
-                }
+            }
 
             source = instance.source;
             sourceType = instance.sourceType;
             reportedDate = instance.reportedDate;
-            }
+        }
 
         public override string Serialize() {
-            var instance = new DomainModel.S131.ComplexAttributes.textContent
-                {
+            var instance = new DomainModel.S131.ComplexAttributes.textContent {
                 categoryOfText = this.categoryOfText,
                 information = this.information.ToList(),
                 onlineResource = this.onlineResource?.Model,
                 source = this.source,
                 sourceType = this.sourceType,
                 reportedDate = this.reportedDate,
-                };
+            };
             return System.Text.Json.JsonSerializer.Serialize(instance);
-            }
+        }
 
         [Browsable(false)]
-        public DomainModel.S131.ComplexAttributes.textContent Model => new()
-            {
+        public DomainModel.S131.ComplexAttributes.textContent Model => new() {
             categoryOfText = this._categoryOfText,
             information = this.information.ToList(),
             onlineResource = this._onlineResource?.Model,
             source = this._source,
             sourceType = this._sourceType,
             reportedDate = this._reportedDate,
-            };
+        };
 
         public textContentViewModel() : base() {
             information.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
                 OnPropertyChanged(nameof(information));
             };
-            }
         }
+    }
 
     [CategoryOrder("timeIntervalsByDayOfWeek", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class timeIntervalsByDayOfWeekViewModel : ViewModelBase {
+    public partial class timeIntervalsByDayOfWeekViewModel : ViewModelBase
+    {
         [Category("timeIntervalsByDayOfWeek")]
         public ObservableCollection<dayOfWeek> dayOfWeek { get; set; } = new();
 
@@ -3012,12 +3001,12 @@ namespace S100Framework.WPF.ViewModel.S131
         public Boolean? dayOfWeekIsRange {
             get {
                 return _dayOfWeekIsRange;
-                }
+            }
 
             set {
                 SetValue(ref _dayOfWeekIsRange, value);
-                }
             }
+        }
 
         [Category("timeIntervalsByDayOfWeek")]
         public ObservableCollection<TimeOnly> timeOfDayStart { get; set; } = new();
@@ -3039,27 +3028,25 @@ namespace S100Framework.WPF.ViewModel.S131
             if (instance.timeOfDayEnd is not null)
                 foreach (var e in instance.timeOfDayEnd)
                     timeOfDayEnd.Add(e);
-            }
+        }
 
         public override string Serialize() {
-            var instance = new DomainModel.S131.ComplexAttributes.timeIntervalsByDayOfWeek
-                {
+            var instance = new DomainModel.S131.ComplexAttributes.timeIntervalsByDayOfWeek {
                 dayOfWeek = this.dayOfWeek.ToList(),
                 dayOfWeekIsRange = this.dayOfWeekIsRange,
                 timeOfDayStart = this.timeOfDayStart.ToList(),
                 timeOfDayEnd = this.timeOfDayEnd.ToList(),
-                };
+            };
             return System.Text.Json.JsonSerializer.Serialize(instance);
-            }
+        }
 
         [Browsable(false)]
-        public DomainModel.S131.ComplexAttributes.timeIntervalsByDayOfWeek Model => new()
-            {
+        public DomainModel.S131.ComplexAttributes.timeIntervalsByDayOfWeek Model => new() {
             dayOfWeek = this.dayOfWeek.ToList(),
             dayOfWeekIsRange = this._dayOfWeekIsRange,
             timeOfDayStart = this.timeOfDayStart.ToList(),
             timeOfDayEnd = this.timeOfDayEnd.ToList(),
-            };
+        };
 
         public timeIntervalsByDayOfWeekViewModel() : base() {
             dayOfWeek.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
@@ -3071,13 +3058,14 @@ namespace S100Framework.WPF.ViewModel.S131
             timeOfDayEnd.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
                 OnPropertyChanged(nameof(timeOfDayEnd));
             };
-            }
         }
+    }
 
     [CategoryOrder("usefulMarkDescription", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class usefulMarkDescriptionViewModel : ViewModelBase {
+    public partial class usefulMarkDescriptionViewModel : ViewModelBase
+    {
         [Category("usefulMarkDescription")]
         public ObservableCollection<textContent> textContent { get; set; } = new();
 
@@ -3086,193 +3074,190 @@ namespace S100Framework.WPF.ViewModel.S131
             if (instance.textContent is not null)
                 foreach (var e in instance.textContent)
                     textContent.Add(e);
-            }
+        }
 
         public override string Serialize() {
-            var instance = new DomainModel.S131.ComplexAttributes.usefulMarkDescription
-                {
+            var instance = new DomainModel.S131.ComplexAttributes.usefulMarkDescription {
                 textContent = this.textContent.ToList(),
-                };
+            };
             return System.Text.Json.JsonSerializer.Serialize(instance);
-            }
+        }
 
         [Browsable(false)]
-        public DomainModel.S131.ComplexAttributes.usefulMarkDescription Model => new()
-            {
+        public DomainModel.S131.ComplexAttributes.usefulMarkDescription Model => new() {
             textContent = this.textContent.ToList(),
-            };
+        };
 
         public usefulMarkDescriptionViewModel() : base() {
             textContent.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
                 OnPropertyChanged(nameof(textContent));
             };
-            }
         }
+    }
 
     [CategoryOrder("verticalUncertainty", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class verticalUncertaintyViewModel : ViewModelBase {
+    public partial class verticalUncertaintyViewModel : ViewModelBase
+    {
         private Decimal _uncertaintyFixed;
         [Category("verticalUncertainty")]
         public Decimal uncertaintyFixed {
             get {
                 return _uncertaintyFixed;
-                }
+            }
 
             set {
                 SetValue(ref _uncertaintyFixed, value);
-                }
             }
+        }
 
         private Decimal? _uncertaintyVariableFactor = default;
         [Category("verticalUncertainty")]
         public Decimal? uncertaintyVariableFactor {
             get {
                 return _uncertaintyVariableFactor;
-                }
+            }
 
             set {
                 SetValue(ref _uncertaintyVariableFactor, value);
-                }
             }
+        }
 
         public void Load(DomainModel.S131.ComplexAttributes.verticalUncertainty instance) {
             uncertaintyFixed = instance.uncertaintyFixed;
             uncertaintyVariableFactor = instance.uncertaintyVariableFactor;
-            }
+        }
 
         public override string Serialize() {
-            var instance = new DomainModel.S131.ComplexAttributes.verticalUncertainty
-                {
+            var instance = new DomainModel.S131.ComplexAttributes.verticalUncertainty {
                 uncertaintyFixed = this.uncertaintyFixed,
                 uncertaintyVariableFactor = this.uncertaintyVariableFactor,
-                };
+            };
             return System.Text.Json.JsonSerializer.Serialize(instance);
-            }
+        }
 
         [Browsable(false)]
-        public DomainModel.S131.ComplexAttributes.verticalUncertainty Model => new()
-            {
+        public DomainModel.S131.ComplexAttributes.verticalUncertainty Model => new() {
             uncertaintyFixed = this._uncertaintyFixed,
             uncertaintyVariableFactor = this._uncertaintyVariableFactor,
-            };
+        };
 
         public verticalUncertaintyViewModel() : base() {
-            }
         }
+    }
 
     [CategoryOrder("vesselsMeasurements", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class vesselsMeasurementsViewModel : ViewModelBase {
+    public partial class vesselsMeasurementsViewModel : ViewModelBase
+    {
         private comparisonOperator _comparisonOperator;
         [Category("vesselsMeasurements")]
         public comparisonOperator comparisonOperator {
             get {
                 return _comparisonOperator;
-                }
+            }
 
             set {
                 SetValue(ref _comparisonOperator, value);
-                }
             }
+        }
 
         private vesselsCharacteristics _vesselsCharacteristics;
         [Category("vesselsMeasurements")]
         public vesselsCharacteristics vesselsCharacteristics {
             get {
                 return _vesselsCharacteristics;
-                }
+            }
 
             set {
                 SetValue(ref _vesselsCharacteristics, value);
-                }
             }
+        }
 
         private Decimal _vesselsCharacteristicsValue;
         [Category("vesselsMeasurements")]
         public Decimal vesselsCharacteristicsValue {
             get {
                 return _vesselsCharacteristicsValue;
-                }
+            }
 
             set {
                 SetValue(ref _vesselsCharacteristicsValue, value);
-                }
             }
+        }
 
         private vesselsCharacteristicsUnit _vesselsCharacteristicsUnit;
         [Category("vesselsMeasurements")]
         public vesselsCharacteristicsUnit vesselsCharacteristicsUnit {
             get {
                 return _vesselsCharacteristicsUnit;
-                }
+            }
 
             set {
                 SetValue(ref _vesselsCharacteristicsUnit, value);
-                }
             }
+        }
 
         public void Load(DomainModel.S131.ComplexAttributes.vesselsMeasurements instance) {
             comparisonOperator = instance.comparisonOperator;
             vesselsCharacteristics = instance.vesselsCharacteristics;
             vesselsCharacteristicsValue = instance.vesselsCharacteristicsValue;
             vesselsCharacteristicsUnit = instance.vesselsCharacteristicsUnit;
-            }
+        }
 
         public override string Serialize() {
-            var instance = new DomainModel.S131.ComplexAttributes.vesselsMeasurements
-                {
+            var instance = new DomainModel.S131.ComplexAttributes.vesselsMeasurements {
                 comparisonOperator = this.comparisonOperator,
                 vesselsCharacteristics = this.vesselsCharacteristics,
                 vesselsCharacteristicsValue = this.vesselsCharacteristicsValue,
                 vesselsCharacteristicsUnit = this.vesselsCharacteristicsUnit,
-                };
+            };
             return System.Text.Json.JsonSerializer.Serialize(instance);
-            }
+        }
 
         [Browsable(false)]
-        public DomainModel.S131.ComplexAttributes.vesselsMeasurements Model => new()
-            {
+        public DomainModel.S131.ComplexAttributes.vesselsMeasurements Model => new() {
             comparisonOperator = this._comparisonOperator,
             vesselsCharacteristics = this._vesselsCharacteristics,
             vesselsCharacteristicsValue = this._vesselsCharacteristicsValue,
             vesselsCharacteristicsUnit = this._vesselsCharacteristicsUnit,
-            };
+        };
 
         public vesselsMeasurementsViewModel() : base() {
-            }
         }
+    }
 
     [CategoryOrder("weatherResource", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class weatherResourceViewModel : ViewModelBase {
+    public partial class weatherResourceViewModel : ViewModelBase
+    {
         private onlineResourceViewModel? _onlineResource;
         [Category("weatherResource")]
         [Xceed.Wpf.Toolkit.PropertyGrid.Attributes.ExpandableObject]
         public onlineResourceViewModel? onlineResource {
             get {
                 return _onlineResource;
-                }
+            }
 
             set {
                 SetValue(ref _onlineResource, value);
-                }
             }
+        }
 
         private dynamicResource? _dynamicResource = default;
         [Category("weatherResource")]
         public dynamicResource? dynamicResource {
             get {
                 return _dynamicResource;
-                }
+            }
 
             set {
                 SetValue(ref _dynamicResource, value);
-                }
             }
+        }
 
         private textContentViewModel? _textContent;
         [Category("weatherResource")]
@@ -3280,77 +3265,76 @@ namespace S100Framework.WPF.ViewModel.S131
         public textContentViewModel? textContent {
             get {
                 return _textContent;
-                }
+            }
 
             set {
                 SetValue(ref _textContent, value);
-                }
             }
+        }
 
         public void Load(DomainModel.S131.ComplexAttributes.weatherResource instance) {
             onlineResource = new();
             if (instance.onlineResource != null) {
                 onlineResource = new();
                 onlineResource.Load(instance.onlineResource);
-                }
+            }
 
             dynamicResource = instance.dynamicResource;
             textContent = new();
             if (instance.textContent != null) {
                 textContent = new();
                 textContent.Load(instance.textContent);
-                }
             }
+        }
 
         public override string Serialize() {
-            var instance = new DomainModel.S131.ComplexAttributes.weatherResource
-                {
+            var instance = new DomainModel.S131.ComplexAttributes.weatherResource {
                 onlineResource = this.onlineResource?.Model,
                 dynamicResource = this.dynamicResource,
                 textContent = this.textContent?.Model,
-                };
+            };
             return System.Text.Json.JsonSerializer.Serialize(instance);
-            }
+        }
 
         [Browsable(false)]
-        public DomainModel.S131.ComplexAttributes.weatherResource Model => new()
-            {
+        public DomainModel.S131.ComplexAttributes.weatherResource Model => new() {
             onlineResource = this._onlineResource?.Model,
             dynamicResource = this._dynamicResource,
             textContent = this._textContent?.Model,
-            };
+        };
 
         public weatherResourceViewModel() : base() {
-            }
         }
+    }
 
     [CategoryOrder("bearingInformation", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class bearingInformationViewModel : ViewModelBase {
+    public partial class bearingInformationViewModel : ViewModelBase
+    {
         private cardinalDirection? _cardinalDirection = default;
         [Category("bearingInformation")]
         public cardinalDirection? cardinalDirection {
             get {
                 return _cardinalDirection;
-                }
+            }
 
             set {
                 SetValue(ref _cardinalDirection, value);
-                }
             }
+        }
 
         private Decimal? _distance = default;
         [Category("bearingInformation")]
         public Decimal? distance {
             get {
                 return _distance;
-                }
+            }
 
             set {
                 SetValue(ref _distance, value);
-                }
             }
+        }
 
         [Category("bearingInformation")]
         public ObservableCollection<Decimal> sectorBearing { get; set; } = new();
@@ -3364,12 +3348,12 @@ namespace S100Framework.WPF.ViewModel.S131
         public orientationViewModel? orientation {
             get {
                 return _orientation;
-                }
+            }
 
             set {
                 SetValue(ref _orientation, value);
-                }
             }
+        }
 
         public void Load(DomainModel.S131.ComplexAttributes.bearingInformation instance) {
             cardinalDirection = instance.cardinalDirection;
@@ -3386,30 +3370,28 @@ namespace S100Framework.WPF.ViewModel.S131
             if (instance.orientation != null) {
                 orientation = new();
                 orientation.Load(instance.orientation);
-                }
             }
+        }
 
         public override string Serialize() {
-            var instance = new DomainModel.S131.ComplexAttributes.bearingInformation
-                {
+            var instance = new DomainModel.S131.ComplexAttributes.bearingInformation {
                 cardinalDirection = this.cardinalDirection,
                 distance = this.distance,
                 sectorBearing = this.sectorBearing.ToList(),
                 information = this.information.ToList(),
                 orientation = this.orientation?.Model,
-                };
+            };
             return System.Text.Json.JsonSerializer.Serialize(instance);
-            }
+        }
 
         [Browsable(false)]
-        public DomainModel.S131.ComplexAttributes.bearingInformation Model => new()
-            {
+        public DomainModel.S131.ComplexAttributes.bearingInformation Model => new() {
             cardinalDirection = this._cardinalDirection,
             distance = this._distance,
             sectorBearing = this.sectorBearing.ToList(),
             information = this.information.ToList(),
             orientation = this._orientation?.Model,
-            };
+        };
 
         public bearingInformationViewModel() : base() {
             sectorBearing.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
@@ -3418,13 +3400,14 @@ namespace S100Framework.WPF.ViewModel.S131
             information.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
                 OnPropertyChanged(nameof(information));
             };
-            }
         }
+    }
 
     [CategoryOrder("cargoServicesDescription", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class cargoServicesDescriptionViewModel : ViewModelBase {
+    public partial class cargoServicesDescriptionViewModel : ViewModelBase
+    {
         [Category("cargoServicesDescription")]
         public ObservableCollection<textContent> textContent { get; set; } = new();
 
@@ -3433,81 +3416,80 @@ namespace S100Framework.WPF.ViewModel.S131
             if (instance.textContent is not null)
                 foreach (var e in instance.textContent)
                     textContent.Add(e);
-            }
+        }
 
         public override string Serialize() {
-            var instance = new DomainModel.S131.ComplexAttributes.cargoServicesDescription
-                {
+            var instance = new DomainModel.S131.ComplexAttributes.cargoServicesDescription {
                 textContent = this.textContent.ToList(),
-                };
+            };
             return System.Text.Json.JsonSerializer.Serialize(instance);
-            }
+        }
 
         [Browsable(false)]
-        public DomainModel.S131.ComplexAttributes.cargoServicesDescription Model => new()
-            {
+        public DomainModel.S131.ComplexAttributes.cargoServicesDescription Model => new() {
             textContent = this.textContent.ToList(),
-            };
+        };
 
         public cargoServicesDescriptionViewModel() : base() {
             textContent.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
                 OnPropertyChanged(nameof(textContent));
             };
-            }
         }
+    }
 
     [CategoryOrder("constructionInformation", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class constructionInformationViewModel : ViewModelBase {
+    public partial class constructionInformationViewModel : ViewModelBase
+    {
         private fixedDateRangeViewModel? _fixedDateRange;
         [Category("constructionInformation")]
         [Xceed.Wpf.Toolkit.PropertyGrid.Attributes.ExpandableObject]
         public fixedDateRangeViewModel? fixedDateRange {
             get {
                 return _fixedDateRange;
-                }
+            }
 
             set {
                 SetValue(ref _fixedDateRange, value);
-                }
             }
+        }
 
         private condition? _condition = default;
         [Category("constructionInformation")]
         public condition? condition {
             get {
                 return _condition;
-                }
+            }
 
             set {
                 SetValue(ref _condition, value);
-                }
             }
+        }
 
         private String _development = string.Empty;
         [Category("constructionInformation")]
         public String development {
             get {
                 return _development;
-                }
+            }
 
             set {
                 SetValue(ref _development, value);
-                }
             }
+        }
 
         private String _locationByText = string.Empty;
         [Category("constructionInformation")]
         public String locationByText {
             get {
                 return _locationByText;
-                }
+            }
 
             set {
                 SetValue(ref _locationByText, value);
-                }
             }
+        }
 
         [Category("constructionInformation")]
         public ObservableCollection<textContent> textContent { get; set; } = new();
@@ -3517,7 +3499,7 @@ namespace S100Framework.WPF.ViewModel.S131
             if (instance.fixedDateRange != null) {
                 fixedDateRange = new();
                 fixedDateRange.Load(instance.fixedDateRange);
-                }
+            }
 
             condition = instance.condition;
             development = instance.development;
@@ -3526,52 +3508,51 @@ namespace S100Framework.WPF.ViewModel.S131
             if (instance.textContent is not null)
                 foreach (var e in instance.textContent)
                     textContent.Add(e);
-            }
+        }
 
         public override string Serialize() {
-            var instance = new DomainModel.S131.ComplexAttributes.constructionInformation
-                {
+            var instance = new DomainModel.S131.ComplexAttributes.constructionInformation {
                 fixedDateRange = this.fixedDateRange?.Model,
                 condition = this.condition,
                 development = this.development,
                 locationByText = this.locationByText,
                 textContent = this.textContent.ToList(),
-                };
+            };
             return System.Text.Json.JsonSerializer.Serialize(instance);
-            }
+        }
 
         [Browsable(false)]
-        public DomainModel.S131.ComplexAttributes.constructionInformation Model => new()
-            {
+        public DomainModel.S131.ComplexAttributes.constructionInformation Model => new() {
             fixedDateRange = this._fixedDateRange?.Model,
             condition = this._condition,
             development = this._development,
             locationByText = this._locationByText,
             textContent = this.textContent.ToList(),
-            };
+        };
 
         public constructionInformationViewModel() : base() {
             textContent.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
                 OnPropertyChanged(nameof(textContent));
             };
-            }
         }
+    }
 
     [CategoryOrder("depthsDescription", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class depthsDescriptionViewModel : ViewModelBase {
+    public partial class depthsDescriptionViewModel : ViewModelBase
+    {
         private categoryOfDepthsDescription _categoryOfDepthsDescription;
         [Category("depthsDescription")]
         public categoryOfDepthsDescription categoryOfDepthsDescription {
             get {
                 return _categoryOfDepthsDescription;
-                }
+            }
 
             set {
                 SetValue(ref _categoryOfDepthsDescription, value);
-                }
             }
+        }
 
         [Category("depthsDescription")]
         public ObservableCollection<textContent> textContent { get; set; } = new();
@@ -3582,35 +3563,34 @@ namespace S100Framework.WPF.ViewModel.S131
             if (instance.textContent is not null)
                 foreach (var e in instance.textContent)
                     textContent.Add(e);
-            }
+        }
 
         public override string Serialize() {
-            var instance = new DomainModel.S131.ComplexAttributes.depthsDescription
-                {
+            var instance = new DomainModel.S131.ComplexAttributes.depthsDescription {
                 categoryOfDepthsDescription = this.categoryOfDepthsDescription,
                 textContent = this.textContent.ToList(),
-                };
+            };
             return System.Text.Json.JsonSerializer.Serialize(instance);
-            }
+        }
 
         [Browsable(false)]
-        public DomainModel.S131.ComplexAttributes.depthsDescription Model => new()
-            {
+        public DomainModel.S131.ComplexAttributes.depthsDescription Model => new() {
             categoryOfDepthsDescription = this._categoryOfDepthsDescription,
             textContent = this.textContent.ToList(),
-            };
+        };
 
         public depthsDescriptionViewModel() : base() {
             textContent.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
                 OnPropertyChanged(nameof(textContent));
             };
-            }
         }
+    }
 
     [CategoryOrder("facilitiesLayoutDescription", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class facilitiesLayoutDescriptionViewModel : ViewModelBase {
+    public partial class facilitiesLayoutDescriptionViewModel : ViewModelBase
+    {
         [Category("facilitiesLayoutDescription")]
         public ObservableCollection<textContent> textContent { get; set; } = new();
 
@@ -3619,33 +3599,32 @@ namespace S100Framework.WPF.ViewModel.S131
             if (instance.textContent is not null)
                 foreach (var e in instance.textContent)
                     textContent.Add(e);
-            }
+        }
 
         public override string Serialize() {
-            var instance = new DomainModel.S131.ComplexAttributes.facilitiesLayoutDescription
-                {
+            var instance = new DomainModel.S131.ComplexAttributes.facilitiesLayoutDescription {
                 textContent = this.textContent.ToList(),
-                };
+            };
             return System.Text.Json.JsonSerializer.Serialize(instance);
-            }
+        }
 
         [Browsable(false)]
-        public DomainModel.S131.ComplexAttributes.facilitiesLayoutDescription Model => new()
-            {
+        public DomainModel.S131.ComplexAttributes.facilitiesLayoutDescription Model => new() {
             textContent = this.textContent.ToList(),
-            };
+        };
 
         public facilitiesLayoutDescriptionViewModel() : base() {
             textContent.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
                 OnPropertyChanged(nameof(textContent));
             };
-            }
         }
+    }
 
     [CategoryOrder("generalPortDescription", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class generalPortDescriptionViewModel : ViewModelBase {
+    public partial class generalPortDescriptionViewModel : ViewModelBase
+    {
         [Category("generalPortDescription")]
         public ObservableCollection<textContent> textContent { get; set; } = new();
 
@@ -3654,28 +3633,26 @@ namespace S100Framework.WPF.ViewModel.S131
             if (instance.textContent is not null)
                 foreach (var e in instance.textContent)
                     textContent.Add(e);
-            }
+        }
 
         public override string Serialize() {
-            var instance = new DomainModel.S131.ComplexAttributes.generalPortDescription
-                {
+            var instance = new DomainModel.S131.ComplexAttributes.generalPortDescription {
                 textContent = this.textContent.ToList(),
-                };
+            };
             return System.Text.Json.JsonSerializer.Serialize(instance);
-            }
+        }
 
         [Browsable(false)]
-        public DomainModel.S131.ComplexAttributes.generalPortDescription Model => new()
-            {
+        public DomainModel.S131.ComplexAttributes.generalPortDescription Model => new() {
             textContent = this.textContent.ToList(),
-            };
+        };
 
         public generalPortDescriptionViewModel() : base() {
             textContent.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
                 OnPropertyChanged(nameof(textContent));
             };
-            }
         }
+    }
 
 #pragma warning disable CS8981 // The type name only contains lower-cased ascii characters. Such names may become reserved for the language.
 
@@ -3693,36 +3670,36 @@ namespace S100Framework.WPF.ViewModel.S131
         public String pictureCaption {
             get {
                 return _pictureCaption;
-                }
+            }
 
             set {
                 SetValue(ref _pictureCaption, value);
-                }
             }
+        }
 
         private DateTime? _sourceDate = default;
         [Category("graphic")]
         public DateTime? sourceDate {
             get {
                 return _sourceDate;
-                }
+            }
 
             set {
                 SetValue(ref _sourceDate, value);
-                }
             }
+        }
 
         private String _pictureInformation = string.Empty;
         [Category("graphic")]
         public String pictureInformation {
             get {
                 return _pictureInformation;
-                }
+            }
 
             set {
                 SetValue(ref _pictureInformation, value);
-                }
             }
+        }
 
         private bearingInformationViewModel? _bearingInformation;
         [Category("graphic")]
@@ -3730,12 +3707,12 @@ namespace S100Framework.WPF.ViewModel.S131
         public bearingInformationViewModel? bearingInformation {
             get {
                 return _bearingInformation;
-                }
+            }
 
             set {
                 SetValue(ref _bearingInformation, value);
-                }
             }
+        }
 
         public void Load(DomainModel.S131.ComplexAttributes.graphic instance) {
             pictorialRepresentation.Clear();
@@ -3749,42 +3726,41 @@ namespace S100Framework.WPF.ViewModel.S131
             if (instance.bearingInformation != null) {
                 bearingInformation = new();
                 bearingInformation.Load(instance.bearingInformation);
-                }
             }
+        }
 
         public override string Serialize() {
-            var instance = new DomainModel.S131.ComplexAttributes.graphic
-                {
+            var instance = new DomainModel.S131.ComplexAttributes.graphic {
                 pictorialRepresentation = this.pictorialRepresentation.ToList(),
                 pictureCaption = this.pictureCaption,
                 sourceDate = this.sourceDate,
                 pictureInformation = this.pictureInformation,
                 bearingInformation = this.bearingInformation?.Model,
-                };
+            };
             return System.Text.Json.JsonSerializer.Serialize(instance);
-            }
+        }
 
         [Browsable(false)]
-        public DomainModel.S131.ComplexAttributes.graphic Model => new()
-            {
+        public DomainModel.S131.ComplexAttributes.graphic Model => new() {
             pictorialRepresentation = this.pictorialRepresentation.ToList(),
             pictureCaption = this._pictureCaption,
             sourceDate = this._sourceDate,
             pictureInformation = this._pictureInformation,
             bearingInformation = this._bearingInformation?.Model,
-            };
+        };
 
         public graphicViewModel() : base() {
             pictorialRepresentation.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
                 OnPropertyChanged(nameof(pictorialRepresentation));
             };
-            }
         }
+    }
 
     [CategoryOrder("landmarkDescription", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class landmarkDescriptionViewModel : ViewModelBase {
+    public partial class landmarkDescriptionViewModel : ViewModelBase
+    {
         [Category("landmarkDescription")]
         public ObservableCollection<textContent> textContent { get; set; } = new();
 
@@ -3793,33 +3769,32 @@ namespace S100Framework.WPF.ViewModel.S131
             if (instance.textContent is not null)
                 foreach (var e in instance.textContent)
                     textContent.Add(e);
-            }
+        }
 
         public override string Serialize() {
-            var instance = new DomainModel.S131.ComplexAttributes.landmarkDescription
-                {
+            var instance = new DomainModel.S131.ComplexAttributes.landmarkDescription {
                 textContent = this.textContent.ToList(),
-                };
+            };
             return System.Text.Json.JsonSerializer.Serialize(instance);
-            }
+        }
 
         [Browsable(false)]
-        public DomainModel.S131.ComplexAttributes.landmarkDescription Model => new()
-            {
+        public DomainModel.S131.ComplexAttributes.landmarkDescription Model => new() {
             textContent = this.textContent.ToList(),
-            };
+        };
 
         public landmarkDescriptionViewModel() : base() {
             textContent.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
                 OnPropertyChanged(nameof(textContent));
             };
-            }
         }
+    }
 
     [CategoryOrder("limitsDescription", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class limitsDescriptionViewModel : ViewModelBase {
+    public partial class limitsDescriptionViewModel : ViewModelBase
+    {
         [Category("limitsDescription")]
         public ObservableCollection<textContent> textContent { get; set; } = new();
 
@@ -3828,33 +3803,32 @@ namespace S100Framework.WPF.ViewModel.S131
             if (instance.textContent is not null)
                 foreach (var e in instance.textContent)
                     textContent.Add(e);
-            }
+        }
 
         public override string Serialize() {
-            var instance = new DomainModel.S131.ComplexAttributes.limitsDescription
-                {
+            var instance = new DomainModel.S131.ComplexAttributes.limitsDescription {
                 textContent = this.textContent.ToList(),
-                };
+            };
             return System.Text.Json.JsonSerializer.Serialize(instance);
-            }
+        }
 
         [Browsable(false)]
-        public DomainModel.S131.ComplexAttributes.limitsDescription Model => new()
-            {
+        public DomainModel.S131.ComplexAttributes.limitsDescription Model => new() {
             textContent = this.textContent.ToList(),
-            };
+        };
 
         public limitsDescriptionViewModel() : base() {
             textContent.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
                 OnPropertyChanged(nameof(textContent));
             };
-            }
         }
+    }
 
     [CategoryOrder("majorLightDescription", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class majorLightDescriptionViewModel : ViewModelBase {
+    public partial class majorLightDescriptionViewModel : ViewModelBase
+    {
         [Category("majorLightDescription")]
         public ObservableCollection<textContent> textContent { get; set; } = new();
 
@@ -3863,33 +3837,32 @@ namespace S100Framework.WPF.ViewModel.S131
             if (instance.textContent is not null)
                 foreach (var e in instance.textContent)
                     textContent.Add(e);
-            }
+        }
 
         public override string Serialize() {
-            var instance = new DomainModel.S131.ComplexAttributes.majorLightDescription
-                {
+            var instance = new DomainModel.S131.ComplexAttributes.majorLightDescription {
                 textContent = this.textContent.ToList(),
-                };
+            };
             return System.Text.Json.JsonSerializer.Serialize(instance);
-            }
+        }
 
         [Browsable(false)]
-        public DomainModel.S131.ComplexAttributes.majorLightDescription Model => new()
-            {
+        public DomainModel.S131.ComplexAttributes.majorLightDescription Model => new() {
             textContent = this.textContent.ToList(),
-            };
+        };
 
         public majorLightDescriptionViewModel() : base() {
             textContent.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
                 OnPropertyChanged(nameof(textContent));
             };
-            }
         }
+    }
 
     [CategoryOrder("markedBy", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class markedByViewModel : ViewModelBase {
+    public partial class markedByViewModel : ViewModelBase
+    {
         [Category("markedBy")]
         public ObservableCollection<textContent> textContent { get; set; } = new();
 
@@ -3898,33 +3871,32 @@ namespace S100Framework.WPF.ViewModel.S131
             if (instance.textContent is not null)
                 foreach (var e in instance.textContent)
                     textContent.Add(e);
-            }
+        }
 
         public override string Serialize() {
-            var instance = new DomainModel.S131.ComplexAttributes.markedBy
-                {
+            var instance = new DomainModel.S131.ComplexAttributes.markedBy {
                 textContent = this.textContent.ToList(),
-                };
+            };
             return System.Text.Json.JsonSerializer.Serialize(instance);
-            }
+        }
 
         [Browsable(false)]
-        public DomainModel.S131.ComplexAttributes.markedBy Model => new()
-            {
+        public DomainModel.S131.ComplexAttributes.markedBy Model => new() {
             textContent = this.textContent.ToList(),
-            };
+        };
 
         public markedByViewModel() : base() {
             textContent.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
                 OnPropertyChanged(nameof(textContent));
             };
-            }
         }
+    }
 
     [CategoryOrder("offshoreMarkDescription", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class offshoreMarkDescriptionViewModel : ViewModelBase {
+    public partial class offshoreMarkDescriptionViewModel : ViewModelBase
+    {
         [Category("offshoreMarkDescription")]
         public ObservableCollection<textContent> textContent { get; set; } = new();
 
@@ -3933,44 +3905,43 @@ namespace S100Framework.WPF.ViewModel.S131
             if (instance.textContent is not null)
                 foreach (var e in instance.textContent)
                     textContent.Add(e);
-            }
+        }
 
         public override string Serialize() {
-            var instance = new DomainModel.S131.ComplexAttributes.offshoreMarkDescription
-                {
+            var instance = new DomainModel.S131.ComplexAttributes.offshoreMarkDescription {
                 textContent = this.textContent.ToList(),
-                };
+            };
             return System.Text.Json.JsonSerializer.Serialize(instance);
-            }
+        }
 
         [Browsable(false)]
-        public DomainModel.S131.ComplexAttributes.offshoreMarkDescription Model => new()
-            {
+        public DomainModel.S131.ComplexAttributes.offshoreMarkDescription Model => new() {
             textContent = this.textContent.ToList(),
-            };
+        };
 
         public offshoreMarkDescriptionViewModel() : base() {
             textContent.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
                 OnPropertyChanged(nameof(textContent));
             };
-            }
         }
+    }
 
     [CategoryOrder("scheduleByDayOfWeek", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class scheduleByDayOfWeekViewModel : ViewModelBase {
+    public partial class scheduleByDayOfWeekViewModel : ViewModelBase
+    {
         private categoryOfSchedule? _categoryOfSchedule = default;
         [Category("scheduleByDayOfWeek")]
         public categoryOfSchedule? categoryOfSchedule {
             get {
                 return _categoryOfSchedule;
-                }
+            }
 
             set {
                 SetValue(ref _categoryOfSchedule, value);
-                }
             }
+        }
 
         [Category("scheduleByDayOfWeek")]
         public ObservableCollection<timeIntervalsByDayOfWeek> timeIntervalsByDayOfWeek { get; set; } = new();
@@ -3981,47 +3952,46 @@ namespace S100Framework.WPF.ViewModel.S131
             if (instance.timeIntervalsByDayOfWeek is not null)
                 foreach (var e in instance.timeIntervalsByDayOfWeek)
                     timeIntervalsByDayOfWeek.Add(e);
-            }
+        }
 
         public override string Serialize() {
-            var instance = new DomainModel.S131.ComplexAttributes.scheduleByDayOfWeek
-                {
+            var instance = new DomainModel.S131.ComplexAttributes.scheduleByDayOfWeek {
                 categoryOfSchedule = this.categoryOfSchedule,
                 timeIntervalsByDayOfWeek = this.timeIntervalsByDayOfWeek.ToList(),
-                };
+            };
             return System.Text.Json.JsonSerializer.Serialize(instance);
-            }
+        }
 
         [Browsable(false)]
-        public DomainModel.S131.ComplexAttributes.scheduleByDayOfWeek Model => new()
-            {
+        public DomainModel.S131.ComplexAttributes.scheduleByDayOfWeek Model => new() {
             categoryOfSchedule = this._categoryOfSchedule,
             timeIntervalsByDayOfWeek = this.timeIntervalsByDayOfWeek.ToList(),
-            };
+        };
 
         public scheduleByDayOfWeekViewModel() : base() {
             timeIntervalsByDayOfWeek.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
                 OnPropertyChanged(nameof(timeIntervalsByDayOfWeek));
             };
-            }
         }
+    }
 
     [CategoryOrder("spatialAccuracy", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class spatialAccuracyViewModel : ViewModelBase {
+    public partial class spatialAccuracyViewModel : ViewModelBase
+    {
         private fixedDateRangeViewModel? _fixedDateRange;
         [Category("spatialAccuracy")]
         [Xceed.Wpf.Toolkit.PropertyGrid.Attributes.ExpandableObject]
         public fixedDateRangeViewModel? fixedDateRange {
             get {
                 return _fixedDateRange;
-                }
+            }
 
             set {
                 SetValue(ref _fixedDateRange, value);
-                }
             }
+        }
 
         private horizontalPositionUncertaintyViewModel? _horizontalPositionUncertainty;
         [Category("spatialAccuracy")]
@@ -4029,12 +3999,12 @@ namespace S100Framework.WPF.ViewModel.S131
         public horizontalPositionUncertaintyViewModel? horizontalPositionUncertainty {
             get {
                 return _horizontalPositionUncertainty;
-                }
+            }
 
             set {
                 SetValue(ref _horizontalPositionUncertainty, value);
-                }
             }
+        }
 
         private verticalUncertaintyViewModel? _verticalUncertainty;
         [Category("spatialAccuracy")]
@@ -4042,54 +4012,52 @@ namespace S100Framework.WPF.ViewModel.S131
         public verticalUncertaintyViewModel? verticalUncertainty {
             get {
                 return _verticalUncertainty;
-                }
+            }
 
             set {
                 SetValue(ref _verticalUncertainty, value);
-                }
             }
+        }
 
         public void Load(DomainModel.S131.ComplexAttributes.spatialAccuracy instance) {
             fixedDateRange = new();
             if (instance.fixedDateRange != null) {
                 fixedDateRange = new();
                 fixedDateRange.Load(instance.fixedDateRange);
-                }
+            }
 
             horizontalPositionUncertainty = new();
             if (instance.horizontalPositionUncertainty != null) {
                 horizontalPositionUncertainty = new();
                 horizontalPositionUncertainty.Load(instance.horizontalPositionUncertainty);
-                }
+            }
 
             verticalUncertainty = new();
             if (instance.verticalUncertainty != null) {
                 verticalUncertainty = new();
                 verticalUncertainty.Load(instance.verticalUncertainty);
-                }
             }
+        }
 
         public override string Serialize() {
-            var instance = new DomainModel.S131.ComplexAttributes.spatialAccuracy
-                {
+            var instance = new DomainModel.S131.ComplexAttributes.spatialAccuracy {
                 fixedDateRange = this.fixedDateRange?.Model,
                 horizontalPositionUncertainty = this.horizontalPositionUncertainty?.Model,
                 verticalUncertainty = this.verticalUncertainty?.Model,
-                };
+            };
             return System.Text.Json.JsonSerializer.Serialize(instance);
-            }
+        }
 
         [Browsable(false)]
-        public DomainModel.S131.ComplexAttributes.spatialAccuracy Model => new()
-            {
+        public DomainModel.S131.ComplexAttributes.spatialAccuracy Model => new() {
             fixedDateRange = this._fixedDateRange?.Model,
             horizontalPositionUncertainty = this._horizontalPositionUncertainty?.Model,
             verticalUncertainty = this._verticalUncertainty?.Model,
-            };
+        };
 
         public spatialAccuracyViewModel() : base() {
-            }
         }
+    }
 
 #pragma warning disable CS8981 // The type name only contains lower-cased ascii characters. Such names may become reserved for the language.
 
@@ -4104,48 +4072,48 @@ namespace S100Framework.WPF.ViewModel.S131
         public categoryOfCommunicationPreference? categoryOfCommunicationPreference {
             get {
                 return _categoryOfCommunicationPreference;
-                }
+            }
 
             set {
                 SetValue(ref _categoryOfCommunicationPreference, value);
-                }
             }
+        }
 
         private String _telecommunicationIdentifier = string.Empty;
         [Category("telecommunications")]
         public String telecommunicationIdentifier {
             get {
                 return _telecommunicationIdentifier;
-                }
+            }
 
             set {
                 SetValue(ref _telecommunicationIdentifier, value);
-                }
             }
+        }
 
         private String _telecommunicationCarrier = string.Empty;
         [Category("telecommunications")]
         public String telecommunicationCarrier {
             get {
                 return _telecommunicationCarrier;
-                }
+            }
 
             set {
                 SetValue(ref _telecommunicationCarrier, value);
-                }
             }
+        }
 
         private String _contactInstructions = string.Empty;
         [Category("telecommunications")]
         public String contactInstructions {
             get {
                 return _contactInstructions;
-                }
+            }
 
             set {
                 SetValue(ref _contactInstructions, value);
-                }
             }
+        }
 
         [Category("telecommunications")]
         public ObservableCollection<telecommunicationService> telecommunicationService { get; set; } = new();
@@ -4156,12 +4124,12 @@ namespace S100Framework.WPF.ViewModel.S131
         public scheduleByDayOfWeekViewModel? scheduleByDayOfWeek {
             get {
                 return _scheduleByDayOfWeek;
-                }
+            }
 
             set {
                 SetValue(ref _scheduleByDayOfWeek, value);
-                }
             }
+        }
 
         public void Load(DomainModel.S131.ComplexAttributes.telecommunications instance) {
             categoryOfCommunicationPreference = instance.categoryOfCommunicationPreference;
@@ -4176,56 +4144,55 @@ namespace S100Framework.WPF.ViewModel.S131
             if (instance.scheduleByDayOfWeek != null) {
                 scheduleByDayOfWeek = new();
                 scheduleByDayOfWeek.Load(instance.scheduleByDayOfWeek);
-                }
             }
+        }
 
         public override string Serialize() {
-            var instance = new DomainModel.S131.ComplexAttributes.telecommunications
-                {
+            var instance = new DomainModel.S131.ComplexAttributes.telecommunications {
                 categoryOfCommunicationPreference = this.categoryOfCommunicationPreference,
                 telecommunicationIdentifier = this.telecommunicationIdentifier,
                 telecommunicationCarrier = this.telecommunicationCarrier,
                 contactInstructions = this.contactInstructions,
                 telecommunicationService = this.telecommunicationService.ToList(),
                 scheduleByDayOfWeek = this.scheduleByDayOfWeek?.Model,
-                };
+            };
             return System.Text.Json.JsonSerializer.Serialize(instance);
-            }
+        }
 
         [Browsable(false)]
-        public DomainModel.S131.ComplexAttributes.telecommunications Model => new()
-            {
+        public DomainModel.S131.ComplexAttributes.telecommunications Model => new() {
             categoryOfCommunicationPreference = this._categoryOfCommunicationPreference,
             telecommunicationIdentifier = this._telecommunicationIdentifier,
             telecommunicationCarrier = this._telecommunicationCarrier,
             contactInstructions = this._contactInstructions,
             telecommunicationService = this.telecommunicationService.ToList(),
             scheduleByDayOfWeek = this._scheduleByDayOfWeek?.Model,
-            };
+        };
 
         public telecommunicationsViewModel() : base() {
             telecommunicationService.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
                 OnPropertyChanged(nameof(telecommunicationService));
             };
-            }
         }
+    }
 
     [CategoryOrder("generalHarbourInformation", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class generalHarbourInformationViewModel : ViewModelBase {
+    public partial class generalHarbourInformationViewModel : ViewModelBase
+    {
         private generalPortDescriptionViewModel? _generalPortDescription;
         [Category("generalHarbourInformation")]
         [Xceed.Wpf.Toolkit.PropertyGrid.Attributes.ExpandableObject]
         public generalPortDescriptionViewModel? generalPortDescription {
             get {
                 return _generalPortDescription;
-                }
+            }
 
             set {
                 SetValue(ref _generalPortDescription, value);
-                }
             }
+        }
 
         private facilitiesLayoutDescriptionViewModel? _facilitiesLayoutDescription;
         [Category("generalHarbourInformation")]
@@ -4233,12 +4200,12 @@ namespace S100Framework.WPF.ViewModel.S131
         public facilitiesLayoutDescriptionViewModel? facilitiesLayoutDescription {
             get {
                 return _facilitiesLayoutDescription;
-                }
+            }
 
             set {
                 SetValue(ref _facilitiesLayoutDescription, value);
-                }
             }
+        }
 
         private limitsDescriptionViewModel? _limitsDescription;
         [Category("generalHarbourInformation")]
@@ -4246,12 +4213,12 @@ namespace S100Framework.WPF.ViewModel.S131
         public limitsDescriptionViewModel? limitsDescription {
             get {
                 return _limitsDescription;
-                }
+            }
 
             set {
                 SetValue(ref _limitsDescription, value);
-                }
             }
+        }
 
         private constructionInformationViewModel? _constructionInformation;
         [Category("generalHarbourInformation")]
@@ -4259,12 +4226,12 @@ namespace S100Framework.WPF.ViewModel.S131
         public constructionInformationViewModel? constructionInformation {
             get {
                 return _constructionInformation;
-                }
+            }
 
             set {
                 SetValue(ref _constructionInformation, value);
-                }
             }
+        }
 
         private cargoServicesDescriptionViewModel? _cargoServicesDescription;
         [Category("generalHarbourInformation")]
@@ -4272,12 +4239,12 @@ namespace S100Framework.WPF.ViewModel.S131
         public cargoServicesDescriptionViewModel? cargoServicesDescription {
             get {
                 return _cargoServicesDescription;
-                }
+            }
 
             set {
                 SetValue(ref _cargoServicesDescription, value);
-                }
             }
+        }
 
         [Category("generalHarbourInformation")]
         public ObservableCollection<weatherResource> weatherResource { get; set; } = new();
@@ -4287,84 +4254,83 @@ namespace S100Framework.WPF.ViewModel.S131
             if (instance.generalPortDescription != null) {
                 generalPortDescription = new();
                 generalPortDescription.Load(instance.generalPortDescription);
-                }
+            }
 
             facilitiesLayoutDescription = new();
             if (instance.facilitiesLayoutDescription != null) {
                 facilitiesLayoutDescription = new();
                 facilitiesLayoutDescription.Load(instance.facilitiesLayoutDescription);
-                }
+            }
 
             limitsDescription = new();
             if (instance.limitsDescription != null) {
                 limitsDescription = new();
                 limitsDescription.Load(instance.limitsDescription);
-                }
+            }
 
             constructionInformation = new();
             if (instance.constructionInformation != null) {
                 constructionInformation = new();
                 constructionInformation.Load(instance.constructionInformation);
-                }
+            }
 
             cargoServicesDescription = new();
             if (instance.cargoServicesDescription != null) {
                 cargoServicesDescription = new();
                 cargoServicesDescription.Load(instance.cargoServicesDescription);
-                }
+            }
 
             weatherResource.Clear();
             if (instance.weatherResource is not null)
                 foreach (var e in instance.weatherResource)
                     weatherResource.Add(e);
-            }
+        }
 
         public override string Serialize() {
-            var instance = new DomainModel.S131.ComplexAttributes.generalHarbourInformation
-                {
+            var instance = new DomainModel.S131.ComplexAttributes.generalHarbourInformation {
                 generalPortDescription = this.generalPortDescription?.Model,
                 facilitiesLayoutDescription = this.facilitiesLayoutDescription?.Model,
                 limitsDescription = this.limitsDescription?.Model,
                 constructionInformation = this.constructionInformation?.Model,
                 cargoServicesDescription = this.cargoServicesDescription?.Model,
                 weatherResource = this.weatherResource.ToList(),
-                };
+            };
             return System.Text.Json.JsonSerializer.Serialize(instance);
-            }
+        }
 
         [Browsable(false)]
-        public DomainModel.S131.ComplexAttributes.generalHarbourInformation Model => new()
-            {
+        public DomainModel.S131.ComplexAttributes.generalHarbourInformation Model => new() {
             generalPortDescription = this._generalPortDescription?.Model,
             facilitiesLayoutDescription = this._facilitiesLayoutDescription?.Model,
             limitsDescription = this._limitsDescription?.Model,
             constructionInformation = this._constructionInformation?.Model,
             cargoServicesDescription = this._cargoServicesDescription?.Model,
             weatherResource = this.weatherResource.ToList(),
-            };
+        };
 
         public generalHarbourInformationViewModel() : base() {
             weatherResource.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
                 OnPropertyChanged(nameof(weatherResource));
             };
-            }
         }
+    }
 
     [CategoryOrder("Applicability", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class ApplicabilityViewModel : ViewModelBase {
+    public partial class ApplicabilityViewModel : ViewModelBase
+    {
         private Boolean? _inBallast = default;
         [Category("Applicability")]
         public Boolean? inBallast {
             get {
                 return _inBallast;
-                }
+            }
 
             set {
                 SetValue(ref _inBallast, value);
-                }
             }
+        }
 
         [Category("Applicability")]
         public ObservableCollection<categoryOfCargo> categoryOfCargo { get; set; } = new();
@@ -4379,60 +4345,60 @@ namespace S100Framework.WPF.ViewModel.S131
         public categoryOfVessel? categoryOfVessel {
             get {
                 return _categoryOfVessel;
-                }
+            }
 
             set {
                 SetValue(ref _categoryOfVessel, value);
-                }
             }
+        }
 
         private categoryOfVesselRegistry? _categoryOfVesselRegistry = default;
         [Category("Applicability")]
         public categoryOfVesselRegistry? categoryOfVesselRegistry {
             get {
                 return _categoryOfVesselRegistry;
-                }
+            }
 
             set {
                 SetValue(ref _categoryOfVesselRegistry, value);
-                }
             }
+        }
 
         private logicalConnectives? _logicalConnectives = default;
         [Category("Applicability")]
         public logicalConnectives? logicalConnectives {
             get {
                 return _logicalConnectives;
-                }
+            }
 
             set {
                 SetValue(ref _logicalConnectives, value);
-                }
             }
+        }
 
         private Int32? _thicknessOfIceCapability = default;
         [Category("Applicability")]
         public Int32? thicknessOfIceCapability {
             get {
                 return _thicknessOfIceCapability;
-                }
+            }
 
             set {
                 SetValue(ref _thicknessOfIceCapability, value);
-                }
             }
+        }
 
         private String _vesselPerformance = string.Empty;
         [Category("Applicability")]
         public String vesselPerformance {
             get {
                 return _vesselPerformance;
-                }
+            }
 
             set {
                 SetValue(ref _vesselPerformance, value);
-                }
             }
+        }
 
         [Category("Applicability")]
         public ObservableCollection<information> information { get; set; } = new();
@@ -4449,12 +4415,12 @@ namespace S100Framework.WPF.ViewModel.S131
         public fixedDateRangeViewModel? fixedDateRange {
             get {
                 return _fixedDateRange;
-                }
+            }
 
             set {
                 SetValue(ref _fixedDateRange, value);
-                }
             }
+        }
 
         [Category("InformationType")]
         public ObservableCollection<periodicDateRange> periodicDateRange { get; set; } = new();
@@ -4467,42 +4433,41 @@ namespace S100Framework.WPF.ViewModel.S131
         public String source {
             get {
                 return _source;
-                }
+            }
 
             set {
                 SetValue(ref _source, value);
-                }
             }
+        }
 
         private sourceType? _sourceType = default;
         [Category("InformationType")]
         public sourceType? sourceType {
             get {
                 return _sourceType;
-                }
+            }
 
             set {
                 SetValue(ref _sourceType, value);
-                }
             }
+        }
 
         private DateOnly? _reportedDate = default;
         [Category("InformationType")]
         public DateOnly? reportedDate {
             get {
                 return _reportedDate;
-                }
+            }
 
             set {
                 SetValue(ref _reportedDate, value);
-                }
             }
+        }
 
-        public class ApplicabilityRefIdViewModel : InformationRefIdViewModel {
+        public class ApplicabilityRefIdViewModel : InformationRefIdViewModel
+        {
             public override string[] AssociationTypes => ["Applicability"];
-
-            public override string ToString() => "RefId";
-            }
+        }
 
         [Browsable(false)]
         public categoryOfVessel[] categoryOfVesselList => CodeList.categoryOfVessels.ToArray();
@@ -4538,7 +4503,7 @@ namespace S100Framework.WPF.ViewModel.S131
             if (instance.fixedDateRange != null) {
                 fixedDateRange = new();
                 fixedDateRange.Load(instance.fixedDateRange);
-                }
+            }
 
             periodicDateRange.Clear();
             if (instance.periodicDateRange is not null)
@@ -4551,11 +4516,10 @@ namespace S100Framework.WPF.ViewModel.S131
             source = instance.source;
             sourceType = instance.sourceType;
             reportedDate = instance.reportedDate;
-            }
+        }
 
         public override string Serialize() {
-            var instance = new DomainModel.S131.InformationTypes.Applicability
-                {
+            var instance = new DomainModel.S131.InformationTypes.Applicability {
                 inBallast = this.inBallast,
                 categoryOfCargo = this.categoryOfCargo.ToList(),
                 categoryOfDangerousOrHazardousCargo = this.categoryOfDangerousOrHazardousCargo.ToList(),
@@ -4573,13 +4537,12 @@ namespace S100Framework.WPF.ViewModel.S131
                 source = this.source,
                 sourceType = this.sourceType,
                 reportedDate = this.reportedDate,
-                };
+            };
             return System.Text.Json.JsonSerializer.Serialize(instance);
-            }
+        }
 
         [Browsable(false)]
-        public DomainModel.S131.InformationTypes.Applicability Model => new()
-            {
+        public DomainModel.S131.InformationTypes.Applicability Model => new() {
             inBallast = this._inBallast,
             categoryOfCargo = this.categoryOfCargo.ToList(),
             categoryOfDangerousOrHazardousCargo = this.categoryOfDangerousOrHazardousCargo.ToList(),
@@ -4597,7 +4560,7 @@ namespace S100Framework.WPF.ViewModel.S131
             source = this._source,
             sourceType = this._sourceType,
             reportedDate = this._reportedDate,
-            };
+        };
 
         public ApplicabilityViewModel() : base() {
             categoryOfCargo.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
@@ -4621,24 +4584,25 @@ namespace S100Framework.WPF.ViewModel.S131
             graphic.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
                 OnPropertyChanged(nameof(graphic));
             };
-            }
         }
+    }
 
     [CategoryOrder("Authority", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class AuthorityViewModel : ViewModelBase {
+    public partial class AuthorityViewModel : ViewModelBase
+    {
         private categoryOfAuthority _categoryOfAuthority;
         [Category("Authority")]
         public categoryOfAuthority categoryOfAuthority {
             get {
                 return _categoryOfAuthority;
-                }
+            }
 
             set {
                 SetValue(ref _categoryOfAuthority, value);
-                }
             }
+        }
 
         private textContentViewModel? _textContent;
         [Category("Authority")]
@@ -4646,12 +4610,12 @@ namespace S100Framework.WPF.ViewModel.S131
         public textContentViewModel? textContent {
             get {
                 return _textContent;
-                }
+            }
 
             set {
                 SetValue(ref _textContent, value);
-                }
             }
+        }
 
         [Category("InformationType")]
         public ObservableCollection<featureName> featureName { get; set; } = new();
@@ -4662,12 +4626,12 @@ namespace S100Framework.WPF.ViewModel.S131
         public fixedDateRangeViewModel? fixedDateRange {
             get {
                 return _fixedDateRange;
-                }
+            }
 
             set {
                 SetValue(ref _fixedDateRange, value);
-                }
             }
+        }
 
         [Category("InformationType")]
         public ObservableCollection<periodicDateRange> periodicDateRange { get; set; } = new();
@@ -4680,42 +4644,41 @@ namespace S100Framework.WPF.ViewModel.S131
         public String source {
             get {
                 return _source;
-                }
+            }
 
             set {
                 SetValue(ref _source, value);
-                }
             }
+        }
 
         private sourceType? _sourceType = default;
         [Category("InformationType")]
         public sourceType? sourceType {
             get {
                 return _sourceType;
-                }
+            }
 
             set {
                 SetValue(ref _sourceType, value);
-                }
             }
+        }
 
         private DateOnly? _reportedDate = default;
         [Category("InformationType")]
         public DateOnly? reportedDate {
             get {
                 return _reportedDate;
-                }
+            }
 
             set {
                 SetValue(ref _reportedDate, value);
-                }
             }
+        }
 
-        public class AuthorityRefIdViewModel : InformationRefIdViewModel {
+        public class AuthorityRefIdViewModel : InformationRefIdViewModel
+        {
             public override string[] AssociationTypes => ["Authority"];
-
-            public override string ToString() => "RefId";
-            }
+        }
 
         public void Load(DomainModel.S131.InformationTypes.Authority instance) {
             categoryOfAuthority = instance.categoryOfAuthority;
@@ -4723,7 +4686,7 @@ namespace S100Framework.WPF.ViewModel.S131
             if (instance.textContent != null) {
                 textContent = new();
                 textContent.Load(instance.textContent);
-                }
+            }
 
             featureName.Clear();
             if (instance.featureName is not null)
@@ -4733,7 +4696,7 @@ namespace S100Framework.WPF.ViewModel.S131
             if (instance.fixedDateRange != null) {
                 fixedDateRange = new();
                 fixedDateRange.Load(instance.fixedDateRange);
-                }
+            }
 
             periodicDateRange.Clear();
             if (instance.periodicDateRange is not null)
@@ -4746,11 +4709,10 @@ namespace S100Framework.WPF.ViewModel.S131
             source = instance.source;
             sourceType = instance.sourceType;
             reportedDate = instance.reportedDate;
-            }
+        }
 
         public override string Serialize() {
-            var instance = new DomainModel.S131.InformationTypes.Authority
-                {
+            var instance = new DomainModel.S131.InformationTypes.Authority {
                 categoryOfAuthority = this.categoryOfAuthority,
                 textContent = this.textContent?.Model,
                 featureName = this.featureName.ToList(),
@@ -4760,13 +4722,12 @@ namespace S100Framework.WPF.ViewModel.S131
                 source = this.source,
                 sourceType = this.sourceType,
                 reportedDate = this.reportedDate,
-                };
+            };
             return System.Text.Json.JsonSerializer.Serialize(instance);
-            }
+        }
 
         [Browsable(false)]
-        public DomainModel.S131.InformationTypes.Authority Model => new()
-            {
+        public DomainModel.S131.InformationTypes.Authority Model => new() {
             categoryOfAuthority = this._categoryOfAuthority,
             textContent = this._textContent?.Model,
             featureName = this.featureName.ToList(),
@@ -4776,7 +4737,7 @@ namespace S100Framework.WPF.ViewModel.S131
             source = this._source,
             sourceType = this._sourceType,
             reportedDate = this._reportedDate,
-            };
+        };
 
         public AuthorityViewModel() : base() {
             featureName.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
@@ -4788,13 +4749,14 @@ namespace S100Framework.WPF.ViewModel.S131
             graphic.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
                 OnPropertyChanged(nameof(graphic));
             };
-            }
         }
+    }
 
     [CategoryOrder("AvailablePortServices", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class AvailablePortServicesViewModel : ViewModelBase {
+    public partial class AvailablePortServicesViewModel : ViewModelBase
+    {
         [Category("AvailablePortServices")]
         public ObservableCollection<firefightingService> firefightingService { get; set; } = new();
 
@@ -4837,12 +4799,12 @@ namespace S100Framework.WPF.ViewModel.S131
         public String tugInformation {
             get {
                 return _tugInformation;
-                }
+            }
 
             set {
                 SetValue(ref _tugInformation, value);
-                }
             }
+        }
 
         [Category("AvailablePortServices")]
         public ObservableCollection<textContent> textContent { get; set; } = new();
@@ -4856,12 +4818,12 @@ namespace S100Framework.WPF.ViewModel.S131
         public fixedDateRangeViewModel? fixedDateRange {
             get {
                 return _fixedDateRange;
-                }
+            }
 
             set {
                 SetValue(ref _fixedDateRange, value);
-                }
             }
+        }
 
         [Category("InformationType")]
         public ObservableCollection<periodicDateRange> periodicDateRange { get; set; } = new();
@@ -4874,42 +4836,41 @@ namespace S100Framework.WPF.ViewModel.S131
         public String source {
             get {
                 return _source;
-                }
+            }
 
             set {
                 SetValue(ref _source, value);
-                }
             }
+        }
 
         private sourceType? _sourceType = default;
         [Category("InformationType")]
         public sourceType? sourceType {
             get {
                 return _sourceType;
-                }
+            }
 
             set {
                 SetValue(ref _sourceType, value);
-                }
             }
+        }
 
         private DateOnly? _reportedDate = default;
         [Category("InformationType")]
         public DateOnly? reportedDate {
             get {
                 return _reportedDate;
-                }
+            }
 
             set {
                 SetValue(ref _reportedDate, value);
-                }
             }
+        }
 
-        public class AvailablePortServicesRefIdViewModel : InformationRefIdViewModel {
+        public class AvailablePortServicesRefIdViewModel : InformationRefIdViewModel
+        {
             public override string[] AssociationTypes => ["AvailablePortServices"];
-
-            public override string ToString() => "RefId";
-            }
+        }
 
         [Browsable(false)]
         public transportConnection[] transportConnectionList => CodeList.transportConnections.ToArray();
@@ -4975,7 +4936,7 @@ namespace S100Framework.WPF.ViewModel.S131
             if (instance.fixedDateRange != null) {
                 fixedDateRange = new();
                 fixedDateRange.Load(instance.fixedDateRange);
-                }
+            }
 
             periodicDateRange.Clear();
             if (instance.periodicDateRange is not null)
@@ -4988,11 +4949,10 @@ namespace S100Framework.WPF.ViewModel.S131
             source = instance.source;
             sourceType = instance.sourceType;
             reportedDate = instance.reportedDate;
-            }
+        }
 
         public override string Serialize() {
-            var instance = new DomainModel.S131.InformationTypes.AvailablePortServices
-                {
+            var instance = new DomainModel.S131.InformationTypes.AvailablePortServices {
                 firefightingService = this.firefightingService.ToList(),
                 medicalService = this.medicalService.ToList(),
                 repairService = this.repairService.ToList(),
@@ -5013,13 +4973,12 @@ namespace S100Framework.WPF.ViewModel.S131
                 source = this.source,
                 sourceType = this.sourceType,
                 reportedDate = this.reportedDate,
-                };
+            };
             return System.Text.Json.JsonSerializer.Serialize(instance);
-            }
+        }
 
         [Browsable(false)]
-        public DomainModel.S131.InformationTypes.AvailablePortServices Model => new()
-            {
+        public DomainModel.S131.InformationTypes.AvailablePortServices Model => new() {
             firefightingService = this.firefightingService.ToList(),
             medicalService = this.medicalService.ToList(),
             repairService = this.repairService.ToList(),
@@ -5040,7 +4999,7 @@ namespace S100Framework.WPF.ViewModel.S131
             source = this._source,
             sourceType = this._sourceType,
             reportedDate = this._reportedDate,
-            };
+        };
 
         public AvailablePortServicesViewModel() : base() {
             firefightingService.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
@@ -5088,48 +5047,49 @@ namespace S100Framework.WPF.ViewModel.S131
             graphic.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
                 OnPropertyChanged(nameof(graphic));
             };
-            }
         }
+    }
 
     [CategoryOrder("ContactDetails", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class ContactDetailsViewModel : ViewModelBase {
+    public partial class ContactDetailsViewModel : ViewModelBase
+    {
         private String _callName = string.Empty;
         [Category("ContactDetails")]
         public String callName {
             get {
                 return _callName;
-                }
+            }
 
             set {
                 SetValue(ref _callName, value);
-                }
             }
+        }
 
         private String _callSign = string.Empty;
         [Category("ContactDetails")]
         public String callSign {
             get {
                 return _callSign;
-                }
+            }
 
             set {
                 SetValue(ref _callSign, value);
-                }
             }
+        }
 
         private categoryOfCommunicationPreference? _categoryOfCommunicationPreference = default;
         [Category("ContactDetails")]
         public categoryOfCommunicationPreference? categoryOfCommunicationPreference {
             get {
                 return _categoryOfCommunicationPreference;
-                }
+            }
 
             set {
                 SetValue(ref _categoryOfCommunicationPreference, value);
-                }
             }
+        }
 
         [Category("ContactDetails")]
         public ObservableCollection<String> communicationChannel { get; set; } = new();
@@ -5142,12 +5102,12 @@ namespace S100Framework.WPF.ViewModel.S131
         public String contactInstructions {
             get {
                 return _contactInstructions;
-                }
+            }
 
             set {
                 SetValue(ref _contactInstructions, value);
-                }
             }
+        }
 
         [Category("ContactDetails")]
         public ObservableCollection<Int32> signalFrequency { get; set; } = new();
@@ -5163,12 +5123,12 @@ namespace S100Framework.WPF.ViewModel.S131
         public String mMSICode {
             get {
                 return _mMSICode;
-                }
+            }
 
             set {
                 SetValue(ref _mMSICode, value);
-                }
             }
+        }
 
         [Category("ContactDetails")]
         public ObservableCollection<onlineResource> onlineResource { get; set; } = new();
@@ -5185,12 +5145,12 @@ namespace S100Framework.WPF.ViewModel.S131
         public fixedDateRangeViewModel? fixedDateRange {
             get {
                 return _fixedDateRange;
-                }
+            }
 
             set {
                 SetValue(ref _fixedDateRange, value);
-                }
             }
+        }
 
         [Category("InformationType")]
         public ObservableCollection<periodicDateRange> periodicDateRange { get; set; } = new();
@@ -5203,42 +5163,41 @@ namespace S100Framework.WPF.ViewModel.S131
         public String source {
             get {
                 return _source;
-                }
+            }
 
             set {
                 SetValue(ref _source, value);
-                }
             }
+        }
 
         private sourceType? _sourceType = default;
         [Category("InformationType")]
         public sourceType? sourceType {
             get {
                 return _sourceType;
-                }
+            }
 
             set {
                 SetValue(ref _sourceType, value);
-                }
             }
+        }
 
         private DateOnly? _reportedDate = default;
         [Category("InformationType")]
         public DateOnly? reportedDate {
             get {
                 return _reportedDate;
-                }
+            }
 
             set {
                 SetValue(ref _reportedDate, value);
-                }
             }
+        }
 
-        public class ContactDetailsRefIdViewModel : InformationRefIdViewModel {
+        public class ContactDetailsRefIdViewModel : InformationRefIdViewModel
+        {
             public override string[] AssociationTypes => ["ContactDetails"];
-
-            public override string ToString() => "RefId";
-            }
+        }
 
         public void Load(DomainModel.S131.InformationTypes.ContactDetails instance) {
             callName = instance.callName;
@@ -5282,7 +5241,7 @@ namespace S100Framework.WPF.ViewModel.S131
             if (instance.fixedDateRange != null) {
                 fixedDateRange = new();
                 fixedDateRange.Load(instance.fixedDateRange);
-                }
+            }
 
             periodicDateRange.Clear();
             if (instance.periodicDateRange is not null)
@@ -5295,11 +5254,10 @@ namespace S100Framework.WPF.ViewModel.S131
             source = instance.source;
             sourceType = instance.sourceType;
             reportedDate = instance.reportedDate;
-            }
+        }
 
         public override string Serialize() {
-            var instance = new DomainModel.S131.InformationTypes.ContactDetails
-                {
+            var instance = new DomainModel.S131.InformationTypes.ContactDetails {
                 callName = this.callName,
                 callSign = this.callSign,
                 categoryOfCommunicationPreference = this.categoryOfCommunicationPreference,
@@ -5319,13 +5277,12 @@ namespace S100Framework.WPF.ViewModel.S131
                 source = this.source,
                 sourceType = this.sourceType,
                 reportedDate = this.reportedDate,
-                };
+            };
             return System.Text.Json.JsonSerializer.Serialize(instance);
-            }
+        }
 
         [Browsable(false)]
-        public DomainModel.S131.InformationTypes.ContactDetails Model => new()
-            {
+        public DomainModel.S131.InformationTypes.ContactDetails Model => new() {
             callName = this._callName,
             callSign = this._callSign,
             categoryOfCommunicationPreference = this._categoryOfCommunicationPreference,
@@ -5345,7 +5302,7 @@ namespace S100Framework.WPF.ViewModel.S131
             source = this._source,
             sourceType = this._sourceType,
             reportedDate = this._reportedDate,
-            };
+        };
 
         public ContactDetailsViewModel() : base() {
             communicationChannel.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
@@ -5378,24 +5335,25 @@ namespace S100Framework.WPF.ViewModel.S131
             graphic.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
                 OnPropertyChanged(nameof(graphic));
             };
-            }
         }
+    }
 
     [CategoryOrder("Entrance", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class EntranceViewModel : ViewModelBase {
+    public partial class EntranceViewModel : ViewModelBase
+    {
         private String _entranceDescription = string.Empty;
         [Category("Entrance")]
         public String entranceDescription {
             get {
                 return _entranceDescription;
-                }
+            }
 
             set {
                 SetValue(ref _entranceDescription, value);
-                }
             }
+        }
 
         [Category("Entrance")]
         public ObservableCollection<String> associatedFeatureName { get; set; } = new();
@@ -5405,24 +5363,24 @@ namespace S100Framework.WPF.ViewModel.S131
         public String localKnowledgeDescription {
             get {
                 return _localKnowledgeDescription;
-                }
+            }
 
             set {
                 SetValue(ref _localKnowledgeDescription, value);
-                }
             }
+        }
 
         private String _approachDescription = string.Empty;
         [Category("Entrance")]
         public String approachDescription {
             get {
                 return _approachDescription;
-                }
+            }
 
             set {
                 SetValue(ref _approachDescription, value);
-                }
             }
+        }
 
         [Category("Entrance")]
         public ObservableCollection<markedBy> markedBy { get; set; } = new();
@@ -5451,12 +5409,12 @@ namespace S100Framework.WPF.ViewModel.S131
         public fixedDateRangeViewModel? fixedDateRange {
             get {
                 return _fixedDateRange;
-                }
+            }
 
             set {
                 SetValue(ref _fixedDateRange, value);
-                }
             }
+        }
 
         [Category("InformationType")]
         public ObservableCollection<periodicDateRange> periodicDateRange { get; set; } = new();
@@ -5469,42 +5427,41 @@ namespace S100Framework.WPF.ViewModel.S131
         public String source {
             get {
                 return _source;
-                }
+            }
 
             set {
                 SetValue(ref _source, value);
-                }
             }
+        }
 
         private sourceType? _sourceType = default;
         [Category("InformationType")]
         public sourceType? sourceType {
             get {
                 return _sourceType;
-                }
+            }
 
             set {
                 SetValue(ref _sourceType, value);
-                }
             }
+        }
 
         private DateOnly? _reportedDate = default;
         [Category("InformationType")]
         public DateOnly? reportedDate {
             get {
                 return _reportedDate;
-                }
+            }
 
             set {
                 SetValue(ref _reportedDate, value);
-                }
             }
+        }
 
-        public class EntranceRefIdViewModel : InformationRefIdViewModel {
+        public class EntranceRefIdViewModel : InformationRefIdViewModel
+        {
             public override string[] AssociationTypes => ["Entrance"];
-
-            public override string ToString() => "RefId";
-            }
+        }
 
         public void Load(DomainModel.S131.InformationTypes.Entrance instance) {
             entranceDescription = instance.entranceDescription;
@@ -5546,7 +5503,7 @@ namespace S100Framework.WPF.ViewModel.S131
             if (instance.fixedDateRange != null) {
                 fixedDateRange = new();
                 fixedDateRange.Load(instance.fixedDateRange);
-                }
+            }
 
             periodicDateRange.Clear();
             if (instance.periodicDateRange is not null)
@@ -5559,11 +5516,10 @@ namespace S100Framework.WPF.ViewModel.S131
             source = instance.source;
             sourceType = instance.sourceType;
             reportedDate = instance.reportedDate;
-            }
+        }
 
         public override string Serialize() {
-            var instance = new DomainModel.S131.InformationTypes.Entrance
-                {
+            var instance = new DomainModel.S131.InformationTypes.Entrance {
                 entranceDescription = this.entranceDescription,
                 associatedFeatureName = this.associatedFeatureName.ToList(),
                 localKnowledgeDescription = this.localKnowledgeDescription,
@@ -5581,13 +5537,12 @@ namespace S100Framework.WPF.ViewModel.S131
                 source = this.source,
                 sourceType = this.sourceType,
                 reportedDate = this.reportedDate,
-                };
+            };
             return System.Text.Json.JsonSerializer.Serialize(instance);
-            }
+        }
 
         [Browsable(false)]
-        public DomainModel.S131.InformationTypes.Entrance Model => new()
-            {
+        public DomainModel.S131.InformationTypes.Entrance Model => new() {
             entranceDescription = this._entranceDescription,
             associatedFeatureName = this.associatedFeatureName.ToList(),
             localKnowledgeDescription = this._localKnowledgeDescription,
@@ -5605,7 +5560,7 @@ namespace S100Framework.WPF.ViewModel.S131
             source = this._source,
             sourceType = this._sourceType,
             reportedDate = this._reportedDate,
-            };
+        };
 
         public EntranceViewModel() : base() {
             associatedFeatureName.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
@@ -5638,24 +5593,25 @@ namespace S100Framework.WPF.ViewModel.S131
             graphic.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
                 OnPropertyChanged(nameof(graphic));
             };
-            }
         }
+    }
 
     [CategoryOrder("NauticalInformation", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class NauticalInformationViewModel : ViewModelBase {
+    public partial class NauticalInformationViewModel : ViewModelBase
+    {
         private categoryOfAuthority? _categoryOfAuthority = default;
         [Category("AbstractRxN")]
         public categoryOfAuthority? categoryOfAuthority {
             get {
                 return _categoryOfAuthority;
-                }
+            }
 
             set {
                 SetValue(ref _categoryOfAuthority, value);
-                }
             }
+        }
 
         [Category("AbstractRxN")]
         public ObservableCollection<rxNCode> rxNCode { get; set; } = new();
@@ -5672,12 +5628,12 @@ namespace S100Framework.WPF.ViewModel.S131
         public fixedDateRangeViewModel? fixedDateRange {
             get {
                 return _fixedDateRange;
-                }
+            }
 
             set {
                 SetValue(ref _fixedDateRange, value);
-                }
             }
+        }
 
         [Category("InformationType")]
         public ObservableCollection<periodicDateRange> periodicDateRange { get; set; } = new();
@@ -5690,42 +5646,41 @@ namespace S100Framework.WPF.ViewModel.S131
         public String source {
             get {
                 return _source;
-                }
+            }
 
             set {
                 SetValue(ref _source, value);
-                }
             }
+        }
 
         private sourceType? _sourceType = default;
         [Category("InformationType")]
         public sourceType? sourceType {
             get {
                 return _sourceType;
-                }
+            }
 
             set {
                 SetValue(ref _sourceType, value);
-                }
             }
+        }
 
         private DateOnly? _reportedDate = default;
         [Category("InformationType")]
         public DateOnly? reportedDate {
             get {
                 return _reportedDate;
-                }
+            }
 
             set {
                 SetValue(ref _reportedDate, value);
-                }
             }
+        }
 
-        public class NauticalInformationRefIdViewModel : InformationRefIdViewModel {
+        public class NauticalInformationRefIdViewModel : InformationRefIdViewModel
+        {
             public override string[] AssociationTypes => ["NauticalInformation"];
-
-            public override string ToString() => "RefId";
-            }
+        }
 
         public void Load(DomainModel.S131.InformationTypes.NauticalInformation instance) {
             categoryOfAuthority = instance.categoryOfAuthority;
@@ -5745,7 +5700,7 @@ namespace S100Framework.WPF.ViewModel.S131
             if (instance.fixedDateRange != null) {
                 fixedDateRange = new();
                 fixedDateRange.Load(instance.fixedDateRange);
-                }
+            }
 
             periodicDateRange.Clear();
             if (instance.periodicDateRange is not null)
@@ -5758,11 +5713,10 @@ namespace S100Framework.WPF.ViewModel.S131
             source = instance.source;
             sourceType = instance.sourceType;
             reportedDate = instance.reportedDate;
-            }
+        }
 
         public override string Serialize() {
-            var instance = new DomainModel.S131.InformationTypes.NauticalInformation
-                {
+            var instance = new DomainModel.S131.InformationTypes.NauticalInformation {
                 categoryOfAuthority = this.categoryOfAuthority,
                 rxNCode = this.rxNCode.ToList(),
                 textContent = this.textContent.ToList(),
@@ -5773,13 +5727,12 @@ namespace S100Framework.WPF.ViewModel.S131
                 source = this.source,
                 sourceType = this.sourceType,
                 reportedDate = this.reportedDate,
-                };
+            };
             return System.Text.Json.JsonSerializer.Serialize(instance);
-            }
+        }
 
         [Browsable(false)]
-        public DomainModel.S131.InformationTypes.NauticalInformation Model => new()
-            {
+        public DomainModel.S131.InformationTypes.NauticalInformation Model => new() {
             categoryOfAuthority = this._categoryOfAuthority,
             rxNCode = this.rxNCode.ToList(),
             textContent = this.textContent.ToList(),
@@ -5790,7 +5743,7 @@ namespace S100Framework.WPF.ViewModel.S131
             source = this._source,
             sourceType = this._sourceType,
             reportedDate = this._reportedDate,
-            };
+        };
 
         public NauticalInformationViewModel() : base() {
             rxNCode.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
@@ -5808,13 +5761,14 @@ namespace S100Framework.WPF.ViewModel.S131
             graphic.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
                 OnPropertyChanged(nameof(graphic));
             };
-            }
         }
+    }
 
     [CategoryOrder("NonStandardWorkingDay", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class NonStandardWorkingDayViewModel : ViewModelBase {
+    public partial class NonStandardWorkingDayViewModel : ViewModelBase
+    {
         [Category("NonStandardWorkingDay")]
         public ObservableCollection<DateOnly> dateFixed { get; set; } = new();
 
@@ -5833,12 +5787,12 @@ namespace S100Framework.WPF.ViewModel.S131
         public fixedDateRangeViewModel? fixedDateRange {
             get {
                 return _fixedDateRange;
-                }
+            }
 
             set {
                 SetValue(ref _fixedDateRange, value);
-                }
             }
+        }
 
         [Category("InformationType")]
         public ObservableCollection<periodicDateRange> periodicDateRange { get; set; } = new();
@@ -5851,42 +5805,41 @@ namespace S100Framework.WPF.ViewModel.S131
         public String source {
             get {
                 return _source;
-                }
+            }
 
             set {
                 SetValue(ref _source, value);
-                }
             }
+        }
 
         private sourceType? _sourceType = default;
         [Category("InformationType")]
         public sourceType? sourceType {
             get {
                 return _sourceType;
-                }
+            }
 
             set {
                 SetValue(ref _sourceType, value);
-                }
             }
+        }
 
         private DateOnly? _reportedDate = default;
         [Category("InformationType")]
         public DateOnly? reportedDate {
             get {
                 return _reportedDate;
-                }
+            }
 
             set {
                 SetValue(ref _reportedDate, value);
-                }
             }
+        }
 
-        public class NonStandardWorkingDayRefIdViewModel : InformationRefIdViewModel {
+        public class NonStandardWorkingDayRefIdViewModel : InformationRefIdViewModel
+        {
             public override string[] AssociationTypes => ["NonStandardWorkingDay"];
-
-            public override string ToString() => "RefId";
-            }
+        }
 
         public void Load(DomainModel.S131.InformationTypes.NonStandardWorkingDay instance) {
             dateFixed.Clear();
@@ -5909,7 +5862,7 @@ namespace S100Framework.WPF.ViewModel.S131
             if (instance.fixedDateRange != null) {
                 fixedDateRange = new();
                 fixedDateRange.Load(instance.fixedDateRange);
-                }
+            }
 
             periodicDateRange.Clear();
             if (instance.periodicDateRange is not null)
@@ -5922,11 +5875,10 @@ namespace S100Framework.WPF.ViewModel.S131
             source = instance.source;
             sourceType = instance.sourceType;
             reportedDate = instance.reportedDate;
-            }
+        }
 
         public override string Serialize() {
-            var instance = new DomainModel.S131.InformationTypes.NonStandardWorkingDay
-                {
+            var instance = new DomainModel.S131.InformationTypes.NonStandardWorkingDay {
                 dateFixed = this.dateFixed.ToList(),
                 dateVariable = this.dateVariable.ToList(),
                 information = this.information.ToList(),
@@ -5937,13 +5889,12 @@ namespace S100Framework.WPF.ViewModel.S131
                 source = this.source,
                 sourceType = this.sourceType,
                 reportedDate = this.reportedDate,
-                };
+            };
             return System.Text.Json.JsonSerializer.Serialize(instance);
-            }
+        }
 
         [Browsable(false)]
-        public DomainModel.S131.InformationTypes.NonStandardWorkingDay Model => new()
-            {
+        public DomainModel.S131.InformationTypes.NonStandardWorkingDay Model => new() {
             dateFixed = this.dateFixed.ToList(),
             dateVariable = this.dateVariable.ToList(),
             information = this.information.ToList(),
@@ -5954,7 +5905,7 @@ namespace S100Framework.WPF.ViewModel.S131
             source = this._source,
             sourceType = this._sourceType,
             reportedDate = this._reportedDate,
-            };
+        };
 
         public NonStandardWorkingDayViewModel() : base() {
             dateFixed.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
@@ -5975,24 +5926,25 @@ namespace S100Framework.WPF.ViewModel.S131
             graphic.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
                 OnPropertyChanged(nameof(graphic));
             };
-            }
         }
+    }
 
     [CategoryOrder("Recommendations", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class RecommendationsViewModel : ViewModelBase {
+    public partial class RecommendationsViewModel : ViewModelBase
+    {
         private categoryOfAuthority? _categoryOfAuthority = default;
         [Category("AbstractRxN")]
         public categoryOfAuthority? categoryOfAuthority {
             get {
                 return _categoryOfAuthority;
-                }
+            }
 
             set {
                 SetValue(ref _categoryOfAuthority, value);
-                }
             }
+        }
 
         [Category("AbstractRxN")]
         public ObservableCollection<rxNCode> rxNCode { get; set; } = new();
@@ -6009,12 +5961,12 @@ namespace S100Framework.WPF.ViewModel.S131
         public fixedDateRangeViewModel? fixedDateRange {
             get {
                 return _fixedDateRange;
-                }
+            }
 
             set {
                 SetValue(ref _fixedDateRange, value);
-                }
             }
+        }
 
         [Category("InformationType")]
         public ObservableCollection<periodicDateRange> periodicDateRange { get; set; } = new();
@@ -6027,42 +5979,41 @@ namespace S100Framework.WPF.ViewModel.S131
         public String source {
             get {
                 return _source;
-                }
+            }
 
             set {
                 SetValue(ref _source, value);
-                }
             }
+        }
 
         private sourceType? _sourceType = default;
         [Category("InformationType")]
         public sourceType? sourceType {
             get {
                 return _sourceType;
-                }
+            }
 
             set {
                 SetValue(ref _sourceType, value);
-                }
             }
+        }
 
         private DateOnly? _reportedDate = default;
         [Category("InformationType")]
         public DateOnly? reportedDate {
             get {
                 return _reportedDate;
-                }
+            }
 
             set {
                 SetValue(ref _reportedDate, value);
-                }
             }
+        }
 
-        public class RecommendationsRefIdViewModel : InformationRefIdViewModel {
+        public class RecommendationsRefIdViewModel : InformationRefIdViewModel
+        {
             public override string[] AssociationTypes => ["Recommendations"];
-
-            public override string ToString() => "RefId";
-            }
+        }
 
         public void Load(DomainModel.S131.InformationTypes.Recommendations instance) {
             categoryOfAuthority = instance.categoryOfAuthority;
@@ -6082,7 +6033,7 @@ namespace S100Framework.WPF.ViewModel.S131
             if (instance.fixedDateRange != null) {
                 fixedDateRange = new();
                 fixedDateRange.Load(instance.fixedDateRange);
-                }
+            }
 
             periodicDateRange.Clear();
             if (instance.periodicDateRange is not null)
@@ -6095,11 +6046,10 @@ namespace S100Framework.WPF.ViewModel.S131
             source = instance.source;
             sourceType = instance.sourceType;
             reportedDate = instance.reportedDate;
-            }
+        }
 
         public override string Serialize() {
-            var instance = new DomainModel.S131.InformationTypes.Recommendations
-                {
+            var instance = new DomainModel.S131.InformationTypes.Recommendations {
                 categoryOfAuthority = this.categoryOfAuthority,
                 rxNCode = this.rxNCode.ToList(),
                 textContent = this.textContent.ToList(),
@@ -6110,13 +6060,12 @@ namespace S100Framework.WPF.ViewModel.S131
                 source = this.source,
                 sourceType = this.sourceType,
                 reportedDate = this.reportedDate,
-                };
+            };
             return System.Text.Json.JsonSerializer.Serialize(instance);
-            }
+        }
 
         [Browsable(false)]
-        public DomainModel.S131.InformationTypes.Recommendations Model => new()
-            {
+        public DomainModel.S131.InformationTypes.Recommendations Model => new() {
             categoryOfAuthority = this._categoryOfAuthority,
             rxNCode = this.rxNCode.ToList(),
             textContent = this.textContent.ToList(),
@@ -6127,7 +6076,7 @@ namespace S100Framework.WPF.ViewModel.S131
             source = this._source,
             sourceType = this._sourceType,
             reportedDate = this._reportedDate,
-            };
+        };
 
         public RecommendationsViewModel() : base() {
             rxNCode.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
@@ -6145,24 +6094,25 @@ namespace S100Framework.WPF.ViewModel.S131
             graphic.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
                 OnPropertyChanged(nameof(graphic));
             };
-            }
         }
+    }
 
     [CategoryOrder("Regulations", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class RegulationsViewModel : ViewModelBase {
+    public partial class RegulationsViewModel : ViewModelBase
+    {
         private categoryOfAuthority? _categoryOfAuthority = default;
         [Category("AbstractRxN")]
         public categoryOfAuthority? categoryOfAuthority {
             get {
                 return _categoryOfAuthority;
-                }
+            }
 
             set {
                 SetValue(ref _categoryOfAuthority, value);
-                }
             }
+        }
 
         [Category("AbstractRxN")]
         public ObservableCollection<rxNCode> rxNCode { get; set; } = new();
@@ -6179,12 +6129,12 @@ namespace S100Framework.WPF.ViewModel.S131
         public fixedDateRangeViewModel? fixedDateRange {
             get {
                 return _fixedDateRange;
-                }
+            }
 
             set {
                 SetValue(ref _fixedDateRange, value);
-                }
             }
+        }
 
         [Category("InformationType")]
         public ObservableCollection<periodicDateRange> periodicDateRange { get; set; } = new();
@@ -6197,42 +6147,41 @@ namespace S100Framework.WPF.ViewModel.S131
         public String source {
             get {
                 return _source;
-                }
+            }
 
             set {
                 SetValue(ref _source, value);
-                }
             }
+        }
 
         private sourceType? _sourceType = default;
         [Category("InformationType")]
         public sourceType? sourceType {
             get {
                 return _sourceType;
-                }
+            }
 
             set {
                 SetValue(ref _sourceType, value);
-                }
             }
+        }
 
         private DateOnly? _reportedDate = default;
         [Category("InformationType")]
         public DateOnly? reportedDate {
             get {
                 return _reportedDate;
-                }
+            }
 
             set {
                 SetValue(ref _reportedDate, value);
-                }
             }
+        }
 
-        public class RegulationsRefIdViewModel : InformationRefIdViewModel {
+        public class RegulationsRefIdViewModel : InformationRefIdViewModel
+        {
             public override string[] AssociationTypes => ["Regulations"];
-
-            public override string ToString() => "RefId";
-            }
+        }
 
         public void Load(DomainModel.S131.InformationTypes.Regulations instance) {
             categoryOfAuthority = instance.categoryOfAuthority;
@@ -6252,7 +6201,7 @@ namespace S100Framework.WPF.ViewModel.S131
             if (instance.fixedDateRange != null) {
                 fixedDateRange = new();
                 fixedDateRange.Load(instance.fixedDateRange);
-                }
+            }
 
             periodicDateRange.Clear();
             if (instance.periodicDateRange is not null)
@@ -6265,11 +6214,10 @@ namespace S100Framework.WPF.ViewModel.S131
             source = instance.source;
             sourceType = instance.sourceType;
             reportedDate = instance.reportedDate;
-            }
+        }
 
         public override string Serialize() {
-            var instance = new DomainModel.S131.InformationTypes.Regulations
-                {
+            var instance = new DomainModel.S131.InformationTypes.Regulations {
                 categoryOfAuthority = this.categoryOfAuthority,
                 rxNCode = this.rxNCode.ToList(),
                 textContent = this.textContent.ToList(),
@@ -6280,13 +6228,12 @@ namespace S100Framework.WPF.ViewModel.S131
                 source = this.source,
                 sourceType = this.sourceType,
                 reportedDate = this.reportedDate,
-                };
+            };
             return System.Text.Json.JsonSerializer.Serialize(instance);
-            }
+        }
 
         [Browsable(false)]
-        public DomainModel.S131.InformationTypes.Regulations Model => new()
-            {
+        public DomainModel.S131.InformationTypes.Regulations Model => new() {
             categoryOfAuthority = this._categoryOfAuthority,
             rxNCode = this.rxNCode.ToList(),
             textContent = this.textContent.ToList(),
@@ -6297,7 +6244,7 @@ namespace S100Framework.WPF.ViewModel.S131
             source = this._source,
             sourceType = this._sourceType,
             reportedDate = this._reportedDate,
-            };
+        };
 
         public RegulationsViewModel() : base() {
             rxNCode.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
@@ -6315,24 +6262,25 @@ namespace S100Framework.WPF.ViewModel.S131
             graphic.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
                 OnPropertyChanged(nameof(graphic));
             };
-            }
         }
+    }
 
     [CategoryOrder("Restrictions", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class RestrictionsViewModel : ViewModelBase {
+    public partial class RestrictionsViewModel : ViewModelBase
+    {
         private categoryOfAuthority? _categoryOfAuthority = default;
         [Category("AbstractRxN")]
         public categoryOfAuthority? categoryOfAuthority {
             get {
                 return _categoryOfAuthority;
-                }
+            }
 
             set {
                 SetValue(ref _categoryOfAuthority, value);
-                }
             }
+        }
 
         [Category("AbstractRxN")]
         public ObservableCollection<rxNCode> rxNCode { get; set; } = new();
@@ -6349,12 +6297,12 @@ namespace S100Framework.WPF.ViewModel.S131
         public fixedDateRangeViewModel? fixedDateRange {
             get {
                 return _fixedDateRange;
-                }
+            }
 
             set {
                 SetValue(ref _fixedDateRange, value);
-                }
             }
+        }
 
         [Category("InformationType")]
         public ObservableCollection<periodicDateRange> periodicDateRange { get; set; } = new();
@@ -6367,42 +6315,41 @@ namespace S100Framework.WPF.ViewModel.S131
         public String source {
             get {
                 return _source;
-                }
+            }
 
             set {
                 SetValue(ref _source, value);
-                }
             }
+        }
 
         private sourceType? _sourceType = default;
         [Category("InformationType")]
         public sourceType? sourceType {
             get {
                 return _sourceType;
-                }
+            }
 
             set {
                 SetValue(ref _sourceType, value);
-                }
             }
+        }
 
         private DateOnly? _reportedDate = default;
         [Category("InformationType")]
         public DateOnly? reportedDate {
             get {
                 return _reportedDate;
-                }
+            }
 
             set {
                 SetValue(ref _reportedDate, value);
-                }
             }
+        }
 
-        public class RestrictionsRefIdViewModel : InformationRefIdViewModel {
+        public class RestrictionsRefIdViewModel : InformationRefIdViewModel
+        {
             public override string[] AssociationTypes => ["Restrictions"];
-
-            public override string ToString() => "RefId";
-            }
+        }
 
         public void Load(DomainModel.S131.InformationTypes.Restrictions instance) {
             categoryOfAuthority = instance.categoryOfAuthority;
@@ -6422,7 +6369,7 @@ namespace S100Framework.WPF.ViewModel.S131
             if (instance.fixedDateRange != null) {
                 fixedDateRange = new();
                 fixedDateRange.Load(instance.fixedDateRange);
-                }
+            }
 
             periodicDateRange.Clear();
             if (instance.periodicDateRange is not null)
@@ -6435,11 +6382,10 @@ namespace S100Framework.WPF.ViewModel.S131
             source = instance.source;
             sourceType = instance.sourceType;
             reportedDate = instance.reportedDate;
-            }
+        }
 
         public override string Serialize() {
-            var instance = new DomainModel.S131.InformationTypes.Restrictions
-                {
+            var instance = new DomainModel.S131.InformationTypes.Restrictions {
                 categoryOfAuthority = this.categoryOfAuthority,
                 rxNCode = this.rxNCode.ToList(),
                 textContent = this.textContent.ToList(),
@@ -6450,13 +6396,12 @@ namespace S100Framework.WPF.ViewModel.S131
                 source = this.source,
                 sourceType = this.sourceType,
                 reportedDate = this.reportedDate,
-                };
+            };
             return System.Text.Json.JsonSerializer.Serialize(instance);
-            }
+        }
 
         [Browsable(false)]
-        public DomainModel.S131.InformationTypes.Restrictions Model => new()
-            {
+        public DomainModel.S131.InformationTypes.Restrictions Model => new() {
             categoryOfAuthority = this._categoryOfAuthority,
             rxNCode = this.rxNCode.ToList(),
             textContent = this.textContent.ToList(),
@@ -6467,7 +6412,7 @@ namespace S100Framework.WPF.ViewModel.S131
             source = this._source,
             sourceType = this._sourceType,
             reportedDate = this._reportedDate,
-            };
+        };
 
         public RestrictionsViewModel() : base() {
             rxNCode.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
@@ -6485,13 +6430,14 @@ namespace S100Framework.WPF.ViewModel.S131
             graphic.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
                 OnPropertyChanged(nameof(graphic));
             };
-            }
         }
+    }
 
     [CategoryOrder("ServiceHours", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class ServiceHoursViewModel : ViewModelBase {
+    public partial class ServiceHoursViewModel : ViewModelBase
+    {
         [Category("ServiceHours")]
         public ObservableCollection<scheduleByDayOfWeek> scheduleByDayOfWeek { get; set; } = new();
 
@@ -6507,12 +6453,12 @@ namespace S100Framework.WPF.ViewModel.S131
         public fixedDateRangeViewModel? fixedDateRange {
             get {
                 return _fixedDateRange;
-                }
+            }
 
             set {
                 SetValue(ref _fixedDateRange, value);
-                }
             }
+        }
 
         [Category("InformationType")]
         public ObservableCollection<periodicDateRange> periodicDateRange { get; set; } = new();
@@ -6525,42 +6471,41 @@ namespace S100Framework.WPF.ViewModel.S131
         public String source {
             get {
                 return _source;
-                }
+            }
 
             set {
                 SetValue(ref _source, value);
-                }
             }
+        }
 
         private sourceType? _sourceType = default;
         [Category("InformationType")]
         public sourceType? sourceType {
             get {
                 return _sourceType;
-                }
+            }
 
             set {
                 SetValue(ref _sourceType, value);
-                }
             }
+        }
 
         private DateOnly? _reportedDate = default;
         [Category("InformationType")]
         public DateOnly? reportedDate {
             get {
                 return _reportedDate;
-                }
+            }
 
             set {
                 SetValue(ref _reportedDate, value);
-                }
             }
+        }
 
-        public class ServiceHoursRefIdViewModel : InformationRefIdViewModel {
+        public class ServiceHoursRefIdViewModel : InformationRefIdViewModel
+        {
             public override string[] AssociationTypes => ["ServiceHours"];
-
-            public override string ToString() => "RefId";
-            }
+        }
 
         public void Load(DomainModel.S131.InformationTypes.ServiceHours instance) {
             scheduleByDayOfWeek.Clear();
@@ -6579,7 +6524,7 @@ namespace S100Framework.WPF.ViewModel.S131
             if (instance.fixedDateRange != null) {
                 fixedDateRange = new();
                 fixedDateRange.Load(instance.fixedDateRange);
-                }
+            }
 
             periodicDateRange.Clear();
             if (instance.periodicDateRange is not null)
@@ -6592,11 +6537,10 @@ namespace S100Framework.WPF.ViewModel.S131
             source = instance.source;
             sourceType = instance.sourceType;
             reportedDate = instance.reportedDate;
-            }
+        }
 
         public override string Serialize() {
-            var instance = new DomainModel.S131.InformationTypes.ServiceHours
-                {
+            var instance = new DomainModel.S131.InformationTypes.ServiceHours {
                 scheduleByDayOfWeek = this.scheduleByDayOfWeek.ToList(),
                 information = this.information.ToList(),
                 featureName = this.featureName.ToList(),
@@ -6606,13 +6550,12 @@ namespace S100Framework.WPF.ViewModel.S131
                 source = this.source,
                 sourceType = this.sourceType,
                 reportedDate = this.reportedDate,
-                };
+            };
             return System.Text.Json.JsonSerializer.Serialize(instance);
-            }
+        }
 
         [Browsable(false)]
-        public DomainModel.S131.InformationTypes.ServiceHours Model => new()
-            {
+        public DomainModel.S131.InformationTypes.ServiceHours Model => new() {
             scheduleByDayOfWeek = this.scheduleByDayOfWeek.ToList(),
             information = this.information.ToList(),
             featureName = this.featureName.ToList(),
@@ -6622,7 +6565,7 @@ namespace S100Framework.WPF.ViewModel.S131
             source = this._source,
             sourceType = this._sourceType,
             reportedDate = this._reportedDate,
-            };
+        };
 
         public ServiceHoursViewModel() : base() {
             scheduleByDayOfWeek.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
@@ -6640,33 +6583,33 @@ namespace S100Framework.WPF.ViewModel.S131
             graphic.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
                 OnPropertyChanged(nameof(graphic));
             };
-            }
         }
+    }
 
     [CategoryOrder("SpatialQuality", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class SpatialQualityViewModel : ViewModelBase {
+    public partial class SpatialQualityViewModel : ViewModelBase
+    {
         private qualityOfHorizontalMeasurement? _qualityOfHorizontalMeasurement = default;
         [Category("SpatialQuality")]
         public qualityOfHorizontalMeasurement? qualityOfHorizontalMeasurement {
             get {
                 return _qualityOfHorizontalMeasurement;
-                }
+            }
 
             set {
                 SetValue(ref _qualityOfHorizontalMeasurement, value);
-                }
             }
+        }
 
         [Category("SpatialQuality")]
         public ObservableCollection<spatialAccuracy> spatialAccuracy { get; set; } = new();
 
-        public class SpatialQualityRefIdViewModel : InformationRefIdViewModel {
+        public class SpatialQualityRefIdViewModel : InformationRefIdViewModel
+        {
             public override string[] AssociationTypes => ["SpatialQuality"];
-
-            public override string ToString() => "RefId";
-            }
+        }
 
         public void Load(DomainModel.S131.InformationTypes.SpatialQuality instance) {
             qualityOfHorizontalMeasurement = instance.qualityOfHorizontalMeasurement;
@@ -6674,58 +6617,57 @@ namespace S100Framework.WPF.ViewModel.S131
             if (instance.spatialAccuracy is not null)
                 foreach (var e in instance.spatialAccuracy)
                     spatialAccuracy.Add(e);
-            }
+        }
 
         public override string Serialize() {
-            var instance = new DomainModel.S131.InformationTypes.SpatialQuality
-                {
+            var instance = new DomainModel.S131.InformationTypes.SpatialQuality {
                 qualityOfHorizontalMeasurement = this.qualityOfHorizontalMeasurement,
                 spatialAccuracy = this.spatialAccuracy.ToList(),
-                };
+            };
             return System.Text.Json.JsonSerializer.Serialize(instance);
-            }
+        }
 
         [Browsable(false)]
-        public DomainModel.S131.InformationTypes.SpatialQuality Model => new()
-            {
+        public DomainModel.S131.InformationTypes.SpatialQuality Model => new() {
             qualityOfHorizontalMeasurement = this._qualityOfHorizontalMeasurement,
             spatialAccuracy = this.spatialAccuracy.ToList(),
-            };
+        };
 
         public SpatialQualityViewModel() : base() {
             spatialAccuracy.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
                 OnPropertyChanged(nameof(spatialAccuracy));
             };
-            }
         }
+    }
 
     [CategoryOrder("AnchorBerth", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class AnchorBerthViewModel : ViewModelBase {
+    public partial class AnchorBerthViewModel : ViewModelBase
+    {
         private String _locationMRN = string.Empty;
         [Category("FeatureType")]
         public String locationMRN {
             get {
                 return _locationMRN;
-                }
+            }
 
             set {
                 SetValue(ref _locationMRN, value);
-                }
             }
+        }
 
         private String _globalLocationNumber = string.Empty;
         [Category("FeatureType")]
         public String globalLocationNumber {
             get {
                 return _globalLocationNumber;
-                }
+            }
 
             set {
                 SetValue(ref _globalLocationNumber, value);
-                }
             }
+        }
 
         [Category("FeatureType")]
         public ObservableCollection<featureName> featureName { get; set; } = new();
@@ -6736,12 +6678,12 @@ namespace S100Framework.WPF.ViewModel.S131
         public fixedDateRangeViewModel? fixedDateRange {
             get {
                 return _fixedDateRange;
-                }
+            }
 
             set {
                 SetValue(ref _fixedDateRange, value);
-                }
             }
+        }
 
         [Category("FeatureType")]
         public ObservableCollection<periodicDateRange> periodicDateRange { get; set; } = new();
@@ -6757,45 +6699,44 @@ namespace S100Framework.WPF.ViewModel.S131
         public String source {
             get {
                 return _source;
-                }
+            }
 
             set {
                 SetValue(ref _source, value);
-                }
             }
+        }
 
         private sourceType? _sourceType = default;
         [Category("FeatureType")]
         public sourceType? sourceType {
             get {
                 return _sourceType;
-                }
+            }
 
             set {
                 SetValue(ref _sourceType, value);
-                }
             }
+        }
 
         private DateOnly? _reportedDate = default;
         [Category("FeatureType")]
         public DateOnly? reportedDate {
             get {
                 return _reportedDate;
-                }
+            }
 
             set {
                 SetValue(ref _reportedDate, value);
-                }
             }
+        }
 
         [Category("FeatureType")]
         public ObservableCollection<textContent> textContent { get; set; } = new();
 
-        public class AnchorBerthRefIdViewModel : FeatureRefIdViewModel {
+        public class AnchorBerthRefIdViewModel : FeatureRefIdViewModel
+        {
             public override string[] AssociationTypes => ["AnchorBerth"];
-
-            public override string ToString() => "RefId";
-            }
+        }
 
         public void Load(DomainModel.S131.FeatureTypes.AnchorBerth instance) {
             locationMRN = instance.locationMRN;
@@ -6808,7 +6749,7 @@ namespace S100Framework.WPF.ViewModel.S131
             if (instance.fixedDateRange != null) {
                 fixedDateRange = new();
                 fixedDateRange.Load(instance.fixedDateRange);
-                }
+            }
 
             periodicDateRange.Clear();
             if (instance.periodicDateRange is not null)
@@ -6829,11 +6770,10 @@ namespace S100Framework.WPF.ViewModel.S131
             if (instance.textContent is not null)
                 foreach (var e in instance.textContent)
                     textContent.Add(e);
-            }
+        }
 
         public override string Serialize() {
-            var instance = new DomainModel.S131.FeatureTypes.AnchorBerth
-                {
+            var instance = new DomainModel.S131.FeatureTypes.AnchorBerth {
                 locationMRN = this.locationMRN,
                 globalLocationNumber = this.globalLocationNumber,
                 featureName = this.featureName.ToList(),
@@ -6845,13 +6785,12 @@ namespace S100Framework.WPF.ViewModel.S131
                 sourceType = this.sourceType,
                 reportedDate = this.reportedDate,
                 textContent = this.textContent.ToList(),
-                };
+            };
             return System.Text.Json.JsonSerializer.Serialize(instance);
-            }
+        }
 
         [Browsable(false)]
-        public DomainModel.S131.FeatureTypes.AnchorBerth Model => new()
-            {
+        public DomainModel.S131.FeatureTypes.AnchorBerth Model => new() {
             locationMRN = this._locationMRN,
             globalLocationNumber = this._globalLocationNumber,
             featureName = this.featureName.ToList(),
@@ -6863,7 +6802,7 @@ namespace S100Framework.WPF.ViewModel.S131
             sourceType = this._sourceType,
             reportedDate = this._reportedDate,
             textContent = this.textContent.ToList(),
-            };
+        };
 
         public AnchorBerthViewModel() : base() {
             featureName.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
@@ -6881,37 +6820,38 @@ namespace S100Framework.WPF.ViewModel.S131
             textContent.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
                 OnPropertyChanged(nameof(textContent));
             };
-            }
         }
+    }
 
     [CategoryOrder("AnchorageArea", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class AnchorageAreaViewModel : ViewModelBase {
+    public partial class AnchorageAreaViewModel : ViewModelBase
+    {
         private depthsDescriptionViewModel? _depthsDescription;
         [Category("AnchorageArea")]
         [Xceed.Wpf.Toolkit.PropertyGrid.Attributes.ExpandableObject]
         public depthsDescriptionViewModel? depthsDescription {
             get {
                 return _depthsDescription;
-                }
+            }
 
             set {
                 SetValue(ref _depthsDescription, value);
-                }
             }
+        }
 
         private String _locationByText = string.Empty;
         [Category("AnchorageArea")]
         public String locationByText {
             get {
                 return _locationByText;
-                }
+            }
 
             set {
                 SetValue(ref _locationByText, value);
-                }
             }
+        }
 
         private markedByViewModel? _markedBy;
         [Category("AnchorageArea")]
@@ -6919,48 +6859,48 @@ namespace S100Framework.WPF.ViewModel.S131
         public markedByViewModel? markedBy {
             get {
                 return _markedBy;
-                }
+            }
 
             set {
                 SetValue(ref _markedBy, value);
-                }
             }
+        }
 
         private iSPSLevel? _iSPSLevel = default;
         [Category("AnchorageArea")]
         public iSPSLevel? iSPSLevel {
             get {
                 return _iSPSLevel;
-                }
+            }
 
             set {
                 SetValue(ref _iSPSLevel, value);
-                }
             }
+        }
 
         private String _locationMRN = string.Empty;
         [Category("FeatureType")]
         public String locationMRN {
             get {
                 return _locationMRN;
-                }
+            }
 
             set {
                 SetValue(ref _locationMRN, value);
-                }
             }
+        }
 
         private String _globalLocationNumber = string.Empty;
         [Category("FeatureType")]
         public String globalLocationNumber {
             get {
                 return _globalLocationNumber;
-                }
+            }
 
             set {
                 SetValue(ref _globalLocationNumber, value);
-                }
             }
+        }
 
         [Category("FeatureType")]
         public ObservableCollection<featureName> featureName { get; set; } = new();
@@ -6971,12 +6911,12 @@ namespace S100Framework.WPF.ViewModel.S131
         public fixedDateRangeViewModel? fixedDateRange {
             get {
                 return _fixedDateRange;
-                }
+            }
 
             set {
                 SetValue(ref _fixedDateRange, value);
-                }
             }
+        }
 
         [Category("FeatureType")]
         public ObservableCollection<periodicDateRange> periodicDateRange { get; set; } = new();
@@ -6992,59 +6932,58 @@ namespace S100Framework.WPF.ViewModel.S131
         public String source {
             get {
                 return _source;
-                }
+            }
 
             set {
                 SetValue(ref _source, value);
-                }
             }
+        }
 
         private sourceType? _sourceType = default;
         [Category("FeatureType")]
         public sourceType? sourceType {
             get {
                 return _sourceType;
-                }
+            }
 
             set {
                 SetValue(ref _sourceType, value);
-                }
             }
+        }
 
         private DateOnly? _reportedDate = default;
         [Category("FeatureType")]
         public DateOnly? reportedDate {
             get {
                 return _reportedDate;
-                }
+            }
 
             set {
                 SetValue(ref _reportedDate, value);
-                }
             }
+        }
 
         [Category("FeatureType")]
         public ObservableCollection<textContent> textContent { get; set; } = new();
 
-        public class AnchorageAreaRefIdViewModel : FeatureRefIdViewModel {
+        public class AnchorageAreaRefIdViewModel : FeatureRefIdViewModel
+        {
             public override string[] AssociationTypes => ["AnchorageArea"];
-
-            public override string ToString() => "RefId";
-            }
+        }
 
         public void Load(DomainModel.S131.FeatureTypes.AnchorageArea instance) {
             depthsDescription = new();
             if (instance.depthsDescription != null) {
                 depthsDescription = new();
                 depthsDescription.Load(instance.depthsDescription);
-                }
+            }
 
             locationByText = instance.locationByText;
             markedBy = new();
             if (instance.markedBy != null) {
                 markedBy = new();
                 markedBy.Load(instance.markedBy);
-                }
+            }
 
             iSPSLevel = instance.iSPSLevel;
             locationMRN = instance.locationMRN;
@@ -7057,7 +6996,7 @@ namespace S100Framework.WPF.ViewModel.S131
             if (instance.fixedDateRange != null) {
                 fixedDateRange = new();
                 fixedDateRange.Load(instance.fixedDateRange);
-                }
+            }
 
             periodicDateRange.Clear();
             if (instance.periodicDateRange is not null)
@@ -7078,11 +7017,10 @@ namespace S100Framework.WPF.ViewModel.S131
             if (instance.textContent is not null)
                 foreach (var e in instance.textContent)
                     textContent.Add(e);
-            }
+        }
 
         public override string Serialize() {
-            var instance = new DomainModel.S131.FeatureTypes.AnchorageArea
-                {
+            var instance = new DomainModel.S131.FeatureTypes.AnchorageArea {
                 depthsDescription = this.depthsDescription?.Model,
                 locationByText = this.locationByText,
                 markedBy = this.markedBy?.Model,
@@ -7098,13 +7036,12 @@ namespace S100Framework.WPF.ViewModel.S131
                 sourceType = this.sourceType,
                 reportedDate = this.reportedDate,
                 textContent = this.textContent.ToList(),
-                };
+            };
             return System.Text.Json.JsonSerializer.Serialize(instance);
-            }
+        }
 
         [Browsable(false)]
-        public DomainModel.S131.FeatureTypes.AnchorageArea Model => new()
-            {
+        public DomainModel.S131.FeatureTypes.AnchorageArea Model => new() {
             depthsDescription = this._depthsDescription?.Model,
             locationByText = this._locationByText,
             markedBy = this._markedBy?.Model,
@@ -7120,7 +7057,7 @@ namespace S100Framework.WPF.ViewModel.S131
             sourceType = this._sourceType,
             reportedDate = this._reportedDate,
             textContent = this.textContent.ToList(),
-            };
+        };
 
         public AnchorageAreaViewModel() : base() {
             featureName.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
@@ -7138,108 +7075,109 @@ namespace S100Framework.WPF.ViewModel.S131
             textContent.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
                 OnPropertyChanged(nameof(textContent));
             };
-            }
         }
+    }
 
     [CategoryOrder("Berth", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class BerthViewModel : ViewModelBase {
+    public partial class BerthViewModel : ViewModelBase
+    {
         private Decimal? _availableBerthingLength = default;
         [Category("Berth")]
         public Decimal? availableBerthingLength {
             get {
                 return _availableBerthingLength;
-                }
+            }
 
             set {
                 SetValue(ref _availableBerthingLength, value);
-                }
             }
+        }
 
         private String _bollardDescription = string.Empty;
         [Category("Berth")]
         public String bollardDescription {
             get {
                 return _bollardDescription;
-                }
+            }
 
             set {
                 SetValue(ref _bollardDescription, value);
-                }
             }
+        }
 
         private Decimal? _bollardPull = default;
         [Category("Berth")]
         public Decimal? bollardPull {
             get {
                 return _bollardPull;
-                }
+            }
 
             set {
                 SetValue(ref _bollardPull, value);
-                }
             }
+        }
 
         private Decimal? _minimumBerthDepth = default;
         [Category("Berth")]
         public Decimal? minimumBerthDepth {
             get {
                 return _minimumBerthDepth;
-                }
+            }
 
             set {
                 SetValue(ref _minimumBerthDepth, value);
-                }
             }
+        }
 
         private Decimal? _elevation = default;
         [Category("Berth")]
         public Decimal? elevation {
             get {
                 return _elevation;
-                }
+            }
 
             set {
                 SetValue(ref _elevation, value);
-                }
             }
+        }
 
         private Boolean? _cathodicProtectionSystem = default;
         [Category("Berth")]
         public Boolean? cathodicProtectionSystem {
             get {
                 return _cathodicProtectionSystem;
-                }
+            }
 
             set {
                 SetValue(ref _cathodicProtectionSystem, value);
-                }
             }
+        }
 
         private categoryOfBerthLocation? _categoryOfBerthLocation = default;
         [Category("Berth")]
         public categoryOfBerthLocation? categoryOfBerthLocation {
             get {
                 return _categoryOfBerthLocation;
-                }
+            }
 
             set {
                 SetValue(ref _categoryOfBerthLocation, value);
-                }
             }
+        }
 
         private String _portFacilityNumber = string.Empty;
         [Category("Berth")]
         public String portFacilityNumber {
             get {
                 return _portFacilityNumber;
-                }
+            }
 
             set {
                 SetValue(ref _portFacilityNumber, value);
-                }
             }
+        }
 
         [Category("Berth")]
         public ObservableCollection<String> bollardNumber { get; set; } = new();
@@ -7249,12 +7187,12 @@ namespace S100Framework.WPF.ViewModel.S131
         public String gLNExtension {
             get {
                 return _gLNExtension;
-                }
+            }
 
             set {
                 SetValue(ref _gLNExtension, value);
-                }
             }
+        }
 
         [Category("Berth")]
         public ObservableCollection<String> metreMarkNumber { get; set; } = new();
@@ -7267,84 +7205,84 @@ namespace S100Framework.WPF.ViewModel.S131
         public String rampNumber {
             get {
                 return _rampNumber;
-                }
+            }
 
             set {
                 SetValue(ref _rampNumber, value);
-                }
             }
+        }
 
         private String _locationByText = string.Empty;
         [Category("Berth")]
         public String locationByText {
             get {
                 return _locationByText;
-                }
+            }
 
             set {
                 SetValue(ref _locationByText, value);
-                }
             }
+        }
 
         private methodOfSecuring? _methodOfSecuring = default;
         [Category("Berth")]
         public methodOfSecuring? methodOfSecuring {
             get {
                 return _methodOfSecuring;
-                }
+            }
 
             set {
                 SetValue(ref _methodOfSecuring, value);
-                }
             }
+        }
 
         private String _uNLocationCode = string.Empty;
         [Category("Berth")]
         public String uNLocationCode {
             get {
                 return _uNLocationCode;
-                }
+            }
 
             set {
                 SetValue(ref _uNLocationCode, value);
-                }
             }
+        }
 
         private String _terminalIdentifier = string.Empty;
         [Category("Berth")]
         public String terminalIdentifier {
             get {
                 return _terminalIdentifier;
-                }
+            }
 
             set {
                 SetValue(ref _terminalIdentifier, value);
-                }
             }
+        }
 
         private String _locationMRN = string.Empty;
         [Category("FeatureType")]
         public String locationMRN {
             get {
                 return _locationMRN;
-                }
+            }
 
             set {
                 SetValue(ref _locationMRN, value);
-                }
             }
+        }
 
         private String _globalLocationNumber = string.Empty;
         [Category("FeatureType")]
         public String globalLocationNumber {
             get {
                 return _globalLocationNumber;
-                }
+            }
 
             set {
                 SetValue(ref _globalLocationNumber, value);
-                }
             }
+        }
 
         [Category("FeatureType")]
         public ObservableCollection<featureName> featureName { get; set; } = new();
@@ -7355,12 +7293,12 @@ namespace S100Framework.WPF.ViewModel.S131
         public fixedDateRangeViewModel? fixedDateRange {
             get {
                 return _fixedDateRange;
-                }
+            }
 
             set {
                 SetValue(ref _fixedDateRange, value);
-                }
             }
+        }
 
         [Category("FeatureType")]
         public ObservableCollection<periodicDateRange> periodicDateRange { get; set; } = new();
@@ -7376,45 +7314,44 @@ namespace S100Framework.WPF.ViewModel.S131
         public String source {
             get {
                 return _source;
-                }
+            }
 
             set {
                 SetValue(ref _source, value);
-                }
             }
+        }
 
         private sourceType? _sourceType = default;
         [Category("FeatureType")]
         public sourceType? sourceType {
             get {
                 return _sourceType;
-                }
+            }
 
             set {
                 SetValue(ref _sourceType, value);
-                }
             }
+        }
 
         private DateOnly? _reportedDate = default;
         [Category("FeatureType")]
         public DateOnly? reportedDate {
             get {
                 return _reportedDate;
-                }
+            }
 
             set {
                 SetValue(ref _reportedDate, value);
-                }
             }
+        }
 
         [Category("FeatureType")]
         public ObservableCollection<textContent> textContent { get; set; } = new();
 
-        public class BerthRefIdViewModel : FeatureRefIdViewModel {
+        public class BerthRefIdViewModel : FeatureRefIdViewModel
+        {
             public override string[] AssociationTypes => ["Berth"];
-
-            public override string ToString() => "RefId";
-            }
+        }
 
         public void Load(DomainModel.S131.FeatureTypes.Berth instance) {
             availableBerthingLength = instance.availableBerthingLength;
@@ -7453,7 +7390,7 @@ namespace S100Framework.WPF.ViewModel.S131
             if (instance.fixedDateRange != null) {
                 fixedDateRange = new();
                 fixedDateRange.Load(instance.fixedDateRange);
-                }
+            }
 
             periodicDateRange.Clear();
             if (instance.periodicDateRange is not null)
@@ -7474,11 +7411,10 @@ namespace S100Framework.WPF.ViewModel.S131
             if (instance.textContent is not null)
                 foreach (var e in instance.textContent)
                     textContent.Add(e);
-            }
+        }
 
         public override string Serialize() {
-            var instance = new DomainModel.S131.FeatureTypes.Berth
-                {
+            var instance = new DomainModel.S131.FeatureTypes.Berth {
                 availableBerthingLength = this.availableBerthingLength,
                 bollardDescription = this.bollardDescription,
                 bollardPull = this.bollardPull,
@@ -7507,13 +7443,12 @@ namespace S100Framework.WPF.ViewModel.S131
                 sourceType = this.sourceType,
                 reportedDate = this.reportedDate,
                 textContent = this.textContent.ToList(),
-                };
+            };
             return System.Text.Json.JsonSerializer.Serialize(instance);
-            }
+        }
 
         [Browsable(false)]
-        public DomainModel.S131.FeatureTypes.Berth Model => new()
-            {
+        public DomainModel.S131.FeatureTypes.Berth Model => new() {
             availableBerthingLength = this._availableBerthingLength,
             bollardDescription = this._bollardDescription,
             bollardPull = this._bollardPull,
@@ -7542,7 +7477,7 @@ namespace S100Framework.WPF.ViewModel.S131
             sourceType = this._sourceType,
             reportedDate = this._reportedDate,
             textContent = this.textContent.ToList(),
-            };
+        };
 
         public BerthViewModel() : base() {
             bollardNumber.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
@@ -7569,48 +7504,49 @@ namespace S100Framework.WPF.ViewModel.S131
             textContent.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
                 OnPropertyChanged(nameof(textContent));
             };
-            }
         }
+    }
 
     [CategoryOrder("BerthPosition", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class BerthPositionViewModel : ViewModelBase {
+    public partial class BerthPositionViewModel : ViewModelBase
+    {
         private Decimal? _availableBerthingLength = default;
         [Category("BerthPosition")]
         public Decimal? availableBerthingLength {
             get {
                 return _availableBerthingLength;
-                }
+            }
 
             set {
                 SetValue(ref _availableBerthingLength, value);
-                }
             }
+        }
 
         private String _bollardDescription = string.Empty;
         [Category("BerthPosition")]
         public String bollardDescription {
             get {
                 return _bollardDescription;
-                }
+            }
 
             set {
                 SetValue(ref _bollardDescription, value);
-                }
             }
+        }
 
         private Decimal? _bollardPull = default;
         [Category("BerthPosition")]
         public Decimal? bollardPull {
             get {
                 return _bollardPull;
-                }
+            }
 
             set {
                 SetValue(ref _bollardPull, value);
-                }
             }
+        }
 
         [Category("BerthPosition")]
         public ObservableCollection<String> bollardNumber { get; set; } = new();
@@ -7620,12 +7556,12 @@ namespace S100Framework.WPF.ViewModel.S131
         public String gLNExtension {
             get {
                 return _gLNExtension;
-                }
+            }
 
             set {
                 SetValue(ref _gLNExtension, value);
-                }
             }
+        }
 
         [Category("BerthPosition")]
         public ObservableCollection<String> metreMarkNumber { get; set; } = new();
@@ -7638,48 +7574,48 @@ namespace S100Framework.WPF.ViewModel.S131
         public String rampNumber {
             get {
                 return _rampNumber;
-                }
+            }
 
             set {
                 SetValue(ref _rampNumber, value);
-                }
             }
+        }
 
         private String _locationByText = string.Empty;
         [Category("BerthPosition")]
         public String locationByText {
             get {
                 return _locationByText;
-                }
+            }
 
             set {
                 SetValue(ref _locationByText, value);
-                }
             }
+        }
 
         private String _locationMRN = string.Empty;
         [Category("FeatureType")]
         public String locationMRN {
             get {
                 return _locationMRN;
-                }
+            }
 
             set {
                 SetValue(ref _locationMRN, value);
-                }
             }
+        }
 
         private String _globalLocationNumber = string.Empty;
         [Category("FeatureType")]
         public String globalLocationNumber {
             get {
                 return _globalLocationNumber;
-                }
+            }
 
             set {
                 SetValue(ref _globalLocationNumber, value);
-                }
             }
+        }
 
         [Category("FeatureType")]
         public ObservableCollection<featureName> featureName { get; set; } = new();
@@ -7690,12 +7626,12 @@ namespace S100Framework.WPF.ViewModel.S131
         public fixedDateRangeViewModel? fixedDateRange {
             get {
                 return _fixedDateRange;
-                }
+            }
 
             set {
                 SetValue(ref _fixedDateRange, value);
-                }
             }
+        }
 
         [Category("FeatureType")]
         public ObservableCollection<periodicDateRange> periodicDateRange { get; set; } = new();
@@ -7711,45 +7647,44 @@ namespace S100Framework.WPF.ViewModel.S131
         public String source {
             get {
                 return _source;
-                }
+            }
 
             set {
                 SetValue(ref _source, value);
-                }
             }
+        }
 
         private sourceType? _sourceType = default;
         [Category("FeatureType")]
         public sourceType? sourceType {
             get {
                 return _sourceType;
-                }
+            }
 
             set {
                 SetValue(ref _sourceType, value);
-                }
             }
+        }
 
         private DateOnly? _reportedDate = default;
         [Category("FeatureType")]
         public DateOnly? reportedDate {
             get {
                 return _reportedDate;
-                }
+            }
 
             set {
                 SetValue(ref _reportedDate, value);
-                }
             }
+        }
 
         [Category("FeatureType")]
         public ObservableCollection<textContent> textContent { get; set; } = new();
 
-        public class BerthPositionRefIdViewModel : FeatureRefIdViewModel {
+        public class BerthPositionRefIdViewModel : FeatureRefIdViewModel
+        {
             public override string[] AssociationTypes => ["BerthPosition"];
-
-            public override string ToString() => "RefId";
-            }
+        }
 
         public void Load(DomainModel.S131.FeatureTypes.BerthPosition instance) {
             availableBerthingLength = instance.availableBerthingLength;
@@ -7780,7 +7715,7 @@ namespace S100Framework.WPF.ViewModel.S131
             if (instance.fixedDateRange != null) {
                 fixedDateRange = new();
                 fixedDateRange.Load(instance.fixedDateRange);
-                }
+            }
 
             periodicDateRange.Clear();
             if (instance.periodicDateRange is not null)
@@ -7801,11 +7736,10 @@ namespace S100Framework.WPF.ViewModel.S131
             if (instance.textContent is not null)
                 foreach (var e in instance.textContent)
                     textContent.Add(e);
-            }
+        }
 
         public override string Serialize() {
-            var instance = new DomainModel.S131.FeatureTypes.BerthPosition
-                {
+            var instance = new DomainModel.S131.FeatureTypes.BerthPosition {
                 availableBerthingLength = this.availableBerthingLength,
                 bollardDescription = this.bollardDescription,
                 bollardPull = this.bollardPull,
@@ -7826,13 +7760,12 @@ namespace S100Framework.WPF.ViewModel.S131
                 sourceType = this.sourceType,
                 reportedDate = this.reportedDate,
                 textContent = this.textContent.ToList(),
-                };
+            };
             return System.Text.Json.JsonSerializer.Serialize(instance);
-            }
+        }
 
         [Browsable(false)]
-        public DomainModel.S131.FeatureTypes.BerthPosition Model => new()
-            {
+        public DomainModel.S131.FeatureTypes.BerthPosition Model => new() {
             availableBerthingLength = this._availableBerthingLength,
             bollardDescription = this._bollardDescription,
             bollardPull = this._bollardPull,
@@ -7853,7 +7786,7 @@ namespace S100Framework.WPF.ViewModel.S131
             sourceType = this._sourceType,
             reportedDate = this._reportedDate,
             textContent = this.textContent.ToList(),
-            };
+        };
 
         public BerthPositionViewModel() : base() {
             bollardNumber.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
@@ -7880,37 +7813,38 @@ namespace S100Framework.WPF.ViewModel.S131
             textContent.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
                 OnPropertyChanged(nameof(textContent));
             };
-            }
         }
+    }
 
     [CategoryOrder("DockArea", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class DockAreaViewModel : ViewModelBase {
+    public partial class DockAreaViewModel : ViewModelBase
+    {
         private depthsDescriptionViewModel? _depthsDescription;
         [Category("DockArea")]
         [Xceed.Wpf.Toolkit.PropertyGrid.Attributes.ExpandableObject]
         public depthsDescriptionViewModel? depthsDescription {
             get {
                 return _depthsDescription;
-                }
+            }
 
             set {
                 SetValue(ref _depthsDescription, value);
-                }
             }
+        }
 
         private String _locationByText = string.Empty;
         [Category("DockArea")]
         public String locationByText {
             get {
                 return _locationByText;
-                }
+            }
 
             set {
                 SetValue(ref _locationByText, value);
-                }
             }
+        }
 
         private markedByViewModel? _markedBy;
         [Category("DockArea")]
@@ -7918,48 +7852,48 @@ namespace S100Framework.WPF.ViewModel.S131
         public markedByViewModel? markedBy {
             get {
                 return _markedBy;
-                }
+            }
 
             set {
                 SetValue(ref _markedBy, value);
-                }
             }
+        }
 
         private iSPSLevel? _iSPSLevel = default;
         [Category("DockArea")]
         public iSPSLevel? iSPSLevel {
             get {
                 return _iSPSLevel;
-                }
+            }
 
             set {
                 SetValue(ref _iSPSLevel, value);
-                }
             }
+        }
 
         private String _locationMRN = string.Empty;
         [Category("FeatureType")]
         public String locationMRN {
             get {
                 return _locationMRN;
-                }
+            }
 
             set {
                 SetValue(ref _locationMRN, value);
-                }
             }
+        }
 
         private String _globalLocationNumber = string.Empty;
         [Category("FeatureType")]
         public String globalLocationNumber {
             get {
                 return _globalLocationNumber;
-                }
+            }
 
             set {
                 SetValue(ref _globalLocationNumber, value);
-                }
             }
+        }
 
         [Category("FeatureType")]
         public ObservableCollection<featureName> featureName { get; set; } = new();
@@ -7970,12 +7904,12 @@ namespace S100Framework.WPF.ViewModel.S131
         public fixedDateRangeViewModel? fixedDateRange {
             get {
                 return _fixedDateRange;
-                }
+            }
 
             set {
                 SetValue(ref _fixedDateRange, value);
-                }
             }
+        }
 
         [Category("FeatureType")]
         public ObservableCollection<periodicDateRange> periodicDateRange { get; set; } = new();
@@ -7991,59 +7925,58 @@ namespace S100Framework.WPF.ViewModel.S131
         public String source {
             get {
                 return _source;
-                }
+            }
 
             set {
                 SetValue(ref _source, value);
-                }
             }
+        }
 
         private sourceType? _sourceType = default;
         [Category("FeatureType")]
         public sourceType? sourceType {
             get {
                 return _sourceType;
-                }
+            }
 
             set {
                 SetValue(ref _sourceType, value);
-                }
             }
+        }
 
         private DateOnly? _reportedDate = default;
         [Category("FeatureType")]
         public DateOnly? reportedDate {
             get {
                 return _reportedDate;
-                }
+            }
 
             set {
                 SetValue(ref _reportedDate, value);
-                }
             }
+        }
 
         [Category("FeatureType")]
         public ObservableCollection<textContent> textContent { get; set; } = new();
 
-        public class DockAreaRefIdViewModel : FeatureRefIdViewModel {
+        public class DockAreaRefIdViewModel : FeatureRefIdViewModel
+        {
             public override string[] AssociationTypes => ["DockArea"];
-
-            public override string ToString() => "RefId";
-            }
+        }
 
         public void Load(DomainModel.S131.FeatureTypes.DockArea instance) {
             depthsDescription = new();
             if (instance.depthsDescription != null) {
                 depthsDescription = new();
                 depthsDescription.Load(instance.depthsDescription);
-                }
+            }
 
             locationByText = instance.locationByText;
             markedBy = new();
             if (instance.markedBy != null) {
                 markedBy = new();
                 markedBy.Load(instance.markedBy);
-                }
+            }
 
             iSPSLevel = instance.iSPSLevel;
             locationMRN = instance.locationMRN;
@@ -8056,7 +7989,7 @@ namespace S100Framework.WPF.ViewModel.S131
             if (instance.fixedDateRange != null) {
                 fixedDateRange = new();
                 fixedDateRange.Load(instance.fixedDateRange);
-                }
+            }
 
             periodicDateRange.Clear();
             if (instance.periodicDateRange is not null)
@@ -8077,11 +8010,10 @@ namespace S100Framework.WPF.ViewModel.S131
             if (instance.textContent is not null)
                 foreach (var e in instance.textContent)
                     textContent.Add(e);
-            }
+        }
 
         public override string Serialize() {
-            var instance = new DomainModel.S131.FeatureTypes.DockArea
-                {
+            var instance = new DomainModel.S131.FeatureTypes.DockArea {
                 depthsDescription = this.depthsDescription?.Model,
                 locationByText = this.locationByText,
                 markedBy = this.markedBy?.Model,
@@ -8097,13 +8029,12 @@ namespace S100Framework.WPF.ViewModel.S131
                 sourceType = this.sourceType,
                 reportedDate = this.reportedDate,
                 textContent = this.textContent.ToList(),
-                };
+            };
             return System.Text.Json.JsonSerializer.Serialize(instance);
-            }
+        }
 
         [Browsable(false)]
-        public DomainModel.S131.FeatureTypes.DockArea Model => new()
-            {
+        public DomainModel.S131.FeatureTypes.DockArea Model => new() {
             depthsDescription = this._depthsDescription?.Model,
             locationByText = this._locationByText,
             markedBy = this._markedBy?.Model,
@@ -8119,7 +8050,7 @@ namespace S100Framework.WPF.ViewModel.S131
             sourceType = this._sourceType,
             reportedDate = this._reportedDate,
             textContent = this.textContent.ToList(),
-            };
+        };
 
         public DockAreaViewModel() : base() {
             featureName.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
@@ -8137,60 +8068,61 @@ namespace S100Framework.WPF.ViewModel.S131
             textContent.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
                 OnPropertyChanged(nameof(textContent));
             };
-            }
         }
+    }
 
     [CategoryOrder("DryDock", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class DryDockViewModel : ViewModelBase {
+    public partial class DryDockViewModel : ViewModelBase
+    {
         private Decimal? _sillDepth = default;
         [Category("DryDock")]
         public Decimal? sillDepth {
             get {
                 return _sillDepth;
-                }
+            }
 
             set {
                 SetValue(ref _sillDepth, value);
-                }
             }
+        }
 
         private Decimal? _verticalClearanceValue = default;
         [Category("HarbourPhysicalInfrastructure")]
         public Decimal? verticalClearanceValue {
             get {
                 return _verticalClearanceValue;
-                }
+            }
 
             set {
                 SetValue(ref _verticalClearanceValue, value);
-                }
             }
+        }
 
         private String _locationMRN = string.Empty;
         [Category("FeatureType")]
         public String locationMRN {
             get {
                 return _locationMRN;
-                }
+            }
 
             set {
                 SetValue(ref _locationMRN, value);
-                }
             }
+        }
 
         private String _globalLocationNumber = string.Empty;
         [Category("FeatureType")]
         public String globalLocationNumber {
             get {
                 return _globalLocationNumber;
-                }
+            }
 
             set {
                 SetValue(ref _globalLocationNumber, value);
-                }
             }
+        }
 
         [Category("FeatureType")]
         public ObservableCollection<featureName> featureName { get; set; } = new();
@@ -8201,12 +8133,12 @@ namespace S100Framework.WPF.ViewModel.S131
         public fixedDateRangeViewModel? fixedDateRange {
             get {
                 return _fixedDateRange;
-                }
+            }
 
             set {
                 SetValue(ref _fixedDateRange, value);
-                }
             }
+        }
 
         [Category("FeatureType")]
         public ObservableCollection<periodicDateRange> periodicDateRange { get; set; } = new();
@@ -8222,45 +8154,44 @@ namespace S100Framework.WPF.ViewModel.S131
         public String source {
             get {
                 return _source;
-                }
+            }
 
             set {
                 SetValue(ref _source, value);
-                }
             }
+        }
 
         private sourceType? _sourceType = default;
         [Category("FeatureType")]
         public sourceType? sourceType {
             get {
                 return _sourceType;
-                }
+            }
 
             set {
                 SetValue(ref _sourceType, value);
-                }
             }
+        }
 
         private DateOnly? _reportedDate = default;
         [Category("FeatureType")]
         public DateOnly? reportedDate {
             get {
                 return _reportedDate;
-                }
+            }
 
             set {
                 SetValue(ref _reportedDate, value);
-                }
             }
+        }
 
         [Category("FeatureType")]
         public ObservableCollection<textContent> textContent { get; set; } = new();
 
-        public class DryDockRefIdViewModel : FeatureRefIdViewModel {
+        public class DryDockRefIdViewModel : FeatureRefIdViewModel
+        {
             public override string[] AssociationTypes => ["DryDock"];
-
-            public override string ToString() => "RefId";
-            }
+        }
 
         public void Load(DomainModel.S131.FeatureTypes.DryDock instance) {
             sillDepth = instance.sillDepth;
@@ -8275,7 +8206,7 @@ namespace S100Framework.WPF.ViewModel.S131
             if (instance.fixedDateRange != null) {
                 fixedDateRange = new();
                 fixedDateRange.Load(instance.fixedDateRange);
-                }
+            }
 
             periodicDateRange.Clear();
             if (instance.periodicDateRange is not null)
@@ -8296,11 +8227,10 @@ namespace S100Framework.WPF.ViewModel.S131
             if (instance.textContent is not null)
                 foreach (var e in instance.textContent)
                     textContent.Add(e);
-            }
+        }
 
         public override string Serialize() {
-            var instance = new DomainModel.S131.FeatureTypes.DryDock
-                {
+            var instance = new DomainModel.S131.FeatureTypes.DryDock {
                 sillDepth = this.sillDepth,
                 verticalClearanceValue = this.verticalClearanceValue,
                 locationMRN = this.locationMRN,
@@ -8314,13 +8244,12 @@ namespace S100Framework.WPF.ViewModel.S131
                 sourceType = this.sourceType,
                 reportedDate = this.reportedDate,
                 textContent = this.textContent.ToList(),
-                };
+            };
             return System.Text.Json.JsonSerializer.Serialize(instance);
-            }
+        }
 
         [Browsable(false)]
-        public DomainModel.S131.FeatureTypes.DryDock Model => new()
-            {
+        public DomainModel.S131.FeatureTypes.DryDock Model => new() {
             sillDepth = this._sillDepth,
             verticalClearanceValue = this._verticalClearanceValue,
             locationMRN = this._locationMRN,
@@ -8334,7 +8263,7 @@ namespace S100Framework.WPF.ViewModel.S131
             sourceType = this._sourceType,
             reportedDate = this._reportedDate,
             textContent = this.textContent.ToList(),
-            };
+        };
 
         public DryDockViewModel() : base() {
             featureName.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
@@ -8352,37 +8281,38 @@ namespace S100Framework.WPF.ViewModel.S131
             textContent.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
                 OnPropertyChanged(nameof(textContent));
             };
-            }
         }
+    }
 
     [CategoryOrder("DumpingGround", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class DumpingGroundViewModel : ViewModelBase {
+    public partial class DumpingGroundViewModel : ViewModelBase
+    {
         private depthsDescriptionViewModel? _depthsDescription;
         [Category("DumpingGround")]
         [Xceed.Wpf.Toolkit.PropertyGrid.Attributes.ExpandableObject]
         public depthsDescriptionViewModel? depthsDescription {
             get {
                 return _depthsDescription;
-                }
+            }
 
             set {
                 SetValue(ref _depthsDescription, value);
-                }
             }
+        }
 
         private String _locationByText = string.Empty;
         [Category("DumpingGround")]
         public String locationByText {
             get {
                 return _locationByText;
-                }
+            }
 
             set {
                 SetValue(ref _locationByText, value);
-                }
             }
+        }
 
         private markedByViewModel? _markedBy;
         [Category("DumpingGround")]
@@ -8390,48 +8320,48 @@ namespace S100Framework.WPF.ViewModel.S131
         public markedByViewModel? markedBy {
             get {
                 return _markedBy;
-                }
+            }
 
             set {
                 SetValue(ref _markedBy, value);
-                }
             }
+        }
 
         private iSPSLevel? _iSPSLevel = default;
         [Category("DumpingGround")]
         public iSPSLevel? iSPSLevel {
             get {
                 return _iSPSLevel;
-                }
+            }
 
             set {
                 SetValue(ref _iSPSLevel, value);
-                }
             }
+        }
 
         private String _locationMRN = string.Empty;
         [Category("FeatureType")]
         public String locationMRN {
             get {
                 return _locationMRN;
-                }
+            }
 
             set {
                 SetValue(ref _locationMRN, value);
-                }
             }
+        }
 
         private String _globalLocationNumber = string.Empty;
         [Category("FeatureType")]
         public String globalLocationNumber {
             get {
                 return _globalLocationNumber;
-                }
+            }
 
             set {
                 SetValue(ref _globalLocationNumber, value);
-                }
             }
+        }
 
         [Category("FeatureType")]
         public ObservableCollection<featureName> featureName { get; set; } = new();
@@ -8442,12 +8372,12 @@ namespace S100Framework.WPF.ViewModel.S131
         public fixedDateRangeViewModel? fixedDateRange {
             get {
                 return _fixedDateRange;
-                }
+            }
 
             set {
                 SetValue(ref _fixedDateRange, value);
-                }
             }
+        }
 
         [Category("FeatureType")]
         public ObservableCollection<periodicDateRange> periodicDateRange { get; set; } = new();
@@ -8463,59 +8393,58 @@ namespace S100Framework.WPF.ViewModel.S131
         public String source {
             get {
                 return _source;
-                }
+            }
 
             set {
                 SetValue(ref _source, value);
-                }
             }
+        }
 
         private sourceType? _sourceType = default;
         [Category("FeatureType")]
         public sourceType? sourceType {
             get {
                 return _sourceType;
-                }
+            }
 
             set {
                 SetValue(ref _sourceType, value);
-                }
             }
+        }
 
         private DateOnly? _reportedDate = default;
         [Category("FeatureType")]
         public DateOnly? reportedDate {
             get {
                 return _reportedDate;
-                }
+            }
 
             set {
                 SetValue(ref _reportedDate, value);
-                }
             }
+        }
 
         [Category("FeatureType")]
         public ObservableCollection<textContent> textContent { get; set; } = new();
 
-        public class DumpingGroundRefIdViewModel : FeatureRefIdViewModel {
+        public class DumpingGroundRefIdViewModel : FeatureRefIdViewModel
+        {
             public override string[] AssociationTypes => ["DumpingGround"];
-
-            public override string ToString() => "RefId";
-            }
+        }
 
         public void Load(DomainModel.S131.FeatureTypes.DumpingGround instance) {
             depthsDescription = new();
             if (instance.depthsDescription != null) {
                 depthsDescription = new();
                 depthsDescription.Load(instance.depthsDescription);
-                }
+            }
 
             locationByText = instance.locationByText;
             markedBy = new();
             if (instance.markedBy != null) {
                 markedBy = new();
                 markedBy.Load(instance.markedBy);
-                }
+            }
 
             iSPSLevel = instance.iSPSLevel;
             locationMRN = instance.locationMRN;
@@ -8528,7 +8457,7 @@ namespace S100Framework.WPF.ViewModel.S131
             if (instance.fixedDateRange != null) {
                 fixedDateRange = new();
                 fixedDateRange.Load(instance.fixedDateRange);
-                }
+            }
 
             periodicDateRange.Clear();
             if (instance.periodicDateRange is not null)
@@ -8549,11 +8478,10 @@ namespace S100Framework.WPF.ViewModel.S131
             if (instance.textContent is not null)
                 foreach (var e in instance.textContent)
                     textContent.Add(e);
-            }
+        }
 
         public override string Serialize() {
-            var instance = new DomainModel.S131.FeatureTypes.DumpingGround
-                {
+            var instance = new DomainModel.S131.FeatureTypes.DumpingGround {
                 depthsDescription = this.depthsDescription?.Model,
                 locationByText = this.locationByText,
                 markedBy = this.markedBy?.Model,
@@ -8569,13 +8497,12 @@ namespace S100Framework.WPF.ViewModel.S131
                 sourceType = this.sourceType,
                 reportedDate = this.reportedDate,
                 textContent = this.textContent.ToList(),
-                };
+            };
             return System.Text.Json.JsonSerializer.Serialize(instance);
-            }
+        }
 
         [Browsable(false)]
-        public DomainModel.S131.FeatureTypes.DumpingGround Model => new()
-            {
+        public DomainModel.S131.FeatureTypes.DumpingGround Model => new() {
             depthsDescription = this._depthsDescription?.Model,
             locationByText = this._locationByText,
             markedBy = this._markedBy?.Model,
@@ -8591,7 +8518,7 @@ namespace S100Framework.WPF.ViewModel.S131
             sourceType = this._sourceType,
             reportedDate = this._reportedDate,
             textContent = this.textContent.ToList(),
-            };
+        };
 
         public DumpingGroundViewModel() : base() {
             featureName.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
@@ -8609,60 +8536,61 @@ namespace S100Framework.WPF.ViewModel.S131
             textContent.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
                 OnPropertyChanged(nameof(textContent));
             };
-            }
         }
+    }
 
     [CategoryOrder("FloatingDock", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class FloatingDockViewModel : ViewModelBase {
+    public partial class FloatingDockViewModel : ViewModelBase
+    {
         private Decimal? _sillDepth = default;
         [Category("FloatingDock")]
         public Decimal? sillDepth {
             get {
                 return _sillDepth;
-                }
+            }
 
             set {
                 SetValue(ref _sillDepth, value);
-                }
             }
+        }
 
         private Decimal? _verticalClearanceValue = default;
         [Category("HarbourPhysicalInfrastructure")]
         public Decimal? verticalClearanceValue {
             get {
                 return _verticalClearanceValue;
-                }
+            }
 
             set {
                 SetValue(ref _verticalClearanceValue, value);
-                }
             }
+        }
 
         private String _locationMRN = string.Empty;
         [Category("FeatureType")]
         public String locationMRN {
             get {
                 return _locationMRN;
-                }
+            }
 
             set {
                 SetValue(ref _locationMRN, value);
-                }
             }
+        }
 
         private String _globalLocationNumber = string.Empty;
         [Category("FeatureType")]
         public String globalLocationNumber {
             get {
                 return _globalLocationNumber;
-                }
+            }
 
             set {
                 SetValue(ref _globalLocationNumber, value);
-                }
             }
+        }
 
         [Category("FeatureType")]
         public ObservableCollection<featureName> featureName { get; set; } = new();
@@ -8673,12 +8601,12 @@ namespace S100Framework.WPF.ViewModel.S131
         public fixedDateRangeViewModel? fixedDateRange {
             get {
                 return _fixedDateRange;
-                }
+            }
 
             set {
                 SetValue(ref _fixedDateRange, value);
-                }
             }
+        }
 
         [Category("FeatureType")]
         public ObservableCollection<periodicDateRange> periodicDateRange { get; set; } = new();
@@ -8694,45 +8622,44 @@ namespace S100Framework.WPF.ViewModel.S131
         public String source {
             get {
                 return _source;
-                }
+            }
 
             set {
                 SetValue(ref _source, value);
-                }
             }
+        }
 
         private sourceType? _sourceType = default;
         [Category("FeatureType")]
         public sourceType? sourceType {
             get {
                 return _sourceType;
-                }
+            }
 
             set {
                 SetValue(ref _sourceType, value);
-                }
             }
+        }
 
         private DateOnly? _reportedDate = default;
         [Category("FeatureType")]
         public DateOnly? reportedDate {
             get {
                 return _reportedDate;
-                }
+            }
 
             set {
                 SetValue(ref _reportedDate, value);
-                }
             }
+        }
 
         [Category("FeatureType")]
         public ObservableCollection<textContent> textContent { get; set; } = new();
 
-        public class FloatingDockRefIdViewModel : FeatureRefIdViewModel {
+        public class FloatingDockRefIdViewModel : FeatureRefIdViewModel
+        {
             public override string[] AssociationTypes => ["FloatingDock"];
-
-            public override string ToString() => "RefId";
-            }
+        }
 
         public void Load(DomainModel.S131.FeatureTypes.FloatingDock instance) {
             sillDepth = instance.sillDepth;
@@ -8747,7 +8674,7 @@ namespace S100Framework.WPF.ViewModel.S131
             if (instance.fixedDateRange != null) {
                 fixedDateRange = new();
                 fixedDateRange.Load(instance.fixedDateRange);
-                }
+            }
 
             periodicDateRange.Clear();
             if (instance.periodicDateRange is not null)
@@ -8768,11 +8695,10 @@ namespace S100Framework.WPF.ViewModel.S131
             if (instance.textContent is not null)
                 foreach (var e in instance.textContent)
                     textContent.Add(e);
-            }
+        }
 
         public override string Serialize() {
-            var instance = new DomainModel.S131.FeatureTypes.FloatingDock
-                {
+            var instance = new DomainModel.S131.FeatureTypes.FloatingDock {
                 sillDepth = this.sillDepth,
                 verticalClearanceValue = this.verticalClearanceValue,
                 locationMRN = this.locationMRN,
@@ -8786,13 +8712,12 @@ namespace S100Framework.WPF.ViewModel.S131
                 sourceType = this.sourceType,
                 reportedDate = this.reportedDate,
                 textContent = this.textContent.ToList(),
-                };
+            };
             return System.Text.Json.JsonSerializer.Serialize(instance);
-            }
+        }
 
         [Browsable(false)]
-        public DomainModel.S131.FeatureTypes.FloatingDock Model => new()
-            {
+        public DomainModel.S131.FeatureTypes.FloatingDock Model => new() {
             sillDepth = this._sillDepth,
             verticalClearanceValue = this._verticalClearanceValue,
             locationMRN = this._locationMRN,
@@ -8806,7 +8731,7 @@ namespace S100Framework.WPF.ViewModel.S131
             sourceType = this._sourceType,
             reportedDate = this._reportedDate,
             textContent = this.textContent.ToList(),
-            };
+        };
 
         public FloatingDockViewModel() : base() {
             featureName.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
@@ -8824,60 +8749,61 @@ namespace S100Framework.WPF.ViewModel.S131
             textContent.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
                 OnPropertyChanged(nameof(textContent));
             };
-            }
         }
+    }
 
     [CategoryOrder("Gridiron", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class GridironViewModel : ViewModelBase {
+    public partial class GridironViewModel : ViewModelBase
+    {
         private Decimal? _sillDepth = default;
         [Category("Gridiron")]
         public Decimal? sillDepth {
             get {
                 return _sillDepth;
-                }
+            }
 
             set {
                 SetValue(ref _sillDepth, value);
-                }
             }
+        }
 
         private Decimal? _verticalClearanceValue = default;
         [Category("HarbourPhysicalInfrastructure")]
         public Decimal? verticalClearanceValue {
             get {
                 return _verticalClearanceValue;
-                }
+            }
 
             set {
                 SetValue(ref _verticalClearanceValue, value);
-                }
             }
+        }
 
         private String _locationMRN = string.Empty;
         [Category("FeatureType")]
         public String locationMRN {
             get {
                 return _locationMRN;
-                }
+            }
 
             set {
                 SetValue(ref _locationMRN, value);
-                }
             }
+        }
 
         private String _globalLocationNumber = string.Empty;
         [Category("FeatureType")]
         public String globalLocationNumber {
             get {
                 return _globalLocationNumber;
-                }
+            }
 
             set {
                 SetValue(ref _globalLocationNumber, value);
-                }
             }
+        }
 
         [Category("FeatureType")]
         public ObservableCollection<featureName> featureName { get; set; } = new();
@@ -8888,12 +8814,12 @@ namespace S100Framework.WPF.ViewModel.S131
         public fixedDateRangeViewModel? fixedDateRange {
             get {
                 return _fixedDateRange;
-                }
+            }
 
             set {
                 SetValue(ref _fixedDateRange, value);
-                }
             }
+        }
 
         [Category("FeatureType")]
         public ObservableCollection<periodicDateRange> periodicDateRange { get; set; } = new();
@@ -8909,45 +8835,44 @@ namespace S100Framework.WPF.ViewModel.S131
         public String source {
             get {
                 return _source;
-                }
+            }
 
             set {
                 SetValue(ref _source, value);
-                }
             }
+        }
 
         private sourceType? _sourceType = default;
         [Category("FeatureType")]
         public sourceType? sourceType {
             get {
                 return _sourceType;
-                }
+            }
 
             set {
                 SetValue(ref _sourceType, value);
-                }
             }
+        }
 
         private DateOnly? _reportedDate = default;
         [Category("FeatureType")]
         public DateOnly? reportedDate {
             get {
                 return _reportedDate;
-                }
+            }
 
             set {
                 SetValue(ref _reportedDate, value);
-                }
             }
+        }
 
         [Category("FeatureType")]
         public ObservableCollection<textContent> textContent { get; set; } = new();
 
-        public class GridironRefIdViewModel : FeatureRefIdViewModel {
+        public class GridironRefIdViewModel : FeatureRefIdViewModel
+        {
             public override string[] AssociationTypes => ["Gridiron"];
-
-            public override string ToString() => "RefId";
-            }
+        }
 
         public void Load(DomainModel.S131.FeatureTypes.Gridiron instance) {
             sillDepth = instance.sillDepth;
@@ -8962,7 +8887,7 @@ namespace S100Framework.WPF.ViewModel.S131
             if (instance.fixedDateRange != null) {
                 fixedDateRange = new();
                 fixedDateRange.Load(instance.fixedDateRange);
-                }
+            }
 
             periodicDateRange.Clear();
             if (instance.periodicDateRange is not null)
@@ -8983,11 +8908,10 @@ namespace S100Framework.WPF.ViewModel.S131
             if (instance.textContent is not null)
                 foreach (var e in instance.textContent)
                     textContent.Add(e);
-            }
+        }
 
         public override string Serialize() {
-            var instance = new DomainModel.S131.FeatureTypes.Gridiron
-                {
+            var instance = new DomainModel.S131.FeatureTypes.Gridiron {
                 sillDepth = this.sillDepth,
                 verticalClearanceValue = this.verticalClearanceValue,
                 locationMRN = this.locationMRN,
@@ -9001,13 +8925,12 @@ namespace S100Framework.WPF.ViewModel.S131
                 sourceType = this.sourceType,
                 reportedDate = this.reportedDate,
                 textContent = this.textContent.ToList(),
-                };
+            };
             return System.Text.Json.JsonSerializer.Serialize(instance);
-            }
+        }
 
         [Browsable(false)]
-        public DomainModel.S131.FeatureTypes.Gridiron Model => new()
-            {
+        public DomainModel.S131.FeatureTypes.Gridiron Model => new() {
             sillDepth = this._sillDepth,
             verticalClearanceValue = this._verticalClearanceValue,
             locationMRN = this._locationMRN,
@@ -9021,7 +8944,7 @@ namespace S100Framework.WPF.ViewModel.S131
             sourceType = this._sourceType,
             reportedDate = this._reportedDate,
             textContent = this.textContent.ToList(),
-            };
+        };
 
         public GridironViewModel() : base() {
             featureName.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
@@ -9039,60 +8962,61 @@ namespace S100Framework.WPF.ViewModel.S131
             textContent.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
                 OnPropertyChanged(nameof(textContent));
             };
-            }
         }
+    }
 
     [CategoryOrder("HarbourAreaAdministrative", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class HarbourAreaAdministrativeViewModel : ViewModelBase {
+    public partial class HarbourAreaAdministrativeViewModel : ViewModelBase
+    {
         private String _uNLocationCode = string.Empty;
         [Category("HarbourAreaAdministrative")]
         public String uNLocationCode {
             get {
                 return _uNLocationCode;
-                }
+            }
 
             set {
                 SetValue(ref _uNLocationCode, value);
-                }
             }
+        }
 
         private String _nationality = string.Empty;
         [Category("HarbourAreaAdministrative")]
         public String nationality {
             get {
                 return _nationality;
-                }
+            }
 
             set {
                 SetValue(ref _nationality, value);
-                }
             }
+        }
 
         private String _applicableLoadLineZone = string.Empty;
         [Category("HarbourAreaAdministrative")]
         public String applicableLoadLineZone {
             get {
                 return _applicableLoadLineZone;
-                }
+            }
 
             set {
                 SetValue(ref _applicableLoadLineZone, value);
-                }
             }
+        }
 
         private iSPSLevel? _iSPSLevel = default;
         [Category("HarbourAreaAdministrative")]
         public iSPSLevel? iSPSLevel {
             get {
                 return _iSPSLevel;
-                }
+            }
 
             set {
                 SetValue(ref _iSPSLevel, value);
-                }
             }
+        }
 
         [Category("HarbourAreaAdministrative")]
         public ObservableCollection<categoryOfHarbourFacility> categoryOfHarbourFacility { get; set; } = new();
@@ -9103,36 +9027,36 @@ namespace S100Framework.WPF.ViewModel.S131
         public generalHarbourInformationViewModel? generalHarbourInformation {
             get {
                 return _generalHarbourInformation;
-                }
+            }
 
             set {
                 SetValue(ref _generalHarbourInformation, value);
-                }
             }
+        }
 
         private String _locationMRN = string.Empty;
         [Category("FeatureType")]
         public String locationMRN {
             get {
                 return _locationMRN;
-                }
+            }
 
             set {
                 SetValue(ref _locationMRN, value);
-                }
             }
+        }
 
         private String _globalLocationNumber = string.Empty;
         [Category("FeatureType")]
         public String globalLocationNumber {
             get {
                 return _globalLocationNumber;
-                }
+            }
 
             set {
                 SetValue(ref _globalLocationNumber, value);
-                }
             }
+        }
 
         [Category("FeatureType")]
         public ObservableCollection<featureName> featureName { get; set; } = new();
@@ -9143,12 +9067,12 @@ namespace S100Framework.WPF.ViewModel.S131
         public fixedDateRangeViewModel? fixedDateRange {
             get {
                 return _fixedDateRange;
-                }
+            }
 
             set {
                 SetValue(ref _fixedDateRange, value);
-                }
             }
+        }
 
         [Category("FeatureType")]
         public ObservableCollection<periodicDateRange> periodicDateRange { get; set; } = new();
@@ -9164,45 +9088,44 @@ namespace S100Framework.WPF.ViewModel.S131
         public String source {
             get {
                 return _source;
-                }
+            }
 
             set {
                 SetValue(ref _source, value);
-                }
             }
+        }
 
         private sourceType? _sourceType = default;
         [Category("FeatureType")]
         public sourceType? sourceType {
             get {
                 return _sourceType;
-                }
+            }
 
             set {
                 SetValue(ref _sourceType, value);
-                }
             }
+        }
 
         private DateOnly? _reportedDate = default;
         [Category("FeatureType")]
         public DateOnly? reportedDate {
             get {
                 return _reportedDate;
-                }
+            }
 
             set {
                 SetValue(ref _reportedDate, value);
-                }
             }
+        }
 
         [Category("FeatureType")]
         public ObservableCollection<textContent> textContent { get; set; } = new();
 
-        public class HarbourAreaAdministrativeRefIdViewModel : FeatureRefIdViewModel {
+        public class HarbourAreaAdministrativeRefIdViewModel : FeatureRefIdViewModel
+        {
             public override string[] AssociationTypes => ["HarbourAreaAdministrative"];
-
-            public override string ToString() => "RefId";
-            }
+        }
 
         public void Load(DomainModel.S131.FeatureTypes.HarbourAreaAdministrative instance) {
             uNLocationCode = instance.uNLocationCode;
@@ -9217,7 +9140,7 @@ namespace S100Framework.WPF.ViewModel.S131
             if (instance.generalHarbourInformation != null) {
                 generalHarbourInformation = new();
                 generalHarbourInformation.Load(instance.generalHarbourInformation);
-                }
+            }
 
             locationMRN = instance.locationMRN;
             globalLocationNumber = instance.globalLocationNumber;
@@ -9229,7 +9152,7 @@ namespace S100Framework.WPF.ViewModel.S131
             if (instance.fixedDateRange != null) {
                 fixedDateRange = new();
                 fixedDateRange.Load(instance.fixedDateRange);
-                }
+            }
 
             periodicDateRange.Clear();
             if (instance.periodicDateRange is not null)
@@ -9250,11 +9173,10 @@ namespace S100Framework.WPF.ViewModel.S131
             if (instance.textContent is not null)
                 foreach (var e in instance.textContent)
                     textContent.Add(e);
-            }
+        }
 
         public override string Serialize() {
-            var instance = new DomainModel.S131.FeatureTypes.HarbourAreaAdministrative
-                {
+            var instance = new DomainModel.S131.FeatureTypes.HarbourAreaAdministrative {
                 uNLocationCode = this.uNLocationCode,
                 nationality = this.nationality,
                 applicableLoadLineZone = this.applicableLoadLineZone,
@@ -9272,13 +9194,12 @@ namespace S100Framework.WPF.ViewModel.S131
                 sourceType = this.sourceType,
                 reportedDate = this.reportedDate,
                 textContent = this.textContent.ToList(),
-                };
+            };
             return System.Text.Json.JsonSerializer.Serialize(instance);
-            }
+        }
 
         [Browsable(false)]
-        public DomainModel.S131.FeatureTypes.HarbourAreaAdministrative Model => new()
-            {
+        public DomainModel.S131.FeatureTypes.HarbourAreaAdministrative Model => new() {
             uNLocationCode = this._uNLocationCode,
             nationality = this._nationality,
             applicableLoadLineZone = this._applicableLoadLineZone,
@@ -9296,7 +9217,7 @@ namespace S100Framework.WPF.ViewModel.S131
             sourceType = this._sourceType,
             reportedDate = this._reportedDate,
             textContent = this.textContent.ToList(),
-            };
+        };
 
         public HarbourAreaAdministrativeViewModel() : base() {
             categoryOfHarbourFacility.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
@@ -9317,24 +9238,25 @@ namespace S100Framework.WPF.ViewModel.S131
             textContent.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
                 OnPropertyChanged(nameof(textContent));
             };
-            }
         }
+    }
 
     [CategoryOrder("HarbourAreaSection", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class HarbourAreaSectionViewModel : ViewModelBase {
+    public partial class HarbourAreaSectionViewModel : ViewModelBase
+    {
         private categoryOfPortSection? _categoryOfPortSection = default;
         [Category("HarbourAreaSection")]
         public categoryOfPortSection? categoryOfPortSection {
             get {
                 return _categoryOfPortSection;
-                }
+            }
 
             set {
                 SetValue(ref _categoryOfPortSection, value);
-                }
             }
+        }
 
         [Category("HarbourAreaSection")]
         public ObservableCollection<categoryOfHarbourFacility> categoryOfHarbourFacility { get; set; } = new();
@@ -9344,12 +9266,12 @@ namespace S100Framework.WPF.ViewModel.S131
         public iSPSLevel? iSPSLevel {
             get {
                 return _iSPSLevel;
-                }
+            }
 
             set {
                 SetValue(ref _iSPSLevel, value);
-                }
             }
+        }
 
         private facilitiesLayoutDescriptionViewModel? _facilitiesLayoutDescription;
         [Category("HarbourAreaSection")]
@@ -9357,36 +9279,36 @@ namespace S100Framework.WPF.ViewModel.S131
         public facilitiesLayoutDescriptionViewModel? facilitiesLayoutDescription {
             get {
                 return _facilitiesLayoutDescription;
-                }
+            }
 
             set {
                 SetValue(ref _facilitiesLayoutDescription, value);
-                }
             }
+        }
 
         private String _locationMRN = string.Empty;
         [Category("FeatureType")]
         public String locationMRN {
             get {
                 return _locationMRN;
-                }
+            }
 
             set {
                 SetValue(ref _locationMRN, value);
-                }
             }
+        }
 
         private String _globalLocationNumber = string.Empty;
         [Category("FeatureType")]
         public String globalLocationNumber {
             get {
                 return _globalLocationNumber;
-                }
+            }
 
             set {
                 SetValue(ref _globalLocationNumber, value);
-                }
             }
+        }
 
         [Category("FeatureType")]
         public ObservableCollection<featureName> featureName { get; set; } = new();
@@ -9397,12 +9319,12 @@ namespace S100Framework.WPF.ViewModel.S131
         public fixedDateRangeViewModel? fixedDateRange {
             get {
                 return _fixedDateRange;
-                }
+            }
 
             set {
                 SetValue(ref _fixedDateRange, value);
-                }
             }
+        }
 
         [Category("FeatureType")]
         public ObservableCollection<periodicDateRange> periodicDateRange { get; set; } = new();
@@ -9418,45 +9340,44 @@ namespace S100Framework.WPF.ViewModel.S131
         public String source {
             get {
                 return _source;
-                }
+            }
 
             set {
                 SetValue(ref _source, value);
-                }
             }
+        }
 
         private sourceType? _sourceType = default;
         [Category("FeatureType")]
         public sourceType? sourceType {
             get {
                 return _sourceType;
-                }
+            }
 
             set {
                 SetValue(ref _sourceType, value);
-                }
             }
+        }
 
         private DateOnly? _reportedDate = default;
         [Category("FeatureType")]
         public DateOnly? reportedDate {
             get {
                 return _reportedDate;
-                }
+            }
 
             set {
                 SetValue(ref _reportedDate, value);
-                }
             }
+        }
 
         [Category("FeatureType")]
         public ObservableCollection<textContent> textContent { get; set; } = new();
 
-        public class HarbourAreaSectionRefIdViewModel : FeatureRefIdViewModel {
+        public class HarbourAreaSectionRefIdViewModel : FeatureRefIdViewModel
+        {
             public override string[] AssociationTypes => ["HarbourAreaSection"];
-
-            public override string ToString() => "RefId";
-            }
+        }
 
         public void Load(DomainModel.S131.FeatureTypes.HarbourAreaSection instance) {
             categoryOfPortSection = instance.categoryOfPortSection;
@@ -9469,7 +9390,7 @@ namespace S100Framework.WPF.ViewModel.S131
             if (instance.facilitiesLayoutDescription != null) {
                 facilitiesLayoutDescription = new();
                 facilitiesLayoutDescription.Load(instance.facilitiesLayoutDescription);
-                }
+            }
 
             locationMRN = instance.locationMRN;
             globalLocationNumber = instance.globalLocationNumber;
@@ -9481,7 +9402,7 @@ namespace S100Framework.WPF.ViewModel.S131
             if (instance.fixedDateRange != null) {
                 fixedDateRange = new();
                 fixedDateRange.Load(instance.fixedDateRange);
-                }
+            }
 
             periodicDateRange.Clear();
             if (instance.periodicDateRange is not null)
@@ -9502,11 +9423,10 @@ namespace S100Framework.WPF.ViewModel.S131
             if (instance.textContent is not null)
                 foreach (var e in instance.textContent)
                     textContent.Add(e);
-            }
+        }
 
         public override string Serialize() {
-            var instance = new DomainModel.S131.FeatureTypes.HarbourAreaSection
-                {
+            var instance = new DomainModel.S131.FeatureTypes.HarbourAreaSection {
                 categoryOfPortSection = this.categoryOfPortSection,
                 categoryOfHarbourFacility = this.categoryOfHarbourFacility.ToList(),
                 iSPSLevel = this.iSPSLevel,
@@ -9522,13 +9442,12 @@ namespace S100Framework.WPF.ViewModel.S131
                 sourceType = this.sourceType,
                 reportedDate = this.reportedDate,
                 textContent = this.textContent.ToList(),
-                };
+            };
             return System.Text.Json.JsonSerializer.Serialize(instance);
-            }
+        }
 
         [Browsable(false)]
-        public DomainModel.S131.FeatureTypes.HarbourAreaSection Model => new()
-            {
+        public DomainModel.S131.FeatureTypes.HarbourAreaSection Model => new() {
             categoryOfPortSection = this._categoryOfPortSection,
             categoryOfHarbourFacility = this.categoryOfHarbourFacility.ToList(),
             iSPSLevel = this._iSPSLevel,
@@ -9544,7 +9463,7 @@ namespace S100Framework.WPF.ViewModel.S131
             sourceType = this._sourceType,
             reportedDate = this._reportedDate,
             textContent = this.textContent.ToList(),
-            };
+        };
 
         public HarbourAreaSectionViewModel() : base() {
             categoryOfHarbourFacility.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
@@ -9565,37 +9484,38 @@ namespace S100Framework.WPF.ViewModel.S131
             textContent.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
                 OnPropertyChanged(nameof(textContent));
             };
-            }
         }
+    }
 
     [CategoryOrder("HarbourBasin", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class HarbourBasinViewModel : ViewModelBase {
+    public partial class HarbourBasinViewModel : ViewModelBase
+    {
         private depthsDescriptionViewModel? _depthsDescription;
         [Category("HarbourBasin")]
         [Xceed.Wpf.Toolkit.PropertyGrid.Attributes.ExpandableObject]
         public depthsDescriptionViewModel? depthsDescription {
             get {
                 return _depthsDescription;
-                }
+            }
 
             set {
                 SetValue(ref _depthsDescription, value);
-                }
             }
+        }
 
         private String _locationByText = string.Empty;
         [Category("HarbourBasin")]
         public String locationByText {
             get {
                 return _locationByText;
-                }
+            }
 
             set {
                 SetValue(ref _locationByText, value);
-                }
             }
+        }
 
         private markedByViewModel? _markedBy;
         [Category("HarbourBasin")]
@@ -9603,48 +9523,48 @@ namespace S100Framework.WPF.ViewModel.S131
         public markedByViewModel? markedBy {
             get {
                 return _markedBy;
-                }
+            }
 
             set {
                 SetValue(ref _markedBy, value);
-                }
             }
+        }
 
         private iSPSLevel? _iSPSLevel = default;
         [Category("HarbourBasin")]
         public iSPSLevel? iSPSLevel {
             get {
                 return _iSPSLevel;
-                }
+            }
 
             set {
                 SetValue(ref _iSPSLevel, value);
-                }
             }
+        }
 
         private String _locationMRN = string.Empty;
         [Category("FeatureType")]
         public String locationMRN {
             get {
                 return _locationMRN;
-                }
+            }
 
             set {
                 SetValue(ref _locationMRN, value);
-                }
             }
+        }
 
         private String _globalLocationNumber = string.Empty;
         [Category("FeatureType")]
         public String globalLocationNumber {
             get {
                 return _globalLocationNumber;
-                }
+            }
 
             set {
                 SetValue(ref _globalLocationNumber, value);
-                }
             }
+        }
 
         [Category("FeatureType")]
         public ObservableCollection<featureName> featureName { get; set; } = new();
@@ -9655,12 +9575,12 @@ namespace S100Framework.WPF.ViewModel.S131
         public fixedDateRangeViewModel? fixedDateRange {
             get {
                 return _fixedDateRange;
-                }
+            }
 
             set {
                 SetValue(ref _fixedDateRange, value);
-                }
             }
+        }
 
         [Category("FeatureType")]
         public ObservableCollection<periodicDateRange> periodicDateRange { get; set; } = new();
@@ -9676,59 +9596,58 @@ namespace S100Framework.WPF.ViewModel.S131
         public String source {
             get {
                 return _source;
-                }
+            }
 
             set {
                 SetValue(ref _source, value);
-                }
             }
+        }
 
         private sourceType? _sourceType = default;
         [Category("FeatureType")]
         public sourceType? sourceType {
             get {
                 return _sourceType;
-                }
+            }
 
             set {
                 SetValue(ref _sourceType, value);
-                }
             }
+        }
 
         private DateOnly? _reportedDate = default;
         [Category("FeatureType")]
         public DateOnly? reportedDate {
             get {
                 return _reportedDate;
-                }
+            }
 
             set {
                 SetValue(ref _reportedDate, value);
-                }
             }
+        }
 
         [Category("FeatureType")]
         public ObservableCollection<textContent> textContent { get; set; } = new();
 
-        public class HarbourBasinRefIdViewModel : FeatureRefIdViewModel {
+        public class HarbourBasinRefIdViewModel : FeatureRefIdViewModel
+        {
             public override string[] AssociationTypes => ["HarbourBasin"];
-
-            public override string ToString() => "RefId";
-            }
+        }
 
         public void Load(DomainModel.S131.FeatureTypes.HarbourBasin instance) {
             depthsDescription = new();
             if (instance.depthsDescription != null) {
                 depthsDescription = new();
                 depthsDescription.Load(instance.depthsDescription);
-                }
+            }
 
             locationByText = instance.locationByText;
             markedBy = new();
             if (instance.markedBy != null) {
                 markedBy = new();
                 markedBy.Load(instance.markedBy);
-                }
+            }
 
             iSPSLevel = instance.iSPSLevel;
             locationMRN = instance.locationMRN;
@@ -9741,7 +9660,7 @@ namespace S100Framework.WPF.ViewModel.S131
             if (instance.fixedDateRange != null) {
                 fixedDateRange = new();
                 fixedDateRange.Load(instance.fixedDateRange);
-                }
+            }
 
             periodicDateRange.Clear();
             if (instance.periodicDateRange is not null)
@@ -9762,11 +9681,10 @@ namespace S100Framework.WPF.ViewModel.S131
             if (instance.textContent is not null)
                 foreach (var e in instance.textContent)
                     textContent.Add(e);
-            }
+        }
 
         public override string Serialize() {
-            var instance = new DomainModel.S131.FeatureTypes.HarbourBasin
-                {
+            var instance = new DomainModel.S131.FeatureTypes.HarbourBasin {
                 depthsDescription = this.depthsDescription?.Model,
                 locationByText = this.locationByText,
                 markedBy = this.markedBy?.Model,
@@ -9782,13 +9700,12 @@ namespace S100Framework.WPF.ViewModel.S131
                 sourceType = this.sourceType,
                 reportedDate = this.reportedDate,
                 textContent = this.textContent.ToList(),
-                };
+            };
             return System.Text.Json.JsonSerializer.Serialize(instance);
-            }
+        }
 
         [Browsable(false)]
-        public DomainModel.S131.FeatureTypes.HarbourBasin Model => new()
-            {
+        public DomainModel.S131.FeatureTypes.HarbourBasin Model => new() {
             depthsDescription = this._depthsDescription?.Model,
             locationByText = this._locationByText,
             markedBy = this._markedBy?.Model,
@@ -9804,7 +9721,7 @@ namespace S100Framework.WPF.ViewModel.S131
             sourceType = this._sourceType,
             reportedDate = this._reportedDate,
             textContent = this.textContent.ToList(),
-            };
+        };
 
         public HarbourBasinViewModel() : base() {
             featureName.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
@@ -9822,13 +9739,14 @@ namespace S100Framework.WPF.ViewModel.S131
             textContent.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
                 OnPropertyChanged(nameof(textContent));
             };
-            }
         }
+    }
 
     [CategoryOrder("HarbourFacility", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class HarbourFacilityViewModel : ViewModelBase {
+    public partial class HarbourFacilityViewModel : ViewModelBase
+    {
         [Category("HarbourFacility")]
         public ObservableCollection<categoryOfHarbourFacility> categoryOfHarbourFacility { get; set; } = new();
 
@@ -9837,36 +9755,36 @@ namespace S100Framework.WPF.ViewModel.S131
         public Decimal? verticalClearanceValue {
             get {
                 return _verticalClearanceValue;
-                }
+            }
 
             set {
                 SetValue(ref _verticalClearanceValue, value);
-                }
             }
+        }
 
         private String _locationMRN = string.Empty;
         [Category("FeatureType")]
         public String locationMRN {
             get {
                 return _locationMRN;
-                }
+            }
 
             set {
                 SetValue(ref _locationMRN, value);
-                }
             }
+        }
 
         private String _globalLocationNumber = string.Empty;
         [Category("FeatureType")]
         public String globalLocationNumber {
             get {
                 return _globalLocationNumber;
-                }
+            }
 
             set {
                 SetValue(ref _globalLocationNumber, value);
-                }
             }
+        }
 
         [Category("FeatureType")]
         public ObservableCollection<featureName> featureName { get; set; } = new();
@@ -9877,12 +9795,12 @@ namespace S100Framework.WPF.ViewModel.S131
         public fixedDateRangeViewModel? fixedDateRange {
             get {
                 return _fixedDateRange;
-                }
+            }
 
             set {
                 SetValue(ref _fixedDateRange, value);
-                }
             }
+        }
 
         [Category("FeatureType")]
         public ObservableCollection<periodicDateRange> periodicDateRange { get; set; } = new();
@@ -9898,45 +9816,44 @@ namespace S100Framework.WPF.ViewModel.S131
         public String source {
             get {
                 return _source;
-                }
+            }
 
             set {
                 SetValue(ref _source, value);
-                }
             }
+        }
 
         private sourceType? _sourceType = default;
         [Category("FeatureType")]
         public sourceType? sourceType {
             get {
                 return _sourceType;
-                }
+            }
 
             set {
                 SetValue(ref _sourceType, value);
-                }
             }
+        }
 
         private DateOnly? _reportedDate = default;
         [Category("FeatureType")]
         public DateOnly? reportedDate {
             get {
                 return _reportedDate;
-                }
+            }
 
             set {
                 SetValue(ref _reportedDate, value);
-                }
             }
+        }
 
         [Category("FeatureType")]
         public ObservableCollection<textContent> textContent { get; set; } = new();
 
-        public class HarbourFacilityRefIdViewModel : FeatureRefIdViewModel {
+        public class HarbourFacilityRefIdViewModel : FeatureRefIdViewModel
+        {
             public override string[] AssociationTypes => ["HarbourFacility"];
-
-            public override string ToString() => "RefId";
-            }
+        }
 
         public void Load(DomainModel.S131.FeatureTypes.HarbourFacility instance) {
             categoryOfHarbourFacility.Clear();
@@ -9954,7 +9871,7 @@ namespace S100Framework.WPF.ViewModel.S131
             if (instance.fixedDateRange != null) {
                 fixedDateRange = new();
                 fixedDateRange.Load(instance.fixedDateRange);
-                }
+            }
 
             periodicDateRange.Clear();
             if (instance.periodicDateRange is not null)
@@ -9975,11 +9892,10 @@ namespace S100Framework.WPF.ViewModel.S131
             if (instance.textContent is not null)
                 foreach (var e in instance.textContent)
                     textContent.Add(e);
-            }
+        }
 
         public override string Serialize() {
-            var instance = new DomainModel.S131.FeatureTypes.HarbourFacility
-                {
+            var instance = new DomainModel.S131.FeatureTypes.HarbourFacility {
                 categoryOfHarbourFacility = this.categoryOfHarbourFacility.ToList(),
                 verticalClearanceValue = this.verticalClearanceValue,
                 locationMRN = this.locationMRN,
@@ -9993,13 +9909,12 @@ namespace S100Framework.WPF.ViewModel.S131
                 sourceType = this.sourceType,
                 reportedDate = this.reportedDate,
                 textContent = this.textContent.ToList(),
-                };
+            };
             return System.Text.Json.JsonSerializer.Serialize(instance);
-            }
+        }
 
         [Browsable(false)]
-        public DomainModel.S131.FeatureTypes.HarbourFacility Model => new()
-            {
+        public DomainModel.S131.FeatureTypes.HarbourFacility Model => new() {
             categoryOfHarbourFacility = this.categoryOfHarbourFacility.ToList(),
             verticalClearanceValue = this._verticalClearanceValue,
             locationMRN = this._locationMRN,
@@ -10013,7 +9928,7 @@ namespace S100Framework.WPF.ViewModel.S131
             sourceType = this._sourceType,
             reportedDate = this._reportedDate,
             textContent = this.textContent.ToList(),
-            };
+        };
 
         public HarbourFacilityViewModel() : base() {
             categoryOfHarbourFacility.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
@@ -10034,96 +9949,97 @@ namespace S100Framework.WPF.ViewModel.S131
             textContent.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
                 OnPropertyChanged(nameof(textContent));
             };
-            }
         }
+    }
 
     [CategoryOrder("MooringWarpingFacility", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class MooringWarpingFacilityViewModel : ViewModelBase {
+    public partial class MooringWarpingFacilityViewModel : ViewModelBase
+    {
         private categoryOfMooringWarpingFacility _categoryOfMooringWarpingFacility;
         [Category("MooringWarpingFacility")]
         public categoryOfMooringWarpingFacility categoryOfMooringWarpingFacility {
             get {
                 return _categoryOfMooringWarpingFacility;
-                }
+            }
 
             set {
                 SetValue(ref _categoryOfMooringWarpingFacility, value);
-                }
             }
+        }
 
         private String _iDCode = string.Empty;
         [Category("MooringWarpingFacility")]
         public String iDCode {
             get {
                 return _iDCode;
-                }
+            }
 
             set {
                 SetValue(ref _iDCode, value);
-                }
             }
+        }
 
         private String _bollardDescription = string.Empty;
         [Category("MooringWarpingFacility")]
         public String bollardDescription {
             get {
                 return _bollardDescription;
-                }
+            }
 
             set {
                 SetValue(ref _bollardDescription, value);
-                }
             }
+        }
 
         private Decimal? _bollardPull = default;
         [Category("MooringWarpingFacility")]
         public Decimal? bollardPull {
             get {
                 return _bollardPull;
-                }
+            }
 
             set {
                 SetValue(ref _bollardPull, value);
-                }
             }
+        }
 
         private Boolean? _heavingLinesFromShore = default;
         [Category("MooringWarpingFacility")]
         public Boolean? heavingLinesFromShore {
             get {
                 return _heavingLinesFromShore;
-                }
+            }
 
             set {
                 SetValue(ref _heavingLinesFromShore, value);
-                }
             }
+        }
 
         private String _locationMRN = string.Empty;
         [Category("FeatureType")]
         public String locationMRN {
             get {
                 return _locationMRN;
-                }
+            }
 
             set {
                 SetValue(ref _locationMRN, value);
-                }
             }
+        }
 
         private String _globalLocationNumber = string.Empty;
         [Category("FeatureType")]
         public String globalLocationNumber {
             get {
                 return _globalLocationNumber;
-                }
+            }
 
             set {
                 SetValue(ref _globalLocationNumber, value);
-                }
             }
+        }
 
         [Category("FeatureType")]
         public ObservableCollection<featureName> featureName { get; set; } = new();
@@ -10134,12 +10050,12 @@ namespace S100Framework.WPF.ViewModel.S131
         public fixedDateRangeViewModel? fixedDateRange {
             get {
                 return _fixedDateRange;
-                }
+            }
 
             set {
                 SetValue(ref _fixedDateRange, value);
-                }
             }
+        }
 
         [Category("FeatureType")]
         public ObservableCollection<periodicDateRange> periodicDateRange { get; set; } = new();
@@ -10155,45 +10071,44 @@ namespace S100Framework.WPF.ViewModel.S131
         public String source {
             get {
                 return _source;
-                }
+            }
 
             set {
                 SetValue(ref _source, value);
-                }
             }
+        }
 
         private sourceType? _sourceType = default;
         [Category("FeatureType")]
         public sourceType? sourceType {
             get {
                 return _sourceType;
-                }
+            }
 
             set {
                 SetValue(ref _sourceType, value);
-                }
             }
+        }
 
         private DateOnly? _reportedDate = default;
         [Category("FeatureType")]
         public DateOnly? reportedDate {
             get {
                 return _reportedDate;
-                }
+            }
 
             set {
                 SetValue(ref _reportedDate, value);
-                }
             }
+        }
 
         [Category("FeatureType")]
         public ObservableCollection<textContent> textContent { get; set; } = new();
 
-        public class MooringWarpingFacilityRefIdViewModel : FeatureRefIdViewModel {
+        public class MooringWarpingFacilityRefIdViewModel : FeatureRefIdViewModel
+        {
             public override string[] AssociationTypes => ["MooringWarpingFacility"];
-
-            public override string ToString() => "RefId";
-            }
+        }
 
         public void Load(DomainModel.S131.FeatureTypes.MooringWarpingFacility instance) {
             categoryOfMooringWarpingFacility = instance.categoryOfMooringWarpingFacility;
@@ -10211,7 +10126,7 @@ namespace S100Framework.WPF.ViewModel.S131
             if (instance.fixedDateRange != null) {
                 fixedDateRange = new();
                 fixedDateRange.Load(instance.fixedDateRange);
-                }
+            }
 
             periodicDateRange.Clear();
             if (instance.periodicDateRange is not null)
@@ -10232,11 +10147,10 @@ namespace S100Framework.WPF.ViewModel.S131
             if (instance.textContent is not null)
                 foreach (var e in instance.textContent)
                     textContent.Add(e);
-            }
+        }
 
         public override string Serialize() {
-            var instance = new DomainModel.S131.FeatureTypes.MooringWarpingFacility
-                {
+            var instance = new DomainModel.S131.FeatureTypes.MooringWarpingFacility {
                 categoryOfMooringWarpingFacility = this.categoryOfMooringWarpingFacility,
                 iDCode = this.iDCode,
                 bollardDescription = this.bollardDescription,
@@ -10253,13 +10167,12 @@ namespace S100Framework.WPF.ViewModel.S131
                 sourceType = this.sourceType,
                 reportedDate = this.reportedDate,
                 textContent = this.textContent.ToList(),
-                };
+            };
             return System.Text.Json.JsonSerializer.Serialize(instance);
-            }
+        }
 
         [Browsable(false)]
-        public DomainModel.S131.FeatureTypes.MooringWarpingFacility Model => new()
-            {
+        public DomainModel.S131.FeatureTypes.MooringWarpingFacility Model => new() {
             categoryOfMooringWarpingFacility = this._categoryOfMooringWarpingFacility,
             iDCode = this._iDCode,
             bollardDescription = this._bollardDescription,
@@ -10276,7 +10189,7 @@ namespace S100Framework.WPF.ViewModel.S131
             sourceType = this._sourceType,
             reportedDate = this._reportedDate,
             textContent = this.textContent.ToList(),
-            };
+        };
 
         public MooringWarpingFacilityViewModel() : base() {
             featureName.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
@@ -10294,25 +10207,26 @@ namespace S100Framework.WPF.ViewModel.S131
             textContent.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
                 OnPropertyChanged(nameof(textContent));
             };
-            }
         }
+    }
 
     [CategoryOrder("OuterLimit", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class OuterLimitViewModel : ViewModelBase {
+    public partial class OuterLimitViewModel : ViewModelBase
+    {
         private limitsDescriptionViewModel? _limitsDescription;
         [Category("OuterLimit")]
         [Xceed.Wpf.Toolkit.PropertyGrid.Attributes.ExpandableObject]
         public limitsDescriptionViewModel? limitsDescription {
             get {
                 return _limitsDescription;
-                }
+            }
 
             set {
                 SetValue(ref _limitsDescription, value);
-                }
             }
+        }
 
         [Category("OuterLimit")]
         public ObservableCollection<markedBy> markedBy { get; set; } = new();
@@ -10334,24 +10248,24 @@ namespace S100Framework.WPF.ViewModel.S131
         public String locationMRN {
             get {
                 return _locationMRN;
-                }
+            }
 
             set {
                 SetValue(ref _locationMRN, value);
-                }
             }
+        }
 
         private String _globalLocationNumber = string.Empty;
         [Category("FeatureType")]
         public String globalLocationNumber {
             get {
                 return _globalLocationNumber;
-                }
+            }
 
             set {
                 SetValue(ref _globalLocationNumber, value);
-                }
             }
+        }
 
         [Category("FeatureType")]
         public ObservableCollection<featureName> featureName { get; set; } = new();
@@ -10362,12 +10276,12 @@ namespace S100Framework.WPF.ViewModel.S131
         public fixedDateRangeViewModel? fixedDateRange {
             get {
                 return _fixedDateRange;
-                }
+            }
 
             set {
                 SetValue(ref _fixedDateRange, value);
-                }
             }
+        }
 
         [Category("FeatureType")]
         public ObservableCollection<periodicDateRange> periodicDateRange { get; set; } = new();
@@ -10383,52 +10297,51 @@ namespace S100Framework.WPF.ViewModel.S131
         public String source {
             get {
                 return _source;
-                }
+            }
 
             set {
                 SetValue(ref _source, value);
-                }
             }
+        }
 
         private sourceType? _sourceType = default;
         [Category("FeatureType")]
         public sourceType? sourceType {
             get {
                 return _sourceType;
-                }
+            }
 
             set {
                 SetValue(ref _sourceType, value);
-                }
             }
+        }
 
         private DateOnly? _reportedDate = default;
         [Category("FeatureType")]
         public DateOnly? reportedDate {
             get {
                 return _reportedDate;
-                }
+            }
 
             set {
                 SetValue(ref _reportedDate, value);
-                }
             }
+        }
 
         [Category("FeatureType")]
         public ObservableCollection<textContent> textContent { get; set; } = new();
 
-        public class OuterLimitRefIdViewModel : FeatureRefIdViewModel {
+        public class OuterLimitRefIdViewModel : FeatureRefIdViewModel
+        {
             public override string[] AssociationTypes => ["OuterLimit"];
-
-            public override string ToString() => "RefId";
-            }
+        }
 
         public void Load(DomainModel.S131.FeatureTypes.OuterLimit instance) {
             limitsDescription = new();
             if (instance.limitsDescription != null) {
                 limitsDescription = new();
                 limitsDescription.Load(instance.limitsDescription);
-                }
+            }
 
             markedBy.Clear();
             if (instance.markedBy is not null)
@@ -10460,7 +10373,7 @@ namespace S100Framework.WPF.ViewModel.S131
             if (instance.fixedDateRange != null) {
                 fixedDateRange = new();
                 fixedDateRange.Load(instance.fixedDateRange);
-                }
+            }
 
             periodicDateRange.Clear();
             if (instance.periodicDateRange is not null)
@@ -10481,11 +10394,10 @@ namespace S100Framework.WPF.ViewModel.S131
             if (instance.textContent is not null)
                 foreach (var e in instance.textContent)
                     textContent.Add(e);
-            }
+        }
 
         public override string Serialize() {
-            var instance = new DomainModel.S131.FeatureTypes.OuterLimit
-                {
+            var instance = new DomainModel.S131.FeatureTypes.OuterLimit {
                 limitsDescription = this.limitsDescription?.Model,
                 markedBy = this.markedBy.ToList(),
                 landmarkDescription = this.landmarkDescription.ToList(),
@@ -10503,13 +10415,12 @@ namespace S100Framework.WPF.ViewModel.S131
                 sourceType = this.sourceType,
                 reportedDate = this.reportedDate,
                 textContent = this.textContent.ToList(),
-                };
+            };
             return System.Text.Json.JsonSerializer.Serialize(instance);
-            }
+        }
 
         [Browsable(false)]
-        public DomainModel.S131.FeatureTypes.OuterLimit Model => new()
-            {
+        public DomainModel.S131.FeatureTypes.OuterLimit Model => new() {
             limitsDescription = this._limitsDescription?.Model,
             markedBy = this.markedBy.ToList(),
             landmarkDescription = this.landmarkDescription.ToList(),
@@ -10527,7 +10438,7 @@ namespace S100Framework.WPF.ViewModel.S131
             sourceType = this._sourceType,
             reportedDate = this._reportedDate,
             textContent = this.textContent.ToList(),
-            };
+        };
 
         public OuterLimitViewModel() : base() {
             markedBy.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
@@ -10560,37 +10471,38 @@ namespace S100Framework.WPF.ViewModel.S131
             textContent.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
                 OnPropertyChanged(nameof(textContent));
             };
-            }
         }
+    }
 
     [CategoryOrder("PilotBoardingPlace", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class PilotBoardingPlaceViewModel : ViewModelBase {
+    public partial class PilotBoardingPlaceViewModel : ViewModelBase
+    {
         private depthsDescriptionViewModel? _depthsDescription;
         [Category("PilotBoardingPlace")]
         [Xceed.Wpf.Toolkit.PropertyGrid.Attributes.ExpandableObject]
         public depthsDescriptionViewModel? depthsDescription {
             get {
                 return _depthsDescription;
-                }
+            }
 
             set {
                 SetValue(ref _depthsDescription, value);
-                }
             }
+        }
 
         private String _locationByText = string.Empty;
         [Category("PilotBoardingPlace")]
         public String locationByText {
             get {
                 return _locationByText;
-                }
+            }
 
             set {
                 SetValue(ref _locationByText, value);
-                }
             }
+        }
 
         private markedByViewModel? _markedBy;
         [Category("PilotBoardingPlace")]
@@ -10598,48 +10510,48 @@ namespace S100Framework.WPF.ViewModel.S131
         public markedByViewModel? markedBy {
             get {
                 return _markedBy;
-                }
+            }
 
             set {
                 SetValue(ref _markedBy, value);
-                }
             }
+        }
 
         private iSPSLevel? _iSPSLevel = default;
         [Category("PilotBoardingPlace")]
         public iSPSLevel? iSPSLevel {
             get {
                 return _iSPSLevel;
-                }
+            }
 
             set {
                 SetValue(ref _iSPSLevel, value);
-                }
             }
+        }
 
         private String _locationMRN = string.Empty;
         [Category("FeatureType")]
         public String locationMRN {
             get {
                 return _locationMRN;
-                }
+            }
 
             set {
                 SetValue(ref _locationMRN, value);
-                }
             }
+        }
 
         private String _globalLocationNumber = string.Empty;
         [Category("FeatureType")]
         public String globalLocationNumber {
             get {
                 return _globalLocationNumber;
-                }
+            }
 
             set {
                 SetValue(ref _globalLocationNumber, value);
-                }
             }
+        }
 
         [Category("FeatureType")]
         public ObservableCollection<featureName> featureName { get; set; } = new();
@@ -10650,12 +10562,12 @@ namespace S100Framework.WPF.ViewModel.S131
         public fixedDateRangeViewModel? fixedDateRange {
             get {
                 return _fixedDateRange;
-                }
+            }
 
             set {
                 SetValue(ref _fixedDateRange, value);
-                }
             }
+        }
 
         [Category("FeatureType")]
         public ObservableCollection<periodicDateRange> periodicDateRange { get; set; } = new();
@@ -10671,59 +10583,58 @@ namespace S100Framework.WPF.ViewModel.S131
         public String source {
             get {
                 return _source;
-                }
+            }
 
             set {
                 SetValue(ref _source, value);
-                }
             }
+        }
 
         private sourceType? _sourceType = default;
         [Category("FeatureType")]
         public sourceType? sourceType {
             get {
                 return _sourceType;
-                }
+            }
 
             set {
                 SetValue(ref _sourceType, value);
-                }
             }
+        }
 
         private DateOnly? _reportedDate = default;
         [Category("FeatureType")]
         public DateOnly? reportedDate {
             get {
                 return _reportedDate;
-                }
+            }
 
             set {
                 SetValue(ref _reportedDate, value);
-                }
             }
+        }
 
         [Category("FeatureType")]
         public ObservableCollection<textContent> textContent { get; set; } = new();
 
-        public class PilotBoardingPlaceRefIdViewModel : FeatureRefIdViewModel {
+        public class PilotBoardingPlaceRefIdViewModel : FeatureRefIdViewModel
+        {
             public override string[] AssociationTypes => ["PilotBoardingPlace"];
-
-            public override string ToString() => "RefId";
-            }
+        }
 
         public void Load(DomainModel.S131.FeatureTypes.PilotBoardingPlace instance) {
             depthsDescription = new();
             if (instance.depthsDescription != null) {
                 depthsDescription = new();
                 depthsDescription.Load(instance.depthsDescription);
-                }
+            }
 
             locationByText = instance.locationByText;
             markedBy = new();
             if (instance.markedBy != null) {
                 markedBy = new();
                 markedBy.Load(instance.markedBy);
-                }
+            }
 
             iSPSLevel = instance.iSPSLevel;
             locationMRN = instance.locationMRN;
@@ -10736,7 +10647,7 @@ namespace S100Framework.WPF.ViewModel.S131
             if (instance.fixedDateRange != null) {
                 fixedDateRange = new();
                 fixedDateRange.Load(instance.fixedDateRange);
-                }
+            }
 
             periodicDateRange.Clear();
             if (instance.periodicDateRange is not null)
@@ -10757,11 +10668,10 @@ namespace S100Framework.WPF.ViewModel.S131
             if (instance.textContent is not null)
                 foreach (var e in instance.textContent)
                     textContent.Add(e);
-            }
+        }
 
         public override string Serialize() {
-            var instance = new DomainModel.S131.FeatureTypes.PilotBoardingPlace
-                {
+            var instance = new DomainModel.S131.FeatureTypes.PilotBoardingPlace {
                 depthsDescription = this.depthsDescription?.Model,
                 locationByText = this.locationByText,
                 markedBy = this.markedBy?.Model,
@@ -10777,13 +10687,12 @@ namespace S100Framework.WPF.ViewModel.S131
                 sourceType = this.sourceType,
                 reportedDate = this.reportedDate,
                 textContent = this.textContent.ToList(),
-                };
+            };
             return System.Text.Json.JsonSerializer.Serialize(instance);
-            }
+        }
 
         [Browsable(false)]
-        public DomainModel.S131.FeatureTypes.PilotBoardingPlace Model => new()
-            {
+        public DomainModel.S131.FeatureTypes.PilotBoardingPlace Model => new() {
             depthsDescription = this._depthsDescription?.Model,
             locationByText = this._locationByText,
             markedBy = this._markedBy?.Model,
@@ -10799,7 +10708,7 @@ namespace S100Framework.WPF.ViewModel.S131
             sourceType = this._sourceType,
             reportedDate = this._reportedDate,
             textContent = this.textContent.ToList(),
-            };
+        };
 
         public PilotBoardingPlaceViewModel() : base() {
             featureName.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
@@ -10817,37 +10726,38 @@ namespace S100Framework.WPF.ViewModel.S131
             textContent.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
                 OnPropertyChanged(nameof(textContent));
             };
-            }
         }
+    }
 
     [CategoryOrder("SeaplaneLandingArea", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class SeaplaneLandingAreaViewModel : ViewModelBase {
+    public partial class SeaplaneLandingAreaViewModel : ViewModelBase
+    {
         private depthsDescriptionViewModel? _depthsDescription;
         [Category("SeaplaneLandingArea")]
         [Xceed.Wpf.Toolkit.PropertyGrid.Attributes.ExpandableObject]
         public depthsDescriptionViewModel? depthsDescription {
             get {
                 return _depthsDescription;
-                }
+            }
 
             set {
                 SetValue(ref _depthsDescription, value);
-                }
             }
+        }
 
         private String _locationByText = string.Empty;
         [Category("SeaplaneLandingArea")]
         public String locationByText {
             get {
                 return _locationByText;
-                }
+            }
 
             set {
                 SetValue(ref _locationByText, value);
-                }
             }
+        }
 
         private markedByViewModel? _markedBy;
         [Category("SeaplaneLandingArea")]
@@ -10855,48 +10765,48 @@ namespace S100Framework.WPF.ViewModel.S131
         public markedByViewModel? markedBy {
             get {
                 return _markedBy;
-                }
+            }
 
             set {
                 SetValue(ref _markedBy, value);
-                }
             }
+        }
 
         private iSPSLevel? _iSPSLevel = default;
         [Category("SeaplaneLandingArea")]
         public iSPSLevel? iSPSLevel {
             get {
                 return _iSPSLevel;
-                }
+            }
 
             set {
                 SetValue(ref _iSPSLevel, value);
-                }
             }
+        }
 
         private String _locationMRN = string.Empty;
         [Category("FeatureType")]
         public String locationMRN {
             get {
                 return _locationMRN;
-                }
+            }
 
             set {
                 SetValue(ref _locationMRN, value);
-                }
             }
+        }
 
         private String _globalLocationNumber = string.Empty;
         [Category("FeatureType")]
         public String globalLocationNumber {
             get {
                 return _globalLocationNumber;
-                }
+            }
 
             set {
                 SetValue(ref _globalLocationNumber, value);
-                }
             }
+        }
 
         [Category("FeatureType")]
         public ObservableCollection<featureName> featureName { get; set; } = new();
@@ -10907,12 +10817,12 @@ namespace S100Framework.WPF.ViewModel.S131
         public fixedDateRangeViewModel? fixedDateRange {
             get {
                 return _fixedDateRange;
-                }
+            }
 
             set {
                 SetValue(ref _fixedDateRange, value);
-                }
             }
+        }
 
         [Category("FeatureType")]
         public ObservableCollection<periodicDateRange> periodicDateRange { get; set; } = new();
@@ -10928,59 +10838,58 @@ namespace S100Framework.WPF.ViewModel.S131
         public String source {
             get {
                 return _source;
-                }
+            }
 
             set {
                 SetValue(ref _source, value);
-                }
             }
+        }
 
         private sourceType? _sourceType = default;
         [Category("FeatureType")]
         public sourceType? sourceType {
             get {
                 return _sourceType;
-                }
+            }
 
             set {
                 SetValue(ref _sourceType, value);
-                }
             }
+        }
 
         private DateOnly? _reportedDate = default;
         [Category("FeatureType")]
         public DateOnly? reportedDate {
             get {
                 return _reportedDate;
-                }
+            }
 
             set {
                 SetValue(ref _reportedDate, value);
-                }
             }
+        }
 
         [Category("FeatureType")]
         public ObservableCollection<textContent> textContent { get; set; } = new();
 
-        public class SeaplaneLandingAreaRefIdViewModel : FeatureRefIdViewModel {
+        public class SeaplaneLandingAreaRefIdViewModel : FeatureRefIdViewModel
+        {
             public override string[] AssociationTypes => ["SeaplaneLandingArea"];
-
-            public override string ToString() => "RefId";
-            }
+        }
 
         public void Load(DomainModel.S131.FeatureTypes.SeaplaneLandingArea instance) {
             depthsDescription = new();
             if (instance.depthsDescription != null) {
                 depthsDescription = new();
                 depthsDescription.Load(instance.depthsDescription);
-                }
+            }
 
             locationByText = instance.locationByText;
             markedBy = new();
             if (instance.markedBy != null) {
                 markedBy = new();
                 markedBy.Load(instance.markedBy);
-                }
+            }
 
             iSPSLevel = instance.iSPSLevel;
             locationMRN = instance.locationMRN;
@@ -10993,7 +10902,7 @@ namespace S100Framework.WPF.ViewModel.S131
             if (instance.fixedDateRange != null) {
                 fixedDateRange = new();
                 fixedDateRange.Load(instance.fixedDateRange);
-                }
+            }
 
             periodicDateRange.Clear();
             if (instance.periodicDateRange is not null)
@@ -11014,11 +10923,10 @@ namespace S100Framework.WPF.ViewModel.S131
             if (instance.textContent is not null)
                 foreach (var e in instance.textContent)
                     textContent.Add(e);
-            }
+        }
 
         public override string Serialize() {
-            var instance = new DomainModel.S131.FeatureTypes.SeaplaneLandingArea
-                {
+            var instance = new DomainModel.S131.FeatureTypes.SeaplaneLandingArea {
                 depthsDescription = this.depthsDescription?.Model,
                 locationByText = this.locationByText,
                 markedBy = this.markedBy?.Model,
@@ -11034,13 +10942,12 @@ namespace S100Framework.WPF.ViewModel.S131
                 sourceType = this.sourceType,
                 reportedDate = this.reportedDate,
                 textContent = this.textContent.ToList(),
-                };
+            };
             return System.Text.Json.JsonSerializer.Serialize(instance);
-            }
+        }
 
         [Browsable(false)]
-        public DomainModel.S131.FeatureTypes.SeaplaneLandingArea Model => new()
-            {
+        public DomainModel.S131.FeatureTypes.SeaplaneLandingArea Model => new() {
             depthsDescription = this._depthsDescription?.Model,
             locationByText = this._locationByText,
             markedBy = this._markedBy?.Model,
@@ -11056,7 +10963,7 @@ namespace S100Framework.WPF.ViewModel.S131
             sourceType = this._sourceType,
             reportedDate = this._reportedDate,
             textContent = this.textContent.ToList(),
-            };
+        };
 
         public SeaplaneLandingAreaViewModel() : base() {
             featureName.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
@@ -11074,36 +10981,37 @@ namespace S100Framework.WPF.ViewModel.S131
             textContent.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
                 OnPropertyChanged(nameof(textContent));
             };
-            }
         }
+    }
 
     [CategoryOrder("Terminal", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class TerminalViewModel : ViewModelBase {
+    public partial class TerminalViewModel : ViewModelBase
+    {
         private String _portFacilityNumber = string.Empty;
         [Category("Terminal")]
         public String portFacilityNumber {
             get {
                 return _portFacilityNumber;
-                }
+            }
 
             set {
                 SetValue(ref _portFacilityNumber, value);
-                }
             }
+        }
 
         private categoryOfHarbourFacility? _categoryOfHarbourFacility = default;
         [Category("Terminal")]
         public categoryOfHarbourFacility? categoryOfHarbourFacility {
             get {
                 return _categoryOfHarbourFacility;
-                }
+            }
 
             set {
                 SetValue(ref _categoryOfHarbourFacility, value);
-                }
             }
+        }
 
         [Category("Terminal")]
         public ObservableCollection<categoryOfCargo> categoryOfCargo { get; set; } = new();
@@ -11116,60 +11024,60 @@ namespace S100Framework.WPF.ViewModel.S131
         public String terminalIdentifier {
             get {
                 return _terminalIdentifier;
-                }
+            }
 
             set {
                 SetValue(ref _terminalIdentifier, value);
-                }
             }
+        }
 
         private String _sMDGTerminalCode = string.Empty;
         [Category("Terminal")]
         public String sMDGTerminalCode {
             get {
                 return _sMDGTerminalCode;
-                }
+            }
 
             set {
                 SetValue(ref _sMDGTerminalCode, value);
-                }
             }
+        }
 
         private String _uNLocationCode = string.Empty;
         [Category("Terminal")]
         public String uNLocationCode {
             get {
                 return _uNLocationCode;
-                }
+            }
 
             set {
                 SetValue(ref _uNLocationCode, value);
-                }
             }
+        }
 
         private String _locationMRN = string.Empty;
         [Category("FeatureType")]
         public String locationMRN {
             get {
                 return _locationMRN;
-                }
+            }
 
             set {
                 SetValue(ref _locationMRN, value);
-                }
             }
+        }
 
         private String _globalLocationNumber = string.Empty;
         [Category("FeatureType")]
         public String globalLocationNumber {
             get {
                 return _globalLocationNumber;
-                }
+            }
 
             set {
                 SetValue(ref _globalLocationNumber, value);
-                }
             }
+        }
 
         [Category("FeatureType")]
         public ObservableCollection<featureName> featureName { get; set; } = new();
@@ -11180,12 +11088,12 @@ namespace S100Framework.WPF.ViewModel.S131
         public fixedDateRangeViewModel? fixedDateRange {
             get {
                 return _fixedDateRange;
-                }
+            }
 
             set {
                 SetValue(ref _fixedDateRange, value);
-                }
             }
+        }
 
         [Category("FeatureType")]
         public ObservableCollection<periodicDateRange> periodicDateRange { get; set; } = new();
@@ -11201,45 +11109,44 @@ namespace S100Framework.WPF.ViewModel.S131
         public String source {
             get {
                 return _source;
-                }
+            }
 
             set {
                 SetValue(ref _source, value);
-                }
             }
+        }
 
         private sourceType? _sourceType = default;
         [Category("FeatureType")]
         public sourceType? sourceType {
             get {
                 return _sourceType;
-                }
+            }
 
             set {
                 SetValue(ref _sourceType, value);
-                }
             }
+        }
 
         private DateOnly? _reportedDate = default;
         [Category("FeatureType")]
         public DateOnly? reportedDate {
             get {
                 return _reportedDate;
-                }
+            }
 
             set {
                 SetValue(ref _reportedDate, value);
-                }
             }
+        }
 
         [Category("FeatureType")]
         public ObservableCollection<textContent> textContent { get; set; } = new();
 
-        public class TerminalRefIdViewModel : FeatureRefIdViewModel {
+        public class TerminalRefIdViewModel : FeatureRefIdViewModel
+        {
             public override string[] AssociationTypes => ["Terminal"];
-
-            public override string ToString() => "RefId";
-            }
+        }
 
         public void Load(DomainModel.S131.FeatureTypes.Terminal instance) {
             portFacilityNumber = instance.portFacilityNumber;
@@ -11265,7 +11172,7 @@ namespace S100Framework.WPF.ViewModel.S131
             if (instance.fixedDateRange != null) {
                 fixedDateRange = new();
                 fixedDateRange.Load(instance.fixedDateRange);
-                }
+            }
 
             periodicDateRange.Clear();
             if (instance.periodicDateRange is not null)
@@ -11286,11 +11193,10 @@ namespace S100Framework.WPF.ViewModel.S131
             if (instance.textContent is not null)
                 foreach (var e in instance.textContent)
                     textContent.Add(e);
-            }
+        }
 
         public override string Serialize() {
-            var instance = new DomainModel.S131.FeatureTypes.Terminal
-                {
+            var instance = new DomainModel.S131.FeatureTypes.Terminal {
                 portFacilityNumber = this.portFacilityNumber,
                 categoryOfHarbourFacility = this.categoryOfHarbourFacility,
                 categoryOfCargo = this.categoryOfCargo.ToList(),
@@ -11309,13 +11215,12 @@ namespace S100Framework.WPF.ViewModel.S131
                 sourceType = this.sourceType,
                 reportedDate = this.reportedDate,
                 textContent = this.textContent.ToList(),
-                };
+            };
             return System.Text.Json.JsonSerializer.Serialize(instance);
-            }
+        }
 
         [Browsable(false)]
-        public DomainModel.S131.FeatureTypes.Terminal Model => new()
-            {
+        public DomainModel.S131.FeatureTypes.Terminal Model => new() {
             portFacilityNumber = this._portFacilityNumber,
             categoryOfHarbourFacility = this._categoryOfHarbourFacility,
             categoryOfCargo = this.categoryOfCargo.ToList(),
@@ -11334,7 +11239,7 @@ namespace S100Framework.WPF.ViewModel.S131
             sourceType = this._sourceType,
             reportedDate = this._reportedDate,
             textContent = this.textContent.ToList(),
-            };
+        };
 
         public TerminalViewModel() : base() {
             categoryOfCargo.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
@@ -11358,37 +11263,38 @@ namespace S100Framework.WPF.ViewModel.S131
             textContent.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
                 OnPropertyChanged(nameof(textContent));
             };
-            }
         }
+    }
 
     [CategoryOrder("TurningBasin", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class TurningBasinViewModel : ViewModelBase {
+    public partial class TurningBasinViewModel : ViewModelBase
+    {
         private depthsDescriptionViewModel? _depthsDescription;
         [Category("TurningBasin")]
         [Xceed.Wpf.Toolkit.PropertyGrid.Attributes.ExpandableObject]
         public depthsDescriptionViewModel? depthsDescription {
             get {
                 return _depthsDescription;
-                }
+            }
 
             set {
                 SetValue(ref _depthsDescription, value);
-                }
             }
+        }
 
         private String _locationByText = string.Empty;
         [Category("TurningBasin")]
         public String locationByText {
             get {
                 return _locationByText;
-                }
+            }
 
             set {
                 SetValue(ref _locationByText, value);
-                }
             }
+        }
 
         private markedByViewModel? _markedBy;
         [Category("TurningBasin")]
@@ -11396,48 +11302,48 @@ namespace S100Framework.WPF.ViewModel.S131
         public markedByViewModel? markedBy {
             get {
                 return _markedBy;
-                }
+            }
 
             set {
                 SetValue(ref _markedBy, value);
-                }
             }
+        }
 
         private iSPSLevel? _iSPSLevel = default;
         [Category("TurningBasin")]
         public iSPSLevel? iSPSLevel {
             get {
                 return _iSPSLevel;
-                }
+            }
 
             set {
                 SetValue(ref _iSPSLevel, value);
-                }
             }
+        }
 
         private String _locationMRN = string.Empty;
         [Category("FeatureType")]
         public String locationMRN {
             get {
                 return _locationMRN;
-                }
+            }
 
             set {
                 SetValue(ref _locationMRN, value);
-                }
             }
+        }
 
         private String _globalLocationNumber = string.Empty;
         [Category("FeatureType")]
         public String globalLocationNumber {
             get {
                 return _globalLocationNumber;
-                }
+            }
 
             set {
                 SetValue(ref _globalLocationNumber, value);
-                }
             }
+        }
 
         [Category("FeatureType")]
         public ObservableCollection<featureName> featureName { get; set; } = new();
@@ -11448,12 +11354,12 @@ namespace S100Framework.WPF.ViewModel.S131
         public fixedDateRangeViewModel? fixedDateRange {
             get {
                 return _fixedDateRange;
-                }
+            }
 
             set {
                 SetValue(ref _fixedDateRange, value);
-                }
             }
+        }
 
         [Category("FeatureType")]
         public ObservableCollection<periodicDateRange> periodicDateRange { get; set; } = new();
@@ -11469,59 +11375,58 @@ namespace S100Framework.WPF.ViewModel.S131
         public String source {
             get {
                 return _source;
-                }
+            }
 
             set {
                 SetValue(ref _source, value);
-                }
             }
+        }
 
         private sourceType? _sourceType = default;
         [Category("FeatureType")]
         public sourceType? sourceType {
             get {
                 return _sourceType;
-                }
+            }
 
             set {
                 SetValue(ref _sourceType, value);
-                }
             }
+        }
 
         private DateOnly? _reportedDate = default;
         [Category("FeatureType")]
         public DateOnly? reportedDate {
             get {
                 return _reportedDate;
-                }
+            }
 
             set {
                 SetValue(ref _reportedDate, value);
-                }
             }
+        }
 
         [Category("FeatureType")]
         public ObservableCollection<textContent> textContent { get; set; } = new();
 
-        public class TurningBasinRefIdViewModel : FeatureRefIdViewModel {
+        public class TurningBasinRefIdViewModel : FeatureRefIdViewModel
+        {
             public override string[] AssociationTypes => ["TurningBasin"];
-
-            public override string ToString() => "RefId";
-            }
+        }
 
         public void Load(DomainModel.S131.FeatureTypes.TurningBasin instance) {
             depthsDescription = new();
             if (instance.depthsDescription != null) {
                 depthsDescription = new();
                 depthsDescription.Load(instance.depthsDescription);
-                }
+            }
 
             locationByText = instance.locationByText;
             markedBy = new();
             if (instance.markedBy != null) {
                 markedBy = new();
                 markedBy.Load(instance.markedBy);
-                }
+            }
 
             iSPSLevel = instance.iSPSLevel;
             locationMRN = instance.locationMRN;
@@ -11534,7 +11439,7 @@ namespace S100Framework.WPF.ViewModel.S131
             if (instance.fixedDateRange != null) {
                 fixedDateRange = new();
                 fixedDateRange.Load(instance.fixedDateRange);
-                }
+            }
 
             periodicDateRange.Clear();
             if (instance.periodicDateRange is not null)
@@ -11555,11 +11460,10 @@ namespace S100Framework.WPF.ViewModel.S131
             if (instance.textContent is not null)
                 foreach (var e in instance.textContent)
                     textContent.Add(e);
-            }
+        }
 
         public override string Serialize() {
-            var instance = new DomainModel.S131.FeatureTypes.TurningBasin
-                {
+            var instance = new DomainModel.S131.FeatureTypes.TurningBasin {
                 depthsDescription = this.depthsDescription?.Model,
                 locationByText = this.locationByText,
                 markedBy = this.markedBy?.Model,
@@ -11575,13 +11479,12 @@ namespace S100Framework.WPF.ViewModel.S131
                 sourceType = this.sourceType,
                 reportedDate = this.reportedDate,
                 textContent = this.textContent.ToList(),
-                };
+            };
             return System.Text.Json.JsonSerializer.Serialize(instance);
-            }
+        }
 
         [Browsable(false)]
-        public DomainModel.S131.FeatureTypes.TurningBasin Model => new()
-            {
+        public DomainModel.S131.FeatureTypes.TurningBasin Model => new() {
             depthsDescription = this._depthsDescription?.Model,
             locationByText = this._locationByText,
             markedBy = this._markedBy?.Model,
@@ -11597,7 +11500,7 @@ namespace S100Framework.WPF.ViewModel.S131
             sourceType = this._sourceType,
             reportedDate = this._reportedDate,
             textContent = this.textContent.ToList(),
-            };
+        };
 
         public TurningBasinViewModel() : base() {
             featureName.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
@@ -11615,24 +11518,25 @@ namespace S100Framework.WPF.ViewModel.S131
             textContent.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
                 OnPropertyChanged(nameof(textContent));
             };
-            }
         }
+    }
 
     [CategoryOrder("WaterwayArea", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class WaterwayAreaViewModel : ViewModelBase {
+    public partial class WaterwayAreaViewModel : ViewModelBase
+    {
         private categoryOfPortSection _categoryOfPortSection;
         [Category("WaterwayArea")]
         public categoryOfPortSection categoryOfPortSection {
             get {
                 return _categoryOfPortSection;
-                }
+            }
 
             set {
                 SetValue(ref _categoryOfPortSection, value);
-                }
             }
+        }
 
         private depthsDescriptionViewModel? _depthsDescription;
         [Category("WaterwayArea")]
@@ -11640,24 +11544,24 @@ namespace S100Framework.WPF.ViewModel.S131
         public depthsDescriptionViewModel? depthsDescription {
             get {
                 return _depthsDescription;
-                }
+            }
 
             set {
                 SetValue(ref _depthsDescription, value);
-                }
             }
+        }
 
         private String _locationByText = string.Empty;
         [Category("WaterwayArea")]
         public String locationByText {
             get {
                 return _locationByText;
-                }
+            }
 
             set {
                 SetValue(ref _locationByText, value);
-                }
             }
+        }
 
         private markedByViewModel? _markedBy;
         [Category("WaterwayArea")]
@@ -11665,36 +11569,36 @@ namespace S100Framework.WPF.ViewModel.S131
         public markedByViewModel? markedBy {
             get {
                 return _markedBy;
-                }
+            }
 
             set {
                 SetValue(ref _markedBy, value);
-                }
             }
+        }
 
         private String _locationMRN = string.Empty;
         [Category("FeatureType")]
         public String locationMRN {
             get {
                 return _locationMRN;
-                }
+            }
 
             set {
                 SetValue(ref _locationMRN, value);
-                }
             }
+        }
 
         private String _globalLocationNumber = string.Empty;
         [Category("FeatureType")]
         public String globalLocationNumber {
             get {
                 return _globalLocationNumber;
-                }
+            }
 
             set {
                 SetValue(ref _globalLocationNumber, value);
-                }
             }
+        }
 
         [Category("FeatureType")]
         public ObservableCollection<featureName> featureName { get; set; } = new();
@@ -11705,12 +11609,12 @@ namespace S100Framework.WPF.ViewModel.S131
         public fixedDateRangeViewModel? fixedDateRange {
             get {
                 return _fixedDateRange;
-                }
+            }
 
             set {
                 SetValue(ref _fixedDateRange, value);
-                }
             }
+        }
 
         [Category("FeatureType")]
         public ObservableCollection<periodicDateRange> periodicDateRange { get; set; } = new();
@@ -11726,45 +11630,44 @@ namespace S100Framework.WPF.ViewModel.S131
         public String source {
             get {
                 return _source;
-                }
+            }
 
             set {
                 SetValue(ref _source, value);
-                }
             }
+        }
 
         private sourceType? _sourceType = default;
         [Category("FeatureType")]
         public sourceType? sourceType {
             get {
                 return _sourceType;
-                }
+            }
 
             set {
                 SetValue(ref _sourceType, value);
-                }
             }
+        }
 
         private DateOnly? _reportedDate = default;
         [Category("FeatureType")]
         public DateOnly? reportedDate {
             get {
                 return _reportedDate;
-                }
+            }
 
             set {
                 SetValue(ref _reportedDate, value);
-                }
             }
+        }
 
         [Category("FeatureType")]
         public ObservableCollection<textContent> textContent { get; set; } = new();
 
-        public class WaterwayAreaRefIdViewModel : FeatureRefIdViewModel {
+        public class WaterwayAreaRefIdViewModel : FeatureRefIdViewModel
+        {
             public override string[] AssociationTypes => ["WaterwayArea"];
-
-            public override string ToString() => "RefId";
-            }
+        }
 
         public void Load(DomainModel.S131.FeatureTypes.WaterwayArea instance) {
             categoryOfPortSection = instance.categoryOfPortSection;
@@ -11772,14 +11675,14 @@ namespace S100Framework.WPF.ViewModel.S131
             if (instance.depthsDescription != null) {
                 depthsDescription = new();
                 depthsDescription.Load(instance.depthsDescription);
-                }
+            }
 
             locationByText = instance.locationByText;
             markedBy = new();
             if (instance.markedBy != null) {
                 markedBy = new();
                 markedBy.Load(instance.markedBy);
-                }
+            }
 
             locationMRN = instance.locationMRN;
             globalLocationNumber = instance.globalLocationNumber;
@@ -11791,7 +11694,7 @@ namespace S100Framework.WPF.ViewModel.S131
             if (instance.fixedDateRange != null) {
                 fixedDateRange = new();
                 fixedDateRange.Load(instance.fixedDateRange);
-                }
+            }
 
             periodicDateRange.Clear();
             if (instance.periodicDateRange is not null)
@@ -11812,11 +11715,10 @@ namespace S100Framework.WPF.ViewModel.S131
             if (instance.textContent is not null)
                 foreach (var e in instance.textContent)
                     textContent.Add(e);
-            }
+        }
 
         public override string Serialize() {
-            var instance = new DomainModel.S131.FeatureTypes.WaterwayArea
-                {
+            var instance = new DomainModel.S131.FeatureTypes.WaterwayArea {
                 categoryOfPortSection = this.categoryOfPortSection,
                 depthsDescription = this.depthsDescription?.Model,
                 locationByText = this.locationByText,
@@ -11832,13 +11734,12 @@ namespace S100Framework.WPF.ViewModel.S131
                 sourceType = this.sourceType,
                 reportedDate = this.reportedDate,
                 textContent = this.textContent.ToList(),
-                };
+            };
             return System.Text.Json.JsonSerializer.Serialize(instance);
-            }
+        }
 
         [Browsable(false)]
-        public DomainModel.S131.FeatureTypes.WaterwayArea Model => new()
-            {
+        public DomainModel.S131.FeatureTypes.WaterwayArea Model => new() {
             categoryOfPortSection = this._categoryOfPortSection,
             depthsDescription = this._depthsDescription?.Model,
             locationByText = this._locationByText,
@@ -11854,7 +11755,7 @@ namespace S100Framework.WPF.ViewModel.S131
             sourceType = this._sourceType,
             reportedDate = this._reportedDate,
             textContent = this.textContent.ToList(),
-            };
+        };
 
         public WaterwayAreaViewModel() : base() {
             featureName.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
@@ -11872,95 +11773,94 @@ namespace S100Framework.WPF.ViewModel.S131
             textContent.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
                 OnPropertyChanged(nameof(textContent));
             };
-            }
         }
+    }
 
     [CategoryOrder("DataCoverage", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class DataCoverageViewModel : ViewModelBase {
+    public partial class DataCoverageViewModel : ViewModelBase
+    {
         private Int32 _maximumDisplayScale;
         [Category("DataCoverage")]
         public Int32 maximumDisplayScale {
             get {
                 return _maximumDisplayScale;
-                }
+            }
 
             set {
                 SetValue(ref _maximumDisplayScale, value);
-                }
             }
+        }
 
         private Int32 _minimumDisplayScale;
         [Category("DataCoverage")]
         public Int32 minimumDisplayScale {
             get {
                 return _minimumDisplayScale;
-                }
+            }
 
             set {
                 SetValue(ref _minimumDisplayScale, value);
-                }
             }
+        }
 
-        public class DataCoverageRefIdViewModel : FeatureRefIdViewModel {
+        public class DataCoverageRefIdViewModel : FeatureRefIdViewModel
+        {
             public override string[] AssociationTypes => ["DataCoverage"];
-
-            public override string ToString() => "RefId";
-            }
+        }
 
         public void Load(DomainModel.S131.FeatureTypes.DataCoverage instance) {
             maximumDisplayScale = instance.maximumDisplayScale;
             minimumDisplayScale = instance.minimumDisplayScale;
-            }
+        }
 
         public override string Serialize() {
-            var instance = new DomainModel.S131.FeatureTypes.DataCoverage
-                {
+            var instance = new DomainModel.S131.FeatureTypes.DataCoverage {
                 maximumDisplayScale = this.maximumDisplayScale,
                 minimumDisplayScale = this.minimumDisplayScale,
-                };
+            };
             return System.Text.Json.JsonSerializer.Serialize(instance);
-            }
+        }
 
         [Browsable(false)]
-        public DomainModel.S131.FeatureTypes.DataCoverage Model => new()
-            {
+        public DomainModel.S131.FeatureTypes.DataCoverage Model => new() {
             maximumDisplayScale = this._maximumDisplayScale,
             minimumDisplayScale = this._minimumDisplayScale,
-            };
+        };
 
         public DataCoverageViewModel() : base() {
-            }
         }
+    }
 
     [CategoryOrder("QualityOfNonBathymetricData", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class QualityOfNonBathymetricDataViewModel : ViewModelBase {
+    public partial class QualityOfNonBathymetricDataViewModel : ViewModelBase
+    {
         private categoryOfTemporalVariation? _categoryOfTemporalVariation = default;
         [Category("QualityOfNonBathymetricData")]
         public categoryOfTemporalVariation? categoryOfTemporalVariation {
             get {
                 return _categoryOfTemporalVariation;
-                }
+            }
 
             set {
                 SetValue(ref _categoryOfTemporalVariation, value);
-                }
             }
+        }
 
         private Decimal? _horizontalDistanceUncertainty = default;
         [Category("QualityOfNonBathymetricData")]
         public Decimal? horizontalDistanceUncertainty {
             get {
                 return _horizontalDistanceUncertainty;
-                }
+            }
 
             set {
                 SetValue(ref _horizontalDistanceUncertainty, value);
-                }
             }
+        }
 
         private horizontalPositionUncertaintyViewModel _horizontalPositionUncertainty;
         [Category("QualityOfNonBathymetricData")]
@@ -11968,24 +11868,24 @@ namespace S100Framework.WPF.ViewModel.S131
         public horizontalPositionUncertaintyViewModel horizontalPositionUncertainty {
             get {
                 return _horizontalPositionUncertainty;
-                }
+            }
 
             set {
                 SetValue(ref _horizontalPositionUncertainty, value);
-                }
             }
+        }
 
         private Decimal? _orientationUncertainty = default;
         [Category("QualityOfNonBathymetricData")]
         public Decimal? orientationUncertainty {
             get {
                 return _orientationUncertainty;
-                }
+            }
 
             set {
                 SetValue(ref _orientationUncertainty, value);
-                }
             }
+        }
 
         private surveyDateRangeViewModel? _surveyDateRange;
         [Category("QualityOfNonBathymetricData")]
@@ -11993,12 +11893,12 @@ namespace S100Framework.WPF.ViewModel.S131
         public surveyDateRangeViewModel? surveyDateRange {
             get {
                 return _surveyDateRange;
-                }
+            }
 
             set {
                 SetValue(ref _surveyDateRange, value);
-                }
             }
+        }
 
         private verticalUncertaintyViewModel? _verticalUncertainty;
         [Category("QualityOfNonBathymetricData")]
@@ -12006,21 +11906,20 @@ namespace S100Framework.WPF.ViewModel.S131
         public verticalUncertaintyViewModel? verticalUncertainty {
             get {
                 return _verticalUncertainty;
-                }
+            }
 
             set {
                 SetValue(ref _verticalUncertainty, value);
-                }
             }
+        }
 
         [Category("QualityOfNonBathymetricData")]
         public ObservableCollection<information> information { get; set; } = new();
 
-        public class QualityOfNonBathymetricDataRefIdViewModel : FeatureRefIdViewModel {
+        public class QualityOfNonBathymetricDataRefIdViewModel : FeatureRefIdViewModel
+        {
             public override string[] AssociationTypes => ["QualityOfNonBathymetricData"];
-
-            public override string ToString() => "RefId";
-            }
+        }
 
         public void Load(DomainModel.S131.FeatureTypes.QualityOfNonBathymetricData instance) {
             categoryOfTemporalVariation = instance.categoryOfTemporalVariation;
@@ -12029,30 +11928,29 @@ namespace S100Framework.WPF.ViewModel.S131
             if (instance.horizontalPositionUncertainty != null) {
                 horizontalPositionUncertainty = new();
                 horizontalPositionUncertainty.Load(instance.horizontalPositionUncertainty);
-                }
+            }
 
             orientationUncertainty = instance.orientationUncertainty;
             surveyDateRange = new();
             if (instance.surveyDateRange != null) {
                 surveyDateRange = new();
                 surveyDateRange.Load(instance.surveyDateRange);
-                }
+            }
 
             verticalUncertainty = new();
             if (instance.verticalUncertainty != null) {
                 verticalUncertainty = new();
                 verticalUncertainty.Load(instance.verticalUncertainty);
-                }
+            }
 
             information.Clear();
             if (instance.information is not null)
                 foreach (var e in instance.information)
                     information.Add(e);
-            }
+        }
 
         public override string Serialize() {
-            var instance = new DomainModel.S131.FeatureTypes.QualityOfNonBathymetricData
-                {
+            var instance = new DomainModel.S131.FeatureTypes.QualityOfNonBathymetricData {
                 categoryOfTemporalVariation = this.categoryOfTemporalVariation,
                 horizontalDistanceUncertainty = this.horizontalDistanceUncertainty,
                 horizontalPositionUncertainty = this.horizontalPositionUncertainty?.Model,
@@ -12060,13 +11958,12 @@ namespace S100Framework.WPF.ViewModel.S131
                 surveyDateRange = this.surveyDateRange?.Model,
                 verticalUncertainty = this.verticalUncertainty?.Model,
                 information = this.information.ToList(),
-                };
+            };
             return System.Text.Json.JsonSerializer.Serialize(instance);
-            }
+        }
 
         [Browsable(false)]
-        public DomainModel.S131.FeatureTypes.QualityOfNonBathymetricData Model => new()
-            {
+        public DomainModel.S131.FeatureTypes.QualityOfNonBathymetricData Model => new() {
             categoryOfTemporalVariation = this._categoryOfTemporalVariation,
             horizontalDistanceUncertainty = this._horizontalDistanceUncertainty,
             horizontalPositionUncertainty = this._horizontalPositionUncertainty?.Model,
@@ -12074,39 +11971,39 @@ namespace S100Framework.WPF.ViewModel.S131
             surveyDateRange = this._surveyDateRange?.Model,
             verticalUncertainty = this._verticalUncertainty?.Model,
             information = this.information.ToList(),
-            };
+        };
 
         public QualityOfNonBathymetricDataViewModel() : base() {
             information.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
                 OnPropertyChanged(nameof(information));
             };
-            }
         }
+    }
 
     [CategoryOrder("SoundingDatum", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class SoundingDatumViewModel : ViewModelBase {
+    public partial class SoundingDatumViewModel : ViewModelBase
+    {
         private verticalDatum _verticalDatum;
         [Category("SoundingDatum")]
         public verticalDatum verticalDatum {
             get {
                 return _verticalDatum;
-                }
+            }
 
             set {
                 SetValue(ref _verticalDatum, value);
-                }
             }
+        }
 
         [Category("SoundingDatum")]
         public ObservableCollection<information> information { get; set; } = new();
 
-        public class SoundingDatumRefIdViewModel : FeatureRefIdViewModel {
+        public class SoundingDatumRefIdViewModel : FeatureRefIdViewModel
+        {
             public override string[] AssociationTypes => ["SoundingDatum"];
-
-            public override string ToString() => "RefId";
-            }
+        }
 
         public void Load(DomainModel.S131.FeatureTypes.SoundingDatum instance) {
             verticalDatum = instance.verticalDatum;
@@ -12114,55 +12011,53 @@ namespace S100Framework.WPF.ViewModel.S131
             if (instance.information is not null)
                 foreach (var e in instance.information)
                     information.Add(e);
-            }
+        }
 
         public override string Serialize() {
-            var instance = new DomainModel.S131.FeatureTypes.SoundingDatum
-                {
+            var instance = new DomainModel.S131.FeatureTypes.SoundingDatum {
                 verticalDatum = this.verticalDatum,
                 information = this.information.ToList(),
-                };
+            };
             return System.Text.Json.JsonSerializer.Serialize(instance);
-            }
+        }
 
         [Browsable(false)]
-        public DomainModel.S131.FeatureTypes.SoundingDatum Model => new()
-            {
+        public DomainModel.S131.FeatureTypes.SoundingDatum Model => new() {
             verticalDatum = this._verticalDatum,
             information = this.information.ToList(),
-            };
+        };
 
         public SoundingDatumViewModel() : base() {
             information.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
                 OnPropertyChanged(nameof(information));
             };
-            }
         }
+    }
 
     [CategoryOrder("VerticalDatumOfData", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class VerticalDatumOfDataViewModel : ViewModelBase {
+    public partial class VerticalDatumOfDataViewModel : ViewModelBase
+    {
         private verticalDatum _verticalDatum;
         [Category("VerticalDatumOfData")]
         public verticalDatum verticalDatum {
             get {
                 return _verticalDatum;
-                }
+            }
 
             set {
                 SetValue(ref _verticalDatum, value);
-                }
             }
+        }
 
         [Category("VerticalDatumOfData")]
         public ObservableCollection<information> information { get; set; } = new();
 
-        public class VerticalDatumOfDataRefIdViewModel : FeatureRefIdViewModel {
+        public class VerticalDatumOfDataRefIdViewModel : FeatureRefIdViewModel
+        {
             public override string[] AssociationTypes => ["VerticalDatumOfData"];
-
-            public override string ToString() => "RefId";
-            }
+        }
 
         public void Load(DomainModel.S131.FeatureTypes.VerticalDatumOfData instance) {
             verticalDatum = instance.verticalDatum;
@@ -12170,100 +12065,98 @@ namespace S100Framework.WPF.ViewModel.S131
             if (instance.information is not null)
                 foreach (var e in instance.information)
                     information.Add(e);
-            }
+        }
 
         public override string Serialize() {
-            var instance = new DomainModel.S131.FeatureTypes.VerticalDatumOfData
-                {
+            var instance = new DomainModel.S131.FeatureTypes.VerticalDatumOfData {
                 verticalDatum = this.verticalDatum,
                 information = this.information.ToList(),
-                };
+            };
             return System.Text.Json.JsonSerializer.Serialize(instance);
-            }
+        }
 
         [Browsable(false)]
-        public DomainModel.S131.FeatureTypes.VerticalDatumOfData Model => new()
-            {
+        public DomainModel.S131.FeatureTypes.VerticalDatumOfData Model => new() {
             verticalDatum = this._verticalDatum,
             information = this.information.ToList(),
-            };
+        };
 
         public VerticalDatumOfDataViewModel() : base() {
             information.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
                 OnPropertyChanged(nameof(information));
             };
-            }
         }
+    }
 
     [CategoryOrder("TextPlacement", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class TextPlacementViewModel : ViewModelBase {
+    public partial class TextPlacementViewModel : ViewModelBase
+    {
         private Decimal _orientationValue;
         [Category("TextPlacement")]
         public Decimal orientationValue {
             get {
                 return _orientationValue;
-                }
+            }
 
             set {
                 SetValue(ref _orientationValue, value);
-                }
             }
+        }
 
         private String _text = string.Empty;
         [Category("TextPlacement")]
         public String text {
             get {
                 return _text;
-                }
+            }
 
             set {
                 SetValue(ref _text, value);
-                }
             }
+        }
 
         private Int32 _textOffsetMm;
         [Category("TextPlacement")]
         public Int32 textOffsetMm {
             get {
                 return _textOffsetMm;
-                }
+            }
 
             set {
                 SetValue(ref _textOffsetMm, value);
-                }
             }
+        }
 
         private textType? _textType = default;
         [Category("TextPlacement")]
         public textType? textType {
             get {
                 return _textType;
-                }
+            }
 
             set {
                 SetValue(ref _textType, value);
-                }
             }
+        }
 
         private Int32? _scaleMinimum = default;
         [Category("TextPlacement")]
         public Int32? scaleMinimum {
             get {
                 return _scaleMinimum;
-                }
+            }
 
             set {
                 SetValue(ref _scaleMinimum, value);
-                }
             }
+        }
 
-        public class TextPlacementRefIdViewModel : FeatureRefIdViewModel {
+        public class TextPlacementRefIdViewModel : FeatureRefIdViewModel
+        {
             public override string[] AssociationTypes => ["TextPlacement"];
-
-            public override string ToString() => "RefId";
-            }
+        }
 
         public void Load(DomainModel.S131.FeatureTypes.TextPlacement instance) {
             orientationValue = instance.orientationValue;
@@ -12271,35 +12164,34 @@ namespace S100Framework.WPF.ViewModel.S131
             textOffsetMm = instance.textOffsetMm;
             textType = instance.textType;
             scaleMinimum = instance.scaleMinimum;
-            }
+        }
 
         public override string Serialize() {
-            var instance = new DomainModel.S131.FeatureTypes.TextPlacement
-                {
+            var instance = new DomainModel.S131.FeatureTypes.TextPlacement {
                 orientationValue = this.orientationValue,
                 text = this.text,
                 textOffsetMm = this.textOffsetMm,
                 textType = this.textType,
                 scaleMinimum = this.scaleMinimum,
-                };
+            };
             return System.Text.Json.JsonSerializer.Serialize(instance);
-            }
+        }
 
         [Browsable(false)]
-        public DomainModel.S131.FeatureTypes.TextPlacement Model => new()
-            {
+        public DomainModel.S131.FeatureTypes.TextPlacement Model => new() {
             orientationValue = this._orientationValue,
             text = this._text,
             textOffsetMm = this._textOffsetMm,
             textType = this._textType,
             scaleMinimum = this._scaleMinimum,
-            };
+        };
 
         public TextPlacementViewModel() : base() {
-            }
         }
+    }
 
-    public class TextAssociationViewModel : FeatureAssociationViewModel {
+    public class TextAssociationViewModel : FeatureAssociationViewModel
+    {
         public override string Code => "TextAssociation";
         public override string[] Roles => ["identifies", "positions"];
 
@@ -12308,163 +12200,142 @@ namespace S100Framework.WPF.ViewModel.S131
         public FeatureBindingViewModel? positions {
             get {
                 return _positions;
-                }
+            }
 
             set {
                 this.SetValue(ref _positions, value);
-                }
             }
+        }
 
         public override FeatureAssociationConnector? associationConnector {
             get {
                 return _associationConnector;
-                }
+            }
 
             set {
                 this.SetValue(ref _associationConnector, value);
                 positions = null;
                 if (value is not null) {
-                    positions = value?.role switch
-                        {
-                            "identifies" => value.CreateForeignFeatureBinding(),
-                            _ => value.CreateLocalFeatureBinding(),
-                            };
-                    }
+                    positions = value?.role switch {
+                        "identifies" => value.CreateForeignFeatureBinding(),
+                        _ => value.CreateLocalFeatureBinding(),
+                    };
                 }
             }
+        }
 
         public override FeatureAssociationConnector[] associationConnectorFeatures => TextAssociationViewModel._associationConnectorFeatures;
 
-        public class positionsDryDockRefIdViewModel : FeatureRefIdViewModel {
+        public class positionsDryDockRefIdViewModel : FeatureRefIdViewModel
+        {
             public override string[] AssociationTypes => ["TextPlacement"];
-
-            public override string ToString() => "RefId";
-            }
-
-        public class positionsFloatingDockRefIdViewModel : FeatureRefIdViewModel {
-            public override string[] AssociationTypes => ["TextPlacement"];
-
-            public override string ToString() => "RefId";
-            }
-
-        public class positionsGridironRefIdViewModel : FeatureRefIdViewModel {
-            public override string[] AssociationTypes => ["TextPlacement"];
-
-            public override string ToString() => "RefId";
-            }
-
-        public class positionsHarbourFacilityRefIdViewModel : FeatureRefIdViewModel {
-            public override string[] AssociationTypes => ["TextPlacement"];
-
-            public override string ToString() => "RefId";
-            }
-
-        public class positionsAnchorBerthRefIdViewModel : FeatureRefIdViewModel {
-            public override string[] AssociationTypes => ["TextPlacement"];
-
-            public override string ToString() => "RefId";
-            }
-
-        public class positionsAnchorageAreaRefIdViewModel : FeatureRefIdViewModel {
-            public override string[] AssociationTypes => ["TextPlacement"];
-
-            public override string ToString() => "RefId";
-            }
-
-        public class positionsBerthRefIdViewModel : FeatureRefIdViewModel {
-            public override string[] AssociationTypes => ["TextPlacement"];
-
-            public override string ToString() => "RefId";
-            }
-
-        public class positionsBerthPositionRefIdViewModel : FeatureRefIdViewModel {
-            public override string[] AssociationTypes => ["TextPlacement"];
-
-            public override string ToString() => "RefId";
-            }
-
-        public class positionsDockAreaRefIdViewModel : FeatureRefIdViewModel {
-            public override string[] AssociationTypes => ["TextPlacement"];
-
-            public override string ToString() => "RefId";
-            }
-
-        public class positionsDumpingGroundRefIdViewModel : FeatureRefIdViewModel {
-            public override string[] AssociationTypes => ["TextPlacement"];
-
-            public override string ToString() => "RefId";
-            }
-
-        public class positionsHarbourAreaAdministrativeRefIdViewModel : FeatureRefIdViewModel {
-            public override string[] AssociationTypes => ["TextPlacement"];
-
-            public override string ToString() => "RefId";
-            }
-
-        public class positionsHarbourAreaSectionRefIdViewModel : FeatureRefIdViewModel {
-            public override string[] AssociationTypes => ["TextPlacement"];
-
-            public override string ToString() => "RefId";
-            }
-
-        public class positionsHarbourBasinRefIdViewModel : FeatureRefIdViewModel {
-            public override string[] AssociationTypes => ["TextPlacement"];
-
-            public override string ToString() => "RefId";
-            }
-
-        public class positionsMooringWarpingFacilityRefIdViewModel : FeatureRefIdViewModel {
-            public override string[] AssociationTypes => ["TextPlacement"];
-
-            public override string ToString() => "RefId";
-            }
-
-        public class positionsOuterLimitRefIdViewModel : FeatureRefIdViewModel {
-            public override string[] AssociationTypes => ["TextPlacement"];
-
-            public override string ToString() => "RefId";
-            }
-
-        public class positionsPilotBoardingPlaceRefIdViewModel : FeatureRefIdViewModel {
-            public override string[] AssociationTypes => ["TextPlacement"];
-
-            public override string ToString() => "RefId";
-            }
-
-        public class positionsSeaplaneLandingAreaRefIdViewModel : FeatureRefIdViewModel {
-            public override string[] AssociationTypes => ["TextPlacement"];
-
-            public override string ToString() => "RefId";
-            }
-
-        public class positionsTerminalRefIdViewModel : FeatureRefIdViewModel {
-            public override string[] AssociationTypes => ["TextPlacement"];
-
-            public override string ToString() => "RefId";
-            }
-
-        public class positionsTurningBasinRefIdViewModel : FeatureRefIdViewModel {
-            public override string[] AssociationTypes => ["TextPlacement"];
-
-            public override string ToString() => "RefId";
-            }
-
-        public class positionsWaterwayAreaRefIdViewModel : FeatureRefIdViewModel {
-            public override string[] AssociationTypes => ["TextPlacement"];
-
-            public override string ToString() => "RefId";
-            }
-
-        public class positionsTextPlacementRefIdViewModel : FeatureRefIdViewModel {
-            public override string[] AssociationTypes => ["DryDock", "FloatingDock", "Gridiron", "HarbourFacility", "AnchorBerth", "AnchorageArea", "Berth", "BerthPosition", "DockArea", "DumpingGround", "HarbourAreaAdministrative", "HarbourAreaSection", "HarbourBasin", "MooringWarpingFacility", "OuterLimit", "PilotBoardingPlace", "SeaplaneLandingArea", "Terminal", "TurningBasin", "WaterwayArea"];
-
-            public override string ToString() => "RefId";
-            }
-
-        public static FeatureAssociationConnector[] _associationConnectorFeatures => Handles.AssociationConnectorFeatures[typeof(TextAssociationViewModel)]();
         }
 
-    public class SubsectionViewModel : FeatureAssociationViewModel {
+        public class positionsFloatingDockRefIdViewModel : FeatureRefIdViewModel
+        {
+            public override string[] AssociationTypes => ["TextPlacement"];
+        }
+
+        public class positionsGridironRefIdViewModel : FeatureRefIdViewModel
+        {
+            public override string[] AssociationTypes => ["TextPlacement"];
+        }
+
+        public class positionsHarbourFacilityRefIdViewModel : FeatureRefIdViewModel
+        {
+            public override string[] AssociationTypes => ["TextPlacement"];
+        }
+
+        public class positionsAnchorBerthRefIdViewModel : FeatureRefIdViewModel
+        {
+            public override string[] AssociationTypes => ["TextPlacement"];
+        }
+
+        public class positionsAnchorageAreaRefIdViewModel : FeatureRefIdViewModel
+        {
+            public override string[] AssociationTypes => ["TextPlacement"];
+        }
+
+        public class positionsBerthRefIdViewModel : FeatureRefIdViewModel
+        {
+            public override string[] AssociationTypes => ["TextPlacement"];
+        }
+
+        public class positionsBerthPositionRefIdViewModel : FeatureRefIdViewModel
+        {
+            public override string[] AssociationTypes => ["TextPlacement"];
+        }
+
+        public class positionsDockAreaRefIdViewModel : FeatureRefIdViewModel
+        {
+            public override string[] AssociationTypes => ["TextPlacement"];
+        }
+
+        public class positionsDumpingGroundRefIdViewModel : FeatureRefIdViewModel
+        {
+            public override string[] AssociationTypes => ["TextPlacement"];
+        }
+
+        public class positionsHarbourAreaAdministrativeRefIdViewModel : FeatureRefIdViewModel
+        {
+            public override string[] AssociationTypes => ["TextPlacement"];
+        }
+
+        public class positionsHarbourAreaSectionRefIdViewModel : FeatureRefIdViewModel
+        {
+            public override string[] AssociationTypes => ["TextPlacement"];
+        }
+
+        public class positionsHarbourBasinRefIdViewModel : FeatureRefIdViewModel
+        {
+            public override string[] AssociationTypes => ["TextPlacement"];
+        }
+
+        public class positionsMooringWarpingFacilityRefIdViewModel : FeatureRefIdViewModel
+        {
+            public override string[] AssociationTypes => ["TextPlacement"];
+        }
+
+        public class positionsOuterLimitRefIdViewModel : FeatureRefIdViewModel
+        {
+            public override string[] AssociationTypes => ["TextPlacement"];
+        }
+
+        public class positionsPilotBoardingPlaceRefIdViewModel : FeatureRefIdViewModel
+        {
+            public override string[] AssociationTypes => ["TextPlacement"];
+        }
+
+        public class positionsSeaplaneLandingAreaRefIdViewModel : FeatureRefIdViewModel
+        {
+            public override string[] AssociationTypes => ["TextPlacement"];
+        }
+
+        public class positionsTerminalRefIdViewModel : FeatureRefIdViewModel
+        {
+            public override string[] AssociationTypes => ["TextPlacement"];
+        }
+
+        public class positionsTurningBasinRefIdViewModel : FeatureRefIdViewModel
+        {
+            public override string[] AssociationTypes => ["TextPlacement"];
+        }
+
+        public class positionsWaterwayAreaRefIdViewModel : FeatureRefIdViewModel
+        {
+            public override string[] AssociationTypes => ["TextPlacement"];
+        }
+
+        public class positionsTextPlacementRefIdViewModel : FeatureRefIdViewModel
+        {
+            public override string[] AssociationTypes => ["DryDock", "FloatingDock", "Gridiron", "HarbourFacility", "AnchorBerth", "AnchorageArea", "Berth", "BerthPosition", "DockArea", "DumpingGround", "HarbourAreaAdministrative", "HarbourAreaSection", "HarbourBasin", "MooringWarpingFacility", "OuterLimit", "PilotBoardingPlace", "SeaplaneLandingArea", "Terminal", "TurningBasin", "WaterwayArea"];
+        }
+
+        public static FeatureAssociationConnector[] _associationConnectorFeatures => Handles.AssociationConnectorFeatures[typeof(TextAssociationViewModel)]();
+    }
+
+    public class SubsectionViewModel : FeatureAssociationViewModel
+    {
         public override string Code => "Subsection";
         public override string[] Roles => ["subUnit", "constitute"];
 
@@ -12473,70 +12344,67 @@ namespace S100Framework.WPF.ViewModel.S131
         public FeatureBindingViewModel? subUnit {
             get {
                 return _subUnit;
-                }
+            }
 
             set {
                 this.SetValue(ref _subUnit, value);
-                }
             }
+        }
 
         private FeatureBindingViewModel? _constitute;
         [ExpandableObject]
         public FeatureBindingViewModel? constitute {
             get {
                 return _constitute;
-                }
+            }
 
             set {
                 this.SetValue(ref _constitute, value);
-                }
             }
+        }
 
         public override FeatureAssociationConnector? associationConnector {
             get {
                 return _associationConnector;
-                }
+            }
 
             set {
                 this.SetValue(ref _associationConnector, value);
                 subUnit = null;
                 if (value is not null) {
-                    subUnit = value?.role switch
-                        {
-                            "constitute" => value.CreateForeignFeatureBinding(),
-                            _ => value.CreateLocalFeatureBinding(),
-                            };
-                    }
+                    subUnit = value?.role switch {
+                        "constitute" => value.CreateForeignFeatureBinding(),
+                        _ => value.CreateLocalFeatureBinding(),
+                    };
+                }
 
                 constitute = null;
                 if (value is not null) {
-                    constitute = value?.role switch
-                        {
-                            "subUnit" => value.CreateForeignFeatureBinding(),
-                            _ => value.CreateLocalFeatureBinding(),
-                            };
-                    }
+                    constitute = value?.role switch {
+                        "subUnit" => value.CreateForeignFeatureBinding(),
+                        _ => value.CreateLocalFeatureBinding(),
+                    };
                 }
             }
+        }
 
         public override FeatureAssociationConnector[] associationConnectorFeatures => SubsectionViewModel._associationConnectorFeatures;
 
-        public class constituteHarbourAreaSectionRefIdViewModel : FeatureRefIdViewModel {
+        public class constituteHarbourAreaSectionRefIdViewModel : FeatureRefIdViewModel
+        {
             public override string[] AssociationTypes => ["HarbourAreaSection"];
-
-            public override string ToString() => "RefId";
-            }
-
-        public class subUnitHarbourAreaSectionRefIdViewModel : FeatureRefIdViewModel {
-            public override string[] AssociationTypes => ["HarbourAreaSection"];
-
-            public override string ToString() => "RefId";
-            }
-
-        public static FeatureAssociationConnector[] _associationConnectorFeatures => Handles.AssociationConnectorFeatures[typeof(SubsectionViewModel)]();
         }
 
-    public class InfrastructureViewModel : FeatureAssociationViewModel {
+        public class subUnitHarbourAreaSectionRefIdViewModel : FeatureRefIdViewModel
+        {
+            public override string[] AssociationTypes => ["HarbourAreaSection"];
+        }
+
+        public static FeatureAssociationConnector[] _associationConnectorFeatures => Handles.AssociationConnectorFeatures[typeof(SubsectionViewModel)]();
+    }
+
+    public class InfrastructureViewModel : FeatureAssociationViewModel
+    {
         public override string Code => "Infrastructure";
         public override string[] Roles => ["infrastructureLocation", "hasInfrastructure"];
 
@@ -12545,94 +12413,87 @@ namespace S100Framework.WPF.ViewModel.S131
         public FeatureBindingViewModel? infrastructureLocation {
             get {
                 return _infrastructureLocation;
-                }
+            }
 
             set {
                 this.SetValue(ref _infrastructureLocation, value);
-                }
             }
+        }
 
         private FeatureBindingViewModel? _hasInfrastructure;
         [ExpandableObject]
         public FeatureBindingViewModel? hasInfrastructure {
             get {
                 return _hasInfrastructure;
-                }
+            }
 
             set {
                 this.SetValue(ref _hasInfrastructure, value);
-                }
             }
+        }
 
         public override FeatureAssociationConnector? associationConnector {
             get {
                 return _associationConnector;
-                }
+            }
 
             set {
                 this.SetValue(ref _associationConnector, value);
                 infrastructureLocation = null;
                 if (value is not null) {
-                    infrastructureLocation = value?.role switch
-                        {
-                            "hasInfrastructure" => value.CreateForeignFeatureBinding(),
-                            _ => value.CreateLocalFeatureBinding(),
-                            };
-                    }
+                    infrastructureLocation = value?.role switch {
+                        "hasInfrastructure" => value.CreateForeignFeatureBinding(),
+                        _ => value.CreateLocalFeatureBinding(),
+                    };
+                }
 
                 hasInfrastructure = null;
                 if (value is not null) {
-                    hasInfrastructure = value?.role switch
-                        {
-                            "infrastructureLocation" => value.CreateForeignFeatureBinding(),
-                            _ => value.CreateLocalFeatureBinding(),
-                            };
-                    }
+                    hasInfrastructure = value?.role switch {
+                        "infrastructureLocation" => value.CreateForeignFeatureBinding(),
+                        _ => value.CreateLocalFeatureBinding(),
+                    };
                 }
             }
+        }
 
         public override FeatureAssociationConnector[] associationConnectorFeatures => InfrastructureViewModel._associationConnectorFeatures;
 
-        public class hasInfrastructureHarbourAreaSectionRefIdViewModel : FeatureRefIdViewModel {
+        public class hasInfrastructureHarbourAreaSectionRefIdViewModel : FeatureRefIdViewModel
+        {
             public override string[] AssociationTypes => ["DryDock", "FloatingDock", "Gridiron", "HarbourFacility"];
-
-            public override string ToString() => "RefId";
-            }
-
-        public class hasInfrastructureTerminalRefIdViewModel : FeatureRefIdViewModel {
-            public override string[] AssociationTypes => ["DryDock", "FloatingDock", "Gridiron", "HarbourFacility"];
-
-            public override string ToString() => "RefId";
-            }
-
-        public class infrastructureLocationDryDockRefIdViewModel : FeatureRefIdViewModel {
-            public override string[] AssociationTypes => ["HarbourAreaSection", "Terminal"];
-
-            public override string ToString() => "RefId";
-            }
-
-        public class infrastructureLocationFloatingDockRefIdViewModel : FeatureRefIdViewModel {
-            public override string[] AssociationTypes => ["HarbourAreaSection", "Terminal"];
-
-            public override string ToString() => "RefId";
-            }
-
-        public class infrastructureLocationGridironRefIdViewModel : FeatureRefIdViewModel {
-            public override string[] AssociationTypes => ["HarbourAreaSection", "Terminal"];
-
-            public override string ToString() => "RefId";
-            }
-
-        public class infrastructureLocationHarbourFacilityRefIdViewModel : FeatureRefIdViewModel {
-            public override string[] AssociationTypes => ["HarbourAreaSection", "Terminal"];
-
-            public override string ToString() => "RefId";
-            }
-
-        public static FeatureAssociationConnector[] _associationConnectorFeatures => Handles.AssociationConnectorFeatures[typeof(InfrastructureViewModel)]();
         }
 
-    public class PrimaryAuxiliaryFacilityViewModel : FeatureAssociationViewModel {
+        public class hasInfrastructureTerminalRefIdViewModel : FeatureRefIdViewModel
+        {
+            public override string[] AssociationTypes => ["DryDock", "FloatingDock", "Gridiron", "HarbourFacility"];
+        }
+
+        public class infrastructureLocationDryDockRefIdViewModel : FeatureRefIdViewModel
+        {
+            public override string[] AssociationTypes => ["HarbourAreaSection", "Terminal"];
+        }
+
+        public class infrastructureLocationFloatingDockRefIdViewModel : FeatureRefIdViewModel
+        {
+            public override string[] AssociationTypes => ["HarbourAreaSection", "Terminal"];
+        }
+
+        public class infrastructureLocationGridironRefIdViewModel : FeatureRefIdViewModel
+        {
+            public override string[] AssociationTypes => ["HarbourAreaSection", "Terminal"];
+        }
+
+        public class infrastructureLocationHarbourFacilityRefIdViewModel : FeatureRefIdViewModel
+        {
+            public override string[] AssociationTypes => ["HarbourAreaSection", "Terminal"];
+        }
+
+        public static FeatureAssociationConnector[] _associationConnectorFeatures => Handles.AssociationConnectorFeatures[typeof(InfrastructureViewModel)]();
+    }
+
+    public class PrimaryAuxiliaryFacilityViewModel : FeatureAssociationViewModel
+    {
         public override string Code => "PrimaryAuxiliaryFacility";
         public override string[] Roles => ["primaryFacility", "auxiliaryFacility"];
 
@@ -12641,76 +12502,72 @@ namespace S100Framework.WPF.ViewModel.S131
         public FeatureBindingViewModel? primaryFacility {
             get {
                 return _primaryFacility;
-                }
+            }
 
             set {
                 this.SetValue(ref _primaryFacility, value);
-                }
             }
+        }
 
         private FeatureBindingViewModel? _auxiliaryFacility;
         [ExpandableObject]
         public FeatureBindingViewModel? auxiliaryFacility {
             get {
                 return _auxiliaryFacility;
-                }
+            }
 
             set {
                 this.SetValue(ref _auxiliaryFacility, value);
-                }
             }
+        }
 
         public override FeatureAssociationConnector? associationConnector {
             get {
                 return _associationConnector;
-                }
+            }
 
             set {
                 this.SetValue(ref _associationConnector, value);
                 primaryFacility = null;
                 if (value is not null) {
-                    primaryFacility = value?.role switch
-                        {
-                            "auxiliaryFacility" => value.CreateForeignFeatureBinding(),
-                            _ => value.CreateLocalFeatureBinding(),
-                            };
-                    }
+                    primaryFacility = value?.role switch {
+                        "auxiliaryFacility" => value.CreateForeignFeatureBinding(),
+                        _ => value.CreateLocalFeatureBinding(),
+                    };
+                }
 
                 auxiliaryFacility = null;
                 if (value is not null) {
-                    auxiliaryFacility = value?.role switch
-                        {
-                            "primaryFacility" => value.CreateForeignFeatureBinding(),
-                            _ => value.CreateLocalFeatureBinding(),
-                            };
-                    }
+                    auxiliaryFacility = value?.role switch {
+                        "primaryFacility" => value.CreateForeignFeatureBinding(),
+                        _ => value.CreateLocalFeatureBinding(),
+                    };
                 }
             }
+        }
 
         public override FeatureAssociationConnector[] associationConnectorFeatures => PrimaryAuxiliaryFacilityViewModel._associationConnectorFeatures;
 
-        public class auxiliaryFacilityAnchorBerthRefIdViewModel : FeatureRefIdViewModel {
+        public class auxiliaryFacilityAnchorBerthRefIdViewModel : FeatureRefIdViewModel
+        {
             public override string[] AssociationTypes => ["MooringWarpingFacility"];
-
-            public override string ToString() => "RefId";
-            }
-
-        public class auxiliaryFacilityBerthPositionRefIdViewModel : FeatureRefIdViewModel {
-            public override string[] AssociationTypes => ["MooringWarpingFacility"];
-
-            public override string ToString() => "RefId";
-            }
-
-        public class primaryFacilityMooringWarpingFacilityRefIdViewModel : FeatureRefIdViewModel {
-            public override string[] AssociationTypes => ["AnchorBerth", "BerthPosition"];
-
-            public override string ToString() => "RefId";
-            }
-
-        public static FeatureAssociationConnector[] _associationConnectorFeatures => Handles.AssociationConnectorFeatures[typeof(PrimaryAuxiliaryFacilityViewModel)]();
         }
 
-    public class DemarcationViewModel : FeatureAssociationViewModel {
+        public class auxiliaryFacilityBerthPositionRefIdViewModel : FeatureRefIdViewModel
+        {
+            public override string[] AssociationTypes => ["MooringWarpingFacility"];
+        }
+
+        public class primaryFacilityMooringWarpingFacilityRefIdViewModel : FeatureRefIdViewModel
+        {
+            public override string[] AssociationTypes => ["AnchorBerth", "BerthPosition"];
+        }
+
+        public static FeatureAssociationConnector[] _associationConnectorFeatures => Handles.AssociationConnectorFeatures[typeof(PrimaryAuxiliaryFacilityViewModel)]();
+    }
+
+    public class DemarcationViewModel : FeatureAssociationViewModel
+    {
         public override string Code => "Demarcation";
         public override string[] Roles => ["demarcationIndicator", "demarcatedFeature"];
 
@@ -12719,70 +12576,67 @@ namespace S100Framework.WPF.ViewModel.S131
         public FeatureBindingViewModel? demarcationIndicator {
             get {
                 return _demarcationIndicator;
-                }
+            }
 
             set {
                 this.SetValue(ref _demarcationIndicator, value);
-                }
             }
+        }
 
         private FeatureBindingViewModel? _demarcatedFeature;
         [ExpandableObject]
         public FeatureBindingViewModel? demarcatedFeature {
             get {
                 return _demarcatedFeature;
-                }
+            }
 
             set {
                 this.SetValue(ref _demarcatedFeature, value);
-                }
             }
+        }
 
         public override FeatureAssociationConnector? associationConnector {
             get {
                 return _associationConnector;
-                }
+            }
 
             set {
                 this.SetValue(ref _associationConnector, value);
                 demarcationIndicator = null;
                 if (value is not null) {
-                    demarcationIndicator = value?.role switch
-                        {
-                            "demarcatedFeature" => value.CreateForeignFeatureBinding(),
-                            _ => value.CreateLocalFeatureBinding(),
-                            };
-                    }
+                    demarcationIndicator = value?.role switch {
+                        "demarcatedFeature" => value.CreateForeignFeatureBinding(),
+                        _ => value.CreateLocalFeatureBinding(),
+                    };
+                }
 
                 demarcatedFeature = null;
                 if (value is not null) {
-                    demarcatedFeature = value?.role switch
-                        {
-                            "demarcationIndicator" => value.CreateForeignFeatureBinding(),
-                            _ => value.CreateLocalFeatureBinding(),
-                            };
-                    }
+                    demarcatedFeature = value?.role switch {
+                        "demarcationIndicator" => value.CreateForeignFeatureBinding(),
+                        _ => value.CreateLocalFeatureBinding(),
+                    };
                 }
             }
+        }
 
         public override FeatureAssociationConnector[] associationConnectorFeatures => DemarcationViewModel._associationConnectorFeatures;
 
-        public class demarcatedFeatureBerthPositionRefIdViewModel : FeatureRefIdViewModel {
+        public class demarcatedFeatureBerthPositionRefIdViewModel : FeatureRefIdViewModel
+        {
             public override string[] AssociationTypes => ["Berth"];
-
-            public override string ToString() => "RefId";
-            }
-
-        public class demarcationIndicatorBerthRefIdViewModel : FeatureRefIdViewModel {
-            public override string[] AssociationTypes => ["BerthPosition"];
-
-            public override string ToString() => "RefId";
-            }
-
-        public static FeatureAssociationConnector[] _associationConnectorFeatures => Handles.AssociationConnectorFeatures[typeof(DemarcationViewModel)]();
         }
 
-    public class JurisdictionalLimitViewModel : FeatureAssociationViewModel {
+        public class demarcationIndicatorBerthRefIdViewModel : FeatureRefIdViewModel
+        {
+            public override string[] AssociationTypes => ["BerthPosition"];
+        }
+
+        public static FeatureAssociationConnector[] _associationConnectorFeatures => Handles.AssociationConnectorFeatures[typeof(DemarcationViewModel)]();
+    }
+
+    public class JurisdictionalLimitViewModel : FeatureAssociationViewModel
+    {
         public override string Code => "JurisdictionalLimit";
         public override string[] Roles => ["limitReference", "limitExtent"];
 
@@ -12791,70 +12645,67 @@ namespace S100Framework.WPF.ViewModel.S131
         public FeatureBindingViewModel? limitReference {
             get {
                 return _limitReference;
-                }
+            }
 
             set {
                 this.SetValue(ref _limitReference, value);
-                }
             }
+        }
 
         private FeatureBindingViewModel? _limitExtent;
         [ExpandableObject]
         public FeatureBindingViewModel? limitExtent {
             get {
                 return _limitExtent;
-                }
+            }
 
             set {
                 this.SetValue(ref _limitExtent, value);
-                }
             }
+        }
 
         public override FeatureAssociationConnector? associationConnector {
             get {
                 return _associationConnector;
-                }
+            }
 
             set {
                 this.SetValue(ref _associationConnector, value);
                 limitReference = null;
                 if (value is not null) {
-                    limitReference = value?.role switch
-                        {
-                            "limitExtent" => value.CreateForeignFeatureBinding(),
-                            _ => value.CreateLocalFeatureBinding(),
-                            };
-                    }
+                    limitReference = value?.role switch {
+                        "limitExtent" => value.CreateForeignFeatureBinding(),
+                        _ => value.CreateLocalFeatureBinding(),
+                    };
+                }
 
                 limitExtent = null;
                 if (value is not null) {
-                    limitExtent = value?.role switch
-                        {
-                            "limitReference" => value.CreateForeignFeatureBinding(),
-                            _ => value.CreateLocalFeatureBinding(),
-                            };
-                    }
+                    limitExtent = value?.role switch {
+                        "limitReference" => value.CreateForeignFeatureBinding(),
+                        _ => value.CreateLocalFeatureBinding(),
+                    };
                 }
             }
+        }
 
         public override FeatureAssociationConnector[] associationConnectorFeatures => JurisdictionalLimitViewModel._associationConnectorFeatures;
 
-        public class limitExtentHarbourAreaAdministrativeRefIdViewModel : FeatureRefIdViewModel {
+        public class limitExtentHarbourAreaAdministrativeRefIdViewModel : FeatureRefIdViewModel
+        {
             public override string[] AssociationTypes => ["OuterLimit"];
-
-            public override string ToString() => "RefId";
-            }
-
-        public class limitReferenceOuterLimitRefIdViewModel : FeatureRefIdViewModel {
-            public override string[] AssociationTypes => ["HarbourAreaAdministrative"];
-
-            public override string ToString() => "RefId";
-            }
-
-        public static FeatureAssociationConnector[] _associationConnectorFeatures => Handles.AssociationConnectorFeatures[typeof(JurisdictionalLimitViewModel)]();
         }
 
-    public class LayoutDivisionViewModel : FeatureAssociationViewModel {
+        public class limitReferenceOuterLimitRefIdViewModel : FeatureRefIdViewModel
+        {
+            public override string[] AssociationTypes => ["HarbourAreaAdministrative"];
+        }
+
+        public static FeatureAssociationConnector[] _associationConnectorFeatures => Handles.AssociationConnectorFeatures[typeof(JurisdictionalLimitViewModel)]();
+    }
+
+    public class LayoutDivisionViewModel : FeatureAssociationViewModel
+    {
         public override string Code => "LayoutDivision";
         public override string[] Roles => ["layoutUnit", "componentOf"];
 
@@ -12863,142 +12714,127 @@ namespace S100Framework.WPF.ViewModel.S131
         public FeatureBindingViewModel? layoutUnit {
             get {
                 return _layoutUnit;
-                }
+            }
 
             set {
                 this.SetValue(ref _layoutUnit, value);
-                }
             }
+        }
 
         private FeatureBindingViewModel? _componentOf;
         [ExpandableObject]
         public FeatureBindingViewModel? componentOf {
             get {
                 return _componentOf;
-                }
+            }
 
             set {
                 this.SetValue(ref _componentOf, value);
-                }
             }
+        }
 
         public override FeatureAssociationConnector? associationConnector {
             get {
                 return _associationConnector;
-                }
+            }
 
             set {
                 this.SetValue(ref _associationConnector, value);
                 layoutUnit = null;
                 if (value is not null) {
-                    layoutUnit = value?.role switch
-                        {
-                            "componentOf" => value.CreateForeignFeatureBinding(),
-                            _ => value.CreateLocalFeatureBinding(),
-                            };
-                    }
+                    layoutUnit = value?.role switch {
+                        "componentOf" => value.CreateForeignFeatureBinding(),
+                        _ => value.CreateLocalFeatureBinding(),
+                    };
+                }
 
                 componentOf = null;
                 if (value is not null) {
-                    componentOf = value?.role switch
-                        {
-                            "layoutUnit" => value.CreateForeignFeatureBinding(),
-                            _ => value.CreateLocalFeatureBinding(),
-                            };
-                    }
+                    componentOf = value?.role switch {
+                        "layoutUnit" => value.CreateForeignFeatureBinding(),
+                        _ => value.CreateLocalFeatureBinding(),
+                    };
                 }
             }
+        }
 
         public override FeatureAssociationConnector[] associationConnectorFeatures => LayoutDivisionViewModel._associationConnectorFeatures;
 
-        public class componentOfAnchorageAreaRefIdViewModel : FeatureRefIdViewModel {
+        public class componentOfAnchorageAreaRefIdViewModel : FeatureRefIdViewModel
+        {
             public override string[] AssociationTypes => ["HarbourAreaSection"];
-
-            public override string ToString() => "RefId";
-            }
-
-        public class componentOfBerthRefIdViewModel : FeatureRefIdViewModel {
-            public override string[] AssociationTypes => ["HarbourAreaSection", "Terminal"];
-
-            public override string ToString() => "RefId";
-            }
-
-        public class componentOfDockAreaRefIdViewModel : FeatureRefIdViewModel {
-            public override string[] AssociationTypes => ["HarbourAreaSection"];
-
-            public override string ToString() => "RefId";
-            }
-
-        public class componentOfDumpingGroundRefIdViewModel : FeatureRefIdViewModel {
-            public override string[] AssociationTypes => ["HarbourAreaSection"];
-
-            public override string ToString() => "RefId";
-            }
-
-        public class componentOfHarbourAreaSectionRefIdViewModel : FeatureRefIdViewModel {
-            public override string[] AssociationTypes => ["HarbourAreaAdministrative"];
-
-            public override string ToString() => "RefId";
-            }
-
-        public class componentOfHarbourBasinRefIdViewModel : FeatureRefIdViewModel {
-            public override string[] AssociationTypes => ["HarbourAreaSection"];
-
-            public override string ToString() => "RefId";
-            }
-
-        public class componentOfPilotBoardingPlaceRefIdViewModel : FeatureRefIdViewModel {
-            public override string[] AssociationTypes => ["HarbourAreaSection"];
-
-            public override string ToString() => "RefId";
-            }
-
-        public class componentOfSeaplaneLandingAreaRefIdViewModel : FeatureRefIdViewModel {
-            public override string[] AssociationTypes => ["HarbourAreaSection"];
-
-            public override string ToString() => "RefId";
-            }
-
-        public class componentOfTerminalRefIdViewModel : FeatureRefIdViewModel {
-            public override string[] AssociationTypes => ["HarbourAreaSection"];
-
-            public override string ToString() => "RefId";
-            }
-
-        public class componentOfTurningBasinRefIdViewModel : FeatureRefIdViewModel {
-            public override string[] AssociationTypes => ["HarbourAreaSection"];
-
-            public override string ToString() => "RefId";
-            }
-
-        public class componentOfWaterwayAreaRefIdViewModel : FeatureRefIdViewModel {
-            public override string[] AssociationTypes => ["HarbourAreaSection"];
-
-            public override string ToString() => "RefId";
-            }
-
-        public class layoutUnitHarbourAreaAdministrativeRefIdViewModel : FeatureRefIdViewModel {
-            public override string[] AssociationTypes => ["HarbourAreaSection"];
-
-            public override string ToString() => "RefId";
-            }
-
-        public class layoutUnitHarbourAreaSectionRefIdViewModel : FeatureRefIdViewModel {
-            public override string[] AssociationTypes => ["AnchorageArea", "Berth", "DockArea", "DumpingGround", "HarbourBasin", "PilotBoardingPlace", "SeaplaneLandingArea", "Terminal", "TurningBasin", "WaterwayArea"];
-
-            public override string ToString() => "RefId";
-            }
-
-        public class layoutUnitTerminalRefIdViewModel : FeatureRefIdViewModel {
-            public override string[] AssociationTypes => ["Berth"];
-
-            public override string ToString() => "RefId";
-            }
-
-        public static FeatureAssociationConnector[] _associationConnectorFeatures => Handles.AssociationConnectorFeatures[typeof(LayoutDivisionViewModel)]();
         }
 
-    public class AdditionalInformationViewModel : InformationAssociationViewModel {
+        public class componentOfBerthRefIdViewModel : FeatureRefIdViewModel
+        {
+            public override string[] AssociationTypes => ["HarbourAreaSection", "Terminal"];
+        }
+
+        public class componentOfDockAreaRefIdViewModel : FeatureRefIdViewModel
+        {
+            public override string[] AssociationTypes => ["HarbourAreaSection"];
+        }
+
+        public class componentOfDumpingGroundRefIdViewModel : FeatureRefIdViewModel
+        {
+            public override string[] AssociationTypes => ["HarbourAreaSection"];
+        }
+
+        public class componentOfHarbourAreaSectionRefIdViewModel : FeatureRefIdViewModel
+        {
+            public override string[] AssociationTypes => ["HarbourAreaAdministrative"];
+        }
+
+        public class componentOfHarbourBasinRefIdViewModel : FeatureRefIdViewModel
+        {
+            public override string[] AssociationTypes => ["HarbourAreaSection"];
+        }
+
+        public class componentOfPilotBoardingPlaceRefIdViewModel : FeatureRefIdViewModel
+        {
+            public override string[] AssociationTypes => ["HarbourAreaSection"];
+        }
+
+        public class componentOfSeaplaneLandingAreaRefIdViewModel : FeatureRefIdViewModel
+        {
+            public override string[] AssociationTypes => ["HarbourAreaSection"];
+        }
+
+        public class componentOfTerminalRefIdViewModel : FeatureRefIdViewModel
+        {
+            public override string[] AssociationTypes => ["HarbourAreaSection"];
+        }
+
+        public class componentOfTurningBasinRefIdViewModel : FeatureRefIdViewModel
+        {
+            public override string[] AssociationTypes => ["HarbourAreaSection"];
+        }
+
+        public class componentOfWaterwayAreaRefIdViewModel : FeatureRefIdViewModel
+        {
+            public override string[] AssociationTypes => ["HarbourAreaSection"];
+        }
+
+        public class layoutUnitHarbourAreaAdministrativeRefIdViewModel : FeatureRefIdViewModel
+        {
+            public override string[] AssociationTypes => ["HarbourAreaSection"];
+        }
+
+        public class layoutUnitHarbourAreaSectionRefIdViewModel : FeatureRefIdViewModel
+        {
+            public override string[] AssociationTypes => ["AnchorageArea", "Berth", "DockArea", "DumpingGround", "HarbourBasin", "PilotBoardingPlace", "SeaplaneLandingArea", "Terminal", "TurningBasin", "WaterwayArea"];
+        }
+
+        public class layoutUnitTerminalRefIdViewModel : FeatureRefIdViewModel
+        {
+            public override string[] AssociationTypes => ["Berth"];
+        }
+
+        public static FeatureAssociationConnector[] _associationConnectorFeatures => Handles.AssociationConnectorFeatures[typeof(LayoutDivisionViewModel)]();
+    }
+
+    public class AdditionalInformationViewModel : InformationAssociationViewModel
+    {
         public override string Code => "AdditionalInformation";
         public override string[] Roles => ["providesInformation", "informationProvidedFor"];
 
@@ -13007,250 +12843,217 @@ namespace S100Framework.WPF.ViewModel.S131
         public InformationBindingViewModel? providesInformation {
             get {
                 return _providesInformation;
-                }
+            }
 
             set {
                 this.SetValue(ref _providesInformation, value);
-                }
             }
+        }
 
         private InformationBindingViewModel? _informationProvidedFor;
         [ExpandableObject]
         public InformationBindingViewModel? informationProvidedFor {
             get {
                 return _informationProvidedFor;
-                }
+            }
 
             set {
                 this.SetValue(ref _informationProvidedFor, value);
-                }
             }
+        }
 
         public override InformationAssociationConnector? associationConnector {
             get {
                 return _associationConnector;
-                }
+            }
 
             set {
                 this.SetValue(ref _associationConnector, value);
                 providesInformation = null;
                 if (value is not null) {
-                    providesInformation = value?.role switch
-                        {
-                            "informationProvidedFor" => value.CreateForeignInformationBinding(),
-                            _ => value.CreateLocalInformationBinding(),
-                            };
-                    }
+                    providesInformation = value?.role switch {
+                        "informationProvidedFor" => value.CreateForeignInformationBinding(),
+                        _ => value.CreateLocalInformationBinding(),
+                    };
+                }
 
                 informationProvidedFor = null;
                 if (value is not null) {
-                    informationProvidedFor = value?.role switch
-                        {
-                            "providesInformation" => value.CreateForeignInformationBinding(),
-                            _ => value.CreateLocalInformationBinding(),
-                            };
-                    }
+                    informationProvidedFor = value?.role switch {
+                        "providesInformation" => value.CreateForeignInformationBinding(),
+                        _ => value.CreateLocalInformationBinding(),
+                    };
                 }
             }
+        }
 
         public override InformationAssociationConnector[] associationConnectorInformations => AdditionalInformationViewModel._associationConnectorInformations;
 
-        public class informationProvidedForNauticalInformationRefIdViewModel : InformationRefIdViewModel {
+        public class informationProvidedForNauticalInformationRefIdViewModel : InformationRefIdViewModel
+        {
             public override string[] AssociationTypes => ["NauticalInformation", "Recommendations", "Regulations", "Restrictions", "Applicability", "Authority", "AvailablePortServices", "ContactDetails", "Entrance", "NonStandardWorkingDay", "ServiceHours"];
-
-            public override string ToString() => "RefId";
-            }
-
-        public class providesInformationDryDockRefIdViewModel : InformationRefIdViewModel {
-            public override string[] AssociationTypes => ["NauticalInformation"];
-
-            public override string ToString() => "RefId";
-            }
-
-        public class providesInformationFloatingDockRefIdViewModel : InformationRefIdViewModel {
-            public override string[] AssociationTypes => ["NauticalInformation"];
-
-            public override string ToString() => "RefId";
-            }
-
-        public class providesInformationGridironRefIdViewModel : InformationRefIdViewModel {
-            public override string[] AssociationTypes => ["NauticalInformation"];
-
-            public override string ToString() => "RefId";
-            }
-
-        public class providesInformationHarbourFacilityRefIdViewModel : InformationRefIdViewModel {
-            public override string[] AssociationTypes => ["NauticalInformation"];
-
-            public override string ToString() => "RefId";
-            }
-
-        public class providesInformationAnchorBerthRefIdViewModel : InformationRefIdViewModel {
-            public override string[] AssociationTypes => ["NauticalInformation"];
-
-            public override string ToString() => "RefId";
-            }
-
-        public class providesInformationAnchorageAreaRefIdViewModel : InformationRefIdViewModel {
-            public override string[] AssociationTypes => ["NauticalInformation"];
-
-            public override string ToString() => "RefId";
-            }
-
-        public class providesInformationBerthRefIdViewModel : InformationRefIdViewModel {
-            public override string[] AssociationTypes => ["NauticalInformation"];
-
-            public override string ToString() => "RefId";
-            }
-
-        public class providesInformationBerthPositionRefIdViewModel : InformationRefIdViewModel {
-            public override string[] AssociationTypes => ["NauticalInformation"];
-
-            public override string ToString() => "RefId";
-            }
-
-        public class providesInformationDockAreaRefIdViewModel : InformationRefIdViewModel {
-            public override string[] AssociationTypes => ["NauticalInformation"];
-
-            public override string ToString() => "RefId";
-            }
-
-        public class providesInformationDumpingGroundRefIdViewModel : InformationRefIdViewModel {
-            public override string[] AssociationTypes => ["NauticalInformation"];
-
-            public override string ToString() => "RefId";
-            }
-
-        public class providesInformationHarbourAreaAdministrativeRefIdViewModel : InformationRefIdViewModel {
-            public override string[] AssociationTypes => ["NauticalInformation"];
-
-            public override string ToString() => "RefId";
-            }
-
-        public class providesInformationHarbourAreaSectionRefIdViewModel : InformationRefIdViewModel {
-            public override string[] AssociationTypes => ["NauticalInformation"];
-
-            public override string ToString() => "RefId";
-            }
-
-        public class providesInformationHarbourBasinRefIdViewModel : InformationRefIdViewModel {
-            public override string[] AssociationTypes => ["NauticalInformation"];
-
-            public override string ToString() => "RefId";
-            }
-
-        public class providesInformationMooringWarpingFacilityRefIdViewModel : InformationRefIdViewModel {
-            public override string[] AssociationTypes => ["NauticalInformation"];
-
-            public override string ToString() => "RefId";
-            }
-
-        public class providesInformationOuterLimitRefIdViewModel : InformationRefIdViewModel {
-            public override string[] AssociationTypes => ["NauticalInformation"];
-
-            public override string ToString() => "RefId";
-            }
-
-        public class providesInformationPilotBoardingPlaceRefIdViewModel : InformationRefIdViewModel {
-            public override string[] AssociationTypes => ["NauticalInformation"];
-
-            public override string ToString() => "RefId";
-            }
-
-        public class providesInformationSeaplaneLandingAreaRefIdViewModel : InformationRefIdViewModel {
-            public override string[] AssociationTypes => ["NauticalInformation"];
-
-            public override string ToString() => "RefId";
-            }
-
-        public class providesInformationTerminalRefIdViewModel : InformationRefIdViewModel {
-            public override string[] AssociationTypes => ["NauticalInformation"];
-
-            public override string ToString() => "RefId";
-            }
-
-        public class providesInformationTurningBasinRefIdViewModel : InformationRefIdViewModel {
-            public override string[] AssociationTypes => ["NauticalInformation"];
-
-            public override string ToString() => "RefId";
-            }
-
-        public class providesInformationWaterwayAreaRefIdViewModel : InformationRefIdViewModel {
-            public override string[] AssociationTypes => ["NauticalInformation"];
-
-            public override string ToString() => "RefId";
-            }
-
-        public class providesInformationNauticalInformationRefIdViewModel : InformationRefIdViewModel {
-            public override string[] AssociationTypes => ["NauticalInformation"];
-
-            public override string ToString() => "RefId";
-            }
-
-        public class providesInformationRecommendationsRefIdViewModel : InformationRefIdViewModel {
-            public override string[] AssociationTypes => ["NauticalInformation"];
-
-            public override string ToString() => "RefId";
-            }
-
-        public class providesInformationRegulationsRefIdViewModel : InformationRefIdViewModel {
-            public override string[] AssociationTypes => ["NauticalInformation"];
-
-            public override string ToString() => "RefId";
-            }
-
-        public class providesInformationRestrictionsRefIdViewModel : InformationRefIdViewModel {
-            public override string[] AssociationTypes => ["NauticalInformation"];
-
-            public override string ToString() => "RefId";
-            }
-
-        public class providesInformationApplicabilityRefIdViewModel : InformationRefIdViewModel {
-            public override string[] AssociationTypes => ["NauticalInformation"];
-
-            public override string ToString() => "RefId";
-            }
-
-        public class providesInformationAuthorityRefIdViewModel : InformationRefIdViewModel {
-            public override string[] AssociationTypes => ["NauticalInformation"];
-
-            public override string ToString() => "RefId";
-            }
-
-        public class providesInformationAvailablePortServicesRefIdViewModel : InformationRefIdViewModel {
-            public override string[] AssociationTypes => ["NauticalInformation"];
-
-            public override string ToString() => "RefId";
-            }
-
-        public class providesInformationContactDetailsRefIdViewModel : InformationRefIdViewModel {
-            public override string[] AssociationTypes => ["NauticalInformation"];
-
-            public override string ToString() => "RefId";
-            }
-
-        public class providesInformationEntranceRefIdViewModel : InformationRefIdViewModel {
-            public override string[] AssociationTypes => ["NauticalInformation"];
-
-            public override string ToString() => "RefId";
-            }
-
-        public class providesInformationNonStandardWorkingDayRefIdViewModel : InformationRefIdViewModel {
-            public override string[] AssociationTypes => ["NauticalInformation"];
-
-            public override string ToString() => "RefId";
-            }
-
-        public class providesInformationServiceHoursRefIdViewModel : InformationRefIdViewModel {
-            public override string[] AssociationTypes => ["NauticalInformation"];
-
-            public override string ToString() => "RefId";
-            }
-
-        public static InformationAssociationConnector[] _associationConnectorInformations => Handles.AssociationConnectorInformations[typeof(AdditionalInformationViewModel)]();
         }
 
-    public class AuthorityContactViewModel : InformationAssociationViewModel {
+        public class providesInformationDryDockRefIdViewModel : InformationRefIdViewModel
+        {
+            public override string[] AssociationTypes => ["NauticalInformation"];
+        }
+
+        public class providesInformationFloatingDockRefIdViewModel : InformationRefIdViewModel
+        {
+            public override string[] AssociationTypes => ["NauticalInformation"];
+        }
+
+        public class providesInformationGridironRefIdViewModel : InformationRefIdViewModel
+        {
+            public override string[] AssociationTypes => ["NauticalInformation"];
+        }
+
+        public class providesInformationHarbourFacilityRefIdViewModel : InformationRefIdViewModel
+        {
+            public override string[] AssociationTypes => ["NauticalInformation"];
+        }
+
+        public class providesInformationAnchorBerthRefIdViewModel : InformationRefIdViewModel
+        {
+            public override string[] AssociationTypes => ["NauticalInformation"];
+        }
+
+        public class providesInformationAnchorageAreaRefIdViewModel : InformationRefIdViewModel
+        {
+            public override string[] AssociationTypes => ["NauticalInformation"];
+        }
+
+        public class providesInformationBerthRefIdViewModel : InformationRefIdViewModel
+        {
+            public override string[] AssociationTypes => ["NauticalInformation"];
+        }
+
+        public class providesInformationBerthPositionRefIdViewModel : InformationRefIdViewModel
+        {
+            public override string[] AssociationTypes => ["NauticalInformation"];
+        }
+
+        public class providesInformationDockAreaRefIdViewModel : InformationRefIdViewModel
+        {
+            public override string[] AssociationTypes => ["NauticalInformation"];
+        }
+
+        public class providesInformationDumpingGroundRefIdViewModel : InformationRefIdViewModel
+        {
+            public override string[] AssociationTypes => ["NauticalInformation"];
+        }
+
+        public class providesInformationHarbourAreaAdministrativeRefIdViewModel : InformationRefIdViewModel
+        {
+            public override string[] AssociationTypes => ["NauticalInformation"];
+        }
+
+        public class providesInformationHarbourAreaSectionRefIdViewModel : InformationRefIdViewModel
+        {
+            public override string[] AssociationTypes => ["NauticalInformation"];
+        }
+
+        public class providesInformationHarbourBasinRefIdViewModel : InformationRefIdViewModel
+        {
+            public override string[] AssociationTypes => ["NauticalInformation"];
+        }
+
+        public class providesInformationMooringWarpingFacilityRefIdViewModel : InformationRefIdViewModel
+        {
+            public override string[] AssociationTypes => ["NauticalInformation"];
+        }
+
+        public class providesInformationOuterLimitRefIdViewModel : InformationRefIdViewModel
+        {
+            public override string[] AssociationTypes => ["NauticalInformation"];
+        }
+
+        public class providesInformationPilotBoardingPlaceRefIdViewModel : InformationRefIdViewModel
+        {
+            public override string[] AssociationTypes => ["NauticalInformation"];
+        }
+
+        public class providesInformationSeaplaneLandingAreaRefIdViewModel : InformationRefIdViewModel
+        {
+            public override string[] AssociationTypes => ["NauticalInformation"];
+        }
+
+        public class providesInformationTerminalRefIdViewModel : InformationRefIdViewModel
+        {
+            public override string[] AssociationTypes => ["NauticalInformation"];
+        }
+
+        public class providesInformationTurningBasinRefIdViewModel : InformationRefIdViewModel
+        {
+            public override string[] AssociationTypes => ["NauticalInformation"];
+        }
+
+        public class providesInformationWaterwayAreaRefIdViewModel : InformationRefIdViewModel
+        {
+            public override string[] AssociationTypes => ["NauticalInformation"];
+        }
+
+        public class providesInformationNauticalInformationRefIdViewModel : InformationRefIdViewModel
+        {
+            public override string[] AssociationTypes => ["NauticalInformation"];
+        }
+
+        public class providesInformationRecommendationsRefIdViewModel : InformationRefIdViewModel
+        {
+            public override string[] AssociationTypes => ["NauticalInformation"];
+        }
+
+        public class providesInformationRegulationsRefIdViewModel : InformationRefIdViewModel
+        {
+            public override string[] AssociationTypes => ["NauticalInformation"];
+        }
+
+        public class providesInformationRestrictionsRefIdViewModel : InformationRefIdViewModel
+        {
+            public override string[] AssociationTypes => ["NauticalInformation"];
+        }
+
+        public class providesInformationApplicabilityRefIdViewModel : InformationRefIdViewModel
+        {
+            public override string[] AssociationTypes => ["NauticalInformation"];
+        }
+
+        public class providesInformationAuthorityRefIdViewModel : InformationRefIdViewModel
+        {
+            public override string[] AssociationTypes => ["NauticalInformation"];
+        }
+
+        public class providesInformationAvailablePortServicesRefIdViewModel : InformationRefIdViewModel
+        {
+            public override string[] AssociationTypes => ["NauticalInformation"];
+        }
+
+        public class providesInformationContactDetailsRefIdViewModel : InformationRefIdViewModel
+        {
+            public override string[] AssociationTypes => ["NauticalInformation"];
+        }
+
+        public class providesInformationEntranceRefIdViewModel : InformationRefIdViewModel
+        {
+            public override string[] AssociationTypes => ["NauticalInformation"];
+        }
+
+        public class providesInformationNonStandardWorkingDayRefIdViewModel : InformationRefIdViewModel
+        {
+            public override string[] AssociationTypes => ["NauticalInformation"];
+        }
+
+        public class providesInformationServiceHoursRefIdViewModel : InformationRefIdViewModel
+        {
+            public override string[] AssociationTypes => ["NauticalInformation"];
+        }
+
+        public static InformationAssociationConnector[] _associationConnectorInformations => Handles.AssociationConnectorInformations[typeof(AdditionalInformationViewModel)]();
+    }
+
+    public class AuthorityContactViewModel : InformationAssociationViewModel
+    {
         public override string Code => "AuthorityContact";
         public override string[] Roles => ["theAuthority", "theContactDetails"];
 
@@ -13259,70 +13062,67 @@ namespace S100Framework.WPF.ViewModel.S131
         public InformationBindingViewModel? theAuthority {
             get {
                 return _theAuthority;
-                }
+            }
 
             set {
                 this.SetValue(ref _theAuthority, value);
-                }
             }
+        }
 
         private InformationBindingViewModel? _theContactDetails;
         [ExpandableObject]
         public InformationBindingViewModel? theContactDetails {
             get {
                 return _theContactDetails;
-                }
+            }
 
             set {
                 this.SetValue(ref _theContactDetails, value);
-                }
             }
+        }
 
         public override InformationAssociationConnector? associationConnector {
             get {
                 return _associationConnector;
-                }
+            }
 
             set {
                 this.SetValue(ref _associationConnector, value);
                 theAuthority = null;
                 if (value is not null) {
-                    theAuthority = value?.role switch
-                        {
-                            "theContactDetails" => value.CreateForeignInformationBinding(),
-                            _ => value.CreateLocalInformationBinding(),
-                            };
-                    }
+                    theAuthority = value?.role switch {
+                        "theContactDetails" => value.CreateForeignInformationBinding(),
+                        _ => value.CreateLocalInformationBinding(),
+                    };
+                }
 
                 theContactDetails = null;
                 if (value is not null) {
-                    theContactDetails = value?.role switch
-                        {
-                            "theAuthority" => value.CreateForeignInformationBinding(),
-                            _ => value.CreateLocalInformationBinding(),
-                            };
-                    }
+                    theContactDetails = value?.role switch {
+                        "theAuthority" => value.CreateForeignInformationBinding(),
+                        _ => value.CreateLocalInformationBinding(),
+                    };
                 }
             }
+        }
 
         public override InformationAssociationConnector[] associationConnectorInformations => AuthorityContactViewModel._associationConnectorInformations;
 
-        public class theAuthorityContactDetailsRefIdViewModel : InformationRefIdViewModel {
+        public class theAuthorityContactDetailsRefIdViewModel : InformationRefIdViewModel
+        {
             public override string[] AssociationTypes => ["Authority"];
-
-            public override string ToString() => "RefId";
-            }
-
-        public class theContactDetailsAuthorityRefIdViewModel : InformationRefIdViewModel {
-            public override string[] AssociationTypes => ["ContactDetails"];
-
-            public override string ToString() => "RefId";
-            }
-
-        public static InformationAssociationConnector[] _associationConnectorInformations => Handles.AssociationConnectorInformations[typeof(AuthorityContactViewModel)]();
         }
 
-    public class AuthorityHoursViewModel : InformationAssociationViewModel {
+        public class theContactDetailsAuthorityRefIdViewModel : InformationRefIdViewModel
+        {
+            public override string[] AssociationTypes => ["ContactDetails"];
+        }
+
+        public static InformationAssociationConnector[] _associationConnectorInformations => Handles.AssociationConnectorInformations[typeof(AuthorityContactViewModel)]();
+    }
+
+    public class AuthorityHoursViewModel : InformationAssociationViewModel
+    {
         public override string Code => "AuthorityHours";
         public override string[] Roles => ["theAuthority_srvHrs", "theServiceHours"];
 
@@ -13331,70 +13131,67 @@ namespace S100Framework.WPF.ViewModel.S131
         public InformationBindingViewModel? theAuthority_srvHrs {
             get {
                 return _theAuthority_srvHrs;
-                }
+            }
 
             set {
                 this.SetValue(ref _theAuthority_srvHrs, value);
-                }
             }
+        }
 
         private InformationBindingViewModel? _theServiceHours;
         [ExpandableObject]
         public InformationBindingViewModel? theServiceHours {
             get {
                 return _theServiceHours;
-                }
+            }
 
             set {
                 this.SetValue(ref _theServiceHours, value);
-                }
             }
+        }
 
         public override InformationAssociationConnector? associationConnector {
             get {
                 return _associationConnector;
-                }
+            }
 
             set {
                 this.SetValue(ref _associationConnector, value);
                 theAuthority_srvHrs = null;
                 if (value is not null) {
-                    theAuthority_srvHrs = value?.role switch
-                        {
-                            "theServiceHours" => value.CreateForeignInformationBinding(),
-                            _ => value.CreateLocalInformationBinding(),
-                            };
-                    }
+                    theAuthority_srvHrs = value?.role switch {
+                        "theServiceHours" => value.CreateForeignInformationBinding(),
+                        _ => value.CreateLocalInformationBinding(),
+                    };
+                }
 
                 theServiceHours = null;
                 if (value is not null) {
-                    theServiceHours = value?.role switch
-                        {
-                            "theAuthority_srvHrs" => value.CreateForeignInformationBinding(),
-                            _ => value.CreateLocalInformationBinding(),
-                            };
-                    }
+                    theServiceHours = value?.role switch {
+                        "theAuthority_srvHrs" => value.CreateForeignInformationBinding(),
+                        _ => value.CreateLocalInformationBinding(),
+                    };
                 }
             }
+        }
 
         public override InformationAssociationConnector[] associationConnectorInformations => AuthorityHoursViewModel._associationConnectorInformations;
 
-        public class theAuthority_srvHrsServiceHoursRefIdViewModel : InformationRefIdViewModel {
+        public class theAuthority_srvHrsServiceHoursRefIdViewModel : InformationRefIdViewModel
+        {
             public override string[] AssociationTypes => ["Authority"];
-
-            public override string ToString() => "RefId";
-            }
-
-        public class theServiceHoursAuthorityRefIdViewModel : InformationRefIdViewModel {
-            public override string[] AssociationTypes => ["ServiceHours"];
-
-            public override string ToString() => "RefId";
-            }
-
-        public static InformationAssociationConnector[] _associationConnectorInformations => Handles.AssociationConnectorInformations[typeof(AuthorityHoursViewModel)]();
         }
 
-    public class AssociatedRxNViewModel : InformationAssociationViewModel {
+        public class theServiceHoursAuthorityRefIdViewModel : InformationRefIdViewModel
+        {
+            public override string[] AssociationTypes => ["ServiceHours"];
+        }
+
+        public static InformationAssociationConnector[] _associationConnectorInformations => Handles.AssociationConnectorInformations[typeof(AuthorityHoursViewModel)]();
+    }
+
+    public class AssociatedRxNViewModel : InformationAssociationViewModel
+    {
         public override string Code => "AssociatedRxN";
         public override string[] Roles => ["appliesInLocation", "theRxN"];
 
@@ -13403,178 +13200,157 @@ namespace S100Framework.WPF.ViewModel.S131
         public InformationBindingViewModel? appliesInLocation {
             get {
                 return _appliesInLocation;
-                }
+            }
 
             set {
                 this.SetValue(ref _appliesInLocation, value);
-                }
             }
+        }
 
         private InformationBindingViewModel? _theRxN;
         [ExpandableObject]
         public InformationBindingViewModel? theRxN {
             get {
                 return _theRxN;
-                }
+            }
 
             set {
                 this.SetValue(ref _theRxN, value);
-                }
             }
+        }
 
         public override InformationAssociationConnector? associationConnector {
             get {
                 return _associationConnector;
-                }
+            }
 
             set {
                 this.SetValue(ref _associationConnector, value);
                 appliesInLocation = null;
                 if (value is not null) {
-                    appliesInLocation = value?.role switch
-                        {
-                            "theRxN" => value.CreateForeignInformationBinding(),
-                            _ => value.CreateLocalInformationBinding(),
-                            };
-                    }
+                    appliesInLocation = value?.role switch {
+                        "theRxN" => value.CreateForeignInformationBinding(),
+                        _ => value.CreateLocalInformationBinding(),
+                    };
+                }
 
                 theRxN = null;
                 if (value is not null) {
-                    theRxN = value?.role switch
-                        {
-                            "appliesInLocation" => value.CreateForeignInformationBinding(),
-                            _ => value.CreateLocalInformationBinding(),
-                            };
-                    }
+                    theRxN = value?.role switch {
+                        "appliesInLocation" => value.CreateForeignInformationBinding(),
+                        _ => value.CreateLocalInformationBinding(),
+                    };
                 }
             }
+        }
 
         public override InformationAssociationConnector[] associationConnectorInformations => AssociatedRxNViewModel._associationConnectorInformations;
 
-        public class theRxNDryDockRefIdViewModel : InformationRefIdViewModel {
+        public class theRxNDryDockRefIdViewModel : InformationRefIdViewModel
+        {
             public override string[] AssociationTypes => ["NauticalInformation", "Recommendations", "Regulations", "Restrictions"];
-
-            public override string ToString() => "RefId";
-            }
-
-        public class theRxNFloatingDockRefIdViewModel : InformationRefIdViewModel {
-            public override string[] AssociationTypes => ["NauticalInformation", "Recommendations", "Regulations", "Restrictions"];
-
-            public override string ToString() => "RefId";
-            }
-
-        public class theRxNGridironRefIdViewModel : InformationRefIdViewModel {
-            public override string[] AssociationTypes => ["NauticalInformation", "Recommendations", "Regulations", "Restrictions"];
-
-            public override string ToString() => "RefId";
-            }
-
-        public class theRxNHarbourFacilityRefIdViewModel : InformationRefIdViewModel {
-            public override string[] AssociationTypes => ["NauticalInformation", "Recommendations", "Regulations", "Restrictions"];
-
-            public override string ToString() => "RefId";
-            }
-
-        public class theRxNAnchorBerthRefIdViewModel : InformationRefIdViewModel {
-            public override string[] AssociationTypes => ["NauticalInformation", "Recommendations", "Regulations", "Restrictions"];
-
-            public override string ToString() => "RefId";
-            }
-
-        public class theRxNAnchorageAreaRefIdViewModel : InformationRefIdViewModel {
-            public override string[] AssociationTypes => ["NauticalInformation", "Recommendations", "Regulations", "Restrictions"];
-
-            public override string ToString() => "RefId";
-            }
-
-        public class theRxNBerthRefIdViewModel : InformationRefIdViewModel {
-            public override string[] AssociationTypes => ["NauticalInformation", "Recommendations", "Regulations", "Restrictions"];
-
-            public override string ToString() => "RefId";
-            }
-
-        public class theRxNBerthPositionRefIdViewModel : InformationRefIdViewModel {
-            public override string[] AssociationTypes => ["NauticalInformation", "Recommendations", "Regulations", "Restrictions"];
-
-            public override string ToString() => "RefId";
-            }
-
-        public class theRxNDockAreaRefIdViewModel : InformationRefIdViewModel {
-            public override string[] AssociationTypes => ["NauticalInformation", "Recommendations", "Regulations", "Restrictions"];
-
-            public override string ToString() => "RefId";
-            }
-
-        public class theRxNDumpingGroundRefIdViewModel : InformationRefIdViewModel {
-            public override string[] AssociationTypes => ["NauticalInformation", "Recommendations", "Regulations", "Restrictions"];
-
-            public override string ToString() => "RefId";
-            }
-
-        public class theRxNHarbourAreaAdministrativeRefIdViewModel : InformationRefIdViewModel {
-            public override string[] AssociationTypes => ["NauticalInformation", "Recommendations", "Regulations", "Restrictions"];
-
-            public override string ToString() => "RefId";
-            }
-
-        public class theRxNHarbourAreaSectionRefIdViewModel : InformationRefIdViewModel {
-            public override string[] AssociationTypes => ["NauticalInformation", "Recommendations", "Regulations", "Restrictions"];
-
-            public override string ToString() => "RefId";
-            }
-
-        public class theRxNHarbourBasinRefIdViewModel : InformationRefIdViewModel {
-            public override string[] AssociationTypes => ["NauticalInformation", "Recommendations", "Regulations", "Restrictions"];
-
-            public override string ToString() => "RefId";
-            }
-
-        public class theRxNMooringWarpingFacilityRefIdViewModel : InformationRefIdViewModel {
-            public override string[] AssociationTypes => ["NauticalInformation", "Recommendations", "Regulations", "Restrictions"];
-
-            public override string ToString() => "RefId";
-            }
-
-        public class theRxNOuterLimitRefIdViewModel : InformationRefIdViewModel {
-            public override string[] AssociationTypes => ["NauticalInformation", "Recommendations", "Regulations", "Restrictions"];
-
-            public override string ToString() => "RefId";
-            }
-
-        public class theRxNPilotBoardingPlaceRefIdViewModel : InformationRefIdViewModel {
-            public override string[] AssociationTypes => ["NauticalInformation", "Recommendations", "Regulations", "Restrictions"];
-
-            public override string ToString() => "RefId";
-            }
-
-        public class theRxNSeaplaneLandingAreaRefIdViewModel : InformationRefIdViewModel {
-            public override string[] AssociationTypes => ["NauticalInformation", "Recommendations", "Regulations", "Restrictions"];
-
-            public override string ToString() => "RefId";
-            }
-
-        public class theRxNTerminalRefIdViewModel : InformationRefIdViewModel {
-            public override string[] AssociationTypes => ["NauticalInformation", "Recommendations", "Regulations", "Restrictions"];
-
-            public override string ToString() => "RefId";
-            }
-
-        public class theRxNTurningBasinRefIdViewModel : InformationRefIdViewModel {
-            public override string[] AssociationTypes => ["NauticalInformation", "Recommendations", "Regulations", "Restrictions"];
-
-            public override string ToString() => "RefId";
-            }
-
-        public class theRxNWaterwayAreaRefIdViewModel : InformationRefIdViewModel {
-            public override string[] AssociationTypes => ["NauticalInformation", "Recommendations", "Regulations", "Restrictions"];
-
-            public override string ToString() => "RefId";
-            }
-
-        public static InformationAssociationConnector[] _associationConnectorInformations => Handles.AssociationConnectorInformations[typeof(AssociatedRxNViewModel)]();
         }
 
-    public class ExceptionalWorkdayViewModel : InformationAssociationViewModel {
+        public class theRxNFloatingDockRefIdViewModel : InformationRefIdViewModel
+        {
+            public override string[] AssociationTypes => ["NauticalInformation", "Recommendations", "Regulations", "Restrictions"];
+        }
+
+        public class theRxNGridironRefIdViewModel : InformationRefIdViewModel
+        {
+            public override string[] AssociationTypes => ["NauticalInformation", "Recommendations", "Regulations", "Restrictions"];
+        }
+
+        public class theRxNHarbourFacilityRefIdViewModel : InformationRefIdViewModel
+        {
+            public override string[] AssociationTypes => ["NauticalInformation", "Recommendations", "Regulations", "Restrictions"];
+        }
+
+        public class theRxNAnchorBerthRefIdViewModel : InformationRefIdViewModel
+        {
+            public override string[] AssociationTypes => ["NauticalInformation", "Recommendations", "Regulations", "Restrictions"];
+        }
+
+        public class theRxNAnchorageAreaRefIdViewModel : InformationRefIdViewModel
+        {
+            public override string[] AssociationTypes => ["NauticalInformation", "Recommendations", "Regulations", "Restrictions"];
+        }
+
+        public class theRxNBerthRefIdViewModel : InformationRefIdViewModel
+        {
+            public override string[] AssociationTypes => ["NauticalInformation", "Recommendations", "Regulations", "Restrictions"];
+        }
+
+        public class theRxNBerthPositionRefIdViewModel : InformationRefIdViewModel
+        {
+            public override string[] AssociationTypes => ["NauticalInformation", "Recommendations", "Regulations", "Restrictions"];
+        }
+
+        public class theRxNDockAreaRefIdViewModel : InformationRefIdViewModel
+        {
+            public override string[] AssociationTypes => ["NauticalInformation", "Recommendations", "Regulations", "Restrictions"];
+        }
+
+        public class theRxNDumpingGroundRefIdViewModel : InformationRefIdViewModel
+        {
+            public override string[] AssociationTypes => ["NauticalInformation", "Recommendations", "Regulations", "Restrictions"];
+        }
+
+        public class theRxNHarbourAreaAdministrativeRefIdViewModel : InformationRefIdViewModel
+        {
+            public override string[] AssociationTypes => ["NauticalInformation", "Recommendations", "Regulations", "Restrictions"];
+        }
+
+        public class theRxNHarbourAreaSectionRefIdViewModel : InformationRefIdViewModel
+        {
+            public override string[] AssociationTypes => ["NauticalInformation", "Recommendations", "Regulations", "Restrictions"];
+        }
+
+        public class theRxNHarbourBasinRefIdViewModel : InformationRefIdViewModel
+        {
+            public override string[] AssociationTypes => ["NauticalInformation", "Recommendations", "Regulations", "Restrictions"];
+        }
+
+        public class theRxNMooringWarpingFacilityRefIdViewModel : InformationRefIdViewModel
+        {
+            public override string[] AssociationTypes => ["NauticalInformation", "Recommendations", "Regulations", "Restrictions"];
+        }
+
+        public class theRxNOuterLimitRefIdViewModel : InformationRefIdViewModel
+        {
+            public override string[] AssociationTypes => ["NauticalInformation", "Recommendations", "Regulations", "Restrictions"];
+        }
+
+        public class theRxNPilotBoardingPlaceRefIdViewModel : InformationRefIdViewModel
+        {
+            public override string[] AssociationTypes => ["NauticalInformation", "Recommendations", "Regulations", "Restrictions"];
+        }
+
+        public class theRxNSeaplaneLandingAreaRefIdViewModel : InformationRefIdViewModel
+        {
+            public override string[] AssociationTypes => ["NauticalInformation", "Recommendations", "Regulations", "Restrictions"];
+        }
+
+        public class theRxNTerminalRefIdViewModel : InformationRefIdViewModel
+        {
+            public override string[] AssociationTypes => ["NauticalInformation", "Recommendations", "Regulations", "Restrictions"];
+        }
+
+        public class theRxNTurningBasinRefIdViewModel : InformationRefIdViewModel
+        {
+            public override string[] AssociationTypes => ["NauticalInformation", "Recommendations", "Regulations", "Restrictions"];
+        }
+
+        public class theRxNWaterwayAreaRefIdViewModel : InformationRefIdViewModel
+        {
+            public override string[] AssociationTypes => ["NauticalInformation", "Recommendations", "Regulations", "Restrictions"];
+        }
+
+        public static InformationAssociationConnector[] _associationConnectorInformations => Handles.AssociationConnectorInformations[typeof(AssociatedRxNViewModel)]();
+    }
+
+    public class ExceptionalWorkdayViewModel : InformationAssociationViewModel
+    {
         public override string Code => "ExceptionalWorkday";
         public override string[] Roles => ["theServiceHours_nsdy", "partialWorkingDay"];
 
@@ -13583,64 +13359,62 @@ namespace S100Framework.WPF.ViewModel.S131
         public InformationBindingViewModel? theServiceHours_nsdy {
             get {
                 return _theServiceHours_nsdy;
-                }
+            }
 
             set {
                 this.SetValue(ref _theServiceHours_nsdy, value);
-                }
             }
+        }
 
         private InformationBindingViewModel? _partialWorkingDay;
         [ExpandableObject]
         public InformationBindingViewModel? partialWorkingDay {
             get {
                 return _partialWorkingDay;
-                }
+            }
 
             set {
                 this.SetValue(ref _partialWorkingDay, value);
-                }
             }
+        }
 
         public override InformationAssociationConnector? associationConnector {
             get {
                 return _associationConnector;
-                }
+            }
 
             set {
                 this.SetValue(ref _associationConnector, value);
                 theServiceHours_nsdy = null;
                 if (value is not null) {
-                    theServiceHours_nsdy = value?.role switch
-                        {
-                            "partialWorkingDay" => value.CreateForeignInformationBinding(),
-                            _ => value.CreateLocalInformationBinding(),
-                            };
-                    }
+                    theServiceHours_nsdy = value?.role switch {
+                        "partialWorkingDay" => value.CreateForeignInformationBinding(),
+                        _ => value.CreateLocalInformationBinding(),
+                    };
+                }
 
                 partialWorkingDay = null;
                 if (value is not null) {
-                    partialWorkingDay = value?.role switch
-                        {
-                            "theServiceHours_nsdy" => value.CreateForeignInformationBinding(),
-                            _ => value.CreateLocalInformationBinding(),
-                            };
-                    }
+                    partialWorkingDay = value?.role switch {
+                        "theServiceHours_nsdy" => value.CreateForeignInformationBinding(),
+                        _ => value.CreateLocalInformationBinding(),
+                    };
                 }
             }
+        }
 
         public override InformationAssociationConnector[] associationConnectorInformations => ExceptionalWorkdayViewModel._associationConnectorInformations;
 
-        public class partialWorkingDayServiceHoursRefIdViewModel : InformationRefIdViewModel {
+        public class partialWorkingDayServiceHoursRefIdViewModel : InformationRefIdViewModel
+        {
             public override string[] AssociationTypes => ["NonStandardWorkingDay"];
-
-            public override string ToString() => "RefId";
-            }
-
-        public static InformationAssociationConnector[] _associationConnectorInformations => Handles.AssociationConnectorInformations[typeof(ExceptionalWorkdayViewModel)]();
         }
 
-    public class ServiceControlViewModel : InformationAssociationViewModel {
+        public static InformationAssociationConnector[] _associationConnectorInformations => Handles.AssociationConnectorInformations[typeof(ExceptionalWorkdayViewModel)]();
+    }
+
+    public class ServiceControlViewModel : InformationAssociationViewModel
+    {
         public override string Code => "ServiceControl";
         public override string[] Roles => ["controlledService", "controlAuthority"];
 
@@ -13649,178 +13423,157 @@ namespace S100Framework.WPF.ViewModel.S131
         public InformationBindingViewModel? controlledService {
             get {
                 return _controlledService;
-                }
+            }
 
             set {
                 this.SetValue(ref _controlledService, value);
-                }
             }
+        }
 
         private InformationBindingViewModel? _controlAuthority;
         [ExpandableObject]
         public InformationBindingViewModel? controlAuthority {
             get {
                 return _controlAuthority;
-                }
+            }
 
             set {
                 this.SetValue(ref _controlAuthority, value);
-                }
             }
+        }
 
         public override InformationAssociationConnector? associationConnector {
             get {
                 return _associationConnector;
-                }
+            }
 
             set {
                 this.SetValue(ref _associationConnector, value);
                 controlledService = null;
                 if (value is not null) {
-                    controlledService = value?.role switch
-                        {
-                            "controlAuthority" => value.CreateForeignInformationBinding(),
-                            _ => value.CreateLocalInformationBinding(),
-                            };
-                    }
+                    controlledService = value?.role switch {
+                        "controlAuthority" => value.CreateForeignInformationBinding(),
+                        _ => value.CreateLocalInformationBinding(),
+                    };
+                }
 
                 controlAuthority = null;
                 if (value is not null) {
-                    controlAuthority = value?.role switch
-                        {
-                            "controlledService" => value.CreateForeignInformationBinding(),
-                            _ => value.CreateLocalInformationBinding(),
-                            };
-                    }
+                    controlAuthority = value?.role switch {
+                        "controlledService" => value.CreateForeignInformationBinding(),
+                        _ => value.CreateLocalInformationBinding(),
+                    };
                 }
             }
+        }
 
         public override InformationAssociationConnector[] associationConnectorInformations => ServiceControlViewModel._associationConnectorInformations;
 
-        public class controlAuthorityDryDockRefIdViewModel : InformationRefIdViewModel {
+        public class controlAuthorityDryDockRefIdViewModel : InformationRefIdViewModel
+        {
             public override string[] AssociationTypes => ["Authority"];
-
-            public override string ToString() => "RefId";
-            }
-
-        public class controlAuthorityFloatingDockRefIdViewModel : InformationRefIdViewModel {
-            public override string[] AssociationTypes => ["Authority"];
-
-            public override string ToString() => "RefId";
-            }
-
-        public class controlAuthorityGridironRefIdViewModel : InformationRefIdViewModel {
-            public override string[] AssociationTypes => ["Authority"];
-
-            public override string ToString() => "RefId";
-            }
-
-        public class controlAuthorityHarbourFacilityRefIdViewModel : InformationRefIdViewModel {
-            public override string[] AssociationTypes => ["Authority"];
-
-            public override string ToString() => "RefId";
-            }
-
-        public class controlAuthorityAnchorBerthRefIdViewModel : InformationRefIdViewModel {
-            public override string[] AssociationTypes => ["Authority"];
-
-            public override string ToString() => "RefId";
-            }
-
-        public class controlAuthorityAnchorageAreaRefIdViewModel : InformationRefIdViewModel {
-            public override string[] AssociationTypes => ["Authority"];
-
-            public override string ToString() => "RefId";
-            }
-
-        public class controlAuthorityBerthRefIdViewModel : InformationRefIdViewModel {
-            public override string[] AssociationTypes => ["Authority"];
-
-            public override string ToString() => "RefId";
-            }
-
-        public class controlAuthorityBerthPositionRefIdViewModel : InformationRefIdViewModel {
-            public override string[] AssociationTypes => ["Authority"];
-
-            public override string ToString() => "RefId";
-            }
-
-        public class controlAuthorityDockAreaRefIdViewModel : InformationRefIdViewModel {
-            public override string[] AssociationTypes => ["Authority"];
-
-            public override string ToString() => "RefId";
-            }
-
-        public class controlAuthorityDumpingGroundRefIdViewModel : InformationRefIdViewModel {
-            public override string[] AssociationTypes => ["Authority"];
-
-            public override string ToString() => "RefId";
-            }
-
-        public class controlAuthorityHarbourAreaAdministrativeRefIdViewModel : InformationRefIdViewModel {
-            public override string[] AssociationTypes => ["Authority"];
-
-            public override string ToString() => "RefId";
-            }
-
-        public class controlAuthorityHarbourAreaSectionRefIdViewModel : InformationRefIdViewModel {
-            public override string[] AssociationTypes => ["Authority"];
-
-            public override string ToString() => "RefId";
-            }
-
-        public class controlAuthorityHarbourBasinRefIdViewModel : InformationRefIdViewModel {
-            public override string[] AssociationTypes => ["Authority"];
-
-            public override string ToString() => "RefId";
-            }
-
-        public class controlAuthorityMooringWarpingFacilityRefIdViewModel : InformationRefIdViewModel {
-            public override string[] AssociationTypes => ["Authority"];
-
-            public override string ToString() => "RefId";
-            }
-
-        public class controlAuthorityOuterLimitRefIdViewModel : InformationRefIdViewModel {
-            public override string[] AssociationTypes => ["Authority"];
-
-            public override string ToString() => "RefId";
-            }
-
-        public class controlAuthorityPilotBoardingPlaceRefIdViewModel : InformationRefIdViewModel {
-            public override string[] AssociationTypes => ["Authority"];
-
-            public override string ToString() => "RefId";
-            }
-
-        public class controlAuthoritySeaplaneLandingAreaRefIdViewModel : InformationRefIdViewModel {
-            public override string[] AssociationTypes => ["Authority"];
-
-            public override string ToString() => "RefId";
-            }
-
-        public class controlAuthorityTerminalRefIdViewModel : InformationRefIdViewModel {
-            public override string[] AssociationTypes => ["Authority"];
-
-            public override string ToString() => "RefId";
-            }
-
-        public class controlAuthorityTurningBasinRefIdViewModel : InformationRefIdViewModel {
-            public override string[] AssociationTypes => ["Authority"];
-
-            public override string ToString() => "RefId";
-            }
-
-        public class controlAuthorityWaterwayAreaRefIdViewModel : InformationRefIdViewModel {
-            public override string[] AssociationTypes => ["Authority"];
-
-            public override string ToString() => "RefId";
-            }
-
-        public static InformationAssociationConnector[] _associationConnectorInformations => Handles.AssociationConnectorInformations[typeof(ServiceControlViewModel)]();
         }
 
-    public class ServiceContactViewModel : InformationAssociationViewModel {
+        public class controlAuthorityFloatingDockRefIdViewModel : InformationRefIdViewModel
+        {
+            public override string[] AssociationTypes => ["Authority"];
+        }
+
+        public class controlAuthorityGridironRefIdViewModel : InformationRefIdViewModel
+        {
+            public override string[] AssociationTypes => ["Authority"];
+        }
+
+        public class controlAuthorityHarbourFacilityRefIdViewModel : InformationRefIdViewModel
+        {
+            public override string[] AssociationTypes => ["Authority"];
+        }
+
+        public class controlAuthorityAnchorBerthRefIdViewModel : InformationRefIdViewModel
+        {
+            public override string[] AssociationTypes => ["Authority"];
+        }
+
+        public class controlAuthorityAnchorageAreaRefIdViewModel : InformationRefIdViewModel
+        {
+            public override string[] AssociationTypes => ["Authority"];
+        }
+
+        public class controlAuthorityBerthRefIdViewModel : InformationRefIdViewModel
+        {
+            public override string[] AssociationTypes => ["Authority"];
+        }
+
+        public class controlAuthorityBerthPositionRefIdViewModel : InformationRefIdViewModel
+        {
+            public override string[] AssociationTypes => ["Authority"];
+        }
+
+        public class controlAuthorityDockAreaRefIdViewModel : InformationRefIdViewModel
+        {
+            public override string[] AssociationTypes => ["Authority"];
+        }
+
+        public class controlAuthorityDumpingGroundRefIdViewModel : InformationRefIdViewModel
+        {
+            public override string[] AssociationTypes => ["Authority"];
+        }
+
+        public class controlAuthorityHarbourAreaAdministrativeRefIdViewModel : InformationRefIdViewModel
+        {
+            public override string[] AssociationTypes => ["Authority"];
+        }
+
+        public class controlAuthorityHarbourAreaSectionRefIdViewModel : InformationRefIdViewModel
+        {
+            public override string[] AssociationTypes => ["Authority"];
+        }
+
+        public class controlAuthorityHarbourBasinRefIdViewModel : InformationRefIdViewModel
+        {
+            public override string[] AssociationTypes => ["Authority"];
+        }
+
+        public class controlAuthorityMooringWarpingFacilityRefIdViewModel : InformationRefIdViewModel
+        {
+            public override string[] AssociationTypes => ["Authority"];
+        }
+
+        public class controlAuthorityOuterLimitRefIdViewModel : InformationRefIdViewModel
+        {
+            public override string[] AssociationTypes => ["Authority"];
+        }
+
+        public class controlAuthorityPilotBoardingPlaceRefIdViewModel : InformationRefIdViewModel
+        {
+            public override string[] AssociationTypes => ["Authority"];
+        }
+
+        public class controlAuthoritySeaplaneLandingAreaRefIdViewModel : InformationRefIdViewModel
+        {
+            public override string[] AssociationTypes => ["Authority"];
+        }
+
+        public class controlAuthorityTerminalRefIdViewModel : InformationRefIdViewModel
+        {
+            public override string[] AssociationTypes => ["Authority"];
+        }
+
+        public class controlAuthorityTurningBasinRefIdViewModel : InformationRefIdViewModel
+        {
+            public override string[] AssociationTypes => ["Authority"];
+        }
+
+        public class controlAuthorityWaterwayAreaRefIdViewModel : InformationRefIdViewModel
+        {
+            public override string[] AssociationTypes => ["Authority"];
+        }
+
+        public static InformationAssociationConnector[] _associationConnectorInformations => Handles.AssociationConnectorInformations[typeof(ServiceControlViewModel)]();
+    }
+
+    public class ServiceContactViewModel : InformationAssociationViewModel
+    {
         public override string Code => "ServiceContact";
         public override string[] Roles => ["servicePlace", "theContactDetails"];
 
@@ -13829,178 +13582,157 @@ namespace S100Framework.WPF.ViewModel.S131
         public InformationBindingViewModel? servicePlace {
             get {
                 return _servicePlace;
-                }
+            }
 
             set {
                 this.SetValue(ref _servicePlace, value);
-                }
             }
+        }
 
         private InformationBindingViewModel? _theContactDetails;
         [ExpandableObject]
         public InformationBindingViewModel? theContactDetails {
             get {
                 return _theContactDetails;
-                }
+            }
 
             set {
                 this.SetValue(ref _theContactDetails, value);
-                }
             }
+        }
 
         public override InformationAssociationConnector? associationConnector {
             get {
                 return _associationConnector;
-                }
+            }
 
             set {
                 this.SetValue(ref _associationConnector, value);
                 servicePlace = null;
                 if (value is not null) {
-                    servicePlace = value?.role switch
-                        {
-                            "theContactDetails" => value.CreateForeignInformationBinding(),
-                            _ => value.CreateLocalInformationBinding(),
-                            };
-                    }
+                    servicePlace = value?.role switch {
+                        "theContactDetails" => value.CreateForeignInformationBinding(),
+                        _ => value.CreateLocalInformationBinding(),
+                    };
+                }
 
                 theContactDetails = null;
                 if (value is not null) {
-                    theContactDetails = value?.role switch
-                        {
-                            "servicePlace" => value.CreateForeignInformationBinding(),
-                            _ => value.CreateLocalInformationBinding(),
-                            };
-                    }
+                    theContactDetails = value?.role switch {
+                        "servicePlace" => value.CreateForeignInformationBinding(),
+                        _ => value.CreateLocalInformationBinding(),
+                    };
                 }
             }
+        }
 
         public override InformationAssociationConnector[] associationConnectorInformations => ServiceContactViewModel._associationConnectorInformations;
 
-        public class theContactDetailsDryDockRefIdViewModel : InformationRefIdViewModel {
+        public class theContactDetailsDryDockRefIdViewModel : InformationRefIdViewModel
+        {
             public override string[] AssociationTypes => ["ContactDetails"];
-
-            public override string ToString() => "RefId";
-            }
-
-        public class theContactDetailsFloatingDockRefIdViewModel : InformationRefIdViewModel {
-            public override string[] AssociationTypes => ["ContactDetails"];
-
-            public override string ToString() => "RefId";
-            }
-
-        public class theContactDetailsGridironRefIdViewModel : InformationRefIdViewModel {
-            public override string[] AssociationTypes => ["ContactDetails"];
-
-            public override string ToString() => "RefId";
-            }
-
-        public class theContactDetailsHarbourFacilityRefIdViewModel : InformationRefIdViewModel {
-            public override string[] AssociationTypes => ["ContactDetails"];
-
-            public override string ToString() => "RefId";
-            }
-
-        public class theContactDetailsAnchorBerthRefIdViewModel : InformationRefIdViewModel {
-            public override string[] AssociationTypes => ["ContactDetails"];
-
-            public override string ToString() => "RefId";
-            }
-
-        public class theContactDetailsAnchorageAreaRefIdViewModel : InformationRefIdViewModel {
-            public override string[] AssociationTypes => ["ContactDetails"];
-
-            public override string ToString() => "RefId";
-            }
-
-        public class theContactDetailsBerthRefIdViewModel : InformationRefIdViewModel {
-            public override string[] AssociationTypes => ["ContactDetails"];
-
-            public override string ToString() => "RefId";
-            }
-
-        public class theContactDetailsBerthPositionRefIdViewModel : InformationRefIdViewModel {
-            public override string[] AssociationTypes => ["ContactDetails"];
-
-            public override string ToString() => "RefId";
-            }
-
-        public class theContactDetailsDockAreaRefIdViewModel : InformationRefIdViewModel {
-            public override string[] AssociationTypes => ["ContactDetails"];
-
-            public override string ToString() => "RefId";
-            }
-
-        public class theContactDetailsDumpingGroundRefIdViewModel : InformationRefIdViewModel {
-            public override string[] AssociationTypes => ["ContactDetails"];
-
-            public override string ToString() => "RefId";
-            }
-
-        public class theContactDetailsHarbourAreaAdministrativeRefIdViewModel : InformationRefIdViewModel {
-            public override string[] AssociationTypes => ["ContactDetails"];
-
-            public override string ToString() => "RefId";
-            }
-
-        public class theContactDetailsHarbourAreaSectionRefIdViewModel : InformationRefIdViewModel {
-            public override string[] AssociationTypes => ["ContactDetails"];
-
-            public override string ToString() => "RefId";
-            }
-
-        public class theContactDetailsHarbourBasinRefIdViewModel : InformationRefIdViewModel {
-            public override string[] AssociationTypes => ["ContactDetails"];
-
-            public override string ToString() => "RefId";
-            }
-
-        public class theContactDetailsMooringWarpingFacilityRefIdViewModel : InformationRefIdViewModel {
-            public override string[] AssociationTypes => ["ContactDetails"];
-
-            public override string ToString() => "RefId";
-            }
-
-        public class theContactDetailsOuterLimitRefIdViewModel : InformationRefIdViewModel {
-            public override string[] AssociationTypes => ["ContactDetails"];
-
-            public override string ToString() => "RefId";
-            }
-
-        public class theContactDetailsPilotBoardingPlaceRefIdViewModel : InformationRefIdViewModel {
-            public override string[] AssociationTypes => ["ContactDetails"];
-
-            public override string ToString() => "RefId";
-            }
-
-        public class theContactDetailsSeaplaneLandingAreaRefIdViewModel : InformationRefIdViewModel {
-            public override string[] AssociationTypes => ["ContactDetails"];
-
-            public override string ToString() => "RefId";
-            }
-
-        public class theContactDetailsTerminalRefIdViewModel : InformationRefIdViewModel {
-            public override string[] AssociationTypes => ["ContactDetails"];
-
-            public override string ToString() => "RefId";
-            }
-
-        public class theContactDetailsTurningBasinRefIdViewModel : InformationRefIdViewModel {
-            public override string[] AssociationTypes => ["ContactDetails"];
-
-            public override string ToString() => "RefId";
-            }
-
-        public class theContactDetailsWaterwayAreaRefIdViewModel : InformationRefIdViewModel {
-            public override string[] AssociationTypes => ["ContactDetails"];
-
-            public override string ToString() => "RefId";
-            }
-
-        public static InformationAssociationConnector[] _associationConnectorInformations => Handles.AssociationConnectorInformations[typeof(ServiceContactViewModel)]();
         }
 
-    public class LocationHoursViewModel : InformationAssociationViewModel {
+        public class theContactDetailsFloatingDockRefIdViewModel : InformationRefIdViewModel
+        {
+            public override string[] AssociationTypes => ["ContactDetails"];
+        }
+
+        public class theContactDetailsGridironRefIdViewModel : InformationRefIdViewModel
+        {
+            public override string[] AssociationTypes => ["ContactDetails"];
+        }
+
+        public class theContactDetailsHarbourFacilityRefIdViewModel : InformationRefIdViewModel
+        {
+            public override string[] AssociationTypes => ["ContactDetails"];
+        }
+
+        public class theContactDetailsAnchorBerthRefIdViewModel : InformationRefIdViewModel
+        {
+            public override string[] AssociationTypes => ["ContactDetails"];
+        }
+
+        public class theContactDetailsAnchorageAreaRefIdViewModel : InformationRefIdViewModel
+        {
+            public override string[] AssociationTypes => ["ContactDetails"];
+        }
+
+        public class theContactDetailsBerthRefIdViewModel : InformationRefIdViewModel
+        {
+            public override string[] AssociationTypes => ["ContactDetails"];
+        }
+
+        public class theContactDetailsBerthPositionRefIdViewModel : InformationRefIdViewModel
+        {
+            public override string[] AssociationTypes => ["ContactDetails"];
+        }
+
+        public class theContactDetailsDockAreaRefIdViewModel : InformationRefIdViewModel
+        {
+            public override string[] AssociationTypes => ["ContactDetails"];
+        }
+
+        public class theContactDetailsDumpingGroundRefIdViewModel : InformationRefIdViewModel
+        {
+            public override string[] AssociationTypes => ["ContactDetails"];
+        }
+
+        public class theContactDetailsHarbourAreaAdministrativeRefIdViewModel : InformationRefIdViewModel
+        {
+            public override string[] AssociationTypes => ["ContactDetails"];
+        }
+
+        public class theContactDetailsHarbourAreaSectionRefIdViewModel : InformationRefIdViewModel
+        {
+            public override string[] AssociationTypes => ["ContactDetails"];
+        }
+
+        public class theContactDetailsHarbourBasinRefIdViewModel : InformationRefIdViewModel
+        {
+            public override string[] AssociationTypes => ["ContactDetails"];
+        }
+
+        public class theContactDetailsMooringWarpingFacilityRefIdViewModel : InformationRefIdViewModel
+        {
+            public override string[] AssociationTypes => ["ContactDetails"];
+        }
+
+        public class theContactDetailsOuterLimitRefIdViewModel : InformationRefIdViewModel
+        {
+            public override string[] AssociationTypes => ["ContactDetails"];
+        }
+
+        public class theContactDetailsPilotBoardingPlaceRefIdViewModel : InformationRefIdViewModel
+        {
+            public override string[] AssociationTypes => ["ContactDetails"];
+        }
+
+        public class theContactDetailsSeaplaneLandingAreaRefIdViewModel : InformationRefIdViewModel
+        {
+            public override string[] AssociationTypes => ["ContactDetails"];
+        }
+
+        public class theContactDetailsTerminalRefIdViewModel : InformationRefIdViewModel
+        {
+            public override string[] AssociationTypes => ["ContactDetails"];
+        }
+
+        public class theContactDetailsTurningBasinRefIdViewModel : InformationRefIdViewModel
+        {
+            public override string[] AssociationTypes => ["ContactDetails"];
+        }
+
+        public class theContactDetailsWaterwayAreaRefIdViewModel : InformationRefIdViewModel
+        {
+            public override string[] AssociationTypes => ["ContactDetails"];
+        }
+
+        public static InformationAssociationConnector[] _associationConnectorInformations => Handles.AssociationConnectorInformations[typeof(ServiceContactViewModel)]();
+    }
+
+    public class LocationHoursViewModel : InformationAssociationViewModel
+    {
         public override string Code => "LocationHours";
         public override string[] Roles => ["location_srvHrs", "facilityOperatingHours"];
 
@@ -14009,166 +13741,147 @@ namespace S100Framework.WPF.ViewModel.S131
         public InformationBindingViewModel? location_srvHrs {
             get {
                 return _location_srvHrs;
-                }
+            }
 
             set {
                 this.SetValue(ref _location_srvHrs, value);
-                }
             }
+        }
 
         private InformationBindingViewModel? _facilityOperatingHours;
         [ExpandableObject]
         public InformationBindingViewModel? facilityOperatingHours {
             get {
                 return _facilityOperatingHours;
-                }
+            }
 
             set {
                 this.SetValue(ref _facilityOperatingHours, value);
-                }
             }
+        }
 
         public override InformationAssociationConnector? associationConnector {
             get {
                 return _associationConnector;
-                }
+            }
 
             set {
                 this.SetValue(ref _associationConnector, value);
                 location_srvHrs = null;
                 if (value is not null) {
-                    location_srvHrs = value?.role switch
-                        {
-                            "facilityOperatingHours" => value.CreateForeignInformationBinding(),
-                            _ => value.CreateLocalInformationBinding(),
-                            };
-                    }
+                    location_srvHrs = value?.role switch {
+                        "facilityOperatingHours" => value.CreateForeignInformationBinding(),
+                        _ => value.CreateLocalInformationBinding(),
+                    };
+                }
 
                 facilityOperatingHours = null;
                 if (value is not null) {
-                    facilityOperatingHours = value?.role switch
-                        {
-                            "location_srvHrs" => value.CreateForeignInformationBinding(),
-                            _ => value.CreateLocalInformationBinding(),
-                            };
-                    }
+                    facilityOperatingHours = value?.role switch {
+                        "location_srvHrs" => value.CreateForeignInformationBinding(),
+                        _ => value.CreateLocalInformationBinding(),
+                    };
                 }
             }
+        }
 
         public override InformationAssociationConnector[] associationConnectorInformations => LocationHoursViewModel._associationConnectorInformations;
 
-        public class location_srvHrsAnchorageAreaRefIdViewModel : InformationRefIdViewModel {
+        public class location_srvHrsAnchorageAreaRefIdViewModel : InformationRefIdViewModel
+        {
             public override string[] AssociationTypes => ["ServiceHours"];
-
-            public override string ToString() => "RefId";
-            }
-
-        public class location_srvHrsAnchorBerthRefIdViewModel : InformationRefIdViewModel {
-            public override string[] AssociationTypes => ["ServiceHours"];
-
-            public override string ToString() => "RefId";
-            }
-
-        public class location_srvHrsBerthRefIdViewModel : InformationRefIdViewModel {
-            public override string[] AssociationTypes => ["ServiceHours"];
-
-            public override string ToString() => "RefId";
-            }
-
-        public class location_srvHrsDockAreaRefIdViewModel : InformationRefIdViewModel {
-            public override string[] AssociationTypes => ["ServiceHours"];
-
-            public override string ToString() => "RefId";
-            }
-
-        public class location_srvHrsDryDockRefIdViewModel : InformationRefIdViewModel {
-            public override string[] AssociationTypes => ["ServiceHours"];
-
-            public override string ToString() => "RefId";
-            }
-
-        public class location_srvHrsDumpingGroundRefIdViewModel : InformationRefIdViewModel {
-            public override string[] AssociationTypes => ["ServiceHours"];
-
-            public override string ToString() => "RefId";
-            }
-
-        public class location_srvHrsFloatingDockRefIdViewModel : InformationRefIdViewModel {
-            public override string[] AssociationTypes => ["ServiceHours"];
-
-            public override string ToString() => "RefId";
-            }
-
-        public class location_srvHrsGridironRefIdViewModel : InformationRefIdViewModel {
-            public override string[] AssociationTypes => ["ServiceHours"];
-
-            public override string ToString() => "RefId";
-            }
-
-        public class location_srvHrsHarbourAreaAdministrativeRefIdViewModel : InformationRefIdViewModel {
-            public override string[] AssociationTypes => ["ServiceHours"];
-
-            public override string ToString() => "RefId";
-            }
-
-        public class location_srvHrsHarbourAreaSectionRefIdViewModel : InformationRefIdViewModel {
-            public override string[] AssociationTypes => ["ServiceHours"];
-
-            public override string ToString() => "RefId";
-            }
-
-        public class location_srvHrsHarbourBasinRefIdViewModel : InformationRefIdViewModel {
-            public override string[] AssociationTypes => ["ServiceHours"];
-
-            public override string ToString() => "RefId";
-            }
-
-        public class location_srvHrsHarbourFacilityRefIdViewModel : InformationRefIdViewModel {
-            public override string[] AssociationTypes => ["ServiceHours"];
-
-            public override string ToString() => "RefId";
-            }
-
-        public class location_srvHrsMooringWarpingFacilityRefIdViewModel : InformationRefIdViewModel {
-            public override string[] AssociationTypes => ["ServiceHours"];
-
-            public override string ToString() => "RefId";
-            }
-
-        public class location_srvHrsPilotBoardingPlaceRefIdViewModel : InformationRefIdViewModel {
-            public override string[] AssociationTypes => ["ServiceHours"];
-
-            public override string ToString() => "RefId";
-            }
-
-        public class location_srvHrsSeaplaneLandingAreaRefIdViewModel : InformationRefIdViewModel {
-            public override string[] AssociationTypes => ["ServiceHours"];
-
-            public override string ToString() => "RefId";
-            }
-
-        public class location_srvHrsTerminalRefIdViewModel : InformationRefIdViewModel {
-            public override string[] AssociationTypes => ["ServiceHours"];
-
-            public override string ToString() => "RefId";
-            }
-
-        public class location_srvHrsTurningBasinRefIdViewModel : InformationRefIdViewModel {
-            public override string[] AssociationTypes => ["ServiceHours"];
-
-            public override string ToString() => "RefId";
-            }
-
-        public class location_srvHrsWaterwayAreaRefIdViewModel : InformationRefIdViewModel {
-            public override string[] AssociationTypes => ["ServiceHours"];
-
-            public override string ToString() => "RefId";
-            }
-
-        public static InformationAssociationConnector[] _associationConnectorInformations => Handles.AssociationConnectorInformations[typeof(LocationHoursViewModel)]();
         }
 
-    public class RelatedOrganisationViewModel : InformationAssociationViewModel {
+        public class location_srvHrsAnchorBerthRefIdViewModel : InformationRefIdViewModel
+        {
+            public override string[] AssociationTypes => ["ServiceHours"];
+        }
+
+        public class location_srvHrsBerthRefIdViewModel : InformationRefIdViewModel
+        {
+            public override string[] AssociationTypes => ["ServiceHours"];
+        }
+
+        public class location_srvHrsDockAreaRefIdViewModel : InformationRefIdViewModel
+        {
+            public override string[] AssociationTypes => ["ServiceHours"];
+        }
+
+        public class location_srvHrsDryDockRefIdViewModel : InformationRefIdViewModel
+        {
+            public override string[] AssociationTypes => ["ServiceHours"];
+        }
+
+        public class location_srvHrsDumpingGroundRefIdViewModel : InformationRefIdViewModel
+        {
+            public override string[] AssociationTypes => ["ServiceHours"];
+        }
+
+        public class location_srvHrsFloatingDockRefIdViewModel : InformationRefIdViewModel
+        {
+            public override string[] AssociationTypes => ["ServiceHours"];
+        }
+
+        public class location_srvHrsGridironRefIdViewModel : InformationRefIdViewModel
+        {
+            public override string[] AssociationTypes => ["ServiceHours"];
+        }
+
+        public class location_srvHrsHarbourAreaAdministrativeRefIdViewModel : InformationRefIdViewModel
+        {
+            public override string[] AssociationTypes => ["ServiceHours"];
+        }
+
+        public class location_srvHrsHarbourAreaSectionRefIdViewModel : InformationRefIdViewModel
+        {
+            public override string[] AssociationTypes => ["ServiceHours"];
+        }
+
+        public class location_srvHrsHarbourBasinRefIdViewModel : InformationRefIdViewModel
+        {
+            public override string[] AssociationTypes => ["ServiceHours"];
+        }
+
+        public class location_srvHrsHarbourFacilityRefIdViewModel : InformationRefIdViewModel
+        {
+            public override string[] AssociationTypes => ["ServiceHours"];
+        }
+
+        public class location_srvHrsMooringWarpingFacilityRefIdViewModel : InformationRefIdViewModel
+        {
+            public override string[] AssociationTypes => ["ServiceHours"];
+        }
+
+        public class location_srvHrsPilotBoardingPlaceRefIdViewModel : InformationRefIdViewModel
+        {
+            public override string[] AssociationTypes => ["ServiceHours"];
+        }
+
+        public class location_srvHrsSeaplaneLandingAreaRefIdViewModel : InformationRefIdViewModel
+        {
+            public override string[] AssociationTypes => ["ServiceHours"];
+        }
+
+        public class location_srvHrsTerminalRefIdViewModel : InformationRefIdViewModel
+        {
+            public override string[] AssociationTypes => ["ServiceHours"];
+        }
+
+        public class location_srvHrsTurningBasinRefIdViewModel : InformationRefIdViewModel
+        {
+            public override string[] AssociationTypes => ["ServiceHours"];
+        }
+
+        public class location_srvHrsWaterwayAreaRefIdViewModel : InformationRefIdViewModel
+        {
+            public override string[] AssociationTypes => ["ServiceHours"];
+        }
+
+        public static InformationAssociationConnector[] _associationConnectorInformations => Handles.AssociationConnectorInformations[typeof(LocationHoursViewModel)]();
+    }
+
+    public class RelatedOrganisationViewModel : InformationAssociationViewModel
+    {
         public override string Code => "RelatedOrganisation";
         public override string[] Roles => ["theInformation", "theOrganisation"];
 
@@ -14177,88 +13890,82 @@ namespace S100Framework.WPF.ViewModel.S131
         public InformationBindingViewModel? theInformation {
             get {
                 return _theInformation;
-                }
+            }
 
             set {
                 this.SetValue(ref _theInformation, value);
-                }
             }
+        }
 
         private InformationBindingViewModel? _theOrganisation;
         [ExpandableObject]
         public InformationBindingViewModel? theOrganisation {
             get {
                 return _theOrganisation;
-                }
+            }
 
             set {
                 this.SetValue(ref _theOrganisation, value);
-                }
             }
+        }
 
         public override InformationAssociationConnector? associationConnector {
             get {
                 return _associationConnector;
-                }
+            }
 
             set {
                 this.SetValue(ref _associationConnector, value);
                 theInformation = null;
                 if (value is not null) {
-                    theInformation = value?.role switch
-                        {
-                            "theOrganisation" => value.CreateForeignInformationBinding(),
-                            _ => value.CreateLocalInformationBinding(),
-                            };
-                    }
+                    theInformation = value?.role switch {
+                        "theOrganisation" => value.CreateForeignInformationBinding(),
+                        _ => value.CreateLocalInformationBinding(),
+                    };
+                }
 
                 theOrganisation = null;
                 if (value is not null) {
-                    theOrganisation = value?.role switch
-                        {
-                            "theInformation" => value.CreateForeignInformationBinding(),
-                            _ => value.CreateLocalInformationBinding(),
-                            };
-                    }
+                    theOrganisation = value?.role switch {
+                        "theInformation" => value.CreateForeignInformationBinding(),
+                        _ => value.CreateLocalInformationBinding(),
+                    };
                 }
             }
+        }
 
         public override InformationAssociationConnector[] associationConnectorInformations => RelatedOrganisationViewModel._associationConnectorInformations;
 
-        public class theInformationAuthorityRefIdViewModel : InformationRefIdViewModel {
+        public class theInformationAuthorityRefIdViewModel : InformationRefIdViewModel
+        {
             public override string[] AssociationTypes => ["NauticalInformation", "Recommendations", "Regulations", "Restrictions"];
-
-            public override string ToString() => "RefId";
-            }
-
-        public class theOrganisationNauticalInformationRefIdViewModel : InformationRefIdViewModel {
-            public override string[] AssociationTypes => ["Authority"];
-
-            public override string ToString() => "RefId";
-            }
-
-        public class theOrganisationRecommendationsRefIdViewModel : InformationRefIdViewModel {
-            public override string[] AssociationTypes => ["Authority"];
-
-            public override string ToString() => "RefId";
-            }
-
-        public class theOrganisationRegulationsRefIdViewModel : InformationRefIdViewModel {
-            public override string[] AssociationTypes => ["Authority"];
-
-            public override string ToString() => "RefId";
-            }
-
-        public class theOrganisationRestrictionsRefIdViewModel : InformationRefIdViewModel {
-            public override string[] AssociationTypes => ["Authority"];
-
-            public override string ToString() => "RefId";
-            }
-
-        public static InformationAssociationConnector[] _associationConnectorInformations => Handles.AssociationConnectorInformations[typeof(RelatedOrganisationViewModel)]();
         }
 
-    public class InclusionTypeViewModel : InformationAssociationViewModel {
+        public class theOrganisationNauticalInformationRefIdViewModel : InformationRefIdViewModel
+        {
+            public override string[] AssociationTypes => ["Authority"];
+        }
+
+        public class theOrganisationRecommendationsRefIdViewModel : InformationRefIdViewModel
+        {
+            public override string[] AssociationTypes => ["Authority"];
+        }
+
+        public class theOrganisationRegulationsRefIdViewModel : InformationRefIdViewModel
+        {
+            public override string[] AssociationTypes => ["Authority"];
+        }
+
+        public class theOrganisationRestrictionsRefIdViewModel : InformationRefIdViewModel
+        {
+            public override string[] AssociationTypes => ["Authority"];
+        }
+
+        public static InformationAssociationConnector[] _associationConnectorInformations => Handles.AssociationConnectorInformations[typeof(RelatedOrganisationViewModel)]();
+    }
+
+    public class InclusionTypeViewModel : InformationAssociationViewModel
+    {
         public override string Code => "InclusionType";
         public override string[] Roles => ["theApplicableRxN", "isApplicableTo"];
 
@@ -14267,88 +13974,82 @@ namespace S100Framework.WPF.ViewModel.S131
         public InformationBindingViewModel? theApplicableRxN {
             get {
                 return _theApplicableRxN;
-                }
+            }
 
             set {
                 this.SetValue(ref _theApplicableRxN, value);
-                }
             }
+        }
 
         private InformationBindingViewModel? _isApplicableTo;
         [ExpandableObject]
         public InformationBindingViewModel? isApplicableTo {
             get {
                 return _isApplicableTo;
-                }
+            }
 
             set {
                 this.SetValue(ref _isApplicableTo, value);
-                }
             }
+        }
 
         public override InformationAssociationConnector? associationConnector {
             get {
                 return _associationConnector;
-                }
+            }
 
             set {
                 this.SetValue(ref _associationConnector, value);
                 theApplicableRxN = null;
                 if (value is not null) {
-                    theApplicableRxN = value?.role switch
-                        {
-                            "isApplicableTo" => value.CreateForeignInformationBinding(),
-                            _ => value.CreateLocalInformationBinding(),
-                            };
-                    }
+                    theApplicableRxN = value?.role switch {
+                        "isApplicableTo" => value.CreateForeignInformationBinding(),
+                        _ => value.CreateLocalInformationBinding(),
+                    };
+                }
 
                 isApplicableTo = null;
                 if (value is not null) {
-                    isApplicableTo = value?.role switch
-                        {
-                            "theApplicableRxN" => value.CreateForeignInformationBinding(),
-                            _ => value.CreateLocalInformationBinding(),
-                            };
-                    }
+                    isApplicableTo = value?.role switch {
+                        "theApplicableRxN" => value.CreateForeignInformationBinding(),
+                        _ => value.CreateLocalInformationBinding(),
+                    };
                 }
             }
+        }
 
         public override InformationAssociationConnector[] associationConnectorInformations => InclusionTypeViewModel._associationConnectorInformations;
 
-        public class isApplicableToNauticalInformationRefIdViewModel : InformationRefIdViewModel {
+        public class isApplicableToNauticalInformationRefIdViewModel : InformationRefIdViewModel
+        {
             public override string[] AssociationTypes => ["Applicability"];
-
-            public override string ToString() => "RefId";
-            }
-
-        public class isApplicableToRecommendationsRefIdViewModel : InformationRefIdViewModel {
-            public override string[] AssociationTypes => ["Applicability"];
-
-            public override string ToString() => "RefId";
-            }
-
-        public class isApplicableToRegulationsRefIdViewModel : InformationRefIdViewModel {
-            public override string[] AssociationTypes => ["Applicability"];
-
-            public override string ToString() => "RefId";
-            }
-
-        public class isApplicableToRestrictionsRefIdViewModel : InformationRefIdViewModel {
-            public override string[] AssociationTypes => ["Applicability"];
-
-            public override string ToString() => "RefId";
-            }
-
-        public class theApplicableRxNApplicabilityRefIdViewModel : InformationRefIdViewModel {
-            public override string[] AssociationTypes => ["NauticalInformation", "Recommendations", "Regulations", "Restrictions"];
-
-            public override string ToString() => "RefId";
-            }
-
-        public static InformationAssociationConnector[] _associationConnectorInformations => Handles.AssociationConnectorInformations[typeof(InclusionTypeViewModel)]();
         }
 
-    public class PermissionTypeViewModel : InformationAssociationViewModel {
+        public class isApplicableToRecommendationsRefIdViewModel : InformationRefIdViewModel
+        {
+            public override string[] AssociationTypes => ["Applicability"];
+        }
+
+        public class isApplicableToRegulationsRefIdViewModel : InformationRefIdViewModel
+        {
+            public override string[] AssociationTypes => ["Applicability"];
+        }
+
+        public class isApplicableToRestrictionsRefIdViewModel : InformationRefIdViewModel
+        {
+            public override string[] AssociationTypes => ["Applicability"];
+        }
+
+        public class theApplicableRxNApplicabilityRefIdViewModel : InformationRefIdViewModel
+        {
+            public override string[] AssociationTypes => ["NauticalInformation", "Recommendations", "Regulations", "Restrictions"];
+        }
+
+        public static InformationAssociationConnector[] _associationConnectorInformations => Handles.AssociationConnectorInformations[typeof(InclusionTypeViewModel)]();
+    }
+
+    public class PermissionTypeViewModel : InformationAssociationViewModel
+    {
         public override string Code => "PermissionType";
         public override string[] Roles => ["vslLocation", "permission"];
 
@@ -14357,184 +14058,162 @@ namespace S100Framework.WPF.ViewModel.S131
         public InformationBindingViewModel? vslLocation {
             get {
                 return _vslLocation;
-                }
+            }
 
             set {
                 this.SetValue(ref _vslLocation, value);
-                }
             }
+        }
 
         private InformationBindingViewModel? _permission;
         [ExpandableObject]
         public InformationBindingViewModel? permission {
             get {
                 return _permission;
-                }
+            }
 
             set {
                 this.SetValue(ref _permission, value);
-                }
             }
+        }
 
         public override InformationAssociationConnector? associationConnector {
             get {
                 return _associationConnector;
-                }
+            }
 
             set {
                 this.SetValue(ref _associationConnector, value);
                 vslLocation = null;
                 if (value is not null) {
-                    vslLocation = value?.role switch
-                        {
-                            "permission" => value.CreateForeignInformationBinding(),
-                            _ => value.CreateLocalInformationBinding(),
-                            };
-                    }
+                    vslLocation = value?.role switch {
+                        "permission" => value.CreateForeignInformationBinding(),
+                        _ => value.CreateLocalInformationBinding(),
+                    };
+                }
 
                 permission = null;
                 if (value is not null) {
-                    permission = value?.role switch
-                        {
-                            "vslLocation" => value.CreateForeignInformationBinding(),
-                            _ => value.CreateLocalInformationBinding(),
-                            };
-                    }
+                    permission = value?.role switch {
+                        "vslLocation" => value.CreateForeignInformationBinding(),
+                        _ => value.CreateLocalInformationBinding(),
+                    };
                 }
             }
+        }
 
         public override InformationAssociationConnector[] associationConnectorInformations => PermissionTypeViewModel._associationConnectorInformations;
 
-        public class permissionDryDockRefIdViewModel : InformationRefIdViewModel {
+        public class permissionDryDockRefIdViewModel : InformationRefIdViewModel
+        {
             public override string[] AssociationTypes => ["Applicability"];
-
-            public override string ToString() => "RefId";
-            }
-
-        public class permissionFloatingDockRefIdViewModel : InformationRefIdViewModel {
-            public override string[] AssociationTypes => ["Applicability"];
-
-            public override string ToString() => "RefId";
-            }
-
-        public class permissionGridironRefIdViewModel : InformationRefIdViewModel {
-            public override string[] AssociationTypes => ["Applicability"];
-
-            public override string ToString() => "RefId";
-            }
-
-        public class permissionHarbourFacilityRefIdViewModel : InformationRefIdViewModel {
-            public override string[] AssociationTypes => ["Applicability"];
-
-            public override string ToString() => "RefId";
-            }
-
-        public class permissionAnchorBerthRefIdViewModel : InformationRefIdViewModel {
-            public override string[] AssociationTypes => ["Applicability"];
-
-            public override string ToString() => "RefId";
-            }
-
-        public class permissionAnchorageAreaRefIdViewModel : InformationRefIdViewModel {
-            public override string[] AssociationTypes => ["Applicability"];
-
-            public override string ToString() => "RefId";
-            }
-
-        public class permissionBerthRefIdViewModel : InformationRefIdViewModel {
-            public override string[] AssociationTypes => ["Applicability"];
-
-            public override string ToString() => "RefId";
-            }
-
-        public class permissionBerthPositionRefIdViewModel : InformationRefIdViewModel {
-            public override string[] AssociationTypes => ["Applicability"];
-
-            public override string ToString() => "RefId";
-            }
-
-        public class permissionDockAreaRefIdViewModel : InformationRefIdViewModel {
-            public override string[] AssociationTypes => ["Applicability"];
-
-            public override string ToString() => "RefId";
-            }
-
-        public class permissionDumpingGroundRefIdViewModel : InformationRefIdViewModel {
-            public override string[] AssociationTypes => ["Applicability"];
-
-            public override string ToString() => "RefId";
-            }
-
-        public class permissionHarbourAreaAdministrativeRefIdViewModel : InformationRefIdViewModel {
-            public override string[] AssociationTypes => ["Applicability"];
-
-            public override string ToString() => "RefId";
-            }
-
-        public class permissionHarbourAreaSectionRefIdViewModel : InformationRefIdViewModel {
-            public override string[] AssociationTypes => ["Applicability"];
-
-            public override string ToString() => "RefId";
-            }
-
-        public class permissionHarbourBasinRefIdViewModel : InformationRefIdViewModel {
-            public override string[] AssociationTypes => ["Applicability"];
-
-            public override string ToString() => "RefId";
-            }
-
-        public class permissionMooringWarpingFacilityRefIdViewModel : InformationRefIdViewModel {
-            public override string[] AssociationTypes => ["Applicability"];
-
-            public override string ToString() => "RefId";
-            }
-
-        public class permissionOuterLimitRefIdViewModel : InformationRefIdViewModel {
-            public override string[] AssociationTypes => ["Applicability"];
-
-            public override string ToString() => "RefId";
-            }
-
-        public class permissionPilotBoardingPlaceRefIdViewModel : InformationRefIdViewModel {
-            public override string[] AssociationTypes => ["Applicability"];
-
-            public override string ToString() => "RefId";
-            }
-
-        public class permissionSeaplaneLandingAreaRefIdViewModel : InformationRefIdViewModel {
-            public override string[] AssociationTypes => ["Applicability"];
-
-            public override string ToString() => "RefId";
-            }
-
-        public class permissionTerminalRefIdViewModel : InformationRefIdViewModel {
-            public override string[] AssociationTypes => ["Applicability"];
-
-            public override string ToString() => "RefId";
-            }
-
-        public class permissionTurningBasinRefIdViewModel : InformationRefIdViewModel {
-            public override string[] AssociationTypes => ["Applicability"];
-
-            public override string ToString() => "RefId";
-            }
-
-        public class permissionWaterwayAreaRefIdViewModel : InformationRefIdViewModel {
-            public override string[] AssociationTypes => ["Applicability"];
-
-            public override string ToString() => "RefId";
-            }
-
-        public class vslLocationApplicabilityRefIdViewModel : InformationRefIdViewModel {
-            public override string[] AssociationTypes => ["NauticalInformation", "Recommendations", "Regulations", "Restrictions", "Applicability", "Authority", "AvailablePortServices", "ContactDetails", "Entrance", "NonStandardWorkingDay", "ServiceHours"];
-
-            public override string ToString() => "RefId";
-            }
-
-        public static InformationAssociationConnector[] _associationConnectorInformations => Handles.AssociationConnectorInformations[typeof(PermissionTypeViewModel)]();
         }
 
-    public class SpatialAssociationViewModel : InformationAssociationViewModel {
+        public class permissionFloatingDockRefIdViewModel : InformationRefIdViewModel
+        {
+            public override string[] AssociationTypes => ["Applicability"];
+        }
+
+        public class permissionGridironRefIdViewModel : InformationRefIdViewModel
+        {
+            public override string[] AssociationTypes => ["Applicability"];
+        }
+
+        public class permissionHarbourFacilityRefIdViewModel : InformationRefIdViewModel
+        {
+            public override string[] AssociationTypes => ["Applicability"];
+        }
+
+        public class permissionAnchorBerthRefIdViewModel : InformationRefIdViewModel
+        {
+            public override string[] AssociationTypes => ["Applicability"];
+        }
+
+        public class permissionAnchorageAreaRefIdViewModel : InformationRefIdViewModel
+        {
+            public override string[] AssociationTypes => ["Applicability"];
+        }
+
+        public class permissionBerthRefIdViewModel : InformationRefIdViewModel
+        {
+            public override string[] AssociationTypes => ["Applicability"];
+        }
+
+        public class permissionBerthPositionRefIdViewModel : InformationRefIdViewModel
+        {
+            public override string[] AssociationTypes => ["Applicability"];
+        }
+
+        public class permissionDockAreaRefIdViewModel : InformationRefIdViewModel
+        {
+            public override string[] AssociationTypes => ["Applicability"];
+        }
+
+        public class permissionDumpingGroundRefIdViewModel : InformationRefIdViewModel
+        {
+            public override string[] AssociationTypes => ["Applicability"];
+        }
+
+        public class permissionHarbourAreaAdministrativeRefIdViewModel : InformationRefIdViewModel
+        {
+            public override string[] AssociationTypes => ["Applicability"];
+        }
+
+        public class permissionHarbourAreaSectionRefIdViewModel : InformationRefIdViewModel
+        {
+            public override string[] AssociationTypes => ["Applicability"];
+        }
+
+        public class permissionHarbourBasinRefIdViewModel : InformationRefIdViewModel
+        {
+            public override string[] AssociationTypes => ["Applicability"];
+        }
+
+        public class permissionMooringWarpingFacilityRefIdViewModel : InformationRefIdViewModel
+        {
+            public override string[] AssociationTypes => ["Applicability"];
+        }
+
+        public class permissionOuterLimitRefIdViewModel : InformationRefIdViewModel
+        {
+            public override string[] AssociationTypes => ["Applicability"];
+        }
+
+        public class permissionPilotBoardingPlaceRefIdViewModel : InformationRefIdViewModel
+        {
+            public override string[] AssociationTypes => ["Applicability"];
+        }
+
+        public class permissionSeaplaneLandingAreaRefIdViewModel : InformationRefIdViewModel
+        {
+            public override string[] AssociationTypes => ["Applicability"];
+        }
+
+        public class permissionTerminalRefIdViewModel : InformationRefIdViewModel
+        {
+            public override string[] AssociationTypes => ["Applicability"];
+        }
+
+        public class permissionTurningBasinRefIdViewModel : InformationRefIdViewModel
+        {
+            public override string[] AssociationTypes => ["Applicability"];
+        }
+
+        public class permissionWaterwayAreaRefIdViewModel : InformationRefIdViewModel
+        {
+            public override string[] AssociationTypes => ["Applicability"];
+        }
+
+        public class vslLocationApplicabilityRefIdViewModel : InformationRefIdViewModel
+        {
+            public override string[] AssociationTypes => ["NauticalInformation", "Recommendations", "Regulations", "Restrictions", "Applicability", "Authority", "AvailablePortServices", "ContactDetails", "Entrance", "NonStandardWorkingDay", "ServiceHours"];
+        }
+
+        public static InformationAssociationConnector[] _associationConnectorInformations => Handles.AssociationConnectorInformations[typeof(PermissionTypeViewModel)]();
+    }
+
+    public class SpatialAssociationViewModel : InformationAssociationViewModel
+    {
         public override string Code => "SpatialAssociation";
         public override string[] Roles => ["defines", "definedFor"];
 
@@ -14543,57 +14222,56 @@ namespace S100Framework.WPF.ViewModel.S131
         public InformationBindingViewModel? defines {
             get {
                 return _defines;
-                }
+            }
 
             set {
                 this.SetValue(ref _defines, value);
-                }
             }
+        }
 
         private InformationBindingViewModel? _definedFor;
         [ExpandableObject]
         public InformationBindingViewModel? definedFor {
             get {
                 return _definedFor;
-                }
+            }
 
             set {
                 this.SetValue(ref _definedFor, value);
-                }
             }
+        }
 
         public override InformationAssociationConnector? associationConnector {
             get {
                 return _associationConnector;
-                }
+            }
 
             set {
                 this.SetValue(ref _associationConnector, value);
                 defines = null;
                 if (value is not null) {
-                    defines = value?.role switch
-                        {
-                            "definedFor" => value.CreateForeignInformationBinding(),
-                            _ => value.CreateLocalInformationBinding(),
-                            };
-                    }
+                    defines = value?.role switch {
+                        "definedFor" => value.CreateForeignInformationBinding(),
+                        _ => value.CreateLocalInformationBinding(),
+                    };
+                }
 
                 definedFor = null;
                 if (value is not null) {
-                    definedFor = value?.role switch
-                        {
-                            "defines" => value.CreateForeignInformationBinding(),
-                            _ => value.CreateLocalInformationBinding(),
-                            };
-                    }
+                    definedFor = value?.role switch {
+                        "defines" => value.CreateForeignInformationBinding(),
+                        _ => value.CreateLocalInformationBinding(),
+                    };
                 }
             }
+        }
 
         public override InformationAssociationConnector[] associationConnectorInformations => SpatialAssociationViewModel._associationConnectorInformations;
         public static InformationAssociationConnector[] _associationConnectorInformations => Handles.AssociationConnectorInformations[typeof(SpatialAssociationViewModel)]();
-        }
+    }
 
-    public class LimitEntranceViewModel : InformationAssociationViewModel {
+    public class LimitEntranceViewModel : InformationAssociationViewModel
+    {
         public override string Code => "LimitEntrance";
         public override string[] Roles => ["entranceTo", "entranceReference"];
 
@@ -14602,64 +14280,62 @@ namespace S100Framework.WPF.ViewModel.S131
         public InformationBindingViewModel? entranceTo {
             get {
                 return _entranceTo;
-                }
+            }
 
             set {
                 this.SetValue(ref _entranceTo, value);
-                }
             }
+        }
 
         private InformationBindingViewModel? _entranceReference;
         [ExpandableObject]
         public InformationBindingViewModel? entranceReference {
             get {
                 return _entranceReference;
-                }
+            }
 
             set {
                 this.SetValue(ref _entranceReference, value);
-                }
             }
+        }
 
         public override InformationAssociationConnector? associationConnector {
             get {
                 return _associationConnector;
-                }
+            }
 
             set {
                 this.SetValue(ref _associationConnector, value);
                 entranceTo = null;
                 if (value is not null) {
-                    entranceTo = value?.role switch
-                        {
-                            "entranceReference" => value.CreateForeignInformationBinding(),
-                            _ => value.CreateLocalInformationBinding(),
-                            };
-                    }
+                    entranceTo = value?.role switch {
+                        "entranceReference" => value.CreateForeignInformationBinding(),
+                        _ => value.CreateLocalInformationBinding(),
+                    };
+                }
 
                 entranceReference = null;
                 if (value is not null) {
-                    entranceReference = value?.role switch
-                        {
-                            "entranceTo" => value.CreateForeignInformationBinding(),
-                            _ => value.CreateLocalInformationBinding(),
-                            };
-                    }
+                    entranceReference = value?.role switch {
+                        "entranceTo" => value.CreateForeignInformationBinding(),
+                        _ => value.CreateLocalInformationBinding(),
+                    };
                 }
             }
+        }
 
         public override InformationAssociationConnector[] associationConnectorInformations => LimitEntranceViewModel._associationConnectorInformations;
 
-        public class entranceReferenceOuterLimitRefIdViewModel : InformationRefIdViewModel {
+        public class entranceReferenceOuterLimitRefIdViewModel : InformationRefIdViewModel
+        {
             public override string[] AssociationTypes => ["Entrance"];
-
-            public override string ToString() => "RefId";
-            }
-
-        public static InformationAssociationConnector[] _associationConnectorInformations => Handles.AssociationConnectorInformations[typeof(LimitEntranceViewModel)]();
         }
 
-    public class ServiceAvailabilityViewModel : InformationAssociationViewModel {
+        public static InformationAssociationConnector[] _associationConnectorInformations => Handles.AssociationConnectorInformations[typeof(LimitEntranceViewModel)]();
+    }
+
+    public class ServiceAvailabilityViewModel : InformationAssociationViewModel
+    {
         public override string Code => "ServiceAvailability";
         public override string[] Roles => ["locationServed", "serviceDescriptionReference"];
 
@@ -14668,96 +14344,87 @@ namespace S100Framework.WPF.ViewModel.S131
         public InformationBindingViewModel? locationServed {
             get {
                 return _locationServed;
-                }
+            }
 
             set {
                 this.SetValue(ref _locationServed, value);
-                }
             }
+        }
 
         private InformationBindingViewModel? _serviceDescriptionReference;
         [ExpandableObject]
         public InformationBindingViewModel? serviceDescriptionReference {
             get {
                 return _serviceDescriptionReference;
-                }
+            }
 
             set {
                 this.SetValue(ref _serviceDescriptionReference, value);
-                }
             }
+        }
 
         public override InformationAssociationConnector? associationConnector {
             get {
                 return _associationConnector;
-                }
+            }
 
             set {
                 this.SetValue(ref _associationConnector, value);
                 locationServed = null;
                 if (value is not null) {
-                    locationServed = value?.role switch
-                        {
-                            "serviceDescriptionReference" => value.CreateForeignInformationBinding(),
-                            _ => value.CreateLocalInformationBinding(),
-                            };
-                    }
+                    locationServed = value?.role switch {
+                        "serviceDescriptionReference" => value.CreateForeignInformationBinding(),
+                        _ => value.CreateLocalInformationBinding(),
+                    };
+                }
 
                 serviceDescriptionReference = null;
                 if (value is not null) {
-                    serviceDescriptionReference = value?.role switch
-                        {
-                            "locationServed" => value.CreateForeignInformationBinding(),
-                            _ => value.CreateLocalInformationBinding(),
-                            };
-                    }
+                    serviceDescriptionReference = value?.role switch {
+                        "locationServed" => value.CreateForeignInformationBinding(),
+                        _ => value.CreateLocalInformationBinding(),
+                    };
                 }
             }
+        }
 
         public override InformationAssociationConnector[] associationConnectorInformations => ServiceAvailabilityViewModel._associationConnectorInformations;
 
-        public class serviceDescriptionReferenceAnchorBerthRefIdViewModel : InformationRefIdViewModel {
+        public class serviceDescriptionReferenceAnchorBerthRefIdViewModel : InformationRefIdViewModel
+        {
             public override string[] AssociationTypes => ["AvailablePortServices"];
+        }
 
-            public override string ToString() => "RefId";
-            }
-
-        public class serviceDescriptionReferenceBerthRefIdViewModel : InformationRefIdViewModel {
+        public class serviceDescriptionReferenceBerthRefIdViewModel : InformationRefIdViewModel
+        {
             public override string[] AssociationTypes => ["AvailablePortServices"];
+        }
 
-            public override string ToString() => "RefId";
-            }
-
-        public class serviceDescriptionReferenceDockAreaRefIdViewModel : InformationRefIdViewModel {
+        public class serviceDescriptionReferenceDockAreaRefIdViewModel : InformationRefIdViewModel
+        {
             public override string[] AssociationTypes => ["AvailablePortServices"];
+        }
 
-            public override string ToString() => "RefId";
-            }
-
-        public class serviceDescriptionReferenceHarbourAreaAdministrativeRefIdViewModel : InformationRefIdViewModel {
+        public class serviceDescriptionReferenceHarbourAreaAdministrativeRefIdViewModel : InformationRefIdViewModel
+        {
             public override string[] AssociationTypes => ["AvailablePortServices"];
+        }
 
-            public override string ToString() => "RefId";
-            }
-
-        public class serviceDescriptionReferenceHarbourAreaSectionRefIdViewModel : InformationRefIdViewModel {
+        public class serviceDescriptionReferenceHarbourAreaSectionRefIdViewModel : InformationRefIdViewModel
+        {
             public override string[] AssociationTypes => ["AvailablePortServices"];
+        }
 
-            public override string ToString() => "RefId";
-            }
-
-        public class serviceDescriptionReferenceMooringWarpingFacilityRefIdViewModel : InformationRefIdViewModel {
+        public class serviceDescriptionReferenceMooringWarpingFacilityRefIdViewModel : InformationRefIdViewModel
+        {
             public override string[] AssociationTypes => ["AvailablePortServices"];
+        }
 
-            public override string ToString() => "RefId";
-            }
-
-        public class serviceDescriptionReferenceTerminalRefIdViewModel : InformationRefIdViewModel {
+        public class serviceDescriptionReferenceTerminalRefIdViewModel : InformationRefIdViewModel
+        {
             public override string[] AssociationTypes => ["AvailablePortServices"];
-
-            public override string ToString() => "RefId";
-            }
+        }
 
         public static InformationAssociationConnector[] _associationConnectorInformations => Handles.AssociationConnectorInformations[typeof(ServiceAvailabilityViewModel)]();
-        }
     }
+}

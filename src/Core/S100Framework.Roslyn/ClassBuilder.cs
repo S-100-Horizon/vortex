@@ -913,7 +913,7 @@ namespace S100Framework
 
                                 builder.AppendLine($"\t\t\tpublic class {code}RefIdViewModel : InformationRefIdViewModel {{");
                                 builder.AppendLine($"\t\t\t\tpublic override string[] AssociationTypes => [\"{code}\"];");
-                                builder.AppendLine("\t\t\t\tpublic override string ToString() => \"RefId\";");
+                                //builder.AppendLine("\t\t\t\tpublic override string ToString() => \"RefId\";");
                                 builder.AppendLine($"\t\t\t}}");
                             }));
 
@@ -1065,7 +1065,7 @@ namespace S100Framework
 
                                 builder.AppendLine($"\t\t\tpublic class {code}RefIdViewModel : FeatureRefIdViewModel {{");
                                 builder.AppendLine($"\t\t\t\tpublic override string[] AssociationTypes => [\"{code}\"];");
-                                builder.AppendLine("\t\t\t\tpublic override string ToString() => \"RefId\";");
+                                //builder.AppendLine("\t\t\t\tpublic override string ToString() => \"RefId\";");
                                 builder.AppendLine($"\t\t\t}}");
                             }));
 
@@ -1230,7 +1230,7 @@ namespace S100Framework
 
                             viewBuilder.AppendLine($"\t\t\tpublic class {role}{f}RefIdViewModel : FeatureRefIdViewModel {{");
                             viewBuilder.AppendLine($"\t\t\t\tpublic override string[] AssociationTypes => [{string.Join(',', featureTypeRefs)}];");
-                            viewBuilder.AppendLine("\t\t\t\tpublic override string ToString() => \"RefId\";");
+                            //viewBuilder.AppendLine("\t\t\t\tpublic override string ToString() => \"RefId\";");
                             viewBuilder.AppendLine($"\t\t\t}}");
                         }
                     }
@@ -1391,13 +1391,10 @@ namespace S100Framework
                             b.AppendLine(createLocal);
                             b.AppendLine($"}},");
 
-                            //if ("theOrganisationNauticalInformationRefIdViewModel".Equals($"{role}{f}RefIdViewModel"))
-                            //    System.Diagnostics.Debugger.Break();
-
 
                             viewBuilder.AppendLine($"\t\t\tpublic class {role}{f}RefIdViewModel : InformationRefIdViewModel {{");
                             viewBuilder.AppendLine($"\t\t\t\tpublic override string[] AssociationTypes => [{string.Join(',', informationTypeRefs)}];");
-                            viewBuilder.AppendLine("\t\t\t\tpublic override string ToString() => \"RefId\";");
+                            //viewBuilder.AppendLine("\t\t\t\tpublic override string ToString() => \"RefId\";");
                             viewBuilder.AppendLine($"\t\t\t}}");
                         }
                     }

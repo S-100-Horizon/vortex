@@ -54,15 +54,22 @@ namespace S100Framework.WPF.Editors
     {
         public FrameworkElement ResolveEditor(PropertyItem propertyItem) {
             var source = propertyItem.Instance switch {
-                FeatureBindingViewModel e => e.RefIds,
-                InformationBindingViewModel e => e.RefIds,
+                //FeatureBindingViewModel e => e.RefIds,
+                //InformationBindingViewModel e => e.RefIds,
+                FeatureRefIdViewModel e => e.RefIds,
+                InformationRefIdViewModel e => e.RefIds,
                 _ => throw new NotSupportedException()
             };
+
+            var viewModel = (RefIdViewModel)propertyItem.Instance;
 
             var comboBox = new ComboBox {
                 Name = $"_comboBox{Guid.NewGuid():N}",
                 //DisplayMemberPath = "refId",
             };
+
+            if (!string.IsNullOrEmpty(viewModel.RefId))
+                source.Add(viewModel.RefId);
 
             var bindingItemsSourceProperty = new Binding() { Source = source, Mode = BindingMode.OneWay };
             BindingOperations.SetBinding(comboBox, ComboBox.ItemsSourceProperty, bindingItemsSourceProperty);
@@ -70,8 +77,9 @@ namespace S100Framework.WPF.Editors
             var bindingSelectedItemProperty = new Binding("RefId") { Source = propertyItem.Instance, Mode = propertyItem.IsReadOnly ? BindingMode.OneWay : BindingMode.TwoWay };
             BindingOperations.SetBinding(comboBox, ComboBox.SelectedItemProperty, bindingSelectedItemProperty);
 
-            //TODO: Dynamic read value from instance!!!!
-            //comboBox.SelectedIndex = 0;
+            if (!string.IsNullOrEmpty(viewModel.RefId)) {
+                comboBox.SelectedValue = viewModel.RefId;
+            }
             return comboBox;
         }
     }
@@ -92,8 +100,9 @@ namespace S100Framework.WPF.Editors
             var bindingSelectedItemProperty = new Binding(propertyItem.DisplayName) { Source = propertyItem.Instance, Mode = propertyItem.IsReadOnly ? BindingMode.OneWay : BindingMode.TwoWay };
             BindingOperations.SetBinding(comboBox, ComboBox.SelectedItemProperty, bindingSelectedItemProperty);
 
-            //TODO: Dynamic read value from instance!!!!
-            //comboBox.SelectedIndex = 0;
+            if (viewModel.associationConnector is not null) {
+                comboBox.SelectedValue = viewModel.associationConnector;
+            }
             return comboBox;
         }
     }
@@ -114,8 +123,9 @@ namespace S100Framework.WPF.Editors
             var bindingSelectedItemProperty = new Binding(propertyItem.DisplayName) { Source = propertyItem.Instance, Mode = propertyItem.IsReadOnly ? BindingMode.OneWay : BindingMode.TwoWay };
             BindingOperations.SetBinding(comboBox, ComboBox.SelectedItemProperty, bindingSelectedItemProperty);
 
-            //TODO: Dynamic read value from instance!!!!
-            //comboBox.SelectedIndex = 0;
+            if (viewModel.associationConnector is not null) {
+                comboBox.SelectedValue = viewModel.associationConnector;
+            }
             return comboBox;
         }
     }
@@ -123,14 +133,14 @@ namespace S100Framework.WPF.Editors
     public sealed class InformationBindingEditor : Xceed.Wpf.Toolkit.PropertyGrid.Editors.ITypeEditor
     {
         public FrameworkElement ResolveEditor(PropertyItem propertyItem) {
-            var viewModel = (InformationBindingViewModel)propertyItem.Instance;
+            var viewModel = (InformationRefIdViewModel)propertyItem.Instance;
 
             var comboBox = new ComboBox {
                 Name = $"_comboBox{Guid.NewGuid():N}",
-                DisplayMemberPath = "Name",
+                //DisplayMemberPath = "Name",
             };
 
-            var bindingItemsSourceProperty = new Binding() { Source = viewModel.InformationTypes, Mode = BindingMode.OneWay };
+            var bindingItemsSourceProperty = new Binding() { Source = viewModel.AssociationTypes, Mode = BindingMode.OneWay };
             BindingOperations.SetBinding(comboBox, ComboBox.ItemsSourceProperty, bindingItemsSourceProperty);
 
             var bindingSelectedItemProperty = new Binding(propertyItem.DisplayName) { Source = propertyItem.Instance, Mode = propertyItem.IsReadOnly ? BindingMode.OneWay : BindingMode.TwoWay };
@@ -145,14 +155,14 @@ namespace S100Framework.WPF.Editors
     public sealed class FeatureBindingEditor : Xceed.Wpf.Toolkit.PropertyGrid.Editors.ITypeEditor
     {
         public FrameworkElement ResolveEditor(PropertyItem propertyItem) {
-            var viewModel = (FeatureBindingViewModel)propertyItem.Instance;
+            var viewModel = (FeatureRefIdViewModel)propertyItem.Instance;
 
             var comboBox = new ComboBox {
                 Name = $"_comboBox{Guid.NewGuid():N}",
-                DisplayMemberPath = "Name",
+                //DisplayMemberPath = "Name",
             };
 
-            var bindingItemsSourceProperty = new Binding() { Source = viewModel.FeatureTypes, Mode = BindingMode.OneWay };
+            var bindingItemsSourceProperty = new Binding() { Source = viewModel.AssociationTypes, Mode = BindingMode.OneWay };
             BindingOperations.SetBinding(comboBox, ComboBox.ItemsSourceProperty, bindingItemsSourceProperty);
 
             var bindingSelectedItemProperty = new Binding(propertyItem.DisplayName) { Source = propertyItem.Instance, Mode = propertyItem.IsReadOnly ? BindingMode.OneWay : BindingMode.TwoWay };
@@ -160,6 +170,9 @@ namespace S100Framework.WPF.Editors
 
             //TODO: Dynamic read value from instance!!!!
             //comboBox.SelectedIndex = 0;
+            if (viewModel.FeatureType is not null) {
+                comboBox.SelectedValue = viewModel.FeatureType;
+            }
             return comboBox;
         }
     }
@@ -172,5 +185,14 @@ namespace S100Framework.WPF.Editors
                 return (PropertyGrid)propertyItem.ParentElement;
             return ((PropertyItemBase)propertyItem.ParentElement).FindRootPropertyGrid();
         }
+
+        public static T? FindRoot<T>(this PropertyItem propertyItem) where T : class {
+            if (propertyItem.Instance is T)
+                return (T)propertyItem.Instance;
+            if (propertyItem.ParentElement is null)
+                return default;
+            return ((PropertyItem)propertyItem.ParentElement).FindRoot<T>();
+        }
+
     }
 }
