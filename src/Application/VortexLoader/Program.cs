@@ -2,7 +2,6 @@
 using ArcGIS.Core.Geometry;
 using CommandLine;
 using S100Framework.ArcGIS.Core;
-using VortexLoader;
 using System.Text.Json;
 using System.Text.RegularExpressions;
 using Esri = ArcGIS.Core.Hosting.Host;

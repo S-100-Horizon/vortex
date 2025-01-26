@@ -1,22 +1,20 @@
-using S100Framework.Applications;
 using ArcGIS.Core.CIM;
 using ArcGIS.Core.Data;
-using IO = System.IO;
-using ArcGIS.Core.Internal.CIM;
-using System.Security.Principal;
-using Xunit.Abstractions;
-using ArcGIS.Core.Geometry;
-using Microsoft.VisualBasic;
-using S100Framework.DomainModel.S101.FeatureTypes;
-using S100Framework.DomainModel.S101;
+using S100Framework.Applications;
 using System.Text;
+using System.Text.RegularExpressions;
+using Xunit.Abstractions;
+using IO = System.IO;
 
 namespace TestNisImporter
 {
     public class TestNisImporter
     {
 
-        public TestNisImporter() {
+        private readonly ITestOutputHelper _output;
+
+        public TestNisImporter(ITestOutputHelper output) {
+            this._output = output;
             ArcGIS.Core.Hosting.Host.Initialize();
         }
 
@@ -47,7 +45,7 @@ namespace TestNisImporter
             var sortedDict = new SortedDictionary<int, string>();
 
             foreach (var subtype in subtypes) {
-                sortedDict.Add(subtype.GetCode(),subtype.GetName());
+                sortedDict.Add(subtype.GetCode(), subtype.GetName());
             }
 
             foreach (var keyValuePair in sortedDict) {
@@ -63,7 +61,7 @@ namespace TestNisImporter
 
             Console.WriteLine(csSubtypes.ToString());
         }
-        
+
         [Fact]
         public void GenerateNisModel() {
             var featureclasses = new List<string> { "PLTS_SpatialAttributeL",
@@ -146,7 +144,7 @@ namespace TestNisImporter
                 csFile.AppendLine("{");
 
                 foreach (var dataset in datasets) {
-                
+
                     StringBuilder fields = new StringBuilder();
                     StringBuilder ctor = new StringBuilder();
                     StringBuilder objectClass = new StringBuilder();
@@ -169,7 +167,7 @@ namespace TestNisImporter
                     var fieldInfo = (Type: "Int32", Conversion: "Convert.ToInt32", DefaultValue: "default", Alias: string.Empty);
 
                     foreach (var field in datasetfields) {
-                        
+
                         fieldInfo = field.FieldType switch {
                             (FieldType)esriFieldType.esriFieldTypeBigInteger => (Type: "internal long?", Conversion: "Convert.ToLong", Default: "default", Alias: field.AliasName),
                             (FieldType)esriFieldType.esriFieldTypeInteger => (Type: "internal int?", Conversion: "Convert.ToInt32", Default: "default", Alias: field.AliasName),
@@ -230,7 +228,8 @@ namespace TestNisImporter
 
                         if (fieldInfo.Type.ToLower().Contains("guid")) {
                             ctor.AppendLine($"\t\t\t\t{fieldValue};");
-                        } else {
+                        }
+                        else {
                             ctor.AppendLine($"\t\t\t\t{field.Name.ToUpper()} = {fieldValue};");
                         }
                         ctor.AppendLine($"\t\t\t}}");
@@ -242,7 +241,7 @@ namespace TestNisImporter
                     objectClass.Append(fields);
                     objectClass.Append(ctor);
                     csFile.Append(objectClass);
-                    
+
                     //csFile.Append(@"}");
 
                 }
@@ -250,12 +249,52 @@ namespace TestNisImporter
                 csFile.AppendLine(@"}");
                 file.WriteLine(csFile.ToString());
             }
-            
+
 
         }
 
 
+        [Fact]
+        public void BuildImportS57ToGeodatabaseScripts() {
+            var root = new IO.DirectoryInfo(@"c:\temp\ENC\");
 
+            var python = new StringBuilder();
+
+            foreach (var enc in root.EnumerateDirectories()) {
+                var command = ImportS57ToGeodatabase(enc, "geodatabase.gdb", (e) => true);
+
+                python.AppendLine(command);
+            }
+
+            _output.WriteLine(python.ToString());
+        }
+
+        private static string ImportS57ToGeodatabase(DirectoryInfo folder, string connection, Func<string, bool> include) {
+            var tasks = new List<string>();
+
+            var regex = new Regex(@"\d{3}$");
+
+            foreach (var file in folder.GetFiles("*.000").OrderBy(e => IO.Path.GetFileNameWithoutExtension(e.FullName))) {
+                var name = IO.Path.GetFileNameWithoutExtension(file.FullName);
+
+                if (!include.Invoke(name))
+                    continue;
+
+                var updates = folder.GetFiles("*.*", SearchOption.TopDirectoryOnly).Where(e => !e.Extension.Equals(".000") && !e.Extension.Equals(".031") && regex.IsMatch(e.Name)).ToList();
+
+
+                tasks.Add($"arcpy.maritime.ImportS57ToGeodatabase(" + Environment.NewLine +
+                $"    in_base_cell = r\"{file.FullName}\"," + Environment.NewLine +
+                $"    target_workspace=r\"{connection}\"," + Environment.NewLine +
+                $"    in_update_cells=r\"{string.Join(';', updates)}\"," + Environment.NewLine +
+                 "    in_product_config=None" + Environment.NewLine +
+                ")" + Environment.NewLine);
+            }
+
+            var commands = string.Join(Environment.NewLine, tasks);
+
+            return commands;
+        }
 
     }
 }
