@@ -1,3 +1,4 @@
+using S100Framework.DomainModel;
 using S100Framework.DomainModel.Bindings;
 using S100Framework.DomainModel.S131;
 using S100Framework.DomainModel.S131.ComplexAttributes;
@@ -12229,6 +12230,18 @@ namespace S100Framework.WPF.ViewModel.S131
         public override string Code => "TextAssociation";
         public override string[] Roles => ["identifies", "positions"];
 
+        private FeatureBindingViewModel? _identifies;
+        [ExpandableObject]
+        public FeatureBindingViewModel? identifies {
+            get {
+                return _identifies;
+            }
+
+            set {
+                this.SetValue(ref _identifies, value);
+            }
+        }
+
         private FeatureBindingViewModel? _positions;
         [ExpandableObject]
         public FeatureBindingViewModel? positions {
@@ -12257,6 +12270,23 @@ namespace S100Framework.WPF.ViewModel.S131
                     };
                 }
             }
+        }
+
+        public override void Load(S100Framework.DomainModel.FeatureAssociation featureAssociation) {
+            associationConnector = associationConnectorFeatures.Single(e => e.FeatureType.Equals(featureAssociation.AssociationConnectorTypeName));
+            identifies?.Load(featureAssociation, "identifies");
+            positions?.Load(featureAssociation, "positions");
+        }
+
+        public override string Serialize() {
+            var instance = new FeatureAssociation
+            {
+                Code = this.Code,
+                AssociationConnectorTypeName = associationConnector!.FeatureType,
+            };
+            identifies?.Save(instance, "identifies");
+            positions?.Save(instance, "positions");
+            return System.Text.Json.JsonSerializer.Serialize(instance);
         }
 
         public override FeatureAssociationConnector[] associationConnectorFeatures => TextAssociationViewModel._associationConnectorFeatures;
@@ -12403,6 +12433,23 @@ namespace S100Framework.WPF.ViewModel.S131
             }
         }
 
+        public override void Load(S100Framework.DomainModel.FeatureAssociation featureAssociation) {
+            associationConnector = associationConnectorFeatures.Single(e => e.FeatureType.Equals(featureAssociation.AssociationConnectorTypeName));
+            subUnit?.Load(featureAssociation, "subUnit");
+            constitute?.Load(featureAssociation, "constitute");
+        }
+
+        public override string Serialize() {
+            var instance = new FeatureAssociation
+            {
+                Code = this.Code,
+                AssociationConnectorTypeName = associationConnector!.FeatureType,
+            };
+            subUnit?.Save(instance, "subUnit");
+            constitute?.Save(instance, "constitute");
+            return System.Text.Json.JsonSerializer.Serialize(instance);
+        }
+
         public override FeatureAssociationConnector[] associationConnectorFeatures => SubsectionViewModel._associationConnectorFeatures;
 
         public class constituteHarbourAreaSectionRefIdViewModel : FeatureRefIdViewModel {
@@ -12469,6 +12516,23 @@ namespace S100Framework.WPF.ViewModel.S131
                     };
                 }
             }
+        }
+
+        public override void Load(S100Framework.DomainModel.FeatureAssociation featureAssociation) {
+            associationConnector = associationConnectorFeatures.Single(e => e.FeatureType.Equals(featureAssociation.AssociationConnectorTypeName));
+            infrastructureLocation?.Load(featureAssociation, "infrastructureLocation");
+            hasInfrastructure?.Load(featureAssociation, "hasInfrastructure");
+        }
+
+        public override string Serialize() {
+            var instance = new FeatureAssociation
+            {
+                Code = this.Code,
+                AssociationConnectorTypeName = associationConnector!.FeatureType,
+            };
+            infrastructureLocation?.Save(instance, "infrastructureLocation");
+            hasInfrastructure?.Save(instance, "hasInfrastructure");
+            return System.Text.Json.JsonSerializer.Serialize(instance);
         }
 
         public override FeatureAssociationConnector[] associationConnectorFeatures => InfrastructureViewModel._associationConnectorFeatures;
@@ -12555,6 +12619,23 @@ namespace S100Framework.WPF.ViewModel.S131
             }
         }
 
+        public override void Load(S100Framework.DomainModel.FeatureAssociation featureAssociation) {
+            associationConnector = associationConnectorFeatures.Single(e => e.FeatureType.Equals(featureAssociation.AssociationConnectorTypeName));
+            primaryFacility?.Load(featureAssociation, "primaryFacility");
+            auxiliaryFacility?.Load(featureAssociation, "auxiliaryFacility");
+        }
+
+        public override string Serialize() {
+            var instance = new FeatureAssociation
+            {
+                Code = this.Code,
+                AssociationConnectorTypeName = associationConnector!.FeatureType,
+            };
+            primaryFacility?.Save(instance, "primaryFacility");
+            auxiliaryFacility?.Save(instance, "auxiliaryFacility");
+            return System.Text.Json.JsonSerializer.Serialize(instance);
+        }
+
         public override FeatureAssociationConnector[] associationConnectorFeatures => PrimaryAuxiliaryFacilityViewModel._associationConnectorFeatures;
 
         public class auxiliaryFacilityAnchorBerthRefIdViewModel : FeatureRefIdViewModel {
@@ -12627,6 +12708,23 @@ namespace S100Framework.WPF.ViewModel.S131
             }
         }
 
+        public override void Load(S100Framework.DomainModel.FeatureAssociation featureAssociation) {
+            associationConnector = associationConnectorFeatures.Single(e => e.FeatureType.Equals(featureAssociation.AssociationConnectorTypeName));
+            demarcationIndicator?.Load(featureAssociation, "demarcationIndicator");
+            demarcatedFeature?.Load(featureAssociation, "demarcatedFeature");
+        }
+
+        public override string Serialize() {
+            var instance = new FeatureAssociation
+            {
+                Code = this.Code,
+                AssociationConnectorTypeName = associationConnector!.FeatureType,
+            };
+            demarcationIndicator?.Save(instance, "demarcationIndicator");
+            demarcatedFeature?.Save(instance, "demarcatedFeature");
+            return System.Text.Json.JsonSerializer.Serialize(instance);
+        }
+
         public override FeatureAssociationConnector[] associationConnectorFeatures => DemarcationViewModel._associationConnectorFeatures;
 
         public class demarcatedFeatureBerthPositionRefIdViewModel : FeatureRefIdViewModel {
@@ -12695,6 +12793,23 @@ namespace S100Framework.WPF.ViewModel.S131
             }
         }
 
+        public override void Load(S100Framework.DomainModel.FeatureAssociation featureAssociation) {
+            associationConnector = associationConnectorFeatures.Single(e => e.FeatureType.Equals(featureAssociation.AssociationConnectorTypeName));
+            limitReference?.Load(featureAssociation, "limitReference");
+            limitExtent?.Load(featureAssociation, "limitExtent");
+        }
+
+        public override string Serialize() {
+            var instance = new FeatureAssociation
+            {
+                Code = this.Code,
+                AssociationConnectorTypeName = associationConnector!.FeatureType,
+            };
+            limitReference?.Save(instance, "limitReference");
+            limitExtent?.Save(instance, "limitExtent");
+            return System.Text.Json.JsonSerializer.Serialize(instance);
+        }
+
         public override FeatureAssociationConnector[] associationConnectorFeatures => JurisdictionalLimitViewModel._associationConnectorFeatures;
 
         public class limitExtentHarbourAreaAdministrativeRefIdViewModel : FeatureRefIdViewModel {
@@ -12761,6 +12876,23 @@ namespace S100Framework.WPF.ViewModel.S131
                     };
                 }
             }
+        }
+
+        public override void Load(S100Framework.DomainModel.FeatureAssociation featureAssociation) {
+            associationConnector = associationConnectorFeatures.Single(e => e.FeatureType.Equals(featureAssociation.AssociationConnectorTypeName));
+            layoutUnit?.Load(featureAssociation, "layoutUnit");
+            componentOf?.Load(featureAssociation, "componentOf");
+        }
+
+        public override string Serialize() {
+            var instance = new FeatureAssociation
+            {
+                Code = this.Code,
+                AssociationConnectorTypeName = associationConnector!.FeatureType,
+            };
+            layoutUnit?.Save(instance, "layoutUnit");
+            componentOf?.Save(instance, "componentOf");
+            return System.Text.Json.JsonSerializer.Serialize(instance);
         }
 
         public override FeatureAssociationConnector[] associationConnectorFeatures => LayoutDivisionViewModel._associationConnectorFeatures;
@@ -12877,6 +13009,23 @@ namespace S100Framework.WPF.ViewModel.S131
                     };
                 }
             }
+        }
+
+        public override void Load(S100Framework.DomainModel.InformationAssociation informationAssociation) {
+            associationConnector = associationConnectorInformations.Single(e => e.InformationType.Equals(informationAssociation.AssociationConnectorTypeName));
+            providesInformation?.Load(informationAssociation, "providesInformation");
+            informationProvidedFor?.Load(informationAssociation, "informationProvidedFor");
+        }
+
+        public override string Serialize() {
+            var instance = new InformationAssociation
+            {
+                Code = this.Code,
+                AssociationConnectorTypeName = associationConnector!.InformationType,
+            };
+            providesInformation?.Save(instance, "providesInformation");
+            informationProvidedFor?.Save(instance, "informationProvidedFor");
+            return System.Text.Json.JsonSerializer.Serialize(instance);
         }
 
         public override InformationAssociationConnector[] associationConnectorInformations => AdditionalInformationViewModel._associationConnectorInformations;
@@ -13067,6 +13216,23 @@ namespace S100Framework.WPF.ViewModel.S131
             }
         }
 
+        public override void Load(S100Framework.DomainModel.InformationAssociation informationAssociation) {
+            associationConnector = associationConnectorInformations.Single(e => e.InformationType.Equals(informationAssociation.AssociationConnectorTypeName));
+            theAuthority?.Load(informationAssociation, "theAuthority");
+            theContactDetails?.Load(informationAssociation, "theContactDetails");
+        }
+
+        public override string Serialize() {
+            var instance = new InformationAssociation
+            {
+                Code = this.Code,
+                AssociationConnectorTypeName = associationConnector!.InformationType,
+            };
+            theAuthority?.Save(instance, "theAuthority");
+            theContactDetails?.Save(instance, "theContactDetails");
+            return System.Text.Json.JsonSerializer.Serialize(instance);
+        }
+
         public override InformationAssociationConnector[] associationConnectorInformations => AuthorityContactViewModel._associationConnectorInformations;
 
         public class theAuthorityContactDetailsRefIdViewModel : InformationRefIdViewModel {
@@ -13135,6 +13301,23 @@ namespace S100Framework.WPF.ViewModel.S131
             }
         }
 
+        public override void Load(S100Framework.DomainModel.InformationAssociation informationAssociation) {
+            associationConnector = associationConnectorInformations.Single(e => e.InformationType.Equals(informationAssociation.AssociationConnectorTypeName));
+            theAuthority_srvHrs?.Load(informationAssociation, "theAuthority_srvHrs");
+            theServiceHours?.Load(informationAssociation, "theServiceHours");
+        }
+
+        public override string Serialize() {
+            var instance = new InformationAssociation
+            {
+                Code = this.Code,
+                AssociationConnectorTypeName = associationConnector!.InformationType,
+            };
+            theAuthority_srvHrs?.Save(instance, "theAuthority_srvHrs");
+            theServiceHours?.Save(instance, "theServiceHours");
+            return System.Text.Json.JsonSerializer.Serialize(instance);
+        }
+
         public override InformationAssociationConnector[] associationConnectorInformations => AuthorityHoursViewModel._associationConnectorInformations;
 
         public class theAuthority_srvHrsServiceHoursRefIdViewModel : InformationRefIdViewModel {
@@ -13201,6 +13384,23 @@ namespace S100Framework.WPF.ViewModel.S131
                     };
                 }
             }
+        }
+
+        public override void Load(S100Framework.DomainModel.InformationAssociation informationAssociation) {
+            associationConnector = associationConnectorInformations.Single(e => e.InformationType.Equals(informationAssociation.AssociationConnectorTypeName));
+            appliesInLocation?.Load(informationAssociation, "appliesInLocation");
+            theRxN?.Load(informationAssociation, "theRxN");
+        }
+
+        public override string Serialize() {
+            var instance = new InformationAssociation
+            {
+                Code = this.Code,
+                AssociationConnectorTypeName = associationConnector!.InformationType,
+            };
+            appliesInLocation?.Save(instance, "appliesInLocation");
+            theRxN?.Save(instance, "theRxN");
+            return System.Text.Json.JsonSerializer.Serialize(instance);
         }
 
         public override InformationAssociationConnector[] associationConnectorInformations => AssociatedRxNViewModel._associationConnectorInformations;
@@ -13343,6 +13543,23 @@ namespace S100Framework.WPF.ViewModel.S131
             }
         }
 
+        public override void Load(S100Framework.DomainModel.InformationAssociation informationAssociation) {
+            associationConnector = associationConnectorInformations.Single(e => e.InformationType.Equals(informationAssociation.AssociationConnectorTypeName));
+            theServiceHours_nsdy?.Load(informationAssociation, "theServiceHours_nsdy");
+            partialWorkingDay?.Load(informationAssociation, "partialWorkingDay");
+        }
+
+        public override string Serialize() {
+            var instance = new InformationAssociation
+            {
+                Code = this.Code,
+                AssociationConnectorTypeName = associationConnector!.InformationType,
+            };
+            theServiceHours_nsdy?.Save(instance, "theServiceHours_nsdy");
+            partialWorkingDay?.Save(instance, "partialWorkingDay");
+            return System.Text.Json.JsonSerializer.Serialize(instance);
+        }
+
         public override InformationAssociationConnector[] associationConnectorInformations => ExceptionalWorkdayViewModel._associationConnectorInformations;
 
         public class partialWorkingDayServiceHoursRefIdViewModel : InformationRefIdViewModel {
@@ -13405,6 +13622,23 @@ namespace S100Framework.WPF.ViewModel.S131
                     };
                 }
             }
+        }
+
+        public override void Load(S100Framework.DomainModel.InformationAssociation informationAssociation) {
+            associationConnector = associationConnectorInformations.Single(e => e.InformationType.Equals(informationAssociation.AssociationConnectorTypeName));
+            controlledService?.Load(informationAssociation, "controlledService");
+            controlAuthority?.Load(informationAssociation, "controlAuthority");
+        }
+
+        public override string Serialize() {
+            var instance = new InformationAssociation
+            {
+                Code = this.Code,
+                AssociationConnectorTypeName = associationConnector!.InformationType,
+            };
+            controlledService?.Save(instance, "controlledService");
+            controlAuthority?.Save(instance, "controlAuthority");
+            return System.Text.Json.JsonSerializer.Serialize(instance);
         }
 
         public override InformationAssociationConnector[] associationConnectorInformations => ServiceControlViewModel._associationConnectorInformations;
@@ -13547,6 +13781,23 @@ namespace S100Framework.WPF.ViewModel.S131
             }
         }
 
+        public override void Load(S100Framework.DomainModel.InformationAssociation informationAssociation) {
+            associationConnector = associationConnectorInformations.Single(e => e.InformationType.Equals(informationAssociation.AssociationConnectorTypeName));
+            servicePlace?.Load(informationAssociation, "servicePlace");
+            theContactDetails?.Load(informationAssociation, "theContactDetails");
+        }
+
+        public override string Serialize() {
+            var instance = new InformationAssociation
+            {
+                Code = this.Code,
+                AssociationConnectorTypeName = associationConnector!.InformationType,
+            };
+            servicePlace?.Save(instance, "servicePlace");
+            theContactDetails?.Save(instance, "theContactDetails");
+            return System.Text.Json.JsonSerializer.Serialize(instance);
+        }
+
         public override InformationAssociationConnector[] associationConnectorInformations => ServiceContactViewModel._associationConnectorInformations;
 
         public class theContactDetailsDryDockRefIdViewModel : InformationRefIdViewModel {
@@ -13687,6 +13938,23 @@ namespace S100Framework.WPF.ViewModel.S131
             }
         }
 
+        public override void Load(S100Framework.DomainModel.InformationAssociation informationAssociation) {
+            associationConnector = associationConnectorInformations.Single(e => e.InformationType.Equals(informationAssociation.AssociationConnectorTypeName));
+            location_srvHrs?.Load(informationAssociation, "location_srvHrs");
+            facilityOperatingHours?.Load(informationAssociation, "facilityOperatingHours");
+        }
+
+        public override string Serialize() {
+            var instance = new InformationAssociation
+            {
+                Code = this.Code,
+                AssociationConnectorTypeName = associationConnector!.InformationType,
+            };
+            location_srvHrs?.Save(instance, "location_srvHrs");
+            facilityOperatingHours?.Save(instance, "facilityOperatingHours");
+            return System.Text.Json.JsonSerializer.Serialize(instance);
+        }
+
         public override InformationAssociationConnector[] associationConnectorInformations => LocationHoursViewModel._associationConnectorInformations;
 
         public class location_srvHrsAnchorageAreaRefIdViewModel : InformationRefIdViewModel {
@@ -13819,6 +14087,23 @@ namespace S100Framework.WPF.ViewModel.S131
             }
         }
 
+        public override void Load(S100Framework.DomainModel.InformationAssociation informationAssociation) {
+            associationConnector = associationConnectorInformations.Single(e => e.InformationType.Equals(informationAssociation.AssociationConnectorTypeName));
+            theInformation?.Load(informationAssociation, "theInformation");
+            theOrganisation?.Load(informationAssociation, "theOrganisation");
+        }
+
+        public override string Serialize() {
+            var instance = new InformationAssociation
+            {
+                Code = this.Code,
+                AssociationConnectorTypeName = associationConnector!.InformationType,
+            };
+            theInformation?.Save(instance, "theInformation");
+            theOrganisation?.Save(instance, "theOrganisation");
+            return System.Text.Json.JsonSerializer.Serialize(instance);
+        }
+
         public override InformationAssociationConnector[] associationConnectorInformations => RelatedOrganisationViewModel._associationConnectorInformations;
 
         public class theInformationAuthorityRefIdViewModel : InformationRefIdViewModel {
@@ -13899,6 +14184,23 @@ namespace S100Framework.WPF.ViewModel.S131
             }
         }
 
+        public override void Load(S100Framework.DomainModel.InformationAssociation informationAssociation) {
+            associationConnector = associationConnectorInformations.Single(e => e.InformationType.Equals(informationAssociation.AssociationConnectorTypeName));
+            theApplicableRxN?.Load(informationAssociation, "theApplicableRxN");
+            isApplicableTo?.Load(informationAssociation, "isApplicableTo");
+        }
+
+        public override string Serialize() {
+            var instance = new InformationAssociation
+            {
+                Code = this.Code,
+                AssociationConnectorTypeName = associationConnector!.InformationType,
+            };
+            theApplicableRxN?.Save(instance, "theApplicableRxN");
+            isApplicableTo?.Save(instance, "isApplicableTo");
+            return System.Text.Json.JsonSerializer.Serialize(instance);
+        }
+
         public override InformationAssociationConnector[] associationConnectorInformations => InclusionTypeViewModel._associationConnectorInformations;
 
         public class isApplicableToNauticalInformationRefIdViewModel : InformationRefIdViewModel {
@@ -13977,6 +14279,23 @@ namespace S100Framework.WPF.ViewModel.S131
                     };
                 }
             }
+        }
+
+        public override void Load(S100Framework.DomainModel.InformationAssociation informationAssociation) {
+            associationConnector = associationConnectorInformations.Single(e => e.InformationType.Equals(informationAssociation.AssociationConnectorTypeName));
+            vslLocation?.Load(informationAssociation, "vslLocation");
+            permission?.Load(informationAssociation, "permission");
+        }
+
+        public override string Serialize() {
+            var instance = new InformationAssociation
+            {
+                Code = this.Code,
+                AssociationConnectorTypeName = associationConnector!.InformationType,
+            };
+            vslLocation?.Save(instance, "vslLocation");
+            permission?.Save(instance, "permission");
+            return System.Text.Json.JsonSerializer.Serialize(instance);
         }
 
         public override InformationAssociationConnector[] associationConnectorInformations => PermissionTypeViewModel._associationConnectorInformations;
@@ -14123,6 +14442,23 @@ namespace S100Framework.WPF.ViewModel.S131
             }
         }
 
+        public override void Load(S100Framework.DomainModel.InformationAssociation informationAssociation) {
+            associationConnector = associationConnectorInformations.Single(e => e.InformationType.Equals(informationAssociation.AssociationConnectorTypeName));
+            defines?.Load(informationAssociation, "defines");
+            definedFor?.Load(informationAssociation, "definedFor");
+        }
+
+        public override string Serialize() {
+            var instance = new InformationAssociation
+            {
+                Code = this.Code,
+                AssociationConnectorTypeName = associationConnector!.InformationType,
+            };
+            defines?.Save(instance, "defines");
+            definedFor?.Save(instance, "definedFor");
+            return System.Text.Json.JsonSerializer.Serialize(instance);
+        }
+
         public override InformationAssociationConnector[] associationConnectorInformations => SpatialAssociationViewModel._associationConnectorInformations;
         public static InformationAssociationConnector[] _associationConnectorInformations => Handles.AssociationConnectorInformations[typeof(SpatialAssociationViewModel)]();
     }
@@ -14180,6 +14516,23 @@ namespace S100Framework.WPF.ViewModel.S131
                     };
                 }
             }
+        }
+
+        public override void Load(S100Framework.DomainModel.InformationAssociation informationAssociation) {
+            associationConnector = associationConnectorInformations.Single(e => e.InformationType.Equals(informationAssociation.AssociationConnectorTypeName));
+            entranceTo?.Load(informationAssociation, "entranceTo");
+            entranceReference?.Load(informationAssociation, "entranceReference");
+        }
+
+        public override string Serialize() {
+            var instance = new InformationAssociation
+            {
+                Code = this.Code,
+                AssociationConnectorTypeName = associationConnector!.InformationType,
+            };
+            entranceTo?.Save(instance, "entranceTo");
+            entranceReference?.Save(instance, "entranceReference");
+            return System.Text.Json.JsonSerializer.Serialize(instance);
         }
 
         public override InformationAssociationConnector[] associationConnectorInformations => LimitEntranceViewModel._associationConnectorInformations;
@@ -14244,6 +14597,23 @@ namespace S100Framework.WPF.ViewModel.S131
                     };
                 }
             }
+        }
+
+        public override void Load(S100Framework.DomainModel.InformationAssociation informationAssociation) {
+            associationConnector = associationConnectorInformations.Single(e => e.InformationType.Equals(informationAssociation.AssociationConnectorTypeName));
+            locationServed?.Load(informationAssociation, "locationServed");
+            serviceDescriptionReference?.Load(informationAssociation, "serviceDescriptionReference");
+        }
+
+        public override string Serialize() {
+            var instance = new InformationAssociation
+            {
+                Code = this.Code,
+                AssociationConnectorTypeName = associationConnector!.InformationType,
+            };
+            locationServed?.Save(instance, "locationServed");
+            serviceDescriptionReference?.Save(instance, "serviceDescriptionReference");
+            return System.Text.Json.JsonSerializer.Serialize(instance);
         }
 
         public override InformationAssociationConnector[] associationConnectorInformations => ServiceAvailabilityViewModel._associationConnectorInformations;

@@ -1134,9 +1134,6 @@ namespace S100Framework
                     viewBuilder.AppendLine();
 
                     foreach (var r in roles) {
-                        if (!associations.Any(e => r.Equals(e.Element(XName.Get("role", scope_S100))!.Attribute("ref")!.Value)))
-                            continue;
-
                         viewBuilder.AppendLine($"\t\t\tprivate FeatureBindingViewModel? _{r};");
                         viewBuilder.AppendLine($"\t\t\t[ExpandableObject]");
                         viewBuilder.AppendLine($"\t\t\tpublic FeatureBindingViewModel? {r} {{");
@@ -1175,8 +1172,26 @@ namespace S100Framework
                     viewBuilder.AppendLine($"\t\t\t}}");
                     viewBuilder.AppendLine($"\t\t}}");
 
+                    viewBuilder.AppendLine($"\t\tpublic override void Load(S100Framework.DomainModel.FeatureAssociation featureAssociation) {{");
+                    viewBuilder.AppendLine($"\t\t\tassociationConnector = associationConnectorFeatures.Single(e => e.FeatureType.Equals(featureAssociation.AssociationConnectorTypeName));");
+                    foreach (var r in roles) {
+                        viewBuilder.AppendLine($"\t\t\t{r}?.Load(featureAssociation, \"{r}\");");
+                    }
+                    viewBuilder.AppendLine($"\t\t}}");
+
+
+                    viewBuilder.AppendLine($"\t\tpublic override string Serialize() {{");
+                    viewBuilder.AppendLine($"\t\t\tvar instance = new FeatureAssociation {{");
+                    viewBuilder.AppendLine($"\t\t\t\tCode = this.Code,");
+                    viewBuilder.AppendLine($"\t\t\t\tAssociationConnectorTypeName = associationConnector!.FeatureType,");
+                    viewBuilder.AppendLine($"\t\t\t}};");
+                    foreach (var r in roles) {
+                        viewBuilder.AppendLine($"\t\t\t{r}?.Save(instance, \"{r}\");");
+                    }
+                    viewBuilder.AppendLine($"\t\t\treturn System.Text.Json.JsonSerializer.Serialize(instance);");
+                    viewBuilder.AppendLine($"\t\t}}");
+
                     viewBuilder.AppendLine($"\t\t\tpublic override FeatureAssociationConnector[] associationConnectorFeatures => {code}ViewModel._associationConnectorFeatures;");
-                    //viewBuilder.AppendLine($"\t\t\tpublic static FeatureAssociationConnector[] _associationConnectorFeatures => new FeatureAssociationConnector[] {{");
 
                     var b = new StringBuilder();
                     var lookup = new List<string>();
@@ -1301,11 +1316,7 @@ namespace S100Framework
                         viewBuilder.AppendLine($"\t\t\t\t\t}}");
                     }
                     else {
-
                         foreach (var r in roles) {
-                            //if (!associations.Any(e => r.Equals(e.Element(XName.Get("role", scope_S100))!.Attribute("ref")!.Value)))
-                            //    continue;
-
                             viewBuilder.AppendLine($"\t\t\t\t{r} = null;");
 
                             viewBuilder.AppendLine($"\t\t\t\tif (value is not null) {{");
@@ -1326,6 +1337,24 @@ namespace S100Framework
                         }
                     }
                     viewBuilder.AppendLine($"\t\t\t}}");
+                    viewBuilder.AppendLine($"\t\t}}");
+
+                    viewBuilder.AppendLine($"\t\tpublic override void Load(S100Framework.DomainModel.InformationAssociation informationAssociation) {{");
+                    viewBuilder.AppendLine($"\t\t\tassociationConnector = associationConnectorInformations.Single(e => e.InformationType.Equals(informationAssociation.AssociationConnectorTypeName));");
+                    foreach (var r in roles) {
+                        viewBuilder.AppendLine($"\t\t\t{r}?.Load(informationAssociation, \"{r}\");");
+                    }
+                    viewBuilder.AppendLine($"\t\t}}");
+
+                    viewBuilder.AppendLine($"\t\tpublic override string Serialize() {{");
+                    viewBuilder.AppendLine($"\t\t\tvar instance = new InformationAssociation {{");
+                    viewBuilder.AppendLine($"\t\t\t\tCode = this.Code,");
+                    viewBuilder.AppendLine($"\t\t\t\tAssociationConnectorTypeName = associationConnector!.InformationType,");
+                    viewBuilder.AppendLine($"\t\t\t}};");
+                    foreach (var r in roles) {
+                        viewBuilder.AppendLine($"\t\t\t{r}?.Save(instance, \"{r}\");");
+                    }
+                    viewBuilder.AppendLine($"\t\t\treturn System.Text.Json.JsonSerializer.Serialize(instance);");
                     viewBuilder.AppendLine($"\t\t}}");
 
                     viewBuilder.AppendLine($"\t\t\tpublic override InformationAssociationConnector[] associationConnectorInformations => {code}ViewModel._associationConnectorInformations;");
@@ -1469,16 +1498,22 @@ namespace S100Framework
 
             common.AppendLine("\t[System.SerializableAttribute()]");
             common.AppendLine("\tpublic class RefId {");
-            common.AppendLine("\t\tpublic required string Value { get; set; }");
-            common.AppendLine("\t\tpublic required string Type { get; set; }");
+            common.AppendLine("\t\tpublic required string? Value { get; set; }");
+            common.AppendLine("\t\tpublic required string? Type { get; set; }");
             common.AppendLine("\t\tpublic required string Role { get; set; }");
             common.AppendLine("\t}");
 
             common.AppendLine("\t[System.SerializableAttribute()]");
-            common.AppendLine("\tpublic class FeatureAssociation {");
+            common.AppendLine("\tpublic abstract class Association {");
             common.AppendLine("\t\tpublic required string Code {get; set; }");
             common.AppendLine("\t\tpublic required string AssociationConnectorTypeName { get; set; }");
             common.AppendLine("\t\tpublic RefId[] RefIds { get; set; } = new RefId[0];");
+            common.AppendLine("\t}");
+            common.AppendLine("\t[System.SerializableAttribute()]");
+            common.AppendLine("\tpublic class InformationAssociation : Association {");
+            common.AppendLine("\t}");
+            common.AppendLine("\t[System.SerializableAttribute()]");
+            common.AppendLine("\tpublic class FeatureAssociation : Association {");
             common.AppendLine("\t}");
 
 

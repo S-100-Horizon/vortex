@@ -1,3 +1,4 @@
+using S100Framework.DomainModel;
 using S100Framework.DomainModel.Bindings;
 using S100Framework.DomainModel.S124;
 using S100Framework.DomainModel.S124.ComplexAttributes;
@@ -1667,6 +1668,23 @@ namespace S100Framework.WPF.ViewModel.S124
             }
         }
 
+        public override void Load(S100Framework.DomainModel.FeatureAssociation featureAssociation) {
+            associationConnector = associationConnectorFeatures.Single(e => e.FeatureType.Equals(featureAssociation.AssociationConnectorTypeName));
+            affects?.Load(featureAssociation, "affects");
+            impacts?.Load(featureAssociation, "impacts");
+        }
+
+        public override string Serialize() {
+            var instance = new FeatureAssociation
+            {
+                Code = this.Code,
+                AssociationConnectorTypeName = associationConnector!.FeatureType,
+            };
+            affects?.Save(instance, "affects");
+            impacts?.Save(instance, "impacts");
+            return System.Text.Json.JsonSerializer.Serialize(instance);
+        }
+
         public override FeatureAssociationConnector[] associationConnectorFeatures => AreaAffectedViewModel._associationConnectorFeatures;
 
         public class affectsNAVWARNPartRefIdViewModel : FeatureRefIdViewModel {
@@ -1733,6 +1751,23 @@ namespace S100Framework.WPF.ViewModel.S124
                     };
                 }
             }
+        }
+
+        public override void Load(S100Framework.DomainModel.FeatureAssociation featureAssociation) {
+            associationConnector = associationConnectorFeatures.Single(e => e.FeatureType.Equals(featureAssociation.AssociationConnectorTypeName));
+            identifies?.Load(featureAssociation, "identifies");
+            positions?.Load(featureAssociation, "positions");
+        }
+
+        public override string Serialize() {
+            var instance = new FeatureAssociation
+            {
+                Code = this.Code,
+                AssociationConnectorTypeName = associationConnector!.FeatureType,
+            };
+            identifies?.Save(instance, "identifies");
+            positions?.Save(instance, "positions");
+            return System.Text.Json.JsonSerializer.Serialize(instance);
         }
 
         public override FeatureAssociationConnector[] associationConnectorFeatures => TextAssociationViewModel._associationConnectorFeatures;
@@ -1803,6 +1838,23 @@ namespace S100Framework.WPF.ViewModel.S124
             }
         }
 
+        public override void Load(S100Framework.DomainModel.InformationAssociation informationAssociation) {
+            associationConnector = associationConnectorInformations.Single(e => e.InformationType.Equals(informationAssociation.AssociationConnectorTypeName));
+            theWarningPart?.Load(informationAssociation, "theWarningPart");
+            header?.Load(informationAssociation, "header");
+        }
+
+        public override string Serialize() {
+            var instance = new InformationAssociation
+            {
+                Code = this.Code,
+                AssociationConnectorTypeName = associationConnector!.InformationType,
+            };
+            theWarningPart?.Save(instance, "theWarningPart");
+            header?.Save(instance, "header");
+            return System.Text.Json.JsonSerializer.Serialize(instance);
+        }
+
         public override InformationAssociationConnector[] associationConnectorInformations => NWPreambleContentViewModel._associationConnectorInformations;
 
         public class headerNAVWARNPartRefIdViewModel : InformationRefIdViewModel {
@@ -1865,6 +1917,23 @@ namespace S100Framework.WPF.ViewModel.S124
                     };
                 }
             }
+        }
+
+        public override void Load(S100Framework.DomainModel.InformationAssociation informationAssociation) {
+            associationConnector = associationConnectorInformations.Single(e => e.InformationType.Equals(informationAssociation.AssociationConnectorTypeName));
+            theWarning?.Load(informationAssociation, "theWarning");
+            theReferences?.Load(informationAssociation, "theReferences");
+        }
+
+        public override string Serialize() {
+            var instance = new InformationAssociation
+            {
+                Code = this.Code,
+                AssociationConnectorTypeName = associationConnector!.InformationType,
+            };
+            theWarning?.Save(instance, "theWarning");
+            theReferences?.Save(instance, "theReferences");
+            return System.Text.Json.JsonSerializer.Serialize(instance);
         }
 
         public override InformationAssociationConnector[] associationConnectorInformations => NWReferencesViewModel._associationConnectorInformations;

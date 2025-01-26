@@ -111,6 +111,10 @@ namespace S100Framework.WPF.ViewModel
 
         [Browsable(false)]
         public abstract InformationAssociationConnector[] associationConnectorInformations { get; }
+
+        public abstract void Load(S100Framework.DomainModel.InformationAssociation informationAssociation);
+
+        public abstract string Serialize();
     }
 
     public abstract class FeatureAssociationViewModel : AssociationViewModel
@@ -123,6 +127,10 @@ namespace S100Framework.WPF.ViewModel
 
         [Browsable(false)]
         public abstract FeatureAssociationConnector[] associationConnectorFeatures { get; }
+
+        public abstract void Load(S100Framework.DomainModel.FeatureAssociation featureAssociation);
+
+        public abstract string Serialize();
     }
 
     public abstract class AssociationConnector
@@ -212,10 +220,10 @@ namespace S100Framework.WPF.ViewModel
             OnPropertyChanged(propertyName);
         }
 
-        private string _refId = string.Empty;
+        private string? _refId = string.Empty;
 
         [Editor(typeof(RefIdEditor), typeof(RefIdEditor))]
-        public string RefId {
+        public string? RefId {
             get { return _refId; }
             set { this.SetValue(ref _refId, value); }
         }
@@ -288,11 +296,9 @@ namespace S100Framework.WPF.ViewModel
             OnPropertyChanged(propertyName);
         }
 
-        //[Browsable(false)]
-        //public ObservableCollection<string> RefIds { get; set; } = new ObservableCollection<string>();
+        public abstract void Load(InformationAssociation informationAssociation, string role);
 
-        //[Browsable(false)]
-        //public string[] InformationTypes { get; set; } = [];
+        public abstract InformationAssociation Save(InformationAssociation featureAssociation, string role);
     }
 
     public abstract class InformationBindingViewModel<T> : InformationBindingViewModel where T : InformationRefIdViewModel
@@ -315,9 +321,30 @@ namespace S100Framework.WPF.ViewModel
             get { return _refId; }
             set { this.SetValue(ref _refId, value); }
         }
+
+        public override void Load(InformationAssociation informationAssociation, string role) {
+            var v = informationAssociation.RefIds.Where(e => e.Role.Equals(role, StringComparison.InvariantCultureIgnoreCase)).FirstOrDefault();
+            this.RefId.RefId = v?.Value!;
+            this.RefId.InformationType = v?.Type;
+        }
+
+        public override InformationAssociation Save(InformationAssociation informationAssociation, string role) {
+            informationAssociation.RefIds =
+                [
+                    .. informationAssociation.RefIds,
+                    .. new []{
+                        new RefId {
+                            Role = role,
+                            Type = _refId.InformationType,
+                            Value = _refId.RefId,
+                        }
+                    }
+                ];
+            return informationAssociation;
+        }
     }
 
-    public class OptionalInformationBindingViewModel<T> : InformationBindingViewModel<T> where T : InformationRefIdViewModel
+    public class OptionalInformationBindingViewModel<T> : InformationBindingViewModel<T> where T : InformationRefIdViewModel, new()
     {
         private string _displayName;
 
@@ -333,6 +360,34 @@ namespace S100Framework.WPF.ViewModel
             get { return _refId; }
             set { this.SetValue(ref _refId, value); }
         }
+
+        public override void Load(InformationAssociation informationAssociation, string role) {
+            var v = informationAssociation.RefIds.Where(e => e.Role.Equals(role, StringComparison.InvariantCultureIgnoreCase)).FirstOrDefault();
+            if (v != default) {
+                if (RefId is null) {
+                    RefId = new();
+                }
+                this.RefId.RefId = v?.Value!;
+                this.RefId.InformationType = v?.Type;
+            }
+        }
+
+        public override InformationAssociation Save(InformationAssociation informationAssociation, string role) {
+            if (_refId is default(T))
+                return informationAssociation;
+            informationAssociation.RefIds =
+                [
+                    .. informationAssociation.RefIds,
+                    .. new []{
+                        new RefId {
+                            Role = role,
+                            Type = _refId.InformationType,
+                            Value = _refId.RefId,
+                        }
+                    }
+                ];
+            return informationAssociation;
+        }
     }
 
     public class MultiInformationBindingViewModel<T> : InformationBindingViewModel<T> where T : InformationRefIdViewModel, new()
@@ -346,6 +401,31 @@ namespace S100Framework.WPF.ViewModel
 
         [Editor(typeof(RefIdEditor), typeof(RefIdEditor))]
         public ObservableCollection<T> RefId { get; set; } = new ObservableCollection<T>();
+
+        public override void Load(InformationAssociation informationAssociation, string role) {
+            foreach (var e in informationAssociation.RefIds.Where(e => e.Role.Equals(role, StringComparison.InvariantCultureIgnoreCase))) {
+                RefId.Add(new T {
+                    InformationType = e.Type,
+                    RefId = e.Value,
+                });
+            }
+        }
+
+        public override InformationAssociation Save(InformationAssociation informationAssociation, string role) {
+            if (!RefId.Any())
+                return informationAssociation;
+
+            informationAssociation.RefIds =
+            [
+                .. informationAssociation.RefIds,
+                .. RefId.Select(e => new RefId {
+                    Role = role,
+                    Type = e.InformationType,
+                    Value = e.RefId,
+                }),
+            ];
+            return informationAssociation;
+        }
     }
 
     public abstract class FeatureBindingViewModel : INotifyPropertyChanged
@@ -364,7 +444,9 @@ namespace S100Framework.WPF.ViewModel
             OnPropertyChanged(propertyName);
         }
 
-        public abstract void Load(S100Framework.DomainModel.RefId[] refIds);
+        public abstract void Load(FeatureAssociation featureAssociation, string role);
+
+        public abstract FeatureAssociation Save(FeatureAssociation featureAssociation, string role);
     }
 
     public abstract class FeatureBindingViewModel<T> : FeatureBindingViewModel where T : FeatureRefIdViewModel
@@ -387,10 +469,25 @@ namespace S100Framework.WPF.ViewModel
             set { this.SetValue(ref _refId, value); }
         }
 
-        public override void Load(S100Framework.DomainModel.RefId[] refIds) {
-            var v = refIds.FirstOrDefault();
+        public override void Load(FeatureAssociation featureAssociation, string role) {
+            var v = featureAssociation.RefIds.Where(e => e.Role.Equals(role, StringComparison.InvariantCultureIgnoreCase)).FirstOrDefault();
             this.RefId.RefId = v?.Value!;
             this.RefId.FeatureType = v?.Type;
+        }
+
+        public override FeatureAssociation Save(FeatureAssociation featureAssociation, string role) {
+            featureAssociation.RefIds =
+                [
+                    .. featureAssociation.RefIds,
+                    .. new []{
+                        new RefId {
+                            Role = role,
+                            Type = _refId.FeatureType,
+                            Value = _refId.RefId,
+                        }
+                    }
+                ];
+            return featureAssociation;
         }
     }
 
@@ -410,8 +507,8 @@ namespace S100Framework.WPF.ViewModel
             set { this.SetValue(ref _refId, value); }
         }
 
-        public override void Load(S100Framework.DomainModel.RefId[] refIds) {
-            var v = refIds.FirstOrDefault();
+        public override void Load(FeatureAssociation featureAssociation, string role) {
+            var v = featureAssociation.RefIds.Where(e => e.Role.Equals(role, StringComparison.InvariantCultureIgnoreCase)).FirstOrDefault();
             if (v != default) {
                 if (RefId is null) {
                     RefId = new();
@@ -419,6 +516,23 @@ namespace S100Framework.WPF.ViewModel
                 this.RefId.RefId = v?.Value!;
                 this.RefId.FeatureType = v?.Type;
             }
+        }
+
+        public override FeatureAssociation Save(FeatureAssociation featureAssociation, string role) {
+            if (_refId is default(T))
+                return featureAssociation;
+            featureAssociation.RefIds =
+                [
+                    .. featureAssociation.RefIds,
+                    .. new []{
+                        new RefId {
+                            Role = role,
+                            Type = _refId.FeatureType,
+                            Value = _refId.RefId,
+                        }
+                    }
+                ];
+            return featureAssociation;
         }
     }
 
@@ -431,13 +545,29 @@ namespace S100Framework.WPF.ViewModel
 
         public ObservableCollection<T> RefId { get; set; } = new ObservableCollection<T>();
 
-        public override void Load(S100Framework.DomainModel.RefId[] refIds) {
-            foreach (var e in refIds) {
+        public override void Load(FeatureAssociation featureAssociation, string role) {
+            foreach (var e in featureAssociation.RefIds.Where(e => e.Role.Equals(role, StringComparison.InvariantCultureIgnoreCase))) {
                 RefId.Add(new T {
                     FeatureType = e.Type,
                     RefId = e.Value,
                 });
             }
+        }
+
+        public override FeatureAssociation Save(FeatureAssociation featureAssociation, string role) {
+            if (!RefId.Any())
+                return featureAssociation;
+
+            featureAssociation.RefIds =
+            [
+                .. featureAssociation.RefIds,
+                .. RefId.Select(e => new RefId {
+                    Role = role,
+                    Type = e.FeatureType,
+                    Value = e.RefId,
+                }),
+            ];
+            return featureAssociation;
         }
     }
 }

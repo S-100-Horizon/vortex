@@ -199,6 +199,31 @@ namespace VortexConceptApplication
             var viewModel131 = new S100Framework.WPF.ViewModel.S131.TextAssociationViewModel();
 
             var viewModel = viewModel101;
+
+
+            var fromJson = new S100Framework.DomainModel.FeatureAssociation {
+                Code = "UpdatedInformation",
+                AssociationConnectorTypeName = "AdministrationArea",
+                RefIds = new[] {
+                    new S100Framework.DomainModel.RefId {
+                        Type = "AdministrationArea",
+                        Role = "theUpdate",
+                        Value = "Hello",
+                    },
+                    new S100Framework.DomainModel.RefId {
+                        Type = "UpdateInformation",
+                        Role = "theUpdatedObject",
+                        Value = "World (1)",
+                    },
+                    new S100Framework.DomainModel.RefId {
+                        Type = "UpdateInformation",
+                        Role = "theUpdatedObject",
+                        Value = "World (2)",
+                    }
+                },
+            };
+
+            viewModel.Load(fromJson);
 #endif
 
             //this._propertyGrid.EditorDefinitions.Clear();
@@ -291,7 +316,11 @@ namespace VortexConceptApplication
         }
 
         private void SAVE_Click(object sender, RoutedEventArgs e) {
-            var json = System.Text.Json.JsonSerializer.Serialize(SelectedProperty);
+
+            var v = (VortexConceptApplication.UpdatedInformationViewModel)SelectedProperty;
+
+            var json = v.Serialize();
+
 
             System.Diagnostics.Debugger.Break();
         }

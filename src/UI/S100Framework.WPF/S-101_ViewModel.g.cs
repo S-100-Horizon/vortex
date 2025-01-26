@@ -1,3 +1,4 @@
+using S100Framework.DomainModel;
 using S100Framework.DomainModel.Bindings;
 using S100Framework.DomainModel.S101;
 using S100Framework.DomainModel.S101.ComplexAttributes;
@@ -44334,6 +44335,23 @@ namespace S100Framework.WPF.ViewModel.S101
             }
         }
 
+        public override void Load(S100Framework.DomainModel.FeatureAssociation featureAssociation) {
+            associationConnector = associationConnectorFeatures.Single(e => e.FeatureType.Equals(featureAssociation.AssociationConnectorTypeName));
+            theCollection?.Load(featureAssociation, "theCollection");
+            theComponent?.Load(featureAssociation, "theComponent");
+        }
+
+        public override string Serialize() {
+            var instance = new FeatureAssociation
+            {
+                Code = this.Code,
+                AssociationConnectorTypeName = associationConnector!.FeatureType,
+            };
+            theCollection?.Save(instance, "theCollection");
+            theComponent?.Save(instance, "theComponent");
+            return System.Text.Json.JsonSerializer.Serialize(instance);
+        }
+
         public override FeatureAssociationConnector[] associationConnectorFeatures => AidsToNavigationAssociationViewModel._associationConnectorFeatures;
 
         public class theCollectionBridgeRefIdViewModel : FeatureRefIdViewModel {
@@ -44558,6 +44576,23 @@ namespace S100Framework.WPF.ViewModel.S101
             }
         }
 
+        public override void Load(S100Framework.DomainModel.FeatureAssociation featureAssociation) {
+            associationConnector = associationConnectorFeatures.Single(e => e.FeatureType.Equals(featureAssociation.AssociationConnectorTypeName));
+            theCollection?.Load(featureAssociation, "theCollection");
+            theComponent?.Load(featureAssociation, "theComponent");
+        }
+
+        public override string Serialize() {
+            var instance = new FeatureAssociation
+            {
+                Code = this.Code,
+                AssociationConnectorTypeName = associationConnector!.FeatureType,
+            };
+            theCollection?.Save(instance, "theCollection");
+            theComponent?.Save(instance, "theComponent");
+            return System.Text.Json.JsonSerializer.Serialize(instance);
+        }
+
         public override FeatureAssociationConnector[] associationConnectorFeatures => ASLAggregationViewModel._associationConnectorFeatures;
 
         public class theCollectionArchipelagicSeaLaneAreaRefIdViewModel : FeatureRefIdViewModel {
@@ -44628,6 +44663,23 @@ namespace S100Framework.WPF.ViewModel.S101
                     };
                 }
             }
+        }
+
+        public override void Load(S100Framework.DomainModel.FeatureAssociation featureAssociation) {
+            associationConnector = associationConnectorFeatures.Single(e => e.FeatureType.Equals(featureAssociation.AssociationConnectorTypeName));
+            theCollection?.Load(featureAssociation, "theCollection");
+            theComponent?.Load(featureAssociation, "theComponent");
+        }
+
+        public override string Serialize() {
+            var instance = new FeatureAssociation
+            {
+                Code = this.Code,
+                AssociationConnectorTypeName = associationConnector!.FeatureType,
+            };
+            theCollection?.Save(instance, "theCollection");
+            theComponent?.Save(instance, "theComponent");
+            return System.Text.Json.JsonSerializer.Serialize(instance);
         }
 
         public override FeatureAssociationConnector[] associationConnectorFeatures => BridgeAggregationViewModel._associationConnectorFeatures;
@@ -44710,6 +44762,23 @@ namespace S100Framework.WPF.ViewModel.S101
             }
         }
 
+        public override void Load(S100Framework.DomainModel.FeatureAssociation featureAssociation) {
+            associationConnector = associationConnectorFeatures.Single(e => e.FeatureType.Equals(featureAssociation.AssociationConnectorTypeName));
+            theCollection?.Load(featureAssociation, "theCollection");
+            theComponent?.Load(featureAssociation, "theComponent");
+        }
+
+        public override string Serialize() {
+            var instance = new FeatureAssociation
+            {
+                Code = this.Code,
+                AssociationConnectorTypeName = associationConnector!.FeatureType,
+            };
+            theCollection?.Save(instance, "theCollection");
+            theComponent?.Save(instance, "theComponent");
+            return System.Text.Json.JsonSerializer.Serialize(instance);
+        }
+
         public override FeatureAssociationConnector[] associationConnectorFeatures => CautionAreaAssociationViewModel._associationConnectorFeatures;
 
         public class theCollectionArchipelagicSeaLaneRefIdViewModel : FeatureRefIdViewModel {
@@ -44780,6 +44849,23 @@ namespace S100Framework.WPF.ViewModel.S101
                     };
                 }
             }
+        }
+
+        public override void Load(S100Framework.DomainModel.FeatureAssociation featureAssociation) {
+            associationConnector = associationConnectorFeatures.Single(e => e.FeatureType.Equals(featureAssociation.AssociationConnectorTypeName));
+            theCollection?.Load(featureAssociation, "theCollection");
+            theComponent?.Load(featureAssociation, "theComponent");
+        }
+
+        public override string Serialize() {
+            var instance = new FeatureAssociation
+            {
+                Code = this.Code,
+                AssociationConnectorTypeName = associationConnector!.FeatureType,
+            };
+            theCollection?.Save(instance, "theCollection");
+            theComponent?.Save(instance, "theComponent");
+            return System.Text.Json.JsonSerializer.Serialize(instance);
         }
 
         public override FeatureAssociationConnector[] associationConnectorFeatures => DeepWaterRouteAggregationViewModel._associationConnectorFeatures;
@@ -44854,6 +44940,23 @@ namespace S100Framework.WPF.ViewModel.S101
             }
         }
 
+        public override void Load(S100Framework.DomainModel.FeatureAssociation featureAssociation) {
+            associationConnector = associationConnectorFeatures.Single(e => e.FeatureType.Equals(featureAssociation.AssociationConnectorTypeName));
+            theCollection?.Load(featureAssociation, "theCollection");
+            theComponent?.Load(featureAssociation, "theComponent");
+        }
+
+        public override string Serialize() {
+            var instance = new FeatureAssociation
+            {
+                Code = this.Code,
+                AssociationConnectorTypeName = associationConnector!.FeatureType,
+            };
+            theCollection?.Save(instance, "theCollection");
+            theComponent?.Save(instance, "theComponent");
+            return System.Text.Json.JsonSerializer.Serialize(instance);
+        }
+
         public override FeatureAssociationConnector[] associationConnectorFeatures => FairwayAggregationViewModel._associationConnectorFeatures;
 
         public class theCollectionFairwayRefIdViewModel : FeatureRefIdViewModel {
@@ -44920,6 +45023,23 @@ namespace S100Framework.WPF.ViewModel.S101
                     };
                 }
             }
+        }
+
+        public override void Load(S100Framework.DomainModel.FeatureAssociation featureAssociation) {
+            associationConnector = associationConnectorFeatures.Single(e => e.FeatureType.Equals(featureAssociation.AssociationConnectorTypeName));
+            thePrimaryFeature?.Load(featureAssociation, "thePrimaryFeature");
+            theAuxiliaryFeature?.Load(featureAssociation, "theAuxiliaryFeature");
+        }
+
+        public override string Serialize() {
+            var instance = new FeatureAssociation
+            {
+                Code = this.Code,
+                AssociationConnectorTypeName = associationConnector!.FeatureType,
+            };
+            thePrimaryFeature?.Save(instance, "thePrimaryFeature");
+            theAuxiliaryFeature?.Save(instance, "theAuxiliaryFeature");
+            return System.Text.Json.JsonSerializer.Serialize(instance);
         }
 
         public override FeatureAssociationConnector[] associationConnectorFeatures => FairwayAuxiliaryViewModel._associationConnectorFeatures;
@@ -45074,6 +45194,23 @@ namespace S100Framework.WPF.ViewModel.S101
             }
         }
 
+        public override void Load(S100Framework.DomainModel.FeatureAssociation featureAssociation) {
+            associationConnector = associationConnectorFeatures.Single(e => e.FeatureType.Equals(featureAssociation.AssociationConnectorTypeName));
+            theCollection?.Load(featureAssociation, "theCollection");
+            theComponent?.Load(featureAssociation, "theComponent");
+        }
+
+        public override string Serialize() {
+            var instance = new FeatureAssociation
+            {
+                Code = this.Code,
+                AssociationConnectorTypeName = associationConnector!.FeatureType,
+            };
+            theCollection?.Save(instance, "theCollection");
+            theComponent?.Save(instance, "theComponent");
+            return System.Text.Json.JsonSerializer.Serialize(instance);
+        }
+
         public override FeatureAssociationConnector[] associationConnectorFeatures => IslandAggregationViewModel._associationConnectorFeatures;
 
         public class theCollectionIslandGroupRefIdViewModel : FeatureRefIdViewModel {
@@ -45144,6 +45281,23 @@ namespace S100Framework.WPF.ViewModel.S101
                     };
                 }
             }
+        }
+
+        public override void Load(S100Framework.DomainModel.FeatureAssociation featureAssociation) {
+            associationConnector = associationConnectorFeatures.Single(e => e.FeatureType.Equals(featureAssociation.AssociationConnectorTypeName));
+            theCollection?.Load(featureAssociation, "theCollection");
+            theComponent?.Load(featureAssociation, "theComponent");
+        }
+
+        public override string Serialize() {
+            var instance = new FeatureAssociation
+            {
+                Code = this.Code,
+                AssociationConnectorTypeName = associationConnector!.FeatureType,
+            };
+            theCollection?.Save(instance, "theCollection");
+            theComponent?.Save(instance, "theComponent");
+            return System.Text.Json.JsonSerializer.Serialize(instance);
         }
 
         public override FeatureAssociationConnector[] associationConnectorFeatures => MooringTrotAggregationViewModel._associationConnectorFeatures;
@@ -45226,6 +45380,23 @@ namespace S100Framework.WPF.ViewModel.S101
             }
         }
 
+        public override void Load(S100Framework.DomainModel.FeatureAssociation featureAssociation) {
+            associationConnector = associationConnectorFeatures.Single(e => e.FeatureType.Equals(featureAssociation.AssociationConnectorTypeName));
+            theCollection?.Load(featureAssociation, "theCollection");
+            theComponent?.Load(featureAssociation, "theComponent");
+        }
+
+        public override string Serialize() {
+            var instance = new FeatureAssociation
+            {
+                Code = this.Code,
+                AssociationConnectorTypeName = associationConnector!.FeatureType,
+            };
+            theCollection?.Save(instance, "theCollection");
+            theComponent?.Save(instance, "theComponent");
+            return System.Text.Json.JsonSerializer.Serialize(instance);
+        }
+
         public override FeatureAssociationConnector[] associationConnectorFeatures => PilotageDistrictAssociationViewModel._associationConnectorFeatures;
 
         public class theCollectionPilotBoardingPlaceRefIdViewModel : FeatureRefIdViewModel {
@@ -45292,6 +45463,23 @@ namespace S100Framework.WPF.ViewModel.S101
                     };
                 }
             }
+        }
+
+        public override void Load(S100Framework.DomainModel.FeatureAssociation featureAssociation) {
+            associationConnector = associationConnectorFeatures.Single(e => e.FeatureType.Equals(featureAssociation.AssociationConnectorTypeName));
+            theCollection?.Load(featureAssociation, "theCollection");
+            theComponent?.Load(featureAssociation, "theComponent");
+        }
+
+        public override string Serialize() {
+            var instance = new FeatureAssociation
+            {
+                Code = this.Code,
+                AssociationConnectorTypeName = associationConnector!.FeatureType,
+            };
+            theCollection?.Save(instance, "theCollection");
+            theComponent?.Save(instance, "theComponent");
+            return System.Text.Json.JsonSerializer.Serialize(instance);
         }
 
         public override FeatureAssociationConnector[] associationConnectorFeatures => RangeSystemAggregationViewModel._associationConnectorFeatures;
@@ -45434,6 +45622,23 @@ namespace S100Framework.WPF.ViewModel.S101
             }
         }
 
+        public override void Load(S100Framework.DomainModel.FeatureAssociation featureAssociation) {
+            associationConnector = associationConnectorFeatures.Single(e => e.FeatureType.Equals(featureAssociation.AssociationConnectorTypeName));
+            theRoofedStructure?.Load(featureAssociation, "theRoofedStructure");
+            theSupport?.Load(featureAssociation, "theSupport");
+        }
+
+        public override string Serialize() {
+            var instance = new FeatureAssociation
+            {
+                Code = this.Code,
+                AssociationConnectorTypeName = associationConnector!.FeatureType,
+            };
+            theRoofedStructure?.Save(instance, "theRoofedStructure");
+            theSupport?.Save(instance, "theSupport");
+            return System.Text.Json.JsonSerializer.Serialize(instance);
+        }
+
         public override FeatureAssociationConnector[] associationConnectorFeatures => RoofedStructureAggregationViewModel._associationConnectorFeatures;
 
         public class theRoofedStructurePylonBridgeSupportRefIdViewModel : FeatureRefIdViewModel {
@@ -45500,6 +45705,23 @@ namespace S100Framework.WPF.ViewModel.S101
                     };
                 }
             }
+        }
+
+        public override void Load(S100Framework.DomainModel.FeatureAssociation featureAssociation) {
+            associationConnector = associationConnectorFeatures.Single(e => e.FeatureType.Equals(featureAssociation.AssociationConnectorTypeName));
+            theStructure?.Load(featureAssociation, "theStructure");
+            theEquipment?.Load(featureAssociation, "theEquipment");
+        }
+
+        public override string Serialize() {
+            var instance = new FeatureAssociation
+            {
+                Code = this.Code,
+                AssociationConnectorTypeName = associationConnector!.FeatureType,
+            };
+            theStructure?.Save(instance, "theStructure");
+            theEquipment?.Save(instance, "theEquipment");
+            return System.Text.Json.JsonSerializer.Serialize(instance);
         }
 
         public override FeatureAssociationConnector[] associationConnectorFeatures => StructureEquipmentViewModel._associationConnectorFeatures;
@@ -45784,6 +46006,23 @@ namespace S100Framework.WPF.ViewModel.S101
                     };
                 }
             }
+        }
+
+        public override void Load(S100Framework.DomainModel.FeatureAssociation featureAssociation) {
+            associationConnector = associationConnectorFeatures.Single(e => e.FeatureType.Equals(featureAssociation.AssociationConnectorTypeName));
+            theCartographicText?.Load(featureAssociation, "theCartographicText");
+            thePositionProvider?.Load(featureAssociation, "thePositionProvider");
+        }
+
+        public override string Serialize() {
+            var instance = new FeatureAssociation
+            {
+                Code = this.Code,
+                AssociationConnectorTypeName = associationConnector!.FeatureType,
+            };
+            theCartographicText?.Save(instance, "theCartographicText");
+            thePositionProvider?.Save(instance, "thePositionProvider");
+            return System.Text.Json.JsonSerializer.Serialize(instance);
         }
 
         public override FeatureAssociationConnector[] associationConnectorFeatures => TextAssociationViewModel._associationConnectorFeatures;
@@ -46474,6 +46713,23 @@ namespace S100Framework.WPF.ViewModel.S101
             }
         }
 
+        public override void Load(S100Framework.DomainModel.FeatureAssociation featureAssociation) {
+            associationConnector = associationConnectorFeatures.Single(e => e.FeatureType.Equals(featureAssociation.AssociationConnectorTypeName));
+            theCollection?.Load(featureAssociation, "theCollection");
+            theComponent?.Load(featureAssociation, "theComponent");
+        }
+
+        public override string Serialize() {
+            var instance = new FeatureAssociation
+            {
+                Code = this.Code,
+                AssociationConnectorTypeName = associationConnector!.FeatureType,
+            };
+            theCollection?.Save(instance, "theCollection");
+            theComponent?.Save(instance, "theComponent");
+            return System.Text.Json.JsonSerializer.Serialize(instance);
+        }
+
         public override FeatureAssociationConnector[] associationConnectorFeatures => TrafficSeparationSchemeAggregationViewModel._associationConnectorFeatures;
 
         public class theCollectionDeepWaterRouteRefIdViewModel : FeatureRefIdViewModel {
@@ -46594,6 +46850,23 @@ namespace S100Framework.WPF.ViewModel.S101
             }
         }
 
+        public override void Load(S100Framework.DomainModel.FeatureAssociation featureAssociation) {
+            associationConnector = associationConnectorFeatures.Single(e => e.FeatureType.Equals(featureAssociation.AssociationConnectorTypeName));
+            theCollection?.Load(featureAssociation, "theCollection");
+            theComponent?.Load(featureAssociation, "theComponent");
+        }
+
+        public override string Serialize() {
+            var instance = new FeatureAssociation
+            {
+                Code = this.Code,
+                AssociationConnectorTypeName = associationConnector!.FeatureType,
+            };
+            theCollection?.Save(instance, "theCollection");
+            theComponent?.Save(instance, "theComponent");
+            return System.Text.Json.JsonSerializer.Serialize(instance);
+        }
+
         public override FeatureAssociationConnector[] associationConnectorFeatures => TwoWayRouteAggregationViewModel._associationConnectorFeatures;
 
         public class theCollectionTwoWayRoutePartRefIdViewModel : FeatureRefIdViewModel {
@@ -46662,6 +46935,23 @@ namespace S100Framework.WPF.ViewModel.S101
             }
         }
 
+        public override void Load(S100Framework.DomainModel.FeatureAssociation featureAssociation) {
+            associationConnector = associationConnectorFeatures.Single(e => e.FeatureType.Equals(featureAssociation.AssociationConnectorTypeName));
+            theCollection?.Load(featureAssociation, "theCollection");
+            theComponent?.Load(featureAssociation, "theComponent");
+        }
+
+        public override string Serialize() {
+            var instance = new FeatureAssociation
+            {
+                Code = this.Code,
+                AssociationConnectorTypeName = associationConnector!.FeatureType,
+            };
+            theCollection?.Save(instance, "theCollection");
+            theComponent?.Save(instance, "theComponent");
+            return System.Text.Json.JsonSerializer.Serialize(instance);
+        }
+
         public override FeatureAssociationConnector[] associationConnectorFeatures => UpdateAggregationViewModel._associationConnectorFeatures;
 
         public class theCollectionUpdateInformationRefIdViewModel : FeatureRefIdViewModel {
@@ -46728,6 +47018,23 @@ namespace S100Framework.WPF.ViewModel.S101
                     };
                 }
             }
+        }
+
+        public override void Load(S100Framework.DomainModel.FeatureAssociation featureAssociation) {
+            associationConnector = associationConnectorFeatures.Single(e => e.FeatureType.Equals(featureAssociation.AssociationConnectorTypeName));
+            theUpdate?.Load(featureAssociation, "theUpdate");
+            theUpdatedObject?.Load(featureAssociation, "theUpdatedObject");
+        }
+
+        public override string Serialize() {
+            var instance = new FeatureAssociation
+            {
+                Code = this.Code,
+                AssociationConnectorTypeName = associationConnector!.FeatureType,
+            };
+            theUpdate?.Save(instance, "theUpdate");
+            theUpdatedObject?.Save(instance, "theUpdatedObject");
+            return System.Text.Json.JsonSerializer.Serialize(instance);
         }
 
         public override FeatureAssociationConnector[] associationConnectorFeatures => UpdatedInformationViewModel._associationConnectorFeatures;
@@ -47517,6 +47824,21 @@ namespace S100Framework.WPF.ViewModel.S101
             }
         }
 
+        public override void Load(S100Framework.DomainModel.InformationAssociation informationAssociation) {
+            associationConnector = associationConnectorInformations.Single(e => e.InformationType.Equals(informationAssociation.AssociationConnectorTypeName));
+            theInformation?.Load(informationAssociation, "theInformation");
+        }
+
+        public override string Serialize() {
+            var instance = new InformationAssociation
+            {
+                Code = this.Code,
+                AssociationConnectorTypeName = associationConnector!.InformationType,
+            };
+            theInformation?.Save(instance, "theInformation");
+            return System.Text.Json.JsonSerializer.Serialize(instance);
+        }
+
         public override InformationAssociationConnector[] associationConnectorInformations => AdditionalInformationViewModel._associationConnectorInformations;
 
         public class theInformationAdministrationAreaRefIdViewModel : InformationRefIdViewModel {
@@ -48268,6 +48590,21 @@ namespace S100Framework.WPF.ViewModel.S101
             }
         }
 
+        public override void Load(S100Framework.DomainModel.InformationAssociation informationAssociation) {
+            associationConnector = associationConnectorInformations.Single(e => e.InformationType.Equals(informationAssociation.AssociationConnectorTypeName));
+            theQualityInformation?.Load(informationAssociation, "theQualityInformation");
+        }
+
+        public override string Serialize() {
+            var instance = new InformationAssociation
+            {
+                Code = this.Code,
+                AssociationConnectorTypeName = associationConnector!.InformationType,
+            };
+            theQualityInformation?.Save(instance, "theQualityInformation");
+            return System.Text.Json.JsonSerializer.Serialize(instance);
+        }
+
         public override InformationAssociationConnector[] associationConnectorInformations => QualityOfBathymetricDataCompositionViewModel._associationConnectorInformations;
 
         public class theQualityInformationQualityOfBathymetricDataRefIdViewModel : InformationRefIdViewModel {
@@ -48305,6 +48642,21 @@ namespace S100Framework.WPF.ViewModel.S101
                     theQualityInformation = value.CreateLocalInformationBinding();
                 }
             }
+        }
+
+        public override void Load(S100Framework.DomainModel.InformationAssociation informationAssociation) {
+            associationConnector = associationConnectorInformations.Single(e => e.InformationType.Equals(informationAssociation.AssociationConnectorTypeName));
+            theQualityInformation?.Load(informationAssociation, "theQualityInformation");
+        }
+
+        public override string Serialize() {
+            var instance = new InformationAssociation
+            {
+                Code = this.Code,
+                AssociationConnectorTypeName = associationConnector!.InformationType,
+            };
+            theQualityInformation?.Save(instance, "theQualityInformation");
+            return System.Text.Json.JsonSerializer.Serialize(instance);
         }
 
         public override InformationAssociationConnector[] associationConnectorInformations => SpatialAssociationViewModel._associationConnectorInformations;
