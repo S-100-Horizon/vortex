@@ -1,11 +1,9 @@
 namespace S100Framework.DomainModel
 {
-
     [System.AttributeUsage(System.AttributeTargets.Property, AllowMultiple = false)]
     public class CodeListAttribute : System.Attribute
     {
         private string _propertyName;
-
         public string PropertyName => _propertyName;
 
         public CodeListAttribute(string propertyName) {
@@ -13,12 +11,10 @@ namespace S100Framework.DomainModel
         }
     }
 
-
     [System.AttributeUsage(System.AttributeTargets.Property, AllowMultiple = true)]
     public class RoleAttribute : System.Attribute
     {
         private string _roleName;
-
         public string RoleName => _roleName;
 
         public RoleAttribute(string roleName) {
@@ -26,31 +22,50 @@ namespace S100Framework.DomainModel
         }
     }
 
-
     [System.AttributeUsage(System.AttributeTargets.Property, AllowMultiple = false)]
     public class RequiredAttribute : System.Attribute
     {
     }
 
-
     [System.SerializableAttribute()]
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
     public abstract class Node
     {
         public virtual string Code => string.Empty;
     }
 
-
     [System.SerializableAttribute()]
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
     public abstract class InformationNode : Node
     {
     }
 
+    [System.SerializableAttribute()]
+    public abstract class FeatureNode : Node
+    {
+    }
 
     [System.SerializableAttribute()]
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-    public abstract class FeatureNode : Node
+    public class RefId
+    {
+        public required string? Value { get; set; }
+        public required string? Type { get; set; }
+        public required string Role { get; set; }
+    }
+
+    [System.SerializableAttribute()]
+    public abstract class Association
+    {
+        public required string Code { get; set; }
+        public required string AssociationConnectorTypeName { get; set; }
+        public RefId[] RefIds { get; set; } = new RefId[0];
+    }
+
+    [System.SerializableAttribute()]
+    public class InformationAssociation : Association
+    {
+    }
+
+    [System.SerializableAttribute()]
+    public class FeatureAssociation : Association
     {
     }
 

@@ -9,7 +9,19 @@
         d:DataContext="{x:Static local:MainWindow.MockValue}"
         Title="MainWindow" Height="450" Width="800" Loaded="Window_Loaded">
     <Window.Resources>
-        <ResourceDictionary>
+        <local:MyConverter x:Key="MyConverter"/>
+        <!--<DataTemplate x:Key="RefIdEditingTemplate">
+            <TextBox Background="Yellow">
+                <TextBox.Text>
+                    <MultiBinding Converter="{StaticResource MyConverter}">
+                        <Binding Path="Value" />
+                        --><!--<Binding Path="SelectedObject" Source="{x:Reference _propertyGrid}" />--><!--
+                    </MultiBinding>
+                </TextBox.Text>
+            </TextBox>
+        </DataTemplate>-->
+        
+        <!--<ResourceDictionary>
             <DataTemplate x:Key="MultiSelectComboBox.SelectedItems.ItemTemplate" DataType="S100Framework.DomainModel.S124.navwarnTypeDetails">
                 <StackPanel Orientation="Horizontal">
                     <TextBlock Text="{Binding Path=label}"/>
@@ -19,7 +31,7 @@
             <DataTemplate x:Key="MultiSelectComboBox.Dropdown.ListBox.ItemTemplate" DataType="S100Framework.DomainModel.S124.navwarnTypeDetails">
                 <TextBlock Text="{Binding Path=label}"/>
             </DataTemplate>
-        </ResourceDictionary>
+        </ResourceDictionary>-->        
     </Window.Resources>
     <Grid>
         <Grid.RowDefinitions>
@@ -27,19 +39,40 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <xctk:CheckComboBox Grid.Row="0" x:Name="_checkListBox"
+        <StackPanel Orientation="Horizontal" Grid.Row="0" >
+            <xctk:CheckComboBox x:Name="_checkListBox"
                             IsDropDownOpen="False"
                             IsEditable="False"
                             IsSelectAllActive="True"
                             DisplayMemberPath="label"
                            ItemsSource="{Binding Items}">
-        </xctk:CheckComboBox>
+            </xctk:CheckComboBox>
+            <Button x:Name="SAVE" MinWidth="100" Padding="10 0 10 0" Click="SAVE_Click">Save</Button>
+        </StackPanel>
 
         <xctk:PropertyGrid Grid.Row="1" x:Name="_propertyGrid" 
                SelectedObject="{Binding SelectedProperty}"
                AutoGenerateProperties="True"                           
                UpdateTextBoxSourceOnEnterKey="True"
-               ShowAdvancedOptions="True" PreparePropertyItem="_propertyGrid_PreparePropertyItem">
+               ShowAdvancedOptions="True" PreparePropertyItem="_propertyGrid_PreparePropertyItem" SelectedObjectChanged="_propertyGrid_SelectedObjectChanged">
+
+            <!--<xctk:PropertyGrid.EditorDefinitions>
+                <xctk:EditorTemplateDefinition TargetProperties="RefId">
+                    <xctk:EditorTemplateDefinition.EditingTemplate>
+                        <DataTemplate>
+                            <TextBox Background="Yellow">
+                                <TextBox.Text>
+                                    <MultiBinding Converter="{StaticResource MyConverter}">
+                                        <Binding Path="Value" />
+                                        <Binding Path="SelectedObject" Source="{x:Reference _propertyGrid}" />
+                                    </MultiBinding>
+                                </TextBox.Text>
+                            </TextBox>
+                        </DataTemplate>
+                    </xctk:EditorTemplateDefinition.EditingTemplate>
+                </xctk:EditorTemplateDefinition>
+            </xctk:PropertyGrid.EditorDefinitions>-->
+            
             <!--<xctk:PropertyGrid.EditorDefinitions>
                 <xctk:EditorTemplateDefinition TargetProperties="ReferenceId">
                     <xctk:EditorTemplateDefinition.EditingTemplate>
@@ -49,7 +82,7 @@
                     </xctk:EditorTemplateDefinition.EditingTemplate>
                 </xctk:EditorTemplateDefinition>
             </xctk:PropertyGrid.EditorDefinitions>-->
-            
+
             <!--<xctk:PropertyGrid.EditorDefinitions>
                 <xctk:EditorTemplateDefinition TargetProperties="navwarnTypeDetails">
                     <xctk:EditorTemplateDefinition.EditingTemplate>

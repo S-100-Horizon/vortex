@@ -70,7 +70,7 @@ namespace S100Framework.Applications
                                         };
                             }
                             if (objnam != default) {
-                                
+
                                 if (!string.IsNullOrEmpty(objnam.Trim())) {
                                     sounding.featureName.Add(new featureName {
                                         language = "eng",
@@ -80,7 +80,7 @@ namespace S100Framework.Applications
                                 }
                             }
                             if (nobjnm != default) {
-                                
+
                                 if (!string.IsNullOrEmpty(nobjnm.Trim())) {
                                     sounding.featureName.Add(new featureName {
                                         language = "dk",
