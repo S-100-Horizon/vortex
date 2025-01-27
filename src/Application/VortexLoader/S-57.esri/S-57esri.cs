@@ -6,7 +6,6 @@ using ArcGIS.Core.Geometry;
 using System.ComponentModel;
 namespace VortexLoader.S57.esri
 {
-
     internal class PLTS_SpatialAttributeL
     {
 
@@ -8228,8 +8227,10 @@ namespace VortexLoader.S57.esri
             if (DBNull.Value != feature["NIS_EDITOR_COMMENT"] && feature["NIS_EDITOR_COMMENT"] is not null) {
                 NIS_EDITOR_COMMENT = Convert.ToString(feature["NIS_EDITOR_COMMENT"]);
             }
-            if (DBNull.Value != feature["VALIDATIONSTATUS"] && feature["VALIDATIONSTATUS"] is not null) {
-                VALIDATIONSTATUS = Convert.ToInt32(feature["VALIDATIONSTATUS"]);
+            if (feature.FindField("VALIDATIONSTATUS") > -1) { // NOAA Exception
+                if (DBNull.Value != feature["VALIDATIONSTATUS"] && feature["VALIDATIONSTATUS"] is not null) {
+                    VALIDATIONSTATUS = Convert.ToInt32(feature["VALIDATIONSTATUS"]);
+                }
             }
         }
     }

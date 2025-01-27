@@ -40,7 +40,7 @@ namespace TestNisImporter
 
             StringBuilder csSubtypes = new StringBuilder();
 
-            var featureClass = source.OpenDataset<FeatureClass>("PortsAndServicesP");
+            var featureClass = source.OpenDataset<FeatureClass>("CoastlineL");
 
             var subtypes = featureClass.GetDefinition().GetSubtypes();
 
@@ -164,8 +164,6 @@ namespace TestNisImporter
                             ctor.AppendLine($"\t\tpublic {dataset.GetName()} (Row row) {{");
                     }
 
-
-
                     var fieldInfo = (Type: "Int32", Conversion: "Convert.ToInt32", DefaultValue: "default", Alias: string.Empty);
 
                     foreach (var field in datasetfields) {
@@ -211,7 +209,6 @@ namespace TestNisImporter
                             if (fieldInfo.Type.ToLower().Contains("guid")) {
                                 fieldValue = $@"Guid.TryParse(Convert.ToString(row[""{field.Name.ToUpper()}""]), out {field.Name.ToUpper()})";
                             }
-
                         }
 
                         fields.AppendLine($"");
@@ -221,8 +218,15 @@ namespace TestNisImporter
                         fields.AppendLine($"\t\t[Description(\"{fieldInfo.Alias}\")]");
                         fields.AppendLine($"\t\t{fieldInfo.Type} {field.Name.ToUpper()} = {fieldInfo.DefaultValue};");
 
+
+
                         if (dataset is FeatureClass) {
-                            ctor.AppendLine($"\t\t\tif (DBNull.Value != feature[\"{field.Name.ToUpper()}\"] && feature[\"{field.Name.ToUpper()}\"] is not null) {{");
+                            if (field.Name.ToUpper() == "VALIDATIONSTATUS") {
+                                ctor.AppendLine($"\t\t\tif (feature.FindField(\"VALIDATIONSTATUS\") > -1) {{ // NOAA Exception");
+                                    ctor.AppendLine($"\t\t\t\t\tif (DBNull.Value != feature[\"{field.Name.ToUpper()}\"] && feature[\"{field.Name.ToUpper()}\"] is not null) {{");
+                            } else {
+                                ctor.AppendLine($"\t\t\tif (DBNull.Value != feature[\"{field.Name.ToUpper()}\"] && feature[\"{field.Name.ToUpper()}\"] is not null) {{");
+                            }
                         }
                         else if (dataset is Table) {
                             ctor.AppendLine($"\t\t\tif (DBNull.Value != row[\"{field.Name.ToUpper()}\"] && row[\"{field.Name.ToUpper()}\"] is not null) {{");
@@ -232,6 +236,9 @@ namespace TestNisImporter
                             ctor.AppendLine($"\t\t\t\t{fieldValue};");
                         } else {
                             ctor.AppendLine($"\t\t\t\t{field.Name.ToUpper()} = {fieldValue};");
+                            if (field.Name.ToUpper() == "VALIDATIONSTATUS") {
+                                ctor.AppendLine($"\t\t\t\t}}");
+                            }
                         }
                         ctor.AppendLine($"\t\t\t}}");
                     }
