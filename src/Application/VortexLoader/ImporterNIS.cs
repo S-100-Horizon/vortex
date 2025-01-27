@@ -63,14 +63,21 @@ namespace S100Framework.Applications
                 informationtype.DeleteRows(query);
             }
 
+            //  AidsToNavigation
+            S57_AidsToNavigationP(source, destination, filter);
+
             //  PortsAndServicesP
             S57_PortsAndServicesP(source, destination, filter);
 
             //  DangersA
             S57_DangersA(source, destination, filter);
 
-            //  AidsToNavigation
-            S57_AidsToNavigationP(source, destination, filter);
+            //  DangersP
+            S57_DangersP(source, destination, filter);
+
+            //  DangersL
+            S57_DangersL(source, destination, filter);
+
 
             // RegulatedAreasAndLimitsL
             S57_RegulatedAreasAndLimitsL(source, destination, filter);
@@ -99,32 +106,13 @@ namespace S100Framework.Applications
             //  SoundingsP
             S57_SoundingsP(source, destination, filter);
 
-            //  DangersP
-            S57_DangersP(source, destination, filter);
 
 
             return true;
         }
 
 
-        private static Dictionary<Guid, IList<PLTS_Frel>> LoadPltsFrels(Geodatabase source) {
-            var result = new Dictionary<Guid, IList<PLTS_Frel>>();
-            var aidstonavigation = source.OpenDataset<Table>("PLTS_Frel");
-            var cursor = aidstonavigation.Search(null, true);
-            Guid uid;
 
-            while (cursor.MoveNext()) {
-                var plts_frel = new PLTS_Frel(cursor.Current);
-                Guid.TryParse(Convert.ToString(plts_frel.SRC_UID), out uid);
-                if (!result.ContainsKey(uid)) {
-                    result[uid] = new List<PLTS_Frel>() { plts_frel };
-                }
-                else {
-                    result[uid].Add(plts_frel);
-                }
-            }
-            return result;
-        }
 
 
         public static IEnumerable<T> SelectIn<T>(Geometry geometry, FeatureClass in_featureclass) where T : class {
@@ -151,6 +139,39 @@ namespace S100Framework.Applications
 
         }
 
+        private static void AddColour(List<colour> colours, Feature feature) {
+            var color = Convert.ToString(feature["COLOUR"])?.Trim();
+
+            if (color != default) {
+                if (!string.IsNullOrEmpty(color)) {
+                    foreach (var c in color.Split(',', StringSplitOptions.RemoveEmptyEntries)) {
+                        colour? e = c.ToLowerInvariant() switch {
+                            "1" => colour.White,
+                            "2" => colour.Black,
+                            "3" => colour.Red,
+                            "4" => colour.Green,
+                            "5" => colour.Blue,
+                            "6" => colour.Yellow,
+                            "7" => colour.Grey,
+                            "8" => colour.Brown,
+                            "9" => colour.Grey,
+                            "10" => colour.Violet,
+                            "11" => colour.Orange,
+                            "12" => colour.Magenta,
+                            "13" => colour.Pink,
+                            "-32767" => (colour)(-32767),
+                            _ => throw new IndexOutOfRangeException(),
+                        };
+                        if (e.HasValue) {
+                            colours.Add(e.Value);
+                        }
+                    }
+                }
+            }
+        }
+
+
+
         private static void AddStatus(status? status, Feature current) {
             if (DBNull.Value != current["STATUS"]) {
                 var featureStatus = Convert.ToString(current["OBJNAM"])?.Trim();
@@ -165,7 +186,8 @@ namespace S100Framework.Applications
         }
         private static void AddStatus(List<status> status, Feature current) {
             if (DBNull.Value != current["STATUS"]) {
-                var featureStatus = Convert.ToString(current["OBJNAM"])?.Trim();
+                var featureStatus = Convert.ToString(current["STATUS"])?.Trim();
+
                 if (!string.IsNullOrEmpty(featureStatus)) {
                     /* See S-101 DCEG clause 5.4 for the listing of allowable values. Values populated in S-57 for this attribute
                        other than the allowable values will not be converted across to S-101. Data Producers are advised to
@@ -173,9 +195,8 @@ namespace S100Framework.Applications
 
                     //TODO: STATUS
                 }
+
             }
-
-
         }
 
         private static void AddFeatureName(IList<featureName> featureName, Feature current) {

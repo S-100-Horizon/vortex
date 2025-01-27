@@ -44,24 +44,27 @@ namespace S100Framework.Applications
                 switch (subtype) {
                     case 1: {     // DEPARE
 
-                            var deptharea = new DepthArea {
+                            var instance = new DepthArea {
                                 depthRangeMinimumValue = drval1,
                                 depthRangeMaximumValue = drval2.GetValueOrDefault(),
                             };
 
+
+                            AddInformation(instance.information, feature);
+
                             buffer["ps"] = "S-101";
-                            buffer["code"] = deptharea.GetType().Name;
-                            buffer["json"] = System.Text.Json.JsonSerializer.Serialize(deptharea);
+                            buffer["code"] = instance.GetType().Name;
+                            buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance);
                             buffer["shape"] = current.SHAPE;
                             insert.Insert(buffer);
-                            Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(deptharea));
+                            Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
                             convertedCount++;
 
                         }
                         break;
 
                     case 5: {     // DRGARE
-                            var dredgedarea = new DredgedArea {
+                            var instance = new DredgedArea {
                                 depthRangeMinimumValue = drval1,
                                 depthRangeMaximumValue = drval2,
                                 dredgedDate = null,
@@ -70,8 +73,10 @@ namespace S100Framework.Applications
                             };
 
                             if (!string.IsNullOrEmpty(sordat)) {
+                                //System.Diagnostics.Debugger.Break();    //  Dredged Date
 
-                                System.Diagnostics.Debugger.Break();    //  Dredged Date
+
+
                             }
 
                             if (!string.IsNullOrEmpty(restrn)) {
@@ -100,19 +105,22 @@ namespace S100Framework.Applications
                                         _ => throw new IndexOutOfRangeException(),
                                     };
                                     if (e.HasValue) {
-                                        dredgedarea.restriction.Add(e.Value);
+                                        instance.restriction.Add(e.Value);
                                     }
                                 }
                             }
 
-                            if (!string.IsNullOrEmpty(quasou)) {
-                                
-                                dredgedarea.qualityOfVerticalMeasurement = quasou.ToLowerInvariant() switch {
-                                    "1" => qualityOfVerticalMeasurement.DepthKnown,
-                                    "2" => qualityOfVerticalMeasurement.DepthOrLeastDepthUnknown,
-                                    _ => throw new IndexOutOfRangeException(),
-                                };
-                            }
+                            // The S-57 attribute QUASOU for DEPARE will not be converted. It is considered that this attribute is
+                            // not relevant for Depth Area in S - 101.
+                            
+                            //if (!string.IsNullOrEmpty(quasou)) {
+
+                                //    instance.qualityOfVerticalMeasurement = quasou.ToLowerInvariant() switch {
+                                //        "1" => qualityOfVerticalMeasurement.DepthKnown,
+                                //        "2" => qualityOfVerticalMeasurement.DepthOrLeastDepthUnknown,
+                                //        _ => throw new IndexOutOfRangeException(),
+                                //    };
+                                //}
 
                             if (!string.IsNullOrEmpty(tecsou)) {
                                 foreach (var c in tecsou.Split(',', StringSplitOptions.RemoveEmptyEntries)) {
@@ -128,7 +136,7 @@ namespace S100Framework.Applications
                                         _ => throw new IndexOutOfRangeException(),
                                     };
                                     if (e.HasValue) {
-                                        dredgedarea.techniqueOfVerticalMeasurement.Add(e.Value);
+                                        instance.techniqueOfVerticalMeasurement.Add(e.Value);
                                     }
                                 }
                             }
@@ -137,21 +145,21 @@ namespace S100Framework.Applications
 
                             //TODO: 	maximumPermittedDraught
 
-                            AddFeatureName(dredgedarea.featureName, feature);
-                            AddInformation(dredgedarea.information, feature);
+                            AddFeatureName(instance.featureName, feature);
+                            AddInformation(instance.information, feature);
 
                             buffer["ps"] = "S-101";
-                            buffer["code"] = dredgedarea.GetType().Name;
-                            buffer["json"] = System.Text.Json.JsonSerializer.Serialize(dredgedarea);
+                            buffer["code"] = instance.GetType().Name;
+                            buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance);
                             buffer["shape"] = current.SHAPE;
                             insert.Insert(buffer);
-                            Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(dredgedarea));
+                            Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
                             convertedCount++;
                         }
                         break;
 
                     case 10: {    //SWPARE
-                            var sweptarea = new SweptArea {
+                            var instance = new SweptArea {
                                 depthRangeMinimumValue = drval1,
                                 scaleMinimum = null,
                                 sweptDate = null,
@@ -160,29 +168,29 @@ namespace S100Framework.Applications
                                 System.Diagnostics.Debugger.Break();    //  Swept Date
                             }
 
-                            AddInformation(sweptarea.information, feature);
+                            AddInformation(instance.information, feature);
 
                             buffer["ps"] = "S-101";
-                            buffer["code"] = sweptarea.GetType().Name;
-                            buffer["json"] = System.Text.Json.JsonSerializer.Serialize(sweptarea);
+                            buffer["code"] = instance.GetType().Name;
+                            buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance);
                             buffer["shape"] = current.SHAPE;
                             insert.Insert(buffer);
-                            Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(sweptarea));
+                            Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
                             convertedCount++;
                         }
                         break;
 
                     case 15: {    // UNSARE
-                            var unsurveyedarea = new UnsurveyedArea {
+                            var instance = new UnsurveyedArea {
                             };
-                            AddInformation(unsurveyedarea.information, feature);
+                            AddInformation(instance.information, feature);
 
                             buffer["ps"] = "S-101";
-                            buffer["code"] = unsurveyedarea.GetType().Name;
-                            buffer["json"] = System.Text.Json.JsonSerializer.Serialize(unsurveyedarea);
+                            buffer["code"] = instance.GetType().Name;
+                            buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance);
                             buffer["shape"] = current.SHAPE;
                             insert.Insert(buffer);
-                            Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(unsurveyedarea));
+                            Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
                             convertedCount++;
 
 

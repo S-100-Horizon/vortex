@@ -39,6 +39,7 @@ namespace S100Framework.Applications
                 var plts_comp_scale = current.PLTS_COMP_SCALE ?? default;
                 var longname = current.LNAM ?? Strings.UNKNOWN;
                 var status = current.STATUS ?? default;
+                
 
 
                 // The attribute default clearance depth must be populated with a value, which must not be an empty(null)
@@ -256,7 +257,7 @@ namespace S100Framework.Applications
                                 convertedCount++;
                             }
 
-                            // TIEUPWALL
+                            // SHORELINECONSTRUCTION
                             if (catmor == 4) {
                                 var instance = new ShorelineConstruction();
 
@@ -298,7 +299,7 @@ namespace S100Framework.Applications
                                 convertedCount++;
                             }
 
-                            // PILE
+                            // CABLESUBMARINE
                             if (catmor == 6) {
                                 var instance = new CableSubmarine();
 

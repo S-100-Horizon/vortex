@@ -65,15 +65,7 @@ namespace S100Framework.Applications
                             if (plts_comp_scale != default) {
                                 instance.scaleMinimum = plts_comp_scale;
                             }
-                            if (status != default) {
-                                if (!string.IsNullOrEmpty(status)) {
-                                    /* See S-101 DCEG clause 5.4 for the listing of allowable values. Values populated in S-57 for this attribute
-                                       other than the allowable values will not be converted across to S-101. Data Producers are advised to
-                                       check any populated values for STATUS on LNDARE and amend appropriately. */
 
-                                    //TODO: STATUS
-                                }
-                            }
                             AddFeatureName(instance.featureName, feature);
                             AddInformation(instance.information, feature);
 
@@ -91,18 +83,11 @@ namespace S100Framework.Applications
                             var instance = new LandElevation {
                                 scaleMinimum = null,
                             };
+
                             if (plts_comp_scale != default) {
                                 instance.scaleMinimum = plts_comp_scale;
                             }
-                            if (status != default) {
-                                if (!string.IsNullOrEmpty(status)) {
-                                    /* See S-101 DCEG clause 5.4 for the listing of allowable values. Values populated in S-57 for this attribute
-                                       other than the allowable values will not be converted across to S-101. Data Producers are advised to
-                                       check any populated values for STATUS on LNDARE and amend appropriately. */
 
-                                    //TODO: STATUS
-                                }
-                            }
                             AddFeatureName(instance.featureName, feature);
                             AddInformation(instance.information, feature);
 
@@ -123,15 +108,7 @@ namespace S100Framework.Applications
                             if (plts_comp_scale != default) {
                                 instance.scaleMinimum = plts_comp_scale;
                             }
-                            if (status != default) {
-                                if (!string.IsNullOrEmpty(status)) {
-                                    /* See S-101 DCEG clause 5.4 for the listing of allowable values. Values populated in S-57 for this attribute
-                                       other than the allowable values will not be converted across to S-101. Data Producers are advised to
-                                       check any populated values for STATUS on LNDARE and amend appropriately. */
 
-                                    //TODO: STATUS
-                                }
-                            }
                             AddFeatureName(instance.featureName, feature);
                             AddInformation(instance.information, feature);
 
@@ -152,15 +129,7 @@ namespace S100Framework.Applications
                             if (plts_comp_scale != default) {
                                 instance.scaleMinimum = plts_comp_scale;
                             }
-                            if (status != default) {
-                                if (!string.IsNullOrEmpty(status)) {
-                                    /* See S-101 DCEG clause 5.4 for the listing of allowable values. Values populated in S-57 for this attribute
-                                       other than the allowable values will not be converted across to S-101. Data Producers are advised to
-                                       check any populated values for STATUS on LNDARE and amend appropriately. */
 
-                                    //TODO: STATUS
-                                }
-                            }
                             AddFeatureName(instance.featureName, feature);
                             AddInformation(instance.information, feature);
 
@@ -181,15 +150,7 @@ namespace S100Framework.Applications
                             if (plts_comp_scale != default) {
                                 instance.scaleMinimum = plts_comp_scale;
                             }
-                            if (status != default) {
-                                if (!string.IsNullOrEmpty(status)) {
-                                    /* See S-101 DCEG clause 5.4 for the listing of allowable values. Values populated in S-57 for this attribute
-                                       other than the allowable values will not be converted across to S-101. Data Producers are advised to
-                                       check any populated values for STATUS on LNDARE and amend appropriately. */
-
-                                    //TODO: STATUS
-                                }
-                            }
+                            
                             AddFeatureName(instance.featureName, feature);
                             AddInformation(instance.information, feature);
 
@@ -210,15 +171,7 @@ namespace S100Framework.Applications
                             if (plts_comp_scale != default) {
                                 instance.scaleMinimum = plts_comp_scale;
                             }
-                            if (status != default) {
-                                if (!string.IsNullOrEmpty(status)) {
-                                    /* See S-101 DCEG clause 5.4 for the listing of allowable values. Values populated in S-57 for this attribute
-                                       other than the allowable values will not be converted across to S-101. Data Producers are advised to
-                                       check any populated values for STATUS on LNDARE and amend appropriately. */
 
-                                    //TODO: STATUS
-                                }
-                            }
                             AddFeatureName(instance.featureName, feature);
                             AddInformation(instance.information, feature);
 
@@ -239,15 +192,7 @@ namespace S100Framework.Applications
                             if (plts_comp_scale != default) {
                                 instance.scaleMinimum = plts_comp_scale;
                             }
-                            if (status != default) {
-                                if (!string.IsNullOrEmpty(status)) {
-                                    /* See S-101 DCEG clause 5.4 for the listing of allowable values. Values populated in S-57 for this attribute
-                                       other than the allowable values will not be converted across to S-101. Data Producers are advised to
-                                       check any populated values for STATUS on LNDARE and amend appropriately. */
 
-                                    //TODO: STATUS
-                                }
-                            }
                             AddFeatureName(instance.featureName, feature);
                             AddInformation(instance.information, feature);
 
