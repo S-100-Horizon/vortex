@@ -1,4 +1,5 @@
 ﻿using ArcGIS.Core.Data;
+using S100Framework.DomainModel.S101;
 using S100Framework.DomainModel.S101.FeatureTypes;
 using VortexLoader.S57.esri;
 
@@ -38,12 +39,38 @@ namespace S100Framework.Applications
 
                 switch (subtype) {
                     case 1: { // CBLSUB_CableSubmarine
+
+                            // The S-57 attributes DRVAL1 and DRVAL2 for CBLSUB will not be converted. It is considered that
+                            // these attributes are not relevant for Cable Submarine in S - 101.
+
                             var instance = new CableSubmarine();
                             if (plts_comp_scale != default) {
                                 instance.scaleMinimum = plts_comp_scale;
                             }
 
-                            
+                            /* S57
+                             * Code	Description
+                                1	power line
+                                3	transmission line
+                                4	telephone
+                                5	telegraph
+                                6	mooring cable/chain
+                                -32767	Unknown
+                             */
+
+
+                            if (current.CATCBL != default) {
+                                instance.categoryOfCable = current.CATCBL switch {
+                                    1 => categoryOfCable.PowerLine,
+                                    3 => categoryOfCable.TransmissionLine,
+                                    4 => categoryOfCable.TelecommunicationsCable, //CATCBL value 4 (telephone) will convert to category of cable value 10 (telecommunications cable).
+                                    5 => categoryOfCable.MooringCable,
+                                    -32767 => null,
+                                    _ => throw new IndexOutOfRangeException(),
+                                };
+                            }
+
+
                             AddFeatureName(instance.featureName, feature);
                             AddInformation(instance.information, feature);
                             buffer["ps"] = ps;
