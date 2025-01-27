@@ -1,7 +1,8 @@
 ﻿using ArcGIS.Core.Data;
+using S100Framework.DomainModel.S101;
 using S100Framework.DomainModel.S101.ComplexAttributes;
 using S100Framework.DomainModel.S101.FeatureTypes;
-using S100Framework.DomainModel.S101.InformationTypes;
+using VortexLoader;
 using VortexLoader.S57.esri;
 
 
@@ -10,13 +11,20 @@ namespace S100Framework.Applications
     internal static partial class ImporterNIS
     {
         private static void S57_AidsToNavigationP(Geodatabase source, Geodatabase target, QueryFilter filter) {
-            var tableName = "AidsToNavigation";
+            var tableName = "AidsToNavigationP";
 
-            var plts_frels = LoadPltsFrels(source); // slaves
+            var featureRelations = new FeatureRelations();
+            featureRelations.Initialize(source);
+
+            
+
+            
+
+
 
             var ps = "S-101";
 
-            var aidstonavigation = source.OpenDataset<FeatureClass>("AidsToNavigationP");
+            var aidstonavigation = source.OpenDataset<FeatureClass>(tableName);
 
             using var featureClass = target.OpenDataset<FeatureClass>("point");
             using var informationtype = target.OpenDataset<Table>("informationtype");
@@ -51,7 +59,7 @@ namespace S100Framework.Applications
                 var catlitVal = current.CATLIT ?? default;
                 var sectr1Val = current.SECTR1 ?? default;
                 var sectr2Val = current.SECTR2 ?? default;
-                var colour = current.COLOUR ?? default;   // list of integers
+                var color = current.COLOUR ?? default;   // list of integers
                 var boyshp = current.BOYSHP ?? default;   // domain value
                 var bcnshp = current.BCNSHP ?? default;   // domain value
                 var colpat = current.COLPAT ?? default; 
@@ -59,20 +67,27 @@ namespace S100Framework.Applications
                 var marsys = current.MARSYS ?? default;
                 var orient = current.ORIENT ?? default;
 
+                var colours = new List<colour>();
+
+
+
+
 
                 // if slave continue - retrieve related slaves for structure in the relevant structure
-                if (plts_frels.ContainsKey(globalid)) {
-                    var plts_frel = plts_frels[globalid];
-
-                    //continue;
+                if (featureRelations.IsSlave(globalid)) {
+                    continue;
                 }
 
                 switch (subtype) {
                     case 1: { // BCNCAR_BeaconCardinal
                             var instance = new CardinalBeacon();
+
+                            AddColour(instance.colour, feature);
                             AddStatus(instance.status, feature);
                             AddFeatureName(instance.featureName, feature);
                             AddInformation(instance.information, feature);
+
+                            
 
                             buffer["ps"] = ps;
                             buffer["code"] = instance.GetType().Name;
@@ -86,6 +101,8 @@ namespace S100Framework.Applications
                         break;
                     case 5: { // BCNISD_BeaconIsolatedDanger
                             var instance = new IsolatedDangerBeacon();
+
+                            AddColour(instance.colour, feature);
                             AddStatus(instance.status, feature);
                             AddFeatureName(instance.featureName, feature);
                             AddInformation(instance.information, feature);
@@ -100,6 +117,7 @@ namespace S100Framework.Applications
                         break;
                     case 10: { // BCNLAT_BeaconLateral
                             var instance = new LateralBeacon();
+                            AddColour(instance.colour, feature);
                             AddStatus(instance.status, feature);
                             AddFeatureName(instance.featureName, feature);
                             AddInformation(instance.information, feature);
@@ -114,6 +132,7 @@ namespace S100Framework.Applications
                         break;
                     case 15: { // BCNSAW_BeaconSafeWater
                             var instance = new SafeWaterBeacon();
+                            AddColour(instance.colour, feature);
                             AddStatus(instance.status, feature);
                             AddFeatureName(instance.featureName, feature);
                             AddInformation(instance.information, feature);
@@ -128,6 +147,7 @@ namespace S100Framework.Applications
                         break;
                     case 20: { // BCNSPP_BeaconSpecialPurpose
                             var instance = new SpecialPurposeGeneralBeacon();
+                            AddColour(instance.colour, feature);
                             AddStatus(instance.status, feature);
                             AddFeatureName(instance.featureName, feature);
                             AddInformation(instance.information, feature);
@@ -142,6 +162,7 @@ namespace S100Framework.Applications
                         break;
                     case 25: { // BOYCAR_BuoyCardinal
                             var instance = new CardinalBuoy();
+                            AddColour(instance.colour, feature);
                             AddStatus(instance.status, feature);
                             AddFeatureName(instance.featureName, feature);
                             AddInformation(instance.information, feature);
@@ -156,6 +177,7 @@ namespace S100Framework.Applications
                         break;
                     case 30: { // BOYINB_BuoyInstallation
                             var instance = new InstallationBuoy();
+                            AddColour(instance.colour, feature);
                             AddStatus(instance.status, feature);
                             AddFeatureName(instance.featureName, feature);
                             AddInformation(instance.information, feature);
@@ -170,6 +192,7 @@ namespace S100Framework.Applications
                         break;
                     case 35: { // BOYISD_BuoyIsolatedDanger
                             var instance = new IsolatedDangerBuoy();
+                            AddColour(instance.colour, feature);
                             AddStatus(instance.status, feature);
                             AddFeatureName(instance.featureName, feature);
                             AddInformation(instance.information, feature);
@@ -184,6 +207,7 @@ namespace S100Framework.Applications
                         break;
                     case 40: { // BOYLAT_BuoyLateral
                             var instance = new LateralBuoy();
+                            AddColour(instance.colour, feature);
                             AddStatus(instance.status, feature);
                             AddFeatureName(instance.featureName, feature);
                             AddInformation(instance.information, feature);
@@ -198,6 +222,7 @@ namespace S100Framework.Applications
                         break;
                     case 45: { // BOYSAW_BuoySafeWater
                             var instance = new SafeWaterBuoy();
+                            AddColour(instance.colour, feature); 
                             AddStatus(instance.status, feature);
                             AddFeatureName(instance.featureName, feature);
                             AddInformation(instance.information, feature);
@@ -212,6 +237,7 @@ namespace S100Framework.Applications
                         break;
                     case 50: { // BOYSPP_BuoySpecialPurpose
                             var instance = new SpecialPurposeGeneralBuoy();
+                            AddColour(instance.colour, feature);
                             AddStatus(instance.status, feature);
                             AddFeatureName(instance.featureName, feature);
                             AddInformation(instance.information, feature);
@@ -226,6 +252,7 @@ namespace S100Framework.Applications
                         break;
                     case 55: { // DAYMAR_Daymark
                             var instance = new Daymark();
+                            AddColour(instance.colour, feature);
                             AddStatus(instance.status, feature);
                             AddFeatureName(instance.featureName, feature);
                             AddInformation(instance.information, feature);
@@ -239,6 +266,11 @@ namespace S100Framework.Applications
                         }
                         break;
                     case 60: { // FOGSIG_FogSignal
+
+                            //https://geodatastyrelsen.atlassian.net/wiki/spaces/SOEKORT/pages/4404478463/S-65+Annex+B+Appendix+A+-+Impact+analysis
+                            //We have one TOPMAR at the same location as a FOGSIG(in three scale bands).We need to add topmark shape in fog signal INFORM.
+                            //We do not have in the database information regarding “Radio Activated” nor “Call Activated”. We do have one instance of “On request”. What does this refer to??
+
                             var instance = new FogSignal();
                             AddStatus(instance.status, feature);
                             AddFeatureName(instance.featureName, feature);
@@ -269,6 +301,7 @@ namespace S100Framework.Applications
                                     if (plts_comp_scale != default) {
                                         instance.scaleMinimum = plts_comp_scale;
                                     }
+                                    AddColour(instance.colour, feature);
                                     AddStatus(instance.status, feature);
                                     AddFeatureName(instance.featureName, feature);
                                     AddInformation(instance.information, feature);
@@ -287,6 +320,7 @@ namespace S100Framework.Applications
                                     if (plts_comp_scale != default) {
                                         instance.scaleMinimum = plts_comp_scale;
                                     }
+                                    
                                     AddStatus(instance.status, feature);
                                     AddFeatureName(instance.featureName, feature);
                                     AddInformation(instance.information, feature);
@@ -305,6 +339,7 @@ namespace S100Framework.Applications
                                     if (plts_comp_scale != default) {
                                         instance.scaleMinimum = plts_comp_scale;
                                     }
+                                    AddColour(instance.colour, feature);
                                     AddStatus(instance.status, feature);
                                     AddFeatureName(instance.featureName, feature);
                                     AddInformation(instance.information, feature);
@@ -323,6 +358,7 @@ namespace S100Framework.Applications
                                     if (plts_comp_scale != default) {
                                         instance.scaleMinimum = plts_comp_scale;
                                     }
+                                    AddColour(instance.colour, feature);
                                     AddStatus(instance.status, feature);
                                     AddFeatureName(instance.featureName, feature);
                                     AddInformation(instance.information, feature);
@@ -348,6 +384,7 @@ namespace S100Framework.Applications
                             if (plts_comp_scale != default) {
                                 instance.scaleMinimum = plts_comp_scale;
                             }
+                            AddColour(instance.colour, feature);
                             AddStatus(instance.status, feature);
                             AddFeatureName(instance.featureName, feature);
                             AddInformation(instance.information, feature);
@@ -365,6 +402,7 @@ namespace S100Framework.Applications
                             if (plts_comp_scale != default) {
                                 instance.scaleMinimum = plts_comp_scale;
                             }
+                            AddColour(instance.colour, feature);
                             AddStatus(instance.status, feature);
                             AddFeatureName(instance.featureName, feature);
                             AddInformation(instance.information, feature);
@@ -382,6 +420,7 @@ namespace S100Framework.Applications
                             if (plts_comp_scale != default) {
                                 instance.scaleMinimum = plts_comp_scale;
                             }
+                            
                             AddStatus(instance.status, feature);
                             //AddFeatureName(instance.featureName, feature);
                             AddInformation(instance.information, feature);
@@ -400,6 +439,7 @@ namespace S100Framework.Applications
                             if (plts_comp_scale != default) {
                                 instance.scaleMinimum = plts_comp_scale;
                             }
+
                             AddStatus(instance.status, feature);
                             AddFeatureName(instance.featureName, feature);
                             AddInformation(instance.information, feature);
@@ -417,6 +457,7 @@ namespace S100Framework.Applications
                             if (plts_comp_scale != default) {
                                 instance.scaleMinimum = plts_comp_scale;
                             }
+
                             AddStatus(instance.status, feature);
                             AddFeatureName(instance.featureName, feature);
                             AddInformation(instance.information, feature);
@@ -434,6 +475,7 @@ namespace S100Framework.Applications
                             if (plts_comp_scale != default) {
                                 instance.scaleMinimum = plts_comp_scale;
                             }
+                            AddColour(instance.colour, feature);
                             AddStatus(instance.status, feature);
                             //AddFeatureName(instance.featureName, feature);
                             AddInformation(instance.information, feature);
@@ -451,6 +493,7 @@ namespace S100Framework.Applications
                             if (plts_comp_scale != default) {
                                 instance.scaleMinimum = plts_comp_scale;
                             }
+
                             AddStatus(instance.status, feature);
                             AddFeatureName(instance.featureName, feature);
                             AddInformation(instance.information, feature);
@@ -476,7 +519,6 @@ namespace S100Framework.Applications
                                 attributes DATEND, DATSTA, PEREND, PERSTA and STATUS will not be converted. Additional
                                 topmark shape information populated in the S-57 attribute INFORM will be converted to the S-101
                                 complex attribute shape information. See also clause 12.6.
-
                             */
 
                             // TODO: INFORM
