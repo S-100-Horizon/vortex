@@ -58,7 +58,7 @@ namespace S100Framework.Applications
                             }
 
 
-
+                            AddCondition(instance.condition, feature);
                             AddStatus(instance.status, feature);
                             //AddFeatureName(instance.featureName, feature);
                             AddInformation(instance.information, feature);
@@ -83,7 +83,7 @@ namespace S100Framework.Applications
                                 instance.scaleMinimum = plts_comp_scale;
                             }
 
-
+                            AddCondition(instance.condition, feature);
                             AddStatus(instance.status, feature);
                             AddFeatureName(instance.featureName, feature);
                             AddInformation(instance.information, feature);
@@ -121,6 +121,7 @@ namespace S100Framework.Applications
                                 };
                             }
 
+                            AddCondition(instance.condition, feature);
                             AddStatus(instance.status, feature);
                             AddFeatureName(instance.featureName, feature);
                             AddInformation(instance.information, feature);
@@ -142,6 +143,7 @@ namespace S100Framework.Applications
                             if (plts_comp_scale != default) {
                                 instance.scaleMinimum = plts_comp_scale;
                             }
+
 
                             AddFeatureName(instance.featureName, feature);
                             AddInformation(instance.information, feature);
@@ -179,6 +181,8 @@ namespace S100Framework.Applications
                                     _ => throw new IndexOutOfRangeException(),
                                 };
                             }
+
+
                             AddStatus(instance.status, feature);
                             AddFeatureName(instance.featureName, feature);
                             AddInformation(instance.information, feature);

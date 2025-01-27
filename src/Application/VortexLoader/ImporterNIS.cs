@@ -47,7 +47,7 @@ namespace S100Framework.Applications
             using Geodatabase source = createGeodatabase();
             {
                 var query = new QueryFilter {
-                    WhereClause = $"ps = 'S-101'",
+                    //WhereClause = $"ps = 'S-101'",
                 };
 
                 using var point = destination.OpenDataset<FeatureClass>("point");
@@ -63,11 +63,20 @@ namespace S100Framework.Applications
                 informationtype.DeleteRows(query);
             }
 
+            //  ProductCoverage
+            S57_ProductCoverage(source, destination, filter);
+
             //  AidsToNavigation
             S57_AidsToNavigationP(source, destination, filter);
 
             //  PortsAndServicesP
             S57_PortsAndServicesP(source, destination, filter);
+
+            //  PortsAndServicesA
+            S57_PortsAndServicesA(source, destination, filter);
+
+            //  PortsAndServicesL
+            S57_PortsAndServicesL(source, destination, filter);
 
             //  DangersA
             S57_DangersA(source, destination, filter);
@@ -78,21 +87,32 @@ namespace S100Framework.Applications
             //  DangersL
             S57_DangersL(source, destination, filter);
 
-
             // RegulatedAreasAndLimitsL
             S57_RegulatedAreasAndLimitsL(source, destination, filter);
+
+            // RegulatedAreasAndLimitsA
+            S57_RegulatedAreasAndLimitsA(source, destination, filter);
+
+            // RegulatedAreasAndLimitsP
+            S57_RegulatedAreasAndLimitsP(source, destination, filter);
 
             // OffshoreInstallationsL
             S57_OffshoreInstallationsL(source, destination, filter);
             
-            // RegulatedAreasAndLimitsA
-            S57_RegulatedAreasAndLimitsA(source, destination, filter);
-
-            //  ProductCoverage
-            S57_ProductCoverage(source, destination, filter);
+            // OffshoreInstallationsA
+            S57_OffshoreInstallationsA(source, destination, filter);
+            
+            // OffshoreInstallationsP
+            S57_OffshoreInstallationsP(source, destination, filter);
 
             //  NaturalFeaturesL
             S57_NaturalFeaturesL(source, destination, filter);
+
+            //  NaturalFeaturesA
+            S57_NaturalFeaturesA(source, destination, filter);
+
+            //  NaturalFeaturesP
+            S57_NaturalFeaturesP(source, destination, filter);
 
             // DepthsL
             S57_DepthsL(source, destination, filter);
@@ -174,7 +194,7 @@ namespace S100Framework.Applications
 
         private static void AddStatus(status? status, Feature current) {
             if (DBNull.Value != current["STATUS"]) {
-                var featureStatus = Convert.ToString(current["OBJNAM"])?.Trim();
+                var featureStatus = Convert.ToString(current["STATUS"])?.Trim();
                 if (!string.IsNullOrEmpty(featureStatus)) {
                     /* See S-101 DCEG clause 5.4 for the listing of allowable values. Values populated in S-57 for this attribute
                        other than the allowable values will not be converted across to S-101. Data Producers are advised to
@@ -188,14 +208,60 @@ namespace S100Framework.Applications
             if (DBNull.Value != current["STATUS"]) {
                 var featureStatus = Convert.ToString(current["STATUS"])?.Trim();
 
+                /*
+                 * code	status
+                alias	STATUS
+                name	Status
+                definition	The condition of an object at a given instant in time.
+                valueType	enumeration  listedValues	
+
+                Permanent	            1	IHOREG	Intended to last or function indefinitely.
+                Occasional	            2	IHOREG	Acting on special occasions; happening irregularly.
+                Recommended	            3	IHOREG	Presented as worthy of confidence, acceptance, use, etc.
+                Not in Use	            4	IHOREG	Use has ceased, but the facility still exists intact; disused.
+                Periodic/Intermittent	5	IHOREG	Recurring at intervals.
+                Reserved	            6	IHOREG	Set apart for some specific use.
+                Temporary	            7	IHOREG	Meant to last only for a time.
+                Private	                8	IHOREG	Administered by an individual or corporation, rather than a State or a public body.
+                Mandatory	            9	IHOREG	Compulsory; enforced.
+                Extinguished	        11	IHOREG	No longer lit.
+                Illuminated	            12	IHOREG	Lit by flood lights, strip lights, etc.
+                Historic	            13	IHOREG	Famous in history; of historical interest.
+                Public	                14	IHOREG	Belonging to, available to, used or shared by, the community as a whole and not restricted to private use.
+                Synchronized	        15	IHOREG	Occur at a time, coincide in point of time, be contemporary or simultaneous.
+                Watched	                16	IHOREG	Looked at or observed over a period of time especially so as to be aware of any movement or change.
+                Unwatched	            17	IHOREG	Usually automatic in operation, without any permanently-stationed personnel to superintend it.
+                Existence Doubtful	    18	IHOREG	A feature that has been reported but has not been definitely determined to exist.
+                Buoyed	                28	IHOREG	Marked by buoys.
+
+                */
+
+
                 if (!string.IsNullOrEmpty(featureStatus)) {
                     /* See S-101 DCEG clause 5.4 for the listing of allowable values. Values populated in S-57 for this attribute
-                       other than the allowable values will not be converted across to S-101. Data Producers are advised to
-                       check any populated values for STATUS on LNDARE and amend appropriately. */
+                        other than the allowable values will not be converted across to S-101. Data Producers are advised to
+                        check any populated values for STATUS on LNDARE and amend appropriately. */
 
-                    //TODO: STATUS
                 }
 
+            }
+        }
+
+
+        private static void AddCondition(condition? cndtn, Feature feature) {
+            if (DBNull.Value != feature["CONDITION"]) {
+                var condtn = Convert.ToInt32(feature["CONDITION"]);
+                if (condtn != default) {
+                    cndtn = condtn switch {
+                        1 => condition.UnderConstruction,   //  under construction
+                        2 => condition.Ruined,   //  ruined
+                        3 => condition.UnderReclamation,   //  under reclamation                                    
+                        4 => throw new IndexOutOfRangeException(),   //  wingless
+                        5 => throw new IndexOutOfRangeException(),   //  planned construction
+                        -32767 => null,
+                        _ => throw new IndexOutOfRangeException(),
+                    };
+                }
             }
         }
 

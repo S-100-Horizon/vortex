@@ -8,11 +8,11 @@ namespace S100Framework.Applications
 {
     internal static partial class ImporterNIS
     {
-        private static void S57_OffshoreInstallationsA(Geodatabase source, Geodatabase target, QueryFilter filter) {
-            var tableName = "OffshoreInstallationsA";
+        private static void S57_OffshoreInstallationsP(Geodatabase source, Geodatabase target, QueryFilter filter) {
+            var tableName = "OffshoreInstallationsP";
             var ps = "S-101";
 
-            using var featureclass = target.OpenDataset<FeatureClass>("surface");
+            using var featureclass = target.OpenDataset<FeatureClass>("point");
 
             using var offshoreinstallations = source.OpenDataset<FeatureClass>(tableName);
 
@@ -27,7 +27,7 @@ namespace S100Framework.Applications
             while (cursor.MoveNext()) {
                 recordCount += 1;
                 var feature = (Feature)cursor.Current;
-                var current = new OffshoreInstallationsA(feature); // (Row)cursor.Current;
+                var current = new OffshoreInstallationsP(feature); // (Row)cursor.Current;
 
                 var objectid = current.OBJECTID ?? default;
                 var globalid = current.GLOBALID;
@@ -39,28 +39,8 @@ namespace S100Framework.Applications
                 var verlen = current.VERLEN ?? default;
 
                 switch (subtype) {
-                    case 1: { // CBLARE_CableArea
-                            var instance = new CableArea();
-                            if (plts_comp_scale != default) {
-                                instance.scaleMinimum = plts_comp_scale;
-                            }
 
-                            if (plts_comp_scale != default) {
-                                instance.scaleMinimum = plts_comp_scale;
-                            }
-                            AddStatus(instance.status, feature);
-                            AddFeatureName(instance.featureName, feature);
-                            AddInformation(instance.information, feature);
-                            buffer["ps"] = ps;
-                            buffer["code"] = instance.GetType().Name;
-                            buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance);
-                            buffer["shape"] = current.SHAPE;
-                            insert.Insert(buffer);
-                            Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
-                            convertedCount++;
-                        }
-                        break;
-                    case 5: { // OFSPLF_OffshorePlatform
+                    case 1: { // OFSPLF_OffshorePlatform
                             var instance = new OffshorePlatform();
                             if (plts_comp_scale != default) {
                                 instance.scaleMinimum = plts_comp_scale;
@@ -81,8 +61,8 @@ namespace S100Framework.Applications
                             convertedCount++;
                         }
                         break;
-                    case 10: { // OSPARE_OffshoreProductionArea
-                            var instance = new OffshoreProductionArea();
+                    case 5: { // PIPARE_PipelineArea
+                            var instance = new SubmarinePipelineArea();
                             if (plts_comp_scale != default) {
                                 instance.scaleMinimum = plts_comp_scale;
                             }
@@ -90,6 +70,7 @@ namespace S100Framework.Applications
                             if (plts_comp_scale != default) {
                                 instance.scaleMinimum = plts_comp_scale;
                             }
+
                             AddStatus(instance.status, feature);
                             AddFeatureName(instance.featureName, feature);
                             AddInformation(instance.information, feature);
@@ -102,8 +83,8 @@ namespace S100Framework.Applications
                             convertedCount++;
                         }
                         break;
-                    case 15: { // PIPARE_PipelineArea
-                            var instance = new SubmarinePipelineArea();
+                    case 10: { // PIPSOL_PipelineSubmarineOnLand
+                            var instance = new PipelineSubmarineOnLand();
                             if (plts_comp_scale != default) {
                                 instance.scaleMinimum = plts_comp_scale;
                             }
@@ -111,6 +92,7 @@ namespace S100Framework.Applications
                             if (plts_comp_scale != default) {
                                 instance.scaleMinimum = plts_comp_scale;
                             }
+
                             AddStatus(instance.status, feature);
                             AddFeatureName(instance.featureName, feature);
                             AddInformation(instance.information, feature);
@@ -127,7 +109,6 @@ namespace S100Framework.Applications
                         // code block
                         System.Diagnostics.Debugger.Break();
                         break;
-
                 }
             }
             Logger.Current.DataTotalCount(tableName, recordCount, convertedCount);

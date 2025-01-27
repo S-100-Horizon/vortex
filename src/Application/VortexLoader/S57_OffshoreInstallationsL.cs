@@ -70,7 +70,7 @@ namespace S100Framework.Applications
                                 };
                             }
 
-
+                            AddStatus(instance.status, feature);
                             AddFeatureName(instance.featureName, feature);
                             AddInformation(instance.information, feature);
                             buffer["ps"] = ps;
@@ -91,7 +91,7 @@ namespace S100Framework.Applications
                             if (plts_comp_scale != default) {
                                 instance.scaleMinimum = plts_comp_scale;
                             }
-
+                            AddStatus(instance.status, feature);
                             AddFeatureName(instance.featureName, feature);
                             AddInformation(instance.information, feature);
                             buffer["ps"] = ps;

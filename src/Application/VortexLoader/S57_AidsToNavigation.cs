@@ -82,6 +82,7 @@ namespace S100Framework.Applications
                     case 1: { // BCNCAR_BeaconCardinal
                             var instance = new CardinalBeacon();
 
+                            AddCondition(instance.condition, feature);
                             AddColour(instance.colour, feature);
                             AddStatus(instance.status, feature);
                             AddFeatureName(instance.featureName, feature);
@@ -102,6 +103,7 @@ namespace S100Framework.Applications
                     case 5: { // BCNISD_BeaconIsolatedDanger
                             var instance = new IsolatedDangerBeacon();
 
+                            AddCondition(instance.condition, feature);
                             AddColour(instance.colour, feature);
                             AddStatus(instance.status, feature);
                             AddFeatureName(instance.featureName, feature);
@@ -117,6 +119,7 @@ namespace S100Framework.Applications
                         break;
                     case 10: { // BCNLAT_BeaconLateral
                             var instance = new LateralBeacon();
+                            AddCondition(instance.condition, feature);
                             AddColour(instance.colour, feature);
                             AddStatus(instance.status, feature);
                             AddFeatureName(instance.featureName, feature);
@@ -132,6 +135,8 @@ namespace S100Framework.Applications
                         break;
                     case 15: { // BCNSAW_BeaconSafeWater
                             var instance = new SafeWaterBeacon();
+
+                            AddCondition(instance.condition, feature);
                             AddColour(instance.colour, feature);
                             AddStatus(instance.status, feature);
                             AddFeatureName(instance.featureName, feature);
@@ -147,6 +152,8 @@ namespace S100Framework.Applications
                         break;
                     case 20: { // BCNSPP_BeaconSpecialPurpose
                             var instance = new SpecialPurposeGeneralBeacon();
+
+                            AddCondition(instance.condition, feature);
                             AddColour(instance.colour, feature);
                             AddStatus(instance.status, feature);
                             AddFeatureName(instance.featureName, feature);
@@ -162,6 +169,7 @@ namespace S100Framework.Applications
                         break;
                     case 25: { // BOYCAR_BuoyCardinal
                             var instance = new CardinalBuoy();
+                            
                             AddColour(instance.colour, feature);
                             AddStatus(instance.status, feature);
                             AddFeatureName(instance.featureName, feature);
@@ -177,6 +185,7 @@ namespace S100Framework.Applications
                         break;
                     case 30: { // BOYINB_BuoyInstallation
                             var instance = new InstallationBuoy();
+                            
                             AddColour(instance.colour, feature);
                             AddStatus(instance.status, feature);
                             AddFeatureName(instance.featureName, feature);
@@ -192,6 +201,8 @@ namespace S100Framework.Applications
                         break;
                     case 35: { // BOYISD_BuoyIsolatedDanger
                             var instance = new IsolatedDangerBuoy();
+                            
+                            
                             AddColour(instance.colour, feature);
                             AddStatus(instance.status, feature);
                             AddFeatureName(instance.featureName, feature);
@@ -207,6 +218,8 @@ namespace S100Framework.Applications
                         break;
                     case 40: { // BOYLAT_BuoyLateral
                             var instance = new LateralBuoy();
+                            
+                            
                             AddColour(instance.colour, feature);
                             AddStatus(instance.status, feature);
                             AddFeatureName(instance.featureName, feature);
@@ -222,6 +235,9 @@ namespace S100Framework.Applications
                         break;
                     case 45: { // BOYSAW_BuoySafeWater
                             var instance = new SafeWaterBuoy();
+
+                            
+
                             AddColour(instance.colour, feature); 
                             AddStatus(instance.status, feature);
                             AddFeatureName(instance.featureName, feature);
@@ -237,6 +253,8 @@ namespace S100Framework.Applications
                         break;
                     case 50: { // BOYSPP_BuoySpecialPurpose
                             var instance = new SpecialPurposeGeneralBuoy();
+
+                            
                             AddColour(instance.colour, feature);
                             AddStatus(instance.status, feature);
                             AddFeatureName(instance.featureName, feature);
@@ -252,6 +270,8 @@ namespace S100Framework.Applications
                         break;
                     case 55: { // DAYMAR_Daymark
                             var instance = new Daymark();
+
+                            
                             AddColour(instance.colour, feature);
                             AddStatus(instance.status, feature);
                             AddFeatureName(instance.featureName, feature);
@@ -272,6 +292,7 @@ namespace S100Framework.Applications
                             //We do not have in the database information regarding “Radio Activated” nor “Call Activated”. We do have one instance of “On request”. What does this refer to??
 
                             var instance = new FogSignal();
+                            
                             AddStatus(instance.status, feature);
                             AddFeatureName(instance.featureName, feature);
                             AddInformation(instance.information, feature);
@@ -301,6 +322,8 @@ namespace S100Framework.Applications
                                     if (plts_comp_scale != default) {
                                         instance.scaleMinimum = plts_comp_scale;
                                     }
+                                    
+                                    
                                     AddColour(instance.colour, feature);
                                     AddStatus(instance.status, feature);
                                     AddFeatureName(instance.featureName, feature);
@@ -384,6 +407,7 @@ namespace S100Framework.Applications
                             if (plts_comp_scale != default) {
                                 instance.scaleMinimum = plts_comp_scale;
                             }
+                            
                             AddColour(instance.colour, feature);
                             AddStatus(instance.status, feature);
                             AddFeatureName(instance.featureName, feature);
@@ -402,6 +426,7 @@ namespace S100Framework.Applications
                             if (plts_comp_scale != default) {
                                 instance.scaleMinimum = plts_comp_scale;
                             }
+                            
                             AddColour(instance.colour, feature);
                             AddStatus(instance.status, feature);
                             AddFeatureName(instance.featureName, feature);
@@ -440,6 +465,7 @@ namespace S100Framework.Applications
                                 instance.scaleMinimum = plts_comp_scale;
                             }
 
+                            
                             AddStatus(instance.status, feature);
                             AddFeatureName(instance.featureName, feature);
                             AddInformation(instance.information, feature);
@@ -458,6 +484,7 @@ namespace S100Framework.Applications
                                 instance.scaleMinimum = plts_comp_scale;
                             }
 
+
                             AddStatus(instance.status, feature);
                             AddFeatureName(instance.featureName, feature);
                             AddInformation(instance.information, feature);
@@ -475,6 +502,8 @@ namespace S100Framework.Applications
                             if (plts_comp_scale != default) {
                                 instance.scaleMinimum = plts_comp_scale;
                             }
+
+                            
                             AddColour(instance.colour, feature);
                             AddStatus(instance.status, feature);
                             //AddFeatureName(instance.featureName, feature);
@@ -493,7 +522,7 @@ namespace S100Framework.Applications
                             if (plts_comp_scale != default) {
                                 instance.scaleMinimum = plts_comp_scale;
                             }
-
+                            
                             AddStatus(instance.status, feature);
                             AddFeatureName(instance.featureName, feature);
                             AddInformation(instance.information, feature);

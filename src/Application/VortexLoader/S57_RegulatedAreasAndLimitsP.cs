@@ -1,16 +1,14 @@
 ﻿using ArcGIS.Core.Data;
-using S100Framework.DomainModel.S101;
-using S100Framework.DomainModel.S101.FeatureTypes;
-using System.Reflection.Emit;
 using VortexLoader.S57.esri;
+using S100Framework.DomainModel.S101.FeatureTypes;
 
 namespace S100Framework.Applications
 {
     internal static partial class ImporterNIS
     {
-        private static void S57_OffshoreInstallationsA(Geodatabase source, Geodatabase target, QueryFilter filter) {
-            var tableName = "OffshoreInstallationsA";
-            var ps = "S-101";
+        private static void S57_RegulatedAreasAndLimitsP(Geodatabase source, Geodatabase target, QueryFilter filter) {
+            var tableName = "RegulatedAreasAndLimitsP";
+            var ps101 = "S-101";
 
             using var featureclass = target.OpenDataset<FeatureClass>("surface");
 
@@ -27,7 +25,7 @@ namespace S100Framework.Applications
             while (cursor.MoveNext()) {
                 recordCount += 1;
                 var feature = (Feature)cursor.Current;
-                var current = new OffshoreInstallationsA(feature); // (Row)cursor.Current;
+                var current = new RegulatedAreasAndLimitsA(feature); // (Row)cursor.Current;
 
                 var objectid = current.OBJECTID ?? default;
                 var globalid = current.GLOBALID;
@@ -35,23 +33,18 @@ namespace S100Framework.Applications
                 var plts_comp_scale = current.PLTS_COMP_SCALE ?? default;
                 var longname = current.LNAM ?? Strings.UNKNOWN;
                 var status = current.STATUS ?? default;
-                var condtn = current.CONDTN ?? default;
                 var verlen = current.VERLEN ?? default;
 
                 switch (subtype) {
-                    case 1: { // CBLARE_CableArea
-                            var instance = new CableArea();
+                    case 1: { // ACHARE_AnchorageArea
+                            var instance = new AnchorageArea() {
+                            };
                             if (plts_comp_scale != default) {
                                 instance.scaleMinimum = plts_comp_scale;
                             }
-
-                            if (plts_comp_scale != default) {
-                                instance.scaleMinimum = plts_comp_scale;
-                            }
-                            AddStatus(instance.status, feature);
                             AddFeatureName(instance.featureName, feature);
                             AddInformation(instance.information, feature);
-                            buffer["ps"] = ps;
+                            buffer["ps"] = ps101;
                             buffer["code"] = instance.GetType().Name;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance);
                             buffer["shape"] = current.SHAPE;
@@ -60,19 +53,15 @@ namespace S100Framework.Applications
                             convertedCount++;
                         }
                         break;
-                    case 5: { // OFSPLF_OffshorePlatform
-                            var instance = new OffshorePlatform();
+                    case 5: { // ACHBRT_AnchorBerth
+                            var instance = new AnchorBerth() {
+                            };
                             if (plts_comp_scale != default) {
                                 instance.scaleMinimum = plts_comp_scale;
                             }
-
-                            if (plts_comp_scale != default) {
-                                instance.scaleMinimum = plts_comp_scale;
-                            }
-                            AddStatus(instance.status, feature);
                             AddFeatureName(instance.featureName, feature);
                             AddInformation(instance.information, feature);
-                            buffer["ps"] = ps;
+                            buffer["ps"] = ps101;
                             buffer["code"] = instance.GetType().Name;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance);
                             buffer["shape"] = current.SHAPE;
@@ -81,19 +70,15 @@ namespace S100Framework.Applications
                             convertedCount++;
                         }
                         break;
-                    case 10: { // OSPARE_OffshoreProductionArea
-                            var instance = new OffshoreProductionArea();
+                    case 10: { // CTSARE_CargoTranshipmentArea
+                            var instance = new CargoTranshipmentArea() {
+                            };
                             if (plts_comp_scale != default) {
                                 instance.scaleMinimum = plts_comp_scale;
                             }
-
-                            if (plts_comp_scale != default) {
-                                instance.scaleMinimum = plts_comp_scale;
-                            }
-                            AddStatus(instance.status, feature);
                             AddFeatureName(instance.featureName, feature);
                             AddInformation(instance.information, feature);
-                            buffer["ps"] = ps;
+                            buffer["ps"] = ps101;
                             buffer["code"] = instance.GetType().Name;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance);
                             buffer["shape"] = current.SHAPE;
@@ -102,19 +87,72 @@ namespace S100Framework.Applications
                             convertedCount++;
                         }
                         break;
-                    case 15: { // PIPARE_PipelineArea
-                            var instance = new SubmarinePipelineArea();
+                    case 15: { // DMPGRD_DumpingGround
+                            var instance = new DumpingGround() {
+                            };
                             if (plts_comp_scale != default) {
                                 instance.scaleMinimum = plts_comp_scale;
                             }
-
-                            if (plts_comp_scale != default) {
-                                instance.scaleMinimum = plts_comp_scale;
-                            }
-                            AddStatus(instance.status, feature);
                             AddFeatureName(instance.featureName, feature);
                             AddInformation(instance.information, feature);
-                            buffer["ps"] = ps;
+                            buffer["ps"] = ps101;
+                            buffer["code"] = instance.GetType().Name;
+                            buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance);
+                            buffer["shape"] = current.SHAPE;
+                            insert.Insert(buffer);
+                            Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
+                            convertedCount++;
+                        }
+                        break;
+                    case 25: { // ICNARE_IncinerationArea
+                            //The S-57 Object class ICNARE will not be converted. 
+                            //https://iho.int/uploads/user/pubs/standards/s-65/S-65%20Annex%20B_Ed%201.2.0_Final.pdf
+                            convertedCount++;
+                        }
+                        break;
+                    case 30: { // LOGPON_LogPond
+                            var instance = new LogPond() {
+                            };
+                            if (plts_comp_scale != default) {
+                                instance.scaleMinimum = plts_comp_scale;
+                            }
+                            AddFeatureName(instance.featureName, feature);
+                            AddInformation(instance.information, feature);
+                            buffer["ps"] = ps101;
+                            buffer["code"] = instance.GetType().Name;
+                            buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance);
+                            buffer["shape"] = current.SHAPE;
+                            insert.Insert(buffer);
+                            Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
+                            convertedCount++;
+                        }
+                        break;
+                    case 35: { // MARCUL_MarineFarmCulture
+                            var instance = new MarineFarmCulture() {
+                            };
+                            if (plts_comp_scale != default) {
+                                instance.scaleMinimum = plts_comp_scale;
+                            }
+                            AddFeatureName(instance.featureName, feature);
+                            AddInformation(instance.information, feature);
+                            buffer["ps"] = ps101;
+                            buffer["code"] = instance.GetType().Name;
+                            buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance);
+                            buffer["shape"] = current.SHAPE;
+                            insert.Insert(buffer);
+                            Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
+                            convertedCount++;
+                        }
+                        break;
+                    case 40: { // SPLARE_SeaPlaneLandingArea
+                            var instance = new SeaplaneLandingArea() {
+                            };
+                            if (plts_comp_scale != default) {
+                                instance.scaleMinimum = plts_comp_scale;
+                            }
+                            AddFeatureName(instance.featureName, feature);
+                            AddInformation(instance.information, feature);
+                            buffer["ps"] = ps101;
                             buffer["code"] = instance.GetType().Name;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance);
                             buffer["shape"] = current.SHAPE;
@@ -129,9 +167,16 @@ namespace S100Framework.Applications
                         break;
 
                 }
+
+
+
+                
             }
             Logger.Current.DataTotalCount(tableName, recordCount, convertedCount);
         }
     }
 }
+
+
+
 

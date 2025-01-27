@@ -52,17 +52,17 @@ namespace S100Framework.Applications
 
                     switch (subtype) {
                     case 1: { //  LAKARE
-                            var lakare = new Lake {
+                            var instance = new Lake {
                                 elevation = null,
                                 status = null,
                                 scaleMinimum = null,
                             };
                             if (elevat !=  default) {
-                                lakare.elevation = elevat;
+                                instance.elevation = elevat;
                             }
 
                             if (plts_comp_scale != default) {
-                                lakare.scaleMinimum = plts_comp_scale;
+                                instance.scaleMinimum = plts_comp_scale;
                             }
                             
                             if (status != default) {
@@ -70,15 +70,17 @@ namespace S100Framework.Applications
                                     //TODO: STATUS
                                 }
                             }
-                            AddFeatureName(lakare.featureName, feature);
-                            AddInformation(lakare.information, feature);
+                            
+                            AddStatus(instance.status, feature);
+                            AddFeatureName(instance.featureName, feature);
+                            AddInformation(instance.information, feature);
 
                             bufferSurface["ps"] = "S-101";
-                            bufferSurface["code"] =  lakare.GetType().Name; 
-                            bufferSurface["json"] = System.Text.Json.JsonSerializer.Serialize(lakare);
+                            bufferSurface["code"] = instance.GetType().Name; 
+                            bufferSurface["json"] = System.Text.Json.JsonSerializer.Serialize(instance);
                             bufferSurface["shape"] = current.SHAPE;
                             var oid = insertSurface.Insert(bufferSurface);
-                            Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(lakare));
+                            Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
                             convertedCount++;
 
                             /* S-57 allows for LAKARE to be covered by the Group 1 objects LNDARE or UNSARE, however in
@@ -94,13 +96,13 @@ namespace S100Framework.Applications
                         break;
 
                     case 5: { //  LNDARE
-                            var lndare = new LandArea {
+                            var instance = new LandArea {
                                 condition = null,
                                 status = null,
                                 scaleMinimum = null,
                             };
                             if (condtn != default) {
-                                lndare.condition = condtn switch {
+                                instance.condition = condtn switch {
                                     1 => condition.UnderConstruction,   //  under construction
                                     2 => condition.Ruined,   //  ruined
                                     3 => condition.UnderReclamation,   //  under reclamation                                    
@@ -111,39 +113,32 @@ namespace S100Framework.Applications
                                 };
                             }
                             if (plts_comp_scale != default) {
-                                lndare.scaleMinimum = plts_comp_scale;
+                                instance.scaleMinimum = plts_comp_scale;
                             }
-                            if (status != default) {
-                                if (!string.IsNullOrEmpty(status)) {
-                                    /* See S-101 DCEG clause 5.4 for the listing of allowable values. Values populated in S-57 for this attribute
-                                       other than the allowable values will not be converted across to S-101. Data Producers are advised to
-                                       check any populated values for STATUS on LNDARE and amend appropriately. */
 
-                                    //TODO: STATUS
-                                }
-                            }
-                            AddFeatureName(lndare.featureName, feature);
-                            AddInformation(lndare.information, feature);
+                            AddStatus(instance.status, feature);
+                            AddFeatureName(instance.featureName, feature);
+                            AddInformation(instance.information, feature);
 
                             bufferSurface["ps"] = "S-101";
-                            bufferSurface["code"] = lndare.GetType().Name; 
-                            bufferSurface["json"] = System.Text.Json.JsonSerializer.Serialize(lndare);
+                            bufferSurface["code"] = instance.GetType().Name; 
+                            bufferSurface["json"] = System.Text.Json.JsonSerializer.Serialize(instance);
                             bufferSurface["shape"] = current.SHAPE;
                             insertSurface.Insert(bufferSurface);
-                            Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(lndare));
+                            Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
                             convertedCount++;
                         }
                         break;
 
                     case 10: {    // LNDRGN
-                            var lndrgn = new LandRegion {
+                            var instance = new LandRegion {
                                 categoryOfLandRegion = null,
                                 natureOfSurface = null,
                                 waterLevelEffect = null,
                                 scaleMinimum = null,
                             };
                             if (watlev != default) {
-                                lndrgn.waterLevelEffect = watlev switch {
+                                instance.waterLevelEffect = watlev switch {
                                     1 => waterLevelEffect.PartlySubmergedAtHighWater,  // partly submerged at high water
                                     2 => waterLevelEffect.AlwaysDry,  // always dry
                                     3 => throw new IndexOutOfRangeException(),  // always under water/submerged
@@ -156,7 +151,7 @@ namespace S100Framework.Applications
                                 };
                             }
                             if (plts_comp_scale != default) {
-                                lndrgn.scaleMinimum = plts_comp_scale;
+                                instance.scaleMinimum = plts_comp_scale;
                             }
                             if (status != default) {
                                 if (!string.IsNullOrEmpty(status)) {
@@ -169,15 +164,15 @@ namespace S100Framework.Applications
                                 }
                             }
 
-                            AddFeatureName(lndrgn.featureName, feature);
-                            AddInformation(lndrgn.information, feature);
+                            AddFeatureName(instance.featureName, feature);
+                            AddInformation(instance.information, feature);
 
                             bufferSurface["ps"] = "S-101";
-                            bufferSurface["code"] = lndrgn.GetType().Name;
-                            bufferSurface["json"] = System.Text.Json.JsonSerializer.Serialize(lndrgn);
+                            bufferSurface["code"] = instance.GetType().Name;
+                            bufferSurface["json"] = System.Text.Json.JsonSerializer.Serialize(instance);
                             bufferSurface["shape"] = current.SHAPE;
                             insertSurface.Insert(bufferSurface);
-                            Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(lndrgn));
+                            Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
                             convertedCount++;
 
                         }
@@ -189,12 +184,12 @@ namespace S100Framework.Applications
                         break;
 
                     case 20: {    // RIVERS
-                            var river = new River {
+                            var instance = new River {
                                 status = null,
                                 scaleMinimum = null,
                             };
                             if (plts_comp_scale != default) {
-                                river.scaleMinimum = plts_comp_scale;
+                                instance.scaleMinimum = plts_comp_scale;
                             }
                             if (status != default) {
                                 if (!string.IsNullOrEmpty(status)) {
@@ -202,15 +197,16 @@ namespace S100Framework.Applications
                                 }
                             }
 
-                            AddFeatureName(river.featureName, feature);
-                            AddInformation(river.information, feature);
+                            AddStatus(instance.status, feature);
+                            AddFeatureName(instance.featureName, feature);
+                            AddInformation(instance.information, feature);
 
                             bufferSurface["ps"] = "S-101";
-                            bufferSurface["code"] = river.GetType().Name; 
-                            bufferSurface["json"] = System.Text.Json.JsonSerializer.Serialize(river);
+                            bufferSurface["code"] = instance.GetType().Name; 
+                            bufferSurface["json"] = System.Text.Json.JsonSerializer.Serialize(instance);
                             bufferSurface["shape"] = current.SHAPE;
                             insertSurface.Insert(bufferSurface);
-                            Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(river));
+                            Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
                             convertedCount++;
 
                             /* S-57 allows for RIVERS of geometric primitive area to be covered by the Group 1 objects LNDARE
@@ -231,12 +227,12 @@ namespace S100Framework.Applications
                         break;
 
                     case 25: {    // SEAARE
-                            var seaareanamedwaterarea = new SeaAreaNamedWaterArea {
+                            var instance = new SeaAreaNamedWaterArea {
                                 categoryOfSeaArea = null,
                                 scaleMinimum = null,
                             };
                             if (catsea != default) {
-                                seaareanamedwaterarea.categoryOfSeaArea = catsea switch {
+                                instance.categoryOfSeaArea = catsea switch {
                                     2 => categoryOfSeaArea.Gat,  // gat
                                     3 => categoryOfSeaArea.Bank,  // bank
                                     4 => categoryOfSeaArea.Deep,  // deep
@@ -295,32 +291,32 @@ namespace S100Framework.Applications
                                 };
                             }
                             if (plts_comp_scale != default) {
-                                seaareanamedwaterarea.scaleMinimum = plts_comp_scale;
+                                instance.scaleMinimum = plts_comp_scale;
                             }
 
-                            AddFeatureName(seaareanamedwaterarea.featureName, feature);
-                            AddInformation(seaareanamedwaterarea.information, feature);
+                            AddFeatureName(instance.featureName, feature);
+                            AddInformation(instance.information, feature);
 
                             bufferSurface["ps"] = "S-101";
-                            bufferSurface["code"] = seaareanamedwaterarea.GetType().Name;
-                            bufferSurface["json"] = System.Text.Json.JsonSerializer.Serialize(seaareanamedwaterarea);
+                            bufferSurface["code"] = instance.GetType().Name;
+                            bufferSurface["json"] = System.Text.Json.JsonSerializer.Serialize(instance);
                             bufferSurface["shape"] = current.SHAPE;
                             insertSurface.Insert(bufferSurface);
-                            Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(seaareanamedwaterarea));
+                            Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
                             convertedCount++;
 
                         }
                         break;
 
                     case 30: {    // SLOGRD
-                            var slopingground = new SlopingGround {
+                            var instance = new SlopingGround {
                                 categoryOfSlope = null,
                                 radarConspicuous = null,
                                 visualProminence = null,
                                 scaleMinimum = null,
                             };
                             if (catslo != default) {
-                                slopingground.categoryOfSlope = catslo switch {
+                                instance.categoryOfSlope = catslo switch {
                                     1 => categoryOfSlope.Cutting,  // cutting
                                     2 => categoryOfSlope.Embankment,  // embankment
                                     3 => categoryOfSlope.Dune,  // dune
@@ -348,7 +344,7 @@ namespace S100Framework.Applications
                                             _ => throw new IndexOutOfRangeException(),
                                         };
                                         if (e.HasValue) {
-                                            slopingground.colour.Add(e.Value);
+                                            instance.colour.Add(e.Value);
                                         }
                                     }
                                 }
@@ -366,13 +362,13 @@ namespace S100Framework.Applications
                                             _ => throw new IndexOutOfRangeException(),
                                         };
                                         if (e.HasValue) {
-                                            slopingground.natureOfSurface.Add(e.Value);
+                                            instance.natureOfSurface.Add(e.Value);
                                         }
                                     }
                                 }
                             }
                             if (conrad != default) {
-                                slopingground.radarConspicuous = conrad switch {
+                                instance.radarConspicuous = conrad switch {
                                     1 => true,  // radar conspicuous
                                     2 => false, // not radar conspicuous
                                     3 => true,  // radar conspicuous (has radar reflector)
@@ -381,7 +377,7 @@ namespace S100Framework.Applications
                                 };
                             }
                             if (convis != default) {
-                                slopingground.visualProminence = convis switch {
+                                instance.visualProminence = convis switch {
                                     1 => visualProminence.VisuallyConspicuous,  // visually conspicuous
                                     2 => visualProminence.NotVisuallyConspicuous,  // not visually conspicuous                                
                                     -32767 => null,
@@ -389,18 +385,18 @@ namespace S100Framework.Applications
                                 };
                             }
                             if (plts_comp_scale != default) {
-                                slopingground.scaleMinimum = plts_comp_scale;
+                                instance.scaleMinimum = plts_comp_scale;
                             }
 
-                            AddFeatureName(slopingground.featureName, feature);
-                            AddInformation(slopingground.information, feature);
+                            AddFeatureName(instance.featureName, feature);
+                            AddInformation(instance.information, feature);
 
                             bufferSurface["ps"] = "S-101";
-                            bufferSurface["code"] = slopingground.GetType().Name; 
-                            bufferSurface["json"] = System.Text.Json.JsonSerializer.Serialize(slopingground);
+                            bufferSurface["code"] = instance.GetType().Name; 
+                            bufferSurface["json"] = System.Text.Json.JsonSerializer.Serialize(instance);
                             bufferSurface["shape"] = current.SHAPE;
                             insertSurface.Insert(bufferSurface);
-                            Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(slopingground));
+                            Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
                             convertedCount++;
 
                         }
@@ -417,7 +413,7 @@ namespace S100Framework.Applications
                                 "14" => categoryOfVegetation.EvergreenTree,
                                 _ => throw new IndexOutOfRangeException(),
                             };
-                            var vegetation = new Vegetation {
+                            var instance = new Vegetation {
                                 categoryOfVegetation = vegetationCategory,
                                 visualProminence = null,
                                 elevation = null,
@@ -426,17 +422,17 @@ namespace S100Framework.Applications
                                 scaleMinimum = null,
                             };
                             if (elevat != default) {
-                                vegetation.elevation = elevat;
+                                instance.elevation = elevat;
                             }
                             if (height != default) {
-                                vegetation.height = height;
+                                instance.height = height;
                             }
                             if (verlen != default) {
-                                vegetation.verticalLength = verlen;
+                                instance.verticalLength = verlen;
                             }
 
                             if (convis != default) {
-                                vegetation.visualProminence = convis switch {
+                                instance.visualProminence = convis switch {
                                     1 => visualProminence.VisuallyConspicuous,  // visually conspicuous
                                     2 => visualProminence.NotVisuallyConspicuous,  // not visually conspicuous                                
                                     -32767 => null,
@@ -444,18 +440,18 @@ namespace S100Framework.Applications
                                 };
                             }
                             if (plts_comp_scale != default) {
-                                vegetation.scaleMinimum = plts_comp_scale;
+                                instance.scaleMinimum = plts_comp_scale;
                             }
 
-                            AddFeatureName(vegetation.featureName, feature);
-                            AddInformation(vegetation.information, feature);
+                            AddFeatureName(instance.featureName, feature);
+                            AddInformation(instance.information, feature);
 
                             bufferSurface["ps"] = "S-101";
-                            bufferSurface["code"] = vegetation.GetType().Name;
-                            bufferSurface["json"] = System.Text.Json.JsonSerializer.Serialize(vegetation);
+                            bufferSurface["code"] = instance.GetType().Name;
+                            bufferSurface["json"] = System.Text.Json.JsonSerializer.Serialize(instance);
                             bufferSurface["shape"] = current.SHAPE;
                             insertSurface.Insert(bufferSurface);
-                            Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(vegetation));
+                            Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
                             convertedCount++;
 
                         }

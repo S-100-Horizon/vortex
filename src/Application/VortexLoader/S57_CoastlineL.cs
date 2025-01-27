@@ -42,7 +42,7 @@ namespace S100Framework.Applications
                     case 1: { // COALNE_Coastline
                             var instance = new Coastline();
 
-
+                            
                             AddColour(instance.colour, feature);
                             AddFeatureName(instance.featureName, feature);
                             AddInformation(instance.information, feature);
@@ -61,7 +61,7 @@ namespace S100Framework.Applications
                             if (plts_comp_scale != default) {
                                 instance.scaleMinimum = plts_comp_scale;
                             }
-
+                            AddCondition(instance.condition, feature);
                             AddColour(instance.colour, feature);
                             AddStatus(instance.status, feature);
                             AddFeatureName(instance.featureName, feature);

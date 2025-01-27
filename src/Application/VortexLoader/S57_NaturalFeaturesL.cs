@@ -65,7 +65,7 @@ namespace S100Framework.Applications
                             if (plts_comp_scale != default) {
                                 instance.scaleMinimum = plts_comp_scale;
                             }
-
+                            AddStatus(instance.status, feature);
                             AddFeatureName(instance.featureName, feature);
                             AddInformation(instance.information, feature);
 
@@ -87,7 +87,7 @@ namespace S100Framework.Applications
                             if (plts_comp_scale != default) {
                                 instance.scaleMinimum = plts_comp_scale;
                             }
-
+                            
                             AddFeatureName(instance.featureName, feature);
                             AddInformation(instance.information, feature);
 
@@ -108,7 +108,7 @@ namespace S100Framework.Applications
                             if (plts_comp_scale != default) {
                                 instance.scaleMinimum = plts_comp_scale;
                             }
-
+                            
                             AddFeatureName(instance.featureName, feature);
                             AddInformation(instance.information, feature);
 
@@ -129,7 +129,7 @@ namespace S100Framework.Applications
                             if (plts_comp_scale != default) {
                                 instance.scaleMinimum = plts_comp_scale;
                             }
-
+                            AddStatus(instance.status, feature);
                             AddFeatureName(instance.featureName, feature);
                             AddInformation(instance.information, feature);
 
@@ -171,7 +171,7 @@ namespace S100Framework.Applications
                             if (plts_comp_scale != default) {
                                 instance.scaleMinimum = plts_comp_scale;
                             }
-
+                            
                             AddFeatureName(instance.featureName, feature);
                             AddInformation(instance.information, feature);
 
@@ -193,6 +193,7 @@ namespace S100Framework.Applications
                                 instance.scaleMinimum = plts_comp_scale;
                             }
 
+                            
                             AddFeatureName(instance.featureName, feature);
                             AddInformation(instance.information, feature);
 

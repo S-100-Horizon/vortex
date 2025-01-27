@@ -151,12 +151,6 @@ namespace VortexLoader.S57Auto.esri
 		/// </summary>
 		[Description("NIS editor comments")]
 		internal string? NIS_EDITOR_COMMENT = default;
-
-		/// <summary>
-		/// Shape_Length
-		/// </summary>
-		[Description("Shape_Length")]
-		internal decimal? SHAPE_LENGTH = default;
 		public PLTS_SpatialAttributeL (Feature feature) {
 			if (DBNull.Value != feature["OBJECTID"] && feature["OBJECTID"] is not null) {
 				OBJECTID = Convert.ToInt32(feature["OBJECTID"]);
@@ -229,9 +223,6 @@ namespace VortexLoader.S57Auto.esri
 			}
 			if (DBNull.Value != feature["NIS_EDITOR_COMMENT"] && feature["NIS_EDITOR_COMMENT"] is not null) {
 				NIS_EDITOR_COMMENT = Convert.ToString(feature["NIS_EDITOR_COMMENT"]);
-			}
-			if (DBNull.Value != feature["SHAPE_LENGTH"] && feature["SHAPE_LENGTH"] is not null) {
-				SHAPE_LENGTH = Convert.ToDecimal(feature["SHAPE_LENGTH"]);
 			}
 		}
 	}
@@ -572,18 +563,6 @@ namespace VortexLoader.S57Auto.esri
 		/// </summary>
 		[Description("NIS editor comments")]
 		internal string? NIS_EDITOR_COMMENT = default;
-
-		/// <summary>
-		/// Shape_Length
-		/// </summary>
-		[Description("Shape_Length")]
-		internal decimal? SHAPE_LENGTH = default;
-
-		/// <summary>
-		/// Shape_Area
-		/// </summary>
-		[Description("Shape_Area")]
-		internal decimal? SHAPE_AREA = default;
 		public TidesAndVariationsA (Feature feature) {
 			if (DBNull.Value != feature["SHAPE"] && feature["SHAPE"] is not null) {
 				SHAPE = (Geometry?)(feature["SHAPE"]);
@@ -752,12 +731,6 @@ namespace VortexLoader.S57Auto.esri
 			}
 			if (DBNull.Value != feature["NIS_EDITOR_COMMENT"] && feature["NIS_EDITOR_COMMENT"] is not null) {
 				NIS_EDITOR_COMMENT = Convert.ToString(feature["NIS_EDITOR_COMMENT"]);
-			}
-			if (DBNull.Value != feature["SHAPE_LENGTH"] && feature["SHAPE_LENGTH"] is not null) {
-				SHAPE_LENGTH = Convert.ToDecimal(feature["SHAPE_LENGTH"]);
-			}
-			if (DBNull.Value != feature["SHAPE_AREA"] && feature["SHAPE_AREA"] is not null) {
-				SHAPE_AREA = Convert.ToDecimal(feature["SHAPE_AREA"]);
 			}
 		}
 	}
@@ -996,12 +969,6 @@ namespace VortexLoader.S57Auto.esri
 		/// </summary>
 		[Description("NIS editor comments")]
 		internal string? NIS_EDITOR_COMMENT = default;
-
-		/// <summary>
-		/// Shape_Length
-		/// </summary>
-		[Description("Shape_Length")]
-		internal decimal? SHAPE_LENGTH = default;
 		public TidesAndVariationsL (Feature feature) {
 			if (DBNull.Value != feature["OBJECTID"] && feature["OBJECTID"] is not null) {
 				OBJECTID = Convert.ToInt32(feature["OBJECTID"]);
@@ -1119,9 +1086,6 @@ namespace VortexLoader.S57Auto.esri
 			}
 			if (DBNull.Value != feature["NIS_EDITOR_COMMENT"] && feature["NIS_EDITOR_COMMENT"] is not null) {
 				NIS_EDITOR_COMMENT = Convert.ToString(feature["NIS_EDITOR_COMMENT"]);
-			}
-			if (DBNull.Value != feature["SHAPE_LENGTH"] && feature["SHAPE_LENGTH"] is not null) {
-				SHAPE_LENGTH = Convert.ToDecimal(feature["SHAPE_LENGTH"]);
 			}
 		}
 	}
@@ -1895,12 +1859,6 @@ namespace VortexLoader.S57Auto.esri
 		/// </summary>
 		[Description("NIS editor comments")]
 		internal string? NIS_EDITOR_COMMENT = default;
-
-		/// <summary>
-		/// Shape_Length
-		/// </summary>
-		[Description("Shape_Length")]
-		internal decimal? SHAPE_LENGTH = default;
 		public SeabedL (Feature feature) {
 			if (DBNull.Value != feature["OBJECTID"] && feature["OBJECTID"] is not null) {
 				OBJECTID = Convert.ToInt32(feature["OBJECTID"]);
@@ -2018,9 +1976,6 @@ namespace VortexLoader.S57Auto.esri
 			}
 			if (DBNull.Value != feature["NIS_EDITOR_COMMENT"] && feature["NIS_EDITOR_COMMENT"] is not null) {
 				NIS_EDITOR_COMMENT = Convert.ToString(feature["NIS_EDITOR_COMMENT"]);
-			}
-			if (DBNull.Value != feature["SHAPE_LENGTH"] && feature["SHAPE_LENGTH"] is not null) {
-				SHAPE_LENGTH = Convert.ToDecimal(feature["SHAPE_LENGTH"]);
 			}
 		}
 	}
@@ -2656,18 +2611,6 @@ namespace VortexLoader.S57Auto.esri
 		/// </summary>
 		[Description("NIS editor comments")]
 		internal string? NIS_EDITOR_COMMENT = default;
-
-		/// <summary>
-		/// Shape_Length
-		/// </summary>
-		[Description("Shape_Length")]
-		internal decimal? SHAPE_LENGTH = default;
-
-		/// <summary>
-		/// Shape_Area
-		/// </summary>
-		[Description("Shape_Area")]
-		internal decimal? SHAPE_AREA = default;
 		public SeabedA (Feature feature) {
 			if (DBNull.Value != feature["SHAPE"] && feature["SHAPE"] is not null) {
 				SHAPE = (Geometry?)(feature["SHAPE"]);
@@ -2788,12 +2731,6 @@ namespace VortexLoader.S57Auto.esri
 			}
 			if (DBNull.Value != feature["NIS_EDITOR_COMMENT"] && feature["NIS_EDITOR_COMMENT"] is not null) {
 				NIS_EDITOR_COMMENT = Convert.ToString(feature["NIS_EDITOR_COMMENT"]);
-			}
-			if (DBNull.Value != feature["SHAPE_LENGTH"] && feature["SHAPE_LENGTH"] is not null) {
-				SHAPE_LENGTH = Convert.ToDecimal(feature["SHAPE_LENGTH"]);
-			}
-			if (DBNull.Value != feature["SHAPE_AREA"] && feature["SHAPE_AREA"] is not null) {
-				SHAPE_AREA = Convert.ToDecimal(feature["SHAPE_AREA"]);
 			}
 		}
 	}
@@ -3140,12 +3077,6 @@ namespace VortexLoader.S57Auto.esri
 		/// </summary>
 		[Description("NIS editor comments")]
 		internal string? NIS_EDITOR_COMMENT = default;
-
-		/// <summary>
-		/// Shape_Length
-		/// </summary>
-		[Description("Shape_Length")]
-		internal decimal? SHAPE_LENGTH = default;
 		public DangersL (Feature feature) {
 			if (DBNull.Value != feature["OBJECTID"] && feature["OBJECTID"] is not null) {
 				OBJECTID = Convert.ToInt32(feature["OBJECTID"]);
@@ -3317,9 +3248,6 @@ namespace VortexLoader.S57Auto.esri
 			}
 			if (DBNull.Value != feature["NIS_EDITOR_COMMENT"] && feature["NIS_EDITOR_COMMENT"] is not null) {
 				NIS_EDITOR_COMMENT = Convert.ToString(feature["NIS_EDITOR_COMMENT"]);
-			}
-			if (DBNull.Value != feature["SHAPE_LENGTH"] && feature["SHAPE_LENGTH"] is not null) {
-				SHAPE_LENGTH = Convert.ToDecimal(feature["SHAPE_LENGTH"]);
 			}
 		}
 	}
@@ -4240,18 +4168,6 @@ namespace VortexLoader.S57Auto.esri
 		/// </summary>
 		[Description("NIS editor comments")]
 		internal string? NIS_EDITOR_COMMENT = default;
-
-		/// <summary>
-		/// Shape_Length
-		/// </summary>
-		[Description("Shape_Length")]
-		internal decimal? SHAPE_LENGTH = default;
-
-		/// <summary>
-		/// Shape_Area
-		/// </summary>
-		[Description("Shape_Area")]
-		internal decimal? SHAPE_AREA = default;
 		public DangersA (Feature feature) {
 			if (DBNull.Value != feature["SHAPE"] && feature["SHAPE"] is not null) {
 				SHAPE = (Geometry?)(feature["SHAPE"]);
@@ -4429,12 +4345,6 @@ namespace VortexLoader.S57Auto.esri
 			}
 			if (DBNull.Value != feature["NIS_EDITOR_COMMENT"] && feature["NIS_EDITOR_COMMENT"] is not null) {
 				NIS_EDITOR_COMMENT = Convert.ToString(feature["NIS_EDITOR_COMMENT"]);
-			}
-			if (DBNull.Value != feature["SHAPE_LENGTH"] && feature["SHAPE_LENGTH"] is not null) {
-				SHAPE_LENGTH = Convert.ToDecimal(feature["SHAPE_LENGTH"]);
-			}
-			if (DBNull.Value != feature["SHAPE_AREA"] && feature["SHAPE_AREA"] is not null) {
-				SHAPE_AREA = Convert.ToDecimal(feature["SHAPE_AREA"]);
 			}
 		}
 	}
@@ -4673,12 +4583,6 @@ namespace VortexLoader.S57Auto.esri
 		/// </summary>
 		[Description("NIS editor comments")]
 		internal string? NIS_EDITOR_COMMENT = default;
-
-		/// <summary>
-		/// Shape_Length
-		/// </summary>
-		[Description("Shape_Length")]
-		internal decimal? SHAPE_LENGTH = default;
 		public DepthsL (Feature feature) {
 			if (DBNull.Value != feature["SHAPE"] && feature["SHAPE"] is not null) {
 				SHAPE = (Geometry?)(feature["SHAPE"]);
@@ -4796,9 +4700,6 @@ namespace VortexLoader.S57Auto.esri
 			}
 			if (DBNull.Value != feature["NIS_EDITOR_COMMENT"] && feature["NIS_EDITOR_COMMENT"] is not null) {
 				NIS_EDITOR_COMMENT = Convert.ToString(feature["NIS_EDITOR_COMMENT"]);
-			}
-			if (DBNull.Value != feature["SHAPE_LENGTH"] && feature["SHAPE_LENGTH"] is not null) {
-				SHAPE_LENGTH = Convert.ToDecimal(feature["SHAPE_LENGTH"]);
 			}
 		}
 	}
@@ -5079,12 +4980,6 @@ namespace VortexLoader.S57Auto.esri
 		/// </summary>
 		[Description("NIS editor comments")]
 		internal string? NIS_EDITOR_COMMENT = default;
-
-		/// <summary>
-		/// Shape_Length
-		/// </summary>
-		[Description("Shape_Length")]
-		internal decimal? SHAPE_LENGTH = default;
 		public OffshoreInstallationsL (Feature feature) {
 			if (DBNull.Value != feature["SHAPE"] && feature["SHAPE"] is not null) {
 				SHAPE = (Geometry?)(feature["SHAPE"]);
@@ -5223,9 +5118,6 @@ namespace VortexLoader.S57Auto.esri
 			}
 			if (DBNull.Value != feature["NIS_EDITOR_COMMENT"] && feature["NIS_EDITOR_COMMENT"] is not null) {
 				NIS_EDITOR_COMMENT = Convert.ToString(feature["NIS_EDITOR_COMMENT"]);
-			}
-			if (DBNull.Value != feature["SHAPE_LENGTH"] && feature["SHAPE_LENGTH"] is not null) {
-				SHAPE_LENGTH = Convert.ToDecimal(feature["SHAPE_LENGTH"]);
 			}
 		}
 	}
@@ -5542,18 +5434,6 @@ namespace VortexLoader.S57Auto.esri
 		/// </summary>
 		[Description("NIS editor comments")]
 		internal string? NIS_EDITOR_COMMENT = default;
-
-		/// <summary>
-		/// Shape_Length
-		/// </summary>
-		[Description("Shape_Length")]
-		internal decimal? SHAPE_LENGTH = default;
-
-		/// <summary>
-		/// Shape_Area
-		/// </summary>
-		[Description("Shape_Area")]
-		internal decimal? SHAPE_AREA = default;
 		public OffshoreInstallationsA (Feature feature) {
 			if (DBNull.Value != feature["SHAPE"] && feature["SHAPE"] is not null) {
 				SHAPE = (Geometry?)(feature["SHAPE"]);
@@ -5710,12 +5590,6 @@ namespace VortexLoader.S57Auto.esri
 			}
 			if (DBNull.Value != feature["NIS_EDITOR_COMMENT"] && feature["NIS_EDITOR_COMMENT"] is not null) {
 				NIS_EDITOR_COMMENT = Convert.ToString(feature["NIS_EDITOR_COMMENT"]);
-			}
-			if (DBNull.Value != feature["SHAPE_LENGTH"] && feature["SHAPE_LENGTH"] is not null) {
-				SHAPE_LENGTH = Convert.ToDecimal(feature["SHAPE_LENGTH"]);
-			}
-			if (DBNull.Value != feature["SHAPE_AREA"] && feature["SHAPE_AREA"] is not null) {
-				SHAPE_AREA = Convert.ToDecimal(feature["SHAPE_AREA"]);
 			}
 		}
 	}
@@ -6360,18 +6234,6 @@ namespace VortexLoader.S57Auto.esri
 		/// </summary>
 		[Description("NIS editor comments")]
 		internal string? NIS_EDITOR_COMMENT = default;
-
-		/// <summary>
-		/// Shape_Length
-		/// </summary>
-		[Description("Shape_Length")]
-		internal decimal? SHAPE_LENGTH = default;
-
-		/// <summary>
-		/// Shape_Area
-		/// </summary>
-		[Description("Shape_Area")]
-		internal decimal? SHAPE_AREA = default;
 		public TracksAndRoutesA (Feature feature) {
 			if (DBNull.Value != feature["OBJECTID"] && feature["OBJECTID"] is not null) {
 				OBJECTID = Convert.ToInt32(feature["OBJECTID"]);
@@ -6528,12 +6390,6 @@ namespace VortexLoader.S57Auto.esri
 			}
 			if (DBNull.Value != feature["NIS_EDITOR_COMMENT"] && feature["NIS_EDITOR_COMMENT"] is not null) {
 				NIS_EDITOR_COMMENT = Convert.ToString(feature["NIS_EDITOR_COMMENT"]);
-			}
-			if (DBNull.Value != feature["SHAPE_LENGTH"] && feature["SHAPE_LENGTH"] is not null) {
-				SHAPE_LENGTH = Convert.ToDecimal(feature["SHAPE_LENGTH"]);
-			}
-			if (DBNull.Value != feature["SHAPE_AREA"] && feature["SHAPE_AREA"] is not null) {
-				SHAPE_AREA = Convert.ToDecimal(feature["SHAPE_AREA"]);
 			}
 		}
 	}
@@ -6844,12 +6700,6 @@ namespace VortexLoader.S57Auto.esri
 		/// </summary>
 		[Description("NIS editor comments")]
 		internal string? NIS_EDITOR_COMMENT = default;
-
-		/// <summary>
-		/// Shape_Length
-		/// </summary>
-		[Description("Shape_Length")]
-		internal decimal? SHAPE_LENGTH = default;
 		public TracksAndRoutesL (Feature feature) {
 			if (DBNull.Value != feature["SHAPE"] && feature["SHAPE"] is not null) {
 				SHAPE = (Geometry?)(feature["SHAPE"]);
@@ -7003,9 +6853,6 @@ namespace VortexLoader.S57Auto.esri
 			}
 			if (DBNull.Value != feature["NIS_EDITOR_COMMENT"] && feature["NIS_EDITOR_COMMENT"] is not null) {
 				NIS_EDITOR_COMMENT = Convert.ToString(feature["NIS_EDITOR_COMMENT"]);
-			}
-			if (DBNull.Value != feature["SHAPE_LENGTH"] && feature["SHAPE_LENGTH"] is not null) {
-				SHAPE_LENGTH = Convert.ToDecimal(feature["SHAPE_LENGTH"]);
 			}
 		}
 	}
@@ -8475,18 +8322,6 @@ namespace VortexLoader.S57Auto.esri
 		/// </summary>
 		[Description("NIS editor comments")]
 		internal string? NIS_EDITOR_COMMENT = default;
-
-		/// <summary>
-		/// Shape_Length
-		/// </summary>
-		[Description("Shape_Length")]
-		internal decimal? SHAPE_LENGTH = default;
-
-		/// <summary>
-		/// Shape_Area
-		/// </summary>
-		[Description("Shape_Area")]
-		internal decimal? SHAPE_AREA = default;
 		public IceFeaturesA (Feature feature) {
 			if (DBNull.Value != feature["SHAPE"] && feature["SHAPE"] is not null) {
 				SHAPE = (Geometry?)(feature["SHAPE"]);
@@ -8616,12 +8451,6 @@ namespace VortexLoader.S57Auto.esri
 			}
 			if (DBNull.Value != feature["NIS_EDITOR_COMMENT"] && feature["NIS_EDITOR_COMMENT"] is not null) {
 				NIS_EDITOR_COMMENT = Convert.ToString(feature["NIS_EDITOR_COMMENT"]);
-			}
-			if (DBNull.Value != feature["SHAPE_LENGTH"] && feature["SHAPE_LENGTH"] is not null) {
-				SHAPE_LENGTH = Convert.ToDecimal(feature["SHAPE_LENGTH"]);
-			}
-			if (DBNull.Value != feature["SHAPE_AREA"] && feature["SHAPE_AREA"] is not null) {
-				SHAPE_AREA = Convert.ToDecimal(feature["SHAPE_AREA"]);
 			}
 		}
 	}
@@ -8866,18 +8695,6 @@ namespace VortexLoader.S57Auto.esri
 		/// </summary>
 		[Description("NIS editor comments")]
 		internal string? NIS_EDITOR_COMMENT = default;
-
-		/// <summary>
-		/// Shape_Length
-		/// </summary>
-		[Description("Shape_Length")]
-		internal decimal? SHAPE_LENGTH = default;
-
-		/// <summary>
-		/// Shape_Area
-		/// </summary>
-		[Description("Shape_Area")]
-		internal decimal? SHAPE_AREA = default;
 		public MilitaryFeaturesA (Feature feature) {
 			if (DBNull.Value != feature["SHAPE"] && feature["SHAPE"] is not null) {
 				SHAPE = (Geometry?)(feature["SHAPE"]);
@@ -8998,12 +8815,6 @@ namespace VortexLoader.S57Auto.esri
 			}
 			if (DBNull.Value != feature["NIS_EDITOR_COMMENT"] && feature["NIS_EDITOR_COMMENT"] is not null) {
 				NIS_EDITOR_COMMENT = Convert.ToString(feature["NIS_EDITOR_COMMENT"]);
-			}
-			if (DBNull.Value != feature["SHAPE_LENGTH"] && feature["SHAPE_LENGTH"] is not null) {
-				SHAPE_LENGTH = Convert.ToDecimal(feature["SHAPE_LENGTH"]);
-			}
-			if (DBNull.Value != feature["SHAPE_AREA"] && feature["SHAPE_AREA"] is not null) {
-				SHAPE_AREA = Convert.ToDecimal(feature["SHAPE_AREA"]);
 			}
 		}
 	}
@@ -9693,18 +9504,6 @@ namespace VortexLoader.S57Auto.esri
 		/// </summary>
 		[Description("NIS editor comments")]
 		internal string? NIS_EDITOR_COMMENT = default;
-
-		/// <summary>
-		/// Shape_Length
-		/// </summary>
-		[Description("Shape_Length")]
-		internal decimal? SHAPE_LENGTH = default;
-
-		/// <summary>
-		/// Shape_Area
-		/// </summary>
-		[Description("Shape_Area")]
-		internal decimal? SHAPE_AREA = default;
 		public UserDefinedFeaturesA (Feature feature) {
 			if (DBNull.Value != feature["SHAPE"] && feature["SHAPE"] is not null) {
 				SHAPE = (Geometry?)(feature["SHAPE"]);
@@ -9852,12 +9651,6 @@ namespace VortexLoader.S57Auto.esri
 			}
 			if (DBNull.Value != feature["NIS_EDITOR_COMMENT"] && feature["NIS_EDITOR_COMMENT"] is not null) {
 				NIS_EDITOR_COMMENT = Convert.ToString(feature["NIS_EDITOR_COMMENT"]);
-			}
-			if (DBNull.Value != feature["SHAPE_LENGTH"] && feature["SHAPE_LENGTH"] is not null) {
-				SHAPE_LENGTH = Convert.ToDecimal(feature["SHAPE_LENGTH"]);
-			}
-			if (DBNull.Value != feature["SHAPE_AREA"] && feature["SHAPE_AREA"] is not null) {
-				SHAPE_AREA = Convert.ToDecimal(feature["SHAPE_AREA"]);
 			}
 		}
 	}
@@ -10628,12 +10421,6 @@ namespace VortexLoader.S57Auto.esri
 		/// </summary>
 		[Description("NIS editor comments")]
 		internal string? NIS_EDITOR_COMMENT = default;
-
-		/// <summary>
-		/// Shape_Length
-		/// </summary>
-		[Description("Shape_Length")]
-		internal decimal? SHAPE_LENGTH = default;
 		public UserDefinedFeaturesL (Feature feature) {
 			if (DBNull.Value != feature["OBJECTID"] && feature["OBJECTID"] is not null) {
 				OBJECTID = Convert.ToInt32(feature["OBJECTID"]);
@@ -10781,9 +10568,6 @@ namespace VortexLoader.S57Auto.esri
 			}
 			if (DBNull.Value != feature["NIS_EDITOR_COMMENT"] && feature["NIS_EDITOR_COMMENT"] is not null) {
 				NIS_EDITOR_COMMENT = Convert.ToString(feature["NIS_EDITOR_COMMENT"]);
-			}
-			if (DBNull.Value != feature["SHAPE_LENGTH"] && feature["SHAPE_LENGTH"] is not null) {
-				SHAPE_LENGTH = Convert.ToDecimal(feature["SHAPE_LENGTH"]);
 			}
 		}
 	}
@@ -11028,18 +10812,6 @@ namespace VortexLoader.S57Auto.esri
 		/// </summary>
 		[Description("NIS editor comments")]
 		internal string? NIS_EDITOR_COMMENT = default;
-
-		/// <summary>
-		/// Shape_Length
-		/// </summary>
-		[Description("Shape_Length")]
-		internal decimal? SHAPE_LENGTH = default;
-
-		/// <summary>
-		/// Shape_Area
-		/// </summary>
-		[Description("Shape_Area")]
-		internal decimal? SHAPE_AREA = default;
 		public DepthsA (Feature feature) {
 			if (DBNull.Value != feature["OBJECTID"] && feature["OBJECTID"] is not null) {
 				OBJECTID = Convert.ToInt32(feature["OBJECTID"]);
@@ -11160,12 +10932,6 @@ namespace VortexLoader.S57Auto.esri
 			}
 			if (DBNull.Value != feature["NIS_EDITOR_COMMENT"] && feature["NIS_EDITOR_COMMENT"] is not null) {
 				NIS_EDITOR_COMMENT = Convert.ToString(feature["NIS_EDITOR_COMMENT"]);
-			}
-			if (DBNull.Value != feature["SHAPE_LENGTH"] && feature["SHAPE_LENGTH"] is not null) {
-				SHAPE_LENGTH = Convert.ToDecimal(feature["SHAPE_LENGTH"]);
-			}
-			if (DBNull.Value != feature["SHAPE_AREA"] && feature["SHAPE_AREA"] is not null) {
-				SHAPE_AREA = Convert.ToDecimal(feature["SHAPE_AREA"]);
 			}
 		}
 	}
@@ -12666,12 +12432,6 @@ namespace VortexLoader.S57Auto.esri
 		/// </summary>
 		[Description("NIS editor comments")]
 		internal string? NIS_EDITOR_COMMENT = default;
-
-		/// <summary>
-		/// Shape_Length
-		/// </summary>
-		[Description("Shape_Length")]
-		internal decimal? SHAPE_LENGTH = default;
 		public PortsAndServicesL (Feature feature) {
 			if (DBNull.Value != feature["OBJECTID"] && feature["OBJECTID"] is not null) {
 				OBJECTID = Convert.ToInt32(feature["OBJECTID"]);
@@ -12858,9 +12618,6 @@ namespace VortexLoader.S57Auto.esri
 			}
 			if (DBNull.Value != feature["NIS_EDITOR_COMMENT"] && feature["NIS_EDITOR_COMMENT"] is not null) {
 				NIS_EDITOR_COMMENT = Convert.ToString(feature["NIS_EDITOR_COMMENT"]);
-			}
-			if (DBNull.Value != feature["SHAPE_LENGTH"] && feature["SHAPE_LENGTH"] is not null) {
-				SHAPE_LENGTH = Convert.ToDecimal(feature["SHAPE_LENGTH"]);
 			}
 		}
 	}
@@ -13309,18 +13066,6 @@ namespace VortexLoader.S57Auto.esri
 		/// </summary>
 		[Description("NIS editor comments")]
 		internal string? NIS_EDITOR_COMMENT = default;
-
-		/// <summary>
-		/// Shape_Length
-		/// </summary>
-		[Description("Shape_Length")]
-		internal decimal? SHAPE_LENGTH = default;
-
-		/// <summary>
-		/// Shape_Area
-		/// </summary>
-		[Description("Shape_Area")]
-		internal decimal? SHAPE_AREA = default;
 		public PortsAndServicesA (Feature feature) {
 			if (DBNull.Value != feature["SHAPE"] && feature["SHAPE"] is not null) {
 				SHAPE = (Geometry?)(feature["SHAPE"]);
@@ -13543,12 +13288,6 @@ namespace VortexLoader.S57Auto.esri
 			}
 			if (DBNull.Value != feature["NIS_EDITOR_COMMENT"] && feature["NIS_EDITOR_COMMENT"] is not null) {
 				NIS_EDITOR_COMMENT = Convert.ToString(feature["NIS_EDITOR_COMMENT"]);
-			}
-			if (DBNull.Value != feature["SHAPE_LENGTH"] && feature["SHAPE_LENGTH"] is not null) {
-				SHAPE_LENGTH = Convert.ToDecimal(feature["SHAPE_LENGTH"]);
-			}
-			if (DBNull.Value != feature["SHAPE_AREA"] && feature["SHAPE_AREA"] is not null) {
-				SHAPE_AREA = Convert.ToDecimal(feature["SHAPE_AREA"]);
 			}
 		}
 	}
@@ -13985,18 +13724,6 @@ namespace VortexLoader.S57Auto.esri
 		/// </summary>
 		[Description("NIS editor comments")]
 		internal string? NIS_EDITOR_COMMENT = default;
-
-		/// <summary>
-		/// Shape_Length
-		/// </summary>
-		[Description("Shape_Length")]
-		internal decimal? SHAPE_LENGTH = default;
-
-		/// <summary>
-		/// Shape_Area
-		/// </summary>
-		[Description("Shape_Area")]
-		internal decimal? SHAPE_AREA = default;
 		public CulturalFeaturesA (Feature feature) {
 			if (DBNull.Value != feature["SHAPE"] && feature["SHAPE"] is not null) {
 				SHAPE = (Geometry?)(feature["SHAPE"]);
@@ -14213,12 +13940,6 @@ namespace VortexLoader.S57Auto.esri
 			}
 			if (DBNull.Value != feature["NIS_EDITOR_COMMENT"] && feature["NIS_EDITOR_COMMENT"] is not null) {
 				NIS_EDITOR_COMMENT = Convert.ToString(feature["NIS_EDITOR_COMMENT"]);
-			}
-			if (DBNull.Value != feature["SHAPE_LENGTH"] && feature["SHAPE_LENGTH"] is not null) {
-				SHAPE_LENGTH = Convert.ToDecimal(feature["SHAPE_LENGTH"]);
-			}
-			if (DBNull.Value != feature["SHAPE_AREA"] && feature["SHAPE_AREA"] is not null) {
-				SHAPE_AREA = Convert.ToDecimal(feature["SHAPE_AREA"]);
 			}
 		}
 	}
@@ -14643,12 +14364,6 @@ namespace VortexLoader.S57Auto.esri
 		/// </summary>
 		[Description("NIS editor comments")]
 		internal string? NIS_EDITOR_COMMENT = default;
-
-		/// <summary>
-		/// Shape_Length
-		/// </summary>
-		[Description("Shape_Length")]
-		internal decimal? SHAPE_LENGTH = default;
 		public CulturalFeaturesL (Feature feature) {
 			if (DBNull.Value != feature["OBJECTID"] && feature["OBJECTID"] is not null) {
 				OBJECTID = Convert.ToInt32(feature["OBJECTID"]);
@@ -14859,9 +14574,6 @@ namespace VortexLoader.S57Auto.esri
 			}
 			if (DBNull.Value != feature["NIS_EDITOR_COMMENT"] && feature["NIS_EDITOR_COMMENT"] is not null) {
 				NIS_EDITOR_COMMENT = Convert.ToString(feature["NIS_EDITOR_COMMENT"]);
-			}
-			if (DBNull.Value != feature["SHAPE_LENGTH"] && feature["SHAPE_LENGTH"] is not null) {
-				SHAPE_LENGTH = Convert.ToDecimal(feature["SHAPE_LENGTH"]);
 			}
 		}
 	}
@@ -16314,12 +16026,6 @@ namespace VortexLoader.S57Auto.esri
 		/// </summary>
 		[Description("NIS editor comments")]
 		internal string? NIS_EDITOR_COMMENT = default;
-
-		/// <summary>
-		/// Shape_Length
-		/// </summary>
-		[Description("Shape_Length")]
-		internal decimal? SHAPE_LENGTH = default;
 		public NaturalFeaturesL (Feature feature) {
 			if (DBNull.Value != feature["OBJECTID"] && feature["OBJECTID"] is not null) {
 				OBJECTID = Convert.ToInt32(feature["OBJECTID"]);
@@ -16464,9 +16170,6 @@ namespace VortexLoader.S57Auto.esri
 			}
 			if (DBNull.Value != feature["NIS_EDITOR_COMMENT"] && feature["NIS_EDITOR_COMMENT"] is not null) {
 				NIS_EDITOR_COMMENT = Convert.ToString(feature["NIS_EDITOR_COMMENT"]);
-			}
-			if (DBNull.Value != feature["SHAPE_LENGTH"] && feature["SHAPE_LENGTH"] is not null) {
-				SHAPE_LENGTH = Convert.ToDecimal(feature["SHAPE_LENGTH"]);
 			}
 		}
 	}
@@ -16777,18 +16480,6 @@ namespace VortexLoader.S57Auto.esri
 		/// </summary>
 		[Description("NIS editor comments")]
 		internal string? NIS_EDITOR_COMMENT = default;
-
-		/// <summary>
-		/// Shape_Length
-		/// </summary>
-		[Description("Shape_Length")]
-		internal decimal? SHAPE_LENGTH = default;
-
-		/// <summary>
-		/// Shape_Area
-		/// </summary>
-		[Description("Shape_Area")]
-		internal decimal? SHAPE_AREA = default;
 		public NaturalFeaturesA (Feature feature) {
 			if (DBNull.Value != feature["SHAPE"] && feature["SHAPE"] is not null) {
 				SHAPE = (Geometry?)(feature["SHAPE"]);
@@ -16942,12 +16633,6 @@ namespace VortexLoader.S57Auto.esri
 			}
 			if (DBNull.Value != feature["NIS_EDITOR_COMMENT"] && feature["NIS_EDITOR_COMMENT"] is not null) {
 				NIS_EDITOR_COMMENT = Convert.ToString(feature["NIS_EDITOR_COMMENT"]);
-			}
-			if (DBNull.Value != feature["SHAPE_LENGTH"] && feature["SHAPE_LENGTH"] is not null) {
-				SHAPE_LENGTH = Convert.ToDecimal(feature["SHAPE_LENGTH"]);
-			}
-			if (DBNull.Value != feature["SHAPE_AREA"] && feature["SHAPE_AREA"] is not null) {
-				SHAPE_AREA = Convert.ToDecimal(feature["SHAPE_AREA"]);
 			}
 		}
 	}
@@ -17276,12 +16961,6 @@ namespace VortexLoader.S57Auto.esri
 		/// </summary>
 		[Description("NIS editor comments")]
 		internal string? NIS_EDITOR_COMMENT = default;
-
-		/// <summary>
-		/// Shape_Length
-		/// </summary>
-		[Description("Shape_Length")]
-		internal decimal? SHAPE_LENGTH = default;
 		public CoastlineL (Feature feature) {
 			if (DBNull.Value != feature["OBJECTID"] && feature["OBJECTID"] is not null) {
 				OBJECTID = Convert.ToInt32(feature["OBJECTID"]);
@@ -17444,9 +17123,6 @@ namespace VortexLoader.S57Auto.esri
 			}
 			if (DBNull.Value != feature["NIS_EDITOR_COMMENT"] && feature["NIS_EDITOR_COMMENT"] is not null) {
 				NIS_EDITOR_COMMENT = Convert.ToString(feature["NIS_EDITOR_COMMENT"]);
-			}
-			if (DBNull.Value != feature["SHAPE_LENGTH"] && feature["SHAPE_LENGTH"] is not null) {
-				SHAPE_LENGTH = Convert.ToDecimal(feature["SHAPE_LENGTH"]);
 			}
 		}
 	}
@@ -18262,18 +17938,6 @@ namespace VortexLoader.S57Auto.esri
 		/// </summary>
 		[Description("NIS editor comments")]
 		internal string? NIS_EDITOR_COMMENT = default;
-
-		/// <summary>
-		/// Shape_Length
-		/// </summary>
-		[Description("Shape_Length")]
-		internal decimal? SHAPE_LENGTH = default;
-
-		/// <summary>
-		/// Shape_Area
-		/// </summary>
-		[Description("Shape_Area")]
-		internal decimal? SHAPE_AREA = default;
 		public CoastlineA (Feature feature) {
 			if (DBNull.Value != feature["SHAPE"] && feature["SHAPE"] is not null) {
 				SHAPE = (Geometry?)(feature["SHAPE"]);
@@ -18430,12 +18094,6 @@ namespace VortexLoader.S57Auto.esri
 			}
 			if (DBNull.Value != feature["NIS_EDITOR_COMMENT"] && feature["NIS_EDITOR_COMMENT"] is not null) {
 				NIS_EDITOR_COMMENT = Convert.ToString(feature["NIS_EDITOR_COMMENT"]);
-			}
-			if (DBNull.Value != feature["SHAPE_LENGTH"] && feature["SHAPE_LENGTH"] is not null) {
-				SHAPE_LENGTH = Convert.ToDecimal(feature["SHAPE_LENGTH"]);
-			}
-			if (DBNull.Value != feature["SHAPE_AREA"] && feature["SHAPE_AREA"] is not null) {
-				SHAPE_AREA = Convert.ToDecimal(feature["SHAPE_AREA"]);
 			}
 		}
 	}
@@ -18734,12 +18392,6 @@ namespace VortexLoader.S57Auto.esri
 		/// </summary>
 		[Description("NIS editor comments")]
 		internal string? NIS_EDITOR_COMMENT = default;
-
-		/// <summary>
-		/// Shape_Length
-		/// </summary>
-		[Description("Shape_Length")]
-		internal decimal? SHAPE_LENGTH = default;
 		public RegulatedAreasAndLimitsL (Feature feature) {
 			if (DBNull.Value != feature["OBJECTID"] && feature["OBJECTID"] is not null) {
 				OBJECTID = Convert.ToInt32(feature["OBJECTID"]);
@@ -18887,9 +18539,6 @@ namespace VortexLoader.S57Auto.esri
 			}
 			if (DBNull.Value != feature["NIS_EDITOR_COMMENT"] && feature["NIS_EDITOR_COMMENT"] is not null) {
 				NIS_EDITOR_COMMENT = Convert.ToString(feature["NIS_EDITOR_COMMENT"]);
-			}
-			if (DBNull.Value != feature["SHAPE_LENGTH"] && feature["SHAPE_LENGTH"] is not null) {
-				SHAPE_LENGTH = Convert.ToDecimal(feature["SHAPE_LENGTH"]);
 			}
 		}
 	}
@@ -19717,18 +19366,6 @@ namespace VortexLoader.S57Auto.esri
 		/// </summary>
 		[Description("NIS editor comments")]
 		internal string? NIS_EDITOR_COMMENT = default;
-
-		/// <summary>
-		/// Shape_Length
-		/// </summary>
-		[Description("Shape_Length")]
-		internal decimal? SHAPE_LENGTH = default;
-
-		/// <summary>
-		/// Shape_Area
-		/// </summary>
-		[Description("Shape_Area")]
-		internal decimal? SHAPE_AREA = default;
 		public RegulatedAreasAndLimitsA (Feature feature) {
 			if (DBNull.Value != feature["SHAPE"] && feature["SHAPE"] is not null) {
 				SHAPE = (Geometry?)(feature["SHAPE"]);
@@ -19891,12 +19528,6 @@ namespace VortexLoader.S57Auto.esri
 			}
 			if (DBNull.Value != feature["NIS_EDITOR_COMMENT"] && feature["NIS_EDITOR_COMMENT"] is not null) {
 				NIS_EDITOR_COMMENT = Convert.ToString(feature["NIS_EDITOR_COMMENT"]);
-			}
-			if (DBNull.Value != feature["SHAPE_LENGTH"] && feature["SHAPE_LENGTH"] is not null) {
-				SHAPE_LENGTH = Convert.ToDecimal(feature["SHAPE_LENGTH"]);
-			}
-			if (DBNull.Value != feature["SHAPE_AREA"] && feature["SHAPE_AREA"] is not null) {
-				SHAPE_AREA = Convert.ToDecimal(feature["SHAPE_AREA"]);
 			}
 		}
 	}
@@ -20255,18 +19886,6 @@ namespace VortexLoader.S57Auto.esri
 		/// </summary>
 		[Description("NIS editor comments")]
 		internal string? NIS_EDITOR_COMMENT = default;
-
-		/// <summary>
-		/// Shape_Length
-		/// </summary>
-		[Description("Shape_Length")]
-		internal decimal? SHAPE_LENGTH = default;
-
-		/// <summary>
-		/// Shape_Area
-		/// </summary>
-		[Description("Shape_Area")]
-		internal decimal? SHAPE_AREA = default;
 		public MetaDataA (Feature feature) {
 			if (DBNull.Value != feature["SHAPE"] && feature["SHAPE"] is not null) {
 				SHAPE = (Geometry?)(feature["SHAPE"]);
@@ -20444,12 +20063,6 @@ namespace VortexLoader.S57Auto.esri
 			}
 			if (DBNull.Value != feature["NIS_EDITOR_COMMENT"] && feature["NIS_EDITOR_COMMENT"] is not null) {
 				NIS_EDITOR_COMMENT = Convert.ToString(feature["NIS_EDITOR_COMMENT"]);
-			}
-			if (DBNull.Value != feature["SHAPE_LENGTH"] && feature["SHAPE_LENGTH"] is not null) {
-				SHAPE_LENGTH = Convert.ToDecimal(feature["SHAPE_LENGTH"]);
-			}
-			if (DBNull.Value != feature["SHAPE_AREA"] && feature["SHAPE_AREA"] is not null) {
-				SHAPE_AREA = Convert.ToDecimal(feature["SHAPE_AREA"]);
 			}
 		}
 	}
@@ -20718,12 +20331,6 @@ namespace VortexLoader.S57Auto.esri
 		/// </summary>
 		[Description("NIS editor comments")]
 		internal string? NIS_EDITOR_COMMENT = default;
-
-		/// <summary>
-		/// Shape_Length
-		/// </summary>
-		[Description("Shape_Length")]
-		internal decimal? SHAPE_LENGTH = default;
 		public MetaDataL (Feature feature) {
 			if (DBNull.Value != feature["OBJECTID"] && feature["OBJECTID"] is not null) {
 				OBJECTID = Convert.ToInt32(feature["OBJECTID"]);
@@ -20856,9 +20463,6 @@ namespace VortexLoader.S57Auto.esri
 			}
 			if (DBNull.Value != feature["NIS_EDITOR_COMMENT"] && feature["NIS_EDITOR_COMMENT"] is not null) {
 				NIS_EDITOR_COMMENT = Convert.ToString(feature["NIS_EDITOR_COMMENT"]);
-			}
-			if (DBNull.Value != feature["SHAPE_LENGTH"] && feature["SHAPE_LENGTH"] is not null) {
-				SHAPE_LENGTH = Convert.ToDecimal(feature["SHAPE_LENGTH"]);
 			}
 		}
 	}
@@ -21491,12 +21095,6 @@ namespace VortexLoader.S57Auto.esri
 		/// </summary>
 		[Description("NIS editor comments")]
 		internal string? NIS_EDITOR_COMMENT = default;
-
-		/// <summary>
-		/// Shape_Length
-		/// </summary>
-		[Description("Shape_Length")]
-		internal decimal? SHAPE_LENGTH = default;
 		public ClosingLinesL (Feature feature) {
 			if (DBNull.Value != feature["SHAPE"] && feature["SHAPE"] is not null) {
 				SHAPE = (Geometry?)(feature["SHAPE"]);
@@ -21557,9 +21155,6 @@ namespace VortexLoader.S57Auto.esri
 			}
 			if (DBNull.Value != feature["NIS_EDITOR_COMMENT"] && feature["NIS_EDITOR_COMMENT"] is not null) {
 				NIS_EDITOR_COMMENT = Convert.ToString(feature["NIS_EDITOR_COMMENT"]);
-			}
-			if (DBNull.Value != feature["SHAPE_LENGTH"] && feature["SHAPE_LENGTH"] is not null) {
-				SHAPE_LENGTH = Convert.ToDecimal(feature["SHAPE_LENGTH"]);
 			}
 		}
 	}
@@ -21672,18 +21267,6 @@ namespace VortexLoader.S57Auto.esri
 		/// </summary>
 		[Description("NIS_LAST_MOD")]
 		internal DateTime? NIS_LAST_MOD = default;
-
-		/// <summary>
-		/// Shape_Length
-		/// </summary>
-		[Description("Shape_Length")]
-		internal decimal? SHAPE_LENGTH = default;
-
-		/// <summary>
-		/// Shape_Area
-		/// </summary>
-		[Description("Shape_Area")]
-		internal decimal? SHAPE_AREA = default;
 		public ProductCoverage (Feature feature) {
 			if (DBNull.Value != feature["OBJECTID"] && feature["OBJECTID"] is not null) {
 				OBJECTID = Convert.ToInt32(feature["OBJECTID"]);
@@ -21738,12 +21321,6 @@ namespace VortexLoader.S57Auto.esri
 			}
 			if (DBNull.Value != feature["NIS_LAST_MOD"] && feature["NIS_LAST_MOD"] is not null) {
 				NIS_LAST_MOD = Convert.ToDateTime(feature["NIS_LAST_MOD"]);
-			}
-			if (DBNull.Value != feature["SHAPE_LENGTH"] && feature["SHAPE_LENGTH"] is not null) {
-				SHAPE_LENGTH = Convert.ToDecimal(feature["SHAPE_LENGTH"]);
-			}
-			if (DBNull.Value != feature["SHAPE_AREA"] && feature["SHAPE_AREA"] is not null) {
-				SHAPE_AREA = Convert.ToDecimal(feature["SHAPE_AREA"]);
 			}
 		}
 	}

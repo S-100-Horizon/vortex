@@ -1,33 +1,31 @@
 ﻿using ArcGIS.Core.Data;
 using S100Framework.DomainModel.S101;
 using S100Framework.DomainModel.S101.FeatureTypes;
-using System.Reflection.Emit;
 using VortexLoader.S57.esri;
 
 namespace S100Framework.Applications
 {
     internal static partial class ImporterNIS
     {
-        private static void S57_OffshoreInstallationsA(Geodatabase source, Geodatabase target, QueryFilter filter) {
-            var tableName = "OffshoreInstallationsA";
-            var ps = "S-101";
+        private static void S57_NaturalFeaturesP(Geodatabase source, Geodatabase target, QueryFilter filter) {
+            var tableName = "NaturalFeaturesP";
 
-            using var featureclass = target.OpenDataset<FeatureClass>("surface");
-
-            using var offshoreinstallations = source.OpenDataset<FeatureClass>(tableName);
-
-            int recordCount = 0;
-            int convertedCount = 0;
+            using var s = source.OpenDataset<FeatureClass>(tableName);
+            using var featureclass = target.OpenDataset<FeatureClass>("point");
 
             using var buffer = featureclass.CreateRowBuffer();
             using var insert = featureclass.CreateInsertCursor();
 
-            using var cursor = offshoreinstallations.Search(filter, true);
+            using var cursor = s.Search(filter, true);
+
+            var convertedCount = 0;
+            var recordCount = 0;
+
 
             while (cursor.MoveNext()) {
                 recordCount += 1;
                 var feature = (Feature)cursor.Current;
-                var current = new OffshoreInstallationsA(feature); // (Row)cursor.Current;
+                var current = new NaturalFeaturesL(feature);
 
                 var objectid = current.OBJECTID ?? default;
                 var globalid = current.GLOBALID;
@@ -36,89 +34,165 @@ namespace S100Framework.Applications
                 var longname = current.LNAM ?? Strings.UNKNOWN;
                 var status = current.STATUS ?? default;
                 var condtn = current.CONDTN ?? default;
+                var natsur = current.NATSUR ?? default;
+                var catslo = current.CATSLO ?? default;
+                var colour = current.COLOUR ?? default;
+                var conrad = current.CONRAD ?? default;
+                var convis = current.CONVIS ?? default;
+                var catveg = current.CATVEG ?? default;
+                var elevat = current.ELEVAT ?? default;
+                var height = current.HEIGHT ?? default;
                 var verlen = current.VERLEN ?? default;
 
                 switch (subtype) {
-                    case 1: { // CBLARE_CableArea
-                            var instance = new CableArea();
-                            if (plts_comp_scale != default) {
-                                instance.scaleMinimum = plts_comp_scale;
-                            }
-
+                    case 1: { // LNDARE_LandArea
+                            var instance = new LandArea {
+                                condition = null,
+                                status = null,
+                                scaleMinimum = null,
+                            };
                             if (plts_comp_scale != default) {
                                 instance.scaleMinimum = plts_comp_scale;
                             }
                             AddStatus(instance.status, feature);
+                            AddCondition(instance.condition, feature);
                             AddFeatureName(instance.featureName, feature);
                             AddInformation(instance.information, feature);
-                            buffer["ps"] = ps;
+
+                            buffer["ps"] = "S-101";
                             buffer["code"] = instance.GetType().Name;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance);
                             buffer["shape"] = current.SHAPE;
                             insert.Insert(buffer);
+                            
                             Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
                             convertedCount++;
                         }
                         break;
-                    case 5: { // OFSPLF_OffshorePlatform
-                            var instance = new OffshorePlatform();
-                            if (plts_comp_scale != default) {
-                                instance.scaleMinimum = plts_comp_scale;
-                            }
+                    case 5: { // LNDELV_LandElevation
+                            var instance = new LandElevation {
+                                scaleMinimum = null,
+                            };
 
                             if (plts_comp_scale != default) {
                                 instance.scaleMinimum = plts_comp_scale;
                             }
-                            AddStatus(instance.status, feature);
+                            
                             AddFeatureName(instance.featureName, feature);
                             AddInformation(instance.information, feature);
-                            buffer["ps"] = ps;
+
+                            buffer["ps"] = "S-101";
                             buffer["code"] = instance.GetType().Name;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance);
                             buffer["shape"] = current.SHAPE;
                             insert.Insert(buffer);
+                            
                             Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
                             convertedCount++;
                         }
                         break;
-                    case 10: { // OSPARE_OffshoreProductionArea
-                            var instance = new OffshoreProductionArea();
+                    case 10: { // RAPIDS_Rapids
+                            var instance = new Rapids {
+                                
+                            };
                             if (plts_comp_scale != default) {
                                 instance.scaleMinimum = plts_comp_scale;
                             }
 
-                            if (plts_comp_scale != default) {
-                                instance.scaleMinimum = plts_comp_scale;
-                            }
-                            AddStatus(instance.status, feature);
+
                             AddFeatureName(instance.featureName, feature);
                             AddInformation(instance.information, feature);
-                            buffer["ps"] = ps;
+
+                            buffer["ps"] = "S-101";
                             buffer["code"] = instance.GetType().Name;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance);
                             buffer["shape"] = current.SHAPE;
                             insert.Insert(buffer);
+
                             Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
-                            convertedCount++;
+                            convertedCount++; 
                         }
                         break;
-                    case 15: { // PIPARE_PipelineArea
-                            var instance = new SubmarinePipelineArea();
+                    case 15: { // RIVERS_River
+                            var instance = new River {
+                                
+                            };
                             if (plts_comp_scale != default) {
                                 instance.scaleMinimum = plts_comp_scale;
                             }
 
-                            if (plts_comp_scale != default) {
-                                instance.scaleMinimum = plts_comp_scale;
-                            }
-                            AddStatus(instance.status, feature);
                             AddFeatureName(instance.featureName, feature);
                             AddInformation(instance.information, feature);
-                            buffer["ps"] = ps;
+
+                            buffer["ps"] = "S-101";
                             buffer["code"] = instance.GetType().Name;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance);
                             buffer["shape"] = current.SHAPE;
                             insert.Insert(buffer);
+
+                            Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
+                            convertedCount++; 
+                        }
+                        break;
+                    case 20: { // SLOTOP_SlopeTopline
+                            var instance = new SlopeTopline {
+
+                            };
+                            if (plts_comp_scale != default) {
+                                instance.scaleMinimum = plts_comp_scale;
+                            }
+                            
+                            AddFeatureName(instance.featureName, feature);
+                            AddInformation(instance.information, feature);
+
+                            buffer["ps"] = "S-101";
+                            buffer["code"] = instance.GetType().Name;
+                            buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance);
+                            buffer["shape"] = current.SHAPE;
+                            insert.Insert(buffer);
+
+                            Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
+                            convertedCount++; 
+                        }
+                        break;
+                    case 25: { // VEGATN_Vegetation
+                            var instance = new Vegetation {
+
+                            };
+                            if (plts_comp_scale != default) {
+                                instance.scaleMinimum = plts_comp_scale;
+                            }
+
+                            AddFeatureName(instance.featureName, feature);
+                            AddInformation(instance.information, feature);
+
+                            buffer["ps"] = "S-101";
+                            buffer["code"] = instance.GetType().Name;
+                            buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance);
+                            buffer["shape"] = current.SHAPE;
+                            insert.Insert(buffer);
+
+                            Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
+                            convertedCount++; 
+                        }
+                        break;
+                    case 30: { // WATFAL_Waterfall
+                            var instance = new Waterfall {
+
+                            };
+                            if (plts_comp_scale != default) {
+                                instance.scaleMinimum = plts_comp_scale;
+                            }
+
+                            AddFeatureName(instance.featureName, feature);
+                            AddInformation(instance.information, feature);
+
+                            buffer["ps"] = "S-101";
+                            buffer["code"] = instance.GetType().Name;
+                            buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance);
+                            buffer["shape"] = current.SHAPE;
+                            insert.Insert(buffer);
+
                             Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
                             convertedCount++;
                         }
@@ -131,7 +205,8 @@ namespace S100Framework.Applications
                 }
             }
             Logger.Current.DataTotalCount(tableName, recordCount, convertedCount);
+
         }
+
     }
 }
-
