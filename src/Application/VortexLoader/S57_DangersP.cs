@@ -1,6 +1,9 @@
 ﻿using ArcGIS.Core.Data;
+using S100Framework.DomainModel;
 using S100Framework.DomainModel.S101;
 using S100Framework.DomainModel.S101.FeatureTypes;
+using System;
+using System.Reflection.Metadata.Ecma335;
 using VortexLoader.S57.esri;
 
 namespace S100Framework.Applications
@@ -51,22 +54,59 @@ namespace S100Framework.Applications
 
                 switch (subtype) {
                     case 1: { // CTNARE
-                            // TODO: no instances in NIS
-                            throw new NotImplementedException();
+                            var instance = new CautionArea {
+
+                            };
+                            if (plts_comp_scale != default) {
+                                instance.scaleMinimum = plts_comp_scale;
+                            }
+
+
+
+                            AddStatus(instance.status, feature);
+                            AddInformation(instance.information, feature);
+
+                            buffer["ps"] = "S-101";
+                            buffer["code"] = instance.GetType().Name;
+                            buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance);
+                            buffer["shape"] = current.SHAPE;
+                            insert.Insert(buffer);
+
+                            Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
+                            convertedCount++;
                         }
-                        //break;
+                        break;
 
                     case 10: { // FSHFAC Fishing facilities
-                            // TODO: no instances in NIS
-                            throw new NotImplementedException();
+                            var instance = new FishingFacility {
+
+                            };
+                            if (plts_comp_scale != default) {
+                                instance.scaleMinimum = plts_comp_scale;
+                            }
+
+                            AddStatus(instance.status, feature);
+                            AddFeatureName(instance.featureName, feature);
+                            AddInformation(instance.information, feature);
+
+                            buffer["ps"] = "S-101";
+                            buffer["code"] = instance.GetType().Name;
+                            buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance);
+                            buffer["shape"] = current.SHAPE;
+                            insert.Insert(buffer);
+
+                            Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
+                            convertedCount++;
                         }
-                        //break;
+                        break;
 
                     case 20: { // OBSTRN
                             if (catObs == default) {
                                 Logger.Current.DataError(objectid, tableName, longname, $"Unknown catobs: {catObs}");
                                 continue;
                             }
+
+
 
                             // Foul ground
                             if (catObs == 7) {
@@ -136,10 +176,6 @@ namespace S100Framework.Applications
 
                             };
 
-
-
-
-
                             if (isValsouEmpty) {
                                 // TODO: implement
                                 //var featureCursor = QueryByGeometry(current.GetShape())
@@ -185,8 +221,20 @@ namespace S100Framework.Applications
                                 surroundingDepth = 0,
                                 valueOfSounding = 0,
                                 waterLevelEffect = waterLevelEffect.CoversAndUncovers
-
                             };
+
+                            //      S57
+                            //    Code Description
+                            // 1   partly submerged at high water
+                            // 2   always dry
+                            // 3   always under water / submerged
+                            // 4   covers and uncovers
+                            // 5   awash
+                            // 6   subject to inundation or flooding
+                            // 7   floating
+                            // -32767  Unknown
+
+
                             if (current.WATLEV.HasValue) {
                                 uwtroc.waterLevelEffect = current.WATLEV.Value switch {
                                     1 => waterLevelEffect.PartlySubmergedAtHighWater,  // partly submerged at high water
@@ -223,20 +271,65 @@ namespace S100Framework.Applications
 
                     case 40: { // WATTUR
                             // TODO: no instances in NIS
-                            throw new NotImplementedException();
+                            // TODO: surrounding depth, valueofsounding
+                            var instance = new WaterTurbulence {
+
+                            };
+                            if (current.WATLEV.HasValue) {
+                                instance.categoryOfWaterTurbulence = current.WATLEV.Value switch {
+                                    1 => categoryOfWaterTurbulence.Breakers,
+                                    2 => categoryOfWaterTurbulence.Eddies,
+                                    3 => categoryOfWaterTurbulence.Overfalls,
+                                    4 => categoryOfWaterTurbulence.TideRips,
+                                    5 => categoryOfWaterTurbulence.Bombora,
+                                    - 32767 => (categoryOfWaterTurbulence)(-32767),
+                                    // TODO: QUESTION: how to handle -32767 on a required attribute without an S-101 equivalent "unknown". Illegal value assigned. MUST be fixed.
+                                    _ => throw new IndexOutOfRangeException(),
+                                };
+                            }
+
+                            if (current.PLTS_COMP_SCALE.HasValue) {
+                                instance.scaleMinimum = current.PLTS_COMP_SCALE;
+                            }
+
+                            AddFeatureName(instance.featureName, feature);
+                            AddInformation(instance.information, feature);
+
+                            buffer["ps"] = ps;
+                            buffer["code"] = instance.GetType().Name;
+                            buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance);
+                            buffer["shape"] = current.SHAPE;
+                            insert.Insert(buffer);
+                            Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
+                            convertedCount++;
 
                         }
+                        break;
                     case 45: { // WRECKS
                             waterLevelEffect waterLeveleffectCurrent = default;
 
-                            var wreck = new Wreck {
+                            var instance = new Wreck {
                                 surroundingDepth = valsou,
                                 waterLevelEffect = waterLeveleffectCurrent
 
                             };
 
+                            if (current.CATWRK.HasValue) {
+                                instance.categoryOfWreck = current.CATWRK switch {
+                                    1 => categoryOfWreck.NonDangerousWreck,
+                                    2 => categoryOfWreck.DangerousWreck,
+                                    3 => categoryOfWreck.DistributedRemainsOfWreck,
+                                    4 => categoryOfWreck.WreckShowingMastMasts,
+                                    5 => categoryOfWreck.WreckShowingAnyPortionOfHullOrSuperstructure,
+                                    - 32767 => (categoryOfWreck)(-32767),
+                                    // TODO: QUESTION: how to handle -32767 on a required attribute without an S-101 equivalent "unknown". Illegal value assigned. MUST be fixed.
+                                    _ => throw new IndexOutOfRangeException(),
+                                };
+                            }
+
+
                             if (current.WATLEV.HasValue) {
-                                wreck.waterLevelEffect = current.WATLEV switch {
+                                instance.waterLevelEffect = current.WATLEV switch {
                                     1 => waterLevelEffect.PartlySubmergedAtHighWater,  // partly submerged at high water
                                     2 => waterLevelEffect.AlwaysDry,  // always dry
                                     3 => waterLevelEffect.AlwaysUnderWaterSubmerged,  // always under water/submerged
@@ -252,18 +345,18 @@ namespace S100Framework.Applications
 
 
                             if (current.PLTS_COMP_SCALE.HasValue) {
-                                wreck.scaleMinimum = current.PLTS_COMP_SCALE.Value;
+                                instance.scaleMinimum = current.PLTS_COMP_SCALE.Value;
                             }
-                            AddStatus(wreck.status, feature);
-                            AddFeatureName(wreck.featureName, feature);
-                            AddInformation(wreck.information, feature);
+                            AddStatus(instance.status, feature);
+                            AddFeatureName(instance.featureName, feature);
+                            AddInformation(instance.information, feature);
 
                             buffer["ps"] = ps;
-                            buffer["code"] = wreck.GetType().Name;
-                            buffer["json"] = System.Text.Json.JsonSerializer.Serialize(wreck);
+                            buffer["code"] = instance.GetType().Name;
+                            buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance);
                             buffer["shape"] = current.SHAPE;
                             insert.Insert(buffer);
-                            Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(wreck));
+                            Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
                             convertedCount++;
 
                         }
