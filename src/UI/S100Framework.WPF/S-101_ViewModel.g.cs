@@ -1,20 +1,16 @@
-using System;
-using System.Linq;
-using System.ComponentModel;
-using System.Runtime.CompilerServices;
-using System.Collections.Immutable;
-using System.Collections.ObjectModel;
-using System.Reflection;
 using S100Framework.DomainModel;
 using S100Framework.DomainModel.Bindings;
 using S100Framework.DomainModel.S101;
 using S100Framework.DomainModel.S101.ComplexAttributes;
-using S100Framework.DomainModel.S101.InformationTypes;
 using S100Framework.DomainModel.S101.FeatureTypes;
+using System.Collections.Immutable;
+using System.Collections.ObjectModel;
+using System.ComponentModel;
 using Xceed.Wpf.Toolkit.PropertyGrid.Attributes;
 
 #nullable enable
-namespace S100Framework.WPF.ViewModel.S101 {
+namespace S100Framework.WPF.ViewModel.S101
+{
     internal static class Preamble {
         public static ImmutableDictionary<string, Func<ViewModelBase>> _creators => ImmutableDictionary.Create<string, Func<ViewModelBase>>().AddRange(new Dictionary<string, Func<ViewModelBase>> { { typeof(DomainModel.S101.InformationTypes.ContactDetails).Name, () =>
         {

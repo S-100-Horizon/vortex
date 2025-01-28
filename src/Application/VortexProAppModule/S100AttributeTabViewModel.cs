@@ -6,6 +6,7 @@ using ArcGIS.Desktop.Editing.Attributes;
 using ArcGIS.Desktop.Framework;
 using ArcGIS.Desktop.Framework.Threading.Tasks;
 using ArcGIS.Desktop.Mapping;
+using S100Framework.Catalogues;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -29,6 +30,13 @@ namespace VortexProAppModule
     {
         static CultureInfo culture = new("en-GB", false);
 
+        public class InspectorHandle
+        {
+            public Func<Inspector, string, Type> TypeSelector { get; set; }
+
+            public Func<FeatureCatalogue, IEnumerable<string>> Types { get; set; }
+        }
+
         internal record SelectedTemplate(string Schema, string Code)
         {
             public static SelectedTemplate Empty => new(string.Empty, string.Empty);
@@ -38,9 +46,32 @@ namespace VortexProAppModule
 
         private readonly VortexProAppModule.Module _module;
 
+        private InspectorHandle _inspectorHandle = default;
+
+        private InspectorHandle _inspectorHandleFeature => new InspectorHandle {
+            TypeSelector = this.FeatureTypeSelector,
+            Types = (e) => e.FeatureTypes.Select(e => e.Code),
+        };
+
+        private InspectorHandle _inspectorHandleFeatureAssociation => new InspectorHandle {
+            TypeSelector = this.FeatureAssociationTypeSelector,
+            Types = (e) => e.FeatureAssociationTypes.Select(e => e.Code),
+        };
+
+        private InspectorHandle _inspectorHandleInformation => new InspectorHandle {
+            TypeSelector = this.InformationTypeSelector,
+            Types = (e) => e.InformationTypes.Select(e => e.Code),
+        };
+
+        private InspectorHandle _inspectorHandleInformationAssociation => new InspectorHandle {
+            TypeSelector = this.InformationAssociationTypeSelector,
+            Types = (e) => e.InformationAssociationTypes.Select(e => e.Code),
+        };
+
+
         private SelectedTemplate _selectedTemplate = SelectedTemplate.Empty;
 
-        private SelectedType _selectedFeatureType = default;
+        private SelectedType _selectedModelType = default;
 
         private ObservableCollection<string> _schemas = new();
 
@@ -48,11 +79,11 @@ namespace VortexProAppModule
 
         private object _selectedProperty = default;
 
-        private ObservableCollection<SelectedType> _featureTypes = new();
+        private ObservableCollection<SelectedType> _modelTypes = new();
 
         private bool _isSelectedSchemaEnabled = true;
 
-        private bool _isSelectedFeatureTypeEnabled = false;
+        private bool _isSelectedModelTypeEnabled = false;
 
 
         public S100AttributeTabViewModel(XElement options, bool canChangeOptions) : base(options, canChangeOptions) {
@@ -60,15 +91,15 @@ namespace VortexProAppModule
 
             Schemas.AddRange(_module.GetFeatureCatalogues());
 
-            CreateFeatureType = new RelayCommand(async () => {
+            CreateInstance = new RelayCommand(async () => {
                 var inspector = base.Inspector;
 
                 if (inspector != default) {
                     inspector["ps"] = SelectedSchema;
-                    inspector["code"] = SelectedFeatureType.Code;
+                    inspector["code"] = SelectedModelType.Code;
 
                     IsSelectedSchemaEnabled = false;
-                    IsSelectedFeatureTypeEnabled = false;
+                    IsSelectedModelTypeEnabled = false;
 
                     await QueuedTask.Run(() => {
                         inspector.Apply();
@@ -82,8 +113,8 @@ namespace VortexProAppModule
 
             switch (name) {
                 case "SelectedSchema": {
-                        SelectedFeatureType = default;
-                        IsSelectedFeatureTypeEnabled = false;
+                        SelectedModelType = default;
+                        IsSelectedModelTypeEnabled = false;
 
                         if (SelectedSchema != default) {
                             var schema = SelectedSchema;
@@ -91,12 +122,14 @@ namespace VortexProAppModule
                             if (!string.IsNullOrEmpty(schema)) {
                                 var featureCatalogue = _module.GetFeatureCatalogue(schema);
 
+                                var types = _inspectorHandle.Types(featureCatalogue);
+
                                 System.Windows.Application.Current.Dispatcher.Invoke(() => {
-                                    FeatureTypes.Clear();
-                                    //FeatureTypes.AddRange(featureCatalogue.FeatureTypes.OrderBy(e => e.Code));
+                                    ModelTypes.Clear();
+                                    ModelTypes.AddRange(types.OrderBy(e => e).Select(e => new SelectedType(e)));
                                 });
 
-                                IsSelectedFeatureTypeEnabled = true;
+                                IsSelectedModelTypeEnabled = true;
                             }
                         }
                         _selectedTemplate = SelectedTemplate.Empty;
@@ -105,16 +138,16 @@ namespace VortexProAppModule
                     }
                     break;
 
-                case "SelectedFeatureType": {
-                        if (SelectedFeatureType != default) {
-                            var featuretype = SelectedFeatureType.Code;
+                case "SelectedModelType": {
+                        if (SelectedModelType != default) {
+                            var featuretype = SelectedModelType.Code;
 
                             if (featuretype != default) {
                                 var featureCatalogue = _module.GetFeatureCatalogue(SelectedSchema);
 
                                 //var featureType = featureCatalogue.FeatureTypes.Single(e => e.Code.Equals(featuretype));
 
-                                //_selectedTemplate = new SelectedTemplate(SelectedSchema, featureType.Code);
+                                _selectedTemplate = new SelectedTemplate(SelectedSchema, featuretype);
 
                                 NotifyPropertyChanged(() => IsCreateButtonEnabled);
                             }
@@ -138,227 +171,10 @@ namespace VortexProAppModule
             try {
                 var uuid = Convert.ToString(inspector["GlobalID"]).ToUpperInvariant();
 
-#if S100ed1
-                if (!inspector.MapMember.Map.Name.Equals("S100ed1"))
-                    return;
-
-                var json = await QueuedTask.Run(() => {
-                    var fc = inspector.MapMember switch {
-                        FeatureLayer l => l.GetFeatureClass(),
-                        _ => throw new InvalidOperationException(),
-                    };
-
-                    using var geodatabase = (Geodatabase)fc.GetDatastore();
-
-                    var syntax = geodatabase.GetSQLSyntax();
-                    var tableNames = syntax.ParseTableName(fc.GetName());
-
-                    var refIds = new Dictionary<string, string>();
-
-                    using var table_feturetype = geodatabase.OpenDataset<Table>(syntax.QualifyTableName(tableNames.Item1, tableNames.Item2, "featuretype"));
-
-                    using var cursor_featuretype = table_feturetype.Search(new QueryFilter {
-                        WhereClause = $"geoid = '{uuid}'",
-                    }, true);
-
-                    cursor_featuretype.MoveNext();
-
-                    var featureid = Convert.ToString(cursor_featuretype.Current["GlobalID"]).ToUpperInvariant();
-
-                    var flatten = new Dictionary<string, JsonValue>();
-
-                    using var table_complex = geodatabase.OpenDataset<Table>(syntax.QualifyTableName(tableNames.Item1, tableNames.Item2, "node_complex"));
-
-                    using var cursor_complex = table_complex.Search(new QueryFilter {
-                        WhereClause = $"refid = '{featureid}' and parentid is null",    //TODO: remove is null
-                    }, true);
-
-                    while (cursor_complex.MoveNext()) {
-                        var current = cursor_complex.Current;
-
-                        refIds.Add(Convert.ToString(current["code"]), Convert.ToString(current["GlobalID"]).ToUpperInvariant());
-                    }
-
-                    using var table_simple = geodatabase.OpenDataset<Table>(syntax.QualifyTableName(tableNames.Item1, tableNames.Item2, "node_simple"));
-
-                    using var cursor_simple = table_simple.Search(new QueryFilter {
-                        WhereClause = $"refid = '{featureid}' OR refid in ({string.Join(",", refIds.Values.Select(e => $"'{e}'"))})",
-                    }, true);
-
-                    var dictionaryArrays = new Dictionary<string, int>();
-
-                    while (cursor_simple.MoveNext()) {
-                        var current = cursor_simple.Current;
-
-                        var refid = Convert.ToString(cursor_simple.Current["refid"]).ToUpperInvariant();
-
-                        var value = current["value"];
-
-                        if (DBNull.Value == value)
-                            continue;
-
-                        var root = $"{Convert.ToString(current["code"])}";
-                        if (!featureid.Equals(refid, StringComparison.CurrentCultureIgnoreCase)) {
-                            var typeName = $"{refIds.Single(e => e.Value.Equals(refid)).Key}";
-
-                            var t = type.GetProperty(typeName);
-
-                            if (t.PropertyType.IsArray) {
-                                if (!dictionaryArrays.ContainsKey(typeName))
-                                    dictionaryArrays.Add(typeName, 0);
-                                else
-                                    dictionaryArrays[typeName] += 1;
-
-                                root = $"{refIds.Single(e => e.Value.Equals(refid)).Key}[{dictionaryArrays[typeName]}].{root}";
-                            }
-                            else
-                                root = $"{refIds.Single(e => e.Value.Equals(refid)).Key}.{root}";
-                        }
-                        else {
-                            var t = type.GetProperty(root);
-
-                            if (t.PropertyType.IsArray) {
-                                if (!dictionaryArrays.ContainsKey(root))
-                                    dictionaryArrays.Add(root, 0);
-                                else
-                                    dictionaryArrays[root] += 1;
-
-                                root = $"{root}[{dictionaryArrays[root]}]";
-                            }
-                        }
-
-
-                        flatten.Add(root, Convert.ToString(current["valuetype"]) switch {
-                            "boolean" => JsonValue.Create<Boolean>(Boolean.Parse(Convert.ToString(value))),
-                            //"enumeration" => $"\"{Convert.ToString(current["code"])}\": {Convert.ToString(value, culture)}",
-                            "real" => JsonValue.Create<decimal>(decimal.Parse(Convert.ToString(value))),
-                            "text" => JsonValue.Create<string>(Convert.ToString(value)),
-                            //"S100_TruncatedDate" => "",
-                            "date" => JsonValue.Create<DateTime>(DateTime.Parse(Convert.ToString(value))),
-                            //"time" => "",
-                            "integer" => JsonValue.Create<int>(int.Parse(Convert.ToString(value))),
-                            "URN" => JsonValue.Create<string>(Convert.ToString(value)),
-                            _ => throw new InvalidDataException(),
-                        });
-                    }
-
-                    return Unflatten(flatten).ToString();
-                });
-#endif
-
-#if S100ed2
-                if (!inspector.MapMember.Map.Name.Equals("S100ed2", StringComparison.CurrentCultureIgnoreCase))
-                    return;
-
-                var featuretype = inspector;
-
-                SelectedProperty = await QueuedTask.Run(() => {
-                    var fc = inspector.MapMember switch {
-                        FeatureLayer l => l.GetFeatureClass(),
-                        _ => throw new InvalidOperationException(),
-                    };
-
-                    using var geodatabase = (Geodatabase)fc.GetDatastore();
-
-                    var syntax = geodatabase.GetSQLSyntax();
-                    var tableNames = syntax.ParseTableName(fc.GetName());
-
-                    var featureid = Convert.ToString(featuretype["GlobalID"]).ToUpperInvariant();
-                    var schema = Convert.ToString(featuretype["ps"]);
-
-                    if (string.IsNullOrEmpty(schema)) {
-                        SelectedSchema = default;
-                        SelectedFeatureType = default;
-
-                        System.Windows.Application.Current.Dispatcher.Invoke(() => {
-                            FeatureTypes.Clear();
-                        });
-
-                        _selectedTemplate = SelectedTemplate.Empty;
-                        return default;
-                    }
-
-                    var featureCatalogue = _module.GetFeatureCatalogue(schema);
-
-                    var featureType = featureCatalogue.FeatureTypes.Single(e => e.Code.Equals(Convert.ToString(featuretype["code"])));
-
-                    if (!_selectedTemplate.Schema.Equals(schema) || !_selectedTemplate.Code.Equals(featureType.Code)) {
-                        SelectedSchema = schema;
-
-                        System.Windows.Application.Current.Dispatcher.Invoke(() => {
-                            FeatureTypes.Clear();
-                            FeatureTypes.AddRange(featureCatalogue.FeatureTypes.OrderBy(e => e.Code));
-                        });
-
-                        SelectedFeatureType = featureType;
-
-                        _selectedTemplate = new SelectedTemplate(schema, featureType.Code);
-                    }
-
-                    var type = featureCatalogue.Assembly!.GetType($"{S100Framework.Roslyn.Namespace}.{featureType.Code}", true);
-
-
-                    using var attribute = geodatabase.OpenDataset<Table>(syntax.QualifyTableName(tableNames.Item1, tableNames.Item2, "attribute"));
-
-                    using var cursor_attribute = attribute.Search(new QueryFilter {
-                        WhereClause = $"schema = '{schema}' AND featureid = '{featureid}'",
-                    }, true);
-
-                    var flatten = new Dictionary<string, JsonValue>();
-
-                    while (cursor_attribute.MoveNext()) {
-                        var current = cursor_attribute.Current;
-
-                        var code = Convert.ToString(current["code"]);
-                        var valuetype = Convert.ToString(current["valuetype"]);
-                        var value = Convert.ToString(current["value"]);
-                        var path = Convert.ToString(current["path"]);
-
-                        var line = valuetype.ToLowerInvariant() switch {
-                            "boolean" => JsonValue.Create<Boolean>(Boolean.Parse(value)),
-                            //"enumeration" => $"\"{Convert.ToString(current["code"])}\": {Convert.ToString(value, culture)}",
-                            "real" => JsonValue.Create<decimal>(decimal.Parse(value)),
-                            "text" => JsonValue.Create<string>(value),
-                            //"S100_TruncatedDate" => "",
-                            "date" => JsonValue.Create<DateTime>(DateTime.Parse(Convert.ToString(value))),
-                            //"time" => "",
-                            "integer" => JsonValue.Create<int>(int.Parse(value)),
-                            "urn" => JsonValue.Create<string>(value),
-                            _ => throw new InvalidDataException(),
-                        };
-
-                        flatten.Add(path, line);
-                    }
-
-                    if(flatten.Count==0)
-                        return Activator.CreateInstance(type);
-
-                    var json = Unflatten(flatten).ToString();
-
-                    var instance = System.Text.Json.JsonSerializer.Deserialize(json, type);                   
-
-                    return instance;
-                });
-
-                if (SelectedProperty == default) {
-                    SelectedSchema = default;
-                    SelectedFeatureType = default;
-
-                    IsSelectedSchemaEnabled = true;
-                    IsSelectedFeatureTypeEnabled = SelectedSchema != default;
-                }
-                else {
-                    IsSelectedSchemaEnabled = false;
-                    IsSelectedFeatureTypeEnabled = false;
-                }
-                NotifyPropertyChanged(() => IsCreateButtonEnabled);
-#endif
-
-#if S100ed3
                 if (!inspector.MapMember.Map.Name.Equals("S100ed3", StringComparison.CurrentCultureIgnoreCase))
                     return;
 
-                SelectedProperty = await QueuedTask.Run(() => {
+                await QueuedTask.Run(() => {
                     var fc = inspector.MapMember switch {
                         FeatureLayer l => l.GetFeatureClass(),
                         StandaloneTable t => t.GetTable(),
@@ -370,38 +186,48 @@ namespace VortexProAppModule
                     var syntax = geodatabase.GetSQLSyntax();
                     var tableNames = syntax.ParseTableName(fc.GetName());
 
+                    this._inspectorHandle = tableNames.Item3.ToLowerInvariant() switch {
+                        "point" => _inspectorHandleFeature,
+                        "pointset" => _inspectorHandleFeature,
+                        "curve" => _inspectorHandleFeature,
+                        "surface" => _inspectorHandleFeature,
+                        "informationtype" => _inspectorHandleInformation,
+                        "featureassociation" => _inspectorHandleFeatureAssociation,
+                        "informationassociation" => _inspectorHandleInformationAssociation,
+                        _ => throw new NotImplementedException(),
+                    };
+                });
+
+                this.SelectedProperty = await QueuedTask.Run((Func<S100Framework.WPF.ViewModel.ViewModelBase>)(() => {
+                    //var fc = inspector.MapMember switch {
+                    //    FeatureLayer l => l.GetFeatureClass(),
+                    //    StandaloneTable t => t.GetTable(),
+                    //    _ => throw new InvalidOperationException(),
+                    //};
+
+                    //using var geodatabase = (Geodatabase)fc.GetDatastore();
+
+                    //var syntax = geodatabase.GetSQLSyntax();
+                    //var tableNames = syntax.ParseTableName(fc.GetName());
+
                     var featureid = Convert.ToString(inspector["GlobalID"]).ToUpperInvariant();
                     var schema = Convert.ToString(inspector["ps"]);
 
                     if (string.IsNullOrEmpty(schema)) {
-                        SelectedSchema = default;
-                        SelectedFeatureType = default;
+                        this.SelectedSchema = default;
+                        this.SelectedModelType = default;
 
                         System.Windows.Application.Current.Dispatcher.Invoke(() => {
-                            FeatureTypes.Clear();
+                            this.ModelTypes.Clear();
                         });
 
-                        _selectedTemplate = SelectedTemplate.Empty;
+                        this._selectedTemplate = SelectedTemplate.Empty;
                         return default;
                     }
 
                     var code = Convert.ToString(inspector["code"]);
 
-                    Func<Inspector, string, Type> selector = tableNames.Item3.ToLowerInvariant() switch {
-                        "point" => FeatureTypeSelector,
-                        "pointset" => FeatureTypeSelector,
-                        "curve" => FeatureTypeSelector,
-                        "surface" => FeatureTypeSelector,
-                        "informationtype" => InformationTypeSelector,
-                        "attributebinding" => (Inspector inspector, string schema) => {
-                            return null;
-                        }
-                        ,
-                        "informationbinding" => throw new NotImplementedException(),
-                        _ => throw new NotImplementedException(),
-                    };
-
-                    var type = selector(inspector, schema);
+                    var type = this._inspectorHandle.TypeSelector(inspector, schema);
 
                     if (type is null) {
                         return default;
@@ -410,7 +236,7 @@ namespace VortexProAppModule
                     var viewmodel = S100Framework.WPF.Helper.CreateViewModel(schema, type);
 
                     object instance;
-                    if (DBNull.Value.Equals(inspector["JSON"]) || String.IsNullOrEmpty(Convert.ToString(inspector["JSON"]))) {
+                    if (DBNull.Value.Equals(inspector["JSON"]) || string.IsNullOrEmpty(Convert.ToString(inspector["JSON"]))) {
                         instance = Activator.CreateInstance(type);
                     }
                     else {
@@ -434,22 +260,21 @@ namespace VortexProAppModule
                     };
 
                     return viewmodel;
-                });
+                }));
 
 
                 if (SelectedProperty == default) {
                     SelectedSchema = default;
-                    SelectedFeatureType = default;
+                    SelectedModelType = default;
 
                     IsSelectedSchemaEnabled = true;
-                    IsSelectedFeatureTypeEnabled = SelectedSchema != default;
+                    IsSelectedModelTypeEnabled = SelectedSchema != default;
                 }
                 else {
                     IsSelectedSchemaEnabled = false;
-                    IsSelectedFeatureTypeEnabled = false;
+                    IsSelectedModelTypeEnabled = false;
                 }
                 NotifyPropertyChanged(() => IsCreateButtonEnabled);
-#endif
             }
             catch { }
         }
@@ -467,15 +292,41 @@ namespace VortexProAppModule
                 var types = featureCatalogue.FeatureTypes.Select(e => e.Code);
 
                 System.Windows.Application.Current.Dispatcher.Invoke(() => {
-                    FeatureTypes.Clear();
-                    FeatureTypes.AddRange(types.OrderBy(e => e).Select(e => new SelectedType(e)));
+                    ModelTypes.Clear();
+                    ModelTypes.AddRange(types.OrderBy(e => e).Select(e => new SelectedType(e)));
                 });
 
-                SelectedFeatureType = FeatureTypes.Single(e => e.Code == code);
+                SelectedModelType = ModelTypes.Single(e => e.Code == code);
 
                 //    _selectedTemplate = new SelectedTemplate(schema, featureType.Code);
             }
 
+            var type = featureCatalogue.Assembly!.GetType($"{S100Framework.Catalogues.FeatureCatalogue.Namespace(schema, "FeatureTypes")}.{code}", true);
+
+            return type;
+        }
+
+        private Type FeatureAssociationTypeSelector(Inspector inspector, string schema) {
+            var featureid = Convert.ToString(inspector["GlobalID"]).ToUpperInvariant();
+
+            var featureCatalogue = _module.GetFeatureCatalogue(schema);
+
+            var code = Convert.ToString(inspector["code"]);
+
+            if (!_selectedTemplate.Schema.Equals(schema) || !_selectedTemplate.Code.Equals(code)) {
+                SelectedSchema = schema;
+
+                var types = featureCatalogue.FeatureAssociationTypes.Select(e => e.Code);
+
+                System.Windows.Application.Current.Dispatcher.Invoke(() => {
+                    ModelTypes.Clear();
+                    ModelTypes.AddRange(types.OrderBy(e => e).Select(e => new SelectedType(e)));
+                });
+
+                SelectedModelType = ModelTypes.Single(e => e.Code == code);
+            }
+
+            return typeof(S100Framework.DomainModel.FeatureAssociation);
             var type = featureCatalogue.Assembly!.GetType($"{S100Framework.Catalogues.FeatureCatalogue.Namespace(schema, "FeatureTypes")}.{code}", true);
 
             return type;
@@ -494,13 +345,11 @@ namespace VortexProAppModule
                 var types = featureCatalogue.InformationTypes.Select(e => e.Code);
 
                 System.Windows.Application.Current.Dispatcher.Invoke(() => {
-                    FeatureTypes.Clear();
-                    FeatureTypes.AddRange(types.OrderBy(e => e).Select(e => new SelectedType(e)));
+                    ModelTypes.Clear();
+                    ModelTypes.AddRange(types.OrderBy(e => e).Select(e => new SelectedType(e)));
                 });
 
-                SelectedFeatureType = FeatureTypes.Single(e => e.Code == code);
-
-                //    _selectedTemplate = new SelectedTemplate(schema, featureType.Code);
+                SelectedModelType = ModelTypes.Single(e => e.Code == code);
             }
 
             var type = featureCatalogue.Assembly!.GetType($"{S100Framework.Catalogues.FeatureCatalogue.Namespace(schema, "InformationTypes")}.{code}", true);
@@ -508,7 +357,33 @@ namespace VortexProAppModule
             return type;
         }
 
-        public ICommand CreateFeatureType { get; set; }
+        private Type InformationAssociationTypeSelector(Inspector inspector, string schema) {
+            var featureid = Convert.ToString(inspector["GlobalID"]).ToUpperInvariant();
+
+            var featureCatalogue = _module.GetFeatureCatalogue(schema);
+
+            var code = Convert.ToString(inspector["code"]);
+
+            if (!_selectedTemplate.Schema.Equals(schema) || !_selectedTemplate.Code.Equals(code)) {
+                SelectedSchema = schema;
+
+                var types = featureCatalogue.InformationAssociationTypes.Select(e => e.Code);
+
+                System.Windows.Application.Current.Dispatcher.Invoke(() => {
+                    ModelTypes.Clear();
+                    ModelTypes.AddRange(types.OrderBy(e => e).Select(e => new SelectedType(e)));
+                });
+
+                SelectedModelType = ModelTypes.Single(e => e.Code == code);
+            }
+
+            return typeof(S100Framework.DomainModel.InformationAssociation);
+            var type = featureCatalogue.Assembly!.GetType($"{S100Framework.Catalogues.FeatureCatalogue.Namespace(schema, "InformationTypes")}.{code}", true);
+
+            return type;
+        }
+
+        public ICommand CreateInstance { get; set; }
 
         public ObservableCollection<string> Schemas {
             get => _schemas;
@@ -520,14 +395,14 @@ namespace VortexProAppModule
             set => SetProperty(ref _selectedSchema, value);
         }
 
-        public ObservableCollection<SelectedType> FeatureTypes {
-            get => _featureTypes;
-            set => SetProperty(ref _featureTypes, value);
+        public ObservableCollection<SelectedType> ModelTypes {
+            get => _modelTypes;
+            set => SetProperty(ref _modelTypes, value);
         }
 
-        public SelectedType SelectedFeatureType {
-            get => _selectedFeatureType;
-            set => SetProperty(ref _selectedFeatureType, value);
+        public SelectedType SelectedModelType {
+            get => _selectedModelType;
+            set => SetProperty(ref _selectedModelType, value);
         }
 
         public object SelectedProperty {
@@ -540,12 +415,12 @@ namespace VortexProAppModule
             set => SetProperty(ref _isSelectedSchemaEnabled, value);
         }
 
-        public bool IsSelectedFeatureTypeEnabled {
-            get => _isSelectedFeatureTypeEnabled;
-            set => SetProperty(ref _isSelectedFeatureTypeEnabled, value);
+        public bool IsSelectedModelTypeEnabled {
+            get => _isSelectedModelTypeEnabled;
+            set => SetProperty(ref _isSelectedModelTypeEnabled, value);
         }
 
-        public bool IsCreateButtonEnabled => IsSelectedSchemaEnabled && IsSelectedFeatureTypeEnabled && _selectedTemplate != SelectedTemplate.Empty;
+        public bool IsCreateButtonEnabled => IsSelectedSchemaEnabled && IsSelectedModelTypeEnabled && _selectedTemplate != SelectedTemplate.Empty;
 
 
         private static JsonNode Unflatten(Dictionary<string, JsonValue> source) {
