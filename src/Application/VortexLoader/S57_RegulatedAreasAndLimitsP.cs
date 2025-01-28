@@ -1,6 +1,7 @@
 ﻿using ArcGIS.Core.Data;
 using VortexLoader.S57.esri;
 using S100Framework.DomainModel.S101.FeatureTypes;
+using VortexLoader.S57.esri;
 
 namespace S100Framework.Applications
 {
@@ -12,7 +13,7 @@ namespace S100Framework.Applications
 
             using var featureclass = target.OpenDataset<FeatureClass>("surface");
 
-            using var offshoreinstallations = source.OpenDataset<FeatureClass>(tableName);
+            using var regulatedAreasAndLimitsP = source.OpenDataset<FeatureClass>(tableName);
 
             int recordCount = 0;
             int convertedCount = 0;
@@ -20,12 +21,12 @@ namespace S100Framework.Applications
             using var buffer = featureclass.CreateRowBuffer();
             using var insert = featureclass.CreateInsertCursor();
 
-            using var cursor = offshoreinstallations.Search(filter, true);
+            using var cursor = regulatedAreasAndLimitsP.Search(filter, true);
 
             while (cursor.MoveNext()) {
                 recordCount += 1;
                 var feature = (Feature)cursor.Current;
-                var current = new RegulatedAreasAndLimitsA(feature); // (Row)cursor.Current;
+                var current = new RegulatedAreasAndLimitsP(feature); // (Row)cursor.Current;
 
                 var objectid = current.OBJECTID ?? default;
                 var globalid = current.GLOBALID;

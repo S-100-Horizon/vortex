@@ -22,7 +22,7 @@ namespace S100Framework.Applications
 
             var ps = "S-101";
 
-            var aidstonavigation = source.OpenDataset<FeatureClass>("DepthsL");
+            var depthsl = source.OpenDataset<FeatureClass>("DepthsL");
             var plts_spatialattributel = source.OpenDataset<FeatureClass>("PLTS_SpatialAttributeL");
             
             using var featureClass = target.OpenDataset<FeatureClass>("curve");
@@ -31,7 +31,7 @@ namespace S100Framework.Applications
             using var buffer = featureClass.CreateRowBuffer();
             using var insert = featureClass.CreateInsertCursor();
 
-            using var cursor = aidstonavigation.Search(filter, true);
+            using var cursor = depthsl.Search(filter, true);
             int recordCount = 0;
             int convertedCount = 0;
             

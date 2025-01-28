@@ -87,7 +87,12 @@ namespace S100Framework.Applications
                             if (plts_comp_scale != default) {
                                 instance.scaleMinimum = plts_comp_scale;
                             }
-                            
+
+                            if (current.ELEVAT != default) {
+                                instance.elevation = current.ELEVAT ?? default;
+                            }
+
+
                             AddFeatureName(instance.featureName, feature);
                             AddInformation(instance.information, feature);
 

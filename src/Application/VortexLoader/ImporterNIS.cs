@@ -63,6 +63,18 @@ namespace S100Framework.Applications
                 informationtype.DeleteRows(query);
             }
 
+            //  CulturalFeaturesA
+            S57_CulturalFeaturesA(source, destination, filter);
+            
+            //  CulturalFeaturesL
+            S57_CulturalFeaturesL(source, destination, filter);
+            
+            //  CulturalFeaturesP
+            S57_CulturalFeaturesP(source, destination, filter);
+
+            //  Seabed
+            S57_SeabedP(source, destination, filter);
+
             //  ProductCoverage
             S57_ProductCoverage(source, destination, filter);
 
@@ -120,13 +132,8 @@ namespace S100Framework.Applications
             //  DepthsA
             S57_DepthsA(source, destination, filter);
 
-            //  NaturalFeaturesA
-            S57_NaturalFeaturesA(source, destination, filter);
-
             //  SoundingsP
             S57_SoundingsP(source, destination, filter);
-
-
 
             return true;
         }

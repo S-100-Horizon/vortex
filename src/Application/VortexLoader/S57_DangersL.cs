@@ -12,7 +12,7 @@ namespace S100Framework.Applications
 
             var ps = "S-101";
 
-            var dangersp = source.OpenDataset<FeatureClass>("DangersL");
+            var dangersl = source.OpenDataset<FeatureClass>("DangersL");
 
             //var dredged = source.OpenDataset<FeatureClass>("Depare");
 
@@ -22,7 +22,7 @@ namespace S100Framework.Applications
             using var buffer = featureClass.CreateRowBuffer();
             using var insert = featureClass.CreateInsertCursor();
 
-            using var cursor = dangersp.Search(filter, true);
+            using var cursor = dangersl.Search(filter, true);
             int recordCount = 0;
             int convertedCount = 0;
             while (cursor.MoveNext()) {

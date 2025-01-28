@@ -1,50 +1,61 @@
 ﻿using ArcGIS.Core.Data;
-using S100Framework.DomainModel.S101.FeatureTypes;
 using VortexLoader.S57.esri;
+using S100Framework.DomainModel.S101;
+using S100Framework.DomainModel.S101.FeatureTypes;
 
 namespace S100Framework.Applications
 {
     internal static partial class ImporterNIS
     {
-        private static void S57_RegulatedAreasAndLimitsL(Geodatabase source, Geodatabase target, QueryFilter filter) {
-            var tableName = "RegulatedAreasAndLimitsL";
-            var ps = "S-101";
+        private static void S57_SeabedP(Geodatabase source, Geodatabase target, QueryFilter filter) {
+            var tableName = "SeabedP";
 
-            using var featureclass = target.OpenDataset<FeatureClass>("curve");
+            var ps101 = "S-101";
 
-            using var regulatedAreasAndLimitsL = source.OpenDataset<FeatureClass>(tableName);
+            var seabedp = source.OpenDataset<FeatureClass>(tableName);
 
+            using var featureClass = target.OpenDataset<FeatureClass>("point");
+            using var informationtype = target.OpenDataset<Table>("informationtype");
+
+            using var buffer = featureClass.CreateRowBuffer();
+            using var insert = featureClass.CreateInsertCursor();
+
+            using var cursor = seabedp.Search(filter, true);
             int recordCount = 0;
             int convertedCount = 0;
-
-            using var buffer = featureclass.CreateRowBuffer();
-            using var insert = featureclass.CreateInsertCursor();
-
-            using var cursor = regulatedAreasAndLimitsL.Search(filter, true);
-
             while (cursor.MoveNext()) {
                 recordCount += 1;
+
                 var feature = (Feature)cursor.Current;
-                var current = new RegulatedAreasAndLimitsL(feature); 
+
+                var current = new SeabedP(feature);
 
                 var objectid = current.OBJECTID ?? default;
                 var globalid = current.GLOBALID;
                 var subtype = current.FCSUBTYPE ?? default;
+                var watlev = current.WATLEV ?? default;
+
+                var natsur = current.NATSUR ?? default;
+                var natqua = current.NATQUA ?? default; 
+
+                // TODO: natsur, natqua
+
+
                 var plts_comp_scale = current.PLTS_COMP_SCALE ?? default;
                 var longname = current.LNAM ?? Strings.UNKNOWN;
-                var status = current.STATUS ?? default;
-                var verlen = current.VERLEN ?? default;
+
+
 
                 switch (subtype) {
-                    case 1: { // ASLXIS_ArchipelagicSeaLaneAxis
-                            var instance = new ArchipelagicSeaLaneAxis();
+                    case 15: { // SBDARE_SeabedArea
+                            var instance = new SeabedArea() {
+                            };
                             if (plts_comp_scale != default) {
                                 instance.scaleMinimum = plts_comp_scale;
                             }
-
                             AddFeatureName(instance.featureName, feature);
                             AddInformation(instance.information, feature);
-                            buffer["ps"] = ps;
+                            buffer["ps"] = ps101;
                             buffer["code"] = instance.GetType().Name;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance);
                             buffer["shape"] = current.SHAPE;
@@ -53,15 +64,14 @@ namespace S100Framework.Applications
                             convertedCount++;
                         }
                         break;
-                    case 25: { // MARCUL_MarineFarmCulture
-                            var instance = new MarineFarmCulture();
+                    case 25: { // SNDWAV_SandWaves
+                            var instance = new Sandwave() {
+                            };
                             if (plts_comp_scale != default) {
                                 instance.scaleMinimum = plts_comp_scale;
                             }
-                            
-                            AddFeatureName(instance.featureName, feature);
                             AddInformation(instance.information, feature);
-                            buffer["ps"] = ps;
+                            buffer["ps"] = ps101;
                             buffer["code"] = instance.GetType().Name;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance);
                             buffer["shape"] = current.SHAPE;
@@ -70,20 +80,33 @@ namespace S100Framework.Applications
                             convertedCount++;
                         }
                         break;
-                    case 30: { // STSLNE_StraightTerritorialSeaBaseline
-                            var instance = new StraightTerritorialSeaBaseline();
+                    case 30: { // SPRING_Spring
+                            var instance = new Spring() {
+                            };
                             if (plts_comp_scale != default) {
                                 instance.scaleMinimum = plts_comp_scale;
                             }
 
-                            if (current.NATION != default) 
-                            { 
-                                instance.nationality = current.NATION;
-                            }
-
-                            //AddFeatureName(instance.featureName, feature);
+                            AddFeatureName(instance.featureName, feature);
                             AddInformation(instance.information, feature);
-                            buffer["ps"] = ps;
+                            buffer["ps"] = ps101;
+                            buffer["code"] = instance.GetType().Name;
+                            buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance);
+                            buffer["shape"] = current.SHAPE;
+                            insert.Insert(buffer);
+                            Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
+                            convertedCount++;
+                        }
+                        break;
+                    case 35: { // WEDKLP_WeedKelp
+                            var instance = new WeedKelp() {
+                            };
+                            if (plts_comp_scale != default) {
+                                instance.scaleMinimum = plts_comp_scale;
+                            }
+                            AddFeatureName(instance.featureName, feature);
+                            AddInformation(instance.information, feature);
+                            buffer["ps"] = ps101;
                             buffer["code"] = instance.GetType().Name;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance);
                             buffer["shape"] = current.SHAPE;
@@ -100,13 +123,10 @@ namespace S100Framework.Applications
 
 
 
-                
             }
             Logger.Current.DataTotalCount(tableName, recordCount, convertedCount);
         }
+
+
     }
 }
-
-
-
-

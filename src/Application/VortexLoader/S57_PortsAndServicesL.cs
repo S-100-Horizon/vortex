@@ -14,7 +14,7 @@ namespace S100Framework.Applications
 
             var ps101 = "S-101";
 
-            var portsAndServicesP = source.OpenDataset<FeatureClass>(tableName);
+            var portsAndServicesL = source.OpenDataset<FeatureClass>(tableName);
 
             using var featureClass = target.OpenDataset<FeatureClass>("curve");
             using var informationtype = target.OpenDataset<Table>("informationtype");
@@ -22,7 +22,7 @@ namespace S100Framework.Applications
             using var buffer = featureClass.CreateRowBuffer();
             using var insert = featureClass.CreateInsertCursor();
 
-            using var cursor = portsAndServicesP.Search(filter, true);
+            using var cursor = portsAndServicesL.Search(filter, true);
             int recordCount = 0;
             int convertedCount = 0;
             while (cursor.MoveNext()) {
