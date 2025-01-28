@@ -1,16 +1,20 @@
+using System;
+using System.Linq;
+using System.ComponentModel;
+using System.Runtime.CompilerServices;
+using System.Collections.Immutable;
+using System.Collections.ObjectModel;
+using System.Reflection;
 using S100Framework.DomainModel;
 using S100Framework.DomainModel.Bindings;
 using S100Framework.DomainModel.S101;
 using S100Framework.DomainModel.S101.ComplexAttributes;
+using S100Framework.DomainModel.S101.InformationTypes;
 using S100Framework.DomainModel.S101.FeatureTypes;
-using System.Collections.Immutable;
-using System.Collections.ObjectModel;
-using System.ComponentModel;
 using Xceed.Wpf.Toolkit.PropertyGrid.Attributes;
 
 #nullable enable
-namespace S100Framework.WPF.ViewModel.S101
-{
+namespace S100Framework.WPF.ViewModel.S101 {
     internal static class Preamble {
         public static ImmutableDictionary<string, Func<ViewModelBase>> _creators => ImmutableDictionary.Create<string, Func<ViewModelBase>>().AddRange(new Dictionary<string, Func<ViewModelBase>> { { typeof(DomainModel.S101.InformationTypes.ContactDetails).Name, () =>
         {
@@ -7203,6 +7207,8 @@ namespace S100Framework.WPF.ViewModel.S101
 
         public featureNameViewModel() : base() {
         }
+
+        public override string? ToString() => $"Feature Name";
     }
 
     [CategoryOrder("featuresDetected", 0)]
@@ -7271,6 +7277,8 @@ namespace S100Framework.WPF.ViewModel.S101
 
         public featuresDetectedViewModel() : base() {
         }
+
+        public override string? ToString() => $"Features Detected";
     }
 
     [CategoryOrder("fixedDateRange", 0)]
@@ -7324,6 +7332,8 @@ namespace S100Framework.WPF.ViewModel.S101
 
         public fixedDateRangeViewModel() : base() {
         }
+
+        public override string? ToString() => $"Fixed Date Range";
     }
 
     [CategoryOrder("frequencyPair", 0)]
@@ -7377,6 +7387,8 @@ namespace S100Framework.WPF.ViewModel.S101
 
         public frequencyPairViewModel() : base() {
         }
+
+        public override string? ToString() => $"Frequency Pair";
     }
 
     [CategoryOrder("horizontalClearanceFixed", 0)]
@@ -7430,6 +7442,8 @@ namespace S100Framework.WPF.ViewModel.S101
 
         public horizontalClearanceFixedViewModel() : base() {
         }
+
+        public override string? ToString() => $"Horizontal Clearance Fixed";
     }
 
     [CategoryOrder("horizontalClearanceOpen", 0)]
@@ -7483,6 +7497,8 @@ namespace S100Framework.WPF.ViewModel.S101
 
         public horizontalClearanceOpenViewModel() : base() {
         }
+
+        public override string? ToString() => $"Horizontal Clearance Open";
     }
 
     [CategoryOrder("horizontalPositionUncertainty", 0)]
@@ -7536,6 +7552,8 @@ namespace S100Framework.WPF.ViewModel.S101
 
         public horizontalPositionUncertaintyViewModel() : base() {
         }
+
+        public override string? ToString() => $"Horizontal Position Uncertainty";
     }
 
 #pragma warning disable CS8981 // The type name only contains lower-cased ascii characters. Such names may become reserved for the language.
@@ -7638,6 +7656,8 @@ namespace S100Framework.WPF.ViewModel.S101
 
         public informationViewModel() : base() {
         }
+
+        public override string? ToString() => $"Information";
     }
 
     [CategoryOrder("measuredDistanceValue", 0)]
@@ -7706,6 +7726,8 @@ namespace S100Framework.WPF.ViewModel.S101
 
         public measuredDistanceValueViewModel() : base() {
         }
+
+        public override string? ToString() => $"Measured Distance Value";
     }
 
     [CategoryOrder("multiplicityOfFeatures", 0)]
@@ -7759,6 +7781,8 @@ namespace S100Framework.WPF.ViewModel.S101
 
         public multiplicityOfFeaturesViewModel() : base() {
         }
+
+        public override string? ToString() => $"Multiplicity of Features";
     }
 
     [CategoryOrder("onlineResource", 0)]
@@ -7827,6 +7851,8 @@ namespace S100Framework.WPF.ViewModel.S101
 
         public onlineResourceViewModel() : base() {
         }
+
+        public override string? ToString() => $"Online Resource";
     }
 
 #pragma warning disable CS8981 // The type name only contains lower-cased ascii characters. Such names may become reserved for the language.
@@ -7884,6 +7910,8 @@ namespace S100Framework.WPF.ViewModel.S101
 
         public orientationViewModel() : base() {
         }
+
+        public override string? ToString() => $"Orientation";
     }
 
     [CategoryOrder("periodicDateRange", 0)]
@@ -7937,6 +7965,8 @@ namespace S100Framework.WPF.ViewModel.S101
 
         public periodicDateRangeViewModel() : base() {
         }
+
+        public override string? ToString() => $"Periodic Date Range";
     }
 
     [CategoryOrder("radarWaveLength", 0)]
@@ -7990,6 +8020,8 @@ namespace S100Framework.WPF.ViewModel.S101
 
         public radarWaveLengthViewModel() : base() {
         }
+
+        public override string? ToString() => $"Radar Wave Length";
     }
 
     [CategoryOrder("sectorInformation", 0)]
@@ -8043,6 +8075,8 @@ namespace S100Framework.WPF.ViewModel.S101
 
         public sectorInformationViewModel() : base() {
         }
+
+        public override string? ToString() => $"Sector Information";
     }
 
     [CategoryOrder("sectorLimitOne", 0)]
@@ -8096,6 +8130,8 @@ namespace S100Framework.WPF.ViewModel.S101
 
         public sectorLimitOneViewModel() : base() {
         }
+
+        public override string? ToString() => $"Sector Limit One";
     }
 
     [CategoryOrder("sectorLimitTwo", 0)]
@@ -8149,6 +8185,8 @@ namespace S100Framework.WPF.ViewModel.S101
 
         public sectorLimitTwoViewModel() : base() {
         }
+
+        public override string? ToString() => $"Sector Limit Two";
     }
 
     [CategoryOrder("shapeInformation", 0)]
@@ -8202,6 +8240,8 @@ namespace S100Framework.WPF.ViewModel.S101
 
         public shapeInformationViewModel() : base() {
         }
+
+        public override string? ToString() => $"Shape Information";
     }
 
     [CategoryOrder("signalSequence", 0)]
@@ -8255,6 +8295,8 @@ namespace S100Framework.WPF.ViewModel.S101
 
         public signalSequenceViewModel() : base() {
         }
+
+        public override string? ToString() => $"Signal Sequence";
     }
 
 #pragma warning disable CS8981 // The type name only contains lower-cased ascii characters. Such names may become reserved for the language.
@@ -8312,6 +8354,8 @@ namespace S100Framework.WPF.ViewModel.S101
 
         public speedViewModel() : base() {
         }
+
+        public override string? ToString() => $"Speed";
     }
 
     [CategoryOrder("surfaceCharacteristics", 0)]
@@ -8377,6 +8421,8 @@ namespace S100Framework.WPF.ViewModel.S101
                 OnPropertyChanged(nameof(natureOfSurfaceQualifyingTerms));
             };
         }
+
+        public override string? ToString() => $"Surface Characteristics";
     }
 
     [CategoryOrder("surveyDateRange", 0)]
@@ -8430,6 +8476,8 @@ namespace S100Framework.WPF.ViewModel.S101
 
         public surveyDateRangeViewModel() : base() {
         }
+
+        public override string? ToString() => $"Survey Date Range";
     }
 
 #pragma warning disable CS8981 // The type name only contains lower-cased ascii characters. Such names may become reserved for the language.
@@ -8502,6 +8550,8 @@ namespace S100Framework.WPF.ViewModel.S101
 
         public telecommunicationsViewModel() : base() {
         }
+
+        public override string? ToString() => $"Telecommunications";
     }
 
     [CategoryOrder("tidalStreamValue", 0)]
@@ -8576,6 +8626,8 @@ namespace S100Framework.WPF.ViewModel.S101
 
         public tidalStreamValueViewModel() : base() {
         }
+
+        public override string? ToString() => $"Tidal Stream Value";
     }
 
     [CategoryOrder("timeIntervalsByDayOfWeek", 0)]
@@ -8650,6 +8702,8 @@ namespace S100Framework.WPF.ViewModel.S101
                 OnPropertyChanged(nameof(timeOfDayEnd));
             };
         }
+
+        public override string? ToString() => $"Time Intervals by Day of Week";
     }
 
 #pragma warning disable CS8981 // The type name only contains lower-cased ascii characters. Such names may become reserved for the language.
@@ -8731,6 +8785,8 @@ namespace S100Framework.WPF.ViewModel.S101
                 OnPropertyChanged(nameof(shapeInformation));
             };
         }
+
+        public override string? ToString() => $"Topmark";
     }
 
     [CategoryOrder("valueOfLocalMagneticAnomaly", 0)]
@@ -8784,6 +8840,8 @@ namespace S100Framework.WPF.ViewModel.S101
 
         public valueOfLocalMagneticAnomalyViewModel() : base() {
         }
+
+        public override string? ToString() => $"Value of Local Magnetic Anomaly";
     }
 
     [CategoryOrder("verticalUncertainty", 0)]
@@ -8837,6 +8895,8 @@ namespace S100Framework.WPF.ViewModel.S101
 
         public verticalUncertaintyViewModel() : base() {
         }
+
+        public override string? ToString() => $"Vertical Uncertainty";
     }
 
     [CategoryOrder("vesselSpeedLimit", 0)]
@@ -8905,6 +8965,8 @@ namespace S100Framework.WPF.ViewModel.S101
 
         public vesselSpeedLimitViewModel() : base() {
         }
+
+        public override string? ToString() => $"Vessel Speed Limit";
     }
 
     [CategoryOrder("zoneOfConfidence", 0)]
@@ -9005,6 +9067,8 @@ namespace S100Framework.WPF.ViewModel.S101
 
         public zoneOfConfidenceViewModel() : base() {
         }
+
+        public override string? ToString() => $"Zone of Confidence";
     }
 
     [CategoryOrder("directionalCharacter", 0)]
@@ -9063,6 +9127,8 @@ namespace S100Framework.WPF.ViewModel.S101
 
         public directionalCharacterViewModel() : base() {
         }
+
+        public override string? ToString() => $"Directional Character";
     }
 
     [CategoryOrder("rhythmOfLight", 0)]
@@ -9140,6 +9206,8 @@ namespace S100Framework.WPF.ViewModel.S101
                 OnPropertyChanged(nameof(signalSequence));
             };
         }
+
+        public override string? ToString() => $"Rhythm of Light";
     }
 
     [CategoryOrder("scheduleByDayOfWeek", 0)]
@@ -9190,6 +9258,8 @@ namespace S100Framework.WPF.ViewModel.S101
                 OnPropertyChanged(nameof(timeIntervalsByDayOfWeek));
             };
         }
+
+        public override string? ToString() => $"Schedule by Day of Week";
     }
 
     [CategoryOrder("sectorLimit", 0)]
@@ -9254,6 +9324,8 @@ namespace S100Framework.WPF.ViewModel.S101
 
         public sectorLimitViewModel() : base() {
         }
+
+        public override string? ToString() => $"Sector Limit";
     }
 
     [CategoryOrder("spatialAccuracy", 0)]
@@ -9339,6 +9411,8 @@ namespace S100Framework.WPF.ViewModel.S101
 
         public spatialAccuracyViewModel() : base() {
         }
+
+        public override string? ToString() => $"Spatial Accuracy";
     }
 
     [CategoryOrder("tidalStreamPanelValues", 0)]
@@ -9419,6 +9493,8 @@ namespace S100Framework.WPF.ViewModel.S101
                 OnPropertyChanged(nameof(tidalStreamValue));
             };
         }
+
+        public override string? ToString() => $"Tidal Stream Panel Values";
     }
 
     [CategoryOrder("verticalClearanceClosed", 0)]
@@ -9477,6 +9553,8 @@ namespace S100Framework.WPF.ViewModel.S101
 
         public verticalClearanceClosedViewModel() : base() {
         }
+
+        public override string? ToString() => $"Vertical Clearance Closed";
     }
 
     [CategoryOrder("verticalClearanceFixed", 0)]
@@ -9535,6 +9613,8 @@ namespace S100Framework.WPF.ViewModel.S101
 
         public verticalClearanceFixedViewModel() : base() {
         }
+
+        public override string? ToString() => $"Vertical Clearance Fixed";
     }
 
     [CategoryOrder("verticalClearanceOpen", 0)]
@@ -9608,6 +9688,8 @@ namespace S100Framework.WPF.ViewModel.S101
 
         public verticalClearanceOpenViewModel() : base() {
         }
+
+        public override string? ToString() => $"Vertical Clearance Open";
     }
 
     [CategoryOrder("verticalClearanceSafe", 0)]
@@ -9666,6 +9748,8 @@ namespace S100Framework.WPF.ViewModel.S101
 
         public verticalClearanceSafeViewModel() : base() {
         }
+
+        public override string? ToString() => $"Vertical Clearance Safe";
     }
 
     [CategoryOrder("lightSector", 0)]
@@ -9797,6 +9881,8 @@ namespace S100Framework.WPF.ViewModel.S101
                 OnPropertyChanged(nameof(sectorInformation));
             };
         }
+
+        public override string? ToString() => $"Light Sector";
     }
 
     [CategoryOrder("sectorCharacteristics", 0)]
@@ -9886,6 +9972,8 @@ namespace S100Framework.WPF.ViewModel.S101
                 OnPropertyChanged(nameof(signalSequence));
             };
         }
+
+        public override string? ToString() => $"Sector Characteristics";
     }
 
     [CategoryOrder("ContactDetails", 0)]
@@ -10027,6 +10115,8 @@ namespace S100Framework.WPF.ViewModel.S101
                 OnPropertyChanged(nameof(telecommunications));
             };
         }
+
+        public override string? ToString() => $"Contact Details";
     }
 
     [CategoryOrder("ServiceHours", 0)]
@@ -10111,6 +10201,8 @@ namespace S100Framework.WPF.ViewModel.S101
                 OnPropertyChanged(nameof(information));
             };
         }
+
+        public override string? ToString() => $"Service Hours";
     }
 
     [CategoryOrder("NonStandardWorkingDay", 0)]
@@ -10207,6 +10299,8 @@ namespace S100Framework.WPF.ViewModel.S101
                 OnPropertyChanged(nameof(information));
             };
         }
+
+        public override string? ToString() => $"Non-Standard Working Day";
     }
 
     [CategoryOrder("NauticalInformation", 0)]
@@ -10294,6 +10388,8 @@ namespace S100Framework.WPF.ViewModel.S101
                 OnPropertyChanged(nameof(information));
             };
         }
+
+        public override string? ToString() => $"Nautical Information";
     }
 
     [CategoryOrder("SpatialQuality", 0)]
@@ -10348,6 +10444,8 @@ namespace S100Framework.WPF.ViewModel.S101
                 OnPropertyChanged(nameof(spatialAccuracy));
             };
         }
+
+        public override string? ToString() => $"Spatial Quality";
     }
 
     [CategoryOrder("QualityOfNonBathymetricData", 0)]
@@ -10510,6 +10608,8 @@ namespace S100Framework.WPF.ViewModel.S101
                 OnPropertyChanged(nameof(information));
             };
         }
+
+        public override string? ToString() => $"Quality of Non-Bathymetric Data";
     }
 
     [CategoryOrder("DataCoverage", 0)]
@@ -10624,6 +10724,8 @@ namespace S100Framework.WPF.ViewModel.S101
                 OnPropertyChanged(nameof(information));
             };
         }
+
+        public override string? ToString() => $"Data Coverage";
     }
 
     [CategoryOrder("NavigationalSystemOfMarks", 0)]
@@ -10693,6 +10795,8 @@ namespace S100Framework.WPF.ViewModel.S101
                 OnPropertyChanged(nameof(information));
             };
         }
+
+        public override string? ToString() => $"Navigational System of Marks";
     }
 
     [CategoryOrder("LocalDirectionOfBuoyage", 0)]
@@ -10792,6 +10896,8 @@ namespace S100Framework.WPF.ViewModel.S101
                 OnPropertyChanged(nameof(information));
             };
         }
+
+        public override string? ToString() => $"Local Direction of Buoyage";
     }
 
     [CategoryOrder("QualityOfBathymetricData", 0)]
@@ -10975,6 +11081,8 @@ namespace S100Framework.WPF.ViewModel.S101
                 OnPropertyChanged(nameof(information));
             };
         }
+
+        public override string? ToString() => $"Quality of Bathymetric Data";
     }
 
     [CategoryOrder("SoundingDatum", 0)]
@@ -11044,6 +11152,8 @@ namespace S100Framework.WPF.ViewModel.S101
                 OnPropertyChanged(nameof(information));
             };
         }
+
+        public override string? ToString() => $"Sounding Datum";
     }
 
     [CategoryOrder("VerticalDatumOfData", 0)]
@@ -11113,6 +11223,8 @@ namespace S100Framework.WPF.ViewModel.S101
                 OnPropertyChanged(nameof(information));
             };
         }
+
+        public override string? ToString() => $"Vertical Datum of Data";
     }
 
     [CategoryOrder("QualityOfSurvey", 0)]
@@ -11410,6 +11522,8 @@ namespace S100Framework.WPF.ViewModel.S101
                 OnPropertyChanged(nameof(information));
             };
         }
+
+        public override string? ToString() => $"Quality of Survey";
     }
 
     [CategoryOrder("UpdateInformation", 0)]
@@ -11545,6 +11659,8 @@ namespace S100Framework.WPF.ViewModel.S101
                 OnPropertyChanged(nameof(information));
             };
         }
+
+        public override string? ToString() => $"Update Information";
     }
 
     [CategoryOrder("MagneticVariation", 0)]
@@ -11659,6 +11775,8 @@ namespace S100Framework.WPF.ViewModel.S101
                 OnPropertyChanged(nameof(information));
             };
         }
+
+        public override string? ToString() => $"Magnetic Variation";
     }
 
     [CategoryOrder("LocalMagneticAnomaly", 0)]
@@ -11767,6 +11885,8 @@ namespace S100Framework.WPF.ViewModel.S101
                 OnPropertyChanged(nameof(information));
             };
         }
+
+        public override string? ToString() => $"Local Magnetic Anomaly";
     }
 
     [CategoryOrder("Coastline", 0)]
@@ -11932,6 +12052,8 @@ namespace S100Framework.WPF.ViewModel.S101
                 OnPropertyChanged(nameof(information));
             };
         }
+
+        public override string? ToString() => $"Coastline";
     }
 
     [CategoryOrder("LandArea", 0)]
@@ -12058,6 +12180,8 @@ namespace S100Framework.WPF.ViewModel.S101
                 OnPropertyChanged(nameof(information));
             };
         }
+
+        public override string? ToString() => $"Land Area";
     }
 
     [CategoryOrder("IslandGroup", 0)]
@@ -12139,6 +12263,8 @@ namespace S100Framework.WPF.ViewModel.S101
                 OnPropertyChanged(nameof(information));
             };
         }
+
+        public override string? ToString() => $"Island Group";
     }
 
     [CategoryOrder("LandElevation", 0)]
@@ -12250,6 +12376,8 @@ namespace S100Framework.WPF.ViewModel.S101
                 OnPropertyChanged(nameof(information));
             };
         }
+
+        public override string? ToString() => $"Land Elevation";
     }
 
     [CategoryOrder("River", 0)]
@@ -12346,6 +12474,8 @@ namespace S100Framework.WPF.ViewModel.S101
                 OnPropertyChanged(nameof(information));
             };
         }
+
+        public override string? ToString() => $"River";
     }
 
     [CategoryOrder("Rapids", 0)]
@@ -12442,6 +12572,8 @@ namespace S100Framework.WPF.ViewModel.S101
                 OnPropertyChanged(nameof(information));
             };
         }
+
+        public override string? ToString() => $"Rapids";
     }
 
     [CategoryOrder("Waterfall", 0)]
@@ -12553,6 +12685,8 @@ namespace S100Framework.WPF.ViewModel.S101
                 OnPropertyChanged(nameof(information));
             };
         }
+
+        public override string? ToString() => $"Waterfall";
     }
 
     [CategoryOrder("Lake", 0)]
@@ -12664,6 +12798,8 @@ namespace S100Framework.WPF.ViewModel.S101
                 OnPropertyChanged(nameof(information));
             };
         }
+
+        public override string? ToString() => $"Lake";
     }
 
     [CategoryOrder("LandRegion", 0)]
@@ -12784,6 +12920,8 @@ namespace S100Framework.WPF.ViewModel.S101
                 OnPropertyChanged(nameof(information));
             };
         }
+
+        public override string? ToString() => $"Land Region";
     }
 
     [CategoryOrder("Vegetation", 0)]
@@ -12940,6 +13078,8 @@ namespace S100Framework.WPF.ViewModel.S101
                 OnPropertyChanged(nameof(information));
             };
         }
+
+        public override string? ToString() => $"Vegetation";
     }
 
     [CategoryOrder("IceArea", 0)]
@@ -13135,6 +13275,8 @@ namespace S100Framework.WPF.ViewModel.S101
                 OnPropertyChanged(nameof(information));
             };
         }
+
+        public override string? ToString() => $"Ice Area";
     }
 
     [CategoryOrder("SlopingGround", 0)]
@@ -13285,6 +13427,8 @@ namespace S100Framework.WPF.ViewModel.S101
                 OnPropertyChanged(nameof(information));
             };
         }
+
+        public override string? ToString() => $"Sloping Ground";
     }
 
     [CategoryOrder("SlopeTopline", 0)]
@@ -13450,6 +13594,8 @@ namespace S100Framework.WPF.ViewModel.S101
                 OnPropertyChanged(nameof(information));
             };
         }
+
+        public override string? ToString() => $"Slope Topline";
     }
 
     [CategoryOrder("Tideway", 0)]
@@ -13531,6 +13677,8 @@ namespace S100Framework.WPF.ViewModel.S101
                 OnPropertyChanged(nameof(information));
             };
         }
+
+        public override string? ToString() => $"Tideway";
     }
 
     [CategoryOrder("BuiltUpArea", 0)]
@@ -13732,6 +13880,8 @@ namespace S100Framework.WPF.ViewModel.S101
                 OnPropertyChanged(nameof(information));
             };
         }
+
+        public override string? ToString() => $"Built-Up Area";
     }
 
     [CategoryOrder("Building", 0)]
@@ -14047,6 +14197,8 @@ namespace S100Framework.WPF.ViewModel.S101
                 OnPropertyChanged(nameof(information));
             };
         }
+
+        public override string? ToString() => $"Building";
     }
 
     [CategoryOrder("AirportAirfield", 0)]
@@ -14197,6 +14349,8 @@ namespace S100Framework.WPF.ViewModel.S101
                 OnPropertyChanged(nameof(information));
             };
         }
+
+        public override string? ToString() => $"Airport/Airfield";
     }
 
     [CategoryOrder("Runway", 0)]
@@ -14344,6 +14498,8 @@ namespace S100Framework.WPF.ViewModel.S101
                 OnPropertyChanged(nameof(information));
             };
         }
+
+        public override string? ToString() => $"Runway";
     }
 
     [CategoryOrder("Helipad", 0)]
@@ -14491,6 +14647,8 @@ namespace S100Framework.WPF.ViewModel.S101
                 OnPropertyChanged(nameof(information));
             };
         }
+
+        public override string? ToString() => $"Helipad";
     }
 
     [CategoryOrder("Bridge", 0)]
@@ -14791,6 +14949,8 @@ namespace S100Framework.WPF.ViewModel.S101
                 OnPropertyChanged(nameof(information));
             };
         }
+
+        public override string? ToString() => $"Bridge";
     }
 
     [CategoryOrder("SpanFixed", 0)]
@@ -14953,6 +15113,8 @@ namespace S100Framework.WPF.ViewModel.S101
                 OnPropertyChanged(nameof(information));
             };
         }
+
+        public override string? ToString() => $"Span Fixed";
     }
 
     [CategoryOrder("SpanOpening", 0)]
@@ -15136,6 +15298,8 @@ namespace S100Framework.WPF.ViewModel.S101
                 OnPropertyChanged(nameof(information));
             };
         }
+
+        public override string? ToString() => $"Span Opening";
     }
 
     [CategoryOrder("Conveyor", 0)]
@@ -15481,6 +15645,8 @@ namespace S100Framework.WPF.ViewModel.S101
                 OnPropertyChanged(nameof(information));
             };
         }
+
+        public override string? ToString() => $"Conveyor";
     }
 
     [CategoryOrder("CableOverhead", 0)]
@@ -15763,6 +15929,8 @@ namespace S100Framework.WPF.ViewModel.S101
                 OnPropertyChanged(nameof(information));
             };
         }
+
+        public override string? ToString() => $"Cable Overhead";
     }
 
     [CategoryOrder("PipelineOverhead", 0)]
@@ -16021,6 +16189,8 @@ namespace S100Framework.WPF.ViewModel.S101
                 OnPropertyChanged(nameof(information));
             };
         }
+
+        public override string? ToString() => $"Pipeline Overhead";
     }
 
     [CategoryOrder("PylonBridgeSupport", 0)]
@@ -16330,6 +16500,8 @@ namespace S100Framework.WPF.ViewModel.S101
                 OnPropertyChanged(nameof(information));
             };
         }
+
+        public override string? ToString() => $"Pylon/Bridge Support";
     }
 
     [CategoryOrder("FenceWall", 0)]
@@ -16582,6 +16754,8 @@ namespace S100Framework.WPF.ViewModel.S101
                 OnPropertyChanged(nameof(information));
             };
         }
+
+        public override string? ToString() => $"Fence/Wall";
     }
 
     [CategoryOrder("Railway", 0)]
@@ -16720,6 +16894,8 @@ namespace S100Framework.WPF.ViewModel.S101
                 OnPropertyChanged(nameof(information));
             };
         }
+
+        public override string? ToString() => $"Railway";
     }
 
     [CategoryOrder("Road", 0)]
@@ -16870,6 +17046,8 @@ namespace S100Framework.WPF.ViewModel.S101
                 OnPropertyChanged(nameof(information));
             };
         }
+
+        public override string? ToString() => $"Road";
     }
 
     [CategoryOrder("Tunnel", 0)]
@@ -17065,6 +17243,8 @@ namespace S100Framework.WPF.ViewModel.S101
                 OnPropertyChanged(nameof(information));
             };
         }
+
+        public override string? ToString() => $"Tunnel";
     }
 
     [CategoryOrder("Landmark", 0)]
@@ -17389,6 +17569,8 @@ namespace S100Framework.WPF.ViewModel.S101
                 OnPropertyChanged(nameof(information));
             };
         }
+
+        public override string? ToString() => $"Landmark";
     }
 
     [CategoryOrder("SiloTank", 0)]
@@ -17719,6 +17901,8 @@ namespace S100Framework.WPF.ViewModel.S101
                 OnPropertyChanged(nameof(information));
             };
         }
+
+        public override string? ToString() => $"Silo/Tank";
     }
 
     [CategoryOrder("WindTurbine", 0)]
@@ -18079,6 +18263,8 @@ namespace S100Framework.WPF.ViewModel.S101
                 OnPropertyChanged(nameof(information));
             };
         }
+
+        public override string? ToString() => $"Wind Turbine";
     }
 
     [CategoryOrder("FortifiedStructure", 0)]
@@ -18319,6 +18505,8 @@ namespace S100Framework.WPF.ViewModel.S101
                 OnPropertyChanged(nameof(information));
             };
         }
+
+        public override string? ToString() => $"Fortified Structure";
     }
 
     [CategoryOrder("ProductionStorageArea", 0)]
@@ -18580,6 +18768,8 @@ namespace S100Framework.WPF.ViewModel.S101
                 OnPropertyChanged(nameof(information));
             };
         }
+
+        public override string? ToString() => $"Production/Storage Area";
     }
 
     [CategoryOrder("Checkpoint", 0)]
@@ -18688,6 +18878,8 @@ namespace S100Framework.WPF.ViewModel.S101
                 OnPropertyChanged(nameof(information));
             };
         }
+
+        public override string? ToString() => $"Checkpoint";
     }
 
     [CategoryOrder("Hulk", 0)]
@@ -18961,6 +19153,8 @@ namespace S100Framework.WPF.ViewModel.S101
                 OnPropertyChanged(nameof(information));
             };
         }
+
+        public override string? ToString() => $"Hulk";
     }
 
     [CategoryOrder("Pile", 0)]
@@ -19222,6 +19416,8 @@ namespace S100Framework.WPF.ViewModel.S101
                 OnPropertyChanged(nameof(information));
             };
         }
+
+        public override string? ToString() => $"Pile";
     }
 
     [CategoryOrder("Dyke", 0)]
@@ -19426,6 +19622,8 @@ namespace S100Framework.WPF.ViewModel.S101
                 OnPropertyChanged(nameof(information));
             };
         }
+
+        public override string? ToString() => $"Dyke";
     }
 
     [CategoryOrder("ShorelineConstruction", 0)]
@@ -19750,6 +19948,8 @@ namespace S100Framework.WPF.ViewModel.S101
                 OnPropertyChanged(nameof(information));
             };
         }
+
+        public override string? ToString() => $"Shoreline Construction";
     }
 
     [CategoryOrder("StructureOverNavigableWater", 0)]
@@ -20134,6 +20334,8 @@ namespace S100Framework.WPF.ViewModel.S101
                 OnPropertyChanged(nameof(information));
             };
         }
+
+        public override string? ToString() => $"Structure Over Navigable Water";
     }
 
     [CategoryOrder("Causeway", 0)]
@@ -20284,6 +20486,8 @@ namespace S100Framework.WPF.ViewModel.S101
                 OnPropertyChanged(nameof(information));
             };
         }
+
+        public override string? ToString() => $"Causeway";
     }
 
     [CategoryOrder("Canal", 0)]
@@ -20479,6 +20683,8 @@ namespace S100Framework.WPF.ViewModel.S101
                 OnPropertyChanged(nameof(information));
             };
         }
+
+        public override string? ToString() => $"Canal";
     }
 
     [CategoryOrder("DistanceMark", 0)]
@@ -20617,6 +20823,8 @@ namespace S100Framework.WPF.ViewModel.S101
                 OnPropertyChanged(nameof(information));
             };
         }
+
+        public override string? ToString() => $"Distance Mark";
     }
 
     [CategoryOrder("Gate", 0)]
@@ -20857,6 +21065,8 @@ namespace S100Framework.WPF.ViewModel.S101
                 OnPropertyChanged(nameof(information));
             };
         }
+
+        public override string? ToString() => $"Gate";
     }
 
     [CategoryOrder("Dam", 0)]
@@ -21115,6 +21325,8 @@ namespace S100Framework.WPF.ViewModel.S101
                 OnPropertyChanged(nameof(information));
             };
         }
+
+        public override string? ToString() => $"Dam";
     }
 
     [CategoryOrder("Crane", 0)]
@@ -21442,6 +21654,8 @@ namespace S100Framework.WPF.ViewModel.S101
                 OnPropertyChanged(nameof(information));
             };
         }
+
+        public override string? ToString() => $"Crane";
     }
 
     [CategoryOrder("Berth", 0)]
@@ -21673,6 +21887,8 @@ namespace S100Framework.WPF.ViewModel.S101
                 OnPropertyChanged(nameof(information));
             };
         }
+
+        public override string? ToString() => $"Berth";
     }
 
     [CategoryOrder("Dolphin", 0)]
@@ -21970,6 +22186,8 @@ namespace S100Framework.WPF.ViewModel.S101
                 OnPropertyChanged(nameof(information));
             };
         }
+
+        public override string? ToString() => $"Dolphin";
     }
 
     [CategoryOrder("Bollard", 0)]
@@ -22141,6 +22359,8 @@ namespace S100Framework.WPF.ViewModel.S101
                 OnPropertyChanged(nameof(information));
             };
         }
+
+        public override string? ToString() => $"Bollard";
     }
 
     [CategoryOrder("DryDock", 0)]
@@ -22408,6 +22628,8 @@ namespace S100Framework.WPF.ViewModel.S101
                 OnPropertyChanged(nameof(information));
             };
         }
+
+        public override string? ToString() => $"Dry Dock";
     }
 
     [CategoryOrder("FloatingDock", 0)]
@@ -22729,6 +22951,8 @@ namespace S100Framework.WPF.ViewModel.S101
                 OnPropertyChanged(nameof(information));
             };
         }
+
+        public override string? ToString() => $"Floating Dock";
     }
 
     [CategoryOrder("Pontoon", 0)]
@@ -22930,6 +23154,8 @@ namespace S100Framework.WPF.ViewModel.S101
                 OnPropertyChanged(nameof(information));
             };
         }
+
+        public override string? ToString() => $"Pontoon";
     }
 
     [CategoryOrder("DockArea", 0)]
@@ -23152,6 +23378,8 @@ namespace S100Framework.WPF.ViewModel.S101
                 OnPropertyChanged(nameof(information));
             };
         }
+
+        public override string? ToString() => $"Dock Area";
     }
 
     [CategoryOrder("Gridiron", 0)]
@@ -23317,6 +23545,8 @@ namespace S100Framework.WPF.ViewModel.S101
                 OnPropertyChanged(nameof(information));
             };
         }
+
+        public override string? ToString() => $"Gridiron";
     }
 
     [CategoryOrder("LockBasin", 0)]
@@ -23494,6 +23724,8 @@ namespace S100Framework.WPF.ViewModel.S101
                 OnPropertyChanged(nameof(information));
             };
         }
+
+        public override string? ToString() => $"Lock Basin";
     }
 
     [CategoryOrder("MooringTrot", 0)]
@@ -23596,6 +23828,8 @@ namespace S100Framework.WPF.ViewModel.S101
                 OnPropertyChanged(nameof(information));
             };
         }
+
+        public override string? ToString() => $"Mooring Trot";
     }
 
     [CategoryOrder("SeaAreaNamedWaterArea", 0)]
@@ -23692,6 +23926,8 @@ namespace S100Framework.WPF.ViewModel.S101
                 OnPropertyChanged(nameof(information));
             };
         }
+
+        public override string? ToString() => $"Sea Area/Named Water Area";
     }
 
     [CategoryOrder("TidalStreamFloodEbb", 0)]
@@ -23851,6 +24087,8 @@ namespace S100Framework.WPF.ViewModel.S101
                 OnPropertyChanged(nameof(information));
             };
         }
+
+        public override string? ToString() => $"Tidal Stream - Flood/Ebb";
     }
 
     [CategoryOrder("CurrentNonGravitational", 0)]
@@ -24022,6 +24260,8 @@ namespace S100Framework.WPF.ViewModel.S101
                 OnPropertyChanged(nameof(information));
             };
         }
+
+        public override string? ToString() => $"Current - Non-Gravitational";
     }
 
     [CategoryOrder("WaterTurbulence", 0)]
@@ -24118,6 +24358,8 @@ namespace S100Framework.WPF.ViewModel.S101
                 OnPropertyChanged(nameof(information));
             };
         }
+
+        public override string? ToString() => $"Water Turbulence";
     }
 
     [CategoryOrder("TidalStreamPanelData", 0)]
@@ -24241,6 +24483,8 @@ namespace S100Framework.WPF.ViewModel.S101
                 OnPropertyChanged(nameof(information));
             };
         }
+
+        public override string? ToString() => $"Tidal Stream Panel Data";
     }
 
     [CategoryOrder("Sounding", 0)]
@@ -24376,6 +24620,8 @@ namespace S100Framework.WPF.ViewModel.S101
                 OnPropertyChanged(nameof(information));
             };
         }
+
+        public override string? ToString() => $"Sounding";
     }
 
     [CategoryOrder("DredgedArea", 0)]
@@ -24574,6 +24820,8 @@ namespace S100Framework.WPF.ViewModel.S101
                 OnPropertyChanged(nameof(information));
             };
         }
+
+        public override string? ToString() => $"Dredged Area";
     }
 
     [CategoryOrder("SweptArea", 0)]
@@ -24673,6 +24921,8 @@ namespace S100Framework.WPF.ViewModel.S101
                 OnPropertyChanged(nameof(information));
             };
         }
+
+        public override string? ToString() => $"Swept Area";
     }
 
     [CategoryOrder("DepthContour", 0)]
@@ -24757,6 +25007,8 @@ namespace S100Framework.WPF.ViewModel.S101
                 OnPropertyChanged(nameof(information));
             };
         }
+
+        public override string? ToString() => $"Depth Contour";
     }
 
     [CategoryOrder("DepthArea", 0)]
@@ -24841,6 +25093,8 @@ namespace S100Framework.WPF.ViewModel.S101
                 OnPropertyChanged(nameof(information));
             };
         }
+
+        public override string? ToString() => $"Depth Area";
     }
 
     [CategoryOrder("DepthNoBottomFound", 0)]
@@ -24922,6 +25176,8 @@ namespace S100Framework.WPF.ViewModel.S101
                 OnPropertyChanged(nameof(information));
             };
         }
+
+        public override string? ToString() => $"Depth - No Bottom Found";
     }
 
     [CategoryOrder("UnsurveyedArea", 0)]
@@ -24976,6 +25232,8 @@ namespace S100Framework.WPF.ViewModel.S101
                 OnPropertyChanged(nameof(information));
             };
         }
+
+        public override string? ToString() => $"Unsurveyed Area";
     }
 
     [CategoryOrder("SeabedArea", 0)]
@@ -25084,6 +25342,8 @@ namespace S100Framework.WPF.ViewModel.S101
                 OnPropertyChanged(nameof(information));
             };
         }
+
+        public override string? ToString() => $"Seabed Area";
     }
 
     [CategoryOrder("WeedKelp", 0)]
@@ -25180,6 +25440,8 @@ namespace S100Framework.WPF.ViewModel.S101
                 OnPropertyChanged(nameof(information));
             };
         }
+
+        public override string? ToString() => $"Weed/Kelp";
     }
 
     [CategoryOrder("Seagrass", 0)]
@@ -25261,6 +25523,8 @@ namespace S100Framework.WPF.ViewModel.S101
                 OnPropertyChanged(nameof(information));
             };
         }
+
+        public override string? ToString() => $"Seagrass";
     }
 
     [CategoryOrder("Sandwave", 0)]
@@ -25345,6 +25609,8 @@ namespace S100Framework.WPF.ViewModel.S101
                 OnPropertyChanged(nameof(information));
             };
         }
+
+        public override string? ToString() => $"Sandwave";
     }
 
     [CategoryOrder("Spring", 0)]
@@ -25426,6 +25692,8 @@ namespace S100Framework.WPF.ViewModel.S101
                 OnPropertyChanged(nameof(information));
             };
         }
+
+        public override string? ToString() => $"Spring";
     }
 
     [CategoryOrder("UnderwaterAwashRock", 0)]
@@ -25651,6 +25919,8 @@ namespace S100Framework.WPF.ViewModel.S101
                 OnPropertyChanged(nameof(information));
             };
         }
+
+        public override string? ToString() => $"Underwater/Awash Rock";
     }
 
     [CategoryOrder("Wreck", 0)]
@@ -25933,6 +26203,8 @@ namespace S100Framework.WPF.ViewModel.S101
                 OnPropertyChanged(nameof(information));
             };
         }
+
+        public override string? ToString() => $"Wreck";
     }
 
     [CategoryOrder("Obstruction", 0)]
@@ -26239,6 +26511,8 @@ namespace S100Framework.WPF.ViewModel.S101
                 OnPropertyChanged(nameof(information));
             };
         }
+
+        public override string? ToString() => $"Obstruction";
     }
 
     [CategoryOrder("FoulGround", 0)]
@@ -26407,6 +26681,8 @@ namespace S100Framework.WPF.ViewModel.S101
                 OnPropertyChanged(nameof(information));
             };
         }
+
+        public override string? ToString() => $"Foul Ground";
     }
 
     [CategoryOrder("DiscolouredWater", 0)]
@@ -26491,6 +26767,8 @@ namespace S100Framework.WPF.ViewModel.S101
                 OnPropertyChanged(nameof(information));
             };
         }
+
+        public override string? ToString() => $"Discoloured Water";
     }
 
     [CategoryOrder("FishingFacility", 0)]
@@ -26656,6 +26934,8 @@ namespace S100Framework.WPF.ViewModel.S101
                 OnPropertyChanged(nameof(information));
             };
         }
+
+        public override string? ToString() => $"Fishing Facility";
     }
 
     [CategoryOrder("MarineFarmCulture", 0)]
@@ -26929,6 +27209,8 @@ namespace S100Framework.WPF.ViewModel.S101
                 OnPropertyChanged(nameof(information));
             };
         }
+
+        public override string? ToString() => $"Marine Farm/Culture";
     }
 
     [CategoryOrder("OffshorePlatform", 0)]
@@ -27217,6 +27499,8 @@ namespace S100Framework.WPF.ViewModel.S101
                 OnPropertyChanged(nameof(information));
             };
         }
+
+        public override string? ToString() => $"Offshore Platform";
     }
 
     [CategoryOrder("CableSubmarine", 0)]
@@ -27376,6 +27660,8 @@ namespace S100Framework.WPF.ViewModel.S101
                 OnPropertyChanged(nameof(information));
             };
         }
+
+        public override string? ToString() => $"Cable Submarine";
     }
 
     [CategoryOrder("CableArea", 0)]
@@ -27526,6 +27812,8 @@ namespace S100Framework.WPF.ViewModel.S101
                 OnPropertyChanged(nameof(information));
             };
         }
+
+        public override string? ToString() => $"Cable Area";
     }
 
     [CategoryOrder("PipelineSubmarineOnLand", 0)]
@@ -27787,6 +28075,8 @@ namespace S100Framework.WPF.ViewModel.S101
                 OnPropertyChanged(nameof(information));
             };
         }
+
+        public override string? ToString() => $"Pipeline Submarine/On Land";
     }
 
     [CategoryOrder("SubmarinePipelineArea", 0)]
@@ -27949,6 +28239,8 @@ namespace S100Framework.WPF.ViewModel.S101
                 OnPropertyChanged(nameof(information));
             };
         }
+
+        public override string? ToString() => $"Submarine Pipeline Area";
     }
 
     [CategoryOrder("OffshoreProductionArea", 0)]
@@ -28219,6 +28511,8 @@ namespace S100Framework.WPF.ViewModel.S101
                 OnPropertyChanged(nameof(information));
             };
         }
+
+        public override string? ToString() => $"Offshore Production Area";
     }
 
     [CategoryOrder("NavigationLine", 0)]
@@ -28384,6 +28678,8 @@ namespace S100Framework.WPF.ViewModel.S101
                 OnPropertyChanged(nameof(information));
             };
         }
+
+        public override string? ToString() => $"Navigation Line";
     }
 
     [CategoryOrder("RecommendedTrack", 0)]
@@ -28630,6 +28926,8 @@ namespace S100Framework.WPF.ViewModel.S101
                 OnPropertyChanged(nameof(information));
             };
         }
+
+        public override string? ToString() => $"Recommended Track";
     }
 
     [CategoryOrder("RangeSystem", 0)]
@@ -28747,6 +29045,8 @@ namespace S100Framework.WPF.ViewModel.S101
                 OnPropertyChanged(nameof(information));
             };
         }
+
+        public override string? ToString() => $"Range System";
     }
 
     [CategoryOrder("Fairway", 0)]
@@ -28978,6 +29278,8 @@ namespace S100Framework.WPF.ViewModel.S101
                 OnPropertyChanged(nameof(information));
             };
         }
+
+        public override string? ToString() => $"Fairway";
     }
 
     [CategoryOrder("FairwaySystem", 0)]
@@ -29107,6 +29409,8 @@ namespace S100Framework.WPF.ViewModel.S101
                 OnPropertyChanged(nameof(information));
             };
         }
+
+        public override string? ToString() => $"Fairway System";
     }
 
     [CategoryOrder("RecommendedRouteCentreline", 0)]
@@ -29338,6 +29642,8 @@ namespace S100Framework.WPF.ViewModel.S101
                 OnPropertyChanged(nameof(information));
             };
         }
+
+        public override string? ToString() => $"Recommended Route Centreline";
     }
 
     [CategoryOrder("TwoWayRoutePart", 0)]
@@ -29545,6 +29851,8 @@ namespace S100Framework.WPF.ViewModel.S101
                 OnPropertyChanged(nameof(information));
             };
         }
+
+        public override string? ToString() => $"Two-Way Route Part";
     }
 
     [CategoryOrder("TwoWayRoute", 0)]
@@ -29662,6 +29970,8 @@ namespace S100Framework.WPF.ViewModel.S101
                 OnPropertyChanged(nameof(information));
             };
         }
+
+        public override string? ToString() => $"Two-Way Route";
     }
 
     [CategoryOrder("RecommendedTrafficLanePart", 0)]
@@ -29779,6 +30089,8 @@ namespace S100Framework.WPF.ViewModel.S101
                 OnPropertyChanged(nameof(information));
             };
         }
+
+        public override string? ToString() => $"Recommended Traffic Lane Part";
     }
 
     [CategoryOrder("DeepWaterRouteCentreline", 0)]
@@ -30013,6 +30325,8 @@ namespace S100Framework.WPF.ViewModel.S101
                 OnPropertyChanged(nameof(information));
             };
         }
+
+        public override string? ToString() => $"Deep Water Route Centreline";
     }
 
     [CategoryOrder("DeepWaterRoutePart", 0)]
@@ -30256,6 +30570,8 @@ namespace S100Framework.WPF.ViewModel.S101
                 OnPropertyChanged(nameof(information));
             };
         }
+
+        public override string? ToString() => $"Deep Water Route Part";
     }
 
     [CategoryOrder("DeepWaterRoute", 0)]
@@ -30373,6 +30689,8 @@ namespace S100Framework.WPF.ViewModel.S101
                 OnPropertyChanged(nameof(information));
             };
         }
+
+        public override string? ToString() => $"Deep Water Route";
     }
 
     [CategoryOrder("InshoreTrafficZone", 0)]
@@ -30499,6 +30817,8 @@ namespace S100Framework.WPF.ViewModel.S101
                 OnPropertyChanged(nameof(information));
             };
         }
+
+        public override string? ToString() => $"Inshore Traffic Zone";
     }
 
     [CategoryOrder("PrecautionaryArea", 0)]
@@ -30652,6 +30972,8 @@ namespace S100Framework.WPF.ViewModel.S101
                 OnPropertyChanged(nameof(information));
             };
         }
+
+        public override string? ToString() => $"Precautionary Area";
     }
 
     [CategoryOrder("TrafficSeparationSchemeLanePart", 0)]
@@ -30793,6 +31115,8 @@ namespace S100Framework.WPF.ViewModel.S101
                 OnPropertyChanged(nameof(information));
             };
         }
+
+        public override string? ToString() => $"Traffic Separation Scheme Lane Part";
     }
 
     [CategoryOrder("SeparationZoneOrLine", 0)]
@@ -30895,6 +31219,8 @@ namespace S100Framework.WPF.ViewModel.S101
                 OnPropertyChanged(nameof(information));
             };
         }
+
+        public override string? ToString() => $"Separation Zone or Line";
     }
 
     [CategoryOrder("TrafficSeparationSchemeBoundary", 0)]
@@ -30997,6 +31323,8 @@ namespace S100Framework.WPF.ViewModel.S101
                 OnPropertyChanged(nameof(information));
             };
         }
+
+        public override string? ToString() => $"Traffic Separation Scheme Boundary";
     }
 
     [CategoryOrder("TrafficSeparationSchemeCrossing", 0)]
@@ -31123,6 +31451,8 @@ namespace S100Framework.WPF.ViewModel.S101
                 OnPropertyChanged(nameof(information));
             };
         }
+
+        public override string? ToString() => $"Traffic Separation Scheme Crossing";
     }
 
     [CategoryOrder("TrafficSeparationSchemeRoundabout", 0)]
@@ -31249,6 +31579,8 @@ namespace S100Framework.WPF.ViewModel.S101
                 OnPropertyChanged(nameof(information));
             };
         }
+
+        public override string? ToString() => $"Traffic Separation Scheme Roundabout";
     }
 
     [CategoryOrder("TrafficSeparationScheme", 0)]
@@ -31381,6 +31713,8 @@ namespace S100Framework.WPF.ViewModel.S101
                 OnPropertyChanged(nameof(information));
             };
         }
+
+        public override string? ToString() => $"Traffic Separation Scheme";
     }
 
     [CategoryOrder("ArchipelagicSeaLaneArea", 0)]
@@ -31498,6 +31832,8 @@ namespace S100Framework.WPF.ViewModel.S101
                 OnPropertyChanged(nameof(information));
             };
         }
+
+        public override string? ToString() => $"Archipelagic Sea Lane Area";
     }
 
     [CategoryOrder("ArchipelagicSeaLaneAxis", 0)]
@@ -31615,6 +31951,8 @@ namespace S100Framework.WPF.ViewModel.S101
                 OnPropertyChanged(nameof(information));
             };
         }
+
+        public override string? ToString() => $"Archipelagic Sea Lane Axis";
     }
 
     [CategoryOrder("ArchipelagicSeaLane", 0)]
@@ -31732,6 +32070,8 @@ namespace S100Framework.WPF.ViewModel.S101
                 OnPropertyChanged(nameof(information));
             };
         }
+
+        public override string? ToString() => $"Archipelagic Sea Lane";
     }
 
     [CategoryOrder("RadioCallingInPoint", 0)]
@@ -31897,6 +32237,8 @@ namespace S100Framework.WPF.ViewModel.S101
                 OnPropertyChanged(nameof(information));
             };
         }
+
+        public override string? ToString() => $"Radio Calling-In Point";
     }
 
     [CategoryOrder("FerryRoute", 0)]
@@ -32035,6 +32377,8 @@ namespace S100Framework.WPF.ViewModel.S101
                 OnPropertyChanged(nameof(information));
             };
         }
+
+        public override string? ToString() => $"Ferry Route";
     }
 
     [CategoryOrder("RadarLine", 0)]
@@ -32143,6 +32487,8 @@ namespace S100Framework.WPF.ViewModel.S101
                 OnPropertyChanged(nameof(information));
             };
         }
+
+        public override string? ToString() => $"Radar Line";
     }
 
     [CategoryOrder("RadarRange", 0)]
@@ -32269,6 +32615,8 @@ namespace S100Framework.WPF.ViewModel.S101
                 OnPropertyChanged(nameof(information));
             };
         }
+
+        public override string? ToString() => $"Radar Range";
     }
 
     [CategoryOrder("RadarStation", 0)]
@@ -32443,6 +32791,8 @@ namespace S100Framework.WPF.ViewModel.S101
                 OnPropertyChanged(nameof(information));
             };
         }
+
+        public override string? ToString() => $"Radar Station";
     }
 
     [CategoryOrder("AnchorageArea", 0)]
@@ -32617,6 +32967,8 @@ namespace S100Framework.WPF.ViewModel.S101
                 OnPropertyChanged(nameof(information));
             };
         }
+
+        public override string? ToString() => $"Anchorage Area";
     }
 
     [CategoryOrder("MooringArea", 0)]
@@ -32809,6 +33161,8 @@ namespace S100Framework.WPF.ViewModel.S101
                 OnPropertyChanged(nameof(vesselSpeedLimit));
             };
         }
+
+        public override string? ToString() => $"Mooring Area";
     }
 
     [CategoryOrder("AnchorBerth", 0)]
@@ -32974,6 +33328,8 @@ namespace S100Framework.WPF.ViewModel.S101
                 OnPropertyChanged(nameof(information));
             };
         }
+
+        public override string? ToString() => $"Anchor Berth";
     }
 
     [CategoryOrder("SeaplaneLandingArea", 0)]
@@ -33103,6 +33459,8 @@ namespace S100Framework.WPF.ViewModel.S101
                 OnPropertyChanged(nameof(information));
             };
         }
+
+        public override string? ToString() => $"Seaplane Landing Area";
     }
 
     [CategoryOrder("DumpingGround", 0)]
@@ -33247,6 +33605,8 @@ namespace S100Framework.WPF.ViewModel.S101
                 OnPropertyChanged(nameof(information));
             };
         }
+
+        public override string? ToString() => $"Dumping Ground";
     }
 
     [CategoryOrder("MilitaryPracticeArea", 0)]
@@ -33424,6 +33784,8 @@ namespace S100Framework.WPF.ViewModel.S101
                 OnPropertyChanged(nameof(information));
             };
         }
+
+        public override string? ToString() => $"Military Practice Area";
     }
 
     [CategoryOrder("AdministrationArea", 0)]
@@ -33562,6 +33924,8 @@ namespace S100Framework.WPF.ViewModel.S101
                 OnPropertyChanged(nameof(information));
             };
         }
+
+        public override string? ToString() => $"Administration Area";
     }
 
     [CategoryOrder("CargoTranshipmentArea", 0)]
@@ -33712,6 +34076,8 @@ namespace S100Framework.WPF.ViewModel.S101
                 OnPropertyChanged(nameof(information));
             };
         }
+
+        public override string? ToString() => $"Cargo Transhipment Area";
     }
 
     [CategoryOrder("CautionArea", 0)]
@@ -33874,6 +34240,8 @@ namespace S100Framework.WPF.ViewModel.S101
                 OnPropertyChanged(nameof(information));
             };
         }
+
+        public override string? ToString() => $"Caution Area";
     }
 
     [CategoryOrder("InformationArea", 0)]
@@ -34018,6 +34386,8 @@ namespace S100Framework.WPF.ViewModel.S101
                 OnPropertyChanged(nameof(information));
             };
         }
+
+        public override string? ToString() => $"Information Area";
     }
 
     [CategoryOrder("ContiguousZone", 0)]
@@ -34135,6 +34505,8 @@ namespace S100Framework.WPF.ViewModel.S101
                 OnPropertyChanged(nameof(information));
             };
         }
+
+        public override string? ToString() => $"Contiguous Zone";
     }
 
     [CategoryOrder("ContinentalShelfArea", 0)]
@@ -34228,6 +34600,8 @@ namespace S100Framework.WPF.ViewModel.S101
                 OnPropertyChanged(nameof(information));
             };
         }
+
+        public override string? ToString() => $"Continental Shelf Area";
     }
 
     [CategoryOrder("CustomZone", 0)]
@@ -34312,6 +34686,8 @@ namespace S100Framework.WPF.ViewModel.S101
                 OnPropertyChanged(nameof(information));
             };
         }
+
+        public override string? ToString() => $"Custom Zone";
     }
 
     [CategoryOrder("ExclusiveEconomicZone", 0)]
@@ -34408,6 +34784,8 @@ namespace S100Framework.WPF.ViewModel.S101
                 OnPropertyChanged(nameof(information));
             };
         }
+
+        public override string? ToString() => $"Exclusive Economic Zone";
     }
 
     [CategoryOrder("FisheryZone", 0)]
@@ -34516,6 +34894,8 @@ namespace S100Framework.WPF.ViewModel.S101
                 OnPropertyChanged(nameof(information));
             };
         }
+
+        public override string? ToString() => $"Fishery Zone";
     }
 
     [CategoryOrder("FishingGround", 0)]
@@ -34645,6 +35025,8 @@ namespace S100Framework.WPF.ViewModel.S101
                 OnPropertyChanged(nameof(information));
             };
         }
+
+        public override string? ToString() => $"Fishing Ground";
     }
 
     [CategoryOrder("FreePortArea", 0)]
@@ -34738,6 +35120,8 @@ namespace S100Framework.WPF.ViewModel.S101
                 OnPropertyChanged(nameof(information));
             };
         }
+
+        public override string? ToString() => $"Free Port Area";
     }
 
     [CategoryOrder("HarbourAreaAdministrative", 0)]
@@ -34831,6 +35215,8 @@ namespace S100Framework.WPF.ViewModel.S101
                 OnPropertyChanged(nameof(information));
             };
         }
+
+        public override string? ToString() => $"Harbour Area (Administrative)";
     }
 
     [CategoryOrder("LogPond", 0)]
@@ -34936,6 +35322,8 @@ namespace S100Framework.WPF.ViewModel.S101
                 OnPropertyChanged(nameof(information));
             };
         }
+
+        public override string? ToString() => $"Log Pond";
     }
 
     [CategoryOrder("OilBarrier", 0)]
@@ -35095,6 +35483,8 @@ namespace S100Framework.WPF.ViewModel.S101
                 OnPropertyChanged(nameof(information));
             };
         }
+
+        public override string? ToString() => $"Oil Barrier";
     }
 
     [CategoryOrder("StraightTerritorialSeaBaseline", 0)]
@@ -35179,6 +35569,8 @@ namespace S100Framework.WPF.ViewModel.S101
                 OnPropertyChanged(nameof(information));
             };
         }
+
+        public override string? ToString() => $"Straight Territorial Sea Baseline";
     }
 
     [CategoryOrder("TerritorialSeaArea", 0)]
@@ -35299,6 +35691,8 @@ namespace S100Framework.WPF.ViewModel.S101
                 OnPropertyChanged(nameof(information));
             };
         }
+
+        public override string? ToString() => $"Territorial Sea Area";
     }
 
     [CategoryOrder("SubmarineTransitLane", 0)]
@@ -35419,6 +35813,8 @@ namespace S100Framework.WPF.ViewModel.S101
                 OnPropertyChanged(nameof(information));
             };
         }
+
+        public override string? ToString() => $"Submarine Transit Lane";
     }
 
     [CategoryOrder("PilotageDistrict", 0)]
@@ -35512,6 +35908,8 @@ namespace S100Framework.WPF.ViewModel.S101
                 OnPropertyChanged(nameof(information));
             };
         }
+
+        public override string? ToString() => $"Pilotage District";
     }
 
     [CategoryOrder("CollisionRegulationsLimit", 0)]
@@ -35641,6 +36039,8 @@ namespace S100Framework.WPF.ViewModel.S101
                 OnPropertyChanged(nameof(information));
             };
         }
+
+        public override string? ToString() => $"Collision Regulations Limit";
     }
 
     [CategoryOrder("MarinePollutionRegulationsArea", 0)]
@@ -35737,6 +36137,8 @@ namespace S100Framework.WPF.ViewModel.S101
                 OnPropertyChanged(nameof(information));
             };
         }
+
+        public override string? ToString() => $"Marine Pollution Regulations Area";
     }
 
     [CategoryOrder("RestrictedArea", 0)]
@@ -35899,6 +36301,8 @@ namespace S100Framework.WPF.ViewModel.S101
                 OnPropertyChanged(nameof(information));
             };
         }
+
+        public override string? ToString() => $"Restricted Area";
     }
 
     [CategoryOrder("LightAllAround", 0)]
@@ -36241,6 +36645,8 @@ namespace S100Framework.WPF.ViewModel.S101
                 OnPropertyChanged(nameof(information));
             };
         }
+
+        public override string? ToString() => $"Light All Around";
     }
 
     [CategoryOrder("LightSectored", 0)]
@@ -36487,6 +36893,8 @@ namespace S100Framework.WPF.ViewModel.S101
                 OnPropertyChanged(nameof(information));
             };
         }
+
+        public override string? ToString() => $"Light Sectored";
     }
 
     [CategoryOrder("LightFogDetector", 0)]
@@ -36721,6 +37129,8 @@ namespace S100Framework.WPF.ViewModel.S101
                 OnPropertyChanged(nameof(information));
             };
         }
+
+        public override string? ToString() => $"Light Fog Detector";
     }
 
     [CategoryOrder("LightAirObstruction", 0)]
@@ -36988,6 +37398,8 @@ namespace S100Framework.WPF.ViewModel.S101
                 OnPropertyChanged(nameof(information));
             };
         }
+
+        public override string? ToString() => $"Light Air Obstruction";
     }
 
     [CategoryOrder("LateralBuoy", 0)]
@@ -37264,6 +37676,8 @@ namespace S100Framework.WPF.ViewModel.S101
                 OnPropertyChanged(nameof(information));
             };
         }
+
+        public override string? ToString() => $"Lateral Buoy";
     }
 
     [CategoryOrder("CardinalBuoy", 0)]
@@ -37540,6 +37954,8 @@ namespace S100Framework.WPF.ViewModel.S101
                 OnPropertyChanged(nameof(information));
             };
         }
+
+        public override string? ToString() => $"Cardinal Buoy";
     }
 
     [CategoryOrder("IsolatedDangerBuoy", 0)]
@@ -37801,6 +38217,8 @@ namespace S100Framework.WPF.ViewModel.S101
                 OnPropertyChanged(nameof(information));
             };
         }
+
+        public override string? ToString() => $"Isolated Danger Buoy";
     }
 
     [CategoryOrder("SafeWaterBuoy", 0)]
@@ -38062,6 +38480,8 @@ namespace S100Framework.WPF.ViewModel.S101
                 OnPropertyChanged(nameof(information));
             };
         }
+
+        public override string? ToString() => $"Safe Water Buoy";
     }
 
     [CategoryOrder("SpecialPurposeGeneralBuoy", 0)]
@@ -38335,6 +38755,8 @@ namespace S100Framework.WPF.ViewModel.S101
                 OnPropertyChanged(nameof(information));
             };
         }
+
+        public override string? ToString() => $"Special Purpose/General Buoy";
     }
 
     [CategoryOrder("EmergencyWreckMarkingBuoy", 0)]
@@ -38572,6 +38994,8 @@ namespace S100Framework.WPF.ViewModel.S101
                 OnPropertyChanged(nameof(information));
             };
         }
+
+        public override string? ToString() => $"Emergency Wreck Marking Buoy";
     }
 
     [CategoryOrder("InstallationBuoy", 0)]
@@ -38824,6 +39248,8 @@ namespace S100Framework.WPF.ViewModel.S101
                 OnPropertyChanged(nameof(information));
             };
         }
+
+        public override string? ToString() => $"Installation Buoy";
     }
 
     [CategoryOrder("MooringBuoy", 0)]
@@ -39079,6 +39505,8 @@ namespace S100Framework.WPF.ViewModel.S101
                 OnPropertyChanged(nameof(information));
             };
         }
+
+        public override string? ToString() => $"Mooring Buoy";
     }
 
     [CategoryOrder("LateralBeacon", 0)]
@@ -39430,6 +39858,8 @@ namespace S100Framework.WPF.ViewModel.S101
                 OnPropertyChanged(nameof(information));
             };
         }
+
+        public override string? ToString() => $"Lateral Beacon";
     }
 
     [CategoryOrder("CardinalBeacon", 0)]
@@ -39781,6 +40211,8 @@ namespace S100Framework.WPF.ViewModel.S101
                 OnPropertyChanged(nameof(information));
             };
         }
+
+        public override string? ToString() => $"Cardinal Beacon";
     }
 
     [CategoryOrder("IsolatedDangerBeacon", 0)]
@@ -40117,6 +40549,8 @@ namespace S100Framework.WPF.ViewModel.S101
                 OnPropertyChanged(nameof(information));
             };
         }
+
+        public override string? ToString() => $"Isolated Danger Beacon";
     }
 
     [CategoryOrder("SafeWaterBeacon", 0)]
@@ -40453,6 +40887,8 @@ namespace S100Framework.WPF.ViewModel.S101
                 OnPropertyChanged(nameof(information));
             };
         }
+
+        public override string? ToString() => $"Safe Water Beacon";
     }
 
     [CategoryOrder("SpecialPurposeGeneralBeacon", 0)]
@@ -40801,6 +41237,8 @@ namespace S100Framework.WPF.ViewModel.S101
                 OnPropertyChanged(nameof(information));
             };
         }
+
+        public override string? ToString() => $"Special Purpose/General Beacon";
     }
 
     [CategoryOrder("Daymark", 0)]
@@ -41080,6 +41518,8 @@ namespace S100Framework.WPF.ViewModel.S101
                 OnPropertyChanged(nameof(information));
             };
         }
+
+        public override string? ToString() => $"Daymark";
     }
 
     [CategoryOrder("LightFloat", 0)]
@@ -41356,6 +41796,8 @@ namespace S100Framework.WPF.ViewModel.S101
                 OnPropertyChanged(nameof(information));
             };
         }
+
+        public override string? ToString() => $"Light Float";
     }
 
     [CategoryOrder("LightVessel", 0)]
@@ -41611,6 +42053,8 @@ namespace S100Framework.WPF.ViewModel.S101
                 OnPropertyChanged(nameof(information));
             };
         }
+
+        public override string? ToString() => $"Light Vessel";
     }
 
     [CategoryOrder("Retroreflector", 0)]
@@ -41767,6 +42211,8 @@ namespace S100Framework.WPF.ViewModel.S101
                 OnPropertyChanged(nameof(information));
             };
         }
+
+        public override string? ToString() => $"Retroreflector";
     }
 
     [CategoryOrder("RadarReflector", 0)]
@@ -41896,6 +42342,8 @@ namespace S100Framework.WPF.ViewModel.S101
                 OnPropertyChanged(nameof(information));
             };
         }
+
+        public override string? ToString() => $"Radar Reflector";
     }
 
     [CategoryOrder("FogSignal", 0)]
@@ -42124,6 +42572,8 @@ namespace S100Framework.WPF.ViewModel.S101
                 OnPropertyChanged(nameof(information));
             };
         }
+
+        public override string? ToString() => $"Fog Signal";
     }
 
     [CategoryOrder("PhysicalAISAidToNavigation", 0)]
@@ -42283,6 +42733,8 @@ namespace S100Framework.WPF.ViewModel.S101
                 OnPropertyChanged(nameof(information));
             };
         }
+
+        public override string? ToString() => $"Physical AIS Aid to Navigation";
     }
 
     [CategoryOrder("VirtualAISAidToNavigation", 0)]
@@ -42457,6 +42909,8 @@ namespace S100Framework.WPF.ViewModel.S101
                 OnPropertyChanged(nameof(information));
             };
         }
+
+        public override string? ToString() => $"Virtual AIS Aid to Navigation";
     }
 
     [CategoryOrder("RadioStation", 0)]
@@ -42658,6 +43112,8 @@ namespace S100Framework.WPF.ViewModel.S101
                 OnPropertyChanged(nameof(information));
             };
         }
+
+        public override string? ToString() => $"Radio Station";
     }
 
     [CategoryOrder("RadarTransponderBeacon", 0)]
@@ -42874,6 +43330,8 @@ namespace S100Framework.WPF.ViewModel.S101
                 OnPropertyChanged(nameof(information));
             };
         }
+
+        public override string? ToString() => $"Radar Transponder Beacon";
     }
 
     [CategoryOrder("PilotBoardingPlace", 0)]
@@ -43066,6 +43524,8 @@ namespace S100Framework.WPF.ViewModel.S101
                 OnPropertyChanged(nameof(information));
             };
         }
+
+        public override string? ToString() => $"Pilot Boarding Place";
     }
 
     [CategoryOrder("VesselTrafficServiceArea", 0)]
@@ -43147,6 +43607,8 @@ namespace S100Framework.WPF.ViewModel.S101
                 OnPropertyChanged(nameof(information));
             };
         }
+
+        public override string? ToString() => $"Vessel Traffic Service Area";
     }
 
     [CategoryOrder("CoastGuardStation", 0)]
@@ -43300,6 +43762,8 @@ namespace S100Framework.WPF.ViewModel.S101
                 OnPropertyChanged(nameof(information));
             };
         }
+
+        public override string? ToString() => $"Coast Guard Station";
     }
 
     [CategoryOrder("SignalStationWarning", 0)]
@@ -43450,6 +43914,8 @@ namespace S100Framework.WPF.ViewModel.S101
                 OnPropertyChanged(nameof(information));
             };
         }
+
+        public override string? ToString() => $"Signal Station Warning";
     }
 
     [CategoryOrder("SignalStationTraffic", 0)]
@@ -43600,6 +44066,8 @@ namespace S100Framework.WPF.ViewModel.S101
                 OnPropertyChanged(nameof(information));
             };
         }
+
+        public override string? ToString() => $"Signal Station Traffic";
     }
 
     [CategoryOrder("RescueStation", 0)]
@@ -43750,6 +44218,8 @@ namespace S100Framework.WPF.ViewModel.S101
                 OnPropertyChanged(nameof(information));
             };
         }
+
+        public override string? ToString() => $"Rescue Station";
     }
 
     [CategoryOrder("HarbourFacility", 0)]
@@ -43996,6 +44466,8 @@ namespace S100Framework.WPF.ViewModel.S101
                 OnPropertyChanged(nameof(information));
             };
         }
+
+        public override string? ToString() => $"Harbour Facility";
     }
 
     [CategoryOrder("SmallCraftFacility", 0)]
@@ -44128,6 +44600,8 @@ namespace S100Framework.WPF.ViewModel.S101
                 OnPropertyChanged(nameof(information));
             };
         }
+
+        public override string? ToString() => $"Small Craft Facility";
     }
 
     [CategoryOrder("TextPlacement", 0)]
@@ -44227,6 +44701,8 @@ namespace S100Framework.WPF.ViewModel.S101
                 OnPropertyChanged(nameof(textType));
             };
         }
+
+        public override string? ToString() => $"Text Placement";
     }
 
     [CategoryOrder("Chart1Feature", 0)]
@@ -44278,6 +44754,8 @@ namespace S100Framework.WPF.ViewModel.S101
                 OnPropertyChanged(nameof(featureName));
             };
         }
+
+        public override string? ToString() => $"Chart 1 Feature";
     }
 
     public class AidsToNavigationAssociationViewModel : FeatureAssociationViewModel {

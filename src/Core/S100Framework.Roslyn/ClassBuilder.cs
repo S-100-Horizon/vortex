@@ -429,7 +429,7 @@ namespace S100Framework
                             attributes |= TypeAttributes.Abstract;
 
                         if (!attributes.HasFlag(TypeAttributes.Abstract)) {
-                            viewBuilder.AppendLine(BuildClassViewModel(code, complexType, $"DomainModel.{productId}.ComplexAttributes", codelistTypes.Keys, roleTypes.Keys));
+                            viewBuilder.AppendLine(BuildClassViewModel(code, name, complexType, $"DomainModel.{productId}.ComplexAttributes", codelistTypes.Keys, roleTypes.Keys));
                         }
 
                         dictionaryTypesComplex.Add(code);
@@ -900,7 +900,7 @@ namespace S100Framework
                         }));
 
                         if (!attributes.HasFlag(TypeAttributes.Abstract)) {
-                            viewBuilder.AppendLine(BuildClassViewModel(code, informationType, $"DomainModel.{productId}.InformationTypes", codelistTypes.Keys, roleTypes.Keys, (builder) => {
+                            viewBuilder.AppendLine(BuildClassViewModel(code, name, informationType, $"DomainModel.{productId}.InformationTypes", codelistTypes.Keys, roleTypes.Keys, (builder) => {
                                 var c = code;
                                 while (!string.IsNullOrEmpty(c) && superClassHierarchy.ContainsKey(c)) {
                                     c = superClassHierarchy[c];
@@ -1052,7 +1052,7 @@ namespace S100Framework
                         }));
 
                         if (!attributes.HasFlag(TypeAttributes.Abstract)) {
-                            viewBuilder.AppendLine(BuildClassViewModel(code, featureType, $"DomainModel.{productId}.FeatureTypes", codelistTypes.Keys, roleTypes.Keys, (builder) => {
+                            viewBuilder.AppendLine(BuildClassViewModel(code, name, featureType, $"DomainModel.{productId}.FeatureTypes", codelistTypes.Keys, roleTypes.Keys, (builder) => {
                                 var c = code;
                                 while (!string.IsNullOrEmpty(c) && superClassHierarchy.ContainsKey(c)) {
                                     c = superClassHierarchy[c];
@@ -1705,7 +1705,7 @@ namespace S100Framework
         private static void BuildInformationBindings(string code, string xmlNamespace, XElement e, StringBuilder builder) {
         }
 
-        private static string BuildClassViewModel(string code, Type type, string classNamespace, ICollection<string> codeLists, ICollection<string> roles, Action<StringBuilder>? postAction = null) {
+        private static string BuildClassViewModel(string code, string name, Type type, string classNamespace, ICollection<string> codeLists, ICollection<string> roles, Action<StringBuilder>? postAction = null) {
             var classBuilder = new StringBuilder();
 
             if (code.ToLowerInvariant().Equals(code))
@@ -1909,6 +1909,8 @@ namespace S100Framework
 
             //  Constructor
             classBuilder.AppendLine(constructorBuilder.ToString());
+
+            classBuilder.AppendLine($"\t\tpublic override string? ToString() => $\"{name}\";");
 
             classBuilder.AppendLine("\t}");
 

@@ -184,6 +184,8 @@ namespace S100Framework.WPF.ViewModel.S124
 
         public featureNameViewModel() : base() {
         }
+
+        public override string? ToString() => $"Feature Name";
     }
 
     [CategoryOrder("dateTimeRange", 0)]
@@ -237,6 +239,8 @@ namespace S100Framework.WPF.ViewModel.S124
 
         public dateTimeRangeViewModel() : base() {
         }
+
+        public override string? ToString() => $"Date Time Range";
     }
 
     [CategoryOrder("eNCFeatureReference", 0)]
@@ -317,6 +321,8 @@ namespace S100Framework.WPF.ViewModel.S124
                 OnPropertyChanged(nameof(featureObjectIdentifier));
             };
         }
+
+        public override string? ToString() => $"ENC Feature Reference";
     }
 
     [CategoryOrder("featureReference", 0)]
@@ -397,6 +403,8 @@ namespace S100Framework.WPF.ViewModel.S124
                 OnPropertyChanged(nameof(eNCFeatureReference));
             };
         }
+
+        public override string? ToString() => $"Feature Reference";
     }
 
     [CategoryOrder("fixedDateRange", 0)]
@@ -450,6 +458,8 @@ namespace S100Framework.WPF.ViewModel.S124
 
         public fixedDateRangeViewModel() : base() {
         }
+
+        public override string? ToString() => $"Fixed Date Range";
     }
 
 #pragma warning disable CS8981 // The type name only contains lower-cased ascii characters. Such names may become reserved for the language.
@@ -552,6 +562,8 @@ namespace S100Framework.WPF.ViewModel.S124
 
         public informationViewModel() : base() {
         }
+
+        public override string? ToString() => $"Information";
     }
 
     [CategoryOrder("warningInformation", 0)]
@@ -613,6 +625,8 @@ namespace S100Framework.WPF.ViewModel.S124
                 OnPropertyChanged(nameof(navwarnTypeDetails));
             };
         }
+
+        public override string? ToString() => $"Warning Information";
     }
 
     [CategoryOrder("chartAffected", 0)]
@@ -696,6 +710,8 @@ namespace S100Framework.WPF.ViewModel.S124
 
         public chartAffectedViewModel() : base() {
         }
+
+        public override string? ToString() => $"Chart Affected";
     }
 
     [CategoryOrder("affectedChartPublications", 0)]
@@ -800,6 +816,8 @@ namespace S100Framework.WPF.ViewModel.S124
 
         public affectedChartPublicationsViewModel() : base() {
         }
+
+        public override string? ToString() => $"Affected Chart Publications";
     }
 
     [CategoryOrder("locationName", 0)]
@@ -853,6 +871,8 @@ namespace S100Framework.WPF.ViewModel.S124
 
         public locationNameViewModel() : base() {
         }
+
+        public override string? ToString() => $"Location Name";
     }
 
     [CategoryOrder("generalArea", 0)]
@@ -903,6 +923,8 @@ namespace S100Framework.WPF.ViewModel.S124
                 OnPropertyChanged(nameof(locationName));
             };
         }
+
+        public override string? ToString() => $"General Area";
     }
 
 #pragma warning disable CS8981 // The type name only contains lower-cased ascii characters. Such names may become reserved for the language.
@@ -957,6 +979,8 @@ namespace S100Framework.WPF.ViewModel.S124
                 OnPropertyChanged(nameof(locationName));
             };
         }
+
+        public override string? ToString() => $"Locality";
     }
 
     [CategoryOrder("messageSeriesIdentifier", 0)]
@@ -1085,6 +1109,8 @@ namespace S100Framework.WPF.ViewModel.S124
 
         public messageSeriesIdentifierViewModel() : base() {
         }
+
+        public override string? ToString() => $"Message Series Identifier";
     }
 
     [CategoryOrder("nAVWARNTitle", 0)]
@@ -1138,6 +1164,8 @@ namespace S100Framework.WPF.ViewModel.S124
 
         public nAVWARNTitleViewModel() : base() {
         }
+
+        public override string? ToString() => $"NAVWARN Title";
     }
 
     [CategoryOrder("NAVWARNPreamble", 0)]
@@ -1299,6 +1327,8 @@ namespace S100Framework.WPF.ViewModel.S124
                 OnPropertyChanged(nameof(nAVWARNTitle));
             };
         }
+
+        public override string? ToString() => $"NAVWARN Preamble";
     }
 
     [CategoryOrder("References", 0)]
@@ -1368,6 +1398,8 @@ namespace S100Framework.WPF.ViewModel.S124
                 OnPropertyChanged(nameof(messageSeriesIdentifier));
             };
         }
+
+        public override string? ToString() => $"References";
     }
 
     [CategoryOrder("NAVWARNPart", 0)]
@@ -1467,6 +1499,8 @@ namespace S100Framework.WPF.ViewModel.S124
                 OnPropertyChanged(nameof(fixedDateRange));
             };
         }
+
+        public override string? ToString() => $"NAVWARN Part";
     }
 
     [CategoryOrder("NAVWARNAreaAffected", 0)]
@@ -1494,6 +1528,8 @@ namespace S100Framework.WPF.ViewModel.S124
 
         public NAVWARNAreaAffectedViewModel() : base() {
         }
+
+        public override string? ToString() => $"NAVWARN Area Affected";
     }
 
     [CategoryOrder("TextPlacement", 0)]
@@ -1611,6 +1647,8 @@ namespace S100Framework.WPF.ViewModel.S124
 
         public TextPlacementViewModel() : base() {
         }
+
+        public override string? ToString() => $"Text Placement";
     }
 
     public class AreaAffectedViewModel : FeatureAssociationViewModel {

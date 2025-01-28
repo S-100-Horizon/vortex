@@ -406,6 +406,8 @@ namespace S100Framework.WPF.ViewModel.S122
 
         public contactAddressViewModel() : base() {
         }
+
+        public override string? ToString() => $"Contact Address";
     }
 
     [CategoryOrder("featureName", 0)]
@@ -474,6 +476,8 @@ namespace S100Framework.WPF.ViewModel.S122
 
         public featureNameViewModel() : base() {
         }
+
+        public override string? ToString() => $"Feature Name";
     }
 
     [CategoryOrder("fixedDateRange", 0)]
@@ -527,6 +531,8 @@ namespace S100Framework.WPF.ViewModel.S122
 
         public fixedDateRangeViewModel() : base() {
         }
+
+        public override string? ToString() => $"Fixed Date Range";
     }
 
     [CategoryOrder("frequencyPair", 0)]
@@ -580,6 +586,8 @@ namespace S100Framework.WPF.ViewModel.S122
 
         public frequencyPairViewModel() : base() {
         }
+
+        public override string? ToString() => $"Frequency Pair";
     }
 
 #pragma warning disable CS8981 // The type name only contains lower-cased ascii characters. Such names may become reserved for the language.
@@ -682,6 +690,8 @@ namespace S100Framework.WPF.ViewModel.S122
 
         public informationViewModel() : base() {
         }
+
+        public override string? ToString() => $"Information";
     }
 
     [CategoryOrder("onlineResource", 0)]
@@ -810,6 +820,8 @@ namespace S100Framework.WPF.ViewModel.S122
 
         public onlineResourceViewModel() : base() {
         }
+
+        public override string? ToString() => $"Online Resource";
     }
 
 #pragma warning disable CS8981 // The type name only contains lower-cased ascii characters. Such names may become reserved for the language.
@@ -867,6 +879,8 @@ namespace S100Framework.WPF.ViewModel.S122
 
         public orientationViewModel() : base() {
         }
+
+        public override string? ToString() => $"Orientation";
     }
 
     [CategoryOrder("periodicDateRange", 0)]
@@ -920,6 +934,8 @@ namespace S100Framework.WPF.ViewModel.S122
 
         public periodicDateRangeViewModel() : base() {
         }
+
+        public override string? ToString() => $"Periodic Date Range";
     }
 
     [CategoryOrder("rxNCode", 0)]
@@ -998,6 +1014,8 @@ namespace S100Framework.WPF.ViewModel.S122
 
         public rxNCodeViewModel() : base() {
         }
+
+        public override string? ToString() => $"RxN Code";
     }
 
     [CategoryOrder("sectorLimitOne", 0)]
@@ -1051,6 +1069,8 @@ namespace S100Framework.WPF.ViewModel.S122
 
         public sectorLimitOneViewModel() : base() {
         }
+
+        public override string? ToString() => $"Sector Limit One";
     }
 
     [CategoryOrder("sectorLimitTwo", 0)]
@@ -1104,6 +1124,8 @@ namespace S100Framework.WPF.ViewModel.S122
 
         public sectorLimitTwoViewModel() : base() {
         }
+
+        public override string? ToString() => $"Sector Limit Two";
     }
 
     [CategoryOrder("textContent", 0)]
@@ -1187,6 +1209,8 @@ namespace S100Framework.WPF.ViewModel.S122
 
         public textContentViewModel() : base() {
         }
+
+        public override string? ToString() => $"Text Content";
     }
 
     [CategoryOrder("timeIntervalsByDayOfWeek", 0)]
@@ -1261,6 +1285,8 @@ namespace S100Framework.WPF.ViewModel.S122
                 OnPropertyChanged(nameof(timeOfDayStart));
             };
         }
+
+        public override string? ToString() => $"Time Intervals by Day of Week";
     }
 
     [CategoryOrder("vesselsMeasurements", 0)]
@@ -1344,6 +1370,8 @@ namespace S100Framework.WPF.ViewModel.S122
 
         public vesselsMeasurementsViewModel() : base() {
         }
+
+        public override string? ToString() => $"Vessels Measurements";
     }
 
 #pragma warning disable CS8981 // The type name only contains lower-cased ascii characters. Such names may become reserved for the language.
@@ -1431,6 +1459,8 @@ namespace S100Framework.WPF.ViewModel.S122
 
         public designationViewModel() : base() {
         }
+
+        public override string? ToString() => $"designation";
     }
 
     [CategoryOrder("bearingInformation", 0)]
@@ -1528,6 +1558,8 @@ namespace S100Framework.WPF.ViewModel.S122
                 OnPropertyChanged(nameof(information));
             };
         }
+
+        public override string? ToString() => $"Bearing Information";
     }
 
 #pragma warning disable CS8981 // The type name only contains lower-cased ascii characters. Such names may become reserved for the language.
@@ -1632,6 +1664,8 @@ namespace S100Framework.WPF.ViewModel.S122
                 OnPropertyChanged(nameof(pictorialRepresentation));
             };
         }
+
+        public override string? ToString() => $"Graphic";
     }
 
     [CategoryOrder("scheduleByDayOfWeek", 0)]
@@ -1682,6 +1716,8 @@ namespace S100Framework.WPF.ViewModel.S122
                 OnPropertyChanged(nameof(timeIntervalsByDayOfWeek));
             };
         }
+
+        public override string? ToString() => $"Schedule by Day of Week";
     }
 
     [CategoryOrder("sectorLimit", 0)]
@@ -1746,6 +1782,8 @@ namespace S100Framework.WPF.ViewModel.S122
 
         public sectorLimitViewModel() : base() {
         }
+
+        public override string? ToString() => $"Sector Limit";
     }
 
 #pragma warning disable CS8981 // The type name only contains lower-cased ascii characters. Such names may become reserved for the language.
@@ -1868,6 +1906,8 @@ namespace S100Framework.WPF.ViewModel.S122
 
         public telecommunicationsViewModel() : base() {
         }
+
+        public override string? ToString() => $"Telecommunications";
     }
 
     [CategoryOrder("InformationType", 0)]
@@ -1997,6 +2037,8 @@ namespace S100Framework.WPF.ViewModel.S122
                 OnPropertyChanged(nameof(graphic));
             };
         }
+
+        public override string? ToString() => $"Information Type";
     }
 
     [CategoryOrder("AbstractRxN", 0)]
@@ -2174,6 +2216,8 @@ namespace S100Framework.WPF.ViewModel.S122
                 OnPropertyChanged(nameof(graphic));
             };
         }
+
+        public override string? ToString() => $"AbstractRxN";
     }
 
     [CategoryOrder("NauticalInformation", 0)]
@@ -2351,6 +2395,8 @@ namespace S100Framework.WPF.ViewModel.S122
                 OnPropertyChanged(nameof(graphic));
             };
         }
+
+        public override string? ToString() => $"Nautical Information";
     }
 
     [CategoryOrder("Regulations", 0)]
@@ -2528,6 +2574,8 @@ namespace S100Framework.WPF.ViewModel.S122
                 OnPropertyChanged(nameof(graphic));
             };
         }
+
+        public override string? ToString() => $"Regulations";
     }
 
     [CategoryOrder("Restrictions", 0)]
@@ -2705,6 +2753,8 @@ namespace S100Framework.WPF.ViewModel.S122
                 OnPropertyChanged(nameof(graphic));
             };
         }
+
+        public override string? ToString() => $"Restrictions";
     }
 
     [CategoryOrder("Recommendations", 0)]
@@ -2882,6 +2932,8 @@ namespace S100Framework.WPF.ViewModel.S122
                 OnPropertyChanged(nameof(graphic));
             };
         }
+
+        public override string? ToString() => $"Recommendations";
     }
 
     [CategoryOrder("Authority", 0)]
@@ -3038,6 +3090,8 @@ namespace S100Framework.WPF.ViewModel.S122
                 OnPropertyChanged(nameof(graphic));
             };
         }
+
+        public override string? ToString() => $"Authority";
     }
 
     [CategoryOrder("ContactDetails", 0)]
@@ -3374,6 +3428,8 @@ namespace S100Framework.WPF.ViewModel.S122
                 OnPropertyChanged(nameof(graphic));
             };
         }
+
+        public override string? ToString() => $"Contact Details";
     }
 
     [CategoryOrder("NonStandardWorkingDay", 0)]
@@ -3539,6 +3595,8 @@ namespace S100Framework.WPF.ViewModel.S122
                 OnPropertyChanged(nameof(graphic));
             };
         }
+
+        public override string? ToString() => $"Non-Standard Working Day";
     }
 
     [CategoryOrder("ServiceHours", 0)]
@@ -3701,6 +3759,8 @@ namespace S100Framework.WPF.ViewModel.S122
                 OnPropertyChanged(nameof(graphic));
             };
         }
+
+        public override string? ToString() => $"Service Hours";
     }
 
     [CategoryOrder("Applicability", 0)]
@@ -3973,6 +4033,8 @@ namespace S100Framework.WPF.ViewModel.S122
                 OnPropertyChanged(nameof(graphic));
             };
         }
+
+        public override string? ToString() => $"Applicability";
     }
 
     [CategoryOrder("RestrictedArea", 0)]
@@ -4153,6 +4215,8 @@ namespace S100Framework.WPF.ViewModel.S122
                 OnPropertyChanged(nameof(textContent));
             };
         }
+
+        public override string? ToString() => $"Restricted Area";
     }
 
     [CategoryOrder("MarineProtectedArea", 0)]
@@ -4380,6 +4444,8 @@ namespace S100Framework.WPF.ViewModel.S122
                 OnPropertyChanged(nameof(textContent));
             };
         }
+
+        public override string? ToString() => $"Marine Protected Area";
     }
 
     [CategoryOrder("VesselTrafficServiceArea", 0)]
@@ -4539,6 +4605,8 @@ namespace S100Framework.WPF.ViewModel.S122
                 OnPropertyChanged(nameof(textContent));
             };
         }
+
+        public override string? ToString() => $"Vessel Traffic Service Area";
     }
 
     [CategoryOrder("DataCoverage", 0)]
@@ -4566,6 +4634,8 @@ namespace S100Framework.WPF.ViewModel.S122
 
         public DataCoverageViewModel() : base() {
         }
+
+        public override string? ToString() => $"Data Coverage";
     }
 
     [CategoryOrder("TextPlacement", 0)]
@@ -4593,6 +4663,8 @@ namespace S100Framework.WPF.ViewModel.S122
 
         public TextPlacementViewModel() : base() {
         }
+
+        public override string? ToString() => $"Text Placement";
     }
 
     public class AssociatedRxNViewModel : InformationAssociationViewModel {

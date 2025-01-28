@@ -421,6 +421,8 @@ namespace S100Framework.WPF.ViewModel.S128
                 OnPropertyChanged(nameof(deliveryPoint));
             };
         }
+
+        public override string? ToString() => $"Contact Address";
     }
 
     [CategoryOrder("customPaperSize", 0)]
@@ -474,6 +476,8 @@ namespace S100Framework.WPF.ViewModel.S128
 
         public customPaperSizeViewModel() : base() {
         }
+
+        public override string? ToString() => $"Custom Paper Size";
     }
 
     [CategoryOrder("defaultLocale", 0)]
@@ -542,6 +546,8 @@ namespace S100Framework.WPF.ViewModel.S128
 
         public defaultLocaleViewModel() : base() {
         }
+
+        public override string? ToString() => $"Default Locale";
     }
 
     [CategoryOrder("featureName", 0)]
@@ -610,6 +616,8 @@ namespace S100Framework.WPF.ViewModel.S128
 
         public featureNameViewModel() : base() {
         }
+
+        public override string? ToString() => $"Feature Name";
     }
 
 #pragma warning disable CS8981 // The type name only contains lower-cased ascii characters. Such names may become reserved for the language.
@@ -709,6 +717,8 @@ namespace S100Framework.WPF.ViewModel.S128
                 OnPropertyChanged(nameof(text));
             };
         }
+
+        public override string? ToString() => $"Information";
     }
 
     [CategoryOrder("onlineResource", 0)]
@@ -822,6 +832,8 @@ namespace S100Framework.WPF.ViewModel.S128
 
         public onlineResourceViewModel() : base() {
         }
+
+        public override string? ToString() => $"Online Resource";
     }
 
     [CategoryOrder("periodicDateRange", 0)]
@@ -875,6 +887,8 @@ namespace S100Framework.WPF.ViewModel.S128
 
         public periodicDateRangeViewModel() : base() {
         }
+
+        public override string? ToString() => $"Periodic Date Range";
     }
 
 #pragma warning disable CS8981 // The type name only contains lower-cased ascii characters. Such names may become reserved for the language.
@@ -947,6 +961,8 @@ namespace S100Framework.WPF.ViewModel.S128
 
         public pricingViewModel() : base() {
         }
+
+        public override string? ToString() => $"Pricing";
     }
 
     [CategoryOrder("printSize", 0)]
@@ -1005,6 +1021,8 @@ namespace S100Framework.WPF.ViewModel.S128
 
         public printSizeViewModel() : base() {
         }
+
+        public override string? ToString() => $"Print Size";
     }
 
     [CategoryOrder("productSpecification", 0)]
@@ -1088,6 +1106,8 @@ namespace S100Framework.WPF.ViewModel.S128
 
         public productSpecificationViewModel() : base() {
         }
+
+        public override string? ToString() => $"Product Specification";
     }
 
     [CategoryOrder("supportFileSpecification", 0)]
@@ -1156,6 +1176,8 @@ namespace S100Framework.WPF.ViewModel.S128
 
         public supportFileSpecificationViewModel() : base() {
         }
+
+        public override string? ToString() => $"S100_Support File Specification";
     }
 
     [CategoryOrder("serviceSpecification", 0)]
@@ -1224,6 +1246,8 @@ namespace S100Framework.WPF.ViewModel.S128
 
         public serviceSpecificationViewModel() : base() {
         }
+
+        public override string? ToString() => $"Service Specification";
     }
 
     [CategoryOrder("sourceIndication", 0)]
@@ -1334,6 +1358,8 @@ namespace S100Framework.WPF.ViewModel.S128
                 OnPropertyChanged(nameof(featureName));
             };
         }
+
+        public override string? ToString() => $"Source Indication";
     }
 
 #pragma warning disable CS8981 // The type name only contains lower-cased ascii characters. Such names may become reserved for the language.
@@ -1403,6 +1429,8 @@ namespace S100Framework.WPF.ViewModel.S128
                 OnPropertyChanged(nameof(telecommunicationService));
             };
         }
+
+        public override string? ToString() => $"Telecommunications";
     }
 
     [CategoryOrder("timeIntervalOfCycle", 0)]
@@ -1453,6 +1481,8 @@ namespace S100Framework.WPF.ViewModel.S128
                 OnPropertyChanged(nameof(typeOfTimeIntervalUnit));
             };
         }
+
+        public override string? ToString() => $"Time Interval of Cycle";
     }
 
     [CategoryOrder("weekOfYear", 0)]
@@ -1506,6 +1536,8 @@ namespace S100Framework.WPF.ViewModel.S128
 
         public weekOfYearViewModel() : base() {
         }
+
+        public override string? ToString() => $"Week Of Year";
     }
 
     [CategoryOrder("issuanceCycle", 0)]
@@ -1570,6 +1602,8 @@ namespace S100Framework.WPF.ViewModel.S128
 
         public issuanceCycleViewModel() : base() {
         }
+
+        public override string? ToString() => $"Issuance Cycle";
     }
 
     [CategoryOrder("printInformation", 0)]
@@ -1673,6 +1707,8 @@ namespace S100Framework.WPF.ViewModel.S128
 
         public printInformationViewModel() : base() {
         }
+
+        public override string? ToString() => $"Print Information";
     }
 
     [CategoryOrder("supportFile", 0)]
@@ -1887,6 +1923,8 @@ namespace S100Framework.WPF.ViewModel.S128
 
         public supportFileViewModel() : base() {
         }
+
+        public override string? ToString() => $"S100_Support File";
     }
 
     [CategoryOrder("timeIntervalOfProduct", 0)]
@@ -1960,6 +1998,8 @@ namespace S100Framework.WPF.ViewModel.S128
 
         public timeIntervalOfProductViewModel() : base() {
         }
+
+        public override string? ToString() => $"Time Interval of Product";
     }
 
     [CategoryOrder("referenceToNM", 0)]
@@ -2018,6 +2058,8 @@ namespace S100Framework.WPF.ViewModel.S128
 
         public referenceToNMViewModel() : base() {
         }
+
+        public override string? ToString() => $"Reference To NM";
     }
 
     [CategoryOrder("CatalogueSectionHeader", 0)]
@@ -2095,6 +2137,8 @@ namespace S100Framework.WPF.ViewModel.S128
 
         public CatalogueSectionHeaderViewModel() : base() {
         }
+
+        public override string? ToString() => $"Catalogue Section Header";
     }
 
     [CategoryOrder("ContactDetails", 0)]
@@ -2197,6 +2241,8 @@ namespace S100Framework.WPF.ViewModel.S128
                 OnPropertyChanged(nameof(sourceIndication));
             };
         }
+
+        public override string? ToString() => $"Contact Details";
     }
 
     [CategoryOrder("IndicationOfCarriageRequirement", 0)]
@@ -2266,6 +2312,8 @@ namespace S100Framework.WPF.ViewModel.S128
                 OnPropertyChanged(nameof(featureName));
             };
         }
+
+        public override string? ToString() => $"Indication Of Carriage Requirement";
     }
 
     [CategoryOrder("PriceInformation", 0)]
@@ -2341,6 +2389,8 @@ namespace S100Framework.WPF.ViewModel.S128
                 OnPropertyChanged(nameof(sourceIndication));
             };
         }
+
+        public override string? ToString() => $"Price Information";
     }
 
     [CategoryOrder("ProducerInformation", 0)]
@@ -2398,6 +2448,8 @@ namespace S100Framework.WPF.ViewModel.S128
 
         public ProducerInformationViewModel() : base() {
         }
+
+        public override string? ToString() => $"Producer Information";
     }
 
     [CategoryOrder("DistributorInformation", 0)]
@@ -2440,6 +2492,8 @@ namespace S100Framework.WPF.ViewModel.S128
 
         public DistributorInformationViewModel() : base() {
         }
+
+        public override string? ToString() => $"Distributor Information";
     }
 
     [CategoryOrder("ElectronicProduct", 0)]
@@ -2981,6 +3035,8 @@ namespace S100Framework.WPF.ViewModel.S128
                 OnPropertyChanged(nameof(supportFile));
             };
         }
+
+        public override string? ToString() => $"Electronic Product";
     }
 
     [CategoryOrder("PhysicalProduct", 0)]
@@ -3528,6 +3584,8 @@ namespace S100Framework.WPF.ViewModel.S128
                 OnPropertyChanged(nameof(supportFile));
             };
         }
+
+        public override string? ToString() => $"Physical Product";
     }
 
     [CategoryOrder("S100Service", 0)]
@@ -3839,6 +3897,8 @@ namespace S100Framework.WPF.ViewModel.S128
                 OnPropertyChanged(nameof(supportFile));
             };
         }
+
+        public override string? ToString() => $"S100 Service";
     }
 
     public class ProductMappingViewModel : FeatureAssociationViewModel {
