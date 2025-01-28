@@ -1516,28 +1516,7 @@ namespace S100Framework
             common.AppendLine("\tpublic class FeatureAssociation : Association {");
             common.AppendLine("\t}");
 
-
-            /*
-                public class RefId
-                {
-                    public required string Value { get; set; }
-
-                    public required string Type { get; set; }
-
-                    public required string Role { get; set; }
-                }
-
-                public class FeatureAssociation
-                {
-                    public required string AssociationConnectorTypeName { get; set; }
-
-                    public RefId[] RefIds { get; set; } = new RefId[0];
-                }
-             */
-
-
             common.AppendLine();
-
 
             common.AppendLine($"\tnamespace Bindings");
             common.AppendLine("\t{");
