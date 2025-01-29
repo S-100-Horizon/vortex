@@ -705,7 +705,8 @@ namespace S100Framework
                                 builder.AppendLine($"\t\t\t}}");
                             }));
 
-                            creatorBuilder.AppendLine($"\t\t\t{{ typeof(DomainModel.{productId}.InformationTypes.{code}).Name, ()=> {{");
+                            //creatorBuilder.AppendLine($"\t\t\t{{ typeof(DomainModel.{productId}.InformationTypes.{code}).Name, ()=> {{");
+                            creatorBuilder.AppendLine($"\t\t\t{{ \"{code}\", ()=> {{");
                             creatorBuilder.AppendLine($"\t\t\t\treturn new {code}ViewModel();");
                             creatorBuilder.AppendLine("\t\t\t  }");
                             creatorBuilder.AppendLine("\t\t\t},");
@@ -857,7 +858,8 @@ namespace S100Framework
                                 builder.AppendLine($"\t\t\t}}");
                             }));
 
-                            creatorBuilder.AppendLine($"\t\t\t{{ typeof(DomainModel.{productId}.FeatureTypes.{code}).Name, ()=> {{");
+                            //creatorBuilder.AppendLine($"\t\t\t{{ typeof(DomainModel.{productId}.FeatureTypes.{code}).Name, ()=> {{");
+                            creatorBuilder.AppendLine($"\t\t\t{{ \"{code}\", ()=> {{");
                             creatorBuilder.AppendLine($"\t\t\t\treturn new {code}ViewModel();");
                             creatorBuilder.AppendLine("\t\t\t  }");
                             creatorBuilder.AppendLine("\t\t\t},");
@@ -880,8 +882,6 @@ namespace S100Framework
 
             classBuilder.AppendLine("}");
 
-            creatorBuilder.AppendLine("\t\t});");
-            creatorBuilder.AppendLine("\t}");
 
             //  Associations
             {
@@ -906,6 +906,12 @@ namespace S100Framework
                     var name = e.Element(XName.Get("name", scope_S100))!.Value;
                     var definition = e.Element(XName.Get("definition", scope_S100))!.Value;
                     var code = e.Element(XName.Get("code", scope_S100))!.Value;
+
+
+                    creatorBuilder.AppendLine($"\t\t\t{{ \"{code}\", ()=> {{");
+                    creatorBuilder.AppendLine($"\t\t\t\treturn new {code}ViewModel();");
+                    creatorBuilder.AppendLine("\t\t\t  }");
+                    creatorBuilder.AppendLine("\t\t\t},");
 
                     var roles = e.XPathSelectElements("S100FC:role", xmlNamespaceManager).Select(e => e.Attribute("ref")!.Value);
 
@@ -959,7 +965,7 @@ namespace S100Framework
                     viewBuilder.AppendLine($"\t\t}}");
 
                     viewBuilder.AppendLine($"\t\tpublic override void Load(S100Framework.DomainModel.FeatureAssociation featureAssociation) {{");
-                    viewBuilder.AppendLine($"\t\t\tassociationConnector = associationConnectorFeatures.Single(e => e.FeatureType.Equals(featureAssociation.AssociationConnectorTypeName));");
+                    viewBuilder.AppendLine($"\t\t\tassociationConnector = associationConnectorFeatures.SingleOrDefault(e => e.FeatureType.Equals(featureAssociation.AssociationConnectorTypeName));");
                     foreach (var r in roles) {
                         viewBuilder.AppendLine($"\t\t\t{r}?.Load(featureAssociation, \"{r}\");");
                     }
@@ -1068,6 +1074,11 @@ namespace S100Framework
                     var definition = e.Element(XName.Get("definition", scope_S100))!.Value;
                     var code = e.Element(XName.Get("code", scope_S100))!.Value;
 
+                    creatorBuilder.AppendLine($"\t\t\t{{ \"{code}\", ()=> {{");
+                    creatorBuilder.AppendLine($"\t\t\t\treturn new {code}ViewModel();");
+                    creatorBuilder.AppendLine("\t\t\t  }");
+                    creatorBuilder.AppendLine("\t\t\t},");
+
                     var roles = e.XPathSelectElements("S100FC:role", xmlNamespaceManager).Select(e => e.Attribute("ref")!.Value);
 
                     var bindings = productSpecification.XPathSelectElements("//S100FC:informationBinding", xmlNamespaceManager).ToList();
@@ -1126,7 +1137,7 @@ namespace S100Framework
                     viewBuilder.AppendLine($"\t\t}}");
 
                     viewBuilder.AppendLine($"\t\tpublic override void Load(S100Framework.DomainModel.InformationAssociation informationAssociation) {{");
-                    viewBuilder.AppendLine($"\t\t\tassociationConnector = associationConnectorInformations.Single(e => e.InformationType.Equals(informationAssociation.AssociationConnectorTypeName));");
+                    viewBuilder.AppendLine($"\t\t\tassociationConnector = associationConnectorInformations.SingleOrDefault(e => e.InformationType.Equals(informationAssociation.AssociationConnectorTypeName));");
                     foreach (var r in roles) {
                         viewBuilder.AppendLine($"\t\t\t{r}?.Load(informationAssociation, \"{r}\");");
                     }
@@ -1223,6 +1234,10 @@ namespace S100Framework
                     viewBuilder.AppendLine("\t\t}");
                 }
             }
+
+
+            creatorBuilder.AppendLine("\t\t});");
+            creatorBuilder.AppendLine("\t}");
 
             classBuilder.Insert(informationPosition, staticBuilder.ToString());
 

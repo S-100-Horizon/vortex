@@ -18,31 +18,9 @@ namespace VortexProAppModule.Views
             InitializeComponent();
         }
 
-        private static void OnSelectedObjectChanged(DependencyObject o, DependencyPropertyChangedEventArgs e) {
-        }
-
         protected virtual void OnSelectedObjectChanged(object oldValue, object newValue) {
             if (oldValue == newValue)
                 return;
-
-            //this._propertyGrid.EditorDefinitions.Clear();
-
-            //// Apply Editors....?
-
-            //var ed = new EditorTemplateDefinition();
-            //PropertyDefinition pd = new PropertyDefinition();
-            //pd.TargetProperties.Add("navwarnTypeDetail");
-            ////ed.PropertiesDefinitions.Add(pd);
-            //ed.PropertyDefinitions.Add(pd);
-
-            //FrameworkElementFactory fac = new FrameworkElementFactory(typeof(PropertyGridEditorComboBox));
-            //fac.SetBinding(PropertyGridEditorComboBox.SelectedValueProperty, new Binding("navwarnTypeDetail"));
-            ////fac.SetValue(PropertyGridEditorComboBox..IncrementProperty, 10);
-
-            //DataTemplate dt = new DataTemplate { VisualTree = fac };
-            //dt.Seal();
-            //ed.EditingTemplate = dt;
-            //this._propertyGrid.EditorDefinitions.Add(ed);
         }
 
         private void _propertyGrid_PropertyValueChanged(object sender, Xceed.Wpf.Toolkit.PropertyGrid.PropertyValueChangedEventArgs e) {
@@ -52,20 +30,24 @@ namespace VortexProAppModule.Views
         private void _propertyGrid_PreparePropertyItem(object sender, Xceed.Wpf.Toolkit.PropertyGrid.PropertyItemEventArgs e) {
             _logger.Verbose("PreparePropertyItem: {PropertyName}", e.PropertyItem.DisplayName);
 
+            var displayName = e.PropertyItem.DisplayName;
+
             var propertyItem = e.Item as Xceed.Wpf.Toolkit.PropertyGrid.PropertyItem;
             if (propertyItem == null)
                 return;
 
-            if (!propertyItem.PropertyType.IsValueType &&
-                    propertyItem.PropertyType != typeof(string) &&
-                        !propertyItem.PropertyType.IsArray &&
-                            !"System.Collections.Generic".Equals(propertyItem.PropertyType.Namespace)) {
+            if (propertyItem.PropertyType.IsInterface)  // IViewModelHost
+                return;
 
-                var attribute = propertyItem.Instance.GetType().GetProperty(e.PropertyItem.DisplayName)!.GetCustomAttribute<S100Framework.DomainModel.CodeListAttribute>();
+            if (!propertyItem.PropertyType.IsAbstract) {
+                if (!propertyItem.PropertyType.IsValueType && propertyItem.PropertyType != typeof(string) && !propertyItem.PropertyType.IsArray && !"System.Collections.Generic".Equals(propertyItem.PropertyType.Namespace)) {
 
-                //propertyItem.IsExpandable = attribute is null ? !"System.Collections.ObjectModel".Equals(propertyItem.PropertyType.Namespace) : false;
-                if (propertyItem.Value == null) {
-                    propertyItem.Value = Activator.CreateInstance(propertyItem.PropertyType);
+                    var attribute = propertyItem.Instance.GetType().GetProperty(displayName)!.GetCustomAttribute<S100Framework.DomainModel.CodeListAttribute>();
+
+                    //propertyItem.IsExpandable = attribute is null ? !"System.Collections.ObjectModel".Equals(propertyItem.PropertyType.Namespace) : false;
+                    if (propertyItem.Value == null) {
+                        propertyItem.Value = Activator.CreateInstance(propertyItem.PropertyType);
+                    }
                 }
             }
         }

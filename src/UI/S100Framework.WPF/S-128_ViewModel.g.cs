@@ -13,33 +13,63 @@ using Xceed.Wpf.Toolkit.PropertyGrid.Attributes;
 namespace S100Framework.WPF.ViewModel.S128
 {
     internal static class Preamble {
-        public static ImmutableDictionary<string, Func<ViewModelBase>> _creators => ImmutableDictionary.Create<string, Func<ViewModelBase>>().AddRange(new Dictionary<string, Func<ViewModelBase>> { { typeof(DomainModel.S128.InformationTypes.CatalogueSectionHeader).Name, () =>
+        public static ImmutableDictionary<string, Func<ViewModelBase>> _creators => ImmutableDictionary.Create<string, Func<ViewModelBase>>().AddRange(new Dictionary<string, Func<ViewModelBase>> { { "CatalogueSectionHeader", () =>
         {
             return new CatalogueSectionHeaderViewModel();
-        } }, { typeof(DomainModel.S128.InformationTypes.ContactDetails).Name, () =>
+        } }, { "ContactDetails", () =>
         {
             return new ContactDetailsViewModel();
-        } }, { typeof(DomainModel.S128.InformationTypes.IndicationOfCarriageRequirement).Name, () =>
+        } }, { "IndicationOfCarriageRequirement", () =>
         {
             return new IndicationOfCarriageRequirementViewModel();
-        } }, { typeof(DomainModel.S128.InformationTypes.PriceInformation).Name, () =>
+        } }, { "PriceInformation", () =>
         {
             return new PriceInformationViewModel();
-        } }, { typeof(DomainModel.S128.InformationTypes.ProducerInformation).Name, () =>
+        } }, { "ProducerInformation", () =>
         {
             return new ProducerInformationViewModel();
-        } }, { typeof(DomainModel.S128.InformationTypes.DistributorInformation).Name, () =>
+        } }, { "DistributorInformation", () =>
         {
             return new DistributorInformationViewModel();
-        } }, { typeof(DomainModel.S128.FeatureTypes.ElectronicProduct).Name, () =>
+        } }, { "ElectronicProduct", () =>
         {
             return new ElectronicProductViewModel();
-        } }, { typeof(DomainModel.S128.FeatureTypes.PhysicalProduct).Name, () =>
+        } }, { "PhysicalProduct", () =>
         {
             return new PhysicalProductViewModel();
-        } }, { typeof(DomainModel.S128.FeatureTypes.S100Service).Name, () =>
+        } }, { "S100Service", () =>
         {
             return new S100ServiceViewModel();
+        } }, { "ProductMapping", () =>
+        {
+            return new ProductMappingViewModel();
+        } }, { "Correlated", () =>
+        {
+            return new CorrelatedViewModel();
+        } }, { "CarriageRequirement", () =>
+        {
+            return new CarriageRequirementViewModel();
+        } }, { "DistributionDetails", () =>
+        {
+            return new DistributionDetailsViewModel();
+        } }, { "DistributorContact", () =>
+        {
+            return new DistributorContactViewModel();
+        } }, { "PriceOfElement", () =>
+        {
+            return new PriceOfElementViewModel();
+        } }, { "PriceOfNauticalProduct", () =>
+        {
+            return new PriceOfNauticalProductViewModel();
+        } }, { "ProducerContact", () =>
+        {
+            return new ProducerContactViewModel();
+        } }, { "ProductionDetails", () =>
+        {
+            return new ProductionDetailsViewModel();
+        } }, { "ProductPackage", () =>
+        {
+            return new ProductPackageViewModel();
         } }, });
     }
 
@@ -3948,7 +3978,7 @@ namespace S100Framework.WPF.ViewModel.S128
         }
 
         public override void Load(S100Framework.DomainModel.FeatureAssociation featureAssociation) {
-            associationConnector = associationConnectorFeatures.Single(e => e.FeatureType.Equals(featureAssociation.AssociationConnectorTypeName));
+            associationConnector = associationConnectorFeatures.SingleOrDefault(e => e.FeatureType.Equals(featureAssociation.AssociationConnectorTypeName));
             theSource?.Load(featureAssociation, "theSource");
             theReference?.Load(featureAssociation, "theReference");
         }
@@ -4028,7 +4058,7 @@ namespace S100Framework.WPF.ViewModel.S128
         }
 
         public override void Load(S100Framework.DomainModel.FeatureAssociation featureAssociation) {
-            associationConnector = associationConnectorFeatures.Single(e => e.FeatureType.Equals(featureAssociation.AssociationConnectorTypeName));
+            associationConnector = associationConnectorFeatures.SingleOrDefault(e => e.FeatureType.Equals(featureAssociation.AssociationConnectorTypeName));
             main?.Load(featureAssociation, "main");
             panel?.Load(featureAssociation, "panel");
         }
@@ -4113,7 +4143,7 @@ namespace S100Framework.WPF.ViewModel.S128
         }
 
         public override void Load(S100Framework.DomainModel.InformationAssociation informationAssociation) {
-            associationConnector = associationConnectorInformations.Single(e => e.InformationType.Equals(informationAssociation.AssociationConnectorTypeName));
+            associationConnector = associationConnectorInformations.SingleOrDefault(e => e.InformationType.Equals(informationAssociation.AssociationConnectorTypeName));
             theElement?.Load(informationAssociation, "theElement");
             theRequirement?.Load(informationAssociation, "theRequirement");
         }
@@ -4202,7 +4232,7 @@ namespace S100Framework.WPF.ViewModel.S128
         }
 
         public override void Load(S100Framework.DomainModel.InformationAssociation informationAssociation) {
-            associationConnector = associationConnectorInformations.Single(e => e.InformationType.Equals(informationAssociation.AssociationConnectorTypeName));
+            associationConnector = associationConnectorInformations.SingleOrDefault(e => e.InformationType.Equals(informationAssociation.AssociationConnectorTypeName));
             catalogueHeader?.Load(informationAssociation, "catalogueHeader");
             theDistributor?.Load(informationAssociation, "theDistributor");
         }
@@ -4287,7 +4317,7 @@ namespace S100Framework.WPF.ViewModel.S128
         }
 
         public override void Load(S100Framework.DomainModel.InformationAssociation informationAssociation) {
-            associationConnector = associationConnectorInformations.Single(e => e.InformationType.Equals(informationAssociation.AssociationConnectorTypeName));
+            associationConnector = associationConnectorInformations.SingleOrDefault(e => e.InformationType.Equals(informationAssociation.AssociationConnectorTypeName));
             theDistributor?.Load(informationAssociation, "theDistributor");
             theContactDetails?.Load(informationAssociation, "theContactDetails");
         }
@@ -4372,7 +4402,7 @@ namespace S100Framework.WPF.ViewModel.S128
         }
 
         public override void Load(S100Framework.DomainModel.InformationAssociation informationAssociation) {
-            associationConnector = associationConnectorInformations.Single(e => e.InformationType.Equals(informationAssociation.AssociationConnectorTypeName));
+            associationConnector = associationConnectorInformations.SingleOrDefault(e => e.InformationType.Equals(informationAssociation.AssociationConnectorTypeName));
             theCatalogueElement?.Load(informationAssociation, "theCatalogueElement");
             thePriceInformation?.Load(informationAssociation, "thePriceInformation");
         }
@@ -4461,7 +4491,7 @@ namespace S100Framework.WPF.ViewModel.S128
         }
 
         public override void Load(S100Framework.DomainModel.InformationAssociation informationAssociation) {
-            associationConnector = associationConnectorInformations.Single(e => e.InformationType.Equals(informationAssociation.AssociationConnectorTypeName));
+            associationConnector = associationConnectorInformations.SingleOrDefault(e => e.InformationType.Equals(informationAssociation.AssociationConnectorTypeName));
             theCatalogueOfNauticalProduct?.Load(informationAssociation, "theCatalogueOfNauticalProduct");
             thePriceInformation?.Load(informationAssociation, "thePriceInformation");
         }
@@ -4546,7 +4576,7 @@ namespace S100Framework.WPF.ViewModel.S128
         }
 
         public override void Load(S100Framework.DomainModel.InformationAssociation informationAssociation) {
-            associationConnector = associationConnectorInformations.Single(e => e.InformationType.Equals(informationAssociation.AssociationConnectorTypeName));
+            associationConnector = associationConnectorInformations.SingleOrDefault(e => e.InformationType.Equals(informationAssociation.AssociationConnectorTypeName));
             theProducer?.Load(informationAssociation, "theProducer");
             theContactDetails?.Load(informationAssociation, "theContactDetails");
         }
@@ -4631,7 +4661,7 @@ namespace S100Framework.WPF.ViewModel.S128
         }
 
         public override void Load(S100Framework.DomainModel.InformationAssociation informationAssociation) {
-            associationConnector = associationConnectorInformations.Single(e => e.InformationType.Equals(informationAssociation.AssociationConnectorTypeName));
+            associationConnector = associationConnectorInformations.SingleOrDefault(e => e.InformationType.Equals(informationAssociation.AssociationConnectorTypeName));
             catalogueHeader?.Load(informationAssociation, "catalogueHeader");
             theProducer?.Load(informationAssociation, "theProducer");
         }
@@ -4716,7 +4746,7 @@ namespace S100Framework.WPF.ViewModel.S128
         }
 
         public override void Load(S100Framework.DomainModel.InformationAssociation informationAssociation) {
-            associationConnector = associationConnectorInformations.Single(e => e.InformationType.Equals(informationAssociation.AssociationConnectorTypeName));
+            associationConnector = associationConnectorInformations.SingleOrDefault(e => e.InformationType.Equals(informationAssociation.AssociationConnectorTypeName));
             theCatalogueElement?.Load(informationAssociation, "theCatalogueElement");
             elementContainer?.Load(informationAssociation, "elementContainer");
         }

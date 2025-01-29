@@ -20,21 +20,21 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 using System.Xml.Linq;
 
-
-
 namespace VortexProAppModule
 {
     //  https://github.com/esri/arcgis-pro-sdk/wiki/ProConcepts-Editing#customizing-the-attributes-dockpane
 
     internal class S100AttributeTabViewModel : AttributeTabEmbeddableControl
     {
-        static CultureInfo culture = new("en-GB", false);
+        private static CultureInfo culture = new("en-GB", false);
 
         public class InspectorHandle
         {
             public Func<Inspector, string, Type> TypeSelector { get; set; }
 
             public Func<FeatureCatalogue, IEnumerable<string>> Types { get; set; }
+
+            public Func<string, string, string, S100Framework.WPF.ViewModel.ViewModelBase> CreateViewModel { get; set; }
         }
 
         internal record SelectedTemplate(string Schema, string Code)
@@ -51,23 +51,34 @@ namespace VortexProAppModule
         private InspectorHandle _inspectorHandleFeature => new InspectorHandle {
             TypeSelector = this.FeatureTypeSelector,
             Types = (e) => e.FeatureTypes.Select(e => e.Code),
+            CreateViewModel = (schema, code, type) => {
+                return S100Framework.WPF.Helper.CreateViewModel(schema, type);
+            },
         };
 
         private InspectorHandle _inspectorHandleFeatureAssociation => new InspectorHandle {
             TypeSelector = this.FeatureAssociationTypeSelector,
             Types = (e) => e.FeatureAssociationTypes.Select(e => e.Code),
+            CreateViewModel = (schema, code, type) => {
+                return S100Framework.WPF.Helper.CreateViewModel(schema, code);
+            },
         };
 
         private InspectorHandle _inspectorHandleInformation => new InspectorHandle {
             TypeSelector = this.InformationTypeSelector,
             Types = (e) => e.InformationTypes.Select(e => e.Code),
+            CreateViewModel = (schema, code, type) => {
+                return S100Framework.WPF.Helper.CreateViewModel(schema, type);
+            },
         };
 
         private InspectorHandle _inspectorHandleInformationAssociation => new InspectorHandle {
             TypeSelector = this.InformationAssociationTypeSelector,
             Types = (e) => e.InformationAssociationTypes.Select(e => e.Code),
+            CreateViewModel = (schema, code, type) => {
+                return S100Framework.WPF.Helper.CreateViewModel(schema, code);
+            },
         };
-
 
         private SelectedTemplate _selectedTemplate = SelectedTemplate.Empty;
 
@@ -84,7 +95,6 @@ namespace VortexProAppModule
         private bool _isSelectedSchemaEnabled = true;
 
         private bool _isSelectedModelTypeEnabled = false;
-
 
         public S100AttributeTabViewModel(XElement options, bool canChangeOptions) : base(options, canChangeOptions) {
             _module = VortexProAppModule.Module.Current;
@@ -106,6 +116,37 @@ namespace VortexProAppModule
                     });
                 }
             });
+
+            S100Framework.WPF.ViewModel.Handles.GetFeaturesRefId = async (e) => {
+                var featureType = e.FeatureType;
+                var associationTypes = e.AssociationTypes;
+
+                var result = await QueuedTask.Run(() => {
+                    var mapView = MapView.Active?.Map;
+                    if (mapView is null)
+                        return [];
+
+                    var selection = mapView.GetSelection();
+
+                    foreach (var layer in selection.ToDictionary()) {
+
+                    }
+
+                    var objectid = new List<string>();
+
+                    return objectid.ToArray();
+                });
+                return result;
+            };
+
+            S100Framework.WPF.ViewModel.Handles.GetInformationsRefId = (e) => {
+                var informationType = e.InformationType;
+                var associationTypes = e.AssociationTypes;
+
+                var objectid = new List<string>();
+
+                return objectid.ToArray();
+            };
         }
 
         protected override void NotifyPropertyChanged([CallerMemberName] string name = "") {
@@ -199,17 +240,6 @@ namespace VortexProAppModule
                 });
 
                 this.SelectedProperty = await QueuedTask.Run((Func<S100Framework.WPF.ViewModel.ViewModelBase>)(() => {
-                    //var fc = inspector.MapMember switch {
-                    //    FeatureLayer l => l.GetFeatureClass(),
-                    //    StandaloneTable t => t.GetTable(),
-                    //    _ => throw new InvalidOperationException(),
-                    //};
-
-                    //using var geodatabase = (Geodatabase)fc.GetDatastore();
-
-                    //var syntax = geodatabase.GetSQLSyntax();
-                    //var tableNames = syntax.ParseTableName(fc.GetName());
-
                     var featureid = Convert.ToString(inspector["GlobalID"]).ToUpperInvariant();
                     var schema = Convert.ToString(inspector["ps"]);
 
@@ -233,7 +263,7 @@ namespace VortexProAppModule
                         return default;
                     }
 
-                    var viewmodel = S100Framework.WPF.Helper.CreateViewModel(schema, type);
+                    var viewmodel = this._inspectorHandle.CreateViewModel(schema, code, type.Name);
 
                     object instance;
                     if (DBNull.Value.Equals(inspector["JSON"]) || string.IsNullOrEmpty(Convert.ToString(inspector["JSON"]))) {
@@ -262,7 +292,6 @@ namespace VortexProAppModule
                     return viewmodel;
                 }));
 
-
                 if (SelectedProperty == default) {
                     SelectedSchema = default;
                     SelectedModelType = default;
@@ -285,6 +314,8 @@ namespace VortexProAppModule
             var featureCatalogue = _module.GetFeatureCatalogue(schema);
 
             var code = Convert.ToString(inspector["code"]);
+            if (string.IsNullOrEmpty(code))
+                return null;
 
             if (!_selectedTemplate.Schema.Equals(schema) || !_selectedTemplate.Code.Equals(code)) {
                 SelectedSchema = schema;
@@ -297,8 +328,6 @@ namespace VortexProAppModule
                 });
 
                 SelectedModelType = ModelTypes.Single(e => e.Code == code);
-
-                //    _selectedTemplate = new SelectedTemplate(schema, featureType.Code);
             }
 
             var type = featureCatalogue.Assembly!.GetType($"{S100Framework.Catalogues.FeatureCatalogue.Namespace(schema, "FeatureTypes")}.{code}", true);
@@ -312,6 +341,8 @@ namespace VortexProAppModule
             var featureCatalogue = _module.GetFeatureCatalogue(schema);
 
             var code = Convert.ToString(inspector["code"]);
+            if (string.IsNullOrEmpty(code))
+                return null;
 
             if (!_selectedTemplate.Schema.Equals(schema) || !_selectedTemplate.Code.Equals(code)) {
                 SelectedSchema = schema;
@@ -327,9 +358,6 @@ namespace VortexProAppModule
             }
 
             return typeof(S100Framework.DomainModel.FeatureAssociation);
-            var type = featureCatalogue.Assembly!.GetType($"{S100Framework.Catalogues.FeatureCatalogue.Namespace(schema, "FeatureTypes")}.{code}", true);
-
-            return type;
         }
 
         private Type InformationTypeSelector(Inspector inspector, string schema) {
@@ -338,6 +366,8 @@ namespace VortexProAppModule
             var featureCatalogue = _module.GetFeatureCatalogue(schema);
 
             var code = Convert.ToString(inspector["code"]);
+            if (string.IsNullOrEmpty(code))
+                return null;
 
             if (!_selectedTemplate.Schema.Equals(schema) || !_selectedTemplate.Code.Equals(code)) {
                 SelectedSchema = schema;
@@ -363,6 +393,8 @@ namespace VortexProAppModule
             var featureCatalogue = _module.GetFeatureCatalogue(schema);
 
             var code = Convert.ToString(inspector["code"]);
+            if (string.IsNullOrEmpty(code))
+                return null;
 
             if (!_selectedTemplate.Schema.Equals(schema) || !_selectedTemplate.Code.Equals(code)) {
                 SelectedSchema = schema;
@@ -378,9 +410,6 @@ namespace VortexProAppModule
             }
 
             return typeof(S100Framework.DomainModel.InformationAssociation);
-            var type = featureCatalogue.Assembly!.GetType($"{S100Framework.Catalogues.FeatureCatalogue.Namespace(schema, "InformationTypes")}.{code}", true);
-
-            return type;
         }
 
         public ICommand CreateInstance { get; set; }
@@ -421,7 +450,6 @@ namespace VortexProAppModule
         }
 
         public bool IsCreateButtonEnabled => IsSelectedSchemaEnabled && IsSelectedModelTypeEnabled && _selectedTemplate != SelectedTemplate.Empty;
-
 
         private static JsonNode Unflatten(Dictionary<string, JsonValue> source) {
             var regex = new System.Text.RegularExpressions.Regex(@"(?!\.)([^. ^\[\]]+)|(?!\[)(\d+)(?=\])");

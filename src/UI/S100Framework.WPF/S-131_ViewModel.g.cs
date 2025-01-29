@@ -13,117 +13,180 @@ using Xceed.Wpf.Toolkit.PropertyGrid.Attributes;
 namespace S100Framework.WPF.ViewModel.S131
 {
     internal static class Preamble {
-        public static ImmutableDictionary<string, Func<ViewModelBase>> _creators => ImmutableDictionary.Create<string, Func<ViewModelBase>>().AddRange(new Dictionary<string, Func<ViewModelBase>> { { typeof(DomainModel.S131.InformationTypes.Applicability).Name, () =>
+        public static ImmutableDictionary<string, Func<ViewModelBase>> _creators => ImmutableDictionary.Create<string, Func<ViewModelBase>>().AddRange(new Dictionary<string, Func<ViewModelBase>> { { "Applicability", () =>
         {
             return new ApplicabilityViewModel();
-        } }, { typeof(DomainModel.S131.InformationTypes.Authority).Name, () =>
+        } }, { "Authority", () =>
         {
             return new AuthorityViewModel();
-        } }, { typeof(DomainModel.S131.InformationTypes.AvailablePortServices).Name, () =>
+        } }, { "AvailablePortServices", () =>
         {
             return new AvailablePortServicesViewModel();
-        } }, { typeof(DomainModel.S131.InformationTypes.ContactDetails).Name, () =>
+        } }, { "ContactDetails", () =>
         {
             return new ContactDetailsViewModel();
-        } }, { typeof(DomainModel.S131.InformationTypes.Entrance).Name, () =>
+        } }, { "Entrance", () =>
         {
             return new EntranceViewModel();
-        } }, { typeof(DomainModel.S131.InformationTypes.NauticalInformation).Name, () =>
+        } }, { "NauticalInformation", () =>
         {
             return new NauticalInformationViewModel();
-        } }, { typeof(DomainModel.S131.InformationTypes.NonStandardWorkingDay).Name, () =>
+        } }, { "NonStandardWorkingDay", () =>
         {
             return new NonStandardWorkingDayViewModel();
-        } }, { typeof(DomainModel.S131.InformationTypes.Recommendations).Name, () =>
+        } }, { "Recommendations", () =>
         {
             return new RecommendationsViewModel();
-        } }, { typeof(DomainModel.S131.InformationTypes.Regulations).Name, () =>
+        } }, { "Regulations", () =>
         {
             return new RegulationsViewModel();
-        } }, { typeof(DomainModel.S131.InformationTypes.Restrictions).Name, () =>
+        } }, { "Restrictions", () =>
         {
             return new RestrictionsViewModel();
-        } }, { typeof(DomainModel.S131.InformationTypes.ServiceHours).Name, () =>
+        } }, { "ServiceHours", () =>
         {
             return new ServiceHoursViewModel();
-        } }, { typeof(DomainModel.S131.InformationTypes.SpatialQuality).Name, () =>
+        } }, { "SpatialQuality", () =>
         {
             return new SpatialQualityViewModel();
-        } }, { typeof(DomainModel.S131.FeatureTypes.AnchorBerth).Name, () =>
+        } }, { "AnchorBerth", () =>
         {
             return new AnchorBerthViewModel();
-        } }, { typeof(DomainModel.S131.FeatureTypes.AnchorageArea).Name, () =>
+        } }, { "AnchorageArea", () =>
         {
             return new AnchorageAreaViewModel();
-        } }, { typeof(DomainModel.S131.FeatureTypes.Berth).Name, () =>
+        } }, { "Berth", () =>
         {
             return new BerthViewModel();
-        } }, { typeof(DomainModel.S131.FeatureTypes.BerthPosition).Name, () =>
+        } }, { "BerthPosition", () =>
         {
             return new BerthPositionViewModel();
-        } }, { typeof(DomainModel.S131.FeatureTypes.DockArea).Name, () =>
+        } }, { "DockArea", () =>
         {
             return new DockAreaViewModel();
-        } }, { typeof(DomainModel.S131.FeatureTypes.DryDock).Name, () =>
+        } }, { "DryDock", () =>
         {
             return new DryDockViewModel();
-        } }, { typeof(DomainModel.S131.FeatureTypes.DumpingGround).Name, () =>
+        } }, { "DumpingGround", () =>
         {
             return new DumpingGroundViewModel();
-        } }, { typeof(DomainModel.S131.FeatureTypes.FloatingDock).Name, () =>
+        } }, { "FloatingDock", () =>
         {
             return new FloatingDockViewModel();
-        } }, { typeof(DomainModel.S131.FeatureTypes.Gridiron).Name, () =>
+        } }, { "Gridiron", () =>
         {
             return new GridironViewModel();
-        } }, { typeof(DomainModel.S131.FeatureTypes.HarbourAreaAdministrative).Name, () =>
+        } }, { "HarbourAreaAdministrative", () =>
         {
             return new HarbourAreaAdministrativeViewModel();
-        } }, { typeof(DomainModel.S131.FeatureTypes.HarbourAreaSection).Name, () =>
+        } }, { "HarbourAreaSection", () =>
         {
             return new HarbourAreaSectionViewModel();
-        } }, { typeof(DomainModel.S131.FeatureTypes.HarbourBasin).Name, () =>
+        } }, { "HarbourBasin", () =>
         {
             return new HarbourBasinViewModel();
-        } }, { typeof(DomainModel.S131.FeatureTypes.HarbourFacility).Name, () =>
+        } }, { "HarbourFacility", () =>
         {
             return new HarbourFacilityViewModel();
-        } }, { typeof(DomainModel.S131.FeatureTypes.MooringWarpingFacility).Name, () =>
+        } }, { "MooringWarpingFacility", () =>
         {
             return new MooringWarpingFacilityViewModel();
-        } }, { typeof(DomainModel.S131.FeatureTypes.OuterLimit).Name, () =>
+        } }, { "OuterLimit", () =>
         {
             return new OuterLimitViewModel();
-        } }, { typeof(DomainModel.S131.FeatureTypes.PilotBoardingPlace).Name, () =>
+        } }, { "PilotBoardingPlace", () =>
         {
             return new PilotBoardingPlaceViewModel();
-        } }, { typeof(DomainModel.S131.FeatureTypes.SeaplaneLandingArea).Name, () =>
+        } }, { "SeaplaneLandingArea", () =>
         {
             return new SeaplaneLandingAreaViewModel();
-        } }, { typeof(DomainModel.S131.FeatureTypes.Terminal).Name, () =>
+        } }, { "Terminal", () =>
         {
             return new TerminalViewModel();
-        } }, { typeof(DomainModel.S131.FeatureTypes.TurningBasin).Name, () =>
+        } }, { "TurningBasin", () =>
         {
             return new TurningBasinViewModel();
-        } }, { typeof(DomainModel.S131.FeatureTypes.WaterwayArea).Name, () =>
+        } }, { "WaterwayArea", () =>
         {
             return new WaterwayAreaViewModel();
-        } }, { typeof(DomainModel.S131.FeatureTypes.DataCoverage).Name, () =>
+        } }, { "DataCoverage", () =>
         {
             return new DataCoverageViewModel();
-        } }, { typeof(DomainModel.S131.FeatureTypes.QualityOfNonBathymetricData).Name, () =>
+        } }, { "QualityOfNonBathymetricData", () =>
         {
             return new QualityOfNonBathymetricDataViewModel();
-        } }, { typeof(DomainModel.S131.FeatureTypes.SoundingDatum).Name, () =>
+        } }, { "SoundingDatum", () =>
         {
             return new SoundingDatumViewModel();
-        } }, { typeof(DomainModel.S131.FeatureTypes.VerticalDatumOfData).Name, () =>
+        } }, { "VerticalDatumOfData", () =>
         {
             return new VerticalDatumOfDataViewModel();
-        } }, { typeof(DomainModel.S131.FeatureTypes.TextPlacement).Name, () =>
+        } }, { "TextPlacement", () =>
         {
             return new TextPlacementViewModel();
+        } }, { "TextAssociation", () =>
+        {
+            return new TextAssociationViewModel();
+        } }, { "Subsection", () =>
+        {
+            return new SubsectionViewModel();
+        } }, { "Infrastructure", () =>
+        {
+            return new InfrastructureViewModel();
+        } }, { "PrimaryAuxiliaryFacility", () =>
+        {
+            return new PrimaryAuxiliaryFacilityViewModel();
+        } }, { "Demarcation", () =>
+        {
+            return new DemarcationViewModel();
+        } }, { "JurisdictionalLimit", () =>
+        {
+            return new JurisdictionalLimitViewModel();
+        } }, { "LayoutDivision", () =>
+        {
+            return new LayoutDivisionViewModel();
+        } }, { "AdditionalInformation", () =>
+        {
+            return new AdditionalInformationViewModel();
+        } }, { "AuthorityContact", () =>
+        {
+            return new AuthorityContactViewModel();
+        } }, { "AuthorityHours", () =>
+        {
+            return new AuthorityHoursViewModel();
+        } }, { "AssociatedRxN", () =>
+        {
+            return new AssociatedRxNViewModel();
+        } }, { "ExceptionalWorkday", () =>
+        {
+            return new ExceptionalWorkdayViewModel();
+        } }, { "ServiceControl", () =>
+        {
+            return new ServiceControlViewModel();
+        } }, { "ServiceContact", () =>
+        {
+            return new ServiceContactViewModel();
+        } }, { "LocationHours", () =>
+        {
+            return new LocationHoursViewModel();
+        } }, { "RelatedOrganisation", () =>
+        {
+            return new RelatedOrganisationViewModel();
+        } }, { "InclusionType", () =>
+        {
+            return new InclusionTypeViewModel();
+        } }, { "PermissionType", () =>
+        {
+            return new PermissionTypeViewModel();
+        } }, { "SpatialAssociation", () =>
+        {
+            return new SpatialAssociationViewModel();
+        } }, { "LimitEntrance", () =>
+        {
+            return new LimitEntranceViewModel();
+        } }, { "ServiceAvailability", () =>
+        {
+            return new ServiceAvailabilityViewModel();
         } }, });
     }
 
@@ -12413,7 +12476,7 @@ namespace S100Framework.WPF.ViewModel.S131
         }
 
         public override void Load(S100Framework.DomainModel.FeatureAssociation featureAssociation) {
-            associationConnector = associationConnectorFeatures.Single(e => e.FeatureType.Equals(featureAssociation.AssociationConnectorTypeName));
+            associationConnector = associationConnectorFeatures.SingleOrDefault(e => e.FeatureType.Equals(featureAssociation.AssociationConnectorTypeName));
             identifies?.Load(featureAssociation, "identifies");
             positions?.Load(featureAssociation, "positions");
         }
@@ -12574,7 +12637,7 @@ namespace S100Framework.WPF.ViewModel.S131
         }
 
         public override void Load(S100Framework.DomainModel.FeatureAssociation featureAssociation) {
-            associationConnector = associationConnectorFeatures.Single(e => e.FeatureType.Equals(featureAssociation.AssociationConnectorTypeName));
+            associationConnector = associationConnectorFeatures.SingleOrDefault(e => e.FeatureType.Equals(featureAssociation.AssociationConnectorTypeName));
             subUnit?.Load(featureAssociation, "subUnit");
             constitute?.Load(featureAssociation, "constitute");
         }
@@ -12659,7 +12722,7 @@ namespace S100Framework.WPF.ViewModel.S131
         }
 
         public override void Load(S100Framework.DomainModel.FeatureAssociation featureAssociation) {
-            associationConnector = associationConnectorFeatures.Single(e => e.FeatureType.Equals(featureAssociation.AssociationConnectorTypeName));
+            associationConnector = associationConnectorFeatures.SingleOrDefault(e => e.FeatureType.Equals(featureAssociation.AssociationConnectorTypeName));
             infrastructureLocation?.Load(featureAssociation, "infrastructureLocation");
             hasInfrastructure?.Load(featureAssociation, "hasInfrastructure");
         }
@@ -12760,7 +12823,7 @@ namespace S100Framework.WPF.ViewModel.S131
         }
 
         public override void Load(S100Framework.DomainModel.FeatureAssociation featureAssociation) {
-            associationConnector = associationConnectorFeatures.Single(e => e.FeatureType.Equals(featureAssociation.AssociationConnectorTypeName));
+            associationConnector = associationConnectorFeatures.SingleOrDefault(e => e.FeatureType.Equals(featureAssociation.AssociationConnectorTypeName));
             primaryFacility?.Load(featureAssociation, "primaryFacility");
             auxiliaryFacility?.Load(featureAssociation, "auxiliaryFacility");
         }
@@ -12849,7 +12912,7 @@ namespace S100Framework.WPF.ViewModel.S131
         }
 
         public override void Load(S100Framework.DomainModel.FeatureAssociation featureAssociation) {
-            associationConnector = associationConnectorFeatures.Single(e => e.FeatureType.Equals(featureAssociation.AssociationConnectorTypeName));
+            associationConnector = associationConnectorFeatures.SingleOrDefault(e => e.FeatureType.Equals(featureAssociation.AssociationConnectorTypeName));
             demarcationIndicator?.Load(featureAssociation, "demarcationIndicator");
             demarcatedFeature?.Load(featureAssociation, "demarcatedFeature");
         }
@@ -12934,7 +12997,7 @@ namespace S100Framework.WPF.ViewModel.S131
         }
 
         public override void Load(S100Framework.DomainModel.FeatureAssociation featureAssociation) {
-            associationConnector = associationConnectorFeatures.Single(e => e.FeatureType.Equals(featureAssociation.AssociationConnectorTypeName));
+            associationConnector = associationConnectorFeatures.SingleOrDefault(e => e.FeatureType.Equals(featureAssociation.AssociationConnectorTypeName));
             limitReference?.Load(featureAssociation, "limitReference");
             limitExtent?.Load(featureAssociation, "limitExtent");
         }
@@ -13019,7 +13082,7 @@ namespace S100Framework.WPF.ViewModel.S131
         }
 
         public override void Load(S100Framework.DomainModel.FeatureAssociation featureAssociation) {
-            associationConnector = associationConnectorFeatures.Single(e => e.FeatureType.Equals(featureAssociation.AssociationConnectorTypeName));
+            associationConnector = associationConnectorFeatures.SingleOrDefault(e => e.FeatureType.Equals(featureAssociation.AssociationConnectorTypeName));
             layoutUnit?.Load(featureAssociation, "layoutUnit");
             componentOf?.Load(featureAssociation, "componentOf");
         }
@@ -13152,7 +13215,7 @@ namespace S100Framework.WPF.ViewModel.S131
         }
 
         public override void Load(S100Framework.DomainModel.InformationAssociation informationAssociation) {
-            associationConnector = associationConnectorInformations.Single(e => e.InformationType.Equals(informationAssociation.AssociationConnectorTypeName));
+            associationConnector = associationConnectorInformations.SingleOrDefault(e => e.InformationType.Equals(informationAssociation.AssociationConnectorTypeName));
             providesInformation?.Load(informationAssociation, "providesInformation");
             informationProvidedFor?.Load(informationAssociation, "informationProvidedFor");
         }
@@ -13357,7 +13420,7 @@ namespace S100Framework.WPF.ViewModel.S131
         }
 
         public override void Load(S100Framework.DomainModel.InformationAssociation informationAssociation) {
-            associationConnector = associationConnectorInformations.Single(e => e.InformationType.Equals(informationAssociation.AssociationConnectorTypeName));
+            associationConnector = associationConnectorInformations.SingleOrDefault(e => e.InformationType.Equals(informationAssociation.AssociationConnectorTypeName));
             theAuthority?.Load(informationAssociation, "theAuthority");
             theContactDetails?.Load(informationAssociation, "theContactDetails");
         }
@@ -13442,7 +13505,7 @@ namespace S100Framework.WPF.ViewModel.S131
         }
 
         public override void Load(S100Framework.DomainModel.InformationAssociation informationAssociation) {
-            associationConnector = associationConnectorInformations.Single(e => e.InformationType.Equals(informationAssociation.AssociationConnectorTypeName));
+            associationConnector = associationConnectorInformations.SingleOrDefault(e => e.InformationType.Equals(informationAssociation.AssociationConnectorTypeName));
             theAuthority_srvHrs?.Load(informationAssociation, "theAuthority_srvHrs");
             theServiceHours?.Load(informationAssociation, "theServiceHours");
         }
@@ -13527,7 +13590,7 @@ namespace S100Framework.WPF.ViewModel.S131
         }
 
         public override void Load(S100Framework.DomainModel.InformationAssociation informationAssociation) {
-            associationConnector = associationConnectorInformations.Single(e => e.InformationType.Equals(informationAssociation.AssociationConnectorTypeName));
+            associationConnector = associationConnectorInformations.SingleOrDefault(e => e.InformationType.Equals(informationAssociation.AssociationConnectorTypeName));
             appliesInLocation?.Load(informationAssociation, "appliesInLocation");
             theRxN?.Load(informationAssociation, "theRxN");
         }
@@ -13684,7 +13747,7 @@ namespace S100Framework.WPF.ViewModel.S131
         }
 
         public override void Load(S100Framework.DomainModel.InformationAssociation informationAssociation) {
-            associationConnector = associationConnectorInformations.Single(e => e.InformationType.Equals(informationAssociation.AssociationConnectorTypeName));
+            associationConnector = associationConnectorInformations.SingleOrDefault(e => e.InformationType.Equals(informationAssociation.AssociationConnectorTypeName));
             theServiceHours_nsdy?.Load(informationAssociation, "theServiceHours_nsdy");
             partialWorkingDay?.Load(informationAssociation, "partialWorkingDay");
         }
@@ -13765,7 +13828,7 @@ namespace S100Framework.WPF.ViewModel.S131
         }
 
         public override void Load(S100Framework.DomainModel.InformationAssociation informationAssociation) {
-            associationConnector = associationConnectorInformations.Single(e => e.InformationType.Equals(informationAssociation.AssociationConnectorTypeName));
+            associationConnector = associationConnectorInformations.SingleOrDefault(e => e.InformationType.Equals(informationAssociation.AssociationConnectorTypeName));
             controlledService?.Load(informationAssociation, "controlledService");
             controlAuthority?.Load(informationAssociation, "controlAuthority");
         }
@@ -13922,7 +13985,7 @@ namespace S100Framework.WPF.ViewModel.S131
         }
 
         public override void Load(S100Framework.DomainModel.InformationAssociation informationAssociation) {
-            associationConnector = associationConnectorInformations.Single(e => e.InformationType.Equals(informationAssociation.AssociationConnectorTypeName));
+            associationConnector = associationConnectorInformations.SingleOrDefault(e => e.InformationType.Equals(informationAssociation.AssociationConnectorTypeName));
             servicePlace?.Load(informationAssociation, "servicePlace");
             theContactDetails?.Load(informationAssociation, "theContactDetails");
         }
@@ -14079,7 +14142,7 @@ namespace S100Framework.WPF.ViewModel.S131
         }
 
         public override void Load(S100Framework.DomainModel.InformationAssociation informationAssociation) {
-            associationConnector = associationConnectorInformations.Single(e => e.InformationType.Equals(informationAssociation.AssociationConnectorTypeName));
+            associationConnector = associationConnectorInformations.SingleOrDefault(e => e.InformationType.Equals(informationAssociation.AssociationConnectorTypeName));
             location_srvHrs?.Load(informationAssociation, "location_srvHrs");
             facilityOperatingHours?.Load(informationAssociation, "facilityOperatingHours");
         }
@@ -14228,7 +14291,7 @@ namespace S100Framework.WPF.ViewModel.S131
         }
 
         public override void Load(S100Framework.DomainModel.InformationAssociation informationAssociation) {
-            associationConnector = associationConnectorInformations.Single(e => e.InformationType.Equals(informationAssociation.AssociationConnectorTypeName));
+            associationConnector = associationConnectorInformations.SingleOrDefault(e => e.InformationType.Equals(informationAssociation.AssociationConnectorTypeName));
             theInformation?.Load(informationAssociation, "theInformation");
             theOrganisation?.Load(informationAssociation, "theOrganisation");
         }
@@ -14325,7 +14388,7 @@ namespace S100Framework.WPF.ViewModel.S131
         }
 
         public override void Load(S100Framework.DomainModel.InformationAssociation informationAssociation) {
-            associationConnector = associationConnectorInformations.Single(e => e.InformationType.Equals(informationAssociation.AssociationConnectorTypeName));
+            associationConnector = associationConnectorInformations.SingleOrDefault(e => e.InformationType.Equals(informationAssociation.AssociationConnectorTypeName));
             theApplicableRxN?.Load(informationAssociation, "theApplicableRxN");
             isApplicableTo?.Load(informationAssociation, "isApplicableTo");
         }
@@ -14422,7 +14485,7 @@ namespace S100Framework.WPF.ViewModel.S131
         }
 
         public override void Load(S100Framework.DomainModel.InformationAssociation informationAssociation) {
-            associationConnector = associationConnectorInformations.Single(e => e.InformationType.Equals(informationAssociation.AssociationConnectorTypeName));
+            associationConnector = associationConnectorInformations.SingleOrDefault(e => e.InformationType.Equals(informationAssociation.AssociationConnectorTypeName));
             vslLocation?.Load(informationAssociation, "vslLocation");
             permission?.Load(informationAssociation, "permission");
         }
@@ -14583,7 +14646,7 @@ namespace S100Framework.WPF.ViewModel.S131
         }
 
         public override void Load(S100Framework.DomainModel.InformationAssociation informationAssociation) {
-            associationConnector = associationConnectorInformations.Single(e => e.InformationType.Equals(informationAssociation.AssociationConnectorTypeName));
+            associationConnector = associationConnectorInformations.SingleOrDefault(e => e.InformationType.Equals(informationAssociation.AssociationConnectorTypeName));
             defines?.Load(informationAssociation, "defines");
             definedFor?.Load(informationAssociation, "definedFor");
         }
@@ -14659,7 +14722,7 @@ namespace S100Framework.WPF.ViewModel.S131
         }
 
         public override void Load(S100Framework.DomainModel.InformationAssociation informationAssociation) {
-            associationConnector = associationConnectorInformations.Single(e => e.InformationType.Equals(informationAssociation.AssociationConnectorTypeName));
+            associationConnector = associationConnectorInformations.SingleOrDefault(e => e.InformationType.Equals(informationAssociation.AssociationConnectorTypeName));
             entranceTo?.Load(informationAssociation, "entranceTo");
             entranceReference?.Load(informationAssociation, "entranceReference");
         }
@@ -14740,7 +14803,7 @@ namespace S100Framework.WPF.ViewModel.S131
         }
 
         public override void Load(S100Framework.DomainModel.InformationAssociation informationAssociation) {
-            associationConnector = associationConnectorInformations.Single(e => e.InformationType.Equals(informationAssociation.AssociationConnectorTypeName));
+            associationConnector = associationConnectorInformations.SingleOrDefault(e => e.InformationType.Equals(informationAssociation.AssociationConnectorTypeName));
             locationServed?.Load(informationAssociation, "locationServed");
             serviceDescriptionReference?.Load(informationAssociation, "serviceDescriptionReference");
         }

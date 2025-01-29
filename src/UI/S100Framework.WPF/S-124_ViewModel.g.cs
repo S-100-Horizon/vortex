@@ -13,21 +13,33 @@ using Xceed.Wpf.Toolkit.PropertyGrid.Attributes;
 namespace S100Framework.WPF.ViewModel.S124
 {
     internal static class Preamble {
-        public static ImmutableDictionary<string, Func<ViewModelBase>> _creators => ImmutableDictionary.Create<string, Func<ViewModelBase>>().AddRange(new Dictionary<string, Func<ViewModelBase>> { { typeof(DomainModel.S124.InformationTypes.NAVWARNPreamble).Name, () =>
+        public static ImmutableDictionary<string, Func<ViewModelBase>> _creators => ImmutableDictionary.Create<string, Func<ViewModelBase>>().AddRange(new Dictionary<string, Func<ViewModelBase>> { { "NAVWARNPreamble", () =>
         {
             return new NAVWARNPreambleViewModel();
-        } }, { typeof(DomainModel.S124.InformationTypes.References).Name, () =>
+        } }, { "References", () =>
         {
             return new ReferencesViewModel();
-        } }, { typeof(DomainModel.S124.FeatureTypes.NAVWARNPart).Name, () =>
+        } }, { "NAVWARNPart", () =>
         {
             return new NAVWARNPartViewModel();
-        } }, { typeof(DomainModel.S124.FeatureTypes.NAVWARNAreaAffected).Name, () =>
+        } }, { "NAVWARNAreaAffected", () =>
         {
             return new NAVWARNAreaAffectedViewModel();
-        } }, { typeof(DomainModel.S124.FeatureTypes.TextPlacement).Name, () =>
+        } }, { "TextPlacement", () =>
         {
             return new TextPlacementViewModel();
+        } }, { "AreaAffected", () =>
+        {
+            return new AreaAffectedViewModel();
+        } }, { "TextAssociation", () =>
+        {
+            return new TextAssociationViewModel();
+        } }, { "NWPreambleContent", () =>
+        {
+            return new NWPreambleContentViewModel();
+        } }, { "NWReferences", () =>
+        {
+            return new NWReferencesViewModel();
         } }, });
     }
 
@@ -1707,7 +1719,7 @@ namespace S100Framework.WPF.ViewModel.S124
         }
 
         public override void Load(S100Framework.DomainModel.FeatureAssociation featureAssociation) {
-            associationConnector = associationConnectorFeatures.Single(e => e.FeatureType.Equals(featureAssociation.AssociationConnectorTypeName));
+            associationConnector = associationConnectorFeatures.SingleOrDefault(e => e.FeatureType.Equals(featureAssociation.AssociationConnectorTypeName));
             affects?.Load(featureAssociation, "affects");
             impacts?.Load(featureAssociation, "impacts");
         }
@@ -1792,7 +1804,7 @@ namespace S100Framework.WPF.ViewModel.S124
         }
 
         public override void Load(S100Framework.DomainModel.FeatureAssociation featureAssociation) {
-            associationConnector = associationConnectorFeatures.Single(e => e.FeatureType.Equals(featureAssociation.AssociationConnectorTypeName));
+            associationConnector = associationConnectorFeatures.SingleOrDefault(e => e.FeatureType.Equals(featureAssociation.AssociationConnectorTypeName));
             identifies?.Load(featureAssociation, "identifies");
             positions?.Load(featureAssociation, "positions");
         }
@@ -1877,7 +1889,7 @@ namespace S100Framework.WPF.ViewModel.S124
         }
 
         public override void Load(S100Framework.DomainModel.InformationAssociation informationAssociation) {
-            associationConnector = associationConnectorInformations.Single(e => e.InformationType.Equals(informationAssociation.AssociationConnectorTypeName));
+            associationConnector = associationConnectorInformations.SingleOrDefault(e => e.InformationType.Equals(informationAssociation.AssociationConnectorTypeName));
             theWarningPart?.Load(informationAssociation, "theWarningPart");
             header?.Load(informationAssociation, "header");
         }
@@ -1958,7 +1970,7 @@ namespace S100Framework.WPF.ViewModel.S124
         }
 
         public override void Load(S100Framework.DomainModel.InformationAssociation informationAssociation) {
-            associationConnector = associationConnectorInformations.Single(e => e.InformationType.Equals(informationAssociation.AssociationConnectorTypeName));
+            associationConnector = associationConnectorInformations.SingleOrDefault(e => e.InformationType.Equals(informationAssociation.AssociationConnectorTypeName));
             theWarning?.Load(informationAssociation, "theWarning");
             theReferences?.Load(informationAssociation, "theReferences");
         }
