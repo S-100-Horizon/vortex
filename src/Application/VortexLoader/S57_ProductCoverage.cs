@@ -56,7 +56,7 @@ namespace S100Framework.Applications
                     WhereClause = $"Product_GUID = '{globalid:B}'",
                 }, true);
 
-                buffer["ps"] = "S-128";
+                buffer["ps"] = ps128;
                 buffer["code"] = instance.GetType().Name;
                 buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance);
 

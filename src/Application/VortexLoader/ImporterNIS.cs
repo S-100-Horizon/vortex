@@ -14,6 +14,8 @@ namespace S100Framework.Applications
         //  https://github.com/iho-ohi/S-57-to-S-101-conversion-sub-WG
 
         static string _notesPath = "";
+        static string ps101 = "S-101";
+        static string ps128 = "S-128";
 
         public static bool Load(Geodatabase destination, ParserResult<Options> arguments) {
             Func<Geodatabase> createGeodatabase = () => { throw new NotImplementedException(); };
@@ -62,6 +64,28 @@ namespace S100Framework.Applications
                 surface.DeleteRows(query);
                 informationtype.DeleteRows(query);
             }
+
+            //  TracksAndRoutesL
+            S57_TracksAndRoutesL(source, destination, filter);
+            
+            //  TracksAndRoutesA
+            S57_TracksAndRoutesA(source, destination, filter);
+            
+            //  TracksAndRoutesP
+            S57_TracksAndRoutesP(source, destination, filter);
+
+            //  IcefeaturesA
+            S57_IcefeaturesA(source, destination, filter);
+
+            //  CoastlineA
+            S57_CoastlineA(source, destination, filter);
+
+            //  CoastlineL
+            S57_CoastlineL(source, destination, filter);
+
+            //  CoastlineP
+            S57_CoastlineP(source, destination, filter);
+
 
             //  CulturalFeaturesA
             S57_CulturalFeaturesA(source, destination, filter);
@@ -208,10 +232,11 @@ namespace S100Framework.Applications
                        check any populated values for STATUS on LNDARE and amend appropriately. */
 
                     //TODO: STATUS
+                    ;
                 }
             }
         }
-        private static void AddStatus(List<status> status, Feature current) {
+        private static void AddStatus(List<status> statusList, Feature current) {
             if (DBNull.Value != current["STATUS"]) {
                 var featureStatus = Convert.ToString(current["STATUS"])?.Trim();
 
@@ -248,14 +273,61 @@ namespace S100Framework.Applications
                     /* See S-101 DCEG clause 5.4 for the listing of allowable values. Values populated in S-57 for this attribute
                         other than the allowable values will not be converted across to S-101. Data Producers are advised to
                         check any populated values for STATUS on LNDARE and amend appropriately. */
+                    foreach (var c in featureStatus.Split(',', StringSplitOptions.RemoveEmptyEntries)) {
+                        status? e = featureStatus.ToLowerInvariant() switch {
+                            "1" => status.Permanent,
+                            "2" => status.Occasional,
+                            "3" => status.Recommended,
+                            "4" => status.NotInUse,
+                            "5" => status.PeriodicIntermittent,
+                            "6" => status.Reserved,
+                            "7" => status.Temporary,
+                            "8" => status.Private,
+                            "9" => status.Mandatory,
+                            "11" =>status.Extinguished,
+                            "12" =>status.Illuminated,
+                            "13" => status.Historic,
+                            "14" => status.Public,
+                            "15" => status.Synchronized,
+                            "16" => status.Watched,
+                            "17" => status.Unwatched,
+                            "18" => status.ExistenceDoubtful,
+                            //"28" => ??, // TODO: what to do? STATUS 28
+                            "-32767" => (status)(-32767),
+                            _ => throw new IndexOutOfRangeException(),
+                        };
+                        if (e.HasValue) {
+                            statusList.Add(e.Value);
+                        }
+                    }
 
                 }
-
             }
         }
 
 
+
+        /*
+                code	condition
+                alias	CONDTN
+                name	Condition
+                definition	The various conditions of buildings and other constructions.
+                valueType	enumeration
+                listedValues	
+                Under Construction	    1	IHOREG	Being built but not yet capable of function.
+                Ruined	                2	IHOREG	A structure in a decayed or deteriorated condition resulting from neglect or disuse, or a damaged structure in need of repair.
+                Under Reclamation	    3	IHOREG	An area of the sea, a lake or the navigable part of a river that is being reclaimed as land, usually by the dumping of earth and other material.
+                Wingless	            4	IHOREG	A windmill or wind turbine from which the vanes or turbine blades are missing.
+                Planned Construction	5	IHOREG	Detailed planning has been completed but construction has not been initiated.
+
+         */
+
+
         private static void AddCondition(condition? cndtn, Feature feature) {
+
+
+
+
             if (DBNull.Value != feature["CONDITION"]) {
                 var condtn = Convert.ToInt32(feature["CONDITION"]);
                 if (condtn != default) {

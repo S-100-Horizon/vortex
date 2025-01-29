@@ -20,13 +20,14 @@ namespace S100Framework.Applications
         private static void S57_DepthsL(Geodatabase source, Geodatabase target, QueryFilter filter) {
             var tableName = "DepthsL";
 
-            var ps = "S-101";
+            
 
             var depthsl = source.OpenDataset<FeatureClass>("DepthsL");
             var plts_spatialattributel = source.OpenDataset<FeatureClass>("PLTS_SpatialAttributeL");
-            
-            using var featureClass = target.OpenDataset<FeatureClass>("curve");
             using var informationtype = target.OpenDataset<Table>("informationtype");
+
+            using var featureClass = target.OpenDataset<FeatureClass>("curve");
+            
 
             using var buffer = featureClass.CreateRowBuffer();
             using var insert = featureClass.CreateInsertCursor();
@@ -100,7 +101,7 @@ namespace S100Framework.Applications
                                         };
 
                                         using var information = informationtype.CreateRowBuffer();
-                                        information["ps"] = ps;
+                                        information["ps"] = ps101;
                                         information["code"] = spatialQuality.GetType().Name;
                                         information["json"] = System.Text.Json.JsonSerializer.Serialize(spatialQuality);
                                         //information["shape"] = spatialAttributeL.SHAPE;
@@ -112,7 +113,7 @@ namespace S100Framework.Applications
                             }
                             
                             AddInformation(instance.information, feature);
-                            buffer["ps"] = ps;
+                            buffer["ps"] = ps101;
                             buffer["code"] = instance.GetType().Name;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance);
                             buffer["shape"] = current.SHAPE;

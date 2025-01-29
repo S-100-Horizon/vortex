@@ -9,7 +9,7 @@ namespace S100Framework.Applications
     {
         private static void S57_OffshoreInstallationsL(Geodatabase source, Geodatabase target, QueryFilter filter) {
             var tableName = "OffshoreInstallationsL";
-            var ps = "S-101";
+            
 
             using var featureclass = target.OpenDataset<FeatureClass>("curve");
 
@@ -73,7 +73,7 @@ namespace S100Framework.Applications
                             AddStatus(instance.status, feature);
                             AddFeatureName(instance.featureName, feature);
                             AddInformation(instance.information, feature);
-                            buffer["ps"] = ps;
+                            buffer["ps"] = ps101;
                             buffer["code"] = instance.GetType().Name;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance);
                             buffer["shape"] = current.SHAPE;
@@ -94,7 +94,7 @@ namespace S100Framework.Applications
                             AddStatus(instance.status, feature);
                             AddFeatureName(instance.featureName, feature);
                             AddInformation(instance.information, feature);
-                            buffer["ps"] = ps;
+                            buffer["ps"] = ps101;
                             buffer["code"] = instance.GetType().Name;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance);
                             buffer["shape"] = current.SHAPE;

@@ -51,25 +51,16 @@ namespace S100Framework.Applications
                                 status = null,
                                 scaleMinimum = null,
                             };
-                            if (condtn != default) {
-                                instance.condition = condtn switch {
-                                    1 => condition.UnderConstruction,   //  under construction
-                                    2 => condition.Ruined,   //  ruined
-                                    3 => condition.UnderReclamation,   //  under reclamation                                    
-                                    4 => throw new IndexOutOfRangeException(),   //  wingless
-                                    5 => throw new IndexOutOfRangeException(),   //  planned construction
-                                    -32767 => null,
-                                    _ => throw new IndexOutOfRangeException(),
-                                };
-                            }
                             if (plts_comp_scale != default) {
                                 instance.scaleMinimum = plts_comp_scale;
                             }
+
+                            AddCondition(instance.condition, feature);
                             AddStatus(instance.status, feature);
                             AddFeatureName(instance.featureName, feature);
                             AddInformation(instance.information, feature);
 
-                            buffer["ps"] = "S-101";
+                            buffer["ps"] = ps101;
                             buffer["code"] = instance.GetType().Name;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance);
                             buffer["shape"] = current.SHAPE;
@@ -92,11 +83,10 @@ namespace S100Framework.Applications
                                 instance.elevation = current.ELEVAT ?? default;
                             }
 
-
                             AddFeatureName(instance.featureName, feature);
                             AddInformation(instance.information, feature);
 
-                            buffer["ps"] = "S-101";
+                            buffer["ps"] = ps101;
                             buffer["code"] = instance.GetType().Name;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance);
                             buffer["shape"] = current.SHAPE;
@@ -113,11 +103,11 @@ namespace S100Framework.Applications
                             if (plts_comp_scale != default) {
                                 instance.scaleMinimum = plts_comp_scale;
                             }
-                            
+
                             AddFeatureName(instance.featureName, feature);
                             AddInformation(instance.information, feature);
 
-                            buffer["ps"] = "S-101";
+                            buffer["ps"] = ps101;
                             buffer["code"] = instance.GetType().Name;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance);
                             buffer["shape"] = current.SHAPE;
@@ -134,11 +124,12 @@ namespace S100Framework.Applications
                             if (plts_comp_scale != default) {
                                 instance.scaleMinimum = plts_comp_scale;
                             }
+
                             AddStatus(instance.status, feature);
                             AddFeatureName(instance.featureName, feature);
                             AddInformation(instance.information, feature);
 
-                            buffer["ps"] = "S-101";
+                            buffer["ps"] = ps101;
                             buffer["code"] = instance.GetType().Name;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance);
                             buffer["shape"] = current.SHAPE;
@@ -155,11 +146,11 @@ namespace S100Framework.Applications
                             if (plts_comp_scale != default) {
                                 instance.scaleMinimum = plts_comp_scale;
                             }
-                            
+
                             AddFeatureName(instance.featureName, feature);
                             AddInformation(instance.information, feature);
 
-                            buffer["ps"] = "S-101";
+                            buffer["ps"] = ps101;
                             buffer["code"] = instance.GetType().Name;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance);
                             buffer["shape"] = current.SHAPE;
@@ -176,11 +167,11 @@ namespace S100Framework.Applications
                             if (plts_comp_scale != default) {
                                 instance.scaleMinimum = plts_comp_scale;
                             }
-                            
+
                             AddFeatureName(instance.featureName, feature);
                             AddInformation(instance.information, feature);
 
-                            buffer["ps"] = "S-101";
+                            buffer["ps"] = ps101;
                             buffer["code"] = instance.GetType().Name;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance);
                             buffer["shape"] = current.SHAPE;
@@ -202,7 +193,7 @@ namespace S100Framework.Applications
                             AddFeatureName(instance.featureName, feature);
                             AddInformation(instance.information, feature);
 
-                            buffer["ps"] = "S-101";
+                            buffer["ps"] = ps101;
                             buffer["code"] = instance.GetType().Name;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance);
                             buffer["shape"] = current.SHAPE;

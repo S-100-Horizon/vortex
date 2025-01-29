@@ -11,12 +11,10 @@ namespace S100Framework.Applications
         private static void S57_CulturalFeaturesP(Geodatabase source, Geodatabase target, QueryFilter filter) {
             var tableName = "CulturalFeaturesP";
 
-            var ps101 = "S-101";
-
             var culturalFeaturesP = source.OpenDataset<FeatureClass>(tableName);
 
             using var featureClass = target.OpenDataset<FeatureClass>("point");
-            using var informationtype = target.OpenDataset<Table>("informationtype");
+            
 
             using var buffer = featureClass.CreateRowBuffer();
             using var insert = featureClass.CreateInsertCursor();

@@ -17,7 +17,7 @@ namespace S100Framework.Applications
             var portsAndServicesA = source.OpenDataset<FeatureClass>(tableName);
 
             using var featureClass = target.OpenDataset<FeatureClass>("surface");
-            using var informationtype = target.OpenDataset<Table>("informationtype");
+            
 
             using var buffer = featureClass.CreateRowBuffer();
             using var insert = featureClass.CreateInsertCursor();

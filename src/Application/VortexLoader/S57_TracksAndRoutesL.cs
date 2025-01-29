@@ -7,18 +7,20 @@ namespace S100Framework.Applications
 {
     internal static partial class ImporterNIS
     {
-        private static void S57_DangersA(Geodatabase source, Geodatabase target, QueryFilter filter) {
-            var tableName = "DangersA";
+        private static void S57_TracksAndRoutesL(Geodatabase source, Geodatabase target, QueryFilter filter) {
+            var tableName = "TracksAndRoutesL";
 
-            var dangersa = source.OpenDataset<FeatureClass>(tableName);
+            
 
-            using var featureClass = target.OpenDataset<FeatureClass>("surface");
+            var tracksAndRoutesL = source.OpenDataset<FeatureClass>(tableName);
+
+            using var featureClass = target.OpenDataset<FeatureClass>("curve");
             
 
             using var buffer = featureClass.CreateRowBuffer();
             using var insert = featureClass.CreateInsertCursor();
 
-            using var cursor = dangersa.Search(filter, true);
+            using var cursor = tracksAndRoutesL.Search(filter, true);
             int recordCount = 0;
             int convertedCount = 0;
             while (cursor.MoveNext()) {
@@ -26,174 +28,184 @@ namespace S100Framework.Applications
 
                 var feature = (Feature)cursor.Current;
 
-                var current = new DangersA(feature);
+                var current = new TracksAndRoutesL(feature);
 
                 var objectid = current.OBJECTID ?? default;
                 var globalid = current.GLOBALID;
                 var subtype = current.FCSUBTYPE ?? default;
-                var catObs = current.CATOBS ?? -32767;
-                var valsou = current.VALSOU ?? default;
-                var watlev = current.WATLEV ?? default;
                 var plts_comp_scale = current.PLTS_COMP_SCALE ?? default;
                 var longname = current.LNAM ?? Strings.UNKNOWN;
                 var status = current.STATUS ?? default;
 
-                bool isValsouEmpty = !current.VALSOU.HasValue;
-
-                // The attribute default clearance depth must be populated with a value, which must not be an empty(null)
-                // value, only if the attribute value of sounding for the feature instance is populated with an empty(null) value
-                // and the attribute height, if an allowable attribute for the feature, is not populated.
-                // S-101 Annex A_DCEG Edition 1.5.0_Draft for Edition 2.0.0.pdf: p.771
-                //Decimal defaultClearanceDepth = -32767;
-
                 switch (subtype) {
-                    case 1: { // CTNARE_CautionArea
-                            var instance = new CautionArea {
-
+                    case 1: { // DWRTCL_DeepWaterRouteCenterline
+                            var instance = new DeepWaterRouteCentreline() {
                             };
                             if (plts_comp_scale != default) {
                                 instance.scaleMinimum = plts_comp_scale;
                             }
-
-
-                            AddCondition(instance.condition, feature);
-                            AddStatus(instance.status, feature);
-                            //AddFeatureName(instance.featureName, feature);
-                            AddInformation(instance.information, feature);
-
-                            buffer["ps"] = ps101;
-                            buffer["code"] = instance.GetType().Name;
-                            buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance);
-                            buffer["shape"] = current.SHAPE;
-                            insert.Insert(buffer);
-
-                            Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
-                            convertedCount++;
-
-
-                        }
-                        break;
-                    case 10: { // FSHFAC_FishingFacility
-                            var instance = new FishingFacility {
-
-                            };
-                            if (plts_comp_scale != default) {
-                                instance.scaleMinimum = plts_comp_scale;
-                            }
-
-                            AddCondition(instance.condition, feature);
-                            AddStatus(instance.status, feature);
-                            AddFeatureName(instance.featureName, feature);
-                            AddInformation(instance.information, feature);
-
-                            buffer["ps"] = ps101;
-                            buffer["code"] = instance.GetType().Name;
-                            buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance);
-                            buffer["shape"] = current.SHAPE;
-                            insert.Insert(buffer);
-
-                            Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
-                            convertedCount++;
-                        }
-                        break;
-                    case 15: { // OBSTRN_Obstruction
-                            var instance = new Obstruction {
-
-                            };
-                            if (plts_comp_scale != default) {
-                                instance.scaleMinimum = plts_comp_scale;
-                            }
-
-                            if (current.WATLEV.HasValue) {
-                                instance.waterLevelEffect = current.WATLEV.Value switch {
-                                    1 => waterLevelEffect.PartlySubmergedAtHighWater,  // partly submerged at high water
-                                    2 => waterLevelEffect.AlwaysDry,  // always dry
-                                    3 => waterLevelEffect.AlwaysUnderWaterSubmerged,  // always under water/submerged
-                                    4 => waterLevelEffect.CoversAndUncovers,  // covers and uncovers
-                                    5 => waterLevelEffect.Awash,  // awash
-                                    6 => waterLevelEffect.SubjectToInundationOrFlooding,  // subject to inundation or flooding
-                                    7 => waterLevelEffect.Floating,  // floating
-                                    -32767 => (waterLevelEffect)(-32767),
-                                    // TODO: QUESTION: how to handle -32767 on a required attribute without an S-101 equivalent "unknown". Illegal value assigned. MUST be fixed.
-                                    _ => throw new IndexOutOfRangeException(),
-                                };
-                            }
-
-                            AddCondition(instance.condition, feature);
-                            AddStatus(instance.status, feature);
-                            AddFeatureName(instance.featureName, feature);
-                            AddInformation(instance.information, feature);
-
-                            buffer["ps"] = ps101;
-                            buffer["code"] = instance.GetType().Name;
-                            buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance);
-                            buffer["shape"] = current.SHAPE;
-                            insert.Insert(buffer);
-
-                            Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
-                            convertedCount++;
-                        }
-                        break;
-                    case 20: { // WATTUR_WaterTurbulence
-                            var instance = new WaterTurbulence {
-
-                            };
-                            if (plts_comp_scale != default) {
-                                instance.scaleMinimum = plts_comp_scale;
-                            }
-
-
-                            AddFeatureName(instance.featureName, feature);
-                            AddInformation(instance.information, feature);
-
-                            buffer["ps"] = ps101;
-                            buffer["code"] = instance.GetType().Name;
-                            buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance);
-                            buffer["shape"] = current.SHAPE;
-                            insert.Insert(buffer);
-
-                            Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
-                            convertedCount++;
-
-                        }
-                        break;
-                    case 25: { // WRECKS_Wreck
-                            var instance = new Wreck {
-
-                            };
-                            if (plts_comp_scale != default) {
-                                instance.scaleMinimum = plts_comp_scale;
-                            }
-
-                            if (current.WATLEV.HasValue) {
-                                instance.waterLevelEffect = current.WATLEV switch {
-                                    1 => waterLevelEffect.PartlySubmergedAtHighWater,  // partly submerged at high water
-                                    2 => waterLevelEffect.AlwaysDry,  // always dry
-                                    3 => waterLevelEffect.AlwaysUnderWaterSubmerged,  // always under water/submerged
-                                    4 => waterLevelEffect.CoversAndUncovers,  // covers and uncovers
-                                    5 => waterLevelEffect.Awash,  // awash
-                                    6 => waterLevelEffect.SubjectToInundationOrFlooding,  // subject to inundation or flooding
-                                    7 => waterLevelEffect.Floating,  // floating
-                                    -32767 => (waterLevelEffect)(-32767),
-                                    // TODO: QUESTION: how to handle -32767 on a required attribute without an S-101 equivalent "unknown". Illegal value assigned. MUST be fixed.
-                                    _ => throw new IndexOutOfRangeException(),
-                                };
-                            }
-
 
                             AddStatus(instance.status, feature);
                             AddFeatureName(instance.featureName, feature);
                             AddInformation(instance.information, feature);
-
                             buffer["ps"] = ps101;
                             buffer["code"] = instance.GetType().Name;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance);
                             buffer["shape"] = current.SHAPE;
                             insert.Insert(buffer);
-
                             Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
                             convertedCount++;
+                        }
+                        break;
+                    case 5: { // FERYRT_FerryRoute
+                            var instance = new FerryRoute() {
+                            };
+                            if (plts_comp_scale != default) {
+                                instance.scaleMinimum = plts_comp_scale;
+                            }
+                            
+                            AddStatus(instance.status, feature);
+                            AddFeatureName(instance.featureName, feature);
+                            AddInformation(instance.information, feature);
+                            buffer["ps"] = ps101;
+                            buffer["code"] = instance.GetType().Name;
+                            buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance);
+                            buffer["shape"] = current.SHAPE;
+                            insert.Insert(buffer);
+                            Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
+                            convertedCount++;
+                        }
+                        break;
+                    case 10: { // NAVLNE_NavigationLine
+                            var instance = new NavigationLine() {
+                            };
+                            if (plts_comp_scale != default) {
+                                instance.scaleMinimum = plts_comp_scale;
+                            }
+                            
+                            AddStatus(instance.status, feature);
+                            
+                            AddInformation(instance.information, feature);
+                            buffer["ps"] = ps101;
+                            buffer["code"] = instance.GetType().Name;
+                            buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance);
+                            buffer["shape"] = current.SHAPE;
+                            insert.Insert(buffer);
+                            Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
+                            convertedCount++;
+                        }
+                        break;
+                    case 15: { // RADLNE_RadarLine
+                            var instance = new RadarLine() {
+                            };
+                            if (plts_comp_scale != default) {
+                                instance.scaleMinimum = plts_comp_scale;
+                            }
+                            
+                            AddStatus(instance.status, feature);
+                            AddFeatureName(instance.featureName, feature);
+                            AddInformation(instance.information, feature);
+                            buffer["ps"] = ps101;
+                            buffer["code"] = instance.GetType().Name;
+                            buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance);
+                            buffer["shape"] = current.SHAPE;
+                            insert.Insert(buffer);
+                            Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
+                            convertedCount++;
+                        }
+                        break;
+                    case 20: { // RCRTCL_RecommendedRouteCenterline
+                            var instance = new RecommendedRouteCentreline() {
+                            };
+                            if (plts_comp_scale != default) {
+                                instance.scaleMinimum = plts_comp_scale;
+                            }
+                            
+                            AddStatus(instance.status, feature);
+                            AddFeatureName(instance.featureName, feature);
+                            AddInformation(instance.information, feature);
+                            buffer["ps"] = ps101;
+                            buffer["code"] = instance.GetType().Name;
+                            buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance);
+                            buffer["shape"] = current.SHAPE;
+                            insert.Insert(buffer);
+                            Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
+                            convertedCount++;
+                        }
+                        break;
+                    case 25: { // RDOCAL_RadioCallingInPoint
+                            var instance = new RadioCallingInPoint() {
+                            };
+                            if (plts_comp_scale != default) {
+                                instance.scaleMinimum = plts_comp_scale;
+                            }
+                            
+                            AddStatus(instance.status, feature);
+                            AddFeatureName(instance.featureName, feature);
+                            AddInformation(instance.information, feature);
+                            buffer["ps"] = ps101;
+                            buffer["code"] = instance.GetType().Name;
+                            buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance);
+                            buffer["shape"] = current.SHAPE;
+                            insert.Insert(buffer);
+                            Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
+                            convertedCount++;
+                        }
+                        break;
+                    case 30: { // RECTRC_RecommendedTrack
+                            var instance = new RecommendedTrack() {
+                            };
+                            if (plts_comp_scale != default) {
+                                instance.scaleMinimum = plts_comp_scale;
+                            }
+                            AddStatus(instance.status, feature);
+                            AddFeatureName(instance.featureName, feature);
+                            AddInformation(instance.information, feature);
+                            buffer["ps"] = ps101;
+                            buffer["code"] = instance.GetType().Name;
+                            buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance);
+                            buffer["shape"] = current.SHAPE;
+                            insert.Insert(buffer);
+                            Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
+                            convertedCount++;
+                        }
+                        break;
+                    case 40: { // TSELNE_TrafficSeparationLine
+                            var instance = new SeparationZoneOrLine() {
+                            };
+                            if (plts_comp_scale != default) {
+                                instance.scaleMinimum = plts_comp_scale;
+                            }
 
+                            AddStatus(instance.status, feature);
+
+                            AddInformation(instance.information, feature);
+                            buffer["ps"] = ps101;
+                            buffer["code"] = instance.GetType().Name;
+                            buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance);
+                            buffer["shape"] = current.SHAPE;
+                            insert.Insert(buffer);
+                            Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
+                            convertedCount++;
+                        }
+                        break;
+                    case 45: { // TSSBND_TrafficSeparationSchemeBoundary
+                            var instance = new TrafficSeparationSchemeBoundary() {
+                            };
+                            if (plts_comp_scale != default) {
+                                instance.scaleMinimum = plts_comp_scale;
+                            }
+                            
+                            AddStatus(instance.status, feature);
+                            
+                            AddInformation(instance.information, feature);
+                            buffer["ps"] = ps101;
+                            buffer["code"] = instance.GetType().Name;
+                            buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance);
+                            buffer["shape"] = current.SHAPE;
+                            insert.Insert(buffer);
+                            Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
+                            convertedCount++;
                         }
                         break;
                     default:

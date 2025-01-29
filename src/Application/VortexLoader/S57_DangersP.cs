@@ -13,14 +13,12 @@ namespace S100Framework.Applications
         private static void S57_DangersP(Geodatabase source, Geodatabase target, QueryFilter filter) {
             var tableName = "DangersP";
 
-            var ps = "S-101";
-
             var dangersp = source.OpenDataset<FeatureClass>("DangersP");
 
             //var dredged = source.OpenDataset<FeatureClass>("Depare");
 
             using var featureClass = target.OpenDataset<FeatureClass>("point");
-            using var informationtype = target.OpenDataset<Table>("informationtype");
+            
 
             using var buffer = featureClass.CreateRowBuffer();
             using var insert = featureClass.CreateInsertCursor();
@@ -66,7 +64,7 @@ namespace S100Framework.Applications
                             AddStatus(instance.status, feature);
                             AddInformation(instance.information, feature);
 
-                            buffer["ps"] = "S-101";
+                            buffer["ps"] = ps101;
                             buffer["code"] = instance.GetType().Name;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance);
                             buffer["shape"] = current.SHAPE;
@@ -89,7 +87,7 @@ namespace S100Framework.Applications
                             AddFeatureName(instance.featureName, feature);
                             AddInformation(instance.information, feature);
 
-                            buffer["ps"] = "S-101";
+                            buffer["ps"] = ps101;
                             buffer["code"] = instance.GetType().Name;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance);
                             buffer["shape"] = current.SHAPE;
@@ -116,7 +114,7 @@ namespace S100Framework.Applications
                                 AddStatus(foulGround.status, feature);
                                 AddFeatureName(foulGround.featureName, feature);
                                 AddInformation(foulGround.information, feature);
-                                buffer["ps"] = ps;
+                                buffer["ps"] = ps101;
                                 buffer["code"] = foulGround.GetType().Name;
                                 buffer["json"] = System.Text.Json.JsonSerializer.Serialize(foulGround);
                                 buffer["shape"] = feature.GetShape();
@@ -205,7 +203,7 @@ namespace S100Framework.Applications
                             AddFeatureName(obstruction.featureName, feature);
                             AddInformation(obstruction.information, feature);
 
-                            buffer["ps"] = ps;
+                            buffer["ps"] = ps101;
                             buffer["code"] = obstruction.GetType().Name; 
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(obstruction);
                             buffer["shape"] = current.SHAPE;
@@ -258,7 +256,7 @@ namespace S100Framework.Applications
                             AddFeatureName(uwtroc.featureName, feature);
                             AddInformation(uwtroc.information, feature);
 
-                            buffer["ps"] = ps;
+                            buffer["ps"] = ps101;
                             buffer["code"] = uwtroc.GetType().Name;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(uwtroc);
                             buffer["shape"] = current.SHAPE;
@@ -295,7 +293,7 @@ namespace S100Framework.Applications
                             AddFeatureName(instance.featureName, feature);
                             AddInformation(instance.information, feature);
 
-                            buffer["ps"] = ps;
+                            buffer["ps"] = ps101;
                             buffer["code"] = instance.GetType().Name;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance);
                             buffer["shape"] = current.SHAPE;
@@ -351,7 +349,7 @@ namespace S100Framework.Applications
                             AddFeatureName(instance.featureName, feature);
                             AddInformation(instance.information, feature);
 
-                            buffer["ps"] = ps;
+                            buffer["ps"] = ps101;
                             buffer["code"] = instance.GetType().Name;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance);
                             buffer["shape"] = current.SHAPE;

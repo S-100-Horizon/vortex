@@ -7,20 +7,20 @@ namespace S100Framework.Applications
 {
     internal static partial class ImporterNIS
     {
-        private static void S57_SeabedP(Geodatabase source, Geodatabase target, QueryFilter filter) {
-            var tableName = "SeabedP";
+        private static void S57_TracksAndRoutesP(Geodatabase source, Geodatabase target, QueryFilter filter) {
+            var tableName = "TracksAndRoutesP";
 
-            var ps101 = "S-101";
 
-            var seabedp = source.OpenDataset<FeatureClass>(tableName);
+
+            var tracksAndRoutesL = source.OpenDataset<FeatureClass>(tableName);
 
             using var featureClass = target.OpenDataset<FeatureClass>("point");
-            
+
 
             using var buffer = featureClass.CreateRowBuffer();
             using var insert = featureClass.CreateInsertCursor();
 
-            using var cursor = seabedp.Search(filter, true);
+            using var cursor = tracksAndRoutesL.Search(filter, true);
             int recordCount = 0;
             int convertedCount = 0;
             while (cursor.MoveNext()) {
@@ -28,31 +28,24 @@ namespace S100Framework.Applications
 
                 var feature = (Feature)cursor.Current;
 
-                var current = new SeabedP(feature);
+                var current = new TracksAndRoutesP(feature);
 
                 var objectid = current.OBJECTID ?? default;
                 var globalid = current.GLOBALID;
                 var subtype = current.FCSUBTYPE ?? default;
-                var watlev = current.WATLEV ?? default;
-
-                var natsur = current.NATSUR ?? default;
-                var natqua = current.NATQUA ?? default; 
-
-                // TODO: natsur, natqua
-
-
                 var plts_comp_scale = current.PLTS_COMP_SCALE ?? default;
                 var longname = current.LNAM ?? Strings.UNKNOWN;
-
-
+                var status = current.STATUS ?? default;
 
                 switch (subtype) {
-                    case 15: { // SBDARE_SeabedArea
-                            var instance = new SeabedArea() {
+                    case 1: { // PRCARE_PrecautionaryArea
+                            var instance = new PrecautionaryArea() {
                             };
                             if (plts_comp_scale != default) {
                                 instance.scaleMinimum = plts_comp_scale;
                             }
+                            
+                            AddStatus(instance.status, feature);
                             AddFeatureName(instance.featureName, feature);
                             AddInformation(instance.information, feature);
                             buffer["ps"] = ps101;
@@ -64,12 +57,15 @@ namespace S100Framework.Applications
                             convertedCount++;
                         }
                         break;
-                    case 25: { // SNDWAV_SandWaves
-                            var instance = new Sandwave() {
+                    case 5: { // RCTLPT_RecommendedTrafficLanePart
+                            var instance = new RecommendedTrafficLanePart() {
                             };
                             if (plts_comp_scale != default) {
                                 instance.scaleMinimum = plts_comp_scale;
                             }
+                            
+                            AddStatus(instance.status, feature);
+                            
                             AddInformation(instance.information, feature);
                             buffer["ps"] = ps101;
                             buffer["code"] = instance.GetType().Name;
@@ -80,30 +76,14 @@ namespace S100Framework.Applications
                             convertedCount++;
                         }
                         break;
-                    case 30: { // SPRING_Spring
-                            var instance = new Spring() {
+                    case 10: { // RDOCAL_RadioCallingInPoint
+                            var instance = new RadioCallingInPoint() {
                             };
                             if (plts_comp_scale != default) {
                                 instance.scaleMinimum = plts_comp_scale;
                             }
-
-                            AddFeatureName(instance.featureName, feature);
-                            AddInformation(instance.information, feature);
-                            buffer["ps"] = ps101;
-                            buffer["code"] = instance.GetType().Name;
-                            buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance);
-                            buffer["shape"] = current.SHAPE;
-                            insert.Insert(buffer);
-                            Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
-                            convertedCount++;
-                        }
-                        break;
-                    case 35: { // WEDKLP_WeedKelp
-                            var instance = new WeedKelp() {
-                            };
-                            if (plts_comp_scale != default) {
-                                instance.scaleMinimum = plts_comp_scale;
-                            }
+                            
+                            AddStatus(instance.status, feature);
                             AddFeatureName(instance.featureName, feature);
                             AddInformation(instance.information, feature);
                             buffer["ps"] = ps101;
@@ -119,6 +99,7 @@ namespace S100Framework.Applications
                         // code block
                         System.Diagnostics.Debugger.Break();
                         break;
+
                 }
 
 

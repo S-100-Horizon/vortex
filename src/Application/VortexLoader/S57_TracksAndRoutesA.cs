@@ -1,31 +1,34 @@
 ﻿using ArcGIS.Core.Data;
 using VortexLoader.S57.esri;
+using S100Framework.DomainModel.S101;
 using S100Framework.DomainModel.S101.FeatureTypes;
 
 namespace S100Framework.Applications
 {
     internal static partial class ImporterNIS
     {
-        private static void S57_RegulatedAreasAndLimitsA(Geodatabase source, Geodatabase target, QueryFilter filter) {
-            var tableName = "RegulatedAreasAndLimitsA";
+        private static void S57_TracksAndRoutesA(Geodatabase source, Geodatabase target, QueryFilter filter) {
+            var tableName = "TracksAndRoutesA";
+
             
 
-            using var featureclass = target.OpenDataset<FeatureClass>("surface");
+            var tracksAndRoutesA = source.OpenDataset<FeatureClass>(tableName);
 
-            using var regulatedAreasAndLimitsA = source.OpenDataset<FeatureClass>(tableName);
+            using var featureClass = target.OpenDataset<FeatureClass>("surface");
+            
 
+            using var buffer = featureClass.CreateRowBuffer();
+            using var insert = featureClass.CreateInsertCursor();
+
+            using var cursor = tracksAndRoutesA.Search(filter, true);
             int recordCount = 0;
             int convertedCount = 0;
-
-            using var buffer = featureclass.CreateRowBuffer();
-            using var insert = featureclass.CreateInsertCursor();
-
-            using var cursor = regulatedAreasAndLimitsA.Search(filter, true);
-
             while (cursor.MoveNext()) {
                 recordCount += 1;
+
                 var feature = (Feature)cursor.Current;
-                var current = new RegulatedAreasAndLimitsA(feature); // (Row)cursor.Current;
+
+                var current = new TracksAndRoutesA(feature);
 
                 var objectid = current.OBJECTID ?? default;
                 var globalid = current.GLOBALID;
@@ -33,84 +36,185 @@ namespace S100Framework.Applications
                 var plts_comp_scale = current.PLTS_COMP_SCALE ?? default;
                 var longname = current.LNAM ?? Strings.UNKNOWN;
                 var status = current.STATUS ?? default;
-                var verlen = current.VERLEN ?? default;
 
                 switch (subtype) {
-                    case 1: { // ACHARE_AnchorageArea
-                            var instance = new AnchorageArea();
+                    case 1: { // DWRTPT_DeepWaterRoutePart
+                            var instance = new DeepWaterRoutePart() {
+                            };
+                            if (plts_comp_scale != default) {
+                                instance.scaleMinimum = plts_comp_scale;
+                            }
+                            
+                            AddStatus(instance.status, feature);
+                            AddFeatureName(instance.featureName, feature);
+                            AddInformation(instance.information, feature);
+                            buffer["ps"] = ps101;
+                            buffer["code"] = instance.GetType().Name;
+                            buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance);
+                            buffer["shape"] = current.SHAPE;
+                            insert.Insert(buffer);
+                            Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
+                            convertedCount++;
+                        }
+                        break;
+                    case 5: { // FAIRWY_Fairway
+                            var instance = new Fairway() {
+                            };
+                            if (plts_comp_scale != default) {
+                                instance.scaleMinimum = plts_comp_scale;
+                            }
+                            
+                            AddStatus(instance.status, feature);
+                            AddFeatureName(instance.featureName, feature);
+                            AddInformation(instance.information, feature);
+                            buffer["ps"] = ps101;
+                            buffer["code"] = instance.GetType().Name;
+                            buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance);
+                            buffer["shape"] = current.SHAPE;
+                            insert.Insert(buffer);
+                            Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
+                            convertedCount++;
+                        }
+                        break;
+                    case 10: { // FERYRT_FerryRoute
+                            var instance = new FerryRoute() {
+                            };
+                            if (plts_comp_scale != default) {
+                                instance.scaleMinimum = plts_comp_scale;
+                            }
+                            
+                            AddStatus(instance.status, feature);
+                            AddFeatureName(instance.featureName, feature);
+                            AddInformation(instance.information, feature);
+                            buffer["ps"] = ps101;
+                            buffer["code"] = instance.GetType().Name;
+                            buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance);
+                            buffer["shape"] = current.SHAPE;
+                            insert.Insert(buffer);
+                            Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
+                            convertedCount++;
+                        }
+                        break;
+                    case 15: { // ISTZNE_InshoreTrafficZone
+                            var instance = new InshoreTrafficZone() {
+                            };
+                            if (plts_comp_scale != default) {
+                                instance.scaleMinimum = plts_comp_scale;
+                            }
+                            
+                            AddStatus(instance.status, feature);
+                            
+                            AddInformation(instance.information, feature);
+                            buffer["ps"] = ps101;
+                            buffer["code"] = instance.GetType().Name;
+                            buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance);
+                            buffer["shape"] = current.SHAPE;
+                            insert.Insert(buffer);
+                            Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
+                            convertedCount++;
+                        }
+                        break;
+                    case 20: { // PRCARE_PrecautionaryArea
+                            var instance = new PrecautionaryArea() {
+                            };
+                            if (plts_comp_scale != default) {
+                                instance.scaleMinimum = plts_comp_scale;
+                            }
+                            
+                            AddStatus(instance.status, feature);
+                            AddFeatureName(instance.featureName, feature);
+                            AddInformation(instance.information, feature);
+                            buffer["ps"] = ps101;
+                            buffer["code"] = instance.GetType().Name;
+                            buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance);
+                            buffer["shape"] = current.SHAPE;
+                            insert.Insert(buffer);
+                            Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
+                            convertedCount++;
+                        }
+                        break;
+                    case 25: { // RADRNG_RadarRange
+                            var instance = new RadarRange() {
+                            };
+                            if (plts_comp_scale != default) {
+                                instance.scaleMinimum = plts_comp_scale;
+                            }
+                            
+                            AddStatus(instance.status, feature);
+                            AddFeatureName(instance.featureName, feature);
+                            AddInformation(instance.information, feature);
+                            buffer["ps"] = ps101;
+                            buffer["code"] = instance.GetType().Name;
+                            buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance);
+                            buffer["shape"] = current.SHAPE;
+                            insert.Insert(buffer);
+                            Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
+                            convertedCount++;
+                        }
+                        break;
+                    case 30: { // RCTLPT_RecommendedTrafficLanePart
+                            var instance = new RecommendedTrafficLanePart() {
+                            };
+                            if (plts_comp_scale != default) {
+                                instance.scaleMinimum = plts_comp_scale;
+                            }
+                            
+                            AddStatus(instance.status, feature);
+                            
+                            AddInformation(instance.information, feature);
+                            buffer["ps"] = ps101;
+                            buffer["code"] = instance.GetType().Name;
+                            buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance);
+                            buffer["shape"] = current.SHAPE;
+                            insert.Insert(buffer);
+                            Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
+                            convertedCount++;
+                        }
+                        break;
+                    case 40: { // RECTRC_RecommendedTrack
+                            var instance = new RecommendedTrack() {
+                            };
+                            if (plts_comp_scale != default) {
+                                instance.scaleMinimum = plts_comp_scale;
+                            }
+                            AddStatus(instance.status, feature);
+                            AddFeatureName(instance.featureName, feature);
+                            AddInformation(instance.information, feature);
+                            buffer["ps"] = ps101;
+                            buffer["code"] = instance.GetType().Name;
+                            buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance);
+                            buffer["shape"] = current.SHAPE;
+                            insert.Insert(buffer);
+                            Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
+                            convertedCount++;
+                        }
+                        break;
+                    case 45: { // SUBTLN_SubmarineTransitLane
+                            var instance = new SubmarineTransitLane() {
+                            };
                             if (plts_comp_scale != default) {
                                 instance.scaleMinimum = plts_comp_scale;
                             }
 
+                            AddFeatureName(instance.featureName, feature);
+                            AddInformation(instance.information, feature);
+                            buffer["ps"] = ps101;
+                            buffer["code"] = instance.GetType().Name;
+                            buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance);
+                            buffer["shape"] = current.SHAPE;
+                            insert.Insert(buffer);
+                            Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
+                            convertedCount++;
+                        }
+                        break;
+                    case 50: { // TSEZNE_TrafficSeparationZone
+                            var instance = new SeparationZoneOrLine() {
+                            };
+                            if (plts_comp_scale != default) {
+                                instance.scaleMinimum = plts_comp_scale;
+                            }
+                            
                             AddStatus(instance.status, feature);
-                            AddFeatureName(instance.featureName, feature);
-                            AddInformation(instance.information, feature);
-                            buffer["ps"] = ps101;
-                            buffer["code"] = instance.GetType().Name;
-                            buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance);
-                            buffer["shape"] = current.SHAPE;
-                            insert.Insert(buffer);
-                            Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
-                            convertedCount++;
-                        }
-                        break;
-                    case 5: { // ACHBRT_AnchorBerth
-                            var instance = new AnchorBerth();
-                            if (plts_comp_scale != default) {
-                                instance.scaleMinimum = plts_comp_scale;
-                            }
-                            AddStatus(instance.status, feature);
-                            AddFeatureName(instance.featureName, feature);
-                            AddInformation(instance.information, feature);
-                            buffer["ps"] = ps101;
-                            buffer["code"] = instance.GetType().Name;
-                            buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance);
-                            buffer["shape"] = current.SHAPE;
-                            insert.Insert(buffer);
-                            Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
-                            convertedCount++;
-                        }
-                        break;
-                    case 10: { // ADMARE_AdministrationAreaNamed
-                            var instance = new AdministrationArea();
-                            if (plts_comp_scale != default) {
-                                instance.scaleMinimum = plts_comp_scale;
-                            }
-                            
-                            AddFeatureName(instance.featureName, feature);
-                            AddInformation(instance.information, feature);
-                            buffer["ps"] = ps101;
-                            buffer["code"] = instance.GetType().Name;
-                            buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance);
-                            buffer["shape"] = current.SHAPE;
-                            insert.Insert(buffer);
-                            Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
-                            convertedCount++;
-                        }
-                        break;
-                    case 15: { // ARCSLN_ArchipelagicSeaLane
-                            var instance = new ArchipelagicSeaLane();
-                            if (plts_comp_scale != default) {
-                                instance.scaleMinimum = plts_comp_scale;
-                            }
-                            
-                            AddFeatureName(instance.featureName, feature);
-                            AddInformation(instance.information, feature);
-                            buffer["ps"] = ps101;
-                            buffer["code"] = instance.GetType().Name;
-                            buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance);
-                            buffer["shape"] = current.SHAPE;
-                            insert.Insert(buffer);
-                            Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
-                            convertedCount++;
-                        }
-                        break;
-                    case 20: { // CONZNE_ContiguousZone
-                            var instance = new ContiguousZone();
-                            if (plts_comp_scale != default) {
-                                instance.scaleMinimum = plts_comp_scale;
-                            }
-                            
                             
                             AddInformation(instance.information, feature);
                             buffer["ps"] = ps101;
@@ -122,80 +226,14 @@ namespace S100Framework.Applications
                             convertedCount++;
                         }
                         break;
-                    case 25: { // COSARE_ContinentalShelfArea
-                            var instance = new ContinentalShelfArea();
+                    case 55: { // TSSCRS_TrafficSeparationSchemeCrossing
+                            var instance = new TrafficSeparationSchemeCrossing() {
+                            };
                             if (plts_comp_scale != default) {
                                 instance.scaleMinimum = plts_comp_scale;
                             }
                             
-                            AddFeatureName(instance.featureName, feature);
-                            AddInformation(instance.information, feature);
-                            buffer["ps"] = ps101;
-                            buffer["code"] = instance.GetType().Name;
-                            buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance);
-                            buffer["shape"] = current.SHAPE;
-                            insert.Insert(buffer);
-                            Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
-                            convertedCount++;
-                        }
-                        break;
-                    case 30: { // CTSARE_CargoTranshipmentArea
-                            var instance = new CargoTranshipmentArea();
-                            if (plts_comp_scale != default) {
-                                instance.scaleMinimum = plts_comp_scale;
-                            }
                             AddStatus(instance.status, feature);
-                            AddFeatureName(instance.featureName, feature);
-                            AddInformation(instance.information, feature);
-                            buffer["ps"] = ps101;
-                            buffer["code"] = instance.GetType().Name;
-                            buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance);
-                            buffer["shape"] = current.SHAPE;
-                            insert.Insert(buffer);
-                            Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
-                            convertedCount++;
-                        }
-                        break;
-                    case 35: { // CUSZNE_CustomZone
-                            var instance = new CustomZone();
-                            if (plts_comp_scale != default) {
-                                instance.scaleMinimum = plts_comp_scale;
-                            }
-                            
-                            //AddFeatureName(instance.featureName, feature);
-                            AddInformation(instance.information, feature);
-                            buffer["ps"] = ps101;
-                            buffer["code"] = instance.GetType().Name;
-                            buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance);
-                            buffer["shape"] = current.SHAPE;
-                            insert.Insert(buffer);
-                            Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
-                            convertedCount++;
-                        }
-                        break;
-                    case 40: { // DMPGRD_DumpingGround
-                            var instance = new DumpingGround();
-                            if (plts_comp_scale != default) {
-                                instance.scaleMinimum = plts_comp_scale;
-                            }
-                            AddStatus(instance.status, feature);
-                            AddFeatureName(instance.featureName, feature);
-                            AddInformation(instance.information, feature);
-                            buffer["ps"] = ps101;
-                            buffer["code"] = instance.GetType().Name;
-                            buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance);
-                            buffer["shape"] = current.SHAPE;
-                            insert.Insert(buffer);
-                            Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
-                            convertedCount++;
-                        }
-                        break;
-                    case 50: { // EXEZNE_ExclusiveEconomicZone
-                            var instance = new ExclusiveEconomicZone();
-                            if (plts_comp_scale != default) {
-                                instance.scaleMinimum = plts_comp_scale;
-                            }
-                            
                             
                             AddInformation(instance.information, feature);
                             buffer["ps"] = ps101;
@@ -207,155 +245,53 @@ namespace S100Framework.Applications
                             convertedCount++;
                         }
                         break;
-                    case 55: { // FRPARE_FreePortArea
-                            var instance = new FreePortArea();
-                            if (plts_comp_scale != default) {
-                                instance.scaleMinimum = plts_comp_scale;
-                            }
-                            AddStatus(instance.status, feature);
-                            AddFeatureName(instance.featureName, feature);
-                            AddInformation(instance.information, feature);
-                            buffer["ps"] = ps101;
-                            buffer["code"] = instance.GetType().Name;
-                            buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance);
-                            buffer["shape"] = current.SHAPE;
-                            insert.Insert(buffer);
-                            Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
-                            convertedCount++;
-                        }
-                        break;
-                    case 60: { // FSHGRD_FishingGround
-                            var instance = new FishingGround();
-                            if (plts_comp_scale != default) {
-                                instance.scaleMinimum = plts_comp_scale;
-                            }
-                            AddStatus(instance.status, feature);
-                            AddFeatureName(instance.featureName, feature);
-                            AddInformation(instance.information, feature);
-                            buffer["ps"] = ps101;
-                            buffer["code"] = instance.GetType().Name;
-                            buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance);
-                            buffer["shape"] = current.SHAPE;
-                            insert.Insert(buffer);
-                            Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
-                            convertedCount++;
-                        }
-                        break;
-                    case 65: { // FSHZNE_FisheryZone
-                            var instance = new FisheryZone();
-                            if (plts_comp_scale != default) {
-                                instance.scaleMinimum = plts_comp_scale;
-                            }
-                            AddStatus(instance.status, feature);
-                            AddFeatureName(instance.featureName, feature);
-                            AddInformation(instance.information, feature);
-                            buffer["ps"] = ps101;
-                            buffer["code"] = instance.GetType().Name;
-                            buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance);
-                            buffer["shape"] = current.SHAPE;
-                            insert.Insert(buffer);
-                            Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
-                            convertedCount++;
-                        }
-                        break;
-                    case 70: { // HRBARE_HarbourAreaAdministrative
-                            var instance = new HarbourAreaAdministrative();
-                            if (plts_comp_scale != default) {
-                                instance.scaleMinimum = plts_comp_scale;
-                            }
-                            AddStatus(instance.status, feature);
-                            AddFeatureName(instance.featureName, feature);
-                            AddInformation(instance.information, feature);
-                            buffer["ps"] = ps101;
-                            buffer["code"] = instance.GetType().Name;
-                            buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance);
-                            buffer["shape"] = current.SHAPE;
-                            insert.Insert(buffer);
-                            Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
-                            convertedCount++;
-                        }
-                        break;
-                    case 75: { // ICNARE_IncinerationArea
-                            //The S-57 Object class ICNARE will not be converted. 
-                            //https://iho.int/uploads/user/pubs/standards/s-65/S-65%20Annex%20B_Ed%201.2.0_Final.pdf
-                            convertedCount++;
-                        }
-                        break;
-                    case 85: { // LOGPON_LogPond
-                            var instance = new LogPond();
-                            if (plts_comp_scale != default) {
-                                instance.scaleMinimum = plts_comp_scale;
-                            }
-                            AddStatus(instance.status, feature);
-                            AddFeatureName(instance.featureName, feature);
-                            AddInformation(instance.information, feature);
-                            buffer["ps"] = ps101;
-                            buffer["code"] = instance.GetType().Name;
-                            buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance);
-                            buffer["shape"] = current.SHAPE;
-                            insert.Insert(buffer);
-                            Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
-                            convertedCount++;
-                        }
-                        break;
-                    case 95: { // MARCUL_MarineFarmCulture
-                            var instance = new MarineFarmCulture();
-                            if (plts_comp_scale != default) {
-                                instance.scaleMinimum = plts_comp_scale;
-                            }
-                            AddStatus(instance.status, feature);
-                            AddFeatureName(instance.featureName, feature);
-                            AddInformation(instance.information, feature);
-                            buffer["ps"] = ps101;
-                            buffer["code"] = instance.GetType().Name;
-                            buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance);
-                            buffer["shape"] = current.SHAPE;
-                            insert.Insert(buffer);
-                            Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
-                            convertedCount++;
-                        }
-                        break;
-                    case 105: { // RESARE_RestrictedArea
-                            var instance = new RestrictedArea();
-                            if (plts_comp_scale != default) {
-                                instance.scaleMinimum = plts_comp_scale;
-                            }
-                            AddStatus(instance.status, feature);
-                            AddFeatureName(instance.featureName, feature);
-                            AddInformation(instance.information, feature);
-                            buffer["ps"] = ps101;
-                            buffer["code"] = instance.GetType().Name;
-                            buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance);
-                            buffer["shape"] = current.SHAPE;
-                            insert.Insert(buffer);
-                            Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
-                            convertedCount++;
-                        }
-                        break;
-                    case 110: { // SPLARE_SeaPlaneLandingArea
-                            var instance = new SeaplaneLandingArea();
-                            if (plts_comp_scale != default) {
-                                instance.scaleMinimum = plts_comp_scale;
-                            }
-                            AddStatus(instance.status, feature);
-                            AddFeatureName(instance.featureName, feature);
-                            AddInformation(instance.information, feature);
-                            buffer["ps"] = ps101;
-                            buffer["code"] = instance.GetType().Name;
-                            buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance);
-                            buffer["shape"] = current.SHAPE;
-                            insert.Insert(buffer);
-                            Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
-                            convertedCount++;
-                        }
-                        break;
-                    case 115: { // TESARE_TerritorialSeaArea
-                            var instance = new TerritorialSeaArea();
+                    case 60: { // TSSLPT_TrafficSeparationSchemeLanePart
+                            var instance = new TrafficSeparationSchemeLanePart() {
+                            };
                             if (plts_comp_scale != default) {
                                 instance.scaleMinimum = plts_comp_scale;
                             }
                             
-                            //AddFeatureName(instance.featureName, feature);
+                            AddStatus(instance.status, feature);
+                            
+                            AddInformation(instance.information, feature);
+                            buffer["ps"] = ps101;
+                            buffer["code"] = instance.GetType().Name;
+                            buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance);
+                            buffer["shape"] = current.SHAPE;
+                            insert.Insert(buffer);
+                            Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
+                            convertedCount++;
+                        }
+                        break;
+                    case 65: { // TSSRON_TrafficSeparationSchemeRoundabout
+                            var instance = new TrafficSeparationSchemeRoundabout() {
+                            };
+                            if (plts_comp_scale != default) {
+                                instance.scaleMinimum = plts_comp_scale;
+                            }
+                            
+                            AddStatus(instance.status, feature);
+                            
+                            AddInformation(instance.information, feature);
+                            buffer["ps"] = ps101;
+                            buffer["code"] = instance.GetType().Name;
+                            buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance);
+                            buffer["shape"] = current.SHAPE;
+                            insert.Insert(buffer);
+                            Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
+                            convertedCount++;
+                        }
+                        break;
+                    case 70: { // TWRTPT_TwoWayRoutePart
+                            var instance = new TwoWayRoutePart() {
+                            };
+                            if (plts_comp_scale != default) {
+                                instance.scaleMinimum = plts_comp_scale;
+                            }
+                            
+                            AddStatus(instance.status, feature);
+                            
                             AddInformation(instance.information, feature);
                             buffer["ps"] = ps101;
                             buffer["code"] = instance.GetType().Name;
@@ -370,17 +306,15 @@ namespace S100Framework.Applications
                         // code block
                         System.Diagnostics.Debugger.Break();
                         break;
+
                 }
 
 
 
-                
             }
             Logger.Current.DataTotalCount(tableName, recordCount, convertedCount);
         }
+
+
     }
 }
-
-
-
-

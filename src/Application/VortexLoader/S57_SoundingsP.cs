@@ -94,7 +94,7 @@ namespace S100Framework.Applications
                             AddInformation(sounding.information, feature);
 
                             bufferPointset["json"] = System.Text.Json.JsonSerializer.Serialize(sounding);
-                            bufferPointset["ps"] = "S-101";
+                            bufferPointset["ps"] = ps101;
                             bufferPointset["code"] = sounding.GetType().Name;
 
                             var oid = insertPointset.Insert(bufferPointset);
@@ -112,7 +112,7 @@ namespace S100Framework.Applications
                                     qualityOfHorizontalMeasurement = qualityOfHorizontalMeasurement.Approximate,
                                 };
 
-                                information["ps"] = "S-101";
+                                information["ps"] = ps101;
                                 information["code"] = row.GetType().Name;
                                 information["json"] = System.Text.Json.JsonSerializer.Serialize(row);
                                 using var _ = informationtype.CreateRow(information);
