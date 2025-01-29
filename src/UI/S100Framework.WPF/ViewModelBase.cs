@@ -13,7 +13,7 @@ namespace S100Framework.WPF.ViewModel
 
         public static Func<FeatureBindingViewModel?, string[]> GetFeatures { get; set; } = (e) => { return []; };
 
-        public static Func<InformationRefIdViewModel?, string[]> GetInformationsRefId { get; set; } = (e) => { return []; };
+        public static Func<InformationRefIdViewModel?, Task<string[]>> GetInformationsRefId { get; set; } = (e) => { return Task.FromResult(Array.Empty<string>()); };
 
         public static Func<FeatureRefIdViewModel?, Task<string[]>> GetFeaturesRefId { get; set; } = (e) => { return Task.FromResult(Array.Empty<string>()); };
     }
@@ -106,7 +106,7 @@ namespace S100Framework.WPF.ViewModel
         protected InformationAssociationConnector? _associationConnector;
 
         [Editor(typeof(InformationConnectorEditor), typeof(InformationConnectorEditor))]
-        [ExpandableObject]
+        //[ExpandableObject]
         public abstract InformationAssociationConnector? associationConnector { get; set; }
 
         [Browsable(false)]
@@ -122,7 +122,7 @@ namespace S100Framework.WPF.ViewModel
         protected FeatureAssociationConnector? _associationConnector;
 
         [Editor(typeof(FeatureConnectorEditor), typeof(FeatureConnectorEditor))]
-        [ExpandableObject]
+        //[ExpandableObject]
         public abstract FeatureAssociationConnector? associationConnector { get; set; }
 
         [Browsable(false)]
@@ -242,11 +242,16 @@ namespace S100Framework.WPF.ViewModel
             set {
                 this.SetValue(ref _informationType, value);
 
-                RefIds.Clear();
-                foreach (var e in Handles.GetInformationsRefId(this)!)
-                    RefIds.Add(e);
+                _ = UpdateInformationType(value);   // Fire and forget 
             }
         }
+
+        private async Task UpdateInformationType(string? value) {
+            RefIds.Clear();
+            foreach (var e in await Handles.GetInformationsRefId(this))
+                RefIds.Add(e);
+        }
+
 
         public override string ToString() => string.IsNullOrEmpty(_informationType) ? "RefId" : $"{_informationType}: {RefId}";
 
@@ -266,13 +271,14 @@ namespace S100Framework.WPF.ViewModel
             set { 
                 this.SetValue(ref _featureType, value);
 
-                var _ = async () => {
-                    RefIds.Clear();
-                    foreach (var e in await Handles.GetFeaturesRefId(this))
-                        RefIds.Add(e);
-                };
-                _();
+                _ = UpdateFeatureType(value);   // Fire and forget
             }
+        }
+
+        private async Task UpdateFeatureType(string? value) {
+            RefIds.Clear();
+            foreach (var e in await Handles.GetFeaturesRefId(this))
+                RefIds.Add(e);
         }
 
         public override string ToString() => string.IsNullOrEmpty(_featureType) ? "RefId" : $"{_featureType}: {RefId}";

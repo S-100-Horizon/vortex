@@ -126,26 +126,55 @@ namespace VortexProAppModule
                     if (mapView is null)
                         return [];
 
+                    var inspector = new ArcGIS.Desktop.Editing.Attributes.Inspector();
+
                     var selection = mapView.GetSelection();
 
-                    foreach (var layer in selection.ToDictionary()) {
-
-                    }
-
                     var objectid = new List<string>();
+
+                    foreach (var selectionSet in selection.ToDictionary()) {
+                        inspector.Load(selectionSet.Key, selectionSet.Value);
+
+                        var code = Convert.ToString(inspector["code"]);
+                        if (string.IsNullOrEmpty(code) || !featureType.Equals(code, StringComparison.InvariantCultureIgnoreCase))
+                            continue;
+
+                        objectid.Add(Convert.ToString(inspector["name"]));
+                    }                    
 
                     return objectid.ToArray();
                 });
                 return result;
             };
 
-            S100Framework.WPF.ViewModel.Handles.GetInformationsRefId = (e) => {
+            S100Framework.WPF.ViewModel.Handles.GetInformationsRefId = async (e) => {
                 var informationType = e.InformationType;
                 var associationTypes = e.AssociationTypes;
 
-                var objectid = new List<string>();
+                var result = await QueuedTask.Run(() => {
+                    var mapView = MapView.Active?.Map;
+                    if (mapView is null)
+                        return [];
 
-                return objectid.ToArray();
+                    var inspector = new ArcGIS.Desktop.Editing.Attributes.Inspector();
+
+                    var selection = mapView.GetSelection();
+
+                    var objectid = new List<string>();
+
+                    foreach (var selectionSet in selection.ToDictionary()) {
+                        inspector.Load(selectionSet.Key, selectionSet.Value);
+
+                        var code = Convert.ToString(inspector["code"]);
+                        if (string.IsNullOrEmpty(code) || !informationType.Equals(code, StringComparison.InvariantCultureIgnoreCase))
+                            continue;
+
+                        objectid.Add(Convert.ToString(inspector["name"]));
+                    }
+
+                    return objectid.ToArray();
+                });
+                return result;
             };
         }
 

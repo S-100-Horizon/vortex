@@ -103,7 +103,7 @@ namespace VortexConceptApplication
 
                     objectid.Add($"{prefix}{random.Next(0, 9)}{random.Next(0, 9)}{random.Next(0, 9)}{random.Next(0, 9)}{random.Next(0, 9)}{random.Next(0, 9)}");
                 }
-                return objectid.ToArray();
+                return Task.FromResult(objectid.ToArray());
             };
 
 #if S124
