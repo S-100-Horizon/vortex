@@ -5,6 +5,7 @@ using ArcGIS.Core.Data;
 using ArcGIS.Desktop.Editing.Attributes;
 using ArcGIS.Desktop.Framework;
 using ArcGIS.Desktop.Framework.Threading.Tasks;
+using ArcGIS.Desktop.Internal.KnowledgeGraph;
 using ArcGIS.Desktop.Mapping;
 using S100Framework.Catalogues;
 using System;
@@ -133,6 +134,8 @@ namespace VortexProAppModule
                     var objectid = new List<string>();
 
                     foreach (var selectionSet in selection.ToDictionary()) {
+                        if (!(selectionSet.Key is ArcGIS.Desktop.Mapping.FeatureLayer))
+                            continue;
                         inspector.Load(selectionSet.Key, selectionSet.Value);
 
                         var code = Convert.ToString(inspector["code"]);
@@ -163,6 +166,9 @@ namespace VortexProAppModule
                     var objectid = new List<string>();
 
                     foreach (var selectionSet in selection.ToDictionary()) {
+                        if (!(selectionSet.Key is ArcGIS.Desktop.Mapping.StandaloneTable))
+                            continue;
+
                         inspector.Load(selectionSet.Key, selectionSet.Value);
 
                         var code = Convert.ToString(inspector["code"]);

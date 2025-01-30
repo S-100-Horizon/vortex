@@ -98,7 +98,7 @@ namespace S100Framework.WPF.ViewModel
         public abstract string Code { get; }
 
         [Browsable(false)]
-        public abstract string[] Roles { get; }
+        public abstract string[] Roles { get; }        
     }
 
     public abstract class InformationAssociationViewModel : AssociationViewModel
@@ -106,7 +106,6 @@ namespace S100Framework.WPF.ViewModel
         protected InformationAssociationConnector? _associationConnector;
 
         [Editor(typeof(InformationConnectorEditor), typeof(InformationConnectorEditor))]
-        //[ExpandableObject]
         public abstract InformationAssociationConnector? associationConnector { get; set; }
 
         [Browsable(false)]
@@ -121,8 +120,7 @@ namespace S100Framework.WPF.ViewModel
     {
         protected FeatureAssociationConnector? _associationConnector;
 
-        [Editor(typeof(FeatureConnectorEditor), typeof(FeatureConnectorEditor))]
-        //[ExpandableObject]
+        [Editor(typeof(FeatureConnectorEditor), typeof(FeatureConnectorEditor))]        
         public abstract FeatureAssociationConnector? associationConnector { get; set; }
 
         [Browsable(false)]
@@ -146,7 +144,7 @@ namespace S100Framework.WPF.ViewModel
         public int Lower { get; set; } = 0;
 
         [PropertyOrder(2)]
-        public int? Upper { get; set; } = default;
+        public int? Upper { get; set; } = default;        
     }
 
     public abstract class InformationAssociationConnector : AssociationConnector
@@ -156,7 +154,7 @@ namespace S100Framework.WPF.ViewModel
         public Func<InformationBindingViewModel?> CreateForeignInformationBinding { get; set; } = () => default;
 
         public Func<InformationBindingViewModel?> CreateLocalInformationBinding { get; set; } = () => default;
-        public Func<FeatureBindingViewModel?> CreateLocalFeatureBinding { get; set; } = () => default;
+        public Func<FeatureBindingViewModel?> CreateLocalFeatureBinding { get; set; } = () => default;        
     }
 
     public class InformationAssociationConnector<T> : InformationAssociationConnector where T : Node
@@ -268,7 +266,7 @@ namespace S100Framework.WPF.ViewModel
         [Editor(typeof(FeatureBindingEditor), typeof(FeatureBindingEditor))]
         public string? FeatureType {
             get { return _featureType; }
-            set { 
+            set {
                 this.SetValue(ref _featureType, value);
 
                 _ = UpdateFeatureType(value);   // Fire and forget

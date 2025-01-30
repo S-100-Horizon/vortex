@@ -107,7 +107,7 @@ namespace S100Framework.WPF.ViewModel
 
         [Editor(typeof(InformationConnectorEditor), typeof(InformationConnectorEditor))]
         [ExpandableObject]
-        public abstract InformationAssociationConnector? associationConnector { get; set; }
+        public abstract InformationAssociationConnector? association { get; set; }
 
         [Browsable(false)]
         public abstract InformationAssociationConnector[] associationConnectorInformations { get; }
@@ -123,7 +123,7 @@ namespace S100Framework.WPF.ViewModel
 
         [Editor(typeof(FeatureConnectorEditor), typeof(FeatureConnectorEditor))]
         [ExpandableObject]
-        public abstract FeatureAssociationConnector? associationConnector { get; set; }
+        public abstract FeatureAssociationConnector? association { get; set; }
 
         [Browsable(false)]
         public abstract FeatureAssociationConnector[] associationConnectorFeatures { get; }

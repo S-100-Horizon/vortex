@@ -935,7 +935,7 @@ namespace S100Framework
                     }
 
                     viewBuilder.AppendLine();
-                    viewBuilder.AppendLine($"\t\t\tpublic override FeatureAssociationConnector? associationConnector {{");
+                    viewBuilder.AppendLine($"\t\t\tpublic override FeatureAssociationConnector? association {{");
                     viewBuilder.AppendLine($"\t\t\t\tget {{ return _associationConnector; }}");
                     viewBuilder.AppendLine($"\t\t\t\tset {{");
                     viewBuilder.AppendLine($"\t\t\t\t\tthis.SetValue(ref _associationConnector, value);");
@@ -965,7 +965,7 @@ namespace S100Framework
                     viewBuilder.AppendLine($"\t\t}}");
 
                     viewBuilder.AppendLine($"\t\tpublic override void Load(S100Framework.DomainModel.FeatureAssociation featureAssociation) {{");
-                    viewBuilder.AppendLine($"\t\t\tassociationConnector = associationConnectorFeatures.SingleOrDefault(e => e.FeatureType.Equals(featureAssociation.AssociationConnectorTypeName));");
+                    viewBuilder.AppendLine($"\t\t\tassociation = associationConnectorFeatures.SingleOrDefault(e => e.FeatureType.Equals(featureAssociation.AssociationConnectorTypeName));");
                     foreach (var r in roles) {
                         viewBuilder.AppendLine($"\t\t\t{r}?.Load(featureAssociation, \"{r}\");");
                     }
@@ -975,7 +975,7 @@ namespace S100Framework
                     viewBuilder.AppendLine($"\t\tpublic override string Serialize() {{");
                     viewBuilder.AppendLine($"\t\t\tvar instance = new FeatureAssociation {{");
                     viewBuilder.AppendLine($"\t\t\t\tCode = this.Code,");
-                    viewBuilder.AppendLine($"\t\t\t\tAssociationConnectorTypeName = associationConnector!.FeatureType,");
+                    viewBuilder.AppendLine($"\t\t\t\tAssociationConnectorTypeName = association!.FeatureType,");
                     viewBuilder.AppendLine($"\t\t\t}};");
                     foreach (var r in roles) {
                         viewBuilder.AppendLine($"\t\t\t{r}?.Save(instance, \"{r}\");");
@@ -1099,7 +1099,7 @@ namespace S100Framework
                         viewBuilder.AppendLine($"\t\t\t}}");
                     }
                     viewBuilder.AppendLine();
-                    viewBuilder.AppendLine($"\t\t\tpublic override InformationAssociationConnector? associationConnector {{");
+                    viewBuilder.AppendLine($"\t\t\tpublic override InformationAssociationConnector? association {{");
                     viewBuilder.AppendLine($"\t\t\t\tget {{ return _associationConnector; }}");
                     viewBuilder.AppendLine($"\t\t\t\tset {{");
                     viewBuilder.AppendLine($"\t\t\t\t\tthis.SetValue(ref _associationConnector, value);");
@@ -1137,7 +1137,7 @@ namespace S100Framework
                     viewBuilder.AppendLine($"\t\t}}");
 
                     viewBuilder.AppendLine($"\t\tpublic override void Load(S100Framework.DomainModel.InformationAssociation informationAssociation) {{");
-                    viewBuilder.AppendLine($"\t\t\tassociationConnector = associationConnectorInformations.SingleOrDefault(e => e.InformationType.Equals(informationAssociation.AssociationConnectorTypeName));");
+                    viewBuilder.AppendLine($"\t\t\tassociation = associationConnectorInformations.SingleOrDefault(e => e.InformationType.Equals(informationAssociation.AssociationConnectorTypeName));");
                     foreach (var r in roles) {
                         viewBuilder.AppendLine($"\t\t\t{r}?.Load(informationAssociation, \"{r}\");");
                     }
@@ -1146,7 +1146,7 @@ namespace S100Framework
                     viewBuilder.AppendLine($"\t\tpublic override string Serialize() {{");
                     viewBuilder.AppendLine($"\t\t\tvar instance = new InformationAssociation {{");
                     viewBuilder.AppendLine($"\t\t\t\tCode = this.Code,");
-                    viewBuilder.AppendLine($"\t\t\t\tAssociationConnectorTypeName = associationConnector!.InformationType,");
+                    viewBuilder.AppendLine($"\t\t\t\tAssociationConnectorTypeName = association!.InformationType,");
                     viewBuilder.AppendLine($"\t\t\t}};");
                     foreach (var r in roles) {
                         viewBuilder.AppendLine($"\t\t\t{r}?.Save(instance, \"{r}\");");
