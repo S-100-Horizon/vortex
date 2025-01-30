@@ -69,26 +69,26 @@ namespace S100Framework.Applications
                                             (techniqueOfVerticalMeasurement)Enum.Parse(typeof(techniqueOfVerticalMeasurement), tecsou)
                                         };
                             }
-                            if (objnam != default) {
+                            //if (objnam != default) {
 
-                                if (!string.IsNullOrEmpty(objnam.Trim())) {
-                                    sounding.featureName.Add(new featureName {
-                                        language = "eng",
-                                        nameUsage = null,
-                                        name = objnam.Trim(),
-                                    });
-                                }
-                            }
-                            if (nobjnm != default) {
+                            //    if (!string.IsNullOrEmpty(objnam.Trim())) {
+                            //        sounding.featureName.Add(new featureName {
+                            //            language = "eng",
+                            //            nameUsage = null,
+                            //            name = objnam.Trim(),
+                            //        });
+                            //    }
+                            //}
+                            //if (nobjnm != default) {
 
-                                if (!string.IsNullOrEmpty(nobjnm.Trim())) {
-                                    sounding.featureName.Add(new featureName {
-                                        language = "dk",
-                                        nameUsage = nameUsage.AlternateNameDisplay,
-                                        name = nobjnm.Trim(),
-                                    });
-                                }
-                            }
+                            //    if (!string.IsNullOrEmpty(nobjnm.Trim())) {
+                            //        sounding.featureName.Add(new featureName {
+                            //            language = "dk",
+                            //            nameUsage = nameUsage.AlternateNameDisplay,
+                            //            name = nobjnm.Trim(),
+                            //        });
+                            //    }
+                            //}
 
                             AddFeatureName(sounding.featureName, feature);
                             AddInformation(sounding.information, feature);

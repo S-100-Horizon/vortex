@@ -11,7 +11,6 @@ namespace VortexLoader
     internal class FeatureRelations
     {
         private Dictionary<Guid, IList<PLTS_Frel>> _srcObjectToFrel = new Dictionary<Guid, IList<PLTS_Frel>>();
-        private Dictionary<string, IList<PLTS_Frel>> _srcFeatureClassesToFrel;
 
         private bool _isInitialized = false;
 

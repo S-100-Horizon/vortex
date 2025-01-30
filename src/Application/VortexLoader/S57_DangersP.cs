@@ -65,6 +65,7 @@ namespace S100Framework.Applications
                             AddInformation(instance.information, feature);
 
                             buffer["ps"] = ps101;
+
                             buffer["code"] = instance.GetType().Name;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance);
                             buffer["shape"] = current.SHAPE;
@@ -88,6 +89,7 @@ namespace S100Framework.Applications
                             AddInformation(instance.information, feature);
 
                             buffer["ps"] = ps101;
+
                             buffer["code"] = instance.GetType().Name;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance);
                             buffer["shape"] = current.SHAPE;
@@ -115,6 +117,7 @@ namespace S100Framework.Applications
                                 AddFeatureName(foulGround.featureName, feature);
                                 AddInformation(foulGround.information, feature);
                                 buffer["ps"] = ps101;
+
                                 buffer["code"] = foulGround.GetType().Name;
                                 buffer["json"] = System.Text.Json.JsonSerializer.Serialize(foulGround);
                                 buffer["shape"] = feature.GetShape();
@@ -204,6 +207,7 @@ namespace S100Framework.Applications
                             AddInformation(obstruction.information, feature);
 
                             buffer["ps"] = ps101;
+
                             buffer["code"] = obstruction.GetType().Name; 
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(obstruction);
                             buffer["shape"] = current.SHAPE;
@@ -257,6 +261,7 @@ namespace S100Framework.Applications
                             AddInformation(uwtroc.information, feature);
 
                             buffer["ps"] = ps101;
+
                             buffer["code"] = uwtroc.GetType().Name;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(uwtroc);
                             buffer["shape"] = current.SHAPE;
@@ -294,6 +299,7 @@ namespace S100Framework.Applications
                             AddInformation(instance.information, feature);
 
                             buffer["ps"] = ps101;
+
                             buffer["code"] = instance.GetType().Name;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance);
                             buffer["shape"] = current.SHAPE;
@@ -350,6 +356,7 @@ namespace S100Framework.Applications
                             AddInformation(instance.information, feature);
 
                             buffer["ps"] = ps101;
+
                             buffer["code"] = instance.GetType().Name;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance);
                             buffer["shape"] = current.SHAPE;

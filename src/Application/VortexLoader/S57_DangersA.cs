@@ -62,6 +62,7 @@ namespace S100Framework.Applications
                             AddInformation(instance.information, feature);
 
                             buffer["ps"] = ps101;
+
                             buffer["code"] = instance.GetType().Name;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance);
                             buffer["shape"] = current.SHAPE;
@@ -87,6 +88,7 @@ namespace S100Framework.Applications
                             AddInformation(instance.information, feature);
 
                             buffer["ps"] = ps101;
+
                             buffer["code"] = instance.GetType().Name;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance);
                             buffer["shape"] = current.SHAPE;
@@ -125,6 +127,7 @@ namespace S100Framework.Applications
                             AddInformation(instance.information, feature);
 
                             buffer["ps"] = ps101;
+
                             buffer["code"] = instance.GetType().Name;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance);
                             buffer["shape"] = current.SHAPE;
@@ -147,6 +150,7 @@ namespace S100Framework.Applications
                             AddInformation(instance.information, feature);
 
                             buffer["ps"] = ps101;
+
                             buffer["code"] = instance.GetType().Name;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance);
                             buffer["shape"] = current.SHAPE;
@@ -186,6 +190,7 @@ namespace S100Framework.Applications
                             AddInformation(instance.information, feature);
 
                             buffer["ps"] = ps101;
+
                             buffer["code"] = instance.GetType().Name;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance);
                             buffer["shape"] = current.SHAPE;

@@ -2,23 +2,28 @@
 using VortexLoader.S57.esri;
 using S100Framework.DomainModel.S101;
 using S100Framework.DomainModel.S101.FeatureTypes;
+using ArcGIS.Core.Data.UtilityNetwork.Trace;
+using S100Framework.DomainModel.S101.ComplexAttributes;
+using Serilog;
+using static System.Net.Mime.MediaTypeNames;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace S100Framework.Applications
 {
     internal static partial class ImporterNIS
     {
-        private static void S57_IcefeaturesA(Geodatabase source, Geodatabase target, QueryFilter filter) {
-            var tableName = "IcefeaturesA";
+        private static void S57_MilitaryFeaturesP(Geodatabase source, Geodatabase target, QueryFilter filter) {
+            var tableName = "MilitaryFeaturesP";
 
-            var icefeaturesa = source.OpenDataset<FeatureClass>(tableName);
+            var coastlinea = source.OpenDataset<FeatureClass>(tableName);
 
-            using var featureClass = target.OpenDataset<FeatureClass>("surface");
-            
+            using var featureClass = target.OpenDataset<FeatureClass>("point");
+
 
             using var buffer = featureClass.CreateRowBuffer();
             using var insert = featureClass.CreateInsertCursor();
 
-            using var cursor = icefeaturesa.Search(filter, true);
+            using var cursor = coastlinea.Search(filter, true);
             int recordCount = 0;
             int convertedCount = 0;
             while (cursor.MoveNext()) {
@@ -26,24 +31,25 @@ namespace S100Framework.Applications
 
                 var feature = (Feature)cursor.Current;
 
-                var current = new CoastlineL(feature);
+                var current = new MilitaryFeaturesP(feature);
 
                 var objectid = current.OBJECTID ?? default;
                 var globalid = current.GLOBALID;
                 var subtype = current.FCSUBTYPE ?? default;
-                var watlev = current.WATLEV ?? default;
                 var plts_comp_scale = current.PLTS_COMP_SCALE ?? default;
                 var longname = current.LNAM ?? Strings.UNKNOWN;
                 var status = current.STATUS ?? default;
 
                 switch (subtype) {
-                    case 15: { // ICEARE_IceArea
-                            var instance = new IceArea() {
+
+                    case 30: { // MIPARE_MilitaryPracticeArea
+                            var instance = new MilitaryPracticeArea() {
                             };
                             if (plts_comp_scale != default) {
                                 instance.scaleMinimum = plts_comp_scale;
                             }
-                            
+
+
                             AddStatus(instance.status, feature);
                             AddFeatureName(instance.featureName, feature);
                             AddInformation(instance.information, feature);
@@ -61,6 +67,7 @@ namespace S100Framework.Applications
                         // code block
                         System.Diagnostics.Debugger.Break();
                         break;
+
                 }
 
 

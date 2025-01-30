@@ -65,12 +65,18 @@ namespace S100Framework.Applications
                 informationtype.DeleteRows(query);
             }
 
-            //  TracksAndRoutesL
-            S57_TracksAndRoutesL(source, destination, filter);
+            //  MilitaryFeaturesA
+            S57_MilitaryFeatureA(source, destination, filter);
             
+            //  MilitaryFeaturesP
+            S57_MilitaryFeaturesP(source, destination, filter);
+
             //  TracksAndRoutesA
             S57_TracksAndRoutesA(source, destination, filter);
-            
+
+            //  TracksAndRoutesL
+            S57_TracksAndRoutesL(source, destination, filter);
+           
             //  TracksAndRoutesP
             S57_TracksAndRoutesP(source, destination, filter);
 
@@ -85,7 +91,6 @@ namespace S100Framework.Applications
 
             //  CoastlineP
             S57_CoastlineP(source, destination, filter);
-
 
             //  CulturalFeaturesA
             S57_CulturalFeaturesA(source, destination, filter);
@@ -162,10 +167,6 @@ namespace S100Framework.Applications
             return true;
         }
 
-
-
-
-
         public static IEnumerable<T> SelectIn<T>(Geometry geometry, FeatureClass in_featureclass) where T : class {
 
             SpatialQueryFilter spatialQueryFilter = new SpatialQueryFilter {
@@ -221,6 +222,24 @@ namespace S100Framework.Applications
             }
         }
 
+        private static void AddOrientation(orientation orient, Feature feature) {
+            if (DBNull.Value != feature["ORIENT"]) {
+                var orientSource = Convert.ToDecimal(feature["ORIENT"]);
+                if (orient == default) {
+                    orient = new orientation();
+                    orient.orientationValue = orientSource;
+                } else {
+                    orient.orientationValue = orientSource;
+                }
+            }
+        }
+
+        private static void AddOrientation(decimal orientationValue, Feature feature) {
+            if (DBNull.Value != feature["ORIENT"]) {
+                var orient = Convert.ToDecimal(feature["ORIENT"]);
+                orientationValue = orient;
+            }
+        }
 
 
         private static void AddStatus(status? status, Feature current) {
@@ -236,6 +255,7 @@ namespace S100Framework.Applications
                 }
             }
         }
+
         private static void AddStatus(List<status> statusList, Feature current) {
             if (DBNull.Value != current["STATUS"]) {
                 var featureStatus = Convert.ToString(current["STATUS"])?.Trim();
