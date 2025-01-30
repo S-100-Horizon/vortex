@@ -24,7 +24,7 @@ namespace VortexConceptApplication
     {
         public static object MockValue => new();
 
-        public event PropertyChangedEventHandler PropertyChanged;
+        public event PropertyChangedEventHandler? PropertyChanged = default;
 
         public MainWindow() {
             InitializeComponent();
@@ -32,9 +32,9 @@ namespace VortexConceptApplication
             this.DataContext = this;
         }
 
-        private object _selectedProperty = default;
+        private object? _selectedProperty = default;
 
-        public object SelectedProperty {
+        public object? SelectedProperty {
             get => _selectedProperty;
             set => SetProperty(ref _selectedProperty, value);
         }
