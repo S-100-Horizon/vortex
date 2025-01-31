@@ -100,8 +100,8 @@ namespace S100Framework.WPF.Editors
             var bindingSelectedItemProperty = new Binding(propertyItem.DisplayName) { Source = propertyItem.Instance, Mode = propertyItem.IsReadOnly ? BindingMode.OneWay : BindingMode.TwoWay };
             BindingOperations.SetBinding(comboBox, ComboBox.SelectedItemProperty, bindingSelectedItemProperty);
 
-            if (viewModel.associationConnector is not null) {
-                comboBox.SelectedValue = viewModel.associationConnector;
+            if (viewModel.association is not null) {
+                comboBox.SelectedValue = viewModel.association;
             }
             return comboBox;
         }
@@ -123,8 +123,8 @@ namespace S100Framework.WPF.Editors
             var bindingSelectedItemProperty = new Binding(propertyItem.DisplayName) { Source = propertyItem.Instance, Mode = propertyItem.IsReadOnly ? BindingMode.OneWay : BindingMode.TwoWay };
             BindingOperations.SetBinding(comboBox, ComboBox.SelectedItemProperty, bindingSelectedItemProperty);
 
-            if (viewModel.associationConnector is not null) {
-                comboBox.SelectedValue = viewModel.associationConnector;
+            if (viewModel.association is not null) {
+                comboBox.SelectedValue = viewModel.association;
             }
             return comboBox;
         }

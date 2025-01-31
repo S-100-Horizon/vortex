@@ -80,20 +80,6 @@ namespace S100Framework.WPF.ViewModel
 
     public abstract class AssociationViewModel : ViewModelBase
     {
-        //public event PropertyChangedEventHandler? PropertyChanged;
-
-        //protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null) {
-        //    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        //}
-
-        //protected void SetValue<T>(ref T backingFiled, T value, [CallerMemberName] string? propertyName = null) {
-        //    if (string.IsNullOrWhiteSpace(propertyName)) return;
-
-        //    if (EqualityComparer<T>.Default.Equals(backingFiled, value)) return;
-        //    backingFiled = value;
-        //    OnPropertyChanged(propertyName);
-        //}
-
         [PropertyOrder(0)]
         public abstract string Code { get; }
 
@@ -106,14 +92,12 @@ namespace S100Framework.WPF.ViewModel
         protected InformationAssociationConnector? _associationConnector;
 
         [Editor(typeof(InformationConnectorEditor), typeof(InformationConnectorEditor))]
-        public abstract InformationAssociationConnector? associationConnector { get; set; }
+        public abstract InformationAssociationConnector? association { get; set; }
 
         [Browsable(false)]
         public abstract InformationAssociationConnector[] associationConnectorInformations { get; }
 
         public abstract void Load(S100Framework.DomainModel.InformationAssociation informationAssociation);
-
-        //public abstract string Serialize();
     }
 
     public abstract class FeatureAssociationViewModel : AssociationViewModel
@@ -121,14 +105,12 @@ namespace S100Framework.WPF.ViewModel
         protected FeatureAssociationConnector? _associationConnector;
 
         [Editor(typeof(FeatureConnectorEditor), typeof(FeatureConnectorEditor))]        
-        public abstract FeatureAssociationConnector? associationConnector { get; set; }
+        public abstract FeatureAssociationConnector? association { get; set; }
 
         [Browsable(false)]
         public abstract FeatureAssociationConnector[] associationConnectorFeatures { get; }
 
         public abstract void Load(S100Framework.DomainModel.FeatureAssociation featureAssociation);
-
-        //public abstract string Serialize();
     }
 
     public abstract class AssociationConnector

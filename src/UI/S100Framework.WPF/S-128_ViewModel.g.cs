@@ -3959,7 +3959,7 @@ namespace S100Framework.WPF.ViewModel.S128
             }
         }
 
-        public override FeatureAssociationConnector? associationConnector {
+        public override FeatureAssociationConnector? association {
             get {
                 return _associationConnector;
             }
@@ -3978,7 +3978,7 @@ namespace S100Framework.WPF.ViewModel.S128
         }
 
         public override void Load(S100Framework.DomainModel.FeatureAssociation featureAssociation) {
-            associationConnector = associationConnectorFeatures.SingleOrDefault(e => e.FeatureType.Equals(featureAssociation.AssociationConnectorTypeName));
+            association = associationConnectorFeatures.SingleOrDefault(e => e.FeatureType.Equals(featureAssociation.AssociationConnectorTypeName));
             theSource?.Load(featureAssociation, "theSource");
             theReference?.Load(featureAssociation, "theReference");
         }
@@ -3987,7 +3987,7 @@ namespace S100Framework.WPF.ViewModel.S128
             var instance = new FeatureAssociation
             {
                 Code = this.Code,
-                AssociationConnectorTypeName = associationConnector!.FeatureType,
+                AssociationConnectorTypeName = association!.FeatureType,
             };
             theSource?.Save(instance, "theSource");
             theReference?.Save(instance, "theReference");
@@ -4039,7 +4039,7 @@ namespace S100Framework.WPF.ViewModel.S128
             }
         }
 
-        public override FeatureAssociationConnector? associationConnector {
+        public override FeatureAssociationConnector? association {
             get {
                 return _associationConnector;
             }
@@ -4058,7 +4058,7 @@ namespace S100Framework.WPF.ViewModel.S128
         }
 
         public override void Load(S100Framework.DomainModel.FeatureAssociation featureAssociation) {
-            associationConnector = associationConnectorFeatures.SingleOrDefault(e => e.FeatureType.Equals(featureAssociation.AssociationConnectorTypeName));
+            association = associationConnectorFeatures.SingleOrDefault(e => e.FeatureType.Equals(featureAssociation.AssociationConnectorTypeName));
             main?.Load(featureAssociation, "main");
             panel?.Load(featureAssociation, "panel");
         }
@@ -4067,7 +4067,7 @@ namespace S100Framework.WPF.ViewModel.S128
             var instance = new FeatureAssociation
             {
                 Code = this.Code,
-                AssociationConnectorTypeName = associationConnector!.FeatureType,
+                AssociationConnectorTypeName = association!.FeatureType,
             };
             main?.Save(instance, "main");
             panel?.Save(instance, "panel");
@@ -4115,7 +4115,7 @@ namespace S100Framework.WPF.ViewModel.S128
             }
         }
 
-        public override InformationAssociationConnector? associationConnector {
+        public override InformationAssociationConnector? association {
             get {
                 return _associationConnector;
             }
@@ -4143,7 +4143,7 @@ namespace S100Framework.WPF.ViewModel.S128
         }
 
         public override void Load(S100Framework.DomainModel.InformationAssociation informationAssociation) {
-            associationConnector = associationConnectorInformations.SingleOrDefault(e => e.InformationType.Equals(informationAssociation.AssociationConnectorTypeName));
+            association = associationConnectorInformations.SingleOrDefault(e => e.InformationType.Equals(informationAssociation.AssociationConnectorTypeName));
             theElement?.Load(informationAssociation, "theElement");
             theRequirement?.Load(informationAssociation, "theRequirement");
         }
@@ -4152,7 +4152,7 @@ namespace S100Framework.WPF.ViewModel.S128
             var instance = new InformationAssociation
             {
                 Code = this.Code,
-                AssociationConnectorTypeName = associationConnector!.InformationType,
+                AssociationConnectorTypeName = association!.InformationType,
             };
             theElement?.Save(instance, "theElement");
             theRequirement?.Save(instance, "theRequirement");
@@ -4204,7 +4204,7 @@ namespace S100Framework.WPF.ViewModel.S128
             }
         }
 
-        public override InformationAssociationConnector? associationConnector {
+        public override InformationAssociationConnector? association {
             get {
                 return _associationConnector;
             }
@@ -4232,7 +4232,7 @@ namespace S100Framework.WPF.ViewModel.S128
         }
 
         public override void Load(S100Framework.DomainModel.InformationAssociation informationAssociation) {
-            associationConnector = associationConnectorInformations.SingleOrDefault(e => e.InformationType.Equals(informationAssociation.AssociationConnectorTypeName));
+            association = associationConnectorInformations.SingleOrDefault(e => e.InformationType.Equals(informationAssociation.AssociationConnectorTypeName));
             catalogueHeader?.Load(informationAssociation, "catalogueHeader");
             theDistributor?.Load(informationAssociation, "theDistributor");
         }
@@ -4241,7 +4241,7 @@ namespace S100Framework.WPF.ViewModel.S128
             var instance = new InformationAssociation
             {
                 Code = this.Code,
-                AssociationConnectorTypeName = associationConnector!.InformationType,
+                AssociationConnectorTypeName = association!.InformationType,
             };
             catalogueHeader?.Save(instance, "catalogueHeader");
             theDistributor?.Save(instance, "theDistributor");
@@ -4289,7 +4289,7 @@ namespace S100Framework.WPF.ViewModel.S128
             }
         }
 
-        public override InformationAssociationConnector? associationConnector {
+        public override InformationAssociationConnector? association {
             get {
                 return _associationConnector;
             }
@@ -4317,7 +4317,7 @@ namespace S100Framework.WPF.ViewModel.S128
         }
 
         public override void Load(S100Framework.DomainModel.InformationAssociation informationAssociation) {
-            associationConnector = associationConnectorInformations.SingleOrDefault(e => e.InformationType.Equals(informationAssociation.AssociationConnectorTypeName));
+            association = associationConnectorInformations.SingleOrDefault(e => e.InformationType.Equals(informationAssociation.AssociationConnectorTypeName));
             theDistributor?.Load(informationAssociation, "theDistributor");
             theContactDetails?.Load(informationAssociation, "theContactDetails");
         }
@@ -4326,7 +4326,7 @@ namespace S100Framework.WPF.ViewModel.S128
             var instance = new InformationAssociation
             {
                 Code = this.Code,
-                AssociationConnectorTypeName = associationConnector!.InformationType,
+                AssociationConnectorTypeName = association!.InformationType,
             };
             theDistributor?.Save(instance, "theDistributor");
             theContactDetails?.Save(instance, "theContactDetails");
@@ -4374,7 +4374,7 @@ namespace S100Framework.WPF.ViewModel.S128
             }
         }
 
-        public override InformationAssociationConnector? associationConnector {
+        public override InformationAssociationConnector? association {
             get {
                 return _associationConnector;
             }
@@ -4402,7 +4402,7 @@ namespace S100Framework.WPF.ViewModel.S128
         }
 
         public override void Load(S100Framework.DomainModel.InformationAssociation informationAssociation) {
-            associationConnector = associationConnectorInformations.SingleOrDefault(e => e.InformationType.Equals(informationAssociation.AssociationConnectorTypeName));
+            association = associationConnectorInformations.SingleOrDefault(e => e.InformationType.Equals(informationAssociation.AssociationConnectorTypeName));
             theCatalogueElement?.Load(informationAssociation, "theCatalogueElement");
             thePriceInformation?.Load(informationAssociation, "thePriceInformation");
         }
@@ -4411,7 +4411,7 @@ namespace S100Framework.WPF.ViewModel.S128
             var instance = new InformationAssociation
             {
                 Code = this.Code,
-                AssociationConnectorTypeName = associationConnector!.InformationType,
+                AssociationConnectorTypeName = association!.InformationType,
             };
             theCatalogueElement?.Save(instance, "theCatalogueElement");
             thePriceInformation?.Save(instance, "thePriceInformation");
@@ -4463,7 +4463,7 @@ namespace S100Framework.WPF.ViewModel.S128
             }
         }
 
-        public override InformationAssociationConnector? associationConnector {
+        public override InformationAssociationConnector? association {
             get {
                 return _associationConnector;
             }
@@ -4491,7 +4491,7 @@ namespace S100Framework.WPF.ViewModel.S128
         }
 
         public override void Load(S100Framework.DomainModel.InformationAssociation informationAssociation) {
-            associationConnector = associationConnectorInformations.SingleOrDefault(e => e.InformationType.Equals(informationAssociation.AssociationConnectorTypeName));
+            association = associationConnectorInformations.SingleOrDefault(e => e.InformationType.Equals(informationAssociation.AssociationConnectorTypeName));
             theCatalogueOfNauticalProduct?.Load(informationAssociation, "theCatalogueOfNauticalProduct");
             thePriceInformation?.Load(informationAssociation, "thePriceInformation");
         }
@@ -4500,7 +4500,7 @@ namespace S100Framework.WPF.ViewModel.S128
             var instance = new InformationAssociation
             {
                 Code = this.Code,
-                AssociationConnectorTypeName = associationConnector!.InformationType,
+                AssociationConnectorTypeName = association!.InformationType,
             };
             theCatalogueOfNauticalProduct?.Save(instance, "theCatalogueOfNauticalProduct");
             thePriceInformation?.Save(instance, "thePriceInformation");
@@ -4548,7 +4548,7 @@ namespace S100Framework.WPF.ViewModel.S128
             }
         }
 
-        public override InformationAssociationConnector? associationConnector {
+        public override InformationAssociationConnector? association {
             get {
                 return _associationConnector;
             }
@@ -4576,7 +4576,7 @@ namespace S100Framework.WPF.ViewModel.S128
         }
 
         public override void Load(S100Framework.DomainModel.InformationAssociation informationAssociation) {
-            associationConnector = associationConnectorInformations.SingleOrDefault(e => e.InformationType.Equals(informationAssociation.AssociationConnectorTypeName));
+            association = associationConnectorInformations.SingleOrDefault(e => e.InformationType.Equals(informationAssociation.AssociationConnectorTypeName));
             theProducer?.Load(informationAssociation, "theProducer");
             theContactDetails?.Load(informationAssociation, "theContactDetails");
         }
@@ -4585,7 +4585,7 @@ namespace S100Framework.WPF.ViewModel.S128
             var instance = new InformationAssociation
             {
                 Code = this.Code,
-                AssociationConnectorTypeName = associationConnector!.InformationType,
+                AssociationConnectorTypeName = association!.InformationType,
             };
             theProducer?.Save(instance, "theProducer");
             theContactDetails?.Save(instance, "theContactDetails");
@@ -4633,7 +4633,7 @@ namespace S100Framework.WPF.ViewModel.S128
             }
         }
 
-        public override InformationAssociationConnector? associationConnector {
+        public override InformationAssociationConnector? association {
             get {
                 return _associationConnector;
             }
@@ -4661,7 +4661,7 @@ namespace S100Framework.WPF.ViewModel.S128
         }
 
         public override void Load(S100Framework.DomainModel.InformationAssociation informationAssociation) {
-            associationConnector = associationConnectorInformations.SingleOrDefault(e => e.InformationType.Equals(informationAssociation.AssociationConnectorTypeName));
+            association = associationConnectorInformations.SingleOrDefault(e => e.InformationType.Equals(informationAssociation.AssociationConnectorTypeName));
             catalogueHeader?.Load(informationAssociation, "catalogueHeader");
             theProducer?.Load(informationAssociation, "theProducer");
         }
@@ -4670,7 +4670,7 @@ namespace S100Framework.WPF.ViewModel.S128
             var instance = new InformationAssociation
             {
                 Code = this.Code,
-                AssociationConnectorTypeName = associationConnector!.InformationType,
+                AssociationConnectorTypeName = association!.InformationType,
             };
             catalogueHeader?.Save(instance, "catalogueHeader");
             theProducer?.Save(instance, "theProducer");
@@ -4718,7 +4718,7 @@ namespace S100Framework.WPF.ViewModel.S128
             }
         }
 
-        public override InformationAssociationConnector? associationConnector {
+        public override InformationAssociationConnector? association {
             get {
                 return _associationConnector;
             }
@@ -4746,7 +4746,7 @@ namespace S100Framework.WPF.ViewModel.S128
         }
 
         public override void Load(S100Framework.DomainModel.InformationAssociation informationAssociation) {
-            associationConnector = associationConnectorInformations.SingleOrDefault(e => e.InformationType.Equals(informationAssociation.AssociationConnectorTypeName));
+            association = associationConnectorInformations.SingleOrDefault(e => e.InformationType.Equals(informationAssociation.AssociationConnectorTypeName));
             theCatalogueElement?.Load(informationAssociation, "theCatalogueElement");
             elementContainer?.Load(informationAssociation, "elementContainer");
         }
@@ -4755,7 +4755,7 @@ namespace S100Framework.WPF.ViewModel.S128
             var instance = new InformationAssociation
             {
                 Code = this.Code,
-                AssociationConnectorTypeName = associationConnector!.InformationType,
+                AssociationConnectorTypeName = association!.InformationType,
             };
             theCatalogueElement?.Save(instance, "theCatalogueElement");
             elementContainer?.Save(instance, "elementContainer");
