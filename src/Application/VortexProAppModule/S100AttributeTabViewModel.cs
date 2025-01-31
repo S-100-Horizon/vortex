@@ -5,7 +5,6 @@ using ArcGIS.Core.Data;
 using ArcGIS.Desktop.Editing.Attributes;
 using ArcGIS.Desktop.Framework;
 using ArcGIS.Desktop.Framework.Threading.Tasks;
-using ArcGIS.Desktop.Internal.KnowledgeGraph;
 using ArcGIS.Desktop.Mapping;
 using S100Framework.Catalogues;
 using System;
@@ -143,7 +142,7 @@ namespace VortexProAppModule
                             continue;
 
                         objectid.Add(Convert.ToString(inspector["name"]));
-                    }                    
+                    }
 
                     return objectid.ToArray();
                 });

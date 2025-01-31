@@ -1,7 +1,6 @@
 ﻿using Serilog;
 using System;
 using System.Reflection;
-using System.Windows;
 using System.Windows.Controls;
 using Xceed.Wpf.Toolkit.PropertyGrid;
 

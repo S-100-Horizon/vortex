@@ -84,7 +84,7 @@ namespace S100Framework.WPF.ViewModel
         public abstract string Code { get; }
 
         [Browsable(false)]
-        public abstract string[] Roles { get; }        
+        public abstract string[] Roles { get; }
     }
 
     public abstract class InformationAssociationViewModel : AssociationViewModel
@@ -104,7 +104,7 @@ namespace S100Framework.WPF.ViewModel
     {
         protected FeatureAssociationConnector? _associationConnector;
 
-        [Editor(typeof(FeatureConnectorEditor), typeof(FeatureConnectorEditor))]        
+        [Editor(typeof(FeatureConnectorEditor), typeof(FeatureConnectorEditor))]
         public abstract FeatureAssociationConnector? association { get; set; }
 
         [Browsable(false)]
@@ -126,7 +126,7 @@ namespace S100Framework.WPF.ViewModel
         public int Lower { get; set; } = 0;
 
         [PropertyOrder(2)]
-        public int? Upper { get; set; } = default;        
+        public int? Upper { get; set; } = default;
     }
 
     public abstract class InformationAssociationConnector : AssociationConnector
@@ -137,7 +137,7 @@ namespace S100Framework.WPF.ViewModel
 
         public Func<InformationBindingViewModel?> CreateLocalInformationBinding { get; set; } = () => default;
 
-        public Func<FeatureBindingViewModel?> CreateLocalFeatureBinding { get; set; } = () => default;        
+        public Func<FeatureBindingViewModel?> CreateLocalFeatureBinding { get; set; } = () => default;
     }
 
     public class InformationAssociationConnector<T> : InformationAssociationConnector where T : Node
@@ -214,7 +214,7 @@ namespace S100Framework.WPF.ViewModel
     }
 
     public abstract class InformationRefIdViewModel : RefIdViewModel
-    {        
+    {
         [Editor(typeof(InformationBindingEditor), typeof(InformationBindingEditor))]
         public string? InformationType {
             get { return _type; }
@@ -291,7 +291,7 @@ namespace S100Framework.WPF.ViewModel
     {
         private string _displayName;
 
-        public SingleInformationBindingViewModel(string displayName) { 
+        public SingleInformationBindingViewModel(string displayName) {
             _displayName = displayName;
             this.RefId = new();
         }
@@ -332,7 +332,7 @@ namespace S100Framework.WPF.ViewModel
     {
         private string _displayName;
 
-        public OptionalInformationBindingViewModel(string displayName) { 
+        public OptionalInformationBindingViewModel(string displayName) {
             _displayName = displayName;
         }
 
@@ -434,7 +434,7 @@ namespace S100Framework.WPF.ViewModel
 
         private string _displayName;
 
-        public SingleFeatureBindingViewModel(string displayName) { 
+        public SingleFeatureBindingViewModel(string displayName) {
             _displayName = displayName;
             this.RefId = new();
         }
@@ -475,8 +475,8 @@ namespace S100Framework.WPF.ViewModel
     {
         private string _displayName;
 
-        public OptionalFeatureBindingViewModel(string displayName) { 
-            _displayName = displayName; 
+        public OptionalFeatureBindingViewModel(string displayName) {
+            _displayName = displayName;
         }
 
         public override string ToString() => _displayName;
