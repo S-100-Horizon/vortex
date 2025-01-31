@@ -207,6 +207,10 @@ namespace VortexConceptApplication
             };
 
             viewModel.Load(fromJson);
+
+            viewModel.PropertyChanged += (object sender, PropertyChangedEventArgs e) => {
+                Logger.Current.Verbose("PropertyChanged = {propertyName}", e.PropertyName);
+            };
 #endif
 
             //this._propertyGrid.EditorDefinitions.Clear();
@@ -256,7 +260,7 @@ namespace VortexConceptApplication
         }
 
         private void _propertyGrid_PreparePropertyItem(object sender, PropertyItemEventArgs e) {
-            Logger.Current.Verbose("PreparePropertyItem = {propertyName}", e.PropertyItem.Name);
+            //Logger.Current.Verbose("PreparePropertyItem = {propertyName}", e.PropertyItem.Name);
 
             var displayName = e.PropertyItem.DisplayName;
 

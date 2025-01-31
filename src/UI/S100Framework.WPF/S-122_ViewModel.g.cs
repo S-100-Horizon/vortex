@@ -107,7 +107,7 @@ namespace S100Framework.WPF.ViewModel.S122
                     Upper = default,
                     AssociationTypes = ["NauticalInformation"],
                     CreateForeignInformationBinding = () => new MultiInformationBindingViewModel<additionalInformationViewModel.providesInformationRestrictedAreaRefIdViewModel>("additionalInformation"),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<RestrictedAreaViewModel.RestrictedAreaRefIdViewModel>("RestrictedArea"),
+                    CreateLocalInformationBinding = () => new SingleInformationBindingViewModel<RestrictedAreaViewModel.RestrictedAreaRefIdViewModel>("RestrictedArea"),
                 }, new InformationAssociationConnector<MarineProtectedArea>()
                 {
                     roleType = roleType.association,
@@ -116,7 +116,7 @@ namespace S100Framework.WPF.ViewModel.S122
                     Upper = default,
                     AssociationTypes = ["NauticalInformation"],
                     CreateForeignInformationBinding = () => new MultiInformationBindingViewModel<additionalInformationViewModel.providesInformationMarineProtectedAreaRefIdViewModel>("additionalInformation"),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<MarineProtectedAreaViewModel.MarineProtectedAreaRefIdViewModel>("MarineProtectedArea"),
+                    CreateLocalInformationBinding = () => new SingleInformationBindingViewModel<MarineProtectedAreaViewModel.MarineProtectedAreaRefIdViewModel>("MarineProtectedArea"),
                 }, new InformationAssociationConnector<VesselTrafficServiceArea>()
                 {
                     roleType = roleType.association,
@@ -125,7 +125,7 @@ namespace S100Framework.WPF.ViewModel.S122
                     Upper = default,
                     AssociationTypes = ["NauticalInformation"],
                     CreateForeignInformationBinding = () => new MultiInformationBindingViewModel<additionalInformationViewModel.providesInformationVesselTrafficServiceAreaRefIdViewModel>("additionalInformation"),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<VesselTrafficServiceAreaViewModel.VesselTrafficServiceAreaRefIdViewModel>("VesselTrafficServiceArea"),
+                    CreateLocalInformationBinding = () => new SingleInformationBindingViewModel<VesselTrafficServiceAreaViewModel.VesselTrafficServiceAreaRefIdViewModel>("VesselTrafficServiceArea"),
                 }
 
                 ]
@@ -257,7 +257,7 @@ namespace S100Framework.WPF.ViewModel.S122
                     Upper = 1,
                     AssociationTypes = ["Authority"],
                     CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<ServiceControlViewModel.controlAuthorityVesselTrafficServiceAreaRefIdViewModel>("ServiceControl"),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<VesselTrafficServiceAreaViewModel.VesselTrafficServiceAreaRefIdViewModel>("VesselTrafficServiceArea"),
+                    CreateLocalInformationBinding = () => new SingleInformationBindingViewModel<VesselTrafficServiceAreaViewModel.VesselTrafficServiceAreaRefIdViewModel>("VesselTrafficServiceArea"),
                 }
 
                 ]
@@ -272,7 +272,7 @@ namespace S100Framework.WPF.ViewModel.S122
                     Upper = default,
                     AssociationTypes = ["Authority"],
                     CreateForeignInformationBinding = () => new MultiInformationBindingViewModel<ProtectedAreaAuthorityViewModel.responsibleAuthorityMarineProtectedAreaRefIdViewModel>("ProtectedAreaAuthority"),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<MarineProtectedAreaViewModel.MarineProtectedAreaRefIdViewModel>("MarineProtectedArea"),
+                    CreateLocalInformationBinding = () => new SingleInformationBindingViewModel<MarineProtectedAreaViewModel.MarineProtectedAreaRefIdViewModel>("MarineProtectedArea"),
                 }
 
                 ]
@@ -311,7 +311,7 @@ namespace S100Framework.WPF.ViewModel.S122
                     Upper = default,
                     AssociationTypes = ["AbstractRxN", "NauticalInformation", "Regulations", "Restrictions", "Recommendations", "ContactDetails"],
                     CreateForeignInformationBinding = () => new MultiInformationBindingViewModel<AssociatedRxNViewModel.theRxNRestrictedAreaRefIdViewModel>("AssociatedRxN"),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<RestrictedAreaViewModel.RestrictedAreaRefIdViewModel>("RestrictedArea"),
+                    CreateLocalInformationBinding = () => new SingleInformationBindingViewModel<RestrictedAreaViewModel.RestrictedAreaRefIdViewModel>("RestrictedArea"),
                 }, new InformationAssociationConnector<MarineProtectedArea>()
                 {
                     roleType = roleType.association,
@@ -320,7 +320,7 @@ namespace S100Framework.WPF.ViewModel.S122
                     Upper = default,
                     AssociationTypes = ["AbstractRxN", "NauticalInformation", "Regulations", "Restrictions", "Recommendations", "ContactDetails"],
                     CreateForeignInformationBinding = () => new MultiInformationBindingViewModel<AssociatedRxNViewModel.theRxNMarineProtectedAreaRefIdViewModel>("AssociatedRxN"),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<MarineProtectedAreaViewModel.MarineProtectedAreaRefIdViewModel>("MarineProtectedArea"),
+                    CreateLocalInformationBinding = () => new SingleInformationBindingViewModel<MarineProtectedAreaViewModel.MarineProtectedAreaRefIdViewModel>("MarineProtectedArea"),
                 }, new InformationAssociationConnector<VesselTrafficServiceArea>()
                 {
                     roleType = roleType.association,
@@ -329,7 +329,7 @@ namespace S100Framework.WPF.ViewModel.S122
                     Upper = default,
                     AssociationTypes = ["AbstractRxN", "NauticalInformation", "Regulations", "Restrictions", "Recommendations", "ContactDetails"],
                     CreateForeignInformationBinding = () => new MultiInformationBindingViewModel<AssociatedRxNViewModel.theRxNVesselTrafficServiceAreaRefIdViewModel>("AssociatedRxN"),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<VesselTrafficServiceAreaViewModel.VesselTrafficServiceAreaRefIdViewModel>("VesselTrafficServiceArea"),
+                    CreateLocalInformationBinding = () => new SingleInformationBindingViewModel<VesselTrafficServiceAreaViewModel.VesselTrafficServiceAreaRefIdViewModel>("VesselTrafficServiceArea"),
                 }
 
                 ]
@@ -4732,22 +4732,26 @@ namespace S100Framework.WPF.ViewModel.S122
 
             set {
                 this.SetValue(ref _associationConnector, value);
-                theRxN = null;
                 if (value is not null) {
                     theRxN = value?.role switch
                     {
                         "appliesInLocation" => value.CreateForeignInformationBinding(),
-                        _ => value.CreateLocalInformationBinding(),
+                        _ => value!.CreateLocalInformationBinding(),
                     };
                 }
+                else {
+                    theRxN = null;
+                }
 
-                appliesInLocation = null;
                 if (value is not null) {
                     appliesInLocation = value?.role switch
                     {
                         "theRxN" => value.CreateForeignInformationBinding(),
-                        _ => value.CreateLocalInformationBinding(),
+                        _ => value!.CreateLocalInformationBinding(),
                     };
+                }
+                else {
+                    appliesInLocation = null;
                 }
             }
         }
@@ -4821,22 +4825,26 @@ namespace S100Framework.WPF.ViewModel.S122
 
             set {
                 this.SetValue(ref _associationConnector, value);
-                partialWorkingDay = null;
                 if (value is not null) {
                     partialWorkingDay = value?.role switch
                     {
                         "theServiceHours_nsdy" => value.CreateForeignInformationBinding(),
-                        _ => value.CreateLocalInformationBinding(),
+                        _ => value!.CreateLocalInformationBinding(),
                     };
                 }
+                else {
+                    partialWorkingDay = null;
+                }
 
-                theServiceHours_nsdy = null;
                 if (value is not null) {
                     theServiceHours_nsdy = value?.role switch
                     {
                         "partialWorkingDay" => value.CreateForeignInformationBinding(),
-                        _ => value.CreateLocalInformationBinding(),
+                        _ => value!.CreateLocalInformationBinding(),
                     };
+                }
+                else {
+                    theServiceHours_nsdy = null;
                 }
             }
         }
@@ -4906,22 +4914,26 @@ namespace S100Framework.WPF.ViewModel.S122
 
             set {
                 this.SetValue(ref _associationConnector, value);
-                responsibleAuthority = null;
                 if (value is not null) {
                     responsibleAuthority = value?.role switch
                     {
                         "theMarineProtectedArea" => value.CreateForeignInformationBinding(),
-                        _ => value.CreateLocalInformationBinding(),
+                        _ => value!.CreateLocalInformationBinding(),
                     };
                 }
+                else {
+                    responsibleAuthority = null;
+                }
 
-                theMarineProtectedArea = null;
                 if (value is not null) {
                     theMarineProtectedArea = value?.role switch
                     {
                         "responsibleAuthority" => value.CreateForeignInformationBinding(),
-                        _ => value.CreateLocalInformationBinding(),
+                        _ => value!.CreateLocalInformationBinding(),
                     };
+                }
+                else {
+                    theMarineProtectedArea = null;
                 }
             }
         }
@@ -4987,22 +4999,26 @@ namespace S100Framework.WPF.ViewModel.S122
 
             set {
                 this.SetValue(ref _associationConnector, value);
-                controlAuthority = null;
                 if (value is not null) {
                     controlAuthority = value?.role switch
                     {
                         "controlledService" => value.CreateForeignInformationBinding(),
-                        _ => value.CreateLocalInformationBinding(),
+                        _ => value!.CreateLocalInformationBinding(),
                     };
                 }
+                else {
+                    controlAuthority = null;
+                }
 
-                controlledService = null;
                 if (value is not null) {
                     controlledService = value?.role switch
                     {
                         "controlAuthority" => value.CreateForeignInformationBinding(),
-                        _ => value.CreateLocalInformationBinding(),
+                        _ => value!.CreateLocalInformationBinding(),
                     };
+                }
+                else {
+                    controlledService = null;
                 }
             }
         }
@@ -5068,22 +5084,26 @@ namespace S100Framework.WPF.ViewModel.S122
 
             set {
                 this.SetValue(ref _associationConnector, value);
-                theOrganisation = null;
                 if (value is not null) {
                     theOrganisation = value?.role switch
                     {
                         "theInformation" => value.CreateForeignInformationBinding(),
-                        _ => value.CreateLocalInformationBinding(),
+                        _ => value!.CreateLocalInformationBinding(),
                     };
                 }
+                else {
+                    theOrganisation = null;
+                }
 
-                theInformation = null;
                 if (value is not null) {
                     theInformation = value?.role switch
                     {
                         "theOrganisation" => value.CreateForeignInformationBinding(),
-                        _ => value.CreateLocalInformationBinding(),
+                        _ => value!.CreateLocalInformationBinding(),
                     };
+                }
+                else {
+                    theInformation = null;
                 }
             }
         }
@@ -5173,22 +5193,26 @@ namespace S100Framework.WPF.ViewModel.S122
 
             set {
                 this.SetValue(ref _associationConnector, value);
-                vslLocation = null;
                 if (value is not null) {
                     vslLocation = value?.role switch
                     {
                         "permission" => value.CreateForeignInformationBinding(),
-                        _ => value.CreateLocalInformationBinding(),
+                        _ => value!.CreateLocalInformationBinding(),
                     };
                 }
+                else {
+                    vslLocation = null;
+                }
 
-                permission = null;
                 if (value is not null) {
                     permission = value?.role switch
                     {
                         "vslLocation" => value.CreateForeignInformationBinding(),
-                        _ => value.CreateLocalInformationBinding(),
+                        _ => value!.CreateLocalInformationBinding(),
                     };
+                }
+                else {
+                    permission = null;
                 }
             }
         }
@@ -5249,22 +5273,26 @@ namespace S100Framework.WPF.ViewModel.S122
 
             set {
                 this.SetValue(ref _associationConnector, value);
-                theApplicationRXN = null;
                 if (value is not null) {
                     theApplicationRXN = value?.role switch
                     {
                         "isApplicableTo" => value.CreateForeignInformationBinding(),
-                        _ => value.CreateLocalInformationBinding(),
+                        _ => value!.CreateLocalInformationBinding(),
                     };
                 }
+                else {
+                    theApplicationRXN = null;
+                }
 
-                isApplicableTo = null;
                 if (value is not null) {
                     isApplicableTo = value?.role switch
                     {
                         "theApplicationRXN" => value.CreateForeignInformationBinding(),
-                        _ => value.CreateLocalInformationBinding(),
+                        _ => value!.CreateLocalInformationBinding(),
                     };
+                }
+                else {
+                    isApplicableTo = null;
                 }
             }
         }
@@ -5325,22 +5353,26 @@ namespace S100Framework.WPF.ViewModel.S122
 
             set {
                 this.SetValue(ref _associationConnector, value);
-                theAuthority = null;
                 if (value is not null) {
                     theAuthority = value?.role switch
                     {
                         "theContactDetails" => value.CreateForeignInformationBinding(),
-                        _ => value.CreateLocalInformationBinding(),
+                        _ => value!.CreateLocalInformationBinding(),
                     };
                 }
+                else {
+                    theAuthority = null;
+                }
 
-                theContactDetails = null;
                 if (value is not null) {
                     theContactDetails = value?.role switch
                     {
                         "theAuthority" => value.CreateForeignInformationBinding(),
-                        _ => value.CreateLocalInformationBinding(),
+                        _ => value!.CreateLocalInformationBinding(),
                     };
+                }
+                else {
+                    theContactDetails = null;
                 }
             }
         }
@@ -5410,22 +5442,26 @@ namespace S100Framework.WPF.ViewModel.S122
 
             set {
                 this.SetValue(ref _associationConnector, value);
-                theAuthority_srvHrs = null;
                 if (value is not null) {
                     theAuthority_srvHrs = value?.role switch
                     {
                         "theServiceHours" => value.CreateForeignInformationBinding(),
-                        _ => value.CreateLocalInformationBinding(),
+                        _ => value!.CreateLocalInformationBinding(),
                     };
                 }
+                else {
+                    theAuthority_srvHrs = null;
+                }
 
-                theServiceHours = null;
                 if (value is not null) {
                     theServiceHours = value?.role switch
                     {
                         "theAuthority_srvHrs" => value.CreateForeignInformationBinding(),
-                        _ => value.CreateLocalInformationBinding(),
+                        _ => value!.CreateLocalInformationBinding(),
                     };
+                }
+                else {
+                    theServiceHours = null;
                 }
             }
         }
@@ -5495,22 +5531,26 @@ namespace S100Framework.WPF.ViewModel.S122
 
             set {
                 this.SetValue(ref _associationConnector, value);
-                informationProvidedFor = null;
                 if (value is not null) {
                     informationProvidedFor = value?.role switch
                     {
                         "providesInformation" => value.CreateForeignInformationBinding(),
-                        _ => value.CreateLocalInformationBinding(),
+                        _ => value!.CreateLocalInformationBinding(),
                     };
                 }
+                else {
+                    informationProvidedFor = null;
+                }
 
-                providesInformation = null;
                 if (value is not null) {
                     providesInformation = value?.role switch
                     {
                         "informationProvidedFor" => value.CreateForeignInformationBinding(),
-                        _ => value.CreateLocalInformationBinding(),
+                        _ => value!.CreateLocalInformationBinding(),
                     };
+                }
+                else {
+                    providesInformation = null;
                 }
             }
         }

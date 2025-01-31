@@ -13,9 +13,9 @@ namespace S100Framework.WPF.ViewModel
 
         public static Func<FeatureBindingViewModel?, string[]> GetFeatures { get; set; } = (e) => { return []; };
 
-        public static Func<InformationRefIdViewModel?, string[]> GetInformationsRefId { get; set; } = (e) => { return []; };
+        public static Func<InformationRefIdViewModel?, Task<string[]>> GetInformationsRefId { get; set; } = (e) => { return Task.FromResult(Array.Empty<string>()); };
 
-        public static Func<FeatureRefIdViewModel?, string[]> GetFeaturesRefId { get; set; } = (e) => { return []; };
+        public static Func<FeatureRefIdViewModel?, Task<string[]>> GetFeaturesRefId { get; set; } = (e) => { return Task.FromResult(Array.Empty<string>()); };
     }
 
     public interface iHandles
@@ -80,20 +80,6 @@ namespace S100Framework.WPF.ViewModel
 
     public abstract class AssociationViewModel : ViewModelBase
     {
-        //public event PropertyChangedEventHandler? PropertyChanged;
-
-        //protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null) {
-        //    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        //}
-
-        //protected void SetValue<T>(ref T backingFiled, T value, [CallerMemberName] string? propertyName = null) {
-        //    if (string.IsNullOrWhiteSpace(propertyName)) return;
-
-        //    if (EqualityComparer<T>.Default.Equals(backingFiled, value)) return;
-        //    backingFiled = value;
-        //    OnPropertyChanged(propertyName);
-        //}
-
         [PropertyOrder(0)]
         public abstract string Code { get; }
 
@@ -106,15 +92,12 @@ namespace S100Framework.WPF.ViewModel
         protected InformationAssociationConnector? _associationConnector;
 
         [Editor(typeof(InformationConnectorEditor), typeof(InformationConnectorEditor))]
-        [ExpandableObject]
         public abstract InformationAssociationConnector? association { get; set; }
 
         [Browsable(false)]
         public abstract InformationAssociationConnector[] associationConnectorInformations { get; }
 
         public abstract void Load(S100Framework.DomainModel.InformationAssociation informationAssociation);
-
-        //public abstract string Serialize();
     }
 
     public abstract class FeatureAssociationViewModel : AssociationViewModel
@@ -122,15 +105,12 @@ namespace S100Framework.WPF.ViewModel
         protected FeatureAssociationConnector? _associationConnector;
 
         [Editor(typeof(FeatureConnectorEditor), typeof(FeatureConnectorEditor))]
-        [ExpandableObject]
         public abstract FeatureAssociationConnector? association { get; set; }
 
         [Browsable(false)]
         public abstract FeatureAssociationConnector[] associationConnectorFeatures { get; }
 
         public abstract void Load(S100Framework.DomainModel.FeatureAssociation featureAssociation);
-
-        //public abstract string Serialize();
     }
 
     public abstract class AssociationConnector
@@ -156,6 +136,7 @@ namespace S100Framework.WPF.ViewModel
         public Func<InformationBindingViewModel?> CreateForeignInformationBinding { get; set; } = () => default;
 
         public Func<InformationBindingViewModel?> CreateLocalInformationBinding { get; set; } = () => default;
+
         public Func<FeatureBindingViewModel?> CreateLocalFeatureBinding { get; set; } = () => default;
     }
 
@@ -242,11 +223,16 @@ namespace S100Framework.WPF.ViewModel
             set {
                 this.SetValue(ref _informationType, value);
 
-                RefIds.Clear();
-                foreach (var e in Handles.GetInformationsRefId(this)!)
-                    RefIds.Add(e);
+                _ = UpdateInformationType(value);   // Fire and forget 
             }
         }
+
+        private async Task UpdateInformationType(string? value) {
+            RefIds.Clear();
+            foreach (var e in await Handles.GetInformationsRefId(this))
+                RefIds.Add(e);
+        }
+
 
         public override string ToString() => string.IsNullOrEmpty(_informationType) ? "RefId" : $"{_informationType}: {RefId}";
 
@@ -266,10 +252,14 @@ namespace S100Framework.WPF.ViewModel
             set {
                 this.SetValue(ref _featureType, value);
 
-                RefIds.Clear();
-                foreach (var e in Handles.GetFeaturesRefId(this))
-                    RefIds.Add(e);
+                _ = UpdateFeatureType(value);   // Fire and forget
             }
+        }
+
+        private async Task UpdateFeatureType(string? value) {
+            RefIds.Clear();
+            foreach (var e in await Handles.GetFeaturesRefId(this))
+                RefIds.Add(e);
         }
 
         public override string ToString() => string.IsNullOrEmpty(_featureType) ? "RefId" : $"{_featureType}: {RefId}";
@@ -301,12 +291,12 @@ namespace S100Framework.WPF.ViewModel
         public abstract InformationAssociation Save(InformationAssociation featureAssociation, string role);
     }
 
-    public abstract class InformationBindingViewModel<T> : InformationBindingViewModel where T : InformationRefIdViewModel
+    public abstract class InformationBindingViewModel<T> : InformationBindingViewModel where T : RefIdViewModel
     {
 
     }
 
-    public class SingleInformationBindingViewModel<T> : InformationBindingViewModel<T> where T : InformationRefIdViewModel, new()
+    public class SingleInformationBindingViewModel<T> : InformationBindingViewModel<T> where T : RefIdViewModel, new()
     {
         private string _displayName;
 
@@ -325,7 +315,7 @@ namespace S100Framework.WPF.ViewModel
         public override void Load(InformationAssociation informationAssociation, string role) {
             var v = informationAssociation.RefIds.Where(e => e.Role.Equals(role, StringComparison.InvariantCultureIgnoreCase)).FirstOrDefault();
             this.RefId.RefId = v?.Value!;
-            this.RefId.InformationType = v?.Type;
+            //ÆØÅ this.RefId.InformationType = v?.Type;
         }
 
         public override InformationAssociation Save(InformationAssociation informationAssociation, string role) {
@@ -335,7 +325,8 @@ namespace S100Framework.WPF.ViewModel
                     .. new []{
                         new RefId {
                             Role = role,
-                            Type = _refId.InformationType,
+                            //ÆØÅ Type = _refId.InformationType,
+                            Type = "",
                             Value = _refId.RefId,
                         }
                     }

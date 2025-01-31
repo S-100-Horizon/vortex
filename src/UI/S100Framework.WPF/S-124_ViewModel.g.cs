@@ -71,7 +71,7 @@ namespace S100Framework.WPF.ViewModel.S124
                     Upper = 1,
                     AssociationTypes = ["NAVWARNPreamble"],
                     CreateForeignInformationBinding = () => new SingleInformationBindingViewModel<NWPreambleContentViewModel.headerNAVWARNPartRefIdViewModel>("NWPreambleContent"),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<NAVWARNPartViewModel.NAVWARNPartRefIdViewModel>("NAVWARNPart"),
+                    CreateLocalInformationBinding = () => new SingleInformationBindingViewModel<NAVWARNPartViewModel.NAVWARNPartRefIdViewModel>("NAVWARNPart"),
                 }
 
                 ]
@@ -1698,22 +1698,26 @@ namespace S100Framework.WPF.ViewModel.S124
 
             set {
                 this.SetValue(ref _associationConnector, value);
-                affects = null;
                 if (value is not null) {
                     affects = value?.role switch
                     {
                         "impacts" => value.CreateForeignFeatureBinding(),
-                        _ => value.CreateLocalFeatureBinding(),
+                        _ => value!.CreateLocalFeatureBinding(),
                     };
                 }
+                else {
+                    affects = null;
+                }
 
-                impacts = null;
                 if (value is not null) {
                     impacts = value?.role switch
                     {
                         "affects" => value.CreateForeignFeatureBinding(),
-                        _ => value.CreateLocalFeatureBinding(),
+                        _ => value!.CreateLocalFeatureBinding(),
                     };
+                }
+                else {
+                    impacts = null;
                 }
             }
         }
@@ -1783,22 +1787,26 @@ namespace S100Framework.WPF.ViewModel.S124
 
             set {
                 this.SetValue(ref _associationConnector, value);
-                identifies = null;
                 if (value is not null) {
                     identifies = value?.role switch
                     {
                         "positions" => value.CreateForeignFeatureBinding(),
-                        _ => value.CreateLocalFeatureBinding(),
+                        _ => value!.CreateLocalFeatureBinding(),
                     };
                 }
+                else {
+                    identifies = null;
+                }
 
-                positions = null;
                 if (value is not null) {
                     positions = value?.role switch
                     {
                         "identifies" => value.CreateForeignFeatureBinding(),
-                        _ => value.CreateLocalFeatureBinding(),
+                        _ => value!.CreateLocalFeatureBinding(),
                     };
+                }
+                else {
+                    positions = null;
                 }
             }
         }
@@ -1868,22 +1876,26 @@ namespace S100Framework.WPF.ViewModel.S124
 
             set {
                 this.SetValue(ref _associationConnector, value);
-                theWarningPart = null;
                 if (value is not null) {
                     theWarningPart = value?.role switch
                     {
                         "header" => value.CreateForeignInformationBinding(),
-                        _ => value.CreateLocalInformationBinding(),
+                        _ => value!.CreateLocalInformationBinding(),
                     };
                 }
+                else {
+                    theWarningPart = null;
+                }
 
-                header = null;
                 if (value is not null) {
                     header = value?.role switch
                     {
                         "theWarningPart" => value.CreateForeignInformationBinding(),
-                        _ => value.CreateLocalInformationBinding(),
+                        _ => value!.CreateLocalInformationBinding(),
                     };
+                }
+                else {
+                    header = null;
                 }
             }
         }
@@ -1949,22 +1961,26 @@ namespace S100Framework.WPF.ViewModel.S124
 
             set {
                 this.SetValue(ref _associationConnector, value);
-                theWarning = null;
                 if (value is not null) {
                     theWarning = value?.role switch
                     {
                         "theReferences" => value.CreateForeignInformationBinding(),
-                        _ => value.CreateLocalInformationBinding(),
+                        _ => value!.CreateLocalInformationBinding(),
                     };
                 }
+                else {
+                    theWarning = null;
+                }
 
-                theReferences = null;
                 if (value is not null) {
                     theReferences = value?.role switch
                     {
                         "theWarning" => value.CreateForeignInformationBinding(),
-                        _ => value.CreateLocalInformationBinding(),
+                        _ => value!.CreateLocalInformationBinding(),
                     };
+                }
+                else {
+                    theReferences = null;
                 }
             }
         }

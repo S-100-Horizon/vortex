@@ -86,7 +86,7 @@ namespace S100Framework.WPF.ViewModel.S128
                     Upper = default,
                     AssociationTypes = ["CatalogueSectionHeader"],
                     CreateForeignInformationBinding = () => new MultiInformationBindingViewModel<ProductPackageViewModel.elementContainerElectronicProductRefIdViewModel>("ProductPackage"),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<ElectronicProductViewModel.ElectronicProductRefIdViewModel>("ElectronicProduct"),
+                    CreateLocalInformationBinding = () => new SingleInformationBindingViewModel<ElectronicProductViewModel.ElectronicProductRefIdViewModel>("ElectronicProduct"),
                 }, new InformationAssociationConnector<PhysicalProduct>()
                 {
                     roleType = roleType.association,
@@ -95,7 +95,7 @@ namespace S100Framework.WPF.ViewModel.S128
                     Upper = default,
                     AssociationTypes = ["CatalogueSectionHeader"],
                     CreateForeignInformationBinding = () => new MultiInformationBindingViewModel<ProductPackageViewModel.elementContainerPhysicalProductRefIdViewModel>("ProductPackage"),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<PhysicalProductViewModel.PhysicalProductRefIdViewModel>("PhysicalProduct"),
+                    CreateLocalInformationBinding = () => new SingleInformationBindingViewModel<PhysicalProductViewModel.PhysicalProductRefIdViewModel>("PhysicalProduct"),
                 }, new InformationAssociationConnector<S100Service>()
                 {
                     roleType = roleType.association,
@@ -104,7 +104,7 @@ namespace S100Framework.WPF.ViewModel.S128
                     Upper = default,
                     AssociationTypes = ["CatalogueSectionHeader"],
                     CreateForeignInformationBinding = () => new MultiInformationBindingViewModel<ProductPackageViewModel.elementContainerS100ServiceRefIdViewModel>("ProductPackage"),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<S100ServiceViewModel.S100ServiceRefIdViewModel>("S100Service"),
+                    CreateLocalInformationBinding = () => new SingleInformationBindingViewModel<S100ServiceViewModel.S100ServiceRefIdViewModel>("S100Service"),
                 }
 
                 ]
@@ -191,7 +191,7 @@ namespace S100Framework.WPF.ViewModel.S128
                     Upper = default,
                     AssociationTypes = ["PriceInformation"],
                     CreateForeignInformationBinding = () => new MultiInformationBindingViewModel<PriceOfElementViewModel.thePriceInformationElectronicProductRefIdViewModel>("PriceOfElement"),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<ElectronicProductViewModel.ElectronicProductRefIdViewModel>("ElectronicProduct"),
+                    CreateLocalInformationBinding = () => new SingleInformationBindingViewModel<ElectronicProductViewModel.ElectronicProductRefIdViewModel>("ElectronicProduct"),
                 }, new InformationAssociationConnector<PhysicalProduct>()
                 {
                     roleType = roleType.association,
@@ -200,7 +200,7 @@ namespace S100Framework.WPF.ViewModel.S128
                     Upper = default,
                     AssociationTypes = ["PriceInformation"],
                     CreateForeignInformationBinding = () => new MultiInformationBindingViewModel<PriceOfElementViewModel.thePriceInformationPhysicalProductRefIdViewModel>("PriceOfElement"),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<PhysicalProductViewModel.PhysicalProductRefIdViewModel>("PhysicalProduct"),
+                    CreateLocalInformationBinding = () => new SingleInformationBindingViewModel<PhysicalProductViewModel.PhysicalProductRefIdViewModel>("PhysicalProduct"),
                 }, new InformationAssociationConnector<S100Service>()
                 {
                     roleType = roleType.association,
@@ -209,7 +209,7 @@ namespace S100Framework.WPF.ViewModel.S128
                     Upper = default,
                     AssociationTypes = ["PriceInformation"],
                     CreateForeignInformationBinding = () => new MultiInformationBindingViewModel<PriceOfElementViewModel.thePriceInformationS100ServiceRefIdViewModel>("PriceOfElement"),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<S100ServiceViewModel.S100ServiceRefIdViewModel>("S100Service"),
+                    CreateLocalInformationBinding = () => new SingleInformationBindingViewModel<S100ServiceViewModel.S100ServiceRefIdViewModel>("S100Service"),
                 }
 
                 ]
@@ -272,7 +272,7 @@ namespace S100Framework.WPF.ViewModel.S128
                     Upper = default,
                     AssociationTypes = ["IndicationOfCarriageRequirement"],
                     CreateForeignInformationBinding = () => new MultiInformationBindingViewModel<CarriageRequirementViewModel.theRequirementElectronicProductRefIdViewModel>("CarriageRequirement"),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<ElectronicProductViewModel.ElectronicProductRefIdViewModel>("ElectronicProduct"),
+                    CreateLocalInformationBinding = () => new SingleInformationBindingViewModel<ElectronicProductViewModel.ElectronicProductRefIdViewModel>("ElectronicProduct"),
                 }, new InformationAssociationConnector<PhysicalProduct>()
                 {
                     roleType = roleType.association,
@@ -281,7 +281,7 @@ namespace S100Framework.WPF.ViewModel.S128
                     Upper = default,
                     AssociationTypes = ["IndicationOfCarriageRequirement"],
                     CreateForeignInformationBinding = () => new MultiInformationBindingViewModel<CarriageRequirementViewModel.theRequirementPhysicalProductRefIdViewModel>("CarriageRequirement"),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<PhysicalProductViewModel.PhysicalProductRefIdViewModel>("PhysicalProduct"),
+                    CreateLocalInformationBinding = () => new SingleInformationBindingViewModel<PhysicalProductViewModel.PhysicalProductRefIdViewModel>("PhysicalProduct"),
                 }, new InformationAssociationConnector<S100Service>()
                 {
                     roleType = roleType.association,
@@ -290,7 +290,7 @@ namespace S100Framework.WPF.ViewModel.S128
                     Upper = default,
                     AssociationTypes = ["IndicationOfCarriageRequirement"],
                     CreateForeignInformationBinding = () => new MultiInformationBindingViewModel<CarriageRequirementViewModel.theRequirementS100ServiceRefIdViewModel>("CarriageRequirement"),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<S100ServiceViewModel.S100ServiceRefIdViewModel>("S100Service"),
+                    CreateLocalInformationBinding = () => new SingleInformationBindingViewModel<S100ServiceViewModel.S100ServiceRefIdViewModel>("S100Service"),
                 }
 
                 ]
@@ -3966,13 +3966,15 @@ namespace S100Framework.WPF.ViewModel.S128
 
             set {
                 this.SetValue(ref _associationConnector, value);
-                theReference = null;
                 if (value is not null) {
                     theReference = value?.role switch
                     {
                         "theSource" => value.CreateForeignFeatureBinding(),
-                        _ => value.CreateLocalFeatureBinding(),
+                        _ => value!.CreateLocalFeatureBinding(),
                     };
+                }
+                else {
+                    theReference = null;
                 }
             }
         }
@@ -4046,13 +4048,15 @@ namespace S100Framework.WPF.ViewModel.S128
 
             set {
                 this.SetValue(ref _associationConnector, value);
-                main = null;
                 if (value is not null) {
                     main = value?.role switch
                     {
                         "panel" => value.CreateForeignFeatureBinding(),
-                        _ => value.CreateLocalFeatureBinding(),
+                        _ => value!.CreateLocalFeatureBinding(),
                     };
+                }
+                else {
+                    main = null;
                 }
             }
         }
@@ -4122,22 +4126,26 @@ namespace S100Framework.WPF.ViewModel.S128
 
             set {
                 this.SetValue(ref _associationConnector, value);
-                theElement = null;
                 if (value is not null) {
                     theElement = value?.role switch
                     {
                         "theRequirement" => value.CreateForeignInformationBinding(),
-                        _ => value.CreateLocalInformationBinding(),
+                        _ => value!.CreateLocalInformationBinding(),
                     };
                 }
+                else {
+                    theElement = null;
+                }
 
-                theRequirement = null;
                 if (value is not null) {
                     theRequirement = value?.role switch
                     {
                         "theElement" => value.CreateForeignInformationBinding(),
-                        _ => value.CreateLocalInformationBinding(),
+                        _ => value!.CreateLocalInformationBinding(),
                     };
+                }
+                else {
+                    theRequirement = null;
                 }
             }
         }
@@ -4211,22 +4219,26 @@ namespace S100Framework.WPF.ViewModel.S128
 
             set {
                 this.SetValue(ref _associationConnector, value);
-                catalogueHeader = null;
                 if (value is not null) {
                     catalogueHeader = value?.role switch
                     {
                         "theDistributor" => value.CreateForeignInformationBinding(),
-                        _ => value.CreateLocalInformationBinding(),
+                        _ => value!.CreateLocalInformationBinding(),
                     };
                 }
+                else {
+                    catalogueHeader = null;
+                }
 
-                theDistributor = null;
                 if (value is not null) {
                     theDistributor = value?.role switch
                     {
                         "catalogueHeader" => value.CreateForeignInformationBinding(),
-                        _ => value.CreateLocalInformationBinding(),
+                        _ => value!.CreateLocalInformationBinding(),
                     };
+                }
+                else {
+                    theDistributor = null;
                 }
             }
         }
@@ -4296,22 +4308,26 @@ namespace S100Framework.WPF.ViewModel.S128
 
             set {
                 this.SetValue(ref _associationConnector, value);
-                theDistributor = null;
                 if (value is not null) {
                     theDistributor = value?.role switch
                     {
                         "theContactDetails" => value.CreateForeignInformationBinding(),
-                        _ => value.CreateLocalInformationBinding(),
+                        _ => value!.CreateLocalInformationBinding(),
                     };
                 }
+                else {
+                    theDistributor = null;
+                }
 
-                theContactDetails = null;
                 if (value is not null) {
                     theContactDetails = value?.role switch
                     {
                         "theDistributor" => value.CreateForeignInformationBinding(),
-                        _ => value.CreateLocalInformationBinding(),
+                        _ => value!.CreateLocalInformationBinding(),
                     };
+                }
+                else {
+                    theContactDetails = null;
                 }
             }
         }
@@ -4381,22 +4397,26 @@ namespace S100Framework.WPF.ViewModel.S128
 
             set {
                 this.SetValue(ref _associationConnector, value);
-                theCatalogueElement = null;
                 if (value is not null) {
                     theCatalogueElement = value?.role switch
                     {
                         "thePriceInformation" => value.CreateForeignInformationBinding(),
-                        _ => value.CreateLocalInformationBinding(),
+                        _ => value!.CreateLocalInformationBinding(),
                     };
                 }
+                else {
+                    theCatalogueElement = null;
+                }
 
-                thePriceInformation = null;
                 if (value is not null) {
                     thePriceInformation = value?.role switch
                     {
                         "theCatalogueElement" => value.CreateForeignInformationBinding(),
-                        _ => value.CreateLocalInformationBinding(),
+                        _ => value!.CreateLocalInformationBinding(),
                     };
+                }
+                else {
+                    thePriceInformation = null;
                 }
             }
         }
@@ -4470,22 +4490,26 @@ namespace S100Framework.WPF.ViewModel.S128
 
             set {
                 this.SetValue(ref _associationConnector, value);
-                theCatalogueOfNauticalProduct = null;
                 if (value is not null) {
                     theCatalogueOfNauticalProduct = value?.role switch
                     {
                         "thePriceInformation" => value.CreateForeignInformationBinding(),
-                        _ => value.CreateLocalInformationBinding(),
+                        _ => value!.CreateLocalInformationBinding(),
                     };
                 }
+                else {
+                    theCatalogueOfNauticalProduct = null;
+                }
 
-                thePriceInformation = null;
                 if (value is not null) {
                     thePriceInformation = value?.role switch
                     {
                         "theCatalogueOfNauticalProduct" => value.CreateForeignInformationBinding(),
-                        _ => value.CreateLocalInformationBinding(),
+                        _ => value!.CreateLocalInformationBinding(),
                     };
+                }
+                else {
+                    thePriceInformation = null;
                 }
             }
         }
@@ -4555,22 +4579,26 @@ namespace S100Framework.WPF.ViewModel.S128
 
             set {
                 this.SetValue(ref _associationConnector, value);
-                theProducer = null;
                 if (value is not null) {
                     theProducer = value?.role switch
                     {
                         "theContactDetails" => value.CreateForeignInformationBinding(),
-                        _ => value.CreateLocalInformationBinding(),
+                        _ => value!.CreateLocalInformationBinding(),
                     };
                 }
+                else {
+                    theProducer = null;
+                }
 
-                theContactDetails = null;
                 if (value is not null) {
                     theContactDetails = value?.role switch
                     {
                         "theProducer" => value.CreateForeignInformationBinding(),
-                        _ => value.CreateLocalInformationBinding(),
+                        _ => value!.CreateLocalInformationBinding(),
                     };
+                }
+                else {
+                    theContactDetails = null;
                 }
             }
         }
@@ -4640,22 +4668,26 @@ namespace S100Framework.WPF.ViewModel.S128
 
             set {
                 this.SetValue(ref _associationConnector, value);
-                catalogueHeader = null;
                 if (value is not null) {
                     catalogueHeader = value?.role switch
                     {
                         "theProducer" => value.CreateForeignInformationBinding(),
-                        _ => value.CreateLocalInformationBinding(),
+                        _ => value!.CreateLocalInformationBinding(),
                     };
                 }
+                else {
+                    catalogueHeader = null;
+                }
 
-                theProducer = null;
                 if (value is not null) {
                     theProducer = value?.role switch
                     {
                         "catalogueHeader" => value.CreateForeignInformationBinding(),
-                        _ => value.CreateLocalInformationBinding(),
+                        _ => value!.CreateLocalInformationBinding(),
                     };
+                }
+                else {
+                    theProducer = null;
                 }
             }
         }
@@ -4725,22 +4757,26 @@ namespace S100Framework.WPF.ViewModel.S128
 
             set {
                 this.SetValue(ref _associationConnector, value);
-                theCatalogueElement = null;
                 if (value is not null) {
                     theCatalogueElement = value?.role switch
                     {
                         "elementContainer" => value.CreateForeignInformationBinding(),
-                        _ => value.CreateLocalInformationBinding(),
+                        _ => value!.CreateLocalInformationBinding(),
                     };
                 }
+                else {
+                    theCatalogueElement = null;
+                }
 
-                elementContainer = null;
                 if (value is not null) {
                     elementContainer = value?.role switch
                     {
                         "theCatalogueElement" => value.CreateForeignInformationBinding(),
-                        _ => value.CreateLocalInformationBinding(),
+                        _ => value!.CreateLocalInformationBinding(),
                     };
+                }
+                else {
+                    elementContainer = null;
                 }
             }
         }

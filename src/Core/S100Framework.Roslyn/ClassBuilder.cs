@@ -943,7 +943,7 @@ namespace S100Framework
                         if (!associations.Any(e => r.Equals(e.Element(XName.Get("role", scope_S100))!.Attribute("ref")!.Value)))
                             continue;
 
-                        viewBuilder.AppendLine($"\t\t\t\t{r} = null;");
+                        //viewBuilder.AppendLine($"\t\t\t\t{r} = null;");
 
                         viewBuilder.AppendLine($"\t\t\t\tif (value is not null) {{");
                         viewBuilder.AppendLine($"\t\t\t\t\t{r} = value?.role switch {{");
@@ -952,14 +952,11 @@ namespace S100Framework
                             viewBuilder.AppendLine($"\t\t\t\t\t\t\"{s}\" => value.CreateForeignFeatureBinding(),");
                         }
 
-                        viewBuilder.AppendLine($"\t\t\t\t\t\t_ => value.CreateLocalFeatureBinding(),");
-
-                        //viewBuilder.AppendLine($"\t\t\t\t\t\t_ => new SingleFeatureBindingViewModel {{");
-                        //viewBuilder.AppendLine($"\t\t\t\t\t\t\tFeatureTypes = [value!.FeatureType],");
-                        //viewBuilder.AppendLine($"\t\t\t\t\t\t}},");
+                        viewBuilder.AppendLine($"\t\t\t\t\t\t_ => value!.CreateLocalFeatureBinding(),");
 
                         viewBuilder.AppendLine($"\t\t\t\t\t}};");
                         viewBuilder.AppendLine($"\t\t\t\t}}");
+                        viewBuilder.AppendLine($"\t\t\t\telse {{ {r} = null; }}");
                     }
                     viewBuilder.AppendLine($"\t\t\t}}");
                     viewBuilder.AppendLine($"\t\t}}");
@@ -1106,16 +1103,14 @@ namespace S100Framework
 
                     if (roles.Count() == 1) {
                         var r = roles.First();
-                        viewBuilder.AppendLine($"\t\t\t\t{r} = null;");
 
                         viewBuilder.AppendLine($"\t\t\t\tif (value is not null) {{");
                         viewBuilder.AppendLine($"\t\t\t\t\t\t{r} = value.CreateLocalInformationBinding();");
                         viewBuilder.AppendLine($"\t\t\t\t\t}}");
+                        viewBuilder.AppendLine($"\t\t\t\telse {{ {r} = null; }}");
                     }
                     else {
                         foreach (var r in roles) {
-                            viewBuilder.AppendLine($"\t\t\t\t{r} = null;");
-
                             viewBuilder.AppendLine($"\t\t\t\tif (value is not null) {{");
                             viewBuilder.AppendLine($"\t\t\t\t\t{r} = value?.role switch {{");
 
@@ -1123,14 +1118,11 @@ namespace S100Framework
                                 viewBuilder.AppendLine($"\t\t\t\t\t\t\"{s}\" => value.CreateForeignInformationBinding(),");
                             }
 
-                            viewBuilder.AppendLine($"\t\t\t\t\t\t_ => value.CreateLocalInformationBinding(),");
-
-                            //viewBuilder.AppendLine($"\t\t\t\t\t\t_ => new SingleInformationBindingViewModel() {{");
-                            //viewBuilder.AppendLine($"\t\t\t\t\t\t\tInformationTypes = [value!.InformationType],");
-                            //viewBuilder.AppendLine($"\t\t\t\t\t\t}},");
+                            viewBuilder.AppendLine($"\t\t\t\t\t\t_ => value!.CreateLocalInformationBinding(),");
 
                             viewBuilder.AppendLine($"\t\t\t\t\t}};");
                             viewBuilder.AppendLine($"\t\t\t\t}}");
+                            viewBuilder.AppendLine($"\t\t\t\telse {{ {r} = null; }}");
                         }
                     }
                     viewBuilder.AppendLine($"\t\t\t}}");
@@ -1210,10 +1202,12 @@ namespace S100Framework
                             else
                                 b.AppendLine($"\tCreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<{code}ViewModel.{role}{f}RefIdViewModel>(\"{code.Replace("ViewModel", string.Empty)}\"),");
 
-                            var createLocal = association.Parent!.Name.LocalName switch {
-                                "S100_FC_FeatureType" => $"\tCreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<{f}ViewModel.{f}RefIdViewModel>(\"{f}\"),",
-                                _ or "S100_FC_InformationType" => $"\tCreateLocalInformationBinding = () => new SingleInformationBindingViewModel<{f}ViewModel.{f}RefIdViewModel>(\"{f}\"),",
-                            };
+                            //var createLocal = association.Parent!.Name.LocalName switch {
+                            //    "S100_FC_FeatureType" => $"\tCreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<{f}ViewModel.{f}RefIdViewModel>(\"{f}\"),",
+                            //    _ or "S100_FC_InformationType" => $"\tCreateLocalInformationBinding = () => new SingleInformationBindingViewModel<{f}ViewModel.{f}RefIdViewModel>(\"{f}\"),",
+                            //};
+                            var createLocal = $"\tCreateLocalInformationBinding = () => new SingleInformationBindingViewModel<{f}ViewModel.{f}RefIdViewModel>(\"{f}\"),";
+
                             b.AppendLine(createLocal);
                             b.AppendLine($"}},");
 

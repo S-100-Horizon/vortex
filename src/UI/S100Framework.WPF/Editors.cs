@@ -54,8 +54,6 @@ namespace S100Framework.WPF.Editors
     {
         public FrameworkElement ResolveEditor(PropertyItem propertyItem) {
             var source = propertyItem.Instance switch {
-                //FeatureBindingViewModel e => e.RefIds,
-                //InformationBindingViewModel e => e.RefIds,
                 FeatureRefIdViewModel e => e.RefIds,
                 InformationRefIdViewModel e => e.RefIds,
                 _ => throw new NotSupportedException()
