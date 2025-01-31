@@ -40,6 +40,8 @@ namespace S100Framework.Catalogues
 
     public record InformationType(string Code);
 
+    public record AssociationType(string Code);
+
     public sealed class FeatureCatalogue
     {
         public FeatureCatalogue(string productId, Version versionNumber) {
@@ -55,7 +57,11 @@ namespace S100Framework.Catalogues
 
         public ImmutableArray<FeatureType> FeatureTypes { get; set; } = ImmutableArray<FeatureType>.Empty;
 
+        public ImmutableArray<AssociationType> FeatureAssociationTypes { get; set; } = ImmutableArray<AssociationType>.Empty;
+
         public ImmutableArray<InformationType> InformationTypes { get; set; } = ImmutableArray<InformationType>.Empty;
+
+        public ImmutableArray<AssociationType> InformationAssociationTypes { get; set; } = ImmutableArray<AssociationType>.Empty;
 
         public string DefaultNamespace => $"S100Framework.DomainModel.{ProductID.Remove(1, 1)}";
 
@@ -65,32 +71,43 @@ namespace S100Framework.Catalogues
             new("S-101", DomainModel.S101.Information.Version) {
                 Assembly = typeof(DomainModel.S101.Information).Assembly,
                 FeatureTypes = ImmutableArray.Create<FeatureType>(DomainModel.S101.Information.FeatureTypes.Select(e=>new FeatureType(e)).ToArray()),
-                InformationTypes = ImmutableArray.Create<InformationType>(DomainModel.S101.Information.InformationTypes.Select(e=>new InformationType(e)).ToArray())
+                FeatureAssociationTypes = ImmutableArray.Create<AssociationType>(DomainModel.S101.Information.FeatureAssociationTypes.Select(e=>new AssociationType(e)).ToArray()),
+                InformationTypes = ImmutableArray.Create<InformationType>(DomainModel.S101.Information.InformationTypes.Select(e=>new InformationType(e)).ToArray()),
+                InformationAssociationTypes = ImmutableArray.Create<AssociationType>(DomainModel.S101.Information.InformationAssociationTypes.Select(e=>new AssociationType(e)).ToArray()),
             },
             new("S-122", DomainModel.S122.Information.Version) {
                 Assembly = typeof(DomainModel.S122.Information).Assembly,
                 FeatureTypes = ImmutableArray.Create<FeatureType>(DomainModel.S122.Information.FeatureTypes.Select(e=>new FeatureType(e)).ToArray()),
-                InformationTypes = ImmutableArray.Create<InformationType>(DomainModel.S122.Information.InformationTypes.Select(e=>new InformationType(e)).ToArray())
+                FeatureAssociationTypes = ImmutableArray.Create<AssociationType>(DomainModel.S122.Information.FeatureAssociationTypes.Select(e=>new AssociationType(e)).ToArray()),
+                InformationTypes = ImmutableArray.Create<InformationType>(DomainModel.S122.Information.InformationTypes.Select(e=>new InformationType(e)).ToArray()),
+                InformationAssociationTypes = ImmutableArray.Create<AssociationType>(DomainModel.S122.Information.InformationAssociationTypes.Select(e=>new AssociationType(e)).ToArray()),
             },
             new("S-124", DomainModel.S124.Information.Version) {
                 Assembly = typeof(DomainModel.S124.Information).Assembly,
                 FeatureTypes = ImmutableArray.Create<FeatureType>(DomainModel.S124.Information.FeatureTypes.Select(e=>new FeatureType(e)).ToArray()),
-                InformationTypes = ImmutableArray.Create<InformationType>(DomainModel.S124.Information.InformationTypes.Select(e=>new InformationType(e)).ToArray())
+                FeatureAssociationTypes = ImmutableArray.Create<AssociationType>(DomainModel.S124.Information.FeatureAssociationTypes.Select(e=>new AssociationType(e)).ToArray()),
+                InformationTypes = ImmutableArray.Create<InformationType>(DomainModel.S124.Information.InformationTypes.Select(e=>new InformationType(e)).ToArray()),
+                InformationAssociationTypes = ImmutableArray.Create<AssociationType>(DomainModel.S124.Information.InformationAssociationTypes.Select(e=>new AssociationType(e)).ToArray()),
             },
             new("S-128", DomainModel.S128.Information.Version) {
                 Assembly = typeof(DomainModel.S128.Information).Assembly,
                 FeatureTypes = ImmutableArray.Create<FeatureType>(DomainModel.S128.Information.FeatureTypes.Select(e=>new FeatureType(e)).ToArray()),
-                InformationTypes = ImmutableArray.Create<InformationType>(DomainModel.S128.Information.InformationTypes.Select(e=>new InformationType(e)).ToArray())
+                FeatureAssociationTypes = ImmutableArray.Create<AssociationType>(DomainModel.S128.Information.FeatureAssociationTypes.Select(e=>new AssociationType(e)).ToArray()),
+                InformationTypes = ImmutableArray.Create<InformationType>(DomainModel.S128.Information.InformationTypes.Select(e=>new InformationType(e)).ToArray()),
+                InformationAssociationTypes = ImmutableArray.Create<AssociationType>(DomainModel.S128.Information.InformationAssociationTypes.Select(e=>new AssociationType(e)).ToArray()),
             },
             new("S-131", DomainModel.S131.Information.Version) {
                 Assembly = typeof(DomainModel.S131.Information).Assembly,
                 FeatureTypes = ImmutableArray.Create<FeatureType>(DomainModel.S131.Information.FeatureTypes.Select(e=>new FeatureType(e)).ToArray()),
-                InformationTypes = ImmutableArray.Create<InformationType>(DomainModel.S131.Information.InformationTypes.Select(e=>new InformationType(e)).ToArray())
+                FeatureAssociationTypes = ImmutableArray.Create<AssociationType>(DomainModel.S131.Information.FeatureAssociationTypes.Select(e=>new AssociationType(e)).ToArray()),
+                InformationTypes = ImmutableArray.Create<InformationType>(DomainModel.S131.Information.InformationTypes.Select(e=>new InformationType(e)).ToArray()),
+                InformationAssociationTypes = ImmutableArray.Create<AssociationType>(DomainModel.S131.Information.InformationAssociationTypes.Select(e=>new AssociationType(e)).ToArray()),
             },
             //new("S-201", DomainModel.S201.Information.Version) {
             //    Assembly = typeof(DomainModel.S201.Information).Assembly,
             //    FeatureTypes = ImmutableArray.Create<FeatureType>(DomainModel.S201.Information.FeatureTypes.Select(e=>new FeatureType(e)).ToArray()),
-            //    InformationTypes = ImmutableArray.Create<InformationType>(DomainModel.S201.Information.InformationTypes.Select(e=>new InformationType(e)).ToArray())
+            //    InformationTypes = ImmutableArray.Create<InformationType>(DomainModel.S201.Information.InformationTypes.Select(e=>new InformationType(e)).ToArray()),
+            //    InformationAssociationTypes = ImmutableArray.Create<AssociationType>(DomainModel.S201.Information.InformationAssociationTypes.Select(e=>new AssociationType(e)).ToArray()),
             //}
         });
     }

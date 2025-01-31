@@ -13,21 +13,33 @@ using Xceed.Wpf.Toolkit.PropertyGrid.Attributes;
 namespace S100Framework.WPF.ViewModel.S124
 {
     internal static class Preamble {
-        public static ImmutableDictionary<string, Func<ViewModelBase>> _creators => ImmutableDictionary.Create<string, Func<ViewModelBase>>().AddRange(new Dictionary<string, Func<ViewModelBase>> { { typeof(DomainModel.S124.InformationTypes.NAVWARNPreamble).Name, () =>
+        public static ImmutableDictionary<string, Func<ViewModelBase>> _creators => ImmutableDictionary.Create<string, Func<ViewModelBase>>().AddRange(new Dictionary<string, Func<ViewModelBase>> { { "NAVWARNPreamble", () =>
         {
             return new NAVWARNPreambleViewModel();
-        } }, { typeof(DomainModel.S124.InformationTypes.References).Name, () =>
+        } }, { "References", () =>
         {
             return new ReferencesViewModel();
-        } }, { typeof(DomainModel.S124.FeatureTypes.NAVWARNPart).Name, () =>
+        } }, { "NAVWARNPart", () =>
         {
             return new NAVWARNPartViewModel();
-        } }, { typeof(DomainModel.S124.FeatureTypes.NAVWARNAreaAffected).Name, () =>
+        } }, { "NAVWARNAreaAffected", () =>
         {
             return new NAVWARNAreaAffectedViewModel();
-        } }, { typeof(DomainModel.S124.FeatureTypes.TextPlacement).Name, () =>
+        } }, { "TextPlacement", () =>
         {
             return new TextPlacementViewModel();
+        } }, { "AreaAffected", () =>
+        {
+            return new AreaAffectedViewModel();
+        } }, { "TextAssociation", () =>
+        {
+            return new TextAssociationViewModel();
+        } }, { "NWPreambleContent", () =>
+        {
+            return new NWPreambleContentViewModel();
+        } }, { "NWReferences", () =>
+        {
+            return new NWReferencesViewModel();
         } }, });
     }
 
@@ -59,7 +71,7 @@ namespace S100Framework.WPF.ViewModel.S124
                     Upper = 1,
                     AssociationTypes = ["NAVWARNPreamble"],
                     CreateForeignInformationBinding = () => new SingleInformationBindingViewModel<NWPreambleContentViewModel.headerNAVWARNPartRefIdViewModel>("NWPreambleContent"),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<NAVWARNPartViewModel.NAVWARNPartRefIdViewModel>("NAVWARNPart"),
+                    CreateLocalInformationBinding = () => new SingleInformationBindingViewModel<NAVWARNPartViewModel.NAVWARNPartRefIdViewModel>("NAVWARNPart"),
                 }
 
                 ]
@@ -184,6 +196,8 @@ namespace S100Framework.WPF.ViewModel.S124
 
         public featureNameViewModel() : base() {
         }
+
+        public override string? ToString() => $"Feature Name";
     }
 
     [CategoryOrder("dateTimeRange", 0)]
@@ -237,6 +251,8 @@ namespace S100Framework.WPF.ViewModel.S124
 
         public dateTimeRangeViewModel() : base() {
         }
+
+        public override string? ToString() => $"Date Time Range";
     }
 
     [CategoryOrder("eNCFeatureReference", 0)]
@@ -317,6 +333,8 @@ namespace S100Framework.WPF.ViewModel.S124
                 OnPropertyChanged(nameof(featureObjectIdentifier));
             };
         }
+
+        public override string? ToString() => $"ENC Feature Reference";
     }
 
     [CategoryOrder("featureReference", 0)]
@@ -397,6 +415,8 @@ namespace S100Framework.WPF.ViewModel.S124
                 OnPropertyChanged(nameof(eNCFeatureReference));
             };
         }
+
+        public override string? ToString() => $"Feature Reference";
     }
 
     [CategoryOrder("fixedDateRange", 0)]
@@ -450,6 +470,8 @@ namespace S100Framework.WPF.ViewModel.S124
 
         public fixedDateRangeViewModel() : base() {
         }
+
+        public override string? ToString() => $"Fixed Date Range";
     }
 
 #pragma warning disable CS8981 // The type name only contains lower-cased ascii characters. Such names may become reserved for the language.
@@ -552,6 +574,8 @@ namespace S100Framework.WPF.ViewModel.S124
 
         public informationViewModel() : base() {
         }
+
+        public override string? ToString() => $"Information";
     }
 
     [CategoryOrder("warningInformation", 0)]
@@ -613,6 +637,8 @@ namespace S100Framework.WPF.ViewModel.S124
                 OnPropertyChanged(nameof(navwarnTypeDetails));
             };
         }
+
+        public override string? ToString() => $"Warning Information";
     }
 
     [CategoryOrder("chartAffected", 0)]
@@ -696,6 +722,8 @@ namespace S100Framework.WPF.ViewModel.S124
 
         public chartAffectedViewModel() : base() {
         }
+
+        public override string? ToString() => $"Chart Affected";
     }
 
     [CategoryOrder("affectedChartPublications", 0)]
@@ -800,6 +828,8 @@ namespace S100Framework.WPF.ViewModel.S124
 
         public affectedChartPublicationsViewModel() : base() {
         }
+
+        public override string? ToString() => $"Affected Chart Publications";
     }
 
     [CategoryOrder("locationName", 0)]
@@ -853,6 +883,8 @@ namespace S100Framework.WPF.ViewModel.S124
 
         public locationNameViewModel() : base() {
         }
+
+        public override string? ToString() => $"Location Name";
     }
 
     [CategoryOrder("generalArea", 0)]
@@ -903,6 +935,8 @@ namespace S100Framework.WPF.ViewModel.S124
                 OnPropertyChanged(nameof(locationName));
             };
         }
+
+        public override string? ToString() => $"General Area";
     }
 
 #pragma warning disable CS8981 // The type name only contains lower-cased ascii characters. Such names may become reserved for the language.
@@ -957,6 +991,8 @@ namespace S100Framework.WPF.ViewModel.S124
                 OnPropertyChanged(nameof(locationName));
             };
         }
+
+        public override string? ToString() => $"Locality";
     }
 
     [CategoryOrder("messageSeriesIdentifier", 0)]
@@ -1085,6 +1121,8 @@ namespace S100Framework.WPF.ViewModel.S124
 
         public messageSeriesIdentifierViewModel() : base() {
         }
+
+        public override string? ToString() => $"Message Series Identifier";
     }
 
     [CategoryOrder("nAVWARNTitle", 0)]
@@ -1138,6 +1176,8 @@ namespace S100Framework.WPF.ViewModel.S124
 
         public nAVWARNTitleViewModel() : base() {
         }
+
+        public override string? ToString() => $"NAVWARN Title";
     }
 
     [CategoryOrder("NAVWARNPreamble", 0)]
@@ -1299,6 +1339,8 @@ namespace S100Framework.WPF.ViewModel.S124
                 OnPropertyChanged(nameof(nAVWARNTitle));
             };
         }
+
+        public override string? ToString() => $"NAVWARN Preamble";
     }
 
     [CategoryOrder("References", 0)]
@@ -1368,6 +1410,8 @@ namespace S100Framework.WPF.ViewModel.S124
                 OnPropertyChanged(nameof(messageSeriesIdentifier));
             };
         }
+
+        public override string? ToString() => $"References";
     }
 
     [CategoryOrder("NAVWARNPart", 0)]
@@ -1467,6 +1511,8 @@ namespace S100Framework.WPF.ViewModel.S124
                 OnPropertyChanged(nameof(fixedDateRange));
             };
         }
+
+        public override string? ToString() => $"NAVWARN Part";
     }
 
     [CategoryOrder("NAVWARNAreaAffected", 0)]
@@ -1494,6 +1540,8 @@ namespace S100Framework.WPF.ViewModel.S124
 
         public NAVWARNAreaAffectedViewModel() : base() {
         }
+
+        public override string? ToString() => $"NAVWARN Area Affected";
     }
 
     [CategoryOrder("TextPlacement", 0)]
@@ -1611,6 +1659,8 @@ namespace S100Framework.WPF.ViewModel.S124
 
         public TextPlacementViewModel() : base() {
         }
+
+        public override string? ToString() => $"Text Placement";
     }
 
     public class AreaAffectedViewModel : FeatureAssociationViewModel {
@@ -1641,35 +1691,39 @@ namespace S100Framework.WPF.ViewModel.S124
             }
         }
 
-        public override FeatureAssociationConnector? associationConnector {
+        public override FeatureAssociationConnector? association {
             get {
                 return _associationConnector;
             }
 
             set {
                 this.SetValue(ref _associationConnector, value);
-                affects = null;
                 if (value is not null) {
                     affects = value?.role switch
                     {
                         "impacts" => value.CreateForeignFeatureBinding(),
-                        _ => value.CreateLocalFeatureBinding(),
+                        _ => value!.CreateLocalFeatureBinding(),
                     };
                 }
+                else {
+                    affects = null;
+                }
 
-                impacts = null;
                 if (value is not null) {
                     impacts = value?.role switch
                     {
                         "affects" => value.CreateForeignFeatureBinding(),
-                        _ => value.CreateLocalFeatureBinding(),
+                        _ => value!.CreateLocalFeatureBinding(),
                     };
+                }
+                else {
+                    impacts = null;
                 }
             }
         }
 
         public override void Load(S100Framework.DomainModel.FeatureAssociation featureAssociation) {
-            associationConnector = associationConnectorFeatures.Single(e => e.FeatureType.Equals(featureAssociation.AssociationConnectorTypeName));
+            association = associationConnectorFeatures.SingleOrDefault(e => e.FeatureType.Equals(featureAssociation.AssociationConnectorTypeName));
             affects?.Load(featureAssociation, "affects");
             impacts?.Load(featureAssociation, "impacts");
         }
@@ -1678,7 +1732,7 @@ namespace S100Framework.WPF.ViewModel.S124
             var instance = new FeatureAssociation
             {
                 Code = this.Code,
-                AssociationConnectorTypeName = associationConnector!.FeatureType,
+                AssociationConnectorTypeName = association!.FeatureType,
             };
             affects?.Save(instance, "affects");
             impacts?.Save(instance, "impacts");
@@ -1726,35 +1780,39 @@ namespace S100Framework.WPF.ViewModel.S124
             }
         }
 
-        public override FeatureAssociationConnector? associationConnector {
+        public override FeatureAssociationConnector? association {
             get {
                 return _associationConnector;
             }
 
             set {
                 this.SetValue(ref _associationConnector, value);
-                identifies = null;
                 if (value is not null) {
                     identifies = value?.role switch
                     {
                         "positions" => value.CreateForeignFeatureBinding(),
-                        _ => value.CreateLocalFeatureBinding(),
+                        _ => value!.CreateLocalFeatureBinding(),
                     };
                 }
+                else {
+                    identifies = null;
+                }
 
-                positions = null;
                 if (value is not null) {
                     positions = value?.role switch
                     {
                         "identifies" => value.CreateForeignFeatureBinding(),
-                        _ => value.CreateLocalFeatureBinding(),
+                        _ => value!.CreateLocalFeatureBinding(),
                     };
+                }
+                else {
+                    positions = null;
                 }
             }
         }
 
         public override void Load(S100Framework.DomainModel.FeatureAssociation featureAssociation) {
-            associationConnector = associationConnectorFeatures.Single(e => e.FeatureType.Equals(featureAssociation.AssociationConnectorTypeName));
+            association = associationConnectorFeatures.SingleOrDefault(e => e.FeatureType.Equals(featureAssociation.AssociationConnectorTypeName));
             identifies?.Load(featureAssociation, "identifies");
             positions?.Load(featureAssociation, "positions");
         }
@@ -1763,7 +1821,7 @@ namespace S100Framework.WPF.ViewModel.S124
             var instance = new FeatureAssociation
             {
                 Code = this.Code,
-                AssociationConnectorTypeName = associationConnector!.FeatureType,
+                AssociationConnectorTypeName = association!.FeatureType,
             };
             identifies?.Save(instance, "identifies");
             positions?.Save(instance, "positions");
@@ -1811,35 +1869,39 @@ namespace S100Framework.WPF.ViewModel.S124
             }
         }
 
-        public override InformationAssociationConnector? associationConnector {
+        public override InformationAssociationConnector? association {
             get {
                 return _associationConnector;
             }
 
             set {
                 this.SetValue(ref _associationConnector, value);
-                theWarningPart = null;
                 if (value is not null) {
                     theWarningPart = value?.role switch
                     {
                         "header" => value.CreateForeignInformationBinding(),
-                        _ => value.CreateLocalInformationBinding(),
+                        _ => value!.CreateLocalInformationBinding(),
                     };
                 }
+                else {
+                    theWarningPart = null;
+                }
 
-                header = null;
                 if (value is not null) {
                     header = value?.role switch
                     {
                         "theWarningPart" => value.CreateForeignInformationBinding(),
-                        _ => value.CreateLocalInformationBinding(),
+                        _ => value!.CreateLocalInformationBinding(),
                     };
+                }
+                else {
+                    header = null;
                 }
             }
         }
 
         public override void Load(S100Framework.DomainModel.InformationAssociation informationAssociation) {
-            associationConnector = associationConnectorInformations.Single(e => e.InformationType.Equals(informationAssociation.AssociationConnectorTypeName));
+            association = associationConnectorInformations.SingleOrDefault(e => e.InformationType.Equals(informationAssociation.AssociationConnectorTypeName));
             theWarningPart?.Load(informationAssociation, "theWarningPart");
             header?.Load(informationAssociation, "header");
         }
@@ -1848,7 +1910,7 @@ namespace S100Framework.WPF.ViewModel.S124
             var instance = new InformationAssociation
             {
                 Code = this.Code,
-                AssociationConnectorTypeName = associationConnector!.InformationType,
+                AssociationConnectorTypeName = association!.InformationType,
             };
             theWarningPart?.Save(instance, "theWarningPart");
             header?.Save(instance, "header");
@@ -1892,35 +1954,39 @@ namespace S100Framework.WPF.ViewModel.S124
             }
         }
 
-        public override InformationAssociationConnector? associationConnector {
+        public override InformationAssociationConnector? association {
             get {
                 return _associationConnector;
             }
 
             set {
                 this.SetValue(ref _associationConnector, value);
-                theWarning = null;
                 if (value is not null) {
                     theWarning = value?.role switch
                     {
                         "theReferences" => value.CreateForeignInformationBinding(),
-                        _ => value.CreateLocalInformationBinding(),
+                        _ => value!.CreateLocalInformationBinding(),
                     };
                 }
+                else {
+                    theWarning = null;
+                }
 
-                theReferences = null;
                 if (value is not null) {
                     theReferences = value?.role switch
                     {
                         "theWarning" => value.CreateForeignInformationBinding(),
-                        _ => value.CreateLocalInformationBinding(),
+                        _ => value!.CreateLocalInformationBinding(),
                     };
+                }
+                else {
+                    theReferences = null;
                 }
             }
         }
 
         public override void Load(S100Framework.DomainModel.InformationAssociation informationAssociation) {
-            associationConnector = associationConnectorInformations.Single(e => e.InformationType.Equals(informationAssociation.AssociationConnectorTypeName));
+            association = associationConnectorInformations.SingleOrDefault(e => e.InformationType.Equals(informationAssociation.AssociationConnectorTypeName));
             theWarning?.Load(informationAssociation, "theWarning");
             theReferences?.Load(informationAssociation, "theReferences");
         }
@@ -1929,7 +1995,7 @@ namespace S100Framework.WPF.ViewModel.S124
             var instance = new InformationAssociation
             {
                 Code = this.Code,
-                AssociationConnectorTypeName = associationConnector!.InformationType,
+                AssociationConnectorTypeName = association!.InformationType,
             };
             theWarning?.Save(instance, "theWarning");
             theReferences?.Save(instance, "theReferences");

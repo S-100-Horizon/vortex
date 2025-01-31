@@ -54,8 +54,6 @@ namespace S100Framework.WPF.Editors
     {
         public FrameworkElement ResolveEditor(PropertyItem propertyItem) {
             var source = propertyItem.Instance switch {
-                //FeatureBindingViewModel e => e.RefIds,
-                //InformationBindingViewModel e => e.RefIds,
                 FeatureRefIdViewModel e => e.RefIds,
                 InformationRefIdViewModel e => e.RefIds,
                 _ => throw new NotSupportedException()
@@ -100,8 +98,8 @@ namespace S100Framework.WPF.Editors
             var bindingSelectedItemProperty = new Binding(propertyItem.DisplayName) { Source = propertyItem.Instance, Mode = propertyItem.IsReadOnly ? BindingMode.OneWay : BindingMode.TwoWay };
             BindingOperations.SetBinding(comboBox, ComboBox.SelectedItemProperty, bindingSelectedItemProperty);
 
-            if (viewModel.associationConnector is not null) {
-                comboBox.SelectedValue = viewModel.associationConnector;
+            if (viewModel.association is not null) {
+                comboBox.SelectedValue = viewModel.association;
             }
             return comboBox;
         }
@@ -123,8 +121,8 @@ namespace S100Framework.WPF.Editors
             var bindingSelectedItemProperty = new Binding(propertyItem.DisplayName) { Source = propertyItem.Instance, Mode = propertyItem.IsReadOnly ? BindingMode.OneWay : BindingMode.TwoWay };
             BindingOperations.SetBinding(comboBox, ComboBox.SelectedItemProperty, bindingSelectedItemProperty);
 
-            if (viewModel.associationConnector is not null) {
-                comboBox.SelectedValue = viewModel.associationConnector;
+            if (viewModel.association is not null) {
+                comboBox.SelectedValue = viewModel.association;
             }
             return comboBox;
         }
@@ -137,7 +135,6 @@ namespace S100Framework.WPF.Editors
 
             var comboBox = new ComboBox {
                 Name = $"_comboBox{Guid.NewGuid():N}",
-                //DisplayMemberPath = "Name",
             };
 
             var bindingItemsSourceProperty = new Binding() { Source = viewModel.AssociationTypes, Mode = BindingMode.OneWay };
@@ -146,8 +143,9 @@ namespace S100Framework.WPF.Editors
             var bindingSelectedItemProperty = new Binding(propertyItem.DisplayName) { Source = propertyItem.Instance, Mode = propertyItem.IsReadOnly ? BindingMode.OneWay : BindingMode.TwoWay };
             BindingOperations.SetBinding(comboBox, ComboBox.SelectedItemProperty, bindingSelectedItemProperty);
 
-            //TODO: Dynamic read value from instance!!!!
-            //comboBox.SelectedIndex = 0;
+            if (viewModel.InformationType is not null) {
+                comboBox.SelectedValue = viewModel.InformationType;
+            }
             return comboBox;
         }
     }
@@ -159,7 +157,6 @@ namespace S100Framework.WPF.Editors
 
             var comboBox = new ComboBox {
                 Name = $"_comboBox{Guid.NewGuid():N}",
-                //DisplayMemberPath = "Name",
             };
 
             var bindingItemsSourceProperty = new Binding() { Source = viewModel.AssociationTypes, Mode = BindingMode.OneWay };
@@ -168,8 +165,6 @@ namespace S100Framework.WPF.Editors
             var bindingSelectedItemProperty = new Binding(propertyItem.DisplayName) { Source = propertyItem.Instance, Mode = propertyItem.IsReadOnly ? BindingMode.OneWay : BindingMode.TwoWay };
             BindingOperations.SetBinding(comboBox, ComboBox.SelectedItemProperty, bindingSelectedItemProperty);
 
-            //TODO: Dynamic read value from instance!!!!
-            //comboBox.SelectedIndex = 0;
             if (viewModel.FeatureType is not null) {
                 comboBox.SelectedValue = viewModel.FeatureType;
             }
