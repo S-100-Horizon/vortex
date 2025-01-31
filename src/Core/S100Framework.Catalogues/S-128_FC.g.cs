@@ -7,6 +7,8 @@ namespace S100Framework.DomainModel.S128 {
     public static class Information {
         public static Version Version => new Version("2.0.0");
         public static string[] ComplexTypes => ["contactAddress", "customPaperSize", "defaultLocale", "featureName", "information", "onlineResource", "periodicDateRange", "pricing", "printSize", "productSpecification", "supportFileSpecification", "serviceSpecification", "sourceIndication", "telecommunications", "timeIntervalOfCycle", "weekOfYear", "issuanceCycle", "printInformation", "supportFile", "timeIntervalOfProduct", "referenceToNM",];
+        public static string[] InformationAssociationTypes => ["CarriageRequirement", "DistributionDetails", "DistributorContact", "PriceOfElement", "PriceOfNauticalProduct", "ProducerContact", "ProductionDetails", "ProductPackage",];
+        public static string[] FeatureAssociationTypes => ["ProductMapping", "Correlated",];
         public static string[] InformationTypes => ["CatalogueSectionHeader", "ContactDetails", "IndicationOfCarriageRequirement", "PriceInformation", "ProducerInformation", "DistributorInformation",];
         public static string[] FeatureTypes => ["CatalogueElement", "NavigationalProduct", "ElectronicProduct", "PhysicalProduct", "S100Service",];
     }

@@ -26,7 +26,7 @@
             </Grid.ColumnDefinitions>
 
             <DockPanel Grid.Column="0" HorizontalAlignment="Stretch" IsEnabled="{Binding IsSelectedSchemaEnabled, Mode=OneWay}">
-                <TextBlock Margin="5,0,5,0" Text="Schema" VerticalAlignment="Center" DockPanel.Dock="Left"/>
+                <TextBlock Margin="5,0,5,0" Text="PS" VerticalAlignment="Center" DockPanel.Dock="Left"/>
                 <ComboBox x:Name="_schemaSelector" DockPanel.Dock="Right"
                         HorizontalAlignment="Stretch" 
                         IsEnabled="{Binding IsSelectedSchemaEnabled, Mode=OneWay}"
@@ -35,13 +35,13 @@
                 </ComboBox>
             </DockPanel>
 
-            <DockPanel Grid.Column="1" HorizontalAlignment="Stretch" IsEnabled="{Binding IsSelectedFeatureTypeEnabled, Mode=OneWay}">
-                <TextBlock Margin="5,0,5,0" Text="FeatureType" VerticalAlignment="Center" DockPanel.Dock="Left"/>
-                <ComboBox x:Name="_featureSelector" DockPanel.Dock="Right"
+            <DockPanel Grid.Column="1" HorizontalAlignment="Stretch" IsEnabled="{Binding IsSelectedModelTypeEnabled, Mode=OneWay}">
+                <TextBlock Margin="5,0,5,0" Text="Type" VerticalAlignment="Center" DockPanel.Dock="Left"/>
+                <ComboBox x:Name="_objectSelector" DockPanel.Dock="Right"
                         HorizontalAlignment="Stretch" 
-                        IsEnabled="{Binding IsSelectedFeatureTypeEnabled, Mode=OneWay}"
-                        ItemsSource="{Binding FeatureTypes}"                           
-                        SelectedItem="{Binding SelectedFeatureType, UpdateSourceTrigger=PropertyChanged}"
+                        IsEnabled="{Binding IsSelectedModelTypeEnabled, Mode=OneWay}"
+                        ItemsSource="{Binding ModelTypes}"                           
+                        SelectedItem="{Binding SelectedModelType, UpdateSourceTrigger=PropertyChanged}"
                         DisplayMemberPath="Code" 
                         SelectedValuePath="Code">
                 </ComboBox>
@@ -52,8 +52,8 @@
                         IsEnabled="{Binding IsCreateButtonEnabled}"
                         Background="Transparent" 
                         BorderBrush="Transparent"                         
-                        ToolTip="Create FeatureType" 
-                        Command="{Binding CreateFeatureType}"
+                        ToolTip="Create Object Type" 
+                        Command="{Binding CreateInstance}"
                         Style="{DynamicResource Esri_Button}">
                 <Grid>
                     <Grid.ColumnDefinitions>
@@ -62,7 +62,7 @@
                     </Grid.ColumnDefinitions>
                     <Image Width="20" Source="/VortexProAppModule;component/Images/EditingCreateFeaturesWindowShow16.png" Stretch="None" VerticalAlignment="Center" Margin="5" />
                     <StackPanel Grid.Column="1" Margin="5" HorizontalAlignment="Center" VerticalAlignment="Center">
-                        <TextBlock Text="Create Feature"/>
+                        <TextBlock Text="Create Instance"/>
                     </StackPanel>
                 </Grid>
             </Button>

@@ -12,8 +12,6 @@ using System.Windows.Data;
 using Xceed.Wpf.Toolkit.PropertyGrid;
 using Xceed.Wpf.Toolkit.PropertyGrid.Editors;
 
-
-
 namespace VortexConceptApplication
 {
     /// <summary>
@@ -26,7 +24,7 @@ namespace VortexConceptApplication
     {
         public static object MockValue => new();
 
-        public event PropertyChangedEventHandler PropertyChanged;
+        public event PropertyChangedEventHandler? PropertyChanged = default;
 
         public MainWindow() {
             InitializeComponent();
@@ -34,13 +32,12 @@ namespace VortexConceptApplication
             this.DataContext = this;
         }
 
-        private object _selectedProperty = default;
+        private object? _selectedProperty = default;
 
-        public object SelectedProperty {
+        public object? SelectedProperty {
             get => _selectedProperty;
             set => SetProperty(ref _selectedProperty, value);
         }
-
 
         public ObservableCollection<navwarnTypeDetails> Items { get; init; } = new ObservableCollection<navwarnTypeDetails>(CodeList.navwarnTypeDetails);
 
@@ -93,7 +90,7 @@ namespace VortexConceptApplication
 
                     objectid.Add($"{prefix}{random.Next(0, 9)}{random.Next(0, 9)}{random.Next(0, 9)}{random.Next(0, 9)}{random.Next(0, 9)}{random.Next(0, 9)}");
                 }
-                return objectid.ToArray();
+                return Task.FromResult(objectid.ToArray());
             };
 
             Handles.GetInformationsRefId = (e) => {
@@ -106,18 +103,16 @@ namespace VortexConceptApplication
 
                     objectid.Add($"{prefix}{random.Next(0, 9)}{random.Next(0, 9)}{random.Next(0, 9)}{random.Next(0, 9)}{random.Next(0, 9)}{random.Next(0, 9)}");
                 }
-                return objectid.ToArray();
+                return Task.FromResult(objectid.ToArray());
             };
-
 
 #if S124
             var viewModel = new S100Framework.WPF.ViewModel.S924.NAVWARNPartViewModel {
-
             };
 
             viewModel.Load(new S100Framework.DomainModel.S124.FeatureTypes.NAVWARNPart {
                 warningInformation = new S100Framework.DomainModel.S124.ComplexAttributes.warningInformation {
-                },                
+                },
             });
 #elif S101
             var domainModelQualityOfBathymetricDataCustom = new S100Framework.DomainModel.S901.FeatureTypes.QualityOfBathymetricDataCustom() {
@@ -136,15 +131,12 @@ namespace VortexConceptApplication
             };
 
             var domainModelUpdateInformation = new S100Framework.DomainModel.S101.FeatureTypes.UpdateInformation() {
-
             };
-
 
             var domainModelVesselTrafficServiceArea = new S100Framework.DomainModel.S122.FeatureTypes.VesselTrafficServiceArea() {
             };
 
             var domainModelElectronicProduct = new S100Framework.DomainModel.S128.FeatureTypes.ElectronicProduct() {
-
             };
 
             //var viewModel = new S100Framework.WPF.ViewModel.S901.QualityOfBathymetricDataViewModel((IViewModelHost)this) {
@@ -160,7 +152,6 @@ namespace VortexConceptApplication
 
             //viewModel.Load(domainModelVesselTrafficServiceArea);
 
-
             var viewModel = new S100Framework.WPF.ViewModel.S128.ElectronicProductViewModel((IViewModelHost)this) {
                 //  Testing associations with attributes
             };
@@ -168,23 +159,19 @@ namespace VortexConceptApplication
             viewModel.Load(domainModelElectronicProduct);
 #elif S902
             var domainModel = new S100Framework.WPF.ViewModel.S902.S131_FeatureTypeTest() {
-
             };
 
             var viewModel = new S131_FeatureTypeTestViewModel() {
-
             };
 
             viewModel.Load(domainModel);
 #elif S903
             var domainModel = new S100Framework.WPF.ViewModel.S903.S101_PileTest() {
-
             };
 
             var attributes = typeof(S100Framework.WPF.ViewModel.S903.S101_PileTest).GetProperty("theCollectionOfAidsToNavigationAssociationTest")!.GetCustomAttributes<FeatureTypeAttribute>();
 
             var viewModel = new S101_PileTestViewModel() {
-
             };
 
             viewModel.Load(domainModel);
@@ -193,13 +180,9 @@ namespace VortexConceptApplication
 
             var viewModel101 = new VortexConceptApplication.UpdatedInformationViewModel();
 
-
-
-
             var viewModel131 = new S100Framework.WPF.ViewModel.S131.TextAssociationViewModel();
 
             var viewModel = viewModel101;
-
 
             var fromJson = new S100Framework.DomainModel.FeatureAssociation {
                 Code = "UpdatedInformation",
@@ -224,6 +207,10 @@ namespace VortexConceptApplication
             };
 
             viewModel.Load(fromJson);
+
+            viewModel.PropertyChanged += (object sender, PropertyChangedEventArgs e) => {
+                Logger.Current.Verbose("PropertyChanged = {propertyName}", e.PropertyName);
+            };
 #endif
 
             //this._propertyGrid.EditorDefinitions.Clear();
@@ -245,7 +232,7 @@ namespace VortexConceptApplication
 
             //var editorTemplate = new EditorTemplateDefinition();
             //PropertyDefinition propertyDefinition = new PropertyDefinition();
-            //propertyDefinition.TargetProperties.Add("ReferenceId");            
+            //propertyDefinition.TargetProperties.Add("ReferenceId");
             //editorTemplate.PropertyDefinitions.Add(propertyDefinition);
 
             //FrameworkElementFactory fac = new FrameworkElementFactory(typeof(ComboBox));
@@ -258,7 +245,6 @@ namespace VortexConceptApplication
             //this._propertyGrid.EditorDefinitions.Add(editorTemplate);
 
             //this._propertyGrid.Update();
-
 
             //var p = this._propertyGrid;
 
@@ -274,7 +260,7 @@ namespace VortexConceptApplication
         }
 
         private void _propertyGrid_PreparePropertyItem(object sender, PropertyItemEventArgs e) {
-            Logger.Current.Verbose("PreparePropertyItem = {propertyName}", e.PropertyItem.Name);
+            //Logger.Current.Verbose("PreparePropertyItem = {propertyName}", e.PropertyItem.Name);
 
             var displayName = e.PropertyItem.DisplayName;
 
@@ -290,8 +276,6 @@ namespace VortexConceptApplication
 
             if (!propertyItem.PropertyType.IsAbstract) {
                 if (!propertyItem.PropertyType.IsValueType && propertyItem.PropertyType != typeof(string) && !propertyItem.PropertyType.IsArray && !"System.Collections.Generic".Equals(propertyItem.PropertyType.Namespace)) {
-
-
                     var attribute = propertyItem.Instance.GetType().GetProperty(displayName)!.GetCustomAttribute<S100Framework.DomainModel.CodeListAttribute>();
 
                     //propertyItem.IsExpandable = attribute is null ? !"System.Collections.ObjectModel".Equals(propertyItem.PropertyType.Namespace) : false;
@@ -316,11 +300,9 @@ namespace VortexConceptApplication
         }
 
         private void SAVE_Click(object sender, RoutedEventArgs e) {
-
             var v = (VortexConceptApplication.UpdatedInformationViewModel)SelectedProperty;
 
             var json = v.Serialize();
-
 
             System.Diagnostics.Debugger.Break();
         }

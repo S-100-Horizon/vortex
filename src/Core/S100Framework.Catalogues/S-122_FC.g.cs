@@ -7,6 +7,8 @@ namespace S100Framework.DomainModel.S122 {
     public static class Information {
         public static Version Version => new Version("1.2.1");
         public static string[] ComplexTypes => ["contactAddress", "featureName", "fixedDateRange", "frequencyPair", "information", "onlineResource", "orientation", "periodicDateRange", "rxNCode", "sectorLimitOne", "sectorLimitTwo", "textContent", "timeIntervalsByDayOfWeek", "vesselsMeasurements", "designation", "bearingInformation", "graphic", "scheduleByDayOfWeek", "sectorLimit", "telecommunications",];
+        public static string[] InformationAssociationTypes => ["AssociatedRxN", "ExceptionalWorkday", "ProtectedAreaAuthority", "ServiceControl", "RelatedOrganisation", "PermissionType", "InclusionType", "AuthorityContact", "AuthorityHours", "additionalInformation",];
+        public static string[] FeatureAssociationTypes => [];
         public static string[] InformationTypes => ["InformationType", "AbstractRxN", "NauticalInformation", "Regulations", "Restrictions", "Recommendations", "Authority", "ContactDetails", "NonStandardWorkingDay", "ServiceHours", "Applicability",];
         public static string[] FeatureTypes => ["FeatureType", "RestrictedArea", "MarineProtectedArea", "VesselTrafficServiceArea", "DataCoverage", "TextPlacement",];
     }

@@ -13,33 +13,63 @@ using Xceed.Wpf.Toolkit.PropertyGrid.Attributes;
 namespace S100Framework.WPF.ViewModel.S128
 {
     internal static class Preamble {
-        public static ImmutableDictionary<string, Func<ViewModelBase>> _creators => ImmutableDictionary.Create<string, Func<ViewModelBase>>().AddRange(new Dictionary<string, Func<ViewModelBase>> { { typeof(DomainModel.S128.InformationTypes.CatalogueSectionHeader).Name, () =>
+        public static ImmutableDictionary<string, Func<ViewModelBase>> _creators => ImmutableDictionary.Create<string, Func<ViewModelBase>>().AddRange(new Dictionary<string, Func<ViewModelBase>> { { "CatalogueSectionHeader", () =>
         {
             return new CatalogueSectionHeaderViewModel();
-        } }, { typeof(DomainModel.S128.InformationTypes.ContactDetails).Name, () =>
+        } }, { "ContactDetails", () =>
         {
             return new ContactDetailsViewModel();
-        } }, { typeof(DomainModel.S128.InformationTypes.IndicationOfCarriageRequirement).Name, () =>
+        } }, { "IndicationOfCarriageRequirement", () =>
         {
             return new IndicationOfCarriageRequirementViewModel();
-        } }, { typeof(DomainModel.S128.InformationTypes.PriceInformation).Name, () =>
+        } }, { "PriceInformation", () =>
         {
             return new PriceInformationViewModel();
-        } }, { typeof(DomainModel.S128.InformationTypes.ProducerInformation).Name, () =>
+        } }, { "ProducerInformation", () =>
         {
             return new ProducerInformationViewModel();
-        } }, { typeof(DomainModel.S128.InformationTypes.DistributorInformation).Name, () =>
+        } }, { "DistributorInformation", () =>
         {
             return new DistributorInformationViewModel();
-        } }, { typeof(DomainModel.S128.FeatureTypes.ElectronicProduct).Name, () =>
+        } }, { "ElectronicProduct", () =>
         {
             return new ElectronicProductViewModel();
-        } }, { typeof(DomainModel.S128.FeatureTypes.PhysicalProduct).Name, () =>
+        } }, { "PhysicalProduct", () =>
         {
             return new PhysicalProductViewModel();
-        } }, { typeof(DomainModel.S128.FeatureTypes.S100Service).Name, () =>
+        } }, { "S100Service", () =>
         {
             return new S100ServiceViewModel();
+        } }, { "ProductMapping", () =>
+        {
+            return new ProductMappingViewModel();
+        } }, { "Correlated", () =>
+        {
+            return new CorrelatedViewModel();
+        } }, { "CarriageRequirement", () =>
+        {
+            return new CarriageRequirementViewModel();
+        } }, { "DistributionDetails", () =>
+        {
+            return new DistributionDetailsViewModel();
+        } }, { "DistributorContact", () =>
+        {
+            return new DistributorContactViewModel();
+        } }, { "PriceOfElement", () =>
+        {
+            return new PriceOfElementViewModel();
+        } }, { "PriceOfNauticalProduct", () =>
+        {
+            return new PriceOfNauticalProductViewModel();
+        } }, { "ProducerContact", () =>
+        {
+            return new ProducerContactViewModel();
+        } }, { "ProductionDetails", () =>
+        {
+            return new ProductionDetailsViewModel();
+        } }, { "ProductPackage", () =>
+        {
+            return new ProductPackageViewModel();
         } }, });
     }
 
@@ -56,7 +86,7 @@ namespace S100Framework.WPF.ViewModel.S128
                     Upper = default,
                     AssociationTypes = ["CatalogueSectionHeader"],
                     CreateForeignInformationBinding = () => new MultiInformationBindingViewModel<ProductPackageViewModel.elementContainerElectronicProductRefIdViewModel>("ProductPackage"),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<ElectronicProductViewModel.ElectronicProductRefIdViewModel>("ElectronicProduct"),
+                    CreateLocalInformationBinding = () => new SingleInformationBindingViewModel<ElectronicProductViewModel.ElectronicProductRefIdViewModel>("ElectronicProduct"),
                 }, new InformationAssociationConnector<PhysicalProduct>()
                 {
                     roleType = roleType.association,
@@ -65,7 +95,7 @@ namespace S100Framework.WPF.ViewModel.S128
                     Upper = default,
                     AssociationTypes = ["CatalogueSectionHeader"],
                     CreateForeignInformationBinding = () => new MultiInformationBindingViewModel<ProductPackageViewModel.elementContainerPhysicalProductRefIdViewModel>("ProductPackage"),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<PhysicalProductViewModel.PhysicalProductRefIdViewModel>("PhysicalProduct"),
+                    CreateLocalInformationBinding = () => new SingleInformationBindingViewModel<PhysicalProductViewModel.PhysicalProductRefIdViewModel>("PhysicalProduct"),
                 }, new InformationAssociationConnector<S100Service>()
                 {
                     roleType = roleType.association,
@@ -74,7 +104,7 @@ namespace S100Framework.WPF.ViewModel.S128
                     Upper = default,
                     AssociationTypes = ["CatalogueSectionHeader"],
                     CreateForeignInformationBinding = () => new MultiInformationBindingViewModel<ProductPackageViewModel.elementContainerS100ServiceRefIdViewModel>("ProductPackage"),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<S100ServiceViewModel.S100ServiceRefIdViewModel>("S100Service"),
+                    CreateLocalInformationBinding = () => new SingleInformationBindingViewModel<S100ServiceViewModel.S100ServiceRefIdViewModel>("S100Service"),
                 }
 
                 ]
@@ -161,7 +191,7 @@ namespace S100Framework.WPF.ViewModel.S128
                     Upper = default,
                     AssociationTypes = ["PriceInformation"],
                     CreateForeignInformationBinding = () => new MultiInformationBindingViewModel<PriceOfElementViewModel.thePriceInformationElectronicProductRefIdViewModel>("PriceOfElement"),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<ElectronicProductViewModel.ElectronicProductRefIdViewModel>("ElectronicProduct"),
+                    CreateLocalInformationBinding = () => new SingleInformationBindingViewModel<ElectronicProductViewModel.ElectronicProductRefIdViewModel>("ElectronicProduct"),
                 }, new InformationAssociationConnector<PhysicalProduct>()
                 {
                     roleType = roleType.association,
@@ -170,7 +200,7 @@ namespace S100Framework.WPF.ViewModel.S128
                     Upper = default,
                     AssociationTypes = ["PriceInformation"],
                     CreateForeignInformationBinding = () => new MultiInformationBindingViewModel<PriceOfElementViewModel.thePriceInformationPhysicalProductRefIdViewModel>("PriceOfElement"),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<PhysicalProductViewModel.PhysicalProductRefIdViewModel>("PhysicalProduct"),
+                    CreateLocalInformationBinding = () => new SingleInformationBindingViewModel<PhysicalProductViewModel.PhysicalProductRefIdViewModel>("PhysicalProduct"),
                 }, new InformationAssociationConnector<S100Service>()
                 {
                     roleType = roleType.association,
@@ -179,7 +209,7 @@ namespace S100Framework.WPF.ViewModel.S128
                     Upper = default,
                     AssociationTypes = ["PriceInformation"],
                     CreateForeignInformationBinding = () => new MultiInformationBindingViewModel<PriceOfElementViewModel.thePriceInformationS100ServiceRefIdViewModel>("PriceOfElement"),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<S100ServiceViewModel.S100ServiceRefIdViewModel>("S100Service"),
+                    CreateLocalInformationBinding = () => new SingleInformationBindingViewModel<S100ServiceViewModel.S100ServiceRefIdViewModel>("S100Service"),
                 }
 
                 ]
@@ -242,7 +272,7 @@ namespace S100Framework.WPF.ViewModel.S128
                     Upper = default,
                     AssociationTypes = ["IndicationOfCarriageRequirement"],
                     CreateForeignInformationBinding = () => new MultiInformationBindingViewModel<CarriageRequirementViewModel.theRequirementElectronicProductRefIdViewModel>("CarriageRequirement"),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<ElectronicProductViewModel.ElectronicProductRefIdViewModel>("ElectronicProduct"),
+                    CreateLocalInformationBinding = () => new SingleInformationBindingViewModel<ElectronicProductViewModel.ElectronicProductRefIdViewModel>("ElectronicProduct"),
                 }, new InformationAssociationConnector<PhysicalProduct>()
                 {
                     roleType = roleType.association,
@@ -251,7 +281,7 @@ namespace S100Framework.WPF.ViewModel.S128
                     Upper = default,
                     AssociationTypes = ["IndicationOfCarriageRequirement"],
                     CreateForeignInformationBinding = () => new MultiInformationBindingViewModel<CarriageRequirementViewModel.theRequirementPhysicalProductRefIdViewModel>("CarriageRequirement"),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<PhysicalProductViewModel.PhysicalProductRefIdViewModel>("PhysicalProduct"),
+                    CreateLocalInformationBinding = () => new SingleInformationBindingViewModel<PhysicalProductViewModel.PhysicalProductRefIdViewModel>("PhysicalProduct"),
                 }, new InformationAssociationConnector<S100Service>()
                 {
                     roleType = roleType.association,
@@ -260,7 +290,7 @@ namespace S100Framework.WPF.ViewModel.S128
                     Upper = default,
                     AssociationTypes = ["IndicationOfCarriageRequirement"],
                     CreateForeignInformationBinding = () => new MultiInformationBindingViewModel<CarriageRequirementViewModel.theRequirementS100ServiceRefIdViewModel>("CarriageRequirement"),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<S100ServiceViewModel.S100ServiceRefIdViewModel>("S100Service"),
+                    CreateLocalInformationBinding = () => new SingleInformationBindingViewModel<S100ServiceViewModel.S100ServiceRefIdViewModel>("S100Service"),
                 }
 
                 ]
@@ -421,6 +451,8 @@ namespace S100Framework.WPF.ViewModel.S128
                 OnPropertyChanged(nameof(deliveryPoint));
             };
         }
+
+        public override string? ToString() => $"Contact Address";
     }
 
     [CategoryOrder("customPaperSize", 0)]
@@ -474,6 +506,8 @@ namespace S100Framework.WPF.ViewModel.S128
 
         public customPaperSizeViewModel() : base() {
         }
+
+        public override string? ToString() => $"Custom Paper Size";
     }
 
     [CategoryOrder("defaultLocale", 0)]
@@ -542,6 +576,8 @@ namespace S100Framework.WPF.ViewModel.S128
 
         public defaultLocaleViewModel() : base() {
         }
+
+        public override string? ToString() => $"Default Locale";
     }
 
     [CategoryOrder("featureName", 0)]
@@ -610,6 +646,8 @@ namespace S100Framework.WPF.ViewModel.S128
 
         public featureNameViewModel() : base() {
         }
+
+        public override string? ToString() => $"Feature Name";
     }
 
 #pragma warning disable CS8981 // The type name only contains lower-cased ascii characters. Such names may become reserved for the language.
@@ -709,6 +747,8 @@ namespace S100Framework.WPF.ViewModel.S128
                 OnPropertyChanged(nameof(text));
             };
         }
+
+        public override string? ToString() => $"Information";
     }
 
     [CategoryOrder("onlineResource", 0)]
@@ -822,6 +862,8 @@ namespace S100Framework.WPF.ViewModel.S128
 
         public onlineResourceViewModel() : base() {
         }
+
+        public override string? ToString() => $"Online Resource";
     }
 
     [CategoryOrder("periodicDateRange", 0)]
@@ -875,6 +917,8 @@ namespace S100Framework.WPF.ViewModel.S128
 
         public periodicDateRangeViewModel() : base() {
         }
+
+        public override string? ToString() => $"Periodic Date Range";
     }
 
 #pragma warning disable CS8981 // The type name only contains lower-cased ascii characters. Such names may become reserved for the language.
@@ -947,6 +991,8 @@ namespace S100Framework.WPF.ViewModel.S128
 
         public pricingViewModel() : base() {
         }
+
+        public override string? ToString() => $"Pricing";
     }
 
     [CategoryOrder("printSize", 0)]
@@ -1005,6 +1051,8 @@ namespace S100Framework.WPF.ViewModel.S128
 
         public printSizeViewModel() : base() {
         }
+
+        public override string? ToString() => $"Print Size";
     }
 
     [CategoryOrder("productSpecification", 0)]
@@ -1088,6 +1136,8 @@ namespace S100Framework.WPF.ViewModel.S128
 
         public productSpecificationViewModel() : base() {
         }
+
+        public override string? ToString() => $"Product Specification";
     }
 
     [CategoryOrder("supportFileSpecification", 0)]
@@ -1156,6 +1206,8 @@ namespace S100Framework.WPF.ViewModel.S128
 
         public supportFileSpecificationViewModel() : base() {
         }
+
+        public override string? ToString() => $"S100_Support File Specification";
     }
 
     [CategoryOrder("serviceSpecification", 0)]
@@ -1224,6 +1276,8 @@ namespace S100Framework.WPF.ViewModel.S128
 
         public serviceSpecificationViewModel() : base() {
         }
+
+        public override string? ToString() => $"Service Specification";
     }
 
     [CategoryOrder("sourceIndication", 0)]
@@ -1334,6 +1388,8 @@ namespace S100Framework.WPF.ViewModel.S128
                 OnPropertyChanged(nameof(featureName));
             };
         }
+
+        public override string? ToString() => $"Source Indication";
     }
 
 #pragma warning disable CS8981 // The type name only contains lower-cased ascii characters. Such names may become reserved for the language.
@@ -1403,6 +1459,8 @@ namespace S100Framework.WPF.ViewModel.S128
                 OnPropertyChanged(nameof(telecommunicationService));
             };
         }
+
+        public override string? ToString() => $"Telecommunications";
     }
 
     [CategoryOrder("timeIntervalOfCycle", 0)]
@@ -1453,6 +1511,8 @@ namespace S100Framework.WPF.ViewModel.S128
                 OnPropertyChanged(nameof(typeOfTimeIntervalUnit));
             };
         }
+
+        public override string? ToString() => $"Time Interval of Cycle";
     }
 
     [CategoryOrder("weekOfYear", 0)]
@@ -1506,6 +1566,8 @@ namespace S100Framework.WPF.ViewModel.S128
 
         public weekOfYearViewModel() : base() {
         }
+
+        public override string? ToString() => $"Week Of Year";
     }
 
     [CategoryOrder("issuanceCycle", 0)]
@@ -1570,6 +1632,8 @@ namespace S100Framework.WPF.ViewModel.S128
 
         public issuanceCycleViewModel() : base() {
         }
+
+        public override string? ToString() => $"Issuance Cycle";
     }
 
     [CategoryOrder("printInformation", 0)]
@@ -1673,6 +1737,8 @@ namespace S100Framework.WPF.ViewModel.S128
 
         public printInformationViewModel() : base() {
         }
+
+        public override string? ToString() => $"Print Information";
     }
 
     [CategoryOrder("supportFile", 0)]
@@ -1887,6 +1953,8 @@ namespace S100Framework.WPF.ViewModel.S128
 
         public supportFileViewModel() : base() {
         }
+
+        public override string? ToString() => $"S100_Support File";
     }
 
     [CategoryOrder("timeIntervalOfProduct", 0)]
@@ -1960,6 +2028,8 @@ namespace S100Framework.WPF.ViewModel.S128
 
         public timeIntervalOfProductViewModel() : base() {
         }
+
+        public override string? ToString() => $"Time Interval of Product";
     }
 
     [CategoryOrder("referenceToNM", 0)]
@@ -2018,6 +2088,8 @@ namespace S100Framework.WPF.ViewModel.S128
 
         public referenceToNMViewModel() : base() {
         }
+
+        public override string? ToString() => $"Reference To NM";
     }
 
     [CategoryOrder("CatalogueSectionHeader", 0)]
@@ -2095,6 +2167,8 @@ namespace S100Framework.WPF.ViewModel.S128
 
         public CatalogueSectionHeaderViewModel() : base() {
         }
+
+        public override string? ToString() => $"Catalogue Section Header";
     }
 
     [CategoryOrder("ContactDetails", 0)]
@@ -2197,6 +2271,8 @@ namespace S100Framework.WPF.ViewModel.S128
                 OnPropertyChanged(nameof(sourceIndication));
             };
         }
+
+        public override string? ToString() => $"Contact Details";
     }
 
     [CategoryOrder("IndicationOfCarriageRequirement", 0)]
@@ -2266,6 +2342,8 @@ namespace S100Framework.WPF.ViewModel.S128
                 OnPropertyChanged(nameof(featureName));
             };
         }
+
+        public override string? ToString() => $"Indication Of Carriage Requirement";
     }
 
     [CategoryOrder("PriceInformation", 0)]
@@ -2341,6 +2419,8 @@ namespace S100Framework.WPF.ViewModel.S128
                 OnPropertyChanged(nameof(sourceIndication));
             };
         }
+
+        public override string? ToString() => $"Price Information";
     }
 
     [CategoryOrder("ProducerInformation", 0)]
@@ -2398,6 +2478,8 @@ namespace S100Framework.WPF.ViewModel.S128
 
         public ProducerInformationViewModel() : base() {
         }
+
+        public override string? ToString() => $"Producer Information";
     }
 
     [CategoryOrder("DistributorInformation", 0)]
@@ -2440,6 +2522,8 @@ namespace S100Framework.WPF.ViewModel.S128
 
         public DistributorInformationViewModel() : base() {
         }
+
+        public override string? ToString() => $"Distributor Information";
     }
 
     [CategoryOrder("ElectronicProduct", 0)]
@@ -2981,6 +3065,8 @@ namespace S100Framework.WPF.ViewModel.S128
                 OnPropertyChanged(nameof(supportFile));
             };
         }
+
+        public override string? ToString() => $"Electronic Product";
     }
 
     [CategoryOrder("PhysicalProduct", 0)]
@@ -3528,6 +3614,8 @@ namespace S100Framework.WPF.ViewModel.S128
                 OnPropertyChanged(nameof(supportFile));
             };
         }
+
+        public override string? ToString() => $"Physical Product";
     }
 
     [CategoryOrder("S100Service", 0)]
@@ -3839,6 +3927,8 @@ namespace S100Framework.WPF.ViewModel.S128
                 OnPropertyChanged(nameof(supportFile));
             };
         }
+
+        public override string? ToString() => $"S100 Service";
     }
 
     public class ProductMappingViewModel : FeatureAssociationViewModel {
@@ -3869,26 +3959,28 @@ namespace S100Framework.WPF.ViewModel.S128
             }
         }
 
-        public override FeatureAssociationConnector? associationConnector {
+        public override FeatureAssociationConnector? association {
             get {
                 return _associationConnector;
             }
 
             set {
                 this.SetValue(ref _associationConnector, value);
-                theReference = null;
                 if (value is not null) {
                     theReference = value?.role switch
                     {
                         "theSource" => value.CreateForeignFeatureBinding(),
-                        _ => value.CreateLocalFeatureBinding(),
+                        _ => value!.CreateLocalFeatureBinding(),
                     };
+                }
+                else {
+                    theReference = null;
                 }
             }
         }
 
         public override void Load(S100Framework.DomainModel.FeatureAssociation featureAssociation) {
-            associationConnector = associationConnectorFeatures.Single(e => e.FeatureType.Equals(featureAssociation.AssociationConnectorTypeName));
+            association = associationConnectorFeatures.SingleOrDefault(e => e.FeatureType.Equals(featureAssociation.AssociationConnectorTypeName));
             theSource?.Load(featureAssociation, "theSource");
             theReference?.Load(featureAssociation, "theReference");
         }
@@ -3897,7 +3989,7 @@ namespace S100Framework.WPF.ViewModel.S128
             var instance = new FeatureAssociation
             {
                 Code = this.Code,
-                AssociationConnectorTypeName = associationConnector!.FeatureType,
+                AssociationConnectorTypeName = association!.FeatureType,
             };
             theSource?.Save(instance, "theSource");
             theReference?.Save(instance, "theReference");
@@ -3949,26 +4041,28 @@ namespace S100Framework.WPF.ViewModel.S128
             }
         }
 
-        public override FeatureAssociationConnector? associationConnector {
+        public override FeatureAssociationConnector? association {
             get {
                 return _associationConnector;
             }
 
             set {
                 this.SetValue(ref _associationConnector, value);
-                main = null;
                 if (value is not null) {
                     main = value?.role switch
                     {
                         "panel" => value.CreateForeignFeatureBinding(),
-                        _ => value.CreateLocalFeatureBinding(),
+                        _ => value!.CreateLocalFeatureBinding(),
                     };
+                }
+                else {
+                    main = null;
                 }
             }
         }
 
         public override void Load(S100Framework.DomainModel.FeatureAssociation featureAssociation) {
-            associationConnector = associationConnectorFeatures.Single(e => e.FeatureType.Equals(featureAssociation.AssociationConnectorTypeName));
+            association = associationConnectorFeatures.SingleOrDefault(e => e.FeatureType.Equals(featureAssociation.AssociationConnectorTypeName));
             main?.Load(featureAssociation, "main");
             panel?.Load(featureAssociation, "panel");
         }
@@ -3977,7 +4071,7 @@ namespace S100Framework.WPF.ViewModel.S128
             var instance = new FeatureAssociation
             {
                 Code = this.Code,
-                AssociationConnectorTypeName = associationConnector!.FeatureType,
+                AssociationConnectorTypeName = association!.FeatureType,
             };
             main?.Save(instance, "main");
             panel?.Save(instance, "panel");
@@ -4025,35 +4119,39 @@ namespace S100Framework.WPF.ViewModel.S128
             }
         }
 
-        public override InformationAssociationConnector? associationConnector {
+        public override InformationAssociationConnector? association {
             get {
                 return _associationConnector;
             }
 
             set {
                 this.SetValue(ref _associationConnector, value);
-                theElement = null;
                 if (value is not null) {
                     theElement = value?.role switch
                     {
                         "theRequirement" => value.CreateForeignInformationBinding(),
-                        _ => value.CreateLocalInformationBinding(),
+                        _ => value!.CreateLocalInformationBinding(),
                     };
                 }
+                else {
+                    theElement = null;
+                }
 
-                theRequirement = null;
                 if (value is not null) {
                     theRequirement = value?.role switch
                     {
                         "theElement" => value.CreateForeignInformationBinding(),
-                        _ => value.CreateLocalInformationBinding(),
+                        _ => value!.CreateLocalInformationBinding(),
                     };
+                }
+                else {
+                    theRequirement = null;
                 }
             }
         }
 
         public override void Load(S100Framework.DomainModel.InformationAssociation informationAssociation) {
-            associationConnector = associationConnectorInformations.Single(e => e.InformationType.Equals(informationAssociation.AssociationConnectorTypeName));
+            association = associationConnectorInformations.SingleOrDefault(e => e.InformationType.Equals(informationAssociation.AssociationConnectorTypeName));
             theElement?.Load(informationAssociation, "theElement");
             theRequirement?.Load(informationAssociation, "theRequirement");
         }
@@ -4062,7 +4160,7 @@ namespace S100Framework.WPF.ViewModel.S128
             var instance = new InformationAssociation
             {
                 Code = this.Code,
-                AssociationConnectorTypeName = associationConnector!.InformationType,
+                AssociationConnectorTypeName = association!.InformationType,
             };
             theElement?.Save(instance, "theElement");
             theRequirement?.Save(instance, "theRequirement");
@@ -4114,35 +4212,39 @@ namespace S100Framework.WPF.ViewModel.S128
             }
         }
 
-        public override InformationAssociationConnector? associationConnector {
+        public override InformationAssociationConnector? association {
             get {
                 return _associationConnector;
             }
 
             set {
                 this.SetValue(ref _associationConnector, value);
-                catalogueHeader = null;
                 if (value is not null) {
                     catalogueHeader = value?.role switch
                     {
                         "theDistributor" => value.CreateForeignInformationBinding(),
-                        _ => value.CreateLocalInformationBinding(),
+                        _ => value!.CreateLocalInformationBinding(),
                     };
                 }
+                else {
+                    catalogueHeader = null;
+                }
 
-                theDistributor = null;
                 if (value is not null) {
                     theDistributor = value?.role switch
                     {
                         "catalogueHeader" => value.CreateForeignInformationBinding(),
-                        _ => value.CreateLocalInformationBinding(),
+                        _ => value!.CreateLocalInformationBinding(),
                     };
+                }
+                else {
+                    theDistributor = null;
                 }
             }
         }
 
         public override void Load(S100Framework.DomainModel.InformationAssociation informationAssociation) {
-            associationConnector = associationConnectorInformations.Single(e => e.InformationType.Equals(informationAssociation.AssociationConnectorTypeName));
+            association = associationConnectorInformations.SingleOrDefault(e => e.InformationType.Equals(informationAssociation.AssociationConnectorTypeName));
             catalogueHeader?.Load(informationAssociation, "catalogueHeader");
             theDistributor?.Load(informationAssociation, "theDistributor");
         }
@@ -4151,7 +4253,7 @@ namespace S100Framework.WPF.ViewModel.S128
             var instance = new InformationAssociation
             {
                 Code = this.Code,
-                AssociationConnectorTypeName = associationConnector!.InformationType,
+                AssociationConnectorTypeName = association!.InformationType,
             };
             catalogueHeader?.Save(instance, "catalogueHeader");
             theDistributor?.Save(instance, "theDistributor");
@@ -4199,35 +4301,39 @@ namespace S100Framework.WPF.ViewModel.S128
             }
         }
 
-        public override InformationAssociationConnector? associationConnector {
+        public override InformationAssociationConnector? association {
             get {
                 return _associationConnector;
             }
 
             set {
                 this.SetValue(ref _associationConnector, value);
-                theDistributor = null;
                 if (value is not null) {
                     theDistributor = value?.role switch
                     {
                         "theContactDetails" => value.CreateForeignInformationBinding(),
-                        _ => value.CreateLocalInformationBinding(),
+                        _ => value!.CreateLocalInformationBinding(),
                     };
                 }
+                else {
+                    theDistributor = null;
+                }
 
-                theContactDetails = null;
                 if (value is not null) {
                     theContactDetails = value?.role switch
                     {
                         "theDistributor" => value.CreateForeignInformationBinding(),
-                        _ => value.CreateLocalInformationBinding(),
+                        _ => value!.CreateLocalInformationBinding(),
                     };
+                }
+                else {
+                    theContactDetails = null;
                 }
             }
         }
 
         public override void Load(S100Framework.DomainModel.InformationAssociation informationAssociation) {
-            associationConnector = associationConnectorInformations.Single(e => e.InformationType.Equals(informationAssociation.AssociationConnectorTypeName));
+            association = associationConnectorInformations.SingleOrDefault(e => e.InformationType.Equals(informationAssociation.AssociationConnectorTypeName));
             theDistributor?.Load(informationAssociation, "theDistributor");
             theContactDetails?.Load(informationAssociation, "theContactDetails");
         }
@@ -4236,7 +4342,7 @@ namespace S100Framework.WPF.ViewModel.S128
             var instance = new InformationAssociation
             {
                 Code = this.Code,
-                AssociationConnectorTypeName = associationConnector!.InformationType,
+                AssociationConnectorTypeName = association!.InformationType,
             };
             theDistributor?.Save(instance, "theDistributor");
             theContactDetails?.Save(instance, "theContactDetails");
@@ -4284,35 +4390,39 @@ namespace S100Framework.WPF.ViewModel.S128
             }
         }
 
-        public override InformationAssociationConnector? associationConnector {
+        public override InformationAssociationConnector? association {
             get {
                 return _associationConnector;
             }
 
             set {
                 this.SetValue(ref _associationConnector, value);
-                theCatalogueElement = null;
                 if (value is not null) {
                     theCatalogueElement = value?.role switch
                     {
                         "thePriceInformation" => value.CreateForeignInformationBinding(),
-                        _ => value.CreateLocalInformationBinding(),
+                        _ => value!.CreateLocalInformationBinding(),
                     };
                 }
+                else {
+                    theCatalogueElement = null;
+                }
 
-                thePriceInformation = null;
                 if (value is not null) {
                     thePriceInformation = value?.role switch
                     {
                         "theCatalogueElement" => value.CreateForeignInformationBinding(),
-                        _ => value.CreateLocalInformationBinding(),
+                        _ => value!.CreateLocalInformationBinding(),
                     };
+                }
+                else {
+                    thePriceInformation = null;
                 }
             }
         }
 
         public override void Load(S100Framework.DomainModel.InformationAssociation informationAssociation) {
-            associationConnector = associationConnectorInformations.Single(e => e.InformationType.Equals(informationAssociation.AssociationConnectorTypeName));
+            association = associationConnectorInformations.SingleOrDefault(e => e.InformationType.Equals(informationAssociation.AssociationConnectorTypeName));
             theCatalogueElement?.Load(informationAssociation, "theCatalogueElement");
             thePriceInformation?.Load(informationAssociation, "thePriceInformation");
         }
@@ -4321,7 +4431,7 @@ namespace S100Framework.WPF.ViewModel.S128
             var instance = new InformationAssociation
             {
                 Code = this.Code,
-                AssociationConnectorTypeName = associationConnector!.InformationType,
+                AssociationConnectorTypeName = association!.InformationType,
             };
             theCatalogueElement?.Save(instance, "theCatalogueElement");
             thePriceInformation?.Save(instance, "thePriceInformation");
@@ -4373,35 +4483,39 @@ namespace S100Framework.WPF.ViewModel.S128
             }
         }
 
-        public override InformationAssociationConnector? associationConnector {
+        public override InformationAssociationConnector? association {
             get {
                 return _associationConnector;
             }
 
             set {
                 this.SetValue(ref _associationConnector, value);
-                theCatalogueOfNauticalProduct = null;
                 if (value is not null) {
                     theCatalogueOfNauticalProduct = value?.role switch
                     {
                         "thePriceInformation" => value.CreateForeignInformationBinding(),
-                        _ => value.CreateLocalInformationBinding(),
+                        _ => value!.CreateLocalInformationBinding(),
                     };
                 }
+                else {
+                    theCatalogueOfNauticalProduct = null;
+                }
 
-                thePriceInformation = null;
                 if (value is not null) {
                     thePriceInformation = value?.role switch
                     {
                         "theCatalogueOfNauticalProduct" => value.CreateForeignInformationBinding(),
-                        _ => value.CreateLocalInformationBinding(),
+                        _ => value!.CreateLocalInformationBinding(),
                     };
+                }
+                else {
+                    thePriceInformation = null;
                 }
             }
         }
 
         public override void Load(S100Framework.DomainModel.InformationAssociation informationAssociation) {
-            associationConnector = associationConnectorInformations.Single(e => e.InformationType.Equals(informationAssociation.AssociationConnectorTypeName));
+            association = associationConnectorInformations.SingleOrDefault(e => e.InformationType.Equals(informationAssociation.AssociationConnectorTypeName));
             theCatalogueOfNauticalProduct?.Load(informationAssociation, "theCatalogueOfNauticalProduct");
             thePriceInformation?.Load(informationAssociation, "thePriceInformation");
         }
@@ -4410,7 +4524,7 @@ namespace S100Framework.WPF.ViewModel.S128
             var instance = new InformationAssociation
             {
                 Code = this.Code,
-                AssociationConnectorTypeName = associationConnector!.InformationType,
+                AssociationConnectorTypeName = association!.InformationType,
             };
             theCatalogueOfNauticalProduct?.Save(instance, "theCatalogueOfNauticalProduct");
             thePriceInformation?.Save(instance, "thePriceInformation");
@@ -4458,35 +4572,39 @@ namespace S100Framework.WPF.ViewModel.S128
             }
         }
 
-        public override InformationAssociationConnector? associationConnector {
+        public override InformationAssociationConnector? association {
             get {
                 return _associationConnector;
             }
 
             set {
                 this.SetValue(ref _associationConnector, value);
-                theProducer = null;
                 if (value is not null) {
                     theProducer = value?.role switch
                     {
                         "theContactDetails" => value.CreateForeignInformationBinding(),
-                        _ => value.CreateLocalInformationBinding(),
+                        _ => value!.CreateLocalInformationBinding(),
                     };
                 }
+                else {
+                    theProducer = null;
+                }
 
-                theContactDetails = null;
                 if (value is not null) {
                     theContactDetails = value?.role switch
                     {
                         "theProducer" => value.CreateForeignInformationBinding(),
-                        _ => value.CreateLocalInformationBinding(),
+                        _ => value!.CreateLocalInformationBinding(),
                     };
+                }
+                else {
+                    theContactDetails = null;
                 }
             }
         }
 
         public override void Load(S100Framework.DomainModel.InformationAssociation informationAssociation) {
-            associationConnector = associationConnectorInformations.Single(e => e.InformationType.Equals(informationAssociation.AssociationConnectorTypeName));
+            association = associationConnectorInformations.SingleOrDefault(e => e.InformationType.Equals(informationAssociation.AssociationConnectorTypeName));
             theProducer?.Load(informationAssociation, "theProducer");
             theContactDetails?.Load(informationAssociation, "theContactDetails");
         }
@@ -4495,7 +4613,7 @@ namespace S100Framework.WPF.ViewModel.S128
             var instance = new InformationAssociation
             {
                 Code = this.Code,
-                AssociationConnectorTypeName = associationConnector!.InformationType,
+                AssociationConnectorTypeName = association!.InformationType,
             };
             theProducer?.Save(instance, "theProducer");
             theContactDetails?.Save(instance, "theContactDetails");
@@ -4543,35 +4661,39 @@ namespace S100Framework.WPF.ViewModel.S128
             }
         }
 
-        public override InformationAssociationConnector? associationConnector {
+        public override InformationAssociationConnector? association {
             get {
                 return _associationConnector;
             }
 
             set {
                 this.SetValue(ref _associationConnector, value);
-                catalogueHeader = null;
                 if (value is not null) {
                     catalogueHeader = value?.role switch
                     {
                         "theProducer" => value.CreateForeignInformationBinding(),
-                        _ => value.CreateLocalInformationBinding(),
+                        _ => value!.CreateLocalInformationBinding(),
                     };
                 }
+                else {
+                    catalogueHeader = null;
+                }
 
-                theProducer = null;
                 if (value is not null) {
                     theProducer = value?.role switch
                     {
                         "catalogueHeader" => value.CreateForeignInformationBinding(),
-                        _ => value.CreateLocalInformationBinding(),
+                        _ => value!.CreateLocalInformationBinding(),
                     };
+                }
+                else {
+                    theProducer = null;
                 }
             }
         }
 
         public override void Load(S100Framework.DomainModel.InformationAssociation informationAssociation) {
-            associationConnector = associationConnectorInformations.Single(e => e.InformationType.Equals(informationAssociation.AssociationConnectorTypeName));
+            association = associationConnectorInformations.SingleOrDefault(e => e.InformationType.Equals(informationAssociation.AssociationConnectorTypeName));
             catalogueHeader?.Load(informationAssociation, "catalogueHeader");
             theProducer?.Load(informationAssociation, "theProducer");
         }
@@ -4580,7 +4702,7 @@ namespace S100Framework.WPF.ViewModel.S128
             var instance = new InformationAssociation
             {
                 Code = this.Code,
-                AssociationConnectorTypeName = associationConnector!.InformationType,
+                AssociationConnectorTypeName = association!.InformationType,
             };
             catalogueHeader?.Save(instance, "catalogueHeader");
             theProducer?.Save(instance, "theProducer");
@@ -4628,35 +4750,39 @@ namespace S100Framework.WPF.ViewModel.S128
             }
         }
 
-        public override InformationAssociationConnector? associationConnector {
+        public override InformationAssociationConnector? association {
             get {
                 return _associationConnector;
             }
 
             set {
                 this.SetValue(ref _associationConnector, value);
-                theCatalogueElement = null;
                 if (value is not null) {
                     theCatalogueElement = value?.role switch
                     {
                         "elementContainer" => value.CreateForeignInformationBinding(),
-                        _ => value.CreateLocalInformationBinding(),
+                        _ => value!.CreateLocalInformationBinding(),
                     };
                 }
+                else {
+                    theCatalogueElement = null;
+                }
 
-                elementContainer = null;
                 if (value is not null) {
                     elementContainer = value?.role switch
                     {
                         "theCatalogueElement" => value.CreateForeignInformationBinding(),
-                        _ => value.CreateLocalInformationBinding(),
+                        _ => value!.CreateLocalInformationBinding(),
                     };
+                }
+                else {
+                    elementContainer = null;
                 }
             }
         }
 
         public override void Load(S100Framework.DomainModel.InformationAssociation informationAssociation) {
-            associationConnector = associationConnectorInformations.Single(e => e.InformationType.Equals(informationAssociation.AssociationConnectorTypeName));
+            association = associationConnectorInformations.SingleOrDefault(e => e.InformationType.Equals(informationAssociation.AssociationConnectorTypeName));
             theCatalogueElement?.Load(informationAssociation, "theCatalogueElement");
             elementContainer?.Load(informationAssociation, "elementContainer");
         }
@@ -4665,7 +4791,7 @@ namespace S100Framework.WPF.ViewModel.S128
             var instance = new InformationAssociation
             {
                 Code = this.Code,
-                AssociationConnectorTypeName = associationConnector!.InformationType,
+                AssociationConnectorTypeName = association!.InformationType,
             };
             theCatalogueElement?.Save(instance, "theCatalogueElement");
             elementContainer?.Save(instance, "elementContainer");

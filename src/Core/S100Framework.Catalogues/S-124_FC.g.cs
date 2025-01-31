@@ -7,6 +7,8 @@ namespace S100Framework.DomainModel.S124 {
     public static class Information {
         public static Version Version => new Version("1.5");
         public static string[] ComplexTypes => ["featureName", "dateTimeRange", "eNCFeatureReference", "featureReference", "fixedDateRange", "information", "warningInformation", "chartAffected", "affectedChartPublications", "locationName", "generalArea", "locality", "messageSeriesIdentifier", "nAVWARNTitle",];
+        public static string[] InformationAssociationTypes => ["NWPreambleContent", "NWReferences",];
+        public static string[] FeatureAssociationTypes => ["AreaAffected", "TextAssociation",];
         public static string[] InformationTypes => ["NAVWARNPreamble", "References",];
         public static string[] FeatureTypes => ["NAVWARNPart", "NAVWARNAreaAffected", "TextPlacement",];
     }
