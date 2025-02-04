@@ -1,6 +1,8 @@
 using ArcGIS.Core.CIM;
 using ArcGIS.Core.Data;
+using ArcGIS.Core.Geometry;
 using S100Framework.Applications;
+using System.Collections.Generic;
 using System.Text;
 using System.Text.RegularExpressions;
 using Xunit.Abstractions;
@@ -38,7 +40,7 @@ namespace TestNisImporter
 
             StringBuilder csSubtypes = new StringBuilder();
 
-            var featureClass = source.OpenDataset<FeatureClass>("CoastlineL");
+            var featureClass = source.OpenDataset<FeatureClass>("NaturalFeaturesP");
 
             var subtypes = featureClass.GetDefinition().GetSubtypes();
 
@@ -50,17 +52,66 @@ namespace TestNisImporter
 
             foreach (var keyValuePair in sortedDict) {
                 csSubtypes.AppendLine($"\t\tcase {keyValuePair.Key}: {{ // {keyValuePair.Value}");
+
+                csSubtypes.AppendLine($"\t\tvar instance = new XXX(){{");
+                csSubtypes.AppendLine($"\t\t}};");
+
+                csSubtypes.AppendLine($"\t\t\tif (plts_comp_scale != default) {{");
+                csSubtypes.AppendLine($"\t\t\t\t\tinstance.scaleMinimum = plts_comp_scale;");
+                csSubtypes.AppendLine($"\t\t\t}}");
+                csSubtypes.AppendLine($"");
+                csSubtypes.AppendLine($"\t\t\tAddCondition(instance.condition, feature);");
+                csSubtypes.AppendLine($"\t\t\tAddStatus(instance.status, feature);");
+                csSubtypes.AppendLine($"\t\t\tAddFeatureName(instance.featureName, feature);");
+                csSubtypes.AppendLine($"\t\t\tAddInformation(instance.information, feature);");
+                csSubtypes.AppendLine($"\t\t\tbuffer[\"ps\"] = ps101;");
+                csSubtypes.AppendLine($"\t\t\tbuffer[\"code\"] = instance.GetType().Name;");
+                csSubtypes.AppendLine($"\t\t\tbuffer[\"json\"] = System.Text.Json.JsonSerializer.Serialize(instance);");
+                csSubtypes.AppendLine($"\t\t\tbuffer[\"shape\"] = current.SHAPE;");
+                csSubtypes.AppendLine($"\t\t\tinsert.Insert(buffer);");
+                csSubtypes.AppendLine($"\t\t\tLogger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));");
+                csSubtypes.AppendLine($"\t\t\tconvertedCount++;");
+
+
                 csSubtypes.AppendLine($"\t\t}}");
                 csSubtypes.AppendLine($"\t\tbreak;");
             }
 
-            csSubtypes.AppendLine($"\t\tdefault:");
+            
+
+
+                        csSubtypes.AppendLine($"\t\tdefault:");
             csSubtypes.AppendLine($"\t\t\t// code block");
             csSubtypes.AppendLine($"\t\t\tSystem.Diagnostics.Debugger.Break();");
             csSubtypes.AppendLine($"\t\tbreak;");
 
             Console.WriteLine(csSubtypes.ToString());
         }
+
+        [Fact]
+        public void ListDomainValues() {
+            var sourcePath = @$"{Environment.GetEnvironmentVariable("OneDrive")}\ArcGIS\Projects\Vortex\replica.gdb";
+            var source = new Geodatabase(new FileGeodatabaseConnectionPath(new Uri(IO.Path.GetFullPath(sourcePath))));
+
+            StringBuilder csDomainValues = new StringBuilder();
+
+            var featureClass = source.OpenDataset<FeatureClass>("CoastlineL");
+            var fieldName = "CATSLC";
+
+            var field = featureClass.GetDefinition().GetFields().FirstOrDefault<Field>(e => e.Name.ToLower() == fieldName.ToLower());
+
+            var sortedDict = (field.GetDomain(null) as CodedValueDomain).GetCodedValuePairs();
+            csDomainValues.AppendLine($"/*");
+            csDomainValues.AppendLine($"{field.GetDomain(null).GetName()}");
+            foreach (var keyValuePair in sortedDict) {
+                csDomainValues.AppendLine($"\t\t\t{keyValuePair.Key}: {keyValuePair.Value}");
+
+            }
+            csDomainValues.AppendLine($"*/");
+            
+            Console.WriteLine(csDomainValues.ToString());
+        }
+
 
         [Fact]
         public void GenerateNisModel() {
@@ -165,6 +216,11 @@ namespace TestNisImporter
                     var fieldInfo = (Type: "Int32", Conversion: "Convert.ToInt32", DefaultValue: "default", Alias: string.Empty);
 
                     foreach (var field in datasetfields) {
+
+                        if (field.Name.ToUpper().StartsWith("SHAPE_")) {
+                            Console.WriteLine("");
+                            continue;
+                        }
 
                         fieldInfo = field.FieldType switch {
                             (FieldType)esriFieldType.esriFieldTypeBigInteger => (Type: "internal long?", Conversion: "Convert.ToLong", Default: "default", Alias: field.AliasName),

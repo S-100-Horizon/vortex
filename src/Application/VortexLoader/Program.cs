@@ -1,7 +1,9 @@
-﻿using ArcGIS.Core.Data;
+﻿using ArcGIS.Core.CIM;
+using ArcGIS.Core.Data;
 using ArcGIS.Core.Geometry;
 using CommandLine;
 using S100Framework.ArcGIS.Core;
+using System;
 using System.Text.Json;
 using System.Text.RegularExpressions;
 using Esri = ArcGIS.Core.Hosting.Host;
@@ -67,6 +69,8 @@ namespace S100Framework.Applications
 
             Func<Geodatabase> createGeodatabase = () => { throw new NotImplementedException(); };
 
+            
+
             arguments.WithParsed<Options>(o => {
                 var target = o.Target!;
 
@@ -76,11 +80,29 @@ namespace S100Framework.Applications
                 else if (IO.Directory.Exists(target) && ".gdb".Equals(IO.Path.GetExtension(target), StringComparison.InvariantCultureIgnoreCase)) {
                     createGeodatabase = () => { return new Geodatabase(new FileGeodatabaseConnectionPath(new Uri(IO.Path.GetFullPath(target)))); };
                 }
+                else if (Uri.IsWellFormedUriString(target, UriKind.Absolute)) {
+
+                    createGeodatabase = () => {
+                        var serviceProps = new ServiceConnectionProperties(new Uri(target, UriKind.Absolute));
+                        serviceProps.Version = "sde.DEFAULT";
+
+                        var geodatabase = new Geodatabase(serviceProps);
+                        geodatabase.GetVersionManager().CreateVersion(new VersionDescription() {
+                            AccessType = VersionAccessType.Public,
+                            Description = "S-57 Conversion",
+                            Name = "20250203"
+                        });
+
+                        return geodatabase;
+                    };
+
+                }
                 else
                     throw new System.ArgumentOutOfRangeException(nameof(target));
             });
 
             using Geodatabase target = createGeodatabase();
+            
 
             var result = command switch {
                 "GML" => ImporterGML(target, arguments),

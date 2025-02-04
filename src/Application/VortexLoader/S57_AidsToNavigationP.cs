@@ -62,9 +62,6 @@ namespace S100Framework.Applications
                 var colours = new List<colour>();
 
 
-
-
-
                 // if slave continue - retrieve related slaves for structure in the relevant structure
                 if (featureRelations.IsSlave(globalid)) {
                     continue;

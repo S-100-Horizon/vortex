@@ -21,10 +21,11 @@ namespace VortexLoader
             _isInitialized = true;
         }
 
-        internal void GetRelated(Guid uid) {
+        internal IList<PLTS_Frel> GetRelated(Guid uid) {
             if (!_isInitialized)
                 throw new ArgumentException("Not initalized. Call intialize.");
 
+            return _srcObjectToFrel[uid];
         }
 
         internal bool IsSlave(Guid globalid) {
@@ -65,7 +66,10 @@ namespace VortexLoader
                 }
             }
 
-            // Create repo of all slave objects to handled
+            // Create repo of all slave objects to be handled
+
+
+
         }
     }
 }

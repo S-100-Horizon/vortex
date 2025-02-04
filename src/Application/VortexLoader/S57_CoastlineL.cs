@@ -96,19 +96,15 @@ namespace S100Framework.Applications
                         break;
                     case 
                     5: { // SLCONS_ShorelineConstruction
-
-
                             // Restricted allowable S-101 enumerate values for STATUS.
                             // Reconcile conversion of CATSLC = 6(wharf(quay)) to
                             // category of shoreline construction = 6(wharf) or 22
                             // (quay).
 
-
                             var instance = new ShorelineConstruction();
                             if (plts_comp_scale != default) {
                                 instance.scaleMinimum = plts_comp_scale;
                             }
-
 
                             /*
                                 NAUTICAL_ENC_CATSLC
