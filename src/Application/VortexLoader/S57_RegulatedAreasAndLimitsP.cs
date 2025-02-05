@@ -1,7 +1,6 @@
 ﻿using ArcGIS.Core.Data;
-using VortexLoader.S57.esri;
+using S100Framework.Applications.S57.esri;
 using S100Framework.DomainModel.S101.FeatureTypes;
-using VortexLoader.S57.esri;
 
 namespace S100Framework.Applications
 {
@@ -11,7 +10,7 @@ namespace S100Framework.Applications
             var tableName = "RegulatedAreasAndLimitsP";
             var ps101 = "S-101";
 
-            using var featureclass = target.OpenDataset<FeatureClass>("surface");
+            using var featureclass = target.OpenDataset<FeatureClass>(LayerDefinitions.GetName("surface"));
 
             using var regulatedAreasAndLimitsP = source.OpenDataset<FeatureClass>(tableName);
 

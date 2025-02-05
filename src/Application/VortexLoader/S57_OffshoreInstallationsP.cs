@@ -1,8 +1,9 @@
 ﻿using ArcGIS.Core.Data;
+using S100Framework.Applications.S57.esri;
 using S100Framework.DomainModel.S101;
 using S100Framework.DomainModel.S101.FeatureTypes;
 using System.Reflection.Emit;
-using VortexLoader.S57.esri;
+
 
 namespace S100Framework.Applications
 {
@@ -12,7 +13,7 @@ namespace S100Framework.Applications
             var tableName = "OffshoreInstallationsP";
             
 
-            using var featureclass = target.OpenDataset<FeatureClass>("point");
+            using var featureclass = target.OpenDataset<FeatureClass>(LayerDefinitions.GetName("point"));
 
             using var offshoreinstallations = source.OpenDataset<FeatureClass>(tableName);
 

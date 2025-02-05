@@ -3,7 +3,6 @@ using ArcGIS.Core.Geometry;
 using CommandLine;
 using S100Framework.DomainModel.S101;
 using S100Framework.DomainModel.S101.ComplexAttributes;
-using VortexLoader.S57.esri;
 using static S100Framework.Applications.VortexLoader;
 using IO = System.IO;
 
@@ -16,6 +15,7 @@ namespace S100Framework.Applications
         static string _notesPath = "";
         static string ps101 = "S-101";
         static string ps128 = "S-128";
+
 
         public static bool Load(Geodatabase destination, ParserResult<Options> arguments) {
             Func<Geodatabase> createGeodatabase = () => { throw new NotImplementedException(); };
@@ -49,14 +49,14 @@ namespace S100Framework.Applications
             using Geodatabase source = createGeodatabase();
             {
                 var query = new QueryFilter {
-                    //WhereClause = $"ps = 'S-101'",
+                    WhereClause = $"1=1",
                 };
 
-                using var point = destination.OpenDataset<FeatureClass>("point");
-                using var pointset = destination.OpenDataset<FeatureClass>("pointset");
-                using var curve = destination.OpenDataset<FeatureClass>("curve");
-                using var surface = destination.OpenDataset<FeatureClass>("surface");
-                using var informationtype = destination.OpenDataset<Table>("informationtype");
+                using var point = destination.OpenDataset<FeatureClass>(LayerDefinitions.GetName("point"));
+                using var pointset = destination.OpenDataset<FeatureClass>(LayerDefinitions.GetName("pointset"));
+                using var curve = destination.OpenDataset<FeatureClass>(LayerDefinitions.GetName("curve"));
+                using var surface = destination.OpenDataset<FeatureClass>(LayerDefinitions.GetName("surface"));
+                using var informationtype = destination.OpenDataset<Table>(LayerDefinitions.GetName("informationType"));
 
                 point.DeleteRows(query);
                 pointset.DeleteRows(query);

@@ -4,7 +4,7 @@
 using ArcGIS.Core.Data;
 using ArcGIS.Core.Geometry;
 using System.ComponentModel;
-namespace VortexLoader.S57Auto.esri
+namespace S100Framework.Applications.S57Auto.esri
 {
 	internal class PLTS_SpatialAttributeL {
 

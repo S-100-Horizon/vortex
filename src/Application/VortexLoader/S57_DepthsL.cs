@@ -1,8 +1,9 @@
 ﻿using ArcGIS.Core.Data;
 using S100Framework.DomainModel.S101;
-using VortexLoader.S57.esri;
+
 using S100Framework.DomainModel.S101.InformationTypes;
 using S100Framework.DomainModel.S101.FeatureTypes;
+using S100Framework.Applications.S57.esri;
 
 
 namespace S100Framework.Applications
@@ -24,9 +25,9 @@ namespace S100Framework.Applications
 
             var depthsl = source.OpenDataset<FeatureClass>("DepthsL");
             var plts_spatialattributel = source.OpenDataset<FeatureClass>("PLTS_SpatialAttributeL");
-            using var informationtype = target.OpenDataset<Table>("informationtype");
+            using var informationtype = target.OpenDataset<Table>(LayerDefinitions.GetName("informationType"));
 
-            using var featureClass = target.OpenDataset<FeatureClass>("curve");
+            using var featureClass = target.OpenDataset<FeatureClass>(LayerDefinitions.GetName("curve"));
             
 
             using var buffer = featureClass.CreateRowBuffer();

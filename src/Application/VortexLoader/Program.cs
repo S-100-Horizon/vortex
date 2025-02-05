@@ -1,9 +1,7 @@
-﻿using ArcGIS.Core.CIM;
-using ArcGIS.Core.Data;
+﻿using ArcGIS.Core.Data;
 using ArcGIS.Core.Geometry;
 using CommandLine;
 using S100Framework.ArcGIS.Core;
-using System;
 using System.Text.Json;
 using System.Text.RegularExpressions;
 using Esri = ArcGIS.Core.Hosting.Host;
@@ -87,11 +85,24 @@ namespace S100Framework.Applications
                         serviceProps.Version = "sde.DEFAULT";
 
                         var geodatabase = new Geodatabase(serviceProps);
-                        geodatabase.GetVersionManager().CreateVersion(new VersionDescription() {
-                            AccessType = VersionAccessType.Public,
-                            Description = "S-57 Conversion",
-                            Name = "20250203"
-                        });
+
+                        var destinationVersion = geodatabase.GetVersionManager().GetVersionNames().FirstOrDefault(name => name.EndsWith("20250203", StringComparison.InvariantCultureIgnoreCase));
+
+                        if (destinationVersion == null) {
+                            geodatabase.GetVersionManager().CreateVersion(new VersionDescription() {
+                                AccessType = VersionAccessType.Public,
+                                Description = "S-57 Conversion",
+                                Name = "20250203"
+                            });
+                        }
+
+                        serviceProps.Version = destinationVersion;
+                        geodatabase = new Geodatabase(serviceProps);
+                        
+
+                        LayerDefinitions.Initialize(geodatabase);
+
+                        //var featureClass = geodatabase.OpenDataset<FeatureClass>(LayerDefinitions.GetName("curve"));
 
                         return geodatabase;
                     };
@@ -131,10 +142,10 @@ namespace S100Framework.Applications
 
             using var tableInformationType = geodatabase.OpenDataset<Table>("informationtype");
 
-            using var fcPoint = geodatabase.OpenDataset<FeatureClass>("point");
-            using var fcPointSet = geodatabase.OpenDataset<FeatureClass>("pointset");
-            using var fcCurve = geodatabase.OpenDataset<FeatureClass>("curve");
-            using var fcSurface = geodatabase.OpenDataset<FeatureClass>("surface");
+            using var fcPoint = geodatabase.OpenDataset<FeatureClass>(LayerDefinitions.GetName("point"));
+            using var fcPointSet = geodatabase.OpenDataset<FeatureClass>(LayerDefinitions.GetName("pointset"));
+            using var fcCurve = geodatabase.OpenDataset<FeatureClass>(LayerDefinitions.GetName("curve"));
+            using var fcSurface = geodatabase.OpenDataset<FeatureClass>(LayerDefinitions.GetName("surface"));
 
             using var bufferInformationType = tableInformationType.CreateRowBuffer();
             using var bufferPoint = fcPoint.CreateRowBuffer();

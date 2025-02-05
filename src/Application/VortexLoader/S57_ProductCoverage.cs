@@ -1,5 +1,5 @@
 ﻿using ArcGIS.Core.Data;
-using VortexLoader.S57.esri;
+using S100Framework.Applications.S57.esri;
 
 namespace S100Framework.Applications
 {
@@ -10,7 +10,7 @@ namespace S100Framework.Applications
 
             using var productDefinitionsTable = source.OpenDataset<Table>("ProductDefinitions");
             using var productCoverageFeatureClass = source.OpenDataset<FeatureClass>("ProductCoverage");
-            using var surfaceFeatureClass = target.OpenDataset<FeatureClass>("surface");
+            using var surfaceFeatureClass = target.OpenDataset<FeatureClass>(LayerDefinitions.GetName("surface"));
 
             surfaceFeatureClass.DeleteRows(new QueryFilter {
                 WhereClause = $"ps = 'S-128' AND (code = 'ElectronicProduct' or code = 'instance')",

@@ -1,8 +1,9 @@
 ﻿using ArcGIS.Core.Data;
 using S100Framework.DomainModel.S101.FeatureTypes;
 using DomainModel = S100Framework.DomainModel;
-using VortexLoader.S57.esri;
+
 using S100Framework.DomainModel.S101;
+using S100Framework.Applications.S57.esri;
 
 namespace S100Framework.Applications
 {
@@ -12,7 +13,7 @@ namespace S100Framework.Applications
             var tableName = "NaturalFeaturesA";
             
             using var s = source.OpenDataset<FeatureClass>(tableName);
-            using var surface = target.OpenDataset<FeatureClass>("surface");
+            using var surface = target.OpenDataset<FeatureClass>(LayerDefinitions.GetName("surface"));
 
             using var bufferSurface = surface.CreateRowBuffer();
             using var insertSurface = surface.CreateInsertCursor();

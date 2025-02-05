@@ -1,12 +1,13 @@
 ﻿using ArcGIS.Core.Data;
+using S100Framework.Applications.S57.esri;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using VortexLoader.S57.esri;
 
-namespace VortexLoader
+
+namespace S100Framework.Applications
 {
     internal class FeatureRelations
     {

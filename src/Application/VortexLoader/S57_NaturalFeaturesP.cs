@@ -1,7 +1,8 @@
 ﻿using ArcGIS.Core.Data;
+using S100Framework.Applications.S57.esri;
 using S100Framework.DomainModel.S101;
 using S100Framework.DomainModel.S101.FeatureTypes;
-using VortexLoader.S57.esri;
+
 
 namespace S100Framework.Applications
 {
@@ -11,7 +12,7 @@ namespace S100Framework.Applications
             var tableName = "NaturalFeaturesP";
 
             using var s = source.OpenDataset<FeatureClass>(tableName);
-            using var featureclass = target.OpenDataset<FeatureClass>("point");
+            using var featureclass = target.OpenDataset<FeatureClass>(LayerDefinitions.GetName("point"));
 
             using var buffer = featureclass.CreateRowBuffer();
             using var insert = featureclass.CreateInsertCursor();

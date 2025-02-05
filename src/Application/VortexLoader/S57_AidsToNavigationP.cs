@@ -1,9 +1,8 @@
 ﻿using ArcGIS.Core.Data;
+using S100Framework.Applications.S57.esri;
 using S100Framework.DomainModel.S101;
 using S100Framework.DomainModel.S101.ComplexAttributes;
 using S100Framework.DomainModel.S101.FeatureTypes;
-using VortexLoader;
-using VortexLoader.S57.esri;
 
 
 namespace S100Framework.Applications
@@ -18,7 +17,7 @@ namespace S100Framework.Applications
 
             var aidstonavigation = source.OpenDataset<FeatureClass>(tableName);
 
-            using var featureClass = target.OpenDataset<FeatureClass>("point");
+            using var featureClass = target.OpenDataset<FeatureClass>(LayerDefinitions.GetName("point"));
             
 
             using var buffer = featureClass.CreateRowBuffer();

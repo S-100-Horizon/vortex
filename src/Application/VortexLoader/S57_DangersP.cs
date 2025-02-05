@@ -1,10 +1,10 @@
 ﻿using ArcGIS.Core.Data;
+using S100Framework.Applications.S57.esri;
 using S100Framework.DomainModel;
 using S100Framework.DomainModel.S101;
 using S100Framework.DomainModel.S101.FeatureTypes;
 using System;
 using System.Reflection.Metadata.Ecma335;
-using VortexLoader.S57.esri;
 
 namespace S100Framework.Applications
 {
@@ -17,7 +17,7 @@ namespace S100Framework.Applications
 
             //var dredged = source.OpenDataset<FeatureClass>("Depare");
 
-            using var featureClass = target.OpenDataset<FeatureClass>("point");
+            using var featureClass = target.OpenDataset<FeatureClass>(LayerDefinitions.GetName("point"));
             
 
             using var buffer = featureClass.CreateRowBuffer();

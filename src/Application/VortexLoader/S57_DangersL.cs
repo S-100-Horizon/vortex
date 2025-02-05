@@ -1,7 +1,8 @@
 ﻿using ArcGIS.Core.Data;
+using S100Framework.Applications.S57.esri;
 using S100Framework.DomainModel.S101;
 using S100Framework.DomainModel.S101.FeatureTypes;
-using VortexLoader.S57.esri;
+
 
 namespace S100Framework.Applications
 {
@@ -14,7 +15,7 @@ namespace S100Framework.Applications
 
             //var dredged = source.OpenDataset<FeatureClass>("Depare");
 
-            using var featureClass = target.OpenDataset<FeatureClass>("curve");
+            using var featureClass = target.OpenDataset<FeatureClass>(LayerDefinitions.GetName("curve"));
             
 
             using var buffer = featureClass.CreateRowBuffer();

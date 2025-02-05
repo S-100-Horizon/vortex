@@ -1,10 +1,10 @@
 ﻿using ArcGIS.Core.Data;
 using ArcGIS.Core.Geometry;
+using S100Framework.Applications.S57.esri;
 using S100Framework.DomainModel.S101;
 using S100Framework.DomainModel.S101.ComplexAttributes;
 using S100Framework.DomainModel.S101.FeatureTypes;
 using S100Framework.DomainModel.S101.InformationTypes;
-using VortexLoader.S57.esri;
 
 namespace S100Framework.Applications
 {
@@ -14,8 +14,8 @@ namespace S100Framework.Applications
             var tableName = "SoundingsP";
 
             using var s = source.OpenDataset<FeatureClass>("SoundingsP");
-            using var pointset = target.OpenDataset<FeatureClass>("pointset");
-            using var informationtype = target.OpenDataset<Table>("informationtype");
+            using var pointset = target.OpenDataset<FeatureClass>(LayerDefinitions.GetName("pointset"));
+            using var informationtype = target.OpenDataset<Table>(LayerDefinitions.GetName("informationType"));
 
             using var bufferPointset = pointset.CreateRowBuffer();
             using var insertPointset = pointset.CreateInsertCursor();

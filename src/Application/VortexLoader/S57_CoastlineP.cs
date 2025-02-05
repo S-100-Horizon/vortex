@@ -1,5 +1,5 @@
 ﻿using ArcGIS.Core.Data;
-using VortexLoader.S57.esri;
+using S100Framework.Applications.S57.esri;
 using S100Framework.DomainModel.S101;
 using S100Framework.DomainModel.S101.FeatureTypes;
 
@@ -12,7 +12,7 @@ namespace S100Framework.Applications
 
             var coastlinep = source.OpenDataset<FeatureClass>(tableName);
 
-            using var featureClass = target.OpenDataset<FeatureClass>("point");
+            using var featureClass = target.OpenDataset<FeatureClass>(LayerDefinitions.GetName("point"));
             
 
             using var buffer = featureClass.CreateRowBuffer();
