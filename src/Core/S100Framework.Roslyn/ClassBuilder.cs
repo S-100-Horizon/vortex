@@ -122,6 +122,9 @@ namespace S100Framework
                     var code = e.Element(XName.Get("code", scope_S100))!.Value;
 
                     var getEnumType = (XElement simpleAttribute) => {
+                        if (simpleAttribute.Element(XName.Get("listedValues", scope_S100)) is null)
+                            return default;
+
                         if (enumTypes.ContainsKey(code))
                             return enumTypes[code];
 

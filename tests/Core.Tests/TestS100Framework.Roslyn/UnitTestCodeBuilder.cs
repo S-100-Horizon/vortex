@@ -241,6 +241,19 @@ namespace TestS100Framework
             }
 
             [Fact]
+            public void Build_S501() {
+                var s100 = XDocument.Load(@".\Artifacts\S-501_FC_0_0_5_2024-08-09 - GST.xml");
+
+                var content = S100Framework.ClassBuilder.CatalogueBuilder(s100, "http://www.iho.int/S201/1.0");
+
+                File.WriteAllText(@".\..\..\..\S-501_FC.cs", content.fc, Encoding.UTF8);
+                File.WriteAllText(@".\..\..\..\S-501_ViewModel.cs", content.view, Encoding.UTF8);
+
+                File.WriteAllText(@".\..\..\..\DomainModelBase.cs", content.common, Encoding.UTF8);
+            }
+
+
+            [Fact]
             public void Test_FeatureBindings() {
                 var productSpecification = XDocument.Load(@".\Artifacts\FeatureCatalogue.xml");
 
