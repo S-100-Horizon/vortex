@@ -31,6 +31,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "S100Framework.WPF", "src\UI
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestNisImporter", "tests\Core.Tests\TestNisImporter\TestNisImporter.csproj", "{9AF56CAB-F83B-4043-AE1C-F69D4DB15E71}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "S100Framework.YAML", "src\Core\S100Framework.YAML\S100Framework.YAML.csproj", "{4B7CD27B-CED0-4E0A-A90C-86411445ED13}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -81,6 +83,10 @@ Global
 		{9AF56CAB-F83B-4043-AE1C-F69D4DB15E71}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9AF56CAB-F83B-4043-AE1C-F69D4DB15E71}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9AF56CAB-F83B-4043-AE1C-F69D4DB15E71}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4B7CD27B-CED0-4E0A-A90C-86411445ED13}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4B7CD27B-CED0-4E0A-A90C-86411445ED13}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4B7CD27B-CED0-4E0A-A90C-86411445ED13}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4B7CD27B-CED0-4E0A-A90C-86411445ED13}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -97,6 +103,7 @@ Global
 		{5433C338-6B59-4A0A-AC58-666BC2957464} = {0A3B2562-DD1E-4E0C-B170-AEE80FF4DD0C}
 		{D2C9EDAE-4FB7-4CB5-AD63-1ABF7D9E80BD} = {50685D39-00FF-4EDD-B55F-B37D1B24A5DF}
 		{9AF56CAB-F83B-4043-AE1C-F69D4DB15E71} = {0A3B2562-DD1E-4E0C-B170-AEE80FF4DD0C}
+		{4B7CD27B-CED0-4E0A-A90C-86411445ED13} = {50685D39-00FF-4EDD-B55F-B37D1B24A5DF}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {E973A0E9-A7CE-469B-A225-A426A3E0FAAF}

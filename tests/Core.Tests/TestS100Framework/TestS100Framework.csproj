@@ -41,6 +41,7 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
+    <PackageReference Include="JsonFlatten" Version="1.0.4" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.12.0" />
     <PackageReference Include="Pluralize.NET.Core" Version="1.0.0" />
     <PackageReference Include="xunit" Version="2.9.2" />
@@ -77,6 +78,7 @@
     <ProjectReference Include="..\..\..\src\Core\S100Framework.Catalogues\S100Framework.Catalogues.csproj" />
     <ProjectReference Include="..\..\..\src\Core\S100Framework.GML\S100Framework.GML.csproj" />
     <ProjectReference Include="..\..\..\src\Core\S100Framework.Roslyn\S100Framework.Roslyn.csproj" />
+    <ProjectReference Include="..\..\..\src\Core\S100Framework.YAML\S100Framework.YAML.csproj" />
   </ItemGroup>
 
   <ItemGroup>
