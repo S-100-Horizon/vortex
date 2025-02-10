@@ -12,9 +12,9 @@ namespace S100Framework.Applications
 
 
 
-            var tracksAndRoutesL = source.OpenDataset<FeatureClass>(tableName);
+            var tracksAndRoutesL = source.OpenDataset<FeatureClass>(source.GetName(tableName));
 
-            using var featureClass = target.OpenDataset<FeatureClass>(LayerDefinitions.GetName("point"));
+            using var featureClass = target.OpenDataset<FeatureClass>(target.GetName("point"));
 
 
             using var buffer = featureClass.CreateRowBuffer();

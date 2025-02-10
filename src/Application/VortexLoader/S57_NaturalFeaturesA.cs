@@ -12,8 +12,8 @@ namespace S100Framework.Applications
         private static void S57_NaturalFeaturesA(Geodatabase source, Geodatabase target, QueryFilter filter) {
             var tableName = "NaturalFeaturesA";
             
-            using var s = source.OpenDataset<FeatureClass>(tableName);
-            using var surface = target.OpenDataset<FeatureClass>(LayerDefinitions.GetName("surface"));
+            using var s = source.OpenDataset<FeatureClass>(source.GetName(tableName));
+            using var surface = target.OpenDataset<FeatureClass>(target.GetName("surface"));
 
             using var bufferSurface = surface.CreateRowBuffer();
             using var insertSurface = surface.CreateInsertCursor();

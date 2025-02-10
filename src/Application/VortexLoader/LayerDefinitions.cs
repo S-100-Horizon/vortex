@@ -8,21 +8,15 @@ using System.Threading.Tasks;
 
 namespace S100Framework.Applications
 {
-    internal static class LayerDefinitions
+    internal static class GeodatabaseExtensions
     {
-
-        static Geodatabase _geodatabase;
+        static bool _isInitialized = false;
         private static IReadOnlyList<FeatureClassDefinition> _layerDefinitions;
         private static IReadOnlyList<TableDefinition> _tableDefinitions;
 
-        static LayerDefinitions() {
-        }
-        internal static void Initialize(Geodatabase geodatabase) {
-            _geodatabase = geodatabase;
+        private static void Initialize(this Geodatabase geodatabase) {
             _layerDefinitions = geodatabase.GetDefinitions<FeatureClassDefinition>();
             _tableDefinitions = geodatabase.GetDefinitions<TableDefinition>();
-
-
         }
 
         public static IReadOnlyList<FeatureClassDefinition> Layers {
@@ -30,7 +24,12 @@ namespace S100Framework.Applications
             set { _layerDefinitions = value; }
         }
 
-        internal static string GetName(string name) {
+        internal static string GetName(this Geodatabase geodatabase, string name) {
+            if (!_isInitialized) { 
+                geodatabase.Initialize();
+                //_isInitialized = true;
+            }
+
             var tableName = _layerDefinitions.FirstOrDefault<FeatureClassDefinition>(e => e.GetAliasName().ToLower().Equals(name.ToLower(), StringComparison.InvariantCultureIgnoreCase))?.GetName();
             if (tableName == null) {
                 tableName = _tableDefinitions.FirstOrDefault<TableDefinition>(e => e.GetAliasName().ToLower().Equals(name.ToLower(), StringComparison.InvariantCultureIgnoreCase))?.GetName();

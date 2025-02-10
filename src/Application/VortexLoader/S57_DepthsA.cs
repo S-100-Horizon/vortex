@@ -12,8 +12,8 @@ namespace S100Framework.Applications
 
             
 
-            using var s = source.OpenDataset<FeatureClass>("DepthsA");
-            using var featureClass = target.OpenDataset<FeatureClass>(LayerDefinitions.GetName("surface"));
+            using var s = source.OpenDataset<FeatureClass>(source.GetName("DepthsA"));
+            using var featureClass = target.OpenDataset<FeatureClass>(target.GetName("surface"));
 
             using var buffer = featureClass.CreateRowBuffer();
             using var insert = featureClass.CreateInsertCursor();

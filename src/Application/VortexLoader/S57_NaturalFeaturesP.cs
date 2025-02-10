@@ -11,8 +11,8 @@ namespace S100Framework.Applications
         private static void S57_NaturalFeaturesP(Geodatabase source, Geodatabase target, QueryFilter filter) {
             var tableName = "NaturalFeaturesP";
 
-            using var s = source.OpenDataset<FeatureClass>(tableName);
-            using var featureclass = target.OpenDataset<FeatureClass>(LayerDefinitions.GetName("point"));
+            using var s = source.OpenDataset<FeatureClass>(source.GetName(tableName));
+            using var featureclass = target.OpenDataset<FeatureClass>(target.GetName("point"));
 
             using var buffer = featureclass.CreateRowBuffer();
             using var insert = featureclass.CreateInsertCursor();

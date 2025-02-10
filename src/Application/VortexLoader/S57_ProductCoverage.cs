@@ -8,9 +8,9 @@ namespace S100Framework.Applications
         private static void S57_ProductCoverage(Geodatabase source, Geodatabase target, QueryFilter filter) {
             var tableName = "ProductCoverage";
 
-            using var productDefinitionsTable = source.OpenDataset<Table>("ProductDefinitions");
-            using var productCoverageFeatureClass = source.OpenDataset<FeatureClass>("ProductCoverage");
-            using var surfaceFeatureClass = target.OpenDataset<FeatureClass>(LayerDefinitions.GetName("surface"));
+            using var productDefinitionsTable = source.OpenDataset<Table>(source.GetName("ProductDefinitions"));
+            using var productCoverageFeatureClass = source.OpenDataset<FeatureClass>(source.GetName("ProductCoverage"));
+            using var surfaceFeatureClass = target.OpenDataset<FeatureClass>(target.GetName("surface"));
 
             surfaceFeatureClass.DeleteRows(new QueryFilter {
                 WhereClause = $"ps = 'S-128' AND (code = 'ElectronicProduct' or code = 'instance')",

@@ -52,11 +52,11 @@ namespace S100Framework.Applications
                     WhereClause = $"1=1",
                 };
 
-                using var point = destination.OpenDataset<FeatureClass>(LayerDefinitions.GetName("point"));
-                using var pointset = destination.OpenDataset<FeatureClass>(LayerDefinitions.GetName("pointset"));
-                using var curve = destination.OpenDataset<FeatureClass>(LayerDefinitions.GetName("curve"));
-                using var surface = destination.OpenDataset<FeatureClass>(LayerDefinitions.GetName("surface"));
-                using var informationtype = destination.OpenDataset<Table>(LayerDefinitions.GetName("informationType"));
+                using var point = destination.OpenDataset<FeatureClass>(destination.GetName("point"));
+                using var pointset = destination.OpenDataset<FeatureClass>(destination.GetName("pointset"));
+                using var curve = destination.OpenDataset<FeatureClass>(destination.GetName("curve"));
+                using var surface = destination.OpenDataset<FeatureClass>(destination.GetName("surface"));
+                using var informationtype = destination.OpenDataset<Table>(destination.GetName("informationType"));
 
                 point.DeleteRows(query);
                 pointset.DeleteRows(query);
@@ -355,8 +355,8 @@ namespace S100Framework.Applications
                         1 => condition.UnderConstruction,   //  under construction
                         2 => condition.Ruined,   //  ruined
                         3 => condition.UnderReclamation,   //  under reclamation                                    
-                        4 => throw new IndexOutOfRangeException(),   //  wingless
-                        5 => throw new IndexOutOfRangeException(),   //  planned construction
+                        4 => condition.Wingless, //throw new IndexOutOfRangeException(),   //  wingless
+                        5 => condition.PlannedConstruction,   //  throw new IndexOutOfRangeException(),   //  planned construction
                         -32767 => null,
                         _ => throw new IndexOutOfRangeException(),
                     };

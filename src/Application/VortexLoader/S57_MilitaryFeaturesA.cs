@@ -10,9 +10,9 @@ namespace S100Framework.Applications
         private static void S57_MilitaryFeatureA(Geodatabase source, Geodatabase target, QueryFilter filter) {
             var tableName = "MilitaryFeaturesA";
 
-            var militaryFeaturesA = source.OpenDataset<FeatureClass>(tableName);
+            var militaryFeaturesA = source.OpenDataset<FeatureClass>(source.GetName(tableName));
 
-            using var featureClass = target.OpenDataset<FeatureClass>(LayerDefinitions.GetName("surface"));
+            using var featureClass = target.OpenDataset<FeatureClass>(target.GetName("surface"));
             
 
             using var buffer = featureClass.CreateRowBuffer();

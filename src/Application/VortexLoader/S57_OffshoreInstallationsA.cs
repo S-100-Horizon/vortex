@@ -12,9 +12,9 @@ namespace S100Framework.Applications
             var tableName = "OffshoreInstallationsA";
             
 
-            using var featureclass = target.OpenDataset<FeatureClass>(LayerDefinitions.GetName("surface"));
+            using var featureclass = target.OpenDataset<FeatureClass>(target.GetName("surface"));
 
-            using var offshoreinstallations = source.OpenDataset<FeatureClass>(tableName);
+            using var offshoreinstallations = source.OpenDataset<FeatureClass>(source.GetName(tableName));
 
             int recordCount = 0;
             int convertedCount = 0;

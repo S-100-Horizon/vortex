@@ -10,8 +10,8 @@ namespace S100Framework.Applications
         private static void S57_NaturalFeaturesL(Geodatabase source, Geodatabase target, QueryFilter filter) {
             var tableName = "NaturalFeaturesL";
 
-            using var s = source.OpenDataset<FeatureClass>(tableName);
-            using var featureclass = target.OpenDataset<FeatureClass>(LayerDefinitions.GetName("curve"));
+            using var s = source.OpenDataset<FeatureClass>(source.GetName(tableName));
+            using var featureclass = target.OpenDataset<FeatureClass>(target.GetName("curve"));
 
             using var buffer = featureclass.CreateRowBuffer();
             using var insert = featureclass.CreateInsertCursor();

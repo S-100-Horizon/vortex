@@ -11,11 +11,11 @@ namespace S100Framework.Applications
         private static void S57_DangersL(Geodatabase source, Geodatabase target, QueryFilter filter) {
             var tableName = "DangersL";
 
-            var dangersl = source.OpenDataset<FeatureClass>("DangersL");
+            var dangersl = source.OpenDataset<FeatureClass>(source.GetName("DangersL"));
 
             //var dredged = source.OpenDataset<FeatureClass>("Depare");
 
-            using var featureClass = target.OpenDataset<FeatureClass>(LayerDefinitions.GetName("curve"));
+            using var featureClass = target.OpenDataset<FeatureClass>(target.GetName("curve"));
             
 
             using var buffer = featureClass.CreateRowBuffer();

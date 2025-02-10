@@ -37,7 +37,7 @@ namespace S100Framework.Applications
         }
 
         private void LoadPltsFrels(Geodatabase source) {
-            var aidstonavigation = source.OpenDataset<Table>("PLTS_Frel");
+            var aidstonavigation = source.OpenDataset<Table>(source.GetName("PLTS_Frel"));
             var frelSourceFeatureClasses = new Dictionary<string, IList<PLTS_Frel>>();
 
             var cursor = aidstonavigation.Search(null, true);

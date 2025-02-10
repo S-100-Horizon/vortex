@@ -12,9 +12,9 @@ namespace S100Framework.Applications
 
             var ps101 = "S-101";
 
-            var portsAndServicesP = source.OpenDataset<FeatureClass>(tableName);
+            var portsAndServicesP = source.OpenDataset<FeatureClass>(source.GetName(tableName));
 
-            using var featureClass = target.OpenDataset<FeatureClass>(LayerDefinitions.GetName("point"));
+            using var featureClass = target.OpenDataset<FeatureClass>(target.GetName("point"));
             
 
             using var buffer = featureClass.CreateRowBuffer();

@@ -13,11 +13,11 @@ namespace S100Framework.Applications
         private static void S57_DangersP(Geodatabase source, Geodatabase target, QueryFilter filter) {
             var tableName = "DangersP";
 
-            var dangersp = source.OpenDataset<FeatureClass>("DangersP");
+            var dangersp = source.OpenDataset<FeatureClass>(source.GetName("DangersP"));
 
             //var dredged = source.OpenDataset<FeatureClass>("Depare");
 
-            using var featureClass = target.OpenDataset<FeatureClass>(LayerDefinitions.GetName("point"));
+            using var featureClass = target.OpenDataset<FeatureClass>(target.GetName("point"));
             
 
             using var buffer = featureClass.CreateRowBuffer();

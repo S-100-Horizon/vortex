@@ -11,9 +11,9 @@ namespace S100Framework.Applications
 
             
 
-            var coastlinea = source.OpenDataset<FeatureClass>(tableName);
+            var coastlinea = source.OpenDataset<FeatureClass>(source.GetName(tableName));
 
-            using var featureClass = target.OpenDataset<FeatureClass>(LayerDefinitions.GetName("surface"));
+            using var featureClass = target.OpenDataset<FeatureClass>(target.GetName("surface"));
             
 
             using var buffer = featureClass.CreateRowBuffer();

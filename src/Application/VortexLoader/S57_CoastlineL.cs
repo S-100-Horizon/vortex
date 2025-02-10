@@ -10,9 +10,9 @@ namespace S100Framework.Applications
         private static void S57_CoastlineL(Geodatabase source, Geodatabase target, QueryFilter filter) {
             var tableName = "CoastlineL";
 
-            var coastlinel = source.OpenDataset<FeatureClass>(tableName);
+            var coastlinel = source.OpenDataset<FeatureClass>(source.GetName(tableName));
 
-            using var featureClass = target.OpenDataset<FeatureClass>(LayerDefinitions.GetName("curve"));
+            using var featureClass = target.OpenDataset<FeatureClass>(target.GetName("curve"));
             
 
             using var buffer = featureClass.CreateRowBuffer();
@@ -57,14 +57,15 @@ namespace S100Framework.Applications
                                 };  
                                 if (e.HasValue) {
                                     instance.natureOfSurface = [e.Value];
+
                                 }
                             }
 
-                            if (catcoa != default) {
+                            if (catcoa != default && instance.natureOfSurface == default) {
                                 categoryOfCoastline? e = catcoa switch {
                                     1 => categoryOfCoastline.SteepCoast,
                                     2 => categoryOfCoastline.FlatCoast,
-                                    //3 => categoryOfCoastline., // SANDY SHORE
+                                    //3 => categoryOfCoastline.., // SANDY SHORE
                                     //4 => categoryOfCoastline., // STONY SHORE
                                     //5 => categoryOfCoastline., // SHINGLY SHORE
                                     6 => categoryOfCoastline.GlacierSeawardEnd,

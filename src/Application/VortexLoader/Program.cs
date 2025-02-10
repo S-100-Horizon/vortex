@@ -7,6 +7,15 @@ using System.Text.RegularExpressions;
 using Esri = ArcGIS.Core.Hosting.Host;
 using IO = System.IO;
 
+
+
+/*
+
+--v --cmd NIS --target "https://enterprise.gst.dk/arcgisserver/rest/services/S-100/s100ed4raw/FeatureServer" --source "C:\Vortex\replica.gdb" --query "PLTS_COMP_SCALE = 22000" --notespath "G:\indigo\ENC\NotesAndPictures"
+--v --cmd NIS --target "C:\Vortex\s100ed4.gdb" --source "C:\Vortex\replica.gdb" --query "PLTS_COMP_SCALE = 22000" --notespath "G:\indigo\ENC\NotesAndPictures"
+--v --cmd NIS --target "C:\Vortex\connections\nis.sde" --source "C:\Vortex\replica.gdb" --query "PLTS_COMP_SCALE = 22000" --notespath "G:\indigo\ENC\NotesAndPictures"
+ */
+
 namespace S100Framework.Applications
 {
     internal class VortexLoader
@@ -73,13 +82,20 @@ namespace S100Framework.Applications
                 var target = o.Target!;
 
                 if (IO.File.Exists(target) && ".sde".Equals(IO.Path.GetExtension(target), StringComparison.InvariantCultureIgnoreCase)) {
-                    createGeodatabase = () => { return new Geodatabase(new DatabaseConnectionFile(new Uri(IO.Path.GetFullPath(target)))); };
+                    createGeodatabase = () => { 
+                        var geodatabase = new Geodatabase(new DatabaseConnectionFile(new Uri(IO.Path.GetFullPath(target))));
+                        
+                        return geodatabase;
+                    };
                 }
                 else if (IO.Directory.Exists(target) && ".gdb".Equals(IO.Path.GetExtension(target), StringComparison.InvariantCultureIgnoreCase)) {
-                    createGeodatabase = () => { return new Geodatabase(new FileGeodatabaseConnectionPath(new Uri(IO.Path.GetFullPath(target)))); };
+                    createGeodatabase = () => { 
+                        var geodatabase = new Geodatabase(new FileGeodatabaseConnectionPath(new Uri(IO.Path.GetFullPath(target))));
+
+                        return geodatabase;
+                    };
                 }
                 else if (Uri.IsWellFormedUriString(target, UriKind.Absolute)) {
-
                     createGeodatabase = () => {
                         var serviceProps = new ServiceConnectionProperties(new Uri(target, UriKind.Absolute));
                         serviceProps.Version = "sde.DEFAULT";
@@ -99,9 +115,6 @@ namespace S100Framework.Applications
                         serviceProps.Version = destinationVersion;
                         geodatabase = new Geodatabase(serviceProps);
                         
-
-                        LayerDefinitions.Initialize(geodatabase);
-
                         //var featureClass = geodatabase.OpenDataset<FeatureClass>(LayerDefinitions.GetName("curve"));
 
                         return geodatabase;
@@ -142,10 +155,10 @@ namespace S100Framework.Applications
 
             using var tableInformationType = geodatabase.OpenDataset<Table>("informationtype");
 
-            using var fcPoint = geodatabase.OpenDataset<FeatureClass>(LayerDefinitions.GetName("point"));
-            using var fcPointSet = geodatabase.OpenDataset<FeatureClass>(LayerDefinitions.GetName("pointset"));
-            using var fcCurve = geodatabase.OpenDataset<FeatureClass>(LayerDefinitions.GetName("curve"));
-            using var fcSurface = geodatabase.OpenDataset<FeatureClass>(LayerDefinitions.GetName("surface"));
+            using var fcPoint = geodatabase.OpenDataset<FeatureClass>(geodatabase.GetName("point"));
+            using var fcPointSet = geodatabase.OpenDataset<FeatureClass>(geodatabase.GetName("pointset"));
+            using var fcCurve = geodatabase.OpenDataset<FeatureClass>(geodatabase.GetName("curve"));
+            using var fcSurface = geodatabase.OpenDataset<FeatureClass>(geodatabase.GetName("surface"));
 
             using var bufferInformationType = tableInformationType.CreateRowBuffer();
             using var bufferPoint = fcPoint.CreateRowBuffer();

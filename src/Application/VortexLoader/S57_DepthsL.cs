@@ -23,11 +23,11 @@ namespace S100Framework.Applications
 
             
 
-            var depthsl = source.OpenDataset<FeatureClass>("DepthsL");
-            var plts_spatialattributel = source.OpenDataset<FeatureClass>("PLTS_SpatialAttributeL");
-            using var informationtype = target.OpenDataset<Table>(LayerDefinitions.GetName("informationType"));
+            var depthsl = source.OpenDataset<FeatureClass>(source.GetName("DepthsL"));
+            var plts_spatialattributel = source.OpenDataset<FeatureClass>(source.GetName("PLTS_SpatialAttributeL"));
+            using var informationtype = target.OpenDataset<Table>(target.GetName("informationType"));
 
-            using var featureClass = target.OpenDataset<FeatureClass>(LayerDefinitions.GetName("curve"));
+            using var featureClass = target.OpenDataset<FeatureClass>(target.GetName("curve"));
             
 
             using var buffer = featureClass.CreateRowBuffer();

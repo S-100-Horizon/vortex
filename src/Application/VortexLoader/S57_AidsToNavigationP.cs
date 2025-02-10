@@ -15,9 +15,9 @@ namespace S100Framework.Applications
             var featureRelations = new FeatureRelations();
             featureRelations.Initialize(source);
 
-            var aidstonavigation = source.OpenDataset<FeatureClass>(tableName);
+            var aidstonavigation = source.OpenDataset<FeatureClass>(source.GetName(tableName));
 
-            using var featureClass = target.OpenDataset<FeatureClass>(LayerDefinitions.GetName("point"));
+            using var featureClass = target.OpenDataset<FeatureClass>(target.GetName("point"));
             
 
             using var buffer = featureClass.CreateRowBuffer();

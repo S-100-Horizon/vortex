@@ -10,9 +10,9 @@ namespace S100Framework.Applications
         private static void S57_CoastlineP(Geodatabase source, Geodatabase target, QueryFilter filter) {
             var tableName = "CoastlineP";
 
-            var coastlinep = source.OpenDataset<FeatureClass>(tableName);
+            var coastlinep = source.OpenDataset<FeatureClass>(source.GetName(tableName));
 
-            using var featureClass = target.OpenDataset<FeatureClass>(LayerDefinitions.GetName("point"));
+            using var featureClass = target.OpenDataset<FeatureClass>(target.GetName("point"));
             
 
             using var buffer = featureClass.CreateRowBuffer();

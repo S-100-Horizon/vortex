@@ -11,9 +11,9 @@ namespace S100Framework.Applications
             var tableName = "RegulatedAreasAndLimitsL";
             
 
-            using var featureclass = target.OpenDataset<FeatureClass>(LayerDefinitions.GetName("curve"));
+            using var featureclass = target.OpenDataset<FeatureClass>(target.GetName("curve"));
 
-            using var regulatedAreasAndLimitsL = source.OpenDataset<FeatureClass>(tableName);
+            using var regulatedAreasAndLimitsL = source.OpenDataset<FeatureClass>(source.GetName(tableName));
 
             int recordCount = 0;
             int convertedCount = 0;

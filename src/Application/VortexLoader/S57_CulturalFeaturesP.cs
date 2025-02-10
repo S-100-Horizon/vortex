@@ -11,9 +11,9 @@ namespace S100Framework.Applications
         private static void S57_CulturalFeaturesP(Geodatabase source, Geodatabase target, QueryFilter filter) {
             var tableName = "CulturalFeaturesP";
 
-            var culturalFeaturesP = source.OpenDataset<FeatureClass>(tableName);
+            var culturalFeaturesP = source.OpenDataset<FeatureClass>(source.GetName(tableName));
 
-            using var featureClass = target.OpenDataset<FeatureClass>(LayerDefinitions.GetName("point"));
+            using var featureClass = target.OpenDataset<FeatureClass>(target.GetName("point"));
             
 
             using var buffer = featureClass.CreateRowBuffer();

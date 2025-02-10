@@ -10,9 +10,9 @@ namespace S100Framework.Applications
             var tableName = "RegulatedAreasAndLimitsP";
             var ps101 = "S-101";
 
-            using var featureclass = target.OpenDataset<FeatureClass>(LayerDefinitions.GetName("surface"));
+            using var featureclass = target.OpenDataset<FeatureClass>(target.GetName("surface"));
 
-            using var regulatedAreasAndLimitsP = source.OpenDataset<FeatureClass>(tableName);
+            using var regulatedAreasAndLimitsP = source.OpenDataset<FeatureClass>(source.GetName(tableName));
 
             int recordCount = 0;
             int convertedCount = 0;

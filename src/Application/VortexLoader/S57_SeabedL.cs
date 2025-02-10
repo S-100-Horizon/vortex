@@ -12,9 +12,9 @@ namespace S100Framework.Applications
 
             var ps101 = "S-101";
 
-            var seabedL = source.OpenDataset<FeatureClass>(tableName);
+            var seabedL = source.OpenDataset<FeatureClass>(source.GetName(tableName));
 
-            using var featureClass = target.OpenDataset<FeatureClass>(LayerDefinitions.GetName("curve"));
+            using var featureClass = target.OpenDataset<FeatureClass>(target.GetName("curve"));
 
 
             using var buffer = featureClass.CreateRowBuffer();
