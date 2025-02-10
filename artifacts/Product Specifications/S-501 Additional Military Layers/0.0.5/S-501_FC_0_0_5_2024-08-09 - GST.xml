@@ -1660,7 +1660,7 @@
 		<S100FC:S100_FC_SimpleAttribute>
 			<S100FC:name>Operator</S100FC:name>
 			<S100FC:definition>Name of the company operating the installation.</S100FC:definition>
-			<S100FC:code>operator</S100FC:code>
+			<S100FC:code>oprtor</S100FC:code>
 			<S100FC:alias>oprtor</S100FC:alias>
 			<S100FC:valueType>text</S100FC:valueType>
 		</S100FC:S100_FC_SimpleAttribute>
@@ -12946,7 +12946,7 @@
 					<S100Base:lower>0</S100Base:lower>
 					<S100Base:upper xsi:nil="false" infinite="false">1</S100Base:upper>
 				</S100FC:multiplicity>
-				<S100FC:attribute ref="operator"/>
+				<S100FC:attribute ref="oprtor"/>
 			</S100FC:attributeBinding>
 			<S100FC:attributeBinding sequential="false">
 				<S100FC:multiplicity>

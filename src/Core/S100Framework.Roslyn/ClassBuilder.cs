@@ -769,6 +769,7 @@ namespace S100Framework
                             continue;
 
                         if (e.XPathSelectElements("S100FC:attributeBinding", xmlNamespaceManager).Any(b => !dictionaryTypes.ContainsKey(b.Element(XName.Get("attribute", scope_S100))!.Attribute("ref")!.Value!))) {
+                            var attributesMissing = e.XPathSelectElements("S100FC:attributeBinding", xmlNamespaceManager).Where(b => !dictionaryTypes.ContainsKey(b.Element(XName.Get("attribute", scope_S100))!.Attribute("ref")!.Value!)).ToList();
                             notFinished = true;
                             continue;
                         }

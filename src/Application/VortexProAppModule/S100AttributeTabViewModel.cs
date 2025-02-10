@@ -246,9 +246,6 @@ namespace VortexProAppModule
             try {
                 var uuid = Convert.ToString(inspector["GlobalID"]).ToUpperInvariant();
 
-                if (!inspector.MapMember.Map.Name.Equals("S100ed3", StringComparison.CurrentCultureIgnoreCase))
-                    return;
-
                 await QueuedTask.Run(() => {
                     var fc = inspector.MapMember switch {
                         FeatureLayer l => l.GetFeatureClass(),

@@ -13,6 +13,7 @@ namespace S100Framework.WPF
                 "s128" or "s-128" => S100Framework.WPF.ViewModel.S128.Preamble._creators.ContainsKey(type.Name) ? S100Framework.WPF.ViewModel.S128.Preamble._creators[type.Name]() : null,
                 "s131" or "s-131" => S100Framework.WPF.ViewModel.S131.Preamble._creators.ContainsKey(type.Name) ? S100Framework.WPF.ViewModel.S131.Preamble._creators[type.Name]() : null,
                 //"s201" or "s-201" => S100Framework.WPF.ViewModel.S201.Preamble._creators.ContainsKey(type.Name) ? S100Framework.WPF.ViewModel.S201.Preamble._creators[type.Name]() : null,
+                "s501" or "s-501" => S100Framework.WPF.ViewModel.S501.Preamble._creators.ContainsKey(type.Name) ? S100Framework.WPF.ViewModel.S501.Preamble._creators[type.Name]() : null,
                 _ => null
             };
         }
@@ -26,6 +27,7 @@ namespace S100Framework.WPF
                 "s128" or "s-128" => S100Framework.WPF.ViewModel.S128.Preamble._creators.ContainsKey(type) ? S100Framework.WPF.ViewModel.S128.Preamble._creators[type]() : null,
                 "s131" or "s-131" => S100Framework.WPF.ViewModel.S131.Preamble._creators.ContainsKey(type) ? S100Framework.WPF.ViewModel.S131.Preamble._creators[type]() : null,
                 //"s201" or "s-201" => S100Framework.WPF.ViewModel.S201.Preamble._creators.ContainsKey(type.Name) ? S100Framework.WPF.ViewModel.S201.Preamble._creators[type.Name]() : null,
+                "s501" or "s-501" => S100Framework.WPF.ViewModel.S501.Preamble._creators.ContainsKey(type) ? S100Framework.WPF.ViewModel.S501.Preamble._creators[type]() : null,
                 _ => null
             };
         }
