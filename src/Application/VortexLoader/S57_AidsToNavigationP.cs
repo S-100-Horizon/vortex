@@ -64,6 +64,7 @@ namespace S100Framework.Applications
                 // if slave continue - retrieve related slaves for structure in the relevant structure
                 if (featureRelations.IsSlave(globalid)) {
                     continue;
+
                 }
 
                 switch (subtype) {
@@ -75,8 +76,7 @@ namespace S100Framework.Applications
                             AddStatus(instance.status, feature);
                             AddFeatureName(instance.featureName, feature);
                             AddInformation(instance.information, feature);
-
-                            
+                           
 
                             buffer["ps"] = ps101;
 

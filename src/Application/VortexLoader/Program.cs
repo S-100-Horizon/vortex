@@ -1,5 +1,7 @@
 ﻿using ArcGIS.Core.Data;
 using ArcGIS.Core.Geometry;
+using ArcGIS.Desktop.Mapping;
+
 using CommandLine;
 using S100Framework.ArcGIS.Core;
 using System.Text.Json;
@@ -7,13 +9,12 @@ using System.Text.RegularExpressions;
 using Esri = ArcGIS.Core.Hosting.Host;
 using IO = System.IO;
 
-
-
 /*
 
 --v --cmd NIS --target "https://enterprise.gst.dk/arcgisserver/rest/services/S-100/s100ed4raw/FeatureServer" --source "C:\Vortex\replica.gdb" --query "PLTS_COMP_SCALE = 22000" --notespath "G:\indigo\ENC\NotesAndPictures"
 --v --cmd NIS --target "C:\Vortex\s100ed4.gdb" --source "C:\Vortex\replica.gdb" --query "PLTS_COMP_SCALE = 22000" --notespath "G:\indigo\ENC\NotesAndPictures"
 --v --cmd NIS --target "C:\Vortex\connections\nis.sde" --source "C:\Vortex\replica.gdb" --query "PLTS_COMP_SCALE = 22000" --notespath "G:\indigo\ENC\NotesAndPictures"
+--v --cmd NIS --target "C:\Vortex\connections\SQLServer-ncps-mssql-test-s100ed4_traditional(s101_dbo).sde" --source "C:\Vortex\replica.gdb" --query "PLTS_COMP_SCALE = 22000" --notespath "G:\indigo\ENC\NotesAndPictures"
  */
 
 namespace S100Framework.Applications
@@ -115,8 +116,6 @@ namespace S100Framework.Applications
                         serviceProps.Version = destinationVersion;
                         geodatabase = new Geodatabase(serviceProps);
                         
-                        //var featureClass = geodatabase.OpenDataset<FeatureClass>(LayerDefinitions.GetName("curve"));
-
                         return geodatabase;
                     };
 

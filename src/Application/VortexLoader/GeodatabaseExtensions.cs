@@ -1,4 +1,5 @@
 ﻿using ArcGIS.Core.Data;
+using ArcGIS.Core.Internal.CIM;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -37,5 +38,17 @@ namespace S100Framework.Applications
             }
             return tableName;
         }
+
+        internal static bool IsTraditionallyVersioned(this Geodatabase geodatabase) {
+            if (geodatabase.IsVersioningSupported()) {
+                if (geodatabase.GetType().Name == "BranchVersionedWorkspace") {
+                    return false;
+                }
+
+                return true;
+            }
+            return false;
+        }
+
     }
 }

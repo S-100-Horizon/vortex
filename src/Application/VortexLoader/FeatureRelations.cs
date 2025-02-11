@@ -9,6 +9,26 @@ using System.Threading.Tasks;
 
 namespace S100Framework.Applications
 {
+
+    internal class Slave {
+        PLTS_Frel _plts_Frel;
+        S57Object _s57Object;
+
+        public Slave(PLTS_Frel plts_Frel) {
+            this._plts_Frel = plts_Frel;
+        }
+
+        internal void Fetch(Geodatabase geodatabase) {
+
+            var sourceFeatureClass = this._plts_Frel.SRC_FC;
+
+
+        }
+
+
+    }
+
+
     internal class FeatureRelations
     {
         private Dictionary<Guid, IList<PLTS_Frel>> _srcObjectToFrel = new Dictionary<Guid, IList<PLTS_Frel>>();
@@ -25,6 +45,7 @@ namespace S100Framework.Applications
         internal IList<PLTS_Frel> GetRelated(Guid uid) {
             if (!_isInitialized)
                 throw new ArgumentException("Not initalized. Call intialize.");
+
 
             return _srcObjectToFrel[uid];
         }
@@ -48,9 +69,11 @@ namespace S100Framework.Applications
                 Guid.TryParse(Convert.ToString(plts_frel.SRC_UID), out uid);
                 if (!_srcObjectToFrel.ContainsKey(uid)) {
                     _srcObjectToFrel[uid] = new List<PLTS_Frel>() { plts_frel };
+
                 }
                 else {
                     _srcObjectToFrel[uid].Add(plts_frel);
+
                 }
             }
 

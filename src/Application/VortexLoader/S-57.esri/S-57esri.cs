@@ -6,7 +6,7 @@ using ArcGIS.Core.Geometry;
 using System.ComponentModel;
 namespace S100Framework.Applications.S57.esri
 {
-    internal class PLTS_SpatialAttributeL
+    internal class PLTS_SpatialAttributeL : S100Framework.Applications.S57.esri.S57Object
     {
 
         /// <summary>
@@ -227,7 +227,7 @@ namespace S100Framework.Applications.S57.esri
             }
         }
     }
-    internal class TidesAndVariationsA
+    internal class TidesAndVariationsA : S100Framework.Applications.S57.esri.S57Object
     {
 
         /// <summary>
@@ -736,7 +736,7 @@ namespace S100Framework.Applications.S57.esri
             }
         }
     }
-    internal class TidesAndVariationsL
+    internal class TidesAndVariationsL : S100Framework.Applications.S57.esri.S57Object
     {
 
         /// <summary>
@@ -1092,7 +1092,7 @@ namespace S100Framework.Applications.S57.esri
             }
         }
     }
-    internal class TidesAndVariationsP
+    internal class TidesAndVariationsP : S100Framework.Applications.S57.esri.S57Object
     {
 
         /// <summary>
@@ -1628,7 +1628,7 @@ namespace S100Framework.Applications.S57.esri
             }
         }
     }
-    internal class SeabedL
+    internal class SeabedL : S100Framework.Applications.S57.esri.S57Object
     {
 
         /// <summary>
@@ -1984,7 +1984,7 @@ namespace S100Framework.Applications.S57.esri
             }
         }
     }
-    internal class SeabedP
+    internal class SeabedP : S100Framework.Applications.S57.esri.S57Object
     {
 
         /// <summary>
@@ -2376,7 +2376,7 @@ namespace S100Framework.Applications.S57.esri
             }
         }
     }
-    internal class SeabedA
+    internal class SeabedA : S100Framework.Applications.S57.esri.S57Object
     {
 
         /// <summary>
@@ -2741,7 +2741,7 @@ namespace S100Framework.Applications.S57.esri
             }
         }
     }
-    internal class DangersL
+    internal class DangersL : S100Framework.Applications.S57.esri.S57Object
     {
 
         /// <summary>
@@ -3259,7 +3259,7 @@ namespace S100Framework.Applications.S57.esri
             }
         }
     }
-    internal class DangersP
+    internal class DangersP : S100Framework.Applications.S57.esri.S57Object
     {
 
         /// <summary>
@@ -3822,7 +3822,7 @@ namespace S100Framework.Applications.S57.esri
             }
         }
     }
-    internal class DangersA
+    internal class DangersA : S100Framework.Applications.S57.esri.S57Object
     {
 
         /// <summary>
@@ -4358,7 +4358,7 @@ namespace S100Framework.Applications.S57.esri
             }
         }
     }
-    internal class DepthsL
+    internal class DepthsL : S100Framework.Applications.S57.esri.S57Object
     {
 
         /// <summary>
@@ -4714,7 +4714,7 @@ namespace S100Framework.Applications.S57.esri
             }
         }
     }
-    internal class OffshoreInstallationsL
+    internal class OffshoreInstallationsL : S100Framework.Applications.S57.esri.S57Object
     {
 
         /// <summary>
@@ -5133,7 +5133,7 @@ namespace S100Framework.Applications.S57.esri
             }
         }
     }
-    internal class OffshoreInstallationsA
+    internal class OffshoreInstallationsA : S100Framework.Applications.S57.esri.S57Object
     {
 
         /// <summary>
@@ -5606,7 +5606,7 @@ namespace S100Framework.Applications.S57.esri
             }
         }
     }
-    internal class MetaDataP
+    internal class MetaDataP : S100Framework.Applications.S57.esri.S57Object
     {
 
         /// <summary>
@@ -5935,7 +5935,7 @@ namespace S100Framework.Applications.S57.esri
             }
         }
     }
-    internal class TracksAndRoutesA
+    internal class TracksAndRoutesA : S100Framework.Applications.S57.esri.S57Object
     {
 
         /// <summary>
@@ -6408,7 +6408,7 @@ namespace S100Framework.Applications.S57.esri
             }
         }
     }
-    internal class TracksAndRoutesL
+    internal class TracksAndRoutesL : S100Framework.Applications.S57.esri.S57Object
     {
 
         /// <summary>
@@ -6872,7 +6872,7 @@ namespace S100Framework.Applications.S57.esri
             }
         }
     }
-    internal class TracksAndRoutesP
+    internal class TracksAndRoutesP : S100Framework.Applications.S57.esri.S57Object
     {
 
         /// <summary>
@@ -7282,7 +7282,7 @@ namespace S100Framework.Applications.S57.esri
             }
         }
     }
-    internal class AidsToNavigationP
+    internal class AidsToNavigationP : S100Framework.Applications.S57.esri.S57Object
     {
 
         /// <summary>
@@ -8081,7 +8081,7 @@ namespace S100Framework.Applications.S57.esri
             }
         }
     }
-    internal class IceFeaturesA
+    internal class IceFeaturesA : S100Framework.Applications.S57.esri.S57Object
     {
 
         /// <summary>
@@ -8473,7 +8473,7 @@ namespace S100Framework.Applications.S57.esri
             }
         }
     }
-    internal class MilitaryFeaturesA
+    internal class MilitaryFeaturesA : S100Framework.Applications.S57.esri.S57Object
     {
 
         /// <summary>
@@ -8838,7 +8838,7 @@ namespace S100Framework.Applications.S57.esri
             }
         }
     }
-    internal class MilitaryFeaturesP
+    internal class MilitaryFeaturesP : S100Framework.Applications.S57.esri.S57Object
     {
 
         /// <summary>
@@ -9230,7 +9230,7 @@ namespace S100Framework.Applications.S57.esri
             }
         }
     }
-    internal class UserDefinedFeaturesA
+    internal class UserDefinedFeaturesA : S100Framework.Applications.S57.esri.S57Object
     {
 
         /// <summary>
@@ -9676,7 +9676,7 @@ namespace S100Framework.Applications.S57.esri
             }
         }
     }
-    internal class UserDefinedFeaturesP
+    internal class UserDefinedFeaturesP : S100Framework.Applications.S57.esri.S57Object
     {
 
         /// <summary>
@@ -10149,7 +10149,7 @@ namespace S100Framework.Applications.S57.esri
             }
         }
     }
-    internal class UserDefinedFeaturesL
+    internal class UserDefinedFeaturesL : S100Framework.Applications.S57.esri.S57Object
     {
 
         /// <summary>
@@ -10595,7 +10595,7 @@ namespace S100Framework.Applications.S57.esri
             }
         }
     }
-    internal class DepthsA
+    internal class DepthsA : S100Framework.Applications.S57.esri.S57Object
     {
 
         /// <summary>
@@ -10960,7 +10960,7 @@ namespace S100Framework.Applications.S57.esri
             }
         }
     }
-    internal class SoundingsP
+    internal class SoundingsP : S100Framework.Applications.S57.esri.S57Object
     {
 
         /// <summary>
@@ -11361,7 +11361,7 @@ namespace S100Framework.Applications.S57.esri
             }
         }
     }
-    internal class PortsAndServicesP
+    internal class PortsAndServicesP : S100Framework.Applications.S57.esri.S57Object
     {
 
         /// <summary>
@@ -12086,7 +12086,7 @@ namespace S100Framework.Applications.S57.esri
             }
         }
     }
-    internal class PortsAndServicesL
+    internal class PortsAndServicesL : S100Framework.Applications.S57.esri.S57Object
     {
 
         /// <summary>
@@ -12649,7 +12649,7 @@ namespace S100Framework.Applications.S57.esri
             }
         }
     }
-    internal class PortsAndServicesA
+    internal class PortsAndServicesA : S100Framework.Applications.S57.esri.S57Object
     {
 
         /// <summary>
@@ -13320,7 +13320,7 @@ namespace S100Framework.Applications.S57.esri
             }
         }
     }
-    internal class CulturalFeaturesA
+    internal class CulturalFeaturesA : S100Framework.Applications.S57.esri.S57Object
     {
 
         /// <summary>
@@ -13973,7 +13973,7 @@ namespace S100Framework.Applications.S57.esri
             }
         }
     }
-    internal class CulturalFeaturesL
+    internal class CulturalFeaturesL : S100Framework.Applications.S57.esri.S57Object
     {
 
         /// <summary>
@@ -14608,7 +14608,7 @@ namespace S100Framework.Applications.S57.esri
             }
         }
     }
-    internal class CulturalFeaturesP
+    internal class CulturalFeaturesP : S100Framework.Applications.S57.esri.S57Object
     {
 
         /// <summary>
@@ -15279,7 +15279,7 @@ namespace S100Framework.Applications.S57.esri
             }
         }
     }
-    internal class NaturalFeaturesP
+    internal class NaturalFeaturesP : S100Framework.Applications.S57.esri.S57Object
     {
 
         /// <summary>
@@ -15770,7 +15770,7 @@ namespace S100Framework.Applications.S57.esri
             }
         }
     }
-    internal class NaturalFeaturesL
+    internal class NaturalFeaturesL : S100Framework.Applications.S57.esri.S57Object
     {
 
         /// <summary>
@@ -16207,7 +16207,7 @@ namespace S100Framework.Applications.S57.esri
             }
         }
     }
-    internal class NaturalFeaturesA
+    internal class NaturalFeaturesA : S100Framework.Applications.S57.esri.S57Object
     {
 
         /// <summary>
@@ -16671,7 +16671,7 @@ namespace S100Framework.Applications.S57.esri
             }
         }
     }
-    internal class CoastlineL
+    internal class CoastlineL : S100Framework.Applications.S57.esri.S57Object
     {
 
         /// <summary>
@@ -17162,7 +17162,7 @@ namespace S100Framework.Applications.S57.esri
             }
         }
     }
-    internal class CoastlineP
+    internal class CoastlineP : S100Framework.Applications.S57.esri.S57Object
     {
 
         /// <summary>
@@ -17662,7 +17662,7 @@ namespace S100Framework.Applications.S57.esri
             }
         }
     }
-    internal class CoastlineA
+    internal class CoastlineA : S100Framework.Applications.S57.esri.S57Object
     {
 
         /// <summary>
@@ -18135,7 +18135,7 @@ namespace S100Framework.Applications.S57.esri
             }
         }
     }
-    internal class RegulatedAreasAndLimitsL
+    internal class RegulatedAreasAndLimitsL : S100Framework.Applications.S57.esri.S57Object
     {
 
         /// <summary>
@@ -18581,7 +18581,7 @@ namespace S100Framework.Applications.S57.esri
             }
         }
     }
-    internal class RegulatedAreasAndLimitsP
+    internal class RegulatedAreasAndLimitsP : S100Framework.Applications.S57.esri.S57Object
     {
 
         /// <summary>
@@ -19081,7 +19081,7 @@ namespace S100Framework.Applications.S57.esri
             }
         }
     }
-    internal class RegulatedAreasAndLimitsA
+    internal class RegulatedAreasAndLimitsA : S100Framework.Applications.S57.esri.S57Object
     {
 
         /// <summary>
@@ -19572,7 +19572,7 @@ namespace S100Framework.Applications.S57.esri
             }
         }
     }
-    internal class MetaDataA
+    internal class MetaDataA : S100Framework.Applications.S57.esri.S57Object
     {
 
         /// <summary>
@@ -20108,7 +20108,7 @@ namespace S100Framework.Applications.S57.esri
             }
         }
     }
-    internal class MetaDataL
+    internal class MetaDataL : S100Framework.Applications.S57.esri.S57Object
     {
 
         /// <summary>
@@ -20509,7 +20509,7 @@ namespace S100Framework.Applications.S57.esri
             }
         }
     }
-    internal class OffshoreInstallationsP
+    internal class OffshoreInstallationsP : S100Framework.Applications.S57.esri.S57Object
     {
 
         /// <summary>
@@ -21018,7 +21018,7 @@ namespace S100Framework.Applications.S57.esri
             }
         }
     }
-    internal class ClosingLinesL
+    internal class ClosingLinesL : S100Framework.Applications.S57.esri.S57Object
     {
 
         /// <summary>
@@ -21203,7 +21203,7 @@ namespace S100Framework.Applications.S57.esri
             }
         }
     }
-    internal class ProductCoverage
+    internal class ProductCoverage : S100Framework.Applications.S57.esri.S57Object
     {
 
         /// <summary>
@@ -21370,7 +21370,7 @@ namespace S100Framework.Applications.S57.esri
             }
         }
     }
-    internal class ProductDefinitions
+    internal class ProductDefinitions : S100Framework.Applications.S57.esri.S57Object
     {
 
         /// <summary>
@@ -21690,7 +21690,7 @@ namespace S100Framework.Applications.S57.esri
             }
         }
     }
-    internal class PLTS_Collections
+    internal class PLTS_Collections : S100Framework.Applications.S57.esri.S57Object
     {
 
         /// <summary>
@@ -22001,7 +22001,7 @@ namespace S100Framework.Applications.S57.esri
             }
         }
     }
-    internal class PLTS_Frel
+    internal class PLTS_Frel : S100Framework.Applications.S57.esri.S57Object
     {
 
         /// <summary>
@@ -22195,7 +22195,7 @@ namespace S100Framework.Applications.S57.esri
             }
         }
     }
-    internal class PLTS_Master_Slaves
+    internal class PLTS_Master_Slaves : S100Framework.Applications.S57.esri.S57Object
     {
 
         /// <summary>

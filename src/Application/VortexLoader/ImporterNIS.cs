@@ -1,21 +1,20 @@
 ﻿using ArcGIS.Core.Data;
-using ArcGIS.Core.Geometry;
 using CommandLine;
 using S100Framework.DomainModel.S101;
 using S100Framework.DomainModel.S101.ComplexAttributes;
 using static S100Framework.Applications.VortexLoader;
 using IO = System.IO;
+using ArcGIS.Core.Geometry;
+using System;
 
 namespace S100Framework.Applications
 {
-    internal static partial class ImporterNIS
-    {
+    internal static partial class ImporterNIS {
         //  https://github.com/iho-ohi/S-57-to-S-101-conversion-sub-WG
 
         static string _notesPath = "";
         static string ps101 = "S-101";
         static string ps128 = "S-128";
-
 
         public static bool Load(Geodatabase destination, ParserResult<Options> arguments) {
             Func<Geodatabase> createGeodatabase = () => { throw new NotImplementedException(); };
@@ -46,126 +45,76 @@ namespace S100Framework.Applications
 
             });
 
-            using Geodatabase source = createGeodatabase();
-            {
-                var query = new QueryFilter {
-                    WhereClause = $"1=1",
+            Func<Action, bool> Executer = (a) => {
+                a.Invoke();
+                return true;
+            };
+
+            if (destination.IsTraditionallyVersioned()) {
+                Executer = (a) => {
+                    destination.ApplyEdits(() => {
+                        a.Invoke();
+                    },true);
+                    return true;
                 };
-
-                using var point = destination.OpenDataset<FeatureClass>(destination.GetName("point"));
-                using var pointset = destination.OpenDataset<FeatureClass>(destination.GetName("pointset"));
-                using var curve = destination.OpenDataset<FeatureClass>(destination.GetName("curve"));
-                using var surface = destination.OpenDataset<FeatureClass>(destination.GetName("surface"));
-                using var informationtype = destination.OpenDataset<Table>(destination.GetName("informationType"));
-
-                point.DeleteRows(query);
-                pointset.DeleteRows(query);
-                curve.DeleteRows(query);
-                surface.DeleteRows(query);
-                informationtype.DeleteRows(query);
             }
 
-            //  MilitaryFeaturesA
-            S57_MilitaryFeatureA(source, destination, filter);
-            
-            //  MilitaryFeaturesP
-            S57_MilitaryFeaturesP(source, destination, filter);
+            using (Geodatabase source = createGeodatabase()) {
 
-            //  TracksAndRoutesA
-            S57_TracksAndRoutesA(source, destination, filter);
+                Executer(() => {
+                    var query = new QueryFilter {
+                        WhereClause = $"1=1",
+                    };
+                    using var point = destination.OpenDataset<FeatureClass>(destination.GetName("point"));
+                    using var pointset = destination.OpenDataset<FeatureClass>(destination.GetName("pointset"));
+                    using var curve = destination.OpenDataset<FeatureClass>(destination.GetName("curve"));
+                    using var surface = destination.OpenDataset<FeatureClass>(destination.GetName("surface"));
+                    using var informationtype = destination.OpenDataset<Table>(destination.GetName("informationType"));
 
-            //  TracksAndRoutesL
-            S57_TracksAndRoutesL(source, destination, filter);
-           
-            //  TracksAndRoutesP
-            S57_TracksAndRoutesP(source, destination, filter);
+                    point.DeleteRows(query);
+                    pointset.DeleteRows(query);
+                    curve.DeleteRows(query);
+                    surface.DeleteRows(query);
+                    informationtype.DeleteRows(query);
+                });
 
-            //  IcefeaturesA
-            S57_IcefeaturesA(source, destination, filter);
-
-            //  CoastlineA
-            S57_CoastlineA(source, destination, filter);
-
-            //  CoastlineL
-            S57_CoastlineL(source, destination, filter);
-
-            //  CoastlineP
-            S57_CoastlineP(source, destination, filter);
-
-            //  CulturalFeaturesA
-            S57_CulturalFeaturesA(source, destination, filter);
-            
-            //  CulturalFeaturesL
-            S57_CulturalFeaturesL(source, destination, filter);
-            
-            //  CulturalFeaturesP
-            S57_CulturalFeaturesP(source, destination, filter);
-
-            //  Seabed
-            S57_SeabedP(source, destination, filter);
-
-            //  ProductCoverage
-            S57_ProductCoverage(source, destination, filter);
-
-            //  AidsToNavigation
-            S57_AidsToNavigationP(source, destination, filter);
-
-            //  PortsAndServicesP
-            S57_PortsAndServicesP(source, destination, filter);
-
-            //  PortsAndServicesA
-            S57_PortsAndServicesA(source, destination, filter);
-
-            //  PortsAndServicesL
-            S57_PortsAndServicesL(source, destination, filter);
-
-            //  DangersA
-            S57_DangersA(source, destination, filter);
-
-            //  DangersP
-            S57_DangersP(source, destination, filter);
-
-            //  DangersL
-            S57_DangersL(source, destination, filter);
-
-            // RegulatedAreasAndLimitsL
-            S57_RegulatedAreasAndLimitsL(source, destination, filter);
-
-            // RegulatedAreasAndLimitsA
-            S57_RegulatedAreasAndLimitsA(source, destination, filter);
-
-            // RegulatedAreasAndLimitsP
-            S57_RegulatedAreasAndLimitsP(source, destination, filter);
-
-            // OffshoreInstallationsL
-            S57_OffshoreInstallationsL(source, destination, filter);
-            
-            // OffshoreInstallationsA
-            S57_OffshoreInstallationsA(source, destination, filter);
-            
-            // OffshoreInstallationsP
-            S57_OffshoreInstallationsP(source, destination, filter);
-
-            //  NaturalFeaturesL
-            S57_NaturalFeaturesL(source, destination, filter);
-
-            //  NaturalFeaturesA
-            S57_NaturalFeaturesA(source, destination, filter);
-
-            //  NaturalFeaturesP
-            S57_NaturalFeaturesP(source, destination, filter);
-
-            // DepthsL
-            S57_DepthsL(source, destination, filter);
-
-            //  DepthsA
-            S57_DepthsA(source, destination, filter);
-
-            //  SoundingsP
-            S57_SoundingsP(source, destination, filter);
-
-            return true;
+                Executer(() => S57_MilitaryFeatureA(source, destination, filter));
+                Executer(() => S57_MilitaryFeaturesP(source, destination, filter));
+                Executer(() => S57_TracksAndRoutesA(source, destination, filter));
+                Executer(() => S57_TracksAndRoutesL(source, destination, filter));
+                Executer(() => S57_TracksAndRoutesP(source, destination, filter));
+                Executer(() => S57_IcefeaturesA(source, destination, filter));
+                Executer(() => S57_CoastlineA(source, destination, filter));
+                Executer(() => S57_CoastlineL(source, destination, filter));
+                Executer(() => S57_CoastlineP(source, destination, filter));
+                Executer(() => S57_CulturalFeaturesA(source, destination, filter));
+                Executer(() => S57_CulturalFeaturesL(source, destination, filter));
+                Executer(() => S57_CulturalFeaturesP(source, destination, filter));
+                Executer(() => S57_SeabedP(source, destination, filter));
+                Executer(() => S57_ProductCoverage(source, destination, filter));
+                Executer(() => S57_AidsToNavigationP(source, destination, filter));
+                Executer(() => S57_PortsAndServicesP(source, destination, filter));
+                Executer(() => S57_PortsAndServicesA(source, destination, filter));
+                Executer(() => S57_PortsAndServicesL(source, destination, filter));
+                Executer(() => S57_DangersA(source, destination, filter));
+                Executer(() => S57_DangersP(source, destination, filter));
+                Executer(() => S57_DangersL(source, destination, filter));
+                Executer(() => S57_RegulatedAreasAndLimitsL(source, destination, filter));
+                Executer(() => S57_RegulatedAreasAndLimitsA(source, destination, filter));
+                Executer(() => S57_RegulatedAreasAndLimitsP(source, destination, filter));
+                Executer(() => S57_OffshoreInstallationsL(source, destination, filter));
+                Executer(() => S57_OffshoreInstallationsA(source, destination, filter));
+                Executer(() => S57_OffshoreInstallationsP(source, destination, filter));
+                Executer(() => S57_NaturalFeaturesL(source, destination, filter));
+                Executer(() => S57_NaturalFeaturesA(source, destination, filter));
+                Executer(() => S57_NaturalFeaturesP(source, destination, filter));
+                Executer(() => S57_DepthsL(source, destination, filter));
+                Executer(() => S57_DepthsA(source, destination, filter));
+                Executer(() => S57_SoundingsP(source, destination, filter));
+                return true;
+            }
         }
+    
 
         public static IEnumerable<T> SelectIn<T>(Geometry geometry, FeatureClass in_featureclass) where T : class {
 
@@ -188,7 +137,6 @@ namespace S100Framework.Applications
                     }
                 }
             }
-
         }
 
         private static void AddColour(List<colour> colours, Feature feature) {

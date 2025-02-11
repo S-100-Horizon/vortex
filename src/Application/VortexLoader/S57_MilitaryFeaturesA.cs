@@ -7,15 +7,17 @@ namespace S100Framework.Applications
 {
     internal static partial class ImporterNIS
     {
-        private static void S57_MilitaryFeatureA(Geodatabase source, Geodatabase target, QueryFilter filter) {
-            var tableName = "MilitaryFeaturesA";
 
+        private static void S57_MilitaryFeatureA(Geodatabase source, Geodatabase target, QueryFilter filter) {
+            
+            var tableName = "MilitaryFeaturesA";
+                
             var militaryFeaturesA = source.OpenDataset<FeatureClass>(source.GetName(tableName));
 
             using var featureClass = target.OpenDataset<FeatureClass>(target.GetName("surface"));
-            
 
             using var buffer = featureClass.CreateRowBuffer();
+
             using var insert = featureClass.CreateInsertCursor();
 
             using var cursor = militaryFeaturesA.Search(filter, true);
@@ -53,6 +55,7 @@ namespace S100Framework.Applications
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance);
                             buffer["shape"] = current.SHAPE;
                             insert.Insert(buffer);
+                            
                             Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
                             convertedCount++;
                         }

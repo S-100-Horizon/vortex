@@ -191,7 +191,7 @@ namespace TestNisImporter
                 csFile.AppendLine("using ArcGIS.Core.Data;");
                 csFile.AppendLine("using ArcGIS.Core.Geometry;");
                 csFile.AppendLine("using System.ComponentModel;");
-                csFile.AppendLine("namespace VortexLoader.S57Auto.esri");
+                csFile.AppendLine("namespace S100Framework.Applications.S57auto.esri");
                 csFile.AppendLine("{");
 
                 foreach (var dataset in datasets) {
@@ -200,7 +200,7 @@ namespace TestNisImporter
                     StringBuilder ctor = new StringBuilder();
                     StringBuilder objectClass = new StringBuilder();
 
-                    objectClass.AppendLine($"\tinternal class {dataset.GetName()} {{");
+                    objectClass.AppendLine($"\tinternal class {dataset.GetName()} : S100Framework.Applications.S57.esri.S57Object {{");
 
 
                     IReadOnlyList<ArcGIS.Core.Data.Field> datasetfields = new List<ArcGIS.Core.Data.Field>();
