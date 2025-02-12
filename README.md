@@ -1,5 +1,5 @@
 # Vortex
-S-100: An Unexpected Journey
+*S-100: An Unexpected Journey*
 
 ![banner](banner.jpg)
 
