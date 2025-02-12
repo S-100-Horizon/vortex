@@ -35,6 +35,37 @@ namespace TestS100Framework
         }
 
         [Fact]
+        public void Test_Serialize_LightAllAround() {
+            var lightAllAround = new LightAllAround {
+                colour = new List<S100Framework.DomainModel.S101.colour> {
+                    S100Framework.DomainModel.S101.colour.Red,
+                    S100Framework.DomainModel.S101.colour.White,
+                },
+                featureName = new List<S100Framework.DomainModel.S101.ComplexAttributes.featureName> {
+                    new S100Framework.DomainModel.S101.ComplexAttributes.featureName {
+                        language = "eng",
+                        name = "Light E",
+                    },
+                },
+                height = 54,
+                rhythmOfLight = new S100Framework.DomainModel.S101.ComplexAttributes.rhythmOfLight {
+                    lightCharacteristic = S100Framework.DomainModel.S101.lightCharacteristic.ContinuousUltraQuickFlashing,
+                    signalGroup = new List<string> {
+                        "6",
+                    },
+                    signalPeriod = 5,
+                },
+                valueOfNominalRange = 9,
+            };
+
+            var fromExtension = lightAllAround.ToYAML();
+
+            var yaml = YAML.SerializeAttributes(lightAllAround);
+
+            System.Diagnostics.Debugger.Break();
+        }
+
+        [Fact]
         public void Test_Dataset() {
             var dataset = new S100Framework.YAML.Dataset {
                 CellName = "101AA00DS0031.000",
@@ -211,11 +242,120 @@ namespace TestS100Framework
                 output.WriteLine("");
 
                 output.WriteLine("Attributes:");
-                foreach (var e in flatten) {                    
+                foreach (var e in flatten) {
                     output.WriteLine($"\t- Name: {e.Key}");
                     output.WriteLine($"\t  Value: {e.Value}");
                 }
             }
+        }
+    }
+}
+
+namespace TestS100Framework
+{
+    public static class YAML
+    {
+        internal static string SerializeAttributes(object dataset) {
+            var propertyId = 1;
+
+            var flattenedObject = FlattenAttributesRecursively(dataset, ref propertyId, null, false);
+
+            var serializer = new SerializerBuilder()
+                .WithNamingConvention(CamelCaseNamingConvention.Instance)
+                .ConfigureDefaultValuesHandling(DefaultValuesHandling.OmitDefaults)
+                .Build();
+
+            return serializer.Serialize(flattenedObject);
+        }
+        internal static string ToYAML(this LightAllAround instance) => SerializeAttributes(instance);
+
+        private record YamlAttributeItem(string Name, object? Value, int? Id, int? Parent);
+
+        private static List<YamlAttributeItem> FlattenAttributesRecursively(object obj, ref int propertyId, int? parentId = null, bool addRootObj = true) {
+            var attributes = new List<YamlAttributeItem>();
+            var type = obj.GetType();
+            var properties = type.GetProperties();
+            var currentId = propertyId;
+
+            // Skips the root object. Ensures we dont have everything with Parent: 1
+            if (addRootObj) {
+                attributes.Add(new YamlAttributeItem(type.Name, null, currentId, parentId));
+                parentId = currentId;
+            }
+
+            foreach (var property in properties) {
+                var propertyValue = property.GetValue(obj, null);
+                if (propertyValue == null)
+                    continue;
+
+                switch (property.PropertyType) {
+                    case Type t when t == typeof(string):
+                        attributes.Add(new(property.Name, propertyValue.ToString(), null, parentId));
+                        break;
+
+                    case Type t when t == typeof(decimal):
+                        attributes.Add(new(property.Name, Convert.ToDecimal(propertyValue), null, parentId));
+                        break;
+
+                    case Type t when t.IsEnum:
+                        attributes.Add(new(property.Name, Convert.ToInt32(propertyValue), null, parentId));
+                        break;
+
+                    case Type t when t.IsPrimitive:
+                        attributes.Add(new(property.Name, propertyValue.ToString(), null, parentId));
+                        break;
+
+                    case Type t when typeof(IEnumerable).IsAssignableFrom(t):
+                        attributes.AddRange(HandleCollection(property.Name, propertyValue, ref propertyId, parentId));
+                        break;
+
+                    case Type t when t.IsClass:
+                        attributes.AddRange(HandleComplexObject(propertyValue, ref propertyId, parentId));
+                        break;
+                }
+            }
+
+            return attributes;
+        }
+        private static List<YamlAttributeItem> HandleComplexObject(object propertyValue, ref int propertyId, int? parentId) {
+            propertyId++;
+            var children = FlattenAttributesRecursively(propertyValue, ref propertyId, parentId);
+            return children;
+        }
+        private static List<YamlAttributeItem> HandleCollection(string propertyName, object propertyValue, ref int propertyId, int? parentId) {
+            var collection = propertyValue as IEnumerable;
+            var attributes = new List<YamlAttributeItem>();
+            foreach (var item in collection!) {
+                var itemType = item.GetType();
+
+                switch (itemType) {
+                    case Type t when t == typeof(string):
+                        attributes.Add(new(propertyName, item.ToString(), null, parentId));
+                        break;
+
+                    case Type t when t == typeof(decimal):
+                        attributes.Add(new(propertyName, Convert.ToDecimal(item), null, parentId));
+                        break;
+
+                    case Type t when t.IsEnum:
+                        attributes.Add(new(propertyName, Convert.ToInt32(item), null, parentId));
+                        break;
+
+                    case Type t when t.IsPrimitive:
+                        attributes.Add(new(propertyName, item.ToString(), null, parentId));
+                        break;
+
+                    case Type t when typeof(IEnumerable).IsAssignableFrom(t):
+                        // no support for multidimensional arrays
+                        break;
+
+                    case Type t when t.IsClass:
+                        attributes.AddRange(HandleComplexObject(item, ref propertyId, parentId));
+                        break;
+                }
+            }
+
+            return attributes;
         }
     }
 }
