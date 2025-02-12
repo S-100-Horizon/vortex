@@ -5,13 +5,13 @@
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:schemaLocation="http://schemas.esri.com/DADF/Registry file:///C:/Program%20Files/ArcGIS/Pro/bin/ArcGIS.Desktop.Framework.xsd">
 
-  <AddInInfo id="{e88a79e5-f75d-4324-b52a-38eca2a1f9a1}" version="3.4.0" desktopVersion="3.3.54247">
+  <AddInInfo id="{e88a79e5-f75d-4324-b52a-38eca2a1f9a1}" version="3.4.3" desktopVersion="3.3.54247">
     <Name>VortexProAppModule</Name>   
     <Description>VortexProAppModule description</Description>
-    <Image>Images\AddinDesktop32.png</Image>
-    <Author>Jens Søe</Author>
-    <Company>Acme</Company>
-    <Date>7/15/2024 3:51:54 PM</Date>
+    <Image>Images\Logo.png</Image>
+    <Author>S-100 Horizon</Author>
+    <Company>S-100 Horizon</Company>
+    <!--<Date>7/15/2024 3:51:54 PM</Date>-->
     <Subject>Framework</Subject>
     <!-- Note subject can be one or more of these topics:
                     Content, Framework, Editing, Geodatabase, Geometry, Geoprocessing, Layouts, Map Authoring, Map Exploration -->
