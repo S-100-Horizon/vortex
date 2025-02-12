@@ -1,6 +1,8 @@
 # Vortex
 S-100: An Unexpected Journey
 
+![banner](banner.jpg)
+
 ## Project Overview:
 
 The project aimed to implement the S-100 standard within ArcGIS Pro to improve the creation, management, and dissemination of electronic navigational charts (ENCs) in compliance with the International Hydrographic Organization's (IHO) S-100 framework. The implementation of S-100 standards in ArcGIS Pro facilitates the transition from traditional paper charts to modern digital navigational tools, enhancing safety and efficiency in maritime navigation.
