@@ -3,6 +3,7 @@ using S100Framework.Applications.S57.esri;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -18,8 +19,10 @@ namespace S100Framework.Applications
             this._plts_Frel = plts_Frel;
         }
 
-        internal void Fetch(Geodatabase geodatabase) {
+        internal S57Object Fetch(Geodatabase geodatabase) {
 
+            S57Object result = null;
+            
             var sourceFeatureClass = this._plts_Frel.SRC_FC;
 
             var queryDef = new QueryDef();
@@ -28,22 +31,17 @@ namespace S100Framework.Applications
             queryDef.WhereClause = $"globalid = '{this._plts_Frel.DEST_UID}'";
 
             var cursor = geodatabase.Evaluate(queryDef, true);
+            
             while (cursor.MoveNext()) {
-
                 if (sourceFeatureClass.ToLower().Equals("aidstonavigationp")) {
-
-                    var relatedObject = new AidsToNavigationP((Feature)cursor.Current);
-
-
-
+                    result = new AidsToNavigationP((Feature)cursor.Current);
                 }
-
-                ;
+                else {
+                    throw new NotSupportedException($"GetRelated: {sourceFeatureClass}");
+                }
             };
 
-
-
-            ;
+            return result;
         }
 
 
@@ -76,7 +74,11 @@ namespace S100Framework.Applications
             if (!_isInitialized)
                 throw new ArgumentException("Not initalized. Call intialize.");
 
-            return _srcObjectToFrel.ContainsKey(globalid);
+            var result = _srcObjectToFrel.Values.SelectMany(list => list)
+                                      .FirstOrDefault(obj => obj.GLOBALID == globalid);
+
+
+            return result != null;
         }
 
         private void LoadPltsFrels(Geodatabase source) {

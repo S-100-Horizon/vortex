@@ -42,15 +42,6 @@ namespace S100Framework.Applications
 
                 var current = new AidsToNavigationP(feature);
 
-                var related = featureRelations.GetRelated(current.GLOBALID);
-                if (related != null) {
-                    foreach (var plfrel in related) {
-                        var slave = new Slave(plfrel);
-                        slave.Fetch(source);
-
-                    }
-                }
-
                 var objectid = current.OBJECTID ?? default;
                 var globalid = current.GLOBALID;
                 var subtype = current.FCSUBTYPE ?? default;
@@ -70,11 +61,10 @@ namespace S100Framework.Applications
                 var colours = new List<colour>();
 
 
-                // if slave continue - retrieve related slaves for structure in the relevant structure
                 if (featureRelations.IsSlave(globalid)) {
                     continue;
-
                 }
+
 
                 switch (subtype) {
                     case 1: { // BCNCAR_BeaconCardinal
@@ -85,7 +75,7 @@ namespace S100Framework.Applications
                             AddStatus(instance.status, feature);
                             AddFeatureName(instance.featureName, feature);
                             AddInformation(instance.information, feature);
-                           
+                            
 
                             buffer["ps"] = ps101;
 
@@ -228,6 +218,18 @@ namespace S100Framework.Applications
                             AddStatus(instance.status, feature);
                             AddFeatureName(instance.featureName, feature);
                             AddInformation(instance.information, feature);
+
+                            // Slaves
+                            var related = featureRelations.GetRelated(current.GLOBALID);
+                            if (related != null) {
+                                foreach (var plfrel in related) {
+                                    //plfrel.RIND
+                                    var slave = new Slave(plfrel);
+                                    var result = slave.Fetch(source);
+
+                                }
+                            }
+
                             buffer["ps"] = ps101;
 
                             buffer["code"] = instance.GetType().Name;
