@@ -22,7 +22,28 @@ namespace S100Framework.Applications
 
             var sourceFeatureClass = this._plts_Frel.SRC_FC;
 
+            var queryDef = new QueryDef();
+            queryDef.Tables = $"{geodatabase.GetName(sourceFeatureClass)}";
 
+            queryDef.WhereClause = $"globalid = '{this._plts_Frel.DEST_UID}'";
+
+            var cursor = geodatabase.Evaluate(queryDef, true);
+            while (cursor.MoveNext()) {
+
+                if (sourceFeatureClass.ToLower().Equals("aidstonavigationp")) {
+
+                    var relatedObject = new AidsToNavigationP((Feature)cursor.Current);
+
+
+
+                }
+
+                ;
+            };
+
+
+
+            ;
         }
 
 
@@ -45,7 +66,8 @@ namespace S100Framework.Applications
         internal IList<PLTS_Frel> GetRelated(Guid uid) {
             if (!_isInitialized)
                 throw new ArgumentException("Not initalized. Call intialize.");
-
+            if (!_srcObjectToFrel.ContainsKey(uid))
+                return null;
 
             return _srcObjectToFrel[uid];
         }

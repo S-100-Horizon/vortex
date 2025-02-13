@@ -2,7 +2,7 @@
   "profiles": {
     "Loader": {
       "commandName": "Project",
-      "commandLineArgs": "--v --cmd NIS --target \"C:\\Vortex\\connections\\SQLServer-ncps-mssql-test-s100ed4_traditional(s101_dbo).sde\" --source \"C:\\Vortex\\replica.gdb\" --query \"PLTS_COMP_SCALE = 22000\" --notespath \"G:\\indigo\\ENC\\NotesAndPictures\""
+      "commandLineArgs": "--v --cmd NIS --target \"C:\\Vortex\\s100ed4.gdb\" --source \"C:\\Vortex\\replica.gdb\" --query \"PLTS_COMP_SCALE = 22000\" --notespath \"G:\\indigo\\ENC\\NotesAndPictures\""
     }
   }
 }

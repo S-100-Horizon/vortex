@@ -9,12 +9,9 @@ namespace S100Framework.Applications
         private static void S57_CoastlineA(Geodatabase source, Geodatabase target, QueryFilter filter) {
             var tableName = "CoastlineA";
 
-            
-
             var coastlinea = source.OpenDataset<FeatureClass>(source.GetName(tableName));
 
             using var featureClass = target.OpenDataset<FeatureClass>(target.GetName("surface"));
-            
 
             using var buffer = featureClass.CreateRowBuffer();
             using var insert = featureClass.CreateInsertCursor();
@@ -44,6 +41,7 @@ namespace S100Framework.Applications
                             if (plts_comp_scale != default) {
                                 instance.scaleMinimum = plts_comp_scale;
                             }
+
                             AddCondition(instance.condition, feature);
                             AddStatus(instance.status, feature);
                             AddFeatureName(instance.featureName, feature);
@@ -62,7 +60,6 @@ namespace S100Framework.Applications
                         // code block
                         System.Diagnostics.Debugger.Break();
                         break;
-
                 }
 
 

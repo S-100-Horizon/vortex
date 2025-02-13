@@ -45,13 +45,13 @@ namespace S100Framework.Applications
 
             });
 
-            Func<Action, bool> Executer = (a) => {
+            Func<Action, bool> Store = (a) => {
                 a.Invoke();
                 return true;
             };
 
             if (destination.IsTraditionallyVersioned()) {
-                Executer = (a) => {
+                Store = (a) => {
                     destination.ApplyEdits(() => {
                         a.Invoke();
                     },true);
@@ -61,7 +61,7 @@ namespace S100Framework.Applications
 
             using (Geodatabase source = createGeodatabase()) {
 
-                Executer(() => {
+                Store(() => {
                     var query = new QueryFilter {
                         WhereClause = $"1=1",
                     };
@@ -78,39 +78,39 @@ namespace S100Framework.Applications
                     informationtype.DeleteRows(query);
                 });
 
-                Executer(() => S57_MilitaryFeatureA(source, destination, filter));
-                Executer(() => S57_MilitaryFeaturesP(source, destination, filter));
-                Executer(() => S57_TracksAndRoutesA(source, destination, filter));
-                Executer(() => S57_TracksAndRoutesL(source, destination, filter));
-                Executer(() => S57_TracksAndRoutesP(source, destination, filter));
-                Executer(() => S57_IcefeaturesA(source, destination, filter));
-                Executer(() => S57_CoastlineA(source, destination, filter));
-                Executer(() => S57_CoastlineL(source, destination, filter));
-                Executer(() => S57_CoastlineP(source, destination, filter));
-                Executer(() => S57_CulturalFeaturesA(source, destination, filter));
-                Executer(() => S57_CulturalFeaturesL(source, destination, filter));
-                Executer(() => S57_CulturalFeaturesP(source, destination, filter));
-                Executer(() => S57_SeabedP(source, destination, filter));
-                Executer(() => S57_ProductCoverage(source, destination, filter));
-                Executer(() => S57_AidsToNavigationP(source, destination, filter));
-                Executer(() => S57_PortsAndServicesP(source, destination, filter));
-                Executer(() => S57_PortsAndServicesA(source, destination, filter));
-                Executer(() => S57_PortsAndServicesL(source, destination, filter));
-                Executer(() => S57_DangersA(source, destination, filter));
-                Executer(() => S57_DangersP(source, destination, filter));
-                Executer(() => S57_DangersL(source, destination, filter));
-                Executer(() => S57_RegulatedAreasAndLimitsL(source, destination, filter));
-                Executer(() => S57_RegulatedAreasAndLimitsA(source, destination, filter));
-                Executer(() => S57_RegulatedAreasAndLimitsP(source, destination, filter));
-                Executer(() => S57_OffshoreInstallationsL(source, destination, filter));
-                Executer(() => S57_OffshoreInstallationsA(source, destination, filter));
-                Executer(() => S57_OffshoreInstallationsP(source, destination, filter));
-                Executer(() => S57_NaturalFeaturesL(source, destination, filter));
-                Executer(() => S57_NaturalFeaturesA(source, destination, filter));
-                Executer(() => S57_NaturalFeaturesP(source, destination, filter));
-                Executer(() => S57_DepthsL(source, destination, filter));
-                Executer(() => S57_DepthsA(source, destination, filter));
-                Executer(() => S57_SoundingsP(source, destination, filter));
+                Store(() => S57_MilitaryFeatureA(source, destination, filter));
+                Store(() => S57_MilitaryFeaturesP(source, destination, filter));
+                Store(() => S57_TracksAndRoutesA(source, destination, filter));
+                Store(() => S57_TracksAndRoutesL(source, destination, filter));
+                Store(() => S57_TracksAndRoutesP(source, destination, filter));
+                Store(() => S57_IcefeaturesA(source, destination, filter));
+                Store(() => S57_CoastlineA(source, destination, filter));
+                Store(() => S57_CoastlineL(source, destination, filter));
+                Store(() => S57_CoastlineP(source, destination, filter));
+                Store(() => S57_CulturalFeaturesA(source, destination, filter));
+                Store(() => S57_CulturalFeaturesL(source, destination, filter));
+                Store(() => S57_CulturalFeaturesP(source, destination, filter));
+                Store(() => S57_SeabedP(source, destination, filter));
+                Store(() => S57_ProductCoverage(source, destination, filter));
+                Store(() => S57_AidsToNavigationP(source, destination, filter));
+                Store(() => S57_PortsAndServicesP(source, destination, filter));
+                Store(() => S57_PortsAndServicesA(source, destination, filter));
+                Store(() => S57_PortsAndServicesL(source, destination, filter));
+                Store(() => S57_DangersA(source, destination, filter));
+                Store(() => S57_DangersP(source, destination, filter));
+                Store(() => S57_DangersL(source, destination, filter));
+                Store(() => S57_RegulatedAreasAndLimitsL(source, destination, filter));
+                Store(() => S57_RegulatedAreasAndLimitsA(source, destination, filter));
+                Store(() => S57_RegulatedAreasAndLimitsP(source, destination, filter));
+                Store(() => S57_OffshoreInstallationsL(source, destination, filter));
+                Store(() => S57_OffshoreInstallationsA(source, destination, filter));
+                Store(() => S57_OffshoreInstallationsP(source, destination, filter));
+                Store(() => S57_NaturalFeaturesL(source, destination, filter));
+                Store(() => S57_NaturalFeaturesA(source, destination, filter));
+                Store(() => S57_NaturalFeaturesP(source, destination, filter));
+                Store(() => S57_DepthsL(source, destination, filter));
+                Store(() => S57_DepthsA(source, destination, filter));
+                Store(() => S57_SoundingsP(source, destination, filter));
                 return true;
             }
         }

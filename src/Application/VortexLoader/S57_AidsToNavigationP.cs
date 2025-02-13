@@ -42,6 +42,15 @@ namespace S100Framework.Applications
 
                 var current = new AidsToNavigationP(feature);
 
+                var related = featureRelations.GetRelated(current.GLOBALID);
+                if (related != null) {
+                    foreach (var plfrel in related) {
+                        var slave = new Slave(plfrel);
+                        slave.Fetch(source);
+
+                    }
+                }
+
                 var objectid = current.OBJECTID ?? default;
                 var globalid = current.GLOBALID;
                 var subtype = current.FCSUBTYPE ?? default;
