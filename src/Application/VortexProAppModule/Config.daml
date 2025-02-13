@@ -5,7 +5,7 @@
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:schemaLocation="http://schemas.esri.com/DADF/Registry file:///C:/Program%20Files/ArcGIS/Pro/bin/ArcGIS.Desktop.Framework.xsd">
 
-  <AddInInfo id="{e88a79e5-f75d-4324-b52a-38eca2a1f9a1}" version="3.4.3" desktopVersion="3.3.54247">
+  <AddInInfo id="{e88a79e5-f75d-4324-b52a-38eca2a1f9a1}" version="3.4.4" desktopVersion="3.3.54247">
     <Name>VortexProAppModule</Name>   
     <Description>VortexProAppModule description</Description>
     <Image>Images\Logo.png</Image>
