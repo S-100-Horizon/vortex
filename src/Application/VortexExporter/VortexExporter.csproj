@@ -14,6 +14,11 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\Core\S100Framework.Catalogues\S100Framework.Catalogues.csproj" />
+    <ProjectReference Include="..\..\Core\S100Framework.YAML\S100Framework.YAML.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Reference Include="ArcGIS.Core">
       <HintPath>C:\Program Files\ArcGIS\Pro\bin\ArcGIS.Core.dll</HintPath>
     </Reference>
