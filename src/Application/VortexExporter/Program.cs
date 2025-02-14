@@ -72,7 +72,27 @@ namespace S100Framework.Applications
                 using var cursor = fc.Search(filter, true);
                 while (cursor.MoveNext()) {
                     var current = cursor.Current;
+
+                    var name = Convert.ToString(current["code"]);
+                    var foid = $"{current.GetObjectID()}:1";
+
+                    var prim = def.GetShapeType() switch {
+                        GeometryType.Point => "Point",
+                        GeometryType.Multipoint => "PointSet",
+                        GeometryType.Polyline => "Curve",
+                        GeometryType.Polygon => "Surface",
+                        _ => throw new InvalidOperationException(),
+                    };
+
+                    var geometry = Convert.ToString(current["name"]);
+
                     Console.WriteLine($"\t{current.GetObjectID()}");
+                    Console.WriteLine($"\t\t{new { 
+                        Name = name,
+                        Foid = foid,
+                        Prim = prim,
+                        Geometry = geometry,
+                    }}");
                 }
             }
 
