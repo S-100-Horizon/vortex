@@ -1,8 +1,0 @@
-{
-  "profiles": {
-    "VortexExporter": {
-      "commandName": "Project",
-      "commandLineArgs": "-g g:\\vortex\\connections\\s100ed4_traditional(s101).sde"
-    }
-  }
-}
