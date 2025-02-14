@@ -135,13 +135,15 @@ namespace VortexProAppModule
                     foreach (var selectionSet in selection.ToDictionary()) {
                         if (!(selectionSet.Key is ArcGIS.Desktop.Mapping.FeatureLayer))
                             continue;
-                        inspector.Load(selectionSet.Key, selectionSet.Value);
+                        foreach (var i in selectionSet.Value) {
+                            inspector.Load(selectionSet.Key, i);
 
-                        var code = Convert.ToString(inspector["code"]);
-                        if (string.IsNullOrEmpty(code) || !featureType.Equals(code, StringComparison.InvariantCultureIgnoreCase))
-                            continue;
+                            var code = Convert.ToString(inspector["code"]);
+                            if (string.IsNullOrEmpty(code) || !featureType.Equals(code, StringComparison.InvariantCultureIgnoreCase))
+                                continue;
 
-                        objectid.Add(Convert.ToString(inspector["name"]));
+                            objectid.Add(Convert.ToString(inspector["name"]));
+                        }
                     }
 
                     return objectid.ToArray();
@@ -168,13 +170,15 @@ namespace VortexProAppModule
                         if (!(selectionSet.Key is ArcGIS.Desktop.Mapping.StandaloneTable))
                             continue;
 
-                        inspector.Load(selectionSet.Key, selectionSet.Value);
+                        foreach (var i in selectionSet.Value) {
+                            inspector.Load(selectionSet.Key, i);
 
-                        var code = Convert.ToString(inspector["code"]);
-                        if (string.IsNullOrEmpty(code) || !informationType.Equals(code, StringComparison.InvariantCultureIgnoreCase))
-                            continue;
+                            var code = Convert.ToString(inspector["code"]);
+                            if (string.IsNullOrEmpty(code) || !informationType.Equals(code, StringComparison.InvariantCultureIgnoreCase))
+                                continue;
 
-                        objectid.Add(Convert.ToString(inspector["name"]));
+                            objectid.Add(Convert.ToString(inspector["name"]));
+                        }
                     }
 
                     return objectid.ToArray();
