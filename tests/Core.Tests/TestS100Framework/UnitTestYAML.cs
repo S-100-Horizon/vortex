@@ -58,9 +58,7 @@ namespace TestS100Framework
                 valueOfNominalRange = 9,
             };
 
-            var fromExtension = lightAllAround.ToYAML();
-
-            var yaml = YAML.SerializeAttributes(lightAllAround);
+            var yaml = S100Framework.YAML.Converter.SerializeAttributes(lightAllAround);
 
             System.Diagnostics.Debugger.Break();
         }
@@ -258,7 +256,7 @@ namespace TestS100Framework
         internal static string SerializeAttributes(object dataset) {
             var propertyId = 1;
 
-            var flattenedObject = FlattenAttributesRecursively(dataset, ref propertyId, null, false);
+            var flattenedObject = FlattenAttributesRecursively(dataset, ref propertyId);
 
             var serializer = new SerializerBuilder()
                 .WithNamingConvention(CamelCaseNamingConvention.Instance)
@@ -271,17 +269,11 @@ namespace TestS100Framework
 
         private record YamlAttributeItem(string Name, object? Value, int? Id, int? Parent);
 
-        private static List<YamlAttributeItem> FlattenAttributesRecursively(object obj, ref int propertyId, int? parentId = null, bool addRootObj = true) {
+        private static List<YamlAttributeItem> FlattenAttributesRecursively(object obj, ref int propertyId, int? parentId = null) {
             var attributes = new List<YamlAttributeItem>();
+
             var type = obj.GetType();
             var properties = type.GetProperties();
-            var currentId = propertyId;
-
-            // Skips the root object. Ensures we dont have everything with Parent: 1
-            if (addRootObj) {
-                attributes.Add(new YamlAttributeItem(type.Name, null, currentId, parentId));
-                parentId = currentId;
-            }
 
             foreach (var property in properties) {
                 var propertyValue = property.GetValue(obj, null);
@@ -318,8 +310,17 @@ namespace TestS100Framework
             return attributes;
         }
         private static List<YamlAttributeItem> HandleComplexObject(object propertyValue, ref int propertyId, int? parentId) {
+            var name = propertyValue.GetType().Name;
+
+            var children = new List<YamlAttributeItem>() {
+                new(name, null, propertyId, parentId)
+            };
+
+            parentId = propertyId;
+
             propertyId++;
-            var children = FlattenAttributesRecursively(propertyValue, ref propertyId, parentId);
+      
+            children.AddRange(FlattenAttributesRecursively(propertyValue, ref propertyId, parentId));
             return children;
         }
         private static List<YamlAttributeItem> HandleCollection(string propertyName, object propertyValue, ref int propertyId, int? parentId) {
@@ -357,6 +358,7 @@ namespace TestS100Framework
 
             return attributes;
         }
+    
     }
 }
 

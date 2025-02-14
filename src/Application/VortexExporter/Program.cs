@@ -1,7 +1,6 @@
 ﻿using ArcGIS.Core.Data;
 using ArcGIS.Core.Geometry;
 using CommandLine;
-using S100Framework.Catalogues;
 using Esri = ArcGIS.Core.Hosting.Host;
 using IO = System.IO;
 
@@ -26,7 +25,7 @@ namespace S100Framework.Applications
             var arguments = Parser.Default.ParseArguments<Options>(args)
                                .WithParsed<Options>(o => {
                                });
-             
+
             AppDomain.CurrentDomain.UnhandledException += (sender, e) => {
                 Logger.Current.Fatal((Exception)e.ExceptionObject, "UnhandledException");
             };
@@ -96,8 +95,10 @@ namespace S100Framework.Applications
 
                     var instance = DBNull.Value.Equals(current["json"]) ? null : System.Text.Json.JsonSerializer.Deserialize(Convert.ToString(current["json"])!, type);
 
+                    var attributes = S100Framework.YAML.Converter.SerializeAttributes(instance!);
+
                     Console.WriteLine($"\t{current.GetObjectID()}");
-                    Console.WriteLine($"\t{new { 
+                    Console.WriteLine($"\t{new {
                         Name = name,
                         Foid = foid,
                         Prim = prim,
