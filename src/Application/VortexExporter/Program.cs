@@ -1,6 +1,8 @@
 ﻿using ArcGIS.Core.Data;
 using ArcGIS.Core.Geometry;
+using ArcGIS.Core.Internal.CIM;
 using CommandLine;
+using S100Framework.YAML;
 using Esri = ArcGIS.Core.Hosting.Host;
 using IO = System.IO;
 
@@ -58,12 +60,21 @@ namespace S100Framework.Applications
 
             var syntax = source.GetSQLSyntax();
 
+            var dataset = new Dictionary<string, object>() {
+                { "CellName", "101AA00DS0016.000" },
+                { "Comment", "S-101 TDS-S-101 Test Dataset 016" },
+                { "Edition", 8 },
+                { "encver", "INT.IHO.S-101.2.0" },
+                { "FCVer", 2.0 },
+            };
+
+            var features = new List<object>();
+
 
             var featureCatalogue = S100Framework.Catalogues.FeatureCatalogue.Catalogues.Single(e => e.ProductID.Equals("S-101"));
 
-            foreach (var def in source.GetDefinitions<FeatureClassDefinition>()) {
-                Console.WriteLine(def.GetName());
 
+            foreach (var def in source.GetDefinitions<FeatureClassDefinition>()) {
                 using var fc = source.OpenDataset<FeatureClass>(def.GetName());
 
                 var filter = new SpatialQueryFilter {
@@ -71,8 +82,6 @@ namespace S100Framework.Applications
                     SpatialRelationship = SpatialRelationship.Contains,
 
                 };
-
-                var tableName = syntax.ParseTableName(fc.GetName());
 
                 using var cursor = fc.Search(filter, true);
                 while (cursor.MoveNext()) {
@@ -95,18 +104,25 @@ namespace S100Framework.Applications
 
                     var instance = DBNull.Value.Equals(current["json"]) ? null : System.Text.Json.JsonSerializer.Deserialize(Convert.ToString(current["json"])!, type);
 
-                    var attributes = S100Framework.YAML.Converter.SerializeAttributes(instance!);
-
-                    Console.WriteLine($"\t{current.GetObjectID()}");
-                    Console.WriteLine($"\t{new {
+                    var feature = new {
                         Name = name,
                         Foid = foid,
                         Prim = prim,
                         Geometry = geometry,
-                    }}");
+                        Attributes = instance,
+                    };
+
+                    features.Add(feature);
                 }
             }
 
+            dataset.Add("Features", features);
+
+            var yaml = S100Framework.YAML.Converter.Serialize(dataset);
+
+            //File.WriteAllText(IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "skraml.yaml"), yaml);
+
+            Console.WriteLine(yaml);
             return 0;
         }
 

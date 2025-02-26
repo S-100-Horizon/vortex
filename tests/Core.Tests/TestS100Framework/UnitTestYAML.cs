@@ -58,7 +58,7 @@ namespace TestS100Framework
                 valueOfNominalRange = 9,
             };
 
-            var yaml = S100Framework.YAML.Converter.SerializeAttributes(lightAllAround);
+            var yaml = S100Framework.YAML.Converter.Serialize(lightAllAround);
 
             System.Diagnostics.Debugger.Break();
         }
