@@ -17,7 +17,8 @@ namespace S100Framework.YAML
            .WithNamingConvention(PascalCaseNamingConvention.Instance)
            .ConfigureDefaultValuesHandling(DefaultValuesHandling.OmitDefaults)
            .WithIndentedSequences()
-           .WithTypeConverter(new CustomNodeConverter()) // Custom type converter for objects of Node
+           .WithTypeConverter(new CustomNodeConverter())    // Custom type converter for objects of Node
+           .WithTypeConverter(new DoubleConverter())        // Custom Double converter. Ensures a value of 2 is written as "2.0"
            .Build();
 
         private static List<YamlAttributeItem> FlattenAttributesRecursively(object obj, ref int propertyId, int? parentId = null) {
@@ -156,6 +157,18 @@ namespace S100Framework.YAML
                 }
 
                 emitter.Emit(new SequenceEnd());
+            }
+        }
+        private class DoubleConverter : IYamlTypeConverter
+        {
+            public bool Accepts(Type type) => type == typeof(double);
+
+            public object? ReadYaml(IParser parser, Type type, ObjectDeserializer rootDeserializer) => throw new NotImplementedException("Deserialization is not supported.");
+
+            public void WriteYaml(IEmitter emitter, object? value, Type type, ObjectSerializer serializer) {
+                double doubleValue = (double)value!;
+                string formatted = doubleValue.ToString("0.0", System.Globalization.CultureInfo.InvariantCulture);
+                emitter.Emit(new Scalar(formatted));
             }
         }
     }

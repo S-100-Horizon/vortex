@@ -115,6 +115,12 @@ namespace S100Framework.Applications
                     features.Add(feature);
                 }
             }
+            dataset.Add("InformationTypes", default!);
+            dataset.Add("Points", default!);
+            dataset.Add("Curves", default!);
+            dataset.Add("CompositeCurves", default!);
+            dataset.Add("Depths", default!);
+            dataset.Add("Surfaces", default!);
 
             dataset.Add("Features", features);
 
