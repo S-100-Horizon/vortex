@@ -2678,6 +2678,9 @@ namespace S100Framework.DomainModel.S101 {
         public partial class featureName {
             public String language { get; set; } = string.Empty;
             public String name { get; set; } = string.Empty;
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
             public nameUsage? nameUsage { get; set; } = default;
 
             public featureName() {
@@ -2776,6 +2779,11 @@ namespace S100Framework.DomainModel.S101 {
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class measuredDistanceValue {
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
+            [EnumerationValue(4)]
+            [EnumerationValue(5)]
             [Required()]
             public distanceUnitOfMeasurement distanceUnitOfMeasurement { get; set; }
             public String referenceLocation { get; set; } = string.Empty;
@@ -2902,6 +2910,8 @@ namespace S100Framework.DomainModel.S101 {
             [Required()]
             public Decimal signalDuration { get; set; }
 
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
             [Required()]
             public signalStatus signalStatus { get; set; }
 
@@ -2927,7 +2937,31 @@ namespace S100Framework.DomainModel.S101 {
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class surfaceCharacteristics {
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
+            [EnumerationValue(4)]
+            [EnumerationValue(5)]
+            [EnumerationValue(6)]
+            [EnumerationValue(7)]
+            [EnumerationValue(8)]
+            [EnumerationValue(9)]
+            [EnumerationValue(11)]
+            [EnumerationValue(14)]
+            [EnumerationValue(17)]
+            [EnumerationValue(18)]
             public natureOfSurface? natureOfSurface { get; set; } = default;
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
+            [EnumerationValue(4)]
+            [EnumerationValue(5)]
+            [EnumerationValue(6)]
+            [EnumerationValue(7)]
+            [EnumerationValue(8)]
+            [EnumerationValue(9)]
+            [EnumerationValue(10)]
             public List<natureOfSurfaceQualifyingTerms> natureOfSurfaceQualifyingTerms { get; set; } = [];
             public Int32? underlyingLayer { get; set; } = default;
 
@@ -2955,6 +2989,15 @@ namespace S100Framework.DomainModel.S101 {
         {
             public String contactInstructions { get; set; } = string.Empty;
             public String telecommunicationIdentifier { get; set; } = string.Empty;
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
+            [EnumerationValue(4)]
+            [EnumerationValue(5)]
+            [EnumerationValue(6)]
+            [EnumerationValue(7)]
+            [EnumerationValue(8)]
             public telecommunicationService? telecommunicationService { get; set; } = default;
 
             public telecommunications() {
@@ -2985,6 +3028,13 @@ namespace S100Framework.DomainModel.S101 {
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class timeIntervalsByDayOfWeek {
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
+            [EnumerationValue(4)]
+            [EnumerationValue(5)]
+            [EnumerationValue(6)]
+            [EnumerationValue(7)]
             public List<dayOfWeek> dayOfWeek { get; set; } = [];
             public Boolean? dayOfWeekIsRange { get; set; } = default;
             public List<TimeOnly> timeOfDayStart { get; set; } = [];
@@ -3001,9 +3051,62 @@ namespace S100Framework.DomainModel.S101 {
         public partial class topmark
 #pragma warning restore CS8981
         {
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
+            [EnumerationValue(4)]
+            [EnumerationValue(5)]
+            [EnumerationValue(6)]
+            [EnumerationValue(7)]
+            [EnumerationValue(8)]
+            [EnumerationValue(9)]
+            [EnumerationValue(10)]
+            [EnumerationValue(11)]
+            [EnumerationValue(12)]
+            [EnumerationValue(13)]
             public List<colour> colour { get; set; } = [];
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
+            [EnumerationValue(4)]
+            [EnumerationValue(5)]
+            [EnumerationValue(6)]
             public colourPattern? colourPattern { get; set; } = default;
 
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
+            [EnumerationValue(4)]
+            [EnumerationValue(5)]
+            [EnumerationValue(6)]
+            [EnumerationValue(7)]
+            [EnumerationValue(8)]
+            [EnumerationValue(9)]
+            [EnumerationValue(10)]
+            [EnumerationValue(11)]
+            [EnumerationValue(12)]
+            [EnumerationValue(13)]
+            [EnumerationValue(14)]
+            [EnumerationValue(15)]
+            [EnumerationValue(16)]
+            [EnumerationValue(17)]
+            [EnumerationValue(18)]
+            [EnumerationValue(19)]
+            [EnumerationValue(20)]
+            [EnumerationValue(21)]
+            [EnumerationValue(22)]
+            [EnumerationValue(23)]
+            [EnumerationValue(24)]
+            [EnumerationValue(25)]
+            [EnumerationValue(26)]
+            [EnumerationValue(27)]
+            [EnumerationValue(28)]
+            [EnumerationValue(29)]
+            [EnumerationValue(30)]
+            [EnumerationValue(31)]
+            [EnumerationValue(32)]
+            [EnumerationValue(33)]
             [Required()]
             public topmarkDaymarkShape topmarkDaymarkShape { get; set; }
             public List<shapeInformation> shapeInformation { get; set; } = [];
@@ -3017,6 +3120,9 @@ namespace S100Framework.DomainModel.S101 {
         public partial class valueOfLocalMagneticAnomaly {
             [Required()]
             public Decimal magneticAnomalyValue { get; set; }
+
+            [EnumerationValue(5)]
+            [EnumerationValue(13)]
             public referenceDirection? referenceDirection { get; set; } = default;
 
             public valueOfLocalMagneticAnomaly() {
@@ -3040,6 +3146,9 @@ namespace S100Framework.DomainModel.S101 {
             [Required()]
             public Decimal speedLimit { get; set; }
 
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
+            [EnumerationValue(4)]
             [Required()]
             public speedUnits speedUnits { get; set; }
             public String vesselClass { get; set; } = string.Empty;
@@ -3051,6 +3160,12 @@ namespace S100Framework.DomainModel.S101 {
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class zoneOfConfidence {
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
+            [EnumerationValue(4)]
+            [EnumerationValue(5)]
+            [EnumerationValue(6)]
             [Required()]
             public categoryOfZoneOfConfidenceInData categoryOfZoneOfConfidenceInData { get; set; }
             public fixedDateRange? fixedDateRange { get; set; }
@@ -3080,6 +3195,28 @@ namespace S100Framework.DomainModel.S101 {
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class rhythmOfLight {
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
+            [EnumerationValue(4)]
+            [EnumerationValue(5)]
+            [EnumerationValue(6)]
+            [EnumerationValue(7)]
+            [EnumerationValue(8)]
+            [EnumerationValue(11)]
+            [EnumerationValue(12)]
+            [EnumerationValue(13)]
+            [EnumerationValue(14)]
+            [EnumerationValue(15)]
+            [EnumerationValue(16)]
+            [EnumerationValue(17)]
+            [EnumerationValue(18)]
+            [EnumerationValue(19)]
+            [EnumerationValue(25)]
+            [EnumerationValue(26)]
+            [EnumerationValue(27)]
+            [EnumerationValue(28)]
+            [EnumerationValue(29)]
             [Required()]
             public lightCharacteristic lightCharacteristic { get; set; }
             public List<String> signalGroup { get; set; } = [];
@@ -3093,6 +3230,9 @@ namespace S100Framework.DomainModel.S101 {
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class scheduleByDayOfWeek {
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
             public categoryOfSchedule? categoryOfSchedule { get; set; } = default;
 
             [Required()]
@@ -3138,9 +3278,14 @@ namespace S100Framework.DomainModel.S101 {
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class tidalStreamPanelValues {
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
             [Required()]
             public referenceTide referenceTide { get; set; }
 
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
             [Required()]
             public referenceTideType referenceTideType { get; set; }
             public Decimal? streamDepth { get; set; } = default;
@@ -3201,9 +3346,26 @@ namespace S100Framework.DomainModel.S101 {
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class lightSector {
+            [EnumerationValue(1)]
+            [EnumerationValue(3)]
+            [EnumerationValue(4)]
+            [EnumerationValue(5)]
+            [EnumerationValue(6)]
+            [EnumerationValue(9)]
+            [EnumerationValue(10)]
+            [EnumerationValue(11)]
             [Required()]
             public List<colour> colour { get; set; }
             public directionalCharacter? directionalCharacter { get; set; }
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
+            [EnumerationValue(4)]
+            [EnumerationValue(5)]
+            [EnumerationValue(6)]
+            [EnumerationValue(8)]
+            [EnumerationValue(9)]
             public List<lightVisibility> lightVisibility { get; set; } = [];
             public sectorLimit? sectorLimit { get; set; }
             public Decimal? valueOfNominalRange { get; set; } = default;
@@ -3218,6 +3380,28 @@ namespace S100Framework.DomainModel.S101 {
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class sectorCharacteristics {
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
+            [EnumerationValue(4)]
+            [EnumerationValue(5)]
+            [EnumerationValue(6)]
+            [EnumerationValue(7)]
+            [EnumerationValue(8)]
+            [EnumerationValue(11)]
+            [EnumerationValue(12)]
+            [EnumerationValue(13)]
+            [EnumerationValue(14)]
+            [EnumerationValue(15)]
+            [EnumerationValue(16)]
+            [EnumerationValue(17)]
+            [EnumerationValue(18)]
+            [EnumerationValue(19)]
+            [EnumerationValue(25)]
+            [EnumerationValue(26)]
+            [EnumerationValue(27)]
+            [EnumerationValue(28)]
+            [EnumerationValue(29)]
             [Required()]
             public lightCharacteristic lightCharacteristic { get; set; }
 
@@ -3343,6 +3527,7 @@ namespace S100Framework.DomainModel.S101 {
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class SpatialQuality : InformationNode {
+            [EnumerationValue(4)]
             public qualityOfHorizontalMeasurement? qualityOfHorizontalMeasurement { get; set; } = default;
             public List<spatialAccuracy> spatialAccuracy { get; set; } = [];
             public override string Code => nameof(SpatialQuality);
@@ -3360,6 +3545,8 @@ namespace S100Framework.DomainModel.S101 {
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class QualityOfNonBathymetricData : FeatureNode {
+            [EnumerationValue(1)]
+            [EnumerationValue(4)]
             public categoryOfTemporalVariation? categoryOfTemporalVariation { get; set; } = default;
             public Decimal? horizontalDistanceUncertainty { get; set; } = default;
 
@@ -3404,6 +3591,10 @@ namespace S100Framework.DomainModel.S101 {
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class NavigationalSystemOfMarks : FeatureNode {
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(9)]
+            [EnumerationValue(11)]
             [Required()]
             public marksNavigationalSystemOf marksNavigationalSystemOf { get; set; }
             public String interoperabilityIdentifier { get; set; } = string.Empty;
@@ -3419,6 +3610,10 @@ namespace S100Framework.DomainModel.S101 {
         public partial class LocalDirectionOfBuoyage : FeatureNode {
             public String interoperabilityIdentifier { get; set; } = string.Empty;
 
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(9)]
+            [EnumerationValue(11)]
             [Required()]
             public marksNavigationalSystemOf marksNavigationalSystemOf { get; set; }
 
@@ -3435,9 +3630,17 @@ namespace S100Framework.DomainModel.S101 {
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class QualityOfBathymetricData : FeatureNode {
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
+            [EnumerationValue(5)]
+            [EnumerationValue(6)]
             [Required()]
             public categoryOfTemporalVariation categoryOfTemporalVariation { get; set; }
 
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
             [Required()]
             public dataAssessment dataAssessment { get; set; }
             public Decimal? depthRangeMaximumValue { get; set; } = default;
@@ -3471,6 +3674,29 @@ namespace S100Framework.DomainModel.S101 {
         public partial class SoundingDatum : FeatureNode {
             public String interoperabilityIdentifier { get; set; } = string.Empty;
 
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
+            [EnumerationValue(4)]
+            [EnumerationValue(5)]
+            [EnumerationValue(6)]
+            [EnumerationValue(7)]
+            [EnumerationValue(8)]
+            [EnumerationValue(9)]
+            [EnumerationValue(10)]
+            [EnumerationValue(11)]
+            [EnumerationValue(12)]
+            [EnumerationValue(13)]
+            [EnumerationValue(14)]
+            [EnumerationValue(15)]
+            [EnumerationValue(19)]
+            [EnumerationValue(22)]
+            [EnumerationValue(23)]
+            [EnumerationValue(24)]
+            [EnumerationValue(25)]
+            [EnumerationValue(26)]
+            [EnumerationValue(27)]
+            [EnumerationValue(44)]
             [Required()]
             public verticalDatum verticalDatum { get; set; }
             public List<information> information { get; set; } = [];
@@ -3485,6 +3711,21 @@ namespace S100Framework.DomainModel.S101 {
         public partial class VerticalDatumOfData : FeatureNode {
             public String interoperabilityIdentifier { get; set; } = string.Empty;
 
+            [EnumerationValue(3)]
+            [EnumerationValue(13)]
+            [EnumerationValue(16)]
+            [EnumerationValue(17)]
+            [EnumerationValue(18)]
+            [EnumerationValue(19)]
+            [EnumerationValue(20)]
+            [EnumerationValue(21)]
+            [EnumerationValue(24)]
+            [EnumerationValue(25)]
+            [EnumerationValue(26)]
+            [EnumerationValue(28)]
+            [EnumerationValue(29)]
+            [EnumerationValue(30)]
+            [EnumerationValue(44)]
             [Required()]
             public verticalDatum verticalDatum { get; set; }
             public List<information> information { get; set; } = [];
@@ -3506,7 +3747,20 @@ namespace S100Framework.DomainModel.S101 {
             public Int32? lineSpacingMinimum { get; set; } = default;
             public Int32? measurementDistanceMaximum { get; set; } = default;
             public Int32? measurementDistanceMinimum { get; set; } = default;
+
+            [EnumerationValue(4)]
             public qualityOfHorizontalMeasurement? qualityOfHorizontalMeasurement { get; set; } = default;
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
+            [EnumerationValue(4)]
+            [EnumerationValue(6)]
+            [EnumerationValue(7)]
+            [EnumerationValue(8)]
+            [EnumerationValue(9)]
+            [EnumerationValue(10)]
+            [EnumerationValue(11)]
             public List<qualityOfVerticalMeasurement> qualityOfVerticalMeasurement { get; set; } = [];
             public Int32? scaleValueMaximum { get; set; } = default;
             public Int32? scaleValueMinimum { get; set; } = default;
@@ -3515,8 +3769,36 @@ namespace S100Framework.DomainModel.S101 {
             [Required()]
             public surveyDateRange surveyDateRange { get; set; }
 
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(4)]
+            [EnumerationValue(5)]
+            [EnumerationValue(6)]
+            [EnumerationValue(7)]
+            [EnumerationValue(8)]
+            [EnumerationValue(9)]
+            [EnumerationValue(10)]
+            [EnumerationValue(11)]
+            [EnumerationValue(12)]
+            [EnumerationValue(13)]
             [Required()]
             public List<surveyType> surveyType { get; set; }
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
+            [EnumerationValue(4)]
+            [EnumerationValue(5)]
+            [EnumerationValue(8)]
+            [EnumerationValue(9)]
+            [EnumerationValue(10)]
+            [EnumerationValue(11)]
+            [EnumerationValue(12)]
+            [EnumerationValue(13)]
+            [EnumerationValue(15)]
+            [EnumerationValue(16)]
+            [EnumerationValue(17)]
+            [EnumerationValue(18)]
             public List<techniqueOfVerticalMeasurement> techniqueOfVerticalMeasurement { get; set; } = [];
             public List<information> information { get; set; } = [];
             public override string Code => nameof(QualityOfSurvey);
@@ -3540,6 +3822,10 @@ namespace S100Framework.DomainModel.S101 {
             [Required()]
             public Int32 updateNumber { get; set; }
 
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
+            [EnumerationValue(4)]
             [Required()]
             public updateType updateType { get; set; }
             public Int32? scaleMinimum { get; set; } = default;
@@ -3593,13 +3879,46 @@ namespace S100Framework.DomainModel.S101 {
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class Coastline : FeatureNode {
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(6)]
+            [EnumerationValue(7)]
+            [EnumerationValue(8)]
+            [EnumerationValue(10)]
             public categoryOfCoastline? categoryOfCoastline { get; set; } = default;
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
+            [EnumerationValue(4)]
+            [EnumerationValue(6)]
+            [EnumerationValue(7)]
+            [EnumerationValue(8)]
+            [EnumerationValue(11)]
+            [EnumerationValue(13)]
             public List<colour> colour { get; set; } = [];
             public Decimal? elevation { get; set; } = default;
             public List<featureName> featureName { get; set; } = [];
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
+            [EnumerationValue(4)]
+            [EnumerationValue(5)]
+            [EnumerationValue(6)]
+            [EnumerationValue(7)]
+            [EnumerationValue(8)]
+            [EnumerationValue(9)]
+            [EnumerationValue(11)]
+            [EnumerationValue(14)]
+            [EnumerationValue(17)]
             public List<natureOfSurface> natureOfSurface { get; set; } = [];
             public Boolean? radarConspicuous { get; set; } = default;
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
             public visualProminence? visualProminence { get; set; } = default;
             public List<information> information { get; set; } = [];
             public String pictorialRepresentation { get; set; } = string.Empty;
@@ -3612,10 +3931,15 @@ namespace S100Framework.DomainModel.S101 {
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class LandArea : FeatureNode {
+            [EnumerationValue(1)]
+            [EnumerationValue(3)]
+            [EnumerationValue(5)]
             public condition? condition { get; set; } = default;
             public List<featureName> featureName { get; set; } = [];
             public String interoperabilityIdentifier { get; set; } = string.Empty;
             public DateOnly? reportedDate { get; set; } = default;
+
+            [EnumerationValue(18)]
             public status? status { get; set; } = default;
             public Int32? scaleMinimum { get; set; } = default;
             public List<information> information { get; set; } = [];
@@ -3647,6 +3971,10 @@ namespace S100Framework.DomainModel.S101 {
             public Decimal elevation { get; set; }
             public List<featureName> featureName { get; set; } = [];
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
             public visualProminence? visualProminence { get; set; } = default;
             public Int32? scaleMinimum { get; set; } = default;
             public List<information> information { get; set; } = [];
@@ -3661,6 +3989,8 @@ namespace S100Framework.DomainModel.S101 {
         public partial class River : FeatureNode {
             public List<featureName> featureName { get; set; } = [];
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
+            [EnumerationValue(5)]
             public status? status { get; set; } = default;
             public Int32? scaleMinimum { get; set; } = default;
             public List<information> information { get; set; } = [];
@@ -3690,6 +4020,10 @@ namespace S100Framework.DomainModel.S101 {
             public List<featureName> featureName { get; set; } = [];
             public String interoperabilityIdentifier { get; set; } = string.Empty;
             public Decimal? verticalLength { get; set; } = default;
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
             public visualProminence? visualProminence { get; set; } = default;
             public Int32? scaleMinimum { get; set; } = default;
             public List<information> information { get; set; } = [];
@@ -3705,6 +4039,8 @@ namespace S100Framework.DomainModel.S101 {
             public Decimal? elevation { get; set; } = default;
             public List<featureName> featureName { get; set; } = [];
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
+            [EnumerationValue(5)]
             public status? status { get; set; } = default;
             public Int32? scaleMinimum { get; set; } = default;
             public List<information> information { get; set; } = [];
@@ -3717,10 +4053,48 @@ namespace S100Framework.DomainModel.S101 {
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class LandRegion : FeatureNode {
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
+            [EnumerationValue(4)]
+            [EnumerationValue(5)]
+            [EnumerationValue(6)]
+            [EnumerationValue(7)]
+            [EnumerationValue(8)]
+            [EnumerationValue(9)]
+            [EnumerationValue(10)]
+            [EnumerationValue(11)]
+            [EnumerationValue(12)]
+            [EnumerationValue(13)]
+            [EnumerationValue(14)]
+            [EnumerationValue(15)]
+            [EnumerationValue(16)]
+            [EnumerationValue(17)]
+            [EnumerationValue(18)]
+            [EnumerationValue(19)]
+            [EnumerationValue(20)]
+            [EnumerationValue(21)]
             public List<categoryOfLandRegion> categoryOfLandRegion { get; set; } = [];
             public List<featureName> featureName { get; set; } = [];
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
+            [EnumerationValue(4)]
+            [EnumerationValue(5)]
+            [EnumerationValue(6)]
+            [EnumerationValue(7)]
+            [EnumerationValue(8)]
+            [EnumerationValue(9)]
+            [EnumerationValue(11)]
+            [EnumerationValue(14)]
+            [EnumerationValue(17)]
+            [EnumerationValue(18)]
             public List<natureOfSurface> natureOfSurface { get; set; } = [];
+
+            [EnumerationValue(1)]
+            [EnumerationValue(6)]
             public waterLevelEffect? waterLevelEffect { get; set; } = default;
             public Int32? scaleMinimum { get; set; } = default;
             public List<information> information { get; set; } = [];
@@ -3733,6 +4107,20 @@ namespace S100Framework.DomainModel.S101 {
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class Vegetation : FeatureNode {
+            [EnumerationValue(3)]
+            [EnumerationValue(4)]
+            [EnumerationValue(5)]
+            [EnumerationValue(6)]
+            [EnumerationValue(11)]
+            [EnumerationValue(13)]
+            [EnumerationValue(14)]
+            [EnumerationValue(15)]
+            [EnumerationValue(16)]
+            [EnumerationValue(17)]
+            [EnumerationValue(18)]
+            [EnumerationValue(19)]
+            [EnumerationValue(20)]
+            [EnumerationValue(22)]
             [Required()]
             public categoryOfVegetation categoryOfVegetation { get; set; }
             public Decimal? elevation { get; set; } = default;
@@ -3740,6 +4128,10 @@ namespace S100Framework.DomainModel.S101 {
             public Decimal? height { get; set; } = default;
             public String interoperabilityIdentifier { get; set; } = string.Empty;
             public Decimal? verticalLength { get; set; } = default;
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
             public visualProminence? visualProminence { get; set; } = default;
             public Int32? scaleMinimum { get; set; } = default;
             public List<information> information { get; set; } = [];
@@ -3752,6 +4144,9 @@ namespace S100Framework.DomainModel.S101 {
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class IceArea : FeatureNode {
+            [EnumerationValue(1)]
+            [EnumerationValue(5)]
+            [EnumerationValue(8)]
             [Required()]
             public categoryOfIce categoryOfIce { get; set; }
             public Decimal? elevation { get; set; } = default;
@@ -3760,8 +4155,16 @@ namespace S100Framework.DomainModel.S101 {
             public String interoperabilityIdentifier { get; set; } = string.Empty;
             public List<periodicDateRange> periodicDateRange { get; set; } = [];
             public DateOnly? reportedDate { get; set; } = default;
+
+            [EnumerationValue(1)]
+            [EnumerationValue(5)]
+            [EnumerationValue(18)]
             public List<status> status { get; set; } = [];
             public Decimal? verticalLength { get; set; } = default;
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
             public visualProminence? visualProminence { get; set; } = default;
             public Int32? scaleMinimum { get; set; } = default;
             public List<information> information { get; set; } = [];
@@ -3774,12 +4177,40 @@ namespace S100Framework.DomainModel.S101 {
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class SlopingGround : FeatureNode {
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
+            [EnumerationValue(4)]
+            [EnumerationValue(5)]
+            [EnumerationValue(6)]
+            [EnumerationValue(7)]
             public categoryOfSlope? categoryOfSlope { get; set; } = default;
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
+            [EnumerationValue(4)]
+            [EnumerationValue(6)]
+            [EnumerationValue(7)]
+            [EnumerationValue(8)]
+            [EnumerationValue(11)]
+            [EnumerationValue(13)]
             public List<colour> colour { get; set; } = [];
             public List<featureName> featureName { get; set; } = [];
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
+            [EnumerationValue(4)]
+            [EnumerationValue(5)]
+            [EnumerationValue(6)]
+            [EnumerationValue(7)]
+            [EnumerationValue(9)]
+            [EnumerationValue(11)]
             public List<natureOfSurface> natureOfSurface { get; set; } = [];
             public Boolean? radarConspicuous { get; set; } = default;
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
             public visualProminence? visualProminence { get; set; } = default;
             public Int32? scaleMinimum { get; set; } = default;
             public List<information> information { get; set; } = [];
@@ -3792,13 +4223,37 @@ namespace S100Framework.DomainModel.S101 {
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class SlopeTopline : FeatureNode {
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(6)]
             public categoryOfSlope? categoryOfSlope { get; set; } = default;
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
+            [EnumerationValue(4)]
+            [EnumerationValue(6)]
+            [EnumerationValue(7)]
+            [EnumerationValue(8)]
+            [EnumerationValue(11)]
+            [EnumerationValue(13)]
             public List<colour> colour { get; set; } = [];
             public Decimal? elevation { get; set; } = default;
             public List<featureName> featureName { get; set; } = [];
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
+            [EnumerationValue(4)]
+            [EnumerationValue(5)]
+            [EnumerationValue(6)]
+            [EnumerationValue(7)]
+            [EnumerationValue(9)]
+            [EnumerationValue(11)]
             public List<natureOfSurface> natureOfSurface { get; set; } = [];
             public Boolean? radarConspicuous { get; set; } = default;
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
             public visualProminence? visualProminence { get; set; } = default;
             public Int32? scaleMinimum { get; set; } = default;
             public List<information> information { get; set; } = [];
@@ -3824,13 +4279,27 @@ namespace S100Framework.DomainModel.S101 {
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class BuiltUpArea : FeatureNode {
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
+            [EnumerationValue(4)]
+            [EnumerationValue(5)]
+            [EnumerationValue(6)]
             public categoryOfBuiltUpArea? categoryOfBuiltUpArea { get; set; } = default;
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(5)]
             public condition? condition { get; set; } = default;
             public List<featureName> featureName { get; set; } = [];
             public Decimal? height { get; set; } = default;
             public String interoperabilityIdentifier { get; set; } = string.Empty;
             public Boolean? radarConspicuous { get; set; } = default;
             public DateOnly? reportedDate { get; set; } = default;
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
             public visualProminence? visualProminence { get; set; } = default;
             public Int32? scaleMinimum { get; set; } = default;
             public List<information> information { get; set; } = [];
@@ -3845,21 +4314,116 @@ namespace S100Framework.DomainModel.S101 {
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class Building : FeatureNode {
+            [EnumerationValue(5)]
+            [EnumerationValue(6)]
+            [EnumerationValue(7)]
+            [EnumerationValue(8)]
+            [EnumerationValue(9)]
             public buildingShape? buildingShape { get; set; } = default;
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
+            [EnumerationValue(4)]
+            [EnumerationValue(5)]
+            [EnumerationValue(6)]
+            [EnumerationValue(7)]
+            [EnumerationValue(8)]
+            [EnumerationValue(9)]
+            [EnumerationValue(10)]
+            [EnumerationValue(11)]
+            [EnumerationValue(12)]
+            [EnumerationValue(13)]
             public List<colour> colour { get; set; } = [];
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
+            [EnumerationValue(4)]
+            [EnumerationValue(5)]
+            [EnumerationValue(6)]
             public colourPattern? colourPattern { get; set; } = default;
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(5)]
             public condition? condition { get; set; } = default;
             public Decimal? elevation { get; set; } = default;
             public List<featureName> featureName { get; set; } = [];
+
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
+            [EnumerationValue(4)]
+            [EnumerationValue(5)]
+            [EnumerationValue(6)]
+            [EnumerationValue(7)]
+            [EnumerationValue(8)]
+            [EnumerationValue(9)]
+            [EnumerationValue(10)]
+            [EnumerationValue(11)]
+            [EnumerationValue(12)]
+            [EnumerationValue(13)]
+            [EnumerationValue(14)]
+            [EnumerationValue(15)]
+            [EnumerationValue(16)]
+            [EnumerationValue(17)]
+            [EnumerationValue(18)]
+            [EnumerationValue(19)]
+            [EnumerationValue(20)]
+            [EnumerationValue(21)]
+            [EnumerationValue(22)]
+            [EnumerationValue(23)]
+            [EnumerationValue(24)]
+            [EnumerationValue(25)]
+            [EnumerationValue(26)]
+            [EnumerationValue(27)]
+            [EnumerationValue(28)]
+            [EnumerationValue(29)]
+            [EnumerationValue(30)]
+            [EnumerationValue(31)]
+            [EnumerationValue(32)]
+            [EnumerationValue(33)]
+            [EnumerationValue(34)]
+            [EnumerationValue(35)]
+            [EnumerationValue(36)]
+            [EnumerationValue(37)]
+            [EnumerationValue(38)]
+            [EnumerationValue(39)]
+            [EnumerationValue(40)]
+            [EnumerationValue(41)]
+            [EnumerationValue(42)]
+            [EnumerationValue(44)]
+            [EnumerationValue(45)]
+            [EnumerationValue(46)]
+            [EnumerationValue(47)]
+            [EnumerationValue(48)]
             public List<function> function { get; set; } = [];
             public Decimal? height { get; set; } = default;
             public String interoperabilityIdentifier { get; set; } = string.Empty;
             public multiplicityOfFeatures? multiplicityOfFeatures { get; set; }
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(6)]
+            [EnumerationValue(7)]
+            [EnumerationValue(8)]
+            [EnumerationValue(12)]
             public List<natureOfConstruction> natureOfConstruction { get; set; } = [];
             public Boolean? radarConspicuous { get; set; } = default;
             public DateOnly? reportedDate { get; set; } = default;
+
+            [EnumerationValue(4)]
+            [EnumerationValue(7)]
+            [EnumerationValue(8)]
+            [EnumerationValue(12)]
+            [EnumerationValue(13)]
+            [EnumerationValue(14)]
             public List<status> status { get; set; } = [];
             public Decimal? verticalLength { get; set; } = default;
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
             public visualProminence? visualProminence { get; set; } = default;
             public Int32? scaleMinimum { get; set; } = default;
             public List<information> information { get; set; } = [];
@@ -3874,11 +4438,34 @@ namespace S100Framework.DomainModel.S101 {
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class AirportAirfield : FeatureNode {
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
+            [EnumerationValue(4)]
+            [EnumerationValue(5)]
+            [EnumerationValue(6)]
+            [EnumerationValue(8)]
+            [EnumerationValue(9)]
             public List<categoryOfAirportAirfield> categoryOfAirportAirfield { get; set; } = [];
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
+            [EnumerationValue(5)]
             public condition? condition { get; set; } = default;
             public List<featureName> featureName { get; set; } = [];
             public String interoperabilityIdentifier { get; set; } = string.Empty;
             public DateOnly? reportedDate { get; set; } = default;
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(4)]
+            [EnumerationValue(5)]
+            [EnumerationValue(6)]
+            [EnumerationValue(7)]
+            [EnumerationValue(8)]
+            [EnumerationValue(12)]
+            [EnumerationValue(14)]
             public List<status> status { get; set; } = [];
             public Int32? scaleMinimum { get; set; } = default;
             public List<information> information { get; set; } = [];
@@ -3892,12 +4479,33 @@ namespace S100Framework.DomainModel.S101 {
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class Runway : FeatureNode {
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
+            [EnumerationValue(5)]
             public condition? condition { get; set; } = default;
             public List<featureName> featureName { get; set; } = [];
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(4)]
+            [EnumerationValue(5)]
+            [EnumerationValue(6)]
+            [EnumerationValue(7)]
             public List<natureOfConstruction> natureOfConstruction { get; set; } = [];
             public List<periodicDateRange> periodicDateRange { get; set; } = [];
             public DateOnly? reportedDate { get; set; } = default;
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(4)]
+            [EnumerationValue(5)]
+            [EnumerationValue(6)]
+            [EnumerationValue(7)]
+            [EnumerationValue(8)]
+            [EnumerationValue(12)]
+            [EnumerationValue(14)]
             public List<status> status { get; set; } = [];
             public Int32? scaleMinimum { get; set; } = default;
             public List<information> information { get; set; } = [];
@@ -3910,12 +4518,33 @@ namespace S100Framework.DomainModel.S101 {
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class Helipad : FeatureNode {
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
+            [EnumerationValue(5)]
             public condition? condition { get; set; } = default;
             public List<featureName> featureName { get; set; } = [];
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(4)]
+            [EnumerationValue(5)]
+            [EnumerationValue(6)]
+            [EnumerationValue(7)]
             public List<natureOfConstruction> natureOfConstruction { get; set; } = [];
             public List<periodicDateRange> periodicDateRange { get; set; } = [];
             public DateOnly? reportedDate { get; set; } = default;
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(4)]
+            [EnumerationValue(5)]
+            [EnumerationValue(6)]
+            [EnumerationValue(7)]
+            [EnumerationValue(8)]
+            [EnumerationValue(12)]
+            [EnumerationValue(14)]
             public List<status> status { get; set; } = [];
             public Int32? scaleMinimum { get; set; } = default;
             public List<information> information { get; set; } = [];
@@ -3928,21 +4557,78 @@ namespace S100Framework.DomainModel.S101 {
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class Bridge : FeatureNode {
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
+            [EnumerationValue(4)]
+            [EnumerationValue(5)]
             public bridgeConstruction? bridgeConstruction { get; set; } = default;
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
+            [EnumerationValue(4)]
             public List<bridgeFunction> bridgeFunction { get; set; } = [];
+
+            [EnumerationValue(3)]
+            [EnumerationValue(4)]
+            [EnumerationValue(5)]
+            [EnumerationValue(7)]
             public categoryOfOpeningBridge? categoryOfOpeningBridge { get; set; } = default;
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
+            [EnumerationValue(4)]
+            [EnumerationValue(5)]
+            [EnumerationValue(6)]
+            [EnumerationValue(7)]
+            [EnumerationValue(8)]
+            [EnumerationValue(9)]
+            [EnumerationValue(10)]
+            [EnumerationValue(11)]
+            [EnumerationValue(12)]
+            [EnumerationValue(13)]
             public List<colour> colour { get; set; } = [];
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
+            [EnumerationValue(4)]
+            [EnumerationValue(5)]
+            [EnumerationValue(6)]
             public colourPattern? colourPattern { get; set; } = default;
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(5)]
             public condition? condition { get; set; } = default;
             public List<featureName> featureName { get; set; } = [];
             public fixedDateRange? fixedDateRange { get; set; }
             public Decimal? height { get; set; } = default;
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(6)]
+            [EnumerationValue(7)]
+            [EnumerationValue(11)]
             public List<natureOfConstruction> natureOfConstruction { get; set; } = [];
             public Boolean? openingBridge { get; set; } = default;
             public Boolean? radarConspicuous { get; set; } = default;
             public DateOnly? reportedDate { get; set; } = default;
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(4)]
+            [EnumerationValue(5)]
+            [EnumerationValue(7)]
+            [EnumerationValue(12)]
             public List<status> status { get; set; } = [];
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
             public visualProminence? visualProminence { get; set; } = default;
             public Int32? scaleMinimum { get; set; } = default;
             public List<information> information { get; set; } = [];
@@ -3962,6 +4648,22 @@ namespace S100Framework.DomainModel.S101 {
 
             [Required()]
             public verticalClearanceFixed verticalClearanceFixed { get; set; }
+
+            [EnumerationValue(3)]
+            [EnumerationValue(13)]
+            [EnumerationValue(16)]
+            [EnumerationValue(17)]
+            [EnumerationValue(18)]
+            [EnumerationValue(19)]
+            [EnumerationValue(20)]
+            [EnumerationValue(21)]
+            [EnumerationValue(24)]
+            [EnumerationValue(25)]
+            [EnumerationValue(26)]
+            [EnumerationValue(28)]
+            [EnumerationValue(29)]
+            [EnumerationValue(30)]
+            [EnumerationValue(44)]
             public verticalDatum? verticalDatum { get; set; } = default;
             public Int32? scaleMinimum { get; set; } = default;
             public List<information> information { get; set; } = [];
@@ -3988,6 +4690,22 @@ namespace S100Framework.DomainModel.S101 {
 
             [Required()]
             public verticalClearanceOpen verticalClearanceOpen { get; set; }
+
+            [EnumerationValue(3)]
+            [EnumerationValue(13)]
+            [EnumerationValue(16)]
+            [EnumerationValue(17)]
+            [EnumerationValue(18)]
+            [EnumerationValue(19)]
+            [EnumerationValue(20)]
+            [EnumerationValue(21)]
+            [EnumerationValue(24)]
+            [EnumerationValue(25)]
+            [EnumerationValue(26)]
+            [EnumerationValue(28)]
+            [EnumerationValue(29)]
+            [EnumerationValue(30)]
+            [EnumerationValue(44)]
             public verticalDatum? verticalDatum { get; set; } = default;
             public Int32? scaleMinimum { get; set; } = default;
             public List<information> information { get; set; } = [];
@@ -4009,9 +4727,38 @@ namespace S100Framework.DomainModel.S101 {
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class Conveyor : FeatureNode {
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
+            [EnumerationValue(4)]
             public categoryOfConveyor? categoryOfConveyor { get; set; } = default;
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
+            [EnumerationValue(4)]
+            [EnumerationValue(5)]
+            [EnumerationValue(6)]
+            [EnumerationValue(7)]
+            [EnumerationValue(8)]
+            [EnumerationValue(9)]
+            [EnumerationValue(10)]
+            [EnumerationValue(11)]
+            [EnumerationValue(12)]
+            [EnumerationValue(13)]
             public List<colour> colour { get; set; } = [];
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
+            [EnumerationValue(4)]
+            [EnumerationValue(5)]
+            [EnumerationValue(6)]
             public colourPattern? colourPattern { get; set; } = default;
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(5)]
             public condition? condition { get; set; } = default;
             public List<featureName> featureName { get; set; } = [];
             public fixedDateRange? fixedDateRange { get; set; }
@@ -4019,13 +4766,51 @@ namespace S100Framework.DomainModel.S101 {
             public String interoperabilityIdentifier { get; set; } = string.Empty;
             public Decimal? liftingCapacity { get; set; } = default;
             public multiplicityOfFeatures? multiplicityOfFeatures { get; set; }
+
+            [EnumerationValue(4)]
+            [EnumerationValue(5)]
+            [EnumerationValue(6)]
+            [EnumerationValue(10)]
+            [EnumerationValue(11)]
+            [EnumerationValue(12)]
+            [EnumerationValue(13)]
+            [EnumerationValue(14)]
+            [EnumerationValue(15)]
+            [EnumerationValue(16)]
+            [EnumerationValue(17)]
+            [EnumerationValue(21)]
+            [EnumerationValue(22)]
+            [EnumerationValue(25)]
             public List<product> product { get; set; } = [];
             public Boolean? radarConspicuous { get; set; } = default;
             public DateOnly? reportedDate { get; set; } = default;
+
+            [EnumerationValue(4)]
+            [EnumerationValue(12)]
             public List<status> status { get; set; } = [];
             public verticalClearanceFixed? verticalClearanceFixed { get; set; }
+
+            [EnumerationValue(3)]
+            [EnumerationValue(13)]
+            [EnumerationValue(16)]
+            [EnumerationValue(17)]
+            [EnumerationValue(18)]
+            [EnumerationValue(19)]
+            [EnumerationValue(20)]
+            [EnumerationValue(21)]
+            [EnumerationValue(24)]
+            [EnumerationValue(25)]
+            [EnumerationValue(26)]
+            [EnumerationValue(28)]
+            [EnumerationValue(29)]
+            [EnumerationValue(30)]
+            [EnumerationValue(44)]
             public verticalDatum? verticalDatum { get; set; } = default;
             public Decimal? verticalLength { get; set; } = default;
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
             public visualProminence? visualProminence { get; set; } = default;
             public Int32? scaleMinimum { get; set; } = default;
             public List<information> information { get; set; } = [];
@@ -4039,7 +4824,13 @@ namespace S100Framework.DomainModel.S101 {
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class CableOverhead : FeatureNode {
+            [EnumerationValue(1)]
+            [EnumerationValue(3)]
+            [EnumerationValue(10)]
             public categoryOfCable? categoryOfCable { get; set; } = default;
+
+            [EnumerationValue(1)]
+            [EnumerationValue(5)]
             public condition? condition { get; set; } = default;
             public fixedDateRange? fixedDateRange { get; set; }
             public Decimal? iceFactor { get; set; } = default;
@@ -4048,10 +4839,37 @@ namespace S100Framework.DomainModel.S101 {
             public multiplicityOfFeatures? multiplicityOfFeatures { get; set; }
             public Boolean? radarConspicuous { get; set; } = default;
             public DateOnly? reportedDate { get; set; } = default;
+
+            [EnumerationValue(1)]
+            [EnumerationValue(4)]
+            [EnumerationValue(5)]
+            [EnumerationValue(7)]
+            [EnumerationValue(12)]
+            [EnumerationValue(28)]
             public List<status> status { get; set; } = [];
             public verticalClearanceFixed? verticalClearanceFixed { get; set; }
             public verticalClearanceSafe? verticalClearanceSafe { get; set; }
+
+            [EnumerationValue(3)]
+            [EnumerationValue(13)]
+            [EnumerationValue(16)]
+            [EnumerationValue(17)]
+            [EnumerationValue(18)]
+            [EnumerationValue(19)]
+            [EnumerationValue(20)]
+            [EnumerationValue(21)]
+            [EnumerationValue(24)]
+            [EnumerationValue(25)]
+            [EnumerationValue(26)]
+            [EnumerationValue(28)]
+            [EnumerationValue(29)]
+            [EnumerationValue(30)]
+            [EnumerationValue(44)]
             public verticalDatum? verticalDatum { get; set; } = default;
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
             public visualProminence? visualProminence { get; set; } = default;
             public Int32? scaleMinimum { get; set; } = default;
             public List<information> information { get; set; } = [];
@@ -4064,18 +4882,61 @@ namespace S100Framework.DomainModel.S101 {
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class PipelineOverhead : FeatureNode {
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
+            [EnumerationValue(4)]
+            [EnumerationValue(6)]
             public categoryOfPipelinePipe? categoryOfPipelinePipe { get; set; } = default;
+
+            [EnumerationValue(1)]
+            [EnumerationValue(5)]
             public condition? condition { get; set; } = default;
             public List<featureName> featureName { get; set; } = [];
             public fixedDateRange? fixedDateRange { get; set; }
             public String interoperabilityIdentifier { get; set; } = string.Empty;
             public multiplicityOfFeatures? multiplicityOfFeatures { get; set; }
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
+            [EnumerationValue(7)]
+            [EnumerationValue(8)]
+            [EnumerationValue(9)]
+            [EnumerationValue(18)]
+            [EnumerationValue(19)]
+            [EnumerationValue(20)]
+            [EnumerationValue(22)]
             public List<product> product { get; set; } = [];
             public Boolean? radarConspicuous { get; set; } = default;
             public DateOnly? reportedDate { get; set; } = default;
+
+            [EnumerationValue(1)]
+            [EnumerationValue(4)]
+            [EnumerationValue(7)]
+            [EnumerationValue(12)]
             public List<status> status { get; set; } = [];
             public verticalClearanceFixed? verticalClearanceFixed { get; set; }
+
+            [EnumerationValue(3)]
+            [EnumerationValue(13)]
+            [EnumerationValue(16)]
+            [EnumerationValue(17)]
+            [EnumerationValue(18)]
+            [EnumerationValue(19)]
+            [EnumerationValue(20)]
+            [EnumerationValue(21)]
+            [EnumerationValue(24)]
+            [EnumerationValue(25)]
+            [EnumerationValue(26)]
+            [EnumerationValue(28)]
+            [EnumerationValue(29)]
+            [EnumerationValue(30)]
+            [EnumerationValue(44)]
             public verticalDatum? verticalDatum { get; set; } = default;
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
             public visualProminence? visualProminence { get; set; } = default;
             public Int32? scaleMinimum { get; set; } = default;
             public List<information> information { get; set; } = [];
@@ -4088,22 +4949,73 @@ namespace S100Framework.DomainModel.S101 {
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class PylonBridgeSupport : FeatureNode {
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
+            [EnumerationValue(4)]
+            [EnumerationValue(5)]
+            [EnumerationValue(6)]
             [Required()]
             public categoryOfPylon categoryOfPylon { get; set; }
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
+            [EnumerationValue(4)]
+            [EnumerationValue(5)]
+            [EnumerationValue(6)]
+            [EnumerationValue(7)]
+            [EnumerationValue(8)]
+            [EnumerationValue(9)]
+            [EnumerationValue(10)]
+            [EnumerationValue(11)]
+            [EnumerationValue(12)]
+            [EnumerationValue(13)]
             public List<colour> colour { get; set; } = [];
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
+            [EnumerationValue(4)]
+            [EnumerationValue(5)]
+            [EnumerationValue(6)]
             public colourPattern? colourPattern { get; set; } = default;
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(5)]
             public condition? condition { get; set; } = default;
             public List<featureName> featureName { get; set; } = [];
             public fixedDateRange? fixedDateRange { get; set; }
             public Decimal? height { get; set; } = default;
             public String interoperabilityIdentifier { get; set; } = string.Empty;
             public multiplicityOfFeatures? multiplicityOfFeatures { get; set; }
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(6)]
+            [EnumerationValue(7)]
+            [EnumerationValue(11)]
             public List<natureOfConstruction> natureOfConstruction { get; set; } = [];
             public Boolean? radarConspicuous { get; set; } = default;
             public DateOnly? reportedDate { get; set; } = default;
+
+            [EnumerationValue(4)]
+            [EnumerationValue(12)]
             public List<status> status { get; set; } = [];
             public Decimal? verticalLength { get; set; } = default;
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
             public visualProminence? visualProminence { get; set; } = default;
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
+            [EnumerationValue(4)]
+            [EnumerationValue(5)]
+            [EnumerationValue(6)]
             public waterLevelEffect? waterLevelEffect { get; set; } = default;
             public Int32? scaleMinimum { get; set; } = default;
             public List<information> information { get; set; } = [];
@@ -4117,19 +5029,63 @@ namespace S100Framework.DomainModel.S101 {
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class FenceWall : FeatureNode {
+            [EnumerationValue(1)]
+            [EnumerationValue(3)]
+            [EnumerationValue(4)]
             public categoryOfFence? categoryOfFence { get; set; } = default;
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
+            [EnumerationValue(4)]
+            [EnumerationValue(5)]
+            [EnumerationValue(6)]
+            [EnumerationValue(7)]
+            [EnumerationValue(8)]
+            [EnumerationValue(9)]
+            [EnumerationValue(10)]
+            [EnumerationValue(11)]
+            [EnumerationValue(12)]
+            [EnumerationValue(13)]
             public List<colour> colour { get; set; } = [];
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
+            [EnumerationValue(4)]
+            [EnumerationValue(5)]
+            [EnumerationValue(6)]
             public colourPattern? colourPattern { get; set; } = default;
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(5)]
             public condition? condition { get; set; } = default;
             public Decimal? elevation { get; set; } = default;
             public List<featureName> featureName { get; set; } = [];
             public Decimal? height { get; set; } = default;
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
+            [EnumerationValue(6)]
+            [EnumerationValue(7)]
+            [EnumerationValue(11)]
             public List<natureOfConstruction> natureOfConstruction { get; set; } = [];
             public Boolean? radarConspicuous { get; set; } = default;
             public DateOnly? reportedDate { get; set; } = default;
+
+            [EnumerationValue(1)]
+            [EnumerationValue(7)]
+            [EnumerationValue(12)]
+            [EnumerationValue(13)]
             public List<status> status { get; set; } = [];
             public Decimal? verticalLength { get; set; } = default;
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
             public visualProminence? visualProminence { get; set; } = default;
             public Int32? scaleMinimum { get; set; } = default;
             public List<information> information { get; set; } = [];
@@ -4142,11 +5098,21 @@ namespace S100Framework.DomainModel.S101 {
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class Railway : FeatureNode {
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(5)]
             public condition? condition { get; set; } = default;
             public List<featureName> featureName { get; set; } = [];
             public Decimal? height { get; set; } = default;
             public String interoperabilityIdentifier { get; set; } = string.Empty;
             public DateOnly? reportedDate { get; set; } = default;
+
+            [EnumerationValue(1)]
+            [EnumerationValue(4)]
+            [EnumerationValue(6)]
+            [EnumerationValue(12)]
+            [EnumerationValue(13)]
+            [EnumerationValue(14)]
             public List<status> status { get; set; } = [];
             public Int32? scaleMinimum { get; set; } = default;
             public List<information> information { get; set; } = [];
@@ -4159,12 +5125,34 @@ namespace S100Framework.DomainModel.S101 {
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class Road : FeatureNode {
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
+            [EnumerationValue(4)]
+            [EnumerationValue(5)]
+            [EnumerationValue(6)]
             public categoryOfRoad? categoryOfRoad { get; set; } = default;
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(5)]
             public condition? condition { get; set; } = default;
             public List<featureName> featureName { get; set; } = [];
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
+            [EnumerationValue(4)]
+            [EnumerationValue(5)]
             public List<natureOfConstruction> natureOfConstruction { get; set; } = [];
             public DateOnly? reportedDate { get; set; } = default;
+
+            [EnumerationValue(1)]
+            [EnumerationValue(4)]
+            [EnumerationValue(6)]
+            [EnumerationValue(7)]
+            [EnumerationValue(8)]
+            [EnumerationValue(12)]
+            [EnumerationValue(13)]
+            [EnumerationValue(14)]
             public List<status> status { get; set; } = [];
             public Int32? scaleMinimum { get; set; } = default;
             public List<information> information { get; set; } = [];
@@ -4177,13 +5165,39 @@ namespace S100Framework.DomainModel.S101 {
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class Tunnel : FeatureNode {
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(5)]
             public condition? condition { get; set; } = default;
             public List<featureName> featureName { get; set; } = [];
             public horizontalClearanceFixed? horizontalClearanceFixed { get; set; }
             public String interoperabilityIdentifier { get; set; } = string.Empty;
             public DateOnly? reportedDate { get; set; } = default;
+
+            [EnumerationValue(1)]
+            [EnumerationValue(3)]
+            [EnumerationValue(4)]
+            [EnumerationValue(6)]
+            [EnumerationValue(8)]
+            [EnumerationValue(14)]
             public List<status> status { get; set; } = [];
             public verticalClearanceFixed? verticalClearanceFixed { get; set; }
+
+            [EnumerationValue(3)]
+            [EnumerationValue(13)]
+            [EnumerationValue(16)]
+            [EnumerationValue(17)]
+            [EnumerationValue(18)]
+            [EnumerationValue(19)]
+            [EnumerationValue(20)]
+            [EnumerationValue(21)]
+            [EnumerationValue(24)]
+            [EnumerationValue(25)]
+            [EnumerationValue(26)]
+            [EnumerationValue(28)]
+            [EnumerationValue(29)]
+            [EnumerationValue(30)]
+            [EnumerationValue(44)]
             public verticalDatum? verticalDatum { get; set; } = default;
             public Int32? scaleMinimum { get; set; } = default;
             public List<information> information { get; set; } = [];
@@ -4197,24 +5211,148 @@ namespace S100Framework.DomainModel.S101 {
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class Landmark : FeatureNode {
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
+            [EnumerationValue(4)]
+            [EnumerationValue(5)]
+            [EnumerationValue(6)]
+            [EnumerationValue(7)]
+            [EnumerationValue(8)]
+            [EnumerationValue(9)]
+            [EnumerationValue(10)]
+            [EnumerationValue(11)]
+            [EnumerationValue(12)]
+            [EnumerationValue(13)]
+            [EnumerationValue(14)]
+            [EnumerationValue(15)]
+            [EnumerationValue(16)]
+            [EnumerationValue(17)]
+            [EnumerationValue(18)]
+            [EnumerationValue(20)]
+            [EnumerationValue(21)]
+            [EnumerationValue(22)]
+            [EnumerationValue(23)]
+            [EnumerationValue(24)]
+            [EnumerationValue(25)]
+            [EnumerationValue(26)]
+            [EnumerationValue(27)]
             [Required()]
             public List<categoryOfLandmark> categoryOfLandmark { get; set; }
+
+            [EnumerationValue(16)]
+            [EnumerationValue(17)]
+            [EnumerationValue(41)]
             public List<categoryOfSpecialPurposeMark> categoryOfSpecialPurposeMark { get; set; } = [];
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
+            [EnumerationValue(4)]
+            [EnumerationValue(5)]
+            [EnumerationValue(6)]
+            [EnumerationValue(7)]
+            [EnumerationValue(8)]
+            [EnumerationValue(9)]
+            [EnumerationValue(10)]
+            [EnumerationValue(11)]
+            [EnumerationValue(12)]
+            [EnumerationValue(13)]
             public List<colour> colour { get; set; } = [];
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
+            [EnumerationValue(4)]
+            [EnumerationValue(5)]
+            [EnumerationValue(6)]
             public colourPattern? colourPattern { get; set; } = default;
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(4)]
+            [EnumerationValue(5)]
             public condition? condition { get; set; } = default;
             public Decimal? elevation { get; set; } = default;
             public List<featureName> featureName { get; set; } = [];
+
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
+            [EnumerationValue(4)]
+            [EnumerationValue(5)]
+            [EnumerationValue(6)]
+            [EnumerationValue(7)]
+            [EnumerationValue(8)]
+            [EnumerationValue(9)]
+            [EnumerationValue(10)]
+            [EnumerationValue(11)]
+            [EnumerationValue(12)]
+            [EnumerationValue(13)]
+            [EnumerationValue(14)]
+            [EnumerationValue(15)]
+            [EnumerationValue(16)]
+            [EnumerationValue(17)]
+            [EnumerationValue(18)]
+            [EnumerationValue(19)]
+            [EnumerationValue(20)]
+            [EnumerationValue(21)]
+            [EnumerationValue(22)]
+            [EnumerationValue(23)]
+            [EnumerationValue(24)]
+            [EnumerationValue(25)]
+            [EnumerationValue(26)]
+            [EnumerationValue(27)]
+            [EnumerationValue(28)]
+            [EnumerationValue(29)]
+            [EnumerationValue(30)]
+            [EnumerationValue(31)]
+            [EnumerationValue(32)]
+            [EnumerationValue(33)]
+            [EnumerationValue(34)]
+            [EnumerationValue(35)]
+            [EnumerationValue(36)]
+            [EnumerationValue(37)]
+            [EnumerationValue(38)]
+            [EnumerationValue(39)]
+            [EnumerationValue(40)]
+            [EnumerationValue(41)]
+            [EnumerationValue(42)]
+            [EnumerationValue(44)]
+            [EnumerationValue(45)]
+            [EnumerationValue(46)]
+            [EnumerationValue(47)]
+            [EnumerationValue(48)]
             public List<function> function { get; set; } = [];
             public Decimal? height { get; set; } = default;
             public String interoperabilityIdentifier { get; set; } = string.Empty;
             public multiplicityOfFeatures? multiplicityOfFeatures { get; set; }
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
+            [EnumerationValue(6)]
+            [EnumerationValue(7)]
+            [EnumerationValue(8)]
+            [EnumerationValue(11)]
+            [EnumerationValue(12)]
             public List<natureOfConstruction> natureOfConstruction { get; set; } = [];
             public Boolean? radarConspicuous { get; set; } = default;
             public DateOnly? reportedDate { get; set; } = default;
+
+            [EnumerationValue(2)]
+            [EnumerationValue(4)]
+            [EnumerationValue(5)]
+            [EnumerationValue(7)]
+            [EnumerationValue(8)]
+            [EnumerationValue(12)]
+            [EnumerationValue(13)]
+            [EnumerationValue(14)]
             public List<status> status { get; set; } = [];
             public Decimal? verticalLength { get; set; } = default;
 
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
             [Required()]
             public visualProminence visualProminence { get; set; }
             public Int32? scaleMinimum { get; set; } = default;
@@ -4231,22 +5369,88 @@ namespace S100Framework.DomainModel.S101 {
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class SiloTank : FeatureNode {
+            [EnumerationValue(5)]
+            [EnumerationValue(6)]
+            [EnumerationValue(7)]
+            [EnumerationValue(8)]
+            [EnumerationValue(9)]
             public buildingShape? buildingShape { get; set; } = default;
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
+            [EnumerationValue(4)]
             public categoryOfSiloTank? categoryOfSiloTank { get; set; } = default;
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
+            [EnumerationValue(4)]
+            [EnumerationValue(5)]
+            [EnumerationValue(6)]
+            [EnumerationValue(7)]
+            [EnumerationValue(8)]
+            [EnumerationValue(9)]
+            [EnumerationValue(10)]
+            [EnumerationValue(11)]
+            [EnumerationValue(12)]
+            [EnumerationValue(13)]
             public List<colour> colour { get; set; } = [];
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
+            [EnumerationValue(4)]
+            [EnumerationValue(5)]
+            [EnumerationValue(6)]
             public colourPattern? colourPattern { get; set; } = default;
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(5)]
             public condition? condition { get; set; } = default;
             public Decimal? elevation { get; set; } = default;
             public List<featureName> featureName { get; set; } = [];
             public Decimal? height { get; set; } = default;
             public String interoperabilityIdentifier { get; set; } = string.Empty;
             public multiplicityOfFeatures? multiplicityOfFeatures { get; set; }
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(6)]
+            [EnumerationValue(7)]
+            [EnumerationValue(8)]
             public List<natureOfConstruction> natureOfConstruction { get; set; } = [];
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
+            [EnumerationValue(5)]
+            [EnumerationValue(7)]
+            [EnumerationValue(8)]
+            [EnumerationValue(9)]
+            [EnumerationValue(13)]
+            [EnumerationValue(14)]
+            [EnumerationValue(16)]
+            [EnumerationValue(18)]
+            [EnumerationValue(19)]
+            [EnumerationValue(20)]
+            [EnumerationValue(21)]
+            [EnumerationValue(22)]
+            [EnumerationValue(24)]
             public List<product> product { get; set; } = [];
             public Boolean? radarConspicuous { get; set; } = default;
             public DateOnly? reportedDate { get; set; } = default;
+
+            [EnumerationValue(4)]
+            [EnumerationValue(12)]
+            [EnumerationValue(13)]
             public List<status> status { get; set; } = [];
             public Decimal? verticalLength { get; set; } = default;
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
             public visualProminence? visualProminence { get; set; } = default;
             public Int32? scaleMinimum { get; set; } = default;
             public List<information> information { get; set; } = [];
@@ -4261,8 +5465,32 @@ namespace S100Framework.DomainModel.S101 {
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class WindTurbine : FeatureNode {
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
+            [EnumerationValue(4)]
+            [EnumerationValue(5)]
+            [EnumerationValue(6)]
+            [EnumerationValue(7)]
+            [EnumerationValue(8)]
+            [EnumerationValue(9)]
+            [EnumerationValue(10)]
+            [EnumerationValue(11)]
+            [EnumerationValue(12)]
+            [EnumerationValue(13)]
             public List<colour> colour { get; set; } = [];
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
+            [EnumerationValue(4)]
+            [EnumerationValue(5)]
+            [EnumerationValue(6)]
             public colourPattern? colourPattern { get; set; } = default;
+
+            [EnumerationValue(1)]
+            [EnumerationValue(4)]
+            [EnumerationValue(5)]
             public condition? condition { get; set; } = default;
             public Decimal? elevation { get; set; } = default;
             public List<featureName> featureName { get; set; } = [];
@@ -4270,14 +5498,54 @@ namespace S100Framework.DomainModel.S101 {
             public Decimal? height { get; set; } = default;
             public String interoperabilityIdentifier { get; set; } = string.Empty;
             public multiplicityOfFeatures? multiplicityOfFeatures { get; set; }
+
+            [EnumerationValue(2)]
+            [EnumerationValue(6)]
+            [EnumerationValue(7)]
+            [EnumerationValue(8)]
+            [EnumerationValue(11)]
             public List<natureOfConstruction> natureOfConstruction { get; set; } = [];
             public Boolean? radarConspicuous { get; set; } = default;
             public DateOnly? reportedDate { get; set; } = default;
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(4)]
+            [EnumerationValue(5)]
+            [EnumerationValue(7)]
+            [EnumerationValue(8)]
+            [EnumerationValue(12)]
+            [EnumerationValue(13)]
+            [EnumerationValue(14)]
+            [EnumerationValue(28)]
             public List<status> status { get; set; } = [];
             public verticalClearanceFixed? verticalClearanceFixed { get; set; }
+
+            [EnumerationValue(3)]
+            [EnumerationValue(13)]
+            [EnumerationValue(16)]
+            [EnumerationValue(17)]
+            [EnumerationValue(18)]
+            [EnumerationValue(19)]
+            [EnumerationValue(20)]
+            [EnumerationValue(21)]
+            [EnumerationValue(24)]
+            [EnumerationValue(25)]
+            [EnumerationValue(26)]
+            [EnumerationValue(28)]
+            [EnumerationValue(29)]
+            [EnumerationValue(30)]
+            [EnumerationValue(44)]
             public verticalDatum? verticalDatum { get; set; } = default;
             public Decimal? verticalLength { get; set; } = default;
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
             public visualProminence? visualProminence { get; set; } = default;
+
+            [EnumerationValue(2)]
+            [EnumerationValue(7)]
             public waterLevelEffect? waterLevelEffect { get; set; } = default;
             public Int32? scaleMinimum { get; set; } = default;
             public List<information> information { get; set; } = [];
@@ -4292,16 +5560,45 @@ namespace S100Framework.DomainModel.S101 {
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class FortifiedStructure : FeatureNode {
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
+            [EnumerationValue(4)]
+            [EnumerationValue(5)]
+            [EnumerationValue(6)]
+            [EnumerationValue(8)]
+            [EnumerationValue(9)]
             public categoryOfFortifiedStructure? categoryOfFortifiedStructure { get; set; } = default;
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
             public condition? condition { get; set; } = default;
             public List<featureName> featureName { get; set; } = [];
             public Decimal? height { get; set; } = default;
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
+            [EnumerationValue(6)]
+            [EnumerationValue(7)]
             public List<natureOfConstruction> natureOfConstruction { get; set; } = [];
             public Boolean? radarConspicuous { get; set; } = default;
             public DateOnly? reportedDate { get; set; } = default;
+
+            [EnumerationValue(4)]
+            [EnumerationValue(7)]
+            [EnumerationValue(8)]
+            [EnumerationValue(12)]
+            [EnumerationValue(13)]
+            [EnumerationValue(14)]
+            [EnumerationValue(28)]
             public List<status> status { get; set; } = [];
             public Decimal? verticalLength { get; set; } = default;
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
             public visualProminence? visualProminence { get; set; } = default;
             public Int32? scaleMinimum { get; set; } = default;
             public List<information> information { get; set; } = [];
@@ -4316,19 +5613,68 @@ namespace S100Framework.DomainModel.S101 {
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class ProductionStorageArea : FeatureNode {
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
+            [EnumerationValue(4)]
+            [EnumerationValue(5)]
+            [EnumerationValue(6)]
+            [EnumerationValue(7)]
+            [EnumerationValue(8)]
+            [EnumerationValue(9)]
+            [EnumerationValue(10)]
+            [EnumerationValue(11)]
+            [EnumerationValue(12)]
             [Required()]
             public categoryOfProductionArea categoryOfProductionArea { get; set; }
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
+            [EnumerationValue(5)]
             public condition? condition { get; set; } = default;
             public Decimal? elevation { get; set; } = default;
             public List<featureName> featureName { get; set; } = [];
             public fixedDateRange? fixedDateRange { get; set; }
             public Decimal? height { get; set; } = default;
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
+            [EnumerationValue(4)]
+            [EnumerationValue(5)]
+            [EnumerationValue(6)]
+            [EnumerationValue(7)]
+            [EnumerationValue(8)]
+            [EnumerationValue(9)]
+            [EnumerationValue(10)]
+            [EnumerationValue(11)]
+            [EnumerationValue(12)]
+            [EnumerationValue(13)]
+            [EnumerationValue(14)]
+            [EnumerationValue(15)]
+            [EnumerationValue(16)]
+            [EnumerationValue(17)]
+            [EnumerationValue(18)]
+            [EnumerationValue(19)]
+            [EnumerationValue(20)]
+            [EnumerationValue(21)]
+            [EnumerationValue(22)]
+            [EnumerationValue(23)]
+            [EnumerationValue(25)]
             public List<product> product { get; set; } = [];
             public Boolean? radarConspicuous { get; set; } = default;
             public DateOnly? reportedDate { get; set; } = default;
+
+            [EnumerationValue(4)]
+            [EnumerationValue(12)]
             public List<status> status { get; set; } = [];
             public Decimal? verticalLength { get; set; } = default;
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
             public visualProminence? visualProminence { get; set; } = default;
             public Int32? scaleMinimum { get; set; } = default;
             public List<information> information { get; set; } = [];
@@ -4342,9 +5688,17 @@ namespace S100Framework.DomainModel.S101 {
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class Checkpoint : FeatureNode {
+            [EnumerationValue(1)]
             public categoryOfCheckpoint? categoryOfCheckpoint { get; set; } = default;
             public List<featureName> featureName { get; set; } = [];
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(5)]
+            [EnumerationValue(7)]
+            [EnumerationValue(9)]
+            [EnumerationValue(12)]
             public List<status> status { get; set; } = [];
             public Int32? scaleMinimum { get; set; } = default;
             public List<information> information { get; set; } = [];
@@ -4357,9 +5711,41 @@ namespace S100Framework.DomainModel.S101 {
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class Hulk : FeatureNode {
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
+            [EnumerationValue(4)]
+            [EnumerationValue(5)]
+            [EnumerationValue(6)]
+            [EnumerationValue(7)]
             public List<categoryOfHulk> categoryOfHulk { get; set; } = [];
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
+            [EnumerationValue(4)]
+            [EnumerationValue(5)]
+            [EnumerationValue(6)]
+            [EnumerationValue(7)]
+            [EnumerationValue(8)]
+            [EnumerationValue(9)]
+            [EnumerationValue(10)]
+            [EnumerationValue(11)]
+            [EnumerationValue(12)]
+            [EnumerationValue(13)]
             public List<colour> colour { get; set; } = [];
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
+            [EnumerationValue(4)]
+            [EnumerationValue(5)]
+            [EnumerationValue(6)]
             public colourPattern? colourPattern { get; set; } = default;
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(5)]
             public condition? condition { get; set; } = default;
             public List<featureName> featureName { get; set; } = [];
             public fixedDateRange? fixedDateRange { get; set; }
@@ -4370,6 +5756,10 @@ namespace S100Framework.DomainModel.S101 {
             public Boolean? radarConspicuous { get; set; } = default;
             public DateOnly? reportedDate { get; set; } = default;
             public Decimal? verticalLength { get; set; } = default;
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
             public visualProminence? visualProminence { get; set; } = default;
             public Int32? scaleMinimum { get; set; } = default;
             public List<information> information { get; set; } = [];
@@ -4383,9 +5773,41 @@ namespace S100Framework.DomainModel.S101 {
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class Pile : FeatureNode {
+            [EnumerationValue(1)]
+            [EnumerationValue(3)]
+            [EnumerationValue(4)]
+            [EnumerationValue(5)]
+            [EnumerationValue(6)]
+            [EnumerationValue(7)]
+            [EnumerationValue(8)]
             public categoryOfPile? categoryOfPile { get; set; } = default;
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
+            [EnumerationValue(4)]
+            [EnumerationValue(5)]
+            [EnumerationValue(6)]
+            [EnumerationValue(7)]
+            [EnumerationValue(8)]
+            [EnumerationValue(9)]
+            [EnumerationValue(10)]
+            [EnumerationValue(11)]
+            [EnumerationValue(12)]
+            [EnumerationValue(13)]
             public List<colour> colour { get; set; } = [];
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
+            [EnumerationValue(4)]
+            [EnumerationValue(5)]
+            [EnumerationValue(6)]
             public colourPattern? colourPattern { get; set; } = default;
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(5)]
             public condition? condition { get; set; } = default;
             public List<featureName> featureName { get; set; } = [];
             public fixedDateRange? fixedDateRange { get; set; }
@@ -4393,8 +5815,20 @@ namespace S100Framework.DomainModel.S101 {
             public String interoperabilityIdentifier { get; set; } = string.Empty;
             public Boolean? radarConspicuous { get; set; } = default;
             public DateOnly? reportedDate { get; set; } = default;
+
+            [EnumerationValue(1)]
+            [EnumerationValue(4)]
+            [EnumerationValue(6)]
+            [EnumerationValue(7)]
+            [EnumerationValue(8)]
+            [EnumerationValue(12)]
+            [EnumerationValue(14)]
             public List<status> status { get; set; } = [];
             public Decimal? verticalLength { get; set; } = default;
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
             public visualProminence? visualProminence { get; set; } = default;
             public Int32? scaleMinimum { get; set; } = default;
             public List<information> information { get; set; } = [];
@@ -4408,15 +5842,31 @@ namespace S100Framework.DomainModel.S101 {
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class Dyke : FeatureNode {
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
+            [EnumerationValue(5)]
             public condition? condition { get; set; } = default;
             public List<featureName> featureName { get; set; } = [];
             public fixedDateRange? fixedDateRange { get; set; }
             public Decimal? height { get; set; } = default;
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
+            [EnumerationValue(4)]
+            [EnumerationValue(5)]
+            [EnumerationValue(6)]
+            [EnumerationValue(7)]
             public List<natureOfConstruction> natureOfConstruction { get; set; } = [];
             public Boolean? radarConspicuous { get; set; } = default;
             public DateOnly? reportedDate { get; set; } = default;
             public Decimal? verticalLength { get; set; } = default;
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
             public visualProminence? visualProminence { get; set; } = default;
             public Int32? scaleMinimum { get; set; } = default;
             public List<information> information { get; set; } = [];
@@ -4429,9 +5879,55 @@ namespace S100Framework.DomainModel.S101 {
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class ShorelineConstruction : FeatureNode {
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
+            [EnumerationValue(4)]
+            [EnumerationValue(5)]
+            [EnumerationValue(6)]
+            [EnumerationValue(7)]
+            [EnumerationValue(8)]
+            [EnumerationValue(9)]
+            [EnumerationValue(10)]
+            [EnumerationValue(11)]
+            [EnumerationValue(12)]
+            [EnumerationValue(13)]
+            [EnumerationValue(14)]
+            [EnumerationValue(15)]
+            [EnumerationValue(16)]
+            [EnumerationValue(17)]
+            [EnumerationValue(20)]
+            [EnumerationValue(22)]
+            [EnumerationValue(23)]
             public categoryOfShorelineConstruction? categoryOfShorelineConstruction { get; set; } = default;
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
+            [EnumerationValue(4)]
+            [EnumerationValue(5)]
+            [EnumerationValue(6)]
+            [EnumerationValue(7)]
+            [EnumerationValue(8)]
+            [EnumerationValue(9)]
+            [EnumerationValue(10)]
+            [EnumerationValue(11)]
+            [EnumerationValue(12)]
+            [EnumerationValue(13)]
             public List<colour> colour { get; set; } = [];
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
+            [EnumerationValue(4)]
+            [EnumerationValue(5)]
+            [EnumerationValue(6)]
             public colourPattern? colourPattern { get; set; } = default;
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
+            [EnumerationValue(5)]
             public condition? condition { get; set; } = default;
             public List<featureName> featureName { get; set; } = [];
             public fixedDateRange? fixedDateRange { get; set; }
@@ -4440,12 +5936,46 @@ namespace S100Framework.DomainModel.S101 {
             public Decimal? horizontalLength { get; set; } = default;
             public Decimal? horizontalWidth { get; set; } = default;
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
+            [EnumerationValue(4)]
+            [EnumerationValue(5)]
+            [EnumerationValue(6)]
+            [EnumerationValue(7)]
+            [EnumerationValue(8)]
+            [EnumerationValue(11)]
             public List<natureOfConstruction> natureOfConstruction { get; set; } = [];
             public Boolean? radarConspicuous { get; set; } = default;
             public DateOnly? reportedDate { get; set; } = default;
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
+            [EnumerationValue(4)]
+            [EnumerationValue(6)]
+            [EnumerationValue(7)]
+            [EnumerationValue(8)]
+            [EnumerationValue(12)]
+            [EnumerationValue(13)]
+            [EnumerationValue(14)]
+            [EnumerationValue(28)]
             public List<status> status { get; set; } = [];
             public Decimal? verticalLength { get; set; } = default;
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
             public visualProminence? visualProminence { get; set; } = default;
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
+            [EnumerationValue(4)]
+            [EnumerationValue(5)]
+            [EnumerationValue(6)]
+            [EnumerationValue(7)]
             public waterLevelEffect? waterLevelEffect { get; set; } = default;
             public Int32? scaleMinimum { get; set; } = default;
             public List<information> information { get; set; } = [];
@@ -4458,9 +5988,39 @@ namespace S100Framework.DomainModel.S101 {
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class StructureOverNavigableWater : FeatureNode {
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
+            [EnumerationValue(4)]
+            [EnumerationValue(5)]
             public List<categoryOfStructure> categoryOfStructure { get; set; } = [];
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
+            [EnumerationValue(4)]
+            [EnumerationValue(5)]
+            [EnumerationValue(6)]
+            [EnumerationValue(7)]
+            [EnumerationValue(8)]
+            [EnumerationValue(9)]
+            [EnumerationValue(10)]
+            [EnumerationValue(11)]
+            [EnumerationValue(12)]
+            [EnumerationValue(13)]
             public List<colour> colour { get; set; } = [];
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
+            [EnumerationValue(4)]
+            [EnumerationValue(5)]
+            [EnumerationValue(6)]
             public colourPattern? colourPattern { get; set; } = default;
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(5)]
             public condition? condition { get; set; } = default;
             public List<featureName> featureName { get; set; } = [];
             public fixedDateRange? fixedDateRange { get; set; }
@@ -4471,17 +6031,60 @@ namespace S100Framework.DomainModel.S101 {
             public Decimal? horizontalLength { get; set; } = default;
             public Decimal? horizontalWidth { get; set; } = default;
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(6)]
+            [EnumerationValue(7)]
+            [EnumerationValue(8)]
+            [EnumerationValue(11)]
+            [EnumerationValue(12)]
             public List<natureOfConstruction> natureOfConstruction { get; set; } = [];
             public List<periodicDateRange> periodicDateRange { get; set; } = [];
+
+            [EnumerationValue(7)]
+            [EnumerationValue(12)]
+            [EnumerationValue(13)]
+            [EnumerationValue(21)]
+            [EnumerationValue(22)]
+            [EnumerationValue(25)]
             public product? product { get; set; } = default;
             public Boolean? radarConspicuous { get; set; } = default;
             public DateOnly? reportedDate { get; set; } = default;
+
+            [EnumerationValue(1)]
+            [EnumerationValue(4)]
+            [EnumerationValue(5)]
+            [EnumerationValue(7)]
+            [EnumerationValue(8)]
+            [EnumerationValue(12)]
+            [EnumerationValue(14)]
             public List<status> status { get; set; } = [];
 
             [Required()]
             public verticalClearanceFixed verticalClearanceFixed { get; set; }
+
+            [EnumerationValue(3)]
+            [EnumerationValue(13)]
+            [EnumerationValue(16)]
+            [EnumerationValue(17)]
+            [EnumerationValue(18)]
+            [EnumerationValue(19)]
+            [EnumerationValue(20)]
+            [EnumerationValue(21)]
+            [EnumerationValue(24)]
+            [EnumerationValue(25)]
+            [EnumerationValue(26)]
+            [EnumerationValue(28)]
+            [EnumerationValue(29)]
+            [EnumerationValue(30)]
+            [EnumerationValue(44)]
             public verticalDatum? verticalDatum { get; set; } = default;
             public Decimal? verticalLength { get; set; } = default;
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
             public visualProminence? visualProminence { get; set; } = default;
             public Int32? scaleMinimum { get; set; } = default;
             public List<information> information { get; set; } = [];
@@ -4503,12 +6106,37 @@ namespace S100Framework.DomainModel.S101 {
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class Causeway : FeatureNode {
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
+            [EnumerationValue(5)]
             public condition? condition { get; set; } = default;
             public List<featureName> featureName { get; set; } = [];
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
+            [EnumerationValue(4)]
+            [EnumerationValue(5)]
+            [EnumerationValue(6)]
+            [EnumerationValue(7)]
             public List<natureOfConstruction> natureOfConstruction { get; set; } = [];
             public DateOnly? reportedDate { get; set; } = default;
+
+            [EnumerationValue(1)]
+            [EnumerationValue(7)]
+            [EnumerationValue(8)]
+            [EnumerationValue(12)]
+            [EnumerationValue(14)]
             public List<status> status { get; set; } = [];
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
+            [EnumerationValue(4)]
+            [EnumerationValue(5)]
+            [EnumerationValue(6)]
             public waterLevelEffect? waterLevelEffect { get; set; } = default;
             public Int32? scaleMinimum { get; set; } = default;
             public List<information> information { get; set; } = [];
@@ -4521,7 +6149,15 @@ namespace S100Framework.DomainModel.S101 {
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class Canal : FeatureNode {
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
             public categoryOfCanal? categoryOfCanal { get; set; } = default;
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
+            [EnumerationValue(5)]
             public condition? condition { get; set; } = default;
             public List<featureName> featureName { get; set; } = [];
             public fixedDateRange? fixedDateRange { get; set; }
@@ -4529,6 +6165,14 @@ namespace S100Framework.DomainModel.S101 {
             public Decimal? horizontalWidth { get; set; } = default;
             public String interoperabilityIdentifier { get; set; } = string.Empty;
             public DateOnly? reportedDate { get; set; } = default;
+
+            [EnumerationValue(1)]
+            [EnumerationValue(3)]
+            [EnumerationValue(4)]
+            [EnumerationValue(5)]
+            [EnumerationValue(6)]
+            [EnumerationValue(8)]
+            [EnumerationValue(14)]
             public List<status> status { get; set; } = [];
             public Int32? scaleMinimum { get; set; } = default;
             public List<information> information { get; set; } = [];
@@ -4565,16 +6209,58 @@ namespace S100Framework.DomainModel.S101 {
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class Gate : FeatureNode {
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
+            [EnumerationValue(4)]
+            [EnumerationValue(5)]
+            [EnumerationValue(6)]
             public categoryOfGate? categoryOfGate { get; set; } = default;
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(5)]
             public condition? condition { get; set; } = default;
             public Decimal? depthRangeMinimumValue { get; set; } = default;
             public List<featureName> featureName { get; set; } = [];
             public horizontalClearanceOpen? horizontalClearanceOpen { get; set; }
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(6)]
+            [EnumerationValue(7)]
             public List<natureOfConstruction> natureOfConstruction { get; set; } = [];
+
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
+            [EnumerationValue(4)]
+            [EnumerationValue(6)]
+            [EnumerationValue(7)]
             public List<qualityOfVerticalMeasurement> qualityOfVerticalMeasurement { get; set; } = [];
+
+            [EnumerationValue(1)]
+            [EnumerationValue(4)]
+            [EnumerationValue(6)]
+            [EnumerationValue(16)]
+            [EnumerationValue(17)]
             public List<status> status { get; set; } = [];
             public verticalClearanceOpen? verticalClearanceOpen { get; set; }
+
+            [EnumerationValue(3)]
+            [EnumerationValue(13)]
+            [EnumerationValue(16)]
+            [EnumerationValue(17)]
+            [EnumerationValue(18)]
+            [EnumerationValue(19)]
+            [EnumerationValue(20)]
+            [EnumerationValue(21)]
+            [EnumerationValue(24)]
+            [EnumerationValue(25)]
+            [EnumerationValue(26)]
+            [EnumerationValue(28)]
+            [EnumerationValue(29)]
+            [EnumerationValue(30)]
+            [EnumerationValue(44)]
             public verticalDatum? verticalDatum { get; set; } = default;
             public verticalUncertainty? verticalUncertainty { get; set; }
             public Int32? scaleMinimum { get; set; } = default;
@@ -4588,19 +6274,71 @@ namespace S100Framework.DomainModel.S101 {
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class Dam : FeatureNode {
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
             public categoryOfDam? categoryOfDam { get; set; } = default;
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
+            [EnumerationValue(4)]
+            [EnumerationValue(5)]
+            [EnumerationValue(6)]
+            [EnumerationValue(7)]
+            [EnumerationValue(8)]
+            [EnumerationValue(9)]
+            [EnumerationValue(10)]
+            [EnumerationValue(11)]
+            [EnumerationValue(12)]
+            [EnumerationValue(13)]
             public List<colour> colour { get; set; } = [];
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
+            [EnumerationValue(4)]
+            [EnumerationValue(5)]
+            [EnumerationValue(6)]
             public colourPattern? colourPattern { get; set; } = default;
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
+            [EnumerationValue(5)]
             public condition? condition { get; set; } = default;
             public List<featureName> featureName { get; set; } = [];
             public fixedDateRange? fixedDateRange { get; set; }
             public Decimal? height { get; set; } = default;
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
+            [EnumerationValue(6)]
+            [EnumerationValue(7)]
             public List<natureOfConstruction> natureOfConstruction { get; set; } = [];
             public Boolean? radarConspicuous { get; set; } = default;
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(6)]
+            [EnumerationValue(7)]
+            [EnumerationValue(8)]
+            [EnumerationValue(14)]
+            [EnumerationValue(28)]
             public List<status> status { get; set; } = [];
             public Decimal? verticalLength { get; set; } = default;
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
             public visualProminence? visualProminence { get; set; } = default;
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
+            [EnumerationValue(6)]
             public waterLevelEffect? waterLevelEffect { get; set; } = default;
             public Int32? scaleMinimum { get; set; } = default;
             public List<information> information { get; set; } = [];
@@ -4613,9 +6351,39 @@ namespace S100Framework.DomainModel.S101 {
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class Crane : FeatureNode {
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
+            [EnumerationValue(4)]
+            [EnumerationValue(5)]
+            [EnumerationValue(6)]
             public categoryOfCrane? categoryOfCrane { get; set; } = default;
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
+            [EnumerationValue(4)]
+            [EnumerationValue(5)]
+            [EnumerationValue(6)]
+            [EnumerationValue(7)]
+            [EnumerationValue(8)]
+            [EnumerationValue(9)]
+            [EnumerationValue(10)]
+            [EnumerationValue(11)]
+            [EnumerationValue(12)]
+            [EnumerationValue(13)]
             public List<colour> colour { get; set; } = [];
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
+            [EnumerationValue(4)]
+            [EnumerationValue(5)]
+            [EnumerationValue(6)]
             public colourPattern? colourPattern { get; set; } = default;
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(5)]
             public condition? condition { get; set; } = default;
             public List<featureName> featureName { get; set; } = [];
             public Decimal? height { get; set; } = default;
@@ -4624,10 +6392,35 @@ namespace S100Framework.DomainModel.S101 {
             public orientation? orientation { get; set; }
             public Boolean? radarConspicuous { get; set; } = default;
             public Decimal? radius { get; set; } = default;
+
+            [EnumerationValue(1)]
+            [EnumerationValue(4)]
+            [EnumerationValue(6)]
+            [EnumerationValue(12)]
             public List<status> status { get; set; } = [];
             public verticalClearanceFixed? verticalClearanceFixed { get; set; }
+
+            [EnumerationValue(3)]
+            [EnumerationValue(13)]
+            [EnumerationValue(16)]
+            [EnumerationValue(17)]
+            [EnumerationValue(18)]
+            [EnumerationValue(19)]
+            [EnumerationValue(20)]
+            [EnumerationValue(21)]
+            [EnumerationValue(24)]
+            [EnumerationValue(25)]
+            [EnumerationValue(26)]
+            [EnumerationValue(28)]
+            [EnumerationValue(29)]
+            [EnumerationValue(30)]
+            [EnumerationValue(44)]
             public verticalDatum? verticalDatum { get; set; } = default;
             public Decimal? verticalLength { get; set; } = default;
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
             public visualProminence? visualProminence { get; set; } = default;
             public Int32? scaleMinimum { get; set; } = default;
             public List<information> information { get; set; } = [];
@@ -4642,6 +6435,21 @@ namespace S100Framework.DomainModel.S101 {
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class Berth : FeatureNode {
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
+            [EnumerationValue(4)]
+            [EnumerationValue(5)]
+            [EnumerationValue(6)]
+            [EnumerationValue(7)]
+            [EnumerationValue(8)]
+            [EnumerationValue(9)]
+            [EnumerationValue(10)]
+            [EnumerationValue(11)]
+            [EnumerationValue(12)]
+            [EnumerationValue(13)]
+            [EnumerationValue(14)]
+            [EnumerationValue(15)]
             public List<categoryOfCargo> categoryOfCargo { get; set; } = [];
 
             [Required()]
@@ -4653,7 +6461,17 @@ namespace S100Framework.DomainModel.S101 {
             public Decimal? maximumPermittedDraught { get; set; } = default;
             public Decimal? minimumBerthDepth { get; set; } = default;
             public List<periodicDateRange> periodicDateRange { get; set; } = [];
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
             public List<qualityOfVerticalMeasurement> qualityOfVerticalMeasurement { get; set; } = [];
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(5)]
+            [EnumerationValue(7)]
+            [EnumerationValue(9)]
+            [EnumerationValue(12)]
             public List<status> status { get; set; } = [];
             public verticalUncertainty? verticalUncertainty { get; set; }
             public Int32? scaleMinimum { get; set; } = default;
@@ -4668,22 +6486,72 @@ namespace S100Framework.DomainModel.S101 {
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class Dolphin : FeatureNode {
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
+            [EnumerationValue(4)]
             [Required()]
             public List<categoryOfDolphin> categoryOfDolphin { get; set; }
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
+            [EnumerationValue(4)]
+            [EnumerationValue(5)]
+            [EnumerationValue(6)]
+            [EnumerationValue(7)]
+            [EnumerationValue(8)]
+            [EnumerationValue(9)]
+            [EnumerationValue(10)]
+            [EnumerationValue(11)]
+            [EnumerationValue(12)]
+            [EnumerationValue(13)]
             public List<colour> colour { get; set; } = [];
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
+            [EnumerationValue(4)]
+            [EnumerationValue(5)]
+            [EnumerationValue(6)]
             public colourPattern? colourPattern { get; set; } = default;
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(5)]
             public condition? condition { get; set; } = default;
             public Decimal? elevation { get; set; } = default;
             public List<featureName> featureName { get; set; } = [];
             public fixedDateRange? fixedDateRange { get; set; }
             public Decimal? height { get; set; } = default;
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(6)]
+            [EnumerationValue(7)]
             public List<natureOfConstruction> natureOfConstruction { get; set; } = [];
             public List<periodicDateRange> periodicDateRange { get; set; } = [];
             public Boolean? radarConspicuous { get; set; } = default;
             public DateOnly? reportedDate { get; set; } = default;
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
+            [EnumerationValue(4)]
+            [EnumerationValue(5)]
+            [EnumerationValue(6)]
+            [EnumerationValue(7)]
+            [EnumerationValue(8)]
+            [EnumerationValue(12)]
+            [EnumerationValue(14)]
+            [EnumerationValue(18)]
             public List<status> status { get; set; } = [];
             public Decimal? verticalLength { get; set; } = default;
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
             public visualProminence? visualProminence { get; set; } = default;
             public Int32? scaleMinimum { get; set; } = default;
             public List<information> information { get; set; } = [];
@@ -4698,12 +6566,24 @@ namespace S100Framework.DomainModel.S101 {
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class Bollard : FeatureNode {
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(5)]
             public condition? condition { get; set; } = default;
             public List<featureName> featureName { get; set; } = [];
             public fixedDateRange? fixedDateRange { get; set; }
             public String interoperabilityIdentifier { get; set; } = string.Empty;
             public List<periodicDateRange> periodicDateRange { get; set; } = [];
             public DateOnly? reportedDate { get; set; } = default;
+
+            [EnumerationValue(1)]
+            [EnumerationValue(3)]
+            [EnumerationValue(4)]
+            [EnumerationValue(6)]
+            [EnumerationValue(7)]
+            [EnumerationValue(8)]
+            [EnumerationValue(12)]
+            [EnumerationValue(14)]
             public List<status> status { get; set; } = [];
             public Int32? scaleMinimum { get; set; } = default;
             public List<information> information { get; set; } = [];
@@ -4717,6 +6597,10 @@ namespace S100Framework.DomainModel.S101 {
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class DryDock : FeatureNode {
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
+            [EnumerationValue(5)]
             public condition? condition { get; set; } = default;
             public Decimal? depthRangeMinimumValue { get; set; } = default;
             public Decimal? elevation { get; set; } = default;
@@ -4728,7 +6612,22 @@ namespace S100Framework.DomainModel.S101 {
             public Decimal? horizontalLength { get; set; } = default;
             public Decimal? horizontalWidth { get; set; } = default;
             public Decimal? maximumPermittedDraught { get; set; } = default;
+
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
+            [EnumerationValue(4)]
+            [EnumerationValue(6)]
+            [EnumerationValue(7)]
+            [EnumerationValue(8)]
+            [EnumerationValue(9)]
             public List<qualityOfVerticalMeasurement> qualityOfVerticalMeasurement { get; set; } = [];
+
+            [EnumerationValue(1)]
+            [EnumerationValue(4)]
+            [EnumerationValue(6)]
+            [EnumerationValue(8)]
+            [EnumerationValue(12)]
+            [EnumerationValue(14)]
             public List<status> status { get; set; } = [];
             public verticalUncertainty? verticalUncertainty { get; set; }
             public Int32? scaleMinimum { get; set; } = default;
@@ -4742,8 +6641,32 @@ namespace S100Framework.DomainModel.S101 {
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class FloatingDock : FeatureNode {
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
+            [EnumerationValue(4)]
+            [EnumerationValue(5)]
+            [EnumerationValue(6)]
+            [EnumerationValue(7)]
+            [EnumerationValue(8)]
+            [EnumerationValue(9)]
+            [EnumerationValue(10)]
+            [EnumerationValue(11)]
+            [EnumerationValue(12)]
+            [EnumerationValue(13)]
             public List<colour> colour { get; set; } = [];
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
+            [EnumerationValue(4)]
+            [EnumerationValue(5)]
+            [EnumerationValue(6)]
             public colourPattern? colourPattern { get; set; } = default;
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(5)]
             public condition? condition { get; set; } = default;
             public Decimal? depthRangeMinimumValue { get; set; } = default;
             public List<featureName> featureName { get; set; } = [];
@@ -4756,8 +6679,19 @@ namespace S100Framework.DomainModel.S101 {
             public Decimal? liftingCapacity { get; set; } = default;
             public Decimal? maximumPermittedDraught { get; set; } = default;
             public Boolean? radarConspicuous { get; set; } = default;
+
+            [EnumerationValue(1)]
+            [EnumerationValue(4)]
+            [EnumerationValue(6)]
+            [EnumerationValue(7)]
+            [EnumerationValue(8)]
+            [EnumerationValue(12)]
             public List<status> status { get; set; } = [];
             public Decimal? verticalLength { get; set; } = default;
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
             public visualProminence? visualProminence { get; set; } = default;
             public Int32? scaleMinimum { get; set; } = default;
             public List<information> information { get; set; } = [];
@@ -4771,14 +6705,31 @@ namespace S100Framework.DomainModel.S101 {
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class Pontoon : FeatureNode {
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(5)]
             public condition? condition { get; set; } = default;
             public List<featureName> featureName { get; set; } = [];
             public fixedDateRange? fixedDateRange { get; set; }
             public String interoperabilityIdentifier { get; set; } = string.Empty;
             public List<periodicDateRange> periodicDateRange { get; set; } = [];
             public Boolean? radarConspicuous { get; set; } = default;
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(4)]
+            [EnumerationValue(5)]
+            [EnumerationValue(6)]
+            [EnumerationValue(7)]
+            [EnumerationValue(8)]
+            [EnumerationValue(12)]
+            [EnumerationValue(14)]
             public List<status> status { get; set; } = [];
             public Decimal? verticalLength { get; set; } = default;
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
             public visualProminence? visualProminence { get; set; } = default;
             public Int32? scaleMinimum { get; set; } = default;
             public List<information> information { get; set; } = [];
@@ -4792,7 +6743,14 @@ namespace S100Framework.DomainModel.S101 {
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class DockArea : FeatureNode {
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
             public categoryOfDock? categoryOfDock { get; set; } = default;
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
+            [EnumerationValue(5)]
             public condition? condition { get; set; } = default;
             public List<featureName> featureName { get; set; } = [];
             public fixedDateRange? fixedDateRange { get; set; }
@@ -4802,6 +6760,12 @@ namespace S100Framework.DomainModel.S101 {
             public Decimal? horizontalClearanceWidth { get; set; } = default;
             public String interoperabilityIdentifier { get; set; } = string.Empty;
             public Decimal? maximumPermittedDraught { get; set; } = default;
+
+            [EnumerationValue(1)]
+            [EnumerationValue(4)]
+            [EnumerationValue(6)]
+            [EnumerationValue(8)]
+            [EnumerationValue(14)]
             public List<status> status { get; set; } = [];
             public Int32? scaleMinimum { get; set; } = default;
             public List<information> information { get; set; } = [];
@@ -4818,9 +6782,26 @@ namespace S100Framework.DomainModel.S101 {
             public Decimal? horizontalLength { get; set; } = default;
             public Decimal? horizontalWidth { get; set; } = default;
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(6)]
+            [EnumerationValue(7)]
+            [EnumerationValue(11)]
             public List<natureOfConstruction> natureOfConstruction { get; set; } = [];
+
+            [EnumerationValue(1)]
+            [EnumerationValue(4)]
+            [EnumerationValue(6)]
+            [EnumerationValue(8)]
+            [EnumerationValue(14)]
+            [EnumerationValue(28)]
             public List<status> status { get; set; } = [];
             public Decimal? verticalLength { get; set; } = default;
+
+            [EnumerationValue(1)]
+            [EnumerationValue(4)]
+            [EnumerationValue(5)]
             public waterLevelEffect? waterLevelEffect { get; set; } = default;
             public Int32? scaleMinimum { get; set; } = default;
             public List<information> information { get; set; } = [];
@@ -4840,6 +6821,15 @@ namespace S100Framework.DomainModel.S101 {
             public Decimal? horizontalLength { get; set; } = default;
             public Decimal? horizontalWidth { get; set; } = default;
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
+            [EnumerationValue(1)]
+            [EnumerationValue(4)]
+            [EnumerationValue(6)]
+            [EnumerationValue(8)]
+            [EnumerationValue(13)]
+            [EnumerationValue(14)]
+            [EnumerationValue(16)]
+            [EnumerationValue(17)]
             public List<status> status { get; set; } = [];
             public Int32? scaleMinimum { get; set; } = default;
             public List<information> information { get; set; } = [];
@@ -4866,6 +6856,61 @@ namespace S100Framework.DomainModel.S101 {
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class SeaAreaNamedWaterArea : FeatureNode {
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
+            [EnumerationValue(4)]
+            [EnumerationValue(5)]
+            [EnumerationValue(6)]
+            [EnumerationValue(7)]
+            [EnumerationValue(8)]
+            [EnumerationValue(9)]
+            [EnumerationValue(10)]
+            [EnumerationValue(11)]
+            [EnumerationValue(12)]
+            [EnumerationValue(13)]
+            [EnumerationValue(14)]
+            [EnumerationValue(15)]
+            [EnumerationValue(16)]
+            [EnumerationValue(17)]
+            [EnumerationValue(18)]
+            [EnumerationValue(19)]
+            [EnumerationValue(20)]
+            [EnumerationValue(21)]
+            [EnumerationValue(22)]
+            [EnumerationValue(23)]
+            [EnumerationValue(24)]
+            [EnumerationValue(25)]
+            [EnumerationValue(26)]
+            [EnumerationValue(27)]
+            [EnumerationValue(28)]
+            [EnumerationValue(29)]
+            [EnumerationValue(30)]
+            [EnumerationValue(31)]
+            [EnumerationValue(32)]
+            [EnumerationValue(33)]
+            [EnumerationValue(34)]
+            [EnumerationValue(35)]
+            [EnumerationValue(36)]
+            [EnumerationValue(37)]
+            [EnumerationValue(38)]
+            [EnumerationValue(39)]
+            [EnumerationValue(40)]
+            [EnumerationValue(41)]
+            [EnumerationValue(42)]
+            [EnumerationValue(43)]
+            [EnumerationValue(44)]
+            [EnumerationValue(45)]
+            [EnumerationValue(46)]
+            [EnumerationValue(47)]
+            [EnumerationValue(48)]
+            [EnumerationValue(49)]
+            [EnumerationValue(50)]
+            [EnumerationValue(51)]
+            [EnumerationValue(52)]
+            [EnumerationValue(53)]
+            [EnumerationValue(54)]
+            [EnumerationValue(55)]
+            [EnumerationValue(56)]
             public categoryOfSeaArea? categoryOfSeaArea { get; set; } = default;
             public List<featureName> featureName { get; set; } = [];
             public String interoperabilityIdentifier { get; set; } = string.Empty;
@@ -4880,6 +6925,9 @@ namespace S100Framework.DomainModel.S101 {
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class TidalStreamFloodEbb : FeatureNode {
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
             [Required()]
             public categoryOfTidalStream categoryOfTidalStream { get; set; }
             public List<featureName> featureName { get; set; } = [];
@@ -4920,6 +6968,8 @@ namespace S100Framework.DomainModel.S101 {
 
             [Required()]
             public speed speed { get; set; }
+
+            [EnumerationValue(5)]
             public status? status { get; set; } = default;
             public Int32? scaleMinimum { get; set; } = default;
             public List<information> information { get; set; } = [];
@@ -4940,6 +6990,11 @@ namespace S100Framework.DomainModel.S101 {
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class WaterTurbulence : FeatureNode {
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
+            [EnumerationValue(4)]
+            [EnumerationValue(5)]
             [Required()]
             public categoryOfWaterTurbulence categoryOfWaterTurbulence { get; set; }
             public List<featureName> featureName { get; set; } = [];
@@ -4977,9 +7032,33 @@ namespace S100Framework.DomainModel.S101 {
         public partial class Sounding : FeatureNode {
             public List<featureName> featureName { get; set; } = [];
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
+            [EnumerationValue(1)]
+            [EnumerationValue(3)]
+            [EnumerationValue(4)]
+            [EnumerationValue(8)]
+            [EnumerationValue(9)]
             public List<qualityOfVerticalMeasurement> qualityOfVerticalMeasurement { get; set; } = [];
             public DateOnly? reportedDate { get; set; } = default;
+
+            [EnumerationValue(18)]
             public status? status { get; set; } = default;
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
+            [EnumerationValue(4)]
+            [EnumerationValue(5)]
+            [EnumerationValue(8)]
+            [EnumerationValue(9)]
+            [EnumerationValue(10)]
+            [EnumerationValue(11)]
+            [EnumerationValue(12)]
+            [EnumerationValue(13)]
+            [EnumerationValue(15)]
+            [EnumerationValue(16)]
+            [EnumerationValue(17)]
+            [EnumerationValue(18)]
             public List<techniqueOfVerticalMeasurement> techniqueOfVerticalMeasurement { get; set; } = [];
             public Int32? scaleMinimum { get; set; } = default;
             public List<information> information { get; set; } = [];
@@ -4999,8 +7078,43 @@ namespace S100Framework.DomainModel.S101 {
             public List<featureName> featureName { get; set; } = [];
             public String interoperabilityIdentifier { get; set; } = string.Empty;
             public Decimal? maximumPermittedDraught { get; set; } = default;
+
+            [EnumerationValue(10)]
+            [EnumerationValue(11)]
             public qualityOfVerticalMeasurement? qualityOfVerticalMeasurement { get; set; } = default;
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
+            [EnumerationValue(4)]
+            [EnumerationValue(5)]
+            [EnumerationValue(6)]
+            [EnumerationValue(8)]
+            [EnumerationValue(11)]
+            [EnumerationValue(12)]
+            [EnumerationValue(13)]
+            [EnumerationValue(16)]
+            [EnumerationValue(17)]
+            [EnumerationValue(18)]
+            [EnumerationValue(19)]
+            [EnumerationValue(20)]
+            [EnumerationValue(21)]
+            [EnumerationValue(23)]
+            [EnumerationValue(25)]
+            [EnumerationValue(27)]
+            [EnumerationValue(39)]
             public List<restriction> restriction { get; set; } = [];
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
+            [EnumerationValue(8)]
+            [EnumerationValue(9)]
+            [EnumerationValue(13)]
+            [EnumerationValue(15)]
+            [EnumerationValue(16)]
+            [EnumerationValue(17)]
+            [EnumerationValue(18)]
             public List<techniqueOfVerticalMeasurement> techniqueOfVerticalMeasurement { get; set; } = [];
             public verticalUncertainty? verticalUncertainty { get; set; }
             public List<vesselSpeedLimit> vesselSpeedLimit { get; set; } = [];
@@ -5061,6 +7175,18 @@ namespace S100Framework.DomainModel.S101 {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class DepthNoBottomFound : FeatureNode {
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
+            [EnumerationValue(5)]
+            [EnumerationValue(8)]
+            [EnumerationValue(9)]
+            [EnumerationValue(13)]
+            [EnumerationValue(15)]
+            [EnumerationValue(16)]
+            [EnumerationValue(17)]
+            [EnumerationValue(18)]
             public List<techniqueOfVerticalMeasurement> techniqueOfVerticalMeasurement { get; set; } = [];
             public Int32? scaleMinimum { get; set; } = default;
             public List<information> information { get; set; } = [];
@@ -5089,6 +7215,10 @@ namespace S100Framework.DomainModel.S101 {
 
             [Required()]
             public List<surfaceCharacteristics> surfaceCharacteristics { get; set; }
+
+            [EnumerationValue(3)]
+            [EnumerationValue(4)]
+            [EnumerationValue(5)]
             public waterLevelEffect? waterLevelEffect { get; set; } = default;
             public Int32? scaleMinimum { get; set; } = default;
             public List<information> information { get; set; } = [];
@@ -5102,6 +7232,9 @@ namespace S100Framework.DomainModel.S101 {
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class WeedKelp : FeatureNode {
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(4)]
             public categoryOfWeedKelp? categoryOfWeedKelp { get; set; } = default;
             public List<featureName> featureName { get; set; } = [];
             public String interoperabilityIdentifier { get; set; } = string.Empty;
@@ -5155,18 +7288,52 @@ namespace S100Framework.DomainModel.S101 {
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class UnderwaterAwashRock : FeatureNode {
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
             public expositionOfSounding? expositionOfSounding { get; set; } = default;
             public List<featureName> featureName { get; set; } = [];
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
+            [EnumerationValue(14)]
             public natureOfSurface? natureOfSurface { get; set; } = default;
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
+            [EnumerationValue(4)]
+            [EnumerationValue(6)]
+            [EnumerationValue(7)]
+            [EnumerationValue(8)]
+            [EnumerationValue(9)]
             public List<qualityOfVerticalMeasurement> qualityOfVerticalMeasurement { get; set; } = [];
             public DateOnly? reportedDate { get; set; } = default;
+
+            [EnumerationValue(18)]
             public status? status { get; set; } = default;
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
+            [EnumerationValue(4)]
+            [EnumerationValue(5)]
+            [EnumerationValue(8)]
+            [EnumerationValue(9)]
+            [EnumerationValue(10)]
+            [EnumerationValue(11)]
+            [EnumerationValue(12)]
+            [EnumerationValue(13)]
+            [EnumerationValue(15)]
+            [EnumerationValue(16)]
+            [EnumerationValue(17)]
+            [EnumerationValue(18)]
             public List<techniqueOfVerticalMeasurement> techniqueOfVerticalMeasurement { get; set; } = [];
 
             [Required()]
             public Decimal valueOfSounding { get; set; }
 
+            [EnumerationValue(3)]
+            [EnumerationValue(4)]
+            [EnumerationValue(5)]
             [Required()]
             public waterLevelEffect waterLevelEffect { get; set; }
             public Int32? scaleMinimum { get; set; } = default;
@@ -5184,19 +7351,66 @@ namespace S100Framework.DomainModel.S101 {
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class Wreck : FeatureNode {
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
+            [EnumerationValue(4)]
+            [EnumerationValue(5)]
             public categoryOfWreck? categoryOfWreck { get; set; } = default;
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
             public expositionOfSounding? expositionOfSounding { get; set; } = default;
             public List<featureName> featureName { get; set; } = [];
             public Decimal? height { get; set; } = default;
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
+            [EnumerationValue(4)]
+            [EnumerationValue(6)]
+            [EnumerationValue(7)]
+            [EnumerationValue(8)]
+            [EnumerationValue(9)]
             public List<qualityOfVerticalMeasurement> qualityOfVerticalMeasurement { get; set; } = [];
             public Boolean? radarConspicuous { get; set; } = default;
             public DateOnly? reportedDate { get; set; } = default;
+
+            [EnumerationValue(7)]
+            [EnumerationValue(13)]
+            [EnumerationValue(18)]
             public List<status> status { get; set; } = [];
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
+            [EnumerationValue(4)]
+            [EnumerationValue(5)]
+            [EnumerationValue(8)]
+            [EnumerationValue(9)]
+            [EnumerationValue(10)]
+            [EnumerationValue(11)]
+            [EnumerationValue(12)]
+            [EnumerationValue(13)]
+            [EnumerationValue(15)]
+            [EnumerationValue(16)]
+            [EnumerationValue(17)]
+            [EnumerationValue(18)]
             public List<techniqueOfVerticalMeasurement> techniqueOfVerticalMeasurement { get; set; } = [];
             public Decimal? valueOfSounding { get; set; } = default;
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
             public visualProminence? visualProminence { get; set; } = default;
 
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
+            [EnumerationValue(4)]
+            [EnumerationValue(5)]
             [Required()]
             public waterLevelEffect waterLevelEffect { get; set; }
             public Int32? scaleMinimum { get; set; } = default;
@@ -5215,22 +7429,111 @@ namespace S100Framework.DomainModel.S101 {
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class Obstruction : FeatureNode {
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
+            [EnumerationValue(4)]
+            [EnumerationValue(5)]
+            [EnumerationValue(6)]
+            [EnumerationValue(8)]
+            [EnumerationValue(9)]
+            [EnumerationValue(10)]
+            [EnumerationValue(12)]
+            [EnumerationValue(13)]
+            [EnumerationValue(14)]
+            [EnumerationValue(15)]
+            [EnumerationValue(16)]
+            [EnumerationValue(17)]
+            [EnumerationValue(18)]
+            [EnumerationValue(19)]
+            [EnumerationValue(20)]
+            [EnumerationValue(21)]
+            [EnumerationValue(22)]
+            [EnumerationValue(23)]
             public categoryOfObstruction? categoryOfObstruction { get; set; } = default;
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(5)]
             public condition? condition { get; set; } = default;
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
             public expositionOfSounding? expositionOfSounding { get; set; } = default;
             public List<featureName> featureName { get; set; } = [];
             public Decimal? height { get; set; } = default;
             public String interoperabilityIdentifier { get; set; } = string.Empty;
             public Decimal? maximumPermittedDraught { get; set; } = default;
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
+            [EnumerationValue(4)]
+            [EnumerationValue(5)]
+            [EnumerationValue(6)]
+            [EnumerationValue(7)]
+            [EnumerationValue(8)]
+            [EnumerationValue(9)]
+            [EnumerationValue(11)]
+            [EnumerationValue(14)]
+            [EnumerationValue(17)]
+            [EnumerationValue(18)]
             public List<natureOfSurface> natureOfSurface { get; set; } = [];
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
+            [EnumerationValue(8)]
+            [EnumerationValue(23)]
             public List<product> product { get; set; } = [];
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
+            [EnumerationValue(4)]
+            [EnumerationValue(6)]
+            [EnumerationValue(7)]
+            [EnumerationValue(8)]
+            [EnumerationValue(9)]
             public List<qualityOfVerticalMeasurement> qualityOfVerticalMeasurement { get; set; } = [];
             public DateOnly? reportedDate { get; set; } = default;
+
+            [EnumerationValue(1)]
+            [EnumerationValue(4)]
+            [EnumerationValue(5)]
+            [EnumerationValue(7)]
+            [EnumerationValue(8)]
+            [EnumerationValue(13)]
+            [EnumerationValue(18)]
+            [EnumerationValue(28)]
             public List<status> status { get; set; } = [];
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
+            [EnumerationValue(4)]
+            [EnumerationValue(5)]
+            [EnumerationValue(8)]
+            [EnumerationValue(9)]
+            [EnumerationValue(10)]
+            [EnumerationValue(11)]
+            [EnumerationValue(12)]
+            [EnumerationValue(13)]
+            [EnumerationValue(15)]
+            [EnumerationValue(16)]
+            [EnumerationValue(17)]
+            [EnumerationValue(18)]
             public List<techniqueOfVerticalMeasurement> techniqueOfVerticalMeasurement { get; set; } = [];
             public Decimal? valueOfSounding { get; set; } = default;
             public Decimal? verticalLength { get; set; } = default;
 
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
+            [EnumerationValue(4)]
+            [EnumerationValue(5)]
+            [EnumerationValue(7)]
             [Required()]
             public waterLevelEffect waterLevelEffect { get; set; }
             public Int32? scaleMinimum { get; set; } = default;
@@ -5250,9 +7553,38 @@ namespace S100Framework.DomainModel.S101 {
         public partial class FoulGround : FeatureNode {
             public List<featureName> featureName { get; set; } = [];
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
+            [EnumerationValue(4)]
+            [EnumerationValue(6)]
+            [EnumerationValue(7)]
+            [EnumerationValue(8)]
+            [EnumerationValue(9)]
             public List<qualityOfVerticalMeasurement> qualityOfVerticalMeasurement { get; set; } = [];
             public DateOnly? reportedDate { get; set; } = default;
+
+            [EnumerationValue(13)]
+            [EnumerationValue(18)]
+            [EnumerationValue(28)]
             public List<status> status { get; set; } = [];
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
+            [EnumerationValue(4)]
+            [EnumerationValue(5)]
+            [EnumerationValue(8)]
+            [EnumerationValue(9)]
+            [EnumerationValue(10)]
+            [EnumerationValue(11)]
+            [EnumerationValue(12)]
+            [EnumerationValue(13)]
+            [EnumerationValue(15)]
+            [EnumerationValue(16)]
+            [EnumerationValue(17)]
+            [EnumerationValue(18)]
             public List<techniqueOfVerticalMeasurement> techniqueOfVerticalMeasurement { get; set; } = [];
             public Decimal? valueOfSounding { get; set; } = default;
             public verticalUncertainty? verticalUncertainty { get; set; }
@@ -5280,12 +7612,30 @@ namespace S100Framework.DomainModel.S101 {
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class FishingFacility : FeatureNode {
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
+            [EnumerationValue(4)]
             public categoryOfFishingFacility? categoryOfFishingFacility { get; set; } = default;
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(5)]
             public condition? condition { get; set; } = default;
             public List<featureName> featureName { get; set; } = [];
             public String interoperabilityIdentifier { get; set; } = string.Empty;
             public List<periodicDateRange> periodicDateRange { get; set; } = [];
             public DateOnly? reportedDate { get; set; } = default;
+
+            [EnumerationValue(1)]
+            [EnumerationValue(4)]
+            [EnumerationValue(5)]
+            [EnumerationValue(6)]
+            [EnumerationValue(7)]
+            [EnumerationValue(8)]
+            [EnumerationValue(12)]
+            [EnumerationValue(18)]
+            [EnumerationValue(28)]
             public List<status> status { get; set; } = [];
             public Decimal? verticalLength { get; set; } = default;
             public Int32? scaleMinimum { get; set; } = default;
@@ -5299,21 +7649,85 @@ namespace S100Framework.DomainModel.S101 {
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class MarineFarmCulture : FeatureNode {
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
+            [EnumerationValue(4)]
+            [EnumerationValue(5)]
             public categoryOfMarineFarmCulture? categoryOfMarineFarmCulture { get; set; } = default;
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
             public expositionOfSounding? expositionOfSounding { get; set; } = default;
             public List<featureName> featureName { get; set; } = [];
             public fixedDateRange? fixedDateRange { get; set; }
             public Decimal? height { get; set; } = default;
             public String interoperabilityIdentifier { get; set; } = string.Empty;
             public List<periodicDateRange> periodicDateRange { get; set; } = [];
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
+            [EnumerationValue(4)]
+            [EnumerationValue(6)]
+            [EnumerationValue(7)]
+            [EnumerationValue(8)]
+            [EnumerationValue(9)]
             public List<qualityOfVerticalMeasurement> qualityOfVerticalMeasurement { get; set; } = [];
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
+            [EnumerationValue(4)]
+            [EnumerationValue(5)]
+            [EnumerationValue(6)]
+            [EnumerationValue(7)]
+            [EnumerationValue(8)]
+            [EnumerationValue(9)]
+            [EnumerationValue(10)]
+            [EnumerationValue(11)]
+            [EnumerationValue(12)]
+            [EnumerationValue(13)]
+            [EnumerationValue(14)]
+            [EnumerationValue(15)]
+            [EnumerationValue(16)]
+            [EnumerationValue(17)]
+            [EnumerationValue(18)]
+            [EnumerationValue(19)]
+            [EnumerationValue(20)]
+            [EnumerationValue(21)]
+            [EnumerationValue(22)]
+            [EnumerationValue(23)]
+            [EnumerationValue(24)]
+            [EnumerationValue(25)]
+            [EnumerationValue(26)]
+            [EnumerationValue(27)]
+            [EnumerationValue(39)]
             public List<restriction> restriction { get; set; } = [];
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(4)]
+            [EnumerationValue(5)]
+            [EnumerationValue(6)]
+            [EnumerationValue(7)]
+            [EnumerationValue(8)]
+            [EnumerationValue(14)]
+            [EnumerationValue(16)]
+            [EnumerationValue(17)]
+            [EnumerationValue(28)]
             public List<status> status { get; set; } = [];
             public Decimal? valueOfSounding { get; set; } = default;
             public Decimal? verticalLength { get; set; } = default;
             public verticalUncertainty? verticalUncertainty { get; set; }
             public List<vesselSpeedLimit> vesselSpeedLimit { get; set; } = [];
 
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
+            [EnumerationValue(4)]
+            [EnumerationValue(5)]
+            [EnumerationValue(7)]
             [Required()]
             public waterLevelEffect waterLevelEffect { get; set; }
             public Int32? scaleMinimum { get; set; } = default;
@@ -5327,20 +7741,75 @@ namespace S100Framework.DomainModel.S101 {
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class OffshorePlatform : FeatureNode {
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
+            [EnumerationValue(4)]
+            [EnumerationValue(5)]
+            [EnumerationValue(6)]
+            [EnumerationValue(7)]
+            [EnumerationValue(8)]
+            [EnumerationValue(9)]
+            [EnumerationValue(10)]
+            [EnumerationValue(11)]
             public categoryOfOffshorePlatform? categoryOfOffshorePlatform { get; set; } = default;
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
+            [EnumerationValue(4)]
+            [EnumerationValue(5)]
+            [EnumerationValue(6)]
+            [EnumerationValue(7)]
+            [EnumerationValue(8)]
+            [EnumerationValue(9)]
+            [EnumerationValue(10)]
+            [EnumerationValue(11)]
+            [EnumerationValue(12)]
+            [EnumerationValue(13)]
             public List<colour> colour { get; set; } = [];
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
+            [EnumerationValue(4)]
+            [EnumerationValue(5)]
+            [EnumerationValue(6)]
             public colourPattern? colourPattern { get; set; } = default;
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(5)]
             public condition? condition { get; set; } = default;
             public List<featureName> featureName { get; set; } = [];
             public fixedDateRange? fixedDateRange { get; set; }
             public Boolean? flareStack { get; set; } = default;
             public Decimal? height { get; set; } = default;
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
+            [EnumerationValue(18)]
+            [EnumerationValue(19)]
+            [EnumerationValue(23)]
             public List<product> product { get; set; } = [];
             public Boolean? radarConspicuous { get; set; } = default;
             public DateOnly? reportedDate { get; set; } = default;
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(4)]
+            [EnumerationValue(7)]
+            [EnumerationValue(8)]
+            [EnumerationValue(12)]
+            [EnumerationValue(28)]
             public List<status> status { get; set; } = [];
             public Decimal? verticalLength { get; set; } = default;
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
             public visualProminence? visualProminence { get; set; } = default;
             public Int32? scaleMinimum { get; set; } = default;
             public List<information> information { get; set; } = [];
@@ -5355,11 +7824,25 @@ namespace S100Framework.DomainModel.S101 {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class CableSubmarine : FeatureNode {
             public Decimal? buriedDepth { get; set; } = default;
+
+            [EnumerationValue(1)]
+            [EnumerationValue(6)]
+            [EnumerationValue(7)]
+            [EnumerationValue(9)]
+            [EnumerationValue(10)]
             public categoryOfCable? categoryOfCable { get; set; } = default;
+
+            [EnumerationValue(1)]
+            [EnumerationValue(5)]
             public condition? condition { get; set; } = default;
             public List<featureName> featureName { get; set; } = [];
             public fixedDateRange? fixedDateRange { get; set; }
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
+            [EnumerationValue(1)]
+            [EnumerationValue(4)]
+            [EnumerationValue(13)]
+            [EnumerationValue(18)]
             public List<status> status { get; set; } = [];
             public Int32? scaleMinimum { get; set; } = default;
             public List<information> information { get; set; } = [];
@@ -5372,11 +7855,41 @@ namespace S100Framework.DomainModel.S101 {
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class CableArea : FeatureNode {
+            [EnumerationValue(1)]
+            [EnumerationValue(7)]
+            [EnumerationValue(10)]
             public List<categoryOfCable> categoryOfCable { get; set; } = [];
             public List<featureName> featureName { get; set; } = [];
             public fixedDateRange? fixedDateRange { get; set; }
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
+            [EnumerationValue(4)]
+            [EnumerationValue(5)]
+            [EnumerationValue(6)]
+            [EnumerationValue(7)]
+            [EnumerationValue(8)]
+            [EnumerationValue(9)]
+            [EnumerationValue(11)]
+            [EnumerationValue(12)]
+            [EnumerationValue(13)]
+            [EnumerationValue(14)]
+            [EnumerationValue(16)]
+            [EnumerationValue(17)]
+            [EnumerationValue(18)]
+            [EnumerationValue(20)]
+            [EnumerationValue(23)]
+            [EnumerationValue(24)]
+            [EnumerationValue(25)]
+            [EnumerationValue(27)]
+            [EnumerationValue(39)]
             public List<restriction> restriction { get; set; } = [];
+
+            [EnumerationValue(1)]
+            [EnumerationValue(7)]
+            [EnumerationValue(13)]
             public List<status> status { get; set; } = [];
             public List<vesselSpeedLimit> vesselSpeedLimit { get; set; } = [];
             public Int32? scaleMinimum { get; set; } = default;
@@ -5391,7 +7904,17 @@ namespace S100Framework.DomainModel.S101 {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class PipelineSubmarineOnLand : FeatureNode {
             public Decimal? buriedDepth { get; set; } = default;
+
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
+            [EnumerationValue(4)]
+            [EnumerationValue(5)]
+            [EnumerationValue(6)]
+            [EnumerationValue(7)]
             public List<categoryOfPipelinePipe> categoryOfPipelinePipe { get; set; } = [];
+
+            [EnumerationValue(1)]
+            [EnumerationValue(5)]
             public condition? condition { get; set; } = default;
             public Decimal? depthRangeMinimumValue { get; set; } = default;
             public Decimal? depthRangeMaximumValue { get; set; } = default;
@@ -5399,9 +7922,43 @@ namespace S100Framework.DomainModel.S101 {
             public fixedDateRange? fixedDateRange { get; set; }
             public String interoperabilityIdentifier { get; set; } = string.Empty;
             public multiplicityOfFeatures? multiplicityOfFeatures { get; set; }
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
+            [EnumerationValue(7)]
+            [EnumerationValue(8)]
+            [EnumerationValue(9)]
+            [EnumerationValue(18)]
+            [EnumerationValue(19)]
             public List<product> product { get; set; } = [];
             public DateOnly? reportedDate { get; set; } = default;
+
+            [EnumerationValue(1)]
+            [EnumerationValue(3)]
+            [EnumerationValue(4)]
+            [EnumerationValue(5)]
+            [EnumerationValue(8)]
+            [EnumerationValue(9)]
+            [EnumerationValue(11)]
+            [EnumerationValue(12)]
+            [EnumerationValue(13)]
+            [EnumerationValue(14)]
+            [EnumerationValue(16)]
+            [EnumerationValue(17)]
+            [EnumerationValue(18)]
+            [EnumerationValue(20)]
+            [EnumerationValue(23)]
+            [EnumerationValue(24)]
+            [EnumerationValue(25)]
+            [EnumerationValue(26)]
+            [EnumerationValue(39)]
             public List<restriction> restriction { get; set; } = [];
+
+            [EnumerationValue(1)]
+            [EnumerationValue(4)]
+            [EnumerationValue(7)]
+            [EnumerationValue(12)]
             public List<status> status { get; set; } = [];
             public Int32? scaleMinimum { get; set; } = default;
             public List<information> information { get; set; } = [];
@@ -5415,12 +7972,58 @@ namespace S100Framework.DomainModel.S101 {
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class SubmarinePipelineArea : FeatureNode {
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
+            [EnumerationValue(4)]
+            [EnumerationValue(5)]
+            [EnumerationValue(6)]
             public List<categoryOfPipelinePipe> categoryOfPipelinePipe { get; set; } = [];
             public List<featureName> featureName { get; set; } = [];
             public fixedDateRange? fixedDateRange { get; set; }
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
+            [EnumerationValue(7)]
+            [EnumerationValue(8)]
+            [EnumerationValue(18)]
+            [EnumerationValue(19)]
             public List<product> product { get; set; } = [];
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
+            [EnumerationValue(4)]
+            [EnumerationValue(5)]
+            [EnumerationValue(6)]
+            [EnumerationValue(7)]
+            [EnumerationValue(8)]
+            [EnumerationValue(9)]
+            [EnumerationValue(10)]
+            [EnumerationValue(11)]
+            [EnumerationValue(12)]
+            [EnumerationValue(13)]
+            [EnumerationValue(14)]
+            [EnumerationValue(15)]
+            [EnumerationValue(16)]
+            [EnumerationValue(17)]
+            [EnumerationValue(18)]
+            [EnumerationValue(19)]
+            [EnumerationValue(20)]
+            [EnumerationValue(21)]
+            [EnumerationValue(22)]
+            [EnumerationValue(23)]
+            [EnumerationValue(24)]
+            [EnumerationValue(25)]
+            [EnumerationValue(26)]
+            [EnumerationValue(27)]
+            [EnumerationValue(39)]
             public List<restriction> restriction { get; set; } = [];
+
+            [EnumerationValue(1)]
+            [EnumerationValue(4)]
+            [EnumerationValue(7)]
             public List<status> status { get; set; } = [];
             public List<vesselSpeedLimit> vesselSpeedLimit { get; set; } = [];
             public Int32? scaleMinimum { get; set; } = default;
@@ -5434,20 +8037,84 @@ namespace S100Framework.DomainModel.S101 {
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class OffshoreProductionArea : FeatureNode {
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
+            [EnumerationValue(4)]
+            [EnumerationValue(5)]
+            [EnumerationValue(6)]
             public categoryOfOffshoreProductionArea? categoryOfOffshoreProductionArea { get; set; } = default;
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(4)]
+            [EnumerationValue(5)]
             public condition? condition { get; set; } = default;
             public List<featureName> featureName { get; set; } = [];
             public fixedDateRange? fixedDateRange { get; set; }
             public Decimal? height { get; set; } = default;
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(4)]
+            [EnumerationValue(6)]
+            [EnumerationValue(10)]
+            [EnumerationValue(14)]
+            [EnumerationValue(23)]
             public List<product> product { get; set; } = [];
             public Boolean? radarConspicuous { get; set; } = default;
             public DateOnly? reportedDate { get; set; } = default;
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
+            [EnumerationValue(4)]
+            [EnumerationValue(5)]
+            [EnumerationValue(6)]
+            [EnumerationValue(7)]
+            [EnumerationValue(8)]
+            [EnumerationValue(9)]
+            [EnumerationValue(10)]
+            [EnumerationValue(11)]
+            [EnumerationValue(12)]
+            [EnumerationValue(13)]
+            [EnumerationValue(14)]
+            [EnumerationValue(15)]
+            [EnumerationValue(16)]
+            [EnumerationValue(17)]
+            [EnumerationValue(18)]
+            [EnumerationValue(19)]
+            [EnumerationValue(20)]
+            [EnumerationValue(21)]
+            [EnumerationValue(22)]
+            [EnumerationValue(23)]
+            [EnumerationValue(24)]
+            [EnumerationValue(25)]
+            [EnumerationValue(26)]
+            [EnumerationValue(27)]
+            [EnumerationValue(39)]
             public List<restriction> restriction { get; set; } = [];
+
+            [EnumerationValue(1)]
+            [EnumerationValue(4)]
+            [EnumerationValue(7)]
+            [EnumerationValue(8)]
+            [EnumerationValue(12)]
+            [EnumerationValue(28)]
             public List<status> status { get; set; } = [];
             public Decimal? verticalLength { get; set; } = default;
             public List<vesselSpeedLimit> vesselSpeedLimit { get; set; } = [];
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
             public visualProminence? visualProminence { get; set; } = default;
+
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
+            [EnumerationValue(4)]
+            [EnumerationValue(7)]
             public waterLevelEffect? waterLevelEffect { get; set; } = default;
             public Int32? scaleMinimum { get; set; } = default;
             public List<information> information { get; set; } = [];
@@ -5460,6 +8127,9 @@ namespace S100Framework.DomainModel.S101 {
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class NavigationLine : FeatureNode {
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
             [Required()]
             public categoryOfNavigationLine categoryOfNavigationLine { get; set; }
             public fixedDateRange? fixedDateRange { get; set; }
@@ -5469,6 +8139,13 @@ namespace S100Framework.DomainModel.S101 {
             [Required()]
             public orientation orientation { get; set; }
             public List<periodicDateRange> periodicDateRange { get; set; } = [];
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(5)]
+            [EnumerationValue(7)]
+            [EnumerationValue(8)]
+            [EnumerationValue(14)]
             public List<status> status { get; set; } = [];
             public Int32? scaleMinimum { get; set; } = default;
             public List<information> information { get; set; } = [];
@@ -5496,10 +8173,37 @@ namespace S100Framework.DomainModel.S101 {
             [Required()]
             public Decimal orientationValue { get; set; }
             public List<periodicDateRange> periodicDateRange { get; set; } = [];
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(6)]
             public List<qualityOfVerticalMeasurement> qualityOfVerticalMeasurement { get; set; } = [];
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(5)]
+            [EnumerationValue(6)]
+            [EnumerationValue(8)]
+            [EnumerationValue(9)]
+            [EnumerationValue(14)]
             public List<status> status { get; set; } = [];
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
+            [EnumerationValue(8)]
+            [EnumerationValue(9)]
+            [EnumerationValue(13)]
+            [EnumerationValue(15)]
+            [EnumerationValue(16)]
+            [EnumerationValue(17)]
+            [EnumerationValue(18)]
             public List<techniqueOfVerticalMeasurement> techniqueOfVerticalMeasurement { get; set; } = [];
 
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
+            [EnumerationValue(4)]
             [Required()]
             public trafficFlow trafficFlow { get; set; }
             public verticalUncertainty? verticalUncertainty { get; set; }
@@ -5535,9 +8239,51 @@ namespace S100Framework.DomainModel.S101 {
             public String interoperabilityIdentifier { get; set; } = string.Empty;
             public Decimal? maximumPermittedDraught { get; set; } = default;
             public Decimal? orientationValue { get; set; } = default;
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(6)]
             public List<qualityOfVerticalMeasurement> qualityOfVerticalMeasurement { get; set; } = [];
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
+            [EnumerationValue(4)]
+            [EnumerationValue(5)]
+            [EnumerationValue(6)]
+            [EnumerationValue(8)]
+            [EnumerationValue(9)]
+            [EnumerationValue(10)]
+            [EnumerationValue(11)]
+            [EnumerationValue(12)]
+            [EnumerationValue(13)]
+            [EnumerationValue(15)]
+            [EnumerationValue(16)]
+            [EnumerationValue(17)]
+            [EnumerationValue(18)]
+            [EnumerationValue(19)]
+            [EnumerationValue(20)]
+            [EnumerationValue(21)]
+            [EnumerationValue(22)]
+            [EnumerationValue(23)]
+            [EnumerationValue(24)]
+            [EnumerationValue(25)]
+            [EnumerationValue(27)]
+            [EnumerationValue(39)]
             public List<restriction> restriction { get; set; } = [];
+
+            [EnumerationValue(1)]
+            [EnumerationValue(3)]
+            [EnumerationValue(6)]
+            [EnumerationValue(7)]
+            [EnumerationValue(9)]
+            [EnumerationValue(28)]
             public List<status> status { get; set; } = [];
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
+            [EnumerationValue(4)]
             public trafficFlow? trafficFlow { get; set; } = default;
             public verticalUncertainty? verticalUncertainty { get; set; }
             public List<vesselSpeedLimit> vesselSpeedLimit { get; set; } = [];
@@ -5576,9 +8322,35 @@ namespace S100Framework.DomainModel.S101 {
             public String interoperabilityIdentifier { get; set; } = string.Empty;
             public Decimal? orientationValue { get; set; } = default;
             public List<periodicDateRange> periodicDateRange { get; set; } = [];
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
+            [EnumerationValue(4)]
+            [EnumerationValue(6)]
             public List<qualityOfVerticalMeasurement> qualityOfVerticalMeasurement { get; set; } = [];
+
+            [EnumerationValue(1)]
+            [EnumerationValue(5)]
+            [EnumerationValue(6)]
+            [EnumerationValue(9)]
             public List<status> status { get; set; } = [];
+
+            [EnumerationValue(1)]
+            [EnumerationValue(3)]
+            [EnumerationValue(8)]
+            [EnumerationValue(9)]
+            [EnumerationValue(13)]
+            [EnumerationValue(15)]
+            [EnumerationValue(16)]
+            [EnumerationValue(17)]
+            [EnumerationValue(18)]
             public List<techniqueOfVerticalMeasurement> techniqueOfVerticalMeasurement { get; set; } = [];
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
+            [EnumerationValue(4)]
             public trafficFlow? trafficFlow { get; set; } = default;
             public verticalUncertainty? verticalUncertainty { get; set; }
             public Int32? scaleMinimum { get; set; } = default;
@@ -5599,10 +8371,36 @@ namespace S100Framework.DomainModel.S101 {
 
             [Required()]
             public Decimal orientationValue { get; set; }
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
+            [EnumerationValue(4)]
+            [EnumerationValue(6)]
             public List<qualityOfVerticalMeasurement> qualityOfVerticalMeasurement { get; set; } = [];
+
+            [EnumerationValue(1)]
+            [EnumerationValue(3)]
+            [EnumerationValue(6)]
+            [EnumerationValue(9)]
             public List<status> status { get; set; } = [];
+
+            [EnumerationValue(1)]
+            [EnumerationValue(3)]
+            [EnumerationValue(5)]
+            [EnumerationValue(8)]
+            [EnumerationValue(9)]
+            [EnumerationValue(13)]
+            [EnumerationValue(15)]
+            [EnumerationValue(16)]
+            [EnumerationValue(17)]
+            [EnumerationValue(18)]
             public List<techniqueOfVerticalMeasurement> techniqueOfVerticalMeasurement { get; set; } = [];
 
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
+            [EnumerationValue(4)]
             [Required()]
             public trafficFlow trafficFlow { get; set; }
             public verticalUncertainty? verticalUncertainty { get; set; }
@@ -5637,6 +8435,10 @@ namespace S100Framework.DomainModel.S101 {
 
             [Required()]
             public Decimal orientationValue { get; set; }
+
+            [EnumerationValue(1)]
+            [EnumerationValue(6)]
+            [EnumerationValue(9)]
             public List<status> status { get; set; } = [];
             public Int32? scaleMinimum { get; set; } = default;
             public List<information> information { get; set; } = [];
@@ -5659,10 +8461,37 @@ namespace S100Framework.DomainModel.S101 {
 
             [Required()]
             public Decimal orientationValue { get; set; }
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
+            [EnumerationValue(4)]
+            [EnumerationValue(6)]
+            [EnumerationValue(7)]
             public List<qualityOfVerticalMeasurement> qualityOfVerticalMeasurement { get; set; } = [];
+
+            [EnumerationValue(1)]
+            [EnumerationValue(3)]
+            [EnumerationValue(6)]
+            [EnumerationValue(9)]
             public List<status> status { get; set; } = [];
+
+            [EnumerationValue(1)]
+            [EnumerationValue(3)]
+            [EnumerationValue(5)]
+            [EnumerationValue(8)]
+            [EnumerationValue(9)]
+            [EnumerationValue(13)]
+            [EnumerationValue(15)]
+            [EnumerationValue(16)]
+            [EnumerationValue(17)]
+            [EnumerationValue(18)]
             public List<techniqueOfVerticalMeasurement> techniqueOfVerticalMeasurement { get; set; } = [];
 
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
+            [EnumerationValue(4)]
             [Required()]
             public trafficFlow trafficFlow { get; set; }
             public verticalUncertainty? verticalUncertainty { get; set; }
@@ -5686,11 +8515,63 @@ namespace S100Framework.DomainModel.S101 {
 
             [Required()]
             public Decimal orientationValue { get; set; }
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
+            [EnumerationValue(4)]
+            [EnumerationValue(6)]
+            [EnumerationValue(7)]
             public List<qualityOfVerticalMeasurement> qualityOfVerticalMeasurement { get; set; } = [];
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
+            [EnumerationValue(4)]
+            [EnumerationValue(5)]
+            [EnumerationValue(6)]
+            [EnumerationValue(8)]
+            [EnumerationValue(9)]
+            [EnumerationValue(10)]
+            [EnumerationValue(11)]
+            [EnumerationValue(12)]
+            [EnumerationValue(13)]
+            [EnumerationValue(16)]
+            [EnumerationValue(17)]
+            [EnumerationValue(18)]
+            [EnumerationValue(19)]
+            [EnumerationValue(20)]
+            [EnumerationValue(21)]
+            [EnumerationValue(22)]
+            [EnumerationValue(23)]
+            [EnumerationValue(24)]
+            [EnumerationValue(25)]
+            [EnumerationValue(27)]
             public List<restriction> restriction { get; set; } = [];
+
+            [EnumerationValue(1)]
+            [EnumerationValue(3)]
+            [EnumerationValue(6)]
+            [EnumerationValue(9)]
+            [EnumerationValue(28)]
             public List<status> status { get; set; } = [];
+
+            [EnumerationValue(1)]
+            [EnumerationValue(3)]
+            [EnumerationValue(5)]
+            [EnumerationValue(8)]
+            [EnumerationValue(9)]
+            [EnumerationValue(13)]
+            [EnumerationValue(15)]
+            [EnumerationValue(16)]
+            [EnumerationValue(17)]
+            [EnumerationValue(18)]
             public List<techniqueOfVerticalMeasurement> techniqueOfVerticalMeasurement { get; set; } = [];
 
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
+            [EnumerationValue(4)]
             [Required()]
             public trafficFlow trafficFlow { get; set; }
             public verticalUncertainty? verticalUncertainty { get; set; }
@@ -5723,7 +8604,38 @@ namespace S100Framework.DomainModel.S101 {
         public partial class InshoreTrafficZone : FeatureNode {
             public fixedDateRange? fixedDateRange { get; set; }
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
+            [EnumerationValue(4)]
+            [EnumerationValue(5)]
+            [EnumerationValue(6)]
+            [EnumerationValue(8)]
+            [EnumerationValue(9)]
+            [EnumerationValue(10)]
+            [EnumerationValue(11)]
+            [EnumerationValue(12)]
+            [EnumerationValue(13)]
+            [EnumerationValue(16)]
+            [EnumerationValue(17)]
+            [EnumerationValue(18)]
+            [EnumerationValue(19)]
+            [EnumerationValue(20)]
+            [EnumerationValue(21)]
+            [EnumerationValue(22)]
+            [EnumerationValue(23)]
+            [EnumerationValue(24)]
+            [EnumerationValue(25)]
+            [EnumerationValue(27)]
             public List<restriction> restriction { get; set; } = [];
+
+            [EnumerationValue(1)]
+            [EnumerationValue(3)]
+            [EnumerationValue(6)]
+            [EnumerationValue(9)]
+            [EnumerationValue(16)]
+            [EnumerationValue(17)]
             public List<status> status { get; set; } = [];
             public List<vesselSpeedLimit> vesselSpeedLimit { get; set; } = [];
             public Int32? scaleMinimum { get; set; } = default;
@@ -5741,7 +8653,36 @@ namespace S100Framework.DomainModel.S101 {
             public fixedDateRange? fixedDateRange { get; set; }
             public Boolean? iMOAdopted { get; set; } = default;
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
+            [EnumerationValue(4)]
+            [EnumerationValue(5)]
+            [EnumerationValue(6)]
+            [EnumerationValue(8)]
+            [EnumerationValue(9)]
+            [EnumerationValue(10)]
+            [EnumerationValue(11)]
+            [EnumerationValue(12)]
+            [EnumerationValue(13)]
+            [EnumerationValue(14)]
+            [EnumerationValue(16)]
+            [EnumerationValue(17)]
+            [EnumerationValue(18)]
+            [EnumerationValue(19)]
+            [EnumerationValue(20)]
+            [EnumerationValue(21)]
+            [EnumerationValue(22)]
+            [EnumerationValue(23)]
+            [EnumerationValue(24)]
+            [EnumerationValue(25)]
+            [EnumerationValue(27)]
             public List<restriction> restriction { get; set; } = [];
+
+            [EnumerationValue(1)]
+            [EnumerationValue(9)]
+            [EnumerationValue(28)]
             public List<status> status { get; set; } = [];
             public List<vesselSpeedLimit> vesselSpeedLimit { get; set; } = [];
             public Int32? scaleMinimum { get; set; } = default;
@@ -5761,7 +8702,37 @@ namespace S100Framework.DomainModel.S101 {
             public fixedDateRange? fixedDateRange { get; set; }
             public String interoperabilityIdentifier { get; set; } = string.Empty;
             public Decimal? orientationValue { get; set; } = default;
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
+            [EnumerationValue(4)]
+            [EnumerationValue(5)]
+            [EnumerationValue(6)]
+            [EnumerationValue(8)]
+            [EnumerationValue(9)]
+            [EnumerationValue(10)]
+            [EnumerationValue(11)]
+            [EnumerationValue(12)]
+            [EnumerationValue(13)]
+            [EnumerationValue(16)]
+            [EnumerationValue(17)]
+            [EnumerationValue(18)]
+            [EnumerationValue(19)]
+            [EnumerationValue(20)]
+            [EnumerationValue(21)]
+            [EnumerationValue(22)]
+            [EnumerationValue(23)]
+            [EnumerationValue(24)]
+            [EnumerationValue(25)]
+            [EnumerationValue(27)]
             public List<restriction> restriction { get; set; } = [];
+
+            [EnumerationValue(1)]
+            [EnumerationValue(3)]
+            [EnumerationValue(6)]
+            [EnumerationValue(9)]
+            [EnumerationValue(28)]
             public List<status> status { get; set; } = [];
             public List<vesselSpeedLimit> vesselSpeedLimit { get; set; } = [];
             public Int32? scaleMinimum { get; set; } = default;
@@ -5777,6 +8748,11 @@ namespace S100Framework.DomainModel.S101 {
         public partial class SeparationZoneOrLine : FeatureNode {
             public fixedDateRange? fixedDateRange { get; set; }
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
+            [EnumerationValue(1)]
+            [EnumerationValue(3)]
+            [EnumerationValue(9)]
+            [EnumerationValue(28)]
             public List<status> status { get; set; } = [];
             public Int32? scaleMinimum { get; set; } = default;
             public List<information> information { get; set; } = [];
@@ -5791,6 +8767,11 @@ namespace S100Framework.DomainModel.S101 {
         public partial class TrafficSeparationSchemeBoundary : FeatureNode {
             public fixedDateRange? fixedDateRange { get; set; }
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
+            [EnumerationValue(1)]
+            [EnumerationValue(3)]
+            [EnumerationValue(9)]
+            [EnumerationValue(28)]
             public List<status> status { get; set; } = [];
             public Int32? scaleMinimum { get; set; } = default;
             public List<information> information { get; set; } = [];
@@ -5805,7 +8786,36 @@ namespace S100Framework.DomainModel.S101 {
         public partial class TrafficSeparationSchemeCrossing : FeatureNode {
             public fixedDateRange? fixedDateRange { get; set; }
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
+            [EnumerationValue(4)]
+            [EnumerationValue(5)]
+            [EnumerationValue(6)]
+            [EnumerationValue(8)]
+            [EnumerationValue(9)]
+            [EnumerationValue(10)]
+            [EnumerationValue(11)]
+            [EnumerationValue(12)]
+            [EnumerationValue(13)]
+            [EnumerationValue(16)]
+            [EnumerationValue(17)]
+            [EnumerationValue(18)]
+            [EnumerationValue(19)]
+            [EnumerationValue(20)]
+            [EnumerationValue(21)]
+            [EnumerationValue(22)]
+            [EnumerationValue(23)]
+            [EnumerationValue(24)]
+            [EnumerationValue(25)]
+            [EnumerationValue(27)]
             public List<restriction> restriction { get; set; } = [];
+
+            [EnumerationValue(1)]
+            [EnumerationValue(3)]
+            [EnumerationValue(6)]
+            [EnumerationValue(9)]
             public List<status> status { get; set; } = [];
             public List<vesselSpeedLimit> vesselSpeedLimit { get; set; } = [];
             public Int32? scaleMinimum { get; set; } = default;
@@ -5821,7 +8831,36 @@ namespace S100Framework.DomainModel.S101 {
         public partial class TrafficSeparationSchemeRoundabout : FeatureNode {
             public fixedDateRange? fixedDateRange { get; set; }
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
+            [EnumerationValue(4)]
+            [EnumerationValue(5)]
+            [EnumerationValue(6)]
+            [EnumerationValue(8)]
+            [EnumerationValue(9)]
+            [EnumerationValue(10)]
+            [EnumerationValue(11)]
+            [EnumerationValue(12)]
+            [EnumerationValue(13)]
+            [EnumerationValue(16)]
+            [EnumerationValue(17)]
+            [EnumerationValue(18)]
+            [EnumerationValue(19)]
+            [EnumerationValue(20)]
+            [EnumerationValue(21)]
+            [EnumerationValue(22)]
+            [EnumerationValue(23)]
+            [EnumerationValue(24)]
+            [EnumerationValue(25)]
+            [EnumerationValue(27)]
             public List<restriction> restriction { get; set; } = [];
+
+            [EnumerationValue(1)]
+            [EnumerationValue(3)]
+            [EnumerationValue(6)]
+            [EnumerationValue(9)]
             public List<status> status { get; set; } = [];
             public List<vesselSpeedLimit> vesselSpeedLimit { get; set; } = [];
             public Int32? scaleMinimum { get; set; } = default;
@@ -5903,8 +8942,20 @@ namespace S100Framework.DomainModel.S101 {
             public String interoperabilityIdentifier { get; set; } = string.Empty;
             public List<Decimal> orientationValue { get; set; } = [];
             public List<periodicDateRange> periodicDateRange { get; set; } = [];
+
+            [EnumerationValue(1)]
+            [EnumerationValue(3)]
+            [EnumerationValue(4)]
+            [EnumerationValue(5)]
+            [EnumerationValue(6)]
+            [EnumerationValue(7)]
+            [EnumerationValue(9)]
             public List<status> status { get; set; } = [];
 
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
+            [EnumerationValue(4)]
             [Required()]
             public trafficFlow trafficFlow { get; set; }
             public Int32? scaleMinimum { get; set; } = default;
@@ -5918,12 +8969,26 @@ namespace S100Framework.DomainModel.S101 {
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class FerryRoute : FeatureNode {
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
+            [EnumerationValue(5)]
             [Required()]
             public List<categoryOfFerry> categoryOfFerry { get; set; }
             public List<featureName> featureName { get; set; } = [];
             public fixedDateRange? fixedDateRange { get; set; }
             public String interoperabilityIdentifier { get; set; } = string.Empty;
             public List<periodicDateRange> periodicDateRange { get; set; } = [];
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(4)]
+            [EnumerationValue(5)]
+            [EnumerationValue(6)]
+            [EnumerationValue(7)]
+            [EnumerationValue(8)]
+            [EnumerationValue(9)]
+            [EnumerationValue(14)]
             public List<status> status { get; set; } = [];
             public Int32? scaleMinimum { get; set; } = default;
             public List<information> information { get; set; } = [];
@@ -5942,6 +9007,12 @@ namespace S100Framework.DomainModel.S101 {
 
             [Required()]
             public Decimal orientationValue { get; set; }
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
+            [EnumerationValue(4)]
+            [EnumerationValue(7)]
             public List<status> status { get; set; } = [];
             public Int32? scaleMinimum { get; set; } = default;
             public List<information> information { get; set; } = [];
@@ -5958,6 +9029,11 @@ namespace S100Framework.DomainModel.S101 {
             public List<featureName> featureName { get; set; } = [];
             public fixedDateRange? fixedDateRange { get; set; }
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(4)]
+            [EnumerationValue(7)]
             public List<status> status { get; set; } = [];
             public Int32? scaleMinimum { get; set; } = default;
             public List<information> information { get; set; } = [];
@@ -5971,12 +9047,21 @@ namespace S100Framework.DomainModel.S101 {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class RadarStation : FeatureNode {
             public String callSign { get; set; } = string.Empty;
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
             public List<categoryOfRadarStation> categoryOfRadarStation { get; set; } = [];
             public List<String> communicationChannel { get; set; } = [];
             public List<featureName> featureName { get; set; } = [];
             public Decimal? height { get; set; } = default;
             public String interoperabilityIdentifier { get; set; } = string.Empty;
             public List<periodicDateRange> periodicDateRange { get; set; } = [];
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(4)]
+            [EnumerationValue(7)]
+            [EnumerationValue(8)]
             public List<status> status { get; set; } = [];
             public Decimal? valueOfMaximumRange { get; set; } = default;
             public Int32? scaleMinimum { get; set; } = default;
@@ -5990,13 +9075,72 @@ namespace S100Framework.DomainModel.S101 {
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class AnchorageArea : FeatureNode {
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
+            [EnumerationValue(5)]
+            [EnumerationValue(6)]
+            [EnumerationValue(7)]
+            [EnumerationValue(9)]
+            [EnumerationValue(10)]
+            [EnumerationValue(14)]
+            [EnumerationValue(15)]
             public List<categoryOfAnchorage> categoryOfAnchorage { get; set; } = [];
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
+            [EnumerationValue(4)]
+            [EnumerationValue(5)]
+            [EnumerationValue(6)]
+            [EnumerationValue(7)]
+            [EnumerationValue(8)]
+            [EnumerationValue(9)]
+            [EnumerationValue(10)]
+            [EnumerationValue(11)]
+            [EnumerationValue(12)]
+            [EnumerationValue(13)]
+            [EnumerationValue(14)]
+            [EnumerationValue(15)]
             public List<categoryOfCargo> categoryOfCargo { get; set; } = [];
             public List<featureName> featureName { get; set; } = [];
             public fixedDateRange? fixedDateRange { get; set; }
             public String interoperabilityIdentifier { get; set; } = string.Empty;
             public List<periodicDateRange> periodicDateRange { get; set; } = [];
+
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
+            [EnumerationValue(4)]
+            [EnumerationValue(5)]
+            [EnumerationValue(6)]
+            [EnumerationValue(8)]
+            [EnumerationValue(9)]
+            [EnumerationValue(10)]
+            [EnumerationValue(11)]
+            [EnumerationValue(12)]
+            [EnumerationValue(13)]
+            [EnumerationValue(15)]
+            [EnumerationValue(16)]
+            [EnumerationValue(17)]
+            [EnumerationValue(18)]
+            [EnumerationValue(19)]
+            [EnumerationValue(20)]
+            [EnumerationValue(21)]
+            [EnumerationValue(23)]
+            [EnumerationValue(24)]
+            [EnumerationValue(27)]
+            [EnumerationValue(39)]
             public List<restriction> restriction { get; set; } = [];
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
+            [EnumerationValue(5)]
+            [EnumerationValue(6)]
+            [EnumerationValue(7)]
+            [EnumerationValue(8)]
+            [EnumerationValue(9)]
+            [EnumerationValue(14)]
             public List<status> status { get; set; } = [];
             public List<vesselSpeedLimit> vesselSpeedLimit { get; set; } = [];
             public Int32? scaleMinimum { get; set; } = default;
@@ -6010,6 +9154,9 @@ namespace S100Framework.DomainModel.S101 {
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class MooringArea : FeatureNode {
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
             public List<categoryOfMooringArea> categoryOfMooringArea { get; set; } = [];
             public List<featureName> featureName { get; set; } = [];
             public fixedDateRange? fixedDateRange { get; set; }
@@ -6017,7 +9164,43 @@ namespace S100Framework.DomainModel.S101 {
             public Decimal? maximumPermittedDraught { get; set; } = default;
             public Decimal? maximumPermittedVesselLength { get; set; } = default;
             public List<periodicDateRange> periodicDateRange { get; set; } = [];
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
+            [EnumerationValue(4)]
+            [EnumerationValue(5)]
+            [EnumerationValue(6)]
+            [EnumerationValue(8)]
+            [EnumerationValue(9)]
+            [EnumerationValue(10)]
+            [EnumerationValue(11)]
+            [EnumerationValue(12)]
+            [EnumerationValue(13)]
+            [EnumerationValue(15)]
+            [EnumerationValue(16)]
+            [EnumerationValue(17)]
+            [EnumerationValue(18)]
+            [EnumerationValue(19)]
+            [EnumerationValue(20)]
+            [EnumerationValue(21)]
+            [EnumerationValue(23)]
+            [EnumerationValue(24)]
+            [EnumerationValue(25)]
+            [EnumerationValue(27)]
+            [EnumerationValue(39)]
+            [EnumerationValue(42)]
             public List<restriction> restriction { get; set; } = [];
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
+            [EnumerationValue(5)]
+            [EnumerationValue(6)]
+            [EnumerationValue(7)]
+            [EnumerationValue(8)]
+            [EnumerationValue(9)]
+            [EnumerationValue(14)]
             public List<status> status { get; set; } = [];
             public Int32? scaleMinimum { get; set; } = default;
             public List<information> information { get; set; } = [];
@@ -6031,13 +9214,49 @@ namespace S100Framework.DomainModel.S101 {
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class AnchorBerth : FeatureNode {
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
+            [EnumerationValue(5)]
+            [EnumerationValue(6)]
+            [EnumerationValue(7)]
+            [EnumerationValue(9)]
+            [EnumerationValue(10)]
+            [EnumerationValue(14)]
             public List<categoryOfAnchorage> categoryOfAnchorage { get; set; } = [];
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
+            [EnumerationValue(4)]
+            [EnumerationValue(5)]
+            [EnumerationValue(6)]
+            [EnumerationValue(7)]
+            [EnumerationValue(8)]
+            [EnumerationValue(9)]
+            [EnumerationValue(10)]
+            [EnumerationValue(11)]
+            [EnumerationValue(12)]
+            [EnumerationValue(13)]
+            [EnumerationValue(14)]
+            [EnumerationValue(15)]
             public List<categoryOfCargo> categoryOfCargo { get; set; } = [];
             public List<featureName> featureName { get; set; } = [];
             public fixedDateRange? fixedDateRange { get; set; }
             public String interoperabilityIdentifier { get; set; } = string.Empty;
             public List<periodicDateRange> periodicDateRange { get; set; } = [];
             public Decimal? radius { get; set; } = default;
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
+            [EnumerationValue(4)]
+            [EnumerationValue(5)]
+            [EnumerationValue(6)]
+            [EnumerationValue(7)]
+            [EnumerationValue(8)]
+            [EnumerationValue(9)]
+            [EnumerationValue(14)]
             public List<status> status { get; set; } = [];
             public Int32? scaleMinimum { get; set; } = default;
             public List<information> information { get; set; } = [];
@@ -6053,7 +9272,45 @@ namespace S100Framework.DomainModel.S101 {
             public List<featureName> featureName { get; set; } = [];
             public String interoperabilityIdentifier { get; set; } = string.Empty;
             public List<periodicDateRange> periodicDateRange { get; set; } = [];
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
+            [EnumerationValue(4)]
+            [EnumerationValue(5)]
+            [EnumerationValue(6)]
+            [EnumerationValue(7)]
+            [EnumerationValue(8)]
+            [EnumerationValue(9)]
+            [EnumerationValue(10)]
+            [EnumerationValue(11)]
+            [EnumerationValue(12)]
+            [EnumerationValue(13)]
+            [EnumerationValue(15)]
+            [EnumerationValue(16)]
+            [EnumerationValue(17)]
+            [EnumerationValue(18)]
+            [EnumerationValue(19)]
+            [EnumerationValue(20)]
+            [EnumerationValue(21)]
+            [EnumerationValue(22)]
+            [EnumerationValue(23)]
+            [EnumerationValue(24)]
+            [EnumerationValue(25)]
+            [EnumerationValue(27)]
+            [EnumerationValue(39)]
             public List<restriction> restriction { get; set; } = [];
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
+            [EnumerationValue(4)]
+            [EnumerationValue(5)]
+            [EnumerationValue(6)]
+            [EnumerationValue(7)]
+            [EnumerationValue(8)]
+            [EnumerationValue(9)]
+            [EnumerationValue(14)]
             public List<status> status { get; set; } = [];
             public List<vesselSpeedLimit> vesselSpeedLimit { get; set; } = [];
             public Int32? scaleMinimum { get; set; } = default;
@@ -6067,11 +9324,46 @@ namespace S100Framework.DomainModel.S101 {
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class DumpingGround : FeatureNode {
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
+            [EnumerationValue(4)]
+            [EnumerationValue(5)]
+            [EnumerationValue(6)]
             public List<categoryOfDumpingGround> categoryOfDumpingGround { get; set; } = [];
             public DateOnly? dateDisused { get; set; } = default;
             public List<featureName> featureName { get; set; } = [];
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
+            [EnumerationValue(4)]
+            [EnumerationValue(5)]
+            [EnumerationValue(6)]
+            [EnumerationValue(7)]
+            [EnumerationValue(8)]
+            [EnumerationValue(9)]
+            [EnumerationValue(10)]
+            [EnumerationValue(11)]
+            [EnumerationValue(12)]
+            [EnumerationValue(13)]
+            [EnumerationValue(17)]
+            [EnumerationValue(18)]
+            [EnumerationValue(19)]
+            [EnumerationValue(20)]
+            [EnumerationValue(21)]
+            [EnumerationValue(22)]
+            [EnumerationValue(23)]
+            [EnumerationValue(24)]
+            [EnumerationValue(25)]
+            [EnumerationValue(27)]
             public List<restriction> restriction { get; set; } = [];
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(4)]
+            [EnumerationValue(6)]
+            [EnumerationValue(7)]
             public List<status> status { get; set; } = [];
             public List<vesselSpeedLimit> vesselSpeedLimit { get; set; } = [];
             public Int32? scaleMinimum { get; set; } = default;
@@ -6085,13 +9377,54 @@ namespace S100Framework.DomainModel.S101 {
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class MilitaryPracticeArea : FeatureNode {
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
+            [EnumerationValue(4)]
+            [EnumerationValue(5)]
+            [EnumerationValue(6)]
             public List<categoryOfMilitaryPracticeArea> categoryOfMilitaryPracticeArea { get; set; } = [];
             public List<featureName> featureName { get; set; } = [];
             public fixedDateRange? fixedDateRange { get; set; }
             public String interoperabilityIdentifier { get; set; } = string.Empty;
             public String nationality { get; set; } = string.Empty;
             public List<periodicDateRange> periodicDateRange { get; set; } = [];
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
+            [EnumerationValue(4)]
+            [EnumerationValue(5)]
+            [EnumerationValue(6)]
+            [EnumerationValue(7)]
+            [EnumerationValue(8)]
+            [EnumerationValue(9)]
+            [EnumerationValue(10)]
+            [EnumerationValue(11)]
+            [EnumerationValue(12)]
+            [EnumerationValue(13)]
+            [EnumerationValue(15)]
+            [EnumerationValue(16)]
+            [EnumerationValue(17)]
+            [EnumerationValue(18)]
+            [EnumerationValue(19)]
+            [EnumerationValue(20)]
+            [EnumerationValue(21)]
+            [EnumerationValue(22)]
+            [EnumerationValue(23)]
+            [EnumerationValue(24)]
+            [EnumerationValue(25)]
+            [EnumerationValue(26)]
+            [EnumerationValue(27)]
+            [EnumerationValue(39)]
             public List<restriction> restriction { get; set; } = [];
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(5)]
+            [EnumerationValue(6)]
+            [EnumerationValue(7)]
+            [EnumerationValue(16)]
+            [EnumerationValue(17)]
             public List<status> status { get; set; } = [];
             public List<vesselSpeedLimit> vesselSpeedLimit { get; set; } = [];
             public Int32? scaleMinimum { get; set; } = default;
@@ -6107,6 +9440,9 @@ namespace S100Framework.DomainModel.S101 {
         public partial class AdministrationArea : FeatureNode {
             public Boolean? inDispute { get; set; } = default;
 
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
             [Required()]
             public jurisdiction jurisdiction { get; set; }
             public List<featureName> featureName { get; set; } = [];
@@ -6128,7 +9464,38 @@ namespace S100Framework.DomainModel.S101 {
             public fixedDateRange? fixedDateRange { get; set; }
             public String interoperabilityIdentifier { get; set; } = string.Empty;
             public List<periodicDateRange> periodicDateRange { get; set; } = [];
+
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
+            [EnumerationValue(4)]
+            [EnumerationValue(5)]
+            [EnumerationValue(6)]
+            [EnumerationValue(8)]
+            [EnumerationValue(9)]
+            [EnumerationValue(10)]
+            [EnumerationValue(11)]
+            [EnumerationValue(12)]
+            [EnumerationValue(13)]
+            [EnumerationValue(15)]
+            [EnumerationValue(16)]
+            [EnumerationValue(17)]
+            [EnumerationValue(18)]
+            [EnumerationValue(19)]
+            [EnumerationValue(20)]
+            [EnumerationValue(21)]
+            [EnumerationValue(22)]
+            [EnumerationValue(24)]
+            [EnumerationValue(27)]
+            [EnumerationValue(39)]
             public List<restriction> restriction { get; set; } = [];
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
+            [EnumerationValue(5)]
+            [EnumerationValue(6)]
+            [EnumerationValue(7)]
+            [EnumerationValue(9)]
             public List<status> status { get; set; } = [];
             public List<vesselSpeedLimit> vesselSpeedLimit { get; set; } = [];
             public Int32? scaleMinimum { get; set; } = default;
@@ -6142,11 +9509,17 @@ namespace S100Framework.DomainModel.S101 {
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class CautionArea : FeatureNode {
+            [EnumerationValue(1)]
+            [EnumerationValue(3)]
+            [EnumerationValue(5)]
             public condition? condition { get; set; } = default;
             public fixedDateRange? fixedDateRange { get; set; }
             public String interoperabilityIdentifier { get; set; } = string.Empty;
             public List<periodicDateRange> periodicDateRange { get; set; } = [];
             public DateOnly? reportedDate { get; set; } = default;
+
+            [EnumerationValue(5)]
+            [EnumerationValue(7)]
             public status? status { get; set; } = default;
             public Int32? scaleMinimum { get; set; } = default;
             public List<information> information { get; set; } = [];
@@ -6246,6 +9619,11 @@ namespace S100Framework.DomainModel.S101 {
             public List<featureName> featureName { get; set; } = [];
             public String interoperabilityIdentifier { get; set; } = string.Empty;
             public String nationality { get; set; } = string.Empty;
+
+            [EnumerationValue(1)]
+            [EnumerationValue(5)]
+            [EnumerationValue(6)]
+            [EnumerationValue(7)]
             public List<status> status { get; set; } = [];
             public Int32? scaleMinimum { get; set; } = default;
             public List<information> information { get; set; } = [];
@@ -6262,7 +9640,42 @@ namespace S100Framework.DomainModel.S101 {
             public List<featureName> featureName { get; set; } = [];
             public String interoperabilityIdentifier { get; set; } = string.Empty;
             public List<periodicDateRange> periodicDateRange { get; set; } = [];
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(4)]
+            [EnumerationValue(5)]
+            [EnumerationValue(6)]
+            [EnumerationValue(8)]
+            [EnumerationValue(9)]
+            [EnumerationValue(10)]
+            [EnumerationValue(11)]
+            [EnumerationValue(12)]
+            [EnumerationValue(15)]
+            [EnumerationValue(16)]
+            [EnumerationValue(17)]
+            [EnumerationValue(18)]
+            [EnumerationValue(19)]
+            [EnumerationValue(20)]
+            [EnumerationValue(21)]
+            [EnumerationValue(22)]
+            [EnumerationValue(23)]
+            [EnumerationValue(24)]
+            [EnumerationValue(25)]
+            [EnumerationValue(26)]
+            [EnumerationValue(27)]
+            [EnumerationValue(39)]
             public List<restriction> restriction { get; set; } = [];
+
+            [EnumerationValue(1)]
+            [EnumerationValue(5)]
+            [EnumerationValue(6)]
+            [EnumerationValue(7)]
+            [EnumerationValue(8)]
+            [EnumerationValue(14)]
+            [EnumerationValue(16)]
+            [EnumerationValue(17)]
+            [EnumerationValue(28)]
             public List<status> status { get; set; } = [];
             public List<vesselSpeedLimit> vesselSpeedLimit { get; set; } = [];
             public Int32? scaleMinimum { get; set; } = default;
@@ -6278,6 +9691,11 @@ namespace S100Framework.DomainModel.S101 {
         public partial class FreePortArea : FeatureNode {
             public List<featureName> featureName { get; set; } = [];
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
+            [EnumerationValue(1)]
+            [EnumerationValue(6)]
+            [EnumerationValue(8)]
+            [EnumerationValue(14)]
             public List<status> status { get; set; } = [];
             public Int32? scaleMinimum { get; set; } = default;
             public List<information> information { get; set; } = [];
@@ -6292,6 +9710,12 @@ namespace S100Framework.DomainModel.S101 {
         public partial class HarbourAreaAdministrative : FeatureNode {
             public List<featureName> featureName { get; set; } = [];
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
+            [EnumerationValue(1)]
+            [EnumerationValue(4)]
+            [EnumerationValue(6)]
+            [EnumerationValue(8)]
+            [EnumerationValue(14)]
             public List<status> status { get; set; } = [];
             public Int32? scaleMinimum { get; set; } = default;
             public List<information> information { get; set; } = [];
@@ -6307,6 +9731,13 @@ namespace S100Framework.DomainModel.S101 {
             public List<featureName> featureName { get; set; } = [];
             public String interoperabilityIdentifier { get; set; } = string.Empty;
             public List<periodicDateRange> periodicDateRange { get; set; } = [];
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(5)]
+            [EnumerationValue(6)]
+            [EnumerationValue(7)]
+            [EnumerationValue(8)]
             public List<status> status { get; set; } = [];
             public Int32? scaleMinimum { get; set; } = default;
             public List<information> information { get; set; } = [];
@@ -6319,12 +9750,25 @@ namespace S100Framework.DomainModel.S101 {
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class OilBarrier : FeatureNode {
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
             public categoryOfOilBarrier? categoryOfOilBarrier { get; set; } = default;
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(5)]
             public condition? condition { get; set; } = default;
             public List<featureName> featureName { get; set; } = [];
             public fixedDateRange? fixedDateRange { get; set; }
             public String interoperabilityIdentifier { get; set; } = string.Empty;
             public DateOnly? reportedDate { get; set; } = default;
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(4)]
+            [EnumerationValue(5)]
+            [EnumerationValue(7)]
+            [EnumerationValue(8)]
             public List<status> status { get; set; } = [];
             public Int32? scaleMinimum { get; set; } = default;
             public List<information> information { get; set; } = [];
@@ -6356,6 +9800,23 @@ namespace S100Framework.DomainModel.S101 {
 
             [Required()]
             public List<String> nationality { get; set; }
+
+            [EnumerationValue(2)]
+            [EnumerationValue(4)]
+            [EnumerationValue(6)]
+            [EnumerationValue(8)]
+            [EnumerationValue(9)]
+            [EnumerationValue(10)]
+            [EnumerationValue(12)]
+            [EnumerationValue(17)]
+            [EnumerationValue(18)]
+            [EnumerationValue(19)]
+            [EnumerationValue(20)]
+            [EnumerationValue(21)]
+            [EnumerationValue(22)]
+            [EnumerationValue(23)]
+            [EnumerationValue(24)]
+            [EnumerationValue(27)]
             public List<restriction> restriction { get; set; } = [];
             public List<vesselSpeedLimit> vesselSpeedLimit { get; set; } = [];
             public Int32? scaleMinimum { get; set; } = default;
@@ -6373,6 +9834,31 @@ namespace S100Framework.DomainModel.S101 {
             public List<featureName> featureName { get; set; } = [];
             public String interoperabilityIdentifier { get; set; } = string.Empty;
             public String nationality { get; set; } = string.Empty;
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
+            [EnumerationValue(4)]
+            [EnumerationValue(5)]
+            [EnumerationValue(6)]
+            [EnumerationValue(7)]
+            [EnumerationValue(8)]
+            [EnumerationValue(9)]
+            [EnumerationValue(10)]
+            [EnumerationValue(11)]
+            [EnumerationValue(12)]
+            [EnumerationValue(13)]
+            [EnumerationValue(16)]
+            [EnumerationValue(17)]
+            [EnumerationValue(18)]
+            [EnumerationValue(19)]
+            [EnumerationValue(20)]
+            [EnumerationValue(21)]
+            [EnumerationValue(22)]
+            [EnumerationValue(23)]
+            [EnumerationValue(24)]
+            [EnumerationValue(25)]
+            [EnumerationValue(27)]
             public List<restriction> restriction { get; set; } = [];
             public List<vesselSpeedLimit> vesselSpeedLimit { get; set; } = [];
             public Int32? scaleMinimum { get; set; } = default;
@@ -6430,14 +9916,78 @@ namespace S100Framework.DomainModel.S101 {
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class RestrictedArea : FeatureNode {
+            [EnumerationValue(1)]
+            [EnumerationValue(4)]
+            [EnumerationValue(5)]
+            [EnumerationValue(6)]
+            [EnumerationValue(7)]
+            [EnumerationValue(8)]
+            [EnumerationValue(9)]
+            [EnumerationValue(10)]
+            [EnumerationValue(12)]
+            [EnumerationValue(14)]
+            [EnumerationValue(18)]
+            [EnumerationValue(19)]
+            [EnumerationValue(20)]
+            [EnumerationValue(21)]
+            [EnumerationValue(22)]
+            [EnumerationValue(23)]
+            [EnumerationValue(24)]
+            [EnumerationValue(25)]
+            [EnumerationValue(27)]
+            [EnumerationValue(28)]
+            [EnumerationValue(29)]
+            [EnumerationValue(30)]
+            [EnumerationValue(31)]
+            [EnumerationValue(32)]
             public List<categoryOfRestrictedArea> categoryOfRestrictedArea { get; set; } = [];
             public List<featureName> featureName { get; set; } = [];
             public fixedDateRange? fixedDateRange { get; set; }
             public String interoperabilityIdentifier { get; set; } = string.Empty;
             public List<periodicDateRange> periodicDateRange { get; set; } = [];
 
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
+            [EnumerationValue(4)]
+            [EnumerationValue(5)]
+            [EnumerationValue(6)]
+            [EnumerationValue(7)]
+            [EnumerationValue(8)]
+            [EnumerationValue(9)]
+            [EnumerationValue(10)]
+            [EnumerationValue(11)]
+            [EnumerationValue(12)]
+            [EnumerationValue(13)]
+            [EnumerationValue(14)]
+            [EnumerationValue(15)]
+            [EnumerationValue(16)]
+            [EnumerationValue(17)]
+            [EnumerationValue(18)]
+            [EnumerationValue(19)]
+            [EnumerationValue(20)]
+            [EnumerationValue(21)]
+            [EnumerationValue(22)]
+            [EnumerationValue(23)]
+            [EnumerationValue(24)]
+            [EnumerationValue(25)]
+            [EnumerationValue(26)]
+            [EnumerationValue(27)]
+            [EnumerationValue(39)]
+            [EnumerationValue(42)]
             [Required()]
             public List<restriction> restriction { get; set; }
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
+            [EnumerationValue(4)]
+            [EnumerationValue(5)]
+            [EnumerationValue(6)]
+            [EnumerationValue(7)]
+            [EnumerationValue(9)]
+            [EnumerationValue(18)]
+            [EnumerationValue(28)]
             public List<status> status { get; set; } = [];
             public List<vesselSpeedLimit> vesselSpeedLimit { get; set; } = [];
             public Int32? scaleMinimum { get; set; } = default;
@@ -6452,27 +10002,94 @@ namespace S100Framework.DomainModel.S101 {
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class LightAllAround : FeatureNode {
+            [EnumerationValue(4)]
+            [EnumerationValue(5)]
+            [EnumerationValue(8)]
+            [EnumerationValue(9)]
+            [EnumerationValue(10)]
+            [EnumerationValue(11)]
+            [EnumerationValue(12)]
+            [EnumerationValue(13)]
+            [EnumerationValue(14)]
+            [EnumerationValue(15)]
+            [EnumerationValue(17)]
+            [EnumerationValue(18)]
+            [EnumerationValue(19)]
+            [EnumerationValue(20)]
             public List<categoryOfLight> categoryOfLight { get; set; } = [];
 
+            [EnumerationValue(1)]
+            [EnumerationValue(3)]
+            [EnumerationValue(4)]
+            [EnumerationValue(5)]
+            [EnumerationValue(6)]
+            [EnumerationValue(9)]
+            [EnumerationValue(10)]
+            [EnumerationValue(11)]
             [Required()]
             public List<colour> colour { get; set; }
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
+            [EnumerationValue(4)]
             public exhibitionConditionOfLight? exhibitionConditionOfLight { get; set; } = default;
             public List<featureName> featureName { get; set; } = [];
             public fixedDateRange? fixedDateRange { get; set; }
             public Int32? flareBearing { get; set; } = default;
             public Decimal? height { get; set; } = default;
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
             public lightVisibility? lightVisibility { get; set; } = default;
             public Boolean? majorLight { get; set; } = default;
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(9)]
+            [EnumerationValue(11)]
             public marksNavigationalSystemOf? marksNavigationalSystemOf { get; set; } = default;
             public multiplicityOfFeatures? multiplicityOfFeatures { get; set; }
             public List<periodicDateRange> periodicDateRange { get; set; } = [];
 
             [Required()]
             public rhythmOfLight rhythmOfLight { get; set; }
+
+            [EnumerationValue(5)]
+            [EnumerationValue(6)]
             public signalGeneration? signalGeneration { get; set; } = default;
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(4)]
+            [EnumerationValue(5)]
+            [EnumerationValue(6)]
+            [EnumerationValue(7)]
+            [EnumerationValue(8)]
+            [EnumerationValue(11)]
+            [EnumerationValue(14)]
+            [EnumerationValue(15)]
+            [EnumerationValue(16)]
+            [EnumerationValue(17)]
             public List<status> status { get; set; } = [];
             public Decimal? valueOfNominalRange { get; set; } = default;
+
+            [EnumerationValue(3)]
+            [EnumerationValue(13)]
+            [EnumerationValue(16)]
+            [EnumerationValue(17)]
+            [EnumerationValue(18)]
+            [EnumerationValue(19)]
+            [EnumerationValue(20)]
+            [EnumerationValue(21)]
+            [EnumerationValue(24)]
+            [EnumerationValue(25)]
+            [EnumerationValue(26)]
+            [EnumerationValue(28)]
+            [EnumerationValue(29)]
+            [EnumerationValue(30)]
+            [EnumerationValue(44)]
             public verticalDatum? verticalDatum { get; set; } = default;
             public Decimal? verticalLength { get; set; } = default;
             public Int32? scaleMinimum { get; set; } = default;
@@ -6491,20 +10108,76 @@ namespace S100Framework.DomainModel.S101 {
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class LightSectored : FeatureNode {
+            [EnumerationValue(4)]
+            [EnumerationValue(5)]
+            [EnumerationValue(8)]
+            [EnumerationValue(9)]
+            [EnumerationValue(10)]
+            [EnumerationValue(11)]
+            [EnumerationValue(12)]
+            [EnumerationValue(13)]
+            [EnumerationValue(14)]
+            [EnumerationValue(15)]
+            [EnumerationValue(17)]
+            [EnumerationValue(18)]
+            [EnumerationValue(19)]
+            [EnumerationValue(20)]
             public List<categoryOfLight> categoryOfLight { get; set; } = [];
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
+            [EnumerationValue(4)]
             public exhibitionConditionOfLight? exhibitionConditionOfLight { get; set; } = default;
             public List<featureName> featureName { get; set; } = [];
             public fixedDateRange? fixedDateRange { get; set; }
             public Decimal? height { get; set; } = default;
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(9)]
+            [EnumerationValue(11)]
             public marksNavigationalSystemOf? marksNavigationalSystemOf { get; set; } = default;
             public multiplicityOfFeatures? multiplicityOfFeatures { get; set; }
             public List<periodicDateRange> periodicDateRange { get; set; } = [];
 
             [Required()]
             public List<sectorCharacteristics> sectorCharacteristics { get; set; }
+
+            [EnumerationValue(5)]
+            [EnumerationValue(6)]
             public signalGeneration? signalGeneration { get; set; } = default;
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(4)]
+            [EnumerationValue(5)]
+            [EnumerationValue(6)]
+            [EnumerationValue(7)]
+            [EnumerationValue(8)]
+            [EnumerationValue(11)]
+            [EnumerationValue(14)]
+            [EnumerationValue(15)]
+            [EnumerationValue(16)]
+            [EnumerationValue(17)]
             public List<status> status { get; set; } = [];
+
+            [EnumerationValue(3)]
+            [EnumerationValue(13)]
+            [EnumerationValue(16)]
+            [EnumerationValue(17)]
+            [EnumerationValue(18)]
+            [EnumerationValue(19)]
+            [EnumerationValue(20)]
+            [EnumerationValue(21)]
+            [EnumerationValue(24)]
+            [EnumerationValue(25)]
+            [EnumerationValue(26)]
+            [EnumerationValue(28)]
+            [EnumerationValue(29)]
+            [EnumerationValue(30)]
+            [EnumerationValue(44)]
             public verticalDatum? verticalDatum { get; set; } = default;
             public Int32? scaleMinimum { get; set; } = default;
             public List<information> information { get; set; } = [];
@@ -6518,6 +10191,14 @@ namespace S100Framework.DomainModel.S101 {
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class LightFogDetector : FeatureNode {
+            [EnumerationValue(1)]
+            [EnumerationValue(3)]
+            [EnumerationValue(4)]
+            [EnumerationValue(5)]
+            [EnumerationValue(6)]
+            [EnumerationValue(9)]
+            [EnumerationValue(10)]
+            [EnumerationValue(11)]
             public List<colour> colour { get; set; } = [];
             public List<featureName> featureName { get; set; } = [];
             public fixedDateRange? fixedDateRange { get; set; }
@@ -6526,8 +10207,40 @@ namespace S100Framework.DomainModel.S101 {
             public String interoperabilityIdentifier { get; set; } = string.Empty;
             public List<periodicDateRange> periodicDateRange { get; set; } = [];
             public rhythmOfLight? rhythmOfLight { get; set; }
+
+            [EnumerationValue(5)]
+            [EnumerationValue(6)]
             public signalGeneration? signalGeneration { get; set; } = default;
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(4)]
+            [EnumerationValue(5)]
+            [EnumerationValue(6)]
+            [EnumerationValue(7)]
+            [EnumerationValue(8)]
+            [EnumerationValue(11)]
+            [EnumerationValue(14)]
+            [EnumerationValue(15)]
+            [EnumerationValue(16)]
+            [EnumerationValue(17)]
             public List<status> status { get; set; } = [];
+
+            [EnumerationValue(3)]
+            [EnumerationValue(13)]
+            [EnumerationValue(16)]
+            [EnumerationValue(17)]
+            [EnumerationValue(18)]
+            [EnumerationValue(19)]
+            [EnumerationValue(20)]
+            [EnumerationValue(21)]
+            [EnumerationValue(24)]
+            [EnumerationValue(25)]
+            [EnumerationValue(26)]
+            [EnumerationValue(28)]
+            [EnumerationValue(29)]
+            [EnumerationValue(30)]
+            [EnumerationValue(44)]
             public verticalDatum? verticalDatum { get; set; } = default;
             public Decimal? verticalLength { get; set; } = default;
             public Int32? scaleMinimum { get; set; } = default;
@@ -6541,19 +10254,71 @@ namespace S100Framework.DomainModel.S101 {
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class LightAirObstruction : FeatureNode {
+            [EnumerationValue(1)]
+            [EnumerationValue(3)]
+            [EnumerationValue(4)]
+            [EnumerationValue(5)]
+            [EnumerationValue(6)]
+            [EnumerationValue(9)]
+            [EnumerationValue(10)]
+            [EnumerationValue(11)]
             public List<colour> colour { get; set; } = [];
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
+            [EnumerationValue(4)]
             public exhibitionConditionOfLight? exhibitionConditionOfLight { get; set; } = default;
             public List<featureName> featureName { get; set; } = [];
             public fixedDateRange? fixedDateRange { get; set; }
             public Int32? flareBearing { get; set; } = default;
             public String interoperabilityIdentifier { get; set; } = string.Empty;
             public Decimal? height { get; set; } = default;
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
+            [EnumerationValue(4)]
+            [EnumerationValue(5)]
+            [EnumerationValue(6)]
+            [EnumerationValue(7)]
+            [EnumerationValue(8)]
+            [EnumerationValue(9)]
             public List<lightVisibility> lightVisibility { get; set; } = [];
             public multiplicityOfFeatures? multiplicityOfFeatures { get; set; }
             public List<periodicDateRange> periodicDateRange { get; set; } = [];
             public rhythmOfLight? rhythmOfLight { get; set; }
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(4)]
+            [EnumerationValue(5)]
+            [EnumerationValue(6)]
+            [EnumerationValue(7)]
+            [EnumerationValue(8)]
+            [EnumerationValue(11)]
+            [EnumerationValue(14)]
+            [EnumerationValue(15)]
+            [EnumerationValue(16)]
+            [EnumerationValue(17)]
             public List<status> status { get; set; } = [];
             public Decimal? valueOfNominalRange { get; set; } = default;
+
+            [EnumerationValue(3)]
+            [EnumerationValue(13)]
+            [EnumerationValue(16)]
+            [EnumerationValue(17)]
+            [EnumerationValue(18)]
+            [EnumerationValue(19)]
+            [EnumerationValue(20)]
+            [EnumerationValue(21)]
+            [EnumerationValue(24)]
+            [EnumerationValue(25)]
+            [EnumerationValue(26)]
+            [EnumerationValue(28)]
+            [EnumerationValue(29)]
+            [EnumerationValue(30)]
+            [EnumerationValue(44)]
             public verticalDatum? verticalDatum { get; set; } = default;
             public Int32? scaleMinimum { get; set; } = default;
             public List<information> information { get; set; } = [];
@@ -6566,22 +10331,71 @@ namespace S100Framework.DomainModel.S101 {
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class LateralBuoy : FeatureNode {
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
+            [EnumerationValue(4)]
+            [EnumerationValue(5)]
+            [EnumerationValue(6)]
+            [EnumerationValue(7)]
+            [EnumerationValue(8)]
             [Required()]
             public buoyShape buoyShape { get; set; }
 
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
+            [EnumerationValue(4)]
             [Required()]
             public categoryOfLateralMark categoryOfLateralMark { get; set; }
 
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
+            [EnumerationValue(4)]
+            [EnumerationValue(5)]
+            [EnumerationValue(6)]
+            [EnumerationValue(7)]
+            [EnumerationValue(8)]
+            [EnumerationValue(9)]
+            [EnumerationValue(10)]
+            [EnumerationValue(11)]
+            [EnumerationValue(12)]
+            [EnumerationValue(13)]
             [Required()]
             public List<colour> colour { get; set; }
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
+            [EnumerationValue(4)]
+            [EnumerationValue(5)]
+            [EnumerationValue(6)]
             public colourPattern? colourPattern { get; set; } = default;
             public List<featureName> featureName { get; set; } = [];
             public fixedDateRange? fixedDateRange { get; set; }
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(9)]
+            [EnumerationValue(11)]
             public marksNavigationalSystemOf? marksNavigationalSystemOf { get; set; } = default;
+
+            [EnumerationValue(6)]
+            [EnumerationValue(7)]
+            [EnumerationValue(8)]
+            [EnumerationValue(11)]
             public List<natureOfConstruction> natureOfConstruction { get; set; } = [];
             public List<periodicDateRange> periodicDateRange { get; set; } = [];
             public Boolean? radarConspicuous { get; set; } = default;
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(5)]
+            [EnumerationValue(7)]
+            [EnumerationValue(8)]
+            [EnumerationValue(18)]
             public List<status> status { get; set; } = [];
             public topmark? topmark { get; set; }
             public Decimal? verticalLength { get; set; } = default;
@@ -6598,22 +10412,71 @@ namespace S100Framework.DomainModel.S101 {
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class CardinalBuoy : FeatureNode {
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
+            [EnumerationValue(4)]
+            [EnumerationValue(5)]
+            [EnumerationValue(6)]
+            [EnumerationValue(7)]
+            [EnumerationValue(8)]
             [Required()]
             public buoyShape buoyShape { get; set; }
 
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
+            [EnumerationValue(4)]
             [Required()]
             public categoryOfCardinalMark categoryOfCardinalMark { get; set; }
 
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
+            [EnumerationValue(4)]
+            [EnumerationValue(5)]
+            [EnumerationValue(6)]
+            [EnumerationValue(7)]
+            [EnumerationValue(8)]
+            [EnumerationValue(9)]
+            [EnumerationValue(10)]
+            [EnumerationValue(11)]
+            [EnumerationValue(12)]
+            [EnumerationValue(13)]
             [Required()]
             public List<colour> colour { get; set; }
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
+            [EnumerationValue(4)]
+            [EnumerationValue(5)]
+            [EnumerationValue(6)]
             public colourPattern? colourPattern { get; set; } = default;
             public List<featureName> featureName { get; set; } = [];
             public fixedDateRange? fixedDateRange { get; set; }
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(9)]
+            [EnumerationValue(11)]
             public marksNavigationalSystemOf? marksNavigationalSystemOf { get; set; } = default;
+
+            [EnumerationValue(6)]
+            [EnumerationValue(7)]
+            [EnumerationValue(8)]
+            [EnumerationValue(11)]
             public List<natureOfConstruction> natureOfConstruction { get; set; } = [];
             public List<periodicDateRange> periodicDateRange { get; set; } = [];
             public Boolean? radarConspicuous { get; set; } = default;
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(5)]
+            [EnumerationValue(7)]
+            [EnumerationValue(8)]
+            [EnumerationValue(18)]
             public List<status> status { get; set; } = [];
             public topmark? topmark { get; set; }
             public Decimal? verticalLength { get; set; } = default;
@@ -6630,19 +10493,64 @@ namespace S100Framework.DomainModel.S101 {
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class IsolatedDangerBuoy : FeatureNode {
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
+            [EnumerationValue(4)]
+            [EnumerationValue(5)]
+            [EnumerationValue(6)]
+            [EnumerationValue(7)]
+            [EnumerationValue(8)]
             [Required()]
             public buoyShape buoyShape { get; set; }
 
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
+            [EnumerationValue(4)]
+            [EnumerationValue(5)]
+            [EnumerationValue(6)]
+            [EnumerationValue(7)]
+            [EnumerationValue(8)]
+            [EnumerationValue(9)]
+            [EnumerationValue(10)]
+            [EnumerationValue(11)]
+            [EnumerationValue(12)]
+            [EnumerationValue(13)]
             [Required()]
             public List<colour> colour { get; set; }
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
+            [EnumerationValue(4)]
+            [EnumerationValue(5)]
+            [EnumerationValue(6)]
             public colourPattern? colourPattern { get; set; } = default;
             public List<featureName> featureName { get; set; } = [];
             public fixedDateRange? fixedDateRange { get; set; }
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(9)]
+            [EnumerationValue(11)]
             public marksNavigationalSystemOf? marksNavigationalSystemOf { get; set; } = default;
+
+            [EnumerationValue(6)]
+            [EnumerationValue(7)]
+            [EnumerationValue(8)]
+            [EnumerationValue(11)]
             public List<natureOfConstruction> natureOfConstruction { get; set; } = [];
             public List<periodicDateRange> periodicDateRange { get; set; } = [];
             public Boolean? radarConspicuous { get; set; } = default;
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(5)]
+            [EnumerationValue(7)]
+            [EnumerationValue(8)]
+            [EnumerationValue(18)]
             public List<status> status { get; set; } = [];
             public topmark? topmark { get; set; }
             public Decimal? verticalLength { get; set; } = default;
@@ -6659,19 +10567,64 @@ namespace S100Framework.DomainModel.S101 {
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class SafeWaterBuoy : FeatureNode {
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
+            [EnumerationValue(4)]
+            [EnumerationValue(5)]
+            [EnumerationValue(6)]
+            [EnumerationValue(7)]
+            [EnumerationValue(8)]
             [Required()]
             public buoyShape buoyShape { get; set; }
 
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
+            [EnumerationValue(4)]
+            [EnumerationValue(5)]
+            [EnumerationValue(6)]
+            [EnumerationValue(7)]
+            [EnumerationValue(8)]
+            [EnumerationValue(9)]
+            [EnumerationValue(10)]
+            [EnumerationValue(11)]
+            [EnumerationValue(12)]
+            [EnumerationValue(13)]
             [Required()]
             public List<colour> colour { get; set; }
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
+            [EnumerationValue(4)]
+            [EnumerationValue(5)]
+            [EnumerationValue(6)]
             public colourPattern? colourPattern { get; set; } = default;
             public List<featureName> featureName { get; set; } = [];
             public fixedDateRange? fixedDateRange { get; set; }
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(9)]
+            [EnumerationValue(11)]
             public marksNavigationalSystemOf? marksNavigationalSystemOf { get; set; } = default;
+
+            [EnumerationValue(6)]
+            [EnumerationValue(7)]
+            [EnumerationValue(8)]
+            [EnumerationValue(11)]
             public List<natureOfConstruction> natureOfConstruction { get; set; } = [];
             public List<periodicDateRange> periodicDateRange { get; set; } = [];
             public Boolean? radarConspicuous { get; set; } = default;
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(5)]
+            [EnumerationValue(7)]
+            [EnumerationValue(8)]
+            [EnumerationValue(18)]
             public List<status> status { get; set; } = [];
             public topmark? topmark { get; set; }
             public Decimal? verticalLength { get; set; } = default;
@@ -6688,22 +10641,125 @@ namespace S100Framework.DomainModel.S101 {
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class SpecialPurposeGeneralBuoy : FeatureNode {
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
+            [EnumerationValue(4)]
+            [EnumerationValue(5)]
+            [EnumerationValue(6)]
+            [EnumerationValue(7)]
+            [EnumerationValue(8)]
             [Required()]
             public buoyShape buoyShape { get; set; }
 
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
+            [EnumerationValue(4)]
+            [EnumerationValue(5)]
+            [EnumerationValue(6)]
+            [EnumerationValue(7)]
+            [EnumerationValue(8)]
+            [EnumerationValue(9)]
+            [EnumerationValue(10)]
+            [EnumerationValue(11)]
+            [EnumerationValue(12)]
+            [EnumerationValue(14)]
+            [EnumerationValue(15)]
+            [EnumerationValue(17)]
+            [EnumerationValue(18)]
+            [EnumerationValue(19)]
+            [EnumerationValue(20)]
+            [EnumerationValue(21)]
+            [EnumerationValue(22)]
+            [EnumerationValue(23)]
+            [EnumerationValue(24)]
+            [EnumerationValue(25)]
+            [EnumerationValue(26)]
+            [EnumerationValue(27)]
+            [EnumerationValue(28)]
+            [EnumerationValue(29)]
+            [EnumerationValue(30)]
+            [EnumerationValue(31)]
+            [EnumerationValue(32)]
+            [EnumerationValue(33)]
+            [EnumerationValue(34)]
+            [EnumerationValue(35)]
+            [EnumerationValue(36)]
+            [EnumerationValue(37)]
+            [EnumerationValue(39)]
+            [EnumerationValue(40)]
+            [EnumerationValue(42)]
+            [EnumerationValue(43)]
+            [EnumerationValue(45)]
+            [EnumerationValue(46)]
+            [EnumerationValue(47)]
+            [EnumerationValue(48)]
+            [EnumerationValue(49)]
+            [EnumerationValue(50)]
+            [EnumerationValue(51)]
+            [EnumerationValue(52)]
+            [EnumerationValue(53)]
+            [EnumerationValue(54)]
+            [EnumerationValue(55)]
+            [EnumerationValue(56)]
+            [EnumerationValue(57)]
+            [EnumerationValue(58)]
+            [EnumerationValue(59)]
+            [EnumerationValue(60)]
+            [EnumerationValue(61)]
+            [EnumerationValue(62)]
+            [EnumerationValue(63)]
             [Required()]
             public List<categoryOfSpecialPurposeMark> categoryOfSpecialPurposeMark { get; set; }
 
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
+            [EnumerationValue(4)]
+            [EnumerationValue(5)]
+            [EnumerationValue(6)]
+            [EnumerationValue(7)]
+            [EnumerationValue(8)]
+            [EnumerationValue(9)]
+            [EnumerationValue(10)]
+            [EnumerationValue(11)]
+            [EnumerationValue(12)]
+            [EnumerationValue(13)]
             [Required()]
             public List<colour> colour { get; set; }
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
+            [EnumerationValue(4)]
+            [EnumerationValue(5)]
+            [EnumerationValue(6)]
             public colourPattern? colourPattern { get; set; } = default;
             public List<featureName> featureName { get; set; } = [];
             public fixedDateRange? fixedDateRange { get; set; }
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(9)]
+            [EnumerationValue(11)]
             public marksNavigationalSystemOf? marksNavigationalSystemOf { get; set; } = default;
+
+            [EnumerationValue(6)]
+            [EnumerationValue(7)]
+            [EnumerationValue(8)]
+            [EnumerationValue(11)]
             public List<natureOfConstruction> natureOfConstruction { get; set; } = [];
             public List<periodicDateRange> periodicDateRange { get; set; } = [];
             public Boolean? radarConspicuous { get; set; } = default;
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(5)]
+            [EnumerationValue(7)]
+            [EnumerationValue(8)]
+            [EnumerationValue(18)]
             public List<status> status { get; set; } = [];
             public topmark? topmark { get; set; }
             public Decimal? verticalLength { get; set; } = default;
@@ -6721,16 +10777,52 @@ namespace S100Framework.DomainModel.S101 {
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class EmergencyWreckMarkingBuoy : FeatureNode {
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
+            [EnumerationValue(4)]
+            [EnumerationValue(5)]
+            [EnumerationValue(6)]
             [Required()]
             public buoyShape buoyShape { get; set; }
 
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
+            [EnumerationValue(4)]
+            [EnumerationValue(5)]
+            [EnumerationValue(6)]
+            [EnumerationValue(7)]
+            [EnumerationValue(8)]
+            [EnumerationValue(9)]
+            [EnumerationValue(10)]
+            [EnumerationValue(11)]
+            [EnumerationValue(12)]
+            [EnumerationValue(13)]
             [Required()]
             public List<colour> colour { get; set; }
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
+            [EnumerationValue(4)]
+            [EnumerationValue(5)]
+            [EnumerationValue(6)]
             public colourPattern? colourPattern { get; set; } = default;
             public List<featureName> featureName { get; set; } = [];
             public fixedDateRange? fixedDateRange { get; set; }
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(9)]
+            [EnumerationValue(11)]
             public marksNavigationalSystemOf? marksNavigationalSystemOf { get; set; } = default;
+
+            [EnumerationValue(6)]
+            [EnumerationValue(7)]
+            [EnumerationValue(8)]
+            [EnumerationValue(11)]
             public List<natureOfConstruction> natureOfConstruction { get; set; } = [];
             public Boolean? radarConspicuous { get; set; } = default;
             public topmark? topmark { get; set; }
@@ -6748,21 +10840,72 @@ namespace S100Framework.DomainModel.S101 {
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class InstallationBuoy : FeatureNode {
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
+            [EnumerationValue(4)]
+            [EnumerationValue(5)]
+            [EnumerationValue(6)]
+            [EnumerationValue(7)]
+            [EnumerationValue(8)]
             [Required()]
             public buoyShape buoyShape { get; set; }
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
             public categoryOfInstallationBuoy? categoryOfInstallationBuoy { get; set; } = default;
 
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
+            [EnumerationValue(4)]
+            [EnumerationValue(5)]
+            [EnumerationValue(6)]
+            [EnumerationValue(7)]
+            [EnumerationValue(8)]
+            [EnumerationValue(9)]
+            [EnumerationValue(10)]
+            [EnumerationValue(11)]
+            [EnumerationValue(12)]
+            [EnumerationValue(13)]
             [Required()]
             public List<colour> colour { get; set; }
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
+            [EnumerationValue(4)]
+            [EnumerationValue(5)]
+            [EnumerationValue(6)]
             public colourPattern? colourPattern { get; set; } = default;
             public List<featureName> featureName { get; set; } = [];
             public fixedDateRange? fixedDateRange { get; set; }
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
+            [EnumerationValue(7)]
+            [EnumerationValue(11)]
             public List<natureOfConstruction> natureOfConstruction { get; set; } = [];
             public List<periodicDateRange> periodicDateRange { get; set; } = [];
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(18)]
+            [EnumerationValue(19)]
             public List<product> product { get; set; } = [];
             public Boolean? radarConspicuous { get; set; } = default;
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(4)]
+            [EnumerationValue(5)]
+            [EnumerationValue(7)]
+            [EnumerationValue(8)]
+            [EnumerationValue(18)]
             public List<status> status { get; set; } = [];
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
             public visualProminence? visualProminence { get; set; } = default;
             public Int32? scaleMinimum { get; set; } = default;
             public List<information> information { get; set; } = [];
@@ -6777,17 +10920,58 @@ namespace S100Framework.DomainModel.S101 {
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class MooringBuoy : FeatureNode {
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
+            [EnumerationValue(4)]
+            [EnumerationValue(5)]
+            [EnumerationValue(6)]
+            [EnumerationValue(7)]
+            [EnumerationValue(8)]
             [Required()]
             public buoyShape buoyShape { get; set; }
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
+            [EnumerationValue(4)]
+            [EnumerationValue(5)]
+            [EnumerationValue(6)]
+            [EnumerationValue(7)]
+            [EnumerationValue(8)]
+            [EnumerationValue(9)]
+            [EnumerationValue(10)]
+            [EnumerationValue(11)]
+            [EnumerationValue(12)]
+            [EnumerationValue(13)]
             public List<colour> colour { get; set; } = [];
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
+            [EnumerationValue(4)]
+            [EnumerationValue(5)]
+            [EnumerationValue(6)]
             public colourPattern? colourPattern { get; set; } = default;
             public List<featureName> featureName { get; set; } = [];
             public fixedDateRange? fixedDateRange { get; set; }
             public String interoperabilityIdentifier { get; set; } = string.Empty;
             public Decimal? maximumPermittedDraught { get; set; } = default;
             public Decimal? maximumPermittedVesselLength { get; set; } = default;
+
+            [EnumerationValue(7)]
+            [EnumerationValue(8)]
+            [EnumerationValue(11)]
             public List<natureOfConstruction> natureOfConstruction { get; set; } = [];
             public List<periodicDateRange> periodicDateRange { get; set; } = [];
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(4)]
+            [EnumerationValue(5)]
+            [EnumerationValue(7)]
+            [EnumerationValue(8)]
+            [EnumerationValue(18)]
             public List<status> status { get; set; } = [];
             public Decimal? verticalLength { get; set; } = default;
             public Boolean? visitorsMooring { get; set; } = default;
@@ -6803,29 +10987,88 @@ namespace S100Framework.DomainModel.S101 {
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class LateralBeacon : FeatureNode {
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
+            [EnumerationValue(4)]
+            [EnumerationValue(5)]
+            [EnumerationValue(6)]
+            [EnumerationValue(7)]
             [Required()]
             public beaconShape beaconShape { get; set; }
 
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
+            [EnumerationValue(4)]
             [Required()]
             public categoryOfLateralMark categoryOfLateralMark { get; set; }
 
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
+            [EnumerationValue(4)]
+            [EnumerationValue(5)]
+            [EnumerationValue(6)]
+            [EnumerationValue(7)]
+            [EnumerationValue(8)]
+            [EnumerationValue(9)]
+            [EnumerationValue(10)]
+            [EnumerationValue(11)]
+            [EnumerationValue(12)]
+            [EnumerationValue(13)]
             [Required()]
             public List<colour> colour { get; set; }
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
+            [EnumerationValue(4)]
+            [EnumerationValue(5)]
+            [EnumerationValue(6)]
             public colourPattern? colourPattern { get; set; } = default;
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(5)]
             public condition? condition { get; set; } = default;
             public Decimal? elevation { get; set; } = default;
             public List<featureName> featureName { get; set; } = [];
             public fixedDateRange? fixedDateRange { get; set; }
             public String interoperabilityIdentifier { get; set; } = string.Empty;
             public Decimal? height { get; set; } = default;
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(9)]
+            [EnumerationValue(11)]
             public marksNavigationalSystemOf? marksNavigationalSystemOf { get; set; } = default;
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(6)]
+            [EnumerationValue(7)]
+            [EnumerationValue(8)]
             public List<natureOfConstruction> natureOfConstruction { get; set; } = [];
             public List<periodicDateRange> periodicDateRange { get; set; } = [];
             public Boolean? radarConspicuous { get; set; } = default;
             public DateOnly? reportedDate { get; set; } = default;
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(4)]
+            [EnumerationValue(5)]
+            [EnumerationValue(7)]
+            [EnumerationValue(8)]
+            [EnumerationValue(12)]
+            [EnumerationValue(18)]
             public List<status> status { get; set; } = [];
             public topmark? topmark { get; set; }
             public Decimal? verticalLength { get; set; } = default;
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
             public visualProminence? visualProminence { get; set; } = default;
             public Int32? scaleMinimum { get; set; } = default;
             public List<information> information { get; set; } = [];
@@ -6840,29 +11083,88 @@ namespace S100Framework.DomainModel.S101 {
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class CardinalBeacon : FeatureNode {
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
+            [EnumerationValue(4)]
+            [EnumerationValue(5)]
+            [EnumerationValue(6)]
+            [EnumerationValue(7)]
             [Required()]
             public beaconShape beaconShape { get; set; }
 
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
+            [EnumerationValue(4)]
             [Required()]
             public categoryOfCardinalMark categoryOfCardinalMark { get; set; }
 
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
+            [EnumerationValue(4)]
+            [EnumerationValue(5)]
+            [EnumerationValue(6)]
+            [EnumerationValue(7)]
+            [EnumerationValue(8)]
+            [EnumerationValue(9)]
+            [EnumerationValue(10)]
+            [EnumerationValue(11)]
+            [EnumerationValue(12)]
+            [EnumerationValue(13)]
             [Required()]
             public List<colour> colour { get; set; }
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
+            [EnumerationValue(4)]
+            [EnumerationValue(5)]
+            [EnumerationValue(6)]
             public colourPattern? colourPattern { get; set; } = default;
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(5)]
             public condition? condition { get; set; } = default;
             public Decimal? elevation { get; set; } = default;
             public List<featureName> featureName { get; set; } = [];
             public fixedDateRange? fixedDateRange { get; set; }
             public Decimal? height { get; set; } = default;
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(9)]
+            [EnumerationValue(11)]
             public marksNavigationalSystemOf? marksNavigationalSystemOf { get; set; } = default;
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(6)]
+            [EnumerationValue(7)]
+            [EnumerationValue(8)]
             public List<natureOfConstruction> natureOfConstruction { get; set; } = [];
             public List<periodicDateRange> periodicDateRange { get; set; } = [];
             public Boolean? radarConspicuous { get; set; } = default;
             public DateOnly? reportedDate { get; set; } = default;
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(4)]
+            [EnumerationValue(5)]
+            [EnumerationValue(7)]
+            [EnumerationValue(8)]
+            [EnumerationValue(12)]
+            [EnumerationValue(18)]
             public List<status> status { get; set; } = [];
             public topmark? topmark { get; set; }
             public Decimal? verticalLength { get; set; } = default;
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
             public visualProminence? visualProminence { get; set; } = default;
             public Int32? scaleMinimum { get; set; } = default;
             public List<information> information { get; set; } = [];
@@ -6877,26 +11179,81 @@ namespace S100Framework.DomainModel.S101 {
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class IsolatedDangerBeacon : FeatureNode {
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
+            [EnumerationValue(4)]
+            [EnumerationValue(5)]
+            [EnumerationValue(6)]
+            [EnumerationValue(7)]
             [Required()]
             public beaconShape beaconShape { get; set; }
 
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
+            [EnumerationValue(4)]
+            [EnumerationValue(5)]
+            [EnumerationValue(6)]
+            [EnumerationValue(7)]
+            [EnumerationValue(8)]
+            [EnumerationValue(9)]
+            [EnumerationValue(10)]
+            [EnumerationValue(11)]
+            [EnumerationValue(12)]
+            [EnumerationValue(13)]
             [Required()]
             public List<colour> colour { get; set; }
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
+            [EnumerationValue(4)]
+            [EnumerationValue(5)]
+            [EnumerationValue(6)]
             public colourPattern? colourPattern { get; set; } = default;
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(5)]
             public condition? condition { get; set; } = default;
             public Decimal? elevation { get; set; } = default;
             public List<featureName> featureName { get; set; } = [];
             public fixedDateRange? fixedDateRange { get; set; }
             public Decimal? height { get; set; } = default;
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(9)]
+            [EnumerationValue(11)]
             public marksNavigationalSystemOf? marksNavigationalSystemOf { get; set; } = default;
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(6)]
+            [EnumerationValue(7)]
+            [EnumerationValue(8)]
             public List<natureOfConstruction> natureOfConstruction { get; set; } = [];
             public List<periodicDateRange> periodicDateRange { get; set; } = [];
             public Boolean? radarConspicuous { get; set; } = default;
             public DateOnly? reportedDate { get; set; } = default;
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(4)]
+            [EnumerationValue(5)]
+            [EnumerationValue(7)]
+            [EnumerationValue(8)]
+            [EnumerationValue(12)]
+            [EnumerationValue(18)]
             public List<status> status { get; set; } = [];
             public topmark? topmark { get; set; }
             public Decimal? verticalLength { get; set; } = default;
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
             public visualProminence? visualProminence { get; set; } = default;
             public Int32? scaleMinimum { get; set; } = default;
             public List<information> information { get; set; } = [];
@@ -6911,26 +11268,81 @@ namespace S100Framework.DomainModel.S101 {
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class SafeWaterBeacon : FeatureNode {
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
+            [EnumerationValue(4)]
+            [EnumerationValue(5)]
+            [EnumerationValue(6)]
+            [EnumerationValue(7)]
             [Required()]
             public beaconShape beaconShape { get; set; }
 
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
+            [EnumerationValue(4)]
+            [EnumerationValue(5)]
+            [EnumerationValue(6)]
+            [EnumerationValue(7)]
+            [EnumerationValue(8)]
+            [EnumerationValue(9)]
+            [EnumerationValue(10)]
+            [EnumerationValue(11)]
+            [EnumerationValue(12)]
+            [EnumerationValue(13)]
             [Required()]
             public List<colour> colour { get; set; }
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
+            [EnumerationValue(4)]
+            [EnumerationValue(5)]
+            [EnumerationValue(6)]
             public colourPattern? colourPattern { get; set; } = default;
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(5)]
             public condition? condition { get; set; } = default;
             public Decimal? elevation { get; set; } = default;
             public List<featureName> featureName { get; set; } = [];
             public fixedDateRange? fixedDateRange { get; set; }
             public Decimal? height { get; set; } = default;
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(9)]
+            [EnumerationValue(11)]
             public marksNavigationalSystemOf? marksNavigationalSystemOf { get; set; } = default;
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(6)]
+            [EnumerationValue(7)]
+            [EnumerationValue(8)]
             public List<natureOfConstruction> natureOfConstruction { get; set; } = [];
             public List<periodicDateRange> periodicDateRange { get; set; } = [];
             public Boolean? radarConspicuous { get; set; } = default;
             public DateOnly? reportedDate { get; set; } = default;
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(4)]
+            [EnumerationValue(5)]
+            [EnumerationValue(7)]
+            [EnumerationValue(8)]
+            [EnumerationValue(12)]
+            [EnumerationValue(18)]
             public List<status> status { get; set; } = [];
             public topmark? topmark { get; set; }
             public Decimal? verticalLength { get; set; } = default;
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
             public visualProminence? visualProminence { get; set; } = default;
             public Int32? scaleMinimum { get; set; } = default;
             public List<information> information { get; set; } = [];
@@ -6945,29 +11357,142 @@ namespace S100Framework.DomainModel.S101 {
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class SpecialPurposeGeneralBeacon : FeatureNode {
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
+            [EnumerationValue(4)]
+            [EnumerationValue(5)]
+            [EnumerationValue(6)]
+            [EnumerationValue(7)]
             [Required()]
             public beaconShape beaconShape { get; set; }
 
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
+            [EnumerationValue(4)]
+            [EnumerationValue(5)]
+            [EnumerationValue(6)]
+            [EnumerationValue(7)]
+            [EnumerationValue(8)]
+            [EnumerationValue(10)]
+            [EnumerationValue(11)]
+            [EnumerationValue(12)]
+            [EnumerationValue(14)]
+            [EnumerationValue(16)]
+            [EnumerationValue(17)]
+            [EnumerationValue(18)]
+            [EnumerationValue(19)]
+            [EnumerationValue(20)]
+            [EnumerationValue(21)]
+            [EnumerationValue(22)]
+            [EnumerationValue(23)]
+            [EnumerationValue(24)]
+            [EnumerationValue(25)]
+            [EnumerationValue(26)]
+            [EnumerationValue(27)]
+            [EnumerationValue(28)]
+            [EnumerationValue(29)]
+            [EnumerationValue(30)]
+            [EnumerationValue(31)]
+            [EnumerationValue(32)]
+            [EnumerationValue(33)]
+            [EnumerationValue(34)]
+            [EnumerationValue(35)]
+            [EnumerationValue(36)]
+            [EnumerationValue(37)]
+            [EnumerationValue(39)]
+            [EnumerationValue(40)]
+            [EnumerationValue(41)]
+            [EnumerationValue(42)]
+            [EnumerationValue(43)]
+            [EnumerationValue(44)]
+            [EnumerationValue(45)]
+            [EnumerationValue(46)]
+            [EnumerationValue(47)]
+            [EnumerationValue(48)]
+            [EnumerationValue(49)]
+            [EnumerationValue(50)]
+            [EnumerationValue(51)]
+            [EnumerationValue(52)]
+            [EnumerationValue(53)]
+            [EnumerationValue(54)]
+            [EnumerationValue(55)]
+            [EnumerationValue(56)]
+            [EnumerationValue(57)]
+            [EnumerationValue(58)]
+            [EnumerationValue(60)]
+            [EnumerationValue(61)]
+            [EnumerationValue(62)]
+            [EnumerationValue(63)]
             [Required()]
             public List<categoryOfSpecialPurposeMark> categoryOfSpecialPurposeMark { get; set; }
 
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
+            [EnumerationValue(4)]
+            [EnumerationValue(5)]
+            [EnumerationValue(6)]
+            [EnumerationValue(7)]
+            [EnumerationValue(8)]
+            [EnumerationValue(9)]
+            [EnumerationValue(10)]
+            [EnumerationValue(11)]
+            [EnumerationValue(12)]
+            [EnumerationValue(13)]
             [Required()]
             public List<colour> colour { get; set; }
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
+            [EnumerationValue(4)]
+            [EnumerationValue(5)]
+            [EnumerationValue(6)]
             public colourPattern? colourPattern { get; set; } = default;
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(5)]
             public condition? condition { get; set; } = default;
             public Decimal? elevation { get; set; } = default;
             public List<featureName> featureName { get; set; } = [];
             public fixedDateRange? fixedDateRange { get; set; }
             public Decimal? height { get; set; } = default;
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(9)]
+            [EnumerationValue(11)]
             public marksNavigationalSystemOf? marksNavigationalSystemOf { get; set; } = default;
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(6)]
+            [EnumerationValue(7)]
+            [EnumerationValue(8)]
             public List<natureOfConstruction> natureOfConstruction { get; set; } = [];
             public List<periodicDateRange> periodicDateRange { get; set; } = [];
             public Boolean? radarConspicuous { get; set; } = default;
             public DateOnly? reportedDate { get; set; } = default;
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(4)]
+            [EnumerationValue(5)]
+            [EnumerationValue(7)]
+            [EnumerationValue(8)]
+            [EnumerationValue(12)]
+            [EnumerationValue(18)]
             public List<status> status { get; set; } = [];
             public topmark? topmark { get; set; }
             public Decimal? verticalLength { get; set; } = default;
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
             public visualProminence? visualProminence { get; set; } = default;
             public Int32? scaleMinimum { get; set; } = default;
             public List<information> information { get; set; } = [];
@@ -6983,21 +11508,148 @@ namespace S100Framework.DomainModel.S101 {
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class Daymark : FeatureNode {
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
+            [EnumerationValue(4)]
+            [EnumerationValue(5)]
+            [EnumerationValue(6)]
+            [EnumerationValue(7)]
+            [EnumerationValue(8)]
+            [EnumerationValue(10)]
+            [EnumerationValue(11)]
+            [EnumerationValue(12)]
+            [EnumerationValue(14)]
+            [EnumerationValue(15)]
+            [EnumerationValue(16)]
+            [EnumerationValue(17)]
+            [EnumerationValue(18)]
+            [EnumerationValue(19)]
+            [EnumerationValue(20)]
+            [EnumerationValue(21)]
+            [EnumerationValue(22)]
+            [EnumerationValue(23)]
+            [EnumerationValue(24)]
+            [EnumerationValue(25)]
+            [EnumerationValue(26)]
+            [EnumerationValue(27)]
+            [EnumerationValue(28)]
+            [EnumerationValue(29)]
+            [EnumerationValue(30)]
+            [EnumerationValue(31)]
+            [EnumerationValue(32)]
+            [EnumerationValue(33)]
+            [EnumerationValue(34)]
+            [EnumerationValue(35)]
+            [EnumerationValue(36)]
+            [EnumerationValue(37)]
+            [EnumerationValue(39)]
+            [EnumerationValue(40)]
+            [EnumerationValue(41)]
+            [EnumerationValue(42)]
+            [EnumerationValue(43)]
+            [EnumerationValue(44)]
+            [EnumerationValue(45)]
+            [EnumerationValue(46)]
+            [EnumerationValue(47)]
+            [EnumerationValue(48)]
+            [EnumerationValue(49)]
+            [EnumerationValue(50)]
+            [EnumerationValue(51)]
+            [EnumerationValue(52)]
+            [EnumerationValue(53)]
+            [EnumerationValue(54)]
+            [EnumerationValue(55)]
+            [EnumerationValue(56)]
+            [EnumerationValue(57)]
+            [EnumerationValue(58)]
+            [EnumerationValue(60)]
+            [EnumerationValue(61)]
+            [EnumerationValue(62)]
+            [EnumerationValue(63)]
             public List<categoryOfSpecialPurposeMark> categoryOfSpecialPurposeMark { get; set; } = [];
 
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
+            [EnumerationValue(4)]
+            [EnumerationValue(5)]
+            [EnumerationValue(6)]
+            [EnumerationValue(7)]
+            [EnumerationValue(8)]
+            [EnumerationValue(9)]
+            [EnumerationValue(10)]
+            [EnumerationValue(11)]
+            [EnumerationValue(12)]
+            [EnumerationValue(13)]
             [Required()]
             public List<colour> colour { get; set; }
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
+            [EnumerationValue(4)]
+            [EnumerationValue(5)]
+            [EnumerationValue(6)]
             public colourPattern? colourPattern { get; set; } = default;
             public Decimal? elevation { get; set; } = default;
             public List<featureName> featureName { get; set; } = [];
             public fixedDateRange? fixedDateRange { get; set; }
             public Decimal? height { get; set; } = default;
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(4)]
+            [EnumerationValue(6)]
+            [EnumerationValue(7)]
+            [EnumerationValue(8)]
+            [EnumerationValue(11)]
             public List<natureOfConstruction> natureOfConstruction { get; set; } = [];
             public List<periodicDateRange> periodicDateRange { get; set; } = [];
             public Boolean? radarConspicuous { get; set; } = default;
+
+            [EnumerationValue(1)]
+            [EnumerationValue(4)]
+            [EnumerationValue(5)]
+            [EnumerationValue(7)]
+            [EnumerationValue(8)]
+            [EnumerationValue(12)]
             public List<status> status { get; set; } = [];
 
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
+            [EnumerationValue(4)]
+            [EnumerationValue(5)]
+            [EnumerationValue(6)]
+            [EnumerationValue(7)]
+            [EnumerationValue(8)]
+            [EnumerationValue(9)]
+            [EnumerationValue(10)]
+            [EnumerationValue(11)]
+            [EnumerationValue(12)]
+            [EnumerationValue(13)]
+            [EnumerationValue(14)]
+            [EnumerationValue(15)]
+            [EnumerationValue(16)]
+            [EnumerationValue(17)]
+            [EnumerationValue(18)]
+            [EnumerationValue(19)]
+            [EnumerationValue(20)]
+            [EnumerationValue(21)]
+            [EnumerationValue(22)]
+            [EnumerationValue(23)]
+            [EnumerationValue(24)]
+            [EnumerationValue(25)]
+            [EnumerationValue(26)]
+            [EnumerationValue(27)]
+            [EnumerationValue(28)]
+            [EnumerationValue(29)]
+            [EnumerationValue(30)]
+            [EnumerationValue(31)]
+            [EnumerationValue(32)]
+            [EnumerationValue(33)]
             [Required()]
             public topmarkDaymarkShape topmarkDaymarkShape { get; set; }
             public Decimal? verticalLength { get; set; } = default;
@@ -7015,20 +11667,58 @@ namespace S100Framework.DomainModel.S101 {
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class LightFloat : FeatureNode {
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
+            [EnumerationValue(4)]
+            [EnumerationValue(5)]
+            [EnumerationValue(6)]
+            [EnumerationValue(7)]
+            [EnumerationValue(8)]
+            [EnumerationValue(9)]
+            [EnumerationValue(10)]
+            [EnumerationValue(11)]
+            [EnumerationValue(12)]
+            [EnumerationValue(13)]
             [Required()]
             public List<colour> colour { get; set; }
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
+            [EnumerationValue(4)]
+            [EnumerationValue(5)]
+            [EnumerationValue(6)]
             public colourPattern? colourPattern { get; set; } = default;
             public List<featureName> featureName { get; set; } = [];
             public fixedDateRange? fixedDateRange { get; set; }
             public Decimal? horizontalLength { get; set; } = default;
             public Decimal? horizontalWidth { get; set; } = default;
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
+            [EnumerationValue(6)]
+            [EnumerationValue(7)]
+            [EnumerationValue(11)]
             public List<natureOfConstruction> natureOfConstruction { get; set; } = [];
             public List<periodicDateRange> periodicDateRange { get; set; } = [];
             public Boolean? radarConspicuous { get; set; } = default;
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(4)]
+            [EnumerationValue(5)]
+            [EnumerationValue(7)]
+            [EnumerationValue(8)]
+            [EnumerationValue(14)]
+            [EnumerationValue(16)]
+            [EnumerationValue(17)]
             public List<status> status { get; set; } = [];
             public topmark? topmark { get; set; }
             public Decimal? verticalLength { get; set; } = default;
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
             public visualProminence? visualProminence { get; set; } = default;
             public Int32? scaleMinimum { get; set; } = default;
             public List<information> information { get; set; } = [];
@@ -7043,19 +11733,56 @@ namespace S100Framework.DomainModel.S101 {
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class LightVessel : FeatureNode {
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
+            [EnumerationValue(4)]
+            [EnumerationValue(5)]
+            [EnumerationValue(6)]
+            [EnumerationValue(7)]
+            [EnumerationValue(8)]
+            [EnumerationValue(9)]
+            [EnumerationValue(10)]
+            [EnumerationValue(11)]
+            [EnumerationValue(12)]
+            [EnumerationValue(13)]
             [Required()]
             public List<colour> colour { get; set; }
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
+            [EnumerationValue(4)]
+            [EnumerationValue(5)]
+            [EnumerationValue(6)]
             public colourPattern? colourPattern { get; set; } = default;
             public List<featureName> featureName { get; set; } = [];
             public fixedDateRange? fixedDateRange { get; set; }
             public Decimal? horizontalLength { get; set; } = default;
             public Decimal? horizontalWidth { get; set; } = default;
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
+            [EnumerationValue(6)]
+            [EnumerationValue(7)]
             public List<natureOfConstruction> natureOfConstruction { get; set; } = [];
             public List<periodicDateRange> periodicDateRange { get; set; } = [];
             public Boolean? radarConspicuous { get; set; } = default;
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(4)]
+            [EnumerationValue(5)]
+            [EnumerationValue(7)]
+            [EnumerationValue(8)]
+            [EnumerationValue(14)]
+            [EnumerationValue(16)]
+            [EnumerationValue(17)]
             public List<status> status { get; set; } = [];
             public Decimal? verticalLength { get; set; } = default;
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
             public visualProminence? visualProminence { get; set; } = default;
             public Int32? scaleMinimum { get; set; } = default;
             public List<information> information { get; set; } = [];
@@ -7070,12 +11797,35 @@ namespace S100Framework.DomainModel.S101 {
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class Retroreflector : FeatureNode {
+            [EnumerationValue(1)]
+            [EnumerationValue(3)]
+            [EnumerationValue(4)]
+            [EnumerationValue(5)]
+            [EnumerationValue(6)]
+            [EnumerationValue(7)]
+            [EnumerationValue(8)]
+            [EnumerationValue(9)]
+            [EnumerationValue(10)]
+            [EnumerationValue(11)]
+            [EnumerationValue(12)]
+            [EnumerationValue(13)]
             public List<colour> colour { get; set; } = [];
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
+            [EnumerationValue(4)]
+            [EnumerationValue(5)]
+            [EnumerationValue(6)]
             public colourPattern? colourPattern { get; set; } = default;
             public fixedDateRange? fixedDateRange { get; set; }
             public Decimal? height { get; set; } = default;
             public String interoperabilityIdentifier { get; set; } = string.Empty;
             public List<periodicDateRange> periodicDateRange { get; set; } = [];
+
+            [EnumerationValue(1)]
+            [EnumerationValue(4)]
+            [EnumerationValue(8)]
             public List<status> status { get; set; } = [];
             public Int32? scaleMinimum { get; set; } = default;
             public List<information> information { get; set; } = [];
@@ -7092,6 +11842,10 @@ namespace S100Framework.DomainModel.S101 {
             public Decimal? height { get; set; } = default;
             public String interoperabilityIdentifier { get; set; } = string.Empty;
             public List<periodicDateRange> periodicDateRange { get; set; } = [];
+
+            [EnumerationValue(1)]
+            [EnumerationValue(4)]
+            [EnumerationValue(8)]
             public List<status> status { get; set; } = [];
             public Int32? scaleMinimum { get; set; } = default;
             public List<information> information { get; set; } = [];
@@ -7104,6 +11858,16 @@ namespace S100Framework.DomainModel.S101 {
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class FogSignal : FeatureNode {
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
+            [EnumerationValue(4)]
+            [EnumerationValue(5)]
+            [EnumerationValue(6)]
+            [EnumerationValue(7)]
+            [EnumerationValue(8)]
+            [EnumerationValue(9)]
+            [EnumerationValue(10)]
             [Required()]
             public categoryOfFogSignal categoryOfFogSignal { get; set; }
             public List<featureName> featureName { get; set; } = [];
@@ -7111,10 +11875,25 @@ namespace S100Framework.DomainModel.S101 {
             public String interoperabilityIdentifier { get; set; } = string.Empty;
             public List<periodicDateRange> periodicDateRange { get; set; } = [];
             public Int32? signalFrequency { get; set; } = default;
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
+            [EnumerationValue(4)]
+            [EnumerationValue(5)]
+            [EnumerationValue(6)]
             public signalGeneration? signalGeneration { get; set; } = default;
             public String signalGroup { get; set; } = string.Empty;
             public Decimal? signalPeriod { get; set; } = default;
             public List<signalSequence> signalSequence { get; set; } = [];
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(4)]
+            [EnumerationValue(5)]
+            [EnumerationValue(7)]
+            [EnumerationValue(8)]
+            [EnumerationValue(15)]
             public List<status> status { get; set; } = [];
             public Decimal? valueOfMaximumRange { get; set; } = default;
             public Int32? scaleMinimum { get; set; } = default;
@@ -7134,6 +11913,10 @@ namespace S100Framework.DomainModel.S101 {
             public String interoperabilityIdentifier { get; set; } = string.Empty;
             public String mMSICode { get; set; } = string.Empty;
             public List<periodicDateRange> periodicDateRange { get; set; } = [];
+
+            [EnumerationValue(1)]
+            [EnumerationValue(5)]
+            [EnumerationValue(7)]
             public status? status { get; set; } = default;
             public Int32? scaleMinimum { get; set; } = default;
             public List<information> information { get; set; } = [];
@@ -7152,8 +11935,24 @@ namespace S100Framework.DomainModel.S101 {
             public String interoperabilityIdentifier { get; set; } = string.Empty;
             public String mMSICode { get; set; } = string.Empty;
             public List<periodicDateRange> periodicDateRange { get; set; } = [];
+
+            [EnumerationValue(1)]
+            [EnumerationValue(5)]
+            [EnumerationValue(7)]
             public status? status { get; set; } = default;
 
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
+            [EnumerationValue(4)]
+            [EnumerationValue(5)]
+            [EnumerationValue(6)]
+            [EnumerationValue(7)]
+            [EnumerationValue(8)]
+            [EnumerationValue(9)]
+            [EnumerationValue(10)]
+            [EnumerationValue(11)]
+            [EnumerationValue(12)]
             [Required()]
             public virtualAISAidToNavigationType virtualAISAidToNavigationType { get; set; }
             public Int32? scaleMinimum { get; set; } = default;
@@ -7168,6 +11967,13 @@ namespace S100Framework.DomainModel.S101 {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class RadioStation : FeatureNode {
             public String callSign { get; set; } = string.Empty;
+
+            [EnumerationValue(5)]
+            [EnumerationValue(10)]
+            [EnumerationValue(11)]
+            [EnumerationValue(14)]
+            [EnumerationValue(19)]
+            [EnumerationValue(20)]
             public List<categoryOfRadioStation> categoryOfRadioStation { get; set; } = [];
             public List<String> communicationChannel { get; set; } = [];
             public Decimal? estimatedRangeOfTransmission { get; set; } = default;
@@ -7176,6 +11982,13 @@ namespace S100Framework.DomainModel.S101 {
             public frequencyPair? frequencyPair { get; set; }
             public String interoperabilityIdentifier { get; set; } = string.Empty;
             public List<periodicDateRange> periodicDateRange { get; set; } = [];
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(4)]
+            [EnumerationValue(5)]
+            [EnumerationValue(7)]
+            [EnumerationValue(8)]
             public List<status> status { get; set; } = [];
             public Int32? scaleMinimum { get; set; } = default;
             public List<information> information { get; set; } = [];
@@ -7188,6 +12001,9 @@ namespace S100Framework.DomainModel.S101 {
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class RadarTransponderBeacon : FeatureNode {
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
             [Required()]
             public categoryOfRadarTransponderBeacon categoryOfRadarTransponderBeacon { get; set; }
             public List<featureName> featureName { get; set; } = [];
@@ -7198,6 +12014,13 @@ namespace S100Framework.DomainModel.S101 {
             public sectorLimit? sectorLimit { get; set; }
             public String signalGroup { get; set; } = string.Empty;
             public List<signalSequence> signalSequence { get; set; } = [];
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(4)]
+            [EnumerationValue(5)]
+            [EnumerationValue(7)]
+            [EnumerationValue(8)]
             public List<status> status { get; set; } = [];
             public Decimal? valueOfMaximumRange { get; set; } = default;
             public Int32? scaleMinimum { get; set; } = default;
@@ -7211,7 +12034,13 @@ namespace S100Framework.DomainModel.S101 {
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class PilotBoardingPlace : FeatureNode {
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
             public categoryOfPilotBoardingPlace? categoryOfPilotBoardingPlace { get; set; } = default;
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
             public categoryOfPreference? categoryOfPreference { get; set; } = default;
             public List<String> communicationChannel { get; set; } = [];
             public List<String> destination { get; set; } = [];
@@ -7219,7 +12048,20 @@ namespace S100Framework.DomainModel.S101 {
             public fixedDateRange? fixedDateRange { get; set; }
             public String interoperabilityIdentifier { get; set; } = string.Empty;
             public List<periodicDateRange> periodicDateRange { get; set; } = [];
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
             public List<pilotMovement> pilotMovement { get; set; } = [];
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(5)]
+            [EnumerationValue(6)]
+            [EnumerationValue(9)]
+            [EnumerationValue(16)]
+            [EnumerationValue(17)]
+            [EnumerationValue(28)]
             public List<status> status { get; set; } = [];
             public Int32? scaleMinimum { get; set; } = default;
             public List<information> information { get; set; } = [];
@@ -7251,6 +12093,12 @@ namespace S100Framework.DomainModel.S101 {
             public String interoperabilityIdentifier { get; set; } = string.Empty;
             public Boolean? isMRCC { get; set; } = default;
             public List<periodicDateRange> periodicDateRange { get; set; } = [];
+
+            [EnumerationValue(1)]
+            [EnumerationValue(4)]
+            [EnumerationValue(5)]
+            [EnumerationValue(16)]
+            [EnumerationValue(17)]
             public List<status> status { get; set; } = [];
             public Int32? scaleMinimum { get; set; } = default;
             public List<information> information { get; set; } = [];
@@ -7263,6 +12111,21 @@ namespace S100Framework.DomainModel.S101 {
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class SignalStationWarning : FeatureNode {
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
+            [EnumerationValue(4)]
+            [EnumerationValue(5)]
+            [EnumerationValue(6)]
+            [EnumerationValue(7)]
+            [EnumerationValue(8)]
+            [EnumerationValue(9)]
+            [EnumerationValue(10)]
+            [EnumerationValue(11)]
+            [EnumerationValue(12)]
+            [EnumerationValue(13)]
+            [EnumerationValue(14)]
+            [EnumerationValue(15)]
             [Required()]
             public List<categoryOfSignalStationWarning> categoryOfSignalStationWarning { get; set; }
             public List<String> communicationChannel { get; set; } = [];
@@ -7270,6 +12133,18 @@ namespace S100Framework.DomainModel.S101 {
             public fixedDateRange? fixedDateRange { get; set; }
             public String interoperabilityIdentifier { get; set; } = string.Empty;
             public List<periodicDateRange> periodicDateRange { get; set; } = [];
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(4)]
+            [EnumerationValue(5)]
+            [EnumerationValue(7)]
+            [EnumerationValue(8)]
+            [EnumerationValue(12)]
+            [EnumerationValue(14)]
+            [EnumerationValue(15)]
+            [EnumerationValue(16)]
+            [EnumerationValue(17)]
             public List<status> status { get; set; } = [];
             public Int32? scaleMinimum { get; set; } = default;
             public List<information> information { get; set; } = [];
@@ -7283,6 +12158,16 @@ namespace S100Framework.DomainModel.S101 {
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class SignalStationTraffic : FeatureNode {
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
+            [EnumerationValue(4)]
+            [EnumerationValue(5)]
+            [EnumerationValue(6)]
+            [EnumerationValue(7)]
+            [EnumerationValue(8)]
+            [EnumerationValue(9)]
+            [EnumerationValue(10)]
             [Required()]
             public List<categoryOfSignalStationTraffic> categoryOfSignalStationTraffic { get; set; }
             public List<String> communicationChannel { get; set; } = [];
@@ -7290,6 +12175,18 @@ namespace S100Framework.DomainModel.S101 {
             public fixedDateRange? fixedDateRange { get; set; }
             public String interoperabilityIdentifier { get; set; } = string.Empty;
             public List<periodicDateRange> periodicDateRange { get; set; } = [];
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(4)]
+            [EnumerationValue(5)]
+            [EnumerationValue(7)]
+            [EnumerationValue(8)]
+            [EnumerationValue(12)]
+            [EnumerationValue(14)]
+            [EnumerationValue(15)]
+            [EnumerationValue(16)]
+            [EnumerationValue(17)]
             public List<status> status { get; set; } = [];
             public Int32? scaleMinimum { get; set; } = default;
             public List<information> information { get; set; } = [];
@@ -7303,12 +12200,29 @@ namespace S100Framework.DomainModel.S101 {
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class RescueStation : FeatureNode {
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(4)]
+            [EnumerationValue(5)]
+            [EnumerationValue(6)]
+            [EnumerationValue(7)]
+            [EnumerationValue(8)]
             public List<categoryOfRescueStation> categoryOfRescueStation { get; set; } = [];
             public List<String> communicationChannel { get; set; } = [];
             public List<featureName> featureName { get; set; } = [];
             public fixedDateRange? fixedDateRange { get; set; }
             public String interoperabilityIdentifier { get; set; } = string.Empty;
             public List<periodicDateRange> periodicDateRange { get; set; } = [];
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(4)]
+            [EnumerationValue(5)]
+            [EnumerationValue(7)]
+            [EnumerationValue(8)]
+            [EnumerationValue(14)]
+            [EnumerationValue(16)]
+            [EnumerationValue(17)]
             public List<status> status { get; set; } = [];
             public Int32? scaleMinimum { get; set; } = default;
             public List<information> information { get; set; } = [];
@@ -7321,18 +12235,103 @@ namespace S100Framework.DomainModel.S101 {
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class HarbourFacility : FeatureNode {
+            [EnumerationValue(1)]
+            [EnumerationValue(3)]
+            [EnumerationValue(4)]
+            [EnumerationValue(5)]
+            [EnumerationValue(6)]
+            [EnumerationValue(7)]
+            [EnumerationValue(8)]
+            [EnumerationValue(9)]
+            [EnumerationValue(10)]
+            [EnumerationValue(11)]
+            [EnumerationValue(12)]
+            [EnumerationValue(13)]
+            [EnumerationValue(14)]
+            [EnumerationValue(15)]
             [Required()]
             public List<categoryOfHarbourFacility> categoryOfHarbourFacility { get; set; }
             public List<String> communicationChannel { get; set; } = [];
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
+            [EnumerationValue(5)]
             public condition? condition { get; set; } = default;
             public List<featureName> featureName { get; set; } = [];
             public fixedDateRange? fixedDateRange { get; set; }
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
+            [EnumerationValue(6)]
+            [EnumerationValue(7)]
             public List<natureOfConstruction> natureOfConstruction { get; set; } = [];
             public List<periodicDateRange> periodicDateRange { get; set; } = [];
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
+            [EnumerationValue(4)]
+            [EnumerationValue(5)]
+            [EnumerationValue(6)]
+            [EnumerationValue(7)]
+            [EnumerationValue(8)]
+            [EnumerationValue(9)]
+            [EnumerationValue(10)]
+            [EnumerationValue(11)]
+            [EnumerationValue(12)]
+            [EnumerationValue(13)]
+            [EnumerationValue(14)]
+            [EnumerationValue(15)]
+            [EnumerationValue(16)]
+            [EnumerationValue(17)]
+            [EnumerationValue(18)]
+            [EnumerationValue(19)]
+            [EnumerationValue(20)]
+            [EnumerationValue(21)]
+            [EnumerationValue(22)]
+            [EnumerationValue(25)]
             public product? product { get; set; } = default;
             public DateOnly? reportedDate { get; set; } = default;
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
+            [EnumerationValue(4)]
+            [EnumerationValue(5)]
+            [EnumerationValue(6)]
+            [EnumerationValue(8)]
+            [EnumerationValue(9)]
+            [EnumerationValue(10)]
+            [EnumerationValue(11)]
+            [EnumerationValue(12)]
+            [EnumerationValue(13)]
+            [EnumerationValue(15)]
+            [EnumerationValue(16)]
+            [EnumerationValue(17)]
+            [EnumerationValue(18)]
+            [EnumerationValue(19)]
+            [EnumerationValue(20)]
+            [EnumerationValue(21)]
+            [EnumerationValue(23)]
+            [EnumerationValue(24)]
+            [EnumerationValue(27)]
             public List<restriction> restriction { get; set; } = [];
+
+            [EnumerationValue(1)]
+            [EnumerationValue(4)]
+            [EnumerationValue(5)]
+            [EnumerationValue(6)]
+            [EnumerationValue(7)]
+            [EnumerationValue(8)]
+            [EnumerationValue(9)]
+            [EnumerationValue(12)]
+            [EnumerationValue(13)]
+            [EnumerationValue(14)]
+            [EnumerationValue(16)]
+            [EnumerationValue(17)]
             public List<status> status { get; set; } = [];
             public List<vesselSpeedLimit> vesselSpeedLimit { get; set; } = [];
             public Int32? scaleMinimum { get; set; } = default;
@@ -7348,11 +12347,57 @@ namespace S100Framework.DomainModel.S101 {
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class SmallCraftFacility : FeatureNode {
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
+            [EnumerationValue(4)]
+            [EnumerationValue(5)]
+            [EnumerationValue(6)]
+            [EnumerationValue(7)]
+            [EnumerationValue(8)]
+            [EnumerationValue(9)]
+            [EnumerationValue(10)]
+            [EnumerationValue(11)]
+            [EnumerationValue(12)]
+            [EnumerationValue(13)]
+            [EnumerationValue(14)]
+            [EnumerationValue(15)]
+            [EnumerationValue(16)]
+            [EnumerationValue(17)]
+            [EnumerationValue(18)]
+            [EnumerationValue(19)]
+            [EnumerationValue(20)]
+            [EnumerationValue(21)]
+            [EnumerationValue(22)]
+            [EnumerationValue(23)]
+            [EnumerationValue(24)]
+            [EnumerationValue(25)]
+            [EnumerationValue(26)]
+            [EnumerationValue(27)]
+            [EnumerationValue(28)]
+            [EnumerationValue(30)]
+            [EnumerationValue(31)]
+            [EnumerationValue(32)]
+            [EnumerationValue(33)]
             [Required()]
             public List<categoryOfSmallCraftFacility> categoryOfSmallCraftFacility { get; set; }
             public List<featureName> featureName { get; set; } = [];
             public String interoperabilityIdentifier { get; set; } = string.Empty;
             public List<periodicDateRange> periodicDateRange { get; set; } = [];
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
+            [EnumerationValue(4)]
+            [EnumerationValue(5)]
+            [EnumerationValue(6)]
+            [EnumerationValue(7)]
+            [EnumerationValue(8)]
+            [EnumerationValue(9)]
+            [EnumerationValue(12)]
+            [EnumerationValue(14)]
+            [EnumerationValue(16)]
+            [EnumerationValue(17)]
             public List<status> status { get; set; } = [];
             public Int32? scaleMinimum { get; set; } = default;
             public List<information> information { get; set; } = [];
@@ -7374,6 +12419,8 @@ namespace S100Framework.DomainModel.S101 {
             public Int32 textOffsetDistance { get; set; }
             public Boolean? textRotation { get; set; } = default;
 
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
             [Required()]
             public List<textType> textType { get; set; }
             public Int32? scaleMinimum { get; set; } = default;

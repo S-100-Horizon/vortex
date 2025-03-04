@@ -189,6 +189,10 @@ namespace S100Framework.DomainModel.S124 {
         public partial class featureName {
             public String language { get; set; } = string.Empty;
             public String name { get; set; } = string.Empty;
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
             public nameUsage? nameUsage { get; set; } = default;
 
             public featureName() {
@@ -494,6 +498,12 @@ namespace S100Framework.DomainModel.S124 {
 
             [Required()]
             public warningInformation warningInformation { get; set; }
+
+            [EnumerationValue(8)]
+            [EnumerationValue(7)]
+            [EnumerationValue(14)]
+            [EnumerationValue(25)]
+            [EnumerationValue(27)]
             public restriction? restriction { get; set; } = default;
             public override string Code => nameof(NAVWARNPart);
 
@@ -524,6 +534,9 @@ namespace S100Framework.DomainModel.S124 {
             [Required()]
             public Int32 textOffsetDistance { get; set; }
             public Boolean? textRotation { get; set; } = default;
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
             public textType? textType { get; set; } = default;
             public Int32? scaleMinimum { get; set; } = default;
             public override string Code => nameof(TextPlacement);

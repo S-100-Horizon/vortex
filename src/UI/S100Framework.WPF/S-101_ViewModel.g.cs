@@ -7233,6 +7233,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
         }
 
         private nameUsage? _nameUsage = default;
+        [DomainModel.EnumerationAttribute(nameof(nameUsageList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("featureName")]
         public nameUsage? nameUsage {
             get {
@@ -7243,6 +7245,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
                 SetValue(ref _nameUsage, value);
             }
         }
+
+        [Browsable(false)]
+        public nameUsage[] nameUsageList => [(nameUsage)1, (nameUsage)2];
 
         public void Load(DomainModel.S101.ComplexAttributes.featureName instance) {
             language = instance.language;
@@ -7728,6 +7733,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
     [CategoryOrder("FeatureBindings", 200)]
     public partial class measuredDistanceValueViewModel : ViewModelBase {
         private distanceUnitOfMeasurement _distanceUnitOfMeasurement;
+        [DomainModel.EnumerationAttribute(nameof(distanceUnitOfMeasurementList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("measuredDistanceValue")]
         public distanceUnitOfMeasurement distanceUnitOfMeasurement {
             get {
@@ -7762,6 +7769,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
                 SetValue(ref _waterwayDistance, value);
             }
         }
+
+        [Browsable(false)]
+        public distanceUnitOfMeasurement[] distanceUnitOfMeasurementList => [(distanceUnitOfMeasurement)1, (distanceUnitOfMeasurement)2, (distanceUnitOfMeasurement)3, (distanceUnitOfMeasurement)4, (distanceUnitOfMeasurement)5];
 
         public void Load(DomainModel.S101.ComplexAttributes.measuredDistanceValue instance) {
             distanceUnitOfMeasurement = instance.distanceUnitOfMeasurement;
@@ -8324,6 +8334,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
         }
 
         private signalStatus _signalStatus;
+        [DomainModel.EnumerationAttribute(nameof(signalStatusList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("signalSequence")]
         public signalStatus signalStatus {
             get {
@@ -8334,6 +8346,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
                 SetValue(ref _signalStatus, value);
             }
         }
+
+        [Browsable(false)]
+        public signalStatus[] signalStatusList => [(signalStatus)1, (signalStatus)2];
 
         public void Load(DomainModel.S101.ComplexAttributes.signalSequence instance) {
             signalDuration = instance.signalDuration;
@@ -8426,6 +8441,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
     [CategoryOrder("FeatureBindings", 200)]
     public partial class surfaceCharacteristicsViewModel : ViewModelBase {
         private natureOfSurface? _natureOfSurface = default;
+        [DomainModel.EnumerationAttribute(nameof(natureOfSurfaceList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("surfaceCharacteristics")]
         public natureOfSurface? natureOfSurface {
             get {
@@ -8437,6 +8454,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
             }
         }
 
+        [DomainModel.EnumerationAttribute(nameof(natureOfSurfaceQualifyingTermsList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("surfaceCharacteristics")]
         public ObservableCollection<natureOfSurfaceQualifyingTerms> natureOfSurfaceQualifyingTerms { get; set; } = new();
 
@@ -8451,6 +8470,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
                 SetValue(ref _underlyingLayer, value);
             }
         }
+
+        [Browsable(false)]
+        public natureOfSurface[] natureOfSurfaceList => [(natureOfSurface)1, (natureOfSurface)2, (natureOfSurface)3, (natureOfSurface)4, (natureOfSurface)5, (natureOfSurface)6, (natureOfSurface)7, (natureOfSurface)8, (natureOfSurface)9, (natureOfSurface)11, (natureOfSurface)14, (natureOfSurface)17, (natureOfSurface)18];
+
+        [Browsable(false)]
+        public natureOfSurfaceQualifyingTerms[] natureOfSurfaceQualifyingTermsList => [(natureOfSurfaceQualifyingTerms)1, (natureOfSurfaceQualifyingTerms)2, (natureOfSurfaceQualifyingTerms)3, (natureOfSurfaceQualifyingTerms)4, (natureOfSurfaceQualifyingTerms)5, (natureOfSurfaceQualifyingTerms)6, (natureOfSurfaceQualifyingTerms)7, (natureOfSurfaceQualifyingTerms)8, (natureOfSurfaceQualifyingTerms)9, (natureOfSurfaceQualifyingTerms)10];
 
         public void Load(DomainModel.S101.ComplexAttributes.surfaceCharacteristics instance) {
             natureOfSurface = instance.natureOfSurface;
@@ -8576,6 +8601,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
         }
 
         private telecommunicationService? _telecommunicationService = default;
+        [DomainModel.EnumerationAttribute(nameof(telecommunicationServiceList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("telecommunications")]
         public telecommunicationService? telecommunicationService {
             get {
@@ -8586,6 +8613,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
                 SetValue(ref _telecommunicationService, value);
             }
         }
+
+        [Browsable(false)]
+        public telecommunicationService[] telecommunicationServiceList => [(telecommunicationService)1, (telecommunicationService)2, (telecommunicationService)3, (telecommunicationService)4, (telecommunicationService)5, (telecommunicationService)6, (telecommunicationService)7, (telecommunicationService)8];
 
         public void Load(DomainModel.S101.ComplexAttributes.telecommunications instance) {
             contactInstructions = instance.contactInstructions;
@@ -8697,6 +8727,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class timeIntervalsByDayOfWeekViewModel : ViewModelBase {
+        [DomainModel.EnumerationAttribute(nameof(dayOfWeekList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("timeIntervalsByDayOfWeek")]
         public ObservableCollection<dayOfWeek> dayOfWeek { get; set; } = new();
 
@@ -8717,6 +8749,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
         [Category("timeIntervalsByDayOfWeek")]
         public ObservableCollection<TimeOnly> timeOfDayEnd { get; set; } = new();
+
+        [Browsable(false)]
+        public dayOfWeek[] dayOfWeekList => [(dayOfWeek)1, (dayOfWeek)2, (dayOfWeek)3, (dayOfWeek)4, (dayOfWeek)5, (dayOfWeek)6, (dayOfWeek)7];
 
         public void Load(DomainModel.S101.ComplexAttributes.timeIntervalsByDayOfWeek instance) {
             dayOfWeek.Clear();
@@ -8777,10 +8812,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
     public partial class topmarkViewModel : ViewModelBase
 #pragma warning restore CS8981
     {
+        [DomainModel.EnumerationAttribute(nameof(colourList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("topmark")]
         public ObservableCollection<colour> colour { get; set; } = new();
 
         private colourPattern? _colourPattern = default;
+        [DomainModel.EnumerationAttribute(nameof(colourPatternList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("topmark")]
         public colourPattern? colourPattern {
             get {
@@ -8793,6 +8832,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
         }
 
         private topmarkDaymarkShape _topmarkDaymarkShape;
+        [DomainModel.EnumerationAttribute(nameof(topmarkDaymarkShapeList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("topmark")]
         public topmarkDaymarkShape topmarkDaymarkShape {
             get {
@@ -8806,6 +8847,15 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
         [Category("topmark")]
         public ObservableCollection<shapeInformation> shapeInformation { get; set; } = new();
+
+        [Browsable(false)]
+        public colour[] colourList => [(colour)1, (colour)2, (colour)3, (colour)4, (colour)5, (colour)6, (colour)7, (colour)8, (colour)9, (colour)10, (colour)11, (colour)12, (colour)13];
+
+        [Browsable(false)]
+        public colourPattern[] colourPatternList => [(colourPattern)1, (colourPattern)2, (colourPattern)3, (colourPattern)4, (colourPattern)5, (colourPattern)6];
+
+        [Browsable(false)]
+        public topmarkDaymarkShape[] topmarkDaymarkShapeList => [(topmarkDaymarkShape)1, (topmarkDaymarkShape)2, (topmarkDaymarkShape)3, (topmarkDaymarkShape)4, (topmarkDaymarkShape)5, (topmarkDaymarkShape)6, (topmarkDaymarkShape)7, (topmarkDaymarkShape)8, (topmarkDaymarkShape)9, (topmarkDaymarkShape)10, (topmarkDaymarkShape)11, (topmarkDaymarkShape)12, (topmarkDaymarkShape)13, (topmarkDaymarkShape)14, (topmarkDaymarkShape)15, (topmarkDaymarkShape)16, (topmarkDaymarkShape)17, (topmarkDaymarkShape)18, (topmarkDaymarkShape)19, (topmarkDaymarkShape)20, (topmarkDaymarkShape)21, (topmarkDaymarkShape)22, (topmarkDaymarkShape)23, (topmarkDaymarkShape)24, (topmarkDaymarkShape)25, (topmarkDaymarkShape)26, (topmarkDaymarkShape)27, (topmarkDaymarkShape)28, (topmarkDaymarkShape)29, (topmarkDaymarkShape)30, (topmarkDaymarkShape)31, (topmarkDaymarkShape)32, (topmarkDaymarkShape)33];
 
         public void Load(DomainModel.S101.ComplexAttributes.topmark instance) {
             colour.Clear();
@@ -8869,6 +8919,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
         }
 
         private referenceDirection? _referenceDirection = default;
+        [DomainModel.EnumerationAttribute(nameof(referenceDirectionList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("valueOfLocalMagneticAnomaly")]
         public referenceDirection? referenceDirection {
             get {
@@ -8879,6 +8931,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
                 SetValue(ref _referenceDirection, value);
             }
         }
+
+        [Browsable(false)]
+        public referenceDirection[] referenceDirectionList => [(referenceDirection)5, (referenceDirection)13];
 
         public void Load(DomainModel.S101.ComplexAttributes.valueOfLocalMagneticAnomaly instance) {
             magneticAnomalyValue = instance.magneticAnomalyValue;
@@ -8979,6 +9034,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
         }
 
         private speedUnits _speedUnits;
+        [DomainModel.EnumerationAttribute(nameof(speedUnitsList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("vesselSpeedLimit")]
         public speedUnits speedUnits {
             get {
@@ -9001,6 +9058,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
                 SetValue(ref _vesselClass, value);
             }
         }
+
+        [Browsable(false)]
+        public speedUnits[] speedUnitsList => [(speedUnits)2, (speedUnits)3, (speedUnits)4];
 
         public void Load(DomainModel.S101.ComplexAttributes.vesselSpeedLimit instance) {
             speedLimit = instance.speedLimit;
@@ -9037,6 +9097,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
     [CategoryOrder("FeatureBindings", 200)]
     public partial class zoneOfConfidenceViewModel : ViewModelBase {
         private categoryOfZoneOfConfidenceInData _categoryOfZoneOfConfidenceInData;
+        [DomainModel.EnumerationAttribute(nameof(categoryOfZoneOfConfidenceInDataList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("zoneOfConfidence")]
         public categoryOfZoneOfConfidenceInData categoryOfZoneOfConfidenceInData {
             get {
@@ -9086,6 +9148,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
                 SetValue(ref _verticalUncertainty, value);
             }
         }
+
+        [Browsable(false)]
+        public categoryOfZoneOfConfidenceInData[] categoryOfZoneOfConfidenceInDataList => [(categoryOfZoneOfConfidenceInData)1, (categoryOfZoneOfConfidenceInData)2, (categoryOfZoneOfConfidenceInData)3, (categoryOfZoneOfConfidenceInData)4, (categoryOfZoneOfConfidenceInData)5, (categoryOfZoneOfConfidenceInData)6];
 
         public void Load(DomainModel.S101.ComplexAttributes.zoneOfConfidence instance) {
             categoryOfZoneOfConfidenceInData = instance.categoryOfZoneOfConfidenceInData;
@@ -9199,6 +9264,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
     [CategoryOrder("FeatureBindings", 200)]
     public partial class rhythmOfLightViewModel : ViewModelBase {
         private lightCharacteristic _lightCharacteristic;
+        [DomainModel.EnumerationAttribute(nameof(lightCharacteristicList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("rhythmOfLight")]
         public lightCharacteristic lightCharacteristic {
             get {
@@ -9227,6 +9294,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
         [Category("rhythmOfLight")]
         public ObservableCollection<signalSequence> signalSequence { get; set; } = new();
+
+        [Browsable(false)]
+        public lightCharacteristic[] lightCharacteristicList => [(lightCharacteristic)1, (lightCharacteristic)2, (lightCharacteristic)3, (lightCharacteristic)4, (lightCharacteristic)5, (lightCharacteristic)6, (lightCharacteristic)7, (lightCharacteristic)8, (lightCharacteristic)11, (lightCharacteristic)12, (lightCharacteristic)13, (lightCharacteristic)14, (lightCharacteristic)15, (lightCharacteristic)16, (lightCharacteristic)17, (lightCharacteristic)18, (lightCharacteristic)19, (lightCharacteristic)25, (lightCharacteristic)26, (lightCharacteristic)27, (lightCharacteristic)28, (lightCharacteristic)29];
 
         public void Load(DomainModel.S101.ComplexAttributes.rhythmOfLight instance) {
             lightCharacteristic = instance.lightCharacteristic;
@@ -9278,6 +9348,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
     [CategoryOrder("FeatureBindings", 200)]
     public partial class scheduleByDayOfWeekViewModel : ViewModelBase {
         private categoryOfSchedule? _categoryOfSchedule = default;
+        [DomainModel.EnumerationAttribute(nameof(categoryOfScheduleList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("scheduleByDayOfWeek")]
         public categoryOfSchedule? categoryOfSchedule {
             get {
@@ -9291,6 +9363,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
         [Category("scheduleByDayOfWeek")]
         public ObservableCollection<timeIntervalsByDayOfWeek> timeIntervalsByDayOfWeek { get; set; } = new();
+
+        [Browsable(false)]
+        public categoryOfSchedule[] categoryOfScheduleList => [(categoryOfSchedule)1, (categoryOfSchedule)2, (categoryOfSchedule)3];
 
         public void Load(DomainModel.S101.ComplexAttributes.scheduleByDayOfWeek instance) {
             categoryOfSchedule = instance.categoryOfSchedule;
@@ -9483,6 +9558,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
     [CategoryOrder("FeatureBindings", 200)]
     public partial class tidalStreamPanelValuesViewModel : ViewModelBase {
         private referenceTide _referenceTide;
+        [DomainModel.EnumerationAttribute(nameof(referenceTideList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("tidalStreamPanelValues")]
         public referenceTide referenceTide {
             get {
@@ -9495,6 +9572,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
         }
 
         private referenceTideType _referenceTideType;
+        [DomainModel.EnumerationAttribute(nameof(referenceTideTypeList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("tidalStreamPanelValues")]
         public referenceTideType referenceTideType {
             get {
@@ -9520,6 +9599,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
         [Category("tidalStreamPanelValues")]
         public ObservableCollection<tidalStreamValue> tidalStreamValue { get; set; } = new();
+
+        [Browsable(false)]
+        public referenceTide[] referenceTideList => [(referenceTide)1, (referenceTide)2];
+
+        [Browsable(false)]
+        public referenceTideType[] referenceTideTypeList => [(referenceTideType)1, (referenceTideType)2, (referenceTideType)3];
 
         public void Load(DomainModel.S101.ComplexAttributes.tidalStreamPanelValues instance) {
             referenceTide = instance.referenceTide;
@@ -9819,6 +9904,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class lightSectorViewModel : ViewModelBase {
+        [DomainModel.EnumerationAttribute(nameof(colourList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("lightSector")]
         public ObservableCollection<colour> colour { get; set; } = new();
 
@@ -9835,6 +9922,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
             }
         }
 
+        [DomainModel.EnumerationAttribute(nameof(lightVisibilityList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("lightSector")]
         public ObservableCollection<lightVisibility> lightVisibility { get; set; } = new();
 
@@ -9877,6 +9966,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
                 SetValue(ref _sectorArcExtension, value);
             }
         }
+
+        [Browsable(false)]
+        public colour[] colourList => [(colour)1, (colour)3, (colour)4, (colour)5, (colour)6, (colour)9, (colour)10, (colour)11];
+
+        [Browsable(false)]
+        public lightVisibility[] lightVisibilityList => [(lightVisibility)1, (lightVisibility)2, (lightVisibility)3, (lightVisibility)4, (lightVisibility)5, (lightVisibility)6, (lightVisibility)8, (lightVisibility)9];
 
         public void Load(DomainModel.S101.ComplexAttributes.lightSector instance) {
             colour.Clear();
@@ -9953,6 +10048,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
     [CategoryOrder("FeatureBindings", 200)]
     public partial class sectorCharacteristicsViewModel : ViewModelBase {
         private lightCharacteristic _lightCharacteristic;
+        [DomainModel.EnumerationAttribute(nameof(lightCharacteristicList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("sectorCharacteristics")]
         public lightCharacteristic lightCharacteristic {
             get {
@@ -9984,6 +10081,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
         [Category("sectorCharacteristics")]
         public ObservableCollection<signalSequence> signalSequence { get; set; } = new();
+
+        [Browsable(false)]
+        public lightCharacteristic[] lightCharacteristicList => [(lightCharacteristic)1, (lightCharacteristic)2, (lightCharacteristic)3, (lightCharacteristic)4, (lightCharacteristic)5, (lightCharacteristic)6, (lightCharacteristic)7, (lightCharacteristic)8, (lightCharacteristic)11, (lightCharacteristic)12, (lightCharacteristic)13, (lightCharacteristic)14, (lightCharacteristic)15, (lightCharacteristic)16, (lightCharacteristic)17, (lightCharacteristic)18, (lightCharacteristic)19, (lightCharacteristic)25, (lightCharacteristic)26, (lightCharacteristic)27, (lightCharacteristic)28, (lightCharacteristic)29];
 
         public void Load(DomainModel.S101.ComplexAttributes.sectorCharacteristics instance) {
             lightCharacteristic = instance.lightCharacteristic;
@@ -10460,6 +10560,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
     [CategoryOrder("FeatureBindings", 200)]
     public partial class SpatialQualityViewModel : ViewModelBase {
         private qualityOfHorizontalMeasurement? _qualityOfHorizontalMeasurement = default;
+        [DomainModel.EnumerationAttribute(nameof(qualityOfHorizontalMeasurementList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("SpatialQuality")]
         public qualityOfHorizontalMeasurement? qualityOfHorizontalMeasurement {
             get {
@@ -10477,6 +10579,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
         public class SpatialQualityRefIdViewModel : InformationRefIdViewModel {
             public override string[] AssociationTypes => ["SpatialQuality"];
         }
+
+        [Browsable(false)]
+        public qualityOfHorizontalMeasurement[] qualityOfHorizontalMeasurementList => [(qualityOfHorizontalMeasurement)4];
 
         public void Load(DomainModel.S101.InformationTypes.SpatialQuality instance) {
             qualityOfHorizontalMeasurement = instance.qualityOfHorizontalMeasurement;
@@ -10516,6 +10621,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
     [CategoryOrder("FeatureBindings", 200)]
     public partial class QualityOfNonBathymetricDataViewModel : ViewModelBase {
         private categoryOfTemporalVariation? _categoryOfTemporalVariation = default;
+        [DomainModel.EnumerationAttribute(nameof(categoryOfTemporalVariationList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("QualityOfNonBathymetricData")]
         public categoryOfTemporalVariation? categoryOfTemporalVariation {
             get {
@@ -10608,6 +10715,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
         public class QualityOfNonBathymetricDataRefIdViewModel : FeatureRefIdViewModel {
             public override string[] AssociationTypes => ["QualityOfNonBathymetricData"];
         }
+
+        [Browsable(false)]
+        public categoryOfTemporalVariation[] categoryOfTemporalVariationList => [(categoryOfTemporalVariation)1, (categoryOfTemporalVariation)4];
 
         public void Load(DomainModel.S101.FeatureTypes.QualityOfNonBathymetricData instance) {
             categoryOfTemporalVariation = instance.categoryOfTemporalVariation;
@@ -10796,6 +10906,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
     [CategoryOrder("FeatureBindings", 200)]
     public partial class NavigationalSystemOfMarksViewModel : ViewModelBase {
         private marksNavigationalSystemOf _marksNavigationalSystemOf;
+        [DomainModel.EnumerationAttribute(nameof(marksNavigationalSystemOfList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("NavigationalSystemOfMarks")]
         public marksNavigationalSystemOf marksNavigationalSystemOf {
             get {
@@ -10825,6 +10937,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
         public class NavigationalSystemOfMarksRefIdViewModel : FeatureRefIdViewModel {
             public override string[] AssociationTypes => ["NavigationalSystemOfMarks"];
         }
+
+        [Browsable(false)]
+        public marksNavigationalSystemOf[] marksNavigationalSystemOfList => [(marksNavigationalSystemOf)1, (marksNavigationalSystemOf)2, (marksNavigationalSystemOf)9, (marksNavigationalSystemOf)11];
 
         public void Load(DomainModel.S101.FeatureTypes.NavigationalSystemOfMarks instance) {
             marksNavigationalSystemOf = instance.marksNavigationalSystemOf;
@@ -10879,6 +10994,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
         }
 
         private marksNavigationalSystemOf _marksNavigationalSystemOf;
+        [DomainModel.EnumerationAttribute(nameof(marksNavigationalSystemOfList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("LocalDirectionOfBuoyage")]
         public marksNavigationalSystemOf marksNavigationalSystemOf {
             get {
@@ -10920,6 +11037,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
         public class LocalDirectionOfBuoyageRefIdViewModel : FeatureRefIdViewModel {
             public override string[] AssociationTypes => ["LocalDirectionOfBuoyage"];
         }
+
+        [Browsable(false)]
+        public marksNavigationalSystemOf[] marksNavigationalSystemOfList => [(marksNavigationalSystemOf)1, (marksNavigationalSystemOf)2, (marksNavigationalSystemOf)9, (marksNavigationalSystemOf)11];
 
         public void Load(DomainModel.S101.FeatureTypes.LocalDirectionOfBuoyage instance) {
             interoperabilityIdentifier = instance.interoperabilityIdentifier;
@@ -10968,6 +11088,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
     [CategoryOrder("FeatureBindings", 200)]
     public partial class QualityOfBathymetricDataViewModel : ViewModelBase {
         private categoryOfTemporalVariation _categoryOfTemporalVariation;
+        [DomainModel.EnumerationAttribute(nameof(categoryOfTemporalVariationList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("QualityOfBathymetricData")]
         public categoryOfTemporalVariation categoryOfTemporalVariation {
             get {
@@ -10980,6 +11102,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
         }
 
         private dataAssessment _dataAssessment;
+        [DomainModel.EnumerationAttribute(nameof(dataAssessmentList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("QualityOfBathymetricData")]
         public dataAssessment dataAssessment {
             get {
@@ -11075,6 +11199,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
             public override string[] AssociationTypes => ["QualityOfBathymetricData"];
         }
 
+        [Browsable(false)]
+        public categoryOfTemporalVariation[] categoryOfTemporalVariationList => [(categoryOfTemporalVariation)1, (categoryOfTemporalVariation)2, (categoryOfTemporalVariation)3, (categoryOfTemporalVariation)5, (categoryOfTemporalVariation)6];
+
+        [Browsable(false)]
+        public dataAssessment[] dataAssessmentList => [(dataAssessment)1, (dataAssessment)2, (dataAssessment)3];
+
         public void Load(DomainModel.S101.FeatureTypes.QualityOfBathymetricData instance) {
             categoryOfTemporalVariation = instance.categoryOfTemporalVariation;
             dataAssessment = instance.dataAssessment;
@@ -11165,6 +11295,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
         }
 
         private verticalDatum _verticalDatum;
+        [DomainModel.EnumerationAttribute(nameof(verticalDatumList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("SoundingDatum")]
         public verticalDatum verticalDatum {
             get {
@@ -11182,6 +11314,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
         public class SoundingDatumRefIdViewModel : FeatureRefIdViewModel {
             public override string[] AssociationTypes => ["SoundingDatum"];
         }
+
+        [Browsable(false)]
+        public verticalDatum[] verticalDatumList => [(verticalDatum)1, (verticalDatum)2, (verticalDatum)3, (verticalDatum)4, (verticalDatum)5, (verticalDatum)6, (verticalDatum)7, (verticalDatum)8, (verticalDatum)9, (verticalDatum)10, (verticalDatum)11, (verticalDatum)12, (verticalDatum)13, (verticalDatum)14, (verticalDatum)15, (verticalDatum)19, (verticalDatum)22, (verticalDatum)23, (verticalDatum)24, (verticalDatum)25, (verticalDatum)26, (verticalDatum)27, (verticalDatum)44];
 
         public void Load(DomainModel.S101.FeatureTypes.SoundingDatum instance) {
             interoperabilityIdentifier = instance.interoperabilityIdentifier;
@@ -11236,6 +11371,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
         }
 
         private verticalDatum _verticalDatum;
+        [DomainModel.EnumerationAttribute(nameof(verticalDatumList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("VerticalDatumOfData")]
         public verticalDatum verticalDatum {
             get {
@@ -11253,6 +11390,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
         public class VerticalDatumOfDataRefIdViewModel : FeatureRefIdViewModel {
             public override string[] AssociationTypes => ["VerticalDatumOfData"];
         }
+
+        [Browsable(false)]
+        public verticalDatum[] verticalDatumList => [(verticalDatum)3, (verticalDatum)13, (verticalDatum)16, (verticalDatum)17, (verticalDatum)18, (verticalDatum)19, (verticalDatum)20, (verticalDatum)21, (verticalDatum)24, (verticalDatum)25, (verticalDatum)26, (verticalDatum)28, (verticalDatum)29, (verticalDatum)30, (verticalDatum)44];
 
         public void Load(DomainModel.S101.FeatureTypes.VerticalDatumOfData instance) {
             interoperabilityIdentifier = instance.interoperabilityIdentifier;
@@ -11404,6 +11544,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
         }
 
         private qualityOfHorizontalMeasurement? _qualityOfHorizontalMeasurement = default;
+        [DomainModel.EnumerationAttribute(nameof(qualityOfHorizontalMeasurementList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("QualityOfSurvey")]
         public qualityOfHorizontalMeasurement? qualityOfHorizontalMeasurement {
             get {
@@ -11415,6 +11557,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
             }
         }
 
+        [DomainModel.EnumerationAttribute(nameof(qualityOfVerticalMeasurementList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("QualityOfSurvey")]
         public ObservableCollection<qualityOfVerticalMeasurement> qualityOfVerticalMeasurement { get; set; } = new();
 
@@ -11467,9 +11611,13 @@ namespace S100Framework.WPF.ViewModel.S101 {
             }
         }
 
+        [DomainModel.EnumerationAttribute(nameof(surveyTypeList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("QualityOfSurvey")]
         public ObservableCollection<surveyType> surveyType { get; set; } = new();
 
+        [DomainModel.EnumerationAttribute(nameof(techniqueOfVerticalMeasurementList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("QualityOfSurvey")]
         public ObservableCollection<techniqueOfVerticalMeasurement> techniqueOfVerticalMeasurement { get; set; } = new();
 
@@ -11479,6 +11627,18 @@ namespace S100Framework.WPF.ViewModel.S101 {
         public class QualityOfSurveyRefIdViewModel : FeatureRefIdViewModel {
             public override string[] AssociationTypes => ["QualityOfSurvey"];
         }
+
+        [Browsable(false)]
+        public qualityOfHorizontalMeasurement[] qualityOfHorizontalMeasurementList => [(qualityOfHorizontalMeasurement)4];
+
+        [Browsable(false)]
+        public qualityOfVerticalMeasurement[] qualityOfVerticalMeasurementList => [(qualityOfVerticalMeasurement)1, (qualityOfVerticalMeasurement)2, (qualityOfVerticalMeasurement)3, (qualityOfVerticalMeasurement)4, (qualityOfVerticalMeasurement)6, (qualityOfVerticalMeasurement)7, (qualityOfVerticalMeasurement)8, (qualityOfVerticalMeasurement)9, (qualityOfVerticalMeasurement)10, (qualityOfVerticalMeasurement)11];
+
+        [Browsable(false)]
+        public surveyType[] surveyTypeList => [(surveyType)1, (surveyType)2, (surveyType)4, (surveyType)5, (surveyType)6, (surveyType)7, (surveyType)8, (surveyType)9, (surveyType)10, (surveyType)11, (surveyType)12, (surveyType)13];
+
+        [Browsable(false)]
+        public techniqueOfVerticalMeasurement[] techniqueOfVerticalMeasurementList => [(techniqueOfVerticalMeasurement)1, (techniqueOfVerticalMeasurement)2, (techniqueOfVerticalMeasurement)3, (techniqueOfVerticalMeasurement)4, (techniqueOfVerticalMeasurement)5, (techniqueOfVerticalMeasurement)8, (techniqueOfVerticalMeasurement)9, (techniqueOfVerticalMeasurement)10, (techniqueOfVerticalMeasurement)11, (techniqueOfVerticalMeasurement)12, (techniqueOfVerticalMeasurement)13, (techniqueOfVerticalMeasurement)15, (techniqueOfVerticalMeasurement)16, (techniqueOfVerticalMeasurement)17, (techniqueOfVerticalMeasurement)18];
 
         public void Load(DomainModel.S101.FeatureTypes.QualityOfSurvey instance) {
             depthRangeMaximumValue = instance.depthRangeMaximumValue;
@@ -11631,6 +11791,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
         }
 
         private updateType _updateType;
+        [DomainModel.EnumerationAttribute(nameof(updateTypeList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("UpdateInformation")]
         public updateType updateType {
             get {
@@ -11672,6 +11834,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
         public class UpdateInformationRefIdViewModel : FeatureRefIdViewModel {
             public override string[] AssociationTypes => ["UpdateInformation"];
         }
+
+        [Browsable(false)]
+        public updateType[] updateTypeList => [(updateType)1, (updateType)2, (updateType)3, (updateType)4];
 
         public void Load(DomainModel.S101.FeatureTypes.UpdateInformation instance) {
             fixedDateRange = new();
@@ -11957,6 +12122,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
     [CategoryOrder("FeatureBindings", 200)]
     public partial class CoastlineViewModel : ViewModelBase {
         private categoryOfCoastline? _categoryOfCoastline = default;
+        [DomainModel.EnumerationAttribute(nameof(categoryOfCoastlineList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("Coastline")]
         public categoryOfCoastline? categoryOfCoastline {
             get {
@@ -11968,6 +12135,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
             }
         }
 
+        [DomainModel.EnumerationAttribute(nameof(colourList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("Coastline")]
         public ObservableCollection<colour> colour { get; set; } = new();
 
@@ -11998,6 +12167,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
             }
         }
 
+        [DomainModel.EnumerationAttribute(nameof(natureOfSurfaceList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("Coastline")]
         public ObservableCollection<natureOfSurface> natureOfSurface { get; set; } = new();
 
@@ -12014,6 +12185,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
         }
 
         private visualProminence? _visualProminence = default;
+        [DomainModel.EnumerationAttribute(nameof(visualProminenceList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("Coastline")]
         public visualProminence? visualProminence {
             get {
@@ -12043,6 +12216,18 @@ namespace S100Framework.WPF.ViewModel.S101 {
         public class CoastlineRefIdViewModel : FeatureRefIdViewModel {
             public override string[] AssociationTypes => ["Coastline"];
         }
+
+        [Browsable(false)]
+        public categoryOfCoastline[] categoryOfCoastlineList => [(categoryOfCoastline)1, (categoryOfCoastline)2, (categoryOfCoastline)6, (categoryOfCoastline)7, (categoryOfCoastline)8, (categoryOfCoastline)10];
+
+        [Browsable(false)]
+        public colour[] colourList => [(colour)1, (colour)2, (colour)3, (colour)4, (colour)6, (colour)7, (colour)8, (colour)11, (colour)13];
+
+        [Browsable(false)]
+        public natureOfSurface[] natureOfSurfaceList => [(natureOfSurface)1, (natureOfSurface)2, (natureOfSurface)3, (natureOfSurface)4, (natureOfSurface)5, (natureOfSurface)6, (natureOfSurface)7, (natureOfSurface)8, (natureOfSurface)9, (natureOfSurface)11, (natureOfSurface)14, (natureOfSurface)17];
+
+        [Browsable(false)]
+        public visualProminence[] visualProminenceList => [(visualProminence)1, (visualProminence)2, (visualProminence)3];
 
         public void Load(DomainModel.S101.FeatureTypes.Coastline instance) {
             categoryOfCoastline = instance.categoryOfCoastline;
@@ -12124,6 +12309,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
     [CategoryOrder("FeatureBindings", 200)]
     public partial class LandAreaViewModel : ViewModelBase {
         private condition? _condition = default;
+        [DomainModel.EnumerationAttribute(nameof(conditionList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("LandArea")]
         public condition? condition {
             get {
@@ -12163,6 +12350,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
         }
 
         private status? _status = default;
+        [DomainModel.EnumerationAttribute(nameof(statusList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("LandArea")]
         public status? status {
             get {
@@ -12192,6 +12381,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
         public class LandAreaRefIdViewModel : FeatureRefIdViewModel {
             public override string[] AssociationTypes => ["LandArea"];
         }
+
+        [Browsable(false)]
+        public condition[] conditionList => [(condition)1, (condition)3, (condition)5];
+
+        [Browsable(false)]
+        public status[] statusList => [(status)18];
 
         public void Load(DomainModel.S101.FeatureTypes.LandArea instance) {
             condition = instance.condition;
@@ -12362,6 +12557,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
         }
 
         private visualProminence? _visualProminence = default;
+        [DomainModel.EnumerationAttribute(nameof(visualProminenceList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("LandElevation")]
         public visualProminence? visualProminence {
             get {
@@ -12391,6 +12588,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
         public class LandElevationRefIdViewModel : FeatureRefIdViewModel {
             public override string[] AssociationTypes => ["LandElevation"];
         }
+
+        [Browsable(false)]
+        public visualProminence[] visualProminenceList => [(visualProminence)1, (visualProminence)2, (visualProminence)3];
 
         public void Load(DomainModel.S101.FeatureTypes.LandElevation instance) {
             elevation = instance.elevation;
@@ -12463,6 +12663,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
         }
 
         private status? _status = default;
+        [DomainModel.EnumerationAttribute(nameof(statusList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("River")]
         public status? status {
             get {
@@ -12492,6 +12694,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
         public class RiverRefIdViewModel : FeatureRefIdViewModel {
             public override string[] AssociationTypes => ["River"];
         }
+
+        [Browsable(false)]
+        public status[] statusList => [(status)5];
 
         public void Load(DomainModel.S101.FeatureTypes.River instance) {
             featureName.Clear();
@@ -12671,6 +12876,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
         }
 
         private visualProminence? _visualProminence = default;
+        [DomainModel.EnumerationAttribute(nameof(visualProminenceList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("Waterfall")]
         public visualProminence? visualProminence {
             get {
@@ -12700,6 +12907,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
         public class WaterfallRefIdViewModel : FeatureRefIdViewModel {
             public override string[] AssociationTypes => ["Waterfall"];
         }
+
+        [Browsable(false)]
+        public visualProminence[] visualProminenceList => [(visualProminence)1, (visualProminence)2, (visualProminence)3];
 
         public void Load(DomainModel.S101.FeatureTypes.Waterfall instance) {
             featureName.Clear();
@@ -12784,6 +12994,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
         }
 
         private status? _status = default;
+        [DomainModel.EnumerationAttribute(nameof(statusList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("Lake")]
         public status? status {
             get {
@@ -12813,6 +13025,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
         public class LakeRefIdViewModel : FeatureRefIdViewModel {
             public override string[] AssociationTypes => ["Lake"];
         }
+
+        [Browsable(false)]
+        public status[] statusList => [(status)5];
 
         public void Load(DomainModel.S101.FeatureTypes.Lake instance) {
             elevation = instance.elevation;
@@ -12869,6 +13084,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class LandRegionViewModel : ViewModelBase {
+        [DomainModel.EnumerationAttribute(nameof(categoryOfLandRegionList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("LandRegion")]
         public ObservableCollection<categoryOfLandRegion> categoryOfLandRegion { get; set; } = new();
 
@@ -12887,10 +13104,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
             }
         }
 
+        [DomainModel.EnumerationAttribute(nameof(natureOfSurfaceList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("LandRegion")]
         public ObservableCollection<natureOfSurface> natureOfSurface { get; set; } = new();
 
         private waterLevelEffect? _waterLevelEffect = default;
+        [DomainModel.EnumerationAttribute(nameof(waterLevelEffectList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("LandRegion")]
         public waterLevelEffect? waterLevelEffect {
             get {
@@ -12920,6 +13141,15 @@ namespace S100Framework.WPF.ViewModel.S101 {
         public class LandRegionRefIdViewModel : FeatureRefIdViewModel {
             public override string[] AssociationTypes => ["LandRegion"];
         }
+
+        [Browsable(false)]
+        public categoryOfLandRegion[] categoryOfLandRegionList => [(categoryOfLandRegion)1, (categoryOfLandRegion)2, (categoryOfLandRegion)3, (categoryOfLandRegion)4, (categoryOfLandRegion)5, (categoryOfLandRegion)6, (categoryOfLandRegion)7, (categoryOfLandRegion)8, (categoryOfLandRegion)9, (categoryOfLandRegion)10, (categoryOfLandRegion)11, (categoryOfLandRegion)12, (categoryOfLandRegion)13, (categoryOfLandRegion)14, (categoryOfLandRegion)15, (categoryOfLandRegion)16, (categoryOfLandRegion)17, (categoryOfLandRegion)18, (categoryOfLandRegion)19, (categoryOfLandRegion)20, (categoryOfLandRegion)21];
+
+        [Browsable(false)]
+        public natureOfSurface[] natureOfSurfaceList => [(natureOfSurface)1, (natureOfSurface)2, (natureOfSurface)3, (natureOfSurface)4, (natureOfSurface)5, (natureOfSurface)6, (natureOfSurface)7, (natureOfSurface)8, (natureOfSurface)9, (natureOfSurface)11, (natureOfSurface)14, (natureOfSurface)17, (natureOfSurface)18];
+
+        [Browsable(false)]
+        public waterLevelEffect[] waterLevelEffectList => [(waterLevelEffect)1, (waterLevelEffect)6];
 
         public void Load(DomainModel.S101.FeatureTypes.LandRegion instance) {
             categoryOfLandRegion.Clear();
@@ -12992,6 +13222,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
     [CategoryOrder("FeatureBindings", 200)]
     public partial class VegetationViewModel : ViewModelBase {
         private categoryOfVegetation _categoryOfVegetation;
+        [DomainModel.EnumerationAttribute(nameof(categoryOfVegetationList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("Vegetation")]
         public categoryOfVegetation categoryOfVegetation {
             get {
@@ -13055,6 +13287,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
         }
 
         private visualProminence? _visualProminence = default;
+        [DomainModel.EnumerationAttribute(nameof(visualProminenceList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("Vegetation")]
         public visualProminence? visualProminence {
             get {
@@ -13084,6 +13318,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
         public class VegetationRefIdViewModel : FeatureRefIdViewModel {
             public override string[] AssociationTypes => ["Vegetation"];
         }
+
+        [Browsable(false)]
+        public categoryOfVegetation[] categoryOfVegetationList => [(categoryOfVegetation)3, (categoryOfVegetation)4, (categoryOfVegetation)5, (categoryOfVegetation)6, (categoryOfVegetation)11, (categoryOfVegetation)13, (categoryOfVegetation)14, (categoryOfVegetation)15, (categoryOfVegetation)16, (categoryOfVegetation)17, (categoryOfVegetation)18, (categoryOfVegetation)19, (categoryOfVegetation)20, (categoryOfVegetation)22];
+
+        [Browsable(false)]
+        public visualProminence[] visualProminenceList => [(visualProminence)1, (visualProminence)2, (visualProminence)3];
 
         public void Load(DomainModel.S101.FeatureTypes.Vegetation instance) {
             categoryOfVegetation = instance.categoryOfVegetation;
@@ -13150,6 +13390,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
     [CategoryOrder("FeatureBindings", 200)]
     public partial class IceAreaViewModel : ViewModelBase {
         private categoryOfIce _categoryOfIce;
+        [DomainModel.EnumerationAttribute(nameof(categoryOfIceList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("IceArea")]
         public categoryOfIce categoryOfIce {
             get {
@@ -13215,6 +13457,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
             }
         }
 
+        [DomainModel.EnumerationAttribute(nameof(statusList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("IceArea")]
         public ObservableCollection<status> status { get; set; } = new();
 
@@ -13231,6 +13475,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
         }
 
         private visualProminence? _visualProminence = default;
+        [DomainModel.EnumerationAttribute(nameof(visualProminenceList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("IceArea")]
         public visualProminence? visualProminence {
             get {
@@ -13260,6 +13506,15 @@ namespace S100Framework.WPF.ViewModel.S101 {
         public class IceAreaRefIdViewModel : FeatureRefIdViewModel {
             public override string[] AssociationTypes => ["IceArea"];
         }
+
+        [Browsable(false)]
+        public categoryOfIce[] categoryOfIceList => [(categoryOfIce)1, (categoryOfIce)5, (categoryOfIce)8];
+
+        [Browsable(false)]
+        public status[] statusList => [(status)1, (status)5, (status)18];
+
+        [Browsable(false)]
+        public visualProminence[] visualProminenceList => [(visualProminence)1, (visualProminence)2, (visualProminence)3];
 
         public void Load(DomainModel.S101.FeatureTypes.IceArea instance) {
             categoryOfIce = instance.categoryOfIce;
@@ -13347,6 +13602,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
     [CategoryOrder("FeatureBindings", 200)]
     public partial class SlopingGroundViewModel : ViewModelBase {
         private categoryOfSlope? _categoryOfSlope = default;
+        [DomainModel.EnumerationAttribute(nameof(categoryOfSlopeList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("SlopingGround")]
         public categoryOfSlope? categoryOfSlope {
             get {
@@ -13358,6 +13615,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
             }
         }
 
+        [DomainModel.EnumerationAttribute(nameof(colourList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("SlopingGround")]
         public ObservableCollection<colour> colour { get; set; } = new();
 
@@ -13376,6 +13635,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
             }
         }
 
+        [DomainModel.EnumerationAttribute(nameof(natureOfSurfaceList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("SlopingGround")]
         public ObservableCollection<natureOfSurface> natureOfSurface { get; set; } = new();
 
@@ -13392,6 +13653,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
         }
 
         private visualProminence? _visualProminence = default;
+        [DomainModel.EnumerationAttribute(nameof(visualProminenceList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("SlopingGround")]
         public visualProminence? visualProminence {
             get {
@@ -13421,6 +13684,18 @@ namespace S100Framework.WPF.ViewModel.S101 {
         public class SlopingGroundRefIdViewModel : FeatureRefIdViewModel {
             public override string[] AssociationTypes => ["SlopingGround"];
         }
+
+        [Browsable(false)]
+        public categoryOfSlope[] categoryOfSlopeList => [(categoryOfSlope)1, (categoryOfSlope)2, (categoryOfSlope)3, (categoryOfSlope)4, (categoryOfSlope)5, (categoryOfSlope)6, (categoryOfSlope)7];
+
+        [Browsable(false)]
+        public colour[] colourList => [(colour)1, (colour)2, (colour)3, (colour)4, (colour)6, (colour)7, (colour)8, (colour)11, (colour)13];
+
+        [Browsable(false)]
+        public natureOfSurface[] natureOfSurfaceList => [(natureOfSurface)4, (natureOfSurface)5, (natureOfSurface)6, (natureOfSurface)7, (natureOfSurface)9, (natureOfSurface)11];
+
+        [Browsable(false)]
+        public visualProminence[] visualProminenceList => [(visualProminence)1, (visualProminence)2, (visualProminence)3];
 
         public void Load(DomainModel.S101.FeatureTypes.SlopingGround instance) {
             categoryOfSlope = instance.categoryOfSlope;
@@ -13499,6 +13774,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
     [CategoryOrder("FeatureBindings", 200)]
     public partial class SlopeToplineViewModel : ViewModelBase {
         private categoryOfSlope? _categoryOfSlope = default;
+        [DomainModel.EnumerationAttribute(nameof(categoryOfSlopeList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("SlopeTopline")]
         public categoryOfSlope? categoryOfSlope {
             get {
@@ -13510,6 +13787,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
             }
         }
 
+        [DomainModel.EnumerationAttribute(nameof(colourList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("SlopeTopline")]
         public ObservableCollection<colour> colour { get; set; } = new();
 
@@ -13540,6 +13819,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
             }
         }
 
+        [DomainModel.EnumerationAttribute(nameof(natureOfSurfaceList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("SlopeTopline")]
         public ObservableCollection<natureOfSurface> natureOfSurface { get; set; } = new();
 
@@ -13556,6 +13837,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
         }
 
         private visualProminence? _visualProminence = default;
+        [DomainModel.EnumerationAttribute(nameof(visualProminenceList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("SlopeTopline")]
         public visualProminence? visualProminence {
             get {
@@ -13585,6 +13868,18 @@ namespace S100Framework.WPF.ViewModel.S101 {
         public class SlopeToplineRefIdViewModel : FeatureRefIdViewModel {
             public override string[] AssociationTypes => ["SlopeTopline"];
         }
+
+        [Browsable(false)]
+        public categoryOfSlope[] categoryOfSlopeList => [(categoryOfSlope)1, (categoryOfSlope)2, (categoryOfSlope)6];
+
+        [Browsable(false)]
+        public colour[] colourList => [(colour)1, (colour)2, (colour)3, (colour)4, (colour)6, (colour)7, (colour)8, (colour)11, (colour)13];
+
+        [Browsable(false)]
+        public natureOfSurface[] natureOfSurfaceList => [(natureOfSurface)4, (natureOfSurface)5, (natureOfSurface)6, (natureOfSurface)7, (natureOfSurface)9, (natureOfSurface)11];
+
+        [Browsable(false)]
+        public visualProminence[] visualProminenceList => [(visualProminence)1, (visualProminence)2, (visualProminence)3];
 
         public void Load(DomainModel.S101.FeatureTypes.SlopeTopline instance) {
             categoryOfSlope = instance.categoryOfSlope;
@@ -13749,6 +14044,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
     [CategoryOrder("FeatureBindings", 200)]
     public partial class BuiltUpAreaViewModel : ViewModelBase {
         private categoryOfBuiltUpArea? _categoryOfBuiltUpArea = default;
+        [DomainModel.EnumerationAttribute(nameof(categoryOfBuiltUpAreaList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("BuiltUpArea")]
         public categoryOfBuiltUpArea? categoryOfBuiltUpArea {
             get {
@@ -13761,6 +14058,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
         }
 
         private condition? _condition = default;
+        [DomainModel.EnumerationAttribute(nameof(conditionList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("BuiltUpArea")]
         public condition? condition {
             get {
@@ -13824,6 +14123,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
         }
 
         private visualProminence? _visualProminence = default;
+        [DomainModel.EnumerationAttribute(nameof(visualProminenceList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("BuiltUpArea")]
         public visualProminence? visualProminence {
             get {
@@ -13877,6 +14178,15 @@ namespace S100Framework.WPF.ViewModel.S101 {
         public class BuiltUpAreaRefIdViewModel : FeatureRefIdViewModel {
             public override string[] AssociationTypes => ["BuiltUpArea"];
         }
+
+        [Browsable(false)]
+        public categoryOfBuiltUpArea[] categoryOfBuiltUpAreaList => [(categoryOfBuiltUpArea)1, (categoryOfBuiltUpArea)2, (categoryOfBuiltUpArea)3, (categoryOfBuiltUpArea)4, (categoryOfBuiltUpArea)5, (categoryOfBuiltUpArea)6];
+
+        [Browsable(false)]
+        public condition[] conditionList => [(condition)1, (condition)2, (condition)5];
+
+        [Browsable(false)]
+        public visualProminence[] visualProminenceList => [(visualProminence)1, (visualProminence)2, (visualProminence)3];
 
         public void Load(DomainModel.S101.FeatureTypes.BuiltUpArea instance) {
             categoryOfBuiltUpArea = instance.categoryOfBuiltUpArea;
@@ -13952,6 +14262,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
     [CategoryOrder("FeatureBindings", 200)]
     public partial class BuildingViewModel : ViewModelBase {
         private buildingShape? _buildingShape = default;
+        [DomainModel.EnumerationAttribute(nameof(buildingShapeList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("Building")]
         public buildingShape? buildingShape {
             get {
@@ -13963,10 +14275,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
             }
         }
 
+        [DomainModel.EnumerationAttribute(nameof(colourList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("Building")]
         public ObservableCollection<colour> colour { get; set; } = new();
 
         private colourPattern? _colourPattern = default;
+        [DomainModel.EnumerationAttribute(nameof(colourPatternList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("Building")]
         public colourPattern? colourPattern {
             get {
@@ -13979,6 +14295,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
         }
 
         private condition? _condition = default;
+        [DomainModel.EnumerationAttribute(nameof(conditionList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("Building")]
         public condition? condition {
             get {
@@ -14005,6 +14323,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
         [Category("Building")]
         public ObservableCollection<featureName> featureName { get; set; } = new();
 
+        [DomainModel.EnumerationAttribute(nameof(functionList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("Building")]
         public ObservableCollection<function> function { get; set; } = new();
 
@@ -14045,6 +14365,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
             }
         }
 
+        [DomainModel.EnumerationAttribute(nameof(natureOfConstructionList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("Building")]
         public ObservableCollection<natureOfConstruction> natureOfConstruction { get; set; } = new();
 
@@ -14072,6 +14394,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
             }
         }
 
+        [DomainModel.EnumerationAttribute(nameof(statusList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("Building")]
         public ObservableCollection<status> status { get; set; } = new();
 
@@ -14088,6 +14412,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
         }
 
         private visualProminence? _visualProminence = default;
+        [DomainModel.EnumerationAttribute(nameof(visualProminenceList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("Building")]
         public visualProminence? visualProminence {
             get {
@@ -14141,6 +14467,30 @@ namespace S100Framework.WPF.ViewModel.S101 {
         public class BuildingRefIdViewModel : FeatureRefIdViewModel {
             public override string[] AssociationTypes => ["Building"];
         }
+
+        [Browsable(false)]
+        public buildingShape[] buildingShapeList => [(buildingShape)5, (buildingShape)6, (buildingShape)7, (buildingShape)8, (buildingShape)9];
+
+        [Browsable(false)]
+        public colour[] colourList => [(colour)1, (colour)2, (colour)3, (colour)4, (colour)5, (colour)6, (colour)7, (colour)8, (colour)9, (colour)10, (colour)11, (colour)12, (colour)13];
+
+        [Browsable(false)]
+        public colourPattern[] colourPatternList => [(colourPattern)1, (colourPattern)2, (colourPattern)3, (colourPattern)4, (colourPattern)5, (colourPattern)6];
+
+        [Browsable(false)]
+        public condition[] conditionList => [(condition)1, (condition)2, (condition)5];
+
+        [Browsable(false)]
+        public function[] functionList => [(function)2, (function)3, (function)4, (function)5, (function)6, (function)7, (function)8, (function)9, (function)10, (function)11, (function)12, (function)13, (function)14, (function)15, (function)16, (function)17, (function)18, (function)19, (function)20, (function)21, (function)22, (function)23, (function)24, (function)25, (function)26, (function)27, (function)28, (function)29, (function)30, (function)31, (function)32, (function)33, (function)34, (function)35, (function)36, (function)37, (function)38, (function)39, (function)40, (function)41, (function)42, (function)44, (function)45, (function)46, (function)47, (function)48];
+
+        [Browsable(false)]
+        public natureOfConstruction[] natureOfConstructionList => [(natureOfConstruction)1, (natureOfConstruction)2, (natureOfConstruction)6, (natureOfConstruction)7, (natureOfConstruction)8, (natureOfConstruction)12];
+
+        [Browsable(false)]
+        public status[] statusList => [(status)4, (status)7, (status)8, (status)12, (status)13, (status)14];
+
+        [Browsable(false)]
+        public visualProminence[] visualProminenceList => [(visualProminence)1, (visualProminence)2, (visualProminence)3];
 
         public void Load(DomainModel.S101.FeatureTypes.Building instance) {
             buildingShape = instance.buildingShape;
@@ -14268,10 +14618,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class AirportAirfieldViewModel : ViewModelBase {
+        [DomainModel.EnumerationAttribute(nameof(categoryOfAirportAirfieldList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("AirportAirfield")]
         public ObservableCollection<categoryOfAirportAirfield> categoryOfAirportAirfield { get; set; } = new();
 
         private condition? _condition = default;
+        [DomainModel.EnumerationAttribute(nameof(conditionList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("AirportAirfield")]
         public condition? condition {
             get {
@@ -14310,6 +14664,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
             }
         }
 
+        [DomainModel.EnumerationAttribute(nameof(statusList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("AirportAirfield")]
         public ObservableCollection<status> status { get; set; } = new();
 
@@ -14343,6 +14699,15 @@ namespace S100Framework.WPF.ViewModel.S101 {
         public class AirportAirfieldRefIdViewModel : FeatureRefIdViewModel {
             public override string[] AssociationTypes => ["AirportAirfield"];
         }
+
+        [Browsable(false)]
+        public categoryOfAirportAirfield[] categoryOfAirportAirfieldList => [(categoryOfAirportAirfield)1, (categoryOfAirportAirfield)2, (categoryOfAirportAirfield)3, (categoryOfAirportAirfield)4, (categoryOfAirportAirfield)5, (categoryOfAirportAirfield)6, (categoryOfAirportAirfield)8, (categoryOfAirportAirfield)9];
+
+        [Browsable(false)]
+        public condition[] conditionList => [(condition)1, (condition)2, (condition)3, (condition)5];
+
+        [Browsable(false)]
+        public status[] statusList => [(status)1, (status)2, (status)4, (status)5, (status)6, (status)7, (status)8, (status)12, (status)14];
 
         public void Load(DomainModel.S101.FeatureTypes.AirportAirfield instance) {
             categoryOfAirportAirfield.Clear();
@@ -14421,6 +14786,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
     [CategoryOrder("FeatureBindings", 200)]
     public partial class RunwayViewModel : ViewModelBase {
         private condition? _condition = default;
+        [DomainModel.EnumerationAttribute(nameof(conditionList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("Runway")]
         public condition? condition {
             get {
@@ -14447,6 +14814,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
             }
         }
 
+        [DomainModel.EnumerationAttribute(nameof(natureOfConstructionList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("Runway")]
         public ObservableCollection<natureOfConstruction> natureOfConstruction { get; set; } = new();
 
@@ -14465,6 +14834,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
             }
         }
 
+        [DomainModel.EnumerationAttribute(nameof(statusList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("Runway")]
         public ObservableCollection<status> status { get; set; } = new();
 
@@ -14486,6 +14857,15 @@ namespace S100Framework.WPF.ViewModel.S101 {
         public class RunwayRefIdViewModel : FeatureRefIdViewModel {
             public override string[] AssociationTypes => ["Runway"];
         }
+
+        [Browsable(false)]
+        public condition[] conditionList => [(condition)1, (condition)2, (condition)3, (condition)5];
+
+        [Browsable(false)]
+        public natureOfConstruction[] natureOfConstructionList => [(natureOfConstruction)1, (natureOfConstruction)2, (natureOfConstruction)4, (natureOfConstruction)5, (natureOfConstruction)6, (natureOfConstruction)7];
+
+        [Browsable(false)]
+        public status[] statusList => [(status)1, (status)2, (status)4, (status)5, (status)6, (status)7, (status)8, (status)12, (status)14];
 
         public void Load(DomainModel.S101.FeatureTypes.Runway instance) {
             condition = instance.condition;
@@ -14570,6 +14950,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
     [CategoryOrder("FeatureBindings", 200)]
     public partial class HelipadViewModel : ViewModelBase {
         private condition? _condition = default;
+        [DomainModel.EnumerationAttribute(nameof(conditionList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("Helipad")]
         public condition? condition {
             get {
@@ -14596,6 +14978,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
             }
         }
 
+        [DomainModel.EnumerationAttribute(nameof(natureOfConstructionList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("Helipad")]
         public ObservableCollection<natureOfConstruction> natureOfConstruction { get; set; } = new();
 
@@ -14614,6 +14998,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
             }
         }
 
+        [DomainModel.EnumerationAttribute(nameof(statusList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("Helipad")]
         public ObservableCollection<status> status { get; set; } = new();
 
@@ -14635,6 +15021,15 @@ namespace S100Framework.WPF.ViewModel.S101 {
         public class HelipadRefIdViewModel : FeatureRefIdViewModel {
             public override string[] AssociationTypes => ["Helipad"];
         }
+
+        [Browsable(false)]
+        public condition[] conditionList => [(condition)1, (condition)2, (condition)3, (condition)5];
+
+        [Browsable(false)]
+        public natureOfConstruction[] natureOfConstructionList => [(natureOfConstruction)1, (natureOfConstruction)2, (natureOfConstruction)4, (natureOfConstruction)5, (natureOfConstruction)6, (natureOfConstruction)7];
+
+        [Browsable(false)]
+        public status[] statusList => [(status)1, (status)2, (status)4, (status)5, (status)6, (status)7, (status)8, (status)12, (status)14];
 
         public void Load(DomainModel.S101.FeatureTypes.Helipad instance) {
             condition = instance.condition;
@@ -14719,6 +15114,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
     [CategoryOrder("FeatureBindings", 200)]
     public partial class BridgeViewModel : ViewModelBase {
         private bridgeConstruction? _bridgeConstruction = default;
+        [DomainModel.EnumerationAttribute(nameof(bridgeConstructionList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("Bridge")]
         public bridgeConstruction? bridgeConstruction {
             get {
@@ -14730,10 +15127,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
             }
         }
 
+        [DomainModel.EnumerationAttribute(nameof(bridgeFunctionList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("Bridge")]
         public ObservableCollection<bridgeFunction> bridgeFunction { get; set; } = new();
 
         private categoryOfOpeningBridge? _categoryOfOpeningBridge = default;
+        [DomainModel.EnumerationAttribute(nameof(categoryOfOpeningBridgeList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("Bridge")]
         public categoryOfOpeningBridge? categoryOfOpeningBridge {
             get {
@@ -14745,10 +15146,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
             }
         }
 
+        [DomainModel.EnumerationAttribute(nameof(colourList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("Bridge")]
         public ObservableCollection<colour> colour { get; set; } = new();
 
         private colourPattern? _colourPattern = default;
+        [DomainModel.EnumerationAttribute(nameof(colourPatternList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("Bridge")]
         public colourPattern? colourPattern {
             get {
@@ -14761,6 +15166,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
         }
 
         private condition? _condition = default;
+        [DomainModel.EnumerationAttribute(nameof(conditionList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("Bridge")]
         public condition? condition {
             get {
@@ -14812,6 +15219,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
             }
         }
 
+        [DomainModel.EnumerationAttribute(nameof(natureOfConstructionList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("Bridge")]
         public ObservableCollection<natureOfConstruction> natureOfConstruction { get; set; } = new();
 
@@ -14851,10 +15260,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
             }
         }
 
+        [DomainModel.EnumerationAttribute(nameof(statusList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("Bridge")]
         public ObservableCollection<status> status { get; set; } = new();
 
         private visualProminence? _visualProminence = default;
+        [DomainModel.EnumerationAttribute(nameof(visualProminenceList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("Bridge")]
         public visualProminence? visualProminence {
             get {
@@ -14896,6 +15309,33 @@ namespace S100Framework.WPF.ViewModel.S101 {
         public class BridgeRefIdViewModel : FeatureRefIdViewModel {
             public override string[] AssociationTypes => ["Bridge"];
         }
+
+        [Browsable(false)]
+        public bridgeConstruction[] bridgeConstructionList => [(bridgeConstruction)1, (bridgeConstruction)2, (bridgeConstruction)3, (bridgeConstruction)4, (bridgeConstruction)5];
+
+        [Browsable(false)]
+        public bridgeFunction[] bridgeFunctionList => [(bridgeFunction)1, (bridgeFunction)2, (bridgeFunction)3, (bridgeFunction)4];
+
+        [Browsable(false)]
+        public categoryOfOpeningBridge[] categoryOfOpeningBridgeList => [(categoryOfOpeningBridge)3, (categoryOfOpeningBridge)4, (categoryOfOpeningBridge)5, (categoryOfOpeningBridge)7];
+
+        [Browsable(false)]
+        public colour[] colourList => [(colour)1, (colour)2, (colour)3, (colour)4, (colour)5, (colour)6, (colour)7, (colour)8, (colour)9, (colour)10, (colour)11, (colour)12, (colour)13];
+
+        [Browsable(false)]
+        public colourPattern[] colourPatternList => [(colourPattern)1, (colourPattern)2, (colourPattern)3, (colourPattern)4, (colourPattern)5, (colourPattern)6];
+
+        [Browsable(false)]
+        public condition[] conditionList => [(condition)1, (condition)2, (condition)5];
+
+        [Browsable(false)]
+        public natureOfConstruction[] natureOfConstructionList => [(natureOfConstruction)1, (natureOfConstruction)2, (natureOfConstruction)6, (natureOfConstruction)7, (natureOfConstruction)11];
+
+        [Browsable(false)]
+        public status[] statusList => [(status)1, (status)2, (status)4, (status)5, (status)7, (status)12];
+
+        [Browsable(false)]
+        public visualProminence[] visualProminenceList => [(visualProminence)1, (visualProminence)2, (visualProminence)3];
 
         public void Load(DomainModel.S101.FeatureTypes.Bridge instance) {
             bridgeConstruction = instance.bridgeConstruction;
@@ -15072,6 +15512,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
         }
 
         private verticalDatum? _verticalDatum = default;
+        [DomainModel.EnumerationAttribute(nameof(verticalDatumList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("SpanFixed")]
         public verticalDatum? verticalDatum {
             get {
@@ -15113,6 +15555,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
         public class SpanFixedRefIdViewModel : FeatureRefIdViewModel {
             public override string[] AssociationTypes => ["SpanFixed"];
         }
+
+        [Browsable(false)]
+        public verticalDatum[] verticalDatumList => [(verticalDatum)3, (verticalDatum)13, (verticalDatum)16, (verticalDatum)17, (verticalDatum)18, (verticalDatum)19, (verticalDatum)20, (verticalDatum)21, (verticalDatum)24, (verticalDatum)25, (verticalDatum)26, (verticalDatum)28, (verticalDatum)29, (verticalDatum)30, (verticalDatum)44];
 
         public void Load(DomainModel.S101.FeatureTypes.SpanFixed instance) {
             fixedDateRange = new();
@@ -15249,6 +15694,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
         }
 
         private verticalDatum? _verticalDatum = default;
+        [DomainModel.EnumerationAttribute(nameof(verticalDatumList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("SpanOpening")]
         public verticalDatum? verticalDatum {
             get {
@@ -15290,6 +15737,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
         public class SpanOpeningRefIdViewModel : FeatureRefIdViewModel {
             public override string[] AssociationTypes => ["SpanOpening"];
         }
+
+        [Browsable(false)]
+        public verticalDatum[] verticalDatumList => [(verticalDatum)3, (verticalDatum)13, (verticalDatum)16, (verticalDatum)17, (verticalDatum)18, (verticalDatum)19, (verticalDatum)20, (verticalDatum)21, (verticalDatum)24, (verticalDatum)25, (verticalDatum)26, (verticalDatum)28, (verticalDatum)29, (verticalDatum)30, (verticalDatum)44];
 
         public void Load(DomainModel.S101.FeatureTypes.SpanOpening instance) {
             fixedDateRange = new();
@@ -15370,6 +15820,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
     [CategoryOrder("FeatureBindings", 200)]
     public partial class ConveyorViewModel : ViewModelBase {
         private categoryOfConveyor? _categoryOfConveyor = default;
+        [DomainModel.EnumerationAttribute(nameof(categoryOfConveyorList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("Conveyor")]
         public categoryOfConveyor? categoryOfConveyor {
             get {
@@ -15381,10 +15833,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
             }
         }
 
+        [DomainModel.EnumerationAttribute(nameof(colourList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("Conveyor")]
         public ObservableCollection<colour> colour { get; set; } = new();
 
         private colourPattern? _colourPattern = default;
+        [DomainModel.EnumerationAttribute(nameof(colourPatternList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("Conveyor")]
         public colourPattern? colourPattern {
             get {
@@ -15397,6 +15853,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
         }
 
         private condition? _condition = default;
+        [DomainModel.EnumerationAttribute(nameof(conditionList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("Conveyor")]
         public condition? condition {
             get {
@@ -15473,6 +15931,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
             }
         }
 
+        [DomainModel.EnumerationAttribute(nameof(productList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("Conveyor")]
         public ObservableCollection<product> product { get; set; } = new();
 
@@ -15500,6 +15960,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
             }
         }
 
+        [DomainModel.EnumerationAttribute(nameof(statusList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("Conveyor")]
         public ObservableCollection<status> status { get; set; } = new();
 
@@ -15517,6 +15979,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
         }
 
         private verticalDatum? _verticalDatum = default;
+        [DomainModel.EnumerationAttribute(nameof(verticalDatumList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("Conveyor")]
         public verticalDatum? verticalDatum {
             get {
@@ -15541,6 +16005,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
         }
 
         private visualProminence? _visualProminence = default;
+        [DomainModel.EnumerationAttribute(nameof(visualProminenceList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("Conveyor")]
         public visualProminence? visualProminence {
             get {
@@ -15582,6 +16048,30 @@ namespace S100Framework.WPF.ViewModel.S101 {
         public class ConveyorRefIdViewModel : FeatureRefIdViewModel {
             public override string[] AssociationTypes => ["Conveyor"];
         }
+
+        [Browsable(false)]
+        public categoryOfConveyor[] categoryOfConveyorList => [(categoryOfConveyor)1, (categoryOfConveyor)2, (categoryOfConveyor)3, (categoryOfConveyor)4];
+
+        [Browsable(false)]
+        public colour[] colourList => [(colour)1, (colour)2, (colour)3, (colour)4, (colour)5, (colour)6, (colour)7, (colour)8, (colour)9, (colour)10, (colour)11, (colour)12, (colour)13];
+
+        [Browsable(false)]
+        public colourPattern[] colourPatternList => [(colourPattern)1, (colourPattern)2, (colourPattern)3, (colourPattern)4, (colourPattern)5, (colourPattern)6];
+
+        [Browsable(false)]
+        public condition[] conditionList => [(condition)1, (condition)2, (condition)5];
+
+        [Browsable(false)]
+        public product[] productList => [(product)4, (product)5, (product)6, (product)10, (product)11, (product)12, (product)13, (product)14, (product)15, (product)16, (product)17, (product)21, (product)22, (product)25];
+
+        [Browsable(false)]
+        public status[] statusList => [(status)4, (status)12];
+
+        [Browsable(false)]
+        public verticalDatum[] verticalDatumList => [(verticalDatum)3, (verticalDatum)13, (verticalDatum)16, (verticalDatum)17, (verticalDatum)18, (verticalDatum)19, (verticalDatum)20, (verticalDatum)21, (verticalDatum)24, (verticalDatum)25, (verticalDatum)26, (verticalDatum)28, (verticalDatum)29, (verticalDatum)30, (verticalDatum)44];
+
+        [Browsable(false)]
+        public visualProminence[] visualProminenceList => [(visualProminence)1, (visualProminence)2, (visualProminence)3];
 
         public void Load(DomainModel.S101.FeatureTypes.Conveyor instance) {
             categoryOfConveyor = instance.categoryOfConveyor;
@@ -15717,6 +16207,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
     [CategoryOrder("FeatureBindings", 200)]
     public partial class CableOverheadViewModel : ViewModelBase {
         private categoryOfCable? _categoryOfCable = default;
+        [DomainModel.EnumerationAttribute(nameof(categoryOfCableList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("CableOverhead")]
         public categoryOfCable? categoryOfCable {
             get {
@@ -15729,6 +16221,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
         }
 
         private condition? _condition = default;
+        [DomainModel.EnumerationAttribute(nameof(conditionList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("CableOverhead")]
         public condition? condition {
             get {
@@ -15817,6 +16311,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
             }
         }
 
+        [DomainModel.EnumerationAttribute(nameof(statusList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("CableOverhead")]
         public ObservableCollection<status> status { get; set; } = new();
 
@@ -15847,6 +16343,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
         }
 
         private verticalDatum? _verticalDatum = default;
+        [DomainModel.EnumerationAttribute(nameof(verticalDatumList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("CableOverhead")]
         public verticalDatum? verticalDatum {
             get {
@@ -15859,6 +16357,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
         }
 
         private visualProminence? _visualProminence = default;
+        [DomainModel.EnumerationAttribute(nameof(visualProminenceList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("CableOverhead")]
         public visualProminence? visualProminence {
             get {
@@ -15888,6 +16388,21 @@ namespace S100Framework.WPF.ViewModel.S101 {
         public class CableOverheadRefIdViewModel : FeatureRefIdViewModel {
             public override string[] AssociationTypes => ["CableOverhead"];
         }
+
+        [Browsable(false)]
+        public categoryOfCable[] categoryOfCableList => [(categoryOfCable)1, (categoryOfCable)3, (categoryOfCable)10];
+
+        [Browsable(false)]
+        public condition[] conditionList => [(condition)1, (condition)5];
+
+        [Browsable(false)]
+        public status[] statusList => [(status)1, (status)4, (status)5, (status)7, (status)12, (status)28];
+
+        [Browsable(false)]
+        public verticalDatum[] verticalDatumList => [(verticalDatum)3, (verticalDatum)13, (verticalDatum)16, (verticalDatum)17, (verticalDatum)18, (verticalDatum)19, (verticalDatum)20, (verticalDatum)21, (verticalDatum)24, (verticalDatum)25, (verticalDatum)26, (verticalDatum)28, (verticalDatum)29, (verticalDatum)30, (verticalDatum)44];
+
+        [Browsable(false)]
+        public visualProminence[] visualProminenceList => [(visualProminence)1, (visualProminence)2, (visualProminence)3];
 
         public void Load(DomainModel.S101.FeatureTypes.CableOverhead instance) {
             categoryOfCable = instance.categoryOfCable;
@@ -16001,6 +16516,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
     [CategoryOrder("FeatureBindings", 200)]
     public partial class PipelineOverheadViewModel : ViewModelBase {
         private categoryOfPipelinePipe? _categoryOfPipelinePipe = default;
+        [DomainModel.EnumerationAttribute(nameof(categoryOfPipelinePipeList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("PipelineOverhead")]
         public categoryOfPipelinePipe? categoryOfPipelinePipe {
             get {
@@ -16013,6 +16530,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
         }
 
         private condition? _condition = default;
+        [DomainModel.EnumerationAttribute(nameof(conditionList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("PipelineOverhead")]
         public condition? condition {
             get {
@@ -16065,6 +16584,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
             }
         }
 
+        [DomainModel.EnumerationAttribute(nameof(productList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("PipelineOverhead")]
         public ObservableCollection<product> product { get; set; } = new();
 
@@ -16092,6 +16613,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
             }
         }
 
+        [DomainModel.EnumerationAttribute(nameof(statusList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("PipelineOverhead")]
         public ObservableCollection<status> status { get; set; } = new();
 
@@ -16109,6 +16632,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
         }
 
         private verticalDatum? _verticalDatum = default;
+        [DomainModel.EnumerationAttribute(nameof(verticalDatumList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("PipelineOverhead")]
         public verticalDatum? verticalDatum {
             get {
@@ -16121,6 +16646,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
         }
 
         private visualProminence? _visualProminence = default;
+        [DomainModel.EnumerationAttribute(nameof(visualProminenceList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("PipelineOverhead")]
         public visualProminence? visualProminence {
             get {
@@ -16150,6 +16677,24 @@ namespace S100Framework.WPF.ViewModel.S101 {
         public class PipelineOverheadRefIdViewModel : FeatureRefIdViewModel {
             public override string[] AssociationTypes => ["PipelineOverhead"];
         }
+
+        [Browsable(false)]
+        public categoryOfPipelinePipe[] categoryOfPipelinePipeList => [(categoryOfPipelinePipe)2, (categoryOfPipelinePipe)3, (categoryOfPipelinePipe)4, (categoryOfPipelinePipe)6];
+
+        [Browsable(false)]
+        public condition[] conditionList => [(condition)1, (condition)5];
+
+        [Browsable(false)]
+        public product[] productList => [(product)1, (product)2, (product)3, (product)7, (product)8, (product)9, (product)18, (product)19, (product)20, (product)22];
+
+        [Browsable(false)]
+        public status[] statusList => [(status)1, (status)4, (status)7, (status)12];
+
+        [Browsable(false)]
+        public verticalDatum[] verticalDatumList => [(verticalDatum)3, (verticalDatum)13, (verticalDatum)16, (verticalDatum)17, (verticalDatum)18, (verticalDatum)19, (verticalDatum)20, (verticalDatum)21, (verticalDatum)24, (verticalDatum)25, (verticalDatum)26, (verticalDatum)28, (verticalDatum)29, (verticalDatum)30, (verticalDatum)44];
+
+        [Browsable(false)]
+        public visualProminence[] visualProminenceList => [(visualProminence)1, (visualProminence)2, (visualProminence)3];
 
         public void Load(DomainModel.S101.FeatureTypes.PipelineOverhead instance) {
             categoryOfPipelinePipe = instance.categoryOfPipelinePipe;
@@ -16261,6 +16806,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
     [CategoryOrder("FeatureBindings", 200)]
     public partial class PylonBridgeSupportViewModel : ViewModelBase {
         private categoryOfPylon _categoryOfPylon;
+        [DomainModel.EnumerationAttribute(nameof(categoryOfPylonList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("PylonBridgeSupport")]
         public categoryOfPylon categoryOfPylon {
             get {
@@ -16272,10 +16819,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
             }
         }
 
+        [DomainModel.EnumerationAttribute(nameof(colourList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("PylonBridgeSupport")]
         public ObservableCollection<colour> colour { get; set; } = new();
 
         private colourPattern? _colourPattern = default;
+        [DomainModel.EnumerationAttribute(nameof(colourPatternList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("PylonBridgeSupport")]
         public colourPattern? colourPattern {
             get {
@@ -16288,6 +16839,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
         }
 
         private condition? _condition = default;
+        [DomainModel.EnumerationAttribute(nameof(conditionList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("PylonBridgeSupport")]
         public condition? condition {
             get {
@@ -16352,6 +16905,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
             }
         }
 
+        [DomainModel.EnumerationAttribute(nameof(natureOfConstructionList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("PylonBridgeSupport")]
         public ObservableCollection<natureOfConstruction> natureOfConstruction { get; set; } = new();
 
@@ -16379,6 +16934,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
             }
         }
 
+        [DomainModel.EnumerationAttribute(nameof(statusList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("PylonBridgeSupport")]
         public ObservableCollection<status> status { get; set; } = new();
 
@@ -16395,6 +16952,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
         }
 
         private visualProminence? _visualProminence = default;
+        [DomainModel.EnumerationAttribute(nameof(visualProminenceList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("PylonBridgeSupport")]
         public visualProminence? visualProminence {
             get {
@@ -16407,6 +16966,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
         }
 
         private waterLevelEffect? _waterLevelEffect = default;
+        [DomainModel.EnumerationAttribute(nameof(waterLevelEffectList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("PylonBridgeSupport")]
         public waterLevelEffect? waterLevelEffect {
             get {
@@ -16448,6 +17009,30 @@ namespace S100Framework.WPF.ViewModel.S101 {
         public class PylonBridgeSupportRefIdViewModel : FeatureRefIdViewModel {
             public override string[] AssociationTypes => ["PylonBridgeSupport"];
         }
+
+        [Browsable(false)]
+        public categoryOfPylon[] categoryOfPylonList => [(categoryOfPylon)1, (categoryOfPylon)2, (categoryOfPylon)3, (categoryOfPylon)4, (categoryOfPylon)5, (categoryOfPylon)6];
+
+        [Browsable(false)]
+        public colour[] colourList => [(colour)1, (colour)2, (colour)3, (colour)4, (colour)5, (colour)6, (colour)7, (colour)8, (colour)9, (colour)10, (colour)11, (colour)12, (colour)13];
+
+        [Browsable(false)]
+        public colourPattern[] colourPatternList => [(colourPattern)1, (colourPattern)2, (colourPattern)3, (colourPattern)4, (colourPattern)5, (colourPattern)6];
+
+        [Browsable(false)]
+        public condition[] conditionList => [(condition)1, (condition)2, (condition)5];
+
+        [Browsable(false)]
+        public natureOfConstruction[] natureOfConstructionList => [(natureOfConstruction)1, (natureOfConstruction)2, (natureOfConstruction)6, (natureOfConstruction)7, (natureOfConstruction)11];
+
+        [Browsable(false)]
+        public status[] statusList => [(status)4, (status)12];
+
+        [Browsable(false)]
+        public visualProminence[] visualProminenceList => [(visualProminence)1, (visualProminence)2, (visualProminence)3];
+
+        [Browsable(false)]
+        public waterLevelEffect[] waterLevelEffectList => [(waterLevelEffect)1, (waterLevelEffect)2, (waterLevelEffect)3, (waterLevelEffect)4, (waterLevelEffect)5, (waterLevelEffect)6];
 
         public void Load(DomainModel.S101.FeatureTypes.PylonBridgeSupport instance) {
             categoryOfPylon = instance.categoryOfPylon;
@@ -16572,6 +17157,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
     [CategoryOrder("FeatureBindings", 200)]
     public partial class FenceWallViewModel : ViewModelBase {
         private categoryOfFence? _categoryOfFence = default;
+        [DomainModel.EnumerationAttribute(nameof(categoryOfFenceList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("FenceWall")]
         public categoryOfFence? categoryOfFence {
             get {
@@ -16583,10 +17170,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
             }
         }
 
+        [DomainModel.EnumerationAttribute(nameof(colourList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("FenceWall")]
         public ObservableCollection<colour> colour { get; set; } = new();
 
         private colourPattern? _colourPattern = default;
+        [DomainModel.EnumerationAttribute(nameof(colourPatternList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("FenceWall")]
         public colourPattern? colourPattern {
             get {
@@ -16599,6 +17190,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
         }
 
         private condition? _condition = default;
+        [DomainModel.EnumerationAttribute(nameof(conditionList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("FenceWall")]
         public condition? condition {
             get {
@@ -16649,6 +17242,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
             }
         }
 
+        [DomainModel.EnumerationAttribute(nameof(natureOfConstructionList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("FenceWall")]
         public ObservableCollection<natureOfConstruction> natureOfConstruction { get; set; } = new();
 
@@ -16676,6 +17271,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
             }
         }
 
+        [DomainModel.EnumerationAttribute(nameof(statusList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("FenceWall")]
         public ObservableCollection<status> status { get; set; } = new();
 
@@ -16692,6 +17289,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
         }
 
         private visualProminence? _visualProminence = default;
+        [DomainModel.EnumerationAttribute(nameof(visualProminenceList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("FenceWall")]
         public visualProminence? visualProminence {
             get {
@@ -16721,6 +17320,27 @@ namespace S100Framework.WPF.ViewModel.S101 {
         public class FenceWallRefIdViewModel : FeatureRefIdViewModel {
             public override string[] AssociationTypes => ["FenceWall"];
         }
+
+        [Browsable(false)]
+        public categoryOfFence[] categoryOfFenceList => [(categoryOfFence)1, (categoryOfFence)3, (categoryOfFence)4];
+
+        [Browsable(false)]
+        public colour[] colourList => [(colour)1, (colour)2, (colour)3, (colour)4, (colour)5, (colour)6, (colour)7, (colour)8, (colour)9, (colour)10, (colour)11, (colour)12, (colour)13];
+
+        [Browsable(false)]
+        public colourPattern[] colourPatternList => [(colourPattern)1, (colourPattern)2, (colourPattern)3, (colourPattern)4, (colourPattern)5, (colourPattern)6];
+
+        [Browsable(false)]
+        public condition[] conditionList => [(condition)1, (condition)2, (condition)5];
+
+        [Browsable(false)]
+        public natureOfConstruction[] natureOfConstructionList => [(natureOfConstruction)1, (natureOfConstruction)2, (natureOfConstruction)3, (natureOfConstruction)6, (natureOfConstruction)7, (natureOfConstruction)11];
+
+        [Browsable(false)]
+        public status[] statusList => [(status)1, (status)7, (status)12, (status)13];
+
+        [Browsable(false)]
+        public visualProminence[] visualProminenceList => [(visualProminence)1, (visualProminence)2, (visualProminence)3];
 
         public void Load(DomainModel.S101.FeatureTypes.FenceWall instance) {
             categoryOfFence = instance.categoryOfFence;
@@ -16826,6 +17446,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
     [CategoryOrder("FeatureBindings", 200)]
     public partial class RailwayViewModel : ViewModelBase {
         private condition? _condition = default;
+        [DomainModel.EnumerationAttribute(nameof(conditionList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("Railway")]
         public condition? condition {
             get {
@@ -16876,6 +17498,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
             }
         }
 
+        [DomainModel.EnumerationAttribute(nameof(statusList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("Railway")]
         public ObservableCollection<status> status { get; set; } = new();
 
@@ -16897,6 +17521,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
         public class RailwayRefIdViewModel : FeatureRefIdViewModel {
             public override string[] AssociationTypes => ["Railway"];
         }
+
+        [Browsable(false)]
+        public condition[] conditionList => [(condition)1, (condition)2, (condition)5];
+
+        [Browsable(false)]
+        public status[] statusList => [(status)1, (status)4, (status)6, (status)12, (status)13, (status)14];
 
         public void Load(DomainModel.S101.FeatureTypes.Railway instance) {
             condition = instance.condition;
@@ -16966,6 +17596,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
     [CategoryOrder("FeatureBindings", 200)]
     public partial class RoadViewModel : ViewModelBase {
         private categoryOfRoad? _categoryOfRoad = default;
+        [DomainModel.EnumerationAttribute(nameof(categoryOfRoadList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("Road")]
         public categoryOfRoad? categoryOfRoad {
             get {
@@ -16978,6 +17610,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
         }
 
         private condition? _condition = default;
+        [DomainModel.EnumerationAttribute(nameof(conditionList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("Road")]
         public condition? condition {
             get {
@@ -17004,6 +17638,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
             }
         }
 
+        [DomainModel.EnumerationAttribute(nameof(natureOfConstructionList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("Road")]
         public ObservableCollection<natureOfConstruction> natureOfConstruction { get; set; } = new();
 
@@ -17019,6 +17655,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
             }
         }
 
+        [DomainModel.EnumerationAttribute(nameof(statusList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("Road")]
         public ObservableCollection<status> status { get; set; } = new();
 
@@ -17040,6 +17678,18 @@ namespace S100Framework.WPF.ViewModel.S101 {
         public class RoadRefIdViewModel : FeatureRefIdViewModel {
             public override string[] AssociationTypes => ["Road"];
         }
+
+        [Browsable(false)]
+        public categoryOfRoad[] categoryOfRoadList => [(categoryOfRoad)1, (categoryOfRoad)2, (categoryOfRoad)3, (categoryOfRoad)4, (categoryOfRoad)5, (categoryOfRoad)6];
+
+        [Browsable(false)]
+        public condition[] conditionList => [(condition)1, (condition)2, (condition)5];
+
+        [Browsable(false)]
+        public natureOfConstruction[] natureOfConstructionList => [(natureOfConstruction)4, (natureOfConstruction)5];
+
+        [Browsable(false)]
+        public status[] statusList => [(status)1, (status)4, (status)6, (status)7, (status)8, (status)12, (status)13, (status)14];
 
         public void Load(DomainModel.S101.FeatureTypes.Road instance) {
             categoryOfRoad = instance.categoryOfRoad;
@@ -17118,6 +17768,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
     [CategoryOrder("FeatureBindings", 200)]
     public partial class TunnelViewModel : ViewModelBase {
         private condition? _condition = default;
+        [DomainModel.EnumerationAttribute(nameof(conditionList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("Tunnel")]
         public condition? condition {
             get {
@@ -17169,6 +17821,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
             }
         }
 
+        [DomainModel.EnumerationAttribute(nameof(statusList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("Tunnel")]
         public ObservableCollection<status> status { get; set; } = new();
 
@@ -17186,6 +17840,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
         }
 
         private verticalDatum? _verticalDatum = default;
+        [DomainModel.EnumerationAttribute(nameof(verticalDatumList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("Tunnel")]
         public verticalDatum? verticalDatum {
             get {
@@ -17227,6 +17883,15 @@ namespace S100Framework.WPF.ViewModel.S101 {
         public class TunnelRefIdViewModel : FeatureRefIdViewModel {
             public override string[] AssociationTypes => ["Tunnel"];
         }
+
+        [Browsable(false)]
+        public condition[] conditionList => [(condition)1, (condition)2, (condition)5];
+
+        [Browsable(false)]
+        public status[] statusList => [(status)1, (status)3, (status)4, (status)6, (status)8, (status)14];
+
+        [Browsable(false)]
+        public verticalDatum[] verticalDatumList => [(verticalDatum)3, (verticalDatum)13, (verticalDatum)16, (verticalDatum)17, (verticalDatum)18, (verticalDatum)19, (verticalDatum)20, (verticalDatum)21, (verticalDatum)24, (verticalDatum)25, (verticalDatum)26, (verticalDatum)28, (verticalDatum)29, (verticalDatum)30, (verticalDatum)44];
 
         public void Load(DomainModel.S101.FeatureTypes.Tunnel instance) {
             condition = instance.condition;
@@ -17314,16 +17979,24 @@ namespace S100Framework.WPF.ViewModel.S101 {
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class LandmarkViewModel : ViewModelBase {
+        [DomainModel.EnumerationAttribute(nameof(categoryOfLandmarkList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("Landmark")]
         public ObservableCollection<categoryOfLandmark> categoryOfLandmark { get; set; } = new();
 
+        [DomainModel.EnumerationAttribute(nameof(categoryOfSpecialPurposeMarkList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("Landmark")]
         public ObservableCollection<categoryOfSpecialPurposeMark> categoryOfSpecialPurposeMark { get; set; } = new();
 
+        [DomainModel.EnumerationAttribute(nameof(colourList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("Landmark")]
         public ObservableCollection<colour> colour { get; set; } = new();
 
         private colourPattern? _colourPattern = default;
+        [DomainModel.EnumerationAttribute(nameof(colourPatternList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("Landmark")]
         public colourPattern? colourPattern {
             get {
@@ -17336,6 +18009,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
         }
 
         private condition? _condition = default;
+        [DomainModel.EnumerationAttribute(nameof(conditionList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("Landmark")]
         public condition? condition {
             get {
@@ -17362,6 +18037,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
         [Category("Landmark")]
         public ObservableCollection<featureName> featureName { get; set; } = new();
 
+        [DomainModel.EnumerationAttribute(nameof(functionList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("Landmark")]
         public ObservableCollection<function> function { get; set; } = new();
 
@@ -17402,6 +18079,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
             }
         }
 
+        [DomainModel.EnumerationAttribute(nameof(natureOfConstructionList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("Landmark")]
         public ObservableCollection<natureOfConstruction> natureOfConstruction { get; set; } = new();
 
@@ -17429,6 +18108,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
             }
         }
 
+        [DomainModel.EnumerationAttribute(nameof(statusList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("Landmark")]
         public ObservableCollection<status> status { get; set; } = new();
 
@@ -17445,6 +18126,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
         }
 
         private visualProminence _visualProminence;
+        [DomainModel.EnumerationAttribute(nameof(visualProminenceList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("Landmark")]
         public visualProminence visualProminence {
             get {
@@ -17498,6 +18181,33 @@ namespace S100Framework.WPF.ViewModel.S101 {
         public class LandmarkRefIdViewModel : FeatureRefIdViewModel {
             public override string[] AssociationTypes => ["Landmark"];
         }
+
+        [Browsable(false)]
+        public categoryOfLandmark[] categoryOfLandmarkList => [(categoryOfLandmark)1, (categoryOfLandmark)2, (categoryOfLandmark)3, (categoryOfLandmark)4, (categoryOfLandmark)5, (categoryOfLandmark)6, (categoryOfLandmark)7, (categoryOfLandmark)8, (categoryOfLandmark)9, (categoryOfLandmark)10, (categoryOfLandmark)11, (categoryOfLandmark)12, (categoryOfLandmark)13, (categoryOfLandmark)14, (categoryOfLandmark)15, (categoryOfLandmark)16, (categoryOfLandmark)17, (categoryOfLandmark)18, (categoryOfLandmark)20, (categoryOfLandmark)21, (categoryOfLandmark)22, (categoryOfLandmark)23, (categoryOfLandmark)24, (categoryOfLandmark)25, (categoryOfLandmark)26, (categoryOfLandmark)27];
+
+        [Browsable(false)]
+        public categoryOfSpecialPurposeMark[] categoryOfSpecialPurposeMarkList => [(categoryOfSpecialPurposeMark)16, (categoryOfSpecialPurposeMark)17, (categoryOfSpecialPurposeMark)41];
+
+        [Browsable(false)]
+        public colour[] colourList => [(colour)1, (colour)2, (colour)3, (colour)4, (colour)5, (colour)6, (colour)7, (colour)8, (colour)9, (colour)10, (colour)11, (colour)12, (colour)13];
+
+        [Browsable(false)]
+        public colourPattern[] colourPatternList => [(colourPattern)1, (colourPattern)2, (colourPattern)3, (colourPattern)4, (colourPattern)5, (colourPattern)6];
+
+        [Browsable(false)]
+        public condition[] conditionList => [(condition)1, (condition)2, (condition)4, (condition)5];
+
+        [Browsable(false)]
+        public function[] functionList => [(function)2, (function)3, (function)4, (function)5, (function)6, (function)7, (function)8, (function)9, (function)10, (function)11, (function)12, (function)13, (function)14, (function)15, (function)16, (function)17, (function)18, (function)19, (function)20, (function)21, (function)22, (function)23, (function)24, (function)25, (function)26, (function)27, (function)28, (function)29, (function)30, (function)31, (function)32, (function)33, (function)34, (function)35, (function)36, (function)37, (function)38, (function)39, (function)40, (function)41, (function)42, (function)44, (function)45, (function)46, (function)47, (function)48];
+
+        [Browsable(false)]
+        public natureOfConstruction[] natureOfConstructionList => [(natureOfConstruction)1, (natureOfConstruction)2, (natureOfConstruction)3, (natureOfConstruction)6, (natureOfConstruction)7, (natureOfConstruction)8, (natureOfConstruction)11, (natureOfConstruction)12];
+
+        [Browsable(false)]
+        public status[] statusList => [(status)2, (status)4, (status)5, (status)7, (status)8, (status)12, (status)13, (status)14];
+
+        [Browsable(false)]
+        public visualProminence[] visualProminenceList => [(visualProminence)1, (visualProminence)2, (visualProminence)3];
 
         public void Load(DomainModel.S101.FeatureTypes.Landmark instance) {
             categoryOfLandmark.Clear();
@@ -17641,6 +18351,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
     [CategoryOrder("FeatureBindings", 200)]
     public partial class SiloTankViewModel : ViewModelBase {
         private buildingShape? _buildingShape = default;
+        [DomainModel.EnumerationAttribute(nameof(buildingShapeList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("SiloTank")]
         public buildingShape? buildingShape {
             get {
@@ -17653,6 +18365,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
         }
 
         private categoryOfSiloTank? _categoryOfSiloTank = default;
+        [DomainModel.EnumerationAttribute(nameof(categoryOfSiloTankList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("SiloTank")]
         public categoryOfSiloTank? categoryOfSiloTank {
             get {
@@ -17664,10 +18378,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
             }
         }
 
+        [DomainModel.EnumerationAttribute(nameof(colourList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("SiloTank")]
         public ObservableCollection<colour> colour { get; set; } = new();
 
         private colourPattern? _colourPattern = default;
+        [DomainModel.EnumerationAttribute(nameof(colourPatternList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("SiloTank")]
         public colourPattern? colourPattern {
             get {
@@ -17680,6 +18398,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
         }
 
         private condition? _condition = default;
+        [DomainModel.EnumerationAttribute(nameof(conditionList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("SiloTank")]
         public condition? condition {
             get {
@@ -17743,9 +18463,13 @@ namespace S100Framework.WPF.ViewModel.S101 {
             }
         }
 
+        [DomainModel.EnumerationAttribute(nameof(natureOfConstructionList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("SiloTank")]
         public ObservableCollection<natureOfConstruction> natureOfConstruction { get; set; } = new();
 
+        [DomainModel.EnumerationAttribute(nameof(productList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("SiloTank")]
         public ObservableCollection<product> product { get; set; } = new();
 
@@ -17773,6 +18497,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
             }
         }
 
+        [DomainModel.EnumerationAttribute(nameof(statusList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("SiloTank")]
         public ObservableCollection<status> status { get; set; } = new();
 
@@ -17789,6 +18515,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
         }
 
         private visualProminence? _visualProminence = default;
+        [DomainModel.EnumerationAttribute(nameof(visualProminenceList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("SiloTank")]
         public visualProminence? visualProminence {
             get {
@@ -17842,6 +18570,33 @@ namespace S100Framework.WPF.ViewModel.S101 {
         public class SiloTankRefIdViewModel : FeatureRefIdViewModel {
             public override string[] AssociationTypes => ["SiloTank"];
         }
+
+        [Browsable(false)]
+        public buildingShape[] buildingShapeList => [(buildingShape)5, (buildingShape)6, (buildingShape)7, (buildingShape)8, (buildingShape)9];
+
+        [Browsable(false)]
+        public categoryOfSiloTank[] categoryOfSiloTankList => [(categoryOfSiloTank)1, (categoryOfSiloTank)2, (categoryOfSiloTank)3, (categoryOfSiloTank)4];
+
+        [Browsable(false)]
+        public colour[] colourList => [(colour)1, (colour)2, (colour)3, (colour)4, (colour)5, (colour)6, (colour)7, (colour)8, (colour)9, (colour)10, (colour)11, (colour)12, (colour)13];
+
+        [Browsable(false)]
+        public colourPattern[] colourPatternList => [(colourPattern)1, (colourPattern)2, (colourPattern)3, (colourPattern)4, (colourPattern)5, (colourPattern)6];
+
+        [Browsable(false)]
+        public condition[] conditionList => [(condition)1, (condition)2, (condition)5];
+
+        [Browsable(false)]
+        public natureOfConstruction[] natureOfConstructionList => [(natureOfConstruction)1, (natureOfConstruction)2, (natureOfConstruction)6, (natureOfConstruction)7, (natureOfConstruction)8];
+
+        [Browsable(false)]
+        public product[] productList => [(product)1, (product)2, (product)3, (product)5, (product)7, (product)8, (product)9, (product)13, (product)14, (product)16, (product)18, (product)19, (product)20, (product)21, (product)22, (product)24];
+
+        [Browsable(false)]
+        public status[] statusList => [(status)4, (status)12, (status)13];
+
+        [Browsable(false)]
+        public visualProminence[] visualProminenceList => [(visualProminence)1, (visualProminence)2, (visualProminence)3];
 
         public void Load(DomainModel.S101.FeatureTypes.SiloTank instance) {
             buildingShape = instance.buildingShape;
@@ -17972,10 +18727,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class WindTurbineViewModel : ViewModelBase {
+        [DomainModel.EnumerationAttribute(nameof(colourList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("WindTurbine")]
         public ObservableCollection<colour> colour { get; set; } = new();
 
         private colourPattern? _colourPattern = default;
+        [DomainModel.EnumerationAttribute(nameof(colourPatternList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("WindTurbine")]
         public colourPattern? colourPattern {
             get {
@@ -17988,6 +18747,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
         }
 
         private condition? _condition = default;
+        [DomainModel.EnumerationAttribute(nameof(conditionList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("WindTurbine")]
         public condition? condition {
             get {
@@ -18064,6 +18825,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
             }
         }
 
+        [DomainModel.EnumerationAttribute(nameof(natureOfConstructionList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("WindTurbine")]
         public ObservableCollection<natureOfConstruction> natureOfConstruction { get; set; } = new();
 
@@ -18091,6 +18854,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
             }
         }
 
+        [DomainModel.EnumerationAttribute(nameof(statusList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("WindTurbine")]
         public ObservableCollection<status> status { get; set; } = new();
 
@@ -18108,6 +18873,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
         }
 
         private verticalDatum? _verticalDatum = default;
+        [DomainModel.EnumerationAttribute(nameof(verticalDatumList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("WindTurbine")]
         public verticalDatum? verticalDatum {
             get {
@@ -18132,6 +18899,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
         }
 
         private visualProminence? _visualProminence = default;
+        [DomainModel.EnumerationAttribute(nameof(visualProminenceList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("WindTurbine")]
         public visualProminence? visualProminence {
             get {
@@ -18144,6 +18913,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
         }
 
         private waterLevelEffect? _waterLevelEffect = default;
+        [DomainModel.EnumerationAttribute(nameof(waterLevelEffectList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("WindTurbine")]
         public waterLevelEffect? waterLevelEffect {
             get {
@@ -18197,6 +18968,30 @@ namespace S100Framework.WPF.ViewModel.S101 {
         public class WindTurbineRefIdViewModel : FeatureRefIdViewModel {
             public override string[] AssociationTypes => ["WindTurbine"];
         }
+
+        [Browsable(false)]
+        public colour[] colourList => [(colour)1, (colour)2, (colour)3, (colour)4, (colour)5, (colour)6, (colour)7, (colour)8, (colour)9, (colour)10, (colour)11, (colour)12, (colour)13];
+
+        [Browsable(false)]
+        public colourPattern[] colourPatternList => [(colourPattern)1, (colourPattern)2, (colourPattern)3, (colourPattern)4, (colourPattern)5, (colourPattern)6];
+
+        [Browsable(false)]
+        public condition[] conditionList => [(condition)1, (condition)4, (condition)5];
+
+        [Browsable(false)]
+        public natureOfConstruction[] natureOfConstructionList => [(natureOfConstruction)2, (natureOfConstruction)6, (natureOfConstruction)7, (natureOfConstruction)8, (natureOfConstruction)11];
+
+        [Browsable(false)]
+        public status[] statusList => [(status)1, (status)2, (status)4, (status)5, (status)7, (status)8, (status)12, (status)13, (status)14, (status)28];
+
+        [Browsable(false)]
+        public verticalDatum[] verticalDatumList => [(verticalDatum)3, (verticalDatum)13, (verticalDatum)16, (verticalDatum)17, (verticalDatum)18, (verticalDatum)19, (verticalDatum)20, (verticalDatum)21, (verticalDatum)24, (verticalDatum)25, (verticalDatum)26, (verticalDatum)28, (verticalDatum)29, (verticalDatum)30, (verticalDatum)44];
+
+        [Browsable(false)]
+        public visualProminence[] visualProminenceList => [(visualProminence)1, (visualProminence)2, (visualProminence)3];
+
+        [Browsable(false)]
+        public waterLevelEffect[] waterLevelEffectList => [(waterLevelEffect)2, (waterLevelEffect)7];
 
         public void Load(DomainModel.S101.FeatureTypes.WindTurbine instance) {
             colour.Clear();
@@ -18335,6 +19130,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
     [CategoryOrder("FeatureBindings", 200)]
     public partial class FortifiedStructureViewModel : ViewModelBase {
         private categoryOfFortifiedStructure? _categoryOfFortifiedStructure = default;
+        [DomainModel.EnumerationAttribute(nameof(categoryOfFortifiedStructureList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("FortifiedStructure")]
         public categoryOfFortifiedStructure? categoryOfFortifiedStructure {
             get {
@@ -18347,6 +19144,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
         }
 
         private condition? _condition = default;
+        [DomainModel.EnumerationAttribute(nameof(conditionList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("FortifiedStructure")]
         public condition? condition {
             get {
@@ -18385,6 +19184,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
             }
         }
 
+        [DomainModel.EnumerationAttribute(nameof(natureOfConstructionList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("FortifiedStructure")]
         public ObservableCollection<natureOfConstruction> natureOfConstruction { get; set; } = new();
 
@@ -18412,6 +19213,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
             }
         }
 
+        [DomainModel.EnumerationAttribute(nameof(statusList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("FortifiedStructure")]
         public ObservableCollection<status> status { get; set; } = new();
 
@@ -18428,6 +19231,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
         }
 
         private visualProminence? _visualProminence = default;
+        [DomainModel.EnumerationAttribute(nameof(visualProminenceList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("FortifiedStructure")]
         public visualProminence? visualProminence {
             get {
@@ -18481,6 +19286,21 @@ namespace S100Framework.WPF.ViewModel.S101 {
         public class FortifiedStructureRefIdViewModel : FeatureRefIdViewModel {
             public override string[] AssociationTypes => ["FortifiedStructure"];
         }
+
+        [Browsable(false)]
+        public categoryOfFortifiedStructure[] categoryOfFortifiedStructureList => [(categoryOfFortifiedStructure)1, (categoryOfFortifiedStructure)2, (categoryOfFortifiedStructure)3, (categoryOfFortifiedStructure)4, (categoryOfFortifiedStructure)5, (categoryOfFortifiedStructure)6, (categoryOfFortifiedStructure)8, (categoryOfFortifiedStructure)9];
+
+        [Browsable(false)]
+        public condition[] conditionList => [(condition)1, (condition)2];
+
+        [Browsable(false)]
+        public natureOfConstruction[] natureOfConstructionList => [(natureOfConstruction)1, (natureOfConstruction)2, (natureOfConstruction)3, (natureOfConstruction)6, (natureOfConstruction)7];
+
+        [Browsable(false)]
+        public status[] statusList => [(status)4, (status)7, (status)8, (status)12, (status)13, (status)14, (status)28];
+
+        [Browsable(false)]
+        public visualProminence[] visualProminenceList => [(visualProminence)1, (visualProminence)2, (visualProminence)3];
 
         public void Load(DomainModel.S101.FeatureTypes.FortifiedStructure instance) {
             categoryOfFortifiedStructure = instance.categoryOfFortifiedStructure;
@@ -18577,6 +19397,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
     [CategoryOrder("FeatureBindings", 200)]
     public partial class ProductionStorageAreaViewModel : ViewModelBase {
         private categoryOfProductionArea _categoryOfProductionArea;
+        [DomainModel.EnumerationAttribute(nameof(categoryOfProductionAreaList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("ProductionStorageArea")]
         public categoryOfProductionArea categoryOfProductionArea {
             get {
@@ -18589,6 +19411,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
         }
 
         private condition? _condition = default;
+        [DomainModel.EnumerationAttribute(nameof(conditionList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("ProductionStorageArea")]
         public condition? condition {
             get {
@@ -18652,6 +19476,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
             }
         }
 
+        [DomainModel.EnumerationAttribute(nameof(productList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("ProductionStorageArea")]
         public ObservableCollection<product> product { get; set; } = new();
 
@@ -18679,6 +19505,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
             }
         }
 
+        [DomainModel.EnumerationAttribute(nameof(statusList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("ProductionStorageArea")]
         public ObservableCollection<status> status { get; set; } = new();
 
@@ -18695,6 +19523,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
         }
 
         private visualProminence? _visualProminence = default;
+        [DomainModel.EnumerationAttribute(nameof(visualProminenceList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("ProductionStorageArea")]
         public visualProminence? visualProminence {
             get {
@@ -18736,6 +19566,21 @@ namespace S100Framework.WPF.ViewModel.S101 {
         public class ProductionStorageAreaRefIdViewModel : FeatureRefIdViewModel {
             public override string[] AssociationTypes => ["ProductionStorageArea"];
         }
+
+        [Browsable(false)]
+        public categoryOfProductionArea[] categoryOfProductionAreaList => [(categoryOfProductionArea)1, (categoryOfProductionArea)2, (categoryOfProductionArea)3, (categoryOfProductionArea)4, (categoryOfProductionArea)5, (categoryOfProductionArea)6, (categoryOfProductionArea)7, (categoryOfProductionArea)8, (categoryOfProductionArea)9, (categoryOfProductionArea)10, (categoryOfProductionArea)11, (categoryOfProductionArea)12];
+
+        [Browsable(false)]
+        public condition[] conditionList => [(condition)1, (condition)2, (condition)3, (condition)5];
+
+        [Browsable(false)]
+        public product[] productList => [(product)1, (product)2, (product)3, (product)4, (product)5, (product)6, (product)7, (product)8, (product)9, (product)10, (product)11, (product)12, (product)13, (product)14, (product)15, (product)16, (product)17, (product)18, (product)19, (product)20, (product)21, (product)22, (product)23, (product)25];
+
+        [Browsable(false)]
+        public status[] statusList => [(status)4, (status)12];
+
+        [Browsable(false)]
+        public visualProminence[] visualProminenceList => [(visualProminence)1, (visualProminence)2, (visualProminence)3];
 
         public void Load(DomainModel.S101.FeatureTypes.ProductionStorageArea instance) {
             categoryOfProductionArea = instance.categoryOfProductionArea;
@@ -18840,6 +19685,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
     [CategoryOrder("FeatureBindings", 200)]
     public partial class CheckpointViewModel : ViewModelBase {
         private categoryOfCheckpoint? _categoryOfCheckpoint = default;
+        [DomainModel.EnumerationAttribute(nameof(categoryOfCheckpointList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("Checkpoint")]
         public categoryOfCheckpoint? categoryOfCheckpoint {
             get {
@@ -18866,6 +19713,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
             }
         }
 
+        [DomainModel.EnumerationAttribute(nameof(statusList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("Checkpoint")]
         public ObservableCollection<status> status { get; set; } = new();
 
@@ -18887,6 +19736,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
         public class CheckpointRefIdViewModel : FeatureRefIdViewModel {
             public override string[] AssociationTypes => ["Checkpoint"];
         }
+
+        [Browsable(false)]
+        public categoryOfCheckpoint[] categoryOfCheckpointList => [(categoryOfCheckpoint)1];
+
+        [Browsable(false)]
+        public status[] statusList => [(status)1, (status)2, (status)5, (status)7, (status)9, (status)12];
 
         public void Load(DomainModel.S101.FeatureTypes.Checkpoint instance) {
             categoryOfCheckpoint = instance.categoryOfCheckpoint;
@@ -18949,13 +19804,19 @@ namespace S100Framework.WPF.ViewModel.S101 {
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class HulkViewModel : ViewModelBase {
+        [DomainModel.EnumerationAttribute(nameof(categoryOfHulkList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("Hulk")]
         public ObservableCollection<categoryOfHulk> categoryOfHulk { get; set; } = new();
 
+        [DomainModel.EnumerationAttribute(nameof(colourList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("Hulk")]
         public ObservableCollection<colour> colour { get; set; } = new();
 
         private colourPattern? _colourPattern = default;
+        [DomainModel.EnumerationAttribute(nameof(colourPatternList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("Hulk")]
         public colourPattern? colourPattern {
             get {
@@ -18968,6 +19829,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
         }
 
         private condition? _condition = default;
+        [DomainModel.EnumerationAttribute(nameof(conditionList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("Hulk")]
         public condition? condition {
             get {
@@ -19071,6 +19934,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
         }
 
         private visualProminence? _visualProminence = default;
+        [DomainModel.EnumerationAttribute(nameof(visualProminenceList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("Hulk")]
         public visualProminence? visualProminence {
             get {
@@ -19112,6 +19977,21 @@ namespace S100Framework.WPF.ViewModel.S101 {
         public class HulkRefIdViewModel : FeatureRefIdViewModel {
             public override string[] AssociationTypes => ["Hulk"];
         }
+
+        [Browsable(false)]
+        public categoryOfHulk[] categoryOfHulkList => [(categoryOfHulk)1, (categoryOfHulk)2, (categoryOfHulk)3, (categoryOfHulk)4, (categoryOfHulk)5, (categoryOfHulk)6, (categoryOfHulk)7];
+
+        [Browsable(false)]
+        public colour[] colourList => [(colour)1, (colour)2, (colour)3, (colour)4, (colour)5, (colour)6, (colour)7, (colour)8, (colour)9, (colour)10, (colour)11, (colour)12, (colour)13];
+
+        [Browsable(false)]
+        public colourPattern[] colourPatternList => [(colourPattern)1, (colourPattern)2, (colourPattern)3, (colourPattern)4, (colourPattern)5, (colourPattern)6];
+
+        [Browsable(false)]
+        public condition[] conditionList => [(condition)1, (condition)2, (condition)5];
+
+        [Browsable(false)]
+        public visualProminence[] visualProminenceList => [(visualProminence)1, (visualProminence)2, (visualProminence)3];
 
         public void Load(DomainModel.S101.FeatureTypes.Hulk instance) {
             categoryOfHulk.Clear();
@@ -19225,6 +20105,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
     [CategoryOrder("FeatureBindings", 200)]
     public partial class PileViewModel : ViewModelBase {
         private categoryOfPile? _categoryOfPile = default;
+        [DomainModel.EnumerationAttribute(nameof(categoryOfPileList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("Pile")]
         public categoryOfPile? categoryOfPile {
             get {
@@ -19236,10 +20118,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
             }
         }
 
+        [DomainModel.EnumerationAttribute(nameof(colourList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("Pile")]
         public ObservableCollection<colour> colour { get; set; } = new();
 
         private colourPattern? _colourPattern = default;
+        [DomainModel.EnumerationAttribute(nameof(colourPatternList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("Pile")]
         public colourPattern? colourPattern {
             get {
@@ -19252,6 +20138,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
         }
 
         private condition? _condition = default;
+        [DomainModel.EnumerationAttribute(nameof(conditionList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("Pile")]
         public condition? condition {
             get {
@@ -19327,6 +20215,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
             }
         }
 
+        [DomainModel.EnumerationAttribute(nameof(statusList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("Pile")]
         public ObservableCollection<status> status { get; set; } = new();
 
@@ -19343,6 +20233,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
         }
 
         private visualProminence? _visualProminence = default;
+        [DomainModel.EnumerationAttribute(nameof(visualProminenceList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("Pile")]
         public visualProminence? visualProminence {
             get {
@@ -19384,6 +20276,24 @@ namespace S100Framework.WPF.ViewModel.S101 {
         public class PileRefIdViewModel : FeatureRefIdViewModel {
             public override string[] AssociationTypes => ["Pile"];
         }
+
+        [Browsable(false)]
+        public categoryOfPile[] categoryOfPileList => [(categoryOfPile)1, (categoryOfPile)3, (categoryOfPile)4, (categoryOfPile)5, (categoryOfPile)6, (categoryOfPile)7, (categoryOfPile)8];
+
+        [Browsable(false)]
+        public colour[] colourList => [(colour)1, (colour)2, (colour)3, (colour)4, (colour)5, (colour)6, (colour)7, (colour)8, (colour)9, (colour)10, (colour)11, (colour)12, (colour)13];
+
+        [Browsable(false)]
+        public colourPattern[] colourPatternList => [(colourPattern)1, (colourPattern)2, (colourPattern)3, (colourPattern)4, (colourPattern)5, (colourPattern)6];
+
+        [Browsable(false)]
+        public condition[] conditionList => [(condition)1, (condition)2, (condition)5];
+
+        [Browsable(false)]
+        public status[] statusList => [(status)1, (status)4, (status)6, (status)7, (status)8, (status)12, (status)14];
+
+        [Browsable(false)]
+        public visualProminence[] visualProminenceList => [(visualProminence)1, (visualProminence)2, (visualProminence)3];
 
         public void Load(DomainModel.S101.FeatureTypes.Pile instance) {
             categoryOfPile = instance.categoryOfPile;
@@ -19488,6 +20398,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
     [CategoryOrder("FeatureBindings", 200)]
     public partial class DykeViewModel : ViewModelBase {
         private condition? _condition = default;
+        [DomainModel.EnumerationAttribute(nameof(conditionList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("Dyke")]
         public condition? condition {
             get {
@@ -19539,6 +20451,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
             }
         }
 
+        [DomainModel.EnumerationAttribute(nameof(natureOfConstructionList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("Dyke")]
         public ObservableCollection<natureOfConstruction> natureOfConstruction { get; set; } = new();
 
@@ -19579,6 +20493,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
         }
 
         private visualProminence? _visualProminence = default;
+        [DomainModel.EnumerationAttribute(nameof(visualProminenceList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("Dyke")]
         public visualProminence? visualProminence {
             get {
@@ -19608,6 +20524,15 @@ namespace S100Framework.WPF.ViewModel.S101 {
         public class DykeRefIdViewModel : FeatureRefIdViewModel {
             public override string[] AssociationTypes => ["Dyke"];
         }
+
+        [Browsable(false)]
+        public condition[] conditionList => [(condition)1, (condition)2, (condition)3, (condition)5];
+
+        [Browsable(false)]
+        public natureOfConstruction[] natureOfConstructionList => [(natureOfConstruction)1, (natureOfConstruction)2, (natureOfConstruction)3, (natureOfConstruction)4, (natureOfConstruction)5, (natureOfConstruction)6, (natureOfConstruction)7];
+
+        [Browsable(false)]
+        public visualProminence[] visualProminenceList => [(visualProminence)1, (visualProminence)2, (visualProminence)3];
 
         public void Load(DomainModel.S101.FeatureTypes.Dyke instance) {
             condition = instance.condition;
@@ -19694,6 +20619,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
     [CategoryOrder("FeatureBindings", 200)]
     public partial class ShorelineConstructionViewModel : ViewModelBase {
         private categoryOfShorelineConstruction? _categoryOfShorelineConstruction = default;
+        [DomainModel.EnumerationAttribute(nameof(categoryOfShorelineConstructionList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("ShorelineConstruction")]
         public categoryOfShorelineConstruction? categoryOfShorelineConstruction {
             get {
@@ -19705,10 +20632,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
             }
         }
 
+        [DomainModel.EnumerationAttribute(nameof(colourList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("ShorelineConstruction")]
         public ObservableCollection<colour> colour { get; set; } = new();
 
         private colourPattern? _colourPattern = default;
+        [DomainModel.EnumerationAttribute(nameof(colourPatternList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("ShorelineConstruction")]
         public colourPattern? colourPattern {
             get {
@@ -19721,6 +20652,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
         }
 
         private condition? _condition = default;
+        [DomainModel.EnumerationAttribute(nameof(conditionList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("ShorelineConstruction")]
         public condition? condition {
             get {
@@ -19809,6 +20742,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
             }
         }
 
+        [DomainModel.EnumerationAttribute(nameof(natureOfConstructionList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("ShorelineConstruction")]
         public ObservableCollection<natureOfConstruction> natureOfConstruction { get; set; } = new();
 
@@ -19836,6 +20771,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
             }
         }
 
+        [DomainModel.EnumerationAttribute(nameof(statusList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("ShorelineConstruction")]
         public ObservableCollection<status> status { get; set; } = new();
 
@@ -19852,6 +20789,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
         }
 
         private visualProminence? _visualProminence = default;
+        [DomainModel.EnumerationAttribute(nameof(visualProminenceList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("ShorelineConstruction")]
         public visualProminence? visualProminence {
             get {
@@ -19864,6 +20803,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
         }
 
         private waterLevelEffect? _waterLevelEffect = default;
+        [DomainModel.EnumerationAttribute(nameof(waterLevelEffectList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("ShorelineConstruction")]
         public waterLevelEffect? waterLevelEffect {
             get {
@@ -19893,6 +20834,30 @@ namespace S100Framework.WPF.ViewModel.S101 {
         public class ShorelineConstructionRefIdViewModel : FeatureRefIdViewModel {
             public override string[] AssociationTypes => ["ShorelineConstruction"];
         }
+
+        [Browsable(false)]
+        public categoryOfShorelineConstruction[] categoryOfShorelineConstructionList => [(categoryOfShorelineConstruction)1, (categoryOfShorelineConstruction)2, (categoryOfShorelineConstruction)3, (categoryOfShorelineConstruction)4, (categoryOfShorelineConstruction)5, (categoryOfShorelineConstruction)6, (categoryOfShorelineConstruction)7, (categoryOfShorelineConstruction)8, (categoryOfShorelineConstruction)9, (categoryOfShorelineConstruction)10, (categoryOfShorelineConstruction)11, (categoryOfShorelineConstruction)12, (categoryOfShorelineConstruction)13, (categoryOfShorelineConstruction)14, (categoryOfShorelineConstruction)15, (categoryOfShorelineConstruction)16, (categoryOfShorelineConstruction)17, (categoryOfShorelineConstruction)20, (categoryOfShorelineConstruction)22, (categoryOfShorelineConstruction)23];
+
+        [Browsable(false)]
+        public colour[] colourList => [(colour)1, (colour)2, (colour)3, (colour)4, (colour)5, (colour)6, (colour)7, (colour)8, (colour)9, (colour)10, (colour)11, (colour)12, (colour)13];
+
+        [Browsable(false)]
+        public colourPattern[] colourPatternList => [(colourPattern)1, (colourPattern)2, (colourPattern)3, (colourPattern)4, (colourPattern)5, (colourPattern)6];
+
+        [Browsable(false)]
+        public condition[] conditionList => [(condition)1, (condition)2, (condition)3, (condition)5];
+
+        [Browsable(false)]
+        public natureOfConstruction[] natureOfConstructionList => [(natureOfConstruction)1, (natureOfConstruction)2, (natureOfConstruction)3, (natureOfConstruction)4, (natureOfConstruction)5, (natureOfConstruction)6, (natureOfConstruction)7, (natureOfConstruction)8, (natureOfConstruction)11];
+
+        [Browsable(false)]
+        public status[] statusList => [(status)1, (status)2, (status)3, (status)4, (status)6, (status)7, (status)8, (status)12, (status)13, (status)14, (status)28];
+
+        [Browsable(false)]
+        public visualProminence[] visualProminenceList => [(visualProminence)1, (visualProminence)2, (visualProminence)3];
+
+        [Browsable(false)]
+        public waterLevelEffect[] waterLevelEffectList => [(waterLevelEffect)1, (waterLevelEffect)2, (waterLevelEffect)3, (waterLevelEffect)4, (waterLevelEffect)5, (waterLevelEffect)6, (waterLevelEffect)7];
 
         public void Load(DomainModel.S101.FeatureTypes.ShorelineConstruction instance) {
             categoryOfShorelineConstruction = instance.categoryOfShorelineConstruction;
@@ -20019,13 +20984,19 @@ namespace S100Framework.WPF.ViewModel.S101 {
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class StructureOverNavigableWaterViewModel : ViewModelBase {
+        [DomainModel.EnumerationAttribute(nameof(categoryOfStructureList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("StructureOverNavigableWater")]
         public ObservableCollection<categoryOfStructure> categoryOfStructure { get; set; } = new();
 
+        [DomainModel.EnumerationAttribute(nameof(colourList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("StructureOverNavigableWater")]
         public ObservableCollection<colour> colour { get; set; } = new();
 
         private colourPattern? _colourPattern = default;
+        [DomainModel.EnumerationAttribute(nameof(colourPatternList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("StructureOverNavigableWater")]
         public colourPattern? colourPattern {
             get {
@@ -20038,6 +21009,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
         }
 
         private condition? _condition = default;
+        [DomainModel.EnumerationAttribute(nameof(conditionList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("StructureOverNavigableWater")]
         public condition? condition {
             get {
@@ -20126,6 +21099,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
             }
         }
 
+        [DomainModel.EnumerationAttribute(nameof(natureOfConstructionList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("StructureOverNavigableWater")]
         public ObservableCollection<natureOfConstruction> natureOfConstruction { get; set; } = new();
 
@@ -20133,6 +21108,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
         public ObservableCollection<periodicDateRange> periodicDateRange { get; set; } = new();
 
         private product? _product = default;
+        [DomainModel.EnumerationAttribute(nameof(productList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("StructureOverNavigableWater")]
         public product? product {
             get {
@@ -20168,6 +21145,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
             }
         }
 
+        [DomainModel.EnumerationAttribute(nameof(statusList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("StructureOverNavigableWater")]
         public ObservableCollection<status> status { get; set; } = new();
 
@@ -20185,6 +21164,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
         }
 
         private verticalDatum? _verticalDatum = default;
+        [DomainModel.EnumerationAttribute(nameof(verticalDatumList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("StructureOverNavigableWater")]
         public verticalDatum? verticalDatum {
             get {
@@ -20209,6 +21190,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
         }
 
         private visualProminence? _visualProminence = default;
+        [DomainModel.EnumerationAttribute(nameof(visualProminenceList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("StructureOverNavigableWater")]
         public visualProminence? visualProminence {
             get {
@@ -20250,6 +21233,33 @@ namespace S100Framework.WPF.ViewModel.S101 {
         public class StructureOverNavigableWaterRefIdViewModel : FeatureRefIdViewModel {
             public override string[] AssociationTypes => ["StructureOverNavigableWater"];
         }
+
+        [Browsable(false)]
+        public categoryOfStructure[] categoryOfStructureList => [(categoryOfStructure)1, (categoryOfStructure)2, (categoryOfStructure)3, (categoryOfStructure)4, (categoryOfStructure)5];
+
+        [Browsable(false)]
+        public colour[] colourList => [(colour)1, (colour)2, (colour)3, (colour)4, (colour)5, (colour)6, (colour)7, (colour)8, (colour)9, (colour)10, (colour)11, (colour)12, (colour)13];
+
+        [Browsable(false)]
+        public colourPattern[] colourPatternList => [(colourPattern)1, (colourPattern)2, (colourPattern)3, (colourPattern)4, (colourPattern)5, (colourPattern)6];
+
+        [Browsable(false)]
+        public condition[] conditionList => [(condition)1, (condition)2, (condition)5];
+
+        [Browsable(false)]
+        public natureOfConstruction[] natureOfConstructionList => [(natureOfConstruction)1, (natureOfConstruction)2, (natureOfConstruction)6, (natureOfConstruction)7, (natureOfConstruction)8, (natureOfConstruction)11, (natureOfConstruction)12];
+
+        [Browsable(false)]
+        public product[] productList => [(product)7, (product)12, (product)13, (product)21, (product)22, (product)25];
+
+        [Browsable(false)]
+        public status[] statusList => [(status)1, (status)4, (status)5, (status)7, (status)8, (status)12, (status)14];
+
+        [Browsable(false)]
+        public verticalDatum[] verticalDatumList => [(verticalDatum)3, (verticalDatum)13, (verticalDatum)16, (verticalDatum)17, (verticalDatum)18, (verticalDatum)19, (verticalDatum)20, (verticalDatum)21, (verticalDatum)24, (verticalDatum)25, (verticalDatum)26, (verticalDatum)28, (verticalDatum)29, (verticalDatum)30, (verticalDatum)44];
+
+        [Browsable(false)]
+        public visualProminence[] visualProminenceList => [(visualProminence)1, (visualProminence)2, (visualProminence)3];
 
         public void Load(DomainModel.S101.FeatureTypes.StructureOverNavigableWater instance) {
             categoryOfStructure.Clear();
@@ -20406,6 +21416,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
     [CategoryOrder("FeatureBindings", 200)]
     public partial class CausewayViewModel : ViewModelBase {
         private condition? _condition = default;
+        [DomainModel.EnumerationAttribute(nameof(conditionList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("Causeway")]
         public condition? condition {
             get {
@@ -20432,6 +21444,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
             }
         }
 
+        [DomainModel.EnumerationAttribute(nameof(natureOfConstructionList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("Causeway")]
         public ObservableCollection<natureOfConstruction> natureOfConstruction { get; set; } = new();
 
@@ -20447,10 +21461,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
             }
         }
 
+        [DomainModel.EnumerationAttribute(nameof(statusList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("Causeway")]
         public ObservableCollection<status> status { get; set; } = new();
 
         private waterLevelEffect? _waterLevelEffect = default;
+        [DomainModel.EnumerationAttribute(nameof(waterLevelEffectList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("Causeway")]
         public waterLevelEffect? waterLevelEffect {
             get {
@@ -20480,6 +21498,18 @@ namespace S100Framework.WPF.ViewModel.S101 {
         public class CausewayRefIdViewModel : FeatureRefIdViewModel {
             public override string[] AssociationTypes => ["Causeway"];
         }
+
+        [Browsable(false)]
+        public condition[] conditionList => [(condition)1, (condition)2, (condition)3, (condition)5];
+
+        [Browsable(false)]
+        public natureOfConstruction[] natureOfConstructionList => [(natureOfConstruction)1, (natureOfConstruction)2, (natureOfConstruction)3, (natureOfConstruction)4, (natureOfConstruction)5, (natureOfConstruction)6, (natureOfConstruction)7];
+
+        [Browsable(false)]
+        public status[] statusList => [(status)1, (status)7, (status)8, (status)12, (status)14];
+
+        [Browsable(false)]
+        public waterLevelEffect[] waterLevelEffectList => [(waterLevelEffect)1, (waterLevelEffect)2, (waterLevelEffect)3, (waterLevelEffect)4, (waterLevelEffect)5, (waterLevelEffect)6];
 
         public void Load(DomainModel.S101.FeatureTypes.Causeway instance) {
             condition = instance.condition;
@@ -20558,6 +21588,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
     [CategoryOrder("FeatureBindings", 200)]
     public partial class CanalViewModel : ViewModelBase {
         private categoryOfCanal? _categoryOfCanal = default;
+        [DomainModel.EnumerationAttribute(nameof(categoryOfCanalList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("Canal")]
         public categoryOfCanal? categoryOfCanal {
             get {
@@ -20570,6 +21602,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
         }
 
         private condition? _condition = default;
+        [DomainModel.EnumerationAttribute(nameof(conditionList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("Canal")]
         public condition? condition {
             get {
@@ -20646,6 +21680,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
             }
         }
 
+        [DomainModel.EnumerationAttribute(nameof(statusList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("Canal")]
         public ObservableCollection<status> status { get; set; } = new();
 
@@ -20667,6 +21703,15 @@ namespace S100Framework.WPF.ViewModel.S101 {
         public class CanalRefIdViewModel : FeatureRefIdViewModel {
             public override string[] AssociationTypes => ["Canal"];
         }
+
+        [Browsable(false)]
+        public categoryOfCanal[] categoryOfCanalList => [(categoryOfCanal)1, (categoryOfCanal)2, (categoryOfCanal)3];
+
+        [Browsable(false)]
+        public condition[] conditionList => [(condition)1, (condition)2, (condition)3, (condition)5];
+
+        [Browsable(false)]
+        public status[] statusList => [(status)1, (status)3, (status)4, (status)5, (status)6, (status)8, (status)14];
 
         public void Load(DomainModel.S101.FeatureTypes.Canal instance) {
             categoryOfCanal = instance.categoryOfCanal;
@@ -20895,6 +21940,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
     [CategoryOrder("FeatureBindings", 200)]
     public partial class GateViewModel : ViewModelBase {
         private categoryOfGate? _categoryOfGate = default;
+        [DomainModel.EnumerationAttribute(nameof(categoryOfGateList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("Gate")]
         public categoryOfGate? categoryOfGate {
             get {
@@ -20907,6 +21954,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
         }
 
         private condition? _condition = default;
+        [DomainModel.EnumerationAttribute(nameof(conditionList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("Gate")]
         public condition? condition {
             get {
@@ -20958,12 +22007,18 @@ namespace S100Framework.WPF.ViewModel.S101 {
             }
         }
 
+        [DomainModel.EnumerationAttribute(nameof(natureOfConstructionList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("Gate")]
         public ObservableCollection<natureOfConstruction> natureOfConstruction { get; set; } = new();
 
+        [DomainModel.EnumerationAttribute(nameof(qualityOfVerticalMeasurementList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("Gate")]
         public ObservableCollection<qualityOfVerticalMeasurement> qualityOfVerticalMeasurement { get; set; } = new();
 
+        [DomainModel.EnumerationAttribute(nameof(statusList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("Gate")]
         public ObservableCollection<status> status { get; set; } = new();
 
@@ -20981,6 +22036,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
         }
 
         private verticalDatum? _verticalDatum = default;
+        [DomainModel.EnumerationAttribute(nameof(verticalDatumList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("Gate")]
         public verticalDatum? verticalDatum {
             get {
@@ -21023,6 +22080,24 @@ namespace S100Framework.WPF.ViewModel.S101 {
         public class GateRefIdViewModel : FeatureRefIdViewModel {
             public override string[] AssociationTypes => ["Gate"];
         }
+
+        [Browsable(false)]
+        public categoryOfGate[] categoryOfGateList => [(categoryOfGate)2, (categoryOfGate)3, (categoryOfGate)4, (categoryOfGate)5, (categoryOfGate)6];
+
+        [Browsable(false)]
+        public condition[] conditionList => [(condition)1, (condition)2, (condition)5];
+
+        [Browsable(false)]
+        public natureOfConstruction[] natureOfConstructionList => [(natureOfConstruction)1, (natureOfConstruction)2, (natureOfConstruction)6, (natureOfConstruction)7];
+
+        [Browsable(false)]
+        public qualityOfVerticalMeasurement[] qualityOfVerticalMeasurementList => [(qualityOfVerticalMeasurement)2, (qualityOfVerticalMeasurement)3, (qualityOfVerticalMeasurement)4, (qualityOfVerticalMeasurement)6, (qualityOfVerticalMeasurement)7];
+
+        [Browsable(false)]
+        public status[] statusList => [(status)1, (status)4, (status)6, (status)16, (status)17];
+
+        [Browsable(false)]
+        public verticalDatum[] verticalDatumList => [(verticalDatum)3, (verticalDatum)13, (verticalDatum)16, (verticalDatum)17, (verticalDatum)18, (verticalDatum)19, (verticalDatum)20, (verticalDatum)21, (verticalDatum)24, (verticalDatum)25, (verticalDatum)26, (verticalDatum)28, (verticalDatum)29, (verticalDatum)30, (verticalDatum)44];
 
         public void Load(DomainModel.S101.FeatureTypes.Gate instance) {
             categoryOfGate = instance.categoryOfGate;
@@ -21137,6 +22212,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
     [CategoryOrder("FeatureBindings", 200)]
     public partial class DamViewModel : ViewModelBase {
         private categoryOfDam? _categoryOfDam = default;
+        [DomainModel.EnumerationAttribute(nameof(categoryOfDamList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("Dam")]
         public categoryOfDam? categoryOfDam {
             get {
@@ -21148,10 +22225,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
             }
         }
 
+        [DomainModel.EnumerationAttribute(nameof(colourList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("Dam")]
         public ObservableCollection<colour> colour { get; set; } = new();
 
         private colourPattern? _colourPattern = default;
+        [DomainModel.EnumerationAttribute(nameof(colourPatternList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("Dam")]
         public colourPattern? colourPattern {
             get {
@@ -21164,6 +22245,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
         }
 
         private condition? _condition = default;
+        [DomainModel.EnumerationAttribute(nameof(conditionList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("Dam")]
         public condition? condition {
             get {
@@ -21215,6 +22298,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
             }
         }
 
+        [DomainModel.EnumerationAttribute(nameof(natureOfConstructionList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("Dam")]
         public ObservableCollection<natureOfConstruction> natureOfConstruction { get; set; } = new();
 
@@ -21230,6 +22315,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
             }
         }
 
+        [DomainModel.EnumerationAttribute(nameof(statusList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("Dam")]
         public ObservableCollection<status> status { get; set; } = new();
 
@@ -21246,6 +22333,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
         }
 
         private visualProminence? _visualProminence = default;
+        [DomainModel.EnumerationAttribute(nameof(visualProminenceList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("Dam")]
         public visualProminence? visualProminence {
             get {
@@ -21258,6 +22347,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
         }
 
         private waterLevelEffect? _waterLevelEffect = default;
+        [DomainModel.EnumerationAttribute(nameof(waterLevelEffectList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("Dam")]
         public waterLevelEffect? waterLevelEffect {
             get {
@@ -21287,6 +22378,30 @@ namespace S100Framework.WPF.ViewModel.S101 {
         public class DamRefIdViewModel : FeatureRefIdViewModel {
             public override string[] AssociationTypes => ["Dam"];
         }
+
+        [Browsable(false)]
+        public categoryOfDam[] categoryOfDamList => [(categoryOfDam)1, (categoryOfDam)2, (categoryOfDam)3];
+
+        [Browsable(false)]
+        public colour[] colourList => [(colour)1, (colour)2, (colour)3, (colour)4, (colour)5, (colour)6, (colour)7, (colour)8, (colour)9, (colour)10, (colour)11, (colour)12, (colour)13];
+
+        [Browsable(false)]
+        public colourPattern[] colourPatternList => [(colourPattern)1, (colourPattern)2, (colourPattern)3, (colourPattern)4, (colourPattern)5, (colourPattern)6];
+
+        [Browsable(false)]
+        public condition[] conditionList => [(condition)1, (condition)2, (condition)3, (condition)5];
+
+        [Browsable(false)]
+        public natureOfConstruction[] natureOfConstructionList => [(natureOfConstruction)1, (natureOfConstruction)2, (natureOfConstruction)3, (natureOfConstruction)6, (natureOfConstruction)7];
+
+        [Browsable(false)]
+        public status[] statusList => [(status)1, (status)2, (status)6, (status)7, (status)8, (status)14, (status)28];
+
+        [Browsable(false)]
+        public visualProminence[] visualProminenceList => [(visualProminence)1, (visualProminence)2, (visualProminence)3];
+
+        [Browsable(false)]
+        public waterLevelEffect[] waterLevelEffectList => [(waterLevelEffect)1, (waterLevelEffect)2, (waterLevelEffect)3, (waterLevelEffect)6];
 
         public void Load(DomainModel.S101.FeatureTypes.Dam instance) {
             categoryOfDam = instance.categoryOfDam;
@@ -21397,6 +22512,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
     [CategoryOrder("FeatureBindings", 200)]
     public partial class CraneViewModel : ViewModelBase {
         private categoryOfCrane? _categoryOfCrane = default;
+        [DomainModel.EnumerationAttribute(nameof(categoryOfCraneList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("Crane")]
         public categoryOfCrane? categoryOfCrane {
             get {
@@ -21408,10 +22525,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
             }
         }
 
+        [DomainModel.EnumerationAttribute(nameof(colourList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("Crane")]
         public ObservableCollection<colour> colour { get; set; } = new();
 
         private colourPattern? _colourPattern = default;
+        [DomainModel.EnumerationAttribute(nameof(colourPatternList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("Crane")]
         public colourPattern? colourPattern {
             get {
@@ -21424,6 +22545,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
         }
 
         private condition? _condition = default;
+        [DomainModel.EnumerationAttribute(nameof(conditionList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("Crane")]
         public condition? condition {
             get {
@@ -21511,6 +22634,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
             }
         }
 
+        [DomainModel.EnumerationAttribute(nameof(statusList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("Crane")]
         public ObservableCollection<status> status { get; set; } = new();
 
@@ -21528,6 +22653,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
         }
 
         private verticalDatum? _verticalDatum = default;
+        [DomainModel.EnumerationAttribute(nameof(verticalDatumList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("Crane")]
         public verticalDatum? verticalDatum {
             get {
@@ -21552,6 +22679,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
         }
 
         private visualProminence? _visualProminence = default;
+        [DomainModel.EnumerationAttribute(nameof(visualProminenceList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("Crane")]
         public visualProminence? visualProminence {
             get {
@@ -21605,6 +22734,27 @@ namespace S100Framework.WPF.ViewModel.S101 {
         public class CraneRefIdViewModel : FeatureRefIdViewModel {
             public override string[] AssociationTypes => ["Crane"];
         }
+
+        [Browsable(false)]
+        public categoryOfCrane[] categoryOfCraneList => [(categoryOfCrane)2, (categoryOfCrane)3, (categoryOfCrane)4, (categoryOfCrane)5, (categoryOfCrane)6];
+
+        [Browsable(false)]
+        public colour[] colourList => [(colour)1, (colour)2, (colour)3, (colour)4, (colour)5, (colour)6, (colour)7, (colour)8, (colour)9, (colour)10, (colour)11, (colour)12, (colour)13];
+
+        [Browsable(false)]
+        public colourPattern[] colourPatternList => [(colourPattern)1, (colourPattern)2, (colourPattern)3, (colourPattern)4, (colourPattern)5, (colourPattern)6];
+
+        [Browsable(false)]
+        public condition[] conditionList => [(condition)1, (condition)2, (condition)5];
+
+        [Browsable(false)]
+        public status[] statusList => [(status)1, (status)4, (status)6, (status)12];
+
+        [Browsable(false)]
+        public verticalDatum[] verticalDatumList => [(verticalDatum)3, (verticalDatum)13, (verticalDatum)16, (verticalDatum)17, (verticalDatum)18, (verticalDatum)19, (verticalDatum)20, (verticalDatum)21, (verticalDatum)24, (verticalDatum)25, (verticalDatum)26, (verticalDatum)28, (verticalDatum)29, (verticalDatum)30, (verticalDatum)44];
+
+        [Browsable(false)]
+        public visualProminence[] visualProminenceList => [(visualProminence)1, (visualProminence)2, (visualProminence)3];
 
         public void Load(DomainModel.S101.FeatureTypes.Crane instance) {
             categoryOfCrane = instance.categoryOfCrane;
@@ -21725,6 +22875,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class BerthViewModel : ViewModelBase {
+        [DomainModel.EnumerationAttribute(nameof(categoryOfCargoList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("Berth")]
         public ObservableCollection<categoryOfCargo> categoryOfCargo { get; set; } = new();
 
@@ -21807,9 +22959,13 @@ namespace S100Framework.WPF.ViewModel.S101 {
         [Category("Berth")]
         public ObservableCollection<periodicDateRange> periodicDateRange { get; set; } = new();
 
+        [DomainModel.EnumerationAttribute(nameof(qualityOfVerticalMeasurementList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("Berth")]
         public ObservableCollection<qualityOfVerticalMeasurement> qualityOfVerticalMeasurement { get; set; } = new();
 
+        [DomainModel.EnumerationAttribute(nameof(statusList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("Berth")]
         public ObservableCollection<status> status { get; set; } = new();
 
@@ -21844,6 +23000,15 @@ namespace S100Framework.WPF.ViewModel.S101 {
         public class BerthRefIdViewModel : FeatureRefIdViewModel {
             public override string[] AssociationTypes => ["Berth"];
         }
+
+        [Browsable(false)]
+        public categoryOfCargo[] categoryOfCargoList => [(categoryOfCargo)1, (categoryOfCargo)2, (categoryOfCargo)3, (categoryOfCargo)4, (categoryOfCargo)5, (categoryOfCargo)6, (categoryOfCargo)7, (categoryOfCargo)8, (categoryOfCargo)9, (categoryOfCargo)10, (categoryOfCargo)11, (categoryOfCargo)12, (categoryOfCargo)13, (categoryOfCargo)14, (categoryOfCargo)15];
+
+        [Browsable(false)]
+        public qualityOfVerticalMeasurement[] qualityOfVerticalMeasurementList => [(qualityOfVerticalMeasurement)1, (qualityOfVerticalMeasurement)2];
+
+        [Browsable(false)]
+        public status[] statusList => [(status)1, (status)2, (status)5, (status)7, (status)9, (status)12];
 
         public void Load(DomainModel.S101.FeatureTypes.Berth instance) {
             categoryOfCargo.Clear();
@@ -21958,13 +23123,19 @@ namespace S100Framework.WPF.ViewModel.S101 {
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class DolphinViewModel : ViewModelBase {
+        [DomainModel.EnumerationAttribute(nameof(categoryOfDolphinList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("Dolphin")]
         public ObservableCollection<categoryOfDolphin> categoryOfDolphin { get; set; } = new();
 
+        [DomainModel.EnumerationAttribute(nameof(colourList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("Dolphin")]
         public ObservableCollection<colour> colour { get; set; } = new();
 
         private colourPattern? _colourPattern = default;
+        [DomainModel.EnumerationAttribute(nameof(colourPatternList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("Dolphin")]
         public colourPattern? colourPattern {
             get {
@@ -21977,6 +23148,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
         }
 
         private condition? _condition = default;
+        [DomainModel.EnumerationAttribute(nameof(conditionList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("Dolphin")]
         public condition? condition {
             get {
@@ -22040,6 +23213,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
             }
         }
 
+        [DomainModel.EnumerationAttribute(nameof(natureOfConstructionList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("Dolphin")]
         public ObservableCollection<natureOfConstruction> natureOfConstruction { get; set; } = new();
 
@@ -22070,6 +23245,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
             }
         }
 
+        [DomainModel.EnumerationAttribute(nameof(statusList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("Dolphin")]
         public ObservableCollection<status> status { get; set; } = new();
 
@@ -22086,6 +23263,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
         }
 
         private visualProminence? _visualProminence = default;
+        [DomainModel.EnumerationAttribute(nameof(visualProminenceList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("Dolphin")]
         public visualProminence? visualProminence {
             get {
@@ -22127,6 +23306,27 @@ namespace S100Framework.WPF.ViewModel.S101 {
         public class DolphinRefIdViewModel : FeatureRefIdViewModel {
             public override string[] AssociationTypes => ["Dolphin"];
         }
+
+        [Browsable(false)]
+        public categoryOfDolphin[] categoryOfDolphinList => [(categoryOfDolphin)1, (categoryOfDolphin)2, (categoryOfDolphin)3, (categoryOfDolphin)4];
+
+        [Browsable(false)]
+        public colour[] colourList => [(colour)1, (colour)2, (colour)3, (colour)4, (colour)5, (colour)6, (colour)7, (colour)8, (colour)9, (colour)10, (colour)11, (colour)12, (colour)13];
+
+        [Browsable(false)]
+        public colourPattern[] colourPatternList => [(colourPattern)1, (colourPattern)2, (colourPattern)3, (colourPattern)4, (colourPattern)5, (colourPattern)6];
+
+        [Browsable(false)]
+        public condition[] conditionList => [(condition)1, (condition)2, (condition)5];
+
+        [Browsable(false)]
+        public natureOfConstruction[] natureOfConstructionList => [(natureOfConstruction)1, (natureOfConstruction)2, (natureOfConstruction)6, (natureOfConstruction)7];
+
+        [Browsable(false)]
+        public status[] statusList => [(status)1, (status)2, (status)3, (status)4, (status)5, (status)6, (status)7, (status)8, (status)12, (status)14, (status)18];
+
+        [Browsable(false)]
+        public visualProminence[] visualProminenceList => [(visualProminence)1, (visualProminence)2, (visualProminence)3];
 
         public void Load(DomainModel.S101.FeatureTypes.Dolphin instance) {
             categoryOfDolphin.Clear();
@@ -22258,6 +23458,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
     [CategoryOrder("FeatureBindings", 200)]
     public partial class BollardViewModel : ViewModelBase {
         private condition? _condition = default;
+        [DomainModel.EnumerationAttribute(nameof(conditionList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("Bollard")]
         public condition? condition {
             get {
@@ -22312,6 +23514,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
             }
         }
 
+        [DomainModel.EnumerationAttribute(nameof(statusList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("Bollard")]
         public ObservableCollection<status> status { get; set; } = new();
 
@@ -22345,6 +23549,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
         public class BollardRefIdViewModel : FeatureRefIdViewModel {
             public override string[] AssociationTypes => ["Bollard"];
         }
+
+        [Browsable(false)]
+        public condition[] conditionList => [(condition)1, (condition)2, (condition)5];
+
+        [Browsable(false)]
+        public status[] statusList => [(status)1, (status)3, (status)4, (status)6, (status)7, (status)8, (status)12, (status)14];
 
         public void Load(DomainModel.S101.FeatureTypes.Bollard instance) {
             condition = instance.condition;
@@ -22431,6 +23641,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
     [CategoryOrder("FeatureBindings", 200)]
     public partial class DryDockViewModel : ViewModelBase {
         private condition? _condition = default;
+        [DomainModel.EnumerationAttribute(nameof(conditionList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("DryDock")]
         public condition? condition {
             get {
@@ -22554,9 +23766,13 @@ namespace S100Framework.WPF.ViewModel.S101 {
             }
         }
 
+        [DomainModel.EnumerationAttribute(nameof(qualityOfVerticalMeasurementList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("DryDock")]
         public ObservableCollection<qualityOfVerticalMeasurement> qualityOfVerticalMeasurement { get; set; } = new();
 
+        [DomainModel.EnumerationAttribute(nameof(statusList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("DryDock")]
         public ObservableCollection<status> status { get; set; } = new();
 
@@ -22591,6 +23807,15 @@ namespace S100Framework.WPF.ViewModel.S101 {
         public class DryDockRefIdViewModel : FeatureRefIdViewModel {
             public override string[] AssociationTypes => ["DryDock"];
         }
+
+        [Browsable(false)]
+        public condition[] conditionList => [(condition)1, (condition)2, (condition)3, (condition)5];
+
+        [Browsable(false)]
+        public qualityOfVerticalMeasurement[] qualityOfVerticalMeasurementList => [(qualityOfVerticalMeasurement)2, (qualityOfVerticalMeasurement)3, (qualityOfVerticalMeasurement)4, (qualityOfVerticalMeasurement)6, (qualityOfVerticalMeasurement)7, (qualityOfVerticalMeasurement)8, (qualityOfVerticalMeasurement)9];
+
+        [Browsable(false)]
+        public status[] statusList => [(status)1, (status)4, (status)6, (status)8, (status)12, (status)14];
 
         public void Load(DomainModel.S101.FeatureTypes.DryDock instance) {
             condition = instance.condition;
@@ -22699,10 +23924,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class FloatingDockViewModel : ViewModelBase {
+        [DomainModel.EnumerationAttribute(nameof(colourList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("FloatingDock")]
         public ObservableCollection<colour> colour { get; set; } = new();
 
         private colourPattern? _colourPattern = default;
+        [DomainModel.EnumerationAttribute(nameof(colourPatternList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("FloatingDock")]
         public colourPattern? colourPattern {
             get {
@@ -22715,6 +23944,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
         }
 
         private condition? _condition = default;
+        [DomainModel.EnumerationAttribute(nameof(conditionList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("FloatingDock")]
         public condition? condition {
             get {
@@ -22850,6 +24081,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
             }
         }
 
+        [DomainModel.EnumerationAttribute(nameof(statusList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("FloatingDock")]
         public ObservableCollection<status> status { get; set; } = new();
 
@@ -22866,6 +24099,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
         }
 
         private visualProminence? _visualProminence = default;
+        [DomainModel.EnumerationAttribute(nameof(visualProminenceList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("FloatingDock")]
         public visualProminence? visualProminence {
             get {
@@ -22907,6 +24142,21 @@ namespace S100Framework.WPF.ViewModel.S101 {
         public class FloatingDockRefIdViewModel : FeatureRefIdViewModel {
             public override string[] AssociationTypes => ["FloatingDock"];
         }
+
+        [Browsable(false)]
+        public colour[] colourList => [(colour)1, (colour)2, (colour)3, (colour)4, (colour)5, (colour)6, (colour)7, (colour)8, (colour)9, (colour)10, (colour)11, (colour)12, (colour)13];
+
+        [Browsable(false)]
+        public colourPattern[] colourPatternList => [(colourPattern)1, (colourPattern)2, (colourPattern)3, (colourPattern)4, (colourPattern)5, (colourPattern)6];
+
+        [Browsable(false)]
+        public condition[] conditionList => [(condition)1, (condition)2, (condition)5];
+
+        [Browsable(false)]
+        public status[] statusList => [(status)1, (status)4, (status)6, (status)7, (status)8, (status)12];
+
+        [Browsable(false)]
+        public visualProminence[] visualProminenceList => [(visualProminence)1, (visualProminence)2, (visualProminence)3];
 
         public void Load(DomainModel.S101.FeatureTypes.FloatingDock instance) {
             colour.Clear();
@@ -23023,6 +24273,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
     [CategoryOrder("FeatureBindings", 200)]
     public partial class PontoonViewModel : ViewModelBase {
         private condition? _condition = default;
+        [DomainModel.EnumerationAttribute(nameof(conditionList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("Pontoon")]
         public condition? condition {
             get {
@@ -23077,6 +24329,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
             }
         }
 
+        [DomainModel.EnumerationAttribute(nameof(statusList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("Pontoon")]
         public ObservableCollection<status> status { get; set; } = new();
 
@@ -23093,6 +24347,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
         }
 
         private visualProminence? _visualProminence = default;
+        [DomainModel.EnumerationAttribute(nameof(visualProminenceList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("Pontoon")]
         public visualProminence? visualProminence {
             get {
@@ -23134,6 +24390,15 @@ namespace S100Framework.WPF.ViewModel.S101 {
         public class PontoonRefIdViewModel : FeatureRefIdViewModel {
             public override string[] AssociationTypes => ["Pontoon"];
         }
+
+        [Browsable(false)]
+        public condition[] conditionList => [(condition)1, (condition)2, (condition)5];
+
+        [Browsable(false)]
+        public status[] statusList => [(status)1, (status)2, (status)4, (status)5, (status)6, (status)7, (status)8, (status)12, (status)14];
+
+        [Browsable(false)]
+        public visualProminence[] visualProminenceList => [(visualProminence)1, (visualProminence)2, (visualProminence)3];
 
         public void Load(DomainModel.S101.FeatureTypes.Pontoon instance) {
             condition = instance.condition;
@@ -23226,6 +24491,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
     [CategoryOrder("FeatureBindings", 200)]
     public partial class DockAreaViewModel : ViewModelBase {
         private categoryOfDock? _categoryOfDock = default;
+        [DomainModel.EnumerationAttribute(nameof(categoryOfDockList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("DockArea")]
         public categoryOfDock? categoryOfDock {
             get {
@@ -23238,6 +24505,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
         }
 
         private condition? _condition = default;
+        [DomainModel.EnumerationAttribute(nameof(conditionList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("DockArea")]
         public condition? condition {
             get {
@@ -23329,6 +24598,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
             }
         }
 
+        [DomainModel.EnumerationAttribute(nameof(statusList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("DockArea")]
         public ObservableCollection<status> status { get; set; } = new();
 
@@ -23350,6 +24621,15 @@ namespace S100Framework.WPF.ViewModel.S101 {
         public class DockAreaRefIdViewModel : FeatureRefIdViewModel {
             public override string[] AssociationTypes => ["DockArea"];
         }
+
+        [Browsable(false)]
+        public categoryOfDock[] categoryOfDockList => [(categoryOfDock)1, (categoryOfDock)2];
+
+        [Browsable(false)]
+        public condition[] conditionList => [(condition)1, (condition)2, (condition)3, (condition)5];
+
+        [Browsable(false)]
+        public status[] statusList => [(status)1, (status)4, (status)6, (status)8, (status)14];
 
         public void Load(DomainModel.S101.FeatureTypes.DockArea instance) {
             categoryOfDock = instance.categoryOfDock;
@@ -23488,9 +24768,13 @@ namespace S100Framework.WPF.ViewModel.S101 {
             }
         }
 
+        [DomainModel.EnumerationAttribute(nameof(natureOfConstructionList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("Gridiron")]
         public ObservableCollection<natureOfConstruction> natureOfConstruction { get; set; } = new();
 
+        [DomainModel.EnumerationAttribute(nameof(statusList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("Gridiron")]
         public ObservableCollection<status> status { get; set; } = new();
 
@@ -23507,6 +24791,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
         }
 
         private waterLevelEffect? _waterLevelEffect = default;
+        [DomainModel.EnumerationAttribute(nameof(waterLevelEffectList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("Gridiron")]
         public waterLevelEffect? waterLevelEffect {
             get {
@@ -23536,6 +24822,15 @@ namespace S100Framework.WPF.ViewModel.S101 {
         public class GridironRefIdViewModel : FeatureRefIdViewModel {
             public override string[] AssociationTypes => ["Gridiron"];
         }
+
+        [Browsable(false)]
+        public natureOfConstruction[] natureOfConstructionList => [(natureOfConstruction)1, (natureOfConstruction)2, (natureOfConstruction)6, (natureOfConstruction)7, (natureOfConstruction)11];
+
+        [Browsable(false)]
+        public status[] statusList => [(status)1, (status)4, (status)6, (status)8, (status)14, (status)28];
+
+        [Browsable(false)]
+        public waterLevelEffect[] waterLevelEffectList => [(waterLevelEffect)1, (waterLevelEffect)4, (waterLevelEffect)5];
 
         public void Load(DomainModel.S101.FeatureTypes.Gridiron instance) {
             featureName.Clear();
@@ -23684,6 +24979,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
             }
         }
 
+        [DomainModel.EnumerationAttribute(nameof(statusList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("LockBasin")]
         public ObservableCollection<status> status { get; set; } = new();
 
@@ -23705,6 +25002,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
         public class LockBasinRefIdViewModel : FeatureRefIdViewModel {
             public override string[] AssociationTypes => ["LockBasin"];
         }
+
+        [Browsable(false)]
+        public status[] statusList => [(status)1, (status)4, (status)6, (status)8, (status)13, (status)14, (status)16, (status)17];
 
         public void Load(DomainModel.S101.FeatureTypes.LockBasin instance) {
             featureName.Clear();
@@ -23900,6 +25200,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
     [CategoryOrder("FeatureBindings", 200)]
     public partial class SeaAreaNamedWaterAreaViewModel : ViewModelBase {
         private categoryOfSeaArea? _categoryOfSeaArea = default;
+        [DomainModel.EnumerationAttribute(nameof(categoryOfSeaAreaList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("SeaAreaNamedWaterArea")]
         public categoryOfSeaArea? categoryOfSeaArea {
             get {
@@ -23944,6 +25246,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
         public class SeaAreaNamedWaterAreaRefIdViewModel : FeatureRefIdViewModel {
             public override string[] AssociationTypes => ["SeaAreaNamedWaterArea"];
         }
+
+        [Browsable(false)]
+        public categoryOfSeaArea[] categoryOfSeaAreaList => [(categoryOfSeaArea)2, (categoryOfSeaArea)3, (categoryOfSeaArea)4, (categoryOfSeaArea)5, (categoryOfSeaArea)6, (categoryOfSeaArea)7, (categoryOfSeaArea)8, (categoryOfSeaArea)9, (categoryOfSeaArea)10, (categoryOfSeaArea)11, (categoryOfSeaArea)12, (categoryOfSeaArea)13, (categoryOfSeaArea)14, (categoryOfSeaArea)15, (categoryOfSeaArea)16, (categoryOfSeaArea)17, (categoryOfSeaArea)18, (categoryOfSeaArea)19, (categoryOfSeaArea)20, (categoryOfSeaArea)21, (categoryOfSeaArea)22, (categoryOfSeaArea)23, (categoryOfSeaArea)24, (categoryOfSeaArea)25, (categoryOfSeaArea)26, (categoryOfSeaArea)27, (categoryOfSeaArea)28, (categoryOfSeaArea)29, (categoryOfSeaArea)30, (categoryOfSeaArea)31, (categoryOfSeaArea)32, (categoryOfSeaArea)33, (categoryOfSeaArea)34, (categoryOfSeaArea)35, (categoryOfSeaArea)36, (categoryOfSeaArea)37, (categoryOfSeaArea)38, (categoryOfSeaArea)39, (categoryOfSeaArea)40, (categoryOfSeaArea)41, (categoryOfSeaArea)42, (categoryOfSeaArea)43, (categoryOfSeaArea)44, (categoryOfSeaArea)45, (categoryOfSeaArea)46, (categoryOfSeaArea)47, (categoryOfSeaArea)48, (categoryOfSeaArea)49, (categoryOfSeaArea)50, (categoryOfSeaArea)51, (categoryOfSeaArea)52, (categoryOfSeaArea)53, (categoryOfSeaArea)54, (categoryOfSeaArea)55, (categoryOfSeaArea)56];
 
         public void Load(DomainModel.S101.FeatureTypes.SeaAreaNamedWaterArea instance) {
             categoryOfSeaArea = instance.categoryOfSeaArea;
@@ -23998,6 +25303,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
     [CategoryOrder("FeatureBindings", 200)]
     public partial class TidalStreamFloodEbbViewModel : ViewModelBase {
         private categoryOfTidalStream _categoryOfTidalStream;
+        [DomainModel.EnumerationAttribute(nameof(categoryOfTidalStreamList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("TidalStreamFloodEbb")]
         public categoryOfTidalStream categoryOfTidalStream {
             get {
@@ -24081,6 +25388,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
         public class TidalStreamFloodEbbRefIdViewModel : FeatureRefIdViewModel {
             public override string[] AssociationTypes => ["TidalStreamFloodEbb"];
         }
+
+        [Browsable(false)]
+        public categoryOfTidalStream[] categoryOfTidalStreamList => [(categoryOfTidalStream)1, (categoryOfTidalStream)2, (categoryOfTidalStream)3];
 
         public void Load(DomainModel.S101.FeatureTypes.TidalStreamFloodEbb instance) {
             categoryOfTidalStream = instance.categoryOfTidalStream;
@@ -24216,6 +25526,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
         }
 
         private status? _status = default;
+        [DomainModel.EnumerationAttribute(nameof(statusList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("CurrentNonGravitational")]
         public status? status {
             get {
@@ -24245,6 +25557,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
         public class CurrentNonGravitationalRefIdViewModel : FeatureRefIdViewModel {
             public override string[] AssociationTypes => ["CurrentNonGravitational"];
         }
+
+        [Browsable(false)]
+        public status[] statusList => [(status)5];
 
         public void Load(DomainModel.S101.FeatureTypes.CurrentNonGravitational instance) {
             featureName.Clear();
@@ -24332,6 +25647,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
     [CategoryOrder("FeatureBindings", 200)]
     public partial class WaterTurbulenceViewModel : ViewModelBase {
         private categoryOfWaterTurbulence _categoryOfWaterTurbulence;
+        [DomainModel.EnumerationAttribute(nameof(categoryOfWaterTurbulenceList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("WaterTurbulence")]
         public categoryOfWaterTurbulence categoryOfWaterTurbulence {
             get {
@@ -24376,6 +25693,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
         public class WaterTurbulenceRefIdViewModel : FeatureRefIdViewModel {
             public override string[] AssociationTypes => ["WaterTurbulence"];
         }
+
+        [Browsable(false)]
+        public categoryOfWaterTurbulence[] categoryOfWaterTurbulenceList => [(categoryOfWaterTurbulence)1, (categoryOfWaterTurbulence)2, (categoryOfWaterTurbulence)3, (categoryOfWaterTurbulence)4, (categoryOfWaterTurbulence)5];
 
         public void Load(DomainModel.S101.FeatureTypes.WaterTurbulence instance) {
             categoryOfWaterTurbulence = instance.categoryOfWaterTurbulence;
@@ -24569,6 +25889,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
             }
         }
 
+        [DomainModel.EnumerationAttribute(nameof(qualityOfVerticalMeasurementList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("Sounding")]
         public ObservableCollection<qualityOfVerticalMeasurement> qualityOfVerticalMeasurement { get; set; } = new();
 
@@ -24585,6 +25907,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
         }
 
         private status? _status = default;
+        [DomainModel.EnumerationAttribute(nameof(statusList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("Sounding")]
         public status? status {
             get {
@@ -24596,6 +25920,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
             }
         }
 
+        [DomainModel.EnumerationAttribute(nameof(techniqueOfVerticalMeasurementList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("Sounding")]
         public ObservableCollection<techniqueOfVerticalMeasurement> techniqueOfVerticalMeasurement { get; set; } = new();
 
@@ -24617,6 +25943,15 @@ namespace S100Framework.WPF.ViewModel.S101 {
         public class SoundingRefIdViewModel : FeatureRefIdViewModel {
             public override string[] AssociationTypes => ["Sounding"];
         }
+
+        [Browsable(false)]
+        public qualityOfVerticalMeasurement[] qualityOfVerticalMeasurementList => [(qualityOfVerticalMeasurement)1, (qualityOfVerticalMeasurement)3, (qualityOfVerticalMeasurement)4, (qualityOfVerticalMeasurement)8, (qualityOfVerticalMeasurement)9];
+
+        [Browsable(false)]
+        public status[] statusList => [(status)18];
+
+        [Browsable(false)]
+        public techniqueOfVerticalMeasurement[] techniqueOfVerticalMeasurementList => [(techniqueOfVerticalMeasurement)1, (techniqueOfVerticalMeasurement)2, (techniqueOfVerticalMeasurement)3, (techniqueOfVerticalMeasurement)4, (techniqueOfVerticalMeasurement)5, (techniqueOfVerticalMeasurement)8, (techniqueOfVerticalMeasurement)9, (techniqueOfVerticalMeasurement)10, (techniqueOfVerticalMeasurement)11, (techniqueOfVerticalMeasurement)12, (techniqueOfVerticalMeasurement)13, (techniqueOfVerticalMeasurement)15, (techniqueOfVerticalMeasurement)16, (techniqueOfVerticalMeasurement)17, (techniqueOfVerticalMeasurement)18];
 
         public void Load(DomainModel.S101.FeatureTypes.Sounding instance) {
             featureName.Clear();
@@ -24755,6 +26090,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
         }
 
         private qualityOfVerticalMeasurement? _qualityOfVerticalMeasurement = default;
+        [DomainModel.EnumerationAttribute(nameof(qualityOfVerticalMeasurementList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("DredgedArea")]
         public qualityOfVerticalMeasurement? qualityOfVerticalMeasurement {
             get {
@@ -24766,9 +26103,13 @@ namespace S100Framework.WPF.ViewModel.S101 {
             }
         }
 
+        [DomainModel.EnumerationAttribute(nameof(restrictionList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("DredgedArea")]
         public ObservableCollection<restriction> restriction { get; set; } = new();
 
+        [DomainModel.EnumerationAttribute(nameof(techniqueOfVerticalMeasurementList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("DredgedArea")]
         public ObservableCollection<techniqueOfVerticalMeasurement> techniqueOfVerticalMeasurement { get; set; } = new();
 
@@ -24794,6 +26135,15 @@ namespace S100Framework.WPF.ViewModel.S101 {
         public class DredgedAreaRefIdViewModel : FeatureRefIdViewModel {
             public override string[] AssociationTypes => ["DredgedArea"];
         }
+
+        [Browsable(false)]
+        public qualityOfVerticalMeasurement[] qualityOfVerticalMeasurementList => [(qualityOfVerticalMeasurement)10, (qualityOfVerticalMeasurement)11];
+
+        [Browsable(false)]
+        public restriction[] restrictionList => [(restriction)1, (restriction)2, (restriction)3, (restriction)4, (restriction)5, (restriction)6, (restriction)8, (restriction)11, (restriction)12, (restriction)13, (restriction)16, (restriction)17, (restriction)18, (restriction)19, (restriction)20, (restriction)21, (restriction)23, (restriction)25, (restriction)27, (restriction)39];
+
+        [Browsable(false)]
+        public techniqueOfVerticalMeasurement[] techniqueOfVerticalMeasurementList => [(techniqueOfVerticalMeasurement)1, (techniqueOfVerticalMeasurement)2, (techniqueOfVerticalMeasurement)3, (techniqueOfVerticalMeasurement)8, (techniqueOfVerticalMeasurement)9, (techniqueOfVerticalMeasurement)13, (techniqueOfVerticalMeasurement)15, (techniqueOfVerticalMeasurement)16, (techniqueOfVerticalMeasurement)17, (techniqueOfVerticalMeasurement)18];
 
         public void Load(DomainModel.S101.FeatureTypes.DredgedArea instance) {
             depthRangeMinimumValue = instance.depthRangeMinimumValue;
@@ -25176,6 +26526,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
             }
         }
 
+        [DomainModel.EnumerationAttribute(nameof(techniqueOfVerticalMeasurementList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("DepthNoBottomFound")]
         public ObservableCollection<techniqueOfVerticalMeasurement> techniqueOfVerticalMeasurement { get; set; } = new();
 
@@ -25197,6 +26549,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
         public class DepthNoBottomFoundRefIdViewModel : FeatureRefIdViewModel {
             public override string[] AssociationTypes => ["DepthNoBottomFound"];
         }
+
+        [Browsable(false)]
+        public techniqueOfVerticalMeasurement[] techniqueOfVerticalMeasurementList => [(techniqueOfVerticalMeasurement)1, (techniqueOfVerticalMeasurement)2, (techniqueOfVerticalMeasurement)3, (techniqueOfVerticalMeasurement)5, (techniqueOfVerticalMeasurement)8, (techniqueOfVerticalMeasurement)9, (techniqueOfVerticalMeasurement)13, (techniqueOfVerticalMeasurement)15, (techniqueOfVerticalMeasurement)16, (techniqueOfVerticalMeasurement)17, (techniqueOfVerticalMeasurement)18];
 
         public void Load(DomainModel.S101.FeatureTypes.DepthNoBottomFound instance) {
             interoperabilityIdentifier = instance.interoperabilityIdentifier;
@@ -25322,6 +26677,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
         public ObservableCollection<surfaceCharacteristics> surfaceCharacteristics { get; set; } = new();
 
         private waterLevelEffect? _waterLevelEffect = default;
+        [DomainModel.EnumerationAttribute(nameof(waterLevelEffectList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("SeabedArea")]
         public waterLevelEffect? waterLevelEffect {
             get {
@@ -25351,6 +26708,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
         public class SeabedAreaRefIdViewModel : FeatureRefIdViewModel {
             public override string[] AssociationTypes => ["SeabedArea"];
         }
+
+        [Browsable(false)]
+        public waterLevelEffect[] waterLevelEffectList => [(waterLevelEffect)3, (waterLevelEffect)4, (waterLevelEffect)5];
 
         public void Load(DomainModel.S101.FeatureTypes.SeabedArea instance) {
             featureName.Clear();
@@ -25414,6 +26774,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
     [CategoryOrder("FeatureBindings", 200)]
     public partial class WeedKelpViewModel : ViewModelBase {
         private categoryOfWeedKelp? _categoryOfWeedKelp = default;
+        [DomainModel.EnumerationAttribute(nameof(categoryOfWeedKelpList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("WeedKelp")]
         public categoryOfWeedKelp? categoryOfWeedKelp {
             get {
@@ -25458,6 +26820,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
         public class WeedKelpRefIdViewModel : FeatureRefIdViewModel {
             public override string[] AssociationTypes => ["WeedKelp"];
         }
+
+        [Browsable(false)]
+        public categoryOfWeedKelp[] categoryOfWeedKelpList => [(categoryOfWeedKelp)1, (categoryOfWeedKelp)2, (categoryOfWeedKelp)4];
 
         public void Load(DomainModel.S101.FeatureTypes.WeedKelp instance) {
             categoryOfWeedKelp = instance.categoryOfWeedKelp;
@@ -25764,6 +27129,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
     [CategoryOrder("FeatureBindings", 200)]
     public partial class UnderwaterAwashRockViewModel : ViewModelBase {
         private expositionOfSounding? _expositionOfSounding = default;
+        [DomainModel.EnumerationAttribute(nameof(expositionOfSoundingList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("UnderwaterAwashRock")]
         public expositionOfSounding? expositionOfSounding {
             get {
@@ -25791,6 +27158,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
         }
 
         private natureOfSurface? _natureOfSurface = default;
+        [DomainModel.EnumerationAttribute(nameof(natureOfSurfaceList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("UnderwaterAwashRock")]
         public natureOfSurface? natureOfSurface {
             get {
@@ -25802,6 +27171,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
             }
         }
 
+        [DomainModel.EnumerationAttribute(nameof(qualityOfVerticalMeasurementList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("UnderwaterAwashRock")]
         public ObservableCollection<qualityOfVerticalMeasurement> qualityOfVerticalMeasurement { get; set; } = new();
 
@@ -25818,6 +27189,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
         }
 
         private status? _status = default;
+        [DomainModel.EnumerationAttribute(nameof(statusList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("UnderwaterAwashRock")]
         public status? status {
             get {
@@ -25829,6 +27202,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
             }
         }
 
+        [DomainModel.EnumerationAttribute(nameof(techniqueOfVerticalMeasurementList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("UnderwaterAwashRock")]
         public ObservableCollection<techniqueOfVerticalMeasurement> techniqueOfVerticalMeasurement { get; set; } = new();
 
@@ -25845,6 +27220,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
         }
 
         private waterLevelEffect _waterLevelEffect;
+        [DomainModel.EnumerationAttribute(nameof(waterLevelEffectList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("UnderwaterAwashRock")]
         public waterLevelEffect waterLevelEffect {
             get {
@@ -25898,6 +27275,24 @@ namespace S100Framework.WPF.ViewModel.S101 {
         public class UnderwaterAwashRockRefIdViewModel : FeatureRefIdViewModel {
             public override string[] AssociationTypes => ["UnderwaterAwashRock"];
         }
+
+        [Browsable(false)]
+        public expositionOfSounding[] expositionOfSoundingList => [(expositionOfSounding)1, (expositionOfSounding)2];
+
+        [Browsable(false)]
+        public natureOfSurface[] natureOfSurfaceList => [(natureOfSurface)14];
+
+        [Browsable(false)]
+        public qualityOfVerticalMeasurement[] qualityOfVerticalMeasurementList => [(qualityOfVerticalMeasurement)1, (qualityOfVerticalMeasurement)2, (qualityOfVerticalMeasurement)3, (qualityOfVerticalMeasurement)4, (qualityOfVerticalMeasurement)6, (qualityOfVerticalMeasurement)7, (qualityOfVerticalMeasurement)8, (qualityOfVerticalMeasurement)9];
+
+        [Browsable(false)]
+        public status[] statusList => [(status)18];
+
+        [Browsable(false)]
+        public techniqueOfVerticalMeasurement[] techniqueOfVerticalMeasurementList => [(techniqueOfVerticalMeasurement)1, (techniqueOfVerticalMeasurement)2, (techniqueOfVerticalMeasurement)3, (techniqueOfVerticalMeasurement)4, (techniqueOfVerticalMeasurement)5, (techniqueOfVerticalMeasurement)8, (techniqueOfVerticalMeasurement)9, (techniqueOfVerticalMeasurement)10, (techniqueOfVerticalMeasurement)11, (techniqueOfVerticalMeasurement)12, (techniqueOfVerticalMeasurement)13, (techniqueOfVerticalMeasurement)15, (techniqueOfVerticalMeasurement)16, (techniqueOfVerticalMeasurement)17, (techniqueOfVerticalMeasurement)18];
+
+        [Browsable(false)]
+        public waterLevelEffect[] waterLevelEffectList => [(waterLevelEffect)3, (waterLevelEffect)4, (waterLevelEffect)5];
 
         public void Load(DomainModel.S101.FeatureTypes.UnderwaterAwashRock instance) {
             expositionOfSounding = instance.expositionOfSounding;
@@ -25991,6 +27386,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
     [CategoryOrder("FeatureBindings", 200)]
     public partial class WreckViewModel : ViewModelBase {
         private categoryOfWreck? _categoryOfWreck = default;
+        [DomainModel.EnumerationAttribute(nameof(categoryOfWreckList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("Wreck")]
         public categoryOfWreck? categoryOfWreck {
             get {
@@ -26003,6 +27400,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
         }
 
         private expositionOfSounding? _expositionOfSounding = default;
+        [DomainModel.EnumerationAttribute(nameof(expositionOfSoundingList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("Wreck")]
         public expositionOfSounding? expositionOfSounding {
             get {
@@ -26041,6 +27440,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
             }
         }
 
+        [DomainModel.EnumerationAttribute(nameof(qualityOfVerticalMeasurementList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("Wreck")]
         public ObservableCollection<qualityOfVerticalMeasurement> qualityOfVerticalMeasurement { get; set; } = new();
 
@@ -26068,9 +27469,13 @@ namespace S100Framework.WPF.ViewModel.S101 {
             }
         }
 
+        [DomainModel.EnumerationAttribute(nameof(statusList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("Wreck")]
         public ObservableCollection<status> status { get; set; } = new();
 
+        [DomainModel.EnumerationAttribute(nameof(techniqueOfVerticalMeasurementList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("Wreck")]
         public ObservableCollection<techniqueOfVerticalMeasurement> techniqueOfVerticalMeasurement { get; set; } = new();
 
@@ -26087,6 +27492,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
         }
 
         private visualProminence? _visualProminence = default;
+        [DomainModel.EnumerationAttribute(nameof(visualProminenceList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("Wreck")]
         public visualProminence? visualProminence {
             get {
@@ -26099,6 +27506,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
         }
 
         private waterLevelEffect _waterLevelEffect;
+        [DomainModel.EnumerationAttribute(nameof(waterLevelEffectList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("Wreck")]
         public waterLevelEffect waterLevelEffect {
             get {
@@ -26164,6 +27573,27 @@ namespace S100Framework.WPF.ViewModel.S101 {
         public class WreckRefIdViewModel : FeatureRefIdViewModel {
             public override string[] AssociationTypes => ["Wreck"];
         }
+
+        [Browsable(false)]
+        public categoryOfWreck[] categoryOfWreckList => [(categoryOfWreck)1, (categoryOfWreck)2, (categoryOfWreck)3, (categoryOfWreck)4, (categoryOfWreck)5];
+
+        [Browsable(false)]
+        public expositionOfSounding[] expositionOfSoundingList => [(expositionOfSounding)1, (expositionOfSounding)2, (expositionOfSounding)3];
+
+        [Browsable(false)]
+        public qualityOfVerticalMeasurement[] qualityOfVerticalMeasurementList => [(qualityOfVerticalMeasurement)1, (qualityOfVerticalMeasurement)2, (qualityOfVerticalMeasurement)3, (qualityOfVerticalMeasurement)4, (qualityOfVerticalMeasurement)6, (qualityOfVerticalMeasurement)7, (qualityOfVerticalMeasurement)8, (qualityOfVerticalMeasurement)9];
+
+        [Browsable(false)]
+        public status[] statusList => [(status)7, (status)13, (status)18];
+
+        [Browsable(false)]
+        public techniqueOfVerticalMeasurement[] techniqueOfVerticalMeasurementList => [(techniqueOfVerticalMeasurement)1, (techniqueOfVerticalMeasurement)2, (techniqueOfVerticalMeasurement)3, (techniqueOfVerticalMeasurement)4, (techniqueOfVerticalMeasurement)5, (techniqueOfVerticalMeasurement)8, (techniqueOfVerticalMeasurement)9, (techniqueOfVerticalMeasurement)10, (techniqueOfVerticalMeasurement)11, (techniqueOfVerticalMeasurement)12, (techniqueOfVerticalMeasurement)13, (techniqueOfVerticalMeasurement)15, (techniqueOfVerticalMeasurement)16, (techniqueOfVerticalMeasurement)17, (techniqueOfVerticalMeasurement)18];
+
+        [Browsable(false)]
+        public visualProminence[] visualProminenceList => [(visualProminence)1, (visualProminence)2, (visualProminence)3];
+
+        [Browsable(false)]
+        public waterLevelEffect[] waterLevelEffectList => [(waterLevelEffect)1, (waterLevelEffect)2, (waterLevelEffect)3, (waterLevelEffect)4, (waterLevelEffect)5];
 
         public void Load(DomainModel.S101.FeatureTypes.Wreck instance) {
             categoryOfWreck = instance.categoryOfWreck;
@@ -26275,6 +27705,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
     [CategoryOrder("FeatureBindings", 200)]
     public partial class ObstructionViewModel : ViewModelBase {
         private categoryOfObstruction? _categoryOfObstruction = default;
+        [DomainModel.EnumerationAttribute(nameof(categoryOfObstructionList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("Obstruction")]
         public categoryOfObstruction? categoryOfObstruction {
             get {
@@ -26287,6 +27719,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
         }
 
         private condition? _condition = default;
+        [DomainModel.EnumerationAttribute(nameof(conditionList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("Obstruction")]
         public condition? condition {
             get {
@@ -26299,6 +27733,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
         }
 
         private expositionOfSounding? _expositionOfSounding = default;
+        [DomainModel.EnumerationAttribute(nameof(expositionOfSoundingList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("Obstruction")]
         public expositionOfSounding? expositionOfSounding {
             get {
@@ -26349,12 +27785,18 @@ namespace S100Framework.WPF.ViewModel.S101 {
             }
         }
 
+        [DomainModel.EnumerationAttribute(nameof(natureOfSurfaceList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("Obstruction")]
         public ObservableCollection<natureOfSurface> natureOfSurface { get; set; } = new();
 
+        [DomainModel.EnumerationAttribute(nameof(productList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("Obstruction")]
         public ObservableCollection<product> product { get; set; } = new();
 
+        [DomainModel.EnumerationAttribute(nameof(qualityOfVerticalMeasurementList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("Obstruction")]
         public ObservableCollection<qualityOfVerticalMeasurement> qualityOfVerticalMeasurement { get; set; } = new();
 
@@ -26370,9 +27812,13 @@ namespace S100Framework.WPF.ViewModel.S101 {
             }
         }
 
+        [DomainModel.EnumerationAttribute(nameof(statusList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("Obstruction")]
         public ObservableCollection<status> status { get; set; } = new();
 
+        [DomainModel.EnumerationAttribute(nameof(techniqueOfVerticalMeasurementList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("Obstruction")]
         public ObservableCollection<techniqueOfVerticalMeasurement> techniqueOfVerticalMeasurement { get; set; } = new();
 
@@ -26401,6 +27847,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
         }
 
         private waterLevelEffect _waterLevelEffect;
+        [DomainModel.EnumerationAttribute(nameof(waterLevelEffectList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("Obstruction")]
         public waterLevelEffect waterLevelEffect {
             get {
@@ -26454,6 +27902,33 @@ namespace S100Framework.WPF.ViewModel.S101 {
         public class ObstructionRefIdViewModel : FeatureRefIdViewModel {
             public override string[] AssociationTypes => ["Obstruction"];
         }
+
+        [Browsable(false)]
+        public categoryOfObstruction[] categoryOfObstructionList => [(categoryOfObstruction)1, (categoryOfObstruction)2, (categoryOfObstruction)3, (categoryOfObstruction)4, (categoryOfObstruction)5, (categoryOfObstruction)6, (categoryOfObstruction)8, (categoryOfObstruction)9, (categoryOfObstruction)10, (categoryOfObstruction)12, (categoryOfObstruction)13, (categoryOfObstruction)14, (categoryOfObstruction)15, (categoryOfObstruction)16, (categoryOfObstruction)17, (categoryOfObstruction)18, (categoryOfObstruction)19, (categoryOfObstruction)20, (categoryOfObstruction)21, (categoryOfObstruction)22, (categoryOfObstruction)23];
+
+        [Browsable(false)]
+        public condition[] conditionList => [(condition)1, (condition)2, (condition)5];
+
+        [Browsable(false)]
+        public expositionOfSounding[] expositionOfSoundingList => [(expositionOfSounding)1, (expositionOfSounding)2, (expositionOfSounding)3];
+
+        [Browsable(false)]
+        public natureOfSurface[] natureOfSurfaceList => [(natureOfSurface)1, (natureOfSurface)2, (natureOfSurface)3, (natureOfSurface)4, (natureOfSurface)5, (natureOfSurface)6, (natureOfSurface)7, (natureOfSurface)8, (natureOfSurface)9, (natureOfSurface)11, (natureOfSurface)14, (natureOfSurface)17, (natureOfSurface)18];
+
+        [Browsable(false)]
+        public product[] productList => [(product)1, (product)2, (product)3, (product)8, (product)23];
+
+        [Browsable(false)]
+        public qualityOfVerticalMeasurement[] qualityOfVerticalMeasurementList => [(qualityOfVerticalMeasurement)1, (qualityOfVerticalMeasurement)2, (qualityOfVerticalMeasurement)3, (qualityOfVerticalMeasurement)4, (qualityOfVerticalMeasurement)6, (qualityOfVerticalMeasurement)7, (qualityOfVerticalMeasurement)8, (qualityOfVerticalMeasurement)9];
+
+        [Browsable(false)]
+        public status[] statusList => [(status)1, (status)4, (status)5, (status)7, (status)8, (status)13, (status)18, (status)28];
+
+        [Browsable(false)]
+        public techniqueOfVerticalMeasurement[] techniqueOfVerticalMeasurementList => [(techniqueOfVerticalMeasurement)1, (techniqueOfVerticalMeasurement)2, (techniqueOfVerticalMeasurement)3, (techniqueOfVerticalMeasurement)4, (techniqueOfVerticalMeasurement)5, (techniqueOfVerticalMeasurement)8, (techniqueOfVerticalMeasurement)9, (techniqueOfVerticalMeasurement)10, (techniqueOfVerticalMeasurement)11, (techniqueOfVerticalMeasurement)12, (techniqueOfVerticalMeasurement)13, (techniqueOfVerticalMeasurement)15, (techniqueOfVerticalMeasurement)16, (techniqueOfVerticalMeasurement)17, (techniqueOfVerticalMeasurement)18];
+
+        [Browsable(false)]
+        public waterLevelEffect[] waterLevelEffectList => [(waterLevelEffect)1, (waterLevelEffect)2, (waterLevelEffect)3, (waterLevelEffect)4, (waterLevelEffect)5, (waterLevelEffect)7];
 
         public void Load(DomainModel.S101.FeatureTypes.Obstruction instance) {
             categoryOfObstruction = instance.categoryOfObstruction;
@@ -26597,6 +28072,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
             }
         }
 
+        [DomainModel.EnumerationAttribute(nameof(qualityOfVerticalMeasurementList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("FoulGround")]
         public ObservableCollection<qualityOfVerticalMeasurement> qualityOfVerticalMeasurement { get; set; } = new();
 
@@ -26612,9 +28089,13 @@ namespace S100Framework.WPF.ViewModel.S101 {
             }
         }
 
+        [DomainModel.EnumerationAttribute(nameof(statusList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("FoulGround")]
         public ObservableCollection<status> status { get; set; } = new();
 
+        [DomainModel.EnumerationAttribute(nameof(techniqueOfVerticalMeasurementList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("FoulGround")]
         public ObservableCollection<techniqueOfVerticalMeasurement> techniqueOfVerticalMeasurement { get; set; } = new();
 
@@ -26661,6 +28142,15 @@ namespace S100Framework.WPF.ViewModel.S101 {
         public class FoulGroundRefIdViewModel : FeatureRefIdViewModel {
             public override string[] AssociationTypes => ["FoulGround"];
         }
+
+        [Browsable(false)]
+        public qualityOfVerticalMeasurement[] qualityOfVerticalMeasurementList => [(qualityOfVerticalMeasurement)1, (qualityOfVerticalMeasurement)2, (qualityOfVerticalMeasurement)3, (qualityOfVerticalMeasurement)4, (qualityOfVerticalMeasurement)6, (qualityOfVerticalMeasurement)7, (qualityOfVerticalMeasurement)8, (qualityOfVerticalMeasurement)9];
+
+        [Browsable(false)]
+        public status[] statusList => [(status)13, (status)18, (status)28];
+
+        [Browsable(false)]
+        public techniqueOfVerticalMeasurement[] techniqueOfVerticalMeasurementList => [(techniqueOfVerticalMeasurement)1, (techniqueOfVerticalMeasurement)2, (techniqueOfVerticalMeasurement)3, (techniqueOfVerticalMeasurement)4, (techniqueOfVerticalMeasurement)5, (techniqueOfVerticalMeasurement)8, (techniqueOfVerticalMeasurement)9, (techniqueOfVerticalMeasurement)10, (techniqueOfVerticalMeasurement)11, (techniqueOfVerticalMeasurement)12, (techniqueOfVerticalMeasurement)13, (techniqueOfVerticalMeasurement)15, (techniqueOfVerticalMeasurement)16, (techniqueOfVerticalMeasurement)17, (techniqueOfVerticalMeasurement)18];
 
         public void Load(DomainModel.S101.FeatureTypes.FoulGround instance) {
             featureName.Clear();
@@ -26839,6 +28329,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
     [CategoryOrder("FeatureBindings", 200)]
     public partial class FishingFacilityViewModel : ViewModelBase {
         private categoryOfFishingFacility? _categoryOfFishingFacility = default;
+        [DomainModel.EnumerationAttribute(nameof(categoryOfFishingFacilityList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("FishingFacility")]
         public categoryOfFishingFacility? categoryOfFishingFacility {
             get {
@@ -26851,6 +28343,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
         }
 
         private condition? _condition = default;
+        [DomainModel.EnumerationAttribute(nameof(conditionList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("FishingFacility")]
         public condition? condition {
             get {
@@ -26892,6 +28386,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
             }
         }
 
+        [DomainModel.EnumerationAttribute(nameof(statusList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("FishingFacility")]
         public ObservableCollection<status> status { get; set; } = new();
 
@@ -26925,6 +28421,15 @@ namespace S100Framework.WPF.ViewModel.S101 {
         public class FishingFacilityRefIdViewModel : FeatureRefIdViewModel {
             public override string[] AssociationTypes => ["FishingFacility"];
         }
+
+        [Browsable(false)]
+        public categoryOfFishingFacility[] categoryOfFishingFacilityList => [(categoryOfFishingFacility)1, (categoryOfFishingFacility)2, (categoryOfFishingFacility)3, (categoryOfFishingFacility)4];
+
+        [Browsable(false)]
+        public condition[] conditionList => [(condition)1, (condition)2, (condition)5];
+
+        [Browsable(false)]
+        public status[] statusList => [(status)1, (status)4, (status)5, (status)6, (status)7, (status)8, (status)12, (status)18, (status)28];
 
         public void Load(DomainModel.S101.FeatureTypes.FishingFacility instance) {
             categoryOfFishingFacility = instance.categoryOfFishingFacility;
@@ -27006,6 +28511,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
     [CategoryOrder("FeatureBindings", 200)]
     public partial class MarineFarmCultureViewModel : ViewModelBase {
         private categoryOfMarineFarmCulture? _categoryOfMarineFarmCulture = default;
+        [DomainModel.EnumerationAttribute(nameof(categoryOfMarineFarmCultureList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("MarineFarmCulture")]
         public categoryOfMarineFarmCulture? categoryOfMarineFarmCulture {
             get {
@@ -27018,6 +28525,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
         }
 
         private expositionOfSounding? _expositionOfSounding = default;
+        [DomainModel.EnumerationAttribute(nameof(expositionOfSoundingList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("MarineFarmCulture")]
         public expositionOfSounding? expositionOfSounding {
             get {
@@ -27072,12 +28581,18 @@ namespace S100Framework.WPF.ViewModel.S101 {
         [Category("MarineFarmCulture")]
         public ObservableCollection<periodicDateRange> periodicDateRange { get; set; } = new();
 
+        [DomainModel.EnumerationAttribute(nameof(qualityOfVerticalMeasurementList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("MarineFarmCulture")]
         public ObservableCollection<qualityOfVerticalMeasurement> qualityOfVerticalMeasurement { get; set; } = new();
 
+        [DomainModel.EnumerationAttribute(nameof(restrictionList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("MarineFarmCulture")]
         public ObservableCollection<restriction> restriction { get; set; } = new();
 
+        [DomainModel.EnumerationAttribute(nameof(statusList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("MarineFarmCulture")]
         public ObservableCollection<status> status { get; set; } = new();
 
@@ -27122,6 +28637,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
         public ObservableCollection<vesselSpeedLimit> vesselSpeedLimit { get; set; } = new();
 
         private waterLevelEffect _waterLevelEffect;
+        [DomainModel.EnumerationAttribute(nameof(waterLevelEffectList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("MarineFarmCulture")]
         public waterLevelEffect waterLevelEffect {
             get {
@@ -27151,6 +28668,24 @@ namespace S100Framework.WPF.ViewModel.S101 {
         public class MarineFarmCultureRefIdViewModel : FeatureRefIdViewModel {
             public override string[] AssociationTypes => ["MarineFarmCulture"];
         }
+
+        [Browsable(false)]
+        public categoryOfMarineFarmCulture[] categoryOfMarineFarmCultureList => [(categoryOfMarineFarmCulture)1, (categoryOfMarineFarmCulture)2, (categoryOfMarineFarmCulture)3, (categoryOfMarineFarmCulture)4, (categoryOfMarineFarmCulture)5];
+
+        [Browsable(false)]
+        public expositionOfSounding[] expositionOfSoundingList => [(expositionOfSounding)1, (expositionOfSounding)2];
+
+        [Browsable(false)]
+        public qualityOfVerticalMeasurement[] qualityOfVerticalMeasurementList => [(qualityOfVerticalMeasurement)1, (qualityOfVerticalMeasurement)2, (qualityOfVerticalMeasurement)3, (qualityOfVerticalMeasurement)4, (qualityOfVerticalMeasurement)6, (qualityOfVerticalMeasurement)7, (qualityOfVerticalMeasurement)8, (qualityOfVerticalMeasurement)9];
+
+        [Browsable(false)]
+        public restriction[] restrictionList => [(restriction)1, (restriction)2, (restriction)3, (restriction)4, (restriction)5, (restriction)6, (restriction)7, (restriction)8, (restriction)9, (restriction)10, (restriction)11, (restriction)12, (restriction)13, (restriction)14, (restriction)15, (restriction)16, (restriction)17, (restriction)18, (restriction)19, (restriction)20, (restriction)21, (restriction)22, (restriction)23, (restriction)24, (restriction)25, (restriction)26, (restriction)27, (restriction)39];
+
+        [Browsable(false)]
+        public status[] statusList => [(status)1, (status)2, (status)4, (status)5, (status)6, (status)7, (status)8, (status)14, (status)16, (status)17, (status)28];
+
+        [Browsable(false)]
+        public waterLevelEffect[] waterLevelEffectList => [(waterLevelEffect)1, (waterLevelEffect)2, (waterLevelEffect)3, (waterLevelEffect)4, (waterLevelEffect)5, (waterLevelEffect)7];
 
         public void Load(DomainModel.S101.FeatureTypes.MarineFarmCulture instance) {
             categoryOfMarineFarmCulture = instance.categoryOfMarineFarmCulture;
@@ -27281,6 +28816,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
     [CategoryOrder("FeatureBindings", 200)]
     public partial class OffshorePlatformViewModel : ViewModelBase {
         private categoryOfOffshorePlatform? _categoryOfOffshorePlatform = default;
+        [DomainModel.EnumerationAttribute(nameof(categoryOfOffshorePlatformList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("OffshorePlatform")]
         public categoryOfOffshorePlatform? categoryOfOffshorePlatform {
             get {
@@ -27292,10 +28829,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
             }
         }
 
+        [DomainModel.EnumerationAttribute(nameof(colourList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("OffshorePlatform")]
         public ObservableCollection<colour> colour { get; set; } = new();
 
         private colourPattern? _colourPattern = default;
+        [DomainModel.EnumerationAttribute(nameof(colourPatternList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("OffshorePlatform")]
         public colourPattern? colourPattern {
             get {
@@ -27308,6 +28849,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
         }
 
         private condition? _condition = default;
+        [DomainModel.EnumerationAttribute(nameof(conditionList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("OffshorePlatform")]
         public condition? condition {
             get {
@@ -27371,6 +28914,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
             }
         }
 
+        [DomainModel.EnumerationAttribute(nameof(productList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("OffshorePlatform")]
         public ObservableCollection<product> product { get; set; } = new();
 
@@ -27398,6 +28943,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
             }
         }
 
+        [DomainModel.EnumerationAttribute(nameof(statusList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("OffshorePlatform")]
         public ObservableCollection<status> status { get; set; } = new();
 
@@ -27414,6 +28961,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
         }
 
         private visualProminence? _visualProminence = default;
+        [DomainModel.EnumerationAttribute(nameof(visualProminenceList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("OffshorePlatform")]
         public visualProminence? visualProminence {
             get {
@@ -27455,6 +29004,27 @@ namespace S100Framework.WPF.ViewModel.S101 {
         public class OffshorePlatformRefIdViewModel : FeatureRefIdViewModel {
             public override string[] AssociationTypes => ["OffshorePlatform"];
         }
+
+        [Browsable(false)]
+        public categoryOfOffshorePlatform[] categoryOfOffshorePlatformList => [(categoryOfOffshorePlatform)1, (categoryOfOffshorePlatform)2, (categoryOfOffshorePlatform)3, (categoryOfOffshorePlatform)4, (categoryOfOffshorePlatform)5, (categoryOfOffshorePlatform)6, (categoryOfOffshorePlatform)7, (categoryOfOffshorePlatform)8, (categoryOfOffshorePlatform)9, (categoryOfOffshorePlatform)10, (categoryOfOffshorePlatform)11];
+
+        [Browsable(false)]
+        public colour[] colourList => [(colour)1, (colour)2, (colour)3, (colour)4, (colour)5, (colour)6, (colour)7, (colour)8, (colour)9, (colour)10, (colour)11, (colour)12, (colour)13];
+
+        [Browsable(false)]
+        public colourPattern[] colourPatternList => [(colourPattern)1, (colourPattern)2, (colourPattern)3, (colourPattern)4, (colourPattern)5, (colourPattern)6];
+
+        [Browsable(false)]
+        public condition[] conditionList => [(condition)1, (condition)2, (condition)5];
+
+        [Browsable(false)]
+        public product[] productList => [(product)1, (product)2, (product)3, (product)18, (product)19, (product)23];
+
+        [Browsable(false)]
+        public status[] statusList => [(status)1, (status)2, (status)4, (status)7, (status)8, (status)12, (status)28];
+
+        [Browsable(false)]
+        public visualProminence[] visualProminenceList => [(visualProminence)1, (visualProminence)2, (visualProminence)3];
 
         public void Load(DomainModel.S101.FeatureTypes.OffshorePlatform instance) {
             categoryOfOffshorePlatform = instance.categoryOfOffshorePlatform;
@@ -27583,6 +29153,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
         }
 
         private categoryOfCable? _categoryOfCable = default;
+        [DomainModel.EnumerationAttribute(nameof(categoryOfCableList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("CableSubmarine")]
         public categoryOfCable? categoryOfCable {
             get {
@@ -27595,6 +29167,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
         }
 
         private condition? _condition = default;
+        [DomainModel.EnumerationAttribute(nameof(conditionList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("CableSubmarine")]
         public condition? condition {
             get {
@@ -27634,6 +29208,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
             }
         }
 
+        [DomainModel.EnumerationAttribute(nameof(statusList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("CableSubmarine")]
         public ObservableCollection<status> status { get; set; } = new();
 
@@ -27655,6 +29231,15 @@ namespace S100Framework.WPF.ViewModel.S101 {
         public class CableSubmarineRefIdViewModel : FeatureRefIdViewModel {
             public override string[] AssociationTypes => ["CableSubmarine"];
         }
+
+        [Browsable(false)]
+        public categoryOfCable[] categoryOfCableList => [(categoryOfCable)1, (categoryOfCable)6, (categoryOfCable)7, (categoryOfCable)9, (categoryOfCable)10];
+
+        [Browsable(false)]
+        public condition[] conditionList => [(condition)1, (condition)5];
+
+        [Browsable(false)]
+        public status[] statusList => [(status)1, (status)4, (status)13, (status)18];
 
         public void Load(DomainModel.S101.FeatureTypes.CableSubmarine instance) {
             buriedDepth = instance.buriedDepth;
@@ -27731,6 +29316,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class CableAreaViewModel : ViewModelBase {
+        [DomainModel.EnumerationAttribute(nameof(categoryOfCableList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("CableArea")]
         public ObservableCollection<categoryOfCable> categoryOfCable { get; set; } = new();
 
@@ -27762,9 +29349,13 @@ namespace S100Framework.WPF.ViewModel.S101 {
             }
         }
 
+        [DomainModel.EnumerationAttribute(nameof(restrictionList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("CableArea")]
         public ObservableCollection<restriction> restriction { get; set; } = new();
 
+        [DomainModel.EnumerationAttribute(nameof(statusList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("CableArea")]
         public ObservableCollection<status> status { get; set; } = new();
 
@@ -27789,6 +29380,15 @@ namespace S100Framework.WPF.ViewModel.S101 {
         public class CableAreaRefIdViewModel : FeatureRefIdViewModel {
             public override string[] AssociationTypes => ["CableArea"];
         }
+
+        [Browsable(false)]
+        public categoryOfCable[] categoryOfCableList => [(categoryOfCable)1, (categoryOfCable)7, (categoryOfCable)10];
+
+        [Browsable(false)]
+        public restriction[] restrictionList => [(restriction)1, (restriction)2, (restriction)3, (restriction)4, (restriction)5, (restriction)6, (restriction)7, (restriction)8, (restriction)9, (restriction)11, (restriction)12, (restriction)13, (restriction)14, (restriction)16, (restriction)17, (restriction)18, (restriction)20, (restriction)23, (restriction)24, (restriction)25, (restriction)27, (restriction)39];
+
+        [Browsable(false)]
+        public status[] statusList => [(status)1, (status)7, (status)13];
 
         public void Load(DomainModel.S101.FeatureTypes.CableArea instance) {
             categoryOfCable.Clear();
@@ -27895,10 +29495,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
             }
         }
 
+        [DomainModel.EnumerationAttribute(nameof(categoryOfPipelinePipeList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("PipelineSubmarineOnLand")]
         public ObservableCollection<categoryOfPipelinePipe> categoryOfPipelinePipe { get; set; } = new();
 
         private condition? _condition = default;
+        [DomainModel.EnumerationAttribute(nameof(conditionList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("PipelineSubmarineOnLand")]
         public condition? condition {
             get {
@@ -27975,6 +29579,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
             }
         }
 
+        [DomainModel.EnumerationAttribute(nameof(productList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("PipelineSubmarineOnLand")]
         public ObservableCollection<product> product { get; set; } = new();
 
@@ -27990,9 +29596,13 @@ namespace S100Framework.WPF.ViewModel.S101 {
             }
         }
 
+        [DomainModel.EnumerationAttribute(nameof(restrictionList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("PipelineSubmarineOnLand")]
         public ObservableCollection<restriction> restriction { get; set; } = new();
 
+        [DomainModel.EnumerationAttribute(nameof(statusList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("PipelineSubmarineOnLand")]
         public ObservableCollection<status> status { get; set; } = new();
 
@@ -28026,6 +29636,21 @@ namespace S100Framework.WPF.ViewModel.S101 {
         public class PipelineSubmarineOnLandRefIdViewModel : FeatureRefIdViewModel {
             public override string[] AssociationTypes => ["PipelineSubmarineOnLand"];
         }
+
+        [Browsable(false)]
+        public categoryOfPipelinePipe[] categoryOfPipelinePipeList => [(categoryOfPipelinePipe)2, (categoryOfPipelinePipe)3, (categoryOfPipelinePipe)4, (categoryOfPipelinePipe)5, (categoryOfPipelinePipe)6, (categoryOfPipelinePipe)7];
+
+        [Browsable(false)]
+        public condition[] conditionList => [(condition)1, (condition)5];
+
+        [Browsable(false)]
+        public product[] productList => [(product)1, (product)2, (product)3, (product)7, (product)8, (product)9, (product)18, (product)19];
+
+        [Browsable(false)]
+        public restriction[] restrictionList => [(restriction)1, (restriction)3, (restriction)4, (restriction)5, (restriction)8, (restriction)9, (restriction)11, (restriction)12, (restriction)13, (restriction)14, (restriction)16, (restriction)17, (restriction)18, (restriction)20, (restriction)23, (restriction)24, (restriction)25, (restriction)26, (restriction)39];
+
+        [Browsable(false)]
+        public status[] statusList => [(status)1, (status)4, (status)7, (status)12];
 
         public void Load(DomainModel.S101.FeatureTypes.PipelineSubmarineOnLand instance) {
             buriedDepth = instance.buriedDepth;
@@ -28146,6 +29771,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class SubmarinePipelineAreaViewModel : ViewModelBase {
+        [DomainModel.EnumerationAttribute(nameof(categoryOfPipelinePipeList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("SubmarinePipelineArea")]
         public ObservableCollection<categoryOfPipelinePipe> categoryOfPipelinePipe { get; set; } = new();
 
@@ -28177,12 +29804,18 @@ namespace S100Framework.WPF.ViewModel.S101 {
             }
         }
 
+        [DomainModel.EnumerationAttribute(nameof(productList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("SubmarinePipelineArea")]
         public ObservableCollection<product> product { get; set; } = new();
 
+        [DomainModel.EnumerationAttribute(nameof(restrictionList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("SubmarinePipelineArea")]
         public ObservableCollection<restriction> restriction { get; set; } = new();
 
+        [DomainModel.EnumerationAttribute(nameof(statusList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("SubmarinePipelineArea")]
         public ObservableCollection<status> status { get; set; } = new();
 
@@ -28207,6 +29840,18 @@ namespace S100Framework.WPF.ViewModel.S101 {
         public class SubmarinePipelineAreaRefIdViewModel : FeatureRefIdViewModel {
             public override string[] AssociationTypes => ["SubmarinePipelineArea"];
         }
+
+        [Browsable(false)]
+        public categoryOfPipelinePipe[] categoryOfPipelinePipeList => [(categoryOfPipelinePipe)2, (categoryOfPipelinePipe)3, (categoryOfPipelinePipe)4, (categoryOfPipelinePipe)5, (categoryOfPipelinePipe)6];
+
+        [Browsable(false)]
+        public product[] productList => [(product)1, (product)2, (product)3, (product)7, (product)8, (product)18, (product)19];
+
+        [Browsable(false)]
+        public restriction[] restrictionList => [(restriction)1, (restriction)2, (restriction)3, (restriction)4, (restriction)5, (restriction)6, (restriction)7, (restriction)8, (restriction)9, (restriction)10, (restriction)11, (restriction)12, (restriction)13, (restriction)14, (restriction)15, (restriction)16, (restriction)17, (restriction)18, (restriction)19, (restriction)20, (restriction)21, (restriction)22, (restriction)23, (restriction)24, (restriction)25, (restriction)26, (restriction)27, (restriction)39];
+
+        [Browsable(false)]
+        public status[] statusList => [(status)1, (status)4, (status)7];
 
         public void Load(DomainModel.S101.FeatureTypes.SubmarinePipelineArea instance) {
             categoryOfPipelinePipe.Clear();
@@ -28311,6 +29956,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
     [CategoryOrder("FeatureBindings", 200)]
     public partial class OffshoreProductionAreaViewModel : ViewModelBase {
         private categoryOfOffshoreProductionArea? _categoryOfOffshoreProductionArea = default;
+        [DomainModel.EnumerationAttribute(nameof(categoryOfOffshoreProductionAreaList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("OffshoreProductionArea")]
         public categoryOfOffshoreProductionArea? categoryOfOffshoreProductionArea {
             get {
@@ -28323,6 +29970,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
         }
 
         private condition? _condition = default;
+        [DomainModel.EnumerationAttribute(nameof(conditionList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("OffshoreProductionArea")]
         public condition? condition {
             get {
@@ -28374,6 +30023,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
             }
         }
 
+        [DomainModel.EnumerationAttribute(nameof(productList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("OffshoreProductionArea")]
         public ObservableCollection<product> product { get; set; } = new();
 
@@ -28401,9 +30052,13 @@ namespace S100Framework.WPF.ViewModel.S101 {
             }
         }
 
+        [DomainModel.EnumerationAttribute(nameof(restrictionList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("OffshoreProductionArea")]
         public ObservableCollection<restriction> restriction { get; set; } = new();
 
+        [DomainModel.EnumerationAttribute(nameof(statusList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("OffshoreProductionArea")]
         public ObservableCollection<status> status { get; set; } = new();
 
@@ -28423,6 +30078,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
         public ObservableCollection<vesselSpeedLimit> vesselSpeedLimit { get; set; } = new();
 
         private visualProminence? _visualProminence = default;
+        [DomainModel.EnumerationAttribute(nameof(visualProminenceList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("OffshoreProductionArea")]
         public visualProminence? visualProminence {
             get {
@@ -28435,6 +30092,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
         }
 
         private waterLevelEffect? _waterLevelEffect = default;
+        [DomainModel.EnumerationAttribute(nameof(waterLevelEffectList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("OffshoreProductionArea")]
         public waterLevelEffect? waterLevelEffect {
             get {
@@ -28464,6 +30123,27 @@ namespace S100Framework.WPF.ViewModel.S101 {
         public class OffshoreProductionAreaRefIdViewModel : FeatureRefIdViewModel {
             public override string[] AssociationTypes => ["OffshoreProductionArea"];
         }
+
+        [Browsable(false)]
+        public categoryOfOffshoreProductionArea[] categoryOfOffshoreProductionAreaList => [(categoryOfOffshoreProductionArea)1, (categoryOfOffshoreProductionArea)2, (categoryOfOffshoreProductionArea)3, (categoryOfOffshoreProductionArea)4, (categoryOfOffshoreProductionArea)5, (categoryOfOffshoreProductionArea)6];
+
+        [Browsable(false)]
+        public condition[] conditionList => [(condition)1, (condition)2, (condition)4, (condition)5];
+
+        [Browsable(false)]
+        public product[] productList => [(product)1, (product)2, (product)4, (product)6, (product)10, (product)14, (product)23];
+
+        [Browsable(false)]
+        public restriction[] restrictionList => [(restriction)1, (restriction)2, (restriction)3, (restriction)4, (restriction)5, (restriction)6, (restriction)7, (restriction)8, (restriction)9, (restriction)10, (restriction)11, (restriction)12, (restriction)13, (restriction)14, (restriction)15, (restriction)16, (restriction)17, (restriction)18, (restriction)19, (restriction)20, (restriction)21, (restriction)22, (restriction)23, (restriction)24, (restriction)25, (restriction)26, (restriction)27, (restriction)39];
+
+        [Browsable(false)]
+        public status[] statusList => [(status)1, (status)4, (status)7, (status)8, (status)12, (status)28];
+
+        [Browsable(false)]
+        public visualProminence[] visualProminenceList => [(visualProminence)1, (visualProminence)2, (visualProminence)3];
+
+        [Browsable(false)]
+        public waterLevelEffect[] waterLevelEffectList => [(waterLevelEffect)2, (waterLevelEffect)3, (waterLevelEffect)4, (waterLevelEffect)7];
 
         public void Load(DomainModel.S101.FeatureTypes.OffshoreProductionArea instance) {
             categoryOfOffshoreProductionArea = instance.categoryOfOffshoreProductionArea;
@@ -28583,6 +30263,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
     [CategoryOrder("FeatureBindings", 200)]
     public partial class NavigationLineViewModel : ViewModelBase {
         private categoryOfNavigationLine _categoryOfNavigationLine;
+        [DomainModel.EnumerationAttribute(nameof(categoryOfNavigationLineList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("NavigationLine")]
         public categoryOfNavigationLine categoryOfNavigationLine {
             get {
@@ -28647,6 +30329,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
         [Category("NavigationLine")]
         public ObservableCollection<periodicDateRange> periodicDateRange { get; set; } = new();
 
+        [DomainModel.EnumerationAttribute(nameof(statusList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("NavigationLine")]
         public ObservableCollection<status> status { get; set; } = new();
 
@@ -28668,6 +30352,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
         public class NavigationLineRefIdViewModel : FeatureRefIdViewModel {
             public override string[] AssociationTypes => ["NavigationLine"];
         }
+
+        [Browsable(false)]
+        public categoryOfNavigationLine[] categoryOfNavigationLineList => [(categoryOfNavigationLine)1, (categoryOfNavigationLine)2, (categoryOfNavigationLine)3];
+
+        [Browsable(false)]
+        public status[] statusList => [(status)1, (status)2, (status)5, (status)7, (status)8, (status)14];
 
         public void Load(DomainModel.S101.FeatureTypes.NavigationLine instance) {
             categoryOfNavigationLine = instance.categoryOfNavigationLine;
@@ -28828,16 +30518,24 @@ namespace S100Framework.WPF.ViewModel.S101 {
         [Category("RecommendedTrack")]
         public ObservableCollection<periodicDateRange> periodicDateRange { get; set; } = new();
 
+        [DomainModel.EnumerationAttribute(nameof(qualityOfVerticalMeasurementList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("RecommendedTrack")]
         public ObservableCollection<qualityOfVerticalMeasurement> qualityOfVerticalMeasurement { get; set; } = new();
 
+        [DomainModel.EnumerationAttribute(nameof(statusList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("RecommendedTrack")]
         public ObservableCollection<status> status { get; set; } = new();
 
+        [DomainModel.EnumerationAttribute(nameof(techniqueOfVerticalMeasurementList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("RecommendedTrack")]
         public ObservableCollection<techniqueOfVerticalMeasurement> techniqueOfVerticalMeasurement { get; set; } = new();
 
         private trafficFlow _trafficFlow;
+        [DomainModel.EnumerationAttribute(nameof(trafficFlowList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("RecommendedTrack")]
         public trafficFlow trafficFlow {
             get {
@@ -28880,6 +30578,18 @@ namespace S100Framework.WPF.ViewModel.S101 {
         public class RecommendedTrackRefIdViewModel : FeatureRefIdViewModel {
             public override string[] AssociationTypes => ["RecommendedTrack"];
         }
+
+        [Browsable(false)]
+        public qualityOfVerticalMeasurement[] qualityOfVerticalMeasurementList => [(qualityOfVerticalMeasurement)1, (qualityOfVerticalMeasurement)2, (qualityOfVerticalMeasurement)6];
+
+        [Browsable(false)]
+        public status[] statusList => [(status)1, (status)2, (status)5, (status)6, (status)8, (status)9, (status)14];
+
+        [Browsable(false)]
+        public techniqueOfVerticalMeasurement[] techniqueOfVerticalMeasurementList => [(techniqueOfVerticalMeasurement)1, (techniqueOfVerticalMeasurement)2, (techniqueOfVerticalMeasurement)3, (techniqueOfVerticalMeasurement)8, (techniqueOfVerticalMeasurement)9, (techniqueOfVerticalMeasurement)13, (techniqueOfVerticalMeasurement)15, (techniqueOfVerticalMeasurement)16, (techniqueOfVerticalMeasurement)17, (techniqueOfVerticalMeasurement)18];
+
+        [Browsable(false)]
+        public trafficFlow[] trafficFlowList => [(trafficFlow)1, (trafficFlow)2, (trafficFlow)3, (trafficFlow)4];
 
         public void Load(DomainModel.S101.FeatureTypes.RecommendedTrack instance) {
             basedOnFixedMarks = instance.basedOnFixedMarks;
@@ -29180,16 +30890,24 @@ namespace S100Framework.WPF.ViewModel.S101 {
             }
         }
 
+        [DomainModel.EnumerationAttribute(nameof(qualityOfVerticalMeasurementList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("Fairway")]
         public ObservableCollection<qualityOfVerticalMeasurement> qualityOfVerticalMeasurement { get; set; } = new();
 
+        [DomainModel.EnumerationAttribute(nameof(restrictionList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("Fairway")]
         public ObservableCollection<restriction> restriction { get; set; } = new();
 
+        [DomainModel.EnumerationAttribute(nameof(statusList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("Fairway")]
         public ObservableCollection<status> status { get; set; } = new();
 
         private trafficFlow? _trafficFlow = default;
+        [DomainModel.EnumerationAttribute(nameof(trafficFlowList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("Fairway")]
         public trafficFlow? trafficFlow {
             get {
@@ -29235,6 +30953,18 @@ namespace S100Framework.WPF.ViewModel.S101 {
         public class FairwayRefIdViewModel : FeatureRefIdViewModel {
             public override string[] AssociationTypes => ["Fairway"];
         }
+
+        [Browsable(false)]
+        public qualityOfVerticalMeasurement[] qualityOfVerticalMeasurementList => [(qualityOfVerticalMeasurement)1, (qualityOfVerticalMeasurement)2, (qualityOfVerticalMeasurement)6];
+
+        [Browsable(false)]
+        public restriction[] restrictionList => [(restriction)1, (restriction)2, (restriction)3, (restriction)4, (restriction)5, (restriction)6, (restriction)8, (restriction)9, (restriction)10, (restriction)11, (restriction)12, (restriction)13, (restriction)15, (restriction)16, (restriction)17, (restriction)18, (restriction)19, (restriction)20, (restriction)21, (restriction)22, (restriction)23, (restriction)24, (restriction)25, (restriction)27, (restriction)39];
+
+        [Browsable(false)]
+        public status[] statusList => [(status)1, (status)3, (status)6, (status)7, (status)9, (status)28];
+
+        [Browsable(false)]
+        public trafficFlow[] trafficFlowList => [(trafficFlow)1, (trafficFlow)2, (trafficFlow)3, (trafficFlow)4];
 
         public void Load(DomainModel.S101.FeatureTypes.Fairway instance) {
             depthRangeMinimumValue = instance.depthRangeMinimumValue;
@@ -29547,16 +31277,24 @@ namespace S100Framework.WPF.ViewModel.S101 {
         [Category("RecommendedRouteCentreline")]
         public ObservableCollection<periodicDateRange> periodicDateRange { get; set; } = new();
 
+        [DomainModel.EnumerationAttribute(nameof(qualityOfVerticalMeasurementList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("RecommendedRouteCentreline")]
         public ObservableCollection<qualityOfVerticalMeasurement> qualityOfVerticalMeasurement { get; set; } = new();
 
+        [DomainModel.EnumerationAttribute(nameof(statusList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("RecommendedRouteCentreline")]
         public ObservableCollection<status> status { get; set; } = new();
 
+        [DomainModel.EnumerationAttribute(nameof(techniqueOfVerticalMeasurementList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("RecommendedRouteCentreline")]
         public ObservableCollection<techniqueOfVerticalMeasurement> techniqueOfVerticalMeasurement { get; set; } = new();
 
         private trafficFlow? _trafficFlow = default;
+        [DomainModel.EnumerationAttribute(nameof(trafficFlowList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("RecommendedRouteCentreline")]
         public trafficFlow? trafficFlow {
             get {
@@ -29599,6 +31337,18 @@ namespace S100Framework.WPF.ViewModel.S101 {
         public class RecommendedRouteCentrelineRefIdViewModel : FeatureRefIdViewModel {
             public override string[] AssociationTypes => ["RecommendedRouteCentreline"];
         }
+
+        [Browsable(false)]
+        public qualityOfVerticalMeasurement[] qualityOfVerticalMeasurementList => [(qualityOfVerticalMeasurement)1, (qualityOfVerticalMeasurement)2, (qualityOfVerticalMeasurement)3, (qualityOfVerticalMeasurement)4, (qualityOfVerticalMeasurement)6];
+
+        [Browsable(false)]
+        public status[] statusList => [(status)1, (status)5, (status)6, (status)9];
+
+        [Browsable(false)]
+        public techniqueOfVerticalMeasurement[] techniqueOfVerticalMeasurementList => [(techniqueOfVerticalMeasurement)1, (techniqueOfVerticalMeasurement)3, (techniqueOfVerticalMeasurement)8, (techniqueOfVerticalMeasurement)9, (techniqueOfVerticalMeasurement)13, (techniqueOfVerticalMeasurement)15, (techniqueOfVerticalMeasurement)16, (techniqueOfVerticalMeasurement)17, (techniqueOfVerticalMeasurement)18];
+
+        [Browsable(false)]
+        public trafficFlow[] trafficFlowList => [(trafficFlow)1, (trafficFlow)2, (trafficFlow)3, (trafficFlow)4];
 
         public void Load(DomainModel.S101.FeatureTypes.RecommendedRouteCentreline instance) {
             basedOnFixedMarks = instance.basedOnFixedMarks;
@@ -29774,16 +31524,24 @@ namespace S100Framework.WPF.ViewModel.S101 {
             }
         }
 
+        [DomainModel.EnumerationAttribute(nameof(qualityOfVerticalMeasurementList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("TwoWayRoutePart")]
         public ObservableCollection<qualityOfVerticalMeasurement> qualityOfVerticalMeasurement { get; set; } = new();
 
+        [DomainModel.EnumerationAttribute(nameof(statusList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("TwoWayRoutePart")]
         public ObservableCollection<status> status { get; set; } = new();
 
+        [DomainModel.EnumerationAttribute(nameof(techniqueOfVerticalMeasurementList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("TwoWayRoutePart")]
         public ObservableCollection<techniqueOfVerticalMeasurement> techniqueOfVerticalMeasurement { get; set; } = new();
 
         private trafficFlow _trafficFlow;
+        [DomainModel.EnumerationAttribute(nameof(trafficFlowList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("TwoWayRoutePart")]
         public trafficFlow trafficFlow {
             get {
@@ -29826,6 +31584,18 @@ namespace S100Framework.WPF.ViewModel.S101 {
         public class TwoWayRoutePartRefIdViewModel : FeatureRefIdViewModel {
             public override string[] AssociationTypes => ["TwoWayRoutePart"];
         }
+
+        [Browsable(false)]
+        public qualityOfVerticalMeasurement[] qualityOfVerticalMeasurementList => [(qualityOfVerticalMeasurement)1, (qualityOfVerticalMeasurement)2, (qualityOfVerticalMeasurement)3, (qualityOfVerticalMeasurement)4, (qualityOfVerticalMeasurement)6];
+
+        [Browsable(false)]
+        public status[] statusList => [(status)1, (status)3, (status)6, (status)9];
+
+        [Browsable(false)]
+        public techniqueOfVerticalMeasurement[] techniqueOfVerticalMeasurementList => [(techniqueOfVerticalMeasurement)1, (techniqueOfVerticalMeasurement)3, (techniqueOfVerticalMeasurement)5, (techniqueOfVerticalMeasurement)8, (techniqueOfVerticalMeasurement)9, (techniqueOfVerticalMeasurement)13, (techniqueOfVerticalMeasurement)15, (techniqueOfVerticalMeasurement)16, (techniqueOfVerticalMeasurement)17, (techniqueOfVerticalMeasurement)18];
+
+        [Browsable(false)]
+        public trafficFlow[] trafficFlowList => [(trafficFlow)1, (trafficFlow)2, (trafficFlow)3, (trafficFlow)4];
 
         public void Load(DomainModel.S101.FeatureTypes.TwoWayRoutePart instance) {
             basedOnFixedMarks = instance.basedOnFixedMarks;
@@ -30078,6 +31848,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
             }
         }
 
+        [DomainModel.EnumerationAttribute(nameof(statusList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("RecommendedTrafficLanePart")]
         public ObservableCollection<status> status { get; set; } = new();
 
@@ -30099,6 +31871,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
         public class RecommendedTrafficLanePartRefIdViewModel : FeatureRefIdViewModel {
             public override string[] AssociationTypes => ["RecommendedTrafficLanePart"];
         }
+
+        [Browsable(false)]
+        public status[] statusList => [(status)1, (status)6, (status)9];
 
         public void Load(DomainModel.S101.FeatureTypes.RecommendedTrafficLanePart instance) {
             fixedDateRange = new();
@@ -30236,16 +32011,24 @@ namespace S100Framework.WPF.ViewModel.S101 {
             }
         }
 
+        [DomainModel.EnumerationAttribute(nameof(qualityOfVerticalMeasurementList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("DeepWaterRouteCentreline")]
         public ObservableCollection<qualityOfVerticalMeasurement> qualityOfVerticalMeasurement { get; set; } = new();
 
+        [DomainModel.EnumerationAttribute(nameof(statusList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("DeepWaterRouteCentreline")]
         public ObservableCollection<status> status { get; set; } = new();
 
+        [DomainModel.EnumerationAttribute(nameof(techniqueOfVerticalMeasurementList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("DeepWaterRouteCentreline")]
         public ObservableCollection<techniqueOfVerticalMeasurement> techniqueOfVerticalMeasurement { get; set; } = new();
 
         private trafficFlow _trafficFlow;
+        [DomainModel.EnumerationAttribute(nameof(trafficFlowList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("DeepWaterRouteCentreline")]
         public trafficFlow trafficFlow {
             get {
@@ -30288,6 +32071,18 @@ namespace S100Framework.WPF.ViewModel.S101 {
         public class DeepWaterRouteCentrelineRefIdViewModel : FeatureRefIdViewModel {
             public override string[] AssociationTypes => ["DeepWaterRouteCentreline"];
         }
+
+        [Browsable(false)]
+        public qualityOfVerticalMeasurement[] qualityOfVerticalMeasurementList => [(qualityOfVerticalMeasurement)1, (qualityOfVerticalMeasurement)2, (qualityOfVerticalMeasurement)3, (qualityOfVerticalMeasurement)4, (qualityOfVerticalMeasurement)6, (qualityOfVerticalMeasurement)7];
+
+        [Browsable(false)]
+        public status[] statusList => [(status)1, (status)3, (status)6, (status)9];
+
+        [Browsable(false)]
+        public techniqueOfVerticalMeasurement[] techniqueOfVerticalMeasurementList => [(techniqueOfVerticalMeasurement)1, (techniqueOfVerticalMeasurement)3, (techniqueOfVerticalMeasurement)5, (techniqueOfVerticalMeasurement)8, (techniqueOfVerticalMeasurement)9, (techniqueOfVerticalMeasurement)13, (techniqueOfVerticalMeasurement)15, (techniqueOfVerticalMeasurement)16, (techniqueOfVerticalMeasurement)17, (techniqueOfVerticalMeasurement)18];
+
+        [Browsable(false)]
+        public trafficFlow[] trafficFlowList => [(trafficFlow)1, (trafficFlow)2, (trafficFlow)3, (trafficFlow)4];
 
         public void Load(DomainModel.S101.FeatureTypes.DeepWaterRouteCentreline instance) {
             basedOnFixedMarks = instance.basedOnFixedMarks;
@@ -30460,19 +32255,29 @@ namespace S100Framework.WPF.ViewModel.S101 {
             }
         }
 
+        [DomainModel.EnumerationAttribute(nameof(qualityOfVerticalMeasurementList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("DeepWaterRoutePart")]
         public ObservableCollection<qualityOfVerticalMeasurement> qualityOfVerticalMeasurement { get; set; } = new();
 
+        [DomainModel.EnumerationAttribute(nameof(restrictionList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("DeepWaterRoutePart")]
         public ObservableCollection<restriction> restriction { get; set; } = new();
 
+        [DomainModel.EnumerationAttribute(nameof(statusList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("DeepWaterRoutePart")]
         public ObservableCollection<status> status { get; set; } = new();
 
+        [DomainModel.EnumerationAttribute(nameof(techniqueOfVerticalMeasurementList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("DeepWaterRoutePart")]
         public ObservableCollection<techniqueOfVerticalMeasurement> techniqueOfVerticalMeasurement { get; set; } = new();
 
         private trafficFlow _trafficFlow;
+        [DomainModel.EnumerationAttribute(nameof(trafficFlowList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("DeepWaterRoutePart")]
         public trafficFlow trafficFlow {
             get {
@@ -30518,6 +32323,21 @@ namespace S100Framework.WPF.ViewModel.S101 {
         public class DeepWaterRoutePartRefIdViewModel : FeatureRefIdViewModel {
             public override string[] AssociationTypes => ["DeepWaterRoutePart"];
         }
+
+        [Browsable(false)]
+        public qualityOfVerticalMeasurement[] qualityOfVerticalMeasurementList => [(qualityOfVerticalMeasurement)1, (qualityOfVerticalMeasurement)2, (qualityOfVerticalMeasurement)3, (qualityOfVerticalMeasurement)4, (qualityOfVerticalMeasurement)6, (qualityOfVerticalMeasurement)7];
+
+        [Browsable(false)]
+        public restriction[] restrictionList => [(restriction)1, (restriction)2, (restriction)3, (restriction)4, (restriction)5, (restriction)6, (restriction)8, (restriction)9, (restriction)10, (restriction)11, (restriction)12, (restriction)13, (restriction)16, (restriction)17, (restriction)18, (restriction)19, (restriction)20, (restriction)21, (restriction)22, (restriction)23, (restriction)24, (restriction)25, (restriction)27];
+
+        [Browsable(false)]
+        public status[] statusList => [(status)1, (status)3, (status)6, (status)9, (status)28];
+
+        [Browsable(false)]
+        public techniqueOfVerticalMeasurement[] techniqueOfVerticalMeasurementList => [(techniqueOfVerticalMeasurement)1, (techniqueOfVerticalMeasurement)3, (techniqueOfVerticalMeasurement)5, (techniqueOfVerticalMeasurement)8, (techniqueOfVerticalMeasurement)9, (techniqueOfVerticalMeasurement)13, (techniqueOfVerticalMeasurement)15, (techniqueOfVerticalMeasurement)16, (techniqueOfVerticalMeasurement)17, (techniqueOfVerticalMeasurement)18];
+
+        [Browsable(false)]
+        public trafficFlow[] trafficFlowList => [(trafficFlow)1, (trafficFlow)2, (trafficFlow)3, (trafficFlow)4];
 
         public void Load(DomainModel.S101.FeatureTypes.DeepWaterRoutePart instance) {
             depthRangeMinimumValue = instance.depthRangeMinimumValue;
@@ -30785,9 +32605,13 @@ namespace S100Framework.WPF.ViewModel.S101 {
             }
         }
 
+        [DomainModel.EnumerationAttribute(nameof(restrictionList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("InshoreTrafficZone")]
         public ObservableCollection<restriction> restriction { get; set; } = new();
 
+        [DomainModel.EnumerationAttribute(nameof(statusList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("InshoreTrafficZone")]
         public ObservableCollection<status> status { get; set; } = new();
 
@@ -30812,6 +32636,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
         public class InshoreTrafficZoneRefIdViewModel : FeatureRefIdViewModel {
             public override string[] AssociationTypes => ["InshoreTrafficZone"];
         }
+
+        [Browsable(false)]
+        public restriction[] restrictionList => [(restriction)1, (restriction)2, (restriction)3, (restriction)4, (restriction)5, (restriction)6, (restriction)8, (restriction)9, (restriction)10, (restriction)11, (restriction)12, (restriction)13, (restriction)16, (restriction)17, (restriction)18, (restriction)19, (restriction)20, (restriction)21, (restriction)22, (restriction)23, (restriction)24, (restriction)25, (restriction)27];
+
+        [Browsable(false)]
+        public status[] statusList => [(status)1, (status)3, (status)6, (status)9, (status)16, (status)17];
 
         public void Load(DomainModel.S101.FeatureTypes.InshoreTrafficZone instance) {
             fixedDateRange = new();
@@ -30928,9 +32758,13 @@ namespace S100Framework.WPF.ViewModel.S101 {
             }
         }
 
+        [DomainModel.EnumerationAttribute(nameof(restrictionList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("PrecautionaryArea")]
         public ObservableCollection<restriction> restriction { get; set; } = new();
 
+        [DomainModel.EnumerationAttribute(nameof(statusList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("PrecautionaryArea")]
         public ObservableCollection<status> status { get; set; } = new();
 
@@ -30955,6 +32789,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
         public class PrecautionaryAreaRefIdViewModel : FeatureRefIdViewModel {
             public override string[] AssociationTypes => ["PrecautionaryArea"];
         }
+
+        [Browsable(false)]
+        public restriction[] restrictionList => [(restriction)1, (restriction)2, (restriction)3, (restriction)4, (restriction)5, (restriction)6, (restriction)8, (restriction)9, (restriction)10, (restriction)11, (restriction)12, (restriction)13, (restriction)14, (restriction)16, (restriction)17, (restriction)18, (restriction)19, (restriction)20, (restriction)21, (restriction)22, (restriction)23, (restriction)24, (restriction)25, (restriction)27];
+
+        [Browsable(false)]
+        public status[] statusList => [(status)1, (status)9, (status)28];
 
         public void Load(DomainModel.S101.FeatureTypes.PrecautionaryArea instance) {
             featureName.Clear();
@@ -31080,9 +32920,13 @@ namespace S100Framework.WPF.ViewModel.S101 {
             }
         }
 
+        [DomainModel.EnumerationAttribute(nameof(restrictionList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("TrafficSeparationSchemeLanePart")]
         public ObservableCollection<restriction> restriction { get; set; } = new();
 
+        [DomainModel.EnumerationAttribute(nameof(statusList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("TrafficSeparationSchemeLanePart")]
         public ObservableCollection<status> status { get; set; } = new();
 
@@ -31107,6 +32951,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
         public class TrafficSeparationSchemeLanePartRefIdViewModel : FeatureRefIdViewModel {
             public override string[] AssociationTypes => ["TrafficSeparationSchemeLanePart"];
         }
+
+        [Browsable(false)]
+        public restriction[] restrictionList => [(restriction)1, (restriction)2, (restriction)3, (restriction)4, (restriction)5, (restriction)6, (restriction)8, (restriction)9, (restriction)10, (restriction)11, (restriction)12, (restriction)13, (restriction)16, (restriction)17, (restriction)18, (restriction)19, (restriction)20, (restriction)21, (restriction)22, (restriction)23, (restriction)24, (restriction)25, (restriction)27];
+
+        [Browsable(false)]
+        public status[] statusList => [(status)1, (status)3, (status)6, (status)9, (status)28];
 
         public void Load(DomainModel.S101.FeatureTypes.TrafficSeparationSchemeLanePart instance) {
             fixedDateRange = new();
@@ -31211,6 +33061,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
             }
         }
 
+        [DomainModel.EnumerationAttribute(nameof(statusList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("SeparationZoneOrLine")]
         public ObservableCollection<status> status { get; set; } = new();
 
@@ -31232,6 +33084,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
         public class SeparationZoneOrLineRefIdViewModel : FeatureRefIdViewModel {
             public override string[] AssociationTypes => ["SeparationZoneOrLine"];
         }
+
+        [Browsable(false)]
+        public status[] statusList => [(status)1, (status)3, (status)9, (status)28];
 
         public void Load(DomainModel.S101.FeatureTypes.SeparationZoneOrLine instance) {
             fixedDateRange = new();
@@ -31315,6 +33170,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
             }
         }
 
+        [DomainModel.EnumerationAttribute(nameof(statusList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("TrafficSeparationSchemeBoundary")]
         public ObservableCollection<status> status { get; set; } = new();
 
@@ -31336,6 +33193,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
         public class TrafficSeparationSchemeBoundaryRefIdViewModel : FeatureRefIdViewModel {
             public override string[] AssociationTypes => ["TrafficSeparationSchemeBoundary"];
         }
+
+        [Browsable(false)]
+        public status[] statusList => [(status)1, (status)3, (status)9, (status)28];
 
         public void Load(DomainModel.S101.FeatureTypes.TrafficSeparationSchemeBoundary instance) {
             fixedDateRange = new();
@@ -31419,9 +33279,13 @@ namespace S100Framework.WPF.ViewModel.S101 {
             }
         }
 
+        [DomainModel.EnumerationAttribute(nameof(restrictionList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("TrafficSeparationSchemeCrossing")]
         public ObservableCollection<restriction> restriction { get; set; } = new();
 
+        [DomainModel.EnumerationAttribute(nameof(statusList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("TrafficSeparationSchemeCrossing")]
         public ObservableCollection<status> status { get; set; } = new();
 
@@ -31446,6 +33310,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
         public class TrafficSeparationSchemeCrossingRefIdViewModel : FeatureRefIdViewModel {
             public override string[] AssociationTypes => ["TrafficSeparationSchemeCrossing"];
         }
+
+        [Browsable(false)]
+        public restriction[] restrictionList => [(restriction)1, (restriction)2, (restriction)3, (restriction)4, (restriction)5, (restriction)6, (restriction)8, (restriction)9, (restriction)10, (restriction)11, (restriction)12, (restriction)13, (restriction)16, (restriction)17, (restriction)18, (restriction)19, (restriction)20, (restriction)21, (restriction)22, (restriction)23, (restriction)24, (restriction)25, (restriction)27];
+
+        [Browsable(false)]
+        public status[] statusList => [(status)1, (status)3, (status)6, (status)9];
 
         public void Load(DomainModel.S101.FeatureTypes.TrafficSeparationSchemeCrossing instance) {
             fixedDateRange = new();
@@ -31547,9 +33417,13 @@ namespace S100Framework.WPF.ViewModel.S101 {
             }
         }
 
+        [DomainModel.EnumerationAttribute(nameof(restrictionList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("TrafficSeparationSchemeRoundabout")]
         public ObservableCollection<restriction> restriction { get; set; } = new();
 
+        [DomainModel.EnumerationAttribute(nameof(statusList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("TrafficSeparationSchemeRoundabout")]
         public ObservableCollection<status> status { get; set; } = new();
 
@@ -31574,6 +33448,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
         public class TrafficSeparationSchemeRoundaboutRefIdViewModel : FeatureRefIdViewModel {
             public override string[] AssociationTypes => ["TrafficSeparationSchemeRoundabout"];
         }
+
+        [Browsable(false)]
+        public restriction[] restrictionList => [(restriction)1, (restriction)2, (restriction)3, (restriction)4, (restriction)5, (restriction)6, (restriction)8, (restriction)9, (restriction)10, (restriction)11, (restriction)12, (restriction)13, (restriction)16, (restriction)17, (restriction)18, (restriction)19, (restriction)20, (restriction)21, (restriction)22, (restriction)23, (restriction)24, (restriction)25, (restriction)27];
+
+        [Browsable(false)]
+        public status[] statusList => [(status)1, (status)3, (status)6, (status)9];
 
         public void Load(DomainModel.S101.FeatureTypes.TrafficSeparationSchemeRoundabout instance) {
             fixedDateRange = new();
@@ -32178,10 +34058,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
         [Category("RadioCallingInPoint")]
         public ObservableCollection<periodicDateRange> periodicDateRange { get; set; } = new();
 
+        [DomainModel.EnumerationAttribute(nameof(statusList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("RadioCallingInPoint")]
         public ObservableCollection<status> status { get; set; } = new();
 
         private trafficFlow _trafficFlow;
+        [DomainModel.EnumerationAttribute(nameof(trafficFlowList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("RadioCallingInPoint")]
         public trafficFlow trafficFlow {
             get {
@@ -32211,6 +34095,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
         public class RadioCallingInPointRefIdViewModel : FeatureRefIdViewModel {
             public override string[] AssociationTypes => ["RadioCallingInPoint"];
         }
+
+        [Browsable(false)]
+        public status[] statusList => [(status)1, (status)3, (status)4, (status)5, (status)6, (status)7, (status)9];
+
+        [Browsable(false)]
+        public trafficFlow[] trafficFlowList => [(trafficFlow)1, (trafficFlow)2, (trafficFlow)3, (trafficFlow)4];
 
         public void Load(DomainModel.S101.FeatureTypes.RadioCallingInPoint instance) {
             communicationChannel.Clear();
@@ -32308,6 +34198,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class FerryRouteViewModel : ViewModelBase {
+        [DomainModel.EnumerationAttribute(nameof(categoryOfFerryList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("FerryRoute")]
         public ObservableCollection<categoryOfFerry> categoryOfFerry { get; set; } = new();
 
@@ -32342,6 +34234,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
         [Category("FerryRoute")]
         public ObservableCollection<periodicDateRange> periodicDateRange { get; set; } = new();
 
+        [DomainModel.EnumerationAttribute(nameof(statusList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("FerryRoute")]
         public ObservableCollection<status> status { get; set; } = new();
 
@@ -32363,6 +34257,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
         public class FerryRouteRefIdViewModel : FeatureRefIdViewModel {
             public override string[] AssociationTypes => ["FerryRoute"];
         }
+
+        [Browsable(false)]
+        public categoryOfFerry[] categoryOfFerryList => [(categoryOfFerry)1, (categoryOfFerry)2, (categoryOfFerry)3, (categoryOfFerry)5];
+
+        [Browsable(false)]
+        public status[] statusList => [(status)1, (status)2, (status)4, (status)5, (status)6, (status)7, (status)8, (status)9, (status)14];
 
         public void Load(DomainModel.S101.FeatureTypes.FerryRoute instance) {
             categoryOfFerry.Clear();
@@ -32475,6 +34375,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
             }
         }
 
+        [DomainModel.EnumerationAttribute(nameof(statusList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("RadarLine")]
         public ObservableCollection<status> status { get; set; } = new();
 
@@ -32496,6 +34398,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
         public class RadarLineRefIdViewModel : FeatureRefIdViewModel {
             public override string[] AssociationTypes => ["RadarLine"];
         }
+
+        [Browsable(false)]
+        public status[] statusList => [(status)1, (status)2, (status)3, (status)4, (status)7];
 
         public void Load(DomainModel.S101.FeatureTypes.RadarLine instance) {
             featureName.Clear();
@@ -32589,6 +34494,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
             }
         }
 
+        [DomainModel.EnumerationAttribute(nameof(statusList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("RadarRange")]
         public ObservableCollection<status> status { get; set; } = new();
 
@@ -32610,6 +34517,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
         public class RadarRangeRefIdViewModel : FeatureRefIdViewModel {
             public override string[] AssociationTypes => ["RadarRange"];
         }
+
+        [Browsable(false)]
+        public status[] statusList => [(status)1, (status)2, (status)4, (status)7];
 
         public void Load(DomainModel.S101.FeatureTypes.RadarRange instance) {
             communicationChannel.Clear();
@@ -32698,6 +34608,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
             }
         }
 
+        [DomainModel.EnumerationAttribute(nameof(categoryOfRadarStationList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("RadarStation")]
         public ObservableCollection<categoryOfRadarStation> categoryOfRadarStation { get; set; } = new();
 
@@ -32734,6 +34646,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
         [Category("RadarStation")]
         public ObservableCollection<periodicDateRange> periodicDateRange { get; set; } = new();
 
+        [DomainModel.EnumerationAttribute(nameof(statusList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("RadarStation")]
         public ObservableCollection<status> status { get; set; } = new();
 
@@ -32767,6 +34681,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
         public class RadarStationRefIdViewModel : FeatureRefIdViewModel {
             public override string[] AssociationTypes => ["RadarStation"];
         }
+
+        [Browsable(false)]
+        public categoryOfRadarStation[] categoryOfRadarStationList => [(categoryOfRadarStation)1, (categoryOfRadarStation)2];
+
+        [Browsable(false)]
+        public status[] statusList => [(status)1, (status)2, (status)4, (status)7, (status)8];
 
         public void Load(DomainModel.S101.FeatureTypes.RadarStation instance) {
             callSign = instance.callSign;
@@ -32862,9 +34782,13 @@ namespace S100Framework.WPF.ViewModel.S101 {
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class AnchorageAreaViewModel : ViewModelBase {
+        [DomainModel.EnumerationAttribute(nameof(categoryOfAnchorageList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("AnchorageArea")]
         public ObservableCollection<categoryOfAnchorage> categoryOfAnchorage { get; set; } = new();
 
+        [DomainModel.EnumerationAttribute(nameof(categoryOfCargoList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("AnchorageArea")]
         public ObservableCollection<categoryOfCargo> categoryOfCargo { get; set; } = new();
 
@@ -32899,9 +34823,13 @@ namespace S100Framework.WPF.ViewModel.S101 {
         [Category("AnchorageArea")]
         public ObservableCollection<periodicDateRange> periodicDateRange { get; set; } = new();
 
+        [DomainModel.EnumerationAttribute(nameof(restrictionList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("AnchorageArea")]
         public ObservableCollection<restriction> restriction { get; set; } = new();
 
+        [DomainModel.EnumerationAttribute(nameof(statusList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("AnchorageArea")]
         public ObservableCollection<status> status { get; set; } = new();
 
@@ -32926,6 +34854,18 @@ namespace S100Framework.WPF.ViewModel.S101 {
         public class AnchorageAreaRefIdViewModel : FeatureRefIdViewModel {
             public override string[] AssociationTypes => ["AnchorageArea"];
         }
+
+        [Browsable(false)]
+        public categoryOfAnchorage[] categoryOfAnchorageList => [(categoryOfAnchorage)1, (categoryOfAnchorage)2, (categoryOfAnchorage)3, (categoryOfAnchorage)5, (categoryOfAnchorage)6, (categoryOfAnchorage)7, (categoryOfAnchorage)9, (categoryOfAnchorage)10, (categoryOfAnchorage)14, (categoryOfAnchorage)15];
+
+        [Browsable(false)]
+        public categoryOfCargo[] categoryOfCargoList => [(categoryOfCargo)1, (categoryOfCargo)2, (categoryOfCargo)3, (categoryOfCargo)4, (categoryOfCargo)5, (categoryOfCargo)6, (categoryOfCargo)7, (categoryOfCargo)8, (categoryOfCargo)9, (categoryOfCargo)10, (categoryOfCargo)11, (categoryOfCargo)12, (categoryOfCargo)13, (categoryOfCargo)14, (categoryOfCargo)15];
+
+        [Browsable(false)]
+        public restriction[] restrictionList => [(restriction)2, (restriction)3, (restriction)4, (restriction)5, (restriction)6, (restriction)8, (restriction)9, (restriction)10, (restriction)11, (restriction)12, (restriction)13, (restriction)15, (restriction)16, (restriction)17, (restriction)18, (restriction)19, (restriction)20, (restriction)21, (restriction)23, (restriction)24, (restriction)27, (restriction)39];
+
+        [Browsable(false)]
+        public status[] statusList => [(status)1, (status)2, (status)3, (status)5, (status)6, (status)7, (status)8, (status)9, (status)14];
 
         public void Load(DomainModel.S101.FeatureTypes.AnchorageArea instance) {
             categoryOfAnchorage.Clear();
@@ -33038,6 +34978,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class MooringAreaViewModel : ViewModelBase {
+        [DomainModel.EnumerationAttribute(nameof(categoryOfMooringAreaList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("MooringArea")]
         public ObservableCollection<categoryOfMooringArea> categoryOfMooringArea { get; set; } = new();
 
@@ -33096,9 +35038,13 @@ namespace S100Framework.WPF.ViewModel.S101 {
         [Category("MooringArea")]
         public ObservableCollection<periodicDateRange> periodicDateRange { get; set; } = new();
 
+        [DomainModel.EnumerationAttribute(nameof(restrictionList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("MooringArea")]
         public ObservableCollection<restriction> restriction { get; set; } = new();
 
+        [DomainModel.EnumerationAttribute(nameof(statusList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("MooringArea")]
         public ObservableCollection<status> status { get; set; } = new();
 
@@ -33123,6 +35069,15 @@ namespace S100Framework.WPF.ViewModel.S101 {
         public class MooringAreaRefIdViewModel : FeatureRefIdViewModel {
             public override string[] AssociationTypes => ["MooringArea"];
         }
+
+        [Browsable(false)]
+        public categoryOfMooringArea[] categoryOfMooringAreaList => [(categoryOfMooringArea)1, (categoryOfMooringArea)2, (categoryOfMooringArea)3];
+
+        [Browsable(false)]
+        public restriction[] restrictionList => [(restriction)1, (restriction)2, (restriction)3, (restriction)4, (restriction)5, (restriction)6, (restriction)8, (restriction)9, (restriction)10, (restriction)11, (restriction)12, (restriction)13, (restriction)15, (restriction)16, (restriction)17, (restriction)18, (restriction)19, (restriction)20, (restriction)21, (restriction)23, (restriction)24, (restriction)25, (restriction)27, (restriction)39, (restriction)42];
+
+        [Browsable(false)]
+        public status[] statusList => [(status)1, (status)2, (status)3, (status)5, (status)6, (status)7, (status)8, (status)9, (status)14];
 
         public void Load(DomainModel.S101.FeatureTypes.MooringArea instance) {
             categoryOfMooringArea.Clear();
@@ -33232,9 +35187,13 @@ namespace S100Framework.WPF.ViewModel.S101 {
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class AnchorBerthViewModel : ViewModelBase {
+        [DomainModel.EnumerationAttribute(nameof(categoryOfAnchorageList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("AnchorBerth")]
         public ObservableCollection<categoryOfAnchorage> categoryOfAnchorage { get; set; } = new();
 
+        [DomainModel.EnumerationAttribute(nameof(categoryOfCargoList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("AnchorBerth")]
         public ObservableCollection<categoryOfCargo> categoryOfCargo { get; set; } = new();
 
@@ -33281,6 +35240,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
             }
         }
 
+        [DomainModel.EnumerationAttribute(nameof(statusList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("AnchorBerth")]
         public ObservableCollection<status> status { get; set; } = new();
 
@@ -33302,6 +35263,15 @@ namespace S100Framework.WPF.ViewModel.S101 {
         public class AnchorBerthRefIdViewModel : FeatureRefIdViewModel {
             public override string[] AssociationTypes => ["AnchorBerth"];
         }
+
+        [Browsable(false)]
+        public categoryOfAnchorage[] categoryOfAnchorageList => [(categoryOfAnchorage)1, (categoryOfAnchorage)2, (categoryOfAnchorage)3, (categoryOfAnchorage)5, (categoryOfAnchorage)6, (categoryOfAnchorage)7, (categoryOfAnchorage)9, (categoryOfAnchorage)10, (categoryOfAnchorage)14];
+
+        [Browsable(false)]
+        public categoryOfCargo[] categoryOfCargoList => [(categoryOfCargo)1, (categoryOfCargo)2, (categoryOfCargo)3, (categoryOfCargo)4, (categoryOfCargo)5, (categoryOfCargo)6, (categoryOfCargo)7, (categoryOfCargo)8, (categoryOfCargo)9, (categoryOfCargo)10, (categoryOfCargo)11, (categoryOfCargo)12, (categoryOfCargo)13, (categoryOfCargo)14, (categoryOfCargo)15];
+
+        [Browsable(false)]
+        public status[] statusList => [(status)1, (status)2, (status)3, (status)4, (status)5, (status)6, (status)7, (status)8, (status)9, (status)14];
 
         public void Load(DomainModel.S101.FeatureTypes.AnchorBerth instance) {
             categoryOfAnchorage.Clear();
@@ -33417,9 +35387,13 @@ namespace S100Framework.WPF.ViewModel.S101 {
         [Category("SeaplaneLandingArea")]
         public ObservableCollection<periodicDateRange> periodicDateRange { get; set; } = new();
 
+        [DomainModel.EnumerationAttribute(nameof(restrictionList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("SeaplaneLandingArea")]
         public ObservableCollection<restriction> restriction { get; set; } = new();
 
+        [DomainModel.EnumerationAttribute(nameof(statusList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("SeaplaneLandingArea")]
         public ObservableCollection<status> status { get; set; } = new();
 
@@ -33444,6 +35418,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
         public class SeaplaneLandingAreaRefIdViewModel : FeatureRefIdViewModel {
             public override string[] AssociationTypes => ["SeaplaneLandingArea"];
         }
+
+        [Browsable(false)]
+        public restriction[] restrictionList => [(restriction)1, (restriction)2, (restriction)3, (restriction)4, (restriction)5, (restriction)6, (restriction)7, (restriction)8, (restriction)9, (restriction)10, (restriction)11, (restriction)12, (restriction)13, (restriction)15, (restriction)16, (restriction)17, (restriction)18, (restriction)19, (restriction)20, (restriction)21, (restriction)22, (restriction)23, (restriction)24, (restriction)25, (restriction)27, (restriction)39];
+
+        [Browsable(false)]
+        public status[] statusList => [(status)1, (status)2, (status)3, (status)4, (status)5, (status)6, (status)7, (status)8, (status)9, (status)14];
 
         public void Load(DomainModel.S101.FeatureTypes.SeaplaneLandingArea instance) {
             featureName.Clear();
@@ -33530,6 +35510,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class DumpingGroundViewModel : ViewModelBase {
+        [DomainModel.EnumerationAttribute(nameof(categoryOfDumpingGroundList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("DumpingGround")]
         public ObservableCollection<categoryOfDumpingGround> categoryOfDumpingGround { get; set; } = new();
 
@@ -33560,9 +35542,13 @@ namespace S100Framework.WPF.ViewModel.S101 {
             }
         }
 
+        [DomainModel.EnumerationAttribute(nameof(restrictionList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("DumpingGround")]
         public ObservableCollection<restriction> restriction { get; set; } = new();
 
+        [DomainModel.EnumerationAttribute(nameof(statusList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("DumpingGround")]
         public ObservableCollection<status> status { get; set; } = new();
 
@@ -33587,6 +35573,15 @@ namespace S100Framework.WPF.ViewModel.S101 {
         public class DumpingGroundRefIdViewModel : FeatureRefIdViewModel {
             public override string[] AssociationTypes => ["DumpingGround"];
         }
+
+        [Browsable(false)]
+        public categoryOfDumpingGround[] categoryOfDumpingGroundList => [(categoryOfDumpingGround)2, (categoryOfDumpingGround)3, (categoryOfDumpingGround)4, (categoryOfDumpingGround)5, (categoryOfDumpingGround)6];
+
+        [Browsable(false)]
+        public restriction[] restrictionList => [(restriction)1, (restriction)2, (restriction)3, (restriction)4, (restriction)5, (restriction)6, (restriction)7, (restriction)8, (restriction)9, (restriction)10, (restriction)11, (restriction)12, (restriction)13, (restriction)17, (restriction)18, (restriction)19, (restriction)20, (restriction)21, (restriction)22, (restriction)23, (restriction)24, (restriction)25, (restriction)27];
+
+        [Browsable(false)]
+        public status[] statusList => [(status)1, (status)2, (status)4, (status)6, (status)7];
 
         public void Load(DomainModel.S101.FeatureTypes.DumpingGround instance) {
             categoryOfDumpingGround.Clear();
@@ -33676,6 +35671,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class MilitaryPracticeAreaViewModel : ViewModelBase {
+        [DomainModel.EnumerationAttribute(nameof(categoryOfMilitaryPracticeAreaList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("MilitaryPracticeArea")]
         public ObservableCollection<categoryOfMilitaryPracticeArea> categoryOfMilitaryPracticeArea { get; set; } = new();
 
@@ -33722,9 +35719,13 @@ namespace S100Framework.WPF.ViewModel.S101 {
         [Category("MilitaryPracticeArea")]
         public ObservableCollection<periodicDateRange> periodicDateRange { get; set; } = new();
 
+        [DomainModel.EnumerationAttribute(nameof(restrictionList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("MilitaryPracticeArea")]
         public ObservableCollection<restriction> restriction { get; set; } = new();
 
+        [DomainModel.EnumerationAttribute(nameof(statusList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("MilitaryPracticeArea")]
         public ObservableCollection<status> status { get; set; } = new();
 
@@ -33749,6 +35750,15 @@ namespace S100Framework.WPF.ViewModel.S101 {
         public class MilitaryPracticeAreaRefIdViewModel : FeatureRefIdViewModel {
             public override string[] AssociationTypes => ["MilitaryPracticeArea"];
         }
+
+        [Browsable(false)]
+        public categoryOfMilitaryPracticeArea[] categoryOfMilitaryPracticeAreaList => [(categoryOfMilitaryPracticeArea)2, (categoryOfMilitaryPracticeArea)3, (categoryOfMilitaryPracticeArea)4, (categoryOfMilitaryPracticeArea)5, (categoryOfMilitaryPracticeArea)6];
+
+        [Browsable(false)]
+        public restriction[] restrictionList => [(restriction)1, (restriction)2, (restriction)3, (restriction)4, (restriction)5, (restriction)6, (restriction)7, (restriction)8, (restriction)9, (restriction)10, (restriction)11, (restriction)12, (restriction)13, (restriction)15, (restriction)16, (restriction)17, (restriction)18, (restriction)19, (restriction)20, (restriction)21, (restriction)22, (restriction)23, (restriction)24, (restriction)25, (restriction)26, (restriction)27, (restriction)39];
+
+        [Browsable(false)]
+        public status[] statusList => [(status)1, (status)2, (status)5, (status)6, (status)7, (status)16, (status)17];
 
         public void Load(DomainModel.S101.FeatureTypes.MilitaryPracticeArea instance) {
             categoryOfMilitaryPracticeArea.Clear();
@@ -33868,6 +35878,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
         }
 
         private jurisdiction _jurisdiction;
+        [DomainModel.EnumerationAttribute(nameof(jurisdictionList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("AdministrationArea")]
         public jurisdiction jurisdiction {
             get {
@@ -33927,6 +35939,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
         public class AdministrationAreaRefIdViewModel : FeatureRefIdViewModel {
             public override string[] AssociationTypes => ["AdministrationArea"];
         }
+
+        [Browsable(false)]
+        public jurisdiction[] jurisdictionList => [(jurisdiction)1, (jurisdiction)2, (jurisdiction)3];
 
         public void Load(DomainModel.S101.FeatureTypes.AdministrationArea instance) {
             inDispute = instance.inDispute;
@@ -34026,9 +36041,13 @@ namespace S100Framework.WPF.ViewModel.S101 {
         [Category("CargoTranshipmentArea")]
         public ObservableCollection<periodicDateRange> periodicDateRange { get; set; } = new();
 
+        [DomainModel.EnumerationAttribute(nameof(restrictionList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("CargoTranshipmentArea")]
         public ObservableCollection<restriction> restriction { get; set; } = new();
 
+        [DomainModel.EnumerationAttribute(nameof(statusList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("CargoTranshipmentArea")]
         public ObservableCollection<status> status { get; set; } = new();
 
@@ -34053,6 +36072,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
         public class CargoTranshipmentAreaRefIdViewModel : FeatureRefIdViewModel {
             public override string[] AssociationTypes => ["CargoTranshipmentArea"];
         }
+
+        [Browsable(false)]
+        public restriction[] restrictionList => [(restriction)2, (restriction)3, (restriction)4, (restriction)5, (restriction)6, (restriction)8, (restriction)9, (restriction)10, (restriction)11, (restriction)12, (restriction)13, (restriction)15, (restriction)16, (restriction)17, (restriction)18, (restriction)19, (restriction)20, (restriction)21, (restriction)22, (restriction)24, (restriction)27, (restriction)39];
+
+        [Browsable(false)]
+        public status[] statusList => [(status)1, (status)2, (status)3, (status)5, (status)6, (status)7, (status)9];
 
         public void Load(DomainModel.S101.FeatureTypes.CargoTranshipmentArea instance) {
             featureName.Clear();
@@ -34148,6 +36173,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
     [CategoryOrder("FeatureBindings", 200)]
     public partial class CautionAreaViewModel : ViewModelBase {
         private condition? _condition = default;
+        [DomainModel.EnumerationAttribute(nameof(conditionList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("CautionArea")]
         public condition? condition {
             get {
@@ -34200,6 +36227,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
         }
 
         private status? _status = default;
+        [DomainModel.EnumerationAttribute(nameof(statusList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("CautionArea")]
         public status? status {
             get {
@@ -34241,6 +36270,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
         public class CautionAreaRefIdViewModel : FeatureRefIdViewModel {
             public override string[] AssociationTypes => ["CautionArea"];
         }
+
+        [Browsable(false)]
+        public condition[] conditionList => [(condition)1, (condition)3, (condition)5];
+
+        [Browsable(false)]
+        public status[] statusList => [(status)5, (status)7];
 
         public void Load(DomainModel.S101.FeatureTypes.CautionArea instance) {
             condition = instance.condition;
@@ -34882,6 +36917,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
             }
         }
 
+        [DomainModel.EnumerationAttribute(nameof(statusList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("FisheryZone")]
         public ObservableCollection<status> status { get; set; } = new();
 
@@ -34903,6 +36940,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
         public class FisheryZoneRefIdViewModel : FeatureRefIdViewModel {
             public override string[] AssociationTypes => ["FisheryZone"];
         }
+
+        [Browsable(false)]
+        public status[] statusList => [(status)1, (status)5, (status)6, (status)7];
 
         public void Load(DomainModel.S101.FeatureTypes.FisheryZone instance) {
             featureName.Clear();
@@ -34983,9 +37023,13 @@ namespace S100Framework.WPF.ViewModel.S101 {
         [Category("FishingGround")]
         public ObservableCollection<periodicDateRange> periodicDateRange { get; set; } = new();
 
+        [DomainModel.EnumerationAttribute(nameof(restrictionList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("FishingGround")]
         public ObservableCollection<restriction> restriction { get; set; } = new();
 
+        [DomainModel.EnumerationAttribute(nameof(statusList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("FishingGround")]
         public ObservableCollection<status> status { get; set; } = new();
 
@@ -35010,6 +37054,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
         public class FishingGroundRefIdViewModel : FeatureRefIdViewModel {
             public override string[] AssociationTypes => ["FishingGround"];
         }
+
+        [Browsable(false)]
+        public restriction[] restrictionList => [(restriction)1, (restriction)2, (restriction)4, (restriction)5, (restriction)6, (restriction)8, (restriction)9, (restriction)10, (restriction)11, (restriction)12, (restriction)15, (restriction)16, (restriction)17, (restriction)18, (restriction)19, (restriction)20, (restriction)21, (restriction)22, (restriction)23, (restriction)24, (restriction)25, (restriction)26, (restriction)27, (restriction)39];
+
+        [Browsable(false)]
+        public status[] statusList => [(status)1, (status)5, (status)6, (status)7, (status)8, (status)14, (status)16, (status)17, (status)28];
 
         public void Load(DomainModel.S101.FeatureTypes.FishingGround instance) {
             featureName.Clear();
@@ -35111,6 +37161,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
             }
         }
 
+        [DomainModel.EnumerationAttribute(nameof(statusList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("FreePortArea")]
         public ObservableCollection<status> status { get; set; } = new();
 
@@ -35132,6 +37184,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
         public class FreePortAreaRefIdViewModel : FeatureRefIdViewModel {
             public override string[] AssociationTypes => ["FreePortArea"];
         }
+
+        [Browsable(false)]
+        public status[] statusList => [(status)1, (status)6, (status)8, (status)14];
 
         public void Load(DomainModel.S101.FeatureTypes.FreePortArea instance) {
             featureName.Clear();
@@ -35206,6 +37261,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
             }
         }
 
+        [DomainModel.EnumerationAttribute(nameof(statusList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("HarbourAreaAdministrative")]
         public ObservableCollection<status> status { get; set; } = new();
 
@@ -35227,6 +37284,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
         public class HarbourAreaAdministrativeRefIdViewModel : FeatureRefIdViewModel {
             public override string[] AssociationTypes => ["HarbourAreaAdministrative"];
         }
+
+        [Browsable(false)]
+        public status[] statusList => [(status)1, (status)4, (status)6, (status)8, (status)14];
 
         public void Load(DomainModel.S101.FeatureTypes.HarbourAreaAdministrative instance) {
             featureName.Clear();
@@ -35304,6 +37364,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
         [Category("LogPond")]
         public ObservableCollection<periodicDateRange> periodicDateRange { get; set; } = new();
 
+        [DomainModel.EnumerationAttribute(nameof(statusList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("LogPond")]
         public ObservableCollection<status> status { get; set; } = new();
 
@@ -35325,6 +37387,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
         public class LogPondRefIdViewModel : FeatureRefIdViewModel {
             public override string[] AssociationTypes => ["LogPond"];
         }
+
+        [Browsable(false)]
+        public status[] statusList => [(status)1, (status)2, (status)5, (status)6, (status)7, (status)8];
 
         public void Load(DomainModel.S101.FeatureTypes.LogPond instance) {
             featureName.Clear();
@@ -35394,6 +37459,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
     [CategoryOrder("FeatureBindings", 200)]
     public partial class OilBarrierViewModel : ViewModelBase {
         private categoryOfOilBarrier? _categoryOfOilBarrier = default;
+        [DomainModel.EnumerationAttribute(nameof(categoryOfOilBarrierList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("OilBarrier")]
         public categoryOfOilBarrier? categoryOfOilBarrier {
             get {
@@ -35406,6 +37473,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
         }
 
         private condition? _condition = default;
+        [DomainModel.EnumerationAttribute(nameof(conditionList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("OilBarrier")]
         public condition? condition {
             get {
@@ -35457,6 +37526,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
             }
         }
 
+        [DomainModel.EnumerationAttribute(nameof(statusList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("OilBarrier")]
         public ObservableCollection<status> status { get; set; } = new();
 
@@ -35478,6 +37549,15 @@ namespace S100Framework.WPF.ViewModel.S101 {
         public class OilBarrierRefIdViewModel : FeatureRefIdViewModel {
             public override string[] AssociationTypes => ["OilBarrier"];
         }
+
+        [Browsable(false)]
+        public categoryOfOilBarrier[] categoryOfOilBarrierList => [(categoryOfOilBarrier)1, (categoryOfOilBarrier)2];
+
+        [Browsable(false)]
+        public condition[] conditionList => [(condition)1, (condition)2, (condition)5];
+
+        [Browsable(false)]
+        public status[] statusList => [(status)1, (status)2, (status)4, (status)5, (status)7, (status)8];
 
         public void Load(DomainModel.S101.FeatureTypes.OilBarrier instance) {
             categoryOfOilBarrier = instance.categoryOfOilBarrier;
@@ -35667,6 +37747,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
         [Category("TerritorialSeaArea")]
         public ObservableCollection<String> nationality { get; set; } = new();
 
+        [DomainModel.EnumerationAttribute(nameof(restrictionList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("TerritorialSeaArea")]
         public ObservableCollection<restriction> restriction { get; set; } = new();
 
@@ -35691,6 +37773,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
         public class TerritorialSeaAreaRefIdViewModel : FeatureRefIdViewModel {
             public override string[] AssociationTypes => ["TerritorialSeaArea"];
         }
+
+        [Browsable(false)]
+        public restriction[] restrictionList => [(restriction)2, (restriction)4, (restriction)6, (restriction)8, (restriction)9, (restriction)10, (restriction)12, (restriction)17, (restriction)18, (restriction)19, (restriction)20, (restriction)21, (restriction)22, (restriction)23, (restriction)24, (restriction)27];
 
         public void Load(DomainModel.S101.FeatureTypes.TerritorialSeaArea instance) {
             inDispute = instance.inDispute;
@@ -35789,6 +37874,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
             }
         }
 
+        [DomainModel.EnumerationAttribute(nameof(restrictionList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("SubmarineTransitLane")]
         public ObservableCollection<restriction> restriction { get; set; } = new();
 
@@ -35813,6 +37900,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
         public class SubmarineTransitLaneRefIdViewModel : FeatureRefIdViewModel {
             public override string[] AssociationTypes => ["SubmarineTransitLane"];
         }
+
+        [Browsable(false)]
+        public restriction[] restrictionList => [(restriction)1, (restriction)2, (restriction)3, (restriction)4, (restriction)5, (restriction)6, (restriction)7, (restriction)8, (restriction)9, (restriction)10, (restriction)11, (restriction)12, (restriction)13, (restriction)16, (restriction)17, (restriction)18, (restriction)19, (restriction)20, (restriction)21, (restriction)22, (restriction)23, (restriction)24, (restriction)25, (restriction)27];
 
         public void Load(DomainModel.S101.FeatureTypes.SubmarineTransitLane instance) {
             featureName.Clear();
@@ -36208,6 +38298,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class RestrictedAreaViewModel : ViewModelBase {
+        [DomainModel.EnumerationAttribute(nameof(categoryOfRestrictedAreaList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("RestrictedArea")]
         public ObservableCollection<categoryOfRestrictedArea> categoryOfRestrictedArea { get; set; } = new();
 
@@ -36242,9 +38334,13 @@ namespace S100Framework.WPF.ViewModel.S101 {
         [Category("RestrictedArea")]
         public ObservableCollection<periodicDateRange> periodicDateRange { get; set; } = new();
 
+        [DomainModel.EnumerationAttribute(nameof(restrictionList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("RestrictedArea")]
         public ObservableCollection<restriction> restriction { get; set; } = new();
 
+        [DomainModel.EnumerationAttribute(nameof(statusList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("RestrictedArea")]
         public ObservableCollection<status> status { get; set; } = new();
 
@@ -36269,6 +38365,15 @@ namespace S100Framework.WPF.ViewModel.S101 {
         public class RestrictedAreaRefIdViewModel : FeatureRefIdViewModel {
             public override string[] AssociationTypes => ["RestrictedArea"];
         }
+
+        [Browsable(false)]
+        public categoryOfRestrictedArea[] categoryOfRestrictedAreaList => [(categoryOfRestrictedArea)1, (categoryOfRestrictedArea)4, (categoryOfRestrictedArea)5, (categoryOfRestrictedArea)6, (categoryOfRestrictedArea)7, (categoryOfRestrictedArea)8, (categoryOfRestrictedArea)9, (categoryOfRestrictedArea)10, (categoryOfRestrictedArea)12, (categoryOfRestrictedArea)14, (categoryOfRestrictedArea)18, (categoryOfRestrictedArea)19, (categoryOfRestrictedArea)20, (categoryOfRestrictedArea)21, (categoryOfRestrictedArea)22, (categoryOfRestrictedArea)23, (categoryOfRestrictedArea)24, (categoryOfRestrictedArea)25, (categoryOfRestrictedArea)27, (categoryOfRestrictedArea)28, (categoryOfRestrictedArea)29, (categoryOfRestrictedArea)30, (categoryOfRestrictedArea)31, (categoryOfRestrictedArea)32];
+
+        [Browsable(false)]
+        public restriction[] restrictionList => [(restriction)1, (restriction)2, (restriction)3, (restriction)4, (restriction)5, (restriction)6, (restriction)7, (restriction)8, (restriction)9, (restriction)10, (restriction)11, (restriction)12, (restriction)13, (restriction)14, (restriction)15, (restriction)16, (restriction)17, (restriction)18, (restriction)19, (restriction)20, (restriction)21, (restriction)22, (restriction)23, (restriction)24, (restriction)25, (restriction)26, (restriction)27, (restriction)39, (restriction)42];
+
+        [Browsable(false)]
+        public status[] statusList => [(status)1, (status)2, (status)3, (status)4, (status)5, (status)6, (status)7, (status)9, (status)18, (status)28];
 
         public void Load(DomainModel.S101.FeatureTypes.RestrictedArea instance) {
             categoryOfRestrictedArea.Clear();
@@ -36372,13 +38477,19 @@ namespace S100Framework.WPF.ViewModel.S101 {
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class LightAllAroundViewModel : ViewModelBase {
+        [DomainModel.EnumerationAttribute(nameof(categoryOfLightList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("LightAllAround")]
         public ObservableCollection<categoryOfLight> categoryOfLight { get; set; } = new();
 
+        [DomainModel.EnumerationAttribute(nameof(colourList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("LightAllAround")]
         public ObservableCollection<colour> colour { get; set; } = new();
 
         private exhibitionConditionOfLight? _exhibitionConditionOfLight = default;
+        [DomainModel.EnumerationAttribute(nameof(exhibitionConditionOfLightList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("LightAllAround")]
         public exhibitionConditionOfLight? exhibitionConditionOfLight {
             get {
@@ -36443,6 +38554,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
         }
 
         private lightVisibility? _lightVisibility = default;
+        [DomainModel.EnumerationAttribute(nameof(lightVisibilityList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("LightAllAround")]
         public lightVisibility? lightVisibility {
             get {
@@ -36467,6 +38580,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
         }
 
         private marksNavigationalSystemOf? _marksNavigationalSystemOf = default;
+        [DomainModel.EnumerationAttribute(nameof(marksNavigationalSystemOfList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("LightAllAround")]
         public marksNavigationalSystemOf? marksNavigationalSystemOf {
             get {
@@ -36508,6 +38623,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
         }
 
         private signalGeneration? _signalGeneration = default;
+        [DomainModel.EnumerationAttribute(nameof(signalGenerationList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("LightAllAround")]
         public signalGeneration? signalGeneration {
             get {
@@ -36519,6 +38636,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
             }
         }
 
+        [DomainModel.EnumerationAttribute(nameof(statusList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("LightAllAround")]
         public ObservableCollection<status> status { get; set; } = new();
 
@@ -36535,6 +38654,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
         }
 
         private verticalDatum? _verticalDatum = default;
+        [DomainModel.EnumerationAttribute(nameof(verticalDatumList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("LightAllAround")]
         public verticalDatum? verticalDatum {
             get {
@@ -36576,6 +38697,30 @@ namespace S100Framework.WPF.ViewModel.S101 {
         public class LightAllAroundRefIdViewModel : FeatureRefIdViewModel {
             public override string[] AssociationTypes => ["LightAllAround"];
         }
+
+        [Browsable(false)]
+        public categoryOfLight[] categoryOfLightList => [(categoryOfLight)4, (categoryOfLight)5, (categoryOfLight)8, (categoryOfLight)9, (categoryOfLight)10, (categoryOfLight)11, (categoryOfLight)12, (categoryOfLight)13, (categoryOfLight)14, (categoryOfLight)15, (categoryOfLight)17, (categoryOfLight)18, (categoryOfLight)19, (categoryOfLight)20];
+
+        [Browsable(false)]
+        public colour[] colourList => [(colour)1, (colour)3, (colour)4, (colour)5, (colour)6, (colour)9, (colour)10, (colour)11];
+
+        [Browsable(false)]
+        public exhibitionConditionOfLight[] exhibitionConditionOfLightList => [(exhibitionConditionOfLight)1, (exhibitionConditionOfLight)2, (exhibitionConditionOfLight)3, (exhibitionConditionOfLight)4];
+
+        [Browsable(false)]
+        public lightVisibility[] lightVisibilityList => [(lightVisibility)1, (lightVisibility)2];
+
+        [Browsable(false)]
+        public marksNavigationalSystemOf[] marksNavigationalSystemOfList => [(marksNavigationalSystemOf)1, (marksNavigationalSystemOf)2, (marksNavigationalSystemOf)9, (marksNavigationalSystemOf)11];
+
+        [Browsable(false)]
+        public signalGeneration[] signalGenerationList => [(signalGeneration)5, (signalGeneration)6];
+
+        [Browsable(false)]
+        public status[] statusList => [(status)1, (status)2, (status)4, (status)5, (status)6, (status)7, (status)8, (status)11, (status)14, (status)15, (status)16, (status)17];
+
+        [Browsable(false)]
+        public verticalDatum[] verticalDatumList => [(verticalDatum)3, (verticalDatum)13, (verticalDatum)16, (verticalDatum)17, (verticalDatum)18, (verticalDatum)19, (verticalDatum)20, (verticalDatum)21, (verticalDatum)24, (verticalDatum)25, (verticalDatum)26, (verticalDatum)28, (verticalDatum)29, (verticalDatum)30, (verticalDatum)44];
 
         public void Load(DomainModel.S101.FeatureTypes.LightAllAround instance) {
             categoryOfLight.Clear();
@@ -36716,10 +38861,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class LightSectoredViewModel : ViewModelBase {
+        [DomainModel.EnumerationAttribute(nameof(categoryOfLightList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("LightSectored")]
         public ObservableCollection<categoryOfLight> categoryOfLight { get; set; } = new();
 
         private exhibitionConditionOfLight? _exhibitionConditionOfLight = default;
+        [DomainModel.EnumerationAttribute(nameof(exhibitionConditionOfLightList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("LightSectored")]
         public exhibitionConditionOfLight? exhibitionConditionOfLight {
             get {
@@ -36772,6 +38921,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
         }
 
         private marksNavigationalSystemOf? _marksNavigationalSystemOf = default;
+        [DomainModel.EnumerationAttribute(nameof(marksNavigationalSystemOfList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("LightSectored")]
         public marksNavigationalSystemOf? marksNavigationalSystemOf {
             get {
@@ -36803,6 +38954,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
         public ObservableCollection<sectorCharacteristics> sectorCharacteristics { get; set; } = new();
 
         private signalGeneration? _signalGeneration = default;
+        [DomainModel.EnumerationAttribute(nameof(signalGenerationList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("LightSectored")]
         public signalGeneration? signalGeneration {
             get {
@@ -36814,10 +38967,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
             }
         }
 
+        [DomainModel.EnumerationAttribute(nameof(statusList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("LightSectored")]
         public ObservableCollection<status> status { get; set; } = new();
 
         private verticalDatum? _verticalDatum = default;
+        [DomainModel.EnumerationAttribute(nameof(verticalDatumList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("LightSectored")]
         public verticalDatum? verticalDatum {
             get {
@@ -36847,6 +39004,24 @@ namespace S100Framework.WPF.ViewModel.S101 {
         public class LightSectoredRefIdViewModel : FeatureRefIdViewModel {
             public override string[] AssociationTypes => ["LightSectored"];
         }
+
+        [Browsable(false)]
+        public categoryOfLight[] categoryOfLightList => [(categoryOfLight)4, (categoryOfLight)5, (categoryOfLight)8, (categoryOfLight)9, (categoryOfLight)10, (categoryOfLight)11, (categoryOfLight)12, (categoryOfLight)13, (categoryOfLight)14, (categoryOfLight)15, (categoryOfLight)17, (categoryOfLight)18, (categoryOfLight)19, (categoryOfLight)20];
+
+        [Browsable(false)]
+        public exhibitionConditionOfLight[] exhibitionConditionOfLightList => [(exhibitionConditionOfLight)1, (exhibitionConditionOfLight)2, (exhibitionConditionOfLight)3, (exhibitionConditionOfLight)4];
+
+        [Browsable(false)]
+        public marksNavigationalSystemOf[] marksNavigationalSystemOfList => [(marksNavigationalSystemOf)1, (marksNavigationalSystemOf)2, (marksNavigationalSystemOf)9, (marksNavigationalSystemOf)11];
+
+        [Browsable(false)]
+        public signalGeneration[] signalGenerationList => [(signalGeneration)5, (signalGeneration)6];
+
+        [Browsable(false)]
+        public status[] statusList => [(status)1, (status)2, (status)4, (status)5, (status)6, (status)7, (status)8, (status)11, (status)14, (status)15, (status)16, (status)17];
+
+        [Browsable(false)]
+        public verticalDatum[] verticalDatumList => [(verticalDatum)3, (verticalDatum)13, (verticalDatum)16, (verticalDatum)17, (verticalDatum)18, (verticalDatum)19, (verticalDatum)20, (verticalDatum)21, (verticalDatum)24, (verticalDatum)25, (verticalDatum)26, (verticalDatum)28, (verticalDatum)29, (verticalDatum)30, (verticalDatum)44];
 
         public void Load(DomainModel.S101.FeatureTypes.LightSectored instance) {
             categoryOfLight.Clear();
@@ -36964,6 +39139,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class LightFogDetectorViewModel : ViewModelBase {
+        [DomainModel.EnumerationAttribute(nameof(colourList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("LightFogDetector")]
         public ObservableCollection<colour> colour { get; set; } = new();
 
@@ -37036,6 +39213,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
         }
 
         private signalGeneration? _signalGeneration = default;
+        [DomainModel.EnumerationAttribute(nameof(signalGenerationList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("LightFogDetector")]
         public signalGeneration? signalGeneration {
             get {
@@ -37047,10 +39226,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
             }
         }
 
+        [DomainModel.EnumerationAttribute(nameof(statusList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("LightFogDetector")]
         public ObservableCollection<status> status { get; set; } = new();
 
         private verticalDatum? _verticalDatum = default;
+        [DomainModel.EnumerationAttribute(nameof(verticalDatumList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("LightFogDetector")]
         public verticalDatum? verticalDatum {
             get {
@@ -37092,6 +39275,18 @@ namespace S100Framework.WPF.ViewModel.S101 {
         public class LightFogDetectorRefIdViewModel : FeatureRefIdViewModel {
             public override string[] AssociationTypes => ["LightFogDetector"];
         }
+
+        [Browsable(false)]
+        public colour[] colourList => [(colour)1, (colour)3, (colour)4, (colour)5, (colour)6, (colour)9, (colour)10, (colour)11];
+
+        [Browsable(false)]
+        public signalGeneration[] signalGenerationList => [(signalGeneration)5, (signalGeneration)6];
+
+        [Browsable(false)]
+        public status[] statusList => [(status)1, (status)2, (status)4, (status)5, (status)6, (status)7, (status)8, (status)11, (status)14, (status)15, (status)16, (status)17];
+
+        [Browsable(false)]
+        public verticalDatum[] verticalDatumList => [(verticalDatum)3, (verticalDatum)13, (verticalDatum)16, (verticalDatum)17, (verticalDatum)18, (verticalDatum)19, (verticalDatum)20, (verticalDatum)21, (verticalDatum)24, (verticalDatum)25, (verticalDatum)26, (verticalDatum)28, (verticalDatum)29, (verticalDatum)30, (verticalDatum)44];
 
         public void Load(DomainModel.S101.FeatureTypes.LightFogDetector instance) {
             colour.Clear();
@@ -37200,10 +39395,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class LightAirObstructionViewModel : ViewModelBase {
+        [DomainModel.EnumerationAttribute(nameof(colourList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("LightAirObstruction")]
         public ObservableCollection<colour> colour { get; set; } = new();
 
         private exhibitionConditionOfLight? _exhibitionConditionOfLight = default;
+        [DomainModel.EnumerationAttribute(nameof(exhibitionConditionOfLightList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("LightAirObstruction")]
         public exhibitionConditionOfLight? exhibitionConditionOfLight {
             get {
@@ -37267,6 +39466,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
             }
         }
 
+        [DomainModel.EnumerationAttribute(nameof(lightVisibilityList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("LightAirObstruction")]
         public ObservableCollection<lightVisibility> lightVisibility { get; set; } = new();
 
@@ -37299,6 +39500,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
             }
         }
 
+        [DomainModel.EnumerationAttribute(nameof(statusList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("LightAirObstruction")]
         public ObservableCollection<status> status { get; set; } = new();
 
@@ -37315,6 +39518,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
         }
 
         private verticalDatum? _verticalDatum = default;
+        [DomainModel.EnumerationAttribute(nameof(verticalDatumList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("LightAirObstruction")]
         public verticalDatum? verticalDatum {
             get {
@@ -37344,6 +39549,21 @@ namespace S100Framework.WPF.ViewModel.S101 {
         public class LightAirObstructionRefIdViewModel : FeatureRefIdViewModel {
             public override string[] AssociationTypes => ["LightAirObstruction"];
         }
+
+        [Browsable(false)]
+        public colour[] colourList => [(colour)1, (colour)3, (colour)4, (colour)5, (colour)6, (colour)9, (colour)10, (colour)11];
+
+        [Browsable(false)]
+        public exhibitionConditionOfLight[] exhibitionConditionOfLightList => [(exhibitionConditionOfLight)1, (exhibitionConditionOfLight)2, (exhibitionConditionOfLight)3, (exhibitionConditionOfLight)4];
+
+        [Browsable(false)]
+        public lightVisibility[] lightVisibilityList => [(lightVisibility)1, (lightVisibility)2, (lightVisibility)3, (lightVisibility)4, (lightVisibility)5, (lightVisibility)6, (lightVisibility)7, (lightVisibility)8, (lightVisibility)9];
+
+        [Browsable(false)]
+        public status[] statusList => [(status)1, (status)2, (status)4, (status)5, (status)6, (status)7, (status)8, (status)11, (status)14, (status)15, (status)16, (status)17];
+
+        [Browsable(false)]
+        public verticalDatum[] verticalDatumList => [(verticalDatum)3, (verticalDatum)13, (verticalDatum)16, (verticalDatum)17, (verticalDatum)18, (verticalDatum)19, (verticalDatum)20, (verticalDatum)21, (verticalDatum)24, (verticalDatum)25, (verticalDatum)26, (verticalDatum)28, (verticalDatum)29, (verticalDatum)30, (verticalDatum)44];
 
         public void Load(DomainModel.S101.FeatureTypes.LightAirObstruction instance) {
             colour.Clear();
@@ -37470,6 +39690,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
     [CategoryOrder("FeatureBindings", 200)]
     public partial class LateralBuoyViewModel : ViewModelBase {
         private buoyShape _buoyShape;
+        [DomainModel.EnumerationAttribute(nameof(buoyShapeList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("LateralBuoy")]
         public buoyShape buoyShape {
             get {
@@ -37482,6 +39704,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
         }
 
         private categoryOfLateralMark _categoryOfLateralMark;
+        [DomainModel.EnumerationAttribute(nameof(categoryOfLateralMarkList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("LateralBuoy")]
         public categoryOfLateralMark categoryOfLateralMark {
             get {
@@ -37493,10 +39717,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
             }
         }
 
+        [DomainModel.EnumerationAttribute(nameof(colourList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("LateralBuoy")]
         public ObservableCollection<colour> colour { get; set; } = new();
 
         private colourPattern? _colourPattern = default;
+        [DomainModel.EnumerationAttribute(nameof(colourPatternList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("LateralBuoy")]
         public colourPattern? colourPattern {
             get {
@@ -37537,6 +39765,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
         }
 
         private marksNavigationalSystemOf? _marksNavigationalSystemOf = default;
+        [DomainModel.EnumerationAttribute(nameof(marksNavigationalSystemOfList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("LateralBuoy")]
         public marksNavigationalSystemOf? marksNavigationalSystemOf {
             get {
@@ -37548,6 +39778,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
             }
         }
 
+        [DomainModel.EnumerationAttribute(nameof(natureOfConstructionList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("LateralBuoy")]
         public ObservableCollection<natureOfConstruction> natureOfConstruction { get; set; } = new();
 
@@ -37566,6 +39798,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
             }
         }
 
+        [DomainModel.EnumerationAttribute(nameof(statusList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("LateralBuoy")]
         public ObservableCollection<status> status { get; set; } = new();
 
@@ -37624,6 +39858,27 @@ namespace S100Framework.WPF.ViewModel.S101 {
         public class LateralBuoyRefIdViewModel : FeatureRefIdViewModel {
             public override string[] AssociationTypes => ["LateralBuoy"];
         }
+
+        [Browsable(false)]
+        public buoyShape[] buoyShapeList => [(buoyShape)1, (buoyShape)2, (buoyShape)3, (buoyShape)4, (buoyShape)5, (buoyShape)6, (buoyShape)7, (buoyShape)8];
+
+        [Browsable(false)]
+        public categoryOfLateralMark[] categoryOfLateralMarkList => [(categoryOfLateralMark)1, (categoryOfLateralMark)2, (categoryOfLateralMark)3, (categoryOfLateralMark)4];
+
+        [Browsable(false)]
+        public colour[] colourList => [(colour)1, (colour)2, (colour)3, (colour)4, (colour)5, (colour)6, (colour)7, (colour)8, (colour)9, (colour)10, (colour)11, (colour)12, (colour)13];
+
+        [Browsable(false)]
+        public colourPattern[] colourPatternList => [(colourPattern)1, (colourPattern)2, (colourPattern)3, (colourPattern)4, (colourPattern)5, (colourPattern)6];
+
+        [Browsable(false)]
+        public marksNavigationalSystemOf[] marksNavigationalSystemOfList => [(marksNavigationalSystemOf)1, (marksNavigationalSystemOf)2, (marksNavigationalSystemOf)9, (marksNavigationalSystemOf)11];
+
+        [Browsable(false)]
+        public natureOfConstruction[] natureOfConstructionList => [(natureOfConstruction)6, (natureOfConstruction)7, (natureOfConstruction)8, (natureOfConstruction)11];
+
+        [Browsable(false)]
+        public status[] statusList => [(status)1, (status)2, (status)5, (status)7, (status)8, (status)18];
 
         public void Load(DomainModel.S101.FeatureTypes.LateralBuoy instance) {
             buoyShape = instance.buoyShape;
@@ -37748,6 +40003,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
     [CategoryOrder("FeatureBindings", 200)]
     public partial class CardinalBuoyViewModel : ViewModelBase {
         private buoyShape _buoyShape;
+        [DomainModel.EnumerationAttribute(nameof(buoyShapeList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("CardinalBuoy")]
         public buoyShape buoyShape {
             get {
@@ -37760,6 +40017,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
         }
 
         private categoryOfCardinalMark _categoryOfCardinalMark;
+        [DomainModel.EnumerationAttribute(nameof(categoryOfCardinalMarkList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("CardinalBuoy")]
         public categoryOfCardinalMark categoryOfCardinalMark {
             get {
@@ -37771,10 +40030,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
             }
         }
 
+        [DomainModel.EnumerationAttribute(nameof(colourList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("CardinalBuoy")]
         public ObservableCollection<colour> colour { get; set; } = new();
 
         private colourPattern? _colourPattern = default;
+        [DomainModel.EnumerationAttribute(nameof(colourPatternList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("CardinalBuoy")]
         public colourPattern? colourPattern {
             get {
@@ -37815,6 +40078,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
         }
 
         private marksNavigationalSystemOf? _marksNavigationalSystemOf = default;
+        [DomainModel.EnumerationAttribute(nameof(marksNavigationalSystemOfList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("CardinalBuoy")]
         public marksNavigationalSystemOf? marksNavigationalSystemOf {
             get {
@@ -37826,6 +40091,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
             }
         }
 
+        [DomainModel.EnumerationAttribute(nameof(natureOfConstructionList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("CardinalBuoy")]
         public ObservableCollection<natureOfConstruction> natureOfConstruction { get; set; } = new();
 
@@ -37844,6 +40111,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
             }
         }
 
+        [DomainModel.EnumerationAttribute(nameof(statusList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("CardinalBuoy")]
         public ObservableCollection<status> status { get; set; } = new();
 
@@ -37902,6 +40171,27 @@ namespace S100Framework.WPF.ViewModel.S101 {
         public class CardinalBuoyRefIdViewModel : FeatureRefIdViewModel {
             public override string[] AssociationTypes => ["CardinalBuoy"];
         }
+
+        [Browsable(false)]
+        public buoyShape[] buoyShapeList => [(buoyShape)1, (buoyShape)2, (buoyShape)3, (buoyShape)4, (buoyShape)5, (buoyShape)6, (buoyShape)7, (buoyShape)8];
+
+        [Browsable(false)]
+        public categoryOfCardinalMark[] categoryOfCardinalMarkList => [(categoryOfCardinalMark)1, (categoryOfCardinalMark)2, (categoryOfCardinalMark)3, (categoryOfCardinalMark)4];
+
+        [Browsable(false)]
+        public colour[] colourList => [(colour)1, (colour)2, (colour)3, (colour)4, (colour)5, (colour)6, (colour)7, (colour)8, (colour)9, (colour)10, (colour)11, (colour)12, (colour)13];
+
+        [Browsable(false)]
+        public colourPattern[] colourPatternList => [(colourPattern)1, (colourPattern)2, (colourPattern)3, (colourPattern)4, (colourPattern)5, (colourPattern)6];
+
+        [Browsable(false)]
+        public marksNavigationalSystemOf[] marksNavigationalSystemOfList => [(marksNavigationalSystemOf)1, (marksNavigationalSystemOf)2, (marksNavigationalSystemOf)9, (marksNavigationalSystemOf)11];
+
+        [Browsable(false)]
+        public natureOfConstruction[] natureOfConstructionList => [(natureOfConstruction)6, (natureOfConstruction)7, (natureOfConstruction)8, (natureOfConstruction)11];
+
+        [Browsable(false)]
+        public status[] statusList => [(status)1, (status)2, (status)5, (status)7, (status)8, (status)18];
 
         public void Load(DomainModel.S101.FeatureTypes.CardinalBuoy instance) {
             buoyShape = instance.buoyShape;
@@ -38026,6 +40316,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
     [CategoryOrder("FeatureBindings", 200)]
     public partial class IsolatedDangerBuoyViewModel : ViewModelBase {
         private buoyShape _buoyShape;
+        [DomainModel.EnumerationAttribute(nameof(buoyShapeList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("IsolatedDangerBuoy")]
         public buoyShape buoyShape {
             get {
@@ -38037,10 +40329,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
             }
         }
 
+        [DomainModel.EnumerationAttribute(nameof(colourList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("IsolatedDangerBuoy")]
         public ObservableCollection<colour> colour { get; set; } = new();
 
         private colourPattern? _colourPattern = default;
+        [DomainModel.EnumerationAttribute(nameof(colourPatternList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("IsolatedDangerBuoy")]
         public colourPattern? colourPattern {
             get {
@@ -38081,6 +40377,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
         }
 
         private marksNavigationalSystemOf? _marksNavigationalSystemOf = default;
+        [DomainModel.EnumerationAttribute(nameof(marksNavigationalSystemOfList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("IsolatedDangerBuoy")]
         public marksNavigationalSystemOf? marksNavigationalSystemOf {
             get {
@@ -38092,6 +40390,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
             }
         }
 
+        [DomainModel.EnumerationAttribute(nameof(natureOfConstructionList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("IsolatedDangerBuoy")]
         public ObservableCollection<natureOfConstruction> natureOfConstruction { get; set; } = new();
 
@@ -38110,6 +40410,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
             }
         }
 
+        [DomainModel.EnumerationAttribute(nameof(statusList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("IsolatedDangerBuoy")]
         public ObservableCollection<status> status { get; set; } = new();
 
@@ -38168,6 +40470,24 @@ namespace S100Framework.WPF.ViewModel.S101 {
         public class IsolatedDangerBuoyRefIdViewModel : FeatureRefIdViewModel {
             public override string[] AssociationTypes => ["IsolatedDangerBuoy"];
         }
+
+        [Browsable(false)]
+        public buoyShape[] buoyShapeList => [(buoyShape)1, (buoyShape)2, (buoyShape)3, (buoyShape)4, (buoyShape)5, (buoyShape)6, (buoyShape)7, (buoyShape)8];
+
+        [Browsable(false)]
+        public colour[] colourList => [(colour)1, (colour)2, (colour)3, (colour)4, (colour)5, (colour)6, (colour)7, (colour)8, (colour)9, (colour)10, (colour)11, (colour)12, (colour)13];
+
+        [Browsable(false)]
+        public colourPattern[] colourPatternList => [(colourPattern)1, (colourPattern)2, (colourPattern)3, (colourPattern)4, (colourPattern)5, (colourPattern)6];
+
+        [Browsable(false)]
+        public marksNavigationalSystemOf[] marksNavigationalSystemOfList => [(marksNavigationalSystemOf)1, (marksNavigationalSystemOf)2, (marksNavigationalSystemOf)9, (marksNavigationalSystemOf)11];
+
+        [Browsable(false)]
+        public natureOfConstruction[] natureOfConstructionList => [(natureOfConstruction)6, (natureOfConstruction)7, (natureOfConstruction)8, (natureOfConstruction)11];
+
+        [Browsable(false)]
+        public status[] statusList => [(status)1, (status)2, (status)5, (status)7, (status)8, (status)18];
 
         public void Load(DomainModel.S101.FeatureTypes.IsolatedDangerBuoy instance) {
             buoyShape = instance.buoyShape;
@@ -38289,6 +40609,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
     [CategoryOrder("FeatureBindings", 200)]
     public partial class SafeWaterBuoyViewModel : ViewModelBase {
         private buoyShape _buoyShape;
+        [DomainModel.EnumerationAttribute(nameof(buoyShapeList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("SafeWaterBuoy")]
         public buoyShape buoyShape {
             get {
@@ -38300,10 +40622,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
             }
         }
 
+        [DomainModel.EnumerationAttribute(nameof(colourList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("SafeWaterBuoy")]
         public ObservableCollection<colour> colour { get; set; } = new();
 
         private colourPattern? _colourPattern = default;
+        [DomainModel.EnumerationAttribute(nameof(colourPatternList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("SafeWaterBuoy")]
         public colourPattern? colourPattern {
             get {
@@ -38344,6 +40670,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
         }
 
         private marksNavigationalSystemOf? _marksNavigationalSystemOf = default;
+        [DomainModel.EnumerationAttribute(nameof(marksNavigationalSystemOfList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("SafeWaterBuoy")]
         public marksNavigationalSystemOf? marksNavigationalSystemOf {
             get {
@@ -38355,6 +40683,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
             }
         }
 
+        [DomainModel.EnumerationAttribute(nameof(natureOfConstructionList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("SafeWaterBuoy")]
         public ObservableCollection<natureOfConstruction> natureOfConstruction { get; set; } = new();
 
@@ -38373,6 +40703,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
             }
         }
 
+        [DomainModel.EnumerationAttribute(nameof(statusList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("SafeWaterBuoy")]
         public ObservableCollection<status> status { get; set; } = new();
 
@@ -38431,6 +40763,24 @@ namespace S100Framework.WPF.ViewModel.S101 {
         public class SafeWaterBuoyRefIdViewModel : FeatureRefIdViewModel {
             public override string[] AssociationTypes => ["SafeWaterBuoy"];
         }
+
+        [Browsable(false)]
+        public buoyShape[] buoyShapeList => [(buoyShape)1, (buoyShape)2, (buoyShape)3, (buoyShape)4, (buoyShape)5, (buoyShape)6, (buoyShape)7, (buoyShape)8];
+
+        [Browsable(false)]
+        public colour[] colourList => [(colour)1, (colour)2, (colour)3, (colour)4, (colour)5, (colour)6, (colour)7, (colour)8, (colour)9, (colour)10, (colour)11, (colour)12, (colour)13];
+
+        [Browsable(false)]
+        public colourPattern[] colourPatternList => [(colourPattern)1, (colourPattern)2, (colourPattern)3, (colourPattern)4, (colourPattern)5, (colourPattern)6];
+
+        [Browsable(false)]
+        public marksNavigationalSystemOf[] marksNavigationalSystemOfList => [(marksNavigationalSystemOf)1, (marksNavigationalSystemOf)2, (marksNavigationalSystemOf)9, (marksNavigationalSystemOf)11];
+
+        [Browsable(false)]
+        public natureOfConstruction[] natureOfConstructionList => [(natureOfConstruction)6, (natureOfConstruction)7, (natureOfConstruction)8, (natureOfConstruction)11];
+
+        [Browsable(false)]
+        public status[] statusList => [(status)1, (status)2, (status)5, (status)7, (status)8, (status)18];
 
         public void Load(DomainModel.S101.FeatureTypes.SafeWaterBuoy instance) {
             buoyShape = instance.buoyShape;
@@ -38552,6 +40902,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
     [CategoryOrder("FeatureBindings", 200)]
     public partial class SpecialPurposeGeneralBuoyViewModel : ViewModelBase {
         private buoyShape _buoyShape;
+        [DomainModel.EnumerationAttribute(nameof(buoyShapeList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("SpecialPurposeGeneralBuoy")]
         public buoyShape buoyShape {
             get {
@@ -38563,13 +40915,19 @@ namespace S100Framework.WPF.ViewModel.S101 {
             }
         }
 
+        [DomainModel.EnumerationAttribute(nameof(categoryOfSpecialPurposeMarkList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("SpecialPurposeGeneralBuoy")]
         public ObservableCollection<categoryOfSpecialPurposeMark> categoryOfSpecialPurposeMark { get; set; } = new();
 
+        [DomainModel.EnumerationAttribute(nameof(colourList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("SpecialPurposeGeneralBuoy")]
         public ObservableCollection<colour> colour { get; set; } = new();
 
         private colourPattern? _colourPattern = default;
+        [DomainModel.EnumerationAttribute(nameof(colourPatternList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("SpecialPurposeGeneralBuoy")]
         public colourPattern? colourPattern {
             get {
@@ -38610,6 +40968,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
         }
 
         private marksNavigationalSystemOf? _marksNavigationalSystemOf = default;
+        [DomainModel.EnumerationAttribute(nameof(marksNavigationalSystemOfList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("SpecialPurposeGeneralBuoy")]
         public marksNavigationalSystemOf? marksNavigationalSystemOf {
             get {
@@ -38621,6 +40981,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
             }
         }
 
+        [DomainModel.EnumerationAttribute(nameof(natureOfConstructionList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("SpecialPurposeGeneralBuoy")]
         public ObservableCollection<natureOfConstruction> natureOfConstruction { get; set; } = new();
 
@@ -38639,6 +41001,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
             }
         }
 
+        [DomainModel.EnumerationAttribute(nameof(statusList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("SpecialPurposeGeneralBuoy")]
         public ObservableCollection<status> status { get; set; } = new();
 
@@ -38697,6 +41061,27 @@ namespace S100Framework.WPF.ViewModel.S101 {
         public class SpecialPurposeGeneralBuoyRefIdViewModel : FeatureRefIdViewModel {
             public override string[] AssociationTypes => ["SpecialPurposeGeneralBuoy"];
         }
+
+        [Browsable(false)]
+        public buoyShape[] buoyShapeList => [(buoyShape)1, (buoyShape)2, (buoyShape)3, (buoyShape)4, (buoyShape)5, (buoyShape)6, (buoyShape)7, (buoyShape)8];
+
+        [Browsable(false)]
+        public categoryOfSpecialPurposeMark[] categoryOfSpecialPurposeMarkList => [(categoryOfSpecialPurposeMark)1, (categoryOfSpecialPurposeMark)2, (categoryOfSpecialPurposeMark)3, (categoryOfSpecialPurposeMark)4, (categoryOfSpecialPurposeMark)5, (categoryOfSpecialPurposeMark)6, (categoryOfSpecialPurposeMark)7, (categoryOfSpecialPurposeMark)8, (categoryOfSpecialPurposeMark)9, (categoryOfSpecialPurposeMark)10, (categoryOfSpecialPurposeMark)11, (categoryOfSpecialPurposeMark)12, (categoryOfSpecialPurposeMark)14, (categoryOfSpecialPurposeMark)15, (categoryOfSpecialPurposeMark)17, (categoryOfSpecialPurposeMark)18, (categoryOfSpecialPurposeMark)19, (categoryOfSpecialPurposeMark)20, (categoryOfSpecialPurposeMark)21, (categoryOfSpecialPurposeMark)22, (categoryOfSpecialPurposeMark)23, (categoryOfSpecialPurposeMark)24, (categoryOfSpecialPurposeMark)25, (categoryOfSpecialPurposeMark)26, (categoryOfSpecialPurposeMark)27, (categoryOfSpecialPurposeMark)28, (categoryOfSpecialPurposeMark)29, (categoryOfSpecialPurposeMark)30, (categoryOfSpecialPurposeMark)31, (categoryOfSpecialPurposeMark)32, (categoryOfSpecialPurposeMark)33, (categoryOfSpecialPurposeMark)34, (categoryOfSpecialPurposeMark)35, (categoryOfSpecialPurposeMark)36, (categoryOfSpecialPurposeMark)37, (categoryOfSpecialPurposeMark)39, (categoryOfSpecialPurposeMark)40, (categoryOfSpecialPurposeMark)42, (categoryOfSpecialPurposeMark)43, (categoryOfSpecialPurposeMark)45, (categoryOfSpecialPurposeMark)46, (categoryOfSpecialPurposeMark)47, (categoryOfSpecialPurposeMark)48, (categoryOfSpecialPurposeMark)49, (categoryOfSpecialPurposeMark)50, (categoryOfSpecialPurposeMark)51, (categoryOfSpecialPurposeMark)52, (categoryOfSpecialPurposeMark)53, (categoryOfSpecialPurposeMark)54, (categoryOfSpecialPurposeMark)55, (categoryOfSpecialPurposeMark)56, (categoryOfSpecialPurposeMark)57, (categoryOfSpecialPurposeMark)58, (categoryOfSpecialPurposeMark)59, (categoryOfSpecialPurposeMark)60, (categoryOfSpecialPurposeMark)61, (categoryOfSpecialPurposeMark)62, (categoryOfSpecialPurposeMark)63];
+
+        [Browsable(false)]
+        public colour[] colourList => [(colour)1, (colour)2, (colour)3, (colour)4, (colour)5, (colour)6, (colour)7, (colour)8, (colour)9, (colour)10, (colour)11, (colour)12, (colour)13];
+
+        [Browsable(false)]
+        public colourPattern[] colourPatternList => [(colourPattern)1, (colourPattern)2, (colourPattern)3, (colourPattern)4, (colourPattern)5, (colourPattern)6];
+
+        [Browsable(false)]
+        public marksNavigationalSystemOf[] marksNavigationalSystemOfList => [(marksNavigationalSystemOf)1, (marksNavigationalSystemOf)2, (marksNavigationalSystemOf)9, (marksNavigationalSystemOf)11];
+
+        [Browsable(false)]
+        public natureOfConstruction[] natureOfConstructionList => [(natureOfConstruction)6, (natureOfConstruction)7, (natureOfConstruction)8, (natureOfConstruction)11];
+
+        [Browsable(false)]
+        public status[] statusList => [(status)1, (status)2, (status)5, (status)7, (status)8, (status)18];
 
         public void Load(DomainModel.S101.FeatureTypes.SpecialPurposeGeneralBuoy instance) {
             buoyShape = instance.buoyShape;
@@ -38827,6 +41212,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
     [CategoryOrder("FeatureBindings", 200)]
     public partial class EmergencyWreckMarkingBuoyViewModel : ViewModelBase {
         private buoyShape _buoyShape;
+        [DomainModel.EnumerationAttribute(nameof(buoyShapeList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("EmergencyWreckMarkingBuoy")]
         public buoyShape buoyShape {
             get {
@@ -38838,10 +41225,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
             }
         }
 
+        [DomainModel.EnumerationAttribute(nameof(colourList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("EmergencyWreckMarkingBuoy")]
         public ObservableCollection<colour> colour { get; set; } = new();
 
         private colourPattern? _colourPattern = default;
+        [DomainModel.EnumerationAttribute(nameof(colourPatternList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("EmergencyWreckMarkingBuoy")]
         public colourPattern? colourPattern {
             get {
@@ -38882,6 +41273,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
         }
 
         private marksNavigationalSystemOf? _marksNavigationalSystemOf = default;
+        [DomainModel.EnumerationAttribute(nameof(marksNavigationalSystemOfList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("EmergencyWreckMarkingBuoy")]
         public marksNavigationalSystemOf? marksNavigationalSystemOf {
             get {
@@ -38893,6 +41286,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
             }
         }
 
+        [DomainModel.EnumerationAttribute(nameof(natureOfConstructionList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("EmergencyWreckMarkingBuoy")]
         public ObservableCollection<natureOfConstruction> natureOfConstruction { get; set; } = new();
 
@@ -38963,6 +41358,21 @@ namespace S100Framework.WPF.ViewModel.S101 {
         public class EmergencyWreckMarkingBuoyRefIdViewModel : FeatureRefIdViewModel {
             public override string[] AssociationTypes => ["EmergencyWreckMarkingBuoy"];
         }
+
+        [Browsable(false)]
+        public buoyShape[] buoyShapeList => [(buoyShape)1, (buoyShape)2, (buoyShape)3, (buoyShape)4, (buoyShape)5, (buoyShape)6];
+
+        [Browsable(false)]
+        public colour[] colourList => [(colour)1, (colour)2, (colour)3, (colour)4, (colour)5, (colour)6, (colour)7, (colour)8, (colour)9, (colour)10, (colour)11, (colour)12, (colour)13];
+
+        [Browsable(false)]
+        public colourPattern[] colourPatternList => [(colourPattern)1, (colourPattern)2, (colourPattern)3, (colourPattern)4, (colourPattern)5, (colourPattern)6];
+
+        [Browsable(false)]
+        public marksNavigationalSystemOf[] marksNavigationalSystemOfList => [(marksNavigationalSystemOf)1, (marksNavigationalSystemOf)2, (marksNavigationalSystemOf)9, (marksNavigationalSystemOf)11];
+
+        [Browsable(false)]
+        public natureOfConstruction[] natureOfConstructionList => [(natureOfConstruction)6, (natureOfConstruction)7, (natureOfConstruction)8, (natureOfConstruction)11];
 
         public void Load(DomainModel.S101.FeatureTypes.EmergencyWreckMarkingBuoy instance) {
             buoyShape = instance.buoyShape;
@@ -39066,6 +41476,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
     [CategoryOrder("FeatureBindings", 200)]
     public partial class InstallationBuoyViewModel : ViewModelBase {
         private buoyShape _buoyShape;
+        [DomainModel.EnumerationAttribute(nameof(buoyShapeList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("InstallationBuoy")]
         public buoyShape buoyShape {
             get {
@@ -39078,6 +41490,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
         }
 
         private categoryOfInstallationBuoy? _categoryOfInstallationBuoy = default;
+        [DomainModel.EnumerationAttribute(nameof(categoryOfInstallationBuoyList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("InstallationBuoy")]
         public categoryOfInstallationBuoy? categoryOfInstallationBuoy {
             get {
@@ -39089,10 +41503,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
             }
         }
 
+        [DomainModel.EnumerationAttribute(nameof(colourList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("InstallationBuoy")]
         public ObservableCollection<colour> colour { get; set; } = new();
 
         private colourPattern? _colourPattern = default;
+        [DomainModel.EnumerationAttribute(nameof(colourPatternList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("InstallationBuoy")]
         public colourPattern? colourPattern {
             get {
@@ -39132,12 +41550,16 @@ namespace S100Framework.WPF.ViewModel.S101 {
             }
         }
 
+        [DomainModel.EnumerationAttribute(nameof(natureOfConstructionList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("InstallationBuoy")]
         public ObservableCollection<natureOfConstruction> natureOfConstruction { get; set; } = new();
 
         [Category("InstallationBuoy")]
         public ObservableCollection<periodicDateRange> periodicDateRange { get; set; } = new();
 
+        [DomainModel.EnumerationAttribute(nameof(productList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("InstallationBuoy")]
         public ObservableCollection<product> product { get; set; } = new();
 
@@ -39153,10 +41575,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
             }
         }
 
+        [DomainModel.EnumerationAttribute(nameof(statusList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("InstallationBuoy")]
         public ObservableCollection<status> status { get; set; } = new();
 
         private visualProminence? _visualProminence = default;
+        [DomainModel.EnumerationAttribute(nameof(visualProminenceList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("InstallationBuoy")]
         public visualProminence? visualProminence {
             get {
@@ -39198,6 +41624,30 @@ namespace S100Framework.WPF.ViewModel.S101 {
         public class InstallationBuoyRefIdViewModel : FeatureRefIdViewModel {
             public override string[] AssociationTypes => ["InstallationBuoy"];
         }
+
+        [Browsable(false)]
+        public buoyShape[] buoyShapeList => [(buoyShape)1, (buoyShape)2, (buoyShape)3, (buoyShape)4, (buoyShape)5, (buoyShape)6, (buoyShape)7, (buoyShape)8];
+
+        [Browsable(false)]
+        public categoryOfInstallationBuoy[] categoryOfInstallationBuoyList => [(categoryOfInstallationBuoy)1, (categoryOfInstallationBuoy)2];
+
+        [Browsable(false)]
+        public colour[] colourList => [(colour)1, (colour)2, (colour)3, (colour)4, (colour)5, (colour)6, (colour)7, (colour)8, (colour)9, (colour)10, (colour)11, (colour)12, (colour)13];
+
+        [Browsable(false)]
+        public colourPattern[] colourPatternList => [(colourPattern)1, (colourPattern)2, (colourPattern)3, (colourPattern)4, (colourPattern)5, (colourPattern)6];
+
+        [Browsable(false)]
+        public natureOfConstruction[] natureOfConstructionList => [(natureOfConstruction)7, (natureOfConstruction)11];
+
+        [Browsable(false)]
+        public product[] productList => [(product)1, (product)2, (product)18, (product)19];
+
+        [Browsable(false)]
+        public status[] statusList => [(status)1, (status)2, (status)4, (status)5, (status)7, (status)8, (status)18];
+
+        [Browsable(false)]
+        public visualProminence[] visualProminenceList => [(visualProminence)1, (visualProminence)2, (visualProminence)3];
 
         public void Load(DomainModel.S101.FeatureTypes.InstallationBuoy instance) {
             buoyShape = instance.buoyShape;
@@ -39320,6 +41770,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
     [CategoryOrder("FeatureBindings", 200)]
     public partial class MooringBuoyViewModel : ViewModelBase {
         private buoyShape _buoyShape;
+        [DomainModel.EnumerationAttribute(nameof(buoyShapeList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("MooringBuoy")]
         public buoyShape buoyShape {
             get {
@@ -39331,10 +41783,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
             }
         }
 
+        [DomainModel.EnumerationAttribute(nameof(colourList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("MooringBuoy")]
         public ObservableCollection<colour> colour { get; set; } = new();
 
         private colourPattern? _colourPattern = default;
+        [DomainModel.EnumerationAttribute(nameof(colourPatternList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("MooringBuoy")]
         public colourPattern? colourPattern {
             get {
@@ -39398,12 +41854,16 @@ namespace S100Framework.WPF.ViewModel.S101 {
             }
         }
 
+        [DomainModel.EnumerationAttribute(nameof(natureOfConstructionList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("MooringBuoy")]
         public ObservableCollection<natureOfConstruction> natureOfConstruction { get; set; } = new();
 
         [Category("MooringBuoy")]
         public ObservableCollection<periodicDateRange> periodicDateRange { get; set; } = new();
 
+        [DomainModel.EnumerationAttribute(nameof(statusList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("MooringBuoy")]
         public ObservableCollection<status> status { get; set; } = new();
 
@@ -39461,6 +41921,21 @@ namespace S100Framework.WPF.ViewModel.S101 {
         public class MooringBuoyRefIdViewModel : FeatureRefIdViewModel {
             public override string[] AssociationTypes => ["MooringBuoy"];
         }
+
+        [Browsable(false)]
+        public buoyShape[] buoyShapeList => [(buoyShape)1, (buoyShape)2, (buoyShape)3, (buoyShape)4, (buoyShape)5, (buoyShape)6, (buoyShape)7, (buoyShape)8];
+
+        [Browsable(false)]
+        public colour[] colourList => [(colour)1, (colour)2, (colour)3, (colour)4, (colour)5, (colour)6, (colour)7, (colour)8, (colour)9, (colour)10, (colour)11, (colour)12, (colour)13];
+
+        [Browsable(false)]
+        public colourPattern[] colourPatternList => [(colourPattern)1, (colourPattern)2, (colourPattern)3, (colourPattern)4, (colourPattern)5, (colourPattern)6];
+
+        [Browsable(false)]
+        public natureOfConstruction[] natureOfConstructionList => [(natureOfConstruction)7, (natureOfConstruction)8, (natureOfConstruction)11];
+
+        [Browsable(false)]
+        public status[] statusList => [(status)1, (status)2, (status)4, (status)5, (status)7, (status)8, (status)18];
 
         public void Load(DomainModel.S101.FeatureTypes.MooringBuoy instance) {
             buoyShape = instance.buoyShape;
@@ -39577,6 +42052,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
     [CategoryOrder("FeatureBindings", 200)]
     public partial class LateralBeaconViewModel : ViewModelBase {
         private beaconShape _beaconShape;
+        [DomainModel.EnumerationAttribute(nameof(beaconShapeList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("LateralBeacon")]
         public beaconShape beaconShape {
             get {
@@ -39589,6 +42066,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
         }
 
         private categoryOfLateralMark _categoryOfLateralMark;
+        [DomainModel.EnumerationAttribute(nameof(categoryOfLateralMarkList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("LateralBeacon")]
         public categoryOfLateralMark categoryOfLateralMark {
             get {
@@ -39600,10 +42079,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
             }
         }
 
+        [DomainModel.EnumerationAttribute(nameof(colourList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("LateralBeacon")]
         public ObservableCollection<colour> colour { get; set; } = new();
 
         private colourPattern? _colourPattern = default;
+        [DomainModel.EnumerationAttribute(nameof(colourPatternList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("LateralBeacon")]
         public colourPattern? colourPattern {
             get {
@@ -39616,6 +42099,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
         }
 
         private condition? _condition = default;
+        [DomainModel.EnumerationAttribute(nameof(conditionList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("LateralBeacon")]
         public condition? condition {
             get {
@@ -39680,6 +42165,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
         }
 
         private marksNavigationalSystemOf? _marksNavigationalSystemOf = default;
+        [DomainModel.EnumerationAttribute(nameof(marksNavigationalSystemOfList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("LateralBeacon")]
         public marksNavigationalSystemOf? marksNavigationalSystemOf {
             get {
@@ -39691,6 +42178,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
             }
         }
 
+        [DomainModel.EnumerationAttribute(nameof(natureOfConstructionList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("LateralBeacon")]
         public ObservableCollection<natureOfConstruction> natureOfConstruction { get; set; } = new();
 
@@ -39721,6 +42210,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
             }
         }
 
+        [DomainModel.EnumerationAttribute(nameof(statusList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("LateralBeacon")]
         public ObservableCollection<status> status { get; set; } = new();
 
@@ -39750,6 +42241,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
         }
 
         private visualProminence? _visualProminence = default;
+        [DomainModel.EnumerationAttribute(nameof(visualProminenceList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("LateralBeacon")]
         public visualProminence? visualProminence {
             get {
@@ -39791,6 +42284,33 @@ namespace S100Framework.WPF.ViewModel.S101 {
         public class LateralBeaconRefIdViewModel : FeatureRefIdViewModel {
             public override string[] AssociationTypes => ["LateralBeacon"];
         }
+
+        [Browsable(false)]
+        public beaconShape[] beaconShapeList => [(beaconShape)1, (beaconShape)2, (beaconShape)3, (beaconShape)4, (beaconShape)5, (beaconShape)6, (beaconShape)7];
+
+        [Browsable(false)]
+        public categoryOfLateralMark[] categoryOfLateralMarkList => [(categoryOfLateralMark)1, (categoryOfLateralMark)2, (categoryOfLateralMark)3, (categoryOfLateralMark)4];
+
+        [Browsable(false)]
+        public colour[] colourList => [(colour)1, (colour)2, (colour)3, (colour)4, (colour)5, (colour)6, (colour)7, (colour)8, (colour)9, (colour)10, (colour)11, (colour)12, (colour)13];
+
+        [Browsable(false)]
+        public colourPattern[] colourPatternList => [(colourPattern)1, (colourPattern)2, (colourPattern)3, (colourPattern)4, (colourPattern)5, (colourPattern)6];
+
+        [Browsable(false)]
+        public condition[] conditionList => [(condition)1, (condition)2, (condition)5];
+
+        [Browsable(false)]
+        public marksNavigationalSystemOf[] marksNavigationalSystemOfList => [(marksNavigationalSystemOf)1, (marksNavigationalSystemOf)2, (marksNavigationalSystemOf)9, (marksNavigationalSystemOf)11];
+
+        [Browsable(false)]
+        public natureOfConstruction[] natureOfConstructionList => [(natureOfConstruction)1, (natureOfConstruction)2, (natureOfConstruction)6, (natureOfConstruction)7, (natureOfConstruction)8];
+
+        [Browsable(false)]
+        public status[] statusList => [(status)1, (status)2, (status)4, (status)5, (status)7, (status)8, (status)12, (status)18];
+
+        [Browsable(false)]
+        public visualProminence[] visualProminenceList => [(visualProminence)1, (visualProminence)2, (visualProminence)3];
 
         public void Load(DomainModel.S101.FeatureTypes.LateralBeacon instance) {
             beaconShape = instance.beaconShape;
@@ -39930,6 +42450,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
     [CategoryOrder("FeatureBindings", 200)]
     public partial class CardinalBeaconViewModel : ViewModelBase {
         private beaconShape _beaconShape;
+        [DomainModel.EnumerationAttribute(nameof(beaconShapeList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("CardinalBeacon")]
         public beaconShape beaconShape {
             get {
@@ -39942,6 +42464,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
         }
 
         private categoryOfCardinalMark _categoryOfCardinalMark;
+        [DomainModel.EnumerationAttribute(nameof(categoryOfCardinalMarkList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("CardinalBeacon")]
         public categoryOfCardinalMark categoryOfCardinalMark {
             get {
@@ -39953,10 +42477,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
             }
         }
 
+        [DomainModel.EnumerationAttribute(nameof(colourList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("CardinalBeacon")]
         public ObservableCollection<colour> colour { get; set; } = new();
 
         private colourPattern? _colourPattern = default;
+        [DomainModel.EnumerationAttribute(nameof(colourPatternList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("CardinalBeacon")]
         public colourPattern? colourPattern {
             get {
@@ -39969,6 +42497,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
         }
 
         private condition? _condition = default;
+        [DomainModel.EnumerationAttribute(nameof(conditionList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("CardinalBeacon")]
         public condition? condition {
             get {
@@ -40033,6 +42563,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
         }
 
         private marksNavigationalSystemOf? _marksNavigationalSystemOf = default;
+        [DomainModel.EnumerationAttribute(nameof(marksNavigationalSystemOfList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("CardinalBeacon")]
         public marksNavigationalSystemOf? marksNavigationalSystemOf {
             get {
@@ -40044,6 +42576,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
             }
         }
 
+        [DomainModel.EnumerationAttribute(nameof(natureOfConstructionList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("CardinalBeacon")]
         public ObservableCollection<natureOfConstruction> natureOfConstruction { get; set; } = new();
 
@@ -40074,6 +42608,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
             }
         }
 
+        [DomainModel.EnumerationAttribute(nameof(statusList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("CardinalBeacon")]
         public ObservableCollection<status> status { get; set; } = new();
 
@@ -40103,6 +42639,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
         }
 
         private visualProminence? _visualProminence = default;
+        [DomainModel.EnumerationAttribute(nameof(visualProminenceList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("CardinalBeacon")]
         public visualProminence? visualProminence {
             get {
@@ -40144,6 +42682,33 @@ namespace S100Framework.WPF.ViewModel.S101 {
         public class CardinalBeaconRefIdViewModel : FeatureRefIdViewModel {
             public override string[] AssociationTypes => ["CardinalBeacon"];
         }
+
+        [Browsable(false)]
+        public beaconShape[] beaconShapeList => [(beaconShape)1, (beaconShape)2, (beaconShape)3, (beaconShape)4, (beaconShape)5, (beaconShape)6, (beaconShape)7];
+
+        [Browsable(false)]
+        public categoryOfCardinalMark[] categoryOfCardinalMarkList => [(categoryOfCardinalMark)1, (categoryOfCardinalMark)2, (categoryOfCardinalMark)3, (categoryOfCardinalMark)4];
+
+        [Browsable(false)]
+        public colour[] colourList => [(colour)1, (colour)2, (colour)3, (colour)4, (colour)5, (colour)6, (colour)7, (colour)8, (colour)9, (colour)10, (colour)11, (colour)12, (colour)13];
+
+        [Browsable(false)]
+        public colourPattern[] colourPatternList => [(colourPattern)1, (colourPattern)2, (colourPattern)3, (colourPattern)4, (colourPattern)5, (colourPattern)6];
+
+        [Browsable(false)]
+        public condition[] conditionList => [(condition)1, (condition)2, (condition)5];
+
+        [Browsable(false)]
+        public marksNavigationalSystemOf[] marksNavigationalSystemOfList => [(marksNavigationalSystemOf)1, (marksNavigationalSystemOf)2, (marksNavigationalSystemOf)9, (marksNavigationalSystemOf)11];
+
+        [Browsable(false)]
+        public natureOfConstruction[] natureOfConstructionList => [(natureOfConstruction)1, (natureOfConstruction)2, (natureOfConstruction)6, (natureOfConstruction)7, (natureOfConstruction)8];
+
+        [Browsable(false)]
+        public status[] statusList => [(status)1, (status)2, (status)4, (status)5, (status)7, (status)8, (status)12, (status)18];
+
+        [Browsable(false)]
+        public visualProminence[] visualProminenceList => [(visualProminence)1, (visualProminence)2, (visualProminence)3];
 
         public void Load(DomainModel.S101.FeatureTypes.CardinalBeacon instance) {
             beaconShape = instance.beaconShape;
@@ -40283,6 +42848,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
     [CategoryOrder("FeatureBindings", 200)]
     public partial class IsolatedDangerBeaconViewModel : ViewModelBase {
         private beaconShape _beaconShape;
+        [DomainModel.EnumerationAttribute(nameof(beaconShapeList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("IsolatedDangerBeacon")]
         public beaconShape beaconShape {
             get {
@@ -40294,10 +42861,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
             }
         }
 
+        [DomainModel.EnumerationAttribute(nameof(colourList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("IsolatedDangerBeacon")]
         public ObservableCollection<colour> colour { get; set; } = new();
 
         private colourPattern? _colourPattern = default;
+        [DomainModel.EnumerationAttribute(nameof(colourPatternList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("IsolatedDangerBeacon")]
         public colourPattern? colourPattern {
             get {
@@ -40310,6 +42881,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
         }
 
         private condition? _condition = default;
+        [DomainModel.EnumerationAttribute(nameof(conditionList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("IsolatedDangerBeacon")]
         public condition? condition {
             get {
@@ -40374,6 +42947,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
         }
 
         private marksNavigationalSystemOf? _marksNavigationalSystemOf = default;
+        [DomainModel.EnumerationAttribute(nameof(marksNavigationalSystemOfList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("IsolatedDangerBeacon")]
         public marksNavigationalSystemOf? marksNavigationalSystemOf {
             get {
@@ -40385,6 +42960,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
             }
         }
 
+        [DomainModel.EnumerationAttribute(nameof(natureOfConstructionList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("IsolatedDangerBeacon")]
         public ObservableCollection<natureOfConstruction> natureOfConstruction { get; set; } = new();
 
@@ -40415,6 +42992,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
             }
         }
 
+        [DomainModel.EnumerationAttribute(nameof(statusList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("IsolatedDangerBeacon")]
         public ObservableCollection<status> status { get; set; } = new();
 
@@ -40444,6 +43023,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
         }
 
         private visualProminence? _visualProminence = default;
+        [DomainModel.EnumerationAttribute(nameof(visualProminenceList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("IsolatedDangerBeacon")]
         public visualProminence? visualProminence {
             get {
@@ -40485,6 +43066,30 @@ namespace S100Framework.WPF.ViewModel.S101 {
         public class IsolatedDangerBeaconRefIdViewModel : FeatureRefIdViewModel {
             public override string[] AssociationTypes => ["IsolatedDangerBeacon"];
         }
+
+        [Browsable(false)]
+        public beaconShape[] beaconShapeList => [(beaconShape)1, (beaconShape)2, (beaconShape)3, (beaconShape)4, (beaconShape)5, (beaconShape)6, (beaconShape)7];
+
+        [Browsable(false)]
+        public colour[] colourList => [(colour)1, (colour)2, (colour)3, (colour)4, (colour)5, (colour)6, (colour)7, (colour)8, (colour)9, (colour)10, (colour)11, (colour)12, (colour)13];
+
+        [Browsable(false)]
+        public colourPattern[] colourPatternList => [(colourPattern)1, (colourPattern)2, (colourPattern)3, (colourPattern)4, (colourPattern)5, (colourPattern)6];
+
+        [Browsable(false)]
+        public condition[] conditionList => [(condition)1, (condition)2, (condition)5];
+
+        [Browsable(false)]
+        public marksNavigationalSystemOf[] marksNavigationalSystemOfList => [(marksNavigationalSystemOf)1, (marksNavigationalSystemOf)2, (marksNavigationalSystemOf)9, (marksNavigationalSystemOf)11];
+
+        [Browsable(false)]
+        public natureOfConstruction[] natureOfConstructionList => [(natureOfConstruction)1, (natureOfConstruction)2, (natureOfConstruction)6, (natureOfConstruction)7, (natureOfConstruction)8];
+
+        [Browsable(false)]
+        public status[] statusList => [(status)1, (status)2, (status)4, (status)5, (status)7, (status)8, (status)12, (status)18];
+
+        [Browsable(false)]
+        public visualProminence[] visualProminenceList => [(visualProminence)1, (visualProminence)2, (visualProminence)3];
 
         public void Load(DomainModel.S101.FeatureTypes.IsolatedDangerBeacon instance) {
             beaconShape = instance.beaconShape;
@@ -40621,6 +43226,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
     [CategoryOrder("FeatureBindings", 200)]
     public partial class SafeWaterBeaconViewModel : ViewModelBase {
         private beaconShape _beaconShape;
+        [DomainModel.EnumerationAttribute(nameof(beaconShapeList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("SafeWaterBeacon")]
         public beaconShape beaconShape {
             get {
@@ -40632,10 +43239,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
             }
         }
 
+        [DomainModel.EnumerationAttribute(nameof(colourList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("SafeWaterBeacon")]
         public ObservableCollection<colour> colour { get; set; } = new();
 
         private colourPattern? _colourPattern = default;
+        [DomainModel.EnumerationAttribute(nameof(colourPatternList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("SafeWaterBeacon")]
         public colourPattern? colourPattern {
             get {
@@ -40648,6 +43259,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
         }
 
         private condition? _condition = default;
+        [DomainModel.EnumerationAttribute(nameof(conditionList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("SafeWaterBeacon")]
         public condition? condition {
             get {
@@ -40712,6 +43325,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
         }
 
         private marksNavigationalSystemOf? _marksNavigationalSystemOf = default;
+        [DomainModel.EnumerationAttribute(nameof(marksNavigationalSystemOfList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("SafeWaterBeacon")]
         public marksNavigationalSystemOf? marksNavigationalSystemOf {
             get {
@@ -40723,6 +43338,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
             }
         }
 
+        [DomainModel.EnumerationAttribute(nameof(natureOfConstructionList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("SafeWaterBeacon")]
         public ObservableCollection<natureOfConstruction> natureOfConstruction { get; set; } = new();
 
@@ -40753,6 +43370,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
             }
         }
 
+        [DomainModel.EnumerationAttribute(nameof(statusList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("SafeWaterBeacon")]
         public ObservableCollection<status> status { get; set; } = new();
 
@@ -40782,6 +43401,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
         }
 
         private visualProminence? _visualProminence = default;
+        [DomainModel.EnumerationAttribute(nameof(visualProminenceList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("SafeWaterBeacon")]
         public visualProminence? visualProminence {
             get {
@@ -40823,6 +43444,30 @@ namespace S100Framework.WPF.ViewModel.S101 {
         public class SafeWaterBeaconRefIdViewModel : FeatureRefIdViewModel {
             public override string[] AssociationTypes => ["SafeWaterBeacon"];
         }
+
+        [Browsable(false)]
+        public beaconShape[] beaconShapeList => [(beaconShape)1, (beaconShape)2, (beaconShape)3, (beaconShape)4, (beaconShape)5, (beaconShape)6, (beaconShape)7];
+
+        [Browsable(false)]
+        public colour[] colourList => [(colour)1, (colour)2, (colour)3, (colour)4, (colour)5, (colour)6, (colour)7, (colour)8, (colour)9, (colour)10, (colour)11, (colour)12, (colour)13];
+
+        [Browsable(false)]
+        public colourPattern[] colourPatternList => [(colourPattern)1, (colourPattern)2, (colourPattern)3, (colourPattern)4, (colourPattern)5, (colourPattern)6];
+
+        [Browsable(false)]
+        public condition[] conditionList => [(condition)1, (condition)2, (condition)5];
+
+        [Browsable(false)]
+        public marksNavigationalSystemOf[] marksNavigationalSystemOfList => [(marksNavigationalSystemOf)1, (marksNavigationalSystemOf)2, (marksNavigationalSystemOf)9, (marksNavigationalSystemOf)11];
+
+        [Browsable(false)]
+        public natureOfConstruction[] natureOfConstructionList => [(natureOfConstruction)1, (natureOfConstruction)2, (natureOfConstruction)6, (natureOfConstruction)7, (natureOfConstruction)8];
+
+        [Browsable(false)]
+        public status[] statusList => [(status)1, (status)2, (status)4, (status)5, (status)7, (status)8, (status)12, (status)18];
+
+        [Browsable(false)]
+        public visualProminence[] visualProminenceList => [(visualProminence)1, (visualProminence)2, (visualProminence)3];
 
         public void Load(DomainModel.S101.FeatureTypes.SafeWaterBeacon instance) {
             beaconShape = instance.beaconShape;
@@ -40959,6 +43604,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
     [CategoryOrder("FeatureBindings", 200)]
     public partial class SpecialPurposeGeneralBeaconViewModel : ViewModelBase {
         private beaconShape _beaconShape;
+        [DomainModel.EnumerationAttribute(nameof(beaconShapeList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("SpecialPurposeGeneralBeacon")]
         public beaconShape beaconShape {
             get {
@@ -40970,13 +43617,19 @@ namespace S100Framework.WPF.ViewModel.S101 {
             }
         }
 
+        [DomainModel.EnumerationAttribute(nameof(categoryOfSpecialPurposeMarkList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("SpecialPurposeGeneralBeacon")]
         public ObservableCollection<categoryOfSpecialPurposeMark> categoryOfSpecialPurposeMark { get; set; } = new();
 
+        [DomainModel.EnumerationAttribute(nameof(colourList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("SpecialPurposeGeneralBeacon")]
         public ObservableCollection<colour> colour { get; set; } = new();
 
         private colourPattern? _colourPattern = default;
+        [DomainModel.EnumerationAttribute(nameof(colourPatternList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("SpecialPurposeGeneralBeacon")]
         public colourPattern? colourPattern {
             get {
@@ -40989,6 +43642,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
         }
 
         private condition? _condition = default;
+        [DomainModel.EnumerationAttribute(nameof(conditionList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("SpecialPurposeGeneralBeacon")]
         public condition? condition {
             get {
@@ -41053,6 +43708,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
         }
 
         private marksNavigationalSystemOf? _marksNavigationalSystemOf = default;
+        [DomainModel.EnumerationAttribute(nameof(marksNavigationalSystemOfList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("SpecialPurposeGeneralBeacon")]
         public marksNavigationalSystemOf? marksNavigationalSystemOf {
             get {
@@ -41064,6 +43721,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
             }
         }
 
+        [DomainModel.EnumerationAttribute(nameof(natureOfConstructionList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("SpecialPurposeGeneralBeacon")]
         public ObservableCollection<natureOfConstruction> natureOfConstruction { get; set; } = new();
 
@@ -41094,6 +43753,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
             }
         }
 
+        [DomainModel.EnumerationAttribute(nameof(statusList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("SpecialPurposeGeneralBeacon")]
         public ObservableCollection<status> status { get; set; } = new();
 
@@ -41123,6 +43784,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
         }
 
         private visualProminence? _visualProminence = default;
+        [DomainModel.EnumerationAttribute(nameof(visualProminenceList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("SpecialPurposeGeneralBeacon")]
         public visualProminence? visualProminence {
             get {
@@ -41164,6 +43827,33 @@ namespace S100Framework.WPF.ViewModel.S101 {
         public class SpecialPurposeGeneralBeaconRefIdViewModel : FeatureRefIdViewModel {
             public override string[] AssociationTypes => ["SpecialPurposeGeneralBeacon"];
         }
+
+        [Browsable(false)]
+        public beaconShape[] beaconShapeList => [(beaconShape)1, (beaconShape)2, (beaconShape)3, (beaconShape)4, (beaconShape)5, (beaconShape)6, (beaconShape)7];
+
+        [Browsable(false)]
+        public categoryOfSpecialPurposeMark[] categoryOfSpecialPurposeMarkList => [(categoryOfSpecialPurposeMark)1, (categoryOfSpecialPurposeMark)2, (categoryOfSpecialPurposeMark)3, (categoryOfSpecialPurposeMark)4, (categoryOfSpecialPurposeMark)5, (categoryOfSpecialPurposeMark)6, (categoryOfSpecialPurposeMark)7, (categoryOfSpecialPurposeMark)8, (categoryOfSpecialPurposeMark)10, (categoryOfSpecialPurposeMark)11, (categoryOfSpecialPurposeMark)12, (categoryOfSpecialPurposeMark)14, (categoryOfSpecialPurposeMark)16, (categoryOfSpecialPurposeMark)17, (categoryOfSpecialPurposeMark)18, (categoryOfSpecialPurposeMark)19, (categoryOfSpecialPurposeMark)20, (categoryOfSpecialPurposeMark)21, (categoryOfSpecialPurposeMark)22, (categoryOfSpecialPurposeMark)23, (categoryOfSpecialPurposeMark)24, (categoryOfSpecialPurposeMark)25, (categoryOfSpecialPurposeMark)26, (categoryOfSpecialPurposeMark)27, (categoryOfSpecialPurposeMark)28, (categoryOfSpecialPurposeMark)29, (categoryOfSpecialPurposeMark)30, (categoryOfSpecialPurposeMark)31, (categoryOfSpecialPurposeMark)32, (categoryOfSpecialPurposeMark)33, (categoryOfSpecialPurposeMark)34, (categoryOfSpecialPurposeMark)35, (categoryOfSpecialPurposeMark)36, (categoryOfSpecialPurposeMark)37, (categoryOfSpecialPurposeMark)39, (categoryOfSpecialPurposeMark)40, (categoryOfSpecialPurposeMark)41, (categoryOfSpecialPurposeMark)42, (categoryOfSpecialPurposeMark)43, (categoryOfSpecialPurposeMark)44, (categoryOfSpecialPurposeMark)45, (categoryOfSpecialPurposeMark)46, (categoryOfSpecialPurposeMark)47, (categoryOfSpecialPurposeMark)48, (categoryOfSpecialPurposeMark)49, (categoryOfSpecialPurposeMark)50, (categoryOfSpecialPurposeMark)51, (categoryOfSpecialPurposeMark)52, (categoryOfSpecialPurposeMark)53, (categoryOfSpecialPurposeMark)54, (categoryOfSpecialPurposeMark)55, (categoryOfSpecialPurposeMark)56, (categoryOfSpecialPurposeMark)57, (categoryOfSpecialPurposeMark)58, (categoryOfSpecialPurposeMark)60, (categoryOfSpecialPurposeMark)61, (categoryOfSpecialPurposeMark)62, (categoryOfSpecialPurposeMark)63];
+
+        [Browsable(false)]
+        public colour[] colourList => [(colour)1, (colour)2, (colour)3, (colour)4, (colour)5, (colour)6, (colour)7, (colour)8, (colour)9, (colour)10, (colour)11, (colour)12, (colour)13];
+
+        [Browsable(false)]
+        public colourPattern[] colourPatternList => [(colourPattern)1, (colourPattern)2, (colourPattern)3, (colourPattern)4, (colourPattern)5, (colourPattern)6];
+
+        [Browsable(false)]
+        public condition[] conditionList => [(condition)1, (condition)2, (condition)5];
+
+        [Browsable(false)]
+        public marksNavigationalSystemOf[] marksNavigationalSystemOfList => [(marksNavigationalSystemOf)1, (marksNavigationalSystemOf)2, (marksNavigationalSystemOf)9, (marksNavigationalSystemOf)11];
+
+        [Browsable(false)]
+        public natureOfConstruction[] natureOfConstructionList => [(natureOfConstruction)1, (natureOfConstruction)2, (natureOfConstruction)6, (natureOfConstruction)7, (natureOfConstruction)8];
+
+        [Browsable(false)]
+        public status[] statusList => [(status)1, (status)2, (status)4, (status)5, (status)7, (status)8, (status)12, (status)18];
+
+        [Browsable(false)]
+        public visualProminence[] visualProminenceList => [(visualProminence)1, (visualProminence)2, (visualProminence)3];
 
         public void Load(DomainModel.S101.FeatureTypes.SpecialPurposeGeneralBeacon instance) {
             beaconShape = instance.beaconShape;
@@ -41308,13 +43998,19 @@ namespace S100Framework.WPF.ViewModel.S101 {
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class DaymarkViewModel : ViewModelBase {
+        [DomainModel.EnumerationAttribute(nameof(categoryOfSpecialPurposeMarkList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("Daymark")]
         public ObservableCollection<categoryOfSpecialPurposeMark> categoryOfSpecialPurposeMark { get; set; } = new();
 
+        [DomainModel.EnumerationAttribute(nameof(colourList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("Daymark")]
         public ObservableCollection<colour> colour { get; set; } = new();
 
         private colourPattern? _colourPattern = default;
+        [DomainModel.EnumerationAttribute(nameof(colourPatternList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("Daymark")]
         public colourPattern? colourPattern {
             get {
@@ -41378,6 +44074,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
             }
         }
 
+        [DomainModel.EnumerationAttribute(nameof(natureOfConstructionList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("Daymark")]
         public ObservableCollection<natureOfConstruction> natureOfConstruction { get; set; } = new();
 
@@ -41396,10 +44094,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
             }
         }
 
+        [DomainModel.EnumerationAttribute(nameof(statusList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("Daymark")]
         public ObservableCollection<status> status { get; set; } = new();
 
         private topmarkDaymarkShape _topmarkDaymarkShape;
+        [DomainModel.EnumerationAttribute(nameof(topmarkDaymarkShapeList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("Daymark")]
         public topmarkDaymarkShape topmarkDaymarkShape {
             get {
@@ -41456,6 +44158,24 @@ namespace S100Framework.WPF.ViewModel.S101 {
         public class DaymarkRefIdViewModel : FeatureRefIdViewModel {
             public override string[] AssociationTypes => ["Daymark"];
         }
+
+        [Browsable(false)]
+        public categoryOfSpecialPurposeMark[] categoryOfSpecialPurposeMarkList => [(categoryOfSpecialPurposeMark)1, (categoryOfSpecialPurposeMark)2, (categoryOfSpecialPurposeMark)3, (categoryOfSpecialPurposeMark)4, (categoryOfSpecialPurposeMark)5, (categoryOfSpecialPurposeMark)6, (categoryOfSpecialPurposeMark)7, (categoryOfSpecialPurposeMark)8, (categoryOfSpecialPurposeMark)10, (categoryOfSpecialPurposeMark)11, (categoryOfSpecialPurposeMark)12, (categoryOfSpecialPurposeMark)14, (categoryOfSpecialPurposeMark)15, (categoryOfSpecialPurposeMark)16, (categoryOfSpecialPurposeMark)17, (categoryOfSpecialPurposeMark)18, (categoryOfSpecialPurposeMark)19, (categoryOfSpecialPurposeMark)20, (categoryOfSpecialPurposeMark)21, (categoryOfSpecialPurposeMark)22, (categoryOfSpecialPurposeMark)23, (categoryOfSpecialPurposeMark)24, (categoryOfSpecialPurposeMark)25, (categoryOfSpecialPurposeMark)26, (categoryOfSpecialPurposeMark)27, (categoryOfSpecialPurposeMark)28, (categoryOfSpecialPurposeMark)29, (categoryOfSpecialPurposeMark)30, (categoryOfSpecialPurposeMark)31, (categoryOfSpecialPurposeMark)32, (categoryOfSpecialPurposeMark)33, (categoryOfSpecialPurposeMark)34, (categoryOfSpecialPurposeMark)35, (categoryOfSpecialPurposeMark)36, (categoryOfSpecialPurposeMark)37, (categoryOfSpecialPurposeMark)39, (categoryOfSpecialPurposeMark)40, (categoryOfSpecialPurposeMark)41, (categoryOfSpecialPurposeMark)42, (categoryOfSpecialPurposeMark)43, (categoryOfSpecialPurposeMark)44, (categoryOfSpecialPurposeMark)45, (categoryOfSpecialPurposeMark)46, (categoryOfSpecialPurposeMark)47, (categoryOfSpecialPurposeMark)48, (categoryOfSpecialPurposeMark)49, (categoryOfSpecialPurposeMark)50, (categoryOfSpecialPurposeMark)51, (categoryOfSpecialPurposeMark)52, (categoryOfSpecialPurposeMark)53, (categoryOfSpecialPurposeMark)54, (categoryOfSpecialPurposeMark)55, (categoryOfSpecialPurposeMark)56, (categoryOfSpecialPurposeMark)57, (categoryOfSpecialPurposeMark)58, (categoryOfSpecialPurposeMark)60, (categoryOfSpecialPurposeMark)61, (categoryOfSpecialPurposeMark)62, (categoryOfSpecialPurposeMark)63];
+
+        [Browsable(false)]
+        public colour[] colourList => [(colour)1, (colour)2, (colour)3, (colour)4, (colour)5, (colour)6, (colour)7, (colour)8, (colour)9, (colour)10, (colour)11, (colour)12, (colour)13];
+
+        [Browsable(false)]
+        public colourPattern[] colourPatternList => [(colourPattern)1, (colourPattern)2, (colourPattern)3, (colourPattern)4, (colourPattern)5, (colourPattern)6];
+
+        [Browsable(false)]
+        public natureOfConstruction[] natureOfConstructionList => [(natureOfConstruction)1, (natureOfConstruction)2, (natureOfConstruction)4, (natureOfConstruction)6, (natureOfConstruction)7, (natureOfConstruction)8, (natureOfConstruction)11];
+
+        [Browsable(false)]
+        public status[] statusList => [(status)1, (status)4, (status)5, (status)7, (status)8, (status)12];
+
+        [Browsable(false)]
+        public topmarkDaymarkShape[] topmarkDaymarkShapeList => [(topmarkDaymarkShape)1, (topmarkDaymarkShape)2, (topmarkDaymarkShape)3, (topmarkDaymarkShape)4, (topmarkDaymarkShape)5, (topmarkDaymarkShape)6, (topmarkDaymarkShape)7, (topmarkDaymarkShape)8, (topmarkDaymarkShape)9, (topmarkDaymarkShape)10, (topmarkDaymarkShape)11, (topmarkDaymarkShape)12, (topmarkDaymarkShape)13, (topmarkDaymarkShape)14, (topmarkDaymarkShape)15, (topmarkDaymarkShape)16, (topmarkDaymarkShape)17, (topmarkDaymarkShape)18, (topmarkDaymarkShape)19, (topmarkDaymarkShape)20, (topmarkDaymarkShape)21, (topmarkDaymarkShape)22, (topmarkDaymarkShape)23, (topmarkDaymarkShape)24, (topmarkDaymarkShape)25, (topmarkDaymarkShape)26, (topmarkDaymarkShape)27, (topmarkDaymarkShape)28, (topmarkDaymarkShape)29, (topmarkDaymarkShape)30, (topmarkDaymarkShape)31, (topmarkDaymarkShape)32, (topmarkDaymarkShape)33];
 
         public void Load(DomainModel.S101.FeatureTypes.Daymark instance) {
             categoryOfSpecialPurposeMark.Clear();
@@ -41589,10 +44309,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class LightFloatViewModel : ViewModelBase {
+        [DomainModel.EnumerationAttribute(nameof(colourList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("LightFloat")]
         public ObservableCollection<colour> colour { get; set; } = new();
 
         private colourPattern? _colourPattern = default;
+        [DomainModel.EnumerationAttribute(nameof(colourPatternList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("LightFloat")]
         public colourPattern? colourPattern {
             get {
@@ -41656,6 +44380,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
             }
         }
 
+        [DomainModel.EnumerationAttribute(nameof(natureOfConstructionList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("LightFloat")]
         public ObservableCollection<natureOfConstruction> natureOfConstruction { get; set; } = new();
 
@@ -41674,6 +44400,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
             }
         }
 
+        [DomainModel.EnumerationAttribute(nameof(statusList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("LightFloat")]
         public ObservableCollection<status> status { get; set; } = new();
 
@@ -41703,6 +44431,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
         }
 
         private visualProminence? _visualProminence = default;
+        [DomainModel.EnumerationAttribute(nameof(visualProminenceList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("LightFloat")]
         public visualProminence? visualProminence {
             get {
@@ -41744,6 +44474,21 @@ namespace S100Framework.WPF.ViewModel.S101 {
         public class LightFloatRefIdViewModel : FeatureRefIdViewModel {
             public override string[] AssociationTypes => ["LightFloat"];
         }
+
+        [Browsable(false)]
+        public colour[] colourList => [(colour)1, (colour)2, (colour)3, (colour)4, (colour)5, (colour)6, (colour)7, (colour)8, (colour)9, (colour)10, (colour)11, (colour)12, (colour)13];
+
+        [Browsable(false)]
+        public colourPattern[] colourPatternList => [(colourPattern)1, (colourPattern)2, (colourPattern)3, (colourPattern)4, (colourPattern)5, (colourPattern)6];
+
+        [Browsable(false)]
+        public natureOfConstruction[] natureOfConstructionList => [(natureOfConstruction)6, (natureOfConstruction)7, (natureOfConstruction)11];
+
+        [Browsable(false)]
+        public status[] statusList => [(status)1, (status)2, (status)4, (status)5, (status)7, (status)8, (status)14, (status)16, (status)17];
+
+        [Browsable(false)]
+        public visualProminence[] visualProminenceList => [(visualProminence)1, (visualProminence)2, (visualProminence)3];
 
         public void Load(DomainModel.S101.FeatureTypes.LightFloat instance) {
             colour.Clear();
@@ -41867,10 +44612,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class LightVesselViewModel : ViewModelBase {
+        [DomainModel.EnumerationAttribute(nameof(colourList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("LightVessel")]
         public ObservableCollection<colour> colour { get; set; } = new();
 
         private colourPattern? _colourPattern = default;
+        [DomainModel.EnumerationAttribute(nameof(colourPatternList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("LightVessel")]
         public colourPattern? colourPattern {
             get {
@@ -41934,6 +44683,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
             }
         }
 
+        [DomainModel.EnumerationAttribute(nameof(natureOfConstructionList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("LightVessel")]
         public ObservableCollection<natureOfConstruction> natureOfConstruction { get; set; } = new();
 
@@ -41952,6 +44703,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
             }
         }
 
+        [DomainModel.EnumerationAttribute(nameof(statusList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("LightVessel")]
         public ObservableCollection<status> status { get; set; } = new();
 
@@ -41968,6 +44721,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
         }
 
         private visualProminence? _visualProminence = default;
+        [DomainModel.EnumerationAttribute(nameof(visualProminenceList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("LightVessel")]
         public visualProminence? visualProminence {
             get {
@@ -42009,6 +44764,21 @@ namespace S100Framework.WPF.ViewModel.S101 {
         public class LightVesselRefIdViewModel : FeatureRefIdViewModel {
             public override string[] AssociationTypes => ["LightVessel"];
         }
+
+        [Browsable(false)]
+        public colour[] colourList => [(colour)1, (colour)2, (colour)3, (colour)4, (colour)5, (colour)6, (colour)7, (colour)8, (colour)9, (colour)10, (colour)11, (colour)12, (colour)13];
+
+        [Browsable(false)]
+        public colourPattern[] colourPatternList => [(colourPattern)1, (colourPattern)2, (colourPattern)3, (colourPattern)4, (colourPattern)5, (colourPattern)6];
+
+        [Browsable(false)]
+        public natureOfConstruction[] natureOfConstructionList => [(natureOfConstruction)6, (natureOfConstruction)7];
+
+        [Browsable(false)]
+        public status[] statusList => [(status)1, (status)2, (status)4, (status)5, (status)7, (status)8, (status)14, (status)16, (status)17];
+
+        [Browsable(false)]
+        public visualProminence[] visualProminenceList => [(visualProminence)1, (visualProminence)2, (visualProminence)3];
 
         public void Load(DomainModel.S101.FeatureTypes.LightVessel instance) {
             colour.Clear();
@@ -42124,10 +44894,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class RetroreflectorViewModel : ViewModelBase {
+        [DomainModel.EnumerationAttribute(nameof(colourList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("Retroreflector")]
         public ObservableCollection<colour> colour { get; set; } = new();
 
         private colourPattern? _colourPattern = default;
+        [DomainModel.EnumerationAttribute(nameof(colourPatternList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("Retroreflector")]
         public colourPattern? colourPattern {
             get {
@@ -42179,6 +44953,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
         [Category("Retroreflector")]
         public ObservableCollection<periodicDateRange> periodicDateRange { get; set; } = new();
 
+        [DomainModel.EnumerationAttribute(nameof(statusList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("Retroreflector")]
         public ObservableCollection<status> status { get; set; } = new();
 
@@ -42200,6 +44976,15 @@ namespace S100Framework.WPF.ViewModel.S101 {
         public class RetroreflectorRefIdViewModel : FeatureRefIdViewModel {
             public override string[] AssociationTypes => ["Retroreflector"];
         }
+
+        [Browsable(false)]
+        public colour[] colourList => [(colour)1, (colour)3, (colour)4, (colour)5, (colour)6, (colour)7, (colour)8, (colour)9, (colour)10, (colour)11, (colour)12, (colour)13];
+
+        [Browsable(false)]
+        public colourPattern[] colourPatternList => [(colourPattern)1, (colourPattern)2, (colourPattern)3, (colourPattern)4, (colourPattern)5, (colourPattern)6];
+
+        [Browsable(false)]
+        public status[] statusList => [(status)1, (status)4, (status)8];
 
         public void Load(DomainModel.S101.FeatureTypes.Retroreflector instance) {
             colour.Clear();
@@ -42322,6 +45107,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
         [Category("RadarReflector")]
         public ObservableCollection<periodicDateRange> periodicDateRange { get; set; } = new();
 
+        [DomainModel.EnumerationAttribute(nameof(statusList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("RadarReflector")]
         public ObservableCollection<status> status { get; set; } = new();
 
@@ -42343,6 +45130,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
         public class RadarReflectorRefIdViewModel : FeatureRefIdViewModel {
             public override string[] AssociationTypes => ["RadarReflector"];
         }
+
+        [Browsable(false)]
+        public status[] statusList => [(status)1, (status)4, (status)8];
 
         public void Load(DomainModel.S101.FeatureTypes.RadarReflector instance) {
             fixedDateRange = new();
@@ -42414,6 +45204,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
     [CategoryOrder("FeatureBindings", 200)]
     public partial class FogSignalViewModel : ViewModelBase {
         private categoryOfFogSignal _categoryOfFogSignal;
+        [DomainModel.EnumerationAttribute(nameof(categoryOfFogSignalList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("FogSignal")]
         public categoryOfFogSignal categoryOfFogSignal {
             get {
@@ -42469,6 +45261,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
         }
 
         private signalGeneration? _signalGeneration = default;
+        [DomainModel.EnumerationAttribute(nameof(signalGenerationList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("FogSignal")]
         public signalGeneration? signalGeneration {
             get {
@@ -42507,6 +45301,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
         [Category("FogSignal")]
         public ObservableCollection<signalSequence> signalSequence { get; set; } = new();
 
+        [DomainModel.EnumerationAttribute(nameof(statusList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("FogSignal")]
         public ObservableCollection<status> status { get; set; } = new();
 
@@ -42540,6 +45336,15 @@ namespace S100Framework.WPF.ViewModel.S101 {
         public class FogSignalRefIdViewModel : FeatureRefIdViewModel {
             public override string[] AssociationTypes => ["FogSignal"];
         }
+
+        [Browsable(false)]
+        public categoryOfFogSignal[] categoryOfFogSignalList => [(categoryOfFogSignal)1, (categoryOfFogSignal)2, (categoryOfFogSignal)3, (categoryOfFogSignal)4, (categoryOfFogSignal)5, (categoryOfFogSignal)6, (categoryOfFogSignal)7, (categoryOfFogSignal)8, (categoryOfFogSignal)9, (categoryOfFogSignal)10];
+
+        [Browsable(false)]
+        public signalGeneration[] signalGenerationList => [(signalGeneration)1, (signalGeneration)2, (signalGeneration)3, (signalGeneration)4, (signalGeneration)5, (signalGeneration)6];
+
+        [Browsable(false)]
+        public status[] statusList => [(status)1, (status)2, (status)4, (status)5, (status)7, (status)8, (status)15];
 
         public void Load(DomainModel.S101.FeatureTypes.FogSignal instance) {
             categoryOfFogSignal = instance.categoryOfFogSignal;
@@ -42699,6 +45504,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
         public ObservableCollection<periodicDateRange> periodicDateRange { get; set; } = new();
 
         private status? _status = default;
+        [DomainModel.EnumerationAttribute(nameof(statusList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("PhysicalAISAidToNavigation")]
         public status? status {
             get {
@@ -42728,6 +45535,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
         public class PhysicalAISAidToNavigationRefIdViewModel : FeatureRefIdViewModel {
             public override string[] AssociationTypes => ["PhysicalAISAidToNavigation"];
         }
+
+        [Browsable(false)]
+        public status[] statusList => [(status)1, (status)5, (status)7];
 
         public void Load(DomainModel.S101.FeatureTypes.PhysicalAISAidToNavigation instance) {
             estimatedRangeOfTransmission = instance.estimatedRangeOfTransmission;
@@ -42860,6 +45670,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
         public ObservableCollection<periodicDateRange> periodicDateRange { get; set; } = new();
 
         private status? _status = default;
+        [DomainModel.EnumerationAttribute(nameof(statusList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("VirtualAISAidToNavigation")]
         public status? status {
             get {
@@ -42872,6 +45684,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
         }
 
         private virtualAISAidToNavigationType _virtualAISAidToNavigationType;
+        [DomainModel.EnumerationAttribute(nameof(virtualAISAidToNavigationTypeList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("VirtualAISAidToNavigation")]
         public virtualAISAidToNavigationType virtualAISAidToNavigationType {
             get {
@@ -42901,6 +45715,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
         public class VirtualAISAidToNavigationRefIdViewModel : FeatureRefIdViewModel {
             public override string[] AssociationTypes => ["VirtualAISAidToNavigation"];
         }
+
+        [Browsable(false)]
+        public status[] statusList => [(status)1, (status)5, (status)7];
+
+        [Browsable(false)]
+        public virtualAISAidToNavigationType[] virtualAISAidToNavigationTypeList => [(virtualAISAidToNavigationType)1, (virtualAISAidToNavigationType)2, (virtualAISAidToNavigationType)3, (virtualAISAidToNavigationType)4, (virtualAISAidToNavigationType)5, (virtualAISAidToNavigationType)6, (virtualAISAidToNavigationType)7, (virtualAISAidToNavigationType)8, (virtualAISAidToNavigationType)9, (virtualAISAidToNavigationType)10, (virtualAISAidToNavigationType)11, (virtualAISAidToNavigationType)12];
 
         public void Load(DomainModel.S101.FeatureTypes.VirtualAISAidToNavigation instance) {
             estimatedRangeOfTransmission = instance.estimatedRangeOfTransmission;
@@ -42992,6 +45812,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
             }
         }
 
+        [DomainModel.EnumerationAttribute(nameof(categoryOfRadioStationList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("RadioStation")]
         public ObservableCollection<categoryOfRadioStation> categoryOfRadioStation { get; set; } = new();
 
@@ -43054,6 +45876,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
         [Category("RadioStation")]
         public ObservableCollection<periodicDateRange> periodicDateRange { get; set; } = new();
 
+        [DomainModel.EnumerationAttribute(nameof(statusList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("RadioStation")]
         public ObservableCollection<status> status { get; set; } = new();
 
@@ -43075,6 +45899,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
         public class RadioStationRefIdViewModel : FeatureRefIdViewModel {
             public override string[] AssociationTypes => ["RadioStation"];
         }
+
+        [Browsable(false)]
+        public categoryOfRadioStation[] categoryOfRadioStationList => [(categoryOfRadioStation)5, (categoryOfRadioStation)10, (categoryOfRadioStation)11, (categoryOfRadioStation)14, (categoryOfRadioStation)19, (categoryOfRadioStation)20];
+
+        [Browsable(false)]
+        public status[] statusList => [(status)1, (status)2, (status)4, (status)5, (status)7, (status)8];
 
         public void Load(DomainModel.S101.FeatureTypes.RadioStation instance) {
             callSign = instance.callSign;
@@ -43184,6 +46014,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
     [CategoryOrder("FeatureBindings", 200)]
     public partial class RadarTransponderBeaconViewModel : ViewModelBase {
         private categoryOfRadarTransponderBeacon _categoryOfRadarTransponderBeacon;
+        [DomainModel.EnumerationAttribute(nameof(categoryOfRadarTransponderBeaconList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("RadarTransponderBeacon")]
         public categoryOfRadarTransponderBeacon categoryOfRadarTransponderBeacon {
             get {
@@ -43257,6 +46089,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
         [Category("RadarTransponderBeacon")]
         public ObservableCollection<signalSequence> signalSequence { get; set; } = new();
 
+        [DomainModel.EnumerationAttribute(nameof(statusList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("RadarTransponderBeacon")]
         public ObservableCollection<status> status { get; set; } = new();
 
@@ -43290,6 +46124,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
         public class RadarTransponderBeaconRefIdViewModel : FeatureRefIdViewModel {
             public override string[] AssociationTypes => ["RadarTransponderBeacon"];
         }
+
+        [Browsable(false)]
+        public categoryOfRadarTransponderBeacon[] categoryOfRadarTransponderBeaconList => [(categoryOfRadarTransponderBeacon)1, (categoryOfRadarTransponderBeacon)2, (categoryOfRadarTransponderBeacon)3];
+
+        [Browsable(false)]
+        public status[] statusList => [(status)1, (status)2, (status)4, (status)5, (status)7, (status)8];
 
         public void Load(DomainModel.S101.FeatureTypes.RadarTransponderBeacon instance) {
             categoryOfRadarTransponderBeacon = instance.categoryOfRadarTransponderBeacon;
@@ -43402,6 +46242,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
     [CategoryOrder("FeatureBindings", 200)]
     public partial class PilotBoardingPlaceViewModel : ViewModelBase {
         private categoryOfPilotBoardingPlace? _categoryOfPilotBoardingPlace = default;
+        [DomainModel.EnumerationAttribute(nameof(categoryOfPilotBoardingPlaceList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("PilotBoardingPlace")]
         public categoryOfPilotBoardingPlace? categoryOfPilotBoardingPlace {
             get {
@@ -43414,6 +46256,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
         }
 
         private categoryOfPreference? _categoryOfPreference = default;
+        [DomainModel.EnumerationAttribute(nameof(categoryOfPreferenceList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("PilotBoardingPlace")]
         public categoryOfPreference? categoryOfPreference {
             get {
@@ -43462,9 +46306,13 @@ namespace S100Framework.WPF.ViewModel.S101 {
         [Category("PilotBoardingPlace")]
         public ObservableCollection<periodicDateRange> periodicDateRange { get; set; } = new();
 
+        [DomainModel.EnumerationAttribute(nameof(pilotMovementList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("PilotBoardingPlace")]
         public ObservableCollection<pilotMovement> pilotMovement { get; set; } = new();
 
+        [DomainModel.EnumerationAttribute(nameof(statusList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("PilotBoardingPlace")]
         public ObservableCollection<status> status { get; set; } = new();
 
@@ -43486,6 +46334,18 @@ namespace S100Framework.WPF.ViewModel.S101 {
         public class PilotBoardingPlaceRefIdViewModel : FeatureRefIdViewModel {
             public override string[] AssociationTypes => ["PilotBoardingPlace"];
         }
+
+        [Browsable(false)]
+        public categoryOfPilotBoardingPlace[] categoryOfPilotBoardingPlaceList => [(categoryOfPilotBoardingPlace)1, (categoryOfPilotBoardingPlace)2, (categoryOfPilotBoardingPlace)3];
+
+        [Browsable(false)]
+        public categoryOfPreference[] categoryOfPreferenceList => [(categoryOfPreference)1, (categoryOfPreference)2];
+
+        [Browsable(false)]
+        public pilotMovement[] pilotMovementList => [(pilotMovement)1, (pilotMovement)2, (pilotMovement)3];
+
+        [Browsable(false)]
+        public status[] statusList => [(status)1, (status)2, (status)5, (status)6, (status)9, (status)16, (status)17, (status)28];
 
         public void Load(DomainModel.S101.FeatureTypes.PilotBoardingPlace instance) {
             categoryOfPilotBoardingPlace = instance.categoryOfPilotBoardingPlace;
@@ -43724,6 +46584,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
         [Category("CoastGuardStation")]
         public ObservableCollection<periodicDateRange> periodicDateRange { get; set; } = new();
 
+        [DomainModel.EnumerationAttribute(nameof(statusList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("CoastGuardStation")]
         public ObservableCollection<status> status { get; set; } = new();
 
@@ -43745,6 +46607,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
         public class CoastGuardStationRefIdViewModel : FeatureRefIdViewModel {
             public override string[] AssociationTypes => ["CoastGuardStation"];
         }
+
+        [Browsable(false)]
+        public status[] statusList => [(status)1, (status)4, (status)5, (status)16, (status)17];
 
         public void Load(DomainModel.S101.FeatureTypes.CoastGuardStation instance) {
             communicationChannel.Clear();
@@ -43833,6 +46698,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class SignalStationWarningViewModel : ViewModelBase {
+        [DomainModel.EnumerationAttribute(nameof(categoryOfSignalStationWarningList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("SignalStationWarning")]
         public ObservableCollection<categoryOfSignalStationWarning> categoryOfSignalStationWarning { get; set; } = new();
 
@@ -43870,6 +46737,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
         [Category("SignalStationWarning")]
         public ObservableCollection<periodicDateRange> periodicDateRange { get; set; } = new();
 
+        [DomainModel.EnumerationAttribute(nameof(statusList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("SignalStationWarning")]
         public ObservableCollection<status> status { get; set; } = new();
 
@@ -43891,6 +46760,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
         public class SignalStationWarningRefIdViewModel : FeatureRefIdViewModel {
             public override string[] AssociationTypes => ["SignalStationWarning"];
         }
+
+        [Browsable(false)]
+        public categoryOfSignalStationWarning[] categoryOfSignalStationWarningList => [(categoryOfSignalStationWarning)1, (categoryOfSignalStationWarning)2, (categoryOfSignalStationWarning)3, (categoryOfSignalStationWarning)4, (categoryOfSignalStationWarning)5, (categoryOfSignalStationWarning)6, (categoryOfSignalStationWarning)7, (categoryOfSignalStationWarning)8, (categoryOfSignalStationWarning)9, (categoryOfSignalStationWarning)10, (categoryOfSignalStationWarning)11, (categoryOfSignalStationWarning)12, (categoryOfSignalStationWarning)13, (categoryOfSignalStationWarning)14, (categoryOfSignalStationWarning)15];
+
+        [Browsable(false)]
+        public status[] statusList => [(status)1, (status)2, (status)4, (status)5, (status)7, (status)8, (status)12, (status)14, (status)15, (status)16, (status)17];
 
         public void Load(DomainModel.S101.FeatureTypes.SignalStationWarning instance) {
             categoryOfSignalStationWarning.Clear();
@@ -43985,6 +46860,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class SignalStationTrafficViewModel : ViewModelBase {
+        [DomainModel.EnumerationAttribute(nameof(categoryOfSignalStationTrafficList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("SignalStationTraffic")]
         public ObservableCollection<categoryOfSignalStationTraffic> categoryOfSignalStationTraffic { get; set; } = new();
 
@@ -44022,6 +46899,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
         [Category("SignalStationTraffic")]
         public ObservableCollection<periodicDateRange> periodicDateRange { get; set; } = new();
 
+        [DomainModel.EnumerationAttribute(nameof(statusList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("SignalStationTraffic")]
         public ObservableCollection<status> status { get; set; } = new();
 
@@ -44043,6 +46922,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
         public class SignalStationTrafficRefIdViewModel : FeatureRefIdViewModel {
             public override string[] AssociationTypes => ["SignalStationTraffic"];
         }
+
+        [Browsable(false)]
+        public categoryOfSignalStationTraffic[] categoryOfSignalStationTrafficList => [(categoryOfSignalStationTraffic)1, (categoryOfSignalStationTraffic)2, (categoryOfSignalStationTraffic)3, (categoryOfSignalStationTraffic)4, (categoryOfSignalStationTraffic)5, (categoryOfSignalStationTraffic)6, (categoryOfSignalStationTraffic)7, (categoryOfSignalStationTraffic)8, (categoryOfSignalStationTraffic)9, (categoryOfSignalStationTraffic)10];
+
+        [Browsable(false)]
+        public status[] statusList => [(status)1, (status)2, (status)4, (status)5, (status)7, (status)8, (status)12, (status)14, (status)15, (status)16, (status)17];
 
         public void Load(DomainModel.S101.FeatureTypes.SignalStationTraffic instance) {
             categoryOfSignalStationTraffic.Clear();
@@ -44137,6 +47022,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class RescueStationViewModel : ViewModelBase {
+        [DomainModel.EnumerationAttribute(nameof(categoryOfRescueStationList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("RescueStation")]
         public ObservableCollection<categoryOfRescueStation> categoryOfRescueStation { get; set; } = new();
 
@@ -44174,6 +47061,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
         [Category("RescueStation")]
         public ObservableCollection<periodicDateRange> periodicDateRange { get; set; } = new();
 
+        [DomainModel.EnumerationAttribute(nameof(statusList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("RescueStation")]
         public ObservableCollection<status> status { get; set; } = new();
 
@@ -44195,6 +47084,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
         public class RescueStationRefIdViewModel : FeatureRefIdViewModel {
             public override string[] AssociationTypes => ["RescueStation"];
         }
+
+        [Browsable(false)]
+        public categoryOfRescueStation[] categoryOfRescueStationList => [(categoryOfRescueStation)1, (categoryOfRescueStation)2, (categoryOfRescueStation)4, (categoryOfRescueStation)5, (categoryOfRescueStation)6, (categoryOfRescueStation)7, (categoryOfRescueStation)8];
+
+        [Browsable(false)]
+        public status[] statusList => [(status)1, (status)2, (status)4, (status)5, (status)7, (status)8, (status)14, (status)16, (status)17];
 
         public void Load(DomainModel.S101.FeatureTypes.RescueStation instance) {
             categoryOfRescueStation.Clear();
@@ -44289,6 +47184,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class HarbourFacilityViewModel : ViewModelBase {
+        [DomainModel.EnumerationAttribute(nameof(categoryOfHarbourFacilityList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("HarbourFacility")]
         public ObservableCollection<categoryOfHarbourFacility> categoryOfHarbourFacility { get; set; } = new();
 
@@ -44296,6 +47193,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
         public ObservableCollection<String> communicationChannel { get; set; } = new();
 
         private condition? _condition = default;
+        [DomainModel.EnumerationAttribute(nameof(conditionList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("HarbourFacility")]
         public condition? condition {
             get {
@@ -44335,6 +47234,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
             }
         }
 
+        [DomainModel.EnumerationAttribute(nameof(natureOfConstructionList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("HarbourFacility")]
         public ObservableCollection<natureOfConstruction> natureOfConstruction { get; set; } = new();
 
@@ -44342,6 +47243,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
         public ObservableCollection<periodicDateRange> periodicDateRange { get; set; } = new();
 
         private product? _product = default;
+        [DomainModel.EnumerationAttribute(nameof(productList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("HarbourFacility")]
         public product? product {
             get {
@@ -44365,9 +47268,13 @@ namespace S100Framework.WPF.ViewModel.S101 {
             }
         }
 
+        [DomainModel.EnumerationAttribute(nameof(restrictionList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("HarbourFacility")]
         public ObservableCollection<restriction> restriction { get; set; } = new();
 
+        [DomainModel.EnumerationAttribute(nameof(statusList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("HarbourFacility")]
         public ObservableCollection<status> status { get; set; } = new();
 
@@ -44404,6 +47311,24 @@ namespace S100Framework.WPF.ViewModel.S101 {
         public class HarbourFacilityRefIdViewModel : FeatureRefIdViewModel {
             public override string[] AssociationTypes => ["HarbourFacility"];
         }
+
+        [Browsable(false)]
+        public categoryOfHarbourFacility[] categoryOfHarbourFacilityList => [(categoryOfHarbourFacility)1, (categoryOfHarbourFacility)3, (categoryOfHarbourFacility)4, (categoryOfHarbourFacility)5, (categoryOfHarbourFacility)6, (categoryOfHarbourFacility)7, (categoryOfHarbourFacility)8, (categoryOfHarbourFacility)9, (categoryOfHarbourFacility)10, (categoryOfHarbourFacility)11, (categoryOfHarbourFacility)12, (categoryOfHarbourFacility)13, (categoryOfHarbourFacility)14, (categoryOfHarbourFacility)15];
+
+        [Browsable(false)]
+        public condition[] conditionList => [(condition)1, (condition)2, (condition)3, (condition)5];
+
+        [Browsable(false)]
+        public natureOfConstruction[] natureOfConstructionList => [(natureOfConstruction)1, (natureOfConstruction)2, (natureOfConstruction)3, (natureOfConstruction)6, (natureOfConstruction)7];
+
+        [Browsable(false)]
+        public product[] productList => [(product)1, (product)2, (product)3, (product)4, (product)5, (product)6, (product)7, (product)8, (product)9, (product)10, (product)11, (product)12, (product)13, (product)14, (product)15, (product)16, (product)17, (product)18, (product)19, (product)20, (product)21, (product)22, (product)25];
+
+        [Browsable(false)]
+        public restriction[] restrictionList => [(restriction)1, (restriction)2, (restriction)3, (restriction)4, (restriction)5, (restriction)6, (restriction)8, (restriction)9, (restriction)10, (restriction)11, (restriction)12, (restriction)13, (restriction)15, (restriction)16, (restriction)17, (restriction)18, (restriction)19, (restriction)20, (restriction)21, (restriction)23, (restriction)24, (restriction)27];
+
+        [Browsable(false)]
+        public status[] statusList => [(status)1, (status)4, (status)5, (status)6, (status)7, (status)8, (status)9, (status)12, (status)13, (status)14, (status)16, (status)17];
 
         public void Load(DomainModel.S101.FeatureTypes.HarbourFacility instance) {
             categoryOfHarbourFacility.Clear();
@@ -44537,6 +47462,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class SmallCraftFacilityViewModel : ViewModelBase {
+        [DomainModel.EnumerationAttribute(nameof(categoryOfSmallCraftFacilityList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("SmallCraftFacility")]
         public ObservableCollection<categoryOfSmallCraftFacility> categoryOfSmallCraftFacility { get; set; } = new();
 
@@ -44558,6 +47485,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
         [Category("SmallCraftFacility")]
         public ObservableCollection<periodicDateRange> periodicDateRange { get; set; } = new();
 
+        [DomainModel.EnumerationAttribute(nameof(statusList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("SmallCraftFacility")]
         public ObservableCollection<status> status { get; set; } = new();
 
@@ -44591,6 +47520,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
         public class SmallCraftFacilityRefIdViewModel : FeatureRefIdViewModel {
             public override string[] AssociationTypes => ["SmallCraftFacility"];
         }
+
+        [Browsable(false)]
+        public categoryOfSmallCraftFacility[] categoryOfSmallCraftFacilityList => [(categoryOfSmallCraftFacility)1, (categoryOfSmallCraftFacility)2, (categoryOfSmallCraftFacility)3, (categoryOfSmallCraftFacility)4, (categoryOfSmallCraftFacility)5, (categoryOfSmallCraftFacility)6, (categoryOfSmallCraftFacility)7, (categoryOfSmallCraftFacility)8, (categoryOfSmallCraftFacility)9, (categoryOfSmallCraftFacility)10, (categoryOfSmallCraftFacility)11, (categoryOfSmallCraftFacility)12, (categoryOfSmallCraftFacility)13, (categoryOfSmallCraftFacility)14, (categoryOfSmallCraftFacility)15, (categoryOfSmallCraftFacility)16, (categoryOfSmallCraftFacility)17, (categoryOfSmallCraftFacility)18, (categoryOfSmallCraftFacility)19, (categoryOfSmallCraftFacility)20, (categoryOfSmallCraftFacility)21, (categoryOfSmallCraftFacility)22, (categoryOfSmallCraftFacility)23, (categoryOfSmallCraftFacility)24, (categoryOfSmallCraftFacility)25, (categoryOfSmallCraftFacility)26, (categoryOfSmallCraftFacility)27, (categoryOfSmallCraftFacility)28, (categoryOfSmallCraftFacility)30, (categoryOfSmallCraftFacility)31, (categoryOfSmallCraftFacility)32, (categoryOfSmallCraftFacility)33];
+
+        [Browsable(false)]
+        public status[] statusList => [(status)1, (status)2, (status)3, (status)4, (status)5, (status)6, (status)7, (status)8, (status)9, (status)12, (status)14, (status)16, (status)17];
 
         public void Load(DomainModel.S101.FeatureTypes.SmallCraftFacility instance) {
             categoryOfSmallCraftFacility.Clear();
@@ -44707,6 +47642,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
             }
         }
 
+        [DomainModel.EnumerationAttribute(nameof(textTypeList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("TextPlacement")]
         public ObservableCollection<textType> textType { get; set; } = new();
 
@@ -44725,6 +47662,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
         public class TextPlacementRefIdViewModel : FeatureRefIdViewModel {
             public override string[] AssociationTypes => ["TextPlacement"];
         }
+
+        [Browsable(false)]
+        public textType[] textTypeList => [(textType)1, (textType)2];
 
         public void Load(DomainModel.S101.FeatureTypes.TextPlacement instance) {
             textOffsetBearing = instance.textOffsetBearing;

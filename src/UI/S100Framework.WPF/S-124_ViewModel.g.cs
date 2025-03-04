@@ -162,6 +162,8 @@ namespace S100Framework.WPF.ViewModel.S124 {
         }
 
         private nameUsage? _nameUsage = default;
+        [DomainModel.EnumerationAttribute(nameof(nameUsageList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("featureName")]
         public nameUsage? nameUsage {
             get {
@@ -172,6 +174,9 @@ namespace S100Framework.WPF.ViewModel.S124 {
                 SetValue(ref _nameUsage, value);
             }
         }
+
+        [Browsable(false)]
+        public nameUsage[] nameUsageList => [(nameUsage)1, (nameUsage)2, (nameUsage)3];
 
         public void Load(DomainModel.S124.ComplexAttributes.featureName instance) {
             language = instance.language;
@@ -1063,6 +1068,8 @@ namespace S100Framework.WPF.ViewModel.S124 {
         }
 
         private warningType _warningType;
+        [DomainModel.EnumerationAttribute(nameof(warningTypeList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("messageSeriesIdentifier")]
         public warningType warningType {
             get {
@@ -1085,6 +1092,9 @@ namespace S100Framework.WPF.ViewModel.S124 {
                 SetValue(ref _year, value);
             }
         }
+
+        [Browsable(false)]
+        public warningType[] warningTypeList => [];
 
         public void Load(DomainModel.S124.ComplexAttributes.messageSeriesIdentifier instance) {
             agencyResponsibleForProduction = instance.agencyResponsibleForProduction;
@@ -1366,6 +1376,8 @@ namespace S100Framework.WPF.ViewModel.S124 {
         }
 
         private referenceCategory _referenceCategory;
+        [DomainModel.EnumerationAttribute(nameof(referenceCategoryList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("References")]
         public referenceCategory referenceCategory {
             get {
@@ -1380,6 +1392,9 @@ namespace S100Framework.WPF.ViewModel.S124 {
         public class ReferencesRefIdViewModel : InformationRefIdViewModel {
             public override string[] AssociationTypes => ["References"];
         }
+
+        [Browsable(false)]
+        public referenceCategory[] referenceCategoryList => [];
 
         public void Load(DomainModel.S124.InformationTypes.References instance) {
             messageSeriesIdentifier.Clear();
@@ -1444,6 +1459,8 @@ namespace S100Framework.WPF.ViewModel.S124 {
         }
 
         private restriction? _restriction = default;
+        [DomainModel.EnumerationAttribute(nameof(restrictionList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("NAVWARNPart")]
         public restriction? restriction {
             get {
@@ -1458,6 +1475,9 @@ namespace S100Framework.WPF.ViewModel.S124 {
         public class NAVWARNPartRefIdViewModel : FeatureRefIdViewModel {
             public override string[] AssociationTypes => ["NAVWARNPart"];
         }
+
+        [Browsable(false)]
+        public restriction[] restrictionList => [(restriction)8, (restriction)7, (restriction)14, (restriction)25, (restriction)27];
 
         public void Load(DomainModel.S124.FeatureTypes.NAVWARNPart instance) {
             featureName.Clear();
@@ -1600,6 +1620,8 @@ namespace S100Framework.WPF.ViewModel.S124 {
         }
 
         private textType? _textType = default;
+        [DomainModel.EnumerationAttribute(nameof(textTypeList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("TextPlacement")]
         public textType? textType {
             get {
@@ -1626,6 +1648,9 @@ namespace S100Framework.WPF.ViewModel.S124 {
         public class TextPlacementRefIdViewModel : FeatureRefIdViewModel {
             public override string[] AssociationTypes => ["TextPlacement"];
         }
+
+        [Browsable(false)]
+        public textType[] textTypeList => [(textType)1, (textType)2];
 
         public void Load(DomainModel.S124.FeatureTypes.TextPlacement instance) {
             text = instance.text;

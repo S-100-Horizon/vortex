@@ -4,6 +4,7 @@ using Microsoft.CodeAnalysis.CSharp.Formatting;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Microsoft.CodeAnalysis.Formatting;
 using Pluralize.NET.Core;
+using S100Framework.DomainModel;
 using System.Reflection;
 using System.Reflection.Emit;
 using System.Text;
@@ -381,6 +382,8 @@ namespace S100Framework
                         foreach (var attributeBinding in e.XPathSelectElements("S100FC:subAttributeBinding", xmlNamespaceManager)) {
                             var referenceCode = attributeBinding.Element(XName.Get("attribute", scope_S100))!.Attribute("ref")!.Value!;
 
+                            var permittedValues = attributeBinding.XPathSelectElement("S100FC:permittedValues", xmlNamespaceManager);
+
                             var lower = int.Parse(attributeBinding.XPathSelectElement("S100FC:multiplicity/S100Base:lower", xmlNamespaceManager)!.Value);
                             var upper = attributeBinding.XPathSelectElement("S100FC:multiplicity/S100Base:upper", xmlNamespaceManager)!;
 
@@ -416,6 +419,15 @@ namespace S100Framework
 
                                 //codeLists.Add($"public ImmutableArray<{referenceCode}> {referenceCode}List => CodeList.{pluralizer.Pluralize(referenceCode)};");
                             }
+
+                            if (permittedValues is not null) {
+                                foreach (var v in permittedValues.XPathSelectElements("S100FC:value", xmlNamespaceManager).Select(e => e.Value).ToList()) {
+                                    var constructorInfo = typeof(EnumerationValueAttribute).GetConstructors().First();
+
+                                    var enumerationValueAttributeBuilder = new CustomAttributeBuilder(constructorInfo, new object[1] { int.Parse(v) });
+                                    propertyBuilder.SetCustomAttribute(enumerationValueAttributeBuilder);
+                                }
+                            }
                         }
 
                         var complexType = complexTypeBuilder.CreateType();
@@ -432,7 +444,7 @@ namespace S100Framework
                             attributes |= TypeAttributes.Abstract;
 
                         if (!attributes.HasFlag(TypeAttributes.Abstract)) {
-                            viewBuilder.AppendLine(BuildClassViewModel(code, name, complexType, $"DomainModel.{productId}.ComplexAttributes", codelistTypes.Keys, roleTypes.Keys));
+                            viewBuilder.AppendLine(BuildClassViewModel(code, name, complexType, $"DomainModel.{productId}.ComplexAttributes", codelistTypes.Keys, enumTypes.Keys, roleTypes.Keys));
                         }
 
                         dictionaryTypesComplex.Add(code);
@@ -647,6 +659,8 @@ namespace S100Framework
                         foreach (var attributeBinding in e.XPathSelectElements("S100FC:attributeBinding", xmlNamespaceManager)) {
                             var referenceCode = attributeBinding.Element(XName.Get("attribute", scope_S100))!.Attribute("ref")!.Value!;
 
+                            var permittedValues = attributeBinding.XPathSelectElement("S100FC:permittedValues", xmlNamespaceManager);
+
                             var lower = int.Parse(attributeBinding.XPathSelectElement("S100FC:multiplicity/S100Base:lower", xmlNamespaceManager)!.Value);
                             var upper = attributeBinding.XPathSelectElement("S100FC:multiplicity/S100Base:upper", xmlNamespaceManager)!;
 
@@ -676,6 +690,15 @@ namespace S100Framework
                                 var expandableObjectAttributeBuilder = new CustomAttributeBuilder(constructorInfo, new object[0]);
                                 propertyBuilder.SetCustomAttribute(expandableObjectAttributeBuilder);
                             }
+
+                            if (permittedValues is not null) {
+                                foreach (var v in permittedValues.XPathSelectElements("S100FC:value", xmlNamespaceManager).Select(e => e.Value).ToList()) {
+                                    var constructorInfo = typeof(EnumerationValueAttribute).GetConstructors().First();
+
+                                    var enumerationValueAttributeBuilder = new CustomAttributeBuilder(constructorInfo, new object[1] { int.Parse(v) });
+                                    propertyBuilder.SetCustomAttribute(enumerationValueAttributeBuilder);
+                                }
+                            }
                         }
 
                         var informationType = informationTypeBuilder.CreateType();
@@ -691,7 +714,7 @@ namespace S100Framework
                         }));
 
                         if (!attributes.HasFlag(TypeAttributes.Abstract)) {
-                            viewBuilder.AppendLine(BuildClassViewModel(code, name, informationType, $"DomainModel.{productId}.InformationTypes", codelistTypes.Keys, roleTypes.Keys, (builder) => {
+                            viewBuilder.AppendLine(BuildClassViewModel(code, name, informationType, $"DomainModel.{productId}.InformationTypes", codelistTypes.Keys, enumTypes.Keys, roleTypes.Keys, (builder) => {
                                 var c = code;
                                 while (!string.IsNullOrEmpty(c) && superClassHierarchy.ContainsKey(c)) {
                                     c = superClassHierarchy[c];
@@ -800,6 +823,8 @@ namespace S100Framework
                         foreach (var attributeBinding in e.XPathSelectElements("S100FC:attributeBinding", xmlNamespaceManager)) {
                             var referenceCode = attributeBinding.Element(XName.Get("attribute", scope_S100))!.Attribute("ref")!.Value!;
 
+                            var permittedValues = attributeBinding.XPathSelectElement("S100FC:permittedValues", xmlNamespaceManager);
+
                             var lower = int.Parse(attributeBinding.XPathSelectElement("S100FC:multiplicity/S100Base:lower", xmlNamespaceManager)!.Value);
                             var upper = attributeBinding.XPathSelectElement("S100FC:multiplicity/S100Base:upper", xmlNamespaceManager)!;
 
@@ -829,6 +854,15 @@ namespace S100Framework
                                 var expandableObjectAttributeBuilder = new CustomAttributeBuilder(constructorInfo, new object[0]);
                                 propertyBuilder.SetCustomAttribute(expandableObjectAttributeBuilder);
                             }
+
+                            if (permittedValues is not null) {
+                                foreach (var v in permittedValues.XPathSelectElements("S100FC:value", xmlNamespaceManager).Select(e => e.Value).ToList()) {
+                                    var constructorInfo = typeof(EnumerationValueAttribute).GetConstructors().First();
+
+                                    var enumerationValueAttributeBuilder = new CustomAttributeBuilder(constructorInfo, new object[1] { int.Parse(v) });
+                                    propertyBuilder.SetCustomAttribute(enumerationValueAttributeBuilder);
+                                }
+                            }
                         }
 
                         var featureType = featureTypeBuilder.CreateType();
@@ -845,7 +879,7 @@ namespace S100Framework
                         }));
 
                         if (!attributes.HasFlag(TypeAttributes.Abstract)) {
-                            viewBuilder.AppendLine(BuildClassViewModel(code, name, featureType, $"DomainModel.{productId}.FeatureTypes", codelistTypes.Keys, roleTypes.Keys, (builder) => {
+                            viewBuilder.AppendLine(BuildClassViewModel(code, name, featureType, $"DomainModel.{productId}.FeatureTypes", codelistTypes.Keys, enumTypes.Keys, roleTypes.Keys, (builder) => {
                                 var c = code;
                                 while (!string.IsNullOrEmpty(c) && superClassHierarchy.ContainsKey(c)) {
                                     c = superClassHierarchy[c];
@@ -1253,6 +1287,33 @@ namespace S100Framework
             common.AppendLine();
             common.AppendLine("namespace S100Framework.DomainModel");
             common.AppendLine("{");
+
+            common.AppendLine("\t[System.AttributeUsage(System.AttributeTargets.Property, AllowMultiple = false)]");
+            common.AppendLine("\tpublic class EnumerationAttribute : System.Attribute");
+            common.AppendLine("\t{");
+            common.AppendLine("\t\tprivate string _propertyName;");
+            common.AppendLine();
+            common.AppendLine("\t\tpublic string PropertyName => _propertyName;");
+            common.AppendLine();
+            common.AppendLine("\t\tpublic EnumerationAttribute(string propertyName) { ");
+            common.AppendLine("\t\t\t_propertyName = propertyName;");
+            common.AppendLine("\t\t}");
+            common.AppendLine("\t}");
+            common.AppendLine();
+
+            common.AppendLine("\t[System.AttributeUsage(System.AttributeTargets.Property, AllowMultiple = true)]");
+            common.AppendLine("\tpublic class EnumerationValueAttribute : System.Attribute");
+            common.AppendLine("\t{");
+            common.AppendLine("\t\tprivate int _propertyValue;");
+            common.AppendLine();
+            common.AppendLine("\t\tpublic int PropertyValue => _propertyValue;");
+            common.AppendLine();
+            common.AppendLine("\t\tpublic EnumerationValueAttribute(int propertyValue) { ");
+            common.AppendLine("\t\t\t_propertyValue = propertyValue;");
+            common.AppendLine("\t\t}");
+            common.AppendLine("\t}");
+            common.AppendLine();
+
             common.AppendLine("\t[System.AttributeUsage(System.AttributeTargets.Property, AllowMultiple = false)]");
             common.AppendLine("\tpublic class CodeListAttribute : System.Attribute");
             common.AppendLine("\t{");
@@ -1265,6 +1326,7 @@ namespace S100Framework
             common.AppendLine("\t\t}");
             common.AppendLine("\t}");
             common.AppendLine();
+
             common.AppendLine("\t[System.AttributeUsage(System.AttributeTargets.Property, AllowMultiple = true)]");
             common.AppendLine("\tpublic class RoleAttribute : System.Attribute");
             common.AppendLine("\t{");
@@ -1434,9 +1496,9 @@ namespace S100Framework
                     classBuilder.AppendLine("");
                 }
 
-                var attribute1 = p.GetCustomAttribute<System.Runtime.CompilerServices.RequiredMemberAttribute>();
+                var requiredMemberAttribute = p.GetCustomAttribute<System.Runtime.CompilerServices.RequiredMemberAttribute>();
 
-                if (attribute1 != null && !p.PropertyType.IsValueType) {
+                if (requiredMemberAttribute != null && !p.PropertyType.IsValueType) {
                     if (p.PropertyType == typeof(string))
                         constructorBuilder.AppendLine($"\t\t\t\t{p.Name} = string.Empty;");
                     else {
@@ -1444,17 +1506,24 @@ namespace S100Framework
                     }
                 }
 
-                var attribute2 = p.GetCustomAttribute<S100Framework.DomainModel.RoleAttribute>();
+                var roleAttribute = p.GetCustomAttribute<S100Framework.DomainModel.RoleAttribute>();
 
-                if (attribute2 is not null) {
-                    classBuilder.AppendLine($"\t\t\t[S100Framework.DomainModel.Role({attribute2.RoleName})]");
+                if (roleAttribute is not null) {
+                    classBuilder.AppendLine($"\t\t\t[S100Framework.DomainModel.Role({roleAttribute.RoleName})]");
+                }
+
+                var enumerationValueAttribute = p.GetCustomAttributes<S100Framework.DomainModel.EnumerationValueAttribute>();
+                if (enumerationValueAttribute.Any()) {
+                    foreach(var e in enumerationValueAttribute) {
+                        classBuilder.AppendLine($"\t\t\t[EnumerationValue({e.PropertyValue})]");
+                    }
                 }
 
                 if (!p.PropertyType.IsGenericType && p.PropertyType != typeof(String)) {
-                    if (attribute1 is not null)
+                    if (requiredMemberAttribute is not null)
                         classBuilder.AppendLine("\t\t\t[Required()]");
-                    var prop_prefix = "\t\t\tpublic";   // attribute1 != null ? "\t\t\tpublic required" : "\t\t\tpublic";
-                    var prop_type = attribute1 != null ? $"{p.PropertyType.Name}" : $"{p.PropertyType.Name}?";
+                    var prop_prefix = "\t\t\tpublic";   // requiredMemberAttribute != null ? "\t\t\tpublic required" : "\t\t\tpublic";
+                    var prop_type = requiredMemberAttribute != null ? $"{p.PropertyType.Name}" : $"{p.PropertyType.Name}?";
 
                     if ("System.Collections.Generic".Equals(p.PropertyType.Namespace))
                         prop_type = $"List<{p.Name}>";
@@ -1469,18 +1538,18 @@ namespace S100Framework
                     classBuilder.AppendLine($"\t\t\tpublic {prop_type} {p.Name} {{ get; set; }} = string.Empty;");
                 }
                 else {
-                    if (attribute1 is not null)
+                    if (requiredMemberAttribute is not null)
                         classBuilder.AppendLine("\t\t\t[Required()]");
-                    var prop_prefix = "\t\t\tpublic";   // attribute1 != null ? "\t\t\tpublic required" : "\t\t\tpublic";
+                    var prop_prefix = "\t\t\tpublic";   // requiredMemberAttribute != null ? "\t\t\tpublic required" : "\t\t\tpublic";
                     var prop_type = GetPropertyType(p.PropertyType);
 
-                    var prop_postfix = attribute1 != null ? "" : " = default;";
+                    var prop_postfix = requiredMemberAttribute != null ? "" : " = default;";
 
                     if ("System.Collections.Generic".Equals(p.PropertyType.Namespace)) {
                         prop_type = $"List<{prop_type}>";
-                        prop_postfix = attribute1 != null ? "" : " = [];";
+                        prop_postfix = requiredMemberAttribute != null ? "" : " = [];";
                     }
-                    else if (attribute1 is null)
+                    else if (requiredMemberAttribute is null)
                         prop_type += "?";
 
                     classBuilder.AppendLine($"{prop_prefix} {prop_type} {p.Name} {{ get; set; }}{prop_postfix}");
@@ -1505,7 +1574,9 @@ namespace S100Framework
         private static void BuildInformationBindings(string code, string xmlNamespace, XElement e, StringBuilder builder) {
         }
 
-        private static string BuildClassViewModel(string code, string name, Type type, string classNamespace, ICollection<string> codeLists, ICollection<string> roles, Action<StringBuilder>? postAction = null) {
+        private static string BuildClassViewModel(string code, string name, Type type, string classNamespace, ICollection<string> codeLists, ICollection<string> enumLists, ICollection<string> roles, Action<StringBuilder>? postAction = null) {
+            var ps = classNamespace.Split('.')[1];
+
             var classBuilder = new StringBuilder();
 
             if (code.ToLowerInvariant().Equals(code))
@@ -1538,12 +1609,14 @@ namespace S100Framework
 
             serializeBuilder.AppendLine($"\t\t\tvar instance = new {classNamespace}.{code} {{");
 
+            var insertEnumerationLists = new Dictionary<string, Action<StringBuilder>>();
+
             var insertCodeLists = new Dictionary<string, Action<StringBuilder>>();
 
             foreach (var p in type.GetProperties()) {
-                var attribute2 = p.GetCustomAttribute<S100Framework.DomainModel.RoleAttribute>();
+                var roleAttribute = p.GetCustomAttribute<S100Framework.DomainModel.RoleAttribute>();
 
-                if (attribute2 is not null) {
+                if (roleAttribute is not null) {
                     continue;
                 }
 
@@ -1551,7 +1624,7 @@ namespace S100Framework
                     classBuilder.AppendLine("");
                 }
 
-                var attribute1 = p.GetCustomAttribute<System.Runtime.CompilerServices.RequiredMemberAttribute>();
+                var requiredMemberAttribute = p.GetCustomAttribute<System.Runtime.CompilerServices.RequiredMemberAttribute>();
 
                 var viewModel = !p.PropertyType.IsValueType && !codeLists.Contains(p.Name) /*&& !roles.Contains(p.Name) */? "ViewModel" : string.Empty;
 
@@ -1574,7 +1647,7 @@ namespace S100Framework
                         classBuilder.AppendLine($"\t\t}}");
                     }
                     else {
-                        var prop_type = attribute1 != null ? $"{p.PropertyType.Name}{viewModel}" : $"{p.PropertyType.Name}{viewModel}?";
+                        var prop_type = requiredMemberAttribute != null ? $"{p.PropertyType.Name}{viewModel}" : $"{p.PropertyType.Name}{viewModel}?";
 
                         if (!p.PropertyType.IsValueType && !codeLists.Contains(p.Name)) {
                             loadBuilder.AppendLine($"\t\t\t{p.Name} = new ();");
@@ -1597,6 +1670,10 @@ namespace S100Framework
                             classBuilder.AppendLine($"\t\t[DomainModel.CodeList(nameof({p.PropertyType.Name}List))]");
                             classBuilder.AppendLine("\t\t[Editor(typeof(Editors.CodeListComboEditor), typeof(Editors.CodeListComboEditor))]");
                         }
+                        else if (enumLists.Contains(p.Name)) {
+                            classBuilder.AppendLine($"\t\t[DomainModel.EnumerationAttribute(nameof({p.PropertyType.Name}List))]");
+                            classBuilder.AppendLine("\t\t[Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]");
+                        }
                         classBuilder.AppendLine($"\t\t[Category(\"{p.DeclaringType!.Name}\")]");
 
                         if (p.GetCustomAttribute<Xceed.Wpf.Toolkit.PropertyGrid.Attributes.ExpandableObjectAttribute>() != null)
@@ -1616,13 +1693,23 @@ namespace S100Framework
                                 });
                             }
                         }
+                        else if (enumLists.Contains(p.Name)) {
+                            var enumerationValueAttribute = p.GetCustomAttributes<EnumerationValueAttribute>();
+
+                            insertEnumerationLists.Add(p.Name, (s) => {
+                                s.AppendLine($"\t\t[Browsable(false)]");
+
+                                var values = string.Join(',', enumerationValueAttribute.Select(e => $"({p.Name}){e.PropertyValue}"));
+                                s.AppendLine($"\t\tpublic {p.PropertyType.Name}[] {p.PropertyType.Name}List => [{values}];");
+                            });
+                        }
                     }
                 }
                 else {
                     var prop_name = GetPropertyType(p.PropertyType);
 
-                    var prop_type = attribute1 != null ? $"{prop_name}{viewModel}" : $"{prop_name}?";
-                    var prop_postfix = attribute1 != null ? "" : " = default";
+                    var prop_type = requiredMemberAttribute != null ? $"{prop_name}{viewModel}" : $"{prop_name}?";
+                    var prop_postfix = requiredMemberAttribute != null ? "" : " = default";
 
                     if ("System.Collections.Generic".Equals(p.PropertyType.Namespace)) {
                         loadBuilder.AppendLine($"\t\t\t{p.Name}.Clear();");
@@ -1641,7 +1728,12 @@ namespace S100Framework
                             classBuilder.AppendLine($"\t\t[DomainModel.CodeList(nameof({prop_name}List))]");
                             classBuilder.AppendLine("\t\t[Editor(typeof(Editors.CodeListCheckComboEditor), typeof(Editors.CodeListCheckComboEditor))]");
                         }
+                        else if (enumLists.Contains(prop_name)) {
+                            classBuilder.AppendLine($"\t\t[DomainModel.EnumerationAttribute(nameof({prop_name}List))]");
+                            classBuilder.AppendLine("\t\t[Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]");
+                        }
                         classBuilder.AppendLine($"\t\t[Category(\"{p.DeclaringType!.Name}\")]");
+
                         classBuilder.AppendLine($"\t\tpublic ObservableCollection<{prop_name}> {p.Name} {{get;set;}} = new ();");
 
                         if (codeLists.Contains(prop_name)) {
@@ -1651,6 +1743,16 @@ namespace S100Framework
                                     s.AppendLine($"\t\tpublic {prop_name}[] {prop_name}List => CodeList.{pluralizer.Pluralize(prop_name)}.ToArray();");
                                 });
                             }
+                        }
+                        else if (enumLists.Contains(prop_name)) {
+                            var enumerationValueAttribute = p.GetCustomAttributes<EnumerationValueAttribute>();
+
+                            insertEnumerationLists.Add(p.Name, (s) => {
+                                s.AppendLine($"\t\t[Browsable(false)]");
+
+                                var values = string.Join(',', enumerationValueAttribute.Select(e => $"({p.Name}){e.PropertyValue}"));
+                                s.AppendLine($"\t\tpublic {prop_name}[] {prop_name}List => [{values}];");
+                            });
                         }
                     }
                     else {
@@ -1663,6 +1765,10 @@ namespace S100Framework
                         if (codeLists.Contains(p.Name)) {
                             classBuilder.AppendLine("\t\t[DomainModel.CodeListAttribute]");
                         }
+                        else if (enumLists.Contains(p.Name)) {
+                            classBuilder.AppendLine($"\t\t[DomainModel.EnumerationAttribute(nameof({prop_name}List))]");
+                            classBuilder.AppendLine("\t\t[Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]");
+                        }
                         classBuilder.AppendLine($"\t\t[Category(\"{p.DeclaringType!.Name}\")]");
 
                         if (p.GetCustomAttribute<Xceed.Wpf.Toolkit.PropertyGrid.Attributes.ExpandableObjectAttribute>() != null)
@@ -1673,6 +1779,17 @@ namespace S100Framework
                         classBuilder.AppendLine($"\t\t\t\tSetValue(ref _{p.Name}, value);");
                         classBuilder.AppendLine($"\t\t\t}}");
                         classBuilder.AppendLine($"\t\t}}");
+
+                        if (enumLists.Contains(prop_name)) {
+                            var enumerationValueAttribute = p.GetCustomAttributes<EnumerationValueAttribute>();
+
+                            insertEnumerationLists.Add(p.Name, (s) => {
+                                s.AppendLine($"\t\t[Browsable(false)]");
+
+                                var values = string.Join(',', enumerationValueAttribute.Select(e => $"({p.Name}){e.PropertyValue}"));
+                                s.AppendLine($"\t\tpublic {prop_name}[] {prop_name}List => [{values}];");
+                            });
+                        }
                     }
                 }
 
@@ -1683,6 +1800,9 @@ namespace S100Framework
 
             foreach (var codelist in insertCodeLists) {
                 codelist.Value.Invoke(classBuilder);
+            }
+            foreach (var enumerationlist in insertEnumerationLists) {
+                enumerationlist.Value.Invoke(classBuilder);
             }
             serializeBuilder.AppendLine("\t\t\t};");
             serializeBuilder.AppendLine("\t\t\treturn System.Text.Json.JsonSerializer.Serialize(instance);");
@@ -1886,6 +2006,20 @@ namespace S100Framework
             // Remove unused using directives
             var rootWithoutUnusedUsings = root.RemoveNodes(unusedUsings, SyntaxRemoveOptions.KeepNoTrivia);
             return rootWithoutUnusedUsings;
+        }
+    }
+}
+
+namespace S100Framework.DomainModel
+{
+    [System.AttributeUsage(System.AttributeTargets.Property, AllowMultiple = true)]
+    public class EnumerationValueAttribute : System.Attribute
+    {
+        private int _propertyValue;
+        public int PropertyValue => _propertyValue;
+
+        public EnumerationValueAttribute(int propertyValue) {
+            _propertyValue = propertyValue;
         }
     }
 }

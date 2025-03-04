@@ -804,6 +804,8 @@ namespace S100Framework.WPF.ViewModel.S122 {
         }
 
         private onlineFunction? _onlineFunction = default;
+        [DomainModel.EnumerationAttribute(nameof(onlineFunctionList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("onlineResource")]
         public onlineFunction? onlineFunction {
             get {
@@ -814,6 +816,9 @@ namespace S100Framework.WPF.ViewModel.S122 {
                 SetValue(ref _onlineFunction, value);
             }
         }
+
+        [Browsable(false)]
+        public onlineFunction[] onlineFunctionList => [];
 
         public void Load(DomainModel.S122.ComplexAttributes.onlineResource instance) {
             onlineResourceLinkageURL = instance.onlineResourceLinkageURL;
@@ -1166,6 +1171,8 @@ namespace S100Framework.WPF.ViewModel.S122 {
     [CategoryOrder("FeatureBindings", 200)]
     public partial class textContentViewModel : ViewModelBase {
         private categoryOfText? _categoryOfText = default;
+        [DomainModel.EnumerationAttribute(nameof(categoryOfTextList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("textContent")]
         public categoryOfText? categoryOfText {
             get {
@@ -1190,6 +1197,8 @@ namespace S100Framework.WPF.ViewModel.S122 {
         }
 
         private sourceType? _sourceType = default;
+        [DomainModel.EnumerationAttribute(nameof(sourceTypeList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("textContent")]
         public sourceType? sourceType {
             get {
@@ -1212,6 +1221,12 @@ namespace S100Framework.WPF.ViewModel.S122 {
                 SetValue(ref _reportedDate, value);
             }
         }
+
+        [Browsable(false)]
+        public categoryOfText[] categoryOfTextList => [(categoryOfText)1, (categoryOfText)2, (categoryOfText)3];
+
+        [Browsable(false)]
+        public sourceType[] sourceTypeList => [(sourceType)1, (sourceType)2, (sourceType)7, (sourceType)8, (sourceType)9, (sourceType)10, (sourceType)11, (sourceType)12, (sourceType)13, (sourceType)14];
 
         public void Load(DomainModel.S122.ComplexAttributes.textContent instance) {
             categoryOfText = instance.categoryOfText;
@@ -1250,6 +1265,8 @@ namespace S100Framework.WPF.ViewModel.S122 {
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class timeIntervalsByDayOfWeekViewModel : ViewModelBase {
+        [DomainModel.EnumerationAttribute(nameof(dayOfWeekList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("timeIntervalsByDayOfWeek")]
         public ObservableCollection<dayOfWeek> dayOfWeek { get; set; } = new();
 
@@ -1270,6 +1287,9 @@ namespace S100Framework.WPF.ViewModel.S122 {
 
         [Category("timeIntervalsByDayOfWeek")]
         public ObservableCollection<TimeOnly> timeOfDayStart { get; set; } = new();
+
+        [Browsable(false)]
+        public dayOfWeek[] dayOfWeekList => [(dayOfWeek)1, (dayOfWeek)2, (dayOfWeek)3, (dayOfWeek)4, (dayOfWeek)5, (dayOfWeek)6, (dayOfWeek)7];
 
         public void Load(DomainModel.S122.ComplexAttributes.timeIntervalsByDayOfWeek instance) {
             dayOfWeek.Clear();
@@ -1327,6 +1347,8 @@ namespace S100Framework.WPF.ViewModel.S122 {
     [CategoryOrder("FeatureBindings", 200)]
     public partial class vesselsMeasurementsViewModel : ViewModelBase {
         private vesselsCharacteristics _vesselsCharacteristics;
+        [DomainModel.EnumerationAttribute(nameof(vesselsCharacteristicsList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("vesselsMeasurements")]
         public vesselsCharacteristics vesselsCharacteristics {
             get {
@@ -1351,6 +1373,8 @@ namespace S100Framework.WPF.ViewModel.S122 {
         }
 
         private vesselsCharacteristicsUnit _vesselsCharacteristicsUnit;
+        [DomainModel.EnumerationAttribute(nameof(vesselsCharacteristicsUnitList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("vesselsMeasurements")]
         public vesselsCharacteristicsUnit vesselsCharacteristicsUnit {
             get {
@@ -1363,6 +1387,8 @@ namespace S100Framework.WPF.ViewModel.S122 {
         }
 
         private comparisonOperator _comparisonOperator;
+        [DomainModel.EnumerationAttribute(nameof(comparisonOperatorList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("vesselsMeasurements")]
         public comparisonOperator comparisonOperator {
             get {
@@ -1373,6 +1399,15 @@ namespace S100Framework.WPF.ViewModel.S122 {
                 SetValue(ref _comparisonOperator, value);
             }
         }
+
+        [Browsable(false)]
+        public vesselsCharacteristics[] vesselsCharacteristicsList => [(vesselsCharacteristics)1, (vesselsCharacteristics)2, (vesselsCharacteristics)3, (vesselsCharacteristics)4, (vesselsCharacteristics)6, (vesselsCharacteristics)7, (vesselsCharacteristics)8, (vesselsCharacteristics)9, (vesselsCharacteristics)10, (vesselsCharacteristics)11, (vesselsCharacteristics)12, (vesselsCharacteristics)13];
+
+        [Browsable(false)]
+        public vesselsCharacteristicsUnit[] vesselsCharacteristicsUnitList => [(vesselsCharacteristicsUnit)3, (vesselsCharacteristicsUnit)4, (vesselsCharacteristicsUnit)5, (vesselsCharacteristicsUnit)6, (vesselsCharacteristicsUnit)7, (vesselsCharacteristicsUnit)9];
+
+        [Browsable(false)]
+        public comparisonOperator[] comparisonOperatorList => [(comparisonOperator)1, (comparisonOperator)2, (comparisonOperator)3, (comparisonOperator)4, (comparisonOperator)5, (comparisonOperator)6];
 
         public void Load(DomainModel.S122.ComplexAttributes.vesselsMeasurements instance) {
             vesselsCharacteristics = instance.vesselsCharacteristics;
@@ -1440,6 +1475,8 @@ namespace S100Framework.WPF.ViewModel.S122 {
         }
 
         private jurisdiction? _jurisdiction = default;
+        [DomainModel.EnumerationAttribute(nameof(jurisdictionList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("designation")]
         public jurisdiction? jurisdiction {
             get {
@@ -1462,6 +1499,9 @@ namespace S100Framework.WPF.ViewModel.S122 {
                 SetValue(ref _text, value);
             }
         }
+
+        [Browsable(false)]
+        public jurisdiction[] jurisdictionList => [];
 
         public void Load(DomainModel.S122.ComplexAttributes.designation instance) {
             designationScheme = instance.designationScheme;
@@ -1501,6 +1541,8 @@ namespace S100Framework.WPF.ViewModel.S122 {
     [CategoryOrder("FeatureBindings", 200)]
     public partial class bearingInformationViewModel : ViewModelBase {
         private cardinalDirection? _cardinalDirection = default;
+        [DomainModel.EnumerationAttribute(nameof(cardinalDirectionList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("bearingInformation")]
         public cardinalDirection? cardinalDirection {
             get {
@@ -1542,6 +1584,9 @@ namespace S100Framework.WPF.ViewModel.S122 {
                 SetValue(ref _orientation, value);
             }
         }
+
+        [Browsable(false)]
+        public cardinalDirection[] cardinalDirectionList => [];
 
         public void Load(DomainModel.S122.ComplexAttributes.bearingInformation instance) {
             cardinalDirection = instance.cardinalDirection;
@@ -1706,6 +1751,8 @@ namespace S100Framework.WPF.ViewModel.S122 {
     [CategoryOrder("FeatureBindings", 200)]
     public partial class scheduleByDayOfWeekViewModel : ViewModelBase {
         private categoryOfSchedule? _categoryOfSchedule = default;
+        [DomainModel.EnumerationAttribute(nameof(categoryOfScheduleList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("scheduleByDayOfWeek")]
         public categoryOfSchedule? categoryOfSchedule {
             get {
@@ -1719,6 +1766,9 @@ namespace S100Framework.WPF.ViewModel.S122 {
 
         [Category("scheduleByDayOfWeek")]
         public ObservableCollection<timeIntervalsByDayOfWeek> timeIntervalsByDayOfWeek { get; set; } = new();
+
+        [Browsable(false)]
+        public categoryOfSchedule[] categoryOfScheduleList => [(categoryOfSchedule)1, (categoryOfSchedule)2, (categoryOfSchedule)3];
 
         public void Load(DomainModel.S122.ComplexAttributes.scheduleByDayOfWeek instance) {
             categoryOfSchedule = instance.categoryOfSchedule;
@@ -1828,6 +1878,8 @@ namespace S100Framework.WPF.ViewModel.S122 {
 #pragma warning restore CS8981
     {
         private categoryOfCommunicationPreference? _categoryOfCommunicationPreference = default;
+        [DomainModel.EnumerationAttribute(nameof(categoryOfCommunicationPreferenceList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("telecommunications")]
         public categoryOfCommunicationPreference? categoryOfCommunicationPreference {
             get {
@@ -1876,6 +1928,8 @@ namespace S100Framework.WPF.ViewModel.S122 {
         }
 
         private telecommunicationService? _telecommunicationService = default;
+        [DomainModel.EnumerationAttribute(nameof(telecommunicationServiceList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("telecommunications")]
         public telecommunicationService? telecommunicationService {
             get {
@@ -1899,6 +1953,12 @@ namespace S100Framework.WPF.ViewModel.S122 {
                 SetValue(ref _scheduleByDayOfWeek, value);
             }
         }
+
+        [Browsable(false)]
+        public categoryOfCommunicationPreference[] categoryOfCommunicationPreferenceList => [(categoryOfCommunicationPreference)1, (categoryOfCommunicationPreference)2, (categoryOfCommunicationPreference)3, (categoryOfCommunicationPreference)4];
+
+        [Browsable(false)]
+        public telecommunicationService[] telecommunicationServiceList => [(telecommunicationService)1, (telecommunicationService)2, (telecommunicationService)3, (telecommunicationService)4, (telecommunicationService)5, (telecommunicationService)6, (telecommunicationService)7, (telecommunicationService)8];
 
         public void Load(DomainModel.S122.ComplexAttributes.telecommunications instance) {
             categoryOfCommunicationPreference = instance.categoryOfCommunicationPreference;
@@ -1982,6 +2042,8 @@ namespace S100Framework.WPF.ViewModel.S122 {
         }
 
         private sourceType? _sourceType = default;
+        [DomainModel.EnumerationAttribute(nameof(sourceTypeList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("InformationType")]
         public sourceType? sourceType {
             get {
@@ -2008,6 +2070,9 @@ namespace S100Framework.WPF.ViewModel.S122 {
         public class InformationTypeRefIdViewModel : InformationRefIdViewModel {
             public override string[] AssociationTypes => ["InformationType"];
         }
+
+        [Browsable(false)]
+        public sourceType[] sourceTypeList => [(sourceType)1, (sourceType)2, (sourceType)7, (sourceType)8, (sourceType)9, (sourceType)10, (sourceType)11, (sourceType)12, (sourceType)13, (sourceType)14];
 
         public void Load(DomainModel.S122.InformationTypes.InformationType instance) {
             featureName.Clear();
@@ -2079,6 +2144,8 @@ namespace S100Framework.WPF.ViewModel.S122 {
     [CategoryOrder("FeatureBindings", 200)]
     public partial class AbstractRxNViewModel : ViewModelBase {
         private categoryOfAuthority? _categoryOfAuthority = default;
+        [DomainModel.EnumerationAttribute(nameof(categoryOfAuthorityList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("AbstractRxN")]
         public categoryOfAuthority? categoryOfAuthority {
             get {
@@ -2141,6 +2208,8 @@ namespace S100Framework.WPF.ViewModel.S122 {
         }
 
         private sourceType? _sourceType = default;
+        [DomainModel.EnumerationAttribute(nameof(sourceTypeList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("InformationType")]
         public sourceType? sourceType {
             get {
@@ -2167,6 +2236,12 @@ namespace S100Framework.WPF.ViewModel.S122 {
         public class AbstractRxNRefIdViewModel : InformationRefIdViewModel {
             public override string[] AssociationTypes => ["AbstractRxN"];
         }
+
+        [Browsable(false)]
+        public categoryOfAuthority[] categoryOfAuthorityList => [(categoryOfAuthority)2, (categoryOfAuthority)3, (categoryOfAuthority)4, (categoryOfAuthority)5, (categoryOfAuthority)6, (categoryOfAuthority)7, (categoryOfAuthority)8, (categoryOfAuthority)9, (categoryOfAuthority)10, (categoryOfAuthority)11, (categoryOfAuthority)12, (categoryOfAuthority)13, (categoryOfAuthority)14, (categoryOfAuthority)15, (categoryOfAuthority)16];
+
+        [Browsable(false)]
+        public sourceType[] sourceTypeList => [(sourceType)1, (sourceType)2, (sourceType)7, (sourceType)8, (sourceType)9, (sourceType)10, (sourceType)11, (sourceType)12, (sourceType)13, (sourceType)14];
 
         public void Load(DomainModel.S122.InformationTypes.AbstractRxN instance) {
             categoryOfAuthority = instance.categoryOfAuthority;
@@ -2258,6 +2333,8 @@ namespace S100Framework.WPF.ViewModel.S122 {
     [CategoryOrder("FeatureBindings", 200)]
     public partial class NauticalInformationViewModel : ViewModelBase {
         private categoryOfAuthority? _categoryOfAuthority = default;
+        [DomainModel.EnumerationAttribute(nameof(categoryOfAuthorityList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("AbstractRxN")]
         public categoryOfAuthority? categoryOfAuthority {
             get {
@@ -2320,6 +2397,8 @@ namespace S100Framework.WPF.ViewModel.S122 {
         }
 
         private sourceType? _sourceType = default;
+        [DomainModel.EnumerationAttribute(nameof(sourceTypeList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("InformationType")]
         public sourceType? sourceType {
             get {
@@ -2346,6 +2425,12 @@ namespace S100Framework.WPF.ViewModel.S122 {
         public class NauticalInformationRefIdViewModel : InformationRefIdViewModel {
             public override string[] AssociationTypes => ["NauticalInformation"];
         }
+
+        [Browsable(false)]
+        public categoryOfAuthority[] categoryOfAuthorityList => [(categoryOfAuthority)2, (categoryOfAuthority)3, (categoryOfAuthority)4, (categoryOfAuthority)5, (categoryOfAuthority)6, (categoryOfAuthority)7, (categoryOfAuthority)8, (categoryOfAuthority)9, (categoryOfAuthority)10, (categoryOfAuthority)11, (categoryOfAuthority)12, (categoryOfAuthority)13, (categoryOfAuthority)14, (categoryOfAuthority)15, (categoryOfAuthority)16];
+
+        [Browsable(false)]
+        public sourceType[] sourceTypeList => [(sourceType)1, (sourceType)2, (sourceType)7, (sourceType)8, (sourceType)9, (sourceType)10, (sourceType)11, (sourceType)12, (sourceType)13, (sourceType)14];
 
         public void Load(DomainModel.S122.InformationTypes.NauticalInformation instance) {
             categoryOfAuthority = instance.categoryOfAuthority;
@@ -2437,6 +2522,8 @@ namespace S100Framework.WPF.ViewModel.S122 {
     [CategoryOrder("FeatureBindings", 200)]
     public partial class RegulationsViewModel : ViewModelBase {
         private categoryOfAuthority? _categoryOfAuthority = default;
+        [DomainModel.EnumerationAttribute(nameof(categoryOfAuthorityList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("AbstractRxN")]
         public categoryOfAuthority? categoryOfAuthority {
             get {
@@ -2499,6 +2586,8 @@ namespace S100Framework.WPF.ViewModel.S122 {
         }
 
         private sourceType? _sourceType = default;
+        [DomainModel.EnumerationAttribute(nameof(sourceTypeList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("InformationType")]
         public sourceType? sourceType {
             get {
@@ -2525,6 +2614,12 @@ namespace S100Framework.WPF.ViewModel.S122 {
         public class RegulationsRefIdViewModel : InformationRefIdViewModel {
             public override string[] AssociationTypes => ["Regulations"];
         }
+
+        [Browsable(false)]
+        public categoryOfAuthority[] categoryOfAuthorityList => [(categoryOfAuthority)2, (categoryOfAuthority)3, (categoryOfAuthority)4, (categoryOfAuthority)5, (categoryOfAuthority)6, (categoryOfAuthority)7, (categoryOfAuthority)8, (categoryOfAuthority)9, (categoryOfAuthority)10, (categoryOfAuthority)11, (categoryOfAuthority)12, (categoryOfAuthority)13, (categoryOfAuthority)14, (categoryOfAuthority)15, (categoryOfAuthority)16];
+
+        [Browsable(false)]
+        public sourceType[] sourceTypeList => [(sourceType)1, (sourceType)2, (sourceType)7, (sourceType)8, (sourceType)9, (sourceType)10, (sourceType)11, (sourceType)12, (sourceType)13, (sourceType)14];
 
         public void Load(DomainModel.S122.InformationTypes.Regulations instance) {
             categoryOfAuthority = instance.categoryOfAuthority;
@@ -2616,6 +2711,8 @@ namespace S100Framework.WPF.ViewModel.S122 {
     [CategoryOrder("FeatureBindings", 200)]
     public partial class RestrictionsViewModel : ViewModelBase {
         private categoryOfAuthority? _categoryOfAuthority = default;
+        [DomainModel.EnumerationAttribute(nameof(categoryOfAuthorityList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("AbstractRxN")]
         public categoryOfAuthority? categoryOfAuthority {
             get {
@@ -2678,6 +2775,8 @@ namespace S100Framework.WPF.ViewModel.S122 {
         }
 
         private sourceType? _sourceType = default;
+        [DomainModel.EnumerationAttribute(nameof(sourceTypeList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("InformationType")]
         public sourceType? sourceType {
             get {
@@ -2704,6 +2803,12 @@ namespace S100Framework.WPF.ViewModel.S122 {
         public class RestrictionsRefIdViewModel : InformationRefIdViewModel {
             public override string[] AssociationTypes => ["Restrictions"];
         }
+
+        [Browsable(false)]
+        public categoryOfAuthority[] categoryOfAuthorityList => [(categoryOfAuthority)2, (categoryOfAuthority)3, (categoryOfAuthority)4, (categoryOfAuthority)5, (categoryOfAuthority)6, (categoryOfAuthority)7, (categoryOfAuthority)8, (categoryOfAuthority)9, (categoryOfAuthority)10, (categoryOfAuthority)11, (categoryOfAuthority)12, (categoryOfAuthority)13, (categoryOfAuthority)14, (categoryOfAuthority)15, (categoryOfAuthority)16];
+
+        [Browsable(false)]
+        public sourceType[] sourceTypeList => [(sourceType)1, (sourceType)2, (sourceType)7, (sourceType)8, (sourceType)9, (sourceType)10, (sourceType)11, (sourceType)12, (sourceType)13, (sourceType)14];
 
         public void Load(DomainModel.S122.InformationTypes.Restrictions instance) {
             categoryOfAuthority = instance.categoryOfAuthority;
@@ -2795,6 +2900,8 @@ namespace S100Framework.WPF.ViewModel.S122 {
     [CategoryOrder("FeatureBindings", 200)]
     public partial class RecommendationsViewModel : ViewModelBase {
         private categoryOfAuthority? _categoryOfAuthority = default;
+        [DomainModel.EnumerationAttribute(nameof(categoryOfAuthorityList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("AbstractRxN")]
         public categoryOfAuthority? categoryOfAuthority {
             get {
@@ -2857,6 +2964,8 @@ namespace S100Framework.WPF.ViewModel.S122 {
         }
 
         private sourceType? _sourceType = default;
+        [DomainModel.EnumerationAttribute(nameof(sourceTypeList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("InformationType")]
         public sourceType? sourceType {
             get {
@@ -2883,6 +2992,12 @@ namespace S100Framework.WPF.ViewModel.S122 {
         public class RecommendationsRefIdViewModel : InformationRefIdViewModel {
             public override string[] AssociationTypes => ["Recommendations"];
         }
+
+        [Browsable(false)]
+        public categoryOfAuthority[] categoryOfAuthorityList => [(categoryOfAuthority)2, (categoryOfAuthority)3, (categoryOfAuthority)4, (categoryOfAuthority)5, (categoryOfAuthority)6, (categoryOfAuthority)7, (categoryOfAuthority)8, (categoryOfAuthority)9, (categoryOfAuthority)10, (categoryOfAuthority)11, (categoryOfAuthority)12, (categoryOfAuthority)13, (categoryOfAuthority)14, (categoryOfAuthority)15, (categoryOfAuthority)16];
+
+        [Browsable(false)]
+        public sourceType[] sourceTypeList => [(sourceType)1, (sourceType)2, (sourceType)7, (sourceType)8, (sourceType)9, (sourceType)10, (sourceType)11, (sourceType)12, (sourceType)13, (sourceType)14];
 
         public void Load(DomainModel.S122.InformationTypes.Recommendations instance) {
             categoryOfAuthority = instance.categoryOfAuthority;
@@ -2974,6 +3089,8 @@ namespace S100Framework.WPF.ViewModel.S122 {
     [CategoryOrder("FeatureBindings", 200)]
     public partial class AuthorityViewModel : ViewModelBase {
         private categoryOfAuthority _categoryOfAuthority;
+        [DomainModel.EnumerationAttribute(nameof(categoryOfAuthorityList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("Authority")]
         public categoryOfAuthority categoryOfAuthority {
             get {
@@ -3023,6 +3140,8 @@ namespace S100Framework.WPF.ViewModel.S122 {
         }
 
         private sourceType? _sourceType = default;
+        [DomainModel.EnumerationAttribute(nameof(sourceTypeList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("InformationType")]
         public sourceType? sourceType {
             get {
@@ -3049,6 +3168,12 @@ namespace S100Framework.WPF.ViewModel.S122 {
         public class AuthorityRefIdViewModel : InformationRefIdViewModel {
             public override string[] AssociationTypes => ["Authority"];
         }
+
+        [Browsable(false)]
+        public categoryOfAuthority[] categoryOfAuthorityList => [(categoryOfAuthority)2, (categoryOfAuthority)3, (categoryOfAuthority)4, (categoryOfAuthority)5, (categoryOfAuthority)6, (categoryOfAuthority)7, (categoryOfAuthority)8, (categoryOfAuthority)9, (categoryOfAuthority)10, (categoryOfAuthority)11, (categoryOfAuthority)12, (categoryOfAuthority)13, (categoryOfAuthority)14, (categoryOfAuthority)15, (categoryOfAuthority)16];
+
+        [Browsable(false)]
+        public sourceType[] sourceTypeList => [(sourceType)1, (sourceType)2, (sourceType)7, (sourceType)8, (sourceType)9, (sourceType)10, (sourceType)11, (sourceType)12, (sourceType)13, (sourceType)14];
 
         public void Load(DomainModel.S122.InformationTypes.Authority instance) {
             categoryOfAuthority = instance.categoryOfAuthority;
@@ -3156,6 +3281,8 @@ namespace S100Framework.WPF.ViewModel.S122 {
         }
 
         private categoryOfCommunicationPreference? _categoryOfCommunicationPreference = default;
+        [DomainModel.EnumerationAttribute(nameof(categoryOfCommunicationPreferenceList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("ContactDetails")]
         public categoryOfCommunicationPreference? categoryOfCommunicationPreference {
             get {
@@ -3213,6 +3340,8 @@ namespace S100Framework.WPF.ViewModel.S122 {
         public ObservableCollection<information> information { get; set; } = new();
 
         private categoryOfAuthority? _categoryOfAuthority = default;
+        [DomainModel.EnumerationAttribute(nameof(categoryOfAuthorityList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("AbstractRxN")]
         public categoryOfAuthority? categoryOfAuthority {
             get {
@@ -3275,6 +3404,8 @@ namespace S100Framework.WPF.ViewModel.S122 {
         }
 
         private sourceType? _sourceType = default;
+        [DomainModel.EnumerationAttribute(nameof(sourceTypeList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("InformationType")]
         public sourceType? sourceType {
             get {
@@ -3301,6 +3432,15 @@ namespace S100Framework.WPF.ViewModel.S122 {
         public class ContactDetailsRefIdViewModel : InformationRefIdViewModel {
             public override string[] AssociationTypes => ["ContactDetails"];
         }
+
+        [Browsable(false)]
+        public categoryOfCommunicationPreference[] categoryOfCommunicationPreferenceList => [(categoryOfCommunicationPreference)1, (categoryOfCommunicationPreference)2, (categoryOfCommunicationPreference)3, (categoryOfCommunicationPreference)4];
+
+        [Browsable(false)]
+        public categoryOfAuthority[] categoryOfAuthorityList => [(categoryOfAuthority)2, (categoryOfAuthority)3, (categoryOfAuthority)4, (categoryOfAuthority)5, (categoryOfAuthority)6, (categoryOfAuthority)7, (categoryOfAuthority)8, (categoryOfAuthority)9, (categoryOfAuthority)10, (categoryOfAuthority)11, (categoryOfAuthority)12, (categoryOfAuthority)13, (categoryOfAuthority)14, (categoryOfAuthority)15, (categoryOfAuthority)16];
+
+        [Browsable(false)]
+        public sourceType[] sourceTypeList => [(sourceType)1, (sourceType)2, (sourceType)7, (sourceType)8, (sourceType)9, (sourceType)10, (sourceType)11, (sourceType)12, (sourceType)13, (sourceType)14];
 
         public void Load(DomainModel.S122.InformationTypes.ContactDetails instance) {
             callName = instance.callName;
@@ -3513,6 +3653,8 @@ namespace S100Framework.WPF.ViewModel.S122 {
         }
 
         private sourceType? _sourceType = default;
+        [DomainModel.EnumerationAttribute(nameof(sourceTypeList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("InformationType")]
         public sourceType? sourceType {
             get {
@@ -3539,6 +3681,9 @@ namespace S100Framework.WPF.ViewModel.S122 {
         public class NonStandardWorkingDayRefIdViewModel : InformationRefIdViewModel {
             public override string[] AssociationTypes => ["NonStandardWorkingDay"];
         }
+
+        [Browsable(false)]
+        public sourceType[] sourceTypeList => [(sourceType)1, (sourceType)2, (sourceType)7, (sourceType)8, (sourceType)9, (sourceType)10, (sourceType)11, (sourceType)12, (sourceType)13, (sourceType)14];
 
         public void Load(DomainModel.S122.InformationTypes.NonStandardWorkingDay instance) {
             dateFixed.Clear();
@@ -3687,6 +3832,8 @@ namespace S100Framework.WPF.ViewModel.S122 {
         }
 
         private sourceType? _sourceType = default;
+        [DomainModel.EnumerationAttribute(nameof(sourceTypeList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("InformationType")]
         public sourceType? sourceType {
             get {
@@ -3713,6 +3860,9 @@ namespace S100Framework.WPF.ViewModel.S122 {
         public class ServiceHoursRefIdViewModel : InformationRefIdViewModel {
             public override string[] AssociationTypes => ["ServiceHours"];
         }
+
+        [Browsable(false)]
+        public sourceType[] sourceTypeList => [(sourceType)1, (sourceType)2, (sourceType)7, (sourceType)8, (sourceType)9, (sourceType)10, (sourceType)11, (sourceType)12, (sourceType)13, (sourceType)14];
 
         public void Load(DomainModel.S122.InformationTypes.ServiceHours instance) {
             scheduleByDayOfWeek.Clear();
@@ -3812,9 +3962,13 @@ namespace S100Framework.WPF.ViewModel.S122 {
             }
         }
 
+        [DomainModel.EnumerationAttribute(nameof(categoryOfCargoList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("Applicability")]
         public ObservableCollection<categoryOfCargo> categoryOfCargo { get; set; } = new();
 
+        [DomainModel.EnumerationAttribute(nameof(categoryOfDangerousOrHazardousCargoList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("Applicability")]
         public ObservableCollection<categoryOfDangerousOrHazardousCargo> categoryOfDangerousOrHazardousCargo { get; set; } = new();
 
@@ -3833,6 +3987,8 @@ namespace S100Framework.WPF.ViewModel.S122 {
         }
 
         private categoryOfVesselRegistry? _categoryOfVesselRegistry = default;
+        [DomainModel.EnumerationAttribute(nameof(categoryOfVesselRegistryList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("Applicability")]
         public categoryOfVesselRegistry? categoryOfVesselRegistry {
             get {
@@ -3845,6 +4001,8 @@ namespace S100Framework.WPF.ViewModel.S122 {
         }
 
         private logicalConnectives? _logicalConnectives = default;
+        [DomainModel.EnumerationAttribute(nameof(logicalConnectivesList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("Applicability")]
         public logicalConnectives? logicalConnectives {
             get {
@@ -3921,6 +4079,8 @@ namespace S100Framework.WPF.ViewModel.S122 {
         }
 
         private sourceType? _sourceType = default;
+        [DomainModel.EnumerationAttribute(nameof(sourceTypeList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("InformationType")]
         public sourceType? sourceType {
             get {
@@ -3950,6 +4110,21 @@ namespace S100Framework.WPF.ViewModel.S122 {
 
         [Browsable(false)]
         public categoryOfVessel[] categoryOfVesselList => CodeList.categoryOfVessels.ToArray();
+
+        [Browsable(false)]
+        public categoryOfCargo[] categoryOfCargoList => [(categoryOfCargo)1, (categoryOfCargo)2, (categoryOfCargo)3, (categoryOfCargo)4, (categoryOfCargo)5, (categoryOfCargo)6, (categoryOfCargo)7, (categoryOfCargo)8, (categoryOfCargo)9];
+
+        [Browsable(false)]
+        public categoryOfDangerousOrHazardousCargo[] categoryOfDangerousOrHazardousCargoList => [(categoryOfDangerousOrHazardousCargo)1, (categoryOfDangerousOrHazardousCargo)2, (categoryOfDangerousOrHazardousCargo)3, (categoryOfDangerousOrHazardousCargo)4, (categoryOfDangerousOrHazardousCargo)5, (categoryOfDangerousOrHazardousCargo)6, (categoryOfDangerousOrHazardousCargo)7, (categoryOfDangerousOrHazardousCargo)8, (categoryOfDangerousOrHazardousCargo)9, (categoryOfDangerousOrHazardousCargo)10, (categoryOfDangerousOrHazardousCargo)11, (categoryOfDangerousOrHazardousCargo)12, (categoryOfDangerousOrHazardousCargo)13, (categoryOfDangerousOrHazardousCargo)14, (categoryOfDangerousOrHazardousCargo)15, (categoryOfDangerousOrHazardousCargo)16, (categoryOfDangerousOrHazardousCargo)17, (categoryOfDangerousOrHazardousCargo)18, (categoryOfDangerousOrHazardousCargo)19, (categoryOfDangerousOrHazardousCargo)20, (categoryOfDangerousOrHazardousCargo)21];
+
+        [Browsable(false)]
+        public categoryOfVesselRegistry[] categoryOfVesselRegistryList => [(categoryOfVesselRegistry)1, (categoryOfVesselRegistry)2];
+
+        [Browsable(false)]
+        public logicalConnectives[] logicalConnectivesList => [(logicalConnectives)1, (logicalConnectives)2];
+
+        [Browsable(false)]
+        public sourceType[] sourceTypeList => [(sourceType)1, (sourceType)2, (sourceType)7, (sourceType)8, (sourceType)9, (sourceType)10, (sourceType)11, (sourceType)12, (sourceType)13, (sourceType)14];
 
         public void Load(DomainModel.S122.InformationTypes.Applicability instance) {
             inBallast = instance.inBallast;
@@ -4074,12 +4249,18 @@ namespace S100Framework.WPF.ViewModel.S122 {
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class RestrictedAreaViewModel : ViewModelBase {
+        [DomainModel.EnumerationAttribute(nameof(categoryOfRestrictedAreaList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("RestrictedArea")]
         public ObservableCollection<categoryOfRestrictedArea> categoryOfRestrictedArea { get; set; } = new();
 
+        [DomainModel.EnumerationAttribute(nameof(restrictionList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("RestrictedArea")]
         public ObservableCollection<restriction> restriction { get; set; } = new();
 
+        [DomainModel.EnumerationAttribute(nameof(statusList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("RestrictedArea")]
         public ObservableCollection<status> status { get; set; } = new();
 
@@ -4130,6 +4311,8 @@ namespace S100Framework.WPF.ViewModel.S122 {
         }
 
         private sourceType? _sourceType = default;
+        [DomainModel.EnumerationAttribute(nameof(sourceTypeList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("FeatureType")]
         public sourceType? sourceType {
             get {
@@ -4156,6 +4339,18 @@ namespace S100Framework.WPF.ViewModel.S122 {
         public class RestrictedAreaRefIdViewModel : FeatureRefIdViewModel {
             public override string[] AssociationTypes => ["RestrictedArea"];
         }
+
+        [Browsable(false)]
+        public categoryOfRestrictedArea[] categoryOfRestrictedAreaList => [(categoryOfRestrictedArea)1, (categoryOfRestrictedArea)4, (categoryOfRestrictedArea)5, (categoryOfRestrictedArea)6, (categoryOfRestrictedArea)7, (categoryOfRestrictedArea)8, (categoryOfRestrictedArea)9, (categoryOfRestrictedArea)10, (categoryOfRestrictedArea)12, (categoryOfRestrictedArea)14, (categoryOfRestrictedArea)18, (categoryOfRestrictedArea)19, (categoryOfRestrictedArea)20, (categoryOfRestrictedArea)21, (categoryOfRestrictedArea)22, (categoryOfRestrictedArea)23, (categoryOfRestrictedArea)24, (categoryOfRestrictedArea)25, (categoryOfRestrictedArea)26, (categoryOfRestrictedArea)27, (categoryOfRestrictedArea)28, (categoryOfRestrictedArea)29, (categoryOfRestrictedArea)30, (categoryOfRestrictedArea)31, (categoryOfRestrictedArea)32, (categoryOfRestrictedArea)33];
+
+        [Browsable(false)]
+        public restriction[] restrictionList => [(restriction)1, (restriction)2, (restriction)3, (restriction)4, (restriction)5, (restriction)6, (restriction)7, (restriction)8, (restriction)9, (restriction)10, (restriction)11, (restriction)12, (restriction)13, (restriction)14, (restriction)15, (restriction)16, (restriction)17, (restriction)18, (restriction)19, (restriction)20, (restriction)21, (restriction)22, (restriction)23, (restriction)24, (restriction)25, (restriction)26, (restriction)27, (restriction)28, (restriction)29, (restriction)30, (restriction)31, (restriction)32, (restriction)33, (restriction)34, (restriction)35, (restriction)36, (restriction)37, (restriction)38, (restriction)39, (restriction)40, (restriction)41];
+
+        [Browsable(false)]
+        public status[] statusList => [(status)1, (status)2, (status)3, (status)4, (status)5, (status)6, (status)7, (status)8, (status)9, (status)11, (status)12, (status)13, (status)14, (status)15, (status)16, (status)17, (status)18, (status)19, (status)20, (status)21, (status)22, (status)23, (status)24, (status)25, (status)26, (status)27, (status)28, (status)29, (status)30, (status)31, (status)32, (status)33, (status)34, (status)35, (status)36, (status)37, (status)38, (status)39, (status)41, (status)42, (status)43];
+
+        [Browsable(false)]
+        public sourceType[] sourceTypeList => [(sourceType)1, (sourceType)2, (sourceType)7, (sourceType)8, (sourceType)9, (sourceType)10, (sourceType)11, (sourceType)12, (sourceType)13, (sourceType)14];
 
         public void Load(DomainModel.S122.FeatureTypes.RestrictedArea instance) {
             categoryOfRestrictedArea.Clear();
@@ -4270,10 +4465,14 @@ namespace S100Framework.WPF.ViewModel.S122 {
             }
         }
 
+        [DomainModel.EnumerationAttribute(nameof(categoryOfRestrictedAreaList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("MarineProtectedArea")]
         public ObservableCollection<categoryOfRestrictedArea> categoryOfRestrictedArea { get; set; } = new();
 
         private jurisdiction _jurisdiction;
+        [DomainModel.EnumerationAttribute(nameof(jurisdictionList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("MarineProtectedArea")]
         public jurisdiction jurisdiction {
             get {
@@ -4285,9 +4484,13 @@ namespace S100Framework.WPF.ViewModel.S122 {
             }
         }
 
+        [DomainModel.EnumerationAttribute(nameof(restrictionList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("MarineProtectedArea")]
         public ObservableCollection<restriction> restriction { get; set; } = new();
 
+        [DomainModel.EnumerationAttribute(nameof(statusList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("MarineProtectedArea")]
         public ObservableCollection<status> status { get; set; } = new();
 
@@ -4341,6 +4544,8 @@ namespace S100Framework.WPF.ViewModel.S122 {
         }
 
         private sourceType? _sourceType = default;
+        [DomainModel.EnumerationAttribute(nameof(sourceTypeList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("FeatureType")]
         public sourceType? sourceType {
             get {
@@ -4370,6 +4575,21 @@ namespace S100Framework.WPF.ViewModel.S122 {
 
         [Browsable(false)]
         public categoryOfMarineProtectedArea[] categoryOfMarineProtectedAreaList => CodeList.categoryOfMarineProtectedAreas.ToArray();
+
+        [Browsable(false)]
+        public categoryOfRestrictedArea[] categoryOfRestrictedAreaList => [(categoryOfRestrictedArea)1, (categoryOfRestrictedArea)4, (categoryOfRestrictedArea)5, (categoryOfRestrictedArea)6, (categoryOfRestrictedArea)7, (categoryOfRestrictedArea)8, (categoryOfRestrictedArea)9, (categoryOfRestrictedArea)10, (categoryOfRestrictedArea)12, (categoryOfRestrictedArea)14, (categoryOfRestrictedArea)18, (categoryOfRestrictedArea)19, (categoryOfRestrictedArea)20, (categoryOfRestrictedArea)21, (categoryOfRestrictedArea)22, (categoryOfRestrictedArea)23, (categoryOfRestrictedArea)24, (categoryOfRestrictedArea)25, (categoryOfRestrictedArea)26, (categoryOfRestrictedArea)27, (categoryOfRestrictedArea)28, (categoryOfRestrictedArea)29, (categoryOfRestrictedArea)30, (categoryOfRestrictedArea)31, (categoryOfRestrictedArea)32, (categoryOfRestrictedArea)33];
+
+        [Browsable(false)]
+        public jurisdiction[] jurisdictionList => [(jurisdiction)1, (jurisdiction)2, (jurisdiction)3];
+
+        [Browsable(false)]
+        public restriction[] restrictionList => [(restriction)1, (restriction)2, (restriction)3, (restriction)4, (restriction)5, (restriction)6, (restriction)7, (restriction)8, (restriction)9, (restriction)10, (restriction)11, (restriction)12, (restriction)13, (restriction)14, (restriction)15, (restriction)16, (restriction)17, (restriction)18, (restriction)19, (restriction)20, (restriction)21, (restriction)22, (restriction)23, (restriction)24, (restriction)25, (restriction)26, (restriction)27, (restriction)28, (restriction)29, (restriction)30, (restriction)31, (restriction)32, (restriction)33, (restriction)34, (restriction)35, (restriction)36, (restriction)37, (restriction)38, (restriction)39, (restriction)40, (restriction)41];
+
+        [Browsable(false)]
+        public status[] statusList => [(status)1, (status)2, (status)3, (status)4, (status)5, (status)6, (status)7, (status)8, (status)9, (status)11, (status)12, (status)13, (status)14, (status)15, (status)16, (status)17, (status)18, (status)19, (status)20, (status)21, (status)22, (status)23, (status)24, (status)25, (status)26, (status)27, (status)28, (status)29, (status)30, (status)31, (status)32, (status)33, (status)34, (status)35, (status)36, (status)37, (status)38, (status)39, (status)41, (status)42, (status)43];
+
+        [Browsable(false)]
+        public sourceType[] sourceTypeList => [(sourceType)1, (sourceType)2, (sourceType)7, (sourceType)8, (sourceType)9, (sourceType)10, (sourceType)11, (sourceType)12, (sourceType)13, (sourceType)14];
 
         public void Load(DomainModel.S122.FeatureTypes.MarineProtectedArea instance) {
             categoryOfMarineProtectedArea = instance.categoryOfMarineProtectedArea;
@@ -4486,6 +4706,8 @@ namespace S100Framework.WPF.ViewModel.S122 {
     [CategoryOrder("FeatureBindings", 200)]
     public partial class VesselTrafficServiceAreaViewModel : ViewModelBase {
         private categoryOfVesselTrafficService _categoryOfVesselTrafficService;
+        [DomainModel.EnumerationAttribute(nameof(categoryOfVesselTrafficServiceList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("VesselTrafficServiceArea")]
         public categoryOfVesselTrafficService categoryOfVesselTrafficService {
             get {
@@ -4544,6 +4766,8 @@ namespace S100Framework.WPF.ViewModel.S122 {
         }
 
         private sourceType? _sourceType = default;
+        [DomainModel.EnumerationAttribute(nameof(sourceTypeList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("FeatureType")]
         public sourceType? sourceType {
             get {
@@ -4570,6 +4794,12 @@ namespace S100Framework.WPF.ViewModel.S122 {
         public class VesselTrafficServiceAreaRefIdViewModel : FeatureRefIdViewModel {
             public override string[] AssociationTypes => ["VesselTrafficServiceArea"];
         }
+
+        [Browsable(false)]
+        public categoryOfVesselTrafficService[] categoryOfVesselTrafficServiceList => [(categoryOfVesselTrafficService)1, (categoryOfVesselTrafficService)2, (categoryOfVesselTrafficService)3, (categoryOfVesselTrafficService)4, (categoryOfVesselTrafficService)5];
+
+        [Browsable(false)]
+        public sourceType[] sourceTypeList => [(sourceType)1, (sourceType)2, (sourceType)7, (sourceType)8, (sourceType)9, (sourceType)10, (sourceType)11, (sourceType)12, (sourceType)13, (sourceType)14];
 
         public void Load(DomainModel.S122.FeatureTypes.VesselTrafficServiceArea instance) {
             categoryOfVesselTrafficService = instance.categoryOfVesselTrafficService;

@@ -4,6 +4,26 @@ using System.ComponentModel;
 
 namespace S100Framework.DomainModel {
     [System.AttributeUsage(System.AttributeTargets.Property, AllowMultiple = false)]
+    public class EnumerationAttribute : System.Attribute {
+        private string _propertyName;
+        public string PropertyName => _propertyName;
+
+        public EnumerationAttribute(string propertyName) {
+            _propertyName = propertyName;
+        }
+    }
+
+    [System.AttributeUsage(System.AttributeTargets.Property, AllowMultiple = true)]
+    public class EnumerationValueAttribute : System.Attribute {
+        private int _propertyValue;
+        public int PropertyValue => _propertyValue;
+
+        public EnumerationValueAttribute(int propertyValue) {
+            _propertyValue = propertyValue;
+        }
+    }
+
+    [System.AttributeUsage(System.AttributeTargets.Property, AllowMultiple = false)]
     public class CodeListAttribute : System.Attribute {
         private string _propertyName;
         public string PropertyName => _propertyName;
