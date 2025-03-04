@@ -124,6 +124,8 @@ namespace TestS100Framework
                 Build_S131();
 
                 //Build_S201();
+
+                Build_S501();
             }
 
             [Fact]
@@ -131,6 +133,8 @@ namespace TestS100Framework
                 Build_S101();
                 File.WriteAllText(@"..\..\..\..\..\..\src\Core\S100Framework.Catalogues\S-101_FC.g.cs", File.ReadAllText(@".\..\..\..\S-101_FC.cs"));
                 File.WriteAllText(@"..\..\..\..\..\..\src\UI\S100Framework.WPF\S-101_ViewModel.g.cs", File.ReadAllText(@".\..\..\..\S-101_ViewModel.cs"));
+
+                File.WriteAllText(@"..\..\..\..\..\..\src\Core\S100Framework.Catalogues\DomainModelBase.cs", File.ReadAllText(@".\..\..\..\DomainModelBase.cs"));
 
                 Build_S122();
                 File.WriteAllText(@"..\..\..\..\..\..\src\Core\S100Framework.Catalogues\S-122_FC.g.cs", File.ReadAllText(@".\..\..\..\S-122_FC.cs"));
@@ -152,7 +156,9 @@ namespace TestS100Framework
                 //File.WriteAllText(@"..\..\..\..\..\..\src\Core\S100Framework.Catalogues\S-201_FC.g.cs", File.ReadAllText(@".\..\..\..\S-201_FC.cs"));
                 //File.WriteAllText(@"..\..\..\..\..\..\src\UI\S100Framework.WPF\S-201_ViewModel.g.cs", File.ReadAllText(@".\..\..\..\S-201_ViewModel.cs"));
 
-                File.WriteAllText(@"..\..\..\..\..\..\src\Core\S100Framework.Catalogues\DomainModelBase.cs", File.ReadAllText(@".\..\..\..\DomainModelBase.cs"));
+                Build_S501();
+                File.WriteAllText(@"..\..\..\..\..\..\src\Core\S100Framework.Catalogues\S-501_FC.g.cs", File.ReadAllText(@".\..\..\..\S-501_FC.cs"));
+                File.WriteAllText(@"..\..\..\..\..\..\src\UI\S100Framework.WPF\S-501_ViewModel.g.cs", File.ReadAllText(@".\..\..\..\S-501_ViewModel.cs"));                
             }
 
             [Fact]
@@ -239,6 +245,19 @@ namespace TestS100Framework
 
                 File.WriteAllText(@".\..\..\..\DomainModelBase.cs", content.common, Encoding.UTF8);
             }
+
+            [Fact]
+            public void Build_S501() {
+                var s100 = XDocument.Load(@".\Artifacts\S-501_FC_0_0_9_2024-08-09 - LOCAL.xml");
+
+                var content = S100Framework.ClassBuilder.CatalogueBuilder(s100, "http://www.iho.int/S201/1.0");
+
+                File.WriteAllText(@".\..\..\..\S-501_FC.cs", content.fc, Encoding.UTF8);
+                File.WriteAllText(@".\..\..\..\S-501_ViewModel.cs", content.view, Encoding.UTF8);
+
+                File.WriteAllText(@".\..\..\..\DomainModelBase.cs", content.common, Encoding.UTF8);
+            }
+
 
             [Fact]
             public void Test_FeatureBindings() {

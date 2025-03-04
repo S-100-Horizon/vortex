@@ -858,8 +858,22 @@ namespace S100Framework.DomainModel.S122 {
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class textContent {
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
             public categoryOfText? categoryOfText { get; set; } = default;
             public String source { get; set; } = string.Empty;
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(7)]
+            [EnumerationValue(8)]
+            [EnumerationValue(9)]
+            [EnumerationValue(10)]
+            [EnumerationValue(11)]
+            [EnumerationValue(12)]
+            [EnumerationValue(13)]
+            [EnumerationValue(14)]
             public sourceType? sourceType { get; set; } = default;
             public DateOnly? reportedDate { get; set; } = default;
 
@@ -870,6 +884,13 @@ namespace S100Framework.DomainModel.S122 {
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class timeIntervalsByDayOfWeek {
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
+            [EnumerationValue(4)]
+            [EnumerationValue(5)]
+            [EnumerationValue(6)]
+            [EnumerationValue(7)]
             public List<dayOfWeek> dayOfWeek { get; set; } = [];
             public Boolean? dayOfWeekIsRange { get; set; } = default;
             public List<TimeOnly> timeOfDayEnd { get; set; } = [];
@@ -882,15 +903,39 @@ namespace S100Framework.DomainModel.S122 {
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class vesselsMeasurements {
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
+            [EnumerationValue(4)]
+            [EnumerationValue(6)]
+            [EnumerationValue(7)]
+            [EnumerationValue(8)]
+            [EnumerationValue(9)]
+            [EnumerationValue(10)]
+            [EnumerationValue(11)]
+            [EnumerationValue(12)]
+            [EnumerationValue(13)]
             [Required()]
             public vesselsCharacteristics vesselsCharacteristics { get; set; }
 
             [Required()]
             public Decimal vesselsCharacteristicsValue { get; set; }
 
+            [EnumerationValue(3)]
+            [EnumerationValue(4)]
+            [EnumerationValue(5)]
+            [EnumerationValue(6)]
+            [EnumerationValue(7)]
+            [EnumerationValue(9)]
             [Required()]
             public vesselsCharacteristicsUnit vesselsCharacteristicsUnit { get; set; }
 
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
+            [EnumerationValue(4)]
+            [EnumerationValue(5)]
+            [EnumerationValue(6)]
             [Required()]
             public comparisonOperator comparisonOperator { get; set; }
 
@@ -949,6 +994,9 @@ namespace S100Framework.DomainModel.S122 {
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class scheduleByDayOfWeek {
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
             public categoryOfSchedule? categoryOfSchedule { get; set; } = default;
 
             [Required()]
@@ -987,10 +1035,23 @@ namespace S100Framework.DomainModel.S122 {
         public partial class telecommunications
 #pragma warning restore CS8981
         {
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
+            [EnumerationValue(4)]
             public categoryOfCommunicationPreference? categoryOfCommunicationPreference { get; set; } = default;
             public String contactInstructions { get; set; } = string.Empty;
             public String telecomCarrier { get; set; } = string.Empty;
             public String telecommunicationIdentifier { get; set; } = string.Empty;
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
+            [EnumerationValue(4)]
+            [EnumerationValue(5)]
+            [EnumerationValue(6)]
+            [EnumerationValue(7)]
+            [EnumerationValue(8)]
             public telecommunicationService? telecommunicationService { get; set; } = default;
             public scheduleByDayOfWeek? scheduleByDayOfWeek { get; set; }
 
@@ -1067,6 +1128,17 @@ namespace S100Framework.DomainModel.S122 {
             public List<periodicDateRange> periodicDateRange { get; set; } = [];
             public List<graphic> graphic { get; set; } = [];
             public String source { get; set; } = string.Empty;
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(7)]
+            [EnumerationValue(8)]
+            [EnumerationValue(9)]
+            [EnumerationValue(10)]
+            [EnumerationValue(11)]
+            [EnumerationValue(12)]
+            [EnumerationValue(13)]
+            [EnumerationValue(14)]
             public sourceType? sourceType { get; set; } = default;
             public DateOnly? reportedDate { get; set; } = default;
             public override string Code => nameof(InformationType);
@@ -1078,6 +1150,21 @@ namespace S100Framework.DomainModel.S122 {
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class AbstractRxN : InformationType {
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
+            [EnumerationValue(4)]
+            [EnumerationValue(5)]
+            [EnumerationValue(6)]
+            [EnumerationValue(7)]
+            [EnumerationValue(8)]
+            [EnumerationValue(9)]
+            [EnumerationValue(10)]
+            [EnumerationValue(11)]
+            [EnumerationValue(12)]
+            [EnumerationValue(13)]
+            [EnumerationValue(14)]
+            [EnumerationValue(15)]
+            [EnumerationValue(16)]
             public categoryOfAuthority? categoryOfAuthority { get; set; } = default;
             public textContent? textContent { get; set; }
             public List<rxNCode> rxNCode { get; set; } = [];
@@ -1126,6 +1213,21 @@ namespace S100Framework.DomainModel.S122 {
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class Authority : InformationType {
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
+            [EnumerationValue(4)]
+            [EnumerationValue(5)]
+            [EnumerationValue(6)]
+            [EnumerationValue(7)]
+            [EnumerationValue(8)]
+            [EnumerationValue(9)]
+            [EnumerationValue(10)]
+            [EnumerationValue(11)]
+            [EnumerationValue(12)]
+            [EnumerationValue(13)]
+            [EnumerationValue(14)]
+            [EnumerationValue(15)]
+            [EnumerationValue(16)]
             [Required()]
             public categoryOfAuthority categoryOfAuthority { get; set; }
             public List<textContent> textContent { get; set; } = [];
@@ -1140,6 +1242,11 @@ namespace S100Framework.DomainModel.S122 {
         public partial class ContactDetails : AbstractRxN {
             public String callName { get; set; } = string.Empty;
             public String callSign { get; set; } = string.Empty;
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
+            [EnumerationValue(4)]
             public categoryOfCommunicationPreference? categoryOfCommunicationPreference { get; set; } = default;
             public List<String> communicationChannel { get; set; } = [];
             public String contactInstructions { get; set; } = string.Empty;
@@ -1190,10 +1297,66 @@ namespace S100Framework.DomainModel.S122 {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class Applicability : InformationType {
             public Boolean? inBallast { get; set; } = default;
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
+            [EnumerationValue(4)]
+            [EnumerationValue(5)]
+            [EnumerationValue(6)]
+            [EnumerationValue(7)]
+            [EnumerationValue(8)]
+            [EnumerationValue(9)]
             public List<categoryOfCargo> categoryOfCargo { get; set; } = [];
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
+            [EnumerationValue(4)]
+            [EnumerationValue(5)]
+            [EnumerationValue(6)]
+            [EnumerationValue(7)]
+            [EnumerationValue(8)]
+            [EnumerationValue(9)]
+            [EnumerationValue(10)]
+            [EnumerationValue(11)]
+            [EnumerationValue(12)]
+            [EnumerationValue(13)]
+            [EnumerationValue(14)]
+            [EnumerationValue(15)]
+            [EnumerationValue(16)]
+            [EnumerationValue(17)]
+            [EnumerationValue(18)]
+            [EnumerationValue(19)]
+            [EnumerationValue(20)]
+            [EnumerationValue(21)]
             public List<categoryOfDangerousOrHazardousCargo> categoryOfDangerousOrHazardousCargo { get; set; } = [];
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
+            [EnumerationValue(4)]
+            [EnumerationValue(5)]
+            [EnumerationValue(6)]
+            [EnumerationValue(7)]
+            [EnumerationValue(8)]
+            [EnumerationValue(9)]
+            [EnumerationValue(10)]
+            [EnumerationValue(11)]
+            [EnumerationValue(12)]
+            [EnumerationValue(13)]
+            [EnumerationValue(14)]
+            [EnumerationValue(15)]
+            [EnumerationValue(16)]
+            [EnumerationValue(17)]
             public categoryOfVessel? categoryOfVessel { get; set; }
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
             public categoryOfVesselRegistry? categoryOfVesselRegistry { get; set; } = default;
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
             public logicalConnectives? logicalConnectives { get; set; } = default;
             public Int32? thicknessOfIceCapability { get; set; } = default;
             public String vesselPerformance { get; set; } = string.Empty;
@@ -1220,6 +1383,17 @@ namespace S100Framework.DomainModel.S122 {
             public List<textContent> textContent { get; set; } = [];
             public String interoperabilityIdentifier { get; set; } = string.Empty;
             public String source { get; set; } = string.Empty;
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(7)]
+            [EnumerationValue(8)]
+            [EnumerationValue(9)]
+            [EnumerationValue(10)]
+            [EnumerationValue(11)]
+            [EnumerationValue(12)]
+            [EnumerationValue(13)]
+            [EnumerationValue(14)]
             public sourceType? sourceType { get; set; } = default;
             public DateOnly? reportedDate { get; set; } = default;
             public override string Code => nameof(FeatureType);
@@ -1232,10 +1406,119 @@ namespace S100Framework.DomainModel.S122 {
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class RestrictedArea : FeatureType {
+            [EnumerationValue(1)]
+            [EnumerationValue(4)]
+            [EnumerationValue(5)]
+            [EnumerationValue(6)]
+            [EnumerationValue(7)]
+            [EnumerationValue(8)]
+            [EnumerationValue(9)]
+            [EnumerationValue(10)]
+            [EnumerationValue(12)]
+            [EnumerationValue(14)]
+            [EnumerationValue(18)]
+            [EnumerationValue(19)]
+            [EnumerationValue(20)]
+            [EnumerationValue(21)]
+            [EnumerationValue(22)]
+            [EnumerationValue(23)]
+            [EnumerationValue(24)]
+            [EnumerationValue(25)]
+            [EnumerationValue(26)]
+            [EnumerationValue(27)]
+            [EnumerationValue(28)]
+            [EnumerationValue(29)]
+            [EnumerationValue(30)]
+            [EnumerationValue(31)]
+            [EnumerationValue(32)]
+            [EnumerationValue(33)]
             public List<categoryOfRestrictedArea> categoryOfRestrictedArea { get; set; } = [];
 
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
+            [EnumerationValue(4)]
+            [EnumerationValue(5)]
+            [EnumerationValue(6)]
+            [EnumerationValue(7)]
+            [EnumerationValue(8)]
+            [EnumerationValue(9)]
+            [EnumerationValue(10)]
+            [EnumerationValue(11)]
+            [EnumerationValue(12)]
+            [EnumerationValue(13)]
+            [EnumerationValue(14)]
+            [EnumerationValue(15)]
+            [EnumerationValue(16)]
+            [EnumerationValue(17)]
+            [EnumerationValue(18)]
+            [EnumerationValue(19)]
+            [EnumerationValue(20)]
+            [EnumerationValue(21)]
+            [EnumerationValue(22)]
+            [EnumerationValue(23)]
+            [EnumerationValue(24)]
+            [EnumerationValue(25)]
+            [EnumerationValue(26)]
+            [EnumerationValue(27)]
+            [EnumerationValue(28)]
+            [EnumerationValue(29)]
+            [EnumerationValue(30)]
+            [EnumerationValue(31)]
+            [EnumerationValue(32)]
+            [EnumerationValue(33)]
+            [EnumerationValue(34)]
+            [EnumerationValue(35)]
+            [EnumerationValue(36)]
+            [EnumerationValue(37)]
+            [EnumerationValue(38)]
+            [EnumerationValue(39)]
+            [EnumerationValue(40)]
+            [EnumerationValue(41)]
             [Required()]
             public List<restriction> restriction { get; set; }
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
+            [EnumerationValue(4)]
+            [EnumerationValue(5)]
+            [EnumerationValue(6)]
+            [EnumerationValue(7)]
+            [EnumerationValue(8)]
+            [EnumerationValue(9)]
+            [EnumerationValue(11)]
+            [EnumerationValue(12)]
+            [EnumerationValue(13)]
+            [EnumerationValue(14)]
+            [EnumerationValue(15)]
+            [EnumerationValue(16)]
+            [EnumerationValue(17)]
+            [EnumerationValue(18)]
+            [EnumerationValue(19)]
+            [EnumerationValue(20)]
+            [EnumerationValue(21)]
+            [EnumerationValue(22)]
+            [EnumerationValue(23)]
+            [EnumerationValue(24)]
+            [EnumerationValue(25)]
+            [EnumerationValue(26)]
+            [EnumerationValue(27)]
+            [EnumerationValue(28)]
+            [EnumerationValue(29)]
+            [EnumerationValue(30)]
+            [EnumerationValue(31)]
+            [EnumerationValue(32)]
+            [EnumerationValue(33)]
+            [EnumerationValue(34)]
+            [EnumerationValue(35)]
+            [EnumerationValue(36)]
+            [EnumerationValue(37)]
+            [EnumerationValue(38)]
+            [EnumerationValue(39)]
+            [EnumerationValue(41)]
+            [EnumerationValue(42)]
+            [EnumerationValue(43)]
             public List<status> status { get; set; } = [];
             public override string Code => nameof(RestrictedArea);
 
@@ -1247,13 +1530,134 @@ namespace S100Framework.DomainModel.S122 {
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class MarineProtectedArea : FeatureType {
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
+            [EnumerationValue(4)]
+            [EnumerationValue(5)]
+            [EnumerationValue(6)]
+            [EnumerationValue(7)]
             [Required()]
             public categoryOfMarineProtectedArea categoryOfMarineProtectedArea { get; set; }
+
+            [EnumerationValue(1)]
+            [EnumerationValue(4)]
+            [EnumerationValue(5)]
+            [EnumerationValue(6)]
+            [EnumerationValue(7)]
+            [EnumerationValue(8)]
+            [EnumerationValue(9)]
+            [EnumerationValue(10)]
+            [EnumerationValue(12)]
+            [EnumerationValue(14)]
+            [EnumerationValue(18)]
+            [EnumerationValue(19)]
+            [EnumerationValue(20)]
+            [EnumerationValue(21)]
+            [EnumerationValue(22)]
+            [EnumerationValue(23)]
+            [EnumerationValue(24)]
+            [EnumerationValue(25)]
+            [EnumerationValue(26)]
+            [EnumerationValue(27)]
+            [EnumerationValue(28)]
+            [EnumerationValue(29)]
+            [EnumerationValue(30)]
+            [EnumerationValue(31)]
+            [EnumerationValue(32)]
+            [EnumerationValue(33)]
             public List<categoryOfRestrictedArea> categoryOfRestrictedArea { get; set; } = [];
 
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
             [Required()]
             public jurisdiction jurisdiction { get; set; }
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
+            [EnumerationValue(4)]
+            [EnumerationValue(5)]
+            [EnumerationValue(6)]
+            [EnumerationValue(7)]
+            [EnumerationValue(8)]
+            [EnumerationValue(9)]
+            [EnumerationValue(10)]
+            [EnumerationValue(11)]
+            [EnumerationValue(12)]
+            [EnumerationValue(13)]
+            [EnumerationValue(14)]
+            [EnumerationValue(15)]
+            [EnumerationValue(16)]
+            [EnumerationValue(17)]
+            [EnumerationValue(18)]
+            [EnumerationValue(19)]
+            [EnumerationValue(20)]
+            [EnumerationValue(21)]
+            [EnumerationValue(22)]
+            [EnumerationValue(23)]
+            [EnumerationValue(24)]
+            [EnumerationValue(25)]
+            [EnumerationValue(26)]
+            [EnumerationValue(27)]
+            [EnumerationValue(28)]
+            [EnumerationValue(29)]
+            [EnumerationValue(30)]
+            [EnumerationValue(31)]
+            [EnumerationValue(32)]
+            [EnumerationValue(33)]
+            [EnumerationValue(34)]
+            [EnumerationValue(35)]
+            [EnumerationValue(36)]
+            [EnumerationValue(37)]
+            [EnumerationValue(38)]
+            [EnumerationValue(39)]
+            [EnumerationValue(40)]
+            [EnumerationValue(41)]
             public List<restriction> restriction { get; set; } = [];
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
+            [EnumerationValue(4)]
+            [EnumerationValue(5)]
+            [EnumerationValue(6)]
+            [EnumerationValue(7)]
+            [EnumerationValue(8)]
+            [EnumerationValue(9)]
+            [EnumerationValue(11)]
+            [EnumerationValue(12)]
+            [EnumerationValue(13)]
+            [EnumerationValue(14)]
+            [EnumerationValue(15)]
+            [EnumerationValue(16)]
+            [EnumerationValue(17)]
+            [EnumerationValue(18)]
+            [EnumerationValue(19)]
+            [EnumerationValue(20)]
+            [EnumerationValue(21)]
+            [EnumerationValue(22)]
+            [EnumerationValue(23)]
+            [EnumerationValue(24)]
+            [EnumerationValue(25)]
+            [EnumerationValue(26)]
+            [EnumerationValue(27)]
+            [EnumerationValue(28)]
+            [EnumerationValue(29)]
+            [EnumerationValue(30)]
+            [EnumerationValue(31)]
+            [EnumerationValue(32)]
+            [EnumerationValue(33)]
+            [EnumerationValue(34)]
+            [EnumerationValue(35)]
+            [EnumerationValue(36)]
+            [EnumerationValue(37)]
+            [EnumerationValue(38)]
+            [EnumerationValue(39)]
+            [EnumerationValue(41)]
+            [EnumerationValue(42)]
+            [EnumerationValue(43)]
             public List<status> status { get; set; } = [];
             public List<designation> designation { get; set; } = [];
             public override string Code => nameof(MarineProtectedArea);
@@ -1268,6 +1672,11 @@ namespace S100Framework.DomainModel.S122 {
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class VesselTrafficServiceArea : FeatureType {
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
+            [EnumerationValue(4)]
+            [EnumerationValue(5)]
             [Required()]
             public categoryOfVesselTrafficService categoryOfVesselTrafficService { get; set; }
             public override string Code => nameof(VesselTrafficServiceArea);

@@ -7,6 +7,29 @@ using Xceed.Wpf.Toolkit.PropertyGrid;
 
 namespace S100Framework.WPF.Editors
 {
+    public sealed class EnumCheckComboEditor : Xceed.Wpf.Toolkit.PropertyGrid.Editors.ITypeEditor
+    {
+        public FrameworkElement ResolveEditor(Xceed.Wpf.Toolkit.PropertyGrid.PropertyItem propertyItem) {
+            var checkComboBox = new CheckComboBox {
+                Name = $"_checkComboBox{Guid.NewGuid():N}",
+                IsEditable = false,
+                IsSelectAllActive = true,
+                IsDropDownOpen = false,
+                DisplayMemberPath = "label",
+            };
+
+            var attribute = (S100Framework.DomainModel.CodeListAttribute)propertyItem.Instance.GetType().GetProperty(propertyItem.DisplayName)!.GetCustomAttributes(typeof(S100Framework.DomainModel.CodeListAttribute), true)[0];
+
+            var bindingItemsSourceProperty = new Binding(attribute.PropertyName) { Source = propertyItem.Instance, Mode = BindingMode.OneWay };
+            BindingOperations.SetBinding(checkComboBox, ComboBox.ItemsSourceProperty, bindingItemsSourceProperty);
+
+            var bindingSelectedItemProperty = new Binding(propertyItem.DisplayName) { Source = propertyItem.Instance, Mode = propertyItem.IsReadOnly ? BindingMode.OneWay : BindingMode.TwoWay };
+            BindingOperations.SetBinding(checkComboBox, ComboBox.SelectedItemProperty, bindingSelectedItemProperty);
+
+            return checkComboBox;
+        }
+    }
+
     public sealed class CodeListComboEditor : Xceed.Wpf.Toolkit.PropertyGrid.Editors.ITypeEditor
     {
         public FrameworkElement ResolveEditor(Xceed.Wpf.Toolkit.PropertyGrid.PropertyItem propertyItem) {
@@ -54,8 +77,6 @@ namespace S100Framework.WPF.Editors
     {
         public FrameworkElement ResolveEditor(PropertyItem propertyItem) {
             var source = propertyItem.Instance switch {
-                //FeatureBindingViewModel e => e.RefIds,
-                //InformationBindingViewModel e => e.RefIds,
                 FeatureRefIdViewModel e => e.RefIds,
                 InformationRefIdViewModel e => e.RefIds,
                 _ => throw new NotSupportedException()
@@ -137,7 +158,6 @@ namespace S100Framework.WPF.Editors
 
             var comboBox = new ComboBox {
                 Name = $"_comboBox{Guid.NewGuid():N}",
-                //DisplayMemberPath = "Name",
             };
 
             var bindingItemsSourceProperty = new Binding() { Source = viewModel.AssociationTypes, Mode = BindingMode.OneWay };
@@ -146,8 +166,9 @@ namespace S100Framework.WPF.Editors
             var bindingSelectedItemProperty = new Binding(propertyItem.DisplayName) { Source = propertyItem.Instance, Mode = propertyItem.IsReadOnly ? BindingMode.OneWay : BindingMode.TwoWay };
             BindingOperations.SetBinding(comboBox, ComboBox.SelectedItemProperty, bindingSelectedItemProperty);
 
-            //TODO: Dynamic read value from instance!!!!
-            //comboBox.SelectedIndex = 0;
+            if (viewModel.InformationType is not null) {
+                comboBox.SelectedValue = viewModel.InformationType;
+            }
             return comboBox;
         }
     }
@@ -159,7 +180,6 @@ namespace S100Framework.WPF.Editors
 
             var comboBox = new ComboBox {
                 Name = $"_comboBox{Guid.NewGuid():N}",
-                //DisplayMemberPath = "Name",
             };
 
             var bindingItemsSourceProperty = new Binding() { Source = viewModel.AssociationTypes, Mode = BindingMode.OneWay };
@@ -168,8 +188,6 @@ namespace S100Framework.WPF.Editors
             var bindingSelectedItemProperty = new Binding(propertyItem.DisplayName) { Source = propertyItem.Instance, Mode = propertyItem.IsReadOnly ? BindingMode.OneWay : BindingMode.TwoWay };
             BindingOperations.SetBinding(comboBox, ComboBox.SelectedItemProperty, bindingSelectedItemProperty);
 
-            //TODO: Dynamic read value from instance!!!!
-            //comboBox.SelectedIndex = 0;
             if (viewModel.FeatureType is not null) {
                 comboBox.SelectedValue = viewModel.FeatureType;
             }

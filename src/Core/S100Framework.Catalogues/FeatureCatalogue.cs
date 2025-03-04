@@ -109,6 +109,13 @@ namespace S100Framework.Catalogues
             //    InformationTypes = ImmutableArray.Create<InformationType>(DomainModel.S201.Information.InformationTypes.Select(e=>new InformationType(e)).ToArray()),
             //    InformationAssociationTypes = ImmutableArray.Create<AssociationType>(DomainModel.S201.Information.InformationAssociationTypes.Select(e=>new AssociationType(e)).ToArray()),
             //}
+            new("S-501", DomainModel.S501.Information.Version) {
+                Assembly = typeof(DomainModel.S501.Information).Assembly,
+                FeatureTypes = ImmutableArray.Create<FeatureType>(DomainModel.S501.Information.FeatureTypes.Select(e=>new FeatureType(e)).ToArray()),
+                FeatureAssociationTypes = ImmutableArray.Create<AssociationType>(DomainModel.S501.Information.FeatureAssociationTypes.Select(e=>new AssociationType(e)).ToArray()),
+                InformationTypes = ImmutableArray.Create<InformationType>(DomainModel.S501.Information.InformationTypes.Select(e=>new InformationType(e)).ToArray()),
+                InformationAssociationTypes = ImmutableArray.Create<AssociationType>(DomainModel.S501.Information.InformationAssociationTypes.Select(e=>new AssociationType(e)).ToArray()),
+            },
         });
     }
 }
