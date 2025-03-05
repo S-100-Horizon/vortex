@@ -133,6 +133,11 @@ namespace S100Framework
 
                         var listedValues = new Dictionary<string, XElement>();
 
+                        if (!simpleAttribute.Element(XName.Get("listedValues", scope_S100))!.Elements().Any(e => RemoveSpecialChars(e.Element(XName.Get("label", scope_S100))!.Value!).Equals("Unknown", StringComparison.InvariantCultureIgnoreCase))) {
+                            enumBuilder.DefineLiteral("Unknown", -1);
+                            listedValues.Add("Unknown", XElement.Parse($"<S100FC:listedValue xmlns:S100FC=\"{scope_S100}\"><S100FC:label>Unknown</S100FC:label><S100FC:definition>Unknown value.</S100FC:definition><S100FC:code>-1</S100FC:code></S100FC:listedValue>"));
+                        }
+
                         foreach (var listedValue in simpleAttribute.Element(XName.Get("listedValues", scope_S100))!.Elements()) {
                             var listedValueLabel = listedValue.Element(XName.Get("label", scope_S100))!.Value!;
                             var listedValueDefinition = listedValue.Element(XName.Get("definition", scope_S100))!.Value!;
@@ -1514,7 +1519,7 @@ namespace S100Framework
 
                 var enumerationValueAttribute = p.GetCustomAttributes<S100Framework.DomainModel.EnumerationValueAttribute>();
                 if (enumerationValueAttribute.Any()) {
-                    foreach(var e in enumerationValueAttribute) {
+                    foreach (var e in enumerationValueAttribute) {
                         classBuilder.AppendLine($"\t\t\t[EnumerationValue({e.PropertyValue})]");
                     }
                 }

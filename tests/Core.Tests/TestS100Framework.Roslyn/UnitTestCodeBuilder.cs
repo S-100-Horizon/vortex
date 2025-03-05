@@ -248,7 +248,7 @@ namespace TestS100Framework
 
             [Fact]
             public void Build_S501() {
-                var s100 = XDocument.Load(@".\Artifacts\S-501_FC_0_0_9_2024-08-09 - LOCAL.xml");
+                var s100 = XDocument.Load(@".\Artifacts\S-501_FC_0_0_5_2024-08-09 - LOCAL.xml");
 
                 var content = S100Framework.ClassBuilder.CatalogueBuilder(s100, "http://www.iho.int/S201/1.0");
 

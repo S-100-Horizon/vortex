@@ -19,6 +19,7 @@ using System.Text.Json.Nodes;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using System.Xml.Linq;
+using IO = System.IO;
 
 namespace VortexProAppModule
 {
@@ -96,10 +97,13 @@ namespace VortexProAppModule
 
         private bool _isSelectedModelTypeEnabled = false;
 
+        private string[] _catalogues;
+
         public S100AttributeTabViewModel(XElement options, bool canChangeOptions) : base(options, canChangeOptions) {
             _module = VortexProAppModule.Module.Current;
+            _catalogues = _module.GetFeatureCatalogues();
 
-            Schemas.AddRange(_module.GetFeatureCatalogues());
+            Schemas.AddRange(_catalogues);
 
             CreateInstance = new RelayCommand(async () => {
                 var inspector = base.Inspector;
@@ -250,7 +254,7 @@ namespace VortexProAppModule
             try {
                 var uuid = Convert.ToString(inspector["GlobalID"]).ToUpperInvariant();
 
-                await QueuedTask.Run(() => {
+                var catalogue = await QueuedTask.Run(() => {
                     var fc = inspector.MapMember switch {
                         FeatureLayer l => l.GetFeatureClass(),
                         StandaloneTable t => t.GetTable(),
@@ -272,7 +276,29 @@ namespace VortexProAppModule
                         "informationassociation" => _inspectorHandleInformationAssociation,
                         _ => throw new NotImplementedException(),
                     };
+
+                    if (!string.IsNullOrEmpty(tableNames.Item2)) {
+                        var catalogue = _catalogues.SingleOrDefault(e => e.Equals(tableNames.Item2, StringComparison.InvariantCultureIgnoreCase) || e.Replace("-", string.Empty).Equals(tableNames.Item2, StringComparison.InvariantCultureIgnoreCase));
+
+                        return catalogue;
+
+                    }
+
+                    return geodatabase.GetConnector() switch {
+                        FileGeodatabaseConnectionPath fileGeodatabase => _catalogues.SingleOrDefault(e => e.Equals(IO.Path.GetFileNameWithoutExtension(fileGeodatabase.Path.AbsolutePath), StringComparison.InvariantCultureIgnoreCase) || e.Replace("-", string.Empty).Equals(IO.Path.GetFileNameWithoutExtension(fileGeodatabase.Path.AbsolutePath), StringComparison.InvariantCultureIgnoreCase)),
+                        _ => null,
+                    };
                 });
+
+                ;
+                if (!string.IsNullOrEmpty(catalogue)) {
+                    Schemas.Clear();
+                    Schemas.Add(catalogue);
+                }
+                else {
+
+                }
+
 
                 this.SelectedProperty = await QueuedTask.Run((Func<S100Framework.WPF.ViewModel.ViewModelBase>)(() => {
                     var featureid = Convert.ToString(inspector["GlobalID"]).ToUpperInvariant();
