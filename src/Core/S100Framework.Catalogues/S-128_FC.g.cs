@@ -42,6 +42,8 @@ namespace S100Framework.DomainModel.S128 {
         NauticalPublication = 12,
         [System.ComponentModel.Description("Printed nautical chart.")]
         PrintedNauticalChart = 13,
+        [System.ComponentModel.Description("Unknown value.")]
+        Unknown = -1,
     }
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -83,6 +85,8 @@ namespace S100Framework.DomainModel.S128 {
         Renc = 18,
         [System.ComponentModel.Description("Value Added Resellers (VARs), who are able to offer comprehensive end-use services that bring together various navigational products into one package.")]
         Vars = 19,
+        [System.ComponentModel.Description("Unknown value.")]
+        Unknown = -1,
     }
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -94,6 +98,8 @@ namespace S100Framework.DomainModel.S128 {
         AlternateNameDisplay = 2,
         [System.ComponentModel.Description("The name or text is not intended to be displayed.")]
         NoChartDisplay = 3,
+        [System.ComponentModel.Description("Unknown value.")]
+        Unknown = -1,
     }
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -103,6 +109,8 @@ namespace S100Framework.DomainModel.S128 {
         Production = 1,
         [System.ComponentModel.Description("The action to withdraw a time stamp (Used when a time stamp has been reported incorrectly).")]
         Withdrawn = 2,
+        [System.ComponentModel.Description("Unknown value.")]
+        Unknown = -1,
     }
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -140,6 +148,8 @@ namespace S100Framework.DomainModel.S128 {
         RealTimeHydrographicAndEnvironmentalInformationServices = 15,
         [System.ComponentModel.Description("Search and Rescue Service")]
         SearchAndRescueService = 16,
+        [System.ComponentModel.Description("Unknown value.")]
+        Unknown = -1,
     }
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -165,6 +175,8 @@ namespace S100Framework.DomainModel.S128 {
         A6 = 7,
         [System.ComponentModel.Description("The eighth size as output size on nautical paper chart.")]
         A7 = 8,
+        [System.ComponentModel.Description("Unknown value.")]
+        Unknown = -1,
     }
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -178,6 +190,8 @@ namespace S100Framework.DomainModel.S128 {
         Recommendedenhancementprovider = 3,
         [System.ComponentModel.Description("A product or service, that is recommended to make use of added value provided by another product or service.")]
         Recommendedenhancementuser = 4,
+        [System.ComponentModel.Description("Unknown value.")]
+        Unknown = -1,
     }
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -185,6 +199,8 @@ namespace S100Framework.DomainModel.S128 {
     public enum digitalSignatureReference : int {
         [System.ComponentModel.Description("Elliptic Curve Digital Signature Algorithm (ECDSA) that based upon the issuing certificate. It's signed with the issuer's key P-384.")]
         Ecdsa384Sha2 = 8,
+        [System.ComponentModel.Description("Unknown value.")]
+        Unknown = -1,
     }
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -196,6 +212,8 @@ namespace S100Framework.DomainModel.S128 {
         Transit = 2,
         [System.ComponentModel.Description("For ocean crossing and planning purposes.")]
         Overview = 3,
+        [System.ComponentModel.Description("Unknown value.")]
+        Unknown = -1,
     }
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -221,6 +239,8 @@ namespace S100Framework.DomainModel.S128 {
         Lua = 9,
         [System.ComponentModel.Description("Other format.")]
         Other = 100,
+        [System.ComponentModel.Description("Unknown value.")]
+        Unknown = -1,
     }
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -232,6 +252,8 @@ namespace S100Framework.DomainModel.S128 {
         Replacement = 2,
         [System.ComponentModel.Description("Deletes an existing file.")]
         Deletion = 3,
+        [System.ComponentModel.Description("Unknown value.")]
+        Unknown = -1,
     }
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -245,6 +267,8 @@ namespace S100Framework.DomainModel.S128 {
         Deprecated = 3,
         [System.ComponentModel.Description("Item that has been removed or deleted.")]
         Deleted = 4,
+        [System.ComponentModel.Description("Unknown value.")]
+        Unknown = -1,
     }
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -272,6 +296,8 @@ namespace S100Framework.DomainModel.S128 {
         TrafficData = 14,
         [System.ComponentModel.Description("A national or regional authority charged with administration of maritime affairs.")]
         Maritime = 15,
+        [System.ComponentModel.Description("Unknown value.")]
+        Unknown = -1,
     }
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -289,6 +315,8 @@ namespace S100Framework.DomainModel.S128 {
         NavigationalPurposeHarbour = 5,
         [System.ComponentModel.Description("For ships berthing. Scale > 1:4000.")]
         NavigationalPurposeBerthing = 6,
+        [System.ComponentModel.Description("Unknown value.")]
+        Unknown = -1,
     }
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -310,6 +338,8 @@ namespace S100Framework.DomainModel.S128 {
         Telegraph = 7,
         [System.ComponentModel.Description("Messages and other data exchanged between individuals using computers in a network.")]
         Email = 8,
+        [System.ComponentModel.Description("Unknown value.")]
+        Unknown = -1,
     }
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -339,6 +369,8 @@ namespace S100Framework.DomainModel.S128 {
         Xml = 11,
         [System.ComponentModel.Description("Portable Network Graphics format.")]
         Png = 12,
+        [System.ComponentModel.Description("Unknown value.")]
+        Unknown = -1,
     }
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -352,6 +384,8 @@ namespace S100Framework.DomainModel.S128 {
         Month = 3,
         [System.ComponentModel.Description("A period of one year.")]
         Year = 4,
+        [System.ComponentModel.Description("Unknown value.")]
+        Unknown = -1,
     }
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -447,6 +481,8 @@ namespace S100Framework.DomainModel.S128 {
         DutchEstuaryLowWaterReferenceLevelOlw = 44,
         [System.ComponentModel.Description("The bottom of the ocean and seas where there is a generally smooth gentle gradient. Also referred to as sea bed (sometimes seabed or sea-bed), and sea bottom.")]
         SeaFloor = 45,
+        [System.ComponentModel.Description("Unknown value.")]
+        Unknown = -1,
     }
 
     [System.Serializable()]

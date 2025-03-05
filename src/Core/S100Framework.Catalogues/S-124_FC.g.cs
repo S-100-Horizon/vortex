@@ -20,6 +20,8 @@ namespace S100Framework.DomainModel.S124 {
         Name = 1,
         [System.ComponentModel.Description("The distinct character, such as fixed, flashing, or occulting, which is given to each light to avoid confusion with neighbouring ones.")]
         LightCharacteristic = 2,
+        [System.ComponentModel.Description("Unknown value.")]
+        Unknown = -1,
     }
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -31,6 +33,8 @@ namespace S100Framework.DomainModel.S124 {
         AlternateNameDisplay = 2,
         [System.ComponentModel.Description("The name or text is not intended to be displayed.")]
         NoChartDisplay = 3,
+        [System.ComponentModel.Description("Unknown value.")]
+        Unknown = -1,
     }
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -122,6 +126,8 @@ namespace S100Framework.DomainModel.S124 {
         SoxEmissionRestricted = 40,
         [System.ComponentModel.Description("An area within which the emission of NOx is restricted.")]
         NoxEmissionRestricted = 41,
+        [System.ComponentModel.Description("Unknown value.")]
+        Unknown = -1,
     }
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -151,6 +157,8 @@ namespace S100Framework.DomainModel.S124 {
         CoastalInForceBulletin = 11,
         [System.ComponentModel.Description("A list of serial numbers of local warnings which are in- force.")]
         LocalInForceBulletin = 12,
+        [System.ComponentModel.Description("Unknown value.")]
+        Unknown = -1,
     }
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -162,6 +170,8 @@ namespace S100Framework.DomainModel.S124 {
         WarningReference = 2,
         [System.ComponentModel.Description("Reference to warnings or notices that are considered in-force.")]
         InForce = 3,
+        [System.ComponentModel.Description("Unknown value.")]
+        Unknown = -1,
     }
 
     [System.Serializable()]

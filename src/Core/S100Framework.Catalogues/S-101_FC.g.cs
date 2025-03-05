@@ -30,6 +30,8 @@ namespace S100Framework.DomainModel.S101 {
         Cairn = 6,
         [System.ComponentModel.Description("A tall spar-like beacon fitted with a permanently submerged buoyancy chamber, the lower end of the body is secured to seabed sinker either by a flexible joint or by a cable under tension.")]
         BuoyantBeacon = 7,
+        [System.ComponentModel.Description("Unknown value.")]
+        Unknown = -1,
     }
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -45,6 +47,8 @@ namespace S100Framework.DomainModel.S101 {
         SuspensionBridge = 4,
         [System.ComponentModel.Description("Consists of towers on each side of the watercourse connected by a system of girders on which a carriage runs.")]
         TransporterBridge = 5,
+        [System.ComponentModel.Description("Unknown value.")]
+        Unknown = -1,
     }
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -58,6 +62,8 @@ namespace S100Framework.DomainModel.S101 {
         Pedestrian = 3,
         [System.ComponentModel.Description("A bridge supporting an artificially elevated channel, for the conveyance of water.")]
         Aqueduct = 4,
+        [System.ComponentModel.Description("Unknown value.")]
+        Unknown = -1,
     }
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -73,6 +79,8 @@ namespace S100Framework.DomainModel.S101 {
         Spherical = 8,
         [System.ComponentModel.Description("A shape the sides of which are six equal squares; a regular hexahedron.")]
         Cubic = 9,
+        [System.ComponentModel.Description("Unknown value.")]
+        Unknown = -1,
     }
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -94,6 +102,8 @@ namespace S100Framework.DomainModel.S101 {
         Superbuoy = 7,
         [System.ComponentModel.Description("A specially constructed shuttle shaped buoy which is used in ice conditions.")]
         IceBuoy = 8,
+        [System.ComponentModel.Description("Unknown value.")]
+        Unknown = -1,
     }
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -115,6 +125,8 @@ namespace S100Framework.DomainModel.S101 {
         EmergencyAirfield = 8,
         [System.ComponentModel.Description("An area of land set aside for the take-off and landing of aeroplanes or helicopters in times of search and rescue.")]
         SearchAndRescueAirfield = 9,
+        [System.ComponentModel.Description("Unknown value.")]
+        Unknown = -1,
     }
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -140,6 +152,8 @@ namespace S100Framework.DomainModel.S101 {
         WaitingAnchorage = 14,
         [System.ComponentModel.Description("A location not defined by a regulatory authority that has been reported to be suitable and safe for anchoring.")]
         ReportedAnchorage = 15,
+        [System.ComponentModel.Description("Unknown value.")]
+        Unknown = -1,
     }
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -157,6 +171,8 @@ namespace S100Framework.DomainModel.S101 {
         City = 5,
         [System.ComponentModel.Description("A complex for holiday-makers with cottages, shops, and entertainment, on site, which is mainly populated on a seasonal basis.")]
         HolidayVillage = 6,
+        [System.ComponentModel.Description("Unknown value.")]
+        Unknown = -1,
     }
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -174,6 +190,8 @@ namespace S100Framework.DomainModel.S101 {
         JunctionCable = 9,
         [System.ComponentModel.Description("A cable used for the transmission and reception of modulated communication waves/signals.")]
         TelecommunicationsCable = 10,
+        [System.ComponentModel.Description("Unknown value.")]
+        Unknown = -1,
     }
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -185,6 +203,8 @@ namespace S100Framework.DomainModel.S101 {
         Drainage = 2,
         [System.ComponentModel.Description("A canal used to supply water for the purpose of irrigation.")]
         Irrigation = 3,
+        [System.ComponentModel.Description("Unknown value.")]
+        Unknown = -1,
     }
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -198,6 +218,8 @@ namespace S100Framework.DomainModel.S101 {
         SouthCardinalMark = 3,
         [System.ComponentModel.Description("Quadrant bounded by the true bearing SW-NW taken from the point of interest; it should be passed to the west side of the mark.")]
         WestCardinalMark = 4,
+        [System.ComponentModel.Description("Unknown value.")]
+        Unknown = -1,
     }
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -205,6 +227,8 @@ namespace S100Framework.DomainModel.S101 {
     public enum categoryOfCheckpoint : int {
         [System.ComponentModel.Description("Serves as a government checkpoint where customs duties are collected, the flow of goods are regulated and restrictions enforced, and shipments or vehicles are cleared for entering or leaving a country.")]
         Custom = 1,
+        [System.ComponentModel.Description("Unknown value.")]
+        Unknown = -1,
     }
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -222,6 +246,8 @@ namespace S100Framework.DomainModel.S101 {
         MarshyShore = 8,
         [System.ComponentModel.Description("A vertical cliff forming the seaward edge of an ice shelf, ranging in height from 2 metres to 50 metres or more above sea level.")]
         IceCoast = 10,
+        [System.ComponentModel.Description("Unknown value.")]
+        Unknown = -1,
     }
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -235,6 +261,8 @@ namespace S100Framework.DomainModel.S101 {
         Flume = 3,
         [System.ComponentModel.Description("Any of various mechanical devices for raising objects or materials.")]
         LiftElevator = 4,
+        [System.ComponentModel.Description("Unknown value.")]
+        Unknown = -1,
     }
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -250,6 +278,8 @@ namespace S100Framework.DomainModel.S101 {
         AFrame = 5,
         [System.ComponentModel.Description("A powerful travelling crane mounted on a movable gantry of large span.")]
         GoliathCrane = 6,
+        [System.ComponentModel.Description("Unknown value.")]
+        Unknown = -1,
     }
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -261,6 +291,8 @@ namespace S100Framework.DomainModel.S101 {
         Dam = 2,
         [System.ComponentModel.Description("An opening dam across a channel which, when required, is closed to control flood waters.")]
         FloodBarrage = 3,
+        [System.ComponentModel.Description("Unknown value.")]
+        Unknown = -1,
     }
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -270,6 +302,8 @@ namespace S100Framework.DomainModel.S101 {
         Tidal = 1,
         [System.ComponentModel.Description("A dock in which water can be maintained at any level by closing a gate when the water is at the desired level.")]
         WetDock = 2,
+        [System.ComponentModel.Description("Unknown value.")]
+        Unknown = -1,
     }
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -283,6 +317,8 @@ namespace S100Framework.DomainModel.S101 {
         BerthingDolphin = 3,
         [System.ComponentModel.Description("A post or group of posts driven into the seabed or riverbed, used to assist in berthing of vessels by taking up some berthing loads; keep vessels from pressing against the pier structure; or to protect structures from possible impact by ships.")]
         FenderOrBreastingDolphin = 4,
+        [System.ComponentModel.Description("Unknown value.")]
+        Unknown = -1,
     }
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -298,6 +334,8 @@ namespace S100Framework.DomainModel.S101 {
         SpoilGround = 5,
         [System.ComponentModel.Description("An area at sea where disused vessels are scuttled.")]
         VesselDumpingGround = 6,
+        [System.ComponentModel.Description("Unknown value.")]
+        Unknown = -1,
     }
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -309,6 +347,8 @@ namespace S100Framework.DomainModel.S101 {
         Hedge = 3,
         [System.ComponentModel.Description("A solid man-made barrier of generally heavy material used as an enclosure, boundary, or for protection.")]
         Wall = 4,
+        [System.ComponentModel.Description("Unknown value.")]
+        Unknown = -1,
     }
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -322,6 +362,8 @@ namespace S100Framework.DomainModel.S101 {
         IceFerry = 3,
         [System.ComponentModel.Description("A high speed water vessel for civilian use.")]
         HighSpeedFerry = 5,
+        [System.ComponentModel.Description("Unknown value.")]
+        Unknown = -1,
     }
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -335,6 +377,8 @@ namespace S100Framework.DomainModel.S101 {
         FishWeir = 3,
         [System.ComponentModel.Description("A net built at sea for catching tunny.")]
         TunnyNet = 4,
+        [System.ComponentModel.Description("Unknown value.")]
+        Unknown = -1,
     }
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -360,6 +404,8 @@ namespace S100Framework.DomainModel.S101 {
         Gong = 9,
         [System.ComponentModel.Description("A horn uses compressed air or electricity to vibrate a diaphragm and exists in a variety of types which differ greatly in their sound and power.")]
         Horn = 10,
+        [System.ComponentModel.Description("Unknown value.")]
+        Unknown = -1,
     }
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -381,6 +427,8 @@ namespace S100Framework.DomainModel.S101 {
         FortifiedSubmarineShelter = 8,
         [System.ComponentModel.Description("Anything serving as a bulwark or defence.")]
         Rampart = 9,
+        [System.ComponentModel.Description("Unknown value.")]
+        Unknown = -1,
     }
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -396,6 +444,8 @@ namespace S100Framework.DomainModel.S101 {
         DykeGate = 5,
         [System.ComponentModel.Description("A sliding gate or other contrivance for changing the level of a body of water by controlling the flow into or out of it.")]
         Sluice = 6,
+        [System.ComponentModel.Description("Unknown value.")]
+        Unknown = -1,
     }
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -429,6 +479,8 @@ namespace S100Framework.DomainModel.S101 {
         ServiceHarbour = 14,
         [System.ComponentModel.Description("The services of a person who directs the movements of a vessel through pilot waters, usually a person who has demonstrated extensive knowledge of channels, aids to navigation, dangers to navigation, etc., in a particular area and is licensed for that area, are available.")]
         PilotageService = 15,
+        [System.ComponentModel.Description("Unknown value.")]
+        Unknown = -1,
     }
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -448,6 +500,8 @@ namespace S100Framework.DomainModel.S101 {
         Casino = 6,
         [System.ComponentModel.Description("A permanently moored floating structure, often constructed from old ships, used for training purposes.")]
         TrainingVessel = 7,
+        [System.ComponentModel.Description("Unknown value.")]
+        Unknown = -1,
     }
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -459,6 +513,8 @@ namespace S100Framework.DomainModel.S101 {
         Glacier = 5,
         [System.ComponentModel.Description("Sea ice that is more than one year old (in contrast to winter ice). The WMO code defines polar ice as any sea ice more than one year old and more than 3 metres thick.")]
         PolarIce = 8,
+        [System.ComponentModel.Description("Unknown value.")]
+        Unknown = -1,
     }
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -468,6 +524,8 @@ namespace S100Framework.DomainModel.S101 {
         CatenaryAnchorLegMooring = 1,
         [System.ComponentModel.Description("A large mooring buoy used by tankers to load and unload in port approaches or in offshore oil and gas fields.")]
         SingleBuoyMooring = 2,
+        [System.ComponentModel.Description("Unknown value.")]
+        Unknown = -1,
     }
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -515,6 +573,8 @@ namespace S100Framework.DomainModel.S101 {
         Cay = 20,
         [System.ComponentModel.Description("A watercourse that is permanently dry or dry except for the rainy season.")]
         Wadi = 21,
+        [System.ComponentModel.Description("Unknown value.")]
+        Unknown = -1,
     }
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -572,6 +632,8 @@ namespace S100Framework.DomainModel.S101 {
         Bridge = 26,
         [System.ComponentModel.Description("A barrier to check or confine anything in motion; particularly one constructed to hold back water and raise its level to form a reservoir, or to prevent flooding.")]
         Dam = 27,
+        [System.ComponentModel.Description("Unknown value.")]
+        Unknown = -1,
     }
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -585,6 +647,8 @@ namespace S100Framework.DomainModel.S101 {
         PreferredChannelToStarboardLateralMark = 3,
         [System.ComponentModel.Description("At a point where a channel divides, when proceeding in the \"conventional direction of buoyage\", the preferred channel (or primary route) is indicated by a modified starboard-hand lateral mark.")]
         PreferredChannelToPortLateralMark = 4,
+        [System.ComponentModel.Description("Unknown value.")]
+        Unknown = -1,
     }
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -618,6 +682,8 @@ namespace S100Framework.DomainModel.S101 {
         HorizontallyDisposed = 19,
         [System.ComponentModel.Description("A group of lights of identical character and almost identical position, that are disposed vertically.")]
         VerticallyDisposed = 20,
+        [System.ComponentModel.Description("Unknown value.")]
+        Unknown = -1,
     }
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -633,6 +699,8 @@ namespace S100Framework.DomainModel.S101 {
         Seaweed = 4,
         [System.ComponentModel.Description("An area where pearls are artificially cultivated.")]
         PearlCultureFarm = 5,
+        [System.ComponentModel.Description("Unknown value.")]
+        Unknown = -1,
     }
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -648,6 +716,8 @@ namespace S100Framework.DomainModel.S101 {
         MineLayingPracticeArea = 5,
         [System.ComponentModel.Description("An area for shooting pistols, rifles and machine guns etc. at a target.")]
         SmallArmsFiringRange = 6,
+        [System.ComponentModel.Description("Unknown value.")]
+        Unknown = -1,
     }
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -659,6 +729,8 @@ namespace S100Framework.DomainModel.S101 {
         MooringAreaForVisitors = 2,
         [System.ComponentModel.Description("An area set aside for the mooring of tankers.")]
         MooringAreaForTankers = 3,
+        [System.ComponentModel.Description("Unknown value.")]
+        Unknown = -1,
     }
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -670,6 +742,8 @@ namespace S100Framework.DomainModel.S101 {
         TransitLine = 2,
         [System.ComponentModel.Description("A line passing through one or more clearly defined objects, along the path of which a vessel can approach safely up to a certain distance off.")]
         LeadingLineBearingARecommendedTrack = 3,
+        [System.ComponentModel.Description("Unknown value.")]
+        Unknown = -1,
     }
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -717,6 +791,8 @@ namespace S100Framework.DomainModel.S101 {
         SharkNet = 22,
         [System.ComponentModel.Description("One of several genera of tropical trees or shrubs which produce many prop roots and grow along low-lying coasts into shallow water.")]
         Mangrove = 23,
+        [System.ComponentModel.Description("Unknown value.")]
+        Unknown = -1,
     }
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -744,6 +820,8 @@ namespace S100Framework.DomainModel.S101 {
         NavigationCommunicationAndControlBuoy = 10,
         [System.ComponentModel.Description("A floating structure, anchored to the seabed, for storing oil.")]
         FloatingOilTank = 11,
+        [System.ComponentModel.Description("Unknown value.")]
+        Unknown = -1,
     }
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -761,6 +839,8 @@ namespace S100Framework.DomainModel.S101 {
         SeabedMaterialExtractionArea = 5,
         [System.ComponentModel.Description("A large-scale photovoltaic system (PV system) designed for the supply of merchant power into the electricity grid. They are differentiated from most building-mounted and other decentralised solar power applications because they supply power at the utility level, rather than to a local user or users. The generic expression utility-scale solar is sometimes used to describe this type of project.")]
         SolarFarm = 6,
+        [System.ComponentModel.Description("Unknown value.")]
+        Unknown = -1,
     }
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -770,6 +850,8 @@ namespace S100Framework.DomainModel.S101 {
         OilRetentionHighPressurePipe = 1,
         [System.ComponentModel.Description("A floating tube shaped structure, with a curtain (2 metre) hanging under it, below the surface, which prevents the spread of oil.")]
         FloatingOilBarrier = 2,
+        [System.ComponentModel.Description("Unknown value.")]
+        Unknown = -1,
     }
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -783,6 +865,8 @@ namespace S100Framework.DomainModel.S101 {
         BasculeBridge = 5,
         [System.ComponentModel.Description("A general name for bridges of which part or the entire span of the bridge may be raised or drawn aside to allow ships to pass through.")]
         Drawbridge = 7,
+        [System.ComponentModel.Description("Unknown value.")]
+        Unknown = -1,
     }
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -802,6 +886,8 @@ namespace S100Framework.DomainModel.S101 {
         Pipe = 7,
         [System.ComponentModel.Description("A post where to which something (such as a craft) can be moored.")]
         MooringPost = 8,
+        [System.ComponentModel.Description("Unknown value.")]
+        Unknown = -1,
     }
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -813,6 +899,8 @@ namespace S100Framework.DomainModel.S101 {
         BoardingByHelicopter = 2,
         [System.ComponentModel.Description("Pilot embarks from a vessel or disembarks to a vessel which comes out from the shore on request.")]
         PilotComesOutFromShore = 3,
+        [System.ComponentModel.Description("Unknown value.")]
+        Unknown = -1,
     }
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -830,6 +918,8 @@ namespace S100Framework.DomainModel.S101 {
         SupplyPipe = 6,
         [System.ComponentModel.Description("A high pressure sub-surface pipeline (usually on the seafloor) with holes emitting a curtain of air bubbles. Its uses include: the prevention of acoustic transmission through the water; preventing the spread of surface debris or floating liquids; controlling the movement of fish.")]
         BubbleCurtain = 7,
+        [System.ComponentModel.Description("Unknown value.")]
+        Unknown = -1,
     }
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -839,6 +929,8 @@ namespace S100Framework.DomainModel.S101 {
         Primary = 1,
         [System.ComponentModel.Description("The preferred choice in extraordinary conditions.")]
         Alternate = 2,
+        [System.ComponentModel.Description("Unknown value.")]
+        Unknown = -1,
     }
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -868,6 +960,8 @@ namespace S100Framework.DomainModel.S101 {
         ProductionPlant = 11,
         [System.ComponentModel.Description("A large-scale photovoltaic system (PV system) designed for the supply of merchant power into the electricity grid. They are differentiated from most building-mounted and other decentralised solar power applications because they supply power at the utility level, rather than to a local user or users. The generic expression utility-scale solar is sometimes used to describe this type of project.")]
         SolarFarm = 12,
+        [System.ComponentModel.Description("Unknown value.")]
+        Unknown = -1,
     }
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -885,6 +979,8 @@ namespace S100Framework.DomainModel.S101 {
         BridgePier = 5,
         [System.ComponentModel.Description("A tower or pylon supporting a suspended pipeline or pipelines.")]
         PipelinePylon = 6,
+        [System.ComponentModel.Description("Unknown value.")]
+        Unknown = -1,
     }
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -894,6 +990,8 @@ namespace S100Framework.DomainModel.S101 {
         RadarSurveillanceStation = 1,
         [System.ComponentModel.Description("A shore-based station which the mariner can contact by radio to obtain a position.")]
         CoastRadarStation = 2,
+        [System.ComponentModel.Description("Unknown value.")]
+        Unknown = -1,
     }
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -905,6 +1003,8 @@ namespace S100Framework.DomainModel.S101 {
         RaconRadarTransponderBeacon = 2,
         [System.ComponentModel.Description("A radar beacon that may be used (in conjunction with at least one other radar beacon) to indicate a leading line.")]
         LeadingRaconRadarTransponderBeacon = 3,
+        [System.ComponentModel.Description("Unknown value.")]
+        Unknown = -1,
     }
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -922,6 +1022,8 @@ namespace S100Framework.DomainModel.S101 {
         RadioTelephoneStation = 19,
         [System.ComponentModel.Description("An AIS shore station for use by competent authorities to provide AIS service, manage the data link and enable effective ship to shore / shore to ship transmission of information.")]
         AisBaseStation = 20,
+        [System.ComponentModel.Description("Unknown value.")]
+        Unknown = -1,
     }
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -941,6 +1043,8 @@ namespace S100Framework.DomainModel.S101 {
         AidRadioStation = 7,
         [System.ComponentModel.Description("A place where first aid equipment is available.")]
         FirstAidEquipment = 8,
+        [System.ComponentModel.Description("Unknown value.")]
+        Unknown = -1,
     }
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -994,6 +1098,8 @@ namespace S100Framework.DomainModel.S101 {
         CoralSanctuary = 31,
         [System.ComponentModel.Description("An area within which recreational activities regularly take place and therefore vessel movement may be restricted.")]
         RecreationArea = 32,
+        [System.ComponentModel.Description("Unknown value.")]
+        Unknown = -1,
     }
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -1011,6 +1117,8 @@ namespace S100Framework.DomainModel.S101 {
         MajorStreet = 5,
         [System.ComponentModel.Description("A secondary road, in an urban area, for local traffic.")]
         MinorStreet = 6,
+        [System.ComponentModel.Description("Unknown value.")]
+        Unknown = -1,
     }
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -1022,6 +1130,8 @@ namespace S100Framework.DomainModel.S101 {
         Closure = 2,
         [System.ComponentModel.Description("The service is available but not manned.")]
         UnmannedOperation = 3,
+        [System.ComponentModel.Description("Unknown value.")]
+        Unknown = -1,
     }
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -1137,6 +1247,8 @@ namespace S100Framework.DomainModel.S101 {
         IntertidalCay = 55,
         [System.ComponentModel.Description("A seabed volcano, submerged at the chart sounding datum, which may or may not be active.")]
         SubmarineVolcano = 56,
+        [System.ComponentModel.Description("Unknown value.")]
+        Unknown = -1,
     }
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -1182,6 +1294,8 @@ namespace S100Framework.DomainModel.S101 {
         Quay = 22,
         [System.ComponentModel.Description("A section of wall designated for tying-up vessels awaiting transit. Bollards and mooring devices are available for both large and small ships.")]
         TieUpWall = 23,
+        [System.ComponentModel.Description("Unknown value.")]
+        Unknown = -1,
     }
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -1207,6 +1321,8 @@ namespace S100Framework.DomainModel.S101 {
         Dredging = 9,
         [System.ComponentModel.Description("Visual signal lights placed in a waterway to indicate to shipping the movements authorized at the time at which they are shown.")]
         TrafficControlLight = 10,
+        [System.ComponentModel.Description("Unknown value.")]
+        Unknown = -1,
     }
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -1242,6 +1358,8 @@ namespace S100Framework.DomainModel.S101 {
         Diving = 14,
         [System.ComponentModel.Description("A device for measuring and conveying information about the water level (non-tidal) in the area in question.")]
         WaterLevelGauge = 15,
+        [System.ComponentModel.Description("Unknown value.")]
+        Unknown = -1,
     }
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -1255,6 +1373,8 @@ namespace S100Framework.DomainModel.S101 {
         GrainElevator = 3,
         [System.ComponentModel.Description("A tower supporting an elevated storage tank of water.")]
         WaterTower = 4,
+        [System.ComponentModel.Description("Unknown value.")]
+        Unknown = -1,
     }
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -1274,6 +1394,8 @@ namespace S100Framework.DomainModel.S101 {
         Cliff = 6,
         [System.ComponentModel.Description("A mass of detritus, forming a precipitous, strong slope upon a mountain-side. Also the material composing such a slope.")]
         Scree = 7,
+        [System.ComponentModel.Description("Unknown value.")]
+        Unknown = -1,
     }
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -1343,6 +1465,8 @@ namespace S100Framework.DomainModel.S101 {
         MechanicsWorkshop = 32,
         [System.ComponentModel.Description("A place where a vessel is patrolled by a security service or stored in a secure lockup.")]
         GuardAndOrSecurityService = 33,
+        [System.ComponentModel.Description("Unknown value.")]
+        Unknown = -1,
     }
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -1470,6 +1594,8 @@ namespace S100Framework.DomainModel.S101 {
         CausewayMark = 62,
         [System.ComponentModel.Description("A surface following buoy used to measure wave activity.")]
         WaveRecorder = 63,
+        [System.ComponentModel.Description("Unknown value.")]
+        Unknown = -1,
     }
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -1487,6 +1613,8 @@ namespace S100Framework.DomainModel.S101 {
         UnlikelyToChange = 5,
         [System.ComponentModel.Description("Not having been assessed.")]
         Unassessed = 6,
+        [System.ComponentModel.Description("Unknown value.")]
+        Unknown = -1,
     }
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -1502,6 +1630,8 @@ namespace S100Framework.DomainModel.S101 {
         CoveredServiceTerminal = 4,
         [System.ComponentModel.Description("A covered or partially covered terminal for the loading and unloading of passengers.")]
         CoveredPassengerTerminal = 5,
+        [System.ComponentModel.Description("Unknown value.")]
+        Unknown = -1,
     }
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -1513,6 +1643,8 @@ namespace S100Framework.DomainModel.S101 {
         EbbStream = 2,
         [System.ComponentModel.Description("Any other horizontal movement of water associated with tides, for example rotary flow.")]
         OtherTidalFlow = 3,
+        [System.ComponentModel.Description("Unknown value.")]
+        Unknown = -1,
     }
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -1546,6 +1678,8 @@ namespace S100Framework.DomainModel.S101 {
         DeciduousTree = 20,
         [System.ComponentModel.Description("Casuarina equisetifolia, the most widespread and well-known member of the family Casuarinaceae.")]
         FilaoTree = 22,
+        [System.ComponentModel.Description("Unknown value.")]
+        Unknown = -1,
     }
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -1561,6 +1695,8 @@ namespace S100Framework.DomainModel.S101 {
         TideRips = 4,
         [System.ComponentModel.Description("A wave that forms over a submerged offshore reef or rock, sometimes (in very calm weather or at high tide) nearly swelling but in other conditions breaking heavily and producing a dangerous stretch of broken water; the reef or rock itself.")]
         Bombora = 5,
+        [System.ComponentModel.Description("Unknown value.")]
+        Unknown = -1,
     }
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -1572,6 +1708,8 @@ namespace S100Framework.DomainModel.S101 {
         Seaweed = 2,
         [System.ComponentModel.Description("A certain type of seaweed, or more generally, a large floating mass of this seaweed.")]
         Sargasso = 4,
+        [System.ComponentModel.Description("Unknown value.")]
+        Unknown = -1,
     }
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -1587,6 +1725,8 @@ namespace S100Framework.DomainModel.S101 {
         WreckShowingMastMasts = 4,
         [System.ComponentModel.Description("Wreck of which any portion of the hull or superstructure is visible at the sounding datum indicated.")]
         WreckShowingAnyPortionOfHullOrSuperstructure = 5,
+        [System.ComponentModel.Description("Unknown value.")]
+        Unknown = -1,
     }
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -1604,6 +1744,8 @@ namespace S100Framework.DomainModel.S101 {
         ZoneOfConfidenceD = 5,
         [System.ComponentModel.Description("The quality of the bathymetric data has yet to be assessed.")]
         ZoneOfConfidenceU = 6,
+        [System.ComponentModel.Description("Unknown value.")]
+        Unknown = -1,
     }
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -1639,6 +1781,8 @@ namespace S100Framework.DomainModel.S101 {
         Magenta = 12,
         [System.ComponentModel.Description("")]
         Pink = 13,
+        [System.ComponentModel.Description("Unknown value.")]
+        Unknown = -1,
     }
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -1656,6 +1800,8 @@ namespace S100Framework.DomainModel.S101 {
         StripesDirectionUnknown = 5,
         [System.ComponentModel.Description("A band or stripe of colour which is displayed around the outer edge of the feature, which may also form a border to an inner pattern or plain colour.")]
         BorderStripe = 6,
+        [System.ComponentModel.Description("Unknown value.")]
+        Unknown = -1,
     }
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -1675,6 +1821,8 @@ namespace S100Framework.DomainModel.S101 {
         Wingless = 4,
         [System.ComponentModel.Description("Detailed planning has been completed but construction has not been initiated.")]
         PlannedConstruction = 5,
+        [System.ComponentModel.Description("Unknown value.")]
+        Unknown = -1,
     }
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -1686,6 +1834,8 @@ namespace S100Framework.DomainModel.S101 {
         AssessedOceanic = 2,
         [System.ComponentModel.Description("Not having been assessed.")]
         Unassessed = 3,
+        [System.ComponentModel.Description("Unknown value.")]
+        Unknown = -1,
     }
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -1705,6 +1855,8 @@ namespace S100Framework.DomainModel.S101 {
         Friday = 6,
         [System.ComponentModel.Description("The day of the week following Friday and preceding Sunday.")]
         Saturday = 7,
+        [System.ComponentModel.Description("Unknown value.")]
+        Unknown = -1,
     }
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -1720,6 +1872,8 @@ namespace S100Framework.DomainModel.S101 {
         StatuteMiles = 4,
         [System.ComponentModel.Description("A unit of length equal to 1,852 metres. This value was approved by the International Hydrographic Conference of 1929 and has been adopted by nearly all maritime states.")]
         NauticalMiles = 5,
+        [System.ComponentModel.Description("Unknown value.")]
+        Unknown = -1,
     }
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -1733,6 +1887,8 @@ namespace S100Framework.DomainModel.S101 {
         FogLight = 3,
         [System.ComponentModel.Description("A light which is only exhibited at night.")]
         NightLight = 4,
+        [System.ComponentModel.Description("Unknown value.")]
+        Unknown = -1,
     }
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -1744,6 +1900,8 @@ namespace S100Framework.DomainModel.S101 {
         ShoalerThanTheRangeOfDepthOfTheSurroundingDepthArea = 2,
         [System.ComponentModel.Description("The depth is deeper than the maximum depth of the surrounding depth area.")]
         DeeperThanTheRangeOfDepthOfTheSurroundingDepthArea = 3,
+        [System.ComponentModel.Description("Unknown value.")]
+        Unknown = -1,
     }
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -1845,6 +2003,8 @@ namespace S100Framework.DomainModel.S101 {
         Boathouse = 47,
         [System.ComponentModel.Description("A facility to move solids, liquids or gases by means of pressure or suction.")]
         PumpingStation = 48,
+        [System.ComponentModel.Description("Unknown value.")]
+        Unknown = -1,
     }
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -1860,6 +2020,8 @@ namespace S100Framework.DomainModel.S101 {
         National = 2,
         [System.ComponentModel.Description("An area smaller than the nation in which it lies.")]
         NationalSubDivision = 3,
+        [System.ComponentModel.Description("Unknown value.")]
+        Unknown = -1,
     }
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -1909,6 +2071,8 @@ namespace S100Framework.DomainModel.S101 {
         Alternating = 28,
         [System.ComponentModel.Description("A rhythmic light in which a fixed light is combined with a flashing light of higher luminous intensity and different colour.")]
         FixedAndAlternatingFlashing = 29,
+        [System.ComponentModel.Description("Unknown value.")]
+        Unknown = -1,
     }
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -1932,6 +2096,8 @@ namespace S100Framework.DomainModel.S101 {
         PartiallyObscured = 8,
         [System.ComponentModel.Description("Lights that must be in line to be visible.")]
         VisibleInLineOfRange = 9,
+        [System.ComponentModel.Description("Unknown value.")]
+        Unknown = -1,
     }
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -1941,6 +2107,8 @@ namespace S100Framework.DomainModel.S101 {
         East = 5,
         [System.ComponentModel.Description("")]
         West = 13,
+        [System.ComponentModel.Description("Unknown value.")]
+        Unknown = -1,
     }
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -1954,6 +2122,8 @@ namespace S100Framework.DomainModel.S101 {
         NoSystem = 9,
         [System.ComponentModel.Description("Navigational aids as required in international, national or regional regulations that contain the same navigational aids as the European Code for Inland Waterways of UNECE, or if there is no regulation for a waterway, navigational aids as recommended in the European Code for Inland Waterways of UNECE.")]
         MainEuropeanInlandWaterwayMarkingSystem = 11,
+        [System.ComponentModel.Description("Unknown value.")]
+        Unknown = -1,
     }
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -1963,6 +2133,8 @@ namespace S100Framework.DomainModel.S101 {
         DefaultNameDisplay = 1,
         [System.ComponentModel.Description("The name is intended to be displayed when the end-user system is set to an alternate name/text display setting, for example an alternate language.")]
         AlternateNameDisplay = 2,
+        [System.ComponentModel.Description("Unknown value.")]
+        Unknown = -1,
     }
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -1988,6 +2160,8 @@ namespace S100Framework.DomainModel.S101 {
         Latticed = 11,
         [System.ComponentModel.Description("[1] Any artificial or natural substance having similar properties and composition, as fused borax, obsidian, or the like.   [2] Something made of such a substance, as a windowpane.")]
         Glass = 12,
+        [System.ComponentModel.Description("Unknown value.")]
+        Unknown = -1,
     }
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -2019,6 +2193,8 @@ namespace S100Framework.DomainModel.S101 {
         Shells = 17,
         [System.ComponentModel.Description("A rounded rock with diameter of 256 millimetres or larger.")]
         Boulder = 18,
+        [System.ComponentModel.Description("Unknown value.")]
+        Unknown = -1,
     }
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -2044,6 +2220,8 @@ namespace S100Framework.DomainModel.S101 {
         Calcareous = 9,
         [System.ComponentModel.Description("Firm; usually refers to an area of the seafloor not covered by unconsolidated sediment.")]
         Hard = 10,
+        [System.ComponentModel.Description("Unknown value.")]
+        Unknown = -1,
     }
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -2055,6 +2233,8 @@ namespace S100Framework.DomainModel.S101 {
         Disembarkation = 2,
         [System.ComponentModel.Description("The place where vessels being navigated under a pilot's instructions drop off the pilot and pick up a different pilot for future navigation under pilot's instructions.")]
         PilotChange = 3,
+        [System.ComponentModel.Description("Unknown value.")]
+        Unknown = -1,
     }
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -2114,6 +2294,8 @@ namespace S100Framework.DomainModel.S101 {
         Ice = 24,
         [System.ComponentModel.Description("(Particles of less than 0.002mm); stiff, sticky earth that becomes hard when baked.")]
         Clay = 25,
+        [System.ComponentModel.Description("Unknown value.")]
+        Unknown = -1,
     }
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -2121,6 +2303,8 @@ namespace S100Framework.DomainModel.S101 {
     public enum qualityOfHorizontalMeasurement : int {
         [System.ComponentModel.Description("A position that is considered to be less than third-order accuracy, but is generally considered to be within 30.5 metres of its correct geographic location. Also may apply to a feature whose position does not remain fixed.")]
         Approximate = 4,
+        [System.ComponentModel.Description("Unknown value.")]
+        Unknown = -1,
     }
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -2146,6 +2330,8 @@ namespace S100Framework.DomainModel.S101 {
         MaintainedDepth = 10,
         [System.ComponentModel.Description("Depths may be altered by human influence, but will not be routinely maintained.")]
         NotRegularlyMaintained = 11,
+        [System.ComponentModel.Description("Unknown value.")]
+        Unknown = -1,
     }
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -2155,6 +2341,8 @@ namespace S100Framework.DomainModel.S101 {
         HighWater = 1,
         [System.ComponentModel.Description("The lowest level reached at a place by the water surface in one oscillation.")]
         LowWater = 2,
+        [System.ComponentModel.Description("Unknown value.")]
+        Unknown = -1,
     }
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -2166,6 +2354,8 @@ namespace S100Framework.DomainModel.S101 {
         Neaps = 2,
         [System.ComponentModel.Description("The tides of mean range occurring between spring and neap tides.")]
         Mean = 3,
+        [System.ComponentModel.Description("Unknown value.")]
+        Unknown = -1,
     }
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -2233,6 +2423,8 @@ namespace S100Framework.DomainModel.S101 {
         SwimmingProhibited = 39,
         [System.ComponentModel.Description("An area within which any vessel propelled by machinery is prohibited.")]
         PowerDrivenVesselsProhibited = 42,
+        [System.ComponentModel.Description("Unknown value.")]
+        Unknown = -1,
     }
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -2250,6 +2442,8 @@ namespace S100Framework.DomainModel.S101 {
         RadioActivated = 5,
         [System.ComponentModel.Description("Activated by making a call to a manned station.")]
         CallActivated = 6,
+        [System.ComponentModel.Description("Unknown value.")]
+        Unknown = -1,
     }
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -2259,6 +2453,8 @@ namespace S100Framework.DomainModel.S101 {
         LitSound = 1,
         [System.ComponentModel.Description("The indication of an element of a signal sequence being a period of eclipse or silence.")]
         EclipsedSilent = 2,
+        [System.ComponentModel.Description("Unknown value.")]
+        Unknown = -1,
     }
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -2270,6 +2466,8 @@ namespace S100Framework.DomainModel.S101 {
         MilesPerHour = 3,
         [System.ComponentModel.Description("A nautical unit of speed. One knot is one nautical mile per hour. The name is derived from the knots in the log line.")]
         Knots = 4,
+        [System.ComponentModel.Description("Unknown value.")]
+        Unknown = -1,
     }
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -2315,6 +2513,8 @@ namespace S100Framework.DomainModel.S101 {
         ExistenceDoubtful = 18,
         [System.ComponentModel.Description("Marked by buoys.")]
         Buoyed = 28,
+        [System.ComponentModel.Description("Unknown value.")]
+        Unknown = -1,
     }
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -2344,6 +2544,8 @@ namespace S100Framework.DomainModel.S101 {
         AcousticallySweptSurvey = 12,
         [System.ComponentModel.Description("Swept areas where the clearance depth is accurately known but the actual seabed depth is not accurately known.")]
         MechanicallySweptSurvey = 13,
+        [System.ComponentModel.Description("Unknown value.")]
+        Unknown = -1,
     }
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -2357,6 +2559,8 @@ namespace S100Framework.DomainModel.S101 {
         Modify = 3,
         [System.ComponentModel.Description("To change the place or position of something.")]
         Move = 4,
+        [System.ComponentModel.Description("Unknown value.")]
+        Unknown = -1,
     }
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -2392,6 +2596,8 @@ namespace S100Framework.DomainModel.S101 {
         HyperspectralImagery = 17,
         [System.ComponentModel.Description("The given area was determined to be free from navigational dangers to a certain depth by towing a line or object below the surface at the desired depth; or least depth(s) and position(s) within an area was identified using the same technique.")]
         MechanicallySwept = 18,
+        [System.ComponentModel.Description("Unknown value.")]
+        Unknown = -1,
     }
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -2413,6 +2619,8 @@ namespace S100Framework.DomainModel.S101 {
         Telegraph = 7,
         [System.ComponentModel.Description("Messages and other data exchanged between individuals using computers in a network.")]
         Email = 8,
+        [System.ComponentModel.Description("Unknown value.")]
+        Unknown = -1,
     }
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -2422,6 +2630,8 @@ namespace S100Framework.DomainModel.S101 {
         Name = 1,
         [System.ComponentModel.Description("A distinguishing trait, quality, or property of a feature class.")]
         FeatureCharacteristic = 2,
+        [System.ComponentModel.Description("Unknown value.")]
+        Unknown = -1,
     }
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -2493,6 +2703,8 @@ namespace S100Framework.DomainModel.S101 {
         CircleOverATrianglePointingUp = 32,
         [System.ComponentModel.Description("An uncommon and/or non-standardized shape as textually described using an associated attribute.")]
         OtherShapeSeeShapeInformation = 33,
+        [System.ComponentModel.Description("Unknown value.")]
+        Unknown = -1,
     }
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -2506,6 +2718,8 @@ namespace S100Framework.DomainModel.S101 {
         OneWay = 3,
         [System.ComponentModel.Description("Traffic flow in two generally opposite directions.")]
         TwoWay = 4,
+        [System.ComponentModel.Description("Unknown value.")]
+        Unknown = -1,
     }
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -2573,6 +2787,8 @@ namespace S100Framework.DomainModel.S101 {
         HighestAstronomicalTide = 30,
         [System.ComponentModel.Description("The datum refers to each Baltic country's realization of the European Vertical Reference System (EVRS) with land-uplift epoch 2000, which is connected to the Normaal Amsterdams Peil (NAP).")]
         BalticSeaChartDatum2000 = 44,
+        [System.ComponentModel.Description("Unknown value.")]
+        Unknown = -1,
     }
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -2602,6 +2818,8 @@ namespace S100Framework.DomainModel.S101 {
         SpecialPurpose = 11,
         [System.ComponentModel.Description("A mark used to indicate the existence of a recent wreck.")]
         EmergencyWreckMarking = 12,
+        [System.ComponentModel.Description("Unknown value.")]
+        Unknown = -1,
     }
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -2613,6 +2831,8 @@ namespace S100Framework.DomainModel.S101 {
         NotVisuallyConspicuous = 2,
         [System.ComponentModel.Description("Objects which are easily identifiable, but do not justify being classed as conspicuous.")]
         Prominent = 3,
+        [System.ComponentModel.Description("Unknown value.")]
+        Unknown = -1,
     }
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -2632,6 +2852,8 @@ namespace S100Framework.DomainModel.S101 {
         SubjectToInundationOrFlooding = 6,
         [System.ComponentModel.Description("Resting or moving on the surface of a liquid without sinking.")]
         Floating = 7,
+        [System.ComponentModel.Description("Unknown value.")]
+        Unknown = -1,
     }
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -2667,6 +2889,8 @@ namespace S100Framework.DomainModel.S101 {
         ProjectCargo = 14,
         [System.ComponentModel.Description("Goods that are stowed on board ship in individually counted units, and not in intermodal containers nor in bulk as with oil or grain.")]
         BreakBulkCargo = 15,
+        [System.ComponentModel.Description("Unknown value.")]
+        Unknown = -1,
     }
 
     public static class CodeList {

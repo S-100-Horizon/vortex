@@ -48,6 +48,8 @@ namespace S100Framework.DomainModel.S122 {
         Nw = 15,
         [System.ComponentModel.Description("Northnorthwest")]
         Nnw = 16,
+        [System.ComponentModel.Description("Unknown value.")]
+        Unknown = -1,
     }
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -75,6 +77,8 @@ namespace S100Framework.DomainModel.S122 {
         Browsing = 10,
         [System.ComponentModel.Description("online file access provided (ISO 19115:2014).")]
         FileAccess = 11,
+        [System.ComponentModel.Description("Unknown value.")]
+        Unknown = -1,
     }
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -108,6 +112,8 @@ namespace S100Framework.DomainModel.S122 {
         SuezCanalNetTonnage = 13,
         [System.ComponentModel.Description("Suez Canal Gross Tonnage (SCGT) is derived with a number of modifications from the former net register tonnage of the Moorsom System and was established by the International Commission of Constantinople in its Protocol of 18 December 1873. It is still in use, as amended by the Rules of Navigation of the Suez Canal Authority, and is registered in the Suez Canal Tonnage Certificate.")]
         SuezCanalGrossTonnage = 14,
+        [System.ComponentModel.Description("Unknown value.")]
+        Unknown = -1,
     }
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -137,6 +143,8 @@ namespace S100Framework.DomainModel.S122 {
         CubicMetres = 11,
         [System.ComponentModel.Description("The Suez Canal Gross Tonnage (SCGT) is derived with a number of modifications from the former net register tonnage of the Moorsom System and was established by the International Commission of Constantinople in its Protocol of 18 December 1873. It is still in use, as amended by the Rules of Navigation of the Suez Canal Authority, and is registered in the Suez Canal Tonnage Certificate.")]
         SuezCanalGrossTonnage = 12,
+        [System.ComponentModel.Description("Unknown value.")]
+        Unknown = -1,
     }
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -154,6 +162,8 @@ namespace S100Framework.DomainModel.S122 {
         EqualTo = 5,
         [System.ComponentModel.Description("The two values are not equivalent. (adapted http://en.wikipedia.org/wiki/Logical_connective)")]
         NotEqualTo = 6,
+        [System.ComponentModel.Description("Unknown value.")]
+        Unknown = -1,
     }
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -173,6 +183,8 @@ namespace S100Framework.DomainModel.S122 {
         Friday = 6,
         [System.ComponentModel.Description("The seventh day of the week.")]
         Saturday = 7,
+        [System.ComponentModel.Description("Unknown value.")]
+        Unknown = -1,
     }
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -190,6 +202,8 @@ namespace S100Framework.DomainModel.S122 {
         Required = 5,
         [System.ComponentModel.Description("use of facility, waterway or service is not required")]
         NotRequired = 6,
+        [System.ComponentModel.Description("Unknown value.")]
+        Unknown = -1,
     }
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -203,6 +217,8 @@ namespace S100Framework.DomainModel.S122 {
         Included = 1,
         [System.ComponentModel.Description("Vessels with these characteristics are excluded from the regulation/restriction/recommendation/nautical information.")]
         Excluded = 2,
+        [System.ComponentModel.Description("Unknown value.")]
+        Unknown = -1,
     }
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -224,6 +240,8 @@ namespace S100Framework.DomainModel.S122 {
         Telegraph = 7,
         [System.ComponentModel.Description("Messages and other data exchanged between individuals using computers in a network.")]
         Email = 8,
+        [System.ComponentModel.Description("Unknown value.")]
+        Unknown = -1,
     }
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -235,6 +253,8 @@ namespace S100Framework.DomainModel.S122 {
         Closure = 2,
         [System.ComponentModel.Description("The service is available but not manned.")]
         UnmannedOperation = 3,
+        [System.ComponentModel.Description("Unknown value.")]
+        Unknown = -1,
     }
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -282,6 +302,8 @@ namespace S100Framework.DomainModel.S122 {
         ImdgCodeClass9 = 20,
         [System.ComponentModel.Description("Harmful substances are those substances which are identified as marine pollutants in the International Maritime Dangerous Goods Code (IMDG Code). Packaged form is defined as the forms of containment specified for harmful substances in the IMDG Code.")]
         HarmfulSubstancesInPackagedForm = 21,
+        [System.ComponentModel.Description("Unknown value.")]
+        Unknown = -1,
     }
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -305,6 +327,8 @@ namespace S100Framework.DomainModel.S122 {
         HeavyLift = 8,
         [System.ComponentModel.Description("Material carried by a ship to ensure its stability.")]
         Ballast = 9,
+        [System.ComponentModel.Description("Unknown value.")]
+        Unknown = -1,
     }
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -318,6 +342,8 @@ namespace S100Framework.DomainModel.S122 {
         PreferredWorking = 3,
         [System.ComponentModel.Description("A channel or frequency to be used for working with a radio station when the preferred working channel or frequency is busy or is suffering from interference.")]
         AlternateWorking = 4,
+        [System.ComponentModel.Description("Unknown value.")]
+        Unknown = -1,
     }
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -353,6 +379,8 @@ namespace S100Framework.DomainModel.S122 {
         Maritime = 15,
         [System.ComponentModel.Description("The agency or establishment for collecting duties, tolls.")]
         Customs = 16,
+        [System.ComponentModel.Description("Unknown value.")]
+        Unknown = -1,
     }
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -368,6 +396,8 @@ namespace S100Framework.DomainModel.S122 {
         ShipReportingService = 4,
         [System.ComponentModel.Description("A service established to provide port information without interaction between the customer and the service provider. This information could be inter-alia berthing information, availability of port services, shipping schedules, meteorological and hydrological data.")]
         LocalPortService = 5,
+        [System.ComponentModel.Description("Unknown value.")]
+        Unknown = -1,
     }
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -459,6 +489,8 @@ namespace S100Framework.DomainModel.S122 {
         RemovedDeleted = 42,
         [System.ComponentModel.Description("Item selected for modification.")]
         CandidateForModification = 43,
+        [System.ComponentModel.Description("Unknown value.")]
+        Unknown = -1,
     }
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -550,6 +582,8 @@ namespace S100Framework.DomainModel.S122 {
         SoxEmissionRestricted = 40,
         [System.ComponentModel.Description("An area within which the emission of NOx is restricted.")]
         NoxEmissionRestricted = 41,
+        [System.ComponentModel.Description("Unknown value.")]
+        Unknown = -1,
     }
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -565,6 +599,8 @@ namespace S100Framework.DomainModel.S122 {
         National = 2,
         [System.ComponentModel.Description("An area smaller than the nation in which it lies.")]
         NationalSubDivision = 3,
+        [System.ComponentModel.Description("Unknown value.")]
+        Unknown = -1,
     }
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -622,6 +658,8 @@ namespace S100Framework.DomainModel.S122 {
         RecreationArea = 32,
         [System.ComponentModel.Description("An area within which the ship pollution emission is controlled.")]
         ShipPollutionEmissionControl = 33,
+        [System.ComponentModel.Description("Unknown value.")]
+        Unknown = -1,
     }
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -647,6 +685,8 @@ namespace S100Framework.DomainModel.S122 {
         NewsMedia = 13,
         [System.ComponentModel.Description("Information obtained from the analysis of traffic data.")]
         TrafficData = 14,
+        [System.ComponentModel.Description("Unknown value.")]
+        Unknown = -1,
     }
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -658,6 +698,8 @@ namespace S100Framework.DomainModel.S122 {
         Extract = 2,
         [System.ComponentModel.Description("The whole text.")]
         FullText = 3,
+        [System.ComponentModel.Description("Unknown value.")]
+        Unknown = -1,
     }
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -667,6 +709,8 @@ namespace S100Framework.DomainModel.S122 {
         Domestic = 1,
         [System.ComponentModel.Description("The vessel is registered or enrolled under a national flag different from the port, harbour, territorial sea, exclusive economic zone, or other administrative area in which the object that possesses this attribute applies or is located.")]
         Foreign = 2,
+        [System.ComponentModel.Description("Unknown value.")]
+        Unknown = -1,
     }
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -676,6 +720,8 @@ namespace S100Framework.DomainModel.S122 {
         LogicalConjunction = 1,
         [System.ComponentModel.Description("At least one of the conditions described by the other attributes of the object, or sub-attributes of the same complex attributes, is true.")]
         LogicalDisjunction = 2,
+        [System.ComponentModel.Description("Unknown value.")]
+        Unknown = -1,
     }
 
     [System.Serializable()]
