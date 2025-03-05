@@ -24,58 +24,7 @@ namespace TestS100Framework
         {
             public int? Value { get; set; }
         }
-    }
-
-
-
-    //public class informationBinding<T>
-    //{
-    //    public Type? Association { get; set; }
-    //    public Role? Role { get; set; }
-
-    //    public Type? informationType { get; set; }
-    //}
-
-    //namespace TestS100Framework.Bindings
-    //{
-    //    using S100Framework.DomainModel.S131;
-    //    using S100Framework.DomainModel.S131.Bindings.InformationAssociations;
-    //    using S100Framework.DomainModel.S131.Bindings.Roles;
-    //    using S100Framework.DomainModel.S131.ComplexAttributes;
-    //    using S100Framework.DomainModel.S131.InformationTypes;
-
-
-    //    public class AbstractRxNInformationAssociations {
-    //        [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
-    //        public List<InclusionType<isApplicableTo>> isApplicableTo { get; set; } = [];
-
-    //        [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
-    //        public List<RelatedOrganisation<theOrganisation>> theOrganisation { get; set; } = [];
-    //    }
-
-    //    public abstract class AbstractRxN : InformationType
-    //    {
-    //        [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
-    //        public categoryOfAuthority? categoryOfAuthority { get; set; } = default;
-
-    //        [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
-    //        public List<rxNCode> rxNCode { get; set; } = [];
-
-    //        [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
-    //        public List<textContent> textContent { get; set; } = [];
-
-    //        [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
-    //        public List<InclusionType<isApplicableTo>> isApplicableTo { get; set; } = [];
-
-    //        [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
-    //        public List<RelatedOrganisation<theOrganisation>> theOrganisation { get; set; } = [];
-
-    //        public AbstractRxNInformationAssociations InformationAssociations { get; set; } = new();
-
-    //        public AbstractRxN() {
-    //        }
-    //    }
-    //}
+    }   
 
     namespace TestS100Framework
     {
@@ -443,7 +392,31 @@ namespace TestS100Framework
                 System.Diagnostics.Debugger.Break();
             }
 
-            //public record featureType(string code, string? superType, bool isAbstract);
+            [Fact]
+            public void Test_SpatialAssociation() {
+                var productSpecification = XDocument.Load(@".\Artifacts\FeatureCatalogue.xml");
+
+                var navigator = productSpecification.CreateNavigator();
+                navigator.MoveToFollowing(XPathNodeType.Element);
+                var scopes = navigator.GetNamespacesInScope(XmlNamespaceScope.All);
+
+                var scope_S100 = scopes["S100FC"];
+
+                var xmlNamespaceManager = new XmlNamespaceManager(new NameTable());
+                foreach (var e in scopes)
+                    xmlNamespaceManager.AddNamespace(e.Key, e.Value);
+
+                var elements = productSpecification.XPathSelectElements("//S100FC:featureBinding", xmlNamespaceManager);
+
+                foreach(var e in elements) {
+                    var code = e.Element(XName.Get("code", scope_S100))!.Value;
+
+                    var usage = productSpecification.XPathSelectElements($"//S100FC:association/[@ref='{code}']", xmlNamespaceManager);
+
+                    if (usage.Any())
+                        _output.WriteLine(code);
+                }
+            }
 
             public record featureBinding(string roleType, int lower, int? upper, string association, string role);
         }
