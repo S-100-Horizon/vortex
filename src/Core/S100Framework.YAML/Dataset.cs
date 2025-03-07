@@ -1,9 +1,11 @@
-﻿using System.Globalization;
+﻿using S100Framework.DomainModel;
+using System.Globalization;
 using YamlDotNet.Serialization;
 
 namespace S100Framework.YAML
 {
-    public enum Primitive {
+    public enum Primitive
+    {
         Point,
         PointSet,
         Curve,
@@ -24,15 +26,18 @@ namespace S100Framework.YAML
 
         public ICollection<Point>? Points => _points.Any() ? _points : null;
 
-        public ICollection<Curve>? Curves => _curves.Any() ? _curves : null;
 
-        public ICollection<Surface>? Surfaces => _surfaces.Any() ? _surfaces : null;
+        public ICollection<Curve>? Curves => _curves.Any() ? _curves : null;
 
         public ICollection<CompositeCurve>? CompositeCurves => _compositeCurves.Any() ? _compositeCurves : null;
 
+        public ICollection<PointSet>? Depths => _pointSets.Any() ? _pointSets : null;
+        public ICollection<Surface>? Surfaces => _surfaces.Any() ? _surfaces : null;
+        
         public ICollection<Feature>? Features => _features.Any() ? _features : null;
 
         private ICollection<Point> _points = new HashSet<Point>();
+        private ICollection<PointSet> _pointSets = new HashSet<PointSet>();
         private ICollection<Curve> _curves = new HashSet<Curve>();
         private ICollection<CompositeCurve> _compositeCurves = new HashSet<CompositeCurve>();
         private ICollection<Surface> _surfaces = new HashSet<Surface>();
@@ -41,6 +46,10 @@ namespace S100Framework.YAML
 
         public Dataset AddPoint(Point point) {
             _points.Add(point);
+            return this;
+        }
+        public Dataset AddPointSet(PointSet pointSet) {
+            _pointSets.Add(pointSet);
             return this;
         }
         public Dataset AddCurve(Curve curve) {
@@ -63,18 +72,27 @@ namespace S100Framework.YAML
         }
     }
 
-    public class Point
+    public class Point(double x, double y)
     {
-        public Point(decimal x, decimal y) {
-            Coordinate = new Coordinate(x, y);
-        }
-
         public string? Name { get; set; }
 
         public string? Location => Coordinate is null ? string.Empty : string.Format(CultureInfo.InvariantCulture, "{0},{1}", Coordinate.Y, Coordinate.X);
 
         [YamlIgnore]
-        public Coordinate? Coordinate { get; private set; }
+        public Coordinate? Coordinate { get; private set; } = new Coordinate(x, y);
+    }
+
+    public class PointSet(Coordinate[] points, double[] depths)
+    {
+        public string? Name { get; set; }
+        public string? Location => Points is null ? string.Empty : string.Join(",", Points.Select(e => string.Format(CultureInfo.InvariantCulture, "{0},{1}", e.Y, e.X)));
+        public string? Z => Depths is null ? string.Empty : string.Join(",", Depths);
+
+        [YamlIgnore]
+        public double[] Depths { get; private set; } = depths;
+
+        [YamlIgnore]
+        public Coordinate[] Points { get; private set; } = points;
     }
 
     public class Curve
@@ -103,74 +121,49 @@ namespace S100Framework.YAML
 
         public string? End => _end?.Name ?? null;
 
-        public string? Vertices => Coordinate is null ? string.Empty : string.Join(", ", Coordinate.Select(e => string.Format(CultureInfo.InvariantCulture, "{0},{1}", e.Y, e.X)));
+        public string? Vertices => Coordinate is null ? string.Empty : string.Join(",", Coordinate.Select(e => string.Format(CultureInfo.InvariantCulture, "{0},{1}", e.Y, e.X)));
 
         [YamlIgnore]
         public Coordinate[]? Coordinate { get; private set; }
     }
 
-    public class CompositeCurve {
+    public class CompositeCurve
+    {
         public string? Name { get; set; }
 
-        public string? Components => Curves is null ? null : string.Join(',', Curves.Select(e=>e.Name));
+        public string? Components => Curves is null ? null : string.Join(',', Curves.Select(e => e.Name));
 
         [YamlIgnore]
         public Curve[]? Curves { get; private set; }
     }
 
-    public class Surface {
-        public Surface(Curve exterior) {
-            this.ExteriorRing=exterior;
-        }
-
-        public string? Name { get; set; }
-
-        public string? Exterior => ExteriorRing?.Name;
-
-        public dynamic[]? Interior => InteriorRings is null ? null : InteriorRings?.Select(e => new { Hole = e.Name }).ToArray();
-
-        [YamlIgnore]
-        public Curve ExteriorRing { get; set; }
-
-        [YamlIgnore]
-        public Curve[]? InteriorRings { get; set; }
-    }
-
-    public class Coordinate
+    public class Surface(Curve exterior)
     {
-        public Coordinate(decimal x, decimal y) {
-            this.X = x;
-            this.Y = y;
-        }
-
-        public decimal X { get; set; }
-        public decimal Y { get; set; }
-    }
-
-    public class Attribute {
         public string? Name { get; set; }
 
-        public string? Value { get; set; }
+        public string? Exterior => ExteriorRing.Vertices;
+
+        public dynamic[]? Interior => InteriorRings.Length == 0 ? null : InteriorRings?.Select(e => new { Hole = e.Vertices }).ToArray();
+
+        [YamlIgnore]
+        public Curve ExteriorRing { get; set; } = exterior;
+
+        [YamlIgnore]
+        public Curve[] InteriorRings { get; set; } = [];
     }
 
-    public class Feature {
+    public class Coordinate(double x, double y)
+    {
+        public double X { get; set; } = x;
+        public double Y { get; set; } = y;
+    }
+
+    public class Feature
+    {
         public string? Name { get; set; }
         public Primitive Prim { get; set; }
-
-        public ICollection<Attribute>? Attributes => _attributes.Any() ? _attributes : null;
-
+        public string? Foid { get; set; }
+        public FeatureNode? Attributes { get; set; }
         public string? Geometry { get; set; }
-
-        private ICollection<Attribute> _attributes = new HashSet<Attribute>();
-
-        public Feature Add(string name, string value) {
-            _attributes.Add(new Attribute { Name = name, Value = value });
-            return this;
-        }
-
-        public Feature Add(string name, int value) {
-            _attributes.Add(new Attribute { Name = name, Value = $"{value}" });
-            return this;
-        }
     }
 }

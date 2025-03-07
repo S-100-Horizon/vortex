@@ -17,6 +17,7 @@ namespace S100Framework.YAML
            .WithNamingConvention(PascalCaseNamingConvention.Instance)
            .ConfigureDefaultValuesHandling(DefaultValuesHandling.OmitDefaults)
            .WithIndentedSequences()
+           .DisableAliases()
            .WithTypeConverter(new CustomNodeConverter())    // Custom type converter for objects of Node
            .WithTypeConverter(new DoubleConverter())        // Custom Double converter. Ensures a value of 2 is written as "2.0"
            .Build();
