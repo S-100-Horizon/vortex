@@ -42,6 +42,8 @@ namespace S100Framework.DomainModel.S128 {
         NauticalPublication = 12,
         [System.ComponentModel.Description("Printed nautical chart.")]
         PrintedNauticalChart = 13,
+        [System.ComponentModel.Description("Unknown value.")]
+        Unknown = -1,
     }
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -83,6 +85,8 @@ namespace S100Framework.DomainModel.S128 {
         Renc = 18,
         [System.ComponentModel.Description("Value Added Resellers (VARs), who are able to offer comprehensive end-use services that bring together various navigational products into one package.")]
         Vars = 19,
+        [System.ComponentModel.Description("Unknown value.")]
+        Unknown = -1,
     }
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -94,6 +98,8 @@ namespace S100Framework.DomainModel.S128 {
         AlternateNameDisplay = 2,
         [System.ComponentModel.Description("The name or text is not intended to be displayed.")]
         NoChartDisplay = 3,
+        [System.ComponentModel.Description("Unknown value.")]
+        Unknown = -1,
     }
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -103,6 +109,8 @@ namespace S100Framework.DomainModel.S128 {
         Production = 1,
         [System.ComponentModel.Description("The action to withdraw a time stamp (Used when a time stamp has been reported incorrectly).")]
         Withdrawn = 2,
+        [System.ComponentModel.Description("Unknown value.")]
+        Unknown = -1,
     }
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -140,6 +148,8 @@ namespace S100Framework.DomainModel.S128 {
         RealTimeHydrographicAndEnvironmentalInformationServices = 15,
         [System.ComponentModel.Description("Search and Rescue Service")]
         SearchAndRescueService = 16,
+        [System.ComponentModel.Description("Unknown value.")]
+        Unknown = -1,
     }
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -165,6 +175,8 @@ namespace S100Framework.DomainModel.S128 {
         A6 = 7,
         [System.ComponentModel.Description("The eighth size as output size on nautical paper chart.")]
         A7 = 8,
+        [System.ComponentModel.Description("Unknown value.")]
+        Unknown = -1,
     }
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -178,6 +190,8 @@ namespace S100Framework.DomainModel.S128 {
         Recommendedenhancementprovider = 3,
         [System.ComponentModel.Description("A product or service, that is recommended to make use of added value provided by another product or service.")]
         Recommendedenhancementuser = 4,
+        [System.ComponentModel.Description("Unknown value.")]
+        Unknown = -1,
     }
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -185,6 +199,8 @@ namespace S100Framework.DomainModel.S128 {
     public enum digitalSignatureReference : int {
         [System.ComponentModel.Description("Elliptic Curve Digital Signature Algorithm (ECDSA) that based upon the issuing certificate. It's signed with the issuer's key P-384.")]
         Ecdsa384Sha2 = 8,
+        [System.ComponentModel.Description("Unknown value.")]
+        Unknown = -1,
     }
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -196,6 +212,8 @@ namespace S100Framework.DomainModel.S128 {
         Transit = 2,
         [System.ComponentModel.Description("For ocean crossing and planning purposes.")]
         Overview = 3,
+        [System.ComponentModel.Description("Unknown value.")]
+        Unknown = -1,
     }
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -221,6 +239,8 @@ namespace S100Framework.DomainModel.S128 {
         Lua = 9,
         [System.ComponentModel.Description("Other format.")]
         Other = 100,
+        [System.ComponentModel.Description("Unknown value.")]
+        Unknown = -1,
     }
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -232,6 +252,8 @@ namespace S100Framework.DomainModel.S128 {
         Replacement = 2,
         [System.ComponentModel.Description("Deletes an existing file.")]
         Deletion = 3,
+        [System.ComponentModel.Description("Unknown value.")]
+        Unknown = -1,
     }
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -245,6 +267,8 @@ namespace S100Framework.DomainModel.S128 {
         Deprecated = 3,
         [System.ComponentModel.Description("Item that has been removed or deleted.")]
         Deleted = 4,
+        [System.ComponentModel.Description("Unknown value.")]
+        Unknown = -1,
     }
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -272,6 +296,8 @@ namespace S100Framework.DomainModel.S128 {
         TrafficData = 14,
         [System.ComponentModel.Description("A national or regional authority charged with administration of maritime affairs.")]
         Maritime = 15,
+        [System.ComponentModel.Description("Unknown value.")]
+        Unknown = -1,
     }
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -289,6 +315,8 @@ namespace S100Framework.DomainModel.S128 {
         NavigationalPurposeHarbour = 5,
         [System.ComponentModel.Description("For ships berthing. Scale > 1:4000.")]
         NavigationalPurposeBerthing = 6,
+        [System.ComponentModel.Description("Unknown value.")]
+        Unknown = -1,
     }
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -310,6 +338,8 @@ namespace S100Framework.DomainModel.S128 {
         Telegraph = 7,
         [System.ComponentModel.Description("Messages and other data exchanged between individuals using computers in a network.")]
         Email = 8,
+        [System.ComponentModel.Description("Unknown value.")]
+        Unknown = -1,
     }
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -339,6 +369,8 @@ namespace S100Framework.DomainModel.S128 {
         Xml = 11,
         [System.ComponentModel.Description("Portable Network Graphics format.")]
         Png = 12,
+        [System.ComponentModel.Description("Unknown value.")]
+        Unknown = -1,
     }
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -352,6 +384,8 @@ namespace S100Framework.DomainModel.S128 {
         Month = 3,
         [System.ComponentModel.Description("A period of one year.")]
         Year = 4,
+        [System.ComponentModel.Description("Unknown value.")]
+        Unknown = -1,
     }
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -447,6 +481,8 @@ namespace S100Framework.DomainModel.S128 {
         DutchEstuaryLowWaterReferenceLevelOlw = 44,
         [System.ComponentModel.Description("The bottom of the ocean and seas where there is a generally smooth gentle gradient. Also referred to as sea bed (sometimes seabed or sea-bed), and sea bottom.")]
         SeaFloor = 45,
+        [System.ComponentModel.Description("Unknown value.")]
+        Unknown = -1,
     }
 
     [System.Serializable()]
@@ -578,6 +614,14 @@ namespace S100Framework.DomainModel.S128 {
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class printSize {
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
+            [EnumerationValue(4)]
+            [EnumerationValue(5)]
+            [EnumerationValue(6)]
+            [EnumerationValue(7)]
+            [EnumerationValue(8)]
             public iso216? iso216 { get; set; } = default;
             public customPaperSize? customPaperSize { get; set; }
 
@@ -631,10 +675,40 @@ namespace S100Framework.DomainModel.S128 {
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class sourceIndication {
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
+            [EnumerationValue(4)]
+            [EnumerationValue(5)]
+            [EnumerationValue(6)]
+            [EnumerationValue(7)]
+            [EnumerationValue(8)]
+            [EnumerationValue(9)]
+            [EnumerationValue(10)]
+            [EnumerationValue(11)]
+            [EnumerationValue(12)]
+            [EnumerationValue(13)]
+            [EnumerationValue(14)]
+            [EnumerationValue(15)]
+            [EnumerationValue(16)]
+            [EnumerationValue(17)]
+            [EnumerationValue(18)]
+            [EnumerationValue(19)]
             public categoryOfAuthority? categoryOfAuthority { get; set; } = default;
             public String countryName { get; set; } = string.Empty;
             public DateTime? reportedDate { get; set; } = default;
             public String source { get; set; } = string.Empty;
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(7)]
+            [EnumerationValue(8)]
+            [EnumerationValue(9)]
+            [EnumerationValue(10)]
+            [EnumerationValue(11)]
+            [EnumerationValue(12)]
+            [EnumerationValue(13)]
+            [EnumerationValue(14)]
+            [EnumerationValue(15)]
             public sourceType? sourceType { get; set; } = default;
             public List<featureName> featureName { get; set; } = [];
 
@@ -651,6 +725,15 @@ namespace S100Framework.DomainModel.S128 {
         {
             public String contactInstructions { get; set; } = string.Empty;
             public String telecommunicationIdentifier { get; set; } = string.Empty;
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
+            [EnumerationValue(4)]
+            [EnumerationValue(5)]
+            [EnumerationValue(6)]
+            [EnumerationValue(7)]
+            [EnumerationValue(8)]
             public List<telecommunicationService> telecommunicationService { get; set; } = [];
 
             public telecommunications() {
@@ -662,6 +745,10 @@ namespace S100Framework.DomainModel.S128 {
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class timeIntervalOfCycle {
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
+            [EnumerationValue(4)]
             [Required()]
             public List<typeOfTimeIntervalUnit> typeOfTimeIntervalUnit { get; set; }
 
@@ -719,6 +806,7 @@ namespace S100Framework.DomainModel.S128 {
         public partial class supportFile {
             public String comment { get; set; } = string.Empty;
 
+            [EnumerationValue(1)]
             [Required()]
             public digitalSignatureReference digitalSignatureReference { get; set; }
             public String digitalSignatureValue { get; set; } = string.Empty;
@@ -728,9 +816,22 @@ namespace S100Framework.DomainModel.S128 {
             public DateTime? issueDate { get; set; } = default;
             public String otherDataTypeDescription { get; set; } = string.Empty;
 
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
+            [EnumerationValue(4)]
+            [EnumerationValue(5)]
+            [EnumerationValue(6)]
+            [EnumerationValue(7)]
+            [EnumerationValue(8)]
+            [EnumerationValue(9)]
+            [EnumerationValue(100)]
             [Required()]
             public supportFileFormat supportFileFormat { get; set; }
 
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
             [Required()]
             public supportFilePurpose supportFilePurpose { get; set; }
 
@@ -942,19 +1043,79 @@ namespace S100Framework.DomainModel.S128 {
         public abstract partial class NavigationalProduct : CatalogueElement {
             public List<Decimal> approximateGridResolution { get; set; } = [];
             public List<Int32> compilationScale { get; set; } = [];
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
             public distributionStatus? distributionStatus { get; set; } = default;
             public Int32? editionNumber { get; set; } = default;
             public Int32? maximumDisplayScale { get; set; } = default;
             public Int32? minimumDisplayScale { get; set; } = default;
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
             public List<navigationPurpose> navigationPurpose { get; set; } = [];
             public String optimumDisplayScale { get; set; } = string.Empty;
             public String originalProductNumber { get; set; } = string.Empty;
             public String producerNation { get; set; } = string.Empty;
             public String productNumber { get; set; } = string.Empty;
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
+            [EnumerationValue(4)]
+            [EnumerationValue(5)]
+            [EnumerationValue(6)]
             public specificUsage? specificUsage { get; set; } = default;
             public DateTime? updateDate { get; set; } = default;
             public Int32? updateNumber { get; set; } = default;
             public horizontalDatumEpsg? horizontalDatumEpsg { get; set; }
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
+            [EnumerationValue(4)]
+            [EnumerationValue(5)]
+            [EnumerationValue(6)]
+            [EnumerationValue(7)]
+            [EnumerationValue(8)]
+            [EnumerationValue(9)]
+            [EnumerationValue(10)]
+            [EnumerationValue(11)]
+            [EnumerationValue(12)]
+            [EnumerationValue(13)]
+            [EnumerationValue(14)]
+            [EnumerationValue(15)]
+            [EnumerationValue(16)]
+            [EnumerationValue(17)]
+            [EnumerationValue(18)]
+            [EnumerationValue(19)]
+            [EnumerationValue(20)]
+            [EnumerationValue(21)]
+            [EnumerationValue(22)]
+            [EnumerationValue(23)]
+            [EnumerationValue(24)]
+            [EnumerationValue(25)]
+            [EnumerationValue(26)]
+            [EnumerationValue(27)]
+            [EnumerationValue(28)]
+            [EnumerationValue(29)]
+            [EnumerationValue(30)]
+            [EnumerationValue(31)]
+            [EnumerationValue(32)]
+            [EnumerationValue(33)]
+            [EnumerationValue(34)]
+            [EnumerationValue(35)]
+            [EnumerationValue(36)]
+            [EnumerationValue(37)]
+            [EnumerationValue(38)]
+            [EnumerationValue(39)]
+            [EnumerationValue(40)]
+            [EnumerationValue(41)]
+            [EnumerationValue(42)]
+            [EnumerationValue(43)]
+            [EnumerationValue(44)]
+            [EnumerationValue(45)]
             public verticalDatum? verticalDatum { get; set; } = default;
             public override string Code => nameof(NavigationalProduct);
 
@@ -972,6 +1133,18 @@ namespace S100Framework.DomainModel.S128 {
             public DateTime issueDate { get; set; }
             public TimeOnly? issueTime { get; set; } = default;
 
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
+            [EnumerationValue(4)]
+            [EnumerationValue(5)]
+            [EnumerationValue(6)]
+            [EnumerationValue(7)]
+            [EnumerationValue(8)]
+            [EnumerationValue(9)]
+            [EnumerationValue(10)]
+            [EnumerationValue(11)]
+            [EnumerationValue(12)]
             [Required()]
             public typeOfProductFormat typeOfProductFormat { get; set; }
             public productSpecification? productSpecification { get; set; }
@@ -1002,8 +1175,25 @@ namespace S100Framework.DomainModel.S128 {
         public partial class S100Service : CatalogueElement {
             public Boolean? compressionFlag { get; set; } = default;
             public String serviceName { get; set; } = string.Empty;
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
+            [EnumerationValue(4)]
             public serviceStatus? serviceStatus { get; set; } = default;
 
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
+            [EnumerationValue(4)]
+            [EnumerationValue(5)]
+            [EnumerationValue(6)]
+            [EnumerationValue(7)]
+            [EnumerationValue(8)]
+            [EnumerationValue(9)]
+            [EnumerationValue(10)]
+            [EnumerationValue(11)]
+            [EnumerationValue(12)]
             [Required()]
             public typeOfProductFormat typeOfProductFormat { get; set; }
             public serviceSpecification? serviceSpecification { get; set; }

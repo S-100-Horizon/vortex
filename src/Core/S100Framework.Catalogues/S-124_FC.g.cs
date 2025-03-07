@@ -20,6 +20,8 @@ namespace S100Framework.DomainModel.S124 {
         Name = 1,
         [System.ComponentModel.Description("The distinct character, such as fixed, flashing, or occulting, which is given to each light to avoid confusion with neighbouring ones.")]
         LightCharacteristic = 2,
+        [System.ComponentModel.Description("Unknown value.")]
+        Unknown = -1,
     }
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -31,6 +33,8 @@ namespace S100Framework.DomainModel.S124 {
         AlternateNameDisplay = 2,
         [System.ComponentModel.Description("The name or text is not intended to be displayed.")]
         NoChartDisplay = 3,
+        [System.ComponentModel.Description("Unknown value.")]
+        Unknown = -1,
     }
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -122,6 +126,8 @@ namespace S100Framework.DomainModel.S124 {
         SoxEmissionRestricted = 40,
         [System.ComponentModel.Description("An area within which the emission of NOx is restricted.")]
         NoxEmissionRestricted = 41,
+        [System.ComponentModel.Description("Unknown value.")]
+        Unknown = -1,
     }
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -151,6 +157,8 @@ namespace S100Framework.DomainModel.S124 {
         CoastalInForceBulletin = 11,
         [System.ComponentModel.Description("A list of serial numbers of local warnings which are in- force.")]
         LocalInForceBulletin = 12,
+        [System.ComponentModel.Description("Unknown value.")]
+        Unknown = -1,
     }
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -162,6 +170,8 @@ namespace S100Framework.DomainModel.S124 {
         WarningReference = 2,
         [System.ComponentModel.Description("Reference to warnings or notices that are considered in-force.")]
         InForce = 3,
+        [System.ComponentModel.Description("Unknown value.")]
+        Unknown = -1,
     }
 
     [System.Serializable()]
@@ -189,6 +199,10 @@ namespace S100Framework.DomainModel.S124 {
         public partial class featureName {
             public String language { get; set; } = string.Empty;
             public String name { get; set; } = string.Empty;
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
+            [EnumerationValue(3)]
             public nameUsage? nameUsage { get; set; } = default;
 
             public featureName() {
@@ -494,6 +508,12 @@ namespace S100Framework.DomainModel.S124 {
 
             [Required()]
             public warningInformation warningInformation { get; set; }
+
+            [EnumerationValue(8)]
+            [EnumerationValue(7)]
+            [EnumerationValue(14)]
+            [EnumerationValue(25)]
+            [EnumerationValue(27)]
             public restriction? restriction { get; set; } = default;
             public override string Code => nameof(NAVWARNPart);
 
@@ -524,6 +544,9 @@ namespace S100Framework.DomainModel.S124 {
             [Required()]
             public Int32 textOffsetDistance { get; set; }
             public Boolean? textRotation { get; set; } = default;
+
+            [EnumerationValue(1)]
+            [EnumerationValue(2)]
             public textType? textType { get; set; } = default;
             public Int32? scaleMinimum { get; set; } = default;
             public override string Code => nameof(TextPlacement);

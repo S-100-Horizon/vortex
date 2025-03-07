@@ -15,6 +15,7 @@
   <ItemGroup>
     <None Remove="Config.daml" />
     <None Remove="Images\EditingCreateFeaturesWindowShow16.png" />
+    <None Remove="Images\logo.png" />
   </ItemGroup>
   <ItemGroup>
     <Page Remove="Views\S100PropertyGridView.xaml" />
@@ -27,6 +28,7 @@
     <Content Include="DarkImages\AddInDesktop16.png" />
     <Content Include="DarkImages\AddInDesktop32.png" />
     <EmbeddedResource Include="Images\down.png" />
+    <Content Include="Images\logo.png" />
     <Resource Include="Images\EditingCreateFeaturesWindowShow16.png" />    
   </ItemGroup>
   <ItemGroup>
