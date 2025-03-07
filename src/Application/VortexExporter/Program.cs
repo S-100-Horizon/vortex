@@ -60,9 +60,9 @@ namespace S100Framework.Applications
 
             using Geodatabase source = createGeodatabase();
 
-            //using var informationType = source.OpenDataset<Table>("informationType");
-            //using var informationAssociation = source.OpenDataset<Table>("informationAssociation");
-            //using var featureAssociation = source.OpenDataset<Table>("featureAssociation");
+            using var informationType = source.OpenDataset<Table>("s101.informationType");
+            using var informationAssociation = source.OpenDataset<Table>("s101.informationAssociation");
+            using var featureAssociation = source.OpenDataset<Table>("s101.featureAssociation");
 
             var dataset = new Dataset();
 
