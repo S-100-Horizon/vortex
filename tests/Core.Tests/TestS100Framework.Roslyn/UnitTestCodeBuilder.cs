@@ -406,18 +406,15 @@ namespace TestS100Framework
                 foreach (var e in scopes)
                     xmlNamespaceManager.AddNamespace(e.Key, e.Value);
 
-                var elements = productSpecification.XPathSelectElements("//S100FC:featureBinding", xmlNamespaceManager);
+                var elements = productSpecification.XPathSelectElements("//S100FC:S100_FC_InformationAssociation", xmlNamespaceManager);
 
                 foreach(var e in elements) {
-                    var code = e.Element(XName.Get("association", scope_S100))!.Attribute("ref")!.Value;
+                    var association = e.Element(XName.Get("code", scope_S100))!.Value;
 
-                    // /S100FC:S100_FC_FeatureCatalogue/S100FC:S100_FC_FeatureTypes/S100FC:S100_FC_FeatureType/S100FC:featureBinding/S100FC:association[@ref="AidsToNavigationAssociation"]
-                    //  //S100FC:S100_FC_FeatureType/S100FC:featureBinding/S100FC:association[@ref="AidsToNavigationAssociation"]
+                    var usage = productSpecification.XPathSelectElements($"//S100FC:informationBinding/S100FC:association[@ref=\"{association}\"]", xmlNamespaceManager);
 
-                    var usage = productSpecification.XPathSelectElements($"/S100FC:S100_FC_FeatureTypes/S100FC:S100_FC_FeatureType/S100FC:featureBinding/S100FC:association/[@ref='{code}']", xmlNamespaceManager);
-
-                    if (usage.Any())
-                        _output.WriteLine(code);
+                    if (!usage.Any())
+                        _output.WriteLine(association);
                 }
             }
 

@@ -520,8 +520,70 @@ namespace S100Framework
                     classBuilder.AppendLine();
                 }
 
-                classBuilder.AppendLine($"\tnamespace Associations");
-                classBuilder.AppendLine("\t{");
+                var spatialAssociationTypes = new List<string>();
+
+                //  S100_FC_SpatialAssociations
+                {
+
+                    classBuilder.AppendLine($"\tnamespace Associations");
+                    classBuilder.AppendLine("\t{");                    
+
+                    var elementsInformationAssociation = productSpecification.XPathSelectElements("//S100FC:S100_FC_InformationAssociation", xmlNamespaceManager);
+
+                    classBuilder.AppendLine($"\tnamespace SpatialAssociations");
+                    classBuilder.AppendLine("\t\t{");
+
+                    foreach (var e in elementsInformationAssociation) {
+                        var name = e.Element(XName.Get("name", scope_S100))!.Value;
+                        var code = e.Element(XName.Get("code", scope_S100))!.Value;
+
+                        var usage = productSpecification.XPathSelectElements($"//S100FC:informationBinding/S100FC:association[@ref=\"{code}\"]", xmlNamespaceManager);
+
+                        if (!usage.Any()) {
+                            if (code.Contains("Spatial")) {
+                                spatialAssociationTypes.Add(code);
+
+                                var attributes = TypeAttributes.Public | TypeAttributes.Class | /*TypeAttributes.AutoClass |*/ TypeAttributes.AutoLayout;
+
+                                TypeBuilder associationTypeBuilder;
+
+                                associationTypeBuilder = moduleBuilder.DefineType($"{S100Framework.Roslyn.Namespace}.Associations.{code}", attributes);
+
+                                foreach (var attributeBinding in e.XPathSelectElements("S100FC:attributeBinding", xmlNamespaceManager)) {
+                                    associationTypeBuilder.BuildAttributeBinding(attributeBinding, scope_S100, xmlNamespaceManager, dictionaryTypes, dictionaryTypesComplex);
+                                }
+
+                                var associationType = associationTypeBuilder.CreateType();
+
+                                classBuilder.AppendLine(BuildClass(code, associationType, xmlNamespace, (builder) => {
+                                    //builder.AppendLine($"\t\t\tpublic override string Code => nameof({code});");
+                                }));
+                            }
+                        }
+
+                    }
+
+                    classBuilder.AppendLine("\t\t}");
+                }
+
+                //{
+                //    classBuilder.AppendLine($"\tnamespace SpatialAssociations");
+                //    classBuilder.AppendLine("\t\t{");
+
+                //    foreach (var e in spatialAssociationTypes) {
+                //        classBuilder.AppendLine($"\t\t\tpublic class {e} {{");
+                //        classBuilder.AppendLine("\t\t\t}");
+                //    }
+
+                //    classBuilder.AppendLine("\t\t}");
+                //}
+
+                staticBuilder.AppendLine();
+                staticBuilder.AppendLine("\t\tpublic static string[] SpatialAssociationTypes => [");
+                foreach (var code in spatialAssociationTypes) {
+                    staticBuilder.AppendLine($"\t\t\t\"{code}\",");
+                }
+                staticBuilder.AppendLine("\t\t];");
 
                 //  S100_FC_InformationAssociations
                 {
@@ -536,7 +598,25 @@ namespace S100Framework
                         var name = e.Element(XName.Get("name", scope_S100))!.Value;
                         var code = e.Element(XName.Get("code", scope_S100))!.Value;
 
-                        informationAssociationTypes.Add(code);
+                        if (!spatialAssociationTypes.Contains(code)) {
+                            informationAssociationTypes.Add(code);
+
+                            var attributes = TypeAttributes.Public | TypeAttributes.Class | /*TypeAttributes.AutoClass |*/ TypeAttributes.AutoLayout;
+
+                            TypeBuilder associationTypeBuilder;
+
+                            associationTypeBuilder = moduleBuilder.DefineType($"{S100Framework.Roslyn.Namespace}.Associations.{code}", attributes);
+
+                            foreach (var attributeBinding in e.XPathSelectElements("S100FC:attributeBinding", xmlNamespaceManager)) {
+                                associationTypeBuilder.BuildAttributeBinding(attributeBinding, scope_S100, xmlNamespaceManager, dictionaryTypes, dictionaryTypesComplex);
+                            }
+
+                            var associationType = associationTypeBuilder.CreateType();
+
+                            classBuilder.AppendLine(BuildClass(code, associationType, xmlNamespace, (builder) => {
+                                //builder.AppendLine($"\t\t\tpublic override string Code => nameof({code});");
+                            }));
+                        }
                     }
 
                     classBuilder.AppendLine("\t\t}");
@@ -563,7 +643,25 @@ namespace S100Framework
                         var name = e.Element(XName.Get("name", scope_S100))!.Value;
                         var code = e.Element(XName.Get("code", scope_S100))!.Value;
 
-                        featureAssociationTypes.Add(code);
+                        if (!spatialAssociationTypes.Contains(code)) {
+                            featureAssociationTypes.Add(code);
+
+                            var attributes = TypeAttributes.Public | TypeAttributes.Class | /*TypeAttributes.AutoClass |*/ TypeAttributes.AutoLayout;
+
+                            TypeBuilder associationTypeBuilder;
+
+                            associationTypeBuilder = moduleBuilder.DefineType($"{S100Framework.Roslyn.Namespace}.Associations.{code}", attributes);
+
+                            foreach (var attributeBinding in e.XPathSelectElements("S100FC:attributeBinding", xmlNamespaceManager)) {
+                                associationTypeBuilder.BuildAttributeBinding(attributeBinding, scope_S100, xmlNamespaceManager, dictionaryTypes, dictionaryTypesComplex);
+                            }
+
+                            var associationType = associationTypeBuilder.CreateType();
+
+                            classBuilder.AppendLine(BuildClass(code, associationType, xmlNamespace, (builder) => {
+                                //builder.AppendLine($"\t\t\tpublic override string Code => nameof({code});");
+                            }));
+                        }
                     }
 
                     classBuilder.AppendLine("\t\t}");
@@ -662,48 +760,7 @@ namespace S100Framework
 
                         //  attributeBinding
                         foreach (var attributeBinding in e.XPathSelectElements("S100FC:attributeBinding", xmlNamespaceManager)) {
-                            var referenceCode = attributeBinding.Element(XName.Get("attribute", scope_S100))!.Attribute("ref")!.Value!;
-
-                            var permittedValues = attributeBinding.XPathSelectElement("S100FC:permittedValues", xmlNamespaceManager);
-
-                            var lower = int.Parse(attributeBinding.XPathSelectElement("S100FC:multiplicity/S100Base:lower", xmlNamespaceManager)!.Value);
-                            var upper = attributeBinding.XPathSelectElement("S100FC:multiplicity/S100Base:upper", xmlNamespaceManager)!;
-
-                            var isArray = false;
-                            if (upper.Attribute(XName.Get("infinite")) != default && upper.Attribute(XName.Get("infinite"))!.Value.Equals("true") || int.Parse(upper!.Value) > 1) {
-                                isArray = true;
-                            }
-
-                            var referenceType = isArray ? dictionaryTypes[$"List<{referenceCode}>"] : dictionaryTypes[referenceCode];
-
-                            if (!isArray && lower == 0 /*&& !dictionaryTypesComplex.Contains(referenceCode)*/) {
-                                referenceType = dictionaryTypes[$"{referenceCode}?"];
-                            }
-
-                            var propertyBuilder = S100Framework.Roslyn.CreateProperty(informationTypeBuilder, referenceCode, referenceType);
-
-                            if (lower > 0) {
-                                var constructorInfo = typeof(System.Runtime.CompilerServices.RequiredMemberAttribute).GetConstructors().First();
-
-                                var requiredMemberAttributeBuilder = new CustomAttributeBuilder(constructorInfo, new object[0]);
-                                propertyBuilder.SetCustomAttribute(requiredMemberAttributeBuilder);
-                            }
-
-                            if (!isArray && dictionaryTypesComplex.Contains(referenceCode)) {
-                                var constructorInfo = typeof(Xceed.Wpf.Toolkit.PropertyGrid.Attributes.ExpandableObjectAttribute).GetConstructors().First();
-
-                                var expandableObjectAttributeBuilder = new CustomAttributeBuilder(constructorInfo, new object[0]);
-                                propertyBuilder.SetCustomAttribute(expandableObjectAttributeBuilder);
-                            }
-
-                            if (permittedValues is not null) {
-                                foreach (var v in permittedValues.XPathSelectElements("S100FC:value", xmlNamespaceManager).Select(e => e.Value).ToList()) {
-                                    var constructorInfo = typeof(EnumerationValueAttribute).GetConstructors().First();
-
-                                    var enumerationValueAttributeBuilder = new CustomAttributeBuilder(constructorInfo, new object[1] { int.Parse(v) });
-                                    propertyBuilder.SetCustomAttribute(enumerationValueAttributeBuilder);
-                                }
-                            }
+                            informationTypeBuilder.BuildAttributeBinding(attributeBinding, scope_S100, xmlNamespaceManager, dictionaryTypes, dictionaryTypesComplex);
                         }
 
                         var informationType = informationTypeBuilder.CreateType();
@@ -826,48 +883,7 @@ namespace S100Framework
 
                         //  attributeBinding
                         foreach (var attributeBinding in e.XPathSelectElements("S100FC:attributeBinding", xmlNamespaceManager)) {
-                            var referenceCode = attributeBinding.Element(XName.Get("attribute", scope_S100))!.Attribute("ref")!.Value!;
-
-                            var permittedValues = attributeBinding.XPathSelectElement("S100FC:permittedValues", xmlNamespaceManager);
-
-                            var lower = int.Parse(attributeBinding.XPathSelectElement("S100FC:multiplicity/S100Base:lower", xmlNamespaceManager)!.Value);
-                            var upper = attributeBinding.XPathSelectElement("S100FC:multiplicity/S100Base:upper", xmlNamespaceManager)!;
-
-                            var isArray = false;
-                            if (upper.Attribute(XName.Get("infinite")) != default && upper.Attribute(XName.Get("infinite"))!.Value.Equals("true") || int.Parse(upper!.Value) > 1) {
-                                isArray = true;
-                            }
-
-                            var referenceType = isArray ? dictionaryTypes[$"List<{referenceCode}>"] : dictionaryTypes[referenceCode];
-
-                            if (!isArray && lower == 0 /*&& !dictionaryTypesComplex.Contains(referenceCode)*/) {
-                                referenceType = dictionaryTypes[$"{referenceCode}?"];
-                            }
-
-                            var propertyBuilder = S100Framework.Roslyn.CreateProperty(featureTypeBuilder, referenceCode, referenceType);
-
-                            if (lower > 0) {
-                                var constructorInfo = typeof(System.Runtime.CompilerServices.RequiredMemberAttribute).GetConstructors().First();
-
-                                var requiredMemberAttributeBuilder = new CustomAttributeBuilder(constructorInfo, new object[0]);
-                                propertyBuilder.SetCustomAttribute(requiredMemberAttributeBuilder);
-                            }
-
-                            if (!isArray && dictionaryTypesComplex.Contains(referenceCode)) {
-                                var constructorInfo = typeof(Xceed.Wpf.Toolkit.PropertyGrid.Attributes.ExpandableObjectAttribute).GetConstructors().First();
-
-                                var expandableObjectAttributeBuilder = new CustomAttributeBuilder(constructorInfo, new object[0]);
-                                propertyBuilder.SetCustomAttribute(expandableObjectAttributeBuilder);
-                            }
-
-                            if (permittedValues is not null) {
-                                foreach (var v in permittedValues.XPathSelectElements("S100FC:value", xmlNamespaceManager).Select(e => e.Value).ToList()) {
-                                    var constructorInfo = typeof(EnumerationValueAttribute).GetConstructors().First();
-
-                                    var enumerationValueAttributeBuilder = new CustomAttributeBuilder(constructorInfo, new object[1] { int.Parse(v) });
-                                    propertyBuilder.SetCustomAttribute(enumerationValueAttributeBuilder);
-                                }
-                            }
+                            featureTypeBuilder.BuildAttributeBinding(attributeBinding, scope_S100, xmlNamespaceManager, dictionaryTypes, dictionaryTypesComplex);
                         }
 
                         var featureType = featureTypeBuilder.CreateType();
@@ -2017,6 +2033,17 @@ namespace S100Framework
 
 namespace S100Framework.DomainModel
 {
+    [System.AttributeUsage(System.AttributeTargets.Property, AllowMultiple = false)]
+    public class EnumerationAttribute : System.Attribute
+    {
+        private string _propertyName;
+        public string PropertyName => _propertyName;
+
+        public EnumerationAttribute(string propertyName) {
+            _propertyName = propertyName;
+        }
+    }
+
     [System.AttributeUsage(System.AttributeTargets.Property, AllowMultiple = true)]
     public class EnumerationValueAttribute : System.Attribute
     {
@@ -2026,5 +2053,57 @@ namespace S100Framework.DomainModel
         public EnumerationValueAttribute(int propertyValue) {
             _propertyValue = propertyValue;
         }
+    }
+}
+
+namespace System.Reflection.Emit
+{
+    public static class Extension
+    {
+        public static void BuildAttributeBinding(this TypeBuilder typeBuilder, XElement attributeBinding, string scope_S100, XmlNamespaceManager xmlNamespaceManager, IDictionary<string, Type> dictionaryTypes, IList<string> dictionaryTypesComplex) {
+            var referenceCode = attributeBinding.Element(XName.Get("attribute", scope_S100))!.Attribute("ref")!.Value!;
+
+            var permittedValues = attributeBinding.XPathSelectElement("S100FC:permittedValues", xmlNamespaceManager);
+
+            var lower = int.Parse(attributeBinding.XPathSelectElement("S100FC:multiplicity/S100Base:lower", xmlNamespaceManager)!.Value);
+            var upper = attributeBinding.XPathSelectElement("S100FC:multiplicity/S100Base:upper", xmlNamespaceManager)!;
+
+            var isArray = false;
+            if (upper.Attribute(XName.Get("infinite")) != default && upper.Attribute(XName.Get("infinite"))!.Value.Equals("true") || int.Parse(upper!.Value) > 1) {
+                isArray = true;
+            }
+
+            var referenceType = isArray ? dictionaryTypes[$"List<{referenceCode}>"] : dictionaryTypes[referenceCode];
+
+            if (!isArray && lower == 0 /*&& !dictionaryTypesComplex.Contains(referenceCode)*/) {
+                referenceType = dictionaryTypes[$"{referenceCode}?"];
+            }
+
+            var propertyBuilder = S100Framework.Roslyn.CreateProperty(typeBuilder, referenceCode, referenceType);
+
+            if (lower > 0) {
+                var constructorInfo = typeof(System.Runtime.CompilerServices.RequiredMemberAttribute).GetConstructors().First();
+
+                var requiredMemberAttributeBuilder = new CustomAttributeBuilder(constructorInfo, new object[0]);
+                propertyBuilder.SetCustomAttribute(requiredMemberAttributeBuilder);
+            }
+
+            if (!isArray && dictionaryTypesComplex.Contains(referenceCode)) {
+                var constructorInfo = typeof(Xceed.Wpf.Toolkit.PropertyGrid.Attributes.ExpandableObjectAttribute).GetConstructors().First();
+
+                var expandableObjectAttributeBuilder = new CustomAttributeBuilder(constructorInfo, new object[0]);
+                propertyBuilder.SetCustomAttribute(expandableObjectAttributeBuilder);
+            }
+
+            if (permittedValues is not null) {
+                foreach (var v in permittedValues.XPathSelectElements("S100FC:value", xmlNamespaceManager).Select(e => e.Value).ToList()) {
+                    var constructorInfo = typeof(EnumerationValueAttribute).GetConstructors().First();
+
+                    var enumerationValueAttributeBuilder = new CustomAttributeBuilder(constructorInfo, new object[1] { int.Parse(v) });
+                    propertyBuilder.SetCustomAttribute(enumerationValueAttributeBuilder);
+                }
+            }
+        }
+
     }
 }
