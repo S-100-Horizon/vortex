@@ -79,7 +79,7 @@ namespace TestS100Framework
 
         [Fact]
         public void Test_DatasetPoint() {
-            var p1101 = new S100Framework.YAML.Point(-32.1333332m, 62.5m) {
+            var p1101 = new S100Framework.YAML.Point(-32.1333332, 62.5) {
                 Name = "P1101",
             };
 
@@ -98,16 +98,16 @@ namespace TestS100Framework
 
         [Fact]
         public void Test_DatasetCurve() {
-            var p1101 = new S100Framework.YAML.Point(-32.1333332m, 62.5m) {
+            var p1101 = new S100Framework.YAML.Point(-32.1333332, 62.5) {
                 Name = "P1101",
             };
 
             var c1201 = new S100Framework.YAML.Curve(p1101, new S100Framework.YAML.Coordinate[]{
-                        new S100Framework.YAML.Coordinate(-32.1333332m,62.5m),
-                        new S100Framework.YAML.Coordinate(-31.9666666m,62.5m),
-                        new S100Framework.YAML.Coordinate(-31.9666666m,62.6666666m),
-                        new S100Framework.YAML.Coordinate(-32.1333332m,62.6666666m),
-                        new S100Framework.YAML.Coordinate(-32.1333332m,62.5m),
+                        new S100Framework.YAML.Coordinate(-32.1333332,62.5),
+                        new S100Framework.YAML.Coordinate(-31.9666666,62.5),
+                        new S100Framework.YAML.Coordinate(-31.9666666,62.6666666),
+                        new S100Framework.YAML.Coordinate(-32.1333332,62.6666666),
+                        new S100Framework.YAML.Coordinate(-32.1333332,62.5),
                     }) {
                 Name = "C1201",
             };
@@ -126,32 +126,32 @@ namespace TestS100Framework
 
         [Fact]
         public void Test_DatasetSurface() {
-            var p1101 = new S100Framework.YAML.Point(-32.1333332m, 62.5m) {
+            var p1101 = new S100Framework.YAML.Point(-32.1333332, 62.5) {
                 Name = "P1101",
             };
 
             var c1201 = new S100Framework.YAML.Curve(p1101, [
-                        new S100Framework.YAML.Coordinate(-32.1333332m,62.5m),
-                        new S100Framework.YAML.Coordinate(-31.9666666m,62.5m),
-                        new S100Framework.YAML.Coordinate(-31.9666666m,62.6666666m),
-                        new S100Framework.YAML.Coordinate(-32.1333332m,62.6666666m),
-                        new S100Framework.YAML.Coordinate(-32.1333332m,62.5m),
+                        new S100Framework.YAML.Coordinate(-32.1333332,62.5),
+                        new S100Framework.YAML.Coordinate(-31.9666666,62.5),
+                        new S100Framework.YAML.Coordinate(-31.9666666,62.6666666),
+                        new S100Framework.YAML.Coordinate(-32.1333332,62.6666666),
+                        new S100Framework.YAML.Coordinate(-32.1333332,62.5),
                     ]) {
                 Name = "C1201",
             };
 
             var c12010 = new S100Framework.YAML.Curve([
-                        new S100Framework.YAML.Coordinate(-32.1333332m,62.5m),
-                        new S100Framework.YAML.Coordinate(-31.9666666m,62.5m),
-                        new S100Framework.YAML.Coordinate(-31.9666666m,62.6666666m),
+                        new S100Framework.YAML.Coordinate(-32.1333332,62.5),
+                        new S100Framework.YAML.Coordinate(-31.9666666,62.5),
+                        new S100Framework.YAML.Coordinate(-31.9666666,62.6666666),
                     ]) {
                 Name = "C12010",
             };
 
             var c12011 = new S100Framework.YAML.Curve([
-                        new S100Framework.YAML.Coordinate(-32.1333332m,62.5m),
-                        new S100Framework.YAML.Coordinate(-31.9666666m,62.5m),
-                        new S100Framework.YAML.Coordinate(-31.9666666m,62.6666666m),
+                        new S100Framework.YAML.Coordinate(-32.1333332,62.5),
+                        new S100Framework.YAML.Coordinate(-31.9666666,62.5),
+                        new S100Framework.YAML.Coordinate(-31.9666666,62.6666666),
                     ]) {
                 Name = "C12011",
             };
