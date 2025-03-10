@@ -14,13 +14,13 @@ using JsonFlatten;
 using System.Text.Json;
 using System.Collections;
 
+
 namespace TestS100Framework
 {
+    using S100Framework.YAML;
     public class UnitTestYAML
     {
         private readonly ITestOutputHelper output;
-
-        private readonly ISerializer serializer = new SerializerBuilder().ConfigureDefaultValuesHandling(DefaultValuesHandling.OmitNull).Build();
 
         private static readonly JsonSerializerOptions jsonSerializerOptions = new() {
             WriteIndented = true,
@@ -72,7 +72,7 @@ namespace TestS100Framework
                 FCVer = "2.0",
             };
 
-            var yaml = serializer.Serialize(dataset);
+            var yaml = S100Framework.YAML.Converter.Serialize(dataset);
 
             System.Diagnostics.Debugger.Break();
         }
@@ -90,11 +90,10 @@ namespace TestS100Framework
                 FCVer = "2.0",
             }.AddPoint(p1101);
 
-            var yaml = serializer.Serialize(dataset);
+            var yaml = S100Framework.YAML.Converter.Serialize(dataset);
 
             System.Diagnostics.Debugger.Break();
         }
-
 
         [Fact]
         public void Test_DatasetCurve() {
@@ -119,7 +118,7 @@ namespace TestS100Framework
                 FCVer = "2.0",
             }.AddPoint(p1101).AddCurve(c1201);
 
-            var yaml = serializer.Serialize(dataset);
+            var yaml = S100Framework.YAML.Converter.Serialize(dataset);
 
             System.Diagnostics.Debugger.Break();
         }
@@ -173,11 +172,8 @@ namespace TestS100Framework
             .AddCurve(c1201).AddCurve(c12010).AddCurve(c12011)
             .AddSurface(s1301);
 
-            var dataCoverage = new DataCoverage {
 
-            };
-
-            var yaml = serializer.Serialize(dataset);
+            var yaml = S100Framework.YAML.Converter.Serialize(dataset);
 
             System.Diagnostics.Debugger.Break();
         }
@@ -190,7 +186,7 @@ namespace TestS100Framework
                 optimumDisplayScale = 45000,
             };
 
-            var yaml = serializer.Serialize(dataCoverage);
+            var yaml = S100Framework.YAML.Converter.Serialize(dataCoverage);
 
 
             var lightAllAround = new LightAllAround {
@@ -246,119 +242,132 @@ namespace TestS100Framework
                 }
             }
         }
-    }
-}
 
-namespace TestS100Framework
-{
-    public static class YAML
-    {
-        internal static string SerializeAttributes(object dataset) {
-            var propertyId = 1;
-
-            var flattenedObject = FlattenAttributesRecursively(dataset, ref propertyId);
-
-            var serializer = new SerializerBuilder()
-                .WithNamingConvention(CamelCaseNamingConvention.Instance)
-                .ConfigureDefaultValuesHandling(DefaultValuesHandling.OmitDefaults)
-                .Build();
-
-            return serializer.Serialize(flattenedObject);
-        }
-        internal static string ToYAML(this LightAllAround instance) => SerializeAttributes(instance);
-
-        private record YamlAttributeItem(string Name, object? Value, int? Id, int? Parent);
-
-        private static List<YamlAttributeItem> FlattenAttributesRecursively(object obj, ref int propertyId, int? parentId = null) {
-            var attributes = new List<YamlAttributeItem>();
-
-            var type = obj.GetType();
-            var properties = type.GetProperties();
-
-            foreach (var property in properties) {
-                var propertyValue = property.GetValue(obj, null);
-                if (propertyValue == null)
-                    continue;
-
-                switch (property.PropertyType) {
-                    case Type t when t == typeof(string):
-                        attributes.Add(new(property.Name, propertyValue.ToString(), null, parentId));
-                        break;
-
-                    case Type t when t == typeof(decimal):
-                        attributes.Add(new(property.Name, Convert.ToDecimal(propertyValue), null, parentId));
-                        break;
-
-                    case Type t when t.IsEnum:
-                        attributes.Add(new(property.Name, Convert.ToInt32(propertyValue), null, parentId));
-                        break;
-
-                    case Type t when t.IsPrimitive:
-                        attributes.Add(new(property.Name, propertyValue.ToString(), null, parentId));
-                        break;
-
-                    case Type t when typeof(IEnumerable).IsAssignableFrom(t):
-                        attributes.AddRange(HandleCollection(property.Name, propertyValue, ref propertyId, parentId));
-                        break;
-
-                    case Type t when t.IsClass:
-                        attributes.AddRange(HandleComplexObject(propertyValue, ref propertyId, parentId));
-                        break;
-                }
-            }
-
-            return attributes;
-        }
-        private static List<YamlAttributeItem> HandleComplexObject(object propertyValue, ref int propertyId, int? parentId) {
-            var name = propertyValue.GetType().Name;
-
-            var children = new List<YamlAttributeItem>() {
-                new(name, null, propertyId, parentId)
+        [Fact]
+        public void Test_DatasetFeature() {
+            var dataset = new S100Framework.YAML.Dataset {
+                CellName = "101AA00DS0031.000",
+                Comment = "S-101 Test Dataset 031",
+                Edition = 1,
+                FCVer = "2.0",
             };
 
-            parentId = propertyId;
-
-            propertyId++;
-      
-            children.AddRange(FlattenAttributesRecursively(propertyValue, ref propertyId, parentId));
-            return children;
-        }
-        private static List<YamlAttributeItem> HandleCollection(string propertyName, object propertyValue, ref int propertyId, int? parentId) {
-            var collection = propertyValue as IEnumerable;
-            var attributes = new List<YamlAttributeItem>();
-            foreach (var item in collection!) {
-                var itemType = item.GetType();
-
-                switch (itemType) {
-                    case Type t when t == typeof(string):
-                        attributes.Add(new(propertyName, item.ToString(), null, parentId));
-                        break;
-
-                    case Type t when t == typeof(decimal):
-                        attributes.Add(new(propertyName, Convert.ToDecimal(item), null, parentId));
-                        break;
-
-                    case Type t when t.IsEnum:
-                        attributes.Add(new(propertyName, Convert.ToInt32(item), null, parentId));
-                        break;
-
-                    case Type t when t.IsPrimitive:
-                        attributes.Add(new(propertyName, item.ToString(), null, parentId));
-                        break;
-
-                    case Type t when typeof(IEnumerable).IsAssignableFrom(t):
-                        // no support for multidimensional arrays
-                        break;
-
-                    case Type t when t.IsClass:
-                        attributes.AddRange(HandleComplexObject(item, ref propertyId, parentId));
-                        break;
+            var feature = new S100Framework.YAML.Feature() {
+                Name = "QualityOfBathymetricData",
+                Foid = "1810:3:2",
+                Prim = S100Framework.YAML.Primitive.Surface,
+                Attributes = new LightAllAround {
+                    colour = new List<S100Framework.DomainModel.S101.colour> {
+                    S100Framework.DomainModel.S101.colour.Red,
+                    S100Framework.DomainModel.S101.colour.White,
+                },
+                    featureName = new List<S100Framework.DomainModel.S101.ComplexAttributes.featureName> {
+                    new S100Framework.DomainModel.S101.ComplexAttributes.featureName {
+                        language = "eng",
+                        name = "Light E",
+                    },
+                },
+                    height = 54,
+                    rhythmOfLight = new S100Framework.DomainModel.S101.ComplexAttributes.rhythmOfLight {
+                        lightCharacteristic = S100Framework.DomainModel.S101.lightCharacteristic.ContinuousUltraQuickFlashing,
+                        signalGroup = new List<string> {
+                        "6",
+                    },
+                        signalPeriod = 5,
+                    },
+                    valueOfNominalRange = 9,
                 }
-            }
+            };
 
-            return attributes;
+            dataset.AddFeature(feature);
+
+            var yaml = S100Framework.YAML.Converter.Serialize(dataset);
+
+            System.Diagnostics.Debugger.Break();
         }
-    
+
+        [Fact]
+        public void Test_DatasetInformationType() {
+            var dataset = new S100Framework.YAML.Dataset {
+                CellName = "101AA00DS0031.000",
+                Comment = "S-101 Test Dataset 031",
+                Edition = 1,
+                FCVer = "2.0",
+            };
+
+            var informationType = new S100Framework.YAML.Information() {
+                Name = "SpatialQuality",
+                ID = "150/1",
+                Attributes = new S100Framework.DomainModel.S101.InformationTypes.SpatialQuality {
+                    qualityOfHorizontalMeasurement = S100Framework.DomainModel.S101.qualityOfHorizontalMeasurement.Approximate,
+                },
+            };
+
+            dataset.AddInformation(informationType);
+
+            var yaml = S100Framework.YAML.Converter.Serialize(dataset);
+
+            System.Diagnostics.Debugger.Break();
+        }
+
+        [Fact]
+        public void Test_DatasetFeatureAssociation() {
+            var dataset = new S100Framework.YAML.Dataset {
+                CellName = "101AA00DS0031.000",
+                Comment = "S-101 Test Dataset 031",
+                Edition = 1,
+                FCVer = "2.0",
+            };
+
+            var informationType = new S100Framework.YAML.Information() {
+                Name = "SpatialQuality",
+                ID = "150/1",
+                Attributes = new S100Framework.DomainModel.S101.InformationTypes.SpatialQuality {
+                    qualityOfHorizontalMeasurement = S100Framework.DomainModel.S101.qualityOfHorizontalMeasurement.Approximate,
+                },
+            };
+
+            var feature = new S100Framework.YAML.Feature() {
+                Name = "QualityOfBathymetricData",
+                Foid = "1810:3:2",
+                Prim = S100Framework.YAML.Primitive.Surface,
+                Attributes = new LightAllAround {
+                    colour = new List<S100Framework.DomainModel.S101.colour> {
+                    S100Framework.DomainModel.S101.colour.Red,
+                    S100Framework.DomainModel.S101.colour.White,
+                },
+                    featureName = new List<S100Framework.DomainModel.S101.ComplexAttributes.featureName> {
+                    new S100Framework.DomainModel.S101.ComplexAttributes.featureName {
+                        language = "eng",
+                        name = "Light E",
+                    },
+                },
+                    height = 54,
+                    rhythmOfLight = new S100Framework.DomainModel.S101.ComplexAttributes.rhythmOfLight {
+                        lightCharacteristic = S100Framework.DomainModel.S101.lightCharacteristic.ContinuousUltraQuickFlashing,
+                        signalGroup = new List<string> {
+                        "6",
+                    },
+                        signalPeriod = 5,
+                    },
+                    valueOfNominalRange = 9,
+                },
+                Association = [new S100Framework.YAML.Association {
+                    To = "150/1",
+                    Name = "QualityOfBathymetricDataComposition",
+                    Role = "theQualityInformation"
+                }]
+            };
+
+
+            dataset.AddInformation(informationType);
+            dataset.AddFeature(feature);
+
+
+            var yaml = S100Framework.YAML.Converter.Serialize(dataset);
+
+            System.Diagnostics.Debugger.Break();
+        }
     }
 }
 

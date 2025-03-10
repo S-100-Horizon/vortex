@@ -18,8 +18,8 @@ namespace S100Framework.YAML
            .ConfigureDefaultValuesHandling(DefaultValuesHandling.OmitDefaults)
            .WithIndentedSequences()
            .DisableAliases()
-           .WithTypeConverter(new CustomNodeConverter())    // Custom type converter for objects of Node
-           .WithTypeConverter(new DoubleConverter())        // Custom Double converter. Ensures a value of 2 is written as "2.0"
+           .WithTypeConverter(new FeatureNodeConverter())           // Custom type converter for objects of FeatureNode
+           .WithTypeConverter(new InformationNodeConverter())       // Custom type converter for objects of InformationNode
            .Build();
 
         private static List<YamlAttributeItem> FlattenAttributesRecursively(object obj, ref int propertyId, int? parentId = null) {
@@ -30,12 +30,10 @@ namespace S100Framework.YAML
 
             foreach (var property in properties) {
                 var propertyValue = property.GetValue(obj, null);
-                if (propertyValue == null)
-                    continue;
 
                 switch (property.PropertyType) {
                     case Type t when t == typeof(string):
-                        attributes.Add(new(property.Name, propertyValue.ToString(), null, parentId));
+                        attributes.Add(new(property.Name, propertyValue?.ToString(), null, parentId));
                         break;
 
                     case Type t when t == typeof(decimal):
@@ -47,19 +45,24 @@ namespace S100Framework.YAML
                         break;
 
                     case Type t when t.IsPrimitive:
-                        attributes.Add(new(property.Name, propertyValue.ToString(), null, parentId));
+                        attributes.Add(new(property.Name, propertyValue?.ToString(), null, parentId));
                         break;
 
                     case Type t when typeof(IEnumerable).IsAssignableFrom(t):
+                        if (propertyValue == null) continue;
                         attributes.AddRange(HandleCollection(property.Name, propertyValue, ref propertyId, parentId));
                         break;
 
                     case Type t when t.IsClass:
+                        if (propertyValue == null) continue;
                         attributes.AddRange(HandleComplexObject(propertyValue, ref propertyId, parentId));
                         break;
-                    default:
-                        // error handling..
+
+                    case Type t when t.IsValueType:
+                        attributes.Add(new(property.Name, Convert.ToInt32(propertyValue), null, parentId));
                         break;
+                    default:
+                        throw new ArgumentException("Invalid property type provided: {propertyType}", nameof(property.PropertyType));
                 }
             }
 
@@ -101,31 +104,29 @@ namespace S100Framework.YAML
                     case Type t when t.IsPrimitive:
                         attributes.Add(new(propertyName, item.ToString(), null, parentId));
                         break;
-
-                    case Type t when typeof(IEnumerable).IsAssignableFrom(t):
-                        // no support for multidimensional arrays
-                        break;
-
                     case Type t when t.IsClass:
                         attributes.AddRange(HandleComplexObject(item, ref propertyId, parentId));
                         break;
-                    default:
-                        // error handling..
+                    case Type t when t.IsValueType:
+                        attributes.Add(new(propertyName, Convert.ToInt32(propertyValue), null, parentId));
                         break;
+                    case Type t when typeof(IEnumerable).IsAssignableFrom(t):       // no support for multidimensional arrays
+                    default:
+                        throw new ArgumentException("Invalid property type provided: {propertyType}", nameof(itemType));
                 }
             }
 
             return attributes;
         }
 
-        private class CustomNodeConverter : IYamlTypeConverter
+        private class FeatureNodeConverter : IYamlTypeConverter
         {
-            public bool Accepts(Type type) => typeof(Node).IsAssignableFrom(type);
+            public bool Accepts(Type type) => typeof(FeatureNode).IsAssignableFrom(type);
 
             public object? ReadYaml(IParser parser, Type type, ObjectDeserializer rootDeserializer) => throw new NotImplementedException("Deserialization is not supported.");
 
             public void WriteYaml(IEmitter emitter, object? value, Type type, ObjectSerializer serializer) {
-                if (value is not Node) return;
+                if (value is not FeatureNode) return;
 
                 var propertyId = 1;
 
@@ -160,16 +161,48 @@ namespace S100Framework.YAML
                 emitter.Emit(new SequenceEnd());
             }
         }
-        private class DoubleConverter : IYamlTypeConverter
+        private class InformationNodeConverter : IYamlTypeConverter
         {
-            public bool Accepts(Type type) => type == typeof(double);
+            public bool Accepts(Type type) => typeof(InformationNode).IsAssignableFrom(type);
 
             public object? ReadYaml(IParser parser, Type type, ObjectDeserializer rootDeserializer) => throw new NotImplementedException("Deserialization is not supported.");
 
             public void WriteYaml(IEmitter emitter, object? value, Type type, ObjectSerializer serializer) {
-                double doubleValue = (double)value!;
-                string formatted = doubleValue.ToString("0.0", System.Globalization.CultureInfo.InvariantCulture);
-                emitter.Emit(new Scalar(formatted));
+                if (value is not InformationNode) return;
+
+                var propertyId = 1;
+
+                var flattenedAttributes = FlattenAttributesRecursively(value, ref propertyId);
+
+                emitter.Emit(new SequenceStart(null, null, true, SequenceStyle.Block));     // YAML List
+
+                foreach (var attr in flattenedAttributes) {
+                    if (attr.Name == "Code") continue;                                      // Omit 'Code' property from InformationNodes
+
+                    emitter.Emit(new MappingStart());                                       // YAML Object
+
+                    emitter.Emit(new Scalar("Name"));                                       // YAML Primitive type
+                    emitter.Emit(new Scalar(attr.Name));
+
+                    if (attr.Value is not null) {
+                        emitter.Emit(new Scalar("Value"));
+                        emitter.Emit(new Scalar(attr.Value.ToString()!));   // Todo: Handle empty strings
+                    }
+
+                    if (attr.Id.HasValue) {
+                        emitter.Emit(new Scalar("id"));
+                        emitter.Emit(new Scalar(attr.Id.Value.ToString()));
+                    }
+
+                    if (attr.Parent.HasValue) {
+                        emitter.Emit(new Scalar("parent"));
+                        emitter.Emit(new Scalar(attr.Parent.Value.ToString()));
+                    }
+
+                    emitter.Emit(new MappingEnd());
+                }
+
+                emitter.Emit(new SequenceEnd());
             }
         }
     }

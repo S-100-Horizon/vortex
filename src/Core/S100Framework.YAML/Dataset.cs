@@ -16,32 +16,25 @@ namespace S100Framework.YAML
     {
         public string CellName { get; set; } = string.Empty;
         public string Comment { get; set; } = string.Empty;
-
         public uint? Edition { get; set; }
         public uint? Update { get; set; }
-
         public string encver { get; set; } = "INT.IHO.S-101.2.0";
-
         public string? FCVer { get; set; } = default;
 
+        public ICollection<Information>? InformationTypes => _informationTypes.Any() ? _informationTypes : null;
         public ICollection<Point>? Points => _points.Any() ? _points : null;
-
-
         public ICollection<Curve>? Curves => _curves.Any() ? _curves : null;
-
         public ICollection<CompositeCurve>? CompositeCurves => _compositeCurves.Any() ? _compositeCurves : null;
-
         public ICollection<PointSet>? Depths => _pointSets.Any() ? _pointSets : null;
         public ICollection<Surface>? Surfaces => _surfaces.Any() ? _surfaces : null;
-        
         public ICollection<Feature>? Features => _features.Any() ? _features : null;
 
+        private ICollection<Information> _informationTypes = new HashSet<Information>();
         private ICollection<Point> _points = new HashSet<Point>();
         private ICollection<PointSet> _pointSets = new HashSet<PointSet>();
         private ICollection<Curve> _curves = new HashSet<Curve>();
         private ICollection<CompositeCurve> _compositeCurves = new HashSet<CompositeCurve>();
         private ICollection<Surface> _surfaces = new HashSet<Surface>();
-
         private ICollection<Feature> _features = new HashSet<Feature>();
 
         public Dataset AddPoint(Point point) {
@@ -68,6 +61,11 @@ namespace S100Framework.YAML
 
         public Dataset AddFeature(Feature feature) {
             _features.Add(feature);
+            return this;
+        }
+
+        public Dataset AddInformation(Information information) {
+            _informationTypes.Add(information);
             return this;
         }
     }
@@ -158,6 +156,11 @@ namespace S100Framework.YAML
         public double Y { get; set; } = y;
     }
 
+    public class Information {
+        public string? Name { get; set; }
+        public string? ID { get; set; }
+        public InformationNode? Attributes { get; set; }
+    }
     public class Feature
     {
         public string? Name { get; set; }
@@ -165,5 +168,13 @@ namespace S100Framework.YAML
         public string? Foid { get; set; }
         public FeatureNode? Attributes { get; set; }
         public string? Geometry { get; set; }
+
+        public Association[]? Association { get; set; }
+    }
+    public class Association()
+    {
+        public string? To { get; set; }
+        public string? Name { get; set; }
+        public string? Role { get; set; }
     }
 }

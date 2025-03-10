@@ -3,7 +3,11 @@ using ArcGIS.Core.Geometry;
 using ArcGIS.Core.Internal.CIM;
 using CommandLine;
 using S100Framework.DomainModel;
+using S100Framework.DomainModel.S101;
+using S100Framework.DomainModel.S101.InformationTypes;
 using S100Framework.YAML;
+using System.Text.Json;
+using System.Xml.Linq;
 using Dataset = S100Framework.YAML.Dataset;
 using Esri = ArcGIS.Core.Hosting.Host;
 using IO = System.IO;
@@ -60,18 +64,90 @@ namespace S100Framework.Applications
 
             using Geodatabase source = createGeodatabase();
 
-            using var informationType = source.OpenDataset<Table>("s101.informationType");
-            using var informationAssociation = source.OpenDataset<Table>("s101.informationAssociation");
-            using var featureAssociation = source.OpenDataset<Table>("s101.featureAssociation");
-
-            var dataset = new Dataset();
-
             var featureCatalogue = S100Framework.Catalogues.FeatureCatalogue.Catalogues.Single(e => e.ProductID.Equals("S-101"));
+
+            // Create dataset with 
+            var dataset = new Dataset() {
+                CellName = "DK40349E.000",
+                Comment = "DK40349E Test dataset",
+                //Edition = 1,
+                //encver = "INT.IHO.S-101.2.0",
+                //FCVer = "2.0"
+            };
+
+            // InformationAssociation
+            {
+                //using var informationAssociation = source.OpenDataset<Table>("s101.informationAssociation");
+                //{
+                //    using var cursor = informationAssociation.Search(null, false);
+                //    while (cursor.MoveNext()) {
+                //        var current = cursor.Current;
+
+                //        var fields = current.GetFields();
+
+                //        var objectId = current["OBJECTID"];
+                //        var code = current["code"].ToString()!;
+                //        var json = current["json"].ToString()!;
+
+                //        var name = current["name"];
+                //        var globalId = current["GlobalID"];
+                //        var productSpecification = current["ProductSpecification"];
+                //        var edition = current["edition"];
+
+                //    }
+
+            }
+
+            // FeatureAssociation
+            {
+                //using var featureAssociation = source.OpenDataset<Table>("s101.featureAssociation");
+
+                //    using var cursor = featureAssociation.Search(null, false);
+                //    while (cursor.MoveNext()) {
+                //        var current = cursor.Current;
+
+                //        var fields = current.GetFields();
+
+                //        var objectId = current["OBJECTID"];
+                //        var code = current["code"]?.ToString();
+                //        var json = current["json"]?.ToString();
+                //        var name = current["name"];
+                //        var globalId = current["GlobalID"];
+                //        var productSpecification = current["ProductSpecification"];
+                //        var edition = current["edition"];
+
+                //    }
+                //}
+            }
+
+            // Informationtypes
+            {
+                //using var informationType = source.OpenDataset<Table>("s101.informationType");
+                //using var cursor = informationType.Search(null, false);
+
+                //while (cursor.MoveNext()) {
+                //    var current = cursor.Current;
+
+                //    var objectId = current["OBJECTID"];
+                //    var code = current["code"].ToString()!;
+                //    var json = current["json"].ToString()!;
+
+                //    var type = featureCatalogue.Assembly!.GetType($"{S100Framework.Catalogues.FeatureCatalogue.Namespace("S101", "InformationTypes")}.{code}", true)!;
+
+                //    var instance = DBNull.Value.Equals(current["json"]) ? null : System.Text.Json.JsonSerializer.Deserialize(Convert.ToString(current["json"])!, type);
+
+                //    var information = new YAML.Information {
+                //        Name = code,
+                //        ID = $"{objectId}/1",
+                //        Attributes = (InformationNode)instance!,
+                //    };
+
+                //    dataset.AddInformation(information);
+                //}
+            }
 
             foreach (var def in source.GetDefinitions<FeatureClassDefinition>()) {
                 using var fc = source.OpenDataset<FeatureClass>(def.GetName());
-
-
 
                 var filter = new SpatialQueryFilter {
                     FilterGeometry = shape,
@@ -95,7 +171,7 @@ namespace S100Framework.Applications
                     };
 
                     //using var cursor19 = informationAssociation.Search(new ArcGIS.Core.Data.QueryFilter {
-                    //    WhereClause = $"ID = foid",
+                    //    WhereClause = $"OBJECTID = 150/1",
                     //}, true);
 
                     var type = featureCatalogue.Assembly!.GetType($"{S100Framework.Catalogues.FeatureCatalogue.Namespace("S101", "FeatureTypes")}.{name}", true)!;
@@ -162,12 +238,12 @@ namespace S100Framework.YAML
 
                         var exteriorRing = polygon.GetExteriorRing(0);
 
-                        var coordinates = exteriorRing.Parts[0].Select(segment => new Coordinate(segment.StartPoint.X, segment.StartPoint.Y)).ToArray();
+                        var exteriorCoordinates = exteriorRing.Parts[0].Select(segment => new Coordinate(segment.StartPoint.X, segment.StartPoint.Y)).ToArray();
 
                         // Insert starting coordinate at the end of coordinate[] to ensure its a closed polygon
-                        coordinates = [.. coordinates, coordinates[0]];
+                        exteriorCoordinates = [.. exteriorCoordinates, exteriorCoordinates[0]];
 
-                        var exteriorCurve = new Curve(coordinates);
+                        var exteriorCurve = new Curve(exteriorCoordinates);
 
                         var surface = new Surface(exteriorCurve) {
                             Name = name,
@@ -175,13 +251,13 @@ namespace S100Framework.YAML
 
                         // Add interior rings
                         if (polygon.Parts.Count > 1) {
-                            foreach (var hole in polygon.Parts.Skip(1)) {
-                                var coords = hole.Select(segment => new Coordinate(segment.StartPoint.X, segment.StartPoint.Y)).ToArray();
+                            foreach (var interiorRing in polygon.Parts.Skip(1)) {
+                                var interiorCoordinates = interiorRing.Select(segment => new Coordinate(segment.StartPoint.X, segment.StartPoint.Y)).ToArray();
 
                                 // Insert starting coordinate at the end of coordinate[] to ensure its a closed polygon
-                                coords = [.. coords, coords[0]];
+                                interiorCoordinates = [.. interiorCoordinates, interiorCoordinates[0]];
 
-                                var interiorHole = new Curve(coords);
+                                var interiorHole = new Curve(interiorCoordinates);
 
                                 surface.InteriorRings = [.. surface.InteriorRings, interiorHole];
                             };
@@ -196,10 +272,6 @@ namespace S100Framework.YAML
             };
         }
 
-        /// <summary>
-        /// The NCPS NIS was data loaded by ENCs for Denmark. The ENC only holds depth data to One decimal place and derived from paper chart practices <br />
-        /// IHO Rounding rules applied (0-21m = decimeter, 21-31m = half meter 31+ = whole meter).
-        /// </summary>
         public static double RoundToIHO(this double value) {
 
             if (value < -31d) {
@@ -228,5 +300,11 @@ namespace S100Framework.YAML
             value = Math.Truncate(value);
             return value /= power10;
         }
+
+        /// <summary>
+        /// The NCPS NIS was data loaded by ENCs for Denmark. The ENC only holds depth data to One decimal place and derived from paper chart practices <br />
+        /// IHO Rounding rules applied (0-21m = decimeter, 21-31m = half meter 31+ = whole meter).
+        /// </summary>
+
     }
 }
