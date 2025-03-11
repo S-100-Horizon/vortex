@@ -18,7 +18,8 @@ namespace S100Framework.YAML
         public string Comment { get; set; } = string.Empty;
         public uint? Edition { get; set; }
         public uint? Update { get; set; }
-        public string encver { get; set; } = "INT.IHO.S-101.2.0";
+        [YamlMember(Alias = "encver", ApplyNamingConventions = false)]
+        public string ENCVer { get; set; } = "INT.IHO.S-101.2.0";
         public string? FCVer { get; set; } = default;
 
         public ICollection<Information>? InformationTypes => _informationTypes.Any() ? _informationTypes : null;
@@ -156,11 +157,13 @@ namespace S100Framework.YAML
         public double Y { get; set; } = y;
     }
 
-    public class Information {
+    public class Information
+    {
         public string? Name { get; set; }
         public string? ID { get; set; }
         public InformationNode? Attributes { get; set; }
     }
+    
     public class Feature
     {
         public string? Name { get; set; }
@@ -169,8 +172,14 @@ namespace S100Framework.YAML
         public FeatureNode? Attributes { get; set; }
         public string? Geometry { get; set; }
 
-        public Association[]? Association { get; set; }
+        public ICollection<Association>? Association => _associations.Any() ? _associations : null;
+        private ICollection<Association> _associations = new HashSet<Association>();
+        public Feature AddAssociation(Association association) {
+            _associations.Add(association);
+            return this;
+        }
     }
+    
     public class Association()
     {
         public string? To { get; set; }

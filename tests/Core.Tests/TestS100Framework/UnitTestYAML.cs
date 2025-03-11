@@ -297,7 +297,7 @@ namespace TestS100Framework
 
             var informationType = new S100Framework.YAML.Information() {
                 Name = "SpatialQuality",
-                ID = "150/1",
+                ID = "I83413",
                 Attributes = new S100Framework.DomainModel.S101.InformationTypes.SpatialQuality {
                     qualityOfHorizontalMeasurement = S100Framework.DomainModel.S101.qualityOfHorizontalMeasurement.Approximate,
                 },
@@ -321,7 +321,7 @@ namespace TestS100Framework
 
             var informationType = new S100Framework.YAML.Information() {
                 Name = "SpatialQuality",
-                ID = "150/1",
+                ID = "I83413",
                 Attributes = new S100Framework.DomainModel.S101.InformationTypes.SpatialQuality {
                     qualityOfHorizontalMeasurement = S100Framework.DomainModel.S101.qualityOfHorizontalMeasurement.Approximate,
                 },
@@ -351,14 +351,16 @@ namespace TestS100Framework
                         signalPeriod = 5,
                     },
                     valueOfNominalRange = 9,
-                },
-                Association = [new S100Framework.YAML.Association {
-                    To = "150/1",
-                    Name = "QualityOfBathymetricDataComposition",
-                    Role = "theQualityInformation"
-                }]
+                }
             };
 
+            var association = new S100Framework.YAML.Association {
+                To = "I83413",
+                Name = "QualityOfBathymetricDataComposition",
+                Role = "theQualityInformation"
+            };
+
+            feature.AddAssociation(association);
 
             dataset.AddInformation(informationType);
             dataset.AddFeature(feature);

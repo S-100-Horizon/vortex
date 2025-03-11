@@ -1,13 +1,8 @@
 ﻿using ArcGIS.Core.Data;
 using ArcGIS.Core.Geometry;
-using ArcGIS.Core.Internal.CIM;
 using CommandLine;
 using S100Framework.DomainModel;
-using S100Framework.DomainModel.S101;
-using S100Framework.DomainModel.S101.InformationTypes;
 using S100Framework.YAML;
-using System.Text.Json;
-using System.Xml.Linq;
 using Dataset = S100Framework.YAML.Dataset;
 using Esri = ArcGIS.Core.Hosting.Host;
 using IO = System.IO;
@@ -66,86 +61,35 @@ namespace S100Framework.Applications
 
             var featureCatalogue = S100Framework.Catalogues.FeatureCatalogue.Catalogues.Single(e => e.ProductID.Equals("S-101"));
 
-            // Create dataset with 
-            var dataset = new Dataset() {
-                CellName = "DK40349E.000",
-                Comment = "DK40349E Test dataset",
-                //Edition = 1,
-                //encver = "INT.IHO.S-101.2.0",
-                //FCVer = "2.0"
-            };
+            // Create dataset
+            var dataset = new Dataset();
 
-            // InformationAssociation
-            {
-                //using var informationAssociation = source.OpenDataset<Table>("s101.informationAssociation");
-                //{
-                //    using var cursor = informationAssociation.Search(null, false);
-                //    while (cursor.MoveNext()) {
-                //        var current = cursor.Current;
-
-                //        var fields = current.GetFields();
-
-                //        var objectId = current["OBJECTID"];
-                //        var code = current["code"].ToString()!;
-                //        var json = current["json"].ToString()!;
-
-                //        var name = current["name"];
-                //        var globalId = current["GlobalID"];
-                //        var productSpecification = current["ProductSpecification"];
-                //        var edition = current["edition"];
-
-                //    }
-
-            }
-
-            // FeatureAssociation
-            {
-                //using var featureAssociation = source.OpenDataset<Table>("s101.featureAssociation");
-
-                //    using var cursor = featureAssociation.Search(null, false);
-                //    while (cursor.MoveNext()) {
-                //        var current = cursor.Current;
-
-                //        var fields = current.GetFields();
-
-                //        var objectId = current["OBJECTID"];
-                //        var code = current["code"]?.ToString();
-                //        var json = current["json"]?.ToString();
-                //        var name = current["name"];
-                //        var globalId = current["GlobalID"];
-                //        var productSpecification = current["ProductSpecification"];
-                //        var edition = current["edition"];
-
-                //    }
-                //}
-            }
 
             // Informationtypes
-            {
-                //using var informationType = source.OpenDataset<Table>("s101.informationType");
-                //using var cursor = informationType.Search(null, false);
+            using var informationType = source.OpenDataset<Table>("s101.informationType");
+            using var informationCursor = informationType.Search(null, false);
 
-                //while (cursor.MoveNext()) {
-                //    var current = cursor.Current;
+            while (informationCursor.MoveNext()) {
+                var current = informationCursor.Current;
 
-                //    var objectId = current["OBJECTID"];
-                //    var code = current["code"].ToString()!;
-                //    var json = current["json"].ToString()!;
+                var name = current["name"];
+                var code = current["code"].ToString()!;
+                var json = current["json"].ToString()!;
 
-                //    var type = featureCatalogue.Assembly!.GetType($"{S100Framework.Catalogues.FeatureCatalogue.Namespace("S101", "InformationTypes")}.{code}", true)!;
+                var type = featureCatalogue.Assembly!.GetType($"{S100Framework.Catalogues.FeatureCatalogue.Namespace("S101", "InformationTypes")}.{code}", true)!;
 
-                //    var instance = DBNull.Value.Equals(current["json"]) ? null : System.Text.Json.JsonSerializer.Deserialize(Convert.ToString(current["json"])!, type);
+                var instance = DBNull.Value.Equals(current["json"]) ? null : System.Text.Json.JsonSerializer.Deserialize(Convert.ToString(current["json"])!, type);
 
-                //    var information = new YAML.Information {
-                //        Name = code,
-                //        ID = $"{objectId}/1",
-                //        Attributes = (InformationNode)instance!,
-                //    };
+                var information = new YAML.Information {
+                    Name = code,
+                    ID = $"{name}",
+                    Attributes = (InformationNode)instance!,
+                };
 
-                //    dataset.AddInformation(information);
-                //}
+                dataset.AddInformation(information);
             }
 
+            // Features
             foreach (var def in source.GetDefinitions<FeatureClassDefinition>()) {
                 using var fc = source.OpenDataset<FeatureClass>(def.GetName());
 
@@ -170,9 +114,6 @@ namespace S100Framework.Applications
                         _ => throw new InvalidOperationException(),
                     };
 
-                    //using var cursor19 = informationAssociation.Search(new ArcGIS.Core.Data.QueryFilter {
-                    //    WhereClause = $"OBJECTID = 150/1",
-                    //}, true);
 
                     var type = featureCatalogue.Assembly!.GetType($"{S100Framework.Catalogues.FeatureCatalogue.Namespace("S101", "FeatureTypes")}.{name}", true)!;
 
@@ -194,7 +135,7 @@ namespace S100Framework.Applications
 
             var yaml = S100Framework.YAML.Converter.Serialize(dataset);
 
-            //File.WriteAllText(IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "skraml.yaml"), yaml);
+            //File.WriteAllText(IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "test.yaml"), yaml);
 
             //Console.WriteLine(yaml);
             return 0;
@@ -260,7 +201,8 @@ namespace S100Framework.YAML
                                 var interiorHole = new Curve(interiorCoordinates);
 
                                 surface.InteriorRings = [.. surface.InteriorRings, interiorHole];
-                            };
+                            }
+                            ;
                         }
 
                         dataset?.AddSurface(surface);
@@ -269,9 +211,13 @@ namespace S100Framework.YAML
                     }
                 default:
                     throw new ArgumentException($"Unsupported geometry type: {geometry.GeometryType}");
-            };
+            }
+            ;
         }
-
+        /// <summary>
+        /// The NCPS NIS was data loaded by ENCs for Denmark. The ENC only holds depth data to One decimal place and derived from paper chart practices <br />
+        /// IHO Rounding rules applied (0-21m = decimeter, 21-31m = half meter 31+ = whole meter).
+        /// </summary>
         public static double RoundToIHO(this double value) {
 
             if (value < -31d) {
@@ -300,11 +246,5 @@ namespace S100Framework.YAML
             value = Math.Truncate(value);
             return value /= power10;
         }
-
-        /// <summary>
-        /// The NCPS NIS was data loaded by ENCs for Denmark. The ENC only holds depth data to One decimal place and derived from paper chart practices <br />
-        /// IHO Rounding rules applied (0-21m = decimeter, 21-31m = half meter 31+ = whole meter).
-        /// </summary>
-
     }
 }
