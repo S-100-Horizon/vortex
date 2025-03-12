@@ -892,11 +892,43 @@ namespace S100Framework
 
                         var viewModelBindingBuilder = new StringBuilder();
 
-                        var informationBindingsList = new List<string>();
-                        var featureBindingsList = new List<string>();
-
                         classBuilder.AppendLine(BuildClass(code, featureType, xmlNamespace, "S100Framework.DomainModel.FeatureType", (builder) => {
                             builder.AppendLine($"\t\t\tpublic override string Code => nameof({code});");
+
+                            var featureBindings = e.XPathSelectElements("S100FC:featureBinding", xmlNamespaceManager);
+                            foreach (var featureBinding in featureBindings) {
+                                var association = featureBinding.Element(XName.Get("association", scope_S100))!.Attribute("ref")!.Value;
+                                var role = featureBinding.Element(XName.Get("role", scope_S100))!.Attribute("ref")!.Value;
+                                var featureType = featureBinding.Element(XName.Get("featureType", scope_S100))!.Attribute("ref")!.Value;
+
+                                builder.AppendLine($"\t\t\tpublic class {association}Association : FeatureAssociation");
+                                builder.AppendLine($"\t\t\t{{");
+                                
+                                builder.AppendLine($"\t\t\t\tpublic {association}Association AddUpdateInformation(string id) {{");
+                                builder.AppendLine($"\t\t\t\t\tRefId[] refId = [new RefId {{");
+                                builder.AppendLine($"\t\t\t\t\t\tRole = \"{role}\",");
+                                builder.AppendLine($"\t\t\t\t\t\tType = \"{featureType}\",");
+                                builder.AppendLine($"\t\t\t\t\t\tValue = id,");
+                                builder.AppendLine($"\t\t\t\t}}];");
+                                builder.AppendLine($"\t\t\t\tbase.RefIds = [.. refId];");
+                                builder.AppendLine($"\t\t\t\treturn this;");
+                                builder.AppendLine($"\t\t\t\t}}");
+
+                                builder.AppendLine($"\t\t\t}}");
+
+                                builder.AppendLine($"\t\t\tpublic static {code}.{association}Association CreateUpdatedInformation(string id) {{");
+                                builder.AppendLine($"\t\t\t\treturn new {code}.{association}Association {{");
+                                builder.AppendLine($"\t\t\t\t\tCode = \"{featureType}\",");
+                                builder.AppendLine($"\t\t\t\t\tAssociationConnectorTypeName = \"{association}\",");
+                                builder.AppendLine($"\t\t\t\t\tRefIds = [new RefId {{");
+                                builder.AppendLine($"\t\t\t\t\t\tRole = \"\",");
+                                builder.AppendLine($"\t\t\t\t\t\tType = \"{code}\",");
+                                builder.AppendLine($"\t\t\t\t\t\tValue = id,");
+                                builder.AppendLine($"\t\t\t\t\t}}]");
+                                builder.AppendLine($"\t\t\t\t}};");
+                                builder.AppendLine($"\t\t\t}}");
+
+                            }
                         }));
 
                         if (!attributes.HasFlag(TypeAttributes.Abstract)) {

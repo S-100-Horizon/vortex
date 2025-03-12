@@ -423,6 +423,37 @@ namespace TestS100Framework
     }
 }
 
+
+/*
+            public class UpdatedInformationAssociation : FeatureAssociation
+            {
+                public UpdatedInformationAssociation AddUpdateInformation(string id) {
+                    RefId[] refId = [ new RefId {
+                        Role = "theUpdate",
+                        Type = typeof(UpdateInformation).Name,
+                        Value = id,
+                    }];
+
+                    base.RefIds = [.. refId];
+                    return this;
+                }
+            }
+
+            public static QualityOfNonBathymetricData.UpdatedInformationAssociation CreateUpdatedInformation(string id) {
+                return new QualityOfNonBathymetricData.UpdatedInformationAssociation {
+                    Code = "UpdatedInformation",
+                    AssociationConnectorTypeName = "UpdatedInformation",
+                    RefIds = [new RefId {
+                        Role = "theUpdatedObject",
+                        Type = typeof(QualityOfNonBathymetricData).Name,
+                        Value = id,
+                    }]
+                };
+            }
+ */
+
+
+
 /*
     public enum S100_FC_RoleType {
         [System.Xml.Serialization.XmlEnum("association")]
