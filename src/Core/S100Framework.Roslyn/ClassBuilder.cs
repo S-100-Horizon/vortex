@@ -1541,10 +1541,19 @@ namespace S100Framework
                 }
                 else if (p.PropertyType == typeof(String)) {
                     var prop_type = p.PropertyType.Name;
-                    if ("System.Collections.Generic".Equals(p.PropertyType.Namespace))
-                        prop_type = $"List<{p.Name}>";
+                    var prop_postfix = " = string.Empty;";
 
-                    classBuilder.AppendLine($"\t\t\tpublic {prop_type} {p.Name} {{ get; set; }} = string.Empty;");
+                    if (requiredMemberAttribute == null) {
+                        prop_type = $"{p.PropertyType.Name}?";
+                        prop_postfix = " = null;";
+                    }
+
+                    if ("System.Collections.Generic".Equals(p.PropertyType.Namespace)) {
+                        prop_type = $"List<{p.Name}>";
+                        prop_postfix = " new List<string>();";
+                    }
+
+                    classBuilder.AppendLine($"\t\t\tpublic {prop_type} {p.Name} {{ get; set; }}{prop_postfix}");
                 }
                 else {
                     if (requiredMemberAttribute is not null)

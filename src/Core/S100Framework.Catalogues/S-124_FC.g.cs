@@ -278,11 +278,11 @@ namespace S100Framework.DomainModel.S124 {
         public partial class information
 #pragma warning restore CS8981
         {
-            public String fileLocator { get; set; } = string.Empty;
-            public String fileReference { get; set; } = string.Empty;
-            public String headline { get; set; } = string.Empty;
-            public String language { get; set; } = string.Empty;
-            public String text { get; set; } = string.Empty;
+            public String? fileLocator { get; set; } = null;
+            public String? fileReference { get; set; } = null;
+            public String? headline { get; set; } = null;
+            public String? language { get; set; } = null;
+            public String? text { get; set; } = null;
 
             public information() {
             }
@@ -302,7 +302,7 @@ namespace S100Framework.DomainModel.S124 {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class chartAffected {
             public String chartNumber { get; set; } = string.Empty;
-            public String chartPlanNumber { get; set; } = string.Empty;
+            public String? chartPlanNumber { get; set; } = null;
 
             [Required()]
             public DateTime editionDate { get; set; }
@@ -317,10 +317,10 @@ namespace S100Framework.DomainModel.S124 {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class affectedChartPublications {
             public chartAffected? chartAffected { get; set; }
-            public String chartPublicationIdentifier { get; set; } = string.Empty;
-            public String internationalChartAffected { get; set; } = string.Empty;
-            public String language { get; set; } = string.Empty;
-            public String publicationAffected { get; set; } = string.Empty;
+            public String? chartPublicationIdentifier { get; set; } = null;
+            public String? internationalChartAffected { get; set; } = null;
+            public String? language { get; set; } = null;
+            public String? publicationAffected { get; set; } = null;
 
             public affectedChartPublications() {
             }
@@ -329,7 +329,7 @@ namespace S100Framework.DomainModel.S124 {
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class locationName {
-            public String language { get; set; } = string.Empty;
+            public String? language { get; set; } = null;
             public String text { get; set; } = string.Empty;
 
             public locationName() {
@@ -340,7 +340,7 @@ namespace S100Framework.DomainModel.S124 {
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class generalArea {
-            public String localityIdentifier { get; set; } = string.Empty;
+            public String? localityIdentifier { get; set; } = null;
 
             [Required()]
             public List<locationName> locationName { get; set; }
@@ -357,7 +357,7 @@ namespace S100Framework.DomainModel.S124 {
         public partial class locality
 #pragma warning restore CS8981
         {
-            public String localityIdentifier { get; set; } = string.Empty;
+            public String? localityIdentifier { get; set; } = null;
 
             [Required()]
             public List<locationName> locationName { get; set; }
@@ -371,9 +371,9 @@ namespace S100Framework.DomainModel.S124 {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class messageSeriesIdentifier {
             public String agencyResponsibleForProduction { get; set; } = string.Empty;
-            public String countryName { get; set; } = string.Empty;
+            public String? countryName { get; set; } = null;
             public String nameOfSeries { get; set; } = string.Empty;
-            public String warningIdentifier { get; set; } = string.Empty;
+            public String? warningIdentifier { get; set; } = null;
 
             [Required()]
             public Int32 warningNumber { get; set; }
@@ -393,7 +393,7 @@ namespace S100Framework.DomainModel.S124 {
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class nAVWARNTitle {
-            public String language { get; set; } = string.Empty;
+            public String? language { get; set; } = null;
             public String text { get; set; } = string.Empty;
 
             public nAVWARNTitle() {
@@ -545,7 +545,7 @@ namespace S100Framework.DomainModel.S124 {
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class TextPlacement : FeatureNode {
-            public String text { get; set; } = string.Empty;
+            public String? text { get; set; } = null;
 
             [Required()]
             public Int32 textOffsetBearing { get; set; }
