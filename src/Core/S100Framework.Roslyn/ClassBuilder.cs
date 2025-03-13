@@ -477,6 +477,7 @@ namespace S100Framework
 
             var spatialAssociationTypes = new List<string>();
 
+            var informationAssociationRoles = new Dictionary<string, string[]>();
             var featureAssociationRoles = new Dictionary<string, string[]>();
 
             //  Bindings
@@ -591,6 +592,7 @@ namespace S100Framework
                 {
                     classBuilder.AppendLine($"\tnamespace InformationAssociations");
                     classBuilder.AppendLine("\t\t{");
+                    classBuilder.AppendLine($"\t\tusing S100Framework.DomainModel.{productId}.InformationTypes;");
 
                     var elements = productSpecification.XPathSelectElements("//S100FC:S100_FC_InformationAssociation", xmlNamespaceManager);
 
@@ -600,6 +602,13 @@ namespace S100Framework
                         var name = e.Element(XName.Get("name", scope_S100))!.Value;
                         var code = e.Element(XName.Get("code", scope_S100))!.Value;
 
+                        var roles = e.Elements(XName.Get("role", scope_S100)).Select(e => e.Attribute("ref")!.Value);
+
+                        if (roles.Count() > 2)
+                            System.Diagnostics.Debugger.Break();
+
+                        informationAssociationRoles.Add(code, roles.ToArray());
+
                         if (!spatialAssociationTypes.Contains(code)) {
                             informationAssociationTypes.Add(code);
 
@@ -607,7 +616,7 @@ namespace S100Framework
 
                             TypeBuilder associationTypeBuilder;
 
-                            associationTypeBuilder = moduleBuilder.DefineType($"{S100Framework.Roslyn.Namespace}.Associations.{code}", attributes);
+                            associationTypeBuilder = moduleBuilder.DefineType($"{S100Framework.Roslyn.Namespace}.Associations.{code}Association", attributes);
 
                             foreach (var attributeBinding in e.XPathSelectElements("S100FC:attributeBinding", xmlNamespaceManager)) {
                                 associationTypeBuilder.BuildAttributeBinding(attributeBinding, scope_S100, xmlNamespaceManager, dictionaryTypes, dictionaryTypesComplex);
@@ -615,7 +624,7 @@ namespace S100Framework
 
                             var associationType = associationTypeBuilder.CreateType();
 
-                            classBuilder.AppendLine(BuildClass(code, associationType, xmlNamespace, (builder) => {
+                            classBuilder.AppendLine(BuildClass($"{code}Association", associationType, xmlNamespace, (builder) => {
                                 //builder.AppendLine($"\t\t\tpublic override string Code => nameof({code});");
                             }));
                         }
@@ -914,6 +923,49 @@ namespace S100Framework
 
                             var builderAssociations = new Dictionary<string, StringBuilder>();
 
+                            var informationBindings = e.XPathSelectElements("S100FC:informationBinding", xmlNamespaceManager);
+                            foreach (var informationBinding in informationBindings) {
+                                var roleType = informationBinding.Attribute("roleType")!.Value;
+                                var association = informationBinding.Element(XName.Get("association", scope_S100))!.Attribute("ref")!.Value;
+                                var role = informationBinding.Element(XName.Get("role", scope_S100))!.Attribute("ref")!.Value;
+
+                                if (!associations.Contains(association)) {
+                                    builderAssociations.Add(association, new StringBuilder());
+
+                                    builderAssociations[association].AppendLine($"\t\t\tpublic class {association}Association : Associations.InformationAssociations.{association}Association");
+                                    builderAssociations[association].AppendLine($"\t\t\t{{");
+                                    associations.Add(association);
+                                }
+
+                                foreach (var f in informationBinding.Elements(XName.Get("informationType", scope_S100))) {
+                                    var informationType = f.Attribute("ref")!.Value;
+
+                                    //var text = builderAssociations[association].ToString();
+                                    //if (!text.Contains($"{association}Association Add{informationType}(string id)")) {
+                                    //    builderAssociations[association].AppendLine($"\t\t\t\tpublic {association}Association Add{informationType}(string id) {{");
+                                    //    builderAssociations[association].AppendLine($"\t\t\t\tthis.RefIds = [.. this.RefIds, new RefId {{");
+                                    //    builderAssociations[association].AppendLine($"\t\t\t\t\t\tRole = \"{role}\",");
+                                    //    builderAssociations[association].AppendLine($"\t\t\t\t\t\tType = \"{informationType}\",");
+                                    //    builderAssociations[association].AppendLine($"\t\t\t\t\t\tValue = id,");
+                                    //    builderAssociations[association].AppendLine($"\t\t\t\t}}];");
+                                    //    builderAssociations[association].AppendLine($"\t\t\t\treturn this;");
+                                    //    builderAssociations[association].AppendLine($"\t\t\t\t}}");
+                                    //}
+                                }
+
+                                builder.AppendLine($"\t\t\tpublic static {association}Association Create{association}_{role}(string id) {{");
+                                builder.AppendLine($"\t\t\t\treturn new {association}Association {{");
+                                builder.AppendLine($"\t\t\t\t\tCode = \"{association}\",");
+                                builder.AppendLine($"\t\t\t\t\tAssociationConnectorTypeName = \"{code}\",");
+                                builder.AppendLine($"\t\t\t\t\tRefIds = [new RefId {{");
+                                builder.AppendLine($"\t\t\t\t\t\tRole = \"{role}\",");
+                                builder.AppendLine($"\t\t\t\t\t\tType = \"{code}\",");
+                                builder.AppendLine($"\t\t\t\t\t\tValue = id,");
+                                builder.AppendLine($"\t\t\t\t\t}}]");
+                                builder.AppendLine($"\t\t\t\t}};");
+                                builder.AppendLine($"\t\t\t}}");
+                            }
+
                             var featureBindings = e.XPathSelectElements("S100FC:featureBinding", xmlNamespaceManager);
                             foreach (var featureBinding in featureBindings) {
                                 var roleType = featureBinding.Attribute("roleType")!.Value;
@@ -925,8 +977,6 @@ namespace S100Framework
 
                                     builderAssociations[association].AppendLine($"\t\t\tpublic class {association}Association : Associations.FeatureAssociations.{association}Association");
                                     builderAssociations[association].AppendLine($"\t\t\t{{");
-                                    //builderAssociations.AppendLine($"\t\t\t}}");
-
                                     associations.Add(association);
                                 }
 
@@ -945,7 +995,6 @@ namespace S100Framework
                                         builderAssociations[association].AppendLine($"\t\t\t\t}}");
                                     }
                                 }
-
 
                                 var farend = featureAssociationRoles[association].Single(e => !e.Equals(role));
 
