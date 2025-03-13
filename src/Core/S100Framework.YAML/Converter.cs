@@ -4,6 +4,8 @@ using YamlDotNet.Serialization;
 using S100Framework.DomainModel;
 using YamlDotNet.Core;
 using YamlDotNet.Core.Events;
+using System.Reflection;
+using System.Runtime.Serialization;
 
 namespace S100Framework.YAML
 {
@@ -29,6 +31,9 @@ namespace S100Framework.YAML
             var properties = type.GetProperties();
 
             foreach (var property in properties) {
+                if (property.GetCustomAttribute<IgnoreDataMemberAttribute>(true) != null)   // We dont serialize those
+                    continue;
+
                 var propertyValue = property.GetValue(obj, null);
 
                 switch (property.PropertyType) {
@@ -176,8 +181,7 @@ namespace S100Framework.YAML
 
                 emitter.Emit(new SequenceStart(null, null, true, SequenceStyle.Block));     // YAML List
 
-                foreach (var attr in flattenedAttributes) {
-                    if (attr.Name == "Code") continue;                                      // Omit 'Code' property from InformationNodes
+                foreach (var attr in flattenedAttributes) {                                    // Omit 'Code' property from InformationNodes
 
                     emitter.Emit(new MappingStart());                                       // YAML Object
 
