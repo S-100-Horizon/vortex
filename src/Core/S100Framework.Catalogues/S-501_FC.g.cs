@@ -3165,6 +3165,7 @@ namespace S100Framework.DomainModel.S501 {
     namespace InformationTypes {
         using ComplexAttributes;
         using DomainModel;
+        using System.Runtime.Serialization;
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -3173,6 +3174,8 @@ namespace S100Framework.DomainModel.S501 {
             public String editionNumber { get; set; } = string.Empty;
             public List<onlineResource> onlineResource { get; set; } = [];
             public List<information> information { get; set; } = [];
+
+            [IgnoreDataMember]
             public override string Code => nameof(ReferenceToAPublication);
 
             public ReferenceToAPublication() {
@@ -3184,6 +3187,7 @@ namespace S100Framework.DomainModel.S501 {
         using ComplexAttributes;
         using InformationTypes;
         using DomainModel;
+        using System.Runtime.Serialization;
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -3259,6 +3263,8 @@ namespace S100Framework.DomainModel.S501 {
             [EnumerationValue(1)]
             [EnumerationValue(2)]
             public categoryOfInstallationBuoy? categoryOfInstallationBuoy { get; set; } = default;
+
+            [IgnoreDataMember]
             public override string Code => nameof(InstallationBuoy);
 
             public InstallationBuoy() {
@@ -3277,6 +3283,8 @@ namespace S100Framework.DomainModel.S501 {
             [Required()]
             public Decimal depthRangeMinimumValue { get; set; }
             public sourceIdentification? sourceIdentification { get; set; }
+
+            [IgnoreDataMember]
             public override string Code => nameof(DepthArea);
 
             public DepthArea() {
@@ -3313,6 +3321,8 @@ namespace S100Framework.DomainModel.S501 {
             [EnumerationValue(4)]
             [Required()]
             public trafficFlow trafficFlow { get; set; }
+
+            [IgnoreDataMember]
             public override string Code => nameof(RadioCallingInPoint);
 
             public RadioCallingInPoint() {
@@ -3338,6 +3348,8 @@ namespace S100Framework.DomainModel.S501 {
             [EnumerationValue(1)]
             [EnumerationValue(501)]
             public List<status> status { get; set; } = [];
+
+            [IgnoreDataMember]
             public override string Code => nameof(PatrolArea);
 
             public PatrolArea() {
@@ -3365,6 +3377,8 @@ namespace S100Framework.DomainModel.S501 {
             [EnumerationValue(1)]
             [EnumerationValue(501)]
             public categoryOfCheckpoint? categoryOfCheckpoint { get; set; } = default;
+
+            [IgnoreDataMember]
             public override string Code => nameof(Checkpoint);
 
             public Checkpoint() {
@@ -3470,6 +3484,8 @@ namespace S100Framework.DomainModel.S501 {
             [EnumerationValue(32)]
             public List<categoryofRestrictions> categoryofRestrictions { get; set; } = [];
             public List<String> species { get; set; } = [];
+
+            [IgnoreDataMember]
             public override string Code => nameof(MarineManagementArea);
 
             public MarineManagementArea() {
@@ -3489,6 +3505,8 @@ namespace S100Framework.DomainModel.S501 {
             public String agencyResponsibleForProduction { get; set; } = string.Empty;
             public String interoperabilityIdentifier { get; set; } = string.Empty;
             public Int32? scaleMinimum { get; set; } = default;
+
+            [IgnoreDataMember]
             public override string Code => nameof(DepthContour);
 
             public DepthContour() {
@@ -3501,6 +3519,8 @@ namespace S100Framework.DomainModel.S501 {
             public List<featureName> featureName { get; set; } = [];
             public String controllingAuthority { get; set; } = string.Empty;
             public List<information> information { get; set; } = [];
+
+            [IgnoreDataMember]
             public override string Code => nameof(EnvironmentallySensitiveSeaArea);
 
             public EnvironmentallySensitiveSeaArea() {
@@ -3543,6 +3563,8 @@ namespace S100Framework.DomainModel.S501 {
             [EnumerationValue(14)]
             public List<status> status { get; set; } = [];
             public Int32? scaleMinimum { get; set; } = default;
+
+            [IgnoreDataMember]
             public override string Code => nameof(Road);
 
             public Road() {
@@ -3559,6 +3581,8 @@ namespace S100Framework.DomainModel.S501 {
             public List<status> status { get; set; } = [];
             public String interoperabilityIdentifier { get; set; } = string.Empty;
             public List<information> information { get; set; } = [];
+
+            [IgnoreDataMember]
             public override string Code => nameof(River);
 
             public River() {
@@ -3715,6 +3739,8 @@ namespace S100Framework.DomainModel.S501 {
             public List<status> status { get; set; } = [];
             public sourceIdentification? sourceIdentification { get; set; }
             public String controllingAuthority { get; set; } = string.Empty;
+
+            [IgnoreDataMember]
             public override string Code => nameof(MilitaryPracticeArea);
 
             public MilitaryPracticeArea() {
@@ -3728,6 +3754,8 @@ namespace S100Framework.DomainModel.S501 {
             public List<information> information { get; set; } = [];
             public Int32? scaleMinimum { get; set; } = default;
             public DateOnly? reportedDate { get; set; } = default;
+
+            [IgnoreDataMember]
             public override string Code => nameof(DiscolouredWater);
 
             public DiscolouredWater() {
@@ -3810,6 +3838,8 @@ namespace S100Framework.DomainModel.S501 {
             public topmark? topmark { get; set; }
             public List<information> information { get; set; } = [];
             public String pictorialRepresentation { get; set; } = string.Empty;
+
+            [IgnoreDataMember]
             public override string Code => nameof(CardinalBuoy);
 
             public CardinalBuoy() {
@@ -3886,6 +3916,8 @@ namespace S100Framework.DomainModel.S501 {
             public colourPattern? colourPattern { get; set; } = default;
             public Boolean? radarConspicuous { get; set; } = default;
             public List<information> information { get; set; } = [];
+
+            [IgnoreDataMember]
             public override string Code => nameof(SafeWaterBuoy);
 
             public SafeWaterBuoy() {
@@ -3924,6 +3956,8 @@ namespace S100Framework.DomainModel.S501 {
             public List<periodicDateRange> periodicDateRange { get; set; } = [];
             public Decimal? estimatedRangeofTransmission { get; set; } = default;
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
+            [IgnoreDataMember]
             public override string Code => nameof(RadioStation);
 
             public RadioStation() {
@@ -3941,6 +3975,8 @@ namespace S100Framework.DomainModel.S501 {
             public altitude? altitude { get; set; }
             public String agencyResponsibleForProduction { get; set; } = string.Empty;
             public flightLevel? flightLevel { get; set; }
+
+            [IgnoreDataMember]
             public override string Code => nameof(MilitaryExerciseAirspace);
 
             public MilitaryExerciseAirspace() {
@@ -3968,6 +4004,8 @@ namespace S100Framework.DomainModel.S501 {
             [Required()]
             public List<String> nationalMaritimeAuthority { get; set; }
             public List<information> information { get; set; } = [];
+
+            [IgnoreDataMember]
             public override string Code => nameof(ContiguousZone);
 
             public ContiguousZone() {
@@ -3989,6 +4027,8 @@ namespace S100Framework.DomainModel.S501 {
             [EnumerationValue(504)]
             public status? status { get; set; } = default;
             public sourceIdentification? sourceIdentification { get; set; }
+
+            [IgnoreDataMember]
             public override string Code => nameof(NormalBaseline);
 
             public NormalBaseline() {
@@ -4041,6 +4081,8 @@ namespace S100Framework.DomainModel.S501 {
             [EnumerationValue(7)]
             [EnumerationValue(10)]
             public List<categoryOfCable> categoryOfCable { get; set; } = [];
+
+            [IgnoreDataMember]
             public override string Code => nameof(CableArea);
 
             public CableArea() {
@@ -4066,6 +4108,8 @@ namespace S100Framework.DomainModel.S501 {
             [Required()]
             public List<String> nationality { get; set; }
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
+            [IgnoreDataMember]
             public override string Code => nameof(ContinentalShelfArea);
 
             public ContinentalShelfArea() {
@@ -4093,6 +4137,8 @@ namespace S100Framework.DomainModel.S501 {
             [EnumerationValue(504)]
             [EnumerationValue(520)]
             public status? status { get; set; } = default;
+
+            [IgnoreDataMember]
             public override string Code => nameof(InternalWaters);
 
             public InternalWaters() {
@@ -4116,6 +4162,8 @@ namespace S100Framework.DomainModel.S501 {
             public List<information> information { get; set; } = [];
             public List<featureName> featureName { get; set; } = [];
             public List<String> nationality { get; set; } = [];
+
+            [IgnoreDataMember]
             public override string Code => nameof(AdministrationArea);
 
             public AdministrationArea() {
@@ -4148,6 +4196,8 @@ namespace S100Framework.DomainModel.S501 {
             [EnumerationValue(14)]
             [EnumerationValue(18)]
             public List<status> status { get; set; } = [];
+
+            [IgnoreDataMember]
             public override string Code => nameof(Bollard);
 
             public Bollard() {
@@ -4227,6 +4277,8 @@ namespace S100Framework.DomainModel.S501 {
             [EnumerationValue(6)]
             [EnumerationValue(7)]
             public List<natureOfConstruction> natureOfConstruction { get; set; } = [];
+
+            [IgnoreDataMember]
             public override string Code => nameof(Dolphin);
 
             public Dolphin() {
@@ -4248,6 +4300,8 @@ namespace S100Framework.DomainModel.S501 {
             [EnumerationValue(4)]
             [EnumerationValue(7)]
             public List<status> status { get; set; } = [];
+
+            [IgnoreDataMember]
             public override string Code => nameof(RadarRange);
 
             public RadarRange() {
@@ -4339,6 +4393,8 @@ namespace S100Framework.DomainModel.S501 {
             [EnumerationValue(5)]
             [EnumerationValue(6)]
             public colourPattern? colourPattern { get; set; } = default;
+
+            [IgnoreDataMember]
             public override string Code => nameof(IsolatedDangerBeacon);
 
             public IsolatedDangerBeacon() {
@@ -4414,6 +4470,8 @@ namespace S100Framework.DomainModel.S501 {
             [EnumerationValue(8)]
             [EnumerationValue(18)]
             public List<status> status { get; set; } = [];
+
+            [IgnoreDataMember]
             public override string Code => nameof(IsolatedDangerBuoy);
 
             public IsolatedDangerBuoy() {
@@ -4460,6 +4518,8 @@ namespace S100Framework.DomainModel.S501 {
             public String agencyResponsibleForProduction { get; set; } = string.Empty;
             public Int32? minimumSafeDepth { get; set; } = default;
             public Int32? scaleMinimum { get; set; } = default;
+
+            [IgnoreDataMember]
             public override string Code => nameof(SubmarineTransitLane);
 
             public SubmarineTransitLane() {
@@ -4474,6 +4534,8 @@ namespace S100Framework.DomainModel.S501 {
             public List<information> information { get; set; } = [];
             public String agencyResponsibleForProduction { get; set; } = string.Empty;
             public List<featureName> featureName { get; set; } = [];
+
+            [IgnoreDataMember]
             public override string Code => nameof(MaritimeSafetyInformationArea);
 
             public MaritimeSafetyInformationArea() {
@@ -4515,6 +4577,8 @@ namespace S100Framework.DomainModel.S501 {
             [EnumerationValue(502)]
             [EnumerationValue(503)]
             public catagoryOfAirspaceRestriction? catagoryOfAirspaceRestriction { get; set; } = default;
+
+            [IgnoreDataMember]
             public override string Code => nameof(AirspaceRestriction);
 
             public AirspaceRestriction() {
@@ -4556,6 +4620,8 @@ namespace S100Framework.DomainModel.S501 {
             public sourceIdentification? sourceIdentification { get; set; }
             public DateOnly? reportedDate { get; set; } = default;
             public Boolean? displayUncertainties { get; set; } = default;
+
+            [IgnoreDataMember]
             public override string Code => nameof(Sounding);
 
             public Sounding() {
@@ -4577,6 +4643,8 @@ namespace S100Framework.DomainModel.S501 {
             public fixedDateRange? fixedDateRange { get; set; }
             public sourceIdentification? sourceIdentification { get; set; }
             public Int32? scaleMinimum { get; set; } = default;
+
+            [IgnoreDataMember]
             public override string Code => nameof(TrafficSeparationSchemeBoundary);
 
             public TrafficSeparationSchemeBoundary() {
@@ -4628,6 +4696,8 @@ namespace S100Framework.DomainModel.S501 {
             public DateOnly? dateDisused { get; set; } = default;
             public List<featureName> featureName { get; set; } = [];
             public List<information> information { get; set; } = [];
+
+            [IgnoreDataMember]
             public override string Code => nameof(DumpingGround);
 
             public DumpingGround() {
@@ -4695,6 +4765,8 @@ namespace S100Framework.DomainModel.S501 {
             public List<status> status { get; set; } = [];
             public DateOnly? reportedDate { get; set; } = default;
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
+            [IgnoreDataMember]
             public override string Code => nameof(AirportAirfield);
 
             public AirportAirfield() {
@@ -4741,6 +4813,8 @@ namespace S100Framework.DomainModel.S501 {
             public verticalUncertainty? verticalUncertainty { get; set; }
             public List<featureName> featureName { get; set; } = [];
             public List<information> information { get; set; } = [];
+
+            [IgnoreDataMember]
             public override string Code => nameof(FoulGround);
 
             public FoulGround() {
@@ -4826,6 +4900,8 @@ namespace S100Framework.DomainModel.S501 {
             [EnumerationValue(10)]
             [EnumerationValue(11)]
             public List<colour> colour { get; set; } = [];
+
+            [IgnoreDataMember]
             public override string Code => nameof(LightAirObstruction);
 
             public LightAirObstruction() {
@@ -4895,6 +4971,8 @@ namespace S100Framework.DomainModel.S501 {
             public String interoperabilityIdentifier { get; set; } = string.Empty;
             public List<information> information { get; set; } = [];
             public fixedDateRange? fixedDateRange { get; set; }
+
+            [IgnoreDataMember]
             public override string Code => nameof(MooringBuoy);
 
             public MooringBuoy() {
@@ -4964,6 +5042,8 @@ namespace S100Framework.DomainModel.S501 {
             [EnumerationValue(8)]
             [EnumerationValue(9)]
             public qualityOfVerticalMeasurement? qualityOfVerticalMeasurement { get; set; } = default;
+
+            [IgnoreDataMember]
             public override string Code => nameof(UnderwaterAwashRock);
 
             public UnderwaterAwashRock() {
@@ -5020,6 +5100,8 @@ namespace S100Framework.DomainModel.S501 {
             public Int32? scaleMinimum { get; set; } = default;
             public Boolean? radarConspicuous { get; set; } = default;
             public Decimal? iceFactor { get; set; } = default;
+
+            [IgnoreDataMember]
             public override string Code => nameof(CableOverhead);
 
             public CableOverhead() {
@@ -5088,6 +5170,8 @@ namespace S100Framework.DomainModel.S501 {
             public String agencyResponsibleForProduction { get; set; } = string.Empty;
             public DateOnly? reportedDate { get; set; } = default;
             public flightLevel? flightLevel { get; set; }
+
+            [IgnoreDataMember]
             public override string Code => nameof(ControlledAirspace);
 
             public ControlledAirspace() {
@@ -5374,6 +5458,8 @@ namespace S100Framework.DomainModel.S501 {
             public String nation { get; set; } = string.Empty;
             public Decimal? defaultClearanceDepth { get; set; } = default;
             public Boolean? displayUncertainties { get; set; } = default;
+
+            [IgnoreDataMember]
             public override string Code => nameof(Obstruction);
 
             public Obstruction() {
@@ -5427,6 +5513,8 @@ namespace S100Framework.DomainModel.S501 {
             [EnumerationValue(39)]
             public List<restriction> restriction { get; set; } = [];
             public List<information> information { get; set; } = [];
+
+            [IgnoreDataMember]
             public override string Code => nameof(FishingGround);
 
             public FishingGround() {
@@ -5465,6 +5553,8 @@ namespace S100Framework.DomainModel.S501 {
             public Int32? scaleMinimum { get; set; } = default;
             public List<featureName> featureName { get; set; } = [];
             public DateOnly? reportedDate { get; set; } = default;
+
+            [IgnoreDataMember]
             public override string Code => nameof(FishingFacility);
 
             public FishingFacility() {
@@ -5506,6 +5596,8 @@ namespace S100Framework.DomainModel.S501 {
             public List<featureName> featureName { get; set; } = [];
             public String communicationChannel { get; set; } = string.Empty;
             public Int32? signalFrequency { get; set; } = default;
+
+            [IgnoreDataMember]
             public override string Code => nameof(NavigationSystem);
 
             public NavigationSystem() {
@@ -5552,6 +5644,8 @@ namespace S100Framework.DomainModel.S501 {
             public fixedDateRange? fixedDateRange { get; set; }
             public List<information> information { get; set; } = [];
             public DateOnly? reportedDate { get; set; } = default;
+
+            [IgnoreDataMember]
             public override string Code => nameof(TrafficSeparationSchemeCrossing);
 
             public TrafficSeparationSchemeCrossing() {
@@ -5600,6 +5694,8 @@ namespace S100Framework.DomainModel.S501 {
             public List<status> status { get; set; } = [];
             public sourceIdentification? sourceIdentification { get; set; }
             public Int32? scaleMinimum { get; set; } = default;
+
+            [IgnoreDataMember]
             public override string Code => nameof(TrafficSeparationSchemeLanePart);
 
             public TrafficSeparationSchemeLanePart() {
@@ -5645,6 +5741,8 @@ namespace S100Framework.DomainModel.S501 {
             [Required()]
             public List<String> nationalMaritimeAuthority { get; set; }
             public List<information> information { get; set; } = [];
+
+            [IgnoreDataMember]
             public override string Code => nameof(TerritorialSeaArea);
 
             public TerritorialSeaArea() {
@@ -5744,6 +5842,8 @@ namespace S100Framework.DomainModel.S501 {
             [EnumerationValue(13)]
             [Required()]
             public List<colour> colour { get; set; }
+
+            [IgnoreDataMember]
             public override string Code => nameof(LateralBeacon);
 
             public LateralBeacon() {
@@ -5767,6 +5867,8 @@ namespace S100Framework.DomainModel.S501 {
             public Boolean? isMRCC { get; set; } = default;
             public fixedDateRange? fixedDateRange { get; set; }
             public List<String> communicationsChannel { get; set; } = [];
+
+            [IgnoreDataMember]
             public override string Code => nameof(CoastGuardStation);
 
             public CoastGuardStation() {
@@ -5788,6 +5890,8 @@ namespace S100Framework.DomainModel.S501 {
             public fixedDateRange? fixedDateRange { get; set; }
             public Int32? scaleMinimum { get; set; } = default;
             public sourceIdentification? sourceIdentification { get; set; }
+
+            [IgnoreDataMember]
             public override string Code => nameof(SeparationZoneOrLine);
 
             public SeparationZoneOrLine() {
@@ -5807,6 +5911,8 @@ namespace S100Framework.DomainModel.S501 {
             public bottomFeatureClassification? bottomFeatureClassification { get; set; } = default;
             public DateOnly? reportedDate { get; set; } = default;
             public Decimal? verticalLength { get; set; } = default;
+
+            [IgnoreDataMember]
             public override string Code => nameof(BottomFeature);
 
             public BottomFeature() {
@@ -5827,6 +5933,8 @@ namespace S100Framework.DomainModel.S501 {
             public sourceIdentification? sourceIdentification { get; set; }
             public String agencyResponsibleForProduction { get; set; } = string.Empty;
             public Int32? scaleMinimum { get; set; } = default;
+
+            [IgnoreDataMember]
             public override string Code => nameof(ArchipelagicBaseline);
 
             public ArchipelagicBaseline() {
@@ -5846,6 +5954,8 @@ namespace S100Framework.DomainModel.S501 {
 
             [Required()]
             public Decimal valueOfSounding { get; set; }
+
+            [IgnoreDataMember]
             public override string Code => nameof(SmallBottomObject);
 
             public SmallBottomObject() {
@@ -5867,6 +5977,8 @@ namespace S100Framework.DomainModel.S501 {
 
             [Required()]
             public List<String> nationality { get; set; }
+
+            [IgnoreDataMember]
             public override string Code => nameof(ExclusiveEconomicZone);
 
             public ExclusiveEconomicZone() {
@@ -5897,6 +6009,8 @@ namespace S100Framework.DomainModel.S501 {
             public List<information> information { get; set; } = [];
             public List<String> communicationChannel { get; set; } = [];
             public Decimal? valueOfMaximumRange { get; set; } = default;
+
+            [IgnoreDataMember]
             public override string Code => nameof(RadarStation);
 
             public RadarStation() {
@@ -5913,6 +6027,8 @@ namespace S100Framework.DomainModel.S501 {
             [EnumerationValue(502)]
             [EnumerationValue(503)]
             public divingActivity? divingActivity { get; set; } = default;
+
+            [IgnoreDataMember]
             public override string Code => nameof(DivingLocation);
 
             public DivingLocation() {
@@ -6003,6 +6119,8 @@ namespace S100Framework.DomainModel.S501 {
             [EnumerationValue(42)]
             [Required()]
             public List<restriction> restriction { get; set; }
+
+            [IgnoreDataMember]
             public override string Code => nameof(RestrictedArea);
 
             public RestrictedArea() {
@@ -6039,6 +6157,8 @@ namespace S100Framework.DomainModel.S501 {
             public Int32? scaleMinimum { get; set; } = default;
             public String agencyResponsibleForProduction { get; set; } = string.Empty;
             public fixedDateRange? fixedDateRange { get; set; }
+
+            [IgnoreDataMember]
             public override string Code => nameof(CableSubmarine);
 
             public CableSubmarine() {
@@ -6198,6 +6318,8 @@ namespace S100Framework.DomainModel.S501 {
             [EnumerationValue(3)]
             public expositionOfSounding? expositionOfSounding { get; set; } = default;
             public List<featureName> featureName { get; set; } = [];
+
+            [IgnoreDataMember]
             public override string Code => nameof(Wreck);
 
             public Wreck() {
@@ -6218,6 +6340,8 @@ namespace S100Framework.DomainModel.S501 {
             public qRouteChannelWidth? qRouteChannelWidth { get; set; }
             public directionHeading? directionHeading { get; set; }
             public String nationality { get; set; } = string.Empty;
+
+            [IgnoreDataMember]
             public override string Code => nameof(QRoute);
 
             public QRoute() {
@@ -6237,6 +6361,8 @@ namespace S100Framework.DomainModel.S501 {
             public DateOnly? reportedDate { get; set; } = default;
             public sourceIdentification? sourceIdentification { get; set; }
             public List<information> information { get; set; } = [];
+
+            [IgnoreDataMember]
             public override string Code => nameof(CompletenessOfProductSpecification);
 
             public CompletenessOfProductSpecification() {
@@ -6272,6 +6398,8 @@ namespace S100Framework.DomainModel.S501 {
             public List<categoryOfRescueStation> categoryOfRescueStation { get; set; } = [];
             public Int32? scaleMinimum { get; set; } = default;
             public List<information> information { get; set; } = [];
+
+            [IgnoreDataMember]
             public override string Code => nameof(RescueStation);
 
             public RescueStation() {
@@ -6368,6 +6496,8 @@ namespace S100Framework.DomainModel.S501 {
             [EnumerationValue(3)]
             public visualProminence? visualProminence { get; set; } = default;
             public List<featureName> featureName { get; set; } = [];
+
+            [IgnoreDataMember]
             public override string Code => nameof(CardinalBeacon);
 
             public CardinalBeacon() {
@@ -6432,6 +6562,8 @@ namespace S100Framework.DomainModel.S501 {
             public List<information> information { get; set; } = [];
             public Decimal? horizontalWidth { get; set; } = default;
             public Decimal? verticalLength { get; set; } = default;
+
+            [IgnoreDataMember]
             public override string Code => nameof(LightVessel);
 
             public LightVessel() {
@@ -6463,6 +6595,8 @@ namespace S100Framework.DomainModel.S501 {
             [EnumerationValue(519)]
             [EnumerationValue(521)]
             public status? status { get; set; } = default;
+
+            [IgnoreDataMember]
             public override string Code => nameof(FisheryZone);
 
             public FisheryZone() {
@@ -6521,6 +6655,8 @@ namespace S100Framework.DomainModel.S501 {
             [EnumerationValue(39)]
             public List<restriction> restriction { get; set; } = [];
             public List<information> information { get; set; } = [];
+
+            [IgnoreDataMember]
             public override string Code => nameof(DredgedArea);
 
             public DredgedArea() {
@@ -6557,6 +6693,8 @@ namespace S100Framework.DomainModel.S501 {
             public List<categoryOfFerry> categoryOfFerry { get; set; }
             public List<information> information { get; set; } = [];
             public fixedDateRange? fixedDateRange { get; set; }
+
+            [IgnoreDataMember]
             public override string Code => nameof(FerryRoute);
 
             public FerryRoute() {
@@ -6677,6 +6815,8 @@ namespace S100Framework.DomainModel.S501 {
             public colourPattern? colourPattern { get; set; } = default;
             public Decimal? height { get; set; } = default;
             public DateOnly? reportedDate { get; set; } = default;
+
+            [IgnoreDataMember]
             public override string Code => nameof(ShorelineConstruction);
 
             public ShorelineConstruction() {
@@ -6701,6 +6841,8 @@ namespace S100Framework.DomainModel.S501 {
             public Int32? scaleMinimum { get; set; } = default;
             public String pictorialRepresentation { get; set; } = string.Empty;
             public List<information> information { get; set; } = [];
+
+            [IgnoreDataMember]
             public override string Code => nameof(CautionArea);
 
             public CautionArea() {
@@ -6783,6 +6925,8 @@ namespace S100Framework.DomainModel.S501 {
             [EnumerationValue(6)]
             [EnumerationValue(7)]
             public List<qualityOfVerticalMeasurement> qualityOfVerticalMeasurement { get; set; } = [];
+
+            [IgnoreDataMember]
             public override string Code => nameof(DeepWaterRoutePart);
 
             public DeepWaterRoutePart() {
@@ -6806,6 +6950,8 @@ namespace S100Framework.DomainModel.S501 {
 
             [EnumerationValue(5)]
             public status? status { get; set; } = default;
+
+            [IgnoreDataMember]
             public override string Code => nameof(CurrentNonGravitational);
 
             public CurrentNonGravitational() {
@@ -6839,6 +6985,8 @@ namespace S100Framework.DomainModel.S501 {
 
             [Required()]
             public Int32 maximumDisplayScale { get; set; }
+
+            [IgnoreDataMember]
             public override string Code => nameof(DataCoverage);
 
             public DataCoverage() {
@@ -6862,6 +7010,8 @@ namespace S100Framework.DomainModel.S501 {
             [Required()]
             public List<surfaceCharacteristics> surfaceCharacteristics { get; set; }
             public Decimal? attenuation { get; set; } = default;
+
+            [IgnoreDataMember]
             public override string Code => nameof(SeabedArea);
 
             public SeabedArea() {
@@ -7000,6 +7150,8 @@ namespace S100Framework.DomainModel.S501 {
             public List<fixedDateRange> fixedDateRange { get; set; } = [];
             public String interoperabilityIdentifier { get; set; } = string.Empty;
             public List<periodicDateRange> periodicDateRange { get; set; } = [];
+
+            [IgnoreDataMember]
             public override string Code => nameof(SpecialPurposeGeneralBuoy);
 
             public SpecialPurposeGeneralBuoy() {
@@ -7089,6 +7241,8 @@ namespace S100Framework.DomainModel.S501 {
             [EnumerationValue(11)]
             public marksNavigationalSystemOf? marksNavigationalSystemOf { get; set; } = default;
             public List<featureName> featureName { get; set; } = [];
+
+            [IgnoreDataMember]
             public override string Code => nameof(LightSectored);
 
             public LightSectored() {
@@ -7102,6 +7256,8 @@ namespace S100Framework.DomainModel.S501 {
         public partial class IceLine : FeatureNode {
             public List<information> information { get; set; } = [];
             public List<featureName> featureName { get; set; } = [];
+
+            [IgnoreDataMember]
             public override string Code => nameof(IceLine);
 
             public IceLine() {
@@ -7179,6 +7335,8 @@ namespace S100Framework.DomainModel.S501 {
             [EnumerationValue(14)]
             [EnumerationValue(15)]
             public List<categoryOfCargo> categoryOfCargo { get; set; } = [];
+
+            [IgnoreDataMember]
             public override string Code => nameof(AnchorageArea);
 
             public AnchorageArea() {
@@ -7261,6 +7419,8 @@ namespace S100Framework.DomainModel.S501 {
             public marksNavigationalSystemOf? marksNavigationalSystemOf { get; set; } = default;
             public sourceIdentification? sourceIdentification { get; set; }
             public Decimal? verticalLength { get; set; } = default;
+
+            [IgnoreDataMember]
             public override string Code => nameof(LateralBuoy);
 
             public LateralBuoy() {
@@ -7309,6 +7469,8 @@ namespace S100Framework.DomainModel.S501 {
             [EnumerationValue(25)]
             [EnumerationValue(27)]
             public List<restriction> restriction { get; set; } = [];
+
+            [IgnoreDataMember]
             public override string Code => nameof(TrafficSeparationSchemeRoundabout);
 
             public TrafficSeparationSchemeRoundabout() {
@@ -7364,6 +7526,8 @@ namespace S100Framework.DomainModel.S501 {
             [EnumerationValue(17)]
             [EnumerationValue(18)]
             public List<techniqueOfVerticalMeasurement> techniqueOfVerticalMeasurement { get; set; } = [];
+
+            [IgnoreDataMember]
             public override string Code => nameof(DeepWaterRouteCentreline);
 
             public DeepWaterRouteCentreline() {
@@ -7430,6 +7594,8 @@ namespace S100Framework.DomainModel.S501 {
             public List<information> information { get; set; } = [];
             public Int32? scaleMinimum { get; set; } = default;
             public List<featureName> featureName { get; set; } = [];
+
+            [IgnoreDataMember]
             public override string Code => nameof(LightFloat);
 
             public LightFloat() {
@@ -7538,6 +7704,8 @@ namespace S100Framework.DomainModel.S501 {
             public List<colour> colour { get; set; }
             public List<periodicDateRange> periodicDateRange { get; set; } = [];
             public List<featureName> featureName { get; set; } = [];
+
+            [IgnoreDataMember]
             public override string Code => nameof(LightAllAround);
 
             public LightAllAround() {
@@ -7601,6 +7769,8 @@ namespace S100Framework.DomainModel.S501 {
             public String pictorialRepresentation { get; set; } = string.Empty;
             public DateOnly? reportedDate { get; set; } = default;
             public Boolean? radarConspicuous { get; set; } = default;
+
+            [IgnoreDataMember]
             public override string Code => nameof(Coastline);
 
             public Coastline() {
@@ -7680,6 +7850,8 @@ namespace S100Framework.DomainModel.S501 {
 
             [EnumerationValue(4)]
             public qualityOfHorizontalMeasurement? qualityOfHorizontalMeasurement { get; set; } = default;
+
+            [IgnoreDataMember]
             public override string Code => nameof(SeaAreaNamedWaterArea);
 
             public SeaAreaNamedWaterArea() {
@@ -7690,6 +7862,8 @@ namespace S100Framework.DomainModel.S501 {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class DropZone : FeatureNode {
             public List<information> information { get; set; } = [];
+
+            [IgnoreDataMember]
             public override string Code => nameof(DropZone);
 
             public DropZone() {
@@ -7785,6 +7959,8 @@ namespace S100Framework.DomainModel.S501 {
             [EnumerationValue(25)]
             public List<product> product { get; set; } = [];
             public Decimal? verticalLength { get; set; } = default;
+
+            [IgnoreDataMember]
             public override string Code => nameof(Conveyor);
 
             public Conveyor() {
@@ -7817,6 +7993,8 @@ namespace S100Framework.DomainModel.S501 {
             [EnumerationValue(599)]
             public categoryofBoundaryLine? categoryofBoundaryLine { get; set; } = default;
             public Boolean? inDispute { get; set; } = default;
+
+            [IgnoreDataMember]
             public override string Code => nameof(LineOfDelimitation);
 
             public LineOfDelimitation() {
@@ -7838,6 +8016,8 @@ namespace S100Framework.DomainModel.S501 {
             public Boolean? inDispute { get; set; } = default;
             public String agencyResponsibleForProduction { get; set; } = string.Empty;
             public Int32? scaleMinimum { get; set; } = default;
+
+            [IgnoreDataMember]
             public override string Code => nameof(StraightTerritorialSeaBaseline);
 
             public StraightTerritorialSeaBaseline() {
@@ -7928,6 +8108,8 @@ namespace S100Framework.DomainModel.S501 {
             [EnumerationValue(2)]
             [EnumerationValue(3)]
             public visualProminence? visualProminence { get; set; } = default;
+
+            [IgnoreDataMember]
             public override string Code => nameof(SafeWaterBeacon);
 
             public SafeWaterBeacon() {
@@ -8080,6 +8262,8 @@ namespace S100Framework.DomainModel.S501 {
             public List<colour> colour { get; set; }
             public List<featureName> featureName { get; set; } = [];
             public List<periodicDateRange> periodicDateRange { get; set; } = [];
+
+            [IgnoreDataMember]
             public override string Code => nameof(SpecialPurposeGeneralBeacon);
 
             public SpecialPurposeGeneralBeacon() {
