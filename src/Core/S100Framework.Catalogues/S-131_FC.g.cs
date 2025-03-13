@@ -1040,10 +1040,10 @@ namespace S100Framework.DomainModel.S131 {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class contactAddress {
             public List<String> deliveryPoint { get; set; } = [];
-            public String cityName { get; set; } = string.Empty;
-            public String administrativeDivision { get; set; } = string.Empty;
-            public String countryName { get; set; } = string.Empty;
-            public String postalCode { get; set; } = string.Empty;
+            public String? cityName { get; set; } = null;
+            public String? administrativeDivision { get; set; } = null;
+            public String? countryName { get; set; } = null;
+            public String? postalCode { get; set; } = null;
 
             public contactAddress() {
             }
@@ -1053,7 +1053,7 @@ namespace S100Framework.DomainModel.S131 {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class featureName {
             public Boolean? displayName { get; set; } = default;
-            public String language { get; set; } = string.Empty;
+            public String? language { get; set; } = null;
             public String name { get; set; } = string.Empty;
 
             public featureName() {
@@ -1100,11 +1100,11 @@ namespace S100Framework.DomainModel.S131 {
         public partial class information
 #pragma warning restore CS8981
         {
-            public String fileLocator { get; set; } = string.Empty;
-            public String fileReference { get; set; } = string.Empty;
+            public String? fileLocator { get; set; } = null;
+            public String? fileReference { get; set; } = null;
             public List<String> headline { get; set; } = [];
-            public String language { get; set; } = string.Empty;
-            public String text { get; set; } = string.Empty;
+            public String? language { get; set; } = null;
+            public String? text { get; set; } = null;
 
             public information() {
             }
@@ -1114,10 +1114,10 @@ namespace S100Framework.DomainModel.S131 {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class onlineResource {
             public String onlineResourceLinkageURL { get; set; } = string.Empty;
-            public String protocol { get; set; } = string.Empty;
-            public String applicationProfile { get; set; } = string.Empty;
-            public String nameOfResource { get; set; } = string.Empty;
-            public String onlineResourceDescription { get; set; } = string.Empty;
+            public String? protocol { get; set; } = null;
+            public String? applicationProfile { get; set; } = null;
+            public String? nameOfResource { get; set; } = null;
+            public String? onlineResourceDescription { get; set; } = null;
 
             [EnumerationValue(1)]
             [EnumerationValue(3)]
@@ -1130,7 +1130,7 @@ namespace S100Framework.DomainModel.S131 {
             [EnumerationValue(10)]
             [EnumerationValue(11)]
             public onlineFunction? onlineFunction { get; set; } = default;
-            public String protocolRequest { get; set; } = string.Empty;
+            public String? protocolRequest { get; set; } = null;
 
             public onlineResource() {
                 onlineResourceLinkageURL = string.Empty;
@@ -1228,7 +1228,7 @@ namespace S100Framework.DomainModel.S131 {
             public categoryOfText? categoryOfText { get; set; } = default;
             public List<information> information { get; set; } = [];
             public onlineResource? onlineResource { get; set; }
-            public String source { get; set; } = string.Empty;
+            public String? source { get; set; } = null;
 
             [EnumerationValue(1)]
             [EnumerationValue(2)]
@@ -1399,7 +1399,7 @@ namespace S100Framework.DomainModel.S131 {
             [EnumerationValue(5)]
             public condition? condition { get; set; } = default;
             public String development { get; set; } = string.Empty;
-            public String locationByText { get; set; } = string.Empty;
+            public String? locationByText { get; set; } = null;
             public List<textContent> textContent { get; set; } = [];
 
             public constructionInformation() {
@@ -1455,9 +1455,9 @@ namespace S100Framework.DomainModel.S131 {
         {
             [Required()]
             public List<String> pictorialRepresentation { get; set; }
-            public String pictureCaption { get; set; } = string.Empty;
+            public String? pictureCaption { get; set; } = null;
             public DateTime? sourceDate { get; set; } = default;
-            public String pictureInformation { get; set; } = string.Empty;
+            public String? pictureInformation { get; set; } = null;
             public bearingInformation? bearingInformation { get; set; }
 
             public graphic() {
@@ -1560,8 +1560,8 @@ namespace S100Framework.DomainModel.S131 {
             [EnumerationValue(4)]
             public categoryOfCommunicationPreference? categoryOfCommunicationPreference { get; set; } = default;
             public String telecommunicationIdentifier { get; set; } = string.Empty;
-            public String telecommunicationCarrier { get; set; } = string.Empty;
-            public String contactInstructions { get; set; } = string.Empty;
+            public String? telecommunicationCarrier { get; set; } = null;
+            public String? contactInstructions { get; set; } = null;
 
             [EnumerationValue(1)]
             [EnumerationValue(2)]
@@ -1703,7 +1703,7 @@ namespace S100Framework.DomainModel.S131 {
             public fixedDateRange? fixedDateRange { get; set; }
             public List<periodicDateRange> periodicDateRange { get; set; } = [];
             public List<graphic> graphic { get; set; } = [];
-            public String source { get; set; } = string.Empty;
+            public String? source { get; set; } = null;
 
             [EnumerationValue(1)]
             [EnumerationValue(2)]
@@ -1822,7 +1822,7 @@ namespace S100Framework.DomainModel.S131 {
             [EnumerationValue(2)]
             public logicalConnectives? logicalConnectives { get; set; } = default;
             public Int32? thicknessOfIceCapability { get; set; } = default;
-            public String vesselPerformance { get; set; } = string.Empty;
+            public String? vesselPerformance { get; set; } = null;
             public List<information> information { get; set; } = [];
             public List<vesselsMeasurements> vesselsMeasurements { get; set; } = [];
 
@@ -1973,7 +1973,7 @@ namespace S100Framework.DomainModel.S131 {
             [EnumerationValue(9)]
             [EnumerationValue(10)]
             public List<supplyService> supplyService { get; set; } = [];
-            public String tugInformation { get; set; } = string.Empty;
+            public String? tugInformation { get; set; } = null;
             public List<textContent> textContent { get; set; } = [];
 
             [IgnoreDataMember]
@@ -1986,8 +1986,8 @@ namespace S100Framework.DomainModel.S131 {
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class ContactDetails : InformationType {
-            public String callName { get; set; } = string.Empty;
-            public String callSign { get; set; } = string.Empty;
+            public String? callName { get; set; } = null;
+            public String? callSign { get; set; } = null;
 
             [EnumerationValue(1)]
             [EnumerationValue(2)]
@@ -1996,11 +1996,11 @@ namespace S100Framework.DomainModel.S131 {
             public categoryOfCommunicationPreference? categoryOfCommunicationPreference { get; set; } = default;
             public List<String> communicationChannel { get; set; } = [];
             public List<contactAddress> contactAddress { get; set; } = [];
-            public String contactInstructions { get; set; } = string.Empty;
+            public String? contactInstructions { get; set; } = null;
             public List<Int32> signalFrequency { get; set; } = [];
             public List<frequencyPair> frequencyPair { get; set; } = [];
             public List<information> information { get; set; } = [];
-            public String mMSICode { get; set; } = string.Empty;
+            public String? mMSICode { get; set; } = null;
             public List<onlineResource> onlineResource { get; set; } = [];
             public List<telecommunications> telecommunications { get; set; } = [];
 
@@ -2014,10 +2014,10 @@ namespace S100Framework.DomainModel.S131 {
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class Entrance : InformationType {
-            public String entranceDescription { get; set; } = string.Empty;
+            public String? entranceDescription { get; set; } = null;
             public List<String> associatedFeatureName { get; set; } = [];
-            public String localKnowledgeDescription { get; set; } = string.Empty;
-            public String approachDescription { get; set; } = string.Empty;
+            public String? localKnowledgeDescription { get; set; } = null;
+            public String? approachDescription { get; set; } = null;
             public List<markedBy> markedBy { get; set; } = [];
             public List<landmarkDescription> landmarkDescription { get; set; } = [];
             public List<offshoreMarkDescription> offshoreMarkDescription { get; set; } = [];
@@ -2135,14 +2135,14 @@ namespace S100Framework.DomainModel.S131 {
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public abstract partial class FeatureType : FeatureNode {
-            public String locationMRN { get; set; } = string.Empty;
-            public String globalLocationNumber { get; set; } = string.Empty;
+            public String? locationMRN { get; set; } = null;
+            public String? globalLocationNumber { get; set; } = null;
             public List<featureName> featureName { get; set; } = [];
             public fixedDateRange? fixedDateRange { get; set; }
             public List<periodicDateRange> periodicDateRange { get; set; } = [];
             public List<rxNCode> rxNCode { get; set; } = [];
             public List<graphic> graphic { get; set; } = [];
-            public String source { get; set; } = string.Empty;
+            public String? source { get; set; } = null;
 
             [EnumerationValue(1)]
             [EnumerationValue(2)]
@@ -2221,7 +2221,7 @@ namespace S100Framework.DomainModel.S131 {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class AnchorageArea : Layout {
             public depthsDescription? depthsDescription { get; set; }
-            public String locationByText { get; set; } = string.Empty;
+            public String? locationByText { get; set; } = null;
             public markedBy? markedBy { get; set; }
 
             [EnumerationValue(1)]
@@ -2240,7 +2240,7 @@ namespace S100Framework.DomainModel.S131 {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class Berth : Layout {
             public Decimal? availableBerthingLength { get; set; } = default;
-            public String bollardDescription { get; set; } = string.Empty;
+            public String? bollardDescription { get; set; } = null;
             public Decimal? bollardPull { get; set; } = default;
             public Decimal? minimumBerthDepth { get; set; } = default;
             public Decimal? elevation { get; set; } = default;
@@ -2251,13 +2251,13 @@ namespace S100Framework.DomainModel.S131 {
             [EnumerationValue(3)]
             [EnumerationValue(4)]
             public categoryOfBerthLocation? categoryOfBerthLocation { get; set; } = default;
-            public String portFacilityNumber { get; set; } = string.Empty;
+            public String? portFacilityNumber { get; set; } = null;
             public List<String> bollardNumber { get; set; } = [];
-            public String gLNExtension { get; set; } = string.Empty;
+            public String? gLNExtension { get; set; } = null;
             public List<String> metreMarkNumber { get; set; } = [];
             public List<String> manifoldNumber { get; set; } = [];
-            public String rampNumber { get; set; } = string.Empty;
-            public String locationByText { get; set; } = string.Empty;
+            public String? rampNumber { get; set; } = null;
+            public String? locationByText { get; set; } = null;
 
             [EnumerationValue(1)]
             [EnumerationValue(2)]
@@ -2271,7 +2271,7 @@ namespace S100Framework.DomainModel.S131 {
             [EnumerationValue(10)]
             public methodOfSecuring? methodOfSecuring { get; set; } = default;
             public String uNLocationCode { get; set; } = string.Empty;
-            public String terminalIdentifier { get; set; } = string.Empty;
+            public String? terminalIdentifier { get; set; } = null;
 
             [IgnoreDataMember]
             public override string Code => nameof(Berth);
@@ -2285,14 +2285,14 @@ namespace S100Framework.DomainModel.S131 {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class BerthPosition : Layout {
             public Decimal? availableBerthingLength { get; set; } = default;
-            public String bollardDescription { get; set; } = string.Empty;
+            public String? bollardDescription { get; set; } = null;
             public Decimal? bollardPull { get; set; } = default;
             public List<String> bollardNumber { get; set; } = [];
-            public String gLNExtension { get; set; } = string.Empty;
+            public String? gLNExtension { get; set; } = null;
             public List<String> metreMarkNumber { get; set; } = [];
             public List<String> manifoldNumber { get; set; } = [];
-            public String rampNumber { get; set; } = string.Empty;
-            public String locationByText { get; set; } = string.Empty;
+            public String? rampNumber { get; set; } = null;
+            public String? locationByText { get; set; } = null;
 
             [IgnoreDataMember]
             public override string Code => nameof(BerthPosition);
@@ -2305,7 +2305,7 @@ namespace S100Framework.DomainModel.S131 {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class DockArea : Layout {
             public depthsDescription? depthsDescription { get; set; }
-            public String locationByText { get; set; } = string.Empty;
+            public String? locationByText { get; set; } = null;
             public markedBy? markedBy { get; set; }
 
             [EnumerationValue(1)]
@@ -2336,7 +2336,7 @@ namespace S100Framework.DomainModel.S131 {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class DumpingGround : Layout {
             public depthsDescription? depthsDescription { get; set; }
-            public String locationByText { get; set; } = string.Empty;
+            public String? locationByText { get; set; } = null;
             public markedBy? markedBy { get; set; }
 
             [EnumerationValue(1)]
@@ -2378,9 +2378,9 @@ namespace S100Framework.DomainModel.S131 {
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class HarbourAreaAdministrative : Layout {
-            public String uNLocationCode { get; set; } = string.Empty;
-            public String nationality { get; set; } = string.Empty;
-            public String applicableLoadLineZone { get; set; } = string.Empty;
+            public String? uNLocationCode { get; set; } = null;
+            public String? nationality { get; set; } = null;
+            public String? applicableLoadLineZone { get; set; } = null;
 
             [EnumerationValue(1)]
             [EnumerationValue(2)]
@@ -2449,7 +2449,7 @@ namespace S100Framework.DomainModel.S131 {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class HarbourBasin : Layout {
             public depthsDescription? depthsDescription { get; set; }
-            public String locationByText { get; set; } = string.Empty;
+            public String? locationByText { get; set; } = null;
             public markedBy? markedBy { get; set; }
 
             [EnumerationValue(1)]
@@ -2493,7 +2493,7 @@ namespace S100Framework.DomainModel.S131 {
             [Required()]
             public categoryOfMooringWarpingFacility categoryOfMooringWarpingFacility { get; set; }
             public String iDCode { get; set; } = string.Empty;
-            public String bollardDescription { get; set; } = string.Empty;
+            public String? bollardDescription { get; set; } = null;
             public Decimal? bollardPull { get; set; } = default;
             public Boolean? heavingLinesFromShore { get; set; } = default;
 
@@ -2526,7 +2526,7 @@ namespace S100Framework.DomainModel.S131 {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class PilotBoardingPlace : Layout {
             public depthsDescription? depthsDescription { get; set; }
-            public String locationByText { get; set; } = string.Empty;
+            public String? locationByText { get; set; } = null;
             public markedBy? markedBy { get; set; }
 
             [EnumerationValue(1)]
@@ -2545,7 +2545,7 @@ namespace S100Framework.DomainModel.S131 {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class SeaplaneLandingArea : Layout {
             public depthsDescription? depthsDescription { get; set; }
-            public String locationByText { get; set; } = string.Empty;
+            public String? locationByText { get; set; } = null;
             public markedBy? markedBy { get; set; }
 
             [EnumerationValue(1)]
@@ -2563,7 +2563,7 @@ namespace S100Framework.DomainModel.S131 {
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class Terminal : Layout {
-            public String portFacilityNumber { get; set; } = string.Empty;
+            public String? portFacilityNumber { get; set; } = null;
 
             [EnumerationValue(1)]
             [EnumerationValue(3)]
@@ -2608,9 +2608,9 @@ namespace S100Framework.DomainModel.S131 {
             [EnumerationValue(21)]
             [EnumerationValue(22)]
             public List<product> product { get; set; } = [];
-            public String terminalIdentifier { get; set; } = string.Empty;
-            public String sMDGTerminalCode { get; set; } = string.Empty;
-            public String uNLocationCode { get; set; } = string.Empty;
+            public String? terminalIdentifier { get; set; } = null;
+            public String? sMDGTerminalCode { get; set; } = null;
+            public String? uNLocationCode { get; set; } = null;
 
             [IgnoreDataMember]
             public override string Code => nameof(Terminal);
@@ -2623,7 +2623,7 @@ namespace S100Framework.DomainModel.S131 {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class TurningBasin : Layout {
             public depthsDescription? depthsDescription { get; set; }
-            public String locationByText { get; set; } = string.Empty;
+            public String? locationByText { get; set; } = null;
             public markedBy? markedBy { get; set; }
 
             [EnumerationValue(1)]
@@ -2650,7 +2650,7 @@ namespace S100Framework.DomainModel.S131 {
             [Required()]
             public categoryOfPortSection categoryOfPortSection { get; set; }
             public depthsDescription? depthsDescription { get; set; }
-            public String locationByText { get; set; } = string.Empty;
+            public String? locationByText { get; set; } = null;
             public markedBy? markedBy { get; set; }
 
             [IgnoreDataMember]
@@ -2776,7 +2776,7 @@ namespace S100Framework.DomainModel.S131 {
         public partial class TextPlacement : FeatureNode {
             [Required()]
             public Decimal orientationValue { get; set; }
-            public String text { get; set; } = string.Empty;
+            public String? text { get; set; } = null;
 
             [Required()]
             public Int32 textOffsetMm { get; set; }

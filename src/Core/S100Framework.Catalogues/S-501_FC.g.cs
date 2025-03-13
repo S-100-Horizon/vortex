@@ -2480,9 +2480,9 @@ namespace S100Framework.DomainModel.S501 {
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class onlineResource {
-            public String headline { get; set; } = string.Empty;
+            public String? headline { get; set; } = null;
             public String linkage { get; set; } = string.Empty;
-            public String nameOfResource { get; set; } = string.Empty;
+            public String? nameOfResource { get; set; } = null;
 
             public onlineResource() {
                 linkage = string.Empty;
@@ -2554,7 +2554,7 @@ namespace S100Framework.DomainModel.S501 {
             [EnumerationValue(506)]
             [EnumerationValue(509)]
             public lastSensor? lastSensor { get; set; } = default;
-            public String lastSource { get; set; } = string.Empty;
+            public String? lastSource { get; set; } = null;
             public DateOnly? reportedDate { get; set; } = default;
 
             public lastSourceInformation() {
@@ -2568,11 +2568,11 @@ namespace S100Framework.DomainModel.S501 {
         public partial class information
 #pragma warning restore CS8981
         {
-            public String headline { get; set; } = string.Empty;
+            public String? headline { get; set; } = null;
             public String language { get; set; } = string.Empty;
-            public String fileLocator { get; set; } = string.Empty;
-            public String text { get; set; } = string.Empty;
-            public String fileReference { get; set; } = string.Empty;
+            public String? fileLocator { get; set; } = null;
+            public String? text { get; set; } = null;
+            public String? fileReference { get; set; } = null;
 
             public information() {
                 language = string.Empty;
@@ -2590,7 +2590,7 @@ namespace S100Framework.DomainModel.S501 {
             [EnumerationValue(509)]
             [Required()]
             public firstSensor firstSensor { get; set; }
-            public String firstSource { get; set; } = string.Empty;
+            public String? firstSource { get; set; } = null;
             public DateOnly? reportedDate { get; set; } = default;
 
             public firstSourceInformation() {
@@ -2757,9 +2757,9 @@ namespace S100Framework.DomainModel.S501 {
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class sourceIdentification {
-            public String producerNation { get; set; } = string.Empty;
-            public String sourceType { get; set; } = string.Empty;
-            public String productionAgency { get; set; } = string.Empty;
+            public String? producerNation { get; set; } = null;
+            public String? sourceType { get; set; } = null;
+            public String? productionAgency { get; set; } = null;
             public String sourceID { get; set; } = string.Empty;
 
             public sourceIdentification() {
@@ -2827,7 +2827,7 @@ namespace S100Framework.DomainModel.S501 {
             [EnumerationValue(4)]
             [Required()]
             public speedUnits speedUnits { get; set; }
-            public String vesselClass { get; set; } = string.Empty;
+            public String? vesselClass { get; set; } = null;
 
             [Required()]
             public Decimal speedLimit { get; set; }
@@ -2859,7 +2859,7 @@ namespace S100Framework.DomainModel.S501 {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class shapeInformation {
             public String text { get; set; } = string.Empty;
-            public String language { get; set; } = string.Empty;
+            public String? language { get; set; } = null;
 
             public shapeInformation() {
                 text = string.Empty;
@@ -2885,7 +2885,7 @@ namespace S100Framework.DomainModel.S501 {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class sectorInformation {
             public String text { get; set; } = string.Empty;
-            public String language { get; set; } = string.Empty;
+            public String? language { get; set; } = null;
 
             public sectorInformation() {
                 text = string.Empty;
@@ -3171,7 +3171,7 @@ namespace S100Framework.DomainModel.S501 {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class ReferenceToAPublication : InformationNode {
             public DateOnly? editionDate { get; set; } = default;
-            public String editionNumber { get; set; } = string.Empty;
+            public String? editionNumber { get; set; } = null;
             public List<onlineResource> onlineResource { get; set; } = [];
             public List<information> information { get; set; } = [];
 
@@ -3241,7 +3241,7 @@ namespace S100Framework.DomainModel.S501 {
             public List<colour> colour { get; set; }
             public Int32? scaleMinimum { get; set; } = default;
             public List<periodicDateRange> periodicDateRange { get; set; } = [];
-            public String pictorialRepresentation { get; set; } = string.Empty;
+            public String? pictorialRepresentation { get; set; } = null;
 
             [EnumerationValue(1)]
             [EnumerationValue(2)]
@@ -3253,7 +3253,7 @@ namespace S100Framework.DomainModel.S501 {
             [EnumerationValue(8)]
             [Required()]
             public buoyShape buoyShape { get; set; }
-            public String interoperabilityIdentifier { get; set; } = string.Empty;
+            public String? interoperabilityIdentifier { get; set; } = null;
 
             [EnumerationValue(7)]
             [EnumerationValue(11)]
@@ -3277,7 +3277,7 @@ namespace S100Framework.DomainModel.S501 {
         public partial class DepthArea : FeatureNode {
             [Required()]
             public Decimal depthRangeMaximumValue { get; set; }
-            public String interoperabilityIdentifier { get; set; } = string.Empty;
+            public String? interoperabilityIdentifier { get; set; } = null;
             public List<information> information { get; set; } = [];
 
             [Required()]
@@ -3300,7 +3300,7 @@ namespace S100Framework.DomainModel.S501 {
             public Int32? scaleMinimum { get; set; } = default;
             public List<String> communicationChannel { get; set; } = [];
             public List<periodicDateRange> periodicDateRange { get; set; } = [];
-            public String interoperabilityIdentifier { get; set; } = string.Empty;
+            public String? interoperabilityIdentifier { get; set; } = null;
             public List<Decimal> orientationValue { get; set; } = [];
 
             [EnumerationValue(1)]
@@ -3332,10 +3332,10 @@ namespace S100Framework.DomainModel.S501 {
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class PatrolArea : FeatureNode {
-            public String agencyResponsibleForProduction { get; set; } = string.Empty;
+            public String? agencyResponsibleForProduction { get; set; } = null;
             public DateOnly? reportedDate { get; set; } = default;
-            public String nationality { get; set; } = string.Empty;
-            public String controllingAuthority { get; set; } = string.Empty;
+            public String? nationality { get; set; } = null;
+            public String? controllingAuthority { get; set; } = null;
 
             [EnumerationValue(501)]
             [EnumerationValue(502)]
@@ -3359,9 +3359,9 @@ namespace S100Framework.DomainModel.S501 {
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class Checkpoint : FeatureNode {
-            public String controllingAuthority { get; set; } = string.Empty;
+            public String? controllingAuthority { get; set; } = null;
             public List<featureName> featureName { get; set; } = [];
-            public String agencyResponsibleForProduction { get; set; } = string.Empty;
+            public String? agencyResponsibleForProduction { get; set; } = null;
 
             [EnumerationValue(1)]
             [EnumerationValue(2)]
@@ -3371,7 +3371,7 @@ namespace S100Framework.DomainModel.S501 {
             [EnumerationValue(12)]
             public List<status> status { get; set; } = [];
             public List<information> information { get; set; } = [];
-            public String interoperabilityIdentifier { get; set; } = string.Empty;
+            public String? interoperabilityIdentifier { get; set; } = null;
             public Int32? scaleMinimum { get; set; } = default;
 
             [EnumerationValue(1)]
@@ -3449,10 +3449,10 @@ namespace S100Framework.DomainModel.S501 {
             [EnumerationValue(7)]
             public categoryofMarineProtectedArea? categoryofMarineProtectedArea { get; set; } = default;
             public DateOnly? reportedDate { get; set; } = default;
-            public String agencyResponsibleForProduction { get; set; } = string.Empty;
+            public String? agencyResponsibleForProduction { get; set; } = null;
             public List<featureName> featureName { get; set; } = [];
-            public String controllingAuthority { get; set; } = string.Empty;
-            public String pictorialRepresentation { get; set; } = string.Empty;
+            public String? controllingAuthority { get; set; } = null;
+            public String? pictorialRepresentation { get; set; } = null;
 
             [EnumerationValue(1)]
             [EnumerationValue(2)]
@@ -3502,8 +3502,8 @@ namespace S100Framework.DomainModel.S501 {
 
             [Required()]
             public Decimal valueOfDepthContour { get; set; }
-            public String agencyResponsibleForProduction { get; set; } = string.Empty;
-            public String interoperabilityIdentifier { get; set; } = string.Empty;
+            public String? agencyResponsibleForProduction { get; set; } = null;
+            public String? interoperabilityIdentifier { get; set; } = null;
             public Int32? scaleMinimum { get; set; } = default;
 
             [IgnoreDataMember]
@@ -3517,7 +3517,7 @@ namespace S100Framework.DomainModel.S501 {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class EnvironmentallySensitiveSeaArea : FeatureNode {
             public List<featureName> featureName { get; set; } = [];
-            public String controllingAuthority { get; set; } = string.Empty;
+            public String? controllingAuthority { get; set; } = null;
             public List<information> information { get; set; } = [];
 
             [IgnoreDataMember]
@@ -3534,7 +3534,7 @@ namespace S100Framework.DomainModel.S501 {
             [EnumerationValue(5)]
             public List<natureOfConstruction> natureOfConstruction { get; set; } = [];
             public List<featureName> featureName { get; set; } = [];
-            public String pictorialRepresentation { get; set; } = string.Empty;
+            public String? pictorialRepresentation { get; set; } = null;
             public DateOnly? reportedDate { get; set; } = default;
 
             [EnumerationValue(1)]
@@ -3550,7 +3550,7 @@ namespace S100Framework.DomainModel.S501 {
             [EnumerationValue(5)]
             [EnumerationValue(501)]
             public condition? condition { get; set; } = default;
-            public String interoperabilityIdentifier { get; set; } = string.Empty;
+            public String? interoperabilityIdentifier { get; set; } = null;
             public List<information> information { get; set; } = [];
 
             [EnumerationValue(1)]
@@ -3579,7 +3579,7 @@ namespace S100Framework.DomainModel.S501 {
 
             [EnumerationValue(5)]
             public List<status> status { get; set; } = [];
-            public String interoperabilityIdentifier { get; set; } = string.Empty;
+            public String? interoperabilityIdentifier { get; set; } = null;
             public List<information> information { get; set; } = [];
 
             [IgnoreDataMember]
@@ -3598,7 +3598,7 @@ namespace S100Framework.DomainModel.S501 {
             [EnumerationValue(1)]
             public depthUnits? depthUnits { get; set; } = default;
             public List<periodicDateRange> periodicDateRange { get; set; } = [];
-            public String nationality { get; set; } = string.Empty;
+            public String? nationality { get; set; } = null;
 
             [EnumerationValue(1)]
             [EnumerationValue(2)]
@@ -3681,7 +3681,7 @@ namespace S100Framework.DomainModel.S501 {
             [EnumerationValue(598)]
             [EnumerationValue(599)]
             public List<typeofMilitaryActivity> typeofMilitaryActivity { get; set; } = [];
-            public String activePeriod { get; set; } = string.Empty;
+            public String? activePeriod { get; set; } = null;
             public List<featureName> featureName { get; set; } = [];
             public Int32? minimumSafeDepth { get; set; } = default;
 
@@ -3699,8 +3699,8 @@ namespace S100Framework.DomainModel.S501 {
             [EnumerationValue(599)]
             public List<categoryofMilitaryPracticeArea> categoryofMilitaryPracticeArea { get; set; } = [];
             public Int32? bottomVerticalSafetySeparation { get; set; } = default;
-            public String interoperabilityIdentifier { get; set; } = string.Empty;
-            public String agencyResponsibleForProduction { get; set; } = string.Empty;
+            public String? interoperabilityIdentifier { get; set; } = null;
+            public String? agencyResponsibleForProduction { get; set; } = null;
 
             [EnumerationValue(501)]
             [EnumerationValue(502)]
@@ -3738,7 +3738,7 @@ namespace S100Framework.DomainModel.S501 {
             [EnumerationValue(520)]
             public List<status> status { get; set; } = [];
             public sourceIdentification? sourceIdentification { get; set; }
-            public String controllingAuthority { get; set; } = string.Empty;
+            public String? controllingAuthority { get; set; } = null;
 
             [IgnoreDataMember]
             public override string Code => nameof(MilitaryPracticeArea);
@@ -3792,7 +3792,7 @@ namespace S100Framework.DomainModel.S501 {
             [Required()]
             public buoyShape buoyShape { get; set; }
             public Decimal? verticalLength { get; set; } = default;
-            public String interoperabilityIdentifier { get; set; } = string.Empty;
+            public String? interoperabilityIdentifier { get; set; } = null;
 
             [EnumerationValue(1)]
             [EnumerationValue(2)]
@@ -3837,7 +3837,7 @@ namespace S100Framework.DomainModel.S501 {
             public sourceIdentification? sourceIdentification { get; set; }
             public topmark? topmark { get; set; }
             public List<information> information { get; set; } = [];
-            public String pictorialRepresentation { get; set; } = string.Empty;
+            public String? pictorialRepresentation { get; set; } = null;
 
             [IgnoreDataMember]
             public override string Code => nameof(CardinalBuoy);
@@ -3877,7 +3877,7 @@ namespace S100Framework.DomainModel.S501 {
             [Required()]
             public List<colour> colour { get; set; }
             public Decimal? verticalLength { get; set; } = default;
-            public String pictorialRepresentation { get; set; } = string.Empty;
+            public String? pictorialRepresentation { get; set; } = null;
             public List<periodicDateRange> periodicDateRange { get; set; } = [];
             public topmark? topmark { get; set; }
 
@@ -3904,7 +3904,7 @@ namespace S100Framework.DomainModel.S501 {
             [EnumerationValue(11)]
             public List<natureOfConstruction> natureOfConstruction { get; set; } = [];
             public List<featureName> featureName { get; set; } = [];
-            public String interoperabilityIdentifier { get; set; } = string.Empty;
+            public String? interoperabilityIdentifier { get; set; } = null;
             public DateOnly? reportedDate { get; set; } = default;
 
             [EnumerationValue(1)]
@@ -3934,9 +3934,9 @@ namespace S100Framework.DomainModel.S501 {
             public List<information> information { get; set; } = [];
             public frequencyPair? frequencyPair { get; set; }
             public sourceIdentification? sourceIdentification { get; set; }
-            public String callsign { get; set; } = string.Empty;
+            public String? callsign { get; set; } = null;
             public fixedDateRange? fixedDateRange { get; set; }
-            public String communicationChannel { get; set; } = string.Empty;
+            public String? communicationChannel { get; set; } = null;
 
             [EnumerationValue(1)]
             [EnumerationValue(2)]
@@ -3955,7 +3955,7 @@ namespace S100Framework.DomainModel.S501 {
             public List<categoryOfRadioStation> categoryOfRadioStation { get; set; } = [];
             public List<periodicDateRange> periodicDateRange { get; set; } = [];
             public Decimal? estimatedRangeofTransmission { get; set; } = default;
-            public String interoperabilityIdentifier { get; set; } = string.Empty;
+            public String? interoperabilityIdentifier { get; set; } = null;
 
             [IgnoreDataMember]
             public override string Code => nameof(RadioStation);
@@ -3969,11 +3969,11 @@ namespace S100Framework.DomainModel.S501 {
         public partial class MilitaryExerciseAirspace : FeatureNode {
             public List<featureName> featureName { get; set; } = [];
             public List<information> information { get; set; } = [];
-            public String pictorialRepresentation { get; set; } = string.Empty;
-            public String controllingAuthority { get; set; } = string.Empty;
-            public String activePeriod { get; set; } = string.Empty;
+            public String? pictorialRepresentation { get; set; } = null;
+            public String? controllingAuthority { get; set; } = null;
+            public String? activePeriod { get; set; } = null;
             public altitude? altitude { get; set; }
-            public String agencyResponsibleForProduction { get; set; } = string.Empty;
+            public String? agencyResponsibleForProduction { get; set; } = null;
             public flightLevel? flightLevel { get; set; }
 
             [IgnoreDataMember]
@@ -3988,7 +3988,7 @@ namespace S100Framework.DomainModel.S501 {
         public partial class ContiguousZone : FeatureNode {
             public sourceIdentification? sourceIdentification { get; set; }
             public fixedDateRange? fixedDateRange { get; set; }
-            public String interoperabilityIdentifier { get; set; } = string.Empty;
+            public String? interoperabilityIdentifier { get; set; } = null;
             public Int32? scaleMinimum { get; set; } = default;
             public DateOnly? reportedDate { get; set; } = default;
 
@@ -4021,7 +4021,7 @@ namespace S100Framework.DomainModel.S501 {
             public Int32? scaleMinimum { get; set; } = default;
             public DateOnly? reportedDate { get; set; } = default;
             public String nationality { get; set; } = string.Empty;
-            public String agencyResponsibleForProduction { get; set; } = string.Empty;
+            public String? agencyResponsibleForProduction { get; set; } = null;
 
             [EnumerationValue(502)]
             [EnumerationValue(504)]
@@ -4075,7 +4075,7 @@ namespace S100Framework.DomainModel.S501 {
             [EnumerationValue(27)]
             [EnumerationValue(39)]
             public List<restriction> restriction { get; set; } = [];
-            public String interoperabilityIdentifier { get; set; } = string.Empty;
+            public String? interoperabilityIdentifier { get; set; } = null;
 
             [EnumerationValue(1)]
             [EnumerationValue(7)]
@@ -4107,7 +4107,7 @@ namespace S100Framework.DomainModel.S501 {
 
             [Required()]
             public List<String> nationality { get; set; }
-            public String interoperabilityIdentifier { get; set; } = string.Empty;
+            public String? interoperabilityIdentifier { get; set; } = null;
 
             [IgnoreDataMember]
             public override string Code => nameof(ContinentalShelfArea);
@@ -4127,7 +4127,7 @@ namespace S100Framework.DomainModel.S501 {
             [Required()]
             public List<String> nationalMaritimeAuthority { get; set; }
             public Boolean? inDispute { get; set; } = default;
-            public String agencyResponsibleForProduction { get; set; } = string.Empty;
+            public String? agencyResponsibleForProduction { get; set; } = null;
             public sourceIdentification? sourceIdentification { get; set; }
             public List<information> information { get; set; } = [];
             public Boolean? lineTypeGeodesic { get; set; } = default;
@@ -4150,7 +4150,7 @@ namespace S100Framework.DomainModel.S501 {
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class AdministrationArea : FeatureNode {
-            public String pictorialRepresentation { get; set; } = string.Empty;
+            public String? pictorialRepresentation { get; set; } = null;
             public Boolean? inDispute { get; set; } = default;
 
             [EnumerationValue(1)]
@@ -4179,7 +4179,7 @@ namespace S100Framework.DomainModel.S501 {
             public fixedDateRange? fixedDateRange { get; set; }
             public DateOnly? reportedDate { get; set; } = default;
             public List<information> information { get; set; } = [];
-            public String pictorialRepresentation { get; set; } = string.Empty;
+            public String? pictorialRepresentation { get; set; } = null;
 
             [EnumerationValue(1)]
             [EnumerationValue(2)]
@@ -4207,7 +4207,7 @@ namespace S100Framework.DomainModel.S501 {
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class Dolphin : FeatureNode {
-            public String pictorialRepresentation { get; set; } = string.Empty;
+            public String? pictorialRepresentation { get; set; } = null;
             public Decimal? verticalLength { get; set; } = default;
 
             [EnumerationValue(1)]
@@ -4289,7 +4289,7 @@ namespace S100Framework.DomainModel.S501 {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class RadarRange : FeatureNode {
             public List<information> information { get; set; } = [];
-            public String interoperabilityIdentifier { get; set; } = string.Empty;
+            public String? interoperabilityIdentifier { get; set; } = null;
             public List<featureName> featureName { get; set; } = [];
             public fixedDateRange? fixedDateRange { get; set; }
             public Int32? scaleMinimum { get; set; } = default;
@@ -4349,8 +4349,8 @@ namespace S100Framework.DomainModel.S501 {
             public List<information> information { get; set; } = [];
             public Int32? scaleMinimum { get; set; } = default;
             public Decimal? elevation { get; set; } = default;
-            public String agencyResponsibleForProduction { get; set; } = string.Empty;
-            public String pictorialRepresentation { get; set; } = string.Empty;
+            public String? agencyResponsibleForProduction { get; set; } = null;
+            public String? pictorialRepresentation { get; set; } = null;
             public sourceIdentification? sourceIdentification { get; set; }
             public topmark? topmark { get; set; }
 
@@ -4384,7 +4384,7 @@ namespace S100Framework.DomainModel.S501 {
             public List<colour> colour { get; set; }
             public List<featureName> featureName { get; set; } = [];
             public fixedDateRange? fixedDateRange { get; set; }
-            public String interoperabilityIdentifier { get; set; } = string.Empty;
+            public String? interoperabilityIdentifier { get; set; } = null;
 
             [EnumerationValue(1)]
             [EnumerationValue(2)]
@@ -4426,7 +4426,7 @@ namespace S100Framework.DomainModel.S501 {
             [EnumerationValue(13)]
             [Required()]
             public List<colour> colour { get; set; }
-            public String interoperabilityIdentifier { get; set; } = string.Empty;
+            public String? interoperabilityIdentifier { get; set; } = null;
             public List<information> information { get; set; } = [];
 
             [EnumerationValue(1)]
@@ -4455,7 +4455,7 @@ namespace S100Framework.DomainModel.S501 {
             [EnumerationValue(6)]
             public colourPattern? colourPattern { get; set; } = default;
             public Int32? scaleMinimum { get; set; } = default;
-            public String pictorialRepresentation { get; set; } = string.Empty;
+            public String? pictorialRepresentation { get; set; } = null;
 
             [EnumerationValue(6)]
             [EnumerationValue(7)]
@@ -4483,11 +4483,11 @@ namespace S100Framework.DomainModel.S501 {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class SubmarineTransitLane : FeatureNode {
             public List<featureName> featureName { get; set; } = [];
-            public String interoperabilityIdentifier { get; set; } = string.Empty;
-            public String nationality { get; set; } = string.Empty;
+            public String? interoperabilityIdentifier { get; set; } = null;
+            public String? nationality { get; set; } = null;
             public Int32? bottomVerticalSafetySeparation { get; set; } = default;
             public List<vesselSpeedLimit> vesselSpeedLimit { get; set; } = [];
-            public String controllingAuthority { get; set; } = string.Empty;
+            public String? controllingAuthority { get; set; } = null;
             public List<information> information { get; set; } = [];
 
             [EnumerationValue(1)]
@@ -4515,7 +4515,7 @@ namespace S100Framework.DomainModel.S501 {
             [EnumerationValue(25)]
             [EnumerationValue(27)]
             public List<restriction> restriction { get; set; } = [];
-            public String agencyResponsibleForProduction { get; set; } = string.Empty;
+            public String? agencyResponsibleForProduction { get; set; } = null;
             public Int32? minimumSafeDepth { get; set; } = default;
             public Int32? scaleMinimum { get; set; } = default;
 
@@ -4532,7 +4532,7 @@ namespace S100Framework.DomainModel.S501 {
             public DateOnly? reportedDate { get; set; } = default;
             public sourceIdentification? sourceIdentification { get; set; }
             public List<information> information { get; set; } = [];
-            public String agencyResponsibleForProduction { get; set; } = string.Empty;
+            public String? agencyResponsibleForProduction { get; set; } = null;
             public List<featureName> featureName { get; set; } = [];
 
             [IgnoreDataMember]
@@ -4546,9 +4546,9 @@ namespace S100Framework.DomainModel.S501 {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class AirspaceRestriction : FeatureNode {
             public List<featureName> featureName { get; set; } = [];
-            public String agencyResponsibleForProduction { get; set; } = string.Empty;
+            public String? agencyResponsibleForProduction { get; set; } = null;
             public flightLevel? flightLevel { get; set; }
-            public String controllingAuthority { get; set; } = string.Empty;
+            public String? controllingAuthority { get; set; } = null;
             public altitudeRange? altitudeRange { get; set; }
             public List<information> information { get; set; } = [];
 
@@ -4631,7 +4631,7 @@ namespace S100Framework.DomainModel.S501 {
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class TrafficSeparationSchemeBoundary : FeatureNode {
-            public String interoperabilityIdentifier { get; set; } = string.Empty;
+            public String? interoperabilityIdentifier { get; set; } = null;
 
             [EnumerationValue(1)]
             [EnumerationValue(3)]
@@ -4729,7 +4729,7 @@ namespace S100Framework.DomainModel.S501 {
             [EnumerationValue(2)]
             public heightLengthUnits? heightLengthUnits { get; set; } = default;
             public Int32? scaleMinimum { get; set; } = default;
-            public String controllingAuthority { get; set; } = string.Empty;
+            public String? controllingAuthority { get; set; } = null;
             public Decimal? elevation { get; set; } = default;
 
             [EnumerationValue(3)]
@@ -4747,9 +4747,9 @@ namespace S100Framework.DomainModel.S501 {
             [EnumerationValue(30)]
             [EnumerationValue(44)]
             public verticalDatum? verticalDatum { get; set; } = default;
-            public String agencyResponsibleForProduction { get; set; } = string.Empty;
-            public String pictorialRepresentation { get; set; } = string.Empty;
-            public String iCAOcode { get; set; } = string.Empty;
+            public String? agencyResponsibleForProduction { get; set; } = null;
+            public String? pictorialRepresentation { get; set; } = null;
+            public String? iCAOcode { get; set; } = null;
             public List<information> information { get; set; } = [];
             public List<featureName> featureName { get; set; } = [];
 
@@ -4764,7 +4764,7 @@ namespace S100Framework.DomainModel.S501 {
             [EnumerationValue(14)]
             public List<status> status { get; set; } = [];
             public DateOnly? reportedDate { get; set; } = default;
-            public String interoperabilityIdentifier { get; set; } = string.Empty;
+            public String? interoperabilityIdentifier { get; set; } = null;
 
             [IgnoreDataMember]
             public override string Code => nameof(AirportAirfield);
@@ -4865,7 +4865,7 @@ namespace S100Framework.DomainModel.S501 {
             public List<featureName> featureName { get; set; } = [];
             public Decimal? relativeHorizontalAccuracy { get; set; } = default;
             public sourceIdentification? sourceIdentification { get; set; }
-            public String interoperabilityIdentifier { get; set; } = string.Empty;
+            public String? interoperabilityIdentifier { get; set; } = null;
 
             [EnumerationValue(3)]
             [EnumerationValue(16)]
@@ -4966,9 +4966,9 @@ namespace S100Framework.DomainModel.S501 {
             [Required()]
             public buoyShape buoyShape { get; set; }
             public Decimal? verticalLength { get; set; } = default;
-            public String pictorialRepresentation { get; set; } = string.Empty;
+            public String? pictorialRepresentation { get; set; } = null;
             public Boolean? visitorsMooring { get; set; } = default;
-            public String interoperabilityIdentifier { get; set; } = string.Empty;
+            public String? interoperabilityIdentifier { get; set; } = null;
             public List<information> information { get; set; } = [];
             public fixedDateRange? fixedDateRange { get; set; }
 
@@ -5145,7 +5145,7 @@ namespace S100Framework.DomainModel.S501 {
             [EnumerationValue(521)]
             [EnumerationValue(522)]
             public categoryOfControlledAirspace? categoryOfControlledAirspace { get; set; } = default;
-            public String controllingAuthority { get; set; } = string.Empty;
+            public String? controllingAuthority { get; set; } = null;
             public altitude? altitude { get; set; }
             public sourceIdentification? sourceIdentification { get; set; }
 
@@ -5167,7 +5167,7 @@ namespace S100Framework.DomainModel.S501 {
 
             [EnumerationValue(2)]
             public heightLengthUnits? heightLengthUnits { get; set; } = default;
-            public String agencyResponsibleForProduction { get; set; } = string.Empty;
+            public String? agencyResponsibleForProduction { get; set; } = null;
             public DateOnly? reportedDate { get; set; } = default;
             public flightLevel? flightLevel { get; set; }
 
@@ -5192,7 +5192,7 @@ namespace S100Framework.DomainModel.S501 {
             [EnumerationValue(11)]
             [EnumerationValue(12)]
             public List<natureOfConstruction> natureOfConstruction { get; set; } = [];
-            public String controllingAuthority { get; set; } = string.Empty;
+            public String? controllingAuthority { get; set; } = null;
 
             [EnumerationValue(1)]
             [EnumerationValue(3)]
@@ -5338,7 +5338,7 @@ namespace S100Framework.DomainModel.S501 {
             [EnumerationValue(9)]
             public List<qualityOfVerticalMeasurement> qualityOfVerticalMeasurement { get; set; } = [];
             public detectionDateRange? detectionDateRange { get; set; }
-            public String oprtor { get; set; } = string.Empty;
+            public String? oprtor { get; set; } = null;
 
             [EnumerationValue(3)]
             [EnumerationValue(16)]
@@ -5420,7 +5420,7 @@ namespace S100Framework.DomainModel.S501 {
             public Decimal? horizontalLength { get; set; } = default;
             public List<featureName> featureName { get; set; } = [];
             public sourceIdentification? sourceIdentification { get; set; }
-            public String currentScourDimensions { get; set; } = string.Empty;
+            public String? currentScourDimensions { get; set; } = null;
 
             [EnumerationValue(1)]
             [EnumerationValue(2)]
@@ -5455,7 +5455,7 @@ namespace S100Framework.DomainModel.S501 {
             [EnumerationValue(7)]
             [Required()]
             public waterLevelEffect waterLevelEffect { get; set; }
-            public String nation { get; set; } = string.Empty;
+            public String? nation { get; set; } = null;
             public Decimal? defaultClearanceDepth { get; set; } = default;
             public Boolean? displayUncertainties { get; set; } = default;
 
@@ -5480,7 +5480,7 @@ namespace S100Framework.DomainModel.S501 {
             [EnumerationValue(28)]
             public List<status> status { get; set; } = [];
             public DateOnly? reportedDate { get; set; } = default;
-            public String interoperabilityIdentifier { get; set; } = string.Empty;
+            public String? interoperabilityIdentifier { get; set; } = null;
             public List<vesselSpeedLimit> vesselSpeedLimit { get; set; } = [];
             public List<periodicDateRange> periodicDateRange { get; set; } = [];
             public sourceIdentification? sourceIdentification { get; set; }
@@ -5531,7 +5531,7 @@ namespace S100Framework.DomainModel.S501 {
             [EnumerationValue(2)]
             [EnumerationValue(5)]
             public condition? condition { get; set; } = default;
-            public String interoperabilityIdentifier { get; set; } = string.Empty;
+            public String? interoperabilityIdentifier { get; set; } = null;
             public Decimal? verticalLength { get; set; } = default;
 
             [EnumerationValue(1)]
@@ -5566,7 +5566,7 @@ namespace S100Framework.DomainModel.S501 {
         public partial class NavigationSystem : FeatureNode {
             public sourceIdentification? sourceIdentification { get; set; }
             public List<information> information { get; set; } = [];
-            public String agencyResponsibleForProduction { get; set; } = string.Empty;
+            public String? agencyResponsibleForProduction { get; set; } = null;
 
             [EnumerationValue(1)]
             [EnumerationValue(2)]
@@ -5592,9 +5592,9 @@ namespace S100Framework.DomainModel.S501 {
             [EnumerationValue(510)]
             public categoryOfRadioStation? categoryOfRadioStation { get; set; } = default;
             public DateOnly? reportedDate { get; set; } = default;
-            public String callsign { get; set; } = string.Empty;
+            public String? callsign { get; set; } = null;
             public List<featureName> featureName { get; set; } = [];
-            public String communicationChannel { get; set; } = string.Empty;
+            public String? communicationChannel { get; set; } = null;
             public Int32? signalFrequency { get; set; } = default;
 
             [IgnoreDataMember]
@@ -5634,7 +5634,7 @@ namespace S100Framework.DomainModel.S501 {
             public List<vesselSpeedLimit> vesselSpeedLimit { get; set; } = [];
             public Int32? scaleMinimum { get; set; } = default;
             public sourceIdentification? sourceIdentification { get; set; }
-            public String interoperabilityIdentifier { get; set; } = string.Empty;
+            public String? interoperabilityIdentifier { get; set; } = null;
 
             [EnumerationValue(1)]
             [EnumerationValue(3)]
@@ -5658,7 +5658,7 @@ namespace S100Framework.DomainModel.S501 {
             public List<information> information { get; set; } = [];
             public DateOnly? reportedDate { get; set; } = default;
             public List<vesselSpeedLimit> vesselSpeedLimit { get; set; } = [];
-            public String interoperabilityIdentifier { get; set; } = string.Empty;
+            public String? interoperabilityIdentifier { get; set; } = null;
 
             [EnumerationValue(1)]
             [EnumerationValue(2)]
@@ -5713,8 +5713,8 @@ namespace S100Framework.DomainModel.S501 {
             [EnumerationValue(504)]
             [EnumerationValue(520)]
             public status? status { get; set; } = default;
-            public String interoperabilityIdentifier { get; set; } = string.Empty;
-            public String agencyResponsibleForProduction { get; set; } = string.Empty;
+            public String? interoperabilityIdentifier { get; set; } = null;
+            public String? agencyResponsibleForProduction { get; set; } = null;
             public List<vesselSpeedLimit> vesselSpeedLimit { get; set; } = [];
             public sourceIdentification? sourceIdentification { get; set; }
             public DateOnly? reportedDate { get; set; } = default;
@@ -5771,7 +5771,7 @@ namespace S100Framework.DomainModel.S501 {
             [EnumerationValue(9)]
             [EnumerationValue(11)]
             public marksNavigationalSystemOf? marksNavigationalSystemOf { get; set; } = default;
-            public String pictorialRepresentation { get; set; } = string.Empty;
+            public String? pictorialRepresentation { get; set; } = null;
 
             [EnumerationValue(1)]
             [EnumerationValue(2)]
@@ -5800,7 +5800,7 @@ namespace S100Framework.DomainModel.S501 {
             public List<periodicDateRange> periodicDateRange { get; set; } = [];
             public sourceIdentification? sourceIdentification { get; set; }
             public Boolean? radarConspicuous { get; set; } = default;
-            public String interoperabilityIdentifier { get; set; } = string.Empty;
+            public String? interoperabilityIdentifier { get; set; } = null;
             public List<information> information { get; set; } = [];
 
             [EnumerationValue(1)]
@@ -5879,7 +5879,7 @@ namespace S100Framework.DomainModel.S501 {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class SeparationZoneOrLine : FeatureNode {
             public DateOnly? reportedDate { get; set; } = default;
-            public String interoperabilityIdentifier { get; set; } = string.Empty;
+            public String? interoperabilityIdentifier { get; set; } = null;
 
             [EnumerationValue(1)]
             [EnumerationValue(3)]
@@ -5931,7 +5931,7 @@ namespace S100Framework.DomainModel.S501 {
             public String nationality { get; set; } = string.Empty;
             public List<information> information { get; set; } = [];
             public sourceIdentification? sourceIdentification { get; set; }
-            public String agencyResponsibleForProduction { get; set; } = string.Empty;
+            public String? agencyResponsibleForProduction { get; set; } = null;
             public Int32? scaleMinimum { get; set; } = default;
 
             [IgnoreDataMember]
@@ -5945,7 +5945,7 @@ namespace S100Framework.DomainModel.S501 {
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class SmallBottomObject : FeatureNode {
-            public String agencyResponsibleForProduction { get; set; } = string.Empty;
+            public String? agencyResponsibleForProduction { get; set; } = null;
 
             [EnumerationValue(504)]
             public statusOfSmallBottomObject? statusOfSmallBottomObject { get; set; } = default;
@@ -5972,7 +5972,7 @@ namespace S100Framework.DomainModel.S501 {
             public List<information> information { get; set; } = [];
             public DateOnly? reportedDate { get; set; } = default;
             public List<featureName> featureName { get; set; } = [];
-            public String interoperabilityIdentifier { get; set; } = string.Empty;
+            public String? interoperabilityIdentifier { get; set; } = null;
             public Boolean? inDispute { get; set; } = default;
 
             [Required()]
@@ -6001,8 +6001,8 @@ namespace S100Framework.DomainModel.S501 {
             [EnumerationValue(2)]
             public categoryOfRadarStation? categoryOfRadarStation { get; set; } = default;
             public Decimal? height { get; set; } = default;
-            public String interoperabilityIdentifier { get; set; } = string.Empty;
-            public String callsign { get; set; } = string.Empty;
+            public String? interoperabilityIdentifier { get; set; } = null;
+            public String? callsign { get; set; } = null;
             public List<featureName> featureName { get; set; } = [];
             public Int32? scaleMinimum { get; set; } = default;
             public List<periodicDateRange> periodicDateRange { get; set; } = [];
@@ -6068,7 +6068,7 @@ namespace S100Framework.DomainModel.S501 {
             [EnumerationValue(501)]
             public List<categoryOfRestrictedArea> categoryOfRestrictedArea { get; set; } = [];
             public fixedDateRange? fixedDateRange { get; set; }
-            public String nationality { get; set; } = string.Empty;
+            public String? nationality { get; set; } = null;
 
             [EnumerationValue(1)]
             [EnumerationValue(2)]
@@ -6085,8 +6085,8 @@ namespace S100Framework.DomainModel.S501 {
             public List<information> information { get; set; } = [];
             public List<vesselSpeedLimit> vesselSpeedLimit { get; set; } = [];
             public List<periodicDateRange> periodicDateRange { get; set; } = [];
-            public String interoperabilityIdentifier { get; set; } = string.Empty;
-            public String controllingAuthority { get; set; } = string.Empty;
+            public String? interoperabilityIdentifier { get; set; } = null;
+            public String? controllingAuthority { get; set; } = null;
 
             [EnumerationValue(1)]
             [EnumerationValue(2)]
@@ -6148,14 +6148,14 @@ namespace S100Framework.DomainModel.S501 {
             [EnumerationValue(9)]
             [EnumerationValue(10)]
             public categoryOfCable? categoryOfCable { get; set; } = default;
-            public String interoperabilityIdentifier { get; set; } = string.Empty;
+            public String? interoperabilityIdentifier { get; set; } = null;
 
             [EnumerationValue(1)]
             [EnumerationValue(5)]
             public condition? condition { get; set; } = default;
             public List<information> information { get; set; } = [];
             public Int32? scaleMinimum { get; set; } = default;
-            public String agencyResponsibleForProduction { get; set; } = string.Empty;
+            public String? agencyResponsibleForProduction { get; set; } = null;
             public fixedDateRange? fixedDateRange { get; set; }
 
             [IgnoreDataMember]
@@ -6195,7 +6195,7 @@ namespace S100Framework.DomainModel.S501 {
             public DateOnly? reportedDate { get; set; } = default;
             public Decimal? horizontalLength { get; set; } = default;
             public Boolean? radarConspicuous { get; set; } = default;
-            public String currentScourDimensions { get; set; } = string.Empty;
+            public String? currentScourDimensions { get; set; } = null;
 
             [EnumerationValue(7)]
             [EnumerationValue(13)]
@@ -6209,7 +6209,7 @@ namespace S100Framework.DomainModel.S501 {
             public sonarSignalStrength? sonarSignalStrength { get; set; } = default;
             public List<information> information { get; set; } = [];
             public magneticInformation? magneticInformation { get; set; }
-            public String agencyResponsibleForProduction { get; set; } = string.Empty;
+            public String? agencyResponsibleForProduction { get; set; } = null;
 
             [EnumerationValue(6)]
             [EnumerationValue(7)]
@@ -6232,7 +6232,7 @@ namespace S100Framework.DomainModel.S501 {
             [EnumerationValue(18)]
             public natureOfSurface? natureOfSurface { get; set; } = default;
             public Decimal? orientationValue { get; set; } = default;
-            public String typeOfWreck { get; set; } = string.Empty;
+            public String? typeOfWreck { get; set; } = null;
 
             [EnumerationValue(1)]
             [EnumerationValue(2)]
@@ -6256,7 +6256,7 @@ namespace S100Framework.DomainModel.S501 {
             public verticalUncertainty? verticalUncertainty { get; set; }
             public Decimal? height { get; set; } = default;
             public Int32? scaleMinimum { get; set; } = default;
-            public String debrisField { get; set; } = string.Empty;
+            public String? debrisField { get; set; } = null;
 
             [Required()]
             public List<String> nationality { get; set; }
@@ -6310,7 +6310,7 @@ namespace S100Framework.DomainModel.S501 {
             [EnumerationValue(24)]
             [EnumerationValue(25)]
             public List<product> product { get; set; } = [];
-            public String pictorialRepresentation { get; set; } = string.Empty;
+            public String? pictorialRepresentation { get; set; } = null;
             public Boolean? displayUncertainties { get; set; } = default;
 
             [EnumerationValue(1)]
@@ -6330,7 +6330,7 @@ namespace S100Framework.DomainModel.S501 {
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class QRoute : FeatureNode {
-            public String agencyResponsibleForProduction { get; set; } = string.Empty;
+            public String? agencyResponsibleForProduction { get; set; } = null;
             public List<information> information { get; set; } = [];
             public List<featureName> featureName { get; set; } = [];
 
@@ -6339,7 +6339,7 @@ namespace S100Framework.DomainModel.S501 {
             public List<status> status { get; set; } = [];
             public qRouteChannelWidth? qRouteChannelWidth { get; set; }
             public directionHeading? directionHeading { get; set; }
-            public String nationality { get; set; } = string.Empty;
+            public String? nationality { get; set; } = null;
 
             [IgnoreDataMember]
             public override string Code => nameof(QRoute);
@@ -6351,13 +6351,13 @@ namespace S100Framework.DomainModel.S501 {
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class CompletenessOfProductSpecification : FeatureNode {
-            public String agencyResponsibleForProduction { get; set; } = string.Empty;
+            public String? agencyResponsibleForProduction { get; set; } = null;
 
             [EnumerationValue(501)]
             [EnumerationValue(502)]
             [Required()]
             public categoryOfCompleteness categoryOfCompleteness { get; set; }
-            public String copyrightStatement { get; set; } = string.Empty;
+            public String? copyrightStatement { get; set; } = null;
             public DateOnly? reportedDate { get; set; } = default;
             public sourceIdentification? sourceIdentification { get; set; }
             public List<information> information { get; set; } = [];
@@ -6386,7 +6386,7 @@ namespace S100Framework.DomainModel.S501 {
             public List<String> communicationChannel { get; set; } = [];
             public fixedDateRange? fixedDateRange { get; set; }
             public List<featureName> featureName { get; set; } = [];
-            public String interoperabilityIdentifier { get; set; } = string.Empty;
+            public String? interoperabilityIdentifier { get; set; } = null;
 
             [EnumerationValue(1)]
             [EnumerationValue(2)]
@@ -6465,7 +6465,7 @@ namespace S100Framework.DomainModel.S501 {
             public Decimal? verticalLength { get; set; } = default;
             public Int32? scaleMinimum { get; set; } = default;
             public DateOnly? reportedDate { get; set; } = default;
-            public String interoperabilityIdentifier { get; set; } = string.Empty;
+            public String? interoperabilityIdentifier { get; set; } = null;
 
             [EnumerationValue(1)]
             [EnumerationValue(2)]
@@ -6483,7 +6483,7 @@ namespace S100Framework.DomainModel.S501 {
             [Required()]
             public List<colour> colour { get; set; }
             public Decimal? elevation { get; set; } = default;
-            public String pictorialRepresentation { get; set; } = string.Empty;
+            public String? pictorialRepresentation { get; set; } = null;
 
             [EnumerationValue(1)]
             [EnumerationValue(2)]
@@ -6523,11 +6523,11 @@ namespace S100Framework.DomainModel.S501 {
             [EnumerationValue(2)]
             [EnumerationValue(3)]
             public visualProminence? visualProminence { get; set; } = default;
-            public String interoperabilityIdentifier { get; set; } = string.Empty;
+            public String? interoperabilityIdentifier { get; set; } = null;
             public Int32? scaleMinimum { get; set; } = default;
             public Boolean? radarConspicuous { get; set; } = default;
             public List<featureName> featureName { get; set; } = [];
-            public String pictorialRepresentation { get; set; } = string.Empty;
+            public String? pictorialRepresentation { get; set; } = null;
             public Decimal? horizontalLength { get; set; } = default;
             public List<periodicDateRange> periodicDateRange { get; set; } = [];
 
@@ -6574,7 +6574,7 @@ namespace S100Framework.DomainModel.S501 {
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class FisheryZone : FeatureNode {
-            public String interoperabilityIdentifier { get; set; } = string.Empty;
+            public String? interoperabilityIdentifier { get; set; } = null;
             public String nationality { get; set; } = string.Empty;
 
             [Required()]
@@ -6676,13 +6676,13 @@ namespace S100Framework.DomainModel.S501 {
             [EnumerationValue(9)]
             [EnumerationValue(14)]
             public List<status> status { get; set; } = [];
-            public String interoperabilityIdentifier { get; set; } = string.Empty;
+            public String? interoperabilityIdentifier { get; set; } = null;
             public Int32? scaleMinimum { get; set; } = default;
             public List<featureName> featureName { get; set; } = [];
             public sourceIdentification? sourceIdentification { get; set; }
             public List<periodicDateRange> periodicDateRange { get; set; } = [];
-            public String agencyResponsibleForProduction { get; set; } = string.Empty;
-            public String pictorialRepresentation { get; set; } = string.Empty;
+            public String? agencyResponsibleForProduction { get; set; } = null;
+            public String? pictorialRepresentation { get; set; } = null;
             public DateOnly? reportedDate { get; set; } = default;
 
             [EnumerationValue(1)]
@@ -6744,7 +6744,7 @@ namespace S100Framework.DomainModel.S501 {
             public Boolean? radarConspicuous { get; set; } = default;
             public Int32? scaleMinimum { get; set; } = default;
             public horizontalClearanceFixed? horizontalClearanceFixed { get; set; }
-            public String pictorialRepresentation { get; set; } = string.Empty;
+            public String? pictorialRepresentation { get; set; } = null;
 
             [EnumerationValue(1)]
             [EnumerationValue(2)]
@@ -6839,7 +6839,7 @@ namespace S100Framework.DomainModel.S501 {
             [EnumerationValue(5)]
             public condition? condition { get; set; } = default;
             public Int32? scaleMinimum { get; set; } = default;
-            public String pictorialRepresentation { get; set; } = string.Empty;
+            public String? pictorialRepresentation { get; set; } = null;
             public List<information> information { get; set; } = [];
 
             [IgnoreDataMember]
@@ -6865,7 +6865,7 @@ namespace S100Framework.DomainModel.S501 {
             public Int32? scaleMinimum { get; set; } = default;
             public List<vesselSpeedLimit> vesselSpeedLimit { get; set; } = [];
             public fixedDateRange? fixedDateRange { get; set; }
-            public String interoperabilityIdentifier { get; set; } = string.Empty;
+            public String? interoperabilityIdentifier { get; set; } = null;
 
             [Required()]
             public Decimal depthRangeMinimumValue { get; set; }
@@ -6970,7 +6970,7 @@ namespace S100Framework.DomainModel.S501 {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class DataCoverage : FeatureNode {
             public Int32? drawingIndex { get; set; } = default;
-            public String interoperabilityIdentifier { get; set; } = string.Empty;
+            public String? interoperabilityIdentifier { get; set; } = null;
 
             [EnumerationValue(1)]
             [EnumerationValue(2)]
@@ -6997,7 +6997,7 @@ namespace S100Framework.DomainModel.S501 {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class SeabedArea : FeatureNode {
             public List<information> information { get; set; } = [];
-            public String agencyResponsibleForProduction { get; set; } = string.Empty;
+            public String? agencyResponsibleForProduction { get; set; } = null;
             public Int32? scaleMinimum { get; set; } = default;
 
             [EnumerationValue(3)]
@@ -7106,7 +7106,7 @@ namespace S100Framework.DomainModel.S501 {
             [EnumerationValue(63)]
             [Required()]
             public List<categoryOfSpecialPurposeMark> categoryOfSpecialPurposeMark { get; set; }
-            public String pictorialRepresentation { get; set; } = string.Empty;
+            public String? pictorialRepresentation { get; set; } = null;
 
             [EnumerationValue(1)]
             [EnumerationValue(2)]
@@ -7148,7 +7148,7 @@ namespace S100Framework.DomainModel.S501 {
             [EnumerationValue(11)]
             public List<natureOfConstruction> natureOfConstruction { get; set; } = [];
             public List<fixedDateRange> fixedDateRange { get; set; } = [];
-            public String interoperabilityIdentifier { get; set; } = string.Empty;
+            public String? interoperabilityIdentifier { get; set; } = null;
             public List<periodicDateRange> periodicDateRange { get; set; } = [];
 
             [IgnoreDataMember]
@@ -7209,7 +7209,7 @@ namespace S100Framework.DomainModel.S501 {
 
             [EnumerationValue(1)]
             public heightLengthUnits? heightLengthUnits { get; set; } = default;
-            public String interoperabilityIdentifier { get; set; } = string.Empty;
+            public String? interoperabilityIdentifier { get; set; } = null;
 
             [Required()]
             public List<sectorCharacteristics> sectorCharacteristics { get; set; }
@@ -7364,8 +7364,8 @@ namespace S100Framework.DomainModel.S501 {
             [EnumerationValue(13)]
             [Required()]
             public List<colour> colour { get; set; }
-            public String interoperabilityIdentifier { get; set; } = string.Empty;
-            public String pictorialRepresentation { get; set; } = string.Empty;
+            public String? interoperabilityIdentifier { get; set; } = null;
+            public String? pictorialRepresentation { get; set; } = null;
             public List<information> information { get; set; } = [];
             public List<featureName> featureName { get; set; } = [];
 
@@ -7432,7 +7432,7 @@ namespace S100Framework.DomainModel.S501 {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class TrafficSeparationSchemeRoundabout : FeatureNode {
             public List<vesselSpeedLimit> vesselSpeedLimit { get; set; } = [];
-            public String interoperabilityIdentifier { get; set; } = string.Empty;
+            public String? interoperabilityIdentifier { get; set; } = null;
             public sourceIdentification? sourceIdentification { get; set; }
             public Int32? scaleMinimum { get; set; } = default;
             public List<information> information { get; set; } = [];
@@ -7509,7 +7509,7 @@ namespace S100Framework.DomainModel.S501 {
             public Boolean? imoAdopted { get; set; } = default;
             public List<information> information { get; set; } = [];
             public fixedDateRange? fixedDateRange { get; set; }
-            public String interoperabilityIdentifier { get; set; } = string.Empty;
+            public String? interoperabilityIdentifier { get; set; } = null;
             public Decimal? depthRangeMinimumValue { get; set; } = default;
 
             [Required()]
@@ -7588,8 +7588,8 @@ namespace S100Framework.DomainModel.S501 {
             [EnumerationValue(3)]
             public visualProminence? visualProminence { get; set; } = default;
             public Boolean? radarConspicuous { get; set; } = default;
-            public String interoperabilityIdentifier { get; set; } = string.Empty;
-            public String pictorialRepresentation { get; set; } = string.Empty;
+            public String? interoperabilityIdentifier { get; set; } = null;
+            public String? pictorialRepresentation { get; set; } = null;
             public topmark? topmark { get; set; }
             public List<information> information { get; set; } = [];
             public Int32? scaleMinimum { get; set; } = default;
@@ -7618,7 +7618,7 @@ namespace S100Framework.DomainModel.S501 {
             [EnumerationValue(6)]
             public signalGeneration? signalGeneration { get; set; } = default;
             public Decimal? valueOfNominalRange { get; set; } = default;
-            public String interoperabilityIdentifier { get; set; } = string.Empty;
+            public String? interoperabilityIdentifier { get; set; } = null;
 
             [EnumerationValue(1)]
             [EnumerationValue(2)]
@@ -7745,7 +7745,7 @@ namespace S100Framework.DomainModel.S501 {
             public categoryOfCoastline? categoryOfCoastline { get; set; } = default;
             public Decimal? elevation { get; set; } = default;
             public sourceIdentification? sourceIdentification { get; set; }
-            public String interoperabilityIdentifier { get; set; } = string.Empty;
+            public String? interoperabilityIdentifier { get; set; } = null;
 
             [EnumerationValue(1)]
             [EnumerationValue(2)]
@@ -7766,7 +7766,7 @@ namespace S100Framework.DomainModel.S501 {
             [EnumerationValue(2)]
             [EnumerationValue(3)]
             public visualProminence? visualProminence { get; set; } = default;
-            public String pictorialRepresentation { get; set; } = string.Empty;
+            public String? pictorialRepresentation { get; set; } = null;
             public DateOnly? reportedDate { get; set; } = default;
             public Boolean? radarConspicuous { get; set; } = default;
 
@@ -7932,7 +7932,7 @@ namespace S100Framework.DomainModel.S501 {
             [EnumerationValue(30)]
             [EnumerationValue(44)]
             public verticalDatum? verticalDatum { get; set; } = default;
-            public String pictorialRepresentation { get; set; } = string.Empty;
+            public String? pictorialRepresentation { get; set; } = null;
             public fixedDateRange? fixedDateRange { get; set; }
 
             [EnumerationValue(1)]
@@ -8014,7 +8014,7 @@ namespace S100Framework.DomainModel.S501 {
             [EnumerationValue(504)]
             public status? status { get; set; } = default;
             public Boolean? inDispute { get; set; } = default;
-            public String agencyResponsibleForProduction { get; set; } = string.Empty;
+            public String? agencyResponsibleForProduction { get; set; } = null;
             public Int32? scaleMinimum { get; set; } = default;
 
             [IgnoreDataMember]
@@ -8077,14 +8077,14 @@ namespace S100Framework.DomainModel.S501 {
             [EnumerationValue(12)]
             [EnumerationValue(18)]
             public List<status> status { get; set; } = [];
-            public String pictorialRepresentation { get; set; } = string.Empty;
+            public String? pictorialRepresentation { get; set; } = null;
 
             [EnumerationValue(1)]
             [EnumerationValue(2)]
             [EnumerationValue(9)]
             [EnumerationValue(11)]
             public marksNavigationalSystemOf? marksNavigationalSystemOf { get; set; } = default;
-            public String interoperabilityIdentifier { get; set; } = string.Empty;
+            public String? interoperabilityIdentifier { get; set; } = null;
             public sourceIdentification? sourceIdentification { get; set; }
             public List<periodicDateRange> periodicDateRange { get; set; } = [];
 
@@ -8139,7 +8139,7 @@ namespace S100Framework.DomainModel.S501 {
             [EnumerationValue(7)]
             [EnumerationValue(8)]
             public List<natureOfConstruction> natureOfConstruction { get; set; } = [];
-            public String interoperabilityIdentifier { get; set; } = string.Empty;
+            public String? interoperabilityIdentifier { get; set; } = null;
             public Int32? scaleMinimum { get; set; } = default;
             public Decimal? height { get; set; } = default;
 
@@ -8158,7 +8158,7 @@ namespace S100Framework.DomainModel.S501 {
             [EnumerationValue(6)]
             public colourPattern? colourPattern { get; set; } = default;
             public Boolean? radarConspicuous { get; set; } = default;
-            public String pictorialRepresentation { get; set; } = string.Empty;
+            public String? pictorialRepresentation { get; set; } = null;
 
             [EnumerationValue(1)]
             [EnumerationValue(2)]
