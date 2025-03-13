@@ -1165,6 +1165,7 @@ namespace S100Framework.DomainModel.S122 {
     namespace InformationTypes {
         using ComplexAttributes;
         using DomainModel;
+        using System.Runtime.Serialization;
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -1187,6 +1188,8 @@ namespace S100Framework.DomainModel.S122 {
             [EnumerationValue(14)]
             public sourceType? sourceType { get; set; } = default;
             public DateOnly? reportedDate { get; set; } = default;
+
+            [IgnoreDataMember]
             public override string Code => nameof(InformationType);
 
             public InformationType() {
@@ -1214,6 +1217,8 @@ namespace S100Framework.DomainModel.S122 {
             public categoryOfAuthority? categoryOfAuthority { get; set; } = default;
             public textContent? textContent { get; set; }
             public List<rxNCode> rxNCode { get; set; } = [];
+
+            [IgnoreDataMember]
             public override string Code => nameof(AbstractRxN);
 
             public AbstractRxN() {
@@ -1223,6 +1228,7 @@ namespace S100Framework.DomainModel.S122 {
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class NauticalInformation : AbstractRxN {
+            [IgnoreDataMember]
             public override string Code => nameof(NauticalInformation);
 
             public NauticalInformation() {
@@ -1232,6 +1238,7 @@ namespace S100Framework.DomainModel.S122 {
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class Regulations : AbstractRxN {
+            [IgnoreDataMember]
             public override string Code => nameof(Regulations);
 
             public Regulations() {
@@ -1241,6 +1248,7 @@ namespace S100Framework.DomainModel.S122 {
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class Restrictions : AbstractRxN {
+            [IgnoreDataMember]
             public override string Code => nameof(Restrictions);
 
             public Restrictions() {
@@ -1250,6 +1258,7 @@ namespace S100Framework.DomainModel.S122 {
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class Recommendations : AbstractRxN {
+            [IgnoreDataMember]
             public override string Code => nameof(Recommendations);
 
             public Recommendations() {
@@ -1277,6 +1286,8 @@ namespace S100Framework.DomainModel.S122 {
             [Required()]
             public categoryOfAuthority categoryOfAuthority { get; set; }
             public List<textContent> textContent { get; set; } = [];
+
+            [IgnoreDataMember]
             public override string Code => nameof(Authority);
 
             public Authority() {
@@ -1303,6 +1314,8 @@ namespace S100Framework.DomainModel.S122 {
             public List<onlineResource> onlineResource { get; set; } = [];
             public List<telecommunications> telecommunications { get; set; } = [];
             public List<information> information { get; set; } = [];
+
+            [IgnoreDataMember]
             public override string Code => nameof(ContactDetails);
 
             public ContactDetails() {
@@ -1315,6 +1328,8 @@ namespace S100Framework.DomainModel.S122 {
             public List<DateOnly> dateFixed { get; set; } = [];
             public List<String> dateVariable { get; set; } = [];
             public List<information> information { get; set; } = [];
+
+            [IgnoreDataMember]
             public override string Code => nameof(NonStandardWorkingDay);
 
             public NonStandardWorkingDay() {
@@ -1329,6 +1344,8 @@ namespace S100Framework.DomainModel.S122 {
 
             [Required()]
             public information information { get; set; }
+
+            [IgnoreDataMember]
             public override string Code => nameof(ServiceHours);
 
             public ServiceHours() {
@@ -1408,6 +1425,8 @@ namespace S100Framework.DomainModel.S122 {
             public String vesselPerformance { get; set; } = string.Empty;
             public List<information> information { get; set; } = [];
             public List<vesselsMeasurements> vesselsMeasurements { get; set; } = [];
+
+            [IgnoreDataMember]
             public override string Code => nameof(Applicability);
 
             public Applicability() {
@@ -1419,6 +1438,7 @@ namespace S100Framework.DomainModel.S122 {
         using ComplexAttributes;
         using InformationTypes;
         using DomainModel;
+        using System.Runtime.Serialization;
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -1442,6 +1462,8 @@ namespace S100Framework.DomainModel.S122 {
             [EnumerationValue(14)]
             public sourceType? sourceType { get; set; } = default;
             public DateOnly? reportedDate { get; set; } = default;
+
+            [IgnoreDataMember]
             public override string Code => nameof(FeatureType);
 
             public FeatureType() {
@@ -1566,6 +1588,8 @@ namespace S100Framework.DomainModel.S122 {
             [EnumerationValue(42)]
             [EnumerationValue(43)]
             public List<status> status { get; set; } = [];
+
+            [IgnoreDataMember]
             public override string Code => nameof(RestrictedArea);
 
             public RestrictedArea() {
@@ -1706,6 +1730,8 @@ namespace S100Framework.DomainModel.S122 {
             [EnumerationValue(43)]
             public List<status> status { get; set; } = [];
             public List<designation> designation { get; set; } = [];
+
+            [IgnoreDataMember]
             public override string Code => nameof(MarineProtectedArea);
 
             public MarineProtectedArea() {
@@ -1725,6 +1751,8 @@ namespace S100Framework.DomainModel.S122 {
             [EnumerationValue(5)]
             [Required()]
             public categoryOfVesselTrafficService categoryOfVesselTrafficService { get; set; }
+
+            [IgnoreDataMember]
             public override string Code => nameof(VesselTrafficServiceArea);
 
             public VesselTrafficServiceArea() {
@@ -1734,6 +1762,7 @@ namespace S100Framework.DomainModel.S122 {
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class DataCoverage : FeatureNode {
+            [IgnoreDataMember]
             public override string Code => nameof(DataCoverage);
 
             public DataCoverage() {
@@ -1743,6 +1772,7 @@ namespace S100Framework.DomainModel.S122 {
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class TextPlacement : FeatureNode {
+            [IgnoreDataMember]
             public override string Code => nameof(TextPlacement);
 
             public TextPlacement() {

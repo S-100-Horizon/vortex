@@ -436,6 +436,7 @@ namespace S100Framework.DomainModel.S124 {
     namespace InformationTypes {
         using ComplexAttributes;
         using DomainModel;
+        using System.Runtime.Serialization;
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -459,6 +460,8 @@ namespace S100Framework.DomainModel.S124 {
 
             [Required()]
             public DateTime publicationTime { get; set; }
+
+            [IgnoreDataMember]
             public override string Code => nameof(NAVWARNPreamble);
 
             public NAVWARNPreamble() {
@@ -487,6 +490,8 @@ namespace S100Framework.DomainModel.S124 {
 
             [Required()]
             public referenceCategory referenceCategory { get; set; }
+
+            [IgnoreDataMember]
             public override string Code => nameof(References);
 
             public References() {
@@ -498,6 +503,7 @@ namespace S100Framework.DomainModel.S124 {
         using ComplexAttributes;
         using InformationTypes;
         using DomainModel;
+        using System.Runtime.Serialization;
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -515,6 +521,8 @@ namespace S100Framework.DomainModel.S124 {
             [EnumerationValue(25)]
             [EnumerationValue(27)]
             public restriction? restriction { get; set; } = default;
+
+            [IgnoreDataMember]
             public override string Code => nameof(NAVWARNPart);
 
             public NAVWARNPart() {
@@ -527,6 +535,7 @@ namespace S100Framework.DomainModel.S124 {
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class NAVWARNAreaAffected : FeatureNode {
+            [IgnoreDataMember]
             public override string Code => nameof(NAVWARNAreaAffected);
 
             public NAVWARNAreaAffected() {
@@ -549,6 +558,8 @@ namespace S100Framework.DomainModel.S124 {
             [EnumerationValue(2)]
             public textType? textType { get; set; } = default;
             public Int32? scaleMinimum { get; set; } = default;
+
+            [IgnoreDataMember]
             public override string Code => nameof(TextPlacement);
 
             public TextPlacement() {

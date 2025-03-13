@@ -1694,6 +1694,7 @@ namespace S100Framework.DomainModel.S131 {
     namespace InformationTypes {
         using ComplexAttributes;
         using DomainModel;
+        using System.Runtime.Serialization;
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -1716,6 +1717,8 @@ namespace S100Framework.DomainModel.S131 {
             [EnumerationValue(14)]
             public sourceType? sourceType { get; set; } = default;
             public DateOnly? reportedDate { get; set; } = default;
+
+            [IgnoreDataMember]
             public override string Code => nameof(InformationType);
 
             public InformationType() {
@@ -1743,6 +1746,8 @@ namespace S100Framework.DomainModel.S131 {
             public categoryOfAuthority? categoryOfAuthority { get; set; } = default;
             public List<rxNCode> rxNCode { get; set; } = [];
             public List<textContent> textContent { get; set; } = [];
+
+            [IgnoreDataMember]
             public override string Code => nameof(AbstractRxN);
 
             public AbstractRxN() {
@@ -1820,6 +1825,8 @@ namespace S100Framework.DomainModel.S131 {
             public String vesselPerformance { get; set; } = string.Empty;
             public List<information> information { get; set; } = [];
             public List<vesselsMeasurements> vesselsMeasurements { get; set; } = [];
+
+            [IgnoreDataMember]
             public override string Code => nameof(Applicability);
 
             public Applicability() {
@@ -1847,6 +1854,8 @@ namespace S100Framework.DomainModel.S131 {
             [Required()]
             public categoryOfAuthority categoryOfAuthority { get; set; }
             public textContent? textContent { get; set; }
+
+            [IgnoreDataMember]
             public override string Code => nameof(Authority);
 
             public Authority() {
@@ -1966,6 +1975,8 @@ namespace S100Framework.DomainModel.S131 {
             public List<supplyService> supplyService { get; set; } = [];
             public String tugInformation { get; set; } = string.Empty;
             public List<textContent> textContent { get; set; } = [];
+
+            [IgnoreDataMember]
             public override string Code => nameof(AvailablePortServices);
 
             public AvailablePortServices() {
@@ -1992,6 +2003,8 @@ namespace S100Framework.DomainModel.S131 {
             public String mMSICode { get; set; } = string.Empty;
             public List<onlineResource> onlineResource { get; set; } = [];
             public List<telecommunications> telecommunications { get; set; } = [];
+
+            [IgnoreDataMember]
             public override string Code => nameof(ContactDetails);
 
             public ContactDetails() {
@@ -2011,6 +2024,8 @@ namespace S100Framework.DomainModel.S131 {
             public List<majorLightDescription> majorLightDescription { get; set; } = [];
             public List<usefulMarkDescription> usefulMarkDescription { get; set; } = [];
             public List<textContent> textContent { get; set; } = [];
+
+            [IgnoreDataMember]
             public override string Code => nameof(Entrance);
 
             public Entrance() {
@@ -2020,6 +2035,7 @@ namespace S100Framework.DomainModel.S131 {
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class NauticalInformation : AbstractRxN {
+            [IgnoreDataMember]
             public override string Code => nameof(NauticalInformation);
 
             public NauticalInformation() {
@@ -2032,6 +2048,8 @@ namespace S100Framework.DomainModel.S131 {
             public List<DateOnly> dateFixed { get; set; } = [];
             public List<String> dateVariable { get; set; } = [];
             public List<information> information { get; set; } = [];
+
+            [IgnoreDataMember]
             public override string Code => nameof(NonStandardWorkingDay);
 
             public NonStandardWorkingDay() {
@@ -2041,6 +2059,7 @@ namespace S100Framework.DomainModel.S131 {
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class Recommendations : AbstractRxN {
+            [IgnoreDataMember]
             public override string Code => nameof(Recommendations);
 
             public Recommendations() {
@@ -2050,6 +2069,7 @@ namespace S100Framework.DomainModel.S131 {
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class Regulations : AbstractRxN {
+            [IgnoreDataMember]
             public override string Code => nameof(Regulations);
 
             public Regulations() {
@@ -2059,6 +2079,7 @@ namespace S100Framework.DomainModel.S131 {
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class Restrictions : AbstractRxN {
+            [IgnoreDataMember]
             public override string Code => nameof(Restrictions);
 
             public Restrictions() {
@@ -2071,6 +2092,8 @@ namespace S100Framework.DomainModel.S131 {
             [Required()]
             public List<scheduleByDayOfWeek> scheduleByDayOfWeek { get; set; }
             public List<information> information { get; set; } = [];
+
+            [IgnoreDataMember]
             public override string Code => nameof(ServiceHours);
 
             public ServiceHours() {
@@ -2094,6 +2117,8 @@ namespace S100Framework.DomainModel.S131 {
             [EnumerationValue(11)]
             public qualityOfHorizontalMeasurement? qualityOfHorizontalMeasurement { get; set; } = default;
             public List<spatialAccuracy> spatialAccuracy { get; set; } = [];
+
+            [IgnoreDataMember]
             public override string Code => nameof(SpatialQuality);
 
             public SpatialQuality() {
@@ -2105,6 +2130,7 @@ namespace S100Framework.DomainModel.S131 {
         using ComplexAttributes;
         using InformationTypes;
         using DomainModel;
+        using System.Runtime.Serialization;
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -2131,6 +2157,8 @@ namespace S100Framework.DomainModel.S131 {
             public sourceType? sourceType { get; set; } = default;
             public DateOnly? reportedDate { get; set; } = default;
             public List<textContent> textContent { get; set; } = [];
+
+            [IgnoreDataMember]
             public override string Code => nameof(FeatureType);
 
             public FeatureType() {
@@ -2140,6 +2168,7 @@ namespace S100Framework.DomainModel.S131 {
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public abstract partial class OrganizationContactArea : FeatureType {
+            [IgnoreDataMember]
             public override string Code => nameof(OrganizationContactArea);
 
             public OrganizationContactArea() {
@@ -2149,6 +2178,7 @@ namespace S100Framework.DomainModel.S131 {
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public abstract partial class SupervisedArea : OrganizationContactArea {
+            [IgnoreDataMember]
             public override string Code => nameof(SupervisedArea);
 
             public SupervisedArea() {
@@ -2159,6 +2189,8 @@ namespace S100Framework.DomainModel.S131 {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public abstract partial class HarbourPhysicalInfrastructure : SupervisedArea {
             public Decimal? verticalClearanceValue { get; set; } = default;
+
+            [IgnoreDataMember]
             public override string Code => nameof(HarbourPhysicalInfrastructure);
 
             public HarbourPhysicalInfrastructure() {
@@ -2168,6 +2200,7 @@ namespace S100Framework.DomainModel.S131 {
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public abstract partial class Layout : SupervisedArea {
+            [IgnoreDataMember]
             public override string Code => nameof(Layout);
 
             public Layout() {
@@ -2177,6 +2210,7 @@ namespace S100Framework.DomainModel.S131 {
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class AnchorBerth : Layout {
+            [IgnoreDataMember]
             public override string Code => nameof(AnchorBerth);
 
             public AnchorBerth() {
@@ -2194,6 +2228,8 @@ namespace S100Framework.DomainModel.S131 {
             [EnumerationValue(2)]
             [EnumerationValue(3)]
             public iSPSLevel? iSPSLevel { get; set; } = default;
+
+            [IgnoreDataMember]
             public override string Code => nameof(AnchorageArea);
 
             public AnchorageArea() {
@@ -2236,6 +2272,8 @@ namespace S100Framework.DomainModel.S131 {
             public methodOfSecuring? methodOfSecuring { get; set; } = default;
             public String uNLocationCode { get; set; } = string.Empty;
             public String terminalIdentifier { get; set; } = string.Empty;
+
+            [IgnoreDataMember]
             public override string Code => nameof(Berth);
 
             public Berth() {
@@ -2255,6 +2293,8 @@ namespace S100Framework.DomainModel.S131 {
             public List<String> manifoldNumber { get; set; } = [];
             public String rampNumber { get; set; } = string.Empty;
             public String locationByText { get; set; } = string.Empty;
+
+            [IgnoreDataMember]
             public override string Code => nameof(BerthPosition);
 
             public BerthPosition() {
@@ -2272,6 +2312,8 @@ namespace S100Framework.DomainModel.S131 {
             [EnumerationValue(2)]
             [EnumerationValue(3)]
             public iSPSLevel? iSPSLevel { get; set; } = default;
+
+            [IgnoreDataMember]
             public override string Code => nameof(DockArea);
 
             public DockArea() {
@@ -2282,6 +2324,8 @@ namespace S100Framework.DomainModel.S131 {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class DryDock : HarbourPhysicalInfrastructure {
             public Decimal? sillDepth { get; set; } = default;
+
+            [IgnoreDataMember]
             public override string Code => nameof(DryDock);
 
             public DryDock() {
@@ -2299,6 +2343,8 @@ namespace S100Framework.DomainModel.S131 {
             [EnumerationValue(2)]
             [EnumerationValue(3)]
             public iSPSLevel? iSPSLevel { get; set; } = default;
+
+            [IgnoreDataMember]
             public override string Code => nameof(DumpingGround);
 
             public DumpingGround() {
@@ -2309,6 +2355,8 @@ namespace S100Framework.DomainModel.S131 {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class FloatingDock : HarbourPhysicalInfrastructure {
             public Decimal? sillDepth { get; set; } = default;
+
+            [IgnoreDataMember]
             public override string Code => nameof(FloatingDock);
 
             public FloatingDock() {
@@ -2319,6 +2367,8 @@ namespace S100Framework.DomainModel.S131 {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class Gridiron : HarbourPhysicalInfrastructure {
             public Decimal? sillDepth { get; set; } = default;
+
+            [IgnoreDataMember]
             public override string Code => nameof(Gridiron);
 
             public Gridiron() {
@@ -2353,6 +2403,8 @@ namespace S100Framework.DomainModel.S131 {
             [EnumerationValue(15)]
             public List<categoryOfHarbourFacility> categoryOfHarbourFacility { get; set; } = [];
             public generalHarbourInformation? generalHarbourInformation { get; set; }
+
+            [IgnoreDataMember]
             public override string Code => nameof(HarbourAreaAdministrative);
 
             public HarbourAreaAdministrative() {
@@ -2385,6 +2437,8 @@ namespace S100Framework.DomainModel.S131 {
             [EnumerationValue(3)]
             public iSPSLevel? iSPSLevel { get; set; } = default;
             public facilitiesLayoutDescription? facilitiesLayoutDescription { get; set; }
+
+            [IgnoreDataMember]
             public override string Code => nameof(HarbourAreaSection);
 
             public HarbourAreaSection() {
@@ -2402,6 +2456,8 @@ namespace S100Framework.DomainModel.S131 {
             [EnumerationValue(2)]
             [EnumerationValue(3)]
             public iSPSLevel? iSPSLevel { get; set; } = default;
+
+            [IgnoreDataMember]
             public override string Code => nameof(HarbourBasin);
 
             public HarbourBasin() {
@@ -2415,6 +2471,8 @@ namespace S100Framework.DomainModel.S131 {
             [EnumerationValue(13)]
             [Required()]
             public List<categoryOfHarbourFacility> categoryOfHarbourFacility { get; set; }
+
+            [IgnoreDataMember]
             public override string Code => nameof(HarbourFacility);
 
             public HarbourFacility() {
@@ -2438,6 +2496,8 @@ namespace S100Framework.DomainModel.S131 {
             public String bollardDescription { get; set; } = string.Empty;
             public Decimal? bollardPull { get; set; } = default;
             public Boolean? heavingLinesFromShore { get; set; } = default;
+
+            [IgnoreDataMember]
             public override string Code => nameof(MooringWarpingFacility);
 
             public MooringWarpingFacility() {
@@ -2454,6 +2514,8 @@ namespace S100Framework.DomainModel.S131 {
             public List<offshoreMarkDescription> offshoreMarkDescription { get; set; } = [];
             public List<majorLightDescription> majorLightDescription { get; set; } = [];
             public List<usefulMarkDescription> usefulMarkDescription { get; set; } = [];
+
+            [IgnoreDataMember]
             public override string Code => nameof(OuterLimit);
 
             public OuterLimit() {
@@ -2471,6 +2533,8 @@ namespace S100Framework.DomainModel.S131 {
             [EnumerationValue(2)]
             [EnumerationValue(3)]
             public iSPSLevel? iSPSLevel { get; set; } = default;
+
+            [IgnoreDataMember]
             public override string Code => nameof(PilotBoardingPlace);
 
             public PilotBoardingPlace() {
@@ -2488,6 +2552,8 @@ namespace S100Framework.DomainModel.S131 {
             [EnumerationValue(2)]
             [EnumerationValue(3)]
             public iSPSLevel? iSPSLevel { get; set; } = default;
+
+            [IgnoreDataMember]
             public override string Code => nameof(SeaplaneLandingArea);
 
             public SeaplaneLandingArea() {
@@ -2545,6 +2611,8 @@ namespace S100Framework.DomainModel.S131 {
             public String terminalIdentifier { get; set; } = string.Empty;
             public String sMDGTerminalCode { get; set; } = string.Empty;
             public String uNLocationCode { get; set; } = string.Empty;
+
+            [IgnoreDataMember]
             public override string Code => nameof(Terminal);
 
             public Terminal() {
@@ -2562,6 +2630,8 @@ namespace S100Framework.DomainModel.S131 {
             [EnumerationValue(2)]
             [EnumerationValue(3)]
             public iSPSLevel? iSPSLevel { get; set; } = default;
+
+            [IgnoreDataMember]
             public override string Code => nameof(TurningBasin);
 
             public TurningBasin() {
@@ -2582,6 +2652,8 @@ namespace S100Framework.DomainModel.S131 {
             public depthsDescription? depthsDescription { get; set; }
             public String locationByText { get; set; } = string.Empty;
             public markedBy? markedBy { get; set; }
+
+            [IgnoreDataMember]
             public override string Code => nameof(WaterwayArea);
 
             public WaterwayArea() {
@@ -2596,6 +2668,8 @@ namespace S100Framework.DomainModel.S131 {
 
             [Required()]
             public Int32 minimumDisplayScale { get; set; }
+
+            [IgnoreDataMember]
             public override string Code => nameof(DataCoverage);
 
             public DataCoverage() {
@@ -2620,6 +2694,8 @@ namespace S100Framework.DomainModel.S131 {
             public surveyDateRange? surveyDateRange { get; set; }
             public verticalUncertainty? verticalUncertainty { get; set; }
             public List<information> information { get; set; } = [];
+
+            [IgnoreDataMember]
             public override string Code => nameof(QualityOfNonBathymetricData);
 
             public QualityOfNonBathymetricData() {
@@ -2659,6 +2735,8 @@ namespace S100Framework.DomainModel.S131 {
             [Required()]
             public verticalDatum verticalDatum { get; set; }
             public List<information> information { get; set; } = [];
+
+            [IgnoreDataMember]
             public override string Code => nameof(SoundingDatum);
 
             public SoundingDatum() {
@@ -2685,6 +2763,8 @@ namespace S100Framework.DomainModel.S131 {
             [Required()]
             public verticalDatum verticalDatum { get; set; }
             public List<information> information { get; set; } = [];
+
+            [IgnoreDataMember]
             public override string Code => nameof(VerticalDatumOfData);
 
             public VerticalDatumOfData() {
@@ -2704,6 +2784,8 @@ namespace S100Framework.DomainModel.S131 {
             [EnumerationValue(1)]
             public textType? textType { get; set; } = default;
             public Int32? scaleMinimum { get; set; } = default;
+
+            [IgnoreDataMember]
             public override string Code => nameof(TextPlacement);
 
             public TextPlacement() {

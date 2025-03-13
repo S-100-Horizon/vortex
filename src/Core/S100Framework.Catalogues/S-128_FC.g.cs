@@ -928,6 +928,7 @@ namespace S100Framework.DomainModel.S128 {
     namespace InformationTypes {
         using ComplexAttributes;
         using DomainModel;
+        using System.Runtime.Serialization;
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -936,6 +937,8 @@ namespace S100Framework.DomainModel.S128 {
             public Int32 catalogueSectionNumber { get; set; }
             public String catalogueSectionTitle { get; set; } = string.Empty;
             public information? information { get; set; }
+
+            [IgnoreDataMember]
             public override string Code => nameof(CatalogueSectionHeader);
 
             public CatalogueSectionHeader() {
@@ -951,6 +954,8 @@ namespace S100Framework.DomainModel.S128 {
             public List<onlineResource> onlineResource { get; set; } = [];
             public List<telecommunications> telecommunications { get; set; } = [];
             public List<sourceIndication> sourceIndication { get; set; } = [];
+
+            [IgnoreDataMember]
             public override string Code => nameof(ContactDetails);
 
             public ContactDetails() {
@@ -964,6 +969,8 @@ namespace S100Framework.DomainModel.S128 {
             public String domesticCarriageRequirements { get; set; } = string.Empty;
             public String internationalCarriageRequirements { get; set; } = string.Empty;
             public List<featureName> featureName { get; set; } = [];
+
+            [IgnoreDataMember]
             public override string Code => nameof(IndicationOfCarriageRequirement);
 
             public IndicationOfCarriageRequirement() {
@@ -977,6 +984,8 @@ namespace S100Framework.DomainModel.S128 {
             public List<onlineResource> onlineResource { get; set; } = [];
             public List<pricing> pricing { get; set; } = [];
             public List<sourceIndication> sourceIndication { get; set; } = [];
+
+            [IgnoreDataMember]
             public override string Code => nameof(PriceInformation);
 
             public PriceInformation() {
@@ -988,6 +997,8 @@ namespace S100Framework.DomainModel.S128 {
         public partial class ProducerInformation : InformationNode {
             public String agencyResponsibleForProduction { get; set; } = string.Empty;
             public String agencyName { get; set; } = string.Empty;
+
+            [IgnoreDataMember]
             public override string Code => nameof(ProducerInformation);
 
             public ProducerInformation() {
@@ -999,6 +1010,8 @@ namespace S100Framework.DomainModel.S128 {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class DistributorInformation : InformationNode {
             public String distributorName { get; set; } = string.Empty;
+
+            [IgnoreDataMember]
             public override string Code => nameof(DistributorInformation);
 
             public DistributorInformation() {
@@ -1011,6 +1024,7 @@ namespace S100Framework.DomainModel.S128 {
         using ComplexAttributes;
         using InformationTypes;
         using DomainModel;
+        using System.Runtime.Serialization;
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -1031,6 +1045,8 @@ namespace S100Framework.DomainModel.S128 {
             public sourceIndication? sourceIndication { get; set; }
             public List<supportFile> supportFile { get; set; } = [];
             public timeIntervalOfProduct? timeIntervalOfProduct { get; set; }
+
+            [IgnoreDataMember]
             public override string Code => nameof(CatalogueElement);
 
             public CatalogueElement() {
@@ -1117,6 +1133,8 @@ namespace S100Framework.DomainModel.S128 {
             [EnumerationValue(44)]
             [EnumerationValue(45)]
             public verticalDatum? verticalDatum { get; set; } = default;
+
+            [IgnoreDataMember]
             public override string Code => nameof(NavigationalProduct);
 
             public NavigationalProduct() {
@@ -1148,6 +1166,8 @@ namespace S100Framework.DomainModel.S128 {
             [Required()]
             public typeOfProductFormat typeOfProductFormat { get; set; }
             public productSpecification? productSpecification { get; set; }
+
+            [IgnoreDataMember]
             public override string Code => nameof(ElectronicProduct);
 
             public ElectronicProduct() {
@@ -1164,6 +1184,8 @@ namespace S100Framework.DomainModel.S128 {
             public String typeOfPaper { get; set; } = string.Empty;
             public printInformation? printInformation { get; set; }
             public referenceToNM? referenceToNM { get; set; }
+
+            [IgnoreDataMember]
             public override string Code => nameof(PhysicalProduct);
 
             public PhysicalProduct() {
@@ -1198,6 +1220,8 @@ namespace S100Framework.DomainModel.S128 {
             public typeOfProductFormat typeOfProductFormat { get; set; }
             public serviceSpecification? serviceSpecification { get; set; }
             public productSpecification? productSpecification { get; set; }
+
+            [IgnoreDataMember]
             public override string Code => nameof(S100Service);
 
             public S100Service() {
