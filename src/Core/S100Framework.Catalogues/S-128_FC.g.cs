@@ -7,6 +7,7 @@ namespace S100Framework.DomainModel.S128 {
     public static class Information {
         public static Version Version => new Version("2.0.0");
         public static string[] ComplexTypes => ["contactAddress", "customPaperSize", "defaultLocale", "featureName", "information", "onlineResource", "periodicDateRange", "pricing", "printSize", "productSpecification", "supportFileSpecification", "serviceSpecification", "sourceIndication", "telecommunications", "timeIntervalOfCycle", "weekOfYear", "issuanceCycle", "printInformation", "supportFile", "timeIntervalOfProduct", "referenceToNM",];
+        public static string[] SpatialAssociationTypes => [];
         public static string[] InformationAssociationTypes => ["CarriageRequirement", "DistributionDetails", "DistributorContact", "PriceOfElement", "PriceOfNauticalProduct", "ProducerContact", "ProductionDetails", "ProductPackage",];
         public static string[] FeatureAssociationTypes => ["ProductMapping", "Correlated",];
         public static string[] InformationTypes => ["CatalogueSectionHeader", "ContactDetails", "IndicationOfCarriageRequirement", "PriceInformation", "ProducerInformation", "DistributorInformation",];
@@ -914,11 +915,90 @@ namespace S100Framework.DomainModel.S128 {
     }
 
     namespace Associations {
+        namespace SpatialAssociations {
+        }
+
         namespace InformationAssociations {
+            [System.Serializable()]
+            [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+            public partial class CarriageRequirement {
+                public CarriageRequirement() {
+                }
+            }
+
+            [System.Serializable()]
+            [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+            public partial class DistributionDetails {
+                public DistributionDetails() {
+                }
+            }
+
+            [System.Serializable()]
+            [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+            public partial class DistributorContact {
+                public DistributorContact() {
+                }
+            }
+
+            [System.Serializable()]
+            [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+            public partial class PriceOfElement {
+                public PriceOfElement() {
+                }
+            }
+
+            [System.Serializable()]
+            [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+            public partial class PriceOfNauticalProduct {
+                public PriceOfNauticalProduct() {
+                }
+            }
+
+            [System.Serializable()]
+            [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+            public partial class ProducerContact {
+                public ProducerContact() {
+                }
+            }
+
+            [System.Serializable()]
+            [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+            public partial class ProductionDetails {
+                public ProductionDetails() {
+                }
+            }
+
+            [System.Serializable()]
+            [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+            public partial class ProductPackage {
+                public ProductPackage() {
+                }
+            }
         }
 
         namespace FeatureAssociations {
             using S100Framework.DomainModel.S128.FeatureTypes;
+
+            [System.Serializable()]
+            [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+            public partial class ProductMappingAssociation : FeatureAssociation {
+                [EnumerationValue(1)]
+                [EnumerationValue(2)]
+                [EnumerationValue(3)]
+                [EnumerationValue(4)]
+                [Required()]
+                public categoryOfProductMapping categoryOfProductMapping { get; set; }
+
+                public ProductMappingAssociation() {
+                }
+            }
+
+            [System.Serializable()]
+            [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+            public partial class CorrelatedAssociation : FeatureAssociation {
+                public CorrelatedAssociation() {
+                }
+            }
         }
     }
 
@@ -1049,6 +1129,36 @@ namespace S100Framework.DomainModel.S128 {
             [IgnoreDataMember]
             public override string Code => nameof(CatalogueElement);
 
+            public class ProductMappingAssociation : Associations.FeatureAssociations.ProductMappingAssociation {
+                public ProductMappingAssociation AddCatalogueElement(string id) {
+                    this.RefIds = [..this.RefIds, new RefId
+                    {
+                        Role = "theReference",
+                        Type = "CatalogueElement",
+                        Value = id,
+                    }
+
+                    ];
+                    return this;
+                }
+            }
+
+            public static ProductMappingAssociation CreateProductMapping_theReference(string id) {
+                return new ProductMappingAssociation
+                {
+                    Code = "ProductMapping",
+                    AssociationConnectorTypeName = "CatalogueElement",
+                    RefIds = [new RefId
+                    {
+                        Role = "theSource",
+                        Type = "CatalogueElement",
+                        Value = id,
+                    }
+
+                    ]
+                };
+            }
+
             public CatalogueElement() {
                 catalogueElementClassification = new();
             }
@@ -1136,6 +1246,36 @@ namespace S100Framework.DomainModel.S128 {
 
             [IgnoreDataMember]
             public override string Code => nameof(NavigationalProduct);
+
+            public class CorrelatedAssociation : Associations.FeatureAssociations.CorrelatedAssociation {
+                public CorrelatedAssociation AddNavigationalProduct(string id) {
+                    this.RefIds = [..this.RefIds, new RefId
+                    {
+                        Role = "main",
+                        Type = "NavigationalProduct",
+                        Value = id,
+                    }
+
+                    ];
+                    return this;
+                }
+            }
+
+            public static CorrelatedAssociation CreateCorrelated_main(string id) {
+                return new CorrelatedAssociation
+                {
+                    Code = "Correlated",
+                    AssociationConnectorTypeName = "NavigationalProduct",
+                    RefIds = [new RefId
+                    {
+                        Role = "panel",
+                        Type = "NavigationalProduct",
+                        Value = id,
+                    }
+
+                    ]
+                };
+            }
 
             public NavigationalProduct() {
             }

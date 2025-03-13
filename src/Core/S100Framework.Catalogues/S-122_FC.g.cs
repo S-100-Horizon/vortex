@@ -7,6 +7,7 @@ namespace S100Framework.DomainModel.S122 {
     public static class Information {
         public static Version Version => new Version("1.2.1");
         public static string[] ComplexTypes => ["contactAddress", "featureName", "fixedDateRange", "frequencyPair", "information", "onlineResource", "orientation", "periodicDateRange", "rxNCode", "sectorLimitOne", "sectorLimitTwo", "textContent", "timeIntervalsByDayOfWeek", "vesselsMeasurements", "designation", "bearingInformation", "graphic", "scheduleByDayOfWeek", "sectorLimit", "telecommunications",];
+        public static string[] SpatialAssociationTypes => [];
         public static string[] InformationAssociationTypes => ["AssociatedRxN", "ExceptionalWorkday", "ProtectedAreaAuthority", "ServiceControl", "RelatedOrganisation", "PermissionType", "InclusionType", "AuthorityContact", "AuthorityHours", "additionalInformation",];
         public static string[] FeatureAssociationTypes => [];
         public static string[] InformationTypes => ["InformationType", "AbstractRxN", "NauticalInformation", "Regulations", "Restrictions", "Recommendations", "Authority", "ContactDetails", "NonStandardWorkingDay", "ServiceHours", "Applicability",];
@@ -1151,7 +1152,85 @@ namespace S100Framework.DomainModel.S122 {
     }
 
     namespace Associations {
+        namespace SpatialAssociations {
+        }
+
         namespace InformationAssociations {
+            [System.Serializable()]
+            [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+            public partial class AssociatedRxN {
+                public AssociatedRxN() {
+                }
+            }
+
+            [System.Serializable()]
+            [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+            public partial class ExceptionalWorkday {
+                public ExceptionalWorkday() {
+                }
+            }
+
+            [System.Serializable()]
+            [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+            public partial class ProtectedAreaAuthority {
+                public ProtectedAreaAuthority() {
+                }
+            }
+
+            [System.Serializable()]
+            [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+            public partial class ServiceControl {
+                public ServiceControl() {
+                }
+            }
+
+            [System.Serializable()]
+            [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+            public partial class RelatedOrganisation {
+                public RelatedOrganisation() {
+                }
+            }
+
+            [System.Serializable()]
+            [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+            public partial class PermissionType {
+                [Required()]
+                public categoryOfRelationship categoryOfRelationship { get; set; }
+
+                public PermissionType() {
+                }
+            }
+
+            [System.Serializable()]
+            [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+            public partial class InclusionType {
+                [Required()]
+                public membership membership { get; set; }
+
+                public InclusionType() {
+                }
+            }
+
+            [System.Serializable()]
+            [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+            public partial class AuthorityContact {
+                public AuthorityContact() {
+                }
+            }
+
+            [System.Serializable()]
+            [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+            public partial class AuthorityHours {
+                public AuthorityHours() {
+                }
+            }
+
+            [System.Serializable()]
+            [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+            public partial class additionalInformation {
+                public additionalInformation() {
+                }
+            }
         }
 
         namespace FeatureAssociations {

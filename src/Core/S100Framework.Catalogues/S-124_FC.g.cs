@@ -7,6 +7,7 @@ namespace S100Framework.DomainModel.S124 {
     public static class Information {
         public static Version Version => new Version("1.5");
         public static string[] ComplexTypes => ["featureName", "dateTimeRange", "eNCFeatureReference", "featureReference", "fixedDateRange", "information", "warningInformation", "chartAffected", "affectedChartPublications", "locationName", "generalArea", "locality", "messageSeriesIdentifier", "nAVWARNTitle",];
+        public static string[] SpatialAssociationTypes => [];
         public static string[] InformationAssociationTypes => ["NWPreambleContent", "NWReferences",];
         public static string[] FeatureAssociationTypes => ["AreaAffected", "TextAssociation",];
         public static string[] InformationTypes => ["NAVWARNPreamble", "References",];
@@ -422,11 +423,41 @@ namespace S100Framework.DomainModel.S124 {
     }
 
     namespace Associations {
+        namespace SpatialAssociations {
+        }
+
         namespace InformationAssociations {
+            [System.Serializable()]
+            [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+            public partial class NWPreambleContent {
+                public NWPreambleContent() {
+                }
+            }
+
+            [System.Serializable()]
+            [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+            public partial class NWReferences {
+                public NWReferences() {
+                }
+            }
         }
 
         namespace FeatureAssociations {
             using S100Framework.DomainModel.S124.FeatureTypes;
+
+            [System.Serializable()]
+            [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+            public partial class AreaAffectedAssociation : FeatureAssociation {
+                public AreaAffectedAssociation() {
+                }
+            }
+
+            [System.Serializable()]
+            [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+            public partial class TextAssociationAssociation : FeatureAssociation {
+                public TextAssociationAssociation() {
+                }
+            }
         }
     }
 
@@ -525,6 +556,66 @@ namespace S100Framework.DomainModel.S124 {
             [IgnoreDataMember]
             public override string Code => nameof(NAVWARNPart);
 
+            public class TextAssociationAssociation : Associations.FeatureAssociations.TextAssociationAssociation {
+                public TextAssociationAssociation AddTextPlacement(string id) {
+                    this.RefIds = [..this.RefIds, new RefId
+                    {
+                        Role = "positions",
+                        Type = "TextPlacement",
+                        Value = id,
+                    }
+
+                    ];
+                    return this;
+                }
+            }
+
+            public class AreaAffectedAssociation : Associations.FeatureAssociations.AreaAffectedAssociation {
+                public AreaAffectedAssociation AddNAVWARNAreaAffected(string id) {
+                    this.RefIds = [..this.RefIds, new RefId
+                    {
+                        Role = "affects",
+                        Type = "NAVWARNAreaAffected",
+                        Value = id,
+                    }
+
+                    ];
+                    return this;
+                }
+            }
+
+            public static AreaAffectedAssociation CreateAreaAffected_affects(string id) {
+                return new AreaAffectedAssociation
+                {
+                    Code = "AreaAffected",
+                    AssociationConnectorTypeName = "NAVWARNPart",
+                    RefIds = [new RefId
+                    {
+                        Role = "impacts",
+                        Type = "NAVWARNPart",
+                        Value = id,
+                    }
+
+                    ]
+                };
+            }
+
+            public static TextAssociationAssociation CreateTextAssociation_positions(string id) {
+                return new TextAssociationAssociation
+                {
+                    Code = "TextAssociation",
+                    AssociationConnectorTypeName = "NAVWARNPart",
+                    RefIds = [new RefId
+                    {
+                        Role = "identifies",
+                        Type = "NAVWARNPart",
+                        Value = id,
+                    }
+
+                    ]
+                };
+            }
+
             public NAVWARNPart() {
                 warningInformation = new warningInformation()
                 {
@@ -537,6 +628,36 @@ namespace S100Framework.DomainModel.S124 {
         public partial class NAVWARNAreaAffected : FeatureNode {
             [IgnoreDataMember]
             public override string Code => nameof(NAVWARNAreaAffected);
+
+            public class AreaAffectedAssociation : Associations.FeatureAssociations.AreaAffectedAssociation {
+                public AreaAffectedAssociation AddNAVWARNPart(string id) {
+                    this.RefIds = [..this.RefIds, new RefId
+                    {
+                        Role = "impacts",
+                        Type = "NAVWARNPart",
+                        Value = id,
+                    }
+
+                    ];
+                    return this;
+                }
+            }
+
+            public static AreaAffectedAssociation CreateAreaAffected_impacts(string id) {
+                return new AreaAffectedAssociation
+                {
+                    Code = "AreaAffected",
+                    AssociationConnectorTypeName = "NAVWARNAreaAffected",
+                    RefIds = [new RefId
+                    {
+                        Role = "affects",
+                        Type = "NAVWARNAreaAffected",
+                        Value = id,
+                    }
+
+                    ]
+                };
+            }
 
             public NAVWARNAreaAffected() {
             }
@@ -561,6 +682,36 @@ namespace S100Framework.DomainModel.S124 {
 
             [IgnoreDataMember]
             public override string Code => nameof(TextPlacement);
+
+            public class TextAssociationAssociation : Associations.FeatureAssociations.TextAssociationAssociation {
+                public TextAssociationAssociation AddNAVWARNPart(string id) {
+                    this.RefIds = [..this.RefIds, new RefId
+                    {
+                        Role = "identifies",
+                        Type = "NAVWARNPart",
+                        Value = id,
+                    }
+
+                    ];
+                    return this;
+                }
+            }
+
+            public static TextAssociationAssociation CreateTextAssociation_identifies(string id) {
+                return new TextAssociationAssociation
+                {
+                    Code = "TextAssociation",
+                    AssociationConnectorTypeName = "TextPlacement",
+                    RefIds = [new RefId
+                    {
+                        Role = "positions",
+                        Type = "TextPlacement",
+                        Value = id,
+                    }
+
+                    ]
+                };
+            }
 
             public TextPlacement() {
             }

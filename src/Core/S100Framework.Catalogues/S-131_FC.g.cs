@@ -7,7 +7,8 @@ namespace S100Framework.DomainModel.S131 {
     public static class Information {
         public static Version Version => new Version("1.0.0");
         public static string[] ComplexTypes => ["contactAddress", "featureName", "fixedDateRange", "frequencyPair", "horizontalPositionUncertainty", "information", "onlineResource", "orientation", "periodicDateRange", "rxNCode", "surveyDateRange", "textContent", "timeIntervalsByDayOfWeek", "usefulMarkDescription", "verticalUncertainty", "vesselsMeasurements", "weatherResource", "bearingInformation", "cargoServicesDescription", "constructionInformation", "depthsDescription", "facilitiesLayoutDescription", "generalPortDescription", "graphic", "landmarkDescription", "limitsDescription", "majorLightDescription", "markedBy", "offshoreMarkDescription", "scheduleByDayOfWeek", "spatialAccuracy", "telecommunications", "generalHarbourInformation",];
-        public static string[] InformationAssociationTypes => ["AdditionalInformation", "AuthorityContact", "AuthorityHours", "AssociatedRxN", "ExceptionalWorkday", "ServiceControl", "ServiceContact", "LocationHours", "RelatedOrganisation", "InclusionType", "PermissionType", "SpatialAssociation", "LimitEntrance", "ServiceAvailability",];
+        public static string[] SpatialAssociationTypes => ["SpatialAssociation",];
+        public static string[] InformationAssociationTypes => ["AdditionalInformation", "AuthorityContact", "AuthorityHours", "AssociatedRxN", "ExceptionalWorkday", "ServiceControl", "ServiceContact", "LocationHours", "RelatedOrganisation", "InclusionType", "PermissionType", "LimitEntrance", "ServiceAvailability",];
         public static string[] FeatureAssociationTypes => ["TextAssociation", "Subsection", "Infrastructure", "PrimaryAuxiliaryFacility", "Demarcation", "JurisdictionalLimit", "LayoutDivision",];
         public static string[] InformationTypes => ["InformationType", "AbstractRxN", "Applicability", "Authority", "AvailablePortServices", "ContactDetails", "Entrance", "NauticalInformation", "NonStandardWorkingDay", "Recommendations", "Regulations", "Restrictions", "ServiceHours", "SpatialQuality",];
         public static string[] FeatureTypes => ["FeatureType", "OrganizationContactArea", "SupervisedArea", "HarbourPhysicalInfrastructure", "Layout", "AnchorBerth", "AnchorageArea", "Berth", "BerthPosition", "DockArea", "DryDock", "DumpingGround", "FloatingDock", "Gridiron", "HarbourAreaAdministrative", "HarbourAreaSection", "HarbourBasin", "HarbourFacility", "MooringWarpingFacility", "OuterLimit", "PilotBoardingPlace", "SeaplaneLandingArea", "Terminal", "TurningBasin", "WaterwayArea", "DataCoverage", "QualityOfNonBathymetricData", "SoundingDatum", "VerticalDatumOfData", "TextPlacement",];
@@ -1680,11 +1681,173 @@ namespace S100Framework.DomainModel.S131 {
     }
 
     namespace Associations {
+        namespace SpatialAssociations {
+            [System.Serializable()]
+            [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+            public partial class SpatialAssociation {
+                public SpatialAssociation() {
+                }
+            }
+        }
+
         namespace InformationAssociations {
+            [System.Serializable()]
+            [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+            public partial class AdditionalInformation {
+                public AdditionalInformation() {
+                }
+            }
+
+            [System.Serializable()]
+            [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+            public partial class AuthorityContact {
+                public AuthorityContact() {
+                }
+            }
+
+            [System.Serializable()]
+            [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+            public partial class AuthorityHours {
+                public AuthorityHours() {
+                }
+            }
+
+            [System.Serializable()]
+            [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+            public partial class AssociatedRxN {
+                public AssociatedRxN() {
+                }
+            }
+
+            [System.Serializable()]
+            [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+            public partial class ExceptionalWorkday {
+                public ExceptionalWorkday() {
+                }
+            }
+
+            [System.Serializable()]
+            [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+            public partial class ServiceControl {
+                public ServiceControl() {
+                }
+            }
+
+            [System.Serializable()]
+            [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+            public partial class ServiceContact {
+                public ServiceContact() {
+                }
+            }
+
+            [System.Serializable()]
+            [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+            public partial class LocationHours {
+                public LocationHours() {
+                }
+            }
+
+            [System.Serializable()]
+            [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+            public partial class RelatedOrganisation {
+                public RelatedOrganisation() {
+                }
+            }
+
+            [System.Serializable()]
+            [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+            public partial class InclusionType {
+                [EnumerationValue(1)]
+                [EnumerationValue(2)]
+                [Required()]
+                public membership membership { get; set; }
+
+                public InclusionType() {
+                }
+            }
+
+            [System.Serializable()]
+            [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+            public partial class PermissionType {
+                [EnumerationValue(1)]
+                [EnumerationValue(2)]
+                [EnumerationValue(3)]
+                [EnumerationValue(4)]
+                [EnumerationValue(5)]
+                [EnumerationValue(6)]
+                [Required()]
+                public categoryOfRelationship categoryOfRelationship { get; set; }
+
+                public PermissionType() {
+                }
+            }
+
+            [System.Serializable()]
+            [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+            public partial class LimitEntrance {
+                public LimitEntrance() {
+                }
+            }
+
+            [System.Serializable()]
+            [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+            public partial class ServiceAvailability {
+                public ServiceAvailability() {
+                }
+            }
         }
 
         namespace FeatureAssociations {
             using S100Framework.DomainModel.S131.FeatureTypes;
+
+            [System.Serializable()]
+            [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+            public partial class TextAssociationAssociation : FeatureAssociation {
+                public TextAssociationAssociation() {
+                }
+            }
+
+            [System.Serializable()]
+            [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+            public partial class SubsectionAssociation : FeatureAssociation {
+                public SubsectionAssociation() {
+                }
+            }
+
+            [System.Serializable()]
+            [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+            public partial class InfrastructureAssociation : FeatureAssociation {
+                public InfrastructureAssociation() {
+                }
+            }
+
+            [System.Serializable()]
+            [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+            public partial class PrimaryAuxiliaryFacilityAssociation : FeatureAssociation {
+                public PrimaryAuxiliaryFacilityAssociation() {
+                }
+            }
+
+            [System.Serializable()]
+            [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+            public partial class DemarcationAssociation : FeatureAssociation {
+                public DemarcationAssociation() {
+                }
+            }
+
+            [System.Serializable()]
+            [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+            public partial class JurisdictionalLimitAssociation : FeatureAssociation {
+                public JurisdictionalLimitAssociation() {
+                }
+            }
+
+            [System.Serializable()]
+            [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+            public partial class LayoutDivisionAssociation : FeatureAssociation {
+                public LayoutDivisionAssociation() {
+                }
+            }
         }
     }
 
@@ -2161,6 +2324,36 @@ namespace S100Framework.DomainModel.S131 {
             [IgnoreDataMember]
             public override string Code => nameof(FeatureType);
 
+            public class TextAssociationAssociation : Associations.FeatureAssociations.TextAssociationAssociation {
+                public TextAssociationAssociation AddTextPlacement(string id) {
+                    this.RefIds = [..this.RefIds, new RefId
+                    {
+                        Role = "positions",
+                        Type = "TextPlacement",
+                        Value = id,
+                    }
+
+                    ];
+                    return this;
+                }
+            }
+
+            public static TextAssociationAssociation CreateTextAssociation_positions(string id) {
+                return new TextAssociationAssociation
+                {
+                    Code = "TextAssociation",
+                    AssociationConnectorTypeName = "FeatureType",
+                    RefIds = [new RefId
+                    {
+                        Role = "identifies",
+                        Type = "FeatureType",
+                        Value = id,
+                    }
+
+                    ]
+                };
+            }
+
             public FeatureType() {
             }
         }
@@ -2193,6 +2386,48 @@ namespace S100Framework.DomainModel.S131 {
             [IgnoreDataMember]
             public override string Code => nameof(HarbourPhysicalInfrastructure);
 
+            public class InfrastructureAssociation : Associations.FeatureAssociations.InfrastructureAssociation {
+                public InfrastructureAssociation AddHarbourAreaSection(string id) {
+                    this.RefIds = [..this.RefIds, new RefId
+                    {
+                        Role = "infrastructureLocation",
+                        Type = "HarbourAreaSection",
+                        Value = id,
+                    }
+
+                    ];
+                    return this;
+                }
+
+                public InfrastructureAssociation AddTerminal(string id) {
+                    this.RefIds = [..this.RefIds, new RefId
+                    {
+                        Role = "infrastructureLocation",
+                        Type = "Terminal",
+                        Value = id,
+                    }
+
+                    ];
+                    return this;
+                }
+            }
+
+            public static InfrastructureAssociation CreateInfrastructure_infrastructureLocation(string id) {
+                return new InfrastructureAssociation
+                {
+                    Code = "Infrastructure",
+                    AssociationConnectorTypeName = "HarbourPhysicalInfrastructure",
+                    RefIds = [new RefId
+                    {
+                        Role = "hasInfrastructure",
+                        Type = "HarbourPhysicalInfrastructure",
+                        Value = id,
+                    }
+
+                    ]
+                };
+            }
+
             public HarbourPhysicalInfrastructure() {
             }
         }
@@ -2213,6 +2448,36 @@ namespace S100Framework.DomainModel.S131 {
             [IgnoreDataMember]
             public override string Code => nameof(AnchorBerth);
 
+            public class PrimaryAuxiliaryFacilityAssociation : Associations.FeatureAssociations.PrimaryAuxiliaryFacilityAssociation {
+                public PrimaryAuxiliaryFacilityAssociation AddMooringWarpingFacility(string id) {
+                    this.RefIds = [..this.RefIds, new RefId
+                    {
+                        Role = "auxiliaryFacility",
+                        Type = "MooringWarpingFacility",
+                        Value = id,
+                    }
+
+                    ];
+                    return this;
+                }
+            }
+
+            public static PrimaryAuxiliaryFacilityAssociation CreatePrimaryAuxiliaryFacility_auxiliaryFacility(string id) {
+                return new PrimaryAuxiliaryFacilityAssociation
+                {
+                    Code = "PrimaryAuxiliaryFacility",
+                    AssociationConnectorTypeName = "AnchorBerth",
+                    RefIds = [new RefId
+                    {
+                        Role = "primaryFacility",
+                        Type = "AnchorBerth",
+                        Value = id,
+                    }
+
+                    ]
+                };
+            }
+
             public AnchorBerth() {
             }
         }
@@ -2231,6 +2496,36 @@ namespace S100Framework.DomainModel.S131 {
 
             [IgnoreDataMember]
             public override string Code => nameof(AnchorageArea);
+
+            public class LayoutDivisionAssociation : Associations.FeatureAssociations.LayoutDivisionAssociation {
+                public LayoutDivisionAssociation AddHarbourAreaSection(string id) {
+                    this.RefIds = [..this.RefIds, new RefId
+                    {
+                        Role = "componentOf",
+                        Type = "HarbourAreaSection",
+                        Value = id,
+                    }
+
+                    ];
+                    return this;
+                }
+            }
+
+            public static LayoutDivisionAssociation CreateLayoutDivision_componentOf(string id) {
+                return new LayoutDivisionAssociation
+                {
+                    Code = "LayoutDivision",
+                    AssociationConnectorTypeName = "AnchorageArea",
+                    RefIds = [new RefId
+                    {
+                        Role = "layoutUnit",
+                        Type = "AnchorageArea",
+                        Value = id,
+                    }
+
+                    ]
+                };
+            }
 
             public AnchorageArea() {
             }
@@ -2276,6 +2571,78 @@ namespace S100Framework.DomainModel.S131 {
             [IgnoreDataMember]
             public override string Code => nameof(Berth);
 
+            public class LayoutDivisionAssociation : Associations.FeatureAssociations.LayoutDivisionAssociation {
+                public LayoutDivisionAssociation AddHarbourAreaSection(string id) {
+                    this.RefIds = [..this.RefIds, new RefId
+                    {
+                        Role = "componentOf",
+                        Type = "HarbourAreaSection",
+                        Value = id,
+                    }
+
+                    ];
+                    return this;
+                }
+
+                public LayoutDivisionAssociation AddTerminal(string id) {
+                    this.RefIds = [..this.RefIds, new RefId
+                    {
+                        Role = "componentOf",
+                        Type = "Terminal",
+                        Value = id,
+                    }
+
+                    ];
+                    return this;
+                }
+            }
+
+            public class DemarcationAssociation : Associations.FeatureAssociations.DemarcationAssociation {
+                public DemarcationAssociation AddBerthPosition(string id) {
+                    this.RefIds = [..this.RefIds, new RefId
+                    {
+                        Role = "demarcationIndicator",
+                        Type = "BerthPosition",
+                        Value = id,
+                    }
+
+                    ];
+                    return this;
+                }
+            }
+
+            public static DemarcationAssociation CreateDemarcation_demarcationIndicator(string id) {
+                return new DemarcationAssociation
+                {
+                    Code = "Demarcation",
+                    AssociationConnectorTypeName = "Berth",
+                    RefIds = [new RefId
+                    {
+                        Role = "demarcatedFeature",
+                        Type = "Berth",
+                        Value = id,
+                    }
+
+                    ]
+                };
+            }
+
+            public static LayoutDivisionAssociation CreateLayoutDivision_componentOf(string id) {
+                return new LayoutDivisionAssociation
+                {
+                    Code = "LayoutDivision",
+                    AssociationConnectorTypeName = "Berth",
+                    RefIds = [new RefId
+                    {
+                        Role = "layoutUnit",
+                        Type = "Berth",
+                        Value = id,
+                    }
+
+                    ]
+                };
+            }
+
             public Berth() {
                 uNLocationCode = string.Empty;
             }
@@ -2297,6 +2664,66 @@ namespace S100Framework.DomainModel.S131 {
             [IgnoreDataMember]
             public override string Code => nameof(BerthPosition);
 
+            public class PrimaryAuxiliaryFacilityAssociation : Associations.FeatureAssociations.PrimaryAuxiliaryFacilityAssociation {
+                public PrimaryAuxiliaryFacilityAssociation AddMooringWarpingFacility(string id) {
+                    this.RefIds = [..this.RefIds, new RefId
+                    {
+                        Role = "auxiliaryFacility",
+                        Type = "MooringWarpingFacility",
+                        Value = id,
+                    }
+
+                    ];
+                    return this;
+                }
+            }
+
+            public class DemarcationAssociation : Associations.FeatureAssociations.DemarcationAssociation {
+                public DemarcationAssociation AddBerth(string id) {
+                    this.RefIds = [..this.RefIds, new RefId
+                    {
+                        Role = "demarcatedFeature",
+                        Type = "Berth",
+                        Value = id,
+                    }
+
+                    ];
+                    return this;
+                }
+            }
+
+            public static DemarcationAssociation CreateDemarcation_demarcatedFeature(string id) {
+                return new DemarcationAssociation
+                {
+                    Code = "Demarcation",
+                    AssociationConnectorTypeName = "BerthPosition",
+                    RefIds = [new RefId
+                    {
+                        Role = "demarcationIndicator",
+                        Type = "BerthPosition",
+                        Value = id,
+                    }
+
+                    ]
+                };
+            }
+
+            public static PrimaryAuxiliaryFacilityAssociation CreatePrimaryAuxiliaryFacility_auxiliaryFacility(string id) {
+                return new PrimaryAuxiliaryFacilityAssociation
+                {
+                    Code = "PrimaryAuxiliaryFacility",
+                    AssociationConnectorTypeName = "BerthPosition",
+                    RefIds = [new RefId
+                    {
+                        Role = "primaryFacility",
+                        Type = "BerthPosition",
+                        Value = id,
+                    }
+
+                    ]
+                };
+            }
+
             public BerthPosition() {
             }
         }
@@ -2315,6 +2742,36 @@ namespace S100Framework.DomainModel.S131 {
 
             [IgnoreDataMember]
             public override string Code => nameof(DockArea);
+
+            public class LayoutDivisionAssociation : Associations.FeatureAssociations.LayoutDivisionAssociation {
+                public LayoutDivisionAssociation AddHarbourAreaSection(string id) {
+                    this.RefIds = [..this.RefIds, new RefId
+                    {
+                        Role = "componentOf",
+                        Type = "HarbourAreaSection",
+                        Value = id,
+                    }
+
+                    ];
+                    return this;
+                }
+            }
+
+            public static LayoutDivisionAssociation CreateLayoutDivision_componentOf(string id) {
+                return new LayoutDivisionAssociation
+                {
+                    Code = "LayoutDivision",
+                    AssociationConnectorTypeName = "DockArea",
+                    RefIds = [new RefId
+                    {
+                        Role = "layoutUnit",
+                        Type = "DockArea",
+                        Value = id,
+                    }
+
+                    ]
+                };
+            }
 
             public DockArea() {
             }
@@ -2346,6 +2803,36 @@ namespace S100Framework.DomainModel.S131 {
 
             [IgnoreDataMember]
             public override string Code => nameof(DumpingGround);
+
+            public class LayoutDivisionAssociation : Associations.FeatureAssociations.LayoutDivisionAssociation {
+                public LayoutDivisionAssociation AddHarbourAreaSection(string id) {
+                    this.RefIds = [..this.RefIds, new RefId
+                    {
+                        Role = "componentOf",
+                        Type = "HarbourAreaSection",
+                        Value = id,
+                    }
+
+                    ];
+                    return this;
+                }
+            }
+
+            public static LayoutDivisionAssociation CreateLayoutDivision_componentOf(string id) {
+                return new LayoutDivisionAssociation
+                {
+                    Code = "LayoutDivision",
+                    AssociationConnectorTypeName = "DumpingGround",
+                    RefIds = [new RefId
+                    {
+                        Role = "layoutUnit",
+                        Type = "DumpingGround",
+                        Value = id,
+                    }
+
+                    ]
+                };
+            }
 
             public DumpingGround() {
             }
@@ -2407,6 +2894,66 @@ namespace S100Framework.DomainModel.S131 {
             [IgnoreDataMember]
             public override string Code => nameof(HarbourAreaAdministrative);
 
+            public class LayoutDivisionAssociation : Associations.FeatureAssociations.LayoutDivisionAssociation {
+                public LayoutDivisionAssociation AddHarbourAreaSection(string id) {
+                    this.RefIds = [..this.RefIds, new RefId
+                    {
+                        Role = "layoutUnit",
+                        Type = "HarbourAreaSection",
+                        Value = id,
+                    }
+
+                    ];
+                    return this;
+                }
+            }
+
+            public class JurisdictionalLimitAssociation : Associations.FeatureAssociations.JurisdictionalLimitAssociation {
+                public JurisdictionalLimitAssociation AddOuterLimit(string id) {
+                    this.RefIds = [..this.RefIds, new RefId
+                    {
+                        Role = "limitExtent",
+                        Type = "OuterLimit",
+                        Value = id,
+                    }
+
+                    ];
+                    return this;
+                }
+            }
+
+            public static JurisdictionalLimitAssociation CreateJurisdictionalLimit_limitExtent(string id) {
+                return new JurisdictionalLimitAssociation
+                {
+                    Code = "JurisdictionalLimit",
+                    AssociationConnectorTypeName = "HarbourAreaAdministrative",
+                    RefIds = [new RefId
+                    {
+                        Role = "limitReference",
+                        Type = "HarbourAreaAdministrative",
+                        Value = id,
+                    }
+
+                    ]
+                };
+            }
+
+            public static LayoutDivisionAssociation CreateLayoutDivision_layoutUnit(string id) {
+                return new LayoutDivisionAssociation
+                {
+                    Code = "LayoutDivision",
+                    AssociationConnectorTypeName = "HarbourAreaAdministrative",
+                    RefIds = [new RefId
+                    {
+                        Role = "componentOf",
+                        Type = "HarbourAreaAdministrative",
+                        Value = id,
+                    }
+
+                    ]
+                };
+            }
+
             public HarbourAreaAdministrative() {
             }
         }
@@ -2441,6 +2988,248 @@ namespace S100Framework.DomainModel.S131 {
             [IgnoreDataMember]
             public override string Code => nameof(HarbourAreaSection);
 
+            public class InfrastructureAssociation : Associations.FeatureAssociations.InfrastructureAssociation {
+                public InfrastructureAssociation AddHarbourPhysicalInfrastructure(string id) {
+                    this.RefIds = [..this.RefIds, new RefId
+                    {
+                        Role = "hasInfrastructure",
+                        Type = "HarbourPhysicalInfrastructure",
+                        Value = id,
+                    }
+
+                    ];
+                    return this;
+                }
+            }
+
+            public class SubsectionAssociation : Associations.FeatureAssociations.SubsectionAssociation {
+                public SubsectionAssociation AddHarbourAreaSection(string id) {
+                    this.RefIds = [..this.RefIds, new RefId
+                    {
+                        Role = "constitute",
+                        Type = "HarbourAreaSection",
+                        Value = id,
+                    }
+
+                    ];
+                    return this;
+                }
+            }
+
+            public class LayoutDivisionAssociation : Associations.FeatureAssociations.LayoutDivisionAssociation {
+                public LayoutDivisionAssociation AddHarbourAreaAdministrative(string id) {
+                    this.RefIds = [..this.RefIds, new RefId
+                    {
+                        Role = "componentOf",
+                        Type = "HarbourAreaAdministrative",
+                        Value = id,
+                    }
+
+                    ];
+                    return this;
+                }
+
+                public LayoutDivisionAssociation AddAnchorageArea(string id) {
+                    this.RefIds = [..this.RefIds, new RefId
+                    {
+                        Role = "layoutUnit",
+                        Type = "AnchorageArea",
+                        Value = id,
+                    }
+
+                    ];
+                    return this;
+                }
+
+                public LayoutDivisionAssociation AddBerth(string id) {
+                    this.RefIds = [..this.RefIds, new RefId
+                    {
+                        Role = "layoutUnit",
+                        Type = "Berth",
+                        Value = id,
+                    }
+
+                    ];
+                    return this;
+                }
+
+                public LayoutDivisionAssociation AddDockArea(string id) {
+                    this.RefIds = [..this.RefIds, new RefId
+                    {
+                        Role = "layoutUnit",
+                        Type = "DockArea",
+                        Value = id,
+                    }
+
+                    ];
+                    return this;
+                }
+
+                public LayoutDivisionAssociation AddDumpingGround(string id) {
+                    this.RefIds = [..this.RefIds, new RefId
+                    {
+                        Role = "layoutUnit",
+                        Type = "DumpingGround",
+                        Value = id,
+                    }
+
+                    ];
+                    return this;
+                }
+
+                public LayoutDivisionAssociation AddHarbourBasin(string id) {
+                    this.RefIds = [..this.RefIds, new RefId
+                    {
+                        Role = "layoutUnit",
+                        Type = "HarbourBasin",
+                        Value = id,
+                    }
+
+                    ];
+                    return this;
+                }
+
+                public LayoutDivisionAssociation AddPilotBoardingPlace(string id) {
+                    this.RefIds = [..this.RefIds, new RefId
+                    {
+                        Role = "layoutUnit",
+                        Type = "PilotBoardingPlace",
+                        Value = id,
+                    }
+
+                    ];
+                    return this;
+                }
+
+                public LayoutDivisionAssociation AddSeaplaneLandingArea(string id) {
+                    this.RefIds = [..this.RefIds, new RefId
+                    {
+                        Role = "layoutUnit",
+                        Type = "SeaplaneLandingArea",
+                        Value = id,
+                    }
+
+                    ];
+                    return this;
+                }
+
+                public LayoutDivisionAssociation AddTerminal(string id) {
+                    this.RefIds = [..this.RefIds, new RefId
+                    {
+                        Role = "layoutUnit",
+                        Type = "Terminal",
+                        Value = id,
+                    }
+
+                    ];
+                    return this;
+                }
+
+                public LayoutDivisionAssociation AddTurningBasin(string id) {
+                    this.RefIds = [..this.RefIds, new RefId
+                    {
+                        Role = "layoutUnit",
+                        Type = "TurningBasin",
+                        Value = id,
+                    }
+
+                    ];
+                    return this;
+                }
+
+                public LayoutDivisionAssociation AddWaterwayArea(string id) {
+                    this.RefIds = [..this.RefIds, new RefId
+                    {
+                        Role = "layoutUnit",
+                        Type = "WaterwayArea",
+                        Value = id,
+                    }
+
+                    ];
+                    return this;
+                }
+            }
+
+            public static LayoutDivisionAssociation CreateLayoutDivision_componentOf(string id) {
+                return new LayoutDivisionAssociation
+                {
+                    Code = "LayoutDivision",
+                    AssociationConnectorTypeName = "HarbourAreaSection",
+                    RefIds = [new RefId
+                    {
+                        Role = "layoutUnit",
+                        Type = "HarbourAreaSection",
+                        Value = id,
+                    }
+
+                    ]
+                };
+            }
+
+            public static SubsectionAssociation CreateSubsection_constitute(string id) {
+                return new SubsectionAssociation
+                {
+                    Code = "Subsection",
+                    AssociationConnectorTypeName = "HarbourAreaSection",
+                    RefIds = [new RefId
+                    {
+                        Role = "subUnit",
+                        Type = "HarbourAreaSection",
+                        Value = id,
+                    }
+
+                    ]
+                };
+            }
+
+            public static SubsectionAssociation CreateSubsection_subUnit(string id) {
+                return new SubsectionAssociation
+                {
+                    Code = "Subsection",
+                    AssociationConnectorTypeName = "HarbourAreaSection",
+                    RefIds = [new RefId
+                    {
+                        Role = "constitute",
+                        Type = "HarbourAreaSection",
+                        Value = id,
+                    }
+
+                    ]
+                };
+            }
+
+            public static InfrastructureAssociation CreateInfrastructure_hasInfrastructure(string id) {
+                return new InfrastructureAssociation
+                {
+                    Code = "Infrastructure",
+                    AssociationConnectorTypeName = "HarbourAreaSection",
+                    RefIds = [new RefId
+                    {
+                        Role = "infrastructureLocation",
+                        Type = "HarbourAreaSection",
+                        Value = id,
+                    }
+
+                    ]
+                };
+            }
+
+            public static LayoutDivisionAssociation CreateLayoutDivision_layoutUnit(string id) {
+                return new LayoutDivisionAssociation
+                {
+                    Code = "LayoutDivision",
+                    AssociationConnectorTypeName = "HarbourAreaSection",
+                    RefIds = [new RefId
+                    {
+                        Role = "componentOf",
+                        Type = "HarbourAreaSection",
+                        Value = id,
+                    }
+
+                    ]
+                };
+            }
+
             public HarbourAreaSection() {
             }
         }
@@ -2459,6 +3248,36 @@ namespace S100Framework.DomainModel.S131 {
 
             [IgnoreDataMember]
             public override string Code => nameof(HarbourBasin);
+
+            public class LayoutDivisionAssociation : Associations.FeatureAssociations.LayoutDivisionAssociation {
+                public LayoutDivisionAssociation AddHarbourAreaSection(string id) {
+                    this.RefIds = [..this.RefIds, new RefId
+                    {
+                        Role = "componentOf",
+                        Type = "HarbourAreaSection",
+                        Value = id,
+                    }
+
+                    ];
+                    return this;
+                }
+            }
+
+            public static LayoutDivisionAssociation CreateLayoutDivision_componentOf(string id) {
+                return new LayoutDivisionAssociation
+                {
+                    Code = "LayoutDivision",
+                    AssociationConnectorTypeName = "HarbourBasin",
+                    RefIds = [new RefId
+                    {
+                        Role = "layoutUnit",
+                        Type = "HarbourBasin",
+                        Value = id,
+                    }
+
+                    ]
+                };
+            }
 
             public HarbourBasin() {
             }
@@ -2500,6 +3319,48 @@ namespace S100Framework.DomainModel.S131 {
             [IgnoreDataMember]
             public override string Code => nameof(MooringWarpingFacility);
 
+            public class PrimaryAuxiliaryFacilityAssociation : Associations.FeatureAssociations.PrimaryAuxiliaryFacilityAssociation {
+                public PrimaryAuxiliaryFacilityAssociation AddAnchorBerth(string id) {
+                    this.RefIds = [..this.RefIds, new RefId
+                    {
+                        Role = "primaryFacility",
+                        Type = "AnchorBerth",
+                        Value = id,
+                    }
+
+                    ];
+                    return this;
+                }
+
+                public PrimaryAuxiliaryFacilityAssociation AddBerthPosition(string id) {
+                    this.RefIds = [..this.RefIds, new RefId
+                    {
+                        Role = "primaryFacility",
+                        Type = "BerthPosition",
+                        Value = id,
+                    }
+
+                    ];
+                    return this;
+                }
+            }
+
+            public static PrimaryAuxiliaryFacilityAssociation CreatePrimaryAuxiliaryFacility_primaryFacility(string id) {
+                return new PrimaryAuxiliaryFacilityAssociation
+                {
+                    Code = "PrimaryAuxiliaryFacility",
+                    AssociationConnectorTypeName = "MooringWarpingFacility",
+                    RefIds = [new RefId
+                    {
+                        Role = "auxiliaryFacility",
+                        Type = "MooringWarpingFacility",
+                        Value = id,
+                    }
+
+                    ]
+                };
+            }
+
             public MooringWarpingFacility() {
                 iDCode = string.Empty;
             }
@@ -2517,6 +3378,36 @@ namespace S100Framework.DomainModel.S131 {
 
             [IgnoreDataMember]
             public override string Code => nameof(OuterLimit);
+
+            public class JurisdictionalLimitAssociation : Associations.FeatureAssociations.JurisdictionalLimitAssociation {
+                public JurisdictionalLimitAssociation AddHarbourAreaAdministrative(string id) {
+                    this.RefIds = [..this.RefIds, new RefId
+                    {
+                        Role = "limitReference",
+                        Type = "HarbourAreaAdministrative",
+                        Value = id,
+                    }
+
+                    ];
+                    return this;
+                }
+            }
+
+            public static JurisdictionalLimitAssociation CreateJurisdictionalLimit_limitReference(string id) {
+                return new JurisdictionalLimitAssociation
+                {
+                    Code = "JurisdictionalLimit",
+                    AssociationConnectorTypeName = "OuterLimit",
+                    RefIds = [new RefId
+                    {
+                        Role = "limitExtent",
+                        Type = "OuterLimit",
+                        Value = id,
+                    }
+
+                    ]
+                };
+            }
 
             public OuterLimit() {
             }
@@ -2537,6 +3428,36 @@ namespace S100Framework.DomainModel.S131 {
             [IgnoreDataMember]
             public override string Code => nameof(PilotBoardingPlace);
 
+            public class LayoutDivisionAssociation : Associations.FeatureAssociations.LayoutDivisionAssociation {
+                public LayoutDivisionAssociation AddHarbourAreaSection(string id) {
+                    this.RefIds = [..this.RefIds, new RefId
+                    {
+                        Role = "componentOf",
+                        Type = "HarbourAreaSection",
+                        Value = id,
+                    }
+
+                    ];
+                    return this;
+                }
+            }
+
+            public static LayoutDivisionAssociation CreateLayoutDivision_componentOf(string id) {
+                return new LayoutDivisionAssociation
+                {
+                    Code = "LayoutDivision",
+                    AssociationConnectorTypeName = "PilotBoardingPlace",
+                    RefIds = [new RefId
+                    {
+                        Role = "layoutUnit",
+                        Type = "PilotBoardingPlace",
+                        Value = id,
+                    }
+
+                    ]
+                };
+            }
+
             public PilotBoardingPlace() {
             }
         }
@@ -2555,6 +3476,36 @@ namespace S100Framework.DomainModel.S131 {
 
             [IgnoreDataMember]
             public override string Code => nameof(SeaplaneLandingArea);
+
+            public class LayoutDivisionAssociation : Associations.FeatureAssociations.LayoutDivisionAssociation {
+                public LayoutDivisionAssociation AddHarbourAreaSection(string id) {
+                    this.RefIds = [..this.RefIds, new RefId
+                    {
+                        Role = "componentOf",
+                        Type = "HarbourAreaSection",
+                        Value = id,
+                    }
+
+                    ];
+                    return this;
+                }
+            }
+
+            public static LayoutDivisionAssociation CreateLayoutDivision_componentOf(string id) {
+                return new LayoutDivisionAssociation
+                {
+                    Code = "LayoutDivision",
+                    AssociationConnectorTypeName = "SeaplaneLandingArea",
+                    RefIds = [new RefId
+                    {
+                        Role = "layoutUnit",
+                        Type = "SeaplaneLandingArea",
+                        Value = id,
+                    }
+
+                    ]
+                };
+            }
 
             public SeaplaneLandingArea() {
             }
@@ -2615,6 +3566,94 @@ namespace S100Framework.DomainModel.S131 {
             [IgnoreDataMember]
             public override string Code => nameof(Terminal);
 
+            public class InfrastructureAssociation : Associations.FeatureAssociations.InfrastructureAssociation {
+                public InfrastructureAssociation AddHarbourPhysicalInfrastructure(string id) {
+                    this.RefIds = [..this.RefIds, new RefId
+                    {
+                        Role = "hasInfrastructure",
+                        Type = "HarbourPhysicalInfrastructure",
+                        Value = id,
+                    }
+
+                    ];
+                    return this;
+                }
+            }
+
+            public class LayoutDivisionAssociation : Associations.FeatureAssociations.LayoutDivisionAssociation {
+                public LayoutDivisionAssociation AddHarbourAreaSection(string id) {
+                    this.RefIds = [..this.RefIds, new RefId
+                    {
+                        Role = "componentOf",
+                        Type = "HarbourAreaSection",
+                        Value = id,
+                    }
+
+                    ];
+                    return this;
+                }
+
+                public LayoutDivisionAssociation AddBerth(string id) {
+                    this.RefIds = [..this.RefIds, new RefId
+                    {
+                        Role = "layoutUnit",
+                        Type = "Berth",
+                        Value = id,
+                    }
+
+                    ];
+                    return this;
+                }
+            }
+
+            public static LayoutDivisionAssociation CreateLayoutDivision_componentOf(string id) {
+                return new LayoutDivisionAssociation
+                {
+                    Code = "LayoutDivision",
+                    AssociationConnectorTypeName = "Terminal",
+                    RefIds = [new RefId
+                    {
+                        Role = "layoutUnit",
+                        Type = "Terminal",
+                        Value = id,
+                    }
+
+                    ]
+                };
+            }
+
+            public static LayoutDivisionAssociation CreateLayoutDivision_layoutUnit(string id) {
+                return new LayoutDivisionAssociation
+                {
+                    Code = "LayoutDivision",
+                    AssociationConnectorTypeName = "Terminal",
+                    RefIds = [new RefId
+                    {
+                        Role = "componentOf",
+                        Type = "Terminal",
+                        Value = id,
+                    }
+
+                    ]
+                };
+            }
+
+            public static InfrastructureAssociation CreateInfrastructure_hasInfrastructure(string id) {
+                return new InfrastructureAssociation
+                {
+                    Code = "Infrastructure",
+                    AssociationConnectorTypeName = "Terminal",
+                    RefIds = [new RefId
+                    {
+                        Role = "infrastructureLocation",
+                        Type = "Terminal",
+                        Value = id,
+                    }
+
+                    ]
+                };
+            }
+
             public Terminal() {
             }
         }
@@ -2633,6 +3672,36 @@ namespace S100Framework.DomainModel.S131 {
 
             [IgnoreDataMember]
             public override string Code => nameof(TurningBasin);
+
+            public class LayoutDivisionAssociation : Associations.FeatureAssociations.LayoutDivisionAssociation {
+                public LayoutDivisionAssociation AddHarbourAreaSection(string id) {
+                    this.RefIds = [..this.RefIds, new RefId
+                    {
+                        Role = "componentOf",
+                        Type = "HarbourAreaSection",
+                        Value = id,
+                    }
+
+                    ];
+                    return this;
+                }
+            }
+
+            public static LayoutDivisionAssociation CreateLayoutDivision_componentOf(string id) {
+                return new LayoutDivisionAssociation
+                {
+                    Code = "LayoutDivision",
+                    AssociationConnectorTypeName = "TurningBasin",
+                    RefIds = [new RefId
+                    {
+                        Role = "layoutUnit",
+                        Type = "TurningBasin",
+                        Value = id,
+                    }
+
+                    ]
+                };
+            }
 
             public TurningBasin() {
             }
@@ -2655,6 +3724,36 @@ namespace S100Framework.DomainModel.S131 {
 
             [IgnoreDataMember]
             public override string Code => nameof(WaterwayArea);
+
+            public class LayoutDivisionAssociation : Associations.FeatureAssociations.LayoutDivisionAssociation {
+                public LayoutDivisionAssociation AddHarbourAreaSection(string id) {
+                    this.RefIds = [..this.RefIds, new RefId
+                    {
+                        Role = "componentOf",
+                        Type = "HarbourAreaSection",
+                        Value = id,
+                    }
+
+                    ];
+                    return this;
+                }
+            }
+
+            public static LayoutDivisionAssociation CreateLayoutDivision_componentOf(string id) {
+                return new LayoutDivisionAssociation
+                {
+                    Code = "LayoutDivision",
+                    AssociationConnectorTypeName = "WaterwayArea",
+                    RefIds = [new RefId
+                    {
+                        Role = "layoutUnit",
+                        Type = "WaterwayArea",
+                        Value = id,
+                    }
+
+                    ]
+                };
+            }
 
             public WaterwayArea() {
             }
@@ -2787,6 +3886,36 @@ namespace S100Framework.DomainModel.S131 {
 
             [IgnoreDataMember]
             public override string Code => nameof(TextPlacement);
+
+            public class TextAssociationAssociation : Associations.FeatureAssociations.TextAssociationAssociation {
+                public TextAssociationAssociation AddFeatureType(string id) {
+                    this.RefIds = [..this.RefIds, new RefId
+                    {
+                        Role = "positions",
+                        Type = "FeatureType",
+                        Value = id,
+                    }
+
+                    ];
+                    return this;
+                }
+            }
+
+            public static TextAssociationAssociation CreateTextAssociation_positions(string id) {
+                return new TextAssociationAssociation
+                {
+                    Code = "TextAssociation",
+                    AssociationConnectorTypeName = "TextPlacement",
+                    RefIds = [new RefId
+                    {
+                        Role = "identifies",
+                        Type = "TextPlacement",
+                        Value = id,
+                    }
+
+                    ]
+                };
+            }
 
             public TextPlacement() {
             }

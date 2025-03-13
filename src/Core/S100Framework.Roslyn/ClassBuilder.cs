@@ -475,6 +475,10 @@ namespace S100Framework
             creatorBuilder.AppendLine("\tinternal static class Preamble {");
             creatorBuilder.AppendLine("\t\tpublic static ImmutableDictionary<string, Func<ViewModelBase>> _creators => ImmutableDictionary.Create<string, Func<ViewModelBase>>().AddRange(new Dictionary<string, Func<ViewModelBase>> {");
 
+            var spatialAssociationTypes = new List<string>();
+
+            var featureAssociationRoles = new Dictionary<string, string[]>();
+
             //  Bindings
             {
                 //  S100_FC_Roles
@@ -518,9 +522,7 @@ namespace S100Framework
 
                     classBuilder.AppendLine("\t\t}");
                     classBuilder.AppendLine();
-                }
-
-                var spatialAssociationTypes = new List<string>();
+                }                
 
                 //  S100_FC_SpatialAssociations
                 {
@@ -643,6 +645,13 @@ namespace S100Framework
                         var name = e.Element(XName.Get("name", scope_S100))!.Value;
                         var code = e.Element(XName.Get("code", scope_S100))!.Value;
 
+                        var roles = e.Elements(XName.Get("role", scope_S100)).Select(e => e.Attribute("ref")!.Value);
+
+                        if (roles.Count() > 2)
+                            System.Diagnostics.Debugger.Break();
+
+                        featureAssociationRoles.Add(code, roles.ToArray());
+
                         if (!spatialAssociationTypes.Contains(code)) {
                             featureAssociationTypes.Add(code);
 
@@ -650,7 +659,7 @@ namespace S100Framework
 
                             TypeBuilder associationTypeBuilder;
 
-                            associationTypeBuilder = moduleBuilder.DefineType($"{S100Framework.Roslyn.Namespace}.Associations.{code}", attributes);
+                            associationTypeBuilder = moduleBuilder.DefineType($"{S100Framework.Roslyn.Namespace}.Associations.{code}Association", attributes, typeof(FeatureAssociation));
 
                             foreach (var attributeBinding in e.XPathSelectElements("S100FC:attributeBinding", xmlNamespaceManager)) {
                                 associationTypeBuilder.BuildAttributeBinding(attributeBinding, scope_S100, xmlNamespaceManager, dictionaryTypes, dictionaryTypesComplex);
@@ -658,7 +667,7 @@ namespace S100Framework
 
                             var associationType = associationTypeBuilder.CreateType();
 
-                            classBuilder.AppendLine(BuildClass(code, associationType, xmlNamespace, (builder) => {
+                            classBuilder.AppendLine(BuildClass($"{code}Association", associationType, xmlNamespace, (builder) => {
                                 //builder.AppendLine($"\t\t\tpublic override string Code => nameof({code});");
                             }));
                         }
@@ -899,40 +908,64 @@ namespace S100Framework
                             builder.AppendLine("\t\t\t[IgnoreDataMember]");
                             builder.AppendLine($"\t\t\tpublic override string Code => nameof({code});");
 
+                            var associations = new List<string>();
+
+                            var index_associations = builder.Length;
+
+                            var builderAssociations = new Dictionary<string, StringBuilder>();
+
                             var featureBindings = e.XPathSelectElements("S100FC:featureBinding", xmlNamespaceManager);
                             foreach (var featureBinding in featureBindings) {
+                                var roleType = featureBinding.Attribute("roleType")!.Value;
                                 var association = featureBinding.Element(XName.Get("association", scope_S100))!.Attribute("ref")!.Value;
-                                var role = featureBinding.Element(XName.Get("role", scope_S100))!.Attribute("ref")!.Value;
-                                var featureType = featureBinding.Element(XName.Get("featureType", scope_S100))!.Attribute("ref")!.Value;
+                                var role = featureBinding.Element(XName.Get("role", scope_S100))!.Attribute("ref")!.Value;                                
 
-                                builder.AppendLine($"\t\t\tpublic class {association}Association : FeatureAssociation");
-                                builder.AppendLine($"\t\t\t{{");
-                                
-                                builder.AppendLine($"\t\t\t\tpublic {association}Association AddUpdateInformation(string id) {{");
-                                builder.AppendLine($"\t\t\t\tbase.RefIds = [.. base.RefIds, new RefId {{");
-                                builder.AppendLine($"\t\t\t\t\t\tRole = \"{role}\",");
-                                builder.AppendLine($"\t\t\t\t\t\tType = \"{featureType}\",");
-                                builder.AppendLine($"\t\t\t\t\t\tValue = id,");
-                                builder.AppendLine($"\t\t\t\t}}];");
+                                if (!associations.Contains(association)) {
+                                    builderAssociations.Add(association, new StringBuilder());
 
-                                builder.AppendLine($"\t\t\t\treturn this;");
-                                builder.AppendLine($"\t\t\t\t}}");
+                                    builderAssociations[association].AppendLine($"\t\t\tpublic class {association}Association : Associations.FeatureAssociations.{association}Association");
+                                    builderAssociations[association].AppendLine($"\t\t\t{{");
+                                    //builderAssociations.AppendLine($"\t\t\t}}");
 
-                                builder.AppendLine($"\t\t\t}}");
+                                    associations.Add(association);
+                                }
 
-                                builder.AppendLine($"\t\t\tpublic static {code}.{association}Association CreateUpdatedInformation(string id) {{");
-                                builder.AppendLine($"\t\t\t\treturn new {code}.{association}Association {{");
-                                builder.AppendLine($"\t\t\t\t\tCode = \"{featureType}\",");
-                                builder.AppendLine($"\t\t\t\t\tAssociationConnectorTypeName = \"{association}\",");
+                                foreach(var f in featureBinding.Elements(XName.Get("featureType", scope_S100))) {
+                                    var featureType = f.Attribute("ref")!.Value;
+
+                                    var text = builderAssociations[association].ToString();
+                                    if (!text.Contains($"{association}Association Add{featureType}(string id)")) {
+                                        builderAssociations[association].AppendLine($"\t\t\t\tpublic {association}Association Add{featureType}(string id) {{");
+                                        builderAssociations[association].AppendLine($"\t\t\t\tthis.RefIds = [.. this.RefIds, new RefId {{");
+                                        builderAssociations[association].AppendLine($"\t\t\t\t\t\tRole = \"{role}\",");
+                                        builderAssociations[association].AppendLine($"\t\t\t\t\t\tType = \"{featureType}\",");
+                                        builderAssociations[association].AppendLine($"\t\t\t\t\t\tValue = id,");
+                                        builderAssociations[association].AppendLine($"\t\t\t\t}}];");
+                                        builderAssociations[association].AppendLine($"\t\t\t\treturn this;");
+                                        builderAssociations[association].AppendLine($"\t\t\t\t}}");
+                                    }
+                                }
+
+
+                                var farend = featureAssociationRoles[association].Single(e => !e.Equals(role));
+
+                                builder.AppendLine($"\t\t\tpublic static {association}Association Create{association}_{role}(string id) {{");
+                                builder.AppendLine($"\t\t\t\treturn new {association}Association {{");
+                                builder.AppendLine($"\t\t\t\t\tCode = \"{association}\",");
+                                builder.AppendLine($"\t\t\t\t\tAssociationConnectorTypeName = \"{code}\",");
                                 builder.AppendLine($"\t\t\t\t\tRefIds = [new RefId {{");
-                                builder.AppendLine($"\t\t\t\t\t\tRole = \"\",");
+                                builder.AppendLine($"\t\t\t\t\t\tRole = \"{farend}\",");
                                 builder.AppendLine($"\t\t\t\t\t\tType = \"{code}\",");
                                 builder.AppendLine($"\t\t\t\t\t\tValue = id,");
                                 builder.AppendLine($"\t\t\t\t\t}}]");
                                 builder.AppendLine($"\t\t\t\t}};");
                                 builder.AppendLine($"\t\t\t}}");
-
                             }
+
+                            foreach(var pair in builderAssociations) {
+                                pair.Value.AppendLine($"\t\t\t}}").AppendLine();
+                                builder.Insert(index_associations, pair.Value.ToString());
+                            }                            
                         }));
 
                         if (!attributes.HasFlag(TypeAttributes.Abstract)) {
@@ -2098,6 +2131,32 @@ namespace S100Framework.DomainModel
         public EnumerationValueAttribute(int propertyValue) {
             _propertyValue = propertyValue;
         }
+    }
+
+    [System.SerializableAttribute()]
+    public class RefId
+    {
+        public required string? Value { get; set; }
+        public required string? Type { get; set; }
+        public required string Role { get; set; }
+    }
+
+    [System.SerializableAttribute()]
+    public abstract class Association
+    {
+        public required string Code { get; set; }
+        public required string AssociationConnectorTypeName { get; set; }
+        public RefId[] RefIds { get; set; } = new RefId[0];
+    }
+
+    [System.SerializableAttribute()]
+    public class InformationAssociation : Association
+    {
+    }
+
+    [System.SerializableAttribute()]
+    public class FeatureAssociation : Association
+    {
     }
 }
 

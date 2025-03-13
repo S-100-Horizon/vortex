@@ -7,6 +7,7 @@ namespace S100Framework.DomainModel.S501 {
     public static class Information {
         public static Version Version => new Version("0.0.5");
         public static string[] ComplexTypes => ["qRouteChannelWidth", "detectionDateRange", "multiplicityOfFeatures", "onlineResource", "featureName", "fixedDateRange", "altitudeRange", "altitude", "lastSourceInformation", "information", "firstSourceInformation", "horizontalClearanceFixed", "verticalUncertainty", "frequencyPair", "vesselMeasurementsSpecification", "surfaceCharacteristics", "magneticInformation", "speed", "verticalClearanceFixed", "sourceIdentification", "horizontalPositionUncertainty", "orientation", "directionHeading", "flightLevel", "vesselSpeedLimit", "periodicDateRange", "shapeInformation", "signalSequence", "sectorInformation", "directionalCharacter", "sectorLimitTwo", "sectorLimitOne", "topmark", "rythmOfLight", "verticalClearanceSafe", "sectorLimit", "lightSector", "sectorCharacteristics",];
+        public static string[] SpatialAssociationTypes => [];
         public static string[] InformationAssociationTypes => [];
         public static string[] FeatureAssociationTypes => [];
         public static string[] InformationTypes => ["ReferenceToAPublication",];
@@ -3151,6 +3152,9 @@ namespace S100Framework.DomainModel.S501 {
     }
 
     namespace Associations {
+        namespace SpatialAssociations {
+        }
+
         namespace InformationAssociations {
         }
 
