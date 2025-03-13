@@ -605,6 +605,7 @@ namespace S100Framework
             classBuilder.AppendLine("\t{");
             classBuilder.AppendLine("\t\tusing ComplexAttributes;");
             classBuilder.AppendLine("\t\tusing DomainModel;");
+            classBuilder.AppendLine("\t\tusing System.Runtime.Serialization;");
             classBuilder.AppendLine();
             {
                 var elements = productSpecification.XPathSelectElements("//S100FC:S100_FC_InformationType", xmlNamespaceManager);
@@ -715,6 +716,7 @@ namespace S100Framework
                         var informationBindingsList = new List<string>();
 
                         classBuilder.AppendLine(BuildClass(code, informationType, xmlNamespace, "S100Framework.DomainModel.InformationType", (builder) => {
+                            builder.AppendLine("\t\t\t[IgnoreDataMember]");
                             builder.AppendLine($"\t\t\tpublic override string Code => nameof({code});");
                         }));
 
@@ -768,6 +770,7 @@ namespace S100Framework
             classBuilder.AppendLine("\t\tusing ComplexAttributes;");
             classBuilder.AppendLine("\t\tusing InformationTypes;");
             classBuilder.AppendLine("\t\tusing DomainModel;");
+            classBuilder.AppendLine("\t\tusing System.Runtime.Serialization;");
             classBuilder.AppendLine();
             {
                 var elements = productSpecification.XPathSelectElements("//S100FC:S100_FC_FeatureType", xmlNamespaceManager);
@@ -880,6 +883,7 @@ namespace S100Framework
                         var featureBindingsList = new List<string>();
 
                         classBuilder.AppendLine(BuildClass(code, featureType, xmlNamespace, "S100Framework.DomainModel.FeatureType", (builder) => {
+                            builder.AppendLine("\t\t\t[IgnoreDataMember]");
                             builder.AppendLine($"\t\t\tpublic override string Code => nameof({code});");
                         }));
 
@@ -1537,10 +1541,19 @@ namespace S100Framework
                 }
                 else if (p.PropertyType == typeof(String)) {
                     var prop_type = p.PropertyType.Name;
-                    if ("System.Collections.Generic".Equals(p.PropertyType.Namespace))
-                        prop_type = $"List<{p.Name}>";
+                    var prop_postfix = " = string.Empty;";
 
-                    classBuilder.AppendLine($"\t\t\tpublic {prop_type} {p.Name} {{ get; set; }} = string.Empty;");
+                    if (requiredMemberAttribute == null) {
+                        prop_type = $"{p.PropertyType.Name}?";
+                        prop_postfix = " = null;";
+                    }
+
+                    if ("System.Collections.Generic".Equals(p.PropertyType.Namespace)) {
+                        prop_type = $"List<{p.Name}>";
+                        prop_postfix = " new List<string>();";
+                    }
+
+                    classBuilder.AppendLine($"\t\t\tpublic {prop_type} {p.Name} {{ get; set; }}{prop_postfix}");
                 }
                 else {
                     if (requiredMemberAttribute is not null)

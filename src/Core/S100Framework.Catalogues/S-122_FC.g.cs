@@ -763,11 +763,11 @@ namespace S100Framework.DomainModel.S122 {
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class contactAddress {
-            public String deliveryPoint { get; set; } = string.Empty;
-            public String cityName { get; set; } = string.Empty;
-            public String administrativeDivision { get; set; } = string.Empty;
-            public String countryName { get; set; } = string.Empty;
-            public String postalCode { get; set; } = string.Empty;
+            public String? deliveryPoint { get; set; } = null;
+            public String? cityName { get; set; } = null;
+            public String? administrativeDivision { get; set; } = null;
+            public String? countryName { get; set; } = null;
+            public String? postalCode { get; set; } = null;
 
             public contactAddress() {
             }
@@ -813,11 +813,11 @@ namespace S100Framework.DomainModel.S122 {
         public partial class information
 #pragma warning restore CS8981
         {
-            public String fileLocator { get; set; } = string.Empty;
-            public String fileReference { get; set; } = string.Empty;
-            public String headline { get; set; } = string.Empty;
-            public String language { get; set; } = string.Empty;
-            public String text { get; set; } = string.Empty;
+            public String? fileLocator { get; set; } = null;
+            public String? fileReference { get; set; } = null;
+            public String? headline { get; set; } = null;
+            public String? language { get; set; } = null;
+            public String? text { get; set; } = null;
 
             public information() {
             }
@@ -827,11 +827,11 @@ namespace S100Framework.DomainModel.S122 {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class onlineResource {
             public String onlineResourceLinkageURL { get; set; } = string.Empty;
-            public String protocol { get; set; } = string.Empty;
-            public String applicationProfile { get; set; } = string.Empty;
-            public String nameOfResource { get; set; } = string.Empty;
-            public String onlineResourceDescription { get; set; } = string.Empty;
-            public String protocolRequest { get; set; } = string.Empty;
+            public String? protocol { get; set; } = null;
+            public String? applicationProfile { get; set; } = null;
+            public String? nameOfResource { get; set; } = null;
+            public String? onlineResourceDescription { get; set; } = null;
+            public String? protocolRequest { get; set; } = null;
             public onlineFunction? onlineFunction { get; set; } = default;
 
             public onlineResource() {
@@ -873,7 +873,7 @@ namespace S100Framework.DomainModel.S122 {
         public partial class rxNCode {
             public categoryOfRxN? categoryOfRxN { get; set; }
             public actionOrActivity? actionOrActivity { get; set; }
-            public String headline { get; set; } = string.Empty;
+            public String? headline { get; set; } = null;
 
             public rxNCode() {
             }
@@ -908,7 +908,7 @@ namespace S100Framework.DomainModel.S122 {
             [EnumerationValue(2)]
             [EnumerationValue(3)]
             public categoryOfText? categoryOfText { get; set; } = default;
-            public String source { get; set; } = string.Empty;
+            public String? source { get; set; } = null;
 
             [EnumerationValue(1)]
             [EnumerationValue(2)]
@@ -996,10 +996,10 @@ namespace S100Framework.DomainModel.S122 {
         public partial class designation
 #pragma warning restore CS8981
         {
-            public String designationScheme { get; set; } = string.Empty;
-            public String designationIdentifier { get; set; } = string.Empty;
+            public String? designationScheme { get; set; } = null;
+            public String? designationIdentifier { get; set; } = null;
             public jurisdiction? jurisdiction { get; set; } = default;
-            public String text { get; set; } = string.Empty;
+            public String? text { get; set; } = null;
 
             public designation() {
             }
@@ -1027,9 +1027,9 @@ namespace S100Framework.DomainModel.S122 {
         {
             [Required()]
             public List<String> pictorialRepresentation { get; set; }
-            public String pictureCaption { get; set; } = string.Empty;
+            public String? pictureCaption { get; set; } = null;
             public DateTime? sourceDate { get; set; } = default;
-            public String pictureInformation { get; set; } = string.Empty;
+            public String? pictureInformation { get; set; } = null;
             public bearingInformation? bearingInformation { get; set; }
 
             public graphic() {
@@ -1086,8 +1086,8 @@ namespace S100Framework.DomainModel.S122 {
             [EnumerationValue(3)]
             [EnumerationValue(4)]
             public categoryOfCommunicationPreference? categoryOfCommunicationPreference { get; set; } = default;
-            public String contactInstructions { get; set; } = string.Empty;
-            public String telecomCarrier { get; set; } = string.Empty;
+            public String? contactInstructions { get; set; } = null;
+            public String? telecomCarrier { get; set; } = null;
             public String telecommunicationIdentifier { get; set; } = string.Empty;
 
             [EnumerationValue(1)]
@@ -1165,6 +1165,7 @@ namespace S100Framework.DomainModel.S122 {
     namespace InformationTypes {
         using ComplexAttributes;
         using DomainModel;
+        using System.Runtime.Serialization;
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -1173,7 +1174,7 @@ namespace S100Framework.DomainModel.S122 {
             public fixedDateRange? fixedDateRange { get; set; }
             public List<periodicDateRange> periodicDateRange { get; set; } = [];
             public List<graphic> graphic { get; set; } = [];
-            public String source { get; set; } = string.Empty;
+            public String? source { get; set; } = null;
 
             [EnumerationValue(1)]
             [EnumerationValue(2)]
@@ -1187,6 +1188,8 @@ namespace S100Framework.DomainModel.S122 {
             [EnumerationValue(14)]
             public sourceType? sourceType { get; set; } = default;
             public DateOnly? reportedDate { get; set; } = default;
+
+            [IgnoreDataMember]
             public override string Code => nameof(InformationType);
 
             public InformationType() {
@@ -1214,6 +1217,8 @@ namespace S100Framework.DomainModel.S122 {
             public categoryOfAuthority? categoryOfAuthority { get; set; } = default;
             public textContent? textContent { get; set; }
             public List<rxNCode> rxNCode { get; set; } = [];
+
+            [IgnoreDataMember]
             public override string Code => nameof(AbstractRxN);
 
             public AbstractRxN() {
@@ -1223,6 +1228,7 @@ namespace S100Framework.DomainModel.S122 {
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class NauticalInformation : AbstractRxN {
+            [IgnoreDataMember]
             public override string Code => nameof(NauticalInformation);
 
             public NauticalInformation() {
@@ -1232,6 +1238,7 @@ namespace S100Framework.DomainModel.S122 {
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class Regulations : AbstractRxN {
+            [IgnoreDataMember]
             public override string Code => nameof(Regulations);
 
             public Regulations() {
@@ -1241,6 +1248,7 @@ namespace S100Framework.DomainModel.S122 {
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class Restrictions : AbstractRxN {
+            [IgnoreDataMember]
             public override string Code => nameof(Restrictions);
 
             public Restrictions() {
@@ -1250,6 +1258,7 @@ namespace S100Framework.DomainModel.S122 {
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class Recommendations : AbstractRxN {
+            [IgnoreDataMember]
             public override string Code => nameof(Recommendations);
 
             public Recommendations() {
@@ -1277,6 +1286,8 @@ namespace S100Framework.DomainModel.S122 {
             [Required()]
             public categoryOfAuthority categoryOfAuthority { get; set; }
             public List<textContent> textContent { get; set; } = [];
+
+            [IgnoreDataMember]
             public override string Code => nameof(Authority);
 
             public Authority() {
@@ -1286,8 +1297,8 @@ namespace S100Framework.DomainModel.S122 {
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class ContactDetails : AbstractRxN {
-            public String callName { get; set; } = string.Empty;
-            public String callSign { get; set; } = string.Empty;
+            public String? callName { get; set; } = null;
+            public String? callSign { get; set; } = null;
 
             [EnumerationValue(1)]
             [EnumerationValue(2)]
@@ -1295,14 +1306,16 @@ namespace S100Framework.DomainModel.S122 {
             [EnumerationValue(4)]
             public categoryOfCommunicationPreference? categoryOfCommunicationPreference { get; set; } = default;
             public List<String> communicationChannel { get; set; } = [];
-            public String contactInstructions { get; set; } = string.Empty;
-            public String mMSICode { get; set; } = string.Empty;
+            public String? contactInstructions { get; set; } = null;
+            public String? mMSICode { get; set; } = null;
             public List<Int32> signalFrequency { get; set; } = [];
             public List<contactAddress> contactAddress { get; set; } = [];
             public List<frequencyPair> frequencyPair { get; set; } = [];
             public List<onlineResource> onlineResource { get; set; } = [];
             public List<telecommunications> telecommunications { get; set; } = [];
             public List<information> information { get; set; } = [];
+
+            [IgnoreDataMember]
             public override string Code => nameof(ContactDetails);
 
             public ContactDetails() {
@@ -1315,6 +1328,8 @@ namespace S100Framework.DomainModel.S122 {
             public List<DateOnly> dateFixed { get; set; } = [];
             public List<String> dateVariable { get; set; } = [];
             public List<information> information { get; set; } = [];
+
+            [IgnoreDataMember]
             public override string Code => nameof(NonStandardWorkingDay);
 
             public NonStandardWorkingDay() {
@@ -1329,6 +1344,8 @@ namespace S100Framework.DomainModel.S122 {
 
             [Required()]
             public information information { get; set; }
+
+            [IgnoreDataMember]
             public override string Code => nameof(ServiceHours);
 
             public ServiceHours() {
@@ -1405,9 +1422,11 @@ namespace S100Framework.DomainModel.S122 {
             [EnumerationValue(2)]
             public logicalConnectives? logicalConnectives { get; set; } = default;
             public Int32? thicknessOfIceCapability { get; set; } = default;
-            public String vesselPerformance { get; set; } = string.Empty;
+            public String? vesselPerformance { get; set; } = null;
             public List<information> information { get; set; } = [];
             public List<vesselsMeasurements> vesselsMeasurements { get; set; } = [];
+
+            [IgnoreDataMember]
             public override string Code => nameof(Applicability);
 
             public Applicability() {
@@ -1419,6 +1438,7 @@ namespace S100Framework.DomainModel.S122 {
         using ComplexAttributes;
         using InformationTypes;
         using DomainModel;
+        using System.Runtime.Serialization;
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -1428,7 +1448,7 @@ namespace S100Framework.DomainModel.S122 {
             public List<periodicDateRange> periodicDateRange { get; set; } = [];
             public List<textContent> textContent { get; set; } = [];
             public String interoperabilityIdentifier { get; set; } = string.Empty;
-            public String source { get; set; } = string.Empty;
+            public String? source { get; set; } = null;
 
             [EnumerationValue(1)]
             [EnumerationValue(2)]
@@ -1442,6 +1462,8 @@ namespace S100Framework.DomainModel.S122 {
             [EnumerationValue(14)]
             public sourceType? sourceType { get; set; } = default;
             public DateOnly? reportedDate { get; set; } = default;
+
+            [IgnoreDataMember]
             public override string Code => nameof(FeatureType);
 
             public FeatureType() {
@@ -1566,6 +1588,8 @@ namespace S100Framework.DomainModel.S122 {
             [EnumerationValue(42)]
             [EnumerationValue(43)]
             public List<status> status { get; set; } = [];
+
+            [IgnoreDataMember]
             public override string Code => nameof(RestrictedArea);
 
             public RestrictedArea() {
@@ -1706,6 +1730,8 @@ namespace S100Framework.DomainModel.S122 {
             [EnumerationValue(43)]
             public List<status> status { get; set; } = [];
             public List<designation> designation { get; set; } = [];
+
+            [IgnoreDataMember]
             public override string Code => nameof(MarineProtectedArea);
 
             public MarineProtectedArea() {
@@ -1725,6 +1751,8 @@ namespace S100Framework.DomainModel.S122 {
             [EnumerationValue(5)]
             [Required()]
             public categoryOfVesselTrafficService categoryOfVesselTrafficService { get; set; }
+
+            [IgnoreDataMember]
             public override string Code => nameof(VesselTrafficServiceArea);
 
             public VesselTrafficServiceArea() {
@@ -1734,6 +1762,7 @@ namespace S100Framework.DomainModel.S122 {
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class DataCoverage : FeatureNode {
+            [IgnoreDataMember]
             public override string Code => nameof(DataCoverage);
 
             public DataCoverage() {
@@ -1743,6 +1772,7 @@ namespace S100Framework.DomainModel.S122 {
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class TextPlacement : FeatureNode {
+            [IgnoreDataMember]
             public override string Code => nameof(TextPlacement);
 
             public TextPlacement() {
