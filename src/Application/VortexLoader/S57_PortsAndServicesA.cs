@@ -46,7 +46,7 @@ namespace S100Framework.Applications
                 // value, only if the attribute value of sounding for the feature instance is populated with an empty(null) value
                 // and the attribute height, if an allowable attribute for the feature, is not populated.
                 // S-101 Annex A_DCEG Edition 1.5.0_Draft for Edition 2.0.0.pdf: p.771
-                //Decimal defaultClearanceDepth = -32767;
+                //Decimal defaultClearanceDepth = -1;
 
                 switch (subtype) {
                     case 1: { // BERTHS_Berth
@@ -330,8 +330,8 @@ namespace S100Framework.Applications
                                     instance.categoryOfDolphin = catmor switch {
                                         1 => new List<categoryOfDolphin>() { categoryOfDolphin.MooringDolphin },
                                         2 => new List<categoryOfDolphin>() { categoryOfDolphin.DeviationDolphin },
-                                        -32767 => new List<categoryOfDolphin>() { (categoryOfDolphin)(-32767) },
-                                        // TODO: QUESTION: how to handle -32767 on a required attribute without an S-101 equivalent "unknown". Illegal value assigned. MUST be fixed.
+                                        -32767 =>new List<categoryOfDolphin>() { (categoryOfDolphin)(-1) },
+                                        // TODO: QUESTION: how to handle -1 on a required attribute without an S-101 equivalent "unknown". Illegal value assigned. MUST be fixed.
                                         _ => throw new IndexOutOfRangeException(),
                                     };
                                 }

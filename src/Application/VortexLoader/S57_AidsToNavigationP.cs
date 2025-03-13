@@ -1,14 +1,148 @@
 ﻿using ArcGIS.Core.Data;
+using ArcGIS.Core.Geometry;
 using S100Framework.Applications.S57.esri;
 using S100Framework.DomainModel.S101;
 using S100Framework.DomainModel.S101.ComplexAttributes;
 using S100Framework.DomainModel.S101.FeatureTypes;
-
+using System.Collections.Generic;
+using System;
+using S100Framework.DomainModel;
+using ArcGIS.Desktop.Internal.Mapping.Symbology;
 
 namespace S100Framework.Applications
 {
-    internal static partial class ImporterNIS
-    {
+    internal static partial class ImporterNIS {
+        private static FeatureNode CreateLight(AidsToNavigationP current, InsertCursor insert, RowBuffer buffer, Feature feature, string tableName, int convertedCount) {
+
+            if (current.FCSUBTYPE != 65)
+                throw new ArgumentOutOfRangeException($"Illegal subtype for lights {current}");
+
+
+            var objectid = current.OBJECTID ?? default;
+            var globalid = current.GLOBALID;
+            var subtype = current.FCSUBTYPE ?? default;
+            var plts_comp_scale = current.PLTS_COMP_SCALE ?? default;
+            var longname = current.LNAM ?? Strings.UNKNOWN;
+            var catlitVal = current.CATLIT ?? default;
+            var sectr1Val = current.SECTR1 ?? default;
+            var sectr2Val = current.SECTR2 ?? default;
+            var color = current.COLOUR ?? default;   // list of integers
+            var boyshp = current.BOYSHP ?? default;   // domain value
+            var bcnshp = current.BCNSHP ?? default;   // domain value
+            var colpat = current.COLPAT ?? default;
+            var litchr = current.LITCHR ?? default;
+            var marsys = current.MARSYS ?? default;
+            var orient = current.ORIENT ?? default;
+            List<int> catlits = new();
+
+            if (catlitVal != default) {
+                catlits = catlitVal.Split(',')
+                                   .Select(int.Parse)
+                                   .ToList();
+            }
+
+            if ((sectr1Val == default || sectr2Val == default) && !(catlits.Contains(1) || catlits.Contains(6) || catlits.Contains(7) || catlits.Contains(16))) {
+                // LIGHTS: Attributes SECTR1 and SECTR2 not present; and/or attribute catlits is not 1, 6, 7, 16
+                // Build "Light All Around");
+                var instance = new LightAllAround();
+
+                if (plts_comp_scale != default) {
+                    instance.scaleMinimum = plts_comp_scale;
+                }
+
+
+                AddColour(instance.colour, feature);
+                AddStatus(instance.status, feature);
+                AddFeatureName(instance.featureName, feature);
+                AddInformation(instance.information, feature);
+                buffer["ps"] = ps101;
+
+                buffer["code"] = instance.GetType().Name;
+                buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance);
+                buffer["shape"] = current.SHAPE;
+                insert.Insert(buffer);
+                Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
+                convertedCount++;
+                return instance;
+            }
+            else if ((sectr1Val != default && sectr2Val != default) || (catlits.Contains(1) || catlits.Contains(16))) {
+                // LIGHTS: Attributes SECTR1 and SECTR2 present; and/or attribute catlits = 1 (directional function) or 16 (moiré effect)
+                // Build "Light Sectored");
+                var instance = new LightSectored();
+                if (plts_comp_scale != default) {
+                    instance.scaleMinimum = plts_comp_scale;
+                }
+
+                AddStatus(instance.status, feature);
+                AddFeatureName(instance.featureName, feature);
+                AddInformation(instance.information, feature);
+                buffer["ps"] = ps101;
+
+                buffer["code"] = instance.GetType().Name;
+                buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance);
+                buffer["shape"] = current.SHAPE;
+                insert.Insert(buffer);
+                Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
+                convertedCount++;
+                return instance;
+            }
+            else if (catlits.Contains(6)) {
+                // LIGHTS: Attribute catlits contains value 6 (air obstruction light)
+                // Build "Light Air Obstruction");
+                var instance = new LightAirObstruction();
+                if (plts_comp_scale != default) {
+                    instance.scaleMinimum = plts_comp_scale;
+                }
+                AddColour(instance.colour, feature);
+                AddStatus(instance.status, feature);
+                AddFeatureName(instance.featureName, feature);
+                AddInformation(instance.information, feature);
+                buffer["ps"] = ps101;
+
+                buffer["code"] = instance.GetType().Name;
+                buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance);
+                buffer["shape"] = current.SHAPE;
+                insert.Insert(buffer);
+                Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
+                convertedCount++;
+                return instance;
+            }
+            else if (catlits.Contains(7)) {
+                // LIGHTS: Attribute catlits contains value 7 (fog detector light)
+                // Build "Light Fog Detector");
+                var instance = new LightFogDetector();
+                if (plts_comp_scale != default) {
+                    instance.scaleMinimum = plts_comp_scale;
+                }
+                AddColour(instance.colour, feature);
+                AddStatus(instance.status, feature);
+                AddFeatureName(instance.featureName, feature);
+                AddInformation(instance.information, feature);
+                buffer["ps"] = ps101;
+
+                buffer["code"] = instance.GetType().Name;
+                buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance);
+                buffer["shape"] = current.SHAPE;
+                insert.Insert(buffer);
+                Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
+                convertedCount++;
+                return instance;
+            }
+            else {
+                Logger.Current.DataError(objectid, tableName, longname, $"Unknown Light Type. Check catlit, sectr1, sectr2");
+                return null;
+            }
+
+        } 
+        
+        //else {
+        //        Logger.Current.DataError(objectid, tableName, longname, $"Unknown Light Type. Check catlit.");
+        //        return null;
+
+        
+        
+
+
         private static void S57_AidsToNavigationP(Geodatabase source, Geodatabase target, QueryFilter filter) {
             var tableName = "AidsToNavigationP";
 
@@ -18,18 +152,8 @@ namespace S100Framework.Applications
             var aidstonavigation = source.OpenDataset<FeatureClass>(source.GetName(tableName));
 
             using var featureClass = target.OpenDataset<FeatureClass>(target.GetName("point"));
-            
-
             using var buffer = featureClass.CreateRowBuffer();
             using var insert = featureClass.CreateInsertCursor();
-
-            //// Load aidstonavigation slaves
-            //using var cursorRelated = aidstonavigation.Search(filter, true);
-            
-            //while (cursorRelated.MoveNext()) {
-
-            //}
-            
 
             using var cursor = aidstonavigation.Search(filter, true);
             int recordCount = 0;
@@ -65,20 +189,23 @@ namespace S100Framework.Applications
                     continue;
                 }
 
-
                 switch (subtype) {
                     case 1: { // BCNCAR_BeaconCardinal
                             var instance = new CardinalBeacon();
 
+                            if (plts_comp_scale != default) {
+                                instance.scaleMinimum = plts_comp_scale;
+                            }
+
                             AddCondition(instance.condition, feature);
                             AddColour(instance.colour, feature);
+                            AddColourPattern(instance.colourPattern, feature);
                             AddStatus(instance.status, feature);
                             AddFeatureName(instance.featureName, feature);
                             AddInformation(instance.information, feature);
-                            
+
 
                             buffer["ps"] = ps101;
-
                             buffer["code"] = instance.GetType().Name;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance);
                             buffer["shape"] = current.SHAPE;
@@ -90,6 +217,10 @@ namespace S100Framework.Applications
                         break;
                     case 5: { // BCNISD_BeaconIsolatedDanger
                             var instance = new IsolatedDangerBeacon();
+
+                            if (plts_comp_scale != default) {
+                                instance.scaleMinimum = plts_comp_scale;
+                            }
 
                             AddCondition(instance.condition, feature);
                             AddColour(instance.colour, feature);
@@ -107,13 +238,17 @@ namespace S100Framework.Applications
                         break;
                     case 10: { // BCNLAT_BeaconLateral
                             var instance = new LateralBeacon();
+
+                            if (plts_comp_scale != default) {
+                                instance.scaleMinimum = plts_comp_scale;
+                            }
+
                             AddCondition(instance.condition, feature);
                             AddColour(instance.colour, feature);
                             AddStatus(instance.status, feature);
                             AddFeatureName(instance.featureName, feature);
                             AddInformation(instance.information, feature);
                             buffer["ps"] = ps101;
-
                             buffer["code"] = instance.GetType().Name;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance);
                             buffer["shape"] = current.SHAPE;
@@ -124,6 +259,9 @@ namespace S100Framework.Applications
                         break;
                     case 15: { // BCNSAW_BeaconSafeWater
                             var instance = new SafeWaterBeacon();
+                            if (plts_comp_scale != default) {
+                                instance.scaleMinimum = plts_comp_scale;
+                            }
 
                             AddCondition(instance.condition, feature);
                             AddColour(instance.colour, feature);
@@ -142,6 +280,9 @@ namespace S100Framework.Applications
                         break;
                     case 20: { // BCNSPP_BeaconSpecialPurpose
                             var instance = new SpecialPurposeGeneralBeacon();
+                            if (plts_comp_scale != default) {
+                                instance.scaleMinimum = plts_comp_scale;
+                            }
 
                             AddCondition(instance.condition, feature);
                             AddColour(instance.colour, feature);
@@ -149,7 +290,6 @@ namespace S100Framework.Applications
                             AddFeatureName(instance.featureName, feature);
                             AddInformation(instance.information, feature);
                             buffer["ps"] = ps101;
-
                             buffer["code"] = instance.GetType().Name;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance);
                             buffer["shape"] = current.SHAPE;
@@ -160,13 +300,16 @@ namespace S100Framework.Applications
                         break;
                     case 25: { // BOYCAR_BuoyCardinal
                             var instance = new CardinalBuoy();
-                            
+
+                            if (plts_comp_scale != default) {
+                                instance.scaleMinimum = plts_comp_scale;
+                            }
+
                             AddColour(instance.colour, feature);
                             AddStatus(instance.status, feature);
                             AddFeatureName(instance.featureName, feature);
                             AddInformation(instance.information, feature);
                             buffer["ps"] = ps101;
-
                             buffer["code"] = instance.GetType().Name;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance);
                             buffer["shape"] = current.SHAPE;
@@ -177,13 +320,15 @@ namespace S100Framework.Applications
                         break;
                     case 30: { // BOYINB_BuoyInstallation
                             var instance = new InstallationBuoy();
-                            
+                            if (plts_comp_scale != default) {
+                                instance.scaleMinimum = plts_comp_scale;
+                            }
+
                             AddColour(instance.colour, feature);
                             AddStatus(instance.status, feature);
                             AddFeatureName(instance.featureName, feature);
                             AddInformation(instance.information, feature);
                             buffer["ps"] = ps101;
-
                             buffer["code"] = instance.GetType().Name;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance);
                             buffer["shape"] = current.SHAPE;
@@ -194,14 +339,16 @@ namespace S100Framework.Applications
                         break;
                     case 35: { // BOYISD_BuoyIsolatedDanger
                             var instance = new IsolatedDangerBuoy();
-                            
-                            
+                            if (plts_comp_scale != default) {
+                                instance.scaleMinimum = plts_comp_scale;
+                            }
+
                             AddColour(instance.colour, feature);
                             AddStatus(instance.status, feature);
                             AddFeatureName(instance.featureName, feature);
                             AddInformation(instance.information, feature);
-                            buffer["ps"] = ps101;
 
+                            buffer["ps"] = ps101;
                             buffer["code"] = instance.GetType().Name;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance);
                             buffer["shape"] = current.SHAPE;
@@ -212,8 +359,12 @@ namespace S100Framework.Applications
                         break;
                     case 40: { // BOYLAT_BuoyLateral
                             var instance = new LateralBuoy();
-                            
-                            
+                            if (plts_comp_scale != default) {
+                                instance.scaleMinimum = plts_comp_scale;
+                            }
+
+                            //instance.topmark = new topmark() { }
+                            AddBuoyShape(instance.buoyShape, feature);
                             AddColour(instance.colour, feature);
                             AddStatus(instance.status, feature);
                             AddFeatureName(instance.featureName, feature);
@@ -226,12 +377,21 @@ namespace S100Framework.Applications
                                     //plfrel.RIND
                                     var slave = new Slave(plfrel);
                                     var result = slave.Fetch(source);
+                                    var relatedAidsToNavigationP = result as AidsToNavigationP;
+                                    
 
+                                    if (relatedAidsToNavigationP != null) {
+                                        //relatedAidsToNavigationP
+                                        if (plfrel.DEST_SUB.ToLower() == "lights_light") {
+                                            var light = CreateLight(relatedAidsToNavigationP, insert, buffer, feature, tableName, convertedCount);
+                                            // Create relation
+
+                                        }
+                                    }
                                 }
                             }
 
                             buffer["ps"] = ps101;
-
                             buffer["code"] = instance.GetType().Name;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance);
                             buffer["shape"] = current.SHAPE;
@@ -242,8 +402,9 @@ namespace S100Framework.Applications
                         break;
                     case 45: { // BOYSAW_BuoySafeWater
                             var instance = new SafeWaterBuoy();
-
-                            
+                            if (plts_comp_scale != default) {
+                                instance.scaleMinimum = plts_comp_scale;
+                            }
 
                             AddColour(instance.colour, feature); 
                             AddStatus(instance.status, feature);
@@ -261,8 +422,11 @@ namespace S100Framework.Applications
                         break;
                     case 50: { // BOYSPP_BuoySpecialPurpose
                             var instance = new SpecialPurposeGeneralBuoy();
+                            if (plts_comp_scale != default) {
+                                instance.scaleMinimum = plts_comp_scale;
+                            }
 
-                            
+
                             AddColour(instance.colour, feature);
                             AddStatus(instance.status, feature);
                             AddFeatureName(instance.featureName, feature);
@@ -279,8 +443,10 @@ namespace S100Framework.Applications
                         break;
                     case 55: { // DAYMAR_Daymark
                             var instance = new Daymark();
+                            if (plts_comp_scale != default) {
+                                instance.scaleMinimum = plts_comp_scale;
+                            }
 
-                            
                             AddColour(instance.colour, feature);
                             AddStatus(instance.status, feature);
                             AddFeatureName(instance.featureName, feature);
@@ -302,7 +468,10 @@ namespace S100Framework.Applications
                             //We do not have in the database information regarding “Radio Activated” nor “Call Activated”. We do have one instance of “On request”. What does this refer to??
 
                             var instance = new FogSignal();
-                            
+                            if (plts_comp_scale != default) {
+                                instance.scaleMinimum = plts_comp_scale;
+                            }
+
                             AddStatus(instance.status, feature);
                             AddFeatureName(instance.featureName, feature);
                             AddInformation(instance.information, feature);
@@ -317,103 +486,8 @@ namespace S100Framework.Applications
                         }
                         break;
                     case 65: { // LIGHTS_Light
+                            var light = CreateLight(current, insert, buffer, feature, tableName, convertedCount);
 
-                            if (catlitVal != default) {
-
-                                List<int> catlits = catlitVal
-                                                        .Split(',')
-                                                        .Select(int.Parse)
-                                                        .ToList();
-
-                                if ((sectr1Val == default || sectr2Val == default) && !(catlits.Contains(1) || catlits.Contains(6) || catlits.Contains(7) || catlits.Contains(16))) {
-                                    // LIGHTS: Attributes SECTR1 and SECTR2 not present; and/or attribute catlits is not 1, 6, 7, 16
-                                    // Build "Light All Around");
-                                    var instance = new LightAllAround();
-
-                                    if (plts_comp_scale != default) {
-                                        instance.scaleMinimum = plts_comp_scale;
-                                    }
-                                    
-                                    
-                                    AddColour(instance.colour, feature);
-                                    AddStatus(instance.status, feature);
-                                    AddFeatureName(instance.featureName, feature);
-                                    AddInformation(instance.information, feature);
-                                    buffer["ps"] = ps101;
-
-                                    buffer["code"] = instance.GetType().Name;
-                                    buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance);
-                                    buffer["shape"] = current.SHAPE;
-                                    insert.Insert(buffer);
-                                    Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
-                                    convertedCount++;
-                                }
-                                else if ((sectr1Val != default && sectr2Val != default) || (catlits.Contains(1) || catlits.Contains(16))) {
-                                    // LIGHTS: Attributes SECTR1 and SECTR2 present; and/or attribute catlits = 1 (directional function) or 16 (moiré effect)
-                                    // Build "Light Sectored");
-                                    var instance = new LightSectored();
-                                    if (plts_comp_scale != default) {
-                                        instance.scaleMinimum = plts_comp_scale;
-                                    }
-                                    
-                                    AddStatus(instance.status, feature);
-                                    AddFeatureName(instance.featureName, feature);
-                                    AddInformation(instance.information, feature);
-                                    buffer["ps"] = ps101;
-
-                                    buffer["code"] = instance.GetType().Name;
-                                    buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance);
-                                    buffer["shape"] = current.SHAPE;
-                                    insert.Insert(buffer);
-                                    Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
-                                    convertedCount++;
-                                }
-                                else if (catlits.Contains(6)) {
-                                    // LIGHTS: Attribute catlits contains value 6 (air obstruction light)
-                                    // Build "Light Air Obstruction");
-                                    var instance = new LightAirObstruction();
-                                    if (plts_comp_scale != default) {
-                                        instance.scaleMinimum = plts_comp_scale;
-                                    }
-                                    AddColour(instance.colour, feature);
-                                    AddStatus(instance.status, feature);
-                                    AddFeatureName(instance.featureName, feature);
-                                    AddInformation(instance.information, feature);
-                                    buffer["ps"] = ps101;
-
-                                    buffer["code"] = instance.GetType().Name;
-                                    buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance);
-                                    buffer["shape"] = current.SHAPE;
-                                    insert.Insert(buffer);
-                                    Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
-                                    convertedCount++;
-                                }
-                                else if (catlits.Contains(7)) {
-                                    // LIGHTS: Attribute catlits contains value 7 (fog detector light)
-                                    // Build "Light Fog Detector");
-                                    var instance = new LightFogDetector();
-                                    if (plts_comp_scale != default) {
-                                        instance.scaleMinimum = plts_comp_scale;
-                                    }
-                                    AddColour(instance.colour, feature);
-                                    AddStatus(instance.status, feature);
-                                    AddFeatureName(instance.featureName, feature);
-                                    AddInformation(instance.information, feature);
-                                    buffer["ps"] = ps101;
-
-                                    buffer["code"] = instance.GetType().Name;
-                                    buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance);
-                                    buffer["shape"] = current.SHAPE;
-                                    insert.Insert(buffer);
-                                    Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
-                                    convertedCount++;
-                                }
-                                else {
-                                    Logger.Current.DataError(objectid, tableName, longname, $"Unknown Light Type. Check catlit, sectr1, sectr2");
-                                }
-                            }
-                            // Handle lights without CATLIT
-                            
 
                         }
                         break;
@@ -597,6 +671,7 @@ namespace S100Framework.Applications
             }
             Logger.Current.DataTotalCount(tableName, recordCount, convertedCount);
         }
+
 
     }
 }

@@ -109,7 +109,7 @@ namespace S100Framework.Applications
                                     3 => condition.UnderReclamation,   //  under reclamation                                    
                                     4 => throw new IndexOutOfRangeException(),   //  wingless
                                     5 => throw new IndexOutOfRangeException(),   //  planned construction
-                                    -32767 => null,
+                                    -32767 =>null,
                                     _ => throw new IndexOutOfRangeException(),
                                 };
                             }
@@ -148,7 +148,7 @@ namespace S100Framework.Applications
                                     5 => throw new IndexOutOfRangeException(),  // awash
                                     6 => throw new IndexOutOfRangeException(),  // subject to inundation or flooding
                                     7 => throw new IndexOutOfRangeException(),  // floating
-                                    -32767 => null,
+                                    -32767 =>null,
                                     _ => throw new IndexOutOfRangeException(),
                                 };
                             }
@@ -288,7 +288,7 @@ namespace S100Framework.Applications
                                     52 => categoryOfSeaArea.Lake, // lake
                                     53 => categoryOfSeaArea.River, // river
                                     54 => categoryOfSeaArea.Reach,  // reach
-                                    -32767 => null,
+                                    -32767 =>null,
                                     _ => throw new IndexOutOfRangeException(),
                                 };
                             }
@@ -326,7 +326,7 @@ namespace S100Framework.Applications
                                     5 => categoryOfSlope.Pingo,  // pingo
                                     6 => categoryOfSlope.Cliff,  // cliff
                                     7 => categoryOfSlope.Scree,  // scree
-                                    -32767 => null,
+                                    -32767 =>null,
                                     _ => throw new IndexOutOfRangeException(),
                                 };
                             }
@@ -374,7 +374,7 @@ namespace S100Framework.Applications
                                     1 => true,  // radar conspicuous
                                     2 => false, // not radar conspicuous
                                     3 => true,  // radar conspicuous (has radar reflector)
-                                    -32767 => null,
+                                    -32767 =>null,
                                     _ => throw new IndexOutOfRangeException(),
                                 };
                             }
@@ -382,7 +382,7 @@ namespace S100Framework.Applications
                                 instance.visualProminence = convis switch {
                                     1 => visualProminence.VisuallyConspicuous,  // visually conspicuous
                                     2 => visualProminence.NotVisuallyConspicuous,  // not visually conspicuous                                
-                                    -32767 => null,
+                                    -32767 =>null,
                                     _ => throw new IndexOutOfRangeException(),
                                 };
                             }
@@ -437,7 +437,7 @@ namespace S100Framework.Applications
                                 instance.visualProminence = convis switch {
                                     1 => visualProminence.VisuallyConspicuous,  // visually conspicuous
                                     2 => visualProminence.NotVisuallyConspicuous,  // not visually conspicuous                                
-                                    -32767 => null,
+                                    -32767 =>null,
                                     _ => throw new IndexOutOfRangeException(),
                                 };
                             }

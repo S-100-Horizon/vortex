@@ -78,6 +78,9 @@ namespace S100Framework.Applications
                     informationtype.DeleteRows(query);
                 });
 
+                //Store(() => S57_MetadataA(source, destination, filter));
+                Store(() => S57_ProductCoverage(source, destination, filter)); 
+                Store(() => S57_AidsToNavigationP(source, destination, filter));
                 Store(() => S57_MilitaryFeatureA(source, destination, filter));
                 Store(() => S57_MilitaryFeaturesP(source, destination, filter));
                 Store(() => S57_TracksAndRoutesA(source, destination, filter));
@@ -92,7 +95,6 @@ namespace S100Framework.Applications
                 Store(() => S57_CulturalFeaturesP(source, destination, filter));
                 Store(() => S57_SeabedP(source, destination, filter));
                 Store(() => S57_ProductCoverage(source, destination, filter));
-                Store(() => S57_AidsToNavigationP(source, destination, filter));
                 Store(() => S57_PortsAndServicesP(source, destination, filter));
                 Store(() => S57_PortsAndServicesA(source, destination, filter));
                 Store(() => S57_PortsAndServicesL(source, destination, filter));
@@ -115,6 +117,9 @@ namespace S100Framework.Applications
             }
         }
     
+
+
+
 
         public static IEnumerable<T> SelectIn<T>(Geometry geometry, FeatureClass in_featureclass) where T : class {
 
@@ -159,7 +164,7 @@ namespace S100Framework.Applications
                             "11" => colour.Orange,
                             "12" => colour.Magenta,
                             "13" => colour.Pink,
-                            "-32767" => (colour)(-32767),
+                            "-32767" =>(colour)(-1),
                             _ => throw new IndexOutOfRangeException(),
                         };
                         if (e.HasValue) {
@@ -169,6 +174,47 @@ namespace S100Framework.Applications
                 }
             }
         }
+
+        private static void AddBuoyShape(buoyShape buoyShape, Feature feature) {
+            if (DBNull.Value != feature["BOYSHP"]) {
+                var boyShp = Convert.ToInt32(feature["BOYSHP"]);
+                if (boyShp != default) {
+                    buoyShape = boyShp switch {
+                        1 => buoyShape.Conical,   
+                        2 => buoyShape.Can,   
+                        3 => buoyShape.Spherical,
+                        4 => buoyShape.Pillar,
+                        5 => buoyShape.Spar,
+                        6 => buoyShape.Barrel,
+                        7 => buoyShape.Superbuoy,
+                        8 => buoyShape.IceBuoy,
+                        -32767 => (buoyShape)-1,
+                        _ => throw new IndexOutOfRangeException(),
+                    };
+                }
+            }
+
+        }
+
+
+        private static void AddColourPattern(colourPattern? colourPattern, Feature feature) {
+            //if (DBNull.Value != feature["CONDITION"]) {
+            //    var condtn = Convert.ToInt32(feature["CONDITION"]);
+            //    if (condtn != default) {
+            //        cndtn = condtn switch {
+            //            1 => condition.UnderConstruction,   //  under construction
+            //            2 => condition.Ruined,   //  ruined
+            //            3 => condition.UnderReclamation,   //  under reclamation
+            //            4 => throw new IndexOutOfRangeException(),   //  wingless
+            //            5 => condition.PlannedConstruction,   //  throw new IndexOutOfRangeException(),   //  planned construction
+            //            -32767 => null,
+            //            _ => throw new IndexOutOfRangeException(),
+            //        };
+            //    }
+            //}
+        }
+
+
 
         private static void AddOrientation(orientation orient, Feature feature) {
             if (DBNull.Value != feature["ORIENT"]) {
@@ -261,7 +307,7 @@ namespace S100Framework.Applications
                             "17" => status.Unwatched,
                             "18" => status.ExistenceDoubtful,
                             //"28" => ??, // TODO: what to do? STATUS 28
-                            "-32767" => (status)(-32767),
+                            "-32767" =>(status)(-1),
                             _ => throw new IndexOutOfRangeException(),
                         };
                         if (e.HasValue) {
@@ -292,20 +338,16 @@ namespace S100Framework.Applications
 
 
         private static void AddCondition(condition? cndtn, Feature feature) {
-
-
-
-
             if (DBNull.Value != feature["CONDITION"]) {
                 var condtn = Convert.ToInt32(feature["CONDITION"]);
                 if (condtn != default) {
                     cndtn = condtn switch {
                         1 => condition.UnderConstruction,   //  under construction
                         2 => condition.Ruined,   //  ruined
-                        3 => condition.UnderReclamation,   //  under reclamation                                    
-                        4 => condition.Wingless, //throw new IndexOutOfRangeException(),   //  wingless
+                        3 => condition.UnderReclamation,   //  under reclamation
+                        4 => throw new IndexOutOfRangeException(),   //  wingless
                         5 => condition.PlannedConstruction,   //  throw new IndexOutOfRangeException(),   //  planned construction
-                        -32767 => null,
+                        -32767 =>null,
                         _ => throw new IndexOutOfRangeException(),
                     };
                 }
@@ -318,7 +360,7 @@ namespace S100Framework.Applications
                 if (!string.IsNullOrEmpty(objnam)) {
                     featureName.Add(new featureName {
                         language = "eng",
-                        nameUsage = null,
+                        nameUsage = nameUsage.DefaultNameDisplay,
                         name = objnam,
                     });
                 }
