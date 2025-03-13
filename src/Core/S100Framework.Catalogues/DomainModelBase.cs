@@ -1,7 +1,6 @@
 using System;
 using System.Linq;
 using System.ComponentModel;
-using System.Runtime.Serialization;
 
 namespace S100Framework.DomainModel {
     [System.AttributeUsage(System.AttributeTargets.Property, AllowMultiple = false)]
@@ -50,7 +49,6 @@ namespace S100Framework.DomainModel {
 
     [System.SerializableAttribute()]
     public abstract class Node {
-        [IgnoreDataMember]
         public virtual string Code => string.Empty;
     }
 
