@@ -6,10 +6,9 @@ namespace S100Framework.YAML
 {
     public enum Primitive
     {
-        Point,
-        PointSet,
-        Curve,
-        Surface,
+        Point = 1,
+        Curve = 2,
+        Surface = 3,
     }
 
     public class Dataset
@@ -75,7 +74,7 @@ namespace S100Framework.YAML
     {
         public string? Name { get; set; }
 
-        public string? Location => Coordinate is null ? string.Empty : string.Format(CultureInfo.InvariantCulture, "{0},{1}", Coordinate.Y, Coordinate.X);
+        public string? Location => Coordinate is null ? string.Empty : string.Format(CultureInfo.InvariantCulture, "{0:0.0000000},{1:0.0000000}", Coordinate.Y, Coordinate.X);
 
         [YamlIgnore]
         public Coordinate? Coordinate { get; private set; } = new Coordinate(x, y);
@@ -84,7 +83,7 @@ namespace S100Framework.YAML
     public class PointSet(Coordinate[] points, double[] depths)
     {
         public string? Name { get; set; }
-        public string? Location => Points is null ? string.Empty : string.Join(",", Points.Select(e => string.Format(CultureInfo.InvariantCulture, "{0},{1}", e.Y, e.X)));
+        public string? Location => Points is null ? string.Empty : string.Join(",", Points.Select(e => string.Format(CultureInfo.InvariantCulture, "{0:0.0000000},{1:0.0000000}", e.Y, e.X)));
         public string? Z => Depths is null ? string.Empty : string.Join(",", Depths);
 
         [YamlIgnore]
@@ -120,7 +119,7 @@ namespace S100Framework.YAML
 
         public string? End => _end?.Name ?? null;
 
-        public string? Vertices => Coordinate is null ? string.Empty : string.Join(",", Coordinate.Select(e => string.Format(CultureInfo.InvariantCulture, "{0},{1}", e.Y, e.X)));
+        public string? Vertices => Coordinate is null ? string.Empty : string.Join(",", Coordinate.Select(e => string.Format(CultureInfo.InvariantCulture, "{0:0.0000000},{1:0.0000000}", e.Y, e.X)));
 
         [YamlIgnore]
         public Coordinate[]? Coordinate { get; private set; }
@@ -140,9 +139,9 @@ namespace S100Framework.YAML
     {
         public string? Name { get; set; }
 
-        public string? Exterior => ExteriorRing.Vertices;
+        public string? Exterior => ExteriorRing.Name;
 
-        public dynamic[]? Interior => InteriorRings.Length == 0 ? null : InteriorRings?.Select(e => new { Hole = e.Vertices }).ToArray();
+        public dynamic[]? Interior => InteriorRings.Length == 0 ? null : InteriorRings?.Select(e => new { Hole = e.Name }).ToArray();
 
         [YamlIgnore]
         public Curve ExteriorRing { get; set; } = exterior;

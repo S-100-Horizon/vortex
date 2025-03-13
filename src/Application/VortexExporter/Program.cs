@@ -62,7 +62,10 @@ namespace S100Framework.Applications
             var featureCatalogue = S100Framework.Catalogues.FeatureCatalogue.Catalogues.Single(e => e.ProductID.Equals("S-101"));
 
             // Create dataset
-            var dataset = new Dataset();
+            var dataset = new Dataset() {
+                CellName = "DK40349E.000",
+                Comment = "Test Dataset"
+            };
 
 
             // Informationtypes
@@ -104,11 +107,14 @@ namespace S100Framework.Applications
                     var geometry = Convert.ToString(current["name"]);
 
                     var name = Convert.ToString(current["code"]);
-                    var foid = $"{current.GetObjectID()}:1";
+                    var foid = $"110:{current.GetObjectID()}:1";       // Geodatastyrelsen (GST) 110 
 
-                    var prim = def.GetShapeType() switch {
+                    var shaptyp = def.GetShapeType();
+
+
+                    var prim = shaptyp switch {
                         GeometryType.Point => Primitive.Point,
-                        GeometryType.Multipoint => Primitive.PointSet,
+                        GeometryType.Multipoint => Primitive.Point,
                         GeometryType.Polyline => Primitive.Curve,
                         GeometryType.Polygon => Primitive.Surface,
                         _ => throw new InvalidOperationException(),
@@ -158,7 +164,7 @@ namespace S100Framework.YAML
                         break;
                     }
 
-                case Multipoint multiPoint: {   // Depths
+                case ArcGIS.Core.Geometry.Multipoint multiPoint: {   // Depths
                         var points = multiPoint.Points.Select(e => new Coordinate(e.X, e.Y)).ToArray();
                         var depths = multiPoint.Points.Select(e => e.Z.RoundToIHO()).ToArray();
 
@@ -166,14 +172,31 @@ namespace S100Framework.YAML
                         dataset.AddPointSet(pointSet);
                         break;
                     }
-                case Polyline polyline: {        // Curve
+                case ArcGIS.Core.Geometry.Polyline polyline: {        // Curve
                         var vertices = polyline.Points.Select(p => new Coordinate(p.X, p.Y)).ToArray();
-                        var curve = new Curve(vertices) { Name = name };
+
+                        Point first = default!;
+
+                        var firstVertice = (vertices.First().X, vertices.First().Y);
+                        var firstMatch = dataset.Points.FirstOrDefault(e => e.Coordinate.X == firstVertice.X && e.Coordinate.Y == firstVertice.Y);
+
+
+                        if (firstMatch != null) {
+                            first = new Point(firstMatch!.Coordinate!.X, firstMatch.Coordinate.Y) { Name = firstMatch.Name };
+                        }
+                        else {
+                            first = new Point(firstVertice.X, firstVertice.Y) {
+                                Name = $"{name}/0"
+                            };
+                            dataset.AddPoint(first);
+                        }
+
+                        var curve = new Curve(first, vertices) { Name = name };
 
                         dataset.AddCurve(curve);
                         break;
                     }
-                case Polygon polygon: {         // Surface
+                case ArcGIS.Core.Geometry.Polygon polygon: {         // Surface
                         if (polygon.ExteriorRingCount == 0 || polygon.ExteriorRingCount > 1)
                             throw new ArgumentException("Unsupported exterior ring count");
 
@@ -184,13 +207,18 @@ namespace S100Framework.YAML
                         // Insert starting coordinate at the end of coordinate[] to ensure its a closed polygon
                         exteriorCoordinates = [.. exteriorCoordinates, exteriorCoordinates[0]];
 
-                        var exteriorCurve = new Curve(exteriorCoordinates);
+                        var exteriorCurve = new Curve(exteriorCoordinates) {
+                            Name = $"{name}/0"
+                        };
+
+                        dataset.AddCurve(exteriorCurve);
 
                         var surface = new Surface(exteriorCurve) {
                             Name = name,
                         };
 
                         // Add interior rings
+                        int i = 1;
                         if (polygon.Parts.Count > 1) {
                             foreach (var interiorRing in polygon.Parts.Skip(1)) {
                                 var interiorCoordinates = interiorRing.Select(segment => new Coordinate(segment.StartPoint.X, segment.StartPoint.Y)).ToArray();
@@ -198,14 +226,18 @@ namespace S100Framework.YAML
                                 // Insert starting coordinate at the end of coordinate[] to ensure its a closed polygon
                                 interiorCoordinates = [.. interiorCoordinates, interiorCoordinates[0]];
 
-                                var interiorHole = new Curve(interiorCoordinates);
+                                var interiorCurve = new Curve(interiorCoordinates) {
+                                    Name = $"{name}/{i}",
+                                };
+                                i++;
+                                dataset.AddCurve(interiorCurve);
 
-                                surface.InteriorRings = [.. surface.InteriorRings, interiorHole];
+                                surface.InteriorRings = [.. surface.InteriorRings, interiorCurve];
                             }
                             ;
                         }
 
-                        dataset?.AddSurface(surface);
+                        dataset.AddSurface(surface);
 
                         break;
                     }

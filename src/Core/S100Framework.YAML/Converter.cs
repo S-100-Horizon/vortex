@@ -12,7 +12,7 @@ namespace S100Framework.YAML
     public static class Converter
     {
         public static string Serialize(object dataset) => Serializer.Serialize(dataset);
-
+        //public static object? Deserialize(string yaml) => Deserializer.Deserialize(yaml);
         private record YamlAttributeItem(string Name, object? Value, int? Id, int? Parent);
 
         private static readonly ISerializer Serializer = new SerializerBuilder()
@@ -23,6 +23,13 @@ namespace S100Framework.YAML
            .WithTypeConverter(new FeatureNodeConverter())           // Custom type converter for objects of FeatureNode
            .WithTypeConverter(new InformationNodeConverter())       // Custom type converter for objects of InformationNode
            .Build();
+
+
+        //private static readonly IDeserializer Deserializer = new DeserializerBuilder()
+        //   .WithNamingConvention(PascalCaseNamingConvention.Instance)
+        //   .WithTypeConverter(new FeatureNodeConverter())           // Custom type converter for objects of FeatureNode
+        //   .WithTypeConverter(new InformationNodeConverter())       // Custom type converter for objects of InformationNode
+        //   .Build();
 
         private static List<YamlAttributeItem> FlattenAttributesRecursively(object obj, ref int propertyId, int? parentId = null) {
             var attributes = new List<YamlAttributeItem>();
