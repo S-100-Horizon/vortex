@@ -905,12 +905,12 @@ namespace S100Framework
                                 builder.AppendLine($"\t\t\t{{");
                                 
                                 builder.AppendLine($"\t\t\t\tpublic {association}Association AddUpdateInformation(string id) {{");
-                                builder.AppendLine($"\t\t\t\t\tRefId[] refId = [new RefId {{");
+                                builder.AppendLine($"\t\t\t\tbase.RefIds = [.. base.RefIds, new RefId {{");
                                 builder.AppendLine($"\t\t\t\t\t\tRole = \"{role}\",");
                                 builder.AppendLine($"\t\t\t\t\t\tType = \"{featureType}\",");
                                 builder.AppendLine($"\t\t\t\t\t\tValue = id,");
                                 builder.AppendLine($"\t\t\t\t}}];");
-                                builder.AppendLine($"\t\t\t\tbase.RefIds = [.. refId];");
+
                                 builder.AppendLine($"\t\t\t\treturn this;");
                                 builder.AppendLine($"\t\t\t\t}}");
 
