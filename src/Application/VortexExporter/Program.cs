@@ -91,7 +91,6 @@ namespace S100Framework.Applications
 
                 dataset.AddInformation(information);
             }
-
             // Features
             foreach (var def in source.GetDefinitions<FeatureClassDefinition>()) {
                 using var fc = source.OpenDataset<FeatureClass>(def.GetName());
@@ -120,29 +119,36 @@ namespace S100Framework.Applications
                         _ => throw new InvalidOperationException(),
                     };
 
+                    try {
+                        var type = featureCatalogue.Assembly!.GetType($"{S100Framework.Catalogues.FeatureCatalogue.Namespace("S101", "FeatureTypes")}.{name}", true) ?? default;
 
-                    var type = featureCatalogue.Assembly!.GetType($"{S100Framework.Catalogues.FeatureCatalogue.Namespace("S101", "FeatureTypes")}.{name}", true)!;
+                        if (type == default)
+                            continue;
 
-                    var instance = DBNull.Value.Equals(current["json"]) ? null : System.Text.Json.JsonSerializer.Deserialize(Convert.ToString(current["json"])!, type);
+                        var instance = DBNull.Value.Equals(current["json"]) ? null : System.Text.Json.JsonSerializer.Deserialize(Convert.ToString(current["json"])!, type);
 
-                    var feature = new YAML.Feature {
-                        Name = name,
-                        Foid = foid,
-                        Prim = prim,
-                        Geometry = geometry,
-                        Attributes = (FeatureNode)instance!,
-                    };
+                        var feature = new YAML.Feature {
+                            Name = name,
+                            Foid = foid,
+                            Prim = prim,
+                            Geometry = geometry,
+                            Attributes = (FeatureNode)instance!,
+                        };
 
 
-                    dataset.AddFeature(feature);
-                    dataset.AddGeometry(current.GetShape(), geometry!);
+                        dataset.AddFeature(feature);
+                        dataset.AddGeometry(current.GetShape(), geometry!);
+                    } catch(Exception ex) {
+                        Console.WriteLine(ex.Message);
+                        Logger.Current.Error("Exception: {ex}", ex);
+                        continue;
+                    }
                 }
             }
 
             var yaml = S100Framework.YAML.Converter.Serialize(dataset);
 
-            //File.WriteAllText(IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "test.yaml"), yaml);
-
+            File.WriteAllText(IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "test.yaml"), yaml);
             //Console.WriteLine(yaml);
             return 0;
         }
