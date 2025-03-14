@@ -26,135 +26,146 @@ namespace S100Framework.Applications
         }
 
         static int Main(string[] args) {
-            var arguments = Parser.Default.ParseArguments<Options>(args)
-                               .WithParsed<Options>(o => {
-                               });
+            try {
+                var arguments = Parser.Default.ParseArguments<Options>(args)
+                                   .WithParsed<Options>(o => {
+                                   });
 
-            AppDomain.CurrentDomain.UnhandledException += (sender, e) => {
-                Logger.Current.Fatal((Exception)e.ExceptionObject, "UnhandledException");
-            };
-
-            Logger.Current.Information("VortexExporter.exe {args}", string.Join(" ", args));
-
-            if (arguments.Errors.Any())
-                return -1;
-
-            Esri.Initialize();
-
-            Func<Geodatabase> createGeodatabase = () => { throw new NotImplementedException(); };
-
-            arguments.WithParsed<Options>(o => {
-                var geodatabase = o.Geodatabase.ToLowerInvariant();
-
-                if (IO.File.Exists(geodatabase) && ".sde".Equals(IO.Path.GetExtension(geodatabase), StringComparison.InvariantCultureIgnoreCase)) {
-                    createGeodatabase = () => { return new Geodatabase(new DatabaseConnectionFile(new Uri(IO.Path.GetFullPath(geodatabase)))); };
-                }
-                else if (IO.Directory.Exists(geodatabase) && ".gdb".Equals(IO.Path.GetExtension(geodatabase), StringComparison.InvariantCultureIgnoreCase)) {
-                    createGeodatabase = () => { return new Geodatabase(new FileGeodatabaseConnectionPath(new Uri(IO.Path.GetFullPath(geodatabase)))); };
-                }
-                else
-                    throw new System.ArgumentOutOfRangeException(nameof(geodatabase));
-            });
-
-            var shape = GeometryEngine.Instance.ImportFromJson(JsonImportFlags.JsonImportDefaults, jsonSurface);
-
-            using Geodatabase source = createGeodatabase();
-
-            var featureCatalogue = S100Framework.Catalogues.FeatureCatalogue.Catalogues.Single(e => e.ProductID.Equals("S-101"));
-
-            // Create dataset
-            var dataset = new Dataset() {
-                CellName = "DK40349E.000",
-                Comment = "Test Dataset"
-            };
-
-
-            // Informationtypes
-            using var informationType = source.OpenDataset<Table>("s101.informationType");
-            using var informationCursor = informationType.Search(null, false);
-
-            while (informationCursor.MoveNext()) {
-                var current = informationCursor.Current;
-
-                var name = current["name"];
-                var code = current["code"].ToString()!;
-                var json = current["json"].ToString()!;
-
-                var type = featureCatalogue.Assembly!.GetType($"{S100Framework.Catalogues.FeatureCatalogue.Namespace("S101", "InformationTypes")}.{code}", true)!;
-
-                var instance = DBNull.Value.Equals(current["json"]) ? null : System.Text.Json.JsonSerializer.Deserialize(Convert.ToString(current["json"])!, type);
-
-                var information = new YAML.Information {
-                    Name = code,
-                    ID = $"{name}",
-                    Attributes = (InformationNode)instance!,
+                AppDomain.CurrentDomain.UnhandledException += (sender, e) => {
+                    Logger.Current.Fatal((Exception)e.ExceptionObject, "UnhandledException");
                 };
 
-                dataset.AddInformation(information);
-            }
-            // Features
-            foreach (var def in source.GetDefinitions<FeatureClassDefinition>()) {
-                using var fc = source.OpenDataset<FeatureClass>(def.GetName());
+                Logger.Current.Information("VortexExporter.exe {args}", string.Join(" ", args));
 
-                var filter = new SpatialQueryFilter {
-                    FilterGeometry = shape,
-                    SpatialRelationship = SpatialRelationship.Contains,
+                if (arguments.Errors.Any())
+                    return -1;
+
+                Esri.Initialize();
+
+                Func<Geodatabase> createGeodatabase = () => { throw new NotImplementedException(); };
+
+                arguments.WithParsed<Options>(o => {
+                    var geodatabase = o.Geodatabase.ToLowerInvariant();
+
+                    if (IO.File.Exists(geodatabase) && ".sde".Equals(IO.Path.GetExtension(geodatabase), StringComparison.InvariantCultureIgnoreCase)) {
+                        createGeodatabase = () => { return new Geodatabase(new DatabaseConnectionFile(new Uri(IO.Path.GetFullPath(geodatabase)))); };
+                    }
+                    else if (IO.Directory.Exists(geodatabase) && ".gdb".Equals(IO.Path.GetExtension(geodatabase), StringComparison.InvariantCultureIgnoreCase)) {
+                        createGeodatabase = () => { return new Geodatabase(new FileGeodatabaseConnectionPath(new Uri(IO.Path.GetFullPath(geodatabase)))); };
+                    }
+                    else
+                        throw new System.ArgumentOutOfRangeException(nameof(geodatabase));
+                });
+
+                var shape = GeometryEngine.Instance.ImportFromJson(JsonImportFlags.JsonImportDefaults, jsonSurface);
+                using Geodatabase source = createGeodatabase();
+
+                var featureCatalogue = S100Framework.Catalogues.FeatureCatalogue.Catalogues.Single(e => e.ProductID.Equals("S-101"));
+
+                // Create dataset
+                var dataset = new Dataset() {
+                    CellName = "DK40349E.000",
+                    Comment = "Test Dataset"
                 };
 
-                using var cursor = fc.Search(filter, true);
-                while (cursor.MoveNext()) {
-                    var current = (ArcGIS.Core.Data.Feature)cursor.Current;
-                    var geometry = Convert.ToString(current["name"]);
 
-                    var name = Convert.ToString(current["code"]);
-                    var foid = $"110:{current.GetObjectID()}:1";       // Geodatastyrelsen (GST) 110 
+                // Informationtypes
+                using var informationType = source.OpenDataset<Table>("s101.informationType");
+                using var informationCursor = informationType.Search(null, false);
 
-                    var shaptyp = def.GetShapeType();
+                while (informationCursor.MoveNext()) {
+                    var current = informationCursor.Current;
 
+                    var name = current["name"];
+                    var code = current["code"].ToString()!;
+                    var json = current["json"].ToString()!;
 
-                    var prim = shaptyp switch {
-                        GeometryType.Point => Primitive.Point,
-                        GeometryType.Multipoint => Primitive.Point,
-                        GeometryType.Polyline => Primitive.Curve,
-                        GeometryType.Polygon => Primitive.Surface,
-                        _ => throw new InvalidOperationException(),
+                    var type = featureCatalogue.Assembly!.GetType($"{S100Framework.Catalogues.FeatureCatalogue.Namespace("S101", "InformationTypes")}.{code}", true)!;
+
+                    var instance = DBNull.Value.Equals(current["json"]) ? null : System.Text.Json.JsonSerializer.Deserialize(Convert.ToString(current["json"])!, type);
+
+                    var information = new YAML.Information {
+                        Name = code,
+                        ID = $"{name}",
+                        Attributes = (InformationNode)instance!,
                     };
 
-                    try {
-                        var type = featureCatalogue.Assembly!.GetType($"{S100Framework.Catalogues.FeatureCatalogue.Namespace("S101", "FeatureTypes")}.{name}", true) ?? default;
+                    dataset.AddInformation(information);
+                }
+                // Features
+                foreach (var def in source.GetDefinitions<FeatureClassDefinition>()) {
+                    using var fc = source.OpenDataset<FeatureClass>(def.GetName());
 
-                        if (type == default)
-                            continue;
+                    var filter = new SpatialQueryFilter {
+                        FilterGeometry = shape,
+                        SpatialRelationship = SpatialRelationship.Relation,
+                        SpatialRelationshipDescription = "T*****FF*"
+                    };
 
-                        var instance = DBNull.Value.Equals(current["json"]) ? null : System.Text.Json.JsonSerializer.Deserialize(Convert.ToString(current["json"])!, type);
+                    var id = def.GetName().ToLowerInvariant() switch {
+                        "pointset" => 2,
+                        _ => 1
+                    };
 
-                        var feature = new YAML.Feature {
-                            Name = name,
-                            Foid = foid,
-                            Prim = prim,
-                            Geometry = geometry,
-                            Attributes = (FeatureNode)instance!,
+                    using var cursor = fc.Search(filter, true);
+                    while (cursor.MoveNext()) {
+                        var current = (ArcGIS.Core.Data.Feature)cursor.Current;
+                        var geometry = Convert.ToString(current["name"]);
+
+                        var name = Convert.ToString(current["code"]);
+                        var foid = $"110:{current.GetObjectID()}:{id}";       // Geodatastyrelsen (GST) 110 
+
+                        var shaptyp = def.GetShapeType();
+
+
+                        var prim = shaptyp switch {
+                            GeometryType.Point => Primitive.Point,
+                            GeometryType.Multipoint => Primitive.Point,
+                            GeometryType.Polyline => Primitive.Curve,
+                            GeometryType.Polygon => Primitive.Surface,
+                            _ => throw new InvalidOperationException(),
                         };
 
+                        try {
+                            var type = featureCatalogue.Assembly!.GetType($"{S100Framework.Catalogues.FeatureCatalogue.Namespace("S101", "FeatureTypes")}.{name}", true) ?? default;
 
-                        dataset.AddFeature(feature);
-                        dataset.AddGeometry(current.GetShape(), geometry!);
-                    } catch(Exception ex) {
-                        Console.WriteLine(ex.Message);
-                        Logger.Current.Error("Exception: {ex}", ex);
-                        continue;
+                            if (type == default)
+                                continue;
+
+                            var instance = DBNull.Value.Equals(current["json"]) ? null : System.Text.Json.JsonSerializer.Deserialize(Convert.ToString(current["json"])!, type);
+
+                            var feature = new YAML.Feature {
+                                Name = name,
+                                Foid = foid,
+                                Prim = prim,
+                                Geometry = geometry,
+                                Attributes = (FeatureNode)instance!,
+                            };
+
+
+                            dataset.AddFeature(feature);
+                            dataset.AddGeometry(current.GetShape(), geometry!);
+                        }
+                        catch (Exception ex) {
+                            Console.WriteLine(ex.Message);
+                            Logger.Current.Error("Exception: {ex}", ex);
+                            continue;
+                        }
                     }
                 }
+
+                var yaml = S100Framework.YAML.Converter.Serialize(dataset);
+
+                File.WriteAllText(IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), $"DK40349E.yaml"), yaml);
+                //Console.WriteLine(yaml);
+                return 0;
             }
-
-            var yaml = S100Framework.YAML.Converter.Serialize(dataset);
-
-            File.WriteAllText(IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), $"DK40349E.yaml"), yaml);
-            //Console.WriteLine(yaml);
-            return 0;
+            catch (Exception ex) {
+                Console.WriteLine(ex.Message);
+                return -1;
+            }
         }
-
-        private const string jsonSurface = "{\"rings\":[[[12.500000000000057,54.701546510000071],[12.473288500000081,54.694891000000041],[12.442108800000085,54.687110700000062],[12.432361900000046,54.679033900000093],[12.416730400000063,54.666072400000076],[12.409326500000077,54.659929600000055],[12.402119500000083,54.653947900000048],[12.397816900000066,54.650375800000063],[12.389526800000056,54.643491100000062],[12.377257500000042,54.633296100000052],[12.375878300000068,54.63214970000007],[12.370052200000089,54.627306100000055],[12.364987100000064,54.623094000000094],[12.36265190000006,54.621151700000041],[12.35901460000008,54.618125900000052],[12.354938100000084,54.614734100000078],[12.34944610000008,54.61016340000009],[12.341457400000081,54.603512600000045],[12.33932800000008,54.601739400000042],[12.336247900000046,54.599174100000084],[12.333286100000066,54.596707000000094],[12.324458600000071,54.589351600000043],[12.317033200000083,54.583162000000073],[12.301542700000084,54.570241900000042],[12.273327800000061,54.546682800000042],[12.261228500000072,54.536569400000076],[12.241313200000036,54.519909700000085],[12.240820000000042,54.519496900000092],[12.239674600000058,54.518538300000046],[12.235963500000082,54.515431600000056],[12.22853450000008,54.50921100000005],[12.217540970000073,54.500000000000057],[12.000000000000057,54.500000000000057],[12.000000000000057,55.000000000000057],[12.500000000000057,55.000000000000057],[12.500000000000057,54.701546510000071]]],\"spatialReference\":{\"wkid\":4326,\"latestWkid\":4326,\"xyTolerance\":3.5355339e-08,\"zTolerance\":0.001,\"mTolerance\":0.001,\"falseX\":-400,\"falseY\":-400,\"xyUnits\":99999999.999999985,\"falseZ\":-100000,\"zUnits\":10000,\"falseM\":-100000,\"mUnits\":10000}}";
+        private const string jsonSurface = "{\"rings\":[[[12.5,54.7015465],[12.4732885,54.694891],[12.4421088,54.6871107],[12.4323619,54.6790339],[12.4167304,54.6660724],[12.4093265,54.6599296],[12.4021195,54.6539479],[12.3978169,54.6503758],[12.3895268,54.6434911],[12.3772575,54.6332961],[12.3758783,54.6321497],[12.3700522,54.6273061],[12.3649871,54.623094],[12.3626519,54.6211517],[12.3590146,54.6181259],[12.3549381,54.6147341],[12.3494461,54.6101634],[12.3414574,54.6035126],[12.339328,54.6017394],[12.3362479,54.5991741],[12.3332861,54.596707],[12.3244586,54.5893516],[12.3170332,54.583162],[12.3015427,54.5702419],[12.2733278,54.5466828],[12.2612285,54.5365694],[12.2413132,54.5199097],[12.24082,54.5194969],[12.2396746,54.5185383],[12.2359635,54.5154316],[12.2285345,54.509211],[12.217541,54.5],[12.0,54.5],[12.0,55.0],[12.5,55.0],[12.5,54.7015465]]],\"spatialReference\":{\"wkid\":4326,\"latestWkid\":4326,\"xyTolerance\":3.5355339e-08,\"zTolerance\":0.001,\"mTolerance\":0.001,\"falseX\":-400,\"falseY\":-400,\"xyUnits\":99999999.99999999,\"falseZ\":-100000,\"zUnits\":10000,\"falseM\":-100000,\"mUnits\":10000}}";
     }
 }
 
