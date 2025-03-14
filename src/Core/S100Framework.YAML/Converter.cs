@@ -6,6 +6,7 @@ using YamlDotNet.Core;
 using YamlDotNet.Core.Events;
 using System.Reflection;
 using System.Runtime.Serialization;
+using System.Globalization;
 
 namespace S100Framework.YAML
 {
@@ -13,15 +14,14 @@ namespace S100Framework.YAML
     {
         public static string Serialize(object dataset) => Serializer.Serialize(dataset);
         //public static object? Deserialize(string yaml) => Deserializer.Deserialize(yaml);
-        private record YamlAttributeItem(string Name, object? Value, int? Id, int? Parent);
+        private record YamlAttributeItem(string Name, string? Value, int? Id, int? Parent);
 
         private static readonly ISerializer Serializer = new SerializerBuilder()
            .WithNamingConvention(PascalCaseNamingConvention.Instance)
            .ConfigureDefaultValuesHandling(DefaultValuesHandling.OmitDefaults)
            .WithIndentedSequences()
            .DisableAliases()
-           .WithTypeConverter(new FeatureNodeConverter())           // Custom type converter for objects of FeatureNode
-           .WithTypeConverter(new InformationNodeConverter())       // Custom type converter for objects of InformationNode
+           .WithTypeConverter(new NodeConverter())                   // Custom type converter for objects of Node                                                  //.WithTypeConverter(new InformationNodeConverter())               // Custom type converter for objects of InformationNode
            .Build();
 
 
@@ -49,11 +49,14 @@ namespace S100Framework.YAML
                         break;
 
                     case Type t when t == typeof(decimal):
-                        attributes.Add(new(property.Name, Convert.ToDecimal(propertyValue), null, parentId));
+                        var value = (decimal)propertyValue!;
+
+                        attributes.Add(new(property.Name, value.ToString(CultureInfo.InvariantCulture), null, parentId));
                         break;
 
                     case Type t when t.IsEnum:
-                        attributes.Add(new(property.Name, Convert.ToInt32(propertyValue), null, parentId));
+                        //var enumValue = propertyValue?.ToString() ?? "-1";
+                        attributes.Add(new(property.Name, propertyValue?.ToString(), null, parentId));
                         break;
 
                     case Type t when t.IsPrimitive:
@@ -71,7 +74,7 @@ namespace S100Framework.YAML
                         break;
 
                     case Type t when t.IsValueType:
-                        attributes.Add(new(property.Name, Convert.ToInt32(propertyValue), null, parentId));
+                        attributes.Add(new(property.Name, propertyValue?.ToString(), null, parentId));
                         break;
                     default:
                         throw new ArgumentException("Invalid property type provided: {propertyType}", nameof(property.PropertyType));
@@ -106,22 +109,27 @@ namespace S100Framework.YAML
                         break;
 
                     case Type t when t == typeof(decimal):
-                        attributes.Add(new(propertyName, Convert.ToDecimal(item), null, parentId));
+                        var value = (decimal)item!;
+
+                        attributes.Add(new(propertyName, value.ToString(CultureInfo.InvariantCulture), null, parentId));
                         break;
 
                     case Type t when t.IsEnum:
-                        attributes.Add(new(propertyName, Convert.ToInt32(item), null, parentId));
+                        attributes.Add(new(propertyName, item?.ToString(), null, parentId));
                         break;
 
                     case Type t when t.IsPrimitive:
                         attributes.Add(new(propertyName, item.ToString(), null, parentId));
                         break;
+
                     case Type t when t.IsClass:
                         attributes.AddRange(HandleComplexObject(item, ref propertyId, parentId));
                         break;
+
                     case Type t when t.IsValueType:
-                        attributes.Add(new(propertyName, Convert.ToInt32(propertyValue), null, parentId));
+                        attributes.Add(new(propertyName, item?.ToString(), null, parentId));
                         break;
+
                     case Type t when typeof(IEnumerable).IsAssignableFrom(t):       // no support for multidimensional arrays
                     default:
                         throw new ArgumentException("Invalid property type provided: {propertyType}", nameof(itemType));
@@ -131,14 +139,14 @@ namespace S100Framework.YAML
             return attributes;
         }
 
-        private class FeatureNodeConverter : IYamlTypeConverter
+        private class NodeConverter : IYamlTypeConverter
         {
-            public bool Accepts(Type type) => typeof(FeatureNode).IsAssignableFrom(type);
+            public bool Accepts(Type type) => typeof(Node).IsAssignableFrom(type);
 
             public object? ReadYaml(IParser parser, Type type, ObjectDeserializer rootDeserializer) => throw new NotImplementedException("Deserialization is not supported.");
 
             public void WriteYaml(IEmitter emitter, object? value, Type type, ObjectSerializer serializer) {
-                if (value is not FeatureNode) return;
+                if (value is not Node) return;
 
                 var propertyId = 1;
 
@@ -154,50 +162,7 @@ namespace S100Framework.YAML
 
                     if (attr.Value is not null) {
                         emitter.Emit(new Scalar("Value"));
-                        emitter.Emit(new Scalar(attr.Value.ToString()!));   // Todo: Handle empty strings
-                    }
-
-                    if (attr.Id.HasValue) {
-                        emitter.Emit(new Scalar("id"));
-                        emitter.Emit(new Scalar(attr.Id.Value.ToString()));
-                    }
-
-                    if (attr.Parent.HasValue) {
-                        emitter.Emit(new Scalar("parent"));
-                        emitter.Emit(new Scalar(attr.Parent.Value.ToString()));
-                    }
-
-                    emitter.Emit(new MappingEnd());
-                }
-
-                emitter.Emit(new SequenceEnd());
-            }
-        }
-        private class InformationNodeConverter : IYamlTypeConverter
-        {
-            public bool Accepts(Type type) => typeof(InformationNode).IsAssignableFrom(type);
-
-            public object? ReadYaml(IParser parser, Type type, ObjectDeserializer rootDeserializer) => throw new NotImplementedException("Deserialization is not supported.");
-
-            public void WriteYaml(IEmitter emitter, object? value, Type type, ObjectSerializer serializer) {
-                if (value is not InformationNode) return;
-
-                var propertyId = 1;
-
-                var flattenedAttributes = FlattenAttributesRecursively(value, ref propertyId);
-
-                emitter.Emit(new SequenceStart(null, null, true, SequenceStyle.Block));     // YAML List
-
-                foreach (var attr in flattenedAttributes) {                                    // Omit 'Code' property from InformationNodes
-
-                    emitter.Emit(new MappingStart());                                       // YAML Object
-
-                    emitter.Emit(new Scalar("Name"));                                       // YAML Primitive type
-                    emitter.Emit(new Scalar(attr.Name));
-
-                    if (attr.Value is not null) {
-                        emitter.Emit(new Scalar("Value"));
-                        emitter.Emit(new Scalar(attr.Value.ToString()!));   // Todo: Handle empty strings
+                        emitter.Emit(new Scalar(attr.Value));   // Todo: Handle empty strings
                     }
 
                     if (attr.Id.HasValue) {

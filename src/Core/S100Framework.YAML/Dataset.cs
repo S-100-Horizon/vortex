@@ -74,7 +74,7 @@ namespace S100Framework.YAML
     {
         public string? Name { get; set; }
 
-        public string? Location => Coordinate is null ? string.Empty : string.Format(CultureInfo.InvariantCulture, "{0:0.0000000},{1:0.0000000}", Coordinate.Y, Coordinate.X);
+        public string? Location => Coordinate is null ? string.Empty : string.Format(CultureInfo.InvariantCulture, "{0:0.0000000},{1:0.0000000}", Coordinate.X, Coordinate.Y);
 
         [YamlIgnore]
         public Coordinate? Coordinate { get; private set; } = new Coordinate(x, y);
@@ -83,8 +83,8 @@ namespace S100Framework.YAML
     public class PointSet(Coordinate[] points, double[] depths)
     {
         public string? Name { get; set; }
-        public string? Location => Points is null ? string.Empty : string.Join(",", Points.Select(e => string.Format(CultureInfo.InvariantCulture, "{0:0.0000000},{1:0.0000000}", e.Y, e.X)));
-        public string? Z => Depths is null ? string.Empty : string.Join(",", Depths);
+        public string? Location => Points is null ? string.Empty : string.Join(",", Points.Select(e => string.Format(CultureInfo.InvariantCulture, "{0:0.0000000},{1:0.0000000}", e.X, e.Y)));
+        public string? Z => Depths is null ? string.Empty : string.Join(",", Depths.Select(e => e.ToString(CultureInfo.InvariantCulture)));
 
         [YamlIgnore]
         public double[] Depths { get; private set; } = depths;
@@ -119,7 +119,7 @@ namespace S100Framework.YAML
 
         public string? End => _end?.Name ?? null;
 
-        public string? Vertices => Coordinate is null ? string.Empty : string.Join(",", Coordinate.Select(e => string.Format(CultureInfo.InvariantCulture, "{0:0.0000000},{1:0.0000000}", e.Y, e.X)));
+        public string? Vertices => Coordinate is null ? string.Empty : string.Join(",", Coordinate.Select(e => string.Format(CultureInfo.InvariantCulture, "{0:0.0000000},{1:0.0000000}", e.X, e.Y)));
 
         [YamlIgnore]
         public Coordinate[]? Coordinate { get; private set; }
@@ -162,7 +162,7 @@ namespace S100Framework.YAML
         public string? ID { get; set; }
         public InformationNode? Attributes { get; set; }
     }
-    
+
     public class Feature
     {
         public string? Name { get; set; }
@@ -178,7 +178,7 @@ namespace S100Framework.YAML
             return this;
         }
     }
-    
+
     public class Association()
     {
         public string? To { get; set; }
