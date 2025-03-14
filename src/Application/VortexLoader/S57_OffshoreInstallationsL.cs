@@ -55,7 +55,7 @@ namespace S100Framework.Applications
                                 4	telephone
                                 5	telegraph
                                 6	mooring cable/chain
-                                -32767	Unknown
+                                -1	Unknown
                              */
 
 
@@ -65,7 +65,7 @@ namespace S100Framework.Applications
                                     3 => categoryOfCable.TransmissionLine,
                                     4 => categoryOfCable.TelecommunicationsCable, //CATCBL value 4 (telephone) will convert to category of cable value 10 (telecommunications cable).
                                     5 => categoryOfCable.MooringCable,
-                                    -32767 => null,
+                                    -32767 =>null,
                                     _ => throw new IndexOutOfRangeException(),
                                 };
                             }

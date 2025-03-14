@@ -52,7 +52,7 @@ namespace S100Framework.Applications
                                     5 => natureOfSurface.Pebbles,
                                     9 => natureOfSurface.Coral,
                                     11 => natureOfSurface.Shells,
-                                    -32767 => (natureOfSurface)(-32767),
+                                    -32767 =>(natureOfSurface)(-1),
                                     _ => null //lthrow new IndexOutOfRangeException($"catcoa to natureOfSurface: {catcoa}")
                                 };  
                                 if (e.HasValue) {
@@ -74,7 +74,7 @@ namespace S100Framework.Applications
                                     //9 => categoryOfCoastline., //CORAL REEF
                                     //10 => categoryOfCoastline, // ICE COAST
                                     //11 => categoryOfCoastline, // SHELLY SHORE
-                                    -32767 => (categoryOfCoastline)(-32767),
+                                    -32767 =>(categoryOfCoastline)(-1),
                                     _ => throw new IndexOutOfRangeException($"catcoa to categoryOfCoastLine: {catcoa}")
                                 };
                                 if (e.HasValue) {
@@ -109,7 +109,7 @@ namespace S100Framework.Applications
 
                             /*
                                 NAUTICAL_ENC_CATSLC
-			                    -32767: Unknown
+			                    -1: Unknown
 			                    1: breakwater
 			                    2: groyne (groin)
 			                    3: mole
@@ -148,7 +148,7 @@ namespace S100Framework.Applications
                                     15 => categoryOfShorelineConstruction.SolidFaceWharf, 
                                     16 => categoryOfShorelineConstruction.OpenFaceWharf, 
                                     17 => categoryOfShorelineConstruction.LogRamp, 
-                                    -32767 => (categoryOfShorelineConstruction)(-32767),
+                                    -32767 =>(categoryOfShorelineConstruction)(-1),
                                     _ => throw new IndexOutOfRangeException($"catslc to categoryOfShorelineConstruction: {catslc}")
                                 };
                                 if (e.HasValue) {

@@ -40,7 +40,7 @@ namespace TestNisImporter
 
             StringBuilder csSubtypes = new StringBuilder();
 
-            var featureClass = source.OpenDataset<FeatureClass>("NaturalFeaturesP");
+            var featureClass = source.OpenDataset<FeatureClass>("SeabedL");
 
             var subtypes = featureClass.GetDefinition().GetSubtypes();
 
