@@ -1,10 +1,8 @@
 ﻿using ArcGIS.Core.Data;
+using S100Framework.Applications.S57.esri;
 using S100Framework.DomainModel;
 using S100Framework.DomainModel.S101;
 using S100Framework.DomainModel.S101.FeatureTypes;
-using System;
-using System.Reflection.Metadata.Ecma335;
-using VortexLoader.S57.esri;
 
 namespace S100Framework.Applications
 {
@@ -13,11 +11,11 @@ namespace S100Framework.Applications
         private static void S57_DangersP(Geodatabase source, Geodatabase target, QueryFilter filter) {
             var tableName = "DangersP";
 
-            var dangersp = source.OpenDataset<FeatureClass>("DangersP");
+            var dangersp = source.OpenDataset<FeatureClass>(source.GetName("DangersP"));
 
             //var dredged = source.OpenDataset<FeatureClass>("Depare");
 
-            using var featureClass = target.OpenDataset<FeatureClass>("point");
+            using var featureClass = target.OpenDataset<FeatureClass>(target.GetName("point"));
             
 
             using var buffer = featureClass.CreateRowBuffer();
@@ -36,7 +34,7 @@ namespace S100Framework.Applications
                 var objectid = current.OBJECTID ?? default;
                 var globalid = current.GLOBALID;
                 var subtype = current.FCSUBTYPE ?? default;
-                var catObs = current.CATOBS ?? -32767;
+                var catObs = current.CATOBS ?? -1;
                 var valsou = current.VALSOU ?? default;
                 var watlev = current.WATLEV ?? default;
                 var plts_comp_scale = current.PLTS_COMP_SCALE ?? default;
@@ -48,7 +46,7 @@ namespace S100Framework.Applications
                 // value, only if the attribute value of sounding for the feature instance is populated with an empty(null) value
                 // and the attribute height, if an allowable attribute for the feature, is not populated.
                 // S-101 Annex A_DCEG Edition 1.5.0_Draft for Edition 2.0.0.pdf: p.771
-                //Decimal defaultClearanceDepth = -32767;
+                //Decimal defaultClearanceDepth = -1;
 
                 switch (subtype) {
                     case 1: { // CTNARE
@@ -59,13 +57,17 @@ namespace S100Framework.Applications
                                 instance.scaleMinimum = plts_comp_scale;
                             }
 
+                            if (current.CONDTN.HasValue) {
+                                instance.condition = GetCondition(current.CONDTN.Value);
+                            }
 
+                            if (current.STATUS != default) {
+                                instance.status = GetSingleStatus(current.STATUS);
+                            }
 
-                            AddStatus(instance.status, feature);
                             AddInformation(instance.information, feature);
 
                             buffer["ps"] = ps101;
-
                             buffer["code"] = instance.GetType().Name;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance);
                             buffer["shape"] = current.SHAPE;
@@ -84,8 +86,15 @@ namespace S100Framework.Applications
                                 instance.scaleMinimum = plts_comp_scale;
                             }
 
-                            AddStatus(instance.status, feature);
-                            AddFeatureName(instance.featureName, feature);
+                            if (current.CONDTN.HasValue) {
+                                instance.condition = GetCondition(current.CONDTN.Value);
+                            }
+
+                            if (current.STATUS != default) {
+                                instance.status = GetStatus(current.STATUS);
+                            }
+
+                            instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
                             AddInformation(instance.information, feature);
 
                             buffer["ps"] = ps101;
@@ -113,8 +122,15 @@ namespace S100Framework.Applications
                                 var foulGround = new FoulGround();
 
                                 //foulGround.verticalUncertainty = 
-                                AddStatus(foulGround.status, feature);
-                                AddFeatureName(foulGround.featureName, feature);
+                                if (current.STATUS != default) {
+                                    foulGround.status = GetStatus(current.STATUS);
+                                }
+
+                                if (current.PLTS_COMP_SCALE.HasValue)
+                                    foulGround.scaleMinimum = current.PLTS_COMP_SCALE;
+
+                                foulGround.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
+
                                 AddInformation(foulGround.information, feature);
                                 buffer["ps"] = ps101;
 
@@ -170,8 +186,9 @@ namespace S100Framework.Applications
                                 21 => categoryOfObstruction.ActiveSubmarineVolcano,
                                 22 => categoryOfObstruction.SharkNet,
                                 23 => categoryOfObstruction.Mangrove,
-                                -32767 => (categoryOfObstruction)(-32767),
-                                // TODO: QUESTION: how to handle -32767 on a required attribute without an S-101 equivalent "unknown". Illegal value assigned. MUST be fixed.
+                                -32767 => (categoryOfObstruction)(-1),
+                                -1 => (categoryOfObstruction)(-1),
+                                // TODO: QUESTION: how to handle -1 on a required attribute without an S-101 equivalent "unknown". Illegal value assigned. MUST be fixed.
 
                                 _ => throw new IndexOutOfRangeException(),
 
@@ -192,8 +209,8 @@ namespace S100Framework.Applications
                                 5 => waterLevelEffect.Awash,  // awash
                                 6 => waterLevelEffect.SubjectToInundationOrFlooding,  // subject to inundation or flooding
                                 7 => waterLevelEffect.Floating,  // floating
-                                -32767 => (waterLevelEffect)(-32767),
-                                // TODO: QUESTION: how to handle -32767 on a required attribute without an S-101 equivalent "unknown". Illegal value assigned. MUST be fixed.
+                                -32767 =>(waterLevelEffect)(-1),
+                                // TODO: QUESTION: how to handle -1 on a required attribute without an S-101 equivalent "unknown". Illegal value assigned. MUST be fixed.
 
                                 _ => throw new IndexOutOfRangeException(),
                             };
@@ -202,8 +219,15 @@ namespace S100Framework.Applications
                             if (current.PLTS_COMP_SCALE.HasValue)
                                 obstruction.scaleMinimum = current.PLTS_COMP_SCALE;
 
-                            AddStatus(obstruction.status, feature);
-                            AddFeatureName(obstruction.featureName, feature);
+                            if (current.CONDTN.HasValue) {
+                                obstruction.condition = GetCondition(current.CONDTN.Value);
+                            }
+
+                            if (current.STATUS != default) {
+                                obstruction.status = GetStatus(current.STATUS);
+                            }
+
+                            obstruction.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
                             AddInformation(obstruction.information, feature);
 
                             buffer["ps"] = ps101;
@@ -234,7 +258,7 @@ namespace S100Framework.Applications
                             // 5   awash
                             // 6   subject to inundation or flooding
                             // 7   floating
-                            // -32767  Unknown
+                            // -1  Unknown
 
 
                             if (current.WATLEV.HasValue) {
@@ -246,8 +270,8 @@ namespace S100Framework.Applications
                                     5 => waterLevelEffect.Awash,  // awash
                                     6 => waterLevelEffect.SubjectToInundationOrFlooding,  // subject to inundation or flooding
                                     7 => waterLevelEffect.Floating,  // floating
-                                    -32767 => (waterLevelEffect)(-32767),
-                                    // TODO: QUESTION: how to handle -32767 on a required attribute without an S-101 equivalent "unknown". Illegal value assigned. MUST be fixed.
+                                    -32767 =>(waterLevelEffect)(-1),
+                                    // TODO: QUESTION: how to handle -1 on a required attribute without an S-101 equivalent "unknown". Illegal value assigned. MUST be fixed.
                                     _ => throw new IndexOutOfRangeException(),
                                 };
                             }
@@ -256,8 +280,13 @@ namespace S100Framework.Applications
                             if (current.PLTS_COMP_SCALE.HasValue) {
                                 uwtroc.scaleMinimum = current.PLTS_COMP_SCALE;
                             }
-                            AddStatus(uwtroc.status, feature);
-                            AddFeatureName(uwtroc.featureName, feature);
+
+                              if (current.STATUS != default) {
+                                uwtroc.status = GetSingleStatus(current.STATUS);
+                            }
+
+
+
                             AddInformation(uwtroc.information, feature);
 
                             buffer["ps"] = ps101;
@@ -285,8 +314,8 @@ namespace S100Framework.Applications
                                     3 => categoryOfWaterTurbulence.Overfalls,
                                     4 => categoryOfWaterTurbulence.TideRips,
                                     5 => categoryOfWaterTurbulence.Bombora,
-                                    - 32767 => (categoryOfWaterTurbulence)(-32767),
-                                    // TODO: QUESTION: how to handle -32767 on a required attribute without an S-101 equivalent "unknown". Illegal value assigned. MUST be fixed.
+                                    - 32767 => (categoryOfWaterTurbulence)(-1),
+                                    // TODO: QUESTION: how to handle -1 on a required attribute without an S-101 equivalent "unknown". Illegal value assigned. MUST be fixed.
                                     _ => throw new IndexOutOfRangeException(),
                                 };
                             }
@@ -295,7 +324,7 @@ namespace S100Framework.Applications
                                 instance.scaleMinimum = current.PLTS_COMP_SCALE;
                             }
 
-                            AddFeatureName(instance.featureName, feature);
+                            instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
                             AddInformation(instance.information, feature);
 
                             buffer["ps"] = ps101;
@@ -325,8 +354,8 @@ namespace S100Framework.Applications
                                     3 => categoryOfWreck.DistributedRemainsOfWreck,
                                     4 => categoryOfWreck.WreckShowingMastMasts,
                                     5 => categoryOfWreck.WreckShowingAnyPortionOfHullOrSuperstructure,
-                                    - 32767 => (categoryOfWreck)(-32767),
-                                    // TODO: QUESTION: how to handle -32767 on a required attribute without an S-101 equivalent "unknown". Illegal value assigned. MUST be fixed.
+                                    - 32767 => (categoryOfWreck)(-1),
+                                    // TODO: QUESTION: how to handle -1 on a required attribute without an S-101 equivalent "unknown". Illegal value assigned. MUST be fixed.
                                     _ => throw new IndexOutOfRangeException(),
                                 };
                             }
@@ -341,8 +370,8 @@ namespace S100Framework.Applications
                                     5 => waterLevelEffect.Awash,  // awash
                                     6 => waterLevelEffect.SubjectToInundationOrFlooding,  // subject to inundation or flooding
                                     7 => waterLevelEffect.Floating,  // floating
-                                    -32767 => (waterLevelEffect)(-32767),
-                                    // TODO: QUESTION: how to handle -32767 on a required attribute without an S-101 equivalent "unknown". Illegal value assigned. MUST be fixed.
+                                    -32767 =>(waterLevelEffect)(-1),
+                                    // TODO: QUESTION: how to handle -1 on a required attribute without an S-101 equivalent "unknown". Illegal value assigned. MUST be fixed.
                                     _ => throw new IndexOutOfRangeException(),
                                 };
                             }
@@ -351,8 +380,12 @@ namespace S100Framework.Applications
                             if (current.PLTS_COMP_SCALE.HasValue) {
                                 instance.scaleMinimum = current.PLTS_COMP_SCALE.Value;
                             }
-                            AddStatus(instance.status, feature);
-                            AddFeatureName(instance.featureName, feature);
+
+                            if (current.STATUS != default) {
+                                instance.status = GetStatus(current.STATUS);
+                            }
+
+                            instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
                             AddInformation(instance.information, feature);
 
                             buffer["ps"] = ps101;

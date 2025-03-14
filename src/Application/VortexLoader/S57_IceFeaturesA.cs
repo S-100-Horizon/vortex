@@ -1,5 +1,5 @@
 ﻿using ArcGIS.Core.Data;
-using VortexLoader.S57.esri;
+using S100Framework.Applications.S57.esri;
 using S100Framework.DomainModel.S101;
 using S100Framework.DomainModel.S101.FeatureTypes;
 
@@ -10,9 +10,9 @@ namespace S100Framework.Applications
         private static void S57_IcefeaturesA(Geodatabase source, Geodatabase target, QueryFilter filter) {
             var tableName = "IcefeaturesA";
 
-            var icefeaturesa = source.OpenDataset<FeatureClass>(tableName);
+            var icefeaturesa = source.OpenDataset<FeatureClass>(source.GetName(tableName));
 
-            using var featureClass = target.OpenDataset<FeatureClass>("surface");
+            using var featureClass = target.OpenDataset<FeatureClass>(target.GetName("surface"));
             
 
             using var buffer = featureClass.CreateRowBuffer();
@@ -26,12 +26,12 @@ namespace S100Framework.Applications
 
                 var feature = (Feature)cursor.Current;
 
-                var current = new CoastlineL(feature);
+                var current = new IceFeaturesA(feature);
 
                 var objectid = current.OBJECTID ?? default;
                 var globalid = current.GLOBALID;
                 var subtype = current.FCSUBTYPE ?? default;
-                var watlev = current.WATLEV ?? default;
+                
                 var plts_comp_scale = current.PLTS_COMP_SCALE ?? default;
                 var longname = current.LNAM ?? Strings.UNKNOWN;
                 var status = current.STATUS ?? default;
@@ -43,9 +43,13 @@ namespace S100Framework.Applications
                             if (plts_comp_scale != default) {
                                 instance.scaleMinimum = plts_comp_scale;
                             }
-                            
-                            AddStatus(instance.status, feature);
-                            AddFeatureName(instance.featureName, feature);
+
+
+                            if (current.STATUS != default) {
+                                instance.status = GetStatus(current.STATUS);
+                            }
+
+                            instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
                             AddInformation(instance.information, feature);
                             buffer["ps"] = ps101;
 

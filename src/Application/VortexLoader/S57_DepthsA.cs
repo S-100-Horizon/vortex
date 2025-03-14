@@ -1,7 +1,7 @@
 ﻿using ArcGIS.Core.Data;
+using S100Framework.Applications.S57.esri;
 using S100Framework.DomainModel.S101;
 using S100Framework.DomainModel.S101.FeatureTypes;
-using VortexLoader.S57.esri;
 
 namespace S100Framework.Applications
 {
@@ -12,8 +12,8 @@ namespace S100Framework.Applications
 
             
 
-            using var s = source.OpenDataset<FeatureClass>("DepthsA");
-            using var featureClass = target.OpenDataset<FeatureClass>("surface");
+            using var s = source.OpenDataset<FeatureClass>(source.GetName("DepthsA"));
+            using var featureClass = target.OpenDataset<FeatureClass>(target.GetName("surface"));
 
             using var buffer = featureClass.CreateRowBuffer();
             using var insert = featureClass.CreateInsertCursor();
@@ -146,7 +146,8 @@ namespace S100Framework.Applications
 
                             //TODO: 	maximumPermittedDraught
 
-                            AddFeatureName(instance.featureName, feature);
+                            instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
+
                             AddInformation(instance.information, feature);
 
                             buffer["ps"] = ps101;

@@ -1,8 +1,9 @@
 ﻿using ArcGIS.Core.Data;
 using S100Framework.DomainModel.S101;
-using VortexLoader.S57.esri;
+
 using S100Framework.DomainModel.S101.InformationTypes;
 using S100Framework.DomainModel.S101.FeatureTypes;
+using S100Framework.Applications.S57.esri;
 
 
 namespace S100Framework.Applications
@@ -22,11 +23,11 @@ namespace S100Framework.Applications
 
             
 
-            var depthsl = source.OpenDataset<FeatureClass>("DepthsL");
-            var plts_spatialattributel = source.OpenDataset<FeatureClass>("PLTS_SpatialAttributeL");
-            using var informationtype = target.OpenDataset<Table>("informationtype");
+            var depthsl = source.OpenDataset<FeatureClass>(source.GetName("DepthsL"));
+            var plts_spatialattributel = source.OpenDataset<FeatureClass>(source.GetName("PLTS_SpatialAttributeL"));
+            using var informationtype = target.OpenDataset<Table>(target.GetName("informationType"));
 
-            using var featureClass = target.OpenDataset<FeatureClass>("curve");
+            using var featureClass = target.OpenDataset<FeatureClass>(target.GetName("curve"));
             
 
             using var buffer = featureClass.CreateRowBuffer();
@@ -53,7 +54,7 @@ namespace S100Framework.Applications
                 var valco = current.VALDCO ?? default;
                 var quasou = current.QUASOU ?? default;
                 var scamin_step = current.SCAMIN_STEP ?? default;
-                var sordata = current.SORDAT ?? default;
+                var sordat = current.SORDAT ?? default;
                 var sorind = current.SORIND ?? default;
                 var souacc = current.SOUACC ?? default;
 
@@ -82,35 +83,38 @@ namespace S100Framework.Applications
 
                             */
 
-                            if (current.SHAPE != null) {
-                                foreach (var spatialAttributeL in SelectIn<PLTS_SpatialAttributeL>(current.SHAPE, plts_spatialattributel)) {
-                                    var p_quapos = spatialAttributeL.P_QUAPOS ?? default;
-                                    if (p_quapos != default && p_quapos == 4) {
-                                        var spatialQuality = new SpatialQuality() {
-                                            qualityOfHorizontalMeasurement = qualityOfHorizontalMeasurement.Approximate,
-                                            //spatialAccuracy = new List<DomainModel.ComplexAttributes.spatialAccuracy>() {
-                                            //new DomainModel.ComplexAttributes.spatialAccuracy() {
-                                            //    horizontalPositionUncertainty = default,
-                                            //    fixedDateRange = default,
-                                            //    verticalUncertainty = new DomainModel.ComplexAttributes.verticalUncertainty() {
-                                            //        uncertaintyFixed = default,
-                                            //        uncertaintyVariableFactor = default
-                                            //    }
-                                            //}
-                                        //}
-                                        };
+                            
+                            // TODO: handle spatial quality spatial relation
 
-                                        using var information = informationtype.CreateRowBuffer();
-                                        information["ps"] = ps101;
-                                        information["code"] = spatialQuality.GetType().Name;
-                                        information["json"] = System.Text.Json.JsonSerializer.Serialize(spatialQuality);
-                                        //information["shape"] = spatialAttributeL.SHAPE;
+                            //if (current.SHAPE != null) {
+                            //    foreach (var spatialAttributeL in SelectIn<PLTS_SpatialAttributeL>(current.SHAPE, plts_spatialattributel)) {
+                            //        var p_quapos = spatialAttributeL.P_QUAPOS ?? default;
+                            //        if (p_quapos != default && p_quapos == 4) {
+                            //            var spatialQuality = new SpatialQuality() {
+                            //                qualityOfHorizontalMeasurement = qualityOfHorizontalMeasurement.Approximate,
+                            //                //spatialAccuracy = new List<DomainModel.ComplexAttributes.spatialAccuracy>() {
+                            //                //new DomainModel.ComplexAttributes.spatialAccuracy() {
+                            //                //    horizontalPositionUncertainty = default,
+                            //                //    fixedDateRange = default,
+                            //                //    verticalUncertainty = new DomainModel.ComplexAttributes.verticalUncertainty() {
+                            //                //        uncertaintyFixed = default,
+                            //                //        uncertaintyVariableFactor = default
+                            //                //    }
+                            //                //}
+                            //            //}
+                            //            };
 
-                                        using var _ = informationtype.CreateRow(information);
+                            //            using var information = informationtype.CreateRowBuffer();
+                            //            information["ps"] = ps101;
+                            //            information["code"] = spatialQuality.GetType().Name;
+                            //            information["json"] = System.Text.Json.JsonSerializer.Serialize(spatialQuality);
+                            //            //information["shape"] = spatialAttributeL.SHAPE;
 
-                                    }
-                                }
-                            }
+                            //            using var _ = informationtype.CreateRow(information);
+
+                            //        }
+                            //    }
+                            //}
                             
                             AddInformation(instance.information, feature);
                             buffer["ps"] = ps101;

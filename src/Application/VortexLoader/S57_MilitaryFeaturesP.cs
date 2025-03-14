@@ -1,5 +1,5 @@
 ﻿using ArcGIS.Core.Data;
-using VortexLoader.S57.esri;
+
 using S100Framework.DomainModel.S101;
 using S100Framework.DomainModel.S101.FeatureTypes;
 using ArcGIS.Core.Data.UtilityNetwork.Trace;
@@ -7,6 +7,7 @@ using S100Framework.DomainModel.S101.ComplexAttributes;
 using Serilog;
 using static System.Net.Mime.MediaTypeNames;
 using static System.Runtime.InteropServices.JavaScript.JSType;
+using S100Framework.Applications.S57.esri;
 
 namespace S100Framework.Applications
 {
@@ -15,9 +16,9 @@ namespace S100Framework.Applications
         private static void S57_MilitaryFeaturesP(Geodatabase source, Geodatabase target, QueryFilter filter) {
             var tableName = "MilitaryFeaturesP";
 
-            var coastlinea = source.OpenDataset<FeatureClass>(tableName);
+            var coastlinea = source.OpenDataset<FeatureClass>(source.GetName(tableName));
 
-            using var featureClass = target.OpenDataset<FeatureClass>("point");
+            using var featureClass = target.OpenDataset<FeatureClass>(target.GetName("point"));
 
 
             using var buffer = featureClass.CreateRowBuffer();
@@ -49,9 +50,10 @@ namespace S100Framework.Applications
                                 instance.scaleMinimum = plts_comp_scale;
                             }
 
-
-                            AddStatus(instance.status, feature);
-                            AddFeatureName(instance.featureName, feature);
+                            if (current.STATUS != default) {
+                                instance.status = GetStatus(current.STATUS);
+                            }
+                            instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
                             AddInformation(instance.information, feature);
                             buffer["ps"] = ps101;
 

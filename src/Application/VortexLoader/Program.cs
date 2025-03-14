@@ -1,11 +1,21 @@
 ﻿using ArcGIS.Core.Data;
 using ArcGIS.Core.Geometry;
+using ArcGIS.Desktop.Mapping;
+
 using CommandLine;
 using S100Framework.ArcGIS.Core;
 using System.Text.Json;
 using System.Text.RegularExpressions;
 using Esri = ArcGIS.Core.Hosting.Host;
 using IO = System.IO;
+
+/*
+
+--v --cmd NIS --target "https://enterprise.gst.dk/arcgisserver/rest/services/S-100/s100ed4raw/FeatureServer" --source "C:\Vortex\replica.gdb" --query "PLTS_COMP_SCALE = 22000" --notespath "G:\indigo\ENC\NotesAndPictures"
+--v --cmd NIS --target "C:\Vortex\s100ed4.gdb" --source "C:\Vortex\replica.gdb" --query "PLTS_COMP_SCALE = 22000" --notespath "G:\indigo\ENC\NotesAndPictures"
+--v --cmd NIS --target "C:\Vortex\connections\nis.sde" --source "C:\Vortex\replica.gdb" --query "PLTS_COMP_SCALE = 22000" --notespath "G:\indigo\ENC\NotesAndPictures"
+--v --cmd NIS --target "C:\Vortex\connections\SQLServer-ncps-mssql-test-s100ed4_traditional(s101_dbo).sde" --source "C:\Vortex\replica.gdb" --query "PLTS_COMP_SCALE = 22000" --notespath "G:\indigo\ENC\NotesAndPictures"
+ */
 
 namespace S100Framework.Applications
 {
@@ -67,20 +77,55 @@ namespace S100Framework.Applications
 
             Func<Geodatabase> createGeodatabase = () => { throw new NotImplementedException(); };
 
+            
+
             arguments.WithParsed<Options>(o => {
                 var target = o.Target!;
 
                 if (IO.File.Exists(target) && ".sde".Equals(IO.Path.GetExtension(target), StringComparison.InvariantCultureIgnoreCase)) {
-                    createGeodatabase = () => { return new Geodatabase(new DatabaseConnectionFile(new Uri(IO.Path.GetFullPath(target)))); };
+                    createGeodatabase = () => { 
+                        var geodatabase = new Geodatabase(new DatabaseConnectionFile(new Uri(IO.Path.GetFullPath(target))));
+                        
+                        return geodatabase;
+                    };
                 }
                 else if (IO.Directory.Exists(target) && ".gdb".Equals(IO.Path.GetExtension(target), StringComparison.InvariantCultureIgnoreCase)) {
-                    createGeodatabase = () => { return new Geodatabase(new FileGeodatabaseConnectionPath(new Uri(IO.Path.GetFullPath(target)))); };
+                    createGeodatabase = () => { 
+                        var geodatabase = new Geodatabase(new FileGeodatabaseConnectionPath(new Uri(IO.Path.GetFullPath(target))));
+
+                        return geodatabase;
+                    };
+                }
+                else if (Uri.IsWellFormedUriString(target, UriKind.Absolute)) {
+                    createGeodatabase = () => {
+                        var serviceProps = new ServiceConnectionProperties(new Uri(target, UriKind.Absolute));
+                        serviceProps.Version = "sde.DEFAULT";
+
+                        var geodatabase = new Geodatabase(serviceProps);
+
+                        var destinationVersion = geodatabase.GetVersionManager().GetVersionNames().FirstOrDefault(name => name.EndsWith("20250203", StringComparison.InvariantCultureIgnoreCase));
+
+                        if (destinationVersion == null) {
+                            geodatabase.GetVersionManager().CreateVersion(new VersionDescription() {
+                                AccessType = VersionAccessType.Public,
+                                Description = "S-57 Conversion",
+                                Name = "20250203"
+                            });
+                        }
+
+                        serviceProps.Version = destinationVersion;
+                        geodatabase = new Geodatabase(serviceProps);
+                        
+                        return geodatabase;
+                    };
+
                 }
                 else
                     throw new System.ArgumentOutOfRangeException(nameof(target));
             });
 
             using Geodatabase target = createGeodatabase();
+            
 
             var result = command switch {
                 "GML" => ImporterGML(target, arguments),
@@ -109,10 +154,10 @@ namespace S100Framework.Applications
 
             using var tableInformationType = geodatabase.OpenDataset<Table>("informationtype");
 
-            using var fcPoint = geodatabase.OpenDataset<FeatureClass>("point");
-            using var fcPointSet = geodatabase.OpenDataset<FeatureClass>("pointset");
-            using var fcCurve = geodatabase.OpenDataset<FeatureClass>("curve");
-            using var fcSurface = geodatabase.OpenDataset<FeatureClass>("surface");
+            using var fcPoint = geodatabase.OpenDataset<FeatureClass>(geodatabase.GetName("point"));
+            using var fcPointSet = geodatabase.OpenDataset<FeatureClass>(geodatabase.GetName("pointset"));
+            using var fcCurve = geodatabase.OpenDataset<FeatureClass>(geodatabase.GetName("curve"));
+            using var fcSurface = geodatabase.OpenDataset<FeatureClass>(geodatabase.GetName("surface"));
 
             using var bufferInformationType = tableInformationType.CreateRowBuffer();
             using var bufferPoint = fcPoint.CreateRowBuffer();

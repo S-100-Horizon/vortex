@@ -1,6 +1,5 @@
 ﻿using ArcGIS.Core.Data;
-using VortexLoader.S57.esri;
-using S100Framework.DomainModel.S101;
+using S100Framework.Applications.S57.esri;
 using S100Framework.DomainModel.S101.FeatureTypes;
 
 namespace S100Framework.Applications
@@ -10,12 +9,9 @@ namespace S100Framework.Applications
         private static void S57_CoastlineA(Geodatabase source, Geodatabase target, QueryFilter filter) {
             var tableName = "CoastlineA";
 
-            
+            var coastlinea = source.OpenDataset<FeatureClass>(source.GetName(tableName));
 
-            var coastlinea = source.OpenDataset<FeatureClass>(tableName);
-
-            using var featureClass = target.OpenDataset<FeatureClass>("surface");
-            
+            using var featureClass = target.OpenDataset<FeatureClass>(target.GetName("surface"));
 
             using var buffer = featureClass.CreateRowBuffer();
             using var insert = featureClass.CreateInsertCursor();
@@ -45,9 +41,16 @@ namespace S100Framework.Applications
                             if (plts_comp_scale != default) {
                                 instance.scaleMinimum = plts_comp_scale;
                             }
-                            AddCondition(instance.condition, feature);
-                            AddStatus(instance.status, feature);
-                            AddFeatureName(instance.featureName, feature);
+
+                            if (current.CONDTN.HasValue) {
+                                instance.condition = GetCondition(current.CONDTN.Value);
+                            }
+
+                            if (current.STATUS != default) {
+                                instance.status = GetStatus(current.STATUS);
+                            }
+
+                            instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
                             AddInformation(instance.information, feature);
                             buffer["ps"] = ps101;
 
@@ -63,7 +66,6 @@ namespace S100Framework.Applications
                         // code block
                         System.Diagnostics.Debugger.Break();
                         break;
-
                 }
 
 

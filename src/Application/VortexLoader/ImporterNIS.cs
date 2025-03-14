@@ -1,16 +1,15 @@
 ﻿using ArcGIS.Core.Data;
-using ArcGIS.Core.Geometry;
 using CommandLine;
 using S100Framework.DomainModel.S101;
 using S100Framework.DomainModel.S101.ComplexAttributes;
-using VortexLoader.S57.esri;
 using static S100Framework.Applications.VortexLoader;
 using IO = System.IO;
+using ArcGIS.Core.Geometry;
+using System;
 
 namespace S100Framework.Applications
 {
-    internal static partial class ImporterNIS
-    {
+    internal static partial class ImporterNIS {
         //  https://github.com/iho-ohi/S-57-to-S-101-conversion-sub-WG
 
         static string _notesPath = "";
@@ -46,126 +45,81 @@ namespace S100Framework.Applications
 
             });
 
-            using Geodatabase source = createGeodatabase();
-            {
-                var query = new QueryFilter {
-                    //WhereClause = $"ps = 'S-101'",
+            Func<Action, bool> Store = (a) => {
+                a.Invoke();
+                return true;
+            };
+
+            if (destination.IsTraditionallyVersioned()) {
+                Store = (a) => {
+                    destination.ApplyEdits(() => {
+                        a.Invoke();
+                    },true);
+                    return true;
                 };
-
-                using var point = destination.OpenDataset<FeatureClass>("point");
-                using var pointset = destination.OpenDataset<FeatureClass>("pointset");
-                using var curve = destination.OpenDataset<FeatureClass>("curve");
-                using var surface = destination.OpenDataset<FeatureClass>("surface");
-                using var informationtype = destination.OpenDataset<Table>("informationtype");
-
-                point.DeleteRows(query);
-                pointset.DeleteRows(query);
-                curve.DeleteRows(query);
-                surface.DeleteRows(query);
-                informationtype.DeleteRows(query);
             }
 
-            //  MilitaryFeaturesA
-            S57_MilitaryFeatureA(source, destination, filter);
-            
-            //  MilitaryFeaturesP
-            S57_MilitaryFeaturesP(source, destination, filter);
+            using (Geodatabase source = createGeodatabase()) {
 
-            //  TracksAndRoutesA
-            S57_TracksAndRoutesA(source, destination, filter);
+                Store(() => {
+                    var query = new QueryFilter {
+                        WhereClause = $"1=1",
+                    };
+                    using var point = destination.OpenDataset<FeatureClass>(destination.GetName("point"));
+                    using var pointset = destination.OpenDataset<FeatureClass>(destination.GetName("pointset"));
+                    using var curve = destination.OpenDataset<FeatureClass>(destination.GetName("curve"));
+                    using var surface = destination.OpenDataset<FeatureClass>(destination.GetName("surface"));
+                    using var informationtype = destination.OpenDataset<Table>(destination.GetName("informationType"));
 
-            //  TracksAndRoutesL
-            S57_TracksAndRoutesL(source, destination, filter);
-           
-            //  TracksAndRoutesP
-            S57_TracksAndRoutesP(source, destination, filter);
+                    point.DeleteRows(query);
+                    pointset.DeleteRows(query);
+                    curve.DeleteRows(query);
+                    surface.DeleteRows(query);
+                    informationtype.DeleteRows(query);
+                });
 
-            //  IcefeaturesA
-            S57_IcefeaturesA(source, destination, filter);
-
-            //  CoastlineA
-            S57_CoastlineA(source, destination, filter);
-
-            //  CoastlineL
-            S57_CoastlineL(source, destination, filter);
-
-            //  CoastlineP
-            S57_CoastlineP(source, destination, filter);
-
-            //  CulturalFeaturesA
-            S57_CulturalFeaturesA(source, destination, filter);
-            
-            //  CulturalFeaturesL
-            S57_CulturalFeaturesL(source, destination, filter);
-            
-            //  CulturalFeaturesP
-            S57_CulturalFeaturesP(source, destination, filter);
-
-            //  Seabed
-            S57_SeabedP(source, destination, filter);
-
-            //  ProductCoverage
-            S57_ProductCoverage(source, destination, filter);
-
-            //  AidsToNavigation
-            S57_AidsToNavigationP(source, destination, filter);
-
-            //  PortsAndServicesP
-            S57_PortsAndServicesP(source, destination, filter);
-
-            //  PortsAndServicesA
-            S57_PortsAndServicesA(source, destination, filter);
-
-            //  PortsAndServicesL
-            S57_PortsAndServicesL(source, destination, filter);
-
-            //  DangersA
-            S57_DangersA(source, destination, filter);
-
-            //  DangersP
-            S57_DangersP(source, destination, filter);
-
-            //  DangersL
-            S57_DangersL(source, destination, filter);
-
-            // RegulatedAreasAndLimitsL
-            S57_RegulatedAreasAndLimitsL(source, destination, filter);
-
-            // RegulatedAreasAndLimitsA
-            S57_RegulatedAreasAndLimitsA(source, destination, filter);
-
-            // RegulatedAreasAndLimitsP
-            S57_RegulatedAreasAndLimitsP(source, destination, filter);
-
-            // OffshoreInstallationsL
-            S57_OffshoreInstallationsL(source, destination, filter);
-            
-            // OffshoreInstallationsA
-            S57_OffshoreInstallationsA(source, destination, filter);
-            
-            // OffshoreInstallationsP
-            S57_OffshoreInstallationsP(source, destination, filter);
-
-            //  NaturalFeaturesL
-            S57_NaturalFeaturesL(source, destination, filter);
-
-            //  NaturalFeaturesA
-            S57_NaturalFeaturesA(source, destination, filter);
-
-            //  NaturalFeaturesP
-            S57_NaturalFeaturesP(source, destination, filter);
-
-            // DepthsL
-            S57_DepthsL(source, destination, filter);
-
-            //  DepthsA
-            S57_DepthsA(source, destination, filter);
-
-            //  SoundingsP
-            S57_SoundingsP(source, destination, filter);
-
-            return true;
+                Store(() => S57_MetadataA(source, destination, filter));
+                Store(() => S57_ProductCoverage(source, destination, filter));
+                Store(() => S57_AidsToNavigationP(source, destination, filter));
+                Store(() => S57_MilitaryFeatureA(source, destination, filter));
+                Store(() => S57_MilitaryFeaturesP(source, destination, filter));
+                Store(() => S57_TracksAndRoutesA(source, destination, filter));
+                Store(() => S57_TracksAndRoutesL(source, destination, filter));
+                Store(() => S57_TracksAndRoutesP(source, destination, filter));
+                Store(() => S57_IcefeaturesA(source, destination, filter));
+                Store(() => S57_CoastlineA(source, destination, filter));
+                Store(() => S57_CoastlineL(source, destination, filter));
+                Store(() => S57_CoastlineP(source, destination, filter));
+                Store(() => S57_CulturalFeaturesA(source, destination, filter));
+                Store(() => S57_CulturalFeaturesL(source, destination, filter));
+                Store(() => S57_CulturalFeaturesP(source, destination, filter));
+                Store(() => S57_SeabedP(source, destination, filter));
+                Store(() => S57_ProductCoverage(source, destination, filter));
+                Store(() => S57_PortsAndServicesP(source, destination, filter));
+                Store(() => S57_PortsAndServicesA(source, destination, filter));
+                Store(() => S57_PortsAndServicesL(source, destination, filter));
+                Store(() => S57_DangersA(source, destination, filter));
+                Store(() => S57_DangersP(source, destination, filter));
+                Store(() => S57_DangersL(source, destination, filter));
+                Store(() => S57_RegulatedAreasAndLimitsL(source, destination, filter));
+                Store(() => S57_RegulatedAreasAndLimitsA(source, destination, filter));
+                Store(() => S57_RegulatedAreasAndLimitsP(source, destination, filter));
+                Store(() => S57_OffshoreInstallationsL(source, destination, filter));
+                Store(() => S57_OffshoreInstallationsA(source, destination, filter));
+                Store(() => S57_OffshoreInstallationsP(source, destination, filter));
+                Store(() => S57_NaturalFeaturesL(source, destination, filter));
+                Store(() => S57_NaturalFeaturesA(source, destination, filter));
+                Store(() => S57_NaturalFeaturesP(source, destination, filter));
+                Store(() => S57_DepthsL(source, destination, filter));
+                Store(() => S57_DepthsA(source, destination, filter));
+                Store(() => S57_SoundingsP(source, destination, filter));
+                return true;
+            }
         }
+    
+
+
+
 
         public static IEnumerable<T> SelectIn<T>(Geometry geometry, FeatureClass in_featureclass) where T : class {
 
@@ -188,12 +142,10 @@ namespace S100Framework.Applications
                     }
                 }
             }
-
         }
 
-        private static void AddColour(List<colour> colours, Feature feature) {
-            var color = Convert.ToString(feature["COLOUR"])?.Trim();
-
+        private static List<colour> GetColours(string color) {
+            List<colour> colours = new List<colour>();
             if (color != default) {
                 if (!string.IsNullOrEmpty(color)) {
                     foreach (var c in color.Split(',', StringSplitOptions.RemoveEmptyEntries)) {
@@ -206,12 +158,12 @@ namespace S100Framework.Applications
                             "6" => colour.Yellow,
                             "7" => colour.Grey,
                             "8" => colour.Brown,
-                            "9" => colour.Grey,
+                            "9" => colour.Amber,
                             "10" => colour.Violet,
                             "11" => colour.Orange,
                             "12" => colour.Magenta,
                             "13" => colour.Pink,
-                            "-32767" => (colour)(-32767),
+                            "-32767" =>(colour)(-1),
                             _ => throw new IndexOutOfRangeException(),
                         };
                         if (e.HasValue) {
@@ -220,18 +172,42 @@ namespace S100Framework.Applications
                     }
                 }
             }
+            return colours;
         }
 
-        private static void AddOrientation(orientation orient, Feature feature) {
-            if (DBNull.Value != feature["ORIENT"]) {
-                var orientSource = Convert.ToDecimal(feature["ORIENT"]);
-                if (orient == default) {
-                    orient = new orientation();
-                    orient.orientationValue = orientSource;
-                } else {
-                    orient.orientationValue = orientSource;
-                }
-            }
+        private static buoyShape GetBuoyShape(int? buoyShapeValue) {
+            return buoyShapeValue.Value switch {
+                1 => buoyShape.Conical,
+                2 => buoyShape.Can,
+                3 => buoyShape.Spherical,
+                4 => buoyShape.Pillar,
+                5 => buoyShape.Spar,
+                6 => buoyShape.Barrel,
+                7 => buoyShape.Superbuoy,
+                8 => buoyShape.IceBuoy,
+                -32767 => (buoyShape)(-1),
+                _ => throw new IndexOutOfRangeException("Invalid buoy shape value."),
+            };
+        }
+
+        private static colourPattern GetColourPattern(string colorPattern) {
+            var colourPat = colorPattern switch {
+                "1" => colourPattern.HorizontalStripes,
+                "2" => colourPattern.VerticalStripes,
+                "3" => colourPattern.DiagonalStripes,
+                "4" => colourPattern.Squared,
+                "5" => colourPattern.StripesDirectionUnknown,
+                "6" => colourPattern.BorderStripe,
+                "-32767" => (colourPattern)(-1),
+                _ => throw new IndexOutOfRangeException($"Colourpattern value is not legal {colorPattern}")
+            };
+            return colourPat;
+        }
+
+        private static orientation GetOrientation(decimal orientation) {
+            return new orientation() {
+                orientationValue = orientation
+            };
         }
 
         private static void AddOrientation(decimal orientationValue, Feature feature) {
@@ -242,23 +218,14 @@ namespace S100Framework.Applications
         }
 
 
-        private static void AddStatus(status? status, Feature current) {
-            if (DBNull.Value != current["STATUS"]) {
-                var featureStatus = Convert.ToString(current["STATUS"])?.Trim();
-                if (!string.IsNullOrEmpty(featureStatus)) {
-                    /* See S-101 DCEG clause 5.4 for the listing of allowable values. Values populated in S-57 for this attribute
-                       other than the allowable values will not be converted across to S-101. Data Producers are advised to
-                       check any populated values for STATUS on LNDARE and amend appropriately. */
-
-                    //TODO: STATUS
-                    ;
-                }
-            }
+        private static status GetSingleStatus(string status) {
+            return GetStatus(status)[0];
         }
 
-        private static void AddStatus(List<status> statusList, Feature current) {
-            if (DBNull.Value != current["STATUS"]) {
-                var featureStatus = Convert.ToString(current["STATUS"])?.Trim();
+        private static List<status> GetStatus(string statuses) {
+            List<status> statusList = new List<status>();
+
+                var featureStatus = statuses.Trim();
 
                 /*
                  * code	status
@@ -313,7 +280,7 @@ namespace S100Framework.Applications
                             "17" => status.Unwatched,
                             "18" => status.ExistenceDoubtful,
                             //"28" => ??, // TODO: what to do? STATUS 28
-                            "-32767" => (status)(-32767),
+                            "-32767" =>(status)(-1),
                             _ => throw new IndexOutOfRangeException(),
                         };
                         if (e.HasValue) {
@@ -322,7 +289,7 @@ namespace S100Framework.Applications
                     }
 
                 }
-            }
+            return statusList;
         }
 
 
@@ -343,40 +310,31 @@ namespace S100Framework.Applications
          */
 
 
-        private static void AddCondition(condition? cndtn, Feature feature) {
-
-
-
-
-            if (DBNull.Value != feature["CONDITION"]) {
-                var condtn = Convert.ToInt32(feature["CONDITION"]);
-                if (condtn != default) {
-                    cndtn = condtn switch {
-                        1 => condition.UnderConstruction,   //  under construction
-                        2 => condition.Ruined,   //  ruined
-                        3 => condition.UnderReclamation,   //  under reclamation                                    
-                        4 => throw new IndexOutOfRangeException(),   //  wingless
-                        5 => throw new IndexOutOfRangeException(),   //  planned construction
-                        -32767 => null,
-                        _ => throw new IndexOutOfRangeException(),
-                    };
-                }
-            }
+        public static condition GetCondition(int conditionValue) {
+            return conditionValue switch {
+                1 => condition.UnderConstruction,      // under construction
+                2 => condition.Ruined,                 // ruined
+                3 => condition.UnderReclamation,       // under reclamation
+                5 => condition.PlannedConstruction,    // planned construction
+                -32767 => (condition)(-1),                        // unknown or no condition
+                _ => throw new IndexOutOfRangeException("Invalid condition value.")  // Invalid condition value
+            };
         }
 
-        private static void AddFeatureName(IList<featureName> featureName, Feature current) {
-            if (DBNull.Value != current["OBJNAM"]) {
-                var objnam = Convert.ToString(current["OBJNAM"])?.Trim();
+        private static List<featureName> GetFeatureName(string? objname, string? nobjnme) {
+            List<featureName> featureName = new List<featureName>();
+            if (objname != default) { 
+                var objnam = objname.Trim();
                 if (!string.IsNullOrEmpty(objnam)) {
                     featureName.Add(new featureName {
                         language = "eng",
-                        nameUsage = null,
+                        nameUsage = nameUsage.DefaultNameDisplay,
                         name = objnam,
                     });
                 }
             }
-            if (DBNull.Value != current["NOBJNM"]) {
-                var nobjnm = Convert.ToString(current["NOBJNM"])?.Trim();
+            if (nobjnme != default) {
+                var nobjnm = nobjnme.Trim();
                 if (!string.IsNullOrEmpty(nobjnm)) {
                     featureName.Add(new featureName {
                         language = "dk",
@@ -385,6 +343,8 @@ namespace S100Framework.Applications
                     });
                 }
             }
+            
+            return featureName;
         }
 
         private static void AddInformation(IList<information> information, Feature current) {

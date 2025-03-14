@@ -1,7 +1,7 @@
 ﻿using ArcGIS.Core.Data;
+using S100Framework.Applications.S57.esri;
 using S100Framework.DomainModel.S101;
 using S100Framework.DomainModel.S101.FeatureTypes;
-using VortexLoader.S57.esri;
 
 namespace S100Framework.Applications
 {
@@ -11,9 +11,9 @@ namespace S100Framework.Applications
             var tableName = "OffshoreInstallationsL";
             
 
-            using var featureclass = target.OpenDataset<FeatureClass>("curve");
+            using var featureclass = target.OpenDataset<FeatureClass>(target.GetName("curve"));
 
-            using var offshoreinstallations = source.OpenDataset<FeatureClass>(tableName);
+            using var offshoreinstallations = source.OpenDataset<FeatureClass>(source.GetName(tableName));
 
             int recordCount = 0;
             int convertedCount = 0;
@@ -55,7 +55,7 @@ namespace S100Framework.Applications
                                 4	telephone
                                 5	telegraph
                                 6	mooring cable/chain
-                                -32767	Unknown
+                                -1	Unknown
                              */
 
 
@@ -65,13 +65,19 @@ namespace S100Framework.Applications
                                     3 => categoryOfCable.TransmissionLine,
                                     4 => categoryOfCable.TelecommunicationsCable, //CATCBL value 4 (telephone) will convert to category of cable value 10 (telecommunications cable).
                                     5 => categoryOfCable.MooringCable,
-                                    -32767 => null,
+                                    -32767 =>null,
                                     _ => throw new IndexOutOfRangeException(),
                                 };
                             }
 
-                            AddStatus(instance.status, feature);
-                            AddFeatureName(instance.featureName, feature);
+                            if (current.CONDTN.HasValue) {
+                                instance.condition = GetCondition(current.CONDTN.Value);
+                            }
+
+                            if (current.STATUS != default) {
+                                instance.status = GetStatus(current.STATUS);
+                            }
+                            instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
                             AddInformation(instance.information, feature);
                             buffer["ps"] = ps101;
 
@@ -92,8 +98,15 @@ namespace S100Framework.Applications
                             if (plts_comp_scale != default) {
                                 instance.scaleMinimum = plts_comp_scale;
                             }
-                            AddStatus(instance.status, feature);
-                            AddFeatureName(instance.featureName, feature);
+
+                            if (current.CONDTN.HasValue) {
+                                instance.condition = GetCondition(current.CONDTN.Value);
+                            }
+
+                            if (current.STATUS != default) {
+                                instance.status = GetStatus(current.STATUS);
+                            }
+                            instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
                             AddInformation(instance.information, feature);
                             buffer["ps"] = ps101;
 

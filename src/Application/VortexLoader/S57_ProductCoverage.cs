@@ -1,5 +1,7 @@
-﻿using ArcGIS.Core.Data;
-using VortexLoader.S57.esri;
+﻿using ArcGIS.Core.CIM;
+using ArcGIS.Core.Data;
+using S100Framework.Applications.S57.esri;
+using S100Framework.DomainModel.S101.FeatureTypes;
 
 namespace S100Framework.Applications
 {
@@ -8,9 +10,9 @@ namespace S100Framework.Applications
         private static void S57_ProductCoverage(Geodatabase source, Geodatabase target, QueryFilter filter) {
             var tableName = "ProductCoverage";
 
-            using var productDefinitionsTable = source.OpenDataset<Table>("ProductDefinitions");
-            using var productCoverageFeatureClass = source.OpenDataset<FeatureClass>("ProductCoverage");
-            using var surfaceFeatureClass = target.OpenDataset<FeatureClass>("surface");
+            using var productDefinitionsTable = source.OpenDataset<Table>(source.GetName("ProductDefinitions"));
+            using var productCoverageFeatureClass = source.OpenDataset<FeatureClass>(source.GetName("ProductCoverage"));
+            using var surfaceFeatureClass = target.OpenDataset<FeatureClass>(target.GetName("surface"));
 
             surfaceFeatureClass.DeleteRows(new QueryFilter {
                 WhereClause = $"ps = 'S-128' AND (code = 'ElectronicProduct' or code = 'instance')",
@@ -37,8 +39,6 @@ namespace S100Framework.Applications
                 var updn = current.UPDN ?? default;
                 var isdt = current.ISDT ?? default;
 
-
-
                 var instance = new S100Framework.DomainModel.S128.FeatureTypes.ElectronicProduct {
                     catalogueElementClassification = new List<S100Framework.DomainModel.S128.catalogueElementClassification> {
                                 S100Framework.DomainModel.S128.catalogueElementClassification.Enc,
@@ -49,6 +49,7 @@ namespace S100Framework.Applications
                     typeOfProductFormat = S100Framework.DomainModel.S128.typeOfProductFormat.IsoIec8211,
                     datasetName = dsnm,
                 };
+
                 if (updn > 0)
                     instance.updateNumber = updn;
 
@@ -56,24 +57,47 @@ namespace S100Framework.Applications
                     WhereClause = $"Product_GUID = '{globalid:B}'",
                 }, true);
 
-                buffer["ps"] = ps128;
-                buffer["code"] = instance.GetType().Name;
-                buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance);
-
                 while (cursorCoverage.MoveNext()) {
                     var productCoverage = new ProductCoverage((Feature)cursorCoverage.Current);
                     var catcov = productCoverage.CATCOV ?? default;
+                    var plts_comp_scale = productCoverage.PLTS_COMP_SCALE ?? default;
+
+                    var displayScale = DisplayScale.GetNearestBelowKey(plts_comp_scale) ?? default;
+
 
                     switch (catcov) {
                         case 1:
+                            buffer["ps"] = ps128;
+                            buffer["code"] = instance.GetType().Name;
+                            buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance);
                             buffer["shape"] = productCoverage.SHAPE;
+                            insert.Insert(buffer);
+
+
+                            
+                            var dataCoverage = new DataCoverage() { 
+                                maximumDisplayScale = displayScale.MaximumDisplayScale,
+                                optimumDisplayScale = displayScale.OptimumDisplayScale,
+                                minimumDisplayScale = displayScale.MinimumDisplayScale.Value
+                            };
+
+                            buffer["ps"] = ps101;
+                            buffer["code"] = dataCoverage.GetType().Name;
+                            buffer["json"] = System.Text.Json.JsonSerializer.Serialize(dataCoverage);
+                            buffer["shape"] = productCoverage.SHAPE;
+                            insert.Insert(buffer);
                             break;
                     }
                 }
 
-                insert.Insert(buffer);
                 Logger.Current.DataObject(objectid, tableName, dsnm, System.Text.Json.JsonSerializer.Serialize(instance));
                 convertedCount++;
+
+
+
+
+
+
             }
 
             Logger.Current.DataTotalCount(tableName, recordCount, convertedCount);

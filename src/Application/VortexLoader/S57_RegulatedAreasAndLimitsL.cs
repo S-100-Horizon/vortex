@@ -1,6 +1,7 @@
 ﻿using ArcGIS.Core.Data;
+using S100Framework.Applications.S57.esri;
 using S100Framework.DomainModel.S101.FeatureTypes;
-using VortexLoader.S57.esri;
+
 
 namespace S100Framework.Applications
 {
@@ -10,9 +11,9 @@ namespace S100Framework.Applications
             var tableName = "RegulatedAreasAndLimitsL";
             
 
-            using var featureclass = target.OpenDataset<FeatureClass>("curve");
+            using var featureclass = target.OpenDataset<FeatureClass>(target.GetName("curve"));
 
-            using var regulatedAreasAndLimitsL = source.OpenDataset<FeatureClass>(tableName);
+            using var regulatedAreasAndLimitsL = source.OpenDataset<FeatureClass>(source.GetName(tableName));
 
             int recordCount = 0;
             int convertedCount = 0;
@@ -42,7 +43,7 @@ namespace S100Framework.Applications
                                 instance.scaleMinimum = plts_comp_scale;
                             }
 
-                            AddFeatureName(instance.featureName, feature);
+                            instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
                             AddInformation(instance.information, feature);
                             buffer["ps"] = ps101;
 
@@ -60,7 +61,7 @@ namespace S100Framework.Applications
                                 instance.scaleMinimum = plts_comp_scale;
                             }
                             
-                            AddFeatureName(instance.featureName, feature);
+                            instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
                             AddInformation(instance.information, feature);
                             buffer["ps"] = ps101;
 
@@ -83,7 +84,7 @@ namespace S100Framework.Applications
                                 instance.nationality = current.NATION;
                             }
 
-                            //AddFeatureName(instance.featureName, feature);
+                            //instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
                             AddInformation(instance.information, feature);
                             buffer["ps"] = ps101;
 

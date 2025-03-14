@@ -1,5 +1,5 @@
 ﻿using ArcGIS.Core.Data;
-using VortexLoader.S57.esri;
+using S100Framework.Applications.S57.esri;
 using S100Framework.DomainModel.S101;
 using S100Framework.DomainModel.S101.FeatureTypes;
 
@@ -10,9 +10,9 @@ namespace S100Framework.Applications
         private static void S57_CoastlineL(Geodatabase source, Geodatabase target, QueryFilter filter) {
             var tableName = "CoastlineL";
 
-            var coastlinel = source.OpenDataset<FeatureClass>(tableName);
+            var coastlinel = source.OpenDataset<FeatureClass>(source.GetName(tableName));
 
-            using var featureClass = target.OpenDataset<FeatureClass>("curve");
+            using var featureClass = target.OpenDataset<FeatureClass>(target.GetName("curve"));
             
 
             using var buffer = featureClass.CreateRowBuffer();
@@ -52,19 +52,20 @@ namespace S100Framework.Applications
                                     5 => natureOfSurface.Pebbles,
                                     9 => natureOfSurface.Coral,
                                     11 => natureOfSurface.Shells,
-                                    -32767 => (natureOfSurface)(-32767),
+                                    -32767 =>(natureOfSurface)(-1),
                                     _ => null //lthrow new IndexOutOfRangeException($"catcoa to natureOfSurface: {catcoa}")
                                 };  
                                 if (e.HasValue) {
                                     instance.natureOfSurface = [e.Value];
+
                                 }
                             }
 
-                            if (catcoa != default) {
+                            if (catcoa != default && instance.natureOfSurface == default) {
                                 categoryOfCoastline? e = catcoa switch {
                                     1 => categoryOfCoastline.SteepCoast,
                                     2 => categoryOfCoastline.FlatCoast,
-                                    //3 => categoryOfCoastline., // SANDY SHORE
+                                    //3 => categoryOfCoastline.., // SANDY SHORE
                                     //4 => categoryOfCoastline., // STONY SHORE
                                     //5 => categoryOfCoastline., // SHINGLY SHORE
                                     6 => categoryOfCoastline.GlacierSeawardEnd,
@@ -73,7 +74,7 @@ namespace S100Framework.Applications
                                     //9 => categoryOfCoastline., //CORAL REEF
                                     //10 => categoryOfCoastline, // ICE COAST
                                     //11 => categoryOfCoastline, // SHELLY SHORE
-                                    -32767 => (categoryOfCoastline)(-32767),
+                                    -32767 =>(categoryOfCoastline)(-1),
                                     _ => throw new IndexOutOfRangeException($"catcoa to categoryOfCoastLine: {catcoa}")
                                 };
                                 if (e.HasValue) {
@@ -81,8 +82,11 @@ namespace S100Framework.Applications
                                 }
                             }
 
-                            AddColour(instance.colour, feature);
-                            AddFeatureName(instance.featureName, feature);
+                            if (current.COLOUR != default) {
+                                instance.colour = GetColours(current.COLOUR);
+                            }
+
+                            instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
                             AddInformation(instance.information, feature);
                             buffer["ps"] = ps101;
 
@@ -96,23 +100,19 @@ namespace S100Framework.Applications
                         break;
                     case 
                     5: { // SLCONS_ShorelineConstruction
-
-
                             // Restricted allowable S-101 enumerate values for STATUS.
                             // Reconcile conversion of CATSLC = 6(wharf(quay)) to
                             // category of shoreline construction = 6(wharf) or 22
                             // (quay).
-
 
                             var instance = new ShorelineConstruction();
                             if (plts_comp_scale != default) {
                                 instance.scaleMinimum = plts_comp_scale;
                             }
 
-
                             /*
                                 NAUTICAL_ENC_CATSLC
-			                    -32767: Unknown
+			                    -1: Unknown
 			                    1: breakwater
 			                    2: groyne (groin)
 			                    3: mole
@@ -151,7 +151,7 @@ namespace S100Framework.Applications
                                     15 => categoryOfShorelineConstruction.SolidFaceWharf, 
                                     16 => categoryOfShorelineConstruction.OpenFaceWharf, 
                                     17 => categoryOfShorelineConstruction.LogRamp, 
-                                    -32767 => (categoryOfShorelineConstruction)(-32767),
+                                    -32767 =>(categoryOfShorelineConstruction)(-1),
                                     _ => throw new IndexOutOfRangeException($"catslc to categoryOfShorelineConstruction: {catslc}")
                                 };
                                 if (e.HasValue) {
@@ -159,10 +159,27 @@ namespace S100Framework.Applications
                                 }
                             }
 
-                            AddCondition(instance.condition, feature);
-                            AddColour(instance.colour, feature);
-                            AddStatus(instance.status, feature);
-                            AddFeatureName(instance.featureName, feature);
+                            if (current.COLOUR != default) {
+                                instance.colour = GetColours(current.COLOUR);
+                            }
+
+                            if (current.COLPAT != default) {
+                                instance.colourPattern = GetColourPattern(current.COLPAT);
+                            }
+
+                            if (current.CONDTN.HasValue) {
+                                instance.condition = GetCondition(current.CONDTN.Value);
+                            }
+
+                            if (current.STATUS != default) {
+                                instance.status = GetStatus(current.STATUS);
+                            }
+
+                            if (current.STATUS != default) {
+                                instance.status = GetStatus(current.STATUS);
+                            }
+
+                            instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
                             AddInformation(instance.information, feature);
                             buffer["ps"] = ps101;
 

@@ -1,5 +1,5 @@
 ﻿using ArcGIS.Core.Data;
-using VortexLoader.S57.esri;
+using S100Framework.Applications.S57.esri;
 using S100Framework.DomainModel.S101;
 using S100Framework.DomainModel.S101.FeatureTypes;
 
@@ -7,15 +7,17 @@ namespace S100Framework.Applications
 {
     internal static partial class ImporterNIS
     {
+
         private static void S57_MilitaryFeatureA(Geodatabase source, Geodatabase target, QueryFilter filter) {
-            var tableName = "MilitaryFeaturesA";
-
-            var militaryFeaturesA = source.OpenDataset<FeatureClass>(tableName);
-
-            using var featureClass = target.OpenDataset<FeatureClass>("surface");
             
+            var tableName = "MilitaryFeaturesA";
+                
+            var militaryFeaturesA = source.OpenDataset<FeatureClass>(source.GetName(tableName));
+
+            using var featureClass = target.OpenDataset<FeatureClass>(target.GetName("surface"));
 
             using var buffer = featureClass.CreateRowBuffer();
+
             using var insert = featureClass.CreateInsertCursor();
 
             using var cursor = militaryFeaturesA.Search(filter, true);
@@ -44,8 +46,11 @@ namespace S100Framework.Applications
                                 instance.scaleMinimum = plts_comp_scale;
                             }
 
-                            AddStatus(instance.status, feature);
-                            AddFeatureName(instance.featureName, feature);
+                            if (current.STATUS != default) {
+                                instance.status = GetStatus(current.STATUS);
+                            }
+
+                            instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
                             AddInformation(instance.information, feature);
                             buffer["ps"] = ps101;
 
@@ -53,6 +58,7 @@ namespace S100Framework.Applications
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance);
                             buffer["shape"] = current.SHAPE;
                             insert.Insert(buffer);
+                            
                             Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
                             convertedCount++;
                         }

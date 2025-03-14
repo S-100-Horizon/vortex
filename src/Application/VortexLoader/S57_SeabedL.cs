@@ -1,5 +1,5 @@
 ﻿using ArcGIS.Core.Data;
-using VortexLoader.S57.esri;
+using S100Framework.Applications.S57.esri;
 using S100Framework.DomainModel.S101;
 using S100Framework.DomainModel.S101.FeatureTypes;
 
@@ -12,9 +12,9 @@ namespace S100Framework.Applications
 
             var ps101 = "S-101";
 
-            var seabedL = source.OpenDataset<FeatureClass>(tableName);
+            var seabedL = source.OpenDataset<FeatureClass>(source.GetName(tableName));
 
-            using var featureClass = target.OpenDataset<FeatureClass>("curve");
+            using var featureClass = target.OpenDataset<FeatureClass>(target.GetName("curve"));
 
 
             using var buffer = featureClass.CreateRowBuffer();
