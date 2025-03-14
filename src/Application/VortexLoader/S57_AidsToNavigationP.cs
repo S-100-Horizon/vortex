@@ -9,6 +9,7 @@ using System;
 using S100Framework.DomainModel;
 using ArcGIS.Desktop.Internal.Mapping.Symbology;
 using ArcGIS.Desktop.Internal.Core.Events;
+using VortexLoader;
 
 namespace S100Framework.Applications
 {
@@ -206,7 +207,9 @@ namespace S100Framework.Applications
                 var litchr = current.LITCHR ?? default;
                 var marsys = current.MARSYS ?? default;
                 var orient = current.ORIENT ?? default;
-                
+                var cat = current.CATCAM ?? default;
+
+
                 var colours = new List<colour>();
 
 
@@ -218,14 +221,21 @@ namespace S100Framework.Applications
                     case 1: { // BCNCAR_BeaconCardinal
                             var instance = new CardinalBeacon();
 
-                            if (plts_comp_scale != default) {
-                                instance.scaleMinimum = plts_comp_scale;
+                            if (current.BCNSHP.HasValue) {
+                                if (current.BCNSHP.Value == -32767)
+                                    instance.beaconShape = EnumHelper.GetEnumValue<beaconShape>("-1");
+                                else {
+                                    instance.beaconShape = EnumHelper.GetEnumValue<beaconShape>(current.BCNSHP);
+                                }
                             }
-                            instance.height = current.HEIGHT;
-                            instance.elevation = current.ELEVAT;
 
-                            //instance.beaconShape = 
-
+                            if (current.CATCAM.HasValue) {
+                                if (current.CATCAM.Value == -32767)
+                                    instance.categoryOfCardinalMark = EnumHelper.GetEnumValue<categoryOfCardinalMark>("-1");
+                                else {
+                                    instance.categoryOfCardinalMark = EnumHelper.GetEnumValue<categoryOfCardinalMark>(current.CATCAM.Value);
+                                }
+                            }
 
                             if (current.COLOUR != default) {
                                 instance.colour = GetColours(current.COLOUR);
@@ -235,17 +245,49 @@ namespace S100Framework.Applications
                                 instance.colourPattern = GetColourPattern(current.COLPAT);
                             }
 
-                            if (current.CONDTN.HasValue) {
-                                instance.condition = GetCondition(current.CONDTN.Value);
+                            if (plts_comp_scale != default) {
+                                instance.scaleMinimum = plts_comp_scale;
                             }
 
                             if (current.STATUS != default) {
                                 instance.status = GetStatus(current.STATUS);
                             }
 
-                            instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
-                            AddInformation(instance.information, feature);
 
+                            if (current.CONVIS.HasValue) {
+                                if (current.CONVIS.Value == -32767)
+                                    instance.visualProminence = EnumHelper.GetEnumValue<visualProminence>("-1");
+                                else {
+                                    instance.visualProminence = EnumHelper.GetEnumValue<visualProminence>(current.CONVIS.Value);
+                                }
+                            }
+                            ;
+
+                            // TODO: SORDAT
+                            //instance.reportedDate = new DateOnly(1, 2, 3);
+
+                            instance.pictorialRepresentation = current.PICREP;
+
+                            instance.height = current.HEIGHT;
+
+                            instance.elevation = current.ELEVAT;
+
+                            if (current.CONRAD.HasValue) {
+                                instance.radarConspicuous = current.CONRAD.Value == 0 ? true : false;
+                            }
+
+                            instance.verticalLength = current.VERLEN;
+
+                            
+
+
+                            if (current.CONDTN.HasValue) {
+                                instance.condition = GetCondition(current.CONDTN.Value);
+                            }
+
+                            instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
+
+                            AddInformation(instance.information, feature);
 
                             buffer["ps"] = ps101;
                             buffer["code"] = instance.GetType().Name;
@@ -254,17 +296,23 @@ namespace S100Framework.Applications
                             insert.Insert(buffer);
                             Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
                             convertedCount++;
-
                         }
                         break;
                     case 5: { // BCNISD_BeaconIsolatedDanger
                             var instance = new IsolatedDangerBeacon();
 
-                            if (plts_comp_scale != default) {
-                                instance.scaleMinimum = plts_comp_scale;
+                            if (current.BCNSHP.HasValue) {
+                                if (current.BCNSHP.Value == -32767)
+                                    instance.beaconShape = EnumHelper.GetEnumValue<beaconShape>("-1");
+                                else {
+                                    instance.beaconShape = EnumHelper.GetEnumValue<beaconShape>(current.BCNSHP);
+                                }
                             }
-                            instance.height = current.HEIGHT;
+
                             instance.elevation = current.ELEVAT;
+
+                            //
+                            //instance.reportedDate = new DateOnly(1, 2, 3);
 
 
                             if (current.COLOUR != default) {
@@ -275,12 +323,28 @@ namespace S100Framework.Applications
                                 instance.colourPattern = GetColourPattern(current.COLPAT);
                             }
 
-                            if (current.CONDTN.HasValue) {
-                                instance.condition = GetCondition(current.CONDTN.Value);
+                            if (plts_comp_scale != default) {
+                                instance.scaleMinimum = plts_comp_scale;
                             }
 
                             if (current.STATUS != default) {
                                 instance.status = GetStatus(current.STATUS);
+                            }
+
+
+                            if (current.CONVIS.HasValue) {
+                                if (current.CONVIS.Value == -32767)
+                                    instance.visualProminence = EnumHelper.GetEnumValue<visualProminence>("-1");
+                                else {
+                                    instance.visualProminence = EnumHelper.GetEnumValue<visualProminence>(current.CONVIS.Value);
+                                }
+                            }
+
+                            instance.height = current.HEIGHT;
+
+
+                            if (current.CONDTN.HasValue) {
+                                instance.condition = GetCondition(current.CONDTN.Value);
                             }
 
                             instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);

@@ -54,7 +54,7 @@ namespace S100Framework.Applications
                 var valco = current.VALDCO ?? default;
                 var quasou = current.QUASOU ?? default;
                 var scamin_step = current.SCAMIN_STEP ?? default;
-                var sordata = current.SORDAT ?? default;
+                var sordat = current.SORDAT ?? default;
                 var sorind = current.SORIND ?? default;
                 var souacc = current.SOUACC ?? default;
 

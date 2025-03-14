@@ -75,8 +75,7 @@ namespace S100Framework.Applications
                 throw new ArgumentException("Not initalized. Call intialize.");
 
             var result = _srcObjectToFrel.Values.SelectMany(list => list)
-                                      .FirstOrDefault(obj => obj.GLOBALID == globalid);
-
+                                      .FirstOrDefault(obj => obj.GLOBALID.Equals(globalid));
 
             return result != null;
         }
