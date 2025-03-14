@@ -313,8 +313,11 @@ namespace S100Framework.WPF.ViewModel
         }
 
         public override void Load(InformationAssociation informationAssociation, string role) {
-            var v = informationAssociation.RefIds.Where(e => e.Role.Equals(role, StringComparison.InvariantCultureIgnoreCase)).FirstOrDefault();
-            this.RefId.RefId = v?.Value!;
+            throw new NotImplementedException();
+
+            //TODO: InformationAssociation
+            //var v = informationAssociation.RefIds.Where(e => e.Role.Equals(role, StringComparison.InvariantCultureIgnoreCase)).FirstOrDefault();
+            //this.RefId.RefId = v?.Value!;
             //ÆØÅ this.RefId.InformationType = v?.Type;
         }
 
@@ -324,7 +327,7 @@ namespace S100Framework.WPF.ViewModel
                     .. informationAssociation.RefIds,
                     .. new []{
                         new RefId {
-                            Role = role,
+                            //ÆØÅ Role = role,
                             //ÆØÅ Type = _refId.InformationType,
                             Type = "",
                             Value = _refId.RefId,
@@ -353,14 +356,16 @@ namespace S100Framework.WPF.ViewModel
         }
 
         public override void Load(InformationAssociation informationAssociation, string role) {
-            var v = informationAssociation.RefIds.Where(e => e.Role.Equals(role, StringComparison.InvariantCultureIgnoreCase)).FirstOrDefault();
-            if (v != default) {
-                if (RefId is null) {
-                    RefId = new();
-                }
-                this.RefId.RefId = v?.Value!;
-                this.RefId.InformationType = v?.Type;
-            }
+            throw new NotImplementedException();
+            //TODO: InformationAssociation
+            //var v = informationAssociation.RefIds.Where(e => e.Role.Equals(role, StringComparison.InvariantCultureIgnoreCase)).FirstOrDefault();
+            //if (v != default) {
+            //    if (RefId is null) {
+            //        RefId = new();
+            //    }
+            //    this.RefId.RefId = v?.Value!;
+            //    this.RefId.InformationType = v?.Type;
+            //}
         }
 
         public override InformationAssociation Save(InformationAssociation informationAssociation, string role) {
@@ -371,7 +376,7 @@ namespace S100Framework.WPF.ViewModel
                     .. informationAssociation.RefIds,
                     .. new []{
                         new RefId {
-                            Role = role,
+                            //Role = role,
                             Type = _refId.InformationType,
                             Value = _refId.RefId,
                         }
@@ -394,12 +399,15 @@ namespace S100Framework.WPF.ViewModel
         public ObservableCollection<T> RefId { get; set; } = new ObservableCollection<T>();
 
         public override void Load(InformationAssociation informationAssociation, string role) {
-            foreach (var e in informationAssociation.RefIds.Where(e => e.Role.Equals(role, StringComparison.InvariantCultureIgnoreCase))) {
-                RefId.Add(new T {
-                    InformationType = e.Type,
-                    RefId = e.Value,
-                });
-            }
+            throw new NotImplementedException();
+
+            //TODO: InformationAssociation
+            //foreach (var e in informationAssociation.RefIds.Where(e => e.Role.Equals(role, StringComparison.InvariantCultureIgnoreCase))) {
+            //    RefId.Add(new T {
+            //        InformationType = e.Type,
+            //        RefId = e.Value,
+            //    });
+            //}
         }
 
         public override InformationAssociation Save(InformationAssociation informationAssociation, string role) {
@@ -410,7 +418,7 @@ namespace S100Framework.WPF.ViewModel
             [
                 .. informationAssociation.RefIds,
                 .. RefId.Select(e => new RefId {
-                    Role = role,
+                    //Role = role,
                     Type = e.InformationType,
                     Value = e.RefId,
                 }),
@@ -471,7 +479,7 @@ namespace S100Framework.WPF.ViewModel
                 [
                     .. featureAssociation.RefIds,
                     .. new []{
-                        new RefId {
+                        new RoleRefId {
                             Role = role,
                             Type = _refId.FeatureType,
                             Value = _refId.RefId,
@@ -516,7 +524,7 @@ namespace S100Framework.WPF.ViewModel
                 [
                     .. featureAssociation.RefIds,
                     .. new []{
-                        new RefId {
+                        new RoleRefId {
                             Role = role,
                             Type = _refId.FeatureType,
                             Value = _refId.RefId,
@@ -552,7 +560,7 @@ namespace S100Framework.WPF.ViewModel
             featureAssociation.RefIds =
             [
                 .. featureAssociation.RefIds,
-                .. RefId.Select(e => new RefId {
+                .. RefId.Select(e => new RoleRefId {
                     Role = role,
                     Type = e.FeatureType,
                     Value = e.RefId,

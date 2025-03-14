@@ -18,21 +18,6 @@ using System.Xml.XPath;
 
 namespace S100Framework
 {
-    namespace DomainModel
-    {
-        [System.AttributeUsage(System.AttributeTargets.Property, AllowMultiple = true)]
-        public class RoleAttribute : System.Attribute
-        {
-            private string _roleName;
-            public string RoleName => _roleName;
-
-            public RoleAttribute(string roleName) {
-                _roleName = roleName;
-            }
-        }
-    }
-
-
     public static class ClassBuilder
     {
         public record informationType(string code, string? superType, bool isAbstract);
@@ -480,7 +465,7 @@ namespace S100Framework
             var informationAssociationRoles = new Dictionary<string, string[]>();
             var featureAssociationRoles = new Dictionary<string, string[]>();
 
-            //  Bindings
+            //  Associations
             {
                 //  S100_FC_Roles
                 {
@@ -527,7 +512,6 @@ namespace S100Framework
 
                 //  S100_FC_SpatialAssociations
                 {
-
                     classBuilder.AppendLine($"\tnamespace Associations");
                     classBuilder.AppendLine("\t{");                    
 
@@ -604,7 +588,7 @@ namespace S100Framework
 
                         var roles = e.Elements(XName.Get("role", scope_S100)).Select(e => e.Attribute("ref")!.Value);
 
-                        if (roles.Count() > 2)
+                        if (roles.Count() > 1)
                             System.Diagnostics.Debugger.Break();
 
                         informationAssociationRoles.Add(code, roles.ToArray());
@@ -616,7 +600,7 @@ namespace S100Framework
 
                             TypeBuilder associationTypeBuilder;
 
-                            associationTypeBuilder = moduleBuilder.DefineType($"{S100Framework.Roslyn.Namespace}.Associations.{code}Association", attributes);
+                            associationTypeBuilder = moduleBuilder.DefineType($"{S100Framework.Roslyn.Namespace}.Associations.{code}Association", attributes, typeof(InformationAssociation));
 
                             foreach (var attributeBinding in e.XPathSelectElements("S100FC:attributeBinding", xmlNamespaceManager)) {
                                 associationTypeBuilder.BuildAttributeBinding(attributeBinding, scope_S100, xmlNamespaceManager, dictionaryTypes, dictionaryTypesComplex);
@@ -1501,6 +1485,11 @@ namespace S100Framework
             common.AppendLine("\tpublic class RefId {");
             common.AppendLine("\t\tpublic required string? Value { get; set; }");
             common.AppendLine("\t\tpublic required string? Type { get; set; }");
+            //common.AppendLine("\t\tpublic required string Role { get; set; }");
+            common.AppendLine("\t}");
+
+            common.AppendLine("\t[System.SerializableAttribute()]");
+            common.AppendLine("\tpublic class RoleRefId : RefId {");
             common.AppendLine("\t\tpublic required string Role { get; set; }");
             common.AppendLine("\t}");
 
@@ -1512,9 +1501,11 @@ namespace S100Framework
             common.AppendLine("\t}");
             common.AppendLine("\t[System.SerializableAttribute()]");
             common.AppendLine("\tpublic class InformationAssociation : Association {");
+            common.AppendLine("\t\tpublic RefId[] RefIds { get; set; } = new RefId[0];");
             common.AppendLine("\t}");
             common.AppendLine("\t[System.SerializableAttribute()]");
             common.AppendLine("\tpublic class FeatureAssociation : Association {");
+            common.AppendLine("\t\tpublic RoleRefId[] RefIds { get; set; } = new RoleRefId[0];");
             common.AppendLine("\t}");
 
             common.AppendLine();
@@ -2182,11 +2173,60 @@ namespace S100Framework.DomainModel
         }
     }
 
+    [System.AttributeUsage(System.AttributeTargets.Property, AllowMultiple = false)]
+    public class CodeListAttribute : System.Attribute
+    {
+        private string _propertyName;
+        public string PropertyName => _propertyName;
+
+        public CodeListAttribute(string propertyName) {
+            _propertyName = propertyName;
+        }
+    }
+
+    [System.AttributeUsage(System.AttributeTargets.Property, AllowMultiple = true)]
+    public class RoleAttribute : System.Attribute
+    {
+        private string _roleName;
+        public string RoleName => _roleName;
+
+        public RoleAttribute(string roleName) {
+            _roleName = roleName;
+        }
+    }
+
+    [System.AttributeUsage(System.AttributeTargets.Property, AllowMultiple = false)]
+    public class RequiredAttribute : System.Attribute
+    {
+    }
+
+    [System.SerializableAttribute()]
+    public abstract class Node
+    {
+        public virtual string Code => string.Empty;
+    }
+
+    [System.SerializableAttribute()]
+    public abstract class InformationNode : Node
+    {
+    }
+
+    [System.SerializableAttribute()]
+    public abstract class FeatureNode : Node
+    {
+    }
+
     [System.SerializableAttribute()]
     public class RefId
     {
         public required string? Value { get; set; }
         public required string? Type { get; set; }
+        //public required string Role { get; set; }
+    }
+
+    [System.SerializableAttribute()]
+    public class RoleRefId : RefId
+    {
         public required string Role { get; set; }
     }
 
@@ -2194,18 +2234,29 @@ namespace S100Framework.DomainModel
     public abstract class Association
     {
         public required string Code { get; set; }
-        public required string AssociationConnectorTypeName { get; set; }
-        public RefId[] RefIds { get; set; } = new RefId[0];
+        public required string AssociationConnectorTypeName { get; set; }        
     }
 
     [System.SerializableAttribute()]
     public class InformationAssociation : Association
     {
+        public RefId[] RefIds { get; set; } = new RefId[0];
     }
 
     [System.SerializableAttribute()]
     public class FeatureAssociation : Association
     {
+        public RoleRefId[] RefIds { get; set; } = new RoleRefId[0];
+    }
+
+    namespace Bindings
+    {
+        public enum roleType
+        {
+            association,
+            aggregation,
+            composition,
+        }
     }
 }
 
