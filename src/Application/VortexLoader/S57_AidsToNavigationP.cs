@@ -196,6 +196,12 @@ namespace S100Framework.Applications
                             if (plts_comp_scale != default) {
                                 instance.scaleMinimum = plts_comp_scale;
                             }
+                            instance.height = current.HEIGHT;
+                            instance.elevation = current.ELEVAT;
+
+                            
+
+
 
                             AddCondition(instance.condition, feature);
                             AddColour(instance.colour, feature);
@@ -221,9 +227,12 @@ namespace S100Framework.Applications
                             if (plts_comp_scale != default) {
                                 instance.scaleMinimum = plts_comp_scale;
                             }
+                            instance.height = current.HEIGHT;
+                            instance.elevation = current.ELEVAT;
 
                             AddCondition(instance.condition, feature);
                             AddColour(instance.colour, feature);
+                            AddColourPattern(instance.colourPattern, feature);
                             AddStatus(instance.status, feature);
                             AddFeatureName(instance.featureName, feature);
                             AddInformation(instance.information, feature);
@@ -242,9 +251,12 @@ namespace S100Framework.Applications
                             if (plts_comp_scale != default) {
                                 instance.scaleMinimum = plts_comp_scale;
                             }
+                            instance.height = current.HEIGHT;
+                            instance.elevation = current.ELEVAT;
 
                             AddCondition(instance.condition, feature);
                             AddColour(instance.colour, feature);
+                            AddColourPattern(instance.colourPattern, feature);
                             AddStatus(instance.status, feature);
                             AddFeatureName(instance.featureName, feature);
                             AddInformation(instance.information, feature);
@@ -262,9 +274,12 @@ namespace S100Framework.Applications
                             if (plts_comp_scale != default) {
                                 instance.scaleMinimum = plts_comp_scale;
                             }
+                            instance.height = current.HEIGHT;
+                            instance.elevation = current.ELEVAT;
 
                             AddCondition(instance.condition, feature);
                             AddColour(instance.colour, feature);
+                            AddColourPattern(instance.colourPattern, feature);
                             AddStatus(instance.status, feature);
                             AddFeatureName(instance.featureName, feature);
                             AddInformation(instance.information, feature);
@@ -283,9 +298,12 @@ namespace S100Framework.Applications
                             if (plts_comp_scale != default) {
                                 instance.scaleMinimum = plts_comp_scale;
                             }
+                            instance.height = current.HEIGHT;
+                            instance.elevation = current.ELEVAT;
 
                             AddCondition(instance.condition, feature);
                             AddColour(instance.colour, feature);
+                            AddColourPattern(instance.colourPattern, feature);
                             AddStatus(instance.status, feature);
                             AddFeatureName(instance.featureName, feature);
                             AddInformation(instance.information, feature);
@@ -306,6 +324,7 @@ namespace S100Framework.Applications
                             }
 
                             AddColour(instance.colour, feature);
+                            AddColourPattern(instance.colourPattern, feature);
                             AddStatus(instance.status, feature);
                             AddFeatureName(instance.featureName, feature);
                             AddInformation(instance.information, feature);
@@ -325,6 +344,7 @@ namespace S100Framework.Applications
                             }
 
                             AddColour(instance.colour, feature);
+                            AddColourPattern(instance.colourPattern, feature);
                             AddStatus(instance.status, feature);
                             AddFeatureName(instance.featureName, feature);
                             AddInformation(instance.information, feature);
@@ -344,6 +364,7 @@ namespace S100Framework.Applications
                             }
 
                             AddColour(instance.colour, feature);
+                            AddColourPattern(instance.colourPattern, feature);
                             AddStatus(instance.status, feature);
                             AddFeatureName(instance.featureName, feature);
                             AddInformation(instance.information, feature);
@@ -366,6 +387,7 @@ namespace S100Framework.Applications
                             //instance.topmark = new topmark() { }
                             AddBuoyShape(instance.buoyShape, feature);
                             AddColour(instance.colour, feature);
+                            AddColourPattern(instance.colourPattern, feature);
                             AddStatus(instance.status, feature);
                             AddFeatureName(instance.featureName, feature);
                             AddInformation(instance.information, feature);
@@ -406,7 +428,8 @@ namespace S100Framework.Applications
                                 instance.scaleMinimum = plts_comp_scale;
                             }
 
-                            AddColour(instance.colour, feature); 
+                            AddColour(instance.colour, feature);
+                            AddColourPattern(instance.colourPattern, feature);
                             AddStatus(instance.status, feature);
                             AddFeatureName(instance.featureName, feature);
                             AddInformation(instance.information, feature);
@@ -426,8 +449,8 @@ namespace S100Framework.Applications
                                 instance.scaleMinimum = plts_comp_scale;
                             }
 
-
                             AddColour(instance.colour, feature);
+                            AddColourPattern(instance.colourPattern, feature);
                             AddStatus(instance.status, feature);
                             AddFeatureName(instance.featureName, feature);
                             AddInformation(instance.information, feature);
@@ -446,8 +469,11 @@ namespace S100Framework.Applications
                             if (plts_comp_scale != default) {
                                 instance.scaleMinimum = plts_comp_scale;
                             }
+                            instance.height = current.HEIGHT;
+                            instance.elevation = current.ELEVAT;
 
                             AddColour(instance.colour, feature);
+                            AddColourPattern(instance.colourPattern, feature);
                             AddStatus(instance.status, feature);
                             AddFeatureName(instance.featureName, feature);
                             AddInformation(instance.information, feature);
@@ -471,6 +497,7 @@ namespace S100Framework.Applications
                             if (plts_comp_scale != default) {
                                 instance.scaleMinimum = plts_comp_scale;
                             }
+
 
                             AddStatus(instance.status, feature);
                             AddFeatureName(instance.featureName, feature);
@@ -496,8 +523,9 @@ namespace S100Framework.Applications
                             if (plts_comp_scale != default) {
                                 instance.scaleMinimum = plts_comp_scale;
                             }
-                            
+
                             AddColour(instance.colour, feature);
+                            AddColourPattern(instance.colourPattern, feature);
                             AddStatus(instance.status, feature);
                             AddFeatureName(instance.featureName, feature);
                             AddInformation(instance.information, feature);
@@ -518,6 +546,7 @@ namespace S100Framework.Applications
                             }
                             
                             AddColour(instance.colour, feature);
+                            AddColourPattern(instance.colourPattern, feature);
                             AddStatus(instance.status, feature);
                             AddFeatureName(instance.featureName, feature);
                             AddInformation(instance.information, feature);
@@ -536,8 +565,12 @@ namespace S100Framework.Applications
                             if (plts_comp_scale != default) {
                                 instance.scaleMinimum = plts_comp_scale;
                             }
+
+                            instance.height = current.HEIGHT;
                             
+
                             AddStatus(instance.status, feature);
+                            
                             //AddFeatureName(instance.featureName, feature);
                             AddInformation(instance.information, feature);
                             buffer["ps"] = ps101;
