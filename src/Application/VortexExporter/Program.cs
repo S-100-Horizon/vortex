@@ -2,6 +2,7 @@
 using ArcGIS.Core.Geometry;
 using CommandLine;
 using S100Framework.DomainModel;
+using S100Framework.DomainModel.S101.FeatureTypes;
 using S100Framework.YAML;
 using Dataset = S100Framework.YAML.Dataset;
 using Esri = ArcGIS.Core.Hosting.Host;
@@ -148,7 +149,7 @@ namespace S100Framework.Applications
 
             var yaml = S100Framework.YAML.Converter.Serialize(dataset);
 
-            File.WriteAllText(IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "test.yaml"), yaml);
+            File.WriteAllText(IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), $"DK40349E.yaml"), yaml);
             //Console.WriteLine(yaml);
             return 0;
         }
@@ -165,7 +166,7 @@ namespace S100Framework.YAML
     {
         public static void AddGeometry(this Dataset dataset, ArcGIS.Core.Geometry.Geometry geometry, string name) {
             switch (geometry) {
-                case MapPoint point: {          // Point
+                case MapPoint point: {                              // Point
                         dataset.AddPoint(new Point(point.X, point.Y) { Name = name });
                         break;
                     }
@@ -184,7 +185,8 @@ namespace S100Framework.YAML
                         Point first = default!;
 
                         var firstVertice = (vertices.First().X, vertices.First().Y);
-                        var firstMatch = dataset.Points.FirstOrDefault(e => e.Coordinate.X == firstVertice.X && e.Coordinate.Y == firstVertice.Y);
+
+                        var firstMatch = dataset?.Points?.FirstOrDefault(e => e.Coordinate?.X == firstVertice.X && e.Coordinate.Y == firstVertice.Y);
 
 
                         if (firstMatch != null) {
@@ -194,12 +196,12 @@ namespace S100Framework.YAML
                             first = new Point(firstVertice.X, firstVertice.Y) {
                                 Name = $"{name}/0"
                             };
-                            dataset.AddPoint(first);
+                            dataset!.AddPoint(first);
                         }
 
                         var curve = new Curve(first, vertices) { Name = name };
 
-                        dataset.AddCurve(curve);
+                        dataset!.AddCurve(curve);
                         break;
                     }
                 case ArcGIS.Core.Geometry.Polygon polygon: {         // Surface
