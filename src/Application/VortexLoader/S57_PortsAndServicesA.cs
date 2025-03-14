@@ -55,8 +55,12 @@ namespace S100Framework.Applications
                             if (plts_comp_scale != default) {
                                 instance.scaleMinimum = plts_comp_scale;
                             }
-                            AddStatus(instance.status, feature);
-                            AddFeatureName(instance.featureName, feature);
+
+                            if (current.STATUS != default) {
+                                instance.status = GetStatus(current.STATUS);
+                            }
+
+                            instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
                             AddInformation(instance.information, feature);
                             buffer["ps"] = ps101;
 
@@ -74,8 +78,15 @@ namespace S100Framework.Applications
                             if (plts_comp_scale != default) {
                                 instance.scaleMinimum = plts_comp_scale;
                             }
-                            AddStatus(instance.status, feature);
-                            AddFeatureName(instance.featureName, feature);
+
+                            if (current.CONDTN.HasValue) {
+                                instance.condition = GetCondition(current.CONDTN.Value);
+                            }
+
+                            if (current.STATUS != default) {
+                                instance.status = GetStatus(current.STATUS);
+                            }
+                            instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
                             AddInformation(instance.information, feature);
                             buffer["ps"] = ps101;
 
@@ -93,8 +104,14 @@ namespace S100Framework.Applications
                             if (plts_comp_scale != default) {
                                 instance.scaleMinimum = plts_comp_scale;
                             }
-                            AddStatus(instance.status, feature);
-                            AddFeatureName(instance.featureName, feature);
+                            if (current.CONDTN.HasValue) {
+                                instance.condition = GetCondition(current.CONDTN.Value);
+                            }
+
+                            if (current.STATUS != default) {
+                                instance.status = GetStatus(current.STATUS);
+                            }
+                            instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
                             AddInformation(instance.information, feature);
                             buffer["ps"] = ps101;
 
@@ -112,8 +129,11 @@ namespace S100Framework.Applications
                             if (plts_comp_scale != default) {
                                 instance.scaleMinimum = plts_comp_scale;
                             }
-                            AddStatus(instance.status, feature);
-                            AddFeatureName(instance.featureName, feature);
+                            if (current.STATUS != default) {
+                                instance.status = GetStatus(current.STATUS);
+                            }
+
+                            instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
                             AddInformation(instance.information, feature);
                             buffer["ps"] = ps101;
 
@@ -131,8 +151,23 @@ namespace S100Framework.Applications
                             if (plts_comp_scale != default) {
                                 instance.scaleMinimum = plts_comp_scale;
                             }
-                            AddStatus(instance.status, feature);
-                            AddFeatureName(instance.featureName, feature);
+                            if (current.COLOUR != default) {
+                                instance.colour = GetColours(current.COLOUR);
+                            }
+
+                            if (current.COLPAT != default) {
+                                instance.colourPattern = GetColourPattern(current.COLPAT);
+                            }
+
+                            if (current.CONDTN.HasValue) {
+                                instance.condition = GetCondition(current.CONDTN.Value);
+                            }
+
+                            if (current.STATUS != default) {
+                                instance.status = GetStatus(current.STATUS);
+                            }
+
+                            instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
                             AddInformation(instance.information, feature);
                             buffer["ps"] = ps101;
 
@@ -150,8 +185,15 @@ namespace S100Framework.Applications
                             if (plts_comp_scale != default) {
                                 instance.scaleMinimum = plts_comp_scale;
                             }
-                            AddStatus(instance.status, feature);
-                            AddFeatureName(instance.featureName, feature);
+                            if (current.CONDTN.HasValue) {
+                                instance.condition = GetCondition(current.CONDTN.Value);
+                            }
+
+                            if (current.STATUS != default) {
+                                instance.status = GetStatus(current.STATUS);
+                            }
+
+                            instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
                             AddInformation(instance.information, feature);
                             buffer["ps"] = ps101;
 
@@ -169,8 +211,15 @@ namespace S100Framework.Applications
                             if (plts_comp_scale != default) {
                                 instance.scaleMinimum = plts_comp_scale;
                             }
-                            AddStatus(instance.status, feature);
-                            AddFeatureName(instance.featureName, feature);
+
+                            if (current.CONDTN.HasValue) {
+                                instance.condition = GetCondition(current.CONDTN.Value);
+                            }
+
+                            if (current.STATUS != default) {
+                                instance.status = GetStatus(current.STATUS);
+                            }
+                            instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
                             AddInformation(instance.information, feature);
                             buffer["ps"] = ps101;
 
@@ -189,7 +238,7 @@ namespace S100Framework.Applications
                                 instance.scaleMinimum = plts_comp_scale;
                             }
                             
-                            AddFeatureName(instance.featureName, feature);
+                            instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
                             AddInformation(instance.information, feature);
                             buffer["ps"] = ps101;
 
@@ -207,8 +256,22 @@ namespace S100Framework.Applications
                             if (plts_comp_scale != default) {
                                 instance.scaleMinimum = plts_comp_scale;
                             }
-                            AddStatus(instance.status, feature);
-                            AddFeatureName(instance.featureName, feature);
+                            if (current.COLOUR != default) {
+                                instance.colour = GetColours(current.COLOUR);
+                            }
+
+                            if (current.COLPAT != default) {
+                                instance.colourPattern = GetColourPattern(current.COLPAT);
+                            }
+
+                            if (current.CONDTN.HasValue) {
+                                instance.condition = GetCondition(current.CONDTN.Value);
+                            }
+
+                            if (current.STATUS != default) {
+                                instance.status = GetStatus(current.STATUS);
+                            }
+                            instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
                             AddInformation(instance.information, feature);
                             buffer["ps"] = ps101;
 
@@ -226,8 +289,15 @@ namespace S100Framework.Applications
                             if (plts_comp_scale != default) {
                                 instance.scaleMinimum = plts_comp_scale;
                             }
-                            AddStatus(instance.status, feature);
-                            AddFeatureName(instance.featureName, feature);
+
+                            if (current.CONDTN.HasValue) {
+                                instance.condition = GetCondition(current.CONDTN.Value);
+                            }
+
+                            if (current.STATUS != default) {
+                                instance.status = GetStatus(current.STATUS);
+                            }
+                            instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
                             AddInformation(instance.information, feature);
                             buffer["ps"] = ps101;
 
@@ -245,8 +315,11 @@ namespace S100Framework.Applications
                             if (plts_comp_scale != default) {
                                 instance.scaleMinimum = plts_comp_scale;
                             }
-                            AddStatus(instance.status, feature);
-                            AddFeatureName(instance.featureName, feature);
+
+                            if (current.STATUS != default) {
+                                instance.status = GetStatus(current.STATUS);
+                            }
+                            instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
                             AddInformation(instance.information, feature);
                             buffer["ps"] = ps101;
 
@@ -264,8 +337,14 @@ namespace S100Framework.Applications
                             if (plts_comp_scale != default) {
                                 instance.scaleMinimum = plts_comp_scale;
                             }
-                            AddStatus(instance.status, feature);
-                            AddFeatureName(instance.featureName, feature);
+                            if (current.CONDTN.HasValue) {
+                                instance.condition = GetCondition(current.CONDTN.Value);
+                            }
+
+                            if (current.STATUS != default) {
+                                instance.status = GetStatus(current.STATUS);
+                            }
+                            instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
                             AddInformation(instance.information, feature);
                             buffer["ps"] = ps101;
 
@@ -284,7 +363,7 @@ namespace S100Framework.Applications
                                 instance.scaleMinimum = plts_comp_scale;
                             }
 
-                            AddFeatureName(instance.featureName, feature);
+                            instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
                             AddInformation(instance.information, feature);
                             buffer["ps"] = ps101;
 
@@ -302,8 +381,11 @@ namespace S100Framework.Applications
                             if (plts_comp_scale != default) {
                                 instance.scaleMinimum = plts_comp_scale;
                             }
-                            AddStatus(instance.status, feature);
-                            AddFeatureName(instance.featureName, feature);
+
+                            if (current.STATUS != default) {
+                                instance.status = GetStatus(current.STATUS);
+                            }
+                            instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
                             AddInformation(instance.information, feature);
                             buffer["ps"] = ps101;
 
@@ -335,8 +417,23 @@ namespace S100Framework.Applications
                                         _ => throw new IndexOutOfRangeException(),
                                     };
                                 }
-                                AddStatus(instance.status, feature);
-                                AddFeatureName(instance.featureName, feature);
+                                if (current.COLOUR != default) {
+                                    instance.colour = GetColours(current.COLOUR);
+                                }
+
+                                if (current.COLPAT != default) {
+                                    instance.colourPattern = GetColourPattern(current.COLPAT);
+                                }
+
+                                if (current.CONDTN.HasValue) {
+                                    instance.condition = GetCondition(current.CONDTN.Value);
+                                }
+
+                                if (current.STATUS != default) {
+                                    instance.status = GetStatus(current.STATUS);
+                                }
+
+                                instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
                                 AddInformation(instance.information, feature);
                                 buffer["ps"] = ps101;
 
@@ -356,8 +453,15 @@ namespace S100Framework.Applications
                                     instance.scaleMinimum = plts_comp_scale;
                                 }
 
-                                AddStatus(instance.status, feature);
-                                AddFeatureName(instance.featureName, feature);
+
+                                if (current.CONDTN.HasValue) {
+                                    instance.condition = GetCondition(current.CONDTN.Value);
+                                }
+
+                                if (current.STATUS != default) {
+                                    instance.status = GetStatus(current.STATUS);
+                                }
+                                instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
                                 AddInformation(instance.information, feature);
                                 buffer["ps"] = ps101;
 
@@ -378,8 +482,22 @@ namespace S100Framework.Applications
                                 }
 
                                 instance.categoryOfShorelineConstruction = categoryOfShorelineConstruction.TieUpWall;
-                                AddStatus(instance.status, feature);
-                                AddFeatureName(instance.featureName, feature);
+                                if (current.COLOUR != default) {
+                                    instance.colour = GetColours(current.COLOUR);
+                                }
+
+                                if (current.COLPAT != default) {
+                                    instance.colourPattern = GetColourPattern(current.COLPAT);
+                                }
+
+                                if (current.CONDTN.HasValue) {
+                                    instance.condition = GetCondition(current.CONDTN.Value);
+                                }
+
+                                if (current.STATUS != default) {
+                                    instance.status = GetStatus(current.STATUS);
+                                }
+                                instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
                                 AddInformation(instance.information, feature);
                                 buffer["ps"] = ps101;
 
@@ -400,8 +518,22 @@ namespace S100Framework.Applications
                                 }
 
                                 instance.categoryOfPile = categoryOfPile.MooringPost;
-                                AddStatus(instance.status, feature);
-                                AddFeatureName(instance.featureName, feature);
+                                if (current.COLOUR != default) {
+                                    instance.colour = GetColours(current.COLOUR);
+                                }
+
+                                if (current.COLPAT != default) {
+                                    instance.colourPattern = GetColourPattern(current.COLPAT);
+                                }
+
+                                if (current.CONDTN.HasValue) {
+                                    instance.condition = GetCondition(current.CONDTN.Value);
+                                }
+
+                                if (current.STATUS != default) {
+                                    instance.status = GetStatus(current.STATUS);
+                                }
+                                instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
                                 AddInformation(instance.information, feature);
                                 buffer["ps"] = ps101;
 
@@ -422,8 +554,16 @@ namespace S100Framework.Applications
                                 }
 
                                 instance.categoryOfCable = categoryOfCable.JunctionCable;
-                                AddStatus(instance.status, feature);
-                                AddFeatureName(instance.featureName, feature);
+
+                                if (current.CONDTN.HasValue) {
+                                    instance.condition = GetCondition(current.CONDTN.Value);
+                                }
+
+                                if (current.STATUS != default) {
+                                    instance.status = GetStatus(current.STATUS);
+                                }
+
+                                instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
                                 AddInformation(instance.information, feature);
                                 buffer["ps"] = ps101;
 
@@ -446,8 +586,18 @@ namespace S100Framework.Applications
                                 if (current.BOYSHP == default) {
                                     instance.buoyShape = buoyShape.Spherical;
                                 }
-                                AddStatus(instance.status, feature);
-                                AddFeatureName(instance.featureName, feature);
+                                if (current.COLOUR != default) {
+                                    instance.colour = GetColours(current.COLOUR);
+                                }
+
+                                if (current.COLPAT != default) {
+                                    instance.colourPattern = GetColourPattern(current.COLPAT);
+                                }
+
+                                if (current.STATUS != default) {
+                                    instance.status = GetStatus(current.STATUS);
+                                }
+                                instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
                                 AddInformation(instance.information, feature);
                                 buffer["ps"] = ps101;
 
@@ -469,8 +619,12 @@ namespace S100Framework.Applications
                             if (plts_comp_scale != default) {
                                 instance.scaleMinimum = plts_comp_scale;
                             }
-                            AddStatus(instance.status, feature);
-                            AddFeatureName(instance.featureName, feature);
+
+                            if (current.STATUS != default) {
+                                instance.status = GetStatus(current.STATUS);
+                            }
+
+                            instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
                             AddInformation(instance.information, feature);
                             buffer["ps"] = ps101;
 
@@ -488,8 +642,22 @@ namespace S100Framework.Applications
                             if (plts_comp_scale != default) {
                                 instance.scaleMinimum = plts_comp_scale;
                             }
-                            AddStatus(instance.status, feature);
-                            AddFeatureName(instance.featureName, feature);
+                            if (current.COLOUR != default) {
+                                instance.colour = GetColours(current.COLOUR);
+                            }
+
+                            if (current.COLPAT != default) {
+                                instance.colourPattern = GetColourPattern(current.COLPAT);
+                            }
+
+                            if (current.CONDTN.HasValue) {
+                                instance.condition = GetCondition(current.CONDTN.Value);
+                            }
+
+                            if (current.STATUS != default) {
+                                instance.status = GetStatus(current.STATUS);
+                            }
+                            instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
                             AddInformation(instance.information, feature);
                             buffer["ps"] = ps101;
 
@@ -507,8 +675,23 @@ namespace S100Framework.Applications
                             if (plts_comp_scale != default) {
                                 instance.scaleMinimum = plts_comp_scale;
                             }
-                            AddStatus(instance.status, feature);
-                            AddFeatureName(instance.featureName, feature);
+                            if (current.COLOUR != default) {
+                                instance.colour = GetColours(current.COLOUR);
+                            }
+
+                            if (current.COLPAT != default) {
+                                instance.colourPattern = GetColourPattern(current.COLPAT);
+                            }
+
+                            if (current.CONDTN.HasValue) {
+                                instance.condition = GetCondition(current.CONDTN.Value);
+                            }
+
+                            if (current.STATUS != default) {
+                                instance.status = GetStatus(current.STATUS);
+                            }
+
+                            instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
                             AddInformation(instance.information, feature);
                             buffer["ps"] = ps101;
 

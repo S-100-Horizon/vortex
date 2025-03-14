@@ -146,7 +146,8 @@ namespace S100Framework.Applications
 
                             //TODO: 	maximumPermittedDraught
 
-                            AddFeatureName(instance.featureName, feature);
+                            instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
+
                             AddInformation(instance.information, feature);
 
                             buffer["ps"] = ps101;

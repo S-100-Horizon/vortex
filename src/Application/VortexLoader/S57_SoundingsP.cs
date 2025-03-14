@@ -90,7 +90,8 @@ namespace S100Framework.Applications
                             //    }
                             //}
 
-                            AddFeatureName(sounding.featureName, feature);
+                            
+                            sounding.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
                             AddInformation(sounding.information, feature);
 
                             bufferPointset["json"] = System.Text.Json.JsonSerializer.Serialize(sounding);
@@ -101,22 +102,23 @@ namespace S100Framework.Applications
                             Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(sounding));
                             convertedCount++;
 
-                            if (quapos != default && quapos == 4) {
-                                /*  SOUNDG with attribute QUAPOS = 4 (approximate) will also be converted to an instance of the S101 Information type Spatial Quality (see S-101 DCEG clause 24.5), attribute quality of horizontal
-                                    measurement = 4 (approximate), associated to the geometry of the Sounding feature using the
-                                    association Spatial Association. */
-                                using var information = informationtype.CreateRowBuffer();
 
+                            // TODO: Handle Spatialquality
+                            //if (quapos != default && quapos == 4) {
+                            //    /*  SOUNDG with attribute QUAPOS = 4 (approximate) will also be converted to an instance of the S101 Information type Spatial Quality (see S-101 DCEG clause 24.5), attribute quality of horizontal
+                            //        measurement = 4 (approximate), associated to the geometry of the Sounding feature using the
+                            //        association Spatial Association. */
+                            //    using var information = informationtype.CreateRowBuffer();
 
-                                var row = new SpatialQuality {
-                                    qualityOfHorizontalMeasurement = qualityOfHorizontalMeasurement.Approximate,
-                                };
+                            //    var row = new SpatialQuality {
+                            //        qualityOfHorizontalMeasurement = qualityOfHorizontalMeasurement.Approximate,
+                            //    };
 
-                                information["ps"] = ps101;
-                                information["code"] = row.GetType().Name;
-                                information["json"] = System.Text.Json.JsonSerializer.Serialize(row);
-                                using var _ = informationtype.CreateRow(information);
-                            }
+                            //    information["ps"] = ps101;
+                            //    information["code"] = row.GetType().Name;
+                            //    information["json"] = System.Text.Json.JsonSerializer.Serialize(row);
+                            //    using var _ = informationtype.CreateRow(information);
+                            //}
                         }
                         else {
                             /*  SOUNDG with attribute QUASOU = 5 (no bottom found at value shown) will be converted to an

@@ -43,7 +43,7 @@ namespace S100Framework.Applications
                                 instance.scaleMinimum = plts_comp_scale;
                             }
 
-                            AddFeatureName(instance.featureName, feature);
+                            instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
                             AddInformation(instance.information, feature);
                             buffer["ps"] = ps101;
 
@@ -61,7 +61,7 @@ namespace S100Framework.Applications
                                 instance.scaleMinimum = plts_comp_scale;
                             }
                             
-                            AddFeatureName(instance.featureName, feature);
+                            instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
                             AddInformation(instance.information, feature);
                             buffer["ps"] = ps101;
 
@@ -84,7 +84,7 @@ namespace S100Framework.Applications
                                 instance.nationality = current.NATION;
                             }
 
-                            //AddFeatureName(instance.featureName, feature);
+                            //instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
                             AddInformation(instance.information, feature);
                             buffer["ps"] = ps101;
 

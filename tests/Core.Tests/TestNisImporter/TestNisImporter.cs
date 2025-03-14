@@ -62,7 +62,7 @@ namespace TestNisImporter
                 csSubtypes.AppendLine($"");
                 csSubtypes.AppendLine($"\t\t\tAddCondition(instance.condition, feature);");
                 csSubtypes.AppendLine($"\t\t\tAddStatus(instance.status, feature);");
-                csSubtypes.AppendLine($"\t\t\tAddFeatureName(instance.featureName, feature);");
+                csSubtypes.AppendLine($"\t\t\tinstance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);");
                 csSubtypes.AppendLine($"\t\t\tAddInformation(instance.information, feature);");
                 csSubtypes.AppendLine($"\t\t\tbuffer[\"ps\"] = ps101;");
                 csSubtypes.AppendLine($"\t\t\tbuffer[\"code\"] = instance.GetType().Name;");

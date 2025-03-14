@@ -83,35 +83,38 @@ namespace S100Framework.Applications
 
                             */
 
-                            if (current.SHAPE != null) {
-                                foreach (var spatialAttributeL in SelectIn<PLTS_SpatialAttributeL>(current.SHAPE, plts_spatialattributel)) {
-                                    var p_quapos = spatialAttributeL.P_QUAPOS ?? default;
-                                    if (p_quapos != default && p_quapos == 4) {
-                                        var spatialQuality = new SpatialQuality() {
-                                            qualityOfHorizontalMeasurement = qualityOfHorizontalMeasurement.Approximate,
-                                            //spatialAccuracy = new List<DomainModel.ComplexAttributes.spatialAccuracy>() {
-                                            //new DomainModel.ComplexAttributes.spatialAccuracy() {
-                                            //    horizontalPositionUncertainty = default,
-                                            //    fixedDateRange = default,
-                                            //    verticalUncertainty = new DomainModel.ComplexAttributes.verticalUncertainty() {
-                                            //        uncertaintyFixed = default,
-                                            //        uncertaintyVariableFactor = default
-                                            //    }
-                                            //}
-                                        //}
-                                        };
+                            
+                            // TODO: handle spatial quality spatial relation
 
-                                        using var information = informationtype.CreateRowBuffer();
-                                        information["ps"] = ps101;
-                                        information["code"] = spatialQuality.GetType().Name;
-                                        information["json"] = System.Text.Json.JsonSerializer.Serialize(spatialQuality);
-                                        //information["shape"] = spatialAttributeL.SHAPE;
+                            //if (current.SHAPE != null) {
+                            //    foreach (var spatialAttributeL in SelectIn<PLTS_SpatialAttributeL>(current.SHAPE, plts_spatialattributel)) {
+                            //        var p_quapos = spatialAttributeL.P_QUAPOS ?? default;
+                            //        if (p_quapos != default && p_quapos == 4) {
+                            //            var spatialQuality = new SpatialQuality() {
+                            //                qualityOfHorizontalMeasurement = qualityOfHorizontalMeasurement.Approximate,
+                            //                //spatialAccuracy = new List<DomainModel.ComplexAttributes.spatialAccuracy>() {
+                            //                //new DomainModel.ComplexAttributes.spatialAccuracy() {
+                            //                //    horizontalPositionUncertainty = default,
+                            //                //    fixedDateRange = default,
+                            //                //    verticalUncertainty = new DomainModel.ComplexAttributes.verticalUncertainty() {
+                            //                //        uncertaintyFixed = default,
+                            //                //        uncertaintyVariableFactor = default
+                            //                //    }
+                            //                //}
+                            //            //}
+                            //            };
 
-                                        using var _ = informationtype.CreateRow(information);
+                            //            using var information = informationtype.CreateRowBuffer();
+                            //            information["ps"] = ps101;
+                            //            information["code"] = spatialQuality.GetType().Name;
+                            //            information["json"] = System.Text.Json.JsonSerializer.Serialize(spatialQuality);
+                            //            //information["shape"] = spatialAttributeL.SHAPE;
 
-                                    }
-                                }
-                            }
+                            //            using var _ = informationtype.CreateRow(information);
+
+                            //        }
+                            //    }
+                            //}
                             
                             AddInformation(instance.information, feature);
                             buffer["ps"] = ps101;

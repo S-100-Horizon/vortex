@@ -72,8 +72,10 @@ namespace S100Framework.Applications
                                 }
                             }
 
-                            AddStatus(instance.status, feature);
-                            AddFeatureName(instance.featureName, feature);
+                            if (current.STATUS != default) {
+                                instance.status = GetSingleStatus(current.STATUS);
+                            }
+                            instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
                             AddInformation(instance.information, feature);
 
                             bufferSurface["ps"] = ps101;
@@ -117,9 +119,11 @@ namespace S100Framework.Applications
                                 instance.scaleMinimum = plts_comp_scale;
                             }
 
-                            AddCondition(instance.condition, feature);
-                            AddStatus(instance.status, feature);
-                            AddFeatureName(instance.featureName, feature);
+                            if (current.CONDTN.HasValue) {
+                                instance.condition = GetCondition(current.CONDTN.Value);
+                            }
+
+                            instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
                             AddInformation(instance.information, feature);
 
                             bufferSurface["ps"] = ps101;
@@ -166,7 +170,7 @@ namespace S100Framework.Applications
                                 }
                             }
 
-                            AddFeatureName(instance.featureName, feature);
+                            instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
                             AddInformation(instance.information, feature);
 
                             bufferSurface["ps"] = ps101;
@@ -199,8 +203,11 @@ namespace S100Framework.Applications
                                 }
                             }
 
-                            AddStatus(instance.status, feature);
-                            AddFeatureName(instance.featureName, feature);
+                            if (current.STATUS != default) {
+                                instance.status = GetSingleStatus(current.STATUS);
+                            }
+
+                            instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
                             AddInformation(instance.information, feature);
 
                             bufferSurface["ps"] = ps101;
@@ -296,7 +303,7 @@ namespace S100Framework.Applications
                                 instance.scaleMinimum = plts_comp_scale;
                             }
 
-                            AddFeatureName(instance.featureName, feature);
+                            instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
                             AddInformation(instance.information, feature);
 
                             bufferSurface["ps"] = ps101;
@@ -390,7 +397,7 @@ namespace S100Framework.Applications
                                 instance.scaleMinimum = plts_comp_scale;
                             }
 
-                            AddFeatureName(instance.featureName, feature);
+                            instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
                             AddInformation(instance.information, feature);
 
                             bufferSurface["ps"] = ps101;
@@ -445,7 +452,7 @@ namespace S100Framework.Applications
                                 instance.scaleMinimum = plts_comp_scale;
                             }
 
-                            AddFeatureName(instance.featureName, feature);
+                            instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
                             AddInformation(instance.information, feature);
 
                             bufferSurface["ps"] = ps101;

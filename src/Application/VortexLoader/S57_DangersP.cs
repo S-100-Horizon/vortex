@@ -3,8 +3,6 @@ using S100Framework.Applications.S57.esri;
 using S100Framework.DomainModel;
 using S100Framework.DomainModel.S101;
 using S100Framework.DomainModel.S101.FeatureTypes;
-using System;
-using System.Reflection.Metadata.Ecma335;
 
 namespace S100Framework.Applications
 {
@@ -59,13 +57,17 @@ namespace S100Framework.Applications
                                 instance.scaleMinimum = plts_comp_scale;
                             }
 
+                            if (current.CONDTN.HasValue) {
+                                instance.condition = GetCondition(current.CONDTN.Value);
+                            }
 
+                            if (current.STATUS != default) {
+                                instance.status = GetSingleStatus(current.STATUS);
+                            }
 
-                            AddStatus(instance.status, feature);
                             AddInformation(instance.information, feature);
 
                             buffer["ps"] = ps101;
-
                             buffer["code"] = instance.GetType().Name;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance);
                             buffer["shape"] = current.SHAPE;
@@ -84,8 +86,15 @@ namespace S100Framework.Applications
                                 instance.scaleMinimum = plts_comp_scale;
                             }
 
-                            AddStatus(instance.status, feature);
-                            AddFeatureName(instance.featureName, feature);
+                            if (current.CONDTN.HasValue) {
+                                instance.condition = GetCondition(current.CONDTN.Value);
+                            }
+
+                            if (current.STATUS != default) {
+                                instance.status = GetStatus(current.STATUS);
+                            }
+
+                            instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
                             AddInformation(instance.information, feature);
 
                             buffer["ps"] = ps101;
@@ -113,8 +122,15 @@ namespace S100Framework.Applications
                                 var foulGround = new FoulGround();
 
                                 //foulGround.verticalUncertainty = 
-                                AddStatus(foulGround.status, feature);
-                                AddFeatureName(foulGround.featureName, feature);
+                                if (current.STATUS != default) {
+                                    foulGround.status = GetStatus(current.STATUS);
+                                }
+
+                                if (current.PLTS_COMP_SCALE.HasValue)
+                                    foulGround.scaleMinimum = current.PLTS_COMP_SCALE;
+
+                                foulGround.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
+
                                 AddInformation(foulGround.information, feature);
                                 buffer["ps"] = ps101;
 
@@ -203,8 +219,15 @@ namespace S100Framework.Applications
                             if (current.PLTS_COMP_SCALE.HasValue)
                                 obstruction.scaleMinimum = current.PLTS_COMP_SCALE;
 
-                            AddStatus(obstruction.status, feature);
-                            AddFeatureName(obstruction.featureName, feature);
+                            if (current.CONDTN.HasValue) {
+                                obstruction.condition = GetCondition(current.CONDTN.Value);
+                            }
+
+                            if (current.STATUS != default) {
+                                obstruction.status = GetStatus(current.STATUS);
+                            }
+
+                            obstruction.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
                             AddInformation(obstruction.information, feature);
 
                             buffer["ps"] = ps101;
@@ -257,8 +280,13 @@ namespace S100Framework.Applications
                             if (current.PLTS_COMP_SCALE.HasValue) {
                                 uwtroc.scaleMinimum = current.PLTS_COMP_SCALE;
                             }
-                            AddStatus(uwtroc.status, feature);
-                            AddFeatureName(uwtroc.featureName, feature);
+
+                              if (current.STATUS != default) {
+                                uwtroc.status = GetSingleStatus(current.STATUS);
+                            }
+
+
+
                             AddInformation(uwtroc.information, feature);
 
                             buffer["ps"] = ps101;
@@ -296,7 +324,7 @@ namespace S100Framework.Applications
                                 instance.scaleMinimum = current.PLTS_COMP_SCALE;
                             }
 
-                            AddFeatureName(instance.featureName, feature);
+                            instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
                             AddInformation(instance.information, feature);
 
                             buffer["ps"] = ps101;
@@ -352,8 +380,12 @@ namespace S100Framework.Applications
                             if (current.PLTS_COMP_SCALE.HasValue) {
                                 instance.scaleMinimum = current.PLTS_COMP_SCALE.Value;
                             }
-                            AddStatus(instance.status, feature);
-                            AddFeatureName(instance.featureName, feature);
+
+                            if (current.STATUS != default) {
+                                instance.status = GetStatus(current.STATUS);
+                            }
+
+                            instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
                             AddInformation(instance.information, feature);
 
                             buffer["ps"] = ps101;

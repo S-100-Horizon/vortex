@@ -78,8 +78,8 @@ namespace S100Framework.Applications
                     informationtype.DeleteRows(query);
                 });
 
-                //Store(() => S57_MetadataA(source, destination, filter));
-                Store(() => S57_ProductCoverage(source, destination, filter)); 
+                Store(() => S57_MetadataA(source, destination, filter));
+                Store(() => S57_ProductCoverage(source, destination, filter));
                 Store(() => S57_AidsToNavigationP(source, destination, filter));
                 Store(() => S57_MilitaryFeatureA(source, destination, filter));
                 Store(() => S57_MilitaryFeaturesP(source, destination, filter));
@@ -144,9 +144,8 @@ namespace S100Framework.Applications
             }
         }
 
-        private static void AddColour(List<colour> colours, Feature feature) {
-            var color = Convert.ToString(feature["COLOUR"])?.Trim();
-
+        private static List<colour> GetColours(string color) {
+            List<colour> colours = new List<colour>();
             if (color != default) {
                 if (!string.IsNullOrEmpty(color)) {
                     foreach (var c in color.Split(',', StringSplitOptions.RemoveEmptyEntries)) {
@@ -159,7 +158,7 @@ namespace S100Framework.Applications
                             "6" => colour.Yellow,
                             "7" => colour.Grey,
                             "8" => colour.Brown,
-                            "9" => colour.Grey,
+                            "9" => colour.Amber,
                             "10" => colour.Violet,
                             "11" => colour.Orange,
                             "12" => colour.Magenta,
@@ -173,59 +172,42 @@ namespace S100Framework.Applications
                     }
                 }
             }
+            return colours;
         }
 
-        private static void AddBuoyShape(buoyShape buoyShape, Feature feature) {
-            if (DBNull.Value != feature["BOYSHP"]) {
-                var boyShp = Convert.ToInt32(feature["BOYSHP"]);
-                if (boyShp != default) {
-                    buoyShape = boyShp switch {
-                        1 => buoyShape.Conical,   
-                        2 => buoyShape.Can,   
-                        3 => buoyShape.Spherical,
-                        4 => buoyShape.Pillar,
-                        5 => buoyShape.Spar,
-                        6 => buoyShape.Barrel,
-                        7 => buoyShape.Superbuoy,
-                        8 => buoyShape.IceBuoy,
-                        -32767 => (buoyShape)-1,
-                        _ => throw new IndexOutOfRangeException(),
-                    };
-                }
-            }
-
+        private static buoyShape GetBuoyShape(int? buoyShapeValue) {
+            return buoyShapeValue.Value switch {
+                1 => buoyShape.Conical,
+                2 => buoyShape.Can,
+                3 => buoyShape.Spherical,
+                4 => buoyShape.Pillar,
+                5 => buoyShape.Spar,
+                6 => buoyShape.Barrel,
+                7 => buoyShape.Superbuoy,
+                8 => buoyShape.IceBuoy,
+                -32767 => (buoyShape)(-1),
+                _ => throw new IndexOutOfRangeException("Invalid buoy shape value."),
+            };
         }
 
-
-        private static void AddColourPattern(colourPattern? colourPattern, Feature feature) {
-            //if (DBNull.Value != feature["CONDITION"]) {
-            //    var condtn = Convert.ToInt32(feature["CONDITION"]);
-            //    if (condtn != default) {
-            //        cndtn = condtn switch {
-            //            1 => condition.UnderConstruction,   //  under construction
-            //            2 => condition.Ruined,   //  ruined
-            //            3 => condition.UnderReclamation,   //  under reclamation
-            //            4 => throw new IndexOutOfRangeException(),   //  wingless
-            //            5 => condition.PlannedConstruction,   //  throw new IndexOutOfRangeException(),   //  planned construction
-            //            -32767 => null,
-            //            _ => throw new IndexOutOfRangeException(),
-            //        };
-            //    }
-            //}
+        private static colourPattern GetColourPattern(string colorPattern) {
+            var colourPat = colorPattern switch {
+                "1" => colourPattern.HorizontalStripes,
+                "2" => colourPattern.VerticalStripes,
+                "3" => colourPattern.DiagonalStripes,
+                "4" => colourPattern.Squared,
+                "5" => colourPattern.StripesDirectionUnknown,
+                "6" => colourPattern.BorderStripe,
+                "-32767" => (colourPattern)(-1),
+                _ => throw new IndexOutOfRangeException($"Colourpattern value is not legal {colorPattern}")
+            };
+            return colourPat;
         }
 
-
-
-        private static void AddOrientation(orientation orient, Feature feature) {
-            if (DBNull.Value != feature["ORIENT"]) {
-                var orientSource = Convert.ToDecimal(feature["ORIENT"]);
-                if (orient == default) {
-                    orient = new orientation();
-                    orient.orientationValue = orientSource;
-                } else {
-                    orient.orientationValue = orientSource;
-                }
-            }
+        private static orientation GetOrientation(decimal orientation) {
+            return new orientation() {
+                orientationValue = orientation
+            };
         }
 
         private static void AddOrientation(decimal orientationValue, Feature feature) {
@@ -236,23 +218,14 @@ namespace S100Framework.Applications
         }
 
 
-        private static void AddStatus(status? status, Feature current) {
-            if (DBNull.Value != current["STATUS"]) {
-                var featureStatus = Convert.ToString(current["STATUS"])?.Trim();
-                if (!string.IsNullOrEmpty(featureStatus)) {
-                    /* See S-101 DCEG clause 5.4 for the listing of allowable values. Values populated in S-57 for this attribute
-                       other than the allowable values will not be converted across to S-101. Data Producers are advised to
-                       check any populated values for STATUS on LNDARE and amend appropriately. */
-
-                    //TODO: STATUS
-                    ;
-                }
-            }
+        private static status GetSingleStatus(string status) {
+            return GetStatus(status)[0];
         }
 
-        private static void AddStatus(List<status> statusList, Feature current) {
-            if (DBNull.Value != current["STATUS"]) {
-                var featureStatus = Convert.ToString(current["STATUS"])?.Trim();
+        private static List<status> GetStatus(string statuses) {
+            List<status> statusList = new List<status>();
+
+                var featureStatus = statuses.Trim();
 
                 /*
                  * code	status
@@ -316,7 +289,7 @@ namespace S100Framework.Applications
                     }
 
                 }
-            }
+            return statusList;
         }
 
 
@@ -337,26 +310,21 @@ namespace S100Framework.Applications
          */
 
 
-        private static void AddCondition(condition? cndtn, Feature feature) {
-            if (DBNull.Value != feature["CONDITION"]) {
-                var condtn = Convert.ToInt32(feature["CONDITION"]);
-                if (condtn != default) {
-                    cndtn = condtn switch {
-                        1 => condition.UnderConstruction,   //  under construction
-                        2 => condition.Ruined,   //  ruined
-                        3 => condition.UnderReclamation,   //  under reclamation
-                        4 => throw new IndexOutOfRangeException(),   //  wingless
-                        5 => condition.PlannedConstruction,   //  throw new IndexOutOfRangeException(),   //  planned construction
-                        -32767 =>null,
-                        _ => throw new IndexOutOfRangeException(),
-                    };
-                }
-            }
+        public static condition GetCondition(int conditionValue) {
+            return conditionValue switch {
+                1 => condition.UnderConstruction,      // under construction
+                2 => condition.Ruined,                 // ruined
+                3 => condition.UnderReclamation,       // under reclamation
+                5 => condition.PlannedConstruction,    // planned construction
+                -32767 => (condition)(-1),                        // unknown or no condition
+                _ => throw new IndexOutOfRangeException("Invalid condition value.")  // Invalid condition value
+            };
         }
 
-        private static void AddFeatureName(IList<featureName> featureName, Feature current) {
-            if (DBNull.Value != current["OBJNAM"]) {
-                var objnam = Convert.ToString(current["OBJNAM"])?.Trim();
+        private static List<featureName> GetFeatureName(string? objname, string? nobjnme) {
+            List<featureName> featureName = new List<featureName>();
+            if (objname != default) { 
+                var objnam = objname.Trim();
                 if (!string.IsNullOrEmpty(objnam)) {
                     featureName.Add(new featureName {
                         language = "eng",
@@ -365,8 +333,8 @@ namespace S100Framework.Applications
                     });
                 }
             }
-            if (DBNull.Value != current["NOBJNM"]) {
-                var nobjnm = Convert.ToString(current["NOBJNM"])?.Trim();
+            if (nobjnme != default) {
+                var nobjnm = nobjnme.Trim();
                 if (!string.IsNullOrEmpty(nobjnm)) {
                     featureName.Add(new featureName {
                         language = "dk",
@@ -375,6 +343,8 @@ namespace S100Framework.Applications
                     });
                 }
             }
+            
+            return featureName;
         }
 
         private static void AddInformation(IList<information> information, Feature current) {

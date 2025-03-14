@@ -57,9 +57,14 @@ namespace S100Framework.Applications
                                 instance.scaleMinimum = plts_comp_scale;
                             }
 
-                            AddCondition(instance.condition, feature);
-                            AddStatus(instance.status, feature);
-                            AddFeatureName(instance.featureName, feature);
+                            if (current.CONDTN.HasValue) {
+                                instance.condition = GetCondition(current.CONDTN.Value);
+                            }
+
+                            if (current.STATUS != default) {
+                                instance.status = GetStatus(current.STATUS);
+                            }
+                            instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
                             AddInformation(instance.information, feature);
 
                             buffer["ps"] = ps101;
@@ -84,8 +89,11 @@ namespace S100Framework.Applications
 
                                 //foulGround.verticalUncertainty = 
 
-                                AddStatus(instance.status, feature);
-                                AddFeatureName(instance.featureName, feature);
+                                if (current.STATUS != default) {
+                                    instance.status = GetStatus(current.STATUS);
+                                }
+
+                                instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
                                 AddInformation(instance.information, feature);
                                 buffer["ps"] = ps101;
 
@@ -173,9 +181,15 @@ namespace S100Framework.Applications
                                 if (current.PLTS_COMP_SCALE.HasValue)
                                     instance.scaleMinimum = current.PLTS_COMP_SCALE;
 
-                                AddCondition(instance.condition, feature);
-                                AddStatus(instance.status, feature);
-                                AddFeatureName(instance.featureName, feature);
+                                if (current.CONDTN.HasValue) {
+                                    instance.condition = GetCondition(current.CONDTN.Value);
+                                }
+
+                                if (current.STATUS != default) {
+                                    instance.status = GetStatus(current.STATUS);
+                                }
+
+                                instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
                                 AddInformation(instance.information, feature);
 
                                 buffer["ps"] = ps101;
@@ -197,8 +211,15 @@ namespace S100Framework.Applications
                                 instance.scaleMinimum = plts_comp_scale;
                             }
 
-                            AddStatus(instance.status, feature);
-                            AddFeatureName(instance.featureName, feature);
+                            if (current.CONDTN.HasValue) {
+                                instance.condition = GetCondition(current.CONDTN.Value);
+                            }
+
+                            if (current.STATUS != default) {
+                                instance.status = GetStatus(current.STATUS);
+                            }
+
+                            instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
                             AddInformation(instance.information, feature);
 
                             buffer["ps"] = ps101;
@@ -221,7 +242,7 @@ namespace S100Framework.Applications
                                 instance.scaleMinimum = plts_comp_scale;
                             }
 
-                            AddFeatureName(instance.featureName, feature);
+                            instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
                             AddInformation(instance.information, feature);
 
                             buffer["ps"] = ps101;

@@ -82,8 +82,11 @@ namespace S100Framework.Applications
                                 }
                             }
 
-                            AddColour(instance.colour, feature);
-                            AddFeatureName(instance.featureName, feature);
+                            if (current.COLOUR != default) {
+                                instance.colour = GetColours(current.COLOUR);
+                            }
+
+                            instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
                             AddInformation(instance.information, feature);
                             buffer["ps"] = ps101;
 
@@ -156,10 +159,27 @@ namespace S100Framework.Applications
                                 }
                             }
 
-                            AddCondition(instance.condition, feature);
-                            AddColour(instance.colour, feature);
-                            AddStatus(instance.status, feature);
-                            AddFeatureName(instance.featureName, feature);
+                            if (current.COLOUR != default) {
+                                instance.colour = GetColours(current.COLOUR);
+                            }
+
+                            if (current.COLPAT != default) {
+                                instance.colourPattern = GetColourPattern(current.COLPAT);
+                            }
+
+                            if (current.CONDTN.HasValue) {
+                                instance.condition = GetCondition(current.CONDTN.Value);
+                            }
+
+                            if (current.STATUS != default) {
+                                instance.status = GetStatus(current.STATUS);
+                            }
+
+                            if (current.STATUS != default) {
+                                instance.status = GetStatus(current.STATUS);
+                            }
+
+                            instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
                             AddInformation(instance.information, feature);
                             buffer["ps"] = ps101;
 
