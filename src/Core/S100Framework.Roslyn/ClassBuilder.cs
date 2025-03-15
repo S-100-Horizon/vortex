@@ -903,39 +903,69 @@ namespace S100Framework
                                 var association = informationBinding.Element(XName.Get("association", scope_S100))!.Attribute("ref")!.Value;
                                 var role = informationBinding.Element(XName.Get("role", scope_S100))!.Attribute("ref")!.Value;
 
-                                if (!associations.Contains(association)) {
-                                    builderAssociations.Add(association, new StringBuilder());
+                                var lower = int.Parse(informationBinding.XPathSelectElement("S100FC:multiplicity/S100Base:lower", xmlNamespaceManager)!.Value);
+                                var upper = informationBinding.XPathSelectElement("S100FC:multiplicity/S100Base:upper", xmlNamespaceManager)!;
 
-                                    builderAssociations[association].AppendLine($"\t\t\tpublic class {association}Association : Associations.InformationAssociations.{association}Association");
-                                    builderAssociations[association].AppendLine($"\t\t\t{{");
-                                    associations.Add(association);
+                                var isArray = false;
+                                if (upper.Attribute(XName.Get("infinite")) != default && upper.Attribute(XName.Get("infinite"))!.Value.Equals("true") || int.Parse(upper!.Value) > 1) {
+                                    isArray = true;
+                                }
+
+                                var key = $"{association}_{roleType}";
+
+                                if (!associations.Contains(key)) {
+                                    builderAssociations.Add(key, new StringBuilder());
+
+                                    builderAssociations[key].AppendLine($"\t\t\tpublic class {key}Association : Associations.InformationAssociations.{association}Association");
+                                    builderAssociations[key].AppendLine($"\t\t\t{{");
+
+                                    builderAssociations[key].AppendLine($"\t\t\t\tpublic string {char.ToLowerInvariant(code[0])}{code.Substring(1)}Id {{ get; set; }} = string.Empty;");
+
+                                    var prefix = lower > 0 ? "RefId" : "RefId?";
+                                    var postfix = lower > 0 ? "= string.Empty;" : "= default;";
+                                    if (isArray) {
+                                        prefix = "List<RefId>";
+                                        postfix = "= [];";
+                                    }
+
+                                    builderAssociations[key].AppendLine($"\t\t\t\tpublic {prefix} {role} {{ get; protected set; }} {postfix}");
+
+                                    associations.Add(key);
                                 }
 
                                 foreach (var f in informationBinding.Elements(XName.Get("informationType", scope_S100))) {
                                     var informationType = f.Attribute("ref")!.Value;
 
-                                    //var text = builderAssociations[association].ToString();
-                                    //if (!text.Contains($"{association}Association Add{informationType}(string id)")) {
-                                    //    builderAssociations[association].AppendLine($"\t\t\t\tpublic {association}Association Add{informationType}(string id) {{");
-                                    //    builderAssociations[association].AppendLine($"\t\t\t\tthis.RefIds = [.. this.RefIds, new RefId {{");
-                                    //    builderAssociations[association].AppendLine($"\t\t\t\t\t\tRole = \"{role}\",");
-                                    //    builderAssociations[association].AppendLine($"\t\t\t\t\t\tType = \"{informationType}\",");
-                                    //    builderAssociations[association].AppendLine($"\t\t\t\t\t\tValue = id,");
-                                    //    builderAssociations[association].AppendLine($"\t\t\t\t}}];");
-                                    //    builderAssociations[association].AppendLine($"\t\t\t\treturn this;");
-                                    //    builderAssociations[association].AppendLine($"\t\t\t\t}}");
-                                    //}
+                                    var text = builderAssociations[key].ToString();
+                                    if (!text.Contains($"{key}Association Add{informationType}(string id)")) {
+                                        builderAssociations[key].AppendLine($"\t\t\t\tpublic {key}Association Add{informationType}(string id) {{");
+
+                                        if (!isArray) {
+                                            builderAssociations[key].AppendLine($"\t\t\t\tthis.{role} = new RoleRefId {{");
+                                            builderAssociations[key].AppendLine($"\t\t\t\t\t\tRole = \"{role}\",");
+                                            builderAssociations[key].AppendLine($"\t\t\t\t\t\tType = \"{informationType}\",");
+                                            builderAssociations[key].AppendLine($"\t\t\t\t\t\tValue = id,");
+                                            builderAssociations[key].AppendLine($"\t\t\t\t}};");
+                                            builderAssociations[key].AppendLine($"\t\t\t\treturn this;");
+                                            builderAssociations[key].AppendLine($"\t\t\t\t}}");
+                                        }
+                                        else {
+                                            builderAssociations[key].AppendLine($"\t\t\t\tthis.{role} = [.. this.{role}, new RoleRefId {{");
+                                            builderAssociations[key].AppendLine($"\t\t\t\t\t\tRole = \"{role}\",");
+                                            builderAssociations[key].AppendLine($"\t\t\t\t\t\tType = \"{informationType}\",");
+                                            builderAssociations[key].AppendLine($"\t\t\t\t\t\tValue = id,");
+                                            builderAssociations[key].AppendLine($"\t\t\t\t}}];");
+                                            builderAssociations[key].AppendLine($"\t\t\t\treturn this;");
+                                            builderAssociations[key].AppendLine($"\t\t\t\t}}");
+                                        }
+                                    }
                                 }
 
-                                builder.AppendLine($"\t\t\tpublic static {association}Association Create{association}_{role}(string id) {{");
-                                builder.AppendLine($"\t\t\t\treturn new {association}Association {{");
+                                builder.AppendLine($"\t\t\tpublic static {key}Association Create{key}_{role}(string id) {{");
+                                builder.AppendLine($"\t\t\t\treturn new {key}Association {{");
                                 builder.AppendLine($"\t\t\t\t\tCode = \"{association}\",");
                                 builder.AppendLine($"\t\t\t\t\tAssociationConnectorTypeName = \"{code}\",");
-                                builder.AppendLine($"\t\t\t\t\tRefIds = [new RefId {{");
-                                //builder.AppendLine($"\t\t\t\t\t\tRole = \"{role}\",");
-                                builder.AppendLine($"\t\t\t\t\t\tType = \"{code}\",");
-                                builder.AppendLine($"\t\t\t\t\t\tValue = id,");
-                                builder.AppendLine($"\t\t\t\t\t}}]");
+                                builder.AppendLine($"\t\t\t\t\t{char.ToLowerInvariant(code[0])}{code.Substring(1)}Id = id,");
                                 builder.AppendLine($"\t\t\t\t}};");
                                 builder.AppendLine($"\t\t\t}}");
                             }
@@ -946,11 +976,31 @@ namespace S100Framework
                                 var association = featureBinding.Element(XName.Get("association", scope_S100))!.Attribute("ref")!.Value;
                                 var role = featureBinding.Element(XName.Get("role", scope_S100))!.Attribute("ref")!.Value;
 
+                                var lower = int.Parse(featureBinding.XPathSelectElement("S100FC:multiplicity/S100Base:lower", xmlNamespaceManager)!.Value);
+                                var upper = featureBinding.XPathSelectElement("S100FC:multiplicity/S100Base:upper", xmlNamespaceManager)!;
+
+                                var isArray = false;
+                                if (upper.Attribute(XName.Get("infinite")) != default && upper.Attribute(XName.Get("infinite"))!.Value.Equals("true") || int.Parse(upper!.Value) > 1) {
+                                    isArray = true;
+                                }
+
                                 if (!associations.Contains(association)) {
                                     builderAssociations.Add(association, new StringBuilder());
 
                                     builderAssociations[association].AppendLine($"\t\t\tpublic class {association}Association : Associations.FeatureAssociations.{association}Association");
                                     builderAssociations[association].AppendLine($"\t\t\t{{");
+
+                                    builderAssociations[association].AppendLine($"\t\t\t\tpublic string {char.ToLowerInvariant(code[0])}{code.Substring(1)}Id {{ get; set; }} = string.Empty;");
+
+                                    var prefix = lower > 0 ? "RefId" : "RefId?";
+                                    var postfix = lower > 0 ? "= string.Empty;" : "= default;";
+                                    if (isArray) {
+                                        prefix = "List<RefId>";
+                                        postfix = "= [];";
+                                    }
+
+                                    builderAssociations[association].AppendLine($"\t\t\t\tpublic {prefix} {role} {{ get; protected set; }} {postfix}");
+
                                     associations.Add(association);
                                 }
 
@@ -960,13 +1010,25 @@ namespace S100Framework
                                     var text = builderAssociations[association].ToString();
                                     if (!text.Contains($"{association}Association Add{featureType}(string id)")) {
                                         builderAssociations[association].AppendLine($"\t\t\t\tpublic {association}Association Add{featureType}(string id) {{");
-                                        builderAssociations[association].AppendLine($"\t\t\t\tthis.RefIds = [.. this.RefIds, new RoleRefId {{");
-                                        builderAssociations[association].AppendLine($"\t\t\t\t\t\tRole = \"{role}\",");
-                                        builderAssociations[association].AppendLine($"\t\t\t\t\t\tType = \"{featureType}\",");
-                                        builderAssociations[association].AppendLine($"\t\t\t\t\t\tValue = id,");
-                                        builderAssociations[association].AppendLine($"\t\t\t\t}}];");
-                                        builderAssociations[association].AppendLine($"\t\t\t\treturn this;");
-                                        builderAssociations[association].AppendLine($"\t\t\t\t}}");
+
+                                        if (!isArray) {
+                                            builderAssociations[association].AppendLine($"\t\t\t\tthis.{role} = new RoleRefId {{");
+                                            builderAssociations[association].AppendLine($"\t\t\t\t\t\tRole = \"{role}\",");
+                                            builderAssociations[association].AppendLine($"\t\t\t\t\t\tType = \"{featureType}\",");
+                                            builderAssociations[association].AppendLine($"\t\t\t\t\t\tValue = id,");
+                                            builderAssociations[association].AppendLine($"\t\t\t\t}};");
+                                            builderAssociations[association].AppendLine($"\t\t\t\treturn this;");
+                                            builderAssociations[association].AppendLine($"\t\t\t\t}}");
+                                        }
+                                        else {
+                                            builderAssociations[association].AppendLine($"\t\t\t\tthis.{role} = [.. this.{role}, new RoleRefId {{");
+                                            builderAssociations[association].AppendLine($"\t\t\t\t\t\tRole = \"{role}\",");
+                                            builderAssociations[association].AppendLine($"\t\t\t\t\t\tType = \"{featureType}\",");
+                                            builderAssociations[association].AppendLine($"\t\t\t\t\t\tValue = id,");
+                                            builderAssociations[association].AppendLine($"\t\t\t\t}}];");
+                                            builderAssociations[association].AppendLine($"\t\t\t\treturn this;");
+                                            builderAssociations[association].AppendLine($"\t\t\t\t}}");
+                                        }
                                     }
                                 }
 
@@ -976,13 +1038,21 @@ namespace S100Framework
                                 builder.AppendLine($"\t\t\t\treturn new {association}Association {{");
                                 builder.AppendLine($"\t\t\t\t\tCode = \"{association}\",");
                                 builder.AppendLine($"\t\t\t\t\tAssociationConnectorTypeName = \"{code}\",");
-                                builder.AppendLine($"\t\t\t\t\tRefIds = [new RoleRefId {{");
-                                builder.AppendLine($"\t\t\t\t\t\tRole = \"{farend}\",");
-                                builder.AppendLine($"\t\t\t\t\t\tType = \"{code}\",");
-                                builder.AppendLine($"\t\t\t\t\t\tValue = id,");
-                                builder.AppendLine($"\t\t\t\t\t}}]");
+                                builder.AppendLine($"\t\t\t\t\t{char.ToLowerInvariant(code[0])}{code.Substring(1)}Id = id,");
                                 builder.AppendLine($"\t\t\t\t}};");
                                 builder.AppendLine($"\t\t\t}}");
+
+                                //builder.AppendLine($"\t\t\tpublic static {association}Association Create{association}_{role}(string id) {{");
+                                //builder.AppendLine($"\t\t\t\treturn new {association}Association {{");
+                                //builder.AppendLine($"\t\t\t\t\tCode = \"{association}\",");
+                                //builder.AppendLine($"\t\t\t\t\tAssociationConnectorTypeName = \"{code}\",");
+                                //builder.AppendLine($"\t\t\t\t\tRefIds = [new RoleRefId {{");
+                                //builder.AppendLine($"\t\t\t\t\t\tRole = \"{farend}\",");
+                                //builder.AppendLine($"\t\t\t\t\t\tType = \"{code}\",");
+                                //builder.AppendLine($"\t\t\t\t\t\tValue = id,");
+                                //builder.AppendLine($"\t\t\t\t\t}}]");
+                                //builder.AppendLine($"\t\t\t\t}};");
+                                //builder.AppendLine($"\t\t\t}}");
                             }
 
                             foreach (var pair in builderAssociations) {
@@ -2226,6 +2296,7 @@ namespace S100Framework.DomainModel
         public required string Code { get; set; }
         public required string AssociationConnectorTypeName { get; set; }
     }
+
 
     [System.SerializableAttribute()]
     public class InformationAssociation : Association
