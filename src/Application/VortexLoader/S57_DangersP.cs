@@ -285,7 +285,8 @@ namespace S100Framework.Applications
                                 uwtroc.status = GetSingleStatus(current.STATUS);
                             }
 
-
+                              ;
+                            //uwtroc.reportedDate
 
                             AddInformation(uwtroc.information, feature);
 

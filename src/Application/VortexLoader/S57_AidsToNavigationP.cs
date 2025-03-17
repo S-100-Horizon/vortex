@@ -209,9 +209,7 @@ namespace S100Framework.Applications
                 var orient = current.ORIENT ?? default;
                 var cat = current.CATCAM ?? default;
 
-
                 var colours = new List<colour>();
-
 
                 if (featureRelations.IsSlave(globalid)) {
                     continue;
@@ -245,14 +243,75 @@ namespace S100Framework.Applications
                                 instance.colourPattern = GetColourPattern(current.COLPAT);
                             }
 
-                            if (plts_comp_scale != default) {
-                                instance.scaleMinimum = plts_comp_scale;
+                            if (current.CONDTN.HasValue) {
+                                instance.condition = GetCondition(current.CONDTN.Value);
+                            }
+
+                            instance.elevation = current.ELEVAT;
+
+                            instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
+
+                            // TODO: fixeddaterange
+
+                            instance.height = current.HEIGHT;
+
+                            // TODO: interoperabilityidentifier
+
+                            if (current.MARSYS != null) {
+                                instance.marksNavigationalSystemOf = EnumHelper.GetEnumValue<marksNavigationalSystemOf>(current.MARSYS);
+                            }
+
+                            if (current.NATCON != default) {
+                                instance.natureOfConstruction = EnumHelper.GetEnumValues<natureOfConstruction>(current.NATCON);
+                            }
+
+                            // TODO: periodicdatarange
+
+                            if (current.CONRAD.HasValue) {
+                                instance.radarConspicuous = current.CONRAD.Value == 0 ? true : false;
+                            }
+
+                            if (current.SORDAT != default) {
+                                instance.reportedDate = DateHelper.ConvertToDateOnly(current.SORDAT);
                             }
 
                             if (current.STATUS != default) {
                                 instance.status = GetStatus(current.STATUS);
                             }
 
+                            if (current.TOPSHP.HasValue) {
+                                // TODO: topshp
+                            }
+                                // Slaves
+                            var related = featureRelations.GetRelated(current.GLOBALID);
+                            if (related != null) {
+                                foreach (var plfrel in related) {
+                                    //plfrel.RIND
+                                    var slave = new PltsSlave(plfrel.PLTS_Frel);
+                                    var result = slave.Fetch(source, Direction.Source);
+                                    var relatedAidsToNavigationP = result as AidsToNavigationP;
+
+
+                                    if (relatedAidsToNavigationP != null) {
+                                        //relatedAidsToNavigationP
+                                        if (plfrel.PLTS_Frel.DEST_SUB.ToLower() == "lights_light") {
+                                            var light = CreateLight(relatedAidsToNavigationP, insert, buffer, feature, tableName, convertedCount);
+                                            // Create relation
+
+                                        }
+                                    }
+                                }
+
+
+                                //instance.topmark = new topmark() {
+                                //    colour = 
+                                //}
+                            }
+
+
+                            if (plts_comp_scale != default) {
+                                instance.scaleMinimum = plts_comp_scale;
+                            }
 
                             if (current.CONVIS.HasValue) {
                                 if (current.CONVIS.Value == -32767)
@@ -261,31 +320,18 @@ namespace S100Framework.Applications
                                     instance.visualProminence = EnumHelper.GetEnumValue<visualProminence>(current.CONVIS.Value);
                                 }
                             }
-                            ;
 
-                            // TODO: SORDAT
-                            //instance.reportedDate = new DateOnly(1, 2, 3);
+
 
                             instance.pictorialRepresentation = current.PICREP;
 
-                            instance.height = current.HEIGHT;
 
-                            instance.elevation = current.ELEVAT;
 
-                            if (current.CONRAD.HasValue) {
-                                instance.radarConspicuous = current.CONRAD.Value == 0 ? true : false;
-                            }
 
                             instance.verticalLength = current.VERLEN;
 
-                            
 
 
-                            if (current.CONDTN.HasValue) {
-                                instance.condition = GetCondition(current.CONDTN.Value);
-                            }
-
-                            instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
 
                             AddInformation(instance.information, feature);
 
@@ -340,8 +386,27 @@ namespace S100Framework.Applications
                                 }
                             }
 
+                            if (current.CONVIS.HasValue) {
+                                if (current.CONVIS.Value == -32767)
+                                    instance.visualProminence = EnumHelper.GetEnumValue<visualProminence>("-1");
+                                else {
+                                    instance.visualProminence = EnumHelper.GetEnumValue<visualProminence>(current.CONVIS.Value);
+                                }
+                            }
+
+                            if (current.SORDAT != default) {
+                                instance.reportedDate = DateHelper.ConvertToDateOnly(current.SORDAT);
+                            }
+
+                            instance.pictorialRepresentation = current.PICREP;
+
                             instance.height = current.HEIGHT;
 
+                            instance.elevation = current.ELEVAT;
+
+                            if (current.CONRAD.HasValue) {
+                                instance.radarConspicuous = current.CONRAD.Value == 0 ? true : false;
+                            }
 
                             if (current.CONDTN.HasValue) {
                                 instance.condition = GetCondition(current.CONDTN.Value);
@@ -474,23 +539,7 @@ namespace S100Framework.Applications
                     case 25: { // BOYCAR_BuoyCardinal
                             var instance = new CardinalBuoy();
 
-                            if (plts_comp_scale != default) {
-                                instance.scaleMinimum = plts_comp_scale;
-                            }
 
-                            if (current.COLOUR != default) {
-                                instance.colour = GetColours(current.COLOUR);
-                            }
-
-                            if (current.COLPAT != default) {
-                                instance.colourPattern = GetColourPattern(current.COLPAT);
-                            }
-
-                            if (current.STATUS != default) {
-                                instance.status = GetStatus(current.STATUS);
-                            }
-
-                            instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
                             AddInformation(instance.information, feature);
                             buffer["ps"] = ps101;
                             buffer["code"] = instance.GetType().Name;
@@ -503,23 +552,9 @@ namespace S100Framework.Applications
                         break;
                     case 30: { // BOYINB_BuoyInstallation
                             var instance = new InstallationBuoy();
-                            if (plts_comp_scale != default) {
-                                instance.scaleMinimum = plts_comp_scale;
-                            }
 
-                            if (current.COLOUR != default) {
-                                instance.colour = GetColours(current.COLOUR);
-                            }
 
-                            if (current.COLPAT != default) {
-                                instance.colourPattern = GetColourPattern(current.COLPAT);
-                            }
 
-                            if (current.STATUS != default) {
-                                instance.status = GetStatus(current.STATUS);
-                            }
-
-                            instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
                             AddInformation(instance.information, feature);
                             buffer["ps"] = ps101;
                             buffer["code"] = instance.GetType().Name;
@@ -536,19 +571,9 @@ namespace S100Framework.Applications
                                 instance.scaleMinimum = plts_comp_scale;
                             }
 
-                            if (current.COLOUR != default) {
-                                instance.colour = GetColours(current.COLOUR);
-                            }
 
-                            if (current.COLPAT != default) {
-                                instance.colourPattern = GetColourPattern(current.COLPAT);
-                            }
 
-                            if (current.STATUS != default) {
-                                instance.status = GetStatus(current.STATUS);
-                            }
 
-                            instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
                             AddInformation(instance.information, feature);
 
                             buffer["ps"] = ps101;
@@ -562,26 +587,6 @@ namespace S100Framework.Applications
                         break;
                     case 40: { // BOYLAT_BuoyLateral
                             var instance = new LateralBuoy();
-                            if (plts_comp_scale != default) {
-                                instance.scaleMinimum = plts_comp_scale;
-                            }
-
-                            //instance.topmark = new topmark() { }
-                            instance.buoyShape = GetBuoyShape(current.BOYSHP);
-
-                            if (current.COLOUR != default) {
-                                instance.colour = GetColours(current.COLOUR);
-                            }
-
-                            if (current.COLPAT != default) {
-                                instance.colourPattern = GetColourPattern(current.COLPAT);
-                            }
-
-                            if (current.STATUS != default) {
-                                instance.status = GetStatus(current.STATUS);
-                            }
-
-                            instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
 
                             AddInformation(instance.information, feature);
 
@@ -590,17 +595,15 @@ namespace S100Framework.Applications
                             if (related != null) {
                                 foreach (var plfrel in related) {
                                     //plfrel.RIND
-                                    var slave = new Slave(plfrel);
-                                    var result = slave.Fetch(source);
+                                    var slave = new PltsSlave(plfrel.PLTS_Frel);
+                                    var result = slave.Fetch(source, Direction.Source);
                                     var relatedAidsToNavigationP = result as AidsToNavigationP;
-                                    
 
                                     if (relatedAidsToNavigationP != null) {
                                         //relatedAidsToNavigationP
-                                        if (plfrel.DEST_SUB.ToLower() == "lights_light") {
+                                        if (plfrel.PLTS_Frel.DEST_SUB.ToLower() == "lights_light") {
                                             var light = CreateLight(relatedAidsToNavigationP, insert, buffer, feature, tableName, convertedCount);
                                             // Create relation
-
                                         }
                                     }
                                 }
@@ -617,23 +620,8 @@ namespace S100Framework.Applications
                         break;
                     case 45: { // BOYSAW_BuoySafeWater
                             var instance = new SafeWaterBuoy();
-                            if (plts_comp_scale != default) {
-                                instance.scaleMinimum = plts_comp_scale;
-                            }
 
-                            if (current.COLOUR != default) {
-                                instance.colour = GetColours(current.COLOUR);
-                            }
 
-                            if (current.COLPAT != default) {
-                                instance.colourPattern = GetColourPattern(current.COLPAT);
-                            }
-
-                            if (current.STATUS != default) {
-                                instance.status = GetStatus(current.STATUS);
-                            }
-
-                            instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
 
                             AddInformation(instance.information, feature);
                             buffer["ps"] = ps101;
@@ -648,24 +636,9 @@ namespace S100Framework.Applications
                         break;
                     case 50: { // BOYSPP_BuoySpecialPurpose
                             var instance = new SpecialPurposeGeneralBuoy();
-                            if (plts_comp_scale != default) {
-                                instance.scaleMinimum = plts_comp_scale;
-                            }
-
-                            if (current.COLOUR != default) {
-                                instance.colour = GetColours(current.COLOUR);
-                            }
-
-                            if (current.COLPAT != default) {
-                                instance.colourPattern = GetColourPattern(current.COLPAT);
-                            }
 
 
-                            if (current.STATUS != default) {
-                                instance.status = GetStatus(current.STATUS);
-                            }
 
-                            instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
 
                             AddInformation(instance.information, feature);
                             buffer["ps"] = ps101;
@@ -680,25 +653,9 @@ namespace S100Framework.Applications
                         break;
                     case 55: { // DAYMAR_Daymark
                             var instance = new Daymark();
-                            if (plts_comp_scale != default) {
-                                instance.scaleMinimum = plts_comp_scale;
-                            }
-                            instance.height = current.HEIGHT;
-                            instance.elevation = current.ELEVAT;
 
-                            if (current.COLOUR != default) {
-                                instance.colour = GetColours(current.COLOUR);
-                            }
 
-                            if (current.COLPAT != default) {
-                                instance.colourPattern = GetColourPattern(current.COLPAT);
-                            }
 
-                            if (current.STATUS != default) {
-                                instance.status = GetStatus(current.STATUS);
-                            }
-
-                            instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
                             AddInformation(instance.information, feature);
                             buffer["ps"] = ps101;
 
@@ -717,15 +674,8 @@ namespace S100Framework.Applications
                             //We do not have in the database information regarding “Radio Activated” nor “Call Activated”. We do have one instance of “On request”. What does this refer to??
 
                             var instance = new FogSignal();
-                            if (plts_comp_scale != default) {
-                                instance.scaleMinimum = plts_comp_scale;
-                            }
 
-                            if (current.STATUS != default) {
-                                instance.status = GetStatus(current.STATUS);
-                            }
 
-                            instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
 
                             AddInformation(instance.information, feature);
                             buffer["ps"] = ps101;
@@ -746,24 +696,10 @@ namespace S100Framework.Applications
                         break;
                     case 70: { // LITFLT_LightFloat
                             var instance = new LightFloat();
-                            if (plts_comp_scale != default) {
-                                instance.scaleMinimum = plts_comp_scale;
-                            }
-
-                            if (current.COLOUR != default) {
-                                instance.colour = GetColours(current.COLOUR);
-                            }
-
-                            if (current.COLPAT != default) {
-                                instance.colourPattern = GetColourPattern(current.COLPAT);
-                            }
 
 
-                            if (current.STATUS != default) {
-                                instance.status = GetStatus(current.STATUS);
-                            }
 
-                            instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
+
                             AddInformation(instance.information, feature);
                             buffer["ps"] = ps101;
 
@@ -777,23 +713,7 @@ namespace S100Framework.Applications
                         break;
                     case 75: { // LITVES_LightVessel
                             var instance = new LightVessel();
-                            if (plts_comp_scale != default) {
-                                instance.scaleMinimum = plts_comp_scale;
-                            }
 
-                            if (current.COLOUR != default) {
-                                instance.colour = GetColours(current.COLOUR);
-                            }
-
-                            if (current.COLPAT != default) {
-                                instance.colourPattern = GetColourPattern(current.COLPAT);
-                            }
-
-                            if (current.STATUS != default) {
-                                instance.status = GetStatus(current.STATUS);
-                            }
-
-                            instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
                             AddInformation(instance.information, feature);
                             buffer["ps"] = ps101;
 
@@ -807,18 +727,10 @@ namespace S100Framework.Applications
                         break;
                     case 85: { // RADRFL_RadarReflector
                             var instance = new RadarReflector();
-                            if (plts_comp_scale != default) {
-                                instance.scaleMinimum = plts_comp_scale;
-                            }
-
-                            instance.height = current.HEIGHT;
 
 
-                            if (current.STATUS != default) {
-                                instance.status = GetStatus(current.STATUS);
-                            }
 
-                            //instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
+
                             AddInformation(instance.information, feature);
                             buffer["ps"] = ps101;
 
@@ -833,15 +745,9 @@ namespace S100Framework.Applications
                         break;
                     case 90: { // RADSTA_RadarStation
                             var instance = new RadarStation();
-                            if (plts_comp_scale != default) {
-                                instance.scaleMinimum = plts_comp_scale;
-                            }
 
-                            if (current.STATUS != default) {
-                                instance.status = GetStatus(current.STATUS);
-                            }
 
-                            instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
+
                             AddInformation(instance.information, feature);
                             buffer["ps"] = ps101;
 
@@ -878,22 +784,8 @@ namespace S100Framework.Applications
                         break;
                     case 100: { // RETRFL_RetroReflector
                             var instance = new Retroreflector();
-                            if (plts_comp_scale != default) {
-                                instance.scaleMinimum = plts_comp_scale;
-                            }
 
 
-                            if (current.COLOUR != default) {
-                                instance.colour = GetColours(current.COLOUR);
-                            }
-
-                            if (current.COLPAT != default) {
-                                instance.colourPattern = GetColourPattern(current.COLPAT);
-                            }
-
-                            if (current.STATUS != default) {
-                                instance.status = GetStatus(current.STATUS);
-                            }
 
                             AddInformation(instance.information, feature);
                             buffer["ps"] = ps101;
@@ -908,15 +800,9 @@ namespace S100Framework.Applications
                         break;
                     case 105: { // RTPBCN_RadarTransponderBeacon
                             var instance = new RadarTransponderBeacon();
-                            if (plts_comp_scale != default) {
-                                instance.scaleMinimum = plts_comp_scale;
-                            }
 
-                            if (current.STATUS != default) {
-                                instance.status = GetStatus(current.STATUS);
-                            }
 
-                            instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
+
                             AddInformation(instance.information, feature);
                             buffer["ps"] = ps101;
 
