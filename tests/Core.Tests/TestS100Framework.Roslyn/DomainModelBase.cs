@@ -76,16 +76,19 @@ namespace S100Framework.DomainModel {
         public required string Code { get; set; }
         public required roleType roleType { get; set; }
         public required string AssociationConnectorTypeName { get; set; }
+
+        public abstract string[]? this[string role] { get; }
+
         public RefId[] RefIds { get; set; } = new RefId[0];
     }
 
     [System.SerializableAttribute()]
-    public class InformationAssociation : Association {
+    public abstract class InformationAssociation : Association {
         public RefId[] RefIds { get; set; } = new RefId[0];
     }
 
     [System.SerializableAttribute()]
-    public class FeatureAssociation : Association {
+    public abstract class FeatureAssociation : Association {
         public RoleRefId[] RefIds { get; set; } = new RoleRefId[0];
     }
 
