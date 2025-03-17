@@ -25,7 +25,7 @@ namespace TestS100Framework
         {
             public int? Value { get; set; }
         }
-    }   
+    }
 
     namespace TestS100Framework
     {
@@ -108,7 +108,7 @@ namespace TestS100Framework
 
                 Build_S501();
                 File.WriteAllText(@"..\..\..\..\..\..\src\Core\S100Framework.Catalogues\S-501_FC.g.cs", File.ReadAllText(@".\..\..\..\S-501_FC.cs"));
-                File.WriteAllText(@"..\..\..\..\..\..\src\UI\S100Framework.WPF\S-501_ViewModel.g.cs", File.ReadAllText(@".\..\..\..\S-501_ViewModel.cs"));                
+                File.WriteAllText(@"..\..\..\..\..\..\src\UI\S100Framework.WPF\S-501_ViewModel.g.cs", File.ReadAllText(@".\..\..\..\S-501_ViewModel.cs"));
             }
 
             private bool VerifyProductSpecification(XDocument productSpecification) {
@@ -122,10 +122,32 @@ namespace TestS100Framework
                 foreach (var e in scopes)
                     xmlNamespaceManager.AddNamespace(e.Key, e.Value);
 
+                //  Roles
+                {
+                    var elementInformationTypes = productSpecification.XPathSelectElements("//S100FC:S100_FC_InformationTypes", xmlNamespaceManager);
+                    var elementFeatureTypes = productSpecification.XPathSelectElements("//S100FC:S100_FC_FeatureTypes", xmlNamespaceManager);
+
+                    var elementRoles = productSpecification.XPathSelectElement("//S100FC:S100_FC_Roles", xmlNamespaceManager);
+                    foreach (var role in elementRoles!.Elements()) {
+                        var name = role.Element(XName.Get("name", scope_S100))!.Value;
+                        var code = role.Element(XName.Get("code", scope_S100))!.Value;
+
+                        //var query = $"//S100FC:featureBinding/S100FC:role[@ref=\"{code}\"]";
+                        var query = $"//S100FC:role[@ref=\"{code}\"]";
+
+                        if (elementInformationTypes.Any(e => e.XPathSelectElements(query, xmlNamespaceManager).Any())) {
+                            continue;
+                        }
+                        if (elementFeatureTypes.Any(e => e.XPathSelectElements(query, xmlNamespaceManager).Any())) {
+                            continue;
+                        }
+
+                        System.Diagnostics.Debugger.Break();
+                    }
+                }
+
                 //  Associations
                 {
-
-                    unused roles
                     var elementInformationAssociations = productSpecification.XPathSelectElements("//S100FC:S100_FC_InformationAssociation", xmlNamespaceManager);
                     foreach (var e in elementInformationAssociations) {
                         var name = e.Element(XName.Get("name", scope_S100))!.Value;
@@ -154,21 +176,21 @@ namespace TestS100Framework
                             }
                         }
 
-                        foreach(var pair in dictionary) {
+                        foreach (var pair in dictionary) {
                             var upper = pair.Value.upper.HasValue ? $"{pair.Value.upper.Value}" : "∞";
                             _output.WriteLine($"\t{pair.Key}: {pair.Value.lower} {upper}");
                         }
-                        foreach(var r in roles) {
-                            if (!dictionary.ContainsKey(r))
+                        foreach (var r in roles) {
+                            if (dictionary.ContainsKey(r))
                                 continue;
                             _output.WriteLine($"\t{r} not used!");
-                        }                            
+                        }
 
                         _output.WriteLine("");
                     }
 
                     var elementFeatureAssociations = productSpecification.XPathSelectElements("//S100FC:S100_FC_FeatureAssociation", xmlNamespaceManager);
-                    foreach(var e in elementFeatureAssociations) {
+                    foreach (var e in elementFeatureAssociations) {
                         var name = e.Element(XName.Get("name", scope_S100))!.Value;
                         var code = e.Element(XName.Get("code", scope_S100))!.Value;
 
@@ -179,7 +201,7 @@ namespace TestS100Framework
                         var dictionary = new Dictionary<string, (int lower, int? upper)>();
 
                         var bindings = productSpecification.XPathSelectElements($"//S100FC:featureBinding/S100FC:association[@ref=\"{code}\"]", xmlNamespaceManager);
-                        foreach(var b in bindings) {
+                        foreach (var b in bindings) {
                             var binding = b.Parent!;
 
                             var role = binding.Element(XName.Get("role", scope_S100))!.Attribute("ref")!.Value;
@@ -188,7 +210,7 @@ namespace TestS100Framework
                             var upper = binding.XPathSelectElement("S100FC:multiplicity/S100Base:upper", xmlNamespaceManager)!.Attribute(XName.Get("infinite")) != default ? default(int?) : int.Parse(binding.XPathSelectElement("S100FC:multiplicity/S100Base:upper", xmlNamespaceManager)!.Value);
 
                             if (!dictionary.ContainsKey(role)) {
-                                dictionary.Add(role, (lower,upper));
+                                dictionary.Add(role, (lower, upper));
                             }
                             else {
                                 Assert.True(dictionary[role].Equals((lower, upper)));
@@ -200,7 +222,7 @@ namespace TestS100Framework
                             _output.WriteLine($"\t{pair.Key}: {pair.Value.lower} {upper}");
                         }
                         foreach (var r in roles) {
-                            if (!dictionary.ContainsKey(r))
+                            if (dictionary.ContainsKey(r))
                                 continue;
                             _output.WriteLine($"\t{r} not used!");
                         }
@@ -217,13 +239,13 @@ namespace TestS100Framework
                     @".\Artifacts\jpS-122_FC_1.2.1.xml",
                     @".\Artifacts\S-124FC_1.5_20240330.xml",
                     @".\Artifacts\S-128_FC_Ed2.0.0.xml",
-                    @".\Artifacts\131_1_0_0_20230315_FC.xml",
+                    @".\Artifacts\131_1_0_0_20230315_FC - LOCAL.xml",
                 ];
 
                 foreach (var e in productSpecifications) {
                     _output.WriteLine($"{System.IO.Path.GetFileName(e)}");
                     _output.WriteLine("----------------------------------------------------------------------------------");
-                    var s100 = XDocument.Load(e);                    
+                    var s100 = XDocument.Load(e);
                     Assert.True(VerifyProductSpecification(s100));
 
                     _output.WriteLine("");
@@ -239,7 +261,7 @@ namespace TestS100Framework
 
                 Assert.True(VerifyProductSpecification(s100));
 
-                var content = S100Framework.ClassBuilder.CatalogueBuilder52(s100);                
+                var content = S100Framework.ClassBuilder.CatalogueBuilder52(s100);
 
                 File.WriteAllText(@".\..\..\..\S-101_FC.cs", content.fc, Encoding.UTF8);
                 File.WriteAllText(@".\..\..\..\S-101_ViewModel.cs", content.view, Encoding.UTF8);
@@ -295,7 +317,7 @@ namespace TestS100Framework
 
             [Fact]
             public void Build_S131() {
-                var s100 = XDocument.Load(@".\Artifacts\131_1_0_0_20230315_FC.xml");
+                var s100 = XDocument.Load(@".\Artifacts\131_1_0_0_20230315_FC - LOCAL.xml");
 
                 var content = S100Framework.ClassBuilder.CatalogueBuilder(s100, "http://www.iho.int/S131/1.0");
 
@@ -530,7 +552,7 @@ namespace TestS100Framework
 
                 var elements = productSpecification.XPathSelectElements("//S100FC:S100_FC_InformationAssociation", xmlNamespaceManager);
 
-                foreach(var e in elements) {
+                foreach (var e in elements) {
                     var association = e.Element(XName.Get("code", scope_S100))!.Value;
 
                     var usage = productSpecification.XPathSelectElements($"//S100FC:informationBinding/S100FC:association[@ref=\"{association}\"]", xmlNamespaceManager);

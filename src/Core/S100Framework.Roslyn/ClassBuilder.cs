@@ -465,50 +465,52 @@ namespace S100Framework
             var informationAssociationRoles = new Dictionary<string, string[]>();
             var featureAssociationRoles = new Dictionary<string, string[]>();
 
+            //  S100_FC_Roles
+            {
+                var enumBuilder = moduleBuilder.DefineEnum("Role", TypeAttributes.Public, typeof(int));
+
+                var elements = productSpecification.XPathSelectElements("//S100FC:S100_FC_Role", xmlNamespaceManager);
+                var definitions = new Dictionary<string, string>();
+                int index = 1;
+                foreach (var e in elements) {
+                    var name = e.Element(XName.Get("name", scope_S100))!.Value;
+                    var definition = e.Element(XName.Get("definition", scope_S100))!.Value;
+                    var code = e.Element(XName.Get("code", scope_S100))!.Value;
+
+
+                    definition = definition.TrimEnd(new char[] { '\r', '\n', '\t', ' ' });
+
+
+                    definitions.Add(code, definition);
+
+                    enumBuilder.DefineLiteral(code, index++);
+                }
+
+                var enumType = enumBuilder.CreateType();
+
+                dictionaryTypes.Add("Role", enumType);
+
+                classBuilder.AppendLine($"\tpublic enum Role");
+                classBuilder.AppendLine("\t{");
+                bool isFirst = true;
+                foreach (var e in enumType.GetEnumValues()) {
+                    if (!isFirst)
+                        classBuilder.AppendLine();
+                    var name = enumType.GetEnumName(e)!;
+
+                    classBuilder.AppendLine($"\t\t[System.ComponentModel.Description(\"{definitions[name]}\")]");
+
+                    classBuilder.AppendLine($"\t\t{e},");
+                    isFirst = false;
+                }
+
+                classBuilder.AppendLine("\t\t}");
+                classBuilder.AppendLine();
+            }
+
+
             //  Associations
             {
-                //  S100_FC_Roles
-                {
-                    var enumBuilder = moduleBuilder.DefineEnum("Role", TypeAttributes.Public, typeof(int));
-
-                    var elements = productSpecification.XPathSelectElements("//S100FC:S100_FC_Role", xmlNamespaceManager);
-                    var definitions = new Dictionary<string, string>();
-                    int index = 1;
-                    foreach (var e in elements) {
-                        var name = e.Element(XName.Get("name", scope_S100))!.Value;
-                        var definition = e.Element(XName.Get("definition", scope_S100))!.Value;
-                        var code = e.Element(XName.Get("code", scope_S100))!.Value;
-
-
-                        definition = definition.TrimEnd(new char[] { '\r', '\n', '\t', ' ' });
-
-
-                        definitions.Add(code, definition);
-
-                        enumBuilder.DefineLiteral(code, index++);
-                    }
-
-                    var enumType = enumBuilder.CreateType();
-
-                    dictionaryTypes.Add("Role", enumType);
-
-                    classBuilder.AppendLine($"\tpublic enum Role");
-                    classBuilder.AppendLine("\t{");
-                    bool isFirst = true;
-                    foreach (var e in enumType.GetEnumValues()) {
-                        if (!isFirst)
-                            classBuilder.AppendLine();
-                        var name = enumType.GetEnumName(e)!;
-
-                        classBuilder.AppendLine($"\t\t[System.ComponentModel.Description(\"{definitions[name]}\")]");
-
-                        classBuilder.AppendLine($"\t\t{e},");
-                        isFirst = false;
-                    }
-
-                    classBuilder.AppendLine("\t\t}");
-                    classBuilder.AppendLine();
-                }
 
                 //  S100_FC_SpatialAssociations
                 {
@@ -646,6 +648,21 @@ namespace S100Framework
 
                             foreach (var attributeBinding in e.XPathSelectElements("S100FC:attributeBinding", xmlNamespaceManager)) {
                                 associationTypeBuilder.BuildAttributeBinding(attributeBinding, scope_S100, xmlNamespaceManager, dictionaryTypes, dictionaryTypesComplex);
+                            }
+
+                            foreach (var r in roles) {
+                                var binding = productSpecification.XPathSelectElements($"//S100FC:featureBinding[S100FC:association[@ref=\"{code}\"] and S100FC:role[@ref=\"{r}\"]]", xmlNamespaceManager).First();
+
+                                var lower = int.Parse(binding.XPathSelectElement("S100FC:multiplicity/S100Base:lower", xmlNamespaceManager)!.Value);
+                                var upper = binding.XPathSelectElement("S100FC:multiplicity/S100Base:upper", xmlNamespaceManager)!.Attribute(XName.Get("infinite")) != default ? default(int?) : int.Parse(binding.XPathSelectElement("S100FC:multiplicity/S100Base:upper", xmlNamespaceManager)!.Value);
+
+
+
+                                var referenceType = (upper.HasValue && upper.Value > 1 || lower > 1) ? typeof(List<RefId>) : typeof(RefId);
+                                if (lower == 0) {
+
+                                }
+                                var propertyBuilder = S100Framework.Roslyn.CreateProperty(associationTypeBuilder, r, referenceType);
                             }
 
                             var associationType = associationTypeBuilder.CreateType();
