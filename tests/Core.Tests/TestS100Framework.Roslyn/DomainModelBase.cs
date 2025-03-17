@@ -64,10 +64,6 @@ namespace S100Framework.DomainModel {
     public class RefId {
         public required string? Value { get; set; }
         public required string? Type { get; set; }
-    }
-
-    [System.SerializableAttribute()]
-    public class RoleRefId : RefId {
         public required string Role { get; set; }
     }
 
@@ -84,12 +80,10 @@ namespace S100Framework.DomainModel {
 
     [System.SerializableAttribute()]
     public abstract class InformationAssociation : Association {
-        public RefId[] RefIds { get; set; } = new RefId[0];
     }
 
     [System.SerializableAttribute()]
     public abstract class FeatureAssociation : Association {
-        public RoleRefId[] RefIds { get; set; } = new RoleRefId[0];
     }
 
     public enum roleType {

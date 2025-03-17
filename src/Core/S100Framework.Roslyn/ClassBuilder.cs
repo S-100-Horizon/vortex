@@ -572,7 +572,7 @@ namespace S100Framework
                     var name = e.Element(XName.Get("name", scope_S100))!.Value;
                     var code = e.Element(XName.Get("code", scope_S100))!.Value;
 
-                    var roles = e.Elements(XName.Get("role", scope_S100)).Select(e => e.Attribute("ref")!.Value);                    
+                    var roles = e.Elements(XName.Get("role", scope_S100)).Select(e => e.Attribute("ref")!.Value);
 
                     roles = roles.Where(r => productSpecification.XPathSelectElements($"//S100FC:informationBinding[S100FC:association[@ref=\"{code}\"] and S100FC:role[@ref=\"{r}\"]]", xmlNamespaceManager).Any());
 
@@ -687,7 +687,6 @@ namespace S100Framework
                             var lower = int.Parse(binding.XPathSelectElement("S100FC:multiplicity/S100Base:lower", xmlNamespaceManager)!.Value);
                             var upper = binding.XPathSelectElement("S100FC:multiplicity/S100Base:upper", xmlNamespaceManager)!.Attribute(XName.Get("infinite")) != default ? (binding.XPathSelectElement("S100FC:multiplicity/S100Base:upper", xmlNamespaceManager)!.Attribute(XName.Get("infinite"))!.Value.Equals("true") ? default(int?) : int.Parse(binding.XPathSelectElement("S100FC:multiplicity/S100Base:upper", xmlNamespaceManager)!.Value)) : int.Parse(binding.XPathSelectElement("S100FC:multiplicity/S100Base:upper", xmlNamespaceManager)!.Value);
 
-
                             var referenceType = (!upper.HasValue || upper.Value > 1 || lower > 1) ? typeof(List<RefId>) : typeof(RefId);
 
                             var propertyBuilder = S100Framework.Roslyn.CreateProperty(associationTypeBuilder, r, referenceType);
@@ -721,6 +720,54 @@ namespace S100Framework
                             builder.AppendLine($"\t\t\t\t_ => throw new InvalidOperationException(),");
                             builder.AppendLine($"\t\t\t}};");
                         }));
+
+                        {
+                            viewBuilder.AppendLine($"\t\t\t[CategoryOrder(\"{code}\", 0)]");
+                            viewBuilder.AppendLine("\t\t\t[CategoryOrder(\"InformationBindings\", 100)]");
+                            viewBuilder.AppendLine("\t\t\t[CategoryOrder(\"FeatureBindings\", 200)]");
+                            viewBuilder.AppendLine($"public class {code}ViewModel : ViewModelBase");
+                            viewBuilder.AppendLine("\t{");
+
+                            foreach (var attributeBinding in e.XPathSelectElements("S100FC:attributeBinding", xmlNamespaceManager)) {
+                                //TODO
+                            }
+
+                            foreach (var r in roles) {
+                                if (!productSpecification.XPathSelectElements($"//S100FC:featureBinding[S100FC:association[@ref=\"{code}\"] and S100FC:role[@ref=\"{r}\"]]", xmlNamespaceManager).Any())
+                                    continue;
+                                var binding = productSpecification.XPathSelectElements($"//S100FC:featureBinding[S100FC:association[@ref=\"{code}\"] and S100FC:role[@ref=\"{r}\"]]", xmlNamespaceManager).First();
+
+                                var lower = int.Parse(binding.XPathSelectElement("S100FC:multiplicity/S100Base:lower", xmlNamespaceManager)!.Value);
+                                var upper = binding.XPathSelectElement("S100FC:multiplicity/S100Base:upper", xmlNamespaceManager)!.Attribute(XName.Get("infinite")) != default ? (binding.XPathSelectElement("S100FC:multiplicity/S100Base:upper", xmlNamespaceManager)!.Attribute(XName.Get("infinite"))!.Value.Equals("true") ? default(int?) : int.Parse(binding.XPathSelectElement("S100FC:multiplicity/S100Base:upper", xmlNamespaceManager)!.Value)) : int.Parse(binding.XPathSelectElement("S100FC:multiplicity/S100Base:upper", xmlNamespaceManager)!.Value);
+
+                                var referenceType = (!upper.HasValue || upper.Value > 1 || lower > 1) ? "List<RefIdViewModel>" : lower == 0 ? "RefIdViewModel?" : "RefIdViewModel";
+
+                                if (!upper.HasValue || upper.Value > 1 || lower > 1) {
+                                    //public ObservableCollection<RefIdViewModel> 
+                                    viewBuilder.AppendLine($"\t\t\t[Category(\"{code}\")]");
+                                    viewBuilder.AppendLine($"\t\t\tpublic ObservableCollection<RefIdViewModel> {r} = new ObservableCollection<RefIdViewModel>();");
+                                }
+                                else {
+                                    var postfix = lower == 0 ? "" : "?";
+                                    viewBuilder.AppendLine($"\t\t\tprivate RefIdViewModel{postfix} _{r};");
+                                    viewBuilder.AppendLine($"\t\t\t[Category(\"{code}\")]");
+                                    viewBuilder.AppendLine($"\t\t\tpublic RefIdViewModel{postfix} {r} {{");
+                                    viewBuilder.AppendLine($"\t\t\t\tget {{");
+                                    viewBuilder.AppendLine($"\t\t\t\t\treturn _{r};");
+                                    viewBuilder.AppendLine($"\t\t\t\t}}");
+                                    viewBuilder.AppendLine($"\t\t\t\tset {{");
+                                    viewBuilder.AppendLine($"\t\t\t\t\tSetValue(ref _{r}, value);");
+                                    viewBuilder.AppendLine($"\t\t\t\t}}");
+                                    viewBuilder.AppendLine($"\t\t\t}}");
+                                }
+                                viewBuilder.AppendLine($"");
+                            }
+
+                            viewBuilder.AppendLine("\t}");
+
+                        }
+                        //viewBuilder.AppendLine(BuildClassViewModel(code, name, associationType, $"DomainModel.{productId}.FeatureAssociations", codelistTypes.Keys, enumTypes.Keys, roleTypes.Keys, (builder) => {
+                        //}));
                     }
                 }
 
@@ -1141,6 +1188,7 @@ namespace S100Framework
 
             //  Associations
             {
+#if null
                 var elements = productSpecification.XPathSelectElements("//S100FC:S100_FC_FeatureAssociation", xmlNamespaceManager);
 
                 var featureTypes = productSpecification.XPathSelectElements("//S100FC:S100_FC_FeatureType", xmlNamespaceManager);
@@ -1485,6 +1533,7 @@ namespace S100Framework
 
                     viewBuilder.AppendLine("\t\t}");
                 }
+#endif
             }
 
 
