@@ -235,7 +235,7 @@ namespace TestS100Framework
             [Fact]
             public void Validate() {
                 string[] productSpecifications = [
-                    @".\Artifacts\FeatureCatalogue.xml",
+                    @".\Artifacts\101_Feature_Catalogue_2.0.0.xml",
                     @".\Artifacts\jpS-122_FC_1.2.1.xml",
                     @".\Artifacts\S-124FC_1.5_20240330.xml",
                     @".\Artifacts\S-128_FC_Ed2.0.0.xml",
@@ -257,7 +257,7 @@ namespace TestS100Framework
                 var type1 = typeof(Test.NullableTest);
                 var type2 = typeof(bool?);
 
-                var s100 = XDocument.Load(@".\Artifacts\FeatureCatalogue.xml");
+                var s100 = XDocument.Load(@".\Artifacts\101_Feature_Catalogue_2.0.0.xml");
 
                 Assert.True(VerifyProductSpecification(s100));
 

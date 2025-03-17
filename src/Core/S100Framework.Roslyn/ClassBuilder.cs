@@ -573,7 +573,9 @@ namespace S100Framework
                     var name = e.Element(XName.Get("name", scope_S100))!.Value;
                     var code = e.Element(XName.Get("code", scope_S100))!.Value;
 
-                    var roles = e.Elements(XName.Get("role", scope_S100)).Select(e => e.Attribute("ref")!.Value);
+                    var roles = e.Elements(XName.Get("role", scope_S100)).Select(e => e.Attribute("ref")!.Value);                    
+
+                    roles = roles.Where(r => productSpecification.XPathSelectElements($"//S100FC:informationBinding[S100FC:association[@ref=\"{code}\"] and S100FC:role[@ref=\"{r}\"]]", xmlNamespaceManager).Any());
 
                     informationAssociationRoles.Add(code, roles.ToArray());
 
@@ -660,6 +662,8 @@ namespace S100Framework
                     var code = e.Element(XName.Get("code", scope_S100))!.Value;
 
                     var roles = e.Elements(XName.Get("role", scope_S100)).Select(e => e.Attribute("ref")!.Value);
+
+                    roles = roles.Where(r => productSpecification.XPathSelectElements($"//S100FC:featureBinding[S100FC:association[@ref=\"{code}\"] and S100FC:role[@ref=\"{r}\"]]", xmlNamespaceManager).Any());
 
                     featureAssociationRoles.Add(code, roles.ToArray());
 
@@ -761,7 +765,7 @@ namespace S100Framework
             classBuilder.AppendLine("\t\tusing ComplexAttributes;");
             classBuilder.AppendLine("\t\tusing DomainModel;");
             classBuilder.AppendLine("\t\tusing System.Runtime.Serialization;");
-            classBuilder.AppendLine("\t\tusing S100Framework.DomainModel.S101.Associations.InformationAssociations;");
+            classBuilder.AppendLine($"\t\tusing S100Framework.DomainModel.{productId}.Associations.InformationAssociations;");
             classBuilder.AppendLine();
             {
                 var elements = productSpecification.XPathSelectElements("//S100FC:S100_FC_InformationType", xmlNamespaceManager);
@@ -851,22 +855,30 @@ namespace S100Framework
 
                                 var informationTypes = informationBinding.Elements(XName.Get("informationType", scope_S100)).Select(e => $"\"{e.Attribute("ref")!.Value}\"");
 
-                                var roleRemote = informationAssociationRoles[association].Single(e => !e.Equals(role));
+                                if (informationAssociationRoles[association].Any(e => !e.Equals(role))) {
+                                    var roleRemote = informationAssociationRoles[association].Single(e => !e.Equals(role));
 
-                                var informationTypesRemote = new List<string>();
+                                    var informationTypesRemote = new List<string>();
 
-                                foreach (var f in informationTypes) {
-                                    var remoteTypes = productSpecification.XPathSelectElements($"//S100FC:S100_FC_InformationType[S100FC:code={f}]/S100FC:informationBinding[S100FC:association[@ref=\"{association}\"] and S100FC:role[@ref!=\"{role}\"]]", xmlNamespaceManager);
+                                    foreach (var f in informationTypes) {
+                                        var remoteTypes = productSpecification.XPathSelectElements($"//S100FC:S100_FC_InformationType[S100FC:code={f}]/S100FC:informationBinding[S100FC:association[@ref=\"{association}\"] and S100FC:role[@ref!=\"{role}\"]]", xmlNamespaceManager);
 
-                                    informationTypesRemote.AddRange(remoteTypes.Elements(XName.Get("informationType", scope_S100)).Select(e => $"\"{e.Attribute("ref")!.Value}\""));
+                                        informationTypesRemote.AddRange(remoteTypes.Elements(XName.Get("informationType", scope_S100)).Select(e => $"\"{e.Attribute("ref")!.Value}\""));
+                                    }
+                                    informationTypesRemote = informationTypesRemote.Distinct().ToList();
+
+                                    builder.AppendLine($"\t\t\tpublic static {association} {association}_{role}() => new {association} {{");
+                                    builder.AppendLine($"\t\t\t\troleType = roleType.{roleType},");
+                                    builder.AppendLine($"\t\t\t\t{role}InformationTypes = [{string.Join(',', informationTypes)}],");
+                                    builder.AppendLine($"\t\t\t\t{roleRemote}InformationTypes = [{string.Join(',', informationTypesRemote)}],");
+                                    builder.AppendLine($"\t\t\t}};");
                                 }
-                                informationTypesRemote = informationTypesRemote.Distinct().ToList();
-
-                                builder.AppendLine($"\t\t\tpublic static {association} {association}_{role}() => new {association} {{");
-                                builder.AppendLine($"\t\t\t\troleType = roleType.{roleType},");
-                                builder.AppendLine($"\t\t\t\t{role}InformationTypes = [{string.Join(',', informationTypes)}],");
-                                builder.AppendLine($"\t\t\t\t{roleRemote}InformationTypes = [{string.Join(',', informationTypesRemote)}],");
-                                builder.AppendLine($"\t\t\t}};");
+                                else {
+                                    builder.AppendLine($"\t\t\tpublic static {association} {association}_{role}() => new {association} {{");
+                                    builder.AppendLine($"\t\t\t\troleType = roleType.{roleType},");
+                                    builder.AppendLine($"\t\t\t\t{role}InformationTypes = [{string.Join(',', informationTypes)}],");
+                                    builder.AppendLine($"\t\t\t}};");
+                                }
                             }
 
                             foreach (var pair in builderAssociations) {
@@ -926,8 +938,8 @@ namespace S100Framework
             classBuilder.AppendLine("\t\tusing InformationTypes;");
             classBuilder.AppendLine("\t\tusing DomainModel;");
             classBuilder.AppendLine("\t\tusing System.Runtime.Serialization;");
-            classBuilder.AppendLine("\t\tusing S100Framework.DomainModel.S101.Associations.InformationAssociations;");
-            classBuilder.AppendLine("\t\tusing S100Framework.DomainModel.S101.Associations.FeatureAssociations;");
+            classBuilder.AppendLine($"\t\tusing S100Framework.DomainModel.{productId}.Associations.InformationAssociations;");
+            classBuilder.AppendLine($"\t\tusing S100Framework.DomainModel.{productId}.Associations.FeatureAssociations;");
             classBuilder.AppendLine();
             {
                 var elements = productSpecification.XPathSelectElements("//S100FC:S100_FC_FeatureType", xmlNamespaceManager);
@@ -1017,7 +1029,6 @@ namespace S100Framework
                                 var informationTypes = informationBinding.Elements(XName.Get("informationType", scope_S100)).Select(e => $"\"{e.Attribute("ref")!.Value}\"");
 
                                 if (informationAssociationRoles[association].Any(e => !e.Equals(role))) {
-
                                     var roleRemote = informationAssociationRoles[association].Single(e => !e.Equals(role));
 
                                     var informationTypesRemote = new List<string>();
@@ -1054,22 +1065,30 @@ namespace S100Framework
 
                                 var featureTypes = featureBinding.Elements(XName.Get("featureType", scope_S100)).Select(e => $"\"{e.Attribute("ref")!.Value}\"");
 
-                                var roleRemote = featureAssociationRoles[association].Single(e => !e.Equals(role));
+                                if (featureAssociationRoles[association].Any(e => !e.Equals(role))) {
+                                    var roleRemote = featureAssociationRoles[association].Single(e => !e.Equals(role));
 
-                                var featureTypesRemote = new List<string>();
+                                    var featureTypesRemote = new List<string>();
 
-                                foreach (var f in featureTypes) {
-                                    var remoteTypes = productSpecification.XPathSelectElements($"//S100FC:S100_FC_FeatureType[S100FC:code={f}]/S100FC:featureBinding[S100FC:association[@ref=\"{association}\"] and S100FC:role[@ref!=\"{role}\"]]", xmlNamespaceManager);
+                                    foreach (var f in featureTypes) {
+                                        var remoteTypes = productSpecification.XPathSelectElements($"//S100FC:S100_FC_FeatureType[S100FC:code={f}]/S100FC:featureBinding[S100FC:association[@ref=\"{association}\"] and S100FC:role[@ref!=\"{role}\"]]", xmlNamespaceManager);
 
-                                    featureTypesRemote.AddRange(remoteTypes.Elements(XName.Get("featureType", scope_S100)).Select(e => $"\"{e.Attribute("ref")!.Value}\""));
+                                        featureTypesRemote.AddRange(remoteTypes.Elements(XName.Get("featureType", scope_S100)).Select(e => $"\"{e.Attribute("ref")!.Value}\""));
+                                    }
+                                    featureTypesRemote = featureTypesRemote.Distinct().ToList();
+
+                                    builder.AppendLine($"\t\t\tpublic static {association} {association}_{role}() => new {association} {{");
+                                    builder.AppendLine($"\t\t\t\troleType = roleType.{roleType},");
+                                    builder.AppendLine($"\t\t\t\t{role}FeatureTypes = [{string.Join(',', featureTypes)}],");
+                                    builder.AppendLine($"\t\t\t\t{roleRemote}FeatureTypes = [{string.Join(',', featureTypesRemote)}],");
+                                    builder.AppendLine($"\t\t\t}};");
                                 }
-                                featureTypesRemote = featureTypesRemote.Distinct().ToList();
-
-                                builder.AppendLine($"\t\t\tpublic static {association} {association}_{role}() => new {association} {{");
-                                builder.AppendLine($"\t\t\t\troleType = roleType.{roleType},");
-                                builder.AppendLine($"\t\t\t\t{role}FeatureTypes = [{string.Join(',', featureTypes)}],");
-                                builder.AppendLine($"\t\t\t\t{roleRemote}FeatureTypes = [{string.Join(',', featureTypesRemote)}],");
-                                builder.AppendLine($"\t\t\t}};");
+                                else {
+                                    builder.AppendLine($"\t\t\tpublic static {association} {association}_{role}() => new {association} {{");
+                                    builder.AppendLine($"\t\t\t\troleType = roleType.{roleType},");
+                                    builder.AppendLine($"\t\t\t\t{role}FeatureTypes = [{string.Join(',', featureTypes)}],");
+                                    builder.AppendLine($"\t\t\t}};");
+                                }
                             }
 
                             foreach (var pair in builderAssociations) {
