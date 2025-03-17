@@ -115,7 +115,7 @@ namespace S100Framework.WPF.ViewModel
 
     public abstract class AssociationConnector
     {
-        public DomainModel.Bindings.roleType roleType { get; set; }
+        public roleType roleType { get; set; }
 
         public string role { get; set; } = string.Empty;
 

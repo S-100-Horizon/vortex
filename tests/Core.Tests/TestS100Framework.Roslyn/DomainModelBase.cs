@@ -74,6 +74,7 @@ namespace S100Framework.DomainModel {
     [System.SerializableAttribute()]
     public abstract class Association {
         public required string Code { get; set; }
+        public required roleType roleType { get; set; }
         public required string AssociationConnectorTypeName { get; set; }
         public RefId[] RefIds { get; set; } = new RefId[0];
     }
@@ -88,11 +89,9 @@ namespace S100Framework.DomainModel {
         public RoleRefId[] RefIds { get; set; } = new RoleRefId[0];
     }
 
-    namespace Bindings {
-        public enum roleType {
-            association,
-            aggregation,
-            composition,
-        }
+    public enum roleType {
+        association,
+        aggregation,
+        composition,
     }
 }
