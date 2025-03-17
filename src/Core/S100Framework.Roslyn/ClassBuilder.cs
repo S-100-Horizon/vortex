@@ -68,7 +68,6 @@ namespace S100Framework
             viewBuilder.AppendLine("using System.Collections.ObjectModel;");
             viewBuilder.AppendLine("using System.Reflection;");
             viewBuilder.AppendLine("using S100Framework.DomainModel;");
-            viewBuilder.AppendLine("using S100Framework.DomainModel.Bindings;");
             viewBuilder.AppendLine($"using S100Framework.DomainModel.{productId};");
             viewBuilder.AppendLine($"using S100Framework.DomainModel.{productId}.ComplexAttributes;");
             viewBuilder.AppendLine($"using S100Framework.DomainModel.{productId}.InformationTypes;");
