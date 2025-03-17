@@ -7,6 +7,7 @@ using Pluralize.NET.Core;
 using S100Framework.DomainModel;
 using System.Reflection;
 using System.Reflection.Emit;
+using System.Runtime.Serialization;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Xml;
@@ -615,9 +616,12 @@ namespace S100Framework
                                 propertyBuilder = S100Framework.Roslyn.CreateProperty(associationTypeBuilder, $"{r}InformationTypes", typeof(string[]));
 
                                 var constructorInfo = typeof(System.Runtime.CompilerServices.RequiredMemberAttribute).GetConstructors().First();
-
                                 var requiredMemberAttributeBuilder = new CustomAttributeBuilder(constructorInfo, new object[0]);
                                 propertyBuilder.SetCustomAttribute(requiredMemberAttributeBuilder);
+
+                                constructorInfo = typeof(IgnoreDataMemberAttribute).GetConstructors().First();
+                                var IgnoreDataMemberAttributeBuilder = new CustomAttributeBuilder(constructorInfo, new object[0]);
+                                propertyBuilder.SetCustomAttribute(IgnoreDataMemberAttributeBuilder);
                             }
                         }
 
@@ -702,9 +706,13 @@ namespace S100Framework
                                 propertyBuilder = S100Framework.Roslyn.CreateProperty(associationTypeBuilder, $"{r}FeatureTypes", typeof(string[]));
 
                                 var constructorInfo = typeof(System.Runtime.CompilerServices.RequiredMemberAttribute).GetConstructors().First();
-
                                 var requiredMemberAttributeBuilder = new CustomAttributeBuilder(constructorInfo, new object[0]);
                                 propertyBuilder.SetCustomAttribute(requiredMemberAttributeBuilder);
+
+                                constructorInfo = typeof(IgnoreDataMemberAttribute).GetConstructors().First();
+                                var IgnoreDataMemberAttributeBuilder = new CustomAttributeBuilder(constructorInfo, new object[0]);
+                                propertyBuilder.SetCustomAttribute(IgnoreDataMemberAttributeBuilder);
+
                             }
                         }
 
