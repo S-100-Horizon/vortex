@@ -49,6 +49,7 @@ namespace S100Framework
             classBuilder.AppendLine("using System;");
             classBuilder.AppendLine("using System.Collections.Immutable;");
             classBuilder.AppendLine("using System.Linq;");
+            classBuilder.AppendLine("using System.Runtime.Serialization;");
             classBuilder.AppendLine();
             classBuilder.AppendLine("#nullable enable");
             classBuilder.AppendLine();
@@ -619,9 +620,9 @@ namespace S100Framework
                                 var requiredMemberAttributeBuilder = new CustomAttributeBuilder(constructorInfo, new object[0]);
                                 propertyBuilder.SetCustomAttribute(requiredMemberAttributeBuilder);
 
-                                constructorInfo = typeof(IgnoreDataMemberAttribute).GetConstructors().First();
-                                var IgnoreDataMemberAttributeBuilder = new CustomAttributeBuilder(constructorInfo, new object[0]);
-                                propertyBuilder.SetCustomAttribute(IgnoreDataMemberAttributeBuilder);
+                                constructorInfo = typeof(System.Runtime.Serialization.IgnoreDataMemberAttribute).GetConstructors().First();
+                                var ignoreDataMemberAttributeBuilder = new CustomAttributeBuilder(constructorInfo, new object[0]);
+                                propertyBuilder.SetCustomAttribute(ignoreDataMemberAttributeBuilder);
                             }
                         }
 
@@ -709,9 +710,9 @@ namespace S100Framework
                                 var requiredMemberAttributeBuilder = new CustomAttributeBuilder(constructorInfo, new object[0]);
                                 propertyBuilder.SetCustomAttribute(requiredMemberAttributeBuilder);
 
-                                constructorInfo = typeof(IgnoreDataMemberAttribute).GetConstructors().First();
-                                var IgnoreDataMemberAttributeBuilder = new CustomAttributeBuilder(constructorInfo, new object[0]);
-                                propertyBuilder.SetCustomAttribute(IgnoreDataMemberAttributeBuilder);
+                                constructorInfo = typeof(System.Runtime.Serialization.IgnoreDataMemberAttribute).GetConstructors().First();
+                                var ignoreDataMemberAttributeBuilder = new CustomAttributeBuilder(constructorInfo, new object[0]);
+                                propertyBuilder.SetCustomAttribute(ignoreDataMemberAttributeBuilder);
 
                             }
                         }
@@ -1652,8 +1653,9 @@ namespace S100Framework
             common.AppendLine("\t\tpublic required string Code {get; set; }");
             common.AppendLine("\t\tpublic required roleType roleType {get; set; }");
             common.AppendLine("\t\tpublic required string AssociationConnectorTypeName { get; set; }");
-            common.AppendLine("\t\tpublic abstract string[]? this[string role] { get; }");
-            common.AppendLine("\t\tpublic RefId[] RefIds { get; set; } = new RefId[0];");
+            common.AppendLine("\t\t[IgnoreDataMember()]");
+            common.AppendLine("\t\tpublic virtual string[]? this[string role] { get; }");
+            //common.AppendLine("\t\tpublic RefId[] RefIds { get; set; } = new RefId[0];");
             common.AppendLine("\t}");
             common.AppendLine("\t[System.SerializableAttribute()]");
             common.AppendLine("\tpublic abstract class InformationAssociation : Association {");
@@ -1777,6 +1779,11 @@ namespace S100Framework
                 if (!first) {
                     classBuilder.AppendLine("");
                 }
+
+                var ignoreDataMemberAttribute = p.GetCustomAttribute<System.Runtime.Serialization.IgnoreDataMemberAttribute>();
+                if(ignoreDataMemberAttribute is not null) {
+                    classBuilder.AppendLine("\t\t\t[IgnoreDataMember()]");
+                }               
 
                 var requiredMemberAttribute = p.GetCustomAttribute<System.Runtime.CompilerServices.RequiredMemberAttribute>();
 
@@ -2389,6 +2396,7 @@ namespace S100Framework.DomainModel
         public required roleType roleType { get; set; }
         public string AssociationConnectorTypeName { get; set; }
 
+        [IgnoreDataMember()]
         public virtual string[]? this[string role] => default;
     }
 
