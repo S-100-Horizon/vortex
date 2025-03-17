@@ -327,7 +327,7 @@ namespace S100Framework.WPF.ViewModel
                     .. informationAssociation.RefIds,
                     .. new []{
                         new RefId {
-                            //ÆØÅ Role = role,
+                            Role = role,
                             //ÆØÅ Type = _refId.InformationType,
                             Type = "",
                             Value = _refId.RefId,
@@ -376,7 +376,7 @@ namespace S100Framework.WPF.ViewModel
                     .. informationAssociation.RefIds,
                     .. new []{
                         new RefId {
-                            //Role = role,
+                            Role = role,
                             Type = _refId.InformationType,
                             Value = _refId.RefId,
                         }
@@ -418,7 +418,7 @@ namespace S100Framework.WPF.ViewModel
             [
                 .. informationAssociation.RefIds,
                 .. RefId.Select(e => new RefId {
-                    //Role = role,
+                    Role = role,
                     Type = e.InformationType,
                     Value = e.RefId,
                 }),
@@ -479,7 +479,7 @@ namespace S100Framework.WPF.ViewModel
                 [
                     .. featureAssociation.RefIds,
                     .. new []{
-                        new RoleRefId {
+                        new RefId {
                             Role = role,
                             Type = _refId.FeatureType,
                             Value = _refId.RefId,
@@ -524,7 +524,7 @@ namespace S100Framework.WPF.ViewModel
                 [
                     .. featureAssociation.RefIds,
                     .. new []{
-                        new RoleRefId {
+                        new RefId {
                             Role = role,
                             Type = _refId.FeatureType,
                             Value = _refId.RefId,
@@ -560,7 +560,7 @@ namespace S100Framework.WPF.ViewModel
             featureAssociation.RefIds =
             [
                 .. featureAssociation.RefIds,
-                .. RefId.Select(e => new RoleRefId {
+                .. RefId.Select(e => new RefId {
                     Role = role,
                     Type = e.FeatureType,
                     Value = e.RefId,

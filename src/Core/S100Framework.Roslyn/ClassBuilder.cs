@@ -1582,13 +1582,13 @@ namespace S100Framework
             common.AppendLine("\tpublic class RefId {");
             common.AppendLine("\t\tpublic required string? Value { get; set; }");
             common.AppendLine("\t\tpublic required string? Type { get; set; }");
-            //common.AppendLine("\t\tpublic required string Role { get; set; }");
-            common.AppendLine("\t}");
-
-            common.AppendLine("\t[System.SerializableAttribute()]");
-            common.AppendLine("\tpublic class RoleRefId : RefId {");
             common.AppendLine("\t\tpublic required string Role { get; set; }");
             common.AppendLine("\t}");
+
+            //common.AppendLine("\t[System.SerializableAttribute()]");
+            //common.AppendLine("\tpublic class RoleRefId : RefId {");
+            //common.AppendLine("\t\tpublic required string Role { get; set; }");
+            //common.AppendLine("\t}");
 
             common.AppendLine("\t[System.SerializableAttribute()]");
             common.AppendLine("\tpublic abstract class Association {");
@@ -1600,11 +1600,11 @@ namespace S100Framework
             common.AppendLine("\t}");
             common.AppendLine("\t[System.SerializableAttribute()]");
             common.AppendLine("\tpublic abstract class InformationAssociation : Association {");
-            common.AppendLine("\t\tpublic RefId[] RefIds { get; set; } = new RefId[0];");
+            //common.AppendLine("\t\tpublic RefId[] RefIds { get; set; } = new RefId[0];");
             common.AppendLine("\t}");
             common.AppendLine("\t[System.SerializableAttribute()]");
             common.AppendLine("\tpublic abstract class FeatureAssociation : Association {");
-            common.AppendLine("\t\tpublic RoleRefId[] RefIds { get; set; } = new RoleRefId[0];");
+            //common.AppendLine("\t\tpublic RoleRefId[] RefIds { get; set; } = new RoleRefId[0];");
             common.AppendLine("\t}");
 
             common.AppendLine();
@@ -2322,12 +2322,6 @@ namespace S100Framework.DomainModel
     {
         public required string? Value { get; set; }
         public required string? Type { get; set; }
-        //public required string Role { get; set; }
-    }
-
-    [System.SerializableAttribute()]
-    public class RoleRefId : RefId
-    {
         public required string Role { get; set; }
     }
 
@@ -2351,7 +2345,7 @@ namespace S100Framework.DomainModel
     [System.SerializableAttribute()]
     public abstract class FeatureAssociation : Association
     {
-        public RoleRefId[] RefIds { get; set; } = new RoleRefId[0];
+        public RefId[] RefIds { get; set; } = new RefId[0];
     }
     public enum roleType
     {
