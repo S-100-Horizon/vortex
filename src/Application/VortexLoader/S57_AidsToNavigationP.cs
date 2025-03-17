@@ -14,6 +14,9 @@ using VortexLoader;
 namespace S100Framework.Applications
 {
     internal static partial class ImporterNIS {
+
+
+
         private static FeatureNode CreateLight(AidsToNavigationP current, InsertCursor insert, RowBuffer buffer, Feature feature, string tableName, int convertedCount) {
 
             if (current.FCSUBTYPE != 65)
@@ -236,7 +239,7 @@ namespace S100Framework.Applications
                             }
 
                             if (current.COLOUR != default) {
-                                instance.colour = GetColours(current.COLOUR);
+                                instance.colour = EnumHelper.GetEnumValues<colour>(current.COLOUR); 
                             }
 
                             if (current.COLPAT != default) {
@@ -251,7 +254,18 @@ namespace S100Framework.Applications
 
                             instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
 
-                            // TODO: fixeddaterange
+                            if (current.DATSTA != default) {
+                                if (current.DATEND != default) {
+                                    if (DateHelper.TryConvertToDateOnly(current.DATEND, out var dateEnd)) {
+                                        if (DateHelper.TryConvertToDateOnly(current.DATSTA, out var dateStart)) {
+                                            instance.fixedDateRange = new fixedDateRange() {
+                                                dateStart = dateStart,
+                                                dateEnd = dateEnd
+                                            };
+                                        }
+                                    };
+                                }
+                            }
 
                             instance.height = current.HEIGHT;
 
@@ -265,14 +279,29 @@ namespace S100Framework.Applications
                                 instance.natureOfConstruction = EnumHelper.GetEnumValues<natureOfConstruction>(current.NATCON);
                             }
 
-                            // TODO: periodicdatarange
+                            if (current.PERSTA != default) {
+                                if (current.PEREND != default) {
+                                    if (DateHelper.TryConvertToDateOnly(current.PEREND, out var dateEnd)) {
+                                        if (DateHelper.TryConvertToDateOnly(current.PERSTA, out var dateStart)) {
+                                            instance.periodicDateRange = new List<periodicDateRange>() {
+                                                new periodicDateRange() {
+                                                    dateStart = dateStart,
+                                                    dateEnd = dateEnd
+                                                }
+                                            };
+                                        }
+                                    }
+                                }
+                            }
 
                             if (current.CONRAD.HasValue) {
                                 instance.radarConspicuous = current.CONRAD.Value == 0 ? true : false;
                             }
 
                             if (current.SORDAT != default) {
-                                instance.reportedDate = DateHelper.ConvertToDateOnly(current.SORDAT);
+                                if (DateHelper.TryConvertToDateOnly(current.SORDAT, out var dateOnly)) {
+                                    instance.reportedDate = dateOnly;
+                                }
                             }
 
                             if (current.STATUS != default) {
@@ -281,8 +310,12 @@ namespace S100Framework.Applications
 
                             if (current.TOPSHP.HasValue) {
                                 // TODO: topshp
+                                ;
                             }
-                                // Slaves
+
+                            instance.verticalLength = current.VERLEN;
+
+                            // Slaves
                             var related = featureRelations.GetRelated(current.GLOBALID);
                             if (related != null) {
                                 foreach (var plfrel in related) {
@@ -294,13 +327,26 @@ namespace S100Framework.Applications
 
                                     if (relatedAidsToNavigationP != null) {
                                         //relatedAidsToNavigationP
-                                        if (plfrel.PLTS_Frel.DEST_SUB.ToLower() == "lights_light") {
+                                        if (plfrel.PLTS_Frel.DEST_SUB?.ToLower() == "lights_light") {
                                             var light = CreateLight(relatedAidsToNavigationP, insert, buffer, feature, tableName, convertedCount);
                                             // Create relation
 
                                         }
+                                        else if (plfrel.PLTS_Frel.DEST_SUB?.ToLower() == "topmar_topmark") {
+                                            var topmark = new topmark() {
+                                                colour = GetColours(current.COLOUR),
+                                                colourPattern = GetColourPattern(current.COLPAT),
+                                                shapeInformation = default // TODO: shapeinformation
+                                            };
+                                            instance.topmark = topmark;
+
+                                        }
+                                        else {
+                                            throw new NotImplementedException($"{plfrel.PLTS_Frel.DEST_SUB?.ToLower()} ");
+                                        } 
                                     }
                                 }
+                                
 
 
                                 //instance.topmark = new topmark() {
@@ -321,15 +367,7 @@ namespace S100Framework.Applications
                                 }
                             }
 
-
-
                             instance.pictorialRepresentation = current.PICREP;
-
-
-
-
-                            instance.verticalLength = current.VERLEN;
-
 
 
 
@@ -395,7 +433,9 @@ namespace S100Framework.Applications
                             }
 
                             if (current.SORDAT != default) {
-                                instance.reportedDate = DateHelper.ConvertToDateOnly(current.SORDAT);
+                                if (DateHelper.TryConvertToDateOnly(current.SORDAT, out var dateOnly)) {
+                                    instance.reportedDate = dateOnly;
+                                }
                             }
 
                             instance.pictorialRepresentation = current.PICREP;
