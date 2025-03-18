@@ -22,6 +22,7 @@ namespace S100Framework.YAML
            .WithIndentedSequences()
            .DisableAliases()
            .WithTypeConverter(new NodeConverter())                   // Custom type converter for objects of Node                                                  //.WithTypeConverter(new InformationNodeConverter())               // Custom type converter for objects of InformationNode
+           .WithTypeConverter(new BooleanAsNumberConverter())       // Custom type converter for booleans
            .Build();
 
 
@@ -42,20 +43,32 @@ namespace S100Framework.YAML
                     continue;
 
                 var propertyValue = property.GetValue(obj, null);
-
                 switch (property.PropertyType) {
+                    // Ensure strings are without newlines
                     case Type t when t == typeof(string):
-                        attributes.Add(new(property.Name, propertyValue?.ToString(), null, parentId));
+                        var stringval = propertyValue?.ToString();
+                        stringval = stringval?.Replace(System.Environment.NewLine, " ");
+
+                        attributes.Add(new(property.Name, stringval, null, parentId));
                         break;
 
+                    // Ensure booleans as integers
+                    case Type t when t == typeof(bool):
+                        attributes.Add(new(property.Name, (bool)propertyValue! ? "1" : "0", null, parentId));
+                        break;
+
+                    // Ensure decimals with point 2.0
                     case Type t when t == typeof(decimal):
                         var value = (decimal)propertyValue!;
 
                         attributes.Add(new(property.Name, value.ToString(CultureInfo.InvariantCulture), null, parentId));
                         break;
 
+                    // Ensure no enums are sat to 0
                     case Type t when t.IsEnum:
-                        //var enumValue = propertyValue?.ToString() ?? "-1";
+                        if (propertyValue?.ToString() == "0")
+                            propertyValue = null;
+
                         attributes.Add(new(property.Name, propertyValue?.ToString(), null, parentId));
                         break;
 
@@ -76,11 +89,11 @@ namespace S100Framework.YAML
                     case Type t when t.IsValueType:
                         attributes.Add(new(property.Name, propertyValue?.ToString(), null, parentId));
                         break;
+
                     default:
                         throw new ArgumentException("Invalid property type provided: {propertyType}", nameof(property.PropertyType));
                 }
             }
-
             return attributes;
         }
         private static List<YamlAttributeItem> HandleComplexObject(object propertyValue, ref int propertyId, int? parentId) {
@@ -105,7 +118,14 @@ namespace S100Framework.YAML
 
                 switch (itemType) {
                     case Type t when t == typeof(string):
-                        attributes.Add(new(propertyName, item.ToString(), null, parentId));
+                        var stringval = item?.ToString();
+
+                        stringval = stringval?.Replace(System.Environment.NewLine, " ");
+                        attributes.Add(new(propertyName, stringval, null, parentId));
+                        break;
+
+                    case Type t when t == typeof(bool):
+                        attributes.Add(new(propertyName, (bool)item! ? "1" : "0", null, parentId));
                         break;
 
                     case Type t when t == typeof(decimal):
@@ -179,6 +199,17 @@ namespace S100Framework.YAML
                 }
 
                 emitter.Emit(new SequenceEnd());
+            }
+        }
+
+        public class BooleanAsNumberConverter : IYamlTypeConverter
+        {
+            public bool Accepts(Type type) => type == typeof(bool) || type == typeof(Boolean);
+
+            public object? ReadYaml(IParser parser, Type type, ObjectDeserializer rootDeserializer) => throw new NotImplementedException("Deserialization is not supported.");
+
+            public void WriteYaml(IEmitter emitter, object? value, Type type, ObjectSerializer serializer) {
+                emitter.Emit(new Scalar(((bool)value!) ? "1" : "0"));
             }
         }
     }

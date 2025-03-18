@@ -102,23 +102,26 @@ namespace S100Framework.Applications
                         SpatialRelationshipDescription = "T*****FF*"
                     };
 
-                    var id = def.GetName().ToLowerInvariant() switch {
-                        "pointset" => 2,
-                        _ => 1
-                    };
+               
 
                     using var cursor = fc.Search(filter, true);
                     while (cursor.MoveNext()) {
                         var current = (ArcGIS.Core.Data.Feature)cursor.Current;
                         var geometry = Convert.ToString(current["name"]);
+                        
+                        var shapetype = def.GetShapeType();
 
                         var name = Convert.ToString(current["code"]);
-                        var foid = $"110:{current.GetObjectID()}:{id}";       // Geodatastyrelsen (GST) 110 
-
-                        var shaptyp = def.GetShapeType();
 
 
-                        var prim = shaptyp switch {
+                        var foid = $"110:{geometry!.Substring(1)}:1";       // Geodatastyrelsen: 110 
+
+
+
+                       
+
+
+                        var prim = shapetype switch {
                             GeometryType.Point => Primitive.Point,
                             GeometryType.Multipoint => Primitive.Point,
                             GeometryType.Polyline => Primitive.Curve,
