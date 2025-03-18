@@ -6,6 +6,7 @@ using static S100Framework.Applications.VortexLoader;
 using IO = System.IO;
 using ArcGIS.Core.Geometry;
 using System;
+using VortexLoader;
 
 namespace S100Framework.Applications
 {
@@ -145,34 +146,40 @@ namespace S100Framework.Applications
         }
 
         private static List<colour> GetColours(string color) {
-            List<colour> colours = new List<colour>();
-            if (color != default) {
-                if (!string.IsNullOrEmpty(color)) {
-                    foreach (var c in color.Split(',', StringSplitOptions.RemoveEmptyEntries)) {
-                        colour? e = c.ToLowerInvariant() switch {
-                            "1" => colour.White,
-                            "2" => colour.Black,
-                            "3" => colour.Red,
-                            "4" => colour.Green,
-                            "5" => colour.Blue,
-                            "6" => colour.Yellow,
-                            "7" => colour.Grey,
-                            "8" => colour.Brown,
-                            "9" => colour.Amber,
-                            "10" => colour.Violet,
-                            "11" => colour.Orange,
-                            "12" => colour.Magenta,
-                            "13" => colour.Pink,
-                            "-32767" =>(colour)(-1),
-                            _ => throw new IndexOutOfRangeException(),
-                        };
-                        if (e.HasValue) {
-                            colours.Add(e.Value);
-                        }
-                    }
-                }
+            if (color== "-32767") {
+                return new List<colour>() { (colour)(-1) };
             }
-            return colours;
+            return EnumHelper.GetEnumValues<colour>(color);
+
+
+            //List<colour> colours = new List<colour>();
+            //if (color != default) {
+            //    if (!string.IsNullOrEmpty(color)) {
+            //        foreach (var c in color.Split(',', StringSplitOptions.RemoveEmptyEntries)) {
+            //            colour? e = c.ToLowerInvariant() switch {
+            //                "1" => colour.White,
+            //                "2" => colour.Black,
+            //                "3" => colour.Red,
+            //                "4" => colour.Green,
+            //                "5" => colour.Blue,
+            //                "6" => colour.Yellow,
+            //                "7" => colour.Grey,
+            //                "8" => colour.Brown,
+            //                "9" => colour.Amber,
+            //                "10" => colour.Violet,
+            //                "11" => colour.Orange,
+            //                "12" => colour.Magenta,
+            //                "13" => colour.Pink,
+            //                "-32767" =>(colour)(-1),
+            //                _ => throw new IndexOutOfRangeException(),
+            //            };
+            //            if (e.HasValue) {
+            //                colours.Add(e.Value);
+            //            }
+            //        }
+            //    }
+            //}
+            //return colours;
         }
 
         private static buoyShape GetBuoyShape(int? buoyShapeValue) {
@@ -309,6 +316,18 @@ namespace S100Framework.Applications
 
          */
 
+        //public static colour GetColour(string value) {
+        //    return conditionValue switch {
+        //        1 => condition.UnderConstruction,      // under construction
+        //        2 => condition.Ruined,                 // ruined
+        //        3 => condition.UnderReclamation,       // under reclamation
+        //        5 => condition.PlannedConstruction,    // planned construction
+        //        -32767 => (condition)(-1),                        // unknown or no condition
+        //        _ => throw new IndexOutOfRangeException("Invalid condition value.")  // Invalid condition value
+        //    };
+        //}
+
+
 
         public static condition GetCondition(int conditionValue) {
             return conditionValue switch {
@@ -320,6 +339,7 @@ namespace S100Framework.Applications
                 _ => throw new IndexOutOfRangeException("Invalid condition value.")  // Invalid condition value
             };
         }
+
 
         private static List<featureName> GetFeatureName(string? objname, string? nobjnme) {
             List<featureName> featureName = new List<featureName>();

@@ -77,7 +77,7 @@ namespace S100Framework.Applications
                     throw new NotSupportedException($"GetRelated: {sourceFeatureClass}");
                 }
             };
-
+            _s57Object = result;
             return result;
         }
     }
