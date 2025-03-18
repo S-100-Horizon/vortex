@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Immutable;
 using System.Linq;
+using System.Runtime.Serialization;
 
 #nullable enable
 namespace S100Framework.DomainModel.S501 {
@@ -3156,6 +3157,7 @@ namespace S100Framework.DomainModel.S501 {
         }
 
         namespace InformationAssociations {
+            using S100Framework.DomainModel.S501.InformationTypes;
         }
 
         namespace FeatureAssociations {
@@ -3170,6 +3172,7 @@ namespace S100Framework.DomainModel.S501 {
         using ComplexAttributes;
         using DomainModel;
         using System.Runtime.Serialization;
+        using S100Framework.DomainModel.S501.Associations.InformationAssociations;
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -3192,6 +3195,8 @@ namespace S100Framework.DomainModel.S501 {
         using InformationTypes;
         using DomainModel;
         using System.Runtime.Serialization;
+        using S100Framework.DomainModel.S501.Associations.InformationAssociations;
+        using S100Framework.DomainModel.S501.Associations.FeatureAssociations;
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]

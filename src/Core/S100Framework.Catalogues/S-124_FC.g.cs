@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Immutable;
 using System.Linq;
+using System.Runtime.Serialization;
 
 #nullable enable
 namespace S100Framework.DomainModel.S124 {
@@ -427,17 +428,52 @@ namespace S100Framework.DomainModel.S124 {
         }
 
         namespace InformationAssociations {
+            using S100Framework.DomainModel.S124.InformationTypes;
+
             [System.Serializable()]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-            public partial class NWPreambleContent {
+            public partial class NWPreambleContent : InformationAssociation {
+                [Required()]
+                public RefId header { get; set; }
+
+                [IgnoreDataMember()]
+                [Required()]
+                public String[] headerInformationTypes { get; set; }
+                public override string Code => nameof(NWPreambleContent);
+
+                public override string[]? this[string role] => role switch
+                {
+                    "header" => headerInformationTypes,
+                    _ => throw new InvalidOperationException(),
+                };
                 public NWPreambleContent() {
+                    header = new RefId()
+                    {
+                        Value = string.Empty,
+                        Type = string.Empty,
+                        Role = string.Empty,
+                    };
+                    headerInformationTypes = [];
                 }
             }
 
             [System.Serializable()]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-            public partial class NWReferences {
+            public partial class NWReferences : InformationAssociation {
+                public List<RefId> theReferences { get; set; } = [];
+
+                [IgnoreDataMember()]
+                [Required()]
+                public String[] theReferencesInformationTypes { get; set; }
+                public override string Code => nameof(NWReferences);
+
+                public override string[]? this[string role] => role switch
+                {
+                    "theReferences" => theReferencesInformationTypes,
+                    _ => throw new InvalidOperationException(),
+                };
                 public NWReferences() {
+                    theReferencesInformationTypes = [];
                 }
             }
         }
@@ -447,15 +483,63 @@ namespace S100Framework.DomainModel.S124 {
 
             [System.Serializable()]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-            public partial class AreaAffectedAssociation : FeatureAssociation {
-                public AreaAffectedAssociation() {
+            public partial class AreaAffected : FeatureAssociation {
+                public List<RefId> affects { get; set; } = [];
+
+                [IgnoreDataMember()]
+                [Required()]
+                public String[] affectsFeatureTypes { get; set; }
+
+                [Required()]
+                public RefId impacts { get; set; }
+
+                [IgnoreDataMember()]
+                [Required()]
+                public String[] impactsFeatureTypes { get; set; }
+                public override string Code => "AreaAffected";
+
+                public override string[]? this[string role] => role switch
+                {
+                    "affects" => affectsFeatureTypes,
+                    "impacts" => impactsFeatureTypes,
+                    _ => throw new InvalidOperationException(),
+                };
+                public AreaAffected() {
+                    affectsFeatureTypes = [];
+                    impacts = new RefId()
+                    {
+                        Value = string.Empty,
+                        Type = string.Empty,
+                        Role = string.Empty,
+                    };
+                    impactsFeatureTypes = [];
                 }
             }
 
             [System.Serializable()]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-            public partial class TextAssociationAssociation : FeatureAssociation {
-                public TextAssociationAssociation() {
+            public partial class TextAssociation : FeatureAssociation {
+                public RefId? identifies { get; set; }
+
+                [IgnoreDataMember()]
+                [Required()]
+                public String[] identifiesFeatureTypes { get; set; }
+                public List<RefId> positions { get; set; } = [];
+
+                [IgnoreDataMember()]
+                [Required()]
+                public String[] positionsFeatureTypes { get; set; }
+                public override string Code => "TextAssociation";
+
+                public override string[]? this[string role] => role switch
+                {
+                    "identifies" => identifiesFeatureTypes,
+                    "positions" => positionsFeatureTypes,
+                    _ => throw new InvalidOperationException(),
+                };
+                public TextAssociation() {
+                    identifiesFeatureTypes = [];
+                    positionsFeatureTypes = [];
                 }
             }
         }
@@ -468,6 +552,7 @@ namespace S100Framework.DomainModel.S124 {
         using ComplexAttributes;
         using DomainModel;
         using System.Runtime.Serialization;
+        using S100Framework.DomainModel.S124.Associations.InformationAssociations;
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -495,6 +580,11 @@ namespace S100Framework.DomainModel.S124 {
             [IgnoreDataMember]
             public override string Code => nameof(NAVWARNPreamble);
 
+            public static NWReferences NWReferences_theReferences() => new NWReferences
+            {
+                roleType = roleType.association,
+                theReferencesInformationTypes = ["References"],
+            };
             public NAVWARNPreamble() {
                 generalArea = new();
                 messageSeriesIdentifier = new messageSeriesIdentifier()
@@ -535,6 +625,8 @@ namespace S100Framework.DomainModel.S124 {
         using InformationTypes;
         using DomainModel;
         using System.Runtime.Serialization;
+        using S100Framework.DomainModel.S124.Associations.InformationAssociations;
+        using S100Framework.DomainModel.S124.Associations.FeatureAssociations;
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -556,66 +648,23 @@ namespace S100Framework.DomainModel.S124 {
             [IgnoreDataMember]
             public override string Code => nameof(NAVWARNPart);
 
-            public class TextAssociationAssociation : Associations.FeatureAssociations.TextAssociationAssociation {
-                public TextAssociationAssociation AddTextPlacement(string id) {
-                    this.RefIds = [..this.RefIds, new RefId
-                    {
-                        Role = "positions",
-                        Type = "TextPlacement",
-                        Value = id,
-                    }
-
-                    ];
-                    return this;
-                }
-            }
-
-            public class AreaAffectedAssociation : Associations.FeatureAssociations.AreaAffectedAssociation {
-                public AreaAffectedAssociation AddNAVWARNAreaAffected(string id) {
-                    this.RefIds = [..this.RefIds, new RefId
-                    {
-                        Role = "affects",
-                        Type = "NAVWARNAreaAffected",
-                        Value = id,
-                    }
-
-                    ];
-                    return this;
-                }
-            }
-
-            public static AreaAffectedAssociation CreateAreaAffected_affects(string id) {
-                return new AreaAffectedAssociation
-                {
-                    Code = "AreaAffected",
-                    AssociationConnectorTypeName = "NAVWARNPart",
-                    RefIds = [new RefId
-                    {
-                        Role = "impacts",
-                        Type = "NAVWARNPart",
-                        Value = id,
-                    }
-
-                    ]
-                };
-            }
-
-            public static TextAssociationAssociation CreateTextAssociation_positions(string id) {
-                return new TextAssociationAssociation
-                {
-                    Code = "TextAssociation",
-                    AssociationConnectorTypeName = "NAVWARNPart",
-                    RefIds = [new RefId
-                    {
-                        Role = "identifies",
-                        Type = "NAVWARNPart",
-                        Value = id,
-                    }
-
-                    ]
-                };
-            }
-
+            public static NWPreambleContent NWPreambleContent_header() => new NWPreambleContent
+            {
+                roleType = roleType.association,
+                headerInformationTypes = ["NAVWARNPreamble"],
+            };
+            public static AreaAffected AreaAffected_affects() => new AreaAffected
+            {
+                roleType = roleType.association,
+                affectsFeatureTypes = ["NAVWARNAreaAffected"],
+                impactsFeatureTypes = ["NAVWARNPart"],
+            };
+            public static TextAssociation TextAssociation_positions() => new TextAssociation
+            {
+                roleType = roleType.association,
+                positionsFeatureTypes = ["TextPlacement"],
+                identifiesFeatureTypes = ["NAVWARNPart"],
+            };
             public NAVWARNPart() {
                 warningInformation = new warningInformation()
                 {
@@ -629,36 +678,12 @@ namespace S100Framework.DomainModel.S124 {
             [IgnoreDataMember]
             public override string Code => nameof(NAVWARNAreaAffected);
 
-            public class AreaAffectedAssociation : Associations.FeatureAssociations.AreaAffectedAssociation {
-                public AreaAffectedAssociation AddNAVWARNPart(string id) {
-                    this.RefIds = [..this.RefIds, new RefId
-                    {
-                        Role = "impacts",
-                        Type = "NAVWARNPart",
-                        Value = id,
-                    }
-
-                    ];
-                    return this;
-                }
-            }
-
-            public static AreaAffectedAssociation CreateAreaAffected_impacts(string id) {
-                return new AreaAffectedAssociation
-                {
-                    Code = "AreaAffected",
-                    AssociationConnectorTypeName = "NAVWARNAreaAffected",
-                    RefIds = [new RefId
-                    {
-                        Role = "affects",
-                        Type = "NAVWARNAreaAffected",
-                        Value = id,
-                    }
-
-                    ]
-                };
-            }
-
+            public static AreaAffected AreaAffected_impacts() => new AreaAffected
+            {
+                roleType = roleType.association,
+                impactsFeatureTypes = ["NAVWARNPart"],
+                affectsFeatureTypes = ["NAVWARNAreaAffected"],
+            };
             public NAVWARNAreaAffected() {
             }
         }
@@ -683,36 +708,12 @@ namespace S100Framework.DomainModel.S124 {
             [IgnoreDataMember]
             public override string Code => nameof(TextPlacement);
 
-            public class TextAssociationAssociation : Associations.FeatureAssociations.TextAssociationAssociation {
-                public TextAssociationAssociation AddNAVWARNPart(string id) {
-                    this.RefIds = [..this.RefIds, new RefId
-                    {
-                        Role = "identifies",
-                        Type = "NAVWARNPart",
-                        Value = id,
-                    }
-
-                    ];
-                    return this;
-                }
-            }
-
-            public static TextAssociationAssociation CreateTextAssociation_identifies(string id) {
-                return new TextAssociationAssociation
-                {
-                    Code = "TextAssociation",
-                    AssociationConnectorTypeName = "TextPlacement",
-                    RefIds = [new RefId
-                    {
-                        Role = "positions",
-                        Type = "TextPlacement",
-                        Value = id,
-                    }
-
-                    ]
-                };
-            }
-
+            public static TextAssociation TextAssociation_identifies() => new TextAssociation
+            {
+                roleType = roleType.composition,
+                identifiesFeatureTypes = ["NAVWARNPart"],
+                positionsFeatureTypes = ["TextPlacement"],
+            };
             public TextPlacement() {
             }
         }

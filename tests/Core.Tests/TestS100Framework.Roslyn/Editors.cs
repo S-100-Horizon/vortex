@@ -15,10 +15,9 @@ namespace S100Framework.WPF.Editors
                 IsEditable = false,
                 IsSelectAllActive = true,
                 IsDropDownOpen = false,
-                DisplayMemberPath = "label",
             };
 
-            var attribute = (S100Framework.DomainModel.CodeListAttribute)propertyItem.Instance.GetType().GetProperty(propertyItem.DisplayName)!.GetCustomAttributes(typeof(S100Framework.DomainModel.CodeListAttribute), true)[0];
+            var attribute = (S100Framework.DomainModel.EnumerationAttribute)propertyItem.Instance.GetType().GetProperty(propertyItem.DisplayName)!.GetCustomAttributes(typeof(S100Framework.DomainModel.EnumerationAttribute), true)[0];
 
             var bindingItemsSourceProperty = new Binding(attribute.PropertyName) { Source = propertyItem.Instance, Mode = BindingMode.OneWay };
             BindingOperations.SetBinding(checkComboBox, ComboBox.ItemsSourceProperty, bindingItemsSourceProperty);
@@ -72,6 +71,40 @@ namespace S100Framework.WPF.Editors
             return checkComboBox;
         }
     }
+
+
+    public sealed class NewRefIdEditor : Xceed.Wpf.Toolkit.PropertyGrid.Editors.ITypeEditor
+    {
+        public FrameworkElement ResolveEditor(PropertyItem propertyItem) {
+            var source = propertyItem.Instance switch {
+                FeatureRefIdViewModel e => e.RefIds,
+                InformationRefIdViewModel e => e.RefIds,
+                _ => throw new NotSupportedException()
+            };
+
+            var viewModel = (NewRefIdViewModel)propertyItem.Instance;
+
+            var comboBox = new ComboBox {
+                Name = $"_comboBox{Guid.NewGuid():N}",
+                //DisplayMemberPath = "refId",
+            };
+
+            if (!string.IsNullOrEmpty(viewModel.RefId))
+                source.Add(viewModel.RefId);
+
+            var bindingItemsSourceProperty = new Binding() { Source = source, Mode = BindingMode.OneWay };
+            BindingOperations.SetBinding(comboBox, ComboBox.ItemsSourceProperty, bindingItemsSourceProperty);
+
+            var bindingSelectedItemProperty = new Binding("RefId") { Source = propertyItem.Instance, Mode = propertyItem.IsReadOnly ? BindingMode.OneWay : BindingMode.TwoWay };
+            BindingOperations.SetBinding(comboBox, ComboBox.SelectedItemProperty, bindingSelectedItemProperty);
+
+            if (!string.IsNullOrEmpty(viewModel.RefId)) {
+                comboBox.SelectedValue = viewModel.RefId;
+            }
+            return comboBox;
+        }
+    }
+
 
     public sealed class RefIdEditor : Xceed.Wpf.Toolkit.PropertyGrid.Editors.ITypeEditor
     {

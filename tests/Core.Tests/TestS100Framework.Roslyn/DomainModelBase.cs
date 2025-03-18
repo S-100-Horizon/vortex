@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using System.ComponentModel;
+using System.Runtime.Serialization;
 
 namespace S100Framework.DomainModel {
     [System.AttributeUsage(System.AttributeTargets.Property, AllowMultiple = false)]
@@ -69,21 +70,22 @@ namespace S100Framework.DomainModel {
 
     [System.SerializableAttribute()]
     public abstract class Association {
-        public required string Code { get; set; }
+        public virtual string Code => string.Empty;
         public required roleType roleType { get; set; }
-        public required string AssociationConnectorTypeName { get; set; }
+        public string AssociationConnectorTypeName { get; set; }
 
-        public abstract string[]? this[string role] { get; }
-
-        public RefId[] RefIds { get; set; } = new RefId[0];
+        [IgnoreDataMember()]
+        public virtual string[]? this[string role] => default;
     }
 
     [System.SerializableAttribute()]
     public abstract class InformationAssociation : Association {
+        public RefId[] RefIds { get; set; } = new RefId[0];
     }
 
     [System.SerializableAttribute()]
     public abstract class FeatureAssociation : Association {
+        public RefId[] RefIds { get; set; } = new RefId[0];
     }
 
     public enum roleType {

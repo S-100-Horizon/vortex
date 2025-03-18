@@ -7,7 +7,6 @@ using Pluralize.NET.Core;
 using S100Framework.DomainModel;
 using System.Reflection;
 using System.Reflection.Emit;
-using System.Runtime.Serialization;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Xml;
@@ -661,7 +660,7 @@ namespace S100Framework
 
                 var featureAssociationTypes = new List<string>();
 
-                foreach (var e in elements) {
+                foreach (var e in elements) {                    
                     var name = e.Element(XName.Get("name", scope_S100))!.Value;
                     var code = e.Element(XName.Get("code", scope_S100))!.Value;
 
@@ -731,14 +730,46 @@ namespace S100Framework
                         }));
 
                         {
+                            var loadBuilder = new StringBuilder();
+                            var serializeBuilder = new StringBuilder();
+                            var modelBuilder = new StringBuilder();
+
+                            var constructorBuilder = new StringBuilder();
+                            constructorBuilder.AppendLine($"\t\tpublic {code}ViewModel() : base() {{");
+
+                            serializeBuilder.AppendLine($"\t\t\tvar instance = new DomainModel.{productId}.Associations.FeatureAssociations.{code} {{");
+
                             viewBuilder.AppendLine($"\t\t\t[CategoryOrder(\"{code}\", 0)]");
                             viewBuilder.AppendLine("\t\t\t[CategoryOrder(\"InformationBindings\", 100)]");
                             viewBuilder.AppendLine("\t\t\t[CategoryOrder(\"FeatureBindings\", 200)]");
                             viewBuilder.AppendLine($"public class {code}ViewModel : ViewModelBase");
                             viewBuilder.AppendLine("\t{");
+                            
+                            viewBuilder.AppendLine("\t\tprivate roleType _roleType;");
 
-                            foreach (var attributeBinding in e.XPathSelectElements("S100FC:attributeBinding", xmlNamespaceManager)) {
-                                //TODO
+                            var insertEnumerationLists = new Dictionary<string, Action<StringBuilder>>();
+
+                            var insertCodeLists = new Dictionary<string, Action<StringBuilder>>();
+
+                            foreach (var p in associationType.GetProperties()) {
+                                if (roles.Any(r => p.Name.StartsWith(r)))
+                                    continue;
+                                if (p.Name switch {
+                                    "Code" => true,
+                                    "roleType" => true,
+                                    "AssociationConnectorTypeName" => true,
+                                    "Item" => true,
+                                    "RefIds" => true,
+                                    _ => false,
+                                })
+                                    continue;
+
+                                var actions = BuildPropertyViewModel(p, viewBuilder, constructorBuilder, loadBuilder, serializeBuilder, modelBuilder, codelistTypes.Keys, enumTypes.Keys);
+
+                                foreach (var pair in actions.insertEnumerationLists)
+                                    insertEnumerationLists.Add(pair.Key, pair.Value);
+                                foreach (var pair in actions.insertCodeLists)
+                                    insertCodeLists.Add(pair.Key, pair.Value);
                             }
 
                             foreach (var r in roles) {
@@ -749,18 +780,23 @@ namespace S100Framework
                                 var lower = int.Parse(binding.XPathSelectElement("S100FC:multiplicity/S100Base:lower", xmlNamespaceManager)!.Value);
                                 var upper = binding.XPathSelectElement("S100FC:multiplicity/S100Base:upper", xmlNamespaceManager)!.Attribute(XName.Get("infinite")) != default ? (binding.XPathSelectElement("S100FC:multiplicity/S100Base:upper", xmlNamespaceManager)!.Attribute(XName.Get("infinite"))!.Value.Equals("true") ? default(int?) : int.Parse(binding.XPathSelectElement("S100FC:multiplicity/S100Base:upper", xmlNamespaceManager)!.Value)) : int.Parse(binding.XPathSelectElement("S100FC:multiplicity/S100Base:upper", xmlNamespaceManager)!.Value);
 
-                                var referenceType = (!upper.HasValue || upper.Value > 1 || lower > 1) ? "List<RefIdViewModel>" : lower == 0 ? "RefIdViewModel?" : "RefIdViewModel";
+                                var referenceType = (!upper.HasValue || upper.Value > 1 || lower > 1) ? "List<NewRefIdViewModel>" : lower == 0 ? "NewRefIdViewModel?" : "NewRefIdViewModel";
 
                                 if (!upper.HasValue || upper.Value > 1 || lower > 1) {
-                                    //public ObservableCollection<RefIdViewModel> 
                                     viewBuilder.AppendLine($"\t\t\t[Category(\"{code}\")]");
-                                    viewBuilder.AppendLine($"\t\t\tpublic ObservableCollection<RefIdViewModel> {r} = new ObservableCollection<RefIdViewModel>();");
+                                    viewBuilder.AppendLine($"\t\t\tpublic ObservableCollection<NewRefIdViewModel> {r} {{get; set;}}= new ();");
+
+                                    loadBuilder.AppendLine($"\t\t\tforeach(var e in instance.{r}) {{");
+                                    loadBuilder.AppendLine($"\t\t\t\t{r}.Add(new NewRefIdViewModel() {{");
+                                    loadBuilder.AppendLine($"\t\t\t\t\tRefId = e.Value,");
+                                    loadBuilder.AppendLine($"\t\t\t\t}});");
+                                    loadBuilder.AppendLine($"\t\t\t}};");
                                 }
                                 else {
                                     var postfix = lower == 0 ? "" : "?";
-                                    viewBuilder.AppendLine($"\t\t\tprivate RefIdViewModel{postfix} _{r};");
+                                    viewBuilder.AppendLine($"\t\t\tprivate NewRefIdViewModel{postfix} _{r};");
                                     viewBuilder.AppendLine($"\t\t\t[Category(\"{code}\")]");
-                                    viewBuilder.AppendLine($"\t\t\tpublic RefIdViewModel{postfix} {r} {{");
+                                    viewBuilder.AppendLine($"\t\t\tpublic NewRefIdViewModel{postfix} {r} {{");
                                     viewBuilder.AppendLine($"\t\t\t\tget {{");
                                     viewBuilder.AppendLine($"\t\t\t\t\treturn _{r};");
                                     viewBuilder.AppendLine($"\t\t\t\t}}");
@@ -768,9 +804,56 @@ namespace S100Framework
                                     viewBuilder.AppendLine($"\t\t\t\t\tSetValue(ref _{r}, value);");
                                     viewBuilder.AppendLine($"\t\t\t\t}}");
                                     viewBuilder.AppendLine($"\t\t\t}}");
+
+                                    loadBuilder.AppendLine($"\t\t\t{r} = new NewRefIdViewModel() {{");
+                                    loadBuilder.AppendLine($"\t\t\t\tRefId = instance.{r}?.Value,");
+                                    loadBuilder.AppendLine($"\t\t\t}};");
                                 }
                                 viewBuilder.AppendLine($"");
+                                viewBuilder.AppendLine($"\t\t\t[Browsable(false)]");
+                                viewBuilder.AppendLine($"\t\t\tpublic string[] {r}FeatureTypes {{get; private set;}}");
+
+                                loadBuilder.AppendLine($"\t\t\t{r}FeatureTypes = instance.{r}FeatureTypes;");
                             }
+
+                            foreach (var codelist in insertCodeLists) {
+                                codelist.Value.Invoke(viewBuilder);
+                            }
+                            foreach (var enumerationlist in insertEnumerationLists) {
+                                enumerationlist.Value.Invoke(viewBuilder);
+                            }                            
+
+                            serializeBuilder.AppendLine($"\t\t\t\troleType = _roleType,");
+                            serializeBuilder.AppendLine("\t\t\t");
+                            serializeBuilder.AppendLine("\t\t\t};");
+                            serializeBuilder.AppendLine("\t\t\treturn System.Text.Json.JsonSerializer.Serialize(instance);");
+
+                            constructorBuilder.AppendLine("\t\t}");
+
+                            //  Loader
+                            viewBuilder.AppendLine("");
+                            viewBuilder.AppendLine($"\t\tpublic void Load(DomainModel.{productId}.Associations.FeatureAssociations.{code} instance) {{");
+                            viewBuilder.Append(loadBuilder.ToString());
+                            viewBuilder.AppendLine("\t\t\t_roleType = instance.roleType;");
+                            viewBuilder.AppendLine("\t\t\t");
+                            viewBuilder.AppendLine("\t\t}");
+                            viewBuilder.AppendLine("");
+
+                            //  Serializer
+                            viewBuilder.AppendLine($"\t\tpublic override string Serialize() {{");
+                            viewBuilder.Append(serializeBuilder.ToString());
+                            viewBuilder.AppendLine("\t\t}");
+
+                            //  Model
+                            //viewBuilder.AppendLine("\t\t[Browsable(false)]");
+                            //viewBuilder.AppendLine($"\t\tpublic DomainModel.{productId}.Associations.FeatureAssociations.{code} Model => new () {{");
+                            //viewBuilder.Append(modelBuilder.ToString());
+                            //viewBuilder.AppendLine($"\t\t}};");
+
+                            //  Constructor
+                            viewBuilder.AppendLine(constructorBuilder.ToString());
+
+                            viewBuilder.AppendLine($"\t\tpublic override string? ToString() => $\"{name}\";");
 
                             viewBuilder.AppendLine("\t}");
 
@@ -1562,6 +1645,7 @@ namespace S100Framework
             common.AppendLine("using System;");
             common.AppendLine("using System.Linq;");
             common.AppendLine("using System.ComponentModel;");
+            common.AppendLine("using System.Runtime.Serialization;");
             common.AppendLine();
             common.AppendLine("namespace S100Framework.DomainModel");
             common.AppendLine("{");
@@ -1650,20 +1734,20 @@ namespace S100Framework
 
             common.AppendLine("\t[System.SerializableAttribute()]");
             common.AppendLine("\tpublic abstract class Association {");
-            common.AppendLine("\t\tpublic required string Code {get; set; }");
+            common.AppendLine("\t\tpublic virtual string Code => string.Empty;");
             common.AppendLine("\t\tpublic required roleType roleType {get; set; }");
-            common.AppendLine("\t\tpublic required string AssociationConnectorTypeName { get; set; }");
+            common.AppendLine("\t\tpublic string AssociationConnectorTypeName { get; set; }");
             common.AppendLine("\t\t[IgnoreDataMember()]");
-            common.AppendLine("\t\tpublic virtual string[]? this[string role] { get; }");
+            common.AppendLine("\t\tpublic virtual string[]? this[string role] => default;");
             //common.AppendLine("\t\tpublic RefId[] RefIds { get; set; } = new RefId[0];");
             common.AppendLine("\t}");
             common.AppendLine("\t[System.SerializableAttribute()]");
             common.AppendLine("\tpublic abstract class InformationAssociation : Association {");
-            //common.AppendLine("\t\tpublic RefId[] RefIds { get; set; } = new RefId[0];");
+            common.AppendLine("\t\tpublic RefId[] RefIds { get; set; } = new RefId[0];");
             common.AppendLine("\t}");
             common.AppendLine("\t[System.SerializableAttribute()]");
             common.AppendLine("\tpublic abstract class FeatureAssociation : Association {");
-            //common.AppendLine("\t\tpublic RoleRefId[] RefIds { get; set; } = new RoleRefId[0];");
+            common.AppendLine("\t\tpublic RefId[] RefIds { get; set; } = new RefId[0];");
             common.AppendLine("\t}");
 
             common.AppendLine();
@@ -1781,9 +1865,9 @@ namespace S100Framework
                 }
 
                 var ignoreDataMemberAttribute = p.GetCustomAttribute<System.Runtime.Serialization.IgnoreDataMemberAttribute>();
-                if(ignoreDataMemberAttribute is not null) {
+                if (ignoreDataMemberAttribute is not null) {
                     classBuilder.AppendLine("\t\t\t[IgnoreDataMember()]");
-                }               
+                }
 
                 var requiredMemberAttribute = p.GetCustomAttribute<System.Runtime.CompilerServices.RequiredMemberAttribute>();
 
@@ -1928,172 +2012,14 @@ namespace S100Framework
 
                 var viewModel = !p.PropertyType.IsValueType && !codeLists.Contains(p.Name) /*&& !roles.Contains(p.Name) */? "ViewModel" : string.Empty;
 
-                if (!p.PropertyType.IsGenericType) {
-                    if (p.PropertyType == typeof(String)) {
-                        var prop_type = p.PropertyType.Name;
-
-                        loadBuilder.AppendLine($"\t\t\t{p.Name} = instance.{p.Name};");
-                        serializeBuilder.AppendLine($"\t\t\t\t{p.Name} = this.{p.Name},");
-                        modelBuilder.AppendLine($"\t\t\t{p.Name} = this._{p.Name},");
-
-                        classBuilder.AppendLine($"\t\tprivate {prop_type} _{p.Name} = string.Empty;");
-                        classBuilder.AppendLine();
-                        classBuilder.AppendLine($"\t\t[Category(\"{p.DeclaringType!.Name}\")]");
-                        classBuilder.AppendLine($"\t\tpublic {p.PropertyType.Name} {p.Name} {{");
-                        classBuilder.AppendLine($"\t\t\tget {{ return _{p.Name}; }}");
-                        classBuilder.AppendLine($"\t\t\tset {{");
-                        classBuilder.AppendLine($"\t\t\t\tSetValue(ref _{p.Name}, value);");
-                        classBuilder.AppendLine($"\t\t\t}}");
-                        classBuilder.AppendLine($"\t\t}}");
-                    }
-                    else {
-                        var prop_type = requiredMemberAttribute != null ? $"{p.PropertyType.Name}{viewModel}" : $"{p.PropertyType.Name}{viewModel}?";
-
-                        if (!p.PropertyType.IsValueType && !codeLists.Contains(p.Name)) {
-                            loadBuilder.AppendLine($"\t\t\t{p.Name} = new ();");
-                            loadBuilder.AppendLine($"\t\t\tif (instance.{p.Name} != null) {{");
-                            loadBuilder.AppendLine($"\t\t\t\t{p.Name} = new ();");
-                            loadBuilder.AppendLine($"\t\t\t\t{p.Name}.Load(instance.{p.Name});");
-                            loadBuilder.AppendLine($"\t\t\t}}");
-                            serializeBuilder.AppendLine($"\t\t\t\t{p.Name} = this.{p.Name}?.Model,");
-                            modelBuilder.AppendLine($"\t\t\t{p.Name} = this._{p.Name}?.Model,");
-                        }
-                        else {
-                            loadBuilder.AppendLine($"\t\t\t{p.Name} = instance.{p.Name};");
-                            serializeBuilder.AppendLine($"\t\t\t\t{p.Name} = this.{p.Name},");
-                            modelBuilder.AppendLine($"\t\t\t{p.Name} = this._{p.Name},");
-                        }
-
-                        classBuilder.AppendLine($"\t\tprivate {prop_type} _{p.Name};");
-                        classBuilder.AppendLine();
-                        if (codeLists.Contains(p.Name)) {
-                            classBuilder.AppendLine($"\t\t[DomainModel.CodeList(nameof({p.PropertyType.Name}List))]");
-                            classBuilder.AppendLine("\t\t[Editor(typeof(Editors.CodeListComboEditor), typeof(Editors.CodeListComboEditor))]");
-                        }
-                        else if (enumLists.Contains(p.Name)) {
-                            classBuilder.AppendLine($"\t\t[DomainModel.EnumerationAttribute(nameof({p.PropertyType.Name}List))]");
-                            classBuilder.AppendLine("\t\t[Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]");
-                        }
-                        classBuilder.AppendLine($"\t\t[Category(\"{p.DeclaringType!.Name}\")]");
-
-                        if (p.GetCustomAttribute<Xceed.Wpf.Toolkit.PropertyGrid.Attributes.ExpandableObjectAttribute>() != null)
-                            classBuilder.AppendLine($"\t\t[Xceed.Wpf.Toolkit.PropertyGrid.Attributes.ExpandableObject]");
-                        classBuilder.AppendLine($"\t\tpublic {prop_type} {p.Name} {{");
-                        classBuilder.AppendLine($"\t\t\tget {{ return _{p.Name}; }}");
-                        classBuilder.AppendLine($"\t\t\tset {{");
-                        classBuilder.AppendLine($"\t\t\t\tSetValue(ref _{p.Name}, value);");
-                        classBuilder.AppendLine($"\t\t\t}}");
-                        classBuilder.AppendLine($"\t\t}}");
-
-                        if (codeLists.Contains(p.Name)) {
-                            if (!insertCodeLists.ContainsKey(p.Name)) {
-                                insertCodeLists.Add(p.Name, (s) => {
-                                    s.AppendLine($"\t\t[Browsable(false)]");
-                                    s.AppendLine($"\t\tpublic {p.PropertyType.Name}[] {p.PropertyType.Name}List => CodeList.{pluralizer.Pluralize(p.PropertyType.Name)}.ToArray();");
-                                });
-                            }
-                        }
-                        else if (enumLists.Contains(p.Name)) {
-                            var enumerationValueAttribute = p.GetCustomAttributes<EnumerationValueAttribute>();
-
-                            insertEnumerationLists.Add(p.Name, (s) => {
-                                s.AppendLine($"\t\t[Browsable(false)]");
-
-                                var values = string.Join(',', enumerationValueAttribute.Select(e => $"({p.Name}){e.PropertyValue}"));
-                                s.AppendLine($"\t\tpublic {p.PropertyType.Name}[] {p.PropertyType.Name}List => [{values}];");
-                            });
-                        }
-                    }
-                }
-                else {
-                    var prop_name = GetPropertyType(p.PropertyType);
-
-                    var prop_type = requiredMemberAttribute != null ? $"{prop_name}{viewModel}" : $"{prop_name}?";
-                    var prop_postfix = requiredMemberAttribute != null ? "" : " = default";
-
-                    if ("System.Collections.Generic".Equals(p.PropertyType.Namespace)) {
-                        loadBuilder.AppendLine($"\t\t\t{p.Name}.Clear();");
-                        loadBuilder.AppendLine($"\t\t\tif(instance.{p.Name} is not null)");
-                        loadBuilder.AppendLine($"\t\t\t\tforeach(var e in instance.{p.Name})");
-                        loadBuilder.AppendLine($"\t\t\t\t\t{p.Name}.Add(e);");
-
-                        constructorBuilder.AppendLine($"\t\t\t{p.Name}.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {{");
-                        constructorBuilder.AppendLine($"\t\t\t\tOnPropertyChanged(nameof({p.Name}));");
-                        constructorBuilder.AppendLine($"\t\t\t}};");
-
-                        serializeBuilder.AppendLine($"\t\t\t\t{p.Name} = this.{p.Name}.ToList(),");
-                        modelBuilder.AppendLine($"\t\t\t\t{p.Name} = this.{p.Name}.ToList(),");
-
-                        if (codeLists.Contains(prop_name)) {
-                            classBuilder.AppendLine($"\t\t[DomainModel.CodeList(nameof({prop_name}List))]");
-                            classBuilder.AppendLine("\t\t[Editor(typeof(Editors.CodeListCheckComboEditor), typeof(Editors.CodeListCheckComboEditor))]");
-                        }
-                        else if (enumLists.Contains(prop_name)) {
-                            classBuilder.AppendLine($"\t\t[DomainModel.EnumerationAttribute(nameof({prop_name}List))]");
-                            classBuilder.AppendLine("\t\t[Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]");
-                        }
-                        classBuilder.AppendLine($"\t\t[Category(\"{p.DeclaringType!.Name}\")]");
-
-                        classBuilder.AppendLine($"\t\tpublic ObservableCollection<{prop_name}> {p.Name} {{get;set;}} = new ();");
-
-                        if (codeLists.Contains(prop_name)) {
-                            if (!insertCodeLists.ContainsKey(prop_name)) {
-                                insertCodeLists.Add(prop_name, (s) => {
-                                    s.AppendLine($"\t\t[Browsable(false)]");
-                                    s.AppendLine($"\t\tpublic {prop_name}[] {prop_name}List => CodeList.{pluralizer.Pluralize(prop_name)}.ToArray();");
-                                });
-                            }
-                        }
-                        else if (enumLists.Contains(prop_name)) {
-                            var enumerationValueAttribute = p.GetCustomAttributes<EnumerationValueAttribute>();
-
-                            insertEnumerationLists.Add(p.Name, (s) => {
-                                s.AppendLine($"\t\t[Browsable(false)]");
-
-                                var values = string.Join(',', enumerationValueAttribute.Select(e => $"({p.Name}){e.PropertyValue}"));
-                                s.AppendLine($"\t\tpublic {prop_name}[] {prop_name}List => [{values}];");
-                            });
-                        }
-                    }
-                    else {
-                        loadBuilder.AppendLine($"\t\t\t{p.Name} = instance.{p.Name};");
-                        serializeBuilder.AppendLine($"\t\t\t\t{p.Name} = this.{p.Name},");
-                        modelBuilder.AppendLine($"\t\t\t{p.Name} = this._{p.Name},");
-
-                        classBuilder.AppendLine($"\t\tprivate {prop_type} _{p.Name}{prop_postfix};");
-                        classBuilder.AppendLine();
-                        if (codeLists.Contains(p.Name)) {
-                            classBuilder.AppendLine("\t\t[DomainModel.CodeListAttribute]");
-                        }
-                        else if (enumLists.Contains(p.Name)) {
-                            classBuilder.AppendLine($"\t\t[DomainModel.EnumerationAttribute(nameof({prop_name}List))]");
-                            classBuilder.AppendLine("\t\t[Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]");
-                        }
-                        classBuilder.AppendLine($"\t\t[Category(\"{p.DeclaringType!.Name}\")]");
-
-                        if (p.GetCustomAttribute<Xceed.Wpf.Toolkit.PropertyGrid.Attributes.ExpandableObjectAttribute>() != null)
-                            classBuilder.AppendLine($"\t\t[Xceed.Wpf.Toolkit.PropertyGrid.Attributes.ExpandableObject]");
-                        classBuilder.AppendLine($"\t\tpublic {prop_type} {p.Name} {{");
-                        classBuilder.AppendLine($"\t\t\tget {{ return _{p.Name}; }}");
-                        classBuilder.AppendLine($"\t\t\tset {{");
-                        classBuilder.AppendLine($"\t\t\t\tSetValue(ref _{p.Name}, value);");
-                        classBuilder.AppendLine($"\t\t\t}}");
-                        classBuilder.AppendLine($"\t\t}}");
-
-                        if (enumLists.Contains(prop_name)) {
-                            var enumerationValueAttribute = p.GetCustomAttributes<EnumerationValueAttribute>();
-
-                            insertEnumerationLists.Add(p.Name, (s) => {
-                                s.AppendLine($"\t\t[Browsable(false)]");
-
-                                var values = string.Join(',', enumerationValueAttribute.Select(e => $"({p.Name}){e.PropertyValue}"));
-                                s.AppendLine($"\t\tpublic {prop_name}[] {prop_name}List => [{values}];");
-                            });
-                        }
-                    }
-                }
+                var actions = BuildPropertyViewModel(p, classBuilder, constructorBuilder, loadBuilder, serializeBuilder, modelBuilder, codeLists, enumLists);
 
                 first = false;
+
+                foreach (var e in actions.insertEnumerationLists)
+                    insertEnumerationLists.Add(e.Key, e.Value);
+                foreach (var e in actions.insertCodeLists)
+                    insertCodeLists.Add(e.Key, e.Value);
             }
 
             postAction?.Invoke(classBuilder);
@@ -2138,6 +2064,183 @@ namespace S100Framework
             var root = CSharpSyntaxTree.ParseText(classBuilder.ToString().TrimEnd()).GetRoot();
 
             return classBuilder.ToString();
+        }
+
+        private static (IDictionary<string, Action<StringBuilder>> insertEnumerationLists, IDictionary<string, Action<StringBuilder>> insertCodeLists) BuildPropertyViewModel(PropertyInfo p, StringBuilder classBuilder, StringBuilder constructorBuilder, StringBuilder loadBuilder, StringBuilder serializeBuilder, StringBuilder modelBuilder, ICollection<string> codeLists, ICollection<string> enumLists) {
+            var insertEnumerationLists = new Dictionary<string, Action<StringBuilder>>();
+
+            var insertCodeLists = new Dictionary<string, Action<StringBuilder>>();
+
+            var requiredMemberAttribute = p.GetCustomAttribute<System.Runtime.CompilerServices.RequiredMemberAttribute>();
+
+            var viewModel = !p.PropertyType.IsValueType && !codeLists.Contains(p.Name) /*&& !roles.Contains(p.Name) */? "ViewModel" : string.Empty;
+
+            if (!p.PropertyType.IsGenericType) {
+                if (p.PropertyType == typeof(String)) {
+                    var prop_type = p.PropertyType.Name;
+
+                    loadBuilder.AppendLine($"\t\t\t{p.Name} = instance.{p.Name};");
+                    serializeBuilder.AppendLine($"\t\t\t\t{p.Name} = this.{p.Name},");
+                    modelBuilder.AppendLine($"\t\t\t{p.Name} = this._{p.Name},");
+
+                    classBuilder.AppendLine($"\t\tprivate {prop_type} _{p.Name} = string.Empty;");
+                    classBuilder.AppendLine();
+                    classBuilder.AppendLine($"\t\t[Category(\"{p.DeclaringType!.Name}\")]");
+                    classBuilder.AppendLine($"\t\tpublic {p.PropertyType.Name} {p.Name} {{");
+                    classBuilder.AppendLine($"\t\t\tget {{ return _{p.Name}; }}");
+                    classBuilder.AppendLine($"\t\t\tset {{");
+                    classBuilder.AppendLine($"\t\t\t\tSetValue(ref _{p.Name}, value);");
+                    classBuilder.AppendLine($"\t\t\t}}");
+                    classBuilder.AppendLine($"\t\t}}");
+                }
+                else {
+                    var prop_type = requiredMemberAttribute != null ? $"{p.PropertyType.Name}{viewModel}" : $"{p.PropertyType.Name}{viewModel}?";
+
+                    if (!p.PropertyType.IsValueType && !codeLists.Contains(p.Name)) {
+                        loadBuilder.AppendLine($"\t\t\t{p.Name} = new ();");
+                        loadBuilder.AppendLine($"\t\t\tif (instance.{p.Name} != null) {{");
+                        loadBuilder.AppendLine($"\t\t\t\t{p.Name} = new ();");
+                        loadBuilder.AppendLine($"\t\t\t\t{p.Name}.Load(instance.{p.Name});");
+                        loadBuilder.AppendLine($"\t\t\t}}");
+                        serializeBuilder.AppendLine($"\t\t\t\t{p.Name} = this.{p.Name}?.Model,");
+                        modelBuilder.AppendLine($"\t\t\t{p.Name} = this._{p.Name}?.Model,");
+                    }
+                    else {
+                        loadBuilder.AppendLine($"\t\t\t{p.Name} = instance.{p.Name};");
+                        serializeBuilder.AppendLine($"\t\t\t\t{p.Name} = this.{p.Name},");
+                        modelBuilder.AppendLine($"\t\t\t{p.Name} = this._{p.Name},");
+                    }
+
+                    classBuilder.AppendLine($"\t\tprivate {prop_type} _{p.Name};");
+                    classBuilder.AppendLine();
+                    if (codeLists.Contains(p.Name)) {
+                        classBuilder.AppendLine($"\t\t[DomainModel.CodeList(nameof({p.PropertyType.Name}List))]");
+                        classBuilder.AppendLine("\t\t[Editor(typeof(Editors.CodeListComboEditor), typeof(Editors.CodeListComboEditor))]");
+                    }
+                    else if (enumLists.Contains(p.Name)) {
+                        classBuilder.AppendLine($"\t\t[DomainModel.EnumerationAttribute(nameof({p.PropertyType.Name}List))]");
+                        classBuilder.AppendLine("\t\t[Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]");
+                    }
+                    classBuilder.AppendLine($"\t\t[Category(\"{p.DeclaringType!.Name}\")]");
+
+                    if (p.GetCustomAttribute<Xceed.Wpf.Toolkit.PropertyGrid.Attributes.ExpandableObjectAttribute>() != null)
+                        classBuilder.AppendLine($"\t\t[Xceed.Wpf.Toolkit.PropertyGrid.Attributes.ExpandableObject]");
+                    classBuilder.AppendLine($"\t\tpublic {prop_type} {p.Name} {{");
+                    classBuilder.AppendLine($"\t\t\tget {{ return _{p.Name}; }}");
+                    classBuilder.AppendLine($"\t\t\tset {{");
+                    classBuilder.AppendLine($"\t\t\t\tSetValue(ref _{p.Name}, value);");
+                    classBuilder.AppendLine($"\t\t\t}}");
+                    classBuilder.AppendLine($"\t\t}}");
+
+                    if (codeLists.Contains(p.Name)) {
+                        if (!insertCodeLists.ContainsKey(p.Name)) {
+                            insertCodeLists.Add(p.Name, (s) => {
+                                s.AppendLine($"\t\t[Browsable(false)]");
+                                s.AppendLine($"\t\tpublic {p.PropertyType.Name}[] {p.PropertyType.Name}List => CodeList.{pluralizer.Pluralize(p.PropertyType.Name)}.ToArray();");
+                            });
+                        }
+                    }
+                    else if (enumLists.Contains(p.Name)) {
+                        var enumerationValueAttribute = p.GetCustomAttributes<EnumerationValueAttribute>();
+
+                        insertEnumerationLists.Add(p.Name, (s) => {
+                            s.AppendLine($"\t\t[Browsable(false)]");
+
+                            var values = string.Join(',', enumerationValueAttribute.Select(e => $"({p.Name}){e.PropertyValue}"));
+                            s.AppendLine($"\t\tpublic {p.PropertyType.Name}[] {p.PropertyType.Name}List => [{values}];");
+                        });
+                    }
+                }
+            }
+            else {
+                var prop_name = GetPropertyType(p.PropertyType);
+
+                var prop_type = requiredMemberAttribute != null ? $"{prop_name}{viewModel}" : $"{prop_name}?";
+                var prop_postfix = requiredMemberAttribute != null ? "" : " = default";
+
+                if ("System.Collections.Generic".Equals(p.PropertyType.Namespace)) {
+                    loadBuilder.AppendLine($"\t\t\t{p.Name}.Clear();");
+                    loadBuilder.AppendLine($"\t\t\tif(instance.{p.Name} is not null)");
+                    loadBuilder.AppendLine($"\t\t\t\tforeach(var e in instance.{p.Name})");
+                    loadBuilder.AppendLine($"\t\t\t\t\t{p.Name}.Add(e);");
+
+                    constructorBuilder.AppendLine($"\t\t\t{p.Name}.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {{");
+                    constructorBuilder.AppendLine($"\t\t\t\tOnPropertyChanged(nameof({p.Name}));");
+                    constructorBuilder.AppendLine($"\t\t\t}};");
+
+                    serializeBuilder.AppendLine($"\t\t\t\t{p.Name} = this.{p.Name}.ToList(),");
+                    modelBuilder.AppendLine($"\t\t\t\t{p.Name} = this.{p.Name}.ToList(),");
+
+                    if (codeLists.Contains(prop_name)) {
+                        classBuilder.AppendLine($"\t\t[DomainModel.CodeList(nameof({prop_name}List))]");
+                        classBuilder.AppendLine("\t\t[Editor(typeof(Editors.CodeListCheckComboEditor), typeof(Editors.CodeListCheckComboEditor))]");
+                    }
+                    else if (enumLists.Contains(prop_name)) {
+                        classBuilder.AppendLine($"\t\t[DomainModel.EnumerationAttribute(nameof({prop_name}List))]");
+                        classBuilder.AppendLine("\t\t[Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]");
+                    }
+                    classBuilder.AppendLine($"\t\t[Category(\"{p.DeclaringType!.Name}\")]");
+
+                    classBuilder.AppendLine($"\t\tpublic ObservableCollection<{prop_name}> {p.Name} {{get;set;}} = new ();");
+
+                    if (codeLists.Contains(prop_name)) {
+                        if (!insertCodeLists.ContainsKey(prop_name)) {
+                            insertCodeLists.Add(prop_name, (s) => {
+                                s.AppendLine($"\t\t[Browsable(false)]");
+                                s.AppendLine($"\t\tpublic {prop_name}[] {prop_name}List => CodeList.{pluralizer.Pluralize(prop_name)}.ToArray();");
+                            });
+                        }
+                    }
+                    else if (enumLists.Contains(prop_name)) {
+                        var enumerationValueAttribute = p.GetCustomAttributes<EnumerationValueAttribute>();
+
+                        insertEnumerationLists.Add(p.Name, (s) => {
+                            s.AppendLine($"\t\t[Browsable(false)]");
+
+                            var values = string.Join(',', enumerationValueAttribute.Select(e => $"({p.Name}){e.PropertyValue}"));
+                            s.AppendLine($"\t\tpublic {prop_name}[] {prop_name}List => [{values}];");
+                        });
+                    }
+                }
+                else {
+                    loadBuilder.AppendLine($"\t\t\t{p.Name} = instance.{p.Name};");
+                    serializeBuilder.AppendLine($"\t\t\t\t{p.Name} = this.{p.Name},");
+                    modelBuilder.AppendLine($"\t\t\t{p.Name} = this._{p.Name},");
+
+                    classBuilder.AppendLine($"\t\tprivate {prop_type} _{p.Name}{prop_postfix};");
+                    classBuilder.AppendLine();
+                    if (codeLists.Contains(p.Name)) {
+                        classBuilder.AppendLine("\t\t[DomainModel.CodeListAttribute]");
+                    }
+                    else if (enumLists.Contains(p.Name)) {
+                        classBuilder.AppendLine($"\t\t[DomainModel.EnumerationAttribute(nameof({prop_name}List))]");
+                        classBuilder.AppendLine("\t\t[Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]");
+                    }
+                    classBuilder.AppendLine($"\t\t[Category(\"{p.DeclaringType!.Name}\")]");
+
+                    if (p.GetCustomAttribute<Xceed.Wpf.Toolkit.PropertyGrid.Attributes.ExpandableObjectAttribute>() != null)
+                        classBuilder.AppendLine($"\t\t[Xceed.Wpf.Toolkit.PropertyGrid.Attributes.ExpandableObject]");
+                    classBuilder.AppendLine($"\t\tpublic {prop_type} {p.Name} {{");
+                    classBuilder.AppendLine($"\t\t\tget {{ return _{p.Name}; }}");
+                    classBuilder.AppendLine($"\t\t\tset {{");
+                    classBuilder.AppendLine($"\t\t\t\tSetValue(ref _{p.Name}, value);");
+                    classBuilder.AppendLine($"\t\t\t}}");
+                    classBuilder.AppendLine($"\t\t}}");
+
+                    if (enumLists.Contains(prop_name)) {
+                        var enumerationValueAttribute = p.GetCustomAttributes<EnumerationValueAttribute>();
+
+                        insertEnumerationLists.Add(p.Name, (s) => {
+                            s.AppendLine($"\t\t[Browsable(false)]");
+
+                            var values = string.Join(',', enumerationValueAttribute.Select(e => $"({p.Name}){e.PropertyValue}"));
+                            s.AppendLine($"\t\tpublic {prop_name}[] {prop_name}List => [{values}];");
+                        });
+                    }
+                }
+            }
+
+            return (insertEnumerationLists, insertCodeLists);
         }
 
         private static string GetPropertyType(Type p) {
@@ -2316,6 +2419,8 @@ namespace S100Framework
 
 namespace S100Framework.DomainModel
 {
+    using System.Runtime.Serialization;
+
     [System.AttributeUsage(System.AttributeTargets.Property, AllowMultiple = false)]
     public class EnumerationAttribute : System.Attribute
     {

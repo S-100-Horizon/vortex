@@ -210,8 +210,8 @@
                             </xsl:if>
                             <xsl:if test="S100FC:permittedValues/S100FC:value">
                               permittedValues: [
-                              <xsl:for-each select="S100FC:permittedValues/S100FC:value">
-                                <xsl:value-of select="position()"/>,
+                              <xsl:for-each select="S100FC:permittedValues">
+                                <xsl:value-of select="S100FC:value"/>,
                               </xsl:for-each>
                               ]
                             </xsl:if>
@@ -297,8 +297,8 @@
                             </xsl:if>
                             <xsl:if test="S100FC:permittedValues/S100FC:value">
                               permittedValues: [
-                              <xsl:for-each select="S100FC:permittedValues/S100FC:value">
-                                <xsl:value-of select="position()"/>,
+                              <xsl:for-each select="S100FC:permittedValues">
+                                <xsl:value-of select="S100FC:value"/>,
                               </xsl:for-each>
                               ]
                             </xsl:if>

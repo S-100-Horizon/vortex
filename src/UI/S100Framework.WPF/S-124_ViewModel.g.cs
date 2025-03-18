@@ -6,7 +6,6 @@ using System.Collections.Immutable;
 using System.Collections.ObjectModel;
 using System.Reflection;
 using S100Framework.DomainModel;
-using S100Framework.DomainModel.Bindings;
 using S100Framework.DomainModel.S124;
 using S100Framework.DomainModel.S124.ComplexAttributes;
 using S100Framework.DomainModel.S124.InformationTypes;
@@ -31,105 +30,15 @@ namespace S100Framework.WPF.ViewModel.S124 {
         } }, { "TextPlacement", () =>
         {
             return new TextPlacementViewModel();
-        } }, { "AreaAffected", () =>
-        {
-            return new AreaAffectedViewModel();
-        } }, { "TextAssociation", () =>
-        {
-            return new TextAssociationViewModel();
-        } }, { "NWPreambleContent", () =>
-        {
-            return new NWPreambleContentViewModel();
-        } }, { "NWReferences", () =>
-        {
-            return new NWReferencesViewModel();
         } }, });
     }
 
     public class Handles : iHandles {
         public static IDictionary<Type, Func<InformationAssociationConnector[]>> AssociationConnectorInformations => new Dictionary<Type, Func<InformationAssociationConnector[]>>
         {
-            {
-                typeof(NWReferencesViewModel),
-                () => [new InformationAssociationConnector<NAVWARNPreamble>()
-                {
-                    roleType = roleType.association,
-                    role = "theReferences",
-                    Lower = 0,
-                    Upper = default,
-                    AssociationTypes = ["References"],
-                    CreateForeignInformationBinding = () => new MultiInformationBindingViewModel<NWReferencesViewModel.theReferencesNAVWARNPreambleRefIdViewModel>("NWReferences"),
-                    CreateLocalInformationBinding = () => new SingleInformationBindingViewModel<NAVWARNPreambleViewModel.NAVWARNPreambleRefIdViewModel>("NAVWARNPreamble"),
-                }
-
-                ]
-            },
-            {
-                typeof(NWPreambleContentViewModel),
-                () => [new InformationAssociationConnector<NAVWARNPart>()
-                {
-                    roleType = roleType.association,
-                    role = "header",
-                    Lower = 1,
-                    Upper = 1,
-                    AssociationTypes = ["NAVWARNPreamble"],
-                    CreateForeignInformationBinding = () => new SingleInformationBindingViewModel<NWPreambleContentViewModel.headerNAVWARNPartRefIdViewModel>("NWPreambleContent"),
-                    CreateLocalInformationBinding = () => new SingleInformationBindingViewModel<NAVWARNPartViewModel.NAVWARNPartRefIdViewModel>("NAVWARNPart"),
-                }
-
-                ]
-            },
         };
         public static IDictionary<Type, Func<FeatureAssociationConnector[]>> AssociationConnectorFeatures => new Dictionary<Type, Func<FeatureAssociationConnector[]>>
         {
-            {
-                typeof(TextAssociationViewModel),
-                () => [new FeatureAssociationConnector<TextPlacement>()
-                {
-                    roleType = roleType.composition,
-                    role = "identifies",
-                    Lower = 0,
-                    Upper = 1,
-                    AssociationTypes = ["NAVWARNPart"],
-                    CreateForeignFeatureBinding = () => new OptionalFeatureBindingViewModel<TextAssociationViewModel.identifiesTextPlacementRefIdViewModel>("TextAssociation"),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<TextPlacementViewModel.TextPlacementRefIdViewModel>("TextPlacement"),
-                }, new FeatureAssociationConnector<NAVWARNPart>()
-                {
-                    roleType = roleType.association,
-                    role = "positions",
-                    Lower = 0,
-                    Upper = default,
-                    AssociationTypes = ["TextPlacement"],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.positionsNAVWARNPartRefIdViewModel>("TextAssociation"),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<NAVWARNPartViewModel.NAVWARNPartRefIdViewModel>("NAVWARNPart"),
-                }
-
-                ]
-            },
-            {
-                typeof(AreaAffectedViewModel),
-                () => [new FeatureAssociationConnector<NAVWARNPart>()
-                {
-                    roleType = roleType.association,
-                    role = "affects",
-                    Lower = 0,
-                    Upper = default,
-                    AssociationTypes = ["NAVWARNAreaAffected"],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<AreaAffectedViewModel.affectsNAVWARNPartRefIdViewModel>("AreaAffected"),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<NAVWARNPartViewModel.NAVWARNPartRefIdViewModel>("NAVWARNPart"),
-                }, new FeatureAssociationConnector<NAVWARNAreaAffected>()
-                {
-                    roleType = roleType.association,
-                    role = "impacts",
-                    Lower = 1,
-                    Upper = 1,
-                    AssociationTypes = ["NAVWARNPart"],
-                    CreateForeignFeatureBinding = () => new SingleFeatureBindingViewModel<AreaAffectedViewModel.impactsNAVWARNAreaAffectedRefIdViewModel>("AreaAffected"),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<NAVWARNAreaAffectedViewModel.NAVWARNAreaAffectedRefIdViewModel>("NAVWARNAreaAffected"),
-                }
-
-                ]
-            },
         };
     }
 
@@ -1193,6 +1102,112 @@ namespace S100Framework.WPF.ViewModel.S124 {
         public override string? ToString() => $"NAVWARN Title";
     }
 
+    [CategoryOrder("AreaAffected", 0)]
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
+    public class AreaAffectedViewModel : ViewModelBase {
+        private roleType _roleType;
+        [Category("AreaAffected")]
+        public ObservableCollection<NewRefIdViewModel> affects { get; set; } = new();
+
+        [Browsable(false)]
+        public string[] affectsFeatureTypes { get; private set; }
+
+        private NewRefIdViewModel? _impacts;
+        [Category("AreaAffected")]
+        public NewRefIdViewModel? impacts {
+            get {
+                return _impacts;
+            }
+
+            set {
+                SetValue(ref _impacts, value);
+            }
+        }
+
+        [Browsable(false)]
+        public string[] impactsFeatureTypes { get; private set; }
+
+        public void Load(DomainModel.S124.Associations.FeatureAssociations.AreaAffected instance) {
+            foreach (var e in instance.affects) {
+                affects.Add(new NewRefIdViewModel() { RefId = e.Value, });
+            };
+            affectsFeatureTypes = instance.affectsFeatureTypes;
+            impacts = new NewRefIdViewModel()
+            {
+                RefId = instance.impacts?.Value,
+            };
+            impactsFeatureTypes = instance.impactsFeatureTypes;
+            _roleType = instance.roleType;
+        }
+
+        public override string Serialize() {
+            var instance = new DomainModel.S124.Associations.FeatureAssociations.AreaAffected
+            {
+                roleType = _roleType,
+            };
+            return System.Text.Json.JsonSerializer.Serialize(instance);
+        }
+
+        public AreaAffectedViewModel() : base() {
+        }
+
+        public override string? ToString() => $"Area Affected Association";
+    }
+
+    [CategoryOrder("TextAssociation", 0)]
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
+    public class TextAssociationViewModel : ViewModelBase {
+        private roleType _roleType;
+        private NewRefIdViewModel _identifies;
+        [Category("TextAssociation")]
+        public NewRefIdViewModel identifies {
+            get {
+                return _identifies;
+            }
+
+            set {
+                SetValue(ref _identifies, value);
+            }
+        }
+
+        [Browsable(false)]
+        public string[] identifiesFeatureTypes { get; private set; }
+
+        [Category("TextAssociation")]
+        public ObservableCollection<NewRefIdViewModel> positions { get; set; } = new();
+
+        [Browsable(false)]
+        public string[] positionsFeatureTypes { get; private set; }
+
+        public void Load(DomainModel.S124.Associations.FeatureAssociations.TextAssociation instance) {
+            identifies = new NewRefIdViewModel()
+            {
+                RefId = instance.identifies?.Value,
+            };
+            identifiesFeatureTypes = instance.identifiesFeatureTypes;
+            foreach (var e in instance.positions) {
+                positions.Add(new NewRefIdViewModel() { RefId = e.Value, });
+            };
+            positionsFeatureTypes = instance.positionsFeatureTypes;
+            _roleType = instance.roleType;
+        }
+
+        public override string Serialize() {
+            var instance = new DomainModel.S124.Associations.FeatureAssociations.TextAssociation
+            {
+                roleType = _roleType,
+            };
+            return System.Text.Json.JsonSerializer.Serialize(instance);
+        }
+
+        public TextAssociationViewModel() : base() {
+        }
+
+        public override string? ToString() => $"Text association";
+    }
+
     [CategoryOrder("NAVWARNPreamble", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
@@ -1689,353 +1704,5 @@ namespace S100Framework.WPF.ViewModel.S124 {
         }
 
         public override string? ToString() => $"Text Placement";
-    }
-
-    public class AreaAffectedViewModel : FeatureAssociationViewModel {
-        public override string Code => "AreaAffected";
-        public override string[] Roles => ["affects", "impacts"];
-
-        private FeatureBindingViewModel? _affects;
-        [ExpandableObject]
-        public FeatureBindingViewModel? affects {
-            get {
-                return _affects;
-            }
-
-            set {
-                this.SetValue(ref _affects, value);
-            }
-        }
-
-        private FeatureBindingViewModel? _impacts;
-        [ExpandableObject]
-        public FeatureBindingViewModel? impacts {
-            get {
-                return _impacts;
-            }
-
-            set {
-                this.SetValue(ref _impacts, value);
-            }
-        }
-
-        public override FeatureAssociationConnector? association {
-            get {
-                return _associationConnector;
-            }
-
-            set {
-                this.SetValue(ref _associationConnector, value);
-                if (value is not null) {
-                    affects = value?.role switch
-                    {
-                        "impacts" => value.CreateForeignFeatureBinding(),
-                        _ => value!.CreateLocalFeatureBinding(),
-                    };
-                }
-                else {
-                    affects = null;
-                }
-
-                if (value is not null) {
-                    impacts = value?.role switch
-                    {
-                        "affects" => value.CreateForeignFeatureBinding(),
-                        _ => value!.CreateLocalFeatureBinding(),
-                    };
-                }
-                else {
-                    impacts = null;
-                }
-            }
-        }
-
-        public override void Load(S100Framework.DomainModel.FeatureAssociation featureAssociation) {
-            association = associationConnectorFeatures.SingleOrDefault(e => e.FeatureType.Equals(featureAssociation.AssociationConnectorTypeName));
-            affects?.Load(featureAssociation, "affects");
-            impacts?.Load(featureAssociation, "impacts");
-        }
-
-        public override string Serialize() {
-            var instance = new FeatureAssociation
-            {
-                Code = this.Code,
-                AssociationConnectorTypeName = association!.FeatureType,
-            };
-            affects?.Save(instance, "affects");
-            impacts?.Save(instance, "impacts");
-            return System.Text.Json.JsonSerializer.Serialize(instance);
-        }
-
-        public override FeatureAssociationConnector[] associationConnectorFeatures => AreaAffectedViewModel._associationConnectorFeatures;
-
-        public class affectsNAVWARNPartRefIdViewModel : FeatureRefIdViewModel {
-            public override string[] AssociationTypes => ["NAVWARNAreaAffected"];
-        }
-
-        public class impactsNAVWARNAreaAffectedRefIdViewModel : FeatureRefIdViewModel {
-            public override string[] AssociationTypes => ["NAVWARNPart"];
-        }
-
-        public static FeatureAssociationConnector[] _associationConnectorFeatures => Handles.AssociationConnectorFeatures[typeof(AreaAffectedViewModel)]();
-    }
-
-    public class TextAssociationViewModel : FeatureAssociationViewModel {
-        public override string Code => "TextAssociation";
-        public override string[] Roles => ["identifies", "positions"];
-
-        private FeatureBindingViewModel? _identifies;
-        [ExpandableObject]
-        public FeatureBindingViewModel? identifies {
-            get {
-                return _identifies;
-            }
-
-            set {
-                this.SetValue(ref _identifies, value);
-            }
-        }
-
-        private FeatureBindingViewModel? _positions;
-        [ExpandableObject]
-        public FeatureBindingViewModel? positions {
-            get {
-                return _positions;
-            }
-
-            set {
-                this.SetValue(ref _positions, value);
-            }
-        }
-
-        public override FeatureAssociationConnector? association {
-            get {
-                return _associationConnector;
-            }
-
-            set {
-                this.SetValue(ref _associationConnector, value);
-                if (value is not null) {
-                    identifies = value?.role switch
-                    {
-                        "positions" => value.CreateForeignFeatureBinding(),
-                        _ => value!.CreateLocalFeatureBinding(),
-                    };
-                }
-                else {
-                    identifies = null;
-                }
-
-                if (value is not null) {
-                    positions = value?.role switch
-                    {
-                        "identifies" => value.CreateForeignFeatureBinding(),
-                        _ => value!.CreateLocalFeatureBinding(),
-                    };
-                }
-                else {
-                    positions = null;
-                }
-            }
-        }
-
-        public override void Load(S100Framework.DomainModel.FeatureAssociation featureAssociation) {
-            association = associationConnectorFeatures.SingleOrDefault(e => e.FeatureType.Equals(featureAssociation.AssociationConnectorTypeName));
-            identifies?.Load(featureAssociation, "identifies");
-            positions?.Load(featureAssociation, "positions");
-        }
-
-        public override string Serialize() {
-            var instance = new FeatureAssociation
-            {
-                Code = this.Code,
-                AssociationConnectorTypeName = association!.FeatureType,
-            };
-            identifies?.Save(instance, "identifies");
-            positions?.Save(instance, "positions");
-            return System.Text.Json.JsonSerializer.Serialize(instance);
-        }
-
-        public override FeatureAssociationConnector[] associationConnectorFeatures => TextAssociationViewModel._associationConnectorFeatures;
-
-        public class identifiesTextPlacementRefIdViewModel : FeatureRefIdViewModel {
-            public override string[] AssociationTypes => ["NAVWARNPart"];
-        }
-
-        public class positionsNAVWARNPartRefIdViewModel : FeatureRefIdViewModel {
-            public override string[] AssociationTypes => ["TextPlacement"];
-        }
-
-        public static FeatureAssociationConnector[] _associationConnectorFeatures => Handles.AssociationConnectorFeatures[typeof(TextAssociationViewModel)]();
-    }
-
-    public class NWPreambleContentViewModel : InformationAssociationViewModel {
-        public override string Code => "NWPreambleContent";
-        public override string[] Roles => ["theWarningPart", "header"];
-
-        private InformationBindingViewModel? _theWarningPart;
-        [ExpandableObject]
-        public InformationBindingViewModel? theWarningPart {
-            get {
-                return _theWarningPart;
-            }
-
-            set {
-                this.SetValue(ref _theWarningPart, value);
-            }
-        }
-
-        private InformationBindingViewModel? _header;
-        [ExpandableObject]
-        public InformationBindingViewModel? header {
-            get {
-                return _header;
-            }
-
-            set {
-                this.SetValue(ref _header, value);
-            }
-        }
-
-        public override InformationAssociationConnector? association {
-            get {
-                return _associationConnector;
-            }
-
-            set {
-                this.SetValue(ref _associationConnector, value);
-                if (value is not null) {
-                    theWarningPart = value?.role switch
-                    {
-                        "header" => value.CreateForeignInformationBinding(),
-                        _ => value!.CreateLocalInformationBinding(),
-                    };
-                }
-                else {
-                    theWarningPart = null;
-                }
-
-                if (value is not null) {
-                    header = value?.role switch
-                    {
-                        "theWarningPart" => value.CreateForeignInformationBinding(),
-                        _ => value!.CreateLocalInformationBinding(),
-                    };
-                }
-                else {
-                    header = null;
-                }
-            }
-        }
-
-        public override void Load(S100Framework.DomainModel.InformationAssociation informationAssociation) {
-            association = associationConnectorInformations.SingleOrDefault(e => e.InformationType.Equals(informationAssociation.AssociationConnectorTypeName));
-            theWarningPart?.Load(informationAssociation, "theWarningPart");
-            header?.Load(informationAssociation, "header");
-        }
-
-        public override string Serialize() {
-            var instance = new InformationAssociation
-            {
-                Code = this.Code,
-                AssociationConnectorTypeName = association!.InformationType,
-            };
-            theWarningPart?.Save(instance, "theWarningPart");
-            header?.Save(instance, "header");
-            return System.Text.Json.JsonSerializer.Serialize(instance);
-        }
-
-        public override InformationAssociationConnector[] associationConnectorInformations => NWPreambleContentViewModel._associationConnectorInformations;
-
-        public class headerNAVWARNPartRefIdViewModel : InformationRefIdViewModel {
-            public override string[] AssociationTypes => ["NAVWARNPreamble"];
-        }
-
-        public static InformationAssociationConnector[] _associationConnectorInformations => Handles.AssociationConnectorInformations[typeof(NWPreambleContentViewModel)]();
-    }
-
-    public class NWReferencesViewModel : InformationAssociationViewModel {
-        public override string Code => "NWReferences";
-        public override string[] Roles => ["theWarning", "theReferences"];
-
-        private InformationBindingViewModel? _theWarning;
-        [ExpandableObject]
-        public InformationBindingViewModel? theWarning {
-            get {
-                return _theWarning;
-            }
-
-            set {
-                this.SetValue(ref _theWarning, value);
-            }
-        }
-
-        private InformationBindingViewModel? _theReferences;
-        [ExpandableObject]
-        public InformationBindingViewModel? theReferences {
-            get {
-                return _theReferences;
-            }
-
-            set {
-                this.SetValue(ref _theReferences, value);
-            }
-        }
-
-        public override InformationAssociationConnector? association {
-            get {
-                return _associationConnector;
-            }
-
-            set {
-                this.SetValue(ref _associationConnector, value);
-                if (value is not null) {
-                    theWarning = value?.role switch
-                    {
-                        "theReferences" => value.CreateForeignInformationBinding(),
-                        _ => value!.CreateLocalInformationBinding(),
-                    };
-                }
-                else {
-                    theWarning = null;
-                }
-
-                if (value is not null) {
-                    theReferences = value?.role switch
-                    {
-                        "theWarning" => value.CreateForeignInformationBinding(),
-                        _ => value!.CreateLocalInformationBinding(),
-                    };
-                }
-                else {
-                    theReferences = null;
-                }
-            }
-        }
-
-        public override void Load(S100Framework.DomainModel.InformationAssociation informationAssociation) {
-            association = associationConnectorInformations.SingleOrDefault(e => e.InformationType.Equals(informationAssociation.AssociationConnectorTypeName));
-            theWarning?.Load(informationAssociation, "theWarning");
-            theReferences?.Load(informationAssociation, "theReferences");
-        }
-
-        public override string Serialize() {
-            var instance = new InformationAssociation
-            {
-                Code = this.Code,
-                AssociationConnectorTypeName = association!.InformationType,
-            };
-            theWarning?.Save(instance, "theWarning");
-            theReferences?.Save(instance, "theReferences");
-            return System.Text.Json.JsonSerializer.Serialize(instance);
-        }
-
-        public override InformationAssociationConnector[] associationConnectorInformations => NWReferencesViewModel._associationConnectorInformations;
-
-        public class theReferencesNAVWARNPreambleRefIdViewModel : InformationRefIdViewModel {
-            public override string[] AssociationTypes => ["References"];
-        }
-
-        public static InformationAssociationConnector[] _associationConnectorInformations => Handles.AssociationConnectorInformations[typeof(NWReferencesViewModel)]();
     }
 }

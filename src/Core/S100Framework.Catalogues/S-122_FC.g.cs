@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Immutable;
 using System.Linq;
+using System.Runtime.Serialization;
 
 #nullable enable
 namespace S100Framework.DomainModel.S122 {
@@ -1156,79 +1157,223 @@ namespace S100Framework.DomainModel.S122 {
         }
 
         namespace InformationAssociations {
+            using S100Framework.DomainModel.S122.InformationTypes;
+
             [System.Serializable()]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-            public partial class AssociatedRxN {
+            public partial class AssociatedRxN : InformationAssociation {
+                public List<RefId> theRxN { get; set; } = [];
+
+                [IgnoreDataMember()]
+                [Required()]
+                public String[] theRxNInformationTypes { get; set; }
+                public override string Code => nameof(AssociatedRxN);
+
+                public override string[]? this[string role] => role switch
+                {
+                    "theRxN" => theRxNInformationTypes,
+                    _ => throw new InvalidOperationException(),
+                };
                 public AssociatedRxN() {
+                    theRxNInformationTypes = [];
                 }
             }
 
             [System.Serializable()]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-            public partial class ExceptionalWorkday {
+            public partial class ExceptionalWorkday : InformationAssociation {
+                public List<RefId> partialWorkingDay { get; set; } = [];
+
+                [IgnoreDataMember()]
+                [Required()]
+                public String[] partialWorkingDayInformationTypes { get; set; }
+                public List<RefId> theServiceHours_nsdy { get; set; } = [];
+
+                [IgnoreDataMember()]
+                [Required()]
+                public String[] theServiceHours_nsdyInformationTypes { get; set; }
+                public override string Code => nameof(ExceptionalWorkday);
+
+                public override string[]? this[string role] => role switch
+                {
+                    "partialWorkingDay" => partialWorkingDayInformationTypes,
+                    "theServiceHours_nsdy" => theServiceHours_nsdyInformationTypes,
+                    _ => throw new InvalidOperationException(),
+                };
                 public ExceptionalWorkday() {
+                    partialWorkingDayInformationTypes = [];
+                    theServiceHours_nsdyInformationTypes = [];
                 }
             }
 
             [System.Serializable()]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-            public partial class ProtectedAreaAuthority {
+            public partial class ProtectedAreaAuthority : InformationAssociation {
+                public List<RefId> responsibleAuthority { get; set; } = [];
+
+                [IgnoreDataMember()]
+                [Required()]
+                public String[] responsibleAuthorityInformationTypes { get; set; }
+                public override string Code => nameof(ProtectedAreaAuthority);
+
+                public override string[]? this[string role] => role switch
+                {
+                    "responsibleAuthority" => responsibleAuthorityInformationTypes,
+                    _ => throw new InvalidOperationException(),
+                };
                 public ProtectedAreaAuthority() {
+                    responsibleAuthorityInformationTypes = [];
                 }
             }
 
             [System.Serializable()]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-            public partial class ServiceControl {
+            public partial class ServiceControl : InformationAssociation {
+                public RefId? controlAuthority { get; set; }
+
+                [IgnoreDataMember()]
+                [Required()]
+                public String[] controlAuthorityInformationTypes { get; set; }
+                public override string Code => nameof(ServiceControl);
+
+                public override string[]? this[string role] => role switch
+                {
+                    "controlAuthority" => controlAuthorityInformationTypes,
+                    _ => throw new InvalidOperationException(),
+                };
                 public ServiceControl() {
+                    controlAuthorityInformationTypes = [];
                 }
             }
 
             [System.Serializable()]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-            public partial class RelatedOrganisation {
+            public partial class RelatedOrganisation : InformationAssociation {
+                public List<RefId> theOrganisation { get; set; } = [];
+
+                [IgnoreDataMember()]
+                [Required()]
+                public String[] theOrganisationInformationTypes { get; set; }
+                public List<RefId> theInformation { get; set; } = [];
+
+                [IgnoreDataMember()]
+                [Required()]
+                public String[] theInformationInformationTypes { get; set; }
+                public override string Code => nameof(RelatedOrganisation);
+
+                public override string[]? this[string role] => role switch
+                {
+                    "theOrganisation" => theOrganisationInformationTypes,
+                    "theInformation" => theInformationInformationTypes,
+                    _ => throw new InvalidOperationException(),
+                };
                 public RelatedOrganisation() {
+                    theOrganisationInformationTypes = [];
+                    theInformationInformationTypes = [];
                 }
             }
 
             [System.Serializable()]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-            public partial class PermissionType {
+            public partial class PermissionType : InformationAssociation {
                 [Required()]
                 public categoryOfRelationship categoryOfRelationship { get; set; }
+                public override string Code => nameof(PermissionType);
 
+                public override string[]? this[string role] => role switch
+                {
+                    _ => throw new InvalidOperationException(),
+                };
                 public PermissionType() {
                 }
             }
 
             [System.Serializable()]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-            public partial class InclusionType {
+            public partial class InclusionType : InformationAssociation {
                 [Required()]
                 public membership membership { get; set; }
+                public override string Code => nameof(InclusionType);
 
+                public override string[]? this[string role] => role switch
+                {
+                    _ => throw new InvalidOperationException(),
+                };
                 public InclusionType() {
                 }
             }
 
             [System.Serializable()]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-            public partial class AuthorityContact {
+            public partial class AuthorityContact : InformationAssociation {
+                public List<RefId> theAuthority { get; set; } = [];
+
+                [IgnoreDataMember()]
+                [Required()]
+                public String[] theAuthorityInformationTypes { get; set; }
+                public List<RefId> theContactDetails { get; set; } = [];
+
+                [IgnoreDataMember()]
+                [Required()]
+                public String[] theContactDetailsInformationTypes { get; set; }
+                public override string Code => nameof(AuthorityContact);
+
+                public override string[]? this[string role] => role switch
+                {
+                    "theAuthority" => theAuthorityInformationTypes,
+                    "theContactDetails" => theContactDetailsInformationTypes,
+                    _ => throw new InvalidOperationException(),
+                };
                 public AuthorityContact() {
+                    theAuthorityInformationTypes = [];
+                    theContactDetailsInformationTypes = [];
                 }
             }
 
             [System.Serializable()]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-            public partial class AuthorityHours {
+            public partial class AuthorityHours : InformationAssociation {
+                public List<RefId> theAuthority_srvHrs { get; set; } = [];
+
+                [IgnoreDataMember()]
+                [Required()]
+                public String[] theAuthority_srvHrsInformationTypes { get; set; }
+                public List<RefId> theServiceHours { get; set; } = [];
+
+                [IgnoreDataMember()]
+                [Required()]
+                public String[] theServiceHoursInformationTypes { get; set; }
+                public override string Code => nameof(AuthorityHours);
+
+                public override string[]? this[string role] => role switch
+                {
+                    "theAuthority_srvHrs" => theAuthority_srvHrsInformationTypes,
+                    "theServiceHours" => theServiceHoursInformationTypes,
+                    _ => throw new InvalidOperationException(),
+                };
                 public AuthorityHours() {
+                    theAuthority_srvHrsInformationTypes = [];
+                    theServiceHoursInformationTypes = [];
                 }
             }
 
             [System.Serializable()]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-            public partial class additionalInformation {
+            public partial class additionalInformation : InformationAssociation {
+                public List<RefId> providesInformation { get; set; } = [];
+
+                [IgnoreDataMember()]
+                [Required()]
+                public String[] providesInformationInformationTypes { get; set; }
+                public override string Code => nameof(additionalInformation);
+
+                public override string[]? this[string role] => role switch
+                {
+                    "providesInformation" => providesInformationInformationTypes,
+                    _ => throw new InvalidOperationException(),
+                };
                 public additionalInformation() {
+                    providesInformationInformationTypes = [];
                 }
             }
         }
@@ -1245,6 +1390,7 @@ namespace S100Framework.DomainModel.S122 {
         using ComplexAttributes;
         using DomainModel;
         using System.Runtime.Serialization;
+        using S100Framework.DomainModel.S122.Associations.InformationAssociations;
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -1300,6 +1446,12 @@ namespace S100Framework.DomainModel.S122 {
             [IgnoreDataMember]
             public override string Code => nameof(AbstractRxN);
 
+            public static RelatedOrganisation RelatedOrganisation_theOrganisation() => new RelatedOrganisation
+            {
+                roleType = roleType.association,
+                theOrganisationInformationTypes = ["Authority"],
+                theInformationInformationTypes = ["AbstractRxN"],
+            };
             public AbstractRxN() {
             }
         }
@@ -1310,6 +1462,12 @@ namespace S100Framework.DomainModel.S122 {
             [IgnoreDataMember]
             public override string Code => nameof(NauticalInformation);
 
+            public static RelatedOrganisation RelatedOrganisation_theOrganisation() => new RelatedOrganisation
+            {
+                roleType = roleType.association,
+                theOrganisationInformationTypes = ["Authority"],
+                theInformationInformationTypes = ["AbstractRxN"],
+            };
             public NauticalInformation() {
             }
         }
@@ -1369,6 +1527,24 @@ namespace S100Framework.DomainModel.S122 {
             [IgnoreDataMember]
             public override string Code => nameof(Authority);
 
+            public static RelatedOrganisation RelatedOrganisation_theInformation() => new RelatedOrganisation
+            {
+                roleType = roleType.association,
+                theInformationInformationTypes = ["AbstractRxN"],
+                theOrganisationInformationTypes = ["Authority"],
+            };
+            public static AuthorityContact AuthorityContact_theContactDetails() => new AuthorityContact
+            {
+                roleType = roleType.association,
+                theContactDetailsInformationTypes = ["ContactDetails"],
+                theAuthorityInformationTypes = ["Authority"],
+            };
+            public static AuthorityHours AuthorityHours_theServiceHours() => new AuthorityHours
+            {
+                roleType = roleType.association,
+                theServiceHoursInformationTypes = ["ServiceHours"],
+                theAuthority_srvHrsInformationTypes = ["Authority"],
+            };
             public Authority() {
             }
         }
@@ -1397,6 +1573,12 @@ namespace S100Framework.DomainModel.S122 {
             [IgnoreDataMember]
             public override string Code => nameof(ContactDetails);
 
+            public static AuthorityContact AuthorityContact_theAuthority() => new AuthorityContact
+            {
+                roleType = roleType.association,
+                theAuthorityInformationTypes = ["Authority"],
+                theContactDetailsInformationTypes = ["ContactDetails"],
+            };
             public ContactDetails() {
             }
         }
@@ -1411,6 +1593,12 @@ namespace S100Framework.DomainModel.S122 {
             [IgnoreDataMember]
             public override string Code => nameof(NonStandardWorkingDay);
 
+            public static ExceptionalWorkday ExceptionalWorkday_theServiceHours_nsdy() => new ExceptionalWorkday
+            {
+                roleType = roleType.association,
+                theServiceHours_nsdyInformationTypes = ["ServiceHours"],
+                partialWorkingDayInformationTypes = ["NonStandardWorkingDay"],
+            };
             public NonStandardWorkingDay() {
             }
         }
@@ -1427,6 +1615,18 @@ namespace S100Framework.DomainModel.S122 {
             [IgnoreDataMember]
             public override string Code => nameof(ServiceHours);
 
+            public static AuthorityHours AuthorityHours_theAuthority_srvHrs() => new AuthorityHours
+            {
+                roleType = roleType.association,
+                theAuthority_srvHrsInformationTypes = ["Authority"],
+                theServiceHoursInformationTypes = ["ServiceHours"],
+            };
+            public static ExceptionalWorkday ExceptionalWorkday_partialWorkingDay() => new ExceptionalWorkday
+            {
+                roleType = roleType.association,
+                partialWorkingDayInformationTypes = ["NonStandardWorkingDay"],
+                theServiceHours_nsdyInformationTypes = ["ServiceHours"],
+            };
             public ServiceHours() {
                 scheduleByDayOfWeek = new();
                 information = new information()
@@ -1518,6 +1718,8 @@ namespace S100Framework.DomainModel.S122 {
         using InformationTypes;
         using DomainModel;
         using System.Runtime.Serialization;
+        using S100Framework.DomainModel.S122.Associations.InformationAssociations;
+        using S100Framework.DomainModel.S122.Associations.FeatureAssociations;
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -1545,6 +1747,16 @@ namespace S100Framework.DomainModel.S122 {
             [IgnoreDataMember]
             public override string Code => nameof(FeatureType);
 
+            public static AssociatedRxN AssociatedRxN_theRxN() => new AssociatedRxN
+            {
+                roleType = roleType.association,
+                theRxNInformationTypes = ["AbstractRxN"],
+            };
+            public static additionalInformation additionalInformation_providesInformation() => new additionalInformation
+            {
+                roleType = roleType.association,
+                providesInformationInformationTypes = ["NauticalInformation"],
+            };
             public FeatureType() {
                 interoperabilityIdentifier = string.Empty;
             }
@@ -1813,6 +2025,11 @@ namespace S100Framework.DomainModel.S122 {
             [IgnoreDataMember]
             public override string Code => nameof(MarineProtectedArea);
 
+            public static ProtectedAreaAuthority ProtectedAreaAuthority_responsibleAuthority() => new ProtectedAreaAuthority
+            {
+                roleType = roleType.association,
+                responsibleAuthorityInformationTypes = ["Authority"],
+            };
             public MarineProtectedArea() {
                 categoryOfMarineProtectedArea = new categoryOfMarineProtectedArea()
                 {
@@ -1834,6 +2051,11 @@ namespace S100Framework.DomainModel.S122 {
             [IgnoreDataMember]
             public override string Code => nameof(VesselTrafficServiceArea);
 
+            public static ServiceControl ServiceControl_controlAuthority() => new ServiceControl
+            {
+                roleType = roleType.association,
+                controlAuthorityInformationTypes = ["Authority"],
+            };
             public VesselTrafficServiceArea() {
             }
         }
