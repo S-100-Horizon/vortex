@@ -3,6 +3,7 @@ using S100Framework.Applications.S57.esri;
 using S100Framework.DomainModel;
 using S100Framework.DomainModel.S101;
 using S100Framework.DomainModel.S101.FeatureTypes;
+using VortexLoader;
 
 namespace S100Framework.Applications
 {
@@ -285,8 +286,15 @@ namespace S100Framework.Applications
                                 uwtroc.status = GetSingleStatus(current.STATUS);
                             }
 
-                              ;
-                            //uwtroc.reportedDate
+
+                            if (current.SORDAT != default) {
+                                if (DateHelper.TryConvertToDateOnly(current.SORDAT, out var dateOnly)) {
+                                    uwtroc.reportedDate = dateOnly;
+                                }
+                                else {
+                                    Logger.Current.DataError(current.OBJECTID.Value, tableName, current.LNAM, $"Cannot convert date {current.SORDAT}");
+                                }
+                            }
 
                             AddInformation(uwtroc.information, feature);
 
