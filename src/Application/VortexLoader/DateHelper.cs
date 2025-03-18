@@ -1,4 +1,5 @@
-﻿using System;
+﻿using S100Framework.DomainModel.S101.ComplexAttributes;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -21,6 +22,42 @@ namespace VortexLoader
 
             dateOnly = new DateOnly(year, month, day);
             return true;
+        }
+
+        public static fixedDateRange? GetFixedDateRange(string? dATSTA, string? dATEND) {
+            return null;
+        }
+
+        internal static bool TryGetFixedDateRange(string? start, string? end, out fixedDateRange? value) {
+            if (start != default) {
+                if (end != default) {
+                    if (DateHelper.TryConvertToDateOnly(end, out var dateEnd)) {
+                        if (DateHelper.TryConvertToDateOnly(start, out var dateStart)) {
+                            value = new fixedDateRange() {
+                                dateStart = dateStart,
+                                dateEnd = dateEnd
+                            };
+                            return true;
+                        }
+                        else {
+                            value = null;
+                            return false;
+                        }
+                    }
+                    else {
+                        value = null;
+                        return false;
+                    }
+                }
+                else {
+                    value = null;
+                    return false;
+                }
+            }
+            else {
+                value = null;
+                return false;
+            }
         }
     }
 }
