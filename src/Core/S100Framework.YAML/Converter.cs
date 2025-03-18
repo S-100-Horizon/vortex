@@ -44,8 +44,12 @@ namespace S100Framework.YAML
 
                 var propertyValue = property.GetValue(obj, null);
                 switch (property.PropertyType) {
+                    // Ensure strings are without newlines
                     case Type t when t == typeof(string):
-                        attributes.Add(new(property.Name, propertyValue?.ToString(), null, parentId));
+                        var stringval = propertyValue?.ToString();
+                        stringval = stringval?.Replace(System.Environment.NewLine, " ");
+
+                        attributes.Add(new(property.Name, stringval, null, parentId));
                         break;
 
                     // Ensure booleans as integers
@@ -86,8 +90,8 @@ namespace S100Framework.YAML
                         attributes.Add(new(property.Name, propertyValue?.ToString(), null, parentId));
                         break;
 
-                    default: 
-                            throw new ArgumentException("Invalid property type provided: {propertyType}", nameof(property.PropertyType));
+                    default:
+                        throw new ArgumentException("Invalid property type provided: {propertyType}", nameof(property.PropertyType));
                 }
             }
             return attributes;
@@ -114,7 +118,10 @@ namespace S100Framework.YAML
 
                 switch (itemType) {
                     case Type t when t == typeof(string):
-                        attributes.Add(new(propertyName, item.ToString(), null, parentId));
+                        var stringval = item?.ToString();
+
+                        stringval = stringval?.Replace(System.Environment.NewLine, " ");
+                        attributes.Add(new(propertyName, stringval, null, parentId));
                         break;
 
                     case Type t when t == typeof(bool):
