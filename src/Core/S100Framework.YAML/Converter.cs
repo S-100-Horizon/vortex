@@ -48,7 +48,7 @@ namespace S100Framework.YAML
                         attributes.Add(new(property.Name, propertyValue?.ToString(), null, parentId));
                         break;
 
-                    // Write booleans as 1 or 0
+                    // Ensure booleans as integers
                     case Type t when t == typeof(bool):
                         attributes.Add(new(property.Name, (bool)propertyValue! ? "1" : "0", null, parentId));
                         break;
@@ -60,13 +60,18 @@ namespace S100Framework.YAML
                         attributes.Add(new(property.Name, value.ToString(CultureInfo.InvariantCulture), null, parentId));
                         break;
 
+                    // Ensure no enums are sat to 0
                     case Type t when t.IsEnum:
+                        if (propertyValue?.ToString() == "0")
+                            propertyValue = null;
+
                         attributes.Add(new(property.Name, propertyValue?.ToString(), null, parentId));
                         break;
 
                     case Type t when t.IsPrimitive:
                         attributes.Add(new(property.Name, propertyValue?.ToString(), null, parentId));
                         break;
+
                     case Type t when typeof(IEnumerable).IsAssignableFrom(t):
                         if (propertyValue == null) continue;
                         attributes.AddRange(HandleCollection(property.Name, propertyValue, ref propertyId, parentId));
@@ -80,11 +85,11 @@ namespace S100Framework.YAML
                     case Type t when t.IsValueType:
                         attributes.Add(new(property.Name, propertyValue?.ToString(), null, parentId));
                         break;
-                    default:
-                        throw new ArgumentException("Invalid property type provided: {propertyType}", nameof(property.PropertyType));
+
+                    default: 
+                            throw new ArgumentException("Invalid property type provided: {propertyType}", nameof(property.PropertyType));
                 }
             }
-
             return attributes;
         }
         private static List<YamlAttributeItem> HandleComplexObject(object propertyValue, ref int propertyId, int? parentId) {

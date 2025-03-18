@@ -261,7 +261,7 @@ namespace TestS100Framework
                     S100Framework.DomainModel.S101.colour.Red,
                     S100Framework.DomainModel.S101.colour.White,
                 },
-                    exhibitionConditionOfLight =  S100Framework.DomainModel.S101.exhibitionConditionOfLight.Unknown,
+                    exhibitionConditionOfLight = S100Framework.DomainModel.S101.exhibitionConditionOfLight.Unknown,
                     featureName = new List<S100Framework.DomainModel.S101.ComplexAttributes.featureName> {
                     new S100Framework.DomainModel.S101.ComplexAttributes.featureName {
                         language = "eng",
