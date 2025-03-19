@@ -161,6 +161,7 @@ namespace S100Framework
                                                             .Replace("\n", " ");
 
                             classBuilder.AppendLine($"\t\t[System.ComponentModel.Description(\"{listedValueDefinition}\")]");
+                            classBuilder.AppendLine($"\t\t[EnumMember(Value = \"{listedValueLabel}\")] ");
                             classBuilder.AppendLine($"\t\t{e} = {(int)e},");
                             isFirst = false;
                         }
