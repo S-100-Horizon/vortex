@@ -101,16 +101,22 @@ namespace S100Framework.Applications
                     case 35: { // M_NSYS_NavigationalSystemOfMarks // Navigational System of Marks - region A and B globally
                             var instance = new NavigationalSystemOfMarks();
 
+                            marksNavigationalSystemOf? marsysConverted = null;
+
                             if (current.MARSYS.HasValue) {
                                 var marsys = Convert.ToInt32(current.MARSYS);
                                 if (marsys != default) {
-                                    instance.marksNavigationalSystemOf = marsys switch {
+                                    marsysConverted = marsys switch {
                                         1 => DomainModel.S101.marksNavigationalSystemOf.IalaA,
                                         2 => DomainModel.S101.marksNavigationalSystemOf.IalaB,
                                         -32767 => (DomainModel.S101.marksNavigationalSystemOf)(-1),
                                         _ => throw new IndexOutOfRangeException(),
                                     };
                                 }
+                            }
+
+                            if (marsysConverted.HasValue && marsysConverted.Value != marksNavigationalSystemOf.Unknown) {
+                                instance.marksNavigationalSystemOf = marsysConverted.Value;
                             }
 
                             AddInformation(instance.information, feature);
