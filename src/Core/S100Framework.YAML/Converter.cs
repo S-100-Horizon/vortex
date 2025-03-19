@@ -7,24 +7,21 @@ using YamlDotNet.Core.Events;
 using System.Reflection;
 using System.Runtime.Serialization;
 using System.Globalization;
-using System;
+using System.Security.AccessControl;
 
 namespace S100Framework.YAML
 {
     public static class Converter
     {
         public static string Serialize(object dataset) => Serializer.Serialize(dataset);
-        //public static object? Deserialize(string yaml) => Deserializer.Deserialize(yaml);
         private record YamlAttributeItem(string Name, string? Value, int? Id, int? Parent);
 
         private static readonly ISerializer Serializer = new SerializerBuilder()
            .WithNamingConvention(PascalCaseNamingConvention.Instance)
            .ConfigureDefaultValuesHandling(DefaultValuesHandling.OmitDefaults)
            .WithIndentedSequences()
-
            .DisableAliases()
-           .WithTypeConverter(new NodeConverter())                   // Custom type converter for objects of Node                                                  //.WithTypeConverter(new InformationNodeConverter())               // Custom type converter for objects of InformationNode
-                                                                     //.WithTypeConverter(new EnumMemberNamingConvention())
+           .WithTypeConverter(new NodeConverter())                  // Custom type converter for objects of Node
            .WithTypeConverter(new BooleanAsNumberConverter())       // Custom type converter for booleans
            .Build();
 
@@ -46,58 +43,242 @@ namespace S100Framework.YAML
                     continue;
 
                 var propertyValue = property.GetValue(obj, null);
-                switch (property.PropertyType) {
-                    // Ensure strings are without newlines
-                    case Type t when t == typeof(string):
-                        var stringval = propertyValue?.ToString();
-                        stringval = stringval?.Replace(System.Environment.NewLine, " ");
-
-                        attributes.Add(new(property.Name, stringval, null, parentId));
-                        break;
-
-                    // Ensure booleans as integers
-                    case Type t when t == typeof(bool):
-                        attributes.Add(new(property.Name, (bool)propertyValue! ? "1" : "0", null, parentId));
-                        break;
-
-                    // Ensure decimals with point 2.0
-                    case Type t when t == typeof(decimal) || Nullable.GetUnderlyingType(t) == typeof(decimal):
-                        var parsed = (decimal?)propertyValue!;
-
-                        attributes.Add(new(property.Name, parsed?.ToString(CultureInfo.InvariantCulture), null, parentId));
-                        break;
-
-                    // Ensure no enums are sat to 0
-                    case Type t when t.IsEnum || Nullable.GetUnderlyingType(t)?.IsEnum == true:
-                        var enumvalue = ToEnumString(propertyValue);
-
-                        attributes.Add(new(property.Name, enumvalue, null, parentId));
-                        break;
-
-                    case Type t when t.IsPrimitive:
-                        attributes.Add(new(property.Name, propertyValue?.ToString(), null, parentId));
-                        break;
-
-                    case Type t when typeof(IEnumerable).IsAssignableFrom(t):
-                        if (propertyValue == null) continue;
-                        attributes.AddRange(HandleCollection(property.Name, propertyValue, ref propertyId, parentId));
-                        break;
-
-                    case Type t when t.IsClass:
-                        if (propertyValue == null) continue;
-                        attributes.AddRange(HandleComplexObject(propertyValue, ref propertyId, parentId));
-                        break;
-
-                    case Type t when t.IsValueType:
-                        attributes.Add(new(property.Name, propertyValue?.ToString(), null, parentId));
-                        break;
-
-                    default:
-                        throw new ArgumentException("Invalid property type provided: {propertyType}", nameof(property.PropertyType));
+                try {
+                    attributes.BuildAttributeItem(propertyValue, property.Name, property.PropertyType, ref propertyId, parentId);
+                }
+                catch (Exception ex) {
+                    Console.WriteLine(ex.Message);
                 }
             }
             return attributes;
         }
+
+        private static void BuildAttributeItem(this List<YamlAttributeItem> attributes, object? propertyValue, string propertyName, Type propertyType, ref int propertyId, int? parentId) {
+            if (propertyValue == null)
+                return;
+
+            if (propertyName == "colour")
+                Console.WriteLine();
+            var typed = Nullable.GetUnderlyingType(propertyType) ?? propertyType;
+            switch (typed) {
+                // Ensure strings are without newlines
+                case Type t when t == typeof(string):              
+                    var stringval = propertyValue?.ToString();
+                    stringval = stringval?.Replace(System.Environment.NewLine, " ");
+
+                    attributes.Add(new(propertyName, stringval, null, parentId));
+                    break;
+
+                // Ensure booleans as integers
+                case Type t when t == typeof(bool):               
+                    var booleanValue = propertyValue is bool b ? (b ? "1" : "0") : null;
+
+                    attributes.Add(new(propertyName, booleanValue, null, parentId));
+                    break;
+
+                // Ensure decimals with point 2.0
+                case Type t when t == typeof(decimal):             
+                    var parsed = (decimal?)propertyValue!;
+
+                    attributes.Add(new(propertyName, parsed?.ToString(CultureInfo.InvariantCulture), null, parentId));
+                    break;
+
+                // Ensure no enums are sat to 0
+                case Type t when t.IsEnum:                         
+                    var enumvalue = ToEnumString(propertyValue);
+                    if (enumvalue == null)
+                        break;
+
+                    if (enumvalue == "Unknown")
+                        enumvalue = null;
+
+                    attributes.Add(new(propertyName, enumvalue, null, parentId));
+                    break;
+
+                case Type t when t.IsPrimitive:
+                    attributes.Add(new(propertyName, propertyValue?.ToString(), null, parentId));
+                    break;
+
+                case Type t when typeof(IEnumerable).IsAssignableFrom(t):
+                    if (propertyValue == null) break;
+                    if (propertyValue is not IEnumerable collection) break;
+
+                    foreach (var item in collection!) {
+                        var type = item.GetType();
+                        type = Nullable.GetUnderlyingType(type) ?? type;
+
+                        attributes.BuildAttributeItem(item, type.Name, type, ref propertyId, parentId);
+                    }
+
+                    break;
+
+                case Type t when t.IsClass:
+                    if (propertyValue == null) break;
+
+                    // Add root object with ID and value = null
+                    attributes.Add(new(t.Name, null, propertyId, parentId));
+
+                    parentId = propertyId;
+                    propertyId++;
+
+                    var properties = t.GetProperties();
+
+                    foreach (var propInfo in properties) {
+                        var propVal = propInfo.GetValue(propertyValue);
+                        var objectName = propInfo.Name;
+
+                        var propType = propInfo.PropertyType;
+                        propType = Nullable.GetUnderlyingType(propType) ?? propType;
+
+                        attributes.BuildAttributeItem(propVal, objectName, propType, ref propertyId, parentId);
+                    }
+
+                    break;
+
+                case Type t when t.IsValueType:
+                    attributes.Add(new(propertyName, propertyValue?.ToString(), null, parentId));
+                    break;
+
+                default:
+                    throw new ArgumentException("Invalid property type provided: {propertyType}", nameof(propertyType));
+            }
+        }
+
+
+        //private static void BuildAttributeItem(this List<YamlAttributeItem> attributes, object? propertyValue, PropertyInfo property, int propertyId, int? parentId) {
+        //    switch (property.PropertyType) {
+        //        // Ensure strings are without newlines
+        //        case Type t when t == typeof(string):
+        //            var stringval = propertyValue?.ToString();
+        //            stringval = stringval?.Replace(System.Environment.NewLine, " ");
+
+        //            attributes.Add(new(property.Name, stringval, null, parentId));
+        //            break;
+
+        //        // Ensure booleans as integers
+        //        case Type t when t == typeof(bool) || Nullable.GetUnderlyingType(t) == typeof(bool):
+        //            var booleanValue = propertyValue is bool b ? (b ? "1" : "0") : null;
+
+        //            attributes.Add(new(property.Name, booleanValue, null, parentId));
+        //            break;
+
+        //        // Ensure decimals with point 2.0
+        //        case Type t when t == typeof(decimal) || Nullable.GetUnderlyingType(t) == typeof(decimal):
+        //            var parsed = (decimal?)propertyValue!;
+
+        //            attributes.Add(new(property.Name, parsed?.ToString(CultureInfo.InvariantCulture), null, parentId));
+        //            break;
+
+        //        // Ensure no enums are sat to 0
+        //        case Type t when t.IsEnum || Nullable.GetUnderlyingType(t)?.IsEnum == true:
+        //            var enumvalue = ToEnumString(propertyValue);
+
+        //            attributes.Add(new(property.Name, enumvalue, null, parentId));
+        //            break;
+
+        //        case Type t when t.IsPrimitive:
+        //            attributes.Add(new(property.Name, propertyValue?.ToString(), null, parentId));
+        //            break;
+
+        //        case Type t when typeof(IEnumerable).IsAssignableFrom(t):
+        //            if (propertyValue == null) break;
+        //            var collection = propertyValue as IEnumerable;
+
+        //            foreach (var item in collection!) {
+        //                var type = item.GetType();
+        //                var properties = type.GetProperties();
+        //                attributes.BuildAttributeItem(item, property, propertyId, parentId);
+        //                //var itemType = item.GetType();
+        //            }
+
+        //            //attributes.AddRange(HandleCollection(property.Name, propertyValue, ref propertyId, parentId));
+        //            break;
+
+        //        case Type t when t.IsClass:
+        //            if (propertyValue == null) break;
+        //            attributes.AddRange(HandleComplexObject(propertyValue, ref propertyId, parentId));
+        //            break;
+
+        //        case Type t when t.IsValueType:
+        //            var underlyingType = Nullable.GetUnderlyingType(t);
+        //            if (underlyingType != null)
+        //                Console.WriteLine();
+        //            attributes.Add(new(property.Name, propertyValue?.ToString(), null, parentId));
+        //            break;
+
+        //        default:
+        //            throw new ArgumentException("Invalid property type provided: {propertyType}", nameof(property.PropertyType));
+        //    }
+        //}
+
+        //private static List<YamlAttributeItem> FlattenAttributesRecursively_(object obj, ref int propertyId, int? parentId = null) {
+        //    var attributes = new List<YamlAttributeItem>();
+
+        //    var type = obj.GetType();
+        //    var properties = type.GetProperties();
+
+        //    foreach (var property in properties) {
+        //        if (property.GetCustomAttribute<IgnoreDataMemberAttribute>(true) != null)   // We dont serialize those
+        //            continue;
+
+        //        var propertyValue = property.GetValue(obj, null);
+        //        switch (property.PropertyType) {
+        //            // Ensure strings are without newlines
+        //            case Type t when t == typeof(string):
+        //                var stringval = propertyValue?.ToString();
+        //                stringval = stringval?.Replace(System.Environment.NewLine, " ");
+
+        //                attributes.Add(new(property.Name, stringval, null, parentId));
+        //                break;
+
+        //            // Ensure booleans as integers
+        //            case Type t when t == typeof(bool) || Nullable.GetUnderlyingType(t) == typeof(bool):
+        //                var booleanValue = propertyValue is bool b ? (b ? "1" : "0") : null;
+
+        //                attributes.Add(new(property.Name, booleanValue, null, parentId));
+        //                break;
+
+        //            // Ensure decimals with point 2.0
+        //            case Type t when t == typeof(decimal) || Nullable.GetUnderlyingType(t) == typeof(decimal):
+        //                var parsed = (decimal?)propertyValue!;
+
+        //                attributes.Add(new(property.Name, parsed?.ToString(CultureInfo.InvariantCulture), null, parentId));
+        //                break;
+
+        //            // Ensure no enums are sat to 0
+        //            case Type t when t.IsEnum || Nullable.GetUnderlyingType(t)?.IsEnum == true:
+        //                var enumvalue = ToEnumString(propertyValue);
+
+        //                attributes.Add(new(property.Name, enumvalue, null, parentId));
+        //                break;
+
+        //            case Type t when t.IsPrimitive:
+        //                attributes.Add(new(property.Name, propertyValue?.ToString(), null, parentId));
+        //                break;
+
+        //            case Type t when typeof(IEnumerable).IsAssignableFrom(t):
+        //                if (propertyValue == null) continue;
+        //                attributes.AddRange(HandleCollection(property.Name, propertyValue, ref propertyId, parentId));
+        //                break;
+
+        //            case Type t when t.IsClass:
+        //                if (propertyValue == null) continue;
+        //                attributes.AddRange(HandleComplexObject(propertyValue, ref propertyId, parentId));
+        //                break;
+
+        //            case Type t when t.IsValueType:
+        //                var underlyingType = Nullable.GetUnderlyingType(t);
+        //                if (underlyingType != null)
+        //                    Console.WriteLine();
+        //                attributes.Add(new(property.Name, propertyValue?.ToString(), null, parentId));
+        //                break;
+
+        //            default:
+        //                throw new ArgumentException("Invalid property type provided: {propertyType}", nameof(property.PropertyType));
+        //        }
+        //    }
+        //    return attributes;
+        //}
 
         public static string? ToEnumString(object? enumValue) {
             if (enumValue == null) return null;
@@ -182,6 +363,57 @@ namespace S100Framework.YAML
 
             return attributes;
         }
+        //private static List<YamlAttributeItem> HandleCollection(string propertyName, object propertyValue, ref int propertyId, int? parentId) {
+        //    var collection = propertyValue as IEnumerable;
+        //    var attributes = new List<YamlAttributeItem>();
+        //    foreach (var item in collection!) {
+        //        var itemType = item.GetType();
+
+        //        switch (itemType) {
+        //            case Type t when t == typeof(string):
+        //                var stringval = item?.ToString();
+
+        //                stringval = stringval?.Replace(System.Environment.NewLine, " ");
+        //                attributes.Add(new(propertyName, stringval, null, parentId));
+        //                break;
+
+        //            case Type t when t == typeof(bool):
+        //                attributes.Add(new(propertyName, (bool)item! ? "1" : "0", null, parentId));
+        //                break;
+
+        //            case Type t when t == typeof(decimal) || Nullable.GetUnderlyingType(t) == typeof(decimal):
+        //                var parsed = (decimal?)item!;
+
+        //                attributes.Add(new(propertyName, parsed?.ToString(CultureInfo.InvariantCulture), null, parentId));
+        //                break;
+
+        //            case Type t when t.IsEnum:
+        //                string? enumvalue = null;
+        //                if (item?.ToString() != "0")
+        //                    enumvalue = ToEnumString(item);
+        //                attributes.Add(new(propertyName, enumvalue, null, parentId));
+        //                break;
+
+        //            case Type t when t.IsPrimitive:
+        //                attributes.Add(new(propertyName, item.ToString(), null, parentId));
+        //                break;
+
+        //            case Type t when t.IsClass:
+        //                attributes.AddRange(HandleComplexObject(item, ref propertyId, parentId));
+        //                break;
+
+        //            case Type t when t.IsValueType:
+        //                attributes.Add(new(propertyName, item?.ToString(), null, parentId));
+        //                break;
+
+        //            case Type t when typeof(IEnumerable).IsAssignableFrom(t):       // no support for multidimensional arrays
+        //            default:
+        //                throw new ArgumentException("Invalid property type provided: {propertyType}", nameof(itemType));
+        //        }
+        //    }
+
+        //    return attributes;
+        //}
 
         private class NodeConverter : IYamlTypeConverter
         {
@@ -225,7 +457,6 @@ namespace S100Framework.YAML
                 emitter.Emit(new SequenceEnd());
             }
         }
-
         public class BooleanAsNumberConverter : IYamlTypeConverter
         {
             public bool Accepts(Type type) => type == typeof(bool) || type == typeof(Boolean);
