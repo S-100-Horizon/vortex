@@ -11,6 +11,39 @@ namespace S100Framework.Applications
     internal static partial class ImporterNIS {
 
 
+        private static object CreateRadarTransponderbeacon(AidsToNavigationP current, InsertCursor insert, RowBuffer buffer, Feature feature, string tableName, int convertedCount) {
+            //if (current.FCSUBTYPE != 65)
+            //    throw new ArgumentOutOfRangeException($"Illegal subtype for transponder beacon {current}");
+
+            var instance = new RadarTransponderBeacon();
+
+            if (current.CATRTB != null) {
+                instance.categoryOfRadarTransponderBeacon = EnumHelper.GetEnumValue<categoryOfRadarTransponderBeacon>(current.CATRTB);
+            }
+
+            if (current.PLTS_COMP_SCALE != default) {
+                instance.scaleMinimum = current.PLTS_COMP_SCALE;
+            }
+
+            if (current.STATUS != default) {
+                instance.status = GetStatus(current.STATUS);
+            }
+
+            instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
+
+            AddInformation(instance.information, feature);
+            buffer["ps"] = ps101;
+
+            buffer["code"] = instance.GetType().Name;
+            buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance);
+            buffer["shape"] = current.SHAPE;
+            insert.Insert(buffer);
+            Logger.Current.DataObject(current.OBJECTID.Value, tableName, current.LNAM, System.Text.Json.JsonSerializer.Serialize(instance));
+            convertedCount++;
+            return instance;
+        }
+
+
 
         private static FeatureNode CreateLight(AidsToNavigationP current, InsertCursor insert, RowBuffer buffer, Feature feature, string tableName, int convertedCount) {
 
@@ -427,7 +460,10 @@ namespace S100Framework.Applications
                                         }
                                         else {
                                             throw new NotImplementedException($"{plfrel.PLTS_Frel.DEST_SUB?.ToLower()} ");
-                                        } 
+                                        }
+                                    }
+                                    else {
+                                        throw new NotImplementedException($"{plfrel.PLTS_Frel.DEST_SUB?.ToLower()} ");
                                     }
                                 }
                             }
@@ -615,6 +651,9 @@ namespace S100Framework.Applications
                                             throw new NotImplementedException($"{plfrel.PLTS_Frel.DEST_SUB?.ToLower()} ");
                                         }
                                     }
+                                    else {
+                                        throw new NotImplementedException($"{plfrel.PLTS_Frel.DEST_SUB?.ToLower()} ");
+                                    }
                                 }
                             }
 
@@ -801,6 +840,9 @@ namespace S100Framework.Applications
                                             throw new NotImplementedException($"{plfrel.PLTS_Frel.DEST_SUB?.ToLower()} ");
                                         }
                                     }
+                                    else {
+                                        throw new NotImplementedException($"{plfrel.PLTS_Frel.DEST_SUB?.ToLower()} ");
+                                    }
                                 }
                             }
 
@@ -986,6 +1028,9 @@ namespace S100Framework.Applications
                                         else {
                                             throw new NotImplementedException($"{plfrel.PLTS_Frel.DEST_SUB?.ToLower()} ");
                                         }
+                                    }
+                                    else {
+                                        throw new NotImplementedException($"{plfrel.PLTS_Frel.DEST_SUB?.ToLower()} ");
                                     }
                                 }
                             }
@@ -1176,6 +1221,9 @@ namespace S100Framework.Applications
                                             throw new NotImplementedException($"{plfrel.PLTS_Frel.DEST_SUB?.ToLower()} ");
                                         }
                                     }
+                                    else {
+                                        throw new NotImplementedException($"{plfrel.PLTS_Frel.DEST_SUB?.ToLower()} ");
+                                    }
                                 }
                             }
 
@@ -1347,6 +1395,9 @@ namespace S100Framework.Applications
                                             throw new NotImplementedException($"{plfrel.PLTS_Frel.DEST_SUB?.ToLower()} ");
                                         }
                                     }
+                                    else {
+                                        throw new NotImplementedException($"{plfrel.PLTS_Frel.DEST_SUB?.ToLower()} ");
+                                    }
                                 }
                             }
 
@@ -1476,6 +1527,9 @@ namespace S100Framework.Applications
                                         else {
                                             throw new NotImplementedException($"{plfrel.PLTS_Frel.DEST_SUB?.ToLower()} ");
                                         }
+                                    }
+                                    else {
+                                        throw new NotImplementedException($"{plfrel.PLTS_Frel.DEST_SUB?.ToLower()} ");
                                     }
                                 }
                             }
@@ -1642,6 +1696,9 @@ namespace S100Framework.Applications
                                             throw new NotImplementedException($"{plfrel.PLTS_Frel.DEST_SUB?.ToLower()} ");
                                         }
                                     }
+                                    else {
+                                        throw new NotImplementedException($"{plfrel.PLTS_Frel.DEST_SUB?.ToLower()} ");
+                                    }
                                 }
                             }
 
@@ -1798,10 +1855,16 @@ namespace S100Framework.Applications
                                         }
                                         else if (plfrel.PLTS_Frel.DEST_SUB?.ToLower() == "rtpbcn_radartransponderbeacon") {
                                             // TODO: Build rtpbcn_radartransponderbeacon
+                                            var radarTransponderBeacon = CreateRadarTransponderbeacon(relatedAidsToNavigationP, insert, buffer, feature, tableName, convertedCount);
+                                            
+                                            // TODO: create relation
                                         }
                                         else {
                                             throw new NotImplementedException($"{plfrel.PLTS_Frel.DEST_SUB?.ToLower()} ");
                                         }
+                                    }
+                                    else {
+                                        throw new NotImplementedException($"{plfrel.PLTS_Frel.DEST_SUB?.ToLower()} ");
                                     }
                                 }
                             }
@@ -1962,6 +2025,9 @@ namespace S100Framework.Applications
                                             throw new NotImplementedException($"{plfrel.PLTS_Frel.DEST_SUB?.ToLower()} ");
                                         }
                                     }
+                                    else {
+                                        throw new NotImplementedException($"{plfrel.PLTS_Frel.DEST_SUB?.ToLower()} ");
+                                    }
                                 }
                             }
 
@@ -2118,6 +2184,9 @@ namespace S100Framework.Applications
                                             throw new NotImplementedException($"{plfrel.PLTS_Frel.DEST_SUB?.ToLower()} ");
                                         }
                                     }
+                                    else {
+                                        throw new NotImplementedException($"{plfrel.PLTS_Frel.DEST_SUB?.ToLower()} ");
+                                    }
                                 }
                             }
 
@@ -2254,7 +2323,11 @@ namespace S100Framework.Applications
                                             throw new NotImplementedException($"{plfrel.PLTS_Frel.DEST_SUB?.ToLower()} ");
                                         }
                                     }
+                                    else {
+                                        throw new NotImplementedException($"{plfrel.PLTS_Frel.DEST_SUB?.ToLower()} ");
+                                    }
                                 }
+
                             }
 
                             //if (!topmarkDaymarkHasValue && instance.topmark != null) {
@@ -2370,6 +2443,9 @@ namespace S100Framework.Applications
                                         else {
                                             throw new NotImplementedException($"{plfrel.PLTS_Frel.DEST_SUB?.ToLower()} ");
                                         }
+                                    }
+                                    else {
+                                        throw new NotImplementedException($"{plfrel.PLTS_Frel.DEST_SUB?.ToLower()} ");
                                     }
                                 }
                             }
@@ -2523,6 +2599,9 @@ namespace S100Framework.Applications
                                             throw new NotImplementedException($"{plfrel.PLTS_Frel.DEST_SUB?.ToLower()} ");
                                         }
                                     }
+                                    else {
+                                        throw new NotImplementedException($"{plfrel.PLTS_Frel.DEST_SUB?.ToLower()} ");
+                                    }
                                 }
                             }
 
@@ -2660,6 +2739,9 @@ namespace S100Framework.Applications
                                             throw new NotImplementedException($"{plfrel.PLTS_Frel.DEST_SUB?.ToLower()} ");
                                         }
                                     }
+                                    else {
+                                        throw new NotImplementedException($"{plfrel.PLTS_Frel.DEST_SUB?.ToLower()} ");
+                                    }
                                 }
                             }
 
@@ -2780,6 +2862,9 @@ namespace S100Framework.Applications
                                             throw new NotImplementedException($"{plfrel.PLTS_Frel.DEST_SUB?.ToLower()} ");
                                         }
                                     }
+                                    else {
+                                        throw new NotImplementedException($"{plfrel.PLTS_Frel.DEST_SUB?.ToLower()} ");
+                                    }
                                 }
                             }
 
@@ -2874,6 +2959,9 @@ namespace S100Framework.Applications
                                         else {
                                             throw new NotImplementedException($"{plfrel.PLTS_Frel.DEST_SUB?.ToLower()} ");
                                         }
+                                    }
+                                    else {
+                                        throw new NotImplementedException($"{plfrel.PLTS_Frel.DEST_SUB?.ToLower()} ");
                                     }
                                 }
                             }
@@ -2985,6 +3073,9 @@ namespace S100Framework.Applications
                                         else {
                                             throw new NotImplementedException($"{plfrel.PLTS_Frel.DEST_SUB?.ToLower()} ");
                                         }
+                                    }
+                                    else {
+                                        throw new NotImplementedException($"{plfrel.PLTS_Frel.DEST_SUB?.ToLower()} ");
                                     }
                                 }
                             }
@@ -3106,6 +3197,9 @@ namespace S100Framework.Applications
                                             throw new NotImplementedException($"{plfrel.PLTS_Frel.DEST_SUB?.ToLower()} ");
                                         }
                                     }
+                                    else {
+                                        throw new NotImplementedException($"{plfrel.PLTS_Frel.DEST_SUB?.ToLower()} ");
+                                    }
                                 }
                             }
 
@@ -3218,6 +3312,9 @@ namespace S100Framework.Applications
                                             throw new NotImplementedException($"{plfrel.PLTS_Frel.DEST_SUB?.ToLower()} ");
                                         }
                                     }
+                                    else {
+                                        throw new NotImplementedException($"{plfrel.PLTS_Frel.DEST_SUB?.ToLower()} ");
+                                    }
                                 }
                             }
 
@@ -3274,7 +3371,6 @@ namespace S100Framework.Applications
             }
             Logger.Current.DataTotalCount(tableName, recordCount, convertedCount);
         }
-
 
     }
 }
