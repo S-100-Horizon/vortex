@@ -7,6 +7,7 @@ using YamlDotNet.Core.Events;
 using System.Reflection;
 using System.Runtime.Serialization;
 using System.Globalization;
+using System;
 
 namespace S100Framework.YAML
 {
@@ -20,8 +21,10 @@ namespace S100Framework.YAML
            .WithNamingConvention(PascalCaseNamingConvention.Instance)
            .ConfigureDefaultValuesHandling(DefaultValuesHandling.OmitDefaults)
            .WithIndentedSequences()
+
            .DisableAliases()
            .WithTypeConverter(new NodeConverter())                   // Custom type converter for objects of Node                                                  //.WithTypeConverter(new InformationNodeConverter())               // Custom type converter for objects of InformationNode
+                                                                     //.WithTypeConverter(new EnumMemberNamingConvention())
            .WithTypeConverter(new BooleanAsNumberConverter())       // Custom type converter for booleans
            .Build();
 
@@ -58,18 +61,17 @@ namespace S100Framework.YAML
                         break;
 
                     // Ensure decimals with point 2.0
-                    case Type t when t == typeof(decimal):
-                        var value = (decimal)propertyValue!;
+                    case Type t when t == typeof(decimal) || Nullable.GetUnderlyingType(t) == typeof(decimal):
+                        var parsed = (decimal?)propertyValue!;
 
-                        attributes.Add(new(property.Name, value.ToString(CultureInfo.InvariantCulture), null, parentId));
+                        attributes.Add(new(property.Name, parsed?.ToString(CultureInfo.InvariantCulture), null, parentId));
                         break;
 
                     // Ensure no enums are sat to 0
-                    case Type t when t.IsEnum:
-                        if (propertyValue?.ToString() == "0")
-                            propertyValue = null;
+                    case Type t when t.IsEnum || Nullable.GetUnderlyingType(t)?.IsEnum == true:
+                        var enumvalue = ToEnumString(propertyValue);
 
-                        attributes.Add(new(property.Name, propertyValue?.ToString(), null, parentId));
+                        attributes.Add(new(property.Name, enumvalue, null, parentId));
                         break;
 
                     case Type t when t.IsPrimitive:
@@ -96,6 +98,25 @@ namespace S100Framework.YAML
             }
             return attributes;
         }
+
+        public static string? ToEnumString(object? enumValue) {
+            if (enumValue == null) return null;
+            if (enumValue.ToString() == "0") return null;
+
+            var enumType = enumValue.GetType();
+
+            if (!enumType.IsEnum) throw new ArgumentException($"Provided value is not an enum: {enumValue}");
+
+            var name = Enum.GetName(enumType, enumValue!);
+
+            if (name == null) throw new ArgumentException($"Invalid enum value: {enumValue}");
+
+            var field = enumType.GetField(name);
+            var enumMemberAttribute = field?.GetCustomAttribute<EnumMemberAttribute>();
+
+            return enumMemberAttribute?.Value ?? name; // Fallback to the enum name
+        }
+
         private static List<YamlAttributeItem> HandleComplexObject(object propertyValue, ref int propertyId, int? parentId) {
             var name = propertyValue.GetType().Name;
 
@@ -128,14 +149,17 @@ namespace S100Framework.YAML
                         attributes.Add(new(propertyName, (bool)item! ? "1" : "0", null, parentId));
                         break;
 
-                    case Type t when t == typeof(decimal):
-                        var value = (decimal)item!;
+                    case Type t when t == typeof(decimal) || Nullable.GetUnderlyingType(t) == typeof(decimal):
+                        var parsed = (decimal?)item!;
 
-                        attributes.Add(new(propertyName, value.ToString(CultureInfo.InvariantCulture), null, parentId));
+                        attributes.Add(new(propertyName, parsed?.ToString(CultureInfo.InvariantCulture), null, parentId));
                         break;
 
                     case Type t when t.IsEnum:
-                        attributes.Add(new(propertyName, item?.ToString(), null, parentId));
+                        string? enumvalue = null;
+                        if (item?.ToString() != "0")
+                            enumvalue = ToEnumString(item);
+                        attributes.Add(new(propertyName, enumvalue, null, parentId));
                         break;
 
                     case Type t when t.IsPrimitive:

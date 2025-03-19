@@ -17,7 +17,6 @@ using System.Collections;
 
 namespace TestS100Framework
 {
-    using S100Framework.YAML;
     public class UnitTestYAML
     {
         private readonly ITestOutputHelper output;
@@ -258,16 +257,16 @@ namespace TestS100Framework
                 Prim = S100Framework.YAML.Primitive.Surface,
                 Attributes = new LightAllAround {
                     colour = new List<S100Framework.DomainModel.S101.colour> {
-                    S100Framework.DomainModel.S101.colour.Red,
-                    S100Framework.DomainModel.S101.colour.White,
-                },
-                    exhibitionConditionOfLight = S100Framework.DomainModel.S101.exhibitionConditionOfLight.Unknown,
-                    featureName = new List<S100Framework.DomainModel.S101.ComplexAttributes.featureName> {
-                    new S100Framework.DomainModel.S101.ComplexAttributes.featureName {
-                        language = "eng",
-                        name = "Light E",
+                        S100Framework.DomainModel.S101.colour.Red,
+                        S100Framework.DomainModel.S101.colour.White,
                     },
-                },
+                    exhibitionConditionOfLight = S100Framework.DomainModel.S101.exhibitionConditionOfLight.LightShownWithoutChangeOfCharacter,
+                    featureName = new List<S100Framework.DomainModel.S101.ComplexAttributes.featureName> {
+                        new S100Framework.DomainModel.S101.ComplexAttributes.featureName {
+                            language = "eng",
+                            name = "Light E",
+                        },
+                    },
                     height = 54,
                     rhythmOfLight = new S100Framework.DomainModel.S101.ComplexAttributes.rhythmOfLight {
                         lightCharacteristic = S100Framework.DomainModel.S101.lightCharacteristic.ContinuousUltraQuickFlashing,
@@ -277,6 +276,32 @@ namespace TestS100Framework
                         signalPeriod = 5,
                     },
                     valueOfNominalRange = 9,
+                }
+            };
+
+            dataset.AddFeature(feature);
+
+            var yaml = S100Framework.YAML.Converter.Serialize(dataset);
+
+            System.Diagnostics.Debugger.Break();
+        }
+
+
+        [Fact]
+        public void Test_FeatureDecimal() {
+            var dataset = new S100Framework.YAML.Dataset {
+                CellName = "101AA00DS0031.000",
+                Comment = "S-101 Test Dataset 031",
+                Edition = 1,
+                FCVer = "2.0",
+            };
+
+            var feature = new S100Framework.YAML.Feature() {
+                Name = "QualityOfBathymetricData",
+                Foid = "1810:3:2",
+                Prim = S100Framework.YAML.Primitive.Surface,
+                Attributes = new SpecialPurposeGeneralBeacon {
+                    verticalLength = 4.5m
                 }
             };
 
