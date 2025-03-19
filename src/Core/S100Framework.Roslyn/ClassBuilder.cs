@@ -63,6 +63,7 @@ namespace S100Framework
             classBuilder.AppendLine("using System;");
             classBuilder.AppendLine("using System.Collections.Immutable;");
             classBuilder.AppendLine("using System.Linq;");
+            classBuilder.AppendLine("using System.Runtime.Serialization;");
             classBuilder.AppendLine();
             classBuilder.AppendLine("#nullable enable");
             classBuilder.AppendLine();
@@ -176,6 +177,7 @@ namespace S100Framework
                                                             .Replace("\n", " ");
 
                             classBuilder.AppendLine($"\t\t[System.ComponentModel.Description(\"{listedValueDefinition}\")]");
+                            classBuilder.AppendLine($"\t\t[EnumMember(Value = \"{listedValueLabel}\")] ");
                             classBuilder.AppendLine($"\t\t{e} = {(int)e},");
                             isFirst = false;
                         }

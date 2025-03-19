@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Immutable;
 using System.Linq;
+using System.Runtime.Serialization;
 
 #nullable enable
 namespace S100Framework.DomainModel.S124 {
@@ -17,10 +18,13 @@ namespace S100Framework.DomainModel.S124 {
     [System.Serializable()]
     public enum textType : int {
         [System.ComponentModel.Description("The individual name of a feature.")]
+        [EnumMember(Value = "Name")]
         Name = 1,
         [System.ComponentModel.Description("The distinct character, such as fixed, flashing, or occulting, which is given to each light to avoid confusion with neighbouring ones.")]
+        [EnumMember(Value = "Light Characteristic")]
         LightCharacteristic = 2,
         [System.ComponentModel.Description("Unknown value.")]
+        [EnumMember(Value = "Unknown")]
         Unknown = -1,
     }
 
@@ -28,12 +32,16 @@ namespace S100Framework.DomainModel.S124 {
     [System.Serializable()]
     public enum nameUsage : int {
         [System.ComponentModel.Description("The name is intended to be displayed when the end-user system is set to the default name/text display setting.")]
+        [EnumMember(Value = "Default Name Display")]
         DefaultNameDisplay = 1,
         [System.ComponentModel.Description("The name is intended to be displayed when the end-user system is set to an alternate name/text display setting, for example an alternate language.")]
+        [EnumMember(Value = "Alternate Name Display")]
         AlternateNameDisplay = 2,
         [System.ComponentModel.Description("The name or text is not intended to be displayed.")]
+        [EnumMember(Value = "No Chart Display")]
         NoChartDisplay = 3,
         [System.ComponentModel.Description("Unknown value.")]
+        [EnumMember(Value = "Unknown")]
         Unknown = -1,
     }
 
@@ -45,88 +53,130 @@ namespace S100Framework.DomainModel.S124 {
 #pragma warning restore CS8981
     {
         [System.ComponentModel.Description("An area within which anchoring is not permitted.")]
+        [EnumMember(Value = "Anchoring Prohibited")]
         AnchoringProhibited = 1,
         [System.ComponentModel.Description("A specified area designated by appropriate authority, within which anchoring is restricted in accordance with certain specified conditions.")]
+        [EnumMember(Value = "Anchoring Restricted")]
         AnchoringRestricted = 2,
         [System.ComponentModel.Description("An area within which fishing is not permitted.")]
+        [EnumMember(Value = "Fishing Prohibited")]
         FishingProhibited = 3,
         [System.ComponentModel.Description("A specified area designated by appropriate authority, within which fishing is restricted in accordance with certain specified conditions.")]
+        [EnumMember(Value = "Fishing Restricted")]
         FishingRestricted = 4,
         [System.ComponentModel.Description("An area within which trawling is not permitted.")]
+        [EnumMember(Value = "Trawling Prohibited")]
         TrawlingProhibited = 5,
         [System.ComponentModel.Description("A specified area designated by appropriate authority, within which trawling is restricted in accordance with certain specified conditions.")]
+        [EnumMember(Value = "Trawling Restricted")]
         TrawlingRestricted = 6,
         [System.ComponentModel.Description("An area within which navigation and/or anchoring is prohibited.")]
+        [EnumMember(Value = "Entry Prohibited")]
         EntryProhibited = 7,
         [System.ComponentModel.Description("A specified area designated by appropriate authority, within which navigation is restricted in accordance with certain specified conditions.")]
+        [EnumMember(Value = "Entry Restricted")]
         EntryRestricted = 8,
         [System.ComponentModel.Description("An area within which dredging is not permitted.")]
+        [EnumMember(Value = "Dredging Prohibited")]
         DredgingProhibited = 9,
         [System.ComponentModel.Description("A specified area designated by appropriate authority, within which dredging is restricted in accordance with certain specified conditions.")]
+        [EnumMember(Value = "Dredging Restricted")]
         DredgingRestricted = 10,
         [System.ComponentModel.Description("An area within which diving is not permitted.")]
+        [EnumMember(Value = "Diving Prohibited")]
         DivingProhibited = 11,
         [System.ComponentModel.Description("A specified area designated by appropriate authority, within which diving is restricted in accordance with certain specified conditions.")]
+        [EnumMember(Value = "Diving Restricted")]
         DivingRestricted = 12,
         [System.ComponentModel.Description("Mariners must adjust the speed of their vessels to reduce the wave or wash which may cause erosion or disturb moored vessels.")]
+        [EnumMember(Value = "No Wake")]
         NoWake = 13,
         [System.ComponentModel.Description("An IMO declared routeing measure comprising an area within defined limits in which either navigation is particularly hazardous or it is exceptionally important to avoid casualties and which should be avoided by all ships, or certain classes of ships.")]
+        [EnumMember(Value = "Area To Be Avoided")]
         AreaToBeAvoided = 14,
         [System.ComponentModel.Description("The erection of permanent or temporary fixed structures or artificial islands is prohibited.")]
+        [EnumMember(Value = "Construction Prohibited")]
         ConstructionProhibited = 15,
         [System.ComponentModel.Description("An area within which discharging or dumping is prohibited.")]
+        [EnumMember(Value = "Discharging Prohibited")]
         DischargingProhibited = 16,
         [System.ComponentModel.Description("A specified area designated by an appropriate authority, within which discharging or dumping is restricted in accordance with specified conditions.")]
+        [EnumMember(Value = "Discharging Restricted")]
         DischargingRestricted = 17,
         [System.ComponentModel.Description("An area within which industrial or mineral exploration and development are prohibited.")]
+        [EnumMember(Value = "Industrial or Mineral Exploration/Development Prohibited")]
         IndustrialOrMineralExplorationDevelopmentProhibited = 18,
         [System.ComponentModel.Description("A specified area designated by an appropriate authority, within which industrial or mineral exploration and development is restricted in accordance with certain specified conditions.")]
+        [EnumMember(Value = "Industrial or Mineral Exploration/Development Restricted")]
         IndustrialOrMineralExplorationDevelopmentRestricted = 19,
         [System.ComponentModel.Description("An area within which excavating a hole on the sea-bottom with a drill is prohibited.")]
+        [EnumMember(Value = "Drilling Prohibited")]
         DrillingProhibited = 20,
         [System.ComponentModel.Description("A specified area designated by an appropriate authority, within which excavating a hole on the sea-bottom with a drill is restricted in accordance with certain specified conditions.")]
+        [EnumMember(Value = "Drilling Restricted")]
         DrillingRestricted = 21,
         [System.ComponentModel.Description("An area within which the removal of historical artefacts is prohibited.")]
+        [EnumMember(Value = "Removal of Historical Artefacts Prohibited")]
         RemovalOfHistoricalArtefactsProhibited = 22,
         [System.ComponentModel.Description("An area in which cargo transhipment (lightening) is prohibited.")]
+        [EnumMember(Value = "Cargo Transhipment (Lightening) Prohibited")]
         CargoTranshipmentLighteningProhibited = 23,
         [System.ComponentModel.Description("An area in which the dragging of anything along the bottom, e.g. bottom trawling, is prohibited.")]
+        [EnumMember(Value = "Dragging Prohibited")]
         DraggingProhibited = 24,
         [System.ComponentModel.Description("An area in which a vessel is prohibited from stopping.")]
+        [EnumMember(Value = "Stopping Prohibited")]
         StoppingProhibited = 25,
         [System.ComponentModel.Description("An area in which landing is prohibited.")]
+        [EnumMember(Value = "Landing Prohibited")]
         LandingProhibited = 26,
         [System.ComponentModel.Description("An area within which speed is restricted.")]
+        [EnumMember(Value = "Speed Restricted")]
         SpeedRestricted = 27,
         [System.ComponentModel.Description("A specified area designated by appropriate authority, within which overtaking is generally prohibited.")]
+        [EnumMember(Value = "Overtaking Prohibited")]
         OvertakingProhibited = 28,
         [System.ComponentModel.Description("A specified area designated by appropriate authority, within which overtaking between convoys is prohibited.")]
+        [EnumMember(Value = "Overtaking of Convoys by Convoys Prohibited")]
         OvertakingOfConvoysByConvoysProhibited = 29,
         [System.ComponentModel.Description("A specified area designated by appropriate authority, within which passing or overtaking is generally prohibited.")]
+        [EnumMember(Value = "Passing or Overtaking Prohibited")]
         PassingOrOvertakingProhibited = 30,
         [System.ComponentModel.Description("A specified area designated by appropriate authority, within which vessels, assemblies of floating material or floating establishments may not berth.")]
+        [EnumMember(Value = "Berthing Prohibited")]
         BerthingProhibited = 31,
         [System.ComponentModel.Description("A specified area designated by appropriate authority, within which berthing is restricted.")]
+        [EnumMember(Value = "Berthing Restricted")]
         BerthingRestricted = 32,
         [System.ComponentModel.Description("A specified area designated by appropriate authority, within which vessels, assemblies of floating material or floating establishments may not make fast to the bank.")]
+        [EnumMember(Value = "Making Fast Prohibited")]
         MakingFastProhibited = 33,
         [System.ComponentModel.Description("A specified area designated by appropriate authority, within which making fast to the bank is restricted.")]
+        [EnumMember(Value = "Making Fast Restricted")]
         MakingFastRestricted = 34,
         [System.ComponentModel.Description("A specified area designated by appropriate authority, within which all turning is generally prohibited.")]
+        [EnumMember(Value = "Turning Prohibited")]
         TurningProhibited = 35,
         [System.ComponentModel.Description("An area within which the fairway depth is restricted.")]
+        [EnumMember(Value = "Restricted Fairway Depth")]
         RestrictedFairwayDepth = 36,
         [System.ComponentModel.Description("An area within which the fairway width is restricted.")]
+        [EnumMember(Value = "Restricted Fairway Width")]
         RestrictedFairwayWidth = 37,
         [System.ComponentModel.Description("The use of anchoring spuds (telescopic piles) is prohibited.")]
+        [EnumMember(Value = "Use of Spuds Prohibited")]
         UseOfSpudsProhibited = 38,
         [System.ComponentModel.Description("An area in which swimming is prohibited.")]
+        [EnumMember(Value = "Swimming Prohibited")]
         SwimmingProhibited = 39,
         [System.ComponentModel.Description("An area within which the emission of SOx is restricted.")]
+        [EnumMember(Value = "SOx Emission Restricted")]
         SoxEmissionRestricted = 40,
         [System.ComponentModel.Description("An area within which the emission of NOx is restricted.")]
+        [EnumMember(Value = "NOx Emission Restricted")]
         NoxEmissionRestricted = 41,
         [System.ComponentModel.Description("Unknown value.")]
+        [EnumMember(Value = "Unknown")]
         Unknown = -1,
     }
 
@@ -134,30 +184,43 @@ namespace S100Framework.DomainModel.S124 {
     [System.Serializable()]
     public enum warningType : int {
         [System.ComponentModel.Description("Message containing urgent information relevant to safe navigation broadcast to ships in a local area, in accordance with the provisions of the International Convention for the Safety of Life at Sea, 1974, as amended.(Adopted from S-53, 2.2.23) Local warning means a navigational warning which covers inshore waters, often within the limits of jurisdiction of a harbour or port authority. (Adopted from S-53, 2.2.10)")]
+        [EnumMember(Value = "Local Navigational Warning")]
         LocalNavigationalWarning = 1,
         [System.ComponentModel.Description("Message containing urgent information relevant to safe navigation broadcast to ships in a coastal  area, in accordance with the provisions of the International Convention for the Safety of Life at Sea, 1974, as amended. Coastal warning means a navigational warning promulgated as part of a numbered series by a National Coordinator.")]
+        [EnumMember(Value = "Coastal Navigational Warning")]
         CoastalNavigationalWarning = 2,
         [System.ComponentModel.Description("Message containing urgent information relevant to safe navigation broadcast to ships in a sub-area, in accordance with the provisions of the International Convention for the Safety of Life at Sea, 1974, as amended. Sub-area warning means a navigational warning or in-force bulletin promulgated as part of a numbered series by a Sub-area Coordinator.")]
+        [EnumMember(Value = "Sub-Area Navigational Warning")]
         SubAreaNavigationalWarning = 3,
         [System.ComponentModel.Description("Message containing urgent information relevant to safe navigation broadcast to ships in a NAVAREA, in accordance with the provisions of the International Convention for the Safety of Life at Sea, 1974, as amended. NAVAREA warning means a navigational warning promulgated as part of a numbered series by a NAVAREA Coordinator.")]
+        [EnumMember(Value = "NAVAREA Navigational Warning")]
         NavareaNavigationalWarning = 4,
         [System.ComponentModel.Description("A message that indicates that there are no navigational warnings to be disseminated in the NAVAREA.")]
+        [EnumMember(Value = "NAVAREA No Warning")]
         NavareaNoWarning = 5,
         [System.ComponentModel.Description("A message that indicates that there are no navigational warnings to be disseminated in the sub-area.")]
+        [EnumMember(Value = "Sub-Area No Warning")]
         SubAreaNoWarning = 6,
         [System.ComponentModel.Description("A message that indicates that there are no navigational warnings to be disseminated in the coastal area.")]
+        [EnumMember(Value = "Coastal No Warning")]
         CoastalNoWarning = 7,
         [System.ComponentModel.Description("A message that indicates that there are no navigational warnings to be disseminated in the local area.")]
+        [EnumMember(Value = "Local No Warning")]
         LocalNoWarning = 8,
         [System.ComponentModel.Description("A list of serial numbers of NAVAREA warnings which are in- force.")]
+        [EnumMember(Value = "NAVAREA In-Force Bulletin")]
         NavareaInForceBulletin = 9,
         [System.ComponentModel.Description("A list of serial numbers of sub-area warnings which are in-force.")]
+        [EnumMember(Value = "Sub-Area In-Force Bulletin")]
         SubAreaInForceBulletin = 10,
         [System.ComponentModel.Description("A list of serial numbers of coastal warnings which are in- force.")]
+        [EnumMember(Value = "Coastal In-Force Bulletin")]
         CoastalInForceBulletin = 11,
         [System.ComponentModel.Description("A list of serial numbers of local warnings which are in- force.")]
+        [EnumMember(Value = "Local In-Force Bulletin")]
         LocalInForceBulletin = 12,
         [System.ComponentModel.Description("Unknown value.")]
+        [EnumMember(Value = "Unknown")]
         Unknown = -1,
     }
 
@@ -165,12 +228,16 @@ namespace S100Framework.DomainModel.S124 {
     [System.Serializable()]
     public enum referenceCategory : int {
         [System.ComponentModel.Description("Cancellation of warning which is no longer valid.")]
+        [EnumMember(Value = "Warning Cancellation")]
         WarningCancellation = 1,
         [System.ComponentModel.Description("Reference to relevant warning.")]
+        [EnumMember(Value = "Warning Reference")]
         WarningReference = 2,
         [System.ComponentModel.Description("Reference to warnings or notices that are considered in-force.")]
+        [EnumMember(Value = "In-Force")]
         InForce = 3,
         [System.ComponentModel.Description("Unknown value.")]
+        [EnumMember(Value = "Unknown")]
         Unknown = -1,
     }
 
