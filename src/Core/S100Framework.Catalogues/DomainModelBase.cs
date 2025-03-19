@@ -71,7 +71,7 @@ namespace S100Framework.DomainModel {
     [System.SerializableAttribute()]
     public abstract class Association {
         public virtual string Code => string.Empty;
-        public required roleType roleType { get; set; }
+        public virtual roleType? roleType => default;
         public string AssociationConnectorTypeName { get; set; }
 
         [IgnoreDataMember()]

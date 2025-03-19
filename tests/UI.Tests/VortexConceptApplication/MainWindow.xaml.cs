@@ -180,9 +180,9 @@ namespace VortexConceptApplication
 #else
             //var viewModel = IslandAggregation.TestIslandGroup;
 
-            var viewModel101 = new S100Framework.WPF.ViewModel.S101.StructureEquipmentViewModel();
+            var viewModel101 = new S100Framework.WPF.ViewModel.S101.StructureEquipmentViewModel<Building.StructureEquipment_theEquipment>();
 
-            var viewModel131 = new S100Framework.WPF.ViewModel.S131.TextAssociationViewModel();
+            //var viewModel131 = new S100Framework.WPF.ViewModel.S131.TextAssociationViewModel();
 
             var viewModel = viewModel101;
 
@@ -209,7 +209,7 @@ namespace VortexConceptApplication
             //    },
             //};
 
-            var fromJson = Building.StructureEquipment_theEquipment();
+            var fromJson = new Building.StructureEquipment_theEquipment();
 
             viewModel.Load(fromJson);
 
@@ -262,9 +262,9 @@ namespace VortexConceptApplication
         }
 
         private void SAVE_Click(object sender, RoutedEventArgs e) {
-            var v = (VortexConceptApplication.UpdatedInformationViewModel)SelectedProperty;
+            //var v = (VortexConceptApplication.UpdatedInformationViewModel)SelectedProperty;
 
-            var json = v.Serialize();
+            //var json = v.Serialize();
 
             System.Diagnostics.Debugger.Break();
         }

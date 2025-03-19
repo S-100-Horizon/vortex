@@ -16,6 +16,7 @@
     <Compile Remove="S-902_Custom.cs" />
     <Compile Remove="S-903_Custom.cs" />
     <Compile Remove="S-904_Custom.cs" />
+    <Compile Remove="S-905_Custom.cs" />
     <Compile Remove="S-922_ViewModel.g.cs" />
     <Compile Remove="S-924_ViewModel.g.cs" />
   </ItemGroup>

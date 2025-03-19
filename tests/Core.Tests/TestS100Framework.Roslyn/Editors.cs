@@ -78,7 +78,7 @@ namespace S100Framework.WPF.Editors
         public FrameworkElement ResolveEditor(PropertyItem propertyItem) {
             var attribute = (RefIdTypeListAttribute)propertyItem.Instance.GetType().GetProperty(propertyItem.DisplayName)!.GetCustomAttributes(typeof(RefIdTypeListAttribute), true)[0];
 
-            var viewModel = (NewRefIdViewModel)propertyItem.Instance;
+            //var viewModel = (NewRefIdViewModel)propertyItem.Instance;
 
             var comboBox = new ComboBox {
                 Name = $"_comboBox{Guid.NewGuid():N}",
@@ -91,9 +91,9 @@ namespace S100Framework.WPF.Editors
             var bindingSelectedItemProperty = new Binding(propertyItem.DisplayName) { Source = propertyItem.Instance, Mode = propertyItem.IsReadOnly ? BindingMode.OneWay : BindingMode.TwoWay };
             BindingOperations.SetBinding(comboBox, ComboBox.SelectedItemProperty, bindingSelectedItemProperty);
 
-            if (!string.IsNullOrEmpty(viewModel.RefId)) {
-                comboBox.SelectedValue = viewModel.RefId;
-            }
+            //if (!string.IsNullOrEmpty(viewModel.RefId)) {
+            //    comboBox.SelectedValue = viewModel.RefId;
+            //}
             return comboBox;
         }
     }

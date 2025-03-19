@@ -1115,19 +1115,16 @@ namespace S100Framework.DomainModel.S128 {
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
             public partial class CarriageRequirement : InformationAssociation {
                 public List<RefId> theRequirement { get; set; } = [];
-
-                [IgnoreDataMember()]
-                [Required()]
-                public String[] theRequirementInformationTypes { get; set; }
+                public virtual String[] theRequirementInformationTypes => [];
                 public override string Code => nameof(CarriageRequirement);
 
+                public string[]? this[Role role] => this[role.ToString()];
                 public override string[]? this[string role] => role switch
                 {
                     "theRequirement" => theRequirementInformationTypes,
                     _ => throw new InvalidOperationException(),
                 };
                 public CarriageRequirement() {
-                    theRequirementInformationTypes = [];
                 }
             }
 
@@ -1135,17 +1132,12 @@ namespace S100Framework.DomainModel.S128 {
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
             public partial class DistributionDetails : InformationAssociation {
                 public List<RefId> catalogueHeader { get; set; } = [];
-
-                [IgnoreDataMember()]
-                [Required()]
-                public String[] catalogueHeaderInformationTypes { get; set; }
                 public List<RefId> theDistributor { get; set; } = [];
-
-                [IgnoreDataMember()]
-                [Required()]
-                public String[] theDistributorInformationTypes { get; set; }
+                public virtual String[] catalogueHeaderInformationTypes => [];
+                public virtual String[] theDistributorInformationTypes => [];
                 public override string Code => nameof(DistributionDetails);
 
+                public string[]? this[Role role] => this[role.ToString()];
                 public override string[]? this[string role] => role switch
                 {
                     "catalogueHeader" => catalogueHeaderInformationTypes,
@@ -1153,8 +1145,6 @@ namespace S100Framework.DomainModel.S128 {
                     _ => throw new InvalidOperationException(),
                 };
                 public DistributionDetails() {
-                    catalogueHeaderInformationTypes = [];
-                    theDistributorInformationTypes = [];
                 }
             }
 
@@ -1162,17 +1152,12 @@ namespace S100Framework.DomainModel.S128 {
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
             public partial class DistributorContact : InformationAssociation {
                 public RefId? theDistributor { get; set; }
-
-                [IgnoreDataMember()]
-                [Required()]
-                public String[] theDistributorInformationTypes { get; set; }
                 public List<RefId> theContactDetails { get; set; } = [];
-
-                [IgnoreDataMember()]
-                [Required()]
-                public String[] theContactDetailsInformationTypes { get; set; }
+                public virtual String[] theDistributorInformationTypes => [];
+                public virtual String[] theContactDetailsInformationTypes => [];
                 public override string Code => nameof(DistributorContact);
 
+                public string[]? this[Role role] => this[role.ToString()];
                 public override string[]? this[string role] => role switch
                 {
                     "theDistributor" => theDistributorInformationTypes,
@@ -1180,8 +1165,6 @@ namespace S100Framework.DomainModel.S128 {
                     _ => throw new InvalidOperationException(),
                 };
                 public DistributorContact() {
-                    theDistributorInformationTypes = [];
-                    theContactDetailsInformationTypes = [];
                 }
             }
 
@@ -1189,19 +1172,16 @@ namespace S100Framework.DomainModel.S128 {
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
             public partial class PriceOfElement : InformationAssociation {
                 public List<RefId> thePriceInformation { get; set; } = [];
-
-                [IgnoreDataMember()]
-                [Required()]
-                public String[] thePriceInformationInformationTypes { get; set; }
+                public virtual String[] thePriceInformationInformationTypes => [];
                 public override string Code => nameof(PriceOfElement);
 
+                public string[]? this[Role role] => this[role.ToString()];
                 public override string[]? this[string role] => role switch
                 {
                     "thePriceInformation" => thePriceInformationInformationTypes,
                     _ => throw new InvalidOperationException(),
                 };
                 public PriceOfElement() {
-                    thePriceInformationInformationTypes = [];
                 }
             }
 
@@ -1209,17 +1189,12 @@ namespace S100Framework.DomainModel.S128 {
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
             public partial class PriceOfNauticalProduct : InformationAssociation {
                 public List<RefId> theCatalogueOfNauticalProduct { get; set; } = [];
-
-                [IgnoreDataMember()]
-                [Required()]
-                public String[] theCatalogueOfNauticalProductInformationTypes { get; set; }
                 public List<RefId> thePriceInformation { get; set; } = [];
-
-                [IgnoreDataMember()]
-                [Required()]
-                public String[] thePriceInformationInformationTypes { get; set; }
+                public virtual String[] theCatalogueOfNauticalProductInformationTypes => [];
+                public virtual String[] thePriceInformationInformationTypes => [];
                 public override string Code => nameof(PriceOfNauticalProduct);
 
+                public string[]? this[Role role] => this[role.ToString()];
                 public override string[]? this[string role] => role switch
                 {
                     "theCatalogueOfNauticalProduct" => theCatalogueOfNauticalProductInformationTypes,
@@ -1227,8 +1202,6 @@ namespace S100Framework.DomainModel.S128 {
                     _ => throw new InvalidOperationException(),
                 };
                 public PriceOfNauticalProduct() {
-                    theCatalogueOfNauticalProductInformationTypes = [];
-                    thePriceInformationInformationTypes = [];
                 }
             }
 
@@ -1236,17 +1209,12 @@ namespace S100Framework.DomainModel.S128 {
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
             public partial class ProducerContact : InformationAssociation {
                 public RefId? theProducer { get; set; }
-
-                [IgnoreDataMember()]
-                [Required()]
-                public String[] theProducerInformationTypes { get; set; }
                 public List<RefId> theContactDetails { get; set; } = [];
-
-                [IgnoreDataMember()]
-                [Required()]
-                public String[] theContactDetailsInformationTypes { get; set; }
+                public virtual String[] theProducerInformationTypes => [];
+                public virtual String[] theContactDetailsInformationTypes => [];
                 public override string Code => nameof(ProducerContact);
 
+                public string[]? this[Role role] => this[role.ToString()];
                 public override string[]? this[string role] => role switch
                 {
                     "theProducer" => theProducerInformationTypes,
@@ -1254,8 +1222,6 @@ namespace S100Framework.DomainModel.S128 {
                     _ => throw new InvalidOperationException(),
                 };
                 public ProducerContact() {
-                    theProducerInformationTypes = [];
-                    theContactDetailsInformationTypes = [];
                 }
             }
 
@@ -1263,17 +1229,12 @@ namespace S100Framework.DomainModel.S128 {
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
             public partial class ProductionDetails : InformationAssociation {
                 public List<RefId> catalogueHeader { get; set; } = [];
-
-                [IgnoreDataMember()]
-                [Required()]
-                public String[] catalogueHeaderInformationTypes { get; set; }
                 public RefId? theProducer { get; set; }
-
-                [IgnoreDataMember()]
-                [Required()]
-                public String[] theProducerInformationTypes { get; set; }
+                public virtual String[] catalogueHeaderInformationTypes => [];
+                public virtual String[] theProducerInformationTypes => [];
                 public override string Code => nameof(ProductionDetails);
 
+                public string[]? this[Role role] => this[role.ToString()];
                 public override string[]? this[string role] => role switch
                 {
                     "catalogueHeader" => catalogueHeaderInformationTypes,
@@ -1281,8 +1242,6 @@ namespace S100Framework.DomainModel.S128 {
                     _ => throw new InvalidOperationException(),
                 };
                 public ProductionDetails() {
-                    catalogueHeaderInformationTypes = [];
-                    theProducerInformationTypes = [];
                 }
             }
 
@@ -1291,12 +1250,10 @@ namespace S100Framework.DomainModel.S128 {
             public partial class ProductPackage : InformationAssociation {
                 [Required()]
                 public List<RefId> elementContainer { get; set; }
-
-                [IgnoreDataMember()]
-                [Required()]
-                public String[] elementContainerInformationTypes { get; set; }
+                public virtual String[] elementContainerInformationTypes => [];
                 public override string Code => nameof(ProductPackage);
 
+                public string[]? this[Role role] => this[role.ToString()];
                 public override string[]? this[string role] => role switch
                 {
                     "elementContainer" => elementContainerInformationTypes,
@@ -1304,7 +1261,6 @@ namespace S100Framework.DomainModel.S128 {
                 };
                 public ProductPackage() {
                     elementContainer = new();
-                    elementContainerInformationTypes = [];
                 }
             }
         }
@@ -1314,7 +1270,7 @@ namespace S100Framework.DomainModel.S128 {
 
             [System.Serializable()]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-            public partial class ProductMapping : FeatureAssociation {
+            public abstract partial class ProductMapping : FeatureAssociation {
                 [EnumerationValue(1)]
                 [EnumerationValue(2)]
                 [EnumerationValue(3)]
@@ -1322,33 +1278,28 @@ namespace S100Framework.DomainModel.S128 {
                 [Required()]
                 public categoryOfProductMapping categoryOfProductMapping { get; set; }
                 public List<RefId> theReference { get; set; } = [];
-
-                [IgnoreDataMember()]
-                [Required()]
-                public String[] theReferenceFeatureTypes { get; set; }
+                public virtual String[] theReferenceFeatureTypes => [];
                 public override string Code => "ProductMapping";
 
+                public string[]? this[Role role] => this[role.ToString()];
                 public override string[]? this[string role] => role switch
                 {
                     "theReference" => theReferenceFeatureTypes,
                     _ => throw new InvalidOperationException(),
                 };
                 public ProductMapping() {
-                    theReferenceFeatureTypes = [];
                 }
             }
 
             [System.Serializable()]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-            public partial class Correlated : FeatureAssociation {
+            public abstract partial class Correlated : FeatureAssociation {
                 [Required()]
                 public RefId main { get; set; }
-
-                [IgnoreDataMember()]
-                [Required()]
-                public String[] mainFeatureTypes { get; set; }
+                public virtual String[] mainFeatureTypes => [];
                 public override string Code => "Correlated";
 
+                public string[]? this[Role role] => this[role.ToString()];
                 public override string[]? this[string role] => role switch
                 {
                     "main" => mainFeatureTypes,
@@ -1361,7 +1312,6 @@ namespace S100Framework.DomainModel.S128 {
                         Type = string.Empty,
                         Role = string.Empty,
                     };
-                    mainFeatureTypes = [];
                 }
             }
         }
@@ -1387,23 +1337,20 @@ namespace S100Framework.DomainModel.S128 {
             [IgnoreDataMember]
             public override string Code => nameof(CatalogueSectionHeader);
 
-            public static PriceOfNauticalProduct PriceOfNauticalProduct_thePriceInformation() => new PriceOfNauticalProduct
-            {
-                roleType = roleType.association,
-                thePriceInformationInformationTypes = ["PriceInformation"],
-                theCatalogueOfNauticalProductInformationTypes = ["CatalogueSectionHeader"],
+            public class PriceOfNauticalProduct_thePriceInformation : PriceOfNauticalProduct {
+                public override roleType? roleType => DomainModel.roleType.association;
+                public override String[] thePriceInformationInformationTypes => ["PriceInformation"];
+                public override String[] theCatalogueOfNauticalProductInformationTypes => ["CatalogueSectionHeader"];
             };
-            public static ProductionDetails ProductionDetails_theProducer() => new ProductionDetails
-            {
-                roleType = roleType.association,
-                theProducerInformationTypes = ["ProducerInformation"],
-                catalogueHeaderInformationTypes = ["CatalogueSectionHeader"],
+            public class ProductionDetails_theProducer : ProductionDetails {
+                public override roleType? roleType => DomainModel.roleType.association;
+                public override String[] theProducerInformationTypes => ["ProducerInformation"];
+                public override String[] catalogueHeaderInformationTypes => ["CatalogueSectionHeader"];
             };
-            public static DistributionDetails DistributionDetails_theDistributor() => new DistributionDetails
-            {
-                roleType = roleType.association,
-                theDistributorInformationTypes = ["DistributorInformation"],
-                catalogueHeaderInformationTypes = ["CatalogueSectionHeader"],
+            public class DistributionDetails_theDistributor : DistributionDetails {
+                public override roleType? roleType => DomainModel.roleType.association;
+                public override String[] theDistributorInformationTypes => ["DistributorInformation"];
+                public override String[] catalogueHeaderInformationTypes => ["CatalogueSectionHeader"];
             };
             public CatalogueSectionHeader() {
             }
@@ -1422,17 +1369,15 @@ namespace S100Framework.DomainModel.S128 {
             [IgnoreDataMember]
             public override string Code => nameof(ContactDetails);
 
-            public static ProducerContact ProducerContact_theProducer() => new ProducerContact
-            {
-                roleType = roleType.association,
-                theProducerInformationTypes = ["ProducerInformation"],
-                theContactDetailsInformationTypes = ["ContactDetails"],
+            public class ProducerContact_theProducer : ProducerContact {
+                public override roleType? roleType => DomainModel.roleType.association;
+                public override String[] theProducerInformationTypes => ["ProducerInformation"];
+                public override String[] theContactDetailsInformationTypes => ["ContactDetails"];
             };
-            public static DistributorContact DistributorContact_theDistributor() => new DistributorContact
-            {
-                roleType = roleType.association,
-                theDistributorInformationTypes = ["DistributorInformation"],
-                theContactDetailsInformationTypes = ["ContactDetails"],
+            public class DistributorContact_theDistributor : DistributorContact {
+                public override roleType? roleType => DomainModel.roleType.association;
+                public override String[] theDistributorInformationTypes => ["DistributorInformation"];
+                public override String[] theContactDetailsInformationTypes => ["ContactDetails"];
             };
             public ContactDetails() {
                 contactInstructions = string.Empty;
@@ -1464,11 +1409,10 @@ namespace S100Framework.DomainModel.S128 {
             [IgnoreDataMember]
             public override string Code => nameof(PriceInformation);
 
-            public static PriceOfNauticalProduct PriceOfNauticalProduct_theCatalogueOfNauticalProduct() => new PriceOfNauticalProduct
-            {
-                roleType = roleType.association,
-                theCatalogueOfNauticalProductInformationTypes = ["CatalogueSectionHeader"],
-                thePriceInformationInformationTypes = ["PriceInformation"],
+            public class PriceOfNauticalProduct_theCatalogueOfNauticalProduct : PriceOfNauticalProduct {
+                public override roleType? roleType => DomainModel.roleType.association;
+                public override String[] theCatalogueOfNauticalProductInformationTypes => ["CatalogueSectionHeader"];
+                public override String[] thePriceInformationInformationTypes => ["PriceInformation"];
             };
             public PriceInformation() {
             }
@@ -1483,17 +1427,15 @@ namespace S100Framework.DomainModel.S128 {
             [IgnoreDataMember]
             public override string Code => nameof(ProducerInformation);
 
-            public static ProducerContact ProducerContact_theContactDetails() => new ProducerContact
-            {
-                roleType = roleType.association,
-                theContactDetailsInformationTypes = ["ContactDetails"],
-                theProducerInformationTypes = ["ProducerInformation"],
+            public class ProducerContact_theContactDetails : ProducerContact {
+                public override roleType? roleType => DomainModel.roleType.association;
+                public override String[] theContactDetailsInformationTypes => ["ContactDetails"];
+                public override String[] theProducerInformationTypes => ["ProducerInformation"];
             };
-            public static ProductionDetails ProductionDetails_catalogueHeader() => new ProductionDetails
-            {
-                roleType = roleType.association,
-                catalogueHeaderInformationTypes = ["CatalogueSectionHeader"],
-                theProducerInformationTypes = ["ProducerInformation"],
+            public class ProductionDetails_catalogueHeader : ProductionDetails {
+                public override roleType? roleType => DomainModel.roleType.association;
+                public override String[] catalogueHeaderInformationTypes => ["CatalogueSectionHeader"];
+                public override String[] theProducerInformationTypes => ["ProducerInformation"];
             };
             public ProducerInformation() {
                 agencyResponsibleForProduction = string.Empty;
@@ -1508,17 +1450,15 @@ namespace S100Framework.DomainModel.S128 {
             [IgnoreDataMember]
             public override string Code => nameof(DistributorInformation);
 
-            public static DistributionDetails DistributionDetails_catalogueHeader() => new DistributionDetails
-            {
-                roleType = roleType.association,
-                catalogueHeaderInformationTypes = ["CatalogueSectionHeader"],
-                theDistributorInformationTypes = ["DistributorInformation"],
+            public class DistributionDetails_catalogueHeader : DistributionDetails {
+                public override roleType? roleType => DomainModel.roleType.association;
+                public override String[] catalogueHeaderInformationTypes => ["CatalogueSectionHeader"];
+                public override String[] theDistributorInformationTypes => ["DistributorInformation"];
             };
-            public static DistributorContact DistributorContact_theContactDetails() => new DistributorContact
-            {
-                roleType = roleType.association,
-                theContactDetailsInformationTypes = ["ContactDetails"],
-                theDistributorInformationTypes = ["DistributorInformation"],
+            public class DistributorContact_theContactDetails : DistributorContact {
+                public override roleType? roleType => DomainModel.roleType.association;
+                public override String[] theContactDetailsInformationTypes => ["ContactDetails"];
+                public override String[] theDistributorInformationTypes => ["DistributorInformation"];
             };
             public DistributorInformation() {
                 distributorName = string.Empty;
@@ -1557,25 +1497,21 @@ namespace S100Framework.DomainModel.S128 {
             [IgnoreDataMember]
             public override string Code => nameof(CatalogueElement);
 
-            public static CarriageRequirement CarriageRequirement_theRequirement() => new CarriageRequirement
-            {
-                roleType = roleType.association,
-                theRequirementInformationTypes = ["IndicationOfCarriageRequirement"],
+            public class CarriageRequirement_theRequirement : CarriageRequirement {
+                public override roleType? roleType => DomainModel.roleType.association;
+                public override String[] theRequirementInformationTypes => ["IndicationOfCarriageRequirement"];
             };
-            public static PriceOfElement PriceOfElement_thePriceInformation() => new PriceOfElement
-            {
-                roleType = roleType.association,
-                thePriceInformationInformationTypes = ["PriceInformation"],
+            public class PriceOfElement_thePriceInformation : PriceOfElement {
+                public override roleType? roleType => DomainModel.roleType.association;
+                public override String[] thePriceInformationInformationTypes => ["PriceInformation"];
             };
-            public static ProductPackage ProductPackage_elementContainer() => new ProductPackage
-            {
-                roleType = roleType.association,
-                elementContainerInformationTypes = ["CatalogueSectionHeader"],
+            public class ProductPackage_elementContainer : ProductPackage {
+                public override roleType? roleType => DomainModel.roleType.association;
+                public override String[] elementContainerInformationTypes => ["CatalogueSectionHeader"];
             };
-            public static ProductMapping ProductMapping_theReference() => new ProductMapping
-            {
-                roleType = roleType.association,
-                theReferenceFeatureTypes = ["CatalogueElement"],
+            public class ProductMapping_theReference : ProductMapping {
+                public override roleType? roleType => DomainModel.roleType.association;
+                public override String[] theReferenceFeatureTypes => ["CatalogueElement"];
             };
             public CatalogueElement() {
                 catalogueElementClassification = new();
@@ -1665,10 +1601,9 @@ namespace S100Framework.DomainModel.S128 {
             [IgnoreDataMember]
             public override string Code => nameof(NavigationalProduct);
 
-            public static Correlated Correlated_main() => new Correlated
-            {
-                roleType = roleType.association,
-                mainFeatureTypes = ["NavigationalProduct"],
+            public class Correlated_main : Correlated {
+                public override roleType? roleType => DomainModel.roleType.association;
+                public override String[] mainFeatureTypes => ["NavigationalProduct"];
             };
             public NavigationalProduct() {
             }

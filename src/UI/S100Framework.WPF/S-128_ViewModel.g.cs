@@ -1833,10 +1833,341 @@ namespace S100Framework.WPF.ViewModel.S128 {
         public override string? ToString() => $"Reference To NM";
     }
 
+    [CategoryOrder("CarriageRequirement", 0)]
+    [CategoryOrder("InformationBindings", 100)]
+    public class CarriageRequirementViewModel<TAssociation> : ViewModelBase where TAssociation : DomainModel.S128.Associations.InformationAssociations.CarriageRequirement, new() {
+        private roleType _roleType;
+        [Category("CarriageRequirement")]
+        public ObservableCollection<NewRefIdViewModel<TAssociation>> theRequirement { get; set; } = new();
+
+        [Browsable(false)]
+        public string[] theRequirementInformationTypes { get; private set; }
+
+        public void Load(DomainModel.S128.Associations.InformationAssociations.CarriageRequirement instance) {
+            foreach (var e in instance.theRequirement) {
+                theRequirement.Add(new NewRefIdViewModel<TAssociation> { RefId = e.Value, });
+            };
+            theRequirementInformationTypes = instance.theRequirementInformationTypes;
+            _roleType = instance.roleType!.Value;
+        }
+
+        public override string Serialize() {
+            var instance = new TAssociation
+            {
+            };
+            return System.Text.Json.JsonSerializer.Serialize(instance);
+        }
+
+        public CarriageRequirementViewModel() : base() {
+        }
+
+        public override string? ToString() => $"Carriage Requirement";
+    }
+
+    [CategoryOrder("DistributionDetails", 0)]
+    [CategoryOrder("InformationBindings", 100)]
+    public class DistributionDetailsViewModel<TAssociation> : ViewModelBase where TAssociation : DomainModel.S128.Associations.InformationAssociations.DistributionDetails, new() {
+        private roleType _roleType;
+        [Category("DistributionDetails")]
+        public ObservableCollection<NewRefIdViewModel<TAssociation>> catalogueHeader { get; set; } = new();
+
+        [Browsable(false)]
+        public string[] catalogueHeaderInformationTypes { get; private set; }
+
+        [Category("DistributionDetails")]
+        public ObservableCollection<NewRefIdViewModel<TAssociation>> theDistributor { get; set; } = new();
+
+        [Browsable(false)]
+        public string[] theDistributorInformationTypes { get; private set; }
+
+        public void Load(DomainModel.S128.Associations.InformationAssociations.DistributionDetails instance) {
+            foreach (var e in instance.catalogueHeader) {
+                catalogueHeader.Add(new NewRefIdViewModel<TAssociation> { RefId = e.Value, });
+            };
+            catalogueHeaderInformationTypes = instance.catalogueHeaderInformationTypes;
+            foreach (var e in instance.theDistributor) {
+                theDistributor.Add(new NewRefIdViewModel<TAssociation> { RefId = e.Value, });
+            };
+            theDistributorInformationTypes = instance.theDistributorInformationTypes;
+            _roleType = instance.roleType!.Value;
+        }
+
+        public override string Serialize() {
+            var instance = new TAssociation
+            {
+            };
+            return System.Text.Json.JsonSerializer.Serialize(instance);
+        }
+
+        public DistributionDetailsViewModel() : base() {
+        }
+
+        public override string? ToString() => $"Distribution Details";
+    }
+
+    [CategoryOrder("DistributorContact", 0)]
+    [CategoryOrder("InformationBindings", 100)]
+    public class DistributorContactViewModel<TAssociation> : ViewModelBase where TAssociation : DomainModel.S128.Associations.InformationAssociations.DistributorContact, new() {
+        private roleType _roleType;
+        private NewRefIdViewModel<TAssociation> _theDistributor;
+        [Editor(typeof(Editors.RefIdTypeEditor), typeof(Editors.RefIdTypeEditor))]
+        [Category("DistributorContact")]
+        public NewRefIdViewModel<TAssociation> theDistributor {
+            get {
+                return _theDistributor;
+            }
+
+            set {
+                SetValue(ref _theDistributor, value);
+            }
+        }
+
+        [Browsable(false)]
+        public string[] theDistributorInformationTypes { get; private set; }
+
+        [Category("DistributorContact")]
+        public ObservableCollection<NewRefIdViewModel<TAssociation>> theContactDetails { get; set; } = new();
+
+        [Browsable(false)]
+        public string[] theContactDetailsInformationTypes { get; private set; }
+
+        public void Load(DomainModel.S128.Associations.InformationAssociations.DistributorContact instance) {
+            theDistributor = new NewRefIdViewModel<TAssociation>
+            {
+                RefId = instance.theDistributor?.Value,
+            };
+            theDistributorInformationTypes = instance.theDistributorInformationTypes;
+            foreach (var e in instance.theContactDetails) {
+                theContactDetails.Add(new NewRefIdViewModel<TAssociation> { RefId = e.Value, });
+            };
+            theContactDetailsInformationTypes = instance.theContactDetailsInformationTypes;
+            _roleType = instance.roleType!.Value;
+        }
+
+        public override string Serialize() {
+            var instance = new TAssociation
+            {
+            };
+            return System.Text.Json.JsonSerializer.Serialize(instance);
+        }
+
+        public DistributorContactViewModel() : base() {
+        }
+
+        public override string? ToString() => $"Distributor Contact";
+    }
+
+    [CategoryOrder("PriceOfElement", 0)]
+    [CategoryOrder("InformationBindings", 100)]
+    public class PriceOfElementViewModel<TAssociation> : ViewModelBase where TAssociation : DomainModel.S128.Associations.InformationAssociations.PriceOfElement, new() {
+        private roleType _roleType;
+        [Category("PriceOfElement")]
+        public ObservableCollection<NewRefIdViewModel<TAssociation>> thePriceInformation { get; set; } = new();
+
+        [Browsable(false)]
+        public string[] thePriceInformationInformationTypes { get; private set; }
+
+        public void Load(DomainModel.S128.Associations.InformationAssociations.PriceOfElement instance) {
+            foreach (var e in instance.thePriceInformation) {
+                thePriceInformation.Add(new NewRefIdViewModel<TAssociation> { RefId = e.Value, });
+            };
+            thePriceInformationInformationTypes = instance.thePriceInformationInformationTypes;
+            _roleType = instance.roleType!.Value;
+        }
+
+        public override string Serialize() {
+            var instance = new TAssociation
+            {
+            };
+            return System.Text.Json.JsonSerializer.Serialize(instance);
+        }
+
+        public PriceOfElementViewModel() : base() {
+        }
+
+        public override string? ToString() => $"Price Of Element";
+    }
+
+    [CategoryOrder("PriceOfNauticalProduct", 0)]
+    [CategoryOrder("InformationBindings", 100)]
+    public class PriceOfNauticalProductViewModel<TAssociation> : ViewModelBase where TAssociation : DomainModel.S128.Associations.InformationAssociations.PriceOfNauticalProduct, new() {
+        private roleType _roleType;
+        [Category("PriceOfNauticalProduct")]
+        public ObservableCollection<NewRefIdViewModel<TAssociation>> theCatalogueOfNauticalProduct { get; set; } = new();
+
+        [Browsable(false)]
+        public string[] theCatalogueOfNauticalProductInformationTypes { get; private set; }
+
+        [Category("PriceOfNauticalProduct")]
+        public ObservableCollection<NewRefIdViewModel<TAssociation>> thePriceInformation { get; set; } = new();
+
+        [Browsable(false)]
+        public string[] thePriceInformationInformationTypes { get; private set; }
+
+        public void Load(DomainModel.S128.Associations.InformationAssociations.PriceOfNauticalProduct instance) {
+            foreach (var e in instance.theCatalogueOfNauticalProduct) {
+                theCatalogueOfNauticalProduct.Add(new NewRefIdViewModel<TAssociation> { RefId = e.Value, });
+            };
+            theCatalogueOfNauticalProductInformationTypes = instance.theCatalogueOfNauticalProductInformationTypes;
+            foreach (var e in instance.thePriceInformation) {
+                thePriceInformation.Add(new NewRefIdViewModel<TAssociation> { RefId = e.Value, });
+            };
+            thePriceInformationInformationTypes = instance.thePriceInformationInformationTypes;
+            _roleType = instance.roleType!.Value;
+        }
+
+        public override string Serialize() {
+            var instance = new TAssociation
+            {
+            };
+            return System.Text.Json.JsonSerializer.Serialize(instance);
+        }
+
+        public PriceOfNauticalProductViewModel() : base() {
+        }
+
+        public override string? ToString() => $"Price Of Nautical Product";
+    }
+
+    [CategoryOrder("ProducerContact", 0)]
+    [CategoryOrder("InformationBindings", 100)]
+    public class ProducerContactViewModel<TAssociation> : ViewModelBase where TAssociation : DomainModel.S128.Associations.InformationAssociations.ProducerContact, new() {
+        private roleType _roleType;
+        private NewRefIdViewModel<TAssociation> _theProducer;
+        [Editor(typeof(Editors.RefIdTypeEditor), typeof(Editors.RefIdTypeEditor))]
+        [Category("ProducerContact")]
+        public NewRefIdViewModel<TAssociation> theProducer {
+            get {
+                return _theProducer;
+            }
+
+            set {
+                SetValue(ref _theProducer, value);
+            }
+        }
+
+        [Browsable(false)]
+        public string[] theProducerInformationTypes { get; private set; }
+
+        [Category("ProducerContact")]
+        public ObservableCollection<NewRefIdViewModel<TAssociation>> theContactDetails { get; set; } = new();
+
+        [Browsable(false)]
+        public string[] theContactDetailsInformationTypes { get; private set; }
+
+        public void Load(DomainModel.S128.Associations.InformationAssociations.ProducerContact instance) {
+            theProducer = new NewRefIdViewModel<TAssociation>
+            {
+                RefId = instance.theProducer?.Value,
+            };
+            theProducerInformationTypes = instance.theProducerInformationTypes;
+            foreach (var e in instance.theContactDetails) {
+                theContactDetails.Add(new NewRefIdViewModel<TAssociation> { RefId = e.Value, });
+            };
+            theContactDetailsInformationTypes = instance.theContactDetailsInformationTypes;
+            _roleType = instance.roleType!.Value;
+        }
+
+        public override string Serialize() {
+            var instance = new TAssociation
+            {
+            };
+            return System.Text.Json.JsonSerializer.Serialize(instance);
+        }
+
+        public ProducerContactViewModel() : base() {
+        }
+
+        public override string? ToString() => $"Producer Contact";
+    }
+
+    [CategoryOrder("ProductionDetails", 0)]
+    [CategoryOrder("InformationBindings", 100)]
+    public class ProductionDetailsViewModel<TAssociation> : ViewModelBase where TAssociation : DomainModel.S128.Associations.InformationAssociations.ProductionDetails, new() {
+        private roleType _roleType;
+        [Category("ProductionDetails")]
+        public ObservableCollection<NewRefIdViewModel<TAssociation>> catalogueHeader { get; set; } = new();
+
+        [Browsable(false)]
+        public string[] catalogueHeaderInformationTypes { get; private set; }
+
+        private NewRefIdViewModel<TAssociation> _theProducer;
+        [Editor(typeof(Editors.RefIdTypeEditor), typeof(Editors.RefIdTypeEditor))]
+        [Category("ProductionDetails")]
+        public NewRefIdViewModel<TAssociation> theProducer {
+            get {
+                return _theProducer;
+            }
+
+            set {
+                SetValue(ref _theProducer, value);
+            }
+        }
+
+        [Browsable(false)]
+        public string[] theProducerInformationTypes { get; private set; }
+
+        public void Load(DomainModel.S128.Associations.InformationAssociations.ProductionDetails instance) {
+            foreach (var e in instance.catalogueHeader) {
+                catalogueHeader.Add(new NewRefIdViewModel<TAssociation> { RefId = e.Value, });
+            };
+            catalogueHeaderInformationTypes = instance.catalogueHeaderInformationTypes;
+            theProducer = new NewRefIdViewModel<TAssociation>
+            {
+                RefId = instance.theProducer?.Value,
+            };
+            theProducerInformationTypes = instance.theProducerInformationTypes;
+            _roleType = instance.roleType!.Value;
+        }
+
+        public override string Serialize() {
+            var instance = new TAssociation
+            {
+            };
+            return System.Text.Json.JsonSerializer.Serialize(instance);
+        }
+
+        public ProductionDetailsViewModel() : base() {
+        }
+
+        public override string? ToString() => $"Production Details";
+    }
+
+    [CategoryOrder("ProductPackage", 0)]
+    [CategoryOrder("InformationBindings", 100)]
+    public class ProductPackageViewModel<TAssociation> : ViewModelBase where TAssociation : DomainModel.S128.Associations.InformationAssociations.ProductPackage, new() {
+        private roleType _roleType;
+        [Category("ProductPackage")]
+        public ObservableCollection<NewRefIdViewModel<TAssociation>> elementContainer { get; set; } = new();
+
+        [Browsable(false)]
+        public string[] elementContainerInformationTypes { get; private set; }
+
+        public void Load(DomainModel.S128.Associations.InformationAssociations.ProductPackage instance) {
+            foreach (var e in instance.elementContainer) {
+                elementContainer.Add(new NewRefIdViewModel<TAssociation> { RefId = e.Value, });
+            };
+            elementContainerInformationTypes = instance.elementContainerInformationTypes;
+            _roleType = instance.roleType!.Value;
+        }
+
+        public override string Serialize() {
+            var instance = new TAssociation
+            {
+            };
+            return System.Text.Json.JsonSerializer.Serialize(instance);
+        }
+
+        public ProductPackageViewModel() : base() {
+        }
+
+        public override string? ToString() => $"Product Package";
+    }
+
     [CategoryOrder("ProductMapping", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public class ProductMappingViewModel : ViewModelBase {
+    public class ProductMappingViewModel<TAssociation> : ViewModelBase where TAssociation : DomainModel.S128.Associations.FeatureAssociations.ProductMapping, new() {
         private roleType _roleType;
         private categoryOfProductMapping _categoryOfProductMapping;
         [DomainModel.EnumerationAttribute(nameof(categoryOfProductMappingList))]
@@ -1853,7 +2184,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
         }
 
         [Category("ProductMapping")]
-        public ObservableCollection<NewRefIdViewModel> theReference { get; set; } = new();
+        public ObservableCollection<NewRefIdViewModel<TAssociation>> theReference { get; set; } = new();
 
         [Browsable(false)]
         public string[] theReferenceFeatureTypes { get; private set; }
@@ -1864,17 +2195,16 @@ namespace S100Framework.WPF.ViewModel.S128 {
         public void Load(DomainModel.S128.Associations.FeatureAssociations.ProductMapping instance) {
             categoryOfProductMapping = instance.categoryOfProductMapping;
             foreach (var e in instance.theReference) {
-                theReference.Add(new NewRefIdViewModel() { RefId = e.Value, });
+                theReference.Add(new NewRefIdViewModel<TAssociation> { RefId = e.Value, });
             };
             theReferenceFeatureTypes = instance.theReferenceFeatureTypes;
-            _roleType = instance.roleType;
+            _roleType = instance.roleType!.Value;
         }
 
         public override string Serialize() {
-            var instance = new DomainModel.S128.Associations.FeatureAssociations.ProductMapping
+            var instance = new TAssociation
             {
                 categoryOfProductMapping = this.categoryOfProductMapping,
-                roleType = _roleType,
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
@@ -1888,12 +2218,12 @@ namespace S100Framework.WPF.ViewModel.S128 {
     [CategoryOrder("Correlated", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public class CorrelatedViewModel : ViewModelBase {
+    public class CorrelatedViewModel<TAssociation> : ViewModelBase where TAssociation : DomainModel.S128.Associations.FeatureAssociations.Correlated, new() {
         private roleType _roleType;
-        private NewRefIdViewModel? _main;
+        private NewRefIdViewModel<TAssociation>? _main;
         [Editor(typeof(Editors.RefIdTypeEditor), typeof(Editors.RefIdTypeEditor))]
         [Category("Correlated")]
-        public NewRefIdViewModel? main {
+        public NewRefIdViewModel<TAssociation>? main {
             get {
                 return _main;
             }
@@ -1907,18 +2237,17 @@ namespace S100Framework.WPF.ViewModel.S128 {
         public string[] mainFeatureTypes { get; private set; }
 
         public void Load(DomainModel.S128.Associations.FeatureAssociations.Correlated instance) {
-            main = new NewRefIdViewModel()
+            main = new NewRefIdViewModel<TAssociation>
             {
                 RefId = instance.main?.Value,
             };
             mainFeatureTypes = instance.mainFeatureTypes;
-            _roleType = instance.roleType;
+            _roleType = instance.roleType!.Value;
         }
 
         public override string Serialize() {
-            var instance = new DomainModel.S128.Associations.FeatureAssociations.Correlated
+            var instance = new TAssociation
             {
-                roleType = _roleType,
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }

@@ -76,6 +76,13 @@ namespace S100Framework.WPF.Editors
     public sealed class RefIdTypeEditor : Xceed.Wpf.Toolkit.PropertyGrid.Editors.ITypeEditor
     {
         public FrameworkElement ResolveEditor(PropertyItem propertyItem) {
+            var type = propertyItem.Instance.GetType();
+
+            var i = (DomainModel.FeatureAssociation)propertyItem.Instance;
+
+            var list = i[propertyItem.DisplayName];
+
+
             var attribute = (RefIdTypeListAttribute)propertyItem.Instance.GetType().GetProperty(propertyItem.DisplayName)!.GetCustomAttributes(typeof(RefIdTypeListAttribute), true)[0];
 
             var comboBox = new ComboBox {

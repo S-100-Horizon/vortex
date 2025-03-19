@@ -701,7 +701,7 @@ namespace S100Framework
                                     viewBuilder.AppendLine($"\t\t\tpublic ObservableCollection<NewRefIdViewModel> {r} {{get; set;}}= new ();");
 
                                     loadBuilder.AppendLine($"\t\t\tforeach(var e in instance.{r}) {{");
-                                    loadBuilder.AppendLine($"\t\t\t\t{r}.Add(new NewRefIdViewModel() {{");
+                                    loadBuilder.AppendLine($"\t\t\t\t{r}.Add(new NewRefIdViewModel {{");
                                     loadBuilder.AppendLine($"\t\t\t\t\tRefId = e.Value,");
                                     loadBuilder.AppendLine($"\t\t\t\t}});");
                                     loadBuilder.AppendLine($"\t\t\t}};");
@@ -709,8 +709,9 @@ namespace S100Framework
                                 else {
                                     var postfix = lower == 0 ? "" : "?";
                                     viewBuilder.AppendLine($"\t\t\tprivate NewRefIdViewModel{postfix} _{r};");
-                                    viewBuilder.AppendLine("\t\t\t[Editor(typeof(Editors.RefIdTypeEditor), typeof(Editors.RefIdTypeEditor))]");
+                                    //viewBuilder.AppendLine("\t\t\t[Editor(typeof(Editors.RefIdTypeEditor), typeof(Editors.RefIdTypeEditor))]");
                                     viewBuilder.AppendLine($"\t\t\t[Category(\"{code}\")]");
+                                    viewBuilder.AppendLine($"\t\t\t[ExpandableObject]");
                                     viewBuilder.AppendLine($"\t\t\tpublic NewRefIdViewModel{postfix} {r} {{");
                                     viewBuilder.AppendLine($"\t\t\t\tget {{");
                                     viewBuilder.AppendLine($"\t\t\t\t\treturn _{r};");
@@ -720,7 +721,7 @@ namespace S100Framework
                                     viewBuilder.AppendLine($"\t\t\t\t}}");
                                     viewBuilder.AppendLine($"\t\t\t}}");
 
-                                    loadBuilder.AppendLine($"\t\t\t{r} = new NewRefIdViewModel() {{");
+                                    loadBuilder.AppendLine($"\t\t\t{r} = new NewRefIdViewModel {{");
                                     loadBuilder.AppendLine($"\t\t\t\tRefId = instance.{r}?.Value,");
                                     loadBuilder.AppendLine($"\t\t\t}};");
                                 }
@@ -923,7 +924,7 @@ namespace S100Framework
                                     viewBuilder.AppendLine($"\t\t\tpublic ObservableCollection<NewRefIdViewModel> {r} {{get; set;}}= new ();");
 
                                     loadBuilder.AppendLine($"\t\t\tforeach(var e in instance.{r}) {{");
-                                    loadBuilder.AppendLine($"\t\t\t\t{r}.Add(new NewRefIdViewModel() {{");
+                                    loadBuilder.AppendLine($"\t\t\t\t{r}.Add(new NewRefIdViewModel {{");
                                     loadBuilder.AppendLine($"\t\t\t\t\tRefId = e.Value,");
                                     loadBuilder.AppendLine($"\t\t\t\t}});");
                                     loadBuilder.AppendLine($"\t\t\t}};");
@@ -931,8 +932,9 @@ namespace S100Framework
                                 else {
                                     var postfix = lower == 0 ? "" : "?";
                                     viewBuilder.AppendLine($"\t\t\tprivate NewRefIdViewModel{postfix} _{r};");
-                                    viewBuilder.AppendLine("\t\t\t[Editor(typeof(Editors.RefIdTypeEditor), typeof(Editors.RefIdTypeEditor))]");
+                                    //viewBuilder.AppendLine("\t\t\t[Editor(typeof(Editors.RefIdTypeEditor), typeof(Editors.RefIdTypeEditor))]");
                                     viewBuilder.AppendLine($"\t\t\t[Category(\"{code}\")]");
+                                    viewBuilder.AppendLine($"\t\t\t[ExpandableObject]");
                                     viewBuilder.AppendLine($"\t\t\tpublic NewRefIdViewModel{postfix} {r} {{");
                                     viewBuilder.AppendLine($"\t\t\t\tget {{");
                                     viewBuilder.AppendLine($"\t\t\t\t\treturn _{r};");
@@ -942,7 +944,7 @@ namespace S100Framework
                                     viewBuilder.AppendLine($"\t\t\t\t}}");
                                     viewBuilder.AppendLine($"\t\t\t}}");
 
-                                    loadBuilder.AppendLine($"\t\t\t{r} = new NewRefIdViewModel() {{");
+                                    loadBuilder.AppendLine($"\t\t\t{r} = new NewRefIdViewModel {{");
                                     loadBuilder.AppendLine($"\t\t\t\tRefId = instance.{r}?.Value,");
                                     loadBuilder.AppendLine($"\t\t\t}};");
                                 }
@@ -986,6 +988,8 @@ namespace S100Framework
                             //viewBuilder.AppendLine($"\t\tpublic DomainModel.{productId}.Associations.FeatureAssociations.{code} Model => new () {{");
                             //viewBuilder.Append(modelBuilder.ToString());
                             //viewBuilder.AppendLine($"\t\t}};");
+
+
 
                             //  Constructor
                             viewBuilder.AppendLine(constructorBuilder.ToString());
@@ -2637,7 +2641,7 @@ namespace S100Framework.DomainModel
     {
         public virtual string Code => string.Empty;
         public virtual roleType? roleType => default;
-        public string AssociationConnectorTypeName { get; set; }
+        //public string AssociationConnectorTypeName { get; set; }
 
         [IgnoreDataMember()]
         public virtual string[]? this[string role] => default;

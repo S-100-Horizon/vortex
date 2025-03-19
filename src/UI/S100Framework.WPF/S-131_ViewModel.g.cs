@@ -2533,15 +2533,560 @@ namespace S100Framework.WPF.ViewModel.S131 {
         public override string? ToString() => $"General Harbour Information";
     }
 
+    [CategoryOrder("AdditionalInformation", 0)]
+    [CategoryOrder("InformationBindings", 100)]
+    public class AdditionalInformationViewModel<TAssociation> : ViewModelBase where TAssociation : DomainModel.S131.Associations.InformationAssociations.AdditionalInformation, new() {
+        private roleType _roleType;
+        [Category("AdditionalInformation")]
+        public ObservableCollection<NewRefIdViewModel<TAssociation>> providesInformation { get; set; } = new();
+
+        [Browsable(false)]
+        public string[] providesInformationInformationTypes { get; private set; }
+
+        [Category("AdditionalInformation")]
+        public ObservableCollection<NewRefIdViewModel<TAssociation>> informationProvidedFor { get; set; } = new();
+
+        [Browsable(false)]
+        public string[] informationProvidedForInformationTypes { get; private set; }
+
+        public void Load(DomainModel.S131.Associations.InformationAssociations.AdditionalInformation instance) {
+            foreach (var e in instance.providesInformation) {
+                providesInformation.Add(new NewRefIdViewModel<TAssociation> { RefId = e.Value, });
+            };
+            providesInformationInformationTypes = instance.providesInformationInformationTypes;
+            foreach (var e in instance.informationProvidedFor) {
+                informationProvidedFor.Add(new NewRefIdViewModel<TAssociation> { RefId = e.Value, });
+            };
+            informationProvidedForInformationTypes = instance.informationProvidedForInformationTypes;
+            _roleType = instance.roleType!.Value;
+        }
+
+        public override string Serialize() {
+            var instance = new TAssociation
+            {
+            };
+            return System.Text.Json.JsonSerializer.Serialize(instance);
+        }
+
+        public AdditionalInformationViewModel() : base() {
+        }
+
+        public override string? ToString() => $"Additional information";
+    }
+
+    [CategoryOrder("AuthorityContact", 0)]
+    [CategoryOrder("InformationBindings", 100)]
+    public class AuthorityContactViewModel<TAssociation> : ViewModelBase where TAssociation : DomainModel.S131.Associations.InformationAssociations.AuthorityContact, new() {
+        private roleType _roleType;
+        [Category("AuthorityContact")]
+        public ObservableCollection<NewRefIdViewModel<TAssociation>> theAuthority { get; set; } = new();
+
+        [Browsable(false)]
+        public string[] theAuthorityInformationTypes { get; private set; }
+
+        [Category("AuthorityContact")]
+        public ObservableCollection<NewRefIdViewModel<TAssociation>> theContactDetails { get; set; } = new();
+
+        [Browsable(false)]
+        public string[] theContactDetailsInformationTypes { get; private set; }
+
+        public void Load(DomainModel.S131.Associations.InformationAssociations.AuthorityContact instance) {
+            foreach (var e in instance.theAuthority) {
+                theAuthority.Add(new NewRefIdViewModel<TAssociation> { RefId = e.Value, });
+            };
+            theAuthorityInformationTypes = instance.theAuthorityInformationTypes;
+            foreach (var e in instance.theContactDetails) {
+                theContactDetails.Add(new NewRefIdViewModel<TAssociation> { RefId = e.Value, });
+            };
+            theContactDetailsInformationTypes = instance.theContactDetailsInformationTypes;
+            _roleType = instance.roleType!.Value;
+        }
+
+        public override string Serialize() {
+            var instance = new TAssociation
+            {
+            };
+            return System.Text.Json.JsonSerializer.Serialize(instance);
+        }
+
+        public AuthorityContactViewModel() : base() {
+        }
+
+        public override string? ToString() => $"Authority contact";
+    }
+
+    [CategoryOrder("AuthorityHours", 0)]
+    [CategoryOrder("InformationBindings", 100)]
+    public class AuthorityHoursViewModel<TAssociation> : ViewModelBase where TAssociation : DomainModel.S131.Associations.InformationAssociations.AuthorityHours, new() {
+        private roleType _roleType;
+        [Category("AuthorityHours")]
+        public ObservableCollection<NewRefIdViewModel<TAssociation>> theAuthority_srvHrs { get; set; } = new();
+
+        [Browsable(false)]
+        public string[] theAuthority_srvHrsInformationTypes { get; private set; }
+
+        [Category("AuthorityHours")]
+        public ObservableCollection<NewRefIdViewModel<TAssociation>> theServiceHours { get; set; } = new();
+
+        [Browsable(false)]
+        public string[] theServiceHoursInformationTypes { get; private set; }
+
+        public void Load(DomainModel.S131.Associations.InformationAssociations.AuthorityHours instance) {
+            foreach (var e in instance.theAuthority_srvHrs) {
+                theAuthority_srvHrs.Add(new NewRefIdViewModel<TAssociation> { RefId = e.Value, });
+            };
+            theAuthority_srvHrsInformationTypes = instance.theAuthority_srvHrsInformationTypes;
+            foreach (var e in instance.theServiceHours) {
+                theServiceHours.Add(new NewRefIdViewModel<TAssociation> { RefId = e.Value, });
+            };
+            theServiceHoursInformationTypes = instance.theServiceHoursInformationTypes;
+            _roleType = instance.roleType!.Value;
+        }
+
+        public override string Serialize() {
+            var instance = new TAssociation
+            {
+            };
+            return System.Text.Json.JsonSerializer.Serialize(instance);
+        }
+
+        public AuthorityHoursViewModel() : base() {
+        }
+
+        public override string? ToString() => $"Authority hours";
+    }
+
+    [CategoryOrder("AssociatedRxN", 0)]
+    [CategoryOrder("InformationBindings", 100)]
+    public class AssociatedRxNViewModel<TAssociation> : ViewModelBase where TAssociation : DomainModel.S131.Associations.InformationAssociations.AssociatedRxN, new() {
+        private roleType _roleType;
+        [Category("AssociatedRxN")]
+        public ObservableCollection<NewRefIdViewModel<TAssociation>> theRxN { get; set; } = new();
+
+        [Browsable(false)]
+        public string[] theRxNInformationTypes { get; private set; }
+
+        public void Load(DomainModel.S131.Associations.InformationAssociations.AssociatedRxN instance) {
+            foreach (var e in instance.theRxN) {
+                theRxN.Add(new NewRefIdViewModel<TAssociation> { RefId = e.Value, });
+            };
+            theRxNInformationTypes = instance.theRxNInformationTypes;
+            _roleType = instance.roleType!.Value;
+        }
+
+        public override string Serialize() {
+            var instance = new TAssociation
+            {
+            };
+            return System.Text.Json.JsonSerializer.Serialize(instance);
+        }
+
+        public AssociatedRxNViewModel() : base() {
+        }
+
+        public override string? ToString() => $"Associated RxN";
+    }
+
+    [CategoryOrder("ExceptionalWorkday", 0)]
+    [CategoryOrder("InformationBindings", 100)]
+    public class ExceptionalWorkdayViewModel<TAssociation> : ViewModelBase where TAssociation : DomainModel.S131.Associations.InformationAssociations.ExceptionalWorkday, new() {
+        private roleType _roleType;
+        [Category("ExceptionalWorkday")]
+        public ObservableCollection<NewRefIdViewModel<TAssociation>> partialWorkingDay { get; set; } = new();
+
+        [Browsable(false)]
+        public string[] partialWorkingDayInformationTypes { get; private set; }
+
+        public void Load(DomainModel.S131.Associations.InformationAssociations.ExceptionalWorkday instance) {
+            foreach (var e in instance.partialWorkingDay) {
+                partialWorkingDay.Add(new NewRefIdViewModel<TAssociation> { RefId = e.Value, });
+            };
+            partialWorkingDayInformationTypes = instance.partialWorkingDayInformationTypes;
+            _roleType = instance.roleType!.Value;
+        }
+
+        public override string Serialize() {
+            var instance = new TAssociation
+            {
+            };
+            return System.Text.Json.JsonSerializer.Serialize(instance);
+        }
+
+        public ExceptionalWorkdayViewModel() : base() {
+        }
+
+        public override string? ToString() => $"Exceptional workday";
+    }
+
+    [CategoryOrder("ServiceControl", 0)]
+    [CategoryOrder("InformationBindings", 100)]
+    public class ServiceControlViewModel<TAssociation> : ViewModelBase where TAssociation : DomainModel.S131.Associations.InformationAssociations.ServiceControl, new() {
+        private roleType _roleType;
+        private NewRefIdViewModel<TAssociation> _controlAuthority;
+        [Editor(typeof(Editors.RefIdTypeEditor), typeof(Editors.RefIdTypeEditor))]
+        [Category("ServiceControl")]
+        public NewRefIdViewModel<TAssociation> controlAuthority {
+            get {
+                return _controlAuthority;
+            }
+
+            set {
+                SetValue(ref _controlAuthority, value);
+            }
+        }
+
+        [Browsable(false)]
+        public string[] controlAuthorityInformationTypes { get; private set; }
+
+        public void Load(DomainModel.S131.Associations.InformationAssociations.ServiceControl instance) {
+            controlAuthority = new NewRefIdViewModel<TAssociation>
+            {
+                RefId = instance.controlAuthority?.Value,
+            };
+            controlAuthorityInformationTypes = instance.controlAuthorityInformationTypes;
+            _roleType = instance.roleType!.Value;
+        }
+
+        public override string Serialize() {
+            var instance = new TAssociation
+            {
+            };
+            return System.Text.Json.JsonSerializer.Serialize(instance);
+        }
+
+        public ServiceControlViewModel() : base() {
+        }
+
+        public override string? ToString() => $"Service control";
+    }
+
+    [CategoryOrder("ServiceContact", 0)]
+    [CategoryOrder("InformationBindings", 100)]
+    public class ServiceContactViewModel<TAssociation> : ViewModelBase where TAssociation : DomainModel.S131.Associations.InformationAssociations.ServiceContact, new() {
+        private roleType _roleType;
+        [Category("ServiceContact")]
+        public ObservableCollection<NewRefIdViewModel<TAssociation>> theContactDetails { get; set; } = new();
+
+        [Browsable(false)]
+        public string[] theContactDetailsInformationTypes { get; private set; }
+
+        public void Load(DomainModel.S131.Associations.InformationAssociations.ServiceContact instance) {
+            foreach (var e in instance.theContactDetails) {
+                theContactDetails.Add(new NewRefIdViewModel<TAssociation> { RefId = e.Value, });
+            };
+            theContactDetailsInformationTypes = instance.theContactDetailsInformationTypes;
+            _roleType = instance.roleType!.Value;
+        }
+
+        public override string Serialize() {
+            var instance = new TAssociation
+            {
+            };
+            return System.Text.Json.JsonSerializer.Serialize(instance);
+        }
+
+        public ServiceContactViewModel() : base() {
+        }
+
+        public override string? ToString() => $"Service contact";
+    }
+
+    [CategoryOrder("LocationHours", 0)]
+    [CategoryOrder("InformationBindings", 100)]
+    public class LocationHoursViewModel<TAssociation> : ViewModelBase where TAssociation : DomainModel.S131.Associations.InformationAssociations.LocationHours, new() {
+        private roleType _roleType;
+        private NewRefIdViewModel<TAssociation> _location_srvHrs;
+        [Editor(typeof(Editors.RefIdTypeEditor), typeof(Editors.RefIdTypeEditor))]
+        [Category("LocationHours")]
+        public NewRefIdViewModel<TAssociation> location_srvHrs {
+            get {
+                return _location_srvHrs;
+            }
+
+            set {
+                SetValue(ref _location_srvHrs, value);
+            }
+        }
+
+        [Browsable(false)]
+        public string[] location_srvHrsInformationTypes { get; private set; }
+
+        public void Load(DomainModel.S131.Associations.InformationAssociations.LocationHours instance) {
+            location_srvHrs = new NewRefIdViewModel<TAssociation>
+            {
+                RefId = instance.location_srvHrs?.Value,
+            };
+            location_srvHrsInformationTypes = instance.location_srvHrsInformationTypes;
+            _roleType = instance.roleType!.Value;
+        }
+
+        public override string Serialize() {
+            var instance = new TAssociation
+            {
+            };
+            return System.Text.Json.JsonSerializer.Serialize(instance);
+        }
+
+        public LocationHoursViewModel() : base() {
+        }
+
+        public override string? ToString() => $"Location hours";
+    }
+
+    [CategoryOrder("RelatedOrganisation", 0)]
+    [CategoryOrder("InformationBindings", 100)]
+    public class RelatedOrganisationViewModel<TAssociation> : ViewModelBase where TAssociation : DomainModel.S131.Associations.InformationAssociations.RelatedOrganisation, new() {
+        private roleType _roleType;
+        [Category("RelatedOrganisation")]
+        public ObservableCollection<NewRefIdViewModel<TAssociation>> theInformation { get; set; } = new();
+
+        [Browsable(false)]
+        public string[] theInformationInformationTypes { get; private set; }
+
+        [Category("RelatedOrganisation")]
+        public ObservableCollection<NewRefIdViewModel<TAssociation>> theOrganisation { get; set; } = new();
+
+        [Browsable(false)]
+        public string[] theOrganisationInformationTypes { get; private set; }
+
+        public void Load(DomainModel.S131.Associations.InformationAssociations.RelatedOrganisation instance) {
+            foreach (var e in instance.theInformation) {
+                theInformation.Add(new NewRefIdViewModel<TAssociation> { RefId = e.Value, });
+            };
+            theInformationInformationTypes = instance.theInformationInformationTypes;
+            foreach (var e in instance.theOrganisation) {
+                theOrganisation.Add(new NewRefIdViewModel<TAssociation> { RefId = e.Value, });
+            };
+            theOrganisationInformationTypes = instance.theOrganisationInformationTypes;
+            _roleType = instance.roleType!.Value;
+        }
+
+        public override string Serialize() {
+            var instance = new TAssociation
+            {
+            };
+            return System.Text.Json.JsonSerializer.Serialize(instance);
+        }
+
+        public RelatedOrganisationViewModel() : base() {
+        }
+
+        public override string? ToString() => $"Related organisation";
+    }
+
+    [CategoryOrder("InclusionType", 0)]
+    [CategoryOrder("InformationBindings", 100)]
+    public class InclusionTypeViewModel<TAssociation> : ViewModelBase where TAssociation : DomainModel.S131.Associations.InformationAssociations.InclusionType, new() {
+        private roleType _roleType;
+        private membership _membership;
+        [DomainModel.EnumerationAttribute(nameof(membershipList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
+        [Category("InclusionType")]
+        public membership membership {
+            get {
+                return _membership;
+            }
+
+            set {
+                SetValue(ref _membership, value);
+            }
+        }
+
+        [Category("InclusionType")]
+        public ObservableCollection<NewRefIdViewModel<TAssociation>> theApplicableRxN { get; set; } = new();
+
+        [Browsable(false)]
+        public string[] theApplicableRxNInformationTypes { get; private set; }
+
+        [Category("InclusionType")]
+        public ObservableCollection<NewRefIdViewModel<TAssociation>> isApplicableTo { get; set; } = new();
+
+        [Browsable(false)]
+        public string[] isApplicableToInformationTypes { get; private set; }
+
+        [Browsable(false)]
+        public membership[] membershipList => [(membership)1, (membership)2];
+
+        public void Load(DomainModel.S131.Associations.InformationAssociations.InclusionType instance) {
+            membership = instance.membership;
+            foreach (var e in instance.theApplicableRxN) {
+                theApplicableRxN.Add(new NewRefIdViewModel<TAssociation> { RefId = e.Value, });
+            };
+            theApplicableRxNInformationTypes = instance.theApplicableRxNInformationTypes;
+            foreach (var e in instance.isApplicableTo) {
+                isApplicableTo.Add(new NewRefIdViewModel<TAssociation> { RefId = e.Value, });
+            };
+            isApplicableToInformationTypes = instance.isApplicableToInformationTypes;
+            _roleType = instance.roleType!.Value;
+        }
+
+        public override string Serialize() {
+            var instance = new TAssociation
+            {
+                membership = this.membership,
+            };
+            return System.Text.Json.JsonSerializer.Serialize(instance);
+        }
+
+        public InclusionTypeViewModel() : base() {
+        }
+
+        public override string? ToString() => $"InclusionType";
+    }
+
+    [CategoryOrder("PermissionType", 0)]
+    [CategoryOrder("InformationBindings", 100)]
+    public class PermissionTypeViewModel<TAssociation> : ViewModelBase where TAssociation : DomainModel.S131.Associations.InformationAssociations.PermissionType, new() {
+        private roleType _roleType;
+        private categoryOfRelationship _categoryOfRelationship;
+        [DomainModel.EnumerationAttribute(nameof(categoryOfRelationshipList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
+        [Category("PermissionType")]
+        public categoryOfRelationship categoryOfRelationship {
+            get {
+                return _categoryOfRelationship;
+            }
+
+            set {
+                SetValue(ref _categoryOfRelationship, value);
+            }
+        }
+
+        [Category("PermissionType")]
+        public ObservableCollection<NewRefIdViewModel<TAssociation>> vslLocation { get; set; } = new();
+
+        [Browsable(false)]
+        public string[] vslLocationInformationTypes { get; private set; }
+
+        [Category("PermissionType")]
+        public ObservableCollection<NewRefIdViewModel<TAssociation>> permission { get; set; } = new();
+
+        [Browsable(false)]
+        public string[] permissionInformationTypes { get; private set; }
+
+        [Browsable(false)]
+        public categoryOfRelationship[] categoryOfRelationshipList => [(categoryOfRelationship)1, (categoryOfRelationship)2, (categoryOfRelationship)3, (categoryOfRelationship)4, (categoryOfRelationship)5, (categoryOfRelationship)6];
+
+        public void Load(DomainModel.S131.Associations.InformationAssociations.PermissionType instance) {
+            categoryOfRelationship = instance.categoryOfRelationship;
+            foreach (var e in instance.vslLocation) {
+                vslLocation.Add(new NewRefIdViewModel<TAssociation> { RefId = e.Value, });
+            };
+            vslLocationInformationTypes = instance.vslLocationInformationTypes;
+            foreach (var e in instance.permission) {
+                permission.Add(new NewRefIdViewModel<TAssociation> { RefId = e.Value, });
+            };
+            permissionInformationTypes = instance.permissionInformationTypes;
+            _roleType = instance.roleType!.Value;
+        }
+
+        public override string Serialize() {
+            var instance = new TAssociation
+            {
+                categoryOfRelationship = this.categoryOfRelationship,
+            };
+            return System.Text.Json.JsonSerializer.Serialize(instance);
+        }
+
+        public PermissionTypeViewModel() : base() {
+        }
+
+        public override string? ToString() => $"Permission Type";
+    }
+
+    [CategoryOrder("LimitEntrance", 0)]
+    [CategoryOrder("InformationBindings", 100)]
+    public class LimitEntranceViewModel<TAssociation> : ViewModelBase where TAssociation : DomainModel.S131.Associations.InformationAssociations.LimitEntrance, new() {
+        private roleType _roleType;
+        private NewRefIdViewModel<TAssociation> _entranceReference;
+        [Editor(typeof(Editors.RefIdTypeEditor), typeof(Editors.RefIdTypeEditor))]
+        [Category("LimitEntrance")]
+        public NewRefIdViewModel<TAssociation> entranceReference {
+            get {
+                return _entranceReference;
+            }
+
+            set {
+                SetValue(ref _entranceReference, value);
+            }
+        }
+
+        [Browsable(false)]
+        public string[] entranceReferenceInformationTypes { get; private set; }
+
+        public void Load(DomainModel.S131.Associations.InformationAssociations.LimitEntrance instance) {
+            entranceReference = new NewRefIdViewModel<TAssociation>
+            {
+                RefId = instance.entranceReference?.Value,
+            };
+            entranceReferenceInformationTypes = instance.entranceReferenceInformationTypes;
+            _roleType = instance.roleType!.Value;
+        }
+
+        public override string Serialize() {
+            var instance = new TAssociation
+            {
+            };
+            return System.Text.Json.JsonSerializer.Serialize(instance);
+        }
+
+        public LimitEntranceViewModel() : base() {
+        }
+
+        public override string? ToString() => $"Limit Entrance";
+    }
+
+    [CategoryOrder("ServiceAvailability", 0)]
+    [CategoryOrder("InformationBindings", 100)]
+    public class ServiceAvailabilityViewModel<TAssociation> : ViewModelBase where TAssociation : DomainModel.S131.Associations.InformationAssociations.ServiceAvailability, new() {
+        private roleType _roleType;
+        private NewRefIdViewModel<TAssociation> _serviceDescriptionReference;
+        [Editor(typeof(Editors.RefIdTypeEditor), typeof(Editors.RefIdTypeEditor))]
+        [Category("ServiceAvailability")]
+        public NewRefIdViewModel<TAssociation> serviceDescriptionReference {
+            get {
+                return _serviceDescriptionReference;
+            }
+
+            set {
+                SetValue(ref _serviceDescriptionReference, value);
+            }
+        }
+
+        [Browsable(false)]
+        public string[] serviceDescriptionReferenceInformationTypes { get; private set; }
+
+        public void Load(DomainModel.S131.Associations.InformationAssociations.ServiceAvailability instance) {
+            serviceDescriptionReference = new NewRefIdViewModel<TAssociation>
+            {
+                RefId = instance.serviceDescriptionReference?.Value,
+            };
+            serviceDescriptionReferenceInformationTypes = instance.serviceDescriptionReferenceInformationTypes;
+            _roleType = instance.roleType!.Value;
+        }
+
+        public override string Serialize() {
+            var instance = new TAssociation
+            {
+            };
+            return System.Text.Json.JsonSerializer.Serialize(instance);
+        }
+
+        public ServiceAvailabilityViewModel() : base() {
+        }
+
+        public override string? ToString() => $"Service Availability";
+    }
+
     [CategoryOrder("TextAssociation", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public class TextAssociationViewModel : ViewModelBase {
+    public class TextAssociationViewModel<TAssociation> : ViewModelBase where TAssociation : DomainModel.S131.Associations.FeatureAssociations.TextAssociation, new() {
         private roleType _roleType;
-        private NewRefIdViewModel? _identifies;
+        private NewRefIdViewModel<TAssociation>? _identifies;
         [Editor(typeof(Editors.RefIdTypeEditor), typeof(Editors.RefIdTypeEditor))]
         [Category("TextAssociation")]
-        public NewRefIdViewModel? identifies {
+        public NewRefIdViewModel<TAssociation>? identifies {
             get {
                 return _identifies;
             }
@@ -2554,10 +3099,10 @@ namespace S100Framework.WPF.ViewModel.S131 {
         [Browsable(false)]
         public string[] identifiesFeatureTypes { get; private set; }
 
-        private NewRefIdViewModel _positions;
+        private NewRefIdViewModel<TAssociation> _positions;
         [Editor(typeof(Editors.RefIdTypeEditor), typeof(Editors.RefIdTypeEditor))]
         [Category("TextAssociation")]
-        public NewRefIdViewModel positions {
+        public NewRefIdViewModel<TAssociation> positions {
             get {
                 return _positions;
             }
@@ -2571,23 +3116,22 @@ namespace S100Framework.WPF.ViewModel.S131 {
         public string[] positionsFeatureTypes { get; private set; }
 
         public void Load(DomainModel.S131.Associations.FeatureAssociations.TextAssociation instance) {
-            identifies = new NewRefIdViewModel()
+            identifies = new NewRefIdViewModel<TAssociation>
             {
                 RefId = instance.identifies?.Value,
             };
             identifiesFeatureTypes = instance.identifiesFeatureTypes;
-            positions = new NewRefIdViewModel()
+            positions = new NewRefIdViewModel<TAssociation>
             {
                 RefId = instance.positions?.Value,
             };
             positionsFeatureTypes = instance.positionsFeatureTypes;
-            _roleType = instance.roleType;
+            _roleType = instance.roleType!.Value;
         }
 
         public override string Serialize() {
-            var instance = new DomainModel.S131.Associations.FeatureAssociations.TextAssociation
+            var instance = new TAssociation
             {
-                roleType = _roleType,
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
@@ -2601,18 +3145,18 @@ namespace S100Framework.WPF.ViewModel.S131 {
     [CategoryOrder("Subsection", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public class SubsectionViewModel : ViewModelBase {
+    public class SubsectionViewModel<TAssociation> : ViewModelBase where TAssociation : DomainModel.S131.Associations.FeatureAssociations.Subsection, new() {
         private roleType _roleType;
         [Category("Subsection")]
-        public ObservableCollection<NewRefIdViewModel> subUnit { get; set; } = new();
+        public ObservableCollection<NewRefIdViewModel<TAssociation>> subUnit { get; set; } = new();
 
         [Browsable(false)]
         public string[] subUnitFeatureTypes { get; private set; }
 
-        private NewRefIdViewModel _constitute;
+        private NewRefIdViewModel<TAssociation> _constitute;
         [Editor(typeof(Editors.RefIdTypeEditor), typeof(Editors.RefIdTypeEditor))]
         [Category("Subsection")]
-        public NewRefIdViewModel constitute {
+        public NewRefIdViewModel<TAssociation> constitute {
             get {
                 return _constitute;
             }
@@ -2627,21 +3171,20 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
         public void Load(DomainModel.S131.Associations.FeatureAssociations.Subsection instance) {
             foreach (var e in instance.subUnit) {
-                subUnit.Add(new NewRefIdViewModel() { RefId = e.Value, });
+                subUnit.Add(new NewRefIdViewModel<TAssociation> { RefId = e.Value, });
             };
             subUnitFeatureTypes = instance.subUnitFeatureTypes;
-            constitute = new NewRefIdViewModel()
+            constitute = new NewRefIdViewModel<TAssociation>
             {
                 RefId = instance.constitute?.Value,
             };
             constituteFeatureTypes = instance.constituteFeatureTypes;
-            _roleType = instance.roleType;
+            _roleType = instance.roleType!.Value;
         }
 
         public override string Serialize() {
-            var instance = new DomainModel.S131.Associations.FeatureAssociations.Subsection
+            var instance = new TAssociation
             {
-                roleType = _roleType,
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
@@ -2655,12 +3198,12 @@ namespace S100Framework.WPF.ViewModel.S131 {
     [CategoryOrder("Infrastructure", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public class InfrastructureViewModel : ViewModelBase {
+    public class InfrastructureViewModel<TAssociation> : ViewModelBase where TAssociation : DomainModel.S131.Associations.FeatureAssociations.Infrastructure, new() {
         private roleType _roleType;
-        private NewRefIdViewModel _infrastructureLocation;
+        private NewRefIdViewModel<TAssociation> _infrastructureLocation;
         [Editor(typeof(Editors.RefIdTypeEditor), typeof(Editors.RefIdTypeEditor))]
         [Category("Infrastructure")]
-        public NewRefIdViewModel infrastructureLocation {
+        public NewRefIdViewModel<TAssociation> infrastructureLocation {
             get {
                 return _infrastructureLocation;
             }
@@ -2674,28 +3217,27 @@ namespace S100Framework.WPF.ViewModel.S131 {
         public string[] infrastructureLocationFeatureTypes { get; private set; }
 
         [Category("Infrastructure")]
-        public ObservableCollection<NewRefIdViewModel> hasInfrastructure { get; set; } = new();
+        public ObservableCollection<NewRefIdViewModel<TAssociation>> hasInfrastructure { get; set; } = new();
 
         [Browsable(false)]
         public string[] hasInfrastructureFeatureTypes { get; private set; }
 
         public void Load(DomainModel.S131.Associations.FeatureAssociations.Infrastructure instance) {
-            infrastructureLocation = new NewRefIdViewModel()
+            infrastructureLocation = new NewRefIdViewModel<TAssociation>
             {
                 RefId = instance.infrastructureLocation?.Value,
             };
             infrastructureLocationFeatureTypes = instance.infrastructureLocationFeatureTypes;
             foreach (var e in instance.hasInfrastructure) {
-                hasInfrastructure.Add(new NewRefIdViewModel() { RefId = e.Value, });
+                hasInfrastructure.Add(new NewRefIdViewModel<TAssociation> { RefId = e.Value, });
             };
             hasInfrastructureFeatureTypes = instance.hasInfrastructureFeatureTypes;
-            _roleType = instance.roleType;
+            _roleType = instance.roleType!.Value;
         }
 
         public override string Serialize() {
-            var instance = new DomainModel.S131.Associations.FeatureAssociations.Infrastructure
+            var instance = new TAssociation
             {
-                roleType = _roleType,
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
@@ -2709,12 +3251,12 @@ namespace S100Framework.WPF.ViewModel.S131 {
     [CategoryOrder("PrimaryAuxiliaryFacility", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public class PrimaryAuxiliaryFacilityViewModel : ViewModelBase {
+    public class PrimaryAuxiliaryFacilityViewModel<TAssociation> : ViewModelBase where TAssociation : DomainModel.S131.Associations.FeatureAssociations.PrimaryAuxiliaryFacility, new() {
         private roleType _roleType;
-        private NewRefIdViewModel _primaryFacility;
+        private NewRefIdViewModel<TAssociation> _primaryFacility;
         [Editor(typeof(Editors.RefIdTypeEditor), typeof(Editors.RefIdTypeEditor))]
         [Category("PrimaryAuxiliaryFacility")]
-        public NewRefIdViewModel primaryFacility {
+        public NewRefIdViewModel<TAssociation> primaryFacility {
             get {
                 return _primaryFacility;
             }
@@ -2728,28 +3270,27 @@ namespace S100Framework.WPF.ViewModel.S131 {
         public string[] primaryFacilityFeatureTypes { get; private set; }
 
         [Category("PrimaryAuxiliaryFacility")]
-        public ObservableCollection<NewRefIdViewModel> auxiliaryFacility { get; set; } = new();
+        public ObservableCollection<NewRefIdViewModel<TAssociation>> auxiliaryFacility { get; set; } = new();
 
         [Browsable(false)]
         public string[] auxiliaryFacilityFeatureTypes { get; private set; }
 
         public void Load(DomainModel.S131.Associations.FeatureAssociations.PrimaryAuxiliaryFacility instance) {
-            primaryFacility = new NewRefIdViewModel()
+            primaryFacility = new NewRefIdViewModel<TAssociation>
             {
                 RefId = instance.primaryFacility?.Value,
             };
             primaryFacilityFeatureTypes = instance.primaryFacilityFeatureTypes;
             foreach (var e in instance.auxiliaryFacility) {
-                auxiliaryFacility.Add(new NewRefIdViewModel() { RefId = e.Value, });
+                auxiliaryFacility.Add(new NewRefIdViewModel<TAssociation> { RefId = e.Value, });
             };
             auxiliaryFacilityFeatureTypes = instance.auxiliaryFacilityFeatureTypes;
-            _roleType = instance.roleType;
+            _roleType = instance.roleType!.Value;
         }
 
         public override string Serialize() {
-            var instance = new DomainModel.S131.Associations.FeatureAssociations.PrimaryAuxiliaryFacility
+            var instance = new TAssociation
             {
-                roleType = _roleType,
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
@@ -2763,18 +3304,18 @@ namespace S100Framework.WPF.ViewModel.S131 {
     [CategoryOrder("Demarcation", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public class DemarcationViewModel : ViewModelBase {
+    public class DemarcationViewModel<TAssociation> : ViewModelBase where TAssociation : DomainModel.S131.Associations.FeatureAssociations.Demarcation, new() {
         private roleType _roleType;
         [Category("Demarcation")]
-        public ObservableCollection<NewRefIdViewModel> demarcationIndicator { get; set; } = new();
+        public ObservableCollection<NewRefIdViewModel<TAssociation>> demarcationIndicator { get; set; } = new();
 
         [Browsable(false)]
         public string[] demarcationIndicatorFeatureTypes { get; private set; }
 
-        private NewRefIdViewModel? _demarcatedFeature;
+        private NewRefIdViewModel<TAssociation>? _demarcatedFeature;
         [Editor(typeof(Editors.RefIdTypeEditor), typeof(Editors.RefIdTypeEditor))]
         [Category("Demarcation")]
-        public NewRefIdViewModel? demarcatedFeature {
+        public NewRefIdViewModel<TAssociation>? demarcatedFeature {
             get {
                 return _demarcatedFeature;
             }
@@ -2789,21 +3330,20 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
         public void Load(DomainModel.S131.Associations.FeatureAssociations.Demarcation instance) {
             foreach (var e in instance.demarcationIndicator) {
-                demarcationIndicator.Add(new NewRefIdViewModel() { RefId = e.Value, });
+                demarcationIndicator.Add(new NewRefIdViewModel<TAssociation> { RefId = e.Value, });
             };
             demarcationIndicatorFeatureTypes = instance.demarcationIndicatorFeatureTypes;
-            demarcatedFeature = new NewRefIdViewModel()
+            demarcatedFeature = new NewRefIdViewModel<TAssociation>
             {
                 RefId = instance.demarcatedFeature?.Value,
             };
             demarcatedFeatureFeatureTypes = instance.demarcatedFeatureFeatureTypes;
-            _roleType = instance.roleType;
+            _roleType = instance.roleType!.Value;
         }
 
         public override string Serialize() {
-            var instance = new DomainModel.S131.Associations.FeatureAssociations.Demarcation
+            var instance = new TAssociation
             {
-                roleType = _roleType,
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
@@ -2817,12 +3357,12 @@ namespace S100Framework.WPF.ViewModel.S131 {
     [CategoryOrder("JurisdictionalLimit", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public class JurisdictionalLimitViewModel : ViewModelBase {
+    public class JurisdictionalLimitViewModel<TAssociation> : ViewModelBase where TAssociation : DomainModel.S131.Associations.FeatureAssociations.JurisdictionalLimit, new() {
         private roleType _roleType;
-        private NewRefIdViewModel? _limitReference;
+        private NewRefIdViewModel<TAssociation>? _limitReference;
         [Editor(typeof(Editors.RefIdTypeEditor), typeof(Editors.RefIdTypeEditor))]
         [Category("JurisdictionalLimit")]
-        public NewRefIdViewModel? limitReference {
+        public NewRefIdViewModel<TAssociation>? limitReference {
             get {
                 return _limitReference;
             }
@@ -2835,10 +3375,10 @@ namespace S100Framework.WPF.ViewModel.S131 {
         [Browsable(false)]
         public string[] limitReferenceFeatureTypes { get; private set; }
 
-        private NewRefIdViewModel _limitExtent;
+        private NewRefIdViewModel<TAssociation> _limitExtent;
         [Editor(typeof(Editors.RefIdTypeEditor), typeof(Editors.RefIdTypeEditor))]
         [Category("JurisdictionalLimit")]
-        public NewRefIdViewModel limitExtent {
+        public NewRefIdViewModel<TAssociation> limitExtent {
             get {
                 return _limitExtent;
             }
@@ -2852,23 +3392,22 @@ namespace S100Framework.WPF.ViewModel.S131 {
         public string[] limitExtentFeatureTypes { get; private set; }
 
         public void Load(DomainModel.S131.Associations.FeatureAssociations.JurisdictionalLimit instance) {
-            limitReference = new NewRefIdViewModel()
+            limitReference = new NewRefIdViewModel<TAssociation>
             {
                 RefId = instance.limitReference?.Value,
             };
             limitReferenceFeatureTypes = instance.limitReferenceFeatureTypes;
-            limitExtent = new NewRefIdViewModel()
+            limitExtent = new NewRefIdViewModel<TAssociation>
             {
                 RefId = instance.limitExtent?.Value,
             };
             limitExtentFeatureTypes = instance.limitExtentFeatureTypes;
-            _roleType = instance.roleType;
+            _roleType = instance.roleType!.Value;
         }
 
         public override string Serialize() {
-            var instance = new DomainModel.S131.Associations.FeatureAssociations.JurisdictionalLimit
+            var instance = new TAssociation
             {
-                roleType = _roleType,
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
@@ -2882,18 +3421,18 @@ namespace S100Framework.WPF.ViewModel.S131 {
     [CategoryOrder("LayoutDivision", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public class LayoutDivisionViewModel : ViewModelBase {
+    public class LayoutDivisionViewModel<TAssociation> : ViewModelBase where TAssociation : DomainModel.S131.Associations.FeatureAssociations.LayoutDivision, new() {
         private roleType _roleType;
         [Category("LayoutDivision")]
-        public ObservableCollection<NewRefIdViewModel> layoutUnit { get; set; } = new();
+        public ObservableCollection<NewRefIdViewModel<TAssociation>> layoutUnit { get; set; } = new();
 
         [Browsable(false)]
         public string[] layoutUnitFeatureTypes { get; private set; }
 
-        private NewRefIdViewModel? _componentOf;
+        private NewRefIdViewModel<TAssociation>? _componentOf;
         [Editor(typeof(Editors.RefIdTypeEditor), typeof(Editors.RefIdTypeEditor))]
         [Category("LayoutDivision")]
-        public NewRefIdViewModel? componentOf {
+        public NewRefIdViewModel<TAssociation>? componentOf {
             get {
                 return _componentOf;
             }
@@ -2908,21 +3447,20 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
         public void Load(DomainModel.S131.Associations.FeatureAssociations.LayoutDivision instance) {
             foreach (var e in instance.layoutUnit) {
-                layoutUnit.Add(new NewRefIdViewModel() { RefId = e.Value, });
+                layoutUnit.Add(new NewRefIdViewModel<TAssociation> { RefId = e.Value, });
             };
             layoutUnitFeatureTypes = instance.layoutUnitFeatureTypes;
-            componentOf = new NewRefIdViewModel()
+            componentOf = new NewRefIdViewModel<TAssociation>
             {
                 RefId = instance.componentOf?.Value,
             };
             componentOfFeatureTypes = instance.componentOfFeatureTypes;
-            _roleType = instance.roleType;
+            _roleType = instance.roleType!.Value;
         }
 
         public override string Serialize() {
-            var instance = new DomainModel.S131.Associations.FeatureAssociations.LayoutDivision
+            var instance = new TAssociation
             {
-                roleType = _roleType,
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }

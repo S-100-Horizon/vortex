@@ -1735,6 +1735,385 @@ namespace S100Framework.WPF.ViewModel.S122 {
         public override string? ToString() => $"Telecommunications";
     }
 
+    [CategoryOrder("AssociatedRxN", 0)]
+    [CategoryOrder("InformationBindings", 100)]
+    public class AssociatedRxNViewModel<TAssociation> : ViewModelBase where TAssociation : DomainModel.S122.Associations.InformationAssociations.AssociatedRxN, new() {
+        private roleType _roleType;
+        [Category("AssociatedRxN")]
+        public ObservableCollection<NewRefIdViewModel<TAssociation>> theRxN { get; set; } = new();
+
+        [Browsable(false)]
+        public string[] theRxNInformationTypes { get; private set; }
+
+        public void Load(DomainModel.S122.Associations.InformationAssociations.AssociatedRxN instance) {
+            foreach (var e in instance.theRxN) {
+                theRxN.Add(new NewRefIdViewModel<TAssociation> { RefId = e.Value, });
+            };
+            theRxNInformationTypes = instance.theRxNInformationTypes;
+            _roleType = instance.roleType!.Value;
+        }
+
+        public override string Serialize() {
+            var instance = new TAssociation
+            {
+            };
+            return System.Text.Json.JsonSerializer.Serialize(instance);
+        }
+
+        public AssociatedRxNViewModel() : base() {
+        }
+
+        public override string? ToString() => $"Associated RxN";
+    }
+
+    [CategoryOrder("ExceptionalWorkday", 0)]
+    [CategoryOrder("InformationBindings", 100)]
+    public class ExceptionalWorkdayViewModel<TAssociation> : ViewModelBase where TAssociation : DomainModel.S122.Associations.InformationAssociations.ExceptionalWorkday, new() {
+        private roleType _roleType;
+        [Category("ExceptionalWorkday")]
+        public ObservableCollection<NewRefIdViewModel<TAssociation>> partialWorkingDay { get; set; } = new();
+
+        [Browsable(false)]
+        public string[] partialWorkingDayInformationTypes { get; private set; }
+
+        [Category("ExceptionalWorkday")]
+        public ObservableCollection<NewRefIdViewModel<TAssociation>> theServiceHours_nsdy { get; set; } = new();
+
+        [Browsable(false)]
+        public string[] theServiceHours_nsdyInformationTypes { get; private set; }
+
+        public void Load(DomainModel.S122.Associations.InformationAssociations.ExceptionalWorkday instance) {
+            foreach (var e in instance.partialWorkingDay) {
+                partialWorkingDay.Add(new NewRefIdViewModel<TAssociation> { RefId = e.Value, });
+            };
+            partialWorkingDayInformationTypes = instance.partialWorkingDayInformationTypes;
+            foreach (var e in instance.theServiceHours_nsdy) {
+                theServiceHours_nsdy.Add(new NewRefIdViewModel<TAssociation> { RefId = e.Value, });
+            };
+            theServiceHours_nsdyInformationTypes = instance.theServiceHours_nsdyInformationTypes;
+            _roleType = instance.roleType!.Value;
+        }
+
+        public override string Serialize() {
+            var instance = new TAssociation
+            {
+            };
+            return System.Text.Json.JsonSerializer.Serialize(instance);
+        }
+
+        public ExceptionalWorkdayViewModel() : base() {
+        }
+
+        public override string? ToString() => $"Exceptional workday";
+    }
+
+    [CategoryOrder("ProtectedAreaAuthority", 0)]
+    [CategoryOrder("InformationBindings", 100)]
+    public class ProtectedAreaAuthorityViewModel<TAssociation> : ViewModelBase where TAssociation : DomainModel.S122.Associations.InformationAssociations.ProtectedAreaAuthority, new() {
+        private roleType _roleType;
+        [Category("ProtectedAreaAuthority")]
+        public ObservableCollection<NewRefIdViewModel<TAssociation>> responsibleAuthority { get; set; } = new();
+
+        [Browsable(false)]
+        public string[] responsibleAuthorityInformationTypes { get; private set; }
+
+        public void Load(DomainModel.S122.Associations.InformationAssociations.ProtectedAreaAuthority instance) {
+            foreach (var e in instance.responsibleAuthority) {
+                responsibleAuthority.Add(new NewRefIdViewModel<TAssociation> { RefId = e.Value, });
+            };
+            responsibleAuthorityInformationTypes = instance.responsibleAuthorityInformationTypes;
+            _roleType = instance.roleType!.Value;
+        }
+
+        public override string Serialize() {
+            var instance = new TAssociation
+            {
+            };
+            return System.Text.Json.JsonSerializer.Serialize(instance);
+        }
+
+        public ProtectedAreaAuthorityViewModel() : base() {
+        }
+
+        public override string? ToString() => $"Protected area authority";
+    }
+
+    [CategoryOrder("ServiceControl", 0)]
+    [CategoryOrder("InformationBindings", 100)]
+    public class ServiceControlViewModel<TAssociation> : ViewModelBase where TAssociation : DomainModel.S122.Associations.InformationAssociations.ServiceControl, new() {
+        private roleType _roleType;
+        private NewRefIdViewModel<TAssociation> _controlAuthority;
+        [Editor(typeof(Editors.RefIdTypeEditor), typeof(Editors.RefIdTypeEditor))]
+        [Category("ServiceControl")]
+        public NewRefIdViewModel<TAssociation> controlAuthority {
+            get {
+                return _controlAuthority;
+            }
+
+            set {
+                SetValue(ref _controlAuthority, value);
+            }
+        }
+
+        [Browsable(false)]
+        public string[] controlAuthorityInformationTypes { get; private set; }
+
+        public void Load(DomainModel.S122.Associations.InformationAssociations.ServiceControl instance) {
+            controlAuthority = new NewRefIdViewModel<TAssociation>
+            {
+                RefId = instance.controlAuthority?.Value,
+            };
+            controlAuthorityInformationTypes = instance.controlAuthorityInformationTypes;
+            _roleType = instance.roleType!.Value;
+        }
+
+        public override string Serialize() {
+            var instance = new TAssociation
+            {
+            };
+            return System.Text.Json.JsonSerializer.Serialize(instance);
+        }
+
+        public ServiceControlViewModel() : base() {
+        }
+
+        public override string? ToString() => $"Service control";
+    }
+
+    [CategoryOrder("RelatedOrganisation", 0)]
+    [CategoryOrder("InformationBindings", 100)]
+    public class RelatedOrganisationViewModel<TAssociation> : ViewModelBase where TAssociation : DomainModel.S122.Associations.InformationAssociations.RelatedOrganisation, new() {
+        private roleType _roleType;
+        [Category("RelatedOrganisation")]
+        public ObservableCollection<NewRefIdViewModel<TAssociation>> theOrganisation { get; set; } = new();
+
+        [Browsable(false)]
+        public string[] theOrganisationInformationTypes { get; private set; }
+
+        [Category("RelatedOrganisation")]
+        public ObservableCollection<NewRefIdViewModel<TAssociation>> theInformation { get; set; } = new();
+
+        [Browsable(false)]
+        public string[] theInformationInformationTypes { get; private set; }
+
+        public void Load(DomainModel.S122.Associations.InformationAssociations.RelatedOrganisation instance) {
+            foreach (var e in instance.theOrganisation) {
+                theOrganisation.Add(new NewRefIdViewModel<TAssociation> { RefId = e.Value, });
+            };
+            theOrganisationInformationTypes = instance.theOrganisationInformationTypes;
+            foreach (var e in instance.theInformation) {
+                theInformation.Add(new NewRefIdViewModel<TAssociation> { RefId = e.Value, });
+            };
+            theInformationInformationTypes = instance.theInformationInformationTypes;
+            _roleType = instance.roleType!.Value;
+        }
+
+        public override string Serialize() {
+            var instance = new TAssociation
+            {
+            };
+            return System.Text.Json.JsonSerializer.Serialize(instance);
+        }
+
+        public RelatedOrganisationViewModel() : base() {
+        }
+
+        public override string? ToString() => $"Related organisation";
+    }
+
+    [CategoryOrder("PermissionType", 0)]
+    [CategoryOrder("InformationBindings", 100)]
+    public class PermissionTypeViewModel<TAssociation> : ViewModelBase where TAssociation : DomainModel.S122.Associations.InformationAssociations.PermissionType, new() {
+        private roleType _roleType;
+        private categoryOfRelationship _categoryOfRelationship;
+        [DomainModel.EnumerationAttribute(nameof(categoryOfRelationshipList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
+        [Category("PermissionType")]
+        public categoryOfRelationship categoryOfRelationship {
+            get {
+                return _categoryOfRelationship;
+            }
+
+            set {
+                SetValue(ref _categoryOfRelationship, value);
+            }
+        }
+
+        [Browsable(false)]
+        public categoryOfRelationship[] categoryOfRelationshipList => [];
+
+        public void Load(DomainModel.S122.Associations.InformationAssociations.PermissionType instance) {
+            categoryOfRelationship = instance.categoryOfRelationship;
+            _roleType = instance.roleType!.Value;
+        }
+
+        public override string Serialize() {
+            var instance = new TAssociation
+            {
+                categoryOfRelationship = this.categoryOfRelationship,
+            };
+            return System.Text.Json.JsonSerializer.Serialize(instance);
+        }
+
+        public PermissionTypeViewModel() : base() {
+        }
+
+        public override string? ToString() => $"Permission Type";
+    }
+
+    [CategoryOrder("InclusionType", 0)]
+    [CategoryOrder("InformationBindings", 100)]
+    public class InclusionTypeViewModel<TAssociation> : ViewModelBase where TAssociation : DomainModel.S122.Associations.InformationAssociations.InclusionType, new() {
+        private roleType _roleType;
+        private membership _membership;
+        [DomainModel.EnumerationAttribute(nameof(membershipList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
+        [Category("InclusionType")]
+        public membership membership {
+            get {
+                return _membership;
+            }
+
+            set {
+                SetValue(ref _membership, value);
+            }
+        }
+
+        [Browsable(false)]
+        public membership[] membershipList => [];
+
+        public void Load(DomainModel.S122.Associations.InformationAssociations.InclusionType instance) {
+            membership = instance.membership;
+            _roleType = instance.roleType!.Value;
+        }
+
+        public override string Serialize() {
+            var instance = new TAssociation
+            {
+                membership = this.membership,
+            };
+            return System.Text.Json.JsonSerializer.Serialize(instance);
+        }
+
+        public InclusionTypeViewModel() : base() {
+        }
+
+        public override string? ToString() => $"Inclusion Type";
+    }
+
+    [CategoryOrder("AuthorityContact", 0)]
+    [CategoryOrder("InformationBindings", 100)]
+    public class AuthorityContactViewModel<TAssociation> : ViewModelBase where TAssociation : DomainModel.S122.Associations.InformationAssociations.AuthorityContact, new() {
+        private roleType _roleType;
+        [Category("AuthorityContact")]
+        public ObservableCollection<NewRefIdViewModel<TAssociation>> theAuthority { get; set; } = new();
+
+        [Browsable(false)]
+        public string[] theAuthorityInformationTypes { get; private set; }
+
+        [Category("AuthorityContact")]
+        public ObservableCollection<NewRefIdViewModel<TAssociation>> theContactDetails { get; set; } = new();
+
+        [Browsable(false)]
+        public string[] theContactDetailsInformationTypes { get; private set; }
+
+        public void Load(DomainModel.S122.Associations.InformationAssociations.AuthorityContact instance) {
+            foreach (var e in instance.theAuthority) {
+                theAuthority.Add(new NewRefIdViewModel<TAssociation> { RefId = e.Value, });
+            };
+            theAuthorityInformationTypes = instance.theAuthorityInformationTypes;
+            foreach (var e in instance.theContactDetails) {
+                theContactDetails.Add(new NewRefIdViewModel<TAssociation> { RefId = e.Value, });
+            };
+            theContactDetailsInformationTypes = instance.theContactDetailsInformationTypes;
+            _roleType = instance.roleType!.Value;
+        }
+
+        public override string Serialize() {
+            var instance = new TAssociation
+            {
+            };
+            return System.Text.Json.JsonSerializer.Serialize(instance);
+        }
+
+        public AuthorityContactViewModel() : base() {
+        }
+
+        public override string? ToString() => $"Authority Contact";
+    }
+
+    [CategoryOrder("AuthorityHours", 0)]
+    [CategoryOrder("InformationBindings", 100)]
+    public class AuthorityHoursViewModel<TAssociation> : ViewModelBase where TAssociation : DomainModel.S122.Associations.InformationAssociations.AuthorityHours, new() {
+        private roleType _roleType;
+        [Category("AuthorityHours")]
+        public ObservableCollection<NewRefIdViewModel<TAssociation>> theAuthority_srvHrs { get; set; } = new();
+
+        [Browsable(false)]
+        public string[] theAuthority_srvHrsInformationTypes { get; private set; }
+
+        [Category("AuthorityHours")]
+        public ObservableCollection<NewRefIdViewModel<TAssociation>> theServiceHours { get; set; } = new();
+
+        [Browsable(false)]
+        public string[] theServiceHoursInformationTypes { get; private set; }
+
+        public void Load(DomainModel.S122.Associations.InformationAssociations.AuthorityHours instance) {
+            foreach (var e in instance.theAuthority_srvHrs) {
+                theAuthority_srvHrs.Add(new NewRefIdViewModel<TAssociation> { RefId = e.Value, });
+            };
+            theAuthority_srvHrsInformationTypes = instance.theAuthority_srvHrsInformationTypes;
+            foreach (var e in instance.theServiceHours) {
+                theServiceHours.Add(new NewRefIdViewModel<TAssociation> { RefId = e.Value, });
+            };
+            theServiceHoursInformationTypes = instance.theServiceHoursInformationTypes;
+            _roleType = instance.roleType!.Value;
+        }
+
+        public override string Serialize() {
+            var instance = new TAssociation
+            {
+            };
+            return System.Text.Json.JsonSerializer.Serialize(instance);
+        }
+
+        public AuthorityHoursViewModel() : base() {
+        }
+
+        public override string? ToString() => $"Authority Hours";
+    }
+
+    [CategoryOrder("additionalInformation", 0)]
+    [CategoryOrder("InformationBindings", 100)]
+    public class additionalInformationViewModel<TAssociation> : ViewModelBase where TAssociation : DomainModel.S122.Associations.InformationAssociations.additionalInformation, new() {
+        private roleType _roleType;
+        [Category("additionalInformation")]
+        public ObservableCollection<NewRefIdViewModel<TAssociation>> providesInformation { get; set; } = new();
+
+        [Browsable(false)]
+        public string[] providesInformationInformationTypes { get; private set; }
+
+        public void Load(DomainModel.S122.Associations.InformationAssociations.additionalInformation instance) {
+            foreach (var e in instance.providesInformation) {
+                providesInformation.Add(new NewRefIdViewModel<TAssociation> { RefId = e.Value, });
+            };
+            providesInformationInformationTypes = instance.providesInformationInformationTypes;
+            _roleType = instance.roleType!.Value;
+        }
+
+        public override string Serialize() {
+            var instance = new TAssociation
+            {
+            };
+            return System.Text.Json.JsonSerializer.Serialize(instance);
+        }
+
+        public additionalInformationViewModel() : base() {
+        }
+
+        public override string? ToString() => $"Additional Information";
+    }
+
     [CategoryOrder("InformationType", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
