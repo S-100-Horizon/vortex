@@ -3553,6 +3553,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
     public class AidsToNavigationAssociationViewModel : ViewModelBase {
         private roleType _roleType;
         private NewRefIdViewModel _theCollection;
+        [Editor(typeof(Editors.RefIdTypeEditor), typeof(Editors.RefIdTypeEditor))]
         [Category("AidsToNavigationAssociation")]
         public NewRefIdViewModel theCollection {
             get {
@@ -3606,6 +3607,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
     public class ASLAggregationViewModel : ViewModelBase {
         private roleType _roleType;
         private NewRefIdViewModel _theCollection;
+        [Editor(typeof(Editors.RefIdTypeEditor), typeof(Editors.RefIdTypeEditor))]
         [Category("ASLAggregation")]
         public NewRefIdViewModel theCollection {
             get {
@@ -3659,6 +3661,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
     public class BridgeAggregationViewModel : ViewModelBase {
         private roleType _roleType;
         private NewRefIdViewModel _theCollection;
+        [Editor(typeof(Editors.RefIdTypeEditor), typeof(Editors.RefIdTypeEditor))]
         [Category("BridgeAggregation")]
         public NewRefIdViewModel theCollection {
             get {
@@ -3712,6 +3715,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
     public class CautionAreaAssociationViewModel : ViewModelBase {
         private roleType _roleType;
         private NewRefIdViewModel _theCollection;
+        [Editor(typeof(Editors.RefIdTypeEditor), typeof(Editors.RefIdTypeEditor))]
         [Category("CautionAreaAssociation")]
         public NewRefIdViewModel theCollection {
             get {
@@ -3765,6 +3769,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
     public class DeepWaterRouteAggregationViewModel : ViewModelBase {
         private roleType _roleType;
         private NewRefIdViewModel _theCollection;
+        [Editor(typeof(Editors.RefIdTypeEditor), typeof(Editors.RefIdTypeEditor))]
         [Category("DeepWaterRouteAggregation")]
         public NewRefIdViewModel theCollection {
             get {
@@ -3818,6 +3823,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
     public class FairwayAggregationViewModel : ViewModelBase {
         private roleType _roleType;
         private NewRefIdViewModel _theCollection;
+        [Editor(typeof(Editors.RefIdTypeEditor), typeof(Editors.RefIdTypeEditor))]
         [Category("FairwayAggregation")]
         public NewRefIdViewModel theCollection {
             get {
@@ -3871,6 +3877,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
     public class FairwayAuxiliaryViewModel : ViewModelBase {
         private roleType _roleType;
         private NewRefIdViewModel _thePrimaryFeature;
+        [Editor(typeof(Editors.RefIdTypeEditor), typeof(Editors.RefIdTypeEditor))]
         [Category("FairwayAuxiliary")]
         public NewRefIdViewModel thePrimaryFeature {
             get {
@@ -3924,6 +3931,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
     public class IslandAggregationViewModel : ViewModelBase {
         private roleType _roleType;
         private NewRefIdViewModel _theCollection;
+        [Editor(typeof(Editors.RefIdTypeEditor), typeof(Editors.RefIdTypeEditor))]
         [Category("IslandAggregation")]
         public NewRefIdViewModel theCollection {
             get {
@@ -3977,6 +3985,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
     public class MooringTrotAggregationViewModel : ViewModelBase {
         private roleType _roleType;
         private NewRefIdViewModel _theCollection;
+        [Editor(typeof(Editors.RefIdTypeEditor), typeof(Editors.RefIdTypeEditor))]
         [Category("MooringTrotAggregation")]
         public NewRefIdViewModel theCollection {
             get {
@@ -4030,6 +4039,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
     public class PilotageDistrictAssociationViewModel : ViewModelBase {
         private roleType _roleType;
         private NewRefIdViewModel _theCollection;
+        [Editor(typeof(Editors.RefIdTypeEditor), typeof(Editors.RefIdTypeEditor))]
         [Category("PilotageDistrictAssociation")]
         public NewRefIdViewModel theCollection {
             get {
@@ -4083,6 +4093,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
     public class RangeSystemAggregationViewModel : ViewModelBase {
         private roleType _roleType;
         private NewRefIdViewModel _theCollection;
+        [Editor(typeof(Editors.RefIdTypeEditor), typeof(Editors.RefIdTypeEditor))]
         [Category("RangeSystemAggregation")]
         public NewRefIdViewModel theCollection {
             get {
@@ -4136,6 +4147,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
     public class RoofedStructureAggregationViewModel : ViewModelBase {
         private roleType _roleType;
         private NewRefIdViewModel _theRoofedStructure;
+        [Editor(typeof(Editors.RefIdTypeEditor), typeof(Editors.RefIdTypeEditor))]
         [Category("RoofedStructureAggregation")]
         public NewRefIdViewModel theRoofedStructure {
             get {
@@ -4189,7 +4201,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
     public class StructureEquipmentViewModel : ViewModelBase {
         private roleType _roleType;
         private NewRefIdViewModel _theStructure;
+        //[Editor(typeof(Editors.RefIdTypeEditor), typeof(Editors.RefIdTypeEditor))]
+        [RefIdTypeList(nameof(theStructureFeatureTypes))]
         [Category("StructureEquipment")]
+        [ExpandableObject]
         public NewRefIdViewModel theStructure {
             get {
                 return _theStructure;
@@ -4248,6 +4263,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         public string[] theCartographicTextFeatureTypes { get; private set; }
 
         private NewRefIdViewModel _thePositionProvider;
+        [Editor(typeof(Editors.RefIdTypeEditor), typeof(Editors.RefIdTypeEditor))]
         [Category("TextAssociation")]
         public NewRefIdViewModel thePositionProvider {
             get {
@@ -4295,6 +4311,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
     public class TrafficSeparationSchemeAggregationViewModel : ViewModelBase {
         private roleType _roleType;
         private NewRefIdViewModel _theCollection;
+        [Editor(typeof(Editors.RefIdTypeEditor), typeof(Editors.RefIdTypeEditor))]
         [Category("TrafficSeparationSchemeAggregation")]
         public NewRefIdViewModel theCollection {
             get {
@@ -4348,6 +4365,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
     public class TwoWayRouteAggregationViewModel : ViewModelBase {
         private roleType _roleType;
         private NewRefIdViewModel _theCollection;
+        [Editor(typeof(Editors.RefIdTypeEditor), typeof(Editors.RefIdTypeEditor))]
         [Category("TwoWayRouteAggregation")]
         public NewRefIdViewModel theCollection {
             get {
@@ -4401,6 +4419,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
     public class UpdateAggregationViewModel : ViewModelBase {
         private roleType _roleType;
         private NewRefIdViewModel _theCollection;
+        [Editor(typeof(Editors.RefIdTypeEditor), typeof(Editors.RefIdTypeEditor))]
         [Category("UpdateAggregation")]
         public NewRefIdViewModel theCollection {
             get {

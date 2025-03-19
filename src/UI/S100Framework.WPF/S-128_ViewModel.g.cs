@@ -1891,6 +1891,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
     public class CorrelatedViewModel : ViewModelBase {
         private roleType _roleType;
         private NewRefIdViewModel? _main;
+        [Editor(typeof(Editors.RefIdTypeEditor), typeof(Editors.RefIdTypeEditor))]
         [Category("Correlated")]
         public NewRefIdViewModel? main {
             get {

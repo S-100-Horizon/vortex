@@ -2539,6 +2539,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
     public class TextAssociationViewModel : ViewModelBase {
         private roleType _roleType;
         private NewRefIdViewModel? _identifies;
+        [Editor(typeof(Editors.RefIdTypeEditor), typeof(Editors.RefIdTypeEditor))]
         [Category("TextAssociation")]
         public NewRefIdViewModel? identifies {
             get {
@@ -2554,6 +2555,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
         public string[] identifiesFeatureTypes { get; private set; }
 
         private NewRefIdViewModel _positions;
+        [Editor(typeof(Editors.RefIdTypeEditor), typeof(Editors.RefIdTypeEditor))]
         [Category("TextAssociation")]
         public NewRefIdViewModel positions {
             get {
@@ -2608,6 +2610,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
         public string[] subUnitFeatureTypes { get; private set; }
 
         private NewRefIdViewModel _constitute;
+        [Editor(typeof(Editors.RefIdTypeEditor), typeof(Editors.RefIdTypeEditor))]
         [Category("Subsection")]
         public NewRefIdViewModel constitute {
             get {
@@ -2655,6 +2658,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
     public class InfrastructureViewModel : ViewModelBase {
         private roleType _roleType;
         private NewRefIdViewModel _infrastructureLocation;
+        [Editor(typeof(Editors.RefIdTypeEditor), typeof(Editors.RefIdTypeEditor))]
         [Category("Infrastructure")]
         public NewRefIdViewModel infrastructureLocation {
             get {
@@ -2708,6 +2712,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
     public class PrimaryAuxiliaryFacilityViewModel : ViewModelBase {
         private roleType _roleType;
         private NewRefIdViewModel _primaryFacility;
+        [Editor(typeof(Editors.RefIdTypeEditor), typeof(Editors.RefIdTypeEditor))]
         [Category("PrimaryAuxiliaryFacility")]
         public NewRefIdViewModel primaryFacility {
             get {
@@ -2767,6 +2772,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
         public string[] demarcationIndicatorFeatureTypes { get; private set; }
 
         private NewRefIdViewModel? _demarcatedFeature;
+        [Editor(typeof(Editors.RefIdTypeEditor), typeof(Editors.RefIdTypeEditor))]
         [Category("Demarcation")]
         public NewRefIdViewModel? demarcatedFeature {
             get {
@@ -2814,6 +2820,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
     public class JurisdictionalLimitViewModel : ViewModelBase {
         private roleType _roleType;
         private NewRefIdViewModel? _limitReference;
+        [Editor(typeof(Editors.RefIdTypeEditor), typeof(Editors.RefIdTypeEditor))]
         [Category("JurisdictionalLimit")]
         public NewRefIdViewModel? limitReference {
             get {
@@ -2829,6 +2836,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
         public string[] limitReferenceFeatureTypes { get; private set; }
 
         private NewRefIdViewModel _limitExtent;
+        [Editor(typeof(Editors.RefIdTypeEditor), typeof(Editors.RefIdTypeEditor))]
         [Category("JurisdictionalLimit")]
         public NewRefIdViewModel limitExtent {
             get {
@@ -2883,6 +2891,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
         public string[] layoutUnitFeatureTypes { get; private set; }
 
         private NewRefIdViewModel? _componentOf;
+        [Editor(typeof(Editors.RefIdTypeEditor), typeof(Editors.RefIdTypeEditor))]
         [Category("LayoutDivision")]
         public NewRefIdViewModel? componentOf {
             get {

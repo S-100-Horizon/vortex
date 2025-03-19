@@ -7,6 +7,17 @@ using Xceed.Wpf.Toolkit.PropertyGrid.Attributes;
 
 namespace S100Framework.WPF.ViewModel
 {
+    [System.AttributeUsage(System.AttributeTargets.Property, AllowMultiple = false)]
+    public class RefIdTypeListAttribute : System.Attribute
+    {
+        private string _propertyName;
+        public string PropertyName => _propertyName;
+
+        public RefIdTypeListAttribute(string propertyName) {
+            _propertyName = propertyName;
+        }
+    }
+
     public static class Handles
     {
         public static Func<InformationBindingViewModel?, string[]> GetInformations { get; set; } = (e) => { return []; };
@@ -209,6 +220,14 @@ namespace S100Framework.WPF.ViewModel
         public string? RefId {
             get { return _refId; }
             set { this.SetValue(ref _refId, value); }
+        }
+
+        private string? _type = string.Empty;
+
+        [Editor(typeof(RefIdTypeEditor), typeof(RefIdTypeEditor))]
+        public string? Type {
+            get { return _type; }
+            set { this.SetValue(ref _type, value); }
         }
     }
 

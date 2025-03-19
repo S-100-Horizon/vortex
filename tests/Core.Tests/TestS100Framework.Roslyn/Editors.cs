@@ -73,14 +73,10 @@ namespace S100Framework.WPF.Editors
     }
 
 
-    public sealed class NewRefIdEditor : Xceed.Wpf.Toolkit.PropertyGrid.Editors.ITypeEditor
+    public sealed class RefIdTypeEditor : Xceed.Wpf.Toolkit.PropertyGrid.Editors.ITypeEditor
     {
         public FrameworkElement ResolveEditor(PropertyItem propertyItem) {
-            var source = propertyItem.Instance switch {
-                FeatureRefIdViewModel e => e.RefIds,
-                InformationRefIdViewModel e => e.RefIds,
-                _ => throw new NotSupportedException()
-            };
+            var attribute = (RefIdTypeListAttribute)propertyItem.Instance.GetType().GetProperty(propertyItem.DisplayName)!.GetCustomAttributes(typeof(RefIdTypeListAttribute), true)[0];
 
             var viewModel = (NewRefIdViewModel)propertyItem.Instance;
 
@@ -89,13 +85,10 @@ namespace S100Framework.WPF.Editors
                 //DisplayMemberPath = "refId",
             };
 
-            if (!string.IsNullOrEmpty(viewModel.RefId))
-                source.Add(viewModel.RefId);
-
-            var bindingItemsSourceProperty = new Binding() { Source = source, Mode = BindingMode.OneWay };
+            var bindingItemsSourceProperty = new Binding() { Source = attribute.PropertyName, Mode = BindingMode.OneWay };
             BindingOperations.SetBinding(comboBox, ComboBox.ItemsSourceProperty, bindingItemsSourceProperty);
 
-            var bindingSelectedItemProperty = new Binding("RefId") { Source = propertyItem.Instance, Mode = propertyItem.IsReadOnly ? BindingMode.OneWay : BindingMode.TwoWay };
+            var bindingSelectedItemProperty = new Binding(propertyItem.DisplayName) { Source = propertyItem.Instance, Mode = propertyItem.IsReadOnly ? BindingMode.OneWay : BindingMode.TwoWay };
             BindingOperations.SetBinding(comboBox, ComboBox.SelectedItemProperty, bindingSelectedItemProperty);
 
             if (!string.IsNullOrEmpty(viewModel.RefId)) {

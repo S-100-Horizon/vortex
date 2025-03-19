@@ -562,6 +562,24 @@ namespace TestS100Framework
                 }
             }
 
+            [Fact]
+            public void Test_Serialization() {
+                var instance = new SpecialStructureEquipment();
+
+                var json = System.Text.Json.JsonSerializer.Serialize(instance);
+
+                System.Diagnostics.Debugger.Break();
+            }
+
+            public partial class StructureEquipment {
+                public virtual String[] theStructureFeatureTypes => [];
+            }
+
+            public partial class SpecialStructureEquipment : StructureEquipment
+            {
+                public override String[] theStructureFeatureTypes => ["Bridge", "Building", "Crane", "CardinalBeacon", "CardinalBuoy", "Conveyor", "Dolphin", "EmergencyWreckMarkingBuoy", "FishingFacility", "FloatingDock", "FortifiedStructure", "Hulk", "InstallationBuoy", "IsolatedDangerBeacon", "IsolatedDangerBuoy", "Landmark", "LateralBeacon", "LateralBuoy", "LightFloat", "LightVessel", "MooringBuoy", "OffshorePlatform", "Pile", "PipelineOverhead", "Pontoon", "PylonBridgeSupport", "SafeWaterBeacon", "SafeWaterBuoy", "ShorelineConstruction", "SiloTank", "SpanFixed", "SpanOpening", "SpecialPurposeGeneralBeacon", "SpecialPurposeGeneralBuoy", "StructureOverNavigableWater", "WindTurbine", "Wreck", "Daymark", "LightAllAround", "LightSectored"];
+            }
+
             public record featureBinding(string roleType, int lower, int? upper, string association, string role);
         }
     }

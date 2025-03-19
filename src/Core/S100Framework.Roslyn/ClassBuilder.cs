@@ -709,10 +709,9 @@ namespace S100Framework
                                 var requiredMemberAttributeBuilder = new CustomAttributeBuilder(constructorInfo, new object[0]);
                                 propertyBuilder.SetCustomAttribute(requiredMemberAttributeBuilder);
 
-                                constructorInfo = typeof(System.Runtime.Serialization.IgnoreDataMemberAttribute).GetConstructors().First();
-                                var ignoreDataMemberAttributeBuilder = new CustomAttributeBuilder(constructorInfo, new object[0]);
-                                propertyBuilder.SetCustomAttribute(ignoreDataMemberAttributeBuilder);
-
+                                //constructorInfo = typeof(System.Runtime.Serialization.IgnoreDataMemberAttribute).GetConstructors().First();
+                                //var ignoreDataMemberAttributeBuilder = new CustomAttributeBuilder(constructorInfo, new object[0]);
+                                //propertyBuilder.SetCustomAttribute(ignoreDataMemberAttributeBuilder);
                             }
                         }
 
@@ -795,6 +794,7 @@ namespace S100Framework
                                 else {
                                     var postfix = lower == 0 ? "" : "?";
                                     viewBuilder.AppendLine($"\t\t\tprivate NewRefIdViewModel{postfix} _{r};");
+                                    viewBuilder.AppendLine("\t\t\t[Editor(typeof(Editors.RefIdTypeEditor), typeof(Editors.RefIdTypeEditor))]");
                                     viewBuilder.AppendLine($"\t\t\t[Category(\"{code}\")]");
                                     viewBuilder.AppendLine($"\t\t\tpublic NewRefIdViewModel{postfix} {r} {{");
                                     viewBuilder.AppendLine($"\t\t\t\tget {{");

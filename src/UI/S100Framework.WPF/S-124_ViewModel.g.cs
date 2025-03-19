@@ -1114,6 +1114,7 @@ namespace S100Framework.WPF.ViewModel.S124 {
         public string[] affectsFeatureTypes { get; private set; }
 
         private NewRefIdViewModel? _impacts;
+        [Editor(typeof(Editors.RefIdTypeEditor), typeof(Editors.RefIdTypeEditor))]
         [Category("AreaAffected")]
         public NewRefIdViewModel? impacts {
             get {
@@ -1161,6 +1162,7 @@ namespace S100Framework.WPF.ViewModel.S124 {
     public class TextAssociationViewModel : ViewModelBase {
         private roleType _roleType;
         private NewRefIdViewModel _identifies;
+        [Editor(typeof(Editors.RefIdTypeEditor), typeof(Editors.RefIdTypeEditor))]
         [Category("TextAssociation")]
         public NewRefIdViewModel identifies {
             get {

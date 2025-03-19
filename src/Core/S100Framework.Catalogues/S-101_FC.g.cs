@@ -4060,12 +4060,10 @@ namespace S100Framework.DomainModel.S101 {
             public partial class StructureEquipment : FeatureAssociation {
                 public RefId? theStructure { get; set; }
 
-                [IgnoreDataMember()]
                 [Required()]
                 public String[] theStructureFeatureTypes { get; set; }
                 public List<RefId> theEquipment { get; set; } = [];
 
-                [IgnoreDataMember()]
                 [Required()]
                 public String[] theEquipmentFeatureTypes { get; set; }
                 public override string Code => "StructureEquipment";
@@ -5639,6 +5637,8 @@ namespace S100Framework.DomainModel.S101 {
                 roleType = roleType.association,
                 theInformationInformationTypes = ["ContactDetails", "NauticalInformation", "NonStandardWorkingDay", "ServiceHours"],
             };
+
+
             public static StructureEquipment StructureEquipment_theEquipment() => new StructureEquipment
             {
                 roleType = roleType.association,
