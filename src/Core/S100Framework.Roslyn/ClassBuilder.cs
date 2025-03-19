@@ -634,6 +634,8 @@ namespace S100Framework
 
                             builder.AppendLine($"\t\t\tpublic override string Code => nameof({code});");
 
+                            builder.AppendLine("\t\t\tpublic string[]? this[Role role] => this[role.ToString()];");
+
                             builder.AppendLine($"\t\t\tpublic override string[]? this[string role] => role switch {{");
                             foreach (var r in roles) {
                                 builder.AppendLine($"\t\t\t\t\"{r}\" => {r}InformationTypes,");
@@ -650,11 +652,11 @@ namespace S100Framework
                             var constructorBuilder = new StringBuilder();
                             constructorBuilder.AppendLine($"\t\tpublic {code}ViewModel() : base() {{");
 
-                            serializeBuilder.AppendLine($"\t\t\tvar instance = new DomainModel.{productId}.Associations.InformationAssociations.{code} {{");
+                            serializeBuilder.AppendLine($"\t\t\tvar instance = new TAssociation {{");
 
                             viewBuilder.AppendLine($"\t\t\t[CategoryOrder(\"{code}\", 0)]");
                             viewBuilder.AppendLine("\t\t\t[CategoryOrder(\"InformationBindings\", 100)]");
-                            viewBuilder.AppendLine($"public class {code}ViewModel : ViewModelBase");
+                            viewBuilder.AppendLine($"public class {code}ViewModel<TAssociation> : ViewModelBase where TAssociation : DomainModel.{productId}.Associations.InformationAssociations.{code},new()");
                             viewBuilder.AppendLine("\t{");
 
                             viewBuilder.AppendLine("\t\tprivate roleType _roleType;");
@@ -736,7 +738,7 @@ namespace S100Framework
                                 enumerationlist.Value.Invoke(viewBuilder);
                             }
 
-                            serializeBuilder.AppendLine($"\t\t\t\troleType = _roleType,");
+                            //serializeBuilder.AppendLine($"\t\t\t\troleType = _roleType,");
                             serializeBuilder.AppendLine("\t\t\t");
                             serializeBuilder.AppendLine("\t\t\t};");
                             serializeBuilder.AppendLine("\t\t\treturn System.Text.Json.JsonSerializer.Serialize(instance);");
@@ -747,7 +749,7 @@ namespace S100Framework
                             viewBuilder.AppendLine("");
                             viewBuilder.AppendLine($"\t\tpublic void Load(DomainModel.{productId}.Associations.InformationAssociations.{code} instance) {{");
                             viewBuilder.Append(loadBuilder.ToString());
-                            viewBuilder.AppendLine("\t\t\t_roleType = instance.roleType;");
+                            viewBuilder.AppendLine("\t\t\t_roleType = instance.roleType!.Value;");
                             viewBuilder.AppendLine("\t\t\t");
                             viewBuilder.AppendLine("\t\t}");
                             viewBuilder.AppendLine("");
@@ -853,6 +855,8 @@ namespace S100Framework
 
                             builder.AppendLine($"\t\t\tpublic override string Code => \"{code}\";");
 
+                            builder.AppendLine("\t\t\tpublic string[]? this[Role role] => this[role.ToString()];");
+
                             builder.AppendLine($"\t\t\tpublic override string[]? this[string role] => role switch {{");
                             foreach (var r in roles) {
                                 builder.AppendLine($"\t\t\t\t\"{r}\" => {r}FeatureTypes,");
@@ -869,12 +873,12 @@ namespace S100Framework
                             var constructorBuilder = new StringBuilder();
                             constructorBuilder.AppendLine($"\t\tpublic {code}ViewModel() : base() {{");
 
-                            serializeBuilder.AppendLine($"\t\t\tvar instance = new DomainModel.{productId}.Associations.FeatureAssociations.{code} {{");
+                            serializeBuilder.AppendLine($"\t\t\tvar instance = new TAssociation {{");
 
                             viewBuilder.AppendLine($"\t\t\t[CategoryOrder(\"{code}\", 0)]");
                             viewBuilder.AppendLine("\t\t\t[CategoryOrder(\"InformationBindings\", 100)]");
                             viewBuilder.AppendLine("\t\t\t[CategoryOrder(\"FeatureBindings\", 200)]");
-                            viewBuilder.AppendLine($"public class {code}ViewModel : ViewModelBase");
+                            viewBuilder.AppendLine($"public class {code}ViewModel<TAssociation> : ViewModelBase where TAssociation : DomainModel.{productId}.Associations.FeatureAssociations.{code},new()");
                             viewBuilder.AppendLine("\t{");
                             
                             viewBuilder.AppendLine("\t\tprivate roleType _roleType;");
@@ -956,7 +960,7 @@ namespace S100Framework
                                 enumerationlist.Value.Invoke(viewBuilder);
                             }                            
 
-                            serializeBuilder.AppendLine($"\t\t\t\troleType = _roleType,");
+                            //serializeBuilder.AppendLine($"\t\t\t\troleType = _roleType,");
                             serializeBuilder.AppendLine("\t\t\t");
                             serializeBuilder.AppendLine("\t\t\t};");
                             serializeBuilder.AppendLine("\t\t\treturn System.Text.Json.JsonSerializer.Serialize(instance);");
@@ -967,7 +971,7 @@ namespace S100Framework
                             viewBuilder.AppendLine("");
                             viewBuilder.AppendLine($"\t\tpublic void Load(DomainModel.{productId}.Associations.FeatureAssociations.{code} instance) {{");
                             viewBuilder.Append(loadBuilder.ToString());
-                            viewBuilder.AppendLine("\t\t\t_roleType = instance.roleType;");
+                            viewBuilder.AppendLine("\t\t\t_roleType = instance.roleType!.Value;");
                             viewBuilder.AppendLine("\t\t\t");
                             viewBuilder.AppendLine("\t\t}");
                             viewBuilder.AppendLine("");
