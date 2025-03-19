@@ -700,6 +700,7 @@ namespace S100Framework.Applications
                                 }
                             }
 
+                                    instance.categoryOfLateralMark = EnumHelper.GetEnumValue<categoryOfLateralMark>("-1");
                             if (current.COLOUR != default) {
                                 instance.colour = GetColours(current.COLOUR);
                             }
