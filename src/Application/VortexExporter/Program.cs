@@ -44,10 +44,13 @@ namespace S100Framework.Applications
 
                 Func<Geodatabase> createGeodatabase = () => { throw new NotImplementedException(); };
 
+                var s100TablePrefix = "";
+
                 arguments.WithParsed<Options>(o => {
                     var geodatabase = o.Geodatabase.ToLowerInvariant();
 
                     if (IO.File.Exists(geodatabase) && ".sde".Equals(IO.Path.GetExtension(geodatabase), StringComparison.InvariantCultureIgnoreCase)) {
+                        s100TablePrefix = "s101.";
                         createGeodatabase = () => { return new Geodatabase(new DatabaseConnectionFile(new Uri(IO.Path.GetFullPath(geodatabase)))); };
                     }
                     else if (IO.Directory.Exists(geodatabase) && ".gdb".Equals(IO.Path.GetExtension(geodatabase), StringComparison.InvariantCultureIgnoreCase)) {
@@ -70,7 +73,8 @@ namespace S100Framework.Applications
 
 
                 // Informationtypes
-                using var informationType = source.OpenDataset<Table>("s101.informationType");
+                try {
+                    using var informationType = source.OpenDataset<Table>($"{s100TablePrefix}informationType");
                 using var informationCursor = informationType.Search(null, false);
 
                 while (informationCursor.MoveNext()) {
@@ -92,6 +96,12 @@ namespace S100Framework.Applications
 
                     dataset.AddInformation(information);
                 }
+                }
+                catch (Exception ex) {
+                    Console.WriteLine("Table: InformationType: " + ex.Message);
+                    Logger.Current.Error("Exception: {ex}", ex);
+                }
+
                 // Features
                 foreach (var def in source.GetDefinitions<FeatureClassDefinition>()) {
                     using var fc = source.OpenDataset<FeatureClass>(def.GetName());
