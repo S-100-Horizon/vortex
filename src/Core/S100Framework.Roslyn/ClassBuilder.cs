@@ -73,8 +73,6 @@ namespace S100Framework
             viewBuilder.AppendLine($"using S100Framework.DomainModel.{productId}.ComplexAttributes;");
             viewBuilder.AppendLine($"using S100Framework.DomainModel.{productId}.InformationTypes;");
             viewBuilder.AppendLine($"using S100Framework.DomainModel.{productId}.FeatureTypes;");
-            //viewBuilder.AppendLine($"using S100Framework.DomainModel.{productId}.Associations.InformationAssociations;");
-            //viewBuilder.AppendLine($"using S100Framework.DomainModel.{productId}.Associations.FeatureAssociations;");
             viewBuilder.AppendLine($"using Xceed.Wpf.Toolkit.PropertyGrid.Attributes;");
             viewBuilder.AppendLine();
             viewBuilder.AppendLine("#nullable enable");
@@ -543,7 +541,7 @@ namespace S100Framework
                             var associationType = associationTypeBuilder.CreateType();
 
                             classBuilder.AppendLine(BuildClass(code, associationType, xmlNamespace, (builder) => {
-                                //builder.AppendLine($"\t\t\tpublic override string Code => nameof({code});");
+
                             }));
                         }
                     }
@@ -611,18 +609,6 @@ namespace S100Framework
                                 var requiredMemberAttributeBuilder = new CustomAttributeBuilder(constructorInfo, new object[0]);
                                 propertyBuilder.SetCustomAttribute(requiredMemberAttributeBuilder);
                             }
-
-                            //{
-                            //    propertyBuilder = S100Framework.Roslyn.CreateProperty(associationTypeBuilder, $"{r}InformationTypes", typeof(string[]));
-
-                            //    var constructorInfo = typeof(System.Runtime.CompilerServices.RequiredMemberAttribute).GetConstructors().First();
-                            //    var requiredMemberAttributeBuilder = new CustomAttributeBuilder(constructorInfo, new object[0]);
-                            //    propertyBuilder.SetCustomAttribute(requiredMemberAttributeBuilder);
-
-                            //    constructorInfo = typeof(System.Runtime.Serialization.IgnoreDataMemberAttribute).GetConstructors().First();
-                            //    var ignoreDataMemberAttributeBuilder = new CustomAttributeBuilder(constructorInfo, new object[0]);
-                            //    propertyBuilder.SetCustomAttribute(ignoreDataMemberAttributeBuilder);
-                            //}
                         }
 
                         var associationType = associationTypeBuilder.CreateType();
@@ -666,7 +652,7 @@ namespace S100Framework
 
                 var featureAssociationTypes = new List<string>();
 
-                foreach (var e in elements) {                    
+                foreach (var e in elements) {
                     var name = e.Element(XName.Get("name", scope_S100))!.Value;
                     var code = e.Element(XName.Get("code", scope_S100))!.Value;
 
@@ -707,20 +693,12 @@ namespace S100Framework
                                 var requiredMemberAttributeBuilder = new CustomAttributeBuilder(constructorInfo, new object[0]);
                                 propertyBuilder.SetCustomAttribute(requiredMemberAttributeBuilder);
                             }
-
-                            //{
-                            //    propertyBuilder = S100Framework.Roslyn.CreateProperty(associationTypeBuilder, $"{r}FeatureTypes", typeof(string[]));
-
-                            //    var constructorInfo = typeof(System.Runtime.CompilerServices.RequiredMemberAttribute).GetConstructors().First();
-                            //    var requiredMemberAttributeBuilder = new CustomAttributeBuilder(constructorInfo, new object[0]);
-                            //    propertyBuilder.SetCustomAttribute(requiredMemberAttributeBuilder);
-                            //}
                         }
 
                         var associationType = associationTypeBuilder.CreateType();
 
                         classBuilder.AppendLine(BuildClass($"{code}", associationType, xmlNamespace, (builder) => {
-                            foreach(var r in roles) {
+                            foreach (var r in roles) {
                                 builder.AppendLine($"\t\t\tpublic virtual String[] {r}FeatureTypes => [];");
                             }
 
@@ -735,7 +713,7 @@ namespace S100Framework
                             builder.AppendLine($"\t\t\t\t_ => throw new InvalidOperationException(),");
                             builder.AppendLine($"\t\t\t}};");
                         }));
-}
+                    }
                 }
 
                 classBuilder.AppendLine("\t\t}");
@@ -919,11 +897,9 @@ namespace S100Framework
 
                                 builder.AppendLine($"\t\t\tpublic class {code}RefIdViewModel : InformationRefIdViewModel {{");
                                 builder.AppendLine($"\t\t\t\tpublic override string[] AssociationTypes => [\"{code}\"];");
-                                //builder.AppendLine("\t\t\t\tpublic override string ToString() => \"RefId\";");
                                 builder.AppendLine($"\t\t\t}}");
                             }));
 
-                            //creatorBuilder.AppendLine($"\t\t\t{{ typeof(DomainModel.{productId}.InformationTypes.{code}).Name, ()=> {{");
                             creatorBuilder.AppendLine($"\t\t\t{{ \"{code}\", ()=> {{");
                             creatorBuilder.AppendLine($"\t\t\t\treturn new {code}ViewModel();");
                             creatorBuilder.AppendLine("\t\t\t  }");
@@ -1139,11 +1115,10 @@ namespace S100Framework
 
                                 builder.AppendLine($"\t\t\tpublic class {code}RefIdViewModel : FeatureRefIdViewModel {{");
                                 builder.AppendLine($"\t\t\t\tpublic override string[] AssociationTypes => [\"{code}\"];");
-                                //builder.AppendLine("\t\t\t\tpublic override string ToString() => \"RefId\";");
                                 builder.AppendLine($"\t\t\t}}");
                             }));
 
-                            //creatorBuilder.AppendLine($"\t\t\t{{ typeof(DomainModel.{productId}.FeatureTypes.{code}).Name, ()=> {{");
+
                             creatorBuilder.AppendLine($"\t\t\t{{ \"{code}\", ()=> {{");
                             creatorBuilder.AppendLine($"\t\t\t\treturn new {code}ViewModel();");
                             creatorBuilder.AppendLine("\t\t\t  }");
@@ -1228,8 +1203,6 @@ namespace S100Framework
                         if (!associations.Any(e => r.Equals(e.Element(XName.Get("role", scope_S100))!.Attribute("ref")!.Value)))
                             continue;
 
-                        //viewBuilder.AppendLine($"\t\t\t\t{r} = null;");
-
                         viewBuilder.AppendLine($"\t\t\t\tif (value is not null) {{");
                         viewBuilder.AppendLine($"\t\t\t\t\t{r} = value?.role switch {{");
 
@@ -1257,7 +1230,6 @@ namespace S100Framework
                     viewBuilder.AppendLine($"\t\tpublic override string Serialize() {{");
                     viewBuilder.AppendLine($"\t\t\tvar instance = new FeatureAssociation {{");
                     viewBuilder.AppendLine($"\t\t\t\tCode = this.Code,");
-                    //viewBuilder.AppendLine($"\t\t\t\troleType = {e.Attribute("roleType")!.Value},");                    
                     viewBuilder.AppendLine($"\t\t\t\tAssociationConnectorTypeName = association!.FeatureType,");
                     viewBuilder.AppendLine($"\t\t\t}};");
                     foreach (var r in roles) {
@@ -1320,7 +1292,6 @@ namespace S100Framework
 
                             viewBuilder.AppendLine($"\t\t\tpublic class {role}{f}RefIdViewModel : FeatureRefIdViewModel {{");
                             viewBuilder.AppendLine($"\t\t\t\tpublic override string[] AssociationTypes => [{string.Join(',', featureTypeRefs)}];");
-                            //viewBuilder.AppendLine("\t\t\t\tpublic override string ToString() => \"RefId\";");
                             viewBuilder.AppendLine($"\t\t\t}}");
                         }
                     }
@@ -1331,7 +1302,6 @@ namespace S100Framework
                         handlesBuilder.Insert(handlesAssociationConnectorFeatures, $"\t\t\t{{ typeof({code}ViewModel), () => [{b.ToString().ReplaceLineEndings().TrimEnd().TrimEnd(',').ReplaceLineEndings()}] }},");
                     }
 
-                    //viewBuilder.AppendLine($"\t\t\t}};");
                     viewBuilder.AppendLine("\t\t}");
                 }
 
@@ -1424,7 +1394,6 @@ namespace S100Framework
                     viewBuilder.AppendLine($"\t\tpublic override string Serialize() {{");
                     viewBuilder.AppendLine($"\t\t\tvar instance = new InformationAssociation {{");
                     viewBuilder.AppendLine($"\t\t\t\tCode = this.Code,");
-                    //viewBuilder.AppendLine($"\t\t\t\troleType = {e.Attribute("roleType")!.Value},");
                     viewBuilder.AppendLine($"\t\t\t\tAssociationConnectorTypeName = association!.InformationType,");
                     viewBuilder.AppendLine($"\t\t\t}};");
                     foreach (var r in roles) {
@@ -1458,8 +1427,6 @@ namespace S100Framework
                                 informationTypeRefsHierarchy.Add(h);
                             }
                         }
-                        //if (informationTypeRefs.Count() != informationTypeRefsHierarchy.Count())
-                        //    System.Diagnostics.Debugger.Break();
                         informationTypeRefs = informationTypeRefsHierarchy.Select(e => $"\"{e}\"").ToArray();
 
                         var hierarchy = association.Parent!.Name.LocalName switch {
@@ -1489,10 +1456,6 @@ namespace S100Framework
                             else
                                 b.AppendLine($"\tCreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<{code}ViewModel.{role}{f}RefIdViewModel>(\"{code.Replace("ViewModel", string.Empty)}\"),");
 
-                            //var createLocal = association.Parent!.Name.LocalName switch {
-                            //    "S100_FC_FeatureType" => $"\tCreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<{f}ViewModel.{f}RefIdViewModel>(\"{f}\"),",
-                            //    _ or "S100_FC_InformationType" => $"\tCreateLocalInformationBinding = () => new SingleInformationBindingViewModel<{f}ViewModel.{f}RefIdViewModel>(\"{f}\"),",
-                            //};
                             var createLocal = $"\tCreateLocalInformationBinding = () => new SingleInformationBindingViewModel<{f}ViewModel.{f}RefIdViewModel>(\"{f}\"),";
 
                             b.AppendLine(createLocal);
@@ -1501,7 +1464,6 @@ namespace S100Framework
 
                             viewBuilder.AppendLine($"\t\t\tpublic class {role}{f}RefIdViewModel : InformationRefIdViewModel {{");
                             viewBuilder.AppendLine($"\t\t\t\tpublic override string[] AssociationTypes => [{string.Join(',', informationTypeRefs)}];");
-                            //viewBuilder.AppendLine("\t\t\t\tpublic override string ToString() => \"RefId\";");
                             viewBuilder.AppendLine($"\t\t\t}}");
                         }
                     }
@@ -1615,20 +1577,13 @@ namespace S100Framework
             common.AppendLine("\t\tpublic required string Role { get; set; }");
             common.AppendLine("\t}");
 
-            //common.AppendLine("\t[System.SerializableAttribute()]");
-            //common.AppendLine("\tpublic class RoleRefId : RefId {");
-            //common.AppendLine("\t\tpublic required string Role { get; set; }");
-            //common.AppendLine("\t}");
-
             common.AppendLine("\t[System.SerializableAttribute()]");
             common.AppendLine("\tpublic abstract class Association {");
             common.AppendLine("\t\tpublic virtual string Code { get; set; } = string.Empty;");
             common.AppendLine("\t\tpublic virtual roleType? roleType => default;");
-            //common.AppendLine("\t\tpublic required roleType roleType {get; set; }");
             common.AppendLine("\t\tpublic string AssociationConnectorTypeName { get; set; }");
             common.AppendLine("\t\t[IgnoreDataMember()]");
             common.AppendLine("\t\tpublic virtual string[]? this[string role] => default;");
-            //common.AppendLine("\t\tpublic RefId[] RefIds { get; set; } = new RefId[0];");
             common.AppendLine("\t}");
             common.AppendLine("\t[System.SerializableAttribute()]");
             common.AppendLine("\tpublic class InformationAssociation : Association {");

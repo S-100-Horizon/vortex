@@ -16,7 +16,7 @@ namespace S100Framework.Applications
             //var dredged = source.OpenDataset<FeatureClass>("Depare");
 
             using var featureClass = target.OpenDataset<FeatureClass>(target.GetName("curve"));
-            
+
 
             using var buffer = featureClass.CreateRowBuffer();
             using var insert = featureClass.CreateInsertCursor();
@@ -125,7 +125,7 @@ namespace S100Framework.Applications
                                     waterLevelEffect = waterLeveleffectCurrent
                                 };
 
-                                
+
 
 
                                 instance.categoryOfObstruction = Convert.ToInt32(catObs) switch {
@@ -150,7 +150,7 @@ namespace S100Framework.Applications
                                     21 => categoryOfObstruction.ActiveSubmarineVolcano,
                                     22 => categoryOfObstruction.SharkNet,
                                     23 => categoryOfObstruction.Mangrove,
-                                    -32767 =>(categoryOfObstruction)(-1),
+                                    -32767 => (categoryOfObstruction)(-1),
                                     // TODO: QUESTION: how to handle -1 on a required attribute without an S-101 equivalent "unknown". Illegal value assigned. MUST be fixed.
 
                                     _ => throw new IndexOutOfRangeException(),
@@ -172,7 +172,7 @@ namespace S100Framework.Applications
                                     5 => waterLevelEffect.Awash,  // awash
                                     6 => waterLevelEffect.SubjectToInundationOrFlooding,  // subject to inundation or flooding
                                     7 => waterLevelEffect.Floating,  // floating
-                                    -32767 =>(waterLevelEffect)(-1),
+                                    -32767 => (waterLevelEffect)(-1),
                                     // TODO: QUESTION: how to handle -1 on a required attribute without an S-101 equivalent "unknown". Illegal value assigned. MUST be fixed.
 
                                     _ => throw new IndexOutOfRangeException(),

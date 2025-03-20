@@ -1,17 +1,12 @@
 ﻿using ArcGIS.Core.Data;
 using S100Framework.Applications.S57.esri;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Security.Cryptography;
-using System.Text;
-using System.Threading.Tasks;
 
 
 namespace S100Framework.Applications
 {
 
-    internal class Slave {
+    internal class Slave
+    {
         PLTS_Frel _plts_Frel;
         S57Object _s57Object;
 
@@ -22,7 +17,7 @@ namespace S100Framework.Applications
         internal S57Object Fetch(Geodatabase geodatabase) {
 
             S57Object result = null;
-            
+
             var sourceFeatureClass = this._plts_Frel.SRC_FC;
 
             var queryDef = new QueryDef();
@@ -31,7 +26,7 @@ namespace S100Framework.Applications
             queryDef.WhereClause = $"globalid = '{this._plts_Frel.DEST_UID}'";
 
             var cursor = geodatabase.Evaluate(queryDef, true);
-            
+
             while (cursor.MoveNext()) {
                 if (sourceFeatureClass.ToLower().Equals("aidstonavigationp")) {
                     result = new AidsToNavigationP((Feature)cursor.Current);
@@ -50,7 +45,7 @@ namespace S100Framework.Applications
 
     internal class FeatureRelations
     {
-        private Dictionary<Guid, IList<PLTS_Frel>> _srcObjectToFrel = new Dictionary<Guid, IList<PLTS_Frel>>();
+        private Dictionary<Guid, IList<PLTS_Frel>> _srcObjectToFrel = new();
 
         private bool _isInitialized = false;
 

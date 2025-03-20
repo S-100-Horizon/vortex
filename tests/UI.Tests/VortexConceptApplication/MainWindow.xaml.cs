@@ -5,7 +5,6 @@ using S100Framework.DomainModel.S124;
 using S100Framework.WPF.ViewModel;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
-using System.DirectoryServices.ActiveDirectory;
 using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Windows;

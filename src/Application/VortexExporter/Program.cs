@@ -2,7 +2,6 @@
 using ArcGIS.Core.Geometry;
 using CommandLine;
 using S100Framework.DomainModel;
-using S100Framework.DomainModel.S101.FeatureTypes;
 using S100Framework.YAML;
 using Dataset = S100Framework.YAML.Dataset;
 using Esri = ArcGIS.Core.Hosting.Host;

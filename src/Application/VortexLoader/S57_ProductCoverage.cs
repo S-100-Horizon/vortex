@@ -1,5 +1,4 @@
-﻿using ArcGIS.Core.CIM;
-using ArcGIS.Core.Data;
+﻿using ArcGIS.Core.Data;
 using S100Framework.Applications.S57.esri;
 using S100Framework.DomainModel.S101.FeatureTypes;
 
@@ -74,8 +73,8 @@ namespace S100Framework.Applications
                             insert.Insert(buffer);
 
 
-                            
-                            var dataCoverage = new DataCoverage() { 
+
+                            var dataCoverage = new DataCoverage() {
                                 maximumDisplayScale = displayScale.MaximumDisplayScale,
                                 optimumDisplayScale = displayScale.OptimumDisplayScale,
                                 minimumDisplayScale = displayScale.MinimumDisplayScale.Value

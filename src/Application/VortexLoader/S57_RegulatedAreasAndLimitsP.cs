@@ -177,7 +177,7 @@ namespace S100Framework.Applications
 
 
 
-                
+
             }
             Logger.Current.DataTotalCount(tableName, recordCount, convertedCount);
         }

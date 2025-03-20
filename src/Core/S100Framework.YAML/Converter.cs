@@ -1,12 +1,12 @@
-﻿using System.Collections;
-using YamlDotNet.Serialization.NamingConventions;
-using YamlDotNet.Serialization;
-using S100Framework.DomainModel;
-using YamlDotNet.Core;
-using YamlDotNet.Core.Events;
+﻿using S100Framework.DomainModel;
+using System.Collections;
+using System.Globalization;
 using System.Reflection;
 using System.Runtime.Serialization;
-using System.Globalization;
+using YamlDotNet.Core;
+using YamlDotNet.Core.Events;
+using YamlDotNet.Serialization;
+using YamlDotNet.Serialization.NamingConventions;
 
 namespace S100Framework.YAML
 {

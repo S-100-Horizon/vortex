@@ -9,7 +9,6 @@ using System.Xml;
 using System.Xml.Linq;
 using System.Xml.XPath;
 using Xunit.Abstractions;
-using static System.Formats.Asn1.AsnWriter;
 
 
 namespace TestS100Framework
@@ -571,7 +570,8 @@ namespace TestS100Framework
                 System.Diagnostics.Debugger.Break();
             }
 
-            public partial class StructureEquipment {
+            public partial class StructureEquipment
+            {
                 public virtual String[] theStructureFeatureTypes => [];
             }
 

@@ -70,7 +70,7 @@ namespace S100Framework.WPF.Editors
 
             return checkComboBox;
         }
-    }    
+    }
 
     public sealed class RefIdEditor : Xceed.Wpf.Toolkit.PropertyGrid.Editors.ITypeEditor
     {

@@ -1,19 +1,15 @@
 ﻿using ArcGIS.Core.Data;
-using ArcGIS.Core.Geometry;
 using S100Framework.Applications.S57.esri;
+using S100Framework.DomainModel;
 using S100Framework.DomainModel.S101;
 using S100Framework.DomainModel.S101.ComplexAttributes;
 using S100Framework.DomainModel.S101.FeatureTypes;
-using System.Collections.Generic;
-using System;
-using S100Framework.DomainModel;
-using ArcGIS.Desktop.Internal.Mapping.Symbology;
-using ArcGIS.Desktop.Internal.Core.Events;
 using VortexLoader;
 
 namespace S100Framework.Applications
 {
-    internal static partial class ImporterNIS {
+    internal static partial class ImporterNIS
+    {
         private static FeatureNode CreateLight(AidsToNavigationP current, InsertCursor insert, RowBuffer buffer, Feature feature, string tableName, int convertedCount) {
 
             if (current.FCSUBTYPE != 65)
@@ -159,14 +155,14 @@ namespace S100Framework.Applications
                 return null;
             }
 
-        } 
-        
+        }
+
         //else {
         //        Logger.Current.DataError(objectid, tableName, longname, $"Unknown Light Type. Check catlit.");
         //        return null;
 
-        
-        
+
+
 
 
         private static void S57_AidsToNavigationP(Geodatabase source, Geodatabase target, QueryFilter filter) {
@@ -184,7 +180,7 @@ namespace S100Framework.Applications
             using var cursor = aidstonavigation.Search(filter, true);
             int recordCount = 0;
             int convertedCount = 0;
-            
+
             while (cursor.MoveNext()) {
                 recordCount += 1;
 
@@ -203,7 +199,7 @@ namespace S100Framework.Applications
                 var color = current.COLOUR ?? default;   // list of integers
                 var boyshp = current.BOYSHP ?? default;   // domain value
                 var bcnshp = current.BCNSHP ?? default;   // domain value
-                var colpat = current.COLPAT ?? default; 
+                var colpat = current.COLPAT ?? default;
                 var litchr = current.LITCHR ?? default;
                 var marsys = current.MARSYS ?? default;
                 var orient = current.ORIENT ?? default;
@@ -278,7 +274,7 @@ namespace S100Framework.Applications
 
                             instance.verticalLength = current.VERLEN;
 
-                            
+
 
 
                             if (current.CONDTN.HasValue) {
@@ -348,7 +344,7 @@ namespace S100Framework.Applications
                             }
 
                             instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
-                            
+
                             AddInformation(instance.information, feature);
                             buffer["ps"] = ps101;
                             buffer["code"] = instance.GetType().Name;
@@ -593,7 +589,7 @@ namespace S100Framework.Applications
                                     var slave = new Slave(plfrel);
                                     var result = slave.Fetch(source);
                                     var relatedAidsToNavigationP = result as AidsToNavigationP;
-                                    
+
 
                                     if (relatedAidsToNavigationP != null) {
                                         //relatedAidsToNavigationP
@@ -945,11 +941,11 @@ namespace S100Framework.Applications
 
                             // TODO: INFORM
                             var shapeInformation = new shapeInformation() {
-                                
+
                             };
 
                             var instance = new topmark() {
-                                
+
                             };
 
                             convertedCount++;

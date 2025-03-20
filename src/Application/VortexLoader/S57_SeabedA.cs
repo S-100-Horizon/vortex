@@ -15,7 +15,7 @@ namespace S100Framework.Applications
             var seabedA = source.OpenDataset<FeatureClass>(source.GetName(tableName));
 
             using var featureClass = target.OpenDataset<FeatureClass>(target.GetName("surface"));
-            
+
 
             using var buffer = featureClass.CreateRowBuffer();
             using var insert = featureClass.CreateInsertCursor();
@@ -36,7 +36,7 @@ namespace S100Framework.Applications
                 var watlev = current.WATLEV ?? default;
                 var catweed = current.CATWED ?? default;
                 var natsur = current.NATSUR ?? default;
-                var natqua = current.NATQUA ?? default; 
+                var natqua = current.NATQUA ?? default;
 
                 // TODO: natsur, natqua
 
@@ -76,7 +76,7 @@ namespace S100Framework.Applications
                                     }
                                 }
                             }
-                            
+
                             natureOfSurface natureOfSurfaceValue = (natureOfSurface)(-1);
 
                             if (current.NATSUR != default) {
@@ -102,7 +102,7 @@ namespace S100Framework.Applications
 
                             instance.surfaceCharacteristics = new List<DomainModel.S101.ComplexAttributes.surfaceCharacteristics> {
 
-                              new DomainModel.S101.ComplexAttributes.surfaceCharacteristics() {
+                              new() {
                                  natureOfSurface = natureOfSurfaceValue,
                                  natureOfSurfaceQualifyingTerms = natureOfSurfaceQualifyingTermsList,
                                  // underlyingLayer = ?? TODO: Underlying layer for seabed
@@ -188,7 +188,7 @@ namespace S100Framework.Applications
 
                         }
 
-                
+
                         break;
                     default:
                         // code block

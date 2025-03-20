@@ -9,7 +9,7 @@ namespace S100Framework.Applications
     {
         private static void S57_RegulatedAreasAndLimitsL(Geodatabase source, Geodatabase target, QueryFilter filter) {
             var tableName = "RegulatedAreasAndLimitsL";
-            
+
 
             using var featureclass = target.OpenDataset<FeatureClass>(target.GetName("curve"));
 
@@ -26,7 +26,7 @@ namespace S100Framework.Applications
             while (cursor.MoveNext()) {
                 recordCount += 1;
                 var feature = (Feature)cursor.Current;
-                var current = new RegulatedAreasAndLimitsL(feature); 
+                var current = new RegulatedAreasAndLimitsL(feature);
 
                 var objectid = current.OBJECTID ?? default;
                 var globalid = current.GLOBALID;
@@ -60,7 +60,7 @@ namespace S100Framework.Applications
                             if (plts_comp_scale != default) {
                                 instance.scaleMinimum = plts_comp_scale;
                             }
-                            
+
                             instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
                             AddInformation(instance.information, feature);
                             buffer["ps"] = ps101;
@@ -79,8 +79,7 @@ namespace S100Framework.Applications
                                 instance.scaleMinimum = plts_comp_scale;
                             }
 
-                            if (current.NATION != default) 
-                            { 
+                            if (current.NATION != default) {
                                 instance.nationality = current.NATION;
                             }
 
@@ -104,7 +103,7 @@ namespace S100Framework.Applications
 
 
 
-                
+
             }
             Logger.Current.DataTotalCount(tableName, recordCount, convertedCount);
         }
