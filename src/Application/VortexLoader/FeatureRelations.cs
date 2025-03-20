@@ -9,7 +9,7 @@ namespace S100Framework.Applications
 
     internal enum Direction {
         Source = 0,
-        Direction = 1
+        Destination = 1
     }
 
     /*
@@ -59,7 +59,7 @@ namespace S100Framework.Applications
 
             var sourceFeatureClass = direction switch {
                 Direction.Source => this.PLTS_Frel.SRC_FC,
-                Direction.Direction => this.PLTS_Frel.DEST_FC
+                Direction.Destination => this.PLTS_Frel.DEST_FC
             };
 
             var queryDef = new QueryDef();
@@ -72,6 +72,9 @@ namespace S100Framework.Applications
             while (cursor.MoveNext()) {
                 if (sourceFeatureClass.ToLower().Equals("aidstonavigationp")) {
                     result = new AidsToNavigationP((Feature)cursor.Current);
+                }
+                else if (sourceFeatureClass.ToLower().Equals("dangersp")) {
+                    result = new DangersP((Feature)cursor.Current);
                 }
                 else {
                     throw new NotSupportedException($"GetRelated: {sourceFeatureClass}");

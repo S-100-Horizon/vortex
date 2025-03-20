@@ -60,7 +60,7 @@ namespace S100Framework.Applications
             var sectr1Val = current.SECTR1 ?? default;
             var sectr2Val = current.SECTR2 ?? default;
             var color = current.COLOUR ?? default;   // list of integers
-            var boyshp = current.BOYSHP ?? default;   // domain value
+            
             var bcnshp = current.BCNSHP ?? default;   // domain value
             var colpat = current.COLPAT ?? default;
             var litchr = current.LITCHR ?? default;
@@ -269,9 +269,7 @@ namespace S100Framework.Applications
             
             while (cursor.MoveNext()) {
                 recordCount += 1;
-
                 var feature = (Feature)cursor.Current;
-
                 var current = new AidsToNavigationP(feature);
 
                 var objectid = current.OBJECTID ?? default;
@@ -279,23 +277,6 @@ namespace S100Framework.Applications
                 var subtype = current.FCSUBTYPE ?? default;
                 var plts_comp_scale = current.PLTS_COMP_SCALE ?? default;
                 var longname = current.LNAM ?? Strings.UNKNOWN;
-
-                if (longname.ToLower() == "dk000203347300001")
-                    System.Diagnostics.Debugger.Break();
-
-                var catlitVal = current.CATLIT ?? default;
-                var sectr1Val = current.SECTR1 ?? default;
-                var sectr2Val = current.SECTR2 ?? default;
-                var color = current.COLOUR ?? default;   // list of integers
-                var boyshp = current.BOYSHP ?? default;   // domain value
-                var bcnshp = current.BCNSHP ?? default;   // domain value
-                var colpat = current.COLPAT ?? default; 
-                var litchr = current.LITCHR ?? default;
-                var marsys = current.MARSYS ?? default;
-                var orient = current.ORIENT ?? default;
-                var cat = current.CATCAM ?? default;
-
-                var colours = new List<colour>();
 
                 if (featureRelations.IsSlave(globalid)) {
                     continue;
@@ -322,6 +303,7 @@ namespace S100Framework.Applications
                                 }
                             }
 
+
                             if (current.COLOUR != default) {
                                 instance.colour = GetColours(current.COLOUR);  
                             }
@@ -334,7 +316,9 @@ namespace S100Framework.Applications
                                 instance.condition = GetCondition(current.CONDTN.Value);
                             }
 
-                            instance.elevation = current.ELEVAT;
+                            if (current.ELEVAT.HasValue) {
+                                instance.elevation = current.ELEVAT.Value;
+                            }
 
                             instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
 
@@ -356,7 +340,9 @@ namespace S100Framework.Applications
                                 }
                             }
 
-                            instance.height = current.HEIGHT;
+                            if (current.HEIGHT.HasValue) {
+                                instance.height = current.HEIGHT.Value;
+                            }
 
                             // TODO: interoperabilityidentifier
 
@@ -408,7 +394,7 @@ namespace S100Framework.Applications
                             }
 
                             // topmarkdayShape for topmark
-                            var topmarkDaymark = topmarkDaymarkShape.Unknown;
+                            topmarkDaymarkShape? topmarkDaymark = null;
                             
                             if (current.TOPSHP.HasValue) {
                                 topmarkDaymark = EnumHelper.GetEnumValue<topmarkDaymarkShape>(current.TOPSHP.Value);
@@ -416,17 +402,17 @@ namespace S100Framework.Applications
 
                             instance.verticalLength = current.VERLEN;
 
-                            // Slaves
+                            #region related
                             var related = featureRelations.GetRelated(current.GLOBALID);
                             if (related != null) {
                                 foreach (var plfrel in related) {
                                     //plfrel.RIND
                                     var slave = new PltsSlave(plfrel.PLTS_Frel);
-                                    var result = slave.Fetch(source, Direction.Source);
-                                    var relatedAidsToNavigationP = result as AidsToNavigationP;
+                                    var result = slave.Fetch(source, Direction.Destination);
 
+                                    if (result is AidsToNavigationP) {
+                                        var relatedAidsToNavigationP = result as AidsToNavigationP;
 
-                                    if (relatedAidsToNavigationP != null) {
                                         //relatedAidsToNavigationP
                                         if (plfrel.PLTS_Frel.DEST_SUB?.ToLower() == "lights_light") {
                                             var light = CreateLight(relatedAidsToNavigationP, insert, buffer, feature, tableName, convertedCount);
@@ -435,8 +421,9 @@ namespace S100Framework.Applications
                                         }
 
                                         else if (plfrel.PLTS_Frel.DEST_SUB?.ToLower() == "topmar_topmark") {
-                                            List<colour> topmarkColours = new();
-                                            colourPattern topmarkColourPattern = colourPattern.Unknown;
+                                            List<colour> topmarkColours = null;
+
+                                            colourPattern? topmarkColourPattern = null;
 
                                             if (relatedAidsToNavigationP.COLOUR != default) {
                                                 topmarkColours = GetColours(relatedAidsToNavigationP.COLOUR);
@@ -447,26 +434,45 @@ namespace S100Framework.Applications
                                             }
 
                                             var topmark = new topmark() {
-                                                colour = topmarkColours,
-                                                colourPattern = topmarkColourPattern,
                                                 // TODO: shapeinformation #15 @https://geodatastyrelsen.atlassian.net/wiki/spaces/SOEKORT/pages/5070028848/S-57+to+S-101+Conversion+Action+Points?force_transition=910d1b59-0dc5-42d7-bd2c-a81edd431caf,
                                                 shapeInformation = default
                                             };
 
-                                            topmark.topmarkDaymarkShape = topmarkDaymark;
+                                            if (topmarkColours != null) {
+                                                topmark.colour = topmarkColours;
+                                            }
+
+                                            if (topmarkColourPattern.HasValue) {
+                                                topmark.colourPattern = topmarkColourPattern.Value;
+                                            }
+
+                                            if (topmarkDaymark.HasValue) {
+                                                topmark.topmarkDaymarkShape = topmarkDaymark.Value;
+                                            }
 
                                             instance.topmark = topmark;
+                                        }
+                                        else if (plfrel.PLTS_Frel.DEST_SUB?.ToLower() == "rtpbcn_radartransponderbeacon") {
+                                            // TODO: Build rtpbcn_radartransponderbeacon
+                                            var radarTransponderBeacon = CreateRadarTransponderbeacon(relatedAidsToNavigationP, insert, buffer, feature, tableName, convertedCount);
 
+                                            // TODO: create relation
                                         }
                                         else {
                                             throw new NotImplementedException($"{plfrel.PLTS_Frel.DEST_SUB?.ToLower()} ");
                                         }
+                                    }
+                                    else if (result is DangersP) {
+                                        var relatedDangersP = result as DangersP;
+
+
                                     }
                                     else {
                                         throw new NotImplementedException($"{plfrel.PLTS_Frel.DEST_SUB?.ToLower()} ");
                                     }
                                 }
                             }
+                            #endregion related
 
                             //if (!topmarkDaymarkHasValue && instance.topmark != null) {
                             //    Logger.Current.DataError(current.OBJECTID.Value, tableName, current.LNAM, $"Missing topmarkDaymark info on {nameof(instance)}");
@@ -523,7 +529,9 @@ namespace S100Framework.Applications
                                 instance.condition = GetCondition(current.CONDTN.Value);
                             }
 
-                            instance.elevation = current.ELEVAT;
+                            if (current.ELEVAT.HasValue) {
+                                instance.elevation = current.ELEVAT.Value;
+                            }
 
                             instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
 
@@ -545,7 +553,9 @@ namespace S100Framework.Applications
                                 }
                             }
 
-                            instance.height = current.HEIGHT;
+                            if (current.HEIGHT.HasValue) {
+                                instance.height = current.HEIGHT.Value;
+                            }
 
                             // TODO: interoperabilityidentifier
 
@@ -597,7 +607,7 @@ namespace S100Framework.Applications
                             }
 
                             // topmarkdayShape for topmark
-                            var topmarkDaymark = topmarkDaymarkShape.Unknown;
+                            topmarkDaymarkShape? topmarkDaymark = null;
 
                             if (current.TOPSHP.HasValue) {
                                 topmarkDaymark = EnumHelper.GetEnumValue<topmarkDaymarkShape>(current.TOPSHP.Value);
@@ -605,17 +615,17 @@ namespace S100Framework.Applications
 
                             instance.verticalLength = current.VERLEN;
 
-                            // Slaves
+                            #region related
                             var related = featureRelations.GetRelated(current.GLOBALID);
                             if (related != null) {
                                 foreach (var plfrel in related) {
                                     //plfrel.RIND
                                     var slave = new PltsSlave(plfrel.PLTS_Frel);
-                                    var result = slave.Fetch(source, Direction.Source);
-                                    var relatedAidsToNavigationP = result as AidsToNavigationP;
+                                    var result = slave.Fetch(source, Direction.Destination);
 
+                                    if (result is AidsToNavigationP) {
+                                        var relatedAidsToNavigationP = result as AidsToNavigationP;
 
-                                    if (relatedAidsToNavigationP != null) {
                                         //relatedAidsToNavigationP
                                         if (plfrel.PLTS_Frel.DEST_SUB?.ToLower() == "lights_light") {
                                             var light = CreateLight(relatedAidsToNavigationP, insert, buffer, feature, tableName, convertedCount);
@@ -624,8 +634,9 @@ namespace S100Framework.Applications
                                         }
 
                                         else if (plfrel.PLTS_Frel.DEST_SUB?.ToLower() == "topmar_topmark") {
-                                            List<colour> topmarkColours = new();
-                                            colourPattern topmarkColourPattern = colourPattern.Unknown;
+                                            List<colour> topmarkColours = null;
+
+                                            colourPattern? topmarkColourPattern = null;
 
                                             if (relatedAidsToNavigationP.COLOUR != default) {
                                                 topmarkColours = GetColours(relatedAidsToNavigationP.COLOUR);
@@ -636,26 +647,46 @@ namespace S100Framework.Applications
                                             }
 
                                             var topmark = new topmark() {
-                                                colour = topmarkColours,
-                                                colourPattern = topmarkColourPattern,
                                                 // TODO: shapeinformation #15 @https://geodatastyrelsen.atlassian.net/wiki/spaces/SOEKORT/pages/5070028848/S-57+to+S-101+Conversion+Action+Points?force_transition=910d1b59-0dc5-42d7-bd2c-a81edd431caf,
                                                 shapeInformation = default
                                             };
 
-                                            topmark.topmarkDaymarkShape = topmarkDaymark;
+                                            if (topmarkColours != null) {
+                                                topmark.colour = topmarkColours;
+                                            }
+
+                                            if (topmarkColourPattern.HasValue) {
+                                                topmark.colourPattern = topmarkColourPattern.Value;
+                                            }
+
+                                            if (topmarkDaymark.HasValue) {
+                                                topmark.topmarkDaymarkShape = topmarkDaymark.Value;
+                                            }
 
                                             instance.topmark = topmark;
 
                                         }
+                                        else if (plfrel.PLTS_Frel.DEST_SUB?.ToLower() == "rtpbcn_radartransponderbeacon") {
+                                            // TODO: Build rtpbcn_radartransponderbeacon
+                                            var radarTransponderBeacon = CreateRadarTransponderbeacon(relatedAidsToNavigationP, insert, buffer, feature, tableName, convertedCount);
+
+                                            // TODO: create relation
+                                        }
                                         else {
                                             throw new NotImplementedException($"{plfrel.PLTS_Frel.DEST_SUB?.ToLower()} ");
                                         }
+                                    }
+                                    else if (result is DangersP) {
+                                        var relatedDangersP = result as DangersP;
+
+
                                     }
                                     else {
                                         throw new NotImplementedException($"{plfrel.PLTS_Frel.DEST_SUB?.ToLower()} ");
                                     }
                                 }
                             }
+                            #endregion related
 
                             //if (!topmarkDaymarkHasValue && instance.topmark != null) {
                             //    Logger.Current.DataError(current.OBJECTID.Value, tableName, current.LNAM, $"Missing topmarkDaymark info on {nameof(instance)}");
@@ -700,6 +731,14 @@ namespace S100Framework.Applications
                                 }
                             }
 
+                            if (current.CATLAM.HasValue) {
+                                if (current.CATLAM.Value == -32767)
+                                    instance.categoryOfLateralMark = EnumHelper.GetEnumValue<categoryOfLateralMark>("-1");
+                                else {
+                                    instance.categoryOfLateralMark = EnumHelper.GetEnumValue<categoryOfLateralMark>(current.CATLAM.Value);
+                                }
+                            }
+
                             if (current.COLOUR != default) {
                                 instance.colour = GetColours(current.COLOUR);
                             }
@@ -712,7 +751,9 @@ namespace S100Framework.Applications
                                 instance.condition = GetCondition(current.CONDTN.Value);
                             }
 
-                            instance.elevation = current.ELEVAT;
+                            if (current.ELEVAT.HasValue) {
+                                instance.elevation = current.ELEVAT.Value;
+                            }
 
                             instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
 
@@ -734,7 +775,9 @@ namespace S100Framework.Applications
                                 }
                             }
 
-                            instance.height = current.HEIGHT;
+                            if (current.HEIGHT.HasValue) { 
+                                instance.height = current.HEIGHT.Value;
+                            }
 
                             // TODO: interoperabilityidentifier
 
@@ -786,7 +829,7 @@ namespace S100Framework.Applications
                             }
 
                             // topmarkdayShape for topmark
-                            var topmarkDaymark = topmarkDaymarkShape.Unknown;
+                            topmarkDaymarkShape? topmarkDaymark = null;
 
                             if (current.TOPSHP.HasValue) {
                                 topmarkDaymark = EnumHelper.GetEnumValue<topmarkDaymarkShape>(current.TOPSHP.Value);
@@ -794,17 +837,17 @@ namespace S100Framework.Applications
 
                             instance.verticalLength = current.VERLEN;
 
-                            // Slaves
+                            #region related
                             var related = featureRelations.GetRelated(current.GLOBALID);
                             if (related != null) {
                                 foreach (var plfrel in related) {
                                     //plfrel.RIND
                                     var slave = new PltsSlave(plfrel.PLTS_Frel);
-                                    var result = slave.Fetch(source, Direction.Source);
-                                    var relatedAidsToNavigationP = result as AidsToNavigationP;
+                                    var result = slave.Fetch(source, Direction.Destination);
 
+                                    if (result is AidsToNavigationP) {
+                                        var relatedAidsToNavigationP = result as AidsToNavigationP;
 
-                                    if (relatedAidsToNavigationP != null) {
                                         //relatedAidsToNavigationP
                                         if (plfrel.PLTS_Frel.DEST_SUB?.ToLower() == "lights_light") {
                                             var light = CreateLight(relatedAidsToNavigationP, insert, buffer, feature, tableName, convertedCount);
@@ -813,8 +856,9 @@ namespace S100Framework.Applications
                                         }
 
                                         else if (plfrel.PLTS_Frel.DEST_SUB?.ToLower() == "topmar_topmark") {
-                                            List<colour> topmarkColours = new();
-                                            colourPattern topmarkColourPattern = colourPattern.Unknown;
+                                            List<colour> topmarkColours = null;
+
+                                            colourPattern? topmarkColourPattern = null;
 
                                             if (relatedAidsToNavigationP.COLOUR != default) {
                                                 topmarkColours = GetColours(relatedAidsToNavigationP.COLOUR);
@@ -825,26 +869,45 @@ namespace S100Framework.Applications
                                             }
 
                                             var topmark = new topmark() {
-                                                colour = topmarkColours,
-                                                colourPattern = topmarkColourPattern,
                                                 // TODO: shapeinformation #15 @https://geodatastyrelsen.atlassian.net/wiki/spaces/SOEKORT/pages/5070028848/S-57+to+S-101+Conversion+Action+Points?force_transition=910d1b59-0dc5-42d7-bd2c-a81edd431caf,
                                                 shapeInformation = default
                                             };
 
-                                            topmark.topmarkDaymarkShape = topmarkDaymark;
+                                            if (topmarkColours != null) {
+                                                topmark.colour = topmarkColours;
+                                            }
+
+                                            if (topmarkColourPattern.HasValue) {
+                                                topmark.colourPattern = topmarkColourPattern.Value;
+                                            }
+
+                                            if (topmarkDaymark.HasValue) {
+                                                topmark.topmarkDaymarkShape = topmarkDaymark.Value;
+                                            }
 
                                             instance.topmark = topmark;
+                                        }
+                                        else if (plfrel.PLTS_Frel.DEST_SUB?.ToLower() == "rtpbcn_radartransponderbeacon") {
+                                            // TODO: Build rtpbcn_radartransponderbeacon
+                                            var radarTransponderBeacon = CreateRadarTransponderbeacon(relatedAidsToNavigationP, insert, buffer, feature, tableName, convertedCount);
 
+                                            // TODO: create relation
                                         }
                                         else {
                                             throw new NotImplementedException($"{plfrel.PLTS_Frel.DEST_SUB?.ToLower()} ");
                                         }
+                                    }
+                                    else if (result is DangersP) {
+                                        var relatedDangersP = result as DangersP;
+
+
                                     }
                                     else {
                                         throw new NotImplementedException($"{plfrel.PLTS_Frel.DEST_SUB?.ToLower()} ");
                                     }
                                 }
                             }
+                            #endregion related
 
                             //if (!topmarkDaymarkHasValue && instance.topmark != null) {
                             //    Logger.Current.DataError(current.OBJECTID.Value, tableName, current.LNAM, $"Missing topmarkDaymark info on {nameof(instance)}");
@@ -901,7 +964,9 @@ namespace S100Framework.Applications
                                 instance.condition = GetCondition(current.CONDTN.Value);
                             }
 
-                            instance.elevation = current.ELEVAT;
+                            if (current.ELEVAT.HasValue) {
+                                instance.elevation = current.ELEVAT.Value;
+                            }
 
                             instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
 
@@ -923,7 +988,9 @@ namespace S100Framework.Applications
                                 }
                             }
 
-                            instance.height = current.HEIGHT;
+                            if (current.HEIGHT.HasValue) {
+                                instance.height = current.HEIGHT.Value;
+                            }
 
                             // TODO: interoperabilityidentifier
 
@@ -975,7 +1042,7 @@ namespace S100Framework.Applications
                             }
 
                             // topmarkdayShape for topmark
-                            var topmarkDaymark = topmarkDaymarkShape.Unknown;
+                            topmarkDaymarkShape? topmarkDaymark = null;
 
                             if (current.TOPSHP.HasValue) {
                                 topmarkDaymark = EnumHelper.GetEnumValue<topmarkDaymarkShape>(current.TOPSHP.Value);
@@ -983,17 +1050,17 @@ namespace S100Framework.Applications
 
                             instance.verticalLength = current.VERLEN;
 
-                            // Slaves
+                            #region related
                             var related = featureRelations.GetRelated(current.GLOBALID);
                             if (related != null) {
                                 foreach (var plfrel in related) {
                                     //plfrel.RIND
                                     var slave = new PltsSlave(plfrel.PLTS_Frel);
-                                    var result = slave.Fetch(source, Direction.Source);
-                                    var relatedAidsToNavigationP = result as AidsToNavigationP;
+                                    var result = slave.Fetch(source, Direction.Destination);
 
+                                    if (result is AidsToNavigationP) {
+                                        var relatedAidsToNavigationP = result as AidsToNavigationP;
 
-                                    if (relatedAidsToNavigationP != null) {
                                         //relatedAidsToNavigationP
                                         if (plfrel.PLTS_Frel.DEST_SUB?.ToLower() == "lights_light") {
                                             var light = CreateLight(relatedAidsToNavigationP, insert, buffer, feature, tableName, convertedCount);
@@ -1002,8 +1069,9 @@ namespace S100Framework.Applications
                                         }
 
                                         else if (plfrel.PLTS_Frel.DEST_SUB?.ToLower() == "topmar_topmark") {
-                                            List<colour> topmarkColours = new();
-                                            colourPattern topmarkColourPattern = colourPattern.Unknown;
+                                            List<colour> topmarkColours = null;
+
+                                            colourPattern? topmarkColourPattern = null;
 
                                             if (relatedAidsToNavigationP.COLOUR != default) {
                                                 topmarkColours = GetColours(relatedAidsToNavigationP.COLOUR);
@@ -1014,26 +1082,45 @@ namespace S100Framework.Applications
                                             }
 
                                             var topmark = new topmark() {
-                                                colour = topmarkColours,
-                                                colourPattern = topmarkColourPattern,
                                                 // TODO: shapeinformation #15 @https://geodatastyrelsen.atlassian.net/wiki/spaces/SOEKORT/pages/5070028848/S-57+to+S-101+Conversion+Action+Points?force_transition=910d1b59-0dc5-42d7-bd2c-a81edd431caf,
                                                 shapeInformation = default
                                             };
 
-                                            topmark.topmarkDaymarkShape = topmarkDaymark;
+                                            if (topmarkColours != null) {
+                                                topmark.colour = topmarkColours;
+                                            }
+
+                                            if (topmarkColourPattern.HasValue) {
+                                                topmark.colourPattern = topmarkColourPattern.Value;
+                                            }
+
+                                            if (topmarkDaymark.HasValue) {
+                                                topmark.topmarkDaymarkShape = topmarkDaymark.Value;
+                                            }
 
                                             instance.topmark = topmark;
+                                        }
+                                        else if (plfrel.PLTS_Frel.DEST_SUB?.ToLower() == "rtpbcn_radartransponderbeacon") {
+                                            // TODO: Build rtpbcn_radartransponderbeacon
+                                            var radarTransponderBeacon = CreateRadarTransponderbeacon(relatedAidsToNavigationP, insert, buffer, feature, tableName, convertedCount);
 
+                                            // TODO: create relation
                                         }
                                         else {
                                             throw new NotImplementedException($"{plfrel.PLTS_Frel.DEST_SUB?.ToLower()} ");
                                         }
+                                    }
+                                    else if (result is DangersP) {
+                                        var relatedDangersP = result as DangersP;
+
+
                                     }
                                     else {
                                         throw new NotImplementedException($"{plfrel.PLTS_Frel.DEST_SUB?.ToLower()} ");
                                     }
                                 }
                             }
+                            #endregion related
 
                             //if (!topmarkDaymarkHasValue && instance.topmark != null) {
                             //    Logger.Current.DataError(current.OBJECTID.Value, tableName, current.LNAM, $"Missing topmarkDaymark info on {nameof(instance)}");
@@ -1093,7 +1180,9 @@ namespace S100Framework.Applications
                                 instance.condition = GetCondition(current.CONDTN.Value);
                             }
 
-                            instance.elevation = current.ELEVAT;
+                            if (current.ELEVAT.HasValue) {
+                                instance.elevation = current.ELEVAT.Value;
+                            }
 
                             instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
 
@@ -1115,7 +1204,9 @@ namespace S100Framework.Applications
                                 }
                             }
 
-                            instance.height = current.HEIGHT;
+                            if (current.HEIGHT.HasValue) {
+                                instance.height = current.HEIGHT.Value;
+                            }
 
                             // TODO: interoperabilityidentifier
 
@@ -1167,7 +1258,7 @@ namespace S100Framework.Applications
                             }
 
                             // topmarkdayShape for topmark
-                            var topmarkDaymark = topmarkDaymarkShape.Unknown;
+                            topmarkDaymarkShape? topmarkDaymark = null;
 
                             if (current.TOPSHP.HasValue) {
                                 topmarkDaymark = EnumHelper.GetEnumValue<topmarkDaymarkShape>(current.TOPSHP.Value);
@@ -1175,17 +1266,17 @@ namespace S100Framework.Applications
 
                             instance.verticalLength = current.VERLEN;
 
-                            // Slaves
+                            #region related
                             var related = featureRelations.GetRelated(current.GLOBALID);
                             if (related != null) {
                                 foreach (var plfrel in related) {
                                     //plfrel.RIND
                                     var slave = new PltsSlave(plfrel.PLTS_Frel);
-                                    var result = slave.Fetch(source, Direction.Source);
-                                    var relatedAidsToNavigationP = result as AidsToNavigationP;
+                                    var result = slave.Fetch(source, Direction.Destination);
 
+                                    if (result is AidsToNavigationP) {
+                                        var relatedAidsToNavigationP = result as AidsToNavigationP;
 
-                                    if (relatedAidsToNavigationP != null) {
                                         //relatedAidsToNavigationP
                                         if (plfrel.PLTS_Frel.DEST_SUB?.ToLower() == "lights_light") {
                                             var light = CreateLight(relatedAidsToNavigationP, insert, buffer, feature, tableName, convertedCount);
@@ -1194,8 +1285,9 @@ namespace S100Framework.Applications
                                         }
 
                                         else if (plfrel.PLTS_Frel.DEST_SUB?.ToLower() == "topmar_topmark") {
-                                            List<colour> topmarkColours = new();
-                                            colourPattern topmarkColourPattern = colourPattern.Unknown;
+                                            List<colour> topmarkColours = null;
+
+                                            colourPattern? topmarkColourPattern = null;
 
                                             if (relatedAidsToNavigationP.COLOUR != default) {
                                                 topmarkColours = GetColours(relatedAidsToNavigationP.COLOUR);
@@ -1206,26 +1298,46 @@ namespace S100Framework.Applications
                                             }
 
                                             var topmark = new topmark() {
-                                                colour = topmarkColours,
-                                                colourPattern = topmarkColourPattern,
                                                 // TODO: shapeinformation #15 @https://geodatastyrelsen.atlassian.net/wiki/spaces/SOEKORT/pages/5070028848/S-57+to+S-101+Conversion+Action+Points?force_transition=910d1b59-0dc5-42d7-bd2c-a81edd431caf,
                                                 shapeInformation = default
                                             };
 
-                                            topmark.topmarkDaymarkShape = topmarkDaymark;
+                                            if (topmarkColours != null) {
+                                                topmark.colour = topmarkColours;
+                                            }
+
+                                            if (topmarkColourPattern.HasValue) {
+                                                topmark.colourPattern = topmarkColourPattern.Value;
+                                            }
+
+                                            if (topmarkDaymark.HasValue) {
+                                                topmark.topmarkDaymarkShape = topmarkDaymark.Value;
+                                            }
 
                                             instance.topmark = topmark;
+                                        }
+                                        else if (plfrel.PLTS_Frel.DEST_SUB?.ToLower() == "rtpbcn_radartransponderbeacon") {
+                                            // TODO: Build rtpbcn_radartransponderbeacon
+                                            var radarTransponderBeacon = CreateRadarTransponderbeacon(relatedAidsToNavigationP, insert, buffer, feature, tableName, convertedCount);
 
+                                            // TODO: create relation
                                         }
                                         else {
                                             throw new NotImplementedException($"{plfrel.PLTS_Frel.DEST_SUB?.ToLower()} ");
                                         }
+                                    }
+                                    else if (result is DangersP) {
+                                        var relatedDangersP = result as DangersP;
+
+
                                     }
                                     else {
                                         throw new NotImplementedException($"{plfrel.PLTS_Frel.DEST_SUB?.ToLower()} ");
                                     }
                                 }
                             }
+                            #endregion related
+
 
                             //if (!topmarkDaymarkHasValue && instance.topmark != null) {
                             //    Logger.Current.DataError(current.OBJECTID.Value, tableName, current.LNAM, $"Missing topmarkDaymark info on {nameof(instance)}");
@@ -1341,7 +1453,7 @@ namespace S100Framework.Applications
                             }
 
                             // topmarkdayShape for topmark
-                            var topmarkDaymark = topmarkDaymarkShape.Unknown;
+                            topmarkDaymarkShape? topmarkDaymark = null;
 
                             if (current.TOPSHP.HasValue) {
                                 topmarkDaymark = EnumHelper.GetEnumValue<topmarkDaymarkShape>(current.TOPSHP.Value);
@@ -1349,17 +1461,17 @@ namespace S100Framework.Applications
 
                             instance.verticalLength = current.VERLEN;
 
-                            // Slaves
+                            #region related
                             var related = featureRelations.GetRelated(current.GLOBALID);
                             if (related != null) {
                                 foreach (var plfrel in related) {
                                     //plfrel.RIND
                                     var slave = new PltsSlave(plfrel.PLTS_Frel);
-                                    var result = slave.Fetch(source, Direction.Source);
-                                    var relatedAidsToNavigationP = result as AidsToNavigationP;
+                                    var result = slave.Fetch(source, Direction.Destination);
 
+                                    if (result is AidsToNavigationP) {
+                                        var relatedAidsToNavigationP = result as AidsToNavigationP;
 
-                                    if (relatedAidsToNavigationP != null) {
                                         //relatedAidsToNavigationP
                                         if (plfrel.PLTS_Frel.DEST_SUB?.ToLower() == "lights_light") {
                                             var light = CreateLight(relatedAidsToNavigationP, insert, buffer, feature, tableName, convertedCount);
@@ -1368,8 +1480,9 @@ namespace S100Framework.Applications
                                         }
 
                                         else if (plfrel.PLTS_Frel.DEST_SUB?.ToLower() == "topmar_topmark") {
-                                            List<colour> topmarkColours = new();
-                                            colourPattern topmarkColourPattern = colourPattern.Unknown;
+                                            List<colour> topmarkColours = null;
+
+                                            colourPattern? topmarkColourPattern = null;
 
                                             if (relatedAidsToNavigationP.COLOUR != default) {
                                                 topmarkColours = GetColours(relatedAidsToNavigationP.COLOUR);
@@ -1380,26 +1493,45 @@ namespace S100Framework.Applications
                                             }
 
                                             var topmark = new topmark() {
-                                                colour = topmarkColours,
-                                                colourPattern = topmarkColourPattern,
                                                 // TODO: shapeinformation #15 @https://geodatastyrelsen.atlassian.net/wiki/spaces/SOEKORT/pages/5070028848/S-57+to+S-101+Conversion+Action+Points?force_transition=910d1b59-0dc5-42d7-bd2c-a81edd431caf,
                                                 shapeInformation = default
                                             };
 
-                                            topmark.topmarkDaymarkShape = topmarkDaymark;
+                                            if (topmarkColours != null) {
+                                                topmark.colour = topmarkColours;
+                                            }
+
+                                            if (topmarkColourPattern.HasValue) {
+                                                topmark.colourPattern = topmarkColourPattern.Value;
+                                            }
+
+                                            if (topmarkDaymark.HasValue) {
+                                                topmark.topmarkDaymarkShape = topmarkDaymark.Value;
+                                            }
 
                                             instance.topmark = topmark;
+                                        }
+                                        else if (plfrel.PLTS_Frel.DEST_SUB?.ToLower() == "rtpbcn_radartransponderbeacon") {
+                                            // TODO: Build rtpbcn_radartransponderbeacon
+                                            var radarTransponderBeacon = CreateRadarTransponderbeacon(relatedAidsToNavigationP, insert, buffer, feature, tableName, convertedCount);
 
+                                            // TODO: create relation
                                         }
                                         else {
                                             throw new NotImplementedException($"{plfrel.PLTS_Frel.DEST_SUB?.ToLower()} ");
                                         }
+                                    }
+                                    else if (result is DangersP) {
+                                        var relatedDangersP = result as DangersP;
+
+
                                     }
                                     else {
                                         throw new NotImplementedException($"{plfrel.PLTS_Frel.DEST_SUB?.ToLower()} ");
                                     }
                                 }
                             }
+                            #endregion related
 
                             //if (!topmarkDaymarkHasValue && instance.topmark != null) {
                             //    Logger.Current.DataError(current.OBJECTID.Value, tableName, current.LNAM, $"Missing topmarkDaymark info on {nameof(instance)}");
@@ -1428,6 +1560,13 @@ namespace S100Framework.Applications
                             var instance = new InstallationBuoy();
 
                             #region aidstonavigation
+                            if (current.BOYSHP.HasValue) {
+                                if (current.BOYSHP.Value == -32767)
+                                    instance.buoyShape = EnumHelper.GetEnumValue<buoyShape>("-1");
+                                else {
+                                    instance.buoyShape = EnumHelper.GetEnumValue<buoyShape>(current.BOYSHP);
+                                }
+                            }
 
                             if (current.COLOUR != default) {
                                 instance.colour = GetColours(current.COLOUR);
@@ -1496,23 +1635,23 @@ namespace S100Framework.Applications
                             }
 
                             // topmarkdayShape for topmark
-                            var topmarkDaymark = topmarkDaymarkShape.Unknown;
+                            topmarkDaymarkShape? topmarkDaymark = null;
 
                             if (current.TOPSHP.HasValue) {
                                 topmarkDaymark = EnumHelper.GetEnumValue<topmarkDaymarkShape>(current.TOPSHP.Value);
                             }
 
-                            // Slaves
+                            #region related
                             var related = featureRelations.GetRelated(current.GLOBALID);
                             if (related != null) {
                                 foreach (var plfrel in related) {
                                     //plfrel.RIND
                                     var slave = new PltsSlave(plfrel.PLTS_Frel);
-                                    var result = slave.Fetch(source, Direction.Source);
-                                    var relatedAidsToNavigationP = result as AidsToNavigationP;
+                                    var result = slave.Fetch(source, Direction.Destination);
 
+                                    if (result is AidsToNavigationP) {
+                                        var relatedAidsToNavigationP = result as AidsToNavigationP;
 
-                                    if (relatedAidsToNavigationP != null) {
                                         //relatedAidsToNavigationP
                                         if (plfrel.PLTS_Frel.DEST_SUB?.ToLower() == "lights_light") {
                                             var light = CreateLight(relatedAidsToNavigationP, insert, buffer, feature, tableName, convertedCount);
@@ -1520,19 +1659,27 @@ namespace S100Framework.Applications
 
                                         }
 
-                                        else if (plfrel.PLTS_Frel.DEST_SUB?.ToLower() == "topmar_topmark") {
-                                            throw new NotSupportedException("Topmarks");
+                                        else if (plfrel.PLTS_Frel.DEST_SUB?.ToLower() == "rtpbcn_radartransponderbeacon") {
+                                            // TODO: Build rtpbcn_radartransponderbeacon
+                                            var radarTransponderBeacon = CreateRadarTransponderbeacon(relatedAidsToNavigationP, insert, buffer, feature, tableName, convertedCount);
 
+                                            // TODO: create relation
                                         }
                                         else {
                                             throw new NotImplementedException($"{plfrel.PLTS_Frel.DEST_SUB?.ToLower()} ");
                                         }
+                                    }
+                                    else if (result is DangersP) {
+                                        var relatedDangersP = result as DangersP;
+
+
                                     }
                                     else {
                                         throw new NotImplementedException($"{plfrel.PLTS_Frel.DEST_SUB?.ToLower()} ");
                                     }
                                 }
                             }
+                            #endregion related
 
                             //if (!topmarkDaymarkHasValue && instance.topmark != null) {
                             //    Logger.Current.DataError(current.OBJECTID.Value, tableName, current.LNAM, $"Missing topmarkDaymark info on {nameof(instance)}");
@@ -1642,7 +1789,7 @@ namespace S100Framework.Applications
                             }
 
                             // topmarkdayShape for topmark
-                            var topmarkDaymark = topmarkDaymarkShape.Unknown;
+                            topmarkDaymarkShape? topmarkDaymark = null;
 
                             if (current.TOPSHP.HasValue) {
                                 topmarkDaymark = EnumHelper.GetEnumValue<topmarkDaymarkShape>(current.TOPSHP.Value);
@@ -1650,17 +1797,17 @@ namespace S100Framework.Applications
 
                             instance.verticalLength = current.VERLEN;
 
-                            // Slaves
+                            #region related
                             var related = featureRelations.GetRelated(current.GLOBALID);
                             if (related != null) {
                                 foreach (var plfrel in related) {
                                     //plfrel.RIND
                                     var slave = new PltsSlave(plfrel.PLTS_Frel);
-                                    var result = slave.Fetch(source, Direction.Source);
-                                    var relatedAidsToNavigationP = result as AidsToNavigationP;
+                                    var result = slave.Fetch(source, Direction.Destination);
 
+                                    if (result is AidsToNavigationP) {
+                                        var relatedAidsToNavigationP = result as AidsToNavigationP;
 
-                                    if (relatedAidsToNavigationP != null) {
                                         //relatedAidsToNavigationP
                                         if (plfrel.PLTS_Frel.DEST_SUB?.ToLower() == "lights_light") {
                                             var light = CreateLight(relatedAidsToNavigationP, insert, buffer, feature, tableName, convertedCount);
@@ -1669,8 +1816,9 @@ namespace S100Framework.Applications
                                         }
 
                                         else if (plfrel.PLTS_Frel.DEST_SUB?.ToLower() == "topmar_topmark") {
-                                            List<colour> topmarkColours = new();
-                                            colourPattern topmarkColourPattern = colourPattern.Unknown;
+                                            List<colour> topmarkColours = null;
+
+                                            colourPattern? topmarkColourPattern = null;
 
                                             if (relatedAidsToNavigationP.COLOUR != default) {
                                                 topmarkColours = GetColours(relatedAidsToNavigationP.COLOUR);
@@ -1681,26 +1829,45 @@ namespace S100Framework.Applications
                                             }
 
                                             var topmark = new topmark() {
-                                                colour = topmarkColours,
-                                                colourPattern = topmarkColourPattern,
                                                 // TODO: shapeinformation #15 @https://geodatastyrelsen.atlassian.net/wiki/spaces/SOEKORT/pages/5070028848/S-57+to+S-101+Conversion+Action+Points?force_transition=910d1b59-0dc5-42d7-bd2c-a81edd431caf,
                                                 shapeInformation = default
                                             };
 
-                                            topmark.topmarkDaymarkShape = topmarkDaymark;
+                                            if (topmarkColours != null) {
+                                                topmark.colour = topmarkColours;
+                                            }
+
+                                            if (topmarkColourPattern.HasValue) {
+                                                topmark.colourPattern = topmarkColourPattern.Value;
+                                            }
+
+                                            if (topmarkDaymark.HasValue) {
+                                                topmark.topmarkDaymarkShape = topmarkDaymark.Value;
+                                            }
 
                                             instance.topmark = topmark;
+                                        }
+                                        else if (plfrel.PLTS_Frel.DEST_SUB?.ToLower() == "rtpbcn_radartransponderbeacon") {
+                                            // TODO: Build rtpbcn_radartransponderbeacon
+                                            var radarTransponderBeacon = CreateRadarTransponderbeacon(relatedAidsToNavigationP, insert, buffer, feature, tableName, convertedCount);
 
+                                            // TODO: create relation
                                         }
                                         else {
                                             throw new NotImplementedException($"{plfrel.PLTS_Frel.DEST_SUB?.ToLower()} ");
                                         }
+                                    }
+                                    else if (result is DangersP) {
+                                        var relatedDangersP = result as DangersP;
+
+
                                     }
                                     else {
                                         throw new NotImplementedException($"{plfrel.PLTS_Frel.DEST_SUB?.ToLower()} ");
                                     }
                                 }
                             }
+                            #endregion related
 
                             //if (!topmarkDaymarkHasValue && instance.topmark != null) {
                             //    Logger.Current.DataError(current.OBJECTID.Value, tableName, current.LNAM, $"Missing topmarkDaymark info on {nameof(instance)}");
@@ -1803,7 +1970,7 @@ namespace S100Framework.Applications
                             }
 
                             // topmarkdayShape for topmark
-                            var topmarkDaymark = topmarkDaymarkShape.Unknown;
+                            topmarkDaymarkShape? topmarkDaymark = null;
 
                             if (current.TOPSHP.HasValue) {
                                 topmarkDaymark = EnumHelper.GetEnumValue<topmarkDaymarkShape>(current.TOPSHP.Value);
@@ -1811,17 +1978,17 @@ namespace S100Framework.Applications
 
                             instance.verticalLength = current.VERLEN;
 
-                            // Slaves
+                            #region related
                             var related = featureRelations.GetRelated(current.GLOBALID);
                             if (related != null) {
                                 foreach (var plfrel in related) {
                                     //plfrel.RIND
                                     var slave = new PltsSlave(plfrel.PLTS_Frel);
-                                    var result = slave.Fetch(source, Direction.Source);
-                                    var relatedAidsToNavigationP = result as AidsToNavigationP;
+                                    var result = slave.Fetch(source, Direction.Destination);
 
+                                    if (result is AidsToNavigationP) {
+                                        var relatedAidsToNavigationP = result as AidsToNavigationP;
 
-                                    if (relatedAidsToNavigationP != null) {
                                         //relatedAidsToNavigationP
                                         if (plfrel.PLTS_Frel.DEST_SUB?.ToLower() == "lights_light") {
                                             var light = CreateLight(relatedAidsToNavigationP, insert, buffer, feature, tableName, convertedCount);
@@ -1830,8 +1997,9 @@ namespace S100Framework.Applications
                                         }
 
                                         else if (plfrel.PLTS_Frel.DEST_SUB?.ToLower() == "topmar_topmark") {
-                                            List<colour> topmarkColours = new();
-                                            colourPattern topmarkColourPattern = colourPattern.Unknown;
+                                            List<colour> topmarkColours = null;
+
+                                            colourPattern? topmarkColourPattern = null;
 
                                             if (relatedAidsToNavigationP.COLOUR != default) {
                                                 topmarkColours = GetColours(relatedAidsToNavigationP.COLOUR);
@@ -1842,32 +2010,45 @@ namespace S100Framework.Applications
                                             }
 
                                             var topmark = new topmark() {
-                                                colour = topmarkColours,
-                                                colourPattern = topmarkColourPattern,
                                                 // TODO: shapeinformation #15 @https://geodatastyrelsen.atlassian.net/wiki/spaces/SOEKORT/pages/5070028848/S-57+to+S-101+Conversion+Action+Points?force_transition=910d1b59-0dc5-42d7-bd2c-a81edd431caf,
                                                 shapeInformation = default
                                             };
 
-                                            topmark.topmarkDaymarkShape = topmarkDaymark;
+                                            if (topmarkColours != null) {
+                                                topmark.colour = topmarkColours;
+                                            }
+
+                                            if (topmarkColourPattern.HasValue) {
+                                                topmark.colourPattern = topmarkColourPattern.Value;
+                                            }
+
+                                            if (topmarkDaymark.HasValue) {
+                                                topmark.topmarkDaymarkShape = topmarkDaymark.Value;
+                                            }
 
                                             instance.topmark = topmark;
-
                                         }
                                         else if (plfrel.PLTS_Frel.DEST_SUB?.ToLower() == "rtpbcn_radartransponderbeacon") {
                                             // TODO: Build rtpbcn_radartransponderbeacon
                                             var radarTransponderBeacon = CreateRadarTransponderbeacon(relatedAidsToNavigationP, insert, buffer, feature, tableName, convertedCount);
-                                            
+
                                             // TODO: create relation
                                         }
                                         else {
                                             throw new NotImplementedException($"{plfrel.PLTS_Frel.DEST_SUB?.ToLower()} ");
                                         }
                                     }
+                                    else if (result is DangersP) {
+                                        var relatedDangersP = result as DangersP;
+                                        
+
+                                    }
                                     else {
                                         throw new NotImplementedException($"{plfrel.PLTS_Frel.DEST_SUB?.ToLower()} ");
                                     }
                                 }
                             }
+                            #endregion related
 
                             //if (!topmarkDaymarkHasValue && instance.topmark != null) {
                             //    Logger.Current.DataError(current.OBJECTID.Value, tableName, current.LNAM, $"Missing topmarkDaymark info on {nameof(instance)}");
@@ -1967,7 +2148,7 @@ namespace S100Framework.Applications
                             }
 
                             // topmarkdayShape for topmark
-                            var topmarkDaymark = topmarkDaymarkShape.Unknown;
+                            topmarkDaymarkShape? topmarkDaymark = null;
 
                             if (current.TOPSHP.HasValue) {
                                 topmarkDaymark = EnumHelper.GetEnumValue<topmarkDaymarkShape>(current.TOPSHP.Value);
@@ -1975,17 +2156,17 @@ namespace S100Framework.Applications
 
                             instance.verticalLength = current.VERLEN;
 
-                            // Slaves
+                            #region related
                             var related = featureRelations.GetRelated(current.GLOBALID);
                             if (related != null) {
                                 foreach (var plfrel in related) {
                                     //plfrel.RIND
                                     var slave = new PltsSlave(plfrel.PLTS_Frel);
-                                    var result = slave.Fetch(source, Direction.Source);
-                                    var relatedAidsToNavigationP = result as AidsToNavigationP;
+                                    var result = slave.Fetch(source, Direction.Destination);
 
+                                    if (result is AidsToNavigationP) {
+                                        var relatedAidsToNavigationP = result as AidsToNavigationP;
 
-                                    if (relatedAidsToNavigationP != null) {
                                         //relatedAidsToNavigationP
                                         if (plfrel.PLTS_Frel.DEST_SUB?.ToLower() == "lights_light") {
                                             var light = CreateLight(relatedAidsToNavigationP, insert, buffer, feature, tableName, convertedCount);
@@ -1994,8 +2175,9 @@ namespace S100Framework.Applications
                                         }
 
                                         else if (plfrel.PLTS_Frel.DEST_SUB?.ToLower() == "topmar_topmark") {
-                                            List<colour> topmarkColours = new();
-                                            colourPattern topmarkColourPattern = colourPattern.Unknown;
+                                            List<colour> topmarkColours = null;
+
+                                            colourPattern? topmarkColourPattern = null;
 
                                             if (relatedAidsToNavigationP.COLOUR != default) {
                                                 topmarkColours = GetColours(relatedAidsToNavigationP.COLOUR);
@@ -2006,30 +2188,45 @@ namespace S100Framework.Applications
                                             }
 
                                             var topmark = new topmark() {
-                                                colour = topmarkColours,
-                                                colourPattern = topmarkColourPattern,
                                                 // TODO: shapeinformation #15 @https://geodatastyrelsen.atlassian.net/wiki/spaces/SOEKORT/pages/5070028848/S-57+to+S-101+Conversion+Action+Points?force_transition=910d1b59-0dc5-42d7-bd2c-a81edd431caf,
                                                 shapeInformation = default
                                             };
 
-                                            topmark.topmarkDaymarkShape = topmarkDaymark;
+                                            if (topmarkColours != null) {
+                                                topmark.colour = topmarkColours;
+                                            }
+
+                                            if (topmarkColourPattern.HasValue) {
+                                                topmark.colourPattern = topmarkColourPattern.Value;
+                                            }
+
+                                            if (topmarkDaymark.HasValue) {
+                                                topmark.topmarkDaymarkShape = topmarkDaymark.Value;
+                                            }
 
                                             instance.topmark = topmark;
-
                                         }
-
                                         else if (plfrel.PLTS_Frel.DEST_SUB?.ToLower() == "rtpbcn_radartransponderbeacon") {
-                                            // TODO: implement radartransponderbeacon
+                                            // TODO: Build rtpbcn_radartransponderbeacon
+                                            var radarTransponderBeacon = CreateRadarTransponderbeacon(relatedAidsToNavigationP, insert, buffer, feature, tableName, convertedCount);
+
+                                            // TODO: create relation
                                         }
                                         else {
                                             throw new NotImplementedException($"{plfrel.PLTS_Frel.DEST_SUB?.ToLower()} ");
                                         }
+                                    }
+                                    else if (result is DangersP) {
+                                        var relatedDangersP = result as DangersP;
+
+
                                     }
                                     else {
                                         throw new NotImplementedException($"{plfrel.PLTS_Frel.DEST_SUB?.ToLower()} ");
                                     }
                                 }
                             }
+                            #endregion related
 
                             //if (!topmarkDaymarkHasValue && instance.topmark != null) {
                             //    Logger.Current.DataError(current.OBJECTID.Value, tableName, current.LNAM, $"Missing topmarkDaymark info on {nameof(instance)}");
@@ -2130,7 +2327,7 @@ namespace S100Framework.Applications
                             }
 
                             // topmarkdayShape for topmark
-                            var topmarkDaymark = topmarkDaymarkShape.Unknown;
+                            topmarkDaymarkShape? topmarkDaymark = null;
 
                             if (current.TOPSHP.HasValue) {
                                 topmarkDaymark = EnumHelper.GetEnumValue<topmarkDaymarkShape>(current.TOPSHP.Value);
@@ -2138,17 +2335,17 @@ namespace S100Framework.Applications
 
                             instance.verticalLength = current.VERLEN;
 
-                            // Slaves
+                            #region related
                             var related = featureRelations.GetRelated(current.GLOBALID);
                             if (related != null) {
                                 foreach (var plfrel in related) {
                                     //plfrel.RIND
                                     var slave = new PltsSlave(plfrel.PLTS_Frel);
-                                    var result = slave.Fetch(source, Direction.Source);
-                                    var relatedAidsToNavigationP = result as AidsToNavigationP;
+                                    var result = slave.Fetch(source, Direction.Destination);
 
+                                    if (result is AidsToNavigationP) {
+                                        var relatedAidsToNavigationP = result as AidsToNavigationP;
 
-                                    if (relatedAidsToNavigationP != null) {
                                         //relatedAidsToNavigationP
                                         if (plfrel.PLTS_Frel.DEST_SUB?.ToLower() == "lights_light") {
                                             var light = CreateLight(relatedAidsToNavigationP, insert, buffer, feature, tableName, convertedCount);
@@ -2157,8 +2354,9 @@ namespace S100Framework.Applications
                                         }
 
                                         else if (plfrel.PLTS_Frel.DEST_SUB?.ToLower() == "topmar_topmark") {
-                                            List<colour> topmarkColours = new();
-                                            colourPattern topmarkColourPattern = colourPattern.Unknown;
+                                            List<colour> topmarkColours = null;
+
+                                            colourPattern? topmarkColourPattern = null;
 
                                             if (relatedAidsToNavigationP.COLOUR != default) {
                                                 topmarkColours = GetColours(relatedAidsToNavigationP.COLOUR);
@@ -2169,26 +2367,45 @@ namespace S100Framework.Applications
                                             }
 
                                             var topmark = new topmark() {
-                                                colour = topmarkColours,
-                                                colourPattern = topmarkColourPattern,
                                                 // TODO: shapeinformation #15 @https://geodatastyrelsen.atlassian.net/wiki/spaces/SOEKORT/pages/5070028848/S-57+to+S-101+Conversion+Action+Points?force_transition=910d1b59-0dc5-42d7-bd2c-a81edd431caf,
                                                 shapeInformation = default
                                             };
 
-                                            topmark.topmarkDaymarkShape = topmarkDaymark;
+                                            if (topmarkColours != null) {
+                                                topmark.colour = topmarkColours;
+                                            }
+
+                                            if (topmarkColourPattern.HasValue) {
+                                                topmark.colourPattern = topmarkColourPattern.Value;
+                                            }
+
+                                            if (topmarkDaymark.HasValue) {
+                                                topmark.topmarkDaymarkShape = topmarkDaymark.Value;
+                                            }
 
                                             instance.topmark = topmark;
+                                        }
+                                        else if (plfrel.PLTS_Frel.DEST_SUB?.ToLower() == "rtpbcn_radartransponderbeacon") {
+                                            // TODO: Build rtpbcn_radartransponderbeacon
+                                            var radarTransponderBeacon = CreateRadarTransponderbeacon(relatedAidsToNavigationP, insert, buffer, feature, tableName, convertedCount);
 
+                                            // TODO: create relation
                                         }
                                         else {
                                             throw new NotImplementedException($"{plfrel.PLTS_Frel.DEST_SUB?.ToLower()} ");
                                         }
+                                    }
+                                    else if (result is DangersP) {
+                                        var relatedDangersP = result as DangersP;
+
+
                                     }
                                     else {
                                         throw new NotImplementedException($"{plfrel.PLTS_Frel.DEST_SUB?.ToLower()} ");
                                     }
                                 }
                             }
+                            #endregion related
 
                             //if (!topmarkDaymarkHasValue && instance.topmark != null) {
                             //    Logger.Current.DataError(current.OBJECTID.Value, tableName, current.LNAM, $"Missing topmarkDaymark info on {nameof(instance)}");
@@ -2229,7 +2446,9 @@ namespace S100Framework.Applications
                                 instance.colourPattern = GetColourPattern(current.COLPAT);
                             }
 
-                            instance.elevation = current.ELEVAT;
+                            if (current.ELEVAT.HasValue) {
+                                instance.elevation = current.ELEVAT.Value;
+                            }
 
                             instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
 
@@ -2251,7 +2470,9 @@ namespace S100Framework.Applications
                                 }
                             }
 
-                            instance.height = current.HEIGHT;
+                            if (current.HEIGHT.HasValue) {
+                                instance.height = current.HEIGHT.Value;
+                            }
 
                             // TODO: interoperabilityidentifier
 
@@ -2290,7 +2511,7 @@ namespace S100Framework.Applications
                             }
 
                             // topmarkdayShape for topmark
-                            var topmarkDaymark = topmarkDaymarkShape.Unknown;
+                            topmarkDaymarkShape? topmarkDaymark = null;
 
                             if (current.TOPSHP.HasValue) {
                                 topmarkDaymark = EnumHelper.GetEnumValue<topmarkDaymarkShape>(current.TOPSHP.Value);
@@ -2298,17 +2519,17 @@ namespace S100Framework.Applications
 
                             instance.verticalLength = current.VERLEN;
 
-                            // Slaves
+                            #region related
                             var related = featureRelations.GetRelated(current.GLOBALID);
                             if (related != null) {
                                 foreach (var plfrel in related) {
                                     //plfrel.RIND
                                     var slave = new PltsSlave(plfrel.PLTS_Frel);
-                                    var result = slave.Fetch(source, Direction.Source);
-                                    var relatedAidsToNavigationP = result as AidsToNavigationP;
+                                    var result = slave.Fetch(source, Direction.Destination);
 
+                                    if (result is AidsToNavigationP) {
+                                        var relatedAidsToNavigationP = result as AidsToNavigationP;
 
-                                    if (relatedAidsToNavigationP != null) {
                                         //relatedAidsToNavigationP
                                         if (plfrel.PLTS_Frel.DEST_SUB?.ToLower() == "lights_light") {
                                             var light = CreateLight(relatedAidsToNavigationP, insert, buffer, feature, tableName, convertedCount);
@@ -2316,19 +2537,27 @@ namespace S100Framework.Applications
 
                                         }
 
-                                        else if (plfrel.PLTS_Frel.DEST_SUB?.ToLower() == "topmar_topmark") {
-                                            throw new NotSupportedException($"topmark on {nameof(instance)}");
+                                        else if (plfrel.PLTS_Frel.DEST_SUB?.ToLower() == "rtpbcn_radartransponderbeacon") {
+                                            // TODO: Build rtpbcn_radartransponderbeacon
+                                            var radarTransponderBeacon = CreateRadarTransponderbeacon(relatedAidsToNavigationP, insert, buffer, feature, tableName, convertedCount);
+
+                                            // TODO: create relation
                                         }
                                         else {
                                             throw new NotImplementedException($"{plfrel.PLTS_Frel.DEST_SUB?.ToLower()} ");
                                         }
                                     }
+                                    else if (result is DangersP) {
+                                        var relatedDangersP = result as DangersP;
+
+
+                                    }
                                     else {
                                         throw new NotImplementedException($"{plfrel.PLTS_Frel.DEST_SUB?.ToLower()} ");
                                     }
                                 }
-
                             }
+                            #endregion related
 
                             //if (!topmarkDaymarkHasValue && instance.topmark != null) {
                             //    Logger.Current.DataError(current.OBJECTID.Value, tableName, current.LNAM, $"Missing topmarkDaymark info on {nameof(instance)}");
@@ -2413,23 +2642,23 @@ namespace S100Framework.Applications
                             }
 
                             // topmarkdayShape for topmark
-                            var topmarkDaymark = topmarkDaymarkShape.Unknown;
+                            topmarkDaymarkShape? topmarkDaymark = null;
 
                             if (current.TOPSHP.HasValue) {
                                 topmarkDaymark = EnumHelper.GetEnumValue<topmarkDaymarkShape>(current.TOPSHP.Value);
                             }
 
-                            // Slaves
+                            #region related
                             var related = featureRelations.GetRelated(current.GLOBALID);
                             if (related != null) {
                                 foreach (var plfrel in related) {
                                     //plfrel.RIND
                                     var slave = new PltsSlave(plfrel.PLTS_Frel);
-                                    var result = slave.Fetch(source, Direction.Source);
-                                    var relatedAidsToNavigationP = result as AidsToNavigationP;
+                                    var result = slave.Fetch(source, Direction.Destination);
 
+                                    if (result is AidsToNavigationP) {
+                                        var relatedAidsToNavigationP = result as AidsToNavigationP;
 
-                                    if (relatedAidsToNavigationP != null) {
                                         //relatedAidsToNavigationP
                                         if (plfrel.PLTS_Frel.DEST_SUB?.ToLower() == "lights_light") {
                                             var light = CreateLight(relatedAidsToNavigationP, insert, buffer, feature, tableName, convertedCount);
@@ -2437,18 +2666,27 @@ namespace S100Framework.Applications
 
                                         }
 
-                                        else if (plfrel.PLTS_Frel.DEST_SUB?.ToLower() == "topmar_topmark") {
-                                            throw new NotSupportedException($"topmark on {nameof(instance)}");
+                                        else if (plfrel.PLTS_Frel.DEST_SUB?.ToLower() == "rtpbcn_radartransponderbeacon") {
+                                            // TODO: Build rtpbcn_radartransponderbeacon
+                                            var radarTransponderBeacon = CreateRadarTransponderbeacon(relatedAidsToNavigationP, insert, buffer, feature, tableName, convertedCount);
+
+                                            // TODO: create relation
                                         }
                                         else {
                                             throw new NotImplementedException($"{plfrel.PLTS_Frel.DEST_SUB?.ToLower()} ");
                                         }
+                                    }
+                                    else if (result is DangersP) {
+                                        var relatedDangersP = result as DangersP;
+
+
                                     }
                                     else {
                                         throw new NotImplementedException($"{plfrel.PLTS_Frel.DEST_SUB?.ToLower()} ");
                                     }
                                 }
                             }
+                            #endregion related
 
                             //if (!topmarkDaymarkHasValue && instance.topmark != null) {
                             //    Logger.Current.DataError(current.OBJECTID.Value, tableName, current.LNAM, $"Missing topmarkDaymark info on {nameof(instance)}");
@@ -2545,7 +2783,7 @@ namespace S100Framework.Applications
                             }
 
                             // topmarkdayShape for topmark
-                            var topmarkDaymark = topmarkDaymarkShape.Unknown;
+                            topmarkDaymarkShape? topmarkDaymark = null;
 
                             if (current.TOPSHP.HasValue) {
                                 topmarkDaymark = EnumHelper.GetEnumValue<topmarkDaymarkShape>(current.TOPSHP.Value);
@@ -2553,17 +2791,17 @@ namespace S100Framework.Applications
 
                             instance.verticalLength = current.VERLEN;
 
-                            // Slaves
+                            #region related
                             var related = featureRelations.GetRelated(current.GLOBALID);
                             if (related != null) {
                                 foreach (var plfrel in related) {
                                     //plfrel.RIND
                                     var slave = new PltsSlave(plfrel.PLTS_Frel);
-                                    var result = slave.Fetch(source, Direction.Source);
-                                    var relatedAidsToNavigationP = result as AidsToNavigationP;
+                                    var result = slave.Fetch(source, Direction.Destination);
 
+                                    if (result is AidsToNavigationP) {
+                                        var relatedAidsToNavigationP = result as AidsToNavigationP;
 
-                                    if (relatedAidsToNavigationP != null) {
                                         //relatedAidsToNavigationP
                                         if (plfrel.PLTS_Frel.DEST_SUB?.ToLower() == "lights_light") {
                                             var light = CreateLight(relatedAidsToNavigationP, insert, buffer, feature, tableName, convertedCount);
@@ -2573,7 +2811,7 @@ namespace S100Framework.Applications
 
                                         else if (plfrel.PLTS_Frel.DEST_SUB?.ToLower() == "topmar_topmark") {
                                             List<colour> topmarkColours = new();
-                                            colourPattern topmarkColourPattern = colourPattern.Unknown;
+                                            colourPattern? topmarkColourPattern = null;
 
                                             if (relatedAidsToNavigationP.COLOUR != default) {
                                                 topmarkColours = GetColours(relatedAidsToNavigationP.COLOUR);
@@ -2590,20 +2828,35 @@ namespace S100Framework.Applications
                                                 shapeInformation = default
                                             };
 
-                                            topmark.topmarkDaymarkShape = topmarkDaymark;
+                                            if (topmarkDaymark.HasValue) {
+                                                topmark.topmarkDaymarkShape = topmarkDaymark.Value;
+                                            }
+
 
                                             instance.topmark = topmark;
 
                                         }
+                                        else if (plfrel.PLTS_Frel.DEST_SUB?.ToLower() == "rtpbcn_radartransponderbeacon") {
+                                            // TODO: Build rtpbcn_radartransponderbeacon
+                                            var radarTransponderBeacon = CreateRadarTransponderbeacon(relatedAidsToNavigationP, insert, buffer, feature, tableName, convertedCount);
+
+                                            // TODO: create relation
+                                        }
                                         else {
                                             throw new NotImplementedException($"{plfrel.PLTS_Frel.DEST_SUB?.ToLower()} ");
                                         }
+                                    }
+                                    else if (result is DangersP) {
+                                        var relatedDangersP = result as DangersP;
+
+
                                     }
                                     else {
                                         throw new NotImplementedException($"{plfrel.PLTS_Frel.DEST_SUB?.ToLower()} ");
                                     }
                                 }
                             }
+                            #endregion related
 
                             //if (!topmarkDaymarkHasValue && instance.topmark != null) {
                             //    Logger.Current.DataError(current.OBJECTID.Value, tableName, current.LNAM, $"Missing topmarkDaymark info on {nameof(instance)}");
@@ -2705,7 +2958,7 @@ namespace S100Framework.Applications
                             }
 
                             // topmarkdayShape for topmark
-                            var topmarkDaymark = topmarkDaymarkShape.Unknown;
+                            topmarkDaymarkShape? topmarkDaymark = null;
 
                             if (current.TOPSHP.HasValue) {
                                 topmarkDaymark = EnumHelper.GetEnumValue<topmarkDaymarkShape>(current.TOPSHP.Value);
@@ -2713,17 +2966,17 @@ namespace S100Framework.Applications
 
                             instance.verticalLength = current.VERLEN;
 
-                            // Slaves
+                            #region related
                             var related = featureRelations.GetRelated(current.GLOBALID);
                             if (related != null) {
                                 foreach (var plfrel in related) {
                                     //plfrel.RIND
                                     var slave = new PltsSlave(plfrel.PLTS_Frel);
-                                    var result = slave.Fetch(source, Direction.Source);
-                                    var relatedAidsToNavigationP = result as AidsToNavigationP;
+                                    var result = slave.Fetch(source, Direction.Destination);
 
+                                    if (result is AidsToNavigationP) {
+                                        var relatedAidsToNavigationP = result as AidsToNavigationP;
 
-                                    if (relatedAidsToNavigationP != null) {
                                         //relatedAidsToNavigationP
                                         if (plfrel.PLTS_Frel.DEST_SUB?.ToLower() == "lights_light") {
                                             var light = CreateLight(relatedAidsToNavigationP, insert, buffer, feature, tableName, convertedCount);
@@ -2731,19 +2984,27 @@ namespace S100Framework.Applications
 
                                         }
 
-                                        else if (plfrel.PLTS_Frel.DEST_SUB?.ToLower() == "topmar_topmark") {
-                                            throw new NotSupportedException($"topmark on {nameof(instance)}");
+                                        else if (plfrel.PLTS_Frel.DEST_SUB?.ToLower() == "rtpbcn_radartransponderbeacon") {
+                                            // TODO: Build rtpbcn_radartransponderbeacon
+                                            var radarTransponderBeacon = CreateRadarTransponderbeacon(relatedAidsToNavigationP, insert, buffer, feature, tableName, convertedCount);
 
+                                            // TODO: create relation
                                         }
                                         else {
                                             throw new NotImplementedException($"{plfrel.PLTS_Frel.DEST_SUB?.ToLower()} ");
                                         }
+                                    }
+                                    else if (result is DangersP) {
+                                        var relatedDangersP = result as DangersP;
+
+
                                     }
                                     else {
                                         throw new NotImplementedException($"{plfrel.PLTS_Frel.DEST_SUB?.ToLower()} ");
                                     }
                                 }
                             }
+                            #endregion related
 
                             //if (!topmarkDaymarkHasValue && instance.topmark != null) {
                             //    Logger.Current.DataError(current.OBJECTID.Value, tableName, current.LNAM, $"Missing topmarkDaymark info on {nameof(instance)}");
@@ -2799,7 +3060,9 @@ namespace S100Framework.Applications
                                 }
                             }
 
-                            instance.height = current.HEIGHT;
+                            if (current.HEIGHT.HasValue) {
+                                instance.height = current.HEIGHT.Value;
+                            }
 
                             // TODO: interoperabilityidentifier
 
@@ -2830,23 +3093,23 @@ namespace S100Framework.Applications
                             }
 
                             // topmarkdayShape for topmark
-                            var topmarkDaymark = topmarkDaymarkShape.Unknown;
+                            topmarkDaymarkShape? topmarkDaymark = null;
 
                             if (current.TOPSHP.HasValue) {
                                 topmarkDaymark = EnumHelper.GetEnumValue<topmarkDaymarkShape>(current.TOPSHP.Value);
                             }
 
-                            // Slaves
+                            #region related
                             var related = featureRelations.GetRelated(current.GLOBALID);
                             if (related != null) {
                                 foreach (var plfrel in related) {
                                     //plfrel.RIND
                                     var slave = new PltsSlave(plfrel.PLTS_Frel);
-                                    var result = slave.Fetch(source, Direction.Source);
-                                    var relatedAidsToNavigationP = result as AidsToNavigationP;
+                                    var result = slave.Fetch(source, Direction.Destination);
 
+                                    if (result is AidsToNavigationP) {
+                                        var relatedAidsToNavigationP = result as AidsToNavigationP;
 
-                                    if (relatedAidsToNavigationP != null) {
                                         //relatedAidsToNavigationP
                                         if (plfrel.PLTS_Frel.DEST_SUB?.ToLower() == "lights_light") {
                                             var light = CreateLight(relatedAidsToNavigationP, insert, buffer, feature, tableName, convertedCount);
@@ -2854,19 +3117,27 @@ namespace S100Framework.Applications
 
                                         }
 
-                                        else if (plfrel.PLTS_Frel.DEST_SUB?.ToLower() == "topmar_topmark") {
-                                            throw new NotSupportedException($"topmark on {nameof(instance)}");
+                                        else if (plfrel.PLTS_Frel.DEST_SUB?.ToLower() == "rtpbcn_radartransponderbeacon") {
+                                            // TODO: Build rtpbcn_radartransponderbeacon
+                                            var radarTransponderBeacon = CreateRadarTransponderbeacon(relatedAidsToNavigationP, insert, buffer, feature, tableName, convertedCount);
 
+                                            // TODO: create relation
                                         }
                                         else {
                                             throw new NotImplementedException($"{plfrel.PLTS_Frel.DEST_SUB?.ToLower()} ");
                                         }
+                                    }
+                                    else if (result is DangersP) {
+                                        var relatedDangersP = result as DangersP;
+
+
                                     }
                                     else {
                                         throw new NotImplementedException($"{plfrel.PLTS_Frel.DEST_SUB?.ToLower()} ");
                                     }
                                 }
                             }
+                            #endregion related
 
                             //if (!topmarkDaymarkHasValue && instance.topmark != null) {
                             //    Logger.Current.DataError(current.OBJECTID.Value, tableName, current.LNAM, $"Missing topmarkDaymark info on {nameof(instance)}");
@@ -2897,7 +3168,9 @@ namespace S100Framework.Applications
 
                             instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
 
-                            instance.height = current.HEIGHT;
+                            if (current.HEIGHT.HasValue) {
+                                instance.height = current.HEIGHT.Value;
+                            }
 
                             // TODO: interoperabilityidentifier
 
@@ -2928,23 +3201,23 @@ namespace S100Framework.Applications
                             }
 
                             // topmarkdayShape for topmark
-                            var topmarkDaymark = topmarkDaymarkShape.Unknown;
+                            topmarkDaymarkShape? topmarkDaymark = null;
 
                             if (current.TOPSHP.HasValue) {
                                 topmarkDaymark = EnumHelper.GetEnumValue<topmarkDaymarkShape>(current.TOPSHP.Value);
                             }
 
-                            // Slaves
+                            #region related
                             var related = featureRelations.GetRelated(current.GLOBALID);
                             if (related != null) {
                                 foreach (var plfrel in related) {
                                     //plfrel.RIND
                                     var slave = new PltsSlave(plfrel.PLTS_Frel);
-                                    var result = slave.Fetch(source, Direction.Source);
-                                    var relatedAidsToNavigationP = result as AidsToNavigationP;
+                                    var result = slave.Fetch(source, Direction.Destination);
 
+                                    if (result is AidsToNavigationP) {
+                                        var relatedAidsToNavigationP = result as AidsToNavigationP;
 
-                                    if (relatedAidsToNavigationP != null) {
                                         //relatedAidsToNavigationP
                                         if (plfrel.PLTS_Frel.DEST_SUB?.ToLower() == "lights_light") {
                                             var light = CreateLight(relatedAidsToNavigationP, insert, buffer, feature, tableName, convertedCount);
@@ -2952,19 +3225,28 @@ namespace S100Framework.Applications
 
                                         }
 
-                                        else if (plfrel.PLTS_Frel.DEST_SUB?.ToLower() == "topmar_topmark") {
-                                            throw new NotSupportedException($"topmark on {nameof(instance)}");
+                                        else if (plfrel.PLTS_Frel.DEST_SUB?.ToLower() == "rtpbcn_radartransponderbeacon") {
+                                            // TODO: Build rtpbcn_radartransponderbeacon
+                                            var radarTransponderBeacon = CreateRadarTransponderbeacon(relatedAidsToNavigationP, insert, buffer, feature, tableName, convertedCount);
 
+                                            // TODO: create relation
                                         }
                                         else {
                                             throw new NotImplementedException($"{plfrel.PLTS_Frel.DEST_SUB?.ToLower()} ");
                                         }
+                                    }
+                                    else if (result is DangersP) {
+                                        var relatedDangersP = result as DangersP;
+
+
                                     }
                                     else {
                                         throw new NotImplementedException($"{plfrel.PLTS_Frel.DEST_SUB?.ToLower()} ");
                                     }
                                 }
                             }
+                            #endregion related
+
 
                             //if (!topmarkDaymarkHasValue && instance.topmark != null) {
                             //    Logger.Current.DataError(current.OBJECTID.Value, tableName, current.LNAM, $"Missing topmarkDaymark info on {nameof(instance)}");
@@ -3042,24 +3324,24 @@ namespace S100Framework.Applications
                             }
 
                             // topmarkdayShape for topmark
-                            var topmarkDaymark = topmarkDaymarkShape.Unknown;
+                            topmarkDaymarkShape? topmarkDaymark = null;
 
                             if (current.TOPSHP.HasValue) {
                                 topmarkDaymark = EnumHelper.GetEnumValue<topmarkDaymarkShape>(current.TOPSHP.Value);
                             }
 
 
-                            // Slaves
+                            #region related
                             var related = featureRelations.GetRelated(current.GLOBALID);
                             if (related != null) {
                                 foreach (var plfrel in related) {
                                     //plfrel.RIND
                                     var slave = new PltsSlave(plfrel.PLTS_Frel);
-                                    var result = slave.Fetch(source, Direction.Source);
-                                    var relatedAidsToNavigationP = result as AidsToNavigationP;
+                                    var result = slave.Fetch(source, Direction.Destination);
 
+                                    if (result is AidsToNavigationP) {
+                                        var relatedAidsToNavigationP = result as AidsToNavigationP;
 
-                                    if (relatedAidsToNavigationP != null) {
                                         //relatedAidsToNavigationP
                                         if (plfrel.PLTS_Frel.DEST_SUB?.ToLower() == "lights_light") {
                                             var light = CreateLight(relatedAidsToNavigationP, insert, buffer, feature, tableName, convertedCount);
@@ -3067,18 +3349,28 @@ namespace S100Framework.Applications
 
                                         }
 
-                                        else if (plfrel.PLTS_Frel.DEST_SUB?.ToLower() == "topmar_topmark") {
-                                            throw new NotSupportedException($"topmark on {nameof(instance)}");
+                                        else if (plfrel.PLTS_Frel.DEST_SUB?.ToLower() == "rtpbcn_radartransponderbeacon") {
+                                            // TODO: Build rtpbcn_radartransponderbeacon
+                                            var radarTransponderBeacon = CreateRadarTransponderbeacon(relatedAidsToNavigationP, insert, buffer, feature, tableName, convertedCount);
+
+                                            // TODO: create relation
                                         }
                                         else {
                                             throw new NotImplementedException($"{plfrel.PLTS_Frel.DEST_SUB?.ToLower()} ");
                                         }
+                                    }
+                                    else if (result is DangersP) {
+                                        var relatedDangersP = result as DangersP;
+
+
                                     }
                                     else {
                                         throw new NotImplementedException($"{plfrel.PLTS_Frel.DEST_SUB?.ToLower()} ");
                                     }
                                 }
                             }
+                            #endregion related
+
 
                             //if (!topmarkDaymarkHasValue && instance.topmark != null) {
                             //    Logger.Current.DataError(current.OBJECTID.Value, tableName, current.LNAM, $"Missing topmarkDaymark info on {nameof(instance)}");
@@ -3134,7 +3426,9 @@ namespace S100Framework.Applications
                                 }
                             }
 
-                            instance.height = current.HEIGHT;
+                            if (current.HEIGHT.HasValue) { 
+                                instance.height = current.HEIGHT.Value;
+                            }
 
                             // TODO: interoperabilityidentifier
 
@@ -3165,23 +3459,23 @@ namespace S100Framework.Applications
                             }
 
                             // topmarkdayShape for topmark
-                            var topmarkDaymark = topmarkDaymarkShape.Unknown;
+                            topmarkDaymarkShape? topmarkDaymark = null;
 
                             if (current.TOPSHP.HasValue) {
                                 topmarkDaymark = EnumHelper.GetEnumValue<topmarkDaymarkShape>(current.TOPSHP.Value);
                             }
 
-                            // Slaves
+                            #region related
                             var related = featureRelations.GetRelated(current.GLOBALID);
                             if (related != null) {
                                 foreach (var plfrel in related) {
                                     //plfrel.RIND
                                     var slave = new PltsSlave(plfrel.PLTS_Frel);
-                                    var result = slave.Fetch(source, Direction.Source);
-                                    var relatedAidsToNavigationP = result as AidsToNavigationP;
+                                    var result = slave.Fetch(source, Direction.Destination);
 
+                                    if (result is AidsToNavigationP) {
+                                        var relatedAidsToNavigationP = result as AidsToNavigationP;
 
-                                    if (relatedAidsToNavigationP != null) {
                                         //relatedAidsToNavigationP
                                         if (plfrel.PLTS_Frel.DEST_SUB?.ToLower() == "lights_light") {
                                             var light = CreateLight(relatedAidsToNavigationP, insert, buffer, feature, tableName, convertedCount);
@@ -3189,19 +3483,28 @@ namespace S100Framework.Applications
 
                                         }
 
-                                        else if (plfrel.PLTS_Frel.DEST_SUB?.ToLower() == "topmar_topmark") {
-                                            throw new NotSupportedException($"topmark on {nameof(instance)}");
+                                        else if (plfrel.PLTS_Frel.DEST_SUB?.ToLower() == "rtpbcn_radartransponderbeacon") {
+                                            // TODO: Build rtpbcn_radartransponderbeacon
+                                            var radarTransponderBeacon = CreateRadarTransponderbeacon(relatedAidsToNavigationP, insert, buffer, feature, tableName, convertedCount);
 
+                                            // TODO: create relation
                                         }
                                         else {
                                             throw new NotImplementedException($"{plfrel.PLTS_Frel.DEST_SUB?.ToLower()} ");
                                         }
+                                    }
+                                    else if (result is DangersP) {
+                                        var relatedDangersP = result as DangersP;
+
+
                                     }
                                     else {
                                         throw new NotImplementedException($"{plfrel.PLTS_Frel.DEST_SUB?.ToLower()} ");
                                     }
                                 }
                             }
+                            #endregion related
+
 
                             //if (!topmarkDaymarkHasValue && instance.topmark != null) {
                             //    Logger.Current.DataError(current.OBJECTID.Value, tableName, current.LNAM, $"Missing topmarkDaymark info on {nameof(instance)}");
@@ -3279,24 +3582,23 @@ namespace S100Framework.Applications
                             }
 
                             // topmarkdayShape for topmark
-                            var topmarkDaymark = topmarkDaymarkShape.Unknown;
+                            topmarkDaymarkShape? topmarkDaymark = null;
 
                             if (current.TOPSHP.HasValue) {
                                 topmarkDaymark = EnumHelper.GetEnumValue<topmarkDaymarkShape>(current.TOPSHP.Value);
                             }
 
-
-                            // Slaves
+                            #region related
                             var related = featureRelations.GetRelated(current.GLOBALID);
                             if (related != null) {
                                 foreach (var plfrel in related) {
                                     //plfrel.RIND
                                     var slave = new PltsSlave(plfrel.PLTS_Frel);
-                                    var result = slave.Fetch(source, Direction.Source);
-                                    var relatedAidsToNavigationP = result as AidsToNavigationP;
+                                    var result = slave.Fetch(source, Direction.Destination);
 
+                                    if (result is AidsToNavigationP) {
+                                        var relatedAidsToNavigationP = result as AidsToNavigationP;
 
-                                    if (relatedAidsToNavigationP != null) {
                                         //relatedAidsToNavigationP
                                         if (plfrel.PLTS_Frel.DEST_SUB?.ToLower() == "lights_light") {
                                             var light = CreateLight(relatedAidsToNavigationP, insert, buffer, feature, tableName, convertedCount);
@@ -3304,19 +3606,28 @@ namespace S100Framework.Applications
 
                                         }
 
-                                        else if (plfrel.PLTS_Frel.DEST_SUB?.ToLower() == "topmar_topmark") {
-                                            throw new NotSupportedException($"topmark on {nameof(instance)}");
+                                        else if (plfrel.PLTS_Frel.DEST_SUB?.ToLower() == "rtpbcn_radartransponderbeacon") {
+                                            // TODO: Build rtpbcn_radartransponderbeacon
+                                            var radarTransponderBeacon = CreateRadarTransponderbeacon(relatedAidsToNavigationP, insert, buffer, feature, tableName, convertedCount);
 
+                                            // TODO: create relation
                                         }
                                         else {
                                             throw new NotImplementedException($"{plfrel.PLTS_Frel.DEST_SUB?.ToLower()} ");
                                         }
+                                    }
+                                    else if (result is DangersP) {
+                                        var relatedDangersP = result as DangersP;
+
+
                                     }
                                     else {
                                         throw new NotImplementedException($"{plfrel.PLTS_Frel.DEST_SUB?.ToLower()} ");
                                     }
                                 }
                             }
+                            #endregion related
+
 
                             //if (!topmarkDaymarkHasValue && instance.topmark != null) {
                             //    Logger.Current.DataError(current.OBJECTID.Value, tableName, current.LNAM, $"Missing topmarkDaymark info on {nameof(instance)}");
