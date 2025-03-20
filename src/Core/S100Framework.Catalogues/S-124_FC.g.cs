@@ -501,6 +501,8 @@ namespace S100Framework.DomainModel.S124 {
             public partial class NWPreambleContent : InformationAssociation {
                 [Required()]
                 public RefId header { get; set; }
+
+                [IgnoreDataMember]
                 public virtual String[] headerInformationTypes => [];
                 public override string Code => nameof(NWPreambleContent);
 
@@ -524,6 +526,8 @@ namespace S100Framework.DomainModel.S124 {
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
             public partial class NWReferences : InformationAssociation {
                 public List<RefId> theReferences { get; set; } = [];
+
+                [IgnoreDataMember]
                 public virtual String[] theReferencesInformationTypes => [];
                 public override string Code => nameof(NWReferences);
 
@@ -548,7 +552,11 @@ namespace S100Framework.DomainModel.S124 {
 
                 [Required()]
                 public RefId impacts { get; set; }
+
+                [IgnoreDataMember]
                 public virtual String[] affectsFeatureTypes => [];
+
+                [IgnoreDataMember]
                 public virtual String[] impactsFeatureTypes => [];
                 public override string Code => "AreaAffected";
 
@@ -574,7 +582,11 @@ namespace S100Framework.DomainModel.S124 {
             public abstract partial class TextAssociation : FeatureAssociation {
                 public RefId? identifies { get; set; }
                 public List<RefId> positions { get; set; } = [];
+
+                [IgnoreDataMember]
                 public virtual String[] identifiesFeatureTypes => [];
+
+                [IgnoreDataMember]
                 public virtual String[] positionsFeatureTypes => [];
                 public override string Code => "TextAssociation";
 
@@ -628,6 +640,8 @@ namespace S100Framework.DomainModel.S124 {
 
             public class NWReferences_theReferences : NWReferences {
                 public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
                 public override String[] theReferencesInformationTypes => ["References"];
 
                 public NWReferences_theReferences() {
@@ -699,6 +713,8 @@ namespace S100Framework.DomainModel.S124 {
 
             public class NWPreambleContent_header : NWPreambleContent {
                 public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
                 public override String[] headerInformationTypes => ["NAVWARNPreamble"];
 
                 public NWPreambleContent_header() {
@@ -707,8 +723,9 @@ namespace S100Framework.DomainModel.S124 {
             };
             public class AreaAffected_affects : AreaAffected {
                 public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
                 public override String[] affectsFeatureTypes => ["NAVWARNAreaAffected"];
-                public override String[] impactsFeatureTypes => ["NAVWARNPart"];
 
                 public AreaAffected_affects() {
                     base.AssociationConnectorTypeName = typeof(NAVWARNPart).Name;
@@ -716,8 +733,9 @@ namespace S100Framework.DomainModel.S124 {
             };
             public class TextAssociation_positions : TextAssociation {
                 public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
                 public override String[] positionsFeatureTypes => ["TextPlacement"];
-                public override String[] identifiesFeatureTypes => ["NAVWARNPart"];
 
                 public TextAssociation_positions() {
                     base.AssociationConnectorTypeName = typeof(NAVWARNPart).Name;
@@ -738,8 +756,9 @@ namespace S100Framework.DomainModel.S124 {
 
             public class AreaAffected_impacts : AreaAffected {
                 public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
                 public override String[] impactsFeatureTypes => ["NAVWARNPart"];
-                public override String[] affectsFeatureTypes => ["NAVWARNAreaAffected"];
 
                 public AreaAffected_impacts() {
                     base.AssociationConnectorTypeName = typeof(NAVWARNAreaAffected).Name;
@@ -771,8 +790,9 @@ namespace S100Framework.DomainModel.S124 {
 
             public class TextAssociation_identifies : TextAssociation {
                 public override roleType? roleType => DomainModel.roleType.composition;
+
+                [IgnoreDataMember]
                 public override String[] identifiesFeatureTypes => ["NAVWARNPart"];
-                public override String[] positionsFeatureTypes => ["TextPlacement"];
 
                 public TextAssociation_identifies() {
                     base.AssociationConnectorTypeName = typeof(TextPlacement).Name;

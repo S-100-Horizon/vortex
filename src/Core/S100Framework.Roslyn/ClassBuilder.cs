@@ -615,6 +615,7 @@ namespace S100Framework
 
                         classBuilder.AppendLine(BuildClass($"{code}", associationType, xmlNamespace, (builder) => {
                             foreach (var r in roles) {
+                                builder.AppendLine("\t\t\t[IgnoreDataMember]");
                                 builder.AppendLine($"\t\t\tpublic virtual String[] {r}InformationTypes => [];");
                             }
 
@@ -699,6 +700,7 @@ namespace S100Framework
 
                         classBuilder.AppendLine(BuildClass($"{code}", associationType, xmlNamespace, (builder) => {
                             foreach (var r in roles) {
+                                builder.AppendLine("\t\t\t[IgnoreDataMember]");
                                 builder.AppendLine($"\t\t\tpublic virtual String[] {r}FeatureTypes => [];");
                             }
 
@@ -860,12 +862,14 @@ namespace S100Framework
 
                                     builder.AppendLine($"\t\t\tpublic class {association}_{role} : {association} {{");
                                     builder.AppendLine($"\t\t\t\tpublic override roleType? roleType => DomainModel.roleType.{roleType};");
+                                    builder.AppendLine("\t\t\t\t[IgnoreDataMember]");
                                     builder.AppendLine($"\t\t\t\tpublic override String[] {role}InformationTypes => [{string.Join(',', informationTypes)}];");
-                                    builder.AppendLine($"\t\t\t\tpublic override String[] {roleRemote}InformationTypes => [{string.Join(',', informationTypesRemote)}];");
+                                    //builder.AppendLine($"\t\t\t\tpublic override String[] {roleRemote}InformationTypes => [{string.Join(',', informationTypesRemote)}];");
                                 }
                                 else {
                                     builder.AppendLine($"\t\t\tpublic class {association}_{role} : {association} {{");
                                     builder.AppendLine($"\t\t\t\tpublic override roleType? roleType => DomainModel.roleType.{roleType};");
+                                    builder.AppendLine("\t\t\t\t[IgnoreDataMember]");
                                     builder.AppendLine($"\t\t\t\tpublic override String[] {role}InformationTypes => [{string.Join(',', informationTypes)}];");
                                 }
 
@@ -1036,12 +1040,14 @@ namespace S100Framework
 
                                     builder.AppendLine($"\t\t\tpublic class {association}_{role} : {association} {{");
                                     builder.AppendLine($"\t\t\t\tpublic override roleType? roleType => DomainModel.roleType.{roleType};");
+                                    builder.AppendLine("\t\t\t\t[IgnoreDataMember]");
                                     builder.AppendLine($"\t\t\t\tpublic override String[] {role}InformationTypes => [{string.Join(',', informationTypes)}];");
-                                    builder.AppendLine($"\t\t\t\tpublic override String[] {roleRemote}InformationTypes => [{string.Join(',', informationTypesRemote)}];");
+                                    //builder.AppendLine($"\t\t\t\tpublic override String[] {roleRemote}InformationTypes => [{string.Join(',', informationTypesRemote)}];");
                                 }
                                 else {
                                     builder.AppendLine($"\t\t\tpublic class {association}_{role} : {association} {{");
                                     builder.AppendLine($"\t\t\t\tpublic override roleType? roleType => DomainModel.roleType.{roleType};");
+                                    builder.AppendLine("\t\t\t\t[IgnoreDataMember]");
                                     builder.AppendLine($"\t\t\t\tpublic override String[] {role}InformationTypes => [{string.Join(',', informationTypes)}];");
                                 }
 
@@ -1078,12 +1084,14 @@ namespace S100Framework
 
                                     builder.AppendLine($"\t\t\tpublic class {association}_{role} : {association} {{");
                                     builder.AppendLine($"\t\t\t\tpublic override roleType? roleType => DomainModel.roleType.{roleType};");
+                                    builder.AppendLine("\t\t\t\t[IgnoreDataMember]");
                                     builder.AppendLine($"\t\t\t\tpublic override String[] {role}FeatureTypes => [{string.Join(',', featureTypes)}];");
-                                    builder.AppendLine($"\t\t\t\tpublic override String[] {roleRemote}FeatureTypes => [{string.Join(',', featureTypesRemote)}];");
+                                    //builder.AppendLine($"\t\t\t\tpublic override String[] {roleRemote}FeatureTypes => [{string.Join(',', featureTypesRemote)}];");
                                 }
                                 else {
                                     builder.AppendLine($"\t\t\tpublic class {association}_{role} : {association} {{");
                                     builder.AppendLine($"\t\t\t\tpublic override roleType? roleType => DomainModel.roleType.{roleType};");
+                                    builder.AppendLine("\t\t\t\t[IgnoreDataMember]");
                                     builder.AppendLine($"\t\t\t\tpublic override String[] {role}FeatureTypes => [{string.Join(',', featureTypes)}];");
                                 }
 
