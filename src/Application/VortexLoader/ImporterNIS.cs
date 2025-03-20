@@ -1,17 +1,17 @@
 ﻿using ArcGIS.Core.Data;
+using ArcGIS.Core.Geometry;
 using CommandLine;
 using S100Framework.DomainModel.S101;
 using S100Framework.DomainModel.S101.ComplexAttributes;
+using System.Text.Json;
+using VortexLoader;
 using static S100Framework.Applications.VortexLoader;
 using IO = System.IO;
-using ArcGIS.Core.Geometry;
-using System;
-using VortexLoader;
-using System.Text.Json;
 
 namespace S100Framework.Applications
 {
-    internal static partial class ImporterNIS {
+    internal static partial class ImporterNIS
+    {
 
         private static readonly JsonSerializerOptions jsonSerializerOptions = new() {
             WriteIndented = false,
@@ -63,7 +63,7 @@ namespace S100Framework.Applications
                 Store = (a) => {
                     destination.ApplyEdits(() => {
                         a.Invoke();
-                    },true);
+                    }, true);
                     return true;
                 };
             }
@@ -125,7 +125,7 @@ namespace S100Framework.Applications
                 return true;
             }
         }
-    
+
 
 
 
@@ -154,7 +154,7 @@ namespace S100Framework.Applications
         }
 
         private static List<colour> GetColours(string color) {
-            if (color== "-32767") {
+            if (color == "-32767") {
                 return new List<colour>() { (colour)(-1) };
             }
             return EnumHelper.GetEnumValues<colour>(color);
@@ -240,70 +240,70 @@ namespace S100Framework.Applications
         private static List<status> GetStatus(string statuses) {
             List<status> statusList = new List<status>();
 
-                var featureStatus = statuses.Trim();
+            var featureStatus = statuses.Trim();
 
-                /*
-                 * code	status
-                alias	STATUS
-                name	Status
-                definition	The condition of an object at a given instant in time.
-                valueType	enumeration  listedValues	
+            /*
+             * code	status
+            alias	STATUS
+            name	Status
+            definition	The condition of an object at a given instant in time.
+            valueType	enumeration  listedValues	
 
-                Permanent	            1	IHOREG	Intended to last or function indefinitely.
-                Occasional	            2	IHOREG	Acting on special occasions; happening irregularly.
-                Recommended	            3	IHOREG	Presented as worthy of confidence, acceptance, use, etc.
-                Not in Use	            4	IHOREG	Use has ceased, but the facility still exists intact; disused.
-                Periodic/Intermittent	5	IHOREG	Recurring at intervals.
-                Reserved	            6	IHOREG	Set apart for some specific use.
-                Temporary	            7	IHOREG	Meant to last only for a time.
-                Private	                8	IHOREG	Administered by an individual or corporation, rather than a State or a public body.
-                Mandatory	            9	IHOREG	Compulsory; enforced.
-                Extinguished	        11	IHOREG	No longer lit.
-                Illuminated	            12	IHOREG	Lit by flood lights, strip lights, etc.
-                Historic	            13	IHOREG	Famous in history; of historical interest.
-                Public	                14	IHOREG	Belonging to, available to, used or shared by, the community as a whole and not restricted to private use.
-                Synchronized	        15	IHOREG	Occur at a time, coincide in point of time, be contemporary or simultaneous.
-                Watched	                16	IHOREG	Looked at or observed over a period of time especially so as to be aware of any movement or change.
-                Unwatched	            17	IHOREG	Usually automatic in operation, without any permanently-stationed personnel to superintend it.
-                Existence Doubtful	    18	IHOREG	A feature that has been reported but has not been definitely determined to exist.
-                Buoyed	                28	IHOREG	Marked by buoys.
+            Permanent	            1	IHOREG	Intended to last or function indefinitely.
+            Occasional	            2	IHOREG	Acting on special occasions; happening irregularly.
+            Recommended	            3	IHOREG	Presented as worthy of confidence, acceptance, use, etc.
+            Not in Use	            4	IHOREG	Use has ceased, but the facility still exists intact; disused.
+            Periodic/Intermittent	5	IHOREG	Recurring at intervals.
+            Reserved	            6	IHOREG	Set apart for some specific use.
+            Temporary	            7	IHOREG	Meant to last only for a time.
+            Private	                8	IHOREG	Administered by an individual or corporation, rather than a State or a public body.
+            Mandatory	            9	IHOREG	Compulsory; enforced.
+            Extinguished	        11	IHOREG	No longer lit.
+            Illuminated	            12	IHOREG	Lit by flood lights, strip lights, etc.
+            Historic	            13	IHOREG	Famous in history; of historical interest.
+            Public	                14	IHOREG	Belonging to, available to, used or shared by, the community as a whole and not restricted to private use.
+            Synchronized	        15	IHOREG	Occur at a time, coincide in point of time, be contemporary or simultaneous.
+            Watched	                16	IHOREG	Looked at or observed over a period of time especially so as to be aware of any movement or change.
+            Unwatched	            17	IHOREG	Usually automatic in operation, without any permanently-stationed personnel to superintend it.
+            Existence Doubtful	    18	IHOREG	A feature that has been reported but has not been definitely determined to exist.
+            Buoyed	                28	IHOREG	Marked by buoys.
 
-                */
+            */
 
 
-                if (!string.IsNullOrEmpty(featureStatus)) {
-                    /* See S-101 DCEG clause 5.4 for the listing of allowable values. Values populated in S-57 for this attribute
-                        other than the allowable values will not be converted across to S-101. Data Producers are advised to
-                        check any populated values for STATUS on LNDARE and amend appropriately. */
-                    foreach (var c in featureStatus.Split(',', StringSplitOptions.RemoveEmptyEntries)) {
-                        status? e = featureStatus.ToLowerInvariant() switch {
-                            "1" => status.Permanent,
-                            "2" => status.Occasional,
-                            "3" => status.Recommended,
-                            "4" => status.NotInUse,
-                            "5" => status.PeriodicIntermittent,
-                            "6" => status.Reserved,
-                            "7" => status.Temporary,
-                            "8" => status.Private,
-                            "9" => status.Mandatory,
-                            "11" =>status.Extinguished,
-                            "12" =>status.Illuminated,
-                            "13" => status.Historic,
-                            "14" => status.Public,
-                            "15" => status.Synchronized,
-                            "16" => status.Watched,
-                            "17" => status.Unwatched,
-                            "18" => status.ExistenceDoubtful,
-                            //"28" => ??, // TODO: what to do? STATUS 28
-                            "-32767" =>(status)(-1),
-                            _ => throw new IndexOutOfRangeException(),
-                        };
-                        if (e.HasValue) {
-                            statusList.Add(e.Value);
-                        }
+            if (!string.IsNullOrEmpty(featureStatus)) {
+                /* See S-101 DCEG clause 5.4 for the listing of allowable values. Values populated in S-57 for this attribute
+                    other than the allowable values will not be converted across to S-101. Data Producers are advised to
+                    check any populated values for STATUS on LNDARE and amend appropriately. */
+                foreach (var c in featureStatus.Split(',', StringSplitOptions.RemoveEmptyEntries)) {
+                    status? e = featureStatus.ToLowerInvariant() switch {
+                        "1" => status.Permanent,
+                        "2" => status.Occasional,
+                        "3" => status.Recommended,
+                        "4" => status.NotInUse,
+                        "5" => status.PeriodicIntermittent,
+                        "6" => status.Reserved,
+                        "7" => status.Temporary,
+                        "8" => status.Private,
+                        "9" => status.Mandatory,
+                        "11" => status.Extinguished,
+                        "12" => status.Illuminated,
+                        "13" => status.Historic,
+                        "14" => status.Public,
+                        "15" => status.Synchronized,
+                        "16" => status.Watched,
+                        "17" => status.Unwatched,
+                        "18" => status.ExistenceDoubtful,
+                        //"28" => ??, // TODO: what to do? STATUS 28
+                        "-32767" => (status)(-1),
+                        _ => throw new IndexOutOfRangeException(),
+                    };
+                    if (e.HasValue) {
+                        statusList.Add(e.Value);
                     }
-
                 }
+
+            }
             return statusList;
         }
 
@@ -351,7 +351,7 @@ namespace S100Framework.Applications
 
         private static List<featureName> GetFeatureName(string? objname, string? nobjnme) {
             List<featureName> featureName = new List<featureName>();
-            if (objname != default) { 
+            if (objname != default) {
                 var objnam = objname.Trim();
                 if (!string.IsNullOrEmpty(objnam)) {
                     featureName.Add(new featureName {
@@ -371,7 +371,7 @@ namespace S100Framework.Applications
                     });
                 }
             }
-            
+
             return featureName;
         }
 

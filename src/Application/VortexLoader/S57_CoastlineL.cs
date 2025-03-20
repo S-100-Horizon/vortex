@@ -13,7 +13,7 @@ namespace S100Framework.Applications
             var coastlinel = source.OpenDataset<FeatureClass>(source.GetName(tableName));
 
             using var featureClass = target.OpenDataset<FeatureClass>(target.GetName("curve"));
-            
+
 
             using var buffer = featureClass.CreateRowBuffer();
             using var insert = featureClass.CreateInsertCursor();
@@ -35,7 +35,7 @@ namespace S100Framework.Applications
 
                 var catcoa = current.CATCOA ?? default;
                 var catslc = current.CATSLC ?? default;
-                
+
 
                 var plts_comp_scale = current.PLTS_COMP_SCALE ?? default;
                 var longname = current.LNAM ?? Strings.UNKNOWN;
@@ -52,9 +52,9 @@ namespace S100Framework.Applications
                                     5 => natureOfSurface.Pebbles,
                                     9 => natureOfSurface.Coral,
                                     11 => natureOfSurface.Shells,
-                                    -32767 =>(natureOfSurface)(-1),
+                                    -32767 => (natureOfSurface)(-1),
                                     _ => null //lthrow new IndexOutOfRangeException($"catcoa to natureOfSurface: {catcoa}")
-                                };  
+                                };
                                 if (e.HasValue) {
                                     instance.natureOfSurface = [e.Value];
 
@@ -74,7 +74,7 @@ namespace S100Framework.Applications
                                     //9 => categoryOfCoastline., //CORAL REEF
                                     //10 => categoryOfCoastline, // ICE COAST
                                     //11 => categoryOfCoastline, // SHELLY SHORE
-                                    -32767 =>(categoryOfCoastline)(-1),
+                                    -32767 => (categoryOfCoastline)(-1),
                                     _ => throw new IndexOutOfRangeException($"catcoa to categoryOfCoastLine: {catcoa}")
                                 };
                                 if (e.HasValue) {
@@ -98,7 +98,7 @@ namespace S100Framework.Applications
                             convertedCount++;
                         }
                         break;
-                    case 
+                    case
                     5: { // SLCONS_ShorelineConstruction
                             // Restricted allowable S-101 enumerate values for STATUS.
                             // Reconcile conversion of CATSLC = 6(wharf(quay)) to
@@ -137,21 +137,21 @@ namespace S100Framework.Applications
                                     1 => categoryOfShorelineConstruction.Breakwater,
                                     2 => categoryOfShorelineConstruction.Groyne,
                                     3 => categoryOfShorelineConstruction.Mole,
-                                    4 => categoryOfShorelineConstruction.PierJetty, 
-                                    5 => categoryOfShorelineConstruction.PromenadePier, 
+                                    4 => categoryOfShorelineConstruction.PierJetty,
+                                    5 => categoryOfShorelineConstruction.PromenadePier,
                                     6 => categoryOfShorelineConstruction.Wharf,
                                     7 => categoryOfShorelineConstruction.TrainingWall,
                                     8 => categoryOfShorelineConstruction.RipRap,
-                                    9 => categoryOfShorelineConstruction.Revetment, 
-                                    10 => categoryOfShorelineConstruction.SeaWall, 
-                                    11 => categoryOfShorelineConstruction.LandingSteps, 
-                                    12 => categoryOfShorelineConstruction.Ramp, 
-                                    13 => categoryOfShorelineConstruction.Slipway, 
-                                    14 => categoryOfShorelineConstruction.Fender, 
-                                    15 => categoryOfShorelineConstruction.SolidFaceWharf, 
-                                    16 => categoryOfShorelineConstruction.OpenFaceWharf, 
-                                    17 => categoryOfShorelineConstruction.LogRamp, 
-                                    -32767 =>(categoryOfShorelineConstruction)(-1),
+                                    9 => categoryOfShorelineConstruction.Revetment,
+                                    10 => categoryOfShorelineConstruction.SeaWall,
+                                    11 => categoryOfShorelineConstruction.LandingSteps,
+                                    12 => categoryOfShorelineConstruction.Ramp,
+                                    13 => categoryOfShorelineConstruction.Slipway,
+                                    14 => categoryOfShorelineConstruction.Fender,
+                                    15 => categoryOfShorelineConstruction.SolidFaceWharf,
+                                    16 => categoryOfShorelineConstruction.OpenFaceWharf,
+                                    17 => categoryOfShorelineConstruction.LogRamp,
+                                    -32767 => (categoryOfShorelineConstruction)(-1),
                                     _ => throw new IndexOutOfRangeException($"catslc to categoryOfShorelineConstruction: {catslc}")
                                 };
                                 if (e.HasValue) {

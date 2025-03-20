@@ -1,15 +1,15 @@
 ﻿using ArcGIS.Core.Data;
 using S100Framework.Applications.S57.esri;
+using S100Framework.DomainModel;
 using S100Framework.DomainModel.S101;
 using S100Framework.DomainModel.S101.ComplexAttributes;
 using S100Framework.DomainModel.S101.FeatureTypes;
-using S100Framework.DomainModel;
 using VortexLoader;
-using System.Text.Json;
 
 namespace S100Framework.Applications
 {
-    internal static partial class ImporterNIS {
+    internal static partial class ImporterNIS
+    {
 
 
         private static object CreateRadarTransponderbeacon(AidsToNavigationP current, InsertCursor insert, RowBuffer buffer, Feature feature, string tableName, int convertedCount) {
@@ -61,7 +61,7 @@ namespace S100Framework.Applications
             var sectr1Val = current.SECTR1 ?? default;
             var sectr2Val = current.SECTR2 ?? default;
             var color = current.COLOUR ?? default;   // list of integers
-            
+
             var bcnshp = current.BCNSHP ?? default;   // domain value
             var colpat = current.COLPAT ?? default;
             var litchr = current.LITCHR ?? default;
@@ -170,7 +170,7 @@ namespace S100Framework.Applications
                 //    }
                 //}
 
-                
+
 
                 AddInformation(instance.information, feature);
                 buffer["ps"] = ps101;
@@ -243,8 +243,8 @@ namespace S100Framework.Applications
                 return null;
             }
 
-        } 
-        
+        }
+
         //else {
         //        Logger.Current.DataError(objectid, tableName, longname, $"Unknown Light Type. Check catlit.");
         //        return null;
@@ -264,7 +264,7 @@ namespace S100Framework.Applications
             using var cursor = aidstonavigation.Search(filter, true);
             int recordCount = 0;
             int convertedCount = 0;
-            
+
             while (cursor.MoveNext()) {
                 recordCount += 1;
                 var feature = (Feature)cursor.Current;
@@ -303,7 +303,7 @@ namespace S100Framework.Applications
 
 
                             if (current.COLOUR != default) {
-                                instance.colour = GetColours(current.COLOUR);  
+                                instance.colour = GetColours(current.COLOUR);
                             }
 
                             if (current.COLPAT != default) {
@@ -393,7 +393,7 @@ namespace S100Framework.Applications
 
                             // topmarkdayShape for topmark
                             topmarkDaymarkShape? topmarkDaymark = null;
-                            
+
                             if (current.TOPSHP.HasValue) {
                                 topmarkDaymark = EnumHelper.GetEnumValue<topmarkDaymarkShape>(current.TOPSHP.Value);
                             }
@@ -773,7 +773,7 @@ namespace S100Framework.Applications
                                 }
                             }
 
-                            if (current.HEIGHT.HasValue) { 
+                            if (current.HEIGHT.HasValue) {
                                 instance.height = current.HEIGHT.Value;
                             }
 
@@ -2038,7 +2038,7 @@ namespace S100Framework.Applications
                                     }
                                     else if (result is DangersP) {
                                         var relatedDangersP = result as DangersP;
-                                        
+
 
                                     }
                                     else {
@@ -3424,7 +3424,7 @@ namespace S100Framework.Applications
                                 }
                             }
 
-                            if (current.HEIGHT.HasValue) { 
+                            if (current.HEIGHT.HasValue) {
                                 instance.height = current.HEIGHT.Value;
                             }
 

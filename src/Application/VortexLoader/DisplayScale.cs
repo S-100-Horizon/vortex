@@ -1,17 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace S100Framework.Applications
+﻿namespace S100Framework.Applications
 {
 
     public class DisplayScale
     {
         public int MaximumDisplayScale { get; set; }
         public int OptimumDisplayScale { get; set; }
-        public int? MinimumDisplayScale { get; set; }  
+        public int? MinimumDisplayScale { get; set; }
 
         public static readonly Dictionary<int, DisplayScale> DisplayScales = new Dictionary<int, DisplayScale>
         {

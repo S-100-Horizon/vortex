@@ -1,6 +1,5 @@
 ﻿using ArcGIS.Core.Data;
 using S100Framework.Applications.S57.esri;
-using S100Framework.DomainModel.S101;
 using S100Framework.DomainModel.S101.FeatureTypes;
 
 namespace S100Framework.Applications
@@ -10,12 +9,12 @@ namespace S100Framework.Applications
         private static void S57_TracksAndRoutesA(Geodatabase source, Geodatabase target, QueryFilter filter) {
             var tableName = "TracksAndRoutesA";
 
-            
+
 
             var tracksAndRoutesA = source.OpenDataset<FeatureClass>(source.GetName(tableName));
 
             using var featureClass = target.OpenDataset<FeatureClass>(target.GetName("surface"));
-            
+
 
             using var buffer = featureClass.CreateRowBuffer();
             using var insert = featureClass.CreateInsertCursor();

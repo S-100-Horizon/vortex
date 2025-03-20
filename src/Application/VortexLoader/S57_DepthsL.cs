@@ -1,9 +1,6 @@
 ﻿using ArcGIS.Core.Data;
-using S100Framework.DomainModel.S101;
-
-using S100Framework.DomainModel.S101.InformationTypes;
-using S100Framework.DomainModel.S101.FeatureTypes;
 using S100Framework.Applications.S57.esri;
+using S100Framework.DomainModel.S101.FeatureTypes;
 
 
 namespace S100Framework.Applications
@@ -21,14 +18,14 @@ namespace S100Framework.Applications
         private static void S57_DepthsL(Geodatabase source, Geodatabase target, QueryFilter filter) {
             var tableName = "DepthsL";
 
-            
+
 
             var depthsl = source.OpenDataset<FeatureClass>(source.GetName("DepthsL"));
             var plts_spatialattributel = source.OpenDataset<FeatureClass>(source.GetName("PLTS_SpatialAttributeL"));
             using var informationtype = target.OpenDataset<Table>(target.GetName("informationType"));
 
             using var featureClass = target.OpenDataset<FeatureClass>(target.GetName("curve"));
-            
+
 
             using var buffer = featureClass.CreateRowBuffer();
             using var insert = featureClass.CreateInsertCursor();
@@ -36,7 +33,7 @@ namespace S100Framework.Applications
             using var cursor = depthsl.Search(filter, true);
             int recordCount = 0;
             int convertedCount = 0;
-            
+
             while (cursor.MoveNext()) {
                 recordCount += 1;
 
@@ -83,7 +80,7 @@ namespace S100Framework.Applications
 
                             */
 
-                            
+
                             // TODO: handle spatial quality spatial relation
 
                             //if (current.SHAPE != null) {
@@ -115,7 +112,7 @@ namespace S100Framework.Applications
                             //        }
                             //    }
                             //}
-                            
+
                             AddInformation(instance.information, feature);
                             buffer["ps"] = ps101;
 

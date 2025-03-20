@@ -1,6 +1,5 @@
 ﻿using ArcGIS.Core.Data;
 using S100Framework.Applications.S57.esri;
-using S100Framework.DomainModel.S101;
 using S100Framework.DomainModel.S101.FeatureTypes;
 
 

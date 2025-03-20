@@ -1,13 +1,6 @@
 ﻿using ArcGIS.Core.Data;
-
-using S100Framework.DomainModel.S101;
-using S100Framework.DomainModel.S101.FeatureTypes;
-using ArcGIS.Core.Data.UtilityNetwork.Trace;
-using S100Framework.DomainModel.S101.ComplexAttributes;
-using Serilog;
-using static System.Net.Mime.MediaTypeNames;
-using static System.Runtime.InteropServices.JavaScript.JSType;
 using S100Framework.Applications.S57.esri;
+using S100Framework.DomainModel.S101.FeatureTypes;
 
 namespace S100Framework.Applications
 {

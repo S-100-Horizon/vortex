@@ -10,7 +10,7 @@ namespace S100Framework.Applications
         private static void S57_DepthsA(Geodatabase source, Geodatabase target, QueryFilter filter) {
             var tableName = "DepthsA";
 
-            
+
 
             using var s = source.OpenDataset<FeatureClass>(source.GetName("DepthsA"));
             using var featureClass = target.OpenDataset<FeatureClass>(target.GetName("surface"));
@@ -19,7 +19,7 @@ namespace S100Framework.Applications
             using var insert = featureClass.CreateInsertCursor();
 
             using var cursor = s.Search(filter, true);
-            
+
             var recordCount = 0;
             var convertedCount = 0;
 
@@ -31,7 +31,7 @@ namespace S100Framework.Applications
                 var objectid = current.OBJECTID ?? default;
                 var globalid = current.GLOBALID;
                 var subtype = current.FCSUBTYPE ?? default;
-                
+
                 var drval1 = current.DRVAL1 ?? default;
                 var drval2 = current.DRVAL2 ?? default(decimal?);
                 var sordat = current.SORDAT ?? default;
@@ -113,15 +113,15 @@ namespace S100Framework.Applications
 
                             // The S-57 attribute QUASOU for DEPARE will not be converted. It is considered that this attribute is
                             // not relevant for Depth Area in S - 101.
-                            
+
                             //if (!string.IsNullOrEmpty(quasou)) {
 
-                                //    instance.qualityOfVerticalMeasurement = quasou.ToLowerInvariant() switch {
-                                //        "1" => qualityOfVerticalMeasurement.DepthKnown,
-                                //        "2" => qualityOfVerticalMeasurement.DepthOrLeastDepthUnknown,
-                                //        _ => throw new IndexOutOfRangeException(),
-                                //    };
-                                //}
+                            //    instance.qualityOfVerticalMeasurement = quasou.ToLowerInvariant() switch {
+                            //        "1" => qualityOfVerticalMeasurement.DepthKnown,
+                            //        "2" => qualityOfVerticalMeasurement.DepthOrLeastDepthUnknown,
+                            //        _ => throw new IndexOutOfRangeException(),
+                            //    };
+                            //}
 
                             if (!string.IsNullOrEmpty(tecsou)) {
                                 foreach (var c in tecsou.Split(',', StringSplitOptions.RemoveEmptyEntries)) {

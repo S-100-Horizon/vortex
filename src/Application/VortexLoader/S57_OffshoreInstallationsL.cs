@@ -9,7 +9,7 @@ namespace S100Framework.Applications
     {
         private static void S57_OffshoreInstallationsL(Geodatabase source, Geodatabase target, QueryFilter filter) {
             var tableName = "OffshoreInstallationsL";
-            
+
 
             using var featureclass = target.OpenDataset<FeatureClass>(target.GetName("curve"));
 
@@ -65,7 +65,7 @@ namespace S100Framework.Applications
                                     3 => categoryOfCable.TransmissionLine,
                                     4 => categoryOfCable.TelecommunicationsCable, //CATCBL value 4 (telephone) will convert to category of cable value 10 (telecommunications cable).
                                     5 => categoryOfCable.MooringCable,
-                                    -32767 =>null,
+                                    -32767 => null,
                                     _ => throw new IndexOutOfRangeException(),
                                 };
                             }
@@ -94,7 +94,7 @@ namespace S100Framework.Applications
                             if (plts_comp_scale != default) {
                                 instance.scaleMinimum = plts_comp_scale;
                             }
-                            
+
                             if (plts_comp_scale != default) {
                                 instance.scaleMinimum = plts_comp_scale;
                             }

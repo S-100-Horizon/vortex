@@ -1,9 +1,7 @@
 ﻿using ArcGIS.Core.Data;
-using ArcGIS.Core.Data.UtilityNetwork;
 using S100Framework.Applications.S57.esri;
-using S100Framework.DomainModel.S101.FeatureTypes;
-using S100Framework.DomainModel.S101.InformationTypes;
 using S100Framework.DomainModel.S101;
+using S100Framework.DomainModel.S101.FeatureTypes;
 
 namespace S100Framework.Applications
 {

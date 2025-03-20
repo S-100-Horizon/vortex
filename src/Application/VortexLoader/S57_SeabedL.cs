@@ -1,7 +1,5 @@
 ﻿using ArcGIS.Core.Data;
 using S100Framework.Applications.S57.esri;
-using S100Framework.DomainModel.S101;
-using S100Framework.DomainModel.S101.FeatureTypes;
 
 namespace S100Framework.Applications
 {
@@ -9,8 +7,6 @@ namespace S100Framework.Applications
     {
         private static void S57_SeabedL(Geodatabase source, Geodatabase target, QueryFilter filter) {
             var tableName = "SeabedL";
-
-            var ps101 = "S-101";
 
             var seabedL = source.OpenDataset<FeatureClass>(source.GetName(tableName));
 

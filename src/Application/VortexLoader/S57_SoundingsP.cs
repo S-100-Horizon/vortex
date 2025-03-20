@@ -2,9 +2,7 @@
 using ArcGIS.Core.Geometry;
 using S100Framework.Applications.S57.esri;
 using S100Framework.DomainModel.S101;
-using S100Framework.DomainModel.S101.ComplexAttributes;
 using S100Framework.DomainModel.S101.FeatureTypes;
-using S100Framework.DomainModel.S101.InformationTypes;
 
 namespace S100Framework.Applications
 {
@@ -90,7 +88,7 @@ namespace S100Framework.Applications
                             //    }
                             //}
 
-                            
+
                             sounding.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
                             AddInformation(sounding.information, feature);
 

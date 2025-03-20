@@ -1,6 +1,5 @@
 ﻿using ArcGIS.Core.Data;
 using S100Framework.Applications.S57.esri;
-using S100Framework.DomainModel.S101;
 using S100Framework.DomainModel.S101.FeatureTypes;
 
 namespace S100Framework.Applications
@@ -15,7 +14,7 @@ namespace S100Framework.Applications
             var seabedp = source.OpenDataset<FeatureClass>(source.GetName(tableName));
 
             using var featureClass = target.OpenDataset<FeatureClass>(target.GetName("point"));
-            
+
 
             using var buffer = featureClass.CreateRowBuffer();
             using var insert = featureClass.CreateInsertCursor();
@@ -36,7 +35,7 @@ namespace S100Framework.Applications
                 var watlev = current.WATLEV ?? default;
 
                 var natsur = current.NATSUR ?? default;
-                var natqua = current.NATQUA ?? default; 
+                var natqua = current.NATQUA ?? default;
 
                 // TODO: natsur, natqua
 

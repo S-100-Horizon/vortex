@@ -1,8 +1,6 @@
 ﻿using ArcGIS.Core.Data;
 using S100Framework.Applications.S57.esri;
-using S100Framework.DomainModel.S101;
 using S100Framework.DomainModel.S101.FeatureTypes;
-using System.Reflection.Emit;
 
 namespace S100Framework.Applications
 {
@@ -10,7 +8,7 @@ namespace S100Framework.Applications
     {
         private static void S57_OffshoreInstallationsA(Geodatabase source, Geodatabase target, QueryFilter filter) {
             var tableName = "OffshoreInstallationsA";
-            
+
 
             using var featureclass = target.OpenDataset<FeatureClass>(target.GetName("surface"));
 
