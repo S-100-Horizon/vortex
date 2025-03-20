@@ -1702,6 +1702,10 @@ namespace S100Framework.DomainModel.S122 {
                 public override roleType? roleType => DomainModel.roleType.association;
                 public override String[] theOrganisationInformationTypes => ["Authority"];
                 public override String[] theInformationInformationTypes => ["AbstractRxN"];
+
+                public RelatedOrganisation_theOrganisation() {
+                    base.AssociationConnectorTypeName = typeof(AbstractRxN).Name;
+                }
             };
             public AbstractRxN() {
             }
@@ -1717,6 +1721,10 @@ namespace S100Framework.DomainModel.S122 {
                 public override roleType? roleType => DomainModel.roleType.association;
                 public override String[] theOrganisationInformationTypes => ["Authority"];
                 public override String[] theInformationInformationTypes => ["AbstractRxN"];
+
+                public RelatedOrganisation_theOrganisation() {
+                    base.AssociationConnectorTypeName = typeof(NauticalInformation).Name;
+                }
             };
             public NauticalInformation() {
             }
@@ -1781,16 +1789,28 @@ namespace S100Framework.DomainModel.S122 {
                 public override roleType? roleType => DomainModel.roleType.association;
                 public override String[] theInformationInformationTypes => ["AbstractRxN"];
                 public override String[] theOrganisationInformationTypes => ["Authority"];
+
+                public RelatedOrganisation_theInformation() {
+                    base.AssociationConnectorTypeName = typeof(Authority).Name;
+                }
             };
             public class AuthorityContact_theContactDetails : AuthorityContact {
                 public override roleType? roleType => DomainModel.roleType.association;
                 public override String[] theContactDetailsInformationTypes => ["ContactDetails"];
                 public override String[] theAuthorityInformationTypes => ["Authority"];
+
+                public AuthorityContact_theContactDetails() {
+                    base.AssociationConnectorTypeName = typeof(Authority).Name;
+                }
             };
             public class AuthorityHours_theServiceHours : AuthorityHours {
                 public override roleType? roleType => DomainModel.roleType.association;
                 public override String[] theServiceHoursInformationTypes => ["ServiceHours"];
                 public override String[] theAuthority_srvHrsInformationTypes => ["Authority"];
+
+                public AuthorityHours_theServiceHours() {
+                    base.AssociationConnectorTypeName = typeof(Authority).Name;
+                }
             };
             public Authority() {
             }
@@ -1824,6 +1844,10 @@ namespace S100Framework.DomainModel.S122 {
                 public override roleType? roleType => DomainModel.roleType.association;
                 public override String[] theAuthorityInformationTypes => ["Authority"];
                 public override String[] theContactDetailsInformationTypes => ["ContactDetails"];
+
+                public AuthorityContact_theAuthority() {
+                    base.AssociationConnectorTypeName = typeof(ContactDetails).Name;
+                }
             };
             public ContactDetails() {
             }
@@ -1843,6 +1867,10 @@ namespace S100Framework.DomainModel.S122 {
                 public override roleType? roleType => DomainModel.roleType.association;
                 public override String[] theServiceHours_nsdyInformationTypes => ["ServiceHours"];
                 public override String[] partialWorkingDayInformationTypes => ["NonStandardWorkingDay"];
+
+                public ExceptionalWorkday_theServiceHours_nsdy() {
+                    base.AssociationConnectorTypeName = typeof(NonStandardWorkingDay).Name;
+                }
             };
             public NonStandardWorkingDay() {
             }
@@ -1864,11 +1892,19 @@ namespace S100Framework.DomainModel.S122 {
                 public override roleType? roleType => DomainModel.roleType.association;
                 public override String[] theAuthority_srvHrsInformationTypes => ["Authority"];
                 public override String[] theServiceHoursInformationTypes => ["ServiceHours"];
+
+                public AuthorityHours_theAuthority_srvHrs() {
+                    base.AssociationConnectorTypeName = typeof(ServiceHours).Name;
+                }
             };
             public class ExceptionalWorkday_partialWorkingDay : ExceptionalWorkday {
                 public override roleType? roleType => DomainModel.roleType.association;
                 public override String[] partialWorkingDayInformationTypes => ["NonStandardWorkingDay"];
                 public override String[] theServiceHours_nsdyInformationTypes => ["ServiceHours"];
+
+                public ExceptionalWorkday_partialWorkingDay() {
+                    base.AssociationConnectorTypeName = typeof(ServiceHours).Name;
+                }
             };
             public ServiceHours() {
                 scheduleByDayOfWeek = new();
@@ -1993,10 +2029,18 @@ namespace S100Framework.DomainModel.S122 {
             public class AssociatedRxN_theRxN : AssociatedRxN {
                 public override roleType? roleType => DomainModel.roleType.association;
                 public override String[] theRxNInformationTypes => ["AbstractRxN"];
+
+                public AssociatedRxN_theRxN() {
+                    base.AssociationConnectorTypeName = typeof(FeatureType).Name;
+                }
             };
             public class additionalInformation_providesInformation : additionalInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
                 public override String[] providesInformationInformationTypes => ["NauticalInformation"];
+
+                public additionalInformation_providesInformation() {
+                    base.AssociationConnectorTypeName = typeof(FeatureType).Name;
+                }
             };
             public FeatureType() {
                 interoperabilityIdentifier = string.Empty;
@@ -2269,6 +2313,10 @@ namespace S100Framework.DomainModel.S122 {
             public class ProtectedAreaAuthority_responsibleAuthority : ProtectedAreaAuthority {
                 public override roleType? roleType => DomainModel.roleType.association;
                 public override String[] responsibleAuthorityInformationTypes => ["Authority"];
+
+                public ProtectedAreaAuthority_responsibleAuthority() {
+                    base.AssociationConnectorTypeName = typeof(MarineProtectedArea).Name;
+                }
             };
             public MarineProtectedArea() {
                 categoryOfMarineProtectedArea = new categoryOfMarineProtectedArea()
@@ -2294,6 +2342,10 @@ namespace S100Framework.DomainModel.S122 {
             public class ServiceControl_controlAuthority : ServiceControl {
                 public override roleType? roleType => DomainModel.roleType.association;
                 public override String[] controlAuthorityInformationTypes => ["Authority"];
+
+                public ServiceControl_controlAuthority() {
+                    base.AssociationConnectorTypeName = typeof(VesselTrafficServiceArea).Name;
+                }
             };
             public VesselTrafficServiceArea() {
             }

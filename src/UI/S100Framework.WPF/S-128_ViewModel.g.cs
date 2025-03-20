@@ -42,15 +42,321 @@ namespace S100Framework.WPF.ViewModel.S128 {
         } }, { "S100Service", () =>
         {
             return new S100ServiceViewModel();
+        } }, { "ProductMapping", () =>
+        {
+            return new ProductMappingViewModel();
+        } }, { "Correlated", () =>
+        {
+            return new CorrelatedViewModel();
+        } }, { "CarriageRequirement", () =>
+        {
+            return new CarriageRequirementViewModel();
+        } }, { "DistributionDetails", () =>
+        {
+            return new DistributionDetailsViewModel();
+        } }, { "DistributorContact", () =>
+        {
+            return new DistributorContactViewModel();
+        } }, { "PriceOfElement", () =>
+        {
+            return new PriceOfElementViewModel();
+        } }, { "PriceOfNauticalProduct", () =>
+        {
+            return new PriceOfNauticalProductViewModel();
+        } }, { "ProducerContact", () =>
+        {
+            return new ProducerContactViewModel();
+        } }, { "ProductionDetails", () =>
+        {
+            return new ProductionDetailsViewModel();
+        } }, { "ProductPackage", () =>
+        {
+            return new ProductPackageViewModel();
         } }, });
     }
 
     public class Handles : iHandles {
         public static IDictionary<Type, Func<InformationAssociationConnector[]>> AssociationConnectorInformations => new Dictionary<Type, Func<InformationAssociationConnector[]>>
         {
+            {
+                typeof(ProductPackageViewModel),
+                () => [new InformationAssociationConnector<ElectronicProduct>()
+                {
+                    roleType = roleType.association,
+                    role = "elementContainer",
+                    Lower = 1,
+                    Upper = default,
+                    AssociationTypes = ["CatalogueSectionHeader"],
+                    CreateForeignInformationBinding = () => new MultiInformationBindingViewModel<ProductPackageViewModel.elementContainerElectronicProductRefIdViewModel>("ProductPackage"),
+                    CreateLocalInformationBinding = () => new SingleInformationBindingViewModel<ElectronicProductViewModel.ElectronicProductRefIdViewModel>("ElectronicProduct"),
+                }, new InformationAssociationConnector<PhysicalProduct>()
+                {
+                    roleType = roleType.association,
+                    role = "elementContainer",
+                    Lower = 1,
+                    Upper = default,
+                    AssociationTypes = ["CatalogueSectionHeader"],
+                    CreateForeignInformationBinding = () => new MultiInformationBindingViewModel<ProductPackageViewModel.elementContainerPhysicalProductRefIdViewModel>("ProductPackage"),
+                    CreateLocalInformationBinding = () => new SingleInformationBindingViewModel<PhysicalProductViewModel.PhysicalProductRefIdViewModel>("PhysicalProduct"),
+                }, new InformationAssociationConnector<S100Service>()
+                {
+                    roleType = roleType.association,
+                    role = "elementContainer",
+                    Lower = 1,
+                    Upper = default,
+                    AssociationTypes = ["CatalogueSectionHeader"],
+                    CreateForeignInformationBinding = () => new MultiInformationBindingViewModel<ProductPackageViewModel.elementContainerS100ServiceRefIdViewModel>("ProductPackage"),
+                    CreateLocalInformationBinding = () => new SingleInformationBindingViewModel<S100ServiceViewModel.S100ServiceRefIdViewModel>("S100Service"),
+                }
+
+                ]
+            },
+            {
+                typeof(ProductionDetailsViewModel),
+                () => [new InformationAssociationConnector<ProducerInformation>()
+                {
+                    roleType = roleType.association,
+                    role = "catalogueHeader",
+                    Lower = 0,
+                    Upper = default,
+                    AssociationTypes = ["CatalogueSectionHeader"],
+                    CreateForeignInformationBinding = () => new MultiInformationBindingViewModel<ProductionDetailsViewModel.catalogueHeaderProducerInformationRefIdViewModel>("ProductionDetails"),
+                    CreateLocalInformationBinding = () => new SingleInformationBindingViewModel<ProducerInformationViewModel.ProducerInformationRefIdViewModel>("ProducerInformation"),
+                }, new InformationAssociationConnector<CatalogueSectionHeader>()
+                {
+                    roleType = roleType.association,
+                    role = "theProducer",
+                    Lower = 0,
+                    Upper = 1,
+                    AssociationTypes = ["ProducerInformation"],
+                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<ProductionDetailsViewModel.theProducerCatalogueSectionHeaderRefIdViewModel>("ProductionDetails"),
+                    CreateLocalInformationBinding = () => new SingleInformationBindingViewModel<CatalogueSectionHeaderViewModel.CatalogueSectionHeaderRefIdViewModel>("CatalogueSectionHeader"),
+                }
+
+                ]
+            },
+            {
+                typeof(ProducerContactViewModel),
+                () => [new InformationAssociationConnector<ProducerInformation>()
+                {
+                    roleType = roleType.association,
+                    role = "theContactDetails",
+                    Lower = 0,
+                    Upper = default,
+                    AssociationTypes = ["ContactDetails"],
+                    CreateForeignInformationBinding = () => new MultiInformationBindingViewModel<ProducerContactViewModel.theContactDetailsProducerInformationRefIdViewModel>("ProducerContact"),
+                    CreateLocalInformationBinding = () => new SingleInformationBindingViewModel<ProducerInformationViewModel.ProducerInformationRefIdViewModel>("ProducerInformation"),
+                }, new InformationAssociationConnector<ContactDetails>()
+                {
+                    roleType = roleType.association,
+                    role = "theProducer",
+                    Lower = 0,
+                    Upper = 1,
+                    AssociationTypes = ["ProducerInformation"],
+                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<ProducerContactViewModel.theProducerContactDetailsRefIdViewModel>("ProducerContact"),
+                    CreateLocalInformationBinding = () => new SingleInformationBindingViewModel<ContactDetailsViewModel.ContactDetailsRefIdViewModel>("ContactDetails"),
+                }
+
+                ]
+            },
+            {
+                typeof(PriceOfNauticalProductViewModel),
+                () => [new InformationAssociationConnector<PriceInformation>()
+                {
+                    roleType = roleType.association,
+                    role = "theCatalogueOfNauticalProduct",
+                    Lower = 0,
+                    Upper = default,
+                    AssociationTypes = ["CatalogueSectionHeader"],
+                    CreateForeignInformationBinding = () => new MultiInformationBindingViewModel<PriceOfNauticalProductViewModel.theCatalogueOfNauticalProductPriceInformationRefIdViewModel>("PriceOfNauticalProduct"),
+                    CreateLocalInformationBinding = () => new SingleInformationBindingViewModel<PriceInformationViewModel.PriceInformationRefIdViewModel>("PriceInformation"),
+                }, new InformationAssociationConnector<CatalogueSectionHeader>()
+                {
+                    roleType = roleType.association,
+                    role = "thePriceInformation",
+                    Lower = 0,
+                    Upper = default,
+                    AssociationTypes = ["PriceInformation"],
+                    CreateForeignInformationBinding = () => new MultiInformationBindingViewModel<PriceOfNauticalProductViewModel.thePriceInformationCatalogueSectionHeaderRefIdViewModel>("PriceOfNauticalProduct"),
+                    CreateLocalInformationBinding = () => new SingleInformationBindingViewModel<CatalogueSectionHeaderViewModel.CatalogueSectionHeaderRefIdViewModel>("CatalogueSectionHeader"),
+                }
+
+                ]
+            },
+            {
+                typeof(PriceOfElementViewModel),
+                () => [new InformationAssociationConnector<ElectronicProduct>()
+                {
+                    roleType = roleType.association,
+                    role = "thePriceInformation",
+                    Lower = 0,
+                    Upper = default,
+                    AssociationTypes = ["PriceInformation"],
+                    CreateForeignInformationBinding = () => new MultiInformationBindingViewModel<PriceOfElementViewModel.thePriceInformationElectronicProductRefIdViewModel>("PriceOfElement"),
+                    CreateLocalInformationBinding = () => new SingleInformationBindingViewModel<ElectronicProductViewModel.ElectronicProductRefIdViewModel>("ElectronicProduct"),
+                }, new InformationAssociationConnector<PhysicalProduct>()
+                {
+                    roleType = roleType.association,
+                    role = "thePriceInformation",
+                    Lower = 0,
+                    Upper = default,
+                    AssociationTypes = ["PriceInformation"],
+                    CreateForeignInformationBinding = () => new MultiInformationBindingViewModel<PriceOfElementViewModel.thePriceInformationPhysicalProductRefIdViewModel>("PriceOfElement"),
+                    CreateLocalInformationBinding = () => new SingleInformationBindingViewModel<PhysicalProductViewModel.PhysicalProductRefIdViewModel>("PhysicalProduct"),
+                }, new InformationAssociationConnector<S100Service>()
+                {
+                    roleType = roleType.association,
+                    role = "thePriceInformation",
+                    Lower = 0,
+                    Upper = default,
+                    AssociationTypes = ["PriceInformation"],
+                    CreateForeignInformationBinding = () => new MultiInformationBindingViewModel<PriceOfElementViewModel.thePriceInformationS100ServiceRefIdViewModel>("PriceOfElement"),
+                    CreateLocalInformationBinding = () => new SingleInformationBindingViewModel<S100ServiceViewModel.S100ServiceRefIdViewModel>("S100Service"),
+                }
+
+                ]
+            },
+            {
+                typeof(DistributorContactViewModel),
+                () => [new InformationAssociationConnector<DistributorInformation>()
+                {
+                    roleType = roleType.association,
+                    role = "theContactDetails",
+                    Lower = 0,
+                    Upper = default,
+                    AssociationTypes = ["ContactDetails"],
+                    CreateForeignInformationBinding = () => new MultiInformationBindingViewModel<DistributorContactViewModel.theContactDetailsDistributorInformationRefIdViewModel>("DistributorContact"),
+                    CreateLocalInformationBinding = () => new SingleInformationBindingViewModel<DistributorInformationViewModel.DistributorInformationRefIdViewModel>("DistributorInformation"),
+                }, new InformationAssociationConnector<ContactDetails>()
+                {
+                    roleType = roleType.association,
+                    role = "theDistributor",
+                    Lower = 0,
+                    Upper = 1,
+                    AssociationTypes = ["DistributorInformation"],
+                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<DistributorContactViewModel.theDistributorContactDetailsRefIdViewModel>("DistributorContact"),
+                    CreateLocalInformationBinding = () => new SingleInformationBindingViewModel<ContactDetailsViewModel.ContactDetailsRefIdViewModel>("ContactDetails"),
+                }
+
+                ]
+            },
+            {
+                typeof(DistributionDetailsViewModel),
+                () => [new InformationAssociationConnector<DistributorInformation>()
+                {
+                    roleType = roleType.association,
+                    role = "catalogueHeader",
+                    Lower = 0,
+                    Upper = default,
+                    AssociationTypes = ["CatalogueSectionHeader"],
+                    CreateForeignInformationBinding = () => new MultiInformationBindingViewModel<DistributionDetailsViewModel.catalogueHeaderDistributorInformationRefIdViewModel>("DistributionDetails"),
+                    CreateLocalInformationBinding = () => new SingleInformationBindingViewModel<DistributorInformationViewModel.DistributorInformationRefIdViewModel>("DistributorInformation"),
+                }, new InformationAssociationConnector<CatalogueSectionHeader>()
+                {
+                    roleType = roleType.association,
+                    role = "theDistributor",
+                    Lower = 0,
+                    Upper = default,
+                    AssociationTypes = ["DistributorInformation"],
+                    CreateForeignInformationBinding = () => new MultiInformationBindingViewModel<DistributionDetailsViewModel.theDistributorCatalogueSectionHeaderRefIdViewModel>("DistributionDetails"),
+                    CreateLocalInformationBinding = () => new SingleInformationBindingViewModel<CatalogueSectionHeaderViewModel.CatalogueSectionHeaderRefIdViewModel>("CatalogueSectionHeader"),
+                }
+
+                ]
+            },
+            {
+                typeof(CarriageRequirementViewModel),
+                () => [new InformationAssociationConnector<ElectronicProduct>()
+                {
+                    roleType = roleType.association,
+                    role = "theRequirement",
+                    Lower = 0,
+                    Upper = default,
+                    AssociationTypes = ["IndicationOfCarriageRequirement"],
+                    CreateForeignInformationBinding = () => new MultiInformationBindingViewModel<CarriageRequirementViewModel.theRequirementElectronicProductRefIdViewModel>("CarriageRequirement"),
+                    CreateLocalInformationBinding = () => new SingleInformationBindingViewModel<ElectronicProductViewModel.ElectronicProductRefIdViewModel>("ElectronicProduct"),
+                }, new InformationAssociationConnector<PhysicalProduct>()
+                {
+                    roleType = roleType.association,
+                    role = "theRequirement",
+                    Lower = 0,
+                    Upper = default,
+                    AssociationTypes = ["IndicationOfCarriageRequirement"],
+                    CreateForeignInformationBinding = () => new MultiInformationBindingViewModel<CarriageRequirementViewModel.theRequirementPhysicalProductRefIdViewModel>("CarriageRequirement"),
+                    CreateLocalInformationBinding = () => new SingleInformationBindingViewModel<PhysicalProductViewModel.PhysicalProductRefIdViewModel>("PhysicalProduct"),
+                }, new InformationAssociationConnector<S100Service>()
+                {
+                    roleType = roleType.association,
+                    role = "theRequirement",
+                    Lower = 0,
+                    Upper = default,
+                    AssociationTypes = ["IndicationOfCarriageRequirement"],
+                    CreateForeignInformationBinding = () => new MultiInformationBindingViewModel<CarriageRequirementViewModel.theRequirementS100ServiceRefIdViewModel>("CarriageRequirement"),
+                    CreateLocalInformationBinding = () => new SingleInformationBindingViewModel<S100ServiceViewModel.S100ServiceRefIdViewModel>("S100Service"),
+                }
+
+                ]
+            },
         };
         public static IDictionary<Type, Func<FeatureAssociationConnector[]>> AssociationConnectorFeatures => new Dictionary<Type, Func<FeatureAssociationConnector[]>>
         {
+            {
+                typeof(CorrelatedViewModel),
+                () => [new FeatureAssociationConnector<ElectronicProduct>()
+                {
+                    roleType = roleType.association,
+                    role = "main",
+                    Lower = 1,
+                    Upper = 1,
+                    AssociationTypes = ["ElectronicProduct", "PhysicalProduct"],
+                    CreateForeignFeatureBinding = () => new SingleFeatureBindingViewModel<CorrelatedViewModel.mainElectronicProductRefIdViewModel>("Correlated"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<ElectronicProductViewModel.ElectronicProductRefIdViewModel>("ElectronicProduct"),
+                }, new FeatureAssociationConnector<PhysicalProduct>()
+                {
+                    roleType = roleType.association,
+                    role = "main",
+                    Lower = 1,
+                    Upper = 1,
+                    AssociationTypes = ["ElectronicProduct", "PhysicalProduct"],
+                    CreateForeignFeatureBinding = () => new SingleFeatureBindingViewModel<CorrelatedViewModel.mainPhysicalProductRefIdViewModel>("Correlated"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<PhysicalProductViewModel.PhysicalProductRefIdViewModel>("PhysicalProduct"),
+                }
+
+                ]
+            },
+            {
+                typeof(ProductMappingViewModel),
+                () => [new FeatureAssociationConnector<ElectronicProduct>()
+                {
+                    roleType = roleType.association,
+                    role = "theReference",
+                    Lower = 0,
+                    Upper = default,
+                    AssociationTypes = ["ElectronicProduct", "PhysicalProduct", "S100Service"],
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<ProductMappingViewModel.theReferenceElectronicProductRefIdViewModel>("ProductMapping"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<ElectronicProductViewModel.ElectronicProductRefIdViewModel>("ElectronicProduct"),
+                }, new FeatureAssociationConnector<PhysicalProduct>()
+                {
+                    roleType = roleType.association,
+                    role = "theReference",
+                    Lower = 0,
+                    Upper = default,
+                    AssociationTypes = ["ElectronicProduct", "PhysicalProduct", "S100Service"],
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<ProductMappingViewModel.theReferencePhysicalProductRefIdViewModel>("ProductMapping"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<PhysicalProductViewModel.PhysicalProductRefIdViewModel>("PhysicalProduct"),
+                }, new FeatureAssociationConnector<S100Service>()
+                {
+                    roleType = roleType.association,
+                    role = "theReference",
+                    Lower = 0,
+                    Upper = default,
+                    AssociationTypes = ["ElectronicProduct", "PhysicalProduct", "S100Service"],
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<ProductMappingViewModel.theReferenceS100ServiceRefIdViewModel>("ProductMapping"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<S100ServiceViewModel.S100ServiceRefIdViewModel>("S100Service"),
+                }
+
+                ]
+            },
         };
     }
 
@@ -1831,431 +2137,6 @@ namespace S100Framework.WPF.ViewModel.S128 {
         }
 
         public override string? ToString() => $"Reference To NM";
-    }
-
-    [CategoryOrder("CarriageRequirement", 0)]
-    [CategoryOrder("InformationBindings", 100)]
-    public class CarriageRequirementViewModel<TAssociation> : ViewModelBase where TAssociation : DomainModel.S128.Associations.InformationAssociations.CarriageRequirement, new() {
-        private roleType _roleType;
-        [Category("CarriageRequirement")]
-        public ObservableCollection<NewRefIdViewModel<TAssociation>> theRequirement { get; set; } = new();
-
-        [Browsable(false)]
-        public string[] theRequirementInformationTypes { get; private set; }
-
-        public void Load(DomainModel.S128.Associations.InformationAssociations.CarriageRequirement instance) {
-            foreach (var e in instance.theRequirement) {
-                theRequirement.Add(new NewRefIdViewModel<TAssociation> { RefId = e.Value, });
-            };
-            theRequirementInformationTypes = instance.theRequirementInformationTypes;
-            _roleType = instance.roleType!.Value;
-        }
-
-        public override string Serialize() {
-            var instance = new TAssociation
-            {
-            };
-            return System.Text.Json.JsonSerializer.Serialize(instance);
-        }
-
-        public CarriageRequirementViewModel() : base() {
-        }
-
-        public override string? ToString() => $"Carriage Requirement";
-    }
-
-    [CategoryOrder("DistributionDetails", 0)]
-    [CategoryOrder("InformationBindings", 100)]
-    public class DistributionDetailsViewModel<TAssociation> : ViewModelBase where TAssociation : DomainModel.S128.Associations.InformationAssociations.DistributionDetails, new() {
-        private roleType _roleType;
-        [Category("DistributionDetails")]
-        public ObservableCollection<NewRefIdViewModel<TAssociation>> catalogueHeader { get; set; } = new();
-
-        [Browsable(false)]
-        public string[] catalogueHeaderInformationTypes { get; private set; }
-
-        [Category("DistributionDetails")]
-        public ObservableCollection<NewRefIdViewModel<TAssociation>> theDistributor { get; set; } = new();
-
-        [Browsable(false)]
-        public string[] theDistributorInformationTypes { get; private set; }
-
-        public void Load(DomainModel.S128.Associations.InformationAssociations.DistributionDetails instance) {
-            foreach (var e in instance.catalogueHeader) {
-                catalogueHeader.Add(new NewRefIdViewModel<TAssociation> { RefId = e.Value, });
-            };
-            catalogueHeaderInformationTypes = instance.catalogueHeaderInformationTypes;
-            foreach (var e in instance.theDistributor) {
-                theDistributor.Add(new NewRefIdViewModel<TAssociation> { RefId = e.Value, });
-            };
-            theDistributorInformationTypes = instance.theDistributorInformationTypes;
-            _roleType = instance.roleType!.Value;
-        }
-
-        public override string Serialize() {
-            var instance = new TAssociation
-            {
-            };
-            return System.Text.Json.JsonSerializer.Serialize(instance);
-        }
-
-        public DistributionDetailsViewModel() : base() {
-        }
-
-        public override string? ToString() => $"Distribution Details";
-    }
-
-    [CategoryOrder("DistributorContact", 0)]
-    [CategoryOrder("InformationBindings", 100)]
-    public class DistributorContactViewModel<TAssociation> : ViewModelBase where TAssociation : DomainModel.S128.Associations.InformationAssociations.DistributorContact, new() {
-        private roleType _roleType;
-        private NewRefIdViewModel<TAssociation> _theDistributor;
-        [Editor(typeof(Editors.RefIdTypeEditor), typeof(Editors.RefIdTypeEditor))]
-        [Category("DistributorContact")]
-        public NewRefIdViewModel<TAssociation> theDistributor {
-            get {
-                return _theDistributor;
-            }
-
-            set {
-                SetValue(ref _theDistributor, value);
-            }
-        }
-
-        [Browsable(false)]
-        public string[] theDistributorInformationTypes { get; private set; }
-
-        [Category("DistributorContact")]
-        public ObservableCollection<NewRefIdViewModel<TAssociation>> theContactDetails { get; set; } = new();
-
-        [Browsable(false)]
-        public string[] theContactDetailsInformationTypes { get; private set; }
-
-        public void Load(DomainModel.S128.Associations.InformationAssociations.DistributorContact instance) {
-            theDistributor = new NewRefIdViewModel<TAssociation>
-            {
-                RefId = instance.theDistributor?.Value,
-            };
-            theDistributorInformationTypes = instance.theDistributorInformationTypes;
-            foreach (var e in instance.theContactDetails) {
-                theContactDetails.Add(new NewRefIdViewModel<TAssociation> { RefId = e.Value, });
-            };
-            theContactDetailsInformationTypes = instance.theContactDetailsInformationTypes;
-            _roleType = instance.roleType!.Value;
-        }
-
-        public override string Serialize() {
-            var instance = new TAssociation
-            {
-            };
-            return System.Text.Json.JsonSerializer.Serialize(instance);
-        }
-
-        public DistributorContactViewModel() : base() {
-        }
-
-        public override string? ToString() => $"Distributor Contact";
-    }
-
-    [CategoryOrder("PriceOfElement", 0)]
-    [CategoryOrder("InformationBindings", 100)]
-    public class PriceOfElementViewModel<TAssociation> : ViewModelBase where TAssociation : DomainModel.S128.Associations.InformationAssociations.PriceOfElement, new() {
-        private roleType _roleType;
-        [Category("PriceOfElement")]
-        public ObservableCollection<NewRefIdViewModel<TAssociation>> thePriceInformation { get; set; } = new();
-
-        [Browsable(false)]
-        public string[] thePriceInformationInformationTypes { get; private set; }
-
-        public void Load(DomainModel.S128.Associations.InformationAssociations.PriceOfElement instance) {
-            foreach (var e in instance.thePriceInformation) {
-                thePriceInformation.Add(new NewRefIdViewModel<TAssociation> { RefId = e.Value, });
-            };
-            thePriceInformationInformationTypes = instance.thePriceInformationInformationTypes;
-            _roleType = instance.roleType!.Value;
-        }
-
-        public override string Serialize() {
-            var instance = new TAssociation
-            {
-            };
-            return System.Text.Json.JsonSerializer.Serialize(instance);
-        }
-
-        public PriceOfElementViewModel() : base() {
-        }
-
-        public override string? ToString() => $"Price Of Element";
-    }
-
-    [CategoryOrder("PriceOfNauticalProduct", 0)]
-    [CategoryOrder("InformationBindings", 100)]
-    public class PriceOfNauticalProductViewModel<TAssociation> : ViewModelBase where TAssociation : DomainModel.S128.Associations.InformationAssociations.PriceOfNauticalProduct, new() {
-        private roleType _roleType;
-        [Category("PriceOfNauticalProduct")]
-        public ObservableCollection<NewRefIdViewModel<TAssociation>> theCatalogueOfNauticalProduct { get; set; } = new();
-
-        [Browsable(false)]
-        public string[] theCatalogueOfNauticalProductInformationTypes { get; private set; }
-
-        [Category("PriceOfNauticalProduct")]
-        public ObservableCollection<NewRefIdViewModel<TAssociation>> thePriceInformation { get; set; } = new();
-
-        [Browsable(false)]
-        public string[] thePriceInformationInformationTypes { get; private set; }
-
-        public void Load(DomainModel.S128.Associations.InformationAssociations.PriceOfNauticalProduct instance) {
-            foreach (var e in instance.theCatalogueOfNauticalProduct) {
-                theCatalogueOfNauticalProduct.Add(new NewRefIdViewModel<TAssociation> { RefId = e.Value, });
-            };
-            theCatalogueOfNauticalProductInformationTypes = instance.theCatalogueOfNauticalProductInformationTypes;
-            foreach (var e in instance.thePriceInformation) {
-                thePriceInformation.Add(new NewRefIdViewModel<TAssociation> { RefId = e.Value, });
-            };
-            thePriceInformationInformationTypes = instance.thePriceInformationInformationTypes;
-            _roleType = instance.roleType!.Value;
-        }
-
-        public override string Serialize() {
-            var instance = new TAssociation
-            {
-            };
-            return System.Text.Json.JsonSerializer.Serialize(instance);
-        }
-
-        public PriceOfNauticalProductViewModel() : base() {
-        }
-
-        public override string? ToString() => $"Price Of Nautical Product";
-    }
-
-    [CategoryOrder("ProducerContact", 0)]
-    [CategoryOrder("InformationBindings", 100)]
-    public class ProducerContactViewModel<TAssociation> : ViewModelBase where TAssociation : DomainModel.S128.Associations.InformationAssociations.ProducerContact, new() {
-        private roleType _roleType;
-        private NewRefIdViewModel<TAssociation> _theProducer;
-        [Editor(typeof(Editors.RefIdTypeEditor), typeof(Editors.RefIdTypeEditor))]
-        [Category("ProducerContact")]
-        public NewRefIdViewModel<TAssociation> theProducer {
-            get {
-                return _theProducer;
-            }
-
-            set {
-                SetValue(ref _theProducer, value);
-            }
-        }
-
-        [Browsable(false)]
-        public string[] theProducerInformationTypes { get; private set; }
-
-        [Category("ProducerContact")]
-        public ObservableCollection<NewRefIdViewModel<TAssociation>> theContactDetails { get; set; } = new();
-
-        [Browsable(false)]
-        public string[] theContactDetailsInformationTypes { get; private set; }
-
-        public void Load(DomainModel.S128.Associations.InformationAssociations.ProducerContact instance) {
-            theProducer = new NewRefIdViewModel<TAssociation>
-            {
-                RefId = instance.theProducer?.Value,
-            };
-            theProducerInformationTypes = instance.theProducerInformationTypes;
-            foreach (var e in instance.theContactDetails) {
-                theContactDetails.Add(new NewRefIdViewModel<TAssociation> { RefId = e.Value, });
-            };
-            theContactDetailsInformationTypes = instance.theContactDetailsInformationTypes;
-            _roleType = instance.roleType!.Value;
-        }
-
-        public override string Serialize() {
-            var instance = new TAssociation
-            {
-            };
-            return System.Text.Json.JsonSerializer.Serialize(instance);
-        }
-
-        public ProducerContactViewModel() : base() {
-        }
-
-        public override string? ToString() => $"Producer Contact";
-    }
-
-    [CategoryOrder("ProductionDetails", 0)]
-    [CategoryOrder("InformationBindings", 100)]
-    public class ProductionDetailsViewModel<TAssociation> : ViewModelBase where TAssociation : DomainModel.S128.Associations.InformationAssociations.ProductionDetails, new() {
-        private roleType _roleType;
-        [Category("ProductionDetails")]
-        public ObservableCollection<NewRefIdViewModel<TAssociation>> catalogueHeader { get; set; } = new();
-
-        [Browsable(false)]
-        public string[] catalogueHeaderInformationTypes { get; private set; }
-
-        private NewRefIdViewModel<TAssociation> _theProducer;
-        [Editor(typeof(Editors.RefIdTypeEditor), typeof(Editors.RefIdTypeEditor))]
-        [Category("ProductionDetails")]
-        public NewRefIdViewModel<TAssociation> theProducer {
-            get {
-                return _theProducer;
-            }
-
-            set {
-                SetValue(ref _theProducer, value);
-            }
-        }
-
-        [Browsable(false)]
-        public string[] theProducerInformationTypes { get; private set; }
-
-        public void Load(DomainModel.S128.Associations.InformationAssociations.ProductionDetails instance) {
-            foreach (var e in instance.catalogueHeader) {
-                catalogueHeader.Add(new NewRefIdViewModel<TAssociation> { RefId = e.Value, });
-            };
-            catalogueHeaderInformationTypes = instance.catalogueHeaderInformationTypes;
-            theProducer = new NewRefIdViewModel<TAssociation>
-            {
-                RefId = instance.theProducer?.Value,
-            };
-            theProducerInformationTypes = instance.theProducerInformationTypes;
-            _roleType = instance.roleType!.Value;
-        }
-
-        public override string Serialize() {
-            var instance = new TAssociation
-            {
-            };
-            return System.Text.Json.JsonSerializer.Serialize(instance);
-        }
-
-        public ProductionDetailsViewModel() : base() {
-        }
-
-        public override string? ToString() => $"Production Details";
-    }
-
-    [CategoryOrder("ProductPackage", 0)]
-    [CategoryOrder("InformationBindings", 100)]
-    public class ProductPackageViewModel<TAssociation> : ViewModelBase where TAssociation : DomainModel.S128.Associations.InformationAssociations.ProductPackage, new() {
-        private roleType _roleType;
-        [Category("ProductPackage")]
-        public ObservableCollection<NewRefIdViewModel<TAssociation>> elementContainer { get; set; } = new();
-
-        [Browsable(false)]
-        public string[] elementContainerInformationTypes { get; private set; }
-
-        public void Load(DomainModel.S128.Associations.InformationAssociations.ProductPackage instance) {
-            foreach (var e in instance.elementContainer) {
-                elementContainer.Add(new NewRefIdViewModel<TAssociation> { RefId = e.Value, });
-            };
-            elementContainerInformationTypes = instance.elementContainerInformationTypes;
-            _roleType = instance.roleType!.Value;
-        }
-
-        public override string Serialize() {
-            var instance = new TAssociation
-            {
-            };
-            return System.Text.Json.JsonSerializer.Serialize(instance);
-        }
-
-        public ProductPackageViewModel() : base() {
-        }
-
-        public override string? ToString() => $"Product Package";
-    }
-
-    [CategoryOrder("ProductMapping", 0)]
-    [CategoryOrder("InformationBindings", 100)]
-    [CategoryOrder("FeatureBindings", 200)]
-    public class ProductMappingViewModel<TAssociation> : ViewModelBase where TAssociation : DomainModel.S128.Associations.FeatureAssociations.ProductMapping, new() {
-        private roleType _roleType;
-        private categoryOfProductMapping _categoryOfProductMapping;
-        [DomainModel.EnumerationAttribute(nameof(categoryOfProductMappingList))]
-        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
-        [Category("ProductMapping")]
-        public categoryOfProductMapping categoryOfProductMapping {
-            get {
-                return _categoryOfProductMapping;
-            }
-
-            set {
-                SetValue(ref _categoryOfProductMapping, value);
-            }
-        }
-
-        [Category("ProductMapping")]
-        public ObservableCollection<NewRefIdViewModel<TAssociation>> theReference { get; set; } = new();
-
-        [Browsable(false)]
-        public string[] theReferenceFeatureTypes { get; private set; }
-
-        [Browsable(false)]
-        public categoryOfProductMapping[] categoryOfProductMappingList => [(categoryOfProductMapping)1, (categoryOfProductMapping)2, (categoryOfProductMapping)3, (categoryOfProductMapping)4];
-
-        public void Load(DomainModel.S128.Associations.FeatureAssociations.ProductMapping instance) {
-            categoryOfProductMapping = instance.categoryOfProductMapping;
-            foreach (var e in instance.theReference) {
-                theReference.Add(new NewRefIdViewModel<TAssociation> { RefId = e.Value, });
-            };
-            theReferenceFeatureTypes = instance.theReferenceFeatureTypes;
-            _roleType = instance.roleType!.Value;
-        }
-
-        public override string Serialize() {
-            var instance = new TAssociation
-            {
-                categoryOfProductMapping = this.categoryOfProductMapping,
-            };
-            return System.Text.Json.JsonSerializer.Serialize(instance);
-        }
-
-        public ProductMappingViewModel() : base() {
-        }
-
-        public override string? ToString() => $"Product Mapping";
-    }
-
-    [CategoryOrder("Correlated", 0)]
-    [CategoryOrder("InformationBindings", 100)]
-    [CategoryOrder("FeatureBindings", 200)]
-    public class CorrelatedViewModel<TAssociation> : ViewModelBase where TAssociation : DomainModel.S128.Associations.FeatureAssociations.Correlated, new() {
-        private roleType _roleType;
-        private NewRefIdViewModel<TAssociation>? _main;
-        [Editor(typeof(Editors.RefIdTypeEditor), typeof(Editors.RefIdTypeEditor))]
-        [Category("Correlated")]
-        public NewRefIdViewModel<TAssociation>? main {
-            get {
-                return _main;
-            }
-
-            set {
-                SetValue(ref _main, value);
-            }
-        }
-
-        [Browsable(false)]
-        public string[] mainFeatureTypes { get; private set; }
-
-        public void Load(DomainModel.S128.Associations.FeatureAssociations.Correlated instance) {
-            main = new NewRefIdViewModel<TAssociation>
-            {
-                RefId = instance.main?.Value,
-            };
-            mainFeatureTypes = instance.mainFeatureTypes;
-            _roleType = instance.roleType!.Value;
-        }
-
-        public override string Serialize() {
-            var instance = new TAssociation
-            {
-            };
-            return System.Text.Json.JsonSerializer.Serialize(instance);
-        }
-
-        public CorrelatedViewModel() : base() {
-        }
-
-        public override string? ToString() => $"Correlated";
     }
 
     [CategoryOrder("CatalogueSectionHeader", 0)]
@@ -4180,5 +4061,889 @@ namespace S100Framework.WPF.ViewModel.S128 {
         }
 
         public override string? ToString() => $"S100 Service";
+    }
+
+    public class ProductMappingViewModel : FeatureAssociationViewModel {
+        public override string Code => "ProductMapping";
+        public override string[] Roles => ["theSource", "theReference"];
+
+        private FeatureBindingViewModel? _theSource;
+        [ExpandableObject]
+        public FeatureBindingViewModel? theSource {
+            get {
+                return _theSource;
+            }
+
+            set {
+                this.SetValue(ref _theSource, value);
+            }
+        }
+
+        private FeatureBindingViewModel? _theReference;
+        [ExpandableObject]
+        public FeatureBindingViewModel? theReference {
+            get {
+                return _theReference;
+            }
+
+            set {
+                this.SetValue(ref _theReference, value);
+            }
+        }
+
+        public override FeatureAssociationConnector? association {
+            get {
+                return _associationConnector;
+            }
+
+            set {
+                this.SetValue(ref _associationConnector, value);
+                if (value is not null) {
+                    theReference = value?.role switch
+                    {
+                        "theSource" => value.CreateForeignFeatureBinding(),
+                        _ => value!.CreateLocalFeatureBinding(),
+                    };
+                }
+                else {
+                    theReference = null;
+                }
+            }
+        }
+
+        public override void Load(S100Framework.DomainModel.FeatureAssociation featureAssociation) {
+            association = associationConnectorFeatures.SingleOrDefault(e => e.FeatureType.Equals(featureAssociation.AssociationConnectorTypeName));
+            theSource?.Load(featureAssociation, "theSource");
+            theReference?.Load(featureAssociation, "theReference");
+        }
+
+        public override string Serialize() {
+            var instance = new FeatureAssociation
+            {
+                Code = this.Code,
+                AssociationConnectorTypeName = association!.FeatureType,
+            };
+            theSource?.Save(instance, "theSource");
+            theReference?.Save(instance, "theReference");
+            return System.Text.Json.JsonSerializer.Serialize(instance);
+        }
+
+        public override FeatureAssociationConnector[] associationConnectorFeatures => ProductMappingViewModel._associationConnectorFeatures;
+
+        public class theReferenceElectronicProductRefIdViewModel : FeatureRefIdViewModel {
+            public override string[] AssociationTypes => ["ElectronicProduct", "PhysicalProduct", "S100Service"];
+        }
+
+        public class theReferencePhysicalProductRefIdViewModel : FeatureRefIdViewModel {
+            public override string[] AssociationTypes => ["ElectronicProduct", "PhysicalProduct", "S100Service"];
+        }
+
+        public class theReferenceS100ServiceRefIdViewModel : FeatureRefIdViewModel {
+            public override string[] AssociationTypes => ["ElectronicProduct", "PhysicalProduct", "S100Service"];
+        }
+
+        public static FeatureAssociationConnector[] _associationConnectorFeatures => Handles.AssociationConnectorFeatures[typeof(ProductMappingViewModel)]();
+    }
+
+    public class CorrelatedViewModel : FeatureAssociationViewModel {
+        public override string Code => "Correlated";
+        public override string[] Roles => ["main", "panel"];
+
+        private FeatureBindingViewModel? _main;
+        [ExpandableObject]
+        public FeatureBindingViewModel? main {
+            get {
+                return _main;
+            }
+
+            set {
+                this.SetValue(ref _main, value);
+            }
+        }
+
+        private FeatureBindingViewModel? _panel;
+        [ExpandableObject]
+        public FeatureBindingViewModel? panel {
+            get {
+                return _panel;
+            }
+
+            set {
+                this.SetValue(ref _panel, value);
+            }
+        }
+
+        public override FeatureAssociationConnector? association {
+            get {
+                return _associationConnector;
+            }
+
+            set {
+                this.SetValue(ref _associationConnector, value);
+                if (value is not null) {
+                    main = value?.role switch
+                    {
+                        "panel" => value.CreateForeignFeatureBinding(),
+                        _ => value!.CreateLocalFeatureBinding(),
+                    };
+                }
+                else {
+                    main = null;
+                }
+            }
+        }
+
+        public override void Load(S100Framework.DomainModel.FeatureAssociation featureAssociation) {
+            association = associationConnectorFeatures.SingleOrDefault(e => e.FeatureType.Equals(featureAssociation.AssociationConnectorTypeName));
+            main?.Load(featureAssociation, "main");
+            panel?.Load(featureAssociation, "panel");
+        }
+
+        public override string Serialize() {
+            var instance = new FeatureAssociation
+            {
+                Code = this.Code,
+                AssociationConnectorTypeName = association!.FeatureType,
+            };
+            main?.Save(instance, "main");
+            panel?.Save(instance, "panel");
+            return System.Text.Json.JsonSerializer.Serialize(instance);
+        }
+
+        public override FeatureAssociationConnector[] associationConnectorFeatures => CorrelatedViewModel._associationConnectorFeatures;
+
+        public class mainElectronicProductRefIdViewModel : FeatureRefIdViewModel {
+            public override string[] AssociationTypes => ["ElectronicProduct", "PhysicalProduct"];
+        }
+
+        public class mainPhysicalProductRefIdViewModel : FeatureRefIdViewModel {
+            public override string[] AssociationTypes => ["ElectronicProduct", "PhysicalProduct"];
+        }
+
+        public static FeatureAssociationConnector[] _associationConnectorFeatures => Handles.AssociationConnectorFeatures[typeof(CorrelatedViewModel)]();
+    }
+
+    public class CarriageRequirementViewModel : InformationAssociationViewModel {
+        public override string Code => "CarriageRequirement";
+        public override string[] Roles => ["theElement", "theRequirement"];
+
+        private InformationBindingViewModel? _theElement;
+        [ExpandableObject]
+        public InformationBindingViewModel? theElement {
+            get {
+                return _theElement;
+            }
+
+            set {
+                this.SetValue(ref _theElement, value);
+            }
+        }
+
+        private InformationBindingViewModel? _theRequirement;
+        [ExpandableObject]
+        public InformationBindingViewModel? theRequirement {
+            get {
+                return _theRequirement;
+            }
+
+            set {
+                this.SetValue(ref _theRequirement, value);
+            }
+        }
+
+        public override InformationAssociationConnector? association {
+            get {
+                return _associationConnector;
+            }
+
+            set {
+                this.SetValue(ref _associationConnector, value);
+                if (value is not null) {
+                    theElement = value?.role switch
+                    {
+                        "theRequirement" => value.CreateForeignInformationBinding(),
+                        _ => value!.CreateLocalInformationBinding(),
+                    };
+                }
+                else {
+                    theElement = null;
+                }
+
+                if (value is not null) {
+                    theRequirement = value?.role switch
+                    {
+                        "theElement" => value.CreateForeignInformationBinding(),
+                        _ => value!.CreateLocalInformationBinding(),
+                    };
+                }
+                else {
+                    theRequirement = null;
+                }
+            }
+        }
+
+        public override void Load(S100Framework.DomainModel.InformationAssociation informationAssociation) {
+            association = associationConnectorInformations.SingleOrDefault(e => e.InformationType.Equals(informationAssociation.AssociationConnectorTypeName));
+            theElement?.Load(informationAssociation, "theElement");
+            theRequirement?.Load(informationAssociation, "theRequirement");
+        }
+
+        public override string Serialize() {
+            var instance = new InformationAssociation
+            {
+                Code = this.Code,
+                AssociationConnectorTypeName = association!.InformationType,
+            };
+            theElement?.Save(instance, "theElement");
+            theRequirement?.Save(instance, "theRequirement");
+            return System.Text.Json.JsonSerializer.Serialize(instance);
+        }
+
+        public override InformationAssociationConnector[] associationConnectorInformations => CarriageRequirementViewModel._associationConnectorInformations;
+
+        public class theRequirementElectronicProductRefIdViewModel : InformationRefIdViewModel {
+            public override string[] AssociationTypes => ["IndicationOfCarriageRequirement"];
+        }
+
+        public class theRequirementPhysicalProductRefIdViewModel : InformationRefIdViewModel {
+            public override string[] AssociationTypes => ["IndicationOfCarriageRequirement"];
+        }
+
+        public class theRequirementS100ServiceRefIdViewModel : InformationRefIdViewModel {
+            public override string[] AssociationTypes => ["IndicationOfCarriageRequirement"];
+        }
+
+        public static InformationAssociationConnector[] _associationConnectorInformations => Handles.AssociationConnectorInformations[typeof(CarriageRequirementViewModel)]();
+    }
+
+    public class DistributionDetailsViewModel : InformationAssociationViewModel {
+        public override string Code => "DistributionDetails";
+        public override string[] Roles => ["catalogueHeader", "theDistributor"];
+
+        private InformationBindingViewModel? _catalogueHeader;
+        [ExpandableObject]
+        public InformationBindingViewModel? catalogueHeader {
+            get {
+                return _catalogueHeader;
+            }
+
+            set {
+                this.SetValue(ref _catalogueHeader, value);
+            }
+        }
+
+        private InformationBindingViewModel? _theDistributor;
+        [ExpandableObject]
+        public InformationBindingViewModel? theDistributor {
+            get {
+                return _theDistributor;
+            }
+
+            set {
+                this.SetValue(ref _theDistributor, value);
+            }
+        }
+
+        public override InformationAssociationConnector? association {
+            get {
+                return _associationConnector;
+            }
+
+            set {
+                this.SetValue(ref _associationConnector, value);
+                if (value is not null) {
+                    catalogueHeader = value?.role switch
+                    {
+                        "theDistributor" => value.CreateForeignInformationBinding(),
+                        _ => value!.CreateLocalInformationBinding(),
+                    };
+                }
+                else {
+                    catalogueHeader = null;
+                }
+
+                if (value is not null) {
+                    theDistributor = value?.role switch
+                    {
+                        "catalogueHeader" => value.CreateForeignInformationBinding(),
+                        _ => value!.CreateLocalInformationBinding(),
+                    };
+                }
+                else {
+                    theDistributor = null;
+                }
+            }
+        }
+
+        public override void Load(S100Framework.DomainModel.InformationAssociation informationAssociation) {
+            association = associationConnectorInformations.SingleOrDefault(e => e.InformationType.Equals(informationAssociation.AssociationConnectorTypeName));
+            catalogueHeader?.Load(informationAssociation, "catalogueHeader");
+            theDistributor?.Load(informationAssociation, "theDistributor");
+        }
+
+        public override string Serialize() {
+            var instance = new InformationAssociation
+            {
+                Code = this.Code,
+                AssociationConnectorTypeName = association!.InformationType,
+            };
+            catalogueHeader?.Save(instance, "catalogueHeader");
+            theDistributor?.Save(instance, "theDistributor");
+            return System.Text.Json.JsonSerializer.Serialize(instance);
+        }
+
+        public override InformationAssociationConnector[] associationConnectorInformations => DistributionDetailsViewModel._associationConnectorInformations;
+
+        public class catalogueHeaderDistributorInformationRefIdViewModel : InformationRefIdViewModel {
+            public override string[] AssociationTypes => ["CatalogueSectionHeader"];
+        }
+
+        public class theDistributorCatalogueSectionHeaderRefIdViewModel : InformationRefIdViewModel {
+            public override string[] AssociationTypes => ["DistributorInformation"];
+        }
+
+        public static InformationAssociationConnector[] _associationConnectorInformations => Handles.AssociationConnectorInformations[typeof(DistributionDetailsViewModel)]();
+    }
+
+    public class DistributorContactViewModel : InformationAssociationViewModel {
+        public override string Code => "DistributorContact";
+        public override string[] Roles => ["theDistributor", "theContactDetails"];
+
+        private InformationBindingViewModel? _theDistributor;
+        [ExpandableObject]
+        public InformationBindingViewModel? theDistributor {
+            get {
+                return _theDistributor;
+            }
+
+            set {
+                this.SetValue(ref _theDistributor, value);
+            }
+        }
+
+        private InformationBindingViewModel? _theContactDetails;
+        [ExpandableObject]
+        public InformationBindingViewModel? theContactDetails {
+            get {
+                return _theContactDetails;
+            }
+
+            set {
+                this.SetValue(ref _theContactDetails, value);
+            }
+        }
+
+        public override InformationAssociationConnector? association {
+            get {
+                return _associationConnector;
+            }
+
+            set {
+                this.SetValue(ref _associationConnector, value);
+                if (value is not null) {
+                    theDistributor = value?.role switch
+                    {
+                        "theContactDetails" => value.CreateForeignInformationBinding(),
+                        _ => value!.CreateLocalInformationBinding(),
+                    };
+                }
+                else {
+                    theDistributor = null;
+                }
+
+                if (value is not null) {
+                    theContactDetails = value?.role switch
+                    {
+                        "theDistributor" => value.CreateForeignInformationBinding(),
+                        _ => value!.CreateLocalInformationBinding(),
+                    };
+                }
+                else {
+                    theContactDetails = null;
+                }
+            }
+        }
+
+        public override void Load(S100Framework.DomainModel.InformationAssociation informationAssociation) {
+            association = associationConnectorInformations.SingleOrDefault(e => e.InformationType.Equals(informationAssociation.AssociationConnectorTypeName));
+            theDistributor?.Load(informationAssociation, "theDistributor");
+            theContactDetails?.Load(informationAssociation, "theContactDetails");
+        }
+
+        public override string Serialize() {
+            var instance = new InformationAssociation
+            {
+                Code = this.Code,
+                AssociationConnectorTypeName = association!.InformationType,
+            };
+            theDistributor?.Save(instance, "theDistributor");
+            theContactDetails?.Save(instance, "theContactDetails");
+            return System.Text.Json.JsonSerializer.Serialize(instance);
+        }
+
+        public override InformationAssociationConnector[] associationConnectorInformations => DistributorContactViewModel._associationConnectorInformations;
+
+        public class theContactDetailsDistributorInformationRefIdViewModel : InformationRefIdViewModel {
+            public override string[] AssociationTypes => ["ContactDetails"];
+        }
+
+        public class theDistributorContactDetailsRefIdViewModel : InformationRefIdViewModel {
+            public override string[] AssociationTypes => ["DistributorInformation"];
+        }
+
+        public static InformationAssociationConnector[] _associationConnectorInformations => Handles.AssociationConnectorInformations[typeof(DistributorContactViewModel)]();
+    }
+
+    public class PriceOfElementViewModel : InformationAssociationViewModel {
+        public override string Code => "PriceOfElement";
+        public override string[] Roles => ["theCatalogueElement", "thePriceInformation"];
+
+        private InformationBindingViewModel? _theCatalogueElement;
+        [ExpandableObject]
+        public InformationBindingViewModel? theCatalogueElement {
+            get {
+                return _theCatalogueElement;
+            }
+
+            set {
+                this.SetValue(ref _theCatalogueElement, value);
+            }
+        }
+
+        private InformationBindingViewModel? _thePriceInformation;
+        [ExpandableObject]
+        public InformationBindingViewModel? thePriceInformation {
+            get {
+                return _thePriceInformation;
+            }
+
+            set {
+                this.SetValue(ref _thePriceInformation, value);
+            }
+        }
+
+        public override InformationAssociationConnector? association {
+            get {
+                return _associationConnector;
+            }
+
+            set {
+                this.SetValue(ref _associationConnector, value);
+                if (value is not null) {
+                    theCatalogueElement = value?.role switch
+                    {
+                        "thePriceInformation" => value.CreateForeignInformationBinding(),
+                        _ => value!.CreateLocalInformationBinding(),
+                    };
+                }
+                else {
+                    theCatalogueElement = null;
+                }
+
+                if (value is not null) {
+                    thePriceInformation = value?.role switch
+                    {
+                        "theCatalogueElement" => value.CreateForeignInformationBinding(),
+                        _ => value!.CreateLocalInformationBinding(),
+                    };
+                }
+                else {
+                    thePriceInformation = null;
+                }
+            }
+        }
+
+        public override void Load(S100Framework.DomainModel.InformationAssociation informationAssociation) {
+            association = associationConnectorInformations.SingleOrDefault(e => e.InformationType.Equals(informationAssociation.AssociationConnectorTypeName));
+            theCatalogueElement?.Load(informationAssociation, "theCatalogueElement");
+            thePriceInformation?.Load(informationAssociation, "thePriceInformation");
+        }
+
+        public override string Serialize() {
+            var instance = new InformationAssociation
+            {
+                Code = this.Code,
+                AssociationConnectorTypeName = association!.InformationType,
+            };
+            theCatalogueElement?.Save(instance, "theCatalogueElement");
+            thePriceInformation?.Save(instance, "thePriceInformation");
+            return System.Text.Json.JsonSerializer.Serialize(instance);
+        }
+
+        public override InformationAssociationConnector[] associationConnectorInformations => PriceOfElementViewModel._associationConnectorInformations;
+
+        public class thePriceInformationElectronicProductRefIdViewModel : InformationRefIdViewModel {
+            public override string[] AssociationTypes => ["PriceInformation"];
+        }
+
+        public class thePriceInformationPhysicalProductRefIdViewModel : InformationRefIdViewModel {
+            public override string[] AssociationTypes => ["PriceInformation"];
+        }
+
+        public class thePriceInformationS100ServiceRefIdViewModel : InformationRefIdViewModel {
+            public override string[] AssociationTypes => ["PriceInformation"];
+        }
+
+        public static InformationAssociationConnector[] _associationConnectorInformations => Handles.AssociationConnectorInformations[typeof(PriceOfElementViewModel)]();
+    }
+
+    public class PriceOfNauticalProductViewModel : InformationAssociationViewModel {
+        public override string Code => "PriceOfNauticalProduct";
+        public override string[] Roles => ["theCatalogueOfNauticalProduct", "thePriceInformation"];
+
+        private InformationBindingViewModel? _theCatalogueOfNauticalProduct;
+        [ExpandableObject]
+        public InformationBindingViewModel? theCatalogueOfNauticalProduct {
+            get {
+                return _theCatalogueOfNauticalProduct;
+            }
+
+            set {
+                this.SetValue(ref _theCatalogueOfNauticalProduct, value);
+            }
+        }
+
+        private InformationBindingViewModel? _thePriceInformation;
+        [ExpandableObject]
+        public InformationBindingViewModel? thePriceInformation {
+            get {
+                return _thePriceInformation;
+            }
+
+            set {
+                this.SetValue(ref _thePriceInformation, value);
+            }
+        }
+
+        public override InformationAssociationConnector? association {
+            get {
+                return _associationConnector;
+            }
+
+            set {
+                this.SetValue(ref _associationConnector, value);
+                if (value is not null) {
+                    theCatalogueOfNauticalProduct = value?.role switch
+                    {
+                        "thePriceInformation" => value.CreateForeignInformationBinding(),
+                        _ => value!.CreateLocalInformationBinding(),
+                    };
+                }
+                else {
+                    theCatalogueOfNauticalProduct = null;
+                }
+
+                if (value is not null) {
+                    thePriceInformation = value?.role switch
+                    {
+                        "theCatalogueOfNauticalProduct" => value.CreateForeignInformationBinding(),
+                        _ => value!.CreateLocalInformationBinding(),
+                    };
+                }
+                else {
+                    thePriceInformation = null;
+                }
+            }
+        }
+
+        public override void Load(S100Framework.DomainModel.InformationAssociation informationAssociation) {
+            association = associationConnectorInformations.SingleOrDefault(e => e.InformationType.Equals(informationAssociation.AssociationConnectorTypeName));
+            theCatalogueOfNauticalProduct?.Load(informationAssociation, "theCatalogueOfNauticalProduct");
+            thePriceInformation?.Load(informationAssociation, "thePriceInformation");
+        }
+
+        public override string Serialize() {
+            var instance = new InformationAssociation
+            {
+                Code = this.Code,
+                AssociationConnectorTypeName = association!.InformationType,
+            };
+            theCatalogueOfNauticalProduct?.Save(instance, "theCatalogueOfNauticalProduct");
+            thePriceInformation?.Save(instance, "thePriceInformation");
+            return System.Text.Json.JsonSerializer.Serialize(instance);
+        }
+
+        public override InformationAssociationConnector[] associationConnectorInformations => PriceOfNauticalProductViewModel._associationConnectorInformations;
+
+        public class theCatalogueOfNauticalProductPriceInformationRefIdViewModel : InformationRefIdViewModel {
+            public override string[] AssociationTypes => ["CatalogueSectionHeader"];
+        }
+
+        public class thePriceInformationCatalogueSectionHeaderRefIdViewModel : InformationRefIdViewModel {
+            public override string[] AssociationTypes => ["PriceInformation"];
+        }
+
+        public static InformationAssociationConnector[] _associationConnectorInformations => Handles.AssociationConnectorInformations[typeof(PriceOfNauticalProductViewModel)]();
+    }
+
+    public class ProducerContactViewModel : InformationAssociationViewModel {
+        public override string Code => "ProducerContact";
+        public override string[] Roles => ["theProducer", "theContactDetails"];
+
+        private InformationBindingViewModel? _theProducer;
+        [ExpandableObject]
+        public InformationBindingViewModel? theProducer {
+            get {
+                return _theProducer;
+            }
+
+            set {
+                this.SetValue(ref _theProducer, value);
+            }
+        }
+
+        private InformationBindingViewModel? _theContactDetails;
+        [ExpandableObject]
+        public InformationBindingViewModel? theContactDetails {
+            get {
+                return _theContactDetails;
+            }
+
+            set {
+                this.SetValue(ref _theContactDetails, value);
+            }
+        }
+
+        public override InformationAssociationConnector? association {
+            get {
+                return _associationConnector;
+            }
+
+            set {
+                this.SetValue(ref _associationConnector, value);
+                if (value is not null) {
+                    theProducer = value?.role switch
+                    {
+                        "theContactDetails" => value.CreateForeignInformationBinding(),
+                        _ => value!.CreateLocalInformationBinding(),
+                    };
+                }
+                else {
+                    theProducer = null;
+                }
+
+                if (value is not null) {
+                    theContactDetails = value?.role switch
+                    {
+                        "theProducer" => value.CreateForeignInformationBinding(),
+                        _ => value!.CreateLocalInformationBinding(),
+                    };
+                }
+                else {
+                    theContactDetails = null;
+                }
+            }
+        }
+
+        public override void Load(S100Framework.DomainModel.InformationAssociation informationAssociation) {
+            association = associationConnectorInformations.SingleOrDefault(e => e.InformationType.Equals(informationAssociation.AssociationConnectorTypeName));
+            theProducer?.Load(informationAssociation, "theProducer");
+            theContactDetails?.Load(informationAssociation, "theContactDetails");
+        }
+
+        public override string Serialize() {
+            var instance = new InformationAssociation
+            {
+                Code = this.Code,
+                AssociationConnectorTypeName = association!.InformationType,
+            };
+            theProducer?.Save(instance, "theProducer");
+            theContactDetails?.Save(instance, "theContactDetails");
+            return System.Text.Json.JsonSerializer.Serialize(instance);
+        }
+
+        public override InformationAssociationConnector[] associationConnectorInformations => ProducerContactViewModel._associationConnectorInformations;
+
+        public class theContactDetailsProducerInformationRefIdViewModel : InformationRefIdViewModel {
+            public override string[] AssociationTypes => ["ContactDetails"];
+        }
+
+        public class theProducerContactDetailsRefIdViewModel : InformationRefIdViewModel {
+            public override string[] AssociationTypes => ["ProducerInformation"];
+        }
+
+        public static InformationAssociationConnector[] _associationConnectorInformations => Handles.AssociationConnectorInformations[typeof(ProducerContactViewModel)]();
+    }
+
+    public class ProductionDetailsViewModel : InformationAssociationViewModel {
+        public override string Code => "ProductionDetails";
+        public override string[] Roles => ["catalogueHeader", "theProducer"];
+
+        private InformationBindingViewModel? _catalogueHeader;
+        [ExpandableObject]
+        public InformationBindingViewModel? catalogueHeader {
+            get {
+                return _catalogueHeader;
+            }
+
+            set {
+                this.SetValue(ref _catalogueHeader, value);
+            }
+        }
+
+        private InformationBindingViewModel? _theProducer;
+        [ExpandableObject]
+        public InformationBindingViewModel? theProducer {
+            get {
+                return _theProducer;
+            }
+
+            set {
+                this.SetValue(ref _theProducer, value);
+            }
+        }
+
+        public override InformationAssociationConnector? association {
+            get {
+                return _associationConnector;
+            }
+
+            set {
+                this.SetValue(ref _associationConnector, value);
+                if (value is not null) {
+                    catalogueHeader = value?.role switch
+                    {
+                        "theProducer" => value.CreateForeignInformationBinding(),
+                        _ => value!.CreateLocalInformationBinding(),
+                    };
+                }
+                else {
+                    catalogueHeader = null;
+                }
+
+                if (value is not null) {
+                    theProducer = value?.role switch
+                    {
+                        "catalogueHeader" => value.CreateForeignInformationBinding(),
+                        _ => value!.CreateLocalInformationBinding(),
+                    };
+                }
+                else {
+                    theProducer = null;
+                }
+            }
+        }
+
+        public override void Load(S100Framework.DomainModel.InformationAssociation informationAssociation) {
+            association = associationConnectorInformations.SingleOrDefault(e => e.InformationType.Equals(informationAssociation.AssociationConnectorTypeName));
+            catalogueHeader?.Load(informationAssociation, "catalogueHeader");
+            theProducer?.Load(informationAssociation, "theProducer");
+        }
+
+        public override string Serialize() {
+            var instance = new InformationAssociation
+            {
+                Code = this.Code,
+                AssociationConnectorTypeName = association!.InformationType,
+            };
+            catalogueHeader?.Save(instance, "catalogueHeader");
+            theProducer?.Save(instance, "theProducer");
+            return System.Text.Json.JsonSerializer.Serialize(instance);
+        }
+
+        public override InformationAssociationConnector[] associationConnectorInformations => ProductionDetailsViewModel._associationConnectorInformations;
+
+        public class catalogueHeaderProducerInformationRefIdViewModel : InformationRefIdViewModel {
+            public override string[] AssociationTypes => ["CatalogueSectionHeader"];
+        }
+
+        public class theProducerCatalogueSectionHeaderRefIdViewModel : InformationRefIdViewModel {
+            public override string[] AssociationTypes => ["ProducerInformation"];
+        }
+
+        public static InformationAssociationConnector[] _associationConnectorInformations => Handles.AssociationConnectorInformations[typeof(ProductionDetailsViewModel)]();
+    }
+
+    public class ProductPackageViewModel : InformationAssociationViewModel {
+        public override string Code => "ProductPackage";
+        public override string[] Roles => ["theCatalogueElement", "elementContainer"];
+
+        private InformationBindingViewModel? _theCatalogueElement;
+        [ExpandableObject]
+        public InformationBindingViewModel? theCatalogueElement {
+            get {
+                return _theCatalogueElement;
+            }
+
+            set {
+                this.SetValue(ref _theCatalogueElement, value);
+            }
+        }
+
+        private InformationBindingViewModel? _elementContainer;
+        [ExpandableObject]
+        public InformationBindingViewModel? elementContainer {
+            get {
+                return _elementContainer;
+            }
+
+            set {
+                this.SetValue(ref _elementContainer, value);
+            }
+        }
+
+        public override InformationAssociationConnector? association {
+            get {
+                return _associationConnector;
+            }
+
+            set {
+                this.SetValue(ref _associationConnector, value);
+                if (value is not null) {
+                    theCatalogueElement = value?.role switch
+                    {
+                        "elementContainer" => value.CreateForeignInformationBinding(),
+                        _ => value!.CreateLocalInformationBinding(),
+                    };
+                }
+                else {
+                    theCatalogueElement = null;
+                }
+
+                if (value is not null) {
+                    elementContainer = value?.role switch
+                    {
+                        "theCatalogueElement" => value.CreateForeignInformationBinding(),
+                        _ => value!.CreateLocalInformationBinding(),
+                    };
+                }
+                else {
+                    elementContainer = null;
+                }
+            }
+        }
+
+        public override void Load(S100Framework.DomainModel.InformationAssociation informationAssociation) {
+            association = associationConnectorInformations.SingleOrDefault(e => e.InformationType.Equals(informationAssociation.AssociationConnectorTypeName));
+            theCatalogueElement?.Load(informationAssociation, "theCatalogueElement");
+            elementContainer?.Load(informationAssociation, "elementContainer");
+        }
+
+        public override string Serialize() {
+            var instance = new InformationAssociation
+            {
+                Code = this.Code,
+                AssociationConnectorTypeName = association!.InformationType,
+            };
+            theCatalogueElement?.Save(instance, "theCatalogueElement");
+            elementContainer?.Save(instance, "elementContainer");
+            return System.Text.Json.JsonSerializer.Serialize(instance);
+        }
+
+        public override InformationAssociationConnector[] associationConnectorInformations => ProductPackageViewModel._associationConnectorInformations;
+
+        public class elementContainerElectronicProductRefIdViewModel : InformationRefIdViewModel {
+            public override string[] AssociationTypes => ["CatalogueSectionHeader"];
+        }
+
+        public class elementContainerPhysicalProductRefIdViewModel : InformationRefIdViewModel {
+            public override string[] AssociationTypes => ["CatalogueSectionHeader"];
+        }
+
+        public class elementContainerS100ServiceRefIdViewModel : InformationRefIdViewModel {
+            public override string[] AssociationTypes => ["CatalogueSectionHeader"];
+        }
+
+        public static InformationAssociationConnector[] _associationConnectorInformations => Handles.AssociationConnectorInformations[typeof(ProductPackageViewModel)]();
     }
 }

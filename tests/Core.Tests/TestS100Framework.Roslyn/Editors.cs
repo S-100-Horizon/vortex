@@ -70,34 +70,7 @@ namespace S100Framework.WPF.Editors
 
             return checkComboBox;
         }
-    }
-
-
-    public sealed class RefIdTypeEditor : Xceed.Wpf.Toolkit.PropertyGrid.Editors.ITypeEditor
-    {
-        public FrameworkElement ResolveEditor(PropertyItem propertyItem) {
-            var attribute = (RefIdTypeListAttribute)propertyItem.Instance.GetType().GetProperty(propertyItem.DisplayName)!.GetCustomAttributes(typeof(RefIdTypeListAttribute), true)[0];
-
-            //var viewModel = (NewRefIdViewModel)propertyItem.Instance;
-
-            var comboBox = new ComboBox {
-                Name = $"_comboBox{Guid.NewGuid():N}",
-                //DisplayMemberPath = "refId",
-            };
-
-            var bindingItemsSourceProperty = new Binding() { Source = attribute.PropertyName, Mode = BindingMode.OneWay };
-            BindingOperations.SetBinding(comboBox, ComboBox.ItemsSourceProperty, bindingItemsSourceProperty);
-
-            var bindingSelectedItemProperty = new Binding(propertyItem.DisplayName) { Source = propertyItem.Instance, Mode = propertyItem.IsReadOnly ? BindingMode.OneWay : BindingMode.TwoWay };
-            BindingOperations.SetBinding(comboBox, ComboBox.SelectedItemProperty, bindingSelectedItemProperty);
-
-            //if (!string.IsNullOrEmpty(viewModel.RefId)) {
-            //    comboBox.SelectedValue = viewModel.RefId;
-            //}
-            return comboBox;
-        }
-    }
-
+    }    
 
     public sealed class RefIdEditor : Xceed.Wpf.Toolkit.PropertyGrid.Editors.ITypeEditor
     {

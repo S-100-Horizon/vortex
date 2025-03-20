@@ -50,7 +50,7 @@ namespace S100Framework.DomainModel {
 
     [System.SerializableAttribute()]
     public abstract class Node {
-        public virtual string Code => string.Empty;
+        public virtual string Code { get; set; } = string.Empty;
     }
 
     [System.SerializableAttribute()]
@@ -70,7 +70,7 @@ namespace S100Framework.DomainModel {
 
     [System.SerializableAttribute()]
     public abstract class Association {
-        public virtual string Code => string.Empty;
+        public virtual string Code { get; set; } = string.Empty;
         public virtual roleType? roleType => default;
         public string AssociationConnectorTypeName { get; set; }
 
@@ -79,12 +79,12 @@ namespace S100Framework.DomainModel {
     }
 
     [System.SerializableAttribute()]
-    public abstract class InformationAssociation : Association {
+    public class InformationAssociation : Association {
         public RefId[] RefIds { get; set; } = new RefId[0];
     }
 
     [System.SerializableAttribute()]
-    public abstract class FeatureAssociation : Association {
+    public class FeatureAssociation : Association {
         public RefId[] RefIds { get; set; } = new RefId[0];
     }
 

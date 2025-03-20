@@ -1341,16 +1341,28 @@ namespace S100Framework.DomainModel.S128 {
                 public override roleType? roleType => DomainModel.roleType.association;
                 public override String[] thePriceInformationInformationTypes => ["PriceInformation"];
                 public override String[] theCatalogueOfNauticalProductInformationTypes => ["CatalogueSectionHeader"];
+
+                public PriceOfNauticalProduct_thePriceInformation() {
+                    base.AssociationConnectorTypeName = typeof(CatalogueSectionHeader).Name;
+                }
             };
             public class ProductionDetails_theProducer : ProductionDetails {
                 public override roleType? roleType => DomainModel.roleType.association;
                 public override String[] theProducerInformationTypes => ["ProducerInformation"];
                 public override String[] catalogueHeaderInformationTypes => ["CatalogueSectionHeader"];
+
+                public ProductionDetails_theProducer() {
+                    base.AssociationConnectorTypeName = typeof(CatalogueSectionHeader).Name;
+                }
             };
             public class DistributionDetails_theDistributor : DistributionDetails {
                 public override roleType? roleType => DomainModel.roleType.association;
                 public override String[] theDistributorInformationTypes => ["DistributorInformation"];
                 public override String[] catalogueHeaderInformationTypes => ["CatalogueSectionHeader"];
+
+                public DistributionDetails_theDistributor() {
+                    base.AssociationConnectorTypeName = typeof(CatalogueSectionHeader).Name;
+                }
             };
             public CatalogueSectionHeader() {
             }
@@ -1373,11 +1385,19 @@ namespace S100Framework.DomainModel.S128 {
                 public override roleType? roleType => DomainModel.roleType.association;
                 public override String[] theProducerInformationTypes => ["ProducerInformation"];
                 public override String[] theContactDetailsInformationTypes => ["ContactDetails"];
+
+                public ProducerContact_theProducer() {
+                    base.AssociationConnectorTypeName = typeof(ContactDetails).Name;
+                }
             };
             public class DistributorContact_theDistributor : DistributorContact {
                 public override roleType? roleType => DomainModel.roleType.association;
                 public override String[] theDistributorInformationTypes => ["DistributorInformation"];
                 public override String[] theContactDetailsInformationTypes => ["ContactDetails"];
+
+                public DistributorContact_theDistributor() {
+                    base.AssociationConnectorTypeName = typeof(ContactDetails).Name;
+                }
             };
             public ContactDetails() {
                 contactInstructions = string.Empty;
@@ -1413,6 +1433,10 @@ namespace S100Framework.DomainModel.S128 {
                 public override roleType? roleType => DomainModel.roleType.association;
                 public override String[] theCatalogueOfNauticalProductInformationTypes => ["CatalogueSectionHeader"];
                 public override String[] thePriceInformationInformationTypes => ["PriceInformation"];
+
+                public PriceOfNauticalProduct_theCatalogueOfNauticalProduct() {
+                    base.AssociationConnectorTypeName = typeof(PriceInformation).Name;
+                }
             };
             public PriceInformation() {
             }
@@ -1431,11 +1455,19 @@ namespace S100Framework.DomainModel.S128 {
                 public override roleType? roleType => DomainModel.roleType.association;
                 public override String[] theContactDetailsInformationTypes => ["ContactDetails"];
                 public override String[] theProducerInformationTypes => ["ProducerInformation"];
+
+                public ProducerContact_theContactDetails() {
+                    base.AssociationConnectorTypeName = typeof(ProducerInformation).Name;
+                }
             };
             public class ProductionDetails_catalogueHeader : ProductionDetails {
                 public override roleType? roleType => DomainModel.roleType.association;
                 public override String[] catalogueHeaderInformationTypes => ["CatalogueSectionHeader"];
                 public override String[] theProducerInformationTypes => ["ProducerInformation"];
+
+                public ProductionDetails_catalogueHeader() {
+                    base.AssociationConnectorTypeName = typeof(ProducerInformation).Name;
+                }
             };
             public ProducerInformation() {
                 agencyResponsibleForProduction = string.Empty;
@@ -1454,11 +1486,19 @@ namespace S100Framework.DomainModel.S128 {
                 public override roleType? roleType => DomainModel.roleType.association;
                 public override String[] catalogueHeaderInformationTypes => ["CatalogueSectionHeader"];
                 public override String[] theDistributorInformationTypes => ["DistributorInformation"];
+
+                public DistributionDetails_catalogueHeader() {
+                    base.AssociationConnectorTypeName = typeof(DistributorInformation).Name;
+                }
             };
             public class DistributorContact_theContactDetails : DistributorContact {
                 public override roleType? roleType => DomainModel.roleType.association;
                 public override String[] theContactDetailsInformationTypes => ["ContactDetails"];
                 public override String[] theDistributorInformationTypes => ["DistributorInformation"];
+
+                public DistributorContact_theContactDetails() {
+                    base.AssociationConnectorTypeName = typeof(DistributorInformation).Name;
+                }
             };
             public DistributorInformation() {
                 distributorName = string.Empty;
@@ -1500,18 +1540,34 @@ namespace S100Framework.DomainModel.S128 {
             public class CarriageRequirement_theRequirement : CarriageRequirement {
                 public override roleType? roleType => DomainModel.roleType.association;
                 public override String[] theRequirementInformationTypes => ["IndicationOfCarriageRequirement"];
+
+                public CarriageRequirement_theRequirement() {
+                    base.AssociationConnectorTypeName = typeof(CatalogueElement).Name;
+                }
             };
             public class PriceOfElement_thePriceInformation : PriceOfElement {
                 public override roleType? roleType => DomainModel.roleType.association;
                 public override String[] thePriceInformationInformationTypes => ["PriceInformation"];
+
+                public PriceOfElement_thePriceInformation() {
+                    base.AssociationConnectorTypeName = typeof(CatalogueElement).Name;
+                }
             };
             public class ProductPackage_elementContainer : ProductPackage {
                 public override roleType? roleType => DomainModel.roleType.association;
                 public override String[] elementContainerInformationTypes => ["CatalogueSectionHeader"];
+
+                public ProductPackage_elementContainer() {
+                    base.AssociationConnectorTypeName = typeof(CatalogueElement).Name;
+                }
             };
             public class ProductMapping_theReference : ProductMapping {
                 public override roleType? roleType => DomainModel.roleType.association;
                 public override String[] theReferenceFeatureTypes => ["CatalogueElement"];
+
+                public ProductMapping_theReference() {
+                    base.AssociationConnectorTypeName = typeof(CatalogueElement).Name;
+                }
             };
             public CatalogueElement() {
                 catalogueElementClassification = new();
@@ -1604,6 +1660,10 @@ namespace S100Framework.DomainModel.S128 {
             public class Correlated_main : Correlated {
                 public override roleType? roleType => DomainModel.roleType.association;
                 public override String[] mainFeatureTypes => ["NavigationalProduct"];
+
+                public Correlated_main() {
+                    base.AssociationConnectorTypeName = typeof(NavigationalProduct).Name;
+                }
             };
             public NavigationalProduct() {
             }

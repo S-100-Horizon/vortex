@@ -7,17 +7,6 @@ using Xceed.Wpf.Toolkit.PropertyGrid.Attributes;
 
 namespace S100Framework.WPF.ViewModel
 {
-    [System.AttributeUsage(System.AttributeTargets.Property, AllowMultiple = false)]
-    public class RefIdTypeListAttribute : System.Attribute
-    {
-        private string _propertyName;
-        public string PropertyName => _propertyName;
-
-        public RefIdTypeListAttribute(string propertyName) {
-            _propertyName = propertyName;
-        }
-    }
-
     public static class Handles
     {
         public static Func<InformationBindingViewModel?, string[]> GetInformations { get; set; } = (e) => { return []; };
@@ -126,7 +115,7 @@ namespace S100Framework.WPF.ViewModel
 
     public abstract class AssociationConnector
     {
-        public roleType roleType { get; set; }
+        public DomainModel.roleType roleType { get; set; }
 
         public string role { get; set; } = string.Empty;
 
@@ -195,45 +184,6 @@ namespace S100Framework.WPF.ViewModel
             return this.FeatureType.GetHashCode();
         }
     }
-
-
-
-    public class NewRefIdViewModel : INotifyPropertyChanged
-    {
-        public event PropertyChangedEventHandler? PropertyChanged;
-
-        protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null) {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
-
-        protected void SetValue<T>(ref T backingFiled, T value, [CallerMemberName] string? propertyName = null) {
-            if (string.IsNullOrWhiteSpace(propertyName)) return;
-
-            if (EqualityComparer<T>.Default.Equals(backingFiled, value)) return;
-            backingFiled = value;
-            OnPropertyChanged(propertyName);
-        }
-
-        private string? _refId = string.Empty;
-
-        [Editor(typeof(RefIdEditor), typeof(RefIdEditor))]
-        public string? RefId {
-            get { return _refId; }
-            set { this.SetValue(ref _refId, value); }
-        }
-
-        private string? _type = string.Empty;
-
-        [Editor(typeof(RefIdTypeEditor), typeof(RefIdTypeEditor))]
-        public string? Type {
-            get { return _type; }
-            set { this.SetValue(ref _type, value); }
-        }
-    }
-
-
-
-
 
     public abstract class RefIdViewModel : INotifyPropertyChanged
     {
@@ -363,11 +313,8 @@ namespace S100Framework.WPF.ViewModel
         }
 
         public override void Load(InformationAssociation informationAssociation, string role) {
-            throw new NotImplementedException();
-
-            //TODO: InformationAssociation
-            //var v = informationAssociation.RefIds.Where(e => e.Role.Equals(role, StringComparison.InvariantCultureIgnoreCase)).FirstOrDefault();
-            //this.RefId.RefId = v?.Value!;
+            var v = informationAssociation.RefIds.Where(e => e.Role.Equals(role, StringComparison.InvariantCultureIgnoreCase)).FirstOrDefault();
+            this.RefId.RefId = v?.Value!;
             //ÆØÅ this.RefId.InformationType = v?.Type;
         }
 
@@ -406,16 +353,14 @@ namespace S100Framework.WPF.ViewModel
         }
 
         public override void Load(InformationAssociation informationAssociation, string role) {
-            throw new NotImplementedException();
-            //TODO: InformationAssociation
-            //var v = informationAssociation.RefIds.Where(e => e.Role.Equals(role, StringComparison.InvariantCultureIgnoreCase)).FirstOrDefault();
-            //if (v != default) {
-            //    if (RefId is null) {
-            //        RefId = new();
-            //    }
-            //    this.RefId.RefId = v?.Value!;
-            //    this.RefId.InformationType = v?.Type;
-            //}
+            var v = informationAssociation.RefIds.Where(e => e.Role.Equals(role, StringComparison.InvariantCultureIgnoreCase)).FirstOrDefault();
+            if (v != default) {
+                if (RefId is null) {
+                    RefId = new();
+                }
+                this.RefId.RefId = v?.Value!;
+                this.RefId.InformationType = v?.Type;
+            }
         }
 
         public override InformationAssociation Save(InformationAssociation informationAssociation, string role) {
@@ -449,15 +394,12 @@ namespace S100Framework.WPF.ViewModel
         public ObservableCollection<T> RefId { get; set; } = new ObservableCollection<T>();
 
         public override void Load(InformationAssociation informationAssociation, string role) {
-            throw new NotImplementedException();
-
-            //TODO: InformationAssociation
-            //foreach (var e in informationAssociation.RefIds.Where(e => e.Role.Equals(role, StringComparison.InvariantCultureIgnoreCase))) {
-            //    RefId.Add(new T {
-            //        InformationType = e.Type,
-            //        RefId = e.Value,
-            //    });
-            //}
+            foreach (var e in informationAssociation.RefIds.Where(e => e.Role.Equals(role, StringComparison.InvariantCultureIgnoreCase))) {
+                RefId.Add(new T {
+                    InformationType = e.Type,
+                    RefId = e.Value,
+                });
+            }
         }
 
         public override InformationAssociation Save(InformationAssociation informationAssociation, string role) {

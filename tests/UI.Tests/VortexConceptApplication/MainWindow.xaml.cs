@@ -180,7 +180,7 @@ namespace VortexConceptApplication
 #else
             //var viewModel = IslandAggregation.TestIslandGroup;
 
-            var viewModel101 = new S100Framework.WPF.ViewModel.S101.StructureEquipmentViewModel<Building.StructureEquipment_theEquipment>();
+            var viewModel101 = new S100Framework.WPF.ViewModel.S101.StructureEquipmentViewModel();
 
             //var viewModel131 = new S100Framework.WPF.ViewModel.S131.TextAssociationViewModel();
 
@@ -209,7 +209,7 @@ namespace VortexConceptApplication
             //    },
             //};
 
-            var fromJson = new Building.StructureEquipment_theEquipment();
+            var fromJson = new Building.StructureEquipment_theEquipment()!;
 
             viewModel.Load(fromJson);
 

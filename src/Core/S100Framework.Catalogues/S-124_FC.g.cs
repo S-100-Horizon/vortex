@@ -629,6 +629,10 @@ namespace S100Framework.DomainModel.S124 {
             public class NWReferences_theReferences : NWReferences {
                 public override roleType? roleType => DomainModel.roleType.association;
                 public override String[] theReferencesInformationTypes => ["References"];
+
+                public NWReferences_theReferences() {
+                    base.AssociationConnectorTypeName = typeof(NAVWARNPreamble).Name;
+                }
             };
             public NAVWARNPreamble() {
                 generalArea = new();
@@ -696,16 +700,28 @@ namespace S100Framework.DomainModel.S124 {
             public class NWPreambleContent_header : NWPreambleContent {
                 public override roleType? roleType => DomainModel.roleType.association;
                 public override String[] headerInformationTypes => ["NAVWARNPreamble"];
+
+                public NWPreambleContent_header() {
+                    base.AssociationConnectorTypeName = typeof(NAVWARNPart).Name;
+                }
             };
             public class AreaAffected_affects : AreaAffected {
                 public override roleType? roleType => DomainModel.roleType.association;
                 public override String[] affectsFeatureTypes => ["NAVWARNAreaAffected"];
                 public override String[] impactsFeatureTypes => ["NAVWARNPart"];
+
+                public AreaAffected_affects() {
+                    base.AssociationConnectorTypeName = typeof(NAVWARNPart).Name;
+                }
             };
             public class TextAssociation_positions : TextAssociation {
                 public override roleType? roleType => DomainModel.roleType.association;
                 public override String[] positionsFeatureTypes => ["TextPlacement"];
                 public override String[] identifiesFeatureTypes => ["NAVWARNPart"];
+
+                public TextAssociation_positions() {
+                    base.AssociationConnectorTypeName = typeof(NAVWARNPart).Name;
+                }
             };
             public NAVWARNPart() {
                 warningInformation = new warningInformation()
@@ -724,6 +740,10 @@ namespace S100Framework.DomainModel.S124 {
                 public override roleType? roleType => DomainModel.roleType.association;
                 public override String[] impactsFeatureTypes => ["NAVWARNPart"];
                 public override String[] affectsFeatureTypes => ["NAVWARNAreaAffected"];
+
+                public AreaAffected_impacts() {
+                    base.AssociationConnectorTypeName = typeof(NAVWARNAreaAffected).Name;
+                }
             };
             public NAVWARNAreaAffected() {
             }
@@ -753,6 +773,10 @@ namespace S100Framework.DomainModel.S124 {
                 public override roleType? roleType => DomainModel.roleType.composition;
                 public override String[] identifiesFeatureTypes => ["NAVWARNPart"];
                 public override String[] positionsFeatureTypes => ["TextPlacement"];
+
+                public TextAssociation_identifies() {
+                    base.AssociationConnectorTypeName = typeof(TextPlacement).Name;
+                }
             };
             public TextPlacement() {
             }
