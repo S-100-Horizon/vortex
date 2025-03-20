@@ -6,7 +6,6 @@ using System.Collections.Immutable;
 using System.Collections.ObjectModel;
 using System.Reflection;
 using S100Framework.DomainModel;
-using S100Framework.DomainModel.Bindings;
 using S100Framework.DomainModel.S131;
 using S100Framework.DomainModel.S131.ComplexAttributes;
 using S100Framework.DomainModel.S131.InformationTypes;
@@ -1705,10 +1704,10 @@ namespace S100Framework.WPF.ViewModel.S131 {
                 {
                     roleType = roleType.aggregation,
                     role = "componentOf",
-                    Lower = 0,
+                    Lower = 1,
                     Upper = 1,
                     AssociationTypes = ["HarbourAreaAdministrative"],
-                    CreateForeignFeatureBinding = () => new OptionalFeatureBindingViewModel<LayoutDivisionViewModel.componentOfHarbourAreaSectionRefIdViewModel>("LayoutDivision"),
+                    CreateForeignFeatureBinding = () => new SingleFeatureBindingViewModel<LayoutDivisionViewModel.componentOfHarbourAreaSectionRefIdViewModel>("LayoutDivision"),
                     CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<HarbourAreaSectionViewModel.HarbourAreaSectionRefIdViewModel>("HarbourAreaSection"),
                 }, new FeatureAssociationConnector<HarbourBasin>()
                 {
@@ -1962,7 +1961,16 @@ namespace S100Framework.WPF.ViewModel.S131 {
             },
             {
                 typeof(TextAssociationViewModel),
-                () => [new FeatureAssociationConnector<DryDock>()
+                () => [new FeatureAssociationConnector<TextPlacement>()
+                {
+                    roleType = roleType.association,
+                    role = "identifies",
+                    Lower = 1,
+                    Upper = 1,
+                    AssociationTypes = ["DryDock", "FloatingDock", "Gridiron", "HarbourFacility", "AnchorBerth", "AnchorageArea", "Berth", "BerthPosition", "DockArea", "DumpingGround", "HarbourAreaAdministrative", "HarbourAreaSection", "HarbourBasin", "MooringWarpingFacility", "OuterLimit", "PilotBoardingPlace", "SeaplaneLandingArea", "Terminal", "TurningBasin", "WaterwayArea"],
+                    CreateForeignFeatureBinding = () => new SingleFeatureBindingViewModel<TextAssociationViewModel.identifiesTextPlacementRefIdViewModel>("TextAssociation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<TextPlacementViewModel.TextPlacementRefIdViewModel>("TextPlacement"),
+                }, new FeatureAssociationConnector<DryDock>()
                 {
                     roleType = roleType.association,
                     role = "positions",
@@ -2142,15 +2150,6 @@ namespace S100Framework.WPF.ViewModel.S131 {
                     AssociationTypes = ["TextPlacement"],
                     CreateForeignFeatureBinding = () => new OptionalFeatureBindingViewModel<TextAssociationViewModel.positionsWaterwayAreaRefIdViewModel>("TextAssociation"),
                     CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<WaterwayAreaViewModel.WaterwayAreaRefIdViewModel>("WaterwayArea"),
-                }, new FeatureAssociationConnector<TextPlacement>()
-                {
-                    roleType = roleType.association,
-                    role = "positions",
-                    Lower = 1,
-                    Upper = 1,
-                    AssociationTypes = ["DryDock", "FloatingDock", "Gridiron", "HarbourFacility", "AnchorBerth", "AnchorageArea", "Berth", "BerthPosition", "DockArea", "DumpingGround", "HarbourAreaAdministrative", "HarbourAreaSection", "HarbourBasin", "MooringWarpingFacility", "OuterLimit", "PilotBoardingPlace", "SeaplaneLandingArea", "Terminal", "TurningBasin", "WaterwayArea"],
-                    CreateForeignFeatureBinding = () => new SingleFeatureBindingViewModel<TextAssociationViewModel.positionsTextPlacementRefIdViewModel>("TextAssociation"),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<TextPlacementViewModel.TextPlacementRefIdViewModel>("TextPlacement"),
                 }
 
                 ]
@@ -12913,6 +12912,17 @@ namespace S100Framework.WPF.ViewModel.S131 {
             set {
                 this.SetValue(ref _associationConnector, value);
                 if (value is not null) {
+                    identifies = value?.role switch
+                    {
+                        "positions" => value.CreateForeignFeatureBinding(),
+                        _ => value!.CreateLocalFeatureBinding(),
+                    };
+                }
+                else {
+                    identifies = null;
+                }
+
+                if (value is not null) {
                     positions = value?.role switch
                     {
                         "identifies" => value.CreateForeignFeatureBinding(),
@@ -12943,6 +12953,10 @@ namespace S100Framework.WPF.ViewModel.S131 {
         }
 
         public override FeatureAssociationConnector[] associationConnectorFeatures => TextAssociationViewModel._associationConnectorFeatures;
+
+        public class identifiesTextPlacementRefIdViewModel : FeatureRefIdViewModel {
+            public override string[] AssociationTypes => ["DryDock", "FloatingDock", "Gridiron", "HarbourFacility", "AnchorBerth", "AnchorageArea", "Berth", "BerthPosition", "DockArea", "DumpingGround", "HarbourAreaAdministrative", "HarbourAreaSection", "HarbourBasin", "MooringWarpingFacility", "OuterLimit", "PilotBoardingPlace", "SeaplaneLandingArea", "Terminal", "TurningBasin", "WaterwayArea"];
+        }
 
         public class positionsDryDockRefIdViewModel : FeatureRefIdViewModel {
             public override string[] AssociationTypes => ["TextPlacement"];
@@ -13022,10 +13036,6 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
         public class positionsWaterwayAreaRefIdViewModel : FeatureRefIdViewModel {
             public override string[] AssociationTypes => ["TextPlacement"];
-        }
-
-        public class positionsTextPlacementRefIdViewModel : FeatureRefIdViewModel {
-            public override string[] AssociationTypes => ["DryDock", "FloatingDock", "Gridiron", "HarbourFacility", "AnchorBerth", "AnchorageArea", "Berth", "BerthPosition", "DockArea", "DumpingGround", "HarbourAreaAdministrative", "HarbourAreaSection", "HarbourBasin", "MooringWarpingFacility", "OuterLimit", "PilotBoardingPlace", "SeaplaneLandingArea", "Terminal", "TurningBasin", "WaterwayArea"];
         }
 
         public static FeatureAssociationConnector[] _associationConnectorFeatures => Handles.AssociationConnectorFeatures[typeof(TextAssociationViewModel)]();

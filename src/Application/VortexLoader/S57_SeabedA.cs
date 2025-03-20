@@ -102,7 +102,7 @@ namespace S100Framework.Applications
 
                             instance.surfaceCharacteristics = new List<DomainModel.S101.ComplexAttributes.surfaceCharacteristics> {
 
-                              new DomainModel.S101.ComplexAttributes.surfaceCharacteristics() {
+                              new() {
                                  natureOfSurface = natureOfSurfaceValue,
                                  natureOfSurfaceQualifyingTerms = natureOfSurfaceQualifyingTermsList,
                                  // underlyingLayer = ?? TODO: Underlying layer for seabed

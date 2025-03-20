@@ -7,8 +7,7 @@
         public int OptimumDisplayScale { get; set; }
         public int? MinimumDisplayScale { get; set; }
 
-        public static readonly Dictionary<int, DisplayScale> DisplayScales = new Dictionary<int, DisplayScale>
-        {
+        public static readonly Dictionary<int, DisplayScale> DisplayScales = new() {
             { 10000000, new DisplayScale(10000000, 10000000, null) },
             { 3500000, new DisplayScale(3500000, 3500000, 10000000) },
             { 1500000, new DisplayScale(1500000, 1500000, 3500000) },
