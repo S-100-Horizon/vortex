@@ -7,10 +7,18 @@ using IO = System.IO;
 using ArcGIS.Core.Geometry;
 using System;
 using VortexLoader;
+using System.Text.Json;
 
 namespace S100Framework.Applications
 {
     internal static partial class ImporterNIS {
+
+        private static readonly JsonSerializerOptions jsonSerializerOptions = new() {
+            WriteIndented = false,
+            Encoder = System.Text.Encodings.Web.JavaScriptEncoder.UnsafeRelaxedJsonEscaping,
+            PropertyNameCaseInsensitive = true,
+        };
+
         //  https://github.com/iho-ohi/S-57-to-S-101-conversion-sub-WG
 
         static string _notesPath = "";

@@ -126,11 +126,6 @@ namespace S100Framework.Applications
 
                         var foid = $"110:{geometry!.Substring(1)}:1";       // Geodatastyrelsen: 110 
 
-
-
-                       
-
-
                         var prim = shapetype switch {
                             GeometryType.Point => Primitive.Point,
                             GeometryType.Multipoint => Primitive.Point,

@@ -69,7 +69,7 @@ namespace S100Framework.Applications
                         case 1:
                             buffer["ps"] = ps128;
                             buffer["code"] = instance.GetType().Name;
-                            buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance);
+                            buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                             buffer["shape"] = productCoverage.SHAPE;
                             insert.Insert(buffer);
 

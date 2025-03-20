@@ -129,7 +129,7 @@ namespace S100Framework.Applications
 
                             };
 
-                            bufferPointset["json"] = System.Text.Json.JsonSerializer.Serialize(instance);
+                            bufferPointset["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                             var oid = insertPointset.Insert(bufferPointset);
                             Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
                             convertedCount++;
