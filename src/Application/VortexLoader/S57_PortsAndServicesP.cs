@@ -1,7 +1,7 @@
 ﻿using ArcGIS.Core.Data;
-using S100Framework.Applications.S57.esri;
-using S100Framework.DomainModel.S101;
 using S100Framework.DomainModel.S101.FeatureTypes;
+using S100Framework.DomainModel.S101;
+using S100Framework.Applications.S57.esri;
 
 namespace S100Framework.Applications
 {
@@ -15,7 +15,7 @@ namespace S100Framework.Applications
             var portsAndServicesP = source.OpenDataset<FeatureClass>(source.GetName(tableName));
 
             using var featureClass = target.OpenDataset<FeatureClass>(target.GetName("point"));
-
+            
 
             using var buffer = featureClass.CreateRowBuffer();
             using var insert = featureClass.CreateInsertCursor();
@@ -37,7 +37,7 @@ namespace S100Framework.Applications
                 var plts_comp_scale = current.PLTS_COMP_SCALE ?? default;
                 var longname = current.LNAM ?? Strings.UNKNOWN;
                 var status = current.STATUS ?? default;
-
+                
 
 
                 // The attribute default clearance depth must be populated with a value, which must not be an empty(null)
@@ -49,7 +49,7 @@ namespace S100Framework.Applications
                 switch (subtype) {
                     case 1: { // BERTHS_Berth
                             var instance = new Berth() {
-
+                                
                             };
 
 
@@ -156,7 +156,7 @@ namespace S100Framework.Applications
                                 instance.scaleMinimum = plts_comp_scale;
                             }
 
-
+                            
                             instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
                             AddInformation(instance.information, feature);
                             buffer["ps"] = ps101;
@@ -288,7 +288,7 @@ namespace S100Framework.Applications
                                     instance.categoryOfDolphin = catmor switch {
                                         1 => new List<categoryOfDolphin>() { categoryOfDolphin.MooringDolphin },
                                         2 => new List<categoryOfDolphin>() { categoryOfDolphin.DeviationDolphin },
-                                        -32767 => new List<categoryOfDolphin>() { (categoryOfDolphin)(-1) },
+                                        -32767 =>new List<categoryOfDolphin>() { (categoryOfDolphin)(-1) },
                                         // TODO: QUESTION: how to handle -1 on a required attribute without an S-101 equivalent "unknown". Illegal value assigned. MUST be fixed.
                                         _ => throw new IndexOutOfRangeException(),
                                     };
@@ -357,7 +357,7 @@ namespace S100Framework.Applications
                                     instance.scaleMinimum = plts_comp_scale;
                                 }
 
-
+                                
                                 instance.categoryOfShorelineConstruction = categoryOfShorelineConstruction.TieUpWall;
                                 if (current.COLOUR != default) {
                                     instance.colour = GetColours(current.COLOUR);
@@ -393,7 +393,7 @@ namespace S100Framework.Applications
                                 if (plts_comp_scale != default) {
                                     instance.scaleMinimum = plts_comp_scale;
                                 }
-
+                                
                                 instance.categoryOfPile = categoryOfPile.MooringPost;
 
                                 if (current.COLOUR != default) {
@@ -432,7 +432,7 @@ namespace S100Framework.Applications
                                     instance.scaleMinimum = plts_comp_scale;
                                 }
 
-
+                                
                                 instance.categoryOfCable = categoryOfCable.JunctionCable;
 
 

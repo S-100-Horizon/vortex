@@ -1,4 +1,11 @@
 ﻿using ArcGIS.Core.Data;
+using ArcGIS.Core.Internal.CIM;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Runtime.CompilerServices;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace S100Framework.Applications
 {
@@ -19,7 +26,7 @@ namespace S100Framework.Applications
         }
 
         internal static string GetName(this Geodatabase geodatabase, string name) {
-            if (!_isInitialized) {
+            if (!_isInitialized) { 
                 geodatabase.Initialize();
                 //_isInitialized = true;
             }

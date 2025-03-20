@@ -1,5 +1,6 @@
 ﻿using ArcGIS.Core.Data;
 using S100Framework.Applications.S57.esri;
+using S100Framework.DomainModel.S101;
 using S100Framework.DomainModel.S101.FeatureTypes;
 
 namespace S100Framework.Applications
@@ -9,12 +10,12 @@ namespace S100Framework.Applications
         private static void S57_TracksAndRoutesL(Geodatabase source, Geodatabase target, QueryFilter filter) {
             var tableName = "TracksAndRoutesL";
 
-
+            
 
             var tracksAndRoutesL = source.OpenDataset<FeatureClass>(source.GetName(tableName));
 
             using var featureClass = target.OpenDataset<FeatureClass>(target.GetName("curve"));
-
+            
 
             using var buffer = featureClass.CreateRowBuffer();
             using var insert = featureClass.CreateInsertCursor();
@@ -50,7 +51,7 @@ namespace S100Framework.Applications
 
                             instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
                             AddInformation(instance.information, feature);
-
+                            
                             AddOrientation(instance.orientationValue, feature);
 
                             buffer["ps"] = ps101;

@@ -1,7 +1,9 @@
 ﻿using ArcGIS.Core.Data;
-using S100Framework.Applications.S57.esri;
-using S100Framework.DomainModel.S101;
 using S100Framework.DomainModel.S101.FeatureTypes;
+using DomainModel = S100Framework.DomainModel;
+
+using S100Framework.DomainModel.S101;
+using S100Framework.Applications.S57.esri;
 
 namespace S100Framework.Applications
 {
@@ -9,7 +11,7 @@ namespace S100Framework.Applications
     {
         private static void S57_NaturalFeaturesA(Geodatabase source, Geodatabase target, QueryFilter filter) {
             var tableName = "NaturalFeaturesA";
-
+            
             using var s = source.OpenDataset<FeatureClass>(source.GetName(tableName));
             using var surface = target.OpenDataset<FeatureClass>(target.GetName("surface"));
 
@@ -49,21 +51,21 @@ namespace S100Framework.Applications
 
 
 
-                switch (subtype) {
+                    switch (subtype) {
                     case 1: { //  LAKARE
                             var instance = new Lake {
                                 elevation = null,
                                 status = null,
                                 scaleMinimum = null,
                             };
-                            if (elevat != default) {
+                            if (elevat !=  default) {
                                 instance.elevation = elevat;
                             }
 
                             if (plts_comp_scale != default) {
                                 instance.scaleMinimum = plts_comp_scale;
                             }
-
+                            
                             if (status != default) {
                                 if (!string.IsNullOrEmpty(status)) {
                                     //TODO: STATUS
@@ -77,7 +79,7 @@ namespace S100Framework.Applications
                             AddInformation(instance.information, feature);
 
                             bufferSurface["ps"] = ps101;
-                            bufferSurface["code"] = instance.GetType().Name;
+                            bufferSurface["code"] = instance.GetType().Name; 
                             bufferSurface["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                             bufferSurface["shape"] = current.SHAPE;
                             var oid = insertSurface.Insert(bufferSurface);
@@ -109,7 +111,7 @@ namespace S100Framework.Applications
                                     3 => condition.UnderReclamation,   //  under reclamation                                    
                                     4 => throw new IndexOutOfRangeException(),   //  wingless
                                     5 => throw new IndexOutOfRangeException(),   //  planned construction
-                                    -32767 => null,
+                                    -32767 =>null,
                                     _ => throw new IndexOutOfRangeException(),
                                 };
                             }
@@ -125,7 +127,7 @@ namespace S100Framework.Applications
                             AddInformation(instance.information, feature);
 
                             bufferSurface["ps"] = ps101;
-                            bufferSurface["code"] = instance.GetType().Name;
+                            bufferSurface["code"] = instance.GetType().Name; 
                             bufferSurface["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                             bufferSurface["shape"] = current.SHAPE;
                             insertSurface.Insert(bufferSurface);
@@ -150,7 +152,7 @@ namespace S100Framework.Applications
                                     5 => throw new IndexOutOfRangeException(),  // awash
                                     6 => throw new IndexOutOfRangeException(),  // subject to inundation or flooding
                                     7 => throw new IndexOutOfRangeException(),  // floating
-                                    -32767 => null,
+                                    -32767 =>null,
                                     _ => throw new IndexOutOfRangeException(),
                                 };
                             }
@@ -209,7 +211,7 @@ namespace S100Framework.Applications
                             AddInformation(instance.information, feature);
 
                             bufferSurface["ps"] = ps101;
-                            bufferSurface["code"] = instance.GetType().Name;
+                            bufferSurface["code"] = instance.GetType().Name; 
                             bufferSurface["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                             bufferSurface["shape"] = current.SHAPE;
                             insertSurface.Insert(bufferSurface);
@@ -293,7 +295,7 @@ namespace S100Framework.Applications
                                     52 => categoryOfSeaArea.Lake, // lake
                                     53 => categoryOfSeaArea.River, // river
                                     54 => categoryOfSeaArea.Reach,  // reach
-                                    -32767 => null,
+                                    -32767 =>null,
                                     _ => throw new IndexOutOfRangeException(),
                                 };
                             }
@@ -331,7 +333,7 @@ namespace S100Framework.Applications
                                     5 => categoryOfSlope.Pingo,  // pingo
                                     6 => categoryOfSlope.Cliff,  // cliff
                                     7 => categoryOfSlope.Scree,  // scree
-                                    -32767 => null,
+                                    -32767 =>null,
                                     _ => throw new IndexOutOfRangeException(),
                                 };
                             }
@@ -379,7 +381,7 @@ namespace S100Framework.Applications
                                     1 => true,  // radar conspicuous
                                     2 => false, // not radar conspicuous
                                     3 => true,  // radar conspicuous (has radar reflector)
-                                    -32767 => null,
+                                    -32767 =>null,
                                     _ => throw new IndexOutOfRangeException(),
                                 };
                             }
@@ -387,7 +389,7 @@ namespace S100Framework.Applications
                                 instance.visualProminence = convis switch {
                                     1 => visualProminence.VisuallyConspicuous,  // visually conspicuous
                                     2 => visualProminence.NotVisuallyConspicuous,  // not visually conspicuous                                
-                                    -32767 => null,
+                                    -32767 =>null,
                                     _ => throw new IndexOutOfRangeException(),
                                 };
                             }
@@ -399,7 +401,7 @@ namespace S100Framework.Applications
                             AddInformation(instance.information, feature);
 
                             bufferSurface["ps"] = ps101;
-                            bufferSurface["code"] = instance.GetType().Name;
+                            bufferSurface["code"] = instance.GetType().Name; 
                             bufferSurface["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                             bufferSurface["shape"] = current.SHAPE;
                             insertSurface.Insert(bufferSurface);
@@ -442,7 +444,7 @@ namespace S100Framework.Applications
                                 instance.visualProminence = convis switch {
                                     1 => visualProminence.VisuallyConspicuous,  // visually conspicuous
                                     2 => visualProminence.NotVisuallyConspicuous,  // not visually conspicuous                                
-                                    -32767 => null,
+                                    -32767 =>null,
                                     _ => throw new IndexOutOfRangeException(),
                                 };
                             }

@@ -1,13 +1,13 @@
 ﻿using ArcGIS.Core.Data;
 using S100Framework.Applications.S57.esri;
+using System.ComponentModel.Design;
 using System.Data;
 
 
 namespace S100Framework.Applications
 {
 
-    internal enum Direction
-    {
+    internal enum Direction {
         Source = 0,
         Destination = 1
     }
@@ -21,8 +21,7 @@ namespace S100Framework.Applications
         999	Rep
      */
 
-    internal class PltsCollection
-    {
+    internal class PltsCollection {
         private List<PltsSlave> _related;
 
         PLTS_Collections _plts_collections;
@@ -37,13 +36,12 @@ namespace S100Framework.Applications
         }
     }
 
-    internal class PltsSlave
-    {
+    internal class PltsSlave {
         public PLTS_Frel PLTS_Frel { get; set; }
-
+        
         private S57Object _s57Object;
 
-
+        
         public Guid GlobalId { get; set; }
 
         public PltsSlave(PLTS_Frel plts_Frel) {
@@ -81,8 +79,7 @@ namespace S100Framework.Applications
                 else {
                     throw new NotSupportedException($"GetRelated: {sourceFeatureClass}");
                 }
-            }
-            ;
+            };
             _s57Object = result;
             return result;
         }
@@ -116,8 +113,7 @@ namespace S100Framework.Applications
                 Guid.TryParse(Convert.ToString(plts_collection.GLOBALID), out uid);
                 if (!_pltsCollections.ContainsKey(uid)) {
                     _pltsCollections[uid] = new PltsCollection(plts_collection);
-                }
-                else {
+                } else {
                     throw new IndexOutOfRangeException($"Multiple PltsCollections with same id not allowed {uid}");
                 }
 

@@ -1,5 +1,6 @@
 ﻿using ArcGIS.Core.Data;
 using S100Framework.Applications.S57.esri;
+using S100Framework.DomainModel;
 using S100Framework.DomainModel.S101;
 using S100Framework.DomainModel.S101.FeatureTypes;
 using VortexLoader;
@@ -16,7 +17,7 @@ namespace S100Framework.Applications
             //var dredged = source.OpenDataset<FeatureClass>("Depare");
 
             using var featureClass = target.OpenDataset<FeatureClass>(target.GetName("point"));
-
+            
 
             using var buffer = featureClass.CreateRowBuffer();
             using var insert = featureClass.CreateInsertCursor();
@@ -209,7 +210,7 @@ namespace S100Framework.Applications
                                 5 => waterLevelEffect.Awash,  // awash
                                 6 => waterLevelEffect.SubjectToInundationOrFlooding,  // subject to inundation or flooding
                                 7 => waterLevelEffect.Floating,  // floating
-                                -32767 => (waterLevelEffect)(-1),
+                                -32767 =>(waterLevelEffect)(-1),
                                 // TODO: QUESTION: how to handle -1 on a required attribute without an S-101 equivalent "unknown". Illegal value assigned. MUST be fixed.
 
                                 _ => throw new IndexOutOfRangeException(),
@@ -232,7 +233,7 @@ namespace S100Framework.Applications
 
                             buffer["ps"] = ps101;
 
-                            buffer["code"] = obstruction.GetType().Name;
+                            buffer["code"] = obstruction.GetType().Name; 
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(obstruction);
                             buffer["shape"] = current.SHAPE;
                             insert.Insert(buffer);
@@ -240,7 +241,7 @@ namespace S100Framework.Applications
                             convertedCount++;
                         }
                         break;
-
+                        
                     case 35: { // UWTROC
                             // TODO: surrounding depth, valueofsounding
                             var uwtroc = new UnderwaterAwashRock {
@@ -270,7 +271,7 @@ namespace S100Framework.Applications
                                     5 => waterLevelEffect.Awash,  // awash
                                     6 => waterLevelEffect.SubjectToInundationOrFlooding,  // subject to inundation or flooding
                                     7 => waterLevelEffect.Floating,  // floating
-                                    -32767 => (waterLevelEffect)(-1),
+                                    -32767 =>(waterLevelEffect)(-1),
                                     // TODO: QUESTION: how to handle -1 on a required attribute without an S-101 equivalent "unknown". Illegal value assigned. MUST be fixed.
                                     _ => throw new IndexOutOfRangeException(),
                                 };
@@ -281,7 +282,7 @@ namespace S100Framework.Applications
                                 uwtroc.scaleMinimum = current.PLTS_COMP_SCALE;
                             }
 
-                            if (current.STATUS != default) {
+                              if (current.STATUS != default) {
                                 uwtroc.status = GetSingleStatus(current.STATUS);
                             }
 
@@ -322,7 +323,7 @@ namespace S100Framework.Applications
                                     3 => categoryOfWaterTurbulence.Overfalls,
                                     4 => categoryOfWaterTurbulence.TideRips,
                                     5 => categoryOfWaterTurbulence.Bombora,
-                                    -32767 => (categoryOfWaterTurbulence)(-1),
+                                    - 32767 => (categoryOfWaterTurbulence)(-1),
                                     // TODO: QUESTION: how to handle -1 on a required attribute without an S-101 equivalent "unknown". Illegal value assigned. MUST be fixed.
                                     _ => throw new IndexOutOfRangeException(),
                                 };
@@ -362,7 +363,7 @@ namespace S100Framework.Applications
                                     3 => categoryOfWreck.DistributedRemainsOfWreck,
                                     4 => categoryOfWreck.WreckShowingMastMasts,
                                     5 => categoryOfWreck.WreckShowingAnyPortionOfHullOrSuperstructure,
-                                    -32767 => (categoryOfWreck)(-1),
+                                    - 32767 => (categoryOfWreck)(-1),
                                     // TODO: QUESTION: how to handle -1 on a required attribute without an S-101 equivalent "unknown". Illegal value assigned. MUST be fixed.
                                     _ => throw new IndexOutOfRangeException(),
                                 };
@@ -378,7 +379,7 @@ namespace S100Framework.Applications
                                     5 => waterLevelEffect.Awash,  // awash
                                     6 => waterLevelEffect.SubjectToInundationOrFlooding,  // subject to inundation or flooding
                                     7 => waterLevelEffect.Floating,  // floating
-                                    -32767 => (waterLevelEffect)(-1),
+                                    -32767 =>(waterLevelEffect)(-1),
                                     // TODO: QUESTION: how to handle -1 on a required attribute without an S-101 equivalent "unknown". Illegal value assigned. MUST be fixed.
                                     _ => throw new IndexOutOfRangeException(),
                                 };
@@ -414,7 +415,7 @@ namespace S100Framework.Applications
                         break;
                 }
 
-
+                
 
             }
             Logger.Current.DataTotalCount(tableName, recordCount, convertedCount);

@@ -8,7 +8,7 @@ namespace S100Framework.Applications
     {
         private static void S57_RegulatedAreasAndLimitsA(Geodatabase source, Geodatabase target, QueryFilter filter) {
             var tableName = "RegulatedAreasAndLimitsA";
-
+            
 
             using var featureclass = target.OpenDataset<FeatureClass>(target.GetName("surface"));
 
@@ -42,7 +42,7 @@ namespace S100Framework.Applications
                                 instance.scaleMinimum = plts_comp_scale;
                             }
 
-
+                            
                             if (current.STATUS != default) {
                                 instance.status = GetStatus(current.STATUS);
                             }
@@ -84,7 +84,7 @@ namespace S100Framework.Applications
                             if (plts_comp_scale != default) {
                                 instance.scaleMinimum = plts_comp_scale;
                             }
-
+                            
                             instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
                             AddInformation(instance.information, feature);
                             buffer["ps"] = ps101;
@@ -102,7 +102,7 @@ namespace S100Framework.Applications
                             if (plts_comp_scale != default) {
                                 instance.scaleMinimum = plts_comp_scale;
                             }
-
+                            
                             instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
                             AddInformation(instance.information, feature);
                             buffer["ps"] = ps101;
@@ -120,8 +120,8 @@ namespace S100Framework.Applications
                             if (plts_comp_scale != default) {
                                 instance.scaleMinimum = plts_comp_scale;
                             }
-
-
+                            
+                            
                             AddInformation(instance.information, feature);
                             buffer["ps"] = ps101;
 
@@ -138,7 +138,7 @@ namespace S100Framework.Applications
                             if (plts_comp_scale != default) {
                                 instance.scaleMinimum = plts_comp_scale;
                             }
-
+                            
                             instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
                             AddInformation(instance.information, feature);
                             buffer["ps"] = ps101;
@@ -177,7 +177,7 @@ namespace S100Framework.Applications
                             if (plts_comp_scale != default) {
                                 instance.scaleMinimum = plts_comp_scale;
                             }
-
+                            
                             //instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
                             AddInformation(instance.information, feature);
                             buffer["ps"] = ps101;
@@ -215,8 +215,8 @@ namespace S100Framework.Applications
                             if (plts_comp_scale != default) {
                                 instance.scaleMinimum = plts_comp_scale;
                             }
-
-
+                            
+                            
                             AddInformation(instance.information, feature);
                             buffer["ps"] = ps101;
 
@@ -406,7 +406,7 @@ namespace S100Framework.Applications
                             if (plts_comp_scale != default) {
                                 instance.scaleMinimum = plts_comp_scale;
                             }
-
+                            
                             //instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
                             AddInformation(instance.information, feature);
                             buffer["ps"] = ps101;
@@ -427,7 +427,7 @@ namespace S100Framework.Applications
 
 
 
-
+                
             }
             Logger.Current.DataTotalCount(tableName, recordCount, convertedCount);
         }

@@ -1,5 +1,6 @@
 ﻿using ArcGIS.Core.Data;
 using S100Framework.Applications.S57.esri;
+using S100Framework.DomainModel.S101;
 using S100Framework.DomainModel.S101.FeatureTypes;
 
 namespace S100Framework.Applications
@@ -67,7 +68,7 @@ namespace S100Framework.Applications
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                             buffer["shape"] = current.SHAPE;
                             insert.Insert(buffer);
-
+                            
                             Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
                             convertedCount++;
                         }
@@ -94,14 +95,14 @@ namespace S100Framework.Applications
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                             buffer["shape"] = current.SHAPE;
                             insert.Insert(buffer);
-
+                            
                             Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
                             convertedCount++;
                         }
                         break;
                     case 10: { // RAPIDS_Rapids
                             var instance = new Rapids {
-
+                                
                             };
                             if (plts_comp_scale != default) {
                                 instance.scaleMinimum = plts_comp_scale;
@@ -118,12 +119,12 @@ namespace S100Framework.Applications
                             insert.Insert(buffer);
 
                             Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
-                            convertedCount++;
+                            convertedCount++; 
                         }
                         break;
                     case 15: { // RIVERS_River
                             var instance = new River {
-
+                                
                             };
                             if (plts_comp_scale != default) {
                                 instance.scaleMinimum = plts_comp_scale;
@@ -140,7 +141,7 @@ namespace S100Framework.Applications
                             insert.Insert(buffer);
 
                             Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
-                            convertedCount++;
+                            convertedCount++; 
                         }
                         break;
                     case 20: { // SLOTOP_SlopeTopline
@@ -162,7 +163,7 @@ namespace S100Framework.Applications
                             insert.Insert(buffer);
 
                             Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
-                            convertedCount++;
+                            convertedCount++; 
                         }
                         break;
                     case 25: { // VEGATN_Vegetation
@@ -184,7 +185,7 @@ namespace S100Framework.Applications
                             insert.Insert(buffer);
 
                             Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
-                            convertedCount++;
+                            convertedCount++; 
                         }
                         break;
                     case 30: { // WATFAL_Waterfall
@@ -195,7 +196,7 @@ namespace S100Framework.Applications
                                 instance.scaleMinimum = plts_comp_scale;
                             }
 
-
+                            
                             instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
                             AddInformation(instance.information, feature);
 

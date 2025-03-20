@@ -1,7 +1,8 @@
 ﻿using ArcGIS.Core.Data;
-using S100Framework.Applications.S57.esri;
 using S100Framework.DomainModel.S101;
 using S100Framework.DomainModel.S101.FeatureTypes;
+using ArcGIS.Core.CIM;
+using S100Framework.Applications.S57.esri;
 
 namespace S100Framework.Applications
 {
@@ -13,7 +14,7 @@ namespace S100Framework.Applications
             var culturalFeaturesP = source.OpenDataset<FeatureClass>(source.GetName(tableName));
 
             using var featureClass = target.OpenDataset<FeatureClass>(target.GetName("point"));
-
+            
 
             using var buffer = featureClass.CreateRowBuffer();
             using var insert = featureClass.CreateInsertCursor();
@@ -190,7 +191,7 @@ namespace S100Framework.Applications
                                     instance.scaleMinimum = plts_comp_scale;
                                 }
 
-                                instance.categoryOfLandmark = [categoryOfLandmark.TriangulationMark];
+                                instance.categoryOfLandmark = [ categoryOfLandmark.TriangulationMark ];
 
                                 if (current.COLOUR != default) {
                                     instance.colour = GetColours(current.COLOUR);

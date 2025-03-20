@@ -1,5 +1,6 @@
 ﻿using ArcGIS.Core.Data;
 using ArcGIS.Core.Geometry;
+using ArcGIS.Desktop.Mapping;
 
 using CommandLine;
 using S100Framework.ArcGIS.Core;
@@ -76,20 +77,20 @@ namespace S100Framework.Applications
 
             Func<Geodatabase> createGeodatabase = () => { throw new NotImplementedException(); };
 
-
+            
 
             arguments.WithParsed<Options>(o => {
                 var target = o.Target!;
 
                 if (IO.File.Exists(target) && ".sde".Equals(IO.Path.GetExtension(target), StringComparison.InvariantCultureIgnoreCase)) {
-                    createGeodatabase = () => {
+                    createGeodatabase = () => { 
                         var geodatabase = new Geodatabase(new DatabaseConnectionFile(new Uri(IO.Path.GetFullPath(target))));
-
+                        
                         return geodatabase;
                     };
                 }
                 else if (IO.Directory.Exists(target) && ".gdb".Equals(IO.Path.GetExtension(target), StringComparison.InvariantCultureIgnoreCase)) {
-                    createGeodatabase = () => {
+                    createGeodatabase = () => { 
                         var geodatabase = new Geodatabase(new FileGeodatabaseConnectionPath(new Uri(IO.Path.GetFullPath(target))));
 
                         return geodatabase;
@@ -114,7 +115,7 @@ namespace S100Framework.Applications
 
                         serviceProps.Version = destinationVersion;
                         geodatabase = new Geodatabase(serviceProps);
-
+                        
                         return geodatabase;
                     };
 
@@ -124,7 +125,7 @@ namespace S100Framework.Applications
             });
 
             using Geodatabase target = createGeodatabase();
-
+            
 
             var result = command switch {
                 "GML" => ImporterGML(target, arguments),

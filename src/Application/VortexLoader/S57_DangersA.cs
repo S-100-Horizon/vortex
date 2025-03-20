@@ -13,7 +13,7 @@ namespace S100Framework.Applications
             var dangersa = source.OpenDataset<FeatureClass>(source.GetName(tableName));
 
             using var featureClass = target.OpenDataset<FeatureClass>(target.GetName("surface"));
-
+            
 
             using var buffer = featureClass.CreateRowBuffer();
             using var insert = featureClass.CreateInsertCursor();
@@ -125,7 +125,7 @@ namespace S100Framework.Applications
                                     5 => waterLevelEffect.Awash,  // awash
                                     6 => waterLevelEffect.SubjectToInundationOrFlooding,  // subject to inundation or flooding
                                     7 => waterLevelEffect.Floating,  // floating
-                                    -32767 => (waterLevelEffect)(-1),
+                                    -32767 =>(waterLevelEffect)(-1),
                                     // TODO: QUESTION: how to handle -1 on a required attribute without an S-101 equivalent "unknown". Illegal value assigned. MUST be fixed.
                                     _ => throw new IndexOutOfRangeException(),
                                 };
@@ -194,7 +194,7 @@ namespace S100Framework.Applications
                                     5 => waterLevelEffect.Awash,  // awash
                                     6 => waterLevelEffect.SubjectToInundationOrFlooding,  // subject to inundation or flooding
                                     7 => waterLevelEffect.Floating,  // floating
-                                    -32767 => (waterLevelEffect)(-1),
+                                    -32767 =>(waterLevelEffect)(-1),
                                     // TODO: QUESTION: how to handle -1 on a required attribute without an S-101 equivalent "unknown". Illegal value assigned. MUST be fixed.
                                     _ => throw new IndexOutOfRangeException(),
                                 };
