@@ -68,7 +68,7 @@ namespace S100Framework.Applications
                 // Create dataset
                 var dataset = new Dataset() {
                     CellName = "DK40349E.000",
-                    Comment = "Test Dataset"
+                    Comment = "Test Dataset",
                 };
 
 
