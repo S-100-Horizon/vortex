@@ -125,14 +125,14 @@ namespace S100Framework.YAML
         public Coordinate[]? Coordinate { get; private set; }
     }
 
-    public class CompositeCurve
+    public class CompositeCurve(Curve[] Curves)
     {
         public string? Name { get; set; }
 
         public string? Components => Curves is null ? null : string.Join(',', Curves.Select(e => e.Name));
 
         [YamlIgnore]
-        public Curve[]? Curves { get; private set; }
+        public Curve[]? Curves { get; private set; } = Curves;
     }
 
     public class Surface(Curve exterior)

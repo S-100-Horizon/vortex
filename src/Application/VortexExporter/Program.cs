@@ -69,38 +69,42 @@ namespace S100Framework.Applications
                 var dataset = new Dataset() {
                     CellName = "DK40349E.000",
                     Comment = "Test Dataset",
+                    Edition = 1,
+                    ENCVer = "INT.IHO.S-101.2.0",
+                    FCVer = "2.0.0",
                 };
-
 
                 // Informationtypes
                 try {
                     using var informationType = source.OpenDataset<Table>($"{s100TablePrefix}informationType");
-                using var informationCursor = informationType.Search(null, false);
+                    using var informationCursor = informationType.Search(null, false);
 
-                while (informationCursor.MoveNext()) {
-                    var current = informationCursor.Current;
+                    while (informationCursor.MoveNext()) {
+                        var current = informationCursor.Current;
 
-                    var name = current["name"];
-                    var code = current["code"].ToString()!;
-                    var json = current["json"].ToString()!;
+                        var name = current["name"];
+                        var code = current["code"].ToString()!;
+                        var json = current["json"].ToString()!;
 
-                    var type = featureCatalogue.Assembly!.GetType($"{S100Framework.Catalogues.FeatureCatalogue.Namespace("S101", "InformationTypes")}.{code}", true)!;
+                        var type = featureCatalogue.Assembly!.GetType($"{S100Framework.Catalogues.FeatureCatalogue.Namespace("S101", "InformationTypes")}.{code}", true)!;
 
-                    var instance = DBNull.Value.Equals(current["json"]) ? null : System.Text.Json.JsonSerializer.Deserialize(Convert.ToString(current["json"])!, type);
+                        var instance = DBNull.Value.Equals(current["json"]) ? null : System.Text.Json.JsonSerializer.Deserialize(Convert.ToString(current["json"])!, type);
 
-                    var information = new YAML.Information {
-                        Name = code,
-                        ID = $"{name}",
-                        Attributes = (InformationNode)instance!,
-                    };
+                        var information = new YAML.Information {
+                            Name = code,
+                            ID = $"{name}",
+                            Attributes = (InformationNode)instance!,
+                        };
 
-                    dataset.AddInformation(information);
-                }
+                        dataset.AddInformation(information);
+                    }
                 }
                 catch (Exception ex) {
                     Console.WriteLine("Table: InformationType: " + ex.Message);
                     Logger.Current.Error("Exception: {ex}", ex);
                 }
+
+                var geometries = new List<(Geometry geometry, string name)>();
 
                 // Features
                 foreach (var def in source.GetDefinitions<FeatureClassDefinition>()) {
@@ -112,24 +116,19 @@ namespace S100Framework.Applications
                         SpatialRelationshipDescription = "T*****FF*"
                     };
 
-               
+
 
                     using var cursor = fc.Search(filter, true);
                     while (cursor.MoveNext()) {
                         var current = (ArcGIS.Core.Data.Feature)cursor.Current;
                         var geometry = Convert.ToString(current["name"]);
-                        
+
                         var shapetype = def.GetShapeType();
 
                         var name = Convert.ToString(current["code"]);
 
 
                         var foid = $"110:{geometry!.Substring(1)}:1";       // Geodatastyrelsen: 110 
-
-
-
-                       
-
 
                         var prim = shapetype switch {
                             GeometryType.Point => Primitive.Point,
@@ -157,7 +156,9 @@ namespace S100Framework.Applications
 
 
                             dataset.AddFeature(feature);
-                            dataset.AddGeometry(current.GetShape(), geometry!);
+
+                            geometries.Add(new(current.GetShape(), geometry!));
+
                         }
                         catch (Exception ex) {
                             Console.WriteLine(ex.Message);
@@ -165,6 +166,10 @@ namespace S100Framework.Applications
                             continue;
                         }
                     }
+                }
+
+                foreach (var item in geometries.OrderBy(e => e.geometry.GeometryType)) {
+                    dataset.AddGeometry(item.geometry, item.name!);
                 }
 
                 var yaml = S100Framework.YAML.Converter.Serialize(dataset);
@@ -205,8 +210,8 @@ namespace S100Framework.YAML
                     }
                 case ArcGIS.Core.Geometry.Polyline polyline: {        // Curve
                         var vertices = polyline.Points.Select(p => new Coordinate(p.X, p.Y)).ToArray();
-
                         Point first = default!;
+                        Point last = default!;
 
                         var firstVertice = (vertices.First().X, vertices.First().Y);
 
@@ -223,14 +228,38 @@ namespace S100Framework.YAML
                             dataset!.AddPoint(first);
                         }
 
-                        var curve = new Curve(first, vertices) { Name = name };
+                        // Last
+                        var lastVertice = (vertices.Last().X, vertices.Last().Y);
+                        var lastMatch = dataset?.Points?.FirstOrDefault(e => e.Coordinate?.X == lastVertice.X && e.Coordinate.Y == lastVertice.Y);
+
+
+                        if (lastMatch != null) {
+                            last = new Point(lastMatch!.Coordinate!.X, lastMatch.Coordinate.Y) { Name = lastMatch.Name };
+                        }
+                        else {
+                            last = new Point(lastVertice.X, lastVertice.Y) {
+                                Name = $"{name}/0"
+                            };
+                            dataset!.AddPoint(last);
+                        }
+
+                        var curve = new Curve(first, last, vertices) { Name = name };
 
                         dataset!.AddCurve(curve);
+
+
+                        if (curve.Coordinate.Length == 2) {
+                            Console.WriteLine("small curve: " + curve.Name);
+                            Console.WriteLine(curve.Vertices);
+                        }
                         break;
                     }
                 case ArcGIS.Core.Geometry.Polygon polygon: {         // Surface
+
                         if (polygon.ExteriorRingCount == 0 || polygon.ExteriorRingCount > 1)
                             throw new ArgumentException("Unsupported exterior ring count");
+
+                        var compositeCurves = new List<string>();
 
                         var exteriorRing = polygon.GetExteriorRing(0);
 
@@ -245,12 +274,11 @@ namespace S100Framework.YAML
 
                         dataset.AddCurve(exteriorCurve);
 
-                        var surface = new Surface(exteriorCurve) {
-                            Name = name,
-                        };
+                        var surface = new Surface(exteriorCurve);
+
 
                         // Add interior rings
-                        int i = 1;
+                        int id = 1;
                         if (polygon.Parts.Count > 1) {
                             foreach (var interiorRing in polygon.Parts.Skip(1)) {
                                 var interiorCoordinates = interiorRing.Select(segment => new Coordinate(segment.StartPoint.X, segment.StartPoint.Y)).ToArray();
@@ -259,9 +287,9 @@ namespace S100Framework.YAML
                                 interiorCoordinates = [.. interiorCoordinates, interiorCoordinates[0]];
 
                                 var interiorCurve = new Curve(interiorCoordinates) {
-                                    Name = $"{name}/{i}",
+                                    Name = $"{name}/{id}",
                                 };
-                                i++;
+                                id++;
                                 dataset.AddCurve(interiorCurve);
 
                                 surface.InteriorRings = [.. surface.InteriorRings, interiorCurve];
@@ -309,6 +337,45 @@ namespace S100Framework.YAML
             value += offset;
             value = Math.Truncate(value);
             return value /= power10;
+        }
+
+        public static void BuildPolyline(this Dataset dataset, Polyline polyline) {
+            var segments = polyline.Parts[0].ToArray();
+
+            var segmentCurves = segments.Select(p => new Coordinate(p.StartPoint.X, p.StartPoint.Y)).ToArray();
+
+            var vertices = polyline.Points.Select(p => new Coordinate(p.X, p.Y)).ToArray();
+
+            var sameLength = segmentCurves.Length == vertices.Length;
+
+            Console.WriteLine();
+
+
+        }
+
+        static CompositeCurve BuildCompositeCurves(this Dataset dataset, Polygon polygon) {
+
+            var segments = polygon.Parts[0].ToArray();
+            var allCurves = dataset?.Curves?.ToArray();
+
+            var segmentCurves = segments.Select(sc => new Curve(
+                [
+                    new Coordinate(sc.StartPoint.X, sc.StartPoint.Y),
+                    new Coordinate(sc.EndPoint.X, sc.EndPoint.Y)
+                ])).ToArray();
+
+            Console.WriteLine("AllCurves: " + allCurves.Length);
+            Console.WriteLine("Curves in current polygon: " + segmentCurves.Length);
+
+            foreach (var curve in segmentCurves) {
+                var exist = allCurves.FirstOrDefault(e => e.Vertices == curve.Vertices);
+
+                if (exist != default) {
+                    Console.WriteLine("Exist found!");
+                }
+            }
+
+            return new CompositeCurve([.. new List<Curve>()]);
         }
     }
 }
