@@ -42,7 +42,7 @@ namespace S100Framework.Applications
                 var tecsou = current.TECSOU ?? default;
 
                 switch (subtype) {
-                    case 1: {     // DEPARE
+                    case 1: {     // DEPARE // SKIN OF EARTH
 
                             var instance = new DepthArea {
                                 depthRangeMinimumValue = drval1,
@@ -64,7 +64,7 @@ namespace S100Framework.Applications
                         }
                         break;
 
-                    case 5: {     // DRGARE
+                    case 5: {     // DRGARE // SKIN OF EARTH
                             var instance = new DredgedArea {
                                 depthRangeMinimumValue = drval1,
                                 depthRangeMaximumValue = drval2,
@@ -184,7 +184,7 @@ namespace S100Framework.Applications
                         }
                         break;
 
-                    case 15: {    // UNSARE
+                    case 15: {    // UNSARE  // SKIN OF EARTH
                             var instance = new UnsurveyedArea {
                             };
                             AddInformation(instance.information, feature);

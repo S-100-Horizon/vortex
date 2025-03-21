@@ -3,6 +3,7 @@ using S100Framework.Applications.S57.esri;
 using S100Framework.DomainModel;
 using S100Framework.DomainModel.S101;
 using S100Framework.DomainModel.S101.FeatureTypes;
+using System.ComponentModel;
 using VortexLoader;
 
 namespace S100Framework.Applications
@@ -13,6 +14,7 @@ namespace S100Framework.Applications
             var tableName = "DangersP";
 
             var dangersp = source.OpenDataset<FeatureClass>(source.GetName("DangersP"));
+            var depthsA = source.OpenDataset<FeatureClass>(source.GetName("DepthsA"));
 
             //var dredged = source.OpenDataset<FeatureClass>("Depare");
 
@@ -67,7 +69,6 @@ namespace S100Framework.Applications
                             }
 
                             AddInformation(instance.information, feature);
-
                             buffer["ps"] = ps101;
                             buffer["code"] = instance.GetType().Name;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
@@ -115,8 +116,6 @@ namespace S100Framework.Applications
                                 Logger.Current.DataError(objectid, tableName, longname, $"Unknown catobs: {catObs}");
                                 continue;
                             }
-
-
 
                             // Foul ground
                             if (catObs == 7) {
@@ -244,11 +243,57 @@ namespace S100Framework.Applications
                         
                     case 35: { // UWTROC
                             // TODO: surrounding depth, valueofsounding
-                            var uwtroc = new UnderwaterAwashRock {
-                                surroundingDepth = 0,
-                                valueOfSounding = 0,
+
+                            var instance = new UnderwaterAwashRock {
                                 waterLevelEffect = waterLevelEffect.CoversAndUncovers
                             };
+
+                            
+                            if (current.SHAPE != null) {
+                                foreach (var depthArea in SelectIn<DepthsA>(current.SHAPE, depthsA,SpatialRelationship.Intersects, 22000)) {
+                                    var drval1 = depthArea.DRVAL1 ?? default;
+                                    instance.surroundingDepth = drval1;
+                                }
+                            }
+
+                            if (current.EXPSOU.HasValue) {
+                                instance.expositionOfSounding = EnumHelper.GetEnumValue<expositionOfSounding>(current.EXPSOU.Value);
+                            }
+
+                            instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
+
+                            // TODO: interoperabilityidentifier
+
+                            if (current.NATSUR != default) {
+                                if (int.TryParse(current.NATSUR, out var value)) {
+                                    instance.natureOfSurface = EnumHelper.GetEnumValue<natureOfSurface>(value);
+                                }
+                            }
+
+                            if (current.QUASOU != default) {
+                                instance.qualityOfVerticalMeasurement = EnumHelper.GetEnumValues<qualityOfVerticalMeasurement>(current.QUASOU);
+                            }
+
+                            if (current.SORDAT != default) {
+                                if (DateHelper.TryConvertToDateOnly(current.SORDAT, out var dateOnly)) {
+                                    instance.reportedDate = dateOnly;
+                                }
+                                else {
+                                    Logger.Current.DataError(current.OBJECTID.Value, tableName, current.LNAM, $"Cannot convert date {current.SORDAT}");
+                                }
+                            }
+
+                            if (current.STATUS != default) {
+                                instance.status = GetSingleStatus(current.STATUS);
+                            }
+
+                            if (current.TECSOU != default) {
+                                instance.techniqueOfVerticalMeasurement = EnumHelper.GetEnumValues<techniqueOfVerticalMeasurement>(current.TECSOU);
+                            }
+
+                            if (current.VALSOU.HasValue) {
+                                instance.valueOfSounding = current.VALSOU.Value;
+                            }
 
                             //      S57
                             //    Code Description
@@ -263,7 +308,7 @@ namespace S100Framework.Applications
 
 
                             if (current.WATLEV.HasValue) {
-                                uwtroc.waterLevelEffect = current.WATLEV.Value switch {
+                                instance.waterLevelEffect = current.WATLEV.Value switch {
                                     1 => waterLevelEffect.PartlySubmergedAtHighWater,  // partly submerged at high water
                                     2 => waterLevelEffect.AlwaysDry,  // always dry
                                     3 => waterLevelEffect.AlwaysUnderWaterSubmerged,  // always under water/submerged
@@ -279,32 +324,23 @@ namespace S100Framework.Applications
 
 
                             if (current.PLTS_COMP_SCALE.HasValue) {
-                                uwtroc.scaleMinimum = current.PLTS_COMP_SCALE;
+                                instance.scaleMinimum = current.PLTS_COMP_SCALE;
                             }
 
-                              if (current.STATUS != default) {
-                                uwtroc.status = GetSingleStatus(current.STATUS);
-                            }
+                            // TODO: defaultClearanceDepth
 
+                            //instance.defaultClearanceDepth = current.
 
-                            if (current.SORDAT != default) {
-                                if (DateHelper.TryConvertToDateOnly(current.SORDAT, out var dateOnly)) {
-                                    uwtroc.reportedDate = dateOnly;
-                                }
-                                else {
-                                    Logger.Current.DataError(current.OBJECTID.Value, tableName, current.LNAM, $"Cannot convert date {current.SORDAT}");
-                                }
-                            }
-
-                            AddInformation(uwtroc.information, feature);
+                            
+                            AddInformation(instance.information, feature);
 
                             buffer["ps"] = ps101;
 
-                            buffer["code"] = uwtroc.GetType().Name;
-                            buffer["json"] = System.Text.Json.JsonSerializer.Serialize(uwtroc);
+                            buffer["code"] = instance.GetType().Name;
+                            buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance);
                             buffer["shape"] = current.SHAPE;
                             insert.Insert(buffer);
-                            Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(uwtroc));
+                            Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
                             convertedCount++;
 
                         }
@@ -328,6 +364,7 @@ namespace S100Framework.Applications
                                     _ => throw new IndexOutOfRangeException(),
                                 };
                             }
+
 
                             if (current.PLTS_COMP_SCALE.HasValue) {
                                 instance.scaleMinimum = current.PLTS_COMP_SCALE;

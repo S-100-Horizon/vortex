@@ -98,7 +98,7 @@ namespace S100Framework.Applications
                         }
                         break;
 
-                    case 5: { //  LNDARE
+                    case 5: { //  LNDARE // SKIN OF EARTH
                             var instance = new LandArea {
                                 condition = null,
                                 status = null,

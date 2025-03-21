@@ -8,6 +8,7 @@ using ArcGIS.Core.Geometry;
 using System;
 using VortexLoader;
 using System.Text.Json;
+using System.Runtime.CompilerServices;
 
 namespace S100Framework.Applications
 {
@@ -28,9 +29,14 @@ namespace S100Framework.Applications
         public static bool Load(Geodatabase destination, ParserResult<Options> arguments) {
             Func<Geodatabase> createGeodatabase = () => { throw new NotImplementedException(); };
 
+            // default value
             var filter = new QueryFilter {
-                WhereClause = "1=1",
+                WhereClause = "PLTS_COMP_SCALE = 22000",
             };
+            // default value
+            var skinOfEarthOnly = false;
+
+
 
             arguments.WithParsed<Options>(o => {
                 var source = o.Source!;
@@ -50,6 +56,9 @@ namespace S100Framework.Applications
 
                 if (!string.IsNullOrEmpty(o.NotesPath)) {
                     _notesPath = o.NotesPath;
+                }
+                if (!string.IsNullOrEmpty(o.SkinOfEarthOnly)) {
+                    skinOfEarthOnly = bool.Parse(o.SkinOfEarthOnly);
                 }
 
             });
@@ -87,54 +96,61 @@ namespace S100Framework.Applications
                     informationtype.DeleteRows(query);
                 });
 
-                Store(() => S57_MetadataA(source, destination, filter));
-                Store(() => S57_ProductCoverage(source, destination, filter));
-                Store(() => S57_AidsToNavigationP(source, destination, filter));
-                Store(() => S57_MilitaryFeatureA(source, destination, filter));
-                Store(() => S57_MilitaryFeaturesP(source, destination, filter));
-                Store(() => S57_TracksAndRoutesA(source, destination, filter));
-                Store(() => S57_TracksAndRoutesL(source, destination, filter));
-                Store(() => S57_TracksAndRoutesP(source, destination, filter));
-                Store(() => S57_IcefeaturesA(source, destination, filter));
-                Store(() => S57_CoastlineA(source, destination, filter));
-                Store(() => S57_CoastlineL(source, destination, filter));
-                Store(() => S57_CoastlineP(source, destination, filter));
-                Store(() => S57_CulturalFeaturesA(source, destination, filter));
-                Store(() => S57_CulturalFeaturesL(source, destination, filter));
-                Store(() => S57_CulturalFeaturesP(source, destination, filter));
-                Store(() => S57_SeabedP(source, destination, filter));
-                Store(() => S57_ProductCoverage(source, destination, filter));
-                Store(() => S57_PortsAndServicesP(source, destination, filter));
-                Store(() => S57_PortsAndServicesA(source, destination, filter));
-                Store(() => S57_PortsAndServicesL(source, destination, filter));
-                Store(() => S57_DangersA(source, destination, filter));
-                Store(() => S57_DangersP(source, destination, filter));
-                Store(() => S57_DangersL(source, destination, filter));
-                Store(() => S57_RegulatedAreasAndLimitsL(source, destination, filter));
-                Store(() => S57_RegulatedAreasAndLimitsA(source, destination, filter));
-                Store(() => S57_RegulatedAreasAndLimitsP(source, destination, filter));
-                Store(() => S57_OffshoreInstallationsL(source, destination, filter));
-                Store(() => S57_OffshoreInstallationsA(source, destination, filter));
-                Store(() => S57_OffshoreInstallationsP(source, destination, filter));
-                Store(() => S57_NaturalFeaturesL(source, destination, filter));
-                Store(() => S57_NaturalFeaturesA(source, destination, filter));
-                Store(() => S57_NaturalFeaturesP(source, destination, filter));
-                Store(() => S57_DepthsL(source, destination, filter));
-                Store(() => S57_DepthsA(source, destination, filter));
-                Store(() => S57_SoundingsP(source, destination, filter));
+                if (skinOfEarthOnly) {
+
+                    filter.WhereClause += " and fcsubtype in (1,5,15)";
+                    Store(() => S57_DepthsA(source, destination, filter));
+                    filter.WhereClause += " and fcsubtype in (5)";
+                    Store(() => S57_NaturalFeaturesA(source, destination, filter));
+                } else {
+                    Store(() => S57_DangersL(source, destination, filter));
+                    Store(() => S57_DangersA(source, destination, filter));
+                    Store(() => S57_DangersP(source, destination, filter));
+                    Store(() => S57_MetadataA(source, destination, filter));
+                    Store(() => S57_ProductCoverage(source, destination, filter));
+                    Store(() => S57_TracksAndRoutesL(source, destination, filter));
+                    Store(() => S57_MilitaryFeatureA(source, destination, filter));
+                    Store(() => S57_AidsToNavigationP(source, destination, filter));
+                    Store(() => S57_TracksAndRoutesA(source, destination, filter));
+                    Store(() => S57_MilitaryFeaturesP(source, destination, filter));
+                    Store(() => S57_IcefeaturesA(source, destination, filter));
+                    Store(() => S57_TracksAndRoutesP(source, destination, filter));
+                    Store(() => S57_CoastlineL(source, destination, filter));
+                    Store(() => S57_CoastlineA(source, destination, filter));
+                    Store(() => S57_CoastlineP(source, destination, filter));
+                    Store(() => S57_CulturalFeaturesL(source, destination, filter));
+                    Store(() => S57_CulturalFeaturesA(source, destination, filter));
+                    Store(() => S57_CulturalFeaturesP(source, destination, filter));
+                    Store(() => S57_SeabedP(source, destination, filter));
+                    Store(() => S57_ProductCoverage(source, destination, filter));
+                    Store(() => S57_PortsAndServicesL(source, destination, filter));
+                    Store(() => S57_PortsAndServicesA(source, destination, filter));
+                    Store(() => S57_PortsAndServicesP(source, destination, filter));
+                    Store(() => S57_RegulatedAreasAndLimitsL(source, destination, filter));
+                    Store(() => S57_RegulatedAreasAndLimitsA(source, destination, filter));
+                    Store(() => S57_RegulatedAreasAndLimitsP(source, destination, filter));
+                    Store(() => S57_OffshoreInstallationsL(source, destination, filter));
+                    Store(() => S57_OffshoreInstallationsA(source, destination, filter));
+                    Store(() => S57_OffshoreInstallationsP(source, destination, filter));
+                    Store(() => S57_NaturalFeaturesL(source, destination, filter));
+                    Store(() => S57_NaturalFeaturesA(source, destination, filter));
+                    Store(() => S57_NaturalFeaturesP(source, destination, filter));
+                    Store(() => S57_DepthsL(source, destination, filter));
+                    Store(() => S57_DepthsA(source, destination, filter));
+                    Store(() => S57_SoundingsP(source, destination, filter));
+
+                }
+
+
                 return true;
             }
         }
-    
 
-
-
-
-        public static IEnumerable<T> SelectIn<T>(Geometry geometry, FeatureClass in_featureclass) where T : class {
-
+        public static IEnumerable<T> SelectIn<T>(Geometry geometry, FeatureClass in_featureclass, SpatialRelationship spatialRelationship, int compilationScale) where T : class {
             SpatialQueryFilter spatialQueryFilter = new SpatialQueryFilter {
                 FilterGeometry = geometry,
-                SpatialRelationship = SpatialRelationship.Contains,
+                SpatialRelationship = spatialRelationship,
+                WhereClause = $"plts_comp_scale = {compilationScale}"
             };
 
             using (RowCursor spatialSearch = in_featureclass.Search(spatialQueryFilter, true)) {

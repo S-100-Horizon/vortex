@@ -11,10 +11,11 @@ using IO = System.IO;
 
 /*
 
---v --cmd NIS --target "https://enterprise.gst.dk/arcgisserver/rest/services/S-100/s100ed4raw/FeatureServer" --source "C:\Vortex\replica.gdb" --query "PLTS_COMP_SCALE = 22000" --notespath "G:\indigo\ENC\NotesAndPictures"
---v --cmd NIS --target "C:\Vortex\s100ed4.gdb" --source "C:\Vortex\replica.gdb" --query "PLTS_COMP_SCALE = 22000" --notespath "G:\indigo\ENC\NotesAndPictures"
---v --cmd NIS --target "C:\Vortex\connections\nis.sde" --source "C:\Vortex\replica.gdb" --query "PLTS_COMP_SCALE = 22000" --notespath "G:\indigo\ENC\NotesAndPictures"
---v --cmd NIS --target "C:\Vortex\connections\SQLServer-ncps-mssql-test-s100ed4_traditional(s101_dbo).sde" --source "C:\Vortex\replica.gdb" --query "PLTS_COMP_SCALE = 22000" --notespath "G:\indigo\ENC\NotesAndPictures"
+--v --cmd NIS --target "https://enterprise.gst.dk/arcgisserver/rest/services/S-100/s100ed4raw/FeatureServer" --source "C:\Vortex\replica.gdb" --query "PLTS_COMP_SCALE = 22000" --skinofearthonly true --notespath "G:\indigo\ENC\NotesAndPictures"
+--v --cmd NIS --target "C:\Vortex\s100ed4.gdb" --source "C:\Vortex\replica.gdb" --query "PLTS_COMP_SCALE = 22000" --skinofearthonly true --notespath "G:\indigo\ENC\NotesAndPictures"
+--v --cmd NIS --target "C:\Vortex\connections\nis.sde" --source "C:\Vortex\replica.gdb" --query "PLTS_COMP_SCALE = 22000" --skinofearthonly true --notespath "G:\indigo\ENC\NotesAndPictures"
+--v --cmd NIS --target "C:\Vortex\connections\SQLServer-ncps-mssql-test-s100ed4_traditional(s101_dbo).sde" --source "C:\Vortex\replica.gdb" --query "PLTS_COMP_SCALE = 22000" --skinofearthonly true --notespath "G:\indigo\ENC\NotesAndPictures"
+--v --cmd NIS --target "C:\Vortex\s100ed4.gdb" --source "C:\Vortex\replica.gdb" --query "PLTS_COMP_SCALE = 22000" --skinofearthonly true --notespath "G:\indigo\ENC\NotesAndPictures"
  */
 
 namespace S100Framework.Applications
@@ -56,6 +57,11 @@ namespace S100Framework.Applications
 
             [Option('n', "notespath", Required = false, HelpText = "Path to notes files references in TXTDSC.")]
             public string? NotesPath { get; set; }
+
+            [Option('s', "skinofearthonly", Required = false, HelpText = "Exports only DEPARE, DRGARE, UNSARE and LNDARE.")]
+            public string? SkinOfEarthOnly { get; set; } 
+
+            
         }
 
         static void Main(string[] args) {

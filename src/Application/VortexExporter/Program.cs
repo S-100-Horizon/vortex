@@ -14,7 +14,6 @@ namespace S100Framework.Applications
     {
         public class Options
         {
-
             [Option('d', "dataset", Required = false, HelpText = "")]
             public string? Dataset { get; set; }
 
@@ -122,7 +121,6 @@ namespace S100Framework.Applications
                         var shapetype = def.GetShapeType();
 
                         var name = Convert.ToString(current["code"]);
-
 
                         var foid = $"110:{geometry!.Substring(1)}:1";       // Geodatastyrelsen: 110 
 
