@@ -9,7 +9,7 @@
         d:DataContext="{x:Static local:MainWindow.MockValue}"
         Title="MainWindow" Height="450" Width="800" Loaded="Window_Loaded">
     <Window.Resources>
-        <local:MyConverter x:Key="MyConverter"/>
+        <!--<local:MyConverter x:Key="MyConverter"/>-->
         <!--<DataTemplate x:Key="RefIdEditingTemplate">
             <TextBox Background="Yellow">
                 <TextBox.Text>

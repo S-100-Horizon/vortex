@@ -1,5 +1,6 @@
 ﻿//#define S124
 
+using S100Framework.DomainModel.S101.FeatureTypes;
 using S100Framework.DomainModel.S124;
 using S100Framework.WPF.ViewModel;
 using System.Collections.ObjectModel;
@@ -178,83 +179,43 @@ namespace VortexConceptApplication
 #else
             //var viewModel = IslandAggregation.TestIslandGroup;
 
-            var viewModel101 = new VortexConceptApplication.UpdatedInformationViewModel();
+            var viewModel101 = new S100Framework.WPF.ViewModel.S101.StructureEquipmentViewModel();
 
-            var viewModel131 = new S100Framework.WPF.ViewModel.S131.TextAssociationViewModel();
+            //var viewModel131 = new S100Framework.WPF.ViewModel.S131.TextAssociationViewModel();
 
             var viewModel = viewModel101;
 
-            var fromJson = new S100Framework.DomainModel.FeatureAssociation {
-                Code = "UpdatedInformation",
-                AssociationConnectorTypeName = "AdministrationArea",
-                RefIds = new[] {
-                    new S100Framework.DomainModel.RefId {
-                        Type = "AdministrationArea",
-                        Role = "theUpdate",
-                        Value = "Hello",
-                    },
-                    new S100Framework.DomainModel.RefId {
-                        Type = "UpdateInformation",
-                        Role = "theUpdatedObject",
-                        Value = "World (1)",
-                    },
-                    new S100Framework.DomainModel.RefId {
-                        Type = "UpdateInformation",
-                        Role = "theUpdatedObject",
-                        Value = "World (2)",
-                    }
-                },
-            };
+
+            //var fromJson = new S100Framework.DomainModel.FeatureAssociation {
+            //    Code = "UpdatedInformation",
+            //    AssociationConnectorTypeName = "AdministrationArea",
+            //    RefIds = new[] {
+            //        new S100Framework.DomainModel.RefId {
+            //            Type = "AdministrationArea",
+            //            Role = "theUpdate",
+            //            Value = "Hello",
+            //        },
+            //        new S100Framework.DomainModel.RefId {
+            //            Type = "UpdateInformation",
+            //            Role = "theUpdatedObject",
+            //            Value = "World (1)",
+            //        },
+            //        new S100Framework.DomainModel.RefId {
+            //            Type = "UpdateInformation",
+            //            Role = "theUpdatedObject",
+            //            Value = "World (2)",
+            //        }
+            //    },
+            //};
+
+            var fromJson = new Building.StructureEquipment_theEquipment()!;
 
             viewModel.Load(fromJson);
 
             viewModel.PropertyChanged += (object sender, PropertyChangedEventArgs e) => {
                 Logger.Current.Verbose("PropertyChanged = {propertyName}", e.PropertyName);
             };
-#endif
-
-            //this._propertyGrid.EditorDefinitions.Clear();
-
-            //var editorTemplate = new EditorTemplateDefinition();
-            //PropertyDefinition propertyDefinition = new PropertyDefinition();
-            //propertyDefinition.TargetProperties.Add("navwarnTypeDetail");
-            //////ed.PropertiesDefinitions.Add(pd);
-            //editorTemplate.PropertyDefinitions.Add(propertyDefinition);
-
-            //FrameworkElementFactory fac = new FrameworkElementFactory(typeof(PropertyGridEditorComboBox));
-            //fac.SetBinding(PropertyGridEditorComboBox.SelectedValueProperty, new Binding("navwarnTypeDetail"));
-            ////fac.SetValue(PropertyGridEditorComboBox..IncrementProperty, 10);
-
-            //DataTemplate dt = new DataTemplate { VisualTree = fac };
-            //dt.Seal();
-            //editorTemplate.EditingTemplate = dt;
-            //this._propertyGrid.EditorDefinitions.Add(editorTemplate);
-
-            //var editorTemplate = new EditorTemplateDefinition();
-            //PropertyDefinition propertyDefinition = new PropertyDefinition();
-            //propertyDefinition.TargetProperties.Add("ReferenceId");
-            //editorTemplate.PropertyDefinitions.Add(propertyDefinition);
-
-            //FrameworkElementFactory fac = new FrameworkElementFactory(typeof(ComboBox));
-            //var bindingItemsSourceProperty = new Binding() { Source = Hello, Mode = BindingMode.OneWay };
-            //fac.SetBinding(ComboBox.ItemsSourceProperty, bindingItemsSourceProperty);
-
-            //DataTemplate dt = new DataTemplate { VisualTree = fac };
-            //dt.Seal();
-            //editorTemplate.EditingTemplate = dt;
-            //this._propertyGrid.EditorDefinitions.Add(editorTemplate);
-
-            //this._propertyGrid.Update();
-
-            //var p = this._propertyGrid;
-
-            //viewModel.PropertyChanged += (object sender, PropertyChangedEventArgs e) => {
-            //    Logger.Current.Verbose("PropertyChanged = {propertyName}", e.PropertyName);
-            //};
-
-            //viewModel.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
-            //    ;
-            //};
+#endif           
 
             SelectedProperty = viewModel;
         }
@@ -300,9 +261,9 @@ namespace VortexConceptApplication
         }
 
         private void SAVE_Click(object sender, RoutedEventArgs e) {
-            var v = (VortexConceptApplication.UpdatedInformationViewModel)SelectedProperty;
+            //var v = (VortexConceptApplication.UpdatedInformationViewModel)SelectedProperty;
 
-            var json = v.Serialize();
+            //var json = v.Serialize();
 
             System.Diagnostics.Debugger.Break();
         }

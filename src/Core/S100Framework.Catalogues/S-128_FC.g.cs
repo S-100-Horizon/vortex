@@ -8,6 +8,7 @@ namespace S100Framework.DomainModel.S128 {
     public static class Information {
         public static Version Version => new Version("2.0.0");
         public static string[] ComplexTypes => ["contactAddress", "customPaperSize", "defaultLocale", "featureName", "information", "onlineResource", "periodicDateRange", "pricing", "printSize", "productSpecification", "supportFileSpecification", "serviceSpecification", "sourceIndication", "telecommunications", "timeIntervalOfCycle", "weekOfYear", "issuanceCycle", "printInformation", "supportFile", "timeIntervalOfProduct", "referenceToNM",];
+        public static string[] SpatialAssociationTypes => [];
         public static string[] InformationAssociationTypes => ["CarriageRequirement", "DistributionDetails", "DistributorContact", "PriceOfElement", "PriceOfNauticalProduct", "ProducerContact", "ProductionDetails", "ProductPackage",];
         public static string[] FeatureAssociationTypes => ["ProductMapping", "Correlated",];
         public static string[] InformationTypes => ["CatalogueSectionHeader", "ContactDetails", "IndicationOfCarriageRequirement", "PriceInformation", "ProducerInformation", "DistributorInformation",];
@@ -1104,11 +1105,245 @@ namespace S100Framework.DomainModel.S128 {
     }
 
     namespace Associations {
+        namespace SpatialAssociations {
+        }
+
         namespace InformationAssociations {
+            using S100Framework.DomainModel.S128.InformationTypes;
+
+            [System.Serializable()]
+            [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+            public partial class CarriageRequirement : InformationAssociation {
+                public List<RefId> theRequirement { get; set; } = [];
+
+                [IgnoreDataMember]
+                public virtual String[] theRequirementInformationTypes => [];
+                public override string Code => nameof(CarriageRequirement);
+
+                public string[]? this[Role role] => this[role.ToString()];
+                public override string[]? this[string role] => role switch
+                {
+                    "theRequirement" => theRequirementInformationTypes,
+                    _ => throw new InvalidOperationException(),
+                };
+                public CarriageRequirement() {
+                }
+            }
+
+            [System.Serializable()]
+            [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+            public partial class DistributionDetails : InformationAssociation {
+                public List<RefId> catalogueHeader { get; set; } = [];
+                public List<RefId> theDistributor { get; set; } = [];
+
+                [IgnoreDataMember]
+                public virtual String[] catalogueHeaderInformationTypes => [];
+
+                [IgnoreDataMember]
+                public virtual String[] theDistributorInformationTypes => [];
+                public override string Code => nameof(DistributionDetails);
+
+                public string[]? this[Role role] => this[role.ToString()];
+                public override string[]? this[string role] => role switch
+                {
+                    "catalogueHeader" => catalogueHeaderInformationTypes,
+                    "theDistributor" => theDistributorInformationTypes,
+                    _ => throw new InvalidOperationException(),
+                };
+                public DistributionDetails() {
+                }
+            }
+
+            [System.Serializable()]
+            [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+            public partial class DistributorContact : InformationAssociation {
+                public RefId? theDistributor { get; set; }
+                public List<RefId> theContactDetails { get; set; } = [];
+
+                [IgnoreDataMember]
+                public virtual String[] theDistributorInformationTypes => [];
+
+                [IgnoreDataMember]
+                public virtual String[] theContactDetailsInformationTypes => [];
+                public override string Code => nameof(DistributorContact);
+
+                public string[]? this[Role role] => this[role.ToString()];
+                public override string[]? this[string role] => role switch
+                {
+                    "theDistributor" => theDistributorInformationTypes,
+                    "theContactDetails" => theContactDetailsInformationTypes,
+                    _ => throw new InvalidOperationException(),
+                };
+                public DistributorContact() {
+                }
+            }
+
+            [System.Serializable()]
+            [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+            public partial class PriceOfElement : InformationAssociation {
+                public List<RefId> thePriceInformation { get; set; } = [];
+
+                [IgnoreDataMember]
+                public virtual String[] thePriceInformationInformationTypes => [];
+                public override string Code => nameof(PriceOfElement);
+
+                public string[]? this[Role role] => this[role.ToString()];
+                public override string[]? this[string role] => role switch
+                {
+                    "thePriceInformation" => thePriceInformationInformationTypes,
+                    _ => throw new InvalidOperationException(),
+                };
+                public PriceOfElement() {
+                }
+            }
+
+            [System.Serializable()]
+            [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+            public partial class PriceOfNauticalProduct : InformationAssociation {
+                public List<RefId> theCatalogueOfNauticalProduct { get; set; } = [];
+                public List<RefId> thePriceInformation { get; set; } = [];
+
+                [IgnoreDataMember]
+                public virtual String[] theCatalogueOfNauticalProductInformationTypes => [];
+
+                [IgnoreDataMember]
+                public virtual String[] thePriceInformationInformationTypes => [];
+                public override string Code => nameof(PriceOfNauticalProduct);
+
+                public string[]? this[Role role] => this[role.ToString()];
+                public override string[]? this[string role] => role switch
+                {
+                    "theCatalogueOfNauticalProduct" => theCatalogueOfNauticalProductInformationTypes,
+                    "thePriceInformation" => thePriceInformationInformationTypes,
+                    _ => throw new InvalidOperationException(),
+                };
+                public PriceOfNauticalProduct() {
+                }
+            }
+
+            [System.Serializable()]
+            [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+            public partial class ProducerContact : InformationAssociation {
+                public RefId? theProducer { get; set; }
+                public List<RefId> theContactDetails { get; set; } = [];
+
+                [IgnoreDataMember]
+                public virtual String[] theProducerInformationTypes => [];
+
+                [IgnoreDataMember]
+                public virtual String[] theContactDetailsInformationTypes => [];
+                public override string Code => nameof(ProducerContact);
+
+                public string[]? this[Role role] => this[role.ToString()];
+                public override string[]? this[string role] => role switch
+                {
+                    "theProducer" => theProducerInformationTypes,
+                    "theContactDetails" => theContactDetailsInformationTypes,
+                    _ => throw new InvalidOperationException(),
+                };
+                public ProducerContact() {
+                }
+            }
+
+            [System.Serializable()]
+            [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+            public partial class ProductionDetails : InformationAssociation {
+                public List<RefId> catalogueHeader { get; set; } = [];
+                public RefId? theProducer { get; set; }
+
+                [IgnoreDataMember]
+                public virtual String[] catalogueHeaderInformationTypes => [];
+
+                [IgnoreDataMember]
+                public virtual String[] theProducerInformationTypes => [];
+                public override string Code => nameof(ProductionDetails);
+
+                public string[]? this[Role role] => this[role.ToString()];
+                public override string[]? this[string role] => role switch
+                {
+                    "catalogueHeader" => catalogueHeaderInformationTypes,
+                    "theProducer" => theProducerInformationTypes,
+                    _ => throw new InvalidOperationException(),
+                };
+                public ProductionDetails() {
+                }
+            }
+
+            [System.Serializable()]
+            [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+            public partial class ProductPackage : InformationAssociation {
+                [Required()]
+                public List<RefId> elementContainer { get; set; }
+
+                [IgnoreDataMember]
+                public virtual String[] elementContainerInformationTypes => [];
+                public override string Code => nameof(ProductPackage);
+
+                public string[]? this[Role role] => this[role.ToString()];
+                public override string[]? this[string role] => role switch
+                {
+                    "elementContainer" => elementContainerInformationTypes,
+                    _ => throw new InvalidOperationException(),
+                };
+                public ProductPackage() {
+                    elementContainer = new();
+                }
+            }
         }
 
         namespace FeatureAssociations {
             using S100Framework.DomainModel.S128.FeatureTypes;
+
+            [System.Serializable()]
+            [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+            public abstract partial class ProductMapping : FeatureAssociation {
+                [EnumerationValue(1)]
+                [EnumerationValue(2)]
+                [EnumerationValue(3)]
+                [EnumerationValue(4)]
+                [Required()]
+                public categoryOfProductMapping categoryOfProductMapping { get; set; }
+                public List<RefId> theReference { get; set; } = [];
+
+                [IgnoreDataMember]
+                public virtual String[] theReferenceFeatureTypes => [];
+                public override string Code => "ProductMapping";
+
+                public string[]? this[Role role] => this[role.ToString()];
+                public override string[]? this[string role] => role switch
+                {
+                    "theReference" => theReferenceFeatureTypes,
+                    _ => throw new InvalidOperationException(),
+                };
+                public ProductMapping() {
+                }
+            }
+
+            [System.Serializable()]
+            [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+            public abstract partial class Correlated : FeatureAssociation {
+                [Required()]
+                public RefId main { get; set; }
+
+                [IgnoreDataMember]
+                public virtual String[] mainFeatureTypes => [];
+                public override string Code => "Correlated";
+
+                public string[]? this[Role role] => this[role.ToString()];
+                public override string[]? this[string role] => role switch
+                {
+                    "main" => mainFeatureTypes,
+                    _ => throw new InvalidOperationException(),
+                };
+                public Correlated() {
+                    main = new RefId()
+                    {
+                        Value = string.Empty,
+                        Type = string.Empty,
+                        Role = string.Empty,
+                    };
+                }
+            }
         }
     }
 
@@ -1119,6 +1354,7 @@ namespace S100Framework.DomainModel.S128 {
         using ComplexAttributes;
         using DomainModel;
         using System.Runtime.Serialization;
+        using S100Framework.DomainModel.S128.Associations.InformationAssociations;
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -1131,6 +1367,36 @@ namespace S100Framework.DomainModel.S128 {
             [IgnoreDataMember]
             public override string Code => nameof(CatalogueSectionHeader);
 
+            public class PriceOfNauticalProduct_thePriceInformation : PriceOfNauticalProduct {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] thePriceInformationInformationTypes => ["PriceInformation"];
+
+                public PriceOfNauticalProduct_thePriceInformation() {
+                    base.AssociationConnectorTypeName = typeof(CatalogueSectionHeader).Name;
+                }
+            };
+            public class ProductionDetails_theProducer : ProductionDetails {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theProducerInformationTypes => ["ProducerInformation"];
+
+                public ProductionDetails_theProducer() {
+                    base.AssociationConnectorTypeName = typeof(CatalogueSectionHeader).Name;
+                }
+            };
+            public class DistributionDetails_theDistributor : DistributionDetails {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theDistributorInformationTypes => ["DistributorInformation"];
+
+                public DistributionDetails_theDistributor() {
+                    base.AssociationConnectorTypeName = typeof(CatalogueSectionHeader).Name;
+                }
+            };
             public CatalogueSectionHeader() {
             }
         }
@@ -1148,6 +1414,26 @@ namespace S100Framework.DomainModel.S128 {
             [IgnoreDataMember]
             public override string Code => nameof(ContactDetails);
 
+            public class ProducerContact_theProducer : ProducerContact {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theProducerInformationTypes => ["ProducerInformation"];
+
+                public ProducerContact_theProducer() {
+                    base.AssociationConnectorTypeName = typeof(ContactDetails).Name;
+                }
+            };
+            public class DistributorContact_theDistributor : DistributorContact {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theDistributorInformationTypes => ["DistributorInformation"];
+
+                public DistributorContact_theDistributor() {
+                    base.AssociationConnectorTypeName = typeof(ContactDetails).Name;
+                }
+            };
             public ContactDetails() {
                 contactInstructions = string.Empty;
             }
@@ -1178,6 +1464,16 @@ namespace S100Framework.DomainModel.S128 {
             [IgnoreDataMember]
             public override string Code => nameof(PriceInformation);
 
+            public class PriceOfNauticalProduct_theCatalogueOfNauticalProduct : PriceOfNauticalProduct {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theCatalogueOfNauticalProductInformationTypes => ["CatalogueSectionHeader"];
+
+                public PriceOfNauticalProduct_theCatalogueOfNauticalProduct() {
+                    base.AssociationConnectorTypeName = typeof(PriceInformation).Name;
+                }
+            };
             public PriceInformation() {
             }
         }
@@ -1191,6 +1487,26 @@ namespace S100Framework.DomainModel.S128 {
             [IgnoreDataMember]
             public override string Code => nameof(ProducerInformation);
 
+            public class ProducerContact_theContactDetails : ProducerContact {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theContactDetailsInformationTypes => ["ContactDetails"];
+
+                public ProducerContact_theContactDetails() {
+                    base.AssociationConnectorTypeName = typeof(ProducerInformation).Name;
+                }
+            };
+            public class ProductionDetails_catalogueHeader : ProductionDetails {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] catalogueHeaderInformationTypes => ["CatalogueSectionHeader"];
+
+                public ProductionDetails_catalogueHeader() {
+                    base.AssociationConnectorTypeName = typeof(ProducerInformation).Name;
+                }
+            };
             public ProducerInformation() {
                 agencyResponsibleForProduction = string.Empty;
             }
@@ -1204,6 +1520,26 @@ namespace S100Framework.DomainModel.S128 {
             [IgnoreDataMember]
             public override string Code => nameof(DistributorInformation);
 
+            public class DistributionDetails_catalogueHeader : DistributionDetails {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] catalogueHeaderInformationTypes => ["CatalogueSectionHeader"];
+
+                public DistributionDetails_catalogueHeader() {
+                    base.AssociationConnectorTypeName = typeof(DistributorInformation).Name;
+                }
+            };
+            public class DistributorContact_theContactDetails : DistributorContact {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theContactDetailsInformationTypes => ["ContactDetails"];
+
+                public DistributorContact_theContactDetails() {
+                    base.AssociationConnectorTypeName = typeof(DistributorInformation).Name;
+                }
+            };
             public DistributorInformation() {
                 distributorName = string.Empty;
             }
@@ -1215,6 +1551,8 @@ namespace S100Framework.DomainModel.S128 {
         using InformationTypes;
         using DomainModel;
         using System.Runtime.Serialization;
+        using S100Framework.DomainModel.S128.Associations.InformationAssociations;
+        using S100Framework.DomainModel.S128.Associations.FeatureAssociations;
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -1239,6 +1577,46 @@ namespace S100Framework.DomainModel.S128 {
             [IgnoreDataMember]
             public override string Code => nameof(CatalogueElement);
 
+            public class CarriageRequirement_theRequirement : CarriageRequirement {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theRequirementInformationTypes => ["IndicationOfCarriageRequirement"];
+
+                public CarriageRequirement_theRequirement() {
+                    base.AssociationConnectorTypeName = typeof(CatalogueElement).Name;
+                }
+            };
+            public class PriceOfElement_thePriceInformation : PriceOfElement {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] thePriceInformationInformationTypes => ["PriceInformation"];
+
+                public PriceOfElement_thePriceInformation() {
+                    base.AssociationConnectorTypeName = typeof(CatalogueElement).Name;
+                }
+            };
+            public class ProductPackage_elementContainer : ProductPackage {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] elementContainerInformationTypes => ["CatalogueSectionHeader"];
+
+                public ProductPackage_elementContainer() {
+                    base.AssociationConnectorTypeName = typeof(CatalogueElement).Name;
+                }
+            };
+            public class ProductMapping_theReference : ProductMapping {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theReferenceFeatureTypes => ["CatalogueElement"];
+
+                public ProductMapping_theReference() {
+                    base.AssociationConnectorTypeName = typeof(CatalogueElement).Name;
+                }
+            };
             public CatalogueElement() {
                 catalogueElementClassification = new();
             }
@@ -1327,6 +1705,16 @@ namespace S100Framework.DomainModel.S128 {
             [IgnoreDataMember]
             public override string Code => nameof(NavigationalProduct);
 
+            public class Correlated_main : Correlated {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] mainFeatureTypes => ["NavigationalProduct"];
+
+                public Correlated_main() {
+                    base.AssociationConnectorTypeName = typeof(NavigationalProduct).Name;
+                }
+            };
             public NavigationalProduct() {
             }
         }

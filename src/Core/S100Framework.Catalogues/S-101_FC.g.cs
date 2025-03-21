@@ -8,7 +8,8 @@ namespace S100Framework.DomainModel.S101 {
     public static class Information {
         public static Version Version => new Version("2.0.0");
         public static string[] ComplexTypes => ["featureName", "featuresDetected", "fixedDateRange", "frequencyPair", "horizontalClearanceFixed", "horizontalClearanceOpen", "horizontalPositionUncertainty", "information", "measuredDistanceValue", "multiplicityOfFeatures", "onlineResource", "orientation", "periodicDateRange", "radarWaveLength", "sectorInformation", "sectorLimitOne", "sectorLimitTwo", "shapeInformation", "signalSequence", "speed", "surfaceCharacteristics", "surveyDateRange", "telecommunications", "tidalStreamValue", "timeIntervalsByDayOfWeek", "topmark", "valueOfLocalMagneticAnomaly", "verticalUncertainty", "vesselSpeedLimit", "zoneOfConfidence", "directionalCharacter", "rhythmOfLight", "scheduleByDayOfWeek", "sectorLimit", "spatialAccuracy", "tidalStreamPanelValues", "verticalClearanceClosed", "verticalClearanceFixed", "verticalClearanceOpen", "verticalClearanceSafe", "lightSector", "sectorCharacteristics",];
-        public static string[] InformationAssociationTypes => ["AdditionalInformation", "QualityOfBathymetricDataComposition", "SpatialAssociation",];
+        public static string[] SpatialAssociationTypes => ["SpatialAssociation",];
+        public static string[] InformationAssociationTypes => ["AdditionalInformation", "QualityOfBathymetricDataComposition",];
         public static string[] FeatureAssociationTypes => ["AidsToNavigationAssociation", "ASLAggregation", "BridgeAggregation", "CautionAreaAssociation", "DeepWaterRouteAggregation", "FairwayAggregation", "FairwayAuxiliary", "IslandAggregation", "MooringTrotAggregation", "PilotageDistrictAssociation", "RangeSystemAggregation", "RoofedStructureAggregation", "StructureEquipment", "TextAssociation", "TrafficSeparationSchemeAggregation", "TwoWayRouteAggregation", "UpdateAggregation", "UpdatedInformation",];
         public static string[] InformationTypes => ["ContactDetails", "ServiceHours", "NonStandardWorkingDay", "NauticalInformation", "SpatialQuality",];
         public static string[] FeatureTypes => ["QualityOfNonBathymetricData", "DataCoverage", "NavigationalSystemOfMarks", "LocalDirectionOfBuoyage", "QualityOfBathymetricData", "SoundingDatum", "VerticalDatumOfData", "QualityOfSurvey", "UpdateInformation", "MagneticVariation", "LocalMagneticAnomaly", "Coastline", "LandArea", "IslandGroup", "LandElevation", "River", "Rapids", "Waterfall", "Lake", "LandRegion", "Vegetation", "IceArea", "SlopingGround", "SlopeTopline", "Tideway", "BuiltUpArea", "Building", "AirportAirfield", "Runway", "Helipad", "Bridge", "SpanFixed", "SpanOpening", "Conveyor", "CableOverhead", "PipelineOverhead", "PylonBridgeSupport", "FenceWall", "Railway", "Road", "Tunnel", "Landmark", "SiloTank", "WindTurbine", "FortifiedStructure", "ProductionStorageArea", "Checkpoint", "Hulk", "Pile", "Dyke", "ShorelineConstruction", "StructureOverNavigableWater", "Causeway", "Canal", "DistanceMark", "Gate", "Dam", "Crane", "Berth", "Dolphin", "Bollard", "DryDock", "FloatingDock", "Pontoon", "DockArea", "Gridiron", "LockBasin", "MooringTrot", "SeaAreaNamedWaterArea", "TidalStreamFloodEbb", "CurrentNonGravitational", "WaterTurbulence", "TidalStreamPanelData", "Sounding", "DredgedArea", "SweptArea", "DepthContour", "DepthArea", "DepthNoBottomFound", "UnsurveyedArea", "SeabedArea", "WeedKelp", "Seagrass", "Sandwave", "Spring", "UnderwaterAwashRock", "Wreck", "Obstruction", "FoulGround", "DiscolouredWater", "FishingFacility", "MarineFarmCulture", "OffshorePlatform", "CableSubmarine", "CableArea", "PipelineSubmarineOnLand", "SubmarinePipelineArea", "OffshoreProductionArea", "NavigationLine", "RecommendedTrack", "RangeSystem", "Fairway", "FairwaySystem", "RecommendedRouteCentreline", "TwoWayRoutePart", "TwoWayRoute", "RecommendedTrafficLanePart", "DeepWaterRouteCentreline", "DeepWaterRoutePart", "DeepWaterRoute", "InshoreTrafficZone", "PrecautionaryArea", "TrafficSeparationSchemeLanePart", "SeparationZoneOrLine", "TrafficSeparationSchemeBoundary", "TrafficSeparationSchemeCrossing", "TrafficSeparationSchemeRoundabout", "TrafficSeparationScheme", "ArchipelagicSeaLaneArea", "ArchipelagicSeaLaneAxis", "ArchipelagicSeaLane", "RadioCallingInPoint", "FerryRoute", "RadarLine", "RadarRange", "RadarStation", "AnchorageArea", "MooringArea", "AnchorBerth", "SeaplaneLandingArea", "DumpingGround", "MilitaryPracticeArea", "AdministrationArea", "CargoTranshipmentArea", "CautionArea", "InformationArea", "ContiguousZone", "ContinentalShelfArea", "CustomZone", "ExclusiveEconomicZone", "FisheryZone", "FishingGround", "FreePortArea", "HarbourAreaAdministrative", "LogPond", "OilBarrier", "StraightTerritorialSeaBaseline", "TerritorialSeaArea", "SubmarineTransitLane", "PilotageDistrict", "CollisionRegulationsLimit", "MarinePollutionRegulationsArea", "RestrictedArea", "LightAllAround", "LightSectored", "LightFogDetector", "LightAirObstruction", "LateralBuoy", "CardinalBuoy", "IsolatedDangerBuoy", "SafeWaterBuoy", "SpecialPurposeGeneralBuoy", "EmergencyWreckMarkingBuoy", "InstallationBuoy", "MooringBuoy", "LateralBeacon", "CardinalBeacon", "IsolatedDangerBeacon", "SafeWaterBeacon", "SpecialPurposeGeneralBeacon", "Daymark", "LightFloat", "LightVessel", "Retroreflector", "RadarReflector", "FogSignal", "PhysicalAISAidToNavigation", "VirtualAISAidToNavigation", "RadioStation", "RadarTransponderBeacon", "PilotBoardingPlace", "VesselTrafficServiceArea", "CoastGuardStation", "SignalStationWarning", "SignalStationTraffic", "RescueStation", "HarbourFacility", "SmallCraftFacility", "TextPlacement", "Chart1Feature",];
@@ -4820,11 +4821,491 @@ namespace S100Framework.DomainModel.S101 {
     }
 
     namespace Associations {
+        namespace SpatialAssociations {
+            [System.Serializable()]
+            [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+            public partial class SpatialAssociation {
+                public SpatialAssociation() {
+                }
+            }
+        }
+
         namespace InformationAssociations {
+            using S100Framework.DomainModel.S101.InformationTypes;
+
+            [System.Serializable()]
+            [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+            public partial class AdditionalInformation : InformationAssociation {
+                public RefId? theInformation { get; set; }
+
+                [IgnoreDataMember]
+                public virtual String[] theInformationInformationTypes => [];
+                public override string Code => nameof(AdditionalInformation);
+
+                public string[]? this[Role role] => this[role.ToString()];
+                public override string[]? this[string role] => role switch
+                {
+                    "theInformation" => theInformationInformationTypes,
+                    _ => throw new InvalidOperationException(),
+                };
+                public AdditionalInformation() {
+                }
+            }
+
+            [System.Serializable()]
+            [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+            public partial class QualityOfBathymetricDataComposition : InformationAssociation {
+                public RefId? theQualityInformation { get; set; }
+
+                [IgnoreDataMember]
+                public virtual String[] theQualityInformationInformationTypes => [];
+                public override string Code => nameof(QualityOfBathymetricDataComposition);
+
+                public string[]? this[Role role] => this[role.ToString()];
+                public override string[]? this[string role] => role switch
+                {
+                    "theQualityInformation" => theQualityInformationInformationTypes,
+                    _ => throw new InvalidOperationException(),
+                };
+                public QualityOfBathymetricDataComposition() {
+                }
+            }
         }
 
         namespace FeatureAssociations {
             using S100Framework.DomainModel.S101.FeatureTypes;
+
+            [System.Serializable()]
+            [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+            public abstract partial class AidsToNavigationAssociation : FeatureAssociation {
+                public RefId? theCollection { get; set; }
+                public List<RefId> theComponent { get; set; } = [];
+
+                [IgnoreDataMember]
+                public virtual String[] theCollectionFeatureTypes => [];
+
+                [IgnoreDataMember]
+                public virtual String[] theComponentFeatureTypes => [];
+                public override string Code => "AidsToNavigationAssociation";
+
+                public string[]? this[Role role] => this[role.ToString()];
+                public override string[]? this[string role] => role switch
+                {
+                    "theCollection" => theCollectionFeatureTypes,
+                    "theComponent" => theComponentFeatureTypes,
+                    _ => throw new InvalidOperationException(),
+                };
+                public AidsToNavigationAssociation() {
+                }
+            }
+
+            [System.Serializable()]
+            [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+            public abstract partial class ASLAggregation : FeatureAssociation {
+                public RefId? theCollection { get; set; }
+                public List<RefId> theComponent { get; set; } = [];
+
+                [IgnoreDataMember]
+                public virtual String[] theCollectionFeatureTypes => [];
+
+                [IgnoreDataMember]
+                public virtual String[] theComponentFeatureTypes => [];
+                public override string Code => "ASLAggregation";
+
+                public string[]? this[Role role] => this[role.ToString()];
+                public override string[]? this[string role] => role switch
+                {
+                    "theCollection" => theCollectionFeatureTypes,
+                    "theComponent" => theComponentFeatureTypes,
+                    _ => throw new InvalidOperationException(),
+                };
+                public ASLAggregation() {
+                }
+            }
+
+            [System.Serializable()]
+            [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+            public abstract partial class BridgeAggregation : FeatureAssociation {
+                public RefId? theCollection { get; set; }
+                public List<RefId> theComponent { get; set; } = [];
+
+                [IgnoreDataMember]
+                public virtual String[] theCollectionFeatureTypes => [];
+
+                [IgnoreDataMember]
+                public virtual String[] theComponentFeatureTypes => [];
+                public override string Code => "BridgeAggregation";
+
+                public string[]? this[Role role] => this[role.ToString()];
+                public override string[]? this[string role] => role switch
+                {
+                    "theCollection" => theCollectionFeatureTypes,
+                    "theComponent" => theComponentFeatureTypes,
+                    _ => throw new InvalidOperationException(),
+                };
+                public BridgeAggregation() {
+                }
+            }
+
+            [System.Serializable()]
+            [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+            public abstract partial class CautionAreaAssociation : FeatureAssociation {
+                public RefId? theCollection { get; set; }
+                public List<RefId> theComponent { get; set; } = [];
+
+                [IgnoreDataMember]
+                public virtual String[] theCollectionFeatureTypes => [];
+
+                [IgnoreDataMember]
+                public virtual String[] theComponentFeatureTypes => [];
+                public override string Code => "CautionAreaAssociation";
+
+                public string[]? this[Role role] => this[role.ToString()];
+                public override string[]? this[string role] => role switch
+                {
+                    "theCollection" => theCollectionFeatureTypes,
+                    "theComponent" => theComponentFeatureTypes,
+                    _ => throw new InvalidOperationException(),
+                };
+                public CautionAreaAssociation() {
+                }
+            }
+
+            [System.Serializable()]
+            [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+            public abstract partial class DeepWaterRouteAggregation : FeatureAssociation {
+                public RefId? theCollection { get; set; }
+                public List<RefId> theComponent { get; set; } = [];
+
+                [IgnoreDataMember]
+                public virtual String[] theCollectionFeatureTypes => [];
+
+                [IgnoreDataMember]
+                public virtual String[] theComponentFeatureTypes => [];
+                public override string Code => "DeepWaterRouteAggregation";
+
+                public string[]? this[Role role] => this[role.ToString()];
+                public override string[]? this[string role] => role switch
+                {
+                    "theCollection" => theCollectionFeatureTypes,
+                    "theComponent" => theComponentFeatureTypes,
+                    _ => throw new InvalidOperationException(),
+                };
+                public DeepWaterRouteAggregation() {
+                }
+            }
+
+            [System.Serializable()]
+            [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+            public abstract partial class FairwayAggregation : FeatureAssociation {
+                public RefId? theCollection { get; set; }
+                public List<RefId> theComponent { get; set; } = [];
+
+                [IgnoreDataMember]
+                public virtual String[] theCollectionFeatureTypes => [];
+
+                [IgnoreDataMember]
+                public virtual String[] theComponentFeatureTypes => [];
+                public override string Code => "FairwayAggregation";
+
+                public string[]? this[Role role] => this[role.ToString()];
+                public override string[]? this[string role] => role switch
+                {
+                    "theCollection" => theCollectionFeatureTypes,
+                    "theComponent" => theComponentFeatureTypes,
+                    _ => throw new InvalidOperationException(),
+                };
+                public FairwayAggregation() {
+                }
+            }
+
+            [System.Serializable()]
+            [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+            public abstract partial class FairwayAuxiliary : FeatureAssociation {
+                public RefId? thePrimaryFeature { get; set; }
+                public List<RefId> theAuxiliaryFeature { get; set; } = [];
+
+                [IgnoreDataMember]
+                public virtual String[] thePrimaryFeatureFeatureTypes => [];
+
+                [IgnoreDataMember]
+                public virtual String[] theAuxiliaryFeatureFeatureTypes => [];
+                public override string Code => "FairwayAuxiliary";
+
+                public string[]? this[Role role] => this[role.ToString()];
+                public override string[]? this[string role] => role switch
+                {
+                    "thePrimaryFeature" => thePrimaryFeatureFeatureTypes,
+                    "theAuxiliaryFeature" => theAuxiliaryFeatureFeatureTypes,
+                    _ => throw new InvalidOperationException(),
+                };
+                public FairwayAuxiliary() {
+                }
+            }
+
+            [System.Serializable()]
+            [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+            public abstract partial class IslandAggregation : FeatureAssociation {
+                public RefId? theCollection { get; set; }
+                public List<RefId> theComponent { get; set; } = [];
+
+                [IgnoreDataMember]
+                public virtual String[] theCollectionFeatureTypes => [];
+
+                [IgnoreDataMember]
+                public virtual String[] theComponentFeatureTypes => [];
+                public override string Code => "IslandAggregation";
+
+                public string[]? this[Role role] => this[role.ToString()];
+                public override string[]? this[string role] => role switch
+                {
+                    "theCollection" => theCollectionFeatureTypes,
+                    "theComponent" => theComponentFeatureTypes,
+                    _ => throw new InvalidOperationException(),
+                };
+                public IslandAggregation() {
+                }
+            }
+
+            [System.Serializable()]
+            [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+            public abstract partial class MooringTrotAggregation : FeatureAssociation {
+                public RefId? theCollection { get; set; }
+                public List<RefId> theComponent { get; set; } = [];
+
+                [IgnoreDataMember]
+                public virtual String[] theCollectionFeatureTypes => [];
+
+                [IgnoreDataMember]
+                public virtual String[] theComponentFeatureTypes => [];
+                public override string Code => "MooringTrotAggregation";
+
+                public string[]? this[Role role] => this[role.ToString()];
+                public override string[]? this[string role] => role switch
+                {
+                    "theCollection" => theCollectionFeatureTypes,
+                    "theComponent" => theComponentFeatureTypes,
+                    _ => throw new InvalidOperationException(),
+                };
+                public MooringTrotAggregation() {
+                }
+            }
+
+            [System.Serializable()]
+            [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+            public abstract partial class PilotageDistrictAssociation : FeatureAssociation {
+                public RefId? theCollection { get; set; }
+                public List<RefId> theComponent { get; set; } = [];
+
+                [IgnoreDataMember]
+                public virtual String[] theCollectionFeatureTypes => [];
+
+                [IgnoreDataMember]
+                public virtual String[] theComponentFeatureTypes => [];
+                public override string Code => "PilotageDistrictAssociation";
+
+                public string[]? this[Role role] => this[role.ToString()];
+                public override string[]? this[string role] => role switch
+                {
+                    "theCollection" => theCollectionFeatureTypes,
+                    "theComponent" => theComponentFeatureTypes,
+                    _ => throw new InvalidOperationException(),
+                };
+                public PilotageDistrictAssociation() {
+                }
+            }
+
+            [System.Serializable()]
+            [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+            public abstract partial class RangeSystemAggregation : FeatureAssociation {
+                public RefId? theCollection { get; set; }
+                public List<RefId> theComponent { get; set; } = [];
+
+                [IgnoreDataMember]
+                public virtual String[] theCollectionFeatureTypes => [];
+
+                [IgnoreDataMember]
+                public virtual String[] theComponentFeatureTypes => [];
+                public override string Code => "RangeSystemAggregation";
+
+                public string[]? this[Role role] => this[role.ToString()];
+                public override string[]? this[string role] => role switch
+                {
+                    "theCollection" => theCollectionFeatureTypes,
+                    "theComponent" => theComponentFeatureTypes,
+                    _ => throw new InvalidOperationException(),
+                };
+                public RangeSystemAggregation() {
+                }
+            }
+
+            [System.Serializable()]
+            [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+            public abstract partial class RoofedStructureAggregation : FeatureAssociation {
+                public RefId? theRoofedStructure { get; set; }
+                public List<RefId> theSupport { get; set; } = [];
+
+                [IgnoreDataMember]
+                public virtual String[] theRoofedStructureFeatureTypes => [];
+
+                [IgnoreDataMember]
+                public virtual String[] theSupportFeatureTypes => [];
+                public override string Code => "RoofedStructureAggregation";
+
+                public string[]? this[Role role] => this[role.ToString()];
+                public override string[]? this[string role] => role switch
+                {
+                    "theRoofedStructure" => theRoofedStructureFeatureTypes,
+                    "theSupport" => theSupportFeatureTypes,
+                    _ => throw new InvalidOperationException(),
+                };
+                public RoofedStructureAggregation() {
+                }
+            }
+
+            [System.Serializable()]
+            [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+            public abstract partial class StructureEquipment : FeatureAssociation {
+                public RefId? theStructure { get; set; }
+                public List<RefId> theEquipment { get; set; } = [];
+
+                [IgnoreDataMember]
+                public virtual String[] theStructureFeatureTypes => [];
+
+                [IgnoreDataMember]
+                public virtual String[] theEquipmentFeatureTypes => [];
+                public override string Code => "StructureEquipment";
+
+                public string[]? this[Role role] => this[role.ToString()];
+                public override string[]? this[string role] => role switch
+                {
+                    "theStructure" => theStructureFeatureTypes,
+                    "theEquipment" => theEquipmentFeatureTypes,
+                    _ => throw new InvalidOperationException(),
+                };
+                public StructureEquipment() {
+                }
+            }
+
+            [System.Serializable()]
+            [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+            public abstract partial class TextAssociation : FeatureAssociation {
+                public List<RefId> theCartographicText { get; set; } = [];
+                public RefId? thePositionProvider { get; set; }
+
+                [IgnoreDataMember]
+                public virtual String[] theCartographicTextFeatureTypes => [];
+
+                [IgnoreDataMember]
+                public virtual String[] thePositionProviderFeatureTypes => [];
+                public override string Code => "TextAssociation";
+
+                public string[]? this[Role role] => this[role.ToString()];
+                public override string[]? this[string role] => role switch
+                {
+                    "theCartographicText" => theCartographicTextFeatureTypes,
+                    "thePositionProvider" => thePositionProviderFeatureTypes,
+                    _ => throw new InvalidOperationException(),
+                };
+                public TextAssociation() {
+                }
+            }
+
+            [System.Serializable()]
+            [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+            public abstract partial class TrafficSeparationSchemeAggregation : FeatureAssociation {
+                public RefId? theCollection { get; set; }
+                public List<RefId> theComponent { get; set; } = [];
+
+                [IgnoreDataMember]
+                public virtual String[] theCollectionFeatureTypes => [];
+
+                [IgnoreDataMember]
+                public virtual String[] theComponentFeatureTypes => [];
+                public override string Code => "TrafficSeparationSchemeAggregation";
+
+                public string[]? this[Role role] => this[role.ToString()];
+                public override string[]? this[string role] => role switch
+                {
+                    "theCollection" => theCollectionFeatureTypes,
+                    "theComponent" => theComponentFeatureTypes,
+                    _ => throw new InvalidOperationException(),
+                };
+                public TrafficSeparationSchemeAggregation() {
+                }
+            }
+
+            [System.Serializable()]
+            [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+            public abstract partial class TwoWayRouteAggregation : FeatureAssociation {
+                public RefId? theCollection { get; set; }
+                public List<RefId> theComponent { get; set; } = [];
+
+                [IgnoreDataMember]
+                public virtual String[] theCollectionFeatureTypes => [];
+
+                [IgnoreDataMember]
+                public virtual String[] theComponentFeatureTypes => [];
+                public override string Code => "TwoWayRouteAggregation";
+
+                public string[]? this[Role role] => this[role.ToString()];
+                public override string[]? this[string role] => role switch
+                {
+                    "theCollection" => theCollectionFeatureTypes,
+                    "theComponent" => theComponentFeatureTypes,
+                    _ => throw new InvalidOperationException(),
+                };
+                public TwoWayRouteAggregation() {
+                }
+            }
+
+            [System.Serializable()]
+            [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+            public abstract partial class UpdateAggregation : FeatureAssociation {
+                public RefId? theCollection { get; set; }
+                public List<RefId> theComponent { get; set; } = [];
+
+                [IgnoreDataMember]
+                public virtual String[] theCollectionFeatureTypes => [];
+
+                [IgnoreDataMember]
+                public virtual String[] theComponentFeatureTypes => [];
+                public override string Code => "UpdateAggregation";
+
+                public string[]? this[Role role] => this[role.ToString()];
+                public override string[]? this[string role] => role switch
+                {
+                    "theCollection" => theCollectionFeatureTypes,
+                    "theComponent" => theComponentFeatureTypes,
+                    _ => throw new InvalidOperationException(),
+                };
+                public UpdateAggregation() {
+                }
+            }
+
+            [System.Serializable()]
+            [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+            public abstract partial class UpdatedInformation : FeatureAssociation {
+                public List<RefId> theUpdate { get; set; } = [];
+                public List<RefId> theUpdatedObject { get; set; } = [];
+
+                [IgnoreDataMember]
+                public virtual String[] theUpdateFeatureTypes => [];
+
+                [IgnoreDataMember]
+                public virtual String[] theUpdatedObjectFeatureTypes => [];
+                public override string Code => "UpdatedInformation";
+
+                public string[]? this[Role role] => this[role.ToString()];
+                public override string[]? this[string role] => role switch
+                {
+                    "theUpdate" => theUpdateFeatureTypes,
+                    "theUpdatedObject" => theUpdatedObjectFeatureTypes,
+                    _ => throw new InvalidOperationException(),
+                };
+                public UpdatedInformation() {
+                }
+            }
         }
     }
 
@@ -4835,6 +5316,7 @@ namespace S100Framework.DomainModel.S101 {
         using ComplexAttributes;
         using DomainModel;
         using System.Runtime.Serialization;
+        using S100Framework.DomainModel.S101.Associations.InformationAssociations;
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -4924,6 +5406,8 @@ namespace S100Framework.DomainModel.S101 {
         using InformationTypes;
         using DomainModel;
         using System.Runtime.Serialization;
+        using S100Framework.DomainModel.S101.Associations.InformationAssociations;
+        using S100Framework.DomainModel.S101.Associations.FeatureAssociations;
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -4944,6 +5428,16 @@ namespace S100Framework.DomainModel.S101 {
             [IgnoreDataMember]
             public override string Code => nameof(QualityOfNonBathymetricData);
 
+            public class UpdatedInformation_theUpdate : UpdatedInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
+
+                public UpdatedInformation_theUpdate() {
+                    base.AssociationConnectorTypeName = typeof(QualityOfNonBathymetricData).Name;
+                }
+            };
             public QualityOfNonBathymetricData() {
                 horizontalPositionUncertainty = new horizontalPositionUncertainty()
                 {
@@ -4990,6 +5484,16 @@ namespace S100Framework.DomainModel.S101 {
             [IgnoreDataMember]
             public override string Code => nameof(NavigationalSystemOfMarks);
 
+            public class UpdatedInformation_theUpdate : UpdatedInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
+
+                public UpdatedInformation_theUpdate() {
+                    base.AssociationConnectorTypeName = typeof(NavigationalSystemOfMarks).Name;
+                }
+            };
             public NavigationalSystemOfMarks() {
             }
         }
@@ -5014,6 +5518,16 @@ namespace S100Framework.DomainModel.S101 {
             [IgnoreDataMember]
             public override string Code => nameof(LocalDirectionOfBuoyage);
 
+            public class UpdatedInformation_theUpdate : UpdatedInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
+
+                public UpdatedInformation_theUpdate() {
+                    base.AssociationConnectorTypeName = typeof(LocalDirectionOfBuoyage).Name;
+                }
+            };
             public LocalDirectionOfBuoyage() {
             }
         }
@@ -5052,6 +5566,26 @@ namespace S100Framework.DomainModel.S101 {
             [IgnoreDataMember]
             public override string Code => nameof(QualityOfBathymetricData);
 
+            public class QualityOfBathymetricDataComposition_theQualityInformation : QualityOfBathymetricDataComposition {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theQualityInformationInformationTypes => ["SpatialQuality"];
+
+                public QualityOfBathymetricDataComposition_theQualityInformation() {
+                    base.AssociationConnectorTypeName = typeof(QualityOfBathymetricData).Name;
+                }
+            };
+            public class UpdatedInformation_theUpdate : UpdatedInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
+
+                public UpdatedInformation_theUpdate() {
+                    base.AssociationConnectorTypeName = typeof(QualityOfBathymetricData).Name;
+                }
+            };
             public QualityOfBathymetricData() {
                 featuresDetected = new featuresDetected()
                 {
@@ -5097,6 +5631,16 @@ namespace S100Framework.DomainModel.S101 {
             [IgnoreDataMember]
             public override string Code => nameof(SoundingDatum);
 
+            public class UpdatedInformation_theUpdate : UpdatedInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
+
+                public UpdatedInformation_theUpdate() {
+                    base.AssociationConnectorTypeName = typeof(SoundingDatum).Name;
+                }
+            };
             public SoundingDatum() {
             }
         }
@@ -5128,6 +5672,16 @@ namespace S100Framework.DomainModel.S101 {
             [IgnoreDataMember]
             public override string Code => nameof(VerticalDatumOfData);
 
+            public class UpdatedInformation_theUpdate : UpdatedInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
+
+                public UpdatedInformation_theUpdate() {
+                    base.AssociationConnectorTypeName = typeof(VerticalDatumOfData).Name;
+                }
+            };
             public VerticalDatumOfData() {
             }
         }
@@ -5202,6 +5756,16 @@ namespace S100Framework.DomainModel.S101 {
             [IgnoreDataMember]
             public override string Code => nameof(QualityOfSurvey);
 
+            public class UpdatedInformation_theUpdate : UpdatedInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
+
+                public UpdatedInformation_theUpdate() {
+                    base.AssociationConnectorTypeName = typeof(QualityOfSurvey).Name;
+                }
+            };
             public QualityOfSurvey() {
                 surveyAuthority = string.Empty;
                 surveyDateRange = new surveyDateRange()
@@ -5234,6 +5798,46 @@ namespace S100Framework.DomainModel.S101 {
             [IgnoreDataMember]
             public override string Code => nameof(UpdateInformation);
 
+            public class UpdateAggregation_theComponent : UpdateAggregation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theComponentFeatureTypes => ["UpdateInformation"];
+
+                public UpdateAggregation_theComponent() {
+                    base.AssociationConnectorTypeName = typeof(UpdateInformation).Name;
+                }
+            };
+            public class UpdateAggregation_theCollection : UpdateAggregation {
+                public override roleType? roleType => DomainModel.roleType.aggregation;
+
+                [IgnoreDataMember]
+                public override String[] theCollectionFeatureTypes => ["UpdateInformation"];
+
+                public UpdateAggregation_theCollection() {
+                    base.AssociationConnectorTypeName = typeof(UpdateInformation).Name;
+                }
+            };
+            public class UpdatedInformation_theUpdatedObject : UpdatedInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theUpdatedObjectFeatureTypes => ["AdministrationArea", "AirportAirfield", "AnchorBerth", "AnchorageArea", "ArchipelagicSeaLane", "ArchipelagicSeaLaneArea", "ArchipelagicSeaLaneAxis", "Berth", "Bollard", "Bridge", "Building", "BuiltUpArea", "CableArea", "CableOverhead", "CableSubmarine", "Canal", "CardinalBeacon", "CardinalBuoy", "CargoTranshipmentArea", "Causeway", "CautionArea", "Checkpoint", "CoastGuardStation", "Coastline", "CollisionRegulationsLimit", "ContiguousZone", "ContinentalShelfArea", "Conveyor", "Crane", "CurrentNonGravitational", "CustomZone", "Dam", "Daymark", "DeepWaterRoute", "DeepWaterRouteCentreline", "DeepWaterRoutePart", "DepthArea", "DepthContour", "DepthNoBottomFound", "DiscolouredWater", "DistanceMark", "DockArea", "Dolphin", "DredgedArea", "DryDock", "DumpingGround", "Dyke", "EmergencyWreckMarkingBuoy", "ExclusiveEconomicZone", "Fairway", "FairwaySystem", "FenceWall", "FerryRoute", "FisheryZone", "FishingFacility", "FishingGround", "FloatingDock", "FogSignal", "FortifiedStructure", "FoulGround", "FreePortArea", "Gate", "Gridiron", "HarbourAreaAdministrative", "HarbourFacility", "Helipad", "Hulk", "IceArea", "InformationArea", "InshoreTrafficZone", "InstallationBuoy", "IslandGroup", "IsolatedDangerBeacon", "IsolatedDangerBuoy", "Lake", "LandArea", "LandElevation", "LandRegion", "Landmark", "LateralBeacon", "LateralBuoy", "LightAirObstruction", "LightAllAround", "LightFloat", "LightFogDetector", "LightSectored", "LightVessel", "LocalDirectionOfBuoyage", "LocalMagneticAnomaly", "LockBasin", "LogPond", "MagneticVariation", "MarineFarmCulture", "MarinePollutionRegulationsArea", "MilitaryPracticeArea", "MooringArea", "MooringBuoy", "MooringTrot", "NavigationLine", "NavigationalSystemOfMarks", "Obstruction", "OffshorePlatform", "OffshoreProductionArea", "OilBarrier", "PhysicalAISAidToNavigation", "Pile", "PilotBoardingPlace", "PilotageDistrict", "PipelineOverhead", "PipelineSubmarineOnLand", "Pontoon", "PrecautionaryArea", "ProductionStorageArea", "PylonBridgeSupport", "QualityOfBathymetricData", "QualityOfNonBathymetricData", "QualityOfSurvey", "RadarLine", "RadarRange", "RadarReflector", "RadarStation", "RadarTransponderBeacon", "RadioCallingInPoint", "RadioStation", "Railway", "RangeSystem", "Rapids", "RecommendedRouteCentreline", "RecommendedTrack", "RecommendedTrafficLanePart", "RescueStation", "RestrictedArea", "Retroreflector", "River", "Road", "Runway", "SafeWaterBeacon", "SafeWaterBuoy", "Sandwave", "SeaAreaNamedWaterArea", "SeabedArea", "Seagrass", "SeaplaneLandingArea", "SeparationZoneOrLine", "ShorelineConstruction", "SignalStationTraffic", "SignalStationWarning", "SiloTank", "SmallCraftFacility", "SlopeTopline", "SlopingGround", "Sounding", "SoundingDatum", "SpanFixed", "SpanOpening", "SpecialPurposeGeneralBeacon", "SpecialPurposeGeneralBuoy", "Spring", "StraightTerritorialSeaBaseline", "StructureOverNavigableWater", "SubmarinePipelineArea", "SubmarineTransitLane", "SweptArea", "TerritorialSeaArea", "TidalStreamPanelData", "TidalStreamFloodEbb", "Tideway", "TrafficSeparationScheme", "TrafficSeparationSchemeBoundary", "TrafficSeparationSchemeCrossing", "TrafficSeparationSchemeLanePart", "TrafficSeparationSchemeRoundabout", "Tunnel", "TwoWayRoute", "TwoWayRoutePart", "UnderwaterAwashRock", "UnsurveyedArea", "UpdateInformation", "Vegetation", "VerticalDatumOfData", "VesselTrafficServiceArea", "VirtualAISAidToNavigation", "WaterTurbulence", "Waterfall", "WeedKelp", "WindTurbine", "Wreck"];
+
+                public UpdatedInformation_theUpdatedObject() {
+                    base.AssociationConnectorTypeName = typeof(UpdateInformation).Name;
+                }
+            };
+            public class UpdatedInformation_theUpdate : UpdatedInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
+
+                public UpdatedInformation_theUpdate() {
+                    base.AssociationConnectorTypeName = typeof(UpdateInformation).Name;
+                }
+            };
             public UpdateInformation() {
             }
         }
@@ -5257,6 +5861,26 @@ namespace S100Framework.DomainModel.S101 {
             [IgnoreDataMember]
             public override string Code => nameof(MagneticVariation);
 
+            public class AdditionalInformation_theInformation : AdditionalInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theInformationInformationTypes => ["NauticalInformation"];
+
+                public AdditionalInformation_theInformation() {
+                    base.AssociationConnectorTypeName = typeof(MagneticVariation).Name;
+                }
+            };
+            public class UpdatedInformation_theUpdate : UpdatedInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
+
+                public UpdatedInformation_theUpdate() {
+                    base.AssociationConnectorTypeName = typeof(MagneticVariation).Name;
+                }
+            };
             public MagneticVariation() {
             }
         }
@@ -5276,6 +5900,36 @@ namespace S100Framework.DomainModel.S101 {
             [IgnoreDataMember]
             public override string Code => nameof(LocalMagneticAnomaly);
 
+            public class AdditionalInformation_theInformation : AdditionalInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theInformationInformationTypes => ["NauticalInformation"];
+
+                public AdditionalInformation_theInformation() {
+                    base.AssociationConnectorTypeName = typeof(LocalMagneticAnomaly).Name;
+                }
+            };
+            public class UpdatedInformation_theUpdate : UpdatedInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
+
+                public UpdatedInformation_theUpdate() {
+                    base.AssociationConnectorTypeName = typeof(LocalMagneticAnomaly).Name;
+                }
+            };
+            public class TextAssociation_theCartographicText : TextAssociation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theCartographicTextFeatureTypes => ["TextPlacement"];
+
+                public TextAssociation_theCartographicText() {
+                    base.AssociationConnectorTypeName = typeof(LocalMagneticAnomaly).Name;
+                }
+            };
             public LocalMagneticAnomaly() {
                 valueOfLocalMagneticAnomaly = new();
             }
@@ -5331,6 +5985,36 @@ namespace S100Framework.DomainModel.S101 {
             [IgnoreDataMember]
             public override string Code => nameof(Coastline);
 
+            public class AdditionalInformation_theInformation : AdditionalInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theInformationInformationTypes => ["NauticalInformation"];
+
+                public AdditionalInformation_theInformation() {
+                    base.AssociationConnectorTypeName = typeof(Coastline).Name;
+                }
+            };
+            public class UpdatedInformation_theUpdate : UpdatedInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
+
+                public UpdatedInformation_theUpdate() {
+                    base.AssociationConnectorTypeName = typeof(Coastline).Name;
+                }
+            };
+            public class TextAssociation_theCartographicText : TextAssociation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theCartographicTextFeatureTypes => ["TextPlacement"];
+
+                public TextAssociation_theCartographicText() {
+                    base.AssociationConnectorTypeName = typeof(Coastline).Name;
+                }
+            };
             public Coastline() {
             }
         }
@@ -5354,6 +6038,46 @@ namespace S100Framework.DomainModel.S101 {
             [IgnoreDataMember]
             public override string Code => nameof(LandArea);
 
+            public class AdditionalInformation_theInformation : AdditionalInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theInformationInformationTypes => ["NauticalInformation"];
+
+                public AdditionalInformation_theInformation() {
+                    base.AssociationConnectorTypeName = typeof(LandArea).Name;
+                }
+            };
+            public class IslandAggregation_theCollection : IslandAggregation {
+                public override roleType? roleType => DomainModel.roleType.aggregation;
+
+                [IgnoreDataMember]
+                public override String[] theCollectionFeatureTypes => ["IslandGroup"];
+
+                public IslandAggregation_theCollection() {
+                    base.AssociationConnectorTypeName = typeof(LandArea).Name;
+                }
+            };
+            public class UpdatedInformation_theUpdate : UpdatedInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
+
+                public UpdatedInformation_theUpdate() {
+                    base.AssociationConnectorTypeName = typeof(LandArea).Name;
+                }
+            };
+            public class TextAssociation_theCartographicText : TextAssociation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theCartographicTextFeatureTypes => ["TextPlacement"];
+
+                public TextAssociation_theCartographicText() {
+                    base.AssociationConnectorTypeName = typeof(LandArea).Name;
+                }
+            };
             public LandArea() {
             }
         }
@@ -5370,6 +6094,56 @@ namespace S100Framework.DomainModel.S101 {
             [IgnoreDataMember]
             public override string Code => nameof(IslandGroup);
 
+            public class AdditionalInformation_theInformation : AdditionalInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theInformationInformationTypes => ["NauticalInformation"];
+
+                public AdditionalInformation_theInformation() {
+                    base.AssociationConnectorTypeName = typeof(IslandGroup).Name;
+                }
+            };
+            public class IslandAggregation_theComponent : IslandAggregation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theComponentFeatureTypes => ["LandArea", "IslandGroup"];
+
+                public IslandAggregation_theComponent() {
+                    base.AssociationConnectorTypeName = typeof(IslandGroup).Name;
+                }
+            };
+            public class IslandAggregation_theCollection : IslandAggregation {
+                public override roleType? roleType => DomainModel.roleType.aggregation;
+
+                [IgnoreDataMember]
+                public override String[] theCollectionFeatureTypes => ["IslandGroup"];
+
+                public IslandAggregation_theCollection() {
+                    base.AssociationConnectorTypeName = typeof(IslandGroup).Name;
+                }
+            };
+            public class UpdatedInformation_theUpdate : UpdatedInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
+
+                public UpdatedInformation_theUpdate() {
+                    base.AssociationConnectorTypeName = typeof(IslandGroup).Name;
+                }
+            };
+            public class TextAssociation_theCartographicText : TextAssociation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theCartographicTextFeatureTypes => ["TextPlacement"];
+
+                public TextAssociation_theCartographicText() {
+                    base.AssociationConnectorTypeName = typeof(IslandGroup).Name;
+                }
+            };
             public IslandGroup() {
                 featureName = new();
             }
@@ -5393,6 +6167,36 @@ namespace S100Framework.DomainModel.S101 {
             [IgnoreDataMember]
             public override string Code => nameof(LandElevation);
 
+            public class AdditionalInformation_theInformation : AdditionalInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theInformationInformationTypes => ["NauticalInformation"];
+
+                public AdditionalInformation_theInformation() {
+                    base.AssociationConnectorTypeName = typeof(LandElevation).Name;
+                }
+            };
+            public class UpdatedInformation_theUpdate : UpdatedInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
+
+                public UpdatedInformation_theUpdate() {
+                    base.AssociationConnectorTypeName = typeof(LandElevation).Name;
+                }
+            };
+            public class TextAssociation_theCartographicText : TextAssociation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theCartographicTextFeatureTypes => ["TextPlacement"];
+
+                public TextAssociation_theCartographicText() {
+                    base.AssociationConnectorTypeName = typeof(LandElevation).Name;
+                }
+            };
             public LandElevation() {
             }
         }
@@ -5411,6 +6215,36 @@ namespace S100Framework.DomainModel.S101 {
             [IgnoreDataMember]
             public override string Code => nameof(River);
 
+            public class AdditionalInformation_theInformation : AdditionalInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theInformationInformationTypes => ["NauticalInformation"];
+
+                public AdditionalInformation_theInformation() {
+                    base.AssociationConnectorTypeName = typeof(River).Name;
+                }
+            };
+            public class UpdatedInformation_theUpdate : UpdatedInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
+
+                public UpdatedInformation_theUpdate() {
+                    base.AssociationConnectorTypeName = typeof(River).Name;
+                }
+            };
+            public class TextAssociation_theCartographicText : TextAssociation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theCartographicTextFeatureTypes => ["TextPlacement"];
+
+                public TextAssociation_theCartographicText() {
+                    base.AssociationConnectorTypeName = typeof(River).Name;
+                }
+            };
             public River() {
             }
         }
@@ -5427,6 +6261,36 @@ namespace S100Framework.DomainModel.S101 {
             [IgnoreDataMember]
             public override string Code => nameof(Rapids);
 
+            public class AdditionalInformation_theInformation : AdditionalInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theInformationInformationTypes => ["NauticalInformation"];
+
+                public AdditionalInformation_theInformation() {
+                    base.AssociationConnectorTypeName = typeof(Rapids).Name;
+                }
+            };
+            public class UpdatedInformation_theUpdate : UpdatedInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
+
+                public UpdatedInformation_theUpdate() {
+                    base.AssociationConnectorTypeName = typeof(Rapids).Name;
+                }
+            };
+            public class TextAssociation_theCartographicText : TextAssociation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theCartographicTextFeatureTypes => ["TextPlacement"];
+
+                public TextAssociation_theCartographicText() {
+                    base.AssociationConnectorTypeName = typeof(Rapids).Name;
+                }
+            };
             public Rapids() {
             }
         }
@@ -5448,6 +6312,36 @@ namespace S100Framework.DomainModel.S101 {
             [IgnoreDataMember]
             public override string Code => nameof(Waterfall);
 
+            public class AdditionalInformation_theInformation : AdditionalInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theInformationInformationTypes => ["NauticalInformation"];
+
+                public AdditionalInformation_theInformation() {
+                    base.AssociationConnectorTypeName = typeof(Waterfall).Name;
+                }
+            };
+            public class UpdatedInformation_theUpdate : UpdatedInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
+
+                public UpdatedInformation_theUpdate() {
+                    base.AssociationConnectorTypeName = typeof(Waterfall).Name;
+                }
+            };
+            public class TextAssociation_theCartographicText : TextAssociation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theCartographicTextFeatureTypes => ["TextPlacement"];
+
+                public TextAssociation_theCartographicText() {
+                    base.AssociationConnectorTypeName = typeof(Waterfall).Name;
+                }
+            };
             public Waterfall() {
             }
         }
@@ -5467,6 +6361,36 @@ namespace S100Framework.DomainModel.S101 {
             [IgnoreDataMember]
             public override string Code => nameof(Lake);
 
+            public class AdditionalInformation_theInformation : AdditionalInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theInformationInformationTypes => ["NauticalInformation"];
+
+                public AdditionalInformation_theInformation() {
+                    base.AssociationConnectorTypeName = typeof(Lake).Name;
+                }
+            };
+            public class UpdatedInformation_theUpdate : UpdatedInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
+
+                public UpdatedInformation_theUpdate() {
+                    base.AssociationConnectorTypeName = typeof(Lake).Name;
+                }
+            };
+            public class TextAssociation_theCartographicText : TextAssociation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theCartographicTextFeatureTypes => ["TextPlacement"];
+
+                public TextAssociation_theCartographicText() {
+                    base.AssociationConnectorTypeName = typeof(Lake).Name;
+                }
+            };
             public Lake() {
             }
         }
@@ -5523,6 +6447,36 @@ namespace S100Framework.DomainModel.S101 {
             [IgnoreDataMember]
             public override string Code => nameof(LandRegion);
 
+            public class AdditionalInformation_theInformation : AdditionalInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theInformationInformationTypes => ["ContactDetails", "NauticalInformation"];
+
+                public AdditionalInformation_theInformation() {
+                    base.AssociationConnectorTypeName = typeof(LandRegion).Name;
+                }
+            };
+            public class UpdatedInformation_theUpdate : UpdatedInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
+
+                public UpdatedInformation_theUpdate() {
+                    base.AssociationConnectorTypeName = typeof(LandRegion).Name;
+                }
+            };
+            public class TextAssociation_theCartographicText : TextAssociation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theCartographicTextFeatureTypes => ["TextPlacement"];
+
+                public TextAssociation_theCartographicText() {
+                    base.AssociationConnectorTypeName = typeof(LandRegion).Name;
+                }
+            };
             public LandRegion() {
             }
         }
@@ -5562,6 +6516,36 @@ namespace S100Framework.DomainModel.S101 {
             [IgnoreDataMember]
             public override string Code => nameof(Vegetation);
 
+            public class AdditionalInformation_theInformation : AdditionalInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theInformationInformationTypes => ["NauticalInformation"];
+
+                public AdditionalInformation_theInformation() {
+                    base.AssociationConnectorTypeName = typeof(Vegetation).Name;
+                }
+            };
+            public class UpdatedInformation_theUpdate : UpdatedInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
+
+                public UpdatedInformation_theUpdate() {
+                    base.AssociationConnectorTypeName = typeof(Vegetation).Name;
+                }
+            };
+            public class TextAssociation_theCartographicText : TextAssociation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theCartographicTextFeatureTypes => ["TextPlacement"];
+
+                public TextAssociation_theCartographicText() {
+                    base.AssociationConnectorTypeName = typeof(Vegetation).Name;
+                }
+            };
             public Vegetation() {
             }
         }
@@ -5597,6 +6581,36 @@ namespace S100Framework.DomainModel.S101 {
             [IgnoreDataMember]
             public override string Code => nameof(IceArea);
 
+            public class AdditionalInformation_theInformation : AdditionalInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theInformationInformationTypes => ["NauticalInformation"];
+
+                public AdditionalInformation_theInformation() {
+                    base.AssociationConnectorTypeName = typeof(IceArea).Name;
+                }
+            };
+            public class UpdatedInformation_theUpdate : UpdatedInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
+
+                public UpdatedInformation_theUpdate() {
+                    base.AssociationConnectorTypeName = typeof(IceArea).Name;
+                }
+            };
+            public class TextAssociation_theCartographicText : TextAssociation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theCartographicTextFeatureTypes => ["TextPlacement"];
+
+                public TextAssociation_theCartographicText() {
+                    base.AssociationConnectorTypeName = typeof(IceArea).Name;
+                }
+            };
             public IceArea() {
             }
         }
@@ -5645,6 +6659,36 @@ namespace S100Framework.DomainModel.S101 {
             [IgnoreDataMember]
             public override string Code => nameof(SlopingGround);
 
+            public class AdditionalInformation_theInformation : AdditionalInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theInformationInformationTypes => ["NauticalInformation"];
+
+                public AdditionalInformation_theInformation() {
+                    base.AssociationConnectorTypeName = typeof(SlopingGround).Name;
+                }
+            };
+            public class UpdatedInformation_theUpdate : UpdatedInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
+
+                public UpdatedInformation_theUpdate() {
+                    base.AssociationConnectorTypeName = typeof(SlopingGround).Name;
+                }
+            };
+            public class TextAssociation_theCartographicText : TextAssociation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theCartographicTextFeatureTypes => ["TextPlacement"];
+
+                public TextAssociation_theCartographicText() {
+                    base.AssociationConnectorTypeName = typeof(SlopingGround).Name;
+                }
+            };
             public SlopingGround() {
             }
         }
@@ -5690,6 +6734,36 @@ namespace S100Framework.DomainModel.S101 {
             [IgnoreDataMember]
             public override string Code => nameof(SlopeTopline);
 
+            public class AdditionalInformation_theInformation : AdditionalInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theInformationInformationTypes => ["NauticalInformation"];
+
+                public AdditionalInformation_theInformation() {
+                    base.AssociationConnectorTypeName = typeof(SlopeTopline).Name;
+                }
+            };
+            public class UpdatedInformation_theUpdate : UpdatedInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
+
+                public UpdatedInformation_theUpdate() {
+                    base.AssociationConnectorTypeName = typeof(SlopeTopline).Name;
+                }
+            };
+            public class TextAssociation_theCartographicText : TextAssociation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theCartographicTextFeatureTypes => ["TextPlacement"];
+
+                public TextAssociation_theCartographicText() {
+                    base.AssociationConnectorTypeName = typeof(SlopeTopline).Name;
+                }
+            };
             public SlopeTopline() {
             }
         }
@@ -5705,6 +6779,36 @@ namespace S100Framework.DomainModel.S101 {
             [IgnoreDataMember]
             public override string Code => nameof(Tideway);
 
+            public class AdditionalInformation_theInformation : AdditionalInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theInformationInformationTypes => ["NauticalInformation"];
+
+                public AdditionalInformation_theInformation() {
+                    base.AssociationConnectorTypeName = typeof(Tideway).Name;
+                }
+            };
+            public class UpdatedInformation_theUpdate : UpdatedInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
+
+                public UpdatedInformation_theUpdate() {
+                    base.AssociationConnectorTypeName = typeof(Tideway).Name;
+                }
+            };
+            public class TextAssociation_theCartographicText : TextAssociation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theCartographicTextFeatureTypes => ["TextPlacement"];
+
+                public TextAssociation_theCartographicText() {
+                    base.AssociationConnectorTypeName = typeof(Tideway).Name;
+                }
+            };
             public Tideway() {
             }
         }
@@ -5742,6 +6846,36 @@ namespace S100Framework.DomainModel.S101 {
             [IgnoreDataMember]
             public override string Code => nameof(BuiltUpArea);
 
+            public class AdditionalInformation_theInformation : AdditionalInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theInformationInformationTypes => ["NauticalInformation"];
+
+                public AdditionalInformation_theInformation() {
+                    base.AssociationConnectorTypeName = typeof(BuiltUpArea).Name;
+                }
+            };
+            public class UpdatedInformation_theUpdate : UpdatedInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
+
+                public UpdatedInformation_theUpdate() {
+                    base.AssociationConnectorTypeName = typeof(BuiltUpArea).Name;
+                }
+            };
+            public class TextAssociation_theCartographicText : TextAssociation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theCartographicTextFeatureTypes => ["TextPlacement"];
+
+                public TextAssociation_theCartographicText() {
+                    base.AssociationConnectorTypeName = typeof(BuiltUpArea).Name;
+                }
+            };
             public BuiltUpArea() {
             }
         }
@@ -5868,6 +7002,66 @@ namespace S100Framework.DomainModel.S101 {
             [IgnoreDataMember]
             public override string Code => nameof(Building);
 
+            public class AdditionalInformation_theInformation : AdditionalInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theInformationInformationTypes => ["ContactDetails", "NauticalInformation", "NonStandardWorkingDay", "ServiceHours"];
+
+                public AdditionalInformation_theInformation() {
+                    base.AssociationConnectorTypeName = typeof(Building).Name;
+                }
+            };
+            public class StructureEquipment_theEquipment : StructureEquipment {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theEquipmentFeatureTypes => ["Daymark", "DistanceMark", "FogSignal", "Helipad", "LightAllAround", "LightFogDetector", "PhysicalAISAidToNavigation", "RadarTransponderBeacon", "Retroreflector", "SignalStationTraffic", "SignalStationWarning", "LightSectored", "LightAirObstruction"];
+
+                public StructureEquipment_theEquipment() {
+                    base.AssociationConnectorTypeName = typeof(Building).Name;
+                }
+            };
+            public class AidsToNavigationAssociation_theCollection : AidsToNavigationAssociation {
+                public override roleType? roleType => DomainModel.roleType.aggregation;
+
+                [IgnoreDataMember]
+                public override String[] theCollectionFeatureTypes => ["DeepWaterRoute", "FairwaySystem", "TrafficSeparationScheme", "TwoWayRoute"];
+
+                public AidsToNavigationAssociation_theCollection() {
+                    base.AssociationConnectorTypeName = typeof(Building).Name;
+                }
+            };
+            public class RangeSystemAggregation_theCollection : RangeSystemAggregation {
+                public override roleType? roleType => DomainModel.roleType.aggregation;
+
+                [IgnoreDataMember]
+                public override String[] theCollectionFeatureTypes => ["RangeSystem"];
+
+                public RangeSystemAggregation_theCollection() {
+                    base.AssociationConnectorTypeName = typeof(Building).Name;
+                }
+            };
+            public class UpdatedInformation_theUpdate : UpdatedInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
+
+                public UpdatedInformation_theUpdate() {
+                    base.AssociationConnectorTypeName = typeof(Building).Name;
+                }
+            };
+            public class TextAssociation_theCartographicText : TextAssociation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theCartographicTextFeatureTypes => ["TextPlacement"];
+
+                public TextAssociation_theCartographicText() {
+                    base.AssociationConnectorTypeName = typeof(Building).Name;
+                }
+            };
             public Building() {
             }
         }
@@ -5911,6 +7105,36 @@ namespace S100Framework.DomainModel.S101 {
             [IgnoreDataMember]
             public override string Code => nameof(AirportAirfield);
 
+            public class AdditionalInformation_theInformation : AdditionalInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theInformationInformationTypes => ["ContactDetails", "NauticalInformation", "NonStandardWorkingDay", "ServiceHours"];
+
+                public AdditionalInformation_theInformation() {
+                    base.AssociationConnectorTypeName = typeof(AirportAirfield).Name;
+                }
+            };
+            public class UpdatedInformation_theUpdate : UpdatedInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
+
+                public UpdatedInformation_theUpdate() {
+                    base.AssociationConnectorTypeName = typeof(AirportAirfield).Name;
+                }
+            };
+            public class TextAssociation_theCartographicText : TextAssociation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theCartographicTextFeatureTypes => ["TextPlacement"];
+
+                public TextAssociation_theCartographicText() {
+                    base.AssociationConnectorTypeName = typeof(AirportAirfield).Name;
+                }
+            };
             public AirportAirfield() {
             }
         }
@@ -5952,6 +7176,36 @@ namespace S100Framework.DomainModel.S101 {
             [IgnoreDataMember]
             public override string Code => nameof(Runway);
 
+            public class AdditionalInformation_theInformation : AdditionalInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theInformationInformationTypes => ["ContactDetails", "NauticalInformation", "NonStandardWorkingDay", "ServiceHours"];
+
+                public AdditionalInformation_theInformation() {
+                    base.AssociationConnectorTypeName = typeof(Runway).Name;
+                }
+            };
+            public class UpdatedInformation_theUpdate : UpdatedInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
+
+                public UpdatedInformation_theUpdate() {
+                    base.AssociationConnectorTypeName = typeof(Runway).Name;
+                }
+            };
+            public class TextAssociation_theCartographicText : TextAssociation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theCartographicTextFeatureTypes => ["TextPlacement"];
+
+                public TextAssociation_theCartographicText() {
+                    base.AssociationConnectorTypeName = typeof(Runway).Name;
+                }
+            };
             public Runway() {
             }
         }
@@ -5993,6 +7247,46 @@ namespace S100Framework.DomainModel.S101 {
             [IgnoreDataMember]
             public override string Code => nameof(Helipad);
 
+            public class AdditionalInformation_theInformation : AdditionalInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theInformationInformationTypes => ["ContactDetails", "NauticalInformation", "NonStandardWorkingDay", "ServiceHours"];
+
+                public AdditionalInformation_theInformation() {
+                    base.AssociationConnectorTypeName = typeof(Helipad).Name;
+                }
+            };
+            public class StructureEquipment_theStructure : StructureEquipment {
+                public override roleType? roleType => DomainModel.roleType.composition;
+
+                [IgnoreDataMember]
+                public override String[] theStructureFeatureTypes => ["Building", "Landmark", "OffshorePlatform"];
+
+                public StructureEquipment_theStructure() {
+                    base.AssociationConnectorTypeName = typeof(Helipad).Name;
+                }
+            };
+            public class UpdatedInformation_theUpdate : UpdatedInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
+
+                public UpdatedInformation_theUpdate() {
+                    base.AssociationConnectorTypeName = typeof(Helipad).Name;
+                }
+            };
+            public class TextAssociation_theCartographicText : TextAssociation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theCartographicTextFeatureTypes => ["TextPlacement"];
+
+                public TextAssociation_theCartographicText() {
+                    base.AssociationConnectorTypeName = typeof(Helipad).Name;
+                }
+            };
             public Helipad() {
             }
         }
@@ -6080,6 +7374,66 @@ namespace S100Framework.DomainModel.S101 {
             [IgnoreDataMember]
             public override string Code => nameof(Bridge);
 
+            public class AdditionalInformation_theInformation : AdditionalInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theInformationInformationTypes => ["ContactDetails", "NauticalInformation", "NonStandardWorkingDay", "ServiceHours"];
+
+                public AdditionalInformation_theInformation() {
+                    base.AssociationConnectorTypeName = typeof(Bridge).Name;
+                }
+            };
+            public class BridgeAggregation_theComponent : BridgeAggregation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theComponentFeatureTypes => ["SpanFixed", "SpanOpening", "Pontoon", "PylonBridgeSupport"];
+
+                public BridgeAggregation_theComponent() {
+                    base.AssociationConnectorTypeName = typeof(Bridge).Name;
+                }
+            };
+            public class StructureEquipment_theEquipment : StructureEquipment {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theEquipmentFeatureTypes => ["Daymark", "DistanceMark", "FogSignal", "LightAllAround", "LightFogDetector", "PhysicalAISAidToNavigation", "RadarTransponderBeacon", "Retroreflector", "SignalStationTraffic", "SignalStationWarning", "LightSectored", "LightAirObstruction"];
+
+                public StructureEquipment_theEquipment() {
+                    base.AssociationConnectorTypeName = typeof(Bridge).Name;
+                }
+            };
+            public class AidsToNavigationAssociation_theCollection : AidsToNavigationAssociation {
+                public override roleType? roleType => DomainModel.roleType.aggregation;
+
+                [IgnoreDataMember]
+                public override String[] theCollectionFeatureTypes => ["FairwaySystem", "TrafficSeparationScheme", "TwoWayRoute"];
+
+                public AidsToNavigationAssociation_theCollection() {
+                    base.AssociationConnectorTypeName = typeof(Bridge).Name;
+                }
+            };
+            public class UpdatedInformation_theUpdate : UpdatedInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
+
+                public UpdatedInformation_theUpdate() {
+                    base.AssociationConnectorTypeName = typeof(Bridge).Name;
+                }
+            };
+            public class TextAssociation_theCartographicText : TextAssociation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theCartographicTextFeatureTypes => ["TextPlacement"];
+
+                public TextAssociation_theCartographicText() {
+                    base.AssociationConnectorTypeName = typeof(Bridge).Name;
+                }
+            };
             public Bridge() {
             }
         }
@@ -6117,6 +7471,66 @@ namespace S100Framework.DomainModel.S101 {
             [IgnoreDataMember]
             public override string Code => nameof(SpanFixed);
 
+            public class AdditionalInformation_theInformation : AdditionalInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theInformationInformationTypes => ["ContactDetails", "NauticalInformation", "NonStandardWorkingDay", "ServiceHours"];
+
+                public AdditionalInformation_theInformation() {
+                    base.AssociationConnectorTypeName = typeof(SpanFixed).Name;
+                }
+            };
+            public class BridgeAggregation_theCollection : BridgeAggregation {
+                public override roleType? roleType => DomainModel.roleType.aggregation;
+
+                [IgnoreDataMember]
+                public override String[] theCollectionFeatureTypes => ["Bridge"];
+
+                public BridgeAggregation_theCollection() {
+                    base.AssociationConnectorTypeName = typeof(SpanFixed).Name;
+                }
+            };
+            public class StructureEquipment_theEquipment : StructureEquipment {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theEquipmentFeatureTypes => ["Daymark", "DistanceMark", "FogSignal", "LightAllAround", "LightFogDetector", "PhysicalAISAidToNavigation", "RadarTransponderBeacon", "Retroreflector", "SignalStationTraffic", "SignalStationWarning", "LightSectored", "LightAirObstruction"];
+
+                public StructureEquipment_theEquipment() {
+                    base.AssociationConnectorTypeName = typeof(SpanFixed).Name;
+                }
+            };
+            public class AidsToNavigationAssociation_theCollection : AidsToNavigationAssociation {
+                public override roleType? roleType => DomainModel.roleType.aggregation;
+
+                [IgnoreDataMember]
+                public override String[] theCollectionFeatureTypes => ["FairwaySystem", "TrafficSeparationScheme", "TwoWayRoute"];
+
+                public AidsToNavigationAssociation_theCollection() {
+                    base.AssociationConnectorTypeName = typeof(SpanFixed).Name;
+                }
+            };
+            public class TextAssociation_theCartographicText : TextAssociation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theCartographicTextFeatureTypes => ["TextPlacement"];
+
+                public TextAssociation_theCartographicText() {
+                    base.AssociationConnectorTypeName = typeof(SpanFixed).Name;
+                }
+            };
+            public class UpdatedInformation_theUpdate : UpdatedInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
+
+                public UpdatedInformation_theUpdate() {
+                    base.AssociationConnectorTypeName = typeof(SpanFixed).Name;
+                }
+            };
             public SpanFixed() {
                 verticalClearanceFixed = new verticalClearanceFixed()
                 {
@@ -6161,6 +7575,66 @@ namespace S100Framework.DomainModel.S101 {
             [IgnoreDataMember]
             public override string Code => nameof(SpanOpening);
 
+            public class AdditionalInformation_theInformation : AdditionalInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theInformationInformationTypes => ["ContactDetails", "NauticalInformation", "NonStandardWorkingDay", "ServiceHours"];
+
+                public AdditionalInformation_theInformation() {
+                    base.AssociationConnectorTypeName = typeof(SpanOpening).Name;
+                }
+            };
+            public class BridgeAggregation_theCollection : BridgeAggregation {
+                public override roleType? roleType => DomainModel.roleType.aggregation;
+
+                [IgnoreDataMember]
+                public override String[] theCollectionFeatureTypes => ["Bridge"];
+
+                public BridgeAggregation_theCollection() {
+                    base.AssociationConnectorTypeName = typeof(SpanOpening).Name;
+                }
+            };
+            public class StructureEquipment_theEquipment : StructureEquipment {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theEquipmentFeatureTypes => ["Daymark", "DistanceMark", "FogSignal", "LightAllAround", "LightFogDetector", "PhysicalAISAidToNavigation", "RadarTransponderBeacon", "Retroreflector", "SignalStationTraffic", "SignalStationWarning", "LightSectored", "LightAirObstruction"];
+
+                public StructureEquipment_theEquipment() {
+                    base.AssociationConnectorTypeName = typeof(SpanOpening).Name;
+                }
+            };
+            public class AidsToNavigationAssociation_theCollection : AidsToNavigationAssociation {
+                public override roleType? roleType => DomainModel.roleType.aggregation;
+
+                [IgnoreDataMember]
+                public override String[] theCollectionFeatureTypes => ["FairwaySystem", "TrafficSeparationScheme", "TwoWayRoute"];
+
+                public AidsToNavigationAssociation_theCollection() {
+                    base.AssociationConnectorTypeName = typeof(SpanOpening).Name;
+                }
+            };
+            public class TextAssociation_theCartographicText : TextAssociation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theCartographicTextFeatureTypes => ["TextPlacement"];
+
+                public TextAssociation_theCartographicText() {
+                    base.AssociationConnectorTypeName = typeof(SpanOpening).Name;
+                }
+            };
+            public class UpdatedInformation_theUpdate : UpdatedInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
+
+                public UpdatedInformation_theUpdate() {
+                    base.AssociationConnectorTypeName = typeof(SpanOpening).Name;
+                }
+            };
             public SpanOpening() {
                 verticalClearanceClosed = new verticalClearanceClosed()
                 {
@@ -6268,6 +7742,56 @@ namespace S100Framework.DomainModel.S101 {
             [IgnoreDataMember]
             public override string Code => nameof(Conveyor);
 
+            public class AdditionalInformation_theInformation : AdditionalInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theInformationInformationTypes => ["ContactDetails", "NauticalInformation", "NonStandardWorkingDay", "ServiceHours"];
+
+                public AdditionalInformation_theInformation() {
+                    base.AssociationConnectorTypeName = typeof(Conveyor).Name;
+                }
+            };
+            public class StructureEquipment_theEquipment : StructureEquipment {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theEquipmentFeatureTypes => ["Daymark", "DistanceMark", "FogSignal", "LightAllAround", "LightFogDetector", "PhysicalAISAidToNavigation", "RadarTransponderBeacon", "Retroreflector", "SignalStationTraffic", "SignalStationWarning", "LightSectored", "LightAirObstruction"];
+
+                public StructureEquipment_theEquipment() {
+                    base.AssociationConnectorTypeName = typeof(Conveyor).Name;
+                }
+            };
+            public class AidsToNavigationAssociation_theCollection : AidsToNavigationAssociation {
+                public override roleType? roleType => DomainModel.roleType.aggregation;
+
+                [IgnoreDataMember]
+                public override String[] theCollectionFeatureTypes => ["FairwaySystem", "TrafficSeparationScheme", "TwoWayRoute"];
+
+                public AidsToNavigationAssociation_theCollection() {
+                    base.AssociationConnectorTypeName = typeof(Conveyor).Name;
+                }
+            };
+            public class UpdatedInformation_theUpdate : UpdatedInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
+
+                public UpdatedInformation_theUpdate() {
+                    base.AssociationConnectorTypeName = typeof(Conveyor).Name;
+                }
+            };
+            public class TextAssociation_theCartographicText : TextAssociation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theCartographicTextFeatureTypes => ["TextPlacement"];
+
+                public TextAssociation_theCartographicText() {
+                    base.AssociationConnectorTypeName = typeof(Conveyor).Name;
+                }
+            };
             public Conveyor() {
             }
         }
@@ -6328,6 +7852,46 @@ namespace S100Framework.DomainModel.S101 {
             [IgnoreDataMember]
             public override string Code => nameof(CableOverhead);
 
+            public class AdditionalInformation_theInformation : AdditionalInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theInformationInformationTypes => ["ContactDetails", "NauticalInformation"];
+
+                public AdditionalInformation_theInformation() {
+                    base.AssociationConnectorTypeName = typeof(CableOverhead).Name;
+                }
+            };
+            public class StructureEquipment_theEquipment : StructureEquipment {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theEquipmentFeatureTypes => ["RadarReflector"];
+
+                public StructureEquipment_theEquipment() {
+                    base.AssociationConnectorTypeName = typeof(CableOverhead).Name;
+                }
+            };
+            public class UpdatedInformation_theUpdate : UpdatedInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
+
+                public UpdatedInformation_theUpdate() {
+                    base.AssociationConnectorTypeName = typeof(CableOverhead).Name;
+                }
+            };
+            public class TextAssociation_theCartographicText : TextAssociation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theCartographicTextFeatureTypes => ["TextPlacement"];
+
+                public TextAssociation_theCartographicText() {
+                    base.AssociationConnectorTypeName = typeof(CableOverhead).Name;
+                }
+            };
             public CableOverhead() {
             }
         }
@@ -6397,6 +7961,56 @@ namespace S100Framework.DomainModel.S101 {
             [IgnoreDataMember]
             public override string Code => nameof(PipelineOverhead);
 
+            public class AdditionalInformation_theInformation : AdditionalInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theInformationInformationTypes => ["ContactDetails", "NauticalInformation"];
+
+                public AdditionalInformation_theInformation() {
+                    base.AssociationConnectorTypeName = typeof(PipelineOverhead).Name;
+                }
+            };
+            public class StructureEquipment_theEquipment : StructureEquipment {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theEquipmentFeatureTypes => ["Daymark", "DistanceMark", "FogSignal", "LightAllAround", "LightFogDetector", "PhysicalAISAidToNavigation", "RadarTransponderBeacon", "Retroreflector", "SignalStationTraffic", "SignalStationWarning", "LightSectored", "RadarReflector"];
+
+                public StructureEquipment_theEquipment() {
+                    base.AssociationConnectorTypeName = typeof(PipelineOverhead).Name;
+                }
+            };
+            public class AidsToNavigationAssociation_theCollection : AidsToNavigationAssociation {
+                public override roleType? roleType => DomainModel.roleType.aggregation;
+
+                [IgnoreDataMember]
+                public override String[] theCollectionFeatureTypes => ["FairwaySystem", "TrafficSeparationScheme", "TwoWayRoute"];
+
+                public AidsToNavigationAssociation_theCollection() {
+                    base.AssociationConnectorTypeName = typeof(PipelineOverhead).Name;
+                }
+            };
+            public class UpdatedInformation_theUpdate : UpdatedInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
+
+                public UpdatedInformation_theUpdate() {
+                    base.AssociationConnectorTypeName = typeof(PipelineOverhead).Name;
+                }
+            };
+            public class TextAssociation_theCartographicText : TextAssociation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theCartographicTextFeatureTypes => ["TextPlacement"];
+
+                public TextAssociation_theCartographicText() {
+                    base.AssociationConnectorTypeName = typeof(PipelineOverhead).Name;
+                }
+            };
             public PipelineOverhead() {
             }
         }
@@ -6479,6 +8093,76 @@ namespace S100Framework.DomainModel.S101 {
             [IgnoreDataMember]
             public override string Code => nameof(PylonBridgeSupport);
 
+            public class AdditionalInformation_theInformation : AdditionalInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theInformationInformationTypes => ["NauticalInformation"];
+
+                public AdditionalInformation_theInformation() {
+                    base.AssociationConnectorTypeName = typeof(PylonBridgeSupport).Name;
+                }
+            };
+            public class BridgeAggregation_theCollection : BridgeAggregation {
+                public override roleType? roleType => DomainModel.roleType.aggregation;
+
+                [IgnoreDataMember]
+                public override String[] theCollectionFeatureTypes => ["Bridge"];
+
+                public BridgeAggregation_theCollection() {
+                    base.AssociationConnectorTypeName = typeof(PylonBridgeSupport).Name;
+                }
+            };
+            public class RoofedStructureAggregation_theRoofedStructure : RoofedStructureAggregation {
+                public override roleType? roleType => DomainModel.roleType.aggregation;
+
+                [IgnoreDataMember]
+                public override String[] theRoofedStructureFeatureTypes => ["StructureOverNavigableWater"];
+
+                public RoofedStructureAggregation_theRoofedStructure() {
+                    base.AssociationConnectorTypeName = typeof(PylonBridgeSupport).Name;
+                }
+            };
+            public class StructureEquipment_theEquipment : StructureEquipment {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theEquipmentFeatureTypes => ["Daymark", "DistanceMark", "FogSignal", "LightAllAround", "LightFogDetector", "PhysicalAISAidToNavigation", "RadarTransponderBeacon", "Retroreflector", "SignalStationTraffic", "SignalStationWarning", "LightSectored", "Bollard", "LightAirObstruction"];
+
+                public StructureEquipment_theEquipment() {
+                    base.AssociationConnectorTypeName = typeof(PylonBridgeSupport).Name;
+                }
+            };
+            public class AidsToNavigationAssociation_theCollection : AidsToNavigationAssociation {
+                public override roleType? roleType => DomainModel.roleType.aggregation;
+
+                [IgnoreDataMember]
+                public override String[] theCollectionFeatureTypes => ["FairwaySystem", "TrafficSeparationScheme", "TwoWayRoute"];
+
+                public AidsToNavigationAssociation_theCollection() {
+                    base.AssociationConnectorTypeName = typeof(PylonBridgeSupport).Name;
+                }
+            };
+            public class TextAssociation_theCartographicText : TextAssociation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theCartographicTextFeatureTypes => ["TextPlacement"];
+
+                public TextAssociation_theCartographicText() {
+                    base.AssociationConnectorTypeName = typeof(PylonBridgeSupport).Name;
+                }
+            };
+            public class UpdatedInformation_theUpdate : UpdatedInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
+
+                public UpdatedInformation_theUpdate() {
+                    base.AssociationConnectorTypeName = typeof(PylonBridgeSupport).Name;
+                }
+            };
             public PylonBridgeSupport() {
             }
         }
@@ -6550,6 +8234,36 @@ namespace S100Framework.DomainModel.S101 {
             [IgnoreDataMember]
             public override string Code => nameof(FenceWall);
 
+            public class AdditionalInformation_theInformation : AdditionalInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theInformationInformationTypes => ["NauticalInformation"];
+
+                public AdditionalInformation_theInformation() {
+                    base.AssociationConnectorTypeName = typeof(FenceWall).Name;
+                }
+            };
+            public class UpdatedInformation_theUpdate : UpdatedInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
+
+                public UpdatedInformation_theUpdate() {
+                    base.AssociationConnectorTypeName = typeof(FenceWall).Name;
+                }
+            };
+            public class TextAssociation_theCartographicText : TextAssociation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theCartographicTextFeatureTypes => ["TextPlacement"];
+
+                public TextAssociation_theCartographicText() {
+                    base.AssociationConnectorTypeName = typeof(FenceWall).Name;
+                }
+            };
             public FenceWall() {
             }
         }
@@ -6579,6 +8293,36 @@ namespace S100Framework.DomainModel.S101 {
             [IgnoreDataMember]
             public override string Code => nameof(Railway);
 
+            public class AdditionalInformation_theInformation : AdditionalInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theInformationInformationTypes => ["ContactDetails", "NauticalInformation"];
+
+                public AdditionalInformation_theInformation() {
+                    base.AssociationConnectorTypeName = typeof(Railway).Name;
+                }
+            };
+            public class UpdatedInformation_theUpdate : UpdatedInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
+
+                public UpdatedInformation_theUpdate() {
+                    base.AssociationConnectorTypeName = typeof(Railway).Name;
+                }
+            };
+            public class TextAssociation_theCartographicText : TextAssociation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theCartographicTextFeatureTypes => ["TextPlacement"];
+
+                public TextAssociation_theCartographicText() {
+                    base.AssociationConnectorTypeName = typeof(Railway).Name;
+                }
+            };
             public Railway() {
             }
         }
@@ -6621,6 +8365,36 @@ namespace S100Framework.DomainModel.S101 {
             [IgnoreDataMember]
             public override string Code => nameof(Road);
 
+            public class AdditionalInformation_theInformation : AdditionalInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theInformationInformationTypes => ["NauticalInformation"];
+
+                public AdditionalInformation_theInformation() {
+                    base.AssociationConnectorTypeName = typeof(Road).Name;
+                }
+            };
+            public class UpdatedInformation_theUpdate : UpdatedInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
+
+                public UpdatedInformation_theUpdate() {
+                    base.AssociationConnectorTypeName = typeof(Road).Name;
+                }
+            };
+            public class TextAssociation_theCartographicText : TextAssociation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theCartographicTextFeatureTypes => ["TextPlacement"];
+
+                public TextAssociation_theCartographicText() {
+                    base.AssociationConnectorTypeName = typeof(Road).Name;
+                }
+            };
             public Road() {
             }
         }
@@ -6669,6 +8443,36 @@ namespace S100Framework.DomainModel.S101 {
             [IgnoreDataMember]
             public override string Code => nameof(Tunnel);
 
+            public class AdditionalInformation_theInformation : AdditionalInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theInformationInformationTypes => ["ContactDetails", "NauticalInformation"];
+
+                public AdditionalInformation_theInformation() {
+                    base.AssociationConnectorTypeName = typeof(Tunnel).Name;
+                }
+            };
+            public class UpdatedInformation_theUpdate : UpdatedInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
+
+                public UpdatedInformation_theUpdate() {
+                    base.AssociationConnectorTypeName = typeof(Tunnel).Name;
+                }
+            };
+            public class TextAssociation_theCartographicText : TextAssociation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theCartographicTextFeatureTypes => ["TextPlacement"];
+
+                public TextAssociation_theCartographicText() {
+                    base.AssociationConnectorTypeName = typeof(Tunnel).Name;
+                }
+            };
             public Tunnel() {
             }
         }
@@ -6828,6 +8632,76 @@ namespace S100Framework.DomainModel.S101 {
             [IgnoreDataMember]
             public override string Code => nameof(Landmark);
 
+            public class AdditionalInformation_theInformation : AdditionalInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theInformationInformationTypes => ["ContactDetails", "NauticalInformation", "NonStandardWorkingDay", "ServiceHours"];
+
+                public AdditionalInformation_theInformation() {
+                    base.AssociationConnectorTypeName = typeof(Landmark).Name;
+                }
+            };
+            public class StructureEquipment_theEquipment : StructureEquipment {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theEquipmentFeatureTypes => ["Daymark", "DistanceMark", "FogSignal", "Helipad", "LightAllAround", "LightFogDetector", "PhysicalAISAidToNavigation", "RadarTransponderBeacon", "Retroreflector", "SignalStationTraffic", "SignalStationWarning", "LightSectored", "Bollard", "LightAirObstruction"];
+
+                public StructureEquipment_theEquipment() {
+                    base.AssociationConnectorTypeName = typeof(Landmark).Name;
+                }
+            };
+            public class AidsToNavigationAssociation_theCollection : AidsToNavigationAssociation {
+                public override roleType? roleType => DomainModel.roleType.aggregation;
+
+                [IgnoreDataMember]
+                public override String[] theCollectionFeatureTypes => ["DeepWaterRoute", "FairwaySystem", "TrafficSeparationScheme", "TwoWayRoute"];
+
+                public AidsToNavigationAssociation_theCollection() {
+                    base.AssociationConnectorTypeName = typeof(Landmark).Name;
+                }
+            };
+            public class RangeSystemAggregation_theCollection : RangeSystemAggregation {
+                public override roleType? roleType => DomainModel.roleType.aggregation;
+
+                [IgnoreDataMember]
+                public override String[] theCollectionFeatureTypes => ["RangeSystem"];
+
+                public RangeSystemAggregation_theCollection() {
+                    base.AssociationConnectorTypeName = typeof(Landmark).Name;
+                }
+            };
+            public class FairwayAuxiliary_thePrimaryFeature : FairwayAuxiliary {
+                public override roleType? roleType => DomainModel.roleType.aggregation;
+
+                [IgnoreDataMember]
+                public override String[] thePrimaryFeatureFeatureTypes => ["Fairway"];
+
+                public FairwayAuxiliary_thePrimaryFeature() {
+                    base.AssociationConnectorTypeName = typeof(Landmark).Name;
+                }
+            };
+            public class UpdatedInformation_theUpdate : UpdatedInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
+
+                public UpdatedInformation_theUpdate() {
+                    base.AssociationConnectorTypeName = typeof(Landmark).Name;
+                }
+            };
+            public class TextAssociation_theCartographicText : TextAssociation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theCartographicTextFeatureTypes => ["TextPlacement"];
+
+                public TextAssociation_theCartographicText() {
+                    base.AssociationConnectorTypeName = typeof(Landmark).Name;
+                }
+            };
             public Landmark() {
                 categoryOfLandmark = new();
             }
@@ -6927,6 +8801,66 @@ namespace S100Framework.DomainModel.S101 {
             [IgnoreDataMember]
             public override string Code => nameof(SiloTank);
 
+            public class AdditionalInformation_theInformation : AdditionalInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theInformationInformationTypes => ["ContactDetails", "NauticalInformation"];
+
+                public AdditionalInformation_theInformation() {
+                    base.AssociationConnectorTypeName = typeof(SiloTank).Name;
+                }
+            };
+            public class StructureEquipment_theEquipment : StructureEquipment {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theEquipmentFeatureTypes => ["Daymark", "DistanceMark", "FogSignal", "LightAllAround", "LightFogDetector", "PhysicalAISAidToNavigation", "RadarTransponderBeacon", "Retroreflector", "SignalStationTraffic", "SignalStationWarning", "LightSectored"];
+
+                public StructureEquipment_theEquipment() {
+                    base.AssociationConnectorTypeName = typeof(SiloTank).Name;
+                }
+            };
+            public class AidsToNavigationAssociation_theCollection : AidsToNavigationAssociation {
+                public override roleType? roleType => DomainModel.roleType.aggregation;
+
+                [IgnoreDataMember]
+                public override String[] theCollectionFeatureTypes => ["DeepWaterRoute", "FairwaySystem", "TrafficSeparationScheme", "TwoWayRoute"];
+
+                public AidsToNavigationAssociation_theCollection() {
+                    base.AssociationConnectorTypeName = typeof(SiloTank).Name;
+                }
+            };
+            public class RangeSystemAggregation_theCollection : RangeSystemAggregation {
+                public override roleType? roleType => DomainModel.roleType.aggregation;
+
+                [IgnoreDataMember]
+                public override String[] theCollectionFeatureTypes => ["RangeSystem"];
+
+                public RangeSystemAggregation_theCollection() {
+                    base.AssociationConnectorTypeName = typeof(SiloTank).Name;
+                }
+            };
+            public class UpdatedInformation_theUpdate : UpdatedInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
+
+                public UpdatedInformation_theUpdate() {
+                    base.AssociationConnectorTypeName = typeof(SiloTank).Name;
+                }
+            };
+            public class TextAssociation_theCartographicText : TextAssociation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theCartographicTextFeatureTypes => ["TextPlacement"];
+
+                public TextAssociation_theCartographicText() {
+                    base.AssociationConnectorTypeName = typeof(SiloTank).Name;
+                }
+            };
             public SiloTank() {
             }
         }
@@ -7024,6 +8958,56 @@ namespace S100Framework.DomainModel.S101 {
             [IgnoreDataMember]
             public override string Code => nameof(WindTurbine);
 
+            public class AdditionalInformation_theInformation : AdditionalInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theInformationInformationTypes => ["ContactDetails", "NauticalInformation"];
+
+                public AdditionalInformation_theInformation() {
+                    base.AssociationConnectorTypeName = typeof(WindTurbine).Name;
+                }
+            };
+            public class StructureEquipment_theEquipment : StructureEquipment {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theEquipmentFeatureTypes => ["Daymark", "DistanceMark", "FogSignal", "LightAllAround", "LightFogDetector", "PhysicalAISAidToNavigation", "RadarTransponderBeacon", "Retroreflector", "SignalStationTraffic", "SignalStationWarning", "LightSectored", "LightAirObstruction"];
+
+                public StructureEquipment_theEquipment() {
+                    base.AssociationConnectorTypeName = typeof(WindTurbine).Name;
+                }
+            };
+            public class AidsToNavigationAssociation_theCollection : AidsToNavigationAssociation {
+                public override roleType? roleType => DomainModel.roleType.aggregation;
+
+                [IgnoreDataMember]
+                public override String[] theCollectionFeatureTypes => ["DeepWaterRoute", "FairwaySystem", "TrafficSeparationScheme", "TwoWayRoute"];
+
+                public AidsToNavigationAssociation_theCollection() {
+                    base.AssociationConnectorTypeName = typeof(WindTurbine).Name;
+                }
+            };
+            public class UpdatedInformation_theUpdate : UpdatedInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
+
+                public UpdatedInformation_theUpdate() {
+                    base.AssociationConnectorTypeName = typeof(WindTurbine).Name;
+                }
+            };
+            public class TextAssociation_theCartographicText : TextAssociation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theCartographicTextFeatureTypes => ["TextPlacement"];
+
+                public TextAssociation_theCartographicText() {
+                    base.AssociationConnectorTypeName = typeof(WindTurbine).Name;
+                }
+            };
             public WindTurbine() {
             }
         }
@@ -7079,6 +9063,66 @@ namespace S100Framework.DomainModel.S101 {
             [IgnoreDataMember]
             public override string Code => nameof(FortifiedStructure);
 
+            public class AdditionalInformation_theInformation : AdditionalInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theInformationInformationTypes => ["NauticalInformation"];
+
+                public AdditionalInformation_theInformation() {
+                    base.AssociationConnectorTypeName = typeof(FortifiedStructure).Name;
+                }
+            };
+            public class StructureEquipment_theEquipment : StructureEquipment {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theEquipmentFeatureTypes => ["Daymark", "DistanceMark", "FogSignal", "LightAllAround", "LightFogDetector", "PhysicalAISAidToNavigation", "RadarTransponderBeacon", "Retroreflector", "SignalStationTraffic", "SignalStationWarning", "LightSectored", "Bollard"];
+
+                public StructureEquipment_theEquipment() {
+                    base.AssociationConnectorTypeName = typeof(FortifiedStructure).Name;
+                }
+            };
+            public class AidsToNavigationAssociation_theCollection : AidsToNavigationAssociation {
+                public override roleType? roleType => DomainModel.roleType.aggregation;
+
+                [IgnoreDataMember]
+                public override String[] theCollectionFeatureTypes => ["DeepWaterRoute", "FairwaySystem", "TrafficSeparationScheme", "TwoWayRoute"];
+
+                public AidsToNavigationAssociation_theCollection() {
+                    base.AssociationConnectorTypeName = typeof(FortifiedStructure).Name;
+                }
+            };
+            public class RangeSystemAggregation_theCollection : RangeSystemAggregation {
+                public override roleType? roleType => DomainModel.roleType.aggregation;
+
+                [IgnoreDataMember]
+                public override String[] theCollectionFeatureTypes => ["RangeSystem"];
+
+                public RangeSystemAggregation_theCollection() {
+                    base.AssociationConnectorTypeName = typeof(FortifiedStructure).Name;
+                }
+            };
+            public class UpdatedInformation_theUpdate : UpdatedInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
+
+                public UpdatedInformation_theUpdate() {
+                    base.AssociationConnectorTypeName = typeof(FortifiedStructure).Name;
+                }
+            };
+            public class TextAssociation_theCartographicText : TextAssociation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theCartographicTextFeatureTypes => ["TextPlacement"];
+
+                public TextAssociation_theCartographicText() {
+                    base.AssociationConnectorTypeName = typeof(FortifiedStructure).Name;
+                }
+            };
             public FortifiedStructure() {
             }
         }
@@ -7156,6 +9200,36 @@ namespace S100Framework.DomainModel.S101 {
             [IgnoreDataMember]
             public override string Code => nameof(ProductionStorageArea);
 
+            public class AdditionalInformation_theInformation : AdditionalInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theInformationInformationTypes => ["ContactDetails", "NauticalInformation", "NonStandardWorkingDay", "ServiceHours"];
+
+                public AdditionalInformation_theInformation() {
+                    base.AssociationConnectorTypeName = typeof(ProductionStorageArea).Name;
+                }
+            };
+            public class UpdatedInformation_theUpdate : UpdatedInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
+
+                public UpdatedInformation_theUpdate() {
+                    base.AssociationConnectorTypeName = typeof(ProductionStorageArea).Name;
+                }
+            };
+            public class TextAssociation_theCartographicText : TextAssociation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theCartographicTextFeatureTypes => ["TextPlacement"];
+
+                public TextAssociation_theCartographicText() {
+                    base.AssociationConnectorTypeName = typeof(ProductionStorageArea).Name;
+                }
+            };
             public ProductionStorageArea() {
             }
         }
@@ -7181,6 +9255,36 @@ namespace S100Framework.DomainModel.S101 {
             [IgnoreDataMember]
             public override string Code => nameof(Checkpoint);
 
+            public class AdditionalInformation_theInformation : AdditionalInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theInformationInformationTypes => ["ContactDetails", "NauticalInformation", "NonStandardWorkingDay", "ServiceHours"];
+
+                public AdditionalInformation_theInformation() {
+                    base.AssociationConnectorTypeName = typeof(Checkpoint).Name;
+                }
+            };
+            public class UpdatedInformation_theUpdate : UpdatedInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
+
+                public UpdatedInformation_theUpdate() {
+                    base.AssociationConnectorTypeName = typeof(Checkpoint).Name;
+                }
+            };
+            public class TextAssociation_theCartographicText : TextAssociation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theCartographicTextFeatureTypes => ["TextPlacement"];
+
+                public TextAssociation_theCartographicText() {
+                    base.AssociationConnectorTypeName = typeof(Checkpoint).Name;
+                }
+            };
             public Checkpoint() {
             }
         }
@@ -7245,6 +9349,56 @@ namespace S100Framework.DomainModel.S101 {
             [IgnoreDataMember]
             public override string Code => nameof(Hulk);
 
+            public class AdditionalInformation_theInformation : AdditionalInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theInformationInformationTypes => ["NauticalInformation"];
+
+                public AdditionalInformation_theInformation() {
+                    base.AssociationConnectorTypeName = typeof(Hulk).Name;
+                }
+            };
+            public class StructureEquipment_theEquipment : StructureEquipment {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theEquipmentFeatureTypes => ["Daymark", "DistanceMark", "FogSignal", "LightAllAround", "LightFogDetector", "PhysicalAISAidToNavigation", "RadarTransponderBeacon", "Retroreflector", "SignalStationTraffic", "SignalStationWarning", "Bollard"];
+
+                public StructureEquipment_theEquipment() {
+                    base.AssociationConnectorTypeName = typeof(Hulk).Name;
+                }
+            };
+            public class AidsToNavigationAssociation_theCollection : AidsToNavigationAssociation {
+                public override roleType? roleType => DomainModel.roleType.aggregation;
+
+                [IgnoreDataMember]
+                public override String[] theCollectionFeatureTypes => ["FairwaySystem", "TrafficSeparationScheme", "TwoWayRoute"];
+
+                public AidsToNavigationAssociation_theCollection() {
+                    base.AssociationConnectorTypeName = typeof(Hulk).Name;
+                }
+            };
+            public class UpdatedInformation_theUpdate : UpdatedInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
+
+                public UpdatedInformation_theUpdate() {
+                    base.AssociationConnectorTypeName = typeof(Hulk).Name;
+                }
+            };
+            public class TextAssociation_theCartographicText : TextAssociation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theCartographicTextFeatureTypes => ["TextPlacement"];
+
+                public TextAssociation_theCartographicText() {
+                    base.AssociationConnectorTypeName = typeof(Hulk).Name;
+                }
+            };
             public Hulk() {
             }
         }
@@ -7316,6 +9470,76 @@ namespace S100Framework.DomainModel.S101 {
             [IgnoreDataMember]
             public override string Code => nameof(Pile);
 
+            public class AdditionalInformation_theInformation : AdditionalInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theInformationInformationTypes => ["NauticalInformation"];
+
+                public AdditionalInformation_theInformation() {
+                    base.AssociationConnectorTypeName = typeof(Pile).Name;
+                }
+            };
+            public class StructureEquipment_theEquipment : StructureEquipment {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theEquipmentFeatureTypes => ["Daymark", "DistanceMark", "FogSignal", "LightAllAround", "LightFogDetector", "PhysicalAISAidToNavigation", "RadarTransponderBeacon", "Retroreflector", "SignalStationTraffic", "SignalStationWarning", "LightSectored", "Bollard"];
+
+                public StructureEquipment_theEquipment() {
+                    base.AssociationConnectorTypeName = typeof(Pile).Name;
+                }
+            };
+            public class AidsToNavigationAssociation_theCollection : AidsToNavigationAssociation {
+                public override roleType? roleType => DomainModel.roleType.aggregation;
+
+                [IgnoreDataMember]
+                public override String[] theCollectionFeatureTypes => ["ArchipelagicSeaLane", "DeepWaterRoute", "FairwaySystem", "TrafficSeparationScheme", "TwoWayRoute"];
+
+                public AidsToNavigationAssociation_theCollection() {
+                    base.AssociationConnectorTypeName = typeof(Pile).Name;
+                }
+            };
+            public class RangeSystemAggregation_theCollection : RangeSystemAggregation {
+                public override roleType? roleType => DomainModel.roleType.aggregation;
+
+                [IgnoreDataMember]
+                public override String[] theCollectionFeatureTypes => ["RangeSystem"];
+
+                public RangeSystemAggregation_theCollection() {
+                    base.AssociationConnectorTypeName = typeof(Pile).Name;
+                }
+            };
+            public class FairwayAuxiliary_thePrimaryFeature : FairwayAuxiliary {
+                public override roleType? roleType => DomainModel.roleType.aggregation;
+
+                [IgnoreDataMember]
+                public override String[] thePrimaryFeatureFeatureTypes => ["Fairway"];
+
+                public FairwayAuxiliary_thePrimaryFeature() {
+                    base.AssociationConnectorTypeName = typeof(Pile).Name;
+                }
+            };
+            public class UpdatedInformation_theUpdate : UpdatedInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
+
+                public UpdatedInformation_theUpdate() {
+                    base.AssociationConnectorTypeName = typeof(Pile).Name;
+                }
+            };
+            public class TextAssociation_theCartographicText : TextAssociation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theCartographicTextFeatureTypes => ["TextPlacement"];
+
+                public TextAssociation_theCartographicText() {
+                    base.AssociationConnectorTypeName = typeof(Pile).Name;
+                }
+            };
             public Pile() {
             }
         }
@@ -7355,6 +9579,36 @@ namespace S100Framework.DomainModel.S101 {
             [IgnoreDataMember]
             public override string Code => nameof(Dyke);
 
+            public class AdditionalInformation_theInformation : AdditionalInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theInformationInformationTypes => ["NauticalInformation"];
+
+                public AdditionalInformation_theInformation() {
+                    base.AssociationConnectorTypeName = typeof(Dyke).Name;
+                }
+            };
+            public class UpdatedInformation_theUpdate : UpdatedInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
+
+                public UpdatedInformation_theUpdate() {
+                    base.AssociationConnectorTypeName = typeof(Dyke).Name;
+                }
+            };
+            public class TextAssociation_theCartographicText : TextAssociation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theCartographicTextFeatureTypes => ["TextPlacement"];
+
+                public TextAssociation_theCartographicText() {
+                    base.AssociationConnectorTypeName = typeof(Dyke).Name;
+                }
+            };
             public Dyke() {
             }
         }
@@ -7466,6 +9720,56 @@ namespace S100Framework.DomainModel.S101 {
             [IgnoreDataMember]
             public override string Code => nameof(ShorelineConstruction);
 
+            public class AdditionalInformation_theInformation : AdditionalInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theInformationInformationTypes => ["NauticalInformation"];
+
+                public AdditionalInformation_theInformation() {
+                    base.AssociationConnectorTypeName = typeof(ShorelineConstruction).Name;
+                }
+            };
+            public class StructureEquipment_theEquipment : StructureEquipment {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theEquipmentFeatureTypes => ["Daymark", "DistanceMark", "FogSignal", "LightAllAround", "LightFogDetector", "PhysicalAISAidToNavigation", "RadarTransponderBeacon", "Retroreflector", "SignalStationTraffic", "SignalStationWarning", "LightSectored", "Bollard"];
+
+                public StructureEquipment_theEquipment() {
+                    base.AssociationConnectorTypeName = typeof(ShorelineConstruction).Name;
+                }
+            };
+            public class AidsToNavigationAssociation_theCollection : AidsToNavigationAssociation {
+                public override roleType? roleType => DomainModel.roleType.aggregation;
+
+                [IgnoreDataMember]
+                public override String[] theCollectionFeatureTypes => ["FairwaySystem", "TrafficSeparationScheme", "TwoWayRoute"];
+
+                public AidsToNavigationAssociation_theCollection() {
+                    base.AssociationConnectorTypeName = typeof(ShorelineConstruction).Name;
+                }
+            };
+            public class UpdatedInformation_theUpdate : UpdatedInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
+
+                public UpdatedInformation_theUpdate() {
+                    base.AssociationConnectorTypeName = typeof(ShorelineConstruction).Name;
+                }
+            };
+            public class TextAssociation_theCartographicText : TextAssociation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theCartographicTextFeatureTypes => ["TextPlacement"];
+
+                public TextAssociation_theCartographicText() {
+                    base.AssociationConnectorTypeName = typeof(ShorelineConstruction).Name;
+                }
+            };
             public ShorelineConstruction() {
             }
         }
@@ -7578,6 +9882,66 @@ namespace S100Framework.DomainModel.S101 {
             [IgnoreDataMember]
             public override string Code => nameof(StructureOverNavigableWater);
 
+            public class AdditionalInformation_theInformation : AdditionalInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theInformationInformationTypes => ["NauticalInformation"];
+
+                public AdditionalInformation_theInformation() {
+                    base.AssociationConnectorTypeName = typeof(StructureOverNavigableWater).Name;
+                }
+            };
+            public class AidsToNavigationAssociation_theCollection : AidsToNavigationAssociation {
+                public override roleType? roleType => DomainModel.roleType.aggregation;
+
+                [IgnoreDataMember]
+                public override String[] theCollectionFeatureTypes => ["FairwaySystem", "TrafficSeparationScheme", "TwoWayRoute"];
+
+                public AidsToNavigationAssociation_theCollection() {
+                    base.AssociationConnectorTypeName = typeof(StructureOverNavigableWater).Name;
+                }
+            };
+            public class RoofedStructureAggregation_theSupport : RoofedStructureAggregation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theSupportFeatureTypes => ["PylonBridgeSupport"];
+
+                public RoofedStructureAggregation_theSupport() {
+                    base.AssociationConnectorTypeName = typeof(StructureOverNavigableWater).Name;
+                }
+            };
+            public class StructureEquipment_theEquipment : StructureEquipment {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theEquipmentFeatureTypes => ["Daymark", "DistanceMark", "FogSignal", "LightAllAround", "LightFogDetector", "PhysicalAISAidToNavigation", "RadarTransponderBeacon", "Retroreflector", "SignalStationTraffic", "SignalStationWarning", "LightSectored"];
+
+                public StructureEquipment_theEquipment() {
+                    base.AssociationConnectorTypeName = typeof(StructureOverNavigableWater).Name;
+                }
+            };
+            public class TextAssociation_theCartographicText : TextAssociation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theCartographicTextFeatureTypes => ["TextPlacement"];
+
+                public TextAssociation_theCartographicText() {
+                    base.AssociationConnectorTypeName = typeof(StructureOverNavigableWater).Name;
+                }
+            };
+            public class UpdatedInformation_theUpdate : UpdatedInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
+
+                public UpdatedInformation_theUpdate() {
+                    base.AssociationConnectorTypeName = typeof(StructureOverNavigableWater).Name;
+                }
+            };
             public StructureOverNavigableWater() {
                 horizontalClearanceFixed = new horizontalClearanceFixed()
                 {
@@ -7631,6 +9995,36 @@ namespace S100Framework.DomainModel.S101 {
             [IgnoreDataMember]
             public override string Code => nameof(Causeway);
 
+            public class AdditionalInformation_theInformation : AdditionalInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theInformationInformationTypes => ["NauticalInformation"];
+
+                public AdditionalInformation_theInformation() {
+                    base.AssociationConnectorTypeName = typeof(Causeway).Name;
+                }
+            };
+            public class UpdatedInformation_theUpdate : UpdatedInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
+
+                public UpdatedInformation_theUpdate() {
+                    base.AssociationConnectorTypeName = typeof(Causeway).Name;
+                }
+            };
+            public class TextAssociation_theCartographicText : TextAssociation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theCartographicTextFeatureTypes => ["TextPlacement"];
+
+                public TextAssociation_theCartographicText() {
+                    base.AssociationConnectorTypeName = typeof(Causeway).Name;
+                }
+            };
             public Causeway() {
             }
         }
@@ -7669,6 +10063,36 @@ namespace S100Framework.DomainModel.S101 {
             [IgnoreDataMember]
             public override string Code => nameof(Canal);
 
+            public class AdditionalInformation_theInformation : AdditionalInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theInformationInformationTypes => ["NauticalInformation"];
+
+                public AdditionalInformation_theInformation() {
+                    base.AssociationConnectorTypeName = typeof(Canal).Name;
+                }
+            };
+            public class UpdatedInformation_theUpdate : UpdatedInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
+
+                public UpdatedInformation_theUpdate() {
+                    base.AssociationConnectorTypeName = typeof(Canal).Name;
+                }
+            };
+            public class TextAssociation_theCartographicText : TextAssociation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theCartographicTextFeatureTypes => ["TextPlacement"];
+
+                public TextAssociation_theCartographicText() {
+                    base.AssociationConnectorTypeName = typeof(Canal).Name;
+                }
+            };
             public Canal() {
             }
         }
@@ -7690,6 +10114,46 @@ namespace S100Framework.DomainModel.S101 {
             [IgnoreDataMember]
             public override string Code => nameof(DistanceMark);
 
+            public class AdditionalInformation_theInformation : AdditionalInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theInformationInformationTypes => ["NauticalInformation"];
+
+                public AdditionalInformation_theInformation() {
+                    base.AssociationConnectorTypeName = typeof(DistanceMark).Name;
+                }
+            };
+            public class StructureEquipment_theStructure : StructureEquipment {
+                public override roleType? roleType => DomainModel.roleType.composition;
+
+                [IgnoreDataMember]
+                public override String[] theStructureFeatureTypes => ["Bridge", "Building", "Crane", "CardinalBeacon", "CardinalBuoy", "Conveyor", "Dolphin", "EmergencyWreckMarkingBuoy", "FishingFacility", "FloatingDock", "FortifiedStructure", "Hulk", "InstallationBuoy", "IsolatedDangerBeacon", "IsolatedDangerBuoy", "Landmark", "LateralBeacon", "LateralBuoy", "LightFloat", "LightVessel", "MooringBuoy", "OffshorePlatform", "Pile", "PipelineOverhead", "Pontoon", "PylonBridgeSupport", "SafeWaterBeacon", "SafeWaterBuoy", "ShorelineConstruction", "SiloTank", "SpanFixed", "SpanOpening", "SpecialPurposeGeneralBeacon", "SpecialPurposeGeneralBuoy", "StructureOverNavigableWater", "WindTurbine", "Wreck", "Daymark"];
+
+                public StructureEquipment_theStructure() {
+                    base.AssociationConnectorTypeName = typeof(DistanceMark).Name;
+                }
+            };
+            public class UpdatedInformation_theUpdate : UpdatedInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
+
+                public UpdatedInformation_theUpdate() {
+                    base.AssociationConnectorTypeName = typeof(DistanceMark).Name;
+                }
+            };
+            public class TextAssociation_theCartographicText : TextAssociation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theCartographicTextFeatureTypes => ["TextPlacement"];
+
+                public TextAssociation_theCartographicText() {
+                    base.AssociationConnectorTypeName = typeof(DistanceMark).Name;
+                }
+            };
             public DistanceMark() {
                 measuredDistanceValue = new measuredDistanceValue()
                 {
@@ -7762,6 +10226,36 @@ namespace S100Framework.DomainModel.S101 {
             [IgnoreDataMember]
             public override string Code => nameof(Gate);
 
+            public class AdditionalInformation_theInformation : AdditionalInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theInformationInformationTypes => ["ContactDetails", "NauticalInformation", "NonStandardWorkingDay", "ServiceHours"];
+
+                public AdditionalInformation_theInformation() {
+                    base.AssociationConnectorTypeName = typeof(Gate).Name;
+                }
+            };
+            public class UpdatedInformation_theUpdate : UpdatedInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
+
+                public UpdatedInformation_theUpdate() {
+                    base.AssociationConnectorTypeName = typeof(Gate).Name;
+                }
+            };
+            public class TextAssociation_theCartographicText : TextAssociation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theCartographicTextFeatureTypes => ["TextPlacement"];
+
+                public TextAssociation_theCartographicText() {
+                    base.AssociationConnectorTypeName = typeof(Gate).Name;
+                }
+            };
             public Gate() {
             }
         }
@@ -7841,6 +10335,36 @@ namespace S100Framework.DomainModel.S101 {
             [IgnoreDataMember]
             public override string Code => nameof(Dam);
 
+            public class AdditionalInformation_theInformation : AdditionalInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theInformationInformationTypes => ["NauticalInformation"];
+
+                public AdditionalInformation_theInformation() {
+                    base.AssociationConnectorTypeName = typeof(Dam).Name;
+                }
+            };
+            public class UpdatedInformation_theUpdate : UpdatedInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
+
+                public UpdatedInformation_theUpdate() {
+                    base.AssociationConnectorTypeName = typeof(Dam).Name;
+                }
+            };
+            public class TextAssociation_theCartographicText : TextAssociation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theCartographicTextFeatureTypes => ["TextPlacement"];
+
+                public TextAssociation_theCartographicText() {
+                    base.AssociationConnectorTypeName = typeof(Dam).Name;
+                }
+            };
             public Dam() {
             }
         }
@@ -7927,6 +10451,56 @@ namespace S100Framework.DomainModel.S101 {
             [IgnoreDataMember]
             public override string Code => nameof(Crane);
 
+            public class AdditionalInformation_theInformation : AdditionalInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theInformationInformationTypes => ["ContactDetails", "NauticalInformation", "NonStandardWorkingDay", "ServiceHours"];
+
+                public AdditionalInformation_theInformation() {
+                    base.AssociationConnectorTypeName = typeof(Crane).Name;
+                }
+            };
+            public class StructureEquipment_theEquipment : StructureEquipment {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theEquipmentFeatureTypes => ["Daymark", "DistanceMark", "FogSignal", "LightAllAround", "LightFogDetector", "PhysicalAISAidToNavigation", "RadarTransponderBeacon", "Retroreflector", "SignalStationTraffic", "SignalStationWarning", "LightSectored", "LightAirObstruction"];
+
+                public StructureEquipment_theEquipment() {
+                    base.AssociationConnectorTypeName = typeof(Crane).Name;
+                }
+            };
+            public class AidsToNavigationAssociation_theCollection : AidsToNavigationAssociation {
+                public override roleType? roleType => DomainModel.roleType.aggregation;
+
+                [IgnoreDataMember]
+                public override String[] theCollectionFeatureTypes => ["DeepWaterRoute", "FairwaySystem", "TrafficSeparationScheme", "TwoWayRoute"];
+
+                public AidsToNavigationAssociation_theCollection() {
+                    base.AssociationConnectorTypeName = typeof(Crane).Name;
+                }
+            };
+            public class UpdatedInformation_theUpdate : UpdatedInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
+
+                public UpdatedInformation_theUpdate() {
+                    base.AssociationConnectorTypeName = typeof(Crane).Name;
+                }
+            };
+            public class TextAssociation_theCartographicText : TextAssociation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theCartographicTextFeatureTypes => ["TextPlacement"];
+
+                public TextAssociation_theCartographicText() {
+                    base.AssociationConnectorTypeName = typeof(Crane).Name;
+                }
+            };
             public Crane() {
             }
         }
@@ -7979,6 +10553,46 @@ namespace S100Framework.DomainModel.S101 {
             [IgnoreDataMember]
             public override string Code => nameof(Berth);
 
+            public class AdditionalInformation_theInformation : AdditionalInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theInformationInformationTypes => ["ContactDetails", "NauticalInformation", "NonStandardWorkingDay", "ServiceHours"];
+
+                public AdditionalInformation_theInformation() {
+                    base.AssociationConnectorTypeName = typeof(Berth).Name;
+                }
+            };
+            public class MooringTrotAggregation_theCollection : MooringTrotAggregation {
+                public override roleType? roleType => DomainModel.roleType.aggregation;
+
+                [IgnoreDataMember]
+                public override String[] theCollectionFeatureTypes => ["MooringTrot"];
+
+                public MooringTrotAggregation_theCollection() {
+                    base.AssociationConnectorTypeName = typeof(Berth).Name;
+                }
+            };
+            public class UpdatedInformation_theUpdate : UpdatedInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
+
+                public UpdatedInformation_theUpdate() {
+                    base.AssociationConnectorTypeName = typeof(Berth).Name;
+                }
+            };
+            public class TextAssociation_theCartographicText : TextAssociation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theCartographicTextFeatureTypes => ["TextPlacement"];
+
+                public TextAssociation_theCartographicText() {
+                    base.AssociationConnectorTypeName = typeof(Berth).Name;
+                }
+            };
             public Berth() {
                 featureName = new();
             }
@@ -8061,6 +10675,66 @@ namespace S100Framework.DomainModel.S101 {
             [IgnoreDataMember]
             public override string Code => nameof(Dolphin);
 
+            public class AdditionalInformation_theInformation : AdditionalInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theInformationInformationTypes => ["ContactDetails", "NauticalInformation"];
+
+                public AdditionalInformation_theInformation() {
+                    base.AssociationConnectorTypeName = typeof(Dolphin).Name;
+                }
+            };
+            public class StructureEquipment_theEquipment : StructureEquipment {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theEquipmentFeatureTypes => ["Daymark", "DistanceMark", "FogSignal", "LightAllAround", "LightFogDetector", "PhysicalAISAidToNavigation", "RadarTransponderBeacon", "Retroreflector", "SignalStationTraffic", "SignalStationWarning", "LightSectored", "Bollard"];
+
+                public StructureEquipment_theEquipment() {
+                    base.AssociationConnectorTypeName = typeof(Dolphin).Name;
+                }
+            };
+            public class AidsToNavigationAssociation_theCollection : AidsToNavigationAssociation {
+                public override roleType? roleType => DomainModel.roleType.aggregation;
+
+                [IgnoreDataMember]
+                public override String[] theCollectionFeatureTypes => ["DeepWaterRoute", "FairwaySystem", "TrafficSeparationScheme", "TwoWayRoute"];
+
+                public AidsToNavigationAssociation_theCollection() {
+                    base.AssociationConnectorTypeName = typeof(Dolphin).Name;
+                }
+            };
+            public class RangeSystemAggregation_theCollection : RangeSystemAggregation {
+                public override roleType? roleType => DomainModel.roleType.aggregation;
+
+                [IgnoreDataMember]
+                public override String[] theCollectionFeatureTypes => ["RangeSystem"];
+
+                public RangeSystemAggregation_theCollection() {
+                    base.AssociationConnectorTypeName = typeof(Dolphin).Name;
+                }
+            };
+            public class UpdatedInformation_theUpdate : UpdatedInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
+
+                public UpdatedInformation_theUpdate() {
+                    base.AssociationConnectorTypeName = typeof(Dolphin).Name;
+                }
+            };
+            public class TextAssociation_theCartographicText : TextAssociation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theCartographicTextFeatureTypes => ["TextPlacement"];
+
+                public TextAssociation_theCartographicText() {
+                    base.AssociationConnectorTypeName = typeof(Dolphin).Name;
+                }
+            };
             public Dolphin() {
                 categoryOfDolphin = new();
             }
@@ -8095,6 +10769,46 @@ namespace S100Framework.DomainModel.S101 {
             [IgnoreDataMember]
             public override string Code => nameof(Bollard);
 
+            public class AdditionalInformation_theInformation : AdditionalInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theInformationInformationTypes => ["NauticalInformation"];
+
+                public AdditionalInformation_theInformation() {
+                    base.AssociationConnectorTypeName = typeof(Bollard).Name;
+                }
+            };
+            public class StructureEquipment_theStructure : StructureEquipment {
+                public override roleType? roleType => DomainModel.roleType.composition;
+
+                [IgnoreDataMember]
+                public override String[] theStructureFeatureTypes => ["Dolphin", "FortifiedStructure", "Hulk", "Landmark", "OffshorePlatform", "Pile", "PylonBridgeSupport", "ShorelineConstruction"];
+
+                public StructureEquipment_theStructure() {
+                    base.AssociationConnectorTypeName = typeof(Bollard).Name;
+                }
+            };
+            public class UpdatedInformation_theUpdate : UpdatedInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
+
+                public UpdatedInformation_theUpdate() {
+                    base.AssociationConnectorTypeName = typeof(Bollard).Name;
+                }
+            };
+            public class TextAssociation_theCartographicText : TextAssociation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theCartographicTextFeatureTypes => ["TextPlacement"];
+
+                public TextAssociation_theCartographicText() {
+                    base.AssociationConnectorTypeName = typeof(Bollard).Name;
+                }
+            };
             public Bollard() {
             }
         }
@@ -8141,6 +10855,36 @@ namespace S100Framework.DomainModel.S101 {
             [IgnoreDataMember]
             public override string Code => nameof(DryDock);
 
+            public class AdditionalInformation_theInformation : AdditionalInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theInformationInformationTypes => ["ContactDetails", "NauticalInformation", "NonStandardWorkingDay", "ServiceHours"];
+
+                public AdditionalInformation_theInformation() {
+                    base.AssociationConnectorTypeName = typeof(DryDock).Name;
+                }
+            };
+            public class UpdatedInformation_theUpdate : UpdatedInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
+
+                public UpdatedInformation_theUpdate() {
+                    base.AssociationConnectorTypeName = typeof(DryDock).Name;
+                }
+            };
+            public class TextAssociation_theCartographicText : TextAssociation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theCartographicTextFeatureTypes => ["TextPlacement"];
+
+                public TextAssociation_theCartographicText() {
+                    base.AssociationConnectorTypeName = typeof(DryDock).Name;
+                }
+            };
             public DryDock() {
             }
         }
@@ -8207,6 +10951,56 @@ namespace S100Framework.DomainModel.S101 {
             [IgnoreDataMember]
             public override string Code => nameof(FloatingDock);
 
+            public class AdditionalInformation_theInformation : AdditionalInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theInformationInformationTypes => ["ContactDetails", "NauticalInformation", "NonStandardWorkingDay", "ServiceHours"];
+
+                public AdditionalInformation_theInformation() {
+                    base.AssociationConnectorTypeName = typeof(FloatingDock).Name;
+                }
+            };
+            public class StructureEquipment_theEquipment : StructureEquipment {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theEquipmentFeatureTypes => ["Daymark", "DistanceMark", "FogSignal", "LightAllAround", "LightFogDetector", "PhysicalAISAidToNavigation", "RadarTransponderBeacon", "Retroreflector", "SignalStationTraffic", "SignalStationWarning"];
+
+                public StructureEquipment_theEquipment() {
+                    base.AssociationConnectorTypeName = typeof(FloatingDock).Name;
+                }
+            };
+            public class AidsToNavigationAssociation_theCollection : AidsToNavigationAssociation {
+                public override roleType? roleType => DomainModel.roleType.aggregation;
+
+                [IgnoreDataMember]
+                public override String[] theCollectionFeatureTypes => ["FairwaySystem", "TrafficSeparationScheme", "TwoWayRoute"];
+
+                public AidsToNavigationAssociation_theCollection() {
+                    base.AssociationConnectorTypeName = typeof(FloatingDock).Name;
+                }
+            };
+            public class UpdatedInformation_theUpdate : UpdatedInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
+
+                public UpdatedInformation_theUpdate() {
+                    base.AssociationConnectorTypeName = typeof(FloatingDock).Name;
+                }
+            };
+            public class TextAssociation_theCartographicText : TextAssociation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theCartographicTextFeatureTypes => ["TextPlacement"];
+
+                public TextAssociation_theCartographicText() {
+                    base.AssociationConnectorTypeName = typeof(FloatingDock).Name;
+                }
+            };
             public FloatingDock() {
             }
         }
@@ -8247,6 +11041,66 @@ namespace S100Framework.DomainModel.S101 {
             [IgnoreDataMember]
             public override string Code => nameof(Pontoon);
 
+            public class AdditionalInformation_theInformation : AdditionalInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theInformationInformationTypes => ["NauticalInformation"];
+
+                public AdditionalInformation_theInformation() {
+                    base.AssociationConnectorTypeName = typeof(Pontoon).Name;
+                }
+            };
+            public class BridgeAggregation_theCollection : BridgeAggregation {
+                public override roleType? roleType => DomainModel.roleType.aggregation;
+
+                [IgnoreDataMember]
+                public override String[] theCollectionFeatureTypes => ["Bridge"];
+
+                public BridgeAggregation_theCollection() {
+                    base.AssociationConnectorTypeName = typeof(Pontoon).Name;
+                }
+            };
+            public class StructureEquipment_theEquipment : StructureEquipment {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theEquipmentFeatureTypes => ["Daymark", "DistanceMark", "FogSignal", "LightAllAround", "LightFogDetector", "PhysicalAISAidToNavigation", "RadarTransponderBeacon", "Retroreflector", "SignalStationTraffic", "SignalStationWarning"];
+
+                public StructureEquipment_theEquipment() {
+                    base.AssociationConnectorTypeName = typeof(Pontoon).Name;
+                }
+            };
+            public class AidsToNavigationAssociation_theCollection : AidsToNavigationAssociation {
+                public override roleType? roleType => DomainModel.roleType.aggregation;
+
+                [IgnoreDataMember]
+                public override String[] theCollectionFeatureTypes => ["FairwaySystem", "TrafficSeparationScheme", "TwoWayRoute"];
+
+                public AidsToNavigationAssociation_theCollection() {
+                    base.AssociationConnectorTypeName = typeof(Pontoon).Name;
+                }
+            };
+            public class UpdatedInformation_theUpdate : UpdatedInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
+
+                public UpdatedInformation_theUpdate() {
+                    base.AssociationConnectorTypeName = typeof(Pontoon).Name;
+                }
+            };
+            public class TextAssociation_theCartographicText : TextAssociation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theCartographicTextFeatureTypes => ["TextPlacement"];
+
+                public TextAssociation_theCartographicText() {
+                    base.AssociationConnectorTypeName = typeof(Pontoon).Name;
+                }
+            };
             public Pontoon() {
             }
         }
@@ -8284,6 +11138,36 @@ namespace S100Framework.DomainModel.S101 {
             [IgnoreDataMember]
             public override string Code => nameof(DockArea);
 
+            public class AdditionalInformation_theInformation : AdditionalInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theInformationInformationTypes => ["ContactDetails", "NauticalInformation", "NonStandardWorkingDay", "ServiceHours"];
+
+                public AdditionalInformation_theInformation() {
+                    base.AssociationConnectorTypeName = typeof(DockArea).Name;
+                }
+            };
+            public class UpdatedInformation_theUpdate : UpdatedInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
+
+                public UpdatedInformation_theUpdate() {
+                    base.AssociationConnectorTypeName = typeof(DockArea).Name;
+                }
+            };
+            public class TextAssociation_theCartographicText : TextAssociation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theCartographicTextFeatureTypes => ["TextPlacement"];
+
+                public TextAssociation_theCartographicText() {
+                    base.AssociationConnectorTypeName = typeof(DockArea).Name;
+                }
+            };
             public DockArea() {
             }
         }
@@ -8322,6 +11206,36 @@ namespace S100Framework.DomainModel.S101 {
             [IgnoreDataMember]
             public override string Code => nameof(Gridiron);
 
+            public class AdditionalInformation_theInformation : AdditionalInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theInformationInformationTypes => ["NauticalInformation"];
+
+                public AdditionalInformation_theInformation() {
+                    base.AssociationConnectorTypeName = typeof(Gridiron).Name;
+                }
+            };
+            public class UpdatedInformation_theUpdate : UpdatedInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
+
+                public UpdatedInformation_theUpdate() {
+                    base.AssociationConnectorTypeName = typeof(Gridiron).Name;
+                }
+            };
+            public class TextAssociation_theCartographicText : TextAssociation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theCartographicTextFeatureTypes => ["TextPlacement"];
+
+                public TextAssociation_theCartographicText() {
+                    base.AssociationConnectorTypeName = typeof(Gridiron).Name;
+                }
+            };
             public Gridiron() {
             }
         }
@@ -8352,6 +11266,36 @@ namespace S100Framework.DomainModel.S101 {
             [IgnoreDataMember]
             public override string Code => nameof(LockBasin);
 
+            public class AdditionalInformation_theInformation : AdditionalInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theInformationInformationTypes => ["ContactDetails", "NauticalInformation", "NonStandardWorkingDay", "ServiceHours"];
+
+                public AdditionalInformation_theInformation() {
+                    base.AssociationConnectorTypeName = typeof(LockBasin).Name;
+                }
+            };
+            public class UpdatedInformation_theUpdate : UpdatedInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
+
+                public UpdatedInformation_theUpdate() {
+                    base.AssociationConnectorTypeName = typeof(LockBasin).Name;
+                }
+            };
+            public class TextAssociation_theCartographicText : TextAssociation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theCartographicTextFeatureTypes => ["TextPlacement"];
+
+                public TextAssociation_theCartographicText() {
+                    base.AssociationConnectorTypeName = typeof(LockBasin).Name;
+                }
+            };
             public LockBasin() {
             }
         }
@@ -8368,6 +11312,46 @@ namespace S100Framework.DomainModel.S101 {
             [IgnoreDataMember]
             public override string Code => nameof(MooringTrot);
 
+            public class AdditionalInformation_theInformation : AdditionalInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theInformationInformationTypes => ["ContactDetails", "NauticalInformation"];
+
+                public AdditionalInformation_theInformation() {
+                    base.AssociationConnectorTypeName = typeof(MooringTrot).Name;
+                }
+            };
+            public class MooringTrotAggregation_theComponent : MooringTrotAggregation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theComponentFeatureTypes => ["Berth", "CableSubmarine", "MooringBuoy", "Obstruction"];
+
+                public MooringTrotAggregation_theComponent() {
+                    base.AssociationConnectorTypeName = typeof(MooringTrot).Name;
+                }
+            };
+            public class UpdatedInformation_theUpdate : UpdatedInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
+
+                public UpdatedInformation_theUpdate() {
+                    base.AssociationConnectorTypeName = typeof(MooringTrot).Name;
+                }
+            };
+            public class TextAssociation_theCartographicText : TextAssociation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theCartographicTextFeatureTypes => ["TextPlacement"];
+
+                public TextAssociation_theCartographicText() {
+                    base.AssociationConnectorTypeName = typeof(MooringTrot).Name;
+                }
+            };
             public MooringTrot() {
             }
         }
@@ -8439,6 +11423,36 @@ namespace S100Framework.DomainModel.S101 {
             [IgnoreDataMember]
             public override string Code => nameof(SeaAreaNamedWaterArea);
 
+            public class AdditionalInformation_theInformation : AdditionalInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theInformationInformationTypes => ["NauticalInformation"];
+
+                public AdditionalInformation_theInformation() {
+                    base.AssociationConnectorTypeName = typeof(SeaAreaNamedWaterArea).Name;
+                }
+            };
+            public class UpdatedInformation_theUpdate : UpdatedInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
+
+                public UpdatedInformation_theUpdate() {
+                    base.AssociationConnectorTypeName = typeof(SeaAreaNamedWaterArea).Name;
+                }
+            };
+            public class TextAssociation_theCartographicText : TextAssociation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theCartographicTextFeatureTypes => ["TextPlacement"];
+
+                public TextAssociation_theCartographicText() {
+                    base.AssociationConnectorTypeName = typeof(SeaAreaNamedWaterArea).Name;
+                }
+            };
             public SeaAreaNamedWaterArea() {
             }
         }
@@ -8466,6 +11480,36 @@ namespace S100Framework.DomainModel.S101 {
             [IgnoreDataMember]
             public override string Code => nameof(TidalStreamFloodEbb);
 
+            public class AdditionalInformation_theInformation : AdditionalInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theInformationInformationTypes => ["NauticalInformation"];
+
+                public AdditionalInformation_theInformation() {
+                    base.AssociationConnectorTypeName = typeof(TidalStreamFloodEbb).Name;
+                }
+            };
+            public class UpdatedInformation_theUpdate : UpdatedInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
+
+                public UpdatedInformation_theUpdate() {
+                    base.AssociationConnectorTypeName = typeof(TidalStreamFloodEbb).Name;
+                }
+            };
+            public class TextAssociation_theCartographicText : TextAssociation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theCartographicTextFeatureTypes => ["TextPlacement"];
+
+                public TextAssociation_theCartographicText() {
+                    base.AssociationConnectorTypeName = typeof(TidalStreamFloodEbb).Name;
+                }
+            };
             public TidalStreamFloodEbb() {
                 orientation = new orientation()
                 {
@@ -8500,6 +11544,36 @@ namespace S100Framework.DomainModel.S101 {
             [IgnoreDataMember]
             public override string Code => nameof(CurrentNonGravitational);
 
+            public class AdditionalInformation_theInformation : AdditionalInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theInformationInformationTypes => ["NauticalInformation"];
+
+                public AdditionalInformation_theInformation() {
+                    base.AssociationConnectorTypeName = typeof(CurrentNonGravitational).Name;
+                }
+            };
+            public class UpdatedInformation_theUpdate : UpdatedInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
+
+                public UpdatedInformation_theUpdate() {
+                    base.AssociationConnectorTypeName = typeof(CurrentNonGravitational).Name;
+                }
+            };
+            public class TextAssociation_theCartographicText : TextAssociation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theCartographicTextFeatureTypes => ["TextPlacement"];
+
+                public TextAssociation_theCartographicText() {
+                    base.AssociationConnectorTypeName = typeof(CurrentNonGravitational).Name;
+                }
+            };
             public CurrentNonGravitational() {
                 orientation = new orientation()
                 {
@@ -8530,6 +11604,36 @@ namespace S100Framework.DomainModel.S101 {
             [IgnoreDataMember]
             public override string Code => nameof(WaterTurbulence);
 
+            public class AdditionalInformation_theInformation : AdditionalInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theInformationInformationTypes => ["NauticalInformation"];
+
+                public AdditionalInformation_theInformation() {
+                    base.AssociationConnectorTypeName = typeof(WaterTurbulence).Name;
+                }
+            };
+            public class UpdatedInformation_theUpdate : UpdatedInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
+
+                public UpdatedInformation_theUpdate() {
+                    base.AssociationConnectorTypeName = typeof(WaterTurbulence).Name;
+                }
+            };
+            public class TextAssociation_theCartographicText : TextAssociation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theCartographicTextFeatureTypes => ["TextPlacement"];
+
+                public TextAssociation_theCartographicText() {
+                    base.AssociationConnectorTypeName = typeof(WaterTurbulence).Name;
+                }
+            };
             public WaterTurbulence() {
             }
         }
@@ -8550,6 +11654,36 @@ namespace S100Framework.DomainModel.S101 {
             [IgnoreDataMember]
             public override string Code => nameof(TidalStreamPanelData);
 
+            public class AdditionalInformation_theInformation : AdditionalInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theInformationInformationTypes => ["NauticalInformation"];
+
+                public AdditionalInformation_theInformation() {
+                    base.AssociationConnectorTypeName = typeof(TidalStreamPanelData).Name;
+                }
+            };
+            public class UpdatedInformation_theUpdate : UpdatedInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
+
+                public UpdatedInformation_theUpdate() {
+                    base.AssociationConnectorTypeName = typeof(TidalStreamPanelData).Name;
+                }
+            };
+            public class TextAssociation_theCartographicText : TextAssociation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theCartographicTextFeatureTypes => ["TextPlacement"];
+
+                public TextAssociation_theCartographicText() {
+                    base.AssociationConnectorTypeName = typeof(TidalStreamPanelData).Name;
+                }
+            };
             public TidalStreamPanelData() {
                 stationName = string.Empty;
                 tidalStreamPanelValues = new();
@@ -8595,6 +11729,36 @@ namespace S100Framework.DomainModel.S101 {
             [IgnoreDataMember]
             public override string Code => nameof(Sounding);
 
+            public class AdditionalInformation_theInformation : AdditionalInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theInformationInformationTypes => ["NauticalInformation"];
+
+                public AdditionalInformation_theInformation() {
+                    base.AssociationConnectorTypeName = typeof(Sounding).Name;
+                }
+            };
+            public class UpdatedInformation_theUpdate : UpdatedInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
+
+                public UpdatedInformation_theUpdate() {
+                    base.AssociationConnectorTypeName = typeof(Sounding).Name;
+                }
+            };
+            public class TextAssociation_theCartographicText : TextAssociation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theCartographicTextFeatureTypes => ["TextPlacement"];
+
+                public TextAssociation_theCartographicText() {
+                    base.AssociationConnectorTypeName = typeof(Sounding).Name;
+                }
+            };
             public Sounding() {
             }
         }
@@ -8654,6 +11818,46 @@ namespace S100Framework.DomainModel.S101 {
             [IgnoreDataMember]
             public override string Code => nameof(DredgedArea);
 
+            public class AdditionalInformation_theInformation : AdditionalInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theInformationInformationTypes => ["NauticalInformation"];
+
+                public AdditionalInformation_theInformation() {
+                    base.AssociationConnectorTypeName = typeof(DredgedArea).Name;
+                }
+            };
+            public class FairwayAuxiliary_thePrimaryFeature : FairwayAuxiliary {
+                public override roleType? roleType => DomainModel.roleType.aggregation;
+
+                [IgnoreDataMember]
+                public override String[] thePrimaryFeatureFeatureTypes => ["Fairway"];
+
+                public FairwayAuxiliary_thePrimaryFeature() {
+                    base.AssociationConnectorTypeName = typeof(DredgedArea).Name;
+                }
+            };
+            public class UpdatedInformation_theUpdate : UpdatedInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
+
+                public UpdatedInformation_theUpdate() {
+                    base.AssociationConnectorTypeName = typeof(DredgedArea).Name;
+                }
+            };
+            public class TextAssociation_theCartographicText : TextAssociation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theCartographicTextFeatureTypes => ["TextPlacement"];
+
+                public TextAssociation_theCartographicText() {
+                    base.AssociationConnectorTypeName = typeof(DredgedArea).Name;
+                }
+            };
             public DredgedArea() {
             }
         }
@@ -8671,6 +11875,46 @@ namespace S100Framework.DomainModel.S101 {
             [IgnoreDataMember]
             public override string Code => nameof(SweptArea);
 
+            public class AdditionalInformation_theInformation : AdditionalInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theInformationInformationTypes => ["NauticalInformation"];
+
+                public AdditionalInformation_theInformation() {
+                    base.AssociationConnectorTypeName = typeof(SweptArea).Name;
+                }
+            };
+            public class FairwayAuxiliary_thePrimaryFeature : FairwayAuxiliary {
+                public override roleType? roleType => DomainModel.roleType.aggregation;
+
+                [IgnoreDataMember]
+                public override String[] thePrimaryFeatureFeatureTypes => ["Fairway"];
+
+                public FairwayAuxiliary_thePrimaryFeature() {
+                    base.AssociationConnectorTypeName = typeof(SweptArea).Name;
+                }
+            };
+            public class UpdatedInformation_theUpdate : UpdatedInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
+
+                public UpdatedInformation_theUpdate() {
+                    base.AssociationConnectorTypeName = typeof(SweptArea).Name;
+                }
+            };
+            public class TextAssociation_theCartographicText : TextAssociation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theCartographicTextFeatureTypes => ["TextPlacement"];
+
+                public TextAssociation_theCartographicText() {
+                    base.AssociationConnectorTypeName = typeof(SweptArea).Name;
+                }
+            };
             public SweptArea() {
             }
         }
@@ -8688,6 +11932,26 @@ namespace S100Framework.DomainModel.S101 {
             [IgnoreDataMember]
             public override string Code => nameof(DepthContour);
 
+            public class AdditionalInformation_theInformation : AdditionalInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theInformationInformationTypes => ["NauticalInformation"];
+
+                public AdditionalInformation_theInformation() {
+                    base.AssociationConnectorTypeName = typeof(DepthContour).Name;
+                }
+            };
+            public class UpdatedInformation_theUpdate : UpdatedInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
+
+                public UpdatedInformation_theUpdate() {
+                    base.AssociationConnectorTypeName = typeof(DepthContour).Name;
+                }
+            };
             public DepthContour() {
             }
         }
@@ -8706,6 +11970,26 @@ namespace S100Framework.DomainModel.S101 {
             [IgnoreDataMember]
             public override string Code => nameof(DepthArea);
 
+            public class AdditionalInformation_theInformation : AdditionalInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theInformationInformationTypes => ["NauticalInformation"];
+
+                public AdditionalInformation_theInformation() {
+                    base.AssociationConnectorTypeName = typeof(DepthArea).Name;
+                }
+            };
+            public class UpdatedInformation_theUpdate : UpdatedInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
+
+                public UpdatedInformation_theUpdate() {
+                    base.AssociationConnectorTypeName = typeof(DepthArea).Name;
+                }
+            };
             public DepthArea() {
             }
         }
@@ -8733,6 +12017,26 @@ namespace S100Framework.DomainModel.S101 {
             [IgnoreDataMember]
             public override string Code => nameof(DepthNoBottomFound);
 
+            public class AdditionalInformation_theInformation : AdditionalInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theInformationInformationTypes => ["NauticalInformation"];
+
+                public AdditionalInformation_theInformation() {
+                    base.AssociationConnectorTypeName = typeof(DepthNoBottomFound).Name;
+                }
+            };
+            public class UpdatedInformation_theUpdate : UpdatedInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
+
+                public UpdatedInformation_theUpdate() {
+                    base.AssociationConnectorTypeName = typeof(DepthNoBottomFound).Name;
+                }
+            };
             public DepthNoBottomFound() {
             }
         }
@@ -8746,6 +12050,26 @@ namespace S100Framework.DomainModel.S101 {
             [IgnoreDataMember]
             public override string Code => nameof(UnsurveyedArea);
 
+            public class AdditionalInformation_theInformation : AdditionalInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theInformationInformationTypes => ["NauticalInformation"];
+
+                public AdditionalInformation_theInformation() {
+                    base.AssociationConnectorTypeName = typeof(UnsurveyedArea).Name;
+                }
+            };
+            public class UpdatedInformation_theUpdate : UpdatedInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
+
+                public UpdatedInformation_theUpdate() {
+                    base.AssociationConnectorTypeName = typeof(UnsurveyedArea).Name;
+                }
+            };
             public UnsurveyedArea() {
             }
         }
@@ -8769,6 +12093,36 @@ namespace S100Framework.DomainModel.S101 {
             [IgnoreDataMember]
             public override string Code => nameof(SeabedArea);
 
+            public class AdditionalInformation_theInformation : AdditionalInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theInformationInformationTypes => ["NauticalInformation"];
+
+                public AdditionalInformation_theInformation() {
+                    base.AssociationConnectorTypeName = typeof(SeabedArea).Name;
+                }
+            };
+            public class UpdatedInformation_theUpdate : UpdatedInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
+
+                public UpdatedInformation_theUpdate() {
+                    base.AssociationConnectorTypeName = typeof(SeabedArea).Name;
+                }
+            };
+            public class TextAssociation_theCartographicText : TextAssociation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theCartographicTextFeatureTypes => ["TextPlacement"];
+
+                public TextAssociation_theCartographicText() {
+                    base.AssociationConnectorTypeName = typeof(SeabedArea).Name;
+                }
+            };
             public SeabedArea() {
                 surfaceCharacteristics = new();
             }
@@ -8789,6 +12143,36 @@ namespace S100Framework.DomainModel.S101 {
             [IgnoreDataMember]
             public override string Code => nameof(WeedKelp);
 
+            public class AdditionalInformation_theInformation : AdditionalInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theInformationInformationTypes => ["NauticalInformation"];
+
+                public AdditionalInformation_theInformation() {
+                    base.AssociationConnectorTypeName = typeof(WeedKelp).Name;
+                }
+            };
+            public class UpdatedInformation_theUpdate : UpdatedInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
+
+                public UpdatedInformation_theUpdate() {
+                    base.AssociationConnectorTypeName = typeof(WeedKelp).Name;
+                }
+            };
+            public class TextAssociation_theCartographicText : TextAssociation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theCartographicTextFeatureTypes => ["TextPlacement"];
+
+                public TextAssociation_theCartographicText() {
+                    base.AssociationConnectorTypeName = typeof(WeedKelp).Name;
+                }
+            };
             public WeedKelp() {
             }
         }
@@ -8804,6 +12188,36 @@ namespace S100Framework.DomainModel.S101 {
             [IgnoreDataMember]
             public override string Code => nameof(Seagrass);
 
+            public class AdditionalInformation_theInformation : AdditionalInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theInformationInformationTypes => ["NauticalInformation"];
+
+                public AdditionalInformation_theInformation() {
+                    base.AssociationConnectorTypeName = typeof(Seagrass).Name;
+                }
+            };
+            public class UpdatedInformation_theUpdate : UpdatedInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
+
+                public UpdatedInformation_theUpdate() {
+                    base.AssociationConnectorTypeName = typeof(Seagrass).Name;
+                }
+            };
+            public class TextAssociation_theCartographicText : TextAssociation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theCartographicTextFeatureTypes => ["TextPlacement"];
+
+                public TextAssociation_theCartographicText() {
+                    base.AssociationConnectorTypeName = typeof(Seagrass).Name;
+                }
+            };
             public Seagrass() {
             }
         }
@@ -8819,6 +12233,26 @@ namespace S100Framework.DomainModel.S101 {
             [IgnoreDataMember]
             public override string Code => nameof(Sandwave);
 
+            public class AdditionalInformation_theInformation : AdditionalInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theInformationInformationTypes => ["NauticalInformation"];
+
+                public AdditionalInformation_theInformation() {
+                    base.AssociationConnectorTypeName = typeof(Sandwave).Name;
+                }
+            };
+            public class UpdatedInformation_theUpdate : UpdatedInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
+
+                public UpdatedInformation_theUpdate() {
+                    base.AssociationConnectorTypeName = typeof(Sandwave).Name;
+                }
+            };
             public Sandwave() {
             }
         }
@@ -8834,6 +12268,36 @@ namespace S100Framework.DomainModel.S101 {
             [IgnoreDataMember]
             public override string Code => nameof(Spring);
 
+            public class AdditionalInformation_theInformation : AdditionalInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theInformationInformationTypes => ["NauticalInformation"];
+
+                public AdditionalInformation_theInformation() {
+                    base.AssociationConnectorTypeName = typeof(Spring).Name;
+                }
+            };
+            public class UpdatedInformation_theUpdate : UpdatedInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
+
+                public UpdatedInformation_theUpdate() {
+                    base.AssociationConnectorTypeName = typeof(Spring).Name;
+                }
+            };
+            public class TextAssociation_theCartographicText : TextAssociation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theCartographicTextFeatureTypes => ["TextPlacement"];
+
+                public TextAssociation_theCartographicText() {
+                    base.AssociationConnectorTypeName = typeof(Spring).Name;
+                }
+            };
             public Spring() {
             }
         }
@@ -8899,6 +12363,36 @@ namespace S100Framework.DomainModel.S101 {
             [IgnoreDataMember]
             public override string Code => nameof(UnderwaterAwashRock);
 
+            public class AdditionalInformation_theInformation : AdditionalInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theInformationInformationTypes => ["NauticalInformation"];
+
+                public AdditionalInformation_theInformation() {
+                    base.AssociationConnectorTypeName = typeof(UnderwaterAwashRock).Name;
+                }
+            };
+            public class UpdatedInformation_theUpdate : UpdatedInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
+
+                public UpdatedInformation_theUpdate() {
+                    base.AssociationConnectorTypeName = typeof(UnderwaterAwashRock).Name;
+                }
+            };
+            public class TextAssociation_theCartographicText : TextAssociation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theCartographicTextFeatureTypes => ["TextPlacement"];
+
+                public TextAssociation_theCartographicText() {
+                    base.AssociationConnectorTypeName = typeof(UnderwaterAwashRock).Name;
+                }
+            };
             public UnderwaterAwashRock() {
             }
         }
@@ -8979,6 +12473,46 @@ namespace S100Framework.DomainModel.S101 {
             [IgnoreDataMember]
             public override string Code => nameof(Wreck);
 
+            public class AdditionalInformation_theInformation : AdditionalInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theInformationInformationTypes => ["NauticalInformation"];
+
+                public AdditionalInformation_theInformation() {
+                    base.AssociationConnectorTypeName = typeof(Wreck).Name;
+                }
+            };
+            public class StructureEquipment_theEquipment : StructureEquipment {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theEquipmentFeatureTypes => ["Daymark", "DistanceMark", "FogSignal", "LightAllAround", "LightFogDetector", "PhysicalAISAidToNavigation", "RadarTransponderBeacon", "Retroreflector", "SignalStationTraffic", "SignalStationWarning", "LightSectored"];
+
+                public StructureEquipment_theEquipment() {
+                    base.AssociationConnectorTypeName = typeof(Wreck).Name;
+                }
+            };
+            public class UpdatedInformation_theUpdate : UpdatedInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
+
+                public UpdatedInformation_theUpdate() {
+                    base.AssociationConnectorTypeName = typeof(Wreck).Name;
+                }
+            };
+            public class TextAssociation_theCartographicText : TextAssociation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theCartographicTextFeatureTypes => ["TextPlacement"];
+
+                public TextAssociation_theCartographicText() {
+                    base.AssociationConnectorTypeName = typeof(Wreck).Name;
+                }
+            };
             public Wreck() {
             }
         }
@@ -9103,6 +12637,46 @@ namespace S100Framework.DomainModel.S101 {
             [IgnoreDataMember]
             public override string Code => nameof(Obstruction);
 
+            public class AdditionalInformation_theInformation : AdditionalInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theInformationInformationTypes => ["NauticalInformation"];
+
+                public AdditionalInformation_theInformation() {
+                    base.AssociationConnectorTypeName = typeof(Obstruction).Name;
+                }
+            };
+            public class MooringTrotAggregation_theCollection : MooringTrotAggregation {
+                public override roleType? roleType => DomainModel.roleType.aggregation;
+
+                [IgnoreDataMember]
+                public override String[] theCollectionFeatureTypes => ["MooringTrot"];
+
+                public MooringTrotAggregation_theCollection() {
+                    base.AssociationConnectorTypeName = typeof(Obstruction).Name;
+                }
+            };
+            public class UpdatedInformation_theUpdate : UpdatedInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
+
+                public UpdatedInformation_theUpdate() {
+                    base.AssociationConnectorTypeName = typeof(Obstruction).Name;
+                }
+            };
+            public class TextAssociation_theCartographicText : TextAssociation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theCartographicTextFeatureTypes => ["TextPlacement"];
+
+                public TextAssociation_theCartographicText() {
+                    base.AssociationConnectorTypeName = typeof(Obstruction).Name;
+                }
+            };
             public Obstruction() {
             }
         }
@@ -9153,6 +12727,36 @@ namespace S100Framework.DomainModel.S101 {
             [IgnoreDataMember]
             public override string Code => nameof(FoulGround);
 
+            public class AdditionalInformation_theInformation : AdditionalInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theInformationInformationTypes => ["NauticalInformation"];
+
+                public AdditionalInformation_theInformation() {
+                    base.AssociationConnectorTypeName = typeof(FoulGround).Name;
+                }
+            };
+            public class UpdatedInformation_theUpdate : UpdatedInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
+
+                public UpdatedInformation_theUpdate() {
+                    base.AssociationConnectorTypeName = typeof(FoulGround).Name;
+                }
+            };
+            public class TextAssociation_theCartographicText : TextAssociation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theCartographicTextFeatureTypes => ["TextPlacement"];
+
+                public TextAssociation_theCartographicText() {
+                    base.AssociationConnectorTypeName = typeof(FoulGround).Name;
+                }
+            };
             public FoulGround() {
             }
         }
@@ -9168,6 +12772,26 @@ namespace S100Framework.DomainModel.S101 {
             [IgnoreDataMember]
             public override string Code => nameof(DiscolouredWater);
 
+            public class AdditionalInformation_theInformation : AdditionalInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theInformationInformationTypes => ["NauticalInformation"];
+
+                public AdditionalInformation_theInformation() {
+                    base.AssociationConnectorTypeName = typeof(DiscolouredWater).Name;
+                }
+            };
+            public class UpdatedInformation_theUpdate : UpdatedInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
+
+                public UpdatedInformation_theUpdate() {
+                    base.AssociationConnectorTypeName = typeof(DiscolouredWater).Name;
+                }
+            };
             public DiscolouredWater() {
             }
         }
@@ -9207,6 +12831,56 @@ namespace S100Framework.DomainModel.S101 {
             [IgnoreDataMember]
             public override string Code => nameof(FishingFacility);
 
+            public class AdditionalInformation_theInformation : AdditionalInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theInformationInformationTypes => ["ContactDetails", "NauticalInformation"];
+
+                public AdditionalInformation_theInformation() {
+                    base.AssociationConnectorTypeName = typeof(FishingFacility).Name;
+                }
+            };
+            public class StructureEquipment_theEquipment : StructureEquipment {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theEquipmentFeatureTypes => ["Daymark", "DistanceMark", "FogSignal", "LightAllAround", "LightFogDetector", "PhysicalAISAidToNavigation", "RadarTransponderBeacon", "Retroreflector", "SignalStationTraffic", "SignalStationWarning", "LightSectored"];
+
+                public StructureEquipment_theEquipment() {
+                    base.AssociationConnectorTypeName = typeof(FishingFacility).Name;
+                }
+            };
+            public class AidsToNavigationAssociation_theCollection : AidsToNavigationAssociation {
+                public override roleType? roleType => DomainModel.roleType.aggregation;
+
+                [IgnoreDataMember]
+                public override String[] theCollectionFeatureTypes => ["DeepWaterRoute", "FairwaySystem", "TrafficSeparationScheme", "TwoWayRoute"];
+
+                public AidsToNavigationAssociation_theCollection() {
+                    base.AssociationConnectorTypeName = typeof(FishingFacility).Name;
+                }
+            };
+            public class UpdatedInformation_theUpdate : UpdatedInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
+
+                public UpdatedInformation_theUpdate() {
+                    base.AssociationConnectorTypeName = typeof(FishingFacility).Name;
+                }
+            };
+            public class TextAssociation_theCartographicText : TextAssociation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theCartographicTextFeatureTypes => ["TextPlacement"];
+
+                public TextAssociation_theCartographicText() {
+                    base.AssociationConnectorTypeName = typeof(FishingFacility).Name;
+                }
+            };
             public FishingFacility() {
             }
         }
@@ -9301,6 +12975,36 @@ namespace S100Framework.DomainModel.S101 {
             [IgnoreDataMember]
             public override string Code => nameof(MarineFarmCulture);
 
+            public class AdditionalInformation_theInformation : AdditionalInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theInformationInformationTypes => ["ContactDetails", "NauticalInformation"];
+
+                public AdditionalInformation_theInformation() {
+                    base.AssociationConnectorTypeName = typeof(MarineFarmCulture).Name;
+                }
+            };
+            public class UpdatedInformation_theUpdate : UpdatedInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
+
+                public UpdatedInformation_theUpdate() {
+                    base.AssociationConnectorTypeName = typeof(MarineFarmCulture).Name;
+                }
+            };
+            public class TextAssociation_theCartographicText : TextAssociation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theCartographicTextFeatureTypes => ["TextPlacement"];
+
+                public TextAssociation_theCartographicText() {
+                    base.AssociationConnectorTypeName = typeof(MarineFarmCulture).Name;
+                }
+            };
             public MarineFarmCulture() {
             }
         }
@@ -9385,6 +13089,56 @@ namespace S100Framework.DomainModel.S101 {
             [IgnoreDataMember]
             public override string Code => nameof(OffshorePlatform);
 
+            public class AdditionalInformation_theInformation : AdditionalInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theInformationInformationTypes => ["ContactDetails", "NauticalInformation"];
+
+                public AdditionalInformation_theInformation() {
+                    base.AssociationConnectorTypeName = typeof(OffshorePlatform).Name;
+                }
+            };
+            public class StructureEquipment_theEquipment : StructureEquipment {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theEquipmentFeatureTypes => ["Daymark", "DistanceMark", "FogSignal", "Helipad", "LightAllAround", "LightFogDetector", "PhysicalAISAidToNavigation", "RadarTransponderBeacon", "Retroreflector", "SignalStationTraffic", "SignalStationWarning", "LightSectored", "Bollard", "LightAirObstruction"];
+
+                public StructureEquipment_theEquipment() {
+                    base.AssociationConnectorTypeName = typeof(OffshorePlatform).Name;
+                }
+            };
+            public class AidsToNavigationAssociation_theCollection : AidsToNavigationAssociation {
+                public override roleType? roleType => DomainModel.roleType.aggregation;
+
+                [IgnoreDataMember]
+                public override String[] theCollectionFeatureTypes => ["DeepWaterRoute", "FairwaySystem", "TrafficSeparationScheme", "TwoWayRoute"];
+
+                public AidsToNavigationAssociation_theCollection() {
+                    base.AssociationConnectorTypeName = typeof(OffshorePlatform).Name;
+                }
+            };
+            public class UpdatedInformation_theUpdate : UpdatedInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
+
+                public UpdatedInformation_theUpdate() {
+                    base.AssociationConnectorTypeName = typeof(OffshorePlatform).Name;
+                }
+            };
+            public class TextAssociation_theCartographicText : TextAssociation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theCartographicTextFeatureTypes => ["TextPlacement"];
+
+                public TextAssociation_theCartographicText() {
+                    base.AssociationConnectorTypeName = typeof(OffshorePlatform).Name;
+                }
+            };
             public OffshorePlatform() {
             }
         }
@@ -9419,6 +13173,46 @@ namespace S100Framework.DomainModel.S101 {
             [IgnoreDataMember]
             public override string Code => nameof(CableSubmarine);
 
+            public class AdditionalInformation_theInformation : AdditionalInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theInformationInformationTypes => ["ContactDetails", "NauticalInformation"];
+
+                public AdditionalInformation_theInformation() {
+                    base.AssociationConnectorTypeName = typeof(CableSubmarine).Name;
+                }
+            };
+            public class MooringTrotAggregation_theCollection : MooringTrotAggregation {
+                public override roleType? roleType => DomainModel.roleType.aggregation;
+
+                [IgnoreDataMember]
+                public override String[] theCollectionFeatureTypes => ["MooringTrot"];
+
+                public MooringTrotAggregation_theCollection() {
+                    base.AssociationConnectorTypeName = typeof(CableSubmarine).Name;
+                }
+            };
+            public class UpdatedInformation_theUpdate : UpdatedInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
+
+                public UpdatedInformation_theUpdate() {
+                    base.AssociationConnectorTypeName = typeof(CableSubmarine).Name;
+                }
+            };
+            public class TextAssociation_theCartographicText : TextAssociation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theCartographicTextFeatureTypes => ["TextPlacement"];
+
+                public TextAssociation_theCartographicText() {
+                    base.AssociationConnectorTypeName = typeof(CableSubmarine).Name;
+                }
+            };
             public CableSubmarine() {
             }
         }
@@ -9469,6 +13263,36 @@ namespace S100Framework.DomainModel.S101 {
             [IgnoreDataMember]
             public override string Code => nameof(CableArea);
 
+            public class AdditionalInformation_theInformation : AdditionalInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theInformationInformationTypes => ["ContactDetails", "NauticalInformation"];
+
+                public AdditionalInformation_theInformation() {
+                    base.AssociationConnectorTypeName = typeof(CableArea).Name;
+                }
+            };
+            public class UpdatedInformation_theUpdate : UpdatedInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
+
+                public UpdatedInformation_theUpdate() {
+                    base.AssociationConnectorTypeName = typeof(CableArea).Name;
+                }
+            };
+            public class TextAssociation_theCartographicText : TextAssociation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theCartographicTextFeatureTypes => ["TextPlacement"];
+
+                public TextAssociation_theCartographicText() {
+                    base.AssociationConnectorTypeName = typeof(CableArea).Name;
+                }
+            };
             public CableArea() {
             }
         }
@@ -9540,6 +13364,36 @@ namespace S100Framework.DomainModel.S101 {
             [IgnoreDataMember]
             public override string Code => nameof(PipelineSubmarineOnLand);
 
+            public class AdditionalInformation_theInformation : AdditionalInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theInformationInformationTypes => ["ContactDetails", "NauticalInformation"];
+
+                public AdditionalInformation_theInformation() {
+                    base.AssociationConnectorTypeName = typeof(PipelineSubmarineOnLand).Name;
+                }
+            };
+            public class UpdatedInformation_theUpdate : UpdatedInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
+
+                public UpdatedInformation_theUpdate() {
+                    base.AssociationConnectorTypeName = typeof(PipelineSubmarineOnLand).Name;
+                }
+            };
+            public class TextAssociation_theCartographicText : TextAssociation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theCartographicTextFeatureTypes => ["TextPlacement"];
+
+                public TextAssociation_theCartographicText() {
+                    base.AssociationConnectorTypeName = typeof(PipelineSubmarineOnLand).Name;
+                }
+            };
             public PipelineSubmarineOnLand() {
             }
         }
@@ -9607,6 +13461,36 @@ namespace S100Framework.DomainModel.S101 {
             [IgnoreDataMember]
             public override string Code => nameof(SubmarinePipelineArea);
 
+            public class AdditionalInformation_theInformation : AdditionalInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theInformationInformationTypes => ["ContactDetails", "NauticalInformation"];
+
+                public AdditionalInformation_theInformation() {
+                    base.AssociationConnectorTypeName = typeof(SubmarinePipelineArea).Name;
+                }
+            };
+            public class UpdatedInformation_theUpdate : UpdatedInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
+
+                public UpdatedInformation_theUpdate() {
+                    base.AssociationConnectorTypeName = typeof(SubmarinePipelineArea).Name;
+                }
+            };
+            public class TextAssociation_theCartographicText : TextAssociation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theCartographicTextFeatureTypes => ["TextPlacement"];
+
+                public TextAssociation_theCartographicText() {
+                    base.AssociationConnectorTypeName = typeof(SubmarinePipelineArea).Name;
+                }
+            };
             public SubmarinePipelineArea() {
             }
         }
@@ -9699,6 +13583,36 @@ namespace S100Framework.DomainModel.S101 {
             [IgnoreDataMember]
             public override string Code => nameof(OffshoreProductionArea);
 
+            public class AdditionalInformation_theInformation : AdditionalInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theInformationInformationTypes => ["ContactDetails", "NauticalInformation"];
+
+                public AdditionalInformation_theInformation() {
+                    base.AssociationConnectorTypeName = typeof(OffshoreProductionArea).Name;
+                }
+            };
+            public class UpdatedInformation_theUpdate : UpdatedInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
+
+                public UpdatedInformation_theUpdate() {
+                    base.AssociationConnectorTypeName = typeof(OffshoreProductionArea).Name;
+                }
+            };
+            public class TextAssociation_theCartographicText : TextAssociation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theCartographicTextFeatureTypes => ["TextPlacement"];
+
+                public TextAssociation_theCartographicText() {
+                    base.AssociationConnectorTypeName = typeof(OffshoreProductionArea).Name;
+                }
+            };
             public OffshoreProductionArea() {
             }
         }
@@ -9732,6 +13646,36 @@ namespace S100Framework.DomainModel.S101 {
             [IgnoreDataMember]
             public override string Code => nameof(NavigationLine);
 
+            public class AdditionalInformation_theInformation : AdditionalInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theInformationInformationTypes => ["NauticalInformation"];
+
+                public AdditionalInformation_theInformation() {
+                    base.AssociationConnectorTypeName = typeof(NavigationLine).Name;
+                }
+            };
+            public class RangeSystemAggregation_theCollection : RangeSystemAggregation {
+                public override roleType? roleType => DomainModel.roleType.aggregation;
+
+                [IgnoreDataMember]
+                public override String[] theCollectionFeatureTypes => ["RangeSystem"];
+
+                public RangeSystemAggregation_theCollection() {
+                    base.AssociationConnectorTypeName = typeof(NavigationLine).Name;
+                }
+            };
+            public class UpdatedInformation_theUpdate : UpdatedInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
+
+                public UpdatedInformation_theUpdate() {
+                    base.AssociationConnectorTypeName = typeof(NavigationLine).Name;
+                }
+            };
             public NavigationLine() {
                 orientation = new orientation()
                 {
@@ -9794,6 +13738,56 @@ namespace S100Framework.DomainModel.S101 {
             [IgnoreDataMember]
             public override string Code => nameof(RecommendedTrack);
 
+            public class AdditionalInformation_theInformation : AdditionalInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theInformationInformationTypes => ["NauticalInformation"];
+
+                public AdditionalInformation_theInformation() {
+                    base.AssociationConnectorTypeName = typeof(RecommendedTrack).Name;
+                }
+            };
+            public class RangeSystemAggregation_theCollection : RangeSystemAggregation {
+                public override roleType? roleType => DomainModel.roleType.aggregation;
+
+                [IgnoreDataMember]
+                public override String[] theCollectionFeatureTypes => ["RangeSystem"];
+
+                public RangeSystemAggregation_theCollection() {
+                    base.AssociationConnectorTypeName = typeof(RecommendedTrack).Name;
+                }
+            };
+            public class UpdatedInformation_theUpdate : UpdatedInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
+
+                public UpdatedInformation_theUpdate() {
+                    base.AssociationConnectorTypeName = typeof(RecommendedTrack).Name;
+                }
+            };
+            public class TextAssociation_theCartographicText : TextAssociation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theCartographicTextFeatureTypes => ["TextPlacement"];
+
+                public TextAssociation_theCartographicText() {
+                    base.AssociationConnectorTypeName = typeof(RecommendedTrack).Name;
+                }
+            };
+            public class FairwayAuxiliary_thePrimaryFeature : FairwayAuxiliary {
+                public override roleType? roleType => DomainModel.roleType.aggregation;
+
+                [IgnoreDataMember]
+                public override String[] thePrimaryFeatureFeatureTypes => ["Fairway"];
+
+                public FairwayAuxiliary_thePrimaryFeature() {
+                    base.AssociationConnectorTypeName = typeof(RecommendedTrack).Name;
+                }
+            };
             public RecommendedTrack() {
             }
         }
@@ -9811,6 +13805,66 @@ namespace S100Framework.DomainModel.S101 {
             [IgnoreDataMember]
             public override string Code => nameof(RangeSystem);
 
+            public class AdditionalInformation_theInformation : AdditionalInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theInformationInformationTypes => ["NauticalInformation"];
+
+                public AdditionalInformation_theInformation() {
+                    base.AssociationConnectorTypeName = typeof(RangeSystem).Name;
+                }
+            };
+            public class RangeSystemAggregation_theComponent : RangeSystemAggregation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theComponentFeatureTypes => ["CardinalBeacon", "Building", "Daymark", "Dolphin", "FortifiedStructure", "IsolatedDangerBeacon", "Landmark", "LateralBeacon", "LightAllAround", "LightSectored", "NavigationLine", "Pile", "RadarTransponderBeacon", "RangeSystem", "RecommendedRouteCentreline", "RecommendedTrack", "SafeWaterBeacon", "SiloTank", "SpecialPurposeGeneralBeacon"];
+
+                public RangeSystemAggregation_theComponent() {
+                    base.AssociationConnectorTypeName = typeof(RangeSystem).Name;
+                }
+            };
+            public class RangeSystemAggregation_theCollection : RangeSystemAggregation {
+                public override roleType? roleType => DomainModel.roleType.aggregation;
+
+                [IgnoreDataMember]
+                public override String[] theCollectionFeatureTypes => ["RangeSystem"];
+
+                public RangeSystemAggregation_theCollection() {
+                    base.AssociationConnectorTypeName = typeof(RangeSystem).Name;
+                }
+            };
+            public class FairwayAuxiliary_thePrimaryFeature : FairwayAuxiliary {
+                public override roleType? roleType => DomainModel.roleType.aggregation;
+
+                [IgnoreDataMember]
+                public override String[] thePrimaryFeatureFeatureTypes => ["Fairway"];
+
+                public FairwayAuxiliary_thePrimaryFeature() {
+                    base.AssociationConnectorTypeName = typeof(RangeSystem).Name;
+                }
+            };
+            public class UpdatedInformation_theUpdate : UpdatedInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
+
+                public UpdatedInformation_theUpdate() {
+                    base.AssociationConnectorTypeName = typeof(RangeSystem).Name;
+                }
+            };
+            public class TextAssociation_theCartographicText : TextAssociation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theCartographicTextFeatureTypes => ["TextPlacement"];
+
+                public TextAssociation_theCartographicText() {
+                    base.AssociationConnectorTypeName = typeof(RangeSystem).Name;
+                }
+            };
             public RangeSystem() {
             }
         }
@@ -9878,6 +13932,56 @@ namespace S100Framework.DomainModel.S101 {
             [IgnoreDataMember]
             public override string Code => nameof(Fairway);
 
+            public class AdditionalInformation_theInformation : AdditionalInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theInformationInformationTypes => ["NauticalInformation"];
+
+                public AdditionalInformation_theInformation() {
+                    base.AssociationConnectorTypeName = typeof(Fairway).Name;
+                }
+            };
+            public class FairwayAggregation_theCollection : FairwayAggregation {
+                public override roleType? roleType => DomainModel.roleType.aggregation;
+
+                [IgnoreDataMember]
+                public override String[] theCollectionFeatureTypes => ["FairwaySystem"];
+
+                public FairwayAggregation_theCollection() {
+                    base.AssociationConnectorTypeName = typeof(Fairway).Name;
+                }
+            };
+            public class FairwayAuxiliary_theAuxiliaryFeature : FairwayAuxiliary {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theAuxiliaryFeatureFeatureTypes => ["CardinalBeacon", "CardinalBuoy", "CautionArea", "Daymark", "DredgedArea", "IsolatedDangerBeacon", "IsolatedDangerBuoy", "LateralBeacon", "LateralBuoy", "LightFloat", "LightVessel", "Landmark", "Pile", "RangeSystem", "RecommendedRouteCentreline", "RecommendedTrack", "RestrictedArea", "SafeWaterBeacon", "SafeWaterBuoy", "SpecialPurposeGeneralBeacon", "SpecialPurposeGeneralBuoy", "SweptArea"];
+
+                public FairwayAuxiliary_theAuxiliaryFeature() {
+                    base.AssociationConnectorTypeName = typeof(Fairway).Name;
+                }
+            };
+            public class UpdatedInformation_theUpdate : UpdatedInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
+
+                public UpdatedInformation_theUpdate() {
+                    base.AssociationConnectorTypeName = typeof(Fairway).Name;
+                }
+            };
+            public class TextAssociation_theCartographicText : TextAssociation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theCartographicTextFeatureTypes => ["TextPlacement"];
+
+                public TextAssociation_theCartographicText() {
+                    base.AssociationConnectorTypeName = typeof(Fairway).Name;
+                }
+            };
             public Fairway() {
             }
         }
@@ -9896,6 +14000,56 @@ namespace S100Framework.DomainModel.S101 {
             [IgnoreDataMember]
             public override string Code => nameof(FairwaySystem);
 
+            public class AdditionalInformation_theInformation : AdditionalInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theInformationInformationTypes => ["NauticalInformation"];
+
+                public AdditionalInformation_theInformation() {
+                    base.AssociationConnectorTypeName = typeof(FairwaySystem).Name;
+                }
+            };
+            public class AidsToNavigationAssociation_theComponent : AidsToNavigationAssociation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theComponentFeatureTypes => ["CardinalBeacon", "CardinalBuoy", "Daymark", "EmergencyWreckMarkingBuoy", "IsolatedDangerBeacon", "IsolatedDangerBuoy", "LateralBeacon", "LateralBuoy", "LightFloat", "LightVessel", "Pile", "SafeWaterBeacon", "SafeWaterBuoy", "SpecialPurposeGeneralBeacon", "SpecialPurposeGeneralBuoy", "Building", "Crane", "Dolphin", "FishingFacility", "FortifiedStructure", "Landmark", "MooringBuoy", "OffshorePlatform", "SiloTank", "WindTurbine", "Bridge", "Conveyor", "FloatingDock", "Hulk", "PipelineOverhead", "Pontoon", "PylonBridgeSupport", "ShorelineConstruction", "SpanFixed", "SpanOpening", "StructureOverNavigableWater"];
+
+                public AidsToNavigationAssociation_theComponent() {
+                    base.AssociationConnectorTypeName = typeof(FairwaySystem).Name;
+                }
+            };
+            public class FairwayAggregation_theComponent : FairwayAggregation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theComponentFeatureTypes => ["Fairway"];
+
+                public FairwayAggregation_theComponent() {
+                    base.AssociationConnectorTypeName = typeof(FairwaySystem).Name;
+                }
+            };
+            public class UpdatedInformation_theUpdate : UpdatedInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
+
+                public UpdatedInformation_theUpdate() {
+                    base.AssociationConnectorTypeName = typeof(FairwaySystem).Name;
+                }
+            };
+            public class TextAssociation_theCartographicText : TextAssociation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theCartographicTextFeatureTypes => ["TextPlacement"];
+
+                public TextAssociation_theCartographicText() {
+                    base.AssociationConnectorTypeName = typeof(FairwaySystem).Name;
+                }
+            };
             public FairwaySystem() {
             }
         }
@@ -9948,6 +14102,56 @@ namespace S100Framework.DomainModel.S101 {
             [IgnoreDataMember]
             public override string Code => nameof(RecommendedRouteCentreline);
 
+            public class AdditionalInformation_theInformation : AdditionalInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theInformationInformationTypes => ["NauticalInformation"];
+
+                public AdditionalInformation_theInformation() {
+                    base.AssociationConnectorTypeName = typeof(RecommendedRouteCentreline).Name;
+                }
+            };
+            public class RangeSystemAggregation_theCollection : RangeSystemAggregation {
+                public override roleType? roleType => DomainModel.roleType.aggregation;
+
+                [IgnoreDataMember]
+                public override String[] theCollectionFeatureTypes => ["RangeSystem"];
+
+                public RangeSystemAggregation_theCollection() {
+                    base.AssociationConnectorTypeName = typeof(RecommendedRouteCentreline).Name;
+                }
+            };
+            public class FairwayAuxiliary_thePrimaryFeature : FairwayAuxiliary {
+                public override roleType? roleType => DomainModel.roleType.aggregation;
+
+                [IgnoreDataMember]
+                public override String[] thePrimaryFeatureFeatureTypes => ["Fairway"];
+
+                public FairwayAuxiliary_thePrimaryFeature() {
+                    base.AssociationConnectorTypeName = typeof(RecommendedRouteCentreline).Name;
+                }
+            };
+            public class UpdatedInformation_theUpdate : UpdatedInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
+
+                public UpdatedInformation_theUpdate() {
+                    base.AssociationConnectorTypeName = typeof(RecommendedRouteCentreline).Name;
+                }
+            };
+            public class TextAssociation_theCartographicText : TextAssociation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theCartographicTextFeatureTypes => ["TextPlacement"];
+
+                public TextAssociation_theCartographicText() {
+                    base.AssociationConnectorTypeName = typeof(RecommendedRouteCentreline).Name;
+                }
+            };
             public RecommendedRouteCentreline() {
             }
         }
@@ -10001,6 +14205,46 @@ namespace S100Framework.DomainModel.S101 {
             [IgnoreDataMember]
             public override string Code => nameof(TwoWayRoutePart);
 
+            public class AdditionalInformation_theInformation : AdditionalInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theInformationInformationTypes => ["NauticalInformation"];
+
+                public AdditionalInformation_theInformation() {
+                    base.AssociationConnectorTypeName = typeof(TwoWayRoutePart).Name;
+                }
+            };
+            public class TwoWayRouteAggregation_theCollection : TwoWayRouteAggregation {
+                public override roleType? roleType => DomainModel.roleType.aggregation;
+
+                [IgnoreDataMember]
+                public override String[] theCollectionFeatureTypes => ["TwoWayRoute"];
+
+                public TwoWayRouteAggregation_theCollection() {
+                    base.AssociationConnectorTypeName = typeof(TwoWayRoutePart).Name;
+                }
+            };
+            public class TrafficSeparationSchemeAggregation_theCollection : TrafficSeparationSchemeAggregation {
+                public override roleType? roleType => DomainModel.roleType.aggregation;
+
+                [IgnoreDataMember]
+                public override String[] theCollectionFeatureTypes => ["TrafficSeparationScheme"];
+
+                public TrafficSeparationSchemeAggregation_theCollection() {
+                    base.AssociationConnectorTypeName = typeof(TwoWayRoutePart).Name;
+                }
+            };
+            public class UpdatedInformation_theUpdate : UpdatedInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
+
+                public UpdatedInformation_theUpdate() {
+                    base.AssociationConnectorTypeName = typeof(TwoWayRoutePart).Name;
+                }
+            };
             public TwoWayRoutePart() {
             }
         }
@@ -10018,6 +14262,66 @@ namespace S100Framework.DomainModel.S101 {
             [IgnoreDataMember]
             public override string Code => nameof(TwoWayRoute);
 
+            public class AdditionalInformation_theInformation : AdditionalInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theInformationInformationTypes => ["NauticalInformation"];
+
+                public AdditionalInformation_theInformation() {
+                    base.AssociationConnectorTypeName = typeof(TwoWayRoute).Name;
+                }
+            };
+            public class AidsToNavigationAssociation_theComponent : AidsToNavigationAssociation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theComponentFeatureTypes => ["CardinalBeacon", "CardinalBuoy", "Daymark", "EmergencyWreckMarkingBuoy", "IsolatedDangerBeacon", "IsolatedDangerBuoy", "LateralBeacon", "LateralBuoy", "LightFloat", "LightVessel", "Pile", "SafeWaterBeacon", "SafeWaterBuoy", "SpecialPurposeGeneralBeacon", "SpecialPurposeGeneralBuoy", "Building", "Crane", "Dolphin", "FishingFacility", "FortifiedStructure", "Landmark", "MooringBuoy", "OffshorePlatform", "SiloTank", "WindTurbine", "Bridge", "Conveyor", "FloatingDock", "Hulk", "PipelineOverhead", "Pontoon", "PylonBridgeSupport", "ShorelineConstruction", "SpanFixed", "SpanOpening", "StructureOverNavigableWater"];
+
+                public AidsToNavigationAssociation_theComponent() {
+                    base.AssociationConnectorTypeName = typeof(TwoWayRoute).Name;
+                }
+            };
+            public class TwoWayRouteAggregation_theComponent : TwoWayRouteAggregation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theComponentFeatureTypes => ["TwoWayRoutePart"];
+
+                public TwoWayRouteAggregation_theComponent() {
+                    base.AssociationConnectorTypeName = typeof(TwoWayRoute).Name;
+                }
+            };
+            public class TrafficSeparationSchemeAggregation_theCollection : TrafficSeparationSchemeAggregation {
+                public override roleType? roleType => DomainModel.roleType.aggregation;
+
+                [IgnoreDataMember]
+                public override String[] theCollectionFeatureTypes => ["TrafficSeparationScheme"];
+
+                public TrafficSeparationSchemeAggregation_theCollection() {
+                    base.AssociationConnectorTypeName = typeof(TwoWayRoute).Name;
+                }
+            };
+            public class UpdatedInformation_theUpdate : UpdatedInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
+
+                public UpdatedInformation_theUpdate() {
+                    base.AssociationConnectorTypeName = typeof(TwoWayRoute).Name;
+                }
+            };
+            public class TextAssociation_theCartographicText : TextAssociation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theCartographicTextFeatureTypes => ["TextPlacement"];
+
+                public TextAssociation_theCartographicText() {
+                    base.AssociationConnectorTypeName = typeof(TwoWayRoute).Name;
+                }
+            };
             public TwoWayRoute() {
             }
         }
@@ -10041,6 +14345,26 @@ namespace S100Framework.DomainModel.S101 {
             [IgnoreDataMember]
             public override string Code => nameof(RecommendedTrafficLanePart);
 
+            public class AdditionalInformation_theInformation : AdditionalInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theInformationInformationTypes => ["NauticalInformation"];
+
+                public AdditionalInformation_theInformation() {
+                    base.AssociationConnectorTypeName = typeof(RecommendedTrafficLanePart).Name;
+                }
+            };
+            public class UpdatedInformation_theUpdate : UpdatedInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
+
+                public UpdatedInformation_theUpdate() {
+                    base.AssociationConnectorTypeName = typeof(RecommendedTrafficLanePart).Name;
+                }
+            };
             public RecommendedTrafficLanePart() {
             }
         }
@@ -10098,6 +14422,56 @@ namespace S100Framework.DomainModel.S101 {
             [IgnoreDataMember]
             public override string Code => nameof(DeepWaterRouteCentreline);
 
+            public class AdditionalInformation_theInformation : AdditionalInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theInformationInformationTypes => ["NauticalInformation"];
+
+                public AdditionalInformation_theInformation() {
+                    base.AssociationConnectorTypeName = typeof(DeepWaterRouteCentreline).Name;
+                }
+            };
+            public class DeepWaterRouteAggregation_theCollection : DeepWaterRouteAggregation {
+                public override roleType? roleType => DomainModel.roleType.aggregation;
+
+                [IgnoreDataMember]
+                public override String[] theCollectionFeatureTypes => ["DeepWaterRoute"];
+
+                public DeepWaterRouteAggregation_theCollection() {
+                    base.AssociationConnectorTypeName = typeof(DeepWaterRouteCentreline).Name;
+                }
+            };
+            public class TrafficSeparationSchemeAggregation_theCollection : TrafficSeparationSchemeAggregation {
+                public override roleType? roleType => DomainModel.roleType.aggregation;
+
+                [IgnoreDataMember]
+                public override String[] theCollectionFeatureTypes => ["TrafficSeparationScheme"];
+
+                public TrafficSeparationSchemeAggregation_theCollection() {
+                    base.AssociationConnectorTypeName = typeof(DeepWaterRouteCentreline).Name;
+                }
+            };
+            public class UpdatedInformation_theUpdate : UpdatedInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
+
+                public UpdatedInformation_theUpdate() {
+                    base.AssociationConnectorTypeName = typeof(DeepWaterRouteCentreline).Name;
+                }
+            };
+            public class TextAssociation_theCartographicText : TextAssociation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theCartographicTextFeatureTypes => ["TextPlacement"];
+
+                public TextAssociation_theCartographicText() {
+                    base.AssociationConnectorTypeName = typeof(DeepWaterRouteCentreline).Name;
+                }
+            };
             public DeepWaterRouteCentreline() {
             }
         }
@@ -10181,6 +14555,56 @@ namespace S100Framework.DomainModel.S101 {
             [IgnoreDataMember]
             public override string Code => nameof(DeepWaterRoutePart);
 
+            public class AdditionalInformation_theInformation : AdditionalInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theInformationInformationTypes => ["NauticalInformation"];
+
+                public AdditionalInformation_theInformation() {
+                    base.AssociationConnectorTypeName = typeof(DeepWaterRoutePart).Name;
+                }
+            };
+            public class DeepWaterRouteAggregation_theCollection : DeepWaterRouteAggregation {
+                public override roleType? roleType => DomainModel.roleType.aggregation;
+
+                [IgnoreDataMember]
+                public override String[] theCollectionFeatureTypes => ["DeepWaterRoute"];
+
+                public DeepWaterRouteAggregation_theCollection() {
+                    base.AssociationConnectorTypeName = typeof(DeepWaterRoutePart).Name;
+                }
+            };
+            public class TrafficSeparationSchemeAggregation_theCollection : TrafficSeparationSchemeAggregation {
+                public override roleType? roleType => DomainModel.roleType.aggregation;
+
+                [IgnoreDataMember]
+                public override String[] theCollectionFeatureTypes => ["TrafficSeparationScheme"];
+
+                public TrafficSeparationSchemeAggregation_theCollection() {
+                    base.AssociationConnectorTypeName = typeof(DeepWaterRoutePart).Name;
+                }
+            };
+            public class UpdatedInformation_theUpdate : UpdatedInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
+
+                public UpdatedInformation_theUpdate() {
+                    base.AssociationConnectorTypeName = typeof(DeepWaterRoutePart).Name;
+                }
+            };
+            public class TextAssociation_theCartographicText : TextAssociation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theCartographicTextFeatureTypes => ["TextPlacement"];
+
+                public TextAssociation_theCartographicText() {
+                    base.AssociationConnectorTypeName = typeof(DeepWaterRoutePart).Name;
+                }
+            };
             public DeepWaterRoutePart() {
             }
         }
@@ -10198,6 +14622,66 @@ namespace S100Framework.DomainModel.S101 {
             [IgnoreDataMember]
             public override string Code => nameof(DeepWaterRoute);
 
+            public class AdditionalInformation_theInformation : AdditionalInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theInformationInformationTypes => ["NauticalInformation"];
+
+                public AdditionalInformation_theInformation() {
+                    base.AssociationConnectorTypeName = typeof(DeepWaterRoute).Name;
+                }
+            };
+            public class AidsToNavigationAssociation_theComponent : AidsToNavigationAssociation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theComponentFeatureTypes => ["CardinalBeacon", "CardinalBuoy", "Daymark", "EmergencyWreckMarkingBuoy", "IsolatedDangerBeacon", "IsolatedDangerBuoy", "LateralBeacon", "LateralBuoy", "LightFloat", "LightVessel", "Pile", "SafeWaterBeacon", "SafeWaterBuoy", "SpecialPurposeGeneralBeacon", "SpecialPurposeGeneralBuoy", "Building", "Crane", "Dolphin", "FishingFacility", "FortifiedStructure", "Landmark", "MooringBuoy", "OffshorePlatform", "SiloTank", "WindTurbine"];
+
+                public AidsToNavigationAssociation_theComponent() {
+                    base.AssociationConnectorTypeName = typeof(DeepWaterRoute).Name;
+                }
+            };
+            public class DeepWaterRouteAggregation_theComponent : DeepWaterRouteAggregation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theComponentFeatureTypes => ["DeepWaterRouteCentreline", "DeepWaterRoutePart"];
+
+                public DeepWaterRouteAggregation_theComponent() {
+                    base.AssociationConnectorTypeName = typeof(DeepWaterRoute).Name;
+                }
+            };
+            public class TrafficSeparationSchemeAggregation_theCollection : TrafficSeparationSchemeAggregation {
+                public override roleType? roleType => DomainModel.roleType.aggregation;
+
+                [IgnoreDataMember]
+                public override String[] theCollectionFeatureTypes => ["TrafficSeparationScheme"];
+
+                public TrafficSeparationSchemeAggregation_theCollection() {
+                    base.AssociationConnectorTypeName = typeof(DeepWaterRoute).Name;
+                }
+            };
+            public class UpdatedInformation_theUpdate : UpdatedInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
+
+                public UpdatedInformation_theUpdate() {
+                    base.AssociationConnectorTypeName = typeof(DeepWaterRoute).Name;
+                }
+            };
+            public class TextAssociation_theCartographicText : TextAssociation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theCartographicTextFeatureTypes => ["TextPlacement"];
+
+                public TextAssociation_theCartographicText() {
+                    base.AssociationConnectorTypeName = typeof(DeepWaterRoute).Name;
+                }
+            };
             public DeepWaterRoute() {
             }
         }
@@ -10247,6 +14731,36 @@ namespace S100Framework.DomainModel.S101 {
             [IgnoreDataMember]
             public override string Code => nameof(InshoreTrafficZone);
 
+            public class AdditionalInformation_theInformation : AdditionalInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theInformationInformationTypes => ["NauticalInformation"];
+
+                public AdditionalInformation_theInformation() {
+                    base.AssociationConnectorTypeName = typeof(InshoreTrafficZone).Name;
+                }
+            };
+            public class TrafficSeparationSchemeAggregation_theCollection : TrafficSeparationSchemeAggregation {
+                public override roleType? roleType => DomainModel.roleType.aggregation;
+
+                [IgnoreDataMember]
+                public override String[] theCollectionFeatureTypes => ["TrafficSeparationScheme"];
+
+                public TrafficSeparationSchemeAggregation_theCollection() {
+                    base.AssociationConnectorTypeName = typeof(InshoreTrafficZone).Name;
+                }
+            };
+            public class UpdatedInformation_theUpdate : UpdatedInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
+
+                public UpdatedInformation_theUpdate() {
+                    base.AssociationConnectorTypeName = typeof(InshoreTrafficZone).Name;
+                }
+            };
             public InshoreTrafficZone() {
             }
         }
@@ -10298,6 +14812,46 @@ namespace S100Framework.DomainModel.S101 {
             [IgnoreDataMember]
             public override string Code => nameof(PrecautionaryArea);
 
+            public class AdditionalInformation_theInformation : AdditionalInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theInformationInformationTypes => ["NauticalInformation"];
+
+                public AdditionalInformation_theInformation() {
+                    base.AssociationConnectorTypeName = typeof(PrecautionaryArea).Name;
+                }
+            };
+            public class TrafficSeparationSchemeAggregation_theCollection : TrafficSeparationSchemeAggregation {
+                public override roleType? roleType => DomainModel.roleType.aggregation;
+
+                [IgnoreDataMember]
+                public override String[] theCollectionFeatureTypes => ["TrafficSeparationScheme"];
+
+                public TrafficSeparationSchemeAggregation_theCollection() {
+                    base.AssociationConnectorTypeName = typeof(PrecautionaryArea).Name;
+                }
+            };
+            public class UpdatedInformation_theUpdate : UpdatedInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
+
+                public UpdatedInformation_theUpdate() {
+                    base.AssociationConnectorTypeName = typeof(PrecautionaryArea).Name;
+                }
+            };
+            public class TextAssociation_theCartographicText : TextAssociation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theCartographicTextFeatureTypes => ["TextPlacement"];
+
+                public TextAssociation_theCartographicText() {
+                    base.AssociationConnectorTypeName = typeof(PrecautionaryArea).Name;
+                }
+            };
             public PrecautionaryArea() {
                 information = new();
             }
@@ -10348,6 +14902,36 @@ namespace S100Framework.DomainModel.S101 {
             [IgnoreDataMember]
             public override string Code => nameof(TrafficSeparationSchemeLanePart);
 
+            public class AdditionalInformation_theInformation : AdditionalInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theInformationInformationTypes => ["NauticalInformation"];
+
+                public AdditionalInformation_theInformation() {
+                    base.AssociationConnectorTypeName = typeof(TrafficSeparationSchemeLanePart).Name;
+                }
+            };
+            public class TrafficSeparationSchemeAggregation_theCollection : TrafficSeparationSchemeAggregation {
+                public override roleType? roleType => DomainModel.roleType.aggregation;
+
+                [IgnoreDataMember]
+                public override String[] theCollectionFeatureTypes => ["TrafficSeparationScheme"];
+
+                public TrafficSeparationSchemeAggregation_theCollection() {
+                    base.AssociationConnectorTypeName = typeof(TrafficSeparationSchemeLanePart).Name;
+                }
+            };
+            public class UpdatedInformation_theUpdate : UpdatedInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
+
+                public UpdatedInformation_theUpdate() {
+                    base.AssociationConnectorTypeName = typeof(TrafficSeparationSchemeLanePart).Name;
+                }
+            };
             public TrafficSeparationSchemeLanePart() {
             }
         }
@@ -10369,6 +14953,36 @@ namespace S100Framework.DomainModel.S101 {
             [IgnoreDataMember]
             public override string Code => nameof(SeparationZoneOrLine);
 
+            public class AdditionalInformation_theInformation : AdditionalInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theInformationInformationTypes => ["NauticalInformation"];
+
+                public AdditionalInformation_theInformation() {
+                    base.AssociationConnectorTypeName = typeof(SeparationZoneOrLine).Name;
+                }
+            };
+            public class TrafficSeparationSchemeAggregation_theCollection : TrafficSeparationSchemeAggregation {
+                public override roleType? roleType => DomainModel.roleType.aggregation;
+
+                [IgnoreDataMember]
+                public override String[] theCollectionFeatureTypes => ["TrafficSeparationScheme"];
+
+                public TrafficSeparationSchemeAggregation_theCollection() {
+                    base.AssociationConnectorTypeName = typeof(SeparationZoneOrLine).Name;
+                }
+            };
+            public class UpdatedInformation_theUpdate : UpdatedInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
+
+                public UpdatedInformation_theUpdate() {
+                    base.AssociationConnectorTypeName = typeof(SeparationZoneOrLine).Name;
+                }
+            };
             public SeparationZoneOrLine() {
             }
         }
@@ -10390,6 +15004,36 @@ namespace S100Framework.DomainModel.S101 {
             [IgnoreDataMember]
             public override string Code => nameof(TrafficSeparationSchemeBoundary);
 
+            public class AdditionalInformation_theInformation : AdditionalInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theInformationInformationTypes => ["NauticalInformation"];
+
+                public AdditionalInformation_theInformation() {
+                    base.AssociationConnectorTypeName = typeof(TrafficSeparationSchemeBoundary).Name;
+                }
+            };
+            public class TrafficSeparationSchemeAggregation_theCollection : TrafficSeparationSchemeAggregation {
+                public override roleType? roleType => DomainModel.roleType.aggregation;
+
+                [IgnoreDataMember]
+                public override String[] theCollectionFeatureTypes => ["TrafficSeparationScheme"];
+
+                public TrafficSeparationSchemeAggregation_theCollection() {
+                    base.AssociationConnectorTypeName = typeof(TrafficSeparationSchemeBoundary).Name;
+                }
+            };
+            public class UpdatedInformation_theUpdate : UpdatedInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
+
+                public UpdatedInformation_theUpdate() {
+                    base.AssociationConnectorTypeName = typeof(TrafficSeparationSchemeBoundary).Name;
+                }
+            };
             public TrafficSeparationSchemeBoundary() {
             }
         }
@@ -10437,6 +15081,36 @@ namespace S100Framework.DomainModel.S101 {
             [IgnoreDataMember]
             public override string Code => nameof(TrafficSeparationSchemeCrossing);
 
+            public class AdditionalInformation_theInformation : AdditionalInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theInformationInformationTypes => ["NauticalInformation"];
+
+                public AdditionalInformation_theInformation() {
+                    base.AssociationConnectorTypeName = typeof(TrafficSeparationSchemeCrossing).Name;
+                }
+            };
+            public class TrafficSeparationSchemeAggregation_theCollection : TrafficSeparationSchemeAggregation {
+                public override roleType? roleType => DomainModel.roleType.aggregation;
+
+                [IgnoreDataMember]
+                public override String[] theCollectionFeatureTypes => ["TrafficSeparationScheme"];
+
+                public TrafficSeparationSchemeAggregation_theCollection() {
+                    base.AssociationConnectorTypeName = typeof(TrafficSeparationSchemeCrossing).Name;
+                }
+            };
+            public class UpdatedInformation_theUpdate : UpdatedInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
+
+                public UpdatedInformation_theUpdate() {
+                    base.AssociationConnectorTypeName = typeof(TrafficSeparationSchemeCrossing).Name;
+                }
+            };
             public TrafficSeparationSchemeCrossing() {
             }
         }
@@ -10484,6 +15158,36 @@ namespace S100Framework.DomainModel.S101 {
             [IgnoreDataMember]
             public override string Code => nameof(TrafficSeparationSchemeRoundabout);
 
+            public class AdditionalInformation_theInformation : AdditionalInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theInformationInformationTypes => ["NauticalInformation"];
+
+                public AdditionalInformation_theInformation() {
+                    base.AssociationConnectorTypeName = typeof(TrafficSeparationSchemeRoundabout).Name;
+                }
+            };
+            public class TrafficSeparationSchemeAggregation_theCollection : TrafficSeparationSchemeAggregation {
+                public override roleType? roleType => DomainModel.roleType.aggregation;
+
+                [IgnoreDataMember]
+                public override String[] theCollectionFeatureTypes => ["TrafficSeparationScheme"];
+
+                public TrafficSeparationSchemeAggregation_theCollection() {
+                    base.AssociationConnectorTypeName = typeof(TrafficSeparationSchemeRoundabout).Name;
+                }
+            };
+            public class UpdatedInformation_theUpdate : UpdatedInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
+
+                public UpdatedInformation_theUpdate() {
+                    base.AssociationConnectorTypeName = typeof(TrafficSeparationSchemeRoundabout).Name;
+                }
+            };
             public TrafficSeparationSchemeRoundabout() {
             }
         }
@@ -10502,6 +15206,76 @@ namespace S100Framework.DomainModel.S101 {
             [IgnoreDataMember]
             public override string Code => nameof(TrafficSeparationScheme);
 
+            public class AdditionalInformation_theInformation : AdditionalInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theInformationInformationTypes => ["NauticalInformation"];
+
+                public AdditionalInformation_theInformation() {
+                    base.AssociationConnectorTypeName = typeof(TrafficSeparationScheme).Name;
+                }
+            };
+            public class AidsToNavigationAssociation_theComponent : AidsToNavigationAssociation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theComponentFeatureTypes => ["CardinalBeacon", "CardinalBuoy", "Daymark", "EmergencyWreckMarkingBuoy", "IsolatedDangerBeacon", "IsolatedDangerBuoy", "LateralBeacon", "LateralBuoy", "LightFloat", "LightVessel", "Pile", "SafeWaterBeacon", "SafeWaterBuoy", "SpecialPurposeGeneralBeacon", "SpecialPurposeGeneralBuoy", "Building", "Crane", "Dolphin", "FishingFacility", "FortifiedStructure", "Landmark", "MooringBuoy", "OffshorePlatform", "SiloTank", "WindTurbine", "Bridge", "Conveyor", "FloatingDock", "Hulk", "PipelineOverhead", "Pontoon", "PylonBridgeSupport", "ShorelineConstruction", "SpanFixed", "SpanOpening", "StructureOverNavigableWater"];
+
+                public AidsToNavigationAssociation_theComponent() {
+                    base.AssociationConnectorTypeName = typeof(TrafficSeparationScheme).Name;
+                }
+            };
+            public class TrafficSeparationSchemeAggregation_theComponent : TrafficSeparationSchemeAggregation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theComponentFeatureTypes => ["DeepWaterRoute", "DeepWaterRouteCentreline", "DeepWaterRoutePart", "InshoreTrafficZone", "PrecautionaryArea", "RestrictedArea", "SeparationZoneOrLine", "TrafficSeparationScheme", "TrafficSeparationSchemeBoundary", "TrafficSeparationSchemeCrossing", "TrafficSeparationSchemeLanePart", "TrafficSeparationSchemeRoundabout", "TwoWayRoute", "TwoWayRoutePart"];
+
+                public TrafficSeparationSchemeAggregation_theComponent() {
+                    base.AssociationConnectorTypeName = typeof(TrafficSeparationScheme).Name;
+                }
+            };
+            public class TrafficSeparationSchemeAggregation_theCollection : TrafficSeparationSchemeAggregation {
+                public override roleType? roleType => DomainModel.roleType.aggregation;
+
+                [IgnoreDataMember]
+                public override String[] theCollectionFeatureTypes => ["TrafficSeparationScheme"];
+
+                public TrafficSeparationSchemeAggregation_theCollection() {
+                    base.AssociationConnectorTypeName = typeof(TrafficSeparationScheme).Name;
+                }
+            };
+            public class CautionAreaAssociation_theCollection : CautionAreaAssociation {
+                public override roleType? roleType => DomainModel.roleType.aggregation;
+
+                [IgnoreDataMember]
+                public override String[] theCollectionFeatureTypes => ["CautionArea"];
+
+                public CautionAreaAssociation_theCollection() {
+                    base.AssociationConnectorTypeName = typeof(TrafficSeparationScheme).Name;
+                }
+            };
+            public class UpdatedInformation_theUpdate : UpdatedInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
+
+                public UpdatedInformation_theUpdate() {
+                    base.AssociationConnectorTypeName = typeof(TrafficSeparationScheme).Name;
+                }
+            };
+            public class TextAssociation_theCartographicText : TextAssociation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theCartographicTextFeatureTypes => ["TextPlacement"];
+
+                public TextAssociation_theCartographicText() {
+                    base.AssociationConnectorTypeName = typeof(TrafficSeparationScheme).Name;
+                }
+            };
             public TrafficSeparationScheme() {
             }
         }
@@ -10519,6 +15293,46 @@ namespace S100Framework.DomainModel.S101 {
             [IgnoreDataMember]
             public override string Code => nameof(ArchipelagicSeaLaneArea);
 
+            public class AdditionalInformation_theInformation : AdditionalInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theInformationInformationTypes => ["NauticalInformation"];
+
+                public AdditionalInformation_theInformation() {
+                    base.AssociationConnectorTypeName = typeof(ArchipelagicSeaLaneArea).Name;
+                }
+            };
+            public class ASLAggregation_theCollection : ASLAggregation {
+                public override roleType? roleType => DomainModel.roleType.aggregation;
+
+                [IgnoreDataMember]
+                public override String[] theCollectionFeatureTypes => ["ArchipelagicSeaLane"];
+
+                public ASLAggregation_theCollection() {
+                    base.AssociationConnectorTypeName = typeof(ArchipelagicSeaLaneArea).Name;
+                }
+            };
+            public class UpdatedInformation_theUpdate : UpdatedInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
+
+                public UpdatedInformation_theUpdate() {
+                    base.AssociationConnectorTypeName = typeof(ArchipelagicSeaLaneArea).Name;
+                }
+            };
+            public class TextAssociation_theCartographicText : TextAssociation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theCartographicTextFeatureTypes => ["TextPlacement"];
+
+                public TextAssociation_theCartographicText() {
+                    base.AssociationConnectorTypeName = typeof(ArchipelagicSeaLaneArea).Name;
+                }
+            };
             public ArchipelagicSeaLaneArea() {
             }
         }
@@ -10536,6 +15350,46 @@ namespace S100Framework.DomainModel.S101 {
             [IgnoreDataMember]
             public override string Code => nameof(ArchipelagicSeaLaneAxis);
 
+            public class AdditionalInformation_theInformation : AdditionalInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theInformationInformationTypes => ["NauticalInformation"];
+
+                public AdditionalInformation_theInformation() {
+                    base.AssociationConnectorTypeName = typeof(ArchipelagicSeaLaneAxis).Name;
+                }
+            };
+            public class ASLAggregation_theCollection : ASLAggregation {
+                public override roleType? roleType => DomainModel.roleType.aggregation;
+
+                [IgnoreDataMember]
+                public override String[] theCollectionFeatureTypes => ["ArchipelagicSeaLane"];
+
+                public ASLAggregation_theCollection() {
+                    base.AssociationConnectorTypeName = typeof(ArchipelagicSeaLaneAxis).Name;
+                }
+            };
+            public class UpdatedInformation_theUpdate : UpdatedInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
+
+                public UpdatedInformation_theUpdate() {
+                    base.AssociationConnectorTypeName = typeof(ArchipelagicSeaLaneAxis).Name;
+                }
+            };
+            public class TextAssociation_theCartographicText : TextAssociation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theCartographicTextFeatureTypes => ["TextPlacement"];
+
+                public TextAssociation_theCartographicText() {
+                    base.AssociationConnectorTypeName = typeof(ArchipelagicSeaLaneAxis).Name;
+                }
+            };
             public ArchipelagicSeaLaneAxis() {
             }
         }
@@ -10553,6 +15407,66 @@ namespace S100Framework.DomainModel.S101 {
             [IgnoreDataMember]
             public override string Code => nameof(ArchipelagicSeaLane);
 
+            public class AdditionalInformation_theInformation : AdditionalInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theInformationInformationTypes => ["NauticalInformation"];
+
+                public AdditionalInformation_theInformation() {
+                    base.AssociationConnectorTypeName = typeof(ArchipelagicSeaLane).Name;
+                }
+            };
+            public class AidsToNavigationAssociation_theComponent : AidsToNavigationAssociation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theComponentFeatureTypes => ["CardinalBeacon", "CardinalBuoy", "Daymark", "EmergencyWreckMarkingBuoy", "IsolatedDangerBeacon", "IsolatedDangerBuoy", "LateralBeacon", "LateralBuoy", "LightFloat", "LightVessel", "Pile", "SafeWaterBeacon", "SafeWaterBuoy", "SpecialPurposeGeneralBeacon", "SpecialPurposeGeneralBuoy"];
+
+                public AidsToNavigationAssociation_theComponent() {
+                    base.AssociationConnectorTypeName = typeof(ArchipelagicSeaLane).Name;
+                }
+            };
+            public class ASLAggregation_theComponent : ASLAggregation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theComponentFeatureTypes => ["ArchipelagicSeaLaneArea", "ArchipelagicSeaLaneAxis"];
+
+                public ASLAggregation_theComponent() {
+                    base.AssociationConnectorTypeName = typeof(ArchipelagicSeaLane).Name;
+                }
+            };
+            public class CautionAreaAssociation_theCollection : CautionAreaAssociation {
+                public override roleType? roleType => DomainModel.roleType.aggregation;
+
+                [IgnoreDataMember]
+                public override String[] theCollectionFeatureTypes => ["CautionArea"];
+
+                public CautionAreaAssociation_theCollection() {
+                    base.AssociationConnectorTypeName = typeof(ArchipelagicSeaLane).Name;
+                }
+            };
+            public class UpdatedInformation_theUpdate : UpdatedInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
+
+                public UpdatedInformation_theUpdate() {
+                    base.AssociationConnectorTypeName = typeof(ArchipelagicSeaLane).Name;
+                }
+            };
+            public class TextAssociation_theCartographicText : TextAssociation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theCartographicTextFeatureTypes => ["TextPlacement"];
+
+                public TextAssociation_theCartographicText() {
+                    base.AssociationConnectorTypeName = typeof(ArchipelagicSeaLane).Name;
+                }
+            };
             public ArchipelagicSeaLane() {
                 nationality = string.Empty;
             }
@@ -10589,6 +15503,36 @@ namespace S100Framework.DomainModel.S101 {
             [IgnoreDataMember]
             public override string Code => nameof(RadioCallingInPoint);
 
+            public class AdditionalInformation_theInformation : AdditionalInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theInformationInformationTypes => ["ContactDetails", "NauticalInformation", "NonStandardWorkingDay", "ServiceHours"];
+
+                public AdditionalInformation_theInformation() {
+                    base.AssociationConnectorTypeName = typeof(RadioCallingInPoint).Name;
+                }
+            };
+            public class UpdatedInformation_theUpdate : UpdatedInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
+
+                public UpdatedInformation_theUpdate() {
+                    base.AssociationConnectorTypeName = typeof(RadioCallingInPoint).Name;
+                }
+            };
+            public class TextAssociation_theCartographicText : TextAssociation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theCartographicTextFeatureTypes => ["TextPlacement"];
+
+                public TextAssociation_theCartographicText() {
+                    base.AssociationConnectorTypeName = typeof(RadioCallingInPoint).Name;
+                }
+            };
             public RadioCallingInPoint() {
             }
         }
@@ -10623,6 +15567,36 @@ namespace S100Framework.DomainModel.S101 {
             [IgnoreDataMember]
             public override string Code => nameof(FerryRoute);
 
+            public class AdditionalInformation_theInformation : AdditionalInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theInformationInformationTypes => ["NauticalInformation"];
+
+                public AdditionalInformation_theInformation() {
+                    base.AssociationConnectorTypeName = typeof(FerryRoute).Name;
+                }
+            };
+            public class UpdatedInformation_theUpdate : UpdatedInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
+
+                public UpdatedInformation_theUpdate() {
+                    base.AssociationConnectorTypeName = typeof(FerryRoute).Name;
+                }
+            };
+            public class TextAssociation_theCartographicText : TextAssociation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theCartographicTextFeatureTypes => ["TextPlacement"];
+
+                public TextAssociation_theCartographicText() {
+                    base.AssociationConnectorTypeName = typeof(FerryRoute).Name;
+                }
+            };
             public FerryRoute() {
                 categoryOfFerry = new();
             }
@@ -10649,6 +15623,36 @@ namespace S100Framework.DomainModel.S101 {
             [IgnoreDataMember]
             public override string Code => nameof(RadarLine);
 
+            public class AdditionalInformation_theInformation : AdditionalInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theInformationInformationTypes => ["NauticalInformation"];
+
+                public AdditionalInformation_theInformation() {
+                    base.AssociationConnectorTypeName = typeof(RadarLine).Name;
+                }
+            };
+            public class UpdatedInformation_theUpdate : UpdatedInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
+
+                public UpdatedInformation_theUpdate() {
+                    base.AssociationConnectorTypeName = typeof(RadarLine).Name;
+                }
+            };
+            public class TextAssociation_theCartographicText : TextAssociation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theCartographicTextFeatureTypes => ["TextPlacement"];
+
+                public TextAssociation_theCartographicText() {
+                    base.AssociationConnectorTypeName = typeof(RadarLine).Name;
+                }
+            };
             public RadarLine() {
             }
         }
@@ -10672,6 +15676,36 @@ namespace S100Framework.DomainModel.S101 {
             [IgnoreDataMember]
             public override string Code => nameof(RadarRange);
 
+            public class AdditionalInformation_theInformation : AdditionalInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theInformationInformationTypes => ["ContactDetails", "NauticalInformation"];
+
+                public AdditionalInformation_theInformation() {
+                    base.AssociationConnectorTypeName = typeof(RadarRange).Name;
+                }
+            };
+            public class UpdatedInformation_theUpdate : UpdatedInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
+
+                public UpdatedInformation_theUpdate() {
+                    base.AssociationConnectorTypeName = typeof(RadarRange).Name;
+                }
+            };
+            public class TextAssociation_theCartographicText : TextAssociation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theCartographicTextFeatureTypes => ["TextPlacement"];
+
+                public TextAssociation_theCartographicText() {
+                    base.AssociationConnectorTypeName = typeof(RadarRange).Name;
+                }
+            };
             public RadarRange() {
             }
         }
@@ -10703,6 +15737,36 @@ namespace S100Framework.DomainModel.S101 {
             [IgnoreDataMember]
             public override string Code => nameof(RadarStation);
 
+            public class AdditionalInformation_theInformation : AdditionalInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theInformationInformationTypes => ["ContactDetails", "NauticalInformation"];
+
+                public AdditionalInformation_theInformation() {
+                    base.AssociationConnectorTypeName = typeof(RadarStation).Name;
+                }
+            };
+            public class UpdatedInformation_theUpdate : UpdatedInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
+
+                public UpdatedInformation_theUpdate() {
+                    base.AssociationConnectorTypeName = typeof(RadarStation).Name;
+                }
+            };
+            public class TextAssociation_theCartographicText : TextAssociation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theCartographicTextFeatureTypes => ["TextPlacement"];
+
+                public TextAssociation_theCartographicText() {
+                    base.AssociationConnectorTypeName = typeof(RadarStation).Name;
+                }
+            };
             public RadarStation() {
             }
         }
@@ -10784,6 +15848,36 @@ namespace S100Framework.DomainModel.S101 {
             [IgnoreDataMember]
             public override string Code => nameof(AnchorageArea);
 
+            public class AdditionalInformation_theInformation : AdditionalInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theInformationInformationTypes => ["ContactDetails", "NauticalInformation", "NonStandardWorkingDay", "ServiceHours"];
+
+                public AdditionalInformation_theInformation() {
+                    base.AssociationConnectorTypeName = typeof(AnchorageArea).Name;
+                }
+            };
+            public class UpdatedInformation_theUpdate : UpdatedInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
+
+                public UpdatedInformation_theUpdate() {
+                    base.AssociationConnectorTypeName = typeof(AnchorageArea).Name;
+                }
+            };
+            public class TextAssociation_theCartographicText : TextAssociation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theCartographicTextFeatureTypes => ["TextPlacement"];
+
+                public TextAssociation_theCartographicText() {
+                    base.AssociationConnectorTypeName = typeof(AnchorageArea).Name;
+                }
+            };
             public AnchorageArea() {
             }
         }
@@ -10846,6 +15940,36 @@ namespace S100Framework.DomainModel.S101 {
             [IgnoreDataMember]
             public override string Code => nameof(MooringArea);
 
+            public class AdditionalInformation_theInformation : AdditionalInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theInformationInformationTypes => ["ContactDetails", "NauticalInformation", "NonStandardWorkingDay", "ServiceHours"];
+
+                public AdditionalInformation_theInformation() {
+                    base.AssociationConnectorTypeName = typeof(MooringArea).Name;
+                }
+            };
+            public class UpdatedInformation_theUpdate : UpdatedInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
+
+                public UpdatedInformation_theUpdate() {
+                    base.AssociationConnectorTypeName = typeof(MooringArea).Name;
+                }
+            };
+            public class TextAssociation_theCartographicText : TextAssociation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theCartographicTextFeatureTypes => ["TextPlacement"];
+
+                public TextAssociation_theCartographicText() {
+                    base.AssociationConnectorTypeName = typeof(MooringArea).Name;
+                }
+            };
             public MooringArea() {
             }
         }
@@ -10903,6 +16027,36 @@ namespace S100Framework.DomainModel.S101 {
             [IgnoreDataMember]
             public override string Code => nameof(AnchorBerth);
 
+            public class AdditionalInformation_theInformation : AdditionalInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theInformationInformationTypes => ["ContactDetails", "NauticalInformation", "NonStandardWorkingDay", "ServiceHours"];
+
+                public AdditionalInformation_theInformation() {
+                    base.AssociationConnectorTypeName = typeof(AnchorBerth).Name;
+                }
+            };
+            public class UpdatedInformation_theUpdate : UpdatedInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
+
+                public UpdatedInformation_theUpdate() {
+                    base.AssociationConnectorTypeName = typeof(AnchorBerth).Name;
+                }
+            };
+            public class TextAssociation_theCartographicText : TextAssociation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theCartographicTextFeatureTypes => ["TextPlacement"];
+
+                public TextAssociation_theCartographicText() {
+                    base.AssociationConnectorTypeName = typeof(AnchorBerth).Name;
+                }
+            };
             public AnchorBerth() {
             }
         }
@@ -10960,6 +16114,36 @@ namespace S100Framework.DomainModel.S101 {
             [IgnoreDataMember]
             public override string Code => nameof(SeaplaneLandingArea);
 
+            public class AdditionalInformation_theInformation : AdditionalInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theInformationInformationTypes => ["ContactDetails", "NauticalInformation", "NonStandardWorkingDay", "ServiceHours"];
+
+                public AdditionalInformation_theInformation() {
+                    base.AssociationConnectorTypeName = typeof(SeaplaneLandingArea).Name;
+                }
+            };
+            public class UpdatedInformation_theUpdate : UpdatedInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
+
+                public UpdatedInformation_theUpdate() {
+                    base.AssociationConnectorTypeName = typeof(SeaplaneLandingArea).Name;
+                }
+            };
+            public class TextAssociation_theCartographicText : TextAssociation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theCartographicTextFeatureTypes => ["TextPlacement"];
+
+                public TextAssociation_theCartographicText() {
+                    base.AssociationConnectorTypeName = typeof(SeaplaneLandingArea).Name;
+                }
+            };
             public SeaplaneLandingArea() {
             }
         }
@@ -11015,6 +16199,36 @@ namespace S100Framework.DomainModel.S101 {
             [IgnoreDataMember]
             public override string Code => nameof(DumpingGround);
 
+            public class AdditionalInformation_theInformation : AdditionalInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theInformationInformationTypes => ["NauticalInformation"];
+
+                public AdditionalInformation_theInformation() {
+                    base.AssociationConnectorTypeName = typeof(DumpingGround).Name;
+                }
+            };
+            public class UpdatedInformation_theUpdate : UpdatedInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
+
+                public UpdatedInformation_theUpdate() {
+                    base.AssociationConnectorTypeName = typeof(DumpingGround).Name;
+                }
+            };
+            public class TextAssociation_theCartographicText : TextAssociation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theCartographicTextFeatureTypes => ["TextPlacement"];
+
+                public TextAssociation_theCartographicText() {
+                    base.AssociationConnectorTypeName = typeof(DumpingGround).Name;
+                }
+            };
             public DumpingGround() {
             }
         }
@@ -11078,6 +16292,36 @@ namespace S100Framework.DomainModel.S101 {
             [IgnoreDataMember]
             public override string Code => nameof(MilitaryPracticeArea);
 
+            public class AdditionalInformation_theInformation : AdditionalInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theInformationInformationTypes => ["NauticalInformation"];
+
+                public AdditionalInformation_theInformation() {
+                    base.AssociationConnectorTypeName = typeof(MilitaryPracticeArea).Name;
+                }
+            };
+            public class UpdatedInformation_theUpdate : UpdatedInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
+
+                public UpdatedInformation_theUpdate() {
+                    base.AssociationConnectorTypeName = typeof(MilitaryPracticeArea).Name;
+                }
+            };
+            public class TextAssociation_theCartographicText : TextAssociation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theCartographicTextFeatureTypes => ["TextPlacement"];
+
+                public TextAssociation_theCartographicText() {
+                    base.AssociationConnectorTypeName = typeof(MilitaryPracticeArea).Name;
+                }
+            };
             public MilitaryPracticeArea() {
             }
         }
@@ -11102,6 +16346,36 @@ namespace S100Framework.DomainModel.S101 {
             [IgnoreDataMember]
             public override string Code => nameof(AdministrationArea);
 
+            public class AdditionalInformation_theInformation : AdditionalInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theInformationInformationTypes => ["ContactDetails", "NauticalInformation"];
+
+                public AdditionalInformation_theInformation() {
+                    base.AssociationConnectorTypeName = typeof(AdministrationArea).Name;
+                }
+            };
+            public class UpdatedInformation_theUpdate : UpdatedInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
+
+                public UpdatedInformation_theUpdate() {
+                    base.AssociationConnectorTypeName = typeof(AdministrationArea).Name;
+                }
+            };
+            public class TextAssociation_theCartographicText : TextAssociation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theCartographicTextFeatureTypes => ["TextPlacement"];
+
+                public TextAssociation_theCartographicText() {
+                    base.AssociationConnectorTypeName = typeof(AdministrationArea).Name;
+                }
+            };
             public AdministrationArea() {
             }
         }
@@ -11153,6 +16427,36 @@ namespace S100Framework.DomainModel.S101 {
             [IgnoreDataMember]
             public override string Code => nameof(CargoTranshipmentArea);
 
+            public class AdditionalInformation_theInformation : AdditionalInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theInformationInformationTypes => ["NauticalInformation"];
+
+                public AdditionalInformation_theInformation() {
+                    base.AssociationConnectorTypeName = typeof(CargoTranshipmentArea).Name;
+                }
+            };
+            public class UpdatedInformation_theUpdate : UpdatedInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
+
+                public UpdatedInformation_theUpdate() {
+                    base.AssociationConnectorTypeName = typeof(CargoTranshipmentArea).Name;
+                }
+            };
+            public class TextAssociation_theCartographicText : TextAssociation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theCartographicTextFeatureTypes => ["TextPlacement"];
+
+                public TextAssociation_theCartographicText() {
+                    base.AssociationConnectorTypeName = typeof(CargoTranshipmentArea).Name;
+                }
+            };
             public CargoTranshipmentArea() {
             }
         }
@@ -11179,6 +16483,46 @@ namespace S100Framework.DomainModel.S101 {
             [IgnoreDataMember]
             public override string Code => nameof(CautionArea);
 
+            public class AdditionalInformation_theInformation : AdditionalInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theInformationInformationTypes => ["NauticalInformation"];
+
+                public AdditionalInformation_theInformation() {
+                    base.AssociationConnectorTypeName = typeof(CautionArea).Name;
+                }
+            };
+            public class CautionAreaAssociation_theComponent : CautionAreaAssociation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theComponentFeatureTypes => ["ArchipelagicSeaLane", "TrafficSeparationScheme"];
+
+                public CautionAreaAssociation_theComponent() {
+                    base.AssociationConnectorTypeName = typeof(CautionArea).Name;
+                }
+            };
+            public class FairwayAuxiliary_thePrimaryFeature : FairwayAuxiliary {
+                public override roleType? roleType => DomainModel.roleType.aggregation;
+
+                [IgnoreDataMember]
+                public override String[] thePrimaryFeatureFeatureTypes => ["Fairway"];
+
+                public FairwayAuxiliary_thePrimaryFeature() {
+                    base.AssociationConnectorTypeName = typeof(CautionArea).Name;
+                }
+            };
+            public class UpdatedInformation_theUpdate : UpdatedInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
+
+                public UpdatedInformation_theUpdate() {
+                    base.AssociationConnectorTypeName = typeof(CautionArea).Name;
+                }
+            };
             public CautionArea() {
             }
         }
@@ -11198,6 +16542,36 @@ namespace S100Framework.DomainModel.S101 {
             [IgnoreDataMember]
             public override string Code => nameof(InformationArea);
 
+            public class AdditionalInformation_theInformation : AdditionalInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theInformationInformationTypes => ["NauticalInformation"];
+
+                public AdditionalInformation_theInformation() {
+                    base.AssociationConnectorTypeName = typeof(InformationArea).Name;
+                }
+            };
+            public class UpdatedInformation_theUpdate : UpdatedInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
+
+                public UpdatedInformation_theUpdate() {
+                    base.AssociationConnectorTypeName = typeof(InformationArea).Name;
+                }
+            };
+            public class TextAssociation_theCartographicText : TextAssociation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theCartographicTextFeatureTypes => ["TextPlacement"];
+
+                public TextAssociation_theCartographicText() {
+                    base.AssociationConnectorTypeName = typeof(InformationArea).Name;
+                }
+            };
             public InformationArea() {
             }
         }
@@ -11217,6 +16591,26 @@ namespace S100Framework.DomainModel.S101 {
             [IgnoreDataMember]
             public override string Code => nameof(ContiguousZone);
 
+            public class AdditionalInformation_theInformation : AdditionalInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theInformationInformationTypes => ["NauticalInformation"];
+
+                public AdditionalInformation_theInformation() {
+                    base.AssociationConnectorTypeName = typeof(ContiguousZone).Name;
+                }
+            };
+            public class UpdatedInformation_theUpdate : UpdatedInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
+
+                public UpdatedInformation_theUpdate() {
+                    base.AssociationConnectorTypeName = typeof(ContiguousZone).Name;
+                }
+            };
             public ContiguousZone() {
                 nationality = new();
             }
@@ -11236,6 +16630,36 @@ namespace S100Framework.DomainModel.S101 {
             [IgnoreDataMember]
             public override string Code => nameof(ContinentalShelfArea);
 
+            public class AdditionalInformation_theInformation : AdditionalInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theInformationInformationTypes => ["NauticalInformation"];
+
+                public AdditionalInformation_theInformation() {
+                    base.AssociationConnectorTypeName = typeof(ContinentalShelfArea).Name;
+                }
+            };
+            public class UpdatedInformation_theUpdate : UpdatedInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
+
+                public UpdatedInformation_theUpdate() {
+                    base.AssociationConnectorTypeName = typeof(ContinentalShelfArea).Name;
+                }
+            };
+            public class TextAssociation_theCartographicText : TextAssociation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theCartographicTextFeatureTypes => ["TextPlacement"];
+
+                public TextAssociation_theCartographicText() {
+                    base.AssociationConnectorTypeName = typeof(ContinentalShelfArea).Name;
+                }
+            };
             public ContinentalShelfArea() {
                 nationality = new();
             }
@@ -11252,6 +16676,26 @@ namespace S100Framework.DomainModel.S101 {
             [IgnoreDataMember]
             public override string Code => nameof(CustomZone);
 
+            public class AdditionalInformation_theInformation : AdditionalInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theInformationInformationTypes => ["NauticalInformation"];
+
+                public AdditionalInformation_theInformation() {
+                    base.AssociationConnectorTypeName = typeof(CustomZone).Name;
+                }
+            };
+            public class UpdatedInformation_theUpdate : UpdatedInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
+
+                public UpdatedInformation_theUpdate() {
+                    base.AssociationConnectorTypeName = typeof(CustomZone).Name;
+                }
+            };
             public CustomZone() {
                 nationality = string.Empty;
             }
@@ -11271,6 +16715,26 @@ namespace S100Framework.DomainModel.S101 {
             [IgnoreDataMember]
             public override string Code => nameof(ExclusiveEconomicZone);
 
+            public class AdditionalInformation_theInformation : AdditionalInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theInformationInformationTypes => ["NauticalInformation"];
+
+                public AdditionalInformation_theInformation() {
+                    base.AssociationConnectorTypeName = typeof(ExclusiveEconomicZone).Name;
+                }
+            };
+            public class UpdatedInformation_theUpdate : UpdatedInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
+
+                public UpdatedInformation_theUpdate() {
+                    base.AssociationConnectorTypeName = typeof(ExclusiveEconomicZone).Name;
+                }
+            };
             public ExclusiveEconomicZone() {
                 nationality = new();
             }
@@ -11294,6 +16758,36 @@ namespace S100Framework.DomainModel.S101 {
             [IgnoreDataMember]
             public override string Code => nameof(FisheryZone);
 
+            public class AdditionalInformation_theInformation : AdditionalInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theInformationInformationTypes => ["NauticalInformation"];
+
+                public AdditionalInformation_theInformation() {
+                    base.AssociationConnectorTypeName = typeof(FisheryZone).Name;
+                }
+            };
+            public class UpdatedInformation_theUpdate : UpdatedInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
+
+                public UpdatedInformation_theUpdate() {
+                    base.AssociationConnectorTypeName = typeof(FisheryZone).Name;
+                }
+            };
+            public class TextAssociation_theCartographicText : TextAssociation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theCartographicTextFeatureTypes => ["TextPlacement"];
+
+                public TextAssociation_theCartographicText() {
+                    base.AssociationConnectorTypeName = typeof(FisheryZone).Name;
+                }
+            };
             public FisheryZone() {
                 nationality = string.Empty;
             }
@@ -11349,6 +16843,36 @@ namespace S100Framework.DomainModel.S101 {
             [IgnoreDataMember]
             public override string Code => nameof(FishingGround);
 
+            public class AdditionalInformation_theInformation : AdditionalInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theInformationInformationTypes => ["NauticalInformation"];
+
+                public AdditionalInformation_theInformation() {
+                    base.AssociationConnectorTypeName = typeof(FishingGround).Name;
+                }
+            };
+            public class UpdatedInformation_theUpdate : UpdatedInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
+
+                public UpdatedInformation_theUpdate() {
+                    base.AssociationConnectorTypeName = typeof(FishingGround).Name;
+                }
+            };
+            public class TextAssociation_theCartographicText : TextAssociation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theCartographicTextFeatureTypes => ["TextPlacement"];
+
+                public TextAssociation_theCartographicText() {
+                    base.AssociationConnectorTypeName = typeof(FishingGround).Name;
+                }
+            };
             public FishingGround() {
             }
         }
@@ -11370,6 +16894,36 @@ namespace S100Framework.DomainModel.S101 {
             [IgnoreDataMember]
             public override string Code => nameof(FreePortArea);
 
+            public class AdditionalInformation_theInformation : AdditionalInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theInformationInformationTypes => ["NauticalInformation"];
+
+                public AdditionalInformation_theInformation() {
+                    base.AssociationConnectorTypeName = typeof(FreePortArea).Name;
+                }
+            };
+            public class UpdatedInformation_theUpdate : UpdatedInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
+
+                public UpdatedInformation_theUpdate() {
+                    base.AssociationConnectorTypeName = typeof(FreePortArea).Name;
+                }
+            };
+            public class TextAssociation_theCartographicText : TextAssociation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theCartographicTextFeatureTypes => ["TextPlacement"];
+
+                public TextAssociation_theCartographicText() {
+                    base.AssociationConnectorTypeName = typeof(FreePortArea).Name;
+                }
+            };
             public FreePortArea() {
             }
         }
@@ -11392,6 +16946,36 @@ namespace S100Framework.DomainModel.S101 {
             [IgnoreDataMember]
             public override string Code => nameof(HarbourAreaAdministrative);
 
+            public class AdditionalInformation_theInformation : AdditionalInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theInformationInformationTypes => ["ContactDetails", "NauticalInformation"];
+
+                public AdditionalInformation_theInformation() {
+                    base.AssociationConnectorTypeName = typeof(HarbourAreaAdministrative).Name;
+                }
+            };
+            public class UpdatedInformation_theUpdate : UpdatedInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
+
+                public UpdatedInformation_theUpdate() {
+                    base.AssociationConnectorTypeName = typeof(HarbourAreaAdministrative).Name;
+                }
+            };
+            public class TextAssociation_theCartographicText : TextAssociation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theCartographicTextFeatureTypes => ["TextPlacement"];
+
+                public TextAssociation_theCartographicText() {
+                    base.AssociationConnectorTypeName = typeof(HarbourAreaAdministrative).Name;
+                }
+            };
             public HarbourAreaAdministrative() {
             }
         }
@@ -11416,6 +17000,36 @@ namespace S100Framework.DomainModel.S101 {
             [IgnoreDataMember]
             public override string Code => nameof(LogPond);
 
+            public class AdditionalInformation_theInformation : AdditionalInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theInformationInformationTypes => ["NauticalInformation"];
+
+                public AdditionalInformation_theInformation() {
+                    base.AssociationConnectorTypeName = typeof(LogPond).Name;
+                }
+            };
+            public class UpdatedInformation_theUpdate : UpdatedInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
+
+                public UpdatedInformation_theUpdate() {
+                    base.AssociationConnectorTypeName = typeof(LogPond).Name;
+                }
+            };
+            public class TextAssociation_theCartographicText : TextAssociation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theCartographicTextFeatureTypes => ["TextPlacement"];
+
+                public TextAssociation_theCartographicText() {
+                    base.AssociationConnectorTypeName = typeof(LogPond).Name;
+                }
+            };
             public LogPond() {
             }
         }
@@ -11449,6 +17063,36 @@ namespace S100Framework.DomainModel.S101 {
             [IgnoreDataMember]
             public override string Code => nameof(OilBarrier);
 
+            public class AdditionalInformation_theInformation : AdditionalInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theInformationInformationTypes => ["NauticalInformation"];
+
+                public AdditionalInformation_theInformation() {
+                    base.AssociationConnectorTypeName = typeof(OilBarrier).Name;
+                }
+            };
+            public class UpdatedInformation_theUpdate : UpdatedInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
+
+                public UpdatedInformation_theUpdate() {
+                    base.AssociationConnectorTypeName = typeof(OilBarrier).Name;
+                }
+            };
+            public class TextAssociation_theCartographicText : TextAssociation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theCartographicTextFeatureTypes => ["TextPlacement"];
+
+                public TextAssociation_theCartographicText() {
+                    base.AssociationConnectorTypeName = typeof(OilBarrier).Name;
+                }
+            };
             public OilBarrier() {
             }
         }
@@ -11464,6 +17108,26 @@ namespace S100Framework.DomainModel.S101 {
             [IgnoreDataMember]
             public override string Code => nameof(StraightTerritorialSeaBaseline);
 
+            public class AdditionalInformation_theInformation : AdditionalInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theInformationInformationTypes => ["NauticalInformation"];
+
+                public AdditionalInformation_theInformation() {
+                    base.AssociationConnectorTypeName = typeof(StraightTerritorialSeaBaseline).Name;
+                }
+            };
+            public class UpdatedInformation_theUpdate : UpdatedInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
+
+                public UpdatedInformation_theUpdate() {
+                    base.AssociationConnectorTypeName = typeof(StraightTerritorialSeaBaseline).Name;
+                }
+            };
             public StraightTerritorialSeaBaseline() {
                 nationality = string.Empty;
             }
@@ -11502,6 +17166,26 @@ namespace S100Framework.DomainModel.S101 {
             [IgnoreDataMember]
             public override string Code => nameof(TerritorialSeaArea);
 
+            public class AdditionalInformation_theInformation : AdditionalInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theInformationInformationTypes => ["NauticalInformation"];
+
+                public AdditionalInformation_theInformation() {
+                    base.AssociationConnectorTypeName = typeof(TerritorialSeaArea).Name;
+                }
+            };
+            public class UpdatedInformation_theUpdate : UpdatedInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
+
+                public UpdatedInformation_theUpdate() {
+                    base.AssociationConnectorTypeName = typeof(TerritorialSeaArea).Name;
+                }
+            };
             public TerritorialSeaArea() {
                 nationality = new();
             }
@@ -11546,6 +17230,36 @@ namespace S100Framework.DomainModel.S101 {
             [IgnoreDataMember]
             public override string Code => nameof(SubmarineTransitLane);
 
+            public class AdditionalInformation_theInformation : AdditionalInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theInformationInformationTypes => ["NauticalInformation"];
+
+                public AdditionalInformation_theInformation() {
+                    base.AssociationConnectorTypeName = typeof(SubmarineTransitLane).Name;
+                }
+            };
+            public class UpdatedInformation_theUpdate : UpdatedInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
+
+                public UpdatedInformation_theUpdate() {
+                    base.AssociationConnectorTypeName = typeof(SubmarineTransitLane).Name;
+                }
+            };
+            public class TextAssociation_theCartographicText : TextAssociation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theCartographicTextFeatureTypes => ["TextPlacement"];
+
+                public TextAssociation_theCartographicText() {
+                    base.AssociationConnectorTypeName = typeof(SubmarineTransitLane).Name;
+                }
+            };
             public SubmarineTransitLane() {
             }
         }
@@ -11562,6 +17276,46 @@ namespace S100Framework.DomainModel.S101 {
             [IgnoreDataMember]
             public override string Code => nameof(PilotageDistrict);
 
+            public class AdditionalInformation_theInformation : AdditionalInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theInformationInformationTypes => ["ContactDetails", "NauticalInformation"];
+
+                public AdditionalInformation_theInformation() {
+                    base.AssociationConnectorTypeName = typeof(PilotageDistrict).Name;
+                }
+            };
+            public class PilotageDistrictAssociation_theComponent : PilotageDistrictAssociation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theComponentFeatureTypes => ["PilotBoardingPlace"];
+
+                public PilotageDistrictAssociation_theComponent() {
+                    base.AssociationConnectorTypeName = typeof(PilotageDistrict).Name;
+                }
+            };
+            public class UpdatedInformation_theUpdate : UpdatedInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
+
+                public UpdatedInformation_theUpdate() {
+                    base.AssociationConnectorTypeName = typeof(PilotageDistrict).Name;
+                }
+            };
+            public class TextAssociation_theCartographicText : TextAssociation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theCartographicTextFeatureTypes => ["TextPlacement"];
+
+                public TextAssociation_theCartographicText() {
+                    base.AssociationConnectorTypeName = typeof(PilotageDistrict).Name;
+                }
+            };
             public PilotageDistrict() {
             }
         }
@@ -11580,6 +17334,36 @@ namespace S100Framework.DomainModel.S101 {
             [IgnoreDataMember]
             public override string Code => nameof(CollisionRegulationsLimit);
 
+            public class AdditionalInformation_theInformation : AdditionalInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theInformationInformationTypes => ["NauticalInformation"];
+
+                public AdditionalInformation_theInformation() {
+                    base.AssociationConnectorTypeName = typeof(CollisionRegulationsLimit).Name;
+                }
+            };
+            public class UpdatedInformation_theUpdate : UpdatedInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
+
+                public UpdatedInformation_theUpdate() {
+                    base.AssociationConnectorTypeName = typeof(CollisionRegulationsLimit).Name;
+                }
+            };
+            public class TextAssociation_theCartographicText : TextAssociation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theCartographicTextFeatureTypes => ["TextPlacement"];
+
+                public TextAssociation_theCartographicText() {
+                    base.AssociationConnectorTypeName = typeof(CollisionRegulationsLimit).Name;
+                }
+            };
             public CollisionRegulationsLimit() {
             }
         }
@@ -11596,6 +17380,36 @@ namespace S100Framework.DomainModel.S101 {
             [IgnoreDataMember]
             public override string Code => nameof(MarinePollutionRegulationsArea);
 
+            public class AdditionalInformation_theInformation : AdditionalInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theInformationInformationTypes => ["NauticalInformation"];
+
+                public AdditionalInformation_theInformation() {
+                    base.AssociationConnectorTypeName = typeof(MarinePollutionRegulationsArea).Name;
+                }
+            };
+            public class UpdatedInformation_theUpdate : UpdatedInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
+
+                public UpdatedInformation_theUpdate() {
+                    base.AssociationConnectorTypeName = typeof(MarinePollutionRegulationsArea).Name;
+                }
+            };
+            public class TextAssociation_theCartographicText : TextAssociation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theCartographicTextFeatureTypes => ["TextPlacement"];
+
+                public TextAssociation_theCartographicText() {
+                    base.AssociationConnectorTypeName = typeof(MarinePollutionRegulationsArea).Name;
+                }
+            };
             public MarinePollutionRegulationsArea() {
             }
         }
@@ -11683,6 +17497,56 @@ namespace S100Framework.DomainModel.S101 {
             [IgnoreDataMember]
             public override string Code => nameof(RestrictedArea);
 
+            public class AdditionalInformation_theInformation : AdditionalInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theInformationInformationTypes => ["NauticalInformation"];
+
+                public AdditionalInformation_theInformation() {
+                    base.AssociationConnectorTypeName = typeof(RestrictedArea).Name;
+                }
+            };
+            public class FairwayAuxiliary_thePrimaryFeature : FairwayAuxiliary {
+                public override roleType? roleType => DomainModel.roleType.aggregation;
+
+                [IgnoreDataMember]
+                public override String[] thePrimaryFeatureFeatureTypes => ["Fairway"];
+
+                public FairwayAuxiliary_thePrimaryFeature() {
+                    base.AssociationConnectorTypeName = typeof(RestrictedArea).Name;
+                }
+            };
+            public class TrafficSeparationSchemeAggregation_theCollection : TrafficSeparationSchemeAggregation {
+                public override roleType? roleType => DomainModel.roleType.aggregation;
+
+                [IgnoreDataMember]
+                public override String[] theCollectionFeatureTypes => ["TrafficSeparationScheme"];
+
+                public TrafficSeparationSchemeAggregation_theCollection() {
+                    base.AssociationConnectorTypeName = typeof(RestrictedArea).Name;
+                }
+            };
+            public class UpdatedInformation_theUpdate : UpdatedInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
+
+                public UpdatedInformation_theUpdate() {
+                    base.AssociationConnectorTypeName = typeof(RestrictedArea).Name;
+                }
+            };
+            public class TextAssociation_theCartographicText : TextAssociation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theCartographicTextFeatureTypes => ["TextPlacement"];
+
+                public TextAssociation_theCartographicText() {
+                    base.AssociationConnectorTypeName = typeof(RestrictedArea).Name;
+                }
+            };
             public RestrictedArea() {
                 restriction = new();
             }
@@ -11787,6 +17651,66 @@ namespace S100Framework.DomainModel.S101 {
             [IgnoreDataMember]
             public override string Code => nameof(LightAllAround);
 
+            public class AdditionalInformation_theInformation : AdditionalInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theInformationInformationTypes => ["ContactDetails", "NauticalInformation"];
+
+                public AdditionalInformation_theInformation() {
+                    base.AssociationConnectorTypeName = typeof(LightAllAround).Name;
+                }
+            };
+            public class StructureEquipment_theStructure : StructureEquipment {
+                public override roleType? roleType => DomainModel.roleType.composition;
+
+                [IgnoreDataMember]
+                public override String[] theStructureFeatureTypes => ["Bridge", "Building", "Crane", "CardinalBeacon", "CardinalBuoy", "Conveyor", "Dolphin", "EmergencyWreckMarkingBuoy", "FishingFacility", "FloatingDock", "FortifiedStructure", "Hulk", "InstallationBuoy", "IsolatedDangerBeacon", "IsolatedDangerBuoy", "Landmark", "LateralBeacon", "LateralBuoy", "LightFloat", "LightVessel", "MooringBuoy", "OffshorePlatform", "Pile", "PipelineOverhead", "Pontoon", "PylonBridgeSupport", "SafeWaterBeacon", "SafeWaterBuoy", "ShorelineConstruction", "SiloTank", "SpanFixed", "SpanOpening", "SpecialPurposeGeneralBeacon", "SpecialPurposeGeneralBuoy", "StructureOverNavigableWater", "WindTurbine", "Wreck", "LightAllAround", "LightSectored", "Daymark"];
+
+                public StructureEquipment_theStructure() {
+                    base.AssociationConnectorTypeName = typeof(LightAllAround).Name;
+                }
+            };
+            public class StructureEquipment_theEquipment : StructureEquipment {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theEquipmentFeatureTypes => ["FogSignal", "LightAirObstruction", "LightAllAround", "LightFogDetector", "LightSectored", "RadarTransponderBeacon", "Retroreflector"];
+
+                public StructureEquipment_theEquipment() {
+                    base.AssociationConnectorTypeName = typeof(LightAllAround).Name;
+                }
+            };
+            public class RangeSystemAggregation_theCollection : RangeSystemAggregation {
+                public override roleType? roleType => DomainModel.roleType.aggregation;
+
+                [IgnoreDataMember]
+                public override String[] theCollectionFeatureTypes => ["RangeSystem"];
+
+                public RangeSystemAggregation_theCollection() {
+                    base.AssociationConnectorTypeName = typeof(LightAllAround).Name;
+                }
+            };
+            public class UpdatedInformation_theUpdate : UpdatedInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
+
+                public UpdatedInformation_theUpdate() {
+                    base.AssociationConnectorTypeName = typeof(LightAllAround).Name;
+                }
+            };
+            public class TextAssociation_theCartographicText : TextAssociation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theCartographicTextFeatureTypes => ["TextPlacement"];
+
+                public TextAssociation_theCartographicText() {
+                    base.AssociationConnectorTypeName = typeof(LightAllAround).Name;
+                }
+            };
             public LightAllAround() {
                 colour = new();
                 rhythmOfLight = new rhythmOfLight()
@@ -11876,6 +17800,66 @@ namespace S100Framework.DomainModel.S101 {
             [IgnoreDataMember]
             public override string Code => nameof(LightSectored);
 
+            public class AdditionalInformation_theInformation : AdditionalInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theInformationInformationTypes => ["ContactDetails", "NauticalInformation"];
+
+                public AdditionalInformation_theInformation() {
+                    base.AssociationConnectorTypeName = typeof(LightSectored).Name;
+                }
+            };
+            public class StructureEquipment_theEquipment : StructureEquipment {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theEquipmentFeatureTypes => ["FogSignal", "LightAirObstruction", "LightAllAround", "LightFogDetector", "LightSectored", "RadarTransponderBeacon", "Retroreflector"];
+
+                public StructureEquipment_theEquipment() {
+                    base.AssociationConnectorTypeName = typeof(LightSectored).Name;
+                }
+            };
+            public class StructureEquipment_theStructure : StructureEquipment {
+                public override roleType? roleType => DomainModel.roleType.composition;
+
+                [IgnoreDataMember]
+                public override String[] theStructureFeatureTypes => ["Bridge", "Building", "Crane", "CardinalBeacon", "Conveyor", "Dolphin", "FishingFacility", "FortifiedStructure", "IsolatedDangerBeacon", "Landmark", "LateralBeacon", "OffshorePlatform", "Pile", "PipelineOverhead", "PylonBridgeSupport", "SafeWaterBeacon", "ShorelineConstruction", "SiloTank", "SpanFixed", "SpanOpening", "SpecialPurposeGeneralBeacon", "StructureOverNavigableWater", "WindTurbine", "Wreck", "LightAllAround", "LightSectored", "Daymark"];
+
+                public StructureEquipment_theStructure() {
+                    base.AssociationConnectorTypeName = typeof(LightSectored).Name;
+                }
+            };
+            public class RangeSystemAggregation_theCollection : RangeSystemAggregation {
+                public override roleType? roleType => DomainModel.roleType.aggregation;
+
+                [IgnoreDataMember]
+                public override String[] theCollectionFeatureTypes => ["RangeSystem"];
+
+                public RangeSystemAggregation_theCollection() {
+                    base.AssociationConnectorTypeName = typeof(LightSectored).Name;
+                }
+            };
+            public class UpdatedInformation_theUpdate : UpdatedInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
+
+                public UpdatedInformation_theUpdate() {
+                    base.AssociationConnectorTypeName = typeof(LightSectored).Name;
+                }
+            };
+            public class TextAssociation_theCartographicText : TextAssociation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theCartographicTextFeatureTypes => ["TextPlacement"];
+
+                public TextAssociation_theCartographicText() {
+                    base.AssociationConnectorTypeName = typeof(LightSectored).Name;
+                }
+            };
             public LightSectored() {
                 sectorCharacteristics = new();
             }
@@ -11942,6 +17926,46 @@ namespace S100Framework.DomainModel.S101 {
             [IgnoreDataMember]
             public override string Code => nameof(LightFogDetector);
 
+            public class AdditionalInformation_theInformation : AdditionalInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theInformationInformationTypes => ["NauticalInformation"];
+
+                public AdditionalInformation_theInformation() {
+                    base.AssociationConnectorTypeName = typeof(LightFogDetector).Name;
+                }
+            };
+            public class StructureEquipment_theStructure : StructureEquipment {
+                public override roleType? roleType => DomainModel.roleType.composition;
+
+                [IgnoreDataMember]
+                public override String[] theStructureFeatureTypes => ["Bridge", "Building", "Crane", "CardinalBeacon", "CardinalBuoy", "Conveyor", "Dolphin", "EmergencyWreckMarkingBuoy", "FishingFacility", "FloatingDock", "FortifiedStructure", "Hulk", "InstallationBuoy", "IsolatedDangerBeacon", "IsolatedDangerBuoy", "Landmark", "LateralBeacon", "LateralBuoy", "LightFloat", "LightVessel", "MooringBuoy", "OffshorePlatform", "Pile", "PipelineOverhead", "Pontoon", "PylonBridgeSupport", "SafeWaterBeacon", "SafeWaterBuoy", "ShorelineConstruction", "SiloTank", "SpanFixed", "SpanOpening", "SpecialPurposeGeneralBeacon", "SpecialPurposeGeneralBuoy", "StructureOverNavigableWater", "WindTurbine", "Wreck", "LightAllAround", "LightSectored", "Daymark"];
+
+                public StructureEquipment_theStructure() {
+                    base.AssociationConnectorTypeName = typeof(LightFogDetector).Name;
+                }
+            };
+            public class UpdatedInformation_theUpdate : UpdatedInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
+
+                public UpdatedInformation_theUpdate() {
+                    base.AssociationConnectorTypeName = typeof(LightFogDetector).Name;
+                }
+            };
+            public class TextAssociation_theCartographicText : TextAssociation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theCartographicTextFeatureTypes => ["TextPlacement"];
+
+                public TextAssociation_theCartographicText() {
+                    base.AssociationConnectorTypeName = typeof(LightFogDetector).Name;
+                }
+            };
             public LightFogDetector() {
             }
         }
@@ -12021,6 +18045,46 @@ namespace S100Framework.DomainModel.S101 {
             [IgnoreDataMember]
             public override string Code => nameof(LightAirObstruction);
 
+            public class AdditionalInformation_theInformation : AdditionalInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theInformationInformationTypes => ["NauticalInformation"];
+
+                public AdditionalInformation_theInformation() {
+                    base.AssociationConnectorTypeName = typeof(LightAirObstruction).Name;
+                }
+            };
+            public class StructureEquipment_theStructure : StructureEquipment {
+                public override roleType? roleType => DomainModel.roleType.composition;
+
+                [IgnoreDataMember]
+                public override String[] theStructureFeatureTypes => ["Bridge", "Building", "Crane", "Conveyor", "Landmark", "OffshorePlatform", "PylonBridgeSupport", "SpanFixed", "SpanOpening", "WindTurbine", "LightAllAround", "LightSectored"];
+
+                public StructureEquipment_theStructure() {
+                    base.AssociationConnectorTypeName = typeof(LightAirObstruction).Name;
+                }
+            };
+            public class UpdatedInformation_theUpdate : UpdatedInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
+
+                public UpdatedInformation_theUpdate() {
+                    base.AssociationConnectorTypeName = typeof(LightAirObstruction).Name;
+                }
+            };
+            public class TextAssociation_theCartographicText : TextAssociation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theCartographicTextFeatureTypes => ["TextPlacement"];
+
+                public TextAssociation_theCartographicText() {
+                    base.AssociationConnectorTypeName = typeof(LightAirObstruction).Name;
+                }
+            };
             public LightAirObstruction() {
             }
         }
@@ -12103,6 +18167,66 @@ namespace S100Framework.DomainModel.S101 {
             [IgnoreDataMember]
             public override string Code => nameof(LateralBuoy);
 
+            public class AdditionalInformation_theInformation : AdditionalInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theInformationInformationTypes => ["ContactDetails", "NauticalInformation"];
+
+                public AdditionalInformation_theInformation() {
+                    base.AssociationConnectorTypeName = typeof(LateralBuoy).Name;
+                }
+            };
+            public class StructureEquipment_theEquipment : StructureEquipment {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theEquipmentFeatureTypes => ["Daymark", "DistanceMark", "FogSignal", "LightAllAround", "LightFogDetector", "PhysicalAISAidToNavigation", "RadarTransponderBeacon", "Retroreflector", "SignalStationTraffic", "SignalStationWarning"];
+
+                public StructureEquipment_theEquipment() {
+                    base.AssociationConnectorTypeName = typeof(LateralBuoy).Name;
+                }
+            };
+            public class AidsToNavigationAssociation_theCollection : AidsToNavigationAssociation {
+                public override roleType? roleType => DomainModel.roleType.aggregation;
+
+                [IgnoreDataMember]
+                public override String[] theCollectionFeatureTypes => ["ArchipelagicSeaLane", "DeepWaterRoute", "FairwaySystem", "TrafficSeparationScheme", "TwoWayRoute"];
+
+                public AidsToNavigationAssociation_theCollection() {
+                    base.AssociationConnectorTypeName = typeof(LateralBuoy).Name;
+                }
+            };
+            public class FairwayAuxiliary_thePrimaryFeature : FairwayAuxiliary {
+                public override roleType? roleType => DomainModel.roleType.aggregation;
+
+                [IgnoreDataMember]
+                public override String[] thePrimaryFeatureFeatureTypes => ["Fairway"];
+
+                public FairwayAuxiliary_thePrimaryFeature() {
+                    base.AssociationConnectorTypeName = typeof(LateralBuoy).Name;
+                }
+            };
+            public class UpdatedInformation_theUpdate : UpdatedInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
+
+                public UpdatedInformation_theUpdate() {
+                    base.AssociationConnectorTypeName = typeof(LateralBuoy).Name;
+                }
+            };
+            public class TextAssociation_theCartographicText : TextAssociation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theCartographicTextFeatureTypes => ["TextPlacement"];
+
+                public TextAssociation_theCartographicText() {
+                    base.AssociationConnectorTypeName = typeof(LateralBuoy).Name;
+                }
+            };
             public LateralBuoy() {
                 colour = new();
             }
@@ -12186,6 +18310,66 @@ namespace S100Framework.DomainModel.S101 {
             [IgnoreDataMember]
             public override string Code => nameof(CardinalBuoy);
 
+            public class AdditionalInformation_theInformation : AdditionalInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theInformationInformationTypes => ["ContactDetails", "NauticalInformation"];
+
+                public AdditionalInformation_theInformation() {
+                    base.AssociationConnectorTypeName = typeof(CardinalBuoy).Name;
+                }
+            };
+            public class StructureEquipment_theEquipment : StructureEquipment {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theEquipmentFeatureTypes => ["Daymark", "DistanceMark", "FogSignal", "LightAllAround", "LightFogDetector", "PhysicalAISAidToNavigation", "RadarTransponderBeacon", "Retroreflector", "SignalStationTraffic", "SignalStationWarning"];
+
+                public StructureEquipment_theEquipment() {
+                    base.AssociationConnectorTypeName = typeof(CardinalBuoy).Name;
+                }
+            };
+            public class AidsToNavigationAssociation_theCollection : AidsToNavigationAssociation {
+                public override roleType? roleType => DomainModel.roleType.aggregation;
+
+                [IgnoreDataMember]
+                public override String[] theCollectionFeatureTypes => ["ArchipelagicSeaLane", "DeepWaterRoute", "FairwaySystem", "TrafficSeparationScheme", "TwoWayRoute"];
+
+                public AidsToNavigationAssociation_theCollection() {
+                    base.AssociationConnectorTypeName = typeof(CardinalBuoy).Name;
+                }
+            };
+            public class FairwayAuxiliary_thePrimaryFeature : FairwayAuxiliary {
+                public override roleType? roleType => DomainModel.roleType.aggregation;
+
+                [IgnoreDataMember]
+                public override String[] thePrimaryFeatureFeatureTypes => ["Fairway"];
+
+                public FairwayAuxiliary_thePrimaryFeature() {
+                    base.AssociationConnectorTypeName = typeof(CardinalBuoy).Name;
+                }
+            };
+            public class UpdatedInformation_theUpdate : UpdatedInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
+
+                public UpdatedInformation_theUpdate() {
+                    base.AssociationConnectorTypeName = typeof(CardinalBuoy).Name;
+                }
+            };
+            public class TextAssociation_theCartographicText : TextAssociation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theCartographicTextFeatureTypes => ["TextPlacement"];
+
+                public TextAssociation_theCartographicText() {
+                    base.AssociationConnectorTypeName = typeof(CardinalBuoy).Name;
+                }
+            };
             public CardinalBuoy() {
                 colour = new();
             }
@@ -12262,6 +18446,66 @@ namespace S100Framework.DomainModel.S101 {
             [IgnoreDataMember]
             public override string Code => nameof(IsolatedDangerBuoy);
 
+            public class AdditionalInformation_theInformation : AdditionalInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theInformationInformationTypes => ["ContactDetails", "NauticalInformation"];
+
+                public AdditionalInformation_theInformation() {
+                    base.AssociationConnectorTypeName = typeof(IsolatedDangerBuoy).Name;
+                }
+            };
+            public class StructureEquipment_theEquipment : StructureEquipment {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theEquipmentFeatureTypes => ["Daymark", "DistanceMark", "FogSignal", "LightAllAround", "LightFogDetector", "PhysicalAISAidToNavigation", "RadarTransponderBeacon", "Retroreflector", "SignalStationTraffic", "SignalStationWarning"];
+
+                public StructureEquipment_theEquipment() {
+                    base.AssociationConnectorTypeName = typeof(IsolatedDangerBuoy).Name;
+                }
+            };
+            public class AidsToNavigationAssociation_theCollection : AidsToNavigationAssociation {
+                public override roleType? roleType => DomainModel.roleType.aggregation;
+
+                [IgnoreDataMember]
+                public override String[] theCollectionFeatureTypes => ["ArchipelagicSeaLane", "DeepWaterRoute", "FairwaySystem", "TrafficSeparationScheme", "TwoWayRoute"];
+
+                public AidsToNavigationAssociation_theCollection() {
+                    base.AssociationConnectorTypeName = typeof(IsolatedDangerBuoy).Name;
+                }
+            };
+            public class FairwayAuxiliary_thePrimaryFeature : FairwayAuxiliary {
+                public override roleType? roleType => DomainModel.roleType.aggregation;
+
+                [IgnoreDataMember]
+                public override String[] thePrimaryFeatureFeatureTypes => ["Fairway"];
+
+                public FairwayAuxiliary_thePrimaryFeature() {
+                    base.AssociationConnectorTypeName = typeof(IsolatedDangerBuoy).Name;
+                }
+            };
+            public class UpdatedInformation_theUpdate : UpdatedInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
+
+                public UpdatedInformation_theUpdate() {
+                    base.AssociationConnectorTypeName = typeof(IsolatedDangerBuoy).Name;
+                }
+            };
+            public class TextAssociation_theCartographicText : TextAssociation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theCartographicTextFeatureTypes => ["TextPlacement"];
+
+                public TextAssociation_theCartographicText() {
+                    base.AssociationConnectorTypeName = typeof(IsolatedDangerBuoy).Name;
+                }
+            };
             public IsolatedDangerBuoy() {
                 colour = new();
             }
@@ -12338,6 +18582,66 @@ namespace S100Framework.DomainModel.S101 {
             [IgnoreDataMember]
             public override string Code => nameof(SafeWaterBuoy);
 
+            public class AdditionalInformation_theInformation : AdditionalInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theInformationInformationTypes => ["ContactDetails", "NauticalInformation"];
+
+                public AdditionalInformation_theInformation() {
+                    base.AssociationConnectorTypeName = typeof(SafeWaterBuoy).Name;
+                }
+            };
+            public class StructureEquipment_theEquipment : StructureEquipment {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theEquipmentFeatureTypes => ["Daymark", "DistanceMark", "FogSignal", "LightAllAround", "LightFogDetector", "PhysicalAISAidToNavigation", "RadarTransponderBeacon", "Retroreflector", "SignalStationTraffic", "SignalStationWarning"];
+
+                public StructureEquipment_theEquipment() {
+                    base.AssociationConnectorTypeName = typeof(SafeWaterBuoy).Name;
+                }
+            };
+            public class AidsToNavigationAssociation_theCollection : AidsToNavigationAssociation {
+                public override roleType? roleType => DomainModel.roleType.aggregation;
+
+                [IgnoreDataMember]
+                public override String[] theCollectionFeatureTypes => ["ArchipelagicSeaLane", "DeepWaterRoute", "FairwaySystem", "TrafficSeparationScheme", "TwoWayRoute"];
+
+                public AidsToNavigationAssociation_theCollection() {
+                    base.AssociationConnectorTypeName = typeof(SafeWaterBuoy).Name;
+                }
+            };
+            public class FairwayAuxiliary_thePrimaryFeature : FairwayAuxiliary {
+                public override roleType? roleType => DomainModel.roleType.aggregation;
+
+                [IgnoreDataMember]
+                public override String[] thePrimaryFeatureFeatureTypes => ["Fairway"];
+
+                public FairwayAuxiliary_thePrimaryFeature() {
+                    base.AssociationConnectorTypeName = typeof(SafeWaterBuoy).Name;
+                }
+            };
+            public class UpdatedInformation_theUpdate : UpdatedInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
+
+                public UpdatedInformation_theUpdate() {
+                    base.AssociationConnectorTypeName = typeof(SafeWaterBuoy).Name;
+                }
+            };
+            public class TextAssociation_theCartographicText : TextAssociation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theCartographicTextFeatureTypes => ["TextPlacement"];
+
+                public TextAssociation_theCartographicText() {
+                    base.AssociationConnectorTypeName = typeof(SafeWaterBuoy).Name;
+                }
+            };
             public SafeWaterBuoy() {
                 colour = new();
             }
@@ -12475,6 +18779,66 @@ namespace S100Framework.DomainModel.S101 {
             [IgnoreDataMember]
             public override string Code => nameof(SpecialPurposeGeneralBuoy);
 
+            public class AdditionalInformation_theInformation : AdditionalInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theInformationInformationTypes => ["ContactDetails", "NauticalInformation"];
+
+                public AdditionalInformation_theInformation() {
+                    base.AssociationConnectorTypeName = typeof(SpecialPurposeGeneralBuoy).Name;
+                }
+            };
+            public class StructureEquipment_theEquipment : StructureEquipment {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theEquipmentFeatureTypes => ["Daymark", "DistanceMark", "FogSignal", "LightAllAround", "LightFogDetector", "PhysicalAISAidToNavigation", "RadarTransponderBeacon", "Retroreflector", "SignalStationTraffic", "SignalStationWarning"];
+
+                public StructureEquipment_theEquipment() {
+                    base.AssociationConnectorTypeName = typeof(SpecialPurposeGeneralBuoy).Name;
+                }
+            };
+            public class AidsToNavigationAssociation_theCollection : AidsToNavigationAssociation {
+                public override roleType? roleType => DomainModel.roleType.aggregation;
+
+                [IgnoreDataMember]
+                public override String[] theCollectionFeatureTypes => ["ArchipelagicSeaLane", "DeepWaterRoute", "FairwaySystem", "TrafficSeparationScheme", "TwoWayRoute"];
+
+                public AidsToNavigationAssociation_theCollection() {
+                    base.AssociationConnectorTypeName = typeof(SpecialPurposeGeneralBuoy).Name;
+                }
+            };
+            public class FairwayAuxiliary_thePrimaryFeature : FairwayAuxiliary {
+                public override roleType? roleType => DomainModel.roleType.aggregation;
+
+                [IgnoreDataMember]
+                public override String[] thePrimaryFeatureFeatureTypes => ["Fairway"];
+
+                public FairwayAuxiliary_thePrimaryFeature() {
+                    base.AssociationConnectorTypeName = typeof(SpecialPurposeGeneralBuoy).Name;
+                }
+            };
+            public class UpdatedInformation_theUpdate : UpdatedInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
+
+                public UpdatedInformation_theUpdate() {
+                    base.AssociationConnectorTypeName = typeof(SpecialPurposeGeneralBuoy).Name;
+                }
+            };
+            public class TextAssociation_theCartographicText : TextAssociation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theCartographicTextFeatureTypes => ["TextPlacement"];
+
+                public TextAssociation_theCartographicText() {
+                    base.AssociationConnectorTypeName = typeof(SpecialPurposeGeneralBuoy).Name;
+                }
+            };
             public SpecialPurposeGeneralBuoy() {
                 categoryOfSpecialPurposeMark = new();
                 colour = new();
@@ -12541,6 +18905,56 @@ namespace S100Framework.DomainModel.S101 {
             [IgnoreDataMember]
             public override string Code => nameof(EmergencyWreckMarkingBuoy);
 
+            public class AdditionalInformation_theInformation : AdditionalInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theInformationInformationTypes => ["ContactDetails", "NauticalInformation"];
+
+                public AdditionalInformation_theInformation() {
+                    base.AssociationConnectorTypeName = typeof(EmergencyWreckMarkingBuoy).Name;
+                }
+            };
+            public class AidsToNavigationAssociation_theCollection : AidsToNavigationAssociation {
+                public override roleType? roleType => DomainModel.roleType.aggregation;
+
+                [IgnoreDataMember]
+                public override String[] theCollectionFeatureTypes => ["ArchipelagicSeaLane", "DeepWaterRoute", "FairwaySystem", "TrafficSeparationScheme", "TwoWayRoute"];
+
+                public AidsToNavigationAssociation_theCollection() {
+                    base.AssociationConnectorTypeName = typeof(EmergencyWreckMarkingBuoy).Name;
+                }
+            };
+            public class StructureEquipment_theEquipment : StructureEquipment {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theEquipmentFeatureTypes => ["Daymark", "DistanceMark", "FogSignal", "LightAllAround", "LightFogDetector", "PhysicalAISAidToNavigation", "RadarTransponderBeacon", "Retroreflector", "SignalStationTraffic", "SignalStationWarning"];
+
+                public StructureEquipment_theEquipment() {
+                    base.AssociationConnectorTypeName = typeof(EmergencyWreckMarkingBuoy).Name;
+                }
+            };
+            public class UpdatedInformation_theUpdate : UpdatedInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
+
+                public UpdatedInformation_theUpdate() {
+                    base.AssociationConnectorTypeName = typeof(EmergencyWreckMarkingBuoy).Name;
+                }
+            };
+            public class TextAssociation_theCartographicText : TextAssociation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theCartographicTextFeatureTypes => ["TextPlacement"];
+
+                public TextAssociation_theCartographicText() {
+                    base.AssociationConnectorTypeName = typeof(EmergencyWreckMarkingBuoy).Name;
+                }
+            };
             public EmergencyWreckMarkingBuoy() {
                 colour = new();
             }
@@ -12623,6 +19037,46 @@ namespace S100Framework.DomainModel.S101 {
             [IgnoreDataMember]
             public override string Code => nameof(InstallationBuoy);
 
+            public class AdditionalInformation_theInformation : AdditionalInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theInformationInformationTypes => ["ContactDetails", "NauticalInformation"];
+
+                public AdditionalInformation_theInformation() {
+                    base.AssociationConnectorTypeName = typeof(InstallationBuoy).Name;
+                }
+            };
+            public class StructureEquipment_theEquipment : StructureEquipment {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theEquipmentFeatureTypes => ["Daymark", "DistanceMark", "FogSignal", "LightAllAround", "LightFogDetector", "PhysicalAISAidToNavigation", "RadarTransponderBeacon", "Retroreflector", "SignalStationTraffic", "SignalStationWarning"];
+
+                public StructureEquipment_theEquipment() {
+                    base.AssociationConnectorTypeName = typeof(InstallationBuoy).Name;
+                }
+            };
+            public class UpdatedInformation_theUpdate : UpdatedInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
+
+                public UpdatedInformation_theUpdate() {
+                    base.AssociationConnectorTypeName = typeof(InstallationBuoy).Name;
+                }
+            };
+            public class TextAssociation_theCartographicText : TextAssociation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theCartographicTextFeatureTypes => ["TextPlacement"];
+
+                public TextAssociation_theCartographicText() {
+                    base.AssociationConnectorTypeName = typeof(InstallationBuoy).Name;
+                }
+            };
             public InstallationBuoy() {
                 colour = new();
             }
@@ -12693,6 +19147,66 @@ namespace S100Framework.DomainModel.S101 {
             [IgnoreDataMember]
             public override string Code => nameof(MooringBuoy);
 
+            public class AdditionalInformation_theInformation : AdditionalInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theInformationInformationTypes => ["ContactDetails", "NauticalInformation"];
+
+                public AdditionalInformation_theInformation() {
+                    base.AssociationConnectorTypeName = typeof(MooringBuoy).Name;
+                }
+            };
+            public class AidsToNavigationAssociation_theCollection : AidsToNavigationAssociation {
+                public override roleType? roleType => DomainModel.roleType.aggregation;
+
+                [IgnoreDataMember]
+                public override String[] theCollectionFeatureTypes => ["DeepWaterRoute", "FairwaySystem", "TrafficSeparationScheme", "TwoWayRoute"];
+
+                public AidsToNavigationAssociation_theCollection() {
+                    base.AssociationConnectorTypeName = typeof(MooringBuoy).Name;
+                }
+            };
+            public class StructureEquipment_theEquipment : StructureEquipment {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theEquipmentFeatureTypes => ["Daymark", "DistanceMark", "FogSignal", "LightAllAround", "LightFogDetector", "PhysicalAISAidToNavigation", "RadarTransponderBeacon", "Retroreflector", "SignalStationTraffic", "SignalStationWarning"];
+
+                public StructureEquipment_theEquipment() {
+                    base.AssociationConnectorTypeName = typeof(MooringBuoy).Name;
+                }
+            };
+            public class MooringTrotAggregation_theCollection : MooringTrotAggregation {
+                public override roleType? roleType => DomainModel.roleType.aggregation;
+
+                [IgnoreDataMember]
+                public override String[] theCollectionFeatureTypes => ["MooringTrot"];
+
+                public MooringTrotAggregation_theCollection() {
+                    base.AssociationConnectorTypeName = typeof(MooringBuoy).Name;
+                }
+            };
+            public class UpdatedInformation_theUpdate : UpdatedInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
+
+                public UpdatedInformation_theUpdate() {
+                    base.AssociationConnectorTypeName = typeof(MooringBuoy).Name;
+                }
+            };
+            public class TextAssociation_theCartographicText : TextAssociation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theCartographicTextFeatureTypes => ["TextPlacement"];
+
+                public TextAssociation_theCartographicText() {
+                    base.AssociationConnectorTypeName = typeof(MooringBuoy).Name;
+                }
+            };
             public MooringBuoy() {
             }
         }
@@ -12790,6 +19304,76 @@ namespace S100Framework.DomainModel.S101 {
             [IgnoreDataMember]
             public override string Code => nameof(LateralBeacon);
 
+            public class AdditionalInformation_theInformation : AdditionalInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theInformationInformationTypes => ["ContactDetails", "NauticalInformation"];
+
+                public AdditionalInformation_theInformation() {
+                    base.AssociationConnectorTypeName = typeof(LateralBeacon).Name;
+                }
+            };
+            public class StructureEquipment_theEquipment : StructureEquipment {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theEquipmentFeatureTypes => ["Daymark", "DistanceMark", "FogSignal", "LightAllAround", "LightFogDetector", "PhysicalAISAidToNavigation", "RadarTransponderBeacon", "Retroreflector", "SignalStationTraffic", "SignalStationWarning", "LightSectored"];
+
+                public StructureEquipment_theEquipment() {
+                    base.AssociationConnectorTypeName = typeof(LateralBeacon).Name;
+                }
+            };
+            public class AidsToNavigationAssociation_theCollection : AidsToNavigationAssociation {
+                public override roleType? roleType => DomainModel.roleType.aggregation;
+
+                [IgnoreDataMember]
+                public override String[] theCollectionFeatureTypes => ["ArchipelagicSeaLane", "DeepWaterRoute", "FairwaySystem", "TrafficSeparationScheme", "TwoWayRoute"];
+
+                public AidsToNavigationAssociation_theCollection() {
+                    base.AssociationConnectorTypeName = typeof(LateralBeacon).Name;
+                }
+            };
+            public class RangeSystemAggregation_theCollection : RangeSystemAggregation {
+                public override roleType? roleType => DomainModel.roleType.aggregation;
+
+                [IgnoreDataMember]
+                public override String[] theCollectionFeatureTypes => ["RangeSystem"];
+
+                public RangeSystemAggregation_theCollection() {
+                    base.AssociationConnectorTypeName = typeof(LateralBeacon).Name;
+                }
+            };
+            public class FairwayAuxiliary_thePrimaryFeature : FairwayAuxiliary {
+                public override roleType? roleType => DomainModel.roleType.aggregation;
+
+                [IgnoreDataMember]
+                public override String[] thePrimaryFeatureFeatureTypes => ["Fairway"];
+
+                public FairwayAuxiliary_thePrimaryFeature() {
+                    base.AssociationConnectorTypeName = typeof(LateralBeacon).Name;
+                }
+            };
+            public class UpdatedInformation_theUpdate : UpdatedInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
+
+                public UpdatedInformation_theUpdate() {
+                    base.AssociationConnectorTypeName = typeof(LateralBeacon).Name;
+                }
+            };
+            public class TextAssociation_theCartographicText : TextAssociation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theCartographicTextFeatureTypes => ["TextPlacement"];
+
+                public TextAssociation_theCartographicText() {
+                    base.AssociationConnectorTypeName = typeof(LateralBeacon).Name;
+                }
+            };
             public LateralBeacon() {
                 colour = new();
             }
@@ -12888,6 +19472,76 @@ namespace S100Framework.DomainModel.S101 {
             [IgnoreDataMember]
             public override string Code => nameof(CardinalBeacon);
 
+            public class AdditionalInformation_theInformation : AdditionalInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theInformationInformationTypes => ["ContactDetails", "NauticalInformation"];
+
+                public AdditionalInformation_theInformation() {
+                    base.AssociationConnectorTypeName = typeof(CardinalBeacon).Name;
+                }
+            };
+            public class StructureEquipment_theEquipment : StructureEquipment {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theEquipmentFeatureTypes => ["Daymark", "DistanceMark", "FogSignal", "LightAllAround", "LightFogDetector", "PhysicalAISAidToNavigation", "RadarTransponderBeacon", "Retroreflector", "SignalStationTraffic", "SignalStationWarning", "LightSectored"];
+
+                public StructureEquipment_theEquipment() {
+                    base.AssociationConnectorTypeName = typeof(CardinalBeacon).Name;
+                }
+            };
+            public class AidsToNavigationAssociation_theCollection : AidsToNavigationAssociation {
+                public override roleType? roleType => DomainModel.roleType.aggregation;
+
+                [IgnoreDataMember]
+                public override String[] theCollectionFeatureTypes => ["ArchipelagicSeaLane", "DeepWaterRoute", "FairwaySystem", "TrafficSeparationScheme", "TwoWayRoute"];
+
+                public AidsToNavigationAssociation_theCollection() {
+                    base.AssociationConnectorTypeName = typeof(CardinalBeacon).Name;
+                }
+            };
+            public class RangeSystemAggregation_theCollection : RangeSystemAggregation {
+                public override roleType? roleType => DomainModel.roleType.aggregation;
+
+                [IgnoreDataMember]
+                public override String[] theCollectionFeatureTypes => ["RangeSystem"];
+
+                public RangeSystemAggregation_theCollection() {
+                    base.AssociationConnectorTypeName = typeof(CardinalBeacon).Name;
+                }
+            };
+            public class FairwayAuxiliary_thePrimaryFeature : FairwayAuxiliary {
+                public override roleType? roleType => DomainModel.roleType.aggregation;
+
+                [IgnoreDataMember]
+                public override String[] thePrimaryFeatureFeatureTypes => ["Fairway"];
+
+                public FairwayAuxiliary_thePrimaryFeature() {
+                    base.AssociationConnectorTypeName = typeof(CardinalBeacon).Name;
+                }
+            };
+            public class UpdatedInformation_theUpdate : UpdatedInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
+
+                public UpdatedInformation_theUpdate() {
+                    base.AssociationConnectorTypeName = typeof(CardinalBeacon).Name;
+                }
+            };
+            public class TextAssociation_theCartographicText : TextAssociation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theCartographicTextFeatureTypes => ["TextPlacement"];
+
+                public TextAssociation_theCartographicText() {
+                    base.AssociationConnectorTypeName = typeof(CardinalBeacon).Name;
+                }
+            };
             public CardinalBeacon() {
                 colour = new();
             }
@@ -12979,6 +19633,76 @@ namespace S100Framework.DomainModel.S101 {
             [IgnoreDataMember]
             public override string Code => nameof(IsolatedDangerBeacon);
 
+            public class AdditionalInformation_theInformation : AdditionalInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theInformationInformationTypes => ["ContactDetails", "NauticalInformation"];
+
+                public AdditionalInformation_theInformation() {
+                    base.AssociationConnectorTypeName = typeof(IsolatedDangerBeacon).Name;
+                }
+            };
+            public class StructureEquipment_theEquipment : StructureEquipment {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theEquipmentFeatureTypes => ["Daymark", "DistanceMark", "FogSignal", "LightAllAround", "LightFogDetector", "PhysicalAISAidToNavigation", "RadarTransponderBeacon", "Retroreflector", "SignalStationTraffic", "SignalStationWarning", "LightSectored"];
+
+                public StructureEquipment_theEquipment() {
+                    base.AssociationConnectorTypeName = typeof(IsolatedDangerBeacon).Name;
+                }
+            };
+            public class AidsToNavigationAssociation_theCollection : AidsToNavigationAssociation {
+                public override roleType? roleType => DomainModel.roleType.aggregation;
+
+                [IgnoreDataMember]
+                public override String[] theCollectionFeatureTypes => ["ArchipelagicSeaLane", "DeepWaterRoute", "FairwaySystem", "TrafficSeparationScheme", "TwoWayRoute"];
+
+                public AidsToNavigationAssociation_theCollection() {
+                    base.AssociationConnectorTypeName = typeof(IsolatedDangerBeacon).Name;
+                }
+            };
+            public class RangeSystemAggregation_theCollection : RangeSystemAggregation {
+                public override roleType? roleType => DomainModel.roleType.aggregation;
+
+                [IgnoreDataMember]
+                public override String[] theCollectionFeatureTypes => ["RangeSystem"];
+
+                public RangeSystemAggregation_theCollection() {
+                    base.AssociationConnectorTypeName = typeof(IsolatedDangerBeacon).Name;
+                }
+            };
+            public class FairwayAuxiliary_thePrimaryFeature : FairwayAuxiliary {
+                public override roleType? roleType => DomainModel.roleType.aggregation;
+
+                [IgnoreDataMember]
+                public override String[] thePrimaryFeatureFeatureTypes => ["Fairway"];
+
+                public FairwayAuxiliary_thePrimaryFeature() {
+                    base.AssociationConnectorTypeName = typeof(IsolatedDangerBeacon).Name;
+                }
+            };
+            public class UpdatedInformation_theUpdate : UpdatedInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
+
+                public UpdatedInformation_theUpdate() {
+                    base.AssociationConnectorTypeName = typeof(IsolatedDangerBeacon).Name;
+                }
+            };
+            public class TextAssociation_theCartographicText : TextAssociation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theCartographicTextFeatureTypes => ["TextPlacement"];
+
+                public TextAssociation_theCartographicText() {
+                    base.AssociationConnectorTypeName = typeof(IsolatedDangerBeacon).Name;
+                }
+            };
             public IsolatedDangerBeacon() {
                 colour = new();
             }
@@ -13070,6 +19794,76 @@ namespace S100Framework.DomainModel.S101 {
             [IgnoreDataMember]
             public override string Code => nameof(SafeWaterBeacon);
 
+            public class AdditionalInformation_theInformation : AdditionalInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theInformationInformationTypes => ["ContactDetails", "NauticalInformation"];
+
+                public AdditionalInformation_theInformation() {
+                    base.AssociationConnectorTypeName = typeof(SafeWaterBeacon).Name;
+                }
+            };
+            public class StructureEquipment_theEquipment : StructureEquipment {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theEquipmentFeatureTypes => ["Daymark", "DistanceMark", "FogSignal", "LightAllAround", "LightFogDetector", "PhysicalAISAidToNavigation", "RadarTransponderBeacon", "Retroreflector", "SignalStationTraffic", "SignalStationWarning", "LightSectored"];
+
+                public StructureEquipment_theEquipment() {
+                    base.AssociationConnectorTypeName = typeof(SafeWaterBeacon).Name;
+                }
+            };
+            public class AidsToNavigationAssociation_theCollection : AidsToNavigationAssociation {
+                public override roleType? roleType => DomainModel.roleType.aggregation;
+
+                [IgnoreDataMember]
+                public override String[] theCollectionFeatureTypes => ["ArchipelagicSeaLane", "DeepWaterRoute", "FairwaySystem", "TrafficSeparationScheme", "TwoWayRoute"];
+
+                public AidsToNavigationAssociation_theCollection() {
+                    base.AssociationConnectorTypeName = typeof(SafeWaterBeacon).Name;
+                }
+            };
+            public class RangeSystemAggregation_theCollection : RangeSystemAggregation {
+                public override roleType? roleType => DomainModel.roleType.aggregation;
+
+                [IgnoreDataMember]
+                public override String[] theCollectionFeatureTypes => ["RangeSystem"];
+
+                public RangeSystemAggregation_theCollection() {
+                    base.AssociationConnectorTypeName = typeof(SafeWaterBeacon).Name;
+                }
+            };
+            public class FairwayAuxiliary_thePrimaryFeature : FairwayAuxiliary {
+                public override roleType? roleType => DomainModel.roleType.aggregation;
+
+                [IgnoreDataMember]
+                public override String[] thePrimaryFeatureFeatureTypes => ["Fairway"];
+
+                public FairwayAuxiliary_thePrimaryFeature() {
+                    base.AssociationConnectorTypeName = typeof(SafeWaterBeacon).Name;
+                }
+            };
+            public class UpdatedInformation_theUpdate : UpdatedInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
+
+                public UpdatedInformation_theUpdate() {
+                    base.AssociationConnectorTypeName = typeof(SafeWaterBeacon).Name;
+                }
+            };
+            public class TextAssociation_theCartographicText : TextAssociation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theCartographicTextFeatureTypes => ["TextPlacement"];
+
+                public TextAssociation_theCartographicText() {
+                    base.AssociationConnectorTypeName = typeof(SafeWaterBeacon).Name;
+                }
+            };
             public SafeWaterBeacon() {
                 colour = new();
             }
@@ -13222,6 +20016,76 @@ namespace S100Framework.DomainModel.S101 {
             [IgnoreDataMember]
             public override string Code => nameof(SpecialPurposeGeneralBeacon);
 
+            public class AdditionalInformation_theInformation : AdditionalInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theInformationInformationTypes => ["ContactDetails", "NauticalInformation"];
+
+                public AdditionalInformation_theInformation() {
+                    base.AssociationConnectorTypeName = typeof(SpecialPurposeGeneralBeacon).Name;
+                }
+            };
+            public class StructureEquipment_theEquipment : StructureEquipment {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theEquipmentFeatureTypes => ["Daymark", "DistanceMark", "FogSignal", "LightAllAround", "LightFogDetector", "PhysicalAISAidToNavigation", "RadarTransponderBeacon", "Retroreflector", "SignalStationTraffic", "SignalStationWarning", "LightSectored"];
+
+                public StructureEquipment_theEquipment() {
+                    base.AssociationConnectorTypeName = typeof(SpecialPurposeGeneralBeacon).Name;
+                }
+            };
+            public class AidsToNavigationAssociation_theCollection : AidsToNavigationAssociation {
+                public override roleType? roleType => DomainModel.roleType.aggregation;
+
+                [IgnoreDataMember]
+                public override String[] theCollectionFeatureTypes => ["ArchipelagicSeaLane", "DeepWaterRoute", "FairwaySystem", "TrafficSeparationScheme", "TwoWayRoute"];
+
+                public AidsToNavigationAssociation_theCollection() {
+                    base.AssociationConnectorTypeName = typeof(SpecialPurposeGeneralBeacon).Name;
+                }
+            };
+            public class RangeSystemAggregation_theCollection : RangeSystemAggregation {
+                public override roleType? roleType => DomainModel.roleType.aggregation;
+
+                [IgnoreDataMember]
+                public override String[] theCollectionFeatureTypes => ["RangeSystem"];
+
+                public RangeSystemAggregation_theCollection() {
+                    base.AssociationConnectorTypeName = typeof(SpecialPurposeGeneralBeacon).Name;
+                }
+            };
+            public class FairwayAuxiliary_thePrimaryFeature : FairwayAuxiliary {
+                public override roleType? roleType => DomainModel.roleType.aggregation;
+
+                [IgnoreDataMember]
+                public override String[] thePrimaryFeatureFeatureTypes => ["Fairway"];
+
+                public FairwayAuxiliary_thePrimaryFeature() {
+                    base.AssociationConnectorTypeName = typeof(SpecialPurposeGeneralBeacon).Name;
+                }
+            };
+            public class UpdatedInformation_theUpdate : UpdatedInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
+
+                public UpdatedInformation_theUpdate() {
+                    base.AssociationConnectorTypeName = typeof(SpecialPurposeGeneralBeacon).Name;
+                }
+            };
+            public class TextAssociation_theCartographicText : TextAssociation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theCartographicTextFeatureTypes => ["TextPlacement"];
+
+                public TextAssociation_theCartographicText() {
+                    base.AssociationConnectorTypeName = typeof(SpecialPurposeGeneralBeacon).Name;
+                }
+            };
             public SpecialPurposeGeneralBeacon() {
                 categoryOfSpecialPurposeMark = new();
                 colour = new();
@@ -13384,6 +20248,86 @@ namespace S100Framework.DomainModel.S101 {
             [IgnoreDataMember]
             public override string Code => nameof(Daymark);
 
+            public class AdditionalInformation_theInformation : AdditionalInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theInformationInformationTypes => ["ContactDetails", "NauticalInformation"];
+
+                public AdditionalInformation_theInformation() {
+                    base.AssociationConnectorTypeName = typeof(Daymark).Name;
+                }
+            };
+            public class StructureEquipment_theEquipment : StructureEquipment {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theEquipmentFeatureTypes => ["DistanceMark", "FogSignal", "LightAllAround", "LightFogDetector", "LightSectored", "PhysicalAISAidToNavigation", "RadarTransponderBeacon", "Retroreflector", "SignalStationTraffic", "SignalStationWarning"];
+
+                public StructureEquipment_theEquipment() {
+                    base.AssociationConnectorTypeName = typeof(Daymark).Name;
+                }
+            };
+            public class StructureEquipment_theStructure : StructureEquipment {
+                public override roleType? roleType => DomainModel.roleType.composition;
+
+                [IgnoreDataMember]
+                public override String[] theStructureFeatureTypes => ["Bridge", "Building", "Crane", "CardinalBeacon", "CardinalBuoy", "Conveyor", "Dolphin", "EmergencyWreckMarkingBuoy", "FishingFacility", "FloatingDock", "FortifiedStructure", "Hulk", "InstallationBuoy", "IsolatedDangerBeacon", "IsolatedDangerBuoy", "Landmark", "LateralBeacon", "LateralBuoy", "LightFloat", "LightVessel", "MooringBuoy", "OffshorePlatform", "Pile", "PipelineOverhead", "Pontoon", "PylonBridgeSupport", "SafeWaterBeacon", "SafeWaterBuoy", "ShorelineConstruction", "SiloTank", "SpanFixed", "SpanOpening", "SpecialPurposeGeneralBeacon", "SpecialPurposeGeneralBuoy", "StructureOverNavigableWater", "WindTurbine", "Wreck"];
+
+                public StructureEquipment_theStructure() {
+                    base.AssociationConnectorTypeName = typeof(Daymark).Name;
+                }
+            };
+            public class AidsToNavigationAssociation_theCollection : AidsToNavigationAssociation {
+                public override roleType? roleType => DomainModel.roleType.aggregation;
+
+                [IgnoreDataMember]
+                public override String[] theCollectionFeatureTypes => ["ArchipelagicSeaLane", "DeepWaterRoute", "FairwaySystem", "TrafficSeparationScheme", "TwoWayRoute"];
+
+                public AidsToNavigationAssociation_theCollection() {
+                    base.AssociationConnectorTypeName = typeof(Daymark).Name;
+                }
+            };
+            public class RangeSystemAggregation_theCollection : RangeSystemAggregation {
+                public override roleType? roleType => DomainModel.roleType.aggregation;
+
+                [IgnoreDataMember]
+                public override String[] theCollectionFeatureTypes => ["RangeSystem"];
+
+                public RangeSystemAggregation_theCollection() {
+                    base.AssociationConnectorTypeName = typeof(Daymark).Name;
+                }
+            };
+            public class FairwayAuxiliary_thePrimaryFeature : FairwayAuxiliary {
+                public override roleType? roleType => DomainModel.roleType.aggregation;
+
+                [IgnoreDataMember]
+                public override String[] thePrimaryFeatureFeatureTypes => ["Fairway"];
+
+                public FairwayAuxiliary_thePrimaryFeature() {
+                    base.AssociationConnectorTypeName = typeof(Daymark).Name;
+                }
+            };
+            public class UpdatedInformation_theUpdate : UpdatedInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
+
+                public UpdatedInformation_theUpdate() {
+                    base.AssociationConnectorTypeName = typeof(Daymark).Name;
+                }
+            };
+            public class TextAssociation_theCartographicText : TextAssociation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theCartographicTextFeatureTypes => ["TextPlacement"];
+
+                public TextAssociation_theCartographicText() {
+                    base.AssociationConnectorTypeName = typeof(Daymark).Name;
+                }
+            };
             public Daymark() {
                 colour = new();
             }
@@ -13452,6 +20396,66 @@ namespace S100Framework.DomainModel.S101 {
             [IgnoreDataMember]
             public override string Code => nameof(LightFloat);
 
+            public class AdditionalInformation_theInformation : AdditionalInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theInformationInformationTypes => ["ContactDetails", "NauticalInformation"];
+
+                public AdditionalInformation_theInformation() {
+                    base.AssociationConnectorTypeName = typeof(LightFloat).Name;
+                }
+            };
+            public class StructureEquipment_theEquipment : StructureEquipment {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theEquipmentFeatureTypes => ["Daymark", "DistanceMark", "FogSignal", "LightAllAround", "LightFogDetector", "PhysicalAISAidToNavigation", "RadarTransponderBeacon", "Retroreflector", "SignalStationTraffic", "SignalStationWarning"];
+
+                public StructureEquipment_theEquipment() {
+                    base.AssociationConnectorTypeName = typeof(LightFloat).Name;
+                }
+            };
+            public class AidsToNavigationAssociation_theCollection : AidsToNavigationAssociation {
+                public override roleType? roleType => DomainModel.roleType.aggregation;
+
+                [IgnoreDataMember]
+                public override String[] theCollectionFeatureTypes => ["ArchipelagicSeaLane", "DeepWaterRoute", "FairwaySystem", "TrafficSeparationScheme", "TwoWayRoute"];
+
+                public AidsToNavigationAssociation_theCollection() {
+                    base.AssociationConnectorTypeName = typeof(LightFloat).Name;
+                }
+            };
+            public class FairwayAuxiliary_thePrimaryFeature : FairwayAuxiliary {
+                public override roleType? roleType => DomainModel.roleType.aggregation;
+
+                [IgnoreDataMember]
+                public override String[] thePrimaryFeatureFeatureTypes => ["Fairway"];
+
+                public FairwayAuxiliary_thePrimaryFeature() {
+                    base.AssociationConnectorTypeName = typeof(LightFloat).Name;
+                }
+            };
+            public class UpdatedInformation_theUpdate : UpdatedInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
+
+                public UpdatedInformation_theUpdate() {
+                    base.AssociationConnectorTypeName = typeof(LightFloat).Name;
+                }
+            };
+            public class TextAssociation_theCartographicText : TextAssociation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theCartographicTextFeatureTypes => ["TextPlacement"];
+
+                public TextAssociation_theCartographicText() {
+                    base.AssociationConnectorTypeName = typeof(LightFloat).Name;
+                }
+            };
             public LightFloat() {
                 colour = new();
             }
@@ -13518,6 +20522,66 @@ namespace S100Framework.DomainModel.S101 {
             [IgnoreDataMember]
             public override string Code => nameof(LightVessel);
 
+            public class AdditionalInformation_theInformation : AdditionalInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theInformationInformationTypes => ["ContactDetails", "NauticalInformation"];
+
+                public AdditionalInformation_theInformation() {
+                    base.AssociationConnectorTypeName = typeof(LightVessel).Name;
+                }
+            };
+            public class StructureEquipment_theEquipment : StructureEquipment {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theEquipmentFeatureTypes => ["Daymark", "DistanceMark", "FogSignal", "LightAllAround", "LightFogDetector", "PhysicalAISAidToNavigation", "RadarTransponderBeacon", "Retroreflector", "SignalStationTraffic", "SignalStationWarning"];
+
+                public StructureEquipment_theEquipment() {
+                    base.AssociationConnectorTypeName = typeof(LightVessel).Name;
+                }
+            };
+            public class AidsToNavigationAssociation_theCollection : AidsToNavigationAssociation {
+                public override roleType? roleType => DomainModel.roleType.aggregation;
+
+                [IgnoreDataMember]
+                public override String[] theCollectionFeatureTypes => ["ArchipelagicSeaLane", "DeepWaterRoute", "FairwaySystem", "TrafficSeparationScheme", "TwoWayRoute"];
+
+                public AidsToNavigationAssociation_theCollection() {
+                    base.AssociationConnectorTypeName = typeof(LightVessel).Name;
+                }
+            };
+            public class FairwayAuxiliary_thePrimaryFeature : FairwayAuxiliary {
+                public override roleType? roleType => DomainModel.roleType.aggregation;
+
+                [IgnoreDataMember]
+                public override String[] thePrimaryFeatureFeatureTypes => ["Fairway"];
+
+                public FairwayAuxiliary_thePrimaryFeature() {
+                    base.AssociationConnectorTypeName = typeof(LightVessel).Name;
+                }
+            };
+            public class UpdatedInformation_theUpdate : UpdatedInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
+
+                public UpdatedInformation_theUpdate() {
+                    base.AssociationConnectorTypeName = typeof(LightVessel).Name;
+                }
+            };
+            public class TextAssociation_theCartographicText : TextAssociation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theCartographicTextFeatureTypes => ["TextPlacement"];
+
+                public TextAssociation_theCartographicText() {
+                    base.AssociationConnectorTypeName = typeof(LightVessel).Name;
+                }
+            };
             public LightVessel() {
                 colour = new();
             }
@@ -13562,6 +20626,36 @@ namespace S100Framework.DomainModel.S101 {
             [IgnoreDataMember]
             public override string Code => nameof(Retroreflector);
 
+            public class AdditionalInformation_theInformation : AdditionalInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theInformationInformationTypes => ["NauticalInformation"];
+
+                public AdditionalInformation_theInformation() {
+                    base.AssociationConnectorTypeName = typeof(Retroreflector).Name;
+                }
+            };
+            public class StructureEquipment_theStructure : StructureEquipment {
+                public override roleType? roleType => DomainModel.roleType.composition;
+
+                [IgnoreDataMember]
+                public override String[] theStructureFeatureTypes => ["Bridge", "Building", "Crane", "CardinalBeacon", "CardinalBuoy", "Conveyor", "Dolphin", "EmergencyWreckMarkingBuoy", "FishingFacility", "FloatingDock", "FortifiedStructure", "Hulk", "InstallationBuoy", "IsolatedDangerBeacon", "IsolatedDangerBuoy", "Landmark", "LateralBeacon", "LateralBuoy", "LightFloat", "LightVessel", "MooringBuoy", "OffshorePlatform", "Pile", "PipelineOverhead", "Pontoon", "PylonBridgeSupport", "SafeWaterBeacon", "SafeWaterBuoy", "ShorelineConstruction", "SiloTank", "SpanFixed", "SpanOpening", "SpecialPurposeGeneralBeacon", "SpecialPurposeGeneralBuoy", "StructureOverNavigableWater", "WindTurbine", "Wreck", "LightAllAround", "LightSectored", "Daymark"];
+
+                public StructureEquipment_theStructure() {
+                    base.AssociationConnectorTypeName = typeof(Retroreflector).Name;
+                }
+            };
+            public class UpdatedInformation_theUpdate : UpdatedInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
+
+                public UpdatedInformation_theUpdate() {
+                    base.AssociationConnectorTypeName = typeof(Retroreflector).Name;
+                }
+            };
             public Retroreflector() {
             }
         }
@@ -13584,6 +20678,36 @@ namespace S100Framework.DomainModel.S101 {
             [IgnoreDataMember]
             public override string Code => nameof(RadarReflector);
 
+            public class AdditionalInformation_theInformation : AdditionalInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theInformationInformationTypes => ["NauticalInformation"];
+
+                public AdditionalInformation_theInformation() {
+                    base.AssociationConnectorTypeName = typeof(RadarReflector).Name;
+                }
+            };
+            public class StructureEquipment_theStructure : StructureEquipment {
+                public override roleType? roleType => DomainModel.roleType.composition;
+
+                [IgnoreDataMember]
+                public override String[] theStructureFeatureTypes => ["CableOverhead", "PipelineOverhead"];
+
+                public StructureEquipment_theStructure() {
+                    base.AssociationConnectorTypeName = typeof(RadarReflector).Name;
+                }
+            };
+            public class UpdatedInformation_theUpdate : UpdatedInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
+
+                public UpdatedInformation_theUpdate() {
+                    base.AssociationConnectorTypeName = typeof(RadarReflector).Name;
+                }
+            };
             public RadarReflector() {
             }
         }
@@ -13635,6 +20759,46 @@ namespace S100Framework.DomainModel.S101 {
             [IgnoreDataMember]
             public override string Code => nameof(FogSignal);
 
+            public class AdditionalInformation_theInformation : AdditionalInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theInformationInformationTypes => ["ContactDetails", "NauticalInformation"];
+
+                public AdditionalInformation_theInformation() {
+                    base.AssociationConnectorTypeName = typeof(FogSignal).Name;
+                }
+            };
+            public class StructureEquipment_theStructure : StructureEquipment {
+                public override roleType? roleType => DomainModel.roleType.composition;
+
+                [IgnoreDataMember]
+                public override String[] theStructureFeatureTypes => ["Bridge", "Building", "Crane", "CardinalBeacon", "CardinalBuoy", "Conveyor", "Dolphin", "EmergencyWreckMarkingBuoy", "FishingFacility", "FloatingDock", "FortifiedStructure", "Hulk", "InstallationBuoy", "IsolatedDangerBeacon", "IsolatedDangerBuoy", "Landmark", "LateralBeacon", "LateralBuoy", "LightFloat", "LightVessel", "MooringBuoy", "OffshorePlatform", "Pile", "PipelineOverhead", "Pontoon", "PylonBridgeSupport", "SafeWaterBeacon", "SafeWaterBuoy", "ShorelineConstruction", "SiloTank", "SpanFixed", "SpanOpening", "SpecialPurposeGeneralBeacon", "SpecialPurposeGeneralBuoy", "StructureOverNavigableWater", "WindTurbine", "Wreck", "LightAllAround", "LightSectored", "Daymark"];
+
+                public StructureEquipment_theStructure() {
+                    base.AssociationConnectorTypeName = typeof(FogSignal).Name;
+                }
+            };
+            public class UpdatedInformation_theUpdate : UpdatedInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
+
+                public UpdatedInformation_theUpdate() {
+                    base.AssociationConnectorTypeName = typeof(FogSignal).Name;
+                }
+            };
+            public class TextAssociation_theCartographicText : TextAssociation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theCartographicTextFeatureTypes => ["TextPlacement"];
+
+                public TextAssociation_theCartographicText() {
+                    base.AssociationConnectorTypeName = typeof(FogSignal).Name;
+                }
+            };
             public FogSignal() {
             }
         }
@@ -13659,6 +20823,46 @@ namespace S100Framework.DomainModel.S101 {
             [IgnoreDataMember]
             public override string Code => nameof(PhysicalAISAidToNavigation);
 
+            public class AdditionalInformation_theInformation : AdditionalInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theInformationInformationTypes => ["NauticalInformation"];
+
+                public AdditionalInformation_theInformation() {
+                    base.AssociationConnectorTypeName = typeof(PhysicalAISAidToNavigation).Name;
+                }
+            };
+            public class StructureEquipment_theStructure : StructureEquipment {
+                public override roleType? roleType => DomainModel.roleType.composition;
+
+                [IgnoreDataMember]
+                public override String[] theStructureFeatureTypes => ["Bridge", "Building", "Crane", "CardinalBeacon", "CardinalBuoy", "Conveyor", "Dolphin", "EmergencyWreckMarkingBuoy", "FishingFacility", "FloatingDock", "FortifiedStructure", "Hulk", "InstallationBuoy", "IsolatedDangerBeacon", "IsolatedDangerBuoy", "Landmark", "LateralBeacon", "LateralBuoy", "LightFloat", "LightVessel", "MooringBuoy", "OffshorePlatform", "Pile", "PipelineOverhead", "Pontoon", "PylonBridgeSupport", "SafeWaterBeacon", "SafeWaterBuoy", "ShorelineConstruction", "SiloTank", "SpanFixed", "SpanOpening", "SpecialPurposeGeneralBeacon", "SpecialPurposeGeneralBuoy", "StructureOverNavigableWater", "WindTurbine", "Wreck", "Daymark"];
+
+                public StructureEquipment_theStructure() {
+                    base.AssociationConnectorTypeName = typeof(PhysicalAISAidToNavigation).Name;
+                }
+            };
+            public class UpdatedInformation_theUpdate : UpdatedInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
+
+                public UpdatedInformation_theUpdate() {
+                    base.AssociationConnectorTypeName = typeof(PhysicalAISAidToNavigation).Name;
+                }
+            };
+            public class TextAssociation_theCartographicText : TextAssociation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theCartographicTextFeatureTypes => ["TextPlacement"];
+
+                public TextAssociation_theCartographicText() {
+                    base.AssociationConnectorTypeName = typeof(PhysicalAISAidToNavigation).Name;
+                }
+            };
             public PhysicalAISAidToNavigation() {
             }
         }
@@ -13698,6 +20902,36 @@ namespace S100Framework.DomainModel.S101 {
             [IgnoreDataMember]
             public override string Code => nameof(VirtualAISAidToNavigation);
 
+            public class AdditionalInformation_theInformation : AdditionalInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theInformationInformationTypes => ["NauticalInformation"];
+
+                public AdditionalInformation_theInformation() {
+                    base.AssociationConnectorTypeName = typeof(VirtualAISAidToNavigation).Name;
+                }
+            };
+            public class UpdatedInformation_theUpdate : UpdatedInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
+
+                public UpdatedInformation_theUpdate() {
+                    base.AssociationConnectorTypeName = typeof(VirtualAISAidToNavigation).Name;
+                }
+            };
+            public class TextAssociation_theCartographicText : TextAssociation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theCartographicTextFeatureTypes => ["TextPlacement"];
+
+                public TextAssociation_theCartographicText() {
+                    base.AssociationConnectorTypeName = typeof(VirtualAISAidToNavigation).Name;
+                }
+            };
             public VirtualAISAidToNavigation() {
             }
         }
@@ -13735,6 +20969,36 @@ namespace S100Framework.DomainModel.S101 {
             [IgnoreDataMember]
             public override string Code => nameof(RadioStation);
 
+            public class AdditionalInformation_theInformation : AdditionalInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theInformationInformationTypes => ["ContactDetails", "NauticalInformation"];
+
+                public AdditionalInformation_theInformation() {
+                    base.AssociationConnectorTypeName = typeof(RadioStation).Name;
+                }
+            };
+            public class UpdatedInformation_theUpdate : UpdatedInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
+
+                public UpdatedInformation_theUpdate() {
+                    base.AssociationConnectorTypeName = typeof(RadioStation).Name;
+                }
+            };
+            public class TextAssociation_theCartographicText : TextAssociation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theCartographicTextFeatureTypes => ["TextPlacement"];
+
+                public TextAssociation_theCartographicText() {
+                    base.AssociationConnectorTypeName = typeof(RadioStation).Name;
+                }
+            };
             public RadioStation() {
             }
         }
@@ -13770,6 +21034,56 @@ namespace S100Framework.DomainModel.S101 {
             [IgnoreDataMember]
             public override string Code => nameof(RadarTransponderBeacon);
 
+            public class AdditionalInformation_theInformation : AdditionalInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theInformationInformationTypes => ["NauticalInformation"];
+
+                public AdditionalInformation_theInformation() {
+                    base.AssociationConnectorTypeName = typeof(RadarTransponderBeacon).Name;
+                }
+            };
+            public class StructureEquipment_theStructure : StructureEquipment {
+                public override roleType? roleType => DomainModel.roleType.composition;
+
+                [IgnoreDataMember]
+                public override String[] theStructureFeatureTypes => ["Bridge", "Building", "Crane", "CardinalBeacon", "CardinalBuoy", "Conveyor", "Dolphin", "EmergencyWreckMarkingBuoy", "FishingFacility", "FloatingDock", "FortifiedStructure", "Hulk", "InstallationBuoy", "IsolatedDangerBeacon", "IsolatedDangerBuoy", "Landmark", "LateralBeacon", "LateralBuoy", "LightFloat", "LightVessel", "MooringBuoy", "OffshorePlatform", "Pile", "PipelineOverhead", "Pontoon", "PylonBridgeSupport", "SafeWaterBeacon", "SafeWaterBuoy", "ShorelineConstruction", "SiloTank", "SpanFixed", "SpanOpening", "SpecialPurposeGeneralBeacon", "SpecialPurposeGeneralBuoy", "StructureOverNavigableWater", "WindTurbine", "Wreck", "LightAllAround", "LightSectored", "Daymark"];
+
+                public StructureEquipment_theStructure() {
+                    base.AssociationConnectorTypeName = typeof(RadarTransponderBeacon).Name;
+                }
+            };
+            public class UpdatedInformation_theUpdate : UpdatedInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
+
+                public UpdatedInformation_theUpdate() {
+                    base.AssociationConnectorTypeName = typeof(RadarTransponderBeacon).Name;
+                }
+            };
+            public class TextAssociation_theCartographicText : TextAssociation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theCartographicTextFeatureTypes => ["TextPlacement"];
+
+                public TextAssociation_theCartographicText() {
+                    base.AssociationConnectorTypeName = typeof(RadarTransponderBeacon).Name;
+                }
+            };
+            public class RangeSystemAggregation_theCollection : RangeSystemAggregation {
+                public override roleType? roleType => DomainModel.roleType.aggregation;
+
+                [IgnoreDataMember]
+                public override String[] theCollectionFeatureTypes => ["RangeSystem"];
+
+                public RangeSystemAggregation_theCollection() {
+                    base.AssociationConnectorTypeName = typeof(RadarTransponderBeacon).Name;
+                }
+            };
             public RadarTransponderBeacon() {
             }
         }
@@ -13812,6 +21126,46 @@ namespace S100Framework.DomainModel.S101 {
             [IgnoreDataMember]
             public override string Code => nameof(PilotBoardingPlace);
 
+            public class AdditionalInformation_theInformation : AdditionalInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theInformationInformationTypes => ["ContactDetails", "NauticalInformation"];
+
+                public AdditionalInformation_theInformation() {
+                    base.AssociationConnectorTypeName = typeof(PilotBoardingPlace).Name;
+                }
+            };
+            public class PilotageDistrictAssociation_theCollection : PilotageDistrictAssociation {
+                public override roleType? roleType => DomainModel.roleType.aggregation;
+
+                [IgnoreDataMember]
+                public override String[] theCollectionFeatureTypes => ["PilotageDistrict"];
+
+                public PilotageDistrictAssociation_theCollection() {
+                    base.AssociationConnectorTypeName = typeof(PilotBoardingPlace).Name;
+                }
+            };
+            public class UpdatedInformation_theUpdate : UpdatedInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
+
+                public UpdatedInformation_theUpdate() {
+                    base.AssociationConnectorTypeName = typeof(PilotBoardingPlace).Name;
+                }
+            };
+            public class TextAssociation_theCartographicText : TextAssociation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theCartographicTextFeatureTypes => ["TextPlacement"];
+
+                public TextAssociation_theCartographicText() {
+                    base.AssociationConnectorTypeName = typeof(PilotBoardingPlace).Name;
+                }
+            };
             public PilotBoardingPlace() {
             }
         }
@@ -13827,6 +21181,36 @@ namespace S100Framework.DomainModel.S101 {
             [IgnoreDataMember]
             public override string Code => nameof(VesselTrafficServiceArea);
 
+            public class AdditionalInformation_theInformation : AdditionalInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theInformationInformationTypes => ["ContactDetails", "NauticalInformation"];
+
+                public AdditionalInformation_theInformation() {
+                    base.AssociationConnectorTypeName = typeof(VesselTrafficServiceArea).Name;
+                }
+            };
+            public class UpdatedInformation_theUpdate : UpdatedInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
+
+                public UpdatedInformation_theUpdate() {
+                    base.AssociationConnectorTypeName = typeof(VesselTrafficServiceArea).Name;
+                }
+            };
+            public class TextAssociation_theCartographicText : TextAssociation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theCartographicTextFeatureTypes => ["TextPlacement"];
+
+                public TextAssociation_theCartographicText() {
+                    base.AssociationConnectorTypeName = typeof(VesselTrafficServiceArea).Name;
+                }
+            };
             public VesselTrafficServiceArea() {
             }
         }
@@ -13853,6 +21237,36 @@ namespace S100Framework.DomainModel.S101 {
             [IgnoreDataMember]
             public override string Code => nameof(CoastGuardStation);
 
+            public class AdditionalInformation_theInformation : AdditionalInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theInformationInformationTypes => ["ContactDetails", "NauticalInformation", "NonStandardWorkingDay", "ServiceHours"];
+
+                public AdditionalInformation_theInformation() {
+                    base.AssociationConnectorTypeName = typeof(CoastGuardStation).Name;
+                }
+            };
+            public class UpdatedInformation_theUpdate : UpdatedInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
+
+                public UpdatedInformation_theUpdate() {
+                    base.AssociationConnectorTypeName = typeof(CoastGuardStation).Name;
+                }
+            };
+            public class TextAssociation_theCartographicText : TextAssociation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theCartographicTextFeatureTypes => ["TextPlacement"];
+
+                public TextAssociation_theCartographicText() {
+                    base.AssociationConnectorTypeName = typeof(CoastGuardStation).Name;
+                }
+            };
             public CoastGuardStation() {
             }
         }
@@ -13901,6 +21315,46 @@ namespace S100Framework.DomainModel.S101 {
             [IgnoreDataMember]
             public override string Code => nameof(SignalStationWarning);
 
+            public class AdditionalInformation_theInformation : AdditionalInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theInformationInformationTypes => ["ContactDetails", "NauticalInformation"];
+
+                public AdditionalInformation_theInformation() {
+                    base.AssociationConnectorTypeName = typeof(SignalStationWarning).Name;
+                }
+            };
+            public class StructureEquipment_theStructure : StructureEquipment {
+                public override roleType? roleType => DomainModel.roleType.composition;
+
+                [IgnoreDataMember]
+                public override String[] theStructureFeatureTypes => ["Bridge", "Building", "Crane", "CardinalBeacon", "CardinalBuoy", "Conveyor", "Dolphin", "EmergencyWreckMarkingBuoy", "FishingFacility", "FloatingDock", "FortifiedStructure", "Hulk", "InstallationBuoy", "IsolatedDangerBeacon", "IsolatedDangerBuoy", "Landmark", "LateralBeacon", "LateralBuoy", "LightFloat", "LightVessel", "MooringBuoy", "OffshorePlatform", "Pile", "PipelineOverhead", "Pontoon", "PylonBridgeSupport", "SafeWaterBeacon", "SafeWaterBuoy", "ShorelineConstruction", "SiloTank", "SpanFixed", "SpanOpening", "SpecialPurposeGeneralBeacon", "SpecialPurposeGeneralBuoy", "StructureOverNavigableWater", "WindTurbine", "Wreck", "Daymark"];
+
+                public StructureEquipment_theStructure() {
+                    base.AssociationConnectorTypeName = typeof(SignalStationWarning).Name;
+                }
+            };
+            public class UpdatedInformation_theUpdate : UpdatedInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
+
+                public UpdatedInformation_theUpdate() {
+                    base.AssociationConnectorTypeName = typeof(SignalStationWarning).Name;
+                }
+            };
+            public class TextAssociation_theCartographicText : TextAssociation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theCartographicTextFeatureTypes => ["TextPlacement"];
+
+                public TextAssociation_theCartographicText() {
+                    base.AssociationConnectorTypeName = typeof(SignalStationWarning).Name;
+                }
+            };
             public SignalStationWarning() {
                 categoryOfSignalStationWarning = new();
             }
@@ -13945,6 +21399,46 @@ namespace S100Framework.DomainModel.S101 {
             [IgnoreDataMember]
             public override string Code => nameof(SignalStationTraffic);
 
+            public class AdditionalInformation_theInformation : AdditionalInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theInformationInformationTypes => ["ContactDetails", "NauticalInformation"];
+
+                public AdditionalInformation_theInformation() {
+                    base.AssociationConnectorTypeName = typeof(SignalStationTraffic).Name;
+                }
+            };
+            public class StructureEquipment_theStructure : StructureEquipment {
+                public override roleType? roleType => DomainModel.roleType.composition;
+
+                [IgnoreDataMember]
+                public override String[] theStructureFeatureTypes => ["Bridge", "Building", "Crane", "CardinalBeacon", "CardinalBuoy", "Conveyor", "Dolphin", "EmergencyWreckMarkingBuoy", "FishingFacility", "FloatingDock", "FortifiedStructure", "Hulk", "InstallationBuoy", "IsolatedDangerBeacon", "IsolatedDangerBuoy", "Landmark", "LateralBeacon", "LateralBuoy", "LightFloat", "LightVessel", "MooringBuoy", "OffshorePlatform", "Pile", "PipelineOverhead", "Pontoon", "PylonBridgeSupport", "SafeWaterBeacon", "SafeWaterBuoy", "ShorelineConstruction", "SiloTank", "SpanFixed", "SpanOpening", "SpecialPurposeGeneralBeacon", "SpecialPurposeGeneralBuoy", "StructureOverNavigableWater", "WindTurbine", "Wreck", "Daymark"];
+
+                public StructureEquipment_theStructure() {
+                    base.AssociationConnectorTypeName = typeof(SignalStationTraffic).Name;
+                }
+            };
+            public class UpdatedInformation_theUpdate : UpdatedInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
+
+                public UpdatedInformation_theUpdate() {
+                    base.AssociationConnectorTypeName = typeof(SignalStationTraffic).Name;
+                }
+            };
+            public class TextAssociation_theCartographicText : TextAssociation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theCartographicTextFeatureTypes => ["TextPlacement"];
+
+                public TextAssociation_theCartographicText() {
+                    base.AssociationConnectorTypeName = typeof(SignalStationTraffic).Name;
+                }
+            };
             public SignalStationTraffic() {
                 categoryOfSignalStationTraffic = new();
             }
@@ -13983,6 +21477,36 @@ namespace S100Framework.DomainModel.S101 {
             [IgnoreDataMember]
             public override string Code => nameof(RescueStation);
 
+            public class AdditionalInformation_theInformation : AdditionalInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theInformationInformationTypes => ["ContactDetails", "NauticalInformation"];
+
+                public AdditionalInformation_theInformation() {
+                    base.AssociationConnectorTypeName = typeof(RescueStation).Name;
+                }
+            };
+            public class UpdatedInformation_theUpdate : UpdatedInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
+
+                public UpdatedInformation_theUpdate() {
+                    base.AssociationConnectorTypeName = typeof(RescueStation).Name;
+                }
+            };
+            public class TextAssociation_theCartographicText : TextAssociation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theCartographicTextFeatureTypes => ["TextPlacement"];
+
+                public TextAssociation_theCartographicText() {
+                    base.AssociationConnectorTypeName = typeof(RescueStation).Name;
+                }
+            };
             public RescueStation() {
             }
         }
@@ -14096,6 +21620,36 @@ namespace S100Framework.DomainModel.S101 {
             [IgnoreDataMember]
             public override string Code => nameof(HarbourFacility);
 
+            public class AdditionalInformation_theInformation : AdditionalInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theInformationInformationTypes => ["ContactDetails", "NauticalInformation"];
+
+                public AdditionalInformation_theInformation() {
+                    base.AssociationConnectorTypeName = typeof(HarbourFacility).Name;
+                }
+            };
+            public class UpdatedInformation_theUpdate : UpdatedInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
+
+                public UpdatedInformation_theUpdate() {
+                    base.AssociationConnectorTypeName = typeof(HarbourFacility).Name;
+                }
+            };
+            public class TextAssociation_theCartographicText : TextAssociation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theCartographicTextFeatureTypes => ["TextPlacement"];
+
+                public TextAssociation_theCartographicText() {
+                    base.AssociationConnectorTypeName = typeof(HarbourFacility).Name;
+                }
+            };
             public HarbourFacility() {
                 categoryOfHarbourFacility = new();
             }
@@ -14163,6 +21717,36 @@ namespace S100Framework.DomainModel.S101 {
             [IgnoreDataMember]
             public override string Code => nameof(SmallCraftFacility);
 
+            public class AdditionalInformation_theInformation : AdditionalInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theInformationInformationTypes => ["ContactDetails", "NauticalInformation"];
+
+                public AdditionalInformation_theInformation() {
+                    base.AssociationConnectorTypeName = typeof(SmallCraftFacility).Name;
+                }
+            };
+            public class UpdatedInformation_theUpdate : UpdatedInformation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
+
+                public UpdatedInformation_theUpdate() {
+                    base.AssociationConnectorTypeName = typeof(SmallCraftFacility).Name;
+                }
+            };
+            public class TextAssociation_theCartographicText : TextAssociation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theCartographicTextFeatureTypes => ["TextPlacement"];
+
+                public TextAssociation_theCartographicText() {
+                    base.AssociationConnectorTypeName = typeof(SmallCraftFacility).Name;
+                }
+            };
             public SmallCraftFacility() {
                 categoryOfSmallCraftFacility = new();
             }
@@ -14187,6 +21771,16 @@ namespace S100Framework.DomainModel.S101 {
             [IgnoreDataMember]
             public override string Code => nameof(TextPlacement);
 
+            public class TextAssociation_thePositionProvider : TextAssociation {
+                public override roleType? roleType => DomainModel.roleType.composition;
+
+                [IgnoreDataMember]
+                public override String[] thePositionProviderFeatureTypes => ["AdministrationArea", "AirportAirfield", "AnchorBerth", "AnchorageArea", "ArchipelagicSeaLane", "ArchipelagicSeaLaneArea", "ArchipelagicSeaLaneAxis", "Berth", "Bollard", "Bridge", "Building", "BuiltUpArea", "CableArea", "CableOverhead", "CableSubmarine", "Canal", "CardinalBuoy", "CardinalBeacon", "CargoTranshipmentArea", "Causeway", "Chart1Feature", "Checkpoint", "CoastGuardStation", "Coastline", "CollisionRegulationsLimit", "ContinentalShelfArea", "Conveyor", "Crane", "CurrentNonGravitational", "Dam", "Daymark", "DeepWaterRoute", "DeepWaterRouteCentreline", "DeepWaterRoutePart", "DistanceMark", "DockArea", "Dolphin", "DredgedArea", "DryDock", "DumpingGround", "Dyke", "EmergencyWreckMarkingBuoy", "Fairway", "FairwaySystem", "FenceWall", "FerryRoute", "FisheryZone", "FishingFacility", "FishingGround", "FloatingDock", "FogSignal", "FortifiedStructure", "FoulGround", "FreePortArea", "Gate", "Gridiron", "HarbourAreaAdministrative", "HarbourFacility", "Helipad", "Hulk", "IceArea", "InformationArea", "InstallationBuoy", "IslandGroup", "IsolatedDangerBeacon", "IsolatedDangerBuoy", "Lake", "LandArea", "LandElevation", "LandRegion", "Landmark", "LateralBeacon", "LateralBuoy", "LightAirObstruction", "LightAllAround", "LightFloat", "LightFogDetector", "LightSectored", "LightVessel", "LocalMagneticAnomaly", "LockBasin", "LogPond", "MarineFarmCulture", "MarinePollutionRegulationsArea", "MilitaryPracticeArea", "MooringArea", "MooringBuoy", "MooringTrot", "Obstruction", "OffshorePlatform", "OffshoreProductionArea", "OilBarrier", "PhysicalAISAidToNavigation", "Pile", "PilotBoardingPlace", "PilotageDistrict", "PipelineOverhead", "PipelineSubmarineOnLand", "Pontoon", "PrecautionaryArea", "ProductionStorageArea", "PylonBridgeSupport", "RadarLine", "RadarRange", "RadarStation", "RadarTransponderBeacon", "RadioCallingInPoint", "RadioStation", "Railway", "RangeSystem", "Rapids", "RecommendedRouteCentreline", "RecommendedTrack", "RescueStation", "RestrictedArea", "River", "Road", "Runway", "SafeWaterBeacon", "SafeWaterBuoy", "SeaAreaNamedWaterArea", "SeabedArea", "Seagrass", "SeaplaneLandingArea", "ShorelineConstruction", "SignalStationTraffic", "SignalStationWarning", "SiloTank", "SlopeTopline", "SlopingGround", "SmallCraftFacility", "Sounding", "SpanFixed", "SpanOpening", "SpecialPurposeGeneralBeacon", "SpecialPurposeGeneralBuoy", "Spring", "StructureOverNavigableWater", "SubmarinePipelineArea", "SubmarineTransitLane", "SweptArea", "TidalStreamFloodEbb", "TidalStreamPanelData", "Tideway", "TrafficSeparationScheme", "Tunnel", "TwoWayRoute", "UnderwaterAwashRock", "Vegetation", "VesselTrafficServiceArea", "VirtualAISAidToNavigation", "WaterTurbulence", "Waterfall", "WeedKelp", "WindTurbine", "Wreck"];
+
+                public TextAssociation_thePositionProvider() {
+                    base.AssociationConnectorTypeName = typeof(TextPlacement).Name;
+                }
+            };
             public TextPlacement() {
                 textType = new();
             }
@@ -14201,6 +21795,16 @@ namespace S100Framework.DomainModel.S101 {
             [IgnoreDataMember]
             public override string Code => nameof(Chart1Feature);
 
+            public class TextAssociation_theCartographicText : TextAssociation {
+                public override roleType? roleType => DomainModel.roleType.association;
+
+                [IgnoreDataMember]
+                public override String[] theCartographicTextFeatureTypes => ["TextPlacement"];
+
+                public TextAssociation_theCartographicText() {
+                    base.AssociationConnectorTypeName = typeof(Chart1Feature).Name;
+                }
+            };
             public Chart1Feature() {
             }
         }

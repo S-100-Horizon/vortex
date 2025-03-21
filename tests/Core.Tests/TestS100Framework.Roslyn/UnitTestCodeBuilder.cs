@@ -26,57 +26,6 @@ namespace TestS100Framework
         }
     }
 
-
-
-    //public class informationBinding<T>
-    //{
-    //    public Type? Association { get; set; }
-    //    public Role? Role { get; set; }
-
-    //    public Type? informationType { get; set; }
-    //}
-
-    //namespace TestS100Framework.Bindings
-    //{
-    //    using S100Framework.DomainModel.S131;
-    //    using S100Framework.DomainModel.S131.Bindings.InformationAssociations;
-    //    using S100Framework.DomainModel.S131.Bindings.Roles;
-    //    using S100Framework.DomainModel.S131.ComplexAttributes;
-    //    using S100Framework.DomainModel.S131.InformationTypes;
-
-
-    //    public class AbstractRxNInformationAssociations {
-    //        [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
-    //        public List<InclusionType<isApplicableTo>> isApplicableTo { get; set; } = [];
-
-    //        [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
-    //        public List<RelatedOrganisation<theOrganisation>> theOrganisation { get; set; } = [];
-    //    }
-
-    //    public abstract class AbstractRxN : InformationType
-    //    {
-    //        [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
-    //        public categoryOfAuthority? categoryOfAuthority { get; set; } = default;
-
-    //        [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
-    //        public List<rxNCode> rxNCode { get; set; } = [];
-
-    //        [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
-    //        public List<textContent> textContent { get; set; } = [];
-
-    //        [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
-    //        public List<InclusionType<isApplicableTo>> isApplicableTo { get; set; } = [];
-
-    //        [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
-    //        public List<RelatedOrganisation<theOrganisation>> theOrganisation { get; set; } = [];
-
-    //        public AbstractRxNInformationAssociations InformationAssociations { get; set; } = new();
-
-    //        public AbstractRxN() {
-    //        }
-    //    }
-    //}
-
     namespace TestS100Framework
     {
         public class UnitTestCodeBuilder
@@ -158,7 +107,148 @@ namespace TestS100Framework
 
                 Build_S501();
                 File.WriteAllText(@"..\..\..\..\..\..\src\Core\S100Framework.Catalogues\S-501_FC.g.cs", File.ReadAllText(@".\..\..\..\S-501_FC.cs"));
-                File.WriteAllText(@"..\..\..\..\..\..\src\UI\S100Framework.WPF\S-501_ViewModel.g.cs", File.ReadAllText(@".\..\..\..\S-501_ViewModel.cs"));                
+                File.WriteAllText(@"..\..\..\..\..\..\src\UI\S100Framework.WPF\S-501_ViewModel.g.cs", File.ReadAllText(@".\..\..\..\S-501_ViewModel.cs"));
+            }
+
+            private bool VerifyProductSpecification(XDocument productSpecification) {
+                var navigator = productSpecification.CreateNavigator();
+                navigator.MoveToFollowing(XPathNodeType.Element);
+                var scopes = navigator.GetNamespacesInScope(XmlNamespaceScope.All);
+
+                var scope_S100 = scopes["S100FC"];
+
+                var xmlNamespaceManager = new XmlNamespaceManager(new NameTable());
+                foreach (var e in scopes)
+                    xmlNamespaceManager.AddNamespace(e.Key, e.Value);
+
+                //  Roles
+                {
+                    var elementInformationTypes = productSpecification.XPathSelectElements("//S100FC:S100_FC_InformationTypes", xmlNamespaceManager);
+                    var elementFeatureTypes = productSpecification.XPathSelectElements("//S100FC:S100_FC_FeatureTypes", xmlNamespaceManager);
+
+                    var elementRoles = productSpecification.XPathSelectElement("//S100FC:S100_FC_Roles", xmlNamespaceManager);
+                    foreach (var role in elementRoles!.Elements()) {
+                        var name = role.Element(XName.Get("name", scope_S100))!.Value;
+                        var code = role.Element(XName.Get("code", scope_S100))!.Value;
+
+                        //var query = $"//S100FC:featureBinding/S100FC:role[@ref=\"{code}\"]";
+                        var query = $"//S100FC:role[@ref=\"{code}\"]";
+
+                        if (elementInformationTypes.Any(e => e.XPathSelectElements(query, xmlNamespaceManager).Any())) {
+                            continue;
+                        }
+                        if (elementFeatureTypes.Any(e => e.XPathSelectElements(query, xmlNamespaceManager).Any())) {
+                            continue;
+                        }
+
+                        System.Diagnostics.Debugger.Break();
+                    }
+                }
+
+                //  Associations
+                {
+                    var elementInformationAssociations = productSpecification.XPathSelectElements("//S100FC:S100_FC_InformationAssociation", xmlNamespaceManager);
+                    foreach (var e in elementInformationAssociations) {
+                        var name = e.Element(XName.Get("name", scope_S100))!.Value;
+                        var code = e.Element(XName.Get("code", scope_S100))!.Value;
+
+                        _output.WriteLine($"{code}:");
+
+                        var roles = e.Elements(XName.Get("role", scope_S100)).Select(e => e.Attribute("ref")!.Value);
+
+                        var dictionary = new Dictionary<string, (int lower, int? upper)>();
+
+                        var bindings = productSpecification.XPathSelectElements($"//S100FC:informationBinding/S100FC:association[@ref=\"{code}\"]", xmlNamespaceManager);
+                        foreach (var b in bindings) {
+                            var binding = b.Parent!;
+
+                            var role = binding.Element(XName.Get("role", scope_S100))!.Attribute("ref")!.Value;
+
+                            var lower = int.Parse(binding.XPathSelectElement("S100FC:multiplicity/S100Base:lower", xmlNamespaceManager)!.Value);
+                            var upper = binding.XPathSelectElement("S100FC:multiplicity/S100Base:upper", xmlNamespaceManager)!.Attribute(XName.Get("infinite")) != default ? default(int?) : int.Parse(binding.XPathSelectElement("S100FC:multiplicity/S100Base:upper", xmlNamespaceManager)!.Value);
+
+                            if (!dictionary.ContainsKey(role)) {
+                                dictionary.Add(role, (lower, upper));
+                            }
+                            else {
+                                Assert.True(dictionary[role].Equals((lower, upper)));
+                            }
+                        }
+
+                        foreach (var pair in dictionary) {
+                            var upper = pair.Value.upper.HasValue ? $"{pair.Value.upper.Value}" : "∞";
+                            _output.WriteLine($"\t{pair.Key}: {pair.Value.lower} {upper}");
+                        }
+                        foreach (var r in roles) {
+                            if (dictionary.ContainsKey(r))
+                                continue;
+                            _output.WriteLine($"\t{r} not used!");
+                        }
+
+                        _output.WriteLine("");
+                    }
+
+                    var elementFeatureAssociations = productSpecification.XPathSelectElements("//S100FC:S100_FC_FeatureAssociation", xmlNamespaceManager);
+                    foreach (var e in elementFeatureAssociations) {
+                        var name = e.Element(XName.Get("name", scope_S100))!.Value;
+                        var code = e.Element(XName.Get("code", scope_S100))!.Value;
+
+                        _output.WriteLine($"{code}:");
+
+                        var roles = e.Elements(XName.Get("role", scope_S100)).Select(e => e.Attribute("ref")!.Value);
+
+                        var dictionary = new Dictionary<string, (int lower, int? upper)>();
+
+                        var bindings = productSpecification.XPathSelectElements($"//S100FC:featureBinding/S100FC:association[@ref=\"{code}\"]", xmlNamespaceManager);
+                        foreach (var b in bindings) {
+                            var binding = b.Parent!;
+
+                            var role = binding.Element(XName.Get("role", scope_S100))!.Attribute("ref")!.Value;
+
+                            var lower = int.Parse(binding.XPathSelectElement("S100FC:multiplicity/S100Base:lower", xmlNamespaceManager)!.Value);
+                            var upper = binding.XPathSelectElement("S100FC:multiplicity/S100Base:upper", xmlNamespaceManager)!.Attribute(XName.Get("infinite")) != default ? default(int?) : int.Parse(binding.XPathSelectElement("S100FC:multiplicity/S100Base:upper", xmlNamespaceManager)!.Value);
+
+                            if (!dictionary.ContainsKey(role)) {
+                                dictionary.Add(role, (lower, upper));
+                            }
+                            else {
+                                Assert.True(dictionary[role].Equals((lower, upper)));
+                            }
+                        }
+
+                        foreach (var pair in dictionary) {
+                            var upper = pair.Value.upper.HasValue ? $"{pair.Value.upper.Value}" : "∞";
+                            _output.WriteLine($"\t{pair.Key}: {pair.Value.lower} {upper}");
+                        }
+                        foreach (var r in roles) {
+                            if (dictionary.ContainsKey(r))
+                                continue;
+                            _output.WriteLine($"\t{r} not used!");
+                        }
+                        _output.WriteLine("");
+                    }
+                }
+                return true;
+            }
+
+            [Fact]
+            public void Validate() {
+                string[] productSpecifications = [
+                    @".\Artifacts\101_Feature_Catalogue_2.0.0.xml",
+                    @".\Artifacts\jpS-122_FC_1.2.1.xml",
+                    @".\Artifacts\S-124FC_1.5_20240330.xml",
+                    @".\Artifacts\S-128_FC_Ed2.0.0.xml",
+                    @".\Artifacts\131_1_0_0_20230315_FC - LOCAL.xml",
+                ];
+
+                foreach (var e in productSpecifications) {
+                    _output.WriteLine($"{System.IO.Path.GetFileName(e)}");
+                    _output.WriteLine("----------------------------------------------------------------------------------");
+                    var s100 = XDocument.Load(e);
+                    Assert.True(VerifyProductSpecification(s100));
+
+                    _output.WriteLine("");
+                }
             }
 
             [Fact]
@@ -166,7 +256,9 @@ namespace TestS100Framework
                 var type1 = typeof(Test.NullableTest);
                 var type2 = typeof(bool?);
 
-                var s100 = XDocument.Load(@".\Artifacts\FeatureCatalogue.xml");
+                var s100 = XDocument.Load(@".\Artifacts\101_Feature_Catalogue_2.0.0.xml");
+
+                Assert.True(VerifyProductSpecification(s100));
 
                 var content = S100Framework.ClassBuilder.CatalogueBuilder52(s100);
 
@@ -224,7 +316,7 @@ namespace TestS100Framework
 
             [Fact]
             public void Build_S131() {
-                var s100 = XDocument.Load(@".\Artifacts\131_1_0_0_20230315_FC.xml");
+                var s100 = XDocument.Load(@".\Artifacts\131_1_0_0_20230315_FC - LOCAL.xml");
 
                 var content = S100Framework.ClassBuilder.CatalogueBuilder(s100, "http://www.iho.int/S131/1.0");
 
@@ -443,12 +535,86 @@ namespace TestS100Framework
                 System.Diagnostics.Debugger.Break();
             }
 
-            //public record featureType(string code, string? superType, bool isAbstract);
+            [Fact]
+            public void Test_SpatialAssociation() {
+                var productSpecification = XDocument.Load(@".\Artifacts\FeatureCatalogue.xml");
+
+                var navigator = productSpecification.CreateNavigator();
+                navigator.MoveToFollowing(XPathNodeType.Element);
+                var scopes = navigator.GetNamespacesInScope(XmlNamespaceScope.All);
+
+                var scope_S100 = scopes["S100FC"];
+
+                var xmlNamespaceManager = new XmlNamespaceManager(new NameTable());
+                foreach (var e in scopes)
+                    xmlNamespaceManager.AddNamespace(e.Key, e.Value);
+
+                var elements = productSpecification.XPathSelectElements("//S100FC:S100_FC_InformationAssociation", xmlNamespaceManager);
+
+                foreach (var e in elements) {
+                    var association = e.Element(XName.Get("code", scope_S100))!.Value;
+
+                    var usage = productSpecification.XPathSelectElements($"//S100FC:informationBinding/S100FC:association[@ref=\"{association}\"]", xmlNamespaceManager);
+
+                    if (!usage.Any())
+                        _output.WriteLine(association);
+                }
+            }
+
+            [Fact]
+            public void Test_Serialization() {
+                var instance = new SpecialStructureEquipment();
+
+                var json = System.Text.Json.JsonSerializer.Serialize(instance);
+
+                System.Diagnostics.Debugger.Break();
+            }
+
+            public partial class StructureEquipment
+            {
+                public virtual String[] theStructureFeatureTypes => [];
+            }
+
+            public partial class SpecialStructureEquipment : StructureEquipment
+            {
+                public override String[] theStructureFeatureTypes => ["Bridge", "Building", "Crane", "CardinalBeacon", "CardinalBuoy", "Conveyor", "Dolphin", "EmergencyWreckMarkingBuoy", "FishingFacility", "FloatingDock", "FortifiedStructure", "Hulk", "InstallationBuoy", "IsolatedDangerBeacon", "IsolatedDangerBuoy", "Landmark", "LateralBeacon", "LateralBuoy", "LightFloat", "LightVessel", "MooringBuoy", "OffshorePlatform", "Pile", "PipelineOverhead", "Pontoon", "PylonBridgeSupport", "SafeWaterBeacon", "SafeWaterBuoy", "ShorelineConstruction", "SiloTank", "SpanFixed", "SpanOpening", "SpecialPurposeGeneralBeacon", "SpecialPurposeGeneralBuoy", "StructureOverNavigableWater", "WindTurbine", "Wreck", "Daymark", "LightAllAround", "LightSectored"];
+            }
 
             public record featureBinding(string roleType, int lower, int? upper, string association, string role);
         }
     }
 }
+
+
+/*
+            public class UpdatedInformationAssociation : FeatureAssociation
+            {
+                public UpdatedInformationAssociation AddUpdateInformation(string id) {
+                    RefId[] refId = [ new RefId {
+                        Role = "theUpdate",
+                        Type = typeof(UpdateInformation).Name,
+                        Value = id,
+                    }];
+
+                    base.RefIds = [.. refId];
+                    return this;
+                }
+            }
+
+            public static QualityOfNonBathymetricData.UpdatedInformationAssociation CreateUpdatedInformation(string id) {
+                return new QualityOfNonBathymetricData.UpdatedInformationAssociation {
+                    Code = "UpdatedInformation",
+                    AssociationConnectorTypeName = "UpdatedInformation",
+                    RefIds = [new RefId {
+                        Role = "theUpdatedObject",
+                        Type = typeof(QualityOfNonBathymetricData).Name,
+                        Value = id,
+                    }]
+                };
+            }
+ */
+
+
 
 /*
     public enum S100_FC_RoleType {
