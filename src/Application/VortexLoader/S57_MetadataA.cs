@@ -129,16 +129,19 @@ namespace S100Framework.Applications
                             convertedCount++;
                         }
                         break;
-                    case 40: { // M_QUAL_QualityOfData
+                    case 40: { // M_QUAL_QualityOfData // SKIN OF EARTH
 
-                            //var instance = new SpatialQuality();
-                            //buffer["ps"] = ps101;
-                            //buffer["code"] = instance.GetType().Name;
-                            //buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
-                            //buffer["shape"] = current.SHAPE;
-                            //insert.Insert(buffer);
-                            //Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
-                            //convertedCount++;
+                            var instance = new QualityOfBathymetricData();
+
+                            
+
+                            buffer["ps"] = ps101;
+                            buffer["code"] = instance.GetType().Name;
+                            buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
+                            buffer["shape"] = current.SHAPE;
+                            insert.Insert(buffer);
+                            Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
+                            convertedCount++;
                         }
                         break;
                     case 45: { // M_SDAT_SoundingDatum
