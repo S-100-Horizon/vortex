@@ -8,6 +8,7 @@ namespace S100Framework.DomainModel.S501 {
     public static class Information {
         public static Version Version => new Version("0.0.5");
         public static string[] ComplexTypes => ["qRouteChannelWidth", "detectionDateRange", "multiplicityOfFeatures", "onlineResource", "featureName", "fixedDateRange", "altitudeRange", "altitude", "lastSourceInformation", "information", "firstSourceInformation", "horizontalClearanceFixed", "verticalUncertainty", "frequencyPair", "vesselMeasurementsSpecification", "surfaceCharacteristics", "magneticInformation", "speed", "verticalClearanceFixed", "sourceIdentification", "horizontalPositionUncertainty", "orientation", "directionHeading", "flightLevel", "vesselSpeedLimit", "periodicDateRange", "shapeInformation", "signalSequence", "sectorInformation", "directionalCharacter", "sectorLimitTwo", "sectorLimitOne", "topmark", "rythmOfLight", "verticalClearanceSafe", "sectorLimit", "lightSector", "sectorCharacteristics",];
+        public static string[] SpatialAssociationTypes => [];
         public static string[] InformationAssociationTypes => [];
         public static string[] FeatureAssociationTypes => [];
         public static string[] InformationTypes => ["ReferenceToAPublication",];
@@ -4137,7 +4138,11 @@ namespace S100Framework.DomainModel.S501 {
     }
 
     namespace Associations {
+        namespace SpatialAssociations {
+        }
+
         namespace InformationAssociations {
+            using S100Framework.DomainModel.S501.InformationTypes;
         }
 
         namespace FeatureAssociations {
@@ -4152,6 +4157,7 @@ namespace S100Framework.DomainModel.S501 {
         using ComplexAttributes;
         using DomainModel;
         using System.Runtime.Serialization;
+        using S100Framework.DomainModel.S501.Associations.InformationAssociations;
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -4174,6 +4180,8 @@ namespace S100Framework.DomainModel.S501 {
         using InformationTypes;
         using DomainModel;
         using System.Runtime.Serialization;
+        using S100Framework.DomainModel.S501.Associations.InformationAssociations;
+        using S100Framework.DomainModel.S501.Associations.FeatureAssociations;
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]

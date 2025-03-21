@@ -1,5 +1,4 @@
 ﻿using S100Framework.DomainModel;
-using S100Framework.DomainModel.Bindings;
 using S100Framework.DomainModel.S101.FeatureTypes;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;

@@ -49,7 +49,7 @@ namespace VortexProAppModule
 
         private InspectorHandle _inspectorHandle = default;
 
-        private InspectorHandle _inspectorHandleFeature => new InspectorHandle {
+        private InspectorHandle _inspectorHandleFeature => new() {
             TypeSelector = this.FeatureTypeSelector,
             Types = (e) => e.FeatureTypes.Select(e => e.Code),
             CreateViewModel = (schema, code, type) => {
@@ -57,7 +57,7 @@ namespace VortexProAppModule
             },
         };
 
-        private InspectorHandle _inspectorHandleFeatureAssociation => new InspectorHandle {
+        private InspectorHandle _inspectorHandleFeatureAssociation => new() {
             TypeSelector = this.FeatureAssociationTypeSelector,
             Types = (e) => e.FeatureAssociationTypes.Select(e => e.Code),
             CreateViewModel = (schema, code, type) => {
@@ -65,7 +65,7 @@ namespace VortexProAppModule
             },
         };
 
-        private InspectorHandle _inspectorHandleInformation => new InspectorHandle {
+        private InspectorHandle _inspectorHandleInformation => new() {
             TypeSelector = this.InformationTypeSelector,
             Types = (e) => e.InformationTypes.Select(e => e.Code),
             CreateViewModel = (schema, code, type) => {
@@ -73,7 +73,7 @@ namespace VortexProAppModule
             },
         };
 
-        private InspectorHandle _inspectorHandleInformationAssociation => new InspectorHandle {
+        private InspectorHandle _inspectorHandleInformationAssociation => new() {
             TypeSelector = this.InformationAssociationTypeSelector,
             Types = (e) => e.InformationAssociationTypes.Select(e => e.Code),
             CreateViewModel = (schema, code, type) => {

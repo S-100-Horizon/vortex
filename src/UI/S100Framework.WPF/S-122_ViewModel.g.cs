@@ -6,7 +6,6 @@ using System.Collections.Immutable;
 using System.Collections.ObjectModel;
 using System.Reflection;
 using S100Framework.DomainModel;
-using S100Framework.DomainModel.Bindings;
 using S100Framework.DomainModel.S122;
 using S100Framework.DomainModel.S122.ComplexAttributes;
 using S100Framework.DomainModel.S122.InformationTypes;

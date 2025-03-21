@@ -1,8 +1,6 @@
 using ArcGIS.Core.CIM;
 using ArcGIS.Core.Data;
-using ArcGIS.Core.Geometry;
 using S100Framework.Applications;
-using System.Collections.Generic;
 using System.Text;
 using System.Text.RegularExpressions;
 using Xunit.Abstractions;
@@ -77,10 +75,10 @@ namespace TestNisImporter
                 csSubtypes.AppendLine($"\t\tbreak;");
             }
 
-            
 
 
-                        csSubtypes.AppendLine($"\t\tdefault:");
+
+            csSubtypes.AppendLine($"\t\tdefault:");
             csSubtypes.AppendLine($"\t\t\t// code block");
             csSubtypes.AppendLine($"\t\t\tSystem.Diagnostics.Debugger.Break();");
             csSubtypes.AppendLine($"\t\tbreak;");
@@ -108,7 +106,7 @@ namespace TestNisImporter
 
             }
             csDomainValues.AppendLine($"*/");
-            
+
             Console.WriteLine(csDomainValues.ToString());
         }
 
@@ -208,9 +206,10 @@ namespace TestNisImporter
                     if (dataset is FeatureClass) {
                         datasetfields = ((FeatureClass)dataset).GetDefinition().GetFields();
                         ctor.AppendLine($"\t\tpublic {dataset.GetName()} (Feature feature) {{");
-                    } else if (dataset is Table) {
-                            datasetfields = ((Table)dataset).GetDefinition().GetFields();
-                            ctor.AppendLine($"\t\tpublic {dataset.GetName()} (Row row) {{");
+                    }
+                    else if (dataset is Table) {
+                        datasetfields = ((Table)dataset).GetDefinition().GetFields();
+                        ctor.AppendLine($"\t\tpublic {dataset.GetName()} (Row row) {{");
                     }
 
                     var fieldInfo = (Type: "Int32", Conversion: "Convert.ToInt32", DefaultValue: "default", Alias: string.Empty);
@@ -277,8 +276,9 @@ namespace TestNisImporter
                         if (dataset is FeatureClass) {
                             if (field.Name.ToUpper() == "VALIDATIONSTATUS") {
                                 ctor.AppendLine($"\t\t\tif (feature.FindField(\"VALIDATIONSTATUS\") > -1) {{ // NOAA Exception");
-                                    ctor.AppendLine($"\t\t\t\t\tif (DBNull.Value != feature[\"{field.Name.ToUpper()}\"] && feature[\"{field.Name.ToUpper()}\"] is not null) {{");
-                            } else {
+                                ctor.AppendLine($"\t\t\t\t\tif (DBNull.Value != feature[\"{field.Name.ToUpper()}\"] && feature[\"{field.Name.ToUpper()}\"] is not null) {{");
+                            }
+                            else {
                                 ctor.AppendLine($"\t\t\tif (DBNull.Value != feature[\"{field.Name.ToUpper()}\"] && feature[\"{field.Name.ToUpper()}\"] is not null) {{");
                             }
                         }

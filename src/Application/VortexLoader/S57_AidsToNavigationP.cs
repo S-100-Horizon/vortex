@@ -5,6 +5,7 @@ using S100Framework.DomainModel.S101.ComplexAttributes;
 using S100Framework.DomainModel.S101.FeatureTypes;
 using S100Framework.DomainModel;
 using VortexLoader;
+using System.Text.Json;
 
 namespace S100Framework.Applications
 {
@@ -35,7 +36,7 @@ namespace S100Framework.Applications
             buffer["ps"] = ps101;
 
             buffer["code"] = instance.GetType().Name;
-            buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance);
+            buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
             buffer["shape"] = current.SHAPE;
             insert.Insert(buffer);
             Logger.Current.DataObject(current.OBJECTID.Value, tableName, current.LNAM, System.Text.Json.JsonSerializer.Serialize(instance));
@@ -121,7 +122,7 @@ namespace S100Framework.Applications
                 buffer["ps"] = ps101;
 
                 buffer["code"] = instance.GetType().Name;
-                buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance);
+                buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                 buffer["shape"] = current.SHAPE;
                 insert.Insert(buffer);
                 Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
@@ -142,9 +143,6 @@ namespace S100Framework.Applications
                 }
 
                 instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
-
-
-
 
                 if (plts_comp_scale != default) {
                     instance.scaleMinimum = plts_comp_scale;
@@ -178,7 +176,7 @@ namespace S100Framework.Applications
                 buffer["ps"] = ps101;
 
                 buffer["code"] = instance.GetType().Name;
-                buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance);
+                buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                 buffer["shape"] = current.SHAPE;
                 insert.Insert(buffer);
                 Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
@@ -206,7 +204,7 @@ namespace S100Framework.Applications
                 buffer["ps"] = ps101;
 
                 buffer["code"] = instance.GetType().Name;
-                buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance);
+                buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                 buffer["shape"] = current.SHAPE;
                 insert.Insert(buffer);
                 Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
@@ -233,7 +231,7 @@ namespace S100Framework.Applications
                 buffer["ps"] = ps101;
 
                 buffer["code"] = instance.GetType().Name;
-                buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance);
+                buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                 buffer["shape"] = current.SHAPE;
                 insert.Insert(buffer);
                 Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
@@ -498,7 +496,7 @@ namespace S100Framework.Applications
 
                             buffer["ps"] = ps101;
                             buffer["code"] = instance.GetType().Name;
-                            buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance);
+                            buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                             buffer["shape"] = current.SHAPE;
                             insert.Insert(buffer);
                             Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
@@ -712,7 +710,7 @@ namespace S100Framework.Applications
 
                             buffer["ps"] = ps101;
                             buffer["code"] = instance.GetType().Name;
-                            buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance);
+                            buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                             buffer["shape"] = current.SHAPE;
                             insert.Insert(buffer);
                             Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
@@ -933,7 +931,7 @@ namespace S100Framework.Applications
 
                             buffer["ps"] = ps101;
                             buffer["code"] = instance.GetType().Name;
-                            buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance);
+                            buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                             buffer["shape"] = current.SHAPE;
                             insert.Insert(buffer);
                             Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
@@ -1146,7 +1144,7 @@ namespace S100Framework.Applications
 
                             buffer["ps"] = ps101;
                             buffer["code"] = instance.GetType().Name;
-                            buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance);
+                            buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                             buffer["shape"] = current.SHAPE;
                             insert.Insert(buffer);
                             Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
@@ -1363,7 +1361,7 @@ namespace S100Framework.Applications
 
                             buffer["ps"] = ps101;
                             buffer["code"] = instance.GetType().Name;
-                            buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance);
+                            buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                             buffer["shape"] = current.SHAPE;
                             insert.Insert(buffer);
                             Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
@@ -1549,7 +1547,7 @@ namespace S100Framework.Applications
 
                             buffer["ps"] = ps101;
                             buffer["code"] = instance.GetType().Name;
-                            buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance);
+                            buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                             buffer["shape"] = current.SHAPE;
                             insert.Insert(buffer);
                             Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
@@ -1705,7 +1703,7 @@ namespace S100Framework.Applications
 
                             buffer["ps"] = ps101;
                             buffer["code"] = instance.GetType().Name;
-                            buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance);
+                            buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                             buffer["shape"] = current.SHAPE;
                             insert.Insert(buffer);
                             Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
@@ -1886,7 +1884,7 @@ namespace S100Framework.Applications
 
                             buffer["ps"] = ps101;
                             buffer["code"] = instance.GetType().Name;
-                            buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance);
+                            buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                             buffer["shape"] = current.SHAPE;
                             insert.Insert(buffer);
                             Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
@@ -2067,7 +2065,7 @@ namespace S100Framework.Applications
 
                             buffer["ps"] = ps101;
                             buffer["code"] = instance.GetType().Name;
-                            buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance);
+                            buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                             buffer["shape"] = current.SHAPE;
                             insert.Insert(buffer);
                             Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
@@ -2245,7 +2243,7 @@ namespace S100Framework.Applications
                             buffer["ps"] = ps101;
 
                             buffer["code"] = instance.GetType().Name;
-                            buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance);
+                            buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                             buffer["shape"] = current.SHAPE;
                             insert.Insert(buffer);
                             Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
@@ -2426,7 +2424,7 @@ namespace S100Framework.Applications
                             buffer["ps"] = ps101;
 
                             buffer["code"] = instance.GetType().Name;
-                            buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance);
+                            buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                             buffer["shape"] = current.SHAPE;
                             insert.Insert(buffer);
                             Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
@@ -2576,7 +2574,7 @@ namespace S100Framework.Applications
 
                             buffer["ps"] = ps101;
                             buffer["code"] = instance.GetType().Name;
-                            buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance);
+                            buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                             buffer["shape"] = current.SHAPE;
                             insert.Insert(buffer);
                             Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
@@ -2703,7 +2701,7 @@ namespace S100Framework.Applications
 
                             buffer["ps"] = ps101;
                             buffer["code"] = instance.GetType().Name;
-                            buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance);
+                            buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                             buffer["shape"] = current.SHAPE;
                             insert.Insert(buffer);
                             Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
@@ -2882,7 +2880,7 @@ namespace S100Framework.Applications
 
                             buffer["ps"] = ps101;
                             buffer["code"] = instance.GetType().Name;
-                            buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance);
+                            buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                             buffer["shape"] = current.SHAPE;
                             insert.Insert(buffer);
                             Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
@@ -3030,7 +3028,7 @@ namespace S100Framework.Applications
 
                             buffer["ps"] = ps101;
                             buffer["code"] = instance.GetType().Name;
-                            buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance);
+                            buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                             buffer["shape"] = current.SHAPE;
                             insert.Insert(buffer);
                             Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
@@ -3153,7 +3151,7 @@ namespace S100Framework.Applications
 
                             buffer["ps"] = ps101;
                             buffer["code"] = instance.GetType().Name;
-                            buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance);
+                            buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                             buffer["shape"] = current.SHAPE;
                             insert.Insert(buffer);
                             Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
@@ -3263,7 +3261,7 @@ namespace S100Framework.Applications
 
                             buffer["ps"] = ps101;
                             buffer["code"] = instance.GetType().Name;
-                            buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance);
+                            buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                             buffer["shape"] = current.SHAPE;
                             insert.Insert(buffer);
                             Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
@@ -3388,7 +3386,7 @@ namespace S100Framework.Applications
                             buffer["ps"] = ps101;
 
                             buffer["code"] = instance.GetType().Name;
-                            buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance);
+                            buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                             buffer["shape"] = current.SHAPE;
                             insert.Insert(buffer);
                             Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
@@ -3521,7 +3519,7 @@ namespace S100Framework.Applications
 
                             buffer["ps"] = ps101;
                             buffer["code"] = instance.GetType().Name;
-                            buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance);
+                            buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                             buffer["shape"] = current.SHAPE;
                             insert.Insert(buffer);
                             Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
@@ -3607,10 +3605,9 @@ namespace S100Framework.Applications
                                         }
 
                                         else if (plfrel.PLTS_Frel.DEST_SUB?.ToLower() == "rtpbcn_radartransponderbeacon") {
-                                            // TODO: Build rtpbcn_radartransponderbeacon
                                             var radarTransponderBeacon = CreateRadarTransponderbeacon(relatedAidsToNavigationP, insert, buffer, feature, tableName, convertedCount);
-
                                             // TODO: create relation
+
                                         }
                                         else {
                                             throw new NotImplementedException($"{plfrel.PLTS_Frel.DEST_SUB?.ToLower()} ");
@@ -3644,7 +3641,7 @@ namespace S100Framework.Applications
 
                             buffer["ps"] = ps101;
                             buffer["code"] = instance.GetType().Name;
-                            buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance);
+                            buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                             buffer["shape"] = current.SHAPE;
                             insert.Insert(buffer);
                             Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
@@ -3682,6 +3679,8 @@ namespace S100Framework.Applications
             }
             Logger.Current.DataTotalCount(tableName, recordCount, convertedCount);
         }
+
+
 
     }
 }
