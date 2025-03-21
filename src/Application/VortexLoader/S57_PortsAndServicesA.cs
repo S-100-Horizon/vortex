@@ -250,7 +250,7 @@ namespace S100Framework.Applications
                             convertedCount++;
                         }
                         break;
-                    case 40: { // FLODOC_FloatingDock
+                    case 40: { // FLODOC_FloatingDock // SKIN OF EARTH
                             var instance = new FloatingDock() {
                             };
                             if (plts_comp_scale != default) {
@@ -356,7 +356,7 @@ namespace S100Framework.Applications
                             convertedCount++;
                         }
                         break;
-                    case 60: { // HULKES_Hulk
+                    case 60: { // HULKES_Hulk // SKIN OF EARTH
                             var instance = new Hulk() {
                             };
                             if (plts_comp_scale != default) {
@@ -635,8 +635,8 @@ namespace S100Framework.Applications
                             Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
                             convertedCount++;
                         }
-                        break;
-                    case 80: { // PONTON_Pontoon
+                        break; 
+                    case 80: { // PONTON_Pontoon // SKIN OF EARTH
                             var instance = new Pile() {
                             };
                             if (plts_comp_scale != default) {

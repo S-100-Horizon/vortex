@@ -44,10 +44,13 @@ namespace S100Framework.Applications
                 switch (subtype) {
                     case 1: {     // DEPARE // SKIN OF EARTH
 
+
+
                             var instance = new DepthArea {
                                 depthRangeMinimumValue = drval1,
-                                depthRangeMaximumValue = drval2.GetValueOrDefault(),
+                                depthRangeMaximumValue = drval2.GetValueOrDefault()
                             };
+
 
 
                             AddInformation(instance.information, feature);

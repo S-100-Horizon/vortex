@@ -2,6 +2,7 @@
 using S100Framework.Applications.S57.esri;
 using S100Framework.DomainModel.S101;
 using S100Framework.DomainModel.S101.FeatureTypes;
+using VortexLoader;
 
 namespace S100Framework.Applications
 {
@@ -262,6 +263,11 @@ namespace S100Framework.Applications
                             if (plts_comp_scale != default) {
                                 instance.scaleMinimum = plts_comp_scale;
                             }
+
+                            if (current.CATLMK != default) {
+                                instance.categoryOfLandmark = EnumHelper.GetEnumValues<categoryOfLandmark>(current.CATLMK);
+                            }
+
                             if (current.COLOUR != default) {
                                 instance.colour = GetColours(current.COLOUR);
                             }

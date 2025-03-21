@@ -1158,12 +1158,17 @@ namespace S100Framework.Applications
                             }
 
                             #region aidstonavigation
+
                             if (current.BCNSHP.HasValue) {
                                 if (current.BCNSHP.Value == -32767)
                                     instance.beaconShape = EnumHelper.GetEnumValue<beaconShape>("-1");
                                 else {
                                     instance.beaconShape = EnumHelper.GetEnumValue<beaconShape>(current.BCNSHP);
                                 }
+                            }
+
+                            if (current.CATSPM != default) {
+                                instance.categoryOfSpecialPurposeMark = EnumHelper.GetEnumValues<categoryOfSpecialPurposeMark>(current.CATSPM);
                             }
 
                             if (current.COLOUR != default) {

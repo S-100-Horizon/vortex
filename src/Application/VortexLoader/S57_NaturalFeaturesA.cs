@@ -100,9 +100,6 @@ namespace S100Framework.Applications
 
                     case 5: { //  LNDARE // SKIN OF EARTH
                             var instance = new LandArea {
-                                condition = null,
-                                status = null,
-                                scaleMinimum = null,
                             };
                             if (condtn != default) {
                                 instance.condition = condtn switch {
@@ -115,9 +112,9 @@ namespace S100Framework.Applications
                                     _ => throw new IndexOutOfRangeException(),
                                 };
                             }
-                            if (plts_comp_scale != default) {
-                                instance.scaleMinimum = plts_comp_scale;
-                            }
+                            //if (plts_comp_scale != default) {
+                            //    instance.scaleMinimum = plts_comp_scale;
+                            //}
 
                             if (current.CONDTN.HasValue) {
                                 instance.condition = GetCondition(current.CONDTN.Value);

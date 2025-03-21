@@ -2,6 +2,7 @@
 using S100Framework.Applications.S57.esri;
 using S100Framework.DomainModel.S101;
 using S100Framework.DomainModel.S101.FeatureTypes;
+using VortexLoader;
 
 namespace S100Framework.Applications
 {
@@ -238,6 +239,7 @@ namespace S100Framework.Applications
                             if (current.COLOUR != default) {
                                 instance.colour = GetColours(current.COLOUR);
                             }
+
 
                             if (current.COLPAT != default) {
                                 instance.colourPattern = GetColourPattern(current.COLPAT);

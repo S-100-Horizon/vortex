@@ -36,8 +36,6 @@ namespace S100Framework.Applications
             // default value
             var skinOfEarthOnly = false;
 
-
-
             arguments.WithParsed<Options>(o => {
                 var source = o.Source!;
 
@@ -60,7 +58,6 @@ namespace S100Framework.Applications
                 if (!string.IsNullOrEmpty(o.SkinOfEarthOnly)) {
                     skinOfEarthOnly = bool.Parse(o.SkinOfEarthOnly);
                 }
-
             });
 
             Func<Action, bool> Store = (a) => {
@@ -98,11 +95,19 @@ namespace S100Framework.Applications
 
                 if (skinOfEarthOnly) {
 
-                    filter.WhereClause += " and fcsubtype in (1,5,15)";
+                    // All "SKIN OF EARTH" cases / sutypes are marked with a "skin of earth" in the code  
+
+                    var whereClause = filter.WhereClause.Clone();
+                    filter.WhereClause = $"{whereClause} and fcsubtype in (1,5,15,45)";
                     Store(() => S57_DepthsA(source, destination, filter));
-                    filter.WhereClause += " and fcsubtype in (5)";
+                    filter.WhereClause = $"{whereClause} and fcsubtype in (5)";
                     Store(() => S57_NaturalFeaturesA(source, destination, filter));
-                } else {
+                    filter.WhereClause = $"{whereClause} and fcsubtype in (40,60,80)";
+                    Store(() => S57_PortsAndServicesA(source, destination, filter));
+                    filter.WhereClause = $"{whereClause} and fcsubtype in (40)";
+                    Store(() => S57_MetadataA(source, destination, filter));
+                }
+                else {
                     Store(() => S57_DangersL(source, destination, filter));
                     Store(() => S57_DangersA(source, destination, filter));
                     Store(() => S57_DangersP(source, destination, filter));
