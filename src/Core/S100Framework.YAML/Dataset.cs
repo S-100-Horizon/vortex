@@ -120,9 +120,25 @@ namespace S100Framework.YAML
         public string? End => _end?.Name ?? null;
 
         public string? Vertices => Coordinate is null ? string.Empty : string.Join(",", Coordinate.Select(e => string.Format(CultureInfo.InvariantCulture, "{0:0.0000000},{1:0.0000000}", e.X, e.Y)));
-
+        [YamlIgnore]
+        public string? ReversedVertices => Coordinate is null ? string.Empty : string.Join(",", Coordinate.Select(e => string.Format(CultureInfo.InvariantCulture, "{0:0.0000000},{1:0.0000000}", e.X, e.Y)).Reverse());
         [YamlIgnore]
         public Coordinate[]? Coordinate { get; private set; }
+
+        //public override bool Equals(object obj) {
+        //    if (obj is Curve other) {
+        //        // Compare based on same start and end points (regardless of order)
+        //        if (Vertices == other.Vertices) return true;
+        //        if (Vertices == other.ReversedVertices) return true;
+        //    }
+        //    return false;
+        //}
+
+        //public override int GetHashCode() {
+        //    // Ensure same hash for curves that have the same start and end points (regardless of order)
+        //    int hash1 = Vertices.GetHashCode();
+        //    return hash1; // XOR to avoid order dependency
+        //}
     }
 
     public class CompositeCurve(Curve[] Curves)

@@ -153,8 +153,9 @@ namespace S100Framework.Applications
 
 
                             dataset.AddFeature(feature);
+                            dataset.AddGeometry(current.GetShape(), geometry!);
 
-                            geometries.Add(new(current.GetShape(), geometry!));
+                            //geometries.Add(new(current.GetShape(), geometry!));
 
                         }
                         catch (Exception ex) {
@@ -244,18 +245,12 @@ namespace S100Framework.YAML
 
                         dataset!.AddCurve(curve);
 
-
-                        if (curve.Coordinate.Length == 2) {
-                            Console.WriteLine("small curve: " + curve.Name);
-                            Console.WriteLine(curve.Vertices);
-                        }
                         break;
                     }
                 case ArcGIS.Core.Geometry.Polygon polygon: {         // Surface
-
                         if (polygon.ExteriorRingCount == 0 || polygon.ExteriorRingCount > 1)
                             throw new ArgumentException("Unsupported exterior ring count");
-
+                        //BuildCompositeCurves(dataset, polygon);
                         var compositeCurves = new List<string>();
 
                         var exteriorRing = polygon.GetExteriorRing(0);
@@ -265,13 +260,31 @@ namespace S100Framework.YAML
                         // Insert starting coordinate at the end of coordinate[] to ensure its a closed polygon
                         exteriorCoordinates = [.. exteriorCoordinates, exteriorCoordinates[0]];
 
-                        var exteriorCurve = new Curve(exteriorCoordinates) {
+                        Point first = default!;
+
+                        var firstVertice = (exteriorCoordinates.First().X, exteriorCoordinates.First().Y);
+
+                        var firstMatch = dataset?.Points?.FirstOrDefault(e => e.Coordinate?.X == firstVertice.X && e.Coordinate.Y == firstVertice.Y);
+
+                        if (firstMatch != null) {
+                            first = new Point(firstMatch!.Coordinate!.X, firstMatch.Coordinate.Y) { Name = firstMatch.Name };
+                        }
+                        else {
+                            first = new Point(firstVertice.X, firstVertice.Y) {
+                                Name = $"P{name}/0"     // To-do: fix naming on points created by curves created by surfaces
+                            };
+                            dataset!.AddPoint(first);
+                        }
+
+                        var exteriorCurve = new Curve(first, exteriorCoordinates) {
                             Name = $"{name}/0"
                         };
 
-                        dataset.AddCurve(exteriorCurve);
+                        dataset?.AddCurve(exteriorCurve);
 
-                        var surface = new Surface(exteriorCurve);
+                        var surface = new Surface(exteriorCurve) {
+                            Name = name
+                        };
 
 
                         // Add interior rings
@@ -344,32 +357,36 @@ namespace S100Framework.YAML
             var vertices = polyline.Points.Select(p => new Coordinate(p.X, p.Y)).ToArray();
 
             var sameLength = segmentCurves.Length == vertices.Length;
-
+            //_ = BuildCompositeCurves(default, default);
             Console.WriteLine();
 
 
         }
 
         static CompositeCurve BuildCompositeCurves(this Dataset dataset, Polygon polygon) {
+            var exteriorRing = polygon.GetExteriorRing(0);
 
-            var segments = polygon.Parts[0].ToArray();
-            var allCurves = dataset?.Curves?.ToArray();
-
-            var segmentCurves = segments.Select(sc => new Curve(
+            var segmentCurves = exteriorRing.Parts[0].Select(sc => new Curve(
                 [
                     new Coordinate(sc.StartPoint.X, sc.StartPoint.Y),
                     new Coordinate(sc.EndPoint.X, sc.EndPoint.Y)
                 ])).ToArray();
 
-            Console.WriteLine("AllCurves: " + allCurves.Length);
-            Console.WriteLine("Curves in current polygon: " + segmentCurves.Length);
+            var datasetCurves = dataset?.Curves?.ToArray();
+
+
+            var all = segmentCurves.Select(e => e.Vertices);
+
+            //Console.WriteLine("AllCurves: " + datasetCurves.Length);
+            Console.WriteLine("Checking curves in current polygon: " + segmentCurves.Length);
 
             foreach (var curve in segmentCurves) {
-                var exist = allCurves.FirstOrDefault(e => e.Vertices == curve.Vertices);
+                var equals = datasetCurves.FirstOrDefault(e => e.Equals(curve));
 
-                if (exist != default) {
-                    Console.WriteLine("Exist found!");
+                if (equals != default) {
+                    Console.WriteLine("Equals found! " + equals.Name);
                 }
+
             }
 
             return new CompositeCurve([.. new List<Curve>()]);
