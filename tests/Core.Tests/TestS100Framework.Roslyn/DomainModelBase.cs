@@ -74,7 +74,7 @@ namespace S100Framework.DomainModel {
         public virtual roleType? roleType => default;
         public string AssociationConnectorTypeName { get; set; }
 
-        [IgnoreDataMember()]
+        [JsonIgnore]
         public virtual string[]? this[string role] => default;
     }
 

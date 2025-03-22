@@ -277,6 +277,7 @@ namespace VortexProAppModule
                         _ => throw new NotImplementedException(),
                     };
 
+
                     if (!string.IsNullOrEmpty(tableNames.Item2)) {
                         var catalogue = _catalogues.SingleOrDefault(e => e.Equals(tableNames.Item2, StringComparison.InvariantCultureIgnoreCase) || e.Replace("-", string.Empty).Equals(tableNames.Item2, StringComparison.InvariantCultureIgnoreCase));
 
@@ -290,15 +291,15 @@ namespace VortexProAppModule
                     };
                 });
 
-                ;
-                if (!string.IsNullOrEmpty(catalogue)) {
-                    Schemas.Clear();
-                    Schemas.Add(catalogue);
-                }
-                else {
+                System.Windows.Application.Current.Dispatcher.Invoke(() => {
+                    if (!string.IsNullOrEmpty(catalogue)) {
+                        Schemas.Clear();
+                        Schemas.Add(catalogue);
+                    }
+                    else {
 
-                }
-
+                    }
+                });
 
                 this.SelectedProperty = await QueuedTask.Run((Func<S100Framework.WPF.ViewModel.ViewModelBase>)(() => {
                     var featureid = Convert.ToString(inspector["GlobalID"]).ToUpperInvariant();

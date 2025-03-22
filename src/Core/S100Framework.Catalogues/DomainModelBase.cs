@@ -2,6 +2,7 @@ using System;
 using System.Linq;
 using System.ComponentModel;
 using System.Runtime.Serialization;
+using System.Text.Json.Serialization;
 
 namespace S100Framework.DomainModel {
     [System.AttributeUsage(System.AttributeTargets.Property, AllowMultiple = false)]
@@ -74,7 +75,7 @@ namespace S100Framework.DomainModel {
         public virtual roleType? roleType => default;
         public string AssociationConnectorTypeName { get; set; }
 
-        [IgnoreDataMember()]
+        [JsonIgnore]
         public virtual string[]? this[string role] => default;
     }
 

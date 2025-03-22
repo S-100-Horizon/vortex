@@ -2,6 +2,7 @@ using System;
 using System.Collections.Immutable;
 using System.Linq;
 using System.Runtime.Serialization;
+using System.Text.Json.Serialization;
 
 #nullable enable
 namespace S100Framework.DomainModel.S122 {
@@ -1454,7 +1455,7 @@ namespace S100Framework.DomainModel.S122 {
             public partial class AssociatedRxN : InformationAssociation {
                 public List<RefId> theRxN { get; set; } = [];
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public virtual String[] theRxNInformationTypes => [];
                 public override string Code => nameof(AssociatedRxN);
 
@@ -1474,10 +1475,10 @@ namespace S100Framework.DomainModel.S122 {
                 public List<RefId> partialWorkingDay { get; set; } = [];
                 public List<RefId> theServiceHours_nsdy { get; set; } = [];
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public virtual String[] partialWorkingDayInformationTypes => [];
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public virtual String[] theServiceHours_nsdyInformationTypes => [];
                 public override string Code => nameof(ExceptionalWorkday);
 
@@ -1497,7 +1498,7 @@ namespace S100Framework.DomainModel.S122 {
             public partial class ProtectedAreaAuthority : InformationAssociation {
                 public List<RefId> responsibleAuthority { get; set; } = [];
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public virtual String[] responsibleAuthorityInformationTypes => [];
                 public override string Code => nameof(ProtectedAreaAuthority);
 
@@ -1516,7 +1517,7 @@ namespace S100Framework.DomainModel.S122 {
             public partial class ServiceControl : InformationAssociation {
                 public RefId? controlAuthority { get; set; }
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public virtual String[] controlAuthorityInformationTypes => [];
                 public override string Code => nameof(ServiceControl);
 
@@ -1536,10 +1537,10 @@ namespace S100Framework.DomainModel.S122 {
                 public List<RefId> theOrganisation { get; set; } = [];
                 public List<RefId> theInformation { get; set; } = [];
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public virtual String[] theOrganisationInformationTypes => [];
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public virtual String[] theInformationInformationTypes => [];
                 public override string Code => nameof(RelatedOrganisation);
 
@@ -1592,10 +1593,10 @@ namespace S100Framework.DomainModel.S122 {
                 public List<RefId> theAuthority { get; set; } = [];
                 public List<RefId> theContactDetails { get; set; } = [];
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public virtual String[] theAuthorityInformationTypes => [];
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public virtual String[] theContactDetailsInformationTypes => [];
                 public override string Code => nameof(AuthorityContact);
 
@@ -1616,10 +1617,10 @@ namespace S100Framework.DomainModel.S122 {
                 public List<RefId> theAuthority_srvHrs { get; set; } = [];
                 public List<RefId> theServiceHours { get; set; } = [];
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public virtual String[] theAuthority_srvHrsInformationTypes => [];
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public virtual String[] theServiceHoursInformationTypes => [];
                 public override string Code => nameof(AuthorityHours);
 
@@ -1639,7 +1640,7 @@ namespace S100Framework.DomainModel.S122 {
             public partial class additionalInformation : InformationAssociation {
                 public List<RefId> providesInformation { get; set; } = [];
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public virtual String[] providesInformationInformationTypes => [];
                 public override string Code => nameof(additionalInformation);
 
@@ -1690,7 +1691,7 @@ namespace S100Framework.DomainModel.S122 {
             public sourceType? sourceType { get; set; } = default;
             public DateOnly? reportedDate { get; set; } = default;
 
-            [IgnoreDataMember]
+            [JsonIgnore]
             public override string Code => nameof(InformationType);
 
             public InformationType() {
@@ -1719,13 +1720,13 @@ namespace S100Framework.DomainModel.S122 {
             public textContent? textContent { get; set; }
             public List<rxNCode> rxNCode { get; set; } = [];
 
-            [IgnoreDataMember]
+            [JsonIgnore]
             public override string Code => nameof(AbstractRxN);
 
             public class RelatedOrganisation_theOrganisation : RelatedOrganisation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theOrganisationInformationTypes => ["Authority"];
 
                 public RelatedOrganisation_theOrganisation() {
@@ -1739,13 +1740,13 @@ namespace S100Framework.DomainModel.S122 {
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class NauticalInformation : AbstractRxN {
-            [IgnoreDataMember]
+            [JsonIgnore]
             public override string Code => nameof(NauticalInformation);
 
             public class RelatedOrganisation_theOrganisation : RelatedOrganisation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theOrganisationInformationTypes => ["Authority"];
 
                 public RelatedOrganisation_theOrganisation() {
@@ -1759,7 +1760,7 @@ namespace S100Framework.DomainModel.S122 {
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class Regulations : AbstractRxN {
-            [IgnoreDataMember]
+            [JsonIgnore]
             public override string Code => nameof(Regulations);
 
             public Regulations() {
@@ -1769,7 +1770,7 @@ namespace S100Framework.DomainModel.S122 {
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class Restrictions : AbstractRxN {
-            [IgnoreDataMember]
+            [JsonIgnore]
             public override string Code => nameof(Restrictions);
 
             public Restrictions() {
@@ -1779,7 +1780,7 @@ namespace S100Framework.DomainModel.S122 {
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class Recommendations : AbstractRxN {
-            [IgnoreDataMember]
+            [JsonIgnore]
             public override string Code => nameof(Recommendations);
 
             public Recommendations() {
@@ -1808,13 +1809,13 @@ namespace S100Framework.DomainModel.S122 {
             public categoryOfAuthority categoryOfAuthority { get; set; }
             public List<textContent> textContent { get; set; } = [];
 
-            [IgnoreDataMember]
+            [JsonIgnore]
             public override string Code => nameof(Authority);
 
             public class RelatedOrganisation_theInformation : RelatedOrganisation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theInformationInformationTypes => ["AbstractRxN"];
 
                 public RelatedOrganisation_theInformation() {
@@ -1824,7 +1825,7 @@ namespace S100Framework.DomainModel.S122 {
             public class AuthorityContact_theContactDetails : AuthorityContact {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theContactDetailsInformationTypes => ["ContactDetails"];
 
                 public AuthorityContact_theContactDetails() {
@@ -1834,7 +1835,7 @@ namespace S100Framework.DomainModel.S122 {
             public class AuthorityHours_theServiceHours : AuthorityHours {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theServiceHoursInformationTypes => ["ServiceHours"];
 
                 public AuthorityHours_theServiceHours() {
@@ -1866,13 +1867,13 @@ namespace S100Framework.DomainModel.S122 {
             public List<telecommunications> telecommunications { get; set; } = [];
             public List<information> information { get; set; } = [];
 
-            [IgnoreDataMember]
+            [JsonIgnore]
             public override string Code => nameof(ContactDetails);
 
             public class AuthorityContact_theAuthority : AuthorityContact {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theAuthorityInformationTypes => ["Authority"];
 
                 public AuthorityContact_theAuthority() {
@@ -1890,13 +1891,13 @@ namespace S100Framework.DomainModel.S122 {
             public List<String> dateVariable { get; set; } = [];
             public List<information> information { get; set; } = [];
 
-            [IgnoreDataMember]
+            [JsonIgnore]
             public override string Code => nameof(NonStandardWorkingDay);
 
             public class ExceptionalWorkday_theServiceHours_nsdy : ExceptionalWorkday {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theServiceHours_nsdyInformationTypes => ["ServiceHours"];
 
                 public ExceptionalWorkday_theServiceHours_nsdy() {
@@ -1916,13 +1917,13 @@ namespace S100Framework.DomainModel.S122 {
             [Required()]
             public information information { get; set; }
 
-            [IgnoreDataMember]
+            [JsonIgnore]
             public override string Code => nameof(ServiceHours);
 
             public class AuthorityHours_theAuthority_srvHrs : AuthorityHours {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theAuthority_srvHrsInformationTypes => ["Authority"];
 
                 public AuthorityHours_theAuthority_srvHrs() {
@@ -1932,7 +1933,7 @@ namespace S100Framework.DomainModel.S122 {
             public class ExceptionalWorkday_partialWorkingDay : ExceptionalWorkday {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] partialWorkingDayInformationTypes => ["NonStandardWorkingDay"];
 
                 public ExceptionalWorkday_partialWorkingDay() {
@@ -2017,7 +2018,7 @@ namespace S100Framework.DomainModel.S122 {
             public List<information> information { get; set; } = [];
             public List<vesselsMeasurements> vesselsMeasurements { get; set; } = [];
 
-            [IgnoreDataMember]
+            [JsonIgnore]
             public override string Code => nameof(Applicability);
 
             public Applicability() {
@@ -2056,13 +2057,13 @@ namespace S100Framework.DomainModel.S122 {
             public sourceType? sourceType { get; set; } = default;
             public DateOnly? reportedDate { get; set; } = default;
 
-            [IgnoreDataMember]
+            [JsonIgnore]
             public override string Code => nameof(FeatureType);
 
             public class AssociatedRxN_theRxN : AssociatedRxN {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theRxNInformationTypes => ["AbstractRxN"];
 
                 public AssociatedRxN_theRxN() {
@@ -2072,7 +2073,7 @@ namespace S100Framework.DomainModel.S122 {
             public class additionalInformation_providesInformation : additionalInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] providesInformationInformationTypes => ["NauticalInformation"];
 
                 public additionalInformation_providesInformation() {
@@ -2202,7 +2203,7 @@ namespace S100Framework.DomainModel.S122 {
             [EnumerationValue(43)]
             public List<status> status { get; set; } = [];
 
-            [IgnoreDataMember]
+            [JsonIgnore]
             public override string Code => nameof(RestrictedArea);
 
             public RestrictedArea() {
@@ -2344,13 +2345,13 @@ namespace S100Framework.DomainModel.S122 {
             public List<status> status { get; set; } = [];
             public List<designation> designation { get; set; } = [];
 
-            [IgnoreDataMember]
+            [JsonIgnore]
             public override string Code => nameof(MarineProtectedArea);
 
             public class ProtectedAreaAuthority_responsibleAuthority : ProtectedAreaAuthority {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] responsibleAuthorityInformationTypes => ["Authority"];
 
                 public ProtectedAreaAuthority_responsibleAuthority() {
@@ -2375,13 +2376,13 @@ namespace S100Framework.DomainModel.S122 {
             [Required()]
             public categoryOfVesselTrafficService categoryOfVesselTrafficService { get; set; }
 
-            [IgnoreDataMember]
+            [JsonIgnore]
             public override string Code => nameof(VesselTrafficServiceArea);
 
             public class ServiceControl_controlAuthority : ServiceControl {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] controlAuthorityInformationTypes => ["Authority"];
 
                 public ServiceControl_controlAuthority() {
@@ -2395,7 +2396,7 @@ namespace S100Framework.DomainModel.S122 {
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class DataCoverage : FeatureNode {
-            [IgnoreDataMember]
+            [JsonIgnore]
             public override string Code => nameof(DataCoverage);
 
             public DataCoverage() {
@@ -2405,7 +2406,7 @@ namespace S100Framework.DomainModel.S122 {
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class TextPlacement : FeatureNode {
-            [IgnoreDataMember]
+            [JsonIgnore]
             public override string Code => nameof(TextPlacement);
 
             public TextPlacement() {

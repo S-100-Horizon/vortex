@@ -1,5 +1,6 @@
 ﻿//#define S124
 
+using S100Framework.DomainModel;
 using S100Framework.DomainModel.S101.FeatureTypes;
 using S100Framework.DomainModel.S124;
 using S100Framework.WPF.ViewModel;
@@ -210,6 +211,17 @@ namespace VortexConceptApplication
 
             var fromJson = new Building.StructureEquipment_theEquipment()!;
 
+
+            //  TEST
+            fromJson.RefIds = [new RefId {
+                Role = "theStructure",
+                Type = "Daymark",
+                Value = "S202600"
+            }];
+
+            var json = System.Text.Json.JsonSerializer.Serialize(fromJson);
+
+
             viewModel.Load(fromJson);
 
             viewModel.PropertyChanged += (object sender, PropertyChangedEventArgs e) => {
@@ -261,9 +273,9 @@ namespace VortexConceptApplication
         }
 
         private void SAVE_Click(object sender, RoutedEventArgs e) {
-            //var v = (VortexConceptApplication.UpdatedInformationViewModel)SelectedProperty;
+            var v = (S100Framework.WPF.ViewModel.S101.StructureEquipmentViewModel)SelectedProperty;
 
-            //var json = v.Serialize();
+            var json = v.Serialize();
 
             System.Diagnostics.Debugger.Break();
         }

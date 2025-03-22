@@ -8,6 +8,7 @@ using S100Framework.DomainModel;
 using System.Reflection;
 using System.Reflection.Emit;
 using System.Text;
+using System.Text.Json.Serialization;
 using System.Text.RegularExpressions;
 using System.Xml;
 using System.Xml.Linq;
@@ -49,6 +50,7 @@ namespace S100Framework
             classBuilder.AppendLine("using System.Collections.Immutable;");
             classBuilder.AppendLine("using System.Linq;");
             classBuilder.AppendLine("using System.Runtime.Serialization;");
+            classBuilder.AppendLine("using System.Text.Json.Serialization;");
             classBuilder.AppendLine();
             classBuilder.AppendLine("#nullable enable");
             classBuilder.AppendLine();
@@ -615,7 +617,7 @@ namespace S100Framework
 
                         classBuilder.AppendLine(BuildClass($"{code}", associationType, xmlNamespace, (builder) => {
                             foreach (var r in roles) {
-                                builder.AppendLine("\t\t\t[IgnoreDataMember]");
+                                builder.AppendLine("\t\t\t[JsonIgnore]");
                                 builder.AppendLine($"\t\t\tpublic virtual String[] {r}InformationTypes => [];");
                             }
 
@@ -700,7 +702,7 @@ namespace S100Framework
 
                         classBuilder.AppendLine(BuildClass($"{code}", associationType, xmlNamespace, (builder) => {
                             foreach (var r in roles) {
-                                builder.AppendLine("\t\t\t[IgnoreDataMember]");
+                                builder.AppendLine("\t\t\t[JsonIgnore]");
                                 builder.AppendLine($"\t\t\tpublic virtual String[] {r}FeatureTypes => [];");
                             }
 
@@ -828,7 +830,7 @@ namespace S100Framework
                         var informationBindingsList = new List<string>();
 
                         classBuilder.AppendLine(BuildClass(code, informationType, xmlNamespace, "S100Framework.DomainModel.InformationType", (builder) => {
-                            builder.AppendLine("\t\t\t[IgnoreDataMember]");
+                            builder.AppendLine("\t\t\t[JsonIgnore]");
                             builder.AppendLine($"\t\t\tpublic override string Code => nameof({code});");
 
                             var associations = new List<string>();
@@ -862,14 +864,14 @@ namespace S100Framework
 
                                     builder.AppendLine($"\t\t\tpublic class {association}_{role} : {association} {{");
                                     builder.AppendLine($"\t\t\t\tpublic override roleType? roleType => DomainModel.roleType.{roleType};");
-                                    builder.AppendLine("\t\t\t\t[IgnoreDataMember]");
+                                    builder.AppendLine("\t\t\t\t[JsonIgnore]");
                                     builder.AppendLine($"\t\t\t\tpublic override String[] {role}InformationTypes => [{string.Join(',', informationTypes)}];");
                                     //builder.AppendLine($"\t\t\t\tpublic override String[] {roleRemote}InformationTypes => [{string.Join(',', informationTypesRemote)}];");
                                 }
                                 else {
                                     builder.AppendLine($"\t\t\tpublic class {association}_{role} : {association} {{");
                                     builder.AppendLine($"\t\t\t\tpublic override roleType? roleType => DomainModel.roleType.{roleType};");
-                                    builder.AppendLine("\t\t\t\t[IgnoreDataMember]");
+                                    builder.AppendLine("\t\t\t\t[JsonIgnore]");
                                     builder.AppendLine($"\t\t\t\tpublic override String[] {role}InformationTypes => [{string.Join(',', informationTypes)}];");
                                 }
 
@@ -1006,7 +1008,7 @@ namespace S100Framework
                         var viewModelBindingBuilder = new StringBuilder();
 
                         classBuilder.AppendLine(BuildClass(code, featureType, xmlNamespace, "S100Framework.DomainModel.FeatureType", (builder) => {
-                            builder.AppendLine("\t\t\t[IgnoreDataMember]");
+                            builder.AppendLine("\t\t\t[JsonIgnore]");
                             builder.AppendLine($"\t\t\tpublic override string Code => nameof({code});");
 
                             var associations = new List<string>();
@@ -1040,14 +1042,14 @@ namespace S100Framework
 
                                     builder.AppendLine($"\t\t\tpublic class {association}_{role} : {association} {{");
                                     builder.AppendLine($"\t\t\t\tpublic override roleType? roleType => DomainModel.roleType.{roleType};");
-                                    builder.AppendLine("\t\t\t\t[IgnoreDataMember]");
+                                    builder.AppendLine("\t\t\t\t[JsonIgnore]");
                                     builder.AppendLine($"\t\t\t\tpublic override String[] {role}InformationTypes => [{string.Join(',', informationTypes)}];");
                                     //builder.AppendLine($"\t\t\t\tpublic override String[] {roleRemote}InformationTypes => [{string.Join(',', informationTypesRemote)}];");
                                 }
                                 else {
                                     builder.AppendLine($"\t\t\tpublic class {association}_{role} : {association} {{");
                                     builder.AppendLine($"\t\t\t\tpublic override roleType? roleType => DomainModel.roleType.{roleType};");
-                                    builder.AppendLine("\t\t\t\t[IgnoreDataMember]");
+                                    builder.AppendLine("\t\t\t\t[JsonIgnore]");
                                     builder.AppendLine($"\t\t\t\tpublic override String[] {role}InformationTypes => [{string.Join(',', informationTypes)}];");
                                 }
 
@@ -1084,14 +1086,14 @@ namespace S100Framework
 
                                     builder.AppendLine($"\t\t\tpublic class {association}_{role} : {association} {{");
                                     builder.AppendLine($"\t\t\t\tpublic override roleType? roleType => DomainModel.roleType.{roleType};");
-                                    builder.AppendLine("\t\t\t\t[IgnoreDataMember]");
+                                    builder.AppendLine("\t\t\t\t[JsonIgnore]");
                                     builder.AppendLine($"\t\t\t\tpublic override String[] {role}FeatureTypes => [{string.Join(',', featureTypes)}];");
                                     //builder.AppendLine($"\t\t\t\tpublic override String[] {roleRemote}FeatureTypes => [{string.Join(',', featureTypesRemote)}];");
                                 }
                                 else {
                                     builder.AppendLine($"\t\t\tpublic class {association}_{role} : {association} {{");
                                     builder.AppendLine($"\t\t\t\tpublic override roleType? roleType => DomainModel.roleType.{roleType};");
-                                    builder.AppendLine("\t\t\t\t[IgnoreDataMember]");
+                                    builder.AppendLine("\t\t\t\t[JsonIgnore]");
                                     builder.AppendLine($"\t\t\t\tpublic override String[] {role}FeatureTypes => [{string.Join(',', featureTypes)}];");
                                 }
 
@@ -1504,6 +1506,7 @@ namespace S100Framework
             common.AppendLine("using System.Linq;");
             common.AppendLine("using System.ComponentModel;");
             common.AppendLine("using System.Runtime.Serialization;");
+            common.AppendLine("using System.Text.Json.Serialization;");
             common.AppendLine();
             common.AppendLine("namespace S100Framework.DomainModel");
             common.AppendLine("{");
@@ -1590,7 +1593,7 @@ namespace S100Framework
             common.AppendLine("\t\tpublic virtual string Code { get; set; } = string.Empty;");
             common.AppendLine("\t\tpublic virtual roleType? roleType => default;");
             common.AppendLine("\t\tpublic string AssociationConnectorTypeName { get; set; }");
-            common.AppendLine("\t\t[IgnoreDataMember()]");
+            common.AppendLine("\t\t[JsonIgnore]");
             common.AppendLine("\t\tpublic virtual string[]? this[string role] => default;");
             common.AppendLine("\t}");
             common.AppendLine("\t[System.SerializableAttribute()]");
@@ -1718,7 +1721,11 @@ namespace S100Framework
 
                 var ignoreDataMemberAttribute = p.GetCustomAttribute<System.Runtime.Serialization.IgnoreDataMemberAttribute>();
                 if (ignoreDataMemberAttribute is not null) {
-                    classBuilder.AppendLine("\t\t\t[IgnoreDataMember()]");
+                    classBuilder.AppendLine("\t\t\t[IgnoreDataMember]");
+                }
+                var jsonIgnoreAttribute = p.GetCustomAttribute<JsonIgnoreAttribute>();
+                if (jsonIgnoreAttribute is not null) {
+                    classBuilder.AppendLine("\t\t\t[JsonIgnore]");
                 }
 
                 var requiredMemberAttribute = p.GetCustomAttribute<System.Runtime.CompilerServices.RequiredMemberAttribute>();
@@ -2354,7 +2361,7 @@ namespace S100Framework.DomainModel
         public virtual roleType? roleType => default;
         public string AssociationConnectorTypeName { get; set; }
 
-        [IgnoreDataMember()]
+        [JsonIgnore]
         public virtual string[]? this[string role] => default;
     }
 

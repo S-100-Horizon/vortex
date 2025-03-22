@@ -2,6 +2,7 @@ using System;
 using System.Collections.Immutable;
 using System.Linq;
 using System.Runtime.Serialization;
+using System.Text.Json.Serialization;
 
 #nullable enable
 namespace S100Framework.DomainModel.S128 {
@@ -1116,7 +1117,7 @@ namespace S100Framework.DomainModel.S128 {
             public partial class CarriageRequirement : InformationAssociation {
                 public List<RefId> theRequirement { get; set; } = [];
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public virtual String[] theRequirementInformationTypes => [];
                 public override string Code => nameof(CarriageRequirement);
 
@@ -1136,10 +1137,10 @@ namespace S100Framework.DomainModel.S128 {
                 public List<RefId> catalogueHeader { get; set; } = [];
                 public List<RefId> theDistributor { get; set; } = [];
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public virtual String[] catalogueHeaderInformationTypes => [];
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public virtual String[] theDistributorInformationTypes => [];
                 public override string Code => nameof(DistributionDetails);
 
@@ -1160,10 +1161,10 @@ namespace S100Framework.DomainModel.S128 {
                 public RefId? theDistributor { get; set; }
                 public List<RefId> theContactDetails { get; set; } = [];
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public virtual String[] theDistributorInformationTypes => [];
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public virtual String[] theContactDetailsInformationTypes => [];
                 public override string Code => nameof(DistributorContact);
 
@@ -1183,7 +1184,7 @@ namespace S100Framework.DomainModel.S128 {
             public partial class PriceOfElement : InformationAssociation {
                 public List<RefId> thePriceInformation { get; set; } = [];
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public virtual String[] thePriceInformationInformationTypes => [];
                 public override string Code => nameof(PriceOfElement);
 
@@ -1203,10 +1204,10 @@ namespace S100Framework.DomainModel.S128 {
                 public List<RefId> theCatalogueOfNauticalProduct { get; set; } = [];
                 public List<RefId> thePriceInformation { get; set; } = [];
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public virtual String[] theCatalogueOfNauticalProductInformationTypes => [];
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public virtual String[] thePriceInformationInformationTypes => [];
                 public override string Code => nameof(PriceOfNauticalProduct);
 
@@ -1227,10 +1228,10 @@ namespace S100Framework.DomainModel.S128 {
                 public RefId? theProducer { get; set; }
                 public List<RefId> theContactDetails { get; set; } = [];
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public virtual String[] theProducerInformationTypes => [];
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public virtual String[] theContactDetailsInformationTypes => [];
                 public override string Code => nameof(ProducerContact);
 
@@ -1251,10 +1252,10 @@ namespace S100Framework.DomainModel.S128 {
                 public List<RefId> catalogueHeader { get; set; } = [];
                 public RefId? theProducer { get; set; }
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public virtual String[] catalogueHeaderInformationTypes => [];
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public virtual String[] theProducerInformationTypes => [];
                 public override string Code => nameof(ProductionDetails);
 
@@ -1275,7 +1276,7 @@ namespace S100Framework.DomainModel.S128 {
                 [Required()]
                 public List<RefId> elementContainer { get; set; }
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public virtual String[] elementContainerInformationTypes => [];
                 public override string Code => nameof(ProductPackage);
 
@@ -1305,7 +1306,7 @@ namespace S100Framework.DomainModel.S128 {
                 public categoryOfProductMapping categoryOfProductMapping { get; set; }
                 public List<RefId> theReference { get; set; } = [];
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public virtual String[] theReferenceFeatureTypes => [];
                 public override string Code => "ProductMapping";
 
@@ -1325,7 +1326,7 @@ namespace S100Framework.DomainModel.S128 {
                 [Required()]
                 public RefId main { get; set; }
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public virtual String[] mainFeatureTypes => [];
                 public override string Code => "Correlated";
 
@@ -1364,13 +1365,13 @@ namespace S100Framework.DomainModel.S128 {
             public String? catalogueSectionTitle { get; set; } = null;
             public information? information { get; set; }
 
-            [IgnoreDataMember]
+            [JsonIgnore]
             public override string Code => nameof(CatalogueSectionHeader);
 
             public class PriceOfNauticalProduct_thePriceInformation : PriceOfNauticalProduct {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] thePriceInformationInformationTypes => ["PriceInformation"];
 
                 public PriceOfNauticalProduct_thePriceInformation() {
@@ -1380,7 +1381,7 @@ namespace S100Framework.DomainModel.S128 {
             public class ProductionDetails_theProducer : ProductionDetails {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theProducerInformationTypes => ["ProducerInformation"];
 
                 public ProductionDetails_theProducer() {
@@ -1390,7 +1391,7 @@ namespace S100Framework.DomainModel.S128 {
             public class DistributionDetails_theDistributor : DistributionDetails {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theDistributorInformationTypes => ["DistributorInformation"];
 
                 public DistributionDetails_theDistributor() {
@@ -1411,13 +1412,13 @@ namespace S100Framework.DomainModel.S128 {
             public List<telecommunications> telecommunications { get; set; } = [];
             public List<sourceIndication> sourceIndication { get; set; } = [];
 
-            [IgnoreDataMember]
+            [JsonIgnore]
             public override string Code => nameof(ContactDetails);
 
             public class ProducerContact_theProducer : ProducerContact {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theProducerInformationTypes => ["ProducerInformation"];
 
                 public ProducerContact_theProducer() {
@@ -1427,7 +1428,7 @@ namespace S100Framework.DomainModel.S128 {
             public class DistributorContact_theDistributor : DistributorContact {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theDistributorInformationTypes => ["DistributorInformation"];
 
                 public DistributorContact_theDistributor() {
@@ -1446,7 +1447,7 @@ namespace S100Framework.DomainModel.S128 {
             public String? internationalCarriageRequirements { get; set; } = null;
             public List<featureName> featureName { get; set; } = [];
 
-            [IgnoreDataMember]
+            [JsonIgnore]
             public override string Code => nameof(IndicationOfCarriageRequirement);
 
             public IndicationOfCarriageRequirement() {
@@ -1461,13 +1462,13 @@ namespace S100Framework.DomainModel.S128 {
             public List<pricing> pricing { get; set; } = [];
             public List<sourceIndication> sourceIndication { get; set; } = [];
 
-            [IgnoreDataMember]
+            [JsonIgnore]
             public override string Code => nameof(PriceInformation);
 
             public class PriceOfNauticalProduct_theCatalogueOfNauticalProduct : PriceOfNauticalProduct {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theCatalogueOfNauticalProductInformationTypes => ["CatalogueSectionHeader"];
 
                 public PriceOfNauticalProduct_theCatalogueOfNauticalProduct() {
@@ -1484,13 +1485,13 @@ namespace S100Framework.DomainModel.S128 {
             public String agencyResponsibleForProduction { get; set; } = string.Empty;
             public String? agencyName { get; set; } = null;
 
-            [IgnoreDataMember]
+            [JsonIgnore]
             public override string Code => nameof(ProducerInformation);
 
             public class ProducerContact_theContactDetails : ProducerContact {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theContactDetailsInformationTypes => ["ContactDetails"];
 
                 public ProducerContact_theContactDetails() {
@@ -1500,7 +1501,7 @@ namespace S100Framework.DomainModel.S128 {
             public class ProductionDetails_catalogueHeader : ProductionDetails {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] catalogueHeaderInformationTypes => ["CatalogueSectionHeader"];
 
                 public ProductionDetails_catalogueHeader() {
@@ -1517,13 +1518,13 @@ namespace S100Framework.DomainModel.S128 {
         public partial class DistributorInformation : InformationNode {
             public String distributorName { get; set; } = string.Empty;
 
-            [IgnoreDataMember]
+            [JsonIgnore]
             public override string Code => nameof(DistributorInformation);
 
             public class DistributionDetails_catalogueHeader : DistributionDetails {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] catalogueHeaderInformationTypes => ["CatalogueSectionHeader"];
 
                 public DistributionDetails_catalogueHeader() {
@@ -1533,7 +1534,7 @@ namespace S100Framework.DomainModel.S128 {
             public class DistributorContact_theContactDetails : DistributorContact {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theContactDetailsInformationTypes => ["ContactDetails"];
 
                 public DistributorContact_theContactDetails() {
@@ -1574,13 +1575,13 @@ namespace S100Framework.DomainModel.S128 {
             public List<supportFile> supportFile { get; set; } = [];
             public timeIntervalOfProduct? timeIntervalOfProduct { get; set; }
 
-            [IgnoreDataMember]
+            [JsonIgnore]
             public override string Code => nameof(CatalogueElement);
 
             public class CarriageRequirement_theRequirement : CarriageRequirement {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theRequirementInformationTypes => ["IndicationOfCarriageRequirement"];
 
                 public CarriageRequirement_theRequirement() {
@@ -1590,7 +1591,7 @@ namespace S100Framework.DomainModel.S128 {
             public class PriceOfElement_thePriceInformation : PriceOfElement {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] thePriceInformationInformationTypes => ["PriceInformation"];
 
                 public PriceOfElement_thePriceInformation() {
@@ -1600,7 +1601,7 @@ namespace S100Framework.DomainModel.S128 {
             public class ProductPackage_elementContainer : ProductPackage {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] elementContainerInformationTypes => ["CatalogueSectionHeader"];
 
                 public ProductPackage_elementContainer() {
@@ -1610,7 +1611,7 @@ namespace S100Framework.DomainModel.S128 {
             public class ProductMapping_theReference : ProductMapping {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theReferenceFeatureTypes => ["CatalogueElement"];
 
                 public ProductMapping_theReference() {
@@ -1702,13 +1703,13 @@ namespace S100Framework.DomainModel.S128 {
             [EnumerationValue(45)]
             public verticalDatum? verticalDatum { get; set; } = default;
 
-            [IgnoreDataMember]
+            [JsonIgnore]
             public override string Code => nameof(NavigationalProduct);
 
             public class Correlated_main : Correlated {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] mainFeatureTypes => ["NavigationalProduct"];
 
                 public Correlated_main() {
@@ -1745,7 +1746,7 @@ namespace S100Framework.DomainModel.S128 {
             public typeOfProductFormat typeOfProductFormat { get; set; }
             public productSpecification? productSpecification { get; set; }
 
-            [IgnoreDataMember]
+            [JsonIgnore]
             public override string Code => nameof(ElectronicProduct);
 
             public ElectronicProduct() {
@@ -1763,7 +1764,7 @@ namespace S100Framework.DomainModel.S128 {
             public printInformation? printInformation { get; set; }
             public referenceToNM? referenceToNM { get; set; }
 
-            [IgnoreDataMember]
+            [JsonIgnore]
             public override string Code => nameof(PhysicalProduct);
 
             public PhysicalProduct() {
@@ -1799,7 +1800,7 @@ namespace S100Framework.DomainModel.S128 {
             public serviceSpecification? serviceSpecification { get; set; }
             public productSpecification? productSpecification { get; set; }
 
-            [IgnoreDataMember]
+            [JsonIgnore]
             public override string Code => nameof(S100Service);
 
             public S100Service() {
