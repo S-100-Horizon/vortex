@@ -1115,10 +1115,8 @@ namespace S100Framework.DomainModel.S128 {
             [System.Serializable()]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
             public partial class CarriageRequirement : InformationAssociation {
-                public List<RefId> theRequirement { get; set; } = [];
-
                 [JsonIgnore]
-                public virtual String[] theRequirementInformationTypes => [];
+                IEnumerable<RefId> theRequirement => base.RefIds.Where(e => e.Role.Equals("theRequirement"));
                 public override string Code => nameof(CarriageRequirement);
 
                 public string[]? this[Role role] => this[role.ToString()];
@@ -1127,6 +1125,9 @@ namespace S100Framework.DomainModel.S128 {
                     "theRequirement" => theRequirementInformationTypes,
                     _ => throw new InvalidOperationException(),
                 };
+                [JsonIgnore]
+                public virtual String[] theRequirementInformationTypes => [];
+
                 public CarriageRequirement() {
                 }
             }
@@ -1134,14 +1135,11 @@ namespace S100Framework.DomainModel.S128 {
             [System.Serializable()]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
             public partial class DistributionDetails : InformationAssociation {
-                public List<RefId> catalogueHeader { get; set; } = [];
-                public List<RefId> theDistributor { get; set; } = [];
+                [JsonIgnore]
+                IEnumerable<RefId> catalogueHeader => base.RefIds.Where(e => e.Role.Equals("catalogueHeader"));
 
                 [JsonIgnore]
-                public virtual String[] catalogueHeaderInformationTypes => [];
-
-                [JsonIgnore]
-                public virtual String[] theDistributorInformationTypes => [];
+                IEnumerable<RefId> theDistributor => base.RefIds.Where(e => e.Role.Equals("theDistributor"));
                 public override string Code => nameof(DistributionDetails);
 
                 public string[]? this[Role role] => this[role.ToString()];
@@ -1151,6 +1149,12 @@ namespace S100Framework.DomainModel.S128 {
                     "theDistributor" => theDistributorInformationTypes,
                     _ => throw new InvalidOperationException(),
                 };
+                [JsonIgnore]
+                public virtual String[] catalogueHeaderInformationTypes => [];
+
+                [JsonIgnore]
+                public virtual String[] theDistributorInformationTypes => [];
+
                 public DistributionDetails() {
                 }
             }
@@ -1158,14 +1162,11 @@ namespace S100Framework.DomainModel.S128 {
             [System.Serializable()]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
             public partial class DistributorContact : InformationAssociation {
-                public RefId? theDistributor { get; set; }
-                public List<RefId> theContactDetails { get; set; } = [];
+                [JsonIgnore]
+                RefId? theDistributor => base.RefIds.FirstOrDefault(e => e.Role.Equals("theDistributor"));
 
                 [JsonIgnore]
-                public virtual String[] theDistributorInformationTypes => [];
-
-                [JsonIgnore]
-                public virtual String[] theContactDetailsInformationTypes => [];
+                IEnumerable<RefId> theContactDetails => base.RefIds.Where(e => e.Role.Equals("theContactDetails"));
                 public override string Code => nameof(DistributorContact);
 
                 public string[]? this[Role role] => this[role.ToString()];
@@ -1175,6 +1176,12 @@ namespace S100Framework.DomainModel.S128 {
                     "theContactDetails" => theContactDetailsInformationTypes,
                     _ => throw new InvalidOperationException(),
                 };
+                [JsonIgnore]
+                public virtual String[] theDistributorInformationTypes => [];
+
+                [JsonIgnore]
+                public virtual String[] theContactDetailsInformationTypes => [];
+
                 public DistributorContact() {
                 }
             }
@@ -1182,10 +1189,8 @@ namespace S100Framework.DomainModel.S128 {
             [System.Serializable()]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
             public partial class PriceOfElement : InformationAssociation {
-                public List<RefId> thePriceInformation { get; set; } = [];
-
                 [JsonIgnore]
-                public virtual String[] thePriceInformationInformationTypes => [];
+                IEnumerable<RefId> thePriceInformation => base.RefIds.Where(e => e.Role.Equals("thePriceInformation"));
                 public override string Code => nameof(PriceOfElement);
 
                 public string[]? this[Role role] => this[role.ToString()];
@@ -1194,6 +1199,9 @@ namespace S100Framework.DomainModel.S128 {
                     "thePriceInformation" => thePriceInformationInformationTypes,
                     _ => throw new InvalidOperationException(),
                 };
+                [JsonIgnore]
+                public virtual String[] thePriceInformationInformationTypes => [];
+
                 public PriceOfElement() {
                 }
             }
@@ -1201,14 +1209,11 @@ namespace S100Framework.DomainModel.S128 {
             [System.Serializable()]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
             public partial class PriceOfNauticalProduct : InformationAssociation {
-                public List<RefId> theCatalogueOfNauticalProduct { get; set; } = [];
-                public List<RefId> thePriceInformation { get; set; } = [];
+                [JsonIgnore]
+                IEnumerable<RefId> theCatalogueOfNauticalProduct => base.RefIds.Where(e => e.Role.Equals("theCatalogueOfNauticalProduct"));
 
                 [JsonIgnore]
-                public virtual String[] theCatalogueOfNauticalProductInformationTypes => [];
-
-                [JsonIgnore]
-                public virtual String[] thePriceInformationInformationTypes => [];
+                IEnumerable<RefId> thePriceInformation => base.RefIds.Where(e => e.Role.Equals("thePriceInformation"));
                 public override string Code => nameof(PriceOfNauticalProduct);
 
                 public string[]? this[Role role] => this[role.ToString()];
@@ -1218,6 +1223,12 @@ namespace S100Framework.DomainModel.S128 {
                     "thePriceInformation" => thePriceInformationInformationTypes,
                     _ => throw new InvalidOperationException(),
                 };
+                [JsonIgnore]
+                public virtual String[] theCatalogueOfNauticalProductInformationTypes => [];
+
+                [JsonIgnore]
+                public virtual String[] thePriceInformationInformationTypes => [];
+
                 public PriceOfNauticalProduct() {
                 }
             }
@@ -1225,14 +1236,11 @@ namespace S100Framework.DomainModel.S128 {
             [System.Serializable()]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
             public partial class ProducerContact : InformationAssociation {
-                public RefId? theProducer { get; set; }
-                public List<RefId> theContactDetails { get; set; } = [];
+                [JsonIgnore]
+                RefId? theProducer => base.RefIds.FirstOrDefault(e => e.Role.Equals("theProducer"));
 
                 [JsonIgnore]
-                public virtual String[] theProducerInformationTypes => [];
-
-                [JsonIgnore]
-                public virtual String[] theContactDetailsInformationTypes => [];
+                IEnumerable<RefId> theContactDetails => base.RefIds.Where(e => e.Role.Equals("theContactDetails"));
                 public override string Code => nameof(ProducerContact);
 
                 public string[]? this[Role role] => this[role.ToString()];
@@ -1242,6 +1250,12 @@ namespace S100Framework.DomainModel.S128 {
                     "theContactDetails" => theContactDetailsInformationTypes,
                     _ => throw new InvalidOperationException(),
                 };
+                [JsonIgnore]
+                public virtual String[] theProducerInformationTypes => [];
+
+                [JsonIgnore]
+                public virtual String[] theContactDetailsInformationTypes => [];
+
                 public ProducerContact() {
                 }
             }
@@ -1249,14 +1263,11 @@ namespace S100Framework.DomainModel.S128 {
             [System.Serializable()]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
             public partial class ProductionDetails : InformationAssociation {
-                public List<RefId> catalogueHeader { get; set; } = [];
-                public RefId? theProducer { get; set; }
+                [JsonIgnore]
+                IEnumerable<RefId> catalogueHeader => base.RefIds.Where(e => e.Role.Equals("catalogueHeader"));
 
                 [JsonIgnore]
-                public virtual String[] catalogueHeaderInformationTypes => [];
-
-                [JsonIgnore]
-                public virtual String[] theProducerInformationTypes => [];
+                RefId? theProducer => base.RefIds.FirstOrDefault(e => e.Role.Equals("theProducer"));
                 public override string Code => nameof(ProductionDetails);
 
                 public string[]? this[Role role] => this[role.ToString()];
@@ -1266,6 +1277,12 @@ namespace S100Framework.DomainModel.S128 {
                     "theProducer" => theProducerInformationTypes,
                     _ => throw new InvalidOperationException(),
                 };
+                [JsonIgnore]
+                public virtual String[] catalogueHeaderInformationTypes => [];
+
+                [JsonIgnore]
+                public virtual String[] theProducerInformationTypes => [];
+
                 public ProductionDetails() {
                 }
             }
@@ -1273,11 +1290,8 @@ namespace S100Framework.DomainModel.S128 {
             [System.Serializable()]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
             public partial class ProductPackage : InformationAssociation {
-                [Required()]
-                public List<RefId> elementContainer { get; set; }
-
                 [JsonIgnore]
-                public virtual String[] elementContainerInformationTypes => [];
+                IEnumerable<RefId> elementContainer => base.RefIds.Where(e => e.Role.Equals("elementContainer"));
                 public override string Code => nameof(ProductPackage);
 
                 public string[]? this[Role role] => this[role.ToString()];
@@ -1286,8 +1300,10 @@ namespace S100Framework.DomainModel.S128 {
                     "elementContainer" => elementContainerInformationTypes,
                     _ => throw new InvalidOperationException(),
                 };
+                [JsonIgnore]
+                public virtual String[] elementContainerInformationTypes => [];
+
                 public ProductPackage() {
-                    elementContainer = new();
                 }
             }
         }
@@ -1304,10 +1320,9 @@ namespace S100Framework.DomainModel.S128 {
                 [EnumerationValue(4)]
                 [Required()]
                 public categoryOfProductMapping categoryOfProductMapping { get; set; }
-                public List<RefId> theReference { get; set; } = [];
 
                 [JsonIgnore]
-                public virtual String[] theReferenceFeatureTypes => [];
+                public IEnumerable<RefId> theReference => base.RefIds.Where(e => e.Role.Equals("theReference"));
                 public override string Code => "ProductMapping";
 
                 public string[]? this[Role role] => this[role.ToString()];
@@ -1316,6 +1331,9 @@ namespace S100Framework.DomainModel.S128 {
                     "theReference" => theReferenceFeatureTypes,
                     _ => throw new InvalidOperationException(),
                 };
+                [JsonIgnore]
+                public virtual String[] theReferenceFeatureTypes => [];
+
                 public ProductMapping() {
                 }
             }
@@ -1323,11 +1341,8 @@ namespace S100Framework.DomainModel.S128 {
             [System.Serializable()]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
             public abstract partial class Correlated : FeatureAssociation {
-                [Required()]
-                public RefId main { get; set; }
-
                 [JsonIgnore]
-                public virtual String[] mainFeatureTypes => [];
+                public RefId main => base.RefIds.First(e => e.Role.Equals("main"));
                 public override string Code => "Correlated";
 
                 public string[]? this[Role role] => this[role.ToString()];
@@ -1336,13 +1351,10 @@ namespace S100Framework.DomainModel.S128 {
                     "main" => mainFeatureTypes,
                     _ => throw new InvalidOperationException(),
                 };
+                [JsonIgnore]
+                public virtual String[] mainFeatureTypes => [];
+
                 public Correlated() {
-                    main = new RefId()
-                    {
-                        Value = string.Empty,
-                        Type = string.Empty,
-                        Role = string.Empty,
-                    };
                 }
             }
         }

@@ -594,43 +594,67 @@ namespace S100Framework
                         }
 
                         foreach (var r in roles) {
-                            if (!productSpecification.XPathSelectElements($"//S100FC:informationBinding[S100FC:association[@ref=\"{code}\"] and S100FC:role[@ref=\"{r}\"]]", xmlNamespaceManager).Any())
-                                continue;
-                            var binding = productSpecification.XPathSelectElements($"//S100FC:informationBinding[S100FC:association[@ref=\"{code}\"] and S100FC:role[@ref=\"{r}\"]]", xmlNamespaceManager).First();
+                            //if (!productSpecification.XPathSelectElements($"//S100FC:informationBinding[S100FC:association[@ref=\"{code}\"] and S100FC:role[@ref=\"{r}\"]]", xmlNamespaceManager).Any())
+                            //    continue;
+                            //var binding = productSpecification.XPathSelectElements($"//S100FC:informationBinding[S100FC:association[@ref=\"{code}\"] and S100FC:role[@ref=\"{r}\"]]", xmlNamespaceManager).First();
 
-                            var lower = int.Parse(binding.XPathSelectElement("S100FC:multiplicity/S100Base:lower", xmlNamespaceManager)!.Value);
-                            var upper = binding.XPathSelectElement("S100FC:multiplicity/S100Base:upper", xmlNamespaceManager)!.Attribute(XName.Get("infinite")) != default ? (binding.XPathSelectElement("S100FC:multiplicity/S100Base:upper", xmlNamespaceManager)!.Attribute(XName.Get("infinite"))!.Value.Equals("true") ? default(int?) : int.Parse(binding.XPathSelectElement("S100FC:multiplicity/S100Base:upper", xmlNamespaceManager)!.Value)) : int.Parse(binding.XPathSelectElement("S100FC:multiplicity/S100Base:upper", xmlNamespaceManager)!.Value);
+                            //var lower = int.Parse(binding.XPathSelectElement("S100FC:multiplicity/S100Base:lower", xmlNamespaceManager)!.Value);
+                            //var upper = binding.XPathSelectElement("S100FC:multiplicity/S100Base:upper", xmlNamespaceManager)!.Attribute(XName.Get("infinite")) != default ? (binding.XPathSelectElement("S100FC:multiplicity/S100Base:upper", xmlNamespaceManager)!.Attribute(XName.Get("infinite"))!.Value.Equals("true") ? default(int?) : int.Parse(binding.XPathSelectElement("S100FC:multiplicity/S100Base:upper", xmlNamespaceManager)!.Value)) : int.Parse(binding.XPathSelectElement("S100FC:multiplicity/S100Base:upper", xmlNamespaceManager)!.Value);
 
-                            var referenceType = (!upper.HasValue || upper.Value > 1 || lower > 1) ? typeof(List<RefId>) : typeof(RefId);
+                            //var referenceType = (!upper.HasValue || upper.Value > 1 || lower > 1) ? typeof(List<RefId>) : typeof(RefId);
 
-                            var propertyBuilder = S100Framework.Roslyn.CreateProperty(associationTypeBuilder, r, referenceType);
+                            //var propertyBuilder = S100Framework.Roslyn.CreateProperty(associationTypeBuilder, r, referenceType);
 
-                            if (lower == 1) {
-                                var constructorInfo = typeof(System.Runtime.CompilerServices.RequiredMemberAttribute).GetConstructors().First();
+                            //{
+                            //    var constructorInfo = typeof(JsonIgnoreAttribute).GetConstructors().First();
 
-                                var requiredMemberAttributeBuilder = new CustomAttributeBuilder(constructorInfo, new object[0]);
-                                propertyBuilder.SetCustomAttribute(requiredMemberAttributeBuilder);
-                            }
+                            //    var jsonIgnoreAttributeBuilder = new CustomAttributeBuilder(constructorInfo, new object[0]);
+                            //    propertyBuilder.SetCustomAttribute(jsonIgnoreAttributeBuilder);
+                            //}
+                            //if (lower == 1) {
+                            //    var constructorInfo = typeof(System.Runtime.CompilerServices.RequiredMemberAttribute).GetConstructors().First();
+
+                            //    var requiredMemberAttributeBuilder = new CustomAttributeBuilder(constructorInfo, new object[0]);
+                            //    propertyBuilder.SetCustomAttribute(requiredMemberAttributeBuilder);
+                            //}
                         }
 
                         var associationType = associationTypeBuilder.CreateType();
 
                         classBuilder.AppendLine(BuildClass($"{code}", associationType, xmlNamespace, (builder) => {
                             foreach (var r in roles) {
+                                var binding = productSpecification.XPathSelectElements($"//S100FC:informationBinding[S100FC:association[@ref=\"{code}\"] and S100FC:role[@ref=\"{r}\"]]", xmlNamespaceManager).First();
+
+                                var lower = int.Parse(binding.XPathSelectElement("S100FC:multiplicity/S100Base:lower", xmlNamespaceManager)!.Value);
+                                var upper = binding.XPathSelectElement("S100FC:multiplicity/S100Base:upper", xmlNamespaceManager)!.Attribute(XName.Get("infinite")) != default ? (binding.XPathSelectElement("S100FC:multiplicity/S100Base:upper", xmlNamespaceManager)!.Attribute(XName.Get("infinite"))!.Value.Equals("true") ? default(int?) : int.Parse(binding.XPathSelectElement("S100FC:multiplicity/S100Base:upper", xmlNamespaceManager)!.Value)) : int.Parse(binding.XPathSelectElement("S100FC:multiplicity/S100Base:upper", xmlNamespaceManager)!.Value);
+
+
+                                var referenceType = (!upper.HasValue || upper.Value > 1 || lower > 1) ?
+                                    $"IEnumerable<RefId> {r} => base.RefIds.Where(e => e.Role.Equals(\"{r}\"));" :
+                                    lower == 0 ?
+                                    $"RefId? {r} => base.RefIds.FirstOrDefault(e => e.Role.Equals(\"{r}\"));" :
+                                    $"RefId {r} => base.RefIds.First(e => e.Role.Equals(\"{r}\"));";
+
                                 builder.AppendLine("\t\t\t[JsonIgnore]");
-                                builder.AppendLine($"\t\t\tpublic virtual String[] {r}InformationTypes => [];");
+                                builder.AppendLine($"\t\t\t{referenceType}");
                             }
 
                             builder.AppendLine($"\t\t\tpublic override string Code => nameof({code});");
 
                             builder.AppendLine("\t\t\tpublic string[]? this[Role role] => this[role.ToString()];");
 
-                            builder.AppendLine($"\t\t\tpublic override string[]? this[string role] => role switch {{");
+                            builder.AppendLine($"\t\t\tpublic override string[]? this[string role] => role switch {{");                            
+
                             foreach (var r in roles) {
                                 builder.AppendLine($"\t\t\t\t\"{r}\" => {r}InformationTypes,");
                             }
                             builder.AppendLine($"\t\t\t\t_ => throw new InvalidOperationException(),");
                             builder.AppendLine($"\t\t\t}};");
+
+                            foreach (var r in roles) {
+                                builder.AppendLine("\t\t\t[JsonIgnore]");
+                                builder.AppendLine($"\t\t\tpublic virtual String[] {r}InformationTypes => [];");
+                            }
                         }));
                     }
                 }
@@ -679,31 +703,49 @@ namespace S100Framework
                         }
 
                         foreach (var r in roles) {
-                            if (!productSpecification.XPathSelectElements($"//S100FC:featureBinding[S100FC:association[@ref=\"{code}\"] and S100FC:role[@ref=\"{r}\"]]", xmlNamespaceManager).Any())
-                                continue;
-                            var binding = productSpecification.XPathSelectElements($"//S100FC:featureBinding[S100FC:association[@ref=\"{code}\"] and S100FC:role[@ref=\"{r}\"]]", xmlNamespaceManager).First();
+                            //if (!productSpecification.XPathSelectElements($"//S100FC:featureBinding[S100FC:association[@ref=\"{code}\"] and S100FC:role[@ref=\"{r}\"]]", xmlNamespaceManager).Any())
+                            //    continue;
+                            //var binding = productSpecification.XPathSelectElements($"//S100FC:featureBinding[S100FC:association[@ref=\"{code}\"] and S100FC:role[@ref=\"{r}\"]]", xmlNamespaceManager).First();
 
-                            var lower = int.Parse(binding.XPathSelectElement("S100FC:multiplicity/S100Base:lower", xmlNamespaceManager)!.Value);
-                            var upper = binding.XPathSelectElement("S100FC:multiplicity/S100Base:upper", xmlNamespaceManager)!.Attribute(XName.Get("infinite")) != default ? (binding.XPathSelectElement("S100FC:multiplicity/S100Base:upper", xmlNamespaceManager)!.Attribute(XName.Get("infinite"))!.Value.Equals("true") ? default(int?) : int.Parse(binding.XPathSelectElement("S100FC:multiplicity/S100Base:upper", xmlNamespaceManager)!.Value)) : int.Parse(binding.XPathSelectElement("S100FC:multiplicity/S100Base:upper", xmlNamespaceManager)!.Value);
+                            //var lower = int.Parse(binding.XPathSelectElement("S100FC:multiplicity/S100Base:lower", xmlNamespaceManager)!.Value);
+                            //var upper = binding.XPathSelectElement("S100FC:multiplicity/S100Base:upper", xmlNamespaceManager)!.Attribute(XName.Get("infinite")) != default ? (binding.XPathSelectElement("S100FC:multiplicity/S100Base:upper", xmlNamespaceManager)!.Attribute(XName.Get("infinite"))!.Value.Equals("true") ? default(int?) : int.Parse(binding.XPathSelectElement("S100FC:multiplicity/S100Base:upper", xmlNamespaceManager)!.Value)) : int.Parse(binding.XPathSelectElement("S100FC:multiplicity/S100Base:upper", xmlNamespaceManager)!.Value);
 
-                            var referenceType = (!upper.HasValue || upper.Value > 1 || lower > 1) ? typeof(List<RefId>) : typeof(RefId);
+                            //var referenceType = (!upper.HasValue || upper.Value > 1 || lower > 1) ? typeof(List<RefId>) : typeof(RefId);
 
-                            var propertyBuilder = S100Framework.Roslyn.CreateProperty(associationTypeBuilder, r, referenceType);
+                            //var propertyBuilder = S100Framework.Roslyn.CreateProperty(associationTypeBuilder, r, referenceType);
 
-                            if (lower == 1) {
-                                var constructorInfo = typeof(System.Runtime.CompilerServices.RequiredMemberAttribute).GetConstructors().First();
+                            //{
+                            //    var constructorInfo = typeof(JsonIgnoreAttribute).GetConstructors().First();
 
-                                var requiredMemberAttributeBuilder = new CustomAttributeBuilder(constructorInfo, new object[0]);
-                                propertyBuilder.SetCustomAttribute(requiredMemberAttributeBuilder);
-                            }
+                            //    var jsonIgnoreAttributeBuilder = new CustomAttributeBuilder(constructorInfo, new object[0]);
+                            //    propertyBuilder.SetCustomAttribute(jsonIgnoreAttributeBuilder);
+                            //}
+                            //if (lower == 1) {
+                            //    var constructorInfo = typeof(System.Runtime.CompilerServices.RequiredMemberAttribute).GetConstructors().First();
+
+                            //    var requiredMemberAttributeBuilder = new CustomAttributeBuilder(constructorInfo, new object[0]);
+                            //    propertyBuilder.SetCustomAttribute(requiredMemberAttributeBuilder);
+                            //}
                         }
 
                         var associationType = associationTypeBuilder.CreateType();
 
                         classBuilder.AppendLine(BuildClass($"{code}", associationType, xmlNamespace, (builder) => {
-                            foreach (var r in roles) {
+                            foreach(var r in roles) {
+                                var binding = productSpecification.XPathSelectElements($"//S100FC:featureBinding[S100FC:association[@ref=\"{code}\"] and S100FC:role[@ref=\"{r}\"]]", xmlNamespaceManager).First();
+
+                                var lower = int.Parse(binding.XPathSelectElement("S100FC:multiplicity/S100Base:lower", xmlNamespaceManager)!.Value);
+                                var upper = binding.XPathSelectElement("S100FC:multiplicity/S100Base:upper", xmlNamespaceManager)!.Attribute(XName.Get("infinite")) != default ? (binding.XPathSelectElement("S100FC:multiplicity/S100Base:upper", xmlNamespaceManager)!.Attribute(XName.Get("infinite"))!.Value.Equals("true") ? default(int?) : int.Parse(binding.XPathSelectElement("S100FC:multiplicity/S100Base:upper", xmlNamespaceManager)!.Value)) : int.Parse(binding.XPathSelectElement("S100FC:multiplicity/S100Base:upper", xmlNamespaceManager)!.Value);
+
+
+                                var referenceType = (!upper.HasValue || upper.Value > 1 || lower > 1) ?
+                                    $"IEnumerable<RefId> {r} => base.RefIds.Where(e => e.Role.Equals(\"{r}\"));" :
+                                    lower == 0 ?
+                                    $"RefId? {r} => base.RefIds.FirstOrDefault(e => e.Role.Equals(\"{r}\"));" :
+                                    $"RefId {r} => base.RefIds.First(e => e.Role.Equals(\"{r}\"));";
+
                                 builder.AppendLine("\t\t\t[JsonIgnore]");
-                                builder.AppendLine($"\t\t\tpublic virtual String[] {r}FeatureTypes => [];");
+                                builder.AppendLine($"\t\t\tpublic {referenceType}");
                             }
 
                             builder.AppendLine($"\t\t\tpublic override string Code => \"{code}\";");
@@ -711,11 +753,17 @@ namespace S100Framework
                             builder.AppendLine("\t\t\tpublic string[]? this[Role role] => this[role.ToString()];");
 
                             builder.AppendLine($"\t\t\tpublic override string[]? this[string role] => role switch {{");
+
                             foreach (var r in roles) {
                                 builder.AppendLine($"\t\t\t\t\"{r}\" => {r}FeatureTypes,");
                             }
                             builder.AppendLine($"\t\t\t\t_ => throw new InvalidOperationException(),");
                             builder.AppendLine($"\t\t\t}};");
+
+                            foreach (var r in roles) {
+                                builder.AppendLine("\t\t\t[JsonIgnore]");
+                                builder.AppendLine($"\t\t\tpublic virtual String[] {r}FeatureTypes => [];");
+                            }
                         }));
                     }
                 }

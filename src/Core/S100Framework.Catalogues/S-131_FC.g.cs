@@ -2079,14 +2079,11 @@ namespace S100Framework.DomainModel.S131 {
             [System.Serializable()]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
             public partial class AdditionalInformation : InformationAssociation {
-                public List<RefId> providesInformation { get; set; } = [];
-                public List<RefId> informationProvidedFor { get; set; } = [];
+                [JsonIgnore]
+                IEnumerable<RefId> providesInformation => base.RefIds.Where(e => e.Role.Equals("providesInformation"));
 
                 [JsonIgnore]
-                public virtual String[] providesInformationInformationTypes => [];
-
-                [JsonIgnore]
-                public virtual String[] informationProvidedForInformationTypes => [];
+                IEnumerable<RefId> informationProvidedFor => base.RefIds.Where(e => e.Role.Equals("informationProvidedFor"));
                 public override string Code => nameof(AdditionalInformation);
 
                 public string[]? this[Role role] => this[role.ToString()];
@@ -2096,6 +2093,12 @@ namespace S100Framework.DomainModel.S131 {
                     "informationProvidedFor" => informationProvidedForInformationTypes,
                     _ => throw new InvalidOperationException(),
                 };
+                [JsonIgnore]
+                public virtual String[] providesInformationInformationTypes => [];
+
+                [JsonIgnore]
+                public virtual String[] informationProvidedForInformationTypes => [];
+
                 public AdditionalInformation() {
                 }
             }
@@ -2103,14 +2106,11 @@ namespace S100Framework.DomainModel.S131 {
             [System.Serializable()]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
             public partial class AuthorityContact : InformationAssociation {
-                public List<RefId> theAuthority { get; set; } = [];
-                public List<RefId> theContactDetails { get; set; } = [];
+                [JsonIgnore]
+                IEnumerable<RefId> theAuthority => base.RefIds.Where(e => e.Role.Equals("theAuthority"));
 
                 [JsonIgnore]
-                public virtual String[] theAuthorityInformationTypes => [];
-
-                [JsonIgnore]
-                public virtual String[] theContactDetailsInformationTypes => [];
+                IEnumerable<RefId> theContactDetails => base.RefIds.Where(e => e.Role.Equals("theContactDetails"));
                 public override string Code => nameof(AuthorityContact);
 
                 public string[]? this[Role role] => this[role.ToString()];
@@ -2120,6 +2120,12 @@ namespace S100Framework.DomainModel.S131 {
                     "theContactDetails" => theContactDetailsInformationTypes,
                     _ => throw new InvalidOperationException(),
                 };
+                [JsonIgnore]
+                public virtual String[] theAuthorityInformationTypes => [];
+
+                [JsonIgnore]
+                public virtual String[] theContactDetailsInformationTypes => [];
+
                 public AuthorityContact() {
                 }
             }
@@ -2127,14 +2133,11 @@ namespace S100Framework.DomainModel.S131 {
             [System.Serializable()]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
             public partial class AuthorityHours : InformationAssociation {
-                public List<RefId> theAuthority_srvHrs { get; set; } = [];
-                public List<RefId> theServiceHours { get; set; } = [];
+                [JsonIgnore]
+                IEnumerable<RefId> theAuthority_srvHrs => base.RefIds.Where(e => e.Role.Equals("theAuthority_srvHrs"));
 
                 [JsonIgnore]
-                public virtual String[] theAuthority_srvHrsInformationTypes => [];
-
-                [JsonIgnore]
-                public virtual String[] theServiceHoursInformationTypes => [];
+                IEnumerable<RefId> theServiceHours => base.RefIds.Where(e => e.Role.Equals("theServiceHours"));
                 public override string Code => nameof(AuthorityHours);
 
                 public string[]? this[Role role] => this[role.ToString()];
@@ -2144,6 +2147,12 @@ namespace S100Framework.DomainModel.S131 {
                     "theServiceHours" => theServiceHoursInformationTypes,
                     _ => throw new InvalidOperationException(),
                 };
+                [JsonIgnore]
+                public virtual String[] theAuthority_srvHrsInformationTypes => [];
+
+                [JsonIgnore]
+                public virtual String[] theServiceHoursInformationTypes => [];
+
                 public AuthorityHours() {
                 }
             }
@@ -2151,10 +2160,8 @@ namespace S100Framework.DomainModel.S131 {
             [System.Serializable()]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
             public partial class AssociatedRxN : InformationAssociation {
-                public List<RefId> theRxN { get; set; } = [];
-
                 [JsonIgnore]
-                public virtual String[] theRxNInformationTypes => [];
+                IEnumerable<RefId> theRxN => base.RefIds.Where(e => e.Role.Equals("theRxN"));
                 public override string Code => nameof(AssociatedRxN);
 
                 public string[]? this[Role role] => this[role.ToString()];
@@ -2163,6 +2170,9 @@ namespace S100Framework.DomainModel.S131 {
                     "theRxN" => theRxNInformationTypes,
                     _ => throw new InvalidOperationException(),
                 };
+                [JsonIgnore]
+                public virtual String[] theRxNInformationTypes => [];
+
                 public AssociatedRxN() {
                 }
             }
@@ -2170,10 +2180,8 @@ namespace S100Framework.DomainModel.S131 {
             [System.Serializable()]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
             public partial class ExceptionalWorkday : InformationAssociation {
-                public List<RefId> partialWorkingDay { get; set; } = [];
-
                 [JsonIgnore]
-                public virtual String[] partialWorkingDayInformationTypes => [];
+                IEnumerable<RefId> partialWorkingDay => base.RefIds.Where(e => e.Role.Equals("partialWorkingDay"));
                 public override string Code => nameof(ExceptionalWorkday);
 
                 public string[]? this[Role role] => this[role.ToString()];
@@ -2182,6 +2190,9 @@ namespace S100Framework.DomainModel.S131 {
                     "partialWorkingDay" => partialWorkingDayInformationTypes,
                     _ => throw new InvalidOperationException(),
                 };
+                [JsonIgnore]
+                public virtual String[] partialWorkingDayInformationTypes => [];
+
                 public ExceptionalWorkday() {
                 }
             }
@@ -2189,10 +2200,8 @@ namespace S100Framework.DomainModel.S131 {
             [System.Serializable()]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
             public partial class ServiceControl : InformationAssociation {
-                public RefId? controlAuthority { get; set; }
-
                 [JsonIgnore]
-                public virtual String[] controlAuthorityInformationTypes => [];
+                RefId? controlAuthority => base.RefIds.FirstOrDefault(e => e.Role.Equals("controlAuthority"));
                 public override string Code => nameof(ServiceControl);
 
                 public string[]? this[Role role] => this[role.ToString()];
@@ -2201,6 +2210,9 @@ namespace S100Framework.DomainModel.S131 {
                     "controlAuthority" => controlAuthorityInformationTypes,
                     _ => throw new InvalidOperationException(),
                 };
+                [JsonIgnore]
+                public virtual String[] controlAuthorityInformationTypes => [];
+
                 public ServiceControl() {
                 }
             }
@@ -2208,10 +2220,8 @@ namespace S100Framework.DomainModel.S131 {
             [System.Serializable()]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
             public partial class ServiceContact : InformationAssociation {
-                public List<RefId> theContactDetails { get; set; } = [];
-
                 [JsonIgnore]
-                public virtual String[] theContactDetailsInformationTypes => [];
+                IEnumerable<RefId> theContactDetails => base.RefIds.Where(e => e.Role.Equals("theContactDetails"));
                 public override string Code => nameof(ServiceContact);
 
                 public string[]? this[Role role] => this[role.ToString()];
@@ -2220,6 +2230,9 @@ namespace S100Framework.DomainModel.S131 {
                     "theContactDetails" => theContactDetailsInformationTypes,
                     _ => throw new InvalidOperationException(),
                 };
+                [JsonIgnore]
+                public virtual String[] theContactDetailsInformationTypes => [];
+
                 public ServiceContact() {
                 }
             }
@@ -2227,10 +2240,8 @@ namespace S100Framework.DomainModel.S131 {
             [System.Serializable()]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
             public partial class LocationHours : InformationAssociation {
-                public RefId? location_srvHrs { get; set; }
-
                 [JsonIgnore]
-                public virtual String[] location_srvHrsInformationTypes => [];
+                RefId? location_srvHrs => base.RefIds.FirstOrDefault(e => e.Role.Equals("location_srvHrs"));
                 public override string Code => nameof(LocationHours);
 
                 public string[]? this[Role role] => this[role.ToString()];
@@ -2239,6 +2250,9 @@ namespace S100Framework.DomainModel.S131 {
                     "location_srvHrs" => location_srvHrsInformationTypes,
                     _ => throw new InvalidOperationException(),
                 };
+                [JsonIgnore]
+                public virtual String[] location_srvHrsInformationTypes => [];
+
                 public LocationHours() {
                 }
             }
@@ -2246,14 +2260,11 @@ namespace S100Framework.DomainModel.S131 {
             [System.Serializable()]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
             public partial class RelatedOrganisation : InformationAssociation {
-                public List<RefId> theInformation { get; set; } = [];
-                public List<RefId> theOrganisation { get; set; } = [];
+                [JsonIgnore]
+                IEnumerable<RefId> theInformation => base.RefIds.Where(e => e.Role.Equals("theInformation"));
 
                 [JsonIgnore]
-                public virtual String[] theInformationInformationTypes => [];
-
-                [JsonIgnore]
-                public virtual String[] theOrganisationInformationTypes => [];
+                IEnumerable<RefId> theOrganisation => base.RefIds.Where(e => e.Role.Equals("theOrganisation"));
                 public override string Code => nameof(RelatedOrganisation);
 
                 public string[]? this[Role role] => this[role.ToString()];
@@ -2263,6 +2274,12 @@ namespace S100Framework.DomainModel.S131 {
                     "theOrganisation" => theOrganisationInformationTypes,
                     _ => throw new InvalidOperationException(),
                 };
+                [JsonIgnore]
+                public virtual String[] theInformationInformationTypes => [];
+
+                [JsonIgnore]
+                public virtual String[] theOrganisationInformationTypes => [];
+
                 public RelatedOrganisation() {
                 }
             }
@@ -2274,14 +2291,12 @@ namespace S100Framework.DomainModel.S131 {
                 [EnumerationValue(2)]
                 [Required()]
                 public membership membership { get; set; }
-                public List<RefId> theApplicableRxN { get; set; } = [];
-                public List<RefId> isApplicableTo { get; set; } = [];
 
                 [JsonIgnore]
-                public virtual String[] theApplicableRxNInformationTypes => [];
+                IEnumerable<RefId> theApplicableRxN => base.RefIds.Where(e => e.Role.Equals("theApplicableRxN"));
 
                 [JsonIgnore]
-                public virtual String[] isApplicableToInformationTypes => [];
+                IEnumerable<RefId> isApplicableTo => base.RefIds.Where(e => e.Role.Equals("isApplicableTo"));
                 public override string Code => nameof(InclusionType);
 
                 public string[]? this[Role role] => this[role.ToString()];
@@ -2291,6 +2306,12 @@ namespace S100Framework.DomainModel.S131 {
                     "isApplicableTo" => isApplicableToInformationTypes,
                     _ => throw new InvalidOperationException(),
                 };
+                [JsonIgnore]
+                public virtual String[] theApplicableRxNInformationTypes => [];
+
+                [JsonIgnore]
+                public virtual String[] isApplicableToInformationTypes => [];
+
                 public InclusionType() {
                 }
             }
@@ -2306,14 +2327,12 @@ namespace S100Framework.DomainModel.S131 {
                 [EnumerationValue(6)]
                 [Required()]
                 public categoryOfRelationship categoryOfRelationship { get; set; }
-                public List<RefId> vslLocation { get; set; } = [];
-                public List<RefId> permission { get; set; } = [];
 
                 [JsonIgnore]
-                public virtual String[] vslLocationInformationTypes => [];
+                IEnumerable<RefId> vslLocation => base.RefIds.Where(e => e.Role.Equals("vslLocation"));
 
                 [JsonIgnore]
-                public virtual String[] permissionInformationTypes => [];
+                IEnumerable<RefId> permission => base.RefIds.Where(e => e.Role.Equals("permission"));
                 public override string Code => nameof(PermissionType);
 
                 public string[]? this[Role role] => this[role.ToString()];
@@ -2323,6 +2342,12 @@ namespace S100Framework.DomainModel.S131 {
                     "permission" => permissionInformationTypes,
                     _ => throw new InvalidOperationException(),
                 };
+                [JsonIgnore]
+                public virtual String[] vslLocationInformationTypes => [];
+
+                [JsonIgnore]
+                public virtual String[] permissionInformationTypes => [];
+
                 public PermissionType() {
                 }
             }
@@ -2330,10 +2355,8 @@ namespace S100Framework.DomainModel.S131 {
             [System.Serializable()]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
             public partial class LimitEntrance : InformationAssociation {
-                public RefId? entranceReference { get; set; }
-
                 [JsonIgnore]
-                public virtual String[] entranceReferenceInformationTypes => [];
+                RefId? entranceReference => base.RefIds.FirstOrDefault(e => e.Role.Equals("entranceReference"));
                 public override string Code => nameof(LimitEntrance);
 
                 public string[]? this[Role role] => this[role.ToString()];
@@ -2342,6 +2365,9 @@ namespace S100Framework.DomainModel.S131 {
                     "entranceReference" => entranceReferenceInformationTypes,
                     _ => throw new InvalidOperationException(),
                 };
+                [JsonIgnore]
+                public virtual String[] entranceReferenceInformationTypes => [];
+
                 public LimitEntrance() {
                 }
             }
@@ -2349,10 +2375,8 @@ namespace S100Framework.DomainModel.S131 {
             [System.Serializable()]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
             public partial class ServiceAvailability : InformationAssociation {
-                public RefId? serviceDescriptionReference { get; set; }
-
                 [JsonIgnore]
-                public virtual String[] serviceDescriptionReferenceInformationTypes => [];
+                RefId? serviceDescriptionReference => base.RefIds.FirstOrDefault(e => e.Role.Equals("serviceDescriptionReference"));
                 public override string Code => nameof(ServiceAvailability);
 
                 public string[]? this[Role role] => this[role.ToString()];
@@ -2361,6 +2385,9 @@ namespace S100Framework.DomainModel.S131 {
                     "serviceDescriptionReference" => serviceDescriptionReferenceInformationTypes,
                     _ => throw new InvalidOperationException(),
                 };
+                [JsonIgnore]
+                public virtual String[] serviceDescriptionReferenceInformationTypes => [];
+
                 public ServiceAvailability() {
                 }
             }
@@ -2372,15 +2399,11 @@ namespace S100Framework.DomainModel.S131 {
             [System.Serializable()]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
             public abstract partial class TextAssociation : FeatureAssociation {
-                [Required()]
-                public RefId identifies { get; set; }
-                public RefId? positions { get; set; }
+                [JsonIgnore]
+                public RefId identifies => base.RefIds.First(e => e.Role.Equals("identifies"));
 
                 [JsonIgnore]
-                public virtual String[] identifiesFeatureTypes => [];
-
-                [JsonIgnore]
-                public virtual String[] positionsFeatureTypes => [];
+                public RefId? positions => base.RefIds.FirstOrDefault(e => e.Role.Equals("positions"));
                 public override string Code => "TextAssociation";
 
                 public string[]? this[Role role] => this[role.ToString()];
@@ -2390,27 +2413,24 @@ namespace S100Framework.DomainModel.S131 {
                     "positions" => positionsFeatureTypes,
                     _ => throw new InvalidOperationException(),
                 };
+                [JsonIgnore]
+                public virtual String[] identifiesFeatureTypes => [];
+
+                [JsonIgnore]
+                public virtual String[] positionsFeatureTypes => [];
+
                 public TextAssociation() {
-                    identifies = new RefId()
-                    {
-                        Value = string.Empty,
-                        Type = string.Empty,
-                        Role = string.Empty,
-                    };
                 }
             }
 
             [System.Serializable()]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
             public abstract partial class Subsection : FeatureAssociation {
-                public List<RefId> subUnit { get; set; } = [];
-                public RefId? constitute { get; set; }
+                [JsonIgnore]
+                public IEnumerable<RefId> subUnit => base.RefIds.Where(e => e.Role.Equals("subUnit"));
 
                 [JsonIgnore]
-                public virtual String[] subUnitFeatureTypes => [];
-
-                [JsonIgnore]
-                public virtual String[] constituteFeatureTypes => [];
+                public RefId? constitute => base.RefIds.FirstOrDefault(e => e.Role.Equals("constitute"));
                 public override string Code => "Subsection";
 
                 public string[]? this[Role role] => this[role.ToString()];
@@ -2420,6 +2440,12 @@ namespace S100Framework.DomainModel.S131 {
                     "constitute" => constituteFeatureTypes,
                     _ => throw new InvalidOperationException(),
                 };
+                [JsonIgnore]
+                public virtual String[] subUnitFeatureTypes => [];
+
+                [JsonIgnore]
+                public virtual String[] constituteFeatureTypes => [];
+
                 public Subsection() {
                 }
             }
@@ -2427,14 +2453,11 @@ namespace S100Framework.DomainModel.S131 {
             [System.Serializable()]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
             public abstract partial class Infrastructure : FeatureAssociation {
-                public RefId? infrastructureLocation { get; set; }
-                public List<RefId> hasInfrastructure { get; set; } = [];
+                [JsonIgnore]
+                public RefId? infrastructureLocation => base.RefIds.FirstOrDefault(e => e.Role.Equals("infrastructureLocation"));
 
                 [JsonIgnore]
-                public virtual String[] infrastructureLocationFeatureTypes => [];
-
-                [JsonIgnore]
-                public virtual String[] hasInfrastructureFeatureTypes => [];
+                public IEnumerable<RefId> hasInfrastructure => base.RefIds.Where(e => e.Role.Equals("hasInfrastructure"));
                 public override string Code => "Infrastructure";
 
                 public string[]? this[Role role] => this[role.ToString()];
@@ -2444,6 +2467,12 @@ namespace S100Framework.DomainModel.S131 {
                     "hasInfrastructure" => hasInfrastructureFeatureTypes,
                     _ => throw new InvalidOperationException(),
                 };
+                [JsonIgnore]
+                public virtual String[] infrastructureLocationFeatureTypes => [];
+
+                [JsonIgnore]
+                public virtual String[] hasInfrastructureFeatureTypes => [];
+
                 public Infrastructure() {
                 }
             }
@@ -2451,14 +2480,11 @@ namespace S100Framework.DomainModel.S131 {
             [System.Serializable()]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
             public abstract partial class PrimaryAuxiliaryFacility : FeatureAssociation {
-                public RefId? primaryFacility { get; set; }
-                public List<RefId> auxiliaryFacility { get; set; } = [];
+                [JsonIgnore]
+                public RefId? primaryFacility => base.RefIds.FirstOrDefault(e => e.Role.Equals("primaryFacility"));
 
                 [JsonIgnore]
-                public virtual String[] primaryFacilityFeatureTypes => [];
-
-                [JsonIgnore]
-                public virtual String[] auxiliaryFacilityFeatureTypes => [];
+                public IEnumerable<RefId> auxiliaryFacility => base.RefIds.Where(e => e.Role.Equals("auxiliaryFacility"));
                 public override string Code => "PrimaryAuxiliaryFacility";
 
                 public string[]? this[Role role] => this[role.ToString()];
@@ -2468,6 +2494,12 @@ namespace S100Framework.DomainModel.S131 {
                     "auxiliaryFacility" => auxiliaryFacilityFeatureTypes,
                     _ => throw new InvalidOperationException(),
                 };
+                [JsonIgnore]
+                public virtual String[] primaryFacilityFeatureTypes => [];
+
+                [JsonIgnore]
+                public virtual String[] auxiliaryFacilityFeatureTypes => [];
+
                 public PrimaryAuxiliaryFacility() {
                 }
             }
@@ -2475,16 +2507,11 @@ namespace S100Framework.DomainModel.S131 {
             [System.Serializable()]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
             public abstract partial class Demarcation : FeatureAssociation {
-                public List<RefId> demarcationIndicator { get; set; } = [];
-
-                [Required()]
-                public RefId demarcatedFeature { get; set; }
+                [JsonIgnore]
+                public IEnumerable<RefId> demarcationIndicator => base.RefIds.Where(e => e.Role.Equals("demarcationIndicator"));
 
                 [JsonIgnore]
-                public virtual String[] demarcationIndicatorFeatureTypes => [];
-
-                [JsonIgnore]
-                public virtual String[] demarcatedFeatureFeatureTypes => [];
+                public RefId demarcatedFeature => base.RefIds.First(e => e.Role.Equals("demarcatedFeature"));
                 public override string Code => "Demarcation";
 
                 public string[]? this[Role role] => this[role.ToString()];
@@ -2494,28 +2521,24 @@ namespace S100Framework.DomainModel.S131 {
                     "demarcatedFeature" => demarcatedFeatureFeatureTypes,
                     _ => throw new InvalidOperationException(),
                 };
+                [JsonIgnore]
+                public virtual String[] demarcationIndicatorFeatureTypes => [];
+
+                [JsonIgnore]
+                public virtual String[] demarcatedFeatureFeatureTypes => [];
+
                 public Demarcation() {
-                    demarcatedFeature = new RefId()
-                    {
-                        Value = string.Empty,
-                        Type = string.Empty,
-                        Role = string.Empty,
-                    };
                 }
             }
 
             [System.Serializable()]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
             public abstract partial class JurisdictionalLimit : FeatureAssociation {
-                [Required()]
-                public RefId limitReference { get; set; }
-                public RefId? limitExtent { get; set; }
+                [JsonIgnore]
+                public RefId limitReference => base.RefIds.First(e => e.Role.Equals("limitReference"));
 
                 [JsonIgnore]
-                public virtual String[] limitReferenceFeatureTypes => [];
-
-                [JsonIgnore]
-                public virtual String[] limitExtentFeatureTypes => [];
+                public RefId? limitExtent => base.RefIds.FirstOrDefault(e => e.Role.Equals("limitExtent"));
                 public override string Code => "JurisdictionalLimit";
 
                 public string[]? this[Role role] => this[role.ToString()];
@@ -2525,29 +2548,24 @@ namespace S100Framework.DomainModel.S131 {
                     "limitExtent" => limitExtentFeatureTypes,
                     _ => throw new InvalidOperationException(),
                 };
+                [JsonIgnore]
+                public virtual String[] limitReferenceFeatureTypes => [];
+
+                [JsonIgnore]
+                public virtual String[] limitExtentFeatureTypes => [];
+
                 public JurisdictionalLimit() {
-                    limitReference = new RefId()
-                    {
-                        Value = string.Empty,
-                        Type = string.Empty,
-                        Role = string.Empty,
-                    };
                 }
             }
 
             [System.Serializable()]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
             public abstract partial class LayoutDivision : FeatureAssociation {
-                public List<RefId> layoutUnit { get; set; } = [];
-
-                [Required()]
-                public RefId componentOf { get; set; }
+                [JsonIgnore]
+                public IEnumerable<RefId> layoutUnit => base.RefIds.Where(e => e.Role.Equals("layoutUnit"));
 
                 [JsonIgnore]
-                public virtual String[] layoutUnitFeatureTypes => [];
-
-                [JsonIgnore]
-                public virtual String[] componentOfFeatureTypes => [];
+                public RefId componentOf => base.RefIds.First(e => e.Role.Equals("componentOf"));
                 public override string Code => "LayoutDivision";
 
                 public string[]? this[Role role] => this[role.ToString()];
@@ -2557,13 +2575,13 @@ namespace S100Framework.DomainModel.S131 {
                     "componentOf" => componentOfFeatureTypes,
                     _ => throw new InvalidOperationException(),
                 };
+                [JsonIgnore]
+                public virtual String[] layoutUnitFeatureTypes => [];
+
+                [JsonIgnore]
+                public virtual String[] componentOfFeatureTypes => [];
+
                 public LayoutDivision() {
-                    componentOf = new RefId()
-                    {
-                        Value = string.Empty,
-                        Type = string.Empty,
-                        Role = string.Empty,
-                    };
                 }
             }
         }
