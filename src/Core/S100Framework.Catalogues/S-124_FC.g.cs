@@ -2,6 +2,7 @@ using System;
 using System.Collections.Immutable;
 using System.Linq;
 using System.Runtime.Serialization;
+using System.Text.Json.Serialization;
 
 #nullable enable
 namespace S100Framework.DomainModel.S124 {
@@ -499,11 +500,8 @@ namespace S100Framework.DomainModel.S124 {
             [System.Serializable()]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
             public partial class NWPreambleContent : InformationAssociation {
-                [Required()]
-                public RefId header { get; set; }
-
-                [IgnoreDataMember]
-                public virtual String[] headerInformationTypes => [];
+                [JsonIgnore]
+                RefId header => base.RefIds.First(e => e.Role.Equals("header"));
                 public override string Code => nameof(NWPreambleContent);
 
                 public string[]? this[Role role] => this[role.ToString()];
@@ -512,23 +510,18 @@ namespace S100Framework.DomainModel.S124 {
                     "header" => headerInformationTypes,
                     _ => throw new InvalidOperationException(),
                 };
+                [JsonIgnore]
+                public virtual String[] headerInformationTypes => [];
+
                 public NWPreambleContent() {
-                    header = new RefId()
-                    {
-                        Value = string.Empty,
-                        Type = string.Empty,
-                        Role = string.Empty,
-                    };
                 }
             }
 
             [System.Serializable()]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
             public partial class NWReferences : InformationAssociation {
-                public List<RefId> theReferences { get; set; } = [];
-
-                [IgnoreDataMember]
-                public virtual String[] theReferencesInformationTypes => [];
+                [JsonIgnore]
+                IEnumerable<RefId> theReferences => base.RefIds.Where(e => e.Role.Equals("theReferences"));
                 public override string Code => nameof(NWReferences);
 
                 public string[]? this[Role role] => this[role.ToString()];
@@ -537,6 +530,9 @@ namespace S100Framework.DomainModel.S124 {
                     "theReferences" => theReferencesInformationTypes,
                     _ => throw new InvalidOperationException(),
                 };
+                [JsonIgnore]
+                public virtual String[] theReferencesInformationTypes => [];
+
                 public NWReferences() {
                 }
             }
@@ -548,16 +544,11 @@ namespace S100Framework.DomainModel.S124 {
             [System.Serializable()]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
             public abstract partial class AreaAffected : FeatureAssociation {
-                public List<RefId> affects { get; set; } = [];
+                [JsonIgnore]
+                public IEnumerable<RefId> affects => base.RefIds.Where(e => e.Role.Equals("affects"));
 
-                [Required()]
-                public RefId impacts { get; set; }
-
-                [IgnoreDataMember]
-                public virtual String[] affectsFeatureTypes => [];
-
-                [IgnoreDataMember]
-                public virtual String[] impactsFeatureTypes => [];
+                [JsonIgnore]
+                public RefId impacts => base.RefIds.First(e => e.Role.Equals("impacts"));
                 public override string Code => "AreaAffected";
 
                 public string[]? this[Role role] => this[role.ToString()];
@@ -567,27 +558,24 @@ namespace S100Framework.DomainModel.S124 {
                     "impacts" => impactsFeatureTypes,
                     _ => throw new InvalidOperationException(),
                 };
+                [JsonIgnore]
+                public virtual String[] affectsFeatureTypes => [];
+
+                [JsonIgnore]
+                public virtual String[] impactsFeatureTypes => [];
+
                 public AreaAffected() {
-                    impacts = new RefId()
-                    {
-                        Value = string.Empty,
-                        Type = string.Empty,
-                        Role = string.Empty,
-                    };
                 }
             }
 
             [System.Serializable()]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
             public abstract partial class TextAssociation : FeatureAssociation {
-                public RefId? identifies { get; set; }
-                public List<RefId> positions { get; set; } = [];
+                [JsonIgnore]
+                public RefId? identifies => base.RefIds.FirstOrDefault(e => e.Role.Equals("identifies"));
 
-                [IgnoreDataMember]
-                public virtual String[] identifiesFeatureTypes => [];
-
-                [IgnoreDataMember]
-                public virtual String[] positionsFeatureTypes => [];
+                [JsonIgnore]
+                public IEnumerable<RefId> positions => base.RefIds.Where(e => e.Role.Equals("positions"));
                 public override string Code => "TextAssociation";
 
                 public string[]? this[Role role] => this[role.ToString()];
@@ -597,6 +585,12 @@ namespace S100Framework.DomainModel.S124 {
                     "positions" => positionsFeatureTypes,
                     _ => throw new InvalidOperationException(),
                 };
+                [JsonIgnore]
+                public virtual String[] identifiesFeatureTypes => [];
+
+                [JsonIgnore]
+                public virtual String[] positionsFeatureTypes => [];
+
                 public TextAssociation() {
                 }
             }
@@ -635,13 +629,13 @@ namespace S100Framework.DomainModel.S124 {
             [Required()]
             public DateTime publicationTime { get; set; }
 
-            [IgnoreDataMember]
+            [JsonIgnore]
             public override string Code => nameof(NAVWARNPreamble);
 
             public class NWReferences_theReferences : NWReferences {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theReferencesInformationTypes => ["References"];
 
                 public NWReferences_theReferences() {
@@ -675,7 +669,7 @@ namespace S100Framework.DomainModel.S124 {
             [Required()]
             public referenceCategory referenceCategory { get; set; }
 
-            [IgnoreDataMember]
+            [JsonIgnore]
             public override string Code => nameof(References);
 
             public References() {
@@ -708,13 +702,13 @@ namespace S100Framework.DomainModel.S124 {
             [EnumerationValue(27)]
             public restriction? restriction { get; set; } = default;
 
-            [IgnoreDataMember]
+            [JsonIgnore]
             public override string Code => nameof(NAVWARNPart);
 
             public class NWPreambleContent_header : NWPreambleContent {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] headerInformationTypes => ["NAVWARNPreamble"];
 
                 public NWPreambleContent_header() {
@@ -724,7 +718,7 @@ namespace S100Framework.DomainModel.S124 {
             public class AreaAffected_affects : AreaAffected {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] affectsFeatureTypes => ["NAVWARNAreaAffected"];
 
                 public AreaAffected_affects() {
@@ -734,7 +728,7 @@ namespace S100Framework.DomainModel.S124 {
             public class TextAssociation_positions : TextAssociation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] positionsFeatureTypes => ["TextPlacement"];
 
                 public TextAssociation_positions() {
@@ -751,13 +745,13 @@ namespace S100Framework.DomainModel.S124 {
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class NAVWARNAreaAffected : FeatureNode {
-            [IgnoreDataMember]
+            [JsonIgnore]
             public override string Code => nameof(NAVWARNAreaAffected);
 
             public class AreaAffected_impacts : AreaAffected {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] impactsFeatureTypes => ["NAVWARNPart"];
 
                 public AreaAffected_impacts() {
@@ -785,13 +779,13 @@ namespace S100Framework.DomainModel.S124 {
             public textType? textType { get; set; } = default;
             public Int32? scaleMinimum { get; set; } = default;
 
-            [IgnoreDataMember]
+            [JsonIgnore]
             public override string Code => nameof(TextPlacement);
 
             public class TextAssociation_identifies : TextAssociation {
                 public override roleType? roleType => DomainModel.roleType.composition;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] identifiesFeatureTypes => ["NAVWARNPart"];
 
                 public TextAssociation_identifies() {

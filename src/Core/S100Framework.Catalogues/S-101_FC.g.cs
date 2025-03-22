@@ -2,6 +2,7 @@ using System;
 using System.Collections.Immutable;
 using System.Linq;
 using System.Runtime.Serialization;
+using System.Text.Json.Serialization;
 
 #nullable enable
 namespace S100Framework.DomainModel.S101 {
@@ -4836,10 +4837,8 @@ namespace S100Framework.DomainModel.S101 {
             [System.Serializable()]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
             public partial class AdditionalInformation : InformationAssociation {
-                public RefId? theInformation { get; set; }
-
-                [IgnoreDataMember]
-                public virtual String[] theInformationInformationTypes => [];
+                [JsonIgnore]
+                RefId? theInformation => base.RefIds.FirstOrDefault(e => e.Role.Equals("theInformation"));
                 public override string Code => nameof(AdditionalInformation);
 
                 public string[]? this[Role role] => this[role.ToString()];
@@ -4848,6 +4847,9 @@ namespace S100Framework.DomainModel.S101 {
                     "theInformation" => theInformationInformationTypes,
                     _ => throw new InvalidOperationException(),
                 };
+                [JsonIgnore]
+                public virtual String[] theInformationInformationTypes => [];
+
                 public AdditionalInformation() {
                 }
             }
@@ -4855,10 +4857,8 @@ namespace S100Framework.DomainModel.S101 {
             [System.Serializable()]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
             public partial class QualityOfBathymetricDataComposition : InformationAssociation {
-                public RefId? theQualityInformation { get; set; }
-
-                [IgnoreDataMember]
-                public virtual String[] theQualityInformationInformationTypes => [];
+                [JsonIgnore]
+                RefId? theQualityInformation => base.RefIds.FirstOrDefault(e => e.Role.Equals("theQualityInformation"));
                 public override string Code => nameof(QualityOfBathymetricDataComposition);
 
                 public string[]? this[Role role] => this[role.ToString()];
@@ -4867,6 +4867,9 @@ namespace S100Framework.DomainModel.S101 {
                     "theQualityInformation" => theQualityInformationInformationTypes,
                     _ => throw new InvalidOperationException(),
                 };
+                [JsonIgnore]
+                public virtual String[] theQualityInformationInformationTypes => [];
+
                 public QualityOfBathymetricDataComposition() {
                 }
             }
@@ -4878,14 +4881,11 @@ namespace S100Framework.DomainModel.S101 {
             [System.Serializable()]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
             public abstract partial class AidsToNavigationAssociation : FeatureAssociation {
-                public RefId? theCollection { get; set; }
-                public List<RefId> theComponent { get; set; } = [];
+                [JsonIgnore]
+                public RefId? theCollection => base.RefIds.FirstOrDefault(e => e.Role.Equals("theCollection"));
 
-                [IgnoreDataMember]
-                public virtual String[] theCollectionFeatureTypes => [];
-
-                [IgnoreDataMember]
-                public virtual String[] theComponentFeatureTypes => [];
+                [JsonIgnore]
+                public IEnumerable<RefId> theComponent => base.RefIds.Where(e => e.Role.Equals("theComponent"));
                 public override string Code => "AidsToNavigationAssociation";
 
                 public string[]? this[Role role] => this[role.ToString()];
@@ -4895,6 +4895,12 @@ namespace S100Framework.DomainModel.S101 {
                     "theComponent" => theComponentFeatureTypes,
                     _ => throw new InvalidOperationException(),
                 };
+                [JsonIgnore]
+                public virtual String[] theCollectionFeatureTypes => [];
+
+                [JsonIgnore]
+                public virtual String[] theComponentFeatureTypes => [];
+
                 public AidsToNavigationAssociation() {
                 }
             }
@@ -4902,14 +4908,11 @@ namespace S100Framework.DomainModel.S101 {
             [System.Serializable()]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
             public abstract partial class ASLAggregation : FeatureAssociation {
-                public RefId? theCollection { get; set; }
-                public List<RefId> theComponent { get; set; } = [];
+                [JsonIgnore]
+                public RefId? theCollection => base.RefIds.FirstOrDefault(e => e.Role.Equals("theCollection"));
 
-                [IgnoreDataMember]
-                public virtual String[] theCollectionFeatureTypes => [];
-
-                [IgnoreDataMember]
-                public virtual String[] theComponentFeatureTypes => [];
+                [JsonIgnore]
+                public IEnumerable<RefId> theComponent => base.RefIds.Where(e => e.Role.Equals("theComponent"));
                 public override string Code => "ASLAggregation";
 
                 public string[]? this[Role role] => this[role.ToString()];
@@ -4919,6 +4922,12 @@ namespace S100Framework.DomainModel.S101 {
                     "theComponent" => theComponentFeatureTypes,
                     _ => throw new InvalidOperationException(),
                 };
+                [JsonIgnore]
+                public virtual String[] theCollectionFeatureTypes => [];
+
+                [JsonIgnore]
+                public virtual String[] theComponentFeatureTypes => [];
+
                 public ASLAggregation() {
                 }
             }
@@ -4926,14 +4935,11 @@ namespace S100Framework.DomainModel.S101 {
             [System.Serializable()]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
             public abstract partial class BridgeAggregation : FeatureAssociation {
-                public RefId? theCollection { get; set; }
-                public List<RefId> theComponent { get; set; } = [];
+                [JsonIgnore]
+                public RefId? theCollection => base.RefIds.FirstOrDefault(e => e.Role.Equals("theCollection"));
 
-                [IgnoreDataMember]
-                public virtual String[] theCollectionFeatureTypes => [];
-
-                [IgnoreDataMember]
-                public virtual String[] theComponentFeatureTypes => [];
+                [JsonIgnore]
+                public IEnumerable<RefId> theComponent => base.RefIds.Where(e => e.Role.Equals("theComponent"));
                 public override string Code => "BridgeAggregation";
 
                 public string[]? this[Role role] => this[role.ToString()];
@@ -4943,6 +4949,12 @@ namespace S100Framework.DomainModel.S101 {
                     "theComponent" => theComponentFeatureTypes,
                     _ => throw new InvalidOperationException(),
                 };
+                [JsonIgnore]
+                public virtual String[] theCollectionFeatureTypes => [];
+
+                [JsonIgnore]
+                public virtual String[] theComponentFeatureTypes => [];
+
                 public BridgeAggregation() {
                 }
             }
@@ -4950,14 +4962,11 @@ namespace S100Framework.DomainModel.S101 {
             [System.Serializable()]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
             public abstract partial class CautionAreaAssociation : FeatureAssociation {
-                public RefId? theCollection { get; set; }
-                public List<RefId> theComponent { get; set; } = [];
+                [JsonIgnore]
+                public RefId? theCollection => base.RefIds.FirstOrDefault(e => e.Role.Equals("theCollection"));
 
-                [IgnoreDataMember]
-                public virtual String[] theCollectionFeatureTypes => [];
-
-                [IgnoreDataMember]
-                public virtual String[] theComponentFeatureTypes => [];
+                [JsonIgnore]
+                public IEnumerable<RefId> theComponent => base.RefIds.Where(e => e.Role.Equals("theComponent"));
                 public override string Code => "CautionAreaAssociation";
 
                 public string[]? this[Role role] => this[role.ToString()];
@@ -4967,6 +4976,12 @@ namespace S100Framework.DomainModel.S101 {
                     "theComponent" => theComponentFeatureTypes,
                     _ => throw new InvalidOperationException(),
                 };
+                [JsonIgnore]
+                public virtual String[] theCollectionFeatureTypes => [];
+
+                [JsonIgnore]
+                public virtual String[] theComponentFeatureTypes => [];
+
                 public CautionAreaAssociation() {
                 }
             }
@@ -4974,14 +4989,11 @@ namespace S100Framework.DomainModel.S101 {
             [System.Serializable()]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
             public abstract partial class DeepWaterRouteAggregation : FeatureAssociation {
-                public RefId? theCollection { get; set; }
-                public List<RefId> theComponent { get; set; } = [];
+                [JsonIgnore]
+                public RefId? theCollection => base.RefIds.FirstOrDefault(e => e.Role.Equals("theCollection"));
 
-                [IgnoreDataMember]
-                public virtual String[] theCollectionFeatureTypes => [];
-
-                [IgnoreDataMember]
-                public virtual String[] theComponentFeatureTypes => [];
+                [JsonIgnore]
+                public IEnumerable<RefId> theComponent => base.RefIds.Where(e => e.Role.Equals("theComponent"));
                 public override string Code => "DeepWaterRouteAggregation";
 
                 public string[]? this[Role role] => this[role.ToString()];
@@ -4991,6 +5003,12 @@ namespace S100Framework.DomainModel.S101 {
                     "theComponent" => theComponentFeatureTypes,
                     _ => throw new InvalidOperationException(),
                 };
+                [JsonIgnore]
+                public virtual String[] theCollectionFeatureTypes => [];
+
+                [JsonIgnore]
+                public virtual String[] theComponentFeatureTypes => [];
+
                 public DeepWaterRouteAggregation() {
                 }
             }
@@ -4998,14 +5016,11 @@ namespace S100Framework.DomainModel.S101 {
             [System.Serializable()]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
             public abstract partial class FairwayAggregation : FeatureAssociation {
-                public RefId? theCollection { get; set; }
-                public List<RefId> theComponent { get; set; } = [];
+                [JsonIgnore]
+                public RefId? theCollection => base.RefIds.FirstOrDefault(e => e.Role.Equals("theCollection"));
 
-                [IgnoreDataMember]
-                public virtual String[] theCollectionFeatureTypes => [];
-
-                [IgnoreDataMember]
-                public virtual String[] theComponentFeatureTypes => [];
+                [JsonIgnore]
+                public IEnumerable<RefId> theComponent => base.RefIds.Where(e => e.Role.Equals("theComponent"));
                 public override string Code => "FairwayAggregation";
 
                 public string[]? this[Role role] => this[role.ToString()];
@@ -5015,6 +5030,12 @@ namespace S100Framework.DomainModel.S101 {
                     "theComponent" => theComponentFeatureTypes,
                     _ => throw new InvalidOperationException(),
                 };
+                [JsonIgnore]
+                public virtual String[] theCollectionFeatureTypes => [];
+
+                [JsonIgnore]
+                public virtual String[] theComponentFeatureTypes => [];
+
                 public FairwayAggregation() {
                 }
             }
@@ -5022,14 +5043,11 @@ namespace S100Framework.DomainModel.S101 {
             [System.Serializable()]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
             public abstract partial class FairwayAuxiliary : FeatureAssociation {
-                public RefId? thePrimaryFeature { get; set; }
-                public List<RefId> theAuxiliaryFeature { get; set; } = [];
+                [JsonIgnore]
+                public RefId? thePrimaryFeature => base.RefIds.FirstOrDefault(e => e.Role.Equals("thePrimaryFeature"));
 
-                [IgnoreDataMember]
-                public virtual String[] thePrimaryFeatureFeatureTypes => [];
-
-                [IgnoreDataMember]
-                public virtual String[] theAuxiliaryFeatureFeatureTypes => [];
+                [JsonIgnore]
+                public IEnumerable<RefId> theAuxiliaryFeature => base.RefIds.Where(e => e.Role.Equals("theAuxiliaryFeature"));
                 public override string Code => "FairwayAuxiliary";
 
                 public string[]? this[Role role] => this[role.ToString()];
@@ -5039,6 +5057,12 @@ namespace S100Framework.DomainModel.S101 {
                     "theAuxiliaryFeature" => theAuxiliaryFeatureFeatureTypes,
                     _ => throw new InvalidOperationException(),
                 };
+                [JsonIgnore]
+                public virtual String[] thePrimaryFeatureFeatureTypes => [];
+
+                [JsonIgnore]
+                public virtual String[] theAuxiliaryFeatureFeatureTypes => [];
+
                 public FairwayAuxiliary() {
                 }
             }
@@ -5046,14 +5070,11 @@ namespace S100Framework.DomainModel.S101 {
             [System.Serializable()]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
             public abstract partial class IslandAggregation : FeatureAssociation {
-                public RefId? theCollection { get; set; }
-                public List<RefId> theComponent { get; set; } = [];
+                [JsonIgnore]
+                public RefId? theCollection => base.RefIds.FirstOrDefault(e => e.Role.Equals("theCollection"));
 
-                [IgnoreDataMember]
-                public virtual String[] theCollectionFeatureTypes => [];
-
-                [IgnoreDataMember]
-                public virtual String[] theComponentFeatureTypes => [];
+                [JsonIgnore]
+                public IEnumerable<RefId> theComponent => base.RefIds.Where(e => e.Role.Equals("theComponent"));
                 public override string Code => "IslandAggregation";
 
                 public string[]? this[Role role] => this[role.ToString()];
@@ -5063,6 +5084,12 @@ namespace S100Framework.DomainModel.S101 {
                     "theComponent" => theComponentFeatureTypes,
                     _ => throw new InvalidOperationException(),
                 };
+                [JsonIgnore]
+                public virtual String[] theCollectionFeatureTypes => [];
+
+                [JsonIgnore]
+                public virtual String[] theComponentFeatureTypes => [];
+
                 public IslandAggregation() {
                 }
             }
@@ -5070,14 +5097,11 @@ namespace S100Framework.DomainModel.S101 {
             [System.Serializable()]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
             public abstract partial class MooringTrotAggregation : FeatureAssociation {
-                public RefId? theCollection { get; set; }
-                public List<RefId> theComponent { get; set; } = [];
+                [JsonIgnore]
+                public RefId? theCollection => base.RefIds.FirstOrDefault(e => e.Role.Equals("theCollection"));
 
-                [IgnoreDataMember]
-                public virtual String[] theCollectionFeatureTypes => [];
-
-                [IgnoreDataMember]
-                public virtual String[] theComponentFeatureTypes => [];
+                [JsonIgnore]
+                public IEnumerable<RefId> theComponent => base.RefIds.Where(e => e.Role.Equals("theComponent"));
                 public override string Code => "MooringTrotAggregation";
 
                 public string[]? this[Role role] => this[role.ToString()];
@@ -5087,6 +5111,12 @@ namespace S100Framework.DomainModel.S101 {
                     "theComponent" => theComponentFeatureTypes,
                     _ => throw new InvalidOperationException(),
                 };
+                [JsonIgnore]
+                public virtual String[] theCollectionFeatureTypes => [];
+
+                [JsonIgnore]
+                public virtual String[] theComponentFeatureTypes => [];
+
                 public MooringTrotAggregation() {
                 }
             }
@@ -5094,14 +5124,11 @@ namespace S100Framework.DomainModel.S101 {
             [System.Serializable()]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
             public abstract partial class PilotageDistrictAssociation : FeatureAssociation {
-                public RefId? theCollection { get; set; }
-                public List<RefId> theComponent { get; set; } = [];
+                [JsonIgnore]
+                public RefId? theCollection => base.RefIds.FirstOrDefault(e => e.Role.Equals("theCollection"));
 
-                [IgnoreDataMember]
-                public virtual String[] theCollectionFeatureTypes => [];
-
-                [IgnoreDataMember]
-                public virtual String[] theComponentFeatureTypes => [];
+                [JsonIgnore]
+                public IEnumerable<RefId> theComponent => base.RefIds.Where(e => e.Role.Equals("theComponent"));
                 public override string Code => "PilotageDistrictAssociation";
 
                 public string[]? this[Role role] => this[role.ToString()];
@@ -5111,6 +5138,12 @@ namespace S100Framework.DomainModel.S101 {
                     "theComponent" => theComponentFeatureTypes,
                     _ => throw new InvalidOperationException(),
                 };
+                [JsonIgnore]
+                public virtual String[] theCollectionFeatureTypes => [];
+
+                [JsonIgnore]
+                public virtual String[] theComponentFeatureTypes => [];
+
                 public PilotageDistrictAssociation() {
                 }
             }
@@ -5118,14 +5151,11 @@ namespace S100Framework.DomainModel.S101 {
             [System.Serializable()]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
             public abstract partial class RangeSystemAggregation : FeatureAssociation {
-                public RefId? theCollection { get; set; }
-                public List<RefId> theComponent { get; set; } = [];
+                [JsonIgnore]
+                public RefId? theCollection => base.RefIds.FirstOrDefault(e => e.Role.Equals("theCollection"));
 
-                [IgnoreDataMember]
-                public virtual String[] theCollectionFeatureTypes => [];
-
-                [IgnoreDataMember]
-                public virtual String[] theComponentFeatureTypes => [];
+                [JsonIgnore]
+                public IEnumerable<RefId> theComponent => base.RefIds.Where(e => e.Role.Equals("theComponent"));
                 public override string Code => "RangeSystemAggregation";
 
                 public string[]? this[Role role] => this[role.ToString()];
@@ -5135,6 +5165,12 @@ namespace S100Framework.DomainModel.S101 {
                     "theComponent" => theComponentFeatureTypes,
                     _ => throw new InvalidOperationException(),
                 };
+                [JsonIgnore]
+                public virtual String[] theCollectionFeatureTypes => [];
+
+                [JsonIgnore]
+                public virtual String[] theComponentFeatureTypes => [];
+
                 public RangeSystemAggregation() {
                 }
             }
@@ -5142,14 +5178,11 @@ namespace S100Framework.DomainModel.S101 {
             [System.Serializable()]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
             public abstract partial class RoofedStructureAggregation : FeatureAssociation {
-                public RefId? theRoofedStructure { get; set; }
-                public List<RefId> theSupport { get; set; } = [];
+                [JsonIgnore]
+                public RefId? theRoofedStructure => base.RefIds.FirstOrDefault(e => e.Role.Equals("theRoofedStructure"));
 
-                [IgnoreDataMember]
-                public virtual String[] theRoofedStructureFeatureTypes => [];
-
-                [IgnoreDataMember]
-                public virtual String[] theSupportFeatureTypes => [];
+                [JsonIgnore]
+                public IEnumerable<RefId> theSupport => base.RefIds.Where(e => e.Role.Equals("theSupport"));
                 public override string Code => "RoofedStructureAggregation";
 
                 public string[]? this[Role role] => this[role.ToString()];
@@ -5159,6 +5192,12 @@ namespace S100Framework.DomainModel.S101 {
                     "theSupport" => theSupportFeatureTypes,
                     _ => throw new InvalidOperationException(),
                 };
+                [JsonIgnore]
+                public virtual String[] theRoofedStructureFeatureTypes => [];
+
+                [JsonIgnore]
+                public virtual String[] theSupportFeatureTypes => [];
+
                 public RoofedStructureAggregation() {
                 }
             }
@@ -5166,14 +5205,11 @@ namespace S100Framework.DomainModel.S101 {
             [System.Serializable()]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
             public abstract partial class StructureEquipment : FeatureAssociation {
-                public RefId? theStructure { get; set; }
-                public List<RefId> theEquipment { get; set; } = [];
+                [JsonIgnore]
+                public RefId? theStructure => base.RefIds.FirstOrDefault(e => e.Role.Equals("theStructure"));
 
-                [IgnoreDataMember]
-                public virtual String[] theStructureFeatureTypes => [];
-
-                [IgnoreDataMember]
-                public virtual String[] theEquipmentFeatureTypes => [];
+                [JsonIgnore]
+                public IEnumerable<RefId> theEquipment => base.RefIds.Where(e => e.Role.Equals("theEquipment"));
                 public override string Code => "StructureEquipment";
 
                 public string[]? this[Role role] => this[role.ToString()];
@@ -5183,6 +5219,12 @@ namespace S100Framework.DomainModel.S101 {
                     "theEquipment" => theEquipmentFeatureTypes,
                     _ => throw new InvalidOperationException(),
                 };
+                [JsonIgnore]
+                public virtual String[] theStructureFeatureTypes => [];
+
+                [JsonIgnore]
+                public virtual String[] theEquipmentFeatureTypes => [];
+
                 public StructureEquipment() {
                 }
             }
@@ -5190,14 +5232,11 @@ namespace S100Framework.DomainModel.S101 {
             [System.Serializable()]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
             public abstract partial class TextAssociation : FeatureAssociation {
-                public List<RefId> theCartographicText { get; set; } = [];
-                public RefId? thePositionProvider { get; set; }
+                [JsonIgnore]
+                public IEnumerable<RefId> theCartographicText => base.RefIds.Where(e => e.Role.Equals("theCartographicText"));
 
-                [IgnoreDataMember]
-                public virtual String[] theCartographicTextFeatureTypes => [];
-
-                [IgnoreDataMember]
-                public virtual String[] thePositionProviderFeatureTypes => [];
+                [JsonIgnore]
+                public RefId? thePositionProvider => base.RefIds.FirstOrDefault(e => e.Role.Equals("thePositionProvider"));
                 public override string Code => "TextAssociation";
 
                 public string[]? this[Role role] => this[role.ToString()];
@@ -5207,6 +5246,12 @@ namespace S100Framework.DomainModel.S101 {
                     "thePositionProvider" => thePositionProviderFeatureTypes,
                     _ => throw new InvalidOperationException(),
                 };
+                [JsonIgnore]
+                public virtual String[] theCartographicTextFeatureTypes => [];
+
+                [JsonIgnore]
+                public virtual String[] thePositionProviderFeatureTypes => [];
+
                 public TextAssociation() {
                 }
             }
@@ -5214,14 +5259,11 @@ namespace S100Framework.DomainModel.S101 {
             [System.Serializable()]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
             public abstract partial class TrafficSeparationSchemeAggregation : FeatureAssociation {
-                public RefId? theCollection { get; set; }
-                public List<RefId> theComponent { get; set; } = [];
+                [JsonIgnore]
+                public RefId? theCollection => base.RefIds.FirstOrDefault(e => e.Role.Equals("theCollection"));
 
-                [IgnoreDataMember]
-                public virtual String[] theCollectionFeatureTypes => [];
-
-                [IgnoreDataMember]
-                public virtual String[] theComponentFeatureTypes => [];
+                [JsonIgnore]
+                public IEnumerable<RefId> theComponent => base.RefIds.Where(e => e.Role.Equals("theComponent"));
                 public override string Code => "TrafficSeparationSchemeAggregation";
 
                 public string[]? this[Role role] => this[role.ToString()];
@@ -5231,6 +5273,12 @@ namespace S100Framework.DomainModel.S101 {
                     "theComponent" => theComponentFeatureTypes,
                     _ => throw new InvalidOperationException(),
                 };
+                [JsonIgnore]
+                public virtual String[] theCollectionFeatureTypes => [];
+
+                [JsonIgnore]
+                public virtual String[] theComponentFeatureTypes => [];
+
                 public TrafficSeparationSchemeAggregation() {
                 }
             }
@@ -5238,14 +5286,11 @@ namespace S100Framework.DomainModel.S101 {
             [System.Serializable()]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
             public abstract partial class TwoWayRouteAggregation : FeatureAssociation {
-                public RefId? theCollection { get; set; }
-                public List<RefId> theComponent { get; set; } = [];
+                [JsonIgnore]
+                public RefId? theCollection => base.RefIds.FirstOrDefault(e => e.Role.Equals("theCollection"));
 
-                [IgnoreDataMember]
-                public virtual String[] theCollectionFeatureTypes => [];
-
-                [IgnoreDataMember]
-                public virtual String[] theComponentFeatureTypes => [];
+                [JsonIgnore]
+                public IEnumerable<RefId> theComponent => base.RefIds.Where(e => e.Role.Equals("theComponent"));
                 public override string Code => "TwoWayRouteAggregation";
 
                 public string[]? this[Role role] => this[role.ToString()];
@@ -5255,6 +5300,12 @@ namespace S100Framework.DomainModel.S101 {
                     "theComponent" => theComponentFeatureTypes,
                     _ => throw new InvalidOperationException(),
                 };
+                [JsonIgnore]
+                public virtual String[] theCollectionFeatureTypes => [];
+
+                [JsonIgnore]
+                public virtual String[] theComponentFeatureTypes => [];
+
                 public TwoWayRouteAggregation() {
                 }
             }
@@ -5262,14 +5313,11 @@ namespace S100Framework.DomainModel.S101 {
             [System.Serializable()]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
             public abstract partial class UpdateAggregation : FeatureAssociation {
-                public RefId? theCollection { get; set; }
-                public List<RefId> theComponent { get; set; } = [];
+                [JsonIgnore]
+                public RefId? theCollection => base.RefIds.FirstOrDefault(e => e.Role.Equals("theCollection"));
 
-                [IgnoreDataMember]
-                public virtual String[] theCollectionFeatureTypes => [];
-
-                [IgnoreDataMember]
-                public virtual String[] theComponentFeatureTypes => [];
+                [JsonIgnore]
+                public IEnumerable<RefId> theComponent => base.RefIds.Where(e => e.Role.Equals("theComponent"));
                 public override string Code => "UpdateAggregation";
 
                 public string[]? this[Role role] => this[role.ToString()];
@@ -5279,6 +5327,12 @@ namespace S100Framework.DomainModel.S101 {
                     "theComponent" => theComponentFeatureTypes,
                     _ => throw new InvalidOperationException(),
                 };
+                [JsonIgnore]
+                public virtual String[] theCollectionFeatureTypes => [];
+
+                [JsonIgnore]
+                public virtual String[] theComponentFeatureTypes => [];
+
                 public UpdateAggregation() {
                 }
             }
@@ -5286,14 +5340,11 @@ namespace S100Framework.DomainModel.S101 {
             [System.Serializable()]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
             public abstract partial class UpdatedInformation : FeatureAssociation {
-                public List<RefId> theUpdate { get; set; } = [];
-                public List<RefId> theUpdatedObject { get; set; } = [];
+                [JsonIgnore]
+                public IEnumerable<RefId> theUpdate => base.RefIds.Where(e => e.Role.Equals("theUpdate"));
 
-                [IgnoreDataMember]
-                public virtual String[] theUpdateFeatureTypes => [];
-
-                [IgnoreDataMember]
-                public virtual String[] theUpdatedObjectFeatureTypes => [];
+                [JsonIgnore]
+                public IEnumerable<RefId> theUpdatedObject => base.RefIds.Where(e => e.Role.Equals("theUpdatedObject"));
                 public override string Code => "UpdatedInformation";
 
                 public string[]? this[Role role] => this[role.ToString()];
@@ -5303,6 +5354,12 @@ namespace S100Framework.DomainModel.S101 {
                     "theUpdatedObject" => theUpdatedObjectFeatureTypes,
                     _ => throw new InvalidOperationException(),
                 };
+                [JsonIgnore]
+                public virtual String[] theUpdateFeatureTypes => [];
+
+                [JsonIgnore]
+                public virtual String[] theUpdatedObjectFeatureTypes => [];
+
                 public UpdatedInformation() {
                 }
             }
@@ -5330,7 +5387,7 @@ namespace S100Framework.DomainModel.S101 {
             public List<onlineResource> onlineResource { get; set; } = [];
             public List<telecommunications> telecommunications { get; set; } = [];
 
-            [IgnoreDataMember]
+            [JsonIgnore]
             public override string Code => nameof(ContactDetails);
 
             public ContactDetails() {
@@ -5347,7 +5404,7 @@ namespace S100Framework.DomainModel.S101 {
             public List<scheduleByDayOfWeek> scheduleByDayOfWeek { get; set; }
             public List<information> information { get; set; } = [];
 
-            [IgnoreDataMember]
+            [JsonIgnore]
             public override string Code => nameof(ServiceHours);
 
             public ServiceHours() {
@@ -5364,7 +5421,7 @@ namespace S100Framework.DomainModel.S101 {
             public List<periodicDateRange> periodicDateRange { get; set; } = [];
             public List<information> information { get; set; } = [];
 
-            [IgnoreDataMember]
+            [JsonIgnore]
             public override string Code => nameof(NonStandardWorkingDay);
 
             public NonStandardWorkingDay() {
@@ -5379,7 +5436,7 @@ namespace S100Framework.DomainModel.S101 {
             public List<information> information { get; set; } = [];
             public String? pictorialRepresentation { get; set; } = null;
 
-            [IgnoreDataMember]
+            [JsonIgnore]
             public override string Code => nameof(NauticalInformation);
 
             public NauticalInformation() {
@@ -5393,7 +5450,7 @@ namespace S100Framework.DomainModel.S101 {
             public qualityOfHorizontalMeasurement? qualityOfHorizontalMeasurement { get; set; } = default;
             public List<spatialAccuracy> spatialAccuracy { get; set; } = [];
 
-            [IgnoreDataMember]
+            [JsonIgnore]
             public override string Code => nameof(SpatialQuality);
 
             public SpatialQuality() {
@@ -5425,13 +5482,13 @@ namespace S100Framework.DomainModel.S101 {
             public verticalUncertainty? verticalUncertainty { get; set; }
             public List<information> information { get; set; } = [];
 
-            [IgnoreDataMember]
+            [JsonIgnore]
             public override string Code => nameof(QualityOfNonBathymetricData);
 
             public class UpdatedInformation_theUpdate : UpdatedInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
 
                 public UpdatedInformation_theUpdate() {
@@ -5462,7 +5519,7 @@ namespace S100Framework.DomainModel.S101 {
             public Int32 optimumDisplayScale { get; set; }
             public List<information> information { get; set; } = [];
 
-            [IgnoreDataMember]
+            [JsonIgnore]
             public override string Code => nameof(DataCoverage);
 
             public DataCoverage() {
@@ -5481,13 +5538,13 @@ namespace S100Framework.DomainModel.S101 {
             public String? interoperabilityIdentifier { get; set; } = null;
             public List<information> information { get; set; } = [];
 
-            [IgnoreDataMember]
+            [JsonIgnore]
             public override string Code => nameof(NavigationalSystemOfMarks);
 
             public class UpdatedInformation_theUpdate : UpdatedInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
 
                 public UpdatedInformation_theUpdate() {
@@ -5515,13 +5572,13 @@ namespace S100Framework.DomainModel.S101 {
             public Int32? scaleMinimum { get; set; } = default;
             public List<information> information { get; set; } = [];
 
-            [IgnoreDataMember]
+            [JsonIgnore]
             public override string Code => nameof(LocalDirectionOfBuoyage);
 
             public class UpdatedInformation_theUpdate : UpdatedInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
 
                 public UpdatedInformation_theUpdate() {
@@ -5563,13 +5620,13 @@ namespace S100Framework.DomainModel.S101 {
             public List<zoneOfConfidence> zoneOfConfidence { get; set; }
             public List<information> information { get; set; } = [];
 
-            [IgnoreDataMember]
+            [JsonIgnore]
             public override string Code => nameof(QualityOfBathymetricData);
 
             public class QualityOfBathymetricDataComposition_theQualityInformation : QualityOfBathymetricDataComposition {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theQualityInformationInformationTypes => ["SpatialQuality"];
 
                 public QualityOfBathymetricDataComposition_theQualityInformation() {
@@ -5579,7 +5636,7 @@ namespace S100Framework.DomainModel.S101 {
             public class UpdatedInformation_theUpdate : UpdatedInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
 
                 public UpdatedInformation_theUpdate() {
@@ -5628,13 +5685,13 @@ namespace S100Framework.DomainModel.S101 {
             public verticalDatum verticalDatum { get; set; }
             public List<information> information { get; set; } = [];
 
-            [IgnoreDataMember]
+            [JsonIgnore]
             public override string Code => nameof(SoundingDatum);
 
             public class UpdatedInformation_theUpdate : UpdatedInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
 
                 public UpdatedInformation_theUpdate() {
@@ -5669,13 +5726,13 @@ namespace S100Framework.DomainModel.S101 {
             public verticalDatum verticalDatum { get; set; }
             public List<information> information { get; set; } = [];
 
-            [IgnoreDataMember]
+            [JsonIgnore]
             public override string Code => nameof(VerticalDatumOfData);
 
             public class UpdatedInformation_theUpdate : UpdatedInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
 
                 public UpdatedInformation_theUpdate() {
@@ -5753,13 +5810,13 @@ namespace S100Framework.DomainModel.S101 {
             public List<techniqueOfVerticalMeasurement> techniqueOfVerticalMeasurement { get; set; } = [];
             public List<information> information { get; set; } = [];
 
-            [IgnoreDataMember]
+            [JsonIgnore]
             public override string Code => nameof(QualityOfSurvey);
 
             public class UpdatedInformation_theUpdate : UpdatedInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
 
                 public UpdatedInformation_theUpdate() {
@@ -5795,13 +5852,13 @@ namespace S100Framework.DomainModel.S101 {
             public String? source { get; set; } = null;
             public List<information> information { get; set; } = [];
 
-            [IgnoreDataMember]
+            [JsonIgnore]
             public override string Code => nameof(UpdateInformation);
 
             public class UpdateAggregation_theComponent : UpdateAggregation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theComponentFeatureTypes => ["UpdateInformation"];
 
                 public UpdateAggregation_theComponent() {
@@ -5811,7 +5868,7 @@ namespace S100Framework.DomainModel.S101 {
             public class UpdateAggregation_theCollection : UpdateAggregation {
                 public override roleType? roleType => DomainModel.roleType.aggregation;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theCollectionFeatureTypes => ["UpdateInformation"];
 
                 public UpdateAggregation_theCollection() {
@@ -5821,7 +5878,7 @@ namespace S100Framework.DomainModel.S101 {
             public class UpdatedInformation_theUpdatedObject : UpdatedInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theUpdatedObjectFeatureTypes => ["AdministrationArea", "AirportAirfield", "AnchorBerth", "AnchorageArea", "ArchipelagicSeaLane", "ArchipelagicSeaLaneArea", "ArchipelagicSeaLaneAxis", "Berth", "Bollard", "Bridge", "Building", "BuiltUpArea", "CableArea", "CableOverhead", "CableSubmarine", "Canal", "CardinalBeacon", "CardinalBuoy", "CargoTranshipmentArea", "Causeway", "CautionArea", "Checkpoint", "CoastGuardStation", "Coastline", "CollisionRegulationsLimit", "ContiguousZone", "ContinentalShelfArea", "Conveyor", "Crane", "CurrentNonGravitational", "CustomZone", "Dam", "Daymark", "DeepWaterRoute", "DeepWaterRouteCentreline", "DeepWaterRoutePart", "DepthArea", "DepthContour", "DepthNoBottomFound", "DiscolouredWater", "DistanceMark", "DockArea", "Dolphin", "DredgedArea", "DryDock", "DumpingGround", "Dyke", "EmergencyWreckMarkingBuoy", "ExclusiveEconomicZone", "Fairway", "FairwaySystem", "FenceWall", "FerryRoute", "FisheryZone", "FishingFacility", "FishingGround", "FloatingDock", "FogSignal", "FortifiedStructure", "FoulGround", "FreePortArea", "Gate", "Gridiron", "HarbourAreaAdministrative", "HarbourFacility", "Helipad", "Hulk", "IceArea", "InformationArea", "InshoreTrafficZone", "InstallationBuoy", "IslandGroup", "IsolatedDangerBeacon", "IsolatedDangerBuoy", "Lake", "LandArea", "LandElevation", "LandRegion", "Landmark", "LateralBeacon", "LateralBuoy", "LightAirObstruction", "LightAllAround", "LightFloat", "LightFogDetector", "LightSectored", "LightVessel", "LocalDirectionOfBuoyage", "LocalMagneticAnomaly", "LockBasin", "LogPond", "MagneticVariation", "MarineFarmCulture", "MarinePollutionRegulationsArea", "MilitaryPracticeArea", "MooringArea", "MooringBuoy", "MooringTrot", "NavigationLine", "NavigationalSystemOfMarks", "Obstruction", "OffshorePlatform", "OffshoreProductionArea", "OilBarrier", "PhysicalAISAidToNavigation", "Pile", "PilotBoardingPlace", "PilotageDistrict", "PipelineOverhead", "PipelineSubmarineOnLand", "Pontoon", "PrecautionaryArea", "ProductionStorageArea", "PylonBridgeSupport", "QualityOfBathymetricData", "QualityOfNonBathymetricData", "QualityOfSurvey", "RadarLine", "RadarRange", "RadarReflector", "RadarStation", "RadarTransponderBeacon", "RadioCallingInPoint", "RadioStation", "Railway", "RangeSystem", "Rapids", "RecommendedRouteCentreline", "RecommendedTrack", "RecommendedTrafficLanePart", "RescueStation", "RestrictedArea", "Retroreflector", "River", "Road", "Runway", "SafeWaterBeacon", "SafeWaterBuoy", "Sandwave", "SeaAreaNamedWaterArea", "SeabedArea", "Seagrass", "SeaplaneLandingArea", "SeparationZoneOrLine", "ShorelineConstruction", "SignalStationTraffic", "SignalStationWarning", "SiloTank", "SmallCraftFacility", "SlopeTopline", "SlopingGround", "Sounding", "SoundingDatum", "SpanFixed", "SpanOpening", "SpecialPurposeGeneralBeacon", "SpecialPurposeGeneralBuoy", "Spring", "StraightTerritorialSeaBaseline", "StructureOverNavigableWater", "SubmarinePipelineArea", "SubmarineTransitLane", "SweptArea", "TerritorialSeaArea", "TidalStreamPanelData", "TidalStreamFloodEbb", "Tideway", "TrafficSeparationScheme", "TrafficSeparationSchemeBoundary", "TrafficSeparationSchemeCrossing", "TrafficSeparationSchemeLanePart", "TrafficSeparationSchemeRoundabout", "Tunnel", "TwoWayRoute", "TwoWayRoutePart", "UnderwaterAwashRock", "UnsurveyedArea", "UpdateInformation", "Vegetation", "VerticalDatumOfData", "VesselTrafficServiceArea", "VirtualAISAidToNavigation", "WaterTurbulence", "Waterfall", "WeedKelp", "WindTurbine", "Wreck"];
 
                 public UpdatedInformation_theUpdatedObject() {
@@ -5831,7 +5888,7 @@ namespace S100Framework.DomainModel.S101 {
             public class UpdatedInformation_theUpdate : UpdatedInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
 
                 public UpdatedInformation_theUpdate() {
@@ -5858,13 +5915,13 @@ namespace S100Framework.DomainModel.S101 {
             public Int32? scaleMinimum { get; set; } = default;
             public List<information> information { get; set; } = [];
 
-            [IgnoreDataMember]
+            [JsonIgnore]
             public override string Code => nameof(MagneticVariation);
 
             public class AdditionalInformation_theInformation : AdditionalInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theInformationInformationTypes => ["NauticalInformation"];
 
                 public AdditionalInformation_theInformation() {
@@ -5874,7 +5931,7 @@ namespace S100Framework.DomainModel.S101 {
             public class UpdatedInformation_theUpdate : UpdatedInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
 
                 public UpdatedInformation_theUpdate() {
@@ -5897,13 +5954,13 @@ namespace S100Framework.DomainModel.S101 {
             public Int32? scaleMinimum { get; set; } = default;
             public List<information> information { get; set; } = [];
 
-            [IgnoreDataMember]
+            [JsonIgnore]
             public override string Code => nameof(LocalMagneticAnomaly);
 
             public class AdditionalInformation_theInformation : AdditionalInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theInformationInformationTypes => ["NauticalInformation"];
 
                 public AdditionalInformation_theInformation() {
@@ -5913,7 +5970,7 @@ namespace S100Framework.DomainModel.S101 {
             public class UpdatedInformation_theUpdate : UpdatedInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
 
                 public UpdatedInformation_theUpdate() {
@@ -5923,7 +5980,7 @@ namespace S100Framework.DomainModel.S101 {
             public class TextAssociation_theCartographicText : TextAssociation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theCartographicTextFeatureTypes => ["TextPlacement"];
 
                 public TextAssociation_theCartographicText() {
@@ -5982,13 +6039,13 @@ namespace S100Framework.DomainModel.S101 {
             public List<information> information { get; set; } = [];
             public String? pictorialRepresentation { get; set; } = null;
 
-            [IgnoreDataMember]
+            [JsonIgnore]
             public override string Code => nameof(Coastline);
 
             public class AdditionalInformation_theInformation : AdditionalInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theInformationInformationTypes => ["NauticalInformation"];
 
                 public AdditionalInformation_theInformation() {
@@ -5998,7 +6055,7 @@ namespace S100Framework.DomainModel.S101 {
             public class UpdatedInformation_theUpdate : UpdatedInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
 
                 public UpdatedInformation_theUpdate() {
@@ -6008,7 +6065,7 @@ namespace S100Framework.DomainModel.S101 {
             public class TextAssociation_theCartographicText : TextAssociation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theCartographicTextFeatureTypes => ["TextPlacement"];
 
                 public TextAssociation_theCartographicText() {
@@ -6035,13 +6092,13 @@ namespace S100Framework.DomainModel.S101 {
             public Int32? scaleMinimum { get; set; } = default;
             public List<information> information { get; set; } = [];
 
-            [IgnoreDataMember]
+            [JsonIgnore]
             public override string Code => nameof(LandArea);
 
             public class AdditionalInformation_theInformation : AdditionalInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theInformationInformationTypes => ["NauticalInformation"];
 
                 public AdditionalInformation_theInformation() {
@@ -6051,7 +6108,7 @@ namespace S100Framework.DomainModel.S101 {
             public class IslandAggregation_theCollection : IslandAggregation {
                 public override roleType? roleType => DomainModel.roleType.aggregation;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theCollectionFeatureTypes => ["IslandGroup"];
 
                 public IslandAggregation_theCollection() {
@@ -6061,7 +6118,7 @@ namespace S100Framework.DomainModel.S101 {
             public class UpdatedInformation_theUpdate : UpdatedInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
 
                 public UpdatedInformation_theUpdate() {
@@ -6071,7 +6128,7 @@ namespace S100Framework.DomainModel.S101 {
             public class TextAssociation_theCartographicText : TextAssociation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theCartographicTextFeatureTypes => ["TextPlacement"];
 
                 public TextAssociation_theCartographicText() {
@@ -6091,13 +6148,13 @@ namespace S100Framework.DomainModel.S101 {
             public Int32? scaleMinimum { get; set; } = default;
             public List<information> information { get; set; } = [];
 
-            [IgnoreDataMember]
+            [JsonIgnore]
             public override string Code => nameof(IslandGroup);
 
             public class AdditionalInformation_theInformation : AdditionalInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theInformationInformationTypes => ["NauticalInformation"];
 
                 public AdditionalInformation_theInformation() {
@@ -6107,7 +6164,7 @@ namespace S100Framework.DomainModel.S101 {
             public class IslandAggregation_theComponent : IslandAggregation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theComponentFeatureTypes => ["LandArea", "IslandGroup"];
 
                 public IslandAggregation_theComponent() {
@@ -6117,7 +6174,7 @@ namespace S100Framework.DomainModel.S101 {
             public class IslandAggregation_theCollection : IslandAggregation {
                 public override roleType? roleType => DomainModel.roleType.aggregation;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theCollectionFeatureTypes => ["IslandGroup"];
 
                 public IslandAggregation_theCollection() {
@@ -6127,7 +6184,7 @@ namespace S100Framework.DomainModel.S101 {
             public class UpdatedInformation_theUpdate : UpdatedInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
 
                 public UpdatedInformation_theUpdate() {
@@ -6137,7 +6194,7 @@ namespace S100Framework.DomainModel.S101 {
             public class TextAssociation_theCartographicText : TextAssociation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theCartographicTextFeatureTypes => ["TextPlacement"];
 
                 public TextAssociation_theCartographicText() {
@@ -6164,13 +6221,13 @@ namespace S100Framework.DomainModel.S101 {
             public Int32? scaleMinimum { get; set; } = default;
             public List<information> information { get; set; } = [];
 
-            [IgnoreDataMember]
+            [JsonIgnore]
             public override string Code => nameof(LandElevation);
 
             public class AdditionalInformation_theInformation : AdditionalInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theInformationInformationTypes => ["NauticalInformation"];
 
                 public AdditionalInformation_theInformation() {
@@ -6180,7 +6237,7 @@ namespace S100Framework.DomainModel.S101 {
             public class UpdatedInformation_theUpdate : UpdatedInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
 
                 public UpdatedInformation_theUpdate() {
@@ -6190,7 +6247,7 @@ namespace S100Framework.DomainModel.S101 {
             public class TextAssociation_theCartographicText : TextAssociation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theCartographicTextFeatureTypes => ["TextPlacement"];
 
                 public TextAssociation_theCartographicText() {
@@ -6212,13 +6269,13 @@ namespace S100Framework.DomainModel.S101 {
             public Int32? scaleMinimum { get; set; } = default;
             public List<information> information { get; set; } = [];
 
-            [IgnoreDataMember]
+            [JsonIgnore]
             public override string Code => nameof(River);
 
             public class AdditionalInformation_theInformation : AdditionalInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theInformationInformationTypes => ["NauticalInformation"];
 
                 public AdditionalInformation_theInformation() {
@@ -6228,7 +6285,7 @@ namespace S100Framework.DomainModel.S101 {
             public class UpdatedInformation_theUpdate : UpdatedInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
 
                 public UpdatedInformation_theUpdate() {
@@ -6238,7 +6295,7 @@ namespace S100Framework.DomainModel.S101 {
             public class TextAssociation_theCartographicText : TextAssociation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theCartographicTextFeatureTypes => ["TextPlacement"];
 
                 public TextAssociation_theCartographicText() {
@@ -6258,13 +6315,13 @@ namespace S100Framework.DomainModel.S101 {
             public Int32? scaleMinimum { get; set; } = default;
             public List<information> information { get; set; } = [];
 
-            [IgnoreDataMember]
+            [JsonIgnore]
             public override string Code => nameof(Rapids);
 
             public class AdditionalInformation_theInformation : AdditionalInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theInformationInformationTypes => ["NauticalInformation"];
 
                 public AdditionalInformation_theInformation() {
@@ -6274,7 +6331,7 @@ namespace S100Framework.DomainModel.S101 {
             public class UpdatedInformation_theUpdate : UpdatedInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
 
                 public UpdatedInformation_theUpdate() {
@@ -6284,7 +6341,7 @@ namespace S100Framework.DomainModel.S101 {
             public class TextAssociation_theCartographicText : TextAssociation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theCartographicTextFeatureTypes => ["TextPlacement"];
 
                 public TextAssociation_theCartographicText() {
@@ -6309,13 +6366,13 @@ namespace S100Framework.DomainModel.S101 {
             public Int32? scaleMinimum { get; set; } = default;
             public List<information> information { get; set; } = [];
 
-            [IgnoreDataMember]
+            [JsonIgnore]
             public override string Code => nameof(Waterfall);
 
             public class AdditionalInformation_theInformation : AdditionalInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theInformationInformationTypes => ["NauticalInformation"];
 
                 public AdditionalInformation_theInformation() {
@@ -6325,7 +6382,7 @@ namespace S100Framework.DomainModel.S101 {
             public class UpdatedInformation_theUpdate : UpdatedInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
 
                 public UpdatedInformation_theUpdate() {
@@ -6335,7 +6392,7 @@ namespace S100Framework.DomainModel.S101 {
             public class TextAssociation_theCartographicText : TextAssociation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theCartographicTextFeatureTypes => ["TextPlacement"];
 
                 public TextAssociation_theCartographicText() {
@@ -6358,13 +6415,13 @@ namespace S100Framework.DomainModel.S101 {
             public Int32? scaleMinimum { get; set; } = default;
             public List<information> information { get; set; } = [];
 
-            [IgnoreDataMember]
+            [JsonIgnore]
             public override string Code => nameof(Lake);
 
             public class AdditionalInformation_theInformation : AdditionalInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theInformationInformationTypes => ["NauticalInformation"];
 
                 public AdditionalInformation_theInformation() {
@@ -6374,7 +6431,7 @@ namespace S100Framework.DomainModel.S101 {
             public class UpdatedInformation_theUpdate : UpdatedInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
 
                 public UpdatedInformation_theUpdate() {
@@ -6384,7 +6441,7 @@ namespace S100Framework.DomainModel.S101 {
             public class TextAssociation_theCartographicText : TextAssociation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theCartographicTextFeatureTypes => ["TextPlacement"];
 
                 public TextAssociation_theCartographicText() {
@@ -6444,13 +6501,13 @@ namespace S100Framework.DomainModel.S101 {
             public Int32? scaleMinimum { get; set; } = default;
             public List<information> information { get; set; } = [];
 
-            [IgnoreDataMember]
+            [JsonIgnore]
             public override string Code => nameof(LandRegion);
 
             public class AdditionalInformation_theInformation : AdditionalInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theInformationInformationTypes => ["ContactDetails", "NauticalInformation"];
 
                 public AdditionalInformation_theInformation() {
@@ -6460,7 +6517,7 @@ namespace S100Framework.DomainModel.S101 {
             public class UpdatedInformation_theUpdate : UpdatedInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
 
                 public UpdatedInformation_theUpdate() {
@@ -6470,7 +6527,7 @@ namespace S100Framework.DomainModel.S101 {
             public class TextAssociation_theCartographicText : TextAssociation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theCartographicTextFeatureTypes => ["TextPlacement"];
 
                 public TextAssociation_theCartographicText() {
@@ -6513,13 +6570,13 @@ namespace S100Framework.DomainModel.S101 {
             public Int32? scaleMinimum { get; set; } = default;
             public List<information> information { get; set; } = [];
 
-            [IgnoreDataMember]
+            [JsonIgnore]
             public override string Code => nameof(Vegetation);
 
             public class AdditionalInformation_theInformation : AdditionalInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theInformationInformationTypes => ["NauticalInformation"];
 
                 public AdditionalInformation_theInformation() {
@@ -6529,7 +6586,7 @@ namespace S100Framework.DomainModel.S101 {
             public class UpdatedInformation_theUpdate : UpdatedInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
 
                 public UpdatedInformation_theUpdate() {
@@ -6539,7 +6596,7 @@ namespace S100Framework.DomainModel.S101 {
             public class TextAssociation_theCartographicText : TextAssociation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theCartographicTextFeatureTypes => ["TextPlacement"];
 
                 public TextAssociation_theCartographicText() {
@@ -6578,13 +6635,13 @@ namespace S100Framework.DomainModel.S101 {
             public Int32? scaleMinimum { get; set; } = default;
             public List<information> information { get; set; } = [];
 
-            [IgnoreDataMember]
+            [JsonIgnore]
             public override string Code => nameof(IceArea);
 
             public class AdditionalInformation_theInformation : AdditionalInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theInformationInformationTypes => ["NauticalInformation"];
 
                 public AdditionalInformation_theInformation() {
@@ -6594,7 +6651,7 @@ namespace S100Framework.DomainModel.S101 {
             public class UpdatedInformation_theUpdate : UpdatedInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
 
                 public UpdatedInformation_theUpdate() {
@@ -6604,7 +6661,7 @@ namespace S100Framework.DomainModel.S101 {
             public class TextAssociation_theCartographicText : TextAssociation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theCartographicTextFeatureTypes => ["TextPlacement"];
 
                 public TextAssociation_theCartographicText() {
@@ -6656,13 +6713,13 @@ namespace S100Framework.DomainModel.S101 {
             public Int32? scaleMinimum { get; set; } = default;
             public List<information> information { get; set; } = [];
 
-            [IgnoreDataMember]
+            [JsonIgnore]
             public override string Code => nameof(SlopingGround);
 
             public class AdditionalInformation_theInformation : AdditionalInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theInformationInformationTypes => ["NauticalInformation"];
 
                 public AdditionalInformation_theInformation() {
@@ -6672,7 +6729,7 @@ namespace S100Framework.DomainModel.S101 {
             public class UpdatedInformation_theUpdate : UpdatedInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
 
                 public UpdatedInformation_theUpdate() {
@@ -6682,7 +6739,7 @@ namespace S100Framework.DomainModel.S101 {
             public class TextAssociation_theCartographicText : TextAssociation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theCartographicTextFeatureTypes => ["TextPlacement"];
 
                 public TextAssociation_theCartographicText() {
@@ -6731,13 +6788,13 @@ namespace S100Framework.DomainModel.S101 {
             public Int32? scaleMinimum { get; set; } = default;
             public List<information> information { get; set; } = [];
 
-            [IgnoreDataMember]
+            [JsonIgnore]
             public override string Code => nameof(SlopeTopline);
 
             public class AdditionalInformation_theInformation : AdditionalInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theInformationInformationTypes => ["NauticalInformation"];
 
                 public AdditionalInformation_theInformation() {
@@ -6747,7 +6804,7 @@ namespace S100Framework.DomainModel.S101 {
             public class UpdatedInformation_theUpdate : UpdatedInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
 
                 public UpdatedInformation_theUpdate() {
@@ -6757,7 +6814,7 @@ namespace S100Framework.DomainModel.S101 {
             public class TextAssociation_theCartographicText : TextAssociation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theCartographicTextFeatureTypes => ["TextPlacement"];
 
                 public TextAssociation_theCartographicText() {
@@ -6776,13 +6833,13 @@ namespace S100Framework.DomainModel.S101 {
             public Int32? scaleMinimum { get; set; } = default;
             public List<information> information { get; set; } = [];
 
-            [IgnoreDataMember]
+            [JsonIgnore]
             public override string Code => nameof(Tideway);
 
             public class AdditionalInformation_theInformation : AdditionalInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theInformationInformationTypes => ["NauticalInformation"];
 
                 public AdditionalInformation_theInformation() {
@@ -6792,7 +6849,7 @@ namespace S100Framework.DomainModel.S101 {
             public class UpdatedInformation_theUpdate : UpdatedInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
 
                 public UpdatedInformation_theUpdate() {
@@ -6802,7 +6859,7 @@ namespace S100Framework.DomainModel.S101 {
             public class TextAssociation_theCartographicText : TextAssociation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theCartographicTextFeatureTypes => ["TextPlacement"];
 
                 public TextAssociation_theCartographicText() {
@@ -6843,13 +6900,13 @@ namespace S100Framework.DomainModel.S101 {
             public String? pictorialRepresentation { get; set; } = null;
             public Boolean? inTheWater { get; set; } = default;
 
-            [IgnoreDataMember]
+            [JsonIgnore]
             public override string Code => nameof(BuiltUpArea);
 
             public class AdditionalInformation_theInformation : AdditionalInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theInformationInformationTypes => ["NauticalInformation"];
 
                 public AdditionalInformation_theInformation() {
@@ -6859,7 +6916,7 @@ namespace S100Framework.DomainModel.S101 {
             public class UpdatedInformation_theUpdate : UpdatedInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
 
                 public UpdatedInformation_theUpdate() {
@@ -6869,7 +6926,7 @@ namespace S100Framework.DomainModel.S101 {
             public class TextAssociation_theCartographicText : TextAssociation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theCartographicTextFeatureTypes => ["TextPlacement"];
 
                 public TextAssociation_theCartographicText() {
@@ -6999,13 +7056,13 @@ namespace S100Framework.DomainModel.S101 {
             public String? pictorialRepresentation { get; set; } = null;
             public Boolean? inTheWater { get; set; } = default;
 
-            [IgnoreDataMember]
+            [JsonIgnore]
             public override string Code => nameof(Building);
 
             public class AdditionalInformation_theInformation : AdditionalInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theInformationInformationTypes => ["ContactDetails", "NauticalInformation", "NonStandardWorkingDay", "ServiceHours"];
 
                 public AdditionalInformation_theInformation() {
@@ -7015,7 +7072,7 @@ namespace S100Framework.DomainModel.S101 {
             public class StructureEquipment_theEquipment : StructureEquipment {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theEquipmentFeatureTypes => ["Daymark", "DistanceMark", "FogSignal", "Helipad", "LightAllAround", "LightFogDetector", "PhysicalAISAidToNavigation", "RadarTransponderBeacon", "Retroreflector", "SignalStationTraffic", "SignalStationWarning", "LightSectored", "LightAirObstruction"];
 
                 public StructureEquipment_theEquipment() {
@@ -7025,7 +7082,7 @@ namespace S100Framework.DomainModel.S101 {
             public class AidsToNavigationAssociation_theCollection : AidsToNavigationAssociation {
                 public override roleType? roleType => DomainModel.roleType.aggregation;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theCollectionFeatureTypes => ["DeepWaterRoute", "FairwaySystem", "TrafficSeparationScheme", "TwoWayRoute"];
 
                 public AidsToNavigationAssociation_theCollection() {
@@ -7035,7 +7092,7 @@ namespace S100Framework.DomainModel.S101 {
             public class RangeSystemAggregation_theCollection : RangeSystemAggregation {
                 public override roleType? roleType => DomainModel.roleType.aggregation;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theCollectionFeatureTypes => ["RangeSystem"];
 
                 public RangeSystemAggregation_theCollection() {
@@ -7045,7 +7102,7 @@ namespace S100Framework.DomainModel.S101 {
             public class UpdatedInformation_theUpdate : UpdatedInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
 
                 public UpdatedInformation_theUpdate() {
@@ -7055,7 +7112,7 @@ namespace S100Framework.DomainModel.S101 {
             public class TextAssociation_theCartographicText : TextAssociation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theCartographicTextFeatureTypes => ["TextPlacement"];
 
                 public TextAssociation_theCartographicText() {
@@ -7102,13 +7159,13 @@ namespace S100Framework.DomainModel.S101 {
             public List<information> information { get; set; } = [];
             public String? pictorialRepresentation { get; set; } = null;
 
-            [IgnoreDataMember]
+            [JsonIgnore]
             public override string Code => nameof(AirportAirfield);
 
             public class AdditionalInformation_theInformation : AdditionalInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theInformationInformationTypes => ["ContactDetails", "NauticalInformation", "NonStandardWorkingDay", "ServiceHours"];
 
                 public AdditionalInformation_theInformation() {
@@ -7118,7 +7175,7 @@ namespace S100Framework.DomainModel.S101 {
             public class UpdatedInformation_theUpdate : UpdatedInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
 
                 public UpdatedInformation_theUpdate() {
@@ -7128,7 +7185,7 @@ namespace S100Framework.DomainModel.S101 {
             public class TextAssociation_theCartographicText : TextAssociation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theCartographicTextFeatureTypes => ["TextPlacement"];
 
                 public TextAssociation_theCartographicText() {
@@ -7173,13 +7230,13 @@ namespace S100Framework.DomainModel.S101 {
             public Int32? scaleMinimum { get; set; } = default;
             public List<information> information { get; set; } = [];
 
-            [IgnoreDataMember]
+            [JsonIgnore]
             public override string Code => nameof(Runway);
 
             public class AdditionalInformation_theInformation : AdditionalInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theInformationInformationTypes => ["ContactDetails", "NauticalInformation", "NonStandardWorkingDay", "ServiceHours"];
 
                 public AdditionalInformation_theInformation() {
@@ -7189,7 +7246,7 @@ namespace S100Framework.DomainModel.S101 {
             public class UpdatedInformation_theUpdate : UpdatedInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
 
                 public UpdatedInformation_theUpdate() {
@@ -7199,7 +7256,7 @@ namespace S100Framework.DomainModel.S101 {
             public class TextAssociation_theCartographicText : TextAssociation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theCartographicTextFeatureTypes => ["TextPlacement"];
 
                 public TextAssociation_theCartographicText() {
@@ -7244,13 +7301,13 @@ namespace S100Framework.DomainModel.S101 {
             public Int32? scaleMinimum { get; set; } = default;
             public List<information> information { get; set; } = [];
 
-            [IgnoreDataMember]
+            [JsonIgnore]
             public override string Code => nameof(Helipad);
 
             public class AdditionalInformation_theInformation : AdditionalInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theInformationInformationTypes => ["ContactDetails", "NauticalInformation", "NonStandardWorkingDay", "ServiceHours"];
 
                 public AdditionalInformation_theInformation() {
@@ -7260,7 +7317,7 @@ namespace S100Framework.DomainModel.S101 {
             public class StructureEquipment_theStructure : StructureEquipment {
                 public override roleType? roleType => DomainModel.roleType.composition;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theStructureFeatureTypes => ["Building", "Landmark", "OffshorePlatform"];
 
                 public StructureEquipment_theStructure() {
@@ -7270,7 +7327,7 @@ namespace S100Framework.DomainModel.S101 {
             public class UpdatedInformation_theUpdate : UpdatedInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
 
                 public UpdatedInformation_theUpdate() {
@@ -7280,7 +7337,7 @@ namespace S100Framework.DomainModel.S101 {
             public class TextAssociation_theCartographicText : TextAssociation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theCartographicTextFeatureTypes => ["TextPlacement"];
 
                 public TextAssociation_theCartographicText() {
@@ -7371,13 +7428,13 @@ namespace S100Framework.DomainModel.S101 {
             public List<information> information { get; set; } = [];
             public String? pictorialRepresentation { get; set; } = null;
 
-            [IgnoreDataMember]
+            [JsonIgnore]
             public override string Code => nameof(Bridge);
 
             public class AdditionalInformation_theInformation : AdditionalInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theInformationInformationTypes => ["ContactDetails", "NauticalInformation", "NonStandardWorkingDay", "ServiceHours"];
 
                 public AdditionalInformation_theInformation() {
@@ -7387,7 +7444,7 @@ namespace S100Framework.DomainModel.S101 {
             public class BridgeAggregation_theComponent : BridgeAggregation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theComponentFeatureTypes => ["SpanFixed", "SpanOpening", "Pontoon", "PylonBridgeSupport"];
 
                 public BridgeAggregation_theComponent() {
@@ -7397,7 +7454,7 @@ namespace S100Framework.DomainModel.S101 {
             public class StructureEquipment_theEquipment : StructureEquipment {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theEquipmentFeatureTypes => ["Daymark", "DistanceMark", "FogSignal", "LightAllAround", "LightFogDetector", "PhysicalAISAidToNavigation", "RadarTransponderBeacon", "Retroreflector", "SignalStationTraffic", "SignalStationWarning", "LightSectored", "LightAirObstruction"];
 
                 public StructureEquipment_theEquipment() {
@@ -7407,7 +7464,7 @@ namespace S100Framework.DomainModel.S101 {
             public class AidsToNavigationAssociation_theCollection : AidsToNavigationAssociation {
                 public override roleType? roleType => DomainModel.roleType.aggregation;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theCollectionFeatureTypes => ["FairwaySystem", "TrafficSeparationScheme", "TwoWayRoute"];
 
                 public AidsToNavigationAssociation_theCollection() {
@@ -7417,7 +7474,7 @@ namespace S100Framework.DomainModel.S101 {
             public class UpdatedInformation_theUpdate : UpdatedInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
 
                 public UpdatedInformation_theUpdate() {
@@ -7427,7 +7484,7 @@ namespace S100Framework.DomainModel.S101 {
             public class TextAssociation_theCartographicText : TextAssociation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theCartographicTextFeatureTypes => ["TextPlacement"];
 
                 public TextAssociation_theCartographicText() {
@@ -7468,13 +7525,13 @@ namespace S100Framework.DomainModel.S101 {
             public List<information> information { get; set; } = [];
             public String? pictorialRepresentation { get; set; } = null;
 
-            [IgnoreDataMember]
+            [JsonIgnore]
             public override string Code => nameof(SpanFixed);
 
             public class AdditionalInformation_theInformation : AdditionalInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theInformationInformationTypes => ["ContactDetails", "NauticalInformation", "NonStandardWorkingDay", "ServiceHours"];
 
                 public AdditionalInformation_theInformation() {
@@ -7484,7 +7541,7 @@ namespace S100Framework.DomainModel.S101 {
             public class BridgeAggregation_theCollection : BridgeAggregation {
                 public override roleType? roleType => DomainModel.roleType.aggregation;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theCollectionFeatureTypes => ["Bridge"];
 
                 public BridgeAggregation_theCollection() {
@@ -7494,7 +7551,7 @@ namespace S100Framework.DomainModel.S101 {
             public class StructureEquipment_theEquipment : StructureEquipment {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theEquipmentFeatureTypes => ["Daymark", "DistanceMark", "FogSignal", "LightAllAround", "LightFogDetector", "PhysicalAISAidToNavigation", "RadarTransponderBeacon", "Retroreflector", "SignalStationTraffic", "SignalStationWarning", "LightSectored", "LightAirObstruction"];
 
                 public StructureEquipment_theEquipment() {
@@ -7504,7 +7561,7 @@ namespace S100Framework.DomainModel.S101 {
             public class AidsToNavigationAssociation_theCollection : AidsToNavigationAssociation {
                 public override roleType? roleType => DomainModel.roleType.aggregation;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theCollectionFeatureTypes => ["FairwaySystem", "TrafficSeparationScheme", "TwoWayRoute"];
 
                 public AidsToNavigationAssociation_theCollection() {
@@ -7514,7 +7571,7 @@ namespace S100Framework.DomainModel.S101 {
             public class TextAssociation_theCartographicText : TextAssociation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theCartographicTextFeatureTypes => ["TextPlacement"];
 
                 public TextAssociation_theCartographicText() {
@@ -7524,7 +7581,7 @@ namespace S100Framework.DomainModel.S101 {
             public class UpdatedInformation_theUpdate : UpdatedInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
 
                 public UpdatedInformation_theUpdate() {
@@ -7572,13 +7629,13 @@ namespace S100Framework.DomainModel.S101 {
             public List<information> information { get; set; } = [];
             public String? pictorialRepresentation { get; set; } = null;
 
-            [IgnoreDataMember]
+            [JsonIgnore]
             public override string Code => nameof(SpanOpening);
 
             public class AdditionalInformation_theInformation : AdditionalInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theInformationInformationTypes => ["ContactDetails", "NauticalInformation", "NonStandardWorkingDay", "ServiceHours"];
 
                 public AdditionalInformation_theInformation() {
@@ -7588,7 +7645,7 @@ namespace S100Framework.DomainModel.S101 {
             public class BridgeAggregation_theCollection : BridgeAggregation {
                 public override roleType? roleType => DomainModel.roleType.aggregation;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theCollectionFeatureTypes => ["Bridge"];
 
                 public BridgeAggregation_theCollection() {
@@ -7598,7 +7655,7 @@ namespace S100Framework.DomainModel.S101 {
             public class StructureEquipment_theEquipment : StructureEquipment {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theEquipmentFeatureTypes => ["Daymark", "DistanceMark", "FogSignal", "LightAllAround", "LightFogDetector", "PhysicalAISAidToNavigation", "RadarTransponderBeacon", "Retroreflector", "SignalStationTraffic", "SignalStationWarning", "LightSectored", "LightAirObstruction"];
 
                 public StructureEquipment_theEquipment() {
@@ -7608,7 +7665,7 @@ namespace S100Framework.DomainModel.S101 {
             public class AidsToNavigationAssociation_theCollection : AidsToNavigationAssociation {
                 public override roleType? roleType => DomainModel.roleType.aggregation;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theCollectionFeatureTypes => ["FairwaySystem", "TrafficSeparationScheme", "TwoWayRoute"];
 
                 public AidsToNavigationAssociation_theCollection() {
@@ -7618,7 +7675,7 @@ namespace S100Framework.DomainModel.S101 {
             public class TextAssociation_theCartographicText : TextAssociation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theCartographicTextFeatureTypes => ["TextPlacement"];
 
                 public TextAssociation_theCartographicText() {
@@ -7628,7 +7685,7 @@ namespace S100Framework.DomainModel.S101 {
             public class UpdatedInformation_theUpdate : UpdatedInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
 
                 public UpdatedInformation_theUpdate() {
@@ -7739,13 +7796,13 @@ namespace S100Framework.DomainModel.S101 {
             public List<information> information { get; set; } = [];
             public String? pictorialRepresentation { get; set; } = null;
 
-            [IgnoreDataMember]
+            [JsonIgnore]
             public override string Code => nameof(Conveyor);
 
             public class AdditionalInformation_theInformation : AdditionalInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theInformationInformationTypes => ["ContactDetails", "NauticalInformation", "NonStandardWorkingDay", "ServiceHours"];
 
                 public AdditionalInformation_theInformation() {
@@ -7755,7 +7812,7 @@ namespace S100Framework.DomainModel.S101 {
             public class StructureEquipment_theEquipment : StructureEquipment {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theEquipmentFeatureTypes => ["Daymark", "DistanceMark", "FogSignal", "LightAllAround", "LightFogDetector", "PhysicalAISAidToNavigation", "RadarTransponderBeacon", "Retroreflector", "SignalStationTraffic", "SignalStationWarning", "LightSectored", "LightAirObstruction"];
 
                 public StructureEquipment_theEquipment() {
@@ -7765,7 +7822,7 @@ namespace S100Framework.DomainModel.S101 {
             public class AidsToNavigationAssociation_theCollection : AidsToNavigationAssociation {
                 public override roleType? roleType => DomainModel.roleType.aggregation;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theCollectionFeatureTypes => ["FairwaySystem", "TrafficSeparationScheme", "TwoWayRoute"];
 
                 public AidsToNavigationAssociation_theCollection() {
@@ -7775,7 +7832,7 @@ namespace S100Framework.DomainModel.S101 {
             public class UpdatedInformation_theUpdate : UpdatedInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
 
                 public UpdatedInformation_theUpdate() {
@@ -7785,7 +7842,7 @@ namespace S100Framework.DomainModel.S101 {
             public class TextAssociation_theCartographicText : TextAssociation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theCartographicTextFeatureTypes => ["TextPlacement"];
 
                 public TextAssociation_theCartographicText() {
@@ -7849,13 +7906,13 @@ namespace S100Framework.DomainModel.S101 {
             public Int32? scaleMinimum { get; set; } = default;
             public List<information> information { get; set; } = [];
 
-            [IgnoreDataMember]
+            [JsonIgnore]
             public override string Code => nameof(CableOverhead);
 
             public class AdditionalInformation_theInformation : AdditionalInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theInformationInformationTypes => ["ContactDetails", "NauticalInformation"];
 
                 public AdditionalInformation_theInformation() {
@@ -7865,7 +7922,7 @@ namespace S100Framework.DomainModel.S101 {
             public class StructureEquipment_theEquipment : StructureEquipment {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theEquipmentFeatureTypes => ["RadarReflector"];
 
                 public StructureEquipment_theEquipment() {
@@ -7875,7 +7932,7 @@ namespace S100Framework.DomainModel.S101 {
             public class UpdatedInformation_theUpdate : UpdatedInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
 
                 public UpdatedInformation_theUpdate() {
@@ -7885,7 +7942,7 @@ namespace S100Framework.DomainModel.S101 {
             public class TextAssociation_theCartographicText : TextAssociation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theCartographicTextFeatureTypes => ["TextPlacement"];
 
                 public TextAssociation_theCartographicText() {
@@ -7958,13 +8015,13 @@ namespace S100Framework.DomainModel.S101 {
             public Int32? scaleMinimum { get; set; } = default;
             public List<information> information { get; set; } = [];
 
-            [IgnoreDataMember]
+            [JsonIgnore]
             public override string Code => nameof(PipelineOverhead);
 
             public class AdditionalInformation_theInformation : AdditionalInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theInformationInformationTypes => ["ContactDetails", "NauticalInformation"];
 
                 public AdditionalInformation_theInformation() {
@@ -7974,7 +8031,7 @@ namespace S100Framework.DomainModel.S101 {
             public class StructureEquipment_theEquipment : StructureEquipment {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theEquipmentFeatureTypes => ["Daymark", "DistanceMark", "FogSignal", "LightAllAround", "LightFogDetector", "PhysicalAISAidToNavigation", "RadarTransponderBeacon", "Retroreflector", "SignalStationTraffic", "SignalStationWarning", "LightSectored", "RadarReflector"];
 
                 public StructureEquipment_theEquipment() {
@@ -7984,7 +8041,7 @@ namespace S100Framework.DomainModel.S101 {
             public class AidsToNavigationAssociation_theCollection : AidsToNavigationAssociation {
                 public override roleType? roleType => DomainModel.roleType.aggregation;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theCollectionFeatureTypes => ["FairwaySystem", "TrafficSeparationScheme", "TwoWayRoute"];
 
                 public AidsToNavigationAssociation_theCollection() {
@@ -7994,7 +8051,7 @@ namespace S100Framework.DomainModel.S101 {
             public class UpdatedInformation_theUpdate : UpdatedInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
 
                 public UpdatedInformation_theUpdate() {
@@ -8004,7 +8061,7 @@ namespace S100Framework.DomainModel.S101 {
             public class TextAssociation_theCartographicText : TextAssociation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theCartographicTextFeatureTypes => ["TextPlacement"];
 
                 public TextAssociation_theCartographicText() {
@@ -8090,13 +8147,13 @@ namespace S100Framework.DomainModel.S101 {
             public List<information> information { get; set; } = [];
             public String? pictorialRepresentation { get; set; } = null;
 
-            [IgnoreDataMember]
+            [JsonIgnore]
             public override string Code => nameof(PylonBridgeSupport);
 
             public class AdditionalInformation_theInformation : AdditionalInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theInformationInformationTypes => ["NauticalInformation"];
 
                 public AdditionalInformation_theInformation() {
@@ -8106,7 +8163,7 @@ namespace S100Framework.DomainModel.S101 {
             public class BridgeAggregation_theCollection : BridgeAggregation {
                 public override roleType? roleType => DomainModel.roleType.aggregation;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theCollectionFeatureTypes => ["Bridge"];
 
                 public BridgeAggregation_theCollection() {
@@ -8116,7 +8173,7 @@ namespace S100Framework.DomainModel.S101 {
             public class RoofedStructureAggregation_theRoofedStructure : RoofedStructureAggregation {
                 public override roleType? roleType => DomainModel.roleType.aggregation;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theRoofedStructureFeatureTypes => ["StructureOverNavigableWater"];
 
                 public RoofedStructureAggregation_theRoofedStructure() {
@@ -8126,7 +8183,7 @@ namespace S100Framework.DomainModel.S101 {
             public class StructureEquipment_theEquipment : StructureEquipment {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theEquipmentFeatureTypes => ["Daymark", "DistanceMark", "FogSignal", "LightAllAround", "LightFogDetector", "PhysicalAISAidToNavigation", "RadarTransponderBeacon", "Retroreflector", "SignalStationTraffic", "SignalStationWarning", "LightSectored", "Bollard", "LightAirObstruction"];
 
                 public StructureEquipment_theEquipment() {
@@ -8136,7 +8193,7 @@ namespace S100Framework.DomainModel.S101 {
             public class AidsToNavigationAssociation_theCollection : AidsToNavigationAssociation {
                 public override roleType? roleType => DomainModel.roleType.aggregation;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theCollectionFeatureTypes => ["FairwaySystem", "TrafficSeparationScheme", "TwoWayRoute"];
 
                 public AidsToNavigationAssociation_theCollection() {
@@ -8146,7 +8203,7 @@ namespace S100Framework.DomainModel.S101 {
             public class TextAssociation_theCartographicText : TextAssociation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theCartographicTextFeatureTypes => ["TextPlacement"];
 
                 public TextAssociation_theCartographicText() {
@@ -8156,7 +8213,7 @@ namespace S100Framework.DomainModel.S101 {
             public class UpdatedInformation_theUpdate : UpdatedInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
 
                 public UpdatedInformation_theUpdate() {
@@ -8231,13 +8288,13 @@ namespace S100Framework.DomainModel.S101 {
             public Int32? scaleMinimum { get; set; } = default;
             public List<information> information { get; set; } = [];
 
-            [IgnoreDataMember]
+            [JsonIgnore]
             public override string Code => nameof(FenceWall);
 
             public class AdditionalInformation_theInformation : AdditionalInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theInformationInformationTypes => ["NauticalInformation"];
 
                 public AdditionalInformation_theInformation() {
@@ -8247,7 +8304,7 @@ namespace S100Framework.DomainModel.S101 {
             public class UpdatedInformation_theUpdate : UpdatedInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
 
                 public UpdatedInformation_theUpdate() {
@@ -8257,7 +8314,7 @@ namespace S100Framework.DomainModel.S101 {
             public class TextAssociation_theCartographicText : TextAssociation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theCartographicTextFeatureTypes => ["TextPlacement"];
 
                 public TextAssociation_theCartographicText() {
@@ -8290,13 +8347,13 @@ namespace S100Framework.DomainModel.S101 {
             public Int32? scaleMinimum { get; set; } = default;
             public List<information> information { get; set; } = [];
 
-            [IgnoreDataMember]
+            [JsonIgnore]
             public override string Code => nameof(Railway);
 
             public class AdditionalInformation_theInformation : AdditionalInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theInformationInformationTypes => ["ContactDetails", "NauticalInformation"];
 
                 public AdditionalInformation_theInformation() {
@@ -8306,7 +8363,7 @@ namespace S100Framework.DomainModel.S101 {
             public class UpdatedInformation_theUpdate : UpdatedInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
 
                 public UpdatedInformation_theUpdate() {
@@ -8316,7 +8373,7 @@ namespace S100Framework.DomainModel.S101 {
             public class TextAssociation_theCartographicText : TextAssociation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theCartographicTextFeatureTypes => ["TextPlacement"];
 
                 public TextAssociation_theCartographicText() {
@@ -8362,13 +8419,13 @@ namespace S100Framework.DomainModel.S101 {
             public Int32? scaleMinimum { get; set; } = default;
             public List<information> information { get; set; } = [];
 
-            [IgnoreDataMember]
+            [JsonIgnore]
             public override string Code => nameof(Road);
 
             public class AdditionalInformation_theInformation : AdditionalInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theInformationInformationTypes => ["NauticalInformation"];
 
                 public AdditionalInformation_theInformation() {
@@ -8378,7 +8435,7 @@ namespace S100Framework.DomainModel.S101 {
             public class UpdatedInformation_theUpdate : UpdatedInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
 
                 public UpdatedInformation_theUpdate() {
@@ -8388,7 +8445,7 @@ namespace S100Framework.DomainModel.S101 {
             public class TextAssociation_theCartographicText : TextAssociation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theCartographicTextFeatureTypes => ["TextPlacement"];
 
                 public TextAssociation_theCartographicText() {
@@ -8440,13 +8497,13 @@ namespace S100Framework.DomainModel.S101 {
             public List<information> information { get; set; } = [];
             public String? pictorialRepresentation { get; set; } = null;
 
-            [IgnoreDataMember]
+            [JsonIgnore]
             public override string Code => nameof(Tunnel);
 
             public class AdditionalInformation_theInformation : AdditionalInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theInformationInformationTypes => ["ContactDetails", "NauticalInformation"];
 
                 public AdditionalInformation_theInformation() {
@@ -8456,7 +8513,7 @@ namespace S100Framework.DomainModel.S101 {
             public class UpdatedInformation_theUpdate : UpdatedInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
 
                 public UpdatedInformation_theUpdate() {
@@ -8466,7 +8523,7 @@ namespace S100Framework.DomainModel.S101 {
             public class TextAssociation_theCartographicText : TextAssociation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theCartographicTextFeatureTypes => ["TextPlacement"];
 
                 public TextAssociation_theCartographicText() {
@@ -8629,13 +8686,13 @@ namespace S100Framework.DomainModel.S101 {
             public String? pictorialRepresentation { get; set; } = null;
             public Boolean? inTheWater { get; set; } = default;
 
-            [IgnoreDataMember]
+            [JsonIgnore]
             public override string Code => nameof(Landmark);
 
             public class AdditionalInformation_theInformation : AdditionalInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theInformationInformationTypes => ["ContactDetails", "NauticalInformation", "NonStandardWorkingDay", "ServiceHours"];
 
                 public AdditionalInformation_theInformation() {
@@ -8645,7 +8702,7 @@ namespace S100Framework.DomainModel.S101 {
             public class StructureEquipment_theEquipment : StructureEquipment {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theEquipmentFeatureTypes => ["Daymark", "DistanceMark", "FogSignal", "Helipad", "LightAllAround", "LightFogDetector", "PhysicalAISAidToNavigation", "RadarTransponderBeacon", "Retroreflector", "SignalStationTraffic", "SignalStationWarning", "LightSectored", "Bollard", "LightAirObstruction"];
 
                 public StructureEquipment_theEquipment() {
@@ -8655,7 +8712,7 @@ namespace S100Framework.DomainModel.S101 {
             public class AidsToNavigationAssociation_theCollection : AidsToNavigationAssociation {
                 public override roleType? roleType => DomainModel.roleType.aggregation;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theCollectionFeatureTypes => ["DeepWaterRoute", "FairwaySystem", "TrafficSeparationScheme", "TwoWayRoute"];
 
                 public AidsToNavigationAssociation_theCollection() {
@@ -8665,7 +8722,7 @@ namespace S100Framework.DomainModel.S101 {
             public class RangeSystemAggregation_theCollection : RangeSystemAggregation {
                 public override roleType? roleType => DomainModel.roleType.aggregation;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theCollectionFeatureTypes => ["RangeSystem"];
 
                 public RangeSystemAggregation_theCollection() {
@@ -8675,7 +8732,7 @@ namespace S100Framework.DomainModel.S101 {
             public class FairwayAuxiliary_thePrimaryFeature : FairwayAuxiliary {
                 public override roleType? roleType => DomainModel.roleType.aggregation;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] thePrimaryFeatureFeatureTypes => ["Fairway"];
 
                 public FairwayAuxiliary_thePrimaryFeature() {
@@ -8685,7 +8742,7 @@ namespace S100Framework.DomainModel.S101 {
             public class UpdatedInformation_theUpdate : UpdatedInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
 
                 public UpdatedInformation_theUpdate() {
@@ -8695,7 +8752,7 @@ namespace S100Framework.DomainModel.S101 {
             public class TextAssociation_theCartographicText : TextAssociation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theCartographicTextFeatureTypes => ["TextPlacement"];
 
                 public TextAssociation_theCartographicText() {
@@ -8798,13 +8855,13 @@ namespace S100Framework.DomainModel.S101 {
             public String? pictorialRepresentation { get; set; } = null;
             public Boolean? inTheWater { get; set; } = default;
 
-            [IgnoreDataMember]
+            [JsonIgnore]
             public override string Code => nameof(SiloTank);
 
             public class AdditionalInformation_theInformation : AdditionalInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theInformationInformationTypes => ["ContactDetails", "NauticalInformation"];
 
                 public AdditionalInformation_theInformation() {
@@ -8814,7 +8871,7 @@ namespace S100Framework.DomainModel.S101 {
             public class StructureEquipment_theEquipment : StructureEquipment {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theEquipmentFeatureTypes => ["Daymark", "DistanceMark", "FogSignal", "LightAllAround", "LightFogDetector", "PhysicalAISAidToNavigation", "RadarTransponderBeacon", "Retroreflector", "SignalStationTraffic", "SignalStationWarning", "LightSectored"];
 
                 public StructureEquipment_theEquipment() {
@@ -8824,7 +8881,7 @@ namespace S100Framework.DomainModel.S101 {
             public class AidsToNavigationAssociation_theCollection : AidsToNavigationAssociation {
                 public override roleType? roleType => DomainModel.roleType.aggregation;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theCollectionFeatureTypes => ["DeepWaterRoute", "FairwaySystem", "TrafficSeparationScheme", "TwoWayRoute"];
 
                 public AidsToNavigationAssociation_theCollection() {
@@ -8834,7 +8891,7 @@ namespace S100Framework.DomainModel.S101 {
             public class RangeSystemAggregation_theCollection : RangeSystemAggregation {
                 public override roleType? roleType => DomainModel.roleType.aggregation;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theCollectionFeatureTypes => ["RangeSystem"];
 
                 public RangeSystemAggregation_theCollection() {
@@ -8844,7 +8901,7 @@ namespace S100Framework.DomainModel.S101 {
             public class UpdatedInformation_theUpdate : UpdatedInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
 
                 public UpdatedInformation_theUpdate() {
@@ -8854,7 +8911,7 @@ namespace S100Framework.DomainModel.S101 {
             public class TextAssociation_theCartographicText : TextAssociation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theCartographicTextFeatureTypes => ["TextPlacement"];
 
                 public TextAssociation_theCartographicText() {
@@ -8955,13 +9012,13 @@ namespace S100Framework.DomainModel.S101 {
             public String? pictorialRepresentation { get; set; } = null;
             public Boolean? inTheWater { get; set; } = default;
 
-            [IgnoreDataMember]
+            [JsonIgnore]
             public override string Code => nameof(WindTurbine);
 
             public class AdditionalInformation_theInformation : AdditionalInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theInformationInformationTypes => ["ContactDetails", "NauticalInformation"];
 
                 public AdditionalInformation_theInformation() {
@@ -8971,7 +9028,7 @@ namespace S100Framework.DomainModel.S101 {
             public class StructureEquipment_theEquipment : StructureEquipment {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theEquipmentFeatureTypes => ["Daymark", "DistanceMark", "FogSignal", "LightAllAround", "LightFogDetector", "PhysicalAISAidToNavigation", "RadarTransponderBeacon", "Retroreflector", "SignalStationTraffic", "SignalStationWarning", "LightSectored", "LightAirObstruction"];
 
                 public StructureEquipment_theEquipment() {
@@ -8981,7 +9038,7 @@ namespace S100Framework.DomainModel.S101 {
             public class AidsToNavigationAssociation_theCollection : AidsToNavigationAssociation {
                 public override roleType? roleType => DomainModel.roleType.aggregation;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theCollectionFeatureTypes => ["DeepWaterRoute", "FairwaySystem", "TrafficSeparationScheme", "TwoWayRoute"];
 
                 public AidsToNavigationAssociation_theCollection() {
@@ -8991,7 +9048,7 @@ namespace S100Framework.DomainModel.S101 {
             public class UpdatedInformation_theUpdate : UpdatedInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
 
                 public UpdatedInformation_theUpdate() {
@@ -9001,7 +9058,7 @@ namespace S100Framework.DomainModel.S101 {
             public class TextAssociation_theCartographicText : TextAssociation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theCartographicTextFeatureTypes => ["TextPlacement"];
 
                 public TextAssociation_theCartographicText() {
@@ -9060,13 +9117,13 @@ namespace S100Framework.DomainModel.S101 {
             public String? pictorialRepresentation { get; set; } = null;
             public Boolean? inTheWater { get; set; } = default;
 
-            [IgnoreDataMember]
+            [JsonIgnore]
             public override string Code => nameof(FortifiedStructure);
 
             public class AdditionalInformation_theInformation : AdditionalInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theInformationInformationTypes => ["NauticalInformation"];
 
                 public AdditionalInformation_theInformation() {
@@ -9076,7 +9133,7 @@ namespace S100Framework.DomainModel.S101 {
             public class StructureEquipment_theEquipment : StructureEquipment {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theEquipmentFeatureTypes => ["Daymark", "DistanceMark", "FogSignal", "LightAllAround", "LightFogDetector", "PhysicalAISAidToNavigation", "RadarTransponderBeacon", "Retroreflector", "SignalStationTraffic", "SignalStationWarning", "LightSectored", "Bollard"];
 
                 public StructureEquipment_theEquipment() {
@@ -9086,7 +9143,7 @@ namespace S100Framework.DomainModel.S101 {
             public class AidsToNavigationAssociation_theCollection : AidsToNavigationAssociation {
                 public override roleType? roleType => DomainModel.roleType.aggregation;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theCollectionFeatureTypes => ["DeepWaterRoute", "FairwaySystem", "TrafficSeparationScheme", "TwoWayRoute"];
 
                 public AidsToNavigationAssociation_theCollection() {
@@ -9096,7 +9153,7 @@ namespace S100Framework.DomainModel.S101 {
             public class RangeSystemAggregation_theCollection : RangeSystemAggregation {
                 public override roleType? roleType => DomainModel.roleType.aggregation;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theCollectionFeatureTypes => ["RangeSystem"];
 
                 public RangeSystemAggregation_theCollection() {
@@ -9106,7 +9163,7 @@ namespace S100Framework.DomainModel.S101 {
             public class UpdatedInformation_theUpdate : UpdatedInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
 
                 public UpdatedInformation_theUpdate() {
@@ -9116,7 +9173,7 @@ namespace S100Framework.DomainModel.S101 {
             public class TextAssociation_theCartographicText : TextAssociation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theCartographicTextFeatureTypes => ["TextPlacement"];
 
                 public TextAssociation_theCartographicText() {
@@ -9197,13 +9254,13 @@ namespace S100Framework.DomainModel.S101 {
             public List<information> information { get; set; } = [];
             public String? pictorialRepresentation { get; set; } = null;
 
-            [IgnoreDataMember]
+            [JsonIgnore]
             public override string Code => nameof(ProductionStorageArea);
 
             public class AdditionalInformation_theInformation : AdditionalInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theInformationInformationTypes => ["ContactDetails", "NauticalInformation", "NonStandardWorkingDay", "ServiceHours"];
 
                 public AdditionalInformation_theInformation() {
@@ -9213,7 +9270,7 @@ namespace S100Framework.DomainModel.S101 {
             public class UpdatedInformation_theUpdate : UpdatedInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
 
                 public UpdatedInformation_theUpdate() {
@@ -9223,7 +9280,7 @@ namespace S100Framework.DomainModel.S101 {
             public class TextAssociation_theCartographicText : TextAssociation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theCartographicTextFeatureTypes => ["TextPlacement"];
 
                 public TextAssociation_theCartographicText() {
@@ -9252,13 +9309,13 @@ namespace S100Framework.DomainModel.S101 {
             public Int32? scaleMinimum { get; set; } = default;
             public List<information> information { get; set; } = [];
 
-            [IgnoreDataMember]
+            [JsonIgnore]
             public override string Code => nameof(Checkpoint);
 
             public class AdditionalInformation_theInformation : AdditionalInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theInformationInformationTypes => ["ContactDetails", "NauticalInformation", "NonStandardWorkingDay", "ServiceHours"];
 
                 public AdditionalInformation_theInformation() {
@@ -9268,7 +9325,7 @@ namespace S100Framework.DomainModel.S101 {
             public class UpdatedInformation_theUpdate : UpdatedInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
 
                 public UpdatedInformation_theUpdate() {
@@ -9278,7 +9335,7 @@ namespace S100Framework.DomainModel.S101 {
             public class TextAssociation_theCartographicText : TextAssociation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theCartographicTextFeatureTypes => ["TextPlacement"];
 
                 public TextAssociation_theCartographicText() {
@@ -9346,13 +9403,13 @@ namespace S100Framework.DomainModel.S101 {
             public List<information> information { get; set; } = [];
             public String? pictorialRepresentation { get; set; } = null;
 
-            [IgnoreDataMember]
+            [JsonIgnore]
             public override string Code => nameof(Hulk);
 
             public class AdditionalInformation_theInformation : AdditionalInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theInformationInformationTypes => ["NauticalInformation"];
 
                 public AdditionalInformation_theInformation() {
@@ -9362,7 +9419,7 @@ namespace S100Framework.DomainModel.S101 {
             public class StructureEquipment_theEquipment : StructureEquipment {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theEquipmentFeatureTypes => ["Daymark", "DistanceMark", "FogSignal", "LightAllAround", "LightFogDetector", "PhysicalAISAidToNavigation", "RadarTransponderBeacon", "Retroreflector", "SignalStationTraffic", "SignalStationWarning", "Bollard"];
 
                 public StructureEquipment_theEquipment() {
@@ -9372,7 +9429,7 @@ namespace S100Framework.DomainModel.S101 {
             public class AidsToNavigationAssociation_theCollection : AidsToNavigationAssociation {
                 public override roleType? roleType => DomainModel.roleType.aggregation;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theCollectionFeatureTypes => ["FairwaySystem", "TrafficSeparationScheme", "TwoWayRoute"];
 
                 public AidsToNavigationAssociation_theCollection() {
@@ -9382,7 +9439,7 @@ namespace S100Framework.DomainModel.S101 {
             public class UpdatedInformation_theUpdate : UpdatedInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
 
                 public UpdatedInformation_theUpdate() {
@@ -9392,7 +9449,7 @@ namespace S100Framework.DomainModel.S101 {
             public class TextAssociation_theCartographicText : TextAssociation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theCartographicTextFeatureTypes => ["TextPlacement"];
 
                 public TextAssociation_theCartographicText() {
@@ -9467,13 +9524,13 @@ namespace S100Framework.DomainModel.S101 {
             public List<information> information { get; set; } = [];
             public String? pictorialRepresentation { get; set; } = null;
 
-            [IgnoreDataMember]
+            [JsonIgnore]
             public override string Code => nameof(Pile);
 
             public class AdditionalInformation_theInformation : AdditionalInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theInformationInformationTypes => ["NauticalInformation"];
 
                 public AdditionalInformation_theInformation() {
@@ -9483,7 +9540,7 @@ namespace S100Framework.DomainModel.S101 {
             public class StructureEquipment_theEquipment : StructureEquipment {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theEquipmentFeatureTypes => ["Daymark", "DistanceMark", "FogSignal", "LightAllAround", "LightFogDetector", "PhysicalAISAidToNavigation", "RadarTransponderBeacon", "Retroreflector", "SignalStationTraffic", "SignalStationWarning", "LightSectored", "Bollard"];
 
                 public StructureEquipment_theEquipment() {
@@ -9493,7 +9550,7 @@ namespace S100Framework.DomainModel.S101 {
             public class AidsToNavigationAssociation_theCollection : AidsToNavigationAssociation {
                 public override roleType? roleType => DomainModel.roleType.aggregation;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theCollectionFeatureTypes => ["ArchipelagicSeaLane", "DeepWaterRoute", "FairwaySystem", "TrafficSeparationScheme", "TwoWayRoute"];
 
                 public AidsToNavigationAssociation_theCollection() {
@@ -9503,7 +9560,7 @@ namespace S100Framework.DomainModel.S101 {
             public class RangeSystemAggregation_theCollection : RangeSystemAggregation {
                 public override roleType? roleType => DomainModel.roleType.aggregation;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theCollectionFeatureTypes => ["RangeSystem"];
 
                 public RangeSystemAggregation_theCollection() {
@@ -9513,7 +9570,7 @@ namespace S100Framework.DomainModel.S101 {
             public class FairwayAuxiliary_thePrimaryFeature : FairwayAuxiliary {
                 public override roleType? roleType => DomainModel.roleType.aggregation;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] thePrimaryFeatureFeatureTypes => ["Fairway"];
 
                 public FairwayAuxiliary_thePrimaryFeature() {
@@ -9523,7 +9580,7 @@ namespace S100Framework.DomainModel.S101 {
             public class UpdatedInformation_theUpdate : UpdatedInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
 
                 public UpdatedInformation_theUpdate() {
@@ -9533,7 +9590,7 @@ namespace S100Framework.DomainModel.S101 {
             public class TextAssociation_theCartographicText : TextAssociation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theCartographicTextFeatureTypes => ["TextPlacement"];
 
                 public TextAssociation_theCartographicText() {
@@ -9576,13 +9633,13 @@ namespace S100Framework.DomainModel.S101 {
             public Int32? scaleMinimum { get; set; } = default;
             public List<information> information { get; set; } = [];
 
-            [IgnoreDataMember]
+            [JsonIgnore]
             public override string Code => nameof(Dyke);
 
             public class AdditionalInformation_theInformation : AdditionalInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theInformationInformationTypes => ["NauticalInformation"];
 
                 public AdditionalInformation_theInformation() {
@@ -9592,7 +9649,7 @@ namespace S100Framework.DomainModel.S101 {
             public class UpdatedInformation_theUpdate : UpdatedInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
 
                 public UpdatedInformation_theUpdate() {
@@ -9602,7 +9659,7 @@ namespace S100Framework.DomainModel.S101 {
             public class TextAssociation_theCartographicText : TextAssociation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theCartographicTextFeatureTypes => ["TextPlacement"];
 
                 public TextAssociation_theCartographicText() {
@@ -9717,13 +9774,13 @@ namespace S100Framework.DomainModel.S101 {
             public Int32? scaleMinimum { get; set; } = default;
             public List<information> information { get; set; } = [];
 
-            [IgnoreDataMember]
+            [JsonIgnore]
             public override string Code => nameof(ShorelineConstruction);
 
             public class AdditionalInformation_theInformation : AdditionalInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theInformationInformationTypes => ["NauticalInformation"];
 
                 public AdditionalInformation_theInformation() {
@@ -9733,7 +9790,7 @@ namespace S100Framework.DomainModel.S101 {
             public class StructureEquipment_theEquipment : StructureEquipment {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theEquipmentFeatureTypes => ["Daymark", "DistanceMark", "FogSignal", "LightAllAround", "LightFogDetector", "PhysicalAISAidToNavigation", "RadarTransponderBeacon", "Retroreflector", "SignalStationTraffic", "SignalStationWarning", "LightSectored", "Bollard"];
 
                 public StructureEquipment_theEquipment() {
@@ -9743,7 +9800,7 @@ namespace S100Framework.DomainModel.S101 {
             public class AidsToNavigationAssociation_theCollection : AidsToNavigationAssociation {
                 public override roleType? roleType => DomainModel.roleType.aggregation;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theCollectionFeatureTypes => ["FairwaySystem", "TrafficSeparationScheme", "TwoWayRoute"];
 
                 public AidsToNavigationAssociation_theCollection() {
@@ -9753,7 +9810,7 @@ namespace S100Framework.DomainModel.S101 {
             public class UpdatedInformation_theUpdate : UpdatedInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
 
                 public UpdatedInformation_theUpdate() {
@@ -9763,7 +9820,7 @@ namespace S100Framework.DomainModel.S101 {
             public class TextAssociation_theCartographicText : TextAssociation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theCartographicTextFeatureTypes => ["TextPlacement"];
 
                 public TextAssociation_theCartographicText() {
@@ -9879,13 +9936,13 @@ namespace S100Framework.DomainModel.S101 {
             public List<information> information { get; set; } = [];
             public String? pictorialRepresentation { get; set; } = null;
 
-            [IgnoreDataMember]
+            [JsonIgnore]
             public override string Code => nameof(StructureOverNavigableWater);
 
             public class AdditionalInformation_theInformation : AdditionalInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theInformationInformationTypes => ["NauticalInformation"];
 
                 public AdditionalInformation_theInformation() {
@@ -9895,7 +9952,7 @@ namespace S100Framework.DomainModel.S101 {
             public class AidsToNavigationAssociation_theCollection : AidsToNavigationAssociation {
                 public override roleType? roleType => DomainModel.roleType.aggregation;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theCollectionFeatureTypes => ["FairwaySystem", "TrafficSeparationScheme", "TwoWayRoute"];
 
                 public AidsToNavigationAssociation_theCollection() {
@@ -9905,7 +9962,7 @@ namespace S100Framework.DomainModel.S101 {
             public class RoofedStructureAggregation_theSupport : RoofedStructureAggregation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theSupportFeatureTypes => ["PylonBridgeSupport"];
 
                 public RoofedStructureAggregation_theSupport() {
@@ -9915,7 +9972,7 @@ namespace S100Framework.DomainModel.S101 {
             public class StructureEquipment_theEquipment : StructureEquipment {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theEquipmentFeatureTypes => ["Daymark", "DistanceMark", "FogSignal", "LightAllAround", "LightFogDetector", "PhysicalAISAidToNavigation", "RadarTransponderBeacon", "Retroreflector", "SignalStationTraffic", "SignalStationWarning", "LightSectored"];
 
                 public StructureEquipment_theEquipment() {
@@ -9925,7 +9982,7 @@ namespace S100Framework.DomainModel.S101 {
             public class TextAssociation_theCartographicText : TextAssociation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theCartographicTextFeatureTypes => ["TextPlacement"];
 
                 public TextAssociation_theCartographicText() {
@@ -9935,7 +9992,7 @@ namespace S100Framework.DomainModel.S101 {
             public class UpdatedInformation_theUpdate : UpdatedInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
 
                 public UpdatedInformation_theUpdate() {
@@ -9992,13 +10049,13 @@ namespace S100Framework.DomainModel.S101 {
             public Int32? scaleMinimum { get; set; } = default;
             public List<information> information { get; set; } = [];
 
-            [IgnoreDataMember]
+            [JsonIgnore]
             public override string Code => nameof(Causeway);
 
             public class AdditionalInformation_theInformation : AdditionalInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theInformationInformationTypes => ["NauticalInformation"];
 
                 public AdditionalInformation_theInformation() {
@@ -10008,7 +10065,7 @@ namespace S100Framework.DomainModel.S101 {
             public class UpdatedInformation_theUpdate : UpdatedInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
 
                 public UpdatedInformation_theUpdate() {
@@ -10018,7 +10075,7 @@ namespace S100Framework.DomainModel.S101 {
             public class TextAssociation_theCartographicText : TextAssociation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theCartographicTextFeatureTypes => ["TextPlacement"];
 
                 public TextAssociation_theCartographicText() {
@@ -10060,13 +10117,13 @@ namespace S100Framework.DomainModel.S101 {
             public Int32? scaleMinimum { get; set; } = default;
             public List<information> information { get; set; } = [];
 
-            [IgnoreDataMember]
+            [JsonIgnore]
             public override string Code => nameof(Canal);
 
             public class AdditionalInformation_theInformation : AdditionalInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theInformationInformationTypes => ["NauticalInformation"];
 
                 public AdditionalInformation_theInformation() {
@@ -10076,7 +10133,7 @@ namespace S100Framework.DomainModel.S101 {
             public class UpdatedInformation_theUpdate : UpdatedInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
 
                 public UpdatedInformation_theUpdate() {
@@ -10086,7 +10143,7 @@ namespace S100Framework.DomainModel.S101 {
             public class TextAssociation_theCartographicText : TextAssociation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theCartographicTextFeatureTypes => ["TextPlacement"];
 
                 public TextAssociation_theCartographicText() {
@@ -10111,13 +10168,13 @@ namespace S100Framework.DomainModel.S101 {
             public Int32? scaleMinimum { get; set; } = default;
             public List<information> information { get; set; } = [];
 
-            [IgnoreDataMember]
+            [JsonIgnore]
             public override string Code => nameof(DistanceMark);
 
             public class AdditionalInformation_theInformation : AdditionalInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theInformationInformationTypes => ["NauticalInformation"];
 
                 public AdditionalInformation_theInformation() {
@@ -10127,7 +10184,7 @@ namespace S100Framework.DomainModel.S101 {
             public class StructureEquipment_theStructure : StructureEquipment {
                 public override roleType? roleType => DomainModel.roleType.composition;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theStructureFeatureTypes => ["Bridge", "Building", "Crane", "CardinalBeacon", "CardinalBuoy", "Conveyor", "Dolphin", "EmergencyWreckMarkingBuoy", "FishingFacility", "FloatingDock", "FortifiedStructure", "Hulk", "InstallationBuoy", "IsolatedDangerBeacon", "IsolatedDangerBuoy", "Landmark", "LateralBeacon", "LateralBuoy", "LightFloat", "LightVessel", "MooringBuoy", "OffshorePlatform", "Pile", "PipelineOverhead", "Pontoon", "PylonBridgeSupport", "SafeWaterBeacon", "SafeWaterBuoy", "ShorelineConstruction", "SiloTank", "SpanFixed", "SpanOpening", "SpecialPurposeGeneralBeacon", "SpecialPurposeGeneralBuoy", "StructureOverNavigableWater", "WindTurbine", "Wreck", "Daymark"];
 
                 public StructureEquipment_theStructure() {
@@ -10137,7 +10194,7 @@ namespace S100Framework.DomainModel.S101 {
             public class UpdatedInformation_theUpdate : UpdatedInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
 
                 public UpdatedInformation_theUpdate() {
@@ -10147,7 +10204,7 @@ namespace S100Framework.DomainModel.S101 {
             public class TextAssociation_theCartographicText : TextAssociation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theCartographicTextFeatureTypes => ["TextPlacement"];
 
                 public TextAssociation_theCartographicText() {
@@ -10223,13 +10280,13 @@ namespace S100Framework.DomainModel.S101 {
             public Int32? scaleMinimum { get; set; } = default;
             public List<information> information { get; set; } = [];
 
-            [IgnoreDataMember]
+            [JsonIgnore]
             public override string Code => nameof(Gate);
 
             public class AdditionalInformation_theInformation : AdditionalInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theInformationInformationTypes => ["ContactDetails", "NauticalInformation", "NonStandardWorkingDay", "ServiceHours"];
 
                 public AdditionalInformation_theInformation() {
@@ -10239,7 +10296,7 @@ namespace S100Framework.DomainModel.S101 {
             public class UpdatedInformation_theUpdate : UpdatedInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
 
                 public UpdatedInformation_theUpdate() {
@@ -10249,7 +10306,7 @@ namespace S100Framework.DomainModel.S101 {
             public class TextAssociation_theCartographicText : TextAssociation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theCartographicTextFeatureTypes => ["TextPlacement"];
 
                 public TextAssociation_theCartographicText() {
@@ -10332,13 +10389,13 @@ namespace S100Framework.DomainModel.S101 {
             public Int32? scaleMinimum { get; set; } = default;
             public List<information> information { get; set; } = [];
 
-            [IgnoreDataMember]
+            [JsonIgnore]
             public override string Code => nameof(Dam);
 
             public class AdditionalInformation_theInformation : AdditionalInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theInformationInformationTypes => ["NauticalInformation"];
 
                 public AdditionalInformation_theInformation() {
@@ -10348,7 +10405,7 @@ namespace S100Framework.DomainModel.S101 {
             public class UpdatedInformation_theUpdate : UpdatedInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
 
                 public UpdatedInformation_theUpdate() {
@@ -10358,7 +10415,7 @@ namespace S100Framework.DomainModel.S101 {
             public class TextAssociation_theCartographicText : TextAssociation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theCartographicTextFeatureTypes => ["TextPlacement"];
 
                 public TextAssociation_theCartographicText() {
@@ -10448,13 +10505,13 @@ namespace S100Framework.DomainModel.S101 {
             public String? pictorialRepresentation { get; set; } = null;
             public Boolean? inTheWater { get; set; } = default;
 
-            [IgnoreDataMember]
+            [JsonIgnore]
             public override string Code => nameof(Crane);
 
             public class AdditionalInformation_theInformation : AdditionalInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theInformationInformationTypes => ["ContactDetails", "NauticalInformation", "NonStandardWorkingDay", "ServiceHours"];
 
                 public AdditionalInformation_theInformation() {
@@ -10464,7 +10521,7 @@ namespace S100Framework.DomainModel.S101 {
             public class StructureEquipment_theEquipment : StructureEquipment {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theEquipmentFeatureTypes => ["Daymark", "DistanceMark", "FogSignal", "LightAllAround", "LightFogDetector", "PhysicalAISAidToNavigation", "RadarTransponderBeacon", "Retroreflector", "SignalStationTraffic", "SignalStationWarning", "LightSectored", "LightAirObstruction"];
 
                 public StructureEquipment_theEquipment() {
@@ -10474,7 +10531,7 @@ namespace S100Framework.DomainModel.S101 {
             public class AidsToNavigationAssociation_theCollection : AidsToNavigationAssociation {
                 public override roleType? roleType => DomainModel.roleType.aggregation;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theCollectionFeatureTypes => ["DeepWaterRoute", "FairwaySystem", "TrafficSeparationScheme", "TwoWayRoute"];
 
                 public AidsToNavigationAssociation_theCollection() {
@@ -10484,7 +10541,7 @@ namespace S100Framework.DomainModel.S101 {
             public class UpdatedInformation_theUpdate : UpdatedInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
 
                 public UpdatedInformation_theUpdate() {
@@ -10494,7 +10551,7 @@ namespace S100Framework.DomainModel.S101 {
             public class TextAssociation_theCartographicText : TextAssociation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theCartographicTextFeatureTypes => ["TextPlacement"];
 
                 public TextAssociation_theCartographicText() {
@@ -10550,13 +10607,13 @@ namespace S100Framework.DomainModel.S101 {
             public Int32? scaleMinimum { get; set; } = default;
             public List<information> information { get; set; } = [];
 
-            [IgnoreDataMember]
+            [JsonIgnore]
             public override string Code => nameof(Berth);
 
             public class AdditionalInformation_theInformation : AdditionalInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theInformationInformationTypes => ["ContactDetails", "NauticalInformation", "NonStandardWorkingDay", "ServiceHours"];
 
                 public AdditionalInformation_theInformation() {
@@ -10566,7 +10623,7 @@ namespace S100Framework.DomainModel.S101 {
             public class MooringTrotAggregation_theCollection : MooringTrotAggregation {
                 public override roleType? roleType => DomainModel.roleType.aggregation;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theCollectionFeatureTypes => ["MooringTrot"];
 
                 public MooringTrotAggregation_theCollection() {
@@ -10576,7 +10633,7 @@ namespace S100Framework.DomainModel.S101 {
             public class UpdatedInformation_theUpdate : UpdatedInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
 
                 public UpdatedInformation_theUpdate() {
@@ -10586,7 +10643,7 @@ namespace S100Framework.DomainModel.S101 {
             public class TextAssociation_theCartographicText : TextAssociation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theCartographicTextFeatureTypes => ["TextPlacement"];
 
                 public TextAssociation_theCartographicText() {
@@ -10672,13 +10729,13 @@ namespace S100Framework.DomainModel.S101 {
             public List<information> information { get; set; } = [];
             public String? pictorialRepresentation { get; set; } = null;
 
-            [IgnoreDataMember]
+            [JsonIgnore]
             public override string Code => nameof(Dolphin);
 
             public class AdditionalInformation_theInformation : AdditionalInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theInformationInformationTypes => ["ContactDetails", "NauticalInformation"];
 
                 public AdditionalInformation_theInformation() {
@@ -10688,7 +10745,7 @@ namespace S100Framework.DomainModel.S101 {
             public class StructureEquipment_theEquipment : StructureEquipment {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theEquipmentFeatureTypes => ["Daymark", "DistanceMark", "FogSignal", "LightAllAround", "LightFogDetector", "PhysicalAISAidToNavigation", "RadarTransponderBeacon", "Retroreflector", "SignalStationTraffic", "SignalStationWarning", "LightSectored", "Bollard"];
 
                 public StructureEquipment_theEquipment() {
@@ -10698,7 +10755,7 @@ namespace S100Framework.DomainModel.S101 {
             public class AidsToNavigationAssociation_theCollection : AidsToNavigationAssociation {
                 public override roleType? roleType => DomainModel.roleType.aggregation;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theCollectionFeatureTypes => ["DeepWaterRoute", "FairwaySystem", "TrafficSeparationScheme", "TwoWayRoute"];
 
                 public AidsToNavigationAssociation_theCollection() {
@@ -10708,7 +10765,7 @@ namespace S100Framework.DomainModel.S101 {
             public class RangeSystemAggregation_theCollection : RangeSystemAggregation {
                 public override roleType? roleType => DomainModel.roleType.aggregation;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theCollectionFeatureTypes => ["RangeSystem"];
 
                 public RangeSystemAggregation_theCollection() {
@@ -10718,7 +10775,7 @@ namespace S100Framework.DomainModel.S101 {
             public class UpdatedInformation_theUpdate : UpdatedInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
 
                 public UpdatedInformation_theUpdate() {
@@ -10728,7 +10785,7 @@ namespace S100Framework.DomainModel.S101 {
             public class TextAssociation_theCartographicText : TextAssociation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theCartographicTextFeatureTypes => ["TextPlacement"];
 
                 public TextAssociation_theCartographicText() {
@@ -10766,13 +10823,13 @@ namespace S100Framework.DomainModel.S101 {
             public List<information> information { get; set; } = [];
             public String? pictorialRepresentation { get; set; } = null;
 
-            [IgnoreDataMember]
+            [JsonIgnore]
             public override string Code => nameof(Bollard);
 
             public class AdditionalInformation_theInformation : AdditionalInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theInformationInformationTypes => ["NauticalInformation"];
 
                 public AdditionalInformation_theInformation() {
@@ -10782,7 +10839,7 @@ namespace S100Framework.DomainModel.S101 {
             public class StructureEquipment_theStructure : StructureEquipment {
                 public override roleType? roleType => DomainModel.roleType.composition;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theStructureFeatureTypes => ["Dolphin", "FortifiedStructure", "Hulk", "Landmark", "OffshorePlatform", "Pile", "PylonBridgeSupport", "ShorelineConstruction"];
 
                 public StructureEquipment_theStructure() {
@@ -10792,7 +10849,7 @@ namespace S100Framework.DomainModel.S101 {
             public class UpdatedInformation_theUpdate : UpdatedInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
 
                 public UpdatedInformation_theUpdate() {
@@ -10802,7 +10859,7 @@ namespace S100Framework.DomainModel.S101 {
             public class TextAssociation_theCartographicText : TextAssociation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theCartographicTextFeatureTypes => ["TextPlacement"];
 
                 public TextAssociation_theCartographicText() {
@@ -10852,13 +10909,13 @@ namespace S100Framework.DomainModel.S101 {
             public Int32? scaleMinimum { get; set; } = default;
             public List<information> information { get; set; } = [];
 
-            [IgnoreDataMember]
+            [JsonIgnore]
             public override string Code => nameof(DryDock);
 
             public class AdditionalInformation_theInformation : AdditionalInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theInformationInformationTypes => ["ContactDetails", "NauticalInformation", "NonStandardWorkingDay", "ServiceHours"];
 
                 public AdditionalInformation_theInformation() {
@@ -10868,7 +10925,7 @@ namespace S100Framework.DomainModel.S101 {
             public class UpdatedInformation_theUpdate : UpdatedInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
 
                 public UpdatedInformation_theUpdate() {
@@ -10878,7 +10935,7 @@ namespace S100Framework.DomainModel.S101 {
             public class TextAssociation_theCartographicText : TextAssociation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theCartographicTextFeatureTypes => ["TextPlacement"];
 
                 public TextAssociation_theCartographicText() {
@@ -10948,13 +11005,13 @@ namespace S100Framework.DomainModel.S101 {
             public List<information> information { get; set; } = [];
             public String? pictorialRepresentation { get; set; } = null;
 
-            [IgnoreDataMember]
+            [JsonIgnore]
             public override string Code => nameof(FloatingDock);
 
             public class AdditionalInformation_theInformation : AdditionalInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theInformationInformationTypes => ["ContactDetails", "NauticalInformation", "NonStandardWorkingDay", "ServiceHours"];
 
                 public AdditionalInformation_theInformation() {
@@ -10964,7 +11021,7 @@ namespace S100Framework.DomainModel.S101 {
             public class StructureEquipment_theEquipment : StructureEquipment {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theEquipmentFeatureTypes => ["Daymark", "DistanceMark", "FogSignal", "LightAllAround", "LightFogDetector", "PhysicalAISAidToNavigation", "RadarTransponderBeacon", "Retroreflector", "SignalStationTraffic", "SignalStationWarning"];
 
                 public StructureEquipment_theEquipment() {
@@ -10974,7 +11031,7 @@ namespace S100Framework.DomainModel.S101 {
             public class AidsToNavigationAssociation_theCollection : AidsToNavigationAssociation {
                 public override roleType? roleType => DomainModel.roleType.aggregation;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theCollectionFeatureTypes => ["FairwaySystem", "TrafficSeparationScheme", "TwoWayRoute"];
 
                 public AidsToNavigationAssociation_theCollection() {
@@ -10984,7 +11041,7 @@ namespace S100Framework.DomainModel.S101 {
             public class UpdatedInformation_theUpdate : UpdatedInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
 
                 public UpdatedInformation_theUpdate() {
@@ -10994,7 +11051,7 @@ namespace S100Framework.DomainModel.S101 {
             public class TextAssociation_theCartographicText : TextAssociation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theCartographicTextFeatureTypes => ["TextPlacement"];
 
                 public TextAssociation_theCartographicText() {
@@ -11038,13 +11095,13 @@ namespace S100Framework.DomainModel.S101 {
             public List<information> information { get; set; } = [];
             public String? pictorialRepresentation { get; set; } = null;
 
-            [IgnoreDataMember]
+            [JsonIgnore]
             public override string Code => nameof(Pontoon);
 
             public class AdditionalInformation_theInformation : AdditionalInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theInformationInformationTypes => ["NauticalInformation"];
 
                 public AdditionalInformation_theInformation() {
@@ -11054,7 +11111,7 @@ namespace S100Framework.DomainModel.S101 {
             public class BridgeAggregation_theCollection : BridgeAggregation {
                 public override roleType? roleType => DomainModel.roleType.aggregation;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theCollectionFeatureTypes => ["Bridge"];
 
                 public BridgeAggregation_theCollection() {
@@ -11064,7 +11121,7 @@ namespace S100Framework.DomainModel.S101 {
             public class StructureEquipment_theEquipment : StructureEquipment {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theEquipmentFeatureTypes => ["Daymark", "DistanceMark", "FogSignal", "LightAllAround", "LightFogDetector", "PhysicalAISAidToNavigation", "RadarTransponderBeacon", "Retroreflector", "SignalStationTraffic", "SignalStationWarning"];
 
                 public StructureEquipment_theEquipment() {
@@ -11074,7 +11131,7 @@ namespace S100Framework.DomainModel.S101 {
             public class AidsToNavigationAssociation_theCollection : AidsToNavigationAssociation {
                 public override roleType? roleType => DomainModel.roleType.aggregation;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theCollectionFeatureTypes => ["FairwaySystem", "TrafficSeparationScheme", "TwoWayRoute"];
 
                 public AidsToNavigationAssociation_theCollection() {
@@ -11084,7 +11141,7 @@ namespace S100Framework.DomainModel.S101 {
             public class UpdatedInformation_theUpdate : UpdatedInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
 
                 public UpdatedInformation_theUpdate() {
@@ -11094,7 +11151,7 @@ namespace S100Framework.DomainModel.S101 {
             public class TextAssociation_theCartographicText : TextAssociation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theCartographicTextFeatureTypes => ["TextPlacement"];
 
                 public TextAssociation_theCartographicText() {
@@ -11135,13 +11192,13 @@ namespace S100Framework.DomainModel.S101 {
             public Int32? scaleMinimum { get; set; } = default;
             public List<information> information { get; set; } = [];
 
-            [IgnoreDataMember]
+            [JsonIgnore]
             public override string Code => nameof(DockArea);
 
             public class AdditionalInformation_theInformation : AdditionalInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theInformationInformationTypes => ["ContactDetails", "NauticalInformation", "NonStandardWorkingDay", "ServiceHours"];
 
                 public AdditionalInformation_theInformation() {
@@ -11151,7 +11208,7 @@ namespace S100Framework.DomainModel.S101 {
             public class UpdatedInformation_theUpdate : UpdatedInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
 
                 public UpdatedInformation_theUpdate() {
@@ -11161,7 +11218,7 @@ namespace S100Framework.DomainModel.S101 {
             public class TextAssociation_theCartographicText : TextAssociation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theCartographicTextFeatureTypes => ["TextPlacement"];
 
                 public TextAssociation_theCartographicText() {
@@ -11203,13 +11260,13 @@ namespace S100Framework.DomainModel.S101 {
             public Int32? scaleMinimum { get; set; } = default;
             public List<information> information { get; set; } = [];
 
-            [IgnoreDataMember]
+            [JsonIgnore]
             public override string Code => nameof(Gridiron);
 
             public class AdditionalInformation_theInformation : AdditionalInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theInformationInformationTypes => ["NauticalInformation"];
 
                 public AdditionalInformation_theInformation() {
@@ -11219,7 +11276,7 @@ namespace S100Framework.DomainModel.S101 {
             public class UpdatedInformation_theUpdate : UpdatedInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
 
                 public UpdatedInformation_theUpdate() {
@@ -11229,7 +11286,7 @@ namespace S100Framework.DomainModel.S101 {
             public class TextAssociation_theCartographicText : TextAssociation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theCartographicTextFeatureTypes => ["TextPlacement"];
 
                 public TextAssociation_theCartographicText() {
@@ -11263,13 +11320,13 @@ namespace S100Framework.DomainModel.S101 {
             public Int32? scaleMinimum { get; set; } = default;
             public List<information> information { get; set; } = [];
 
-            [IgnoreDataMember]
+            [JsonIgnore]
             public override string Code => nameof(LockBasin);
 
             public class AdditionalInformation_theInformation : AdditionalInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theInformationInformationTypes => ["ContactDetails", "NauticalInformation", "NonStandardWorkingDay", "ServiceHours"];
 
                 public AdditionalInformation_theInformation() {
@@ -11279,7 +11336,7 @@ namespace S100Framework.DomainModel.S101 {
             public class UpdatedInformation_theUpdate : UpdatedInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
 
                 public UpdatedInformation_theUpdate() {
@@ -11289,7 +11346,7 @@ namespace S100Framework.DomainModel.S101 {
             public class TextAssociation_theCartographicText : TextAssociation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theCartographicTextFeatureTypes => ["TextPlacement"];
 
                 public TextAssociation_theCartographicText() {
@@ -11309,13 +11366,13 @@ namespace S100Framework.DomainModel.S101 {
             public Int32? scaleMinimum { get; set; } = default;
             public List<information> information { get; set; } = [];
 
-            [IgnoreDataMember]
+            [JsonIgnore]
             public override string Code => nameof(MooringTrot);
 
             public class AdditionalInformation_theInformation : AdditionalInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theInformationInformationTypes => ["ContactDetails", "NauticalInformation"];
 
                 public AdditionalInformation_theInformation() {
@@ -11325,7 +11382,7 @@ namespace S100Framework.DomainModel.S101 {
             public class MooringTrotAggregation_theComponent : MooringTrotAggregation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theComponentFeatureTypes => ["Berth", "CableSubmarine", "MooringBuoy", "Obstruction"];
 
                 public MooringTrotAggregation_theComponent() {
@@ -11335,7 +11392,7 @@ namespace S100Framework.DomainModel.S101 {
             public class UpdatedInformation_theUpdate : UpdatedInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
 
                 public UpdatedInformation_theUpdate() {
@@ -11345,7 +11402,7 @@ namespace S100Framework.DomainModel.S101 {
             public class TextAssociation_theCartographicText : TextAssociation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theCartographicTextFeatureTypes => ["TextPlacement"];
 
                 public TextAssociation_theCartographicText() {
@@ -11420,13 +11477,13 @@ namespace S100Framework.DomainModel.S101 {
             public Int32? scaleMinimum { get; set; } = default;
             public List<information> information { get; set; } = [];
 
-            [IgnoreDataMember]
+            [JsonIgnore]
             public override string Code => nameof(SeaAreaNamedWaterArea);
 
             public class AdditionalInformation_theInformation : AdditionalInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theInformationInformationTypes => ["NauticalInformation"];
 
                 public AdditionalInformation_theInformation() {
@@ -11436,7 +11493,7 @@ namespace S100Framework.DomainModel.S101 {
             public class UpdatedInformation_theUpdate : UpdatedInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
 
                 public UpdatedInformation_theUpdate() {
@@ -11446,7 +11503,7 @@ namespace S100Framework.DomainModel.S101 {
             public class TextAssociation_theCartographicText : TextAssociation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theCartographicTextFeatureTypes => ["TextPlacement"];
 
                 public TextAssociation_theCartographicText() {
@@ -11477,13 +11534,13 @@ namespace S100Framework.DomainModel.S101 {
             public Int32? scaleMinimum { get; set; } = default;
             public List<information> information { get; set; } = [];
 
-            [IgnoreDataMember]
+            [JsonIgnore]
             public override string Code => nameof(TidalStreamFloodEbb);
 
             public class AdditionalInformation_theInformation : AdditionalInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theInformationInformationTypes => ["NauticalInformation"];
 
                 public AdditionalInformation_theInformation() {
@@ -11493,7 +11550,7 @@ namespace S100Framework.DomainModel.S101 {
             public class UpdatedInformation_theUpdate : UpdatedInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
 
                 public UpdatedInformation_theUpdate() {
@@ -11503,7 +11560,7 @@ namespace S100Framework.DomainModel.S101 {
             public class TextAssociation_theCartographicText : TextAssociation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theCartographicTextFeatureTypes => ["TextPlacement"];
 
                 public TextAssociation_theCartographicText() {
@@ -11541,13 +11598,13 @@ namespace S100Framework.DomainModel.S101 {
             public Int32? scaleMinimum { get; set; } = default;
             public List<information> information { get; set; } = [];
 
-            [IgnoreDataMember]
+            [JsonIgnore]
             public override string Code => nameof(CurrentNonGravitational);
 
             public class AdditionalInformation_theInformation : AdditionalInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theInformationInformationTypes => ["NauticalInformation"];
 
                 public AdditionalInformation_theInformation() {
@@ -11557,7 +11614,7 @@ namespace S100Framework.DomainModel.S101 {
             public class UpdatedInformation_theUpdate : UpdatedInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
 
                 public UpdatedInformation_theUpdate() {
@@ -11567,7 +11624,7 @@ namespace S100Framework.DomainModel.S101 {
             public class TextAssociation_theCartographicText : TextAssociation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theCartographicTextFeatureTypes => ["TextPlacement"];
 
                 public TextAssociation_theCartographicText() {
@@ -11601,13 +11658,13 @@ namespace S100Framework.DomainModel.S101 {
             public Int32? scaleMinimum { get; set; } = default;
             public List<information> information { get; set; } = [];
 
-            [IgnoreDataMember]
+            [JsonIgnore]
             public override string Code => nameof(WaterTurbulence);
 
             public class AdditionalInformation_theInformation : AdditionalInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theInformationInformationTypes => ["NauticalInformation"];
 
                 public AdditionalInformation_theInformation() {
@@ -11617,7 +11674,7 @@ namespace S100Framework.DomainModel.S101 {
             public class UpdatedInformation_theUpdate : UpdatedInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
 
                 public UpdatedInformation_theUpdate() {
@@ -11627,7 +11684,7 @@ namespace S100Framework.DomainModel.S101 {
             public class TextAssociation_theCartographicText : TextAssociation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theCartographicTextFeatureTypes => ["TextPlacement"];
 
                 public TextAssociation_theCartographicText() {
@@ -11651,13 +11708,13 @@ namespace S100Framework.DomainModel.S101 {
             public Int32? scaleMinimum { get; set; } = default;
             public List<information> information { get; set; } = [];
 
-            [IgnoreDataMember]
+            [JsonIgnore]
             public override string Code => nameof(TidalStreamPanelData);
 
             public class AdditionalInformation_theInformation : AdditionalInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theInformationInformationTypes => ["NauticalInformation"];
 
                 public AdditionalInformation_theInformation() {
@@ -11667,7 +11724,7 @@ namespace S100Framework.DomainModel.S101 {
             public class UpdatedInformation_theUpdate : UpdatedInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
 
                 public UpdatedInformation_theUpdate() {
@@ -11677,7 +11734,7 @@ namespace S100Framework.DomainModel.S101 {
             public class TextAssociation_theCartographicText : TextAssociation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theCartographicTextFeatureTypes => ["TextPlacement"];
 
                 public TextAssociation_theCartographicText() {
@@ -11726,13 +11783,13 @@ namespace S100Framework.DomainModel.S101 {
             public Int32? scaleMinimum { get; set; } = default;
             public List<information> information { get; set; } = [];
 
-            [IgnoreDataMember]
+            [JsonIgnore]
             public override string Code => nameof(Sounding);
 
             public class AdditionalInformation_theInformation : AdditionalInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theInformationInformationTypes => ["NauticalInformation"];
 
                 public AdditionalInformation_theInformation() {
@@ -11742,7 +11799,7 @@ namespace S100Framework.DomainModel.S101 {
             public class UpdatedInformation_theUpdate : UpdatedInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
 
                 public UpdatedInformation_theUpdate() {
@@ -11752,7 +11809,7 @@ namespace S100Framework.DomainModel.S101 {
             public class TextAssociation_theCartographicText : TextAssociation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theCartographicTextFeatureTypes => ["TextPlacement"];
 
                 public TextAssociation_theCartographicText() {
@@ -11815,13 +11872,13 @@ namespace S100Framework.DomainModel.S101 {
             public List<vesselSpeedLimit> vesselSpeedLimit { get; set; } = [];
             public List<information> information { get; set; } = [];
 
-            [IgnoreDataMember]
+            [JsonIgnore]
             public override string Code => nameof(DredgedArea);
 
             public class AdditionalInformation_theInformation : AdditionalInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theInformationInformationTypes => ["NauticalInformation"];
 
                 public AdditionalInformation_theInformation() {
@@ -11831,7 +11888,7 @@ namespace S100Framework.DomainModel.S101 {
             public class FairwayAuxiliary_thePrimaryFeature : FairwayAuxiliary {
                 public override roleType? roleType => DomainModel.roleType.aggregation;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] thePrimaryFeatureFeatureTypes => ["Fairway"];
 
                 public FairwayAuxiliary_thePrimaryFeature() {
@@ -11841,7 +11898,7 @@ namespace S100Framework.DomainModel.S101 {
             public class UpdatedInformation_theUpdate : UpdatedInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
 
                 public UpdatedInformation_theUpdate() {
@@ -11851,7 +11908,7 @@ namespace S100Framework.DomainModel.S101 {
             public class TextAssociation_theCartographicText : TextAssociation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theCartographicTextFeatureTypes => ["TextPlacement"];
 
                 public TextAssociation_theCartographicText() {
@@ -11872,13 +11929,13 @@ namespace S100Framework.DomainModel.S101 {
             public Int32? scaleMinimum { get; set; } = default;
             public List<information> information { get; set; } = [];
 
-            [IgnoreDataMember]
+            [JsonIgnore]
             public override string Code => nameof(SweptArea);
 
             public class AdditionalInformation_theInformation : AdditionalInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theInformationInformationTypes => ["NauticalInformation"];
 
                 public AdditionalInformation_theInformation() {
@@ -11888,7 +11945,7 @@ namespace S100Framework.DomainModel.S101 {
             public class FairwayAuxiliary_thePrimaryFeature : FairwayAuxiliary {
                 public override roleType? roleType => DomainModel.roleType.aggregation;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] thePrimaryFeatureFeatureTypes => ["Fairway"];
 
                 public FairwayAuxiliary_thePrimaryFeature() {
@@ -11898,7 +11955,7 @@ namespace S100Framework.DomainModel.S101 {
             public class UpdatedInformation_theUpdate : UpdatedInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
 
                 public UpdatedInformation_theUpdate() {
@@ -11908,7 +11965,7 @@ namespace S100Framework.DomainModel.S101 {
             public class TextAssociation_theCartographicText : TextAssociation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theCartographicTextFeatureTypes => ["TextPlacement"];
 
                 public TextAssociation_theCartographicText() {
@@ -11929,13 +11986,13 @@ namespace S100Framework.DomainModel.S101 {
             public Int32? scaleMinimum { get; set; } = default;
             public List<information> information { get; set; } = [];
 
-            [IgnoreDataMember]
+            [JsonIgnore]
             public override string Code => nameof(DepthContour);
 
             public class AdditionalInformation_theInformation : AdditionalInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theInformationInformationTypes => ["NauticalInformation"];
 
                 public AdditionalInformation_theInformation() {
@@ -11945,7 +12002,7 @@ namespace S100Framework.DomainModel.S101 {
             public class UpdatedInformation_theUpdate : UpdatedInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
 
                 public UpdatedInformation_theUpdate() {
@@ -11967,13 +12024,13 @@ namespace S100Framework.DomainModel.S101 {
             public String? interoperabilityIdentifier { get; set; } = null;
             public List<information> information { get; set; } = [];
 
-            [IgnoreDataMember]
+            [JsonIgnore]
             public override string Code => nameof(DepthArea);
 
             public class AdditionalInformation_theInformation : AdditionalInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theInformationInformationTypes => ["NauticalInformation"];
 
                 public AdditionalInformation_theInformation() {
@@ -11983,7 +12040,7 @@ namespace S100Framework.DomainModel.S101 {
             public class UpdatedInformation_theUpdate : UpdatedInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
 
                 public UpdatedInformation_theUpdate() {
@@ -12014,13 +12071,13 @@ namespace S100Framework.DomainModel.S101 {
             public Int32? scaleMinimum { get; set; } = default;
             public List<information> information { get; set; } = [];
 
-            [IgnoreDataMember]
+            [JsonIgnore]
             public override string Code => nameof(DepthNoBottomFound);
 
             public class AdditionalInformation_theInformation : AdditionalInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theInformationInformationTypes => ["NauticalInformation"];
 
                 public AdditionalInformation_theInformation() {
@@ -12030,7 +12087,7 @@ namespace S100Framework.DomainModel.S101 {
             public class UpdatedInformation_theUpdate : UpdatedInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
 
                 public UpdatedInformation_theUpdate() {
@@ -12047,13 +12104,13 @@ namespace S100Framework.DomainModel.S101 {
             public String? interoperabilityIdentifier { get; set; } = null;
             public List<information> information { get; set; } = [];
 
-            [IgnoreDataMember]
+            [JsonIgnore]
             public override string Code => nameof(UnsurveyedArea);
 
             public class AdditionalInformation_theInformation : AdditionalInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theInformationInformationTypes => ["NauticalInformation"];
 
                 public AdditionalInformation_theInformation() {
@@ -12063,7 +12120,7 @@ namespace S100Framework.DomainModel.S101 {
             public class UpdatedInformation_theUpdate : UpdatedInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
 
                 public UpdatedInformation_theUpdate() {
@@ -12090,13 +12147,13 @@ namespace S100Framework.DomainModel.S101 {
             public Int32? scaleMinimum { get; set; } = default;
             public List<information> information { get; set; } = [];
 
-            [IgnoreDataMember]
+            [JsonIgnore]
             public override string Code => nameof(SeabedArea);
 
             public class AdditionalInformation_theInformation : AdditionalInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theInformationInformationTypes => ["NauticalInformation"];
 
                 public AdditionalInformation_theInformation() {
@@ -12106,7 +12163,7 @@ namespace S100Framework.DomainModel.S101 {
             public class UpdatedInformation_theUpdate : UpdatedInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
 
                 public UpdatedInformation_theUpdate() {
@@ -12116,7 +12173,7 @@ namespace S100Framework.DomainModel.S101 {
             public class TextAssociation_theCartographicText : TextAssociation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theCartographicTextFeatureTypes => ["TextPlacement"];
 
                 public TextAssociation_theCartographicText() {
@@ -12140,13 +12197,13 @@ namespace S100Framework.DomainModel.S101 {
             public Int32? scaleMinimum { get; set; } = default;
             public List<information> information { get; set; } = [];
 
-            [IgnoreDataMember]
+            [JsonIgnore]
             public override string Code => nameof(WeedKelp);
 
             public class AdditionalInformation_theInformation : AdditionalInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theInformationInformationTypes => ["NauticalInformation"];
 
                 public AdditionalInformation_theInformation() {
@@ -12156,7 +12213,7 @@ namespace S100Framework.DomainModel.S101 {
             public class UpdatedInformation_theUpdate : UpdatedInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
 
                 public UpdatedInformation_theUpdate() {
@@ -12166,7 +12223,7 @@ namespace S100Framework.DomainModel.S101 {
             public class TextAssociation_theCartographicText : TextAssociation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theCartographicTextFeatureTypes => ["TextPlacement"];
 
                 public TextAssociation_theCartographicText() {
@@ -12185,13 +12242,13 @@ namespace S100Framework.DomainModel.S101 {
             public Int32? scaleMinimum { get; set; } = default;
             public List<information> information { get; set; } = [];
 
-            [IgnoreDataMember]
+            [JsonIgnore]
             public override string Code => nameof(Seagrass);
 
             public class AdditionalInformation_theInformation : AdditionalInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theInformationInformationTypes => ["NauticalInformation"];
 
                 public AdditionalInformation_theInformation() {
@@ -12201,7 +12258,7 @@ namespace S100Framework.DomainModel.S101 {
             public class UpdatedInformation_theUpdate : UpdatedInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
 
                 public UpdatedInformation_theUpdate() {
@@ -12211,7 +12268,7 @@ namespace S100Framework.DomainModel.S101 {
             public class TextAssociation_theCartographicText : TextAssociation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theCartographicTextFeatureTypes => ["TextPlacement"];
 
                 public TextAssociation_theCartographicText() {
@@ -12230,13 +12287,13 @@ namespace S100Framework.DomainModel.S101 {
             public Int32? scaleMinimum { get; set; } = default;
             public List<information> information { get; set; } = [];
 
-            [IgnoreDataMember]
+            [JsonIgnore]
             public override string Code => nameof(Sandwave);
 
             public class AdditionalInformation_theInformation : AdditionalInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theInformationInformationTypes => ["NauticalInformation"];
 
                 public AdditionalInformation_theInformation() {
@@ -12246,7 +12303,7 @@ namespace S100Framework.DomainModel.S101 {
             public class UpdatedInformation_theUpdate : UpdatedInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
 
                 public UpdatedInformation_theUpdate() {
@@ -12265,13 +12322,13 @@ namespace S100Framework.DomainModel.S101 {
             public Int32? scaleMinimum { get; set; } = default;
             public List<information> information { get; set; } = [];
 
-            [IgnoreDataMember]
+            [JsonIgnore]
             public override string Code => nameof(Spring);
 
             public class AdditionalInformation_theInformation : AdditionalInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theInformationInformationTypes => ["NauticalInformation"];
 
                 public AdditionalInformation_theInformation() {
@@ -12281,7 +12338,7 @@ namespace S100Framework.DomainModel.S101 {
             public class UpdatedInformation_theUpdate : UpdatedInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
 
                 public UpdatedInformation_theUpdate() {
@@ -12291,7 +12348,7 @@ namespace S100Framework.DomainModel.S101 {
             public class TextAssociation_theCartographicText : TextAssociation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theCartographicTextFeatureTypes => ["TextPlacement"];
 
                 public TextAssociation_theCartographicText() {
@@ -12360,13 +12417,13 @@ namespace S100Framework.DomainModel.S101 {
             [Required()]
             public Decimal surroundingDepth { get; set; }
 
-            [IgnoreDataMember]
+            [JsonIgnore]
             public override string Code => nameof(UnderwaterAwashRock);
 
             public class AdditionalInformation_theInformation : AdditionalInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theInformationInformationTypes => ["NauticalInformation"];
 
                 public AdditionalInformation_theInformation() {
@@ -12376,7 +12433,7 @@ namespace S100Framework.DomainModel.S101 {
             public class UpdatedInformation_theUpdate : UpdatedInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
 
                 public UpdatedInformation_theUpdate() {
@@ -12386,7 +12443,7 @@ namespace S100Framework.DomainModel.S101 {
             public class TextAssociation_theCartographicText : TextAssociation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theCartographicTextFeatureTypes => ["TextPlacement"];
 
                 public TextAssociation_theCartographicText() {
@@ -12470,13 +12527,13 @@ namespace S100Framework.DomainModel.S101 {
             [Required()]
             public Decimal surroundingDepth { get; set; }
 
-            [IgnoreDataMember]
+            [JsonIgnore]
             public override string Code => nameof(Wreck);
 
             public class AdditionalInformation_theInformation : AdditionalInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theInformationInformationTypes => ["NauticalInformation"];
 
                 public AdditionalInformation_theInformation() {
@@ -12486,7 +12543,7 @@ namespace S100Framework.DomainModel.S101 {
             public class StructureEquipment_theEquipment : StructureEquipment {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theEquipmentFeatureTypes => ["Daymark", "DistanceMark", "FogSignal", "LightAllAround", "LightFogDetector", "PhysicalAISAidToNavigation", "RadarTransponderBeacon", "Retroreflector", "SignalStationTraffic", "SignalStationWarning", "LightSectored"];
 
                 public StructureEquipment_theEquipment() {
@@ -12496,7 +12553,7 @@ namespace S100Framework.DomainModel.S101 {
             public class UpdatedInformation_theUpdate : UpdatedInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
 
                 public UpdatedInformation_theUpdate() {
@@ -12506,7 +12563,7 @@ namespace S100Framework.DomainModel.S101 {
             public class TextAssociation_theCartographicText : TextAssociation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theCartographicTextFeatureTypes => ["TextPlacement"];
 
                 public TextAssociation_theCartographicText() {
@@ -12634,13 +12691,13 @@ namespace S100Framework.DomainModel.S101 {
             [Required()]
             public Decimal surroundingDepth { get; set; }
 
-            [IgnoreDataMember]
+            [JsonIgnore]
             public override string Code => nameof(Obstruction);
 
             public class AdditionalInformation_theInformation : AdditionalInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theInformationInformationTypes => ["NauticalInformation"];
 
                 public AdditionalInformation_theInformation() {
@@ -12650,7 +12707,7 @@ namespace S100Framework.DomainModel.S101 {
             public class MooringTrotAggregation_theCollection : MooringTrotAggregation {
                 public override roleType? roleType => DomainModel.roleType.aggregation;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theCollectionFeatureTypes => ["MooringTrot"];
 
                 public MooringTrotAggregation_theCollection() {
@@ -12660,7 +12717,7 @@ namespace S100Framework.DomainModel.S101 {
             public class UpdatedInformation_theUpdate : UpdatedInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
 
                 public UpdatedInformation_theUpdate() {
@@ -12670,7 +12727,7 @@ namespace S100Framework.DomainModel.S101 {
             public class TextAssociation_theCartographicText : TextAssociation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theCartographicTextFeatureTypes => ["TextPlacement"];
 
                 public TextAssociation_theCartographicText() {
@@ -12724,13 +12781,13 @@ namespace S100Framework.DomainModel.S101 {
             public Int32? scaleMinimum { get; set; } = default;
             public List<information> information { get; set; } = [];
 
-            [IgnoreDataMember]
+            [JsonIgnore]
             public override string Code => nameof(FoulGround);
 
             public class AdditionalInformation_theInformation : AdditionalInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theInformationInformationTypes => ["NauticalInformation"];
 
                 public AdditionalInformation_theInformation() {
@@ -12740,7 +12797,7 @@ namespace S100Framework.DomainModel.S101 {
             public class UpdatedInformation_theUpdate : UpdatedInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
 
                 public UpdatedInformation_theUpdate() {
@@ -12750,7 +12807,7 @@ namespace S100Framework.DomainModel.S101 {
             public class TextAssociation_theCartographicText : TextAssociation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theCartographicTextFeatureTypes => ["TextPlacement"];
 
                 public TextAssociation_theCartographicText() {
@@ -12769,13 +12826,13 @@ namespace S100Framework.DomainModel.S101 {
             public Int32? scaleMinimum { get; set; } = default;
             public List<information> information { get; set; } = [];
 
-            [IgnoreDataMember]
+            [JsonIgnore]
             public override string Code => nameof(DiscolouredWater);
 
             public class AdditionalInformation_theInformation : AdditionalInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theInformationInformationTypes => ["NauticalInformation"];
 
                 public AdditionalInformation_theInformation() {
@@ -12785,7 +12842,7 @@ namespace S100Framework.DomainModel.S101 {
             public class UpdatedInformation_theUpdate : UpdatedInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
 
                 public UpdatedInformation_theUpdate() {
@@ -12828,13 +12885,13 @@ namespace S100Framework.DomainModel.S101 {
             public Int32? scaleMinimum { get; set; } = default;
             public List<information> information { get; set; } = [];
 
-            [IgnoreDataMember]
+            [JsonIgnore]
             public override string Code => nameof(FishingFacility);
 
             public class AdditionalInformation_theInformation : AdditionalInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theInformationInformationTypes => ["ContactDetails", "NauticalInformation"];
 
                 public AdditionalInformation_theInformation() {
@@ -12844,7 +12901,7 @@ namespace S100Framework.DomainModel.S101 {
             public class StructureEquipment_theEquipment : StructureEquipment {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theEquipmentFeatureTypes => ["Daymark", "DistanceMark", "FogSignal", "LightAllAround", "LightFogDetector", "PhysicalAISAidToNavigation", "RadarTransponderBeacon", "Retroreflector", "SignalStationTraffic", "SignalStationWarning", "LightSectored"];
 
                 public StructureEquipment_theEquipment() {
@@ -12854,7 +12911,7 @@ namespace S100Framework.DomainModel.S101 {
             public class AidsToNavigationAssociation_theCollection : AidsToNavigationAssociation {
                 public override roleType? roleType => DomainModel.roleType.aggregation;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theCollectionFeatureTypes => ["DeepWaterRoute", "FairwaySystem", "TrafficSeparationScheme", "TwoWayRoute"];
 
                 public AidsToNavigationAssociation_theCollection() {
@@ -12864,7 +12921,7 @@ namespace S100Framework.DomainModel.S101 {
             public class UpdatedInformation_theUpdate : UpdatedInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
 
                 public UpdatedInformation_theUpdate() {
@@ -12874,7 +12931,7 @@ namespace S100Framework.DomainModel.S101 {
             public class TextAssociation_theCartographicText : TextAssociation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theCartographicTextFeatureTypes => ["TextPlacement"];
 
                 public TextAssociation_theCartographicText() {
@@ -12972,13 +13029,13 @@ namespace S100Framework.DomainModel.S101 {
             public Int32? scaleMinimum { get; set; } = default;
             public List<information> information { get; set; } = [];
 
-            [IgnoreDataMember]
+            [JsonIgnore]
             public override string Code => nameof(MarineFarmCulture);
 
             public class AdditionalInformation_theInformation : AdditionalInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theInformationInformationTypes => ["ContactDetails", "NauticalInformation"];
 
                 public AdditionalInformation_theInformation() {
@@ -12988,7 +13045,7 @@ namespace S100Framework.DomainModel.S101 {
             public class UpdatedInformation_theUpdate : UpdatedInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
 
                 public UpdatedInformation_theUpdate() {
@@ -12998,7 +13055,7 @@ namespace S100Framework.DomainModel.S101 {
             public class TextAssociation_theCartographicText : TextAssociation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theCartographicTextFeatureTypes => ["TextPlacement"];
 
                 public TextAssociation_theCartographicText() {
@@ -13086,13 +13143,13 @@ namespace S100Framework.DomainModel.S101 {
             public List<information> information { get; set; } = [];
             public String? pictorialRepresentation { get; set; } = null;
 
-            [IgnoreDataMember]
+            [JsonIgnore]
             public override string Code => nameof(OffshorePlatform);
 
             public class AdditionalInformation_theInformation : AdditionalInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theInformationInformationTypes => ["ContactDetails", "NauticalInformation"];
 
                 public AdditionalInformation_theInformation() {
@@ -13102,7 +13159,7 @@ namespace S100Framework.DomainModel.S101 {
             public class StructureEquipment_theEquipment : StructureEquipment {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theEquipmentFeatureTypes => ["Daymark", "DistanceMark", "FogSignal", "Helipad", "LightAllAround", "LightFogDetector", "PhysicalAISAidToNavigation", "RadarTransponderBeacon", "Retroreflector", "SignalStationTraffic", "SignalStationWarning", "LightSectored", "Bollard", "LightAirObstruction"];
 
                 public StructureEquipment_theEquipment() {
@@ -13112,7 +13169,7 @@ namespace S100Framework.DomainModel.S101 {
             public class AidsToNavigationAssociation_theCollection : AidsToNavigationAssociation {
                 public override roleType? roleType => DomainModel.roleType.aggregation;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theCollectionFeatureTypes => ["DeepWaterRoute", "FairwaySystem", "TrafficSeparationScheme", "TwoWayRoute"];
 
                 public AidsToNavigationAssociation_theCollection() {
@@ -13122,7 +13179,7 @@ namespace S100Framework.DomainModel.S101 {
             public class UpdatedInformation_theUpdate : UpdatedInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
 
                 public UpdatedInformation_theUpdate() {
@@ -13132,7 +13189,7 @@ namespace S100Framework.DomainModel.S101 {
             public class TextAssociation_theCartographicText : TextAssociation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theCartographicTextFeatureTypes => ["TextPlacement"];
 
                 public TextAssociation_theCartographicText() {
@@ -13170,13 +13227,13 @@ namespace S100Framework.DomainModel.S101 {
             public Int32? scaleMinimum { get; set; } = default;
             public List<information> information { get; set; } = [];
 
-            [IgnoreDataMember]
+            [JsonIgnore]
             public override string Code => nameof(CableSubmarine);
 
             public class AdditionalInformation_theInformation : AdditionalInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theInformationInformationTypes => ["ContactDetails", "NauticalInformation"];
 
                 public AdditionalInformation_theInformation() {
@@ -13186,7 +13243,7 @@ namespace S100Framework.DomainModel.S101 {
             public class MooringTrotAggregation_theCollection : MooringTrotAggregation {
                 public override roleType? roleType => DomainModel.roleType.aggregation;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theCollectionFeatureTypes => ["MooringTrot"];
 
                 public MooringTrotAggregation_theCollection() {
@@ -13196,7 +13253,7 @@ namespace S100Framework.DomainModel.S101 {
             public class UpdatedInformation_theUpdate : UpdatedInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
 
                 public UpdatedInformation_theUpdate() {
@@ -13206,7 +13263,7 @@ namespace S100Framework.DomainModel.S101 {
             public class TextAssociation_theCartographicText : TextAssociation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theCartographicTextFeatureTypes => ["TextPlacement"];
 
                 public TextAssociation_theCartographicText() {
@@ -13260,13 +13317,13 @@ namespace S100Framework.DomainModel.S101 {
             public Int32? scaleMinimum { get; set; } = default;
             public List<information> information { get; set; } = [];
 
-            [IgnoreDataMember]
+            [JsonIgnore]
             public override string Code => nameof(CableArea);
 
             public class AdditionalInformation_theInformation : AdditionalInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theInformationInformationTypes => ["ContactDetails", "NauticalInformation"];
 
                 public AdditionalInformation_theInformation() {
@@ -13276,7 +13333,7 @@ namespace S100Framework.DomainModel.S101 {
             public class UpdatedInformation_theUpdate : UpdatedInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
 
                 public UpdatedInformation_theUpdate() {
@@ -13286,7 +13343,7 @@ namespace S100Framework.DomainModel.S101 {
             public class TextAssociation_theCartographicText : TextAssociation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theCartographicTextFeatureTypes => ["TextPlacement"];
 
                 public TextAssociation_theCartographicText() {
@@ -13361,13 +13418,13 @@ namespace S100Framework.DomainModel.S101 {
             public List<information> information { get; set; } = [];
             public String? pictorialRepresentation { get; set; } = null;
 
-            [IgnoreDataMember]
+            [JsonIgnore]
             public override string Code => nameof(PipelineSubmarineOnLand);
 
             public class AdditionalInformation_theInformation : AdditionalInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theInformationInformationTypes => ["ContactDetails", "NauticalInformation"];
 
                 public AdditionalInformation_theInformation() {
@@ -13377,7 +13434,7 @@ namespace S100Framework.DomainModel.S101 {
             public class UpdatedInformation_theUpdate : UpdatedInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
 
                 public UpdatedInformation_theUpdate() {
@@ -13387,7 +13444,7 @@ namespace S100Framework.DomainModel.S101 {
             public class TextAssociation_theCartographicText : TextAssociation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theCartographicTextFeatureTypes => ["TextPlacement"];
 
                 public TextAssociation_theCartographicText() {
@@ -13458,13 +13515,13 @@ namespace S100Framework.DomainModel.S101 {
             public Int32? scaleMinimum { get; set; } = default;
             public List<information> information { get; set; } = [];
 
-            [IgnoreDataMember]
+            [JsonIgnore]
             public override string Code => nameof(SubmarinePipelineArea);
 
             public class AdditionalInformation_theInformation : AdditionalInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theInformationInformationTypes => ["ContactDetails", "NauticalInformation"];
 
                 public AdditionalInformation_theInformation() {
@@ -13474,7 +13531,7 @@ namespace S100Framework.DomainModel.S101 {
             public class UpdatedInformation_theUpdate : UpdatedInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
 
                 public UpdatedInformation_theUpdate() {
@@ -13484,7 +13541,7 @@ namespace S100Framework.DomainModel.S101 {
             public class TextAssociation_theCartographicText : TextAssociation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theCartographicTextFeatureTypes => ["TextPlacement"];
 
                 public TextAssociation_theCartographicText() {
@@ -13580,13 +13637,13 @@ namespace S100Framework.DomainModel.S101 {
             public Int32? scaleMinimum { get; set; } = default;
             public List<information> information { get; set; } = [];
 
-            [IgnoreDataMember]
+            [JsonIgnore]
             public override string Code => nameof(OffshoreProductionArea);
 
             public class AdditionalInformation_theInformation : AdditionalInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theInformationInformationTypes => ["ContactDetails", "NauticalInformation"];
 
                 public AdditionalInformation_theInformation() {
@@ -13596,7 +13653,7 @@ namespace S100Framework.DomainModel.S101 {
             public class UpdatedInformation_theUpdate : UpdatedInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
 
                 public UpdatedInformation_theUpdate() {
@@ -13606,7 +13663,7 @@ namespace S100Framework.DomainModel.S101 {
             public class TextAssociation_theCartographicText : TextAssociation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theCartographicTextFeatureTypes => ["TextPlacement"];
 
                 public TextAssociation_theCartographicText() {
@@ -13643,13 +13700,13 @@ namespace S100Framework.DomainModel.S101 {
             public Int32? scaleMinimum { get; set; } = default;
             public List<information> information { get; set; } = [];
 
-            [IgnoreDataMember]
+            [JsonIgnore]
             public override string Code => nameof(NavigationLine);
 
             public class AdditionalInformation_theInformation : AdditionalInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theInformationInformationTypes => ["NauticalInformation"];
 
                 public AdditionalInformation_theInformation() {
@@ -13659,7 +13716,7 @@ namespace S100Framework.DomainModel.S101 {
             public class RangeSystemAggregation_theCollection : RangeSystemAggregation {
                 public override roleType? roleType => DomainModel.roleType.aggregation;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theCollectionFeatureTypes => ["RangeSystem"];
 
                 public RangeSystemAggregation_theCollection() {
@@ -13669,7 +13726,7 @@ namespace S100Framework.DomainModel.S101 {
             public class UpdatedInformation_theUpdate : UpdatedInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
 
                 public UpdatedInformation_theUpdate() {
@@ -13735,13 +13792,13 @@ namespace S100Framework.DomainModel.S101 {
             public Int32? scaleMinimum { get; set; } = default;
             public List<information> information { get; set; } = [];
 
-            [IgnoreDataMember]
+            [JsonIgnore]
             public override string Code => nameof(RecommendedTrack);
 
             public class AdditionalInformation_theInformation : AdditionalInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theInformationInformationTypes => ["NauticalInformation"];
 
                 public AdditionalInformation_theInformation() {
@@ -13751,7 +13808,7 @@ namespace S100Framework.DomainModel.S101 {
             public class RangeSystemAggregation_theCollection : RangeSystemAggregation {
                 public override roleType? roleType => DomainModel.roleType.aggregation;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theCollectionFeatureTypes => ["RangeSystem"];
 
                 public RangeSystemAggregation_theCollection() {
@@ -13761,7 +13818,7 @@ namespace S100Framework.DomainModel.S101 {
             public class UpdatedInformation_theUpdate : UpdatedInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
 
                 public UpdatedInformation_theUpdate() {
@@ -13771,7 +13828,7 @@ namespace S100Framework.DomainModel.S101 {
             public class TextAssociation_theCartographicText : TextAssociation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theCartographicTextFeatureTypes => ["TextPlacement"];
 
                 public TextAssociation_theCartographicText() {
@@ -13781,7 +13838,7 @@ namespace S100Framework.DomainModel.S101 {
             public class FairwayAuxiliary_thePrimaryFeature : FairwayAuxiliary {
                 public override roleType? roleType => DomainModel.roleType.aggregation;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] thePrimaryFeatureFeatureTypes => ["Fairway"];
 
                 public FairwayAuxiliary_thePrimaryFeature() {
@@ -13802,13 +13859,13 @@ namespace S100Framework.DomainModel.S101 {
             public Int32? scaleMinimum { get; set; } = default;
             public List<information> information { get; set; } = [];
 
-            [IgnoreDataMember]
+            [JsonIgnore]
             public override string Code => nameof(RangeSystem);
 
             public class AdditionalInformation_theInformation : AdditionalInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theInformationInformationTypes => ["NauticalInformation"];
 
                 public AdditionalInformation_theInformation() {
@@ -13818,7 +13875,7 @@ namespace S100Framework.DomainModel.S101 {
             public class RangeSystemAggregation_theComponent : RangeSystemAggregation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theComponentFeatureTypes => ["CardinalBeacon", "Building", "Daymark", "Dolphin", "FortifiedStructure", "IsolatedDangerBeacon", "Landmark", "LateralBeacon", "LightAllAround", "LightSectored", "NavigationLine", "Pile", "RadarTransponderBeacon", "RangeSystem", "RecommendedRouteCentreline", "RecommendedTrack", "SafeWaterBeacon", "SiloTank", "SpecialPurposeGeneralBeacon"];
 
                 public RangeSystemAggregation_theComponent() {
@@ -13828,7 +13885,7 @@ namespace S100Framework.DomainModel.S101 {
             public class RangeSystemAggregation_theCollection : RangeSystemAggregation {
                 public override roleType? roleType => DomainModel.roleType.aggregation;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theCollectionFeatureTypes => ["RangeSystem"];
 
                 public RangeSystemAggregation_theCollection() {
@@ -13838,7 +13895,7 @@ namespace S100Framework.DomainModel.S101 {
             public class FairwayAuxiliary_thePrimaryFeature : FairwayAuxiliary {
                 public override roleType? roleType => DomainModel.roleType.aggregation;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] thePrimaryFeatureFeatureTypes => ["Fairway"];
 
                 public FairwayAuxiliary_thePrimaryFeature() {
@@ -13848,7 +13905,7 @@ namespace S100Framework.DomainModel.S101 {
             public class UpdatedInformation_theUpdate : UpdatedInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
 
                 public UpdatedInformation_theUpdate() {
@@ -13858,7 +13915,7 @@ namespace S100Framework.DomainModel.S101 {
             public class TextAssociation_theCartographicText : TextAssociation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theCartographicTextFeatureTypes => ["TextPlacement"];
 
                 public TextAssociation_theCartographicText() {
@@ -13929,13 +13986,13 @@ namespace S100Framework.DomainModel.S101 {
             public Int32? scaleMinimum { get; set; } = default;
             public List<information> information { get; set; } = [];
 
-            [IgnoreDataMember]
+            [JsonIgnore]
             public override string Code => nameof(Fairway);
 
             public class AdditionalInformation_theInformation : AdditionalInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theInformationInformationTypes => ["NauticalInformation"];
 
                 public AdditionalInformation_theInformation() {
@@ -13945,7 +14002,7 @@ namespace S100Framework.DomainModel.S101 {
             public class FairwayAggregation_theCollection : FairwayAggregation {
                 public override roleType? roleType => DomainModel.roleType.aggregation;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theCollectionFeatureTypes => ["FairwaySystem"];
 
                 public FairwayAggregation_theCollection() {
@@ -13955,7 +14012,7 @@ namespace S100Framework.DomainModel.S101 {
             public class FairwayAuxiliary_theAuxiliaryFeature : FairwayAuxiliary {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theAuxiliaryFeatureFeatureTypes => ["CardinalBeacon", "CardinalBuoy", "CautionArea", "Daymark", "DredgedArea", "IsolatedDangerBeacon", "IsolatedDangerBuoy", "LateralBeacon", "LateralBuoy", "LightFloat", "LightVessel", "Landmark", "Pile", "RangeSystem", "RecommendedRouteCentreline", "RecommendedTrack", "RestrictedArea", "SafeWaterBeacon", "SafeWaterBuoy", "SpecialPurposeGeneralBeacon", "SpecialPurposeGeneralBuoy", "SweptArea"];
 
                 public FairwayAuxiliary_theAuxiliaryFeature() {
@@ -13965,7 +14022,7 @@ namespace S100Framework.DomainModel.S101 {
             public class UpdatedInformation_theUpdate : UpdatedInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
 
                 public UpdatedInformation_theUpdate() {
@@ -13975,7 +14032,7 @@ namespace S100Framework.DomainModel.S101 {
             public class TextAssociation_theCartographicText : TextAssociation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theCartographicTextFeatureTypes => ["TextPlacement"];
 
                 public TextAssociation_theCartographicText() {
@@ -13997,13 +14054,13 @@ namespace S100Framework.DomainModel.S101 {
             public Int32? scaleMinimum { get; set; } = default;
             public List<information> information { get; set; } = [];
 
-            [IgnoreDataMember]
+            [JsonIgnore]
             public override string Code => nameof(FairwaySystem);
 
             public class AdditionalInformation_theInformation : AdditionalInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theInformationInformationTypes => ["NauticalInformation"];
 
                 public AdditionalInformation_theInformation() {
@@ -14013,7 +14070,7 @@ namespace S100Framework.DomainModel.S101 {
             public class AidsToNavigationAssociation_theComponent : AidsToNavigationAssociation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theComponentFeatureTypes => ["CardinalBeacon", "CardinalBuoy", "Daymark", "EmergencyWreckMarkingBuoy", "IsolatedDangerBeacon", "IsolatedDangerBuoy", "LateralBeacon", "LateralBuoy", "LightFloat", "LightVessel", "Pile", "SafeWaterBeacon", "SafeWaterBuoy", "SpecialPurposeGeneralBeacon", "SpecialPurposeGeneralBuoy", "Building", "Crane", "Dolphin", "FishingFacility", "FortifiedStructure", "Landmark", "MooringBuoy", "OffshorePlatform", "SiloTank", "WindTurbine", "Bridge", "Conveyor", "FloatingDock", "Hulk", "PipelineOverhead", "Pontoon", "PylonBridgeSupport", "ShorelineConstruction", "SpanFixed", "SpanOpening", "StructureOverNavigableWater"];
 
                 public AidsToNavigationAssociation_theComponent() {
@@ -14023,7 +14080,7 @@ namespace S100Framework.DomainModel.S101 {
             public class FairwayAggregation_theComponent : FairwayAggregation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theComponentFeatureTypes => ["Fairway"];
 
                 public FairwayAggregation_theComponent() {
@@ -14033,7 +14090,7 @@ namespace S100Framework.DomainModel.S101 {
             public class UpdatedInformation_theUpdate : UpdatedInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
 
                 public UpdatedInformation_theUpdate() {
@@ -14043,7 +14100,7 @@ namespace S100Framework.DomainModel.S101 {
             public class TextAssociation_theCartographicText : TextAssociation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theCartographicTextFeatureTypes => ["TextPlacement"];
 
                 public TextAssociation_theCartographicText() {
@@ -14099,13 +14156,13 @@ namespace S100Framework.DomainModel.S101 {
             public Int32? scaleMinimum { get; set; } = default;
             public List<information> information { get; set; } = [];
 
-            [IgnoreDataMember]
+            [JsonIgnore]
             public override string Code => nameof(RecommendedRouteCentreline);
 
             public class AdditionalInformation_theInformation : AdditionalInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theInformationInformationTypes => ["NauticalInformation"];
 
                 public AdditionalInformation_theInformation() {
@@ -14115,7 +14172,7 @@ namespace S100Framework.DomainModel.S101 {
             public class RangeSystemAggregation_theCollection : RangeSystemAggregation {
                 public override roleType? roleType => DomainModel.roleType.aggregation;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theCollectionFeatureTypes => ["RangeSystem"];
 
                 public RangeSystemAggregation_theCollection() {
@@ -14125,7 +14182,7 @@ namespace S100Framework.DomainModel.S101 {
             public class FairwayAuxiliary_thePrimaryFeature : FairwayAuxiliary {
                 public override roleType? roleType => DomainModel.roleType.aggregation;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] thePrimaryFeatureFeatureTypes => ["Fairway"];
 
                 public FairwayAuxiliary_thePrimaryFeature() {
@@ -14135,7 +14192,7 @@ namespace S100Framework.DomainModel.S101 {
             public class UpdatedInformation_theUpdate : UpdatedInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
 
                 public UpdatedInformation_theUpdate() {
@@ -14145,7 +14202,7 @@ namespace S100Framework.DomainModel.S101 {
             public class TextAssociation_theCartographicText : TextAssociation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theCartographicTextFeatureTypes => ["TextPlacement"];
 
                 public TextAssociation_theCartographicText() {
@@ -14202,13 +14259,13 @@ namespace S100Framework.DomainModel.S101 {
             public Int32? scaleMinimum { get; set; } = default;
             public List<information> information { get; set; } = [];
 
-            [IgnoreDataMember]
+            [JsonIgnore]
             public override string Code => nameof(TwoWayRoutePart);
 
             public class AdditionalInformation_theInformation : AdditionalInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theInformationInformationTypes => ["NauticalInformation"];
 
                 public AdditionalInformation_theInformation() {
@@ -14218,7 +14275,7 @@ namespace S100Framework.DomainModel.S101 {
             public class TwoWayRouteAggregation_theCollection : TwoWayRouteAggregation {
                 public override roleType? roleType => DomainModel.roleType.aggregation;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theCollectionFeatureTypes => ["TwoWayRoute"];
 
                 public TwoWayRouteAggregation_theCollection() {
@@ -14228,7 +14285,7 @@ namespace S100Framework.DomainModel.S101 {
             public class TrafficSeparationSchemeAggregation_theCollection : TrafficSeparationSchemeAggregation {
                 public override roleType? roleType => DomainModel.roleType.aggregation;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theCollectionFeatureTypes => ["TrafficSeparationScheme"];
 
                 public TrafficSeparationSchemeAggregation_theCollection() {
@@ -14238,7 +14295,7 @@ namespace S100Framework.DomainModel.S101 {
             public class UpdatedInformation_theUpdate : UpdatedInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
 
                 public UpdatedInformation_theUpdate() {
@@ -14259,13 +14316,13 @@ namespace S100Framework.DomainModel.S101 {
             public Int32? scaleMinimum { get; set; } = default;
             public List<information> information { get; set; } = [];
 
-            [IgnoreDataMember]
+            [JsonIgnore]
             public override string Code => nameof(TwoWayRoute);
 
             public class AdditionalInformation_theInformation : AdditionalInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theInformationInformationTypes => ["NauticalInformation"];
 
                 public AdditionalInformation_theInformation() {
@@ -14275,7 +14332,7 @@ namespace S100Framework.DomainModel.S101 {
             public class AidsToNavigationAssociation_theComponent : AidsToNavigationAssociation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theComponentFeatureTypes => ["CardinalBeacon", "CardinalBuoy", "Daymark", "EmergencyWreckMarkingBuoy", "IsolatedDangerBeacon", "IsolatedDangerBuoy", "LateralBeacon", "LateralBuoy", "LightFloat", "LightVessel", "Pile", "SafeWaterBeacon", "SafeWaterBuoy", "SpecialPurposeGeneralBeacon", "SpecialPurposeGeneralBuoy", "Building", "Crane", "Dolphin", "FishingFacility", "FortifiedStructure", "Landmark", "MooringBuoy", "OffshorePlatform", "SiloTank", "WindTurbine", "Bridge", "Conveyor", "FloatingDock", "Hulk", "PipelineOverhead", "Pontoon", "PylonBridgeSupport", "ShorelineConstruction", "SpanFixed", "SpanOpening", "StructureOverNavigableWater"];
 
                 public AidsToNavigationAssociation_theComponent() {
@@ -14285,7 +14342,7 @@ namespace S100Framework.DomainModel.S101 {
             public class TwoWayRouteAggregation_theComponent : TwoWayRouteAggregation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theComponentFeatureTypes => ["TwoWayRoutePart"];
 
                 public TwoWayRouteAggregation_theComponent() {
@@ -14295,7 +14352,7 @@ namespace S100Framework.DomainModel.S101 {
             public class TrafficSeparationSchemeAggregation_theCollection : TrafficSeparationSchemeAggregation {
                 public override roleType? roleType => DomainModel.roleType.aggregation;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theCollectionFeatureTypes => ["TrafficSeparationScheme"];
 
                 public TrafficSeparationSchemeAggregation_theCollection() {
@@ -14305,7 +14362,7 @@ namespace S100Framework.DomainModel.S101 {
             public class UpdatedInformation_theUpdate : UpdatedInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
 
                 public UpdatedInformation_theUpdate() {
@@ -14315,7 +14372,7 @@ namespace S100Framework.DomainModel.S101 {
             public class TextAssociation_theCartographicText : TextAssociation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theCartographicTextFeatureTypes => ["TextPlacement"];
 
                 public TextAssociation_theCartographicText() {
@@ -14342,13 +14399,13 @@ namespace S100Framework.DomainModel.S101 {
             public Int32? scaleMinimum { get; set; } = default;
             public List<information> information { get; set; } = [];
 
-            [IgnoreDataMember]
+            [JsonIgnore]
             public override string Code => nameof(RecommendedTrafficLanePart);
 
             public class AdditionalInformation_theInformation : AdditionalInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theInformationInformationTypes => ["NauticalInformation"];
 
                 public AdditionalInformation_theInformation() {
@@ -14358,7 +14415,7 @@ namespace S100Framework.DomainModel.S101 {
             public class UpdatedInformation_theUpdate : UpdatedInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
 
                 public UpdatedInformation_theUpdate() {
@@ -14419,13 +14476,13 @@ namespace S100Framework.DomainModel.S101 {
             public Int32? scaleMinimum { get; set; } = default;
             public List<information> information { get; set; } = [];
 
-            [IgnoreDataMember]
+            [JsonIgnore]
             public override string Code => nameof(DeepWaterRouteCentreline);
 
             public class AdditionalInformation_theInformation : AdditionalInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theInformationInformationTypes => ["NauticalInformation"];
 
                 public AdditionalInformation_theInformation() {
@@ -14435,7 +14492,7 @@ namespace S100Framework.DomainModel.S101 {
             public class DeepWaterRouteAggregation_theCollection : DeepWaterRouteAggregation {
                 public override roleType? roleType => DomainModel.roleType.aggregation;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theCollectionFeatureTypes => ["DeepWaterRoute"];
 
                 public DeepWaterRouteAggregation_theCollection() {
@@ -14445,7 +14502,7 @@ namespace S100Framework.DomainModel.S101 {
             public class TrafficSeparationSchemeAggregation_theCollection : TrafficSeparationSchemeAggregation {
                 public override roleType? roleType => DomainModel.roleType.aggregation;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theCollectionFeatureTypes => ["TrafficSeparationScheme"];
 
                 public TrafficSeparationSchemeAggregation_theCollection() {
@@ -14455,7 +14512,7 @@ namespace S100Framework.DomainModel.S101 {
             public class UpdatedInformation_theUpdate : UpdatedInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
 
                 public UpdatedInformation_theUpdate() {
@@ -14465,7 +14522,7 @@ namespace S100Framework.DomainModel.S101 {
             public class TextAssociation_theCartographicText : TextAssociation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theCartographicTextFeatureTypes => ["TextPlacement"];
 
                 public TextAssociation_theCartographicText() {
@@ -14552,13 +14609,13 @@ namespace S100Framework.DomainModel.S101 {
             public Int32? scaleMinimum { get; set; } = default;
             public List<information> information { get; set; } = [];
 
-            [IgnoreDataMember]
+            [JsonIgnore]
             public override string Code => nameof(DeepWaterRoutePart);
 
             public class AdditionalInformation_theInformation : AdditionalInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theInformationInformationTypes => ["NauticalInformation"];
 
                 public AdditionalInformation_theInformation() {
@@ -14568,7 +14625,7 @@ namespace S100Framework.DomainModel.S101 {
             public class DeepWaterRouteAggregation_theCollection : DeepWaterRouteAggregation {
                 public override roleType? roleType => DomainModel.roleType.aggregation;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theCollectionFeatureTypes => ["DeepWaterRoute"];
 
                 public DeepWaterRouteAggregation_theCollection() {
@@ -14578,7 +14635,7 @@ namespace S100Framework.DomainModel.S101 {
             public class TrafficSeparationSchemeAggregation_theCollection : TrafficSeparationSchemeAggregation {
                 public override roleType? roleType => DomainModel.roleType.aggregation;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theCollectionFeatureTypes => ["TrafficSeparationScheme"];
 
                 public TrafficSeparationSchemeAggregation_theCollection() {
@@ -14588,7 +14645,7 @@ namespace S100Framework.DomainModel.S101 {
             public class UpdatedInformation_theUpdate : UpdatedInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
 
                 public UpdatedInformation_theUpdate() {
@@ -14598,7 +14655,7 @@ namespace S100Framework.DomainModel.S101 {
             public class TextAssociation_theCartographicText : TextAssociation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theCartographicTextFeatureTypes => ["TextPlacement"];
 
                 public TextAssociation_theCartographicText() {
@@ -14619,13 +14676,13 @@ namespace S100Framework.DomainModel.S101 {
             public Int32? scaleMinimum { get; set; } = default;
             public List<information> information { get; set; } = [];
 
-            [IgnoreDataMember]
+            [JsonIgnore]
             public override string Code => nameof(DeepWaterRoute);
 
             public class AdditionalInformation_theInformation : AdditionalInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theInformationInformationTypes => ["NauticalInformation"];
 
                 public AdditionalInformation_theInformation() {
@@ -14635,7 +14692,7 @@ namespace S100Framework.DomainModel.S101 {
             public class AidsToNavigationAssociation_theComponent : AidsToNavigationAssociation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theComponentFeatureTypes => ["CardinalBeacon", "CardinalBuoy", "Daymark", "EmergencyWreckMarkingBuoy", "IsolatedDangerBeacon", "IsolatedDangerBuoy", "LateralBeacon", "LateralBuoy", "LightFloat", "LightVessel", "Pile", "SafeWaterBeacon", "SafeWaterBuoy", "SpecialPurposeGeneralBeacon", "SpecialPurposeGeneralBuoy", "Building", "Crane", "Dolphin", "FishingFacility", "FortifiedStructure", "Landmark", "MooringBuoy", "OffshorePlatform", "SiloTank", "WindTurbine"];
 
                 public AidsToNavigationAssociation_theComponent() {
@@ -14645,7 +14702,7 @@ namespace S100Framework.DomainModel.S101 {
             public class DeepWaterRouteAggregation_theComponent : DeepWaterRouteAggregation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theComponentFeatureTypes => ["DeepWaterRouteCentreline", "DeepWaterRoutePart"];
 
                 public DeepWaterRouteAggregation_theComponent() {
@@ -14655,7 +14712,7 @@ namespace S100Framework.DomainModel.S101 {
             public class TrafficSeparationSchemeAggregation_theCollection : TrafficSeparationSchemeAggregation {
                 public override roleType? roleType => DomainModel.roleType.aggregation;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theCollectionFeatureTypes => ["TrafficSeparationScheme"];
 
                 public TrafficSeparationSchemeAggregation_theCollection() {
@@ -14665,7 +14722,7 @@ namespace S100Framework.DomainModel.S101 {
             public class UpdatedInformation_theUpdate : UpdatedInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
 
                 public UpdatedInformation_theUpdate() {
@@ -14675,7 +14732,7 @@ namespace S100Framework.DomainModel.S101 {
             public class TextAssociation_theCartographicText : TextAssociation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theCartographicTextFeatureTypes => ["TextPlacement"];
 
                 public TextAssociation_theCartographicText() {
@@ -14728,13 +14785,13 @@ namespace S100Framework.DomainModel.S101 {
             public Int32? scaleMinimum { get; set; } = default;
             public List<information> information { get; set; } = [];
 
-            [IgnoreDataMember]
+            [JsonIgnore]
             public override string Code => nameof(InshoreTrafficZone);
 
             public class AdditionalInformation_theInformation : AdditionalInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theInformationInformationTypes => ["NauticalInformation"];
 
                 public AdditionalInformation_theInformation() {
@@ -14744,7 +14801,7 @@ namespace S100Framework.DomainModel.S101 {
             public class TrafficSeparationSchemeAggregation_theCollection : TrafficSeparationSchemeAggregation {
                 public override roleType? roleType => DomainModel.roleType.aggregation;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theCollectionFeatureTypes => ["TrafficSeparationScheme"];
 
                 public TrafficSeparationSchemeAggregation_theCollection() {
@@ -14754,7 +14811,7 @@ namespace S100Framework.DomainModel.S101 {
             public class UpdatedInformation_theUpdate : UpdatedInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
 
                 public UpdatedInformation_theUpdate() {
@@ -14809,13 +14866,13 @@ namespace S100Framework.DomainModel.S101 {
             [Required()]
             public List<information> information { get; set; }
 
-            [IgnoreDataMember]
+            [JsonIgnore]
             public override string Code => nameof(PrecautionaryArea);
 
             public class AdditionalInformation_theInformation : AdditionalInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theInformationInformationTypes => ["NauticalInformation"];
 
                 public AdditionalInformation_theInformation() {
@@ -14825,7 +14882,7 @@ namespace S100Framework.DomainModel.S101 {
             public class TrafficSeparationSchemeAggregation_theCollection : TrafficSeparationSchemeAggregation {
                 public override roleType? roleType => DomainModel.roleType.aggregation;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theCollectionFeatureTypes => ["TrafficSeparationScheme"];
 
                 public TrafficSeparationSchemeAggregation_theCollection() {
@@ -14835,7 +14892,7 @@ namespace S100Framework.DomainModel.S101 {
             public class UpdatedInformation_theUpdate : UpdatedInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
 
                 public UpdatedInformation_theUpdate() {
@@ -14845,7 +14902,7 @@ namespace S100Framework.DomainModel.S101 {
             public class TextAssociation_theCartographicText : TextAssociation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theCartographicTextFeatureTypes => ["TextPlacement"];
 
                 public TextAssociation_theCartographicText() {
@@ -14899,13 +14956,13 @@ namespace S100Framework.DomainModel.S101 {
             public Int32? scaleMinimum { get; set; } = default;
             public List<information> information { get; set; } = [];
 
-            [IgnoreDataMember]
+            [JsonIgnore]
             public override string Code => nameof(TrafficSeparationSchemeLanePart);
 
             public class AdditionalInformation_theInformation : AdditionalInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theInformationInformationTypes => ["NauticalInformation"];
 
                 public AdditionalInformation_theInformation() {
@@ -14915,7 +14972,7 @@ namespace S100Framework.DomainModel.S101 {
             public class TrafficSeparationSchemeAggregation_theCollection : TrafficSeparationSchemeAggregation {
                 public override roleType? roleType => DomainModel.roleType.aggregation;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theCollectionFeatureTypes => ["TrafficSeparationScheme"];
 
                 public TrafficSeparationSchemeAggregation_theCollection() {
@@ -14925,7 +14982,7 @@ namespace S100Framework.DomainModel.S101 {
             public class UpdatedInformation_theUpdate : UpdatedInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
 
                 public UpdatedInformation_theUpdate() {
@@ -14950,13 +15007,13 @@ namespace S100Framework.DomainModel.S101 {
             public Int32? scaleMinimum { get; set; } = default;
             public List<information> information { get; set; } = [];
 
-            [IgnoreDataMember]
+            [JsonIgnore]
             public override string Code => nameof(SeparationZoneOrLine);
 
             public class AdditionalInformation_theInformation : AdditionalInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theInformationInformationTypes => ["NauticalInformation"];
 
                 public AdditionalInformation_theInformation() {
@@ -14966,7 +15023,7 @@ namespace S100Framework.DomainModel.S101 {
             public class TrafficSeparationSchemeAggregation_theCollection : TrafficSeparationSchemeAggregation {
                 public override roleType? roleType => DomainModel.roleType.aggregation;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theCollectionFeatureTypes => ["TrafficSeparationScheme"];
 
                 public TrafficSeparationSchemeAggregation_theCollection() {
@@ -14976,7 +15033,7 @@ namespace S100Framework.DomainModel.S101 {
             public class UpdatedInformation_theUpdate : UpdatedInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
 
                 public UpdatedInformation_theUpdate() {
@@ -15001,13 +15058,13 @@ namespace S100Framework.DomainModel.S101 {
             public Int32? scaleMinimum { get; set; } = default;
             public List<information> information { get; set; } = [];
 
-            [IgnoreDataMember]
+            [JsonIgnore]
             public override string Code => nameof(TrafficSeparationSchemeBoundary);
 
             public class AdditionalInformation_theInformation : AdditionalInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theInformationInformationTypes => ["NauticalInformation"];
 
                 public AdditionalInformation_theInformation() {
@@ -15017,7 +15074,7 @@ namespace S100Framework.DomainModel.S101 {
             public class TrafficSeparationSchemeAggregation_theCollection : TrafficSeparationSchemeAggregation {
                 public override roleType? roleType => DomainModel.roleType.aggregation;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theCollectionFeatureTypes => ["TrafficSeparationScheme"];
 
                 public TrafficSeparationSchemeAggregation_theCollection() {
@@ -15027,7 +15084,7 @@ namespace S100Framework.DomainModel.S101 {
             public class UpdatedInformation_theUpdate : UpdatedInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
 
                 public UpdatedInformation_theUpdate() {
@@ -15078,13 +15135,13 @@ namespace S100Framework.DomainModel.S101 {
             public Int32? scaleMinimum { get; set; } = default;
             public List<information> information { get; set; } = [];
 
-            [IgnoreDataMember]
+            [JsonIgnore]
             public override string Code => nameof(TrafficSeparationSchemeCrossing);
 
             public class AdditionalInformation_theInformation : AdditionalInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theInformationInformationTypes => ["NauticalInformation"];
 
                 public AdditionalInformation_theInformation() {
@@ -15094,7 +15151,7 @@ namespace S100Framework.DomainModel.S101 {
             public class TrafficSeparationSchemeAggregation_theCollection : TrafficSeparationSchemeAggregation {
                 public override roleType? roleType => DomainModel.roleType.aggregation;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theCollectionFeatureTypes => ["TrafficSeparationScheme"];
 
                 public TrafficSeparationSchemeAggregation_theCollection() {
@@ -15104,7 +15161,7 @@ namespace S100Framework.DomainModel.S101 {
             public class UpdatedInformation_theUpdate : UpdatedInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
 
                 public UpdatedInformation_theUpdate() {
@@ -15155,13 +15212,13 @@ namespace S100Framework.DomainModel.S101 {
             public Int32? scaleMinimum { get; set; } = default;
             public List<information> information { get; set; } = [];
 
-            [IgnoreDataMember]
+            [JsonIgnore]
             public override string Code => nameof(TrafficSeparationSchemeRoundabout);
 
             public class AdditionalInformation_theInformation : AdditionalInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theInformationInformationTypes => ["NauticalInformation"];
 
                 public AdditionalInformation_theInformation() {
@@ -15171,7 +15228,7 @@ namespace S100Framework.DomainModel.S101 {
             public class TrafficSeparationSchemeAggregation_theCollection : TrafficSeparationSchemeAggregation {
                 public override roleType? roleType => DomainModel.roleType.aggregation;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theCollectionFeatureTypes => ["TrafficSeparationScheme"];
 
                 public TrafficSeparationSchemeAggregation_theCollection() {
@@ -15181,7 +15238,7 @@ namespace S100Framework.DomainModel.S101 {
             public class UpdatedInformation_theUpdate : UpdatedInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
 
                 public UpdatedInformation_theUpdate() {
@@ -15203,13 +15260,13 @@ namespace S100Framework.DomainModel.S101 {
             public Int32? scaleMinimum { get; set; } = default;
             public List<information> information { get; set; } = [];
 
-            [IgnoreDataMember]
+            [JsonIgnore]
             public override string Code => nameof(TrafficSeparationScheme);
 
             public class AdditionalInformation_theInformation : AdditionalInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theInformationInformationTypes => ["NauticalInformation"];
 
                 public AdditionalInformation_theInformation() {
@@ -15219,7 +15276,7 @@ namespace S100Framework.DomainModel.S101 {
             public class AidsToNavigationAssociation_theComponent : AidsToNavigationAssociation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theComponentFeatureTypes => ["CardinalBeacon", "CardinalBuoy", "Daymark", "EmergencyWreckMarkingBuoy", "IsolatedDangerBeacon", "IsolatedDangerBuoy", "LateralBeacon", "LateralBuoy", "LightFloat", "LightVessel", "Pile", "SafeWaterBeacon", "SafeWaterBuoy", "SpecialPurposeGeneralBeacon", "SpecialPurposeGeneralBuoy", "Building", "Crane", "Dolphin", "FishingFacility", "FortifiedStructure", "Landmark", "MooringBuoy", "OffshorePlatform", "SiloTank", "WindTurbine", "Bridge", "Conveyor", "FloatingDock", "Hulk", "PipelineOverhead", "Pontoon", "PylonBridgeSupport", "ShorelineConstruction", "SpanFixed", "SpanOpening", "StructureOverNavigableWater"];
 
                 public AidsToNavigationAssociation_theComponent() {
@@ -15229,7 +15286,7 @@ namespace S100Framework.DomainModel.S101 {
             public class TrafficSeparationSchemeAggregation_theComponent : TrafficSeparationSchemeAggregation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theComponentFeatureTypes => ["DeepWaterRoute", "DeepWaterRouteCentreline", "DeepWaterRoutePart", "InshoreTrafficZone", "PrecautionaryArea", "RestrictedArea", "SeparationZoneOrLine", "TrafficSeparationScheme", "TrafficSeparationSchemeBoundary", "TrafficSeparationSchemeCrossing", "TrafficSeparationSchemeLanePart", "TrafficSeparationSchemeRoundabout", "TwoWayRoute", "TwoWayRoutePart"];
 
                 public TrafficSeparationSchemeAggregation_theComponent() {
@@ -15239,7 +15296,7 @@ namespace S100Framework.DomainModel.S101 {
             public class TrafficSeparationSchemeAggregation_theCollection : TrafficSeparationSchemeAggregation {
                 public override roleType? roleType => DomainModel.roleType.aggregation;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theCollectionFeatureTypes => ["TrafficSeparationScheme"];
 
                 public TrafficSeparationSchemeAggregation_theCollection() {
@@ -15249,7 +15306,7 @@ namespace S100Framework.DomainModel.S101 {
             public class CautionAreaAssociation_theCollection : CautionAreaAssociation {
                 public override roleType? roleType => DomainModel.roleType.aggregation;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theCollectionFeatureTypes => ["CautionArea"];
 
                 public CautionAreaAssociation_theCollection() {
@@ -15259,7 +15316,7 @@ namespace S100Framework.DomainModel.S101 {
             public class UpdatedInformation_theUpdate : UpdatedInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
 
                 public UpdatedInformation_theUpdate() {
@@ -15269,7 +15326,7 @@ namespace S100Framework.DomainModel.S101 {
             public class TextAssociation_theCartographicText : TextAssociation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theCartographicTextFeatureTypes => ["TextPlacement"];
 
                 public TextAssociation_theCartographicText() {
@@ -15290,13 +15347,13 @@ namespace S100Framework.DomainModel.S101 {
             public Int32? scaleMinimum { get; set; } = default;
             public List<information> information { get; set; } = [];
 
-            [IgnoreDataMember]
+            [JsonIgnore]
             public override string Code => nameof(ArchipelagicSeaLaneArea);
 
             public class AdditionalInformation_theInformation : AdditionalInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theInformationInformationTypes => ["NauticalInformation"];
 
                 public AdditionalInformation_theInformation() {
@@ -15306,7 +15363,7 @@ namespace S100Framework.DomainModel.S101 {
             public class ASLAggregation_theCollection : ASLAggregation {
                 public override roleType? roleType => DomainModel.roleType.aggregation;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theCollectionFeatureTypes => ["ArchipelagicSeaLane"];
 
                 public ASLAggregation_theCollection() {
@@ -15316,7 +15373,7 @@ namespace S100Framework.DomainModel.S101 {
             public class UpdatedInformation_theUpdate : UpdatedInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
 
                 public UpdatedInformation_theUpdate() {
@@ -15326,7 +15383,7 @@ namespace S100Framework.DomainModel.S101 {
             public class TextAssociation_theCartographicText : TextAssociation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theCartographicTextFeatureTypes => ["TextPlacement"];
 
                 public TextAssociation_theCartographicText() {
@@ -15347,13 +15404,13 @@ namespace S100Framework.DomainModel.S101 {
             public Int32? scaleMinimum { get; set; } = default;
             public List<information> information { get; set; } = [];
 
-            [IgnoreDataMember]
+            [JsonIgnore]
             public override string Code => nameof(ArchipelagicSeaLaneAxis);
 
             public class AdditionalInformation_theInformation : AdditionalInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theInformationInformationTypes => ["NauticalInformation"];
 
                 public AdditionalInformation_theInformation() {
@@ -15363,7 +15420,7 @@ namespace S100Framework.DomainModel.S101 {
             public class ASLAggregation_theCollection : ASLAggregation {
                 public override roleType? roleType => DomainModel.roleType.aggregation;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theCollectionFeatureTypes => ["ArchipelagicSeaLane"];
 
                 public ASLAggregation_theCollection() {
@@ -15373,7 +15430,7 @@ namespace S100Framework.DomainModel.S101 {
             public class UpdatedInformation_theUpdate : UpdatedInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
 
                 public UpdatedInformation_theUpdate() {
@@ -15383,7 +15440,7 @@ namespace S100Framework.DomainModel.S101 {
             public class TextAssociation_theCartographicText : TextAssociation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theCartographicTextFeatureTypes => ["TextPlacement"];
 
                 public TextAssociation_theCartographicText() {
@@ -15404,13 +15461,13 @@ namespace S100Framework.DomainModel.S101 {
             public Int32? scaleMinimum { get; set; } = default;
             public List<information> information { get; set; } = [];
 
-            [IgnoreDataMember]
+            [JsonIgnore]
             public override string Code => nameof(ArchipelagicSeaLane);
 
             public class AdditionalInformation_theInformation : AdditionalInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theInformationInformationTypes => ["NauticalInformation"];
 
                 public AdditionalInformation_theInformation() {
@@ -15420,7 +15477,7 @@ namespace S100Framework.DomainModel.S101 {
             public class AidsToNavigationAssociation_theComponent : AidsToNavigationAssociation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theComponentFeatureTypes => ["CardinalBeacon", "CardinalBuoy", "Daymark", "EmergencyWreckMarkingBuoy", "IsolatedDangerBeacon", "IsolatedDangerBuoy", "LateralBeacon", "LateralBuoy", "LightFloat", "LightVessel", "Pile", "SafeWaterBeacon", "SafeWaterBuoy", "SpecialPurposeGeneralBeacon", "SpecialPurposeGeneralBuoy"];
 
                 public AidsToNavigationAssociation_theComponent() {
@@ -15430,7 +15487,7 @@ namespace S100Framework.DomainModel.S101 {
             public class ASLAggregation_theComponent : ASLAggregation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theComponentFeatureTypes => ["ArchipelagicSeaLaneArea", "ArchipelagicSeaLaneAxis"];
 
                 public ASLAggregation_theComponent() {
@@ -15440,7 +15497,7 @@ namespace S100Framework.DomainModel.S101 {
             public class CautionAreaAssociation_theCollection : CautionAreaAssociation {
                 public override roleType? roleType => DomainModel.roleType.aggregation;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theCollectionFeatureTypes => ["CautionArea"];
 
                 public CautionAreaAssociation_theCollection() {
@@ -15450,7 +15507,7 @@ namespace S100Framework.DomainModel.S101 {
             public class UpdatedInformation_theUpdate : UpdatedInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
 
                 public UpdatedInformation_theUpdate() {
@@ -15460,7 +15517,7 @@ namespace S100Framework.DomainModel.S101 {
             public class TextAssociation_theCartographicText : TextAssociation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theCartographicTextFeatureTypes => ["TextPlacement"];
 
                 public TextAssociation_theCartographicText() {
@@ -15500,13 +15557,13 @@ namespace S100Framework.DomainModel.S101 {
             public Int32? scaleMinimum { get; set; } = default;
             public List<information> information { get; set; } = [];
 
-            [IgnoreDataMember]
+            [JsonIgnore]
             public override string Code => nameof(RadioCallingInPoint);
 
             public class AdditionalInformation_theInformation : AdditionalInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theInformationInformationTypes => ["ContactDetails", "NauticalInformation", "NonStandardWorkingDay", "ServiceHours"];
 
                 public AdditionalInformation_theInformation() {
@@ -15516,7 +15573,7 @@ namespace S100Framework.DomainModel.S101 {
             public class UpdatedInformation_theUpdate : UpdatedInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
 
                 public UpdatedInformation_theUpdate() {
@@ -15526,7 +15583,7 @@ namespace S100Framework.DomainModel.S101 {
             public class TextAssociation_theCartographicText : TextAssociation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theCartographicTextFeatureTypes => ["TextPlacement"];
 
                 public TextAssociation_theCartographicText() {
@@ -15564,13 +15621,13 @@ namespace S100Framework.DomainModel.S101 {
             public Int32? scaleMinimum { get; set; } = default;
             public List<information> information { get; set; } = [];
 
-            [IgnoreDataMember]
+            [JsonIgnore]
             public override string Code => nameof(FerryRoute);
 
             public class AdditionalInformation_theInformation : AdditionalInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theInformationInformationTypes => ["NauticalInformation"];
 
                 public AdditionalInformation_theInformation() {
@@ -15580,7 +15637,7 @@ namespace S100Framework.DomainModel.S101 {
             public class UpdatedInformation_theUpdate : UpdatedInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
 
                 public UpdatedInformation_theUpdate() {
@@ -15590,7 +15647,7 @@ namespace S100Framework.DomainModel.S101 {
             public class TextAssociation_theCartographicText : TextAssociation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theCartographicTextFeatureTypes => ["TextPlacement"];
 
                 public TextAssociation_theCartographicText() {
@@ -15620,13 +15677,13 @@ namespace S100Framework.DomainModel.S101 {
             public Int32? scaleMinimum { get; set; } = default;
             public List<information> information { get; set; } = [];
 
-            [IgnoreDataMember]
+            [JsonIgnore]
             public override string Code => nameof(RadarLine);
 
             public class AdditionalInformation_theInformation : AdditionalInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theInformationInformationTypes => ["NauticalInformation"];
 
                 public AdditionalInformation_theInformation() {
@@ -15636,7 +15693,7 @@ namespace S100Framework.DomainModel.S101 {
             public class UpdatedInformation_theUpdate : UpdatedInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
 
                 public UpdatedInformation_theUpdate() {
@@ -15646,7 +15703,7 @@ namespace S100Framework.DomainModel.S101 {
             public class TextAssociation_theCartographicText : TextAssociation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theCartographicTextFeatureTypes => ["TextPlacement"];
 
                 public TextAssociation_theCartographicText() {
@@ -15673,13 +15730,13 @@ namespace S100Framework.DomainModel.S101 {
             public Int32? scaleMinimum { get; set; } = default;
             public List<information> information { get; set; } = [];
 
-            [IgnoreDataMember]
+            [JsonIgnore]
             public override string Code => nameof(RadarRange);
 
             public class AdditionalInformation_theInformation : AdditionalInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theInformationInformationTypes => ["ContactDetails", "NauticalInformation"];
 
                 public AdditionalInformation_theInformation() {
@@ -15689,7 +15746,7 @@ namespace S100Framework.DomainModel.S101 {
             public class UpdatedInformation_theUpdate : UpdatedInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
 
                 public UpdatedInformation_theUpdate() {
@@ -15699,7 +15756,7 @@ namespace S100Framework.DomainModel.S101 {
             public class TextAssociation_theCartographicText : TextAssociation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theCartographicTextFeatureTypes => ["TextPlacement"];
 
                 public TextAssociation_theCartographicText() {
@@ -15734,13 +15791,13 @@ namespace S100Framework.DomainModel.S101 {
             public Int32? scaleMinimum { get; set; } = default;
             public List<information> information { get; set; } = [];
 
-            [IgnoreDataMember]
+            [JsonIgnore]
             public override string Code => nameof(RadarStation);
 
             public class AdditionalInformation_theInformation : AdditionalInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theInformationInformationTypes => ["ContactDetails", "NauticalInformation"];
 
                 public AdditionalInformation_theInformation() {
@@ -15750,7 +15807,7 @@ namespace S100Framework.DomainModel.S101 {
             public class UpdatedInformation_theUpdate : UpdatedInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
 
                 public UpdatedInformation_theUpdate() {
@@ -15760,7 +15817,7 @@ namespace S100Framework.DomainModel.S101 {
             public class TextAssociation_theCartographicText : TextAssociation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theCartographicTextFeatureTypes => ["TextPlacement"];
 
                 public TextAssociation_theCartographicText() {
@@ -15845,13 +15902,13 @@ namespace S100Framework.DomainModel.S101 {
             public Int32? scaleMinimum { get; set; } = default;
             public List<information> information { get; set; } = [];
 
-            [IgnoreDataMember]
+            [JsonIgnore]
             public override string Code => nameof(AnchorageArea);
 
             public class AdditionalInformation_theInformation : AdditionalInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theInformationInformationTypes => ["ContactDetails", "NauticalInformation", "NonStandardWorkingDay", "ServiceHours"];
 
                 public AdditionalInformation_theInformation() {
@@ -15861,7 +15918,7 @@ namespace S100Framework.DomainModel.S101 {
             public class UpdatedInformation_theUpdate : UpdatedInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
 
                 public UpdatedInformation_theUpdate() {
@@ -15871,7 +15928,7 @@ namespace S100Framework.DomainModel.S101 {
             public class TextAssociation_theCartographicText : TextAssociation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theCartographicTextFeatureTypes => ["TextPlacement"];
 
                 public TextAssociation_theCartographicText() {
@@ -15937,13 +15994,13 @@ namespace S100Framework.DomainModel.S101 {
             public List<information> information { get; set; } = [];
             public List<vesselSpeedLimit> vesselSpeedLimit { get; set; } = [];
 
-            [IgnoreDataMember]
+            [JsonIgnore]
             public override string Code => nameof(MooringArea);
 
             public class AdditionalInformation_theInformation : AdditionalInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theInformationInformationTypes => ["ContactDetails", "NauticalInformation", "NonStandardWorkingDay", "ServiceHours"];
 
                 public AdditionalInformation_theInformation() {
@@ -15953,7 +16010,7 @@ namespace S100Framework.DomainModel.S101 {
             public class UpdatedInformation_theUpdate : UpdatedInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
 
                 public UpdatedInformation_theUpdate() {
@@ -15963,7 +16020,7 @@ namespace S100Framework.DomainModel.S101 {
             public class TextAssociation_theCartographicText : TextAssociation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theCartographicTextFeatureTypes => ["TextPlacement"];
 
                 public TextAssociation_theCartographicText() {
@@ -16024,13 +16081,13 @@ namespace S100Framework.DomainModel.S101 {
             public Int32? scaleMinimum { get; set; } = default;
             public List<information> information { get; set; } = [];
 
-            [IgnoreDataMember]
+            [JsonIgnore]
             public override string Code => nameof(AnchorBerth);
 
             public class AdditionalInformation_theInformation : AdditionalInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theInformationInformationTypes => ["ContactDetails", "NauticalInformation", "NonStandardWorkingDay", "ServiceHours"];
 
                 public AdditionalInformation_theInformation() {
@@ -16040,7 +16097,7 @@ namespace S100Framework.DomainModel.S101 {
             public class UpdatedInformation_theUpdate : UpdatedInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
 
                 public UpdatedInformation_theUpdate() {
@@ -16050,7 +16107,7 @@ namespace S100Framework.DomainModel.S101 {
             public class TextAssociation_theCartographicText : TextAssociation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theCartographicTextFeatureTypes => ["TextPlacement"];
 
                 public TextAssociation_theCartographicText() {
@@ -16111,13 +16168,13 @@ namespace S100Framework.DomainModel.S101 {
             public Int32? scaleMinimum { get; set; } = default;
             public List<information> information { get; set; } = [];
 
-            [IgnoreDataMember]
+            [JsonIgnore]
             public override string Code => nameof(SeaplaneLandingArea);
 
             public class AdditionalInformation_theInformation : AdditionalInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theInformationInformationTypes => ["ContactDetails", "NauticalInformation", "NonStandardWorkingDay", "ServiceHours"];
 
                 public AdditionalInformation_theInformation() {
@@ -16127,7 +16184,7 @@ namespace S100Framework.DomainModel.S101 {
             public class UpdatedInformation_theUpdate : UpdatedInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
 
                 public UpdatedInformation_theUpdate() {
@@ -16137,7 +16194,7 @@ namespace S100Framework.DomainModel.S101 {
             public class TextAssociation_theCartographicText : TextAssociation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theCartographicTextFeatureTypes => ["TextPlacement"];
 
                 public TextAssociation_theCartographicText() {
@@ -16196,13 +16253,13 @@ namespace S100Framework.DomainModel.S101 {
             public Int32? scaleMinimum { get; set; } = default;
             public List<information> information { get; set; } = [];
 
-            [IgnoreDataMember]
+            [JsonIgnore]
             public override string Code => nameof(DumpingGround);
 
             public class AdditionalInformation_theInformation : AdditionalInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theInformationInformationTypes => ["NauticalInformation"];
 
                 public AdditionalInformation_theInformation() {
@@ -16212,7 +16269,7 @@ namespace S100Framework.DomainModel.S101 {
             public class UpdatedInformation_theUpdate : UpdatedInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
 
                 public UpdatedInformation_theUpdate() {
@@ -16222,7 +16279,7 @@ namespace S100Framework.DomainModel.S101 {
             public class TextAssociation_theCartographicText : TextAssociation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theCartographicTextFeatureTypes => ["TextPlacement"];
 
                 public TextAssociation_theCartographicText() {
@@ -16289,13 +16346,13 @@ namespace S100Framework.DomainModel.S101 {
             public Int32? scaleMinimum { get; set; } = default;
             public List<information> information { get; set; } = [];
 
-            [IgnoreDataMember]
+            [JsonIgnore]
             public override string Code => nameof(MilitaryPracticeArea);
 
             public class AdditionalInformation_theInformation : AdditionalInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theInformationInformationTypes => ["NauticalInformation"];
 
                 public AdditionalInformation_theInformation() {
@@ -16305,7 +16362,7 @@ namespace S100Framework.DomainModel.S101 {
             public class UpdatedInformation_theUpdate : UpdatedInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
 
                 public UpdatedInformation_theUpdate() {
@@ -16315,7 +16372,7 @@ namespace S100Framework.DomainModel.S101 {
             public class TextAssociation_theCartographicText : TextAssociation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theCartographicTextFeatureTypes => ["TextPlacement"];
 
                 public TextAssociation_theCartographicText() {
@@ -16343,13 +16400,13 @@ namespace S100Framework.DomainModel.S101 {
             public List<information> information { get; set; } = [];
             public String? pictorialRepresentation { get; set; } = null;
 
-            [IgnoreDataMember]
+            [JsonIgnore]
             public override string Code => nameof(AdministrationArea);
 
             public class AdditionalInformation_theInformation : AdditionalInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theInformationInformationTypes => ["ContactDetails", "NauticalInformation"];
 
                 public AdditionalInformation_theInformation() {
@@ -16359,7 +16416,7 @@ namespace S100Framework.DomainModel.S101 {
             public class UpdatedInformation_theUpdate : UpdatedInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
 
                 public UpdatedInformation_theUpdate() {
@@ -16369,7 +16426,7 @@ namespace S100Framework.DomainModel.S101 {
             public class TextAssociation_theCartographicText : TextAssociation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theCartographicTextFeatureTypes => ["TextPlacement"];
 
                 public TextAssociation_theCartographicText() {
@@ -16424,13 +16481,13 @@ namespace S100Framework.DomainModel.S101 {
             public Int32? scaleMinimum { get; set; } = default;
             public List<information> information { get; set; } = [];
 
-            [IgnoreDataMember]
+            [JsonIgnore]
             public override string Code => nameof(CargoTranshipmentArea);
 
             public class AdditionalInformation_theInformation : AdditionalInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theInformationInformationTypes => ["NauticalInformation"];
 
                 public AdditionalInformation_theInformation() {
@@ -16440,7 +16497,7 @@ namespace S100Framework.DomainModel.S101 {
             public class UpdatedInformation_theUpdate : UpdatedInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
 
                 public UpdatedInformation_theUpdate() {
@@ -16450,7 +16507,7 @@ namespace S100Framework.DomainModel.S101 {
             public class TextAssociation_theCartographicText : TextAssociation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theCartographicTextFeatureTypes => ["TextPlacement"];
 
                 public TextAssociation_theCartographicText() {
@@ -16480,13 +16537,13 @@ namespace S100Framework.DomainModel.S101 {
             public List<information> information { get; set; } = [];
             public String? pictorialRepresentation { get; set; } = null;
 
-            [IgnoreDataMember]
+            [JsonIgnore]
             public override string Code => nameof(CautionArea);
 
             public class AdditionalInformation_theInformation : AdditionalInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theInformationInformationTypes => ["NauticalInformation"];
 
                 public AdditionalInformation_theInformation() {
@@ -16496,7 +16553,7 @@ namespace S100Framework.DomainModel.S101 {
             public class CautionAreaAssociation_theComponent : CautionAreaAssociation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theComponentFeatureTypes => ["ArchipelagicSeaLane", "TrafficSeparationScheme"];
 
                 public CautionAreaAssociation_theComponent() {
@@ -16506,7 +16563,7 @@ namespace S100Framework.DomainModel.S101 {
             public class FairwayAuxiliary_thePrimaryFeature : FairwayAuxiliary {
                 public override roleType? roleType => DomainModel.roleType.aggregation;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] thePrimaryFeatureFeatureTypes => ["Fairway"];
 
                 public FairwayAuxiliary_thePrimaryFeature() {
@@ -16516,7 +16573,7 @@ namespace S100Framework.DomainModel.S101 {
             public class UpdatedInformation_theUpdate : UpdatedInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
 
                 public UpdatedInformation_theUpdate() {
@@ -16539,13 +16596,13 @@ namespace S100Framework.DomainModel.S101 {
             public List<information> information { get; set; } = [];
             public String? pictorialRepresentation { get; set; } = null;
 
-            [IgnoreDataMember]
+            [JsonIgnore]
             public override string Code => nameof(InformationArea);
 
             public class AdditionalInformation_theInformation : AdditionalInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theInformationInformationTypes => ["NauticalInformation"];
 
                 public AdditionalInformation_theInformation() {
@@ -16555,7 +16612,7 @@ namespace S100Framework.DomainModel.S101 {
             public class UpdatedInformation_theUpdate : UpdatedInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
 
                 public UpdatedInformation_theUpdate() {
@@ -16565,7 +16622,7 @@ namespace S100Framework.DomainModel.S101 {
             public class TextAssociation_theCartographicText : TextAssociation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theCartographicTextFeatureTypes => ["TextPlacement"];
 
                 public TextAssociation_theCartographicText() {
@@ -16588,13 +16645,13 @@ namespace S100Framework.DomainModel.S101 {
             public Int32? scaleMinimum { get; set; } = default;
             public List<information> information { get; set; } = [];
 
-            [IgnoreDataMember]
+            [JsonIgnore]
             public override string Code => nameof(ContiguousZone);
 
             public class AdditionalInformation_theInformation : AdditionalInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theInformationInformationTypes => ["NauticalInformation"];
 
                 public AdditionalInformation_theInformation() {
@@ -16604,7 +16661,7 @@ namespace S100Framework.DomainModel.S101 {
             public class UpdatedInformation_theUpdate : UpdatedInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
 
                 public UpdatedInformation_theUpdate() {
@@ -16627,13 +16684,13 @@ namespace S100Framework.DomainModel.S101 {
             public Int32? scaleMinimum { get; set; } = default;
             public List<information> information { get; set; } = [];
 
-            [IgnoreDataMember]
+            [JsonIgnore]
             public override string Code => nameof(ContinentalShelfArea);
 
             public class AdditionalInformation_theInformation : AdditionalInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theInformationInformationTypes => ["NauticalInformation"];
 
                 public AdditionalInformation_theInformation() {
@@ -16643,7 +16700,7 @@ namespace S100Framework.DomainModel.S101 {
             public class UpdatedInformation_theUpdate : UpdatedInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
 
                 public UpdatedInformation_theUpdate() {
@@ -16653,7 +16710,7 @@ namespace S100Framework.DomainModel.S101 {
             public class TextAssociation_theCartographicText : TextAssociation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theCartographicTextFeatureTypes => ["TextPlacement"];
 
                 public TextAssociation_theCartographicText() {
@@ -16673,13 +16730,13 @@ namespace S100Framework.DomainModel.S101 {
             public Int32? scaleMinimum { get; set; } = default;
             public List<information> information { get; set; } = [];
 
-            [IgnoreDataMember]
+            [JsonIgnore]
             public override string Code => nameof(CustomZone);
 
             public class AdditionalInformation_theInformation : AdditionalInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theInformationInformationTypes => ["NauticalInformation"];
 
                 public AdditionalInformation_theInformation() {
@@ -16689,7 +16746,7 @@ namespace S100Framework.DomainModel.S101 {
             public class UpdatedInformation_theUpdate : UpdatedInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
 
                 public UpdatedInformation_theUpdate() {
@@ -16712,13 +16769,13 @@ namespace S100Framework.DomainModel.S101 {
             public Int32? scaleMinimum { get; set; } = default;
             public List<information> information { get; set; } = [];
 
-            [IgnoreDataMember]
+            [JsonIgnore]
             public override string Code => nameof(ExclusiveEconomicZone);
 
             public class AdditionalInformation_theInformation : AdditionalInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theInformationInformationTypes => ["NauticalInformation"];
 
                 public AdditionalInformation_theInformation() {
@@ -16728,7 +16785,7 @@ namespace S100Framework.DomainModel.S101 {
             public class UpdatedInformation_theUpdate : UpdatedInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
 
                 public UpdatedInformation_theUpdate() {
@@ -16755,13 +16812,13 @@ namespace S100Framework.DomainModel.S101 {
             public Int32? scaleMinimum { get; set; } = default;
             public List<information> information { get; set; } = [];
 
-            [IgnoreDataMember]
+            [JsonIgnore]
             public override string Code => nameof(FisheryZone);
 
             public class AdditionalInformation_theInformation : AdditionalInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theInformationInformationTypes => ["NauticalInformation"];
 
                 public AdditionalInformation_theInformation() {
@@ -16771,7 +16828,7 @@ namespace S100Framework.DomainModel.S101 {
             public class UpdatedInformation_theUpdate : UpdatedInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
 
                 public UpdatedInformation_theUpdate() {
@@ -16781,7 +16838,7 @@ namespace S100Framework.DomainModel.S101 {
             public class TextAssociation_theCartographicText : TextAssociation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theCartographicTextFeatureTypes => ["TextPlacement"];
 
                 public TextAssociation_theCartographicText() {
@@ -16840,13 +16897,13 @@ namespace S100Framework.DomainModel.S101 {
             public Int32? scaleMinimum { get; set; } = default;
             public List<information> information { get; set; } = [];
 
-            [IgnoreDataMember]
+            [JsonIgnore]
             public override string Code => nameof(FishingGround);
 
             public class AdditionalInformation_theInformation : AdditionalInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theInformationInformationTypes => ["NauticalInformation"];
 
                 public AdditionalInformation_theInformation() {
@@ -16856,7 +16913,7 @@ namespace S100Framework.DomainModel.S101 {
             public class UpdatedInformation_theUpdate : UpdatedInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
 
                 public UpdatedInformation_theUpdate() {
@@ -16866,7 +16923,7 @@ namespace S100Framework.DomainModel.S101 {
             public class TextAssociation_theCartographicText : TextAssociation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theCartographicTextFeatureTypes => ["TextPlacement"];
 
                 public TextAssociation_theCartographicText() {
@@ -16891,13 +16948,13 @@ namespace S100Framework.DomainModel.S101 {
             public Int32? scaleMinimum { get; set; } = default;
             public List<information> information { get; set; } = [];
 
-            [IgnoreDataMember]
+            [JsonIgnore]
             public override string Code => nameof(FreePortArea);
 
             public class AdditionalInformation_theInformation : AdditionalInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theInformationInformationTypes => ["NauticalInformation"];
 
                 public AdditionalInformation_theInformation() {
@@ -16907,7 +16964,7 @@ namespace S100Framework.DomainModel.S101 {
             public class UpdatedInformation_theUpdate : UpdatedInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
 
                 public UpdatedInformation_theUpdate() {
@@ -16917,7 +16974,7 @@ namespace S100Framework.DomainModel.S101 {
             public class TextAssociation_theCartographicText : TextAssociation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theCartographicTextFeatureTypes => ["TextPlacement"];
 
                 public TextAssociation_theCartographicText() {
@@ -16943,13 +17000,13 @@ namespace S100Framework.DomainModel.S101 {
             public Int32? scaleMinimum { get; set; } = default;
             public List<information> information { get; set; } = [];
 
-            [IgnoreDataMember]
+            [JsonIgnore]
             public override string Code => nameof(HarbourAreaAdministrative);
 
             public class AdditionalInformation_theInformation : AdditionalInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theInformationInformationTypes => ["ContactDetails", "NauticalInformation"];
 
                 public AdditionalInformation_theInformation() {
@@ -16959,7 +17016,7 @@ namespace S100Framework.DomainModel.S101 {
             public class UpdatedInformation_theUpdate : UpdatedInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
 
                 public UpdatedInformation_theUpdate() {
@@ -16969,7 +17026,7 @@ namespace S100Framework.DomainModel.S101 {
             public class TextAssociation_theCartographicText : TextAssociation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theCartographicTextFeatureTypes => ["TextPlacement"];
 
                 public TextAssociation_theCartographicText() {
@@ -16997,13 +17054,13 @@ namespace S100Framework.DomainModel.S101 {
             public Int32? scaleMinimum { get; set; } = default;
             public List<information> information { get; set; } = [];
 
-            [IgnoreDataMember]
+            [JsonIgnore]
             public override string Code => nameof(LogPond);
 
             public class AdditionalInformation_theInformation : AdditionalInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theInformationInformationTypes => ["NauticalInformation"];
 
                 public AdditionalInformation_theInformation() {
@@ -17013,7 +17070,7 @@ namespace S100Framework.DomainModel.S101 {
             public class UpdatedInformation_theUpdate : UpdatedInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
 
                 public UpdatedInformation_theUpdate() {
@@ -17023,7 +17080,7 @@ namespace S100Framework.DomainModel.S101 {
             public class TextAssociation_theCartographicText : TextAssociation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theCartographicTextFeatureTypes => ["TextPlacement"];
 
                 public TextAssociation_theCartographicText() {
@@ -17060,13 +17117,13 @@ namespace S100Framework.DomainModel.S101 {
             public Int32? scaleMinimum { get; set; } = default;
             public List<information> information { get; set; } = [];
 
-            [IgnoreDataMember]
+            [JsonIgnore]
             public override string Code => nameof(OilBarrier);
 
             public class AdditionalInformation_theInformation : AdditionalInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theInformationInformationTypes => ["NauticalInformation"];
 
                 public AdditionalInformation_theInformation() {
@@ -17076,7 +17133,7 @@ namespace S100Framework.DomainModel.S101 {
             public class UpdatedInformation_theUpdate : UpdatedInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
 
                 public UpdatedInformation_theUpdate() {
@@ -17086,7 +17143,7 @@ namespace S100Framework.DomainModel.S101 {
             public class TextAssociation_theCartographicText : TextAssociation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theCartographicTextFeatureTypes => ["TextPlacement"];
 
                 public TextAssociation_theCartographicText() {
@@ -17105,13 +17162,13 @@ namespace S100Framework.DomainModel.S101 {
             public Int32? scaleMinimum { get; set; } = default;
             public List<information> information { get; set; } = [];
 
-            [IgnoreDataMember]
+            [JsonIgnore]
             public override string Code => nameof(StraightTerritorialSeaBaseline);
 
             public class AdditionalInformation_theInformation : AdditionalInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theInformationInformationTypes => ["NauticalInformation"];
 
                 public AdditionalInformation_theInformation() {
@@ -17121,7 +17178,7 @@ namespace S100Framework.DomainModel.S101 {
             public class UpdatedInformation_theUpdate : UpdatedInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
 
                 public UpdatedInformation_theUpdate() {
@@ -17163,13 +17220,13 @@ namespace S100Framework.DomainModel.S101 {
             public Int32? scaleMinimum { get; set; } = default;
             public List<information> information { get; set; } = [];
 
-            [IgnoreDataMember]
+            [JsonIgnore]
             public override string Code => nameof(TerritorialSeaArea);
 
             public class AdditionalInformation_theInformation : AdditionalInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theInformationInformationTypes => ["NauticalInformation"];
 
                 public AdditionalInformation_theInformation() {
@@ -17179,7 +17236,7 @@ namespace S100Framework.DomainModel.S101 {
             public class UpdatedInformation_theUpdate : UpdatedInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
 
                 public UpdatedInformation_theUpdate() {
@@ -17227,13 +17284,13 @@ namespace S100Framework.DomainModel.S101 {
             public Int32? scaleMinimum { get; set; } = default;
             public List<information> information { get; set; } = [];
 
-            [IgnoreDataMember]
+            [JsonIgnore]
             public override string Code => nameof(SubmarineTransitLane);
 
             public class AdditionalInformation_theInformation : AdditionalInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theInformationInformationTypes => ["NauticalInformation"];
 
                 public AdditionalInformation_theInformation() {
@@ -17243,7 +17300,7 @@ namespace S100Framework.DomainModel.S101 {
             public class UpdatedInformation_theUpdate : UpdatedInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
 
                 public UpdatedInformation_theUpdate() {
@@ -17253,7 +17310,7 @@ namespace S100Framework.DomainModel.S101 {
             public class TextAssociation_theCartographicText : TextAssociation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theCartographicTextFeatureTypes => ["TextPlacement"];
 
                 public TextAssociation_theCartographicText() {
@@ -17273,13 +17330,13 @@ namespace S100Framework.DomainModel.S101 {
             public Int32? scaleMinimum { get; set; } = default;
             public List<information> information { get; set; } = [];
 
-            [IgnoreDataMember]
+            [JsonIgnore]
             public override string Code => nameof(PilotageDistrict);
 
             public class AdditionalInformation_theInformation : AdditionalInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theInformationInformationTypes => ["ContactDetails", "NauticalInformation"];
 
                 public AdditionalInformation_theInformation() {
@@ -17289,7 +17346,7 @@ namespace S100Framework.DomainModel.S101 {
             public class PilotageDistrictAssociation_theComponent : PilotageDistrictAssociation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theComponentFeatureTypes => ["PilotBoardingPlace"];
 
                 public PilotageDistrictAssociation_theComponent() {
@@ -17299,7 +17356,7 @@ namespace S100Framework.DomainModel.S101 {
             public class UpdatedInformation_theUpdate : UpdatedInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
 
                 public UpdatedInformation_theUpdate() {
@@ -17309,7 +17366,7 @@ namespace S100Framework.DomainModel.S101 {
             public class TextAssociation_theCartographicText : TextAssociation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theCartographicTextFeatureTypes => ["TextPlacement"];
 
                 public TextAssociation_theCartographicText() {
@@ -17331,13 +17388,13 @@ namespace S100Framework.DomainModel.S101 {
             public Int32? scaleMinimum { get; set; } = default;
             public List<information> information { get; set; } = [];
 
-            [IgnoreDataMember]
+            [JsonIgnore]
             public override string Code => nameof(CollisionRegulationsLimit);
 
             public class AdditionalInformation_theInformation : AdditionalInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theInformationInformationTypes => ["NauticalInformation"];
 
                 public AdditionalInformation_theInformation() {
@@ -17347,7 +17404,7 @@ namespace S100Framework.DomainModel.S101 {
             public class UpdatedInformation_theUpdate : UpdatedInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
 
                 public UpdatedInformation_theUpdate() {
@@ -17357,7 +17414,7 @@ namespace S100Framework.DomainModel.S101 {
             public class TextAssociation_theCartographicText : TextAssociation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theCartographicTextFeatureTypes => ["TextPlacement"];
 
                 public TextAssociation_theCartographicText() {
@@ -17377,13 +17434,13 @@ namespace S100Framework.DomainModel.S101 {
             public Int32? scaleMinimum { get; set; } = default;
             public List<information> information { get; set; } = [];
 
-            [IgnoreDataMember]
+            [JsonIgnore]
             public override string Code => nameof(MarinePollutionRegulationsArea);
 
             public class AdditionalInformation_theInformation : AdditionalInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theInformationInformationTypes => ["NauticalInformation"];
 
                 public AdditionalInformation_theInformation() {
@@ -17393,7 +17450,7 @@ namespace S100Framework.DomainModel.S101 {
             public class UpdatedInformation_theUpdate : UpdatedInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
 
                 public UpdatedInformation_theUpdate() {
@@ -17403,7 +17460,7 @@ namespace S100Framework.DomainModel.S101 {
             public class TextAssociation_theCartographicText : TextAssociation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theCartographicTextFeatureTypes => ["TextPlacement"];
 
                 public TextAssociation_theCartographicText() {
@@ -17494,13 +17551,13 @@ namespace S100Framework.DomainModel.S101 {
             public Int32? scaleMinimum { get; set; } = default;
             public List<information> information { get; set; } = [];
 
-            [IgnoreDataMember]
+            [JsonIgnore]
             public override string Code => nameof(RestrictedArea);
 
             public class AdditionalInformation_theInformation : AdditionalInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theInformationInformationTypes => ["NauticalInformation"];
 
                 public AdditionalInformation_theInformation() {
@@ -17510,7 +17567,7 @@ namespace S100Framework.DomainModel.S101 {
             public class FairwayAuxiliary_thePrimaryFeature : FairwayAuxiliary {
                 public override roleType? roleType => DomainModel.roleType.aggregation;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] thePrimaryFeatureFeatureTypes => ["Fairway"];
 
                 public FairwayAuxiliary_thePrimaryFeature() {
@@ -17520,7 +17577,7 @@ namespace S100Framework.DomainModel.S101 {
             public class TrafficSeparationSchemeAggregation_theCollection : TrafficSeparationSchemeAggregation {
                 public override roleType? roleType => DomainModel.roleType.aggregation;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theCollectionFeatureTypes => ["TrafficSeparationScheme"];
 
                 public TrafficSeparationSchemeAggregation_theCollection() {
@@ -17530,7 +17587,7 @@ namespace S100Framework.DomainModel.S101 {
             public class UpdatedInformation_theUpdate : UpdatedInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
 
                 public UpdatedInformation_theUpdate() {
@@ -17540,7 +17597,7 @@ namespace S100Framework.DomainModel.S101 {
             public class TextAssociation_theCartographicText : TextAssociation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theCartographicTextFeatureTypes => ["TextPlacement"];
 
                 public TextAssociation_theCartographicText() {
@@ -17648,13 +17705,13 @@ namespace S100Framework.DomainModel.S101 {
             public Int32? scaleMinimum { get; set; } = default;
             public List<information> information { get; set; } = [];
 
-            [IgnoreDataMember]
+            [JsonIgnore]
             public override string Code => nameof(LightAllAround);
 
             public class AdditionalInformation_theInformation : AdditionalInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theInformationInformationTypes => ["ContactDetails", "NauticalInformation"];
 
                 public AdditionalInformation_theInformation() {
@@ -17664,7 +17721,7 @@ namespace S100Framework.DomainModel.S101 {
             public class StructureEquipment_theStructure : StructureEquipment {
                 public override roleType? roleType => DomainModel.roleType.composition;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theStructureFeatureTypes => ["Bridge", "Building", "Crane", "CardinalBeacon", "CardinalBuoy", "Conveyor", "Dolphin", "EmergencyWreckMarkingBuoy", "FishingFacility", "FloatingDock", "FortifiedStructure", "Hulk", "InstallationBuoy", "IsolatedDangerBeacon", "IsolatedDangerBuoy", "Landmark", "LateralBeacon", "LateralBuoy", "LightFloat", "LightVessel", "MooringBuoy", "OffshorePlatform", "Pile", "PipelineOverhead", "Pontoon", "PylonBridgeSupport", "SafeWaterBeacon", "SafeWaterBuoy", "ShorelineConstruction", "SiloTank", "SpanFixed", "SpanOpening", "SpecialPurposeGeneralBeacon", "SpecialPurposeGeneralBuoy", "StructureOverNavigableWater", "WindTurbine", "Wreck", "LightAllAround", "LightSectored", "Daymark"];
 
                 public StructureEquipment_theStructure() {
@@ -17674,7 +17731,7 @@ namespace S100Framework.DomainModel.S101 {
             public class StructureEquipment_theEquipment : StructureEquipment {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theEquipmentFeatureTypes => ["FogSignal", "LightAirObstruction", "LightAllAround", "LightFogDetector", "LightSectored", "RadarTransponderBeacon", "Retroreflector"];
 
                 public StructureEquipment_theEquipment() {
@@ -17684,7 +17741,7 @@ namespace S100Framework.DomainModel.S101 {
             public class RangeSystemAggregation_theCollection : RangeSystemAggregation {
                 public override roleType? roleType => DomainModel.roleType.aggregation;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theCollectionFeatureTypes => ["RangeSystem"];
 
                 public RangeSystemAggregation_theCollection() {
@@ -17694,7 +17751,7 @@ namespace S100Framework.DomainModel.S101 {
             public class UpdatedInformation_theUpdate : UpdatedInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
 
                 public UpdatedInformation_theUpdate() {
@@ -17704,7 +17761,7 @@ namespace S100Framework.DomainModel.S101 {
             public class TextAssociation_theCartographicText : TextAssociation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theCartographicTextFeatureTypes => ["TextPlacement"];
 
                 public TextAssociation_theCartographicText() {
@@ -17797,13 +17854,13 @@ namespace S100Framework.DomainModel.S101 {
             public Int32? scaleMinimum { get; set; } = default;
             public List<information> information { get; set; } = [];
 
-            [IgnoreDataMember]
+            [JsonIgnore]
             public override string Code => nameof(LightSectored);
 
             public class AdditionalInformation_theInformation : AdditionalInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theInformationInformationTypes => ["ContactDetails", "NauticalInformation"];
 
                 public AdditionalInformation_theInformation() {
@@ -17813,7 +17870,7 @@ namespace S100Framework.DomainModel.S101 {
             public class StructureEquipment_theEquipment : StructureEquipment {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theEquipmentFeatureTypes => ["FogSignal", "LightAirObstruction", "LightAllAround", "LightFogDetector", "LightSectored", "RadarTransponderBeacon", "Retroreflector"];
 
                 public StructureEquipment_theEquipment() {
@@ -17823,7 +17880,7 @@ namespace S100Framework.DomainModel.S101 {
             public class StructureEquipment_theStructure : StructureEquipment {
                 public override roleType? roleType => DomainModel.roleType.composition;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theStructureFeatureTypes => ["Bridge", "Building", "Crane", "CardinalBeacon", "Conveyor", "Dolphin", "FishingFacility", "FortifiedStructure", "IsolatedDangerBeacon", "Landmark", "LateralBeacon", "OffshorePlatform", "Pile", "PipelineOverhead", "PylonBridgeSupport", "SafeWaterBeacon", "ShorelineConstruction", "SiloTank", "SpanFixed", "SpanOpening", "SpecialPurposeGeneralBeacon", "StructureOverNavigableWater", "WindTurbine", "Wreck", "LightAllAround", "LightSectored", "Daymark"];
 
                 public StructureEquipment_theStructure() {
@@ -17833,7 +17890,7 @@ namespace S100Framework.DomainModel.S101 {
             public class RangeSystemAggregation_theCollection : RangeSystemAggregation {
                 public override roleType? roleType => DomainModel.roleType.aggregation;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theCollectionFeatureTypes => ["RangeSystem"];
 
                 public RangeSystemAggregation_theCollection() {
@@ -17843,7 +17900,7 @@ namespace S100Framework.DomainModel.S101 {
             public class UpdatedInformation_theUpdate : UpdatedInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
 
                 public UpdatedInformation_theUpdate() {
@@ -17853,7 +17910,7 @@ namespace S100Framework.DomainModel.S101 {
             public class TextAssociation_theCartographicText : TextAssociation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theCartographicTextFeatureTypes => ["TextPlacement"];
 
                 public TextAssociation_theCartographicText() {
@@ -17923,13 +17980,13 @@ namespace S100Framework.DomainModel.S101 {
             public Int32? scaleMinimum { get; set; } = default;
             public List<information> information { get; set; } = [];
 
-            [IgnoreDataMember]
+            [JsonIgnore]
             public override string Code => nameof(LightFogDetector);
 
             public class AdditionalInformation_theInformation : AdditionalInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theInformationInformationTypes => ["NauticalInformation"];
 
                 public AdditionalInformation_theInformation() {
@@ -17939,7 +17996,7 @@ namespace S100Framework.DomainModel.S101 {
             public class StructureEquipment_theStructure : StructureEquipment {
                 public override roleType? roleType => DomainModel.roleType.composition;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theStructureFeatureTypes => ["Bridge", "Building", "Crane", "CardinalBeacon", "CardinalBuoy", "Conveyor", "Dolphin", "EmergencyWreckMarkingBuoy", "FishingFacility", "FloatingDock", "FortifiedStructure", "Hulk", "InstallationBuoy", "IsolatedDangerBeacon", "IsolatedDangerBuoy", "Landmark", "LateralBeacon", "LateralBuoy", "LightFloat", "LightVessel", "MooringBuoy", "OffshorePlatform", "Pile", "PipelineOverhead", "Pontoon", "PylonBridgeSupport", "SafeWaterBeacon", "SafeWaterBuoy", "ShorelineConstruction", "SiloTank", "SpanFixed", "SpanOpening", "SpecialPurposeGeneralBeacon", "SpecialPurposeGeneralBuoy", "StructureOverNavigableWater", "WindTurbine", "Wreck", "LightAllAround", "LightSectored", "Daymark"];
 
                 public StructureEquipment_theStructure() {
@@ -17949,7 +18006,7 @@ namespace S100Framework.DomainModel.S101 {
             public class UpdatedInformation_theUpdate : UpdatedInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
 
                 public UpdatedInformation_theUpdate() {
@@ -17959,7 +18016,7 @@ namespace S100Framework.DomainModel.S101 {
             public class TextAssociation_theCartographicText : TextAssociation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theCartographicTextFeatureTypes => ["TextPlacement"];
 
                 public TextAssociation_theCartographicText() {
@@ -18042,13 +18099,13 @@ namespace S100Framework.DomainModel.S101 {
             public Int32? scaleMinimum { get; set; } = default;
             public List<information> information { get; set; } = [];
 
-            [IgnoreDataMember]
+            [JsonIgnore]
             public override string Code => nameof(LightAirObstruction);
 
             public class AdditionalInformation_theInformation : AdditionalInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theInformationInformationTypes => ["NauticalInformation"];
 
                 public AdditionalInformation_theInformation() {
@@ -18058,7 +18115,7 @@ namespace S100Framework.DomainModel.S101 {
             public class StructureEquipment_theStructure : StructureEquipment {
                 public override roleType? roleType => DomainModel.roleType.composition;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theStructureFeatureTypes => ["Bridge", "Building", "Crane", "Conveyor", "Landmark", "OffshorePlatform", "PylonBridgeSupport", "SpanFixed", "SpanOpening", "WindTurbine", "LightAllAround", "LightSectored"];
 
                 public StructureEquipment_theStructure() {
@@ -18068,7 +18125,7 @@ namespace S100Framework.DomainModel.S101 {
             public class UpdatedInformation_theUpdate : UpdatedInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
 
                 public UpdatedInformation_theUpdate() {
@@ -18078,7 +18135,7 @@ namespace S100Framework.DomainModel.S101 {
             public class TextAssociation_theCartographicText : TextAssociation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theCartographicTextFeatureTypes => ["TextPlacement"];
 
                 public TextAssociation_theCartographicText() {
@@ -18164,13 +18221,13 @@ namespace S100Framework.DomainModel.S101 {
             public List<information> information { get; set; } = [];
             public String? pictorialRepresentation { get; set; } = null;
 
-            [IgnoreDataMember]
+            [JsonIgnore]
             public override string Code => nameof(LateralBuoy);
 
             public class AdditionalInformation_theInformation : AdditionalInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theInformationInformationTypes => ["ContactDetails", "NauticalInformation"];
 
                 public AdditionalInformation_theInformation() {
@@ -18180,7 +18237,7 @@ namespace S100Framework.DomainModel.S101 {
             public class StructureEquipment_theEquipment : StructureEquipment {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theEquipmentFeatureTypes => ["Daymark", "DistanceMark", "FogSignal", "LightAllAround", "LightFogDetector", "PhysicalAISAidToNavigation", "RadarTransponderBeacon", "Retroreflector", "SignalStationTraffic", "SignalStationWarning"];
 
                 public StructureEquipment_theEquipment() {
@@ -18190,7 +18247,7 @@ namespace S100Framework.DomainModel.S101 {
             public class AidsToNavigationAssociation_theCollection : AidsToNavigationAssociation {
                 public override roleType? roleType => DomainModel.roleType.aggregation;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theCollectionFeatureTypes => ["ArchipelagicSeaLane", "DeepWaterRoute", "FairwaySystem", "TrafficSeparationScheme", "TwoWayRoute"];
 
                 public AidsToNavigationAssociation_theCollection() {
@@ -18200,7 +18257,7 @@ namespace S100Framework.DomainModel.S101 {
             public class FairwayAuxiliary_thePrimaryFeature : FairwayAuxiliary {
                 public override roleType? roleType => DomainModel.roleType.aggregation;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] thePrimaryFeatureFeatureTypes => ["Fairway"];
 
                 public FairwayAuxiliary_thePrimaryFeature() {
@@ -18210,7 +18267,7 @@ namespace S100Framework.DomainModel.S101 {
             public class UpdatedInformation_theUpdate : UpdatedInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
 
                 public UpdatedInformation_theUpdate() {
@@ -18220,7 +18277,7 @@ namespace S100Framework.DomainModel.S101 {
             public class TextAssociation_theCartographicText : TextAssociation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theCartographicTextFeatureTypes => ["TextPlacement"];
 
                 public TextAssociation_theCartographicText() {
@@ -18307,13 +18364,13 @@ namespace S100Framework.DomainModel.S101 {
             public List<information> information { get; set; } = [];
             public String? pictorialRepresentation { get; set; } = null;
 
-            [IgnoreDataMember]
+            [JsonIgnore]
             public override string Code => nameof(CardinalBuoy);
 
             public class AdditionalInformation_theInformation : AdditionalInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theInformationInformationTypes => ["ContactDetails", "NauticalInformation"];
 
                 public AdditionalInformation_theInformation() {
@@ -18323,7 +18380,7 @@ namespace S100Framework.DomainModel.S101 {
             public class StructureEquipment_theEquipment : StructureEquipment {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theEquipmentFeatureTypes => ["Daymark", "DistanceMark", "FogSignal", "LightAllAround", "LightFogDetector", "PhysicalAISAidToNavigation", "RadarTransponderBeacon", "Retroreflector", "SignalStationTraffic", "SignalStationWarning"];
 
                 public StructureEquipment_theEquipment() {
@@ -18333,7 +18390,7 @@ namespace S100Framework.DomainModel.S101 {
             public class AidsToNavigationAssociation_theCollection : AidsToNavigationAssociation {
                 public override roleType? roleType => DomainModel.roleType.aggregation;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theCollectionFeatureTypes => ["ArchipelagicSeaLane", "DeepWaterRoute", "FairwaySystem", "TrafficSeparationScheme", "TwoWayRoute"];
 
                 public AidsToNavigationAssociation_theCollection() {
@@ -18343,7 +18400,7 @@ namespace S100Framework.DomainModel.S101 {
             public class FairwayAuxiliary_thePrimaryFeature : FairwayAuxiliary {
                 public override roleType? roleType => DomainModel.roleType.aggregation;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] thePrimaryFeatureFeatureTypes => ["Fairway"];
 
                 public FairwayAuxiliary_thePrimaryFeature() {
@@ -18353,7 +18410,7 @@ namespace S100Framework.DomainModel.S101 {
             public class UpdatedInformation_theUpdate : UpdatedInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
 
                 public UpdatedInformation_theUpdate() {
@@ -18363,7 +18420,7 @@ namespace S100Framework.DomainModel.S101 {
             public class TextAssociation_theCartographicText : TextAssociation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theCartographicTextFeatureTypes => ["TextPlacement"];
 
                 public TextAssociation_theCartographicText() {
@@ -18443,13 +18500,13 @@ namespace S100Framework.DomainModel.S101 {
             public List<information> information { get; set; } = [];
             public String? pictorialRepresentation { get; set; } = null;
 
-            [IgnoreDataMember]
+            [JsonIgnore]
             public override string Code => nameof(IsolatedDangerBuoy);
 
             public class AdditionalInformation_theInformation : AdditionalInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theInformationInformationTypes => ["ContactDetails", "NauticalInformation"];
 
                 public AdditionalInformation_theInformation() {
@@ -18459,7 +18516,7 @@ namespace S100Framework.DomainModel.S101 {
             public class StructureEquipment_theEquipment : StructureEquipment {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theEquipmentFeatureTypes => ["Daymark", "DistanceMark", "FogSignal", "LightAllAround", "LightFogDetector", "PhysicalAISAidToNavigation", "RadarTransponderBeacon", "Retroreflector", "SignalStationTraffic", "SignalStationWarning"];
 
                 public StructureEquipment_theEquipment() {
@@ -18469,7 +18526,7 @@ namespace S100Framework.DomainModel.S101 {
             public class AidsToNavigationAssociation_theCollection : AidsToNavigationAssociation {
                 public override roleType? roleType => DomainModel.roleType.aggregation;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theCollectionFeatureTypes => ["ArchipelagicSeaLane", "DeepWaterRoute", "FairwaySystem", "TrafficSeparationScheme", "TwoWayRoute"];
 
                 public AidsToNavigationAssociation_theCollection() {
@@ -18479,7 +18536,7 @@ namespace S100Framework.DomainModel.S101 {
             public class FairwayAuxiliary_thePrimaryFeature : FairwayAuxiliary {
                 public override roleType? roleType => DomainModel.roleType.aggregation;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] thePrimaryFeatureFeatureTypes => ["Fairway"];
 
                 public FairwayAuxiliary_thePrimaryFeature() {
@@ -18489,7 +18546,7 @@ namespace S100Framework.DomainModel.S101 {
             public class UpdatedInformation_theUpdate : UpdatedInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
 
                 public UpdatedInformation_theUpdate() {
@@ -18499,7 +18556,7 @@ namespace S100Framework.DomainModel.S101 {
             public class TextAssociation_theCartographicText : TextAssociation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theCartographicTextFeatureTypes => ["TextPlacement"];
 
                 public TextAssociation_theCartographicText() {
@@ -18579,13 +18636,13 @@ namespace S100Framework.DomainModel.S101 {
             public List<information> information { get; set; } = [];
             public String? pictorialRepresentation { get; set; } = null;
 
-            [IgnoreDataMember]
+            [JsonIgnore]
             public override string Code => nameof(SafeWaterBuoy);
 
             public class AdditionalInformation_theInformation : AdditionalInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theInformationInformationTypes => ["ContactDetails", "NauticalInformation"];
 
                 public AdditionalInformation_theInformation() {
@@ -18595,7 +18652,7 @@ namespace S100Framework.DomainModel.S101 {
             public class StructureEquipment_theEquipment : StructureEquipment {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theEquipmentFeatureTypes => ["Daymark", "DistanceMark", "FogSignal", "LightAllAround", "LightFogDetector", "PhysicalAISAidToNavigation", "RadarTransponderBeacon", "Retroreflector", "SignalStationTraffic", "SignalStationWarning"];
 
                 public StructureEquipment_theEquipment() {
@@ -18605,7 +18662,7 @@ namespace S100Framework.DomainModel.S101 {
             public class AidsToNavigationAssociation_theCollection : AidsToNavigationAssociation {
                 public override roleType? roleType => DomainModel.roleType.aggregation;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theCollectionFeatureTypes => ["ArchipelagicSeaLane", "DeepWaterRoute", "FairwaySystem", "TrafficSeparationScheme", "TwoWayRoute"];
 
                 public AidsToNavigationAssociation_theCollection() {
@@ -18615,7 +18672,7 @@ namespace S100Framework.DomainModel.S101 {
             public class FairwayAuxiliary_thePrimaryFeature : FairwayAuxiliary {
                 public override roleType? roleType => DomainModel.roleType.aggregation;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] thePrimaryFeatureFeatureTypes => ["Fairway"];
 
                 public FairwayAuxiliary_thePrimaryFeature() {
@@ -18625,7 +18682,7 @@ namespace S100Framework.DomainModel.S101 {
             public class UpdatedInformation_theUpdate : UpdatedInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
 
                 public UpdatedInformation_theUpdate() {
@@ -18635,7 +18692,7 @@ namespace S100Framework.DomainModel.S101 {
             public class TextAssociation_theCartographicText : TextAssociation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theCartographicTextFeatureTypes => ["TextPlacement"];
 
                 public TextAssociation_theCartographicText() {
@@ -18776,13 +18833,13 @@ namespace S100Framework.DomainModel.S101 {
             public List<information> information { get; set; } = [];
             public String? pictorialRepresentation { get; set; } = null;
 
-            [IgnoreDataMember]
+            [JsonIgnore]
             public override string Code => nameof(SpecialPurposeGeneralBuoy);
 
             public class AdditionalInformation_theInformation : AdditionalInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theInformationInformationTypes => ["ContactDetails", "NauticalInformation"];
 
                 public AdditionalInformation_theInformation() {
@@ -18792,7 +18849,7 @@ namespace S100Framework.DomainModel.S101 {
             public class StructureEquipment_theEquipment : StructureEquipment {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theEquipmentFeatureTypes => ["Daymark", "DistanceMark", "FogSignal", "LightAllAround", "LightFogDetector", "PhysicalAISAidToNavigation", "RadarTransponderBeacon", "Retroreflector", "SignalStationTraffic", "SignalStationWarning"];
 
                 public StructureEquipment_theEquipment() {
@@ -18802,7 +18859,7 @@ namespace S100Framework.DomainModel.S101 {
             public class AidsToNavigationAssociation_theCollection : AidsToNavigationAssociation {
                 public override roleType? roleType => DomainModel.roleType.aggregation;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theCollectionFeatureTypes => ["ArchipelagicSeaLane", "DeepWaterRoute", "FairwaySystem", "TrafficSeparationScheme", "TwoWayRoute"];
 
                 public AidsToNavigationAssociation_theCollection() {
@@ -18812,7 +18869,7 @@ namespace S100Framework.DomainModel.S101 {
             public class FairwayAuxiliary_thePrimaryFeature : FairwayAuxiliary {
                 public override roleType? roleType => DomainModel.roleType.aggregation;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] thePrimaryFeatureFeatureTypes => ["Fairway"];
 
                 public FairwayAuxiliary_thePrimaryFeature() {
@@ -18822,7 +18879,7 @@ namespace S100Framework.DomainModel.S101 {
             public class UpdatedInformation_theUpdate : UpdatedInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
 
                 public UpdatedInformation_theUpdate() {
@@ -18832,7 +18889,7 @@ namespace S100Framework.DomainModel.S101 {
             public class TextAssociation_theCartographicText : TextAssociation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theCartographicTextFeatureTypes => ["TextPlacement"];
 
                 public TextAssociation_theCartographicText() {
@@ -18902,13 +18959,13 @@ namespace S100Framework.DomainModel.S101 {
             public List<information> information { get; set; } = [];
             public String? pictorialRepresentation { get; set; } = null;
 
-            [IgnoreDataMember]
+            [JsonIgnore]
             public override string Code => nameof(EmergencyWreckMarkingBuoy);
 
             public class AdditionalInformation_theInformation : AdditionalInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theInformationInformationTypes => ["ContactDetails", "NauticalInformation"];
 
                 public AdditionalInformation_theInformation() {
@@ -18918,7 +18975,7 @@ namespace S100Framework.DomainModel.S101 {
             public class AidsToNavigationAssociation_theCollection : AidsToNavigationAssociation {
                 public override roleType? roleType => DomainModel.roleType.aggregation;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theCollectionFeatureTypes => ["ArchipelagicSeaLane", "DeepWaterRoute", "FairwaySystem", "TrafficSeparationScheme", "TwoWayRoute"];
 
                 public AidsToNavigationAssociation_theCollection() {
@@ -18928,7 +18985,7 @@ namespace S100Framework.DomainModel.S101 {
             public class StructureEquipment_theEquipment : StructureEquipment {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theEquipmentFeatureTypes => ["Daymark", "DistanceMark", "FogSignal", "LightAllAround", "LightFogDetector", "PhysicalAISAidToNavigation", "RadarTransponderBeacon", "Retroreflector", "SignalStationTraffic", "SignalStationWarning"];
 
                 public StructureEquipment_theEquipment() {
@@ -18938,7 +18995,7 @@ namespace S100Framework.DomainModel.S101 {
             public class UpdatedInformation_theUpdate : UpdatedInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
 
                 public UpdatedInformation_theUpdate() {
@@ -18948,7 +19005,7 @@ namespace S100Framework.DomainModel.S101 {
             public class TextAssociation_theCartographicText : TextAssociation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theCartographicTextFeatureTypes => ["TextPlacement"];
 
                 public TextAssociation_theCartographicText() {
@@ -19034,13 +19091,13 @@ namespace S100Framework.DomainModel.S101 {
             public List<information> information { get; set; } = [];
             public String? pictorialRepresentation { get; set; } = null;
 
-            [IgnoreDataMember]
+            [JsonIgnore]
             public override string Code => nameof(InstallationBuoy);
 
             public class AdditionalInformation_theInformation : AdditionalInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theInformationInformationTypes => ["ContactDetails", "NauticalInformation"];
 
                 public AdditionalInformation_theInformation() {
@@ -19050,7 +19107,7 @@ namespace S100Framework.DomainModel.S101 {
             public class StructureEquipment_theEquipment : StructureEquipment {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theEquipmentFeatureTypes => ["Daymark", "DistanceMark", "FogSignal", "LightAllAround", "LightFogDetector", "PhysicalAISAidToNavigation", "RadarTransponderBeacon", "Retroreflector", "SignalStationTraffic", "SignalStationWarning"];
 
                 public StructureEquipment_theEquipment() {
@@ -19060,7 +19117,7 @@ namespace S100Framework.DomainModel.S101 {
             public class UpdatedInformation_theUpdate : UpdatedInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
 
                 public UpdatedInformation_theUpdate() {
@@ -19070,7 +19127,7 @@ namespace S100Framework.DomainModel.S101 {
             public class TextAssociation_theCartographicText : TextAssociation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theCartographicTextFeatureTypes => ["TextPlacement"];
 
                 public TextAssociation_theCartographicText() {
@@ -19144,13 +19201,13 @@ namespace S100Framework.DomainModel.S101 {
             public List<information> information { get; set; } = [];
             public String? pictorialRepresentation { get; set; } = null;
 
-            [IgnoreDataMember]
+            [JsonIgnore]
             public override string Code => nameof(MooringBuoy);
 
             public class AdditionalInformation_theInformation : AdditionalInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theInformationInformationTypes => ["ContactDetails", "NauticalInformation"];
 
                 public AdditionalInformation_theInformation() {
@@ -19160,7 +19217,7 @@ namespace S100Framework.DomainModel.S101 {
             public class AidsToNavigationAssociation_theCollection : AidsToNavigationAssociation {
                 public override roleType? roleType => DomainModel.roleType.aggregation;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theCollectionFeatureTypes => ["DeepWaterRoute", "FairwaySystem", "TrafficSeparationScheme", "TwoWayRoute"];
 
                 public AidsToNavigationAssociation_theCollection() {
@@ -19170,7 +19227,7 @@ namespace S100Framework.DomainModel.S101 {
             public class StructureEquipment_theEquipment : StructureEquipment {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theEquipmentFeatureTypes => ["Daymark", "DistanceMark", "FogSignal", "LightAllAround", "LightFogDetector", "PhysicalAISAidToNavigation", "RadarTransponderBeacon", "Retroreflector", "SignalStationTraffic", "SignalStationWarning"];
 
                 public StructureEquipment_theEquipment() {
@@ -19180,7 +19237,7 @@ namespace S100Framework.DomainModel.S101 {
             public class MooringTrotAggregation_theCollection : MooringTrotAggregation {
                 public override roleType? roleType => DomainModel.roleType.aggregation;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theCollectionFeatureTypes => ["MooringTrot"];
 
                 public MooringTrotAggregation_theCollection() {
@@ -19190,7 +19247,7 @@ namespace S100Framework.DomainModel.S101 {
             public class UpdatedInformation_theUpdate : UpdatedInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
 
                 public UpdatedInformation_theUpdate() {
@@ -19200,7 +19257,7 @@ namespace S100Framework.DomainModel.S101 {
             public class TextAssociation_theCartographicText : TextAssociation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theCartographicTextFeatureTypes => ["TextPlacement"];
 
                 public TextAssociation_theCartographicText() {
@@ -19301,13 +19358,13 @@ namespace S100Framework.DomainModel.S101 {
             public List<information> information { get; set; } = [];
             public String? pictorialRepresentation { get; set; } = null;
 
-            [IgnoreDataMember]
+            [JsonIgnore]
             public override string Code => nameof(LateralBeacon);
 
             public class AdditionalInformation_theInformation : AdditionalInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theInformationInformationTypes => ["ContactDetails", "NauticalInformation"];
 
                 public AdditionalInformation_theInformation() {
@@ -19317,7 +19374,7 @@ namespace S100Framework.DomainModel.S101 {
             public class StructureEquipment_theEquipment : StructureEquipment {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theEquipmentFeatureTypes => ["Daymark", "DistanceMark", "FogSignal", "LightAllAround", "LightFogDetector", "PhysicalAISAidToNavigation", "RadarTransponderBeacon", "Retroreflector", "SignalStationTraffic", "SignalStationWarning", "LightSectored"];
 
                 public StructureEquipment_theEquipment() {
@@ -19327,7 +19384,7 @@ namespace S100Framework.DomainModel.S101 {
             public class AidsToNavigationAssociation_theCollection : AidsToNavigationAssociation {
                 public override roleType? roleType => DomainModel.roleType.aggregation;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theCollectionFeatureTypes => ["ArchipelagicSeaLane", "DeepWaterRoute", "FairwaySystem", "TrafficSeparationScheme", "TwoWayRoute"];
 
                 public AidsToNavigationAssociation_theCollection() {
@@ -19337,7 +19394,7 @@ namespace S100Framework.DomainModel.S101 {
             public class RangeSystemAggregation_theCollection : RangeSystemAggregation {
                 public override roleType? roleType => DomainModel.roleType.aggregation;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theCollectionFeatureTypes => ["RangeSystem"];
 
                 public RangeSystemAggregation_theCollection() {
@@ -19347,7 +19404,7 @@ namespace S100Framework.DomainModel.S101 {
             public class FairwayAuxiliary_thePrimaryFeature : FairwayAuxiliary {
                 public override roleType? roleType => DomainModel.roleType.aggregation;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] thePrimaryFeatureFeatureTypes => ["Fairway"];
 
                 public FairwayAuxiliary_thePrimaryFeature() {
@@ -19357,7 +19414,7 @@ namespace S100Framework.DomainModel.S101 {
             public class UpdatedInformation_theUpdate : UpdatedInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
 
                 public UpdatedInformation_theUpdate() {
@@ -19367,7 +19424,7 @@ namespace S100Framework.DomainModel.S101 {
             public class TextAssociation_theCartographicText : TextAssociation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theCartographicTextFeatureTypes => ["TextPlacement"];
 
                 public TextAssociation_theCartographicText() {
@@ -19469,13 +19526,13 @@ namespace S100Framework.DomainModel.S101 {
             public List<information> information { get; set; } = [];
             public String? pictorialRepresentation { get; set; } = null;
 
-            [IgnoreDataMember]
+            [JsonIgnore]
             public override string Code => nameof(CardinalBeacon);
 
             public class AdditionalInformation_theInformation : AdditionalInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theInformationInformationTypes => ["ContactDetails", "NauticalInformation"];
 
                 public AdditionalInformation_theInformation() {
@@ -19485,7 +19542,7 @@ namespace S100Framework.DomainModel.S101 {
             public class StructureEquipment_theEquipment : StructureEquipment {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theEquipmentFeatureTypes => ["Daymark", "DistanceMark", "FogSignal", "LightAllAround", "LightFogDetector", "PhysicalAISAidToNavigation", "RadarTransponderBeacon", "Retroreflector", "SignalStationTraffic", "SignalStationWarning", "LightSectored"];
 
                 public StructureEquipment_theEquipment() {
@@ -19495,7 +19552,7 @@ namespace S100Framework.DomainModel.S101 {
             public class AidsToNavigationAssociation_theCollection : AidsToNavigationAssociation {
                 public override roleType? roleType => DomainModel.roleType.aggregation;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theCollectionFeatureTypes => ["ArchipelagicSeaLane", "DeepWaterRoute", "FairwaySystem", "TrafficSeparationScheme", "TwoWayRoute"];
 
                 public AidsToNavigationAssociation_theCollection() {
@@ -19505,7 +19562,7 @@ namespace S100Framework.DomainModel.S101 {
             public class RangeSystemAggregation_theCollection : RangeSystemAggregation {
                 public override roleType? roleType => DomainModel.roleType.aggregation;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theCollectionFeatureTypes => ["RangeSystem"];
 
                 public RangeSystemAggregation_theCollection() {
@@ -19515,7 +19572,7 @@ namespace S100Framework.DomainModel.S101 {
             public class FairwayAuxiliary_thePrimaryFeature : FairwayAuxiliary {
                 public override roleType? roleType => DomainModel.roleType.aggregation;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] thePrimaryFeatureFeatureTypes => ["Fairway"];
 
                 public FairwayAuxiliary_thePrimaryFeature() {
@@ -19525,7 +19582,7 @@ namespace S100Framework.DomainModel.S101 {
             public class UpdatedInformation_theUpdate : UpdatedInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
 
                 public UpdatedInformation_theUpdate() {
@@ -19535,7 +19592,7 @@ namespace S100Framework.DomainModel.S101 {
             public class TextAssociation_theCartographicText : TextAssociation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theCartographicTextFeatureTypes => ["TextPlacement"];
 
                 public TextAssociation_theCartographicText() {
@@ -19630,13 +19687,13 @@ namespace S100Framework.DomainModel.S101 {
             public List<information> information { get; set; } = [];
             public String? pictorialRepresentation { get; set; } = null;
 
-            [IgnoreDataMember]
+            [JsonIgnore]
             public override string Code => nameof(IsolatedDangerBeacon);
 
             public class AdditionalInformation_theInformation : AdditionalInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theInformationInformationTypes => ["ContactDetails", "NauticalInformation"];
 
                 public AdditionalInformation_theInformation() {
@@ -19646,7 +19703,7 @@ namespace S100Framework.DomainModel.S101 {
             public class StructureEquipment_theEquipment : StructureEquipment {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theEquipmentFeatureTypes => ["Daymark", "DistanceMark", "FogSignal", "LightAllAround", "LightFogDetector", "PhysicalAISAidToNavigation", "RadarTransponderBeacon", "Retroreflector", "SignalStationTraffic", "SignalStationWarning", "LightSectored"];
 
                 public StructureEquipment_theEquipment() {
@@ -19656,7 +19713,7 @@ namespace S100Framework.DomainModel.S101 {
             public class AidsToNavigationAssociation_theCollection : AidsToNavigationAssociation {
                 public override roleType? roleType => DomainModel.roleType.aggregation;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theCollectionFeatureTypes => ["ArchipelagicSeaLane", "DeepWaterRoute", "FairwaySystem", "TrafficSeparationScheme", "TwoWayRoute"];
 
                 public AidsToNavigationAssociation_theCollection() {
@@ -19666,7 +19723,7 @@ namespace S100Framework.DomainModel.S101 {
             public class RangeSystemAggregation_theCollection : RangeSystemAggregation {
                 public override roleType? roleType => DomainModel.roleType.aggregation;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theCollectionFeatureTypes => ["RangeSystem"];
 
                 public RangeSystemAggregation_theCollection() {
@@ -19676,7 +19733,7 @@ namespace S100Framework.DomainModel.S101 {
             public class FairwayAuxiliary_thePrimaryFeature : FairwayAuxiliary {
                 public override roleType? roleType => DomainModel.roleType.aggregation;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] thePrimaryFeatureFeatureTypes => ["Fairway"];
 
                 public FairwayAuxiliary_thePrimaryFeature() {
@@ -19686,7 +19743,7 @@ namespace S100Framework.DomainModel.S101 {
             public class UpdatedInformation_theUpdate : UpdatedInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
 
                 public UpdatedInformation_theUpdate() {
@@ -19696,7 +19753,7 @@ namespace S100Framework.DomainModel.S101 {
             public class TextAssociation_theCartographicText : TextAssociation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theCartographicTextFeatureTypes => ["TextPlacement"];
 
                 public TextAssociation_theCartographicText() {
@@ -19791,13 +19848,13 @@ namespace S100Framework.DomainModel.S101 {
             public List<information> information { get; set; } = [];
             public String? pictorialRepresentation { get; set; } = null;
 
-            [IgnoreDataMember]
+            [JsonIgnore]
             public override string Code => nameof(SafeWaterBeacon);
 
             public class AdditionalInformation_theInformation : AdditionalInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theInformationInformationTypes => ["ContactDetails", "NauticalInformation"];
 
                 public AdditionalInformation_theInformation() {
@@ -19807,7 +19864,7 @@ namespace S100Framework.DomainModel.S101 {
             public class StructureEquipment_theEquipment : StructureEquipment {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theEquipmentFeatureTypes => ["Daymark", "DistanceMark", "FogSignal", "LightAllAround", "LightFogDetector", "PhysicalAISAidToNavigation", "RadarTransponderBeacon", "Retroreflector", "SignalStationTraffic", "SignalStationWarning", "LightSectored"];
 
                 public StructureEquipment_theEquipment() {
@@ -19817,7 +19874,7 @@ namespace S100Framework.DomainModel.S101 {
             public class AidsToNavigationAssociation_theCollection : AidsToNavigationAssociation {
                 public override roleType? roleType => DomainModel.roleType.aggregation;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theCollectionFeatureTypes => ["ArchipelagicSeaLane", "DeepWaterRoute", "FairwaySystem", "TrafficSeparationScheme", "TwoWayRoute"];
 
                 public AidsToNavigationAssociation_theCollection() {
@@ -19827,7 +19884,7 @@ namespace S100Framework.DomainModel.S101 {
             public class RangeSystemAggregation_theCollection : RangeSystemAggregation {
                 public override roleType? roleType => DomainModel.roleType.aggregation;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theCollectionFeatureTypes => ["RangeSystem"];
 
                 public RangeSystemAggregation_theCollection() {
@@ -19837,7 +19894,7 @@ namespace S100Framework.DomainModel.S101 {
             public class FairwayAuxiliary_thePrimaryFeature : FairwayAuxiliary {
                 public override roleType? roleType => DomainModel.roleType.aggregation;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] thePrimaryFeatureFeatureTypes => ["Fairway"];
 
                 public FairwayAuxiliary_thePrimaryFeature() {
@@ -19847,7 +19904,7 @@ namespace S100Framework.DomainModel.S101 {
             public class UpdatedInformation_theUpdate : UpdatedInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
 
                 public UpdatedInformation_theUpdate() {
@@ -19857,7 +19914,7 @@ namespace S100Framework.DomainModel.S101 {
             public class TextAssociation_theCartographicText : TextAssociation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theCartographicTextFeatureTypes => ["TextPlacement"];
 
                 public TextAssociation_theCartographicText() {
@@ -20013,13 +20070,13 @@ namespace S100Framework.DomainModel.S101 {
             public List<information> information { get; set; } = [];
             public String? pictorialRepresentation { get; set; } = null;
 
-            [IgnoreDataMember]
+            [JsonIgnore]
             public override string Code => nameof(SpecialPurposeGeneralBeacon);
 
             public class AdditionalInformation_theInformation : AdditionalInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theInformationInformationTypes => ["ContactDetails", "NauticalInformation"];
 
                 public AdditionalInformation_theInformation() {
@@ -20029,7 +20086,7 @@ namespace S100Framework.DomainModel.S101 {
             public class StructureEquipment_theEquipment : StructureEquipment {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theEquipmentFeatureTypes => ["Daymark", "DistanceMark", "FogSignal", "LightAllAround", "LightFogDetector", "PhysicalAISAidToNavigation", "RadarTransponderBeacon", "Retroreflector", "SignalStationTraffic", "SignalStationWarning", "LightSectored"];
 
                 public StructureEquipment_theEquipment() {
@@ -20039,7 +20096,7 @@ namespace S100Framework.DomainModel.S101 {
             public class AidsToNavigationAssociation_theCollection : AidsToNavigationAssociation {
                 public override roleType? roleType => DomainModel.roleType.aggregation;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theCollectionFeatureTypes => ["ArchipelagicSeaLane", "DeepWaterRoute", "FairwaySystem", "TrafficSeparationScheme", "TwoWayRoute"];
 
                 public AidsToNavigationAssociation_theCollection() {
@@ -20049,7 +20106,7 @@ namespace S100Framework.DomainModel.S101 {
             public class RangeSystemAggregation_theCollection : RangeSystemAggregation {
                 public override roleType? roleType => DomainModel.roleType.aggregation;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theCollectionFeatureTypes => ["RangeSystem"];
 
                 public RangeSystemAggregation_theCollection() {
@@ -20059,7 +20116,7 @@ namespace S100Framework.DomainModel.S101 {
             public class FairwayAuxiliary_thePrimaryFeature : FairwayAuxiliary {
                 public override roleType? roleType => DomainModel.roleType.aggregation;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] thePrimaryFeatureFeatureTypes => ["Fairway"];
 
                 public FairwayAuxiliary_thePrimaryFeature() {
@@ -20069,7 +20126,7 @@ namespace S100Framework.DomainModel.S101 {
             public class UpdatedInformation_theUpdate : UpdatedInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
 
                 public UpdatedInformation_theUpdate() {
@@ -20079,7 +20136,7 @@ namespace S100Framework.DomainModel.S101 {
             public class TextAssociation_theCartographicText : TextAssociation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theCartographicTextFeatureTypes => ["TextPlacement"];
 
                 public TextAssociation_theCartographicText() {
@@ -20245,13 +20302,13 @@ namespace S100Framework.DomainModel.S101 {
             public List<information> information { get; set; } = [];
             public String? pictorialRepresentation { get; set; } = null;
 
-            [IgnoreDataMember]
+            [JsonIgnore]
             public override string Code => nameof(Daymark);
 
             public class AdditionalInformation_theInformation : AdditionalInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theInformationInformationTypes => ["ContactDetails", "NauticalInformation"];
 
                 public AdditionalInformation_theInformation() {
@@ -20261,7 +20318,7 @@ namespace S100Framework.DomainModel.S101 {
             public class StructureEquipment_theEquipment : StructureEquipment {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theEquipmentFeatureTypes => ["DistanceMark", "FogSignal", "LightAllAround", "LightFogDetector", "LightSectored", "PhysicalAISAidToNavigation", "RadarTransponderBeacon", "Retroreflector", "SignalStationTraffic", "SignalStationWarning"];
 
                 public StructureEquipment_theEquipment() {
@@ -20271,7 +20328,7 @@ namespace S100Framework.DomainModel.S101 {
             public class StructureEquipment_theStructure : StructureEquipment {
                 public override roleType? roleType => DomainModel.roleType.composition;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theStructureFeatureTypes => ["Bridge", "Building", "Crane", "CardinalBeacon", "CardinalBuoy", "Conveyor", "Dolphin", "EmergencyWreckMarkingBuoy", "FishingFacility", "FloatingDock", "FortifiedStructure", "Hulk", "InstallationBuoy", "IsolatedDangerBeacon", "IsolatedDangerBuoy", "Landmark", "LateralBeacon", "LateralBuoy", "LightFloat", "LightVessel", "MooringBuoy", "OffshorePlatform", "Pile", "PipelineOverhead", "Pontoon", "PylonBridgeSupport", "SafeWaterBeacon", "SafeWaterBuoy", "ShorelineConstruction", "SiloTank", "SpanFixed", "SpanOpening", "SpecialPurposeGeneralBeacon", "SpecialPurposeGeneralBuoy", "StructureOverNavigableWater", "WindTurbine", "Wreck"];
 
                 public StructureEquipment_theStructure() {
@@ -20281,7 +20338,7 @@ namespace S100Framework.DomainModel.S101 {
             public class AidsToNavigationAssociation_theCollection : AidsToNavigationAssociation {
                 public override roleType? roleType => DomainModel.roleType.aggregation;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theCollectionFeatureTypes => ["ArchipelagicSeaLane", "DeepWaterRoute", "FairwaySystem", "TrafficSeparationScheme", "TwoWayRoute"];
 
                 public AidsToNavigationAssociation_theCollection() {
@@ -20291,7 +20348,7 @@ namespace S100Framework.DomainModel.S101 {
             public class RangeSystemAggregation_theCollection : RangeSystemAggregation {
                 public override roleType? roleType => DomainModel.roleType.aggregation;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theCollectionFeatureTypes => ["RangeSystem"];
 
                 public RangeSystemAggregation_theCollection() {
@@ -20301,7 +20358,7 @@ namespace S100Framework.DomainModel.S101 {
             public class FairwayAuxiliary_thePrimaryFeature : FairwayAuxiliary {
                 public override roleType? roleType => DomainModel.roleType.aggregation;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] thePrimaryFeatureFeatureTypes => ["Fairway"];
 
                 public FairwayAuxiliary_thePrimaryFeature() {
@@ -20311,7 +20368,7 @@ namespace S100Framework.DomainModel.S101 {
             public class UpdatedInformation_theUpdate : UpdatedInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
 
                 public UpdatedInformation_theUpdate() {
@@ -20321,7 +20378,7 @@ namespace S100Framework.DomainModel.S101 {
             public class TextAssociation_theCartographicText : TextAssociation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theCartographicTextFeatureTypes => ["TextPlacement"];
 
                 public TextAssociation_theCartographicText() {
@@ -20393,13 +20450,13 @@ namespace S100Framework.DomainModel.S101 {
             public List<information> information { get; set; } = [];
             public String? pictorialRepresentation { get; set; } = null;
 
-            [IgnoreDataMember]
+            [JsonIgnore]
             public override string Code => nameof(LightFloat);
 
             public class AdditionalInformation_theInformation : AdditionalInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theInformationInformationTypes => ["ContactDetails", "NauticalInformation"];
 
                 public AdditionalInformation_theInformation() {
@@ -20409,7 +20466,7 @@ namespace S100Framework.DomainModel.S101 {
             public class StructureEquipment_theEquipment : StructureEquipment {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theEquipmentFeatureTypes => ["Daymark", "DistanceMark", "FogSignal", "LightAllAround", "LightFogDetector", "PhysicalAISAidToNavigation", "RadarTransponderBeacon", "Retroreflector", "SignalStationTraffic", "SignalStationWarning"];
 
                 public StructureEquipment_theEquipment() {
@@ -20419,7 +20476,7 @@ namespace S100Framework.DomainModel.S101 {
             public class AidsToNavigationAssociation_theCollection : AidsToNavigationAssociation {
                 public override roleType? roleType => DomainModel.roleType.aggregation;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theCollectionFeatureTypes => ["ArchipelagicSeaLane", "DeepWaterRoute", "FairwaySystem", "TrafficSeparationScheme", "TwoWayRoute"];
 
                 public AidsToNavigationAssociation_theCollection() {
@@ -20429,7 +20486,7 @@ namespace S100Framework.DomainModel.S101 {
             public class FairwayAuxiliary_thePrimaryFeature : FairwayAuxiliary {
                 public override roleType? roleType => DomainModel.roleType.aggregation;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] thePrimaryFeatureFeatureTypes => ["Fairway"];
 
                 public FairwayAuxiliary_thePrimaryFeature() {
@@ -20439,7 +20496,7 @@ namespace S100Framework.DomainModel.S101 {
             public class UpdatedInformation_theUpdate : UpdatedInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
 
                 public UpdatedInformation_theUpdate() {
@@ -20449,7 +20506,7 @@ namespace S100Framework.DomainModel.S101 {
             public class TextAssociation_theCartographicText : TextAssociation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theCartographicTextFeatureTypes => ["TextPlacement"];
 
                 public TextAssociation_theCartographicText() {
@@ -20519,13 +20576,13 @@ namespace S100Framework.DomainModel.S101 {
             public List<information> information { get; set; } = [];
             public String? pictorialRepresentation { get; set; } = null;
 
-            [IgnoreDataMember]
+            [JsonIgnore]
             public override string Code => nameof(LightVessel);
 
             public class AdditionalInformation_theInformation : AdditionalInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theInformationInformationTypes => ["ContactDetails", "NauticalInformation"];
 
                 public AdditionalInformation_theInformation() {
@@ -20535,7 +20592,7 @@ namespace S100Framework.DomainModel.S101 {
             public class StructureEquipment_theEquipment : StructureEquipment {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theEquipmentFeatureTypes => ["Daymark", "DistanceMark", "FogSignal", "LightAllAround", "LightFogDetector", "PhysicalAISAidToNavigation", "RadarTransponderBeacon", "Retroreflector", "SignalStationTraffic", "SignalStationWarning"];
 
                 public StructureEquipment_theEquipment() {
@@ -20545,7 +20602,7 @@ namespace S100Framework.DomainModel.S101 {
             public class AidsToNavigationAssociation_theCollection : AidsToNavigationAssociation {
                 public override roleType? roleType => DomainModel.roleType.aggregation;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theCollectionFeatureTypes => ["ArchipelagicSeaLane", "DeepWaterRoute", "FairwaySystem", "TrafficSeparationScheme", "TwoWayRoute"];
 
                 public AidsToNavigationAssociation_theCollection() {
@@ -20555,7 +20612,7 @@ namespace S100Framework.DomainModel.S101 {
             public class FairwayAuxiliary_thePrimaryFeature : FairwayAuxiliary {
                 public override roleType? roleType => DomainModel.roleType.aggregation;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] thePrimaryFeatureFeatureTypes => ["Fairway"];
 
                 public FairwayAuxiliary_thePrimaryFeature() {
@@ -20565,7 +20622,7 @@ namespace S100Framework.DomainModel.S101 {
             public class UpdatedInformation_theUpdate : UpdatedInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
 
                 public UpdatedInformation_theUpdate() {
@@ -20575,7 +20632,7 @@ namespace S100Framework.DomainModel.S101 {
             public class TextAssociation_theCartographicText : TextAssociation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theCartographicTextFeatureTypes => ["TextPlacement"];
 
                 public TextAssociation_theCartographicText() {
@@ -20623,13 +20680,13 @@ namespace S100Framework.DomainModel.S101 {
             public Int32? scaleMinimum { get; set; } = default;
             public List<information> information { get; set; } = [];
 
-            [IgnoreDataMember]
+            [JsonIgnore]
             public override string Code => nameof(Retroreflector);
 
             public class AdditionalInformation_theInformation : AdditionalInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theInformationInformationTypes => ["NauticalInformation"];
 
                 public AdditionalInformation_theInformation() {
@@ -20639,7 +20696,7 @@ namespace S100Framework.DomainModel.S101 {
             public class StructureEquipment_theStructure : StructureEquipment {
                 public override roleType? roleType => DomainModel.roleType.composition;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theStructureFeatureTypes => ["Bridge", "Building", "Crane", "CardinalBeacon", "CardinalBuoy", "Conveyor", "Dolphin", "EmergencyWreckMarkingBuoy", "FishingFacility", "FloatingDock", "FortifiedStructure", "Hulk", "InstallationBuoy", "IsolatedDangerBeacon", "IsolatedDangerBuoy", "Landmark", "LateralBeacon", "LateralBuoy", "LightFloat", "LightVessel", "MooringBuoy", "OffshorePlatform", "Pile", "PipelineOverhead", "Pontoon", "PylonBridgeSupport", "SafeWaterBeacon", "SafeWaterBuoy", "ShorelineConstruction", "SiloTank", "SpanFixed", "SpanOpening", "SpecialPurposeGeneralBeacon", "SpecialPurposeGeneralBuoy", "StructureOverNavigableWater", "WindTurbine", "Wreck", "LightAllAround", "LightSectored", "Daymark"];
 
                 public StructureEquipment_theStructure() {
@@ -20649,7 +20706,7 @@ namespace S100Framework.DomainModel.S101 {
             public class UpdatedInformation_theUpdate : UpdatedInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
 
                 public UpdatedInformation_theUpdate() {
@@ -20675,13 +20732,13 @@ namespace S100Framework.DomainModel.S101 {
             public Int32? scaleMinimum { get; set; } = default;
             public List<information> information { get; set; } = [];
 
-            [IgnoreDataMember]
+            [JsonIgnore]
             public override string Code => nameof(RadarReflector);
 
             public class AdditionalInformation_theInformation : AdditionalInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theInformationInformationTypes => ["NauticalInformation"];
 
                 public AdditionalInformation_theInformation() {
@@ -20691,7 +20748,7 @@ namespace S100Framework.DomainModel.S101 {
             public class StructureEquipment_theStructure : StructureEquipment {
                 public override roleType? roleType => DomainModel.roleType.composition;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theStructureFeatureTypes => ["CableOverhead", "PipelineOverhead"];
 
                 public StructureEquipment_theStructure() {
@@ -20701,7 +20758,7 @@ namespace S100Framework.DomainModel.S101 {
             public class UpdatedInformation_theUpdate : UpdatedInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
 
                 public UpdatedInformation_theUpdate() {
@@ -20756,13 +20813,13 @@ namespace S100Framework.DomainModel.S101 {
             public Int32? scaleMinimum { get; set; } = default;
             public List<information> information { get; set; } = [];
 
-            [IgnoreDataMember]
+            [JsonIgnore]
             public override string Code => nameof(FogSignal);
 
             public class AdditionalInformation_theInformation : AdditionalInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theInformationInformationTypes => ["ContactDetails", "NauticalInformation"];
 
                 public AdditionalInformation_theInformation() {
@@ -20772,7 +20829,7 @@ namespace S100Framework.DomainModel.S101 {
             public class StructureEquipment_theStructure : StructureEquipment {
                 public override roleType? roleType => DomainModel.roleType.composition;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theStructureFeatureTypes => ["Bridge", "Building", "Crane", "CardinalBeacon", "CardinalBuoy", "Conveyor", "Dolphin", "EmergencyWreckMarkingBuoy", "FishingFacility", "FloatingDock", "FortifiedStructure", "Hulk", "InstallationBuoy", "IsolatedDangerBeacon", "IsolatedDangerBuoy", "Landmark", "LateralBeacon", "LateralBuoy", "LightFloat", "LightVessel", "MooringBuoy", "OffshorePlatform", "Pile", "PipelineOverhead", "Pontoon", "PylonBridgeSupport", "SafeWaterBeacon", "SafeWaterBuoy", "ShorelineConstruction", "SiloTank", "SpanFixed", "SpanOpening", "SpecialPurposeGeneralBeacon", "SpecialPurposeGeneralBuoy", "StructureOverNavigableWater", "WindTurbine", "Wreck", "LightAllAround", "LightSectored", "Daymark"];
 
                 public StructureEquipment_theStructure() {
@@ -20782,7 +20839,7 @@ namespace S100Framework.DomainModel.S101 {
             public class UpdatedInformation_theUpdate : UpdatedInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
 
                 public UpdatedInformation_theUpdate() {
@@ -20792,7 +20849,7 @@ namespace S100Framework.DomainModel.S101 {
             public class TextAssociation_theCartographicText : TextAssociation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theCartographicTextFeatureTypes => ["TextPlacement"];
 
                 public TextAssociation_theCartographicText() {
@@ -20820,13 +20877,13 @@ namespace S100Framework.DomainModel.S101 {
             public Int32? scaleMinimum { get; set; } = default;
             public List<information> information { get; set; } = [];
 
-            [IgnoreDataMember]
+            [JsonIgnore]
             public override string Code => nameof(PhysicalAISAidToNavigation);
 
             public class AdditionalInformation_theInformation : AdditionalInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theInformationInformationTypes => ["NauticalInformation"];
 
                 public AdditionalInformation_theInformation() {
@@ -20836,7 +20893,7 @@ namespace S100Framework.DomainModel.S101 {
             public class StructureEquipment_theStructure : StructureEquipment {
                 public override roleType? roleType => DomainModel.roleType.composition;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theStructureFeatureTypes => ["Bridge", "Building", "Crane", "CardinalBeacon", "CardinalBuoy", "Conveyor", "Dolphin", "EmergencyWreckMarkingBuoy", "FishingFacility", "FloatingDock", "FortifiedStructure", "Hulk", "InstallationBuoy", "IsolatedDangerBeacon", "IsolatedDangerBuoy", "Landmark", "LateralBeacon", "LateralBuoy", "LightFloat", "LightVessel", "MooringBuoy", "OffshorePlatform", "Pile", "PipelineOverhead", "Pontoon", "PylonBridgeSupport", "SafeWaterBeacon", "SafeWaterBuoy", "ShorelineConstruction", "SiloTank", "SpanFixed", "SpanOpening", "SpecialPurposeGeneralBeacon", "SpecialPurposeGeneralBuoy", "StructureOverNavigableWater", "WindTurbine", "Wreck", "Daymark"];
 
                 public StructureEquipment_theStructure() {
@@ -20846,7 +20903,7 @@ namespace S100Framework.DomainModel.S101 {
             public class UpdatedInformation_theUpdate : UpdatedInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
 
                 public UpdatedInformation_theUpdate() {
@@ -20856,7 +20913,7 @@ namespace S100Framework.DomainModel.S101 {
             public class TextAssociation_theCartographicText : TextAssociation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theCartographicTextFeatureTypes => ["TextPlacement"];
 
                 public TextAssociation_theCartographicText() {
@@ -20899,13 +20956,13 @@ namespace S100Framework.DomainModel.S101 {
             public Int32? scaleMinimum { get; set; } = default;
             public List<information> information { get; set; } = [];
 
-            [IgnoreDataMember]
+            [JsonIgnore]
             public override string Code => nameof(VirtualAISAidToNavigation);
 
             public class AdditionalInformation_theInformation : AdditionalInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theInformationInformationTypes => ["NauticalInformation"];
 
                 public AdditionalInformation_theInformation() {
@@ -20915,7 +20972,7 @@ namespace S100Framework.DomainModel.S101 {
             public class UpdatedInformation_theUpdate : UpdatedInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
 
                 public UpdatedInformation_theUpdate() {
@@ -20925,7 +20982,7 @@ namespace S100Framework.DomainModel.S101 {
             public class TextAssociation_theCartographicText : TextAssociation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theCartographicTextFeatureTypes => ["TextPlacement"];
 
                 public TextAssociation_theCartographicText() {
@@ -20966,13 +21023,13 @@ namespace S100Framework.DomainModel.S101 {
             public Int32? scaleMinimum { get; set; } = default;
             public List<information> information { get; set; } = [];
 
-            [IgnoreDataMember]
+            [JsonIgnore]
             public override string Code => nameof(RadioStation);
 
             public class AdditionalInformation_theInformation : AdditionalInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theInformationInformationTypes => ["ContactDetails", "NauticalInformation"];
 
                 public AdditionalInformation_theInformation() {
@@ -20982,7 +21039,7 @@ namespace S100Framework.DomainModel.S101 {
             public class UpdatedInformation_theUpdate : UpdatedInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
 
                 public UpdatedInformation_theUpdate() {
@@ -20992,7 +21049,7 @@ namespace S100Framework.DomainModel.S101 {
             public class TextAssociation_theCartographicText : TextAssociation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theCartographicTextFeatureTypes => ["TextPlacement"];
 
                 public TextAssociation_theCartographicText() {
@@ -21031,13 +21088,13 @@ namespace S100Framework.DomainModel.S101 {
             public Int32? scaleMinimum { get; set; } = default;
             public List<information> information { get; set; } = [];
 
-            [IgnoreDataMember]
+            [JsonIgnore]
             public override string Code => nameof(RadarTransponderBeacon);
 
             public class AdditionalInformation_theInformation : AdditionalInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theInformationInformationTypes => ["NauticalInformation"];
 
                 public AdditionalInformation_theInformation() {
@@ -21047,7 +21104,7 @@ namespace S100Framework.DomainModel.S101 {
             public class StructureEquipment_theStructure : StructureEquipment {
                 public override roleType? roleType => DomainModel.roleType.composition;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theStructureFeatureTypes => ["Bridge", "Building", "Crane", "CardinalBeacon", "CardinalBuoy", "Conveyor", "Dolphin", "EmergencyWreckMarkingBuoy", "FishingFacility", "FloatingDock", "FortifiedStructure", "Hulk", "InstallationBuoy", "IsolatedDangerBeacon", "IsolatedDangerBuoy", "Landmark", "LateralBeacon", "LateralBuoy", "LightFloat", "LightVessel", "MooringBuoy", "OffshorePlatform", "Pile", "PipelineOverhead", "Pontoon", "PylonBridgeSupport", "SafeWaterBeacon", "SafeWaterBuoy", "ShorelineConstruction", "SiloTank", "SpanFixed", "SpanOpening", "SpecialPurposeGeneralBeacon", "SpecialPurposeGeneralBuoy", "StructureOverNavigableWater", "WindTurbine", "Wreck", "LightAllAround", "LightSectored", "Daymark"];
 
                 public StructureEquipment_theStructure() {
@@ -21057,7 +21114,7 @@ namespace S100Framework.DomainModel.S101 {
             public class UpdatedInformation_theUpdate : UpdatedInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
 
                 public UpdatedInformation_theUpdate() {
@@ -21067,7 +21124,7 @@ namespace S100Framework.DomainModel.S101 {
             public class TextAssociation_theCartographicText : TextAssociation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theCartographicTextFeatureTypes => ["TextPlacement"];
 
                 public TextAssociation_theCartographicText() {
@@ -21077,7 +21134,7 @@ namespace S100Framework.DomainModel.S101 {
             public class RangeSystemAggregation_theCollection : RangeSystemAggregation {
                 public override roleType? roleType => DomainModel.roleType.aggregation;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theCollectionFeatureTypes => ["RangeSystem"];
 
                 public RangeSystemAggregation_theCollection() {
@@ -21123,13 +21180,13 @@ namespace S100Framework.DomainModel.S101 {
             public Int32? scaleMinimum { get; set; } = default;
             public List<information> information { get; set; } = [];
 
-            [IgnoreDataMember]
+            [JsonIgnore]
             public override string Code => nameof(PilotBoardingPlace);
 
             public class AdditionalInformation_theInformation : AdditionalInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theInformationInformationTypes => ["ContactDetails", "NauticalInformation"];
 
                 public AdditionalInformation_theInformation() {
@@ -21139,7 +21196,7 @@ namespace S100Framework.DomainModel.S101 {
             public class PilotageDistrictAssociation_theCollection : PilotageDistrictAssociation {
                 public override roleType? roleType => DomainModel.roleType.aggregation;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theCollectionFeatureTypes => ["PilotageDistrict"];
 
                 public PilotageDistrictAssociation_theCollection() {
@@ -21149,7 +21206,7 @@ namespace S100Framework.DomainModel.S101 {
             public class UpdatedInformation_theUpdate : UpdatedInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
 
                 public UpdatedInformation_theUpdate() {
@@ -21159,7 +21216,7 @@ namespace S100Framework.DomainModel.S101 {
             public class TextAssociation_theCartographicText : TextAssociation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theCartographicTextFeatureTypes => ["TextPlacement"];
 
                 public TextAssociation_theCartographicText() {
@@ -21178,13 +21235,13 @@ namespace S100Framework.DomainModel.S101 {
             public Int32? scaleMinimum { get; set; } = default;
             public List<information> information { get; set; } = [];
 
-            [IgnoreDataMember]
+            [JsonIgnore]
             public override string Code => nameof(VesselTrafficServiceArea);
 
             public class AdditionalInformation_theInformation : AdditionalInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theInformationInformationTypes => ["ContactDetails", "NauticalInformation"];
 
                 public AdditionalInformation_theInformation() {
@@ -21194,7 +21251,7 @@ namespace S100Framework.DomainModel.S101 {
             public class UpdatedInformation_theUpdate : UpdatedInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
 
                 public UpdatedInformation_theUpdate() {
@@ -21204,7 +21261,7 @@ namespace S100Framework.DomainModel.S101 {
             public class TextAssociation_theCartographicText : TextAssociation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theCartographicTextFeatureTypes => ["TextPlacement"];
 
                 public TextAssociation_theCartographicText() {
@@ -21234,13 +21291,13 @@ namespace S100Framework.DomainModel.S101 {
             public Int32? scaleMinimum { get; set; } = default;
             public List<information> information { get; set; } = [];
 
-            [IgnoreDataMember]
+            [JsonIgnore]
             public override string Code => nameof(CoastGuardStation);
 
             public class AdditionalInformation_theInformation : AdditionalInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theInformationInformationTypes => ["ContactDetails", "NauticalInformation", "NonStandardWorkingDay", "ServiceHours"];
 
                 public AdditionalInformation_theInformation() {
@@ -21250,7 +21307,7 @@ namespace S100Framework.DomainModel.S101 {
             public class UpdatedInformation_theUpdate : UpdatedInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
 
                 public UpdatedInformation_theUpdate() {
@@ -21260,7 +21317,7 @@ namespace S100Framework.DomainModel.S101 {
             public class TextAssociation_theCartographicText : TextAssociation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theCartographicTextFeatureTypes => ["TextPlacement"];
 
                 public TextAssociation_theCartographicText() {
@@ -21312,13 +21369,13 @@ namespace S100Framework.DomainModel.S101 {
             public Int32? scaleMinimum { get; set; } = default;
             public List<information> information { get; set; } = [];
 
-            [IgnoreDataMember]
+            [JsonIgnore]
             public override string Code => nameof(SignalStationWarning);
 
             public class AdditionalInformation_theInformation : AdditionalInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theInformationInformationTypes => ["ContactDetails", "NauticalInformation"];
 
                 public AdditionalInformation_theInformation() {
@@ -21328,7 +21385,7 @@ namespace S100Framework.DomainModel.S101 {
             public class StructureEquipment_theStructure : StructureEquipment {
                 public override roleType? roleType => DomainModel.roleType.composition;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theStructureFeatureTypes => ["Bridge", "Building", "Crane", "CardinalBeacon", "CardinalBuoy", "Conveyor", "Dolphin", "EmergencyWreckMarkingBuoy", "FishingFacility", "FloatingDock", "FortifiedStructure", "Hulk", "InstallationBuoy", "IsolatedDangerBeacon", "IsolatedDangerBuoy", "Landmark", "LateralBeacon", "LateralBuoy", "LightFloat", "LightVessel", "MooringBuoy", "OffshorePlatform", "Pile", "PipelineOverhead", "Pontoon", "PylonBridgeSupport", "SafeWaterBeacon", "SafeWaterBuoy", "ShorelineConstruction", "SiloTank", "SpanFixed", "SpanOpening", "SpecialPurposeGeneralBeacon", "SpecialPurposeGeneralBuoy", "StructureOverNavigableWater", "WindTurbine", "Wreck", "Daymark"];
 
                 public StructureEquipment_theStructure() {
@@ -21338,7 +21395,7 @@ namespace S100Framework.DomainModel.S101 {
             public class UpdatedInformation_theUpdate : UpdatedInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
 
                 public UpdatedInformation_theUpdate() {
@@ -21348,7 +21405,7 @@ namespace S100Framework.DomainModel.S101 {
             public class TextAssociation_theCartographicText : TextAssociation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theCartographicTextFeatureTypes => ["TextPlacement"];
 
                 public TextAssociation_theCartographicText() {
@@ -21396,13 +21453,13 @@ namespace S100Framework.DomainModel.S101 {
             public Int32? scaleMinimum { get; set; } = default;
             public List<information> information { get; set; } = [];
 
-            [IgnoreDataMember]
+            [JsonIgnore]
             public override string Code => nameof(SignalStationTraffic);
 
             public class AdditionalInformation_theInformation : AdditionalInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theInformationInformationTypes => ["ContactDetails", "NauticalInformation"];
 
                 public AdditionalInformation_theInformation() {
@@ -21412,7 +21469,7 @@ namespace S100Framework.DomainModel.S101 {
             public class StructureEquipment_theStructure : StructureEquipment {
                 public override roleType? roleType => DomainModel.roleType.composition;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theStructureFeatureTypes => ["Bridge", "Building", "Crane", "CardinalBeacon", "CardinalBuoy", "Conveyor", "Dolphin", "EmergencyWreckMarkingBuoy", "FishingFacility", "FloatingDock", "FortifiedStructure", "Hulk", "InstallationBuoy", "IsolatedDangerBeacon", "IsolatedDangerBuoy", "Landmark", "LateralBeacon", "LateralBuoy", "LightFloat", "LightVessel", "MooringBuoy", "OffshorePlatform", "Pile", "PipelineOverhead", "Pontoon", "PylonBridgeSupport", "SafeWaterBeacon", "SafeWaterBuoy", "ShorelineConstruction", "SiloTank", "SpanFixed", "SpanOpening", "SpecialPurposeGeneralBeacon", "SpecialPurposeGeneralBuoy", "StructureOverNavigableWater", "WindTurbine", "Wreck", "Daymark"];
 
                 public StructureEquipment_theStructure() {
@@ -21422,7 +21479,7 @@ namespace S100Framework.DomainModel.S101 {
             public class UpdatedInformation_theUpdate : UpdatedInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
 
                 public UpdatedInformation_theUpdate() {
@@ -21432,7 +21489,7 @@ namespace S100Framework.DomainModel.S101 {
             public class TextAssociation_theCartographicText : TextAssociation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theCartographicTextFeatureTypes => ["TextPlacement"];
 
                 public TextAssociation_theCartographicText() {
@@ -21474,13 +21531,13 @@ namespace S100Framework.DomainModel.S101 {
             public Int32? scaleMinimum { get; set; } = default;
             public List<information> information { get; set; } = [];
 
-            [IgnoreDataMember]
+            [JsonIgnore]
             public override string Code => nameof(RescueStation);
 
             public class AdditionalInformation_theInformation : AdditionalInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theInformationInformationTypes => ["ContactDetails", "NauticalInformation"];
 
                 public AdditionalInformation_theInformation() {
@@ -21490,7 +21547,7 @@ namespace S100Framework.DomainModel.S101 {
             public class UpdatedInformation_theUpdate : UpdatedInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
 
                 public UpdatedInformation_theUpdate() {
@@ -21500,7 +21557,7 @@ namespace S100Framework.DomainModel.S101 {
             public class TextAssociation_theCartographicText : TextAssociation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theCartographicTextFeatureTypes => ["TextPlacement"];
 
                 public TextAssociation_theCartographicText() {
@@ -21617,13 +21674,13 @@ namespace S100Framework.DomainModel.S101 {
             public List<information> information { get; set; } = [];
             public String? pictorialRepresentation { get; set; } = null;
 
-            [IgnoreDataMember]
+            [JsonIgnore]
             public override string Code => nameof(HarbourFacility);
 
             public class AdditionalInformation_theInformation : AdditionalInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theInformationInformationTypes => ["ContactDetails", "NauticalInformation"];
 
                 public AdditionalInformation_theInformation() {
@@ -21633,7 +21690,7 @@ namespace S100Framework.DomainModel.S101 {
             public class UpdatedInformation_theUpdate : UpdatedInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
 
                 public UpdatedInformation_theUpdate() {
@@ -21643,7 +21700,7 @@ namespace S100Framework.DomainModel.S101 {
             public class TextAssociation_theCartographicText : TextAssociation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theCartographicTextFeatureTypes => ["TextPlacement"];
 
                 public TextAssociation_theCartographicText() {
@@ -21714,13 +21771,13 @@ namespace S100Framework.DomainModel.S101 {
             public List<information> information { get; set; } = [];
             public String? pictorialRepresentation { get; set; } = null;
 
-            [IgnoreDataMember]
+            [JsonIgnore]
             public override string Code => nameof(SmallCraftFacility);
 
             public class AdditionalInformation_theInformation : AdditionalInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theInformationInformationTypes => ["ContactDetails", "NauticalInformation"];
 
                 public AdditionalInformation_theInformation() {
@@ -21730,7 +21787,7 @@ namespace S100Framework.DomainModel.S101 {
             public class UpdatedInformation_theUpdate : UpdatedInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theUpdateFeatureTypes => ["UpdateInformation"];
 
                 public UpdatedInformation_theUpdate() {
@@ -21740,7 +21797,7 @@ namespace S100Framework.DomainModel.S101 {
             public class TextAssociation_theCartographicText : TextAssociation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theCartographicTextFeatureTypes => ["TextPlacement"];
 
                 public TextAssociation_theCartographicText() {
@@ -21768,13 +21825,13 @@ namespace S100Framework.DomainModel.S101 {
             public List<textType> textType { get; set; }
             public Int32? scaleMinimum { get; set; } = default;
 
-            [IgnoreDataMember]
+            [JsonIgnore]
             public override string Code => nameof(TextPlacement);
 
             public class TextAssociation_thePositionProvider : TextAssociation {
                 public override roleType? roleType => DomainModel.roleType.composition;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] thePositionProviderFeatureTypes => ["AdministrationArea", "AirportAirfield", "AnchorBerth", "AnchorageArea", "ArchipelagicSeaLane", "ArchipelagicSeaLaneArea", "ArchipelagicSeaLaneAxis", "Berth", "Bollard", "Bridge", "Building", "BuiltUpArea", "CableArea", "CableOverhead", "CableSubmarine", "Canal", "CardinalBuoy", "CardinalBeacon", "CargoTranshipmentArea", "Causeway", "Chart1Feature", "Checkpoint", "CoastGuardStation", "Coastline", "CollisionRegulationsLimit", "ContinentalShelfArea", "Conveyor", "Crane", "CurrentNonGravitational", "Dam", "Daymark", "DeepWaterRoute", "DeepWaterRouteCentreline", "DeepWaterRoutePart", "DistanceMark", "DockArea", "Dolphin", "DredgedArea", "DryDock", "DumpingGround", "Dyke", "EmergencyWreckMarkingBuoy", "Fairway", "FairwaySystem", "FenceWall", "FerryRoute", "FisheryZone", "FishingFacility", "FishingGround", "FloatingDock", "FogSignal", "FortifiedStructure", "FoulGround", "FreePortArea", "Gate", "Gridiron", "HarbourAreaAdministrative", "HarbourFacility", "Helipad", "Hulk", "IceArea", "InformationArea", "InstallationBuoy", "IslandGroup", "IsolatedDangerBeacon", "IsolatedDangerBuoy", "Lake", "LandArea", "LandElevation", "LandRegion", "Landmark", "LateralBeacon", "LateralBuoy", "LightAirObstruction", "LightAllAround", "LightFloat", "LightFogDetector", "LightSectored", "LightVessel", "LocalMagneticAnomaly", "LockBasin", "LogPond", "MarineFarmCulture", "MarinePollutionRegulationsArea", "MilitaryPracticeArea", "MooringArea", "MooringBuoy", "MooringTrot", "Obstruction", "OffshorePlatform", "OffshoreProductionArea", "OilBarrier", "PhysicalAISAidToNavigation", "Pile", "PilotBoardingPlace", "PilotageDistrict", "PipelineOverhead", "PipelineSubmarineOnLand", "Pontoon", "PrecautionaryArea", "ProductionStorageArea", "PylonBridgeSupport", "RadarLine", "RadarRange", "RadarStation", "RadarTransponderBeacon", "RadioCallingInPoint", "RadioStation", "Railway", "RangeSystem", "Rapids", "RecommendedRouteCentreline", "RecommendedTrack", "RescueStation", "RestrictedArea", "River", "Road", "Runway", "SafeWaterBeacon", "SafeWaterBuoy", "SeaAreaNamedWaterArea", "SeabedArea", "Seagrass", "SeaplaneLandingArea", "ShorelineConstruction", "SignalStationTraffic", "SignalStationWarning", "SiloTank", "SlopeTopline", "SlopingGround", "SmallCraftFacility", "Sounding", "SpanFixed", "SpanOpening", "SpecialPurposeGeneralBeacon", "SpecialPurposeGeneralBuoy", "Spring", "StructureOverNavigableWater", "SubmarinePipelineArea", "SubmarineTransitLane", "SweptArea", "TidalStreamFloodEbb", "TidalStreamPanelData", "Tideway", "TrafficSeparationScheme", "Tunnel", "TwoWayRoute", "UnderwaterAwashRock", "Vegetation", "VesselTrafficServiceArea", "VirtualAISAidToNavigation", "WaterTurbulence", "Waterfall", "WeedKelp", "WindTurbine", "Wreck"];
 
                 public TextAssociation_thePositionProvider() {
@@ -21792,13 +21849,13 @@ namespace S100Framework.DomainModel.S101 {
             public List<String> drawingInstruction { get; set; } = [];
             public List<featureName> featureName { get; set; } = [];
 
-            [IgnoreDataMember]
+            [JsonIgnore]
             public override string Code => nameof(Chart1Feature);
 
             public class TextAssociation_theCartographicText : TextAssociation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theCartographicTextFeatureTypes => ["TextPlacement"];
 
                 public TextAssociation_theCartographicText() {

@@ -2,6 +2,7 @@ using System;
 using System.Collections.Immutable;
 using System.Linq;
 using System.Runtime.Serialization;
+using System.Text.Json.Serialization;
 
 #nullable enable
 namespace S100Framework.DomainModel.S131 {
@@ -2078,14 +2079,11 @@ namespace S100Framework.DomainModel.S131 {
             [System.Serializable()]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
             public partial class AdditionalInformation : InformationAssociation {
-                public List<RefId> providesInformation { get; set; } = [];
-                public List<RefId> informationProvidedFor { get; set; } = [];
+                [JsonIgnore]
+                IEnumerable<RefId> providesInformation => base.RefIds.Where(e => e.Role.Equals("providesInformation"));
 
-                [IgnoreDataMember]
-                public virtual String[] providesInformationInformationTypes => [];
-
-                [IgnoreDataMember]
-                public virtual String[] informationProvidedForInformationTypes => [];
+                [JsonIgnore]
+                IEnumerable<RefId> informationProvidedFor => base.RefIds.Where(e => e.Role.Equals("informationProvidedFor"));
                 public override string Code => nameof(AdditionalInformation);
 
                 public string[]? this[Role role] => this[role.ToString()];
@@ -2095,6 +2093,12 @@ namespace S100Framework.DomainModel.S131 {
                     "informationProvidedFor" => informationProvidedForInformationTypes,
                     _ => throw new InvalidOperationException(),
                 };
+                [JsonIgnore]
+                public virtual String[] providesInformationInformationTypes => [];
+
+                [JsonIgnore]
+                public virtual String[] informationProvidedForInformationTypes => [];
+
                 public AdditionalInformation() {
                 }
             }
@@ -2102,14 +2106,11 @@ namespace S100Framework.DomainModel.S131 {
             [System.Serializable()]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
             public partial class AuthorityContact : InformationAssociation {
-                public List<RefId> theAuthority { get; set; } = [];
-                public List<RefId> theContactDetails { get; set; } = [];
+                [JsonIgnore]
+                IEnumerable<RefId> theAuthority => base.RefIds.Where(e => e.Role.Equals("theAuthority"));
 
-                [IgnoreDataMember]
-                public virtual String[] theAuthorityInformationTypes => [];
-
-                [IgnoreDataMember]
-                public virtual String[] theContactDetailsInformationTypes => [];
+                [JsonIgnore]
+                IEnumerable<RefId> theContactDetails => base.RefIds.Where(e => e.Role.Equals("theContactDetails"));
                 public override string Code => nameof(AuthorityContact);
 
                 public string[]? this[Role role] => this[role.ToString()];
@@ -2119,6 +2120,12 @@ namespace S100Framework.DomainModel.S131 {
                     "theContactDetails" => theContactDetailsInformationTypes,
                     _ => throw new InvalidOperationException(),
                 };
+                [JsonIgnore]
+                public virtual String[] theAuthorityInformationTypes => [];
+
+                [JsonIgnore]
+                public virtual String[] theContactDetailsInformationTypes => [];
+
                 public AuthorityContact() {
                 }
             }
@@ -2126,14 +2133,11 @@ namespace S100Framework.DomainModel.S131 {
             [System.Serializable()]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
             public partial class AuthorityHours : InformationAssociation {
-                public List<RefId> theAuthority_srvHrs { get; set; } = [];
-                public List<RefId> theServiceHours { get; set; } = [];
+                [JsonIgnore]
+                IEnumerable<RefId> theAuthority_srvHrs => base.RefIds.Where(e => e.Role.Equals("theAuthority_srvHrs"));
 
-                [IgnoreDataMember]
-                public virtual String[] theAuthority_srvHrsInformationTypes => [];
-
-                [IgnoreDataMember]
-                public virtual String[] theServiceHoursInformationTypes => [];
+                [JsonIgnore]
+                IEnumerable<RefId> theServiceHours => base.RefIds.Where(e => e.Role.Equals("theServiceHours"));
                 public override string Code => nameof(AuthorityHours);
 
                 public string[]? this[Role role] => this[role.ToString()];
@@ -2143,6 +2147,12 @@ namespace S100Framework.DomainModel.S131 {
                     "theServiceHours" => theServiceHoursInformationTypes,
                     _ => throw new InvalidOperationException(),
                 };
+                [JsonIgnore]
+                public virtual String[] theAuthority_srvHrsInformationTypes => [];
+
+                [JsonIgnore]
+                public virtual String[] theServiceHoursInformationTypes => [];
+
                 public AuthorityHours() {
                 }
             }
@@ -2150,10 +2160,8 @@ namespace S100Framework.DomainModel.S131 {
             [System.Serializable()]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
             public partial class AssociatedRxN : InformationAssociation {
-                public List<RefId> theRxN { get; set; } = [];
-
-                [IgnoreDataMember]
-                public virtual String[] theRxNInformationTypes => [];
+                [JsonIgnore]
+                IEnumerable<RefId> theRxN => base.RefIds.Where(e => e.Role.Equals("theRxN"));
                 public override string Code => nameof(AssociatedRxN);
 
                 public string[]? this[Role role] => this[role.ToString()];
@@ -2162,6 +2170,9 @@ namespace S100Framework.DomainModel.S131 {
                     "theRxN" => theRxNInformationTypes,
                     _ => throw new InvalidOperationException(),
                 };
+                [JsonIgnore]
+                public virtual String[] theRxNInformationTypes => [];
+
                 public AssociatedRxN() {
                 }
             }
@@ -2169,10 +2180,8 @@ namespace S100Framework.DomainModel.S131 {
             [System.Serializable()]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
             public partial class ExceptionalWorkday : InformationAssociation {
-                public List<RefId> partialWorkingDay { get; set; } = [];
-
-                [IgnoreDataMember]
-                public virtual String[] partialWorkingDayInformationTypes => [];
+                [JsonIgnore]
+                IEnumerable<RefId> partialWorkingDay => base.RefIds.Where(e => e.Role.Equals("partialWorkingDay"));
                 public override string Code => nameof(ExceptionalWorkday);
 
                 public string[]? this[Role role] => this[role.ToString()];
@@ -2181,6 +2190,9 @@ namespace S100Framework.DomainModel.S131 {
                     "partialWorkingDay" => partialWorkingDayInformationTypes,
                     _ => throw new InvalidOperationException(),
                 };
+                [JsonIgnore]
+                public virtual String[] partialWorkingDayInformationTypes => [];
+
                 public ExceptionalWorkday() {
                 }
             }
@@ -2188,10 +2200,8 @@ namespace S100Framework.DomainModel.S131 {
             [System.Serializable()]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
             public partial class ServiceControl : InformationAssociation {
-                public RefId? controlAuthority { get; set; }
-
-                [IgnoreDataMember]
-                public virtual String[] controlAuthorityInformationTypes => [];
+                [JsonIgnore]
+                RefId? controlAuthority => base.RefIds.FirstOrDefault(e => e.Role.Equals("controlAuthority"));
                 public override string Code => nameof(ServiceControl);
 
                 public string[]? this[Role role] => this[role.ToString()];
@@ -2200,6 +2210,9 @@ namespace S100Framework.DomainModel.S131 {
                     "controlAuthority" => controlAuthorityInformationTypes,
                     _ => throw new InvalidOperationException(),
                 };
+                [JsonIgnore]
+                public virtual String[] controlAuthorityInformationTypes => [];
+
                 public ServiceControl() {
                 }
             }
@@ -2207,10 +2220,8 @@ namespace S100Framework.DomainModel.S131 {
             [System.Serializable()]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
             public partial class ServiceContact : InformationAssociation {
-                public List<RefId> theContactDetails { get; set; } = [];
-
-                [IgnoreDataMember]
-                public virtual String[] theContactDetailsInformationTypes => [];
+                [JsonIgnore]
+                IEnumerable<RefId> theContactDetails => base.RefIds.Where(e => e.Role.Equals("theContactDetails"));
                 public override string Code => nameof(ServiceContact);
 
                 public string[]? this[Role role] => this[role.ToString()];
@@ -2219,6 +2230,9 @@ namespace S100Framework.DomainModel.S131 {
                     "theContactDetails" => theContactDetailsInformationTypes,
                     _ => throw new InvalidOperationException(),
                 };
+                [JsonIgnore]
+                public virtual String[] theContactDetailsInformationTypes => [];
+
                 public ServiceContact() {
                 }
             }
@@ -2226,10 +2240,8 @@ namespace S100Framework.DomainModel.S131 {
             [System.Serializable()]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
             public partial class LocationHours : InformationAssociation {
-                public RefId? location_srvHrs { get; set; }
-
-                [IgnoreDataMember]
-                public virtual String[] location_srvHrsInformationTypes => [];
+                [JsonIgnore]
+                RefId? location_srvHrs => base.RefIds.FirstOrDefault(e => e.Role.Equals("location_srvHrs"));
                 public override string Code => nameof(LocationHours);
 
                 public string[]? this[Role role] => this[role.ToString()];
@@ -2238,6 +2250,9 @@ namespace S100Framework.DomainModel.S131 {
                     "location_srvHrs" => location_srvHrsInformationTypes,
                     _ => throw new InvalidOperationException(),
                 };
+                [JsonIgnore]
+                public virtual String[] location_srvHrsInformationTypes => [];
+
                 public LocationHours() {
                 }
             }
@@ -2245,14 +2260,11 @@ namespace S100Framework.DomainModel.S131 {
             [System.Serializable()]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
             public partial class RelatedOrganisation : InformationAssociation {
-                public List<RefId> theInformation { get; set; } = [];
-                public List<RefId> theOrganisation { get; set; } = [];
+                [JsonIgnore]
+                IEnumerable<RefId> theInformation => base.RefIds.Where(e => e.Role.Equals("theInformation"));
 
-                [IgnoreDataMember]
-                public virtual String[] theInformationInformationTypes => [];
-
-                [IgnoreDataMember]
-                public virtual String[] theOrganisationInformationTypes => [];
+                [JsonIgnore]
+                IEnumerable<RefId> theOrganisation => base.RefIds.Where(e => e.Role.Equals("theOrganisation"));
                 public override string Code => nameof(RelatedOrganisation);
 
                 public string[]? this[Role role] => this[role.ToString()];
@@ -2262,6 +2274,12 @@ namespace S100Framework.DomainModel.S131 {
                     "theOrganisation" => theOrganisationInformationTypes,
                     _ => throw new InvalidOperationException(),
                 };
+                [JsonIgnore]
+                public virtual String[] theInformationInformationTypes => [];
+
+                [JsonIgnore]
+                public virtual String[] theOrganisationInformationTypes => [];
+
                 public RelatedOrganisation() {
                 }
             }
@@ -2273,14 +2291,12 @@ namespace S100Framework.DomainModel.S131 {
                 [EnumerationValue(2)]
                 [Required()]
                 public membership membership { get; set; }
-                public List<RefId> theApplicableRxN { get; set; } = [];
-                public List<RefId> isApplicableTo { get; set; } = [];
 
-                [IgnoreDataMember]
-                public virtual String[] theApplicableRxNInformationTypes => [];
+                [JsonIgnore]
+                IEnumerable<RefId> theApplicableRxN => base.RefIds.Where(e => e.Role.Equals("theApplicableRxN"));
 
-                [IgnoreDataMember]
-                public virtual String[] isApplicableToInformationTypes => [];
+                [JsonIgnore]
+                IEnumerable<RefId> isApplicableTo => base.RefIds.Where(e => e.Role.Equals("isApplicableTo"));
                 public override string Code => nameof(InclusionType);
 
                 public string[]? this[Role role] => this[role.ToString()];
@@ -2290,6 +2306,12 @@ namespace S100Framework.DomainModel.S131 {
                     "isApplicableTo" => isApplicableToInformationTypes,
                     _ => throw new InvalidOperationException(),
                 };
+                [JsonIgnore]
+                public virtual String[] theApplicableRxNInformationTypes => [];
+
+                [JsonIgnore]
+                public virtual String[] isApplicableToInformationTypes => [];
+
                 public InclusionType() {
                 }
             }
@@ -2305,14 +2327,12 @@ namespace S100Framework.DomainModel.S131 {
                 [EnumerationValue(6)]
                 [Required()]
                 public categoryOfRelationship categoryOfRelationship { get; set; }
-                public List<RefId> vslLocation { get; set; } = [];
-                public List<RefId> permission { get; set; } = [];
 
-                [IgnoreDataMember]
-                public virtual String[] vslLocationInformationTypes => [];
+                [JsonIgnore]
+                IEnumerable<RefId> vslLocation => base.RefIds.Where(e => e.Role.Equals("vslLocation"));
 
-                [IgnoreDataMember]
-                public virtual String[] permissionInformationTypes => [];
+                [JsonIgnore]
+                IEnumerable<RefId> permission => base.RefIds.Where(e => e.Role.Equals("permission"));
                 public override string Code => nameof(PermissionType);
 
                 public string[]? this[Role role] => this[role.ToString()];
@@ -2322,6 +2342,12 @@ namespace S100Framework.DomainModel.S131 {
                     "permission" => permissionInformationTypes,
                     _ => throw new InvalidOperationException(),
                 };
+                [JsonIgnore]
+                public virtual String[] vslLocationInformationTypes => [];
+
+                [JsonIgnore]
+                public virtual String[] permissionInformationTypes => [];
+
                 public PermissionType() {
                 }
             }
@@ -2329,10 +2355,8 @@ namespace S100Framework.DomainModel.S131 {
             [System.Serializable()]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
             public partial class LimitEntrance : InformationAssociation {
-                public RefId? entranceReference { get; set; }
-
-                [IgnoreDataMember]
-                public virtual String[] entranceReferenceInformationTypes => [];
+                [JsonIgnore]
+                RefId? entranceReference => base.RefIds.FirstOrDefault(e => e.Role.Equals("entranceReference"));
                 public override string Code => nameof(LimitEntrance);
 
                 public string[]? this[Role role] => this[role.ToString()];
@@ -2341,6 +2365,9 @@ namespace S100Framework.DomainModel.S131 {
                     "entranceReference" => entranceReferenceInformationTypes,
                     _ => throw new InvalidOperationException(),
                 };
+                [JsonIgnore]
+                public virtual String[] entranceReferenceInformationTypes => [];
+
                 public LimitEntrance() {
                 }
             }
@@ -2348,10 +2375,8 @@ namespace S100Framework.DomainModel.S131 {
             [System.Serializable()]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
             public partial class ServiceAvailability : InformationAssociation {
-                public RefId? serviceDescriptionReference { get; set; }
-
-                [IgnoreDataMember]
-                public virtual String[] serviceDescriptionReferenceInformationTypes => [];
+                [JsonIgnore]
+                RefId? serviceDescriptionReference => base.RefIds.FirstOrDefault(e => e.Role.Equals("serviceDescriptionReference"));
                 public override string Code => nameof(ServiceAvailability);
 
                 public string[]? this[Role role] => this[role.ToString()];
@@ -2360,6 +2385,9 @@ namespace S100Framework.DomainModel.S131 {
                     "serviceDescriptionReference" => serviceDescriptionReferenceInformationTypes,
                     _ => throw new InvalidOperationException(),
                 };
+                [JsonIgnore]
+                public virtual String[] serviceDescriptionReferenceInformationTypes => [];
+
                 public ServiceAvailability() {
                 }
             }
@@ -2371,15 +2399,11 @@ namespace S100Framework.DomainModel.S131 {
             [System.Serializable()]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
             public abstract partial class TextAssociation : FeatureAssociation {
-                [Required()]
-                public RefId identifies { get; set; }
-                public RefId? positions { get; set; }
+                [JsonIgnore]
+                public RefId identifies => base.RefIds.First(e => e.Role.Equals("identifies"));
 
-                [IgnoreDataMember]
-                public virtual String[] identifiesFeatureTypes => [];
-
-                [IgnoreDataMember]
-                public virtual String[] positionsFeatureTypes => [];
+                [JsonIgnore]
+                public RefId? positions => base.RefIds.FirstOrDefault(e => e.Role.Equals("positions"));
                 public override string Code => "TextAssociation";
 
                 public string[]? this[Role role] => this[role.ToString()];
@@ -2389,27 +2413,24 @@ namespace S100Framework.DomainModel.S131 {
                     "positions" => positionsFeatureTypes,
                     _ => throw new InvalidOperationException(),
                 };
+                [JsonIgnore]
+                public virtual String[] identifiesFeatureTypes => [];
+
+                [JsonIgnore]
+                public virtual String[] positionsFeatureTypes => [];
+
                 public TextAssociation() {
-                    identifies = new RefId()
-                    {
-                        Value = string.Empty,
-                        Type = string.Empty,
-                        Role = string.Empty,
-                    };
                 }
             }
 
             [System.Serializable()]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
             public abstract partial class Subsection : FeatureAssociation {
-                public List<RefId> subUnit { get; set; } = [];
-                public RefId? constitute { get; set; }
+                [JsonIgnore]
+                public IEnumerable<RefId> subUnit => base.RefIds.Where(e => e.Role.Equals("subUnit"));
 
-                [IgnoreDataMember]
-                public virtual String[] subUnitFeatureTypes => [];
-
-                [IgnoreDataMember]
-                public virtual String[] constituteFeatureTypes => [];
+                [JsonIgnore]
+                public RefId? constitute => base.RefIds.FirstOrDefault(e => e.Role.Equals("constitute"));
                 public override string Code => "Subsection";
 
                 public string[]? this[Role role] => this[role.ToString()];
@@ -2419,6 +2440,12 @@ namespace S100Framework.DomainModel.S131 {
                     "constitute" => constituteFeatureTypes,
                     _ => throw new InvalidOperationException(),
                 };
+                [JsonIgnore]
+                public virtual String[] subUnitFeatureTypes => [];
+
+                [JsonIgnore]
+                public virtual String[] constituteFeatureTypes => [];
+
                 public Subsection() {
                 }
             }
@@ -2426,14 +2453,11 @@ namespace S100Framework.DomainModel.S131 {
             [System.Serializable()]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
             public abstract partial class Infrastructure : FeatureAssociation {
-                public RefId? infrastructureLocation { get; set; }
-                public List<RefId> hasInfrastructure { get; set; } = [];
+                [JsonIgnore]
+                public RefId? infrastructureLocation => base.RefIds.FirstOrDefault(e => e.Role.Equals("infrastructureLocation"));
 
-                [IgnoreDataMember]
-                public virtual String[] infrastructureLocationFeatureTypes => [];
-
-                [IgnoreDataMember]
-                public virtual String[] hasInfrastructureFeatureTypes => [];
+                [JsonIgnore]
+                public IEnumerable<RefId> hasInfrastructure => base.RefIds.Where(e => e.Role.Equals("hasInfrastructure"));
                 public override string Code => "Infrastructure";
 
                 public string[]? this[Role role] => this[role.ToString()];
@@ -2443,6 +2467,12 @@ namespace S100Framework.DomainModel.S131 {
                     "hasInfrastructure" => hasInfrastructureFeatureTypes,
                     _ => throw new InvalidOperationException(),
                 };
+                [JsonIgnore]
+                public virtual String[] infrastructureLocationFeatureTypes => [];
+
+                [JsonIgnore]
+                public virtual String[] hasInfrastructureFeatureTypes => [];
+
                 public Infrastructure() {
                 }
             }
@@ -2450,14 +2480,11 @@ namespace S100Framework.DomainModel.S131 {
             [System.Serializable()]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
             public abstract partial class PrimaryAuxiliaryFacility : FeatureAssociation {
-                public RefId? primaryFacility { get; set; }
-                public List<RefId> auxiliaryFacility { get; set; } = [];
+                [JsonIgnore]
+                public RefId? primaryFacility => base.RefIds.FirstOrDefault(e => e.Role.Equals("primaryFacility"));
 
-                [IgnoreDataMember]
-                public virtual String[] primaryFacilityFeatureTypes => [];
-
-                [IgnoreDataMember]
-                public virtual String[] auxiliaryFacilityFeatureTypes => [];
+                [JsonIgnore]
+                public IEnumerable<RefId> auxiliaryFacility => base.RefIds.Where(e => e.Role.Equals("auxiliaryFacility"));
                 public override string Code => "PrimaryAuxiliaryFacility";
 
                 public string[]? this[Role role] => this[role.ToString()];
@@ -2467,6 +2494,12 @@ namespace S100Framework.DomainModel.S131 {
                     "auxiliaryFacility" => auxiliaryFacilityFeatureTypes,
                     _ => throw new InvalidOperationException(),
                 };
+                [JsonIgnore]
+                public virtual String[] primaryFacilityFeatureTypes => [];
+
+                [JsonIgnore]
+                public virtual String[] auxiliaryFacilityFeatureTypes => [];
+
                 public PrimaryAuxiliaryFacility() {
                 }
             }
@@ -2474,16 +2507,11 @@ namespace S100Framework.DomainModel.S131 {
             [System.Serializable()]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
             public abstract partial class Demarcation : FeatureAssociation {
-                public List<RefId> demarcationIndicator { get; set; } = [];
+                [JsonIgnore]
+                public IEnumerable<RefId> demarcationIndicator => base.RefIds.Where(e => e.Role.Equals("demarcationIndicator"));
 
-                [Required()]
-                public RefId demarcatedFeature { get; set; }
-
-                [IgnoreDataMember]
-                public virtual String[] demarcationIndicatorFeatureTypes => [];
-
-                [IgnoreDataMember]
-                public virtual String[] demarcatedFeatureFeatureTypes => [];
+                [JsonIgnore]
+                public RefId demarcatedFeature => base.RefIds.First(e => e.Role.Equals("demarcatedFeature"));
                 public override string Code => "Demarcation";
 
                 public string[]? this[Role role] => this[role.ToString()];
@@ -2493,28 +2521,24 @@ namespace S100Framework.DomainModel.S131 {
                     "demarcatedFeature" => demarcatedFeatureFeatureTypes,
                     _ => throw new InvalidOperationException(),
                 };
+                [JsonIgnore]
+                public virtual String[] demarcationIndicatorFeatureTypes => [];
+
+                [JsonIgnore]
+                public virtual String[] demarcatedFeatureFeatureTypes => [];
+
                 public Demarcation() {
-                    demarcatedFeature = new RefId()
-                    {
-                        Value = string.Empty,
-                        Type = string.Empty,
-                        Role = string.Empty,
-                    };
                 }
             }
 
             [System.Serializable()]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
             public abstract partial class JurisdictionalLimit : FeatureAssociation {
-                [Required()]
-                public RefId limitReference { get; set; }
-                public RefId? limitExtent { get; set; }
+                [JsonIgnore]
+                public RefId limitReference => base.RefIds.First(e => e.Role.Equals("limitReference"));
 
-                [IgnoreDataMember]
-                public virtual String[] limitReferenceFeatureTypes => [];
-
-                [IgnoreDataMember]
-                public virtual String[] limitExtentFeatureTypes => [];
+                [JsonIgnore]
+                public RefId? limitExtent => base.RefIds.FirstOrDefault(e => e.Role.Equals("limitExtent"));
                 public override string Code => "JurisdictionalLimit";
 
                 public string[]? this[Role role] => this[role.ToString()];
@@ -2524,29 +2548,24 @@ namespace S100Framework.DomainModel.S131 {
                     "limitExtent" => limitExtentFeatureTypes,
                     _ => throw new InvalidOperationException(),
                 };
+                [JsonIgnore]
+                public virtual String[] limitReferenceFeatureTypes => [];
+
+                [JsonIgnore]
+                public virtual String[] limitExtentFeatureTypes => [];
+
                 public JurisdictionalLimit() {
-                    limitReference = new RefId()
-                    {
-                        Value = string.Empty,
-                        Type = string.Empty,
-                        Role = string.Empty,
-                    };
                 }
             }
 
             [System.Serializable()]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
             public abstract partial class LayoutDivision : FeatureAssociation {
-                public List<RefId> layoutUnit { get; set; } = [];
+                [JsonIgnore]
+                public IEnumerable<RefId> layoutUnit => base.RefIds.Where(e => e.Role.Equals("layoutUnit"));
 
-                [Required()]
-                public RefId componentOf { get; set; }
-
-                [IgnoreDataMember]
-                public virtual String[] layoutUnitFeatureTypes => [];
-
-                [IgnoreDataMember]
-                public virtual String[] componentOfFeatureTypes => [];
+                [JsonIgnore]
+                public RefId componentOf => base.RefIds.First(e => e.Role.Equals("componentOf"));
                 public override string Code => "LayoutDivision";
 
                 public string[]? this[Role role] => this[role.ToString()];
@@ -2556,13 +2575,13 @@ namespace S100Framework.DomainModel.S131 {
                     "componentOf" => componentOfFeatureTypes,
                     _ => throw new InvalidOperationException(),
                 };
+                [JsonIgnore]
+                public virtual String[] layoutUnitFeatureTypes => [];
+
+                [JsonIgnore]
+                public virtual String[] componentOfFeatureTypes => [];
+
                 public LayoutDivision() {
-                    componentOf = new RefId()
-                    {
-                        Value = string.Empty,
-                        Type = string.Empty,
-                        Role = string.Empty,
-                    };
                 }
             }
         }
@@ -2599,13 +2618,13 @@ namespace S100Framework.DomainModel.S131 {
             public sourceType? sourceType { get; set; } = default;
             public DateOnly? reportedDate { get; set; } = default;
 
-            [IgnoreDataMember]
+            [JsonIgnore]
             public override string Code => nameof(InformationType);
 
             public class AdditionalInformation_providesInformation : AdditionalInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] providesInformationInformationTypes => ["NauticalInformation"];
 
                 public AdditionalInformation_providesInformation() {
@@ -2638,13 +2657,13 @@ namespace S100Framework.DomainModel.S131 {
             public List<rxNCode> rxNCode { get; set; } = [];
             public List<textContent> textContent { get; set; } = [];
 
-            [IgnoreDataMember]
+            [JsonIgnore]
             public override string Code => nameof(AbstractRxN);
 
             public class InclusionType_isApplicableTo : InclusionType {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] isApplicableToInformationTypes => ["Applicability"];
 
                 public InclusionType_isApplicableTo() {
@@ -2654,7 +2673,7 @@ namespace S100Framework.DomainModel.S131 {
             public class RelatedOrganisation_theOrganisation : RelatedOrganisation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theOrganisationInformationTypes => ["Authority"];
 
                 public RelatedOrganisation_theOrganisation() {
@@ -2737,13 +2756,13 @@ namespace S100Framework.DomainModel.S131 {
             public List<information> information { get; set; } = [];
             public List<vesselsMeasurements> vesselsMeasurements { get; set; } = [];
 
-            [IgnoreDataMember]
+            [JsonIgnore]
             public override string Code => nameof(Applicability);
 
             public class InclusionType_theApplicableRxN : InclusionType {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theApplicableRxNInformationTypes => ["AbstractRxN"];
 
                 public InclusionType_theApplicableRxN() {
@@ -2753,7 +2772,7 @@ namespace S100Framework.DomainModel.S131 {
             public class PermissionType_vslLocation : PermissionType {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] vslLocationInformationTypes => ["InformationType"];
 
                 public PermissionType_vslLocation() {
@@ -2786,13 +2805,13 @@ namespace S100Framework.DomainModel.S131 {
             public categoryOfAuthority categoryOfAuthority { get; set; }
             public textContent? textContent { get; set; }
 
-            [IgnoreDataMember]
+            [JsonIgnore]
             public override string Code => nameof(Authority);
 
             public class AuthorityContact_theContactDetails : AuthorityContact {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theContactDetailsInformationTypes => ["ContactDetails"];
 
                 public AuthorityContact_theContactDetails() {
@@ -2802,7 +2821,7 @@ namespace S100Framework.DomainModel.S131 {
             public class RelatedOrganisation_theInformation : RelatedOrganisation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theInformationInformationTypes => ["AbstractRxN"];
 
                 public RelatedOrganisation_theInformation() {
@@ -2812,7 +2831,7 @@ namespace S100Framework.DomainModel.S131 {
             public class AuthorityHours_theServiceHours : AuthorityHours {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theServiceHoursInformationTypes => ["ServiceHours"];
 
                 public AuthorityHours_theServiceHours() {
@@ -2937,7 +2956,7 @@ namespace S100Framework.DomainModel.S131 {
             public String? tugInformation { get; set; } = null;
             public List<textContent> textContent { get; set; } = [];
 
-            [IgnoreDataMember]
+            [JsonIgnore]
             public override string Code => nameof(AvailablePortServices);
 
             public AvailablePortServices() {
@@ -2965,13 +2984,13 @@ namespace S100Framework.DomainModel.S131 {
             public List<onlineResource> onlineResource { get; set; } = [];
             public List<telecommunications> telecommunications { get; set; } = [];
 
-            [IgnoreDataMember]
+            [JsonIgnore]
             public override string Code => nameof(ContactDetails);
 
             public class AuthorityContact_theAuthority : AuthorityContact {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theAuthorityInformationTypes => ["Authority"];
 
                 public AuthorityContact_theAuthority() {
@@ -2996,7 +3015,7 @@ namespace S100Framework.DomainModel.S131 {
             public List<usefulMarkDescription> usefulMarkDescription { get; set; } = [];
             public List<textContent> textContent { get; set; } = [];
 
-            [IgnoreDataMember]
+            [JsonIgnore]
             public override string Code => nameof(Entrance);
 
             public Entrance() {
@@ -3006,13 +3025,13 @@ namespace S100Framework.DomainModel.S131 {
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class NauticalInformation : AbstractRxN {
-            [IgnoreDataMember]
+            [JsonIgnore]
             public override string Code => nameof(NauticalInformation);
 
             public class AdditionalInformation_informationProvidedFor : AdditionalInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] informationProvidedForInformationTypes => ["InformationType"];
 
                 public AdditionalInformation_informationProvidedFor() {
@@ -3030,7 +3049,7 @@ namespace S100Framework.DomainModel.S131 {
             public List<String> dateVariable { get; set; } = [];
             public List<information> information { get; set; } = [];
 
-            [IgnoreDataMember]
+            [JsonIgnore]
             public override string Code => nameof(NonStandardWorkingDay);
 
             public NonStandardWorkingDay() {
@@ -3040,7 +3059,7 @@ namespace S100Framework.DomainModel.S131 {
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class Recommendations : AbstractRxN {
-            [IgnoreDataMember]
+            [JsonIgnore]
             public override string Code => nameof(Recommendations);
 
             public Recommendations() {
@@ -3050,7 +3069,7 @@ namespace S100Framework.DomainModel.S131 {
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class Regulations : AbstractRxN {
-            [IgnoreDataMember]
+            [JsonIgnore]
             public override string Code => nameof(Regulations);
 
             public Regulations() {
@@ -3060,7 +3079,7 @@ namespace S100Framework.DomainModel.S131 {
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class Restrictions : AbstractRxN {
-            [IgnoreDataMember]
+            [JsonIgnore]
             public override string Code => nameof(Restrictions);
 
             public Restrictions() {
@@ -3074,13 +3093,13 @@ namespace S100Framework.DomainModel.S131 {
             public List<scheduleByDayOfWeek> scheduleByDayOfWeek { get; set; }
             public List<information> information { get; set; } = [];
 
-            [IgnoreDataMember]
+            [JsonIgnore]
             public override string Code => nameof(ServiceHours);
 
             public class ExceptionalWorkday_partialWorkingDay : ExceptionalWorkday {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] partialWorkingDayInformationTypes => ["NonStandardWorkingDay"];
 
                 public ExceptionalWorkday_partialWorkingDay() {
@@ -3090,7 +3109,7 @@ namespace S100Framework.DomainModel.S131 {
             public class AuthorityHours_theAuthority_srvHrs : AuthorityHours {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theAuthority_srvHrsInformationTypes => ["Authority"];
 
                 public AuthorityHours_theAuthority_srvHrs() {
@@ -3119,7 +3138,7 @@ namespace S100Framework.DomainModel.S131 {
             public qualityOfHorizontalMeasurement? qualityOfHorizontalMeasurement { get; set; } = default;
             public List<spatialAccuracy> spatialAccuracy { get; set; } = [];
 
-            [IgnoreDataMember]
+            [JsonIgnore]
             public override string Code => nameof(SpatialQuality);
 
             public SpatialQuality() {
@@ -3161,13 +3180,13 @@ namespace S100Framework.DomainModel.S131 {
             public DateOnly? reportedDate { get; set; } = default;
             public List<textContent> textContent { get; set; } = [];
 
-            [IgnoreDataMember]
+            [JsonIgnore]
             public override string Code => nameof(FeatureType);
 
             public class PermissionType_permission : PermissionType {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] permissionInformationTypes => ["Applicability"];
 
                 public PermissionType_permission() {
@@ -3177,7 +3196,7 @@ namespace S100Framework.DomainModel.S131 {
             public class AssociatedRxN_theRxN : AssociatedRxN {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theRxNInformationTypes => ["AbstractRxN"];
 
                 public AssociatedRxN_theRxN() {
@@ -3187,7 +3206,7 @@ namespace S100Framework.DomainModel.S131 {
             public class AdditionalInformation_providesInformation : AdditionalInformation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] providesInformationInformationTypes => ["NauticalInformation"];
 
                 public AdditionalInformation_providesInformation() {
@@ -3197,7 +3216,7 @@ namespace S100Framework.DomainModel.S131 {
             public class TextAssociation_positions : TextAssociation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] positionsFeatureTypes => ["TextPlacement"];
 
                 public TextAssociation_positions() {
@@ -3211,13 +3230,13 @@ namespace S100Framework.DomainModel.S131 {
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public abstract partial class OrganizationContactArea : FeatureType {
-            [IgnoreDataMember]
+            [JsonIgnore]
             public override string Code => nameof(OrganizationContactArea);
 
             public class ServiceContact_theContactDetails : ServiceContact {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] theContactDetailsInformationTypes => ["ContactDetails"];
 
                 public ServiceContact_theContactDetails() {
@@ -3231,13 +3250,13 @@ namespace S100Framework.DomainModel.S131 {
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public abstract partial class SupervisedArea : OrganizationContactArea {
-            [IgnoreDataMember]
+            [JsonIgnore]
             public override string Code => nameof(SupervisedArea);
 
             public class ServiceControl_controlAuthority : ServiceControl {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] controlAuthorityInformationTypes => ["Authority"];
 
                 public ServiceControl_controlAuthority() {
@@ -3253,13 +3272,13 @@ namespace S100Framework.DomainModel.S131 {
         public abstract partial class HarbourPhysicalInfrastructure : SupervisedArea {
             public Decimal? verticalClearanceValue { get; set; } = default;
 
-            [IgnoreDataMember]
+            [JsonIgnore]
             public override string Code => nameof(HarbourPhysicalInfrastructure);
 
             public class Infrastructure_infrastructureLocation : Infrastructure {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] infrastructureLocationFeatureTypes => ["HarbourAreaSection", "Terminal"];
 
                 public Infrastructure_infrastructureLocation() {
@@ -3273,7 +3292,7 @@ namespace S100Framework.DomainModel.S131 {
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public abstract partial class Layout : SupervisedArea {
-            [IgnoreDataMember]
+            [JsonIgnore]
             public override string Code => nameof(Layout);
 
             public Layout() {
@@ -3283,13 +3302,13 @@ namespace S100Framework.DomainModel.S131 {
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class AnchorBerth : Layout {
-            [IgnoreDataMember]
+            [JsonIgnore]
             public override string Code => nameof(AnchorBerth);
 
             public class ServiceAvailability_serviceDescriptionReference : ServiceAvailability {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] serviceDescriptionReferenceInformationTypes => ["AvailablePortServices"];
 
                 public ServiceAvailability_serviceDescriptionReference() {
@@ -3299,7 +3318,7 @@ namespace S100Framework.DomainModel.S131 {
             public class LocationHours_location_srvHrs : LocationHours {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] location_srvHrsInformationTypes => ["ServiceHours"];
 
                 public LocationHours_location_srvHrs() {
@@ -3309,7 +3328,7 @@ namespace S100Framework.DomainModel.S131 {
             public class PrimaryAuxiliaryFacility_auxiliaryFacility : PrimaryAuxiliaryFacility {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] auxiliaryFacilityFeatureTypes => ["MooringWarpingFacility"];
 
                 public PrimaryAuxiliaryFacility_auxiliaryFacility() {
@@ -3332,13 +3351,13 @@ namespace S100Framework.DomainModel.S131 {
             [EnumerationValue(3)]
             public iSPSLevel? iSPSLevel { get; set; } = default;
 
-            [IgnoreDataMember]
+            [JsonIgnore]
             public override string Code => nameof(AnchorageArea);
 
             public class LocationHours_location_srvHrs : LocationHours {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] location_srvHrsInformationTypes => ["ServiceHours"];
 
                 public LocationHours_location_srvHrs() {
@@ -3348,7 +3367,7 @@ namespace S100Framework.DomainModel.S131 {
             public class LayoutDivision_componentOf : LayoutDivision {
                 public override roleType? roleType => DomainModel.roleType.aggregation;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] componentOfFeatureTypes => ["HarbourAreaSection"];
 
                 public LayoutDivision_componentOf() {
@@ -3396,13 +3415,13 @@ namespace S100Framework.DomainModel.S131 {
             public String uNLocationCode { get; set; } = string.Empty;
             public String? terminalIdentifier { get; set; } = null;
 
-            [IgnoreDataMember]
+            [JsonIgnore]
             public override string Code => nameof(Berth);
 
             public class ServiceAvailability_serviceDescriptionReference : ServiceAvailability {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] serviceDescriptionReferenceInformationTypes => ["AvailablePortServices"];
 
                 public ServiceAvailability_serviceDescriptionReference() {
@@ -3412,7 +3431,7 @@ namespace S100Framework.DomainModel.S131 {
             public class LocationHours_location_srvHrs : LocationHours {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] location_srvHrsInformationTypes => ["ServiceHours"];
 
                 public LocationHours_location_srvHrs() {
@@ -3422,7 +3441,7 @@ namespace S100Framework.DomainModel.S131 {
             public class Demarcation_demarcationIndicator : Demarcation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] demarcationIndicatorFeatureTypes => ["BerthPosition"];
 
                 public Demarcation_demarcationIndicator() {
@@ -3432,7 +3451,7 @@ namespace S100Framework.DomainModel.S131 {
             public class LayoutDivision_componentOf : LayoutDivision {
                 public override roleType? roleType => DomainModel.roleType.aggregation;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] componentOfFeatureTypes => ["HarbourAreaSection", "Terminal"];
 
                 public LayoutDivision_componentOf() {
@@ -3457,13 +3476,13 @@ namespace S100Framework.DomainModel.S131 {
             public String? rampNumber { get; set; } = null;
             public String? locationByText { get; set; } = null;
 
-            [IgnoreDataMember]
+            [JsonIgnore]
             public override string Code => nameof(BerthPosition);
 
             public class Demarcation_demarcatedFeature : Demarcation {
                 public override roleType? roleType => DomainModel.roleType.composition;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] demarcatedFeatureFeatureTypes => ["Berth"];
 
                 public Demarcation_demarcatedFeature() {
@@ -3473,7 +3492,7 @@ namespace S100Framework.DomainModel.S131 {
             public class PrimaryAuxiliaryFacility_auxiliaryFacility : PrimaryAuxiliaryFacility {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] auxiliaryFacilityFeatureTypes => ["MooringWarpingFacility"];
 
                 public PrimaryAuxiliaryFacility_auxiliaryFacility() {
@@ -3496,13 +3515,13 @@ namespace S100Framework.DomainModel.S131 {
             [EnumerationValue(3)]
             public iSPSLevel? iSPSLevel { get; set; } = default;
 
-            [IgnoreDataMember]
+            [JsonIgnore]
             public override string Code => nameof(DockArea);
 
             public class ServiceAvailability_serviceDescriptionReference : ServiceAvailability {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] serviceDescriptionReferenceInformationTypes => ["AvailablePortServices"];
 
                 public ServiceAvailability_serviceDescriptionReference() {
@@ -3512,7 +3531,7 @@ namespace S100Framework.DomainModel.S131 {
             public class LocationHours_location_srvHrs : LocationHours {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] location_srvHrsInformationTypes => ["ServiceHours"];
 
                 public LocationHours_location_srvHrs() {
@@ -3522,7 +3541,7 @@ namespace S100Framework.DomainModel.S131 {
             public class LayoutDivision_componentOf : LayoutDivision {
                 public override roleType? roleType => DomainModel.roleType.aggregation;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] componentOfFeatureTypes => ["HarbourAreaSection"];
 
                 public LayoutDivision_componentOf() {
@@ -3538,13 +3557,13 @@ namespace S100Framework.DomainModel.S131 {
         public partial class DryDock : HarbourPhysicalInfrastructure {
             public Decimal? sillDepth { get; set; } = default;
 
-            [IgnoreDataMember]
+            [JsonIgnore]
             public override string Code => nameof(DryDock);
 
             public class LocationHours_location_srvHrs : LocationHours {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] location_srvHrsInformationTypes => ["ServiceHours"];
 
                 public LocationHours_location_srvHrs() {
@@ -3567,13 +3586,13 @@ namespace S100Framework.DomainModel.S131 {
             [EnumerationValue(3)]
             public iSPSLevel? iSPSLevel { get; set; } = default;
 
-            [IgnoreDataMember]
+            [JsonIgnore]
             public override string Code => nameof(DumpingGround);
 
             public class LocationHours_location_srvHrs : LocationHours {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] location_srvHrsInformationTypes => ["ServiceHours"];
 
                 public LocationHours_location_srvHrs() {
@@ -3583,7 +3602,7 @@ namespace S100Framework.DomainModel.S131 {
             public class LayoutDivision_componentOf : LayoutDivision {
                 public override roleType? roleType => DomainModel.roleType.aggregation;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] componentOfFeatureTypes => ["HarbourAreaSection"];
 
                 public LayoutDivision_componentOf() {
@@ -3599,13 +3618,13 @@ namespace S100Framework.DomainModel.S131 {
         public partial class FloatingDock : HarbourPhysicalInfrastructure {
             public Decimal? sillDepth { get; set; } = default;
 
-            [IgnoreDataMember]
+            [JsonIgnore]
             public override string Code => nameof(FloatingDock);
 
             public class LocationHours_location_srvHrs : LocationHours {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] location_srvHrsInformationTypes => ["ServiceHours"];
 
                 public LocationHours_location_srvHrs() {
@@ -3621,13 +3640,13 @@ namespace S100Framework.DomainModel.S131 {
         public partial class Gridiron : HarbourPhysicalInfrastructure {
             public Decimal? sillDepth { get; set; } = default;
 
-            [IgnoreDataMember]
+            [JsonIgnore]
             public override string Code => nameof(Gridiron);
 
             public class LocationHours_location_srvHrs : LocationHours {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] location_srvHrsInformationTypes => ["ServiceHours"];
 
                 public LocationHours_location_srvHrs() {
@@ -3667,13 +3686,13 @@ namespace S100Framework.DomainModel.S131 {
             public List<categoryOfHarbourFacility> categoryOfHarbourFacility { get; set; } = [];
             public generalHarbourInformation? generalHarbourInformation { get; set; }
 
-            [IgnoreDataMember]
+            [JsonIgnore]
             public override string Code => nameof(HarbourAreaAdministrative);
 
             public class ServiceAvailability_serviceDescriptionReference : ServiceAvailability {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] serviceDescriptionReferenceInformationTypes => ["AvailablePortServices"];
 
                 public ServiceAvailability_serviceDescriptionReference() {
@@ -3683,7 +3702,7 @@ namespace S100Framework.DomainModel.S131 {
             public class LocationHours_location_srvHrs : LocationHours {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] location_srvHrsInformationTypes => ["ServiceHours"];
 
                 public LocationHours_location_srvHrs() {
@@ -3693,7 +3712,7 @@ namespace S100Framework.DomainModel.S131 {
             public class JurisdictionalLimit_limitExtent : JurisdictionalLimit {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] limitExtentFeatureTypes => ["OuterLimit"];
 
                 public JurisdictionalLimit_limitExtent() {
@@ -3703,7 +3722,7 @@ namespace S100Framework.DomainModel.S131 {
             public class LayoutDivision_layoutUnit : LayoutDivision {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] layoutUnitFeatureTypes => ["HarbourAreaSection"];
 
                 public LayoutDivision_layoutUnit() {
@@ -3741,13 +3760,13 @@ namespace S100Framework.DomainModel.S131 {
             public iSPSLevel? iSPSLevel { get; set; } = default;
             public facilitiesLayoutDescription? facilitiesLayoutDescription { get; set; }
 
-            [IgnoreDataMember]
+            [JsonIgnore]
             public override string Code => nameof(HarbourAreaSection);
 
             public class ServiceAvailability_serviceDescriptionReference : ServiceAvailability {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] serviceDescriptionReferenceInformationTypes => ["AvailablePortServices"];
 
                 public ServiceAvailability_serviceDescriptionReference() {
@@ -3757,7 +3776,7 @@ namespace S100Framework.DomainModel.S131 {
             public class LocationHours_location_srvHrs : LocationHours {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] location_srvHrsInformationTypes => ["ServiceHours"];
 
                 public LocationHours_location_srvHrs() {
@@ -3767,7 +3786,7 @@ namespace S100Framework.DomainModel.S131 {
             public class LayoutDivision_componentOf : LayoutDivision {
                 public override roleType? roleType => DomainModel.roleType.aggregation;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] componentOfFeatureTypes => ["HarbourAreaAdministrative"];
 
                 public LayoutDivision_componentOf() {
@@ -3777,7 +3796,7 @@ namespace S100Framework.DomainModel.S131 {
             public class Subsection_constitute : Subsection {
                 public override roleType? roleType => DomainModel.roleType.aggregation;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] constituteFeatureTypes => ["HarbourAreaSection"];
 
                 public Subsection_constitute() {
@@ -3787,7 +3806,7 @@ namespace S100Framework.DomainModel.S131 {
             public class Subsection_subUnit : Subsection {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] subUnitFeatureTypes => ["HarbourAreaSection"];
 
                 public Subsection_subUnit() {
@@ -3797,7 +3816,7 @@ namespace S100Framework.DomainModel.S131 {
             public class Infrastructure_hasInfrastructure : Infrastructure {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] hasInfrastructureFeatureTypes => ["HarbourPhysicalInfrastructure"];
 
                 public Infrastructure_hasInfrastructure() {
@@ -3807,7 +3826,7 @@ namespace S100Framework.DomainModel.S131 {
             public class LayoutDivision_layoutUnit : LayoutDivision {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] layoutUnitFeatureTypes => ["AnchorageArea", "Berth", "DockArea", "DumpingGround", "HarbourBasin", "PilotBoardingPlace", "SeaplaneLandingArea", "Terminal", "TurningBasin", "WaterwayArea"];
 
                 public LayoutDivision_layoutUnit() {
@@ -3830,13 +3849,13 @@ namespace S100Framework.DomainModel.S131 {
             [EnumerationValue(3)]
             public iSPSLevel? iSPSLevel { get; set; } = default;
 
-            [IgnoreDataMember]
+            [JsonIgnore]
             public override string Code => nameof(HarbourBasin);
 
             public class LocationHours_location_srvHrs : LocationHours {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] location_srvHrsInformationTypes => ["ServiceHours"];
 
                 public LocationHours_location_srvHrs() {
@@ -3846,7 +3865,7 @@ namespace S100Framework.DomainModel.S131 {
             public class LayoutDivision_componentOf : LayoutDivision {
                 public override roleType? roleType => DomainModel.roleType.aggregation;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] componentOfFeatureTypes => ["HarbourAreaSection"];
 
                 public LayoutDivision_componentOf() {
@@ -3865,13 +3884,13 @@ namespace S100Framework.DomainModel.S131 {
             [Required()]
             public List<categoryOfHarbourFacility> categoryOfHarbourFacility { get; set; }
 
-            [IgnoreDataMember]
+            [JsonIgnore]
             public override string Code => nameof(HarbourFacility);
 
             public class LocationHours_location_srvHrs : LocationHours {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] location_srvHrsInformationTypes => ["ServiceHours"];
 
                 public LocationHours_location_srvHrs() {
@@ -3900,13 +3919,13 @@ namespace S100Framework.DomainModel.S131 {
             public Decimal? bollardPull { get; set; } = default;
             public Boolean? heavingLinesFromShore { get; set; } = default;
 
-            [IgnoreDataMember]
+            [JsonIgnore]
             public override string Code => nameof(MooringWarpingFacility);
 
             public class ServiceAvailability_serviceDescriptionReference : ServiceAvailability {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] serviceDescriptionReferenceInformationTypes => ["AvailablePortServices"];
 
                 public ServiceAvailability_serviceDescriptionReference() {
@@ -3916,7 +3935,7 @@ namespace S100Framework.DomainModel.S131 {
             public class LocationHours_location_srvHrs : LocationHours {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] location_srvHrsInformationTypes => ["ServiceHours"];
 
                 public LocationHours_location_srvHrs() {
@@ -3926,7 +3945,7 @@ namespace S100Framework.DomainModel.S131 {
             public class PrimaryAuxiliaryFacility_primaryFacility : PrimaryAuxiliaryFacility {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] primaryFacilityFeatureTypes => ["AnchorBerth", "BerthPosition"];
 
                 public PrimaryAuxiliaryFacility_primaryFacility() {
@@ -3948,13 +3967,13 @@ namespace S100Framework.DomainModel.S131 {
             public List<majorLightDescription> majorLightDescription { get; set; } = [];
             public List<usefulMarkDescription> usefulMarkDescription { get; set; } = [];
 
-            [IgnoreDataMember]
+            [JsonIgnore]
             public override string Code => nameof(OuterLimit);
 
             public class LimitEntrance_entranceReference : LimitEntrance {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] entranceReferenceInformationTypes => ["Entrance"];
 
                 public LimitEntrance_entranceReference() {
@@ -3964,7 +3983,7 @@ namespace S100Framework.DomainModel.S131 {
             public class JurisdictionalLimit_limitReference : JurisdictionalLimit {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] limitReferenceFeatureTypes => ["HarbourAreaAdministrative"];
 
                 public JurisdictionalLimit_limitReference() {
@@ -3987,13 +4006,13 @@ namespace S100Framework.DomainModel.S131 {
             [EnumerationValue(3)]
             public iSPSLevel? iSPSLevel { get; set; } = default;
 
-            [IgnoreDataMember]
+            [JsonIgnore]
             public override string Code => nameof(PilotBoardingPlace);
 
             public class LocationHours_location_srvHrs : LocationHours {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] location_srvHrsInformationTypes => ["ServiceHours"];
 
                 public LocationHours_location_srvHrs() {
@@ -4003,7 +4022,7 @@ namespace S100Framework.DomainModel.S131 {
             public class LayoutDivision_componentOf : LayoutDivision {
                 public override roleType? roleType => DomainModel.roleType.aggregation;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] componentOfFeatureTypes => ["HarbourAreaSection"];
 
                 public LayoutDivision_componentOf() {
@@ -4026,13 +4045,13 @@ namespace S100Framework.DomainModel.S131 {
             [EnumerationValue(3)]
             public iSPSLevel? iSPSLevel { get; set; } = default;
 
-            [IgnoreDataMember]
+            [JsonIgnore]
             public override string Code => nameof(SeaplaneLandingArea);
 
             public class LocationHours_location_srvHrs : LocationHours {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] location_srvHrsInformationTypes => ["ServiceHours"];
 
                 public LocationHours_location_srvHrs() {
@@ -4042,7 +4061,7 @@ namespace S100Framework.DomainModel.S131 {
             public class LayoutDivision_componentOf : LayoutDivision {
                 public override roleType? roleType => DomainModel.roleType.aggregation;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] componentOfFeatureTypes => ["HarbourAreaSection"];
 
                 public LayoutDivision_componentOf() {
@@ -4105,13 +4124,13 @@ namespace S100Framework.DomainModel.S131 {
             public String? sMDGTerminalCode { get; set; } = null;
             public String? uNLocationCode { get; set; } = null;
 
-            [IgnoreDataMember]
+            [JsonIgnore]
             public override string Code => nameof(Terminal);
 
             public class ServiceAvailability_serviceDescriptionReference : ServiceAvailability {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] serviceDescriptionReferenceInformationTypes => ["AvailablePortServices"];
 
                 public ServiceAvailability_serviceDescriptionReference() {
@@ -4121,7 +4140,7 @@ namespace S100Framework.DomainModel.S131 {
             public class LocationHours_location_srvHrs : LocationHours {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] location_srvHrsInformationTypes => ["ServiceHours"];
 
                 public LocationHours_location_srvHrs() {
@@ -4131,7 +4150,7 @@ namespace S100Framework.DomainModel.S131 {
             public class LayoutDivision_componentOf : LayoutDivision {
                 public override roleType? roleType => DomainModel.roleType.aggregation;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] componentOfFeatureTypes => ["HarbourAreaSection"];
 
                 public LayoutDivision_componentOf() {
@@ -4141,7 +4160,7 @@ namespace S100Framework.DomainModel.S131 {
             public class LayoutDivision_layoutUnit : LayoutDivision {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] layoutUnitFeatureTypes => ["Berth"];
 
                 public LayoutDivision_layoutUnit() {
@@ -4151,7 +4170,7 @@ namespace S100Framework.DomainModel.S131 {
             public class Infrastructure_hasInfrastructure : Infrastructure {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] hasInfrastructureFeatureTypes => ["HarbourPhysicalInfrastructure"];
 
                 public Infrastructure_hasInfrastructure() {
@@ -4174,13 +4193,13 @@ namespace S100Framework.DomainModel.S131 {
             [EnumerationValue(3)]
             public iSPSLevel? iSPSLevel { get; set; } = default;
 
-            [IgnoreDataMember]
+            [JsonIgnore]
             public override string Code => nameof(TurningBasin);
 
             public class LocationHours_location_srvHrs : LocationHours {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] location_srvHrsInformationTypes => ["ServiceHours"];
 
                 public LocationHours_location_srvHrs() {
@@ -4190,7 +4209,7 @@ namespace S100Framework.DomainModel.S131 {
             public class LayoutDivision_componentOf : LayoutDivision {
                 public override roleType? roleType => DomainModel.roleType.aggregation;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] componentOfFeatureTypes => ["HarbourAreaSection"];
 
                 public LayoutDivision_componentOf() {
@@ -4216,13 +4235,13 @@ namespace S100Framework.DomainModel.S131 {
             public String? locationByText { get; set; } = null;
             public markedBy? markedBy { get; set; }
 
-            [IgnoreDataMember]
+            [JsonIgnore]
             public override string Code => nameof(WaterwayArea);
 
             public class LocationHours_location_srvHrs : LocationHours {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] location_srvHrsInformationTypes => ["ServiceHours"];
 
                 public LocationHours_location_srvHrs() {
@@ -4232,7 +4251,7 @@ namespace S100Framework.DomainModel.S131 {
             public class LayoutDivision_componentOf : LayoutDivision {
                 public override roleType? roleType => DomainModel.roleType.aggregation;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] componentOfFeatureTypes => ["HarbourAreaSection"];
 
                 public LayoutDivision_componentOf() {
@@ -4252,7 +4271,7 @@ namespace S100Framework.DomainModel.S131 {
             [Required()]
             public Int32 minimumDisplayScale { get; set; }
 
-            [IgnoreDataMember]
+            [JsonIgnore]
             public override string Code => nameof(DataCoverage);
 
             public DataCoverage() {
@@ -4278,7 +4297,7 @@ namespace S100Framework.DomainModel.S131 {
             public verticalUncertainty? verticalUncertainty { get; set; }
             public List<information> information { get; set; } = [];
 
-            [IgnoreDataMember]
+            [JsonIgnore]
             public override string Code => nameof(QualityOfNonBathymetricData);
 
             public QualityOfNonBathymetricData() {
@@ -4319,7 +4338,7 @@ namespace S100Framework.DomainModel.S131 {
             public verticalDatum verticalDatum { get; set; }
             public List<information> information { get; set; } = [];
 
-            [IgnoreDataMember]
+            [JsonIgnore]
             public override string Code => nameof(SoundingDatum);
 
             public SoundingDatum() {
@@ -4347,7 +4366,7 @@ namespace S100Framework.DomainModel.S131 {
             public verticalDatum verticalDatum { get; set; }
             public List<information> information { get; set; } = [];
 
-            [IgnoreDataMember]
+            [JsonIgnore]
             public override string Code => nameof(VerticalDatumOfData);
 
             public VerticalDatumOfData() {
@@ -4368,13 +4387,13 @@ namespace S100Framework.DomainModel.S131 {
             public textType? textType { get; set; } = default;
             public Int32? scaleMinimum { get; set; } = default;
 
-            [IgnoreDataMember]
+            [JsonIgnore]
             public override string Code => nameof(TextPlacement);
 
             public class TextAssociation_identifies : TextAssociation {
                 public override roleType? roleType => DomainModel.roleType.association;
 
-                [IgnoreDataMember]
+                [JsonIgnore]
                 public override String[] identifiesFeatureTypes => ["FeatureType"];
 
                 public TextAssociation_identifies() {
