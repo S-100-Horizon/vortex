@@ -180,14 +180,13 @@ namespace S100Framework.Applications
                 buffer["code"] = instance.GetType().Name;
                 buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                 buffer["shape"] = current.SHAPE;
-                insert.Insert(buffer);
+                //insert.Insert(buffer);
 
-                var name = Convert.ToString(buffer["name"]);
+                var featureN = featureClass.CreateRow(buffer);
 
                 Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
                 convertedCount++;
-                return (instance: instance, name: name, type: instance.GetType().Name);
-
+                return (instance: instance, name: Convert.ToString(featureN["name"]), type: instance?.GetType().Name);
             }
             else if (catlits.Contains(6)) {
                 // LIGHTS: Attribute catlits contains value 6 (air obstruction light)
@@ -212,12 +211,13 @@ namespace S100Framework.Applications
                 buffer["code"] = instance.GetType().Name;
                 buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                 buffer["shape"] = current.SHAPE;
-                insert.Insert(buffer);
+                //insert.Insert(buffer);
 
-                var name = Convert.ToString(buffer["name"]);
+                var featureN = featureClass.CreateRow(buffer);
+
                 Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
                 convertedCount++;
-                return (instance: instance, name: name, type: instance.GetType().Name);
+                return (instance: instance, name: Convert.ToString(featureN["name"]), type: instance?.GetType().Name);
 
             }
             else if (catlits.Contains(7)) {
@@ -242,13 +242,13 @@ namespace S100Framework.Applications
                 buffer["code"] = instance.GetType().Name;
                 buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                 buffer["shape"] = current.SHAPE;
-                insert.Insert(buffer);
-                insert.Flush();
+                //insert.Insert(buffer);
 
-                var name = Convert.ToString(buffer["name"]);
+                var featureN = featureClass.CreateRow(buffer);
+
                 Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
                 convertedCount++;
-                return (instance: instance, name: name, type: instance.GetType().Name);
+                return (instance: instance, name: Convert.ToString(featureN["name"]), type: instance?.GetType().Name);
 
             }
             else {
