@@ -43,20 +43,14 @@ namespace S100Framework.Applications
 
                 switch (subtype) {
                     case 1: {     // DEPARE // SKIN OF EARTH
-
-
-
                             var instance = new DepthArea {
                                 depthRangeMinimumValue = drval1,
                                 depthRangeMaximumValue = drval2.GetValueOrDefault()
                             };
 
-
-
                             AddInformation(instance.information, feature);
 
                             buffer["ps"] = ps101;
-
                             buffer["code"] = instance.GetType().Name;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                             buffer["shape"] = current.SHAPE;
@@ -71,17 +65,15 @@ namespace S100Framework.Applications
                             var instance = new DredgedArea {
                                 depthRangeMinimumValue = drval1,
                                 depthRangeMaximumValue = drval2,
-                                dredgedDate = null,
-                                maximumPermittedDraught = null,
-                                verticalUncertainty = null,
                             };
 
                             if (!string.IsNullOrEmpty(sordat)) {
-                                //System.Diagnostics.Debugger.Break();    //  Dredged Date
 
 
 
                             }
+
+                            //instance.qualityOfVerticalMeasurement = EnumHelper.GetEnumValue<qualityOfVerticalMeasurement>(current.);
 
                             if (!string.IsNullOrEmpty(restrn)) {
                                 foreach (var c in restrn.Split(',', StringSplitOptions.RemoveEmptyEntries)) {

@@ -4,7 +4,7 @@ using S100Framework.DomainModel;
 using S100Framework.DomainModel.S101;
 using S100Framework.DomainModel.S101.FeatureTypes;
 using System.ComponentModel;
-using VortexLoader;
+
 
 namespace S100Framework.Applications
 {

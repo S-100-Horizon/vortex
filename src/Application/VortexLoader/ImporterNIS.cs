@@ -5,10 +5,8 @@ using S100Framework.DomainModel.S101.ComplexAttributes;
 using static S100Framework.Applications.VortexLoader;
 using IO = System.IO;
 using ArcGIS.Core.Geometry;
-using System;
-using VortexLoader;
 using System.Text.Json;
-using System.Runtime.CompilerServices;
+
 
 namespace S100Framework.Applications
 {
@@ -108,6 +106,7 @@ namespace S100Framework.Applications
                     Store(() => S57_MetadataA(source, destination, filter));
                 }
                 else {
+                    Store(() => S57_AidsToNavigationP(source, destination, filter));
                     Store(() => S57_DangersL(source, destination, filter));
                     Store(() => S57_DangersA(source, destination, filter));
                     Store(() => S57_DangersP(source, destination, filter));
@@ -115,7 +114,6 @@ namespace S100Framework.Applications
                     Store(() => S57_ProductCoverage(source, destination, filter));
                     Store(() => S57_TracksAndRoutesL(source, destination, filter));
                     Store(() => S57_MilitaryFeatureA(source, destination, filter));
-                    Store(() => S57_AidsToNavigationP(source, destination, filter));
                     Store(() => S57_TracksAndRoutesA(source, destination, filter));
                     Store(() => S57_MilitaryFeaturesP(source, destination, filter));
                     Store(() => S57_IcefeaturesA(source, destination, filter));
