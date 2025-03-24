@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace VortexLoader
+namespace S100Framework.Applications
 {
     public static class DateHelper
     {
@@ -22,10 +22,6 @@ namespace VortexLoader
 
             dateOnly = new DateOnly(year, month, day);
             return true;
-        }
-
-        public static fixedDateRange? GetFixedDateRange(string? dATSTA, string? dATEND) {
-            return null;
         }
 
         internal static bool TryGetFixedDateRange(string? start, string? end, out fixedDateRange? value) {
