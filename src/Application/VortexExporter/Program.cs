@@ -65,7 +65,7 @@ namespace S100Framework.Applications
 
                 // Create dataset
                 var dataset = new Dataset() {
-                    CellName = "DK40349E.000",
+                    CellName = "101DK40349E.000",
                     Comment = "Test Dataset",
                     Edition = 1,
                     ENCVer = "INT.IHO.S-101.2.0",
@@ -172,7 +172,7 @@ namespace S100Framework.Applications
 
                 var yaml = S100Framework.YAML.Converter.Serialize(dataset);
 
-                File.WriteAllText(IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), $"DK40349E.yaml"), yaml);
+                File.WriteAllText(IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), $"101DK40349E.yaml"), yaml);
                 //Console.WriteLine(yaml);
                 return 0;
             }
@@ -221,7 +221,7 @@ namespace S100Framework.YAML
                         }
                         else {
                             first = new Point(firstVertice.X, firstVertice.Y) {
-                                Name = $"{name}/0"
+                                Name = $"{name}_0"
                             };
                             dataset!.AddPoint(first);
                         }
@@ -236,7 +236,7 @@ namespace S100Framework.YAML
                         }
                         else {
                             last = new Point(lastVertice.X, lastVertice.Y) {
-                                Name = $"{name}/0"
+                                Name = $"{name}_0"
                             };
                             dataset!.AddPoint(last);
                         }
@@ -271,13 +271,13 @@ namespace S100Framework.YAML
                         }
                         else {
                             first = new Point(firstVertice.X, firstVertice.Y) {
-                                Name = $"P{name}/0"     // To-do: fix naming on points created by curves created by surfaces
+                                Name = $"P{name}_0"     // To-do: fix naming on points created by curves created by surfaces
                             };
                             dataset!.AddPoint(first);
                         }
 
                         var exteriorCurve = new Curve(first, exteriorCoordinates) {
-                            Name = $"{name}/0"
+                            Name = $"{name}_0"
                         };
 
                         dataset?.AddCurve(exteriorCurve);
@@ -297,7 +297,7 @@ namespace S100Framework.YAML
                                 interiorCoordinates = [.. interiorCoordinates, interiorCoordinates[0]];
 
                                 var interiorCurve = new Curve(interiorCoordinates) {
-                                    Name = $"{name}/{id}",
+                                    Name = $"{name}_{id}",
                                 };
                                 id++;
                                 dataset.AddCurve(interiorCurve);
