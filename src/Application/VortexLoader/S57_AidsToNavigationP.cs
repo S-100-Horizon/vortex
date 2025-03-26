@@ -4,13 +4,14 @@ using S100Framework.DomainModel.S101;
 using S100Framework.DomainModel.S101.ComplexAttributes;
 using S100Framework.DomainModel.S101.FeatureTypes;
 using S100Framework.DomainModel;
+using System.Collections.Generic;
 
 namespace S100Framework.Applications
 {
     internal static partial class ImporterNIS {
 
 
-        private static (FeatureNode node, string name, string type)? CreateRadarTransponderbeacon(AidsToNavigationP current, InsertCursor insert, RowBuffer buffer, Feature feature, string tableName, int convertedCount) {
+        private static (FeatureNode node, string name, string type)? CreateRadarTransponderbeacon(AidsToNavigationP current, InsertCursor insert, RowBuffer buffer, Feature feature, string tableName, int convertedCount, FeatureClass featureClass) {
             //if (current.FCSUBTYPE != 65)
             //    throw new ArgumentOutOfRangeException($"Illegal subtype for transponder beacon {current}");
 
@@ -37,6 +38,8 @@ namespace S100Framework.Applications
             buffer["shape"] = current.SHAPE;
             insert.Insert(buffer);
             
+
+
             var name = Convert.ToString(buffer["name"]);
 
             Logger.Current.DataObject(current.OBJECTID.Value, tableName, current.LNAM, System.Text.Json.JsonSerializer.Serialize(instance));
@@ -45,6 +48,339 @@ namespace S100Framework.Applications
         }
 
 
+#if null
+        private static List<LightResult>? CreateLight(AidsToNavigationP current, InsertCursor insert, RowBuffer buffer, Feature feature, string tableName, int convertedCount, FeatureClass featureClass) {
+
+            if (current.FCSUBTYPE != 65)
+                throw new ArgumentOutOfRangeException($"Illegal subtype for lights {current}");
+
+            var result = new List<LightResult>();
+
+            var objectid = current.OBJECTID ?? default;
+            var globalid = current.GLOBALID;
+            var subtype = current.FCSUBTYPE ?? default;
+            var plts_comp_scale = current.PLTS_COMP_SCALE ?? default;
+            var longname = current.LNAM ?? Strings.UNKNOWN;
+            var catlitVal = current.CATLIT ?? default;
+            var sectr1Val = current.SECTR1 ?? default;
+            var sectr2Val = current.SECTR2 ?? default;
+            var color = current.COLOUR ?? default;   // list of integers
+            
+            var bcnshp = current.BCNSHP ?? default;   // domain value
+            var colpat = current.COLPAT ?? default;
+            var litchr = current.LITCHR ?? default;
+            var marsys = current.MARSYS ?? default;
+            var orient = current.ORIENT ?? default;
+            List<int> catlits = new();
+
+            if (catlitVal != default) {
+                catlits = catlitVal.Split(',')
+                                   .Select(int.Parse)
+                                   .ToList();
+            }
+
+            /* CATLIT
+                Code	Description
+                1	directional function
+                4	leading light
+                5	aero light
+                6	air obstruction light
+                7	fog detector light
+                8	flood light
+                9	strip light
+                10	subsidiary light
+                11	spotlight
+                12	front
+                13	rear
+                14	lower
+                15	upper
+                16	moiré effect
+                17	emergency
+                18	bearing light
+                19	horizontally disposed
+                20	vertically disposed
+                -32767	Unknown
+            */
+
+            if ((sectr1Val == default || sectr2Val == default) && !(catlits.Contains(1) || catlits.Contains(6) || catlits.Contains(7) || catlits.Contains(16))) {
+                // Fixed and flashing
+                if (current.LITCHR.Value == 13) {
+                    // Create one fixed and one flashing light
+                    #region LIGHT 1
+                    {
+                        // LIGHTS: Attributes SECTR1 and SECTR2 not present; and/or attribute catlits is not 1, 6, 7, 16
+                        // Build "Light All Around");
+                        var instance = new LightAllAround();
+
+                        if (plts_comp_scale != default) {
+                            instance.scaleMinimum = plts_comp_scale;
+                        }
+
+                        var signalGroup = current.SIGGRP;
+                        var signalPeriod = current.SIGPER;
+                        var signalSequence = current.SIGFRQ;
+
+
+                        // TODO: rythmOfLight
+                        instance.rhythmOfLight = new rhythmOfLight() {
+                            lightCharacteristic = EnumHelper.GetEnumValue<lightCharacteristic>(current.LITCHR.Value),
+                            //signalGroup = signalGroup,
+                            //signalPeriod = signalPeriod,
+                            //signalSequence = signalSequence
+                        };
+
+                        if (current.COLOUR != default) {
+                            instance.colour = GetColours(current.COLOUR);
+                        }
+
+                        if (current.STATUS != default) {
+                            instance.status = GetStatus(current.STATUS);
+                        }
+
+                        instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
+
+                        AddInformation(instance.information, feature);
+                        buffer["ps"] = ps101;
+                        buffer["code"] = instance.GetType().Name;
+                        buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
+                        buffer["shape"] = current.SHAPE;
+
+                        //insert.Insert(buffer);
+                        var featureN = featureClass.CreateRow(buffer);
+
+                        Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
+                        convertedCount++;
+
+                        result.Add(new LightResult { node = instance, name = Convert.ToString(featureN["name"]), TypeName = instance?.GetType().Name });
+                    }
+                    #endregion LIGHT 1
+
+                    //#region LIGHT 2
+                    //{
+                    //    // LIGHTS: Attributes SECTR1 and SECTR2 not present; and/or attribute catlits is not 1, 6, 7, 16
+                    //    // Build "Light All Around");
+                    //    var instance = new LightAllAround();
+
+                    //    if (plts_comp_scale != default) {
+                    //        instance.scaleMinimum = plts_comp_scale;
+                    //    }
+
+                    //    var signalGroup = current.SIGGRP;
+                    //    var signalPeriod = current.SIGPER;
+                    //    var signalSequence = current.SIGFRQ;
+
+
+                    //    // TODO: rythmOfLight
+                    //    instance.rhythmOfLight = new rhythmOfLight() {
+                    //        lightCharacteristic = EnumHelper.GetEnumValue<lightCharacteristic>(current.LITCHR.Value),
+                    //        //signalGroup = signalGroup,
+                    //        //signalPeriod = signalPeriod,
+                    //        //signalSequence = signalSequence
+                    //    };
+
+                    //    if (current.COLOUR != default) {
+                    //        instance.colour = GetColours(current.COLOUR);
+                    //    }
+
+                    //    if (current.STATUS != default) {
+                    //        instance.status = GetStatus(current.STATUS);
+                    //    }
+
+                    //    instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
+
+                    //    AddInformation(instance.information, feature);
+                    //    buffer["ps"] = ps101;
+                    //    buffer["code"] = instance.GetType().Name;
+                    //    buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
+                    //    buffer["shape"] = current.SHAPE;
+
+                    //    //insert.Insert(buffer);
+                    //    var featureN = featureClass.CreateRow(buffer);
+
+                    //    Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
+                    //    convertedCount++;
+
+                    //    result.Add(new LightResult { node = instance, name = Convert.ToString(featureN["name"]), TypeName = instance?.GetType().Name });
+
+                    //}
+
+                    //#endregion LIGHT 2
+
+                    return result;
+                } else {
+
+                    #region default
+
+                    // LIGHTS: Attributes SECTR1 and SECTR2 not present; and/or attribute catlits is not 1, 6, 7, 16
+                    // Build "Light All Around");
+                    var instance = new LightAllAround();
+
+                    if (plts_comp_scale != default) {
+                        instance.scaleMinimum = plts_comp_scale;
+                    }
+
+                    instance.rhythmOfLight = GetRythmOfLight(current);
+
+                    if (current.COLOUR != default) {
+                        instance.colour = GetColours(current.COLOUR);
+                    }
+
+                    if (current.STATUS != default) {
+                        instance.status = GetStatus(current.STATUS);
+                    }
+
+                    instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
+
+                    AddInformation(instance.information, feature);
+                    buffer["ps"] = ps101;
+                    buffer["code"] = instance.GetType().Name;
+                    buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
+                    buffer["shape"] = current.SHAPE;
+
+                    //insert.Insert(buffer);
+                    var featureN = featureClass.CreateRow(buffer);
+
+                    Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
+                    convertedCount++;
+
+                    result.Add(new LightResult { node = instance, name = Convert.ToString(featureN["name"]), TypeName = instance?.GetType().Name });
+
+                    return new List<LightResult> { new LightResult { node = instance, name = Convert.ToString(featureN["name"]), TypeName = instance?.GetType().Name } };
+                    #endregion default
+                }
+
+
+            }
+            else if ((sectr1Val != default && sectr2Val != default) || (catlits.Contains(1) || catlits.Contains(16))) {
+                // LIGHTS: Attributes SECTR1 and SECTR2 present; and/or attribute catlits = 1 (directional function) or 16 (moiré effect)
+                // Build "Light Sectored");
+                var instance = new LightSectored();
+
+                if (catlitVal != null) {
+                    instance.categoryOfLight = new List<categoryOfLight>() { categoryOfLight.Unknown }; 
+                }
+
+                if (current.EXCLIT.HasValue) {
+                    instance.exhibitionConditionOfLight = EnumHelper.GetEnumValue<exhibitionConditionOfLight>(current.EXCLIT.Value);
+                }
+
+                instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
+
+                if (plts_comp_scale != default) {
+                    instance.scaleMinimum = plts_comp_scale;
+                }
+
+                if (current.STATUS != default) {
+                    instance.status = GetStatus(current.STATUS);
+                }
+
+                if (current.SIGGEN != null) {
+                    instance.signalGeneration = EnumHelper.GetEnumValue<signalGeneration>(current.SIGGEN.Value);
+                }
+
+
+                //if (current.SECTR1 != null) {
+                //    instance.sectorCharacteristics = new List<sectorCharacteristics>() {
+                //        new sectorCharacteristics() {
+                //            lightSector = new List<lightSector>() {
+                //                new lightSector() {
+                //                    valueOfNominalRange = current.no
+
+                //                }
+                //            }
+                //        }
+                //    }
+                //}
+
+                
+
+                AddInformation(instance.information, feature);
+                buffer["ps"] = ps101;
+
+                buffer["code"] = instance.GetType().Name;
+                buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
+                buffer["shape"] = current.SHAPE;
+                //insert.Insert(buffer);
+
+                var featureN = featureClass.CreateRow(buffer);
+
+                Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
+                convertedCount++;
+                return new List<LightResult> { new LightResult { node = instance, name = Convert.ToString(featureN["name"]), TypeName = instance?.GetType().Name } };
+            }
+            else if (catlits.Contains(6)) {
+                // LIGHTS: Attribute catlits contains value 6 (air obstruction light)
+                // Build "Light Air Obstruction");
+                var instance = new LightAirObstruction();
+                if (plts_comp_scale != default) {
+                    instance.scaleMinimum = plts_comp_scale;
+                }
+                if (current.COLOUR != default) {
+                    instance.colour = GetColours(current.COLOUR);
+                }
+
+                if (current.STATUS != default) {
+                    instance.status = GetStatus(current.STATUS);
+                }
+
+                instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
+
+                AddInformation(instance.information, feature);
+                buffer["ps"] = ps101;
+
+                buffer["code"] = instance.GetType().Name;
+                buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
+                buffer["shape"] = current.SHAPE;
+                //insert.Insert(buffer);
+
+                var featureN = featureClass.CreateRow(buffer);
+
+                Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
+                convertedCount++;
+                return new List<LightResult> { new LightResult { node = instance, name = Convert.ToString(featureN["name"]), TypeName = instance?.GetType().Name } };
+            }
+            else if (catlits.Contains(7)) {
+                // LIGHTS: Attribute catlits contains value 7 (fog detector light)
+                // Build "Light Fog Detector");
+                var instance = new LightFogDetector();
+                if (plts_comp_scale != default) {
+                    instance.scaleMinimum = plts_comp_scale;
+                }
+                if (current.COLOUR != default) {
+                    instance.colour = GetColours(current.COLOUR);
+                }
+
+                if (current.STATUS != default) {
+                    instance.status = GetStatus(current.STATUS);
+                }
+
+                instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
+                AddInformation(instance.information, feature);
+                buffer["ps"] = ps101;
+
+                buffer["code"] = instance.GetType().Name;
+                buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
+                buffer["shape"] = current.SHAPE;
+                //insert.Insert(buffer);
+
+                var featureN = featureClass.CreateRow(buffer);
+
+                Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
+                convertedCount++;
+                return new List<LightResult> { new LightResult { node = instance, name = Convert.ToString(featureN["name"]), TypeName = instance?.GetType().Name } };
+            }
+            else {
+                Logger.Current.DataError(objectid, tableName, longname, $"Unknown Light Type. Check catlit, sectr1, sectr2");
+                return null;
+            }
+
+        }
+
+
+        //else {
+        //        Logger.Current.DataError(objectid, tableName, longname, $"Unknown Light Type. Check catlit.");
+        //        return null;
+#endif
 
         private static (FeatureNode node, string name, string type)? CreateLight(AidsToNavigationP current, InsertCursor insert, RowBuffer buffer, Feature feature, string tableName, int convertedCount, FeatureClass featureClass) {
 
@@ -60,7 +396,7 @@ namespace S100Framework.Applications
             var sectr1Val = current.SECTR1 ?? default;
             var sectr2Val = current.SECTR2 ?? default;
             var color = current.COLOUR ?? default;   // list of integers
-            
+
             var bcnshp = current.BCNSHP ?? default;   // domain value
             var colpat = current.COLPAT ?? default;
             var litchr = current.LITCHR ?? default;
@@ -126,7 +462,7 @@ namespace S100Framework.Applications
 
                 //insert.Insert(buffer);
                 var featureN = featureClass.CreateRow(buffer);
-                
+
                 Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
                 convertedCount++;
                 return (instance: instance, name: Convert.ToString(featureN["name"]), type: instance?.GetType().Name);
@@ -137,7 +473,7 @@ namespace S100Framework.Applications
                 var instance = new LightSectored();
 
                 if (catlitVal != null) {
-                    instance.categoryOfLight = new List<categoryOfLight>() { categoryOfLight.Unknown }; 
+                    instance.categoryOfLight = new List<categoryOfLight>() { categoryOfLight.Unknown };
                 }
 
                 if (current.EXCLIT.HasValue) {
@@ -172,7 +508,7 @@ namespace S100Framework.Applications
                 //    }
                 //}
 
-                
+
 
                 AddInformation(instance.information, feature);
                 buffer["ps"] = ps101;
@@ -180,13 +516,14 @@ namespace S100Framework.Applications
                 buffer["code"] = instance.GetType().Name;
                 buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                 buffer["shape"] = current.SHAPE;
-                //insert.Insert(buffer);
+                insert.Insert(buffer);
 
-                var featureN = featureClass.CreateRow(buffer);
+                var name = Convert.ToString(buffer["name"]);
 
                 Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
                 convertedCount++;
-                return (instance: instance, name: Convert.ToString(featureN["name"]), type: instance?.GetType().Name);
+                return (instance: instance, name: name, type: instance.GetType().Name);
+
             }
             else if (catlits.Contains(6)) {
                 // LIGHTS: Attribute catlits contains value 6 (air obstruction light)
@@ -211,13 +548,12 @@ namespace S100Framework.Applications
                 buffer["code"] = instance.GetType().Name;
                 buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                 buffer["shape"] = current.SHAPE;
-                //insert.Insert(buffer);
+                insert.Insert(buffer);
 
-                var featureN = featureClass.CreateRow(buffer);
-
+                var name = Convert.ToString(buffer["name"]);
                 Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
                 convertedCount++;
-                return (instance: instance, name: Convert.ToString(featureN["name"]), type: instance?.GetType().Name);
+                return (instance: instance, name: name, type: instance.GetType().Name);
 
             }
             else if (catlits.Contains(7)) {
@@ -242,13 +578,13 @@ namespace S100Framework.Applications
                 buffer["code"] = instance.GetType().Name;
                 buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                 buffer["shape"] = current.SHAPE;
-                //insert.Insert(buffer);
+                insert.Insert(buffer);
+                insert.Flush();
 
-                var featureN = featureClass.CreateRow(buffer);
-
+                var name = Convert.ToString(buffer["name"]);
                 Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
                 convertedCount++;
-                return (instance: instance, name: Convert.ToString(featureN["name"]), type: instance?.GetType().Name);
+                return (instance: instance, name: name, type: instance.GetType().Name);
 
             }
             else {
@@ -256,11 +592,7 @@ namespace S100Framework.Applications
                 return null;
             }
 
-        } 
-        
-        //else {
-        //        Logger.Current.DataError(objectid, tableName, longname, $"Unknown Light Type. Check catlit.");
-        //        return null;
+        }
 
         private static void S57_AidsToNavigationP(Geodatabase source, Geodatabase target, QueryFilter filter) {
             var tableName = "AidsToNavigationP";
@@ -268,6 +600,7 @@ namespace S100Framework.Applications
             var featureRelations = new FeatureRelations();
             featureRelations.Initialize(source);
 
+            
             var aidstonavigation = source.OpenDataset<FeatureClass>(source.GetName(tableName));
 
             var featureAssociation = target.OpenDataset<Table>(target.GetName("featureassociation"));
@@ -277,10 +610,6 @@ namespace S100Framework.Applications
 
             using var buffer = featureClass.CreateRowBuffer();
             using var insert = featureClass.CreateInsertCursor();
-
-            
-
-
 
             using var featureAssociationBuffer = featureAssociation.CreateRowBuffer();
             using var featureAssociationInsert = featureAssociation.CreateInsertCursor();
@@ -395,7 +724,6 @@ namespace S100Framework.Applications
                                     else {
                                         Logger.Current.DataError(current.OBJECTID.Value, tableName, current.LNAM, $"Cannot convert date {current.PEREND}");
                                     }
-
                                 }
                             }
 
@@ -471,18 +799,24 @@ namespace S100Framework.Applications
                                         //relatedAidsToNavigationP
                                         if (plfrel.PLTS_Frel.DEST_SUB?.ToLower() == "lights_light") {
                                             var light = CreateLight(relatedAidsToNavigationP, insert, buffer, feature, tableName, convertedCount, featureClass);
-                                            var rel = new CardinalBeacon.StructureEquipment_theEquipment();
-                                            rel.RefIds = [new RefId {
+                                                var rel = new CardinalBeacon.StructureEquipment_theEquipment();
+                                                rel.RefIds = [new RefId {
                                                 Role = nameof(Role.theStructure),
                                                 Type = light?.type,
                                                 Value = light?.name,
+                                                },
+                                            new RefId {
+                                                Role = nameof(Role.theEquipment),
+                                                Type = nameof(instance),
+                                                Value = structureName,
                                                 }];
 
-                                            informationAssociationBuffer["ps"] = ps101;
-                                            informationAssociationBuffer["code"] = rel.GetType().Name;
-                                            informationAssociationBuffer["json"] = System.Text.Json.JsonSerializer.Serialize(rel, jsonSerializerOptions);
-                                            informationAssociationInsert.Insert(informationAssociationBuffer);
-                                        }
+                                                informationAssociationBuffer["ps"] = ps101;
+                                                informationAssociationBuffer["code"] = rel.GetType().Name;
+                                                informationAssociationBuffer["json"] = System.Text.Json.JsonSerializer.Serialize(rel, jsonSerializerOptions);
+                                                informationAssociationInsert.Insert(informationAssociationBuffer);
+                                            }
+
                                         else if (plfrel.PLTS_Frel.DEST_SUB?.ToLower() == "topmar_topmark") {
                                             List<colour> topmarkColours = null;
 
@@ -516,12 +850,17 @@ namespace S100Framework.Applications
                                             instance.topmark = topmark;
                                         }
                                         else if (plfrel.PLTS_Frel.DEST_SUB?.ToLower() == "rtpbcn_radartransponderbeacon") {
-                                            var radarTransponderBeacon = CreateRadarTransponderbeacon(relatedAidsToNavigationP, insert, buffer, feature, tableName, convertedCount);
+                                            var radarTransponderBeacon = CreateRadarTransponderbeacon(relatedAidsToNavigationP, insert, buffer, feature, tableName, convertedCount, featureClass);
                                             var rel = new CardinalBeacon.StructureEquipment_theEquipment();
                                             rel.RefIds = [new RefId {
                                                 Role = nameof(Role.theStructure),
                                                 Type = radarTransponderBeacon?.type,
                                                 Value = radarTransponderBeacon?.name,
+                                                },
+                                            new RefId {
+                                                Role = nameof(Role.theEquipment),
+                                                Type = nameof(instance),
+                                                Value = structureName,
                                                 }];
                                             informationAssociationBuffer["ps"] = ps101;
                                             informationAssociationBuffer["code"] = rel.GetType().Name;
@@ -710,19 +1049,23 @@ namespace S100Framework.Applications
                                         //relatedAidsToNavigationP
                                         if (plfrel.PLTS_Frel.DEST_SUB?.ToLower() == "lights_light") {
                                             var light = CreateLight(relatedAidsToNavigationP, insert, buffer, feature, tableName, convertedCount, featureClass);
-                                            var rel = new IsolatedDangerBeacon.StructureEquipment_theEquipment();
-                                            rel.RefIds = [new RefId {
+                                                var rel = new IsolatedDangerBeacon.StructureEquipment_theEquipment();
+                                                rel.RefIds = [new RefId {
                                                 Role = nameof(Role.theStructure),
                                                 Type = light?.type,
                                                 Value = light?.name,
+                                                },
+                                            new RefId {
+                                                Role = nameof(Role.theEquipment),
+                                                Type = nameof(instance),
+                                                Value = structureName,
                                                 }];
 
-                                            informationAssociationBuffer["ps"] = ps101;
-                                            informationAssociationBuffer["code"] = rel.GetType().Name;
-                                            informationAssociationBuffer["json"] = System.Text.Json.JsonSerializer.Serialize(rel, jsonSerializerOptions);
-                                            informationAssociationInsert.Insert(informationAssociationBuffer);
-
-                                        }
+                                                informationAssociationBuffer["ps"] = ps101;
+                                                informationAssociationBuffer["code"] = rel.GetType().Name;
+                                                informationAssociationBuffer["json"] = System.Text.Json.JsonSerializer.Serialize(rel, jsonSerializerOptions);
+                                                informationAssociationInsert.Insert(informationAssociationBuffer);
+                                            }
 
                                         else if (plfrel.PLTS_Frel.DEST_SUB?.ToLower() == "topmar_topmark") {
                                             List<colour> topmarkColours = null;
@@ -758,12 +1101,17 @@ namespace S100Framework.Applications
 
                                         }
                                         else if (plfrel.PLTS_Frel.DEST_SUB?.ToLower() == "rtpbcn_radartransponderbeacon") {
-                                            var radarTransponderBeacon = CreateRadarTransponderbeacon(relatedAidsToNavigationP, insert, buffer, feature, tableName, convertedCount);
+                                            var radarTransponderBeacon = CreateRadarTransponderbeacon(relatedAidsToNavigationP, insert, buffer, feature, tableName, convertedCount, featureClass);
                                             var rel = new IsolatedDangerBeacon.StructureEquipment_theEquipment();
                                             rel.RefIds = [new RefId {
                                                 Role = nameof(Role.theStructure),
                                                 Type = radarTransponderBeacon?.type,
                                                 Value = radarTransponderBeacon?.name,
+                                                },
+                                            new RefId {
+                                                Role = nameof(Role.theEquipment),
+                                                Type = nameof(instance),
+                                                Value = structureName,
                                                 }];
                                             informationAssociationBuffer["ps"] = ps101;
                                             informationAssociationBuffer["code"] = rel.GetType().Name;
@@ -955,18 +1303,24 @@ namespace S100Framework.Applications
                                         //relatedAidsToNavigationP
                                         if (plfrel.PLTS_Frel.DEST_SUB?.ToLower() == "lights_light") {
                                             var light = CreateLight(relatedAidsToNavigationP, insert, buffer, feature, tableName, convertedCount, featureClass);
-                                            var rel = new LateralBeacon.StructureEquipment_theEquipment();
-                                            rel.RefIds = [new RefId {
+
+                                                var rel = new LateralBeacon.StructureEquipment_theEquipment();
+                                                rel.RefIds = [new RefId {
                                                 Role = nameof(Role.theStructure),
                                                 Type = light?.type,
                                                 Value = light?.name,
+                                                },
+                                            new RefId {
+                                                Role = nameof(Role.theEquipment),
+                                                Type = nameof(instance),
+                                                Value = structureName,
                                                 }];
 
-                                            informationAssociationBuffer["ps"] = ps101;
-                                            informationAssociationBuffer["code"] = rel.GetType().Name;
-                                            informationAssociationBuffer["json"] = System.Text.Json.JsonSerializer.Serialize(rel, jsonSerializerOptions);
-                                            informationAssociationInsert.Insert(informationAssociationBuffer);
-                                        }
+                                                informationAssociationBuffer["ps"] = ps101;
+                                                informationAssociationBuffer["code"] = rel.GetType().Name;
+                                                informationAssociationBuffer["json"] = System.Text.Json.JsonSerializer.Serialize(rel, jsonSerializerOptions);
+                                                informationAssociationInsert.Insert(informationAssociationBuffer);
+                                            }
 
                                         else if (plfrel.PLTS_Frel.DEST_SUB?.ToLower() == "topmar_topmark") {
                                             List<colour> topmarkColours = null;
@@ -1001,12 +1355,17 @@ namespace S100Framework.Applications
                                             instance.topmark = topmark;
                                         }
                                         else if (plfrel.PLTS_Frel.DEST_SUB?.ToLower() == "rtpbcn_radartransponderbeacon") {
-                                            var radarTransponderBeacon = CreateRadarTransponderbeacon(relatedAidsToNavigationP, insert, buffer, feature, tableName, convertedCount);
+                                            var radarTransponderBeacon = CreateRadarTransponderbeacon(relatedAidsToNavigationP, insert, buffer, feature, tableName, convertedCount, featureClass);
                                             var rel = new LateralBeacon.StructureEquipment_theEquipment();
                                             rel.RefIds = [new RefId {
                                                 Role = nameof(Role.theStructure),
                                                 Type = radarTransponderBeacon?.type,
                                                 Value = radarTransponderBeacon?.name,
+                                                },
+                                            new RefId {
+                                                Role = nameof(Role.theEquipment),
+                                                Type = nameof(instance),
+                                                Value = structureName,
                                                 }];
                                             informationAssociationBuffer["ps"] = ps101;
                                             informationAssociationBuffer["code"] = rel.GetType().Name;
@@ -1187,20 +1546,24 @@ namespace S100Framework.Applications
                                         //relatedAidsToNavigationP
                                         if (plfrel.PLTS_Frel.DEST_SUB?.ToLower() == "lights_light") {
                                             var light = CreateLight(relatedAidsToNavigationP, insert, buffer, feature, tableName, convertedCount, featureClass);
-                                            var rel = new SafeWaterBeacon.StructureEquipment_theEquipment();
-                                            rel.RefIds = [new RefId {
+
+                                                var rel = new SafeWaterBeacon.StructureEquipment_theEquipment();
+                                                rel.RefIds = [new RefId {
                                                 Role = nameof(Role.theStructure),
                                                 Type = light?.type,
                                                 Value = light?.name,
+                                                },
+                                            new RefId {
+                                                Role = nameof(Role.theEquipment),
+                                                Type = nameof(instance),
+                                                Value = structureName,
                                                 }];
 
-                                            informationAssociationBuffer["ps"] = ps101;
-                                            informationAssociationBuffer["code"] = rel.GetType().Name;
-                                            informationAssociationBuffer["json"] = System.Text.Json.JsonSerializer.Serialize(rel, jsonSerializerOptions);
-                                            informationAssociationInsert.Insert(informationAssociationBuffer);
-
-
-                                        }
+                                                informationAssociationBuffer["ps"] = ps101;
+                                                informationAssociationBuffer["code"] = rel.GetType().Name;
+                                                informationAssociationBuffer["json"] = System.Text.Json.JsonSerializer.Serialize(rel, jsonSerializerOptions);
+                                                informationAssociationInsert.Insert(informationAssociationBuffer);
+                                            }
 
                                         else if (plfrel.PLTS_Frel.DEST_SUB?.ToLower() == "topmar_topmark") {
                                             List<colour> topmarkColours = null;
@@ -1235,12 +1598,17 @@ namespace S100Framework.Applications
                                             instance.topmark = topmark;
                                         }
                                         else if (plfrel.PLTS_Frel.DEST_SUB?.ToLower() == "rtpbcn_radartransponderbeacon") {
-                                            var radarTransponderBeacon = CreateRadarTransponderbeacon(relatedAidsToNavigationP, insert, buffer, feature, tableName, convertedCount);
+                                            var radarTransponderBeacon = CreateRadarTransponderbeacon(relatedAidsToNavigationP, insert, buffer, feature, tableName, convertedCount, featureClass);
                                             var rel = new SafeWaterBeacon.StructureEquipment_theEquipment();
                                             rel.RefIds = [new RefId {
                                                 Role = nameof(Role.theStructure),
                                                 Type = radarTransponderBeacon?.type,
                                                 Value = radarTransponderBeacon?.name,
+                                                },
+                                            new RefId {
+                                                Role = nameof(Role.theEquipment),
+                                                Type = nameof(instance),
+                                                Value = structureName,
                                                 }];
                                             informationAssociationBuffer["ps"] = ps101;
                                             informationAssociationBuffer["code"] = rel.GetType().Name;
@@ -1435,19 +1803,24 @@ namespace S100Framework.Applications
                                         //relatedAidsToNavigationP
                                         if (plfrel.PLTS_Frel.DEST_SUB?.ToLower() == "lights_light") {
                                             var light = CreateLight(relatedAidsToNavigationP, insert, buffer, feature, tableName, convertedCount, featureClass);
-                                            var rel = new SpecialPurposeGeneralBeacon.StructureEquipment_theEquipment();
-                                            rel.RefIds = [new RefId {
+
+                                                var rel = new SpecialPurposeGeneralBeacon.StructureEquipment_theEquipment();
+                                                rel.RefIds = [new RefId {
                                                 Role = nameof(Role.theStructure),
                                                 Type = light?.type,
                                                 Value = light?.name,
+                                                },
+                                            new RefId {
+                                                Role = nameof(Role.theEquipment),
+                                                Type = nameof(instance),
+                                                Value = structureName,
                                                 }];
 
-                                            informationAssociationBuffer["ps"] = ps101;
-                                            informationAssociationBuffer["code"] = rel.GetType().Name;
-                                            informationAssociationBuffer["json"] = System.Text.Json.JsonSerializer.Serialize(rel, jsonSerializerOptions);
-                                            informationAssociationInsert.Insert(informationAssociationBuffer);
-                                        }
-
+                                                informationAssociationBuffer["ps"] = ps101;
+                                                informationAssociationBuffer["code"] = rel.GetType().Name;
+                                                informationAssociationBuffer["json"] = System.Text.Json.JsonSerializer.Serialize(rel, jsonSerializerOptions);
+                                                informationAssociationInsert.Insert(informationAssociationBuffer);
+                                            }
                                         else if (plfrel.PLTS_Frel.DEST_SUB?.ToLower() == "topmar_topmark") {
                                             List<colour> topmarkColours = null;
 
@@ -1481,12 +1854,17 @@ namespace S100Framework.Applications
                                             instance.topmark = topmark;
                                         }
                                         else if (plfrel.PLTS_Frel.DEST_SUB?.ToLower() == "rtpbcn_radartransponderbeacon") {
-                                            var radarTransponderBeacon = CreateRadarTransponderbeacon(relatedAidsToNavigationP, insert, buffer, feature, tableName, convertedCount);
+                                            var radarTransponderBeacon = CreateRadarTransponderbeacon(relatedAidsToNavigationP, insert, buffer, feature, tableName, convertedCount, featureClass);
                                             var rel = new SpecialPurposeGeneralBeacon.StructureEquipment_theEquipment();
                                             rel.RefIds = [new RefId {
                                                 Role = nameof(Role.theStructure),
                                                 Type = radarTransponderBeacon?.type,
                                                 Value = radarTransponderBeacon?.name,
+                                                },
+                                            new RefId {
+                                                Role = nameof(Role.theEquipment),
+                                                Type = nameof(instance),
+                                                Value = structureName,
                                                 }];
                                             informationAssociationBuffer["ps"] = ps101;
                                             informationAssociationBuffer["code"] = rel.GetType().Name;
@@ -1512,7 +1890,6 @@ namespace S100Framework.Applications
                         break;
                     case 25: { // BOYCAR_BuoyCardinal
                             var instance = new CardinalBuoy();
-
                             #region aidstonavigation
 
 
@@ -1642,19 +2019,24 @@ namespace S100Framework.Applications
                                         //relatedAidsToNavigationP
                                         if (plfrel.PLTS_Frel.DEST_SUB?.ToLower() == "lights_light") {
                                             var light = CreateLight(relatedAidsToNavigationP, insert, buffer, feature, tableName, convertedCount, featureClass);
-                                            var rel = new CardinalBuoy.StructureEquipment_theEquipment();
-                                            rel.RefIds = [new RefId {
+
+                                                var rel = new CardinalBuoy.StructureEquipment_theEquipment();
+                                                rel.RefIds = [new RefId {
                                                 Role = nameof(Role.theStructure),
                                                 Type = light?.type,
                                                 Value = light?.name,
+                                                },
+                                            new RefId {
+                                                Role = nameof(Role.theEquipment),
+                                                Type = nameof(instance),
+                                                Value = structureName,
                                                 }];
 
-                                            informationAssociationBuffer["ps"] = ps101;
-                                            informationAssociationBuffer["code"] = rel.GetType().Name;
-                                            informationAssociationBuffer["json"] = System.Text.Json.JsonSerializer.Serialize(rel, jsonSerializerOptions);
-                                            informationAssociationInsert.Insert(informationAssociationBuffer);
-
-                                        }
+                                                informationAssociationBuffer["ps"] = ps101;
+                                                informationAssociationBuffer["code"] = rel.GetType().Name;
+                                                informationAssociationBuffer["json"] = System.Text.Json.JsonSerializer.Serialize(rel, jsonSerializerOptions);
+                                                informationAssociationInsert.Insert(informationAssociationBuffer);
+                                            }
 
                                         else if (plfrel.PLTS_Frel.DEST_SUB?.ToLower() == "topmar_topmark") {
                                             List<colour> topmarkColours = null;
@@ -1689,12 +2071,17 @@ namespace S100Framework.Applications
                                             instance.topmark = topmark;
                                         }
                                         else if (plfrel.PLTS_Frel.DEST_SUB?.ToLower() == "rtpbcn_radartransponderbeacon") {
-                                            var radarTransponderBeacon = CreateRadarTransponderbeacon(relatedAidsToNavigationP, insert, buffer, feature, tableName, convertedCount);
+                                            var radarTransponderBeacon = CreateRadarTransponderbeacon(relatedAidsToNavigationP, insert, buffer, feature, tableName, convertedCount, featureClass);
                                             var rel = new CardinalBuoy.StructureEquipment_theEquipment();
                                             rel.RefIds = [new RefId {
                                                 Role = nameof(Role.theStructure),
                                                 Type = radarTransponderBeacon?.type,
                                                 Value = radarTransponderBeacon?.name,
+                                                },
+                                            new RefId {
+                                                Role = nameof(Role.theEquipment),
+                                                Type = nameof(instance),
+                                                Value = structureName,
                                                 }];
                                             informationAssociationBuffer["ps"] = ps101;
                                             informationAssociationBuffer["code"] = rel.GetType().Name;
@@ -1720,7 +2107,6 @@ namespace S100Framework.Applications
                         break;
                     case 30: { // BOYINB_BuoyInstallation
                             var instance = new InstallationBuoy();
-
                             #region aidstonavigation
                             if (current.BOYSHP.HasValue) {
                                 if (current.BOYSHP.Value == -32767)
@@ -1849,29 +2235,40 @@ namespace S100Framework.Applications
                                         //relatedAidsToNavigationP
                                         if (plfrel.PLTS_Frel.DEST_SUB?.ToLower() == "lights_light") {
                                             var light = CreateLight(relatedAidsToNavigationP, insert, buffer, feature, tableName, convertedCount, featureClass);
-                                            var rel = new InstallationBuoy.StructureEquipment_theEquipment();
-                                            rel.RefIds = [new RefId {
+
+                                                var rel = new InstallationBuoy.StructureEquipment_theEquipment();
+                                                rel.RefIds = [new RefId {
                                                 Role = nameof(Role.theStructure),
                                                 Type = light?.type,
                                                 Value = light?.name,
+                                                },
+                                            new RefId {
+                                                Role = nameof(Role.theEquipment),
+                                                Type = nameof(instance),
+                                                Value = structureName,
                                                 }];
 
-                                            informationAssociationBuffer["ps"] = ps101;
-                                            informationAssociationBuffer["code"] = rel.GetType().Name;
-                                            informationAssociationBuffer["json"] = System.Text.Json.JsonSerializer.Serialize(rel, jsonSerializerOptions);
-                                            informationAssociationInsert.Insert(informationAssociationBuffer);
+                                                informationAssociationBuffer["ps"] = ps101;
+                                                informationAssociationBuffer["code"] = rel.GetType().Name;
+                                                informationAssociationBuffer["json"] = System.Text.Json.JsonSerializer.Serialize(rel, jsonSerializerOptions);
+                                                informationAssociationInsert.Insert(informationAssociationBuffer);
 
-
-                                        }
+                                            }
 
                                         else if (plfrel.PLTS_Frel.DEST_SUB?.ToLower() == "rtpbcn_radartransponderbeacon") {
-                                            var radarTransponderBeacon = CreateRadarTransponderbeacon(relatedAidsToNavigationP, insert, buffer, feature, tableName, convertedCount);
+                                            var radarTransponderBeacon = CreateRadarTransponderbeacon(relatedAidsToNavigationP, insert, buffer, feature, tableName, convertedCount, featureClass);
                                             var rel = new InstallationBuoy.StructureEquipment_theEquipment();
                                             rel.RefIds = [new RefId {
                                                 Role = nameof(Role.theStructure),
                                                 Type = radarTransponderBeacon?.type,
                                                 Value = radarTransponderBeacon?.name,
+                                                },
+                                            new RefId {
+                                                Role = nameof(Role.theEquipment),
+                                                Type = nameof(instance),
+                                                Value = structureName,
                                                 }];
+
                                             informationAssociationBuffer["ps"] = ps101;
                                             informationAssociationBuffer["code"] = rel.GetType().Name;
                                             informationAssociationBuffer["json"] = System.Text.Json.JsonSerializer.Serialize(rel, jsonSerializerOptions);
@@ -1892,13 +2289,10 @@ namespace S100Framework.Applications
                                 }
                             }
                             #endregion related
-
-
                         }
                         break;
                     case 35: { // BOYISD_BuoyIsolatedDanger
                             var instance = new IsolatedDangerBuoy();
-
                             #region aidstonavigation
                             if (plts_comp_scale != default) {
                                 instance.scaleMinimum = plts_comp_scale;
@@ -2015,20 +2409,24 @@ namespace S100Framework.Applications
                                         //relatedAidsToNavigationP
                                         if (plfrel.PLTS_Frel.DEST_SUB?.ToLower() == "lights_light") {
                                             var light = CreateLight(relatedAidsToNavigationP, insert, buffer, feature, tableName, convertedCount, featureClass);
-                                            var rel = new IsolatedDangerBuoy.StructureEquipment_theEquipment();
-                                            rel.RefIds = [new RefId {
+
+                                                var rel = new IsolatedDangerBuoy.StructureEquipment_theEquipment();
+                                                rel.RefIds = [new RefId {
                                                 Role = nameof(Role.theStructure),
                                                 Type = light?.type,
                                                 Value = light?.name,
+                                                },
+                                            new RefId {
+                                                Role = nameof(Role.theEquipment),
+                                                Type = nameof(instance),
+                                                Value = structureName,
                                                 }];
 
-                                            informationAssociationBuffer["ps"] = ps101;
-                                            informationAssociationBuffer["code"] = rel.GetType().Name;
-                                            informationAssociationBuffer["json"] = System.Text.Json.JsonSerializer.Serialize(rel, jsonSerializerOptions);
-                                            informationAssociationInsert.Insert(informationAssociationBuffer);
-
-
-                                        }
+                                                informationAssociationBuffer["ps"] = ps101;
+                                                informationAssociationBuffer["code"] = rel.GetType().Name;
+                                                informationAssociationBuffer["json"] = System.Text.Json.JsonSerializer.Serialize(rel, jsonSerializerOptions);
+                                                informationAssociationInsert.Insert(informationAssociationBuffer);
+                                            }
 
                                         else if (plfrel.PLTS_Frel.DEST_SUB?.ToLower() == "topmar_topmark") {
                                             List<colour> topmarkColours = null;
@@ -2063,13 +2461,19 @@ namespace S100Framework.Applications
                                             instance.topmark = topmark;
                                         }
                                         else if (plfrel.PLTS_Frel.DEST_SUB?.ToLower() == "rtpbcn_radartransponderbeacon") {
-                                            var radarTransponderBeacon = CreateRadarTransponderbeacon(relatedAidsToNavigationP, insert, buffer, feature, tableName, convertedCount);
+                                            var radarTransponderBeacon = CreateRadarTransponderbeacon(relatedAidsToNavigationP, insert, buffer, feature, tableName, convertedCount, featureClass);
                                             var rel = new IsolatedDangerBuoy.StructureEquipment_theEquipment();
                                             rel.RefIds = [new RefId {
                                                 Role = nameof(Role.theStructure),
                                                 Type = radarTransponderBeacon?.type,
                                                 Value = radarTransponderBeacon?.name,
+                                                },
+                                            new RefId {
+                                                Role = nameof(Role.theEquipment),
+                                                Type = nameof(instance),
+                                                Value = structureName,
                                                 }];
+
                                             informationAssociationBuffer["ps"] = ps101;
                                             informationAssociationBuffer["code"] = rel.GetType().Name;
                                             informationAssociationBuffer["json"] = System.Text.Json.JsonSerializer.Serialize(rel, jsonSerializerOptions);
@@ -2217,8 +2621,8 @@ namespace S100Framework.Applications
                                         //relatedAidsToNavigationP
                                         if (plfrel.PLTS_Frel.DEST_SUB?.ToLower() == "lights_light") {
                                             var light = CreateLight(relatedAidsToNavigationP, insert, buffer, feature, tableName, convertedCount, featureClass);
-                                            var rel = new LateralBuoy.StructureEquipment_theEquipment();
-                                            rel.RefIds = [new RefId {
+                                                var rel = new LateralBuoy.StructureEquipment_theEquipment();
+                                                rel.RefIds = [new RefId {
                                                 Role = nameof(Role.theStructure),
                                                 Type = light?.type,
                                                 Value = light?.name,
@@ -2229,13 +2633,11 @@ namespace S100Framework.Applications
                                                 Value = structureName,
                                                 }];
 
-                                            informationAssociationBuffer["ps"] = ps101;
-                                            informationAssociationBuffer["code"] = rel.GetType().Name;
-                                            informationAssociationBuffer["json"] = System.Text.Json.JsonSerializer.Serialize(rel, jsonSerializerOptions);
-                                            informationAssociationInsert.Insert(informationAssociationBuffer);
-
-
-                                        }
+                                                informationAssociationBuffer["ps"] = ps101;
+                                                informationAssociationBuffer["code"] = rel.GetType().Name;
+                                                informationAssociationBuffer["json"] = System.Text.Json.JsonSerializer.Serialize(rel, jsonSerializerOptions);
+                                                informationAssociationInsert.Insert(informationAssociationBuffer);
+                                            }
 
                                         else if (plfrel.PLTS_Frel.DEST_SUB?.ToLower() == "topmar_topmark") {
                                             List<colour> topmarkColours = null;
@@ -2270,14 +2672,19 @@ namespace S100Framework.Applications
                                             instance.topmark = topmark;
                                         }
                                         else if (plfrel.PLTS_Frel.DEST_SUB?.ToLower() == "rtpbcn_radartransponderbeacon") {
-                                            var radarTransponderBeacon = CreateRadarTransponderbeacon(relatedAidsToNavigationP, insert, buffer, feature, tableName, convertedCount);
+                                            var radarTransponderBeacon = CreateRadarTransponderbeacon(relatedAidsToNavigationP, insert, buffer, feature, tableName, convertedCount, featureClass);
                                             var rel = new LateralBuoy.StructureEquipment_theEquipment();
                                             rel.RefIds = [new RefId {
                                                 Role = nameof(Role.theStructure),
                                                 Type = radarTransponderBeacon?.type,
                                                 Value = radarTransponderBeacon?.name,
-                                                }];
-                                            informationAssociationBuffer["ps"] = ps101;
+                                                },
+                                            new RefId {
+                                                Role = nameof(Role.theEquipment),
+                                                Type = nameof(instance),
+                                                Value = structureName,
+                                            }];
+                                        informationAssociationBuffer["ps"] = ps101;
                                             informationAssociationBuffer["code"] = rel.GetType().Name;
                                             informationAssociationBuffer["json"] = System.Text.Json.JsonSerializer.Serialize(rel, jsonSerializerOptions);
                                             informationAssociationInsert.Insert(informationAssociationBuffer);
@@ -2428,20 +2835,25 @@ namespace S100Framework.Applications
                                         //relatedAidsToNavigationP
                                         if (plfrel.PLTS_Frel.DEST_SUB?.ToLower() == "lights_light") {
                                             var light = CreateLight(relatedAidsToNavigationP, insert, buffer, feature, tableName, convertedCount, featureClass);
-                                            var rel = new SafeWaterBuoy.StructureEquipment_theEquipment();
-                                            rel.RefIds = [new RefId {
+
+                                                var rel = new SafeWaterBuoy.StructureEquipment_theEquipment();
+                                                rel.RefIds = [new RefId {
                                                 Role = nameof(Role.theStructure),
                                                 Type = light?.type,
                                                 Value = light?.name,
-                                                }];
+                                                },
+                                            new RefId {
+                                                Role = nameof(Role.theEquipment),
+                                                Type = nameof(instance),
+                                                Value = structureName,
+                                            }];
 
-                                            informationAssociationBuffer["ps"] = ps101;
-                                            informationAssociationBuffer["code"] = rel.GetType().Name;
-                                            informationAssociationBuffer["json"] = System.Text.Json.JsonSerializer.Serialize(rel, jsonSerializerOptions);
-                                            informationAssociationInsert.Insert(informationAssociationBuffer);
+                                                informationAssociationBuffer["ps"] = ps101;
+                                                informationAssociationBuffer["code"] = rel.GetType().Name;
+                                                informationAssociationBuffer["json"] = System.Text.Json.JsonSerializer.Serialize(rel, jsonSerializerOptions);
+                                                informationAssociationInsert.Insert(informationAssociationBuffer);
 
-
-                                        }
+                                            }
 
                                         else if (plfrel.PLTS_Frel.DEST_SUB?.ToLower() == "topmar_topmark") {
                                             List<colour> topmarkColours = null;
@@ -2476,12 +2888,17 @@ namespace S100Framework.Applications
                                             instance.topmark = topmark;
                                         }
                                         else if (plfrel.PLTS_Frel.DEST_SUB?.ToLower() == "rtpbcn_radartransponderbeacon") {
-                                            var radarTransponderBeacon = CreateRadarTransponderbeacon(relatedAidsToNavigationP, insert, buffer, feature, tableName, convertedCount);
+                                            var radarTransponderBeacon = CreateRadarTransponderbeacon(relatedAidsToNavigationP, insert, buffer, feature, tableName, convertedCount, featureClass);
                                             var rel = new SafeWaterBuoy.StructureEquipment_theEquipment();
                                             rel.RefIds = [new RefId {
                                                 Role = nameof(Role.theStructure),
                                                 Type = radarTransponderBeacon?.type,
                                                 Value = radarTransponderBeacon?.name,
+                                                },
+                                            new RefId {
+                                                Role = nameof(Role.theEquipment),
+                                                Type = nameof(instance),
+                                                Value = structureName,
                                                 }];
                                             informationAssociationBuffer["ps"] = ps101;
                                             informationAssociationBuffer["code"] = rel.GetType().Name;
@@ -2630,18 +3047,24 @@ namespace S100Framework.Applications
                                         //relatedAidsToNavigationP
                                         if (plfrel.PLTS_Frel.DEST_SUB?.ToLower() == "lights_light") {
                                             var light = CreateLight(relatedAidsToNavigationP, insert, buffer, feature, tableName, convertedCount, featureClass);
-                                            var rel = new SpecialPurposeGeneralBuoy.StructureEquipment_theEquipment();
-                                            rel.RefIds = [new RefId {
+
+                                                var rel = new SpecialPurposeGeneralBuoy.StructureEquipment_theEquipment();
+                                                rel.RefIds = [new RefId {
                                                 Role = nameof(Role.theStructure),
                                                 Type = light?.type,
                                                 Value = light?.name,
+                                                 },
+                                            new RefId {
+                                                Role = nameof(Role.theEquipment),
+                                                Type = nameof(instance),
+                                                Value = structureName,
                                                 }];
 
-                                            informationAssociationBuffer["ps"] = ps101;
-                                            informationAssociationBuffer["code"] = rel.GetType().Name;
-                                            informationAssociationBuffer["json"] = System.Text.Json.JsonSerializer.Serialize(rel, jsonSerializerOptions);
-                                            informationAssociationInsert.Insert(informationAssociationBuffer);
-                                        }
+                                                informationAssociationBuffer["ps"] = ps101;
+                                                informationAssociationBuffer["code"] = rel.GetType().Name;
+                                                informationAssociationBuffer["json"] = System.Text.Json.JsonSerializer.Serialize(rel, jsonSerializerOptions);
+                                                informationAssociationInsert.Insert(informationAssociationBuffer);
+                                            }
 
                                         else if (plfrel.PLTS_Frel.DEST_SUB?.ToLower() == "topmar_topmark") {
                                             List<colour> topmarkColours = null;
@@ -2676,12 +3099,17 @@ namespace S100Framework.Applications
                                             instance.topmark = topmark;
                                         }
                                         else if (plfrel.PLTS_Frel.DEST_SUB?.ToLower() == "rtpbcn_radartransponderbeacon") {
-                                            var radarTransponderBeacon = CreateRadarTransponderbeacon(relatedAidsToNavigationP, insert, buffer, feature, tableName, convertedCount);
+                                            var radarTransponderBeacon = CreateRadarTransponderbeacon(relatedAidsToNavigationP, insert, buffer, feature, tableName, convertedCount, featureClass);
                                             var rel = new SpecialPurposeGeneralBuoy.StructureEquipment_theEquipment();
                                             rel.RefIds = [new RefId {
                                                 Role = nameof(Role.theStructure),
                                                 Type = radarTransponderBeacon?.type,
                                                 Value = radarTransponderBeacon?.name,
+                                                },
+                                            new RefId {
+                                                Role = nameof(Role.theEquipment),
+                                                Type = nameof(instance),
+                                                Value = structureName,
                                                 }];
                                             informationAssociationBuffer["ps"] = ps101;
                                             informationAssociationBuffer["code"] = rel.GetType().Name;
@@ -2830,28 +3258,37 @@ namespace S100Framework.Applications
                                         //relatedAidsToNavigationP
                                         if (plfrel.PLTS_Frel.DEST_SUB?.ToLower() == "lights_light") {
                                             var light = CreateLight(relatedAidsToNavigationP, insert, buffer, feature, tableName, convertedCount, featureClass);
-                                            var rel = new Daymark.StructureEquipment_theEquipment();
-                                            rel.RefIds = [new RefId {
+                                                var rel = new Daymark.StructureEquipment_theEquipment();
+                                                rel.RefIds = [new RefId {
                                                 Role = nameof(Role.theStructure),
                                                 Type = light?.type,
                                                 Value = light?.name,
+                                                 },
+                                            new RefId {
+                                                Role = nameof(Role.theEquipment),
+                                                Type = nameof(instance),
+                                                Value = structureName,
                                                 }];
 
-                                            informationAssociationBuffer["ps"] = ps101;
-                                            informationAssociationBuffer["code"] = rel.GetType().Name;
-                                            informationAssociationBuffer["json"] = System.Text.Json.JsonSerializer.Serialize(rel, jsonSerializerOptions);
-                                            informationAssociationInsert.Insert(informationAssociationBuffer);
+                                                informationAssociationBuffer["ps"] = ps101;
+                                                informationAssociationBuffer["code"] = rel.GetType().Name;
+                                                informationAssociationBuffer["json"] = System.Text.Json.JsonSerializer.Serialize(rel, jsonSerializerOptions);
+                                                informationAssociationInsert.Insert(informationAssociationBuffer);
 
-
-                                        }
+                                            }
 
                                         else if (plfrel.PLTS_Frel.DEST_SUB?.ToLower() == "rtpbcn_radartransponderbeacon") {
-                                            var radarTransponderBeacon = CreateRadarTransponderbeacon(relatedAidsToNavigationP, insert, buffer, feature, tableName, convertedCount);
+                                            var radarTransponderBeacon = CreateRadarTransponderbeacon(relatedAidsToNavigationP, insert, buffer, feature, tableName, convertedCount, featureClass);
                                             var rel = new Daymark.StructureEquipment_theEquipment();
                                             rel.RefIds = [new RefId {
                                                 Role = nameof(Role.theStructure),
                                                 Type = radarTransponderBeacon?.type,
                                                 Value = radarTransponderBeacon?.name,
+                                                 },
+                                            new RefId {
+                                                Role = nameof(Role.theEquipment),
+                                                Type = nameof(instance),
+                                                Value = structureName,
                                                 }];
                                             informationAssociationBuffer["ps"] = ps101;
                                             informationAssociationBuffer["code"] = rel.GetType().Name;
@@ -2873,8 +3310,6 @@ namespace S100Framework.Applications
                                 }
                             }
                             #endregion related
-
-
 
                         }
                         break;
@@ -2997,7 +3432,7 @@ namespace S100Framework.Applications
 
                                         else if (plfrel.PLTS_Frel.DEST_SUB?.ToLower() == "rtpbcn_radartransponderbeacon") {
                                             // TODO: Build rtpbcn_radartransponderbeacon
-                                            var radarTransponderBeacon = CreateRadarTransponderbeacon(relatedAidsToNavigationP, insert, buffer, feature, tableName, convertedCount);
+                                            var radarTransponderBeacon = CreateRadarTransponderbeacon(relatedAidsToNavigationP, insert, buffer, feature, tableName, convertedCount, featureClass);
                                             //var rel = new FogSignal.StructureEquipment_theStructure();
                                             //rel.RefIds = [new RefId {
                                             //    Role = nameof(Role.theStructure),
@@ -3024,8 +3459,6 @@ namespace S100Framework.Applications
                                 }
                             }
                             #endregion related
-
-
                         }
                         break;
                     case 65: { // LIGHTS_Light // SLAVE RIND: 2
@@ -3156,20 +3589,24 @@ namespace S100Framework.Applications
                                         //relatedAidsToNavigationP
                                         if (plfrel.PLTS_Frel.DEST_SUB?.ToLower() == "lights_light") {
                                             var light = CreateLight(relatedAidsToNavigationP, insert, buffer, feature, tableName, convertedCount, featureClass);
-                                            var rel = new LightFloat.StructureEquipment_theEquipment();
-                                            rel.RefIds = [new RefId {
+
+                                                var rel = new LightFloat.StructureEquipment_theEquipment();
+                                                rel.RefIds = [new RefId {
                                                 Role = nameof(Role.theStructure),
                                                 Type = light?.type,
                                                 Value = light?.name,
+                                                 },
+                                            new RefId {
+                                                Role = nameof(Role.theEquipment),
+                                                Type = nameof(instance),
+                                                Value = structureName,
                                                 }];
 
-                                            informationAssociationBuffer["ps"] = ps101;
-                                            informationAssociationBuffer["code"] = rel.GetType().Name;
-                                            informationAssociationBuffer["json"] = System.Text.Json.JsonSerializer.Serialize(rel, jsonSerializerOptions);
-                                            informationAssociationInsert.Insert(informationAssociationBuffer);
-
-
-                                        }
+                                                informationAssociationBuffer["ps"] = ps101;
+                                                informationAssociationBuffer["code"] = rel.GetType().Name;
+                                                informationAssociationBuffer["json"] = System.Text.Json.JsonSerializer.Serialize(rel, jsonSerializerOptions);
+                                                informationAssociationInsert.Insert(informationAssociationBuffer);
+                                            }
 
                                         else if (plfrel.PLTS_Frel.DEST_SUB?.ToLower() == "topmar_topmark") {
                                             List<colour> topmarkColours = new();
@@ -3199,12 +3636,17 @@ namespace S100Framework.Applications
 
                                         }
                                         else if (plfrel.PLTS_Frel.DEST_SUB?.ToLower() == "rtpbcn_radartransponderbeacon") {
-                                            var radarTransponderBeacon = CreateRadarTransponderbeacon(relatedAidsToNavigationP, insert, buffer, feature, tableName, convertedCount);
+                                            var radarTransponderBeacon = CreateRadarTransponderbeacon(relatedAidsToNavigationP, insert, buffer, feature, tableName, convertedCount, featureClass);
                                             var rel = new LightFloat.StructureEquipment_theEquipment();
                                             rel.RefIds = [new RefId {
                                                 Role = nameof(Role.theStructure),
                                                 Type = radarTransponderBeacon?.type,
                                                 Value = radarTransponderBeacon?.name,
+                                                 },
+                                            new RefId {
+                                                Role = nameof(Role.theEquipment),
+                                                Type = nameof(instance),
+                                                Value = structureName,
                                                 }];
                                             informationAssociationBuffer["ps"] = ps101;
                                             informationAssociationBuffer["code"] = rel.GetType().Name;
@@ -3368,7 +3810,7 @@ namespace S100Framework.Applications
 
                                         else if (plfrel.PLTS_Frel.DEST_SUB?.ToLower() == "rtpbcn_radartransponderbeacon") {
                                             // TODO: Build rtpbcn_radartransponderbeacon
-                                            var radarTransponderBeacon = CreateRadarTransponderbeacon(relatedAidsToNavigationP, insert, buffer, feature, tableName, convertedCount);
+                                            var radarTransponderBeacon = CreateRadarTransponderbeacon(relatedAidsToNavigationP, insert, buffer, feature, tableName, convertedCount, featureClass);
 
                                             // TODO: create relation
                                         }
@@ -3507,7 +3949,7 @@ namespace S100Framework.Applications
 
                                         else if (plfrel.PLTS_Frel.DEST_SUB?.ToLower() == "rtpbcn_radartransponderbeacon") {
                                             // TODO: Build rtpbcn_radartransponderbeacon
-                                            var radarTransponderBeacon = CreateRadarTransponderbeacon(relatedAidsToNavigationP, insert, buffer, feature, tableName, convertedCount);
+                                            var radarTransponderBeacon = CreateRadarTransponderbeacon(relatedAidsToNavigationP, insert, buffer, feature, tableName, convertedCount, featureClass);
 
                                             // TODO: create relation
                                         }
@@ -3620,7 +4062,7 @@ namespace S100Framework.Applications
 
                                         else if (plfrel.PLTS_Frel.DEST_SUB?.ToLower() == "rtpbcn_radartransponderbeacon") {
                                             // TODO: Build rtpbcn_radartransponderbeacon
-                                            var radarTransponderBeacon = CreateRadarTransponderbeacon(relatedAidsToNavigationP, insert, buffer, feature, tableName, convertedCount);
+                                            var radarTransponderBeacon = CreateRadarTransponderbeacon(relatedAidsToNavigationP, insert, buffer, feature, tableName, convertedCount, featureClass);
 
                                             // TODO: create relation
                                         }
@@ -3747,7 +4189,7 @@ namespace S100Framework.Applications
 
                                         else if (plfrel.PLTS_Frel.DEST_SUB?.ToLower() == "rtpbcn_radartransponderbeacon") {
                                             // TODO: Build rtpbcn_radartransponderbeacon
-                                            var radarTransponderBeacon = CreateRadarTransponderbeacon(relatedAidsToNavigationP, insert, buffer, feature, tableName, convertedCount);
+                                            var radarTransponderBeacon = CreateRadarTransponderbeacon(relatedAidsToNavigationP, insert, buffer, feature, tableName, convertedCount, featureClass);
                                             // TODO: create relation : radarTransponderBeacon
                                         }
                                         else {
@@ -3891,7 +4333,7 @@ namespace S100Framework.Applications
 
                                         else if (plfrel.PLTS_Frel.DEST_SUB?.ToLower() == "rtpbcn_radartransponderbeacon") {
                                             // TODO: Build rtpbcn_radartransponderbeacon
-                                            var radarTransponderBeacon = CreateRadarTransponderbeacon(relatedAidsToNavigationP, insert, buffer, feature, tableName, convertedCount);
+                                            var radarTransponderBeacon = CreateRadarTransponderbeacon(relatedAidsToNavigationP, insert, buffer, feature, tableName, convertedCount, featureClass);
 
                                             // TODO: create relation
                                         }
@@ -4017,7 +4459,7 @@ namespace S100Framework.Applications
                                         }
 
                                         else if (plfrel.PLTS_Frel.DEST_SUB?.ToLower() == "rtpbcn_radartransponderbeacon") {
-                                            var radarTransponderBeacon = CreateRadarTransponderbeacon(relatedAidsToNavigationP, insert, buffer, feature, tableName, convertedCount);
+                                            var radarTransponderBeacon = CreateRadarTransponderbeacon(relatedAidsToNavigationP, insert, buffer, feature, tableName, convertedCount, featureClass);
                                             // TODO: create relation
 
                                         }
