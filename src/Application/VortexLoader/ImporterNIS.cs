@@ -6,6 +6,7 @@ using static S100Framework.Applications.VortexLoader;
 using IO = System.IO;
 using ArcGIS.Core.Geometry;
 using System.Text.Json;
+using S100Framework.Applications.S57.esri;
 
 
 namespace S100Framework.Applications
@@ -83,18 +84,18 @@ namespace S100Framework.Applications
                     using var curve = destination.OpenDataset<FeatureClass>(destination.GetName("curve"));
                     using var surface = destination.OpenDataset<FeatureClass>(destination.GetName("surface"));
                     using var informationtype = destination.OpenDataset<Table>(destination.GetName("informationType"));
+                    using var informationAssociation = destination.OpenDataset<Table>(destination.GetName("informationAssociation"));
 
                     point.DeleteRows(query);
                     pointset.DeleteRows(query);
                     curve.DeleteRows(query);
                     surface.DeleteRows(query);
                     informationtype.DeleteRows(query);
+                    informationAssociation.DeleteRows(query);
                 });
 
                 if (skinOfEarthOnly) {
-
-                    // All "SKIN OF EARTH" cases / sutypes are marked with a "skin of earth" in the code  
-
+                    // All "SKIN OF EARTH" cases / subtypes are marked with a "skin of earth" comment
                     var whereClause = filter.WhereClause.Clone();
                     filter.WhereClause = $"{whereClause} and fcsubtype in (1,5,15,45)";
                     Store(() => S57_DepthsA(source, destination, filter));
@@ -104,6 +105,8 @@ namespace S100Framework.Applications
                     Store(() => S57_PortsAndServicesA(source, destination, filter));
                     filter.WhereClause = $"{whereClause} and fcsubtype in (40)";
                     Store(() => S57_MetadataA(source, destination, filter));
+                    filter.WhereClause = $"{whereClause} and fcsubtype in (1)";
+                    Store(() => S57_ProductCoverage(source, destination, filter));
                 }
                 else {
                     Store(() => S57_AidsToNavigationP(source, destination, filter));
@@ -171,6 +174,32 @@ namespace S100Framework.Applications
                 }
             }
         }
+
+        private static rhythmOfLight GetRythmOfLight(AidsToNavigationP current) {
+            var signalGroupN = current.SIGGRP != default ? new List<string> { current.SIGGRP } : null;
+            var signalPeriodN = current.SIGPER;
+
+            // TODO: Finish rhythmOfLight
+            //signalSequence = new signalSequence() {
+            //    signalDuration = current.SIGN,
+            //    signalStatus = current.STATUS
+            //}
+
+            //var signalSequenceN = current.SIGSEQ != default ? new List<signalSequence> { new signalSequence() {
+            //    signalDuration = current.SI }
+            //} : null;
+
+            //// TODO: rythmOfLight
+            //var rhythmOfLight = new rhythmOfLight() {
+            //    lightCharacteristic = EnumHelper.GetEnumValue<lightCharacteristic>(current.LITCHR.Value),
+            //    signalGroup = signalGroupN,
+            //    signalPeriod = signalPeriodN,
+            //    signalSequence = signalSequenceN
+            //};
+
+            return null; // rhythmOfLight;
+        }
+
 
         private static List<colour> GetColours(string color) {
             if (color== "-32767") {

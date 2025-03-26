@@ -1,6 +1,8 @@
 using ArcGIS.Core.CIM;
 using ArcGIS.Core.Data;
+using ArcGIS.Core.Data.Exceptions;
 using S100Framework.Applications;
+using System.Collections.Generic;
 using System.Text;
 using System.Text.RegularExpressions;
 using Xunit.Abstractions;
@@ -110,6 +112,155 @@ namespace TestNisImporter
             Console.WriteLine(csDomainValues.ToString());
         }
 
+        [Fact]
+        public void CreateS57Domains() {
+
+        }
+
+        [Fact]
+        public void GenerateStatusPage() {
+            var featureclasses = new List<string> { "PLTS_SpatialAttributeL",
+                                            "TidesAndVariationsA",
+                                            "TidesAndVariationsL",
+                                            "TidesAndVariationsP",
+                                            "SeabedL",
+                                            "SeabedP",
+                                            "SeabedA",
+                                            "DangersL",
+                                            "DangersP",
+                                            "DangersA",
+                                            "DepthsL",
+                                            "OffshoreInstallationsL",
+                                            "OffshoreInstallationsA",
+                                            "MetaDataP",
+                                            "TracksAndRoutesA",
+                                            "TracksAndRoutesL",
+                                            "TracksAndRoutesP",
+                                            "AidsToNavigationP",
+                                            "IceFeaturesA",
+                                            "MilitaryFeaturesA",
+                                            "MilitaryFeaturesP",
+                                            "UserDefinedFeaturesA",
+                                            "UserDefinedFeaturesP",
+                                            "UserDefinedFeaturesL",
+                                            "DepthsA",
+                                            "SoundingsP",
+                                            "PortsAndServicesP",
+                                            "PortsAndServicesL",
+                                            "PortsAndServicesA",
+                                            "CulturalFeaturesA",
+                                            "CulturalFeaturesL",
+                                            "CulturalFeaturesP",
+                                            "NaturalFeaturesP",
+                                            "NaturalFeaturesL",
+                                            "NaturalFeaturesA",
+                                            "CoastlineL",
+                                            "CoastlineP",
+                                            "CoastlineA",
+                                            "RegulatedAreasAndLimitsL",
+                                            "RegulatedAreasAndLimitsP",
+                                            "RegulatedAreasAndLimitsA",
+                                            "MetaDataA",
+                                            "MetaDataL",
+                                            "OffshoreInstallationsP",
+                                            "ClosingLinesL",
+                                            "ProductCoverage",
+                                            //"ProductRestrictions"
+            };
+            var tables = new List<string> { //"ProductExports",
+                                            "ProductDefinitions",
+                                            "PLTS_Collections",
+                                            "PLTS_Frel",
+                                            "PLTS_Master_Slaves"
+                                          };
+
+            featureclasses.Sort();
+
+            //var sourcePath = @$"{Environment.GetEnvironmentVariable("OneDrive")}\ArcGIS\Projects\Vortex\replica.gdb";
+            //var source = new Geodatabase(new FileGeodatabaseConnectionPath(new Uri(IO.Path.GetFullPath(sourcePath))));
+            var sourcePath = IO.Path.GetFullPath(IO.Path.Combine(@"G:\indigo\Databases\nis.sde"));
+            var source = new Geodatabase(new DatabaseConnectionFile(new Uri(IO.Path.GetFullPath(sourcePath))));
+
+            var prefix = "NIS.";
+
+            string filePath = IO.Path.GetFullPath(IO.Path.Combine(@".\..\..\..\..\..\..\src\Application\VortexLoader\S-57.esri\status.txt"));
+            
+            StringBuilder content = new StringBuilder();
+
+            List<Dataset> datasets = new List<Dataset>();
+            foreach (var featureclass in featureclasses) {
+                datasets.Add(source.OpenDataset<FeatureClass>($"{prefix}{featureclass}"));
+            }
+
+            int counter = 0;
+
+            using (StreamWriter file = new StreamWriter(filePath)) {
+                foreach (var dataset in datasets) {
+                    if (dataset is FeatureClass) {
+                        var subtypes = (dataset as FeatureClass).GetDefinition().GetSubtypes();
+                        var fields = (dataset as FeatureClass).GetDefinition().GetFields();
+                        var fieldHasData = new Dictionary<string, bool>();
+                        foreach (var field in fields) {
+                            fieldHasData[field.Name] = false;
+                        }
+
+                        var sortedDict = new SortedDictionary<int, string>();
+
+                        var searchCursor = (dataset as FeatureClass).Search(new QueryFilter() { WhereClause = "1=1" });
+
+                        var subtypeCount = new Dictionary<int, int>();
+
+                        int totalCount = 0;
+                        while (searchCursor.MoveNext()) {
+                            totalCount++;
+                            var current = searchCursor.Current;
+
+                            if (current.FindField("fcsubtype") == -1)
+                                continue;
+
+                            foreach (var fieldName in fieldHasData.Keys) {
+                                if (DBNull.Value != current[fieldName]) {
+                                    fieldHasData[fieldName] = true; 
+                                }
+                            }
+
+                            var subtypeValue = current["fcsubtype"];
+                            if (subtypeValue != DBNull.Value) {
+                                int subtype = Convert.ToInt32(subtypeValue);
+                                if (subtypeCount.ContainsKey(subtype)) {
+                                    subtypeCount[subtype] += 1;
+                                } else {
+                                    subtypeCount[subtype] = 1;
+                                }
+                            }
+                        }
+
+                        foreach (var subtype in subtypes) {
+                            sortedDict.Add(subtype.GetCode(), subtype.GetName());
+                        }
+
+                        foreach (var keyValuePair in sortedDict) {
+                            counter += 1;
+
+                            subtypeCount.TryGetValue(keyValuePair.Key, out var subtypeCountN);
+
+                            content.AppendLine($"{counter};SUBTYPE;{dataset.GetName()};{keyValuePair.Value};{keyValuePair.Key};{subtypeCountN}");
+                        }
+
+                        
+                        foreach (var fieldName in fieldHasData.Keys) {
+                            counter += 1;
+                            var hasDataTag = fieldHasData[fieldName] ? "CONTAINS DATA" : "EMPTY";
+                            content.AppendLine($"{counter};FIELD;{dataset.GetName()};{fieldName};{hasDataTag}");
+
+                        }
+
+                    }
+                }
+                file.WriteLine(content.ToString());
+            }
+        }
+
 
         [Fact]
         public void GenerateNisModel() {
@@ -215,7 +366,6 @@ namespace TestNisImporter
                     var fieldInfo = (Type: "Int32", Conversion: "Convert.ToInt32", DefaultValue: "default", Alias: string.Empty);
 
                     foreach (var field in datasetfields) {
-
                         if (field.Name.ToUpper().StartsWith("SHAPE_")) {
                             Console.WriteLine("");
                             continue;

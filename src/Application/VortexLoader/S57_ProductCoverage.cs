@@ -67,11 +67,11 @@ namespace S100Framework.Applications
 
                     switch (catcov) {
                         case 1:
-                            buffer["ps"] = ps128;
-                            buffer["code"] = instance.GetType().Name;
-                            buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
-                            buffer["shape"] = productCoverage.SHAPE;
-                            insert.Insert(buffer);
+                            //buffer["ps"] = ps128;
+                            //buffer["code"] = instance.GetType().Name;
+                            //buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
+                            //buffer["shape"] = productCoverage.SHAPE;
+                            //insert.Insert(buffer);
 
 
                             

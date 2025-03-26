@@ -132,8 +132,8 @@ namespace S100Framework.Applications
                     case 40: { // M_QUAL_QualityOfData // SKIN OF EARTH
 
                             var instance = new QualityOfBathymetricData();
-
-                            
+                            // TODO: categoryOfTemporalVariation
+                            //instance.categoryOfTemporalVariation = EnumHelper.GetEnumValue<categoryOfTemporalVariation>()
 
                             buffer["ps"] = ps101;
                             buffer["code"] = instance.GetType().Name;

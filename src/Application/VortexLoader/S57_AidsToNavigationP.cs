@@ -443,6 +443,9 @@ namespace S100Framework.Applications
                 }
 
 
+                instance.rhythmOfLight = GetRythmOfLight(current);
+
+
                 if (current.COLOUR != default) {
                     instance.colour = GetColours(current.COLOUR);
                 }
@@ -478,6 +481,11 @@ namespace S100Framework.Applications
 
                 if (current.EXCLIT.HasValue) {
                     instance.exhibitionConditionOfLight = EnumHelper.GetEnumValue<exhibitionConditionOfLight>(current.EXCLIT.Value);
+                }
+                
+                DateHelper.TryGetFixedDateRange(current.DATSTA, current.DATEND, out var dateRange);
+                if (dateRange != default) {
+                    instance.fixedDateRange = dateRange;
                 }
 
                 instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
@@ -539,6 +547,8 @@ namespace S100Framework.Applications
                 if (current.STATUS != default) {
                     instance.status = GetStatus(current.STATUS);
                 }
+                
+                instance.rhythmOfLight = GetRythmOfLight(current);
 
                 instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
 
@@ -570,6 +580,8 @@ namespace S100Framework.Applications
                 if (current.STATUS != default) {
                     instance.status = GetStatus(current.STATUS);
                 }
+
+                instance.rhythmOfLight = GetRythmOfLight(current);
 
                 instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
                 AddInformation(instance.information, feature);
@@ -674,22 +686,9 @@ namespace S100Framework.Applications
 
                             instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
 
-                            if (current.DATSTA != default) {
-                                if (current.DATEND != default) {
-                                    if (DateHelper.TryConvertToDateOnly(current.DATEND, out var dateEnd)) {
-                                        if (DateHelper.TryConvertToDateOnly(current.DATSTA, out var dateStart)) {
-                                            instance.fixedDateRange = new fixedDateRange() {
-                                                dateStart = dateStart,
-                                                dateEnd = dateEnd
-                                            };
-                                        }
-                                        else {
-                                        }
-                                    }
-                                    else {
-                                        Logger.Current.DataError(current.OBJECTID.Value, tableName, current.LNAM, $"Cannot convert date {current.DATEND}");
-                                    }
-                                }
+                            DateHelper.TryGetFixedDateRange(current.DATSTA, current.DATEND, out var dateRange);
+                            if (dateRange != default) {
+                                instance.fixedDateRange = dateRange;
                             }
 
                             if (current.HEIGHT.HasValue) {
@@ -924,22 +923,9 @@ namespace S100Framework.Applications
 
                             instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
 
-                            if (current.DATSTA != default) {
-                                if (current.DATEND != default) {
-                                    if (DateHelper.TryConvertToDateOnly(current.DATEND, out var dateEnd)) {
-                                        if (DateHelper.TryConvertToDateOnly(current.DATSTA, out var dateStart)) {
-                                            instance.fixedDateRange = new fixedDateRange() {
-                                                dateStart = dateStart,
-                                                dateEnd = dateEnd
-                                            };
-                                        }
-                                        else {
-                                        }
-                                    }
-                                    else {
-                                        Logger.Current.DataError(current.OBJECTID.Value, tableName, current.LNAM, $"Cannot convert date {current.DATEND}");
-                                    }
-                                }
+                            DateHelper.TryGetFixedDateRange(current.DATSTA, current.DATEND, out var dateRange);
+                            if (dateRange != default) {
+                                instance.fixedDateRange = dateRange;
                             }
 
                             if (current.HEIGHT.HasValue) {
@@ -1176,22 +1162,9 @@ namespace S100Framework.Applications
 
                             instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
 
-                            if (current.DATSTA != default) {
-                                if (current.DATEND != default) {
-                                    if (DateHelper.TryConvertToDateOnly(current.DATEND, out var dateEnd)) {
-                                        if (DateHelper.TryConvertToDateOnly(current.DATSTA, out var dateStart)) {
-                                            instance.fixedDateRange = new fixedDateRange() {
-                                                dateStart = dateStart,
-                                                dateEnd = dateEnd
-                                            };
-                                        }
-                                        else {
-                                        }
-                                    }
-                                    else {
-                                        Logger.Current.DataError(current.OBJECTID.Value, tableName, current.LNAM, $"Cannot convert date {current.DATEND}");
-                                    }
-                                }
+                            DateHelper.TryGetFixedDateRange(current.DATSTA, current.DATEND, out var dateRange);
+                            if (dateRange != default) {
+                                instance.fixedDateRange = dateRange;
                             }
 
                             if (current.HEIGHT.HasValue) { 
@@ -1420,22 +1393,9 @@ namespace S100Framework.Applications
 
                             instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
 
-                            if (current.DATSTA != default) {
-                                if (current.DATEND != default) {
-                                    if (DateHelper.TryConvertToDateOnly(current.DATEND, out var dateEnd)) {
-                                        if (DateHelper.TryConvertToDateOnly(current.DATSTA, out var dateStart)) {
-                                            instance.fixedDateRange = new fixedDateRange() {
-                                                dateStart = dateStart,
-                                                dateEnd = dateEnd
-                                            };
-                                        }
-                                        else {
-                                        }
-                                    }
-                                    else {
-                                        Logger.Current.DataError(current.OBJECTID.Value, tableName, current.LNAM, $"Cannot convert date {current.DATEND}");
-                                    }
-                                }
+                            DateHelper.TryGetFixedDateRange(current.DATSTA, current.DATEND, out var dateRange);
+                            if (dateRange != default) {
+                                instance.fixedDateRange = dateRange;
                             }
 
                             if (current.HEIGHT.HasValue) {
@@ -1676,23 +1636,10 @@ namespace S100Framework.Applications
                             }
 
                             instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
-
-                            if (current.DATSTA != default) {
-                                if (current.DATEND != default) {
-                                    if (DateHelper.TryConvertToDateOnly(current.DATEND, out var dateEnd)) {
-                                        if (DateHelper.TryConvertToDateOnly(current.DATSTA, out var dateStart)) {
-                                            instance.fixedDateRange = new fixedDateRange() {
-                                                dateStart = dateStart,
-                                                dateEnd = dateEnd
-                                            };
-                                        }
-                                        else {
-                                        }
-                                    }
-                                    else {
-                                        Logger.Current.DataError(current.OBJECTID.Value, tableName, current.LNAM, $"Cannot convert date {current.DATEND}");
-                                    }
-                                }
+                            
+                            DateHelper.TryGetFixedDateRange(current.DATSTA, current.DATEND, out var dateRange);
+                            if (dateRange != default) {
+                                instance.fixedDateRange = dateRange;
                             }
 
                             if (current.HEIGHT.HasValue) {
@@ -1911,22 +1858,9 @@ namespace S100Framework.Applications
 
                             instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
 
-                            if (current.DATSTA != default) {
-                                if (current.DATEND != default) {
-                                    if (DateHelper.TryConvertToDateOnly(current.DATEND, out var dateEnd)) {
-                                        if (DateHelper.TryConvertToDateOnly(current.DATSTA, out var dateStart)) {
-                                            instance.fixedDateRange = new fixedDateRange() {
-                                                dateStart = dateStart,
-                                                dateEnd = dateEnd
-                                            };
-                                        }
-                                        else {
-                                        }
-                                    }
-                                    else {
-                                        Logger.Current.DataError(current.OBJECTID.Value, tableName, current.LNAM, $"Cannot convert date {current.DATEND}");
-                                    }
-                                }
+                            DateHelper.TryGetFixedDateRange(current.DATSTA, current.DATEND, out var dateRange);
+                            if (dateRange != default) {
+                                instance.fixedDateRange = dateRange;
                             }
 
                             // TODO: interoperabilityidentifier
@@ -2126,22 +2060,9 @@ namespace S100Framework.Applications
 
                             instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
 
-                            if (current.DATSTA != default) {
-                                if (current.DATEND != default) {
-                                    if (DateHelper.TryConvertToDateOnly(current.DATEND, out var dateEnd)) {
-                                        if (DateHelper.TryConvertToDateOnly(current.DATSTA, out var dateStart)) {
-                                            instance.fixedDateRange = new fixedDateRange() {
-                                                dateStart = dateStart,
-                                                dateEnd = dateEnd
-                                            };
-                                        }
-                                        else {
-                                        }
-                                    }
-                                    else {
-                                        Logger.Current.DataError(current.OBJECTID.Value, tableName, current.LNAM, $"Cannot convert date {current.DATEND}");
-                                    }
-                                }
+                            DateHelper.TryGetFixedDateRange(current.DATSTA, current.DATEND, out var dateRange);
+                            if (dateRange != default) {
+                                instance.fixedDateRange = dateRange;
                             }
 
 
@@ -2308,22 +2229,9 @@ namespace S100Framework.Applications
 
                             instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
 
-                            if (current.DATSTA != default) {
-                                if (current.DATEND != default) {
-                                    if (DateHelper.TryConvertToDateOnly(current.DATEND, out var dateEnd)) {
-                                        if (DateHelper.TryConvertToDateOnly(current.DATSTA, out var dateStart)) {
-                                            instance.fixedDateRange = new fixedDateRange() {
-                                                dateStart = dateStart,
-                                                dateEnd = dateEnd
-                                            };
-                                        }
-                                        else {
-                                        }
-                                    }
-                                    else {
-                                        Logger.Current.DataError(current.OBJECTID.Value, tableName, current.LNAM, $"Cannot convert date {current.DATEND}");
-                                    }
-                                }
+                            DateHelper.TryGetFixedDateRange(current.DATSTA, current.DATEND, out var dateRange);
+                            if (dateRange != default) {
+                                instance.fixedDateRange = dateRange;
                             }
 
                             // TODO: interoperabilityidentifier
@@ -2519,22 +2427,9 @@ namespace S100Framework.Applications
 
                             instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
 
-                            if (current.DATSTA != default) {
-                                if (current.DATEND != default) {
-                                    if (DateHelper.TryConvertToDateOnly(current.DATEND, out var dateEnd)) {
-                                        if (DateHelper.TryConvertToDateOnly(current.DATSTA, out var dateStart)) {
-                                            instance.fixedDateRange = new fixedDateRange() {
-                                                dateStart = dateStart,
-                                                dateEnd = dateEnd
-                                            };
-                                        }
-                                        else {
-                                        }
-                                    }
-                                    else {
-                                        Logger.Current.DataError(current.OBJECTID.Value, tableName, current.LNAM, $"Cannot convert date {current.DATEND}");
-                                    }
-                                }
+                            DateHelper.TryGetFixedDateRange(current.DATSTA, current.DATEND, out var dateRange);
+                            if (dateRange != default) {
+                                instance.fixedDateRange = dateRange;
                             }
 
 
@@ -2726,22 +2621,9 @@ namespace S100Framework.Applications
 
                             instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
 
-                            if (current.DATSTA != default) {
-                                if (current.DATEND != default) {
-                                    if (DateHelper.TryConvertToDateOnly(current.DATEND, out var dateEnd)) {
-                                        if (DateHelper.TryConvertToDateOnly(current.DATSTA, out var dateStart)) {
-                                            instance.fixedDateRange = new fixedDateRange() {
-                                                dateStart = dateStart,
-                                                dateEnd = dateEnd
-                                            };
-                                        }
-                                        else {
-                                        }
-                                    }
-                                    else {
-                                        Logger.Current.DataError(current.OBJECTID.Value, tableName, current.LNAM, $"Cannot convert date {current.DATEND}");
-                                    }
-                                }
+                            DateHelper.TryGetFixedDateRange(current.DATSTA, current.DATEND, out var dateRange);
+                            if (dateRange != default) {
+                                instance.fixedDateRange = dateRange;
                             }
 
                             // TODO: interoperabilityidentifier
@@ -2938,23 +2820,10 @@ namespace S100Framework.Applications
 
 
                             instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
-
-                            if (current.DATSTA != default) {
-                                if (current.DATEND != default) {
-                                    if (DateHelper.TryConvertToDateOnly(current.DATEND, out var dateEnd)) {
-                                        if (DateHelper.TryConvertToDateOnly(current.DATSTA, out var dateStart)) {
-                                            instance.fixedDateRange = new fixedDateRange() {
-                                                dateStart = dateStart,
-                                                dateEnd = dateEnd
-                                            };
-                                        }
-                                        else {
-                                        }
-                                    }
-                                    else {
-                                        Logger.Current.DataError(current.OBJECTID.Value, tableName, current.LNAM, $"Cannot convert date {current.DATEND}");
-                                    }
-                                }
+                            
+                            DateHelper.TryGetFixedDateRange(current.DATSTA, current.DATEND, out var dateRange);
+                            if (dateRange != default) {
+                                instance.fixedDateRange = dateRange;
                             }
 
                             // TODO: interoperabilityidentifier
@@ -3154,22 +3023,9 @@ namespace S100Framework.Applications
 
                             instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
 
-                            if (current.DATSTA != default) {
-                                if (current.DATEND != default) {
-                                    if (DateHelper.TryConvertToDateOnly(current.DATEND, out var dateEnd)) {
-                                        if (DateHelper.TryConvertToDateOnly(current.DATSTA, out var dateStart)) {
-                                            instance.fixedDateRange = new fixedDateRange() {
-                                                dateStart = dateStart,
-                                                dateEnd = dateEnd
-                                            };
-                                        }
-                                        else {
-                                        }
-                                    }
-                                    else {
-                                        Logger.Current.DataError(current.OBJECTID.Value, tableName, current.LNAM, $"Cannot convert date {current.DATEND}");
-                                    }
-                                }
+                            DateHelper.TryGetFixedDateRange(current.DATSTA, current.DATEND, out var dateRange);
+                            if (dateRange != default) {
+                                instance.fixedDateRange = dateRange;
                             }
 
                             if (current.HEIGHT.HasValue) {
@@ -3325,22 +3181,9 @@ namespace S100Framework.Applications
 
                             instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
 
-                            if (current.DATSTA != default) {
-                                if (current.DATEND != default) {
-                                    if (DateHelper.TryConvertToDateOnly(current.DATEND, out var dateEnd)) {
-                                        if (DateHelper.TryConvertToDateOnly(current.DATSTA, out var dateStart)) {
-                                            instance.fixedDateRange = new fixedDateRange() {
-                                                dateStart = dateStart,
-                                                dateEnd = dateEnd
-                                            };
-                                        }
-                                        else {
-                                        }
-                                    }
-                                    else {
-                                        Logger.Current.DataError(current.OBJECTID.Value, tableName, current.LNAM, $"Cannot convert date {current.DATEND}");
-                                    }
-                                }
+                            DateHelper.TryGetFixedDateRange(current.DATSTA, current.DATEND, out var dateRange);
+                            if (dateRange != default) {
+                                instance.fixedDateRange = dateRange;
                             }
 
                             // TODO: interoperabilityidentifier
@@ -3481,22 +3324,9 @@ namespace S100Framework.Applications
 
                             instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
 
-                            if (current.DATSTA != default) {
-                                if (current.DATEND != default) {
-                                    if (DateHelper.TryConvertToDateOnly(current.DATEND, out var dateEnd)) {
-                                        if (DateHelper.TryConvertToDateOnly(current.DATSTA, out var dateStart)) {
-                                            instance.fixedDateRange = new fixedDateRange() {
-                                                dateStart = dateStart,
-                                                dateEnd = dateEnd
-                                            };
-                                        }
-                                        else {
-                                        }
-                                    }
-                                    else {
-                                        Logger.Current.DataError(current.OBJECTID.Value, tableName, current.LNAM, $"Cannot convert date {current.DATEND}");
-                                    }
-                                }
+                            DateHelper.TryGetFixedDateRange(current.DATSTA, current.DATEND, out var dateRange);
+                            if (dateRange != default) {
+                                instance.fixedDateRange = dateRange;
                             }
 
                             if (current.NATCON != default) {
@@ -3685,22 +3515,9 @@ namespace S100Framework.Applications
 
                             instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
 
-                            if (current.DATSTA != default) {
-                                if (current.DATEND != default) {
-                                    if (DateHelper.TryConvertToDateOnly(current.DATEND, out var dateEnd)) {
-                                        if (DateHelper.TryConvertToDateOnly(current.DATSTA, out var dateStart)) {
-                                            instance.fixedDateRange = new fixedDateRange() {
-                                                dateStart = dateStart,
-                                                dateEnd = dateEnd
-                                            };
-                                        }
-                                        else {
-                                        }
-                                    }
-                                    else {
-                                        Logger.Current.DataError(current.OBJECTID.Value, tableName, current.LNAM, $"Cannot convert date {current.DATEND}");
-                                    }
-                                }
+                            DateHelper.TryGetFixedDateRange(current.DATSTA, current.DATEND, out var dateRange);
+                            if (dateRange != default) {
+                                instance.fixedDateRange = dateRange;
                             }
 
                             // TODO: interoperabilityidentifier
@@ -3838,22 +3655,9 @@ namespace S100Framework.Applications
 
                             #region aidstonavigation
 
-                            if (current.DATSTA != default) {
-                                if (current.DATEND != default) {
-                                    if (DateHelper.TryConvertToDateOnly(current.DATEND, out var dateEnd)) {
-                                        if (DateHelper.TryConvertToDateOnly(current.DATSTA, out var dateStart)) {
-                                            instance.fixedDateRange = new fixedDateRange() {
-                                                dateStart = dateStart,
-                                                dateEnd = dateEnd
-                                            };
-                                        }
-                                        else {
-                                        }
-                                    }
-                                    else {
-                                        Logger.Current.DataError(current.OBJECTID.Value, tableName, current.LNAM, $"Cannot convert date {current.DATEND}");
-                                    }
-                                }
+                            DateHelper.TryGetFixedDateRange(current.DATSTA, current.DATEND, out var dateRange);
+                            if (dateRange != default) {
+                                instance.fixedDateRange = dateRange;
                             }
 
                             if (current.HEIGHT.HasValue) {
@@ -4092,22 +3896,9 @@ namespace S100Framework.Applications
 
                             instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
 
-                            if (current.DATSTA != default) {
-                                if (current.DATEND != default) {
-                                    if (DateHelper.TryConvertToDateOnly(current.DATEND, out var dateEnd)) {
-                                        if (DateHelper.TryConvertToDateOnly(current.DATSTA, out var dateStart)) {
-                                            instance.fixedDateRange = new fixedDateRange() {
-                                                dateStart = dateStart,
-                                                dateEnd = dateEnd
-                                            };
-                                        }
-                                        else {
-                                        }
-                                    }
-                                    else {
-                                        Logger.Current.DataError(current.OBJECTID.Value, tableName, current.LNAM, $"Cannot convert date {current.DATEND}");
-                                    }
-                                }
+                            DateHelper.TryGetFixedDateRange(current.DATSTA, current.DATEND, out var dateRange);
+                            if (dateRange != default) {
+                                instance.fixedDateRange = dateRange;
                             }
 
                             // TODO: interoperabilityidentifier
@@ -4224,22 +4015,9 @@ namespace S100Framework.Applications
                                 instance.colourPattern = GetColourPattern(current.COLPAT);
                             }
 
-                            if (current.DATSTA != default) {
-                                if (current.DATEND != default) {
-                                    if (DateHelper.TryConvertToDateOnly(current.DATEND, out var dateEnd)) {
-                                        if (DateHelper.TryConvertToDateOnly(current.DATSTA, out var dateStart)) {
-                                            instance.fixedDateRange = new fixedDateRange() {
-                                                dateStart = dateStart,
-                                                dateEnd = dateEnd
-                                            };
-                                        }
-                                        else {
-                                        }
-                                    }
-                                    else {
-                                        Logger.Current.DataError(current.OBJECTID.Value, tableName, current.LNAM, $"Cannot convert date {current.DATEND}");
-                                    }
-                                }
+                            DateHelper.TryGetFixedDateRange(current.DATSTA, current.DATEND, out var dateRange);
+                            if (dateRange != default) {
+                                instance.fixedDateRange = dateRange;
                             }
 
                             if (current.HEIGHT.HasValue) { 
