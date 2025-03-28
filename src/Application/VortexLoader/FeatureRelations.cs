@@ -1,7 +1,15 @@
 ﻿using ArcGIS.Core.Data;
+using ArcGIS.Core.Internal.CIM;
 using S100Framework.Applications.S57.esri;
+using S100Framework.DomainModel;
+using S100Framework.DomainModel.S101.FeatureTypes;
+using System.Collections.Generic;
+using System;
 using System.ComponentModel.Design;
 using System.Data;
+using System.Text.Json;
+using S100Framework.DomainModel.S101.ComplexAttributes;
+using ArcGIS.Core.Data.UtilityNetwork.Trace;
 
 
 namespace S100Framework.Applications
@@ -93,16 +101,21 @@ namespace S100Framework.Applications
 
         private bool _isInitialized = false;
 
+        private static Geodatabase _source = null;
+
         public void Initialize(Geodatabase source) {
-            LoadPltsCollections(source);
+            _pltsCollections = new Dictionary<Guid, PltsCollection>();
+            _srcObjectToSlave = new Dictionary<Guid, IList<PltsSlave>>();
+            _source = source;
+            LoadPltsCollections();
             LoadPltsFrels(source);
             _isInitialized = true;
         }
 
-        private void LoadPltsCollections(Geodatabase source) {
+        private void LoadPltsCollections() {
 
             // Read aggregations
-            var pltsCollectionsTable = source.OpenDataset<Table>(source.GetName("PLTS_COLLECTIONS"));
+            var pltsCollectionsTable = _source.OpenDataset<Table>(_source.GetName("PLTS_COLLECTIONS"));
             var pltsCollections = new Dictionary<Guid, IList<PLTS_Collections>>();
 
             var cursor = pltsCollectionsTable.Search(null, true);
@@ -116,7 +129,6 @@ namespace S100Framework.Applications
                 } else {
                     throw new IndexOutOfRangeException($"Multiple PltsCollections with same id not allowed {uid}");
                 }
-
             }
 
             //foreach (var item in _srcObjectToSlave) {
@@ -130,6 +142,62 @@ namespace S100Framework.Applications
             //        }
             //    }
             //}
+        }
+
+        internal Type GetS101TypeFrom(AidsToNavigationP aton) {
+            List<int> catlits = new();
+
+            if (aton.CATLIT != default) {
+                catlits = aton.CATLIT.Split(',')
+                                   .Select(int.Parse)
+                                   .ToList();
+            }
+
+            if ((aton.SECTR1 == default || aton.SECTR2 == default) && !(catlits.Contains(1) || catlits.Contains(6) || catlits.Contains(7) || catlits.Contains(16))) {
+                return typeof(LightAllAround);
+            }
+            else if ((aton.SECTR1 != default && aton.SECTR2 != default) || (catlits.Contains(1) || catlits.Contains(16))) {
+                return typeof(LightSectored);
+            }
+            else if (catlits.Contains(6)) {
+                return typeof(LightAirObstruction);
+            }
+            else if (catlits.Contains(7)) {
+                return typeof(LightFogDetector);
+            }
+            else {
+                throw new NotSupportedException($"LIGHT catlit: {aton.CATLIT} : {aton.LNAM}");
+            }
+
+        }
+
+        internal IList<Type> GetS101EquipmentType(IList<PltsSlave> relatedEquipment) {
+            var result = new List<Type>();
+
+            foreach (var plfrel in relatedEquipment) {
+                var pltsSlave = new PltsSlave(plfrel.PLTS_Frel);
+                var s57obj = pltsSlave.Fetch(_source, Direction.Destination);
+
+                if (s57obj is AidsToNavigationP) {
+                    var aton = s57obj as AidsToNavigationP;
+                    if (plfrel.PLTS_Frel.DEST_SUB?.ToLower() == "lights_light") {
+                        result.Add(GetS101TypeFrom(aton));
+                    }
+                    else if (plfrel.PLTS_Frel.DEST_SUB?.ToLower() == "rtpbcn_radartransponderbeacon") {
+                        result.Add(typeof(RadarTransponderBeacon));
+                    }
+                    else if (plfrel.PLTS_Frel.DEST_SUB?.ToLower() == "topmar_topmark") {
+                        result.Add(typeof(topmark));
+                    }
+                    else {
+                        throw new NotImplementedException($"{plfrel.PLTS_Frel.DEST_SUB?.ToLower()} ");
+                    }
+                }
+                if (s57obj is DangersP) {
+                    result.Add(typeof(DangersP));
+                }
+            }
+            return result;
         }
 
         internal IList<PltsSlave> GetRelated(Guid uid) {

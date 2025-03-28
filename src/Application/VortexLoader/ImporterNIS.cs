@@ -7,23 +7,24 @@ using IO = System.IO;
 using ArcGIS.Core.Geometry;
 using System.Text.Json;
 using S100Framework.Applications.S57.esri;
+using System.Text.RegularExpressions;
+using System.Globalization;
 
 
 namespace S100Framework.Applications
 {
     internal static partial class ImporterNIS {
 
-        private static readonly JsonSerializerOptions jsonSerializerOptions = new() {
+        internal static readonly JsonSerializerOptions jsonSerializerOptions = new() {
             WriteIndented = false,
             Encoder = System.Text.Encodings.Web.JavaScriptEncoder.UnsafeRelaxedJsonEscaping,
             PropertyNameCaseInsensitive = true,
         };
 
         //  https://github.com/iho-ohi/S-57-to-S-101-conversion-sub-WG
-
-        static string _notesPath = "";
-        static string ps101 = "S-101";
-        static string ps128 = "S-128";
+        internal static string _notesPath = "";
+        internal static string ps101 = "S-101";
+        internal static string ps128 = "S-128";
 
         public static bool Load(Geodatabase destination, ParserResult<Options> arguments) {
             Func<Geodatabase> createGeodatabase = () => { throw new NotImplementedException(); };
@@ -175,31 +176,60 @@ namespace S100Framework.Applications
             }
         }
 
+        /// <summary>
+        /// DCEG p460
+        /// </summary>
+        /// <param name="current"></param>
+        /// <returns></returns>
         private static rhythmOfLight GetRythmOfLight(AidsToNavigationP current) {
+            
+            /*
+                When populating rhythm of light, the
+                sub-attributes signal group, signal period and signal sequence are only valid for non-fixed lights
+                (that is, sub-attribute light characteristic ≠ 1 (fixed)), with signal group and signal period being
+                mandatory
+             */
+
             var signalGroupN = current.SIGGRP != default ? new List<string> { current.SIGGRP } : null;
             var signalPeriodN = current.SIGPER;
 
-            // TODO: Finish rhythmOfLight
-            //signalSequence = new signalSequence() {
-            //    signalDuration = current.SIGN,
-            //    signalStatus = current.STATUS
-            //}
+            var sigseq = current.SIGSEQ;
+            var signalSequences = new List<signalSequence>();
 
-            //var signalSequenceN = current.SIGSEQ != default ? new List<signalSequence> { new signalSequence() {
-            //    signalDuration = current.SI }
-            //} : null;
+            string pattern = @"(\d+\.\d+)|\((\d+\.\d+)\)";
 
-            //// TODO: rythmOfLight
-            //var rhythmOfLight = new rhythmOfLight() {
-            //    lightCharacteristic = EnumHelper.GetEnumValue<lightCharacteristic>(current.LITCHR.Value),
-            //    signalGroup = signalGroupN,
-            //    signalPeriod = signalPeriodN,
-            //    signalSequence = signalSequenceN
-            //};
+            if (sigseq != default) {
 
-            return null; // rhythmOfLight;
+                Regex regex = new Regex(pattern);
+                MatchCollection matches = regex.Matches(sigseq);
+
+                foreach (Match match in matches) {
+                    if (!string.IsNullOrEmpty(match.Groups[1].Value)) {
+                        var duration = decimal.Parse(match.Groups[1].Value, CultureInfo.InvariantCulture);
+                        // Interval of light
+                        signalSequences.Add(new signalSequence() {
+                            signalDuration = duration,
+                            signalStatus = signalStatus.LitSound
+                        });
+                    }
+                    else if (!string.IsNullOrEmpty(match.Groups[2].Value)) {
+                        decimal duration = decimal.Parse(match.Groups[2].Value, CultureInfo.InvariantCulture);
+                        // Eclipse
+                        signalSequences.Add(new signalSequence() {
+                            signalDuration = duration,
+                            signalStatus = signalStatus.EclipsedSilent
+                        });
+                    }
+                }
+            }
+            var rhythmOfLight = new rhythmOfLight() {
+                lightCharacteristic = EnumHelper.GetEnumValue<lightCharacteristic>(current.LITCHR.Value),
+                signalGroup = signalGroupN,
+                signalPeriod = signalPeriodN,
+                signalSequence = signalSequences
+            };
+            return rhythmOfLight;
         }
-
 
         private static List<colour> GetColours(string color) {
             if (color== "-32767") {
@@ -285,7 +315,7 @@ namespace S100Framework.Applications
             return GetStatus(status)[0];
         }
 
-        private static List<status> GetStatus(string statuses) {
+        internal static List<status> GetStatus(string statuses) {
             List<status> statusList = new List<status>();
 
                 var featureStatus = statuses.Trim();
@@ -397,7 +427,7 @@ namespace S100Framework.Applications
         }
 
 
-        private static List<featureName> GetFeatureName(string? objname, string? nobjnme) {
+        internal static List<featureName> GetFeatureName(string? objname, string? nobjnme) {
             List<featureName> featureName = new List<featureName>();
             if (objname != default) { 
                 var objnam = objname.Trim();
@@ -423,7 +453,7 @@ namespace S100Framework.Applications
             return featureName;
         }
 
-        private static void AddInformation(IList<information> information, Feature current) {
+        internal static void AddInformation(IList<information> information, Feature current) {
             // TODO: Still missing decision on how GST wants handling of both files and a copy of the file content.
             // Sent to Nigel & Co.
 

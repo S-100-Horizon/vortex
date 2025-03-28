@@ -3,6 +3,7 @@ using ArcGIS.Core.Data;
 using ArcGIS.Core.Data.Exceptions;
 using S100Framework.Applications;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Text;
 using System.Text.RegularExpressions;
 using Xunit.Abstractions;
@@ -12,7 +13,17 @@ namespace TestNisImporter
 {
     public class TestNisImporter
     {
+        internal struct Sequence
+        {
+            public decimal Duration { get; set; }
+            public int Status { get; set; }
 
+            public Sequence(decimal duration, int status) {
+                Duration = duration;
+                Status = status;
+            }
+        }
+        
         private readonly ITestOutputHelper _output;
 
         public TestNisImporter(ITestOutputHelper output) {
@@ -20,6 +31,40 @@ namespace TestNisImporter
             ArcGIS.Core.Hosting.Host.Initialize();
         }
 
+        [Fact]
+        public void TestSignalSequence() {
+        string input = "12.5+(34.7)+56.8+(78.9)+(91.2)+23.4";
+            List<Sequence> sequences = new List<Sequence>();
+
+            string pattern = @"(\d+\.\d+)|\((\d+\.\d+)\)";
+
+            Regex regex = new Regex(pattern);
+            MatchCollection matches = regex.Matches(input);
+
+            foreach (Match match in matches) {
+                if (!string.IsNullOrEmpty(match.Groups[1].Value)) {
+                    var duration = decimal.Parse(match.Groups[1].Value, CultureInfo.InvariantCulture);
+                    sequences.Add(new Sequence(duration, 1));
+                }
+                else if (!string.IsNullOrEmpty(match.Groups[2].Value)) {
+                    decimal duration = decimal.Parse(match.Groups[2].Value, CultureInfo.InvariantCulture);
+                    sequences.Add(new Sequence(duration, 2));
+                }
+            }
+
+            Assert.True(sequences[0].Duration == 12.5m, "Duration");
+            Assert.True(sequences[0].Status == 1, "Status");
+            Assert.True(sequences[1].Duration == 34.7m, "Duration");
+            Assert.True(sequences[1].Status == 2, "Status");
+            Assert.True(sequences[2].Duration == 56.8m, "Duration");
+            Assert.True(sequences[2].Status == 1, "Status");
+            Assert.True(sequences[3].Duration == 78.9m, "Duration");
+            Assert.True(sequences[3].Status == 2, "Status");
+            Assert.True(sequences[4].Duration == 91.2m, "Duration");
+            Assert.True(sequences[4].Status == 2, "Status");
+            Assert.True(sequences[5].Duration == 23.4m, "Duration");
+            Assert.True(sequences[5].Status == 1, "Status");
+        }
 
         [Fact]
         public void NoteLoaderTest() {
@@ -200,8 +245,11 @@ namespace TestNisImporter
                         var subtypes = (dataset as FeatureClass).GetDefinition().GetSubtypes();
                         var fields = (dataset as FeatureClass).GetDefinition().GetFields();
                         var fieldHasData = new Dictionary<string, bool>();
+                        var fieldAlias = new Dictionary<string, string>();
+
                         foreach (var field in fields) {
                             fieldHasData[field.Name] = false;
+                            fieldAlias[field.Name] = field.AliasName;
                         }
 
                         var sortedDict = new SortedDictionary<int, string>();
@@ -247,14 +295,12 @@ namespace TestNisImporter
                             content.AppendLine($"{counter};SUBTYPE;{dataset.GetName()};{keyValuePair.Value};{keyValuePair.Key};{subtypeCountN}");
                         }
 
-                        
                         foreach (var fieldName in fieldHasData.Keys) {
                             counter += 1;
                             var hasDataTag = fieldHasData[fieldName] ? "CONTAINS DATA" : "EMPTY";
-                            content.AppendLine($"{counter};FIELD;{dataset.GetName()};{fieldName};{hasDataTag}");
+                            content.AppendLine($"{counter};FIELD;{dataset.GetName()};{fieldName};{fieldAlias[fieldName]};{hasDataTag}");
 
                         }
-
                     }
                 }
                 file.WriteLine(content.ToString());
@@ -456,9 +502,7 @@ namespace TestNisImporter
                     csFile.Append(objectClass);
 
                     //csFile.Append(@"}");
-
                 }
-
                 csFile.AppendLine(@"}");
                 file.WriteLine(csFile.ToString());
             }
