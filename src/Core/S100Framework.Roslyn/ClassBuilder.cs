@@ -1784,7 +1784,7 @@ namespace S100Framework
                     else if (p.PropertyType == typeof(string[]))
                         constructorBuilder.AppendLine($"\t\t\t\t{p.Name} = [];");
                     else {
-                        constructorBuilder.AppendLine($"\t\t\t\t{p.Name} = {BuildConstructor(p.PropertyType)}");
+                        constructorBuilder.AppendLine($"\t\t\t\t{p.Name} = {BuildConstructor(p.PropertyType)};");
                     }
                 }
 
@@ -2184,10 +2184,10 @@ namespace S100Framework
                             builder.AppendLine($"\t\t\t\t\t{p.Name} = default({p.PropertyType.Name}),");
                         }
                         else
-                            builder.AppendLine($"\t\t\t\t\t{p.Name} = {BuildConstructor(p.PropertyType)};");
+                            builder.AppendLine($"\t\t\t\t\t{p.Name} = {BuildConstructor(p.PropertyType)},");
                     }
                 }
-                builder.AppendLine("};");
+                builder.AppendLine("}");
             }
 
             return builder.ToString();

@@ -141,7 +141,7 @@ namespace TestS100Framework
                             continue;
                         }
 
-                        System.Diagnostics.Debugger.Break();
+                        _output.WriteLine($"role not used: {code}");
                     }
                 }
 
@@ -274,6 +274,8 @@ namespace TestS100Framework
                 var s100 = XDocument.Load(@".\Artifacts\jpS-122_FC_1.2.1.xml");
                 //var s100 = XDocument.Load(@".\Artifacts\S-122_FC_1.2.1.xml");                
 
+                Assert.True(VerifyProductSpecification(s100));
+
                 var content = S100Framework.ClassBuilder.CatalogueBuilder52(s100);
 
                 File.WriteAllText(@".\..\..\..\S-122_FC.cs", content.fc, Encoding.UTF8);
@@ -291,6 +293,8 @@ namespace TestS100Framework
 
                 var s100 = XDocument.Load(@".\Artifacts\S-124FC_1.5_20240330.xml");
 
+                Assert.True(VerifyProductSpecification(s100));
+
                 var content = S100Framework.ClassBuilder.CatalogueBuilder52(s100);
 
                 File.WriteAllText(@".\..\..\..\S-124_FC.cs", content.fc, Encoding.UTF8);
@@ -306,6 +310,8 @@ namespace TestS100Framework
 
                 var s100 = XDocument.Load(@".\Artifacts\S-128_FC_Ed2.0.0.xml");
 
+                Assert.True(VerifyProductSpecification(s100));
+
                 var content = S100Framework.ClassBuilder.CatalogueBuilder(s100, "http://www.iho.int/S128/2.0");
 
                 File.WriteAllText(@".\..\..\..\S-128_FC.cs", content.fc, Encoding.UTF8);
@@ -318,6 +324,8 @@ namespace TestS100Framework
             public void Build_S131() {
                 var s100 = XDocument.Load(@".\Artifacts\131_1_0_0_20230315_FC - LOCAL.xml");
 
+                Assert.True(VerifyProductSpecification(s100));
+
                 var content = S100Framework.ClassBuilder.CatalogueBuilder(s100, "http://www.iho.int/S131/1.0");
 
                 File.WriteAllText(@".\..\..\..\S-131_FC.cs", content.fc, Encoding.UTF8);
@@ -328,9 +336,11 @@ namespace TestS100Framework
 
             [Fact]
             public void Build_S201() {
-                var s100 = XDocument.Load(@".\Artifacts\8. S-201 Ed 1.1.0_Annex D2_Feature Catalogue.xml");
+                var s100 = XDocument.Load(@".\Artifacts\6. S-201 Feature Catalogue - Annex C2 - LOCAL.xml");
 
-                var content = S100Framework.ClassBuilder.CatalogueBuilder(s100, "http://www.iho.int/S201/1.0");
+                Assert.True(VerifyProductSpecification(s100));
+
+                var content = S100Framework.ClassBuilder.CatalogueBuilder(s100, "http://www.iho.int/S100FC/5.0");
 
                 File.WriteAllText(@".\..\..\..\S-201_FC.cs", content.fc, Encoding.UTF8);
                 File.WriteAllText(@".\..\..\..\S-201_ViewModel.cs", content.view, Encoding.UTF8);
@@ -342,7 +352,9 @@ namespace TestS100Framework
             public void Build_S501() {
                 var s100 = XDocument.Load(@".\Artifacts\S-501_FC_0_0_5_2024-08-09 - LOCAL.xml");
 
-                var content = S100Framework.ClassBuilder.CatalogueBuilder(s100, "http://www.iho.int/S201/1.0");
+                Assert.True(VerifyProductSpecification(s100));
+
+                var content = S100Framework.ClassBuilder.CatalogueBuilder52(s100);
 
                 File.WriteAllText(@".\..\..\..\S-501_FC.cs", content.fc, Encoding.UTF8);
                 File.WriteAllText(@".\..\..\..\S-501_ViewModel.cs", content.view, Encoding.UTF8);
