@@ -130,8 +130,9 @@ namespace S100Framework.Applications
                                 instance.scaleMinimum = plts_comp_scale;
                             }
 
-                            // TODO: BUISGL_BuildingSingle -> instance.natureOfConstruction
-
+                            if (current.NATCON != default) {
+                                instance.natureOfConstruction = EnumHelper.GetEnumValues<natureOfConstruction>(current.NATCON);
+                            }
 
                             if (current.COLOUR != default) {
                                 instance.colour = GetColours(current.COLOUR);
@@ -151,14 +152,28 @@ namespace S100Framework.Applications
 
                             instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
                             AddInformation(instance.information, feature);
-                            buffer["ps"] = ps101;
 
+                            buffer["ps"] = ps101;
                             buffer["code"] = instance.GetType().Name;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                             buffer["shape"] = current.SHAPE;
-                            insert.Insert(buffer);
-                            Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
+
+                            var featureN = featureClass.CreateRow(buffer);
+                            var name = Convert.ToString(featureN["name"]);
+
+                            // TODO: Create relation
+
+                            ConversionAnalytics.Instance.AddConverted(tableName, featureN.GetGlobalID());
+                            Logger.Current.DataObject((int)featureN.GetObjectID(), tableName, name, System.Text.Json.JsonSerializer.Serialize(instance));
                             convertedCount++;
+
+                            #region related
+
+                            relatedEquipment.CreateRelatedEquipment(current, name, target);
+
+                            #endregion related
+
+
                         }
                         break;
                     case 20: { // CTRPNT_ControlPoint

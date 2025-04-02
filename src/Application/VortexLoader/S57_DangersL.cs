@@ -151,7 +151,7 @@ namespace S100Framework.Applications
                                     22 => categoryOfObstruction.SharkNet,
                                     23 => categoryOfObstruction.Mangrove,
                                     -32767 =>(categoryOfObstruction)(-1),
-                                    // TODO: QUESTION: how to handle -1 on a required attribute without an S-101 equivalent "unknown". Illegal value assigned. MUST be fixed.
+                                    
 
                                     _ => throw new IndexOutOfRangeException(),
 

@@ -26,6 +26,10 @@ namespace S100Framework.Applications
         internal static string ps101 = "S-101";
         internal static string ps128 = "S-128";
 
+
+        internal static FeatureRelations featureRelations = new FeatureRelations();
+        internal static RelatedEquipment relatedEquipment;
+
         public static bool Load(Geodatabase destination, ParserResult<Options> arguments) {
             Func<Geodatabase> createGeodatabase = () => { throw new NotImplementedException(); };
 
@@ -95,6 +99,9 @@ namespace S100Framework.Applications
                     informationAssociation.DeleteRows(query);
                 });
 
+                featureRelations.Initialize(source);
+                relatedEquipment = new RelatedEquipment(source, featureRelations);
+
                 if (skinOfEarthOnly) {
                     // All "SKIN OF EARTH" cases / subtypes are marked with a "skin of earth" comment
                     var whereClause = filter.WhereClause.Clone();
@@ -129,7 +136,6 @@ namespace S100Framework.Applications
                     Store(() => S57_CulturalFeaturesA(source, destination, filter));
                     Store(() => S57_CulturalFeaturesP(source, destination, filter));
                     Store(() => S57_SeabedP(source, destination, filter));
-                    Store(() => S57_ProductCoverage(source, destination, filter));
                     Store(() => S57_PortsAndServicesL(source, destination, filter));
                     Store(() => S57_PortsAndServicesA(source, destination, filter));
                     Store(() => S57_PortsAndServicesP(source, destination, filter));
@@ -231,7 +237,7 @@ namespace S100Framework.Applications
             return rhythmOfLight;
         }
 
-        private static List<colour> GetColours(string color) {
+        internal static List<colour> GetColours(string color) {
             if (color== "-32767") {
                 return new List<colour>() { (colour)(-1) };
             }
@@ -268,22 +274,22 @@ namespace S100Framework.Applications
             //return colours;
         }
 
-        private static buoyShape GetBuoyShape(int? buoyShapeValue) {
-            return buoyShapeValue.Value switch {
-                1 => buoyShape.Conical,
-                2 => buoyShape.Can,
-                3 => buoyShape.Spherical,
-                4 => buoyShape.Pillar,
-                5 => buoyShape.Spar,
-                6 => buoyShape.Barrel,
-                7 => buoyShape.Superbuoy,
-                8 => buoyShape.IceBuoy,
-                -32767 => (buoyShape)(-1),
-                _ => throw new IndexOutOfRangeException("Invalid buoy shape value."),
-            };
-        }
+        //private static buoyShape GetBuoyShape(int? buoyShapeValue) {
+        //    return buoyShapeValue.Value switch {
+        //        1 => buoyShape.Conical,
+        //        2 => buoyShape.Can,
+        //        3 => buoyShape.Spherical,
+        //        4 => buoyShape.Pillar,
+        //        5 => buoyShape.Spar,
+        //        6 => buoyShape.Barrel,
+        //        7 => buoyShape.Superbuoy,
+        //        8 => buoyShape.IceBuoy,
+        //        -32767 => (buoyShape)(-1),
+        //        _ => throw new IndexOutOfRangeException("Invalid buoy shape value."),
+        //    };
+        //}
 
-        private static colourPattern GetColourPattern(string colorPattern) {
+        internal static colourPattern GetColourPattern(string colorPattern) {
             var colourPat = colorPattern switch {
                 "1" => colourPattern.HorizontalStripes,
                 "2" => colourPattern.VerticalStripes,

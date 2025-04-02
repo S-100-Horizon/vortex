@@ -14,12 +14,10 @@ namespace S100Framework.Applications
 
         private static void S57_AidsToNavigationP(Geodatabase source, Geodatabase target, QueryFilter filter) {
 
-            var featureRelations = new FeatureRelations();
-            var relatedEquipment = new RelatedEquipment(featureRelations);
 
             var tableName = "AidsToNavigationP";
 
-            featureRelations.Initialize(source);
+            
 
             
             var aidstonavigation = source.OpenDataset<FeatureClass>(source.GetName(tableName));
@@ -59,7 +57,7 @@ namespace S100Framework.Applications
                 switch (subtype) {
                     case 1: { // BCNCAR_BeaconCardinal
                             var instance = new CardinalBeacon();
-
+                            
                             #region aidstonavigation
                             if (current.BCNSHP.HasValue) {
                                 if (current.BCNSHP.Value == -32767)
@@ -103,6 +101,9 @@ namespace S100Framework.Applications
                             if (current.HEIGHT.HasValue) {
                                 instance.height = current.HEIGHT.Value;
                             }
+
+                            
+
 
                             // TODO: interoperabilityidentifier
 
@@ -163,6 +164,8 @@ namespace S100Framework.Applications
                             //if (!topmarkDaymarkHasValue && instance.topmark != null) {
                             //    Logger.Current.DataError(current.OBJECTID.Value, tableName, current.LNAM, $"Missing topmarkDaymark info on {nameof(instance)}");
                             //}
+                            var topmark = relatedEquipment.GetTopMark(current);
+                            instance.topmark = topmark;
 
                             if (current.CONVIS.HasValue) {
                                 if (current.CONVIS.Value == -32767)
@@ -187,16 +190,19 @@ namespace S100Framework.Applications
                             //insert.Insert(buffer);
 
                             var featureN = featureClass.CreateRow(buffer);
-                            var structureName = Convert.ToString(featureN["name"]);
+                            var name = Convert.ToString(featureN["name"]);
 
-                            Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
+                            // TODO: Create relation
+
+                            ConversionAnalytics.Instance.AddConverted(tableName, featureN.GetGlobalID());
+                            Logger.Current.DataObject((int)featureN.GetObjectID(), tableName, name, System.Text.Json.JsonSerializer.Serialize(instance));
                             convertedCount++;
 
                             #endregion aidstonavigation
                             #region related
-                            var related = featureRelations.GetRelated(current.GLOBALID);
 
-                            var equipmentTypes = featureRelations.GetS101EquipmentType(related);
+                            relatedEquipment.CreateRelatedEquipment(current, name, target);
+
                             #endregion related
                         }
                         break;
@@ -300,6 +306,9 @@ namespace S100Framework.Applications
                             //if (!topmarkDaymarkHasValue && instance.topmark != null) {
                             //    Logger.Current.DataError(current.OBJECTID.Value, tableName, current.LNAM, $"Missing topmarkDaymark info on {nameof(instance)}");
                             //}
+                            var topmark = relatedEquipment.GetTopMark(current);
+                            instance.topmark = topmark;
+
 
                             if (current.CONVIS.HasValue) {
                                 if (current.CONVIS.Value == -32767)
@@ -324,15 +333,18 @@ namespace S100Framework.Applications
                             //insert.Insert(buffer);
 
                             var featureN = featureClass.CreateRow(buffer);
-                            var structureName = Convert.ToString(featureN["name"]);
+                            var name = Convert.ToString(featureN["name"]);
 
-                            Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
+                            // TODO: Create relation
+
+                            ConversionAnalytics.Instance.AddConverted(tableName, featureN.GetGlobalID());
+                            Logger.Current.DataObject((int)featureN.GetObjectID(), tableName, name, System.Text.Json.JsonSerializer.Serialize(instance));
                             convertedCount++;
+
                             #endregion aidstonavigation
                             #region related
-                            var related = featureRelations.GetRelated(current.GLOBALID);
 
-                            var equipmentTypes = featureRelations.GetS101EquipmentType(related);
+                            relatedEquipment.CreateRelatedEquipment(current, name, target);
 
                             #endregion related
                         }
@@ -446,6 +458,9 @@ namespace S100Framework.Applications
                             //    Logger.Current.DataError(current.OBJECTID.Value, tableName, current.LNAM, $"Missing topmarkDaymark info on {nameof(instance)}");
                             //}
 
+                            var topmark = relatedEquipment.GetTopMark(current);
+                            instance.topmark = topmark;
+
                             if (current.CONVIS.HasValue) {
                                 if (current.CONVIS.Value == -32767)
                                     instance.visualProminence = EnumHelper.GetEnumValue<visualProminence>("-1");
@@ -470,17 +485,18 @@ namespace S100Framework.Applications
                             //insert.Insert(buffer);
 
                             var featureN = featureClass.CreateRow(buffer);
-                            var structureName = Convert.ToString(featureN["name"]);
+                            var name = Convert.ToString(featureN["name"]);
 
-                            Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
+                            // TODO: Create relation
+
+                            ConversionAnalytics.Instance.AddConverted(tableName, featureN.GetGlobalID());
+                            Logger.Current.DataObject((int)featureN.GetObjectID(), tableName, name, System.Text.Json.JsonSerializer.Serialize(instance));
                             convertedCount++;
+
                             #endregion aidstonavigation
                             #region related
-                            var related = featureRelations.GetRelated(current.GLOBALID);
 
-                            var equipmentTypes = featureRelations.GetS101EquipmentType(related);
-
-
+                            relatedEquipment.CreateRelatedEquipment(current, name, target);
 
                             #endregion related
                         }
@@ -585,6 +601,10 @@ namespace S100Framework.Applications
                             //    Logger.Current.DataError(current.OBJECTID.Value, tableName, current.LNAM, $"Missing topmarkDaymark info on {nameof(instance)}");
                             //}
 
+                            var topmark = relatedEquipment.GetTopMark(current);
+                            instance.topmark = topmark;
+
+
                             if (current.CONVIS.HasValue) {
                                 if (current.CONVIS.Value == -32767)
                                     instance.visualProminence = EnumHelper.GetEnumValue<visualProminence>("-1");
@@ -609,16 +629,18 @@ namespace S100Framework.Applications
                             //insert.Insert(buffer);
 
                             var featureN = featureClass.CreateRow(buffer);
-                            var structureName = Convert.ToString(featureN["name"]);
+                            var name = Convert.ToString(featureN["name"]);
 
-                            Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
+                            // TODO: Create relation
+
+                            ConversionAnalytics.Instance.AddConverted(tableName, featureN.GetGlobalID());
+                            Logger.Current.DataObject((int)featureN.GetObjectID(), tableName, name, System.Text.Json.JsonSerializer.Serialize(instance));
                             convertedCount++;
+
                             #endregion aidstonavigation
                             #region related
-                            var related = featureRelations.GetRelated(current.GLOBALID);
 
-                            var equipmentTypes = featureRelations.GetS101EquipmentType(related);
-
+                            relatedEquipment.CreateRelatedEquipment(current, name, target);
 
                             #endregion related
                         }
@@ -736,6 +758,10 @@ namespace S100Framework.Applications
                             //    Logger.Current.DataError(current.OBJECTID.Value, tableName, current.LNAM, $"Missing topmarkDaymark info on {nameof(instance)}");
                             //}
 
+                            var topmark = relatedEquipment.GetTopMark(current);
+                            instance.topmark = topmark;
+
+
                             if (current.CONVIS.HasValue) {
                                 if (current.CONVIS.Value == -32767)
                                     instance.visualProminence = EnumHelper.GetEnumValue<visualProminence>("-1");
@@ -757,16 +783,21 @@ namespace S100Framework.Applications
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                             buffer["shape"] = current.SHAPE;
                             //insert.Insert(buffer);
-                            var featureN = featureClass.CreateRow(buffer);
-                            var structureName = Convert.ToString(featureN["name"]);
 
-                            Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
+                            var featureN = featureClass.CreateRow(buffer);
+                            var name = Convert.ToString(featureN["name"]);
+
+                            // TODO: Create relation
+
+                            ConversionAnalytics.Instance.AddConverted(tableName, featureN.GetGlobalID());
+                            Logger.Current.DataObject((int)featureN.GetObjectID(), tableName, name, System.Text.Json.JsonSerializer.Serialize(instance));
                             convertedCount++;
 
                             #endregion aidstonavigation
                             #region related
 
-                            relatedEquipment.CreateRelatedEquipment(current, structureName);
+                            relatedEquipment.CreateRelatedEquipment(current, name, target);
+
                             #endregion related
                         }
                         break;
@@ -868,14 +899,20 @@ namespace S100Framework.Applications
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                             buffer["shape"] = current.SHAPE;
                             //insert.Insert(buffer);
-                            var featureN = featureClass.CreateRow(buffer);
-                            var structureName = Convert.ToString(featureN["name"]);
 
-                            Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
+                            var featureN = featureClass.CreateRow(buffer);
+                            var name = Convert.ToString(featureN["name"]);
+
+                            // TODO: Create relation
+
+                            ConversionAnalytics.Instance.AddConverted(tableName, featureN.GetGlobalID());
+                            Logger.Current.DataObject((int)featureN.GetObjectID(), tableName, name, System.Text.Json.JsonSerializer.Serialize(instance));
                             convertedCount++;
+
                             #endregion aidstonavigation
                             #region related
-                            relatedEquipment.CreateRelatedEquipment(current, structureName);
+
+                            relatedEquipment.CreateRelatedEquipment(current, name, target);
 
                             #endregion related
                         }
@@ -977,14 +1014,20 @@ namespace S100Framework.Applications
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                             buffer["shape"] = current.SHAPE;
                             //insert.Insert(buffer);
+
                             var featureN = featureClass.CreateRow(buffer);
-                            var structureName = Convert.ToString(featureN["name"]);
-                            Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
+                            var name = Convert.ToString(featureN["name"]);
+
+                            // TODO: Create relation
+
+                            ConversionAnalytics.Instance.AddConverted(tableName, featureN.GetGlobalID());
+                            Logger.Current.DataObject((int)featureN.GetObjectID(), tableName, name, System.Text.Json.JsonSerializer.Serialize(instance));
                             convertedCount++;
 
                             #endregion aidstonavigation
                             #region related
-                            relatedEquipment.CreateRelatedEquipment(current, structureName);
+
+                            relatedEquipment.CreateRelatedEquipment(current, name, target);
 
                             #endregion related
                         }
@@ -1074,14 +1117,20 @@ namespace S100Framework.Applications
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                             buffer["shape"] = current.SHAPE;
                             //insert.Insert(buffer);
+
                             var featureN = featureClass.CreateRow(buffer);
-                            var structureName = Convert.ToString(featureN["name"]);
-                            Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
+                            var name = Convert.ToString(featureN["name"]);
+
+                            // TODO: Create relation
+
+                            ConversionAnalytics.Instance.AddConverted(tableName, featureN.GetGlobalID());
+                            Logger.Current.DataObject((int)featureN.GetObjectID(), tableName, name, System.Text.Json.JsonSerializer.Serialize(instance));
                             convertedCount++;
 
                             #endregion aidstonavigation
                             #region related
-                            relatedEquipment.CreateRelatedEquipment(current, structureName);
+
+                            relatedEquipment.CreateRelatedEquipment(current, name, target);
 
                             #endregion related
 
@@ -1174,16 +1223,20 @@ namespace S100Framework.Applications
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                             buffer["shape"] = current.SHAPE;
                             //insert.Insert(buffer);
-                            var featureN = featureClass.CreateRow(buffer);
-                            var structureName = Convert.ToString(featureN["name"]);
 
-                            Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
+                            var featureN = featureClass.CreateRow(buffer);
+                            var name = Convert.ToString(featureN["name"]);
+
+                            // TODO: Create relation
+
+                            ConversionAnalytics.Instance.AddConverted(tableName, featureN.GetGlobalID());
+                            Logger.Current.DataObject((int)featureN.GetObjectID(), tableName, name, System.Text.Json.JsonSerializer.Serialize(instance));
                             convertedCount++;
 
                             #endregion aidstonavigation
                             #region related
-                            relatedEquipment.CreateRelatedEquipment(current, structureName);
 
+                            relatedEquipment.CreateRelatedEquipment(current, name, target);
 
                             #endregion related
 
@@ -1282,16 +1335,20 @@ namespace S100Framework.Applications
                             buffer["shape"] = current.SHAPE;
                             //insert.Insert(buffer);
 
-                            var featureN = featureClass.CreateRow(buffer);
-                            var structureName = Convert.ToString(featureN["name"]);
 
-                            Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
+                            var featureN = featureClass.CreateRow(buffer);
+                            var name = Convert.ToString(featureN["name"]);
+
+                            // TODO: Create relation
+
+                            ConversionAnalytics.Instance.AddConverted(tableName, featureN.GetGlobalID());
+                            Logger.Current.DataObject((int)featureN.GetObjectID(), tableName, name, System.Text.Json.JsonSerializer.Serialize(instance));
                             convertedCount++;
 
                             #endregion aidstonavigation
                             #region related
-                            relatedEquipment.CreateRelatedEquipment(current, structureName);
 
+                            relatedEquipment.CreateRelatedEquipment(current, name, target);
 
                             #endregion related
 
@@ -1369,6 +1426,9 @@ namespace S100Framework.Applications
                             //    Logger.Current.DataError(current.OBJECTID.Value, tableName, current.LNAM, $"Missing topmarkDaymark info on {nameof(instance)}");
                             //}
 
+                            var topmark = relatedEquipment.GetTopMark(current);
+                            instance.topmark = topmark;
+
                             if (plts_comp_scale != default) {
                                 instance.scaleMinimum = plts_comp_scale;
                             }
@@ -1385,15 +1445,20 @@ namespace S100Framework.Applications
 
                             //insert.Insert(buffer);
 
-                            var featureN = featureClass.CreateRow(buffer);
-                            var structureName = Convert.ToString(featureN["name"]);
 
-                            Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
+                            var featureN = featureClass.CreateRow(buffer);
+                            var name = Convert.ToString(featureN["name"]);
+
+                            // TODO: Create relation
+
+                            ConversionAnalytics.Instance.AddConverted(tableName, featureN.GetGlobalID());
+                            Logger.Current.DataObject((int)featureN.GetObjectID(), tableName, name, System.Text.Json.JsonSerializer.Serialize(instance));
                             convertedCount++;
 
                             #endregion aidstonavigation
                             #region related
-                            relatedEquipment.CreateRelatedEquipment(current, structureName);
+
+                            relatedEquipment.CreateRelatedEquipment(current, name, target);
 
                             #endregion related
 
@@ -1489,15 +1554,20 @@ namespace S100Framework.Applications
                             buffer["shape"] = current.SHAPE;
                             //insert.Insert(buffer);
 
-                            var featureN = featureClass.CreateRow(buffer);
-                            var structureName = Convert.ToString(featureN["name"]);
 
-                            Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
+                            var featureN = featureClass.CreateRow(buffer);
+                            var name = Convert.ToString(featureN["name"]);
+
+                            // TODO: Create relation
+
+                            ConversionAnalytics.Instance.AddConverted(tableName, featureN.GetGlobalID());
+                            Logger.Current.DataObject((int)featureN.GetObjectID(), tableName, name, System.Text.Json.JsonSerializer.Serialize(instance));
                             convertedCount++;
+
                             #endregion aidstonavigation
                             #region related
-                            relatedEquipment.CreateRelatedEquipment(current, structureName);
 
+                            relatedEquipment.CreateRelatedEquipment(current, name, target);
 
                             #endregion related
 
@@ -1571,29 +1641,34 @@ namespace S100Framework.Applications
                             buffer["shape"] = current.SHAPE;
                             //insert.Insert(buffer);
 
-                            var featureN = featureClass.CreateRow(buffer);
-                            var structureName = Convert.ToString(featureN["name"]);
 
-                            Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
+                            var featureN = featureClass.CreateRow(buffer);
+                            var name = Convert.ToString(featureN["name"]);
+
+                            // TODO: Create relation
+
+                            ConversionAnalytics.Instance.AddConverted(tableName, featureN.GetGlobalID());
+                            Logger.Current.DataObject((int)featureN.GetObjectID(), tableName, name, System.Text.Json.JsonSerializer.Serialize(instance));
                             convertedCount++;
 
                             #endregion aidstonavigation
                             #region related
-                            relatedEquipment.CreateRelatedEquipment(current, structureName);
 
+                            relatedEquipment.CreateRelatedEquipment(current, name, target);
 
                             #endregion related
                         }
                         break;
                     case 65: { // LIGHTS_Light // SLAVE RIND: 2
+                            // Only free floating lights!
                             // lights without frels
                             //var light = CreateLight(current, insert, buffer, feature, tableName, convertedCount, featureClass);
                             ;
                             //var related = featureRelations.GetRelated(current.GLOBALID);
 
                             var lnam = current.LNAM;
-                            if (featureRelations.GetS101TypeFrom(current) == typeof(LightSectored)) {
-                                var instance = CreateLightSectored(current, new()); // No related sectors - only the one on the feature.
+                            if (FeatureRelations.GetS101CatlitTypeFrom(current) == typeof(LightSectored)) {
+                                var instance = CreateLightSectored(new List<AidsToNavigationP>() { current }); // No related sectors - only the one on the feature.
                                 AddInformation(instance.information, feature);
 
                                 buffer["ps"] = ps101;
@@ -1610,7 +1685,7 @@ namespace S100Framework.Applications
 
 
                             }
-                            else if (featureRelations.GetS101TypeFrom(current) == typeof(LightAirObstruction)) {
+                            else if (FeatureRelations.GetS101CatlitTypeFrom(current) == typeof(LightAirObstruction)) {
                                 var instance = CreateLightAirObstruction(current);
 
                                 AddInformation(instance.information, feature);
@@ -1624,7 +1699,7 @@ namespace S100Framework.Applications
                                 Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
                                 convertedCount++;
                             }
-                            else if (featureRelations.GetS101TypeFrom(current) == typeof(LightFogDetector)) {
+                            else if (FeatureRelations.GetS101CatlitTypeFrom(current) == typeof(LightFogDetector)) {
                                 var instance = CreateLightFogDetector(current);
                                 AddInformation(instance.information, feature);
 
@@ -1639,7 +1714,7 @@ namespace S100Framework.Applications
                                 Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
                                 convertedCount++;
                             }
-                            else if (featureRelations.GetS101TypeFrom(current) == typeof(LightAllAround)) {
+                            else if (FeatureRelations.GetS101CatlitTypeFrom(current) == typeof(LightAllAround)) {
                                 var instance = CreateLightAllAround(current);
 
                                 AddInformation(instance.information, feature);
@@ -1725,6 +1800,8 @@ namespace S100Framework.Applications
                             //if (!topmarkDaymarkHasValue && instance.topmark != null) {
                             //    Logger.Current.DataError(current.OBJECTID.Value, tableName, current.LNAM, $"Missing topmarkDaymark info on {nameof(instance)}");
                             //}
+                            var topmark = relatedEquipment.GetTopMark(current);
+                            instance.topmark = topmark;
 
                             if (current.CONVIS.HasValue) {
                                 if (current.CONVIS.Value == -32767)
@@ -1749,15 +1826,18 @@ namespace S100Framework.Applications
                             //insert.Insert(buffer);
 
                             var featureN = featureClass.CreateRow(buffer);
-                            var structureName = Convert.ToString(featureN["name"]);
+                            var name = Convert.ToString(featureN["name"]);
 
-                            Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
+                            // TODO: Create relation
+
+                            ConversionAnalytics.Instance.AddConverted(tableName, featureN.GetGlobalID());
+                            Logger.Current.DataObject((int)featureN.GetObjectID(), tableName, name, System.Text.Json.JsonSerializer.Serialize(instance));
                             convertedCount++;
 
                             #endregion aidstonavigation
                             #region related
-                            relatedEquipment.CreateRelatedEquipment(current, structureName);
 
+                            relatedEquipment.CreateRelatedEquipment(current, name, target);
 
                             #endregion related
 
@@ -1853,15 +1933,20 @@ namespace S100Framework.Applications
                             buffer["shape"] = current.SHAPE;
                             //insert.Insert(buffer);
 
-                            var featureN = featureClass.CreateRow(buffer);
-                            var structureName = Convert.ToString(featureN["name"]);
 
-                            Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
+                            var featureN = featureClass.CreateRow(buffer);
+                            var name = Convert.ToString(featureN["name"]);
+
+                            // TODO: Create relation
+
+                            ConversionAnalytics.Instance.AddConverted(tableName, featureN.GetGlobalID());
+                            Logger.Current.DataObject((int)featureN.GetObjectID(), tableName, name, System.Text.Json.JsonSerializer.Serialize(instance));
                             convertedCount++;
+
                             #endregion aidstonavigation
                             #region related
-                            relatedEquipment.CreateRelatedEquipment(current, structureName);
 
+                            relatedEquipment.CreateRelatedEquipment(current, name, target);
 
                             #endregion related
 
@@ -1935,16 +2020,20 @@ namespace S100Framework.Applications
 
                             //insert.Insert(buffer);
 
-                            var featureN = featureClass.CreateRow(buffer);
-                            var structureName = Convert.ToString(featureN["name"]);
 
-                            Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
+                            var featureN = featureClass.CreateRow(buffer);
+                            var name = Convert.ToString(featureN["name"]);
+
+                            // TODO: Create relation
+
+                            ConversionAnalytics.Instance.AddConverted(tableName, featureN.GetGlobalID());
+                            Logger.Current.DataObject((int)featureN.GetObjectID(), tableName, name, System.Text.Json.JsonSerializer.Serialize(instance));
                             convertedCount++;
 
                             #endregion aidstonavigation
                             #region related
-                            relatedEquipment.CreateRelatedEquipment(current, structureName);
 
+                            relatedEquipment.CreateRelatedEquipment(current, name, target);
 
                             #endregion related
 
@@ -2016,16 +2105,20 @@ namespace S100Framework.Applications
                             buffer["shape"] = current.SHAPE;
                             //insert.Insert(buffer);
 
-                            var featureN = featureClass.CreateRow(buffer);
-                            var structureName = Convert.ToString(featureN["name"]);
 
-                            Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
+                            var featureN = featureClass.CreateRow(buffer);
+                            var name = Convert.ToString(featureN["name"]);
+
+                            // TODO: Create relation
+
+                            ConversionAnalytics.Instance.AddConverted(tableName, featureN.GetGlobalID());
+                            Logger.Current.DataObject((int)featureN.GetObjectID(), tableName, name, System.Text.Json.JsonSerializer.Serialize(instance));
                             convertedCount++;
 
                             #endregion aidstonavigation
                             #region related
-                            relatedEquipment.CreateRelatedEquipment(current, structureName);
 
+                            relatedEquipment.CreateRelatedEquipment(current, name, target);
 
                             #endregion related
 
@@ -2072,17 +2165,12 @@ namespace S100Framework.Applications
                                 instance.status = GetStatus(current.STATUS);
                             }
 
-                            // topmarkdayShape for topmark
+                            // TODO: topmarkdayShape for topmark
                             topmarkDaymarkShape? topmarkDaymark = null;
 
                             if (current.TOPSHP.HasValue) {
                                 topmarkDaymark = EnumHelper.GetEnumValue<topmarkDaymarkShape>(current.TOPSHP.Value);
                             }
-
-                            //if (!topmarkDaymarkHasValue && instance.topmark != null) {
-                            //    Logger.Current.DataError(current.OBJECTID.Value, tableName, current.LNAM, $"Missing topmarkDaymark info on {nameof(instance)}");
-                            //}
-
 
                             if (plts_comp_scale != default) {
                                 instance.scaleMinimum = plts_comp_scale;
@@ -2097,15 +2185,20 @@ namespace S100Framework.Applications
                             buffer["shape"] = current.SHAPE;
                             //insert.Insert(buffer);
 
-                            var featureN = featureClass.CreateRow(buffer);
-                            var structureName = Convert.ToString(featureN["name"]);
 
-                            Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
+                            var featureN = featureClass.CreateRow(buffer);
+                            var name = Convert.ToString(featureN["name"]);
+
+                            // TODO: Create relation
+
+                            ConversionAnalytics.Instance.AddConverted(tableName, featureN.GetGlobalID());
+                            Logger.Current.DataObject((int)featureN.GetObjectID(), tableName, name, System.Text.Json.JsonSerializer.Serialize(instance));
                             convertedCount++;
+
                             #endregion aidstonavigation
                             #region related
-                            relatedEquipment.CreateRelatedEquipment(current, structureName);
 
+                            relatedEquipment.CreateRelatedEquipment(current, name, target);
 
                             #endregion related
 
@@ -2187,14 +2280,18 @@ namespace S100Framework.Applications
                             //insert.Insert(buffer);
 
                             var featureN = featureClass.CreateRow(buffer);
-                            var structureName = Convert.ToString(featureN["name"]);
+                            var name = Convert.ToString(featureN["name"]);
 
-                            Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
+                            // TODO: Create relation
+
+                            ConversionAnalytics.Instance.AddConverted(tableName, featureN.GetGlobalID());
+                            Logger.Current.DataObject((int)featureN.GetObjectID(), tableName, name, System.Text.Json.JsonSerializer.Serialize(instance));
                             convertedCount++;
+
                             #endregion aidstonavigation
                             #region related
-                            relatedEquipment.CreateRelatedEquipment(current, structureName);
 
+                            relatedEquipment.CreateRelatedEquipment(current, name, target);
 
                             #endregion related
 
@@ -2280,14 +2377,18 @@ namespace S100Framework.Applications
                             //insert.Insert(buffer);
 
                             var featureN = featureClass.CreateRow(buffer);
-                            var structureName = Convert.ToString(featureN["name"]);
+                            var name = Convert.ToString(featureN["name"]);
 
-                            Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
+                            // TODO: Create relation
+
+                            ConversionAnalytics.Instance.AddConverted(tableName, featureN.GetGlobalID());
+                            Logger.Current.DataObject((int)featureN.GetObjectID(), tableName, name, System.Text.Json.JsonSerializer.Serialize(instance));
                             convertedCount++;
+
                             #endregion aidstonavigation
                             #region related
-                            relatedEquipment.CreateRelatedEquipment(current, structureName);
 
+                            relatedEquipment.CreateRelatedEquipment(current, name, target);
 
                             #endregion related
                         }
@@ -2321,73 +2422,23 @@ namespace S100Framework.Applications
             Logger.Current.DataTotalCount(tableName, recordCount, convertedCount);
         }
 
-        private static LightAllAround CreateLightAllAround(AidsToNavigationP current) {
+        internal static LightAllAround CreateLightAllAround(AidsToNavigationP current) {
             var instance = new LightAllAround();
 
-            if (current.PLTS_COMP_SCALE.HasValue) {
-                instance.scaleMinimum = current.PLTS_COMP_SCALE.Value;
+            if (current.COLOUR != default) {
+                instance.colour = GetColours(current.COLOUR);
             }
 
             instance.rhythmOfLight = GetRythmOfLight(current);
 
-            if (current.COLOUR != default) {
-                instance.colour = GetColours(current.COLOUR);
-            }
-
-            if (current.STATUS != default) {
-                instance.status = GetStatus(current.STATUS);
-            }
-
-            instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
-
-            return instance;
-        }
-
-        private static LightFogDetector CreateLightFogDetector(AidsToNavigationP current) {
-            var instance = new LightFogDetector();
-            if (current.PLTS_COMP_SCALE.HasValue) {
-                instance.scaleMinimum = current.PLTS_COMP_SCALE.Value;
-            }
-            if (current.COLOUR != default) {
-                instance.colour = GetColours(current.COLOUR);
-            }
-
-            if (current.STATUS != default) {
-                instance.status = GetStatus(current.STATUS);
-            }
-
-            instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
-
-            return instance;
-        }
-
-        private static LightAirObstruction CreateLightAirObstruction(AidsToNavigationP current) {
-            // LIGHTS: Attribute catlits contains value 6 (air obstruction light)
-            // Build "Light Air Obstruction");
-            var instance = new LightAirObstruction();
-            if (current.PLTS_COMP_SCALE.HasValue) {
-                instance.scaleMinimum = current.PLTS_COMP_SCALE.Value;
-            }
-            if (current.COLOUR != default) {
-                instance.colour = GetColours(current.COLOUR);
-            }
-
-            if (current.STATUS != default) {
-                instance.status = GetStatus(current.STATUS);
-            }
-
-            instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
-
-            return instance;
-        }
-
-        private static LightSectored CreateLightSectored(AidsToNavigationP current, List<PltsSlave> sectors) {
-            var instance = new LightSectored();
-
-            
-
             if (current.CATLIT != null) {
-                instance.categoryOfLight = EnumHelper.GetEnumValues<categoryOfLight>(current.CATLIT);
+
+                if (current.CATLIT == "-32767") {
+                    instance.categoryOfLight = EnumHelper.GetEnumValues<categoryOfLight>(-1);
+                }
+                else {
+                    instance.categoryOfLight = EnumHelper.GetEnumValues<categoryOfLight>(current.CATLIT);
+                }
             }
 
             if (current.EXCLIT.HasValue) {
@@ -2413,8 +2464,101 @@ namespace S100Framework.Applications
                 instance.signalGeneration = EnumHelper.GetEnumValue<signalGeneration>(current.SIGGEN.Value);
             }
 
-            instance.sectorCharacteristics = (GetSectorCharacteristics(current, sectors));
+            if (current.HEIGHT.HasValue) {
+                instance.height = current.HEIGHT.Value;
+            }
 
+            if (current.EXCLIT.HasValue) {
+                instance.exhibitionConditionOfLight = EnumHelper.GetEnumValue<exhibitionConditionOfLight>(current.EXCLIT);
+            }
+
+            if (current.MARSYS.HasValue) {
+                instance.marksNavigationalSystemOf = EnumHelper.GetEnumValue<marksNavigationalSystemOf>(current.MARSYS);
+            }
+
+            if (current.MLTYLT.HasValue) {
+                instance.multiplicityOfFeatures = new multiplicityOfFeatures() {
+                    multiplicityKnown = true,
+                    numberOfFeatures = current.MLTYLT
+                };
+            }
+
+            return instance;
+        }
+
+        internal static LightFogDetector CreateLightFogDetector(AidsToNavigationP current) {
+            var instance = new LightFogDetector();
+            if (current.PLTS_COMP_SCALE.HasValue) {
+                instance.scaleMinimum = current.PLTS_COMP_SCALE.Value;
+            }
+            if (current.COLOUR != default) {
+                instance.colour = GetColours(current.COLOUR);
+            }
+
+            if (current.STATUS != default) {
+                instance.status = GetStatus(current.STATUS);
+            }
+
+            instance.rhythmOfLight = GetRythmOfLight(current);
+
+
+            instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
+
+            return instance;
+        }
+
+        internal static LightAirObstruction CreateLightAirObstruction(AidsToNavigationP current) {
+            // LIGHTS: Attribute catlits contains value 6 (air obstruction light)
+            // Build "Light Air Obstruction");
+            var instance = new LightAirObstruction();
+            if (current.PLTS_COMP_SCALE.HasValue) {
+                instance.scaleMinimum = current.PLTS_COMP_SCALE.Value;
+            }
+            if (current.COLOUR != default) {
+                instance.colour = GetColours(current.COLOUR);
+            }
+
+            if (current.STATUS != default) {
+                instance.status = GetStatus(current.STATUS);
+            }
+
+            instance.rhythmOfLight = GetRythmOfLight(current);
+
+            instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
+
+            return instance;
+        }
+
+        internal static LightSectored CreateLightSectored(IList<AidsToNavigationP> lights) {
+            var instance = new LightSectored();
+
+            // TODO: evaluate
+            var current = lights.First();
+
+            if (current.EXCLIT.HasValue) {
+                instance.exhibitionConditionOfLight = EnumHelper.GetEnumValue<exhibitionConditionOfLight>(current.EXCLIT.Value);
+            }
+
+            DateHelper.TryGetFixedDateRange(current.DATSTA, current.DATEND, out var dateRange);
+            if (dateRange != default) {
+                instance.fixedDateRange = dateRange;
+            }
+
+            instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
+
+            if (current.PLTS_COMP_SCALE.HasValue) {
+                instance.scaleMinimum = current.PLTS_COMP_SCALE.Value;
+            }
+
+            if (current.STATUS != default) {
+                instance.status = GetStatus(current.STATUS);
+            }
+
+            if (current.SIGGEN != null) {
+                instance.signalGeneration = EnumHelper.GetEnumValue<signalGeneration>(current.SIGGEN.Value);
+            }
+
+            instance.sectorCharacteristics = (GetSectorCharacteristics(lights));
 
             if (current.HEIGHT.HasValue) {
                 instance.height = current.HEIGHT.Value;
@@ -2445,39 +2589,67 @@ namespace S100Framework.Applications
         /// </summary>
         /// <param name="current"></param>
         /// <param name="sectors"></param>
-        /// <returns></returns>
-        private static List<sectorCharacteristics> GetSectorCharacteristics(AidsToNavigationP current, List<PltsSlave> sectors) {
-
-            var rhythmofLight = GetRythmOfLight(current);
-            
+        /// <returns>List of sectorCharacteristics</returns>
+        internal static List<sectorCharacteristics> GetSectorCharacteristics(IList<AidsToNavigationP> lights) {
             var sectorCharacteristics = new List<sectorCharacteristics>();
 
-            if (sectors.Count == 0) {
-                if (current.SECTR1 != null && current.SECTR2 != null) {
-                     {
-                        sectorCharacteristics.Add(new sectorCharacteristics() {
-                            lightCharacteristic = rhythmofLight.lightCharacteristic,
-                            signalGroup = rhythmofLight.signalGroup,
-                            signalPeriod = rhythmofLight.signalPeriod,
-                            signalSequence = rhythmofLight.signalSequence,
-                            lightSector = new List<lightSector>() {
+            //if (sectors == null || sectors.Count == 0) {
+            //    var rhythmofLight = GetRythmOfLight(current);
+            //    if (current.SECTR1 != null && current.SECTR2 != null) {
+            //        {
+            //            sectorCharacteristics.Add(new sectorCharacteristics() {
+            //                lightCharacteristic = rhythmofLight.lightCharacteristic,
+            //                signalGroup = rhythmofLight.signalGroup,
+            //                signalPeriod = rhythmofLight.signalPeriod,
+            //                signalSequence = rhythmofLight.signalSequence,
+            //                lightSector = new List<lightSector>() {
+            //                    new lightSector() {
+            //                        valueOfNominalRange = current.VALNMR.Value,
+            //                        colour = EnumHelper.GetEnumValues<colour>(current.COLOUR),
+            //                        sectorLimit = new sectorLimit() {
+            //                            sectorLimitOne = new sectorLimitOne() {
+            //                                sectorBearing = current.SECTR1.Value,
+            //                            },
+            //                            sectorLimitTwo = new sectorLimitTwo() {
+            //                                sectorBearing = current.SECTR2.Value,
+            //                            }
+            //                        }
+            //                    },
+            //                }
+            //            });
+            //        };
+            //    }
+            //}
+            //else {
+                foreach (var light in lights) {
+                    var rhythmofLight = GetRythmOfLight(light);
+                    if (light.SECTR1 != null && light.SECTR2 != null) {
+                        {
+                            sectorCharacteristics.Add(new sectorCharacteristics() {
+                                lightCharacteristic = rhythmofLight.lightCharacteristic,
+                                signalGroup = rhythmofLight.signalGroup,
+                                signalPeriod = rhythmofLight.signalPeriod,
+                                signalSequence = rhythmofLight.signalSequence,
+                                lightSector = new List<lightSector>() {
                                 new lightSector() {
-                                    valueOfNominalRange = current.VALNMR.Value,
-                                    colour = EnumHelper.GetEnumValues<colour>(current.COLOUR),
+                                    valueOfNominalRange = light.VALNMR.GetValueOrDefault(),
+                                    colour = EnumHelper.GetEnumValues<colour>(light.COLOUR),
                                     sectorLimit = new sectorLimit() {
                                         sectorLimitOne = new sectorLimitOne() {
-                                            sectorBearing = current.SECTR1.Value,
+                                            sectorBearing = light.SECTR1.Value,
                                         },
                                         sectorLimitTwo = new sectorLimitTwo() {
-                                            sectorBearing = current.SECTR2.Value
+                                            sectorBearing = light.SECTR2.Value,
                                         }
                                     }
                                 },
                             }
-                        });
-                    };
+                            });
+                        };
+                    }
+
                 }
-            }
+            //}
 
             return sectorCharacteristics;
         }

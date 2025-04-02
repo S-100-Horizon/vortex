@@ -109,8 +109,8 @@ namespace S100Framework.Applications
                         break;
 
                     case 20: { // OBSTRN
-                            if (current.CATOBS.HasValue) {
-                                Logger.Current.DataError(objectid, tableName, longname, $"Unknown catobs: {current.CATOBS.Value}");
+                            if (!current.CATOBS.HasValue) {
+                                Logger.Current.DataError(objectid, tableName, longname, $"Unknown catobs for aton: {current.LNAM}");
                                 continue;
                             }
 
@@ -169,9 +169,13 @@ namespace S100Framework.Applications
 
                                 instance.condition = default;
 
-
                                 if (current.CATOBS.HasValue) {
-                                    instance.categoryOfObstruction = EnumHelper.GetEnumValue<categoryOfObstruction>(current.CATOBS.Value);
+                                    if (current.CATOBS.Value == -32767)
+                                        instance.categoryOfObstruction = EnumHelper.GetEnumValue<categoryOfObstruction>(-1);
+                                    else {
+
+                                        instance.categoryOfObstruction = EnumHelper.GetEnumValue<categoryOfObstruction>(current.CATOBS.Value);
+                                    }
                                 }
                                 if (current.VALSOU.HasValue) {
                                     // TODO: implement defaultClearanceDepth

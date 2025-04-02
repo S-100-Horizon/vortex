@@ -95,7 +95,6 @@ namespace S100Framework.Applications
                                     "17" => natureOfSurface.Shells,
                                     "18" => natureOfSurface.Boulder,
                                     "-32767" => (natureOfSurface)(-1),
-                                    // TODO: QUESTION: how to handle -1 on a required attribute without an S-101 equivalent "unknown". Illegal value assigned. MUST be fixed.
                                     _ => throw new ArgumentOutOfRangeException(nameof(current.NATSUR), "Invalid value for nature of surface.")
                                 };
                             }
@@ -120,7 +119,6 @@ namespace S100Framework.Applications
                                     6 => waterLevelEffect.SubjectToInundationOrFlooding,  // subject to inundation or flooding
                                     7 => waterLevelEffect.Floating,  // floating
                                     -32767 => (waterLevelEffect)(-1),
-                                    // TODO: QUESTION: how to handle -1 on a required attribute without an S-101 equivalent "unknown". Illegal value assigned. MUST be fixed.
                                     _ => throw new IndexOutOfRangeException(),
                                 };
                             }

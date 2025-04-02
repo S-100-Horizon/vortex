@@ -1,79 +1,285 @@
 ﻿using ArcGIS.Core.Data;
-using S100Framework.Applications;
 using S100Framework.Applications.S57.esri;
 using S100Framework.DomainModel.S101.FeatureTypes;
 using S100Framework.DomainModel.S101;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Text.Json;
-using System.Threading.Tasks;
-using S100Framework.DomainModel;
+using S100Framework.DomainModel.S101.ComplexAttributes;
 
 namespace S100Framework.Applications
 {
-    internal class RelatedEquipment
-    {
+    internal class RelatedEquipment {
 
         FeatureRelations _featureRelations;
+        Geodatabase _source;
 
-        public RelatedEquipment(FeatureRelations featureRelations) {
+        public RelatedEquipment(Geodatabase source, FeatureRelations featureRelations) {
             this._featureRelations = featureRelations;
+            this._source = source;
         }
 
-        internal void CreateRelatedEquipment(AidsToNavigationP structure, string id) {
-            var related = _featureRelations.GetRelated(structure.GLOBALID);
-            if (related == null || related.Count == 0) {
-                return;
+        internal topmark GetTopMark(AidsToNavigationP structure) {
+            var topmarks = _featureRelations.GetRelated<AidsToNavigationP>(typeof(topmark), structure.GLOBALID);
+
+            if (topmarks == null || topmarks.Count() == 0) {
+                return null;
             }
 
-            var equipmentTypes = _featureRelations.GetS101EquipmentType(related);
-
-            if (equipmentTypes == null || equipmentTypes.Count == 0) {
-                return;
+            if (topmarks.Count() > 1) {
+                throw new NotSupportedException("Multiple related topmarks");
             }
 
-            
+            var relatedTopmark = topmarks.First();
 
+            if (relatedTopmark != null) {
 
+                List<colour> topmarkColours = null;
 
+                colourPattern? topmarkColourPattern = null;
 
+                if (relatedTopmark.COLOUR != default) {
+                    topmarkColours = ImporterNIS.GetColours(relatedTopmark.COLOUR);
+                }
+
+                if (relatedTopmark.COLPAT != default) {
+                    topmarkColourPattern = ImporterNIS.GetColourPattern(relatedTopmark.COLPAT);
+                }
+
+                var topmark = new topmark() {
+                    // TODO: shapeinformation #15 @https://geodatastyrelsen.atlassian.net/wiki/spaces/SOEKORT/pages/5070028848/S-57+to+S-101+Conversion+Action+Points?force_transition=910d1b59-0dc5-42d7-bd2c-a81edd431caf,
+                    shapeInformation = default
+                };
+
+                if (topmarkColours != null) {
+                    topmark.colour = topmarkColours;
+                }
+
+                if (topmarkColourPattern.HasValue) {
+                    topmark.colourPattern = topmarkColourPattern.Value;
+                }
+
+                if (relatedTopmark.TOPSHP.HasValue) {
+                    topmark.topmarkDaymarkShape = EnumHelper.GetEnumValue<topmarkDaymarkShape>(relatedTopmark.TOPSHP.Value);
+                }
+                return topmark;
+            }
+            return null;
         }
 
-        private static (FeatureNode node, string name, string type)? CreateRadarTransponderbeacon(AidsToNavigationP current, InsertCursor insert, RowBuffer buffer, Feature feature, string tableName, int convertedCount, FeatureClass featureClass) {
-            //if (current.FCSUBTYPE != 65)
-            //    throw new ArgumentOutOfRangeException($"Illegal subtype for transponder beacon {current}");
+        internal void CreateRelatedEquipment(S57Object s57Object, string structureId, Geodatabase target) {
+            if (s57Object is AidsToNavigationP) {
+                var sourceTable = "AidsToNavigationP";
+                var structure = (AidsToNavigationP)s57Object;
+                bool hasRelated = _featureRelations.HasRelated(structure.GLOBALID);
+                if (!hasRelated) {
+                    return;
+                }
 
-            var instance = new RadarTransponderBeacon();
+                var tableName = target.GetName("point");
+                var featureClass = target.OpenDataset<FeatureClass>(tableName);
+                var buffer = featureClass.CreateRowBuffer();
 
-            if (current.CATRTB != null) {
-                instance.categoryOfRadarTransponderBeacon = EnumHelper.GetEnumValue<categoryOfRadarTransponderBeacon>(current.CATRTB);
+                //var types = FeatureRelations.GetS101CatlitTypeFrom(structure);
+
+                var related = _featureRelations.GetRelated<AidsToNavigationP>(typeof(LightSectored), structure.GLOBALID);
+                var hasRelatedSectoredLights = related.Any();
+
+                if (hasRelatedSectoredLights) {
+                    var instance = ImporterNIS.CreateLightSectored(related);
+
+                    buffer["ps"] = ImporterNIS.ps101;
+                    buffer["code"] = instance.GetType().Name;
+                    buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, ImporterNIS.jsonSerializerOptions);
+                    buffer["shape"] = structure.SHAPE;
+
+                    var featureN = featureClass.CreateRow(buffer);
+                    var equipmentName = Convert.ToString(featureN["name"]);
+
+                    // TODO: Create relation
+                    ConversionAnalytics.Instance.AddConverted(sourceTable, related.Select(obj => obj.GLOBALID).ToList());
+                    Logger.Current.DataObject((int)featureN.GetObjectID(), tableName, equipmentName, System.Text.Json.JsonSerializer.Serialize(instance));
+                }
+
+                related = _featureRelations.GetRelated<AidsToNavigationP>(typeof(LightAllAround), structure.GLOBALID);
+                var hasRelatedLightsAllAround = related.Any();
+                if (hasRelatedLightsAllAround) {
+                    foreach (var light in related) {
+                        //var slave = pltsSlave.Fetch(_source, Direction.Destination);
+                        var instance = ImporterNIS.CreateLightAllAround(light);
+
+                        buffer["ps"] = ImporterNIS.ps101;
+                        buffer["code"] = instance.GetType().Name;
+                        buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, ImporterNIS.jsonSerializerOptions);
+                        buffer["shape"] = light.SHAPE;
+
+                        var featureN = featureClass.CreateRow(buffer);
+                        var equipmentName = Convert.ToString(featureN["name"]);
+
+                        // TODO: Create relation
+
+                        ConversionAnalytics.Instance.AddConverted(sourceTable, light.GLOBALID);
+                        Logger.Current.DataObject((int)featureN.GetObjectID(), tableName, equipmentName, System.Text.Json.JsonSerializer.Serialize(instance));
+                    }
+                }
             }
 
-            if (current.PLTS_COMP_SCALE != default) {
-                instance.scaleMinimum = current.PLTS_COMP_SCALE;
+            else {
+                throw new NotSupportedException($"{s57Object.GetType()}");
             }
 
-            if (current.STATUS != default) {
-                instance.status = ImporterNIS.GetStatus(current.STATUS);
-            }
+            //else if (pltsSlave.S101Type == typeof(topmark)) {
+            //    // Ignore
+            //    continue;
+            //}
+            //else if (pltsSlave.S101Type == typeof(RadarTransponderBeacon)) {
+            //    // TODO: Create radar transponder beacon
+            //    continue;
+            //}
+            //else if (pltsSlave.S101Type == null && pltsSlave.S57Object is DangersP) {
+            //    // TODO: Create radar transponder beacon
+            //    continue;
+            //}
+            //else if (pltsSlave.S101Type == typeof(Obstruction)) {
+            //    // TODO: Create Obstruction
+            //    continue;
+            //}
+            //else {
+            //    throw new NotSupportedException($"Create related object: {pltsSlave.PLTS_Frel.DEST_FC}");
+            //}
 
-            instance.featureName = ImporterNIS.GetFeatureName(current.OBJNAM, current.NOBJNM);
-
-            ImporterNIS.AddInformation(instance.information, feature);
-            buffer["ps"] = ImporterNIS.ps101;
-            buffer["code"] = instance.GetType().Name;
-            buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, ImporterNIS.jsonSerializerOptions);
-            buffer["shape"] = current.SHAPE;
-            insert.Insert(buffer);
-
-            var name = Convert.ToString(buffer["name"]);
-
-            Logger.Current.DataObject(current.OBJECTID.Value, tableName, current.LNAM, System.Text.Json.JsonSerializer.Serialize(instance));
-            convertedCount++;
-            return (instance: instance, name: name, type: instance.GetType().Name);
         }
+    
+
+        //var equipmentTypes = _featureRelations.GetS101EquipmentType(related);
+        //if (equipmentTypes == null || equipmentTypes.Count == 0) {
+        //    return;
+        //}
+        //foreach (var type in equipmentTypes) {
+        //}
+
+        //internal void CreateRelatedEquipment(AidsToNavigationP structure, string structureId, Geodatabase target) {
+        //    var related = _featureRelations.GetRelated(structure.GLOBALID);
+        //    if (related == null || related.Count() == 0) {
+        //        return;
+        //    }
+
+        //    if (structure.FCSUBTYPE == 65) {
+        //        if (FeatureRelations.GetS101CatlitTypeFrom(structure) == typeof(LightSectored)) {
+        //            throw new NotSupportedException("Structure cannot be a sectored light.");
+        //        }
+        //    }
+
+        //    var tableName = target.GetName("point");
+        //    var featureClass = target.OpenDataset<FeatureClass>(tableName);
+        //    var buffer = featureClass.CreateRowBuffer();
+
+        //    //var types = FeatureRelations.GetS101CatlitTypeFrom(structure);
+
+        //    var hasRelatedSectoredLights = related.Any();
+
+        //    if (hasRelatedSectoredLights) {
+        //        var instance = ImporterNIS.CreateLightSectored(structure, related.Where(o => o.S101Type == typeof(LightSectored)).ToList());
+                
+
+        //        buffer["ps"] = ImporterNIS.ps101;
+        //        buffer["code"] = instance.GetType().Name;
+        //        buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, ImporterNIS.jsonSerializerOptions);
+        //        buffer["shape"] = structure.SHAPE;
+
+        //        var featureN = featureClass.CreateRow(buffer);
+        //        var equipmentName = Convert.ToString(featureN["name"]);
+
+        //        // TODO: Create relation
+
+        //        ConversionAnalytics.Instance.AddConverted(tableName,featureN.GetGlobalID());
+        //        Logger.Current.DataObject((int)featureN.GetObjectID(), tableName, equipmentName, System.Text.Json.JsonSerializer.Serialize(instance));
+        //    }
+
+        //    foreach (var pltsSlave in related.Where(o => o.S101Type != typeof(LightSectored)).ToList()) {
+        //        //var slave = pltsSlave.Fetch(_source, Direction.Destination);
+        //        if (pltsSlave.S101Type == typeof(LightAllAround)) {
+        //            var aton = pltsSlave.S57Object as AidsToNavigationP;
+
+        //            if (aton != null) {
+        //                var instance = ImporterNIS.CreateLightAllAround(aton);
+
+        //                buffer["ps"] = ImporterNIS.ps101;
+        //                buffer["code"] = instance.GetType().Name;
+        //                buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, ImporterNIS.jsonSerializerOptions);
+        //                buffer["shape"] = aton.SHAPE;
+
+        //                var featureN = featureClass.CreateRow(buffer);
+        //                var equipmentName = Convert.ToString(featureN["name"]);
+
+        //                // TODO: Create relation
+
+        //                ConversionAnalytics.Instance.AddConverted(tableName, featureN.GetGlobalID());
+        //                Logger.Current.DataObject((int)featureN.GetObjectID(), tableName, equipmentName, System.Text.Json.JsonSerializer.Serialize(instance));
+        //            }
+        //        }
+        //        else if (pltsSlave.S101Type == typeof(topmark)) {
+        //            // Ignore
+        //            continue;
+        //        }
+        //        else if (pltsSlave.S101Type == typeof(RadarTransponderBeacon)) {
+        //            // TODO: Create radar transponder beacon
+        //            continue;
+        //        }
+        //        else if (pltsSlave.S101Type == null && pltsSlave.S57Object is DangersP) {
+        //            // TODO: Create radar transponder beacon
+        //            continue;
+        //        }
+        //        else if (pltsSlave.S101Type == typeof(Obstruction)) {
+        //            // TODO: Create Obstruction
+        //            continue;
+        //        }
+        //        else {
+        //            throw new NotSupportedException($"Create related object: {pltsSlave.PLTS_Frel.DEST_FC}");
+        //        }
+                
+        //    }
+
+        //    //var equipmentTypes = _featureRelations.GetS101EquipmentType(related);
+        //    //if (equipmentTypes == null || equipmentTypes.Count == 0) {
+        //    //    return;
+        //    //}
+        //    //foreach (var type in equipmentTypes) {
+        //    //}
+
+        //}
+
+        //private static (FeatureNode node, string name, string type)? CreateRadarTransponderbeacon(AidsToNavigationP current, InsertCursor insert, RowBuffer buffer, Feature feature, string tableName, int convertedCount, FeatureClass featureClass) {
+        //    //if (current.FCSUBTYPE != 65)
+        //    //    throw new ArgumentOutOfRangeException($"Illegal subtype for transponder beacon {current}");
+
+        //    var instance = new RadarTransponderBeacon();
+
+        //    if (current.CATRTB != null) {
+        //        instance.categoryOfRadarTransponderBeacon = EnumHelper.GetEnumValue<categoryOfRadarTransponderBeacon>(current.CATRTB);
+        //    }
+
+        //    if (current.PLTS_COMP_SCALE != default) {
+        //        instance.scaleMinimum = current.PLTS_COMP_SCALE;
+        //    }
+
+        //    if (current.STATUS != default) {
+        //        instance.status = ImporterNIS.GetStatus(current.STATUS);
+        //    }
+
+        //    instance.featureName = ImporterNIS.GetFeatureName(current.OBJNAM, current.NOBJNM);
+
+        //    ImporterNIS.AddInformation(instance.information, feature);
+        //    buffer["ps"] = ImporterNIS.ps101;
+        //    buffer["code"] = instance.GetType().Name;
+        //    buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, ImporterNIS.jsonSerializerOptions);
+        //    buffer["shape"] = current.SHAPE;
+        //    var featureN = featureClass.CreateRow(buffer);
+        //    var equipmentName = Convert.ToString(featureN["name"]);
+
+        //    // TODO: Create relation
+
+        //    ConversionAnalytics.Instance.AddConverted(tableName, featureN.GetGlobalID());
+        //    convertedCount++;
+        //    return (instance: instance, name: name, type: instance.GetType().Name);
+        //}
     }
 }
 

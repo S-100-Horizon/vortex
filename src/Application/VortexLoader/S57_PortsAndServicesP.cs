@@ -289,7 +289,6 @@ namespace S100Framework.Applications
                                         1 => new List<categoryOfDolphin>() { categoryOfDolphin.MooringDolphin },
                                         2 => new List<categoryOfDolphin>() { categoryOfDolphin.DeviationDolphin },
                                         -32767 =>new List<categoryOfDolphin>() { (categoryOfDolphin)(-1) },
-                                        // TODO: QUESTION: how to handle -1 on a required attribute without an S-101 equivalent "unknown". Illegal value assigned. MUST be fixed.
                                         _ => throw new IndexOutOfRangeException(),
                                     };
                                 }

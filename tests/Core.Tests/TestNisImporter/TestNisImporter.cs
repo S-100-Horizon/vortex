@@ -7,6 +7,7 @@ using System.Globalization;
 using System.Text;
 using System.Text.RegularExpressions;
 using Xunit.Abstractions;
+using Xunit.Sdk;
 using IO = System.IO;
 
 namespace TestNisImporter
@@ -33,7 +34,7 @@ namespace TestNisImporter
 
         [Fact]
         public void TestSignalSequence() {
-        string input = "12.5+(34.7)+56.8+(78.9)+(91.2)+23.4";
+            string input = "12.5+(34.7)+56.8+(78.9)+(91.2)+23.4+(0.09)";
             List<Sequence> sequences = new List<Sequence>();
 
             string pattern = @"(\d+\.\d+)|\((\d+\.\d+)\)";
@@ -64,6 +65,8 @@ namespace TestNisImporter
             Assert.True(sequences[4].Status == 2, "Status");
             Assert.True(sequences[5].Duration == 23.4m, "Duration");
             Assert.True(sequences[5].Status == 1, "Status");
+            Assert.True(sequences[6].Duration == 0.09m, "Duration");
+            Assert.True(sequences[6].Status == 2, "Status");
         }
 
         [Fact]

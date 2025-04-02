@@ -12,10 +12,10 @@ namespace S100Framework.Applications
             var tableName = "NaturalFeaturesP";
 
             using var s = source.OpenDataset<FeatureClass>(source.GetName(tableName));
-            using var featureclass = target.OpenDataset<FeatureClass>(target.GetName("point"));
+            using var featureClass = target.OpenDataset<FeatureClass>(target.GetName("point"));
 
-            using var buffer = featureclass.CreateRowBuffer();
-            using var insert = featureclass.CreateInsertCursor();
+            using var buffer = featureClass.CreateRowBuffer();
+            using var insert = featureClass.CreateInsertCursor();
 
             using var cursor = s.Search(filter, true);
 
@@ -47,8 +47,7 @@ namespace S100Framework.Applications
 
                 switch (subtype) {
                     case 1: { // LNDARE_LandArea
-                            var instance = new LandArea() {
-                            };
+                            var instance = new LandArea();
                             if (plts_comp_scale != default) {
                                 instance.scaleMinimum = plts_comp_scale;
                             }
@@ -66,14 +65,19 @@ namespace S100Framework.Applications
                             buffer["code"] = instance.GetType().Name;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                             buffer["shape"] = current.SHAPE;
-                            insert.Insert(buffer);
+                            //insert.Insert(buffer);
+
+                            var featureN = featureClass.CreateRow(buffer);
+                            var structureName = Convert.ToString(featureN["name"]);
+
+
                             Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
                             convertedCount++;
                         }
                         break;
                     case 5: { // LNDELV_LandElevation
-                            var instance = new LandElevation() {
-                            };
+                            var instance = new LandElevation();
+
                             if (plts_comp_scale != default) {
                                 instance.scaleMinimum = plts_comp_scale;
                             }
@@ -81,7 +85,6 @@ namespace S100Framework.Applications
                             if (current.ELEVAT != default) {
                                 instance.elevation = current.ELEVAT ?? default;
                             }
-
 
                             instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
                             AddInformation(instance.information, feature);
