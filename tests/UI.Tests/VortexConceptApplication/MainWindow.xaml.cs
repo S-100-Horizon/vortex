@@ -276,15 +276,16 @@ namespace VortexConceptApplication
 
 namespace VortexConceptApplication
 {
-    using S100Framework.DomainModel.S101;    
+    using S100Framework.DomainModel.S101;
+    using Xceed.Wpf.Toolkit;
 
     public partial class TestLateralBuoyViewModel
     {
-        private buoyShape _buoyShape;
-        [S100Framework.DomainModel.EnumerationAttribute(nameof(buoyShapeList))]
-        [Editor(typeof(S100Framework.WPF.Editors.EnumCheckComboEditor), typeof(S100Framework.WPF.Editors.EnumCheckComboEditor))]
+        private int? _buoyShape;
+        [EnumerationAttribute(nameof(buoyShapeIntList))]
+        [Editor(typeof(TestEnumCheckComboEditor), typeof(TestEnumCheckComboEditor))]
         [Category("LateralBuoy")]
-        public buoyShape buoyShape {
+        public int? buoyShape {
             get {
                 return _buoyShape;
             }
@@ -296,8 +297,34 @@ namespace VortexConceptApplication
         }
 
         [Browsable(false)]
+        public int[] buoyShapeIntList => [1, 2, 3, 4, 5, 6, 7, 8];
+
+
+
+        [Browsable(false)]
         public buoyShape[] buoyShapeList => [(buoyShape)1, (buoyShape)2, (buoyShape)3, (buoyShape)4, (buoyShape)5, (buoyShape)6, (buoyShape)7, (buoyShape)8];
 
     }
 
+    public class TestEnumCheckComboEditor : Xceed.Wpf.Toolkit.PropertyGrid.Editors.ITypeEditor
+    {
+        public FrameworkElement ResolveEditor(Xceed.Wpf.Toolkit.PropertyGrid.PropertyItem propertyItem) {
+            var checkComboBox = new CheckComboBox {
+                Name = $"_checkComboBox{Guid.NewGuid():N}",
+                IsEditable = false,
+                IsSelectAllActive = true,
+                IsDropDownOpen = false,
+            };
+
+            var attribute = (EnumerationAttribute)propertyItem.Instance.GetType().GetProperty(propertyItem.DisplayName)!.GetCustomAttributes(typeof(EnumerationAttribute), true)[0];
+
+            var bindingItemsSourceProperty = new Binding(attribute.PropertyName) { Source = propertyItem.Instance, Mode = BindingMode.OneWay };
+            BindingOperations.SetBinding(checkComboBox, CheckComboBox.ItemsSourceProperty, bindingItemsSourceProperty);
+
+            var bindingSelectedItemProperty = new Binding(propertyItem.DisplayName) { Source = propertyItem.Instance, Mode = propertyItem.IsReadOnly ? BindingMode.OneWay : BindingMode.TwoWay };
+            BindingOperations.SetBinding(checkComboBox, CheckComboBox.SelectedItemProperty, bindingSelectedItemProperty);
+
+            return checkComboBox;
+        }
+    }
 }

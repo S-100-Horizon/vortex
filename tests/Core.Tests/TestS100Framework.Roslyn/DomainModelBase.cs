@@ -89,6 +89,26 @@ namespace S100Framework.DomainModel {
         public RefId[] RefIds { get; set; } = new RefId[0];
     }
 
+    public class informationBinding {
+        public roleType roleType { get; set; }
+        public int lower { get; set; }
+        public int? upper { get; set; }
+        public bool infinite => !upper.HasValue;
+        public string association { get; set; } = string.Empty;
+        public string role { get; set; } = string.Empty;
+        public string[] informationTypes { get; set; } = new string[0];
+    }
+
+    public class featureBinding {
+        public roleType roleType { get; set; }
+        public int lower { get; set; }
+        public int? upper { get; set; }
+        public bool infinite => !upper.HasValue;
+        public string association { get; set; } = string.Empty;
+        public string role { get; set; } = string.Empty;
+        public string[] featureTypes { get; set; } = new string[0];
+    }
+
     public enum roleType {
         association,
         aggregation,
