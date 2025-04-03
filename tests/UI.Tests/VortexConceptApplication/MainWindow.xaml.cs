@@ -1,11 +1,11 @@
 ﻿//#define S124
 
 using S100Framework.DomainModel;
-using S100Framework.DomainModel.S101.FeatureTypes;
 using S100Framework.DomainModel.S124;
 using S100Framework.WPF.ViewModel;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.DirectoryServices.ActiveDirectory;
 using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Windows;
@@ -178,55 +178,27 @@ namespace VortexConceptApplication
 
             viewModel.Load(domainModel);
 #else
-            //var viewModel = IslandAggregation.TestIslandGroup;
+            //var viewModel101 = new S100Framework.WPF.ViewModel.S101.StructureEquipmentViewModel();
 
-            var viewModel101 = new S100Framework.WPF.ViewModel.S101.StructureEquipmentViewModel();
+            //var viewModel = viewModel101;
 
-            //var viewModel131 = new S100Framework.WPF.ViewModel.S131.TextAssociationViewModel();
+            //var fromJson = new Building.StructureEquipment_theEquipment()!;
 
-            var viewModel = viewModel101;
+            ////  TEST
+            //fromJson.RefIds = [new RefId {
+            //    Role = "theStructure",
+            //    Type = "Daymark",
+            //    Value = "S202600"
+            //}];
 
+            //var json = System.Text.Json.JsonSerializer.Serialize(fromJson);            
 
-            //var fromJson = new S100Framework.DomainModel.FeatureAssociation {
-            //    Code = "UpdatedInformation",
-            //    AssociationConnectorTypeName = "AdministrationArea",
-            //    RefIds = new[] {
-            //        new S100Framework.DomainModel.RefId {
-            //            Type = "AdministrationArea",
-            //            Role = "theUpdate",
-            //            Value = "Hello",
-            //        },
-            //        new S100Framework.DomainModel.RefId {
-            //            Type = "UpdateInformation",
-            //            Role = "theUpdatedObject",
-            //            Value = "World (1)",
-            //        },
-            //        new S100Framework.DomainModel.RefId {
-            //            Type = "UpdateInformation",
-            //            Role = "theUpdatedObject",
-            //            Value = "World (2)",
-            //        }
-            //    },
+            //var viewModel = new S100Framework.WPF.ViewModel.S101.LateralBuoyViewModel();            
+            var viewModel = new TestLateralBuoyViewModel();
+
+            //viewModel.PropertyChanged += (object sender, PropertyChangedEventArgs e) => {
+            //    Logger.Current.Verbose("PropertyChanged = {propertyName}", e.PropertyName);
             //};
-
-            var fromJson = new Building.StructureEquipment_theEquipment()!;
-
-
-            //  TEST
-            fromJson.RefIds = [new RefId {
-                Role = "theStructure",
-                Type = "Daymark",
-                Value = "S202600"
-            }];
-
-            var json = System.Text.Json.JsonSerializer.Serialize(fromJson);
-
-
-            viewModel.Load(fromJson);
-
-            viewModel.PropertyChanged += (object sender, PropertyChangedEventArgs e) => {
-                Logger.Current.Verbose("PropertyChanged = {propertyName}", e.PropertyName);
-            };
 #endif           
 
             SelectedProperty = viewModel;
@@ -297,4 +269,35 @@ namespace VortexConceptApplication
             return comboBox;
         }
     }
+
+
+
+}
+
+namespace VortexConceptApplication
+{
+    using S100Framework.DomainModel.S101;    
+
+    public partial class TestLateralBuoyViewModel
+    {
+        private buoyShape _buoyShape;
+        [S100Framework.DomainModel.EnumerationAttribute(nameof(buoyShapeList))]
+        [Editor(typeof(S100Framework.WPF.Editors.EnumCheckComboEditor), typeof(S100Framework.WPF.Editors.EnumCheckComboEditor))]
+        [Category("LateralBuoy")]
+        public buoyShape buoyShape {
+            get {
+                return _buoyShape;
+            }
+
+            set {
+                _buoyShape = value;
+                //SetValue(ref _buoyShape, value);
+            }
+        }
+
+        [Browsable(false)]
+        public buoyShape[] buoyShapeList => [(buoyShape)1, (buoyShape)2, (buoyShape)3, (buoyShape)4, (buoyShape)5, (buoyShape)6, (buoyShape)7, (buoyShape)8];
+
+    }
+
 }
