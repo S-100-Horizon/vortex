@@ -88,7 +88,7 @@ namespace S100Framework.Applications
                     buffer["ps"] = ImporterNIS.ps101;
                     buffer["code"] = instance.GetType().Name;
                     buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, ImporterNIS.jsonSerializerOptions);
-                    buffer["shape"] = structure.SHAPE;
+                    ImporterNIS.SetShape(buffer, structure.SHAPE);
 
                     var featureN = featureClass.CreateRow(buffer);
                     var equipmentName = Convert.ToString(featureN["name"]);
@@ -108,7 +108,62 @@ namespace S100Framework.Applications
                         buffer["ps"] = ImporterNIS.ps101;
                         buffer["code"] = instance.GetType().Name;
                         buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, ImporterNIS.jsonSerializerOptions);
-                        buffer["shape"] = light.SHAPE;
+                        ImporterNIS.SetShape(buffer, light.SHAPE);
+
+                        var featureN = featureClass.CreateRow(buffer);
+                        var equipmentName = Convert.ToString(featureN["name"]);
+
+                        // TODO: Create relation
+
+                        ConversionAnalytics.Instance.AddConverted(sourceTable, light.GLOBALID);
+                        Logger.Current.DataObject((int)featureN.GetObjectID(), tableName, equipmentName, System.Text.Json.JsonSerializer.Serialize(instance));
+                    }
+                }
+            }
+            else if (s57Object is CulturalFeaturesP) {
+                var sourceTable = "CulturalFeaturesP";
+                var structure = (CulturalFeaturesP)s57Object;
+                bool hasRelated = _featureRelations.HasRelated(structure.GLOBALID);
+                if (!hasRelated) {
+                    return;
+                }
+
+                var tableName = target.GetName("point");
+                var featureClass = target.OpenDataset<FeatureClass>(tableName);
+                var buffer = featureClass.CreateRowBuffer();
+
+                //var types = FeatureRelations.GetS101CatlitTypeFrom(structure);
+
+                var related = _featureRelations.GetRelated<AidsToNavigationP>(typeof(LightSectored), structure.GLOBALID);
+                var hasRelatedSectoredLights = related.Any();
+
+                if (hasRelatedSectoredLights) {
+                    var instance = ImporterNIS.CreateLightSectored(related);
+
+                    buffer["ps"] = ImporterNIS.ps101;
+                    buffer["code"] = instance.GetType().Name;
+                    buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, ImporterNIS.jsonSerializerOptions);
+                    ImporterNIS.SetShape(buffer, structure.SHAPE);
+
+                    var featureN = featureClass.CreateRow(buffer);
+                    var equipmentName = Convert.ToString(featureN["name"]);
+
+                    // TODO: Create relation
+                    ConversionAnalytics.Instance.AddConverted(sourceTable, related.Select(obj => obj.GLOBALID).ToList());
+                    Logger.Current.DataObject((int)featureN.GetObjectID(), tableName, equipmentName, System.Text.Json.JsonSerializer.Serialize(instance));
+                }
+
+                related = _featureRelations.GetRelated<AidsToNavigationP>(typeof(LightAllAround), structure.GLOBALID);
+                var hasRelatedLightsAllAround = related.Any();
+                if (hasRelatedLightsAllAround) {
+                    foreach (var light in related) {
+                        //var slave = pltsSlave.Fetch(_source, Direction.Destination);
+                        var instance = ImporterNIS.CreateLightAllAround(light);
+
+                        buffer["ps"] = ImporterNIS.ps101;
+                        buffer["code"] = instance.GetType().Name;
+                        buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, ImporterNIS.jsonSerializerOptions);
+                        ImporterNIS.SetShape(buffer, light.SHAPE);
 
                         var featureN = featureClass.CreateRow(buffer);
                         var equipmentName = Convert.ToString(featureN["name"]);
@@ -270,7 +325,7 @@ namespace S100Framework.Applications
         //    buffer["ps"] = ImporterNIS.ps101;
         //    buffer["code"] = instance.GetType().Name;
         //    buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, ImporterNIS.jsonSerializerOptions);
-        //    buffer["shape"] = current.SHAPE;
+        //    SetShape(buffer,current.SHAPE);
         //    var featureN = featureClass.CreateRow(buffer);
         //    var equipmentName = Convert.ToString(featureN["name"]);
 
@@ -466,7 +521,7 @@ namespace S100Framework.Applications
                         var instance = new LightAllAround();
 
                         if (plts_comp_scale != default) {
-                            instance.scaleMinimum = plts_comp_scale;
+                            //instance.scaleMinimum = plts_comp_scale;
                         }
 
                         var signalGroup = current.SIGGRP;
@@ -496,7 +551,7 @@ namespace S100Framework.Applications
                         buffer["ps"] = ps101;
                         buffer["code"] = instance.GetType().Name;
                         buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
-                        buffer["shape"] = current.SHAPE;
+                        SetShape(buffer,current.SHAPE);
 
                         //insert.Insert(buffer);
                         var featureN = featureClass.CreateRow(buffer);
@@ -515,7 +570,7 @@ namespace S100Framework.Applications
                     //    var instance = new LightAllAround();
 
                     //    if (plts_comp_scale != default) {
-                    //        instance.scaleMinimum = plts_comp_scale;
+                    //        //instance.scaleMinimum = plts_comp_scale;
                     //    }
 
                     //    var signalGroup = current.SIGGRP;
@@ -545,7 +600,7 @@ namespace S100Framework.Applications
                     //    buffer["ps"] = ps101;
                     //    buffer["code"] = instance.GetType().Name;
                     //    buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
-                    //    buffer["shape"] = current.SHAPE;
+                    //    SetShape(buffer,current.SHAPE);
 
                     //    //insert.Insert(buffer);
                     //    var featureN = featureClass.CreateRow(buffer);
@@ -569,7 +624,7 @@ namespace S100Framework.Applications
                     var instance = new LightAllAround();
 
                     if (plts_comp_scale != default) {
-                        instance.scaleMinimum = plts_comp_scale;
+                        //instance.scaleMinimum = plts_comp_scale;
                     }
 
                     instance.rhythmOfLight = GetRythmOfLight(current);
@@ -588,7 +643,7 @@ namespace S100Framework.Applications
                     buffer["ps"] = ps101;
                     buffer["code"] = instance.GetType().Name;
                     buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
-                    buffer["shape"] = current.SHAPE;
+                    SetShape(buffer,current.SHAPE);
 
                     //insert.Insert(buffer);
                     var featureN = featureClass.CreateRow(buffer);
@@ -620,7 +675,7 @@ namespace S100Framework.Applications
                 instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
 
                 if (plts_comp_scale != default) {
-                    instance.scaleMinimum = plts_comp_scale;
+                    //instance.scaleMinimum = plts_comp_scale;
                 }
 
                 if (current.STATUS != default) {
@@ -652,7 +707,7 @@ namespace S100Framework.Applications
 
                 buffer["code"] = instance.GetType().Name;
                 buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
-                buffer["shape"] = current.SHAPE;
+                SetShape(buffer,current.SHAPE);
                 //insert.Insert(buffer);
 
                 var featureN = featureClass.CreateRow(buffer);
@@ -666,7 +721,7 @@ namespace S100Framework.Applications
                 // Build "Light Air Obstruction");
                 var instance = new LightAirObstruction();
                 if (plts_comp_scale != default) {
-                    instance.scaleMinimum = plts_comp_scale;
+                    //instance.scaleMinimum = plts_comp_scale;
                 }
                 if (current.COLOUR != default) {
                     instance.colour = GetColours(current.COLOUR);
@@ -683,7 +738,7 @@ namespace S100Framework.Applications
 
                 buffer["code"] = instance.GetType().Name;
                 buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
-                buffer["shape"] = current.SHAPE;
+                SetShape(buffer,current.SHAPE);
                 //insert.Insert(buffer);
 
                 var featureN = featureClass.CreateRow(buffer);
@@ -697,7 +752,7 @@ namespace S100Framework.Applications
                 // Build "Light Fog Detector");
                 var instance = new LightFogDetector();
                 if (plts_comp_scale != default) {
-                    instance.scaleMinimum = plts_comp_scale;
+                    //instance.scaleMinimum = plts_comp_scale;
                 }
                 if (current.COLOUR != default) {
                     instance.colour = GetColours(current.COLOUR);
@@ -713,7 +768,7 @@ namespace S100Framework.Applications
 
                 buffer["code"] = instance.GetType().Name;
                 buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
-                buffer["shape"] = current.SHAPE;
+                SetShape(buffer,current.SHAPE);
                 //insert.Insert(buffer);
 
                 var featureN = featureClass.CreateRow(buffer);
@@ -792,7 +847,7 @@ namespace S100Framework.Applications
                 var instance = new LightAllAround();
 
                 if (plts_comp_scale != default) {
-                    instance.scaleMinimum = plts_comp_scale;
+                    //instance.scaleMinimum = plts_comp_scale;
                 }
 
 
@@ -817,7 +872,7 @@ namespace S100Framework.Applications
 
                 buffer["code"] = instance.GetType().Name;
                 buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
-                buffer["shape"] = current.SHAPE;
+                SetShape(buffer,current.SHAPE);
 
                 //insert.Insert(buffer);
                 var featureN = featureClass.CreateRow(buffer);
@@ -847,7 +902,7 @@ namespace S100Framework.Applications
                 instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
 
                 if (plts_comp_scale != default) {
-                    instance.scaleMinimum = plts_comp_scale;
+                    //instance.scaleMinimum = plts_comp_scale;
                 }
 
                 if (current.STATUS != default) {
@@ -881,7 +936,7 @@ namespace S100Framework.Applications
 
                 buffer["code"] = instance.GetType().Name;
                 buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
-                buffer["shape"] = current.SHAPE;
+                SetShape(buffer,current.SHAPE);
                 insert.Insert(buffer);
 
                 var name = Convert.ToString(buffer["name"]);
@@ -896,7 +951,7 @@ namespace S100Framework.Applications
                 // Build "Light Air Obstruction");
                 var instance = new LightAirObstruction();
                 if (plts_comp_scale != default) {
-                    instance.scaleMinimum = plts_comp_scale;
+                    //instance.scaleMinimum = plts_comp_scale;
                 }
                 if (current.COLOUR != default) {
                     instance.colour = GetColours(current.COLOUR);
@@ -915,7 +970,7 @@ namespace S100Framework.Applications
 
                 buffer["code"] = instance.GetType().Name;
                 buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
-                buffer["shape"] = current.SHAPE;
+                SetShape(buffer,current.SHAPE);
                 insert.Insert(buffer);
 
                 var name = Convert.ToString(buffer["name"]);
@@ -929,7 +984,7 @@ namespace S100Framework.Applications
                 // Build "Light Fog Detector");
                 var instance = new LightFogDetector();
                 if (plts_comp_scale != default) {
-                    instance.scaleMinimum = plts_comp_scale;
+                    //instance.scaleMinimum = plts_comp_scale;
                 }
                 if (current.COLOUR != default) {
                     instance.colour = GetColours(current.COLOUR);
@@ -947,7 +1002,7 @@ namespace S100Framework.Applications
 
                 buffer["code"] = instance.GetType().Name;
                 buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
-                buffer["shape"] = current.SHAPE;
+                SetShape(buffer,current.SHAPE);
                 insert.Insert(buffer);
                 insert.Flush();
 

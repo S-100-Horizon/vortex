@@ -70,11 +70,11 @@ namespace S100Framework.Applications
                             //buffer["ps"] = ps128;
                             //buffer["code"] = instance.GetType().Name;
                             //buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
-                            //buffer["shape"] = productCoverage.SHAPE;
+                            //ImporterNIS.SetShape(buffer, productCoverage.SHAPE);
                             //insert.Insert(buffer);
 
 
-                            
+
                             var dataCoverage = new DataCoverage() { 
                                 maximumDisplayScale = displayScale.MaximumDisplayScale,
                                 optimumDisplayScale = displayScale.OptimumDisplayScale,
@@ -84,7 +84,7 @@ namespace S100Framework.Applications
                             buffer["ps"] = ps101;
                             buffer["code"] = dataCoverage.GetType().Name;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(dataCoverage);
-                            buffer["shape"] = productCoverage.SHAPE;
+                            ImporterNIS.SetShape(buffer, productCoverage.SHAPE);
                             insert.Insert(buffer);
                             break;
                     }

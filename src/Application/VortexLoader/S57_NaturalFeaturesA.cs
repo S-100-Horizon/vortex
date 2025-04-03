@@ -63,7 +63,7 @@ namespace S100Framework.Applications
                             }
 
                             if (plts_comp_scale != default) {
-                                instance.scaleMinimum = plts_comp_scale;
+                                //instance.scaleMinimum = plts_comp_scale;
                             }
                             
                             if (status != default) {
@@ -113,7 +113,7 @@ namespace S100Framework.Applications
                                 };
                             }
                             //if (plts_comp_scale != default) {
-                            //    instance.scaleMinimum = plts_comp_scale;
+                            //    //instance.scaleMinimum = plts_comp_scale;
                             //}
 
                             if (current.CONDTN.HasValue) {
@@ -154,7 +154,7 @@ namespace S100Framework.Applications
                                 };
                             }
                             if (plts_comp_scale != default) {
-                                instance.scaleMinimum = plts_comp_scale;
+                                //instance.scaleMinimum = plts_comp_scale;
                             }
                             if (status != default) {
                                 if (!string.IsNullOrEmpty(status)) {
@@ -192,7 +192,7 @@ namespace S100Framework.Applications
                                 scaleMinimum = null,
                             };
                             if (plts_comp_scale != default) {
-                                instance.scaleMinimum = plts_comp_scale;
+                                //instance.scaleMinimum = plts_comp_scale;
                             }
                             if (status != default) {
                                 if (!string.IsNullOrEmpty(status)) {
@@ -297,7 +297,7 @@ namespace S100Framework.Applications
                                 };
                             }
                             if (plts_comp_scale != default) {
-                                instance.scaleMinimum = plts_comp_scale;
+                                //instance.scaleMinimum = plts_comp_scale;
                             }
 
                             instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
@@ -391,7 +391,7 @@ namespace S100Framework.Applications
                                 };
                             }
                             if (plts_comp_scale != default) {
-                                instance.scaleMinimum = plts_comp_scale;
+                                //instance.scaleMinimum = plts_comp_scale;
                             }
 
                             instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
@@ -446,7 +446,7 @@ namespace S100Framework.Applications
                                 };
                             }
                             if (plts_comp_scale != default) {
-                                instance.scaleMinimum = plts_comp_scale;
+                                //instance.scaleMinimum = plts_comp_scale;
                             }
 
                             instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);

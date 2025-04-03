@@ -25,7 +25,7 @@ namespace S100Framework.Applications
 
             var depthsl = source.OpenDataset<FeatureClass>(source.GetName("DepthsL"));
             var plts_spatialattributel = source.OpenDataset<FeatureClass>(source.GetName("PLTS_SpatialAttributeL"));
-            using var informationtype = target.OpenDataset<Table>(target.GetName("informationType"));
+            using var informationtype = target.OpenDataset<Table>(target.GetName("informationTypes"));
 
             using var featureClass = target.OpenDataset<FeatureClass>(target.GetName("curve"));
             
@@ -65,7 +65,7 @@ namespace S100Framework.Applications
                             };
 
                             if (plts_comp_scale != default) {
-                                instance.scaleMinimum = plts_comp_scale;
+                                //instance.scaleMinimum = plts_comp_scale;
                             }
 
                             /*
@@ -121,7 +121,7 @@ namespace S100Framework.Applications
 
                             buffer["code"] = instance.GetType().Name;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
-                            buffer["shape"] = current.SHAPE;
+                            SetShape(buffer,current.SHAPE);
                             insert.Insert(buffer);
 
                             Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));

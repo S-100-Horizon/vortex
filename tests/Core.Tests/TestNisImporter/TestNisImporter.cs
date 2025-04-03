@@ -105,7 +105,7 @@ namespace TestNisImporter
                 csSubtypes.AppendLine($"\t\t}};");
 
                 csSubtypes.AppendLine($"\t\t\tif (plts_comp_scale != default) {{");
-                csSubtypes.AppendLine($"\t\t\t\t\tinstance.scaleMinimum = plts_comp_scale;");
+                csSubtypes.AppendLine($"\t\t\t\t\t//instance.scaleMinimum = plts_comp_scale;");
                 csSubtypes.AppendLine($"\t\t\t}}");
                 csSubtypes.AppendLine($"");
                 csSubtypes.AppendLine($"\t\t\tAddCondition(instance.condition, feature);");

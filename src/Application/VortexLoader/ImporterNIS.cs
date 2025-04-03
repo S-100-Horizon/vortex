@@ -88,8 +88,8 @@ namespace S100Framework.Applications
                     using var pointset = destination.OpenDataset<FeatureClass>(destination.GetName("pointset"));
                     using var curve = destination.OpenDataset<FeatureClass>(destination.GetName("curve"));
                     using var surface = destination.OpenDataset<FeatureClass>(destination.GetName("surface"));
-                    using var informationtype = destination.OpenDataset<Table>(destination.GetName("informationType"));
-                    using var informationAssociation = destination.OpenDataset<Table>(destination.GetName("informationAssociation"));
+                    using var informationtype = destination.OpenDataset<Table>(destination.GetName("InformationTypes"));
+                    using var informationAssociation = destination.OpenDataset<Table>(destination.GetName("InformationAssociation"));
 
                     point.DeleteRows(query);
                     pointset.DeleteRows(query);
@@ -181,6 +181,19 @@ namespace S100Framework.Applications
                 }
             }
         }
+
+        internal static void SetShape(RowBuffer buffer, Geometry? shape) {
+            if (shape == null) {
+                throw new ArgumentException("Null geometry not supported");
+            }
+
+            if (shape.GeometryType == GeometryType.Point && shape.HasZ == false) {
+                buffer["shape"] = MapPointBuilderEx.CreateMapPoint((shape as MapPoint).X, (shape as MapPoint).Y, 0.00, shape.SpatialReference);
+            } else {
+                buffer["shape"] = shape;
+            }
+        }
+
 
         /// <summary>
         /// DCEG p460

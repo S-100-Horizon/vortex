@@ -15,7 +15,7 @@ namespace S100Framework.Applications
 
             using var s = source.OpenDataset<FeatureClass>(source.GetName("SoundingsP"));
             using var pointset = target.OpenDataset<FeatureClass>(target.GetName("pointset"));
-            using var informationtype = target.OpenDataset<Table>(target.GetName("informationType"));
+            using var informationtype = target.OpenDataset<Table>(target.GetName("informationTypes"));
 
             using var bufferPointset = pointset.CreateRowBuffer();
             using var insertPointset = pointset.CreateInsertCursor();
