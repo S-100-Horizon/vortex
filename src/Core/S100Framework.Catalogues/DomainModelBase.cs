@@ -71,26 +71,27 @@ namespace S100Framework.DomainModel {
 
     [System.SerializableAttribute()]
     public abstract class Association {
-        public virtual string Code { get; set; } = string.Empty;
-        public virtual roleType? roleType => default;
-        public string AssociationConnectorTypeName { get; set; }
-
-        [JsonIgnore]
-        public virtual string[]? this[string role] => default;
     }
 
     [System.SerializableAttribute()]
-    public class InformationAssociation : Association {
-        public RefId[] RefIds { get; set; } = new RefId[0];
+    public abstract class InformationAssociation : Association {
     }
 
     [System.SerializableAttribute()]
-    public class FeatureAssociation : Association {
-        public RefId[] RefIds { get; set; } = new RefId[0];
+    public abstract class FeatureAssociation : Association {
     }
 
-    public class featureBinding
-    {
+    public class informationBinding {
+        public roleType roleType { get; set; }
+        public int lower { get; set; }
+        public int? upper { get; set; }
+        public bool infinite => !upper.HasValue;
+        public string association { get; set; } = string.Empty;
+        public string role { get; set; } = string.Empty;
+        public string[] informationTypes { get; set; } = new string[0];
+    }
+
+    public class featureBinding {
         public roleType roleType { get; set; }
         public int lower { get; set; }
         public int? upper { get; set; }
@@ -99,6 +100,7 @@ namespace S100Framework.DomainModel {
         public string role { get; set; } = string.Empty;
         public string[] featureTypes { get; set; } = new string[0];
     }
+
     public enum roleType {
         association,
         aggregation,

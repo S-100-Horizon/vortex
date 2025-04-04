@@ -14,8 +14,10 @@ using Xceed.Wpf.Toolkit.PropertyGrid.Attributes;
 
 #nullable enable
 namespace S100Framework.WPF.ViewModel.S501 {
-    internal static class Preamble {
-        public static ImmutableDictionary<string, Func<ViewModelBase>> _creators => ImmutableDictionary.Create<string, Func<ViewModelBase>>().AddRange(new Dictionary<string, Func<ViewModelBase>> { { "ReferenceToAPublication", () =>
+    internal static class Bootstrap {
+        public static bool Exist(string type) => _creators.ContainsKey(type);
+        public static ViewModelBase Create(string type) => _creators[type]();
+        private static ImmutableDictionary<string, Func<ViewModelBase>> _creators => ImmutableDictionary.Create<string, Func<ViewModelBase>>().AddRange(new Dictionary<string, Func<ViewModelBase>> { { "ReferenceToAPublication", () =>
         {
             return new ReferenceToAPublicationViewModel();
         } }, { "InstallationBuoy", () =>
@@ -289,15 +291,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
         {
             return new SpecialPurposeGeneralBeaconViewModel();
         } }, });
-    }
-
-    public class Handles : iHandles {
-        public static IDictionary<Type, Func<InformationAssociationConnector[]>> AssociationConnectorInformations => new Dictionary<Type, Func<InformationAssociationConnector[]>>
-        {
-        };
-        public static IDictionary<Type, Func<FeatureAssociationConnector[]>> AssociationConnectorFeatures => new Dictionary<Type, Func<FeatureAssociationConnector[]>>
-        {
-        };
     }
 
     [CategoryOrder("qRouteChannelWidth", 0)]

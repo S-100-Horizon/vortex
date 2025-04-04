@@ -419,7 +419,9 @@ namespace VortexProAppModule
                 SelectedModelType = ModelTypes.Single(e => e.Code == code);
             }
 
-            return typeof(S100Framework.DomainModel.FeatureAssociation);
+            var type = featureCatalogue.Assembly!.GetType($"{S100Framework.Catalogues.FeatureCatalogue.Namespace(schema, "Associations.FeatureAssociations")}.{code}", true);
+
+            return type;
         }
 
         private Type InformationTypeSelector(Inspector inspector, string schema) {
@@ -471,7 +473,10 @@ namespace VortexProAppModule
                 SelectedModelType = ModelTypes.Single(e => e.Code == code);
             }
 
-            return typeof(S100Framework.DomainModel.InformationAssociation);
+            var type = featureCatalogue.Assembly!.GetType($"{S100Framework.Catalogues.FeatureCatalogue.Namespace(schema, "Associations.InfromationAssociations")}.{code}", true);
+
+            return type;
+
         }
 
         public ICommand CreateInstance { get; set; }

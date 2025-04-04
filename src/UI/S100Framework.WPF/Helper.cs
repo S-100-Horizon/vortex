@@ -8,13 +8,13 @@ namespace S100Framework.WPF
             if (string.IsNullOrEmpty(ps)) return null;
 
             return ps.ToLowerInvariant() switch {
-                "s101" or "s-101" => S100Framework.WPF.ViewModel.S101.Preamble._creators.ContainsKey(type.Name) ? S100Framework.WPF.ViewModel.S101.Preamble._creators[type.Name]() : null,
-                "s122" or "s-122" => S100Framework.WPF.ViewModel.S122.Preamble._creators.ContainsKey(type.Name) ? S100Framework.WPF.ViewModel.S122.Preamble._creators[type.Name]() : null,
-                "s124" or "s-124" => S100Framework.WPF.ViewModel.S124.Preamble._creators.ContainsKey(type.Name) ? S100Framework.WPF.ViewModel.S124.Preamble._creators[type.Name]() : null,
-                "s128" or "s-128" => S100Framework.WPF.ViewModel.S128.Preamble._creators.ContainsKey(type.Name) ? S100Framework.WPF.ViewModel.S128.Preamble._creators[type.Name]() : null,
-                "s131" or "s-131" => S100Framework.WPF.ViewModel.S131.Preamble._creators.ContainsKey(type.Name) ? S100Framework.WPF.ViewModel.S131.Preamble._creators[type.Name]() : null,
-                //"s201" or "s-201" => S100Framework.WPF.ViewModel.S201.Preamble._creators.ContainsKey(type.Name) ? S100Framework.WPF.ViewModel.S201.Preamble._creators[type.Name]() : null,
-                "s501" or "s-501" => S100Framework.WPF.ViewModel.S501.Preamble._creators.ContainsKey(type.Name) ? S100Framework.WPF.ViewModel.S501.Preamble._creators[type.Name]() : null,
+                "s101" or "s-101" => ViewModel.S101.Bootstrap.Exist(type.Name) ? ViewModel.S101.Bootstrap.Create(type.Name) : null,
+                "s122" or "s-122" => ViewModel.S122.Bootstrap.Exist(type.Name) ? ViewModel.S122.Bootstrap.Create(type.Name) : null,
+                "s124" or "s-124" => ViewModel.S124.Bootstrap.Exist(type.Name) ? ViewModel.S124.Bootstrap.Create(type.Name) : null,
+                "s128" or "s-128" => ViewModel.S128.Bootstrap.Exist(type.Name) ? ViewModel.S128.Bootstrap.Create(type.Name) : null,
+                "s131" or "s-131" => ViewModel.S131.Bootstrap.Exist(type.Name) ? ViewModel.S131.Bootstrap.Create(type.Name) : null,
+                //"s201" or "s-201" => ViewModel.S201.Bootstrap.Exist(type.Name) ? ViewModel.S201.Bootstrap.Create(type.Name) : null,
+                "s501" or "s-501" => ViewModel.S501.Bootstrap.Exist(type.Name) ? ViewModel.S501.Bootstrap.Create(type.Name) : null,
                 _ => null
             };
         }
@@ -23,13 +23,13 @@ namespace S100Framework.WPF
             if (string.IsNullOrEmpty(ps)) return null;
 
             return ps.ToLowerInvariant() switch {
-                "s101" or "s-101" => S100Framework.WPF.ViewModel.S101.Preamble._creators.ContainsKey(type) ? S100Framework.WPF.ViewModel.S101.Preamble._creators[type]() : null,
-                "s122" or "s-122" => S100Framework.WPF.ViewModel.S122.Preamble._creators.ContainsKey(type) ? S100Framework.WPF.ViewModel.S122.Preamble._creators[type]() : null,
-                "s124" or "s-124" => S100Framework.WPF.ViewModel.S124.Preamble._creators.ContainsKey(type) ? S100Framework.WPF.ViewModel.S124.Preamble._creators[type]() : null,
-                "s128" or "s-128" => S100Framework.WPF.ViewModel.S128.Preamble._creators.ContainsKey(type) ? S100Framework.WPF.ViewModel.S128.Preamble._creators[type]() : null,
-                "s131" or "s-131" => S100Framework.WPF.ViewModel.S131.Preamble._creators.ContainsKey(type) ? S100Framework.WPF.ViewModel.S131.Preamble._creators[type]() : null,
-                //"s201" or "s-201" => S100Framework.WPF.ViewModel.S201.Preamble._creators.ContainsKey(type.Name) ? S100Framework.WPF.ViewModel.S201.Preamble._creators[type.Name]() : null,
-                "s501" or "s-501" => S100Framework.WPF.ViewModel.S501.Preamble._creators.ContainsKey(type) ? S100Framework.WPF.ViewModel.S501.Preamble._creators[type]() : null,
+                "s101" or "s-101" => ViewModel.S101.Bootstrap.Exist(type) ? ViewModel.S101.Bootstrap.Create(type) : null,
+                "s122" or "s-122" => ViewModel.S122.Bootstrap.Exist(type) ? ViewModel.S122.Bootstrap.Create(type) : null,
+                "s124" or "s-124" => ViewModel.S124.Bootstrap.Exist(type) ? ViewModel.S124.Bootstrap.Create(type) : null,
+                "s128" or "s-128" => ViewModel.S128.Bootstrap.Exist(type) ? ViewModel.S128.Bootstrap.Create(type) : null,
+                "s131" or "s-131" => ViewModel.S131.Bootstrap.Exist(type) ? ViewModel.S131.Bootstrap.Create(type) : null,
+                //"s201" or "s-201" => ViewModel.S201.Bootstrap.Exist(type.Name) ? ViewModel.S201.Bootstrap.Create(type) : null,
+                "s501" or "s-501" => ViewModel.S501.Bootstrap.Exist(type) ? ViewModel.S501.Bootstrap.Create(type) : null,
                 _ => null
             };
         }

@@ -4091,6 +4091,7 @@ namespace S100Framework.DomainModel.S501 {
 
             public lightSector() {
                 colour = new();
+                ;
             }
         }
 
@@ -4131,10 +4132,13 @@ namespace S100Framework.DomainModel.S501 {
 
             public sectorCharacteristics() {
                 lightSector = new();
+                ;
             }
         }
     }
+}
 
+namespace S100Framework.DomainModel.S501 {
     public enum Role {
     }
 
@@ -4153,11 +4157,12 @@ namespace S100Framework.DomainModel.S501 {
 
     namespace Bindings {
     }
+}
 
+namespace S100Framework.DomainModel.S501 {
     namespace InformationTypes {
         using ComplexAttributes;
         using DomainModel;
-        using System.Runtime.Serialization;
         using S100Framework.DomainModel.S501.Associations.InformationAssociations;
 
         [System.Serializable()]
@@ -4170,6 +4175,7 @@ namespace S100Framework.DomainModel.S501 {
 
             [JsonIgnore]
             public override string Code => nameof(ReferenceToAPublication);
+            public static informationBinding[] informationBindings => [];
 
             public ReferenceToAPublication() {
             }
@@ -4261,9 +4267,12 @@ namespace S100Framework.DomainModel.S501 {
 
             [JsonIgnore]
             public override string Code => nameof(InstallationBuoy);
+            public static informationBinding[] informationBindings => [];
+            public static featureBinding[] featureBindings => [];
 
             public InstallationBuoy() {
                 colour = new();
+                ;
             }
         }
 
@@ -4281,6 +4290,8 @@ namespace S100Framework.DomainModel.S501 {
 
             [JsonIgnore]
             public override string Code => nameof(DepthArea);
+            public static informationBinding[] informationBindings => [];
+            public static featureBinding[] featureBindings => [];
 
             public DepthArea() {
             }
@@ -4319,6 +4330,8 @@ namespace S100Framework.DomainModel.S501 {
 
             [JsonIgnore]
             public override string Code => nameof(RadioCallingInPoint);
+            public static informationBinding[] informationBindings => [];
+            public static featureBinding[] featureBindings => [];
 
             public RadioCallingInPoint() {
             }
@@ -4346,6 +4359,8 @@ namespace S100Framework.DomainModel.S501 {
 
             [JsonIgnore]
             public override string Code => nameof(PatrolArea);
+            public static informationBinding[] informationBindings => [];
+            public static featureBinding[] featureBindings => [];
 
             public PatrolArea() {
             }
@@ -4375,6 +4390,8 @@ namespace S100Framework.DomainModel.S501 {
 
             [JsonIgnore]
             public override string Code => nameof(Checkpoint);
+            public static informationBinding[] informationBindings => [];
+            public static featureBinding[] featureBindings => [];
 
             public Checkpoint() {
             }
@@ -4482,9 +4499,12 @@ namespace S100Framework.DomainModel.S501 {
 
             [JsonIgnore]
             public override string Code => nameof(MarineManagementArea);
+            public static informationBinding[] informationBindings => [];
+            public static featureBinding[] featureBindings => [];
 
             public MarineManagementArea() {
                 nationalMaritimeAuthority = new();
+                ;
             }
         }
 
@@ -4503,6 +4523,8 @@ namespace S100Framework.DomainModel.S501 {
 
             [JsonIgnore]
             public override string Code => nameof(DepthContour);
+            public static informationBinding[] informationBindings => [];
+            public static featureBinding[] featureBindings => [];
 
             public DepthContour() {
             }
@@ -4517,6 +4539,8 @@ namespace S100Framework.DomainModel.S501 {
 
             [JsonIgnore]
             public override string Code => nameof(EnvironmentallySensitiveSeaArea);
+            public static informationBinding[] informationBindings => [];
+            public static featureBinding[] featureBindings => [];
 
             public EnvironmentallySensitiveSeaArea() {
             }
@@ -4561,6 +4585,8 @@ namespace S100Framework.DomainModel.S501 {
 
             [JsonIgnore]
             public override string Code => nameof(Road);
+            public static informationBinding[] informationBindings => [];
+            public static featureBinding[] featureBindings => [];
 
             public Road() {
             }
@@ -4579,6 +4605,8 @@ namespace S100Framework.DomainModel.S501 {
 
             [JsonIgnore]
             public override string Code => nameof(River);
+            public static informationBinding[] informationBindings => [];
+            public static featureBinding[] featureBindings => [];
 
             public River() {
             }
@@ -4737,6 +4765,8 @@ namespace S100Framework.DomainModel.S501 {
 
             [JsonIgnore]
             public override string Code => nameof(MilitaryPracticeArea);
+            public static informationBinding[] informationBindings => [];
+            public static featureBinding[] featureBindings => [];
 
             public MilitaryPracticeArea() {
                 depthRestriction = string.Empty;
@@ -4752,6 +4782,8 @@ namespace S100Framework.DomainModel.S501 {
 
             [JsonIgnore]
             public override string Code => nameof(DiscolouredWater);
+            public static informationBinding[] informationBindings => [];
+            public static featureBinding[] featureBindings => [];
 
             public DiscolouredWater() {
             }
@@ -4836,9 +4868,12 @@ namespace S100Framework.DomainModel.S501 {
 
             [JsonIgnore]
             public override string Code => nameof(CardinalBuoy);
+            public static informationBinding[] informationBindings => [];
+            public static featureBinding[] featureBindings => [];
 
             public CardinalBuoy() {
                 colour = new();
+                ;
             }
         }
 
@@ -4914,9 +4949,12 @@ namespace S100Framework.DomainModel.S501 {
 
             [JsonIgnore]
             public override string Code => nameof(SafeWaterBuoy);
+            public static informationBinding[] informationBindings => [];
+            public static featureBinding[] featureBindings => [];
 
             public SafeWaterBuoy() {
                 colour = new();
+                ;
             }
         }
 
@@ -4954,6 +4992,8 @@ namespace S100Framework.DomainModel.S501 {
 
             [JsonIgnore]
             public override string Code => nameof(RadioStation);
+            public static informationBinding[] informationBindings => [];
+            public static featureBinding[] featureBindings => [];
 
             public RadioStation() {
             }
@@ -4973,6 +5013,8 @@ namespace S100Framework.DomainModel.S501 {
 
             [JsonIgnore]
             public override string Code => nameof(MilitaryExerciseAirspace);
+            public static informationBinding[] informationBindings => [];
+            public static featureBinding[] featureBindings => [];
 
             public MilitaryExerciseAirspace() {
             }
@@ -5002,10 +5044,14 @@ namespace S100Framework.DomainModel.S501 {
 
             [JsonIgnore]
             public override string Code => nameof(ContiguousZone);
+            public static informationBinding[] informationBindings => [];
+            public static featureBinding[] featureBindings => [];
 
             public ContiguousZone() {
                 nationality = new();
+                ;
                 nationalMaritimeAuthority = new();
+                ;
             }
         }
 
@@ -5025,6 +5071,8 @@ namespace S100Framework.DomainModel.S501 {
 
             [JsonIgnore]
             public override string Code => nameof(NormalBaseline);
+            public static informationBinding[] informationBindings => [];
+            public static featureBinding[] featureBindings => [];
 
             public NormalBaseline() {
                 nationality = string.Empty;
@@ -5079,6 +5127,8 @@ namespace S100Framework.DomainModel.S501 {
 
             [JsonIgnore]
             public override string Code => nameof(CableArea);
+            public static informationBinding[] informationBindings => [];
+            public static featureBinding[] featureBindings => [];
 
             public CableArea() {
             }
@@ -5106,10 +5156,14 @@ namespace S100Framework.DomainModel.S501 {
 
             [JsonIgnore]
             public override string Code => nameof(ContinentalShelfArea);
+            public static informationBinding[] informationBindings => [];
+            public static featureBinding[] featureBindings => [];
 
             public ContinentalShelfArea() {
                 nationalMaritimeAuthority = new();
+                ;
                 nationality = new();
+                ;
             }
         }
 
@@ -5135,10 +5189,14 @@ namespace S100Framework.DomainModel.S501 {
 
             [JsonIgnore]
             public override string Code => nameof(InternalWaters);
+            public static informationBinding[] informationBindings => [];
+            public static featureBinding[] featureBindings => [];
 
             public InternalWaters() {
                 nationality = new();
+                ;
                 nationalMaritimeAuthority = new();
+                ;
             }
         }
 
@@ -5160,6 +5218,8 @@ namespace S100Framework.DomainModel.S501 {
 
             [JsonIgnore]
             public override string Code => nameof(AdministrationArea);
+            public static informationBinding[] informationBindings => [];
+            public static featureBinding[] featureBindings => [];
 
             public AdministrationArea() {
             }
@@ -5194,6 +5254,8 @@ namespace S100Framework.DomainModel.S501 {
 
             [JsonIgnore]
             public override string Code => nameof(Bollard);
+            public static informationBinding[] informationBindings => [];
+            public static featureBinding[] featureBindings => [];
 
             public Bollard() {
             }
@@ -5275,6 +5337,8 @@ namespace S100Framework.DomainModel.S501 {
 
             [JsonIgnore]
             public override string Code => nameof(Dolphin);
+            public static informationBinding[] informationBindings => [];
+            public static featureBinding[] featureBindings => [];
 
             public Dolphin() {
             }
@@ -5298,6 +5362,8 @@ namespace S100Framework.DomainModel.S501 {
 
             [JsonIgnore]
             public override string Code => nameof(RadarRange);
+            public static informationBinding[] informationBindings => [];
+            public static featureBinding[] featureBindings => [];
 
             public RadarRange() {
             }
@@ -5391,9 +5457,12 @@ namespace S100Framework.DomainModel.S501 {
 
             [JsonIgnore]
             public override string Code => nameof(IsolatedDangerBeacon);
+            public static informationBinding[] informationBindings => [];
+            public static featureBinding[] featureBindings => [];
 
             public IsolatedDangerBeacon() {
                 colour = new();
+                ;
             }
         }
 
@@ -5468,9 +5537,12 @@ namespace S100Framework.DomainModel.S501 {
 
             [JsonIgnore]
             public override string Code => nameof(IsolatedDangerBuoy);
+            public static informationBinding[] informationBindings => [];
+            public static featureBinding[] featureBindings => [];
 
             public IsolatedDangerBuoy() {
                 colour = new();
+                ;
             }
         }
 
@@ -5516,6 +5588,8 @@ namespace S100Framework.DomainModel.S501 {
 
             [JsonIgnore]
             public override string Code => nameof(SubmarineTransitLane);
+            public static informationBinding[] informationBindings => [];
+            public static featureBinding[] featureBindings => [];
 
             public SubmarineTransitLane() {
             }
@@ -5532,6 +5606,8 @@ namespace S100Framework.DomainModel.S501 {
 
             [JsonIgnore]
             public override string Code => nameof(MaritimeSafetyInformationArea);
+            public static informationBinding[] informationBindings => [];
+            public static featureBinding[] featureBindings => [];
 
             public MaritimeSafetyInformationArea() {
             }
@@ -5575,6 +5651,8 @@ namespace S100Framework.DomainModel.S501 {
 
             [JsonIgnore]
             public override string Code => nameof(AirspaceRestriction);
+            public static informationBinding[] informationBindings => [];
+            public static featureBinding[] featureBindings => [];
 
             public AirspaceRestriction() {
             }
@@ -5618,6 +5696,8 @@ namespace S100Framework.DomainModel.S501 {
 
             [JsonIgnore]
             public override string Code => nameof(Sounding);
+            public static informationBinding[] informationBindings => [];
+            public static featureBinding[] featureBindings => [];
 
             public Sounding() {
             }
@@ -5641,6 +5721,8 @@ namespace S100Framework.DomainModel.S501 {
 
             [JsonIgnore]
             public override string Code => nameof(TrafficSeparationSchemeBoundary);
+            public static informationBinding[] informationBindings => [];
+            public static featureBinding[] featureBindings => [];
 
             public TrafficSeparationSchemeBoundary() {
             }
@@ -5694,6 +5776,8 @@ namespace S100Framework.DomainModel.S501 {
 
             [JsonIgnore]
             public override string Code => nameof(DumpingGround);
+            public static informationBinding[] informationBindings => [];
+            public static featureBinding[] featureBindings => [];
 
             public DumpingGround() {
             }
@@ -5763,6 +5847,8 @@ namespace S100Framework.DomainModel.S501 {
 
             [JsonIgnore]
             public override string Code => nameof(AirportAirfield);
+            public static informationBinding[] informationBindings => [];
+            public static featureBinding[] featureBindings => [];
 
             public AirportAirfield() {
             }
@@ -5811,6 +5897,8 @@ namespace S100Framework.DomainModel.S501 {
 
             [JsonIgnore]
             public override string Code => nameof(FoulGround);
+            public static informationBinding[] informationBindings => [];
+            public static featureBinding[] featureBindings => [];
 
             public FoulGround() {
             }
@@ -5898,6 +5986,8 @@ namespace S100Framework.DomainModel.S501 {
 
             [JsonIgnore]
             public override string Code => nameof(LightAirObstruction);
+            public static informationBinding[] informationBindings => [];
+            public static featureBinding[] featureBindings => [];
 
             public LightAirObstruction() {
                 pictorialRepresentation = string.Empty;
@@ -5969,6 +6059,8 @@ namespace S100Framework.DomainModel.S501 {
 
             [JsonIgnore]
             public override string Code => nameof(MooringBuoy);
+            public static informationBinding[] informationBindings => [];
+            public static featureBinding[] featureBindings => [];
 
             public MooringBuoy() {
             }
@@ -6040,6 +6132,8 @@ namespace S100Framework.DomainModel.S501 {
 
             [JsonIgnore]
             public override string Code => nameof(UnderwaterAwashRock);
+            public static informationBinding[] informationBindings => [];
+            public static featureBinding[] featureBindings => [];
 
             public UnderwaterAwashRock() {
             }
@@ -6098,6 +6192,8 @@ namespace S100Framework.DomainModel.S501 {
 
             [JsonIgnore]
             public override string Code => nameof(CableOverhead);
+            public static informationBinding[] informationBindings => [];
+            public static featureBinding[] featureBindings => [];
 
             public CableOverhead() {
             }
@@ -6168,6 +6264,8 @@ namespace S100Framework.DomainModel.S501 {
 
             [JsonIgnore]
             public override string Code => nameof(ControlledAirspace);
+            public static informationBinding[] informationBindings => [];
+            public static featureBinding[] featureBindings => [];
 
             public ControlledAirspace() {
             }
@@ -6456,6 +6554,8 @@ namespace S100Framework.DomainModel.S501 {
 
             [JsonIgnore]
             public override string Code => nameof(Obstruction);
+            public static informationBinding[] informationBindings => [];
+            public static featureBinding[] featureBindings => [];
 
             public Obstruction() {
             }
@@ -6511,6 +6611,8 @@ namespace S100Framework.DomainModel.S501 {
 
             [JsonIgnore]
             public override string Code => nameof(FishingGround);
+            public static informationBinding[] informationBindings => [];
+            public static featureBinding[] featureBindings => [];
 
             public FishingGround() {
             }
@@ -6551,6 +6653,8 @@ namespace S100Framework.DomainModel.S501 {
 
             [JsonIgnore]
             public override string Code => nameof(FishingFacility);
+            public static informationBinding[] informationBindings => [];
+            public static featureBinding[] featureBindings => [];
 
             public FishingFacility() {
             }
@@ -6594,6 +6698,8 @@ namespace S100Framework.DomainModel.S501 {
 
             [JsonIgnore]
             public override string Code => nameof(NavigationSystem);
+            public static informationBinding[] informationBindings => [];
+            public static featureBinding[] featureBindings => [];
 
             public NavigationSystem() {
             }
@@ -6642,6 +6748,8 @@ namespace S100Framework.DomainModel.S501 {
 
             [JsonIgnore]
             public override string Code => nameof(TrafficSeparationSchemeCrossing);
+            public static informationBinding[] informationBindings => [];
+            public static featureBinding[] featureBindings => [];
 
             public TrafficSeparationSchemeCrossing() {
             }
@@ -6692,6 +6800,8 @@ namespace S100Framework.DomainModel.S501 {
 
             [JsonIgnore]
             public override string Code => nameof(TrafficSeparationSchemeLanePart);
+            public static informationBinding[] informationBindings => [];
+            public static featureBinding[] featureBindings => [];
 
             public TrafficSeparationSchemeLanePart() {
             }
@@ -6739,10 +6849,14 @@ namespace S100Framework.DomainModel.S501 {
 
             [JsonIgnore]
             public override string Code => nameof(TerritorialSeaArea);
+            public static informationBinding[] informationBindings => [];
+            public static featureBinding[] featureBindings => [];
 
             public TerritorialSeaArea() {
                 nationality = new();
+                ;
                 nationalMaritimeAuthority = new();
+                ;
             }
         }
 
@@ -6840,9 +6954,12 @@ namespace S100Framework.DomainModel.S501 {
 
             [JsonIgnore]
             public override string Code => nameof(LateralBeacon);
+            public static informationBinding[] informationBindings => [];
+            public static featureBinding[] featureBindings => [];
 
             public LateralBeacon() {
                 colour = new();
+                ;
             }
         }
 
@@ -6865,6 +6982,8 @@ namespace S100Framework.DomainModel.S501 {
 
             [JsonIgnore]
             public override string Code => nameof(CoastGuardStation);
+            public static informationBinding[] informationBindings => [];
+            public static featureBinding[] featureBindings => [];
 
             public CoastGuardStation() {
             }
@@ -6888,6 +7007,8 @@ namespace S100Framework.DomainModel.S501 {
 
             [JsonIgnore]
             public override string Code => nameof(SeparationZoneOrLine);
+            public static informationBinding[] informationBindings => [];
+            public static featureBinding[] featureBindings => [];
 
             public SeparationZoneOrLine() {
             }
@@ -6909,6 +7030,8 @@ namespace S100Framework.DomainModel.S501 {
 
             [JsonIgnore]
             public override string Code => nameof(BottomFeature);
+            public static informationBinding[] informationBindings => [];
+            public static featureBinding[] featureBindings => [];
 
             public BottomFeature() {
             }
@@ -6931,6 +7054,8 @@ namespace S100Framework.DomainModel.S501 {
 
             [JsonIgnore]
             public override string Code => nameof(ArchipelagicBaseline);
+            public static informationBinding[] informationBindings => [];
+            public static featureBinding[] featureBindings => [];
 
             public ArchipelagicBaseline() {
                 nationality = string.Empty;
@@ -6952,6 +7077,8 @@ namespace S100Framework.DomainModel.S501 {
 
             [JsonIgnore]
             public override string Code => nameof(SmallBottomObject);
+            public static informationBinding[] informationBindings => [];
+            public static featureBinding[] featureBindings => [];
 
             public SmallBottomObject() {
             }
@@ -6975,10 +7102,14 @@ namespace S100Framework.DomainModel.S501 {
 
             [JsonIgnore]
             public override string Code => nameof(ExclusiveEconomicZone);
+            public static informationBinding[] informationBindings => [];
+            public static featureBinding[] featureBindings => [];
 
             public ExclusiveEconomicZone() {
                 nationalMaritimeAuthority = new();
+                ;
                 nationality = new();
+                ;
             }
         }
 
@@ -7007,6 +7138,8 @@ namespace S100Framework.DomainModel.S501 {
 
             [JsonIgnore]
             public override string Code => nameof(RadarStation);
+            public static informationBinding[] informationBindings => [];
+            public static featureBinding[] featureBindings => [];
 
             public RadarStation() {
             }
@@ -7025,6 +7158,8 @@ namespace S100Framework.DomainModel.S501 {
 
             [JsonIgnore]
             public override string Code => nameof(DivingLocation);
+            public static informationBinding[] informationBindings => [];
+            public static featureBinding[] featureBindings => [];
 
             public DivingLocation() {
             }
@@ -7117,9 +7252,12 @@ namespace S100Framework.DomainModel.S501 {
 
             [JsonIgnore]
             public override string Code => nameof(RestrictedArea);
+            public static informationBinding[] informationBindings => [];
+            public static featureBinding[] featureBindings => [];
 
             public RestrictedArea() {
                 restriction = new();
+                ;
             }
         }
 
@@ -7155,6 +7293,8 @@ namespace S100Framework.DomainModel.S501 {
 
             [JsonIgnore]
             public override string Code => nameof(CableSubmarine);
+            public static informationBinding[] informationBindings => [];
+            public static featureBinding[] featureBindings => [];
 
             public CableSubmarine() {
             }
@@ -7316,9 +7456,12 @@ namespace S100Framework.DomainModel.S501 {
 
             [JsonIgnore]
             public override string Code => nameof(Wreck);
+            public static informationBinding[] informationBindings => [];
+            public static featureBinding[] featureBindings => [];
 
             public Wreck() {
                 nationality = new();
+                ;
             }
         }
 
@@ -7338,6 +7481,8 @@ namespace S100Framework.DomainModel.S501 {
 
             [JsonIgnore]
             public override string Code => nameof(QRoute);
+            public static informationBinding[] informationBindings => [];
+            public static featureBinding[] featureBindings => [];
 
             public QRoute() {
             }
@@ -7359,6 +7504,8 @@ namespace S100Framework.DomainModel.S501 {
 
             [JsonIgnore]
             public override string Code => nameof(CompletenessOfProductSpecification);
+            public static informationBinding[] informationBindings => [];
+            public static featureBinding[] featureBindings => [];
 
             public CompletenessOfProductSpecification() {
             }
@@ -7396,6 +7543,8 @@ namespace S100Framework.DomainModel.S501 {
 
             [JsonIgnore]
             public override string Code => nameof(RescueStation);
+            public static informationBinding[] informationBindings => [];
+            public static featureBinding[] featureBindings => [];
 
             public RescueStation() {
             }
@@ -7494,9 +7643,12 @@ namespace S100Framework.DomainModel.S501 {
 
             [JsonIgnore]
             public override string Code => nameof(CardinalBeacon);
+            public static informationBinding[] informationBindings => [];
+            public static featureBinding[] featureBindings => [];
 
             public CardinalBeacon() {
                 colour = new();
+                ;
             }
         }
 
@@ -7560,9 +7712,12 @@ namespace S100Framework.DomainModel.S501 {
 
             [JsonIgnore]
             public override string Code => nameof(LightVessel);
+            public static informationBinding[] informationBindings => [];
+            public static featureBinding[] featureBindings => [];
 
             public LightVessel() {
                 colour = new();
+                ;
             }
         }
 
@@ -7593,10 +7748,13 @@ namespace S100Framework.DomainModel.S501 {
 
             [JsonIgnore]
             public override string Code => nameof(FisheryZone);
+            public static informationBinding[] informationBindings => [];
+            public static featureBinding[] featureBindings => [];
 
             public FisheryZone() {
                 nationality = string.Empty;
                 nationalMaritimeAuthority = new();
+                ;
             }
         }
 
@@ -7653,6 +7811,8 @@ namespace S100Framework.DomainModel.S501 {
 
             [JsonIgnore]
             public override string Code => nameof(DredgedArea);
+            public static informationBinding[] informationBindings => [];
+            public static featureBinding[] featureBindings => [];
 
             public DredgedArea() {
             }
@@ -7691,9 +7851,12 @@ namespace S100Framework.DomainModel.S501 {
 
             [JsonIgnore]
             public override string Code => nameof(FerryRoute);
+            public static informationBinding[] informationBindings => [];
+            public static featureBinding[] featureBindings => [];
 
             public FerryRoute() {
                 categoryOfFerry = new();
+                ;
             }
         }
 
@@ -7813,6 +7976,8 @@ namespace S100Framework.DomainModel.S501 {
 
             [JsonIgnore]
             public override string Code => nameof(ShorelineConstruction);
+            public static informationBinding[] informationBindings => [];
+            public static featureBinding[] featureBindings => [];
 
             public ShorelineConstruction() {
             }
@@ -7839,6 +8004,8 @@ namespace S100Framework.DomainModel.S501 {
 
             [JsonIgnore]
             public override string Code => nameof(CautionArea);
+            public static informationBinding[] informationBindings => [];
+            public static featureBinding[] featureBindings => [];
 
             public CautionArea() {
             }
@@ -7923,6 +8090,8 @@ namespace S100Framework.DomainModel.S501 {
 
             [JsonIgnore]
             public override string Code => nameof(DeepWaterRoutePart);
+            public static informationBinding[] informationBindings => [];
+            public static featureBinding[] featureBindings => [];
 
             public DeepWaterRoutePart() {
             }
@@ -7948,6 +8117,8 @@ namespace S100Framework.DomainModel.S501 {
 
             [JsonIgnore]
             public override string Code => nameof(CurrentNonGravitational);
+            public static informationBinding[] informationBindings => [];
+            public static featureBinding[] featureBindings => [];
 
             public CurrentNonGravitational() {
                 orientation = new orientation()
@@ -7983,6 +8154,8 @@ namespace S100Framework.DomainModel.S501 {
 
             [JsonIgnore]
             public override string Code => nameof(DataCoverage);
+            public static informationBinding[] informationBindings => [];
+            public static featureBinding[] featureBindings => [];
 
             public DataCoverage() {
             }
@@ -8008,9 +8181,12 @@ namespace S100Framework.DomainModel.S501 {
 
             [JsonIgnore]
             public override string Code => nameof(SeabedArea);
+            public static informationBinding[] informationBindings => [];
+            public static featureBinding[] featureBindings => [];
 
             public SeabedArea() {
                 surfaceCharacteristics = new();
+                ;
             }
         }
 
@@ -8148,10 +8324,14 @@ namespace S100Framework.DomainModel.S501 {
 
             [JsonIgnore]
             public override string Code => nameof(SpecialPurposeGeneralBuoy);
+            public static informationBinding[] informationBindings => [];
+            public static featureBinding[] featureBindings => [];
 
             public SpecialPurposeGeneralBuoy() {
                 categoryOfSpecialPurposeMark = new();
+                ;
                 colour = new();
+                ;
             }
         }
 
@@ -8239,10 +8419,13 @@ namespace S100Framework.DomainModel.S501 {
 
             [JsonIgnore]
             public override string Code => nameof(LightSectored);
+            public static informationBinding[] informationBindings => [];
+            public static featureBinding[] featureBindings => [];
 
             public LightSectored() {
                 pictorialRepresentation = string.Empty;
                 sectorCharacteristics = new();
+                ;
             }
         }
 
@@ -8254,6 +8437,8 @@ namespace S100Framework.DomainModel.S501 {
 
             [JsonIgnore]
             public override string Code => nameof(IceLine);
+            public static informationBinding[] informationBindings => [];
+            public static featureBinding[] featureBindings => [];
 
             public IceLine() {
             }
@@ -8333,6 +8518,8 @@ namespace S100Framework.DomainModel.S501 {
 
             [JsonIgnore]
             public override string Code => nameof(AnchorageArea);
+            public static informationBinding[] informationBindings => [];
+            public static featureBinding[] featureBindings => [];
 
             public AnchorageArea() {
             }
@@ -8417,9 +8604,12 @@ namespace S100Framework.DomainModel.S501 {
 
             [JsonIgnore]
             public override string Code => nameof(LateralBuoy);
+            public static informationBinding[] informationBindings => [];
+            public static featureBinding[] featureBindings => [];
 
             public LateralBuoy() {
                 colour = new();
+                ;
             }
         }
 
@@ -8467,6 +8657,8 @@ namespace S100Framework.DomainModel.S501 {
 
             [JsonIgnore]
             public override string Code => nameof(TrafficSeparationSchemeRoundabout);
+            public static informationBinding[] informationBindings => [];
+            public static featureBinding[] featureBindings => [];
 
             public TrafficSeparationSchemeRoundabout() {
             }
@@ -8524,6 +8716,8 @@ namespace S100Framework.DomainModel.S501 {
 
             [JsonIgnore]
             public override string Code => nameof(DeepWaterRouteCentreline);
+            public static informationBinding[] informationBindings => [];
+            public static featureBinding[] featureBindings => [];
 
             public DeepWaterRouteCentreline() {
             }
@@ -8592,9 +8786,12 @@ namespace S100Framework.DomainModel.S501 {
 
             [JsonIgnore]
             public override string Code => nameof(LightFloat);
+            public static informationBinding[] informationBindings => [];
+            public static featureBinding[] featureBindings => [];
 
             public LightFloat() {
                 colour = new();
+                ;
             }
         }
 
@@ -8702,6 +8899,8 @@ namespace S100Framework.DomainModel.S501 {
 
             [JsonIgnore]
             public override string Code => nameof(LightAllAround);
+            public static informationBinding[] informationBindings => [];
+            public static featureBinding[] featureBindings => [];
 
             public LightAllAround() {
                 multiplicityOfFeatures = new multiplicityOfFeatures()
@@ -8713,6 +8912,7 @@ namespace S100Framework.DomainModel.S501 {
                     lightCharacteristic = default(lightCharacteristic),
                 };
                 colour = new();
+                ;
             }
         }
 
@@ -8767,6 +8967,8 @@ namespace S100Framework.DomainModel.S501 {
 
             [JsonIgnore]
             public override string Code => nameof(Coastline);
+            public static informationBinding[] informationBindings => [];
+            public static featureBinding[] featureBindings => [];
 
             public Coastline() {
             }
@@ -8848,6 +9050,8 @@ namespace S100Framework.DomainModel.S501 {
 
             [JsonIgnore]
             public override string Code => nameof(SeaAreaNamedWaterArea);
+            public static informationBinding[] informationBindings => [];
+            public static featureBinding[] featureBindings => [];
 
             public SeaAreaNamedWaterArea() {
             }
@@ -8860,6 +9064,8 @@ namespace S100Framework.DomainModel.S501 {
 
             [JsonIgnore]
             public override string Code => nameof(DropZone);
+            public static informationBinding[] informationBindings => [];
+            public static featureBinding[] featureBindings => [];
 
             public DropZone() {
             }
@@ -8957,6 +9163,8 @@ namespace S100Framework.DomainModel.S501 {
 
             [JsonIgnore]
             public override string Code => nameof(Conveyor);
+            public static informationBinding[] informationBindings => [];
+            public static featureBinding[] featureBindings => [];
 
             public Conveyor() {
             }
@@ -8991,9 +9199,12 @@ namespace S100Framework.DomainModel.S501 {
 
             [JsonIgnore]
             public override string Code => nameof(LineOfDelimitation);
+            public static informationBinding[] informationBindings => [];
+            public static featureBinding[] featureBindings => [];
 
             public LineOfDelimitation() {
                 nationalMaritimeAuthority = new();
+                ;
             }
         }
 
@@ -9014,6 +9225,8 @@ namespace S100Framework.DomainModel.S501 {
 
             [JsonIgnore]
             public override string Code => nameof(StraightTerritorialSeaBaseline);
+            public static informationBinding[] informationBindings => [];
+            public static featureBinding[] featureBindings => [];
 
             public StraightTerritorialSeaBaseline() {
                 nationality = string.Empty;
@@ -9106,9 +9319,12 @@ namespace S100Framework.DomainModel.S501 {
 
             [JsonIgnore]
             public override string Code => nameof(SafeWaterBeacon);
+            public static informationBinding[] informationBindings => [];
+            public static featureBinding[] featureBindings => [];
 
             public SafeWaterBeacon() {
                 colour = new();
+                ;
             }
         }
 
@@ -9260,10 +9476,14 @@ namespace S100Framework.DomainModel.S501 {
 
             [JsonIgnore]
             public override string Code => nameof(SpecialPurposeGeneralBeacon);
+            public static informationBinding[] informationBindings => [];
+            public static featureBinding[] featureBindings => [];
 
             public SpecialPurposeGeneralBeacon() {
                 categoryOfSpecialPurposeMark = new();
+                ;
                 colour = new();
+                ;
             }
         }
     }

@@ -1658,6 +1658,7 @@ namespace S100Framework.DomainModel.S131 {
 
             public usefulMarkDescription() {
                 textContent = new();
+                ;
             }
         }
 
@@ -1769,6 +1770,7 @@ namespace S100Framework.DomainModel.S131 {
 
             public cargoServicesDescription() {
                 textContent = new();
+                ;
             }
         }
 
@@ -1805,6 +1807,7 @@ namespace S100Framework.DomainModel.S131 {
 
             public depthsDescription() {
                 textContent = new();
+                ;
             }
         }
 
@@ -1816,6 +1819,7 @@ namespace S100Framework.DomainModel.S131 {
 
             public facilitiesLayoutDescription() {
                 textContent = new();
+                ;
             }
         }
 
@@ -1827,6 +1831,7 @@ namespace S100Framework.DomainModel.S131 {
 
             public generalPortDescription() {
                 textContent = new();
+                ;
             }
         }
 
@@ -1846,6 +1851,7 @@ namespace S100Framework.DomainModel.S131 {
 
             public graphic() {
                 pictorialRepresentation = new();
+                ;
             }
         }
 
@@ -1857,6 +1863,7 @@ namespace S100Framework.DomainModel.S131 {
 
             public landmarkDescription() {
                 textContent = new();
+                ;
             }
         }
 
@@ -1868,6 +1875,7 @@ namespace S100Framework.DomainModel.S131 {
 
             public limitsDescription() {
                 textContent = new();
+                ;
             }
         }
 
@@ -1879,6 +1887,7 @@ namespace S100Framework.DomainModel.S131 {
 
             public majorLightDescription() {
                 textContent = new();
+                ;
             }
         }
 
@@ -1890,6 +1899,7 @@ namespace S100Framework.DomainModel.S131 {
 
             public markedBy() {
                 textContent = new();
+                ;
             }
         }
 
@@ -1901,6 +1911,7 @@ namespace S100Framework.DomainModel.S131 {
 
             public offshoreMarkDescription() {
                 textContent = new();
+                ;
             }
         }
 
@@ -1917,6 +1928,7 @@ namespace S100Framework.DomainModel.S131 {
 
             public scheduleByDayOfWeek() {
                 timeIntervalsByDayOfWeek = new();
+                ;
             }
         }
 
@@ -1977,7 +1989,9 @@ namespace S100Framework.DomainModel.S131 {
             }
         }
     }
+}
 
+namespace S100Framework.DomainModel.S131 {
     public enum Role {
         [System.ComponentModel.Description("A pointer to a specific cartographically positioned location for text.")]
         positions,
@@ -2079,25 +2093,7 @@ namespace S100Framework.DomainModel.S131 {
             [System.Serializable()]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
             public partial class AdditionalInformation : InformationAssociation {
-                [JsonIgnore]
-                IEnumerable<RefId> providesInformation => base.RefIds.Where(e => e.Role.Equals("providesInformation"));
-
-                [JsonIgnore]
-                IEnumerable<RefId> informationProvidedFor => base.RefIds.Where(e => e.Role.Equals("informationProvidedFor"));
-                public override string Code => nameof(AdditionalInformation);
-
-                public string[]? this[Role role] => this[role.ToString()];
-                public override string[]? this[string role] => role switch
-                {
-                    "providesInformation" => providesInformationInformationTypes,
-                    "informationProvidedFor" => informationProvidedForInformationTypes,
-                    _ => throw new InvalidOperationException(),
-                };
-                [JsonIgnore]
-                public virtual String[] providesInformationInformationTypes => [];
-
-                [JsonIgnore]
-                public virtual String[] informationProvidedForInformationTypes => [];
+                public string Code => nameof(AdditionalInformation);
 
                 public AdditionalInformation() {
                 }
@@ -2106,25 +2102,7 @@ namespace S100Framework.DomainModel.S131 {
             [System.Serializable()]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
             public partial class AuthorityContact : InformationAssociation {
-                [JsonIgnore]
-                IEnumerable<RefId> theAuthority => base.RefIds.Where(e => e.Role.Equals("theAuthority"));
-
-                [JsonIgnore]
-                IEnumerable<RefId> theContactDetails => base.RefIds.Where(e => e.Role.Equals("theContactDetails"));
-                public override string Code => nameof(AuthorityContact);
-
-                public string[]? this[Role role] => this[role.ToString()];
-                public override string[]? this[string role] => role switch
-                {
-                    "theAuthority" => theAuthorityInformationTypes,
-                    "theContactDetails" => theContactDetailsInformationTypes,
-                    _ => throw new InvalidOperationException(),
-                };
-                [JsonIgnore]
-                public virtual String[] theAuthorityInformationTypes => [];
-
-                [JsonIgnore]
-                public virtual String[] theContactDetailsInformationTypes => [];
+                public string Code => nameof(AuthorityContact);
 
                 public AuthorityContact() {
                 }
@@ -2133,25 +2111,7 @@ namespace S100Framework.DomainModel.S131 {
             [System.Serializable()]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
             public partial class AuthorityHours : InformationAssociation {
-                [JsonIgnore]
-                IEnumerable<RefId> theAuthority_srvHrs => base.RefIds.Where(e => e.Role.Equals("theAuthority_srvHrs"));
-
-                [JsonIgnore]
-                IEnumerable<RefId> theServiceHours => base.RefIds.Where(e => e.Role.Equals("theServiceHours"));
-                public override string Code => nameof(AuthorityHours);
-
-                public string[]? this[Role role] => this[role.ToString()];
-                public override string[]? this[string role] => role switch
-                {
-                    "theAuthority_srvHrs" => theAuthority_srvHrsInformationTypes,
-                    "theServiceHours" => theServiceHoursInformationTypes,
-                    _ => throw new InvalidOperationException(),
-                };
-                [JsonIgnore]
-                public virtual String[] theAuthority_srvHrsInformationTypes => [];
-
-                [JsonIgnore]
-                public virtual String[] theServiceHoursInformationTypes => [];
+                public string Code => nameof(AuthorityHours);
 
                 public AuthorityHours() {
                 }
@@ -2160,18 +2120,7 @@ namespace S100Framework.DomainModel.S131 {
             [System.Serializable()]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
             public partial class AssociatedRxN : InformationAssociation {
-                [JsonIgnore]
-                IEnumerable<RefId> theRxN => base.RefIds.Where(e => e.Role.Equals("theRxN"));
-                public override string Code => nameof(AssociatedRxN);
-
-                public string[]? this[Role role] => this[role.ToString()];
-                public override string[]? this[string role] => role switch
-                {
-                    "theRxN" => theRxNInformationTypes,
-                    _ => throw new InvalidOperationException(),
-                };
-                [JsonIgnore]
-                public virtual String[] theRxNInformationTypes => [];
+                public string Code => nameof(AssociatedRxN);
 
                 public AssociatedRxN() {
                 }
@@ -2180,18 +2129,7 @@ namespace S100Framework.DomainModel.S131 {
             [System.Serializable()]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
             public partial class ExceptionalWorkday : InformationAssociation {
-                [JsonIgnore]
-                IEnumerable<RefId> partialWorkingDay => base.RefIds.Where(e => e.Role.Equals("partialWorkingDay"));
-                public override string Code => nameof(ExceptionalWorkday);
-
-                public string[]? this[Role role] => this[role.ToString()];
-                public override string[]? this[string role] => role switch
-                {
-                    "partialWorkingDay" => partialWorkingDayInformationTypes,
-                    _ => throw new InvalidOperationException(),
-                };
-                [JsonIgnore]
-                public virtual String[] partialWorkingDayInformationTypes => [];
+                public string Code => nameof(ExceptionalWorkday);
 
                 public ExceptionalWorkday() {
                 }
@@ -2200,18 +2138,7 @@ namespace S100Framework.DomainModel.S131 {
             [System.Serializable()]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
             public partial class ServiceControl : InformationAssociation {
-                [JsonIgnore]
-                RefId? controlAuthority => base.RefIds.FirstOrDefault(e => e.Role.Equals("controlAuthority"));
-                public override string Code => nameof(ServiceControl);
-
-                public string[]? this[Role role] => this[role.ToString()];
-                public override string[]? this[string role] => role switch
-                {
-                    "controlAuthority" => controlAuthorityInformationTypes,
-                    _ => throw new InvalidOperationException(),
-                };
-                [JsonIgnore]
-                public virtual String[] controlAuthorityInformationTypes => [];
+                public string Code => nameof(ServiceControl);
 
                 public ServiceControl() {
                 }
@@ -2220,18 +2147,7 @@ namespace S100Framework.DomainModel.S131 {
             [System.Serializable()]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
             public partial class ServiceContact : InformationAssociation {
-                [JsonIgnore]
-                IEnumerable<RefId> theContactDetails => base.RefIds.Where(e => e.Role.Equals("theContactDetails"));
-                public override string Code => nameof(ServiceContact);
-
-                public string[]? this[Role role] => this[role.ToString()];
-                public override string[]? this[string role] => role switch
-                {
-                    "theContactDetails" => theContactDetailsInformationTypes,
-                    _ => throw new InvalidOperationException(),
-                };
-                [JsonIgnore]
-                public virtual String[] theContactDetailsInformationTypes => [];
+                public string Code => nameof(ServiceContact);
 
                 public ServiceContact() {
                 }
@@ -2240,18 +2156,7 @@ namespace S100Framework.DomainModel.S131 {
             [System.Serializable()]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
             public partial class LocationHours : InformationAssociation {
-                [JsonIgnore]
-                RefId? location_srvHrs => base.RefIds.FirstOrDefault(e => e.Role.Equals("location_srvHrs"));
-                public override string Code => nameof(LocationHours);
-
-                public string[]? this[Role role] => this[role.ToString()];
-                public override string[]? this[string role] => role switch
-                {
-                    "location_srvHrs" => location_srvHrsInformationTypes,
-                    _ => throw new InvalidOperationException(),
-                };
-                [JsonIgnore]
-                public virtual String[] location_srvHrsInformationTypes => [];
+                public string Code => nameof(LocationHours);
 
                 public LocationHours() {
                 }
@@ -2260,25 +2165,7 @@ namespace S100Framework.DomainModel.S131 {
             [System.Serializable()]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
             public partial class RelatedOrganisation : InformationAssociation {
-                [JsonIgnore]
-                IEnumerable<RefId> theInformation => base.RefIds.Where(e => e.Role.Equals("theInformation"));
-
-                [JsonIgnore]
-                IEnumerable<RefId> theOrganisation => base.RefIds.Where(e => e.Role.Equals("theOrganisation"));
-                public override string Code => nameof(RelatedOrganisation);
-
-                public string[]? this[Role role] => this[role.ToString()];
-                public override string[]? this[string role] => role switch
-                {
-                    "theInformation" => theInformationInformationTypes,
-                    "theOrganisation" => theOrganisationInformationTypes,
-                    _ => throw new InvalidOperationException(),
-                };
-                [JsonIgnore]
-                public virtual String[] theInformationInformationTypes => [];
-
-                [JsonIgnore]
-                public virtual String[] theOrganisationInformationTypes => [];
+                public string Code => nameof(RelatedOrganisation);
 
                 public RelatedOrganisation() {
                 }
@@ -2291,26 +2178,7 @@ namespace S100Framework.DomainModel.S131 {
                 [EnumerationValue(2)]
                 [Required()]
                 public membership membership { get; set; }
-
-                [JsonIgnore]
-                IEnumerable<RefId> theApplicableRxN => base.RefIds.Where(e => e.Role.Equals("theApplicableRxN"));
-
-                [JsonIgnore]
-                IEnumerable<RefId> isApplicableTo => base.RefIds.Where(e => e.Role.Equals("isApplicableTo"));
-                public override string Code => nameof(InclusionType);
-
-                public string[]? this[Role role] => this[role.ToString()];
-                public override string[]? this[string role] => role switch
-                {
-                    "theApplicableRxN" => theApplicableRxNInformationTypes,
-                    "isApplicableTo" => isApplicableToInformationTypes,
-                    _ => throw new InvalidOperationException(),
-                };
-                [JsonIgnore]
-                public virtual String[] theApplicableRxNInformationTypes => [];
-
-                [JsonIgnore]
-                public virtual String[] isApplicableToInformationTypes => [];
+                public string Code => nameof(InclusionType);
 
                 public InclusionType() {
                 }
@@ -2327,26 +2195,7 @@ namespace S100Framework.DomainModel.S131 {
                 [EnumerationValue(6)]
                 [Required()]
                 public categoryOfRelationship categoryOfRelationship { get; set; }
-
-                [JsonIgnore]
-                IEnumerable<RefId> vslLocation => base.RefIds.Where(e => e.Role.Equals("vslLocation"));
-
-                [JsonIgnore]
-                IEnumerable<RefId> permission => base.RefIds.Where(e => e.Role.Equals("permission"));
-                public override string Code => nameof(PermissionType);
-
-                public string[]? this[Role role] => this[role.ToString()];
-                public override string[]? this[string role] => role switch
-                {
-                    "vslLocation" => vslLocationInformationTypes,
-                    "permission" => permissionInformationTypes,
-                    _ => throw new InvalidOperationException(),
-                };
-                [JsonIgnore]
-                public virtual String[] vslLocationInformationTypes => [];
-
-                [JsonIgnore]
-                public virtual String[] permissionInformationTypes => [];
+                public string Code => nameof(PermissionType);
 
                 public PermissionType() {
                 }
@@ -2355,18 +2204,7 @@ namespace S100Framework.DomainModel.S131 {
             [System.Serializable()]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
             public partial class LimitEntrance : InformationAssociation {
-                [JsonIgnore]
-                RefId? entranceReference => base.RefIds.FirstOrDefault(e => e.Role.Equals("entranceReference"));
-                public override string Code => nameof(LimitEntrance);
-
-                public string[]? this[Role role] => this[role.ToString()];
-                public override string[]? this[string role] => role switch
-                {
-                    "entranceReference" => entranceReferenceInformationTypes,
-                    _ => throw new InvalidOperationException(),
-                };
-                [JsonIgnore]
-                public virtual String[] entranceReferenceInformationTypes => [];
+                public string Code => nameof(LimitEntrance);
 
                 public LimitEntrance() {
                 }
@@ -2375,18 +2213,7 @@ namespace S100Framework.DomainModel.S131 {
             [System.Serializable()]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
             public partial class ServiceAvailability : InformationAssociation {
-                [JsonIgnore]
-                RefId? serviceDescriptionReference => base.RefIds.FirstOrDefault(e => e.Role.Equals("serviceDescriptionReference"));
-                public override string Code => nameof(ServiceAvailability);
-
-                public string[]? this[Role role] => this[role.ToString()];
-                public override string[]? this[string role] => role switch
-                {
-                    "serviceDescriptionReference" => serviceDescriptionReferenceInformationTypes,
-                    _ => throw new InvalidOperationException(),
-                };
-                [JsonIgnore]
-                public virtual String[] serviceDescriptionReferenceInformationTypes => [];
+                public string Code => nameof(ServiceAvailability);
 
                 public ServiceAvailability() {
                 }
@@ -2398,26 +2225,8 @@ namespace S100Framework.DomainModel.S131 {
 
             [System.Serializable()]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-            public abstract partial class TextAssociation : FeatureAssociation {
-                [JsonIgnore]
-                public RefId identifies => base.RefIds.First(e => e.Role.Equals("identifies"));
-
-                [JsonIgnore]
-                public RefId? positions => base.RefIds.FirstOrDefault(e => e.Role.Equals("positions"));
-                public override string Code => "TextAssociation";
-
-                public string[]? this[Role role] => this[role.ToString()];
-                public override string[]? this[string role] => role switch
-                {
-                    "identifies" => identifiesFeatureTypes,
-                    "positions" => positionsFeatureTypes,
-                    _ => throw new InvalidOperationException(),
-                };
-                [JsonIgnore]
-                public virtual String[] identifiesFeatureTypes => [];
-
-                [JsonIgnore]
-                public virtual String[] positionsFeatureTypes => [];
+            public partial class TextAssociation : FeatureAssociation {
+                public string Code => "TextAssociation";
 
                 public TextAssociation() {
                 }
@@ -2425,26 +2234,8 @@ namespace S100Framework.DomainModel.S131 {
 
             [System.Serializable()]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-            public abstract partial class Subsection : FeatureAssociation {
-                [JsonIgnore]
-                public IEnumerable<RefId> subUnit => base.RefIds.Where(e => e.Role.Equals("subUnit"));
-
-                [JsonIgnore]
-                public RefId? constitute => base.RefIds.FirstOrDefault(e => e.Role.Equals("constitute"));
-                public override string Code => "Subsection";
-
-                public string[]? this[Role role] => this[role.ToString()];
-                public override string[]? this[string role] => role switch
-                {
-                    "subUnit" => subUnitFeatureTypes,
-                    "constitute" => constituteFeatureTypes,
-                    _ => throw new InvalidOperationException(),
-                };
-                [JsonIgnore]
-                public virtual String[] subUnitFeatureTypes => [];
-
-                [JsonIgnore]
-                public virtual String[] constituteFeatureTypes => [];
+            public partial class Subsection : FeatureAssociation {
+                public string Code => "Subsection";
 
                 public Subsection() {
                 }
@@ -2452,26 +2243,8 @@ namespace S100Framework.DomainModel.S131 {
 
             [System.Serializable()]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-            public abstract partial class Infrastructure : FeatureAssociation {
-                [JsonIgnore]
-                public RefId? infrastructureLocation => base.RefIds.FirstOrDefault(e => e.Role.Equals("infrastructureLocation"));
-
-                [JsonIgnore]
-                public IEnumerable<RefId> hasInfrastructure => base.RefIds.Where(e => e.Role.Equals("hasInfrastructure"));
-                public override string Code => "Infrastructure";
-
-                public string[]? this[Role role] => this[role.ToString()];
-                public override string[]? this[string role] => role switch
-                {
-                    "infrastructureLocation" => infrastructureLocationFeatureTypes,
-                    "hasInfrastructure" => hasInfrastructureFeatureTypes,
-                    _ => throw new InvalidOperationException(),
-                };
-                [JsonIgnore]
-                public virtual String[] infrastructureLocationFeatureTypes => [];
-
-                [JsonIgnore]
-                public virtual String[] hasInfrastructureFeatureTypes => [];
+            public partial class Infrastructure : FeatureAssociation {
+                public string Code => "Infrastructure";
 
                 public Infrastructure() {
                 }
@@ -2479,26 +2252,8 @@ namespace S100Framework.DomainModel.S131 {
 
             [System.Serializable()]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-            public abstract partial class PrimaryAuxiliaryFacility : FeatureAssociation {
-                [JsonIgnore]
-                public RefId? primaryFacility => base.RefIds.FirstOrDefault(e => e.Role.Equals("primaryFacility"));
-
-                [JsonIgnore]
-                public IEnumerable<RefId> auxiliaryFacility => base.RefIds.Where(e => e.Role.Equals("auxiliaryFacility"));
-                public override string Code => "PrimaryAuxiliaryFacility";
-
-                public string[]? this[Role role] => this[role.ToString()];
-                public override string[]? this[string role] => role switch
-                {
-                    "primaryFacility" => primaryFacilityFeatureTypes,
-                    "auxiliaryFacility" => auxiliaryFacilityFeatureTypes,
-                    _ => throw new InvalidOperationException(),
-                };
-                [JsonIgnore]
-                public virtual String[] primaryFacilityFeatureTypes => [];
-
-                [JsonIgnore]
-                public virtual String[] auxiliaryFacilityFeatureTypes => [];
+            public partial class PrimaryAuxiliaryFacility : FeatureAssociation {
+                public string Code => "PrimaryAuxiliaryFacility";
 
                 public PrimaryAuxiliaryFacility() {
                 }
@@ -2506,26 +2261,8 @@ namespace S100Framework.DomainModel.S131 {
 
             [System.Serializable()]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-            public abstract partial class Demarcation : FeatureAssociation {
-                [JsonIgnore]
-                public IEnumerable<RefId> demarcationIndicator => base.RefIds.Where(e => e.Role.Equals("demarcationIndicator"));
-
-                [JsonIgnore]
-                public RefId demarcatedFeature => base.RefIds.First(e => e.Role.Equals("demarcatedFeature"));
-                public override string Code => "Demarcation";
-
-                public string[]? this[Role role] => this[role.ToString()];
-                public override string[]? this[string role] => role switch
-                {
-                    "demarcationIndicator" => demarcationIndicatorFeatureTypes,
-                    "demarcatedFeature" => demarcatedFeatureFeatureTypes,
-                    _ => throw new InvalidOperationException(),
-                };
-                [JsonIgnore]
-                public virtual String[] demarcationIndicatorFeatureTypes => [];
-
-                [JsonIgnore]
-                public virtual String[] demarcatedFeatureFeatureTypes => [];
+            public partial class Demarcation : FeatureAssociation {
+                public string Code => "Demarcation";
 
                 public Demarcation() {
                 }
@@ -2533,26 +2270,8 @@ namespace S100Framework.DomainModel.S131 {
 
             [System.Serializable()]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-            public abstract partial class JurisdictionalLimit : FeatureAssociation {
-                [JsonIgnore]
-                public RefId limitReference => base.RefIds.First(e => e.Role.Equals("limitReference"));
-
-                [JsonIgnore]
-                public RefId? limitExtent => base.RefIds.FirstOrDefault(e => e.Role.Equals("limitExtent"));
-                public override string Code => "JurisdictionalLimit";
-
-                public string[]? this[Role role] => this[role.ToString()];
-                public override string[]? this[string role] => role switch
-                {
-                    "limitReference" => limitReferenceFeatureTypes,
-                    "limitExtent" => limitExtentFeatureTypes,
-                    _ => throw new InvalidOperationException(),
-                };
-                [JsonIgnore]
-                public virtual String[] limitReferenceFeatureTypes => [];
-
-                [JsonIgnore]
-                public virtual String[] limitExtentFeatureTypes => [];
+            public partial class JurisdictionalLimit : FeatureAssociation {
+                public string Code => "JurisdictionalLimit";
 
                 public JurisdictionalLimit() {
                 }
@@ -2560,26 +2279,8 @@ namespace S100Framework.DomainModel.S131 {
 
             [System.Serializable()]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-            public abstract partial class LayoutDivision : FeatureAssociation {
-                [JsonIgnore]
-                public IEnumerable<RefId> layoutUnit => base.RefIds.Where(e => e.Role.Equals("layoutUnit"));
-
-                [JsonIgnore]
-                public RefId componentOf => base.RefIds.First(e => e.Role.Equals("componentOf"));
-                public override string Code => "LayoutDivision";
-
-                public string[]? this[Role role] => this[role.ToString()];
-                public override string[]? this[string role] => role switch
-                {
-                    "layoutUnit" => layoutUnitFeatureTypes,
-                    "componentOf" => componentOfFeatureTypes,
-                    _ => throw new InvalidOperationException(),
-                };
-                [JsonIgnore]
-                public virtual String[] layoutUnitFeatureTypes => [];
-
-                [JsonIgnore]
-                public virtual String[] componentOfFeatureTypes => [];
+            public partial class LayoutDivision : FeatureAssociation {
+                public string Code => "LayoutDivision";
 
                 public LayoutDivision() {
                 }
@@ -2589,11 +2290,12 @@ namespace S100Framework.DomainModel.S131 {
 
     namespace Bindings {
     }
+}
 
+namespace S100Framework.DomainModel.S131 {
     namespace InformationTypes {
         using ComplexAttributes;
         using DomainModel;
-        using System.Runtime.Serialization;
         using S100Framework.DomainModel.S131.Associations.InformationAssociations;
 
         [System.Serializable()]
@@ -2620,17 +2322,16 @@ namespace S100Framework.DomainModel.S131 {
 
             [JsonIgnore]
             public override string Code => nameof(InformationType);
+            public static informationBinding[] informationBindings => [new informationBinding
+            {
+                roleType = roleType.association,
+                lower = 0,
+                upper = default,
+                association = nameof(AdditionalInformation),
+                role = Enum.GetName<Role>(Role.providesInformation)!,
+                informationTypes = [nameof(NauticalInformation)],
+            }, ];
 
-            public class AdditionalInformation_providesInformation : AdditionalInformation {
-                public override roleType? roleType => DomainModel.roleType.association;
-
-                [JsonIgnore]
-                public override String[] providesInformationInformationTypes => ["NauticalInformation"];
-
-                public AdditionalInformation_providesInformation() {
-                    base.AssociationConnectorTypeName = typeof(InformationType).Name;
-                }
-            };
             public InformationType() {
             }
         }
@@ -2659,27 +2360,24 @@ namespace S100Framework.DomainModel.S131 {
 
             [JsonIgnore]
             public override string Code => nameof(AbstractRxN);
+            public static informationBinding[] informationBindings => [new informationBinding
+            {
+                roleType = roleType.association,
+                lower = 0,
+                upper = default,
+                association = nameof(InclusionType),
+                role = Enum.GetName<Role>(Role.isApplicableTo)!,
+                informationTypes = [nameof(Applicability)],
+            }, new informationBinding
+            {
+                roleType = roleType.association,
+                lower = 0,
+                upper = default,
+                association = nameof(RelatedOrganisation),
+                role = Enum.GetName<Role>(Role.theOrganisation)!,
+                informationTypes = [nameof(Authority)],
+            }, ];
 
-            public class InclusionType_isApplicableTo : InclusionType {
-                public override roleType? roleType => DomainModel.roleType.association;
-
-                [JsonIgnore]
-                public override String[] isApplicableToInformationTypes => ["Applicability"];
-
-                public InclusionType_isApplicableTo() {
-                    base.AssociationConnectorTypeName = typeof(AbstractRxN).Name;
-                }
-            };
-            public class RelatedOrganisation_theOrganisation : RelatedOrganisation {
-                public override roleType? roleType => DomainModel.roleType.association;
-
-                [JsonIgnore]
-                public override String[] theOrganisationInformationTypes => ["Authority"];
-
-                public RelatedOrganisation_theOrganisation() {
-                    base.AssociationConnectorTypeName = typeof(AbstractRxN).Name;
-                }
-            };
             public AbstractRxN() {
             }
         }
@@ -2758,27 +2456,24 @@ namespace S100Framework.DomainModel.S131 {
 
             [JsonIgnore]
             public override string Code => nameof(Applicability);
+            public static informationBinding[] informationBindings => [new informationBinding
+            {
+                roleType = roleType.association,
+                lower = 0,
+                upper = default,
+                association = nameof(InclusionType),
+                role = Enum.GetName<Role>(Role.theApplicableRxN)!,
+                informationTypes = [nameof(AbstractRxN)],
+            }, new informationBinding
+            {
+                roleType = roleType.association,
+                lower = 0,
+                upper = default,
+                association = nameof(PermissionType),
+                role = Enum.GetName<Role>(Role.vslLocation)!,
+                informationTypes = [nameof(InformationType)],
+            }, ];
 
-            public class InclusionType_theApplicableRxN : InclusionType {
-                public override roleType? roleType => DomainModel.roleType.association;
-
-                [JsonIgnore]
-                public override String[] theApplicableRxNInformationTypes => ["AbstractRxN"];
-
-                public InclusionType_theApplicableRxN() {
-                    base.AssociationConnectorTypeName = typeof(Applicability).Name;
-                }
-            };
-            public class PermissionType_vslLocation : PermissionType {
-                public override roleType? roleType => DomainModel.roleType.association;
-
-                [JsonIgnore]
-                public override String[] vslLocationInformationTypes => ["InformationType"];
-
-                public PermissionType_vslLocation() {
-                    base.AssociationConnectorTypeName = typeof(Applicability).Name;
-                }
-            };
             public Applicability() {
             }
         }
@@ -2807,37 +2502,32 @@ namespace S100Framework.DomainModel.S131 {
 
             [JsonIgnore]
             public override string Code => nameof(Authority);
+            public static informationBinding[] informationBindings => [new informationBinding
+            {
+                roleType = roleType.association,
+                lower = 0,
+                upper = default,
+                association = nameof(AuthorityContact),
+                role = Enum.GetName<Role>(Role.theContactDetails)!,
+                informationTypes = [nameof(ContactDetails)],
+            }, new informationBinding
+            {
+                roleType = roleType.association,
+                lower = 0,
+                upper = default,
+                association = nameof(RelatedOrganisation),
+                role = Enum.GetName<Role>(Role.theInformation)!,
+                informationTypes = [nameof(AbstractRxN)],
+            }, new informationBinding
+            {
+                roleType = roleType.association,
+                lower = 0,
+                upper = default,
+                association = nameof(AuthorityHours),
+                role = Enum.GetName<Role>(Role.theServiceHours)!,
+                informationTypes = [nameof(ServiceHours)],
+            }, ];
 
-            public class AuthorityContact_theContactDetails : AuthorityContact {
-                public override roleType? roleType => DomainModel.roleType.association;
-
-                [JsonIgnore]
-                public override String[] theContactDetailsInformationTypes => ["ContactDetails"];
-
-                public AuthorityContact_theContactDetails() {
-                    base.AssociationConnectorTypeName = typeof(Authority).Name;
-                }
-            };
-            public class RelatedOrganisation_theInformation : RelatedOrganisation {
-                public override roleType? roleType => DomainModel.roleType.association;
-
-                [JsonIgnore]
-                public override String[] theInformationInformationTypes => ["AbstractRxN"];
-
-                public RelatedOrganisation_theInformation() {
-                    base.AssociationConnectorTypeName = typeof(Authority).Name;
-                }
-            };
-            public class AuthorityHours_theServiceHours : AuthorityHours {
-                public override roleType? roleType => DomainModel.roleType.association;
-
-                [JsonIgnore]
-                public override String[] theServiceHoursInformationTypes => ["ServiceHours"];
-
-                public AuthorityHours_theServiceHours() {
-                    base.AssociationConnectorTypeName = typeof(Authority).Name;
-                }
-            };
             public Authority() {
             }
         }
@@ -2958,6 +2648,7 @@ namespace S100Framework.DomainModel.S131 {
 
             [JsonIgnore]
             public override string Code => nameof(AvailablePortServices);
+            public static informationBinding[] informationBindings => [];
 
             public AvailablePortServices() {
             }
@@ -2986,17 +2677,16 @@ namespace S100Framework.DomainModel.S131 {
 
             [JsonIgnore]
             public override string Code => nameof(ContactDetails);
+            public static informationBinding[] informationBindings => [new informationBinding
+            {
+                roleType = roleType.association,
+                lower = 0,
+                upper = default,
+                association = nameof(AuthorityContact),
+                role = Enum.GetName<Role>(Role.theAuthority)!,
+                informationTypes = [nameof(Authority)],
+            }, ];
 
-            public class AuthorityContact_theAuthority : AuthorityContact {
-                public override roleType? roleType => DomainModel.roleType.association;
-
-                [JsonIgnore]
-                public override String[] theAuthorityInformationTypes => ["Authority"];
-
-                public AuthorityContact_theAuthority() {
-                    base.AssociationConnectorTypeName = typeof(ContactDetails).Name;
-                }
-            };
             public ContactDetails() {
             }
         }
@@ -3017,6 +2707,7 @@ namespace S100Framework.DomainModel.S131 {
 
             [JsonIgnore]
             public override string Code => nameof(Entrance);
+            public static informationBinding[] informationBindings => [];
 
             public Entrance() {
             }
@@ -3027,17 +2718,16 @@ namespace S100Framework.DomainModel.S131 {
         public partial class NauticalInformation : AbstractRxN {
             [JsonIgnore]
             public override string Code => nameof(NauticalInformation);
+            public static informationBinding[] informationBindings => [new informationBinding
+            {
+                roleType = roleType.association,
+                lower = 0,
+                upper = default,
+                association = nameof(AdditionalInformation),
+                role = Enum.GetName<Role>(Role.informationProvidedFor)!,
+                informationTypes = [nameof(InformationType)],
+            }, ];
 
-            public class AdditionalInformation_informationProvidedFor : AdditionalInformation {
-                public override roleType? roleType => DomainModel.roleType.association;
-
-                [JsonIgnore]
-                public override String[] informationProvidedForInformationTypes => ["InformationType"];
-
-                public AdditionalInformation_informationProvidedFor() {
-                    base.AssociationConnectorTypeName = typeof(NauticalInformation).Name;
-                }
-            };
             public NauticalInformation() {
             }
         }
@@ -3051,6 +2741,7 @@ namespace S100Framework.DomainModel.S131 {
 
             [JsonIgnore]
             public override string Code => nameof(NonStandardWorkingDay);
+            public static informationBinding[] informationBindings => [];
 
             public NonStandardWorkingDay() {
             }
@@ -3061,6 +2752,7 @@ namespace S100Framework.DomainModel.S131 {
         public partial class Recommendations : AbstractRxN {
             [JsonIgnore]
             public override string Code => nameof(Recommendations);
+            public static informationBinding[] informationBindings => [];
 
             public Recommendations() {
             }
@@ -3071,6 +2763,7 @@ namespace S100Framework.DomainModel.S131 {
         public partial class Regulations : AbstractRxN {
             [JsonIgnore]
             public override string Code => nameof(Regulations);
+            public static informationBinding[] informationBindings => [];
 
             public Regulations() {
             }
@@ -3081,6 +2774,7 @@ namespace S100Framework.DomainModel.S131 {
         public partial class Restrictions : AbstractRxN {
             [JsonIgnore]
             public override string Code => nameof(Restrictions);
+            public static informationBinding[] informationBindings => [];
 
             public Restrictions() {
             }
@@ -3095,29 +2789,27 @@ namespace S100Framework.DomainModel.S131 {
 
             [JsonIgnore]
             public override string Code => nameof(ServiceHours);
+            public static informationBinding[] informationBindings => [new informationBinding
+            {
+                roleType = roleType.association,
+                lower = 0,
+                upper = default,
+                association = nameof(ExceptionalWorkday),
+                role = Enum.GetName<Role>(Role.partialWorkingDay)!,
+                informationTypes = [nameof(NonStandardWorkingDay)],
+            }, new informationBinding
+            {
+                roleType = roleType.association,
+                lower = 0,
+                upper = default,
+                association = nameof(AuthorityHours),
+                role = Enum.GetName<Role>(Role.theAuthority_srvHrs)!,
+                informationTypes = [nameof(Authority)],
+            }, ];
 
-            public class ExceptionalWorkday_partialWorkingDay : ExceptionalWorkday {
-                public override roleType? roleType => DomainModel.roleType.association;
-
-                [JsonIgnore]
-                public override String[] partialWorkingDayInformationTypes => ["NonStandardWorkingDay"];
-
-                public ExceptionalWorkday_partialWorkingDay() {
-                    base.AssociationConnectorTypeName = typeof(ServiceHours).Name;
-                }
-            };
-            public class AuthorityHours_theAuthority_srvHrs : AuthorityHours {
-                public override roleType? roleType => DomainModel.roleType.association;
-
-                [JsonIgnore]
-                public override String[] theAuthority_srvHrsInformationTypes => ["Authority"];
-
-                public AuthorityHours_theAuthority_srvHrs() {
-                    base.AssociationConnectorTypeName = typeof(ServiceHours).Name;
-                }
-            };
             public ServiceHours() {
                 scheduleByDayOfWeek = new();
+                ;
             }
         }
 
@@ -3140,6 +2832,7 @@ namespace S100Framework.DomainModel.S131 {
 
             [JsonIgnore]
             public override string Code => nameof(SpatialQuality);
+            public static informationBinding[] informationBindings => [];
 
             public SpatialQuality() {
             }
@@ -3182,47 +2875,41 @@ namespace S100Framework.DomainModel.S131 {
 
             [JsonIgnore]
             public override string Code => nameof(FeatureType);
+            public static informationBinding[] informationBindings => [new informationBinding
+            {
+                roleType = roleType.association,
+                lower = 0,
+                upper = default,
+                association = nameof(PermissionType),
+                role = Enum.GetName<Role>(Role.permission)!,
+                informationTypes = [nameof(Applicability)],
+            }, new informationBinding
+            {
+                roleType = roleType.association,
+                lower = 0,
+                upper = default,
+                association = nameof(AssociatedRxN),
+                role = Enum.GetName<Role>(Role.theRxN)!,
+                informationTypes = [nameof(AbstractRxN)],
+            }, new informationBinding
+            {
+                roleType = roleType.association,
+                lower = 0,
+                upper = default,
+                association = nameof(AdditionalInformation),
+                role = Enum.GetName<Role>(Role.providesInformation)!,
+                informationTypes = [nameof(NauticalInformation)],
+            }, ];
+            public static featureBinding[] featureBindings => [new featureBinding
+            {
+                roleType = roleType.association,
+                lower = 0,
+                upper = 1,
+                association = nameof(TextAssociation),
+                role = Enum.GetName<Role>(Role.positions)!,
+                featureTypes = [nameof(TextPlacement)],
+            }, ];
 
-            public class PermissionType_permission : PermissionType {
-                public override roleType? roleType => DomainModel.roleType.association;
-
-                [JsonIgnore]
-                public override String[] permissionInformationTypes => ["Applicability"];
-
-                public PermissionType_permission() {
-                    base.AssociationConnectorTypeName = typeof(FeatureType).Name;
-                }
-            };
-            public class AssociatedRxN_theRxN : AssociatedRxN {
-                public override roleType? roleType => DomainModel.roleType.association;
-
-                [JsonIgnore]
-                public override String[] theRxNInformationTypes => ["AbstractRxN"];
-
-                public AssociatedRxN_theRxN() {
-                    base.AssociationConnectorTypeName = typeof(FeatureType).Name;
-                }
-            };
-            public class AdditionalInformation_providesInformation : AdditionalInformation {
-                public override roleType? roleType => DomainModel.roleType.association;
-
-                [JsonIgnore]
-                public override String[] providesInformationInformationTypes => ["NauticalInformation"];
-
-                public AdditionalInformation_providesInformation() {
-                    base.AssociationConnectorTypeName = typeof(FeatureType).Name;
-                }
-            };
-            public class TextAssociation_positions : TextAssociation {
-                public override roleType? roleType => DomainModel.roleType.association;
-
-                [JsonIgnore]
-                public override String[] positionsFeatureTypes => ["TextPlacement"];
-
-                public TextAssociation_positions() {
-                    base.AssociationConnectorTypeName = typeof(FeatureType).Name;
-                }
-            };
             public FeatureType() {
             }
         }
@@ -3232,17 +2919,17 @@ namespace S100Framework.DomainModel.S131 {
         public abstract partial class OrganizationContactArea : FeatureType {
             [JsonIgnore]
             public override string Code => nameof(OrganizationContactArea);
+            public static informationBinding[] informationBindings => [new informationBinding
+            {
+                roleType = roleType.association,
+                lower = 0,
+                upper = default,
+                association = nameof(ServiceContact),
+                role = Enum.GetName<Role>(Role.theContactDetails)!,
+                informationTypes = [nameof(ContactDetails)],
+            }, ];
+            public static featureBinding[] featureBindings => [];
 
-            public class ServiceContact_theContactDetails : ServiceContact {
-                public override roleType? roleType => DomainModel.roleType.association;
-
-                [JsonIgnore]
-                public override String[] theContactDetailsInformationTypes => ["ContactDetails"];
-
-                public ServiceContact_theContactDetails() {
-                    base.AssociationConnectorTypeName = typeof(OrganizationContactArea).Name;
-                }
-            };
             public OrganizationContactArea() {
             }
         }
@@ -3252,17 +2939,17 @@ namespace S100Framework.DomainModel.S131 {
         public abstract partial class SupervisedArea : OrganizationContactArea {
             [JsonIgnore]
             public override string Code => nameof(SupervisedArea);
+            public static informationBinding[] informationBindings => [new informationBinding
+            {
+                roleType = roleType.association,
+                lower = 0,
+                upper = 1,
+                association = nameof(ServiceControl),
+                role = Enum.GetName<Role>(Role.controlAuthority)!,
+                informationTypes = [nameof(Authority)],
+            }, ];
+            public static featureBinding[] featureBindings => [];
 
-            public class ServiceControl_controlAuthority : ServiceControl {
-                public override roleType? roleType => DomainModel.roleType.association;
-
-                [JsonIgnore]
-                public override String[] controlAuthorityInformationTypes => ["Authority"];
-
-                public ServiceControl_controlAuthority() {
-                    base.AssociationConnectorTypeName = typeof(SupervisedArea).Name;
-                }
-            };
             public SupervisedArea() {
             }
         }
@@ -3274,17 +2961,17 @@ namespace S100Framework.DomainModel.S131 {
 
             [JsonIgnore]
             public override string Code => nameof(HarbourPhysicalInfrastructure);
+            public static informationBinding[] informationBindings => [];
+            public static featureBinding[] featureBindings => [new featureBinding
+            {
+                roleType = roleType.association,
+                lower = 0,
+                upper = 1,
+                association = nameof(Infrastructure),
+                role = Enum.GetName<Role>(Role.infrastructureLocation)!,
+                featureTypes = [nameof(HarbourAreaSection), nameof(Terminal)],
+            }, ];
 
-            public class Infrastructure_infrastructureLocation : Infrastructure {
-                public override roleType? roleType => DomainModel.roleType.association;
-
-                [JsonIgnore]
-                public override String[] infrastructureLocationFeatureTypes => ["HarbourAreaSection", "Terminal"];
-
-                public Infrastructure_infrastructureLocation() {
-                    base.AssociationConnectorTypeName = typeof(HarbourPhysicalInfrastructure).Name;
-                }
-            };
             public HarbourPhysicalInfrastructure() {
             }
         }
@@ -3294,6 +2981,8 @@ namespace S100Framework.DomainModel.S131 {
         public abstract partial class Layout : SupervisedArea {
             [JsonIgnore]
             public override string Code => nameof(Layout);
+            public static informationBinding[] informationBindings => [];
+            public static featureBinding[] featureBindings => [];
 
             public Layout() {
             }
@@ -3304,37 +2993,33 @@ namespace S100Framework.DomainModel.S131 {
         public partial class AnchorBerth : Layout {
             [JsonIgnore]
             public override string Code => nameof(AnchorBerth);
+            public static informationBinding[] informationBindings => [new informationBinding
+            {
+                roleType = roleType.association,
+                lower = 0,
+                upper = 1,
+                association = nameof(ServiceAvailability),
+                role = Enum.GetName<Role>(Role.serviceDescriptionReference)!,
+                informationTypes = [nameof(AvailablePortServices)],
+            }, new informationBinding
+            {
+                roleType = roleType.association,
+                lower = 0,
+                upper = 1,
+                association = nameof(LocationHours),
+                role = Enum.GetName<Role>(Role.location_srvHrs)!,
+                informationTypes = [nameof(ServiceHours)],
+            }, ];
+            public static featureBinding[] featureBindings => [new featureBinding
+            {
+                roleType = roleType.association,
+                lower = 0,
+                upper = default,
+                association = nameof(PrimaryAuxiliaryFacility),
+                role = Enum.GetName<Role>(Role.auxiliaryFacility)!,
+                featureTypes = [nameof(MooringWarpingFacility)],
+            }, ];
 
-            public class ServiceAvailability_serviceDescriptionReference : ServiceAvailability {
-                public override roleType? roleType => DomainModel.roleType.association;
-
-                [JsonIgnore]
-                public override String[] serviceDescriptionReferenceInformationTypes => ["AvailablePortServices"];
-
-                public ServiceAvailability_serviceDescriptionReference() {
-                    base.AssociationConnectorTypeName = typeof(AnchorBerth).Name;
-                }
-            };
-            public class LocationHours_location_srvHrs : LocationHours {
-                public override roleType? roleType => DomainModel.roleType.association;
-
-                [JsonIgnore]
-                public override String[] location_srvHrsInformationTypes => ["ServiceHours"];
-
-                public LocationHours_location_srvHrs() {
-                    base.AssociationConnectorTypeName = typeof(AnchorBerth).Name;
-                }
-            };
-            public class PrimaryAuxiliaryFacility_auxiliaryFacility : PrimaryAuxiliaryFacility {
-                public override roleType? roleType => DomainModel.roleType.association;
-
-                [JsonIgnore]
-                public override String[] auxiliaryFacilityFeatureTypes => ["MooringWarpingFacility"];
-
-                public PrimaryAuxiliaryFacility_auxiliaryFacility() {
-                    base.AssociationConnectorTypeName = typeof(AnchorBerth).Name;
-                }
-            };
             public AnchorBerth() {
             }
         }
@@ -3353,27 +3038,25 @@ namespace S100Framework.DomainModel.S131 {
 
             [JsonIgnore]
             public override string Code => nameof(AnchorageArea);
+            public static informationBinding[] informationBindings => [new informationBinding
+            {
+                roleType = roleType.association,
+                lower = 0,
+                upper = 1,
+                association = nameof(LocationHours),
+                role = Enum.GetName<Role>(Role.location_srvHrs)!,
+                informationTypes = [nameof(ServiceHours)],
+            }, ];
+            public static featureBinding[] featureBindings => [new featureBinding
+            {
+                roleType = roleType.aggregation,
+                lower = 1,
+                upper = 1,
+                association = nameof(LayoutDivision),
+                role = Enum.GetName<Role>(Role.componentOf)!,
+                featureTypes = [nameof(HarbourAreaSection)],
+            }, ];
 
-            public class LocationHours_location_srvHrs : LocationHours {
-                public override roleType? roleType => DomainModel.roleType.association;
-
-                [JsonIgnore]
-                public override String[] location_srvHrsInformationTypes => ["ServiceHours"];
-
-                public LocationHours_location_srvHrs() {
-                    base.AssociationConnectorTypeName = typeof(AnchorageArea).Name;
-                }
-            };
-            public class LayoutDivision_componentOf : LayoutDivision {
-                public override roleType? roleType => DomainModel.roleType.aggregation;
-
-                [JsonIgnore]
-                public override String[] componentOfFeatureTypes => ["HarbourAreaSection"];
-
-                public LayoutDivision_componentOf() {
-                    base.AssociationConnectorTypeName = typeof(AnchorageArea).Name;
-                }
-            };
             public AnchorageArea() {
             }
         }
@@ -3417,47 +3100,41 @@ namespace S100Framework.DomainModel.S131 {
 
             [JsonIgnore]
             public override string Code => nameof(Berth);
+            public static informationBinding[] informationBindings => [new informationBinding
+            {
+                roleType = roleType.association,
+                lower = 0,
+                upper = 1,
+                association = nameof(ServiceAvailability),
+                role = Enum.GetName<Role>(Role.serviceDescriptionReference)!,
+                informationTypes = [nameof(AvailablePortServices)],
+            }, new informationBinding
+            {
+                roleType = roleType.association,
+                lower = 0,
+                upper = 1,
+                association = nameof(LocationHours),
+                role = Enum.GetName<Role>(Role.location_srvHrs)!,
+                informationTypes = [nameof(ServiceHours)],
+            }, ];
+            public static featureBinding[] featureBindings => [new featureBinding
+            {
+                roleType = roleType.association,
+                lower = 0,
+                upper = default,
+                association = nameof(Demarcation),
+                role = Enum.GetName<Role>(Role.demarcationIndicator)!,
+                featureTypes = [nameof(BerthPosition)],
+            }, new featureBinding
+            {
+                roleType = roleType.aggregation,
+                lower = 1,
+                upper = 1,
+                association = nameof(LayoutDivision),
+                role = Enum.GetName<Role>(Role.componentOf)!,
+                featureTypes = [nameof(HarbourAreaSection), nameof(Terminal)],
+            }, ];
 
-            public class ServiceAvailability_serviceDescriptionReference : ServiceAvailability {
-                public override roleType? roleType => DomainModel.roleType.association;
-
-                [JsonIgnore]
-                public override String[] serviceDescriptionReferenceInformationTypes => ["AvailablePortServices"];
-
-                public ServiceAvailability_serviceDescriptionReference() {
-                    base.AssociationConnectorTypeName = typeof(Berth).Name;
-                }
-            };
-            public class LocationHours_location_srvHrs : LocationHours {
-                public override roleType? roleType => DomainModel.roleType.association;
-
-                [JsonIgnore]
-                public override String[] location_srvHrsInformationTypes => ["ServiceHours"];
-
-                public LocationHours_location_srvHrs() {
-                    base.AssociationConnectorTypeName = typeof(Berth).Name;
-                }
-            };
-            public class Demarcation_demarcationIndicator : Demarcation {
-                public override roleType? roleType => DomainModel.roleType.association;
-
-                [JsonIgnore]
-                public override String[] demarcationIndicatorFeatureTypes => ["BerthPosition"];
-
-                public Demarcation_demarcationIndicator() {
-                    base.AssociationConnectorTypeName = typeof(Berth).Name;
-                }
-            };
-            public class LayoutDivision_componentOf : LayoutDivision {
-                public override roleType? roleType => DomainModel.roleType.aggregation;
-
-                [JsonIgnore]
-                public override String[] componentOfFeatureTypes => ["HarbourAreaSection", "Terminal"];
-
-                public LayoutDivision_componentOf() {
-                    base.AssociationConnectorTypeName = typeof(Berth).Name;
-                }
-            };
             public Berth() {
                 uNLocationCode = string.Empty;
             }
@@ -3478,27 +3155,25 @@ namespace S100Framework.DomainModel.S131 {
 
             [JsonIgnore]
             public override string Code => nameof(BerthPosition);
+            public static informationBinding[] informationBindings => [];
+            public static featureBinding[] featureBindings => [new featureBinding
+            {
+                roleType = roleType.composition,
+                lower = 1,
+                upper = 1,
+                association = nameof(Demarcation),
+                role = Enum.GetName<Role>(Role.demarcatedFeature)!,
+                featureTypes = [nameof(Berth)],
+            }, new featureBinding
+            {
+                roleType = roleType.association,
+                lower = 0,
+                upper = default,
+                association = nameof(PrimaryAuxiliaryFacility),
+                role = Enum.GetName<Role>(Role.auxiliaryFacility)!,
+                featureTypes = [nameof(MooringWarpingFacility)],
+            }, ];
 
-            public class Demarcation_demarcatedFeature : Demarcation {
-                public override roleType? roleType => DomainModel.roleType.composition;
-
-                [JsonIgnore]
-                public override String[] demarcatedFeatureFeatureTypes => ["Berth"];
-
-                public Demarcation_demarcatedFeature() {
-                    base.AssociationConnectorTypeName = typeof(BerthPosition).Name;
-                }
-            };
-            public class PrimaryAuxiliaryFacility_auxiliaryFacility : PrimaryAuxiliaryFacility {
-                public override roleType? roleType => DomainModel.roleType.association;
-
-                [JsonIgnore]
-                public override String[] auxiliaryFacilityFeatureTypes => ["MooringWarpingFacility"];
-
-                public PrimaryAuxiliaryFacility_auxiliaryFacility() {
-                    base.AssociationConnectorTypeName = typeof(BerthPosition).Name;
-                }
-            };
             public BerthPosition() {
             }
         }
@@ -3517,37 +3192,33 @@ namespace S100Framework.DomainModel.S131 {
 
             [JsonIgnore]
             public override string Code => nameof(DockArea);
+            public static informationBinding[] informationBindings => [new informationBinding
+            {
+                roleType = roleType.association,
+                lower = 0,
+                upper = 1,
+                association = nameof(ServiceAvailability),
+                role = Enum.GetName<Role>(Role.serviceDescriptionReference)!,
+                informationTypes = [nameof(AvailablePortServices)],
+            }, new informationBinding
+            {
+                roleType = roleType.association,
+                lower = 0,
+                upper = 1,
+                association = nameof(LocationHours),
+                role = Enum.GetName<Role>(Role.location_srvHrs)!,
+                informationTypes = [nameof(ServiceHours)],
+            }, ];
+            public static featureBinding[] featureBindings => [new featureBinding
+            {
+                roleType = roleType.aggregation,
+                lower = 1,
+                upper = 1,
+                association = nameof(LayoutDivision),
+                role = Enum.GetName<Role>(Role.componentOf)!,
+                featureTypes = [nameof(HarbourAreaSection)],
+            }, ];
 
-            public class ServiceAvailability_serviceDescriptionReference : ServiceAvailability {
-                public override roleType? roleType => DomainModel.roleType.association;
-
-                [JsonIgnore]
-                public override String[] serviceDescriptionReferenceInformationTypes => ["AvailablePortServices"];
-
-                public ServiceAvailability_serviceDescriptionReference() {
-                    base.AssociationConnectorTypeName = typeof(DockArea).Name;
-                }
-            };
-            public class LocationHours_location_srvHrs : LocationHours {
-                public override roleType? roleType => DomainModel.roleType.association;
-
-                [JsonIgnore]
-                public override String[] location_srvHrsInformationTypes => ["ServiceHours"];
-
-                public LocationHours_location_srvHrs() {
-                    base.AssociationConnectorTypeName = typeof(DockArea).Name;
-                }
-            };
-            public class LayoutDivision_componentOf : LayoutDivision {
-                public override roleType? roleType => DomainModel.roleType.aggregation;
-
-                [JsonIgnore]
-                public override String[] componentOfFeatureTypes => ["HarbourAreaSection"];
-
-                public LayoutDivision_componentOf() {
-                    base.AssociationConnectorTypeName = typeof(DockArea).Name;
-                }
-            };
             public DockArea() {
             }
         }
@@ -3559,17 +3230,17 @@ namespace S100Framework.DomainModel.S131 {
 
             [JsonIgnore]
             public override string Code => nameof(DryDock);
+            public static informationBinding[] informationBindings => [new informationBinding
+            {
+                roleType = roleType.association,
+                lower = 0,
+                upper = 1,
+                association = nameof(LocationHours),
+                role = Enum.GetName<Role>(Role.location_srvHrs)!,
+                informationTypes = [nameof(ServiceHours)],
+            }, ];
+            public static featureBinding[] featureBindings => [];
 
-            public class LocationHours_location_srvHrs : LocationHours {
-                public override roleType? roleType => DomainModel.roleType.association;
-
-                [JsonIgnore]
-                public override String[] location_srvHrsInformationTypes => ["ServiceHours"];
-
-                public LocationHours_location_srvHrs() {
-                    base.AssociationConnectorTypeName = typeof(DryDock).Name;
-                }
-            };
             public DryDock() {
             }
         }
@@ -3588,27 +3259,25 @@ namespace S100Framework.DomainModel.S131 {
 
             [JsonIgnore]
             public override string Code => nameof(DumpingGround);
+            public static informationBinding[] informationBindings => [new informationBinding
+            {
+                roleType = roleType.association,
+                lower = 0,
+                upper = 1,
+                association = nameof(LocationHours),
+                role = Enum.GetName<Role>(Role.location_srvHrs)!,
+                informationTypes = [nameof(ServiceHours)],
+            }, ];
+            public static featureBinding[] featureBindings => [new featureBinding
+            {
+                roleType = roleType.aggregation,
+                lower = 1,
+                upper = 1,
+                association = nameof(LayoutDivision),
+                role = Enum.GetName<Role>(Role.componentOf)!,
+                featureTypes = [nameof(HarbourAreaSection)],
+            }, ];
 
-            public class LocationHours_location_srvHrs : LocationHours {
-                public override roleType? roleType => DomainModel.roleType.association;
-
-                [JsonIgnore]
-                public override String[] location_srvHrsInformationTypes => ["ServiceHours"];
-
-                public LocationHours_location_srvHrs() {
-                    base.AssociationConnectorTypeName = typeof(DumpingGround).Name;
-                }
-            };
-            public class LayoutDivision_componentOf : LayoutDivision {
-                public override roleType? roleType => DomainModel.roleType.aggregation;
-
-                [JsonIgnore]
-                public override String[] componentOfFeatureTypes => ["HarbourAreaSection"];
-
-                public LayoutDivision_componentOf() {
-                    base.AssociationConnectorTypeName = typeof(DumpingGround).Name;
-                }
-            };
             public DumpingGround() {
             }
         }
@@ -3620,17 +3289,17 @@ namespace S100Framework.DomainModel.S131 {
 
             [JsonIgnore]
             public override string Code => nameof(FloatingDock);
+            public static informationBinding[] informationBindings => [new informationBinding
+            {
+                roleType = roleType.association,
+                lower = 0,
+                upper = 1,
+                association = nameof(LocationHours),
+                role = Enum.GetName<Role>(Role.location_srvHrs)!,
+                informationTypes = [nameof(ServiceHours)],
+            }, ];
+            public static featureBinding[] featureBindings => [];
 
-            public class LocationHours_location_srvHrs : LocationHours {
-                public override roleType? roleType => DomainModel.roleType.association;
-
-                [JsonIgnore]
-                public override String[] location_srvHrsInformationTypes => ["ServiceHours"];
-
-                public LocationHours_location_srvHrs() {
-                    base.AssociationConnectorTypeName = typeof(FloatingDock).Name;
-                }
-            };
             public FloatingDock() {
             }
         }
@@ -3642,17 +3311,17 @@ namespace S100Framework.DomainModel.S131 {
 
             [JsonIgnore]
             public override string Code => nameof(Gridiron);
+            public static informationBinding[] informationBindings => [new informationBinding
+            {
+                roleType = roleType.association,
+                lower = 0,
+                upper = 1,
+                association = nameof(LocationHours),
+                role = Enum.GetName<Role>(Role.location_srvHrs)!,
+                informationTypes = [nameof(ServiceHours)],
+            }, ];
+            public static featureBinding[] featureBindings => [];
 
-            public class LocationHours_location_srvHrs : LocationHours {
-                public override roleType? roleType => DomainModel.roleType.association;
-
-                [JsonIgnore]
-                public override String[] location_srvHrsInformationTypes => ["ServiceHours"];
-
-                public LocationHours_location_srvHrs() {
-                    base.AssociationConnectorTypeName = typeof(Gridiron).Name;
-                }
-            };
             public Gridiron() {
             }
         }
@@ -3688,47 +3357,41 @@ namespace S100Framework.DomainModel.S131 {
 
             [JsonIgnore]
             public override string Code => nameof(HarbourAreaAdministrative);
+            public static informationBinding[] informationBindings => [new informationBinding
+            {
+                roleType = roleType.association,
+                lower = 0,
+                upper = 1,
+                association = nameof(ServiceAvailability),
+                role = Enum.GetName<Role>(Role.serviceDescriptionReference)!,
+                informationTypes = [nameof(AvailablePortServices)],
+            }, new informationBinding
+            {
+                roleType = roleType.association,
+                lower = 0,
+                upper = 1,
+                association = nameof(LocationHours),
+                role = Enum.GetName<Role>(Role.location_srvHrs)!,
+                informationTypes = [nameof(ServiceHours)],
+            }, ];
+            public static featureBinding[] featureBindings => [new featureBinding
+            {
+                roleType = roleType.association,
+                lower = 0,
+                upper = 1,
+                association = nameof(JurisdictionalLimit),
+                role = Enum.GetName<Role>(Role.limitExtent)!,
+                featureTypes = [nameof(OuterLimit)],
+            }, new featureBinding
+            {
+                roleType = roleType.association,
+                lower = 0,
+                upper = default,
+                association = nameof(LayoutDivision),
+                role = Enum.GetName<Role>(Role.layoutUnit)!,
+                featureTypes = [nameof(HarbourAreaSection)],
+            }, ];
 
-            public class ServiceAvailability_serviceDescriptionReference : ServiceAvailability {
-                public override roleType? roleType => DomainModel.roleType.association;
-
-                [JsonIgnore]
-                public override String[] serviceDescriptionReferenceInformationTypes => ["AvailablePortServices"];
-
-                public ServiceAvailability_serviceDescriptionReference() {
-                    base.AssociationConnectorTypeName = typeof(HarbourAreaAdministrative).Name;
-                }
-            };
-            public class LocationHours_location_srvHrs : LocationHours {
-                public override roleType? roleType => DomainModel.roleType.association;
-
-                [JsonIgnore]
-                public override String[] location_srvHrsInformationTypes => ["ServiceHours"];
-
-                public LocationHours_location_srvHrs() {
-                    base.AssociationConnectorTypeName = typeof(HarbourAreaAdministrative).Name;
-                }
-            };
-            public class JurisdictionalLimit_limitExtent : JurisdictionalLimit {
-                public override roleType? roleType => DomainModel.roleType.association;
-
-                [JsonIgnore]
-                public override String[] limitExtentFeatureTypes => ["OuterLimit"];
-
-                public JurisdictionalLimit_limitExtent() {
-                    base.AssociationConnectorTypeName = typeof(HarbourAreaAdministrative).Name;
-                }
-            };
-            public class LayoutDivision_layoutUnit : LayoutDivision {
-                public override roleType? roleType => DomainModel.roleType.association;
-
-                [JsonIgnore]
-                public override String[] layoutUnitFeatureTypes => ["HarbourAreaSection"];
-
-                public LayoutDivision_layoutUnit() {
-                    base.AssociationConnectorTypeName = typeof(HarbourAreaAdministrative).Name;
-                }
-            };
             public HarbourAreaAdministrative() {
             }
         }
@@ -3762,77 +3425,65 @@ namespace S100Framework.DomainModel.S131 {
 
             [JsonIgnore]
             public override string Code => nameof(HarbourAreaSection);
+            public static informationBinding[] informationBindings => [new informationBinding
+            {
+                roleType = roleType.association,
+                lower = 0,
+                upper = 1,
+                association = nameof(ServiceAvailability),
+                role = Enum.GetName<Role>(Role.serviceDescriptionReference)!,
+                informationTypes = [nameof(AvailablePortServices)],
+            }, new informationBinding
+            {
+                roleType = roleType.association,
+                lower = 0,
+                upper = 1,
+                association = nameof(LocationHours),
+                role = Enum.GetName<Role>(Role.location_srvHrs)!,
+                informationTypes = [nameof(ServiceHours)],
+            }, ];
+            public static featureBinding[] featureBindings => [new featureBinding
+            {
+                roleType = roleType.aggregation,
+                lower = 1,
+                upper = 1,
+                association = nameof(LayoutDivision),
+                role = Enum.GetName<Role>(Role.componentOf)!,
+                featureTypes = [nameof(HarbourAreaAdministrative)],
+            }, new featureBinding
+            {
+                roleType = roleType.aggregation,
+                lower = 0,
+                upper = 1,
+                association = nameof(Subsection),
+                role = Enum.GetName<Role>(Role.constitute)!,
+                featureTypes = [nameof(HarbourAreaSection)],
+            }, new featureBinding
+            {
+                roleType = roleType.association,
+                lower = 0,
+                upper = default,
+                association = nameof(Subsection),
+                role = Enum.GetName<Role>(Role.subUnit)!,
+                featureTypes = [nameof(HarbourAreaSection)],
+            }, new featureBinding
+            {
+                roleType = roleType.association,
+                lower = 0,
+                upper = default,
+                association = nameof(Infrastructure),
+                role = Enum.GetName<Role>(Role.hasInfrastructure)!,
+                featureTypes = [nameof(HarbourPhysicalInfrastructure)],
+            }, new featureBinding
+            {
+                roleType = roleType.association,
+                lower = 0,
+                upper = default,
+                association = nameof(LayoutDivision),
+                role = Enum.GetName<Role>(Role.layoutUnit)!,
+                featureTypes = [nameof(AnchorageArea), nameof(Berth), nameof(DockArea), nameof(DumpingGround), nameof(HarbourBasin), nameof(PilotBoardingPlace), nameof(SeaplaneLandingArea), nameof(Terminal), nameof(TurningBasin), nameof(WaterwayArea)],
+            }, ];
 
-            public class ServiceAvailability_serviceDescriptionReference : ServiceAvailability {
-                public override roleType? roleType => DomainModel.roleType.association;
-
-                [JsonIgnore]
-                public override String[] serviceDescriptionReferenceInformationTypes => ["AvailablePortServices"];
-
-                public ServiceAvailability_serviceDescriptionReference() {
-                    base.AssociationConnectorTypeName = typeof(HarbourAreaSection).Name;
-                }
-            };
-            public class LocationHours_location_srvHrs : LocationHours {
-                public override roleType? roleType => DomainModel.roleType.association;
-
-                [JsonIgnore]
-                public override String[] location_srvHrsInformationTypes => ["ServiceHours"];
-
-                public LocationHours_location_srvHrs() {
-                    base.AssociationConnectorTypeName = typeof(HarbourAreaSection).Name;
-                }
-            };
-            public class LayoutDivision_componentOf : LayoutDivision {
-                public override roleType? roleType => DomainModel.roleType.aggregation;
-
-                [JsonIgnore]
-                public override String[] componentOfFeatureTypes => ["HarbourAreaAdministrative"];
-
-                public LayoutDivision_componentOf() {
-                    base.AssociationConnectorTypeName = typeof(HarbourAreaSection).Name;
-                }
-            };
-            public class Subsection_constitute : Subsection {
-                public override roleType? roleType => DomainModel.roleType.aggregation;
-
-                [JsonIgnore]
-                public override String[] constituteFeatureTypes => ["HarbourAreaSection"];
-
-                public Subsection_constitute() {
-                    base.AssociationConnectorTypeName = typeof(HarbourAreaSection).Name;
-                }
-            };
-            public class Subsection_subUnit : Subsection {
-                public override roleType? roleType => DomainModel.roleType.association;
-
-                [JsonIgnore]
-                public override String[] subUnitFeatureTypes => ["HarbourAreaSection"];
-
-                public Subsection_subUnit() {
-                    base.AssociationConnectorTypeName = typeof(HarbourAreaSection).Name;
-                }
-            };
-            public class Infrastructure_hasInfrastructure : Infrastructure {
-                public override roleType? roleType => DomainModel.roleType.association;
-
-                [JsonIgnore]
-                public override String[] hasInfrastructureFeatureTypes => ["HarbourPhysicalInfrastructure"];
-
-                public Infrastructure_hasInfrastructure() {
-                    base.AssociationConnectorTypeName = typeof(HarbourAreaSection).Name;
-                }
-            };
-            public class LayoutDivision_layoutUnit : LayoutDivision {
-                public override roleType? roleType => DomainModel.roleType.association;
-
-                [JsonIgnore]
-                public override String[] layoutUnitFeatureTypes => ["AnchorageArea", "Berth", "DockArea", "DumpingGround", "HarbourBasin", "PilotBoardingPlace", "SeaplaneLandingArea", "Terminal", "TurningBasin", "WaterwayArea"];
-
-                public LayoutDivision_layoutUnit() {
-                    base.AssociationConnectorTypeName = typeof(HarbourAreaSection).Name;
-                }
-            };
             public HarbourAreaSection() {
             }
         }
@@ -3851,27 +3502,25 @@ namespace S100Framework.DomainModel.S131 {
 
             [JsonIgnore]
             public override string Code => nameof(HarbourBasin);
+            public static informationBinding[] informationBindings => [new informationBinding
+            {
+                roleType = roleType.association,
+                lower = 0,
+                upper = 1,
+                association = nameof(LocationHours),
+                role = Enum.GetName<Role>(Role.location_srvHrs)!,
+                informationTypes = [nameof(ServiceHours)],
+            }, ];
+            public static featureBinding[] featureBindings => [new featureBinding
+            {
+                roleType = roleType.aggregation,
+                lower = 1,
+                upper = 1,
+                association = nameof(LayoutDivision),
+                role = Enum.GetName<Role>(Role.componentOf)!,
+                featureTypes = [nameof(HarbourAreaSection)],
+            }, ];
 
-            public class LocationHours_location_srvHrs : LocationHours {
-                public override roleType? roleType => DomainModel.roleType.association;
-
-                [JsonIgnore]
-                public override String[] location_srvHrsInformationTypes => ["ServiceHours"];
-
-                public LocationHours_location_srvHrs() {
-                    base.AssociationConnectorTypeName = typeof(HarbourBasin).Name;
-                }
-            };
-            public class LayoutDivision_componentOf : LayoutDivision {
-                public override roleType? roleType => DomainModel.roleType.aggregation;
-
-                [JsonIgnore]
-                public override String[] componentOfFeatureTypes => ["HarbourAreaSection"];
-
-                public LayoutDivision_componentOf() {
-                    base.AssociationConnectorTypeName = typeof(HarbourBasin).Name;
-                }
-            };
             public HarbourBasin() {
             }
         }
@@ -3886,19 +3535,20 @@ namespace S100Framework.DomainModel.S131 {
 
             [JsonIgnore]
             public override string Code => nameof(HarbourFacility);
+            public static informationBinding[] informationBindings => [new informationBinding
+            {
+                roleType = roleType.association,
+                lower = 0,
+                upper = 1,
+                association = nameof(LocationHours),
+                role = Enum.GetName<Role>(Role.location_srvHrs)!,
+                informationTypes = [nameof(ServiceHours)],
+            }, ];
+            public static featureBinding[] featureBindings => [];
 
-            public class LocationHours_location_srvHrs : LocationHours {
-                public override roleType? roleType => DomainModel.roleType.association;
-
-                [JsonIgnore]
-                public override String[] location_srvHrsInformationTypes => ["ServiceHours"];
-
-                public LocationHours_location_srvHrs() {
-                    base.AssociationConnectorTypeName = typeof(HarbourFacility).Name;
-                }
-            };
             public HarbourFacility() {
                 categoryOfHarbourFacility = new();
+                ;
             }
         }
 
@@ -3921,37 +3571,33 @@ namespace S100Framework.DomainModel.S131 {
 
             [JsonIgnore]
             public override string Code => nameof(MooringWarpingFacility);
+            public static informationBinding[] informationBindings => [new informationBinding
+            {
+                roleType = roleType.association,
+                lower = 0,
+                upper = 1,
+                association = nameof(ServiceAvailability),
+                role = Enum.GetName<Role>(Role.serviceDescriptionReference)!,
+                informationTypes = [nameof(AvailablePortServices)],
+            }, new informationBinding
+            {
+                roleType = roleType.association,
+                lower = 0,
+                upper = 1,
+                association = nameof(LocationHours),
+                role = Enum.GetName<Role>(Role.location_srvHrs)!,
+                informationTypes = [nameof(ServiceHours)],
+            }, ];
+            public static featureBinding[] featureBindings => [new featureBinding
+            {
+                roleType = roleType.association,
+                lower = 0,
+                upper = 1,
+                association = nameof(PrimaryAuxiliaryFacility),
+                role = Enum.GetName<Role>(Role.primaryFacility)!,
+                featureTypes = [nameof(AnchorBerth), nameof(BerthPosition)],
+            }, ];
 
-            public class ServiceAvailability_serviceDescriptionReference : ServiceAvailability {
-                public override roleType? roleType => DomainModel.roleType.association;
-
-                [JsonIgnore]
-                public override String[] serviceDescriptionReferenceInformationTypes => ["AvailablePortServices"];
-
-                public ServiceAvailability_serviceDescriptionReference() {
-                    base.AssociationConnectorTypeName = typeof(MooringWarpingFacility).Name;
-                }
-            };
-            public class LocationHours_location_srvHrs : LocationHours {
-                public override roleType? roleType => DomainModel.roleType.association;
-
-                [JsonIgnore]
-                public override String[] location_srvHrsInformationTypes => ["ServiceHours"];
-
-                public LocationHours_location_srvHrs() {
-                    base.AssociationConnectorTypeName = typeof(MooringWarpingFacility).Name;
-                }
-            };
-            public class PrimaryAuxiliaryFacility_primaryFacility : PrimaryAuxiliaryFacility {
-                public override roleType? roleType => DomainModel.roleType.association;
-
-                [JsonIgnore]
-                public override String[] primaryFacilityFeatureTypes => ["AnchorBerth", "BerthPosition"];
-
-                public PrimaryAuxiliaryFacility_primaryFacility() {
-                    base.AssociationConnectorTypeName = typeof(MooringWarpingFacility).Name;
-                }
-            };
             public MooringWarpingFacility() {
                 iDCode = string.Empty;
             }
@@ -3969,27 +3615,25 @@ namespace S100Framework.DomainModel.S131 {
 
             [JsonIgnore]
             public override string Code => nameof(OuterLimit);
+            public static informationBinding[] informationBindings => [new informationBinding
+            {
+                roleType = roleType.association,
+                lower = 0,
+                upper = 1,
+                association = nameof(LimitEntrance),
+                role = Enum.GetName<Role>(Role.entranceReference)!,
+                informationTypes = [nameof(Entrance)],
+            }, ];
+            public static featureBinding[] featureBindings => [new featureBinding
+            {
+                roleType = roleType.association,
+                lower = 1,
+                upper = 1,
+                association = nameof(JurisdictionalLimit),
+                role = Enum.GetName<Role>(Role.limitReference)!,
+                featureTypes = [nameof(HarbourAreaAdministrative)],
+            }, ];
 
-            public class LimitEntrance_entranceReference : LimitEntrance {
-                public override roleType? roleType => DomainModel.roleType.association;
-
-                [JsonIgnore]
-                public override String[] entranceReferenceInformationTypes => ["Entrance"];
-
-                public LimitEntrance_entranceReference() {
-                    base.AssociationConnectorTypeName = typeof(OuterLimit).Name;
-                }
-            };
-            public class JurisdictionalLimit_limitReference : JurisdictionalLimit {
-                public override roleType? roleType => DomainModel.roleType.association;
-
-                [JsonIgnore]
-                public override String[] limitReferenceFeatureTypes => ["HarbourAreaAdministrative"];
-
-                public JurisdictionalLimit_limitReference() {
-                    base.AssociationConnectorTypeName = typeof(OuterLimit).Name;
-                }
-            };
             public OuterLimit() {
             }
         }
@@ -4008,27 +3652,25 @@ namespace S100Framework.DomainModel.S131 {
 
             [JsonIgnore]
             public override string Code => nameof(PilotBoardingPlace);
+            public static informationBinding[] informationBindings => [new informationBinding
+            {
+                roleType = roleType.association,
+                lower = 0,
+                upper = 1,
+                association = nameof(LocationHours),
+                role = Enum.GetName<Role>(Role.location_srvHrs)!,
+                informationTypes = [nameof(ServiceHours)],
+            }, ];
+            public static featureBinding[] featureBindings => [new featureBinding
+            {
+                roleType = roleType.aggregation,
+                lower = 1,
+                upper = 1,
+                association = nameof(LayoutDivision),
+                role = Enum.GetName<Role>(Role.componentOf)!,
+                featureTypes = [nameof(HarbourAreaSection)],
+            }, ];
 
-            public class LocationHours_location_srvHrs : LocationHours {
-                public override roleType? roleType => DomainModel.roleType.association;
-
-                [JsonIgnore]
-                public override String[] location_srvHrsInformationTypes => ["ServiceHours"];
-
-                public LocationHours_location_srvHrs() {
-                    base.AssociationConnectorTypeName = typeof(PilotBoardingPlace).Name;
-                }
-            };
-            public class LayoutDivision_componentOf : LayoutDivision {
-                public override roleType? roleType => DomainModel.roleType.aggregation;
-
-                [JsonIgnore]
-                public override String[] componentOfFeatureTypes => ["HarbourAreaSection"];
-
-                public LayoutDivision_componentOf() {
-                    base.AssociationConnectorTypeName = typeof(PilotBoardingPlace).Name;
-                }
-            };
             public PilotBoardingPlace() {
             }
         }
@@ -4047,27 +3689,25 @@ namespace S100Framework.DomainModel.S131 {
 
             [JsonIgnore]
             public override string Code => nameof(SeaplaneLandingArea);
+            public static informationBinding[] informationBindings => [new informationBinding
+            {
+                roleType = roleType.association,
+                lower = 0,
+                upper = 1,
+                association = nameof(LocationHours),
+                role = Enum.GetName<Role>(Role.location_srvHrs)!,
+                informationTypes = [nameof(ServiceHours)],
+            }, ];
+            public static featureBinding[] featureBindings => [new featureBinding
+            {
+                roleType = roleType.aggregation,
+                lower = 1,
+                upper = 1,
+                association = nameof(LayoutDivision),
+                role = Enum.GetName<Role>(Role.componentOf)!,
+                featureTypes = [nameof(HarbourAreaSection)],
+            }, ];
 
-            public class LocationHours_location_srvHrs : LocationHours {
-                public override roleType? roleType => DomainModel.roleType.association;
-
-                [JsonIgnore]
-                public override String[] location_srvHrsInformationTypes => ["ServiceHours"];
-
-                public LocationHours_location_srvHrs() {
-                    base.AssociationConnectorTypeName = typeof(SeaplaneLandingArea).Name;
-                }
-            };
-            public class LayoutDivision_componentOf : LayoutDivision {
-                public override roleType? roleType => DomainModel.roleType.aggregation;
-
-                [JsonIgnore]
-                public override String[] componentOfFeatureTypes => ["HarbourAreaSection"];
-
-                public LayoutDivision_componentOf() {
-                    base.AssociationConnectorTypeName = typeof(SeaplaneLandingArea).Name;
-                }
-            };
             public SeaplaneLandingArea() {
             }
         }
@@ -4126,57 +3766,49 @@ namespace S100Framework.DomainModel.S131 {
 
             [JsonIgnore]
             public override string Code => nameof(Terminal);
+            public static informationBinding[] informationBindings => [new informationBinding
+            {
+                roleType = roleType.association,
+                lower = 0,
+                upper = 1,
+                association = nameof(ServiceAvailability),
+                role = Enum.GetName<Role>(Role.serviceDescriptionReference)!,
+                informationTypes = [nameof(AvailablePortServices)],
+            }, new informationBinding
+            {
+                roleType = roleType.association,
+                lower = 0,
+                upper = 1,
+                association = nameof(LocationHours),
+                role = Enum.GetName<Role>(Role.location_srvHrs)!,
+                informationTypes = [nameof(ServiceHours)],
+            }, ];
+            public static featureBinding[] featureBindings => [new featureBinding
+            {
+                roleType = roleType.aggregation,
+                lower = 1,
+                upper = 1,
+                association = nameof(LayoutDivision),
+                role = Enum.GetName<Role>(Role.componentOf)!,
+                featureTypes = [nameof(HarbourAreaSection)],
+            }, new featureBinding
+            {
+                roleType = roleType.association,
+                lower = 0,
+                upper = default,
+                association = nameof(LayoutDivision),
+                role = Enum.GetName<Role>(Role.layoutUnit)!,
+                featureTypes = [nameof(Berth)],
+            }, new featureBinding
+            {
+                roleType = roleType.association,
+                lower = 0,
+                upper = default,
+                association = nameof(Infrastructure),
+                role = Enum.GetName<Role>(Role.hasInfrastructure)!,
+                featureTypes = [nameof(HarbourPhysicalInfrastructure)],
+            }, ];
 
-            public class ServiceAvailability_serviceDescriptionReference : ServiceAvailability {
-                public override roleType? roleType => DomainModel.roleType.association;
-
-                [JsonIgnore]
-                public override String[] serviceDescriptionReferenceInformationTypes => ["AvailablePortServices"];
-
-                public ServiceAvailability_serviceDescriptionReference() {
-                    base.AssociationConnectorTypeName = typeof(Terminal).Name;
-                }
-            };
-            public class LocationHours_location_srvHrs : LocationHours {
-                public override roleType? roleType => DomainModel.roleType.association;
-
-                [JsonIgnore]
-                public override String[] location_srvHrsInformationTypes => ["ServiceHours"];
-
-                public LocationHours_location_srvHrs() {
-                    base.AssociationConnectorTypeName = typeof(Terminal).Name;
-                }
-            };
-            public class LayoutDivision_componentOf : LayoutDivision {
-                public override roleType? roleType => DomainModel.roleType.aggregation;
-
-                [JsonIgnore]
-                public override String[] componentOfFeatureTypes => ["HarbourAreaSection"];
-
-                public LayoutDivision_componentOf() {
-                    base.AssociationConnectorTypeName = typeof(Terminal).Name;
-                }
-            };
-            public class LayoutDivision_layoutUnit : LayoutDivision {
-                public override roleType? roleType => DomainModel.roleType.association;
-
-                [JsonIgnore]
-                public override String[] layoutUnitFeatureTypes => ["Berth"];
-
-                public LayoutDivision_layoutUnit() {
-                    base.AssociationConnectorTypeName = typeof(Terminal).Name;
-                }
-            };
-            public class Infrastructure_hasInfrastructure : Infrastructure {
-                public override roleType? roleType => DomainModel.roleType.association;
-
-                [JsonIgnore]
-                public override String[] hasInfrastructureFeatureTypes => ["HarbourPhysicalInfrastructure"];
-
-                public Infrastructure_hasInfrastructure() {
-                    base.AssociationConnectorTypeName = typeof(Terminal).Name;
-                }
-            };
             public Terminal() {
             }
         }
@@ -4195,27 +3827,25 @@ namespace S100Framework.DomainModel.S131 {
 
             [JsonIgnore]
             public override string Code => nameof(TurningBasin);
+            public static informationBinding[] informationBindings => [new informationBinding
+            {
+                roleType = roleType.association,
+                lower = 0,
+                upper = 1,
+                association = nameof(LocationHours),
+                role = Enum.GetName<Role>(Role.location_srvHrs)!,
+                informationTypes = [nameof(ServiceHours)],
+            }, ];
+            public static featureBinding[] featureBindings => [new featureBinding
+            {
+                roleType = roleType.aggregation,
+                lower = 1,
+                upper = 1,
+                association = nameof(LayoutDivision),
+                role = Enum.GetName<Role>(Role.componentOf)!,
+                featureTypes = [nameof(HarbourAreaSection)],
+            }, ];
 
-            public class LocationHours_location_srvHrs : LocationHours {
-                public override roleType? roleType => DomainModel.roleType.association;
-
-                [JsonIgnore]
-                public override String[] location_srvHrsInformationTypes => ["ServiceHours"];
-
-                public LocationHours_location_srvHrs() {
-                    base.AssociationConnectorTypeName = typeof(TurningBasin).Name;
-                }
-            };
-            public class LayoutDivision_componentOf : LayoutDivision {
-                public override roleType? roleType => DomainModel.roleType.aggregation;
-
-                [JsonIgnore]
-                public override String[] componentOfFeatureTypes => ["HarbourAreaSection"];
-
-                public LayoutDivision_componentOf() {
-                    base.AssociationConnectorTypeName = typeof(TurningBasin).Name;
-                }
-            };
             public TurningBasin() {
             }
         }
@@ -4237,27 +3867,25 @@ namespace S100Framework.DomainModel.S131 {
 
             [JsonIgnore]
             public override string Code => nameof(WaterwayArea);
+            public static informationBinding[] informationBindings => [new informationBinding
+            {
+                roleType = roleType.association,
+                lower = 0,
+                upper = 1,
+                association = nameof(LocationHours),
+                role = Enum.GetName<Role>(Role.location_srvHrs)!,
+                informationTypes = [nameof(ServiceHours)],
+            }, ];
+            public static featureBinding[] featureBindings => [new featureBinding
+            {
+                roleType = roleType.aggregation,
+                lower = 1,
+                upper = 1,
+                association = nameof(LayoutDivision),
+                role = Enum.GetName<Role>(Role.componentOf)!,
+                featureTypes = [nameof(HarbourAreaSection)],
+            }, ];
 
-            public class LocationHours_location_srvHrs : LocationHours {
-                public override roleType? roleType => DomainModel.roleType.association;
-
-                [JsonIgnore]
-                public override String[] location_srvHrsInformationTypes => ["ServiceHours"];
-
-                public LocationHours_location_srvHrs() {
-                    base.AssociationConnectorTypeName = typeof(WaterwayArea).Name;
-                }
-            };
-            public class LayoutDivision_componentOf : LayoutDivision {
-                public override roleType? roleType => DomainModel.roleType.aggregation;
-
-                [JsonIgnore]
-                public override String[] componentOfFeatureTypes => ["HarbourAreaSection"];
-
-                public LayoutDivision_componentOf() {
-                    base.AssociationConnectorTypeName = typeof(WaterwayArea).Name;
-                }
-            };
             public WaterwayArea() {
             }
         }
@@ -4273,6 +3901,8 @@ namespace S100Framework.DomainModel.S131 {
 
             [JsonIgnore]
             public override string Code => nameof(DataCoverage);
+            public static informationBinding[] informationBindings => [];
+            public static featureBinding[] featureBindings => [];
 
             public DataCoverage() {
             }
@@ -4299,6 +3929,8 @@ namespace S100Framework.DomainModel.S131 {
 
             [JsonIgnore]
             public override string Code => nameof(QualityOfNonBathymetricData);
+            public static informationBinding[] informationBindings => [];
+            public static featureBinding[] featureBindings => [];
 
             public QualityOfNonBathymetricData() {
                 horizontalPositionUncertainty = new horizontalPositionUncertainty()
@@ -4340,6 +3972,8 @@ namespace S100Framework.DomainModel.S131 {
 
             [JsonIgnore]
             public override string Code => nameof(SoundingDatum);
+            public static informationBinding[] informationBindings => [];
+            public static featureBinding[] featureBindings => [];
 
             public SoundingDatum() {
             }
@@ -4368,6 +4002,8 @@ namespace S100Framework.DomainModel.S131 {
 
             [JsonIgnore]
             public override string Code => nameof(VerticalDatumOfData);
+            public static informationBinding[] informationBindings => [];
+            public static featureBinding[] featureBindings => [];
 
             public VerticalDatumOfData() {
             }
@@ -4389,17 +4025,17 @@ namespace S100Framework.DomainModel.S131 {
 
             [JsonIgnore]
             public override string Code => nameof(TextPlacement);
+            public static informationBinding[] informationBindings => [];
+            public static featureBinding[] featureBindings => [new featureBinding
+            {
+                roleType = roleType.association,
+                lower = 1,
+                upper = 1,
+                association = nameof(TextAssociation),
+                role = Enum.GetName<Role>(Role.identifies)!,
+                featureTypes = [nameof(FeatureType)],
+            }, ];
 
-            public class TextAssociation_identifies : TextAssociation {
-                public override roleType? roleType => DomainModel.roleType.association;
-
-                [JsonIgnore]
-                public override String[] identifiesFeatureTypes => ["FeatureType"];
-
-                public TextAssociation_identifies() {
-                    base.AssociationConnectorTypeName = typeof(TextPlacement).Name;
-                }
-            };
             public TextPlacement() {
             }
         }

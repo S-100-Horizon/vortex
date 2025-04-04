@@ -307,6 +307,7 @@ namespace S100Framework.DomainModel.S124 {
                 editionNumber = string.Empty;
                 eNCName = string.Empty;
                 featureObjectIdentifier = new();
+                ;
                 updateNumber = string.Empty;
             }
         }
@@ -416,6 +417,7 @@ namespace S100Framework.DomainModel.S124 {
 
             public generalArea() {
                 locationName = new();
+                ;
             }
         }
 
@@ -433,6 +435,7 @@ namespace S100Framework.DomainModel.S124 {
 
             public locality() {
                 locationName = new();
+                ;
             }
         }
 
@@ -470,7 +473,9 @@ namespace S100Framework.DomainModel.S124 {
             }
         }
     }
+}
 
+namespace S100Framework.DomainModel.S124 {
     public enum Role {
         [System.ComponentModel.Description("TBD")]
         affects,
@@ -500,18 +505,7 @@ namespace S100Framework.DomainModel.S124 {
             [System.Serializable()]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
             public partial class NWPreambleContent : InformationAssociation {
-                [JsonIgnore]
-                RefId header => base.RefIds.First(e => e.Role.Equals("header"));
-                public override string Code => nameof(NWPreambleContent);
-
-                public string[]? this[Role role] => this[role.ToString()];
-                public override string[]? this[string role] => role switch
-                {
-                    "header" => headerInformationTypes,
-                    _ => throw new InvalidOperationException(),
-                };
-                [JsonIgnore]
-                public virtual String[] headerInformationTypes => [];
+                public string Code => nameof(NWPreambleContent);
 
                 public NWPreambleContent() {
                 }
@@ -520,18 +514,7 @@ namespace S100Framework.DomainModel.S124 {
             [System.Serializable()]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
             public partial class NWReferences : InformationAssociation {
-                [JsonIgnore]
-                IEnumerable<RefId> theReferences => base.RefIds.Where(e => e.Role.Equals("theReferences"));
-                public override string Code => nameof(NWReferences);
-
-                public string[]? this[Role role] => this[role.ToString()];
-                public override string[]? this[string role] => role switch
-                {
-                    "theReferences" => theReferencesInformationTypes,
-                    _ => throw new InvalidOperationException(),
-                };
-                [JsonIgnore]
-                public virtual String[] theReferencesInformationTypes => [];
+                public string Code => nameof(NWReferences);
 
                 public NWReferences() {
                 }
@@ -543,26 +526,8 @@ namespace S100Framework.DomainModel.S124 {
 
             [System.Serializable()]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-            public abstract partial class AreaAffected : FeatureAssociation {
-                [JsonIgnore]
-                public IEnumerable<RefId> affects => base.RefIds.Where(e => e.Role.Equals("affects"));
-
-                [JsonIgnore]
-                public RefId impacts => base.RefIds.First(e => e.Role.Equals("impacts"));
-                public override string Code => "AreaAffected";
-
-                public string[]? this[Role role] => this[role.ToString()];
-                public override string[]? this[string role] => role switch
-                {
-                    "affects" => affectsFeatureTypes,
-                    "impacts" => impactsFeatureTypes,
-                    _ => throw new InvalidOperationException(),
-                };
-                [JsonIgnore]
-                public virtual String[] affectsFeatureTypes => [];
-
-                [JsonIgnore]
-                public virtual String[] impactsFeatureTypes => [];
+            public partial class AreaAffected : FeatureAssociation {
+                public string Code => "AreaAffected";
 
                 public AreaAffected() {
                 }
@@ -570,26 +535,8 @@ namespace S100Framework.DomainModel.S124 {
 
             [System.Serializable()]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-            public abstract partial class TextAssociation : FeatureAssociation {
-                [JsonIgnore]
-                public RefId? identifies => base.RefIds.FirstOrDefault(e => e.Role.Equals("identifies"));
-
-                [JsonIgnore]
-                public IEnumerable<RefId> positions => base.RefIds.Where(e => e.Role.Equals("positions"));
-                public override string Code => "TextAssociation";
-
-                public string[]? this[Role role] => this[role.ToString()];
-                public override string[]? this[string role] => role switch
-                {
-                    "identifies" => identifiesFeatureTypes,
-                    "positions" => positionsFeatureTypes,
-                    _ => throw new InvalidOperationException(),
-                };
-                [JsonIgnore]
-                public virtual String[] identifiesFeatureTypes => [];
-
-                [JsonIgnore]
-                public virtual String[] positionsFeatureTypes => [];
+            public partial class TextAssociation : FeatureAssociation {
+                public string Code => "TextAssociation";
 
                 public TextAssociation() {
                 }
@@ -599,11 +546,12 @@ namespace S100Framework.DomainModel.S124 {
 
     namespace Bindings {
     }
+}
 
+namespace S100Framework.DomainModel.S124 {
     namespace InformationTypes {
         using ComplexAttributes;
         using DomainModel;
-        using System.Runtime.Serialization;
         using S100Framework.DomainModel.S124.Associations.InformationAssociations;
 
         [System.Serializable()]
@@ -631,19 +579,19 @@ namespace S100Framework.DomainModel.S124 {
 
             [JsonIgnore]
             public override string Code => nameof(NAVWARNPreamble);
+            public static informationBinding[] informationBindings => [new informationBinding
+            {
+                roleType = roleType.association,
+                lower = 0,
+                upper = default,
+                association = nameof(NWReferences),
+                role = Enum.GetName<Role>(Role.theReferences)!,
+                informationTypes = [nameof(References)],
+            }, ];
 
-            public class NWReferences_theReferences : NWReferences {
-                public override roleType? roleType => DomainModel.roleType.association;
-
-                [JsonIgnore]
-                public override String[] theReferencesInformationTypes => ["References"];
-
-                public NWReferences_theReferences() {
-                    base.AssociationConnectorTypeName = typeof(NAVWARNPreamble).Name;
-                }
-            };
             public NAVWARNPreamble() {
                 generalArea = new();
+                ;
                 messageSeriesIdentifier = new messageSeriesIdentifier()
                 {
                     agencyResponsibleForProduction = string.Empty,
@@ -671,6 +619,7 @@ namespace S100Framework.DomainModel.S124 {
 
             [JsonIgnore]
             public override string Code => nameof(References);
+            public static informationBinding[] informationBindings => [];
 
             public References() {
             }
@@ -704,37 +653,33 @@ namespace S100Framework.DomainModel.S124 {
 
             [JsonIgnore]
             public override string Code => nameof(NAVWARNPart);
+            public static informationBinding[] informationBindings => [new informationBinding
+            {
+                roleType = roleType.association,
+                lower = 1,
+                upper = 1,
+                association = nameof(NWPreambleContent),
+                role = Enum.GetName<Role>(Role.header)!,
+                informationTypes = [nameof(NAVWARNPreamble)],
+            }, ];
+            public static featureBinding[] featureBindings => [new featureBinding
+            {
+                roleType = roleType.association,
+                lower = 0,
+                upper = default,
+                association = nameof(AreaAffected),
+                role = Enum.GetName<Role>(Role.affects)!,
+                featureTypes = [nameof(NAVWARNAreaAffected)],
+            }, new featureBinding
+            {
+                roleType = roleType.association,
+                lower = 0,
+                upper = default,
+                association = nameof(TextAssociation),
+                role = Enum.GetName<Role>(Role.positions)!,
+                featureTypes = [nameof(TextPlacement)],
+            }, ];
 
-            public class NWPreambleContent_header : NWPreambleContent {
-                public override roleType? roleType => DomainModel.roleType.association;
-
-                [JsonIgnore]
-                public override String[] headerInformationTypes => ["NAVWARNPreamble"];
-
-                public NWPreambleContent_header() {
-                    base.AssociationConnectorTypeName = typeof(NAVWARNPart).Name;
-                }
-            };
-            public class AreaAffected_affects : AreaAffected {
-                public override roleType? roleType => DomainModel.roleType.association;
-
-                [JsonIgnore]
-                public override String[] affectsFeatureTypes => ["NAVWARNAreaAffected"];
-
-                public AreaAffected_affects() {
-                    base.AssociationConnectorTypeName = typeof(NAVWARNPart).Name;
-                }
-            };
-            public class TextAssociation_positions : TextAssociation {
-                public override roleType? roleType => DomainModel.roleType.association;
-
-                [JsonIgnore]
-                public override String[] positionsFeatureTypes => ["TextPlacement"];
-
-                public TextAssociation_positions() {
-                    base.AssociationConnectorTypeName = typeof(NAVWARNPart).Name;
-                }
-            };
             public NAVWARNPart() {
                 warningInformation = new warningInformation()
                 {
@@ -747,17 +692,17 @@ namespace S100Framework.DomainModel.S124 {
         public partial class NAVWARNAreaAffected : FeatureNode {
             [JsonIgnore]
             public override string Code => nameof(NAVWARNAreaAffected);
+            public static informationBinding[] informationBindings => [];
+            public static featureBinding[] featureBindings => [new featureBinding
+            {
+                roleType = roleType.association,
+                lower = 1,
+                upper = 1,
+                association = nameof(AreaAffected),
+                role = Enum.GetName<Role>(Role.impacts)!,
+                featureTypes = [nameof(NAVWARNPart)],
+            }, ];
 
-            public class AreaAffected_impacts : AreaAffected {
-                public override roleType? roleType => DomainModel.roleType.association;
-
-                [JsonIgnore]
-                public override String[] impactsFeatureTypes => ["NAVWARNPart"];
-
-                public AreaAffected_impacts() {
-                    base.AssociationConnectorTypeName = typeof(NAVWARNAreaAffected).Name;
-                }
-            };
             public NAVWARNAreaAffected() {
             }
         }
@@ -781,17 +726,17 @@ namespace S100Framework.DomainModel.S124 {
 
             [JsonIgnore]
             public override string Code => nameof(TextPlacement);
+            public static informationBinding[] informationBindings => [];
+            public static featureBinding[] featureBindings => [new featureBinding
+            {
+                roleType = roleType.composition,
+                lower = 0,
+                upper = 1,
+                association = nameof(TextAssociation),
+                role = Enum.GetName<Role>(Role.identifies)!,
+                featureTypes = [nameof(NAVWARNPart)],
+            }, ];
 
-            public class TextAssociation_identifies : TextAssociation {
-                public override roleType? roleType => DomainModel.roleType.composition;
-
-                [JsonIgnore]
-                public override String[] identifiesFeatureTypes => ["NAVWARNPart"];
-
-                public TextAssociation_identifies() {
-                    base.AssociationConnectorTypeName = typeof(TextPlacement).Name;
-                }
-            };
             public TextPlacement() {
             }
         }
