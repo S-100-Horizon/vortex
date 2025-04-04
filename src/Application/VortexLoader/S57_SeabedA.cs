@@ -48,7 +48,7 @@ namespace S100Framework.Applications
                             var instance = new SeabedArea() {
                             };
                             if (plts_comp_scale != default) {
-                                instance.scaleMinimum = plts_comp_scale;
+                                //instance.scaleMinimum = plts_comp_scale;
                             }
 
                             List<natureOfSurfaceQualifyingTerms> natureOfSurfaceQualifyingTermsList = new();
@@ -95,7 +95,6 @@ namespace S100Framework.Applications
                                     "17" => natureOfSurface.Shells,
                                     "18" => natureOfSurface.Boulder,
                                     "-32767" => (natureOfSurface)(-1),
-                                    // TODO: QUESTION: how to handle -1 on a required attribute without an S-101 equivalent "unknown". Illegal value assigned. MUST be fixed.
                                     _ => throw new ArgumentOutOfRangeException(nameof(current.NATSUR), "Invalid value for nature of surface.")
                                 };
                             }
@@ -120,7 +119,6 @@ namespace S100Framework.Applications
                                     6 => waterLevelEffect.SubjectToInundationOrFlooding,  // subject to inundation or flooding
                                     7 => waterLevelEffect.Floating,  // floating
                                     -32767 => (waterLevelEffect)(-1),
-                                    // TODO: QUESTION: how to handle -1 on a required attribute without an S-101 equivalent "unknown". Illegal value assigned. MUST be fixed.
                                     _ => throw new IndexOutOfRangeException(),
                                 };
                             }
@@ -130,7 +128,7 @@ namespace S100Framework.Applications
                             buffer["ps"] = ps101;
                             buffer["code"] = instance.GetType().Name;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
-                            buffer["shape"] = current.SHAPE;
+                            SetShape(buffer,current.SHAPE);
                             insert.Insert(buffer);
                             Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
                             convertedCount++;
@@ -140,14 +138,14 @@ namespace S100Framework.Applications
                             var instance = new Sandwave() {
                             };
                             if (plts_comp_scale != default) {
-                                instance.scaleMinimum = plts_comp_scale;
+                                //instance.scaleMinimum = plts_comp_scale;
                             }
 
                             AddInformation(instance.information, feature);
                             buffer["ps"] = ps101;
                             buffer["code"] = instance.GetType().Name;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
-                            buffer["shape"] = current.SHAPE;
+                            SetShape(buffer,current.SHAPE);
                             insert.Insert(buffer);
                             Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
                             convertedCount++;
@@ -157,14 +155,14 @@ namespace S100Framework.Applications
                             if (catweed == 3) {
                                 var instance = new Seagrass();
                                 if (plts_comp_scale != default) {
-                                    instance.scaleMinimum = plts_comp_scale;
+                                    //instance.scaleMinimum = plts_comp_scale;
                                 }
                                 instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
                                 AddInformation(instance.information, feature);
                                 buffer["ps"] = ps101;
                                 buffer["code"] = instance.GetType().Name;
                                 buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
-                                buffer["shape"] = current.SHAPE;
+                                SetShape(buffer,current.SHAPE);
                                 insert.Insert(buffer);
                                 Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
                                 convertedCount++;
@@ -173,14 +171,14 @@ namespace S100Framework.Applications
                                 var instance = new WeedKelp() {
                                 };
                                 if (plts_comp_scale != default) {
-                                    instance.scaleMinimum = plts_comp_scale;
+                                    //instance.scaleMinimum = plts_comp_scale;
                                 }
                                 instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
                                 AddInformation(instance.information, feature);
                                 buffer["ps"] = ps101;
                                 buffer["code"] = instance.GetType().Name;
                                 buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
-                                buffer["shape"] = current.SHAPE;
+                                SetShape(buffer,current.SHAPE);
                                 insert.Insert(buffer);
                                 Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
                                 convertedCount++;

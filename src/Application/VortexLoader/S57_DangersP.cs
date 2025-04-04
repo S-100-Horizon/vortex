@@ -3,16 +3,21 @@ using S100Framework.Applications.S57.esri;
 using S100Framework.DomainModel;
 using S100Framework.DomainModel.S101;
 using S100Framework.DomainModel.S101.FeatureTypes;
-using VortexLoader;
+using System.ComponentModel;
+
 
 namespace S100Framework.Applications
 {
     internal static partial class ImporterNIS
     {
+        
+
+
         private static void S57_DangersP(Geodatabase source, Geodatabase target, QueryFilter filter) {
             var tableName = "DangersP";
 
             var dangersp = source.OpenDataset<FeatureClass>(source.GetName("DangersP"));
+            var depthsA = source.OpenDataset<FeatureClass>(source.GetName("DepthsA"));
 
             //var dredged = source.OpenDataset<FeatureClass>("Depare");
 
@@ -35,10 +40,7 @@ namespace S100Framework.Applications
                 var objectid = current.OBJECTID ?? default;
                 var globalid = current.GLOBALID;
                 var subtype = current.FCSUBTYPE ?? default;
-                var catObs = current.CATOBS ?? -1;
-                var valsou = current.VALSOU ?? default;
-                var watlev = current.WATLEV ?? default;
-                var plts_comp_scale = current.PLTS_COMP_SCALE ?? default;
+
                 var longname = current.LNAM ?? Strings.UNKNOWN;
 
                 bool isValsouEmpty = !current.VALSOU.HasValue;
@@ -54,9 +56,11 @@ namespace S100Framework.Applications
                             var instance = new CautionArea {
 
                             };
-                            if (plts_comp_scale != default) {
-                                instance.scaleMinimum = plts_comp_scale;
-                            }
+
+
+                            //if (current.PLTS_COMP_SCALE.HasValue) {
+                            //    instance.scaleMinimum = current.PLTS_COMP_SCALE.Value;
+                            //}
 
                             if (current.CONDTN.HasValue) {
                                 instance.condition = GetCondition(current.CONDTN.Value);
@@ -67,11 +71,10 @@ namespace S100Framework.Applications
                             }
 
                             AddInformation(instance.information, feature);
-
                             buffer["ps"] = ps101;
                             buffer["code"] = instance.GetType().Name;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
-                            buffer["shape"] = current.SHAPE;
+                            SetShape(buffer,current.SHAPE);
                             insert.Insert(buffer);
 
                             Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
@@ -83,9 +86,11 @@ namespace S100Framework.Applications
                             var instance = new FishingFacility {
 
                             };
-                            if (plts_comp_scale != default) {
-                                instance.scaleMinimum = plts_comp_scale;
-                            }
+
+
+                            //if (current.PLTS_COMP_SCALE.HasValue) {
+                            //    instance.scaleMinimum = current.PLTS_COMP_SCALE.Value;
+                            //}
 
                             if (current.CONDTN.HasValue) {
                                 instance.condition = GetCondition(current.CONDTN.Value);
@@ -102,7 +107,7 @@ namespace S100Framework.Applications
 
                             buffer["code"] = instance.GetType().Name;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
-                            buffer["shape"] = current.SHAPE;
+                            SetShape(buffer,current.SHAPE);
                             insert.Insert(buffer);
 
                             Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
@@ -111,144 +116,199 @@ namespace S100Framework.Applications
                         break;
 
                     case 20: { // OBSTRN
-                            if (catObs == default) {
-                                Logger.Current.DataError(objectid, tableName, longname, $"Unknown catobs: {catObs}");
-                                continue;
+                            {
+                                // Foul ground
+                                if (current.CATOBS.HasValue && current.CATOBS.Value == 7) {
+                                    var instance = new FoulGround();
+
+                                    //foulGround.verticalUncertainty = 
+                                    if (current.STATUS != default) {
+                                        instance.status = GetStatus(current.STATUS);
+                                    }
+
+                                    if (current.VALSOU.HasValue) {
+                                        instance.valueOfSounding = current.VALSOU.Value;
+                                    }
+
+                                    //if (current.PLTS_COMP_SCALE.HasValue)
+                                        //instance.scaleMinimum = current.PLTS_COMP_SCALE;
+
+                                    instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
+
+                                    AddInformation(instance.information, feature);
+                                    buffer["ps"] = ps101;
+
+                                    buffer["code"] = instance.GetType().Name;
+                                    buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance);
+                                    ImporterNIS.SetShape(buffer, current.SHAPE);
+                                    insert.Insert(buffer);
+                                    Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
+                                    convertedCount++;
+                                    break;
+                                }
                             }
+                            {
+                                //CONDTN, EXPSOU, NATCON, NATQUA, NATSUR, PRODCT, VERLEN, WATLEV
+
+                                /*
+                                    OBSTRN of geometric primitive area or line with attribute INFORM = Submerged weir will be
+                                    converted to an instance of the S-101 Feature type Dam (see clause 4.8.5). Where this is the case,
+                                    the attributes CATOBS, EXPSOU, NATQUA, NATSUR, PRODCT, QUASOU, SOUACC, TECSOU
+                                    and VALSOU will not be converted. It is considered that these attributes are not relevant for Dam in
+                                    S-101. 
+                                */
 
 
+                                var instance = new Obstruction();
 
-                            // Foul ground
-                            if (catObs == 7) {
-                                var foulGround = new FoulGround();
+                                if (current.CATOBS.HasValue) {
+                                    if (current.CATOBS.Value == -32767)
+                                        instance.categoryOfObstruction = EnumHelper.GetEnumValue<categoryOfObstruction>(-1);
+                                    else {
 
-                                //foulGround.verticalUncertainty = 
-                                if (current.STATUS != default) {
-                                    foulGround.status = GetStatus(current.STATUS);
+                                        instance.categoryOfObstruction = EnumHelper.GetEnumValue<categoryOfObstruction>(current.CATOBS.Value);
+                                    }
                                 }
 
-                                if (current.PLTS_COMP_SCALE.HasValue)
-                                    foulGround.scaleMinimum = current.PLTS_COMP_SCALE;
 
-                                foulGround.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
+                                if (current.CONDTN.HasValue) {
+                                    instance.condition = GetCondition(current.CONDTN.Value);
+                                }
 
-                                AddInformation(foulGround.information, feature);
+                                if (current.EXPSOU.HasValue) {
+                                    instance.expositionOfSounding = EnumHelper.GetEnumValue<expositionOfSounding>(current.EXPSOU.Value);
+                                }
+
+                                instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
+
+                                if (current.HEIGHT.HasValue) {
+                                    instance.height = current.HEIGHT.Value;
+                                }
+
+                                // DODO: Interoperability identifier
+
+                                // TODO: Maximum permitted draught
+
+                                if (current.NATSUR != default) {
+                                    instance.natureOfSurface = EnumHelper.GetEnumValues<natureOfSurface>(current.NATSUR);
+                                }
+
+                                if (current.PRODCT != default) {
+                                    instance.product = EnumHelper.GetEnumValues<product>(current.PRODCT);
+                                }
+
+                                // TODO: QualityOfVerticalMeasurement
+
+                                if (current.SORDAT != default) {
+                                    if (DateHelper.TryConvertToDateOnly(current.SORDAT, out var dateOnly)) {
+                                        instance.reportedDate = dateOnly;
+                                    }
+                                    else {
+                                        Logger.Current.DataError(current.OBJECTID.Value, tableName, current.LNAM, $"Cannot convert date {current.SORDAT}");
+                                    }
+                                }
+
+                                if (current.STATUS != default) {
+                                    instance.status = GetStatus(current.STATUS);
+                                }
+
+                                // TODO: techniqueOfVerticalMeasurement
+
+                                if (current.VALSOU.HasValue) {
+                                    instance.valueOfSounding = current.VALSOU.Value;
+                                }
+
+                                if (current.VERLEN.HasValue) {
+                                    instance.verticalLength = current.VERLEN.Value;
+                                }
+
+                                if (current.WATLEV.HasValue) {
+                                    if (current.WATLEV.Value == -32767)
+                                        instance.waterLevelEffect = EnumHelper.GetEnumValue<waterLevelEffect>(-1);
+                                    else {
+                                        instance.waterLevelEffect = EnumHelper.GetEnumValue<waterLevelEffect>(current.WATLEV);
+                                    }
+                                }
+
+                                //if (current.PLTS_COMP_SCALE.HasValue) {
+                                //  instance.scaleMinimum = current.PLTS_COMP_SCALE;
+                                //}
+
+                                AddInformation(instance.information, feature);
+
+                                // TODO: defaultClearanceDepth
+
+                                if (current.SHAPE != null) {
+                                    foreach (var depthArea in SelectIn<DepthsA>(current.SHAPE, depthsA, SpatialRelationship.Intersects, ImporterNIS.CompilationScale)) {
+                                        var drval1 = depthArea.DRVAL1 ?? default;
+                                        instance.surroundingDepth = drval1;
+                                    }
+                                }
+
                                 buffer["ps"] = ps101;
-
-                                buffer["code"] = foulGround.GetType().Name;
-                                buffer["json"] = System.Text.Json.JsonSerializer.Serialize(foulGround);
-                                buffer["shape"] = feature.GetShape();
+                                buffer["code"] = instance.GetType().Name;
+                                buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance);
+                                SetShape(buffer,current.SHAPE);
                                 insert.Insert(buffer);
-                                Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(foulGround));
+                                Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
                                 convertedCount++;
-                                break;
                             }
-
-
-                            //CONDTN, EXPSOU, NATCON, NATQUA, NATSUR, PRODCT, VERLEN, WATLEV
-
-                            /*
-                                OBSTRN of geometric primitive area or line with attribute INFORM = Submerged weir will be
-                                converted to an instance of the S-101 Feature type Dam (see clause 4.8.5). Where this is the case,
-                                the attributes CATOBS, EXPSOU, NATQUA, NATSUR, PRODCT, QUASOU, SOUACC, TECSOU
-                                and VALSOU will not be converted. It is considered that these attributes are not relevant for Dam in
-                                S-101. 
-                            */
-
-                            waterLevelEffect waterLeveleffectCurrent = default;
-
-                            var obstruction = new Obstruction {
-                                surroundingDepth = valsou,
-                                waterLevelEffect = waterLeveleffectCurrent
-                            };
-
-                            obstruction.condition = default;
-
-
-                            obstruction.categoryOfObstruction = Convert.ToInt32(catObs) switch {
-                                1 => categoryOfObstruction.SnagStump,
-                                2 => categoryOfObstruction.Wellhead,
-                                3 => categoryOfObstruction.Diffuser,
-                                4 => categoryOfObstruction.Crib,
-                                5 => categoryOfObstruction.FishHaven,
-                                6 => categoryOfObstruction.FoulArea,
-                                8 => categoryOfObstruction.IceBoom,
-                                9 => categoryOfObstruction.GroundTackle,
-                                10 => categoryOfObstruction.Boom,
-                                12 => categoryOfObstruction.WaveEnergyDevice,
-                                13 => categoryOfObstruction.SubsurfaceOceanDataAcquisitionSystem,
-                                14 => categoryOfObstruction.ArtificialReef,
-                                15 => categoryOfObstruction.Template,
-                                16 => categoryOfObstruction.Manifold,
-                                17 => categoryOfObstruction.SubmergedPingo,
-                                18 => categoryOfObstruction.RemainsOfPlatform,
-                                19 => categoryOfObstruction.ScientificInstrument,
-                                20 => categoryOfObstruction.UnderwaterTurbine,
-                                21 => categoryOfObstruction.ActiveSubmarineVolcano,
-                                22 => categoryOfObstruction.SharkNet,
-                                23 => categoryOfObstruction.Mangrove,
-                                -32767 => (categoryOfObstruction)(-1),
-                                -1 => (categoryOfObstruction)(-1),
-                                // TODO: QUESTION: how to handle -1 on a required attribute without an S-101 equivalent "unknown". Illegal value assigned. MUST be fixed.
-
-                                _ => throw new IndexOutOfRangeException(),
-
-                            };
-
-                            if (isValsouEmpty) {
-                                // TODO: implement
-                                //var featureCursor = QueryByGeometry(current.GetShape())
-                                obstruction.defaultClearanceDepth = valsou;
-
-                            }
-
-                            obstruction.waterLevelEffect = watlev switch {
-                                1 => waterLevelEffect.PartlySubmergedAtHighWater,  // partly submerged at high water
-                                2 => waterLevelEffect.AlwaysDry,  // always dry
-                                3 => waterLevelEffect.AlwaysUnderWaterSubmerged,  // always under water/submerged
-                                4 => waterLevelEffect.CoversAndUncovers,  // covers and uncovers
-                                5 => waterLevelEffect.Awash,  // awash
-                                6 => waterLevelEffect.SubjectToInundationOrFlooding,  // subject to inundation or flooding
-                                7 => waterLevelEffect.Floating,  // floating
-                                -32767 =>(waterLevelEffect)(-1),
-                                // TODO: QUESTION: how to handle -1 on a required attribute without an S-101 equivalent "unknown". Illegal value assigned. MUST be fixed.
-
-                                _ => throw new IndexOutOfRangeException(),
-                            };
-
-
-                            if (current.PLTS_COMP_SCALE.HasValue)
-                                obstruction.scaleMinimum = current.PLTS_COMP_SCALE;
-
-                            if (current.CONDTN.HasValue) {
-                                obstruction.condition = GetCondition(current.CONDTN.Value);
-                            }
-
-                            if (current.STATUS != default) {
-                                obstruction.status = GetStatus(current.STATUS);
-                            }
-
-                            obstruction.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
-                            AddInformation(obstruction.information, feature);
-
-                            buffer["ps"] = ps101;
-
-                            buffer["code"] = obstruction.GetType().Name; 
-                            buffer["json"] = System.Text.Json.JsonSerializer.Serialize(obstruction);
-                            buffer["shape"] = current.SHAPE;
-                            insert.Insert(buffer);
-                            Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(obstruction));
-                            convertedCount++;
                         }
                         break;
                         
                     case 35: { // UWTROC
                             // TODO: surrounding depth, valueofsounding
-                            var uwtroc = new UnderwaterAwashRock {
-                                surroundingDepth = 0,
-                                valueOfSounding = 0,
+
+                            var instance = new UnderwaterAwashRock {
                                 waterLevelEffect = waterLevelEffect.CoversAndUncovers
                             };
+
+                            
+                            if (current.SHAPE != null) {
+                                foreach (var depthArea in SelectIn<DepthsA>(current.SHAPE, depthsA,SpatialRelationship.Intersects, 22000)) {
+                                    var drval1 = depthArea.DRVAL1 ?? default;
+                                    instance.surroundingDepth = drval1;
+                                }
+                            }
+
+                            if (current.EXPSOU.HasValue) {
+                                instance.expositionOfSounding = EnumHelper.GetEnumValue<expositionOfSounding>(current.EXPSOU.Value);
+                            }
+
+                            instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
+
+                            // TODO: interoperabilityidentifier
+
+                            if (current.NATSUR != default) {
+                                if (int.TryParse(current.NATSUR, out var value)) {
+                                    instance.natureOfSurface = EnumHelper.GetEnumValue<natureOfSurface>(value);
+                                }
+                            }
+
+                            if (current.QUASOU != default) {
+                                instance.qualityOfVerticalMeasurement = EnumHelper.GetEnumValues<qualityOfVerticalMeasurement>(current.QUASOU);
+                            }
+
+                            if (current.SORDAT != default) {
+                                if (DateHelper.TryConvertToDateOnly(current.SORDAT, out var dateOnly)) {
+                                    instance.reportedDate = dateOnly;
+                                }
+                                else {
+                                    Logger.Current.DataError(current.OBJECTID.Value, tableName, current.LNAM, $"Cannot convert date {current.SORDAT}");
+                                }
+                            }
+
+                            if (current.STATUS != default) {
+                                instance.status = GetSingleStatus(current.STATUS);
+                            }
+
+                            if (current.TECSOU != default) {
+                                instance.techniqueOfVerticalMeasurement = EnumHelper.GetEnumValues<techniqueOfVerticalMeasurement>(current.TECSOU);
+                            }
+
+                            if (current.VALSOU.HasValue) {
+                                instance.valueOfSounding = current.VALSOU.Value;
+                            }
 
                             //      S57
                             //    Code Description
@@ -263,48 +323,31 @@ namespace S100Framework.Applications
 
 
                             if (current.WATLEV.HasValue) {
-                                uwtroc.waterLevelEffect = current.WATLEV.Value switch {
-                                    1 => waterLevelEffect.PartlySubmergedAtHighWater,  // partly submerged at high water
-                                    2 => waterLevelEffect.AlwaysDry,  // always dry
-                                    3 => waterLevelEffect.AlwaysUnderWaterSubmerged,  // always under water/submerged
-                                    4 => waterLevelEffect.CoversAndUncovers,  // covers and uncovers
-                                    5 => waterLevelEffect.Awash,  // awash
-                                    6 => waterLevelEffect.SubjectToInundationOrFlooding,  // subject to inundation or flooding
-                                    7 => waterLevelEffect.Floating,  // floating
-                                    -32767 =>(waterLevelEffect)(-1),
-                                    // TODO: QUESTION: how to handle -1 on a required attribute without an S-101 equivalent "unknown". Illegal value assigned. MUST be fixed.
-                                    _ => throw new IndexOutOfRangeException(),
-                                };
-                            }
-
-
-                            if (current.PLTS_COMP_SCALE.HasValue) {
-                                uwtroc.scaleMinimum = current.PLTS_COMP_SCALE;
-                            }
-
-                              if (current.STATUS != default) {
-                                uwtroc.status = GetSingleStatus(current.STATUS);
-                            }
-
-
-                            if (current.SORDAT != default) {
-                                if (DateHelper.TryConvertToDateOnly(current.SORDAT, out var dateOnly)) {
-                                    uwtroc.reportedDate = dateOnly;
-                                }
+                                if (current.WATLEV.Value == -32767)
+                                    instance.waterLevelEffect = EnumHelper.GetEnumValue<waterLevelEffect>(-1);
                                 else {
-                                    Logger.Current.DataError(current.OBJECTID.Value, tableName, current.LNAM, $"Cannot convert date {current.SORDAT}");
+                                    instance.waterLevelEffect = EnumHelper.GetEnumValue<waterLevelEffect>(current.WATLEV);
                                 }
                             }
 
-                            AddInformation(uwtroc.information, feature);
+                            //if (current.PLTS_COMP_SCALE.HasValue) {
+                            //    //instance.scaleMinimum = current.PLTS_COMP_SCALE;
+                            //}
+
+                            // TODO: defaultClearanceDepth
+
+                            //instance.defaultClearanceDepth = current.
+
+                            
+                            AddInformation(instance.information, feature);
 
                             buffer["ps"] = ps101;
 
-                            buffer["code"] = uwtroc.GetType().Name;
-                            buffer["json"] = System.Text.Json.JsonSerializer.Serialize(uwtroc);
-                            buffer["shape"] = current.SHAPE;
+                            buffer["code"] = instance.GetType().Name;
+                            buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance);
+                            SetShape(buffer,current.SHAPE);
                             insert.Insert(buffer);
-                            Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(uwtroc));
+                            Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
                             convertedCount++;
 
                         }
@@ -316,31 +359,28 @@ namespace S100Framework.Applications
                             var instance = new WaterTurbulence {
 
                             };
-                            if (current.WATLEV.HasValue) {
-                                instance.categoryOfWaterTurbulence = current.WATLEV.Value switch {
-                                    1 => categoryOfWaterTurbulence.Breakers,
-                                    2 => categoryOfWaterTurbulence.Eddies,
-                                    3 => categoryOfWaterTurbulence.Overfalls,
-                                    4 => categoryOfWaterTurbulence.TideRips,
-                                    5 => categoryOfWaterTurbulence.Bombora,
-                                    - 32767 => (categoryOfWaterTurbulence)(-1),
-                                    // TODO: QUESTION: how to handle -1 on a required attribute without an S-101 equivalent "unknown". Illegal value assigned. MUST be fixed.
-                                    _ => throw new IndexOutOfRangeException(),
-                                };
+
+                            if (current.CATWAT.HasValue) {
+                                if (current.CATWAT.Value == -32767)
+                                    instance.categoryOfWaterTurbulence = EnumHelper.GetEnumValue<categoryOfWaterTurbulence>(-1);
+                                else {
+                                    instance.categoryOfWaterTurbulence = EnumHelper.GetEnumValue<categoryOfWaterTurbulence>(current.CATWAT);
+                                }
                             }
 
-                            if (current.PLTS_COMP_SCALE.HasValue) {
-                                instance.scaleMinimum = current.PLTS_COMP_SCALE;
-                            }
+
+
+                            //if (current.PLTS_COMP_SCALE.HasValue) {
+                            //    //instance.scaleMinimum = current.PLTS_COMP_SCALE;
+                            //}
 
                             instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
                             AddInformation(instance.information, feature);
 
                             buffer["ps"] = ps101;
-
                             buffer["code"] = instance.GetType().Name;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
-                            buffer["shape"] = current.SHAPE;
+                            SetShape(buffer,current.SHAPE);
                             insert.Insert(buffer);
                             Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
                             convertedCount++;
@@ -349,46 +389,39 @@ namespace S100Framework.Applications
                         break;
                     case 45: { // WRECKS
                             waterLevelEffect waterLeveleffectCurrent = default;
+                            var instance = new Wreck();
 
-                            var instance = new Wreck {
-                                surroundingDepth = valsou,
-                                waterLevelEffect = waterLeveleffectCurrent
-
-                            };
-
-                            if (current.CATWRK.HasValue) {
-                                instance.categoryOfWreck = current.CATWRK switch {
-                                    1 => categoryOfWreck.NonDangerousWreck,
-                                    2 => categoryOfWreck.DangerousWreck,
-                                    3 => categoryOfWreck.DistributedRemainsOfWreck,
-                                    4 => categoryOfWreck.WreckShowingMastMasts,
-                                    5 => categoryOfWreck.WreckShowingAnyPortionOfHullOrSuperstructure,
-                                    - 32767 => (categoryOfWreck)(-1),
-                                    // TODO: QUESTION: how to handle -1 on a required attribute without an S-101 equivalent "unknown". Illegal value assigned. MUST be fixed.
-                                    _ => throw new IndexOutOfRangeException(),
-                                };
+                            if (current.SHAPE != null) {
+                                foreach (var depthArea in SelectIn<DepthsA>(current.SHAPE, depthsA, SpatialRelationship.Intersects, ImporterNIS.CompilationScale)) {
+                                    var drval1 = depthArea.DRVAL1 ?? default;
+                                    instance.surroundingDepth = drval1;
+                                }
                             }
-
 
                             if (current.WATLEV.HasValue) {
-                                instance.waterLevelEffect = current.WATLEV switch {
-                                    1 => waterLevelEffect.PartlySubmergedAtHighWater,  // partly submerged at high water
-                                    2 => waterLevelEffect.AlwaysDry,  // always dry
-                                    3 => waterLevelEffect.AlwaysUnderWaterSubmerged,  // always under water/submerged
-                                    4 => waterLevelEffect.CoversAndUncovers,  // covers and uncovers
-                                    5 => waterLevelEffect.Awash,  // awash
-                                    6 => waterLevelEffect.SubjectToInundationOrFlooding,  // subject to inundation or flooding
-                                    7 => waterLevelEffect.Floating,  // floating
-                                    -32767 =>(waterLevelEffect)(-1),
-                                    // TODO: QUESTION: how to handle -1 on a required attribute without an S-101 equivalent "unknown". Illegal value assigned. MUST be fixed.
-                                    _ => throw new IndexOutOfRangeException(),
-                                };
+                                if (current.WATLEV.Value == -32767)
+                                    instance.waterLevelEffect = EnumHelper.GetEnumValue<waterLevelEffect>(-1);
+                                else {
+                                    instance.waterLevelEffect = EnumHelper.GetEnumValue<waterLevelEffect>(current.WATLEV);
+                                }
+                            }
+
+                            if (current.CATWRK.HasValue) {
+                                if (current.CATWRK.Value == -32767)
+                                    instance.categoryOfWreck = EnumHelper.GetEnumValue<categoryOfWreck>(-1);
+                                else {
+                                    instance.categoryOfWreck = EnumHelper.GetEnumValue<categoryOfWreck>(current.CATWRK.Value);
+                                }
+                            }
+
+                            if (current.VALSOU.HasValue) {
+                                instance.valueOfSounding = current.VALSOU.Value;
                             }
 
 
-                            if (current.PLTS_COMP_SCALE.HasValue) {
-                                instance.scaleMinimum = current.PLTS_COMP_SCALE.Value;
-                            }
+                            //if (current.PLTS_COMP_SCALE.HasValue) {
+                            //    instance.scaleMinimum = current.PLTS_COMP_SCALE.Value;
+                            //}
 
                             if (current.STATUS != default) {
                                 instance.status = GetStatus(current.STATUS);
@@ -398,10 +431,9 @@ namespace S100Framework.Applications
                             AddInformation(instance.information, feature);
 
                             buffer["ps"] = ps101;
-
                             buffer["code"] = instance.GetType().Name;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
-                            buffer["shape"] = current.SHAPE;
+                            SetShape(buffer,current.SHAPE);
                             insert.Insert(buffer);
                             Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
                             convertedCount++;

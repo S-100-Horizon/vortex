@@ -12,10 +12,10 @@ namespace S100Framework.Applications
             var tableName = "NaturalFeaturesP";
 
             using var s = source.OpenDataset<FeatureClass>(source.GetName(tableName));
-            using var featureclass = target.OpenDataset<FeatureClass>(target.GetName("point"));
+            using var featureClass = target.OpenDataset<FeatureClass>(target.GetName("point"));
 
-            using var buffer = featureclass.CreateRowBuffer();
-            using var insert = featureclass.CreateInsertCursor();
+            using var buffer = featureClass.CreateRowBuffer();
+            using var insert = featureClass.CreateInsertCursor();
 
             using var cursor = s.Search(filter, true);
 
@@ -47,10 +47,9 @@ namespace S100Framework.Applications
 
                 switch (subtype) {
                     case 1: { // LNDARE_LandArea
-                            var instance = new LandArea() {
-                            };
+                            var instance = new LandArea();
                             if (plts_comp_scale != default) {
-                                instance.scaleMinimum = plts_comp_scale;
+                                //instance.scaleMinimum = plts_comp_scale;
                             }
 
                             if (current.CONDTN.HasValue) {
@@ -65,30 +64,34 @@ namespace S100Framework.Applications
                             buffer["ps"] = ps101;
                             buffer["code"] = instance.GetType().Name;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
-                            buffer["shape"] = current.SHAPE;
-                            insert.Insert(buffer);
+                            SetShape(buffer,current.SHAPE);
+                            //insert.Insert(buffer);
+
+                            var featureN = featureClass.CreateRow(buffer);
+                            var structureName = Convert.ToString(featureN["name"]);
+
+
                             Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
                             convertedCount++;
                         }
                         break;
                     case 5: { // LNDELV_LandElevation
-                            var instance = new LandElevation() {
-                            };
+                            var instance = new LandElevation();
+
                             if (plts_comp_scale != default) {
-                                instance.scaleMinimum = plts_comp_scale;
+                                //instance.scaleMinimum = plts_comp_scale;
                             }
 
                             if (current.ELEVAT != default) {
                                 instance.elevation = current.ELEVAT ?? default;
                             }
 
-
                             instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
                             AddInformation(instance.information, feature);
                             buffer["ps"] = ps101;
                             buffer["code"] = instance.GetType().Name;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
-                            buffer["shape"] = current.SHAPE;
+                            SetShape(buffer,current.SHAPE);
                             insert.Insert(buffer);
                             Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
                             convertedCount++;
@@ -98,7 +101,7 @@ namespace S100Framework.Applications
                             var instance = new LandRegion() {
                             };
                             if (plts_comp_scale != default) {
-                                instance.scaleMinimum = plts_comp_scale;
+                                //instance.scaleMinimum = plts_comp_scale;
                             }
 
                             instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
@@ -106,7 +109,7 @@ namespace S100Framework.Applications
                             buffer["ps"] = ps101;
                             buffer["code"] = instance.GetType().Name;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
-                            buffer["shape"] = current.SHAPE;
+                            SetShape(buffer,current.SHAPE);
                             insert.Insert(buffer);
                             Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
                             convertedCount++;
@@ -116,7 +119,7 @@ namespace S100Framework.Applications
                             var instance = new Rapids() {
                             };
                             if (plts_comp_scale != default) {
-                                instance.scaleMinimum = plts_comp_scale;
+                                //instance.scaleMinimum = plts_comp_scale;
                             }
 
                             instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
@@ -124,7 +127,7 @@ namespace S100Framework.Applications
                             buffer["ps"] = ps101;
                             buffer["code"] = instance.GetType().Name;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
-                            buffer["shape"] = current.SHAPE;
+                            SetShape(buffer,current.SHAPE);
                             insert.Insert(buffer);
                             Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
                             convertedCount++;
@@ -134,7 +137,7 @@ namespace S100Framework.Applications
                             var instance = new SeaAreaNamedWaterArea() {
                             };
                             if (plts_comp_scale != default) {
-                                instance.scaleMinimum = plts_comp_scale;
+                                //instance.scaleMinimum = plts_comp_scale;
                             }
 
                             instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
@@ -142,7 +145,7 @@ namespace S100Framework.Applications
                             buffer["ps"] = ps101;
                             buffer["code"] = instance.GetType().Name;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
-                            buffer["shape"] = current.SHAPE;
+                            SetShape(buffer,current.SHAPE);
                             insert.Insert(buffer);
                             Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
                             convertedCount++;
@@ -152,7 +155,7 @@ namespace S100Framework.Applications
                             var instance = new SlopingGround() {
                             };
                             if (plts_comp_scale != default) {
-                                instance.scaleMinimum = plts_comp_scale;
+                                //instance.scaleMinimum = plts_comp_scale;
                             }
 
                             instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
@@ -160,7 +163,7 @@ namespace S100Framework.Applications
                             buffer["ps"] = ps101;
                             buffer["code"] = instance.GetType().Name;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
-                            buffer["shape"] = current.SHAPE;
+                            SetShape(buffer,current.SHAPE);
                             insert.Insert(buffer);
                             Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
                             convertedCount++;
@@ -170,7 +173,7 @@ namespace S100Framework.Applications
                             var instance = new Vegetation() {
                             };
                             if (plts_comp_scale != default) {
-                                instance.scaleMinimum = plts_comp_scale;
+                                //instance.scaleMinimum = plts_comp_scale;
                             }
 
                             instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
@@ -178,7 +181,7 @@ namespace S100Framework.Applications
                             buffer["ps"] = ps101;
                             buffer["code"] = instance.GetType().Name;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
-                            buffer["shape"] = current.SHAPE;
+                            SetShape(buffer,current.SHAPE);
                             insert.Insert(buffer);
                             Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
                             convertedCount++;
@@ -188,7 +191,7 @@ namespace S100Framework.Applications
                             var instance = new Waterfall() {
                             };
                             if (plts_comp_scale != default) {
-                                instance.scaleMinimum = plts_comp_scale;
+                                //instance.scaleMinimum = plts_comp_scale;
                             }
 
                             instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
@@ -196,7 +199,7 @@ namespace S100Framework.Applications
                             buffer["ps"] = ps101;
                             buffer["code"] = instance.GetType().Name;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
-                            buffer["shape"] = current.SHAPE;
+                            SetShape(buffer,current.SHAPE);
                             insert.Insert(buffer);
                             Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
                             convertedCount++;

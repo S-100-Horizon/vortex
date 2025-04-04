@@ -1,0 +1,2664 @@
+1;SUBTYPE;NIS.AidsToNavigationP;BCNCAR_BeaconCardinal;1;28
+2;SUBTYPE;NIS.AidsToNavigationP;BCNISD_BeaconIsolatedDanger;5;0
+3;SUBTYPE;NIS.AidsToNavigationP;BCNLAT_BeaconLateral;10;1083
+4;SUBTYPE;NIS.AidsToNavigationP;BCNSAW_BeaconSafeWater;15;0
+5;SUBTYPE;NIS.AidsToNavigationP;BCNSPP_BeaconSpecialPurpose;20;2427
+6;SUBTYPE;NIS.AidsToNavigationP;BOYCAR_BuoyCardinal;25;666
+7;SUBTYPE;NIS.AidsToNavigationP;BOYINB_BuoyInstallation;30;2
+8;SUBTYPE;NIS.AidsToNavigationP;BOYISD_BuoyIsolatedDanger;35;31
+9;SUBTYPE;NIS.AidsToNavigationP;BOYLAT_BuoyLateral;40;3897
+10;SUBTYPE;NIS.AidsToNavigationP;BOYSAW_BuoySafeWater;45;186
+11;SUBTYPE;NIS.AidsToNavigationP;BOYSPP_BuoySpecialPurpose;50;1971
+12;SUBTYPE;NIS.AidsToNavigationP;DAYMAR_Daymark;55;139
+13;SUBTYPE;NIS.AidsToNavigationP;FOGSIG_FogSignal;60;60
+14;SUBTYPE;NIS.AidsToNavigationP;LIGHTS_Light;65;7252
+15;SUBTYPE;NIS.AidsToNavigationP;LITFLT_LightFloat;70;0
+16;SUBTYPE;NIS.AidsToNavigationP;LITVES_LightVessel;75;0
+17;SUBTYPE;NIS.AidsToNavigationP;RADRFL_RadarReflector;85;0
+18;SUBTYPE;NIS.AidsToNavigationP;RADSTA_RadarStation;90;8
+19;SUBTYPE;NIS.AidsToNavigationP;RDOSTA_RadioStation;95;17
+20;SUBTYPE;NIS.AidsToNavigationP;RETRFL_RetroReflector;100;0
+21;SUBTYPE;NIS.AidsToNavigationP;RTPBCN_RadarTransponderBeacon;105;137
+22;SUBTYPE;NIS.AidsToNavigationP;TOPMAR_Topmark;110;8095
+23;FIELD;NIS.AidsToNavigationP;OBJECTID;OBJECTID;CONTAINS DATA
+24;FIELD;NIS.AidsToNavigationP;GlobalID;GlobalID;CONTAINS DATA
+25;FIELD;NIS.AidsToNavigationP;DSNM;Data set name;CONTAINS DATA
+26;FIELD;NIS.AidsToNavigationP;LNAM;Long name;CONTAINS DATA
+27;FIELD;NIS.AidsToNavigationP;NOID;Nautical Object ID;CONTAINS DATA
+28;FIELD;NIS.AidsToNavigationP;INFORM;Information;CONTAINS DATA
+29;FIELD;NIS.AidsToNavigationP;NINFOM;Information in national language;CONTAINS DATA
+30;FIELD;NIS.AidsToNavigationP;NTXTDS;Textual description in national language;CONTAINS DATA
+31;FIELD;NIS.AidsToNavigationP;PICREP;Pictorial representation;CONTAINS DATA
+32;FIELD;NIS.AidsToNavigationP;TXTDSC;Textual description;CONTAINS DATA
+33;FIELD;NIS.AidsToNavigationP;SORDAT;Source date;CONTAINS DATA
+34;FIELD;NIS.AidsToNavigationP;SORIND;Source indication;CONTAINS DATA
+35;FIELD;NIS.AidsToNavigationP;OBJNAM;Object name;CONTAINS DATA
+36;FIELD;NIS.AidsToNavigationP;NOBJNM;Object name in national language;CONTAINS DATA
+37;FIELD;NIS.AidsToNavigationP;EDITOR;Editor;CONTAINS DATA
+38;FIELD;NIS.AidsToNavigationP;LAST_MOD;Last modified date;CONTAINS DATA
+39;FIELD;NIS.AidsToNavigationP;EDITOR_COMMENT;Editor comments;CONTAINS DATA
+40;FIELD;NIS.AidsToNavigationP;VERIFIED;Verified state;CONTAINS DATA
+41;FIELD;NIS.AidsToNavigationP;VERIFIER;Verifier;CONTAINS DATA
+42;FIELD;NIS.AidsToNavigationP;VERIFIED_DATE;Verified date;CONTAINS DATA
+43;FIELD;NIS.AidsToNavigationP;DELETE_COMMENT;Delete comment;CONTAINS DATA
+44;FIELD;NIS.AidsToNavigationP;PLTS_COMP_SCALE;PLTS compilation scale;CONTAINS DATA
+45;FIELD;NIS.AidsToNavigationP;NIS_PRODUCTS;NIS product type;CONTAINS DATA
+46;FIELD;NIS.AidsToNavigationP;IS_CONFLATE;Is Conflate;CONTAINS DATA
+47;FIELD;NIS.AidsToNavigationP;BOYSHP;Buoy shape;CONTAINS DATA
+48;FIELD;NIS.AidsToNavigationP;BCNSHP;Beacon shape;CONTAINS DATA
+49;FIELD;NIS.AidsToNavigationP;CALSGN;Call sign;CONTAINS DATA
+50;FIELD;NIS.AidsToNavigationP;CATCAM;Category of cardinal mark;CONTAINS DATA
+51;FIELD;NIS.AidsToNavigationP;CATFOG;Category of fog signal;CONTAINS DATA
+52;FIELD;NIS.AidsToNavigationP;CATINB;Category of installation buoy;CONTAINS DATA
+53;FIELD;NIS.AidsToNavigationP;CATLAM;Category of lateral mark;CONTAINS DATA
+54;FIELD;NIS.AidsToNavigationP;CATLIT;Category of light;CONTAINS DATA
+55;FIELD;NIS.AidsToNavigationP;CATRAS;Category of radar station;CONTAINS DATA
+56;FIELD;NIS.AidsToNavigationP;CATROS;Category of radio station;CONTAINS DATA
+57;FIELD;NIS.AidsToNavigationP;CATRTB;Category of radar transponder beacon;CONTAINS DATA
+58;FIELD;NIS.AidsToNavigationP;CATSPM;Category of special purpose mark;CONTAINS DATA
+59;FIELD;NIS.AidsToNavigationP;COMCHA;Communication channel;CONTAINS DATA
+60;FIELD;NIS.AidsToNavigationP;COLOUR;Colour;CONTAINS DATA
+61;FIELD;NIS.AidsToNavigationP;COLPAT;Colour pattern;CONTAINS DATA
+62;FIELD;NIS.AidsToNavigationP;CONDTN;Condition;CONTAINS DATA
+63;FIELD;NIS.AidsToNavigationP;CONRAD;Conspicuous, radar;CONTAINS DATA
+64;FIELD;NIS.AidsToNavigationP;CONVIS;Conspicuous, visually;CONTAINS DATA
+65;FIELD;NIS.AidsToNavigationP;DATEND;Date end;CONTAINS DATA
+66;FIELD;NIS.AidsToNavigationP;DATSTA;Date start;CONTAINS DATA
+67;FIELD;NIS.AidsToNavigationP;ELEVAT;Elevation;CONTAINS DATA
+68;FIELD;NIS.AidsToNavigationP;ESTRNG;Estimated range of transmission;CONTAINS DATA
+69;FIELD;NIS.AidsToNavigationP;EXCLIT;Exhibition condition of light;CONTAINS DATA
+70;FIELD;NIS.AidsToNavigationP;HEIGHT;Height;CONTAINS DATA
+71;FIELD;NIS.AidsToNavigationP;HORACC;Horizontal accuracy;CONTAINS DATA
+72;FIELD;NIS.AidsToNavigationP;HORLEN;Horizontal length;CONTAINS DATA
+73;FIELD;NIS.AidsToNavigationP;HORWID;Horizontal width;CONTAINS DATA
+74;FIELD;NIS.AidsToNavigationP;LITCHR;Light characteristic;CONTAINS DATA
+75;FIELD;NIS.AidsToNavigationP;LITVIS;Light visibility;CONTAINS DATA
+76;FIELD;NIS.AidsToNavigationP;MARSYS;Marks navigational - System of;CONTAINS DATA
+77;FIELD;NIS.AidsToNavigationP;MLTYLT;Mulitiplicity of lights;CONTAINS DATA
+78;FIELD;NIS.AidsToNavigationP;NATCON;Nature of construction;CONTAINS DATA
+79;FIELD;NIS.AidsToNavigationP;ORIENT;Orientation;CONTAINS DATA
+80;FIELD;NIS.AidsToNavigationP;PEREND;Periodic date end;CONTAINS DATA
+81;FIELD;NIS.AidsToNavigationP;PERSTA;Periodic date start;CONTAINS DATA
+82;FIELD;NIS.AidsToNavigationP;PRODCT;Product;CONTAINS DATA
+83;FIELD;NIS.AidsToNavigationP;RADWAL;Radar wave length;CONTAINS DATA
+84;FIELD;NIS.AidsToNavigationP;SECTR1;Sector limit one;CONTAINS DATA
+85;FIELD;NIS.AidsToNavigationP;SECTR2;Sector limit two;CONTAINS DATA
+86;FIELD;NIS.AidsToNavigationP;SIGFRQ;Signal frequency;CONTAINS DATA
+87;FIELD;NIS.AidsToNavigationP;SIGGEN;Signal generation;CONTAINS DATA
+88;FIELD;NIS.AidsToNavigationP;SIGGRP;Signal group;CONTAINS DATA
+89;FIELD;NIS.AidsToNavigationP;SIGPER;Signal period;CONTAINS DATA
+90;FIELD;NIS.AidsToNavigationP;SIGSEQ;Signal sequence;CONTAINS DATA
+91;FIELD;NIS.AidsToNavigationP;STATUS;Status;CONTAINS DATA
+92;FIELD;NIS.AidsToNavigationP;TOPSHP;Topmark/daymark shape;CONTAINS DATA
+93;FIELD;NIS.AidsToNavigationP;VALMXR;Value of maximum range;CONTAINS DATA
+94;FIELD;NIS.AidsToNavigationP;VALNMR;Value of nominal range;CONTAINS DATA
+95;FIELD;NIS.AidsToNavigationP;VERACC;Vertical accuracy;CONTAINS DATA
+96;FIELD;NIS.AidsToNavigationP;VERDAT;Vertical datum;CONTAINS DATA
+97;FIELD;NIS.AidsToNavigationP;VERLEN;Vertical length;CONTAINS DATA
+98;FIELD;NIS.AidsToNavigationP;FCSubtype;FCSubtype;CONTAINS DATA
+99;FIELD;NIS.AidsToNavigationP;SCAMIN_STEP;SCAMIN step;CONTAINS DATA
+100;FIELD;NIS.AidsToNavigationP;P_QUAPOS;Quality of Position;CONTAINS DATA
+101;FIELD;NIS.AidsToNavigationP;P_POSACC;Positional Accuracy;CONTAINS DATA
+102;FIELD;NIS.AidsToNavigationP;P_HORDAT;Horizontal Datum;CONTAINS DATA
+103;FIELD;NIS.AidsToNavigationP;NIS_VERIFIED;NIS Verified state;CONTAINS DATA
+104;FIELD;NIS.AidsToNavigationP;NIS_VERIFIER;NIS Verifier;CONTAINS DATA
+105;FIELD;NIS.AidsToNavigationP;NIS_VERIFY_DATE;NIS Verified date;CONTAINS DATA
+106;FIELD;NIS.AidsToNavigationP;NIS_EDITOR;NIS_EDITOR;CONTAINS DATA
+107;FIELD;NIS.AidsToNavigationP;NIS_LAST_MOD;NIS_LAST_MOD;CONTAINS DATA
+108;FIELD;NIS.AidsToNavigationP;NIS_EDITOR_COMMENT;NIS editor comments;CONTAINS DATA
+109;FIELD;NIS.AidsToNavigationP;Shape;Shape;CONTAINS DATA
+110;FIELD;NIS.ClosingLinesL;OBJECTID;OBJECTID;EMPTY
+111;FIELD;NIS.ClosingLinesL;GlobalID;GlobalID;EMPTY
+112;FIELD;NIS.ClosingLinesL;EDITOR;Editor;EMPTY
+113;FIELD;NIS.ClosingLinesL;LAST_MOD;Last modified;EMPTY
+114;FIELD;NIS.ClosingLinesL;EDITOR_COMMENT;Editor comments;EMPTY
+115;FIELD;NIS.ClosingLinesL;VERIFIED;Verified state;EMPTY
+116;FIELD;NIS.ClosingLinesL;VERIFIER;Verifier;EMPTY
+117;FIELD;NIS.ClosingLinesL;VERIFIED_DATE;Verified date;EMPTY
+118;FIELD;NIS.ClosingLinesL;DELETE_COMMENT;Delete comment;EMPTY
+119;FIELD;NIS.ClosingLinesL;PLTS_COMP_SCALE;PLTS compilation scale;EMPTY
+120;FIELD;NIS.ClosingLinesL;NIS_PRODUCTS;NIS product type;EMPTY
+121;FIELD;NIS.ClosingLinesL;IS_CONFLATE;Is Conflate;EMPTY
+122;FIELD;NIS.ClosingLinesL;SCAMIN_STEP;SCAMIN step;EMPTY
+123;FIELD;NIS.ClosingLinesL;NIS_VERIFIED;NIS Verified state;EMPTY
+124;FIELD;NIS.ClosingLinesL;NIS_VERIFIER;NIS Verifier;EMPTY
+125;FIELD;NIS.ClosingLinesL;NIS_VERIFY_DATE;NIS Verified date;EMPTY
+126;FIELD;NIS.ClosingLinesL;NIS_EDITOR;NIS_EDITOR;EMPTY
+127;FIELD;NIS.ClosingLinesL;NIS_LAST_MOD;NIS_LAST_MOD;EMPTY
+128;FIELD;NIS.ClosingLinesL;NIS_EDITOR_COMMENT;NIS editor comments;EMPTY
+129;FIELD;NIS.ClosingLinesL;Shape;Shape;EMPTY
+130;FIELD;NIS.ClosingLinesL;Shape.STLength();Shape.STLength();EMPTY
+131;SUBTYPE;NIS.CoastlineA;SLCONS_ShorelineConstruction;1;748
+132;FIELD;NIS.CoastlineA;OBJECTID;OBJECTID;CONTAINS DATA
+133;FIELD;NIS.CoastlineA;GlobalID;GlobalID;CONTAINS DATA
+134;FIELD;NIS.CoastlineA;DSNM;Data set name;CONTAINS DATA
+135;FIELD;NIS.CoastlineA;LNAM;Long name;CONTAINS DATA
+136;FIELD;NIS.CoastlineA;NOID;Nautical Object ID;CONTAINS DATA
+137;FIELD;NIS.CoastlineA;INFORM;Information;CONTAINS DATA
+138;FIELD;NIS.CoastlineA;NINFOM;Information in national language;CONTAINS DATA
+139;FIELD;NIS.CoastlineA;NTXTDS;Textual description in national language;CONTAINS DATA
+140;FIELD;NIS.CoastlineA;PICREP;Pictorial representation;CONTAINS DATA
+141;FIELD;NIS.CoastlineA;TXTDSC;Textual description;CONTAINS DATA
+142;FIELD;NIS.CoastlineA;SORDAT;Source date;CONTAINS DATA
+143;FIELD;NIS.CoastlineA;SORIND;Source indication;CONTAINS DATA
+144;FIELD;NIS.CoastlineA;OBJNAM;Object name;CONTAINS DATA
+145;FIELD;NIS.CoastlineA;NOBJNM;Object name in national language;CONTAINS DATA
+146;FIELD;NIS.CoastlineA;EDITOR;Editor;CONTAINS DATA
+147;FIELD;NIS.CoastlineA;LAST_MOD;Last modified date;CONTAINS DATA
+148;FIELD;NIS.CoastlineA;EDITOR_COMMENT;Editor comments;CONTAINS DATA
+149;FIELD;NIS.CoastlineA;VERIFIED;Verified state;CONTAINS DATA
+150;FIELD;NIS.CoastlineA;VERIFIER;Verifier;CONTAINS DATA
+151;FIELD;NIS.CoastlineA;VERIFIED_DATE;Verified date;CONTAINS DATA
+152;FIELD;NIS.CoastlineA;DELETE_COMMENT;Delete comment;CONTAINS DATA
+153;FIELD;NIS.CoastlineA;PLTS_COMP_SCALE;PLTS compilation scale;CONTAINS DATA
+154;FIELD;NIS.CoastlineA;NIS_PRODUCTS;NIS product type;CONTAINS DATA
+155;FIELD;NIS.CoastlineA;IS_CONFLATE;Is Conflate;CONTAINS DATA
+156;FIELD;NIS.CoastlineA;CATSLC;Category of shoreline construction;CONTAINS DATA
+157;FIELD;NIS.CoastlineA;COLOUR;Colour;CONTAINS DATA
+158;FIELD;NIS.CoastlineA;COLPAT;Colour pattern;CONTAINS DATA
+159;FIELD;NIS.CoastlineA;CONDTN;Condition;CONTAINS DATA
+160;FIELD;NIS.CoastlineA;CONRAD;Conspicuous, radar;CONTAINS DATA
+161;FIELD;NIS.CoastlineA;CONVIS;Conspicuous, visually;CONTAINS DATA
+162;FIELD;NIS.CoastlineA;DATEND;Date end;CONTAINS DATA
+163;FIELD;NIS.CoastlineA;DATSTA;Date start;CONTAINS DATA
+164;FIELD;NIS.CoastlineA;HEIGHT;Height;CONTAINS DATA
+165;FIELD;NIS.CoastlineA;HORACC;Horizontal accuracy;CONTAINS DATA
+166;FIELD;NIS.CoastlineA;HORCLR;Horizontal clearance;CONTAINS DATA
+167;FIELD;NIS.CoastlineA;HORLEN;Horizontal length;CONTAINS DATA
+168;FIELD;NIS.CoastlineA;HORWID;Horizontal width;CONTAINS DATA
+169;FIELD;NIS.CoastlineA;NATCON;Nature of construction;CONTAINS DATA
+170;FIELD;NIS.CoastlineA;STATUS;Status;CONTAINS DATA
+171;FIELD;NIS.CoastlineA;VERACC;Vertical accuracy;CONTAINS DATA
+172;FIELD;NIS.CoastlineA;VERDAT;Vertical datum;CONTAINS DATA
+173;FIELD;NIS.CoastlineA;VERLEN;Vertical length;CONTAINS DATA
+174;FIELD;NIS.CoastlineA;WATLEV;Water level effect;CONTAINS DATA
+175;FIELD;NIS.CoastlineA;FCSubtype;FCSubtype;CONTAINS DATA
+176;FIELD;NIS.CoastlineA;SCAMIN_STEP;SCAMIN step;CONTAINS DATA
+177;FIELD;NIS.CoastlineA;NIS_VERIFIED;NIS Verified state;CONTAINS DATA
+178;FIELD;NIS.CoastlineA;NIS_VERIFIER;NIS Verifier;CONTAINS DATA
+179;FIELD;NIS.CoastlineA;NIS_VERIFY_DATE;NIS Verified date;CONTAINS DATA
+180;FIELD;NIS.CoastlineA;NIS_EDITOR;NIS_EDITOR;CONTAINS DATA
+181;FIELD;NIS.CoastlineA;NIS_LAST_MOD;NIS_LAST_MOD;CONTAINS DATA
+182;FIELD;NIS.CoastlineA;NIS_EDITOR_COMMENT;NIS editor comments;CONTAINS DATA
+183;FIELD;NIS.CoastlineA;Shape;Shape;CONTAINS DATA
+184;FIELD;NIS.CoastlineA;Shape.STArea();Shape.STArea();CONTAINS DATA
+185;FIELD;NIS.CoastlineA;Shape.STLength();Shape.STLength();CONTAINS DATA
+186;SUBTYPE;NIS.CoastlineL;COALNE_Coastline;1;50683
+187;SUBTYPE;NIS.CoastlineL;SLCONS_ShorelineConstruction;5;12204
+188;FIELD;NIS.CoastlineL;OBJECTID;OBJECTID;CONTAINS DATA
+189;FIELD;NIS.CoastlineL;GlobalID;GlobalID;CONTAINS DATA
+190;FIELD;NIS.CoastlineL;DSNM;Data set name;CONTAINS DATA
+191;FIELD;NIS.CoastlineL;LNAM;Long name;CONTAINS DATA
+192;FIELD;NIS.CoastlineL;NOID;Nautical Object ID;CONTAINS DATA
+193;FIELD;NIS.CoastlineL;INFORM;Information;CONTAINS DATA
+194;FIELD;NIS.CoastlineL;NINFOM;Information in national language;CONTAINS DATA
+195;FIELD;NIS.CoastlineL;NTXTDS;Textual description in national language;CONTAINS DATA
+196;FIELD;NIS.CoastlineL;PICREP;Pictorial representation;CONTAINS DATA
+197;FIELD;NIS.CoastlineL;TXTDSC;Textual description;CONTAINS DATA
+198;FIELD;NIS.CoastlineL;SORDAT;Source date;CONTAINS DATA
+199;FIELD;NIS.CoastlineL;SORIND;Source indication;CONTAINS DATA
+200;FIELD;NIS.CoastlineL;OBJNAM;Object name;CONTAINS DATA
+201;FIELD;NIS.CoastlineL;NOBJNM;Object name in national language;CONTAINS DATA
+202;FIELD;NIS.CoastlineL;EDITOR;Editor;CONTAINS DATA
+203;FIELD;NIS.CoastlineL;LAST_MOD;Last modified date;CONTAINS DATA
+204;FIELD;NIS.CoastlineL;EDITOR_COMMENT;Editor comments;CONTAINS DATA
+205;FIELD;NIS.CoastlineL;VERIFIED;Verified state;CONTAINS DATA
+206;FIELD;NIS.CoastlineL;VERIFIER;Verifier;CONTAINS DATA
+207;FIELD;NIS.CoastlineL;VERIFIED_DATE;Verified date;CONTAINS DATA
+208;FIELD;NIS.CoastlineL;DELETE_COMMENT;Delete comment;CONTAINS DATA
+209;FIELD;NIS.CoastlineL;PLTS_COMP_SCALE;PLTS compilation scale;CONTAINS DATA
+210;FIELD;NIS.CoastlineL;NIS_PRODUCTS;NIS product type;CONTAINS DATA
+211;FIELD;NIS.CoastlineL;IS_CONFLATE;Is Conflate;CONTAINS DATA
+212;FIELD;NIS.CoastlineL;CATSLC;Category of shoreline construction;CONTAINS DATA
+213;FIELD;NIS.CoastlineL;COLOUR;Colour;CONTAINS DATA
+214;FIELD;NIS.CoastlineL;COLPAT;Colour pattern;CONTAINS DATA
+215;FIELD;NIS.CoastlineL;CONDTN;Condition;CONTAINS DATA
+216;FIELD;NIS.CoastlineL;CONRAD;Conspicuous, radar;CONTAINS DATA
+217;FIELD;NIS.CoastlineL;CONVIS;Conspicuous, visually;CONTAINS DATA
+218;FIELD;NIS.CoastlineL;DATEND;Date end;CONTAINS DATA
+219;FIELD;NIS.CoastlineL;DATSTA;Date start;CONTAINS DATA
+220;FIELD;NIS.CoastlineL;HEIGHT;Height;CONTAINS DATA
+221;FIELD;NIS.CoastlineL;HORACC;Horizontal accuracy;CONTAINS DATA
+222;FIELD;NIS.CoastlineL;HORCLR;Horizontal clearance;CONTAINS DATA
+223;FIELD;NIS.CoastlineL;HORLEN;Horizontal length;CONTAINS DATA
+224;FIELD;NIS.CoastlineL;HORWID;Horizontal width;CONTAINS DATA
+225;FIELD;NIS.CoastlineL;NATCON;Nature of construction;CONTAINS DATA
+226;FIELD;NIS.CoastlineL;STATUS;Status;CONTAINS DATA
+227;FIELD;NIS.CoastlineL;VERACC;Vertical accuracy;CONTAINS DATA
+228;FIELD;NIS.CoastlineL;VERDAT;Vertical datum;CONTAINS DATA
+229;FIELD;NIS.CoastlineL;VERLEN;Vertical length;CONTAINS DATA
+230;FIELD;NIS.CoastlineL;WATLEV;Water level effect;CONTAINS DATA
+231;FIELD;NIS.CoastlineL;FCSubtype;FCSubtype;CONTAINS DATA
+232;FIELD;NIS.CoastlineL;CATCOA;Category of coastline;CONTAINS DATA
+233;FIELD;NIS.CoastlineL;ELEVAT;Elevation;CONTAINS DATA
+234;FIELD;NIS.CoastlineL;SCAMIN_STEP;SCAMIN step;CONTAINS DATA
+235;FIELD;NIS.CoastlineL;NIS_VERIFIED;NIS Verified state;CONTAINS DATA
+236;FIELD;NIS.CoastlineL;NIS_VERIFIER;NIS Verifier;CONTAINS DATA
+237;FIELD;NIS.CoastlineL;NIS_VERIFY_DATE;NIS Verified date;CONTAINS DATA
+238;FIELD;NIS.CoastlineL;NIS_EDITOR;NIS_EDITOR;CONTAINS DATA
+239;FIELD;NIS.CoastlineL;NIS_LAST_MOD;NIS_LAST_MOD;CONTAINS DATA
+240;FIELD;NIS.CoastlineL;NIS_EDITOR_COMMENT;NIS editor comments;CONTAINS DATA
+241;FIELD;NIS.CoastlineL;Shape;Shape;CONTAINS DATA
+242;FIELD;NIS.CoastlineL;Shape.STLength();Shape.STLength();CONTAINS DATA
+243;SUBTYPE;NIS.CoastlineP;SLCONS_ShorelineConstruction;1;4
+244;FIELD;NIS.CoastlineP;OBJECTID;OBJECTID;CONTAINS DATA
+245;FIELD;NIS.CoastlineP;GlobalID;GlobalID;CONTAINS DATA
+246;FIELD;NIS.CoastlineP;DSNM;Data set name;CONTAINS DATA
+247;FIELD;NIS.CoastlineP;LNAM;Long name;CONTAINS DATA
+248;FIELD;NIS.CoastlineP;NOID;Nautical Object ID;CONTAINS DATA
+249;FIELD;NIS.CoastlineP;INFORM;Information;CONTAINS DATA
+250;FIELD;NIS.CoastlineP;NINFOM;Information in national language;CONTAINS DATA
+251;FIELD;NIS.CoastlineP;NTXTDS;Textual description in national language;CONTAINS DATA
+252;FIELD;NIS.CoastlineP;PICREP;Pictorial representation;CONTAINS DATA
+253;FIELD;NIS.CoastlineP;TXTDSC;Textual description;CONTAINS DATA
+254;FIELD;NIS.CoastlineP;SORDAT;Source date;CONTAINS DATA
+255;FIELD;NIS.CoastlineP;SORIND;Source indication;CONTAINS DATA
+256;FIELD;NIS.CoastlineP;OBJNAM;Object name;CONTAINS DATA
+257;FIELD;NIS.CoastlineP;NOBJNM;Object name in national language;CONTAINS DATA
+258;FIELD;NIS.CoastlineP;EDITOR;Editor;CONTAINS DATA
+259;FIELD;NIS.CoastlineP;LAST_MOD;Last modified date;CONTAINS DATA
+260;FIELD;NIS.CoastlineP;EDITOR_COMMENT;Editor comments;CONTAINS DATA
+261;FIELD;NIS.CoastlineP;VERIFIED;Verified state;CONTAINS DATA
+262;FIELD;NIS.CoastlineP;VERIFIER;Verifier;CONTAINS DATA
+263;FIELD;NIS.CoastlineP;VERIFIED_DATE;Verified date;CONTAINS DATA
+264;FIELD;NIS.CoastlineP;DELETE_COMMENT;Delete comment;CONTAINS DATA
+265;FIELD;NIS.CoastlineP;PLTS_COMP_SCALE;PLTS compilation scale;CONTAINS DATA
+266;FIELD;NIS.CoastlineP;NIS_PRODUCTS;NIS product type;CONTAINS DATA
+267;FIELD;NIS.CoastlineP;IS_CONFLATE;Is Conflate;CONTAINS DATA
+268;FIELD;NIS.CoastlineP;CATSLC;Category of shoreline construction;CONTAINS DATA
+269;FIELD;NIS.CoastlineP;COLOUR;Colour;CONTAINS DATA
+270;FIELD;NIS.CoastlineP;COLPAT;Colour pattern;CONTAINS DATA
+271;FIELD;NIS.CoastlineP;CONDTN;Condition;CONTAINS DATA
+272;FIELD;NIS.CoastlineP;CONRAD;Conspicuous, radar;CONTAINS DATA
+273;FIELD;NIS.CoastlineP;CONVIS;Conspicuous, visually;CONTAINS DATA
+274;FIELD;NIS.CoastlineP;DATEND;Date end;CONTAINS DATA
+275;FIELD;NIS.CoastlineP;DATSTA;Date start;CONTAINS DATA
+276;FIELD;NIS.CoastlineP;HEIGHT;Height;CONTAINS DATA
+277;FIELD;NIS.CoastlineP;HORACC;Horizontal accuracy;CONTAINS DATA
+278;FIELD;NIS.CoastlineP;HORCLR;Horizontal clearance;CONTAINS DATA
+279;FIELD;NIS.CoastlineP;HORLEN;Horizontal length;CONTAINS DATA
+280;FIELD;NIS.CoastlineP;HORWID;Horizontal width;CONTAINS DATA
+281;FIELD;NIS.CoastlineP;NATCON;Nature of construction;CONTAINS DATA
+282;FIELD;NIS.CoastlineP;STATUS;Status;CONTAINS DATA
+283;FIELD;NIS.CoastlineP;VERACC;Vertical accuracy;CONTAINS DATA
+284;FIELD;NIS.CoastlineP;VERDAT;Vertical datum;CONTAINS DATA
+285;FIELD;NIS.CoastlineP;VERLEN;Vertical length;CONTAINS DATA
+286;FIELD;NIS.CoastlineP;WATLEV;Water level effect;CONTAINS DATA
+287;FIELD;NIS.CoastlineP;FCSubtype;FCSubtype;CONTAINS DATA
+288;FIELD;NIS.CoastlineP;SCAMIN_STEP;SCAMIN step;CONTAINS DATA
+289;FIELD;NIS.CoastlineP;P_QUAPOS;Quality of Position;CONTAINS DATA
+290;FIELD;NIS.CoastlineP;P_POSACC;Positional Accuracy;CONTAINS DATA
+291;FIELD;NIS.CoastlineP;P_HORDAT;Horizontal Datum;CONTAINS DATA
+292;FIELD;NIS.CoastlineP;NIS_VERIFIED;NIS Verified state;CONTAINS DATA
+293;FIELD;NIS.CoastlineP;NIS_VERIFIER;NIS Verifier;CONTAINS DATA
+294;FIELD;NIS.CoastlineP;NIS_VERIFY_DATE;NIS Verified date;CONTAINS DATA
+295;FIELD;NIS.CoastlineP;NIS_EDITOR;NIS_EDITOR;CONTAINS DATA
+296;FIELD;NIS.CoastlineP;NIS_LAST_MOD;NIS_LAST_MOD;CONTAINS DATA
+297;FIELD;NIS.CoastlineP;NIS_EDITOR_COMMENT;NIS editor comments;CONTAINS DATA
+298;FIELD;NIS.CoastlineP;Shape;Shape;CONTAINS DATA
+299;SUBTYPE;NIS.CulturalFeaturesA;AIRARE_AirportAirfield;1;13
+300;SUBTYPE;NIS.CulturalFeaturesA;BRIDGE_Bridge;5;892
+301;SUBTYPE;NIS.CulturalFeaturesA;BUAARE_BuiltUpArea;10;2780
+302;SUBTYPE;NIS.CulturalFeaturesA;BUISGL_BuildingSingle;15;12273
+303;SUBTYPE;NIS.CulturalFeaturesA;CONVYR_Conveyor;20;1
+304;SUBTYPE;NIS.CulturalFeaturesA;DAMCON_Dam;25;0
+305;SUBTYPE;NIS.CulturalFeaturesA;FORSTC_FortifiedStructure;30;24
+306;SUBTYPE;NIS.CulturalFeaturesA;LNDMRK_Landmark;35;91
+307;SUBTYPE;NIS.CulturalFeaturesA;PRDARE_ProductionStorageArea;40;45
+308;SUBTYPE;NIS.CulturalFeaturesA;PYLONS_PylonBridgeSupport;45;217
+309;SUBTYPE;NIS.CulturalFeaturesA;ROADWY_Road;50;6
+310;SUBTYPE;NIS.CulturalFeaturesA;RUNWAY_Runway;55;13
+311;SUBTYPE;NIS.CulturalFeaturesA;SILTNK_SiloTank;60;317
+312;SUBTYPE;NIS.CulturalFeaturesA;TUNNEL_Tunnel;65;6
+313;FIELD;NIS.CulturalFeaturesA;OBJECTID;OBJECTID;CONTAINS DATA
+314;FIELD;NIS.CulturalFeaturesA;GlobalID;GlobalID;CONTAINS DATA
+315;FIELD;NIS.CulturalFeaturesA;DSNM;Data set name;CONTAINS DATA
+316;FIELD;NIS.CulturalFeaturesA;LNAM;Long name;CONTAINS DATA
+317;FIELD;NIS.CulturalFeaturesA;NOID;Nautical Object ID;CONTAINS DATA
+318;FIELD;NIS.CulturalFeaturesA;INFORM;Information;CONTAINS DATA
+319;FIELD;NIS.CulturalFeaturesA;NINFOM;Information in national language;CONTAINS DATA
+320;FIELD;NIS.CulturalFeaturesA;NTXTDS;Textual description in national language;CONTAINS DATA
+321;FIELD;NIS.CulturalFeaturesA;PICREP;Pictorial representation;CONTAINS DATA
+322;FIELD;NIS.CulturalFeaturesA;TXTDSC;Textual description;CONTAINS DATA
+323;FIELD;NIS.CulturalFeaturesA;SORDAT;Source date;CONTAINS DATA
+324;FIELD;NIS.CulturalFeaturesA;SORIND;Source indication;CONTAINS DATA
+325;FIELD;NIS.CulturalFeaturesA;OBJNAM;Object name;CONTAINS DATA
+326;FIELD;NIS.CulturalFeaturesA;NOBJNM;Object name in national language;CONTAINS DATA
+327;FIELD;NIS.CulturalFeaturesA;EDITOR;Editor;CONTAINS DATA
+328;FIELD;NIS.CulturalFeaturesA;LAST_MOD;Last modified date;CONTAINS DATA
+329;FIELD;NIS.CulturalFeaturesA;EDITOR_COMMENT;Editor comments;CONTAINS DATA
+330;FIELD;NIS.CulturalFeaturesA;VERIFIED;Verified state;CONTAINS DATA
+331;FIELD;NIS.CulturalFeaturesA;VERIFIER;Verifier;CONTAINS DATA
+332;FIELD;NIS.CulturalFeaturesA;VERIFIED_DATE;Verified date;CONTAINS DATA
+333;FIELD;NIS.CulturalFeaturesA;DELETE_COMMENT;Delete comment;CONTAINS DATA
+334;FIELD;NIS.CulturalFeaturesA;PLTS_COMP_SCALE;PLTS compilation scale;CONTAINS DATA
+335;FIELD;NIS.CulturalFeaturesA;NIS_PRODUCTS;NIS product type;CONTAINS DATA
+336;FIELD;NIS.CulturalFeaturesA;IS_CONFLATE;Is Conflate;CONTAINS DATA
+337;FIELD;NIS.CulturalFeaturesA;BURDEP;Buried depth;CONTAINS DATA
+338;FIELD;NIS.CulturalFeaturesA;CATBRG;Category of bridge;CONTAINS DATA
+339;FIELD;NIS.CulturalFeaturesA;CATDAM;Category of dam;CONTAINS DATA
+340;FIELD;NIS.CulturalFeaturesA;CATFOR;Category of fortified structure;CONTAINS DATA
+341;FIELD;NIS.CulturalFeaturesA;CATLMK;Category of landmark;CONTAINS DATA
+342;FIELD;NIS.CulturalFeaturesA;CATROD;Category of road;CONTAINS DATA
+343;FIELD;NIS.CulturalFeaturesA;CATRUN;Category of runway;CONTAINS DATA
+344;FIELD;NIS.CulturalFeaturesA;COLOUR;Colour;CONTAINS DATA
+345;FIELD;NIS.CulturalFeaturesA;COLPAT;Colour pattern;CONTAINS DATA
+346;FIELD;NIS.CulturalFeaturesA;CONDTN;Condition;CONTAINS DATA
+347;FIELD;NIS.CulturalFeaturesA;CONRAD;Conspicuous, radar;CONTAINS DATA
+348;FIELD;NIS.CulturalFeaturesA;CONVIS;Conspicuous, visually;CONTAINS DATA
+349;FIELD;NIS.CulturalFeaturesA;DATEND;Date end;CONTAINS DATA
+350;FIELD;NIS.CulturalFeaturesA;DATSTA;Date start;CONTAINS DATA
+351;FIELD;NIS.CulturalFeaturesA;ELEVAT;Elevation;CONTAINS DATA
+352;FIELD;NIS.CulturalFeaturesA;FUNCTN;Function;CONTAINS DATA
+353;FIELD;NIS.CulturalFeaturesA;HEIGHT;Height;CONTAINS DATA
+354;FIELD;NIS.CulturalFeaturesA;HORACC;Horizontal accuracy;CONTAINS DATA
+355;FIELD;NIS.CulturalFeaturesA;HORCLR;Horizontal clearance;CONTAINS DATA
+356;FIELD;NIS.CulturalFeaturesA;NATCON;Nature of construction;CONTAINS DATA
+357;FIELD;NIS.CulturalFeaturesA;PEREND;Periodic date end;CONTAINS DATA
+358;FIELD;NIS.CulturalFeaturesA;PERSTA;Periodic date start;CONTAINS DATA
+359;FIELD;NIS.CulturalFeaturesA;PRODCT;Product;CONTAINS DATA
+360;FIELD;NIS.CulturalFeaturesA;STATUS;Status;CONTAINS DATA
+361;FIELD;NIS.CulturalFeaturesA;VERACC;Vertical accuracy;CONTAINS DATA
+362;FIELD;NIS.CulturalFeaturesA;VERCCL;Vertical clearance, closed;CONTAINS DATA
+363;FIELD;NIS.CulturalFeaturesA;VERCLR;Vertical clearance;CONTAINS DATA
+364;FIELD;NIS.CulturalFeaturesA;VERCOP;Vertical clearance, open;CONTAINS DATA
+365;FIELD;NIS.CulturalFeaturesA;VERDAT;Vertical datum;CONTAINS DATA
+366;FIELD;NIS.CulturalFeaturesA;VERLEN;Vertical length;CONTAINS DATA
+367;FIELD;NIS.CulturalFeaturesA;FCSubtype;FCSubtype;CONTAINS DATA
+368;FIELD;NIS.CulturalFeaturesA;BUISHP;Building shape;CONTAINS DATA
+369;FIELD;NIS.CulturalFeaturesA;CATAIR;Category of airport/airfield;CONTAINS DATA
+370;FIELD;NIS.CulturalFeaturesA;CATBUA;Category of built-up area;CONTAINS DATA
+371;FIELD;NIS.CulturalFeaturesA;CATCON;Category of conveyor;CONTAINS DATA
+372;FIELD;NIS.CulturalFeaturesA;CATPRA;Category of production area;CONTAINS DATA
+373;FIELD;NIS.CulturalFeaturesA;CATPYL;Category of pylon;CONTAINS DATA
+374;FIELD;NIS.CulturalFeaturesA;CATSIL;Category of silo/tank;CONTAINS DATA
+375;FIELD;NIS.CulturalFeaturesA;LIFCAP;Lifting capacity;CONTAINS DATA
+376;FIELD;NIS.CulturalFeaturesA;WATLEV;Water level effect;CONTAINS DATA
+377;FIELD;NIS.CulturalFeaturesA;SCAMIN_STEP;SCAMIN step;CONTAINS DATA
+378;FIELD;NIS.CulturalFeaturesA;NIS_VERIFIED;NIS Verified state;CONTAINS DATA
+379;FIELD;NIS.CulturalFeaturesA;NIS_VERIFIER;NIS Verifier;CONTAINS DATA
+380;FIELD;NIS.CulturalFeaturesA;NIS_VERIFY_DATE;NIS Verified date;CONTAINS DATA
+381;FIELD;NIS.CulturalFeaturesA;NIS_EDITOR;NIS_EDITOR;CONTAINS DATA
+382;FIELD;NIS.CulturalFeaturesA;NIS_LAST_MOD;NIS_LAST_MOD;CONTAINS DATA
+383;FIELD;NIS.CulturalFeaturesA;NIS_EDITOR_COMMENT;NIS editor comments;CONTAINS DATA
+384;FIELD;NIS.CulturalFeaturesA;Shape;Shape;CONTAINS DATA
+385;FIELD;NIS.CulturalFeaturesA;Shape.STArea();Shape.STArea();CONTAINS DATA
+386;FIELD;NIS.CulturalFeaturesA;Shape.STLength();Shape.STLength();CONTAINS DATA
+387;SUBTYPE;NIS.CulturalFeaturesL;BRIDGE_Bridge;1;47
+388;SUBTYPE;NIS.CulturalFeaturesL;CBLOHD_CableOverhead;5;34
+389;SUBTYPE;NIS.CulturalFeaturesL;CONVYR_Conveyor;10;15
+390;SUBTYPE;NIS.CulturalFeaturesL;DAMCON_Dam;15;1
+391;SUBTYPE;NIS.CulturalFeaturesL;FNCLNE_FenceWall;20;0
+392;SUBTYPE;NIS.CulturalFeaturesL;FORSTC_FortifiedStructure;25;31
+393;SUBTYPE;NIS.CulturalFeaturesL;LNDMRK_Landmark;30;0
+394;SUBTYPE;NIS.CulturalFeaturesL;PIPOHD_PipelineOverhead;35;1
+395;SUBTYPE;NIS.CulturalFeaturesL;RAILWY_Railway;40;289
+396;SUBTYPE;NIS.CulturalFeaturesL;ROADWY_Road;45;9027
+397;SUBTYPE;NIS.CulturalFeaturesL;RUNWAY_Runway;50;0
+398;SUBTYPE;NIS.CulturalFeaturesL;TUNNEL_Tunnel;55;0
+399;FIELD;NIS.CulturalFeaturesL;OBJECTID;OBJECTID;CONTAINS DATA
+400;FIELD;NIS.CulturalFeaturesL;GlobalID;GlobalID;CONTAINS DATA
+401;FIELD;NIS.CulturalFeaturesL;DSNM;Data set name;CONTAINS DATA
+402;FIELD;NIS.CulturalFeaturesL;LNAM;Long name;CONTAINS DATA
+403;FIELD;NIS.CulturalFeaturesL;NOID;Nautical Object ID;CONTAINS DATA
+404;FIELD;NIS.CulturalFeaturesL;INFORM;Information;CONTAINS DATA
+405;FIELD;NIS.CulturalFeaturesL;NINFOM;Information in national language;CONTAINS DATA
+406;FIELD;NIS.CulturalFeaturesL;NTXTDS;Textual description in national language;CONTAINS DATA
+407;FIELD;NIS.CulturalFeaturesL;PICREP;Pictorial representation;CONTAINS DATA
+408;FIELD;NIS.CulturalFeaturesL;TXTDSC;Textual description;CONTAINS DATA
+409;FIELD;NIS.CulturalFeaturesL;SORDAT;Source date;CONTAINS DATA
+410;FIELD;NIS.CulturalFeaturesL;SORIND;Source indication;CONTAINS DATA
+411;FIELD;NIS.CulturalFeaturesL;OBJNAM;Object name;CONTAINS DATA
+412;FIELD;NIS.CulturalFeaturesL;NOBJNM;Object name in national language;CONTAINS DATA
+413;FIELD;NIS.CulturalFeaturesL;EDITOR;Editor;CONTAINS DATA
+414;FIELD;NIS.CulturalFeaturesL;LAST_MOD;Last modified date;CONTAINS DATA
+415;FIELD;NIS.CulturalFeaturesL;EDITOR_COMMENT;Editor comments;CONTAINS DATA
+416;FIELD;NIS.CulturalFeaturesL;VERIFIED;Verified state;CONTAINS DATA
+417;FIELD;NIS.CulturalFeaturesL;VERIFIER;Verifier;CONTAINS DATA
+418;FIELD;NIS.CulturalFeaturesL;VERIFIED_DATE;Verified date;CONTAINS DATA
+419;FIELD;NIS.CulturalFeaturesL;DELETE_COMMENT;Delete comment;CONTAINS DATA
+420;FIELD;NIS.CulturalFeaturesL;PLTS_COMP_SCALE;PLTS compilation scale;CONTAINS DATA
+421;FIELD;NIS.CulturalFeaturesL;NIS_PRODUCTS;NIS product type;CONTAINS DATA
+422;FIELD;NIS.CulturalFeaturesL;IS_CONFLATE;Is Conflate;CONTAINS DATA
+423;FIELD;NIS.CulturalFeaturesL;BURDEP;Buried depth;CONTAINS DATA
+424;FIELD;NIS.CulturalFeaturesL;CATBRG;Category of bridge;CONTAINS DATA
+425;FIELD;NIS.CulturalFeaturesL;CATDAM;Category of dam;CONTAINS DATA
+426;FIELD;NIS.CulturalFeaturesL;CATFOR;Category of fortified structure;CONTAINS DATA
+427;FIELD;NIS.CulturalFeaturesL;CATLMK;Category of landmark;CONTAINS DATA
+428;FIELD;NIS.CulturalFeaturesL;CATROD;Category of road;CONTAINS DATA
+429;FIELD;NIS.CulturalFeaturesL;CATRUN;Category of runway;CONTAINS DATA
+430;FIELD;NIS.CulturalFeaturesL;COLOUR;Colour;CONTAINS DATA
+431;FIELD;NIS.CulturalFeaturesL;COLPAT;Colour pattern;CONTAINS DATA
+432;FIELD;NIS.CulturalFeaturesL;CONDTN;Condition;CONTAINS DATA
+433;FIELD;NIS.CulturalFeaturesL;CONRAD;Conspicuous, radar;CONTAINS DATA
+434;FIELD;NIS.CulturalFeaturesL;CONVIS;Conspicuous, visually;CONTAINS DATA
+435;FIELD;NIS.CulturalFeaturesL;DATEND;Date end;CONTAINS DATA
+436;FIELD;NIS.CulturalFeaturesL;DATSTA;Date start;CONTAINS DATA
+437;FIELD;NIS.CulturalFeaturesL;ELEVAT;Elevation;CONTAINS DATA
+438;FIELD;NIS.CulturalFeaturesL;FUNCTN;Function;CONTAINS DATA
+439;FIELD;NIS.CulturalFeaturesL;HEIGHT;Height;CONTAINS DATA
+440;FIELD;NIS.CulturalFeaturesL;HORACC;Horizontal accuracy;CONTAINS DATA
+441;FIELD;NIS.CulturalFeaturesL;HORCLR;Horizontal clearance;CONTAINS DATA
+442;FIELD;NIS.CulturalFeaturesL;NATCON;Nature of construction;CONTAINS DATA
+443;FIELD;NIS.CulturalFeaturesL;PEREND;Periodic date end;CONTAINS DATA
+444;FIELD;NIS.CulturalFeaturesL;PERSTA;Periodic date start;CONTAINS DATA
+445;FIELD;NIS.CulturalFeaturesL;PRODCT;Product;CONTAINS DATA
+446;FIELD;NIS.CulturalFeaturesL;STATUS;Status;CONTAINS DATA
+447;FIELD;NIS.CulturalFeaturesL;VERACC;Vertical accuracy;CONTAINS DATA
+448;FIELD;NIS.CulturalFeaturesL;VERCCL;Vertical clearance, closed;CONTAINS DATA
+449;FIELD;NIS.CulturalFeaturesL;VERCLR;Vertical clearance;CONTAINS DATA
+450;FIELD;NIS.CulturalFeaturesL;VERCOP;Vertical clearance, open;CONTAINS DATA
+451;FIELD;NIS.CulturalFeaturesL;VERDAT;Vertical datum;CONTAINS DATA
+452;FIELD;NIS.CulturalFeaturesL;VERLEN;Vertical length;CONTAINS DATA
+453;FIELD;NIS.CulturalFeaturesL;FCSubtype;FCSubtype;CONTAINS DATA
+454;FIELD;NIS.CulturalFeaturesL;CATCBL;Category of cable;CONTAINS DATA
+455;FIELD;NIS.CulturalFeaturesL;CATCON;Category of conveyor;CONTAINS DATA
+456;FIELD;NIS.CulturalFeaturesL;CATFNC;Category of fence/wall;CONTAINS DATA
+457;FIELD;NIS.CulturalFeaturesL;CATPIP;Category of pipeline/pipe;CONTAINS DATA
+458;FIELD;NIS.CulturalFeaturesL;ICEFAC;Ice factor;CONTAINS DATA
+459;FIELD;NIS.CulturalFeaturesL;LIFCAP;Lifting capacity;CONTAINS DATA
+460;FIELD;NIS.CulturalFeaturesL;VERCSA;Vertical clearance, safe;CONTAINS DATA
+461;FIELD;NIS.CulturalFeaturesL;SCAMIN_STEP;SCAMIN step;CONTAINS DATA
+462;FIELD;NIS.CulturalFeaturesL;NIS_VERIFIED;NIS Verified state;CONTAINS DATA
+463;FIELD;NIS.CulturalFeaturesL;NIS_VERIFIER;NIS Verifier;CONTAINS DATA
+464;FIELD;NIS.CulturalFeaturesL;NIS_VERIFY_DATE;NIS Verified date;CONTAINS DATA
+465;FIELD;NIS.CulturalFeaturesL;NIS_EDITOR;NIS_EDITOR;CONTAINS DATA
+466;FIELD;NIS.CulturalFeaturesL;NIS_LAST_MOD;NIS_LAST_MOD;CONTAINS DATA
+467;FIELD;NIS.CulturalFeaturesL;NIS_EDITOR_COMMENT;NIS editor comments;CONTAINS DATA
+468;FIELD;NIS.CulturalFeaturesL;Shape;Shape;CONTAINS DATA
+469;FIELD;NIS.CulturalFeaturesL;Shape.STLength();Shape.STLength();CONTAINS DATA
+470;SUBTYPE;NIS.CulturalFeaturesP;AIRARE_AirportAirfield;1;40
+471;SUBTYPE;NIS.CulturalFeaturesP;BRIDGE_Bridge;5;0
+472;SUBTYPE;NIS.CulturalFeaturesP;BUAARE_BuiltUpArea;10;454
+473;SUBTYPE;NIS.CulturalFeaturesP;BUISGL_BuildingSingle;15;444
+474;SUBTYPE;NIS.CulturalFeaturesP;CTRPNT_ControlPoint;20;0
+475;SUBTYPE;NIS.CulturalFeaturesP;DAMCON_Dam;25;0
+476;SUBTYPE;NIS.CulturalFeaturesP;FORSTC_FortifiedStructure;30;3
+477;SUBTYPE;NIS.CulturalFeaturesP;LNDMRK_Landmark;35;3778
+478;SUBTYPE;NIS.CulturalFeaturesP;PRDARE_ProductionStorageArea;40;43
+479;SUBTYPE;NIS.CulturalFeaturesP;PYLONS_PylonBridgeSupport;45;48
+480;SUBTYPE;NIS.CulturalFeaturesP;ROADWY_Road;50;0
+481;SUBTYPE;NIS.CulturalFeaturesP;RUNWAY_Runway;55;0
+482;SUBTYPE;NIS.CulturalFeaturesP;SILTNK_SiloTank;60;625
+483;SUBTYPE;NIS.CulturalFeaturesP;TUNNEL_Tunnel;65;0
+484;FIELD;NIS.CulturalFeaturesP;OBJECTID;OBJECTID;CONTAINS DATA
+485;FIELD;NIS.CulturalFeaturesP;GlobalID;GlobalID;CONTAINS DATA
+486;FIELD;NIS.CulturalFeaturesP;DSNM;Data set name;CONTAINS DATA
+487;FIELD;NIS.CulturalFeaturesP;LNAM;Long name;CONTAINS DATA
+488;FIELD;NIS.CulturalFeaturesP;NOID;Nautical Object ID;CONTAINS DATA
+489;FIELD;NIS.CulturalFeaturesP;INFORM;Information;CONTAINS DATA
+490;FIELD;NIS.CulturalFeaturesP;NINFOM;Information in national language;CONTAINS DATA
+491;FIELD;NIS.CulturalFeaturesP;NTXTDS;Textual description in national language;CONTAINS DATA
+492;FIELD;NIS.CulturalFeaturesP;PICREP;Pictorial representation;CONTAINS DATA
+493;FIELD;NIS.CulturalFeaturesP;TXTDSC;Textual description;CONTAINS DATA
+494;FIELD;NIS.CulturalFeaturesP;SORDAT;Source date;CONTAINS DATA
+495;FIELD;NIS.CulturalFeaturesP;SORIND;Source indication;CONTAINS DATA
+496;FIELD;NIS.CulturalFeaturesP;OBJNAM;Object name;CONTAINS DATA
+497;FIELD;NIS.CulturalFeaturesP;NOBJNM;Object name in national language;CONTAINS DATA
+498;FIELD;NIS.CulturalFeaturesP;EDITOR;Editor;CONTAINS DATA
+499;FIELD;NIS.CulturalFeaturesP;LAST_MOD;Last modified date;CONTAINS DATA
+500;FIELD;NIS.CulturalFeaturesP;EDITOR_COMMENT;Editor comments;CONTAINS DATA
+501;FIELD;NIS.CulturalFeaturesP;VERIFIED;Verified state;CONTAINS DATA
+502;FIELD;NIS.CulturalFeaturesP;VERIFIER;Verifier;CONTAINS DATA
+503;FIELD;NIS.CulturalFeaturesP;VERIFIED_DATE;Verified date;CONTAINS DATA
+504;FIELD;NIS.CulturalFeaturesP;DELETE_COMMENT;Delete comment;CONTAINS DATA
+505;FIELD;NIS.CulturalFeaturesP;PLTS_COMP_SCALE;PLTS compilation scale;CONTAINS DATA
+506;FIELD;NIS.CulturalFeaturesP;NIS_PRODUCTS;NIS product type;CONTAINS DATA
+507;FIELD;NIS.CulturalFeaturesP;IS_CONFLATE;Is Conflate;CONTAINS DATA
+508;FIELD;NIS.CulturalFeaturesP;BURDEP;Buried depth;CONTAINS DATA
+509;FIELD;NIS.CulturalFeaturesP;CATBRG;Category of bridge;CONTAINS DATA
+510;FIELD;NIS.CulturalFeaturesP;CATDAM;Category of dam;CONTAINS DATA
+511;FIELD;NIS.CulturalFeaturesP;CATFOR;Category of fortified structure;CONTAINS DATA
+512;FIELD;NIS.CulturalFeaturesP;CATLMK;Category of landmark;CONTAINS DATA
+513;FIELD;NIS.CulturalFeaturesP;CATROD;Category of road;CONTAINS DATA
+514;FIELD;NIS.CulturalFeaturesP;CATRUN;Category of runway;CONTAINS DATA
+515;FIELD;NIS.CulturalFeaturesP;COLOUR;Colour;CONTAINS DATA
+516;FIELD;NIS.CulturalFeaturesP;COLPAT;Colour pattern;CONTAINS DATA
+517;FIELD;NIS.CulturalFeaturesP;CONDTN;Condition;CONTAINS DATA
+518;FIELD;NIS.CulturalFeaturesP;CONRAD;Conspicuous, radar;CONTAINS DATA
+519;FIELD;NIS.CulturalFeaturesP;CONVIS;Conspicuous, visually;CONTAINS DATA
+520;FIELD;NIS.CulturalFeaturesP;DATEND;Date end;CONTAINS DATA
+521;FIELD;NIS.CulturalFeaturesP;DATSTA;Date start;CONTAINS DATA
+522;FIELD;NIS.CulturalFeaturesP;ELEVAT;Elevation;CONTAINS DATA
+523;FIELD;NIS.CulturalFeaturesP;FUNCTN;Function;CONTAINS DATA
+524;FIELD;NIS.CulturalFeaturesP;HEIGHT;Height;CONTAINS DATA
+525;FIELD;NIS.CulturalFeaturesP;HORACC;Horizontal accuracy;CONTAINS DATA
+526;FIELD;NIS.CulturalFeaturesP;HORCLR;Horizontal clearance;CONTAINS DATA
+527;FIELD;NIS.CulturalFeaturesP;NATCON;Nature of construction;CONTAINS DATA
+528;FIELD;NIS.CulturalFeaturesP;PEREND;Periodic date end;CONTAINS DATA
+529;FIELD;NIS.CulturalFeaturesP;PERSTA;Periodic date start;CONTAINS DATA
+530;FIELD;NIS.CulturalFeaturesP;PRODCT;Product;CONTAINS DATA
+531;FIELD;NIS.CulturalFeaturesP;STATUS;Status;CONTAINS DATA
+532;FIELD;NIS.CulturalFeaturesP;VERACC;Vertical accuracy;CONTAINS DATA
+533;FIELD;NIS.CulturalFeaturesP;VERCCL;Vertical clearance, closed;CONTAINS DATA
+534;FIELD;NIS.CulturalFeaturesP;VERCLR;Vertical clearance;CONTAINS DATA
+535;FIELD;NIS.CulturalFeaturesP;VERCOP;Vertical clearance, open;CONTAINS DATA
+536;FIELD;NIS.CulturalFeaturesP;VERDAT;Vertical datum;CONTAINS DATA
+537;FIELD;NIS.CulturalFeaturesP;VERLEN;Vertical length;CONTAINS DATA
+538;FIELD;NIS.CulturalFeaturesP;FCSubtype;FCSubtype;CONTAINS DATA
+539;FIELD;NIS.CulturalFeaturesP;BUISHP;Building shape;CONTAINS DATA
+540;FIELD;NIS.CulturalFeaturesP;CATAIR;Category of airport/airfield;CONTAINS DATA
+541;FIELD;NIS.CulturalFeaturesP;CATBUA;Category of built-up area;CONTAINS DATA
+542;FIELD;NIS.CulturalFeaturesP;CATCTR;Category of control point;CONTAINS DATA
+543;FIELD;NIS.CulturalFeaturesP;CATPRA;Category of production area;CONTAINS DATA
+544;FIELD;NIS.CulturalFeaturesP;CATPYL;Category of pylon;CONTAINS DATA
+545;FIELD;NIS.CulturalFeaturesP;CATSIL;Category of silo/tank;CONTAINS DATA
+546;FIELD;NIS.CulturalFeaturesP;WATLEV;Water level effect;CONTAINS DATA
+547;FIELD;NIS.CulturalFeaturesP;SCAMIN_STEP;SCAMIN step;CONTAINS DATA
+548;FIELD;NIS.CulturalFeaturesP;P_QUAPOS;Quality of Position;CONTAINS DATA
+549;FIELD;NIS.CulturalFeaturesP;P_POSACC;Positional Accuracy;CONTAINS DATA
+550;FIELD;NIS.CulturalFeaturesP;P_HORDAT;Horizontal Datum;CONTAINS DATA
+551;FIELD;NIS.CulturalFeaturesP;NIS_VERIFIED;NIS Verified state;CONTAINS DATA
+552;FIELD;NIS.CulturalFeaturesP;NIS_VERIFIER;NIS Verifier;CONTAINS DATA
+553;FIELD;NIS.CulturalFeaturesP;NIS_VERIFY_DATE;NIS Verified date;CONTAINS DATA
+554;FIELD;NIS.CulturalFeaturesP;NIS_EDITOR;NIS_EDITOR;CONTAINS DATA
+555;FIELD;NIS.CulturalFeaturesP;NIS_LAST_MOD;NIS_LAST_MOD;CONTAINS DATA
+556;FIELD;NIS.CulturalFeaturesP;NIS_EDITOR_COMMENT;NIS editor comments;CONTAINS DATA
+557;FIELD;NIS.CulturalFeaturesP;Shape;Shape;CONTAINS DATA
+558;SUBTYPE;NIS.DangersA;CTNARE_CautionArea;1;611
+559;SUBTYPE;NIS.DangersA;FSHFAC_FishingFacility;10;77
+560;SUBTYPE;NIS.DangersA;OBSTRN_Obstruction;15;3040
+561;SUBTYPE;NIS.DangersA;WATTUR_WaterTurbulence;20;0
+562;SUBTYPE;NIS.DangersA;WRECKS_Wreck;25;1
+563;FIELD;NIS.DangersA;OBJECTID;OBJECTID;CONTAINS DATA
+564;FIELD;NIS.DangersA;GlobalID;GlobalID;CONTAINS DATA
+565;FIELD;NIS.DangersA;DSNM;Data set name;CONTAINS DATA
+566;FIELD;NIS.DangersA;LNAM;Long name;CONTAINS DATA
+567;FIELD;NIS.DangersA;NOID;Nautical Object ID;CONTAINS DATA
+568;FIELD;NIS.DangersA;INFORM;Information;CONTAINS DATA
+569;FIELD;NIS.DangersA;NINFOM;Information in national language;CONTAINS DATA
+570;FIELD;NIS.DangersA;NTXTDS;Textual description in national language;CONTAINS DATA
+571;FIELD;NIS.DangersA;PICREP;Pictorial representation;CONTAINS DATA
+572;FIELD;NIS.DangersA;TXTDSC;Textual description;CONTAINS DATA
+573;FIELD;NIS.DangersA;SORDAT;Source date;CONTAINS DATA
+574;FIELD;NIS.DangersA;SORIND;Source indication;CONTAINS DATA
+575;FIELD;NIS.DangersA;OBJNAM;Object name;CONTAINS DATA
+576;FIELD;NIS.DangersA;NOBJNM;Object name in national language;CONTAINS DATA
+577;FIELD;NIS.DangersA;EDITOR;Editor;CONTAINS DATA
+578;FIELD;NIS.DangersA;LAST_MOD;Last modified date;CONTAINS DATA
+579;FIELD;NIS.DangersA;EDITOR_COMMENT;Editor comments;CONTAINS DATA
+580;FIELD;NIS.DangersA;VERIFIED;Verified state;CONTAINS DATA
+581;FIELD;NIS.DangersA;VERIFIER;Verifier;CONTAINS DATA
+582;FIELD;NIS.DangersA;VERIFIED_DATE;Verified date;CONTAINS DATA
+583;FIELD;NIS.DangersA;DELETE_COMMENT;Delete comment;CONTAINS DATA
+584;FIELD;NIS.DangersA;PLTS_COMP_SCALE;PLTS compilation scale;CONTAINS DATA
+585;FIELD;NIS.DangersA;NIS_PRODUCTS;NIS product type;CONTAINS DATA
+586;FIELD;NIS.DangersA;IS_CONFLATE;Is Conflate;CONTAINS DATA
+587;FIELD;NIS.DangersA;CATFIF;Category of fishing facility;CONTAINS DATA
+588;FIELD;NIS.DangersA;CATOBS;Category of obstruction;CONTAINS DATA
+589;FIELD;NIS.DangersA;CATWAT;Category of water turbulence;CONTAINS DATA
+590;FIELD;NIS.DangersA;CONDTN;Condition;CONTAINS DATA
+591;FIELD;NIS.DangersA;DATEND;Date end;CONTAINS DATA
+592;FIELD;NIS.DangersA;DATSTA;Date start;CONTAINS DATA
+593;FIELD;NIS.DangersA;EXPSOU;Exposition of sounding;CONTAINS DATA
+594;FIELD;NIS.DangersA;HEIGHT;Height;CONTAINS DATA
+595;FIELD;NIS.DangersA;NATCON;Nature of construction;CONTAINS DATA
+596;FIELD;NIS.DangersA;NATQUA;Nature of surface - qualifying terms;CONTAINS DATA
+597;FIELD;NIS.DangersA;NATSUR;Nature of surface;CONTAINS DATA
+598;FIELD;NIS.DangersA;PEREND;Periodic date end;CONTAINS DATA
+599;FIELD;NIS.DangersA;PERSTA;Periodic date start;CONTAINS DATA
+600;FIELD;NIS.DangersA;PRODCT;Product;CONTAINS DATA
+601;FIELD;NIS.DangersA;QUASOU;Quality of sounding measurement;CONTAINS DATA
+602;FIELD;NIS.DangersA;SOUACC;Sounding accuracy;CONTAINS DATA
+603;FIELD;NIS.DangersA;STATUS;Status;CONTAINS DATA
+604;FIELD;NIS.DangersA;TECSOU;Technique of sounding measurement;CONTAINS DATA
+605;FIELD;NIS.DangersA;VALSOU;Value of sounding;CONTAINS DATA
+606;FIELD;NIS.DangersA;VERACC;Vertical accuracy;CONTAINS DATA
+607;FIELD;NIS.DangersA;VERDAT;Vertical datum;CONTAINS DATA
+608;FIELD;NIS.DangersA;VERLEN;Vertical length;CONTAINS DATA
+609;FIELD;NIS.DangersA;WATLEV;Water level effect;CONTAINS DATA
+610;FIELD;NIS.DangersA;FCSubtype;FCSubtype;CONTAINS DATA
+611;FIELD;NIS.DangersA;CATWRK;Category of wreck;CONTAINS DATA
+612;FIELD;NIS.DangersA;CONRAD;Conspicuous, radar;CONTAINS DATA
+613;FIELD;NIS.DangersA;CONVIS;Conspicuous, visually;CONTAINS DATA
+614;FIELD;NIS.DangersA;SCAMIN_STEP;SCAMIN step;CONTAINS DATA
+615;FIELD;NIS.DangersA;NIS_VERIFIED;NIS Verified state;CONTAINS DATA
+616;FIELD;NIS.DangersA;NIS_VERIFIER;NIS Verifier;CONTAINS DATA
+617;FIELD;NIS.DangersA;NIS_VERIFY_DATE;NIS Verified date;CONTAINS DATA
+618;FIELD;NIS.DangersA;NIS_EDITOR;NIS_EDITOR;CONTAINS DATA
+619;FIELD;NIS.DangersA;NIS_LAST_MOD;NIS_LAST_MOD;CONTAINS DATA
+620;FIELD;NIS.DangersA;NIS_EDITOR_COMMENT;NIS editor comments;CONTAINS DATA
+621;FIELD;NIS.DangersA;Shape;Shape;CONTAINS DATA
+622;FIELD;NIS.DangersA;Shape.STArea();Shape.STArea();CONTAINS DATA
+623;FIELD;NIS.DangersA;Shape.STLength();Shape.STLength();CONTAINS DATA
+624;SUBTYPE;NIS.DangersL;FSHFAC_FishingFacility;1;7
+625;SUBTYPE;NIS.DangersL;OBSTRN_Obstruction;5;9
+626;SUBTYPE;NIS.DangersL;OILBAR_OilBarrier;10;0
+627;SUBTYPE;NIS.DangersL;WATTUR_WaterTurbulence;15;0
+628;FIELD;NIS.DangersL;OBJECTID;OBJECTID;CONTAINS DATA
+629;FIELD;NIS.DangersL;GlobalID;GlobalID;CONTAINS DATA
+630;FIELD;NIS.DangersL;DSNM;Data set name;CONTAINS DATA
+631;FIELD;NIS.DangersL;LNAM;Long name;CONTAINS DATA
+632;FIELD;NIS.DangersL;NOID;Nautical Object ID;CONTAINS DATA
+633;FIELD;NIS.DangersL;INFORM;Information;CONTAINS DATA
+634;FIELD;NIS.DangersL;NINFOM;Information in national language;CONTAINS DATA
+635;FIELD;NIS.DangersL;NTXTDS;Textual description in national language;CONTAINS DATA
+636;FIELD;NIS.DangersL;PICREP;Pictorial representation;CONTAINS DATA
+637;FIELD;NIS.DangersL;TXTDSC;Textual description;CONTAINS DATA
+638;FIELD;NIS.DangersL;SORDAT;Source date;CONTAINS DATA
+639;FIELD;NIS.DangersL;SORIND;Source indication;CONTAINS DATA
+640;FIELD;NIS.DangersL;OBJNAM;Object name;CONTAINS DATA
+641;FIELD;NIS.DangersL;NOBJNM;Object name in national language;CONTAINS DATA
+642;FIELD;NIS.DangersL;EDITOR;Editor;CONTAINS DATA
+643;FIELD;NIS.DangersL;LAST_MOD;Last modified date;CONTAINS DATA
+644;FIELD;NIS.DangersL;EDITOR_COMMENT;Editor comments;CONTAINS DATA
+645;FIELD;NIS.DangersL;VERIFIED;Verified state;CONTAINS DATA
+646;FIELD;NIS.DangersL;VERIFIER;Verifier;CONTAINS DATA
+647;FIELD;NIS.DangersL;VERIFIED_DATE;Verified date;CONTAINS DATA
+648;FIELD;NIS.DangersL;DELETE_COMMENT;Delete comment;CONTAINS DATA
+649;FIELD;NIS.DangersL;PLTS_COMP_SCALE;PLTS compilation scale;CONTAINS DATA
+650;FIELD;NIS.DangersL;NIS_PRODUCTS;NIS product type;CONTAINS DATA
+651;FIELD;NIS.DangersL;IS_CONFLATE;Is Conflate;CONTAINS DATA
+652;FIELD;NIS.DangersL;CATFIF;Category of fishing facility;CONTAINS DATA
+653;FIELD;NIS.DangersL;CATOBS;Category of obstruction;CONTAINS DATA
+654;FIELD;NIS.DangersL;CATWAT;Category of water turbulence;CONTAINS DATA
+655;FIELD;NIS.DangersL;CONDTN;Condition;CONTAINS DATA
+656;FIELD;NIS.DangersL;DATEND;Date end;CONTAINS DATA
+657;FIELD;NIS.DangersL;DATSTA;Date start;CONTAINS DATA
+658;FIELD;NIS.DangersL;EXPSOU;Exposition of sounding;CONTAINS DATA
+659;FIELD;NIS.DangersL;HEIGHT;Height;CONTAINS DATA
+660;FIELD;NIS.DangersL;NATCON;Nature of construction;CONTAINS DATA
+661;FIELD;NIS.DangersL;NATQUA;Nature of surface - qualifying terms;CONTAINS DATA
+662;FIELD;NIS.DangersL;NATSUR;Nature of surface;CONTAINS DATA
+663;FIELD;NIS.DangersL;PEREND;Periodic date end;CONTAINS DATA
+664;FIELD;NIS.DangersL;PERSTA;Periodic date start;CONTAINS DATA
+665;FIELD;NIS.DangersL;PRODCT;Product;CONTAINS DATA
+666;FIELD;NIS.DangersL;QUASOU;Quality of sounding measurement;CONTAINS DATA
+667;FIELD;NIS.DangersL;SOUACC;Sounding accuracy;CONTAINS DATA
+668;FIELD;NIS.DangersL;STATUS;Status;CONTAINS DATA
+669;FIELD;NIS.DangersL;TECSOU;Technique of sounding measurement;CONTAINS DATA
+670;FIELD;NIS.DangersL;VALSOU;Value of sounding;CONTAINS DATA
+671;FIELD;NIS.DangersL;VERACC;Vertical accuracy;CONTAINS DATA
+672;FIELD;NIS.DangersL;VERDAT;Vertical datum;CONTAINS DATA
+673;FIELD;NIS.DangersL;VERLEN;Vertical length;CONTAINS DATA
+674;FIELD;NIS.DangersL;WATLEV;Water level effect;CONTAINS DATA
+675;FIELD;NIS.DangersL;FCSubtype;FCSubtype;CONTAINS DATA
+676;FIELD;NIS.DangersL;CATOLB;Category of oil barrier;CONTAINS DATA
+677;FIELD;NIS.DangersL;SCAMIN_STEP;SCAMIN step;CONTAINS DATA
+678;FIELD;NIS.DangersL;NIS_VERIFIED;NIS Verified state;CONTAINS DATA
+679;FIELD;NIS.DangersL;NIS_VERIFIER;NIS Verifier;CONTAINS DATA
+680;FIELD;NIS.DangersL;NIS_VERIFY_DATE;NIS Verified date;CONTAINS DATA
+681;FIELD;NIS.DangersL;NIS_EDITOR;NIS_EDITOR;CONTAINS DATA
+682;FIELD;NIS.DangersL;NIS_LAST_MOD;NIS_LAST_MOD;CONTAINS DATA
+683;FIELD;NIS.DangersL;NIS_EDITOR_COMMENT;NIS editor comments;CONTAINS DATA
+684;FIELD;NIS.DangersL;Shape;Shape;CONTAINS DATA
+685;FIELD;NIS.DangersL;Shape.STLength();Shape.STLength();CONTAINS DATA
+686;SUBTYPE;NIS.DangersP;CTNARE_CautionArea;1;0
+687;SUBTYPE;NIS.DangersP;FSHFAC_FishingFacility;10;0
+688;SUBTYPE;NIS.DangersP;OBSTRN_Obstruction;20;847
+689;SUBTYPE;NIS.DangersP;UWTROC_UnderwaterAwashRock;35;24443
+690;SUBTYPE;NIS.DangersP;WATTUR_WaterTurbulence;40;13
+691;SUBTYPE;NIS.DangersP;WRECKS_Wreck;45;2394
+692;FIELD;NIS.DangersP;OBJECTID;OBJECTID;CONTAINS DATA
+693;FIELD;NIS.DangersP;GlobalID;GlobalID;CONTAINS DATA
+694;FIELD;NIS.DangersP;DSNM;Data set name;CONTAINS DATA
+695;FIELD;NIS.DangersP;LNAM;Long name;CONTAINS DATA
+696;FIELD;NIS.DangersP;NOID;Nautical Object ID;CONTAINS DATA
+697;FIELD;NIS.DangersP;INFORM;Information;CONTAINS DATA
+698;FIELD;NIS.DangersP;NINFOM;Information in national language;CONTAINS DATA
+699;FIELD;NIS.DangersP;NTXTDS;Textual description in national language;CONTAINS DATA
+700;FIELD;NIS.DangersP;PICREP;Pictorial representation;CONTAINS DATA
+701;FIELD;NIS.DangersP;TXTDSC;Textual description;CONTAINS DATA
+702;FIELD;NIS.DangersP;SORDAT;Source date;CONTAINS DATA
+703;FIELD;NIS.DangersP;SORIND;Source indication;CONTAINS DATA
+704;FIELD;NIS.DangersP;OBJNAM;Object name;CONTAINS DATA
+705;FIELD;NIS.DangersP;NOBJNM;Object name in national language;CONTAINS DATA
+706;FIELD;NIS.DangersP;EDITOR;Editor;CONTAINS DATA
+707;FIELD;NIS.DangersP;LAST_MOD;Last modified date;CONTAINS DATA
+708;FIELD;NIS.DangersP;EDITOR_COMMENT;Editor comments;CONTAINS DATA
+709;FIELD;NIS.DangersP;VERIFIED;Verified state;CONTAINS DATA
+710;FIELD;NIS.DangersP;VERIFIER;Verifier;CONTAINS DATA
+711;FIELD;NIS.DangersP;VERIFIED_DATE;Verified date;CONTAINS DATA
+712;FIELD;NIS.DangersP;DELETE_COMMENT;Delete comment;CONTAINS DATA
+713;FIELD;NIS.DangersP;PLTS_COMP_SCALE;PLTS compilation scale;CONTAINS DATA
+714;FIELD;NIS.DangersP;NIS_PRODUCTS;NIS product type;CONTAINS DATA
+715;FIELD;NIS.DangersP;IS_CONFLATE;Is Conflate;CONTAINS DATA
+716;FIELD;NIS.DangersP;CATFIF;Category of fishing facility;CONTAINS DATA
+717;FIELD;NIS.DangersP;CATOBS;Category of obstruction;CONTAINS DATA
+718;FIELD;NIS.DangersP;CATWAT;Category of water turbulence;CONTAINS DATA
+719;FIELD;NIS.DangersP;CONDTN;Condition;CONTAINS DATA
+720;FIELD;NIS.DangersP;DATEND;Date end;CONTAINS DATA
+721;FIELD;NIS.DangersP;DATSTA;Date start;CONTAINS DATA
+722;FIELD;NIS.DangersP;EXPSOU;Exposition of sounding;CONTAINS DATA
+723;FIELD;NIS.DangersP;HEIGHT;Height;CONTAINS DATA
+724;FIELD;NIS.DangersP;NATCON;Nature of construction;CONTAINS DATA
+725;FIELD;NIS.DangersP;NATQUA;Nature of surface - qualifying terms;CONTAINS DATA
+726;FIELD;NIS.DangersP;NATSUR;Nature of surface;CONTAINS DATA
+727;FIELD;NIS.DangersP;PEREND;Periodic date end;CONTAINS DATA
+728;FIELD;NIS.DangersP;PERSTA;Periodic date start;CONTAINS DATA
+729;FIELD;NIS.DangersP;PRODCT;Product;CONTAINS DATA
+730;FIELD;NIS.DangersP;QUASOU;Quality of sounding measurement;CONTAINS DATA
+731;FIELD;NIS.DangersP;SOUACC;Sounding accuracy;CONTAINS DATA
+732;FIELD;NIS.DangersP;STATUS;Status;CONTAINS DATA
+733;FIELD;NIS.DangersP;TECSOU;Technique of sounding measurement;CONTAINS DATA
+734;FIELD;NIS.DangersP;VALSOU;Value of sounding;CONTAINS DATA
+735;FIELD;NIS.DangersP;VERACC;Vertical accuracy;CONTAINS DATA
+736;FIELD;NIS.DangersP;VERDAT;Vertical datum;CONTAINS DATA
+737;FIELD;NIS.DangersP;VERLEN;Vertical length;CONTAINS DATA
+738;FIELD;NIS.DangersP;WATLEV;Water level effect;CONTAINS DATA
+739;FIELD;NIS.DangersP;FCSubtype;FCSubtype;CONTAINS DATA
+740;FIELD;NIS.DangersP;CATWRK;Category of wreck;CONTAINS DATA
+741;FIELD;NIS.DangersP;CONRAD;Conspicuous, radar;CONTAINS DATA
+742;FIELD;NIS.DangersP;CONVIS;Conspicuous, visually;CONTAINS DATA
+743;FIELD;NIS.DangersP;SCAMIN_STEP;SCAMIN step;CONTAINS DATA
+744;FIELD;NIS.DangersP;P_QUAPOS;Quality of Position;CONTAINS DATA
+745;FIELD;NIS.DangersP;P_POSACC;Positional Accuracy;CONTAINS DATA
+746;FIELD;NIS.DangersP;P_HORDAT;Horizontal Datum;CONTAINS DATA
+747;FIELD;NIS.DangersP;NIS_VERIFIED;NIS Verified state;CONTAINS DATA
+748;FIELD;NIS.DangersP;NIS_VERIFIER;NIS Verifier;CONTAINS DATA
+749;FIELD;NIS.DangersP;NIS_VERIFY_DATE;NIS Verified date;CONTAINS DATA
+750;FIELD;NIS.DangersP;NIS_EDITOR;NIS_EDITOR;CONTAINS DATA
+751;FIELD;NIS.DangersP;NIS_LAST_MOD;NIS_LAST_MOD;CONTAINS DATA
+752;FIELD;NIS.DangersP;NIS_EDITOR_COMMENT;NIS editor comments;CONTAINS DATA
+753;FIELD;NIS.DangersP;Shape;Shape;CONTAINS DATA
+754;SUBTYPE;NIS.DepthsA;DEPARE_DepthArea;1;49626
+755;SUBTYPE;NIS.DepthsA;DRGARE_DredgedArea;5;1808
+756;SUBTYPE;NIS.DepthsA;SWPARE_SweptArea;10;0
+757;SUBTYPE;NIS.DepthsA;UNSARE_UnsurveyedArea;15;4319
+758;FIELD;NIS.DepthsA;OBJECTID;OBJECTID;CONTAINS DATA
+759;FIELD;NIS.DepthsA;GlobalID;GlobalID;CONTAINS DATA
+760;FIELD;NIS.DepthsA;DSNM;Data set name;CONTAINS DATA
+761;FIELD;NIS.DepthsA;LNAM;Long name;CONTAINS DATA
+762;FIELD;NIS.DepthsA;NOID;Nautical Object ID;CONTAINS DATA
+763;FIELD;NIS.DepthsA;INFORM;Information;CONTAINS DATA
+764;FIELD;NIS.DepthsA;NINFOM;Information in national language;CONTAINS DATA
+765;FIELD;NIS.DepthsA;NTXTDS;Textual description in national language;CONTAINS DATA
+766;FIELD;NIS.DepthsA;PICREP;Pictorial representation;CONTAINS DATA
+767;FIELD;NIS.DepthsA;TXTDSC;Textual description;CONTAINS DATA
+768;FIELD;NIS.DepthsA;SORDAT;Source date;CONTAINS DATA
+769;FIELD;NIS.DepthsA;SORIND;Source indication;CONTAINS DATA
+770;FIELD;NIS.DepthsA;OBJNAM;Object name;CONTAINS DATA
+771;FIELD;NIS.DepthsA;NOBJNM;Object name in national language;CONTAINS DATA
+772;FIELD;NIS.DepthsA;EDITOR;Editor;CONTAINS DATA
+773;FIELD;NIS.DepthsA;LAST_MOD;Last modified date;CONTAINS DATA
+774;FIELD;NIS.DepthsA;EDITOR_COMMENT;Editor comments;CONTAINS DATA
+775;FIELD;NIS.DepthsA;VERIFIED;Verified state;CONTAINS DATA
+776;FIELD;NIS.DepthsA;VERIFIER;Verifier;CONTAINS DATA
+777;FIELD;NIS.DepthsA;VERIFIED_DATE;Verified date;CONTAINS DATA
+778;FIELD;NIS.DepthsA;DELETE_COMMENT;Delete comment;CONTAINS DATA
+779;FIELD;NIS.DepthsA;PLTS_COMP_SCALE;PLTS compilation scale;CONTAINS DATA
+780;FIELD;NIS.DepthsA;NIS_PRODUCTS;NIS product type;CONTAINS DATA
+781;FIELD;NIS.DepthsA;IS_CONFLATE;Is Conflate;CONTAINS DATA
+782;FIELD;NIS.DepthsA;QUASOU;Quality of sounding measurement;CONTAINS DATA
+783;FIELD;NIS.DepthsA;SOUACC;Sounding accuracy;CONTAINS DATA
+784;FIELD;NIS.DepthsA;VERDAT;Vertical datum;CONTAINS DATA
+785;FIELD;NIS.DepthsA;DRVAL1;Depth range value 1;CONTAINS DATA
+786;FIELD;NIS.DepthsA;DRVAL2;Depth range value 2;CONTAINS DATA
+787;FIELD;NIS.DepthsA;FCSubtype;FCSubtype;CONTAINS DATA
+788;FIELD;NIS.DepthsA;RESTRN;Restriction;CONTAINS DATA
+789;FIELD;NIS.DepthsA;TECSOU;Technique of sounding measurement;CONTAINS DATA
+790;FIELD;NIS.DepthsA;SCAMIN_STEP;SCAMIN step;CONTAINS DATA
+791;FIELD;NIS.DepthsA;NIS_VERIFIED;NIS Verified state;CONTAINS DATA
+792;FIELD;NIS.DepthsA;NIS_VERIFIER;NIS Verifier;CONTAINS DATA
+793;FIELD;NIS.DepthsA;NIS_VERIFY_DATE;NIS Verified date;CONTAINS DATA
+794;FIELD;NIS.DepthsA;NIS_EDITOR;NIS_EDITOR;CONTAINS DATA
+795;FIELD;NIS.DepthsA;NIS_LAST_MOD;NIS_LAST_MOD;CONTAINS DATA
+796;FIELD;NIS.DepthsA;NIS_EDITOR_COMMENT;NIS editor comments;CONTAINS DATA
+797;FIELD;NIS.DepthsA;Shape;Shape;CONTAINS DATA
+798;FIELD;NIS.DepthsA;Shape.STArea();Shape.STArea();CONTAINS DATA
+799;FIELD;NIS.DepthsA;Shape.STLength();Shape.STLength();CONTAINS DATA
+800;SUBTYPE;NIS.DepthsL;DEPCNT_DepthContour;5;49364
+801;FIELD;NIS.DepthsL;OBJECTID;OBJECTID;CONTAINS DATA
+802;FIELD;NIS.DepthsL;GlobalID;GlobalID;CONTAINS DATA
+803;FIELD;NIS.DepthsL;DSNM;Data set name;CONTAINS DATA
+804;FIELD;NIS.DepthsL;LNAM;Long name;CONTAINS DATA
+805;FIELD;NIS.DepthsL;NOID;Nautical Object ID;CONTAINS DATA
+806;FIELD;NIS.DepthsL;INFORM;Information;CONTAINS DATA
+807;FIELD;NIS.DepthsL;NINFOM;Information in national language;CONTAINS DATA
+808;FIELD;NIS.DepthsL;NTXTDS;Textual description in national language;CONTAINS DATA
+809;FIELD;NIS.DepthsL;PICREP;Pictorial representation;CONTAINS DATA
+810;FIELD;NIS.DepthsL;TXTDSC;Textual description;CONTAINS DATA
+811;FIELD;NIS.DepthsL;SORDAT;Source date;CONTAINS DATA
+812;FIELD;NIS.DepthsL;SORIND;Source indication;CONTAINS DATA
+813;FIELD;NIS.DepthsL;OBJNAM;Object name;CONTAINS DATA
+814;FIELD;NIS.DepthsL;NOBJNM;Object name in national language;CONTAINS DATA
+815;FIELD;NIS.DepthsL;EDITOR;Editor;CONTAINS DATA
+816;FIELD;NIS.DepthsL;LAST_MOD;Last modified date;CONTAINS DATA
+817;FIELD;NIS.DepthsL;EDITOR_COMMENT;Editor comments;CONTAINS DATA
+818;FIELD;NIS.DepthsL;VERIFIED;Verified state;CONTAINS DATA
+819;FIELD;NIS.DepthsL;VERIFIER;Verifier;CONTAINS DATA
+820;FIELD;NIS.DepthsL;VERIFIED_DATE;Verified date;CONTAINS DATA
+821;FIELD;NIS.DepthsL;DELETE_COMMENT;Delete comment;CONTAINS DATA
+822;FIELD;NIS.DepthsL;PLTS_COMP_SCALE;PLTS compilation scale;CONTAINS DATA
+823;FIELD;NIS.DepthsL;NIS_PRODUCTS;NIS product type;CONTAINS DATA
+824;FIELD;NIS.DepthsL;IS_CONFLATE;Is Conflate;CONTAINS DATA
+825;FIELD;NIS.DepthsL;QUASOU;Quality of sounding measurement;CONTAINS DATA
+826;FIELD;NIS.DepthsL;SOUACC;Sounding accuracy;CONTAINS DATA
+827;FIELD;NIS.DepthsL;VERDAT;Vertical datum;CONTAINS DATA
+828;FIELD;NIS.DepthsL;DRVAL1;Depth range value 1;CONTAINS DATA
+829;FIELD;NIS.DepthsL;DRVAL2;Depth range value 2;CONTAINS DATA
+830;FIELD;NIS.DepthsL;FCSubtype;FCSubtype;CONTAINS DATA
+831;FIELD;NIS.DepthsL;VALDCO;Value of depth contour;CONTAINS DATA
+832;FIELD;NIS.DepthsL;SCAMIN_STEP;SCAMIN step;CONTAINS DATA
+833;FIELD;NIS.DepthsL;NIS_VERIFIED;NIS Verified state;CONTAINS DATA
+834;FIELD;NIS.DepthsL;NIS_VERIFIER;NIS Verifier;CONTAINS DATA
+835;FIELD;NIS.DepthsL;NIS_VERIFY_DATE;NIS Verified date;CONTAINS DATA
+836;FIELD;NIS.DepthsL;NIS_EDITOR;NIS_EDITOR;CONTAINS DATA
+837;FIELD;NIS.DepthsL;NIS_LAST_MOD;NIS_LAST_MOD;CONTAINS DATA
+838;FIELD;NIS.DepthsL;NIS_EDITOR_COMMENT;NIS editor comments;CONTAINS DATA
+839;FIELD;NIS.DepthsL;Shape;Shape;CONTAINS DATA
+840;FIELD;NIS.DepthsL;Shape.STLength();Shape.STLength();CONTAINS DATA
+841;SUBTYPE;NIS.IceFeaturesA;ICEARE_IceArea;15;1617
+842;FIELD;NIS.IceFeaturesA;OBJECTID;OBJECTID;CONTAINS DATA
+843;FIELD;NIS.IceFeaturesA;GlobalID;GlobalID;CONTAINS DATA
+844;FIELD;NIS.IceFeaturesA;DSNM;Data set name;CONTAINS DATA
+845;FIELD;NIS.IceFeaturesA;LNAM;Long name;CONTAINS DATA
+846;FIELD;NIS.IceFeaturesA;NOID;Nautical Object ID;CONTAINS DATA
+847;FIELD;NIS.IceFeaturesA;INFORM;Information;CONTAINS DATA
+848;FIELD;NIS.IceFeaturesA;NINFOM;Information in national language;CONTAINS DATA
+849;FIELD;NIS.IceFeaturesA;NTXTDS;Textual description in national language;CONTAINS DATA
+850;FIELD;NIS.IceFeaturesA;PICREP;Pictorial representation;CONTAINS DATA
+851;FIELD;NIS.IceFeaturesA;TXTDSC;Textual description;CONTAINS DATA
+852;FIELD;NIS.IceFeaturesA;SORDAT;Source date;CONTAINS DATA
+853;FIELD;NIS.IceFeaturesA;SORIND;Source indication;CONTAINS DATA
+854;FIELD;NIS.IceFeaturesA;OBJNAM;Object name;CONTAINS DATA
+855;FIELD;NIS.IceFeaturesA;NOBJNM;Object name in national language;CONTAINS DATA
+856;FIELD;NIS.IceFeaturesA;EDITOR;Editor;CONTAINS DATA
+857;FIELD;NIS.IceFeaturesA;LAST_MOD;Last modified date;CONTAINS DATA
+858;FIELD;NIS.IceFeaturesA;EDITOR_COMMENT;Editor comments;CONTAINS DATA
+859;FIELD;NIS.IceFeaturesA;VERIFIED;Verified state;CONTAINS DATA
+860;FIELD;NIS.IceFeaturesA;VERIFIER;Verifier;CONTAINS DATA
+861;FIELD;NIS.IceFeaturesA;VERIFIED_DATE;Verified date;CONTAINS DATA
+862;FIELD;NIS.IceFeaturesA;DELETE_COMMENT;Delete comment;CONTAINS DATA
+863;FIELD;NIS.IceFeaturesA;PLTS_COMP_SCALE;PLTS compilation scale;CONTAINS DATA
+864;FIELD;NIS.IceFeaturesA;NIS_PRODUCTS;NIS product type;CONTAINS DATA
+865;FIELD;NIS.IceFeaturesA;IS_CONFLATE;Is Conflate;CONTAINS DATA
+866;FIELD;NIS.IceFeaturesA;CATICE;Category of ice;CONTAINS DATA
+867;FIELD;NIS.IceFeaturesA;CONVIS;Conspicuous, visually;CONTAINS DATA
+868;FIELD;NIS.IceFeaturesA;ELEVAT;Elevation;CONTAINS DATA
+869;FIELD;NIS.IceFeaturesA;HEIGHT;Height;CONTAINS DATA
+870;FIELD;NIS.IceFeaturesA;PEREND;Periodic date end;CONTAINS DATA
+871;FIELD;NIS.IceFeaturesA;PERSTA;Periodic date start;CONTAINS DATA
+872;FIELD;NIS.IceFeaturesA;STATUS;Status;CONTAINS DATA
+873;FIELD;NIS.IceFeaturesA;VERACC;Vertical accuracy;CONTAINS DATA
+874;FIELD;NIS.IceFeaturesA;VERDAT;Vertical datum;CONTAINS DATA
+875;FIELD;NIS.IceFeaturesA;VERLEN;Vertical length;CONTAINS DATA
+876;FIELD;NIS.IceFeaturesA;FCSubtype;FCSubtype;CONTAINS DATA
+877;FIELD;NIS.IceFeaturesA;SCAMIN_STEP;SCAMIN step;CONTAINS DATA
+878;FIELD;NIS.IceFeaturesA;NIS_VERIFIED;NIS Verified state;CONTAINS DATA
+879;FIELD;NIS.IceFeaturesA;NIS_VERIFIER;NIS Verifier;CONTAINS DATA
+880;FIELD;NIS.IceFeaturesA;NIS_VERIFY_DATE;NIS Verified date;CONTAINS DATA
+881;FIELD;NIS.IceFeaturesA;NIS_EDITOR;NIS_EDITOR;CONTAINS DATA
+882;FIELD;NIS.IceFeaturesA;NIS_LAST_MOD;NIS_LAST_MOD;CONTAINS DATA
+883;FIELD;NIS.IceFeaturesA;NIS_EDITOR_COMMENT;NIS editor comments;CONTAINS DATA
+884;FIELD;NIS.IceFeaturesA;Shape;Shape;CONTAINS DATA
+885;FIELD;NIS.IceFeaturesA;Shape.STArea();Shape.STArea();CONTAINS DATA
+886;FIELD;NIS.IceFeaturesA;Shape.STLength();Shape.STLength();CONTAINS DATA
+887;SUBTYPE;NIS.MetaDataA;M_ACCY_AccuracyOfData;1;0
+888;SUBTYPE;NIS.MetaDataA;M_CSCL_CompilationScaleOfData;20;50
+889;SUBTYPE;NIS.MetaDataA;M_HOPA_HorizontalDatumShiftParameters;25;0
+890;SUBTYPE;NIS.MetaDataA;M_NPUB_NauticalPublicationInformation;30;740
+891;SUBTYPE;NIS.MetaDataA;M_NSYS_NavigationalSystemOfMarks;35;737
+892;SUBTYPE;NIS.MetaDataA;M_QUAL_QualityOfData;40;6747
+893;SUBTYPE;NIS.MetaDataA;M_SDAT_SoundingDatum;45;15
+894;SUBTYPE;NIS.MetaDataA;M_SREL_SurveyReliability;50;189
+895;SUBTYPE;NIS.MetaDataA;M_VDAT_VerticalDatumOfData;55;27
+896;FIELD;NIS.MetaDataA;OBJECTID;OBJECTID;CONTAINS DATA
+897;FIELD;NIS.MetaDataA;GlobalID;GlobalID;CONTAINS DATA
+898;FIELD;NIS.MetaDataA;DSNM;Data set name;CONTAINS DATA
+899;FIELD;NIS.MetaDataA;LNAM;Long name;CONTAINS DATA
+900;FIELD;NIS.MetaDataA;NOID;Nautical Object ID;CONTAINS DATA
+901;FIELD;NIS.MetaDataA;INFORM;Information;CONTAINS DATA
+902;FIELD;NIS.MetaDataA;NINFOM;Information in national language;CONTAINS DATA
+903;FIELD;NIS.MetaDataA;NTXTDS;Textual description in national language;CONTAINS DATA
+904;FIELD;NIS.MetaDataA;PICREP;Pictorial representation;CONTAINS DATA
+905;FIELD;NIS.MetaDataA;TXTDSC;Textual description;CONTAINS DATA
+906;FIELD;NIS.MetaDataA;SORDAT;Source date;CONTAINS DATA
+907;FIELD;NIS.MetaDataA;SORIND;Source indication;CONTAINS DATA
+908;FIELD;NIS.MetaDataA;OBJNAM;Object name;CONTAINS DATA
+909;FIELD;NIS.MetaDataA;NOBJNM;Object name in national language;CONTAINS DATA
+910;FIELD;NIS.MetaDataA;EDITOR;Editor;CONTAINS DATA
+911;FIELD;NIS.MetaDataA;LAST_MOD;Last modified date;CONTAINS DATA
+912;FIELD;NIS.MetaDataA;EDITOR_COMMENT;Editor comments;CONTAINS DATA
+913;FIELD;NIS.MetaDataA;VERIFIED;Verified state;CONTAINS DATA
+914;FIELD;NIS.MetaDataA;VERIFIER;Verifier;CONTAINS DATA
+915;FIELD;NIS.MetaDataA;VERIFIED_DATE;Verified date;CONTAINS DATA
+916;FIELD;NIS.MetaDataA;DELETE_COMMENT;Delete comment;CONTAINS DATA
+917;FIELD;NIS.MetaDataA;PLTS_COMP_SCALE;PLTS compilation scale;CONTAINS DATA
+918;FIELD;NIS.MetaDataA;NIS_PRODUCTS;NIS product type;CONTAINS DATA
+919;FIELD;NIS.MetaDataA;IS_CONFLATE;Is Conflate;CONTAINS DATA
+920;FIELD;NIS.MetaDataA;QUAPOS;Quality of position;CONTAINS DATA
+921;FIELD;NIS.MetaDataA;QUASOU;Quality of sounding measurement;CONTAINS DATA
+922;FIELD;NIS.MetaDataA;SCVAL1;Scale value one;CONTAINS DATA
+923;FIELD;NIS.MetaDataA;SCVAL2;Scale value two;CONTAINS DATA
+924;FIELD;NIS.MetaDataA;SDISMN;Sounding distance - minimum;CONTAINS DATA
+925;FIELD;NIS.MetaDataA;SDISMX;Sounding distance - maximum;CONTAINS DATA
+926;FIELD;NIS.MetaDataA;SURATH;Survey authority;CONTAINS DATA
+927;FIELD;NIS.MetaDataA;SUREND;Survey date - end;CONTAINS DATA
+928;FIELD;NIS.MetaDataA;SURSTA;Survey date - start;CONTAINS DATA
+929;FIELD;NIS.MetaDataA;SURTYP;Survey type;CONTAINS DATA
+930;FIELD;NIS.MetaDataA;TECSOU;Technique of sounding measurement;CONTAINS DATA
+931;FIELD;NIS.MetaDataA;FCSubtype;FCSubtype;CONTAINS DATA
+932;FIELD;NIS.MetaDataA;CATQUA;Category of quality of data;CONTAINS DATA
+933;FIELD;NIS.MetaDataA;CATZOC;Category of zone of confidence in data;CONTAINS DATA
+934;FIELD;NIS.MetaDataA;CSCALE;Compilation scale of data;CONTAINS DATA
+935;FIELD;NIS.MetaDataA;DRVAL1;Depth range value 1;CONTAINS DATA
+936;FIELD;NIS.MetaDataA;DRVAL2;Depth range value 2;CONTAINS DATA
+937;FIELD;NIS.MetaDataA;HORACC;Horizontal accuracy;CONTAINS DATA
+938;FIELD;NIS.MetaDataA;HORDAT;Horizontal datum;CONTAINS DATA
+939;FIELD;NIS.MetaDataA;MARSYS;Marks navigational - System of;CONTAINS DATA
+940;FIELD;NIS.MetaDataA;ORIENT;Orientation;CONTAINS DATA
+941;FIELD;NIS.MetaDataA;PUBREF;Publication reference;CONTAINS DATA
+942;FIELD;NIS.MetaDataA;POSACC;Positional Accuracy;CONTAINS DATA
+943;FIELD;NIS.MetaDataA;SHIPAM;Shift parameters;CONTAINS DATA
+944;FIELD;NIS.MetaDataA;SOUACC;Sounding accuracy;CONTAINS DATA
+945;FIELD;NIS.MetaDataA;VERACC;Vertical accuracy;CONTAINS DATA
+946;FIELD;NIS.MetaDataA;VERDAT;Vertical datum;CONTAINS DATA
+947;FIELD;NIS.MetaDataA;SCAMIN_STEP;SCAMIN step;CONTAINS DATA
+948;FIELD;NIS.MetaDataA;NIS_VERIFIED;NIS Verified state;CONTAINS DATA
+949;FIELD;NIS.MetaDataA;NIS_VERIFIER;NIS Verifier;CONTAINS DATA
+950;FIELD;NIS.MetaDataA;NIS_VERIFY_DATE;NIS Verified date;CONTAINS DATA
+951;FIELD;NIS.MetaDataA;NIS_EDITOR;NIS_EDITOR;CONTAINS DATA
+952;FIELD;NIS.MetaDataA;NIS_LAST_MOD;NIS_LAST_MOD;CONTAINS DATA
+953;FIELD;NIS.MetaDataA;NIS_EDITOR_COMMENT;NIS editor comments;CONTAINS DATA
+954;FIELD;NIS.MetaDataA;Shape;Shape;CONTAINS DATA
+955;FIELD;NIS.MetaDataA;Shape.STArea();Shape.STArea();CONTAINS DATA
+956;FIELD;NIS.MetaDataA;Shape.STLength();Shape.STLength();CONTAINS DATA
+957;SUBTYPE;NIS.MetaDataL;M_SREL_SurveyReliability;5;0
+958;FIELD;NIS.MetaDataL;OBJECTID;OBJECTID;EMPTY
+959;FIELD;NIS.MetaDataL;GlobalID;GlobalID;EMPTY
+960;FIELD;NIS.MetaDataL;DSNM;Data set name;EMPTY
+961;FIELD;NIS.MetaDataL;LNAM;Long name;EMPTY
+962;FIELD;NIS.MetaDataL;NOID;Nautical Object ID;EMPTY
+963;FIELD;NIS.MetaDataL;INFORM;Information;EMPTY
+964;FIELD;NIS.MetaDataL;NINFOM;Information in national language;EMPTY
+965;FIELD;NIS.MetaDataL;NTXTDS;Textual description in national language;EMPTY
+966;FIELD;NIS.MetaDataL;PICREP;Pictorial representation;EMPTY
+967;FIELD;NIS.MetaDataL;TXTDSC;Textual description;EMPTY
+968;FIELD;NIS.MetaDataL;SORDAT;Source date;EMPTY
+969;FIELD;NIS.MetaDataL;SORIND;Source indication;EMPTY
+970;FIELD;NIS.MetaDataL;OBJNAM;Object name;EMPTY
+971;FIELD;NIS.MetaDataL;NOBJNM;Object name in national language;EMPTY
+972;FIELD;NIS.MetaDataL;EDITOR;Editor;EMPTY
+973;FIELD;NIS.MetaDataL;LAST_MOD;Last modified date;EMPTY
+974;FIELD;NIS.MetaDataL;EDITOR_COMMENT;Editor comments;EMPTY
+975;FIELD;NIS.MetaDataL;VERIFIED;Verified state;EMPTY
+976;FIELD;NIS.MetaDataL;VERIFIER;Verifier;EMPTY
+977;FIELD;NIS.MetaDataL;VERIFIED_DATE;Verified date;EMPTY
+978;FIELD;NIS.MetaDataL;DELETE_COMMENT;Delete comment;EMPTY
+979;FIELD;NIS.MetaDataL;PLTS_COMP_SCALE;PLTS compilation scale;EMPTY
+980;FIELD;NIS.MetaDataL;NIS_PRODUCTS;NIS product type;EMPTY
+981;FIELD;NIS.MetaDataL;IS_CONFLATE;Is Conflate;EMPTY
+982;FIELD;NIS.MetaDataL;QUAPOS;Quality of position;EMPTY
+983;FIELD;NIS.MetaDataL;QUASOU;Quality of sounding measurement;EMPTY
+984;FIELD;NIS.MetaDataL;SCVAL1;Scale value one;EMPTY
+985;FIELD;NIS.MetaDataL;SCVAL2;Scale value two;EMPTY
+986;FIELD;NIS.MetaDataL;SDISMN;Sounding distance - minimum;EMPTY
+987;FIELD;NIS.MetaDataL;SDISMX;Sounding distance - maximum;EMPTY
+988;FIELD;NIS.MetaDataL;SURATH;Survey authority;EMPTY
+989;FIELD;NIS.MetaDataL;SUREND;Survey date - end;EMPTY
+990;FIELD;NIS.MetaDataL;SURSTA;Survey date - start;EMPTY
+991;FIELD;NIS.MetaDataL;SURTYP;Survey type;EMPTY
+992;FIELD;NIS.MetaDataL;TECSOU;Technique of sounding measurement;EMPTY
+993;FIELD;NIS.MetaDataL;FCSubtype;FCSubtype;EMPTY
+994;FIELD;NIS.MetaDataL;SCAMIN_STEP;SCAMIN step;EMPTY
+995;FIELD;NIS.MetaDataL;NIS_VERIFIED;NIS Verified state;EMPTY
+996;FIELD;NIS.MetaDataL;NIS_VERIFIER;NIS Verifier;EMPTY
+997;FIELD;NIS.MetaDataL;NIS_VERIFY_DATE;NIS Verified date;EMPTY
+998;FIELD;NIS.MetaDataL;NIS_EDITOR;NIS_EDITOR;EMPTY
+999;FIELD;NIS.MetaDataL;NIS_LAST_MOD;NIS_LAST_MOD;EMPTY
+1000;FIELD;NIS.MetaDataL;NIS_EDITOR_COMMENT;NIS editor comments;EMPTY
+1001;FIELD;NIS.MetaDataL;Shape;Shape;EMPTY
+1002;FIELD;NIS.MetaDataL;Shape.STLength();Shape.STLength();EMPTY
+1003;SUBTYPE;NIS.MetaDataP;M_NPUB_NauticalPublicationInformation;1;16
+1004;FIELD;NIS.MetaDataP;OBJECTID;OBJECTID;CONTAINS DATA
+1005;FIELD;NIS.MetaDataP;GlobalID;GlobalID;CONTAINS DATA
+1006;FIELD;NIS.MetaDataP;DSNM;Data set name;CONTAINS DATA
+1007;FIELD;NIS.MetaDataP;LNAM;Long name;CONTAINS DATA
+1008;FIELD;NIS.MetaDataP;NOID;Nautical Object ID;CONTAINS DATA
+1009;FIELD;NIS.MetaDataP;INFORM;Information;CONTAINS DATA
+1010;FIELD;NIS.MetaDataP;NINFOM;Information in national language;CONTAINS DATA
+1011;FIELD;NIS.MetaDataP;NTXTDS;Textual description in national language;CONTAINS DATA
+1012;FIELD;NIS.MetaDataP;PICREP;Pictorial representation;CONTAINS DATA
+1013;FIELD;NIS.MetaDataP;TXTDSC;Textual description;CONTAINS DATA
+1014;FIELD;NIS.MetaDataP;SORDAT;Source date;CONTAINS DATA
+1015;FIELD;NIS.MetaDataP;SORIND;Source indication;CONTAINS DATA
+1016;FIELD;NIS.MetaDataP;OBJNAM;Object name;CONTAINS DATA
+1017;FIELD;NIS.MetaDataP;NOBJNM;Object name in national language;CONTAINS DATA
+1018;FIELD;NIS.MetaDataP;EDITOR;Editor;CONTAINS DATA
+1019;FIELD;NIS.MetaDataP;LAST_MOD;Last modified date;CONTAINS DATA
+1020;FIELD;NIS.MetaDataP;EDITOR_COMMENT;Editor comments;CONTAINS DATA
+1021;FIELD;NIS.MetaDataP;VERIFIED;Verified state;CONTAINS DATA
+1022;FIELD;NIS.MetaDataP;VERIFIER;Verifier;CONTAINS DATA
+1023;FIELD;NIS.MetaDataP;VERIFIED_DATE;Verified date;CONTAINS DATA
+1024;FIELD;NIS.MetaDataP;DELETE_COMMENT;Delete comment;CONTAINS DATA
+1025;FIELD;NIS.MetaDataP;PLTS_COMP_SCALE;PLTS compilation scale;CONTAINS DATA
+1026;FIELD;NIS.MetaDataP;NIS_PRODUCTS;NIS product type;CONTAINS DATA
+1027;FIELD;NIS.MetaDataP;IS_CONFLATE;Is Conflate;CONTAINS DATA
+1028;FIELD;NIS.MetaDataP;FCSubtype;FCSubtype;CONTAINS DATA
+1029;FIELD;NIS.MetaDataP;PUBREF;Publication reference;CONTAINS DATA
+1030;FIELD;NIS.MetaDataP;SCAMIN_STEP;SCAMIN step;CONTAINS DATA
+1031;FIELD;NIS.MetaDataP;P_QUAPOS;Quality of Position;CONTAINS DATA
+1032;FIELD;NIS.MetaDataP;P_POSACC;Positional Accuracy;CONTAINS DATA
+1033;FIELD;NIS.MetaDataP;P_HORDAT;Horizontal Datum;CONTAINS DATA
+1034;FIELD;NIS.MetaDataP;NIS_VERIFIED;NIS Verified state;CONTAINS DATA
+1035;FIELD;NIS.MetaDataP;NIS_VERIFIER;NIS Verifier;CONTAINS DATA
+1036;FIELD;NIS.MetaDataP;NIS_VERIFY_DATE;NIS Verified date;CONTAINS DATA
+1037;FIELD;NIS.MetaDataP;NIS_EDITOR;NIS_EDITOR;CONTAINS DATA
+1038;FIELD;NIS.MetaDataP;NIS_LAST_MOD;NIS_LAST_MOD;CONTAINS DATA
+1039;FIELD;NIS.MetaDataP;Shape;Shape;CONTAINS DATA
+1040;SUBTYPE;NIS.MilitaryFeaturesA;MIPARE_MilitaryPracticeArea;60;122
+1041;FIELD;NIS.MilitaryFeaturesA;OBJECTID;OBJECTID;CONTAINS DATA
+1042;FIELD;NIS.MilitaryFeaturesA;GlobalID;GlobalID;CONTAINS DATA
+1043;FIELD;NIS.MilitaryFeaturesA;DSNM;Data set name;CONTAINS DATA
+1044;FIELD;NIS.MilitaryFeaturesA;LNAM;Long name;CONTAINS DATA
+1045;FIELD;NIS.MilitaryFeaturesA;NOID;Nautical Object ID;CONTAINS DATA
+1046;FIELD;NIS.MilitaryFeaturesA;INFORM;Information;CONTAINS DATA
+1047;FIELD;NIS.MilitaryFeaturesA;NINFOM;Information in national language;CONTAINS DATA
+1048;FIELD;NIS.MilitaryFeaturesA;NTXTDS;Textual description in national language;CONTAINS DATA
+1049;FIELD;NIS.MilitaryFeaturesA;PICREP;Pictorial representation;CONTAINS DATA
+1050;FIELD;NIS.MilitaryFeaturesA;TXTDSC;Textual description;CONTAINS DATA
+1051;FIELD;NIS.MilitaryFeaturesA;SORDAT;Source date;CONTAINS DATA
+1052;FIELD;NIS.MilitaryFeaturesA;SORIND;Source indication;CONTAINS DATA
+1053;FIELD;NIS.MilitaryFeaturesA;OBJNAM;Object name;CONTAINS DATA
+1054;FIELD;NIS.MilitaryFeaturesA;NOBJNM;Object name in national language;CONTAINS DATA
+1055;FIELD;NIS.MilitaryFeaturesA;EDITOR;Editor;CONTAINS DATA
+1056;FIELD;NIS.MilitaryFeaturesA;LAST_MOD;Last modified date;CONTAINS DATA
+1057;FIELD;NIS.MilitaryFeaturesA;EDITOR_COMMENT;Editor comments;CONTAINS DATA
+1058;FIELD;NIS.MilitaryFeaturesA;VERIFIED;Verified state;CONTAINS DATA
+1059;FIELD;NIS.MilitaryFeaturesA;VERIFIER;Verifier;CONTAINS DATA
+1060;FIELD;NIS.MilitaryFeaturesA;VERIFIED_DATE;Verified date;CONTAINS DATA
+1061;FIELD;NIS.MilitaryFeaturesA;DELETE_COMMENT;Delete comment;CONTAINS DATA
+1062;FIELD;NIS.MilitaryFeaturesA;PLTS_COMP_SCALE;PLTS compilation scale;CONTAINS DATA
+1063;FIELD;NIS.MilitaryFeaturesA;NIS_PRODUCTS;NIS product type;CONTAINS DATA
+1064;FIELD;NIS.MilitaryFeaturesA;IS_CONFLATE;Is Conflate;CONTAINS DATA
+1065;FIELD;NIS.MilitaryFeaturesA;CATMPA;Category of military practice area;CONTAINS DATA
+1066;FIELD;NIS.MilitaryFeaturesA;DATEND;Date end;CONTAINS DATA
+1067;FIELD;NIS.MilitaryFeaturesA;DATSTA;Date start;CONTAINS DATA
+1068;FIELD;NIS.MilitaryFeaturesA;PEREND;Periodic date end;CONTAINS DATA
+1069;FIELD;NIS.MilitaryFeaturesA;PERSTA;Periodic date start;CONTAINS DATA
+1070;FIELD;NIS.MilitaryFeaturesA;RESTRN;Restriction;CONTAINS DATA
+1071;FIELD;NIS.MilitaryFeaturesA;STATUS;Status;CONTAINS DATA
+1072;FIELD;NIS.MilitaryFeaturesA;FCSubtype;FCSubtype;CONTAINS DATA
+1073;FIELD;NIS.MilitaryFeaturesA;SCAMIN_STEP;SCAMIN step;CONTAINS DATA
+1074;FIELD;NIS.MilitaryFeaturesA;NIS_VERIFIED;NIS Verified state;CONTAINS DATA
+1075;FIELD;NIS.MilitaryFeaturesA;NIS_VERIFIER;NIS Verifier;CONTAINS DATA
+1076;FIELD;NIS.MilitaryFeaturesA;NIS_VERIFY_DATE;NIS Verified date;CONTAINS DATA
+1077;FIELD;NIS.MilitaryFeaturesA;NIS_EDITOR;NIS_EDITOR;CONTAINS DATA
+1078;FIELD;NIS.MilitaryFeaturesA;NIS_LAST_MOD;NIS_LAST_MOD;CONTAINS DATA
+1079;FIELD;NIS.MilitaryFeaturesA;NIS_EDITOR_COMMENT;NIS editor comments;CONTAINS DATA
+1080;FIELD;NIS.MilitaryFeaturesA;Shape;Shape;CONTAINS DATA
+1081;FIELD;NIS.MilitaryFeaturesA;Shape.STArea();Shape.STArea();CONTAINS DATA
+1082;FIELD;NIS.MilitaryFeaturesA;Shape.STLength();Shape.STLength();CONTAINS DATA
+1083;SUBTYPE;NIS.MilitaryFeaturesP;MIPARE_MilitaryPracticeArea;30;0
+1084;FIELD;NIS.MilitaryFeaturesP;OBJECTID;OBJECTID;EMPTY
+1085;FIELD;NIS.MilitaryFeaturesP;GlobalID;GlobalID;EMPTY
+1086;FIELD;NIS.MilitaryFeaturesP;DSNM;Data set name;EMPTY
+1087;FIELD;NIS.MilitaryFeaturesP;LNAM;Long name;EMPTY
+1088;FIELD;NIS.MilitaryFeaturesP;NOID;Nautical Object ID;EMPTY
+1089;FIELD;NIS.MilitaryFeaturesP;INFORM;Information;EMPTY
+1090;FIELD;NIS.MilitaryFeaturesP;NINFOM;Information in national language;EMPTY
+1091;FIELD;NIS.MilitaryFeaturesP;NTXTDS;Textual description in national language;EMPTY
+1092;FIELD;NIS.MilitaryFeaturesP;PICREP;Pictorial representation;EMPTY
+1093;FIELD;NIS.MilitaryFeaturesP;TXTDSC;Textual description;EMPTY
+1094;FIELD;NIS.MilitaryFeaturesP;SORDAT;Source date;EMPTY
+1095;FIELD;NIS.MilitaryFeaturesP;SORIND;Source indication;EMPTY
+1096;FIELD;NIS.MilitaryFeaturesP;OBJNAM;Object name;EMPTY
+1097;FIELD;NIS.MilitaryFeaturesP;NOBJNM;Object name in national language;EMPTY
+1098;FIELD;NIS.MilitaryFeaturesP;EDITOR;Editor;EMPTY
+1099;FIELD;NIS.MilitaryFeaturesP;LAST_MOD;Last modified date;EMPTY
+1100;FIELD;NIS.MilitaryFeaturesP;EDITOR_COMMENT;Editor comments;EMPTY
+1101;FIELD;NIS.MilitaryFeaturesP;VERIFIED;Verified state;EMPTY
+1102;FIELD;NIS.MilitaryFeaturesP;VERIFIER;Verifier;EMPTY
+1103;FIELD;NIS.MilitaryFeaturesP;VERIFIED_DATE;Verified date;EMPTY
+1104;FIELD;NIS.MilitaryFeaturesP;DELETE_COMMENT;Delete comment;EMPTY
+1105;FIELD;NIS.MilitaryFeaturesP;PLTS_COMP_SCALE;PLTS compilation scale;EMPTY
+1106;FIELD;NIS.MilitaryFeaturesP;NIS_PRODUCTS;NIS product type;EMPTY
+1107;FIELD;NIS.MilitaryFeaturesP;IS_CONFLATE;Is Conflate;EMPTY
+1108;FIELD;NIS.MilitaryFeaturesP;CATMPA;Category of military practice area;EMPTY
+1109;FIELD;NIS.MilitaryFeaturesP;DATEND;Date end;EMPTY
+1110;FIELD;NIS.MilitaryFeaturesP;DATSTA;Date start;EMPTY
+1111;FIELD;NIS.MilitaryFeaturesP;PEREND;Periodic date end;EMPTY
+1112;FIELD;NIS.MilitaryFeaturesP;PERSTA;Periodic date start;EMPTY
+1113;FIELD;NIS.MilitaryFeaturesP;RESTRN;Restriction;EMPTY
+1114;FIELD;NIS.MilitaryFeaturesP;STATUS;Status;EMPTY
+1115;FIELD;NIS.MilitaryFeaturesP;FCSubtype;FCSubtype;EMPTY
+1116;FIELD;NIS.MilitaryFeaturesP;SCAMIN_STEP;SCAMIN step;EMPTY
+1117;FIELD;NIS.MilitaryFeaturesP;P_QUAPOS;Quality of Position;EMPTY
+1118;FIELD;NIS.MilitaryFeaturesP;P_POSACC;Positional Accuracy;EMPTY
+1119;FIELD;NIS.MilitaryFeaturesP;P_HORDAT;Horizontal Datum;EMPTY
+1120;FIELD;NIS.MilitaryFeaturesP;NIS_VERIFIED;NIS Verified state;EMPTY
+1121;FIELD;NIS.MilitaryFeaturesP;NIS_VERIFIER;NIS Verifier;EMPTY
+1122;FIELD;NIS.MilitaryFeaturesP;NIS_VERIFY_DATE;NIS Verified date;EMPTY
+1123;FIELD;NIS.MilitaryFeaturesP;NIS_EDITOR;NIS_EDITOR;EMPTY
+1124;FIELD;NIS.MilitaryFeaturesP;NIS_LAST_MOD;NIS_LAST_MOD;EMPTY
+1125;FIELD;NIS.MilitaryFeaturesP;NIS_EDITOR_COMMENT;NIS editor comments;EMPTY
+1126;FIELD;NIS.MilitaryFeaturesP;Shape;Shape;EMPTY
+1127;SUBTYPE;NIS.NaturalFeaturesA;LAKARE_Lake;1;28772
+1128;SUBTYPE;NIS.NaturalFeaturesA;LNDARE_LandArea;5;44517
+1129;SUBTYPE;NIS.NaturalFeaturesA;LNDRGN_LandRegion;10;7860
+1130;SUBTYPE;NIS.NaturalFeaturesA;RAPIDS_Rapids;15;0
+1131;SUBTYPE;NIS.NaturalFeaturesA;RIVERS_River;20;144
+1132;SUBTYPE;NIS.NaturalFeaturesA;SEAARE_SeaAreaNamedWaterArea;25;6713
+1133;SUBTYPE;NIS.NaturalFeaturesA;SLOGRD_SlopingGround;30;0
+1134;SUBTYPE;NIS.NaturalFeaturesA;VEGATN_Vegetation;35;2272
+1135;FIELD;NIS.NaturalFeaturesA;OBJECTID;OBJECTID;CONTAINS DATA
+1136;FIELD;NIS.NaturalFeaturesA;GlobalID;GlobalID;CONTAINS DATA
+1137;FIELD;NIS.NaturalFeaturesA;DSNM;Data set name;CONTAINS DATA
+1138;FIELD;NIS.NaturalFeaturesA;LNAM;Long name;CONTAINS DATA
+1139;FIELD;NIS.NaturalFeaturesA;NOID;Nautical Object ID;CONTAINS DATA
+1140;FIELD;NIS.NaturalFeaturesA;INFORM;Information;CONTAINS DATA
+1141;FIELD;NIS.NaturalFeaturesA;NINFOM;Information in national language;CONTAINS DATA
+1142;FIELD;NIS.NaturalFeaturesA;NTXTDS;Textual description in national language;CONTAINS DATA
+1143;FIELD;NIS.NaturalFeaturesA;PICREP;Pictorial representation;CONTAINS DATA
+1144;FIELD;NIS.NaturalFeaturesA;TXTDSC;Textual description;CONTAINS DATA
+1145;FIELD;NIS.NaturalFeaturesA;SORDAT;Source date;CONTAINS DATA
+1146;FIELD;NIS.NaturalFeaturesA;SORIND;Source indication;CONTAINS DATA
+1147;FIELD;NIS.NaturalFeaturesA;OBJNAM;Object name;CONTAINS DATA
+1148;FIELD;NIS.NaturalFeaturesA;NOBJNM;Object name in national language;CONTAINS DATA
+1149;FIELD;NIS.NaturalFeaturesA;EDITOR;Editor;CONTAINS DATA
+1150;FIELD;NIS.NaturalFeaturesA;LAST_MOD;Last modified date;CONTAINS DATA
+1151;FIELD;NIS.NaturalFeaturesA;EDITOR_COMMENT;Editor comments;CONTAINS DATA
+1152;FIELD;NIS.NaturalFeaturesA;VERIFIED;Verified state;CONTAINS DATA
+1153;FIELD;NIS.NaturalFeaturesA;VERIFIER;Verifier;CONTAINS DATA
+1154;FIELD;NIS.NaturalFeaturesA;VERIFIED_DATE;Verified date;CONTAINS DATA
+1155;FIELD;NIS.NaturalFeaturesA;DELETE_COMMENT;Delete comment;CONTAINS DATA
+1156;FIELD;NIS.NaturalFeaturesA;PLTS_COMP_SCALE;PLTS compilation scale;CONTAINS DATA
+1157;FIELD;NIS.NaturalFeaturesA;NIS_PRODUCTS;NIS product type;CONTAINS DATA
+1158;FIELD;NIS.NaturalFeaturesA;IS_CONFLATE;Is Conflate;CONTAINS DATA
+1159;FIELD;NIS.NaturalFeaturesA;CATSLO;Category of slope;CONTAINS DATA
+1160;FIELD;NIS.NaturalFeaturesA;CATVEG;Category of vegetation;CONTAINS DATA
+1161;FIELD;NIS.NaturalFeaturesA;COLOUR;Colour;CONTAINS DATA
+1162;FIELD;NIS.NaturalFeaturesA;CONDTN;Condition;CONTAINS DATA
+1163;FIELD;NIS.NaturalFeaturesA;CONRAD;Conspicuous, radar;CONTAINS DATA
+1164;FIELD;NIS.NaturalFeaturesA;CONVIS;Conspicuous, visually;CONTAINS DATA
+1165;FIELD;NIS.NaturalFeaturesA;ELEVAT;Elevation;CONTAINS DATA
+1166;FIELD;NIS.NaturalFeaturesA;HEIGHT;Height;CONTAINS DATA
+1167;FIELD;NIS.NaturalFeaturesA;NATCON;Nature of construction;CONTAINS DATA
+1168;FIELD;NIS.NaturalFeaturesA;NATQUA;Nature of surface - qualifying terms;CONTAINS DATA
+1169;FIELD;NIS.NaturalFeaturesA;NATSUR;Nature of surface;CONTAINS DATA
+1170;FIELD;NIS.NaturalFeaturesA;STATUS;Status;CONTAINS DATA
+1171;FIELD;NIS.NaturalFeaturesA;VERACC;Vertical accuracy;CONTAINS DATA
+1172;FIELD;NIS.NaturalFeaturesA;VERDAT;Vertical datum;CONTAINS DATA
+1173;FIELD;NIS.NaturalFeaturesA;VERLEN;Vertical length;CONTAINS DATA
+1174;FIELD;NIS.NaturalFeaturesA;FCSubtype;FCSubtype;CONTAINS DATA
+1175;FIELD;NIS.NaturalFeaturesA;CATLND;Category of land region;CONTAINS DATA
+1176;FIELD;NIS.NaturalFeaturesA;CATSEA;Category of sea area;CONTAINS DATA
+1177;FIELD;NIS.NaturalFeaturesA;WATLEV;Water level effect;CONTAINS DATA
+1178;FIELD;NIS.NaturalFeaturesA;SCAMIN_STEP;SCAMIN step;CONTAINS DATA
+1179;FIELD;NIS.NaturalFeaturesA;NIS_VERIFIED;NIS Verified state;CONTAINS DATA
+1180;FIELD;NIS.NaturalFeaturesA;NIS_VERIFIER;NIS Verifier;CONTAINS DATA
+1181;FIELD;NIS.NaturalFeaturesA;NIS_VERIFY_DATE;NIS Verified date;CONTAINS DATA
+1182;FIELD;NIS.NaturalFeaturesA;NIS_EDITOR;NIS_EDITOR;CONTAINS DATA
+1183;FIELD;NIS.NaturalFeaturesA;NIS_LAST_MOD;NIS_LAST_MOD;CONTAINS DATA
+1184;FIELD;NIS.NaturalFeaturesA;NIS_EDITOR_COMMENT;NIS editor comments;CONTAINS DATA
+1185;FIELD;NIS.NaturalFeaturesA;Shape;Shape;CONTAINS DATA
+1186;FIELD;NIS.NaturalFeaturesA;Shape.STArea();Shape.STArea();CONTAINS DATA
+1187;FIELD;NIS.NaturalFeaturesA;Shape.STLength();Shape.STLength();CONTAINS DATA
+1188;SUBTYPE;NIS.NaturalFeaturesL;LNDARE_LandArea;1;0
+1189;SUBTYPE;NIS.NaturalFeaturesL;LNDELV_LandElevation;5;77237
+1190;SUBTYPE;NIS.NaturalFeaturesL;RAPIDS_Rapids;10;0
+1191;SUBTYPE;NIS.NaturalFeaturesL;RIVERS_River;15;18748
+1192;SUBTYPE;NIS.NaturalFeaturesL;SLOTOP_SlopeTopline;20;9
+1193;SUBTYPE;NIS.NaturalFeaturesL;VEGATN_Vegetation;25;0
+1194;SUBTYPE;NIS.NaturalFeaturesL;WATFAL_Waterfall;30;0
+1195;FIELD;NIS.NaturalFeaturesL;OBJECTID;OBJECTID;CONTAINS DATA
+1196;FIELD;NIS.NaturalFeaturesL;GlobalID;GlobalID;CONTAINS DATA
+1197;FIELD;NIS.NaturalFeaturesL;DSNM;Data set name;CONTAINS DATA
+1198;FIELD;NIS.NaturalFeaturesL;LNAM;Long name;CONTAINS DATA
+1199;FIELD;NIS.NaturalFeaturesL;NOID;Nautical Object ID;CONTAINS DATA
+1200;FIELD;NIS.NaturalFeaturesL;INFORM;Information;CONTAINS DATA
+1201;FIELD;NIS.NaturalFeaturesL;NINFOM;Information in national language;CONTAINS DATA
+1202;FIELD;NIS.NaturalFeaturesL;NTXTDS;Textual description in national language;CONTAINS DATA
+1203;FIELD;NIS.NaturalFeaturesL;PICREP;Pictorial representation;CONTAINS DATA
+1204;FIELD;NIS.NaturalFeaturesL;TXTDSC;Textual description;CONTAINS DATA
+1205;FIELD;NIS.NaturalFeaturesL;SORDAT;Source date;CONTAINS DATA
+1206;FIELD;NIS.NaturalFeaturesL;SORIND;Source indication;CONTAINS DATA
+1207;FIELD;NIS.NaturalFeaturesL;OBJNAM;Object name;CONTAINS DATA
+1208;FIELD;NIS.NaturalFeaturesL;NOBJNM;Object name in national language;CONTAINS DATA
+1209;FIELD;NIS.NaturalFeaturesL;EDITOR;Editor;CONTAINS DATA
+1210;FIELD;NIS.NaturalFeaturesL;LAST_MOD;Last modified date;CONTAINS DATA
+1211;FIELD;NIS.NaturalFeaturesL;EDITOR_COMMENT;Editor comments;CONTAINS DATA
+1212;FIELD;NIS.NaturalFeaturesL;VERIFIED;Verified state;CONTAINS DATA
+1213;FIELD;NIS.NaturalFeaturesL;VERIFIER;Verifier;CONTAINS DATA
+1214;FIELD;NIS.NaturalFeaturesL;VERIFIED_DATE;Verified date;CONTAINS DATA
+1215;FIELD;NIS.NaturalFeaturesL;DELETE_COMMENT;Delete comment;CONTAINS DATA
+1216;FIELD;NIS.NaturalFeaturesL;PLTS_COMP_SCALE;PLTS compilation scale;CONTAINS DATA
+1217;FIELD;NIS.NaturalFeaturesL;NIS_PRODUCTS;NIS product type;CONTAINS DATA
+1218;FIELD;NIS.NaturalFeaturesL;IS_CONFLATE;Is Conflate;CONTAINS DATA
+1219;FIELD;NIS.NaturalFeaturesL;CATSLO;Category of slope;CONTAINS DATA
+1220;FIELD;NIS.NaturalFeaturesL;CATVEG;Category of vegetation;CONTAINS DATA
+1221;FIELD;NIS.NaturalFeaturesL;COLOUR;Colour;CONTAINS DATA
+1222;FIELD;NIS.NaturalFeaturesL;CONDTN;Condition;CONTAINS DATA
+1223;FIELD;NIS.NaturalFeaturesL;CONRAD;Conspicuous, radar;CONTAINS DATA
+1224;FIELD;NIS.NaturalFeaturesL;CONVIS;Conspicuous, visually;CONTAINS DATA
+1225;FIELD;NIS.NaturalFeaturesL;ELEVAT;Elevation;CONTAINS DATA
+1226;FIELD;NIS.NaturalFeaturesL;HEIGHT;Height;CONTAINS DATA
+1227;FIELD;NIS.NaturalFeaturesL;NATCON;Nature of construction;CONTAINS DATA
+1228;FIELD;NIS.NaturalFeaturesL;NATQUA;Nature of surface - qualifying terms;CONTAINS DATA
+1229;FIELD;NIS.NaturalFeaturesL;NATSUR;Nature of surface;CONTAINS DATA
+1230;FIELD;NIS.NaturalFeaturesL;STATUS;Status;CONTAINS DATA
+1231;FIELD;NIS.NaturalFeaturesL;VERACC;Vertical accuracy;CONTAINS DATA
+1232;FIELD;NIS.NaturalFeaturesL;VERDAT;Vertical datum;CONTAINS DATA
+1233;FIELD;NIS.NaturalFeaturesL;VERLEN;Vertical length;CONTAINS DATA
+1234;FIELD;NIS.NaturalFeaturesL;FCSubtype;FCSubtype;CONTAINS DATA
+1235;FIELD;NIS.NaturalFeaturesL;SCAMIN_STEP;SCAMIN step;CONTAINS DATA
+1236;FIELD;NIS.NaturalFeaturesL;NIS_VERIFIED;NIS Verified state;CONTAINS DATA
+1237;FIELD;NIS.NaturalFeaturesL;NIS_VERIFIER;NIS Verifier;CONTAINS DATA
+1238;FIELD;NIS.NaturalFeaturesL;NIS_VERIFY_DATE;NIS Verified date;CONTAINS DATA
+1239;FIELD;NIS.NaturalFeaturesL;NIS_EDITOR;NIS_EDITOR;CONTAINS DATA
+1240;FIELD;NIS.NaturalFeaturesL;NIS_LAST_MOD;NIS_LAST_MOD;CONTAINS DATA
+1241;FIELD;NIS.NaturalFeaturesL;NIS_EDITOR_COMMENT;NIS editor comments;CONTAINS DATA
+1242;FIELD;NIS.NaturalFeaturesL;Shape;Shape;CONTAINS DATA
+1243;FIELD;NIS.NaturalFeaturesL;Shape.STLength();Shape.STLength();CONTAINS DATA
+1244;SUBTYPE;NIS.NaturalFeaturesP;LNDARE_LandArea;1;13304
+1245;SUBTYPE;NIS.NaturalFeaturesP;LNDELV_LandElevation;5;15495
+1246;SUBTYPE;NIS.NaturalFeaturesP;LNDRGN_LandRegion;10;1238
+1247;SUBTYPE;NIS.NaturalFeaturesP;RAPIDS_Rapids;15;0
+1248;SUBTYPE;NIS.NaturalFeaturesP;SEAARE_SeaAreaNamedWaterArea;20;92
+1249;SUBTYPE;NIS.NaturalFeaturesP;SLOGRD_SlopingGround;25;0
+1250;SUBTYPE;NIS.NaturalFeaturesP;VEGATN_Vegetation;30;7
+1251;SUBTYPE;NIS.NaturalFeaturesP;WATFAL_Waterfall;35;0
+1252;FIELD;NIS.NaturalFeaturesP;OBJECTID;OBJECTID;CONTAINS DATA
+1253;FIELD;NIS.NaturalFeaturesP;GlobalID;GlobalID;CONTAINS DATA
+1254;FIELD;NIS.NaturalFeaturesP;DSNM;Data set name;CONTAINS DATA
+1255;FIELD;NIS.NaturalFeaturesP;LNAM;Long name;CONTAINS DATA
+1256;FIELD;NIS.NaturalFeaturesP;NOID;Nautical Object ID;CONTAINS DATA
+1257;FIELD;NIS.NaturalFeaturesP;INFORM;Information;CONTAINS DATA
+1258;FIELD;NIS.NaturalFeaturesP;NINFOM;Information in national language;CONTAINS DATA
+1259;FIELD;NIS.NaturalFeaturesP;NTXTDS;Textual description in national language;CONTAINS DATA
+1260;FIELD;NIS.NaturalFeaturesP;PICREP;Pictorial representation;CONTAINS DATA
+1261;FIELD;NIS.NaturalFeaturesP;TXTDSC;Textual description;CONTAINS DATA
+1262;FIELD;NIS.NaturalFeaturesP;SORDAT;Source date;CONTAINS DATA
+1263;FIELD;NIS.NaturalFeaturesP;SORIND;Source indication;CONTAINS DATA
+1264;FIELD;NIS.NaturalFeaturesP;OBJNAM;Object name;CONTAINS DATA
+1265;FIELD;NIS.NaturalFeaturesP;NOBJNM;Object name in national language;CONTAINS DATA
+1266;FIELD;NIS.NaturalFeaturesP;EDITOR;Editor;CONTAINS DATA
+1267;FIELD;NIS.NaturalFeaturesP;LAST_MOD;Last modified date;CONTAINS DATA
+1268;FIELD;NIS.NaturalFeaturesP;EDITOR_COMMENT;Editor comments;CONTAINS DATA
+1269;FIELD;NIS.NaturalFeaturesP;VERIFIED;Verified state;CONTAINS DATA
+1270;FIELD;NIS.NaturalFeaturesP;VERIFIER;Verifier;CONTAINS DATA
+1271;FIELD;NIS.NaturalFeaturesP;VERIFIED_DATE;Verified date;CONTAINS DATA
+1272;FIELD;NIS.NaturalFeaturesP;DELETE_COMMENT;Delete comment;CONTAINS DATA
+1273;FIELD;NIS.NaturalFeaturesP;PLTS_COMP_SCALE;PLTS compilation scale;CONTAINS DATA
+1274;FIELD;NIS.NaturalFeaturesP;NIS_PRODUCTS;NIS product type;CONTAINS DATA
+1275;FIELD;NIS.NaturalFeaturesP;IS_CONFLATE;Is Conflate;CONTAINS DATA
+1276;FIELD;NIS.NaturalFeaturesP;CATSLO;Category of slope;CONTAINS DATA
+1277;FIELD;NIS.NaturalFeaturesP;CATVEG;Category of vegetation;CONTAINS DATA
+1278;FIELD;NIS.NaturalFeaturesP;COLOUR;Colour;CONTAINS DATA
+1279;FIELD;NIS.NaturalFeaturesP;CONDTN;Condition;CONTAINS DATA
+1280;FIELD;NIS.NaturalFeaturesP;CONRAD;Conspicuous, radar;CONTAINS DATA
+1281;FIELD;NIS.NaturalFeaturesP;CONVIS;Conspicuous, visually;CONTAINS DATA
+1282;FIELD;NIS.NaturalFeaturesP;ELEVAT;Elevation;CONTAINS DATA
+1283;FIELD;NIS.NaturalFeaturesP;HEIGHT;Height;CONTAINS DATA
+1284;FIELD;NIS.NaturalFeaturesP;NATCON;Nature of construction;CONTAINS DATA
+1285;FIELD;NIS.NaturalFeaturesP;NATQUA;Nature of surface - qualifying terms;CONTAINS DATA
+1286;FIELD;NIS.NaturalFeaturesP;NATSUR;Nature of surface;CONTAINS DATA
+1287;FIELD;NIS.NaturalFeaturesP;STATUS;Status;CONTAINS DATA
+1288;FIELD;NIS.NaturalFeaturesP;VERACC;Vertical accuracy;CONTAINS DATA
+1289;FIELD;NIS.NaturalFeaturesP;VERDAT;Vertical datum;CONTAINS DATA
+1290;FIELD;NIS.NaturalFeaturesP;VERLEN;Vertical length;CONTAINS DATA
+1291;FIELD;NIS.NaturalFeaturesP;FCSubtype;FCSubtype;CONTAINS DATA
+1292;FIELD;NIS.NaturalFeaturesP;CATLND;Category of land region;CONTAINS DATA
+1293;FIELD;NIS.NaturalFeaturesP;CATSEA;Category of sea area;CONTAINS DATA
+1294;FIELD;NIS.NaturalFeaturesP;WATLEV;Water level effect;CONTAINS DATA
+1295;FIELD;NIS.NaturalFeaturesP;SCAMIN_STEP;SCAMIN step;CONTAINS DATA
+1296;FIELD;NIS.NaturalFeaturesP;P_QUAPOS;Quality of Position;CONTAINS DATA
+1297;FIELD;NIS.NaturalFeaturesP;P_POSACC;Positional Accuracy;CONTAINS DATA
+1298;FIELD;NIS.NaturalFeaturesP;P_HORDAT;Horizontal Datum;CONTAINS DATA
+1299;FIELD;NIS.NaturalFeaturesP;NIS_VERIFIED;NIS Verified state;CONTAINS DATA
+1300;FIELD;NIS.NaturalFeaturesP;NIS_VERIFIER;NIS Verifier;CONTAINS DATA
+1301;FIELD;NIS.NaturalFeaturesP;NIS_VERIFY_DATE;NIS Verified date;CONTAINS DATA
+1302;FIELD;NIS.NaturalFeaturesP;NIS_EDITOR;NIS_EDITOR;CONTAINS DATA
+1303;FIELD;NIS.NaturalFeaturesP;NIS_LAST_MOD;NIS_LAST_MOD;CONTAINS DATA
+1304;FIELD;NIS.NaturalFeaturesP;NIS_EDITOR_COMMENT;NIS editor comments;CONTAINS DATA
+1305;FIELD;NIS.NaturalFeaturesP;Shape;Shape;CONTAINS DATA
+1306;SUBTYPE;NIS.OffshoreInstallationsA;CBLARE_CableArea;1;153
+1307;SUBTYPE;NIS.OffshoreInstallationsA;OFSPLF_OffshorePlatform;5;6
+1308;SUBTYPE;NIS.OffshoreInstallationsA;OSPARE_OffshoreProductionArea;10;326
+1309;SUBTYPE;NIS.OffshoreInstallationsA;PIPARE_PipelineArea;15;7
+1310;FIELD;NIS.OffshoreInstallationsA;OBJECTID;OBJECTID;CONTAINS DATA
+1311;FIELD;NIS.OffshoreInstallationsA;GlobalID;GlobalID;CONTAINS DATA
+1312;FIELD;NIS.OffshoreInstallationsA;DSNM;Data set name;CONTAINS DATA
+1313;FIELD;NIS.OffshoreInstallationsA;LNAM;Long name;CONTAINS DATA
+1314;FIELD;NIS.OffshoreInstallationsA;NOID;Nautical Object ID;CONTAINS DATA
+1315;FIELD;NIS.OffshoreInstallationsA;INFORM;Information;CONTAINS DATA
+1316;FIELD;NIS.OffshoreInstallationsA;NINFOM;Information in national language;CONTAINS DATA
+1317;FIELD;NIS.OffshoreInstallationsA;NTXTDS;Textual description in national language;CONTAINS DATA
+1318;FIELD;NIS.OffshoreInstallationsA;PICREP;Pictorial representation;CONTAINS DATA
+1319;FIELD;NIS.OffshoreInstallationsA;TXTDSC;Textual description;CONTAINS DATA
+1320;FIELD;NIS.OffshoreInstallationsA;SORDAT;Source date;CONTAINS DATA
+1321;FIELD;NIS.OffshoreInstallationsA;SORIND;Source indication;CONTAINS DATA
+1322;FIELD;NIS.OffshoreInstallationsA;OBJNAM;Object name;CONTAINS DATA
+1323;FIELD;NIS.OffshoreInstallationsA;NOBJNM;Object name in national language;CONTAINS DATA
+1324;FIELD;NIS.OffshoreInstallationsA;EDITOR;Editor;CONTAINS DATA
+1325;FIELD;NIS.OffshoreInstallationsA;LAST_MOD;Last modified date;CONTAINS DATA
+1326;FIELD;NIS.OffshoreInstallationsA;EDITOR_COMMENT;Editor comments;CONTAINS DATA
+1327;FIELD;NIS.OffshoreInstallationsA;VERIFIED;Verified state;CONTAINS DATA
+1328;FIELD;NIS.OffshoreInstallationsA;VERIFIER;Verifier;CONTAINS DATA
+1329;FIELD;NIS.OffshoreInstallationsA;VERIFIED_DATE;Verified date;CONTAINS DATA
+1330;FIELD;NIS.OffshoreInstallationsA;DELETE_COMMENT;Delete comment;CONTAINS DATA
+1331;FIELD;NIS.OffshoreInstallationsA;PLTS_COMP_SCALE;PLTS compilation scale;CONTAINS DATA
+1332;FIELD;NIS.OffshoreInstallationsA;NIS_PRODUCTS;NIS product type;CONTAINS DATA
+1333;FIELD;NIS.OffshoreInstallationsA;IS_CONFLATE;Is Conflate;CONTAINS DATA
+1334;FIELD;NIS.OffshoreInstallationsA;CATPIP;Category of pipeline/pipe;CONTAINS DATA
+1335;FIELD;NIS.OffshoreInstallationsA;CONDTN;Condition;CONTAINS DATA
+1336;FIELD;NIS.OffshoreInstallationsA;DATEND;Date end;CONTAINS DATA
+1337;FIELD;NIS.OffshoreInstallationsA;DATSTA;Date start;CONTAINS DATA
+1338;FIELD;NIS.OffshoreInstallationsA;PRODCT;Product;CONTAINS DATA
+1339;FIELD;NIS.OffshoreInstallationsA;STATUS;Status;CONTAINS DATA
+1340;FIELD;NIS.OffshoreInstallationsA;VERACC;Vertical accuracy;CONTAINS DATA
+1341;FIELD;NIS.OffshoreInstallationsA;VERDAT;Vertical datum;CONTAINS DATA
+1342;FIELD;NIS.OffshoreInstallationsA;VERLEN;Vertical length;CONTAINS DATA
+1343;FIELD;NIS.OffshoreInstallationsA;FCSubtype;FCSubtype;CONTAINS DATA
+1344;FIELD;NIS.OffshoreInstallationsA;CATCBL;Category of cable;CONTAINS DATA
+1345;FIELD;NIS.OffshoreInstallationsA;CATOFP;Category of offshore platform;CONTAINS DATA
+1346;FIELD;NIS.OffshoreInstallationsA;CATPRA;Category of production area;CONTAINS DATA
+1347;FIELD;NIS.OffshoreInstallationsA;COLOUR;Colour;CONTAINS DATA
+1348;FIELD;NIS.OffshoreInstallationsA;COLPAT;Colour pattern;CONTAINS DATA
+1349;FIELD;NIS.OffshoreInstallationsA;CONRAD;Conspicuous, radar;CONTAINS DATA
+1350;FIELD;NIS.OffshoreInstallationsA;CONVIS;Conspicuous, visually;CONTAINS DATA
+1351;FIELD;NIS.OffshoreInstallationsA;HEIGHT;Height;CONTAINS DATA
+1352;FIELD;NIS.OffshoreInstallationsA;NATCON;Nature of construction;CONTAINS DATA
+1353;FIELD;NIS.OffshoreInstallationsA;RESTRN;Restriction;CONTAINS DATA
+1354;FIELD;NIS.OffshoreInstallationsA;SCAMIN_STEP;SCAMIN step;CONTAINS DATA
+1355;FIELD;NIS.OffshoreInstallationsA;NIS_VERIFIED;NIS Verified state;CONTAINS DATA
+1356;FIELD;NIS.OffshoreInstallationsA;NIS_VERIFIER;NIS Verifier;CONTAINS DATA
+1357;FIELD;NIS.OffshoreInstallationsA;NIS_VERIFY_DATE;NIS Verified date;CONTAINS DATA
+1358;FIELD;NIS.OffshoreInstallationsA;NIS_EDITOR;NIS_EDITOR;CONTAINS DATA
+1359;FIELD;NIS.OffshoreInstallationsA;NIS_LAST_MOD;NIS_LAST_MOD;CONTAINS DATA
+1360;FIELD;NIS.OffshoreInstallationsA;NIS_EDITOR_COMMENT;NIS editor comments;CONTAINS DATA
+1361;FIELD;NIS.OffshoreInstallationsA;Shape;Shape;CONTAINS DATA
+1362;FIELD;NIS.OffshoreInstallationsA;Shape.STArea();Shape.STArea();CONTAINS DATA
+1363;FIELD;NIS.OffshoreInstallationsA;Shape.STLength();Shape.STLength();CONTAINS DATA
+1364;SUBTYPE;NIS.OffshoreInstallationsL;CBLSUB_CableSubmarine;1;1515
+1365;SUBTYPE;NIS.OffshoreInstallationsL;PIPSOL_PipelineSubmarineOnLand;5;440
+1366;FIELD;NIS.OffshoreInstallationsL;OBJECTID;OBJECTID;CONTAINS DATA
+1367;FIELD;NIS.OffshoreInstallationsL;GlobalID;GlobalID;CONTAINS DATA
+1368;FIELD;NIS.OffshoreInstallationsL;DSNM;Data set name;CONTAINS DATA
+1369;FIELD;NIS.OffshoreInstallationsL;LNAM;Long name;CONTAINS DATA
+1370;FIELD;NIS.OffshoreInstallationsL;NOID;Nautical Object ID;CONTAINS DATA
+1371;FIELD;NIS.OffshoreInstallationsL;INFORM;Information;CONTAINS DATA
+1372;FIELD;NIS.OffshoreInstallationsL;NINFOM;Information in national language;CONTAINS DATA
+1373;FIELD;NIS.OffshoreInstallationsL;NTXTDS;Textual description in national language;CONTAINS DATA
+1374;FIELD;NIS.OffshoreInstallationsL;PICREP;Pictorial representation;CONTAINS DATA
+1375;FIELD;NIS.OffshoreInstallationsL;TXTDSC;Textual description;CONTAINS DATA
+1376;FIELD;NIS.OffshoreInstallationsL;SORDAT;Source date;CONTAINS DATA
+1377;FIELD;NIS.OffshoreInstallationsL;SORIND;Source indication;CONTAINS DATA
+1378;FIELD;NIS.OffshoreInstallationsL;OBJNAM;Object name;CONTAINS DATA
+1379;FIELD;NIS.OffshoreInstallationsL;NOBJNM;Object name in national language;CONTAINS DATA
+1380;FIELD;NIS.OffshoreInstallationsL;EDITOR;Editor;CONTAINS DATA
+1381;FIELD;NIS.OffshoreInstallationsL;LAST_MOD;Last modified date;CONTAINS DATA
+1382;FIELD;NIS.OffshoreInstallationsL;EDITOR_COMMENT;Editor comments;CONTAINS DATA
+1383;FIELD;NIS.OffshoreInstallationsL;VERIFIED;Verified state;CONTAINS DATA
+1384;FIELD;NIS.OffshoreInstallationsL;VERIFIER;Verifier;CONTAINS DATA
+1385;FIELD;NIS.OffshoreInstallationsL;VERIFIED_DATE;Verified date;CONTAINS DATA
+1386;FIELD;NIS.OffshoreInstallationsL;DELETE_COMMENT;Delete comment;CONTAINS DATA
+1387;FIELD;NIS.OffshoreInstallationsL;PLTS_COMP_SCALE;PLTS compilation scale;CONTAINS DATA
+1388;FIELD;NIS.OffshoreInstallationsL;NIS_PRODUCTS;NIS product type;CONTAINS DATA
+1389;FIELD;NIS.OffshoreInstallationsL;IS_CONFLATE;Is Conflate;CONTAINS DATA
+1390;FIELD;NIS.OffshoreInstallationsL;CATPIP;Category of pipeline/pipe;CONTAINS DATA
+1391;FIELD;NIS.OffshoreInstallationsL;CONDTN;Condition;CONTAINS DATA
+1392;FIELD;NIS.OffshoreInstallationsL;DATEND;Date end;CONTAINS DATA
+1393;FIELD;NIS.OffshoreInstallationsL;DATSTA;Date start;CONTAINS DATA
+1394;FIELD;NIS.OffshoreInstallationsL;PRODCT;Product;CONTAINS DATA
+1395;FIELD;NIS.OffshoreInstallationsL;STATUS;Status;CONTAINS DATA
+1396;FIELD;NIS.OffshoreInstallationsL;VERACC;Vertical accuracy;CONTAINS DATA
+1397;FIELD;NIS.OffshoreInstallationsL;VERDAT;Vertical datum;CONTAINS DATA
+1398;FIELD;NIS.OffshoreInstallationsL;VERLEN;Vertical length;CONTAINS DATA
+1399;FIELD;NIS.OffshoreInstallationsL;BURDEP;Buried depth;CONTAINS DATA
+1400;FIELD;NIS.OffshoreInstallationsL;DRVAL1;Depth range value 1;CONTAINS DATA
+1401;FIELD;NIS.OffshoreInstallationsL;DRVAL2;Depth range value 2;CONTAINS DATA
+1402;FIELD;NIS.OffshoreInstallationsL;FCSubtype;FCSubtype;CONTAINS DATA
+1403;FIELD;NIS.OffshoreInstallationsL;CATCBL;Category of cable;CONTAINS DATA
+1404;FIELD;NIS.OffshoreInstallationsL;SCAMIN_STEP;SCAMIN step;CONTAINS DATA
+1405;FIELD;NIS.OffshoreInstallationsL;NIS_VERIFIED;NIS Verified state;CONTAINS DATA
+1406;FIELD;NIS.OffshoreInstallationsL;NIS_VERIFIER;NIS Verifier;CONTAINS DATA
+1407;FIELD;NIS.OffshoreInstallationsL;NIS_VERIFY_DATE;NIS Verified date;CONTAINS DATA
+1408;FIELD;NIS.OffshoreInstallationsL;NIS_EDITOR;NIS_EDITOR;CONTAINS DATA
+1409;FIELD;NIS.OffshoreInstallationsL;NIS_LAST_MOD;NIS_LAST_MOD;CONTAINS DATA
+1410;FIELD;NIS.OffshoreInstallationsL;NIS_EDITOR_COMMENT;NIS editor comments;CONTAINS DATA
+1411;FIELD;NIS.OffshoreInstallationsL;Shape;Shape;CONTAINS DATA
+1412;FIELD;NIS.OffshoreInstallationsL;Shape.STLength();Shape.STLength();CONTAINS DATA
+1413;SUBTYPE;NIS.OffshoreInstallationsP;OFSPLF_OffshorePlatform;1;60
+1414;SUBTYPE;NIS.OffshoreInstallationsP;PIPARE_PipelineArea;5;0
+1415;SUBTYPE;NIS.OffshoreInstallationsP;PIPSOL_PipelineSubmarineOnLand;10;0
+1416;FIELD;NIS.OffshoreInstallationsP;OBJECTID;OBJECTID;CONTAINS DATA
+1417;FIELD;NIS.OffshoreInstallationsP;GlobalID;GlobalID;CONTAINS DATA
+1418;FIELD;NIS.OffshoreInstallationsP;DSNM;Data set name;CONTAINS DATA
+1419;FIELD;NIS.OffshoreInstallationsP;LNAM;Long name;CONTAINS DATA
+1420;FIELD;NIS.OffshoreInstallationsP;NOID;Nautical Object ID;CONTAINS DATA
+1421;FIELD;NIS.OffshoreInstallationsP;INFORM;Information;CONTAINS DATA
+1422;FIELD;NIS.OffshoreInstallationsP;NINFOM;Information in national language;CONTAINS DATA
+1423;FIELD;NIS.OffshoreInstallationsP;NTXTDS;Textual description in national language;CONTAINS DATA
+1424;FIELD;NIS.OffshoreInstallationsP;PICREP;Pictorial representation;CONTAINS DATA
+1425;FIELD;NIS.OffshoreInstallationsP;TXTDSC;Textual description;CONTAINS DATA
+1426;FIELD;NIS.OffshoreInstallationsP;SORDAT;Source date;CONTAINS DATA
+1427;FIELD;NIS.OffshoreInstallationsP;SORIND;Source indication;CONTAINS DATA
+1428;FIELD;NIS.OffshoreInstallationsP;OBJNAM;Object name;CONTAINS DATA
+1429;FIELD;NIS.OffshoreInstallationsP;NOBJNM;Object name in national language;CONTAINS DATA
+1430;FIELD;NIS.OffshoreInstallationsP;EDITOR;Editor;CONTAINS DATA
+1431;FIELD;NIS.OffshoreInstallationsP;LAST_MOD;Last modified date;CONTAINS DATA
+1432;FIELD;NIS.OffshoreInstallationsP;EDITOR_COMMENT;Editor comments;CONTAINS DATA
+1433;FIELD;NIS.OffshoreInstallationsP;VERIFIED;Verified state;CONTAINS DATA
+1434;FIELD;NIS.OffshoreInstallationsP;VERIFIER;Verifier;CONTAINS DATA
+1435;FIELD;NIS.OffshoreInstallationsP;VERIFIED_DATE;Verified date;CONTAINS DATA
+1436;FIELD;NIS.OffshoreInstallationsP;DELETE_COMMENT;Delete comment;CONTAINS DATA
+1437;FIELD;NIS.OffshoreInstallationsP;PLTS_COMP_SCALE;PLTS compilation scale;CONTAINS DATA
+1438;FIELD;NIS.OffshoreInstallationsP;NIS_PRODUCTS;NIS product type;CONTAINS DATA
+1439;FIELD;NIS.OffshoreInstallationsP;IS_CONFLATE;Is Conflate;CONTAINS DATA
+1440;FIELD;NIS.OffshoreInstallationsP;CATPIP;Category of pipeline/pipe;CONTAINS DATA
+1441;FIELD;NIS.OffshoreInstallationsP;CONDTN;Condition;CONTAINS DATA
+1442;FIELD;NIS.OffshoreInstallationsP;DATEND;Date end;CONTAINS DATA
+1443;FIELD;NIS.OffshoreInstallationsP;DATSTA;Date start;CONTAINS DATA
+1444;FIELD;NIS.OffshoreInstallationsP;PRODCT;Product;CONTAINS DATA
+1445;FIELD;NIS.OffshoreInstallationsP;STATUS;Status;CONTAINS DATA
+1446;FIELD;NIS.OffshoreInstallationsP;VERACC;Vertical accuracy;CONTAINS DATA
+1447;FIELD;NIS.OffshoreInstallationsP;VERDAT;Vertical datum;CONTAINS DATA
+1448;FIELD;NIS.OffshoreInstallationsP;VERLEN;Vertical length;CONTAINS DATA
+1449;FIELD;NIS.OffshoreInstallationsP;BURDEP;Buried depth;CONTAINS DATA
+1450;FIELD;NIS.OffshoreInstallationsP;DRVAL1;Depth range value 1;CONTAINS DATA
+1451;FIELD;NIS.OffshoreInstallationsP;DRVAL2;Depth range value 2;CONTAINS DATA
+1452;FIELD;NIS.OffshoreInstallationsP;FCSubtype;FCSubtype;CONTAINS DATA
+1453;FIELD;NIS.OffshoreInstallationsP;CATOFP;Category of offshore platform;CONTAINS DATA
+1454;FIELD;NIS.OffshoreInstallationsP;COLOUR;Colour;CONTAINS DATA
+1455;FIELD;NIS.OffshoreInstallationsP;COLPAT;Colour pattern;CONTAINS DATA
+1456;FIELD;NIS.OffshoreInstallationsP;CONRAD;Conspicuous, radar;CONTAINS DATA
+1457;FIELD;NIS.OffshoreInstallationsP;CONVIS;Conspicuous, visually;CONTAINS DATA
+1458;FIELD;NIS.OffshoreInstallationsP;HEIGHT;Height;CONTAINS DATA
+1459;FIELD;NIS.OffshoreInstallationsP;NATCON;Nature of construction;CONTAINS DATA
+1460;FIELD;NIS.OffshoreInstallationsP;RESTRN;Restriction;CONTAINS DATA
+1461;FIELD;NIS.OffshoreInstallationsP;SCAMIN_STEP;SCAMIN step;CONTAINS DATA
+1462;FIELD;NIS.OffshoreInstallationsP;P_QUAPOS;Quality of Position;CONTAINS DATA
+1463;FIELD;NIS.OffshoreInstallationsP;P_POSACC;Positional Accuracy;CONTAINS DATA
+1464;FIELD;NIS.OffshoreInstallationsP;P_HORDAT;Horizontal Datum;CONTAINS DATA
+1465;FIELD;NIS.OffshoreInstallationsP;NIS_VERIFIED;NIS Verified state;CONTAINS DATA
+1466;FIELD;NIS.OffshoreInstallationsP;NIS_VERIFIER;NIS Verifier;CONTAINS DATA
+1467;FIELD;NIS.OffshoreInstallationsP;NIS_VERIFY_DATE;NIS Verified date;CONTAINS DATA
+1468;FIELD;NIS.OffshoreInstallationsP;NIS_EDITOR;NIS_EDITOR;CONTAINS DATA
+1469;FIELD;NIS.OffshoreInstallationsP;NIS_LAST_MOD;NIS_LAST_MOD;CONTAINS DATA
+1470;FIELD;NIS.OffshoreInstallationsP;NIS_EDITOR_COMMENT;NIS editor comments;CONTAINS DATA
+1471;FIELD;NIS.OffshoreInstallationsP;Shape;Shape;CONTAINS DATA
+1472;FIELD;NIS.PLTS_SpatialAttributeL;OBJECTID;OBJECTID;EMPTY
+1473;FIELD;NIS.PLTS_SpatialAttributeL;GlobalID;GlobalID;EMPTY
+1474;FIELD;NIS.PLTS_SpatialAttributeL;EDITOR;Editor;EMPTY
+1475;FIELD;NIS.PLTS_SpatialAttributeL;LAST_MOD;Last modified;EMPTY
+1476;FIELD;NIS.PLTS_SpatialAttributeL;EDITOR_COMMENT;Editor comments;EMPTY
+1477;FIELD;NIS.PLTS_SpatialAttributeL;VERIFIED;Verified state;EMPTY
+1478;FIELD;NIS.PLTS_SpatialAttributeL;VERIFIER;Verifier;EMPTY
+1479;FIELD;NIS.PLTS_SpatialAttributeL;VERIFIED_DATE;Verified date;EMPTY
+1480;FIELD;NIS.PLTS_SpatialAttributeL;DELETE_COMMENT;Delete comment;EMPTY
+1481;FIELD;NIS.PLTS_SpatialAttributeL;PLTS_COMP_SCALE;PLTS compilation scale;EMPTY
+1482;FIELD;NIS.PLTS_SpatialAttributeL;NIS_PRODUCTS;NIS product type;EMPTY
+1483;FIELD;NIS.PLTS_SpatialAttributeL;P_QUAPOS;Quality of position;EMPTY
+1484;FIELD;NIS.PLTS_SpatialAttributeL;P_POSACC;Positional Accuracy;EMPTY
+1485;FIELD;NIS.PLTS_SpatialAttributeL;P_HORDAT;Horizontal datum;EMPTY
+1486;FIELD;NIS.PLTS_SpatialAttributeL;IS_CONFLATE;Is Conflate;EMPTY
+1487;FIELD;NIS.PLTS_SpatialAttributeL;LNAM;Long name;EMPTY
+1488;FIELD;NIS.PLTS_SpatialAttributeL;SCAMIN_STEP;SCAMIN step;EMPTY
+1489;FIELD;NIS.PLTS_SpatialAttributeL;NIS_VERIFIED;NIS Verified state;EMPTY
+1490;FIELD;NIS.PLTS_SpatialAttributeL;NIS_VERIFIER;NIS Verifier;EMPTY
+1491;FIELD;NIS.PLTS_SpatialAttributeL;NIS_VERIFY_DATE;NIS Verified date;EMPTY
+1492;FIELD;NIS.PLTS_SpatialAttributeL;NIS_EDITOR;NIS_EDITOR;EMPTY
+1493;FIELD;NIS.PLTS_SpatialAttributeL;NIS_LAST_MOD;NIS_LAST_MOD;EMPTY
+1494;FIELD;NIS.PLTS_SpatialAttributeL;NIS_EDITOR_COMMENT;NIS editor comments;EMPTY
+1495;FIELD;NIS.PLTS_SpatialAttributeL;Shape;Shape;EMPTY
+1496;FIELD;NIS.PLTS_SpatialAttributeL;Shape.STLength();Shape.STLength();EMPTY
+1497;SUBTYPE;NIS.PortsAndServicesA;BERTHS_Berth;1;0
+1498;SUBTYPE;NIS.PortsAndServicesA;CANALS_Canal;5;73
+1499;SUBTYPE;NIS.PortsAndServicesA;CAUSWY_Causeway;10;8
+1500;SUBTYPE;NIS.PortsAndServicesA;CHKPNT_CheckPoint;15;0
+1501;SUBTYPE;NIS.PortsAndServicesA;CRANES_Cranes;20;3
+1502;SUBTYPE;NIS.PortsAndServicesA;DOCARE_DockArea;25;1
+1503;SUBTYPE;NIS.PortsAndServicesA;DRYDOC_DryDock;30;13
+1504;SUBTYPE;NIS.PortsAndServicesA;DYKCON_Dyke;35;80
+1505;SUBTYPE;NIS.PortsAndServicesA;FLODOC_FloatingDock;40;18
+1506;SUBTYPE;NIS.PortsAndServicesA;GATCON_Gate;45;17
+1507;SUBTYPE;NIS.PortsAndServicesA;GRIDRN_Gridiron;50;0
+1508;SUBTYPE;NIS.PortsAndServicesA;HRBFAC_HarbourFacility;55;38
+1509;SUBTYPE;NIS.PortsAndServicesA;HULKES_Hulk;60;0
+1510;SUBTYPE;NIS.PortsAndServicesA;LOKBSN_LockBasin;65;11
+1511;SUBTYPE;NIS.PortsAndServicesA;MORFAC_MooringWarpingFacility;70;40
+1512;SUBTYPE;NIS.PortsAndServicesA;PILBOP_PilotBoardingPlace;75;0
+1513;SUBTYPE;NIS.PortsAndServicesA;PONTON_Pontoon;80;22
+1514;SUBTYPE;NIS.PortsAndServicesA;SMCFAC_SmallCraftFacility;85;0
+1515;FIELD;NIS.PortsAndServicesA;OBJECTID;OBJECTID;CONTAINS DATA
+1516;FIELD;NIS.PortsAndServicesA;GlobalID;GlobalID;CONTAINS DATA
+1517;FIELD;NIS.PortsAndServicesA;DSNM;Data set name;CONTAINS DATA
+1518;FIELD;NIS.PortsAndServicesA;LNAM;Long name;CONTAINS DATA
+1519;FIELD;NIS.PortsAndServicesA;NOID;Nautical Object ID;CONTAINS DATA
+1520;FIELD;NIS.PortsAndServicesA;INFORM;Information;CONTAINS DATA
+1521;FIELD;NIS.PortsAndServicesA;NINFOM;Information in national language;CONTAINS DATA
+1522;FIELD;NIS.PortsAndServicesA;NTXTDS;Textual description in national language;CONTAINS DATA
+1523;FIELD;NIS.PortsAndServicesA;PICREP;Pictorial representation;CONTAINS DATA
+1524;FIELD;NIS.PortsAndServicesA;TXTDSC;Textual description;CONTAINS DATA
+1525;FIELD;NIS.PortsAndServicesA;SORDAT;Source date;CONTAINS DATA
+1526;FIELD;NIS.PortsAndServicesA;SORIND;Source indication;CONTAINS DATA
+1527;FIELD;NIS.PortsAndServicesA;OBJNAM;Object name;CONTAINS DATA
+1528;FIELD;NIS.PortsAndServicesA;NOBJNM;Object name in national language;CONTAINS DATA
+1529;FIELD;NIS.PortsAndServicesA;EDITOR;Editor;CONTAINS DATA
+1530;FIELD;NIS.PortsAndServicesA;LAST_MOD;Last modified date;CONTAINS DATA
+1531;FIELD;NIS.PortsAndServicesA;EDITOR_COMMENT;Editor comments;CONTAINS DATA
+1532;FIELD;NIS.PortsAndServicesA;VERIFIED;Verified state;CONTAINS DATA
+1533;FIELD;NIS.PortsAndServicesA;VERIFIER;Verifier;CONTAINS DATA
+1534;FIELD;NIS.PortsAndServicesA;VERIFIED_DATE;Verified date;CONTAINS DATA
+1535;FIELD;NIS.PortsAndServicesA;DELETE_COMMENT;Delete comment;CONTAINS DATA
+1536;FIELD;NIS.PortsAndServicesA;PLTS_COMP_SCALE;PLTS compilation scale;CONTAINS DATA
+1537;FIELD;NIS.PortsAndServicesA;NIS_PRODUCTS;NIS product type;CONTAINS DATA
+1538;FIELD;NIS.PortsAndServicesA;IS_CONFLATE;Is Conflate;CONTAINS DATA
+1539;FIELD;NIS.PortsAndServicesA;BOYSHP;Buoy shape;CONTAINS DATA
+1540;FIELD;NIS.PortsAndServicesA;CATGAT;Category of gate;CONTAINS DATA
+1541;FIELD;NIS.PortsAndServicesA;CATMOR;Category of mooring/warping facility;CONTAINS DATA
+1542;FIELD;NIS.PortsAndServicesA;COLOUR;Colour;CONTAINS DATA
+1543;FIELD;NIS.PortsAndServicesA;COLPAT;Colour pattern;CONTAINS DATA
+1544;FIELD;NIS.PortsAndServicesA;CONDTN;Condition;CONTAINS DATA
+1545;FIELD;NIS.PortsAndServicesA;CONRAD;Conspicuous, radar;CONTAINS DATA
+1546;FIELD;NIS.PortsAndServicesA;CONVIS;Conspicuous, visually;CONTAINS DATA
+1547;FIELD;NIS.PortsAndServicesA;DATEND;Date end;CONTAINS DATA
+1548;FIELD;NIS.PortsAndServicesA;DATSTA;Date start;CONTAINS DATA
+1549;FIELD;NIS.PortsAndServicesA;DRVAL1;Depth range value 1;CONTAINS DATA
+1550;FIELD;NIS.PortsAndServicesA;HEIGHT;Height;CONTAINS DATA
+1551;FIELD;NIS.PortsAndServicesA;HORACC;Horizontal accuracy;CONTAINS DATA
+1552;FIELD;NIS.PortsAndServicesA;HORCLR;Horizontal clearance;CONTAINS DATA
+1553;FIELD;NIS.PortsAndServicesA;HORLEN;Horizontal length;CONTAINS DATA
+1554;FIELD;NIS.PortsAndServicesA;HORWID;Horizontal width;CONTAINS DATA
+1555;FIELD;NIS.PortsAndServicesA;LIFCAP;Lifting capacity;CONTAINS DATA
+1556;FIELD;NIS.PortsAndServicesA;NATCON;Nature of construction;CONTAINS DATA
+1557;FIELD;NIS.PortsAndServicesA;PEREND;Periodic date end;CONTAINS DATA
+1558;FIELD;NIS.PortsAndServicesA;PERSTA;Periodic date start;CONTAINS DATA
+1559;FIELD;NIS.PortsAndServicesA;QUASOU;Quality of sounding measurement;CONTAINS DATA
+1560;FIELD;NIS.PortsAndServicesA;SOUACC;Sounding accuracy;CONTAINS DATA
+1561;FIELD;NIS.PortsAndServicesA;STATUS;Status;CONTAINS DATA
+1562;FIELD;NIS.PortsAndServicesA;VERACC;Vertical accuracy;CONTAINS DATA
+1563;FIELD;NIS.PortsAndServicesA;VERCLR;Vertical clearance;CONTAINS DATA
+1564;FIELD;NIS.PortsAndServicesA;VERDAT;Vertical datum;CONTAINS DATA
+1565;FIELD;NIS.PortsAndServicesA;VERLEN;Vertical length;CONTAINS DATA
+1566;FIELD;NIS.PortsAndServicesA;WATLEV;Water level effect;CONTAINS DATA
+1567;FIELD;NIS.PortsAndServicesA;FCSubtype;FCSubtype;CONTAINS DATA
+1568;FIELD;NIS.PortsAndServicesA;CATCAN;Category of canal;CONTAINS DATA
+1569;FIELD;NIS.PortsAndServicesA;CATCHP;Category of checkpoint;CONTAINS DATA
+1570;FIELD;NIS.PortsAndServicesA;CATCRN;Category of crane;CONTAINS DATA
+1571;FIELD;NIS.PortsAndServicesA;CATDOC;Category of dock;CONTAINS DATA
+1572;FIELD;NIS.PortsAndServicesA;CATHAF;Category of harbour facility;CONTAINS DATA
+1573;FIELD;NIS.PortsAndServicesA;CATHLK;Category of hulk;CONTAINS DATA
+1574;FIELD;NIS.PortsAndServicesA;CATPIL;Category of pilot boarding place;CONTAINS DATA
+1575;FIELD;NIS.PortsAndServicesA;CATSCF;Category of small craft facility;CONTAINS DATA
+1576;FIELD;NIS.PortsAndServicesA;COMCHA;Communication channel;CONTAINS DATA
+1577;FIELD;NIS.PortsAndServicesA;NPLDST;Pilot district in national language;CONTAINS DATA
+1578;FIELD;NIS.PortsAndServicesA;ORIENT;Orientation;CONTAINS DATA
+1579;FIELD;NIS.PortsAndServicesA;PILDST;Pilot district;CONTAINS DATA
+1580;FIELD;NIS.PortsAndServicesA;RADIUS;Radius;CONTAINS DATA
+1581;FIELD;NIS.PortsAndServicesA;SCAMIN_STEP;SCAMIN step;CONTAINS DATA
+1582;FIELD;NIS.PortsAndServicesA;NIS_VERIFIED;NIS Verified state;CONTAINS DATA
+1583;FIELD;NIS.PortsAndServicesA;NIS_VERIFIER;NIS Verifier;CONTAINS DATA
+1584;FIELD;NIS.PortsAndServicesA;NIS_VERIFY_DATE;NIS Verified date;CONTAINS DATA
+1585;FIELD;NIS.PortsAndServicesA;NIS_EDITOR;NIS_EDITOR;CONTAINS DATA
+1586;FIELD;NIS.PortsAndServicesA;NIS_LAST_MOD;NIS_LAST_MOD;CONTAINS DATA
+1587;FIELD;NIS.PortsAndServicesA;NIS_EDITOR_COMMENT;NIS editor comments;CONTAINS DATA
+1588;FIELD;NIS.PortsAndServicesA;Shape;Shape;CONTAINS DATA
+1589;FIELD;NIS.PortsAndServicesA;Shape.STArea();Shape.STArea();CONTAINS DATA
+1590;FIELD;NIS.PortsAndServicesA;Shape.STLength();Shape.STLength();CONTAINS DATA
+1591;SUBTYPE;NIS.PortsAndServicesL;BERTHS_Berth;1;0
+1592;SUBTYPE;NIS.PortsAndServicesL;CANALS_Canal;5;5
+1593;SUBTYPE;NIS.PortsAndServicesL;CAUSWY_Causeway;10;4
+1594;SUBTYPE;NIS.PortsAndServicesL;DYKCON_Dyke;15;21
+1595;SUBTYPE;NIS.PortsAndServicesL;FLODOC_FloatingDock;20;0
+1596;SUBTYPE;NIS.PortsAndServicesL;GATCON_Gate;25;26
+1597;SUBTYPE;NIS.PortsAndServicesL;MORFAC_MooringWarpingFacility;30;11
+1598;SUBTYPE;NIS.PortsAndServicesL;PONTON_Pontoon;35;8
+1599;FIELD;NIS.PortsAndServicesL;OBJECTID;OBJECTID;CONTAINS DATA
+1600;FIELD;NIS.PortsAndServicesL;GlobalID;GlobalID;CONTAINS DATA
+1601;FIELD;NIS.PortsAndServicesL;DSNM;Data set name;CONTAINS DATA
+1602;FIELD;NIS.PortsAndServicesL;LNAM;Long name;CONTAINS DATA
+1603;FIELD;NIS.PortsAndServicesL;NOID;Nautical Object ID;CONTAINS DATA
+1604;FIELD;NIS.PortsAndServicesL;INFORM;Information;CONTAINS DATA
+1605;FIELD;NIS.PortsAndServicesL;NINFOM;Information in national language;CONTAINS DATA
+1606;FIELD;NIS.PortsAndServicesL;NTXTDS;Textual description in national language;CONTAINS DATA
+1607;FIELD;NIS.PortsAndServicesL;PICREP;Pictorial representation;CONTAINS DATA
+1608;FIELD;NIS.PortsAndServicesL;TXTDSC;Textual description;CONTAINS DATA
+1609;FIELD;NIS.PortsAndServicesL;SORDAT;Source date;CONTAINS DATA
+1610;FIELD;NIS.PortsAndServicesL;SORIND;Source indication;CONTAINS DATA
+1611;FIELD;NIS.PortsAndServicesL;OBJNAM;Object name;CONTAINS DATA
+1612;FIELD;NIS.PortsAndServicesL;NOBJNM;Object name in national language;CONTAINS DATA
+1613;FIELD;NIS.PortsAndServicesL;EDITOR;Editor;CONTAINS DATA
+1614;FIELD;NIS.PortsAndServicesL;LAST_MOD;Last modified date;CONTAINS DATA
+1615;FIELD;NIS.PortsAndServicesL;EDITOR_COMMENT;Editor comments;CONTAINS DATA
+1616;FIELD;NIS.PortsAndServicesL;VERIFIED;Verified state;CONTAINS DATA
+1617;FIELD;NIS.PortsAndServicesL;VERIFIER;Verifier;CONTAINS DATA
+1618;FIELD;NIS.PortsAndServicesL;VERIFIED_DATE;Verified date;CONTAINS DATA
+1619;FIELD;NIS.PortsAndServicesL;DELETE_COMMENT;Delete comment;CONTAINS DATA
+1620;FIELD;NIS.PortsAndServicesL;PLTS_COMP_SCALE;PLTS compilation scale;CONTAINS DATA
+1621;FIELD;NIS.PortsAndServicesL;NIS_PRODUCTS;NIS product type;CONTAINS DATA
+1622;FIELD;NIS.PortsAndServicesL;IS_CONFLATE;Is Conflate;CONTAINS DATA
+1623;FIELD;NIS.PortsAndServicesL;BOYSHP;Buoy shape;CONTAINS DATA
+1624;FIELD;NIS.PortsAndServicesL;CATGAT;Category of gate;CONTAINS DATA
+1625;FIELD;NIS.PortsAndServicesL;CATMOR;Category of mooring/warping facility;CONTAINS DATA
+1626;FIELD;NIS.PortsAndServicesL;COLOUR;Colour;CONTAINS DATA
+1627;FIELD;NIS.PortsAndServicesL;COLPAT;Colour pattern;CONTAINS DATA
+1628;FIELD;NIS.PortsAndServicesL;CONDTN;Condition;CONTAINS DATA
+1629;FIELD;NIS.PortsAndServicesL;CONRAD;Conspicuous, radar;CONTAINS DATA
+1630;FIELD;NIS.PortsAndServicesL;CONVIS;Conspicuous, visually;CONTAINS DATA
+1631;FIELD;NIS.PortsAndServicesL;DATEND;Date end;CONTAINS DATA
+1632;FIELD;NIS.PortsAndServicesL;DATSTA;Date start;CONTAINS DATA
+1633;FIELD;NIS.PortsAndServicesL;DRVAL1;Depth range value 1;CONTAINS DATA
+1634;FIELD;NIS.PortsAndServicesL;HEIGHT;Height;CONTAINS DATA
+1635;FIELD;NIS.PortsAndServicesL;HORACC;Horizontal accuracy;CONTAINS DATA
+1636;FIELD;NIS.PortsAndServicesL;HORCLR;Horizontal clearance;CONTAINS DATA
+1637;FIELD;NIS.PortsAndServicesL;HORLEN;Horizontal length;CONTAINS DATA
+1638;FIELD;NIS.PortsAndServicesL;HORWID;Horizontal width;CONTAINS DATA
+1639;FIELD;NIS.PortsAndServicesL;LIFCAP;Lifting capacity;CONTAINS DATA
+1640;FIELD;NIS.PortsAndServicesL;NATCON;Nature of construction;CONTAINS DATA
+1641;FIELD;NIS.PortsAndServicesL;PEREND;Periodic date end;CONTAINS DATA
+1642;FIELD;NIS.PortsAndServicesL;PERSTA;Periodic date start;CONTAINS DATA
+1643;FIELD;NIS.PortsAndServicesL;QUASOU;Quality of sounding measurement;CONTAINS DATA
+1644;FIELD;NIS.PortsAndServicesL;SOUACC;Sounding accuracy;CONTAINS DATA
+1645;FIELD;NIS.PortsAndServicesL;STATUS;Status;CONTAINS DATA
+1646;FIELD;NIS.PortsAndServicesL;VERACC;Vertical accuracy;CONTAINS DATA
+1647;FIELD;NIS.PortsAndServicesL;VERCLR;Vertical clearance;CONTAINS DATA
+1648;FIELD;NIS.PortsAndServicesL;VERDAT;Vertical datum;CONTAINS DATA
+1649;FIELD;NIS.PortsAndServicesL;VERLEN;Vertical length;CONTAINS DATA
+1650;FIELD;NIS.PortsAndServicesL;WATLEV;Water level effect;CONTAINS DATA
+1651;FIELD;NIS.PortsAndServicesL;FCSubtype;FCSubtype;CONTAINS DATA
+1652;FIELD;NIS.PortsAndServicesL;CATCAN;Category of canal;CONTAINS DATA
+1653;FIELD;NIS.PortsAndServicesL;SCAMIN_STEP;SCAMIN step;CONTAINS DATA
+1654;FIELD;NIS.PortsAndServicesL;NIS_VERIFIED;NIS Verified state;CONTAINS DATA
+1655;FIELD;NIS.PortsAndServicesL;NIS_VERIFIER;NIS Verifier;CONTAINS DATA
+1656;FIELD;NIS.PortsAndServicesL;NIS_VERIFY_DATE;NIS Verified date;CONTAINS DATA
+1657;FIELD;NIS.PortsAndServicesL;NIS_EDITOR;NIS_EDITOR;CONTAINS DATA
+1658;FIELD;NIS.PortsAndServicesL;NIS_LAST_MOD;NIS_LAST_MOD;CONTAINS DATA
+1659;FIELD;NIS.PortsAndServicesL;NIS_EDITOR_COMMENT;NIS editor comments;CONTAINS DATA
+1660;FIELD;NIS.PortsAndServicesL;Shape;Shape;CONTAINS DATA
+1661;FIELD;NIS.PortsAndServicesL;Shape.STLength();Shape.STLength();CONTAINS DATA
+1662;SUBTYPE;NIS.PortsAndServicesP;BERTHS_Berth;1;1080
+1663;SUBTYPE;NIS.PortsAndServicesP;CGUSTA_CoastguardStation;5;0
+1664;SUBTYPE;NIS.PortsAndServicesP;CHKPNT_CheckPoint;10;0
+1665;SUBTYPE;NIS.PortsAndServicesP;CRANES_Cranes;15;316
+1666;SUBTYPE;NIS.PortsAndServicesP;DISMAR_DistanceMark;20;0
+1667;SUBTYPE;NIS.PortsAndServicesP;GATCON_Gate;25;5
+1668;SUBTYPE;NIS.PortsAndServicesP;GRIDRN_Gridiron;30;0
+1669;SUBTYPE;NIS.PortsAndServicesP;HRBFAC_HarbourFacility;35;885
+1670;SUBTYPE;NIS.PortsAndServicesP;HULKES_Hulk;40;1
+1671;SUBTYPE;NIS.PortsAndServicesP;MORFAC_MooringWarpingFacility;45;772
+1672;SUBTYPE;NIS.PortsAndServicesP;PILBOP_PilotBoardingPlace;50;158
+1673;SUBTYPE;NIS.PortsAndServicesP;PILPNT_Pile;55;1635
+1674;SUBTYPE;NIS.PortsAndServicesP;RSCSTA_RescueStation;60;52
+1675;SUBTYPE;NIS.PortsAndServicesP;SISTAT_SignalStationTraffic;65;78
+1676;SUBTYPE;NIS.PortsAndServicesP;SISTAW_SignalStationWarning;70;43
+1677;SUBTYPE;NIS.PortsAndServicesP;SMCFAC_SmallCraftFacility;75;18
+1678;FIELD;NIS.PortsAndServicesP;OBJECTID;OBJECTID;CONTAINS DATA
+1679;FIELD;NIS.PortsAndServicesP;GlobalID;GlobalID;CONTAINS DATA
+1680;FIELD;NIS.PortsAndServicesP;DSNM;Data set name;CONTAINS DATA
+1681;FIELD;NIS.PortsAndServicesP;LNAM;Long name;CONTAINS DATA
+1682;FIELD;NIS.PortsAndServicesP;NOID;Nautical Object ID;CONTAINS DATA
+1683;FIELD;NIS.PortsAndServicesP;INFORM;Information;CONTAINS DATA
+1684;FIELD;NIS.PortsAndServicesP;NINFOM;Information in national language;CONTAINS DATA
+1685;FIELD;NIS.PortsAndServicesP;NTXTDS;Textual description in national language;CONTAINS DATA
+1686;FIELD;NIS.PortsAndServicesP;PICREP;Pictorial representation;CONTAINS DATA
+1687;FIELD;NIS.PortsAndServicesP;TXTDSC;Textual description;CONTAINS DATA
+1688;FIELD;NIS.PortsAndServicesP;SORDAT;Source date;CONTAINS DATA
+1689;FIELD;NIS.PortsAndServicesP;SORIND;Source indication;CONTAINS DATA
+1690;FIELD;NIS.PortsAndServicesP;OBJNAM;Object name;CONTAINS DATA
+1691;FIELD;NIS.PortsAndServicesP;NOBJNM;Object name in national language;CONTAINS DATA
+1692;FIELD;NIS.PortsAndServicesP;EDITOR;Editor;CONTAINS DATA
+1693;FIELD;NIS.PortsAndServicesP;LAST_MOD;Last modified date;CONTAINS DATA
+1694;FIELD;NIS.PortsAndServicesP;EDITOR_COMMENT;Editor comments;CONTAINS DATA
+1695;FIELD;NIS.PortsAndServicesP;VERIFIED;Verified state;CONTAINS DATA
+1696;FIELD;NIS.PortsAndServicesP;VERIFIER;Verifier;CONTAINS DATA
+1697;FIELD;NIS.PortsAndServicesP;VERIFIED_DATE;Verified date;CONTAINS DATA
+1698;FIELD;NIS.PortsAndServicesP;DELETE_COMMENT;Delete comment;CONTAINS DATA
+1699;FIELD;NIS.PortsAndServicesP;PLTS_COMP_SCALE;PLTS compilation scale;CONTAINS DATA
+1700;FIELD;NIS.PortsAndServicesP;NIS_PRODUCTS;NIS product type;CONTAINS DATA
+1701;FIELD;NIS.PortsAndServicesP;IS_CONFLATE;Is Conflate;CONTAINS DATA
+1702;FIELD;NIS.PortsAndServicesP;BOYSHP;Buoy shape;CONTAINS DATA
+1703;FIELD;NIS.PortsAndServicesP;CATGAT;Category of gate;CONTAINS DATA
+1704;FIELD;NIS.PortsAndServicesP;CATMOR;Category of mooring/warping facility;CONTAINS DATA
+1705;FIELD;NIS.PortsAndServicesP;COLOUR;Colour;CONTAINS DATA
+1706;FIELD;NIS.PortsAndServicesP;COLPAT;Colour pattern;CONTAINS DATA
+1707;FIELD;NIS.PortsAndServicesP;CONDTN;Condition;CONTAINS DATA
+1708;FIELD;NIS.PortsAndServicesP;CONRAD;Conspicuous, radar;CONTAINS DATA
+1709;FIELD;NIS.PortsAndServicesP;CONVIS;Conspicuous, visually;CONTAINS DATA
+1710;FIELD;NIS.PortsAndServicesP;DATEND;Date end;CONTAINS DATA
+1711;FIELD;NIS.PortsAndServicesP;DATSTA;Date start;CONTAINS DATA
+1712;FIELD;NIS.PortsAndServicesP;DRVAL1;Depth range value 1;CONTAINS DATA
+1713;FIELD;NIS.PortsAndServicesP;HEIGHT;Height;CONTAINS DATA
+1714;FIELD;NIS.PortsAndServicesP;HORACC;Horizontal accuracy;CONTAINS DATA
+1715;FIELD;NIS.PortsAndServicesP;HORCLR;Horizontal clearance;CONTAINS DATA
+1716;FIELD;NIS.PortsAndServicesP;HORLEN;Horizontal length;CONTAINS DATA
+1717;FIELD;NIS.PortsAndServicesP;HORWID;Horizontal width;CONTAINS DATA
+1718;FIELD;NIS.PortsAndServicesP;LIFCAP;Lifting capacity;CONTAINS DATA
+1719;FIELD;NIS.PortsAndServicesP;NATCON;Nature of construction;CONTAINS DATA
+1720;FIELD;NIS.PortsAndServicesP;PEREND;Periodic date end;CONTAINS DATA
+1721;FIELD;NIS.PortsAndServicesP;PERSTA;Periodic date start;CONTAINS DATA
+1722;FIELD;NIS.PortsAndServicesP;QUASOU;Quality of sounding measurement;CONTAINS DATA
+1723;FIELD;NIS.PortsAndServicesP;SOUACC;Sounding accuracy;CONTAINS DATA
+1724;FIELD;NIS.PortsAndServicesP;STATUS;Status;CONTAINS DATA
+1725;FIELD;NIS.PortsAndServicesP;VERACC;Vertical accuracy;CONTAINS DATA
+1726;FIELD;NIS.PortsAndServicesP;VERCLR;Vertical clearance;CONTAINS DATA
+1727;FIELD;NIS.PortsAndServicesP;VERDAT;Vertical datum;CONTAINS DATA
+1728;FIELD;NIS.PortsAndServicesP;VERLEN;Vertical length;CONTAINS DATA
+1729;FIELD;NIS.PortsAndServicesP;WATLEV;Water level effect;CONTAINS DATA
+1730;FIELD;NIS.PortsAndServicesP;FCSubtype;FCSubtype;CONTAINS DATA
+1731;FIELD;NIS.PortsAndServicesP;CATCHP;Category of checkpoint;CONTAINS DATA
+1732;FIELD;NIS.PortsAndServicesP;CATCRN;Category of crane;CONTAINS DATA
+1733;FIELD;NIS.PortsAndServicesP;CATDIS;Category of distance mark;CONTAINS DATA
+1734;FIELD;NIS.PortsAndServicesP;CATHAF;Category of harbour facility;CONTAINS DATA
+1735;FIELD;NIS.PortsAndServicesP;CATHLK;Category of hulk;CONTAINS DATA
+1736;FIELD;NIS.PortsAndServicesP;CATPIL;Category of pilot boarding place;CONTAINS DATA
+1737;FIELD;NIS.PortsAndServicesP;CATPLE;Category of pile;CONTAINS DATA
+1738;FIELD;NIS.PortsAndServicesP;CATRSC;Category of rescue station;CONTAINS DATA
+1739;FIELD;NIS.PortsAndServicesP;CATSCF;Category of small craft facility;CONTAINS DATA
+1740;FIELD;NIS.PortsAndServicesP;CATSIT;Category of signal station, traffic;CONTAINS DATA
+1741;FIELD;NIS.PortsAndServicesP;CATSIW;Category of signal station, warning;CONTAINS DATA
+1742;FIELD;NIS.PortsAndServicesP;COMCHA;Communication channel;CONTAINS DATA
+1743;FIELD;NIS.PortsAndServicesP;NPLDST;Pilot district in national language;CONTAINS DATA
+1744;FIELD;NIS.PortsAndServicesP;ORIENT;Orientation;CONTAINS DATA
+1745;FIELD;NIS.PortsAndServicesP;PILDST;Pilot district;CONTAINS DATA
+1746;FIELD;NIS.PortsAndServicesP;RADIUS;Radius;CONTAINS DATA
+1747;FIELD;NIS.PortsAndServicesP;SCAMIN_STEP;SCAMIN step;CONTAINS DATA
+1748;FIELD;NIS.PortsAndServicesP;P_QUAPOS;Quality of Position;CONTAINS DATA
+1749;FIELD;NIS.PortsAndServicesP;P_POSACC;Positional Accuracy;CONTAINS DATA
+1750;FIELD;NIS.PortsAndServicesP;P_HORDAT;Horizontal Datum;CONTAINS DATA
+1751;FIELD;NIS.PortsAndServicesP;NIS_VERIFIED;NIS Verified state;CONTAINS DATA
+1752;FIELD;NIS.PortsAndServicesP;NIS_VERIFIER;NIS Verifier;CONTAINS DATA
+1753;FIELD;NIS.PortsAndServicesP;NIS_VERIFY_DATE;NIS Verified date;CONTAINS DATA
+1754;FIELD;NIS.PortsAndServicesP;NIS_EDITOR;NIS_EDITOR;CONTAINS DATA
+1755;FIELD;NIS.PortsAndServicesP;NIS_LAST_MOD;NIS_LAST_MOD;CONTAINS DATA
+1756;FIELD;NIS.PortsAndServicesP;NIS_EDITOR_COMMENT;NIS editor comments;CONTAINS DATA
+1757;FIELD;NIS.PortsAndServicesP;Shape;Shape;CONTAINS DATA
+1758;FIELD;NIS.ProductCoverage;OBJECTID;OBJECTID;EMPTY
+1759;FIELD;NIS.ProductCoverage;GlobalID;GlobalID;EMPTY
+1760;FIELD;NIS.ProductCoverage;DSNM;Dataset Name;EMPTY
+1761;FIELD;NIS.ProductCoverage;LNAM;Long name;EMPTY
+1762;FIELD;NIS.ProductCoverage;EDITOR;EDITOR;EMPTY
+1763;FIELD;NIS.ProductCoverage;LAST_MOD;LAST_MOD;EMPTY
+1764;FIELD;NIS.ProductCoverage;Product_GUID;Product_GUID;EMPTY
+1765;FIELD;NIS.ProductCoverage;CATCOV;Category of coverage;EMPTY
+1766;FIELD;NIS.ProductCoverage;INFORM;Information;EMPTY
+1767;FIELD;NIS.ProductCoverage;NINFOM;Information in national language;EMPTY
+1768;FIELD;NIS.ProductCoverage;SORDAT;Source date;EMPTY
+1769;FIELD;NIS.ProductCoverage;SORIND;Source indication;EMPTY
+1770;FIELD;NIS.ProductCoverage;PLTS_COMP_SCALE;PLTS compilation scale;EMPTY
+1771;FIELD;NIS.ProductCoverage;IS_CONFLATE;Is Conflate;EMPTY
+1772;FIELD;NIS.ProductCoverage;NIS_PRODUCTS;NIS product type;EMPTY
+1773;FIELD;NIS.ProductCoverage;NIS_EDITOR;NIS_EDITOR;EMPTY
+1774;FIELD;NIS.ProductCoverage;NIS_LAST_MOD;NIS_LAST_MOD;EMPTY
+1775;FIELD;NIS.ProductCoverage;Shape;Shape;EMPTY
+1776;FIELD;NIS.ProductCoverage;Shape.STArea();Shape.STArea();EMPTY
+1777;FIELD;NIS.ProductCoverage;Shape.STLength();Shape.STLength();EMPTY
+1778;SUBTYPE;NIS.RegulatedAreasAndLimitsA;ACHARE_AnchorageArea;1;78
+1779;SUBTYPE;NIS.RegulatedAreasAndLimitsA;ACHBRT_AnchorBerth;5;2
+1780;SUBTYPE;NIS.RegulatedAreasAndLimitsA;ADMARE_AdministrationAreaNamed;10;1148
+1781;SUBTYPE;NIS.RegulatedAreasAndLimitsA;ARCSLN_ArchipelagicSeaLane;15;0
+1782;SUBTYPE;NIS.RegulatedAreasAndLimitsA;CONZNE_ContiguousZone;20;60
+1783;SUBTYPE;NIS.RegulatedAreasAndLimitsA;COSARE_ContinentalShelfArea;25;0
+1784;SUBTYPE;NIS.RegulatedAreasAndLimitsA;CTSARE_CargoTranshipmentArea;30;3
+1785;SUBTYPE;NIS.RegulatedAreasAndLimitsA;CUSZNE_CustomZone;35;0
+1786;SUBTYPE;NIS.RegulatedAreasAndLimitsA;DMPGRD_DumpingGround;40;205
+1787;SUBTYPE;NIS.RegulatedAreasAndLimitsA;EXEZNE_ExclusiveEconomicZone;50;142
+1788;SUBTYPE;NIS.RegulatedAreasAndLimitsA;FRPARE_FreePortArea;55;0
+1789;SUBTYPE;NIS.RegulatedAreasAndLimitsA;FSHGRD_FishingGround;60;0
+1790;SUBTYPE;NIS.RegulatedAreasAndLimitsA;FSHZNE_FisheryZone;65;72
+1791;SUBTYPE;NIS.RegulatedAreasAndLimitsA;HRBARE_HarbourAreaAdministrative;70;278
+1792;SUBTYPE;NIS.RegulatedAreasAndLimitsA;ICNARE_IncinerationArea;75;0
+1793;SUBTYPE;NIS.RegulatedAreasAndLimitsA;LOGPON_LogPond;85;0
+1794;SUBTYPE;NIS.RegulatedAreasAndLimitsA;MARCUL_MarineFarmCulture;95;102
+1795;SUBTYPE;NIS.RegulatedAreasAndLimitsA;RESARE_RestrictedArea;105;1079
+1796;SUBTYPE;NIS.RegulatedAreasAndLimitsA;SPLARE_SeaPlaneLandingArea;110;3
+1797;SUBTYPE;NIS.RegulatedAreasAndLimitsA;TESARE_TerritorialSeaArea;115;157
+1798;FIELD;NIS.RegulatedAreasAndLimitsA;OBJECTID;OBJECTID;CONTAINS DATA
+1799;FIELD;NIS.RegulatedAreasAndLimitsA;GlobalID;GlobalID;CONTAINS DATA
+1800;FIELD;NIS.RegulatedAreasAndLimitsA;DSNM;Data set name;CONTAINS DATA
+1801;FIELD;NIS.RegulatedAreasAndLimitsA;LNAM;Long name;CONTAINS DATA
+1802;FIELD;NIS.RegulatedAreasAndLimitsA;NOID;Nautical Object ID;CONTAINS DATA
+1803;FIELD;NIS.RegulatedAreasAndLimitsA;INFORM;Information;CONTAINS DATA
+1804;FIELD;NIS.RegulatedAreasAndLimitsA;NINFOM;Information in national language;CONTAINS DATA
+1805;FIELD;NIS.RegulatedAreasAndLimitsA;NTXTDS;Textual description in national language;CONTAINS DATA
+1806;FIELD;NIS.RegulatedAreasAndLimitsA;PICREP;Pictorial representation;CONTAINS DATA
+1807;FIELD;NIS.RegulatedAreasAndLimitsA;TXTDSC;Textual description;CONTAINS DATA
+1808;FIELD;NIS.RegulatedAreasAndLimitsA;SORDAT;Source date;CONTAINS DATA
+1809;FIELD;NIS.RegulatedAreasAndLimitsA;SORIND;Source indication;CONTAINS DATA
+1810;FIELD;NIS.RegulatedAreasAndLimitsA;OBJNAM;Object name;CONTAINS DATA
+1811;FIELD;NIS.RegulatedAreasAndLimitsA;NOBJNM;Object name in national language;CONTAINS DATA
+1812;FIELD;NIS.RegulatedAreasAndLimitsA;EDITOR;Editor;CONTAINS DATA
+1813;FIELD;NIS.RegulatedAreasAndLimitsA;LAST_MOD;Last modified date;CONTAINS DATA
+1814;FIELD;NIS.RegulatedAreasAndLimitsA;EDITOR_COMMENT;Editor comments;CONTAINS DATA
+1815;FIELD;NIS.RegulatedAreasAndLimitsA;VERIFIED;Verified state;CONTAINS DATA
+1816;FIELD;NIS.RegulatedAreasAndLimitsA;VERIFIER;Verifier;CONTAINS DATA
+1817;FIELD;NIS.RegulatedAreasAndLimitsA;VERIFIED_DATE;Verified date;CONTAINS DATA
+1818;FIELD;NIS.RegulatedAreasAndLimitsA;DELETE_COMMENT;Delete comment;CONTAINS DATA
+1819;FIELD;NIS.RegulatedAreasAndLimitsA;PLTS_COMP_SCALE;PLTS compilation scale;CONTAINS DATA
+1820;FIELD;NIS.RegulatedAreasAndLimitsA;NIS_PRODUCTS;NIS product type;CONTAINS DATA
+1821;FIELD;NIS.RegulatedAreasAndLimitsA;IS_CONFLATE;Is Conflate;CONTAINS DATA
+1822;FIELD;NIS.RegulatedAreasAndLimitsA;CATMFA;Category marine farm/culture;CONTAINS DATA
+1823;FIELD;NIS.RegulatedAreasAndLimitsA;DATEND;Date end;CONTAINS DATA
+1824;FIELD;NIS.RegulatedAreasAndLimitsA;DATSTA;Date start;CONTAINS DATA
+1825;FIELD;NIS.RegulatedAreasAndLimitsA;EXPSOU;Exposition of sounding;CONTAINS DATA
+1826;FIELD;NIS.RegulatedAreasAndLimitsA;NATION;Nationality;CONTAINS DATA
+1827;FIELD;NIS.RegulatedAreasAndLimitsA;PEREND;Periodic date end;CONTAINS DATA
+1828;FIELD;NIS.RegulatedAreasAndLimitsA;PERSTA;Periodic date start;CONTAINS DATA
+1829;FIELD;NIS.RegulatedAreasAndLimitsA;QUASOU;Quality of sounding measurement;CONTAINS DATA
+1830;FIELD;NIS.RegulatedAreasAndLimitsA;RESTRN;Restriction;CONTAINS DATA
+1831;FIELD;NIS.RegulatedAreasAndLimitsA;SOUACC;Sounding accuracy;CONTAINS DATA
+1832;FIELD;NIS.RegulatedAreasAndLimitsA;STATUS;Status;CONTAINS DATA
+1833;FIELD;NIS.RegulatedAreasAndLimitsA;VALSOU;Value of sounding;CONTAINS DATA
+1834;FIELD;NIS.RegulatedAreasAndLimitsA;VERACC;Vertical accuracy;CONTAINS DATA
+1835;FIELD;NIS.RegulatedAreasAndLimitsA;VERDAT;Vertical datum;CONTAINS DATA
+1836;FIELD;NIS.RegulatedAreasAndLimitsA;VERLEN;Vertical length;CONTAINS DATA
+1837;FIELD;NIS.RegulatedAreasAndLimitsA;WATLEV;Water level effect;CONTAINS DATA
+1838;FIELD;NIS.RegulatedAreasAndLimitsA;FCSubtype;FCSubtype;CONTAINS DATA
+1839;FIELD;NIS.RegulatedAreasAndLimitsA;CATACH;Category of anchorage;CONTAINS DATA
+1840;FIELD;NIS.RegulatedAreasAndLimitsA;CATDPG;Category of dumping ground;CONTAINS DATA
+1841;FIELD;NIS.RegulatedAreasAndLimitsA;CATREA;Category of restricted area;CONTAINS DATA
+1842;FIELD;NIS.RegulatedAreasAndLimitsA;JRSDTN;Jurisdiction;CONTAINS DATA
+1843;FIELD;NIS.RegulatedAreasAndLimitsA;RADIUS;Radius;CONTAINS DATA
+1844;FIELD;NIS.RegulatedAreasAndLimitsA;SCAMIN_STEP;SCAMIN step;CONTAINS DATA
+1845;FIELD;NIS.RegulatedAreasAndLimitsA;NIS_VERIFIED;NIS Verified state;CONTAINS DATA
+1846;FIELD;NIS.RegulatedAreasAndLimitsA;NIS_VERIFIER;NIS Verifier;CONTAINS DATA
+1847;FIELD;NIS.RegulatedAreasAndLimitsA;NIS_VERIFY_DATE;NIS Verified date;CONTAINS DATA
+1848;FIELD;NIS.RegulatedAreasAndLimitsA;NIS_EDITOR;NIS_EDITOR;CONTAINS DATA
+1849;FIELD;NIS.RegulatedAreasAndLimitsA;NIS_LAST_MOD;NIS_LAST_MOD;CONTAINS DATA
+1850;FIELD;NIS.RegulatedAreasAndLimitsA;NIS_EDITOR_COMMENT;NIS editor comments;CONTAINS DATA
+1851;FIELD;NIS.RegulatedAreasAndLimitsA;Shape;Shape;CONTAINS DATA
+1852;FIELD;NIS.RegulatedAreasAndLimitsA;Shape.STArea();Shape.STArea();CONTAINS DATA
+1853;FIELD;NIS.RegulatedAreasAndLimitsA;Shape.STLength();Shape.STLength();CONTAINS DATA
+1854;SUBTYPE;NIS.RegulatedAreasAndLimitsL;ASLXIS_ArchipelagicSeaLaneAxis;1;0
+1855;SUBTYPE;NIS.RegulatedAreasAndLimitsL;MARCUL_MarineFarmCulture;25;3
+1856;SUBTYPE;NIS.RegulatedAreasAndLimitsL;STSLNE_StraightTerritorialSeaBaseline;30;191
+1857;FIELD;NIS.RegulatedAreasAndLimitsL;OBJECTID;OBJECTID;CONTAINS DATA
+1858;FIELD;NIS.RegulatedAreasAndLimitsL;GlobalID;GlobalID;CONTAINS DATA
+1859;FIELD;NIS.RegulatedAreasAndLimitsL;DSNM;Data set name;CONTAINS DATA
+1860;FIELD;NIS.RegulatedAreasAndLimitsL;LNAM;Long name;CONTAINS DATA
+1861;FIELD;NIS.RegulatedAreasAndLimitsL;NOID;Nautical Object ID;CONTAINS DATA
+1862;FIELD;NIS.RegulatedAreasAndLimitsL;INFORM;Information;CONTAINS DATA
+1863;FIELD;NIS.RegulatedAreasAndLimitsL;NINFOM;Information in national language;CONTAINS DATA
+1864;FIELD;NIS.RegulatedAreasAndLimitsL;NTXTDS;Textual description in national language;CONTAINS DATA
+1865;FIELD;NIS.RegulatedAreasAndLimitsL;PICREP;Pictorial representation;CONTAINS DATA
+1866;FIELD;NIS.RegulatedAreasAndLimitsL;TXTDSC;Textual description;CONTAINS DATA
+1867;FIELD;NIS.RegulatedAreasAndLimitsL;SORDAT;Source date;CONTAINS DATA
+1868;FIELD;NIS.RegulatedAreasAndLimitsL;SORIND;Source indication;CONTAINS DATA
+1869;FIELD;NIS.RegulatedAreasAndLimitsL;OBJNAM;Object name;CONTAINS DATA
+1870;FIELD;NIS.RegulatedAreasAndLimitsL;NOBJNM;Object name in national language;CONTAINS DATA
+1871;FIELD;NIS.RegulatedAreasAndLimitsL;EDITOR;Editor;CONTAINS DATA
+1872;FIELD;NIS.RegulatedAreasAndLimitsL;LAST_MOD;Last modified date;CONTAINS DATA
+1873;FIELD;NIS.RegulatedAreasAndLimitsL;EDITOR_COMMENT;Editor comments;CONTAINS DATA
+1874;FIELD;NIS.RegulatedAreasAndLimitsL;VERIFIED;Verified state;CONTAINS DATA
+1875;FIELD;NIS.RegulatedAreasAndLimitsL;VERIFIER;Verifier;CONTAINS DATA
+1876;FIELD;NIS.RegulatedAreasAndLimitsL;VERIFIED_DATE;Verified date;CONTAINS DATA
+1877;FIELD;NIS.RegulatedAreasAndLimitsL;DELETE_COMMENT;Delete comment;CONTAINS DATA
+1878;FIELD;NIS.RegulatedAreasAndLimitsL;PLTS_COMP_SCALE;PLTS compilation scale;CONTAINS DATA
+1879;FIELD;NIS.RegulatedAreasAndLimitsL;NIS_PRODUCTS;NIS product type;CONTAINS DATA
+1880;FIELD;NIS.RegulatedAreasAndLimitsL;IS_CONFLATE;Is Conflate;CONTAINS DATA
+1881;FIELD;NIS.RegulatedAreasAndLimitsL;CATMFA;Category marine farm/culture;CONTAINS DATA
+1882;FIELD;NIS.RegulatedAreasAndLimitsL;DATEND;Date end;CONTAINS DATA
+1883;FIELD;NIS.RegulatedAreasAndLimitsL;DATSTA;Date start;CONTAINS DATA
+1884;FIELD;NIS.RegulatedAreasAndLimitsL;EXPSOU;Exposition of sounding;CONTAINS DATA
+1885;FIELD;NIS.RegulatedAreasAndLimitsL;NATION;Nationality;CONTAINS DATA
+1886;FIELD;NIS.RegulatedAreasAndLimitsL;PEREND;Periodic date end;CONTAINS DATA
+1887;FIELD;NIS.RegulatedAreasAndLimitsL;PERSTA;Periodic date start;CONTAINS DATA
+1888;FIELD;NIS.RegulatedAreasAndLimitsL;QUASOU;Quality of sounding measurement;CONTAINS DATA
+1889;FIELD;NIS.RegulatedAreasAndLimitsL;RESTRN;Restriction;CONTAINS DATA
+1890;FIELD;NIS.RegulatedAreasAndLimitsL;SOUACC;Sounding accuracy;CONTAINS DATA
+1891;FIELD;NIS.RegulatedAreasAndLimitsL;STATUS;Status;CONTAINS DATA
+1892;FIELD;NIS.RegulatedAreasAndLimitsL;VALSOU;Value of sounding;CONTAINS DATA
+1893;FIELD;NIS.RegulatedAreasAndLimitsL;VERACC;Vertical accuracy;CONTAINS DATA
+1894;FIELD;NIS.RegulatedAreasAndLimitsL;VERDAT;Vertical datum;CONTAINS DATA
+1895;FIELD;NIS.RegulatedAreasAndLimitsL;VERLEN;Vertical length;CONTAINS DATA
+1896;FIELD;NIS.RegulatedAreasAndLimitsL;WATLEV;Water level effect;CONTAINS DATA
+1897;FIELD;NIS.RegulatedAreasAndLimitsL;FCSubtype;FCSubtype;CONTAINS DATA
+1898;FIELD;NIS.RegulatedAreasAndLimitsL;SCAMIN_STEP;SCAMIN step;CONTAINS DATA
+1899;FIELD;NIS.RegulatedAreasAndLimitsL;NIS_VERIFIED;NIS Verified state;CONTAINS DATA
+1900;FIELD;NIS.RegulatedAreasAndLimitsL;NIS_VERIFIER;NIS Verifier;CONTAINS DATA
+1901;FIELD;NIS.RegulatedAreasAndLimitsL;NIS_VERIFY_DATE;NIS Verified date;CONTAINS DATA
+1902;FIELD;NIS.RegulatedAreasAndLimitsL;NIS_EDITOR;NIS_EDITOR;CONTAINS DATA
+1903;FIELD;NIS.RegulatedAreasAndLimitsL;NIS_LAST_MOD;NIS_LAST_MOD;CONTAINS DATA
+1904;FIELD;NIS.RegulatedAreasAndLimitsL;NIS_EDITOR_COMMENT;NIS editor comments;CONTAINS DATA
+1905;FIELD;NIS.RegulatedAreasAndLimitsL;Shape;Shape;CONTAINS DATA
+1906;FIELD;NIS.RegulatedAreasAndLimitsL;Shape.STLength();Shape.STLength();CONTAINS DATA
+1907;SUBTYPE;NIS.RegulatedAreasAndLimitsP;ACHARE_AnchorageArea;1;219
+1908;SUBTYPE;NIS.RegulatedAreasAndLimitsP;ACHBRT_AnchorBerth;5;0
+1909;SUBTYPE;NIS.RegulatedAreasAndLimitsP;CTSARE_CargoTranshipmentArea;10;0
+1910;SUBTYPE;NIS.RegulatedAreasAndLimitsP;DMPGRD_DumpingGround;15;5
+1911;SUBTYPE;NIS.RegulatedAreasAndLimitsP;ICNARE_IncinerationArea;25;0
+1912;SUBTYPE;NIS.RegulatedAreasAndLimitsP;LOGPON_LogPond;30;0
+1913;SUBTYPE;NIS.RegulatedAreasAndLimitsP;MARCUL_MarineFarmCulture;35;6
+1914;SUBTYPE;NIS.RegulatedAreasAndLimitsP;SPLARE_SeaPlaneLandingArea;40;0
+1915;FIELD;NIS.RegulatedAreasAndLimitsP;OBJECTID;OBJECTID;CONTAINS DATA
+1916;FIELD;NIS.RegulatedAreasAndLimitsP;GlobalID;GlobalID;CONTAINS DATA
+1917;FIELD;NIS.RegulatedAreasAndLimitsP;DSNM;Data set name;CONTAINS DATA
+1918;FIELD;NIS.RegulatedAreasAndLimitsP;LNAM;Long name;CONTAINS DATA
+1919;FIELD;NIS.RegulatedAreasAndLimitsP;NOID;Nautical Object ID;CONTAINS DATA
+1920;FIELD;NIS.RegulatedAreasAndLimitsP;INFORM;Information;CONTAINS DATA
+1921;FIELD;NIS.RegulatedAreasAndLimitsP;NINFOM;Information in national language;CONTAINS DATA
+1922;FIELD;NIS.RegulatedAreasAndLimitsP;NTXTDS;Textual description in national language;CONTAINS DATA
+1923;FIELD;NIS.RegulatedAreasAndLimitsP;PICREP;Pictorial representation;CONTAINS DATA
+1924;FIELD;NIS.RegulatedAreasAndLimitsP;TXTDSC;Textual description;CONTAINS DATA
+1925;FIELD;NIS.RegulatedAreasAndLimitsP;SORDAT;Source date;CONTAINS DATA
+1926;FIELD;NIS.RegulatedAreasAndLimitsP;SORIND;Source indication;CONTAINS DATA
+1927;FIELD;NIS.RegulatedAreasAndLimitsP;OBJNAM;Object name;CONTAINS DATA
+1928;FIELD;NIS.RegulatedAreasAndLimitsP;NOBJNM;Object name in national language;CONTAINS DATA
+1929;FIELD;NIS.RegulatedAreasAndLimitsP;EDITOR;Editor;CONTAINS DATA
+1930;FIELD;NIS.RegulatedAreasAndLimitsP;LAST_MOD;Last modified date;CONTAINS DATA
+1931;FIELD;NIS.RegulatedAreasAndLimitsP;EDITOR_COMMENT;Editor comments;CONTAINS DATA
+1932;FIELD;NIS.RegulatedAreasAndLimitsP;VERIFIED;Verified state;CONTAINS DATA
+1933;FIELD;NIS.RegulatedAreasAndLimitsP;VERIFIER;Verifier;CONTAINS DATA
+1934;FIELD;NIS.RegulatedAreasAndLimitsP;VERIFIED_DATE;Verified date;CONTAINS DATA
+1935;FIELD;NIS.RegulatedAreasAndLimitsP;DELETE_COMMENT;Delete comment;CONTAINS DATA
+1936;FIELD;NIS.RegulatedAreasAndLimitsP;PLTS_COMP_SCALE;PLTS compilation scale;CONTAINS DATA
+1937;FIELD;NIS.RegulatedAreasAndLimitsP;NIS_PRODUCTS;NIS product type;CONTAINS DATA
+1938;FIELD;NIS.RegulatedAreasAndLimitsP;IS_CONFLATE;Is Conflate;CONTAINS DATA
+1939;FIELD;NIS.RegulatedAreasAndLimitsP;CATMFA;Category marine farm/culture;CONTAINS DATA
+1940;FIELD;NIS.RegulatedAreasAndLimitsP;DATEND;Date end;CONTAINS DATA
+1941;FIELD;NIS.RegulatedAreasAndLimitsP;DATSTA;Date start;CONTAINS DATA
+1942;FIELD;NIS.RegulatedAreasAndLimitsP;EXPSOU;Exposition of sounding;CONTAINS DATA
+1943;FIELD;NIS.RegulatedAreasAndLimitsP;NATION;Nationality;CONTAINS DATA
+1944;FIELD;NIS.RegulatedAreasAndLimitsP;PEREND;Periodic date end;CONTAINS DATA
+1945;FIELD;NIS.RegulatedAreasAndLimitsP;PERSTA;Periodic date start;CONTAINS DATA
+1946;FIELD;NIS.RegulatedAreasAndLimitsP;QUASOU;Quality of sounding measurement;CONTAINS DATA
+1947;FIELD;NIS.RegulatedAreasAndLimitsP;RESTRN;Restriction;CONTAINS DATA
+1948;FIELD;NIS.RegulatedAreasAndLimitsP;SOUACC;Sounding accuracy;CONTAINS DATA
+1949;FIELD;NIS.RegulatedAreasAndLimitsP;STATUS;Status;CONTAINS DATA
+1950;FIELD;NIS.RegulatedAreasAndLimitsP;VALSOU;Value of sounding;CONTAINS DATA
+1951;FIELD;NIS.RegulatedAreasAndLimitsP;VERACC;Vertical accuracy;CONTAINS DATA
+1952;FIELD;NIS.RegulatedAreasAndLimitsP;VERDAT;Vertical datum;CONTAINS DATA
+1953;FIELD;NIS.RegulatedAreasAndLimitsP;VERLEN;Vertical length;CONTAINS DATA
+1954;FIELD;NIS.RegulatedAreasAndLimitsP;WATLEV;Water level effect;CONTAINS DATA
+1955;FIELD;NIS.RegulatedAreasAndLimitsP;FCSubtype;FCSubtype;CONTAINS DATA
+1956;FIELD;NIS.RegulatedAreasAndLimitsP;CATACH;Category of anchorage;CONTAINS DATA
+1957;FIELD;NIS.RegulatedAreasAndLimitsP;CATDPG;Category of dumping ground;CONTAINS DATA
+1958;FIELD;NIS.RegulatedAreasAndLimitsP;RADIUS;Radius;CONTAINS DATA
+1959;FIELD;NIS.RegulatedAreasAndLimitsP;SCAMIN_STEP;SCAMIN step;CONTAINS DATA
+1960;FIELD;NIS.RegulatedAreasAndLimitsP;P_QUAPOS;Quality of Position;CONTAINS DATA
+1961;FIELD;NIS.RegulatedAreasAndLimitsP;P_POSACC;Positional Accuracy;CONTAINS DATA
+1962;FIELD;NIS.RegulatedAreasAndLimitsP;P_HORDAT;Horizontal Datum;CONTAINS DATA
+1963;FIELD;NIS.RegulatedAreasAndLimitsP;NIS_VERIFIED;NIS Verified state;CONTAINS DATA
+1964;FIELD;NIS.RegulatedAreasAndLimitsP;NIS_VERIFIER;NIS Verifier;CONTAINS DATA
+1965;FIELD;NIS.RegulatedAreasAndLimitsP;NIS_VERIFY_DATE;NIS Verified date;CONTAINS DATA
+1966;FIELD;NIS.RegulatedAreasAndLimitsP;NIS_EDITOR;NIS_EDITOR;CONTAINS DATA
+1967;FIELD;NIS.RegulatedAreasAndLimitsP;NIS_LAST_MOD;NIS_LAST_MOD;CONTAINS DATA
+1968;FIELD;NIS.RegulatedAreasAndLimitsP;NIS_EDITOR_COMMENT;NIS editor comments;CONTAINS DATA
+1969;FIELD;NIS.RegulatedAreasAndLimitsP;Shape;Shape;CONTAINS DATA
+1970;SUBTYPE;NIS.SeabedA;SBDARE_SeabedArea;15;0
+1971;SUBTYPE;NIS.SeabedA;SNDWAV_SandWaves;30;0
+1972;SUBTYPE;NIS.SeabedA;WEDKLP_WeedKelp;40;0
+1973;FIELD;NIS.SeabedA;OBJECTID;OBJECTID;EMPTY
+1974;FIELD;NIS.SeabedA;GlobalID;GlobalID;EMPTY
+1975;FIELD;NIS.SeabedA;DSNM;Data set name;EMPTY
+1976;FIELD;NIS.SeabedA;LNAM;Long name;EMPTY
+1977;FIELD;NIS.SeabedA;NOID;Nautical Object ID;EMPTY
+1978;FIELD;NIS.SeabedA;INFORM;Information;EMPTY
+1979;FIELD;NIS.SeabedA;NINFOM;Information in national language;EMPTY
+1980;FIELD;NIS.SeabedA;NTXTDS;Textual description in national language;EMPTY
+1981;FIELD;NIS.SeabedA;PICREP;Pictorial representation;EMPTY
+1982;FIELD;NIS.SeabedA;TXTDSC;Textual description;EMPTY
+1983;FIELD;NIS.SeabedA;SORDAT;Source date;EMPTY
+1984;FIELD;NIS.SeabedA;SORIND;Source indication;EMPTY
+1985;FIELD;NIS.SeabedA;OBJNAM;Object name;EMPTY
+1986;FIELD;NIS.SeabedA;NOBJNM;Object name in national language;EMPTY
+1987;FIELD;NIS.SeabedA;EDITOR;Editor;EMPTY
+1988;FIELD;NIS.SeabedA;LAST_MOD;Last modified date;EMPTY
+1989;FIELD;NIS.SeabedA;EDITOR_COMMENT;Editor comments;EMPTY
+1990;FIELD;NIS.SeabedA;VERIFIED;Verified state;EMPTY
+1991;FIELD;NIS.SeabedA;VERIFIER;Verifier;EMPTY
+1992;FIELD;NIS.SeabedA;VERIFIED_DATE;Verified date;EMPTY
+1993;FIELD;NIS.SeabedA;DELETE_COMMENT;Delete comment;EMPTY
+1994;FIELD;NIS.SeabedA;PLTS_COMP_SCALE;PLTS compilation scale;EMPTY
+1995;FIELD;NIS.SeabedA;NIS_PRODUCTS;NIS product type;EMPTY
+1996;FIELD;NIS.SeabedA;IS_CONFLATE;Is Conflate;EMPTY
+1997;FIELD;NIS.SeabedA;COLOUR;Colour;EMPTY
+1998;FIELD;NIS.SeabedA;NATQUA;Nature of surface - qualifying terms;EMPTY
+1999;FIELD;NIS.SeabedA;NATSUR;Nature of surface;EMPTY
+2000;FIELD;NIS.SeabedA;VERACC;Vertical accuracy;EMPTY
+2001;FIELD;NIS.SeabedA;VERLEN;Vertical length;EMPTY
+2002;FIELD;NIS.SeabedA;WATLEV;Water level effect;EMPTY
+2003;FIELD;NIS.SeabedA;FCSubtype;FCSubtype;EMPTY
+2004;FIELD;NIS.SeabedA;CATWED;Category of weed/kelp;EMPTY
+2005;FIELD;NIS.SeabedA;SCAMIN_STEP;SCAMIN step;EMPTY
+2006;FIELD;NIS.SeabedA;NIS_VERIFIED;NIS Verified state;EMPTY
+2007;FIELD;NIS.SeabedA;NIS_VERIFIER;NIS Verifier;EMPTY
+2008;FIELD;NIS.SeabedA;NIS_VERIFY_DATE;NIS Verified date;EMPTY
+2009;FIELD;NIS.SeabedA;NIS_EDITOR;NIS_EDITOR;EMPTY
+2010;FIELD;NIS.SeabedA;NIS_LAST_MOD;NIS_LAST_MOD;EMPTY
+2011;FIELD;NIS.SeabedA;NIS_EDITOR_COMMENT;NIS editor comments;EMPTY
+2012;FIELD;NIS.SeabedA;Shape;Shape;EMPTY
+2013;FIELD;NIS.SeabedA;Shape.STArea();Shape.STArea();EMPTY
+2014;FIELD;NIS.SeabedA;Shape.STLength();Shape.STLength();EMPTY
+2015;SUBTYPE;NIS.SeabedL;SBDARE_SeabedArea;10;0
+2016;SUBTYPE;NIS.SeabedL;SNDWAV_SandWaves;15;0
+2017;FIELD;NIS.SeabedL;OBJECTID;OBJECTID;EMPTY
+2018;FIELD;NIS.SeabedL;GlobalID;GlobalID;EMPTY
+2019;FIELD;NIS.SeabedL;DSNM;Data set name;EMPTY
+2020;FIELD;NIS.SeabedL;LNAM;Long name;EMPTY
+2021;FIELD;NIS.SeabedL;NOID;Nautical Object ID;EMPTY
+2022;FIELD;NIS.SeabedL;INFORM;Information;EMPTY
+2023;FIELD;NIS.SeabedL;NINFOM;Information in national language;EMPTY
+2024;FIELD;NIS.SeabedL;NTXTDS;Textual description in national language;EMPTY
+2025;FIELD;NIS.SeabedL;PICREP;Pictorial representation;EMPTY
+2026;FIELD;NIS.SeabedL;TXTDSC;Textual description;EMPTY
+2027;FIELD;NIS.SeabedL;SORDAT;Source date;EMPTY
+2028;FIELD;NIS.SeabedL;SORIND;Source indication;EMPTY
+2029;FIELD;NIS.SeabedL;OBJNAM;Object name;EMPTY
+2030;FIELD;NIS.SeabedL;NOBJNM;Object name in national language;EMPTY
+2031;FIELD;NIS.SeabedL;EDITOR;Editor;EMPTY
+2032;FIELD;NIS.SeabedL;LAST_MOD;Last modified date;EMPTY
+2033;FIELD;NIS.SeabedL;EDITOR_COMMENT;Editor comments;EMPTY
+2034;FIELD;NIS.SeabedL;VERIFIED;Verified state;EMPTY
+2035;FIELD;NIS.SeabedL;VERIFIER;Verifier;EMPTY
+2036;FIELD;NIS.SeabedL;VERIFIED_DATE;Verified date;EMPTY
+2037;FIELD;NIS.SeabedL;DELETE_COMMENT;Delete comment;EMPTY
+2038;FIELD;NIS.SeabedL;PLTS_COMP_SCALE;PLTS compilation scale;EMPTY
+2039;FIELD;NIS.SeabedL;NIS_PRODUCTS;NIS product type;EMPTY
+2040;FIELD;NIS.SeabedL;IS_CONFLATE;Is Conflate;EMPTY
+2041;FIELD;NIS.SeabedL;COLOUR;Colour;EMPTY
+2042;FIELD;NIS.SeabedL;NATQUA;Nature of surface - qualifying terms;EMPTY
+2043;FIELD;NIS.SeabedL;NATSUR;Nature of surface;EMPTY
+2044;FIELD;NIS.SeabedL;VERACC;Vertical accuracy;EMPTY
+2045;FIELD;NIS.SeabedL;VERLEN;Vertical length;EMPTY
+2046;FIELD;NIS.SeabedL;WATLEV;Water level effect;EMPTY
+2047;FIELD;NIS.SeabedL;FCSubtype;FCSubtype;EMPTY
+2048;FIELD;NIS.SeabedL;SCAMIN_STEP;SCAMIN step;EMPTY
+2049;FIELD;NIS.SeabedL;NIS_VERIFIED;NIS Verified state;EMPTY
+2050;FIELD;NIS.SeabedL;NIS_VERIFIER;NIS Verifier;EMPTY
+2051;FIELD;NIS.SeabedL;NIS_VERIFY_DATE;NIS Verified date;EMPTY
+2052;FIELD;NIS.SeabedL;NIS_EDITOR;NIS_EDITOR;EMPTY
+2053;FIELD;NIS.SeabedL;NIS_LAST_MOD;NIS_LAST_MOD;EMPTY
+2054;FIELD;NIS.SeabedL;NIS_EDITOR_COMMENT;NIS editor comments;EMPTY
+2055;FIELD;NIS.SeabedL;Shape;Shape;EMPTY
+2056;FIELD;NIS.SeabedL;Shape.STLength();Shape.STLength();EMPTY
+2057;SUBTYPE;NIS.SeabedP;SBDARE_SeabedArea;15;7379
+2058;SUBTYPE;NIS.SeabedP;SNDWAV_SandWaves;25;0
+2059;SUBTYPE;NIS.SeabedP;SPRING_Spring;30;0
+2060;SUBTYPE;NIS.SeabedP;WEDKLP_WeedKelp;35;317
+2061;FIELD;NIS.SeabedP;OBJECTID;OBJECTID;CONTAINS DATA
+2062;FIELD;NIS.SeabedP;GlobalID;GlobalID;CONTAINS DATA
+2063;FIELD;NIS.SeabedP;DSNM;Data set name;CONTAINS DATA
+2064;FIELD;NIS.SeabedP;LNAM;Long name;CONTAINS DATA
+2065;FIELD;NIS.SeabedP;NOID;Nautical Object ID;CONTAINS DATA
+2066;FIELD;NIS.SeabedP;INFORM;Information;CONTAINS DATA
+2067;FIELD;NIS.SeabedP;NINFOM;Information in national language;CONTAINS DATA
+2068;FIELD;NIS.SeabedP;NTXTDS;Textual description in national language;CONTAINS DATA
+2069;FIELD;NIS.SeabedP;PICREP;Pictorial representation;CONTAINS DATA
+2070;FIELD;NIS.SeabedP;TXTDSC;Textual description;CONTAINS DATA
+2071;FIELD;NIS.SeabedP;SORDAT;Source date;CONTAINS DATA
+2072;FIELD;NIS.SeabedP;SORIND;Source indication;CONTAINS DATA
+2073;FIELD;NIS.SeabedP;OBJNAM;Object name;CONTAINS DATA
+2074;FIELD;NIS.SeabedP;NOBJNM;Object name in national language;CONTAINS DATA
+2075;FIELD;NIS.SeabedP;EDITOR;Editor;CONTAINS DATA
+2076;FIELD;NIS.SeabedP;LAST_MOD;Last modified date;CONTAINS DATA
+2077;FIELD;NIS.SeabedP;EDITOR_COMMENT;Editor comments;CONTAINS DATA
+2078;FIELD;NIS.SeabedP;VERIFIED;Verified state;CONTAINS DATA
+2079;FIELD;NIS.SeabedP;VERIFIER;Verifier;CONTAINS DATA
+2080;FIELD;NIS.SeabedP;VERIFIED_DATE;Verified date;CONTAINS DATA
+2081;FIELD;NIS.SeabedP;DELETE_COMMENT;Delete comment;CONTAINS DATA
+2082;FIELD;NIS.SeabedP;PLTS_COMP_SCALE;PLTS compilation scale;CONTAINS DATA
+2083;FIELD;NIS.SeabedP;NIS_PRODUCTS;NIS product type;CONTAINS DATA
+2084;FIELD;NIS.SeabedP;IS_CONFLATE;Is Conflate;CONTAINS DATA
+2085;FIELD;NIS.SeabedP;COLOUR;Colour;CONTAINS DATA
+2086;FIELD;NIS.SeabedP;NATQUA;Nature of surface - qualifying terms;CONTAINS DATA
+2087;FIELD;NIS.SeabedP;NATSUR;Nature of surface;CONTAINS DATA
+2088;FIELD;NIS.SeabedP;VERACC;Vertical accuracy;CONTAINS DATA
+2089;FIELD;NIS.SeabedP;VERLEN;Vertical length;CONTAINS DATA
+2090;FIELD;NIS.SeabedP;WATLEV;Water level effect;CONTAINS DATA
+2091;FIELD;NIS.SeabedP;FCSubtype;FCSubtype;CONTAINS DATA
+2092;FIELD;NIS.SeabedP;CATWED;Category of weed/kelp;CONTAINS DATA
+2093;FIELD;NIS.SeabedP;SCAMIN_STEP;SCAMIN step;CONTAINS DATA
+2094;FIELD;NIS.SeabedP;P_QUAPOS;Quality of Position;CONTAINS DATA
+2095;FIELD;NIS.SeabedP;P_POSACC;Positional Accuracy;CONTAINS DATA
+2096;FIELD;NIS.SeabedP;P_HORDAT;Horizontal Datum;CONTAINS DATA
+2097;FIELD;NIS.SeabedP;NIS_VERIFIED;NIS Verified state;CONTAINS DATA
+2098;FIELD;NIS.SeabedP;NIS_VERIFIER;NIS Verifier;CONTAINS DATA
+2099;FIELD;NIS.SeabedP;NIS_VERIFY_DATE;NIS Verified date;CONTAINS DATA
+2100;FIELD;NIS.SeabedP;NIS_EDITOR;NIS_EDITOR;CONTAINS DATA
+2101;FIELD;NIS.SeabedP;NIS_LAST_MOD;NIS_LAST_MOD;CONTAINS DATA
+2102;FIELD;NIS.SeabedP;NIS_EDITOR_COMMENT;NIS editor comments;CONTAINS DATA
+2103;FIELD;NIS.SeabedP;Shape;Shape;CONTAINS DATA
+2104;SUBTYPE;NIS.SoundingsP;SOUNDG_Soundings;1;261724
+2105;FIELD;NIS.SoundingsP;OBJECTID;OBJECTID;CONTAINS DATA
+2106;FIELD;NIS.SoundingsP;GlobalID;GlobalID;CONTAINS DATA
+2107;FIELD;NIS.SoundingsP;DSNM;Data set name;CONTAINS DATA
+2108;FIELD;NIS.SoundingsP;LNAM;Long name;CONTAINS DATA
+2109;FIELD;NIS.SoundingsP;NOID;Nautical Object ID;CONTAINS DATA
+2110;FIELD;NIS.SoundingsP;INFORM;Information;CONTAINS DATA
+2111;FIELD;NIS.SoundingsP;NINFOM;Information in national language;CONTAINS DATA
+2112;FIELD;NIS.SoundingsP;NTXTDS;Textual description in national language;CONTAINS DATA
+2113;FIELD;NIS.SoundingsP;PICREP;Pictorial representation;CONTAINS DATA
+2114;FIELD;NIS.SoundingsP;TXTDSC;Textual description;CONTAINS DATA
+2115;FIELD;NIS.SoundingsP;SORDAT;Source date;CONTAINS DATA
+2116;FIELD;NIS.SoundingsP;SORIND;Source indication;CONTAINS DATA
+2117;FIELD;NIS.SoundingsP;OBJNAM;Object name;CONTAINS DATA
+2118;FIELD;NIS.SoundingsP;NOBJNM;Object name in national language;CONTAINS DATA
+2119;FIELD;NIS.SoundingsP;EDITOR;Editor;CONTAINS DATA
+2120;FIELD;NIS.SoundingsP;LAST_MOD;Last modified date;CONTAINS DATA
+2121;FIELD;NIS.SoundingsP;EDITOR_COMMENT;Editor comments;CONTAINS DATA
+2122;FIELD;NIS.SoundingsP;VERIFIED;Verified state;CONTAINS DATA
+2123;FIELD;NIS.SoundingsP;VERIFIER;Verifier;CONTAINS DATA
+2124;FIELD;NIS.SoundingsP;VERIFIED_DATE;Verified date;CONTAINS DATA
+2125;FIELD;NIS.SoundingsP;DELETE_COMMENT;Delete comment;CONTAINS DATA
+2126;FIELD;NIS.SoundingsP;PLTS_COMP_SCALE;PLTS compilation scale;CONTAINS DATA
+2127;FIELD;NIS.SoundingsP;NIS_PRODUCTS;NIS product type;CONTAINS DATA
+2128;FIELD;NIS.SoundingsP;IS_CONFLATE;Is Conflate;CONTAINS DATA
+2129;FIELD;NIS.SoundingsP;QUASOU;Quality of sounding measurement;CONTAINS DATA
+2130;FIELD;NIS.SoundingsP;SOUACC;Sounding accuracy;CONTAINS DATA
+2131;FIELD;NIS.SoundingsP;VERDAT;Vertical datum;CONTAINS DATA
+2132;FIELD;NIS.SoundingsP;FCSubtype;FCSubtype;CONTAINS DATA
+2133;FIELD;NIS.SoundingsP;DEPTH;Depth;CONTAINS DATA
+2134;FIELD;NIS.SoundingsP;EXPSOU;Exposition of sounding;CONTAINS DATA
+2135;FIELD;NIS.SoundingsP;STATUS;Status;CONTAINS DATA
+2136;FIELD;NIS.SoundingsP;TECSOU;Technique of sounding measurement;CONTAINS DATA
+2137;FIELD;NIS.SoundingsP;P_QUAPOS;Quality of position;CONTAINS DATA
+2138;FIELD;NIS.SoundingsP;ENTRY_DATE;Entry date;CONTAINS DATA
+2139;FIELD;NIS.SoundingsP;SCAMIN_STEP;SCAMIN step;CONTAINS DATA
+2140;FIELD;NIS.SoundingsP;NIS_VERIFIED;NIS Verified state;CONTAINS DATA
+2141;FIELD;NIS.SoundingsP;NIS_VERIFIER;NIS Verifier;CONTAINS DATA
+2142;FIELD;NIS.SoundingsP;NIS_VERIFY_DATE;NIS Verified date;CONTAINS DATA
+2143;FIELD;NIS.SoundingsP;NIS_EDITOR;NIS_EDITOR;CONTAINS DATA
+2144;FIELD;NIS.SoundingsP;NIS_LAST_MOD;NIS_LAST_MOD;CONTAINS DATA
+2145;FIELD;NIS.SoundingsP;NIS_EDITOR_COMMENT;NIS editor comments;CONTAINS DATA
+2146;FIELD;NIS.SoundingsP;P_POSACC;Positional Accuracy;CONTAINS DATA
+2147;FIELD;NIS.SoundingsP;P_HORDAT;Horizontal Datum;CONTAINS DATA
+2148;FIELD;NIS.SoundingsP;Shape;Shape;CONTAINS DATA
+2149;SUBTYPE;NIS.TidesAndVariationsA;LOCMAG_LocalMagneticAnomaly;5;0
+2150;SUBTYPE;NIS.TidesAndVariationsA;MAGVAR_MagneticVariation;10;980
+2151;SUBTYPE;NIS.TidesAndVariationsA;T_HMON_TideHarmonicPrediction;15;0
+2152;SUBTYPE;NIS.TidesAndVariationsA;T_NHMN_TideNonHarmonicPrediction;20;0
+2153;SUBTYPE;NIS.TidesAndVariationsA;T_TIMS_TideTimeSeries;25;0
+2154;SUBTYPE;NIS.TidesAndVariationsA;TIDEWY_Tideway;30;0
+2155;SUBTYPE;NIS.TidesAndVariationsA;TS_FEB_TidalStreamFloodEbb;35;0
+2156;SUBTYPE;NIS.TidesAndVariationsA;TS_PAD_TidalStreamPanelData;40;0
+2157;SUBTYPE;NIS.TidesAndVariationsA;TS_PNH_TidalStreamNonHarmonicPrediction;45;0
+2158;SUBTYPE;NIS.TidesAndVariationsA;TS_PRH_TidalStreamHarmonicPrediction;50;0
+2159;SUBTYPE;NIS.TidesAndVariationsA;TS_TIS_TidalStreamTimeSeries;55;0
+2160;FIELD;NIS.TidesAndVariationsA;OBJECTID;OBJECTID;CONTAINS DATA
+2161;FIELD;NIS.TidesAndVariationsA;GlobalID;GlobalID;CONTAINS DATA
+2162;FIELD;NIS.TidesAndVariationsA;DSNM;Data set name;CONTAINS DATA
+2163;FIELD;NIS.TidesAndVariationsA;LNAM;Long name;CONTAINS DATA
+2164;FIELD;NIS.TidesAndVariationsA;NOID;Nautical Object ID;CONTAINS DATA
+2165;FIELD;NIS.TidesAndVariationsA;INFORM;Information;CONTAINS DATA
+2166;FIELD;NIS.TidesAndVariationsA;NINFOM;Information in national language;CONTAINS DATA
+2167;FIELD;NIS.TidesAndVariationsA;NTXTDS;Textual description in national language;CONTAINS DATA
+2168;FIELD;NIS.TidesAndVariationsA;PICREP;Pictorial representation;CONTAINS DATA
+2169;FIELD;NIS.TidesAndVariationsA;TXTDSC;Textual description;CONTAINS DATA
+2170;FIELD;NIS.TidesAndVariationsA;SORDAT;Source date;CONTAINS DATA
+2171;FIELD;NIS.TidesAndVariationsA;SORIND;Source indication;CONTAINS DATA
+2172;FIELD;NIS.TidesAndVariationsA;OBJNAM;Object name;CONTAINS DATA
+2173;FIELD;NIS.TidesAndVariationsA;NOBJNM;Object name in national language;CONTAINS DATA
+2174;FIELD;NIS.TidesAndVariationsA;EDITOR;Editor;CONTAINS DATA
+2175;FIELD;NIS.TidesAndVariationsA;LAST_MOD;Last modified date;CONTAINS DATA
+2176;FIELD;NIS.TidesAndVariationsA;EDITOR_COMMENT;Editor comments;CONTAINS DATA
+2177;FIELD;NIS.TidesAndVariationsA;VERIFIED;Verified state;CONTAINS DATA
+2178;FIELD;NIS.TidesAndVariationsA;VERIFIER;Verifier;CONTAINS DATA
+2179;FIELD;NIS.TidesAndVariationsA;VERIFIED_DATE;Verified date;CONTAINS DATA
+2180;FIELD;NIS.TidesAndVariationsA;DELETE_COMMENT;Delete comment;CONTAINS DATA
+2181;FIELD;NIS.TidesAndVariationsA;PLTS_COMP_SCALE;PLTS compilation scale;CONTAINS DATA
+2182;FIELD;NIS.TidesAndVariationsA;NIS_PRODUCTS;NIS product type;CONTAINS DATA
+2183;FIELD;NIS.TidesAndVariationsA;IS_CONFLATE;Is Conflate;CONTAINS DATA
+2184;FIELD;NIS.TidesAndVariationsA;DATEND;Date end;CONTAINS DATA
+2185;FIELD;NIS.TidesAndVariationsA;DATSTA;Date start;CONTAINS DATA
+2186;FIELD;NIS.TidesAndVariationsA;RYRMGV;Reference year for magnetic variation;CONTAINS DATA
+2187;FIELD;NIS.TidesAndVariationsA;VALLMA;Value of local magnetic anomaly;CONTAINS DATA
+2188;FIELD;NIS.TidesAndVariationsA;VALACM;Value of annual change in magnetic variation;CONTAINS DATA
+2189;FIELD;NIS.TidesAndVariationsA;VALMAG;Value of magnetic variation;CONTAINS DATA
+2190;FIELD;NIS.TidesAndVariationsA;FCSubtype;FCSubtype;CONTAINS DATA
+2191;FIELD;NIS.TidesAndVariationsA;CAT_TS;Category of Tidal stream;CONTAINS DATA
+2192;FIELD;NIS.TidesAndVariationsA;CURVEL;Current velocity;CONTAINS DATA
+2193;FIELD;NIS.TidesAndVariationsA;ORIENT;Orientation;CONTAINS DATA
+2194;FIELD;NIS.TidesAndVariationsA;PEREND;Periodic date end;CONTAINS DATA
+2195;FIELD;NIS.TidesAndVariationsA;PERSTA;Periodic date start;CONTAINS DATA
+2196;FIELD;NIS.TidesAndVariationsA;STATUS;Status;CONTAINS DATA
+2197;FIELD;NIS.TidesAndVariationsA;TIMEND;Time end;CONTAINS DATA
+2198;FIELD;NIS.TidesAndVariationsA;TIMSTA;Time start;CONTAINS DATA
+2199;FIELD;NIS.TidesAndVariationsA;T_ACWL;Tide - accuracy of water level;CONTAINS DATA
+2200;FIELD;NIS.TidesAndVariationsA;T_HWLW;Tide - high and low water values;CONTAINS DATA
+2201;FIELD;NIS.TidesAndVariationsA;T_MTOD;Tide - method of tidal prediction;CONTAINS DATA
+2202;FIELD;NIS.TidesAndVariationsA;T_THDF;Tide - time and height differences;CONTAINS DATA
+2203;FIELD;NIS.TidesAndVariationsA;T_TINT;Tide - time interval of values;CONTAINS DATA
+2204;FIELD;NIS.TidesAndVariationsA;T_TSVL;Tide - time series values;CONTAINS DATA
+2205;FIELD;NIS.TidesAndVariationsA;T_VAHC;Tide - value of harmonic constituents;CONTAINS DATA
+2206;FIELD;NIS.TidesAndVariationsA;TS_TSP;Tidal stream - panel values;CONTAINS DATA
+2207;FIELD;NIS.TidesAndVariationsA;TS_TSV;Tidal stream - time series values;CONTAINS DATA
+2208;FIELD;NIS.TidesAndVariationsA;SCAMIN_STEP;SCAMIN step;CONTAINS DATA
+2209;FIELD;NIS.TidesAndVariationsA;NIS_VERIFIED;NIS Verified state;CONTAINS DATA
+2210;FIELD;NIS.TidesAndVariationsA;NIS_VERIFIER;NIS Verifier;CONTAINS DATA
+2211;FIELD;NIS.TidesAndVariationsA;NIS_VERIFY_DATE;NIS Verified date;CONTAINS DATA
+2212;FIELD;NIS.TidesAndVariationsA;NIS_EDITOR;NIS_EDITOR;CONTAINS DATA
+2213;FIELD;NIS.TidesAndVariationsA;NIS_LAST_MOD;NIS_LAST_MOD;CONTAINS DATA
+2214;FIELD;NIS.TidesAndVariationsA;NIS_EDITOR_COMMENT;NIS editor comments;CONTAINS DATA
+2215;FIELD;NIS.TidesAndVariationsA;Shape;Shape;CONTAINS DATA
+2216;FIELD;NIS.TidesAndVariationsA;Shape.STArea();Shape.STArea();CONTAINS DATA
+2217;FIELD;NIS.TidesAndVariationsA;Shape.STLength();Shape.STLength();CONTAINS DATA
+2218;SUBTYPE;NIS.TidesAndVariationsL;LOCMAG_LocalMagneticAnomaly;5;0
+2219;SUBTYPE;NIS.TidesAndVariationsL;MAGVAR_MagneticVariation;10;0
+2220;SUBTYPE;NIS.TidesAndVariationsL;TIDEWY_Tideway;15;0
+2221;FIELD;NIS.TidesAndVariationsL;OBJECTID;OBJECTID;EMPTY
+2222;FIELD;NIS.TidesAndVariationsL;GlobalID;GlobalID;EMPTY
+2223;FIELD;NIS.TidesAndVariationsL;DSNM;Data set name;EMPTY
+2224;FIELD;NIS.TidesAndVariationsL;LNAM;Long name;EMPTY
+2225;FIELD;NIS.TidesAndVariationsL;NOID;Nautical Object ID;EMPTY
+2226;FIELD;NIS.TidesAndVariationsL;INFORM;Information;EMPTY
+2227;FIELD;NIS.TidesAndVariationsL;NINFOM;Information in national language;EMPTY
+2228;FIELD;NIS.TidesAndVariationsL;NTXTDS;Textual description in national language;EMPTY
+2229;FIELD;NIS.TidesAndVariationsL;PICREP;Pictorial representation;EMPTY
+2230;FIELD;NIS.TidesAndVariationsL;TXTDSC;Textual description;EMPTY
+2231;FIELD;NIS.TidesAndVariationsL;SORDAT;Source date;EMPTY
+2232;FIELD;NIS.TidesAndVariationsL;SORIND;Source indication;EMPTY
+2233;FIELD;NIS.TidesAndVariationsL;OBJNAM;Object name;EMPTY
+2234;FIELD;NIS.TidesAndVariationsL;NOBJNM;Object name in national language;EMPTY
+2235;FIELD;NIS.TidesAndVariationsL;EDITOR;Editor;EMPTY
+2236;FIELD;NIS.TidesAndVariationsL;LAST_MOD;Last modified date;EMPTY
+2237;FIELD;NIS.TidesAndVariationsL;EDITOR_COMMENT;Editor comments;EMPTY
+2238;FIELD;NIS.TidesAndVariationsL;VERIFIED;Verified state;EMPTY
+2239;FIELD;NIS.TidesAndVariationsL;VERIFIER;Verifier;EMPTY
+2240;FIELD;NIS.TidesAndVariationsL;VERIFIED_DATE;Verified date;EMPTY
+2241;FIELD;NIS.TidesAndVariationsL;DELETE_COMMENT;Delete comment;EMPTY
+2242;FIELD;NIS.TidesAndVariationsL;PLTS_COMP_SCALE;PLTS compilation scale;EMPTY
+2243;FIELD;NIS.TidesAndVariationsL;NIS_PRODUCTS;NIS product type;EMPTY
+2244;FIELD;NIS.TidesAndVariationsL;IS_CONFLATE;Is Conflate;EMPTY
+2245;FIELD;NIS.TidesAndVariationsL;DATEND;Date end;EMPTY
+2246;FIELD;NIS.TidesAndVariationsL;DATSTA;Date start;EMPTY
+2247;FIELD;NIS.TidesAndVariationsL;RYRMGV;Reference year for magnetic variation;EMPTY
+2248;FIELD;NIS.TidesAndVariationsL;VALLMA;Value of local magnetic anomaly;EMPTY
+2249;FIELD;NIS.TidesAndVariationsL;VALACM;Value of annual change in magnetic variation;EMPTY
+2250;FIELD;NIS.TidesAndVariationsL;VALMAG;Value of magnetic variation;EMPTY
+2251;FIELD;NIS.TidesAndVariationsL;FCSubtype;FCSubtype;EMPTY
+2252;FIELD;NIS.TidesAndVariationsL;SCAMIN_STEP;SCAMIN step;EMPTY
+2253;FIELD;NIS.TidesAndVariationsL;NIS_VERIFIED;NIS Verified state;EMPTY
+2254;FIELD;NIS.TidesAndVariationsL;NIS_VERIFIER;NIS Verifier;EMPTY
+2255;FIELD;NIS.TidesAndVariationsL;NIS_VERIFY_DATE;NIS Verified date;EMPTY
+2256;FIELD;NIS.TidesAndVariationsL;NIS_EDITOR;NIS_EDITOR;EMPTY
+2257;FIELD;NIS.TidesAndVariationsL;NIS_LAST_MOD;NIS_LAST_MOD;EMPTY
+2258;FIELD;NIS.TidesAndVariationsL;NIS_EDITOR_COMMENT;NIS editor comments;EMPTY
+2259;FIELD;NIS.TidesAndVariationsL;Shape;Shape;EMPTY
+2260;FIELD;NIS.TidesAndVariationsL;Shape.STLength();Shape.STLength();EMPTY
+2261;SUBTYPE;NIS.TidesAndVariationsP;CURENT_CurrentNonGravitational;1;0
+2262;SUBTYPE;NIS.TidesAndVariationsP;LOCMAG_LocalMagneticAnomaly;5;0
+2263;SUBTYPE;NIS.TidesAndVariationsP;MAGVAR_MagneticVariation;10;1
+2264;SUBTYPE;NIS.TidesAndVariationsP;T_HMON_TideHarmonicPrediction;15;0
+2265;SUBTYPE;NIS.TidesAndVariationsP;T_NHMN_TideNonHarmonicPrediction;20;0
+2266;SUBTYPE;NIS.TidesAndVariationsP;T_TIMS_TideTimeSeries;25;0
+2267;SUBTYPE;NIS.TidesAndVariationsP;TS_FEB_TidalStreamFloodEbb;30;0
+2268;SUBTYPE;NIS.TidesAndVariationsP;TS_PAD_TidalStreamPanelData;35;0
+2269;SUBTYPE;NIS.TidesAndVariationsP;TS_PNH_TidalStreamNonHarmonicPrediction;40;0
+2270;SUBTYPE;NIS.TidesAndVariationsP;TS_PRH_TidalStreamHarmonicPrediction;45;0
+2271;SUBTYPE;NIS.TidesAndVariationsP;TS_TIS_TidalStreamTimeSeries;50;0
+2272;FIELD;NIS.TidesAndVariationsP;OBJECTID;OBJECTID;CONTAINS DATA
+2273;FIELD;NIS.TidesAndVariationsP;GlobalID;GlobalID;CONTAINS DATA
+2274;FIELD;NIS.TidesAndVariationsP;DSNM;Data set name;CONTAINS DATA
+2275;FIELD;NIS.TidesAndVariationsP;LNAM;Long name;CONTAINS DATA
+2276;FIELD;NIS.TidesAndVariationsP;NOID;Nautical Object ID;CONTAINS DATA
+2277;FIELD;NIS.TidesAndVariationsP;INFORM;Information;CONTAINS DATA
+2278;FIELD;NIS.TidesAndVariationsP;NINFOM;Information in national language;CONTAINS DATA
+2279;FIELD;NIS.TidesAndVariationsP;NTXTDS;Textual description in national language;CONTAINS DATA
+2280;FIELD;NIS.TidesAndVariationsP;PICREP;Pictorial representation;CONTAINS DATA
+2281;FIELD;NIS.TidesAndVariationsP;TXTDSC;Textual description;CONTAINS DATA
+2282;FIELD;NIS.TidesAndVariationsP;SORDAT;Source date;CONTAINS DATA
+2283;FIELD;NIS.TidesAndVariationsP;SORIND;Source indication;CONTAINS DATA
+2284;FIELD;NIS.TidesAndVariationsP;OBJNAM;Object name;CONTAINS DATA
+2285;FIELD;NIS.TidesAndVariationsP;NOBJNM;Object name in national language;CONTAINS DATA
+2286;FIELD;NIS.TidesAndVariationsP;EDITOR;Editor;CONTAINS DATA
+2287;FIELD;NIS.TidesAndVariationsP;LAST_MOD;Last modified date;CONTAINS DATA
+2288;FIELD;NIS.TidesAndVariationsP;EDITOR_COMMENT;Editor comments;CONTAINS DATA
+2289;FIELD;NIS.TidesAndVariationsP;VERIFIED;Verified state;CONTAINS DATA
+2290;FIELD;NIS.TidesAndVariationsP;VERIFIER;Verifier;CONTAINS DATA
+2291;FIELD;NIS.TidesAndVariationsP;VERIFIED_DATE;Verified date;CONTAINS DATA
+2292;FIELD;NIS.TidesAndVariationsP;DELETE_COMMENT;Delete comment;CONTAINS DATA
+2293;FIELD;NIS.TidesAndVariationsP;PLTS_COMP_SCALE;PLTS compilation scale;CONTAINS DATA
+2294;FIELD;NIS.TidesAndVariationsP;NIS_PRODUCTS;NIS product type;CONTAINS DATA
+2295;FIELD;NIS.TidesAndVariationsP;IS_CONFLATE;Is Conflate;CONTAINS DATA
+2296;FIELD;NIS.TidesAndVariationsP;DATEND;Date end;CONTAINS DATA
+2297;FIELD;NIS.TidesAndVariationsP;DATSTA;Date start;CONTAINS DATA
+2298;FIELD;NIS.TidesAndVariationsP;RYRMGV;Reference year for magnetic variation;CONTAINS DATA
+2299;FIELD;NIS.TidesAndVariationsP;VALLMA;Value of local magnetic anomaly;CONTAINS DATA
+2300;FIELD;NIS.TidesAndVariationsP;VALACM;Value of annual change in magnetic variation;CONTAINS DATA
+2301;FIELD;NIS.TidesAndVariationsP;VALMAG;Value of magnetic variation;CONTAINS DATA
+2302;FIELD;NIS.TidesAndVariationsP;FCSubtype;FCSubtype;CONTAINS DATA
+2303;FIELD;NIS.TidesAndVariationsP;CAT_TS;Category of Tidal stream;CONTAINS DATA
+2304;FIELD;NIS.TidesAndVariationsP;CURVEL;Current velocity;CONTAINS DATA
+2305;FIELD;NIS.TidesAndVariationsP;ORIENT;Orientation;CONTAINS DATA
+2306;FIELD;NIS.TidesAndVariationsP;PEREND;Periodic date end;CONTAINS DATA
+2307;FIELD;NIS.TidesAndVariationsP;PERSTA;Periodic date start;CONTAINS DATA
+2308;FIELD;NIS.TidesAndVariationsP;STATUS;Status;CONTAINS DATA
+2309;FIELD;NIS.TidesAndVariationsP;TIMEND;Time end;CONTAINS DATA
+2310;FIELD;NIS.TidesAndVariationsP;TIMSTA;Time start;CONTAINS DATA
+2311;FIELD;NIS.TidesAndVariationsP;T_ACWL;Tide - accuracy of water level;CONTAINS DATA
+2312;FIELD;NIS.TidesAndVariationsP;T_HWLW;Tide - high and low water values;CONTAINS DATA
+2313;FIELD;NIS.TidesAndVariationsP;T_MTOD;Tide - method of tidal prediction;CONTAINS DATA
+2314;FIELD;NIS.TidesAndVariationsP;T_THDF;Tide - time and height differences;CONTAINS DATA
+2315;FIELD;NIS.TidesAndVariationsP;T_TINT;Tide - time interval of values;CONTAINS DATA
+2316;FIELD;NIS.TidesAndVariationsP;T_TSVL;Tide - time series values;CONTAINS DATA
+2317;FIELD;NIS.TidesAndVariationsP;T_VAHC;Tide - value of harmonic constituents;CONTAINS DATA
+2318;FIELD;NIS.TidesAndVariationsP;TS_TSP;Tidal stream - panel values;CONTAINS DATA
+2319;FIELD;NIS.TidesAndVariationsP;TS_TSV;Tidal stream - time series values;CONTAINS DATA
+2320;FIELD;NIS.TidesAndVariationsP;SCAMIN_STEP;SCAMIN step;CONTAINS DATA
+2321;FIELD;NIS.TidesAndVariationsP;P_QUAPOS;Quality of Position;CONTAINS DATA
+2322;FIELD;NIS.TidesAndVariationsP;P_POSACC;Positional Accuracy;CONTAINS DATA
+2323;FIELD;NIS.TidesAndVariationsP;P_HORDAT;Horizontal Datum;CONTAINS DATA
+2324;FIELD;NIS.TidesAndVariationsP;NIS_VERIFIED;NIS Verified state;CONTAINS DATA
+2325;FIELD;NIS.TidesAndVariationsP;NIS_VERIFIER;NIS Verifier;CONTAINS DATA
+2326;FIELD;NIS.TidesAndVariationsP;NIS_VERIFY_DATE;NIS Verified date;CONTAINS DATA
+2327;FIELD;NIS.TidesAndVariationsP;NIS_EDITOR;NIS_EDITOR;CONTAINS DATA
+2328;FIELD;NIS.TidesAndVariationsP;NIS_LAST_MOD;NIS_LAST_MOD;CONTAINS DATA
+2329;FIELD;NIS.TidesAndVariationsP;NIS_EDITOR_COMMENT;NIS editor comments;CONTAINS DATA
+2330;FIELD;NIS.TidesAndVariationsP;Shape;Shape;CONTAINS DATA
+2331;SUBTYPE;NIS.TracksAndRoutesA;DWRTPT_DeepWaterRoutePart;1;79
+2332;SUBTYPE;NIS.TracksAndRoutesA;FAIRWY_Fairway;5;0
+2333;SUBTYPE;NIS.TracksAndRoutesA;FERYRT_FerryRoute;10;0
+2334;SUBTYPE;NIS.TracksAndRoutesA;ISTZNE_InshoreTrafficZone;15;21
+2335;SUBTYPE;NIS.TracksAndRoutesA;PRCARE_PrecautionaryArea;20;10
+2336;SUBTYPE;NIS.TracksAndRoutesA;RADRNG_RadarRange;25;0
+2337;SUBTYPE;NIS.TracksAndRoutesA;RCTLPT_RecommendedTrafficLanePart;30;16
+2338;SUBTYPE;NIS.TracksAndRoutesA;RECTRC_RecommendedTrack;40;44
+2339;SUBTYPE;NIS.TracksAndRoutesA;SUBTLN_SubmarineTransitLane;45;0
+2340;SUBTYPE;NIS.TracksAndRoutesA;TSEZNE_TrafficSeparationZone;50;42
+2341;SUBTYPE;NIS.TracksAndRoutesA;TSSCRS_TrafficSeparationSchemeCrossing;55;0
+2342;SUBTYPE;NIS.TracksAndRoutesA;TSSLPT_TrafficSeparationSchemeLanePart;60;96
+2343;SUBTYPE;NIS.TracksAndRoutesA;TSSRON_TrafficSeparationSchemeRoundabout;65;4
+2344;SUBTYPE;NIS.TracksAndRoutesA;TWRTPT_TwoWayRoutePart;70;0
+2345;FIELD;NIS.TracksAndRoutesA;OBJECTID;OBJECTID;CONTAINS DATA
+2346;FIELD;NIS.TracksAndRoutesA;GlobalID;GlobalID;CONTAINS DATA
+2347;FIELD;NIS.TracksAndRoutesA;DSNM;Data set name;CONTAINS DATA
+2348;FIELD;NIS.TracksAndRoutesA;LNAM;Long name;CONTAINS DATA
+2349;FIELD;NIS.TracksAndRoutesA;NOID;Nautical Object ID;CONTAINS DATA
+2350;FIELD;NIS.TracksAndRoutesA;INFORM;Information;CONTAINS DATA
+2351;FIELD;NIS.TracksAndRoutesA;NINFOM;Information in national language;CONTAINS DATA
+2352;FIELD;NIS.TracksAndRoutesA;NTXTDS;Textual description in national language;CONTAINS DATA
+2353;FIELD;NIS.TracksAndRoutesA;PICREP;Pictorial representation;CONTAINS DATA
+2354;FIELD;NIS.TracksAndRoutesA;TXTDSC;Textual description;CONTAINS DATA
+2355;FIELD;NIS.TracksAndRoutesA;SORDAT;Source date;CONTAINS DATA
+2356;FIELD;NIS.TracksAndRoutesA;SORIND;Source indication;CONTAINS DATA
+2357;FIELD;NIS.TracksAndRoutesA;OBJNAM;Object name;CONTAINS DATA
+2358;FIELD;NIS.TracksAndRoutesA;NOBJNM;Object name in national language;CONTAINS DATA
+2359;FIELD;NIS.TracksAndRoutesA;EDITOR;Editor;CONTAINS DATA
+2360;FIELD;NIS.TracksAndRoutesA;LAST_MOD;Last modified date;CONTAINS DATA
+2361;FIELD;NIS.TracksAndRoutesA;EDITOR_COMMENT;Editor comments;CONTAINS DATA
+2362;FIELD;NIS.TracksAndRoutesA;VERIFIED;Verified state;CONTAINS DATA
+2363;FIELD;NIS.TracksAndRoutesA;VERIFIER;Verifier;CONTAINS DATA
+2364;FIELD;NIS.TracksAndRoutesA;VERIFIED_DATE;Verified date;CONTAINS DATA
+2365;FIELD;NIS.TracksAndRoutesA;DELETE_COMMENT;Delete comment;CONTAINS DATA
+2366;FIELD;NIS.TracksAndRoutesA;PLTS_COMP_SCALE;PLTS compilation scale;CONTAINS DATA
+2367;FIELD;NIS.TracksAndRoutesA;NIS_PRODUCTS;NIS product type;CONTAINS DATA
+2368;FIELD;NIS.TracksAndRoutesA;IS_CONFLATE;Is Conflate;CONTAINS DATA
+2369;FIELD;NIS.TracksAndRoutesA;COMCHA;Communication channel;CONTAINS DATA
+2370;FIELD;NIS.TracksAndRoutesA;DATEND;Date end;CONTAINS DATA
+2371;FIELD;NIS.TracksAndRoutesA;DATSTA;Date start;CONTAINS DATA
+2372;FIELD;NIS.TracksAndRoutesA;ORIENT;Orientation;CONTAINS DATA
+2373;FIELD;NIS.TracksAndRoutesA;PEREND;Periodic date end;CONTAINS DATA
+2374;FIELD;NIS.TracksAndRoutesA;PERSTA;Periodic date start;CONTAINS DATA
+2375;FIELD;NIS.TracksAndRoutesA;STATUS;Status;CONTAINS DATA
+2376;FIELD;NIS.TracksAndRoutesA;TRAFIC;Traffic flow;CONTAINS DATA
+2377;FIELD;NIS.TracksAndRoutesA;CATFRY;Category of ferry;CONTAINS DATA
+2378;FIELD;NIS.TracksAndRoutesA;CATNAV;Category of navigation line;CONTAINS DATA
+2379;FIELD;NIS.TracksAndRoutesA;CATTRK;Category of recommended track;CONTAINS DATA
+2380;FIELD;NIS.TracksAndRoutesA;CATTSS;Category of Traffic Separation Scheme;CONTAINS DATA
+2381;FIELD;NIS.TracksAndRoutesA;DRVAL1;Depth range value 1;CONTAINS DATA
+2382;FIELD;NIS.TracksAndRoutesA;DRVAL2;Depth range value 2;CONTAINS DATA
+2383;FIELD;NIS.TracksAndRoutesA;QUASOU;Quality of sounding measurement;CONTAINS DATA
+2384;FIELD;NIS.TracksAndRoutesA;SOUACC;Sounding accuracy;CONTAINS DATA
+2385;FIELD;NIS.TracksAndRoutesA;TECSOU;Technique of sounding measurement;CONTAINS DATA
+2386;FIELD;NIS.TracksAndRoutesA;VERDAT;Vertical datum;CONTAINS DATA
+2387;FIELD;NIS.TracksAndRoutesA;FCSubtype;FCSubtype;CONTAINS DATA
+2388;FIELD;NIS.TracksAndRoutesA;RESTRN;Restriction;CONTAINS DATA
+2389;FIELD;NIS.TracksAndRoutesA;SCAMIN_STEP;SCAMIN step;CONTAINS DATA
+2390;FIELD;NIS.TracksAndRoutesA;NIS_VERIFIED;NIS Verified state;CONTAINS DATA
+2391;FIELD;NIS.TracksAndRoutesA;NIS_VERIFIER;NIS Verifier;CONTAINS DATA
+2392;FIELD;NIS.TracksAndRoutesA;NIS_VERIFY_DATE;NIS Verified date;CONTAINS DATA
+2393;FIELD;NIS.TracksAndRoutesA;NIS_EDITOR;NIS_EDITOR;CONTAINS DATA
+2394;FIELD;NIS.TracksAndRoutesA;NIS_LAST_MOD;NIS_LAST_MOD;CONTAINS DATA
+2395;FIELD;NIS.TracksAndRoutesA;NIS_EDITOR_COMMENT;NIS editor comments;CONTAINS DATA
+2396;FIELD;NIS.TracksAndRoutesA;Shape;Shape;CONTAINS DATA
+2397;FIELD;NIS.TracksAndRoutesA;Shape.STArea();Shape.STArea();CONTAINS DATA
+2398;FIELD;NIS.TracksAndRoutesA;Shape.STLength();Shape.STLength();CONTAINS DATA
+2399;SUBTYPE;NIS.TracksAndRoutesL;DWRTCL_DeepWaterRouteCenterline;1;0
+2400;SUBTYPE;NIS.TracksAndRoutesL;FERYRT_FerryRoute;5;50
+2401;SUBTYPE;NIS.TracksAndRoutesL;NAVLNE_NavigationLine;10;671
+2402;SUBTYPE;NIS.TracksAndRoutesL;RADLNE_RadarLine;15;0
+2403;SUBTYPE;NIS.TracksAndRoutesL;RCRTCL_RecommendedRouteCenterline;20;189
+2404;SUBTYPE;NIS.TracksAndRoutesL;RDOCAL_RadioCallingInPoint;25;62
+2405;SUBTYPE;NIS.TracksAndRoutesL;RECTRC_RecommendedTrack;30;613
+2406;SUBTYPE;NIS.TracksAndRoutesL;TSELNE_TrafficSeparationLine;40;30
+2407;SUBTYPE;NIS.TracksAndRoutesL;TSSBND_TrafficSeparationSchemeBoundary;45;42
+2408;FIELD;NIS.TracksAndRoutesL;OBJECTID;OBJECTID;CONTAINS DATA
+2409;FIELD;NIS.TracksAndRoutesL;GlobalID;GlobalID;CONTAINS DATA
+2410;FIELD;NIS.TracksAndRoutesL;DSNM;Data set name;CONTAINS DATA
+2411;FIELD;NIS.TracksAndRoutesL;LNAM;Long name;CONTAINS DATA
+2412;FIELD;NIS.TracksAndRoutesL;NOID;Nautical Object ID;CONTAINS DATA
+2413;FIELD;NIS.TracksAndRoutesL;INFORM;Information;CONTAINS DATA
+2414;FIELD;NIS.TracksAndRoutesL;NINFOM;Information in national language;CONTAINS DATA
+2415;FIELD;NIS.TracksAndRoutesL;NTXTDS;Textual description in national language;CONTAINS DATA
+2416;FIELD;NIS.TracksAndRoutesL;PICREP;Pictorial representation;CONTAINS DATA
+2417;FIELD;NIS.TracksAndRoutesL;TXTDSC;Textual description;CONTAINS DATA
+2418;FIELD;NIS.TracksAndRoutesL;SORDAT;Source date;CONTAINS DATA
+2419;FIELD;NIS.TracksAndRoutesL;SORIND;Source indication;CONTAINS DATA
+2420;FIELD;NIS.TracksAndRoutesL;OBJNAM;Object name;CONTAINS DATA
+2421;FIELD;NIS.TracksAndRoutesL;NOBJNM;Object name in national language;CONTAINS DATA
+2422;FIELD;NIS.TracksAndRoutesL;EDITOR;Editor;CONTAINS DATA
+2423;FIELD;NIS.TracksAndRoutesL;LAST_MOD;Last modified date;CONTAINS DATA
+2424;FIELD;NIS.TracksAndRoutesL;EDITOR_COMMENT;Editor comments;CONTAINS DATA
+2425;FIELD;NIS.TracksAndRoutesL;VERIFIED;Verified state;CONTAINS DATA
+2426;FIELD;NIS.TracksAndRoutesL;VERIFIER;Verifier;CONTAINS DATA
+2427;FIELD;NIS.TracksAndRoutesL;VERIFIED_DATE;Verified date;CONTAINS DATA
+2428;FIELD;NIS.TracksAndRoutesL;DELETE_COMMENT;Delete comment;CONTAINS DATA
+2429;FIELD;NIS.TracksAndRoutesL;PLTS_COMP_SCALE;PLTS compilation scale;CONTAINS DATA
+2430;FIELD;NIS.TracksAndRoutesL;NIS_PRODUCTS;NIS product type;CONTAINS DATA
+2431;FIELD;NIS.TracksAndRoutesL;IS_CONFLATE;Is Conflate;CONTAINS DATA
+2432;FIELD;NIS.TracksAndRoutesL;COMCHA;Communication channel;CONTAINS DATA
+2433;FIELD;NIS.TracksAndRoutesL;DATEND;Date end;CONTAINS DATA
+2434;FIELD;NIS.TracksAndRoutesL;DATSTA;Date start;CONTAINS DATA
+2435;FIELD;NIS.TracksAndRoutesL;ORIENT;Orientation;CONTAINS DATA
+2436;FIELD;NIS.TracksAndRoutesL;PEREND;Periodic date end;CONTAINS DATA
+2437;FIELD;NIS.TracksAndRoutesL;PERSTA;Periodic date start;CONTAINS DATA
+2438;FIELD;NIS.TracksAndRoutesL;STATUS;Status;CONTAINS DATA
+2439;FIELD;NIS.TracksAndRoutesL;TRAFIC;Traffic flow;CONTAINS DATA
+2440;FIELD;NIS.TracksAndRoutesL;CATFRY;Category of ferry;CONTAINS DATA
+2441;FIELD;NIS.TracksAndRoutesL;CATNAV;Category of navigation line;CONTAINS DATA
+2442;FIELD;NIS.TracksAndRoutesL;CATTRK;Category of recommended track;CONTAINS DATA
+2443;FIELD;NIS.TracksAndRoutesL;CATTSS;Category of Traffic Separation Scheme;CONTAINS DATA
+2444;FIELD;NIS.TracksAndRoutesL;DRVAL1;Depth range value 1;CONTAINS DATA
+2445;FIELD;NIS.TracksAndRoutesL;DRVAL2;Depth range value 2;CONTAINS DATA
+2446;FIELD;NIS.TracksAndRoutesL;QUASOU;Quality of sounding measurement;CONTAINS DATA
+2447;FIELD;NIS.TracksAndRoutesL;SOUACC;Sounding accuracy;CONTAINS DATA
+2448;FIELD;NIS.TracksAndRoutesL;TECSOU;Technique of sounding measurement;CONTAINS DATA
+2449;FIELD;NIS.TracksAndRoutesL;VERDAT;Vertical datum;CONTAINS DATA
+2450;FIELD;NIS.TracksAndRoutesL;FCSubtype;FCSubtype;CONTAINS DATA
+2451;FIELD;NIS.TracksAndRoutesL;SCAMIN_STEP;SCAMIN step;CONTAINS DATA
+2452;FIELD;NIS.TracksAndRoutesL;NIS_VERIFIED;NIS Verified state;CONTAINS DATA
+2453;FIELD;NIS.TracksAndRoutesL;NIS_VERIFIER;NIS Verifier;CONTAINS DATA
+2454;FIELD;NIS.TracksAndRoutesL;NIS_VERIFY_DATE;NIS Verified date;CONTAINS DATA
+2455;FIELD;NIS.TracksAndRoutesL;NIS_EDITOR;NIS_EDITOR;CONTAINS DATA
+2456;FIELD;NIS.TracksAndRoutesL;NIS_LAST_MOD;NIS_LAST_MOD;CONTAINS DATA
+2457;FIELD;NIS.TracksAndRoutesL;NIS_EDITOR_COMMENT;NIS editor comments;CONTAINS DATA
+2458;FIELD;NIS.TracksAndRoutesL;Shape;Shape;CONTAINS DATA
+2459;FIELD;NIS.TracksAndRoutesL;Shape.STLength();Shape.STLength();CONTAINS DATA
+2460;SUBTYPE;NIS.TracksAndRoutesP;PRCARE_PrecautionaryArea;1;0
+2461;SUBTYPE;NIS.TracksAndRoutesP;RCTLPT_RecommendedTrafficLanePart;5;32
+2462;SUBTYPE;NIS.TracksAndRoutesP;RDOCAL_RadioCallingInPoint;10;12
+2463;FIELD;NIS.TracksAndRoutesP;OBJECTID;OBJECTID;CONTAINS DATA
+2464;FIELD;NIS.TracksAndRoutesP;GlobalID;GlobalID;CONTAINS DATA
+2465;FIELD;NIS.TracksAndRoutesP;DSNM;Data set name;CONTAINS DATA
+2466;FIELD;NIS.TracksAndRoutesP;LNAM;Long name;CONTAINS DATA
+2467;FIELD;NIS.TracksAndRoutesP;NOID;Nautical Object ID;CONTAINS DATA
+2468;FIELD;NIS.TracksAndRoutesP;INFORM;Information;CONTAINS DATA
+2469;FIELD;NIS.TracksAndRoutesP;NINFOM;Information in national language;CONTAINS DATA
+2470;FIELD;NIS.TracksAndRoutesP;NTXTDS;Textual description in national language;CONTAINS DATA
+2471;FIELD;NIS.TracksAndRoutesP;PICREP;Pictorial representation;CONTAINS DATA
+2472;FIELD;NIS.TracksAndRoutesP;TXTDSC;Textual description;CONTAINS DATA
+2473;FIELD;NIS.TracksAndRoutesP;SORDAT;Source date;CONTAINS DATA
+2474;FIELD;NIS.TracksAndRoutesP;SORIND;Source indication;CONTAINS DATA
+2475;FIELD;NIS.TracksAndRoutesP;OBJNAM;Object name;CONTAINS DATA
+2476;FIELD;NIS.TracksAndRoutesP;NOBJNM;Object name in national language;CONTAINS DATA
+2477;FIELD;NIS.TracksAndRoutesP;EDITOR;Editor;CONTAINS DATA
+2478;FIELD;NIS.TracksAndRoutesP;LAST_MOD;Last modified date;CONTAINS DATA
+2479;FIELD;NIS.TracksAndRoutesP;EDITOR_COMMENT;Editor comments;CONTAINS DATA
+2480;FIELD;NIS.TracksAndRoutesP;VERIFIED;Verified state;CONTAINS DATA
+2481;FIELD;NIS.TracksAndRoutesP;VERIFIER;Verifier;CONTAINS DATA
+2482;FIELD;NIS.TracksAndRoutesP;VERIFIED_DATE;Verified date;CONTAINS DATA
+2483;FIELD;NIS.TracksAndRoutesP;DELETE_COMMENT;Delete comment;CONTAINS DATA
+2484;FIELD;NIS.TracksAndRoutesP;PLTS_COMP_SCALE;PLTS compilation scale;CONTAINS DATA
+2485;FIELD;NIS.TracksAndRoutesP;NIS_PRODUCTS;NIS product type;CONTAINS DATA
+2486;FIELD;NIS.TracksAndRoutesP;IS_CONFLATE;Is Conflate;CONTAINS DATA
+2487;FIELD;NIS.TracksAndRoutesP;COMCHA;Communication channel;CONTAINS DATA
+2488;FIELD;NIS.TracksAndRoutesP;DATEND;Date end;CONTAINS DATA
+2489;FIELD;NIS.TracksAndRoutesP;DATSTA;Date start;CONTAINS DATA
+2490;FIELD;NIS.TracksAndRoutesP;ORIENT;Orientation;CONTAINS DATA
+2491;FIELD;NIS.TracksAndRoutesP;PEREND;Periodic date end;CONTAINS DATA
+2492;FIELD;NIS.TracksAndRoutesP;PERSTA;Periodic date start;CONTAINS DATA
+2493;FIELD;NIS.TracksAndRoutesP;STATUS;Status;CONTAINS DATA
+2494;FIELD;NIS.TracksAndRoutesP;TRAFIC;Traffic flow;CONTAINS DATA
+2495;FIELD;NIS.TracksAndRoutesP;FCSubtype;FCSubtype;CONTAINS DATA
+2496;FIELD;NIS.TracksAndRoutesP;RESTRN;Restriction;CONTAINS DATA
+2497;FIELD;NIS.TracksAndRoutesP;SCAMIN_STEP;SCAMIN step;CONTAINS DATA
+2498;FIELD;NIS.TracksAndRoutesP;P_QUAPOS;Quality of Position;CONTAINS DATA
+2499;FIELD;NIS.TracksAndRoutesP;P_POSACC;Positional Accuracy;CONTAINS DATA
+2500;FIELD;NIS.TracksAndRoutesP;P_HORDAT;Horizontal Datum;CONTAINS DATA
+2501;FIELD;NIS.TracksAndRoutesP;NIS_VERIFIED;NIS Verified state;CONTAINS DATA
+2502;FIELD;NIS.TracksAndRoutesP;NIS_VERIFIER;NIS Verifier;CONTAINS DATA
+2503;FIELD;NIS.TracksAndRoutesP;NIS_VERIFY_DATE;NIS Verified date;CONTAINS DATA
+2504;FIELD;NIS.TracksAndRoutesP;NIS_EDITOR;NIS_EDITOR;CONTAINS DATA
+2505;FIELD;NIS.TracksAndRoutesP;NIS_LAST_MOD;NIS_LAST_MOD;CONTAINS DATA
+2506;FIELD;NIS.TracksAndRoutesP;NIS_EDITOR_COMMENT;NIS editor comments;CONTAINS DATA
+2507;FIELD;NIS.TracksAndRoutesP;Shape;Shape;CONTAINS DATA
+2508;SUBTYPE;NIS.UserDefinedFeaturesA;NEWOBJ_NewObject;1;0
+2509;FIELD;NIS.UserDefinedFeaturesA;OBJECTID;OBJECTID;EMPTY
+2510;FIELD;NIS.UserDefinedFeaturesA;GlobalID;GlobalID;EMPTY
+2511;FIELD;NIS.UserDefinedFeaturesA;DSNM;Data set name;EMPTY
+2512;FIELD;NIS.UserDefinedFeaturesA;LNAM;Long name;EMPTY
+2513;FIELD;NIS.UserDefinedFeaturesA;NOID;Nautical Object ID;EMPTY
+2514;FIELD;NIS.UserDefinedFeaturesA;INFORM;Information;EMPTY
+2515;FIELD;NIS.UserDefinedFeaturesA;NINFOM;Information in national language;EMPTY
+2516;FIELD;NIS.UserDefinedFeaturesA;NTXTDS;Textual description in national language;EMPTY
+2517;FIELD;NIS.UserDefinedFeaturesA;PICREP;Pictorial representation;EMPTY
+2518;FIELD;NIS.UserDefinedFeaturesA;TXTDSC;Textual description;EMPTY
+2519;FIELD;NIS.UserDefinedFeaturesA;SORDAT;Source date;EMPTY
+2520;FIELD;NIS.UserDefinedFeaturesA;SORIND;Source indication;EMPTY
+2521;FIELD;NIS.UserDefinedFeaturesA;OBJNAM;Object name;EMPTY
+2522;FIELD;NIS.UserDefinedFeaturesA;NOBJNM;Object name in national language;EMPTY
+2523;FIELD;NIS.UserDefinedFeaturesA;EDITOR;Editor;EMPTY
+2524;FIELD;NIS.UserDefinedFeaturesA;LAST_MOD;Last modified date;EMPTY
+2525;FIELD;NIS.UserDefinedFeaturesA;EDITOR_COMMENT;Editor comments;EMPTY
+2526;FIELD;NIS.UserDefinedFeaturesA;VERIFIED;Verified state;EMPTY
+2527;FIELD;NIS.UserDefinedFeaturesA;VERIFIER;Verifier;EMPTY
+2528;FIELD;NIS.UserDefinedFeaturesA;VERIFIED_DATE;Verified date;EMPTY
+2529;FIELD;NIS.UserDefinedFeaturesA;DELETE_COMMENT;Delete comment;EMPTY
+2530;FIELD;NIS.UserDefinedFeaturesA;PLTS_COMP_SCALE;PLTS compilation scale;EMPTY
+2531;FIELD;NIS.UserDefinedFeaturesA;NIS_PRODUCTS;NIS product type;EMPTY
+2532;FIELD;NIS.UserDefinedFeaturesA;IS_CONFLATE;Is Conflate;EMPTY
+2533;FIELD;NIS.UserDefinedFeaturesA;CLSDEF;Object Class Definition;EMPTY
+2534;FIELD;NIS.UserDefinedFeaturesA;CLSNAM;Object Class Name;EMPTY
+2535;FIELD;NIS.UserDefinedFeaturesA;COLOUR;Colour;EMPTY
+2536;FIELD;NIS.UserDefinedFeaturesA;COLPAT;Colour pattern;EMPTY
+2537;FIELD;NIS.UserDefinedFeaturesA;CONDTN;Condition;EMPTY
+2538;FIELD;NIS.UserDefinedFeaturesA;CONRAD;Conspicuous, radar;EMPTY
+2539;FIELD;NIS.UserDefinedFeaturesA;CONVIS;Conspicuous, visually;EMPTY
+2540;FIELD;NIS.UserDefinedFeaturesA;DATEND;Date end;EMPTY
+2541;FIELD;NIS.UserDefinedFeaturesA;DATSTA;Date start;EMPTY
+2542;FIELD;NIS.UserDefinedFeaturesA;NATION;Nationality;EMPTY
+2543;FIELD;NIS.UserDefinedFeaturesA;PEREND;Periodic date end;EMPTY
+2544;FIELD;NIS.UserDefinedFeaturesA;PERSTA;Periodic date start;EMPTY
+2545;FIELD;NIS.UserDefinedFeaturesA;RESTRN;Restriction;EMPTY
+2546;FIELD;NIS.UserDefinedFeaturesA;STATUS;Status;EMPTY
+2547;FIELD;NIS.UserDefinedFeaturesA;SYMINS;Symbol Instruction;EMPTY
+2548;FIELD;NIS.UserDefinedFeaturesA;WATLEV;Water level effect;EMPTY
+2549;FIELD;NIS.UserDefinedFeaturesA;FCSubtype;FCSubtype;EMPTY
+2550;FIELD;NIS.UserDefinedFeaturesA;SCAMIN_STEP;SCAMIN step;EMPTY
+2551;FIELD;NIS.UserDefinedFeaturesA;NIS_VERIFIED;NIS Verified state;EMPTY
+2552;FIELD;NIS.UserDefinedFeaturesA;NIS_VERIFIER;NIS Verifier;EMPTY
+2553;FIELD;NIS.UserDefinedFeaturesA;NIS_VERIFY_DATE;NIS Verified date;EMPTY
+2554;FIELD;NIS.UserDefinedFeaturesA;NIS_EDITOR;NIS_EDITOR;EMPTY
+2555;FIELD;NIS.UserDefinedFeaturesA;NIS_LAST_MOD;NIS_LAST_MOD;EMPTY
+2556;FIELD;NIS.UserDefinedFeaturesA;NIS_EDITOR_COMMENT;NIS editor comments;EMPTY
+2557;FIELD;NIS.UserDefinedFeaturesA;Shape;Shape;EMPTY
+2558;FIELD;NIS.UserDefinedFeaturesA;Shape.STArea();Shape.STArea();EMPTY
+2559;FIELD;NIS.UserDefinedFeaturesA;Shape.STLength();Shape.STLength();EMPTY
+2560;SUBTYPE;NIS.UserDefinedFeaturesL;NEWOBJ_NewObject;1;0
+2561;FIELD;NIS.UserDefinedFeaturesL;OBJECTID;OBJECTID;EMPTY
+2562;FIELD;NIS.UserDefinedFeaturesL;GlobalID;GlobalID;EMPTY
+2563;FIELD;NIS.UserDefinedFeaturesL;DSNM;Data set name;EMPTY
+2564;FIELD;NIS.UserDefinedFeaturesL;LNAM;Long name;EMPTY
+2565;FIELD;NIS.UserDefinedFeaturesL;NOID;Nautical Object ID;EMPTY
+2566;FIELD;NIS.UserDefinedFeaturesL;INFORM;Information;EMPTY
+2567;FIELD;NIS.UserDefinedFeaturesL;NINFOM;Information in national language;EMPTY
+2568;FIELD;NIS.UserDefinedFeaturesL;NTXTDS;Textual description in national language;EMPTY
+2569;FIELD;NIS.UserDefinedFeaturesL;PICREP;Pictorial representation;EMPTY
+2570;FIELD;NIS.UserDefinedFeaturesL;TXTDSC;Textual description;EMPTY
+2571;FIELD;NIS.UserDefinedFeaturesL;SORDAT;Source date;EMPTY
+2572;FIELD;NIS.UserDefinedFeaturesL;SORIND;Source indication;EMPTY
+2573;FIELD;NIS.UserDefinedFeaturesL;OBJNAM;Object name;EMPTY
+2574;FIELD;NIS.UserDefinedFeaturesL;NOBJNM;Object name in national language;EMPTY
+2575;FIELD;NIS.UserDefinedFeaturesL;EDITOR;Editor;EMPTY
+2576;FIELD;NIS.UserDefinedFeaturesL;LAST_MOD;Last modified date;EMPTY
+2577;FIELD;NIS.UserDefinedFeaturesL;EDITOR_COMMENT;Editor comments;EMPTY
+2578;FIELD;NIS.UserDefinedFeaturesL;VERIFIED;Verified state;EMPTY
+2579;FIELD;NIS.UserDefinedFeaturesL;VERIFIER;Verifier;EMPTY
+2580;FIELD;NIS.UserDefinedFeaturesL;VERIFIED_DATE;Verified date;EMPTY
+2581;FIELD;NIS.UserDefinedFeaturesL;DELETE_COMMENT;Delete comment;EMPTY
+2582;FIELD;NIS.UserDefinedFeaturesL;PLTS_COMP_SCALE;PLTS compilation scale;EMPTY
+2583;FIELD;NIS.UserDefinedFeaturesL;NIS_PRODUCTS;NIS product type;EMPTY
+2584;FIELD;NIS.UserDefinedFeaturesL;IS_CONFLATE;Is Conflate;EMPTY
+2585;FIELD;NIS.UserDefinedFeaturesL;CLSDEF;Object Class Definition;EMPTY
+2586;FIELD;NIS.UserDefinedFeaturesL;CLSNAM;Object Class Name;EMPTY
+2587;FIELD;NIS.UserDefinedFeaturesL;COLOUR;Colour;EMPTY
+2588;FIELD;NIS.UserDefinedFeaturesL;COLPAT;Colour pattern;EMPTY
+2589;FIELD;NIS.UserDefinedFeaturesL;CONDTN;Condition;EMPTY
+2590;FIELD;NIS.UserDefinedFeaturesL;CONRAD;Conspicuous, radar;EMPTY
+2591;FIELD;NIS.UserDefinedFeaturesL;CONVIS;Conspicuous, visually;EMPTY
+2592;FIELD;NIS.UserDefinedFeaturesL;DATEND;Date end;EMPTY
+2593;FIELD;NIS.UserDefinedFeaturesL;DATSTA;Date start;EMPTY
+2594;FIELD;NIS.UserDefinedFeaturesL;NATION;Nationality;EMPTY
+2595;FIELD;NIS.UserDefinedFeaturesL;PEREND;Periodic date end;EMPTY
+2596;FIELD;NIS.UserDefinedFeaturesL;PERSTA;Periodic date start;EMPTY
+2597;FIELD;NIS.UserDefinedFeaturesL;RESTRN;Restriction;EMPTY
+2598;FIELD;NIS.UserDefinedFeaturesL;STATUS;Status;EMPTY
+2599;FIELD;NIS.UserDefinedFeaturesL;SYMINS;Symbol Instruction;EMPTY
+2600;FIELD;NIS.UserDefinedFeaturesL;WATLEV;Water level effect;EMPTY
+2601;FIELD;NIS.UserDefinedFeaturesL;FCSubtype;FCSubtype;EMPTY
+2602;FIELD;NIS.UserDefinedFeaturesL;SCAMIN_STEP;SCAMIN step;EMPTY
+2603;FIELD;NIS.UserDefinedFeaturesL;NIS_VERIFIED;NIS Verified state;EMPTY
+2604;FIELD;NIS.UserDefinedFeaturesL;NIS_VERIFIER;NIS Verifier;EMPTY
+2605;FIELD;NIS.UserDefinedFeaturesL;NIS_VERIFY_DATE;NIS Verified date;EMPTY
+2606;FIELD;NIS.UserDefinedFeaturesL;NIS_EDITOR;NIS_EDITOR;EMPTY
+2607;FIELD;NIS.UserDefinedFeaturesL;NIS_LAST_MOD;NIS_LAST_MOD;EMPTY
+2608;FIELD;NIS.UserDefinedFeaturesL;NIS_EDITOR_COMMENT;NIS editor comments;EMPTY
+2609;FIELD;NIS.UserDefinedFeaturesL;Shape;Shape;EMPTY
+2610;FIELD;NIS.UserDefinedFeaturesL;Shape.STLength();Shape.STLength();EMPTY
+2611;SUBTYPE;NIS.UserDefinedFeaturesP;NEWOBJ_NewObject;1;14
+2612;FIELD;NIS.UserDefinedFeaturesP;OBJECTID;OBJECTID;CONTAINS DATA
+2613;FIELD;NIS.UserDefinedFeaturesP;GlobalID;GlobalID;CONTAINS DATA
+2614;FIELD;NIS.UserDefinedFeaturesP;DSNM;Data set name;CONTAINS DATA
+2615;FIELD;NIS.UserDefinedFeaturesP;LNAM;Long name;CONTAINS DATA
+2616;FIELD;NIS.UserDefinedFeaturesP;NOID;Nautical Object ID;CONTAINS DATA
+2617;FIELD;NIS.UserDefinedFeaturesP;INFORM;Information;CONTAINS DATA
+2618;FIELD;NIS.UserDefinedFeaturesP;NINFOM;Information in national language;CONTAINS DATA
+2619;FIELD;NIS.UserDefinedFeaturesP;NTXTDS;Textual description in national language;CONTAINS DATA
+2620;FIELD;NIS.UserDefinedFeaturesP;PICREP;Pictorial representation;CONTAINS DATA
+2621;FIELD;NIS.UserDefinedFeaturesP;TXTDSC;Textual description;CONTAINS DATA
+2622;FIELD;NIS.UserDefinedFeaturesP;SORDAT;Source date;CONTAINS DATA
+2623;FIELD;NIS.UserDefinedFeaturesP;SORIND;Source indication;CONTAINS DATA
+2624;FIELD;NIS.UserDefinedFeaturesP;OBJNAM;Object name;CONTAINS DATA
+2625;FIELD;NIS.UserDefinedFeaturesP;NOBJNM;Object name in national language;CONTAINS DATA
+2626;FIELD;NIS.UserDefinedFeaturesP;EDITOR;Editor;CONTAINS DATA
+2627;FIELD;NIS.UserDefinedFeaturesP;LAST_MOD;Last modified date;CONTAINS DATA
+2628;FIELD;NIS.UserDefinedFeaturesP;EDITOR_COMMENT;Editor comments;CONTAINS DATA
+2629;FIELD;NIS.UserDefinedFeaturesP;VERIFIED;Verified state;CONTAINS DATA
+2630;FIELD;NIS.UserDefinedFeaturesP;VERIFIER;Verifier;CONTAINS DATA
+2631;FIELD;NIS.UserDefinedFeaturesP;VERIFIED_DATE;Verified date;CONTAINS DATA
+2632;FIELD;NIS.UserDefinedFeaturesP;DELETE_COMMENT;Delete comment;CONTAINS DATA
+2633;FIELD;NIS.UserDefinedFeaturesP;PLTS_COMP_SCALE;PLTS compilation scale;CONTAINS DATA
+2634;FIELD;NIS.UserDefinedFeaturesP;NIS_PRODUCTS;NIS product type;CONTAINS DATA
+2635;FIELD;NIS.UserDefinedFeaturesP;IS_CONFLATE;Is Conflate;CONTAINS DATA
+2636;FIELD;NIS.UserDefinedFeaturesP;CLSDEF;Object Class Definition;CONTAINS DATA
+2637;FIELD;NIS.UserDefinedFeaturesP;CLSNAM;Object Class Name;CONTAINS DATA
+2638;FIELD;NIS.UserDefinedFeaturesP;COLOUR;Colour;CONTAINS DATA
+2639;FIELD;NIS.UserDefinedFeaturesP;COLPAT;Colour pattern;CONTAINS DATA
+2640;FIELD;NIS.UserDefinedFeaturesP;CONDTN;Condition;CONTAINS DATA
+2641;FIELD;NIS.UserDefinedFeaturesP;CONRAD;Conspicuous, radar;CONTAINS DATA
+2642;FIELD;NIS.UserDefinedFeaturesP;CONVIS;Conspicuous, visually;CONTAINS DATA
+2643;FIELD;NIS.UserDefinedFeaturesP;DATEND;Date end;CONTAINS DATA
+2644;FIELD;NIS.UserDefinedFeaturesP;DATSTA;Date start;CONTAINS DATA
+2645;FIELD;NIS.UserDefinedFeaturesP;NATION;Nationality;CONTAINS DATA
+2646;FIELD;NIS.UserDefinedFeaturesP;PEREND;Periodic date end;CONTAINS DATA
+2647;FIELD;NIS.UserDefinedFeaturesP;PERSTA;Periodic date start;CONTAINS DATA
+2648;FIELD;NIS.UserDefinedFeaturesP;RESTRN;Restriction;CONTAINS DATA
+2649;FIELD;NIS.UserDefinedFeaturesP;STATUS;Status;CONTAINS DATA
+2650;FIELD;NIS.UserDefinedFeaturesP;SYMINS;Symbol Instruction;CONTAINS DATA
+2651;FIELD;NIS.UserDefinedFeaturesP;WATLEV;Water level effect;CONTAINS DATA
+2652;FIELD;NIS.UserDefinedFeaturesP;FCSubtype;FCSubtype;CONTAINS DATA
+2653;FIELD;NIS.UserDefinedFeaturesP;SCAMIN_STEP;SCAMIN step;CONTAINS DATA
+2654;FIELD;NIS.UserDefinedFeaturesP;P_QUAPOS;Quality of Position;CONTAINS DATA
+2655;FIELD;NIS.UserDefinedFeaturesP;P_POSACC;Positional Accuracy;CONTAINS DATA
+2656;FIELD;NIS.UserDefinedFeaturesP;P_HORDAT;Horizontal Datum;CONTAINS DATA
+2657;FIELD;NIS.UserDefinedFeaturesP;NIS_VERIFIED;NIS Verified state;CONTAINS DATA
+2658;FIELD;NIS.UserDefinedFeaturesP;NIS_VERIFIER;NIS Verifier;CONTAINS DATA
+2659;FIELD;NIS.UserDefinedFeaturesP;NIS_VERIFY_DATE;NIS Verified date;CONTAINS DATA
+2660;FIELD;NIS.UserDefinedFeaturesP;NIS_EDITOR;NIS_EDITOR;CONTAINS DATA
+2661;FIELD;NIS.UserDefinedFeaturesP;NIS_LAST_MOD;NIS_LAST_MOD;CONTAINS DATA
+2662;FIELD;NIS.UserDefinedFeaturesP;NIS_EDITOR_COMMENT;NIS editor comments;CONTAINS DATA
+2663;FIELD;NIS.UserDefinedFeaturesP;Shape;Shape;CONTAINS DATA
+

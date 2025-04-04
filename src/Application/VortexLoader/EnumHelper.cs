@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace VortexLoader
+namespace S100Framework.Applications
 {
     public static class EnumHelper
     {

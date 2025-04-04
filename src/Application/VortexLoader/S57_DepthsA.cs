@@ -10,8 +10,6 @@ namespace S100Framework.Applications
         private static void S57_DepthsA(Geodatabase source, Geodatabase target, QueryFilter filter) {
             var tableName = "DepthsA";
 
-            
-
             using var s = source.OpenDataset<FeatureClass>(source.GetName("DepthsA"));
             using var featureClass = target.OpenDataset<FeatureClass>(target.GetName("surface"));
 
@@ -42,21 +40,20 @@ namespace S100Framework.Applications
                 var tecsou = current.TECSOU ?? default;
 
                 switch (subtype) {
-                    case 1: {     // DEPARE
-
+                    case 1: {     // DEPARE // SKIN OF EARTH
                             var instance = new DepthArea {
                                 depthRangeMinimumValue = drval1,
-                                depthRangeMaximumValue = drval2.GetValueOrDefault(),
+                                depthRangeMaximumValue = drval2.GetValueOrDefault()
                             };
 
+                            // TODO: Spatial association to Spatial Quality
 
                             AddInformation(instance.information, feature);
 
                             buffer["ps"] = ps101;
-
                             buffer["code"] = instance.GetType().Name;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
-                            buffer["shape"] = current.SHAPE;
+                            SetShape(buffer,current.SHAPE);
                             insert.Insert(buffer);
                             Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
                             convertedCount++;
@@ -64,87 +61,56 @@ namespace S100Framework.Applications
                         }
                         break;
 
-                    case 5: {     // DRGARE
+                    case 5: {     // DRGARE // SKIN OF EARTH
                             var instance = new DredgedArea {
                                 depthRangeMinimumValue = drval1,
                                 depthRangeMaximumValue = drval2,
-                                dredgedDate = null,
-                                maximumPermittedDraught = null,
-                                verticalUncertainty = null,
                             };
 
+                            
+
                             if (!string.IsNullOrEmpty(sordat)) {
-                                //System.Diagnostics.Debugger.Break();    //  Dredged Date
-
-
-
+                                DateHelper.TryConvertToDateOnly(sordat, out var date);
+                                instance.dredgedDate = date;
                             }
 
-                            if (!string.IsNullOrEmpty(restrn)) {
-                                foreach (var c in restrn.Split(',', StringSplitOptions.RemoveEmptyEntries)) {
-                                    restriction? e = c.ToLowerInvariant() switch {
-                                        "1" => restriction.AnchoringProhibited,
-                                        "2" => restriction.AnchoringRestricted,
-                                        "3" => restriction.FishingProhibited,
-                                        "4" => restriction.FishingRestricted,
-                                        "5" => restriction.TrawlingProhibited,
-                                        "6" => restriction.TrawlingRestricted,
-                                        "7" => restriction.EntryProhibited,
-                                        "8" => restriction.EntryRestricted,
-                                        "9" => restriction.DredgingProhibited,
-                                        "10" => restriction.DredgingRestricted,
-                                        "11" => restriction.DischargingProhibited,
-                                        "12" => restriction.DischargingRestricted,
-                                        "13" => restriction.NoWake,
-                                        "14" => restriction.AreaToBeAvoided,
-                                        "15" => restriction.ConstructionProhibited,
-                                        "16" => restriction.DischargingProhibited,
-                                        "17" => restriction.DischargingRestricted,
-                                        "18" => restriction.IndustrialOrMineralExplorationDevelopmentProhibited,
-                                        "19" => restriction.IndustrialOrMineralExplorationDevelopmentRestricted,
-                                        "20" => restriction.DrillingProhibited,
-                                        _ => throw new IndexOutOfRangeException(),
-                                    };
-                                    if (e.HasValue) {
-                                        instance.restriction.Add(e.Value);
-                                    }
+                            if (current.RESTRN != default) {
+                                if (current.RESTRN == "-32767")
+                                    instance.restriction = EnumHelper.GetEnumValues<restriction>(-1);
+                                else {
+                                    instance.restriction = EnumHelper.GetEnumValues<restriction>(current.RESTRN);
                                 }
                             }
 
                             // The S-57 attribute QUASOU for DEPARE will not be converted. It is considered that this attribute is
                             // not relevant for Depth Area in S - 101.
-                            
-                            //if (!string.IsNullOrEmpty(quasou)) {
+                            //if (current.QUASOU != default) {
+                            //    if (current.QUASOU == "-32767")
+                            //        instance.qualityOfVerticalMeasurement = EnumHelper.GetEnumValue<qualityOfVerticalMeasurement>("-1");
+                            //    else {
+                            //        instance.qualityOfVerticalMeasurement = EnumHelper.GetEnumValue<qualityOfVerticalMeasurement>(current);
+                            //    }
+                            //}
 
-                                //    instance.qualityOfVerticalMeasurement = quasou.ToLowerInvariant() switch {
-                                //        "1" => qualityOfVerticalMeasurement.DepthKnown,
-                                //        "2" => qualityOfVerticalMeasurement.DepthOrLeastDepthUnknown,
-                                //        _ => throw new IndexOutOfRangeException(),
-                                //    };
-                                //}
+                            //if (current.SOUACC.HasValue) {
+                            //    instance.verticalUncertainty = new DomainModel.S101.ComplexAttributes.verticalUncertainty() {
+                            //        uncertaintyFixed = current.SOUACC.Value
+                            //    };
+                            //}
+
+                            if (!string.IsNullOrEmpty(restrn)) {
+                                instance.restriction = EnumHelper.GetEnumValues<restriction>(restrn);
+                            }
 
                             if (!string.IsNullOrEmpty(tecsou)) {
-                                foreach (var c in tecsou.Split(',', StringSplitOptions.RemoveEmptyEntries)) {
-                                    techniqueOfVerticalMeasurement? e = c.ToLowerInvariant() switch {
-                                        "1" => techniqueOfVerticalMeasurement.FoundByEchoSounder,
-                                        "2" => techniqueOfVerticalMeasurement.FoundBySideScanSonar,
-                                        "3" => techniqueOfVerticalMeasurement.FoundByMultiBeam,
-                                        "4" => techniqueOfVerticalMeasurement.FoundByDiver,
-                                        "5" => techniqueOfVerticalMeasurement.FoundByLeadLine,
-                                        "8" => techniqueOfVerticalMeasurement.SweptByVerticalAcousticSystem,
-                                        "9" => techniqueOfVerticalMeasurement.FoundByElectromagneticSensor,
-                                        "10" => techniqueOfVerticalMeasurement.Photogrammetry,
-                                        _ => throw new IndexOutOfRangeException(),
-                                    };
-                                    if (e.HasValue) {
-                                        instance.techniqueOfVerticalMeasurement.Add(e.Value);
-                                    }
-                                }
+                                instance.techniqueOfVerticalMeasurement = EnumHelper.GetEnumValues<techniqueOfVerticalMeasurement>(tecsou);
                             }
 
                             //TODO: 	verticalUncertainty
 
-                            //TODO: 	maximumPermittedDraught
+                            //TODO: maximumPermittedDraught - Not converted
+                            
+                            
 
                             instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
 
@@ -154,7 +120,7 @@ namespace S100Framework.Applications
 
                             buffer["code"] = instance.GetType().Name;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
-                            buffer["shape"] = current.SHAPE;
+                            SetShape(buffer,current.SHAPE);
                             insert.Insert(buffer);
                             Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
                             convertedCount++;
@@ -177,14 +143,14 @@ namespace S100Framework.Applications
 
                             buffer["code"] = instance.GetType().Name;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
-                            buffer["shape"] = current.SHAPE;
+                            SetShape(buffer,current.SHAPE);
                             insert.Insert(buffer);
                             Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
                             convertedCount++;
                         }
                         break;
 
-                    case 15: {    // UNSARE
+                    case 15: {    // UNSARE  // SKIN OF EARTH
                             var instance = new UnsurveyedArea {
                             };
                             AddInformation(instance.information, feature);
@@ -193,7 +159,7 @@ namespace S100Framework.Applications
 
                             buffer["code"] = instance.GetType().Name;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
-                            buffer["shape"] = current.SHAPE;
+                            SetShape(buffer,current.SHAPE);
                             insert.Insert(buffer);
                             Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
                             convertedCount++;

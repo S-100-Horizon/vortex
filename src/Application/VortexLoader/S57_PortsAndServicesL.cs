@@ -54,7 +54,7 @@ namespace S100Framework.Applications
                             var instance = new Berth() {
                             };
                             if (plts_comp_scale != default) {
-                                instance.scaleMinimum = plts_comp_scale;
+                                //instance.scaleMinimum = plts_comp_scale;
                             }
 
 
@@ -67,7 +67,7 @@ namespace S100Framework.Applications
 
                             buffer["code"] = instance.GetType().Name;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
-                            buffer["shape"] = current.SHAPE;
+                            SetShape(buffer,current.SHAPE);
                             insert.Insert(buffer);
                             Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
                             convertedCount++;
@@ -77,7 +77,7 @@ namespace S100Framework.Applications
                             var instance = new Canal() {
                             };
                             if (plts_comp_scale != default) {
-                                instance.scaleMinimum = plts_comp_scale;
+                                //instance.scaleMinimum = plts_comp_scale;
                             }
 
 
@@ -95,7 +95,7 @@ namespace S100Framework.Applications
 
                             buffer["code"] = instance.GetType().Name;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
-                            buffer["shape"] = current.SHAPE;
+                            SetShape(buffer,current.SHAPE);
                             insert.Insert(buffer);
                             Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
                             convertedCount++;
@@ -105,7 +105,7 @@ namespace S100Framework.Applications
                             var instance = new Causeway() {
                             };
                             if (plts_comp_scale != default) {
-                                instance.scaleMinimum = plts_comp_scale;
+                                //instance.scaleMinimum = plts_comp_scale;
                             }
 
                             if (current.CONDTN.HasValue) {
@@ -121,7 +121,7 @@ namespace S100Framework.Applications
 
                             buffer["code"] = instance.GetType().Name;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
-                            buffer["shape"] = current.SHAPE;
+                            SetShape(buffer,current.SHAPE);
                             insert.Insert(buffer);
                             Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
                             convertedCount++;
@@ -131,7 +131,7 @@ namespace S100Framework.Applications
                             var instance = new Dyke() {
                             };
                             if (plts_comp_scale != default) {
-                                instance.scaleMinimum = plts_comp_scale;
+                                //instance.scaleMinimum = plts_comp_scale;
                             }
                             
                             instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
@@ -140,7 +140,7 @@ namespace S100Framework.Applications
 
                             buffer["code"] = instance.GetType().Name;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
-                            buffer["shape"] = current.SHAPE;
+                            SetShape(buffer,current.SHAPE);
                             insert.Insert(buffer);
                             Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
                             convertedCount++;
@@ -150,7 +150,7 @@ namespace S100Framework.Applications
                             var instance = new FloatingDock() {
                             };
                             if (plts_comp_scale != default) {
-                                instance.scaleMinimum = plts_comp_scale;
+                                //instance.scaleMinimum = plts_comp_scale;
                             }
                             if (current.CONDTN.HasValue) {
                                 instance.condition = GetCondition(current.CONDTN.Value);
@@ -165,7 +165,7 @@ namespace S100Framework.Applications
 
                             buffer["code"] = instance.GetType().Name;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
-                            buffer["shape"] = current.SHAPE;
+                            SetShape(buffer,current.SHAPE);
                             insert.Insert(buffer);
                             Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
                             convertedCount++;
@@ -175,7 +175,7 @@ namespace S100Framework.Applications
                             var instance = new Gate() {
                             };
                             if (plts_comp_scale != default) {
-                                instance.scaleMinimum = plts_comp_scale;
+                                //instance.scaleMinimum = plts_comp_scale;
                             }
 
                             if (current.CONDTN.HasValue) {
@@ -191,7 +191,7 @@ namespace S100Framework.Applications
 
                             buffer["code"] = instance.GetType().Name;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
-                            buffer["shape"] = current.SHAPE;
+                            SetShape(buffer,current.SHAPE);
                             insert.Insert(buffer);
                             Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
                             convertedCount++;
@@ -205,7 +205,7 @@ namespace S100Framework.Applications
                             if (catmor == 1 || catmor == 2) {
                                 var instance = new Dolphin();
                                 if (plts_comp_scale != default) {
-                                    instance.scaleMinimum = plts_comp_scale;
+                                    //instance.scaleMinimum = plts_comp_scale;
                                 }
 
                                 if (catmor != default) {
@@ -213,7 +213,6 @@ namespace S100Framework.Applications
                                         1 => new List<categoryOfDolphin>() { categoryOfDolphin.MooringDolphin },
                                         2 => new List<categoryOfDolphin>() { categoryOfDolphin.DeviationDolphin },
                                         -32767 =>new List<categoryOfDolphin>() { (categoryOfDolphin)(-1) },
-                                        // TODO: QUESTION: how to handle -1 on a required attribute without an S-101 equivalent "unknown". Illegal value assigned. MUST be fixed.
                                         _ => throw new IndexOutOfRangeException(),
                                     };
                                 }
@@ -223,7 +222,7 @@ namespace S100Framework.Applications
 
                                 buffer["code"] = instance.GetType().Name;
                                 buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
-                                buffer["shape"] = current.SHAPE;
+                                SetShape(buffer,current.SHAPE);
                                 insert.Insert(buffer);
                                 Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
                                 convertedCount++;
@@ -234,7 +233,7 @@ namespace S100Framework.Applications
                                 var instance = new Bollard();
 
                                 if (plts_comp_scale != default) {
-                                    instance.scaleMinimum = plts_comp_scale;
+                                    //instance.scaleMinimum = plts_comp_scale;
                                 }
 
                                 if (current.CONDTN.HasValue) {
@@ -251,7 +250,7 @@ namespace S100Framework.Applications
 
                                 buffer["code"] = instance.GetType().Name;
                                 buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
-                                buffer["shape"] = current.SHAPE;
+                                SetShape(buffer,current.SHAPE);
                                 insert.Insert(buffer);
                                 Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
                                 convertedCount++;
@@ -262,7 +261,7 @@ namespace S100Framework.Applications
                                 var instance = new ShorelineConstruction();
 
                                 if (plts_comp_scale != default) {
-                                    instance.scaleMinimum = plts_comp_scale;
+                                    //instance.scaleMinimum = plts_comp_scale;
                                 }
 
                                 instance.categoryOfShorelineConstruction = categoryOfShorelineConstruction.TieUpWall;
@@ -287,7 +286,7 @@ namespace S100Framework.Applications
 
                                 buffer["code"] = instance.GetType().Name;
                                 buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
-                                buffer["shape"] = current.SHAPE;
+                                SetShape(buffer,current.SHAPE);
                                 insert.Insert(buffer);
                                 Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
                                 convertedCount++;
@@ -298,7 +297,7 @@ namespace S100Framework.Applications
                                 var instance = new Pile();
 
                                 if (plts_comp_scale != default) {
-                                    instance.scaleMinimum = plts_comp_scale;
+                                    //instance.scaleMinimum = plts_comp_scale;
                                 }
 
                                 instance.categoryOfPile = categoryOfPile.MooringPost;
@@ -323,7 +322,7 @@ namespace S100Framework.Applications
 
                                 buffer["code"] = instance.GetType().Name;
                                 buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
-                                buffer["shape"] = current.SHAPE;
+                                SetShape(buffer,current.SHAPE);
                                 insert.Insert(buffer);
                                 Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
                                 convertedCount++;
@@ -334,7 +333,7 @@ namespace S100Framework.Applications
                                 var instance = new CableSubmarine();
 
                                 if (plts_comp_scale != default) {
-                                    instance.scaleMinimum = plts_comp_scale;
+                                    //instance.scaleMinimum = plts_comp_scale;
                                 }
 
                                 instance.categoryOfCable = categoryOfCable.JunctionCable;
@@ -352,7 +351,7 @@ namespace S100Framework.Applications
 
                                 buffer["code"] = instance.GetType().Name;
                                 buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
-                                buffer["shape"] = current.SHAPE;
+                                SetShape(buffer,current.SHAPE);
                                 insert.Insert(buffer);
                                 Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
                                 convertedCount++;
@@ -363,7 +362,7 @@ namespace S100Framework.Applications
                                 var instance = new MooringBuoy();
 
                                 if (plts_comp_scale != default) {
-                                    instance.scaleMinimum = plts_comp_scale;
+                                    //instance.scaleMinimum = plts_comp_scale;
                                 }
 
                                 if (current.BOYSHP == default) {
@@ -387,7 +386,7 @@ namespace S100Framework.Applications
 
                                 buffer["code"] = instance.GetType().Name;
                                 buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
-                                buffer["shape"] = current.SHAPE;
+                                SetShape(buffer,current.SHAPE);
                                 insert.Insert(buffer);
                                 Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
                                 convertedCount++;
@@ -398,7 +397,7 @@ namespace S100Framework.Applications
                             var instance = new Pontoon() {
                             };
                             if (plts_comp_scale != default) {
-                                instance.scaleMinimum = plts_comp_scale;
+                                //instance.scaleMinimum = plts_comp_scale;
                             }
 
                             if (current.CONDTN.HasValue) {
@@ -414,7 +413,7 @@ namespace S100Framework.Applications
 
                             buffer["code"] = instance.GetType().Name;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
-                            buffer["shape"] = current.SHAPE;
+                            SetShape(buffer,current.SHAPE);
                             insert.Insert(buffer);
                             Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
                             convertedCount++;

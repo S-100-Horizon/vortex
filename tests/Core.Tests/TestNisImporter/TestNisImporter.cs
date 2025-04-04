@@ -1,16 +1,30 @@
 using ArcGIS.Core.CIM;
 using ArcGIS.Core.Data;
+using ArcGIS.Core.Data.Exceptions;
 using S100Framework.Applications;
+using System.Collections.Generic;
+using System.Globalization;
 using System.Text;
 using System.Text.RegularExpressions;
 using Xunit.Abstractions;
+using Xunit.Sdk;
 using IO = System.IO;
 
 namespace TestNisImporter
 {
     public class TestNisImporter
     {
+        internal struct Sequence
+        {
+            public decimal Duration { get; set; }
+            public int Status { get; set; }
 
+            public Sequence(decimal duration, int status) {
+                Duration = duration;
+                Status = status;
+            }
+        }
+        
         private readonly ITestOutputHelper _output;
 
         public TestNisImporter(ITestOutputHelper output) {
@@ -18,6 +32,42 @@ namespace TestNisImporter
             ArcGIS.Core.Hosting.Host.Initialize();
         }
 
+        [Fact]
+        public void TestSignalSequence() {
+            string input = "12.5+(34.7)+56.8+(78.9)+(91.2)+23.4+(0.09)";
+            List<Sequence> sequences = new List<Sequence>();
+
+            string pattern = @"(\d+\.\d+)|\((\d+\.\d+)\)";
+
+            Regex regex = new Regex(pattern);
+            MatchCollection matches = regex.Matches(input);
+
+            foreach (Match match in matches) {
+                if (!string.IsNullOrEmpty(match.Groups[1].Value)) {
+                    var duration = decimal.Parse(match.Groups[1].Value, CultureInfo.InvariantCulture);
+                    sequences.Add(new Sequence(duration, 1));
+                }
+                else if (!string.IsNullOrEmpty(match.Groups[2].Value)) {
+                    decimal duration = decimal.Parse(match.Groups[2].Value, CultureInfo.InvariantCulture);
+                    sequences.Add(new Sequence(duration, 2));
+                }
+            }
+
+            Assert.True(sequences[0].Duration == 12.5m, "Duration");
+            Assert.True(sequences[0].Status == 1, "Status");
+            Assert.True(sequences[1].Duration == 34.7m, "Duration");
+            Assert.True(sequences[1].Status == 2, "Status");
+            Assert.True(sequences[2].Duration == 56.8m, "Duration");
+            Assert.True(sequences[2].Status == 1, "Status");
+            Assert.True(sequences[3].Duration == 78.9m, "Duration");
+            Assert.True(sequences[3].Status == 2, "Status");
+            Assert.True(sequences[4].Duration == 91.2m, "Duration");
+            Assert.True(sequences[4].Status == 2, "Status");
+            Assert.True(sequences[5].Duration == 23.4m, "Duration");
+            Assert.True(sequences[5].Status == 1, "Status");
+            Assert.True(sequences[6].Duration == 0.09m, "Duration");
+            Assert.True(sequences[6].Status == 2, "Status");
+        }
 
         [Fact]
         public void NoteLoaderTest() {
@@ -55,7 +105,7 @@ namespace TestNisImporter
                 csSubtypes.AppendLine($"\t\t}};");
 
                 csSubtypes.AppendLine($"\t\t\tif (plts_comp_scale != default) {{");
-                csSubtypes.AppendLine($"\t\t\t\t\tinstance.scaleMinimum = plts_comp_scale;");
+                csSubtypes.AppendLine($"\t\t\t\t\t//instance.scaleMinimum = plts_comp_scale;");
                 csSubtypes.AppendLine($"\t\t\t}}");
                 csSubtypes.AppendLine($"");
                 csSubtypes.AppendLine($"\t\t\tAddCondition(instance.condition, feature);");
@@ -108,6 +158,156 @@ namespace TestNisImporter
             csDomainValues.AppendLine($"*/");
 
             Console.WriteLine(csDomainValues.ToString());
+        }
+
+        [Fact]
+        public void CreateS57Domains() {
+
+        }
+
+        [Fact]
+        public void GenerateStatusPage() {
+            var featureclasses = new List<string> { "PLTS_SpatialAttributeL",
+                                            "TidesAndVariationsA",
+                                            "TidesAndVariationsL",
+                                            "TidesAndVariationsP",
+                                            "SeabedL",
+                                            "SeabedP",
+                                            "SeabedA",
+                                            "DangersL",
+                                            "DangersP",
+                                            "DangersA",
+                                            "DepthsL",
+                                            "OffshoreInstallationsL",
+                                            "OffshoreInstallationsA",
+                                            "MetaDataP",
+                                            "TracksAndRoutesA",
+                                            "TracksAndRoutesL",
+                                            "TracksAndRoutesP",
+                                            "AidsToNavigationP",
+                                            "IceFeaturesA",
+                                            "MilitaryFeaturesA",
+                                            "MilitaryFeaturesP",
+                                            "UserDefinedFeaturesA",
+                                            "UserDefinedFeaturesP",
+                                            "UserDefinedFeaturesL",
+                                            "DepthsA",
+                                            "SoundingsP",
+                                            "PortsAndServicesP",
+                                            "PortsAndServicesL",
+                                            "PortsAndServicesA",
+                                            "CulturalFeaturesA",
+                                            "CulturalFeaturesL",
+                                            "CulturalFeaturesP",
+                                            "NaturalFeaturesP",
+                                            "NaturalFeaturesL",
+                                            "NaturalFeaturesA",
+                                            "CoastlineL",
+                                            "CoastlineP",
+                                            "CoastlineA",
+                                            "RegulatedAreasAndLimitsL",
+                                            "RegulatedAreasAndLimitsP",
+                                            "RegulatedAreasAndLimitsA",
+                                            "MetaDataA",
+                                            "MetaDataL",
+                                            "OffshoreInstallationsP",
+                                            "ClosingLinesL",
+                                            "ProductCoverage",
+                                            //"ProductRestrictions"
+            };
+            var tables = new List<string> { //"ProductExports",
+                                            "ProductDefinitions",
+                                            "PLTS_Collections",
+                                            "PLTS_Frel",
+                                            "PLTS_Master_Slaves"
+                                          };
+
+            featureclasses.Sort();
+
+            //var sourcePath = @$"{Environment.GetEnvironmentVariable("OneDrive")}\ArcGIS\Projects\Vortex\replica.gdb";
+            //var source = new Geodatabase(new FileGeodatabaseConnectionPath(new Uri(IO.Path.GetFullPath(sourcePath))));
+            var sourcePath = IO.Path.GetFullPath(IO.Path.Combine(@"G:\indigo\Databases\nis.sde"));
+            var source = new Geodatabase(new DatabaseConnectionFile(new Uri(IO.Path.GetFullPath(sourcePath))));
+
+            var prefix = "NIS.";
+
+            string filePath = IO.Path.GetFullPath(IO.Path.Combine(@".\..\..\..\..\..\..\src\Application\VortexLoader\S-57.esri\status.txt"));
+            
+            StringBuilder content = new StringBuilder();
+
+            List<Dataset> datasets = new List<Dataset>();
+            foreach (var featureclass in featureclasses) {
+                datasets.Add(source.OpenDataset<FeatureClass>($"{prefix}{featureclass}"));
+            }
+
+            int counter = 0;
+
+            using (StreamWriter file = new StreamWriter(filePath)) {
+                foreach (var dataset in datasets) {
+                    if (dataset is FeatureClass) {
+                        var subtypes = (dataset as FeatureClass).GetDefinition().GetSubtypes();
+                        var fields = (dataset as FeatureClass).GetDefinition().GetFields();
+                        var fieldHasData = new Dictionary<string, bool>();
+                        var fieldAlias = new Dictionary<string, string>();
+
+                        foreach (var field in fields) {
+                            fieldHasData[field.Name] = false;
+                            fieldAlias[field.Name] = field.AliasName;
+                        }
+
+                        var sortedDict = new SortedDictionary<int, string>();
+
+                        var searchCursor = (dataset as FeatureClass).Search(new QueryFilter() { WhereClause = "1=1" });
+
+                        var subtypeCount = new Dictionary<int, int>();
+
+                        int totalCount = 0;
+                        while (searchCursor.MoveNext()) {
+                            totalCount++;
+                            var current = searchCursor.Current;
+
+                            if (current.FindField("fcsubtype") == -1)
+                                continue;
+
+                            foreach (var fieldName in fieldHasData.Keys) {
+                                if (DBNull.Value != current[fieldName]) {
+                                    fieldHasData[fieldName] = true; 
+                                }
+                            }
+
+                            var subtypeValue = current["fcsubtype"];
+                            if (subtypeValue != DBNull.Value) {
+                                int subtype = Convert.ToInt32(subtypeValue);
+                                if (subtypeCount.ContainsKey(subtype)) {
+                                    subtypeCount[subtype] += 1;
+                                } else {
+                                    subtypeCount[subtype] = 1;
+                                }
+                            }
+                        }
+
+                        foreach (var subtype in subtypes) {
+                            sortedDict.Add(subtype.GetCode(), subtype.GetName());
+                        }
+
+                        foreach (var keyValuePair in sortedDict) {
+                            counter += 1;
+
+                            subtypeCount.TryGetValue(keyValuePair.Key, out var subtypeCountN);
+
+                            content.AppendLine($"{counter};SUBTYPE;{dataset.GetName()};{keyValuePair.Value};{keyValuePair.Key};{subtypeCountN}");
+                        }
+
+                        foreach (var fieldName in fieldHasData.Keys) {
+                            counter += 1;
+                            var hasDataTag = fieldHasData[fieldName] ? "CONTAINS DATA" : "EMPTY";
+                            content.AppendLine($"{counter};FIELD;{dataset.GetName()};{fieldName};{fieldAlias[fieldName]};{hasDataTag}");
+
+                        }
+                    }
+                }
+                file.WriteLine(content.ToString());
+            }
         }
 
 
@@ -215,7 +415,6 @@ namespace TestNisImporter
                     var fieldInfo = (Type: "Int32", Conversion: "Convert.ToInt32", DefaultValue: "default", Alias: string.Empty);
 
                     foreach (var field in datasetfields) {
-
                         if (field.Name.ToUpper().StartsWith("SHAPE_")) {
                             Console.WriteLine("");
                             continue;
@@ -306,9 +505,7 @@ namespace TestNisImporter
                     csFile.Append(objectClass);
 
                     //csFile.Append(@"}");
-
                 }
-
                 csFile.AppendLine(@"}");
                 file.WriteLine(csFile.ToString());
             }

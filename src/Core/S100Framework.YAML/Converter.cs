@@ -82,16 +82,13 @@ namespace S100Framework.YAML
                     attributes.Add(new(propertyName, parsed?.ToString(CultureInfo.InvariantCulture), null, parentId));
                     break;
 
-                // Ensure no enums are sat to 0
+                // Ensure enum value comes 'EnumMemberAttribute' and no enums are sat to 0, -1 or "unknown".
                 case Type t when t.IsEnum:                         
                     var enumvalue = ToEnumString(propertyValue);
                     if (enumvalue == null)
                         break;
 
                     enumvalue = enumvalue == "Unknown" ? null : enumvalue;
-
-                    //if (enumvalue == "Unknown") 
-                    //    enumvalue = null;
 
                     attributes.Add(new(propertyName, enumvalue, null, parentId));
                     break;

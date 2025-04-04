@@ -63,7 +63,7 @@ namespace S100Framework.Applications
                             }
 
                             if (plts_comp_scale != default) {
-                                instance.scaleMinimum = plts_comp_scale;
+                                //instance.scaleMinimum = plts_comp_scale;
                             }
                             
                             if (status != default) {
@@ -98,11 +98,8 @@ namespace S100Framework.Applications
                         }
                         break;
 
-                    case 5: { //  LNDARE
+                    case 5: { //  LNDARE // SKIN OF EARTH
                             var instance = new LandArea {
-                                condition = null,
-                                status = null,
-                                scaleMinimum = null,
                             };
                             if (condtn != default) {
                                 instance.condition = condtn switch {
@@ -115,9 +112,9 @@ namespace S100Framework.Applications
                                     _ => throw new IndexOutOfRangeException(),
                                 };
                             }
-                            if (plts_comp_scale != default) {
-                                instance.scaleMinimum = plts_comp_scale;
-                            }
+                            //if (plts_comp_scale != default) {
+                            //    //instance.scaleMinimum = plts_comp_scale;
+                            //}
 
                             if (current.CONDTN.HasValue) {
                                 instance.condition = GetCondition(current.CONDTN.Value);
@@ -157,7 +154,7 @@ namespace S100Framework.Applications
                                 };
                             }
                             if (plts_comp_scale != default) {
-                                instance.scaleMinimum = plts_comp_scale;
+                                //instance.scaleMinimum = plts_comp_scale;
                             }
                             if (status != default) {
                                 if (!string.IsNullOrEmpty(status)) {
@@ -195,7 +192,7 @@ namespace S100Framework.Applications
                                 scaleMinimum = null,
                             };
                             if (plts_comp_scale != default) {
-                                instance.scaleMinimum = plts_comp_scale;
+                                //instance.scaleMinimum = plts_comp_scale;
                             }
                             if (status != default) {
                                 if (!string.IsNullOrEmpty(status)) {
@@ -300,7 +297,7 @@ namespace S100Framework.Applications
                                 };
                             }
                             if (plts_comp_scale != default) {
-                                instance.scaleMinimum = plts_comp_scale;
+                                //instance.scaleMinimum = plts_comp_scale;
                             }
 
                             instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
@@ -394,7 +391,7 @@ namespace S100Framework.Applications
                                 };
                             }
                             if (plts_comp_scale != default) {
-                                instance.scaleMinimum = plts_comp_scale;
+                                //instance.scaleMinimum = plts_comp_scale;
                             }
 
                             instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
@@ -449,7 +446,7 @@ namespace S100Framework.Applications
                                 };
                             }
                             if (plts_comp_scale != default) {
-                                instance.scaleMinimum = plts_comp_scale;
+                                //instance.scaleMinimum = plts_comp_scale;
                             }
 
                             instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
