@@ -312,7 +312,7 @@ namespace S100Framework.Applications
         //    }
 
         //    if (current.PLTS_COMP_SCALE != default) {
-        //        instance.scaleMinimum = current.PLTS_COMP_SCALE;
+        //        //instance.scaleMinimum = current.PLTS_COMP_SCALE;
         //    }
 
         //    if (current.STATUS != default) {

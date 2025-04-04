@@ -18,9 +18,6 @@ namespace S100Framework.Applications
 
             var tableName = "AidsToNavigationP";
 
-            
-
-            
             var aidstonavigation = source.OpenDataset<FeatureClass>(source.GetName(tableName));
 
             var featureAssociation = target.OpenDataset<Table>(target.GetName("featureassociation"));
@@ -62,7 +59,7 @@ namespace S100Framework.Applications
                             #region aidstonavigation
                             if (current.BCNSHP.HasValue) {
                                 if (current.BCNSHP.Value == -32767)
-                                    instance.beaconShape = EnumHelper.GetEnumValue<beaconShape>("-1");
+                                    instance.beaconShape = EnumHelper.GetEnumValue<beaconShape>(-1);
                                 else {
                                     instance.beaconShape = EnumHelper.GetEnumValue<beaconShape>(current.BCNSHP);
                                 }
@@ -70,7 +67,7 @@ namespace S100Framework.Applications
 
                             if (current.CATCAM.HasValue) {
                                 if (current.CATCAM.Value == -32767)
-                                    instance.categoryOfCardinalMark = EnumHelper.GetEnumValue<categoryOfCardinalMark>("-1");
+                                    instance.categoryOfCardinalMark = EnumHelper.GetEnumValue<categoryOfCardinalMark>(-1);
                                 else {
                                     instance.categoryOfCardinalMark = EnumHelper.GetEnumValue<categoryOfCardinalMark>(current.CATCAM.Value);
                                 }
@@ -170,7 +167,7 @@ namespace S100Framework.Applications
 
                             if (current.CONVIS.HasValue) {
                                 if (current.CONVIS.Value == -32767)
-                                    instance.visualProminence = EnumHelper.GetEnumValue<visualProminence>("-1");
+                                    instance.visualProminence = EnumHelper.GetEnumValue<visualProminence>(-1);
                                 else {
                                     instance.visualProminence = EnumHelper.GetEnumValue<visualProminence>(current.CONVIS.Value);
                                 }
@@ -214,7 +211,7 @@ namespace S100Framework.Applications
                             #region aidstonavigation
                             if (current.BCNSHP.HasValue) {
                                 if (current.BCNSHP.Value == -32767)
-                                    instance.beaconShape = EnumHelper.GetEnumValue<beaconShape>("-1");
+                                    instance.beaconShape = EnumHelper.GetEnumValue<beaconShape>(-1);
                                 else {
                                     instance.beaconShape = EnumHelper.GetEnumValue<beaconShape>(current.BCNSHP);
                                 }
@@ -314,7 +311,7 @@ namespace S100Framework.Applications
 
                             if (current.CONVIS.HasValue) {
                                 if (current.CONVIS.Value == -32767)
-                                    instance.visualProminence = EnumHelper.GetEnumValue<visualProminence>("-1");
+                                    instance.visualProminence = EnumHelper.GetEnumValue<visualProminence>(-1);
                                 else {
                                     instance.visualProminence = EnumHelper.GetEnumValue<visualProminence>(current.CONVIS.Value);
                                 }
@@ -357,7 +354,7 @@ namespace S100Framework.Applications
                             #region aidstonavigation
                             if (current.BCNSHP.HasValue) {
                                 if (current.BCNSHP.Value == -32767)
-                                    instance.beaconShape = EnumHelper.GetEnumValue<beaconShape>("-1");
+                                    instance.beaconShape = EnumHelper.GetEnumValue<beaconShape>(-1);
                                 else {
                                     instance.beaconShape = EnumHelper.GetEnumValue<beaconShape>(current.BCNSHP);
                                 }
@@ -365,7 +362,7 @@ namespace S100Framework.Applications
 
                             if (current.CATLAM.HasValue) {
                                 if (current.CATLAM.Value == -32767)
-                                    instance.categoryOfLateralMark = EnumHelper.GetEnumValue<categoryOfLateralMark>("-1");
+                                    instance.categoryOfLateralMark = EnumHelper.GetEnumValue<categoryOfLateralMark>(-1);
                                 else {
                                     instance.categoryOfLateralMark = EnumHelper.GetEnumValue<categoryOfLateralMark>(current.CATLAM.Value);
                                 }
@@ -465,7 +462,7 @@ namespace S100Framework.Applications
 
                             if (current.CONVIS.HasValue) {
                                 if (current.CONVIS.Value == -32767)
-                                    instance.visualProminence = EnumHelper.GetEnumValue<visualProminence>("-1");
+                                    instance.visualProminence = EnumHelper.GetEnumValue<visualProminence>(-1);
                                 else {
                                     instance.visualProminence = EnumHelper.GetEnumValue<visualProminence>(current.CONVIS.Value);
                                 }
@@ -509,7 +506,7 @@ namespace S100Framework.Applications
                             #region aidstonavigation
                             if (current.BCNSHP.HasValue) {
                                 if (current.BCNSHP.Value == -32767)
-                                    instance.beaconShape = EnumHelper.GetEnumValue<beaconShape>("-1");
+                                    instance.beaconShape = EnumHelper.GetEnumValue<beaconShape>(-1);
                                 else {
                                     instance.beaconShape = EnumHelper.GetEnumValue<beaconShape>(current.BCNSHP);
                                 }
@@ -609,7 +606,7 @@ namespace S100Framework.Applications
 
                             if (current.CONVIS.HasValue) {
                                 if (current.CONVIS.Value == -32767)
-                                    instance.visualProminence = EnumHelper.GetEnumValue<visualProminence>("-1");
+                                    instance.visualProminence = EnumHelper.GetEnumValue<visualProminence>(-1);
                                 else {
                                     instance.visualProminence = EnumHelper.GetEnumValue<visualProminence>(current.CONVIS.Value);
                                 }
@@ -657,7 +654,7 @@ namespace S100Framework.Applications
 
                             if (current.BCNSHP.HasValue) {
                                 if (current.BCNSHP.Value == -32767)
-                                    instance.beaconShape = EnumHelper.GetEnumValue<beaconShape>("-1");
+                                    instance.beaconShape = EnumHelper.GetEnumValue<beaconShape>(-1);
                                 else {
                                     instance.beaconShape = EnumHelper.GetEnumValue<beaconShape>(current.BCNSHP);
                                 }
@@ -665,7 +662,7 @@ namespace S100Framework.Applications
 
                             if (current.CATSPM != default) {
                                 if (current.CATSPM == "-32767")
-                                    instance.categoryOfSpecialPurposeMark = EnumHelper.GetEnumValues<categoryOfSpecialPurposeMark>("-1");
+                                    instance.categoryOfSpecialPurposeMark = EnumHelper.GetEnumValues<categoryOfSpecialPurposeMark>(-1);
                                 else {
                                     instance.categoryOfSpecialPurposeMark = EnumHelper.GetEnumValues<categoryOfSpecialPurposeMark>(current.CATSPM);
                                 }
@@ -766,7 +763,7 @@ namespace S100Framework.Applications
 
                             if (current.CONVIS.HasValue) {
                                 if (current.CONVIS.Value == -32767)
-                                    instance.visualProminence = EnumHelper.GetEnumValue<visualProminence>("-1");
+                                    instance.visualProminence = EnumHelper.GetEnumValue<visualProminence>(-1);
                                 else {
                                     instance.visualProminence = EnumHelper.GetEnumValue<visualProminence>(current.CONVIS.Value);
                                 }
@@ -807,10 +804,17 @@ namespace S100Framework.Applications
                             var instance = new CardinalBuoy();
                             #region aidstonavigation
 
+                            if (current.BOYSHP.HasValue) {
+                                if (current.BOYSHP.Value == -32767)
+                                    instance.buoyShape = EnumHelper.GetEnumValue<buoyShape>(-1);
+                                else {
+                                    instance.buoyShape = EnumHelper.GetEnumValue<buoyShape>(current.BOYSHP);
+                                }
+                            }
 
                             if (current.CATCAM.HasValue) {
                                 if (current.CATCAM.Value == -32767)
-                                    instance.categoryOfCardinalMark = EnumHelper.GetEnumValue<categoryOfCardinalMark>("-1");
+                                    instance.categoryOfCardinalMark = EnumHelper.GetEnumValue<categoryOfCardinalMark>(-1);
                                 else {
                                     instance.categoryOfCardinalMark = EnumHelper.GetEnumValue<categoryOfCardinalMark>(current.CATCAM.Value);
                                 }
@@ -880,11 +884,14 @@ namespace S100Framework.Applications
 
                             instance.verticalLength = current.VERLEN;
 
-                            
+
 
                             //if (!topmarkDaymarkHasValue && instance.topmark != null) {
                             //    Logger.Current.DataError(current.OBJECTID.Value, tableName, current.LNAM, $"Missing topmarkDaymark info on {nameof(instance)}");
                             //}
+                            var topmark = relatedEquipment.GetTopMark(current);
+                            instance.topmark = topmark;
+
 
                             if (plts_comp_scale != default) {
                                 //instance.scaleMinimum = plts_comp_scale;
@@ -994,7 +1001,7 @@ namespace S100Framework.Applications
 
                             if (current.CONVIS.HasValue) {
                                 if (current.CONVIS.Value == -32767)
-                                    instance.visualProminence = EnumHelper.GetEnumValue<visualProminence>("-1");
+                                    instance.visualProminence = EnumHelper.GetEnumValue<visualProminence>(-1);
                                 else {
                                     instance.visualProminence = EnumHelper.GetEnumValue<visualProminence>(current.CONVIS.Value);
                                 }
@@ -1102,6 +1109,8 @@ namespace S100Framework.Applications
                             }
 
                             instance.verticalLength = current.VERLEN;
+                            var topmark = relatedEquipment.GetTopMark(current);
+                            instance.topmark = topmark;
 
                             if (plts_comp_scale != default) {
                                 //instance.scaleMinimum = plts_comp_scale;
@@ -1146,7 +1155,7 @@ namespace S100Framework.Applications
 
                             if (current.BOYSHP.HasValue) {
                                 if (current.BOYSHP.Value == -32767)
-                                    instance.buoyShape = EnumHelper.GetEnumValue<buoyShape>("-1");
+                                    instance.buoyShape = EnumHelper.GetEnumValue<buoyShape>(-1);
                                 else {
                                     instance.buoyShape = EnumHelper.GetEnumValue<buoyShape>(current.BOYSHP);
                                 }
@@ -1154,7 +1163,7 @@ namespace S100Framework.Applications
 
                             if (current.CATLAM.HasValue) {
                                 if (current.CATLAM.Value == -32767)
-                                    instance.categoryOfLateralMark = EnumHelper.GetEnumValue<categoryOfLateralMark>("-1");
+                                    instance.categoryOfLateralMark = EnumHelper.GetEnumValue<categoryOfLateralMark>(-1);
                                 else {
                                     instance.categoryOfLateralMark = EnumHelper.GetEnumValue<categoryOfLateralMark>(current.CATLAM.Value);
                                 }
@@ -1223,6 +1232,10 @@ namespace S100Framework.Applications
                             }
 
                             instance.verticalLength = current.VERLEN;
+
+                            var topmark = relatedEquipment.GetTopMark(current);
+                            instance.topmark = topmark;
+
 
                             if (plts_comp_scale != default) {
                                 //instance.scaleMinimum = plts_comp_scale;
@@ -1331,6 +1344,10 @@ namespace S100Framework.Applications
                             //if (!topmarkDaymarkHasValue && instance.topmark != null) {
                             //    Logger.Current.DataError(current.OBJECTID.Value, tableName, current.LNAM, $"Missing topmarkDaymark info on {nameof(instance)}");
                             //}
+
+                            var topmark = relatedEquipment.GetTopMark(current);
+                            instance.topmark = topmark;
+
 
                             if (plts_comp_scale != default) {
                                 //instance.scaleMinimum = plts_comp_scale;
@@ -1819,7 +1836,7 @@ namespace S100Framework.Applications
 
                             if (current.CONVIS.HasValue) {
                                 if (current.CONVIS.Value == -32767)
-                                    instance.visualProminence = EnumHelper.GetEnumValue<visualProminence>("-1");
+                                    instance.visualProminence = EnumHelper.GetEnumValue<visualProminence>(-1);
                                 else {
                                     instance.visualProminence = EnumHelper.GetEnumValue<visualProminence>(current.CONVIS.Value);
                                 }
@@ -1924,9 +1941,10 @@ namespace S100Framework.Applications
                             //    Logger.Current.DataError(current.OBJECTID.Value, tableName, current.LNAM, $"Missing topmarkDaymark info on {nameof(instance)}");
                             //}
 
+
                             if (current.CONVIS.HasValue) {
                                 if (current.CONVIS.Value == -32767)
-                                    instance.visualProminence = EnumHelper.GetEnumValue<visualProminence>("-1");
+                                    instance.visualProminence = EnumHelper.GetEnumValue<visualProminence>(-1);
                                 else {
                                     instance.visualProminence = EnumHelper.GetEnumValue<visualProminence>(current.CONVIS.Value);
                                 }
@@ -2466,9 +2484,9 @@ namespace S100Framework.Applications
 
             instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
 
-            if (current.PLTS_COMP_SCALE.HasValue) {
-                instance.scaleMinimum = current.PLTS_COMP_SCALE.Value;
-            }
+            //if (current.PLTS_COMP_SCALE.HasValue) {
+            //    instance.scaleMinimum = current.PLTS_COMP_SCALE.Value;
+            //}
 
             if (current.STATUS != default) {
                 instance.status = GetStatus(current.STATUS);
@@ -2502,9 +2520,9 @@ namespace S100Framework.Applications
 
         internal static LightFogDetector CreateLightFogDetector(AidsToNavigationP current) {
             var instance = new LightFogDetector();
-            if (current.PLTS_COMP_SCALE.HasValue) {
-                instance.scaleMinimum = current.PLTS_COMP_SCALE.Value;
-            }
+            //if (current.PLTS_COMP_SCALE.HasValue) {
+            //    instance.scaleMinimum = current.PLTS_COMP_SCALE.Value;
+            //}
             if (current.COLOUR != default) {
                 instance.colour = GetColours(current.COLOUR);
             }
@@ -2525,9 +2543,9 @@ namespace S100Framework.Applications
             // LIGHTS: Attribute catlits contains value 6 (air obstruction light)
             // Build "Light Air Obstruction");
             var instance = new LightAirObstruction();
-            if (current.PLTS_COMP_SCALE.HasValue) {
-                instance.scaleMinimum = current.PLTS_COMP_SCALE.Value;
-            }
+            //if (current.PLTS_COMP_SCALE.HasValue) {
+            //    instance.scaleMinimum = current.PLTS_COMP_SCALE.Value;
+            //}
             if (current.COLOUR != default) {
                 instance.colour = GetColours(current.COLOUR);
             }
@@ -2560,9 +2578,9 @@ namespace S100Framework.Applications
 
             instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
 
-            if (current.PLTS_COMP_SCALE.HasValue) {
-                instance.scaleMinimum = current.PLTS_COMP_SCALE.Value;
-            }
+            //if (current.PLTS_COMP_SCALE.HasValue) {
+            //    instance.scaleMinimum = current.PLTS_COMP_SCALE.Value;
+            //}
 
             if (current.STATUS != default) {
                 instance.status = GetStatus(current.STATUS);
@@ -2639,13 +2657,20 @@ namespace S100Framework.Applications
                     var rhythmofLight = GetRythmOfLight(light);
                     if (light.SECTR1 != null && light.SECTR2 != null) {
                         {
-                            sectorCharacteristics.Add(new sectorCharacteristics() {
-                                lightCharacteristic = rhythmofLight.lightCharacteristic,
-                                signalGroup = rhythmofLight.signalGroup,
-                                signalPeriod = rhythmofLight.signalPeriod,
-                                signalSequence = rhythmofLight.signalSequence,
-                                lightSector = new List<lightSector>() {
+                        List<lightVisibility> visibility = new List<lightVisibility>();
+
+                        if (light.LITVIS != null) {
+                            visibility = EnumHelper.GetEnumValues<lightVisibility>(light.LITVIS);
+                        }
+
+                        var sectorCharacteristic = new sectorCharacteristics() {
+                            lightCharacteristic = rhythmofLight.lightCharacteristic,
+                            signalGroup = rhythmofLight.signalGroup,
+                            signalPeriod = rhythmofLight.signalPeriod,
+                            signalSequence = rhythmofLight.signalSequence,
+                            lightSector = new List<lightSector>() {
                                 new lightSector() {
+                                    lightVisibility = visibility,
                                     valueOfNominalRange = light.VALNMR.GetValueOrDefault(),
                                     colour = EnumHelper.GetEnumValues<colour>(light.COLOUR),
                                     sectorLimit = new sectorLimit() {
@@ -2658,7 +2683,10 @@ namespace S100Framework.Applications
                                     }
                                 },
                             }
-                            });
+                        };
+
+
+                            sectorCharacteristics.Add(sectorCharacteristic);
                         };
                     }
 

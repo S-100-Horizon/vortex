@@ -1,5 +1,7 @@
 ﻿using ArcGIS.Core.Data;
 using S100Framework.Applications.S57.esri;
+using S100Framework.DomainModel.S101;
+using S100Framework.DomainModel.S101.ComplexAttributes;
 using S100Framework.DomainModel.S101.FeatureTypes;
 
 namespace S100Framework.Applications
@@ -345,10 +347,70 @@ namespace S100Framework.Applications
                                 //instance.scaleMinimum = plts_comp_scale;
                             }
 
+                            if (current.CATMFA.HasValue) {
+                                instance.categoryOfMarineFarmCulture = EnumHelper.GetEnumValue<categoryOfMarineFarmCulture>(current.CATMFA.Value);
+                            };
+
+                            if (current.EXPSOU.HasValue) {
+                                instance.expositionOfSounding = EnumHelper.GetEnumValue<expositionOfSounding>(current.EXPSOU.Value);
+                            }
+
+                            instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
+
+                            DateHelper.TryGetFixedDateRange(current.DATSTA, current.DATEND, out var dateRange);
+                            if (dateRange != default) {
+                                instance.fixedDateRange = dateRange;
+                            }
+
                             if (current.STATUS != default) {
                                 instance.status = GetStatus(current.STATUS);
                             }
-                            instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
+
+                            // TODO: height
+
+                            if (current.PERSTA != default) {
+                                if (current.PEREND != default) {
+                                    if (DateHelper.TryConvertToDateOnly(current.PEREND, out var dateEnd)) {
+                                        if (DateHelper.TryConvertToDateOnly(current.PERSTA, out var dateStart)) {
+                                            instance.periodicDateRange = new List<periodicDateRange>() {
+                                                new periodicDateRange() {
+                                                    dateStart = dateStart,
+                                                    dateEnd = dateEnd
+                                                }
+                                            };
+                                        }
+                                        else {
+                                            Logger.Current.DataError(current.OBJECTID.Value, tableName, current.LNAM, $"Cannot convert date {current.PERSTA}");
+                                        }
+                                    }
+                                    else {
+                                        Logger.Current.DataError(current.OBJECTID.Value, tableName, current.LNAM, $"Cannot convert date {current.PEREND}");
+                                    }
+                                }
+                            }
+
+
+                            if (current.WATLEV.HasValue) {
+                                if (current.WATLEV.Value == -32767)
+                                    instance.waterLevelEffect = EnumHelper.GetEnumValue<waterLevelEffect>(-1);
+                                else {
+                                    instance.waterLevelEffect = EnumHelper.GetEnumValue<waterLevelEffect>(current.WATLEV);
+                                }
+                            }
+
+
+
+                            if (current.QUASOU != default) {
+                                if (current.QUASOU == "-32767")
+                                    instance.qualityOfVerticalMeasurement = EnumHelper.GetEnumValues<qualityOfVerticalMeasurement>("-1");
+                                else {
+                                    instance.qualityOfVerticalMeasurement = EnumHelper.GetEnumValues<qualityOfVerticalMeasurement>(current.QUASOU);
+                                }
+                            }
+
+                            
+
+
                             AddInformation(instance.information, feature);
                             buffer["ps"] = ps101;
 

@@ -76,7 +76,7 @@ namespace S100Framework.Applications
 
                             if (current.RESTRN != default) {
                                 if (current.RESTRN == "-32767")
-                                    instance.restriction = EnumHelper.GetEnumValues<restriction>("-1");
+                                    instance.restriction = EnumHelper.GetEnumValues<restriction>(-1);
                                 else {
                                     instance.restriction = EnumHelper.GetEnumValues<restriction>(current.RESTRN);
                                 }

@@ -26,6 +26,7 @@ namespace S100Framework.Applications
         internal static string ps101 = "S-101";
         internal static string ps128 = "S-128";
 
+        internal static readonly int CompilationScale = 22000; // Used as filter for spatial queries to transfer attributes from other features based on location analysis
 
         internal static FeatureRelations featureRelations = new FeatureRelations();
         internal static RelatedEquipment relatedEquipment;
@@ -33,11 +34,11 @@ namespace S100Framework.Applications
         public static bool Load(Geodatabase destination, ParserResult<Options> arguments) {
             Func<Geodatabase> createGeodatabase = () => { throw new NotImplementedException(); };
 
-            // default value
+            // default value - overwritten by args
             var filter = new QueryFilter {
                 WhereClause = "PLTS_COMP_SCALE = 22000",
             };
-            // default value
+            // default value - overwritten by args
             var skinOfEarthOnly = false;
 
             arguments.WithParsed<Options>(o => {
