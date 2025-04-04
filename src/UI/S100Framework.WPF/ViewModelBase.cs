@@ -194,7 +194,7 @@ namespace S100Framework.WPF.ViewModel
         public abstract InformationAssociation Save(InformationAssociation featureAssociation, string role);
     }
 
-    public abstract class FeatureBindingViewModel : INotifyPropertyChanged
+    public class FeatureBindingsViewModel : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler? PropertyChanged;
 
@@ -210,8 +210,43 @@ namespace S100Framework.WPF.ViewModel
             OnPropertyChanged(propertyName);
         }
 
-        public abstract void Load(FeatureAssociation featureAssociation, string role);
+        public ObservableCollection<FeatureBindingViewModel> FeatureBindings { get; set; } = new ObservableCollection<FeatureBindingViewModel>();
 
-        public abstract FeatureAssociation Save(FeatureAssociation featureAssociation, string role);
+        public FeatureBindingsViewModel(featureBinding[] featureBindings) {
+            _featureBindings = featureBindings;
+        }
+
+        private featureBinding[] _featureBindings;
+    }
+
+    public class FeatureBindingViewModel : INotifyPropertyChanged
+    {
+        public event PropertyChangedEventHandler? PropertyChanged;
+
+        protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null) {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+
+        protected void SetValue<T>(ref T backingFiled, T value, [CallerMemberName] string? propertyName = null) {
+            if (string.IsNullOrWhiteSpace(propertyName)) return;
+
+            if (EqualityComparer<T>.Default.Equals(backingFiled, value)) return;
+            backingFiled = value;
+            OnPropertyChanged(propertyName);
+        }
+
+        public roleType? roleType => _featureBinding?.roleType;
+
+        public String? association => _featureBinding?.association;
+
+        public String? role => _featureBinding?.role;
+
+        private featureBinding? _featureBinding;
+
+        public void Load(featureBinding binding) {
+            _featureBinding = binding;
+        }
+
+        //public abstract FeatureAssociation Save(FeatureAssociation featureAssociation, string role);
     }
 }

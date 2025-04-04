@@ -71,14 +71,24 @@ namespace S100Framework.DomainModel {
 
     [System.SerializableAttribute()]
     public abstract class Association {
+        public roleType roleType { get; set; }
+        public string association { get; set; } = string.Empty;
+        public string role { get; set; } = string.Empty;
+
+        public string associationId { get; set; } = string.Empty;
+
+        public string foreignId { get; set; } = string.Empty;
     }
 
     [System.SerializableAttribute()]
     public abstract class InformationAssociation : Association {
+        public string informationId { get; set; } = string.Empty;
     }
 
     [System.SerializableAttribute()]
-    public abstract class FeatureAssociation : Association {
+    public abstract class FeatureAssociation : Association
+    {
+        public string featureId { get; set; } = string.Empty;
     }
 
     public class informationBinding {

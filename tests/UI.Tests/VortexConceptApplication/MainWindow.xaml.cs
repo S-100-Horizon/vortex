@@ -1,6 +1,7 @@
 ﻿//#define S124
 
 using S100Framework.DomainModel;
+using S100Framework.DomainModel.S101.FeatureTypes;
 using S100Framework.DomainModel.S124;
 using S100Framework.WPF.ViewModel;
 using System.Collections.ObjectModel;
@@ -202,6 +203,14 @@ namespace VortexConceptApplication
 #endif           
 
             SelectedProperty = viewModel;
+
+            var bindings = new FeatureBindingsViewModel(LateralBuoy.featureBindings);
+
+            //this.Collection.NewItemTypes = new List<Type> { typeof(FeatureBindingViewModel) };
+
+
+            //this.Collection.Items.Add(new TestLateralBuoyViewModel());
+            //this.Collection.ItemsSource = new List<TestLateralBuoyViewModel>();
         }
 
         private void _propertyGrid_PreparePropertyItem(object sender, PropertyItemEventArgs e) {
@@ -278,6 +287,13 @@ namespace VortexConceptApplication
 {
     using S100Framework.DomainModel.S101;
     using Xceed.Wpf.Toolkit;
+    using Xceed.Wpf.Toolkit.PropertyGrid.Attributes;
+
+    public class Person
+    {
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+    }
 
     public partial class TestLateralBuoyViewModel
     {
@@ -295,6 +311,9 @@ namespace VortexConceptApplication
                 //SetValue(ref _buoyShape, value);
             }
         }
+
+        [ExpandableObject]
+        public ObservableCollection<Person> Persons { get; set; } = new ObservableCollection<Person>();
 
         [Browsable(false)]
         public int[] buoyShapeIntList => [1, 2, 3, 4, 5, 6, 7, 8];

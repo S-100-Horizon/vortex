@@ -1,0 +1,28 @@
+﻿<UserControl x:Class="VortexProAppModule.Views.S100AttributeEditorView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:VortexProAppModule.Views"
+             xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+             mc:Ignorable="d" 
+             d:DesignHeight="600" d:DesignWidth="400">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+        
+        <xctk:PropertyGrid Grid.Row="0" x:Name="_propertyGrid" 
+               SelectedObject="{Binding SelectedProperty, Mode=TwoWay}" 
+               PropertyValueChanged="_propertyGrid_PropertyValueChanged" 
+               SelectedPropertyItemChanged="_propertyGrid_SelectedPropertyItemChanged"
+               AutoGenerateProperties="True"                           
+               UpdateTextBoxSourceOnEnterKey="True"
+               PreparePropertyItem="_propertyGrid_PreparePropertyItem" ShowAdvancedOptions="True" ShowSummary="False"/>
+
+        <xctk:CollectionControl Grid.Row="1" x:Name="Collection" >
+        </xctk:CollectionControl>
+        
+    </Grid>
+</UserControl>

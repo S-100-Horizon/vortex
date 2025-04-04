@@ -20,22 +20,14 @@
                 </TextBox.Text>
             </TextBox>
         </DataTemplate>-->
-        
-        <!--<ResourceDictionary>
-            <DataTemplate x:Key="MultiSelectComboBox.SelectedItems.ItemTemplate" DataType="S100Framework.DomainModel.S124.navwarnTypeDetails">
-                <StackPanel Orientation="Horizontal">
-                    <TextBlock Text="{Binding Path=label}"/>
-                </StackPanel>
-            </DataTemplate>
 
-            <DataTemplate x:Key="MultiSelectComboBox.Dropdown.ListBox.ItemTemplate" DataType="S100Framework.DomainModel.S124.navwarnTypeDetails">
-                <TextBlock Text="{Binding Path=label}"/>
-            </DataTemplate>
-        </ResourceDictionary>-->        
+        <ResourceDictionary>
+        </ResourceDictionary>
     </Window.Resources>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="32"/>
+            <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
@@ -96,5 +88,13 @@
                 </xctk:EditorTemplateDefinition>
             </xctk:PropertyGrid.EditorDefinitions>-->
         </xctk:PropertyGrid>
+
+        <local:S100AttributeEditorView Grid.Row="2" x:Name="_s100PropertyGrid" 
+                            SelectedPropertyObject="{Binding SelectedProperty}"/>
+
+        <!--<xctk:CollectionControl Grid.Row="2" x:Name="Collection" IsReadOnly="False" >
+        </xctk:CollectionControl>-->
+        
+        
     </Grid>
 </Window>

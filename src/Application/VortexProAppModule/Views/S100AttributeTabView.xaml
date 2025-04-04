@@ -72,13 +72,18 @@
 
         </local:S100PropertyGridView>-->
 
+        <!--<local:S100AttributeEditorView Grid.Row="1" x:Name="_s100PropertyGrid" 
+                            DockPanel.Dock="Bottom" 
+                            SelectedPropertyObject="{Binding SelectedProperty, Mode=TwoWay}"
+                            IsEnabled="{Binding IsSelectedModelTypeEnabled, Mode=OneWay}"/>-->
+
         <xctk:PropertyGrid Grid.Row="1" x:Name="_propertyGrid" 
                SelectedObject="{Binding SelectedProperty}" 
                PropertyValueChanged="_propertyGrid_PropertyValueChanged" 
                            SelectedPropertyItemChanged="_propertyGrid_SelectedPropertyItemChanged"
                AutoGenerateProperties="True"                           
                UpdateTextBoxSourceOnEnterKey="True"
-               PreparePropertyItem="_propertyGrid_PreparePropertyItem" ShowAdvancedOptions="True"/>
+               PreparePropertyItem="_propertyGrid_PreparePropertyItem" ShowAdvancedOptions="True" ShowSummary="False"/>
 
     </DockPanel>
 </UserControl>
