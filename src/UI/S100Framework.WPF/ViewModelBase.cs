@@ -212,11 +212,11 @@ namespace S100Framework.WPF.ViewModel
 
         public ObservableCollection<FeatureBindingViewModel> FeatureBindings { get; set; } = new ObservableCollection<FeatureBindingViewModel>();
 
-        public FeatureBindingsViewModel(featureBinding[] featureBindings) {
+        public FeatureBindingsViewModel(featureBindingDefinition[] featureBindings) {
             _featureBindings = featureBindings;
         }
 
-        private featureBinding[] _featureBindings;
+        private featureBindingDefinition[] _featureBindings;
     }
 
     public class FeatureBindingViewModel : INotifyPropertyChanged
@@ -235,16 +235,66 @@ namespace S100Framework.WPF.ViewModel
             OnPropertyChanged(propertyName);
         }
 
-        public roleType? roleType => _featureBinding?.roleType;
+        public roleType? roleType => string.IsNullOrEmpty(_featureBindingDefintion?.roleType) ? default : Enum.Parse<roleType>(_featureBindingDefintion.roleType);
 
-        public String? association => _featureBinding?.association;
+        public String? association => _featureBindingDefintion?.association;
 
-        public String? role => _featureBinding?.role;
+        public String? role => _featureBindingDefintion?.role;
 
-        private featureBinding? _featureBinding;
+        private featureBinding? _featureBindingDefintion;
 
-        public void Load(featureBinding binding) {
-            _featureBinding = binding;
+        private String? _associationId = string.Empty;
+
+        public String? associationId {
+            get {
+                return _associationId;
+            }
+
+            set {
+                SetValue(ref _associationId, value);
+            }
+        }
+
+        private String? _featureId = string.Empty;
+
+        public String? featureId {
+            get {
+                return _featureId;
+            }
+
+            set {
+                SetValue(ref _featureId, value);
+            }
+        }
+
+        private String? _foreignId = string.Empty;
+
+        public String? foreignId {
+            get {
+                return _foreignId;
+            }
+
+            set {
+                SetValue(ref _foreignId, value);
+
+
+            }
+        }
+
+        public ObservableCollection<String> AssociationIds { get; set; } = new ObservableCollection<string>();
+
+
+        public FeatureBindingViewModel Load(featureBinding binding) {
+            AssociationIds.Clear();
+
+            _featureBindingDefintion = binding;
+            _associationId = binding.associationId;
+            _featureId= binding.featureId;
+            _foreignId = binding.foreignId;
+            if (!string.IsNullOrEmpty(_associationId)) {
+                AssociationIds.Add(_associationId);
+            }
+            return this;
         }
 
         //public abstract FeatureAssociation Save(FeatureAssociation featureAssociation, string role);

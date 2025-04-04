@@ -4,6 +4,7 @@ using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using Xceed.Wpf.Toolkit.PropertyGrid.Attributes;
+using static TestS100Framework.TestS100Framework.UnitTestCodeBuilder;
 
 namespace S100Framework.WPF.ViewModel
 {
@@ -194,7 +195,8 @@ namespace S100Framework.WPF.ViewModel
         public abstract InformationAssociation Save(InformationAssociation featureAssociation, string role);
     }
 
-    public class FeatureBindingsViewModel : INotifyPropertyChanged {
+    public class FeatureBindingsViewModel : INotifyPropertyChanged
+    {
         public event PropertyChangedEventHandler? PropertyChanged;
 
         protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null) {
@@ -211,11 +213,11 @@ namespace S100Framework.WPF.ViewModel
 
         public ObservableCollection<FeatureBindingViewModel> FeatureBindings { get; set; } = new ObservableCollection<FeatureBindingViewModel>();
 
-        public FeatureBindingsViewModel(featureBinding[] featureBindings) { 
+        public FeatureBindingsViewModel(featureBindingDefinition[] featureBindings) {
             _featureBindings = featureBindings;
         }
 
-        private featureBinding[] _featureBindings;
+        private featureBindingDefinition[] _featureBindings;
     }
 
     public class FeatureBindingViewModel : INotifyPropertyChanged
@@ -234,16 +236,17 @@ namespace S100Framework.WPF.ViewModel
             OnPropertyChanged(propertyName);
         }
 
-        public roleType? roleType => _featureBinding?.roleType;
+        public roleType? roleType => string.IsNullOrEmpty(_featureBindingDefintion?.roleType) ? default : Enum.Parse<roleType>(_featureBindingDefintion.roleType);
 
-        public String? association => _featureBinding?.association;
+        public String? association => _featureBindingDefintion?.association;
 
-        public String? role => _featureBinding?.role;
+        public String? role => _featureBindingDefintion?.role;
 
-        private featureBinding? _featureBinding;
+        private featureBinding? _featureBindingDefintion;
 
-        public void Load(featureBinding binding) {
-            _featureBinding = binding;
+        public FeatureBindingViewModel Load(featureBinding binding) {
+            _featureBindingDefintion = binding;
+            return this;
         }
 
         //public abstract FeatureAssociation Save(FeatureAssociation featureAssociation, string role);

@@ -2322,7 +2322,7 @@ namespace S100Framework.DomainModel.S131 {
 
             [JsonIgnore]
             public override string Code => nameof(InformationType);
-            public static informationBinding[] informationBindings => [new informationBinding
+            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -2360,7 +2360,7 @@ namespace S100Framework.DomainModel.S131 {
 
             [JsonIgnore]
             public override string Code => nameof(AbstractRxN);
-            public static informationBinding[] informationBindings => [new informationBinding
+            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -2368,7 +2368,7 @@ namespace S100Framework.DomainModel.S131 {
                 association = nameof(InclusionType),
                 role = Enum.GetName<Role>(Role.isApplicableTo)!,
                 informationTypes = [nameof(Applicability)],
-            }, new informationBinding
+            }, new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -2456,7 +2456,7 @@ namespace S100Framework.DomainModel.S131 {
 
             [JsonIgnore]
             public override string Code => nameof(Applicability);
-            public static informationBinding[] informationBindings => [new informationBinding
+            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -2464,7 +2464,7 @@ namespace S100Framework.DomainModel.S131 {
                 association = nameof(InclusionType),
                 role = Enum.GetName<Role>(Role.theApplicableRxN)!,
                 informationTypes = [nameof(AbstractRxN)],
-            }, new informationBinding
+            }, new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -2502,7 +2502,7 @@ namespace S100Framework.DomainModel.S131 {
 
             [JsonIgnore]
             public override string Code => nameof(Authority);
-            public static informationBinding[] informationBindings => [new informationBinding
+            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -2510,7 +2510,7 @@ namespace S100Framework.DomainModel.S131 {
                 association = nameof(AuthorityContact),
                 role = Enum.GetName<Role>(Role.theContactDetails)!,
                 informationTypes = [nameof(ContactDetails)],
-            }, new informationBinding
+            }, new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -2518,7 +2518,7 @@ namespace S100Framework.DomainModel.S131 {
                 association = nameof(RelatedOrganisation),
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(AbstractRxN)],
-            }, new informationBinding
+            }, new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -2648,7 +2648,7 @@ namespace S100Framework.DomainModel.S131 {
 
             [JsonIgnore]
             public override string Code => nameof(AvailablePortServices);
-            public static informationBinding[] informationBindings => [];
+            public static informationBindingDefinition[] informationBindingDefinitions => [];
 
             public AvailablePortServices() {
             }
@@ -2677,7 +2677,7 @@ namespace S100Framework.DomainModel.S131 {
 
             [JsonIgnore]
             public override string Code => nameof(ContactDetails);
-            public static informationBinding[] informationBindings => [new informationBinding
+            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -2707,7 +2707,7 @@ namespace S100Framework.DomainModel.S131 {
 
             [JsonIgnore]
             public override string Code => nameof(Entrance);
-            public static informationBinding[] informationBindings => [];
+            public static informationBindingDefinition[] informationBindingDefinitions => [];
 
             public Entrance() {
             }
@@ -2718,7 +2718,7 @@ namespace S100Framework.DomainModel.S131 {
         public partial class NauticalInformation : AbstractRxN {
             [JsonIgnore]
             public override string Code => nameof(NauticalInformation);
-            public static informationBinding[] informationBindings => [new informationBinding
+            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -2741,7 +2741,7 @@ namespace S100Framework.DomainModel.S131 {
 
             [JsonIgnore]
             public override string Code => nameof(NonStandardWorkingDay);
-            public static informationBinding[] informationBindings => [];
+            public static informationBindingDefinition[] informationBindingDefinitions => [];
 
             public NonStandardWorkingDay() {
             }
@@ -2752,7 +2752,7 @@ namespace S100Framework.DomainModel.S131 {
         public partial class Recommendations : AbstractRxN {
             [JsonIgnore]
             public override string Code => nameof(Recommendations);
-            public static informationBinding[] informationBindings => [];
+            public static informationBindingDefinition[] informationBindingDefinitions => [];
 
             public Recommendations() {
             }
@@ -2763,7 +2763,7 @@ namespace S100Framework.DomainModel.S131 {
         public partial class Regulations : AbstractRxN {
             [JsonIgnore]
             public override string Code => nameof(Regulations);
-            public static informationBinding[] informationBindings => [];
+            public static informationBindingDefinition[] informationBindingDefinitions => [];
 
             public Regulations() {
             }
@@ -2774,7 +2774,7 @@ namespace S100Framework.DomainModel.S131 {
         public partial class Restrictions : AbstractRxN {
             [JsonIgnore]
             public override string Code => nameof(Restrictions);
-            public static informationBinding[] informationBindings => [];
+            public static informationBindingDefinition[] informationBindingDefinitions => [];
 
             public Restrictions() {
             }
@@ -2789,7 +2789,7 @@ namespace S100Framework.DomainModel.S131 {
 
             [JsonIgnore]
             public override string Code => nameof(ServiceHours);
-            public static informationBinding[] informationBindings => [new informationBinding
+            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -2797,7 +2797,7 @@ namespace S100Framework.DomainModel.S131 {
                 association = nameof(ExceptionalWorkday),
                 role = Enum.GetName<Role>(Role.partialWorkingDay)!,
                 informationTypes = [nameof(NonStandardWorkingDay)],
-            }, new informationBinding
+            }, new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -2832,7 +2832,7 @@ namespace S100Framework.DomainModel.S131 {
 
             [JsonIgnore]
             public override string Code => nameof(SpatialQuality);
-            public static informationBinding[] informationBindings => [];
+            public static informationBindingDefinition[] informationBindingDefinitions => [];
 
             public SpatialQuality() {
             }
@@ -2875,7 +2875,7 @@ namespace S100Framework.DomainModel.S131 {
 
             [JsonIgnore]
             public override string Code => nameof(FeatureType);
-            public static informationBinding[] informationBindings => [new informationBinding
+            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -2883,7 +2883,7 @@ namespace S100Framework.DomainModel.S131 {
                 association = nameof(PermissionType),
                 role = Enum.GetName<Role>(Role.permission)!,
                 informationTypes = [nameof(Applicability)],
-            }, new informationBinding
+            }, new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -2891,7 +2891,7 @@ namespace S100Framework.DomainModel.S131 {
                 association = nameof(AssociatedRxN),
                 role = Enum.GetName<Role>(Role.theRxN)!,
                 informationTypes = [nameof(AbstractRxN)],
-            }, new informationBinding
+            }, new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -2900,7 +2900,7 @@ namespace S100Framework.DomainModel.S131 {
                 role = Enum.GetName<Role>(Role.providesInformation)!,
                 informationTypes = [nameof(NauticalInformation)],
             }, ];
-            public static featureBinding[] featureBindings => [new featureBinding
+            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -2919,7 +2919,7 @@ namespace S100Framework.DomainModel.S131 {
         public abstract partial class OrganizationContactArea : FeatureType {
             [JsonIgnore]
             public override string Code => nameof(OrganizationContactArea);
-            public static informationBinding[] informationBindings => [new informationBinding
+            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -2928,7 +2928,7 @@ namespace S100Framework.DomainModel.S131 {
                 role = Enum.GetName<Role>(Role.theContactDetails)!,
                 informationTypes = [nameof(ContactDetails)],
             }, ];
-            public static featureBinding[] featureBindings => [];
+            public static featureBindingDefinition[] featureBindingDefinitions => [];
 
             public OrganizationContactArea() {
             }
@@ -2939,7 +2939,7 @@ namespace S100Framework.DomainModel.S131 {
         public abstract partial class SupervisedArea : OrganizationContactArea {
             [JsonIgnore]
             public override string Code => nameof(SupervisedArea);
-            public static informationBinding[] informationBindings => [new informationBinding
+            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -2948,7 +2948,7 @@ namespace S100Framework.DomainModel.S131 {
                 role = Enum.GetName<Role>(Role.controlAuthority)!,
                 informationTypes = [nameof(Authority)],
             }, ];
-            public static featureBinding[] featureBindings => [];
+            public static featureBindingDefinition[] featureBindingDefinitions => [];
 
             public SupervisedArea() {
             }
@@ -2961,8 +2961,8 @@ namespace S100Framework.DomainModel.S131 {
 
             [JsonIgnore]
             public override string Code => nameof(HarbourPhysicalInfrastructure);
-            public static informationBinding[] informationBindings => [];
-            public static featureBinding[] featureBindings => [new featureBinding
+            public static informationBindingDefinition[] informationBindingDefinitions => [];
+            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -2981,8 +2981,8 @@ namespace S100Framework.DomainModel.S131 {
         public abstract partial class Layout : SupervisedArea {
             [JsonIgnore]
             public override string Code => nameof(Layout);
-            public static informationBinding[] informationBindings => [];
-            public static featureBinding[] featureBindings => [];
+            public static informationBindingDefinition[] informationBindingDefinitions => [];
+            public static featureBindingDefinition[] featureBindingDefinitions => [];
 
             public Layout() {
             }
@@ -2993,7 +2993,7 @@ namespace S100Framework.DomainModel.S131 {
         public partial class AnchorBerth : Layout {
             [JsonIgnore]
             public override string Code => nameof(AnchorBerth);
-            public static informationBinding[] informationBindings => [new informationBinding
+            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -3001,7 +3001,7 @@ namespace S100Framework.DomainModel.S131 {
                 association = nameof(ServiceAvailability),
                 role = Enum.GetName<Role>(Role.serviceDescriptionReference)!,
                 informationTypes = [nameof(AvailablePortServices)],
-            }, new informationBinding
+            }, new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -3010,7 +3010,7 @@ namespace S100Framework.DomainModel.S131 {
                 role = Enum.GetName<Role>(Role.location_srvHrs)!,
                 informationTypes = [nameof(ServiceHours)],
             }, ];
-            public static featureBinding[] featureBindings => [new featureBinding
+            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -3038,7 +3038,7 @@ namespace S100Framework.DomainModel.S131 {
 
             [JsonIgnore]
             public override string Code => nameof(AnchorageArea);
-            public static informationBinding[] informationBindings => [new informationBinding
+            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -3047,7 +3047,7 @@ namespace S100Framework.DomainModel.S131 {
                 role = Enum.GetName<Role>(Role.location_srvHrs)!,
                 informationTypes = [nameof(ServiceHours)],
             }, ];
-            public static featureBinding[] featureBindings => [new featureBinding
+            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.aggregation,
                 lower = 1,
@@ -3100,7 +3100,7 @@ namespace S100Framework.DomainModel.S131 {
 
             [JsonIgnore]
             public override string Code => nameof(Berth);
-            public static informationBinding[] informationBindings => [new informationBinding
+            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -3108,7 +3108,7 @@ namespace S100Framework.DomainModel.S131 {
                 association = nameof(ServiceAvailability),
                 role = Enum.GetName<Role>(Role.serviceDescriptionReference)!,
                 informationTypes = [nameof(AvailablePortServices)],
-            }, new informationBinding
+            }, new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -3117,7 +3117,7 @@ namespace S100Framework.DomainModel.S131 {
                 role = Enum.GetName<Role>(Role.location_srvHrs)!,
                 informationTypes = [nameof(ServiceHours)],
             }, ];
-            public static featureBinding[] featureBindings => [new featureBinding
+            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -3125,7 +3125,7 @@ namespace S100Framework.DomainModel.S131 {
                 association = nameof(Demarcation),
                 role = Enum.GetName<Role>(Role.demarcationIndicator)!,
                 featureTypes = [nameof(BerthPosition)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.aggregation,
                 lower = 1,
@@ -3155,8 +3155,8 @@ namespace S100Framework.DomainModel.S131 {
 
             [JsonIgnore]
             public override string Code => nameof(BerthPosition);
-            public static informationBinding[] informationBindings => [];
-            public static featureBinding[] featureBindings => [new featureBinding
+            public static informationBindingDefinition[] informationBindingDefinitions => [];
+            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.composition,
                 lower = 1,
@@ -3164,7 +3164,7 @@ namespace S100Framework.DomainModel.S131 {
                 association = nameof(Demarcation),
                 role = Enum.GetName<Role>(Role.demarcatedFeature)!,
                 featureTypes = [nameof(Berth)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -3192,7 +3192,7 @@ namespace S100Framework.DomainModel.S131 {
 
             [JsonIgnore]
             public override string Code => nameof(DockArea);
-            public static informationBinding[] informationBindings => [new informationBinding
+            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -3200,7 +3200,7 @@ namespace S100Framework.DomainModel.S131 {
                 association = nameof(ServiceAvailability),
                 role = Enum.GetName<Role>(Role.serviceDescriptionReference)!,
                 informationTypes = [nameof(AvailablePortServices)],
-            }, new informationBinding
+            }, new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -3209,7 +3209,7 @@ namespace S100Framework.DomainModel.S131 {
                 role = Enum.GetName<Role>(Role.location_srvHrs)!,
                 informationTypes = [nameof(ServiceHours)],
             }, ];
-            public static featureBinding[] featureBindings => [new featureBinding
+            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.aggregation,
                 lower = 1,
@@ -3230,7 +3230,7 @@ namespace S100Framework.DomainModel.S131 {
 
             [JsonIgnore]
             public override string Code => nameof(DryDock);
-            public static informationBinding[] informationBindings => [new informationBinding
+            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -3239,7 +3239,7 @@ namespace S100Framework.DomainModel.S131 {
                 role = Enum.GetName<Role>(Role.location_srvHrs)!,
                 informationTypes = [nameof(ServiceHours)],
             }, ];
-            public static featureBinding[] featureBindings => [];
+            public static featureBindingDefinition[] featureBindingDefinitions => [];
 
             public DryDock() {
             }
@@ -3259,7 +3259,7 @@ namespace S100Framework.DomainModel.S131 {
 
             [JsonIgnore]
             public override string Code => nameof(DumpingGround);
-            public static informationBinding[] informationBindings => [new informationBinding
+            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -3268,7 +3268,7 @@ namespace S100Framework.DomainModel.S131 {
                 role = Enum.GetName<Role>(Role.location_srvHrs)!,
                 informationTypes = [nameof(ServiceHours)],
             }, ];
-            public static featureBinding[] featureBindings => [new featureBinding
+            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.aggregation,
                 lower = 1,
@@ -3289,7 +3289,7 @@ namespace S100Framework.DomainModel.S131 {
 
             [JsonIgnore]
             public override string Code => nameof(FloatingDock);
-            public static informationBinding[] informationBindings => [new informationBinding
+            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -3298,7 +3298,7 @@ namespace S100Framework.DomainModel.S131 {
                 role = Enum.GetName<Role>(Role.location_srvHrs)!,
                 informationTypes = [nameof(ServiceHours)],
             }, ];
-            public static featureBinding[] featureBindings => [];
+            public static featureBindingDefinition[] featureBindingDefinitions => [];
 
             public FloatingDock() {
             }
@@ -3311,7 +3311,7 @@ namespace S100Framework.DomainModel.S131 {
 
             [JsonIgnore]
             public override string Code => nameof(Gridiron);
-            public static informationBinding[] informationBindings => [new informationBinding
+            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -3320,7 +3320,7 @@ namespace S100Framework.DomainModel.S131 {
                 role = Enum.GetName<Role>(Role.location_srvHrs)!,
                 informationTypes = [nameof(ServiceHours)],
             }, ];
-            public static featureBinding[] featureBindings => [];
+            public static featureBindingDefinition[] featureBindingDefinitions => [];
 
             public Gridiron() {
             }
@@ -3357,7 +3357,7 @@ namespace S100Framework.DomainModel.S131 {
 
             [JsonIgnore]
             public override string Code => nameof(HarbourAreaAdministrative);
-            public static informationBinding[] informationBindings => [new informationBinding
+            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -3365,7 +3365,7 @@ namespace S100Framework.DomainModel.S131 {
                 association = nameof(ServiceAvailability),
                 role = Enum.GetName<Role>(Role.serviceDescriptionReference)!,
                 informationTypes = [nameof(AvailablePortServices)],
-            }, new informationBinding
+            }, new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -3374,7 +3374,7 @@ namespace S100Framework.DomainModel.S131 {
                 role = Enum.GetName<Role>(Role.location_srvHrs)!,
                 informationTypes = [nameof(ServiceHours)],
             }, ];
-            public static featureBinding[] featureBindings => [new featureBinding
+            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -3382,7 +3382,7 @@ namespace S100Framework.DomainModel.S131 {
                 association = nameof(JurisdictionalLimit),
                 role = Enum.GetName<Role>(Role.limitExtent)!,
                 featureTypes = [nameof(OuterLimit)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -3425,7 +3425,7 @@ namespace S100Framework.DomainModel.S131 {
 
             [JsonIgnore]
             public override string Code => nameof(HarbourAreaSection);
-            public static informationBinding[] informationBindings => [new informationBinding
+            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -3433,7 +3433,7 @@ namespace S100Framework.DomainModel.S131 {
                 association = nameof(ServiceAvailability),
                 role = Enum.GetName<Role>(Role.serviceDescriptionReference)!,
                 informationTypes = [nameof(AvailablePortServices)],
-            }, new informationBinding
+            }, new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -3442,7 +3442,7 @@ namespace S100Framework.DomainModel.S131 {
                 role = Enum.GetName<Role>(Role.location_srvHrs)!,
                 informationTypes = [nameof(ServiceHours)],
             }, ];
-            public static featureBinding[] featureBindings => [new featureBinding
+            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.aggregation,
                 lower = 1,
@@ -3450,7 +3450,7 @@ namespace S100Framework.DomainModel.S131 {
                 association = nameof(LayoutDivision),
                 role = Enum.GetName<Role>(Role.componentOf)!,
                 featureTypes = [nameof(HarbourAreaAdministrative)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.aggregation,
                 lower = 0,
@@ -3458,7 +3458,7 @@ namespace S100Framework.DomainModel.S131 {
                 association = nameof(Subsection),
                 role = Enum.GetName<Role>(Role.constitute)!,
                 featureTypes = [nameof(HarbourAreaSection)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -3466,7 +3466,7 @@ namespace S100Framework.DomainModel.S131 {
                 association = nameof(Subsection),
                 role = Enum.GetName<Role>(Role.subUnit)!,
                 featureTypes = [nameof(HarbourAreaSection)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -3474,7 +3474,7 @@ namespace S100Framework.DomainModel.S131 {
                 association = nameof(Infrastructure),
                 role = Enum.GetName<Role>(Role.hasInfrastructure)!,
                 featureTypes = [nameof(HarbourPhysicalInfrastructure)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -3502,7 +3502,7 @@ namespace S100Framework.DomainModel.S131 {
 
             [JsonIgnore]
             public override string Code => nameof(HarbourBasin);
-            public static informationBinding[] informationBindings => [new informationBinding
+            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -3511,7 +3511,7 @@ namespace S100Framework.DomainModel.S131 {
                 role = Enum.GetName<Role>(Role.location_srvHrs)!,
                 informationTypes = [nameof(ServiceHours)],
             }, ];
-            public static featureBinding[] featureBindings => [new featureBinding
+            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.aggregation,
                 lower = 1,
@@ -3535,7 +3535,7 @@ namespace S100Framework.DomainModel.S131 {
 
             [JsonIgnore]
             public override string Code => nameof(HarbourFacility);
-            public static informationBinding[] informationBindings => [new informationBinding
+            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -3544,7 +3544,7 @@ namespace S100Framework.DomainModel.S131 {
                 role = Enum.GetName<Role>(Role.location_srvHrs)!,
                 informationTypes = [nameof(ServiceHours)],
             }, ];
-            public static featureBinding[] featureBindings => [];
+            public static featureBindingDefinition[] featureBindingDefinitions => [];
 
             public HarbourFacility() {
                 categoryOfHarbourFacility = new();
@@ -3571,7 +3571,7 @@ namespace S100Framework.DomainModel.S131 {
 
             [JsonIgnore]
             public override string Code => nameof(MooringWarpingFacility);
-            public static informationBinding[] informationBindings => [new informationBinding
+            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -3579,7 +3579,7 @@ namespace S100Framework.DomainModel.S131 {
                 association = nameof(ServiceAvailability),
                 role = Enum.GetName<Role>(Role.serviceDescriptionReference)!,
                 informationTypes = [nameof(AvailablePortServices)],
-            }, new informationBinding
+            }, new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -3588,7 +3588,7 @@ namespace S100Framework.DomainModel.S131 {
                 role = Enum.GetName<Role>(Role.location_srvHrs)!,
                 informationTypes = [nameof(ServiceHours)],
             }, ];
-            public static featureBinding[] featureBindings => [new featureBinding
+            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -3615,7 +3615,7 @@ namespace S100Framework.DomainModel.S131 {
 
             [JsonIgnore]
             public override string Code => nameof(OuterLimit);
-            public static informationBinding[] informationBindings => [new informationBinding
+            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -3624,7 +3624,7 @@ namespace S100Framework.DomainModel.S131 {
                 role = Enum.GetName<Role>(Role.entranceReference)!,
                 informationTypes = [nameof(Entrance)],
             }, ];
-            public static featureBinding[] featureBindings => [new featureBinding
+            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 1,
@@ -3652,7 +3652,7 @@ namespace S100Framework.DomainModel.S131 {
 
             [JsonIgnore]
             public override string Code => nameof(PilotBoardingPlace);
-            public static informationBinding[] informationBindings => [new informationBinding
+            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -3661,7 +3661,7 @@ namespace S100Framework.DomainModel.S131 {
                 role = Enum.GetName<Role>(Role.location_srvHrs)!,
                 informationTypes = [nameof(ServiceHours)],
             }, ];
-            public static featureBinding[] featureBindings => [new featureBinding
+            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.aggregation,
                 lower = 1,
@@ -3689,7 +3689,7 @@ namespace S100Framework.DomainModel.S131 {
 
             [JsonIgnore]
             public override string Code => nameof(SeaplaneLandingArea);
-            public static informationBinding[] informationBindings => [new informationBinding
+            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -3698,7 +3698,7 @@ namespace S100Framework.DomainModel.S131 {
                 role = Enum.GetName<Role>(Role.location_srvHrs)!,
                 informationTypes = [nameof(ServiceHours)],
             }, ];
-            public static featureBinding[] featureBindings => [new featureBinding
+            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.aggregation,
                 lower = 1,
@@ -3766,7 +3766,7 @@ namespace S100Framework.DomainModel.S131 {
 
             [JsonIgnore]
             public override string Code => nameof(Terminal);
-            public static informationBinding[] informationBindings => [new informationBinding
+            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -3774,7 +3774,7 @@ namespace S100Framework.DomainModel.S131 {
                 association = nameof(ServiceAvailability),
                 role = Enum.GetName<Role>(Role.serviceDescriptionReference)!,
                 informationTypes = [nameof(AvailablePortServices)],
-            }, new informationBinding
+            }, new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -3783,7 +3783,7 @@ namespace S100Framework.DomainModel.S131 {
                 role = Enum.GetName<Role>(Role.location_srvHrs)!,
                 informationTypes = [nameof(ServiceHours)],
             }, ];
-            public static featureBinding[] featureBindings => [new featureBinding
+            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.aggregation,
                 lower = 1,
@@ -3791,7 +3791,7 @@ namespace S100Framework.DomainModel.S131 {
                 association = nameof(LayoutDivision),
                 role = Enum.GetName<Role>(Role.componentOf)!,
                 featureTypes = [nameof(HarbourAreaSection)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -3799,7 +3799,7 @@ namespace S100Framework.DomainModel.S131 {
                 association = nameof(LayoutDivision),
                 role = Enum.GetName<Role>(Role.layoutUnit)!,
                 featureTypes = [nameof(Berth)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -3827,7 +3827,7 @@ namespace S100Framework.DomainModel.S131 {
 
             [JsonIgnore]
             public override string Code => nameof(TurningBasin);
-            public static informationBinding[] informationBindings => [new informationBinding
+            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -3836,7 +3836,7 @@ namespace S100Framework.DomainModel.S131 {
                 role = Enum.GetName<Role>(Role.location_srvHrs)!,
                 informationTypes = [nameof(ServiceHours)],
             }, ];
-            public static featureBinding[] featureBindings => [new featureBinding
+            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.aggregation,
                 lower = 1,
@@ -3867,7 +3867,7 @@ namespace S100Framework.DomainModel.S131 {
 
             [JsonIgnore]
             public override string Code => nameof(WaterwayArea);
-            public static informationBinding[] informationBindings => [new informationBinding
+            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -3876,7 +3876,7 @@ namespace S100Framework.DomainModel.S131 {
                 role = Enum.GetName<Role>(Role.location_srvHrs)!,
                 informationTypes = [nameof(ServiceHours)],
             }, ];
-            public static featureBinding[] featureBindings => [new featureBinding
+            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.aggregation,
                 lower = 1,
@@ -3901,8 +3901,8 @@ namespace S100Framework.DomainModel.S131 {
 
             [JsonIgnore]
             public override string Code => nameof(DataCoverage);
-            public static informationBinding[] informationBindings => [];
-            public static featureBinding[] featureBindings => [];
+            public static informationBindingDefinition[] informationBindingDefinitions => [];
+            public static featureBindingDefinition[] featureBindingDefinitions => [];
 
             public DataCoverage() {
             }
@@ -3929,8 +3929,8 @@ namespace S100Framework.DomainModel.S131 {
 
             [JsonIgnore]
             public override string Code => nameof(QualityOfNonBathymetricData);
-            public static informationBinding[] informationBindings => [];
-            public static featureBinding[] featureBindings => [];
+            public static informationBindingDefinition[] informationBindingDefinitions => [];
+            public static featureBindingDefinition[] featureBindingDefinitions => [];
 
             public QualityOfNonBathymetricData() {
                 horizontalPositionUncertainty = new horizontalPositionUncertainty()
@@ -3972,8 +3972,8 @@ namespace S100Framework.DomainModel.S131 {
 
             [JsonIgnore]
             public override string Code => nameof(SoundingDatum);
-            public static informationBinding[] informationBindings => [];
-            public static featureBinding[] featureBindings => [];
+            public static informationBindingDefinition[] informationBindingDefinitions => [];
+            public static featureBindingDefinition[] featureBindingDefinitions => [];
 
             public SoundingDatum() {
             }
@@ -4002,8 +4002,8 @@ namespace S100Framework.DomainModel.S131 {
 
             [JsonIgnore]
             public override string Code => nameof(VerticalDatumOfData);
-            public static informationBinding[] informationBindings => [];
-            public static featureBinding[] featureBindings => [];
+            public static informationBindingDefinition[] informationBindingDefinitions => [];
+            public static featureBindingDefinition[] featureBindingDefinitions => [];
 
             public VerticalDatumOfData() {
             }
@@ -4025,8 +4025,8 @@ namespace S100Framework.DomainModel.S131 {
 
             [JsonIgnore]
             public override string Code => nameof(TextPlacement);
-            public static informationBinding[] informationBindings => [];
-            public static featureBinding[] featureBindings => [new featureBinding
+            public static informationBindingDefinition[] informationBindingDefinitions => [];
+            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 1,

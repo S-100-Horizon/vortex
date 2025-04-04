@@ -81,7 +81,7 @@ namespace S100Framework.DomainModel {
     public abstract class FeatureAssociation : Association {
     }
 
-    public class informationBinding {
+    public class informationBindingDefinition {
         public roleType roleType { get; set; }
         public int lower { get; set; }
         public int? upper { get; set; }
@@ -91,7 +91,7 @@ namespace S100Framework.DomainModel {
         public string[] informationTypes { get; set; } = new string[0];
     }
 
-    public class featureBinding {
+    public class featureBindingDefinition {
         public roleType roleType { get; set; }
         public int lower { get; set; }
         public int? upper { get; set; }

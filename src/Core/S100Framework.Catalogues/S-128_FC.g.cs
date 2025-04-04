@@ -1237,7 +1237,7 @@ namespace S100Framework.DomainModel.S128 {
 
             [JsonIgnore]
             public override string Code => nameof(CatalogueSectionHeader);
-            public static informationBinding[] informationBindings => [new informationBinding
+            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -1245,7 +1245,7 @@ namespace S100Framework.DomainModel.S128 {
                 association = nameof(PriceOfNauticalProduct),
                 role = Enum.GetName<Role>(Role.thePriceInformation)!,
                 informationTypes = [nameof(PriceInformation)],
-            }, new informationBinding
+            }, new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -1253,7 +1253,7 @@ namespace S100Framework.DomainModel.S128 {
                 association = nameof(ProductionDetails),
                 role = Enum.GetName<Role>(Role.theProducer)!,
                 informationTypes = [nameof(ProducerInformation)],
-            }, new informationBinding
+            }, new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -1279,7 +1279,7 @@ namespace S100Framework.DomainModel.S128 {
 
             [JsonIgnore]
             public override string Code => nameof(ContactDetails);
-            public static informationBinding[] informationBindings => [new informationBinding
+            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -1287,7 +1287,7 @@ namespace S100Framework.DomainModel.S128 {
                 association = nameof(ProducerContact),
                 role = Enum.GetName<Role>(Role.theProducer)!,
                 informationTypes = [nameof(ProducerInformation)],
-            }, new informationBinding
+            }, new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -1311,7 +1311,7 @@ namespace S100Framework.DomainModel.S128 {
 
             [JsonIgnore]
             public override string Code => nameof(IndicationOfCarriageRequirement);
-            public static informationBinding[] informationBindings => [];
+            public static informationBindingDefinition[] informationBindingDefinitions => [];
 
             public IndicationOfCarriageRequirement() {
             }
@@ -1327,7 +1327,7 @@ namespace S100Framework.DomainModel.S128 {
 
             [JsonIgnore]
             public override string Code => nameof(PriceInformation);
-            public static informationBinding[] informationBindings => [new informationBinding
+            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -1349,7 +1349,7 @@ namespace S100Framework.DomainModel.S128 {
 
             [JsonIgnore]
             public override string Code => nameof(ProducerInformation);
-            public static informationBinding[] informationBindings => [new informationBinding
+            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -1357,7 +1357,7 @@ namespace S100Framework.DomainModel.S128 {
                 association = nameof(ProducerContact),
                 role = Enum.GetName<Role>(Role.theContactDetails)!,
                 informationTypes = [nameof(ContactDetails)],
-            }, new informationBinding
+            }, new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -1379,7 +1379,7 @@ namespace S100Framework.DomainModel.S128 {
 
             [JsonIgnore]
             public override string Code => nameof(DistributorInformation);
-            public static informationBinding[] informationBindings => [new informationBinding
+            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -1387,7 +1387,7 @@ namespace S100Framework.DomainModel.S128 {
                 association = nameof(DistributionDetails),
                 role = Enum.GetName<Role>(Role.catalogueHeader)!,
                 informationTypes = [nameof(CatalogueSectionHeader)],
-            }, new informationBinding
+            }, new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -1433,7 +1433,7 @@ namespace S100Framework.DomainModel.S128 {
 
             [JsonIgnore]
             public override string Code => nameof(CatalogueElement);
-            public static informationBinding[] informationBindings => [new informationBinding
+            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -1441,7 +1441,7 @@ namespace S100Framework.DomainModel.S128 {
                 association = nameof(CarriageRequirement),
                 role = Enum.GetName<Role>(Role.theRequirement)!,
                 informationTypes = [nameof(IndicationOfCarriageRequirement)],
-            }, new informationBinding
+            }, new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -1449,7 +1449,7 @@ namespace S100Framework.DomainModel.S128 {
                 association = nameof(PriceOfElement),
                 role = Enum.GetName<Role>(Role.thePriceInformation)!,
                 informationTypes = [nameof(PriceInformation)],
-            }, new informationBinding
+            }, new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 1,
@@ -1458,7 +1458,7 @@ namespace S100Framework.DomainModel.S128 {
                 role = Enum.GetName<Role>(Role.elementContainer)!,
                 informationTypes = [nameof(CatalogueSectionHeader)],
             }, ];
-            public static featureBinding[] featureBindings => [new featureBinding
+            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -1556,8 +1556,8 @@ namespace S100Framework.DomainModel.S128 {
 
             [JsonIgnore]
             public override string Code => nameof(NavigationalProduct);
-            public static informationBinding[] informationBindings => [];
-            public static featureBinding[] featureBindings => [new featureBinding
+            public static informationBindingDefinition[] informationBindingDefinitions => [];
+            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 1,
@@ -1599,8 +1599,8 @@ namespace S100Framework.DomainModel.S128 {
 
             [JsonIgnore]
             public override string Code => nameof(ElectronicProduct);
-            public static informationBinding[] informationBindings => [];
-            public static featureBinding[] featureBindings => [];
+            public static informationBindingDefinition[] informationBindingDefinitions => [];
+            public static featureBindingDefinition[] featureBindingDefinitions => [];
 
             public ElectronicProduct() {
             }
@@ -1619,8 +1619,8 @@ namespace S100Framework.DomainModel.S128 {
 
             [JsonIgnore]
             public override string Code => nameof(PhysicalProduct);
-            public static informationBinding[] informationBindings => [];
-            public static featureBinding[] featureBindings => [];
+            public static informationBindingDefinition[] informationBindingDefinitions => [];
+            public static featureBindingDefinition[] featureBindingDefinitions => [];
 
             public PhysicalProduct() {
             }
@@ -1657,8 +1657,8 @@ namespace S100Framework.DomainModel.S128 {
 
             [JsonIgnore]
             public override string Code => nameof(S100Service);
-            public static informationBinding[] informationBindings => [];
-            public static featureBinding[] featureBindings => [];
+            public static informationBindingDefinition[] informationBindingDefinitions => [];
+            public static featureBindingDefinition[] featureBindingDefinitions => [];
 
             public S100Service() {
             }

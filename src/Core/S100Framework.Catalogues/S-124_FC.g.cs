@@ -579,7 +579,7 @@ namespace S100Framework.DomainModel.S124 {
 
             [JsonIgnore]
             public override string Code => nameof(NAVWARNPreamble);
-            public static informationBinding[] informationBindings => [new informationBinding
+            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -619,7 +619,7 @@ namespace S100Framework.DomainModel.S124 {
 
             [JsonIgnore]
             public override string Code => nameof(References);
-            public static informationBinding[] informationBindings => [];
+            public static informationBindingDefinition[] informationBindingDefinitions => [];
 
             public References() {
             }
@@ -653,7 +653,7 @@ namespace S100Framework.DomainModel.S124 {
 
             [JsonIgnore]
             public override string Code => nameof(NAVWARNPart);
-            public static informationBinding[] informationBindings => [new informationBinding
+            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 1,
@@ -662,7 +662,7 @@ namespace S100Framework.DomainModel.S124 {
                 role = Enum.GetName<Role>(Role.header)!,
                 informationTypes = [nameof(NAVWARNPreamble)],
             }, ];
-            public static featureBinding[] featureBindings => [new featureBinding
+            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -670,7 +670,7 @@ namespace S100Framework.DomainModel.S124 {
                 association = nameof(AreaAffected),
                 role = Enum.GetName<Role>(Role.affects)!,
                 featureTypes = [nameof(NAVWARNAreaAffected)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -692,8 +692,8 @@ namespace S100Framework.DomainModel.S124 {
         public partial class NAVWARNAreaAffected : FeatureNode {
             [JsonIgnore]
             public override string Code => nameof(NAVWARNAreaAffected);
-            public static informationBinding[] informationBindings => [];
-            public static featureBinding[] featureBindings => [new featureBinding
+            public static informationBindingDefinition[] informationBindingDefinitions => [];
+            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 1,
@@ -726,8 +726,8 @@ namespace S100Framework.DomainModel.S124 {
 
             [JsonIgnore]
             public override string Code => nameof(TextPlacement);
-            public static informationBinding[] informationBindings => [];
-            public static featureBinding[] featureBindings => [new featureBinding
+            public static informationBindingDefinition[] informationBindingDefinitions => [];
+            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.composition,
                 lower = 0,

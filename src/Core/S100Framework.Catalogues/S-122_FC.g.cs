@@ -1588,7 +1588,7 @@ namespace S100Framework.DomainModel.S122 {
 
             [JsonIgnore]
             public override string Code => nameof(InformationType);
-            public static informationBinding[] informationBindings => [];
+            public static informationBindingDefinition[] informationBindingDefinitions => [];
 
             public InformationType() {
             }
@@ -1618,7 +1618,7 @@ namespace S100Framework.DomainModel.S122 {
 
             [JsonIgnore]
             public override string Code => nameof(AbstractRxN);
-            public static informationBinding[] informationBindings => [new informationBinding
+            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -1637,7 +1637,7 @@ namespace S100Framework.DomainModel.S122 {
         public partial class NauticalInformation : AbstractRxN {
             [JsonIgnore]
             public override string Code => nameof(NauticalInformation);
-            public static informationBinding[] informationBindings => [new informationBinding
+            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -1656,7 +1656,7 @@ namespace S100Framework.DomainModel.S122 {
         public partial class Regulations : AbstractRxN {
             [JsonIgnore]
             public override string Code => nameof(Regulations);
-            public static informationBinding[] informationBindings => [];
+            public static informationBindingDefinition[] informationBindingDefinitions => [];
 
             public Regulations() {
             }
@@ -1667,7 +1667,7 @@ namespace S100Framework.DomainModel.S122 {
         public partial class Restrictions : AbstractRxN {
             [JsonIgnore]
             public override string Code => nameof(Restrictions);
-            public static informationBinding[] informationBindings => [];
+            public static informationBindingDefinition[] informationBindingDefinitions => [];
 
             public Restrictions() {
             }
@@ -1678,7 +1678,7 @@ namespace S100Framework.DomainModel.S122 {
         public partial class Recommendations : AbstractRxN {
             [JsonIgnore]
             public override string Code => nameof(Recommendations);
-            public static informationBinding[] informationBindings => [];
+            public static informationBindingDefinition[] informationBindingDefinitions => [];
 
             public Recommendations() {
             }
@@ -1708,7 +1708,7 @@ namespace S100Framework.DomainModel.S122 {
 
             [JsonIgnore]
             public override string Code => nameof(Authority);
-            public static informationBinding[] informationBindings => [new informationBinding
+            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -1716,7 +1716,7 @@ namespace S100Framework.DomainModel.S122 {
                 association = nameof(RelatedOrganisation),
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(AbstractRxN)],
-            }, new informationBinding
+            }, new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -1724,7 +1724,7 @@ namespace S100Framework.DomainModel.S122 {
                 association = nameof(AuthorityContact),
                 role = Enum.GetName<Role>(Role.theContactDetails)!,
                 informationTypes = [nameof(ContactDetails)],
-            }, new informationBinding
+            }, new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -1761,7 +1761,7 @@ namespace S100Framework.DomainModel.S122 {
 
             [JsonIgnore]
             public override string Code => nameof(ContactDetails);
-            public static informationBinding[] informationBindings => [new informationBinding
+            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -1784,7 +1784,7 @@ namespace S100Framework.DomainModel.S122 {
 
             [JsonIgnore]
             public override string Code => nameof(NonStandardWorkingDay);
-            public static informationBinding[] informationBindings => [new informationBinding
+            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -1809,7 +1809,7 @@ namespace S100Framework.DomainModel.S122 {
 
             [JsonIgnore]
             public override string Code => nameof(ServiceHours);
-            public static informationBinding[] informationBindings => [new informationBinding
+            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -1817,7 +1817,7 @@ namespace S100Framework.DomainModel.S122 {
                 association = nameof(AuthorityHours),
                 role = Enum.GetName<Role>(Role.theAuthority_srvHrs)!,
                 informationTypes = [nameof(Authority)],
-            }, new informationBinding
+            }, new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -1908,7 +1908,7 @@ namespace S100Framework.DomainModel.S122 {
 
             [JsonIgnore]
             public override string Code => nameof(Applicability);
-            public static informationBinding[] informationBindings => [];
+            public static informationBindingDefinition[] informationBindingDefinitions => [];
 
             public Applicability() {
             }
@@ -1948,7 +1948,7 @@ namespace S100Framework.DomainModel.S122 {
 
             [JsonIgnore]
             public override string Code => nameof(FeatureType);
-            public static informationBinding[] informationBindings => [new informationBinding
+            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -1956,7 +1956,7 @@ namespace S100Framework.DomainModel.S122 {
                 association = nameof(AssociatedRxN),
                 role = Enum.GetName<Role>(Role.theRxN)!,
                 informationTypes = [nameof(AbstractRxN)],
-            }, new informationBinding
+            }, new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -1965,7 +1965,7 @@ namespace S100Framework.DomainModel.S122 {
                 role = Enum.GetName<Role>(Role.providesInformation)!,
                 informationTypes = [nameof(NauticalInformation)],
             }, ];
-            public static featureBinding[] featureBindings => [];
+            public static featureBindingDefinition[] featureBindingDefinitions => [];
 
             public FeatureType() {
                 interoperabilityIdentifier = string.Empty;
@@ -2092,8 +2092,8 @@ namespace S100Framework.DomainModel.S122 {
 
             [JsonIgnore]
             public override string Code => nameof(RestrictedArea);
-            public static informationBinding[] informationBindings => [];
-            public static featureBinding[] featureBindings => [];
+            public static informationBindingDefinition[] informationBindingDefinitions => [];
+            public static featureBindingDefinition[] featureBindingDefinitions => [];
 
             public RestrictedArea() {
                 restriction = new();
@@ -2237,7 +2237,7 @@ namespace S100Framework.DomainModel.S122 {
 
             [JsonIgnore]
             public override string Code => nameof(MarineProtectedArea);
-            public static informationBinding[] informationBindings => [new informationBinding
+            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -2246,7 +2246,7 @@ namespace S100Framework.DomainModel.S122 {
                 role = Enum.GetName<Role>(Role.responsibleAuthority)!,
                 informationTypes = [nameof(Authority)],
             }, ];
-            public static featureBinding[] featureBindings => [];
+            public static featureBindingDefinition[] featureBindingDefinitions => [];
 
             public MarineProtectedArea() {
                 categoryOfMarineProtectedArea = new categoryOfMarineProtectedArea()
@@ -2268,7 +2268,7 @@ namespace S100Framework.DomainModel.S122 {
 
             [JsonIgnore]
             public override string Code => nameof(VesselTrafficServiceArea);
-            public static informationBinding[] informationBindings => [new informationBinding
+            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -2277,7 +2277,7 @@ namespace S100Framework.DomainModel.S122 {
                 role = Enum.GetName<Role>(Role.controlAuthority)!,
                 informationTypes = [nameof(Authority)],
             }, ];
-            public static featureBinding[] featureBindings => [];
+            public static featureBindingDefinition[] featureBindingDefinitions => [];
 
             public VesselTrafficServiceArea() {
             }
@@ -2288,8 +2288,8 @@ namespace S100Framework.DomainModel.S122 {
         public partial class DataCoverage : FeatureNode {
             [JsonIgnore]
             public override string Code => nameof(DataCoverage);
-            public static informationBinding[] informationBindings => [];
-            public static featureBinding[] featureBindings => [];
+            public static informationBindingDefinition[] informationBindingDefinitions => [];
+            public static featureBindingDefinition[] featureBindingDefinitions => [];
 
             public DataCoverage() {
             }
@@ -2300,8 +2300,8 @@ namespace S100Framework.DomainModel.S122 {
         public partial class TextPlacement : FeatureNode {
             [JsonIgnore]
             public override string Code => nameof(TextPlacement);
-            public static informationBinding[] informationBindings => [];
-            public static featureBinding[] featureBindings => [];
+            public static informationBindingDefinition[] informationBindingDefinitions => [];
+            public static featureBindingDefinition[] featureBindingDefinitions => [];
 
             public TextPlacement() {
             }

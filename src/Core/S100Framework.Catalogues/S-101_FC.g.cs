@@ -5050,7 +5050,7 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(ContactDetails);
-            public static informationBinding[] informationBindings => [];
+            public static informationBindingDefinition[] informationBindingDefinitions => [];
 
             public ContactDetails() {
             }
@@ -5068,7 +5068,7 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(ServiceHours);
-            public static informationBinding[] informationBindings => [];
+            public static informationBindingDefinition[] informationBindingDefinitions => [];
 
             public ServiceHours() {
                 scheduleByDayOfWeek = new();
@@ -5087,7 +5087,7 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(NonStandardWorkingDay);
-            public static informationBinding[] informationBindings => [];
+            public static informationBindingDefinition[] informationBindingDefinitions => [];
 
             public NonStandardWorkingDay() {
             }
@@ -5103,7 +5103,7 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(NauticalInformation);
-            public static informationBinding[] informationBindings => [];
+            public static informationBindingDefinition[] informationBindingDefinitions => [];
 
             public NauticalInformation() {
             }
@@ -5118,7 +5118,7 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(SpatialQuality);
-            public static informationBinding[] informationBindings => [];
+            public static informationBindingDefinition[] informationBindingDefinitions => [];
 
             public SpatialQuality() {
             }
@@ -5151,8 +5151,8 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(QualityOfNonBathymetricData);
-            public static informationBinding[] informationBindings => [];
-            public static featureBinding[] featureBindings => [new featureBinding
+            public static informationBindingDefinition[] informationBindingDefinitions => [];
+            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -5188,8 +5188,8 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(DataCoverage);
-            public static informationBinding[] informationBindings => [];
-            public static featureBinding[] featureBindings => [];
+            public static informationBindingDefinition[] informationBindingDefinitions => [];
+            public static featureBindingDefinition[] featureBindingDefinitions => [];
 
             public DataCoverage() {
             }
@@ -5209,8 +5209,8 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(NavigationalSystemOfMarks);
-            public static informationBinding[] informationBindings => [];
-            public static featureBinding[] featureBindings => [new featureBinding
+            public static informationBindingDefinition[] informationBindingDefinitions => [];
+            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -5243,8 +5243,8 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(LocalDirectionOfBuoyage);
-            public static informationBinding[] informationBindings => [];
-            public static featureBinding[] featureBindings => [new featureBinding
+            public static informationBindingDefinition[] informationBindingDefinitions => [];
+            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -5291,7 +5291,7 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(QualityOfBathymetricData);
-            public static informationBinding[] informationBindings => [new informationBinding
+            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -5300,7 +5300,7 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theQualityInformation)!,
                 informationTypes = [nameof(SpatialQuality)],
             }, ];
-            public static featureBinding[] featureBindings => [new featureBinding
+            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -5355,8 +5355,8 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(SoundingDatum);
-            public static informationBinding[] informationBindings => [];
-            public static featureBinding[] featureBindings => [new featureBinding
+            public static informationBindingDefinition[] informationBindingDefinitions => [];
+            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -5396,8 +5396,8 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(VerticalDatumOfData);
-            public static informationBinding[] informationBindings => [];
-            public static featureBinding[] featureBindings => [new featureBinding
+            public static informationBindingDefinition[] informationBindingDefinitions => [];
+            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -5480,8 +5480,8 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(QualityOfSurvey);
-            public static informationBinding[] informationBindings => [];
-            public static featureBinding[] featureBindings => [new featureBinding
+            public static informationBindingDefinition[] informationBindingDefinitions => [];
+            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -5523,8 +5523,8 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(UpdateInformation);
-            public static informationBinding[] informationBindings => [];
-            public static featureBinding[] featureBindings => [new featureBinding
+            public static informationBindingDefinition[] informationBindingDefinitions => [];
+            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -5532,7 +5532,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(UpdateAggregation),
                 role = Enum.GetName<Role>(Role.theComponent)!,
                 featureTypes = [nameof(UpdateInformation)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.aggregation,
                 lower = 0,
@@ -5540,7 +5540,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(UpdateAggregation),
                 role = Enum.GetName<Role>(Role.theCollection)!,
                 featureTypes = [nameof(UpdateInformation)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -5548,7 +5548,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(UpdatedInformation),
                 role = Enum.GetName<Role>(Role.theUpdatedObject)!,
                 featureTypes = [nameof(AdministrationArea), nameof(AirportAirfield), nameof(AnchorBerth), nameof(AnchorageArea), nameof(ArchipelagicSeaLane), nameof(ArchipelagicSeaLaneArea), nameof(ArchipelagicSeaLaneAxis), nameof(Berth), nameof(Bollard), nameof(Bridge), nameof(Building), nameof(BuiltUpArea), nameof(CableArea), nameof(CableOverhead), nameof(CableSubmarine), nameof(Canal), nameof(CardinalBeacon), nameof(CardinalBuoy), nameof(CargoTranshipmentArea), nameof(Causeway), nameof(CautionArea), nameof(Checkpoint), nameof(CoastGuardStation), nameof(Coastline), nameof(CollisionRegulationsLimit), nameof(ContiguousZone), nameof(ContinentalShelfArea), nameof(Conveyor), nameof(Crane), nameof(CurrentNonGravitational), nameof(CustomZone), nameof(Dam), nameof(Daymark), nameof(DeepWaterRoute), nameof(DeepWaterRouteCentreline), nameof(DeepWaterRoutePart), nameof(DepthArea), nameof(DepthContour), nameof(DepthNoBottomFound), nameof(DiscolouredWater), nameof(DistanceMark), nameof(DockArea), nameof(Dolphin), nameof(DredgedArea), nameof(DryDock), nameof(DumpingGround), nameof(Dyke), nameof(EmergencyWreckMarkingBuoy), nameof(ExclusiveEconomicZone), nameof(Fairway), nameof(FairwaySystem), nameof(FenceWall), nameof(FerryRoute), nameof(FisheryZone), nameof(FishingFacility), nameof(FishingGround), nameof(FloatingDock), nameof(FogSignal), nameof(FortifiedStructure), nameof(FoulGround), nameof(FreePortArea), nameof(Gate), nameof(Gridiron), nameof(HarbourAreaAdministrative), nameof(HarbourFacility), nameof(Helipad), nameof(Hulk), nameof(IceArea), nameof(InformationArea), nameof(InshoreTrafficZone), nameof(InstallationBuoy), nameof(IslandGroup), nameof(IsolatedDangerBeacon), nameof(IsolatedDangerBuoy), nameof(Lake), nameof(LandArea), nameof(LandElevation), nameof(LandRegion), nameof(Landmark), nameof(LateralBeacon), nameof(LateralBuoy), nameof(LightAirObstruction), nameof(LightAllAround), nameof(LightFloat), nameof(LightFogDetector), nameof(LightSectored), nameof(LightVessel), nameof(LocalDirectionOfBuoyage), nameof(LocalMagneticAnomaly), nameof(LockBasin), nameof(LogPond), nameof(MagneticVariation), nameof(MarineFarmCulture), nameof(MarinePollutionRegulationsArea), nameof(MilitaryPracticeArea), nameof(MooringArea), nameof(MooringBuoy), nameof(MooringTrot), nameof(NavigationLine), nameof(NavigationalSystemOfMarks), nameof(Obstruction), nameof(OffshorePlatform), nameof(OffshoreProductionArea), nameof(OilBarrier), nameof(PhysicalAISAidToNavigation), nameof(Pile), nameof(PilotBoardingPlace), nameof(PilotageDistrict), nameof(PipelineOverhead), nameof(PipelineSubmarineOnLand), nameof(Pontoon), nameof(PrecautionaryArea), nameof(ProductionStorageArea), nameof(PylonBridgeSupport), nameof(QualityOfBathymetricData), nameof(QualityOfNonBathymetricData), nameof(QualityOfSurvey), nameof(RadarLine), nameof(RadarRange), nameof(RadarReflector), nameof(RadarStation), nameof(RadarTransponderBeacon), nameof(RadioCallingInPoint), nameof(RadioStation), nameof(Railway), nameof(RangeSystem), nameof(Rapids), nameof(RecommendedRouteCentreline), nameof(RecommendedTrack), nameof(RecommendedTrafficLanePart), nameof(RescueStation), nameof(RestrictedArea), nameof(Retroreflector), nameof(River), nameof(Road), nameof(Runway), nameof(SafeWaterBeacon), nameof(SafeWaterBuoy), nameof(Sandwave), nameof(SeaAreaNamedWaterArea), nameof(SeabedArea), nameof(Seagrass), nameof(SeaplaneLandingArea), nameof(SeparationZoneOrLine), nameof(ShorelineConstruction), nameof(SignalStationTraffic), nameof(SignalStationWarning), nameof(SiloTank), nameof(SmallCraftFacility), nameof(SlopeTopline), nameof(SlopingGround), nameof(Sounding), nameof(SoundingDatum), nameof(SpanFixed), nameof(SpanOpening), nameof(SpecialPurposeGeneralBeacon), nameof(SpecialPurposeGeneralBuoy), nameof(Spring), nameof(StraightTerritorialSeaBaseline), nameof(StructureOverNavigableWater), nameof(SubmarinePipelineArea), nameof(SubmarineTransitLane), nameof(SweptArea), nameof(TerritorialSeaArea), nameof(TidalStreamPanelData), nameof(TidalStreamFloodEbb), nameof(Tideway), nameof(TrafficSeparationScheme), nameof(TrafficSeparationSchemeBoundary), nameof(TrafficSeparationSchemeCrossing), nameof(TrafficSeparationSchemeLanePart), nameof(TrafficSeparationSchemeRoundabout), nameof(Tunnel), nameof(TwoWayRoute), nameof(TwoWayRoutePart), nameof(UnderwaterAwashRock), nameof(UnsurveyedArea), nameof(UpdateInformation), nameof(Vegetation), nameof(VerticalDatumOfData), nameof(VesselTrafficServiceArea), nameof(VirtualAISAidToNavigation), nameof(WaterTurbulence), nameof(Waterfall), nameof(WeedKelp), nameof(WindTurbine), nameof(Wreck)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -5580,7 +5580,7 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(MagneticVariation);
-            public static informationBinding[] informationBindings => [new informationBinding
+            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -5589,7 +5589,7 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(NauticalInformation)],
             }, ];
-            public static featureBinding[] featureBindings => [new featureBinding
+            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -5617,7 +5617,7 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(LocalMagneticAnomaly);
-            public static informationBinding[] informationBindings => [new informationBinding
+            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -5626,7 +5626,7 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(NauticalInformation)],
             }, ];
-            public static featureBinding[] featureBindings => [new featureBinding
+            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -5634,7 +5634,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(UpdatedInformation),
                 role = Enum.GetName<Role>(Role.theUpdate)!,
                 featureTypes = [nameof(UpdateInformation)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -5699,7 +5699,7 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(Coastline);
-            public static informationBinding[] informationBindings => [new informationBinding
+            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -5708,7 +5708,7 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(NauticalInformation)],
             }, ];
-            public static featureBinding[] featureBindings => [new featureBinding
+            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -5716,7 +5716,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(UpdatedInformation),
                 role = Enum.GetName<Role>(Role.theUpdate)!,
                 featureTypes = [nameof(UpdateInformation)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -5748,7 +5748,7 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(LandArea);
-            public static informationBinding[] informationBindings => [new informationBinding
+            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -5757,7 +5757,7 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(NauticalInformation)],
             }, ];
-            public static featureBinding[] featureBindings => [new featureBinding
+            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.aggregation,
                 lower = 0,
@@ -5765,7 +5765,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(IslandAggregation),
                 role = Enum.GetName<Role>(Role.theCollection)!,
                 featureTypes = [nameof(IslandGroup)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -5773,7 +5773,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(UpdatedInformation),
                 role = Enum.GetName<Role>(Role.theUpdate)!,
                 featureTypes = [nameof(UpdateInformation)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -5798,7 +5798,7 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(IslandGroup);
-            public static informationBinding[] informationBindings => [new informationBinding
+            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -5807,7 +5807,7 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(NauticalInformation)],
             }, ];
-            public static featureBinding[] featureBindings => [new featureBinding
+            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -5815,7 +5815,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(IslandAggregation),
                 role = Enum.GetName<Role>(Role.theComponent)!,
                 featureTypes = [nameof(LandArea), nameof(IslandGroup)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.aggregation,
                 lower = 0,
@@ -5823,7 +5823,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(IslandAggregation),
                 role = Enum.GetName<Role>(Role.theCollection)!,
                 featureTypes = [nameof(IslandGroup)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -5831,7 +5831,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(UpdatedInformation),
                 role = Enum.GetName<Role>(Role.theUpdate)!,
                 featureTypes = [nameof(UpdateInformation)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -5864,7 +5864,7 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(LandElevation);
-            public static informationBinding[] informationBindings => [new informationBinding
+            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -5873,7 +5873,7 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(NauticalInformation)],
             }, ];
-            public static featureBinding[] featureBindings => [new featureBinding
+            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -5881,7 +5881,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(UpdatedInformation),
                 role = Enum.GetName<Role>(Role.theUpdate)!,
                 featureTypes = [nameof(UpdateInformation)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -5908,7 +5908,7 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(River);
-            public static informationBinding[] informationBindings => [new informationBinding
+            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -5917,7 +5917,7 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(NauticalInformation)],
             }, ];
-            public static featureBinding[] featureBindings => [new featureBinding
+            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -5925,7 +5925,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(UpdatedInformation),
                 role = Enum.GetName<Role>(Role.theUpdate)!,
                 featureTypes = [nameof(UpdateInformation)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -5950,7 +5950,7 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(Rapids);
-            public static informationBinding[] informationBindings => [new informationBinding
+            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -5959,7 +5959,7 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(NauticalInformation)],
             }, ];
-            public static featureBinding[] featureBindings => [new featureBinding
+            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -5967,7 +5967,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(UpdatedInformation),
                 role = Enum.GetName<Role>(Role.theUpdate)!,
                 featureTypes = [nameof(UpdateInformation)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -5997,7 +5997,7 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(Waterfall);
-            public static informationBinding[] informationBindings => [new informationBinding
+            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -6006,7 +6006,7 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(NauticalInformation)],
             }, ];
-            public static featureBinding[] featureBindings => [new featureBinding
+            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -6014,7 +6014,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(UpdatedInformation),
                 role = Enum.GetName<Role>(Role.theUpdate)!,
                 featureTypes = [nameof(UpdateInformation)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -6042,7 +6042,7 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(Lake);
-            public static informationBinding[] informationBindings => [new informationBinding
+            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -6051,7 +6051,7 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(NauticalInformation)],
             }, ];
-            public static featureBinding[] featureBindings => [new featureBinding
+            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -6059,7 +6059,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(UpdatedInformation),
                 role = Enum.GetName<Role>(Role.theUpdate)!,
                 featureTypes = [nameof(UpdateInformation)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -6124,7 +6124,7 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(LandRegion);
-            public static informationBinding[] informationBindings => [new informationBinding
+            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -6133,7 +6133,7 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(ContactDetails), nameof(NauticalInformation)],
             }, ];
-            public static featureBinding[] featureBindings => [new featureBinding
+            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -6141,7 +6141,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(UpdatedInformation),
                 role = Enum.GetName<Role>(Role.theUpdate)!,
                 featureTypes = [nameof(UpdateInformation)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -6189,7 +6189,7 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(Vegetation);
-            public static informationBinding[] informationBindings => [new informationBinding
+            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -6198,7 +6198,7 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(NauticalInformation)],
             }, ];
-            public static featureBinding[] featureBindings => [new featureBinding
+            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -6206,7 +6206,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(UpdatedInformation),
                 role = Enum.GetName<Role>(Role.theUpdate)!,
                 featureTypes = [nameof(UpdateInformation)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -6250,7 +6250,7 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(IceArea);
-            public static informationBinding[] informationBindings => [new informationBinding
+            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -6259,7 +6259,7 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(NauticalInformation)],
             }, ];
-            public static featureBinding[] featureBindings => [new featureBinding
+            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -6267,7 +6267,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(UpdatedInformation),
                 role = Enum.GetName<Role>(Role.theUpdate)!,
                 featureTypes = [nameof(UpdateInformation)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -6324,7 +6324,7 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(SlopingGround);
-            public static informationBinding[] informationBindings => [new informationBinding
+            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -6333,7 +6333,7 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(NauticalInformation)],
             }, ];
-            public static featureBinding[] featureBindings => [new featureBinding
+            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -6341,7 +6341,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(UpdatedInformation),
                 role = Enum.GetName<Role>(Role.theUpdate)!,
                 featureTypes = [nameof(UpdateInformation)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -6395,7 +6395,7 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(SlopeTopline);
-            public static informationBinding[] informationBindings => [new informationBinding
+            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -6404,7 +6404,7 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(NauticalInformation)],
             }, ];
-            public static featureBinding[] featureBindings => [new featureBinding
+            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -6412,7 +6412,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(UpdatedInformation),
                 role = Enum.GetName<Role>(Role.theUpdate)!,
                 featureTypes = [nameof(UpdateInformation)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -6436,7 +6436,7 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(Tideway);
-            public static informationBinding[] informationBindings => [new informationBinding
+            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -6445,7 +6445,7 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(NauticalInformation)],
             }, ];
-            public static featureBinding[] featureBindings => [new featureBinding
+            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -6453,7 +6453,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(UpdatedInformation),
                 role = Enum.GetName<Role>(Role.theUpdate)!,
                 featureTypes = [nameof(UpdateInformation)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -6499,7 +6499,7 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(BuiltUpArea);
-            public static informationBinding[] informationBindings => [new informationBinding
+            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -6508,7 +6508,7 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(NauticalInformation)],
             }, ];
-            public static featureBinding[] featureBindings => [new featureBinding
+            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -6516,7 +6516,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(UpdatedInformation),
                 role = Enum.GetName<Role>(Role.theUpdate)!,
                 featureTypes = [nameof(UpdateInformation)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -6651,7 +6651,7 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(Building);
-            public static informationBinding[] informationBindings => [new informationBinding
+            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -6660,7 +6660,7 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(ContactDetails), nameof(NauticalInformation), nameof(NonStandardWorkingDay), nameof(ServiceHours)],
             }, ];
-            public static featureBinding[] featureBindings => [new featureBinding
+            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -6668,7 +6668,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(StructureEquipment),
                 role = Enum.GetName<Role>(Role.theEquipment)!,
                 featureTypes = [nameof(Daymark), nameof(DistanceMark), nameof(FogSignal), nameof(Helipad), nameof(LightAllAround), nameof(LightFogDetector), nameof(PhysicalAISAidToNavigation), nameof(RadarTransponderBeacon), nameof(Retroreflector), nameof(SignalStationTraffic), nameof(SignalStationWarning), nameof(LightSectored), nameof(LightAirObstruction)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.aggregation,
                 lower = 0,
@@ -6676,7 +6676,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(AidsToNavigationAssociation),
                 role = Enum.GetName<Role>(Role.theCollection)!,
                 featureTypes = [nameof(DeepWaterRoute), nameof(FairwaySystem), nameof(TrafficSeparationScheme), nameof(TwoWayRoute)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.aggregation,
                 lower = 0,
@@ -6684,7 +6684,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(RangeSystemAggregation),
                 role = Enum.GetName<Role>(Role.theCollection)!,
                 featureTypes = [nameof(RangeSystem)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -6692,7 +6692,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(UpdatedInformation),
                 role = Enum.GetName<Role>(Role.theUpdate)!,
                 featureTypes = [nameof(UpdateInformation)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -6744,7 +6744,7 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(AirportAirfield);
-            public static informationBinding[] informationBindings => [new informationBinding
+            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -6753,7 +6753,7 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(ContactDetails), nameof(NauticalInformation), nameof(NonStandardWorkingDay), nameof(ServiceHours)],
             }, ];
-            public static featureBinding[] featureBindings => [new featureBinding
+            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -6761,7 +6761,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(UpdatedInformation),
                 role = Enum.GetName<Role>(Role.theUpdate)!,
                 featureTypes = [nameof(UpdateInformation)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -6811,7 +6811,7 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(Runway);
-            public static informationBinding[] informationBindings => [new informationBinding
+            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -6820,7 +6820,7 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(ContactDetails), nameof(NauticalInformation), nameof(NonStandardWorkingDay), nameof(ServiceHours)],
             }, ];
-            public static featureBinding[] featureBindings => [new featureBinding
+            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -6828,7 +6828,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(UpdatedInformation),
                 role = Enum.GetName<Role>(Role.theUpdate)!,
                 featureTypes = [nameof(UpdateInformation)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -6878,7 +6878,7 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(Helipad);
-            public static informationBinding[] informationBindings => [new informationBinding
+            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -6887,7 +6887,7 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(ContactDetails), nameof(NauticalInformation), nameof(NonStandardWorkingDay), nameof(ServiceHours)],
             }, ];
-            public static featureBinding[] featureBindings => [new featureBinding
+            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.composition,
                 lower = 0,
@@ -6895,7 +6895,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(StructureEquipment),
                 role = Enum.GetName<Role>(Role.theStructure)!,
                 featureTypes = [nameof(Building), nameof(Landmark), nameof(OffshorePlatform)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -6903,7 +6903,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(UpdatedInformation),
                 role = Enum.GetName<Role>(Role.theUpdate)!,
                 featureTypes = [nameof(UpdateInformation)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -6999,7 +6999,7 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(Bridge);
-            public static informationBinding[] informationBindings => [new informationBinding
+            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -7008,7 +7008,7 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(ContactDetails), nameof(NauticalInformation), nameof(NonStandardWorkingDay), nameof(ServiceHours)],
             }, ];
-            public static featureBinding[] featureBindings => [new featureBinding
+            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -7016,7 +7016,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(BridgeAggregation),
                 role = Enum.GetName<Role>(Role.theComponent)!,
                 featureTypes = [nameof(SpanFixed), nameof(SpanOpening), nameof(Pontoon), nameof(PylonBridgeSupport)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -7024,7 +7024,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(StructureEquipment),
                 role = Enum.GetName<Role>(Role.theEquipment)!,
                 featureTypes = [nameof(Daymark), nameof(DistanceMark), nameof(FogSignal), nameof(LightAllAround), nameof(LightFogDetector), nameof(PhysicalAISAidToNavigation), nameof(RadarTransponderBeacon), nameof(Retroreflector), nameof(SignalStationTraffic), nameof(SignalStationWarning), nameof(LightSectored), nameof(LightAirObstruction)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.aggregation,
                 lower = 0,
@@ -7032,7 +7032,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(AidsToNavigationAssociation),
                 role = Enum.GetName<Role>(Role.theCollection)!,
                 featureTypes = [nameof(FairwaySystem), nameof(TrafficSeparationScheme), nameof(TwoWayRoute)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -7040,7 +7040,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(UpdatedInformation),
                 role = Enum.GetName<Role>(Role.theUpdate)!,
                 featureTypes = [nameof(UpdateInformation)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -7086,7 +7086,7 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(SpanFixed);
-            public static informationBinding[] informationBindings => [new informationBinding
+            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -7095,7 +7095,7 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(ContactDetails), nameof(NauticalInformation), nameof(NonStandardWorkingDay), nameof(ServiceHours)],
             }, ];
-            public static featureBinding[] featureBindings => [new featureBinding
+            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.aggregation,
                 lower = 0,
@@ -7103,7 +7103,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(BridgeAggregation),
                 role = Enum.GetName<Role>(Role.theCollection)!,
                 featureTypes = [nameof(Bridge)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -7111,7 +7111,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(StructureEquipment),
                 role = Enum.GetName<Role>(Role.theEquipment)!,
                 featureTypes = [nameof(Daymark), nameof(DistanceMark), nameof(FogSignal), nameof(LightAllAround), nameof(LightFogDetector), nameof(PhysicalAISAidToNavigation), nameof(RadarTransponderBeacon), nameof(Retroreflector), nameof(SignalStationTraffic), nameof(SignalStationWarning), nameof(LightSectored), nameof(LightAirObstruction)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.aggregation,
                 lower = 0,
@@ -7119,7 +7119,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(AidsToNavigationAssociation),
                 role = Enum.GetName<Role>(Role.theCollection)!,
                 featureTypes = [nameof(FairwaySystem), nameof(TrafficSeparationScheme), nameof(TwoWayRoute)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -7127,7 +7127,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(TextAssociation),
                 role = Enum.GetName<Role>(Role.theCartographicText)!,
                 featureTypes = [nameof(TextPlacement)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -7180,7 +7180,7 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(SpanOpening);
-            public static informationBinding[] informationBindings => [new informationBinding
+            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -7189,7 +7189,7 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(ContactDetails), nameof(NauticalInformation), nameof(NonStandardWorkingDay), nameof(ServiceHours)],
             }, ];
-            public static featureBinding[] featureBindings => [new featureBinding
+            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.aggregation,
                 lower = 0,
@@ -7197,7 +7197,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(BridgeAggregation),
                 role = Enum.GetName<Role>(Role.theCollection)!,
                 featureTypes = [nameof(Bridge)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -7205,7 +7205,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(StructureEquipment),
                 role = Enum.GetName<Role>(Role.theEquipment)!,
                 featureTypes = [nameof(Daymark), nameof(DistanceMark), nameof(FogSignal), nameof(LightAllAround), nameof(LightFogDetector), nameof(PhysicalAISAidToNavigation), nameof(RadarTransponderBeacon), nameof(Retroreflector), nameof(SignalStationTraffic), nameof(SignalStationWarning), nameof(LightSectored), nameof(LightAirObstruction)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.aggregation,
                 lower = 0,
@@ -7213,7 +7213,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(AidsToNavigationAssociation),
                 role = Enum.GetName<Role>(Role.theCollection)!,
                 featureTypes = [nameof(FairwaySystem), nameof(TrafficSeparationScheme), nameof(TwoWayRoute)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -7221,7 +7221,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(TextAssociation),
                 role = Enum.GetName<Role>(Role.theCartographicText)!,
                 featureTypes = [nameof(TextPlacement)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -7337,7 +7337,7 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(Conveyor);
-            public static informationBinding[] informationBindings => [new informationBinding
+            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -7346,7 +7346,7 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(ContactDetails), nameof(NauticalInformation), nameof(NonStandardWorkingDay), nameof(ServiceHours)],
             }, ];
-            public static featureBinding[] featureBindings => [new featureBinding
+            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -7354,7 +7354,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(StructureEquipment),
                 role = Enum.GetName<Role>(Role.theEquipment)!,
                 featureTypes = [nameof(Daymark), nameof(DistanceMark), nameof(FogSignal), nameof(LightAllAround), nameof(LightFogDetector), nameof(PhysicalAISAidToNavigation), nameof(RadarTransponderBeacon), nameof(Retroreflector), nameof(SignalStationTraffic), nameof(SignalStationWarning), nameof(LightSectored), nameof(LightAirObstruction)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.aggregation,
                 lower = 0,
@@ -7362,7 +7362,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(AidsToNavigationAssociation),
                 role = Enum.GetName<Role>(Role.theCollection)!,
                 featureTypes = [nameof(FairwaySystem), nameof(TrafficSeparationScheme), nameof(TwoWayRoute)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -7370,7 +7370,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(UpdatedInformation),
                 role = Enum.GetName<Role>(Role.theUpdate)!,
                 featureTypes = [nameof(UpdateInformation)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -7439,7 +7439,7 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(CableOverhead);
-            public static informationBinding[] informationBindings => [new informationBinding
+            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -7448,7 +7448,7 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(ContactDetails), nameof(NauticalInformation)],
             }, ];
-            public static featureBinding[] featureBindings => [new featureBinding
+            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -7456,7 +7456,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(StructureEquipment),
                 role = Enum.GetName<Role>(Role.theEquipment)!,
                 featureTypes = [nameof(RadarReflector)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -7464,7 +7464,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(UpdatedInformation),
                 role = Enum.GetName<Role>(Role.theUpdate)!,
                 featureTypes = [nameof(UpdateInformation)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -7542,7 +7542,7 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(PipelineOverhead);
-            public static informationBinding[] informationBindings => [new informationBinding
+            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -7551,7 +7551,7 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(ContactDetails), nameof(NauticalInformation)],
             }, ];
-            public static featureBinding[] featureBindings => [new featureBinding
+            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -7559,7 +7559,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(StructureEquipment),
                 role = Enum.GetName<Role>(Role.theEquipment)!,
                 featureTypes = [nameof(Daymark), nameof(DistanceMark), nameof(FogSignal), nameof(LightAllAround), nameof(LightFogDetector), nameof(PhysicalAISAidToNavigation), nameof(RadarTransponderBeacon), nameof(Retroreflector), nameof(SignalStationTraffic), nameof(SignalStationWarning), nameof(LightSectored), nameof(RadarReflector)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.aggregation,
                 lower = 0,
@@ -7567,7 +7567,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(AidsToNavigationAssociation),
                 role = Enum.GetName<Role>(Role.theCollection)!,
                 featureTypes = [nameof(FairwaySystem), nameof(TrafficSeparationScheme), nameof(TwoWayRoute)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -7575,7 +7575,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(UpdatedInformation),
                 role = Enum.GetName<Role>(Role.theUpdate)!,
                 featureTypes = [nameof(UpdateInformation)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -7666,7 +7666,7 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(PylonBridgeSupport);
-            public static informationBinding[] informationBindings => [new informationBinding
+            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -7675,7 +7675,7 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(NauticalInformation)],
             }, ];
-            public static featureBinding[] featureBindings => [new featureBinding
+            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.aggregation,
                 lower = 0,
@@ -7683,7 +7683,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(BridgeAggregation),
                 role = Enum.GetName<Role>(Role.theCollection)!,
                 featureTypes = [nameof(Bridge)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.aggregation,
                 lower = 0,
@@ -7691,7 +7691,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(RoofedStructureAggregation),
                 role = Enum.GetName<Role>(Role.theRoofedStructure)!,
                 featureTypes = [nameof(StructureOverNavigableWater)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -7699,7 +7699,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(StructureEquipment),
                 role = Enum.GetName<Role>(Role.theEquipment)!,
                 featureTypes = [nameof(Daymark), nameof(DistanceMark), nameof(FogSignal), nameof(LightAllAround), nameof(LightFogDetector), nameof(PhysicalAISAidToNavigation), nameof(RadarTransponderBeacon), nameof(Retroreflector), nameof(SignalStationTraffic), nameof(SignalStationWarning), nameof(LightSectored), nameof(Bollard), nameof(LightAirObstruction)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.aggregation,
                 lower = 0,
@@ -7707,7 +7707,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(AidsToNavigationAssociation),
                 role = Enum.GetName<Role>(Role.theCollection)!,
                 featureTypes = [nameof(FairwaySystem), nameof(TrafficSeparationScheme), nameof(TwoWayRoute)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -7715,7 +7715,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(TextAssociation),
                 role = Enum.GetName<Role>(Role.theCartographicText)!,
                 featureTypes = [nameof(TextPlacement)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -7795,7 +7795,7 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(FenceWall);
-            public static informationBinding[] informationBindings => [new informationBinding
+            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -7804,7 +7804,7 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(NauticalInformation)],
             }, ];
-            public static featureBinding[] featureBindings => [new featureBinding
+            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -7812,7 +7812,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(UpdatedInformation),
                 role = Enum.GetName<Role>(Role.theUpdate)!,
                 featureTypes = [nameof(UpdateInformation)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -7850,7 +7850,7 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(Railway);
-            public static informationBinding[] informationBindings => [new informationBinding
+            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -7859,7 +7859,7 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(ContactDetails), nameof(NauticalInformation)],
             }, ];
-            public static featureBinding[] featureBindings => [new featureBinding
+            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -7867,7 +7867,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(UpdatedInformation),
                 role = Enum.GetName<Role>(Role.theUpdate)!,
                 featureTypes = [nameof(UpdateInformation)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -7918,7 +7918,7 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(Road);
-            public static informationBinding[] informationBindings => [new informationBinding
+            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -7927,7 +7927,7 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(NauticalInformation)],
             }, ];
-            public static featureBinding[] featureBindings => [new featureBinding
+            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -7935,7 +7935,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(UpdatedInformation),
                 role = Enum.GetName<Role>(Role.theUpdate)!,
                 featureTypes = [nameof(UpdateInformation)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -7992,7 +7992,7 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(Tunnel);
-            public static informationBinding[] informationBindings => [new informationBinding
+            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -8001,7 +8001,7 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(ContactDetails), nameof(NauticalInformation)],
             }, ];
-            public static featureBinding[] featureBindings => [new featureBinding
+            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -8009,7 +8009,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(UpdatedInformation),
                 role = Enum.GetName<Role>(Role.theUpdate)!,
                 featureTypes = [nameof(UpdateInformation)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -8177,7 +8177,7 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(Landmark);
-            public static informationBinding[] informationBindings => [new informationBinding
+            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -8186,7 +8186,7 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(ContactDetails), nameof(NauticalInformation), nameof(NonStandardWorkingDay), nameof(ServiceHours)],
             }, ];
-            public static featureBinding[] featureBindings => [new featureBinding
+            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -8194,7 +8194,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(StructureEquipment),
                 role = Enum.GetName<Role>(Role.theEquipment)!,
                 featureTypes = [nameof(Daymark), nameof(DistanceMark), nameof(FogSignal), nameof(Helipad), nameof(LightAllAround), nameof(LightFogDetector), nameof(PhysicalAISAidToNavigation), nameof(RadarTransponderBeacon), nameof(Retroreflector), nameof(SignalStationTraffic), nameof(SignalStationWarning), nameof(LightSectored), nameof(Bollard), nameof(LightAirObstruction)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.aggregation,
                 lower = 0,
@@ -8202,7 +8202,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(AidsToNavigationAssociation),
                 role = Enum.GetName<Role>(Role.theCollection)!,
                 featureTypes = [nameof(DeepWaterRoute), nameof(FairwaySystem), nameof(TrafficSeparationScheme), nameof(TwoWayRoute)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.aggregation,
                 lower = 0,
@@ -8210,7 +8210,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(RangeSystemAggregation),
                 role = Enum.GetName<Role>(Role.theCollection)!,
                 featureTypes = [nameof(RangeSystem)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.aggregation,
                 lower = 0,
@@ -8218,7 +8218,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(FairwayAuxiliary),
                 role = Enum.GetName<Role>(Role.thePrimaryFeature)!,
                 featureTypes = [nameof(Fairway)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -8226,7 +8226,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(UpdatedInformation),
                 role = Enum.GetName<Role>(Role.theUpdate)!,
                 featureTypes = [nameof(UpdateInformation)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -8335,7 +8335,7 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(SiloTank);
-            public static informationBinding[] informationBindings => [new informationBinding
+            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -8344,7 +8344,7 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(ContactDetails), nameof(NauticalInformation)],
             }, ];
-            public static featureBinding[] featureBindings => [new featureBinding
+            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -8352,7 +8352,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(StructureEquipment),
                 role = Enum.GetName<Role>(Role.theEquipment)!,
                 featureTypes = [nameof(Daymark), nameof(DistanceMark), nameof(FogSignal), nameof(LightAllAround), nameof(LightFogDetector), nameof(PhysicalAISAidToNavigation), nameof(RadarTransponderBeacon), nameof(Retroreflector), nameof(SignalStationTraffic), nameof(SignalStationWarning), nameof(LightSectored)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.aggregation,
                 lower = 0,
@@ -8360,7 +8360,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(AidsToNavigationAssociation),
                 role = Enum.GetName<Role>(Role.theCollection)!,
                 featureTypes = [nameof(DeepWaterRoute), nameof(FairwaySystem), nameof(TrafficSeparationScheme), nameof(TwoWayRoute)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.aggregation,
                 lower = 0,
@@ -8368,7 +8368,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(RangeSystemAggregation),
                 role = Enum.GetName<Role>(Role.theCollection)!,
                 featureTypes = [nameof(RangeSystem)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -8376,7 +8376,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(UpdatedInformation),
                 role = Enum.GetName<Role>(Role.theUpdate)!,
                 featureTypes = [nameof(UpdateInformation)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -8482,7 +8482,7 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(WindTurbine);
-            public static informationBinding[] informationBindings => [new informationBinding
+            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -8491,7 +8491,7 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(ContactDetails), nameof(NauticalInformation)],
             }, ];
-            public static featureBinding[] featureBindings => [new featureBinding
+            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -8499,7 +8499,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(StructureEquipment),
                 role = Enum.GetName<Role>(Role.theEquipment)!,
                 featureTypes = [nameof(Daymark), nameof(DistanceMark), nameof(FogSignal), nameof(LightAllAround), nameof(LightFogDetector), nameof(PhysicalAISAidToNavigation), nameof(RadarTransponderBeacon), nameof(Retroreflector), nameof(SignalStationTraffic), nameof(SignalStationWarning), nameof(LightSectored), nameof(LightAirObstruction)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.aggregation,
                 lower = 0,
@@ -8507,7 +8507,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(AidsToNavigationAssociation),
                 role = Enum.GetName<Role>(Role.theCollection)!,
                 featureTypes = [nameof(DeepWaterRoute), nameof(FairwaySystem), nameof(TrafficSeparationScheme), nameof(TwoWayRoute)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -8515,7 +8515,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(UpdatedInformation),
                 role = Enum.GetName<Role>(Role.theUpdate)!,
                 featureTypes = [nameof(UpdateInformation)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -8579,7 +8579,7 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(FortifiedStructure);
-            public static informationBinding[] informationBindings => [new informationBinding
+            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -8588,7 +8588,7 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(NauticalInformation)],
             }, ];
-            public static featureBinding[] featureBindings => [new featureBinding
+            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -8596,7 +8596,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(StructureEquipment),
                 role = Enum.GetName<Role>(Role.theEquipment)!,
                 featureTypes = [nameof(Daymark), nameof(DistanceMark), nameof(FogSignal), nameof(LightAllAround), nameof(LightFogDetector), nameof(PhysicalAISAidToNavigation), nameof(RadarTransponderBeacon), nameof(Retroreflector), nameof(SignalStationTraffic), nameof(SignalStationWarning), nameof(LightSectored), nameof(Bollard)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.aggregation,
                 lower = 0,
@@ -8604,7 +8604,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(AidsToNavigationAssociation),
                 role = Enum.GetName<Role>(Role.theCollection)!,
                 featureTypes = [nameof(DeepWaterRoute), nameof(FairwaySystem), nameof(TrafficSeparationScheme), nameof(TwoWayRoute)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.aggregation,
                 lower = 0,
@@ -8612,7 +8612,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(RangeSystemAggregation),
                 role = Enum.GetName<Role>(Role.theCollection)!,
                 featureTypes = [nameof(RangeSystem)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -8620,7 +8620,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(UpdatedInformation),
                 role = Enum.GetName<Role>(Role.theUpdate)!,
                 featureTypes = [nameof(UpdateInformation)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -8706,7 +8706,7 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(ProductionStorageArea);
-            public static informationBinding[] informationBindings => [new informationBinding
+            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -8715,7 +8715,7 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(ContactDetails), nameof(NauticalInformation), nameof(NonStandardWorkingDay), nameof(ServiceHours)],
             }, ];
-            public static featureBinding[] featureBindings => [new featureBinding
+            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -8723,7 +8723,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(UpdatedInformation),
                 role = Enum.GetName<Role>(Role.theUpdate)!,
                 featureTypes = [nameof(UpdateInformation)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -8757,7 +8757,7 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(Checkpoint);
-            public static informationBinding[] informationBindings => [new informationBinding
+            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -8766,7 +8766,7 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(ContactDetails), nameof(NauticalInformation), nameof(NonStandardWorkingDay), nameof(ServiceHours)],
             }, ];
-            public static featureBinding[] featureBindings => [new featureBinding
+            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -8774,7 +8774,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(UpdatedInformation),
                 role = Enum.GetName<Role>(Role.theUpdate)!,
                 featureTypes = [nameof(UpdateInformation)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -8847,7 +8847,7 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(Hulk);
-            public static informationBinding[] informationBindings => [new informationBinding
+            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -8856,7 +8856,7 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(NauticalInformation)],
             }, ];
-            public static featureBinding[] featureBindings => [new featureBinding
+            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -8864,7 +8864,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(StructureEquipment),
                 role = Enum.GetName<Role>(Role.theEquipment)!,
                 featureTypes = [nameof(Daymark), nameof(DistanceMark), nameof(FogSignal), nameof(LightAllAround), nameof(LightFogDetector), nameof(PhysicalAISAidToNavigation), nameof(RadarTransponderBeacon), nameof(Retroreflector), nameof(SignalStationTraffic), nameof(SignalStationWarning), nameof(Bollard)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.aggregation,
                 lower = 0,
@@ -8872,7 +8872,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(AidsToNavigationAssociation),
                 role = Enum.GetName<Role>(Role.theCollection)!,
                 featureTypes = [nameof(FairwaySystem), nameof(TrafficSeparationScheme), nameof(TwoWayRoute)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -8880,7 +8880,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(UpdatedInformation),
                 role = Enum.GetName<Role>(Role.theUpdate)!,
                 featureTypes = [nameof(UpdateInformation)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -8960,7 +8960,7 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(Pile);
-            public static informationBinding[] informationBindings => [new informationBinding
+            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -8969,7 +8969,7 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(NauticalInformation)],
             }, ];
-            public static featureBinding[] featureBindings => [new featureBinding
+            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -8977,7 +8977,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(StructureEquipment),
                 role = Enum.GetName<Role>(Role.theEquipment)!,
                 featureTypes = [nameof(Daymark), nameof(DistanceMark), nameof(FogSignal), nameof(LightAllAround), nameof(LightFogDetector), nameof(PhysicalAISAidToNavigation), nameof(RadarTransponderBeacon), nameof(Retroreflector), nameof(SignalStationTraffic), nameof(SignalStationWarning), nameof(LightSectored), nameof(Bollard)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.aggregation,
                 lower = 0,
@@ -8985,7 +8985,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(AidsToNavigationAssociation),
                 role = Enum.GetName<Role>(Role.theCollection)!,
                 featureTypes = [nameof(ArchipelagicSeaLane), nameof(DeepWaterRoute), nameof(FairwaySystem), nameof(TrafficSeparationScheme), nameof(TwoWayRoute)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.aggregation,
                 lower = 0,
@@ -8993,7 +8993,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(RangeSystemAggregation),
                 role = Enum.GetName<Role>(Role.theCollection)!,
                 featureTypes = [nameof(RangeSystem)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.aggregation,
                 lower = 0,
@@ -9001,7 +9001,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(FairwayAuxiliary),
                 role = Enum.GetName<Role>(Role.thePrimaryFeature)!,
                 featureTypes = [nameof(Fairway)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -9009,7 +9009,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(UpdatedInformation),
                 role = Enum.GetName<Role>(Role.theUpdate)!,
                 featureTypes = [nameof(UpdateInformation)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -9057,7 +9057,7 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(Dyke);
-            public static informationBinding[] informationBindings => [new informationBinding
+            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -9066,7 +9066,7 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(NauticalInformation)],
             }, ];
-            public static featureBinding[] featureBindings => [new featureBinding
+            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -9074,7 +9074,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(UpdatedInformation),
                 role = Enum.GetName<Role>(Role.theUpdate)!,
                 featureTypes = [nameof(UpdateInformation)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -9194,7 +9194,7 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(ShorelineConstruction);
-            public static informationBinding[] informationBindings => [new informationBinding
+            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -9203,7 +9203,7 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(NauticalInformation)],
             }, ];
-            public static featureBinding[] featureBindings => [new featureBinding
+            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -9211,7 +9211,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(StructureEquipment),
                 role = Enum.GetName<Role>(Role.theEquipment)!,
                 featureTypes = [nameof(Daymark), nameof(DistanceMark), nameof(FogSignal), nameof(LightAllAround), nameof(LightFogDetector), nameof(PhysicalAISAidToNavigation), nameof(RadarTransponderBeacon), nameof(Retroreflector), nameof(SignalStationTraffic), nameof(SignalStationWarning), nameof(LightSectored), nameof(Bollard)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.aggregation,
                 lower = 0,
@@ -9219,7 +9219,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(AidsToNavigationAssociation),
                 role = Enum.GetName<Role>(Role.theCollection)!,
                 featureTypes = [nameof(FairwaySystem), nameof(TrafficSeparationScheme), nameof(TwoWayRoute)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -9227,7 +9227,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(UpdatedInformation),
                 role = Enum.GetName<Role>(Role.theUpdate)!,
                 featureTypes = [nameof(UpdateInformation)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -9348,7 +9348,7 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(StructureOverNavigableWater);
-            public static informationBinding[] informationBindings => [new informationBinding
+            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -9357,7 +9357,7 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(NauticalInformation)],
             }, ];
-            public static featureBinding[] featureBindings => [new featureBinding
+            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.aggregation,
                 lower = 0,
@@ -9365,7 +9365,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(AidsToNavigationAssociation),
                 role = Enum.GetName<Role>(Role.theCollection)!,
                 featureTypes = [nameof(FairwaySystem), nameof(TrafficSeparationScheme), nameof(TwoWayRoute)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -9373,7 +9373,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(RoofedStructureAggregation),
                 role = Enum.GetName<Role>(Role.theSupport)!,
                 featureTypes = [nameof(PylonBridgeSupport)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -9381,7 +9381,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(StructureEquipment),
                 role = Enum.GetName<Role>(Role.theEquipment)!,
                 featureTypes = [nameof(Daymark), nameof(DistanceMark), nameof(FogSignal), nameof(LightAllAround), nameof(LightFogDetector), nameof(PhysicalAISAidToNavigation), nameof(RadarTransponderBeacon), nameof(Retroreflector), nameof(SignalStationTraffic), nameof(SignalStationWarning), nameof(LightSectored)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -9389,7 +9389,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(TextAssociation),
                 role = Enum.GetName<Role>(Role.theCartographicText)!,
                 featureTypes = [nameof(TextPlacement)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -9451,7 +9451,7 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(Causeway);
-            public static informationBinding[] informationBindings => [new informationBinding
+            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -9460,7 +9460,7 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(NauticalInformation)],
             }, ];
-            public static featureBinding[] featureBindings => [new featureBinding
+            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -9468,7 +9468,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(UpdatedInformation),
                 role = Enum.GetName<Role>(Role.theUpdate)!,
                 featureTypes = [nameof(UpdateInformation)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -9515,7 +9515,7 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(Canal);
-            public static informationBinding[] informationBindings => [new informationBinding
+            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -9524,7 +9524,7 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(NauticalInformation)],
             }, ];
-            public static featureBinding[] featureBindings => [new featureBinding
+            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -9532,7 +9532,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(UpdatedInformation),
                 role = Enum.GetName<Role>(Role.theUpdate)!,
                 featureTypes = [nameof(UpdateInformation)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -9562,7 +9562,7 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(DistanceMark);
-            public static informationBinding[] informationBindings => [new informationBinding
+            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -9571,7 +9571,7 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(NauticalInformation)],
             }, ];
-            public static featureBinding[] featureBindings => [new featureBinding
+            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.composition,
                 lower = 0,
@@ -9579,7 +9579,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(StructureEquipment),
                 role = Enum.GetName<Role>(Role.theStructure)!,
                 featureTypes = [nameof(Bridge), nameof(Building), nameof(Crane), nameof(CardinalBeacon), nameof(CardinalBuoy), nameof(Conveyor), nameof(Dolphin), nameof(EmergencyWreckMarkingBuoy), nameof(FishingFacility), nameof(FloatingDock), nameof(FortifiedStructure), nameof(Hulk), nameof(InstallationBuoy), nameof(IsolatedDangerBeacon), nameof(IsolatedDangerBuoy), nameof(Landmark), nameof(LateralBeacon), nameof(LateralBuoy), nameof(LightFloat), nameof(LightVessel), nameof(MooringBuoy), nameof(OffshorePlatform), nameof(Pile), nameof(PipelineOverhead), nameof(Pontoon), nameof(PylonBridgeSupport), nameof(SafeWaterBeacon), nameof(SafeWaterBuoy), nameof(ShorelineConstruction), nameof(SiloTank), nameof(SpanFixed), nameof(SpanOpening), nameof(SpecialPurposeGeneralBeacon), nameof(SpecialPurposeGeneralBuoy), nameof(StructureOverNavigableWater), nameof(WindTurbine), nameof(Wreck), nameof(Daymark)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -9587,7 +9587,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(UpdatedInformation),
                 role = Enum.GetName<Role>(Role.theUpdate)!,
                 featureTypes = [nameof(UpdateInformation)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -9668,7 +9668,7 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(Gate);
-            public static informationBinding[] informationBindings => [new informationBinding
+            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -9677,7 +9677,7 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(ContactDetails), nameof(NauticalInformation), nameof(NonStandardWorkingDay), nameof(ServiceHours)],
             }, ];
-            public static featureBinding[] featureBindings => [new featureBinding
+            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -9685,7 +9685,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(UpdatedInformation),
                 role = Enum.GetName<Role>(Role.theUpdate)!,
                 featureTypes = [nameof(UpdateInformation)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -9773,7 +9773,7 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(Dam);
-            public static informationBinding[] informationBindings => [new informationBinding
+            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -9782,7 +9782,7 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(NauticalInformation)],
             }, ];
-            public static featureBinding[] featureBindings => [new featureBinding
+            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -9790,7 +9790,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(UpdatedInformation),
                 role = Enum.GetName<Role>(Role.theUpdate)!,
                 featureTypes = [nameof(UpdateInformation)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -9885,7 +9885,7 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(Crane);
-            public static informationBinding[] informationBindings => [new informationBinding
+            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -9894,7 +9894,7 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(ContactDetails), nameof(NauticalInformation), nameof(NonStandardWorkingDay), nameof(ServiceHours)],
             }, ];
-            public static featureBinding[] featureBindings => [new featureBinding
+            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -9902,7 +9902,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(StructureEquipment),
                 role = Enum.GetName<Role>(Role.theEquipment)!,
                 featureTypes = [nameof(Daymark), nameof(DistanceMark), nameof(FogSignal), nameof(LightAllAround), nameof(LightFogDetector), nameof(PhysicalAISAidToNavigation), nameof(RadarTransponderBeacon), nameof(Retroreflector), nameof(SignalStationTraffic), nameof(SignalStationWarning), nameof(LightSectored), nameof(LightAirObstruction)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.aggregation,
                 lower = 0,
@@ -9910,7 +9910,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(AidsToNavigationAssociation),
                 role = Enum.GetName<Role>(Role.theCollection)!,
                 featureTypes = [nameof(DeepWaterRoute), nameof(FairwaySystem), nameof(TrafficSeparationScheme), nameof(TwoWayRoute)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -9918,7 +9918,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(UpdatedInformation),
                 role = Enum.GetName<Role>(Role.theUpdate)!,
                 featureTypes = [nameof(UpdateInformation)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -9979,7 +9979,7 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(Berth);
-            public static informationBinding[] informationBindings => [new informationBinding
+            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -9988,7 +9988,7 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(ContactDetails), nameof(NauticalInformation), nameof(NonStandardWorkingDay), nameof(ServiceHours)],
             }, ];
-            public static featureBinding[] featureBindings => [new featureBinding
+            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.aggregation,
                 lower = 0,
@@ -9996,7 +9996,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(MooringTrotAggregation),
                 role = Enum.GetName<Role>(Role.theCollection)!,
                 featureTypes = [nameof(MooringTrot)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -10004,7 +10004,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(UpdatedInformation),
                 role = Enum.GetName<Role>(Role.theUpdate)!,
                 featureTypes = [nameof(UpdateInformation)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -10096,7 +10096,7 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(Dolphin);
-            public static informationBinding[] informationBindings => [new informationBinding
+            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -10105,7 +10105,7 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(ContactDetails), nameof(NauticalInformation)],
             }, ];
-            public static featureBinding[] featureBindings => [new featureBinding
+            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -10113,7 +10113,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(StructureEquipment),
                 role = Enum.GetName<Role>(Role.theEquipment)!,
                 featureTypes = [nameof(Daymark), nameof(DistanceMark), nameof(FogSignal), nameof(LightAllAround), nameof(LightFogDetector), nameof(PhysicalAISAidToNavigation), nameof(RadarTransponderBeacon), nameof(Retroreflector), nameof(SignalStationTraffic), nameof(SignalStationWarning), nameof(LightSectored), nameof(Bollard)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.aggregation,
                 lower = 0,
@@ -10121,7 +10121,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(AidsToNavigationAssociation),
                 role = Enum.GetName<Role>(Role.theCollection)!,
                 featureTypes = [nameof(DeepWaterRoute), nameof(FairwaySystem), nameof(TrafficSeparationScheme), nameof(TwoWayRoute)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.aggregation,
                 lower = 0,
@@ -10129,7 +10129,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(RangeSystemAggregation),
                 role = Enum.GetName<Role>(Role.theCollection)!,
                 featureTypes = [nameof(RangeSystem)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -10137,7 +10137,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(UpdatedInformation),
                 role = Enum.GetName<Role>(Role.theUpdate)!,
                 featureTypes = [nameof(UpdateInformation)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -10181,7 +10181,7 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(Bollard);
-            public static informationBinding[] informationBindings => [new informationBinding
+            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -10190,7 +10190,7 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(NauticalInformation)],
             }, ];
-            public static featureBinding[] featureBindings => [new featureBinding
+            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.composition,
                 lower = 0,
@@ -10198,7 +10198,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(StructureEquipment),
                 role = Enum.GetName<Role>(Role.theStructure)!,
                 featureTypes = [nameof(Dolphin), nameof(FortifiedStructure), nameof(Hulk), nameof(Landmark), nameof(OffshorePlatform), nameof(Pile), nameof(PylonBridgeSupport), nameof(ShorelineConstruction)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -10206,7 +10206,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(UpdatedInformation),
                 role = Enum.GetName<Role>(Role.theUpdate)!,
                 featureTypes = [nameof(UpdateInformation)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -10261,7 +10261,7 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(DryDock);
-            public static informationBinding[] informationBindings => [new informationBinding
+            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -10270,7 +10270,7 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(ContactDetails), nameof(NauticalInformation), nameof(NonStandardWorkingDay), nameof(ServiceHours)],
             }, ];
-            public static featureBinding[] featureBindings => [new featureBinding
+            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -10278,7 +10278,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(UpdatedInformation),
                 role = Enum.GetName<Role>(Role.theUpdate)!,
                 featureTypes = [nameof(UpdateInformation)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -10353,7 +10353,7 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(FloatingDock);
-            public static informationBinding[] informationBindings => [new informationBinding
+            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -10362,7 +10362,7 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(ContactDetails), nameof(NauticalInformation), nameof(NonStandardWorkingDay), nameof(ServiceHours)],
             }, ];
-            public static featureBinding[] featureBindings => [new featureBinding
+            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -10370,7 +10370,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(StructureEquipment),
                 role = Enum.GetName<Role>(Role.theEquipment)!,
                 featureTypes = [nameof(Daymark), nameof(DistanceMark), nameof(FogSignal), nameof(LightAllAround), nameof(LightFogDetector), nameof(PhysicalAISAidToNavigation), nameof(RadarTransponderBeacon), nameof(Retroreflector), nameof(SignalStationTraffic), nameof(SignalStationWarning)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.aggregation,
                 lower = 0,
@@ -10378,7 +10378,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(AidsToNavigationAssociation),
                 role = Enum.GetName<Role>(Role.theCollection)!,
                 featureTypes = [nameof(FairwaySystem), nameof(TrafficSeparationScheme), nameof(TwoWayRoute)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -10386,7 +10386,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(UpdatedInformation),
                 role = Enum.GetName<Role>(Role.theUpdate)!,
                 featureTypes = [nameof(UpdateInformation)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -10435,7 +10435,7 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(Pontoon);
-            public static informationBinding[] informationBindings => [new informationBinding
+            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -10444,7 +10444,7 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(NauticalInformation)],
             }, ];
-            public static featureBinding[] featureBindings => [new featureBinding
+            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.aggregation,
                 lower = 0,
@@ -10452,7 +10452,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(BridgeAggregation),
                 role = Enum.GetName<Role>(Role.theCollection)!,
                 featureTypes = [nameof(Bridge)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -10460,7 +10460,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(StructureEquipment),
                 role = Enum.GetName<Role>(Role.theEquipment)!,
                 featureTypes = [nameof(Daymark), nameof(DistanceMark), nameof(FogSignal), nameof(LightAllAround), nameof(LightFogDetector), nameof(PhysicalAISAidToNavigation), nameof(RadarTransponderBeacon), nameof(Retroreflector), nameof(SignalStationTraffic), nameof(SignalStationWarning)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.aggregation,
                 lower = 0,
@@ -10468,7 +10468,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(AidsToNavigationAssociation),
                 role = Enum.GetName<Role>(Role.theCollection)!,
                 featureTypes = [nameof(FairwaySystem), nameof(TrafficSeparationScheme), nameof(TwoWayRoute)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -10476,7 +10476,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(UpdatedInformation),
                 role = Enum.GetName<Role>(Role.theUpdate)!,
                 featureTypes = [nameof(UpdateInformation)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -10522,7 +10522,7 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(DockArea);
-            public static informationBinding[] informationBindings => [new informationBinding
+            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -10531,7 +10531,7 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(ContactDetails), nameof(NauticalInformation), nameof(NonStandardWorkingDay), nameof(ServiceHours)],
             }, ];
-            public static featureBinding[] featureBindings => [new featureBinding
+            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -10539,7 +10539,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(UpdatedInformation),
                 role = Enum.GetName<Role>(Role.theUpdate)!,
                 featureTypes = [nameof(UpdateInformation)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -10586,7 +10586,7 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(Gridiron);
-            public static informationBinding[] informationBindings => [new informationBinding
+            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -10595,7 +10595,7 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(NauticalInformation)],
             }, ];
-            public static featureBinding[] featureBindings => [new featureBinding
+            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -10603,7 +10603,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(UpdatedInformation),
                 role = Enum.GetName<Role>(Role.theUpdate)!,
                 featureTypes = [nameof(UpdateInformation)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -10642,7 +10642,7 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(LockBasin);
-            public static informationBinding[] informationBindings => [new informationBinding
+            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -10651,7 +10651,7 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(ContactDetails), nameof(NauticalInformation), nameof(NonStandardWorkingDay), nameof(ServiceHours)],
             }, ];
-            public static featureBinding[] featureBindings => [new featureBinding
+            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -10659,7 +10659,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(UpdatedInformation),
                 role = Enum.GetName<Role>(Role.theUpdate)!,
                 featureTypes = [nameof(UpdateInformation)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -10684,7 +10684,7 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(MooringTrot);
-            public static informationBinding[] informationBindings => [new informationBinding
+            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -10693,7 +10693,7 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(ContactDetails), nameof(NauticalInformation)],
             }, ];
-            public static featureBinding[] featureBindings => [new featureBinding
+            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -10701,7 +10701,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(MooringTrotAggregation),
                 role = Enum.GetName<Role>(Role.theComponent)!,
                 featureTypes = [nameof(Berth), nameof(CableSubmarine), nameof(MooringBuoy), nameof(Obstruction)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -10709,7 +10709,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(UpdatedInformation),
                 role = Enum.GetName<Role>(Role.theUpdate)!,
                 featureTypes = [nameof(UpdateInformation)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -10789,7 +10789,7 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(SeaAreaNamedWaterArea);
-            public static informationBinding[] informationBindings => [new informationBinding
+            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -10798,7 +10798,7 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(NauticalInformation)],
             }, ];
-            public static featureBinding[] featureBindings => [new featureBinding
+            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -10806,7 +10806,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(UpdatedInformation),
                 role = Enum.GetName<Role>(Role.theUpdate)!,
                 featureTypes = [nameof(UpdateInformation)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -10842,7 +10842,7 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(TidalStreamFloodEbb);
-            public static informationBinding[] informationBindings => [new informationBinding
+            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -10851,7 +10851,7 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(NauticalInformation)],
             }, ];
-            public static featureBinding[] featureBindings => [new featureBinding
+            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -10859,7 +10859,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(UpdatedInformation),
                 role = Enum.GetName<Role>(Role.theUpdate)!,
                 featureTypes = [nameof(UpdateInformation)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -10902,7 +10902,7 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(CurrentNonGravitational);
-            public static informationBinding[] informationBindings => [new informationBinding
+            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -10911,7 +10911,7 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(NauticalInformation)],
             }, ];
-            public static featureBinding[] featureBindings => [new featureBinding
+            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -10919,7 +10919,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(UpdatedInformation),
                 role = Enum.GetName<Role>(Role.theUpdate)!,
                 featureTypes = [nameof(UpdateInformation)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -10958,7 +10958,7 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(WaterTurbulence);
-            public static informationBinding[] informationBindings => [new informationBinding
+            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -10967,7 +10967,7 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(NauticalInformation)],
             }, ];
-            public static featureBinding[] featureBindings => [new featureBinding
+            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -10975,7 +10975,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(UpdatedInformation),
                 role = Enum.GetName<Role>(Role.theUpdate)!,
                 featureTypes = [nameof(UpdateInformation)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -11004,7 +11004,7 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(TidalStreamPanelData);
-            public static informationBinding[] informationBindings => [new informationBinding
+            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -11013,7 +11013,7 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(NauticalInformation)],
             }, ];
-            public static featureBinding[] featureBindings => [new featureBinding
+            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -11021,7 +11021,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(UpdatedInformation),
                 role = Enum.GetName<Role>(Role.theUpdate)!,
                 featureTypes = [nameof(UpdateInformation)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -11076,7 +11076,7 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(Sounding);
-            public static informationBinding[] informationBindings => [new informationBinding
+            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -11085,7 +11085,7 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(NauticalInformation)],
             }, ];
-            public static featureBinding[] featureBindings => [new featureBinding
+            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -11093,7 +11093,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(UpdatedInformation),
                 role = Enum.GetName<Role>(Role.theUpdate)!,
                 featureTypes = [nameof(UpdateInformation)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -11161,7 +11161,7 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(DredgedArea);
-            public static informationBinding[] informationBindings => [new informationBinding
+            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -11170,7 +11170,7 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(NauticalInformation)],
             }, ];
-            public static featureBinding[] featureBindings => [new featureBinding
+            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.aggregation,
                 lower = 0,
@@ -11178,7 +11178,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(FairwayAuxiliary),
                 role = Enum.GetName<Role>(Role.thePrimaryFeature)!,
                 featureTypes = [nameof(Fairway)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -11186,7 +11186,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(UpdatedInformation),
                 role = Enum.GetName<Role>(Role.theUpdate)!,
                 featureTypes = [nameof(UpdateInformation)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -11212,7 +11212,7 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(SweptArea);
-            public static informationBinding[] informationBindings => [new informationBinding
+            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -11221,7 +11221,7 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(NauticalInformation)],
             }, ];
-            public static featureBinding[] featureBindings => [new featureBinding
+            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.aggregation,
                 lower = 0,
@@ -11229,7 +11229,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(FairwayAuxiliary),
                 role = Enum.GetName<Role>(Role.thePrimaryFeature)!,
                 featureTypes = [nameof(Fairway)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -11237,7 +11237,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(UpdatedInformation),
                 role = Enum.GetName<Role>(Role.theUpdate)!,
                 featureTypes = [nameof(UpdateInformation)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -11263,7 +11263,7 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(DepthContour);
-            public static informationBinding[] informationBindings => [new informationBinding
+            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -11272,7 +11272,7 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(NauticalInformation)],
             }, ];
-            public static featureBinding[] featureBindings => [new featureBinding
+            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -11299,7 +11299,7 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(DepthArea);
-            public static informationBinding[] informationBindings => [new informationBinding
+            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -11308,7 +11308,7 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(NauticalInformation)],
             }, ];
-            public static featureBinding[] featureBindings => [new featureBinding
+            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -11344,7 +11344,7 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(DepthNoBottomFound);
-            public static informationBinding[] informationBindings => [new informationBinding
+            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -11353,7 +11353,7 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(NauticalInformation)],
             }, ];
-            public static featureBinding[] featureBindings => [new featureBinding
+            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -11375,7 +11375,7 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(UnsurveyedArea);
-            public static informationBinding[] informationBindings => [new informationBinding
+            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -11384,7 +11384,7 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(NauticalInformation)],
             }, ];
-            public static featureBinding[] featureBindings => [new featureBinding
+            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -11416,7 +11416,7 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(SeabedArea);
-            public static informationBinding[] informationBindings => [new informationBinding
+            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -11425,7 +11425,7 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(NauticalInformation)],
             }, ];
-            public static featureBinding[] featureBindings => [new featureBinding
+            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -11433,7 +11433,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(UpdatedInformation),
                 role = Enum.GetName<Role>(Role.theUpdate)!,
                 featureTypes = [nameof(UpdateInformation)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -11463,7 +11463,7 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(WeedKelp);
-            public static informationBinding[] informationBindings => [new informationBinding
+            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -11472,7 +11472,7 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(NauticalInformation)],
             }, ];
-            public static featureBinding[] featureBindings => [new featureBinding
+            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -11480,7 +11480,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(UpdatedInformation),
                 role = Enum.GetName<Role>(Role.theUpdate)!,
                 featureTypes = [nameof(UpdateInformation)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -11504,7 +11504,7 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(Seagrass);
-            public static informationBinding[] informationBindings => [new informationBinding
+            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -11513,7 +11513,7 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(NauticalInformation)],
             }, ];
-            public static featureBinding[] featureBindings => [new featureBinding
+            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -11521,7 +11521,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(UpdatedInformation),
                 role = Enum.GetName<Role>(Role.theUpdate)!,
                 featureTypes = [nameof(UpdateInformation)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -11545,7 +11545,7 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(Sandwave);
-            public static informationBinding[] informationBindings => [new informationBinding
+            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -11554,7 +11554,7 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(NauticalInformation)],
             }, ];
-            public static featureBinding[] featureBindings => [new featureBinding
+            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -11578,7 +11578,7 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(Spring);
-            public static informationBinding[] informationBindings => [new informationBinding
+            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -11587,7 +11587,7 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(NauticalInformation)],
             }, ];
-            public static featureBinding[] featureBindings => [new featureBinding
+            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -11595,7 +11595,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(UpdatedInformation),
                 role = Enum.GetName<Role>(Role.theUpdate)!,
                 featureTypes = [nameof(UpdateInformation)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -11669,7 +11669,7 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(UnderwaterAwashRock);
-            public static informationBinding[] informationBindings => [new informationBinding
+            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -11678,7 +11678,7 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(NauticalInformation)],
             }, ];
-            public static featureBinding[] featureBindings => [new featureBinding
+            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -11686,7 +11686,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(UpdatedInformation),
                 role = Enum.GetName<Role>(Role.theUpdate)!,
                 featureTypes = [nameof(UpdateInformation)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -11775,7 +11775,7 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(Wreck);
-            public static informationBinding[] informationBindings => [new informationBinding
+            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -11784,7 +11784,7 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(NauticalInformation)],
             }, ];
-            public static featureBinding[] featureBindings => [new featureBinding
+            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -11792,7 +11792,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(StructureEquipment),
                 role = Enum.GetName<Role>(Role.theEquipment)!,
                 featureTypes = [nameof(Daymark), nameof(DistanceMark), nameof(FogSignal), nameof(LightAllAround), nameof(LightFogDetector), nameof(PhysicalAISAidToNavigation), nameof(RadarTransponderBeacon), nameof(Retroreflector), nameof(SignalStationTraffic), nameof(SignalStationWarning), nameof(LightSectored)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -11800,7 +11800,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(UpdatedInformation),
                 role = Enum.GetName<Role>(Role.theUpdate)!,
                 featureTypes = [nameof(UpdateInformation)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -11933,7 +11933,7 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(Obstruction);
-            public static informationBinding[] informationBindings => [new informationBinding
+            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -11942,7 +11942,7 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(NauticalInformation)],
             }, ];
-            public static featureBinding[] featureBindings => [new featureBinding
+            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.aggregation,
                 lower = 0,
@@ -11950,7 +11950,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(MooringTrotAggregation),
                 role = Enum.GetName<Role>(Role.theCollection)!,
                 featureTypes = [nameof(MooringTrot)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -11958,7 +11958,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(UpdatedInformation),
                 role = Enum.GetName<Role>(Role.theUpdate)!,
                 featureTypes = [nameof(UpdateInformation)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -12017,7 +12017,7 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(FoulGround);
-            public static informationBinding[] informationBindings => [new informationBinding
+            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -12026,7 +12026,7 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(NauticalInformation)],
             }, ];
-            public static featureBinding[] featureBindings => [new featureBinding
+            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -12034,7 +12034,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(UpdatedInformation),
                 role = Enum.GetName<Role>(Role.theUpdate)!,
                 featureTypes = [nameof(UpdateInformation)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -12058,7 +12058,7 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(DiscolouredWater);
-            public static informationBinding[] informationBindings => [new informationBinding
+            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -12067,7 +12067,7 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(NauticalInformation)],
             }, ];
-            public static featureBinding[] featureBindings => [new featureBinding
+            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -12115,7 +12115,7 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(FishingFacility);
-            public static informationBinding[] informationBindings => [new informationBinding
+            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -12124,7 +12124,7 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(ContactDetails), nameof(NauticalInformation)],
             }, ];
-            public static featureBinding[] featureBindings => [new featureBinding
+            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -12132,7 +12132,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(StructureEquipment),
                 role = Enum.GetName<Role>(Role.theEquipment)!,
                 featureTypes = [nameof(Daymark), nameof(DistanceMark), nameof(FogSignal), nameof(LightAllAround), nameof(LightFogDetector), nameof(PhysicalAISAidToNavigation), nameof(RadarTransponderBeacon), nameof(Retroreflector), nameof(SignalStationTraffic), nameof(SignalStationWarning), nameof(LightSectored)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.aggregation,
                 lower = 0,
@@ -12140,7 +12140,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(AidsToNavigationAssociation),
                 role = Enum.GetName<Role>(Role.theCollection)!,
                 featureTypes = [nameof(DeepWaterRoute), nameof(FairwaySystem), nameof(TrafficSeparationScheme), nameof(TwoWayRoute)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -12148,7 +12148,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(UpdatedInformation),
                 role = Enum.GetName<Role>(Role.theUpdate)!,
                 featureTypes = [nameof(UpdateInformation)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -12251,7 +12251,7 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(MarineFarmCulture);
-            public static informationBinding[] informationBindings => [new informationBinding
+            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -12260,7 +12260,7 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(ContactDetails), nameof(NauticalInformation)],
             }, ];
-            public static featureBinding[] featureBindings => [new featureBinding
+            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -12268,7 +12268,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(UpdatedInformation),
                 role = Enum.GetName<Role>(Role.theUpdate)!,
                 featureTypes = [nameof(UpdateInformation)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -12361,7 +12361,7 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(OffshorePlatform);
-            public static informationBinding[] informationBindings => [new informationBinding
+            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -12370,7 +12370,7 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(ContactDetails), nameof(NauticalInformation)],
             }, ];
-            public static featureBinding[] featureBindings => [new featureBinding
+            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -12378,7 +12378,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(StructureEquipment),
                 role = Enum.GetName<Role>(Role.theEquipment)!,
                 featureTypes = [nameof(Daymark), nameof(DistanceMark), nameof(FogSignal), nameof(Helipad), nameof(LightAllAround), nameof(LightFogDetector), nameof(PhysicalAISAidToNavigation), nameof(RadarTransponderBeacon), nameof(Retroreflector), nameof(SignalStationTraffic), nameof(SignalStationWarning), nameof(LightSectored), nameof(Bollard), nameof(LightAirObstruction)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.aggregation,
                 lower = 0,
@@ -12386,7 +12386,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(AidsToNavigationAssociation),
                 role = Enum.GetName<Role>(Role.theCollection)!,
                 featureTypes = [nameof(DeepWaterRoute), nameof(FairwaySystem), nameof(TrafficSeparationScheme), nameof(TwoWayRoute)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -12394,7 +12394,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(UpdatedInformation),
                 role = Enum.GetName<Role>(Role.theUpdate)!,
                 featureTypes = [nameof(UpdateInformation)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -12437,7 +12437,7 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(CableSubmarine);
-            public static informationBinding[] informationBindings => [new informationBinding
+            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -12446,7 +12446,7 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(ContactDetails), nameof(NauticalInformation)],
             }, ];
-            public static featureBinding[] featureBindings => [new featureBinding
+            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.aggregation,
                 lower = 0,
@@ -12454,7 +12454,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(MooringTrotAggregation),
                 role = Enum.GetName<Role>(Role.theCollection)!,
                 featureTypes = [nameof(MooringTrot)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -12462,7 +12462,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(UpdatedInformation),
                 role = Enum.GetName<Role>(Role.theUpdate)!,
                 featureTypes = [nameof(UpdateInformation)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -12521,7 +12521,7 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(CableArea);
-            public static informationBinding[] informationBindings => [new informationBinding
+            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -12530,7 +12530,7 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(ContactDetails), nameof(NauticalInformation)],
             }, ];
-            public static featureBinding[] featureBindings => [new featureBinding
+            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -12538,7 +12538,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(UpdatedInformation),
                 role = Enum.GetName<Role>(Role.theUpdate)!,
                 featureTypes = [nameof(UpdateInformation)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -12618,7 +12618,7 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(PipelineSubmarineOnLand);
-            public static informationBinding[] informationBindings => [new informationBinding
+            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -12627,7 +12627,7 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(ContactDetails), nameof(NauticalInformation)],
             }, ];
-            public static featureBinding[] featureBindings => [new featureBinding
+            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -12635,7 +12635,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(UpdatedInformation),
                 role = Enum.GetName<Role>(Role.theUpdate)!,
                 featureTypes = [nameof(UpdateInformation)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -12711,7 +12711,7 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(SubmarinePipelineArea);
-            public static informationBinding[] informationBindings => [new informationBinding
+            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -12720,7 +12720,7 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(ContactDetails), nameof(NauticalInformation)],
             }, ];
-            public static featureBinding[] featureBindings => [new featureBinding
+            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -12728,7 +12728,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(UpdatedInformation),
                 role = Enum.GetName<Role>(Role.theUpdate)!,
                 featureTypes = [nameof(UpdateInformation)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -12829,7 +12829,7 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(OffshoreProductionArea);
-            public static informationBinding[] informationBindings => [new informationBinding
+            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -12838,7 +12838,7 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(ContactDetails), nameof(NauticalInformation)],
             }, ];
-            public static featureBinding[] featureBindings => [new featureBinding
+            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -12846,7 +12846,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(UpdatedInformation),
                 role = Enum.GetName<Role>(Role.theUpdate)!,
                 featureTypes = [nameof(UpdateInformation)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -12888,7 +12888,7 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(NavigationLine);
-            public static informationBinding[] informationBindings => [new informationBinding
+            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -12897,7 +12897,7 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(NauticalInformation)],
             }, ];
-            public static featureBinding[] featureBindings => [new featureBinding
+            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.aggregation,
                 lower = 0,
@@ -12905,7 +12905,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(RangeSystemAggregation),
                 role = Enum.GetName<Role>(Role.theCollection)!,
                 featureTypes = [nameof(RangeSystem)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -12976,7 +12976,7 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(RecommendedTrack);
-            public static informationBinding[] informationBindings => [new informationBinding
+            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -12985,7 +12985,7 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(NauticalInformation)],
             }, ];
-            public static featureBinding[] featureBindings => [new featureBinding
+            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.aggregation,
                 lower = 0,
@@ -12993,7 +12993,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(RangeSystemAggregation),
                 role = Enum.GetName<Role>(Role.theCollection)!,
                 featureTypes = [nameof(RangeSystem)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -13001,7 +13001,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(UpdatedInformation),
                 role = Enum.GetName<Role>(Role.theUpdate)!,
                 featureTypes = [nameof(UpdateInformation)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -13009,7 +13009,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(TextAssociation),
                 role = Enum.GetName<Role>(Role.theCartographicText)!,
                 featureTypes = [nameof(TextPlacement)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.aggregation,
                 lower = 0,
@@ -13035,7 +13035,7 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(RangeSystem);
-            public static informationBinding[] informationBindings => [new informationBinding
+            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -13044,7 +13044,7 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(NauticalInformation)],
             }, ];
-            public static featureBinding[] featureBindings => [new featureBinding
+            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -13052,7 +13052,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(RangeSystemAggregation),
                 role = Enum.GetName<Role>(Role.theComponent)!,
                 featureTypes = [nameof(CardinalBeacon), nameof(Building), nameof(Daymark), nameof(Dolphin), nameof(FortifiedStructure), nameof(IsolatedDangerBeacon), nameof(Landmark), nameof(LateralBeacon), nameof(LightAllAround), nameof(LightSectored), nameof(NavigationLine), nameof(Pile), nameof(RadarTransponderBeacon), nameof(RangeSystem), nameof(RecommendedRouteCentreline), nameof(RecommendedTrack), nameof(SafeWaterBeacon), nameof(SiloTank), nameof(SpecialPurposeGeneralBeacon)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.aggregation,
                 lower = 0,
@@ -13060,7 +13060,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(RangeSystemAggregation),
                 role = Enum.GetName<Role>(Role.theCollection)!,
                 featureTypes = [nameof(RangeSystem)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.aggregation,
                 lower = 0,
@@ -13068,7 +13068,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(FairwayAuxiliary),
                 role = Enum.GetName<Role>(Role.thePrimaryFeature)!,
                 featureTypes = [nameof(Fairway)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -13076,7 +13076,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(UpdatedInformation),
                 role = Enum.GetName<Role>(Role.theUpdate)!,
                 featureTypes = [nameof(UpdateInformation)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -13152,7 +13152,7 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(Fairway);
-            public static informationBinding[] informationBindings => [new informationBinding
+            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -13161,7 +13161,7 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(NauticalInformation)],
             }, ];
-            public static featureBinding[] featureBindings => [new featureBinding
+            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.aggregation,
                 lower = 0,
@@ -13169,7 +13169,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(FairwayAggregation),
                 role = Enum.GetName<Role>(Role.theCollection)!,
                 featureTypes = [nameof(FairwaySystem)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -13177,7 +13177,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(FairwayAuxiliary),
                 role = Enum.GetName<Role>(Role.theAuxiliaryFeature)!,
                 featureTypes = [nameof(CardinalBeacon), nameof(CardinalBuoy), nameof(CautionArea), nameof(Daymark), nameof(DredgedArea), nameof(IsolatedDangerBeacon), nameof(IsolatedDangerBuoy), nameof(LateralBeacon), nameof(LateralBuoy), nameof(LightFloat), nameof(LightVessel), nameof(Landmark), nameof(Pile), nameof(RangeSystem), nameof(RecommendedRouteCentreline), nameof(RecommendedTrack), nameof(RestrictedArea), nameof(SafeWaterBeacon), nameof(SafeWaterBuoy), nameof(SpecialPurposeGeneralBeacon), nameof(SpecialPurposeGeneralBuoy), nameof(SweptArea)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -13185,7 +13185,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(UpdatedInformation),
                 role = Enum.GetName<Role>(Role.theUpdate)!,
                 featureTypes = [nameof(UpdateInformation)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -13212,7 +13212,7 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(FairwaySystem);
-            public static informationBinding[] informationBindings => [new informationBinding
+            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -13221,7 +13221,7 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(NauticalInformation)],
             }, ];
-            public static featureBinding[] featureBindings => [new featureBinding
+            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -13229,7 +13229,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(AidsToNavigationAssociation),
                 role = Enum.GetName<Role>(Role.theComponent)!,
                 featureTypes = [nameof(CardinalBeacon), nameof(CardinalBuoy), nameof(Daymark), nameof(EmergencyWreckMarkingBuoy), nameof(IsolatedDangerBeacon), nameof(IsolatedDangerBuoy), nameof(LateralBeacon), nameof(LateralBuoy), nameof(LightFloat), nameof(LightVessel), nameof(Pile), nameof(SafeWaterBeacon), nameof(SafeWaterBuoy), nameof(SpecialPurposeGeneralBeacon), nameof(SpecialPurposeGeneralBuoy), nameof(Building), nameof(Crane), nameof(Dolphin), nameof(FishingFacility), nameof(FortifiedStructure), nameof(Landmark), nameof(MooringBuoy), nameof(OffshorePlatform), nameof(SiloTank), nameof(WindTurbine), nameof(Bridge), nameof(Conveyor), nameof(FloatingDock), nameof(Hulk), nameof(PipelineOverhead), nameof(Pontoon), nameof(PylonBridgeSupport), nameof(ShorelineConstruction), nameof(SpanFixed), nameof(SpanOpening), nameof(StructureOverNavigableWater)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -13237,7 +13237,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(FairwayAggregation),
                 role = Enum.GetName<Role>(Role.theComponent)!,
                 featureTypes = [nameof(Fairway)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -13245,7 +13245,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(UpdatedInformation),
                 role = Enum.GetName<Role>(Role.theUpdate)!,
                 featureTypes = [nameof(UpdateInformation)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -13306,7 +13306,7 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(RecommendedRouteCentreline);
-            public static informationBinding[] informationBindings => [new informationBinding
+            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -13315,7 +13315,7 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(NauticalInformation)],
             }, ];
-            public static featureBinding[] featureBindings => [new featureBinding
+            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.aggregation,
                 lower = 0,
@@ -13323,7 +13323,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(RangeSystemAggregation),
                 role = Enum.GetName<Role>(Role.theCollection)!,
                 featureTypes = [nameof(RangeSystem)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.aggregation,
                 lower = 0,
@@ -13331,7 +13331,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(FairwayAuxiliary),
                 role = Enum.GetName<Role>(Role.thePrimaryFeature)!,
                 featureTypes = [nameof(Fairway)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -13339,7 +13339,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(UpdatedInformation),
                 role = Enum.GetName<Role>(Role.theUpdate)!,
                 featureTypes = [nameof(UpdateInformation)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -13401,7 +13401,7 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(TwoWayRoutePart);
-            public static informationBinding[] informationBindings => [new informationBinding
+            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -13410,7 +13410,7 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(NauticalInformation)],
             }, ];
-            public static featureBinding[] featureBindings => [new featureBinding
+            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.aggregation,
                 lower = 0,
@@ -13418,7 +13418,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(TwoWayRouteAggregation),
                 role = Enum.GetName<Role>(Role.theCollection)!,
                 featureTypes = [nameof(TwoWayRoute)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.aggregation,
                 lower = 0,
@@ -13426,7 +13426,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(TrafficSeparationSchemeAggregation),
                 role = Enum.GetName<Role>(Role.theCollection)!,
                 featureTypes = [nameof(TrafficSeparationScheme)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -13452,7 +13452,7 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(TwoWayRoute);
-            public static informationBinding[] informationBindings => [new informationBinding
+            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -13461,7 +13461,7 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(NauticalInformation)],
             }, ];
-            public static featureBinding[] featureBindings => [new featureBinding
+            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -13469,7 +13469,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(AidsToNavigationAssociation),
                 role = Enum.GetName<Role>(Role.theComponent)!,
                 featureTypes = [nameof(CardinalBeacon), nameof(CardinalBuoy), nameof(Daymark), nameof(EmergencyWreckMarkingBuoy), nameof(IsolatedDangerBeacon), nameof(IsolatedDangerBuoy), nameof(LateralBeacon), nameof(LateralBuoy), nameof(LightFloat), nameof(LightVessel), nameof(Pile), nameof(SafeWaterBeacon), nameof(SafeWaterBuoy), nameof(SpecialPurposeGeneralBeacon), nameof(SpecialPurposeGeneralBuoy), nameof(Building), nameof(Crane), nameof(Dolphin), nameof(FishingFacility), nameof(FortifiedStructure), nameof(Landmark), nameof(MooringBuoy), nameof(OffshorePlatform), nameof(SiloTank), nameof(WindTurbine), nameof(Bridge), nameof(Conveyor), nameof(FloatingDock), nameof(Hulk), nameof(PipelineOverhead), nameof(Pontoon), nameof(PylonBridgeSupport), nameof(ShorelineConstruction), nameof(SpanFixed), nameof(SpanOpening), nameof(StructureOverNavigableWater)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -13477,7 +13477,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(TwoWayRouteAggregation),
                 role = Enum.GetName<Role>(Role.theComponent)!,
                 featureTypes = [nameof(TwoWayRoutePart)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.aggregation,
                 lower = 0,
@@ -13485,7 +13485,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(TrafficSeparationSchemeAggregation),
                 role = Enum.GetName<Role>(Role.theCollection)!,
                 featureTypes = [nameof(TrafficSeparationScheme)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -13493,7 +13493,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(UpdatedInformation),
                 role = Enum.GetName<Role>(Role.theUpdate)!,
                 featureTypes = [nameof(UpdateInformation)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -13525,7 +13525,7 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(RecommendedTrafficLanePart);
-            public static informationBinding[] informationBindings => [new informationBinding
+            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -13534,7 +13534,7 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(NauticalInformation)],
             }, ];
-            public static featureBinding[] featureBindings => [new featureBinding
+            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -13600,7 +13600,7 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(DeepWaterRouteCentreline);
-            public static informationBinding[] informationBindings => [new informationBinding
+            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -13609,7 +13609,7 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(NauticalInformation)],
             }, ];
-            public static featureBinding[] featureBindings => [new featureBinding
+            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.aggregation,
                 lower = 0,
@@ -13617,7 +13617,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(DeepWaterRouteAggregation),
                 role = Enum.GetName<Role>(Role.theCollection)!,
                 featureTypes = [nameof(DeepWaterRoute)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.aggregation,
                 lower = 0,
@@ -13625,7 +13625,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(TrafficSeparationSchemeAggregation),
                 role = Enum.GetName<Role>(Role.theCollection)!,
                 featureTypes = [nameof(TrafficSeparationScheme)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -13633,7 +13633,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(UpdatedInformation),
                 role = Enum.GetName<Role>(Role.theUpdate)!,
                 featureTypes = [nameof(UpdateInformation)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -13725,7 +13725,7 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(DeepWaterRoutePart);
-            public static informationBinding[] informationBindings => [new informationBinding
+            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -13734,7 +13734,7 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(NauticalInformation)],
             }, ];
-            public static featureBinding[] featureBindings => [new featureBinding
+            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.aggregation,
                 lower = 0,
@@ -13742,7 +13742,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(DeepWaterRouteAggregation),
                 role = Enum.GetName<Role>(Role.theCollection)!,
                 featureTypes = [nameof(DeepWaterRoute)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.aggregation,
                 lower = 0,
@@ -13750,7 +13750,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(TrafficSeparationSchemeAggregation),
                 role = Enum.GetName<Role>(Role.theCollection)!,
                 featureTypes = [nameof(TrafficSeparationScheme)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -13758,7 +13758,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(UpdatedInformation),
                 role = Enum.GetName<Role>(Role.theUpdate)!,
                 featureTypes = [nameof(UpdateInformation)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -13784,7 +13784,7 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(DeepWaterRoute);
-            public static informationBinding[] informationBindings => [new informationBinding
+            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -13793,7 +13793,7 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(NauticalInformation)],
             }, ];
-            public static featureBinding[] featureBindings => [new featureBinding
+            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -13801,7 +13801,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(AidsToNavigationAssociation),
                 role = Enum.GetName<Role>(Role.theComponent)!,
                 featureTypes = [nameof(CardinalBeacon), nameof(CardinalBuoy), nameof(Daymark), nameof(EmergencyWreckMarkingBuoy), nameof(IsolatedDangerBeacon), nameof(IsolatedDangerBuoy), nameof(LateralBeacon), nameof(LateralBuoy), nameof(LightFloat), nameof(LightVessel), nameof(Pile), nameof(SafeWaterBeacon), nameof(SafeWaterBuoy), nameof(SpecialPurposeGeneralBeacon), nameof(SpecialPurposeGeneralBuoy), nameof(Building), nameof(Crane), nameof(Dolphin), nameof(FishingFacility), nameof(FortifiedStructure), nameof(Landmark), nameof(MooringBuoy), nameof(OffshorePlatform), nameof(SiloTank), nameof(WindTurbine)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -13809,7 +13809,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(DeepWaterRouteAggregation),
                 role = Enum.GetName<Role>(Role.theComponent)!,
                 featureTypes = [nameof(DeepWaterRouteCentreline), nameof(DeepWaterRoutePart)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.aggregation,
                 lower = 0,
@@ -13817,7 +13817,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(TrafficSeparationSchemeAggregation),
                 role = Enum.GetName<Role>(Role.theCollection)!,
                 featureTypes = [nameof(TrafficSeparationScheme)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -13825,7 +13825,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(UpdatedInformation),
                 role = Enum.GetName<Role>(Role.theUpdate)!,
                 featureTypes = [nameof(UpdateInformation)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -13883,7 +13883,7 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(InshoreTrafficZone);
-            public static informationBinding[] informationBindings => [new informationBinding
+            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -13892,7 +13892,7 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(NauticalInformation)],
             }, ];
-            public static featureBinding[] featureBindings => [new featureBinding
+            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.aggregation,
                 lower = 0,
@@ -13900,7 +13900,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(TrafficSeparationSchemeAggregation),
                 role = Enum.GetName<Role>(Role.theCollection)!,
                 featureTypes = [nameof(TrafficSeparationScheme)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -13960,7 +13960,7 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(PrecautionaryArea);
-            public static informationBinding[] informationBindings => [new informationBinding
+            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -13969,7 +13969,7 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(NauticalInformation)],
             }, ];
-            public static featureBinding[] featureBindings => [new featureBinding
+            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.aggregation,
                 lower = 0,
@@ -13977,7 +13977,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(TrafficSeparationSchemeAggregation),
                 role = Enum.GetName<Role>(Role.theCollection)!,
                 featureTypes = [nameof(TrafficSeparationScheme)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -13985,7 +13985,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(UpdatedInformation),
                 role = Enum.GetName<Role>(Role.theUpdate)!,
                 featureTypes = [nameof(UpdateInformation)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -14045,7 +14045,7 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(TrafficSeparationSchemeLanePart);
-            public static informationBinding[] informationBindings => [new informationBinding
+            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -14054,7 +14054,7 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(NauticalInformation)],
             }, ];
-            public static featureBinding[] featureBindings => [new featureBinding
+            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.aggregation,
                 lower = 0,
@@ -14062,7 +14062,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(TrafficSeparationSchemeAggregation),
                 role = Enum.GetName<Role>(Role.theCollection)!,
                 featureTypes = [nameof(TrafficSeparationScheme)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -14092,7 +14092,7 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(SeparationZoneOrLine);
-            public static informationBinding[] informationBindings => [new informationBinding
+            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -14101,7 +14101,7 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(NauticalInformation)],
             }, ];
-            public static featureBinding[] featureBindings => [new featureBinding
+            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.aggregation,
                 lower = 0,
@@ -14109,7 +14109,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(TrafficSeparationSchemeAggregation),
                 role = Enum.GetName<Role>(Role.theCollection)!,
                 featureTypes = [nameof(TrafficSeparationScheme)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -14139,7 +14139,7 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(TrafficSeparationSchemeBoundary);
-            public static informationBinding[] informationBindings => [new informationBinding
+            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -14148,7 +14148,7 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(NauticalInformation)],
             }, ];
-            public static featureBinding[] featureBindings => [new featureBinding
+            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.aggregation,
                 lower = 0,
@@ -14156,7 +14156,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(TrafficSeparationSchemeAggregation),
                 role = Enum.GetName<Role>(Role.theCollection)!,
                 featureTypes = [nameof(TrafficSeparationScheme)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -14212,7 +14212,7 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(TrafficSeparationSchemeCrossing);
-            public static informationBinding[] informationBindings => [new informationBinding
+            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -14221,7 +14221,7 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(NauticalInformation)],
             }, ];
-            public static featureBinding[] featureBindings => [new featureBinding
+            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.aggregation,
                 lower = 0,
@@ -14229,7 +14229,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(TrafficSeparationSchemeAggregation),
                 role = Enum.GetName<Role>(Role.theCollection)!,
                 featureTypes = [nameof(TrafficSeparationScheme)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -14285,7 +14285,7 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(TrafficSeparationSchemeRoundabout);
-            public static informationBinding[] informationBindings => [new informationBinding
+            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -14294,7 +14294,7 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(NauticalInformation)],
             }, ];
-            public static featureBinding[] featureBindings => [new featureBinding
+            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.aggregation,
                 lower = 0,
@@ -14302,7 +14302,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(TrafficSeparationSchemeAggregation),
                 role = Enum.GetName<Role>(Role.theCollection)!,
                 featureTypes = [nameof(TrafficSeparationScheme)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -14329,7 +14329,7 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(TrafficSeparationScheme);
-            public static informationBinding[] informationBindings => [new informationBinding
+            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -14338,7 +14338,7 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(NauticalInformation)],
             }, ];
-            public static featureBinding[] featureBindings => [new featureBinding
+            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -14346,7 +14346,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(AidsToNavigationAssociation),
                 role = Enum.GetName<Role>(Role.theComponent)!,
                 featureTypes = [nameof(CardinalBeacon), nameof(CardinalBuoy), nameof(Daymark), nameof(EmergencyWreckMarkingBuoy), nameof(IsolatedDangerBeacon), nameof(IsolatedDangerBuoy), nameof(LateralBeacon), nameof(LateralBuoy), nameof(LightFloat), nameof(LightVessel), nameof(Pile), nameof(SafeWaterBeacon), nameof(SafeWaterBuoy), nameof(SpecialPurposeGeneralBeacon), nameof(SpecialPurposeGeneralBuoy), nameof(Building), nameof(Crane), nameof(Dolphin), nameof(FishingFacility), nameof(FortifiedStructure), nameof(Landmark), nameof(MooringBuoy), nameof(OffshorePlatform), nameof(SiloTank), nameof(WindTurbine), nameof(Bridge), nameof(Conveyor), nameof(FloatingDock), nameof(Hulk), nameof(PipelineOverhead), nameof(Pontoon), nameof(PylonBridgeSupport), nameof(ShorelineConstruction), nameof(SpanFixed), nameof(SpanOpening), nameof(StructureOverNavigableWater)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -14354,7 +14354,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(TrafficSeparationSchemeAggregation),
                 role = Enum.GetName<Role>(Role.theComponent)!,
                 featureTypes = [nameof(DeepWaterRoute), nameof(DeepWaterRouteCentreline), nameof(DeepWaterRoutePart), nameof(InshoreTrafficZone), nameof(PrecautionaryArea), nameof(RestrictedArea), nameof(SeparationZoneOrLine), nameof(TrafficSeparationScheme), nameof(TrafficSeparationSchemeBoundary), nameof(TrafficSeparationSchemeCrossing), nameof(TrafficSeparationSchemeLanePart), nameof(TrafficSeparationSchemeRoundabout), nameof(TwoWayRoute), nameof(TwoWayRoutePart)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.aggregation,
                 lower = 0,
@@ -14362,7 +14362,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(TrafficSeparationSchemeAggregation),
                 role = Enum.GetName<Role>(Role.theCollection)!,
                 featureTypes = [nameof(TrafficSeparationScheme)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.aggregation,
                 lower = 0,
@@ -14370,7 +14370,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(CautionAreaAssociation),
                 role = Enum.GetName<Role>(Role.theCollection)!,
                 featureTypes = [nameof(CautionArea)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -14378,7 +14378,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(UpdatedInformation),
                 role = Enum.GetName<Role>(Role.theUpdate)!,
                 featureTypes = [nameof(UpdateInformation)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -14404,7 +14404,7 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(ArchipelagicSeaLaneArea);
-            public static informationBinding[] informationBindings => [new informationBinding
+            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -14413,7 +14413,7 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(NauticalInformation)],
             }, ];
-            public static featureBinding[] featureBindings => [new featureBinding
+            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.aggregation,
                 lower = 0,
@@ -14421,7 +14421,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(ASLAggregation),
                 role = Enum.GetName<Role>(Role.theCollection)!,
                 featureTypes = [nameof(ArchipelagicSeaLane)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -14429,7 +14429,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(UpdatedInformation),
                 role = Enum.GetName<Role>(Role.theUpdate)!,
                 featureTypes = [nameof(UpdateInformation)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -14455,7 +14455,7 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(ArchipelagicSeaLaneAxis);
-            public static informationBinding[] informationBindings => [new informationBinding
+            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -14464,7 +14464,7 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(NauticalInformation)],
             }, ];
-            public static featureBinding[] featureBindings => [new featureBinding
+            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.aggregation,
                 lower = 0,
@@ -14472,7 +14472,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(ASLAggregation),
                 role = Enum.GetName<Role>(Role.theCollection)!,
                 featureTypes = [nameof(ArchipelagicSeaLane)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -14480,7 +14480,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(UpdatedInformation),
                 role = Enum.GetName<Role>(Role.theUpdate)!,
                 featureTypes = [nameof(UpdateInformation)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -14506,7 +14506,7 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(ArchipelagicSeaLane);
-            public static informationBinding[] informationBindings => [new informationBinding
+            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -14515,7 +14515,7 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(NauticalInformation)],
             }, ];
-            public static featureBinding[] featureBindings => [new featureBinding
+            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -14523,7 +14523,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(AidsToNavigationAssociation),
                 role = Enum.GetName<Role>(Role.theComponent)!,
                 featureTypes = [nameof(CardinalBeacon), nameof(CardinalBuoy), nameof(Daymark), nameof(EmergencyWreckMarkingBuoy), nameof(IsolatedDangerBeacon), nameof(IsolatedDangerBuoy), nameof(LateralBeacon), nameof(LateralBuoy), nameof(LightFloat), nameof(LightVessel), nameof(Pile), nameof(SafeWaterBeacon), nameof(SafeWaterBuoy), nameof(SpecialPurposeGeneralBeacon), nameof(SpecialPurposeGeneralBuoy)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -14531,7 +14531,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(ASLAggregation),
                 role = Enum.GetName<Role>(Role.theComponent)!,
                 featureTypes = [nameof(ArchipelagicSeaLaneArea), nameof(ArchipelagicSeaLaneAxis)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.aggregation,
                 lower = 0,
@@ -14539,7 +14539,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(CautionAreaAssociation),
                 role = Enum.GetName<Role>(Role.theCollection)!,
                 featureTypes = [nameof(CautionArea)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -14547,7 +14547,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(UpdatedInformation),
                 role = Enum.GetName<Role>(Role.theUpdate)!,
                 featureTypes = [nameof(UpdateInformation)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -14592,7 +14592,7 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(RadioCallingInPoint);
-            public static informationBinding[] informationBindings => [new informationBinding
+            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -14601,7 +14601,7 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(ContactDetails), nameof(NauticalInformation), nameof(NonStandardWorkingDay), nameof(ServiceHours)],
             }, ];
-            public static featureBinding[] featureBindings => [new featureBinding
+            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -14609,7 +14609,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(UpdatedInformation),
                 role = Enum.GetName<Role>(Role.theUpdate)!,
                 featureTypes = [nameof(UpdateInformation)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -14652,7 +14652,7 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(FerryRoute);
-            public static informationBinding[] informationBindings => [new informationBinding
+            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -14661,7 +14661,7 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(NauticalInformation)],
             }, ];
-            public static featureBinding[] featureBindings => [new featureBinding
+            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -14669,7 +14669,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(UpdatedInformation),
                 role = Enum.GetName<Role>(Role.theUpdate)!,
                 featureTypes = [nameof(UpdateInformation)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -14705,7 +14705,7 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(RadarLine);
-            public static informationBinding[] informationBindings => [new informationBinding
+            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -14714,7 +14714,7 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(NauticalInformation)],
             }, ];
-            public static featureBinding[] featureBindings => [new featureBinding
+            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -14722,7 +14722,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(UpdatedInformation),
                 role = Enum.GetName<Role>(Role.theUpdate)!,
                 featureTypes = [nameof(UpdateInformation)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -14754,7 +14754,7 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(RadarRange);
-            public static informationBinding[] informationBindings => [new informationBinding
+            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -14763,7 +14763,7 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(ContactDetails), nameof(NauticalInformation)],
             }, ];
-            public static featureBinding[] featureBindings => [new featureBinding
+            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -14771,7 +14771,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(UpdatedInformation),
                 role = Enum.GetName<Role>(Role.theUpdate)!,
                 featureTypes = [nameof(UpdateInformation)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -14811,7 +14811,7 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(RadarStation);
-            public static informationBinding[] informationBindings => [new informationBinding
+            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -14820,7 +14820,7 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(ContactDetails), nameof(NauticalInformation)],
             }, ];
-            public static featureBinding[] featureBindings => [new featureBinding
+            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -14828,7 +14828,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(UpdatedInformation),
                 role = Enum.GetName<Role>(Role.theUpdate)!,
                 featureTypes = [nameof(UpdateInformation)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -14918,7 +14918,7 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(AnchorageArea);
-            public static informationBinding[] informationBindings => [new informationBinding
+            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -14927,7 +14927,7 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(ContactDetails), nameof(NauticalInformation), nameof(NonStandardWorkingDay), nameof(ServiceHours)],
             }, ];
-            public static featureBinding[] featureBindings => [new featureBinding
+            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -14935,7 +14935,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(UpdatedInformation),
                 role = Enum.GetName<Role>(Role.theUpdate)!,
                 featureTypes = [nameof(UpdateInformation)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -15006,7 +15006,7 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(MooringArea);
-            public static informationBinding[] informationBindings => [new informationBinding
+            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -15015,7 +15015,7 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(ContactDetails), nameof(NauticalInformation), nameof(NonStandardWorkingDay), nameof(ServiceHours)],
             }, ];
-            public static featureBinding[] featureBindings => [new featureBinding
+            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -15023,7 +15023,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(UpdatedInformation),
                 role = Enum.GetName<Role>(Role.theUpdate)!,
                 featureTypes = [nameof(UpdateInformation)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -15089,7 +15089,7 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(AnchorBerth);
-            public static informationBinding[] informationBindings => [new informationBinding
+            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -15098,7 +15098,7 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(ContactDetails), nameof(NauticalInformation), nameof(NonStandardWorkingDay), nameof(ServiceHours)],
             }, ];
-            public static featureBinding[] featureBindings => [new featureBinding
+            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -15106,7 +15106,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(UpdatedInformation),
                 role = Enum.GetName<Role>(Role.theUpdate)!,
                 featureTypes = [nameof(UpdateInformation)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -15172,7 +15172,7 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(SeaplaneLandingArea);
-            public static informationBinding[] informationBindings => [new informationBinding
+            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -15181,7 +15181,7 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(ContactDetails), nameof(NauticalInformation), nameof(NonStandardWorkingDay), nameof(ServiceHours)],
             }, ];
-            public static featureBinding[] featureBindings => [new featureBinding
+            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -15189,7 +15189,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(UpdatedInformation),
                 role = Enum.GetName<Role>(Role.theUpdate)!,
                 featureTypes = [nameof(UpdateInformation)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -15253,7 +15253,7 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(DumpingGround);
-            public static informationBinding[] informationBindings => [new informationBinding
+            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -15262,7 +15262,7 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(NauticalInformation)],
             }, ];
-            public static featureBinding[] featureBindings => [new featureBinding
+            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -15270,7 +15270,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(UpdatedInformation),
                 role = Enum.GetName<Role>(Role.theUpdate)!,
                 featureTypes = [nameof(UpdateInformation)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -15342,7 +15342,7 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(MilitaryPracticeArea);
-            public static informationBinding[] informationBindings => [new informationBinding
+            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -15351,7 +15351,7 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(NauticalInformation)],
             }, ];
-            public static featureBinding[] featureBindings => [new featureBinding
+            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -15359,7 +15359,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(UpdatedInformation),
                 role = Enum.GetName<Role>(Role.theUpdate)!,
                 featureTypes = [nameof(UpdateInformation)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -15392,7 +15392,7 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(AdministrationArea);
-            public static informationBinding[] informationBindings => [new informationBinding
+            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -15401,7 +15401,7 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(ContactDetails), nameof(NauticalInformation)],
             }, ];
-            public static featureBinding[] featureBindings => [new featureBinding
+            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -15409,7 +15409,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(UpdatedInformation),
                 role = Enum.GetName<Role>(Role.theUpdate)!,
                 featureTypes = [nameof(UpdateInformation)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -15469,7 +15469,7 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(CargoTranshipmentArea);
-            public static informationBinding[] informationBindings => [new informationBinding
+            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -15478,7 +15478,7 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(NauticalInformation)],
             }, ];
-            public static featureBinding[] featureBindings => [new featureBinding
+            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -15486,7 +15486,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(UpdatedInformation),
                 role = Enum.GetName<Role>(Role.theUpdate)!,
                 featureTypes = [nameof(UpdateInformation)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -15521,7 +15521,7 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(CautionArea);
-            public static informationBinding[] informationBindings => [new informationBinding
+            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -15530,7 +15530,7 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(NauticalInformation)],
             }, ];
-            public static featureBinding[] featureBindings => [new featureBinding
+            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -15538,7 +15538,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(CautionAreaAssociation),
                 role = Enum.GetName<Role>(Role.theComponent)!,
                 featureTypes = [nameof(ArchipelagicSeaLane), nameof(TrafficSeparationScheme)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.aggregation,
                 lower = 0,
@@ -15546,7 +15546,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(FairwayAuxiliary),
                 role = Enum.GetName<Role>(Role.thePrimaryFeature)!,
                 featureTypes = [nameof(Fairway)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -15574,7 +15574,7 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(InformationArea);
-            public static informationBinding[] informationBindings => [new informationBinding
+            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -15583,7 +15583,7 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(NauticalInformation)],
             }, ];
-            public static featureBinding[] featureBindings => [new featureBinding
+            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -15591,7 +15591,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(UpdatedInformation),
                 role = Enum.GetName<Role>(Role.theUpdate)!,
                 featureTypes = [nameof(UpdateInformation)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -15619,7 +15619,7 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(ContiguousZone);
-            public static informationBinding[] informationBindings => [new informationBinding
+            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -15628,7 +15628,7 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(NauticalInformation)],
             }, ];
-            public static featureBinding[] featureBindings => [new featureBinding
+            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -15657,7 +15657,7 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(ContinentalShelfArea);
-            public static informationBinding[] informationBindings => [new informationBinding
+            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -15666,7 +15666,7 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(NauticalInformation)],
             }, ];
-            public static featureBinding[] featureBindings => [new featureBinding
+            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -15674,7 +15674,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(UpdatedInformation),
                 role = Enum.GetName<Role>(Role.theUpdate)!,
                 featureTypes = [nameof(UpdateInformation)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -15700,7 +15700,7 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(CustomZone);
-            public static informationBinding[] informationBindings => [new informationBinding
+            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -15709,7 +15709,7 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(NauticalInformation)],
             }, ];
-            public static featureBinding[] featureBindings => [new featureBinding
+            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -15737,7 +15737,7 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(ExclusiveEconomicZone);
-            public static informationBinding[] informationBindings => [new informationBinding
+            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -15746,7 +15746,7 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(NauticalInformation)],
             }, ];
-            public static featureBinding[] featureBindings => [new featureBinding
+            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -15779,7 +15779,7 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(FisheryZone);
-            public static informationBinding[] informationBindings => [new informationBinding
+            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -15788,7 +15788,7 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(NauticalInformation)],
             }, ];
-            public static featureBinding[] featureBindings => [new featureBinding
+            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -15796,7 +15796,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(UpdatedInformation),
                 role = Enum.GetName<Role>(Role.theUpdate)!,
                 featureTypes = [nameof(UpdateInformation)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -15860,7 +15860,7 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(FishingGround);
-            public static informationBinding[] informationBindings => [new informationBinding
+            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -15869,7 +15869,7 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(NauticalInformation)],
             }, ];
-            public static featureBinding[] featureBindings => [new featureBinding
+            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -15877,7 +15877,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(UpdatedInformation),
                 role = Enum.GetName<Role>(Role.theUpdate)!,
                 featureTypes = [nameof(UpdateInformation)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -15907,7 +15907,7 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(FreePortArea);
-            public static informationBinding[] informationBindings => [new informationBinding
+            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -15916,7 +15916,7 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(NauticalInformation)],
             }, ];
-            public static featureBinding[] featureBindings => [new featureBinding
+            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -15924,7 +15924,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(UpdatedInformation),
                 role = Enum.GetName<Role>(Role.theUpdate)!,
                 featureTypes = [nameof(UpdateInformation)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -15955,7 +15955,7 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(HarbourAreaAdministrative);
-            public static informationBinding[] informationBindings => [new informationBinding
+            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -15964,7 +15964,7 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(ContactDetails), nameof(NauticalInformation)],
             }, ];
-            public static featureBinding[] featureBindings => [new featureBinding
+            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -15972,7 +15972,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(UpdatedInformation),
                 role = Enum.GetName<Role>(Role.theUpdate)!,
                 featureTypes = [nameof(UpdateInformation)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -16005,7 +16005,7 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(LogPond);
-            public static informationBinding[] informationBindings => [new informationBinding
+            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -16014,7 +16014,7 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(NauticalInformation)],
             }, ];
-            public static featureBinding[] featureBindings => [new featureBinding
+            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -16022,7 +16022,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(UpdatedInformation),
                 role = Enum.GetName<Role>(Role.theUpdate)!,
                 featureTypes = [nameof(UpdateInformation)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -16064,7 +16064,7 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(OilBarrier);
-            public static informationBinding[] informationBindings => [new informationBinding
+            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -16073,7 +16073,7 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(NauticalInformation)],
             }, ];
-            public static featureBinding[] featureBindings => [new featureBinding
+            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -16081,7 +16081,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(UpdatedInformation),
                 role = Enum.GetName<Role>(Role.theUpdate)!,
                 featureTypes = [nameof(UpdateInformation)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -16105,7 +16105,7 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(StraightTerritorialSeaBaseline);
-            public static informationBinding[] informationBindings => [new informationBinding
+            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -16114,7 +16114,7 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(NauticalInformation)],
             }, ];
-            public static featureBinding[] featureBindings => [new featureBinding
+            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -16161,7 +16161,7 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(TerritorialSeaArea);
-            public static informationBinding[] informationBindings => [new informationBinding
+            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -16170,7 +16170,7 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(NauticalInformation)],
             }, ];
-            public static featureBinding[] featureBindings => [new featureBinding
+            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -16224,7 +16224,7 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(SubmarineTransitLane);
-            public static informationBinding[] informationBindings => [new informationBinding
+            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -16233,7 +16233,7 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(NauticalInformation)],
             }, ];
-            public static featureBinding[] featureBindings => [new featureBinding
+            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -16241,7 +16241,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(UpdatedInformation),
                 role = Enum.GetName<Role>(Role.theUpdate)!,
                 featureTypes = [nameof(UpdateInformation)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -16266,7 +16266,7 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(PilotageDistrict);
-            public static informationBinding[] informationBindings => [new informationBinding
+            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -16275,7 +16275,7 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(ContactDetails), nameof(NauticalInformation)],
             }, ];
-            public static featureBinding[] featureBindings => [new featureBinding
+            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -16283,7 +16283,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(PilotageDistrictAssociation),
                 role = Enum.GetName<Role>(Role.theComponent)!,
                 featureTypes = [nameof(PilotBoardingPlace)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -16291,7 +16291,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(UpdatedInformation),
                 role = Enum.GetName<Role>(Role.theUpdate)!,
                 featureTypes = [nameof(UpdateInformation)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -16318,7 +16318,7 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(CollisionRegulationsLimit);
-            public static informationBinding[] informationBindings => [new informationBinding
+            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -16327,7 +16327,7 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(NauticalInformation)],
             }, ];
-            public static featureBinding[] featureBindings => [new featureBinding
+            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -16335,7 +16335,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(UpdatedInformation),
                 role = Enum.GetName<Role>(Role.theUpdate)!,
                 featureTypes = [nameof(UpdateInformation)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -16360,7 +16360,7 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(MarinePollutionRegulationsArea);
-            public static informationBinding[] informationBindings => [new informationBinding
+            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -16369,7 +16369,7 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(NauticalInformation)],
             }, ];
-            public static featureBinding[] featureBindings => [new featureBinding
+            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -16377,7 +16377,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(UpdatedInformation),
                 role = Enum.GetName<Role>(Role.theUpdate)!,
                 featureTypes = [nameof(UpdateInformation)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -16473,7 +16473,7 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(RestrictedArea);
-            public static informationBinding[] informationBindings => [new informationBinding
+            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -16482,7 +16482,7 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(NauticalInformation)],
             }, ];
-            public static featureBinding[] featureBindings => [new featureBinding
+            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.aggregation,
                 lower = 0,
@@ -16490,7 +16490,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(FairwayAuxiliary),
                 role = Enum.GetName<Role>(Role.thePrimaryFeature)!,
                 featureTypes = [nameof(Fairway)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.aggregation,
                 lower = 0,
@@ -16498,7 +16498,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(TrafficSeparationSchemeAggregation),
                 role = Enum.GetName<Role>(Role.theCollection)!,
                 featureTypes = [nameof(TrafficSeparationScheme)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -16506,7 +16506,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(UpdatedInformation),
                 role = Enum.GetName<Role>(Role.theUpdate)!,
                 featureTypes = [nameof(UpdateInformation)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -16620,7 +16620,7 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(LightAllAround);
-            public static informationBinding[] informationBindings => [new informationBinding
+            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -16629,7 +16629,7 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(ContactDetails), nameof(NauticalInformation)],
             }, ];
-            public static featureBinding[] featureBindings => [new featureBinding
+            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.composition,
                 lower = 0,
@@ -16637,7 +16637,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(StructureEquipment),
                 role = Enum.GetName<Role>(Role.theStructure)!,
                 featureTypes = [nameof(Bridge), nameof(Building), nameof(Crane), nameof(CardinalBeacon), nameof(CardinalBuoy), nameof(Conveyor), nameof(Dolphin), nameof(EmergencyWreckMarkingBuoy), nameof(FishingFacility), nameof(FloatingDock), nameof(FortifiedStructure), nameof(Hulk), nameof(InstallationBuoy), nameof(IsolatedDangerBeacon), nameof(IsolatedDangerBuoy), nameof(Landmark), nameof(LateralBeacon), nameof(LateralBuoy), nameof(LightFloat), nameof(LightVessel), nameof(MooringBuoy), nameof(OffshorePlatform), nameof(Pile), nameof(PipelineOverhead), nameof(Pontoon), nameof(PylonBridgeSupport), nameof(SafeWaterBeacon), nameof(SafeWaterBuoy), nameof(ShorelineConstruction), nameof(SiloTank), nameof(SpanFixed), nameof(SpanOpening), nameof(SpecialPurposeGeneralBeacon), nameof(SpecialPurposeGeneralBuoy), nameof(StructureOverNavigableWater), nameof(WindTurbine), nameof(Wreck), nameof(LightAllAround), nameof(LightSectored), nameof(Daymark)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -16645,7 +16645,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(StructureEquipment),
                 role = Enum.GetName<Role>(Role.theEquipment)!,
                 featureTypes = [nameof(FogSignal), nameof(LightAirObstruction), nameof(LightAllAround), nameof(LightFogDetector), nameof(LightSectored), nameof(RadarTransponderBeacon), nameof(Retroreflector)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.aggregation,
                 lower = 0,
@@ -16653,7 +16653,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(RangeSystemAggregation),
                 role = Enum.GetName<Role>(Role.theCollection)!,
                 featureTypes = [nameof(RangeSystem)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -16661,7 +16661,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(UpdatedInformation),
                 role = Enum.GetName<Role>(Role.theUpdate)!,
                 featureTypes = [nameof(UpdateInformation)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -16760,7 +16760,7 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(LightSectored);
-            public static informationBinding[] informationBindings => [new informationBinding
+            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -16769,7 +16769,7 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(ContactDetails), nameof(NauticalInformation)],
             }, ];
-            public static featureBinding[] featureBindings => [new featureBinding
+            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -16777,7 +16777,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(StructureEquipment),
                 role = Enum.GetName<Role>(Role.theEquipment)!,
                 featureTypes = [nameof(FogSignal), nameof(LightAirObstruction), nameof(LightAllAround), nameof(LightFogDetector), nameof(LightSectored), nameof(RadarTransponderBeacon), nameof(Retroreflector)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.composition,
                 lower = 0,
@@ -16785,7 +16785,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(StructureEquipment),
                 role = Enum.GetName<Role>(Role.theStructure)!,
                 featureTypes = [nameof(Bridge), nameof(Building), nameof(Crane), nameof(CardinalBeacon), nameof(Conveyor), nameof(Dolphin), nameof(FishingFacility), nameof(FortifiedStructure), nameof(IsolatedDangerBeacon), nameof(Landmark), nameof(LateralBeacon), nameof(OffshorePlatform), nameof(Pile), nameof(PipelineOverhead), nameof(PylonBridgeSupport), nameof(SafeWaterBeacon), nameof(ShorelineConstruction), nameof(SiloTank), nameof(SpanFixed), nameof(SpanOpening), nameof(SpecialPurposeGeneralBeacon), nameof(StructureOverNavigableWater), nameof(WindTurbine), nameof(Wreck), nameof(LightAllAround), nameof(LightSectored), nameof(Daymark)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.aggregation,
                 lower = 0,
@@ -16793,7 +16793,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(RangeSystemAggregation),
                 role = Enum.GetName<Role>(Role.theCollection)!,
                 featureTypes = [nameof(RangeSystem)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -16801,7 +16801,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(UpdatedInformation),
                 role = Enum.GetName<Role>(Role.theUpdate)!,
                 featureTypes = [nameof(UpdateInformation)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -16877,7 +16877,7 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(LightFogDetector);
-            public static informationBinding[] informationBindings => [new informationBinding
+            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -16886,7 +16886,7 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(NauticalInformation)],
             }, ];
-            public static featureBinding[] featureBindings => [new featureBinding
+            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.composition,
                 lower = 0,
@@ -16894,7 +16894,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(StructureEquipment),
                 role = Enum.GetName<Role>(Role.theStructure)!,
                 featureTypes = [nameof(Bridge), nameof(Building), nameof(Crane), nameof(CardinalBeacon), nameof(CardinalBuoy), nameof(Conveyor), nameof(Dolphin), nameof(EmergencyWreckMarkingBuoy), nameof(FishingFacility), nameof(FloatingDock), nameof(FortifiedStructure), nameof(Hulk), nameof(InstallationBuoy), nameof(IsolatedDangerBeacon), nameof(IsolatedDangerBuoy), nameof(Landmark), nameof(LateralBeacon), nameof(LateralBuoy), nameof(LightFloat), nameof(LightVessel), nameof(MooringBuoy), nameof(OffshorePlatform), nameof(Pile), nameof(PipelineOverhead), nameof(Pontoon), nameof(PylonBridgeSupport), nameof(SafeWaterBeacon), nameof(SafeWaterBuoy), nameof(ShorelineConstruction), nameof(SiloTank), nameof(SpanFixed), nameof(SpanOpening), nameof(SpecialPurposeGeneralBeacon), nameof(SpecialPurposeGeneralBuoy), nameof(StructureOverNavigableWater), nameof(WindTurbine), nameof(Wreck), nameof(LightAllAround), nameof(LightSectored), nameof(Daymark)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -16902,7 +16902,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(UpdatedInformation),
                 role = Enum.GetName<Role>(Role.theUpdate)!,
                 featureTypes = [nameof(UpdateInformation)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -16990,7 +16990,7 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(LightAirObstruction);
-            public static informationBinding[] informationBindings => [new informationBinding
+            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -16999,7 +16999,7 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(NauticalInformation)],
             }, ];
-            public static featureBinding[] featureBindings => [new featureBinding
+            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.composition,
                 lower = 0,
@@ -17007,7 +17007,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(StructureEquipment),
                 role = Enum.GetName<Role>(Role.theStructure)!,
                 featureTypes = [nameof(Bridge), nameof(Building), nameof(Crane), nameof(Conveyor), nameof(Landmark), nameof(OffshorePlatform), nameof(PylonBridgeSupport), nameof(SpanFixed), nameof(SpanOpening), nameof(WindTurbine), nameof(LightAllAround), nameof(LightSectored)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -17015,7 +17015,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(UpdatedInformation),
                 role = Enum.GetName<Role>(Role.theUpdate)!,
                 featureTypes = [nameof(UpdateInformation)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -17106,7 +17106,7 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(LateralBuoy);
-            public static informationBinding[] informationBindings => [new informationBinding
+            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -17115,7 +17115,7 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(ContactDetails), nameof(NauticalInformation)],
             }, ];
-            public static featureBinding[] featureBindings => [new featureBinding
+            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -17123,7 +17123,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(StructureEquipment),
                 role = Enum.GetName<Role>(Role.theEquipment)!,
                 featureTypes = [nameof(Daymark), nameof(DistanceMark), nameof(FogSignal), nameof(LightAllAround), nameof(LightFogDetector), nameof(PhysicalAISAidToNavigation), nameof(RadarTransponderBeacon), nameof(Retroreflector), nameof(SignalStationTraffic), nameof(SignalStationWarning)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.aggregation,
                 lower = 0,
@@ -17131,7 +17131,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(AidsToNavigationAssociation),
                 role = Enum.GetName<Role>(Role.theCollection)!,
                 featureTypes = [nameof(ArchipelagicSeaLane), nameof(DeepWaterRoute), nameof(FairwaySystem), nameof(TrafficSeparationScheme), nameof(TwoWayRoute)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.aggregation,
                 lower = 0,
@@ -17139,7 +17139,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(FairwayAuxiliary),
                 role = Enum.GetName<Role>(Role.thePrimaryFeature)!,
                 featureTypes = [nameof(Fairway)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -17147,7 +17147,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(UpdatedInformation),
                 role = Enum.GetName<Role>(Role.theUpdate)!,
                 featureTypes = [nameof(UpdateInformation)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -17240,7 +17240,7 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(CardinalBuoy);
-            public static informationBinding[] informationBindings => [new informationBinding
+            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -17249,7 +17249,7 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(ContactDetails), nameof(NauticalInformation)],
             }, ];
-            public static featureBinding[] featureBindings => [new featureBinding
+            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -17257,7 +17257,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(StructureEquipment),
                 role = Enum.GetName<Role>(Role.theEquipment)!,
                 featureTypes = [nameof(Daymark), nameof(DistanceMark), nameof(FogSignal), nameof(LightAllAround), nameof(LightFogDetector), nameof(PhysicalAISAidToNavigation), nameof(RadarTransponderBeacon), nameof(Retroreflector), nameof(SignalStationTraffic), nameof(SignalStationWarning)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.aggregation,
                 lower = 0,
@@ -17265,7 +17265,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(AidsToNavigationAssociation),
                 role = Enum.GetName<Role>(Role.theCollection)!,
                 featureTypes = [nameof(ArchipelagicSeaLane), nameof(DeepWaterRoute), nameof(FairwaySystem), nameof(TrafficSeparationScheme), nameof(TwoWayRoute)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.aggregation,
                 lower = 0,
@@ -17273,7 +17273,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(FairwayAuxiliary),
                 role = Enum.GetName<Role>(Role.thePrimaryFeature)!,
                 featureTypes = [nameof(Fairway)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -17281,7 +17281,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(UpdatedInformation),
                 role = Enum.GetName<Role>(Role.theUpdate)!,
                 featureTypes = [nameof(UpdateInformation)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -17367,7 +17367,7 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(IsolatedDangerBuoy);
-            public static informationBinding[] informationBindings => [new informationBinding
+            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -17376,7 +17376,7 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(ContactDetails), nameof(NauticalInformation)],
             }, ];
-            public static featureBinding[] featureBindings => [new featureBinding
+            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -17384,7 +17384,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(StructureEquipment),
                 role = Enum.GetName<Role>(Role.theEquipment)!,
                 featureTypes = [nameof(Daymark), nameof(DistanceMark), nameof(FogSignal), nameof(LightAllAround), nameof(LightFogDetector), nameof(PhysicalAISAidToNavigation), nameof(RadarTransponderBeacon), nameof(Retroreflector), nameof(SignalStationTraffic), nameof(SignalStationWarning)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.aggregation,
                 lower = 0,
@@ -17392,7 +17392,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(AidsToNavigationAssociation),
                 role = Enum.GetName<Role>(Role.theCollection)!,
                 featureTypes = [nameof(ArchipelagicSeaLane), nameof(DeepWaterRoute), nameof(FairwaySystem), nameof(TrafficSeparationScheme), nameof(TwoWayRoute)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.aggregation,
                 lower = 0,
@@ -17400,7 +17400,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(FairwayAuxiliary),
                 role = Enum.GetName<Role>(Role.thePrimaryFeature)!,
                 featureTypes = [nameof(Fairway)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -17408,7 +17408,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(UpdatedInformation),
                 role = Enum.GetName<Role>(Role.theUpdate)!,
                 featureTypes = [nameof(UpdateInformation)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -17494,7 +17494,7 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(SafeWaterBuoy);
-            public static informationBinding[] informationBindings => [new informationBinding
+            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -17503,7 +17503,7 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(ContactDetails), nameof(NauticalInformation)],
             }, ];
-            public static featureBinding[] featureBindings => [new featureBinding
+            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -17511,7 +17511,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(StructureEquipment),
                 role = Enum.GetName<Role>(Role.theEquipment)!,
                 featureTypes = [nameof(Daymark), nameof(DistanceMark), nameof(FogSignal), nameof(LightAllAround), nameof(LightFogDetector), nameof(PhysicalAISAidToNavigation), nameof(RadarTransponderBeacon), nameof(Retroreflector), nameof(SignalStationTraffic), nameof(SignalStationWarning)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.aggregation,
                 lower = 0,
@@ -17519,7 +17519,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(AidsToNavigationAssociation),
                 role = Enum.GetName<Role>(Role.theCollection)!,
                 featureTypes = [nameof(ArchipelagicSeaLane), nameof(DeepWaterRoute), nameof(FairwaySystem), nameof(TrafficSeparationScheme), nameof(TwoWayRoute)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.aggregation,
                 lower = 0,
@@ -17527,7 +17527,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(FairwayAuxiliary),
                 role = Enum.GetName<Role>(Role.thePrimaryFeature)!,
                 featureTypes = [nameof(Fairway)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -17535,7 +17535,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(UpdatedInformation),
                 role = Enum.GetName<Role>(Role.theUpdate)!,
                 featureTypes = [nameof(UpdateInformation)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -17682,7 +17682,7 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(SpecialPurposeGeneralBuoy);
-            public static informationBinding[] informationBindings => [new informationBinding
+            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -17691,7 +17691,7 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(ContactDetails), nameof(NauticalInformation)],
             }, ];
-            public static featureBinding[] featureBindings => [new featureBinding
+            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -17699,7 +17699,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(StructureEquipment),
                 role = Enum.GetName<Role>(Role.theEquipment)!,
                 featureTypes = [nameof(Daymark), nameof(DistanceMark), nameof(FogSignal), nameof(LightAllAround), nameof(LightFogDetector), nameof(PhysicalAISAidToNavigation), nameof(RadarTransponderBeacon), nameof(Retroreflector), nameof(SignalStationTraffic), nameof(SignalStationWarning)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.aggregation,
                 lower = 0,
@@ -17707,7 +17707,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(AidsToNavigationAssociation),
                 role = Enum.GetName<Role>(Role.theCollection)!,
                 featureTypes = [nameof(ArchipelagicSeaLane), nameof(DeepWaterRoute), nameof(FairwaySystem), nameof(TrafficSeparationScheme), nameof(TwoWayRoute)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.aggregation,
                 lower = 0,
@@ -17715,7 +17715,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(FairwayAuxiliary),
                 role = Enum.GetName<Role>(Role.thePrimaryFeature)!,
                 featureTypes = [nameof(Fairway)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -17723,7 +17723,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(UpdatedInformation),
                 role = Enum.GetName<Role>(Role.theUpdate)!,
                 featureTypes = [nameof(UpdateInformation)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -17800,7 +17800,7 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(EmergencyWreckMarkingBuoy);
-            public static informationBinding[] informationBindings => [new informationBinding
+            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -17809,7 +17809,7 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(ContactDetails), nameof(NauticalInformation)],
             }, ];
-            public static featureBinding[] featureBindings => [new featureBinding
+            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.aggregation,
                 lower = 0,
@@ -17817,7 +17817,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(AidsToNavigationAssociation),
                 role = Enum.GetName<Role>(Role.theCollection)!,
                 featureTypes = [nameof(ArchipelagicSeaLane), nameof(DeepWaterRoute), nameof(FairwaySystem), nameof(TrafficSeparationScheme), nameof(TwoWayRoute)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -17825,7 +17825,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(StructureEquipment),
                 role = Enum.GetName<Role>(Role.theEquipment)!,
                 featureTypes = [nameof(Daymark), nameof(DistanceMark), nameof(FogSignal), nameof(LightAllAround), nameof(LightFogDetector), nameof(PhysicalAISAidToNavigation), nameof(RadarTransponderBeacon), nameof(Retroreflector), nameof(SignalStationTraffic), nameof(SignalStationWarning)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -17833,7 +17833,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(UpdatedInformation),
                 role = Enum.GetName<Role>(Role.theUpdate)!,
                 featureTypes = [nameof(UpdateInformation)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -17925,7 +17925,7 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(InstallationBuoy);
-            public static informationBinding[] informationBindings => [new informationBinding
+            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -17934,7 +17934,7 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(ContactDetails), nameof(NauticalInformation)],
             }, ];
-            public static featureBinding[] featureBindings => [new featureBinding
+            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -17942,7 +17942,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(StructureEquipment),
                 role = Enum.GetName<Role>(Role.theEquipment)!,
                 featureTypes = [nameof(Daymark), nameof(DistanceMark), nameof(FogSignal), nameof(LightAllAround), nameof(LightFogDetector), nameof(PhysicalAISAidToNavigation), nameof(RadarTransponderBeacon), nameof(Retroreflector), nameof(SignalStationTraffic), nameof(SignalStationWarning)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -17950,7 +17950,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(UpdatedInformation),
                 role = Enum.GetName<Role>(Role.theUpdate)!,
                 featureTypes = [nameof(UpdateInformation)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -18030,7 +18030,7 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(MooringBuoy);
-            public static informationBinding[] informationBindings => [new informationBinding
+            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -18039,7 +18039,7 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(ContactDetails), nameof(NauticalInformation)],
             }, ];
-            public static featureBinding[] featureBindings => [new featureBinding
+            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.aggregation,
                 lower = 0,
@@ -18047,7 +18047,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(AidsToNavigationAssociation),
                 role = Enum.GetName<Role>(Role.theCollection)!,
                 featureTypes = [nameof(DeepWaterRoute), nameof(FairwaySystem), nameof(TrafficSeparationScheme), nameof(TwoWayRoute)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -18055,7 +18055,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(StructureEquipment),
                 role = Enum.GetName<Role>(Role.theEquipment)!,
                 featureTypes = [nameof(Daymark), nameof(DistanceMark), nameof(FogSignal), nameof(LightAllAround), nameof(LightFogDetector), nameof(PhysicalAISAidToNavigation), nameof(RadarTransponderBeacon), nameof(Retroreflector), nameof(SignalStationTraffic), nameof(SignalStationWarning)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.aggregation,
                 lower = 0,
@@ -18063,7 +18063,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(MooringTrotAggregation),
                 role = Enum.GetName<Role>(Role.theCollection)!,
                 featureTypes = [nameof(MooringTrot)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -18071,7 +18071,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(UpdatedInformation),
                 role = Enum.GetName<Role>(Role.theUpdate)!,
                 featureTypes = [nameof(UpdateInformation)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -18177,7 +18177,7 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(LateralBeacon);
-            public static informationBinding[] informationBindings => [new informationBinding
+            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -18186,7 +18186,7 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(ContactDetails), nameof(NauticalInformation)],
             }, ];
-            public static featureBinding[] featureBindings => [new featureBinding
+            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -18194,7 +18194,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(StructureEquipment),
                 role = Enum.GetName<Role>(Role.theEquipment)!,
                 featureTypes = [nameof(Daymark), nameof(DistanceMark), nameof(FogSignal), nameof(LightAllAround), nameof(LightFogDetector), nameof(PhysicalAISAidToNavigation), nameof(RadarTransponderBeacon), nameof(Retroreflector), nameof(SignalStationTraffic), nameof(SignalStationWarning), nameof(LightSectored)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.aggregation,
                 lower = 0,
@@ -18202,7 +18202,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(AidsToNavigationAssociation),
                 role = Enum.GetName<Role>(Role.theCollection)!,
                 featureTypes = [nameof(ArchipelagicSeaLane), nameof(DeepWaterRoute), nameof(FairwaySystem), nameof(TrafficSeparationScheme), nameof(TwoWayRoute)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.aggregation,
                 lower = 0,
@@ -18210,7 +18210,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(RangeSystemAggregation),
                 role = Enum.GetName<Role>(Role.theCollection)!,
                 featureTypes = [nameof(RangeSystem)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.aggregation,
                 lower = 0,
@@ -18218,7 +18218,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(FairwayAuxiliary),
                 role = Enum.GetName<Role>(Role.thePrimaryFeature)!,
                 featureTypes = [nameof(Fairway)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -18226,7 +18226,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(UpdatedInformation),
                 role = Enum.GetName<Role>(Role.theUpdate)!,
                 featureTypes = [nameof(UpdateInformation)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -18334,7 +18334,7 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(CardinalBeacon);
-            public static informationBinding[] informationBindings => [new informationBinding
+            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -18343,7 +18343,7 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(ContactDetails), nameof(NauticalInformation)],
             }, ];
-            public static featureBinding[] featureBindings => [new featureBinding
+            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -18351,7 +18351,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(StructureEquipment),
                 role = Enum.GetName<Role>(Role.theEquipment)!,
                 featureTypes = [nameof(Daymark), nameof(DistanceMark), nameof(FogSignal), nameof(LightAllAround), nameof(LightFogDetector), nameof(PhysicalAISAidToNavigation), nameof(RadarTransponderBeacon), nameof(Retroreflector), nameof(SignalStationTraffic), nameof(SignalStationWarning), nameof(LightSectored)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.aggregation,
                 lower = 0,
@@ -18359,7 +18359,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(AidsToNavigationAssociation),
                 role = Enum.GetName<Role>(Role.theCollection)!,
                 featureTypes = [nameof(ArchipelagicSeaLane), nameof(DeepWaterRoute), nameof(FairwaySystem), nameof(TrafficSeparationScheme), nameof(TwoWayRoute)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.aggregation,
                 lower = 0,
@@ -18367,7 +18367,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(RangeSystemAggregation),
                 role = Enum.GetName<Role>(Role.theCollection)!,
                 featureTypes = [nameof(RangeSystem)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.aggregation,
                 lower = 0,
@@ -18375,7 +18375,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(FairwayAuxiliary),
                 role = Enum.GetName<Role>(Role.thePrimaryFeature)!,
                 featureTypes = [nameof(Fairway)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -18383,7 +18383,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(UpdatedInformation),
                 role = Enum.GetName<Role>(Role.theUpdate)!,
                 featureTypes = [nameof(UpdateInformation)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -18484,7 +18484,7 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(IsolatedDangerBeacon);
-            public static informationBinding[] informationBindings => [new informationBinding
+            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -18493,7 +18493,7 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(ContactDetails), nameof(NauticalInformation)],
             }, ];
-            public static featureBinding[] featureBindings => [new featureBinding
+            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -18501,7 +18501,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(StructureEquipment),
                 role = Enum.GetName<Role>(Role.theEquipment)!,
                 featureTypes = [nameof(Daymark), nameof(DistanceMark), nameof(FogSignal), nameof(LightAllAround), nameof(LightFogDetector), nameof(PhysicalAISAidToNavigation), nameof(RadarTransponderBeacon), nameof(Retroreflector), nameof(SignalStationTraffic), nameof(SignalStationWarning), nameof(LightSectored)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.aggregation,
                 lower = 0,
@@ -18509,7 +18509,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(AidsToNavigationAssociation),
                 role = Enum.GetName<Role>(Role.theCollection)!,
                 featureTypes = [nameof(ArchipelagicSeaLane), nameof(DeepWaterRoute), nameof(FairwaySystem), nameof(TrafficSeparationScheme), nameof(TwoWayRoute)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.aggregation,
                 lower = 0,
@@ -18517,7 +18517,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(RangeSystemAggregation),
                 role = Enum.GetName<Role>(Role.theCollection)!,
                 featureTypes = [nameof(RangeSystem)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.aggregation,
                 lower = 0,
@@ -18525,7 +18525,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(FairwayAuxiliary),
                 role = Enum.GetName<Role>(Role.thePrimaryFeature)!,
                 featureTypes = [nameof(Fairway)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -18533,7 +18533,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(UpdatedInformation),
                 role = Enum.GetName<Role>(Role.theUpdate)!,
                 featureTypes = [nameof(UpdateInformation)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -18634,7 +18634,7 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(SafeWaterBeacon);
-            public static informationBinding[] informationBindings => [new informationBinding
+            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -18643,7 +18643,7 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(ContactDetails), nameof(NauticalInformation)],
             }, ];
-            public static featureBinding[] featureBindings => [new featureBinding
+            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -18651,7 +18651,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(StructureEquipment),
                 role = Enum.GetName<Role>(Role.theEquipment)!,
                 featureTypes = [nameof(Daymark), nameof(DistanceMark), nameof(FogSignal), nameof(LightAllAround), nameof(LightFogDetector), nameof(PhysicalAISAidToNavigation), nameof(RadarTransponderBeacon), nameof(Retroreflector), nameof(SignalStationTraffic), nameof(SignalStationWarning), nameof(LightSectored)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.aggregation,
                 lower = 0,
@@ -18659,7 +18659,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(AidsToNavigationAssociation),
                 role = Enum.GetName<Role>(Role.theCollection)!,
                 featureTypes = [nameof(ArchipelagicSeaLane), nameof(DeepWaterRoute), nameof(FairwaySystem), nameof(TrafficSeparationScheme), nameof(TwoWayRoute)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.aggregation,
                 lower = 0,
@@ -18667,7 +18667,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(RangeSystemAggregation),
                 role = Enum.GetName<Role>(Role.theCollection)!,
                 featureTypes = [nameof(RangeSystem)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.aggregation,
                 lower = 0,
@@ -18675,7 +18675,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(FairwayAuxiliary),
                 role = Enum.GetName<Role>(Role.thePrimaryFeature)!,
                 featureTypes = [nameof(Fairway)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -18683,7 +18683,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(UpdatedInformation),
                 role = Enum.GetName<Role>(Role.theUpdate)!,
                 featureTypes = [nameof(UpdateInformation)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -18845,7 +18845,7 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(SpecialPurposeGeneralBeacon);
-            public static informationBinding[] informationBindings => [new informationBinding
+            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -18854,7 +18854,7 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(ContactDetails), nameof(NauticalInformation)],
             }, ];
-            public static featureBinding[] featureBindings => [new featureBinding
+            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -18862,7 +18862,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(StructureEquipment),
                 role = Enum.GetName<Role>(Role.theEquipment)!,
                 featureTypes = [nameof(Daymark), nameof(DistanceMark), nameof(FogSignal), nameof(LightAllAround), nameof(LightFogDetector), nameof(PhysicalAISAidToNavigation), nameof(RadarTransponderBeacon), nameof(Retroreflector), nameof(SignalStationTraffic), nameof(SignalStationWarning), nameof(LightSectored)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.aggregation,
                 lower = 0,
@@ -18870,7 +18870,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(AidsToNavigationAssociation),
                 role = Enum.GetName<Role>(Role.theCollection)!,
                 featureTypes = [nameof(ArchipelagicSeaLane), nameof(DeepWaterRoute), nameof(FairwaySystem), nameof(TrafficSeparationScheme), nameof(TwoWayRoute)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.aggregation,
                 lower = 0,
@@ -18878,7 +18878,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(RangeSystemAggregation),
                 role = Enum.GetName<Role>(Role.theCollection)!,
                 featureTypes = [nameof(RangeSystem)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.aggregation,
                 lower = 0,
@@ -18886,7 +18886,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(FairwayAuxiliary),
                 role = Enum.GetName<Role>(Role.thePrimaryFeature)!,
                 featureTypes = [nameof(Fairway)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -18894,7 +18894,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(UpdatedInformation),
                 role = Enum.GetName<Role>(Role.theUpdate)!,
                 featureTypes = [nameof(UpdateInformation)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -19067,7 +19067,7 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(Daymark);
-            public static informationBinding[] informationBindings => [new informationBinding
+            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -19076,7 +19076,7 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(ContactDetails), nameof(NauticalInformation)],
             }, ];
-            public static featureBinding[] featureBindings => [new featureBinding
+            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -19084,7 +19084,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(StructureEquipment),
                 role = Enum.GetName<Role>(Role.theEquipment)!,
                 featureTypes = [nameof(DistanceMark), nameof(FogSignal), nameof(LightAllAround), nameof(LightFogDetector), nameof(LightSectored), nameof(PhysicalAISAidToNavigation), nameof(RadarTransponderBeacon), nameof(Retroreflector), nameof(SignalStationTraffic), nameof(SignalStationWarning)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.composition,
                 lower = 0,
@@ -19092,7 +19092,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(StructureEquipment),
                 role = Enum.GetName<Role>(Role.theStructure)!,
                 featureTypes = [nameof(Bridge), nameof(Building), nameof(Crane), nameof(CardinalBeacon), nameof(CardinalBuoy), nameof(Conveyor), nameof(Dolphin), nameof(EmergencyWreckMarkingBuoy), nameof(FishingFacility), nameof(FloatingDock), nameof(FortifiedStructure), nameof(Hulk), nameof(InstallationBuoy), nameof(IsolatedDangerBeacon), nameof(IsolatedDangerBuoy), nameof(Landmark), nameof(LateralBeacon), nameof(LateralBuoy), nameof(LightFloat), nameof(LightVessel), nameof(MooringBuoy), nameof(OffshorePlatform), nameof(Pile), nameof(PipelineOverhead), nameof(Pontoon), nameof(PylonBridgeSupport), nameof(SafeWaterBeacon), nameof(SafeWaterBuoy), nameof(ShorelineConstruction), nameof(SiloTank), nameof(SpanFixed), nameof(SpanOpening), nameof(SpecialPurposeGeneralBeacon), nameof(SpecialPurposeGeneralBuoy), nameof(StructureOverNavigableWater), nameof(WindTurbine), nameof(Wreck)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.aggregation,
                 lower = 0,
@@ -19100,7 +19100,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(AidsToNavigationAssociation),
                 role = Enum.GetName<Role>(Role.theCollection)!,
                 featureTypes = [nameof(ArchipelagicSeaLane), nameof(DeepWaterRoute), nameof(FairwaySystem), nameof(TrafficSeparationScheme), nameof(TwoWayRoute)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.aggregation,
                 lower = 0,
@@ -19108,7 +19108,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(RangeSystemAggregation),
                 role = Enum.GetName<Role>(Role.theCollection)!,
                 featureTypes = [nameof(RangeSystem)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.aggregation,
                 lower = 0,
@@ -19116,7 +19116,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(FairwayAuxiliary),
                 role = Enum.GetName<Role>(Role.thePrimaryFeature)!,
                 featureTypes = [nameof(Fairway)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -19124,7 +19124,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(UpdatedInformation),
                 role = Enum.GetName<Role>(Role.theUpdate)!,
                 featureTypes = [nameof(UpdateInformation)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -19202,7 +19202,7 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(LightFloat);
-            public static informationBinding[] informationBindings => [new informationBinding
+            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -19211,7 +19211,7 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(ContactDetails), nameof(NauticalInformation)],
             }, ];
-            public static featureBinding[] featureBindings => [new featureBinding
+            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -19219,7 +19219,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(StructureEquipment),
                 role = Enum.GetName<Role>(Role.theEquipment)!,
                 featureTypes = [nameof(Daymark), nameof(DistanceMark), nameof(FogSignal), nameof(LightAllAround), nameof(LightFogDetector), nameof(PhysicalAISAidToNavigation), nameof(RadarTransponderBeacon), nameof(Retroreflector), nameof(SignalStationTraffic), nameof(SignalStationWarning)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.aggregation,
                 lower = 0,
@@ -19227,7 +19227,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(AidsToNavigationAssociation),
                 role = Enum.GetName<Role>(Role.theCollection)!,
                 featureTypes = [nameof(ArchipelagicSeaLane), nameof(DeepWaterRoute), nameof(FairwaySystem), nameof(TrafficSeparationScheme), nameof(TwoWayRoute)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.aggregation,
                 lower = 0,
@@ -19235,7 +19235,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(FairwayAuxiliary),
                 role = Enum.GetName<Role>(Role.thePrimaryFeature)!,
                 featureTypes = [nameof(Fairway)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -19243,7 +19243,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(UpdatedInformation),
                 role = Enum.GetName<Role>(Role.theUpdate)!,
                 featureTypes = [nameof(UpdateInformation)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -19319,7 +19319,7 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(LightVessel);
-            public static informationBinding[] informationBindings => [new informationBinding
+            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -19328,7 +19328,7 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(ContactDetails), nameof(NauticalInformation)],
             }, ];
-            public static featureBinding[] featureBindings => [new featureBinding
+            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -19336,7 +19336,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(StructureEquipment),
                 role = Enum.GetName<Role>(Role.theEquipment)!,
                 featureTypes = [nameof(Daymark), nameof(DistanceMark), nameof(FogSignal), nameof(LightAllAround), nameof(LightFogDetector), nameof(PhysicalAISAidToNavigation), nameof(RadarTransponderBeacon), nameof(Retroreflector), nameof(SignalStationTraffic), nameof(SignalStationWarning)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.aggregation,
                 lower = 0,
@@ -19344,7 +19344,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(AidsToNavigationAssociation),
                 role = Enum.GetName<Role>(Role.theCollection)!,
                 featureTypes = [nameof(ArchipelagicSeaLane), nameof(DeepWaterRoute), nameof(FairwaySystem), nameof(TrafficSeparationScheme), nameof(TwoWayRoute)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.aggregation,
                 lower = 0,
@@ -19352,7 +19352,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(FairwayAuxiliary),
                 role = Enum.GetName<Role>(Role.thePrimaryFeature)!,
                 featureTypes = [nameof(Fairway)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -19360,7 +19360,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(UpdatedInformation),
                 role = Enum.GetName<Role>(Role.theUpdate)!,
                 featureTypes = [nameof(UpdateInformation)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -19414,7 +19414,7 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(Retroreflector);
-            public static informationBinding[] informationBindings => [new informationBinding
+            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -19423,7 +19423,7 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(NauticalInformation)],
             }, ];
-            public static featureBinding[] featureBindings => [new featureBinding
+            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.composition,
                 lower = 0,
@@ -19431,7 +19431,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(StructureEquipment),
                 role = Enum.GetName<Role>(Role.theStructure)!,
                 featureTypes = [nameof(Bridge), nameof(Building), nameof(Crane), nameof(CardinalBeacon), nameof(CardinalBuoy), nameof(Conveyor), nameof(Dolphin), nameof(EmergencyWreckMarkingBuoy), nameof(FishingFacility), nameof(FloatingDock), nameof(FortifiedStructure), nameof(Hulk), nameof(InstallationBuoy), nameof(IsolatedDangerBeacon), nameof(IsolatedDangerBuoy), nameof(Landmark), nameof(LateralBeacon), nameof(LateralBuoy), nameof(LightFloat), nameof(LightVessel), nameof(MooringBuoy), nameof(OffshorePlatform), nameof(Pile), nameof(PipelineOverhead), nameof(Pontoon), nameof(PylonBridgeSupport), nameof(SafeWaterBeacon), nameof(SafeWaterBuoy), nameof(ShorelineConstruction), nameof(SiloTank), nameof(SpanFixed), nameof(SpanOpening), nameof(SpecialPurposeGeneralBeacon), nameof(SpecialPurposeGeneralBuoy), nameof(StructureOverNavigableWater), nameof(WindTurbine), nameof(Wreck), nameof(LightAllAround), nameof(LightSectored), nameof(Daymark)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -19462,7 +19462,7 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(RadarReflector);
-            public static informationBinding[] informationBindings => [new informationBinding
+            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -19471,7 +19471,7 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(NauticalInformation)],
             }, ];
-            public static featureBinding[] featureBindings => [new featureBinding
+            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.composition,
                 lower = 0,
@@ -19479,7 +19479,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(StructureEquipment),
                 role = Enum.GetName<Role>(Role.theStructure)!,
                 featureTypes = [nameof(CableOverhead), nameof(PipelineOverhead)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -19539,7 +19539,7 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(FogSignal);
-            public static informationBinding[] informationBindings => [new informationBinding
+            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -19548,7 +19548,7 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(ContactDetails), nameof(NauticalInformation)],
             }, ];
-            public static featureBinding[] featureBindings => [new featureBinding
+            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.composition,
                 lower = 0,
@@ -19556,7 +19556,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(StructureEquipment),
                 role = Enum.GetName<Role>(Role.theStructure)!,
                 featureTypes = [nameof(Bridge), nameof(Building), nameof(Crane), nameof(CardinalBeacon), nameof(CardinalBuoy), nameof(Conveyor), nameof(Dolphin), nameof(EmergencyWreckMarkingBuoy), nameof(FishingFacility), nameof(FloatingDock), nameof(FortifiedStructure), nameof(Hulk), nameof(InstallationBuoy), nameof(IsolatedDangerBeacon), nameof(IsolatedDangerBuoy), nameof(Landmark), nameof(LateralBeacon), nameof(LateralBuoy), nameof(LightFloat), nameof(LightVessel), nameof(MooringBuoy), nameof(OffshorePlatform), nameof(Pile), nameof(PipelineOverhead), nameof(Pontoon), nameof(PylonBridgeSupport), nameof(SafeWaterBeacon), nameof(SafeWaterBuoy), nameof(ShorelineConstruction), nameof(SiloTank), nameof(SpanFixed), nameof(SpanOpening), nameof(SpecialPurposeGeneralBeacon), nameof(SpecialPurposeGeneralBuoy), nameof(StructureOverNavigableWater), nameof(WindTurbine), nameof(Wreck), nameof(LightAllAround), nameof(LightSectored), nameof(Daymark)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -19564,7 +19564,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(UpdatedInformation),
                 role = Enum.GetName<Role>(Role.theUpdate)!,
                 featureTypes = [nameof(UpdateInformation)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -19597,7 +19597,7 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(PhysicalAISAidToNavigation);
-            public static informationBinding[] informationBindings => [new informationBinding
+            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -19606,7 +19606,7 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(NauticalInformation)],
             }, ];
-            public static featureBinding[] featureBindings => [new featureBinding
+            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.composition,
                 lower = 0,
@@ -19614,7 +19614,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(StructureEquipment),
                 role = Enum.GetName<Role>(Role.theStructure)!,
                 featureTypes = [nameof(Bridge), nameof(Building), nameof(Crane), nameof(CardinalBeacon), nameof(CardinalBuoy), nameof(Conveyor), nameof(Dolphin), nameof(EmergencyWreckMarkingBuoy), nameof(FishingFacility), nameof(FloatingDock), nameof(FortifiedStructure), nameof(Hulk), nameof(InstallationBuoy), nameof(IsolatedDangerBeacon), nameof(IsolatedDangerBuoy), nameof(Landmark), nameof(LateralBeacon), nameof(LateralBuoy), nameof(LightFloat), nameof(LightVessel), nameof(MooringBuoy), nameof(OffshorePlatform), nameof(Pile), nameof(PipelineOverhead), nameof(Pontoon), nameof(PylonBridgeSupport), nameof(SafeWaterBeacon), nameof(SafeWaterBuoy), nameof(ShorelineConstruction), nameof(SiloTank), nameof(SpanFixed), nameof(SpanOpening), nameof(SpecialPurposeGeneralBeacon), nameof(SpecialPurposeGeneralBuoy), nameof(StructureOverNavigableWater), nameof(WindTurbine), nameof(Wreck), nameof(Daymark)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -19622,7 +19622,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(UpdatedInformation),
                 role = Enum.GetName<Role>(Role.theUpdate)!,
                 featureTypes = [nameof(UpdateInformation)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -19670,7 +19670,7 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(VirtualAISAidToNavigation);
-            public static informationBinding[] informationBindings => [new informationBinding
+            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -19679,7 +19679,7 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(NauticalInformation)],
             }, ];
-            public static featureBinding[] featureBindings => [new featureBinding
+            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -19687,7 +19687,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(UpdatedInformation),
                 role = Enum.GetName<Role>(Role.theUpdate)!,
                 featureTypes = [nameof(UpdateInformation)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -19733,7 +19733,7 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(RadioStation);
-            public static informationBinding[] informationBindings => [new informationBinding
+            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -19742,7 +19742,7 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(ContactDetails), nameof(NauticalInformation)],
             }, ];
-            public static featureBinding[] featureBindings => [new featureBinding
+            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -19750,7 +19750,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(UpdatedInformation),
                 role = Enum.GetName<Role>(Role.theUpdate)!,
                 featureTypes = [nameof(UpdateInformation)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -19794,7 +19794,7 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(RadarTransponderBeacon);
-            public static informationBinding[] informationBindings => [new informationBinding
+            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -19803,7 +19803,7 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(NauticalInformation)],
             }, ];
-            public static featureBinding[] featureBindings => [new featureBinding
+            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.composition,
                 lower = 0,
@@ -19811,7 +19811,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(StructureEquipment),
                 role = Enum.GetName<Role>(Role.theStructure)!,
                 featureTypes = [nameof(Bridge), nameof(Building), nameof(Crane), nameof(CardinalBeacon), nameof(CardinalBuoy), nameof(Conveyor), nameof(Dolphin), nameof(EmergencyWreckMarkingBuoy), nameof(FishingFacility), nameof(FloatingDock), nameof(FortifiedStructure), nameof(Hulk), nameof(InstallationBuoy), nameof(IsolatedDangerBeacon), nameof(IsolatedDangerBuoy), nameof(Landmark), nameof(LateralBeacon), nameof(LateralBuoy), nameof(LightFloat), nameof(LightVessel), nameof(MooringBuoy), nameof(OffshorePlatform), nameof(Pile), nameof(PipelineOverhead), nameof(Pontoon), nameof(PylonBridgeSupport), nameof(SafeWaterBeacon), nameof(SafeWaterBuoy), nameof(ShorelineConstruction), nameof(SiloTank), nameof(SpanFixed), nameof(SpanOpening), nameof(SpecialPurposeGeneralBeacon), nameof(SpecialPurposeGeneralBuoy), nameof(StructureOverNavigableWater), nameof(WindTurbine), nameof(Wreck), nameof(LightAllAround), nameof(LightSectored), nameof(Daymark)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -19819,7 +19819,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(UpdatedInformation),
                 role = Enum.GetName<Role>(Role.theUpdate)!,
                 featureTypes = [nameof(UpdateInformation)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -19827,7 +19827,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(TextAssociation),
                 role = Enum.GetName<Role>(Role.theCartographicText)!,
                 featureTypes = [nameof(TextPlacement)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.aggregation,
                 lower = 0,
@@ -19878,7 +19878,7 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(PilotBoardingPlace);
-            public static informationBinding[] informationBindings => [new informationBinding
+            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -19887,7 +19887,7 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(ContactDetails), nameof(NauticalInformation)],
             }, ];
-            public static featureBinding[] featureBindings => [new featureBinding
+            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.aggregation,
                 lower = 0,
@@ -19895,7 +19895,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(PilotageDistrictAssociation),
                 role = Enum.GetName<Role>(Role.theCollection)!,
                 featureTypes = [nameof(PilotageDistrict)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -19903,7 +19903,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(UpdatedInformation),
                 role = Enum.GetName<Role>(Role.theUpdate)!,
                 featureTypes = [nameof(UpdateInformation)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -19927,7 +19927,7 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(VesselTrafficServiceArea);
-            public static informationBinding[] informationBindings => [new informationBinding
+            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -19936,7 +19936,7 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(ContactDetails), nameof(NauticalInformation)],
             }, ];
-            public static featureBinding[] featureBindings => [new featureBinding
+            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -19944,7 +19944,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(UpdatedInformation),
                 role = Enum.GetName<Role>(Role.theUpdate)!,
                 featureTypes = [nameof(UpdateInformation)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -19979,7 +19979,7 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(CoastGuardStation);
-            public static informationBinding[] informationBindings => [new informationBinding
+            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -19988,7 +19988,7 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(ContactDetails), nameof(NauticalInformation), nameof(NonStandardWorkingDay), nameof(ServiceHours)],
             }, ];
-            public static featureBinding[] featureBindings => [new featureBinding
+            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -19996,7 +19996,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(UpdatedInformation),
                 role = Enum.GetName<Role>(Role.theUpdate)!,
                 featureTypes = [nameof(UpdateInformation)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -20053,7 +20053,7 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(SignalStationWarning);
-            public static informationBinding[] informationBindings => [new informationBinding
+            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -20062,7 +20062,7 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(ContactDetails), nameof(NauticalInformation)],
             }, ];
-            public static featureBinding[] featureBindings => [new featureBinding
+            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.composition,
                 lower = 0,
@@ -20070,7 +20070,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(StructureEquipment),
                 role = Enum.GetName<Role>(Role.theStructure)!,
                 featureTypes = [nameof(Bridge), nameof(Building), nameof(Crane), nameof(CardinalBeacon), nameof(CardinalBuoy), nameof(Conveyor), nameof(Dolphin), nameof(EmergencyWreckMarkingBuoy), nameof(FishingFacility), nameof(FloatingDock), nameof(FortifiedStructure), nameof(Hulk), nameof(InstallationBuoy), nameof(IsolatedDangerBeacon), nameof(IsolatedDangerBuoy), nameof(Landmark), nameof(LateralBeacon), nameof(LateralBuoy), nameof(LightFloat), nameof(LightVessel), nameof(MooringBuoy), nameof(OffshorePlatform), nameof(Pile), nameof(PipelineOverhead), nameof(Pontoon), nameof(PylonBridgeSupport), nameof(SafeWaterBeacon), nameof(SafeWaterBuoy), nameof(ShorelineConstruction), nameof(SiloTank), nameof(SpanFixed), nameof(SpanOpening), nameof(SpecialPurposeGeneralBeacon), nameof(SpecialPurposeGeneralBuoy), nameof(StructureOverNavigableWater), nameof(WindTurbine), nameof(Wreck), nameof(Daymark)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -20078,7 +20078,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(UpdatedInformation),
                 role = Enum.GetName<Role>(Role.theUpdate)!,
                 featureTypes = [nameof(UpdateInformation)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -20132,7 +20132,7 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(SignalStationTraffic);
-            public static informationBinding[] informationBindings => [new informationBinding
+            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -20141,7 +20141,7 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(ContactDetails), nameof(NauticalInformation)],
             }, ];
-            public static featureBinding[] featureBindings => [new featureBinding
+            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.composition,
                 lower = 0,
@@ -20149,7 +20149,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(StructureEquipment),
                 role = Enum.GetName<Role>(Role.theStructure)!,
                 featureTypes = [nameof(Bridge), nameof(Building), nameof(Crane), nameof(CardinalBeacon), nameof(CardinalBuoy), nameof(Conveyor), nameof(Dolphin), nameof(EmergencyWreckMarkingBuoy), nameof(FishingFacility), nameof(FloatingDock), nameof(FortifiedStructure), nameof(Hulk), nameof(InstallationBuoy), nameof(IsolatedDangerBeacon), nameof(IsolatedDangerBuoy), nameof(Landmark), nameof(LateralBeacon), nameof(LateralBuoy), nameof(LightFloat), nameof(LightVessel), nameof(MooringBuoy), nameof(OffshorePlatform), nameof(Pile), nameof(PipelineOverhead), nameof(Pontoon), nameof(PylonBridgeSupport), nameof(SafeWaterBeacon), nameof(SafeWaterBuoy), nameof(ShorelineConstruction), nameof(SiloTank), nameof(SpanFixed), nameof(SpanOpening), nameof(SpecialPurposeGeneralBeacon), nameof(SpecialPurposeGeneralBuoy), nameof(StructureOverNavigableWater), nameof(WindTurbine), nameof(Wreck), nameof(Daymark)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -20157,7 +20157,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(UpdatedInformation),
                 role = Enum.GetName<Role>(Role.theUpdate)!,
                 featureTypes = [nameof(UpdateInformation)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -20205,7 +20205,7 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(RescueStation);
-            public static informationBinding[] informationBindings => [new informationBinding
+            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -20214,7 +20214,7 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(ContactDetails), nameof(NauticalInformation)],
             }, ];
-            public static featureBinding[] featureBindings => [new featureBinding
+            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -20222,7 +20222,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(UpdatedInformation),
                 role = Enum.GetName<Role>(Role.theUpdate)!,
                 featureTypes = [nameof(UpdateInformation)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -20344,7 +20344,7 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(HarbourFacility);
-            public static informationBinding[] informationBindings => [new informationBinding
+            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -20353,7 +20353,7 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(ContactDetails), nameof(NauticalInformation)],
             }, ];
-            public static featureBinding[] featureBindings => [new featureBinding
+            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -20361,7 +20361,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(UpdatedInformation),
                 role = Enum.GetName<Role>(Role.theUpdate)!,
                 featureTypes = [nameof(UpdateInformation)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -20438,7 +20438,7 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(SmallCraftFacility);
-            public static informationBinding[] informationBindings => [new informationBinding
+            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -20447,7 +20447,7 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(ContactDetails), nameof(NauticalInformation)],
             }, ];
-            public static featureBinding[] featureBindings => [new featureBinding
+            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -20455,7 +20455,7 @@ namespace S100Framework.DomainModel.S101 {
                 association = nameof(UpdatedInformation),
                 role = Enum.GetName<Role>(Role.theUpdate)!,
                 featureTypes = [nameof(UpdateInformation)],
-            }, new featureBinding
+            }, new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -20489,8 +20489,8 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(TextPlacement);
-            public static informationBinding[] informationBindings => [];
-            public static featureBinding[] featureBindings => [new featureBinding
+            public static informationBindingDefinition[] informationBindingDefinitions => [];
+            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.composition,
                 lower = 0,
@@ -20514,8 +20514,8 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(Chart1Feature);
-            public static informationBinding[] informationBindings => [];
-            public static featureBinding[] featureBindings => [new featureBinding
+            public static informationBindingDefinition[] informationBindingDefinitions => [];
+            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,

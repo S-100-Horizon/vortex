@@ -24,13 +24,7 @@
         <ResourceDictionary>
         </ResourceDictionary>
     </Window.Resources>
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="32"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
-        </Grid.RowDefinitions>
-
+    <StackPanel Orientation="Vertical">
         <StackPanel Orientation="Horizontal" Grid.Row="0" >
             <xctk:CheckComboBox x:Name="_checkListBox"
                             IsDropDownOpen="False"
@@ -42,13 +36,13 @@
             <Button x:Name="SAVE" MinWidth="100" Padding="10 0 10 0" Click="SAVE_Click">Save</Button>
         </StackPanel>
 
-        <xctk:PropertyGrid Grid.Row="1" x:Name="_propertyGrid" 
+        <!--<xctk:PropertyGrid Grid.Row="1" x:Name="_propertyGrid" 
                SelectedObject="{Binding SelectedProperty}"
                AutoGenerateProperties="True"                           
                UpdateTextBoxSourceOnEnterKey="True"
                ShowAdvancedOptions="True" PreparePropertyItem="_propertyGrid_PreparePropertyItem" SelectedObjectChanged="_propertyGrid_SelectedObjectChanged">
 
-            <!--<xctk:PropertyGrid.EditorDefinitions>
+            --><!--<xctk:PropertyGrid.EditorDefinitions>
                 <xctk:EditorTemplateDefinition TargetProperties="RefId">
                     <xctk:EditorTemplateDefinition.EditingTemplate>
                         <DataTemplate>
@@ -86,8 +80,8 @@
                         </DataTemplate>
                     </xctk:EditorTemplateDefinition.EditingTemplate>
                 </xctk:EditorTemplateDefinition>
-            </xctk:PropertyGrid.EditorDefinitions>-->
-        </xctk:PropertyGrid>
+            </xctk:PropertyGrid.EditorDefinitions>--><!--
+        </xctk:PropertyGrid>-->
 
         <local:S100AttributeEditorView Grid.Row="2" x:Name="_s100PropertyGrid" 
                             SelectedPropertyObject="{Binding SelectedProperty}"/>
@@ -96,5 +90,5 @@
         </xctk:CollectionControl>-->
         
         
-    </Grid>
+    </StackPanel>
 </Window>

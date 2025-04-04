@@ -4,7 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:VortexConceptApplication"
-             xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+             xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"             
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <StackPanel>
@@ -16,5 +16,109 @@
                            ShowSummary="False">
         </xctk:PropertyGrid>
 
+        <StackPanel Orientation="Vertical" Margin="0,2,0,0">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="32"/>
+                </Grid.ColumnDefinitions>
+                <TextBox Text="Feature Bindings" Grid.Column="0" FontSize="12" FontWeight="Bold" Margin="5" IsReadOnly="True"/>
+                <Button x:Name="_createFeatureBinding" Grid.Column="1">+</Button>
+            </Grid>
+
+            <!--<xctk:DropDownButton x:Name="_associationIdDropDownButton"                                                                                        
+                                            Width="Auto" MinWidth="80" Height="Auto" Content="Hello">
+                <xctk:DropDownButton.DropDownContent>
+                    <ListView MinWidth="120" MinHeight="32" ItemsSource="{Binding AssociationIds}">
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn Header="Id" DisplayMemberBinding="{Binding Id, Mode=OneWay}"/>
+                            </GridView>
+
+                        </ListView.View>
+                    </ListView>
+                </xctk:DropDownButton.DropDownContent>
+            </xctk:DropDownButton>-->
+
+            <ListView x:Name="_listViewFeatureBindings" 
+                  ItemsSource="{Binding FeatureBindings}" 
+                    SelectionMode="Single"
+                    SelectionChanged="_listViewFeatureBindings_SelectionChanged">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Header="roleType" DisplayMemberBinding="{Binding roleType, Mode=OneTime}"/>
+                        <GridViewColumn Header="association" DisplayMemberBinding="{Binding association, Mode=OneTime}"/>
+                        <GridViewColumn Header="role" DisplayMemberBinding="{Binding role, Mode=OneTime}"/>
+                        <GridViewColumn Header="ID">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <!--<ComboBox x:Name="_associationIdComboBox" 
+                                              ItemsSource="{Binding AssociationIds, Mode=OneWay}"
+                                              SelectedItem="{Binding associationId, Mode=TwoWay}" MinWidth="120">
+                                    </ComboBox>-->
+
+                                    <ComboBox x:Name="_comboBox" Width="Auto" MinWidth="120" Height="Auto"
+                                              IsEditable="False" IsEnabled="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ListViewItem}, Path=IsSelected, Mode=OneWay}"
+                                              SelectedValue="{Binding associationId, Mode=TwoWay}" ItemsSource="{Binding AssociationIds, Mode=OneWay}" DropDownOpened="_comboBox_DropDownOpened">
+                                    </ComboBox>
+
+                                    <!--<xctk:DropDownButton x:Name="_dropDownButton"                                                                                        
+                                            Width="Auto" MinWidth="80" Height="Auto" Content="{Binding associationId, Mode=TwoWay}" IsEnabled="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ListViewItem}, Path=IsSelected, Mode=OneWay}">
+                                        <xctk:DropDownButton.DropDownContent>
+                                            <ListView MinWidth="120" MinHeight="32" ItemsSource="{Binding AssociationIds, Mode=OneWay}">
+                                                <ListView.View>
+                                                    <GridView>
+                                                        <GridViewColumn Header="Id" DisplayMemberBinding="{Binding .}" Width="120"/>
+                                                    </GridView>
+                                                </ListView.View>
+                                            </ListView>
+                                        </xctk:DropDownButton.DropDownContent>
+                                    </xctk:DropDownButton>-->
+
+                                    <!--<Grid>
+                                        <ComboBox Name="MyComboBox"
+              ItemsSource="{Binding Options}"
+              SelectedIndex="{Binding SelectedIndex}" />
+
+                                        <TextBlock Text="{Binding EmptySelectionPromptText}"
+               Margin="4 3 0 0"
+               Visibility="{Binding ElementName=MyComboBox, Path=Text.IsEmpty, Converter={StaticResource BoolToVis}}">
+                                        </TextBlock>
+                                    </Grid>-->
+
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                        <GridViewColumn Header="Feature" DisplayMemberBinding="{Binding featureId, Mode=OneTime}"/>
+                        <GridViewColumn Header="Foreign" DisplayMemberBinding="{Binding foreignId, Mode=OneTime}"/>
+                    </GridView>
+                </ListView.View>
+            </ListView>
+        </StackPanel>
+
+        <StackPanel Orientation="Vertical" Margin="0,2,0,0">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="32"/>
+                </Grid.ColumnDefinitions>
+                <TextBox Text="Information Bindings" Grid.Column="0" FontSize="12" FontWeight="Bold" Margin="5" IsReadOnly="True"/>
+                <Button x:Name="_createInformationBinding" Grid.Column="1">+</Button>
+            </Grid>
+
+            <ListView x:Name="_listViewInformationBindings" 
+                  ItemsSource="{Binding InformationBindings}">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Header="roleType" DisplayMemberBinding="{Binding roleType, Mode=OneTime}"/>
+                        <GridViewColumn Header="association" DisplayMemberBinding="{Binding association, Mode=OneTime}"/>
+                        <GridViewColumn Header="role" DisplayMemberBinding="{Binding role, Mode=OneTime}"/>
+                        <GridViewColumn Header="ID" DisplayMemberBinding="{Binding associationId, Mode=OneTime}"/>
+                        <GridViewColumn Header="Feature" DisplayMemberBinding="{Binding featureId, Mode=OneTime}"/>
+                    </GridView>
+                </ListView.View>
+            </ListView>
+        </StackPanel>
+        <!--SelectedItem="{Binding Path=SelectedPropertyObject, ElementName=S100AttributeEditor}">-->
     </StackPanel>
 </UserControl>

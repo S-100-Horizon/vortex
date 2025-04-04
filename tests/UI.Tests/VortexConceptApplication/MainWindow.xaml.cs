@@ -13,6 +13,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
 using Xceed.Wpf.Toolkit.PropertyGrid;
+using Xceed.Wpf.Toolkit.PropertyGrid.Attributes;
 using Xceed.Wpf.Toolkit.PropertyGrid.Editors;
 
 namespace VortexConceptApplication
@@ -75,7 +76,7 @@ namespace VortexConceptApplication
             dataTemplate.Seal();
             editorTemplateDefinition.EditingTemplate = dataTemplate;
 
-            this._propertyGrid.EditorDefinitions.Add(editorTemplateDefinition);
+//            this._propertyGrid.EditorDefinitions.Add(editorTemplateDefinition);
 
             var random = new Random();
 
@@ -108,6 +109,14 @@ namespace VortexConceptApplication
                 }
                 return Task.FromResult(objectid.ToArray());
             };
+
+
+            this._s100PropertyGrid.OnFeatureAssociationsChanged = (roleType roleType, string association) => {
+                var r = new Random(DateTime.Now.Microsecond);
+
+                return Task.FromResult<IEnumerable<AssociationId>>([new AssociationId($"B{r.Next(1, 1000):0000}"), new AssociationId($"A{r.Next(1, 1000):0000}")]);
+            };
+
 
 #if S124
             var viewModel = new S100Framework.WPF.ViewModel.S924.NAVWARNPartViewModel {
@@ -204,7 +213,36 @@ namespace VortexConceptApplication
 
             SelectedProperty = viewModel;
 
-            var bindings = new FeatureBindingsViewModel(LateralBuoy.featureBindings);
+            var bindings = new FeatureBindingsViewModel(TrafficSeparationScheme.featureBindingDefinitions);
+
+            var binding = new FeatureBindingViewModel();
+            //binding.Load(TrafficSeparationScheme.featureBindingDefinitions.Single(e => e.association.Equals("TrafficSeparationSchemeAggregation") && e.role.Equals("theCollection")));
+
+            binding.Load(new featureBinding {
+                roleType = Enum.GetName(roleType.aggregation)!,
+                association = "TrafficSeparationSchemeAggregation",
+                role = "theCollection",
+                associationId = "A103",
+                featureId = "S105",
+                foreignId = "S106",
+            });
+
+            this._s100PropertyGrid.FeatureBindings.Add(binding);
+
+            binding = new FeatureBindingViewModel();
+            binding.Load(new featureBinding {
+                roleType = Enum.GetName(roleType.aggregation)!,
+                association = "TrafficSeparationSchemeAggregation",
+                role = "theComponent",
+                associationId = "A103",
+                featureId = "S106",
+                foreignId = "S105",
+            });
+
+            this._s100PropertyGrid.FeatureBindings.Add(binding);
+
+
+
 
             //this.Collection.NewItemTypes = new List<Type> { typeof(FeatureBindingViewModel) };
 
