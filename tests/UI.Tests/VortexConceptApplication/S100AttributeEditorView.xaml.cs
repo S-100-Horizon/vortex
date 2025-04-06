@@ -34,6 +34,7 @@ namespace VortexConceptApplication
             InitializeComponent();
 
             //this.DataContext = this;
+            
         }
 
 
@@ -85,6 +86,14 @@ namespace VortexConceptApplication
         }
 
         private void _comboBox_DropDownOpened(object sender, EventArgs e) {
+
+        }
+
+        private void _associationIdDropDownButton_ContextMenuOpening(object sender, ContextMenuEventArgs e) {
+
+        }
+
+        private void _associationIdDropDownButton_Click(object sender, RoutedEventArgs e) {
 
         }
     }

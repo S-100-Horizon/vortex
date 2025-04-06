@@ -1,0 +1,183 @@
+<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"   
+    xmlns:interactivity="http://schemas.microsoft.com/xaml/behaviors"
+    xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"             
+    xmlns:local="clr-namespace:VortexConceptApplication">
+
+    <Style TargetType="{x:Type local:S100AttributeEditor}">
+        <Setter Property="Background"
+            Value="#BCC7D8" />
+        <Setter Property="BorderBrush"
+            Value="#43577B" />
+        <Setter Property="BorderThickness"
+            Value="1" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type local:S100AttributeEditor}">
+                    <StackPanel Margin="{TemplateBinding Padding}" Orientation="Vertical">
+                        <xctk:PropertyGrid x:Name="PART_PropertyGrid" 
+                                                   SelectedObject="{Binding SelectedProperty}"
+                                                   AutoGenerateProperties="True"                           
+                                                   UpdateTextBoxSourceOnEnterKey="True"
+                                                   ShowAdvancedOptions="True"
+                                                   ShowSummary="False">
+                        </xctk:PropertyGrid>
+
+                        <Border Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}">
+                            <StackPanel Margin="{TemplateBinding Padding}" Orientation="Vertical">
+                                <StackPanel>
+                                    <StackPanel Background="{x:Static SystemColors.ControlBrush}">
+                                        <xctk:TrimmedTextBlock Text="Feature Bindings"
+                                                       Margin="6,2,6,4"
+                                                       TextTrimming="CharacterEllipsis"
+                                                       FontWeight="Bold">
+                                        </xctk:TrimmedTextBlock>
+                                    </StackPanel>
+
+                                    <ListView x:Name="PART_FeatureBindings" 
+                                      SelectionMode="Single">
+                                        <ListView.ItemContainerStyle>
+                                            <Style TargetType="ListViewItem">
+                                                <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                                            </Style>
+                                        </ListView.ItemContainerStyle>
+                                        <ListView.View>
+                                            <GridView>
+                                                <GridViewColumn Header="roleType" DisplayMemberBinding="{Binding roleType, Mode=OneTime}"/>
+                                                <GridViewColumn Header="association" DisplayMemberBinding="{Binding association, Mode=OneTime}" Width="Auto"/>
+                                                <GridViewColumn Header="role" DisplayMemberBinding="{Binding role, Mode=OneTime}"/>
+                                                <GridViewColumn Header="ID">
+                                                    <GridViewColumn.CellTemplate>
+                                                        <DataTemplate>
+                                                            <xctk:DropDownButton x:Name="associationId"
+                                                                Width="Auto" 
+                                                                MinWidth="80" 
+                                                                Height="Auto" 
+                                                                Content="{Binding associationId, Mode=TwoWay}"                                                                      
+                                                                IsEnabled="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ListViewItem}, Path=IsSelected, Mode=OneWay}">
+                                                                <interactivity:Interaction.Triggers>
+                                                                    <interactivity:EventTrigger EventName="Click">
+                                                                        <interactivity:InvokeCommandAction Command="local:S100AttributeEditor.UpdateAssociationIds" />
+                                                                    </interactivity:EventTrigger>
+                                                                </interactivity:Interaction.Triggers>
+
+                                                                <xctk:DropDownButton.DropDownContent>
+                                                                    <ListBox>
+
+                                                                    </ListBox>
+                                                                </xctk:DropDownButton.DropDownContent>
+                                                            </xctk:DropDownButton>
+                                                        </DataTemplate>
+                                                    </GridViewColumn.CellTemplate>
+                                                </GridViewColumn>
+                                                <GridViewColumn Header="FeatureID">
+                                                    <GridViewColumn.CellTemplate>
+                                                        <DataTemplate>
+                                                            <xctk:DropDownButton
+                                                                Width="Auto" 
+                                                                MinWidth="80" 
+                                                                Height="Auto" 
+                                                                Content="{Binding featureId, Mode=TwoWay}" 
+                                                                IsEnabled="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ListViewItem}, Path=IsSelected, Mode=OneWay}">
+                                                            </xctk:DropDownButton>
+                                                        </DataTemplate>
+                                                    </GridViewColumn.CellTemplate>
+                                                </GridViewColumn>
+                                                <GridViewColumn Header="ForeignID">
+                                                    <GridViewColumn.CellTemplate>
+                                                        <DataTemplate>
+                                                            <xctk:DropDownButton
+                                                                Width="Auto" 
+                                                                MinWidth="80" 
+                                                                Height="Auto" 
+                                                                Content="{Binding foreignId, Mode=TwoWay}" 
+                                                                IsEnabled="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ListViewItem}, Path=IsSelected, Mode=OneWay}">
+                                                            </xctk:DropDownButton>
+                                                        </DataTemplate>
+                                                    </GridViewColumn.CellTemplate>
+                                                </GridViewColumn>
+                                            </GridView>
+                                        </ListView.View>
+                                    </ListView>
+                                </StackPanel>
+
+                                <StackPanel>
+                                    <StackPanel Background="{x:Static SystemColors.ControlBrush}">
+                                        <xctk:TrimmedTextBlock Text="Information Bindings"
+                                                       Margin="6,2,6,4"
+                                                       TextTrimming="CharacterEllipsis"
+                                                       FontWeight="Bold">
+                                        </xctk:TrimmedTextBlock>
+                                    </StackPanel>
+
+                                    <ListView x:Name="PART_InformationBindings" 
+                                      SelectionMode="Single">
+                                        <ListView.ItemContainerStyle>
+                                            <Style TargetType="ListViewItem">
+                                                <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                                            </Style>
+                                        </ListView.ItemContainerStyle>
+                                        <ListView.View>
+                                            <GridView>
+                                                <GridViewColumn Header="roleType" DisplayMemberBinding="{Binding roleType, Mode=OneTime}"/>
+                                                <GridViewColumn Header="association" DisplayMemberBinding="{Binding association, Mode=OneTime}"/>
+                                                <GridViewColumn Header="role" DisplayMemberBinding="{Binding role, Mode=OneTime}"/>
+                                                <GridViewColumn Header="ID">
+                                                    <GridViewColumn.CellTemplate>
+                                                        <DataTemplate>
+                                                            <xctk:DropDownButton
+                                                                Width="Auto" 
+                                                                MinWidth="80" 
+                                                                Height="Auto" 
+                                                                Content="{Binding associationId, Mode=TwoWay}" 
+                                                                IsEnabled="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ListViewItem}, Path=IsSelected, Mode=OneWay}">
+                                                            </xctk:DropDownButton>
+                                                        </DataTemplate>
+                                                    </GridViewColumn.CellTemplate>
+                                                </GridViewColumn>
+                                                <GridViewColumn Header="FeatureID">
+                                                    <GridViewColumn.CellTemplate>
+                                                        <DataTemplate>
+                                                            <xctk:DropDownButton
+                                                                Width="Auto" 
+                                                                MinWidth="80" 
+                                                                Height="Auto" 
+                                                                Content="{Binding informationId, Mode=TwoWay}" 
+                                                                IsEnabled="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ListViewItem}, Path=IsSelected, Mode=OneWay}">
+                                                            </xctk:DropDownButton>
+                                                        </DataTemplate>
+                                                    </GridViewColumn.CellTemplate>
+                                                </GridViewColumn>
+                                                <GridViewColumn Header="ForeignID">
+                                                    <GridViewColumn.CellTemplate>
+                                                        <DataTemplate>
+                                                            <xctk:DropDownButton
+                                                                Width="Auto" 
+                                                                MinWidth="80" 
+                                                                Height="Auto" 
+                                                                Content="{Binding foreignId, Mode=TwoWay}" 
+                                                                IsEnabled="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ListViewItem}, Path=IsSelected, Mode=OneWay}">
+                                                            </xctk:DropDownButton>
+                                                        </DataTemplate>
+                                                    </GridViewColumn.CellTemplate>
+                                                </GridViewColumn>
+                                            </GridView>
+                                        </ListView.View>
+                                    </ListView>
+                                </StackPanel>
+                            </StackPanel>
+                        </Border>
+                    </StackPanel>
+
+                    <ControlTemplate.Triggers>
+                        <!--<EventTrigger RoutedEvent="xctk:DropDownButton.ContextMenuOpening" SourceName="associationId"> 
+                        </EventTrigger>-->
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+</ResourceDictionary>

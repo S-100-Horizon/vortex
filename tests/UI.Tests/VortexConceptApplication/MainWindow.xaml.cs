@@ -111,11 +111,11 @@ namespace VortexConceptApplication
             };
 
 
-            this._s100PropertyGrid.OnFeatureAssociationsChanged = (roleType roleType, string association) => {
-                var r = new Random(DateTime.Now.Microsecond);
+            //this._s100PropertyGrid.OnFeatureAssociationsChanged = (roleType roleType, string association) => {
+            //    var r = new Random(DateTime.Now.Microsecond);
 
-                return Task.FromResult<IEnumerable<AssociationId>>([new AssociationId($"B{r.Next(1, 1000):0000}"), new AssociationId($"A{r.Next(1, 1000):0000}")]);
-            };
+            //    return Task.FromResult<IEnumerable<AssociationId>>([new AssociationId($"B{r.Next(1, 1000):0000}"), new AssociationId($"A{r.Next(1, 1000):0000}")]);
+            //};
 
 
 #if S124
@@ -227,7 +227,7 @@ namespace VortexConceptApplication
                 foreignId = "S106",
             });
 
-            this._s100PropertyGrid.FeatureBindings.Add(binding);
+            //this._s100PropertyGrid.FeatureBindings.Add(binding);
 
             binding = new FeatureBindingViewModel();
             binding.Load(new featureBinding {
@@ -239,16 +239,7 @@ namespace VortexConceptApplication
                 foreignId = "S105",
             });
 
-            this._s100PropertyGrid.FeatureBindings.Add(binding);
-
-
-
-
-            //this.Collection.NewItemTypes = new List<Type> { typeof(FeatureBindingViewModel) };
-
-
-            //this.Collection.Items.Add(new TestLateralBuoyViewModel());
-            //this.Collection.ItemsSource = new List<TestLateralBuoyViewModel>();
+            //this._s100PropertyGrid.FeatureBindings.Add(binding);
         }
 
         private void _propertyGrid_PreparePropertyItem(object sender, PropertyItemEventArgs e) {
@@ -297,6 +288,10 @@ namespace VortexConceptApplication
             var json = v.Serialize();
 
             System.Diagnostics.Debugger.Break();
+        }
+
+        private void S100AttributeEditor_AssociationIdRequest(object sender, AssociationIdRequestEventArgs e) {
+
         }
     }
 

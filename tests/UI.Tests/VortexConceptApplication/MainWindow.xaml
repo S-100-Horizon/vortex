@@ -83,8 +83,13 @@
             </xctk:PropertyGrid.EditorDefinitions>--><!--
         </xctk:PropertyGrid>-->
 
-        <local:S100AttributeEditorView Grid.Row="2" x:Name="_s100PropertyGrid" 
-                            SelectedPropertyObject="{Binding SelectedProperty}"/>
+        <local:S100AttributeEditor x:Name="S100AttributeEditor" SelectedNode="{Binding SelectedProperty}" AssociationIdRequest="S100AttributeEditor_AssociationIdRequest"/>
+
+        <!--<local:S100AttributeEditor x:Name="_s100AttributeEditor" >
+            
+        </local:S100AttributeEditor>-->
+        <!--<local:S100AttributeEditorView Grid.Row="2" x:Name="_s100PropertyGrid" 
+                            SelectedPropertyObject="{Binding SelectedProperty}"/>-->
 
         <!--<xctk:CollectionControl Grid.Row="2" x:Name="Collection" IsReadOnly="False" >
         </xctk:CollectionControl>-->

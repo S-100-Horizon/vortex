@@ -26,8 +26,8 @@
                 <Button x:Name="_createFeatureBinding" Grid.Column="1">+</Button>
             </Grid>
 
-            <!--<xctk:DropDownButton x:Name="_associationIdDropDownButton"                                                                                        
-                                            Width="Auto" MinWidth="80" Height="Auto" Content="Hello">
+            <xctk:DropDownButton x:Name="_associationIdDropDownButton"                                                                                        
+                                            Width="Auto" MinWidth="80" Height="Auto" Content="Hello" ContextMenuOpening="_associationIdDropDownButton_ContextMenuOpening" Click="_associationIdDropDownButton_Click">
                 <xctk:DropDownButton.DropDownContent>
                     <ListView MinWidth="120" MinHeight="32" ItemsSource="{Binding AssociationIds}">
                         <ListView.View>
@@ -38,7 +38,7 @@
                         </ListView.View>
                     </ListView>
                 </xctk:DropDownButton.DropDownContent>
-            </xctk:DropDownButton>-->
+            </xctk:DropDownButton>
 
             <ListView x:Name="_listViewFeatureBindings" 
                   ItemsSource="{Binding FeatureBindings}" 
