@@ -64,6 +64,55 @@ namespace S100Framework.Applications
             return null;
         }
 
+
+        internal Daymark GetDayMark(AidsToNavigationP structure) {
+            var daymarks = _featureRelations.GetRelated<AidsToNavigationP>(typeof(Daymark), structure.GLOBALID);
+
+            if (daymarks == null || daymarks.Count() == 0) {
+                return null;
+            }
+
+            if (daymarks.Count() > 1) {
+                throw new NotSupportedException("Multiple related daymarks");
+            }
+
+            var relatedDaymark = daymarks.First();
+
+            if (relatedDaymark != null) {
+
+                List<colour> daymarkColours = null;
+
+                colourPattern? daymarkColourPattern = null;
+
+                if (relatedDaymark.COLOUR != default) {
+                    daymarkColours = ImporterNIS.GetColours(relatedDaymark.COLOUR);
+                }
+
+                if (relatedDaymark.COLPAT != default) {
+                    daymarkColourPattern = ImporterNIS.GetColourPattern(relatedDaymark.COLPAT);
+                }
+
+                var daymark = new Daymark() {
+                    // TODO: shapeinformation #15 @https://geodatastyrelsen.atlassian.net/wiki/spaces/SOEKORT/pages/5070028848/S-57+to+S-101+Conversion+Action+Points?force_transition=910d1b59-0dc5-42d7-bd2c-a81edd431caf,
+                    shapeInformation = default
+                };
+
+                if (daymarkColours != null) {
+                    daymark.colour = daymarkColours;
+                }
+
+                if (daymarkColourPattern.HasValue) {
+                    daymark.colourPattern = daymarkColourPattern.Value;
+                }
+
+                if (relatedDaymark.TOPSHP.HasValue) {
+                    daymark.topmarkDaymarkShape = EnumHelper.GetEnumValue<topmarkDaymarkShape>(relatedDaymark.TOPSHP.Value);
+                }
+                return daymark;
+            }
+            return null;
+        }
+
         internal void CreateRelatedEquipment(S57Object s57Object, string structureId, Geodatabase target) {
             if (s57Object is AidsToNavigationP) {
                 var sourceTable = "AidsToNavigationP";
@@ -74,8 +123,8 @@ namespace S100Framework.Applications
                 }
 
                 var tableName = target.GetName("point");
-                var featureClass = target.OpenDataset<FeatureClass>(tableName);
-                var buffer = featureClass.CreateRowBuffer();
+                using var featureClass = target.OpenDataset<FeatureClass>(tableName);
+                using var buffer = featureClass.CreateRowBuffer();
 
                 //var types = FeatureRelations.GetS101CatlitTypeFrom(structure);
 

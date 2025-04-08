@@ -1,9 +1,13 @@
 ﻿using ArcGIS.Core.Data;
 using ArcGIS.Core.Geometry;
+using ArcGIS.Desktop.Internal.Mapping;
+using Microsoft.Extensions.Configuration;
 using S100Framework.Applications.S57.esri;
 using S100Framework.DomainModel.S101;
 using S100Framework.DomainModel.S101.ComplexAttributes;
 using S100Framework.DomainModel.S101.FeatureTypes;
+using System.Security.AccessControl;
+
 
 
 
@@ -18,10 +22,10 @@ namespace S100Framework.Applications
 
             var tableName = "AidsToNavigationP";
 
-            var aidstonavigation = source.OpenDataset<FeatureClass>(source.GetName(tableName));
+            using var aidstonavigation = source.OpenDataset<FeatureClass>(source.GetName(tableName));
 
-            var featureAssociation = target.OpenDataset<Table>(target.GetName("featureassociation"));
-            var informationAssociation = target.OpenDataset<Table>(target.GetName("informationassociation"));
+            using var featureAssociation = target.OpenDataset<Table>(target.GetName("featureassociation"));
+            using var informationAssociation = target.OpenDataset<Table>(target.GetName("informationassociation"));
 
             using var featureClass = target.OpenDataset<FeatureClass>(target.GetName("point"));
 
@@ -100,38 +104,19 @@ namespace S100Framework.Applications
                                 instance.height = current.HEIGHT.Value;
                             }
 
-                            
-
-
                             // TODO: interoperabilityidentifier
 
-                            if (current.MARSYS != null) {
-                                instance.marksNavigationalSystemOf = EnumHelper.GetEnumValue<marksNavigationalSystemOf>(current.MARSYS);
+                            if (current.MARSYS.HasValue) {
+                                instance.marksNavigationalSystemOf = EnumHelper.GetEnumValue<marksNavigationalSystemOf>(current.MARSYS.Value);
                             }
 
                             if (current.NATCON != default) {
                                 instance.natureOfConstruction = EnumHelper.GetEnumValues<natureOfConstruction>(current.NATCON);
                             }
 
-                            if (current.PERSTA != default) {
-                                if (current.PEREND != default) {
-                                    if (DateHelper.TryConvertToDateOnly(current.PEREND, out var dateEnd)) {
-                                        if (DateHelper.TryConvertToDateOnly(current.PERSTA, out var dateStart)) {
-                                            instance.periodicDateRange = new List<periodicDateRange>() {
-                                                new periodicDateRange() {
-                                                    dateStart = dateStart,
-                                                    dateEnd = dateEnd
-                                                }
-                                            };
-                                        }
-                                        else {
-                                            Logger.Current.DataError(current.OBJECTID.Value, tableName, current.LNAM, $"Cannot convert date {current.PERSTA}");
-                                        }
-                                    }
-                                    else {
-                                        Logger.Current.DataError(current.OBJECTID.Value, tableName, current.LNAM, $"Cannot convert date {current.PEREND}");
-                                    }
-                                }
+                            DateHelper.TryGetPeriodicDateRange(current.PERSTA, current.PEREND, out var periodicDateRange);
+                            if (periodicDateRange != default) {
+                                instance.periodicDateRange = periodicDateRange;
                             }
 
                             if (current.CONRAD.HasValue) {
@@ -151,19 +136,18 @@ namespace S100Framework.Applications
                                 instance.status = GetStatus(current.STATUS);
                             }
 
-                            // topmarkdayShape for topmark
                             topmarkDaymarkShape? topmarkDaymark = null;
                             
-                            if (current.TOPSHP.HasValue) {
-                                topmarkDaymark = EnumHelper.GetEnumValue<topmarkDaymarkShape>(current.TOPSHP.Value);
+
+                            var topmark = relatedEquipment.GetTopMark(current);
+                            if (topmark != null) {
+                                instance.topmark = topmark;
                             }
 
-                            instance.verticalLength = current.VERLEN;
-                            //if (!topmarkDaymarkHasValue && instance.topmark != null) {
-                            //    Logger.Current.DataError(current.OBJECTID.Value, tableName, current.LNAM, $"Missing topmarkDaymark info on {nameof(instance)}");
-                            //}
-                            var topmark = relatedEquipment.GetTopMark(current);
-                            instance.topmark = topmark;
+                            if (current.VERLEN.HasValue) {
+                                instance.verticalLength = current.VERLEN.Value;
+                            }
+
 
                             if (current.CONVIS.HasValue) {
                                 if (current.CONVIS.Value == -32767)
@@ -173,9 +157,9 @@ namespace S100Framework.Applications
                                 }
                             }
 
-                            if (plts_comp_scale != default) {
-                                //instance.scaleMinimum = plts_comp_scale;
-                            }
+                            //if (plts_comp_scale != default) {
+                            //    instance.scaleMinimum = plts_comp_scale;
+                            //}
 
                             AddInformation(instance.information, feature);
 
@@ -185,8 +169,6 @@ namespace S100Framework.Applications
                             buffer["code"] = instance.GetType().Name;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                             SetShape(buffer,current.SHAPE);
-
-                            //insert.Insert(buffer);
 
                             var featureN = featureClass.CreateRow(buffer);
                             var name = Convert.ToString(featureN["name"]);
@@ -246,35 +228,17 @@ namespace S100Framework.Applications
 
                             // TODO: interoperabilityidentifier
 
-                            if (current.MARSYS != null) {
-                                instance.marksNavigationalSystemOf = EnumHelper.GetEnumValue<marksNavigationalSystemOf>(current.MARSYS);
+                            if (current.MARSYS.HasValue) {
+                                instance.marksNavigationalSystemOf = EnumHelper.GetEnumValue<marksNavigationalSystemOf>(current.MARSYS.Value);
                             }
 
                             if (current.NATCON != default) {
                                 instance.natureOfConstruction = EnumHelper.GetEnumValues<natureOfConstruction>(current.NATCON);
                             }
 
-
-                            if (current.PERSTA != default) {
-                                if (current.PEREND != default) {
-                                    if (DateHelper.TryConvertToDateOnly(current.PEREND, out var dateEnd)) {
-                                        if (DateHelper.TryConvertToDateOnly(current.PERSTA, out var dateStart)) {
-                                            instance.periodicDateRange = new List<periodicDateRange>() {
-                                                new periodicDateRange() {
-                                                    dateStart = dateStart,
-                                                    dateEnd = dateEnd
-                                                }
-                                            };
-                                        }
-                                        else {
-                                            Logger.Current.DataError(current.OBJECTID.Value, tableName, current.LNAM, $"Cannot convert date {current.PERSTA}");
-                                        }
-                                    }
-                                    else {
-                                        Logger.Current.DataError(current.OBJECTID.Value, tableName, current.LNAM, $"Cannot convert date {current.PEREND}");
-                                    }
-
-                                }
+                            DateHelper.TryGetPeriodicDateRange(current.PERSTA, current.PEREND, out var periodicDateRange);
+                            if (periodicDateRange != default) {
+                                instance.periodicDateRange = periodicDateRange;
                             }
 
                             if (current.CONRAD.HasValue) {
@@ -294,20 +258,16 @@ namespace S100Framework.Applications
                                 instance.status = GetStatus(current.STATUS);
                             }
 
-                            // topmarkdayShape for topmark
-                            topmarkDaymarkShape? topmarkDaymark = null;
 
-                            if (current.TOPSHP.HasValue) {
-                                topmarkDaymark = EnumHelper.GetEnumValue<topmarkDaymarkShape>(current.TOPSHP.Value);
+                            var topmark = relatedEquipment.GetTopMark(current);
+                            if (topmark != null) {
+                                instance.topmark = topmark;
                             }
 
-                            instance.verticalLength = current.VERLEN;
-                            //if (!topmarkDaymarkHasValue && instance.topmark != null) {
-                            //    Logger.Current.DataError(current.OBJECTID.Value, tableName, current.LNAM, $"Missing topmarkDaymark info on {nameof(instance)}");
-                            //}
-                            var topmark = relatedEquipment.GetTopMark(current);
-                            instance.topmark = topmark;
 
+                            if (current.VERLEN.HasValue) {
+                                instance.verticalLength = current.VERLEN.Value;
+                            }
 
                             if (current.CONVIS.HasValue) {
                                 if (current.CONVIS.Value == -32767)
@@ -317,9 +277,9 @@ namespace S100Framework.Applications
                                 }
                             }
 
-                            if (plts_comp_scale != default) {
-                                //instance.scaleMinimum = plts_comp_scale;
-                            }
+                            //if (plts_comp_scale != default) {
+                            //  instance.scaleMinimum = plts_comp_scale;
+                            //}
 
                             AddInformation(instance.information, feature);
 
@@ -329,7 +289,6 @@ namespace S100Framework.Applications
                             buffer["code"] = instance.GetType().Name;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                             SetShape(buffer,current.SHAPE);
-                            //insert.Insert(buffer);
 
                             var featureN = featureClass.CreateRow(buffer);
                             var name = Convert.ToString(featureN["name"]);
@@ -391,40 +350,25 @@ namespace S100Framework.Applications
                                 instance.fixedDateRange = dateRange;
                             }
 
+                            // TODO: interoperabilityidentifier
+                            
                             if (current.HEIGHT.HasValue) { 
                                 instance.height = current.HEIGHT.Value;
                             }
 
-                            // TODO: interoperabilityidentifier
-
-                            if (current.MARSYS != null) {
-                                instance.marksNavigationalSystemOf = EnumHelper.GetEnumValue<marksNavigationalSystemOf>(current.MARSYS);
+                            if (current.MARSYS.HasValue) {
+                                instance.marksNavigationalSystemOf = EnumHelper.GetEnumValue<marksNavigationalSystemOf>(current.MARSYS.Value);
                             }
 
                             if (current.NATCON != default) {
                                 instance.natureOfConstruction = EnumHelper.GetEnumValues<natureOfConstruction>(current.NATCON);
                             }
 
-                            if (current.PERSTA != default) {
-                                if (current.PEREND != default) {
-                                    if (DateHelper.TryConvertToDateOnly(current.PEREND, out var dateEnd)) {
-                                        if (DateHelper.TryConvertToDateOnly(current.PERSTA, out var dateStart)) {
-                                            instance.periodicDateRange = new List<periodicDateRange>() {
-                                                new periodicDateRange() {
-                                                    dateStart = dateStart,
-                                                    dateEnd = dateEnd
-                                                }
-                                            };
-                                        }
-                                        else {
-                                            Logger.Current.DataError(current.OBJECTID.Value, tableName, current.LNAM, $"Cannot convert date {current.PERSTA}");
-                                        }
-                                    }
-                                    else {
-                                        Logger.Current.DataError(current.OBJECTID.Value, tableName, current.LNAM, $"Cannot convert date {current.PEREND}");
-                                    }
 
-                                }
+
+                            DateHelper.TryGetPeriodicDateRange(current.PERSTA, current.PEREND, out var periodicDateRange);
+                            if (periodicDateRange != default) {
+                                instance.periodicDateRange = periodicDateRange;
                             }
 
                             if (current.CONRAD.HasValue) {
@@ -440,25 +384,19 @@ namespace S100Framework.Applications
                                 }
                             }
 
+
                             if (current.STATUS != default) {
                                 instance.status = GetStatus(current.STATUS);
                             }
 
-                            // topmarkdayShape for topmark
-                            topmarkDaymarkShape? topmarkDaymark = null;
-
-                            if (current.TOPSHP.HasValue) {
-                                topmarkDaymark = EnumHelper.GetEnumValue<topmarkDaymarkShape>(current.TOPSHP.Value);
+                            var topmark = relatedEquipment.GetTopMark(current);
+                            if (topmark != null) {
+                                instance.topmark = topmark;
                             }
 
-                            instance.verticalLength = current.VERLEN;
-
-                            //if (!topmarkDaymarkHasValue && instance.topmark != null) {
-                            //    Logger.Current.DataError(current.OBJECTID.Value, tableName, current.LNAM, $"Missing topmarkDaymark info on {nameof(instance)}");
-                            //}
-
-                            var topmark = relatedEquipment.GetTopMark(current);
-                            instance.topmark = topmark;
+                            if (current.VERLEN.HasValue) {
+                                instance.verticalLength = current.VERLEN.Value;
+                            }
 
                             if (current.CONVIS.HasValue) {
                                 if (current.CONVIS.Value == -32767)
@@ -468,13 +406,15 @@ namespace S100Framework.Applications
                                 }
                             }
 
-                            if (plts_comp_scale != default) {
-                                //instance.scaleMinimum = plts_comp_scale;
-                            }
+                            //if (plts_comp_scale != default) {
+                            //  instance.scaleMinimum = plts_comp_scale;
+                            //}
 
                             AddInformation(instance.information, feature);
 
-                            instance.pictorialRepresentation = current.PICREP;
+                            if (current.PICREP != default) {
+                                instance.pictorialRepresentation = current.PICREP;
+                            }
 
 
                             buffer["ps"] = ps101;
@@ -541,34 +481,17 @@ namespace S100Framework.Applications
 
                             // TODO: interoperabilityidentifier
 
-                            if (current.MARSYS != null) {
-                                instance.marksNavigationalSystemOf = EnumHelper.GetEnumValue<marksNavigationalSystemOf>(current.MARSYS);
+                            if (current.MARSYS.HasValue) {
+                                instance.marksNavigationalSystemOf = EnumHelper.GetEnumValue<marksNavigationalSystemOf>(current.MARSYS.Value);
                             }
 
                             if (current.NATCON != default) {
                                 instance.natureOfConstruction = EnumHelper.GetEnumValues<natureOfConstruction>(current.NATCON);
                             }
 
-                            if (current.PERSTA != default) {
-                                if (current.PEREND != default) {
-                                    if (DateHelper.TryConvertToDateOnly(current.PEREND, out var dateEnd)) {
-                                        if (DateHelper.TryConvertToDateOnly(current.PERSTA, out var dateStart)) {
-                                            instance.periodicDateRange = new List<periodicDateRange>() {
-                                                new periodicDateRange() {
-                                                    dateStart = dateStart,
-                                                    dateEnd = dateEnd
-                                                }
-                                            };
-                                        }
-                                        else {
-                                            Logger.Current.DataError(current.OBJECTID.Value, tableName, current.LNAM, $"Cannot convert date {current.PERSTA}");
-                                        }
-                                    }
-                                    else {
-                                        Logger.Current.DataError(current.OBJECTID.Value, tableName, current.LNAM, $"Cannot convert date {current.PEREND}");
-                                    }
-
-                                }
+                            DateHelper.TryGetPeriodicDateRange(current.PERSTA, current.PEREND, out var periodicDateRange);
+                            if (periodicDateRange != default) {
+                                instance.periodicDateRange = periodicDateRange;
                             }
 
                             if (current.CONRAD.HasValue) {
@@ -588,21 +511,14 @@ namespace S100Framework.Applications
                                 instance.status = GetStatus(current.STATUS);
                             }
 
-                            // topmarkdayShape for topmark
-                            topmarkDaymarkShape? topmarkDaymark = null;
-
-                            if (current.TOPSHP.HasValue) {
-                                topmarkDaymark = EnumHelper.GetEnumValue<topmarkDaymarkShape>(current.TOPSHP.Value);
+                            var topmark = relatedEquipment.GetTopMark(current);
+                            if (topmark != null) {
+                                instance.topmark = topmark;
                             }
 
-                            instance.verticalLength = current.VERLEN;
-                            //if (!topmarkDaymarkHasValue && instance.topmark != null) {
-                            //    Logger.Current.DataError(current.OBJECTID.Value, tableName, current.LNAM, $"Missing topmarkDaymark info on {nameof(instance)}");
-                            //}
-
-                            var topmark = relatedEquipment.GetTopMark(current);
-                            instance.topmark = topmark;
-
+                            if (current.VERLEN.HasValue) {
+                                instance.verticalLength = current.VERLEN.Value;
+                            }
 
                             if (current.CONVIS.HasValue) {
                                 if (current.CONVIS.Value == -32767)
@@ -612,20 +528,20 @@ namespace S100Framework.Applications
                                 }
                             }
 
-                            if (plts_comp_scale != default) {
-                                //instance.scaleMinimum = plts_comp_scale;
-                            }
+                            //if (plts_comp_scale != default) {
+                            //  instance.scaleMinimum = plts_comp_scale;
+                            //}
 
                             AddInformation(instance.information, feature);
 
-                            instance.pictorialRepresentation = current.PICREP;
+                            if (current.PICREP != default) {
+                                instance.pictorialRepresentation = current.PICREP;
+                            }
 
                             buffer["ps"] = ps101;
                             buffer["code"] = instance.GetType().Name;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                             SetShape(buffer,current.SHAPE);
-
-                            //insert.Insert(buffer);
 
                             var featureN = featureClass.CreateRow(buffer);
                             var name = Convert.ToString(featureN["name"]);
@@ -648,9 +564,6 @@ namespace S100Framework.Applications
                             var instance = new SpecialPurposeGeneralBeacon();
 
                             #region aidstonavigation
-                            if (plts_comp_scale != default) {
-                                //instance.scaleMinimum = plts_comp_scale;
-                            }
 
                             if (current.BCNSHP.HasValue) {
                                 if (current.BCNSHP.Value == -32767)
@@ -697,36 +610,19 @@ namespace S100Framework.Applications
 
                             // TODO: interoperabilityidentifier
 
-                            if (current.MARSYS != null) {
-                                instance.marksNavigationalSystemOf = EnumHelper.GetEnumValue<marksNavigationalSystemOf>(current.MARSYS);
+                            if (current.MARSYS.HasValue) {
+                                instance.marksNavigationalSystemOf = EnumHelper.GetEnumValue<marksNavigationalSystemOf>(current.MARSYS.Value);
                             }
 
                             if (current.NATCON != default) {
                                 instance.natureOfConstruction = EnumHelper.GetEnumValues<natureOfConstruction>(current.NATCON);
                             }
 
-                            if (current.PERSTA != default) {
-                                if (current.PEREND != default) {
-                                    if (DateHelper.TryConvertToDateOnly(current.PEREND, out var dateEnd)) {
-                                        if (DateHelper.TryConvertToDateOnly(current.PERSTA, out var dateStart)) {
-                                            instance.periodicDateRange = new List<periodicDateRange>() {
-                                                new periodicDateRange() {
-                                                    dateStart = dateStart,
-                                                    dateEnd = dateEnd
-                                                }
-                                            };
-                                        }
-                                        else {
-                                            Logger.Current.DataError(current.OBJECTID.Value, tableName, current.LNAM, $"Cannot convert date {current.PERSTA}");
-                                        }
-                                    }
-                                    else {
-                                        Logger.Current.DataError(current.OBJECTID.Value, tableName, current.LNAM, $"Cannot convert date {current.PEREND}");
-                                    }
-
-                                }
+                            DateHelper.TryGetPeriodicDateRange(current.PERSTA, current.PEREND, out var periodicDateRange);
+                            if (periodicDateRange != default) {
+                                instance.periodicDateRange = periodicDateRange;
                             }
-
+                            
                             if (current.CONRAD.HasValue) {
                                 instance.radarConspicuous = current.CONRAD.Value == 0 ? true : false;
                             }
@@ -744,22 +640,14 @@ namespace S100Framework.Applications
                                 instance.status = GetStatus(current.STATUS);
                             }
 
-                            // topmarkdayShape for topmark
-                            topmarkDaymarkShape? topmarkDaymark = null;
-
-                            if (current.TOPSHP.HasValue) {
-                                topmarkDaymark = EnumHelper.GetEnumValue<topmarkDaymarkShape>(current.TOPSHP.Value);
+                            var topmark = relatedEquipment.GetTopMark(current);
+                            if (topmark != null) {
+                                instance.topmark = topmark;
                             }
 
-                            instance.verticalLength = current.VERLEN;
-
-                            //if (!topmarkDaymarkHasValue && instance.topmark != null) {
-                            //    Logger.Current.DataError(current.OBJECTID.Value, tableName, current.LNAM, $"Missing topmarkDaymark info on {nameof(instance)}");
-                            //}
-
-                            var topmark = relatedEquipment.GetTopMark(current);
-                            instance.topmark = topmark;
-
+                            if (current.VERLEN.HasValue) {
+                                instance.verticalLength = current.VERLEN.Value;
+                            }
 
                             if (current.CONVIS.HasValue) {
                                 if (current.CONVIS.Value == -32767)
@@ -769,19 +657,20 @@ namespace S100Framework.Applications
                                 }
                             }
 
-                            if (plts_comp_scale != default) {
-                                //instance.scaleMinimum = plts_comp_scale;
-                            }
-
+                            //if (plts_comp_scale != default) {
+                            //  instance.scaleMinimum = plts_comp_scale;
+                            //}
+                                
                             AddInformation(instance.information, feature);
 
-                            instance.pictorialRepresentation = current.PICREP;
+                            if (current.PICREP != default) {
+                                instance.pictorialRepresentation = current.PICREP;
+                            }
 
                             buffer["ps"] = ps101;
                             buffer["code"] = instance.GetType().Name;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                             SetShape(buffer,current.SHAPE);
-                            //insert.Insert(buffer);
 
                             var featureN = featureClass.CreateRow(buffer);
                             var name = Convert.ToString(featureN["name"]);
@@ -837,36 +726,19 @@ namespace S100Framework.Applications
 
                             // TODO: interoperabilityidentifier
 
-                            if (current.MARSYS != null) {
-                                instance.marksNavigationalSystemOf = EnumHelper.GetEnumValue<marksNavigationalSystemOf>(current.MARSYS);
+                            if (current.MARSYS.HasValue) {
+                                instance.marksNavigationalSystemOf = EnumHelper.GetEnumValue<marksNavigationalSystemOf>(current.MARSYS.Value);
                             }
 
                             if (current.NATCON != default) {
                                 instance.natureOfConstruction = EnumHelper.GetEnumValues<natureOfConstruction>(current.NATCON);
                             }
 
-                            if (current.PERSTA != default) {
-                                if (current.PEREND != default) {
-                                    if (DateHelper.TryConvertToDateOnly(current.PEREND, out var dateEnd)) {
-                                        if (DateHelper.TryConvertToDateOnly(current.PERSTA, out var dateStart)) {
-                                            instance.periodicDateRange = new List<periodicDateRange>() {
-                                                new periodicDateRange() {
-                                                    dateStart = dateStart,
-                                                    dateEnd = dateEnd
-                                                }
-                                            };
-                                        }
-                                        else {
-                                            Logger.Current.DataError(current.OBJECTID.Value, tableName, current.LNAM, $"Cannot convert date {current.PERSTA}");
-                                        }
-                                    }
-                                    else {
-                                        Logger.Current.DataError(current.OBJECTID.Value, tableName, current.LNAM, $"Cannot convert date {current.PEREND}");
-                                    }
-
-                                }
+                            DateHelper.TryGetPeriodicDateRange(current.PERSTA, current.PEREND, out var periodicDateRange);
+                            if (periodicDateRange != default) {
+                                instance.periodicDateRange = periodicDateRange;
                             }
-
+                                
                             if (current.CONRAD.HasValue) {
                                 instance.radarConspicuous = current.CONRAD.Value == 0 ? true : false;
                             }
@@ -875,31 +747,24 @@ namespace S100Framework.Applications
                                 instance.status = GetStatus(current.STATUS);
                             }
 
-                            // topmarkdayShape for topmark
-                            topmarkDaymarkShape? topmarkDaymark = null;
-
-                            if (current.TOPSHP.HasValue) {
-                                topmarkDaymark = EnumHelper.GetEnumValue<topmarkDaymarkShape>(current.TOPSHP.Value);
-                            }
-
-                            instance.verticalLength = current.VERLEN;
-
-
-
-                            //if (!topmarkDaymarkHasValue && instance.topmark != null) {
-                            //    Logger.Current.DataError(current.OBJECTID.Value, tableName, current.LNAM, $"Missing topmarkDaymark info on {nameof(instance)}");
-                            //}
                             var topmark = relatedEquipment.GetTopMark(current);
-                            instance.topmark = topmark;
-
-
-                            if (plts_comp_scale != default) {
-                                //instance.scaleMinimum = plts_comp_scale;
+                            if (topmark != null) {
+                                instance.topmark = topmark;
                             }
+
+                            if (current.VERLEN.HasValue) {
+                                instance.verticalLength = current.VERLEN.Value;
+                            }
+
+                            //if (plts_comp_scale != default) {
+                            //  instance.scaleMinimum = plts_comp_scale;
+                            //}
 
                             AddInformation(instance.information, feature);
 
-                            instance.pictorialRepresentation = current.PICREP;
+                            if (current.PICREP != default) {
+                                instance.pictorialRepresentation = current.PICREP;
+                            }
 
                             buffer["ps"] = ps101;
                             buffer["code"] = instance.GetType().Name;
@@ -929,11 +794,16 @@ namespace S100Framework.Applications
                             #region aidstonavigation
                             if (current.BOYSHP.HasValue) {
                                 if (current.BOYSHP.Value == -32767)
-                                    instance.buoyShape = EnumHelper.GetEnumValue<buoyShape>("-1");
+                                    instance.buoyShape = EnumHelper.GetEnumValue<buoyShape>(-1);
                                 else {
                                     instance.buoyShape = EnumHelper.GetEnumValue<buoyShape>(current.BOYSHP);
                                 }
                             }
+
+                            if (current.CATINB.HasValue) {
+                                instance.categoryOfInstallationBuoy = EnumHelper.GetEnumValue<categoryOfInstallationBuoy>(current.CATINB.Value);
+                            }
+
 
                             if (current.COLOUR != default) {
                                 instance.colour = GetColours(current.COLOUR);
@@ -950,34 +820,19 @@ namespace S100Framework.Applications
                                 instance.fixedDateRange = dateRange;
                             }
 
-
                             // TODO: interoperabilityidentifier
-
 
                             if (current.NATCON != default) {
                                 instance.natureOfConstruction = EnumHelper.GetEnumValues<natureOfConstruction>(current.NATCON);
                             }
 
-                            if (current.PERSTA != default) {
-                                if (current.PEREND != default) {
-                                    if (DateHelper.TryConvertToDateOnly(current.PEREND, out var dateEnd)) {
-                                        if (DateHelper.TryConvertToDateOnly(current.PERSTA, out var dateStart)) {
-                                            instance.periodicDateRange = new List<periodicDateRange>() {
-                                                new periodicDateRange() {
-                                                    dateStart = dateStart,
-                                                    dateEnd = dateEnd
-                                                }
-                                            };
-                                        }
-                                        else {
-                                            Logger.Current.DataError(current.OBJECTID.Value, tableName, current.LNAM, $"Cannot convert date {current.PERSTA}");
-                                        }
-                                    }
-                                    else {
-                                        Logger.Current.DataError(current.OBJECTID.Value, tableName, current.LNAM, $"Cannot convert date {current.PEREND}");
-                                    }
+                            DateHelper.TryGetPeriodicDateRange(current.PERSTA, current.PEREND, out var periodicDateRange);
+                            if (periodicDateRange != default) {
+                                instance.periodicDateRange = periodicDateRange;
+                            }
 
-                                }
+                            if (current.PRODCT != default) {
+                                instance.product = EnumHelper.GetEnumValues<product>(current.PRODCT);
                             }
 
                             if (current.CONRAD.HasValue) {
@@ -988,17 +843,6 @@ namespace S100Framework.Applications
                                 instance.status = GetStatus(current.STATUS);
                             }
 
-                            // topmarkdayShape for topmark
-                            topmarkDaymarkShape? topmarkDaymark = null;
-
-                            if (current.TOPSHP.HasValue) {
-                                topmarkDaymark = EnumHelper.GetEnumValue<topmarkDaymarkShape>(current.TOPSHP.Value);
-                            }
-
-                            //if (!topmarkDaymarkHasValue && instance.topmark != null) {
-                            //    Logger.Current.DataError(current.OBJECTID.Value, tableName, current.LNAM, $"Missing topmarkDaymark info on {nameof(instance)}");
-                            //}
-
                             if (current.CONVIS.HasValue) {
                                 if (current.CONVIS.Value == -32767)
                                     instance.visualProminence = EnumHelper.GetEnumValue<visualProminence>(-1);
@@ -1007,20 +851,20 @@ namespace S100Framework.Applications
                                 }
                             }
 
-                            if (plts_comp_scale != default) {
-                                //instance.scaleMinimum = plts_comp_scale;
-                            }
+                            //if (plts_comp_scale != default) {
+                            //  instance.scaleMinimum = plts_comp_scale;
+                            //}
 
                             AddInformation(instance.information, feature);
 
-                            instance.pictorialRepresentation = current.PICREP;
-
+                            if (current.PICREP != default) {
+                                instance.pictorialRepresentation = current.PICREP;
+                            }
 
                             buffer["ps"] = ps101;
                             buffer["code"] = instance.GetType().Name;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                             SetShape(buffer,current.SHAPE);
-                            //insert.Insert(buffer);
 
                             var featureN = featureClass.CreateRow(buffer);
                             var name = Convert.ToString(featureN["name"]);
@@ -1042,8 +886,12 @@ namespace S100Framework.Applications
                     case 35: { // BOYISD_BuoyIsolatedDanger
                             var instance = new IsolatedDangerBuoy();
                             #region aidstonavigation
-                            if (plts_comp_scale != default) {
-                                //instance.scaleMinimum = plts_comp_scale;
+                            if (current.BOYSHP.HasValue) {
+                                if (current.BOYSHP.Value == -32767)
+                                    instance.buoyShape = EnumHelper.GetEnumValue<buoyShape>(-1);
+                                else {
+                                    instance.buoyShape = EnumHelper.GetEnumValue<buoyShape>(current.BOYSHP);
+                                }
                             }
 
                             if (current.COLOUR != default) {
@@ -1063,34 +911,18 @@ namespace S100Framework.Applications
 
                             // TODO: interoperabilityidentifier
 
-                            if (current.MARSYS != null) {
-                                instance.marksNavigationalSystemOf = EnumHelper.GetEnumValue<marksNavigationalSystemOf>(current.MARSYS);
+                            if (current.MARSYS.HasValue) {
+                                instance.marksNavigationalSystemOf = EnumHelper.GetEnumValue<marksNavigationalSystemOf>(current.MARSYS.Value);
                             }
+
 
                             if (current.NATCON != default) {
                                 instance.natureOfConstruction = EnumHelper.GetEnumValues<natureOfConstruction>(current.NATCON);
                             }
 
-                            if (current.PERSTA != default) {
-                                if (current.PEREND != default) {
-                                    if (DateHelper.TryConvertToDateOnly(current.PEREND, out var dateEnd)) {
-                                        if (DateHelper.TryConvertToDateOnly(current.PERSTA, out var dateStart)) {
-                                            instance.periodicDateRange = new List<periodicDateRange>() {
-                                                new periodicDateRange() {
-                                                    dateStart = dateStart,
-                                                    dateEnd = dateEnd
-                                                }
-                                            };
-                                        }
-                                        else {
-                                            Logger.Current.DataError(current.OBJECTID.Value, tableName, current.LNAM, $"Cannot convert date {current.PERSTA}");
-                                        }
-                                    }
-                                    else {
-                                        Logger.Current.DataError(current.OBJECTID.Value, tableName, current.LNAM, $"Cannot convert date {current.PEREND}");
-                                    }
-
-                                }
+                            DateHelper.TryGetPeriodicDateRange(current.PERSTA, current.PEREND, out var periodicDateRange);
+                            if (periodicDateRange != default) {
+                                instance.periodicDateRange = periodicDateRange;
                             }
 
                             if (current.CONRAD.HasValue) {
@@ -1101,31 +933,29 @@ namespace S100Framework.Applications
                                 instance.status = GetStatus(current.STATUS);
                             }
 
-                            // topmarkdayShape for topmark
-                            topmarkDaymarkShape? topmarkDaymark = null;
-
-                            if (current.TOPSHP.HasValue) {
-                                topmarkDaymark = EnumHelper.GetEnumValue<topmarkDaymarkShape>(current.TOPSHP.Value);
-                            }
-
-                            instance.verticalLength = current.VERLEN;
                             var topmark = relatedEquipment.GetTopMark(current);
-                            instance.topmark = topmark;
-
-                            if (plts_comp_scale != default) {
-                                //instance.scaleMinimum = plts_comp_scale;
+                            if (topmark != null) {
+                                instance.topmark = topmark;
                             }
+
+                            if (current.VERLEN.HasValue) {
+                                instance.verticalLength = current.VERLEN.Value;
+                            }
+
+                            //if (plts_comp_scale != default) {
+                            //  instance.scaleMinimum = plts_comp_scale;
+                            //}
 
                             AddInformation(instance.information, feature);
 
-                            instance.pictorialRepresentation = current.PICREP;
-
+                            if (current.PICREP != default) {
+                                instance.pictorialRepresentation = current.PICREP;
+                            }
 
                             buffer["ps"] = ps101;
                             buffer["code"] = instance.GetType().Name;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                             SetShape(buffer,current.SHAPE);
-                            //insert.Insert(buffer);
 
                             var featureN = featureClass.CreateRow(buffer);
                             var name = Convert.ToString(featureN["name"]);
@@ -1142,10 +972,6 @@ namespace S100Framework.Applications
                             relatedEquipment.CreateRelatedEquipment(current, name, target);
 
                             #endregion related
-
-                            //if (!topmarkDaymarkHasValue && instance.topmark != null) {
-                            //    Logger.Current.DataError(current.OBJECTID.Value, tableName, current.LNAM, $"Missing topmarkDaymark info on {nameof(instance)}");
-                            //}
                         }
                         break;
                     case 40: { // BOYLAT_BuoyLateral
@@ -1186,34 +1012,17 @@ namespace S100Framework.Applications
 
                             // TODO: interoperabilityidentifier
 
-                            if (current.MARSYS != null) {
-                                instance.marksNavigationalSystemOf = EnumHelper.GetEnumValue<marksNavigationalSystemOf>(current.MARSYS);
+                            if (current.MARSYS.HasValue) {
+                                instance.marksNavigationalSystemOf = EnumHelper.GetEnumValue<marksNavigationalSystemOf>(current.MARSYS.Value);
                             }
 
                             if (current.NATCON != default) {
                                 instance.natureOfConstruction = EnumHelper.GetEnumValues<natureOfConstruction>(current.NATCON);
                             }
 
-                            if (current.PERSTA != default) {
-                                if (current.PEREND != default) {
-                                    if (DateHelper.TryConvertToDateOnly(current.PEREND, out var dateEnd)) {
-                                        if (DateHelper.TryConvertToDateOnly(current.PERSTA, out var dateStart)) {
-                                            instance.periodicDateRange = new List<periodicDateRange>() {
-                                                new periodicDateRange() {
-                                                    dateStart = dateStart,
-                                                    dateEnd = dateEnd
-                                                }
-                                            };
-                                        }
-                                        else {
-                                            Logger.Current.DataError(current.OBJECTID.Value, tableName, current.LNAM, $"Cannot convert date {current.PERSTA}");
-                                        }
-                                    }
-                                    else {
-                                        Logger.Current.DataError(current.OBJECTID.Value, tableName, current.LNAM, $"Cannot convert date {current.PEREND}");
-                                    }
-
-                                }
+                            DateHelper.TryGetPeriodicDateRange(current.PERSTA, current.PEREND, out var periodicDateRange);
+                            if (periodicDateRange != default) {
+                                instance.periodicDateRange = periodicDateRange;
                             }
 
                             if (current.CONRAD.HasValue) {
@@ -1224,32 +1033,30 @@ namespace S100Framework.Applications
                                 instance.status = GetStatus(current.STATUS);
                             }
 
-                            // topmarkdayShape for topmark
-                            topmarkDaymarkShape? topmarkDaymark = null;
-
-                            if (current.TOPSHP.HasValue) {
-                                topmarkDaymark = EnumHelper.GetEnumValue<topmarkDaymarkShape>(current.TOPSHP.Value);
-                            }
-
-                            instance.verticalLength = current.VERLEN;
-
                             var topmark = relatedEquipment.GetTopMark(current);
-                            instance.topmark = topmark;
-
-
-                            if (plts_comp_scale != default) {
-                                //instance.scaleMinimum = plts_comp_scale;
+                            if (topmark != null) {
+                                instance.topmark = topmark;
                             }
 
+                            if (current.VERLEN.HasValue) {
+                                instance.verticalLength = current.VERLEN.Value;
+                            }
+
+                            //if (plts_comp_scale != default) {
+                            //  instance.scaleMinimum = plts_comp_scale;
+                            //}
+                                
                             AddInformation(instance.information, feature);
-                            instance.pictorialRepresentation = current.PICREP;
+
+                            if (current.PICREP != default) {
+                                instance.pictorialRepresentation = current.PICREP;
+                            }
 
 
                             buffer["ps"] = ps101;
                             buffer["code"] = instance.GetType().Name;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                             SetShape(buffer,current.SHAPE);
-                            //insert.Insert(buffer);
 
                             var featureN = featureClass.CreateRow(buffer);
                             var name = Convert.ToString(featureN["name"]);
@@ -1265,17 +1072,21 @@ namespace S100Framework.Applications
 
                             relatedEquipment.CreateRelatedEquipment(current, name, target);
 
-                            #endregion related
-
-                            //if (!topmarkDaymarkHasValue && instance.topmark != null) {
-                            //    Logger.Current.DataError(current.OBJECTID.Value, tableName, current.LNAM, $"Missing topmarkDaymark info on {nameof(instance)}");
-                            //}
+                            #endregion relatedæ
 
                         }
                         break;
                     case 45: { // BOYSAW_BuoySafeWater
                             var instance = new SafeWaterBuoy();
                             #region aidstonavigation
+                            if (current.BOYSHP.HasValue) {
+                                if (current.BOYSHP.Value == -32767)
+                                    instance.buoyShape = EnumHelper.GetEnumValue<buoyShape>(-1);
+                                else {
+                                    instance.buoyShape = EnumHelper.GetEnumValue<buoyShape>(current.BOYSHP);
+                                }
+                            }
+
                             if (current.COLOUR != default) {
                                 instance.colour = GetColours(current.COLOUR);
                             }
@@ -1283,7 +1094,6 @@ namespace S100Framework.Applications
                             if (current.COLPAT != default) {
                                 instance.colourPattern = GetColourPattern(current.COLPAT);
                             }
-
 
                             instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
 
@@ -1294,34 +1104,17 @@ namespace S100Framework.Applications
 
                             // TODO: interoperabilityidentifier
 
-                            if (current.MARSYS != null) {
-                                instance.marksNavigationalSystemOf = EnumHelper.GetEnumValue<marksNavigationalSystemOf>(current.MARSYS);
+                            if (current.MARSYS.HasValue) {
+                                instance.marksNavigationalSystemOf = EnumHelper.GetEnumValue<marksNavigationalSystemOf>(current.MARSYS.Value);
                             }
 
                             if (current.NATCON != default) {
                                 instance.natureOfConstruction = EnumHelper.GetEnumValues<natureOfConstruction>(current.NATCON);
                             }
 
-                            if (current.PERSTA != default) {
-                                if (current.PEREND != default) {
-                                    if (DateHelper.TryConvertToDateOnly(current.PEREND, out var dateEnd)) {
-                                        if (DateHelper.TryConvertToDateOnly(current.PERSTA, out var dateStart)) {
-                                            instance.periodicDateRange = new List<periodicDateRange>() {
-                                                new periodicDateRange() {
-                                                    dateStart = dateStart,
-                                                    dateEnd = dateEnd
-                                                }
-                                            };
-                                        }
-                                        else {
-                                            Logger.Current.DataError(current.OBJECTID.Value, tableName, current.LNAM, $"Cannot convert date {current.PERSTA}");
-                                        }
-                                    }
-                                    else {
-                                        Logger.Current.DataError(current.OBJECTID.Value, tableName, current.LNAM, $"Cannot convert date {current.PEREND}");
-                                    }
-
-                                }
+                            DateHelper.TryGetPeriodicDateRange(current.PERSTA, current.PEREND, out var periodicDateRange);
+                            if (periodicDateRange != default) {
+                                instance.periodicDateRange = periodicDateRange;
                             }
 
                             if (current.CONRAD.HasValue) {
@@ -1332,40 +1125,30 @@ namespace S100Framework.Applications
                                 instance.status = GetStatus(current.STATUS);
                             }
 
-                            // topmarkdayShape for topmark
-                            topmarkDaymarkShape? topmarkDaymark = null;
-
-                            if (current.TOPSHP.HasValue) {
-                                topmarkDaymark = EnumHelper.GetEnumValue<topmarkDaymarkShape>(current.TOPSHP.Value);
-                            }
-
-                            instance.verticalLength = current.VERLEN;
-
-                            //if (!topmarkDaymarkHasValue && instance.topmark != null) {
-                            //    Logger.Current.DataError(current.OBJECTID.Value, tableName, current.LNAM, $"Missing topmarkDaymark info on {nameof(instance)}");
-                            //}
-
                             var topmark = relatedEquipment.GetTopMark(current);
-                            instance.topmark = topmark;
-
-
-                            if (plts_comp_scale != default) {
-                                //instance.scaleMinimum = plts_comp_scale;
+                            if (topmark != null) {
+                                instance.topmark = topmark;
                             }
+
+                            if (current.VERLEN.HasValue) {
+                                instance.verticalLength = current.VERLEN.Value;
+                            }
+
+                            //if (plts_comp_scale != default) {
+                            //  instance.scaleMinimum = plts_comp_scale;
+                            //}
 
                             AddInformation(instance.information, feature);
 
-                            instance.pictorialRepresentation = current.PICREP;
-
-
+                            if (current.PICREP != default) {
+                                instance.pictorialRepresentation = current.PICREP;
+                            }
 
                             buffer["ps"] = ps101;
-
                             buffer["code"] = instance.GetType().Name;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                             SetShape(buffer,current.SHAPE);
                             //insert.Insert(buffer);
-
 
                             var featureN = featureClass.CreateRow(buffer);
                             var name = Convert.ToString(featureN["name"]);
@@ -1387,7 +1170,24 @@ namespace S100Framework.Applications
                         break;
                     case 50: { // BOYSPP_BuoySpecialPurpose
                             var instance = new SpecialPurposeGeneralBuoy();
+
                             #region aidstonavigation
+                            if (current.BOYSHP.HasValue) {
+                                if (current.BOYSHP.Value == -32767)
+                                    instance.buoyShape = EnumHelper.GetEnumValue<buoyShape>(-1);
+                                else {
+                                    instance.buoyShape = EnumHelper.GetEnumValue<buoyShape>(current.BOYSHP);
+                                }
+                            }
+
+                            if (current.CATSPM != default) {
+                                if (current.CATSPM == "-32767")
+                                    instance.categoryOfSpecialPurposeMark = EnumHelper.GetEnumValues<categoryOfSpecialPurposeMark>(-1);
+                                else {
+                                    instance.categoryOfSpecialPurposeMark = EnumHelper.GetEnumValues<categoryOfSpecialPurposeMark>(current.CATSPM);
+                                }
+                            }
+
                             if (current.COLOUR != default) {
                                 instance.colour = EnumHelper.GetEnumValues<colour>(current.COLOUR);
                             }
@@ -1395,7 +1195,6 @@ namespace S100Framework.Applications
                             if (current.COLPAT != default) {
                                 instance.colourPattern = GetColourPattern(current.COLPAT);
                             }
-
 
                             instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
                             
@@ -1406,34 +1205,18 @@ namespace S100Framework.Applications
 
                             // TODO: interoperabilityidentifier
 
-                            if (current.MARSYS != null) {
-                                instance.marksNavigationalSystemOf = EnumHelper.GetEnumValue<marksNavigationalSystemOf>(current.MARSYS);
+                            if (current.MARSYS.HasValue) {
+                                instance.marksNavigationalSystemOf = EnumHelper.GetEnumValue<marksNavigationalSystemOf>(current.MARSYS.Value);
                             }
 
                             if (current.NATCON != default) {
                                 instance.natureOfConstruction = EnumHelper.GetEnumValues<natureOfConstruction>(current.NATCON);
                             }
 
-                            if (current.PERSTA != default) {
-                                if (current.PEREND != default) {
-                                    if (DateHelper.TryConvertToDateOnly(current.PEREND, out var dateEnd)) {
-                                        if (DateHelper.TryConvertToDateOnly(current.PERSTA, out var dateStart)) {
-                                            instance.periodicDateRange = new List<periodicDateRange>() {
-                                                new periodicDateRange() {
-                                                    dateStart = dateStart,
-                                                    dateEnd = dateEnd
-                                                }
-                                            };
-                                        }
-                                        else {
-                                            Logger.Current.DataError(current.OBJECTID.Value, tableName, current.LNAM, $"Cannot convert date {current.PERSTA}");
-                                        }
-                                    }
-                                    else {
-                                        Logger.Current.DataError(current.OBJECTID.Value, tableName, current.LNAM, $"Cannot convert date {current.PEREND}");
-                                    }
 
-                                }
+                            DateHelper.TryGetPeriodicDateRange(current.PERSTA, current.PEREND, out var periodicDateRange);
+                            if (periodicDateRange != default) {
+                                instance.periodicDateRange = periodicDateRange;
                             }
 
                             if (current.CONRAD.HasValue) {
@@ -1444,25 +1227,18 @@ namespace S100Framework.Applications
                                 instance.status = GetStatus(current.STATUS);
                             }
 
-                            // topmarkdayShape for topmark
-                            topmarkDaymarkShape? topmarkDaymark = null;
-
-                            if (current.TOPSHP.HasValue) {
-                                topmarkDaymark = EnumHelper.GetEnumValue<topmarkDaymarkShape>(current.TOPSHP.Value);
+                            if (current.VERLEN.HasValue) {
+                                instance.verticalLength = current.VERLEN.Value;
                             }
-
-                            instance.verticalLength = current.VERLEN;
-
-                            //if (!topmarkDaymarkHasValue && instance.topmark != null) {
-                            //    Logger.Current.DataError(current.OBJECTID.Value, tableName, current.LNAM, $"Missing topmarkDaymark info on {nameof(instance)}");
-                            //}
 
                             var topmark = relatedEquipment.GetTopMark(current);
-                            instance.topmark = topmark;
-
-                            if (plts_comp_scale != default) {
-                                //instance.scaleMinimum = plts_comp_scale;
+                            if (topmark != null) {
+                                instance.topmark = topmark;
                             }
+
+                            //if (plts_comp_scale != default) {
+                            //  instance.scaleMinimum = plts_comp_scale;
+                            //}
 
                             AddInformation(instance.information, feature);
 
@@ -1473,9 +1249,7 @@ namespace S100Framework.Applications
                             buffer["code"] = instance.GetType().Name;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                             SetShape(buffer,current.SHAPE);
-
                             //insert.Insert(buffer);
-
 
                             var featureN = featureClass.CreateRow(buffer);
                             var name = Convert.ToString(featureN["name"]);
@@ -1499,6 +1273,13 @@ namespace S100Framework.Applications
                             var instance = new Daymark();
 
                             #region aidstonavigation
+                            if (current.CATSPM != default) {
+                                if (current.CATSPM == "-32767")
+                                    instance.categoryOfSpecialPurposeMark = EnumHelper.GetEnumValues<categoryOfSpecialPurposeMark>(-1);
+                                else {
+                                    instance.categoryOfSpecialPurposeMark = EnumHelper.GetEnumValues<categoryOfSpecialPurposeMark>(current.CATSPM);
+                                }
+                            }
 
                             if (current.COLOUR != default) {
                                 instance.colour = EnumHelper.GetEnumValues<colour>(current.COLOUR);
@@ -1529,26 +1310,9 @@ namespace S100Framework.Applications
                                 instance.natureOfConstruction = EnumHelper.GetEnumValues<natureOfConstruction>(current.NATCON);
                             }
 
-                            if (current.PERSTA != default) {
-                                if (current.PEREND != default) {
-                                    if (DateHelper.TryConvertToDateOnly(current.PEREND, out var dateEnd)) {
-                                        if (DateHelper.TryConvertToDateOnly(current.PERSTA, out var dateStart)) {
-                                            instance.periodicDateRange = new List<periodicDateRange>() {
-                                                new periodicDateRange() {
-                                                    dateStart = dateStart,
-                                                    dateEnd = dateEnd
-                                                }
-                                            };
-                                        }
-                                        else {
-                                            Logger.Current.DataError(current.OBJECTID.Value, tableName, current.LNAM, $"Cannot convert date {current.PERSTA}");
-                                        }
-                                    }
-                                    else {
-                                        Logger.Current.DataError(current.OBJECTID.Value, tableName, current.LNAM, $"Cannot convert date {current.PEREND}");
-                                    }
-
-                                }
+                            DateHelper.TryGetPeriodicDateRange(current.PERSTA, current.PEREND, out var periodicDateRange);
+                            if (periodicDateRange != default) {
+                                instance.periodicDateRange = periodicDateRange;
                             }
 
                             if (current.CONRAD.HasValue) {
@@ -1559,32 +1323,32 @@ namespace S100Framework.Applications
                                 instance.status = GetStatus(current.STATUS);
                             }
 
-                            // topmarkdayShape for topmark
-                            topmarkDaymarkShape? topmarkDaymark = null;
-
                             if (current.TOPSHP.HasValue) {
-                                topmarkDaymark = EnumHelper.GetEnumValue<topmarkDaymarkShape>(current.TOPSHP.Value);
+                                instance.topmarkDaymarkShape = EnumHelper.GetEnumValue<topmarkDaymarkShape>(current.TOPSHP.Value);
                             }
 
-                            instance.verticalLength = current.VERLEN;
-                            //if (!topmarkDaymarkHasValue && instance.topmark != null) {
-                            //    Logger.Current.DataError(current.OBJECTID.Value, tableName, current.LNAM, $"Missing topmarkDaymark info on {nameof(instance)}");
+                            if (current.VERLEN.HasValue) {
+                                instance.verticalLength = current.VERLEN.Value;
+                            }
+
+                            // TODO: shapeInformation
+
+                            //if (plts_comp_scale != default) {
+                            //  instance.scaleMinimum = plts_comp_scale;
                             //}
-
-                            if (plts_comp_scale != default) {
-                                //instance.scaleMinimum = plts_comp_scale;
-                            }
 
                             AddInformation(instance.information, feature);
 
-                            instance.pictorialRepresentation = current.PICREP;
+
+                            if (current.PICREP != default) {
+                                instance.pictorialRepresentation = current.PICREP;
+                            }
 
                             buffer["ps"] = ps101;
                             buffer["code"] = instance.GetType().Name;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                             SetShape(buffer,current.SHAPE);
                             //insert.Insert(buffer);
-
 
                             var featureN = featureClass.CreateRow(buffer);
                             var name = Convert.ToString(featureN["name"]);
@@ -1613,6 +1377,13 @@ namespace S100Framework.Applications
                             var instance = new FogSignal();
 
                             #region aidstonavigation
+                            if (current.CATFOG.HasValue!= default) {
+                                if (current.CATFOG.Value == -32767)
+                                    instance.categoryOfFogSignal = EnumHelper.GetEnumValue<categoryOfFogSignal>(-1);
+                                else {
+                                    instance.categoryOfFogSignal = EnumHelper.GetEnumValue<categoryOfFogSignal>(current.CATFOG.Value);
+                                }
+                            }
 
                             instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
 
@@ -1623,49 +1394,46 @@ namespace S100Framework.Applications
 
                             // TODO: interoperabilityidentifier
 
-                            if (current.PERSTA != default) {
-                                if (current.PEREND != default) {
-                                    if (DateHelper.TryConvertToDateOnly(current.PEREND, out var dateEnd)) {
-                                        if (DateHelper.TryConvertToDateOnly(current.PERSTA, out var dateStart)) {
-                                            instance.periodicDateRange = new List<periodicDateRange>() {
-                                                new periodicDateRange() {
-                                                    dateStart = dateStart,
-                                                    dateEnd = dateEnd
-                                                }
-                                            };
-                                        }
-                                        else {
-                                            Logger.Current.DataError(current.OBJECTID.Value, tableName, current.LNAM, $"Cannot convert date {current.PERSTA}");
-                                        }
-                                    }
-                                    else {
-                                        Logger.Current.DataError(current.OBJECTID.Value, tableName, current.LNAM, $"Cannot convert date {current.PEREND}");
-                                    }
+                            DateHelper.TryGetPeriodicDateRange(current.PERSTA, current.PEREND, out var periodicDateRange);
+                            if (periodicDateRange != default) {
+                                instance.periodicDateRange = periodicDateRange;
+                            }
 
-                                }
+                            if (current.SIGFRQ.HasValue) {
+                                instance.signalFrequency = current.SIGFRQ.Value;
+                            }
+                            if (current.SIGGEN.HasValue) {
+                                instance.signalGeneration = EnumHelper.GetEnumValue<signalGeneration>(current.SIGGEN.Value);
+                            }
+                            if (current.SIGGRP != default) {
+                                instance.signalGroup = current.SIGGRP;
+                            }
+                            if (current.SIGPER != default) {
+                                instance.signalPeriod = current.SIGPER;
+                            }
+
+                            if (current.SIGSEQ != default) {
+                                instance.signalSequence = GetSignalSequences(current.SIGSEQ);
                             }
 
                             if (current.STATUS != default) {
                                 instance.status = GetStatus(current.STATUS);
                             }
 
-                            // topmarkdayShape for topmark
-                            topmarkDaymarkShape? topmarkDaymark = null;
+                            instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
 
-                            if (current.TOPSHP.HasValue) {
-                                topmarkDaymark = EnumHelper.GetEnumValue<topmarkDaymarkShape>(current.TOPSHP.Value);
+                            // TODO: interoperabilityidentifier
+
+                            if (current.VALMXR.HasValue) {
+                                instance.valueOfMaximumRange = current.VALMXR.Value;
                             }
 
-                            //if (!topmarkDaymarkHasValue && instance.topmark != null) {
-                            //    Logger.Current.DataError(current.OBJECTID.Value, tableName, current.LNAM, $"Missing topmarkDaymark info on {nameof(instance)}");
+                            //if (plts_comp_scale != default) {
+                            //  instance.scaleMinimum = plts_comp_scale;
                             //}
 
-
-                            if (plts_comp_scale != default) {
-                                //instance.scaleMinimum = plts_comp_scale;
-                            }
-
                             AddInformation(instance.information, feature);
+
                             buffer["ps"] = ps101;
                             buffer["code"] = instance.GetType().Name;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
@@ -1700,6 +1468,7 @@ namespace S100Framework.Applications
                             var lnam = current.LNAM;
                             if (FeatureRelations.GetS101CatlitTypeFrom(current) == typeof(LightSectored)) {
                                 var instance = CreateLightSectored(new List<AidsToNavigationP>() { current }); // No related sectors - only the one on the feature.
+                                
                                 AddInformation(instance.information, feature);
 
                                 buffer["ps"] = ps101;
@@ -1785,30 +1554,23 @@ namespace S100Framework.Applications
                                 instance.fixedDateRange = dateRange;
                             }
 
+                            if (current.HORLEN.HasValue) {
+                                instance.horizontalLength = current.HORLEN.Value;
+                            }
+
+                            if (current.HORWID.HasValue) {
+                                instance.horizontalWidth = current.HORWID.Value;
+                            }
+
+                            // TODO: interoperabilityidentifier
+
                             if (current.NATCON != default) {
                                 instance.natureOfConstruction = EnumHelper.GetEnumValues<natureOfConstruction>(current.NATCON);
                             }
 
-                            if (current.PERSTA != default) {
-                                if (current.PEREND != default) {
-                                    if (DateHelper.TryConvertToDateOnly(current.PEREND, out var dateEnd)) {
-                                        if (DateHelper.TryConvertToDateOnly(current.PERSTA, out var dateStart)) {
-                                            instance.periodicDateRange = new List<periodicDateRange>() {
-                                                new periodicDateRange() {
-                                                    dateStart = dateStart,
-                                                    dateEnd = dateEnd
-                                                }
-                                            };
-                                        }
-                                        else {
-                                            Logger.Current.DataError(current.OBJECTID.Value, tableName, current.LNAM, $"Cannot convert date {current.PERSTA}");
-                                        }
-                                    }
-                                    else {
-                                        Logger.Current.DataError(current.OBJECTID.Value, tableName, current.LNAM, $"Cannot convert date {current.PEREND}");
-                                    }
-
-                                }
+                            DateHelper.TryGetPeriodicDateRange(current.PERSTA, current.PEREND, out var periodicDateRange);
+                            if (periodicDateRange != default) {
+                                instance.periodicDateRange = periodicDateRange;
                             }
 
                             if (current.CONRAD.HasValue) {
@@ -1819,20 +1581,14 @@ namespace S100Framework.Applications
                                 instance.status = GetStatus(current.STATUS);
                             }
 
-                            // topmarkdayShape for topmark
-                            topmarkDaymarkShape? topmarkDaymark = null;
-
-                            if (current.TOPSHP.HasValue) {
-                                topmarkDaymark = EnumHelper.GetEnumValue<topmarkDaymarkShape>(current.TOPSHP.Value);
+                            var topmark = relatedEquipment.GetTopMark(current);
+                            if (topmark != null) {
+                                instance.topmark = topmark;
                             }
 
-                            instance.verticalLength = current.VERLEN;
-
-                            //if (!topmarkDaymarkHasValue && instance.topmark != null) {
-                            //    Logger.Current.DataError(current.OBJECTID.Value, tableName, current.LNAM, $"Missing topmarkDaymark info on {nameof(instance)}");
-                            //}
-                            var topmark = relatedEquipment.GetTopMark(current);
-                            instance.topmark = topmark;
+                            if (current.VERLEN.HasValue) {
+                                instance.verticalLength = current.VERLEN;
+                            }
 
                             if (current.CONVIS.HasValue) {
                                 if (current.CONVIS.Value == -32767)
@@ -1842,13 +1598,15 @@ namespace S100Framework.Applications
                                 }
                             }
 
-                            if (plts_comp_scale != default) {
-                                //instance.scaleMinimum = plts_comp_scale;
-                            }
+                            //if (plts_comp_scale != default) {
+                            //  instance.scaleMinimum = plts_comp_scale;
+                            //}
 
                             AddInformation(instance.information, feature);
 
-                            instance.pictorialRepresentation = current.PICREP;
+                            if (current.PICREP != default) {
+                                instance.pictorialRepresentation = current.PICREP;
+                            }
 
                             buffer["ps"] = ps101;
                             buffer["code"] = instance.GetType().Name;
@@ -1893,32 +1651,23 @@ namespace S100Framework.Applications
                                 instance.fixedDateRange = dateRange;
                             }
 
+                            if (current.HORLEN.HasValue) {
+                                instance.horizontalLength = current.HORLEN.Value;
+                            }
+
+                            if (current.HORWID.HasValue) {
+                                instance.horizontalWidth = current.HORWID.Value;
+                            }
+
                             // TODO: interoperabilityidentifier
 
                             if (current.NATCON != default) {
                                 instance.natureOfConstruction = EnumHelper.GetEnumValues<natureOfConstruction>(current.NATCON);
                             }
 
-                            if (current.PERSTA != default) {
-                                if (current.PEREND != default) {
-                                    if (DateHelper.TryConvertToDateOnly(current.PEREND, out var dateEnd)) {
-                                        if (DateHelper.TryConvertToDateOnly(current.PERSTA, out var dateStart)) {
-                                            instance.periodicDateRange = new List<periodicDateRange>() {
-                                                new periodicDateRange() {
-                                                    dateStart = dateStart,
-                                                    dateEnd = dateEnd
-                                                }
-                                            };
-                                        }
-                                        else {
-                                            Logger.Current.DataError(current.OBJECTID.Value, tableName, current.LNAM, $"Cannot convert date {current.PERSTA}");
-                                        }
-                                    }
-                                    else {
-                                        Logger.Current.DataError(current.OBJECTID.Value, tableName, current.LNAM, $"Cannot convert date {current.PEREND}");
-                                    }
-
-                                }
+                            DateHelper.TryGetPeriodicDateRange(current.PERSTA, current.PEREND, out var periodicDateRange);
+                            if (periodicDateRange != default) {
+                                instance.periodicDateRange = periodicDateRange;
                             }
 
                             if (current.CONRAD.HasValue) {
@@ -1929,18 +1678,9 @@ namespace S100Framework.Applications
                                 instance.status = GetStatus(current.STATUS);
                             }
 
-                            // topmarkdayShape for topmark
-                            topmarkDaymarkShape? topmarkDaymark = null;
-
-                            if (current.TOPSHP.HasValue) {
-                                topmarkDaymark = EnumHelper.GetEnumValue<topmarkDaymarkShape>(current.TOPSHP.Value);
+                            if (current.VERLEN.HasValue) {
+                                instance.verticalLength = current.VERLEN;
                             }
-
-                            instance.verticalLength = current.VERLEN;
-                            //if (!topmarkDaymarkHasValue && instance.topmark != null) {
-                            //    Logger.Current.DataError(current.OBJECTID.Value, tableName, current.LNAM, $"Missing topmarkDaymark info on {nameof(instance)}");
-                            //}
-
 
                             if (current.CONVIS.HasValue) {
                                 if (current.CONVIS.Value == -32767)
@@ -1950,21 +1690,21 @@ namespace S100Framework.Applications
                                 }
                             }
 
-                            if (plts_comp_scale != default) {
-                                //instance.scaleMinimum = plts_comp_scale;
-                            }
+                            //if (plts_comp_scale != default) {
+                            //  instance.scaleMinimum = plts_comp_scale;
+                            //}
 
                             AddInformation(instance.information, feature);
 
-                            instance.pictorialRepresentation = current.PICREP;
-
+                            if (current.PICREP != default) {
+                                instance.pictorialRepresentation = current.PICREP;
+                            }
 
                             buffer["ps"] = ps101;
                             buffer["code"] = instance.GetType().Name;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
-                            SetShape(buffer,current.SHAPE);
+                            SetShape(buffer, current.SHAPE);
                             //insert.Insert(buffer);
-
 
                             var featureN = featureClass.CreateRow(buffer);
                             var name = Convert.ToString(featureN["name"]);
@@ -1981,8 +1721,6 @@ namespace S100Framework.Applications
                             relatedEquipment.CreateRelatedEquipment(current, name, target);
 
                             #endregion related
-
-
                         }
                         break;
                     case 85: { // RADRFL_RadarReflector // NOT PART OF Esri PLTS_MASTER_SLAVES
@@ -2001,57 +1739,25 @@ namespace S100Framework.Applications
 
                             // TODO: interoperabilityidentifier
 
-                            if (current.PERSTA != default) {
-                                if (current.PEREND != default) {
-                                    if (DateHelper.TryConvertToDateOnly(current.PEREND, out var dateEnd)) {
-                                        if (DateHelper.TryConvertToDateOnly(current.PERSTA, out var dateStart)) {
-                                            instance.periodicDateRange = new List<periodicDateRange>() {
-                                                new periodicDateRange() {
-                                                    dateStart = dateStart,
-                                                    dateEnd = dateEnd
-                                                }
-                                            };
-                                        }
-                                        else {
-                                            Logger.Current.DataError(current.OBJECTID.Value, tableName, current.LNAM, $"Cannot convert date {current.PERSTA}");
-                                        }
-                                    }
-                                    else {
-                                        Logger.Current.DataError(current.OBJECTID.Value, tableName, current.LNAM, $"Cannot convert date {current.PEREND}");
-                                    }
-
-                                }
+                            DateHelper.TryGetPeriodicDateRange(current.PERSTA, current.PEREND, out var periodicDateRange);
+                            if (periodicDateRange != default) {
+                                instance.periodicDateRange = periodicDateRange;
                             }
 
                             if (current.STATUS != default) {
                                 instance.status = GetStatus(current.STATUS);
                             }
 
-                            // topmarkdayShape for topmark
-                            topmarkDaymarkShape? topmarkDaymark = null;
-
-                            if (current.TOPSHP.HasValue) {
-                                topmarkDaymark = EnumHelper.GetEnumValue<topmarkDaymarkShape>(current.TOPSHP.Value);
-                            }
-                            //if (!topmarkDaymarkHasValue && instance.topmark != null) {
-                            //    Logger.Current.DataError(current.OBJECTID.Value, tableName, current.LNAM, $"Missing topmarkDaymark info on {nameof(instance)}");
+                            //if (plts_comp_scale != default) {
+                            //  instance.scaleMinimum = plts_comp_scale;
                             //}
 
-                            if (plts_comp_scale != default) {
-                                //instance.scaleMinimum = plts_comp_scale;
-                            }
-
                             AddInformation(instance.information, feature);
-
-
 
                             buffer["ps"] = ps101;
                             buffer["code"] = instance.GetType().Name;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                             SetShape(buffer,current.SHAPE);
-
-                            //insert.Insert(buffer);
-
 
                             var featureN = featureClass.CreateRow(buffer);
                             var name = Convert.ToString(featureN["name"]);
@@ -2076,6 +1782,23 @@ namespace S100Framework.Applications
 
                             #region aidstonavigation
 
+                            if (current.CALSGN != default) {
+                                instance.callSign = current.CALSGN;
+                            }
+
+                            if (current.CATRAS != null) {
+                                if (current.CATRAS == -32767) {
+                                    instance.categoryOfRadarStation = EnumHelper.GetEnumValues<categoryOfRadarStation>(-1);
+                                }
+                                else {
+                                    instance.categoryOfRadarStation = EnumHelper.GetEnumValues<categoryOfRadarStation>(current.CATRAS);
+                                }
+                            }
+                            
+                            if (current.COMCHA != default) {
+                                instance.communicationChannel = current.COMCHA.Split(',').ToList<string>();
+                            }
+
                             instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
 
                             if (current.HEIGHT.HasValue) {
@@ -2084,52 +1807,24 @@ namespace S100Framework.Applications
 
                             // TODO: interoperabilityidentifier
 
-                            if (current.PERSTA != default) {
-                                if (current.PEREND != default) {
-                                    if (DateHelper.TryConvertToDateOnly(current.PEREND, out var dateEnd)) {
-                                        if (DateHelper.TryConvertToDateOnly(current.PERSTA, out var dateStart)) {
-                                            instance.periodicDateRange = new List<periodicDateRange>() {
-                                                new periodicDateRange() {
-                                                    dateStart = dateStart,
-                                                    dateEnd = dateEnd
-                                                }
-                                            };
-                                        }
-                                        else {
-                                            Logger.Current.DataError(current.OBJECTID.Value, tableName, current.LNAM, $"Cannot convert date {current.PERSTA}");
-                                        }
-                                    }
-                                    else {
-                                        Logger.Current.DataError(current.OBJECTID.Value, tableName, current.LNAM, $"Cannot convert date {current.PEREND}");
-                                    }
-
-                                }
+                            DateHelper.TryGetPeriodicDateRange(current.PERSTA, current.PEREND, out var periodicDateRange);
+                            if (periodicDateRange != default) {
+                                instance.periodicDateRange = periodicDateRange;
                             }
 
                             if (current.STATUS != default) {
                                 instance.status = GetStatus(current.STATUS);
                             }
 
-                            // topmarkdayShape for topmark
-                            topmarkDaymarkShape? topmarkDaymark = null;
-
-                            if (current.TOPSHP.HasValue) {
-                                topmarkDaymark = EnumHelper.GetEnumValue<topmarkDaymarkShape>(current.TOPSHP.Value);
+                            if (current.VALMXR.HasValue) {
+                                instance.valueOfMaximumRange = current.VALMXR.Value;
                             }
 
-
-                            //if (!topmarkDaymarkHasValue && instance.topmark != null) {
-                            //    Logger.Current.DataError(current.OBJECTID.Value, tableName, current.LNAM, $"Missing topmarkDaymark info on {nameof(instance)}");
+                            //if (plts_comp_scale != default) {
+                            //  instance.scaleMinimum = plts_comp_scale;
                             //}
 
-
-                            if (plts_comp_scale != default) {
-                                //instance.scaleMinimum = plts_comp_scale;
-                            }
-
                             AddInformation(instance.information, feature);
-
-
 
                             buffer["ps"] = ps101;
                             buffer["code"] = instance.GetType().Name;
@@ -2162,6 +1857,27 @@ namespace S100Framework.Applications
 
                             #region aidstonavigation
 
+                            if (current.CALSGN != default) {
+                                instance.callSign = current.CALSGN;
+                            }
+
+                            if (current.CATROS != null) {
+                                if (current.CATROS == "-32767") {
+                                    instance.categoryOfRadioStation = EnumHelper.GetEnumValues<categoryOfRadioStation>(-1);
+                                }
+                                else {
+                                    instance.categoryOfRadioStation = EnumHelper.GetEnumValues<categoryOfRadioStation>(current.CATROS);
+                                }
+                            }
+
+                            if (current.COMCHA != default) {
+                                instance.communicationChannel = current.COMCHA.Split(',').ToList<string>();
+                            }
+
+                            if (current.ESTRNG.HasValue) {
+                                instance.estimatedRangeOfTransmission = current.ESTRNG.Value;
+                            }
+
                             instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
 
                             DateHelper.TryGetFixedDateRange(current.DATSTA, current.DATEND, out var dateRange);
@@ -2169,54 +1885,31 @@ namespace S100Framework.Applications
                                 instance.fixedDateRange = dateRange;
                             }
 
+                            if (current.SIGFRQ.HasValue) {
+                                instance.frequencyPair = GetFrequencyPair(current.SIGFRQ.Value);
+                            }
+
                             // TODO: interoperabilityidentifier
 
-                            if (current.PERSTA != default) {
-                                if (current.PEREND != default) {
-                                    if (DateHelper.TryConvertToDateOnly(current.PEREND, out var dateEnd)) {
-                                        if (DateHelper.TryConvertToDateOnly(current.PERSTA, out var dateStart)) {
-                                            instance.periodicDateRange = new List<periodicDateRange>() {
-                                                new periodicDateRange() {
-                                                    dateStart = dateStart,
-                                                    dateEnd = dateEnd
-                                                }
-                                            };
-                                        }
-                                        else {
-                                            Logger.Current.DataError(current.OBJECTID.Value, tableName, current.LNAM, $"Cannot convert date {current.PERSTA}");
-                                        }
-                                    }
-                                    else {
-                                        Logger.Current.DataError(current.OBJECTID.Value, tableName, current.LNAM, $"Cannot convert date {current.PEREND}");
-                                    }
-
-                                }
+                            DateHelper.TryGetPeriodicDateRange(current.PERSTA, current.PEREND, out var periodicDateRange);
+                            if (periodicDateRange != default) {
+                                instance.periodicDateRange = periodicDateRange;
                             }
 
                             if (current.STATUS != default) {
                                 instance.status = GetStatus(current.STATUS);
                             }
 
-                            // TODO: topmarkdayShape for topmark
-                            topmarkDaymarkShape? topmarkDaymark = null;
-
-                            if (current.TOPSHP.HasValue) {
-                                topmarkDaymark = EnumHelper.GetEnumValue<topmarkDaymarkShape>(current.TOPSHP.Value);
-                            }
-
-                            if (plts_comp_scale != default) {
-                                //instance.scaleMinimum = plts_comp_scale;
-                            }
+                            //if (plts_comp_scale != default) {
+                            //  instance.scaleMinimum = plts_comp_scale;
+                            //}
 
                             AddInformation(instance.information, feature);
 
                             buffer["ps"] = ps101;
-
                             buffer["code"] = instance.GetType().Name;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
-                            SetShape(buffer,current.SHAPE);
-                            //insert.Insert(buffer);
-
+                            SetShape(buffer, current.SHAPE);
 
                             var featureN = featureClass.CreateRow(buffer);
                             var name = Convert.ToString(featureN["name"]);
@@ -2261,47 +1954,19 @@ namespace S100Framework.Applications
 
                             // TODO: interoperabilityidentifier
 
-                            if (current.PERSTA != default) {
-                                if (current.PEREND != default) {
-                                    if (DateHelper.TryConvertToDateOnly(current.PEREND, out var dateEnd)) {
-                                        if (DateHelper.TryConvertToDateOnly(current.PERSTA, out var dateStart)) {
-                                            instance.periodicDateRange = new List<periodicDateRange>() {
-                                                new periodicDateRange() {
-                                                    dateStart = dateStart,
-                                                    dateEnd = dateEnd
-                                                }
-                                            };
-                                        }
-                                        else {
-                                            Logger.Current.DataError(current.OBJECTID.Value, tableName, current.LNAM, $"Cannot convert date {current.PERSTA}");
-                                        }
-                                    }
-                                    else {
-                                        Logger.Current.DataError(current.OBJECTID.Value, tableName, current.LNAM, $"Cannot convert date {current.PEREND}");
-                                    }
 
-                                }
+                            DateHelper.TryGetPeriodicDateRange(current.PERSTA, current.PEREND, out var periodicDateRange);
+                            if (periodicDateRange != default) {
+                                instance.periodicDateRange = periodicDateRange;
                             }
 
                             if (current.STATUS != default) {
                                 instance.status = GetStatus(current.STATUS);
                             }
 
-                            // topmarkdayShape for topmark
-                            topmarkDaymarkShape? topmarkDaymark = null;
-
-                            if (current.TOPSHP.HasValue) {
-                                topmarkDaymark = EnumHelper.GetEnumValue<topmarkDaymarkShape>(current.TOPSHP.Value);
-                            }
-
-                            //if (!topmarkDaymarkHasValue && instance.topmark != null) {
-                            //    Logger.Current.DataError(current.OBJECTID.Value, tableName, current.LNAM, $"Missing topmarkDaymark info on {nameof(instance)}");
+                            //if (plts_comp_scale != default) {
+                            //  instance.scaleMinimum = plts_comp_scale;
                             //}
-
-
-                            if (plts_comp_scale != default) {
-                                //instance.scaleMinimum = plts_comp_scale;
-                            }
 
                             AddInformation(instance.information, feature);
 
@@ -2309,7 +1974,6 @@ namespace S100Framework.Applications
                             buffer["code"] = instance.GetType().Name;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                             SetShape(buffer,current.SHAPE);
-                            //insert.Insert(buffer);
 
                             var featureN = featureClass.CreateRow(buffer);
                             var name = Convert.ToString(featureN["name"]);
@@ -2326,79 +1990,74 @@ namespace S100Framework.Applications
                             relatedEquipment.CreateRelatedEquipment(current, name, target);
 
                             #endregion related
-
-
                         }
                         break;
                     case 105: { // RTPBCN_RadarTransponderBeacon // SLAVE RIND: 2
                             var instance = new RadarTransponderBeacon();
 
-
                             #region aidstonavigation
+
+                            if (current.CATROS != null) {
+                                if (current.CATROS == "-32767") {
+                                    instance.categoryOfRadarTransponderBeacon = EnumHelper.GetEnumValue<categoryOfRadarTransponderBeacon>(-1);
+                                }
+                                else {
+                                    instance.categoryOfRadarTransponderBeacon = EnumHelper.GetEnumValue<categoryOfRadarTransponderBeacon>(current.CATROS);
+                                }
+                            }
+
                             instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
 
-                            if (current.DATSTA != default) {
-                                if (current.DATEND != default) {
-                                    if (DateHelper.TryConvertToDateOnly(current.DATEND, out var dateEnd)) {
-                                        if (DateHelper.TryConvertToDateOnly(current.DATSTA, out var dateStart)) {
-                                            instance.fixedDateRange = new fixedDateRange() {
-                                                dateStart = dateStart,
-                                                dateEnd = dateEnd
-                                            };
-                                        }
-                                        else {
-                                        }
-                                    }
-                                    else {
-                                        Logger.Current.DataError(current.OBJECTID.Value, tableName, current.LNAM, $"Cannot convert date {current.DATEND}");
-                                    }
-                                }
+                            DateHelper.TryGetFixedDateRange(current.DATSTA, current.DATEND, out var dateRange);
+                            if (dateRange != default) {
+                                instance.fixedDateRange = dateRange;
                             }
 
                             // TODO: interoperabilityidentifier
 
-                            if (current.PERSTA != default) {
-                                if (current.PEREND != default) {
-                                    if (DateHelper.TryConvertToDateOnly(current.PEREND, out var dateEnd)) {
-                                        if (DateHelper.TryConvertToDateOnly(current.PERSTA, out var dateStart)) {
-                                            instance.periodicDateRange = new List<periodicDateRange>() {
-                                                new periodicDateRange() {
-                                                    dateStart = dateStart,
-                                                    dateEnd = dateEnd
-                                                }
-                                            };
-                                        }
-                                        else {
-                                            Logger.Current.DataError(current.OBJECTID.Value, tableName, current.LNAM, $"Cannot convert date {current.PERSTA}");
-                                        }
-                                    }
-                                    else {
-                                        Logger.Current.DataError(current.OBJECTID.Value, tableName, current.LNAM, $"Cannot convert date {current.PEREND}");
-                                    }
+                            DateHelper.TryGetPeriodicDateRange(current.PERSTA, current.PEREND, out var periodicDateRange);
+                            if (periodicDateRange != default) {
+                                instance.periodicDateRange = periodicDateRange;
+                            }
 
-                                }
+
+                            // TODO: radarWaveLengths #30 on action point list.
+                            //if (current.RADWAL != default) {
+                            //    instance.radarWaveLength = GetRadarWaveLengths(current.RADWAL);
+                            //}
+
+                            if (current.SECTR1.HasValue && current.SECTR2.HasValue) {
+                                instance.sectorLimit = new sectorLimit() {
+                                    sectorLimitOne = new sectorLimitOne {
+                                        sectorBearing = current.SECTR1.Value,
+                                    },
+                                    sectorLimitTwo = new sectorLimitTwo {
+                                        sectorBearing = current.SECTR2.Value
+                                    }
+                                };
+                            }
+
+                            var rhythmOfLight = GetRythmOfLight(current);
+
+                            if (current.SIGGRP != default) {
+                                instance.signalGroup = current.SIGGRP;
+                            }
+
+                            if (current.SIGSEQ != default) {
+                                instance.signalSequence = rhythmOfLight.signalSequence;
                             }
 
                             if (current.STATUS != default) {
                                 instance.status = GetStatus(current.STATUS);
                             }
 
-                            // topmarkdayShape for topmark
-                            topmarkDaymarkShape? topmarkDaymark = null;
-
-                            if (current.TOPSHP.HasValue) {
-                                topmarkDaymark = EnumHelper.GetEnumValue<topmarkDaymarkShape>(current.TOPSHP.Value);
+                            if (current.VALMXR.HasValue) {
+                                instance.valueOfMaximumRange = current.VALMXR.Value;
                             }
 
-
-                            //if (!topmarkDaymarkHasValue && instance.topmark != null) {
-                            //    Logger.Current.DataError(current.OBJECTID.Value, tableName, current.LNAM, $"Missing topmarkDaymark info on {nameof(instance)}");
+                            //if (plts_comp_scale != default) {
+                            //  instance.scaleMinimum = plts_comp_scale;
                             //}
-
-
-                            if (plts_comp_scale != default) {
-                                //instance.scaleMinimum = plts_comp_scale;
-                            }
 
                             AddInformation(instance.information, feature);
 
@@ -2406,7 +2065,6 @@ namespace S100Framework.Applications
                             buffer["code"] = instance.GetType().Name;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                             SetShape(buffer,current.SHAPE);
-                            //insert.Insert(buffer);
 
                             var featureN = featureClass.CreateRow(buffer);
                             var name = Convert.ToString(featureN["name"]);
@@ -2454,17 +2112,33 @@ namespace S100Framework.Applications
             Logger.Current.DataTotalCount(tableName, recordCount, convertedCount);
         }
 
+        private static List<radarWaveLength> GetRadarWaveLengths(string radwal) {
+            var result = new List<radarWaveLength>();
+            string[] radwals = radwal.Split(',');
+            if (radwals.Length == 1) {
+                result.Add(new radarWaveLength() {
+                    waveLengthValue = Decimal.Parse(radwals[0])
+                });
+            } else {
+                result.Add(new radarWaveLength() {
+                    radarBand = radwals[0],
+                    waveLengthValue = Decimal.Parse(radwals[1])
+                });
+
+            }
+            return result;
+        }
+
+        private static frequencyPair? GetFrequencyPair(int frequencyShoreStationTransmits) {
+            return new frequencyPair() {
+                frequencyShoreStationTransmits = frequencyShoreStationTransmits
+            };
+        }
+
         internal static LightAllAround CreateLightAllAround(AidsToNavigationP current) {
             var instance = new LightAllAround();
 
-            if (current.COLOUR != default) {
-                instance.colour = GetColours(current.COLOUR);
-            }
-
-            instance.rhythmOfLight = GetRythmOfLight(current);
-
             if (current.CATLIT != null) {
-
                 if (current.CATLIT == "-32767") {
                     instance.categoryOfLight = EnumHelper.GetEnumValues<categoryOfLight>(-1);
                 }
@@ -2473,39 +2147,49 @@ namespace S100Framework.Applications
                 }
             }
 
+            if (current.COLOUR != default) {
+                instance.colour = GetColours(current.COLOUR);
+            }
+
             if (current.EXCLIT.HasValue) {
                 instance.exhibitionConditionOfLight = EnumHelper.GetEnumValue<exhibitionConditionOfLight>(current.EXCLIT.Value);
             }
+
+            instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
 
             DateHelper.TryGetFixedDateRange(current.DATSTA, current.DATEND, out var dateRange);
             if (dateRange != default) {
                 instance.fixedDateRange = dateRange;
             }
 
-            instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
-
-            //if (current.PLTS_COMP_SCALE.HasValue) {
-            //    instance.scaleMinimum = current.PLTS_COMP_SCALE.Value;
-            //}
-
-            if (current.STATUS != default) {
-                instance.status = GetStatus(current.STATUS);
-            }
-
-            if (current.SIGGEN != null) {
-                instance.signalGeneration = EnumHelper.GetEnumValue<signalGeneration>(current.SIGGEN.Value);
-            }
+            // flareBearing is not populated. New field.
 
             if (current.HEIGHT.HasValue) {
                 instance.height = current.HEIGHT.Value;
             }
 
-            if (current.EXCLIT.HasValue) {
-                instance.exhibitionConditionOfLight = EnumHelper.GetEnumValue<exhibitionConditionOfLight>(current.EXCLIT);
+            // TODO: interoperabilityidentifier
+
+            if (current.LITVIS != null) {
+                instance.lightVisibility = EnumHelper.GetEnumValue<lightVisibility>(current.LITVIS);
+            }
+
+            /*
+                The S-101 Boolean type attribute major light has been introduced in S-101 to aid in improved
+                portrayal of lights in ECDIS. This attribute will be populated as True during the automated conversion
+                process for all lights having a nominal range of 10 Nautical Miles or greater.
+            */
+
+            if (current.VALNMR.HasValue) {
+                instance.valueOfNominalRange = current.VALNMR.Value;
+
+                if (current.VALNMR.Value >= 10.0m) {
+                    instance.majorLight = true;
+                }
             }
 
             if (current.MARSYS.HasValue) {
-                instance.marksNavigationalSystemOf = EnumHelper.GetEnumValue<marksNavigationalSystemOf>(current.MARSYS);
+                instance.marksNavigationalSystemOf = EnumHelper.GetEnumValue<marksNavigationalSystemOf>(current.MARSYS.Value);
             }
 
             if (current.MLTYLT.HasValue) {
@@ -2515,48 +2199,160 @@ namespace S100Framework.Applications
                 };
             }
 
+            DateHelper.TryGetPeriodicDateRange(current.PERSTA, current.PEREND, out var periodicDateRange);
+            if (periodicDateRange != default) {
+                instance.periodicDateRange = periodicDateRange;
+            }
+
+            instance.rhythmOfLight = GetRythmOfLight(current);
+
+            DateHelper.TryGetFixedDateRange(current.DATSTA, current.DATEND, out var fixedDateRange);
+            if (dateRange != default) {
+                instance.fixedDateRange = fixedDateRange;
+            }
+
+            if (current.SIGGEN != null) {
+                instance.signalGeneration = EnumHelper.GetEnumValue<signalGeneration>(current.SIGGEN.Value);
+            }
+
+            if (current.STATUS != default) {
+                instance.status = GetStatus(current.STATUS);
+            }
+
+            if (current.VALNMR.HasValue) {
+                instance.valueOfNominalRange = current.VALNMR.Value;
+            }
+
+            if (current.VERDAT.HasValue) {
+                instance.verticalDatum = EnumHelper.GetEnumValue<verticalDatum>(current.VERDAT.Value);
+            }
+
+            if (current.VERLEN.HasValue) {
+                instance.verticalLength = current.VERLEN.Value;
+            }
+
+            //if (plts_comp_scale != default) {
+            //  instance.scaleMinimum = plts_comp_scale;
+            //}
+
             return instance;
         }
 
         internal static LightFogDetector CreateLightFogDetector(AidsToNavigationP current) {
             var instance = new LightFogDetector();
-            //if (current.PLTS_COMP_SCALE.HasValue) {
-            //    instance.scaleMinimum = current.PLTS_COMP_SCALE.Value;
-            //}
+
             if (current.COLOUR != default) {
                 instance.colour = GetColours(current.COLOUR);
+            }
+
+            instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
+
+            DateHelper.TryGetFixedDateRange(current.DATSTA, current.DATEND, out var dateRange);
+            if (dateRange != default) {
+                instance.fixedDateRange = dateRange;
+            }
+
+            // flareBearing is not populated. New field.
+
+            if (current.HEIGHT.HasValue) {
+                instance.height = current.HEIGHT.Value;
+            }
+
+            // DODO: Interoperability identifier
+
+            DateHelper.TryGetPeriodicDateRange(current.PERSTA, current.PEREND, out var periodicDateRange);
+            if (periodicDateRange != default) {
+                instance.periodicDateRange = periodicDateRange;
+            }
+
+            instance.rhythmOfLight = GetRythmOfLight(current);
+
+            if (current.SIGGEN != null) {
+                instance.signalGeneration = EnumHelper.GetEnumValue<signalGeneration>(current.SIGGEN.Value);
             }
 
             if (current.STATUS != default) {
                 instance.status = GetStatus(current.STATUS);
             }
 
-            instance.rhythmOfLight = GetRythmOfLight(current);
+            if (current.VERDAT.HasValue) {
+                instance.verticalDatum = EnumHelper.GetEnumValue<verticalDatum>(current.VERDAT.Value);
+            }
 
+            if (current.VERLEN.HasValue) {
+                instance.verticalLength = current.VERLEN.Value;
+            }
 
-            instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
+            //if (current.PLTS_COMP_SCALE.HasValue) {
+            //    instance.scaleMinimum = current.PLTS_COMP_SCALE.Value;
+            //}
+
+            if (current.HEIGHT.HasValue) {
+                instance.height = current.HEIGHT.Value;
+            }
 
             return instance;
         }
 
         internal static LightAirObstruction CreateLightAirObstruction(AidsToNavigationP current) {
-            // LIGHTS: Attribute catlits contains value 6 (air obstruction light)
-            // Build "Light Air Obstruction");
             var instance = new LightAirObstruction();
-            //if (current.PLTS_COMP_SCALE.HasValue) {
-            //    instance.scaleMinimum = current.PLTS_COMP_SCALE.Value;
-            //}
+
             if (current.COLOUR != default) {
                 instance.colour = GetColours(current.COLOUR);
             }
+
+            if (current.EXCLIT.HasValue) {
+                instance.exhibitionConditionOfLight = EnumHelper.GetEnumValue<exhibitionConditionOfLight>(current.EXCLIT.Value);
+            }
+
+            instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
+
+            DateHelper.TryGetFixedDateRange(current.DATSTA, current.DATEND, out var dateRange);
+            if (dateRange != default) {
+                instance.fixedDateRange = dateRange;
+            }
+
+            // flareBearing is not populated. New field.
+
+            // DODO: Interoperability identifier
+
+            if (current.HEIGHT.HasValue) {
+                instance.height = current.HEIGHT.Value;
+            }
+
+            if (current.LITVIS != null) {
+                instance.lightVisibility = EnumHelper.GetEnumValues<lightVisibility>(current.LITVIS);
+            }
+
+            if (current.MLTYLT.HasValue) {
+                instance.multiplicityOfFeatures = new multiplicityOfFeatures() {
+                    multiplicityKnown = true,
+                    numberOfFeatures = current.MLTYLT
+                };
+            }
+
+            DateHelper.TryGetPeriodicDateRange(current.PERSTA, current.PEREND, out var periodicDateRange);
+            if (periodicDateRange != default) {
+                instance.periodicDateRange = periodicDateRange;
+            }
+
+            instance.rhythmOfLight = GetRythmOfLight(current);
 
             if (current.STATUS != default) {
                 instance.status = GetStatus(current.STATUS);
             }
 
-            instance.rhythmOfLight = GetRythmOfLight(current);
+            if (current.VALNMR.HasValue) {
+                instance.valueOfNominalRange = current.VALNMR.Value;
+            }
 
-            instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
+            if (current.VERDAT.HasValue) {
+                instance.verticalDatum = EnumHelper.GetEnumValue<verticalDatum>(current.VERDAT.Value);
+            }
+
+            //if (plts_comp_scale != default) {
+            //  instance.scaleMinimum = plts_comp_scale;
+            //}
 
             return instance;
         }
@@ -2564,44 +2360,35 @@ namespace S100Framework.Applications
         internal static LightSectored CreateLightSectored(IList<AidsToNavigationP> lights) {
             var instance = new LightSectored();
 
-            // TODO: evaluate
+            // TODO: evaluate light sectors based on height. Assume same height for now and take data from first.
             var current = lights.First();
+
+            foreach (var lightN in lights) {
+                if (lightN.CATLIT != default) {
+                    var list = EnumHelper.GetEnumValues<categoryOfLight>(lightN.CATLIT);
+                    instance.categoryOfLight = (List<categoryOfLight>)instance.categoryOfLight.Union(list.ToList<categoryOfLight>());
+                }
+            }
 
             if (current.EXCLIT.HasValue) {
                 instance.exhibitionConditionOfLight = EnumHelper.GetEnumValue<exhibitionConditionOfLight>(current.EXCLIT.Value);
             }
-
+            
+            instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
+            
             DateHelper.TryGetFixedDateRange(current.DATSTA, current.DATEND, out var dateRange);
             if (dateRange != default) {
                 instance.fixedDateRange = dateRange;
             }
 
-            instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
-
-            //if (current.PLTS_COMP_SCALE.HasValue) {
-            //    instance.scaleMinimum = current.PLTS_COMP_SCALE.Value;
-            //}
-
-            if (current.STATUS != default) {
-                instance.status = GetStatus(current.STATUS);
-            }
-
-            if (current.SIGGEN != null) {
-                instance.signalGeneration = EnumHelper.GetEnumValue<signalGeneration>(current.SIGGEN.Value);
-            }
-
-            instance.sectorCharacteristics = (GetSectorCharacteristics(lights));
-
             if (current.HEIGHT.HasValue) {
                 instance.height = current.HEIGHT.Value;
             }
 
-            if (current.EXCLIT.HasValue) {
-                instance.exhibitionConditionOfLight = EnumHelper.GetEnumValue<exhibitionConditionOfLight>(current.EXCLIT);
-            }
+            // TODO: interoperabilityidentifier
 
             if (current.MARSYS.HasValue) {
-                instance.marksNavigationalSystemOf = EnumHelper.GetEnumValue<marksNavigationalSystemOf>(current.MARSYS);
+                instance.marksNavigationalSystemOf = EnumHelper.GetEnumValue<marksNavigationalSystemOf>(current.MARSYS.Value);
             }
 
             if (current.MLTYLT.HasValue) {
@@ -2611,6 +2398,30 @@ namespace S100Framework.Applications
                 };
             }
 
+            DateHelper.TryGetPeriodicDateRange(current.PERSTA, current.PEREND, out var periodicDateRange);
+            if (periodicDateRange != default) {
+                instance.periodicDateRange = periodicDateRange;
+            }
+
+            instance.sectorCharacteristics = (GetSectorCharacteristics(lights));
+
+            if (current.SIGGEN != null) {
+                instance.signalGeneration = EnumHelper.GetEnumValue<signalGeneration>(current.SIGGEN.Value);
+            }
+
+            if (current.STATUS != default) {
+                instance.status = GetStatus(current.STATUS);
+            }
+
+            // TODO: verticalDatum
+
+            if (current.VERDAT.HasValue) {
+                instance.verticalDatum = EnumHelper.GetEnumValue<verticalDatum>(current.VERDAT.Value);
+            }
+
+            //if (current.PLTS_COMP_SCALE.HasValue) {
+            //    instance.scaleMinimum = current.PLTS_COMP_SCALE.Value;
+            //}
 
             return instance;
         }

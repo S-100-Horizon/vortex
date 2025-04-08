@@ -86,7 +86,7 @@ namespace S100Framework.Applications
                             // not relevant for Depth Area in S - 101.
                             //if (current.QUASOU != default) {
                             //    if (current.QUASOU == "-32767")
-                            //        instance.qualityOfVerticalMeasurement = EnumHelper.GetEnumValue<qualityOfVerticalMeasurement>("-1");
+                            //        instance.qualityOfVerticalMeasurement = EnumHelper.GetEnumValue<qualityOfVerticalMeasurement>(-1);
                             //    else {
                             //        instance.qualityOfVerticalMeasurement = EnumHelper.GetEnumValue<qualityOfVerticalMeasurement>(current);
                             //    }

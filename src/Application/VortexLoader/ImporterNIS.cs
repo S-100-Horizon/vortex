@@ -214,6 +214,20 @@ namespace S100Framework.Applications
             var signalPeriodN = current.SIGPER;
 
             var sigseq = current.SIGSEQ;
+
+
+            var signalSequences = GetSignalSequences(current.SIGSEQ);
+
+            var rhythmOfLight = new rhythmOfLight() {
+                lightCharacteristic = EnumHelper.GetEnumValue<lightCharacteristic>(current.LITCHR.Value),
+                signalGroup = signalGroupN,
+                signalPeriod = signalPeriodN,
+                signalSequence = signalSequences
+            };
+            return rhythmOfLight;
+        }
+
+        private static List<signalSequence> GetSignalSequences(string? sigseq) {
             var signalSequences = new List<signalSequence>();
 
             string pattern = @"(\d+\.\d+)|\((\d+\.\d+)\)";
@@ -242,13 +256,7 @@ namespace S100Framework.Applications
                     }
                 }
             }
-            var rhythmOfLight = new rhythmOfLight() {
-                lightCharacteristic = EnumHelper.GetEnumValue<lightCharacteristic>(current.LITCHR.Value),
-                signalGroup = signalGroupN,
-                signalPeriod = signalPeriodN,
-                signalSequence = signalSequences
-            };
-            return rhythmOfLight;
+            return signalSequences;
         }
 
         internal static List<colour> GetColours(string color) {

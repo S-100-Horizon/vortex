@@ -402,7 +402,7 @@ namespace S100Framework.Applications
 
                             if (current.QUASOU != default) {
                                 if (current.QUASOU == "-32767")
-                                    instance.qualityOfVerticalMeasurement = EnumHelper.GetEnumValues<qualityOfVerticalMeasurement>("-1");
+                                    instance.qualityOfVerticalMeasurement = EnumHelper.GetEnumValues<qualityOfVerticalMeasurement>(-1);
                                 else {
                                     instance.qualityOfVerticalMeasurement = EnumHelper.GetEnumValues<qualityOfVerticalMeasurement>(current.QUASOU);
                                 }

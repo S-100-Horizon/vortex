@@ -31,6 +31,7 @@ namespace S100Framework.Applications
             }
             _convertedS57Objects.Add(guid);
         }
+
         internal void AddConverted(string tableName, IList<Guid> guids) {
             if (_tableNameToConvertedS57Objects.ContainsKey(tableName)) {
                 _tableNameToConvertedS57Objects[tableName].UnionWith(guids);
@@ -43,7 +44,6 @@ namespace S100Framework.Applications
             }
             _convertedS57Objects.UnionWith(guids);
         }
-
 
         public static ConversionAnalytics Instance {
             get {
