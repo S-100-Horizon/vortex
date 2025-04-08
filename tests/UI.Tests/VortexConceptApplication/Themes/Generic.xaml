@@ -26,7 +26,7 @@
 
                         <Border Background="{TemplateBinding Background}"
                             BorderBrush="{TemplateBinding BorderBrush}"
-                            BorderThickness="{TemplateBinding BorderThickness}">
+                            BorderThickness="1">
                             <StackPanel Margin="{TemplateBinding Padding}" Orientation="Vertical">
                                 <StackPanel>
                                     <StackPanel Background="{x:Static SystemColors.ControlBrush}">
@@ -60,32 +60,33 @@
                                                                 IsEnabled="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ListViewItem}, Path=IsSelected, Mode=OneWay}">
                                                                 <interactivity:Interaction.Triggers>
                                                                     <interactivity:EventTrigger EventName="Click">
-                                                                        <interactivity:InvokeCommandAction Command="local:S100AttributeEditor.UpdateAssociationIds" />
+                                                                        <interactivity:InvokeCommandAction 
+                                                                            Command="local:S100AttributeEditor.QueryAssociationsCommand" 
+                                                                            CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ListViewItem}}"/>
                                                                     </interactivity:EventTrigger>
                                                                 </interactivity:Interaction.Triggers>
 
                                                                 <xctk:DropDownButton.DropDownContent>
                                                                     <ListBox>
-
+                                                                        <interactivity:Interaction.Triggers>
+                                                                            <interactivity:EventTrigger EventName="Loaded">
+                                                                                <interactivity:InvokeCommandAction 
+                                                                                    Command="local:S100AttributeEditor.associationIdLoaded"
+                                                                                    CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ListBox}}"/>
+                                                                            </interactivity:EventTrigger>
+                                                                        </interactivity:Interaction.Triggers>
+                                                                        <ListBox.ItemTemplate>
+                                                                            <DataTemplate>
+                                                                                <TextBlock Text="{Binding Id}" />
+                                                                            </DataTemplate>
+                                                                        </ListBox.ItemTemplate>
                                                                     </ListBox>
                                                                 </xctk:DropDownButton.DropDownContent>
                                                             </xctk:DropDownButton>
                                                         </DataTemplate>
                                                     </GridViewColumn.CellTemplate>
                                                 </GridViewColumn>
-                                                <GridViewColumn Header="FeatureID">
-                                                    <GridViewColumn.CellTemplate>
-                                                        <DataTemplate>
-                                                            <xctk:DropDownButton
-                                                                Width="Auto" 
-                                                                MinWidth="80" 
-                                                                Height="Auto" 
-                                                                Content="{Binding featureId, Mode=TwoWay}" 
-                                                                IsEnabled="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ListViewItem}, Path=IsSelected, Mode=OneWay}">
-                                                            </xctk:DropDownButton>
-                                                        </DataTemplate>
-                                                    </GridViewColumn.CellTemplate>
-                                                </GridViewColumn>
+                                                <GridViewColumn Header="FeatureID" DisplayMemberBinding="{Binding featureId, Mode=OneTime}"/>
                                                 <GridViewColumn Header="ForeignID">
                                                     <GridViewColumn.CellTemplate>
                                                         <DataTemplate>
@@ -134,23 +135,36 @@
                                                                 Height="Auto" 
                                                                 Content="{Binding associationId, Mode=TwoWay}" 
                                                                 IsEnabled="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ListViewItem}, Path=IsSelected, Mode=OneWay}">
+                                                                <interactivity:Interaction.Triggers>
+                                                                    <interactivity:EventTrigger EventName="Click">
+                                                                        <interactivity:InvokeCommandAction 
+                                                                            Command="local:S100AttributeEditor.QueryAssociationsCommand" 
+                                                                            CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ListViewItem}}"/>
+                                                                    </interactivity:EventTrigger>
+                                                                </interactivity:Interaction.Triggers>
+
+                                                                <xctk:DropDownButton.DropDownContent>
+                                                                    <ListBox>
+                                                                        <interactivity:Interaction.Triggers>
+                                                                            <interactivity:EventTrigger EventName="Loaded">
+                                                                                <interactivity:InvokeCommandAction 
+                                                                                    Command="local:S100AttributeEditor.associationIdLoaded"
+                                                                                    CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ListBox}}"/>
+                                                                            </interactivity:EventTrigger>
+                                                                        </interactivity:Interaction.Triggers>
+
+                                                                        <ListBox.ItemTemplate>
+                                                                            <DataTemplate>
+                                                                                <TextBlock Text="{Binding Id}" />
+                                                                            </DataTemplate>
+                                                                        </ListBox.ItemTemplate>
+                                                                    </ListBox>
+                                                                </xctk:DropDownButton.DropDownContent>
                                                             </xctk:DropDownButton>
                                                         </DataTemplate>
                                                     </GridViewColumn.CellTemplate>
                                                 </GridViewColumn>
-                                                <GridViewColumn Header="FeatureID">
-                                                    <GridViewColumn.CellTemplate>
-                                                        <DataTemplate>
-                                                            <xctk:DropDownButton
-                                                                Width="Auto" 
-                                                                MinWidth="80" 
-                                                                Height="Auto" 
-                                                                Content="{Binding informationId, Mode=TwoWay}" 
-                                                                IsEnabled="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ListViewItem}, Path=IsSelected, Mode=OneWay}">
-                                                            </xctk:DropDownButton>
-                                                        </DataTemplate>
-                                                    </GridViewColumn.CellTemplate>
-                                                </GridViewColumn>
+                                                <GridViewColumn Header="FeatureID" DisplayMemberBinding="{Binding featureId, Mode=OneTime}"/>
                                                 <GridViewColumn Header="ForeignID">
                                                     <GridViewColumn.CellTemplate>
                                                         <DataTemplate>

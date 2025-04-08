@@ -1,4 +1,5 @@
-﻿using S100Framework.WPF.ViewModel;
+﻿using S100Framework.DomainModel;
+using S100Framework.WPF.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -18,6 +19,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Xceed.Wpf.Toolkit.PropertyGrid;
 using Xceed.Wpf.Toolkit.Zoombox;
+using static VortexConceptApplication.QueryAssociationsEventArgs;
 
 namespace VortexConceptApplication
 {
@@ -51,20 +53,36 @@ namespace VortexConceptApplication
     ///
     /// </summary>
 
-    public class AssociationIdRequestEventArgs : RoutedEventArgs
+    public record AssociationId(string Id);
+
+    public class QueryAssociationsEventArgs : RoutedEventArgs
     {
-        public AssociationIdRequestEventArgs(string associationId) {
-            AssociationId = associationId;
+        public enum AssociationsType {
+            InformationAssociations = 1,
+            FeatureAssociations = 2,
         }
-        public string AssociationId { get; }
+
+        public QueryAssociationsEventArgs(AssociationsType type, roleType? roleType, string? association, string? role, ICollection<AssociationId> associations, RoutedEvent routedEvent, object source) : base(routedEvent,source) {
+            this.type = type;
+            this.roleType = roleType ?? S100Framework.DomainModel.roleType.association;
+            this.association = association ?? string.Empty;
+            this.role = role ?? string.Empty;
+            this.associations = associations;
+        }
+
+        public AssociationsType type { get; }
+        public roleType? roleType { get; }
+        public string? association { get; }
+        public string? role { get; }
+        public ICollection<AssociationId> associations { get; }
     }
 
-    public delegate void AssociationIdRequestEventHandler(object sender, AssociationIdRequestEventArgs e);
-
+    public delegate void QueryAssociationsEventHandler(object sender, QueryAssociationsEventArgs e);
 
 
     [TemplatePart(Name = PART_PropertyGrid, Type = typeof(Xceed.Wpf.Toolkit.PropertyGrid.PropertyGrid))]
     [TemplatePart(Name = PART_FeatureBindings, Type = typeof(ListView))]
+    [TemplatePart(Name = PART_InformationBindings, Type = typeof(ListView))]
     [TemplatePart(Name = PART_InformationBindings, Type = typeof(ListView))]
     [ContentProperty("Content")]
     public class S100AttributeEditor : Control
@@ -72,6 +90,7 @@ namespace VortexConceptApplication
         private const string PART_PropertyGrid = "PART_PropertyGrid";
         private const string PART_FeatureBindings = "PART_FeatureBindings";
         private const string PART_InformationBindings = "PART_InformationBindings";
+
 
         private PropertyGrid? _propertyGrid = default;
         public PropertyGrid? PropertyGrid {
@@ -112,17 +131,17 @@ namespace VortexConceptApplication
 
             if (System.Diagnostics.Debugger.IsAttached) {
                 var binding = new FeatureBindingViewModel {
-                    associationId = "AssociationId",
-                    featureId = "FeatureId",
-                    foreignId = "ForeignId",
+                    //associationId = "A0000",
+                    //featureId = "FeatureId",
+                    //foreignId = "ForeignId",
                 };
                 binding.Load(new S100Framework.DomainModel.featureBinding {
                     roleType = "aggregation",
                     association = "TrafficSeparationSchemeAggregation",
                     role = "theCollection",
-                    associationId = "AssociationId",
-                    featureId = "FeatureId",
-                    foreignId = "ForeignId",
+                    associationId = "A0001",
+                    featureId = "S0002",
+                    foreignId = "S0003",
                 });
 
                 _featureBindings.Add(binding);
@@ -131,7 +150,10 @@ namespace VortexConceptApplication
 
         private void InitCommands() {
 
-            var binding = new CommandBinding(S100AttributeEditor.UpdateAssociationIds, this.UpdateAssociationIdsContent);
+            var binding = new CommandBinding(S100AttributeEditor.QueryAssociationsCommand, this.QueryAssociationsContent);
+            this.CommandBindings.Add(binding);
+
+            binding = new CommandBinding(S100AttributeEditor.associationIdLoaded, this.associationIdLoadedContent);
             this.CommandBindings.Add(binding);
         }
 
@@ -167,26 +189,45 @@ namespace VortexConceptApplication
             }
         }
 
+        #region Associations
 
-        public static readonly RoutedEvent AssociationIdRequestEvent = EventManager.RegisterRoutedEvent("AssociationIdRequest", RoutingStrategy.Bubble, typeof(AssociationIdRequestEventHandler), typeof(S100AttributeEditor));
+        public static readonly RoutedEvent QueryAssociationsEvent = EventManager.RegisterRoutedEvent("QueryAssociations", RoutingStrategy.Bubble, typeof(QueryAssociationsEventHandler), typeof(S100AttributeEditor));
 
-        public event AssociationIdRequestEventHandler AssociationIdRequest {
+        public event QueryAssociationsEventHandler QueryAssociations {
             add {
-                this.AddHandler(S100AttributeEditor.AssociationIdRequestEvent, value);
+                this.AddHandler(S100AttributeEditor.QueryAssociationsEvent, value);
             }
             remove {
-                this.RemoveHandler(S100AttributeEditor.AssociationIdRequestEvent, value);
+                this.RemoveHandler(S100AttributeEditor.QueryAssociationsEvent, value);
             }
         }
 
 
-        public static RoutedUICommand UpdateAssociationIds = new("Request Association Ids", "UpdateAssociationIds", typeof(S100AttributeEditor));
+        public static RoutedUICommand QueryAssociationsCommand = new("Query association.", "QueryAssociationsCommand", typeof(S100AttributeEditor));
 
-        private void UpdateAssociationIdsContent(object sender, ExecutedRoutedEventArgs e) {
-            System.Diagnostics.Debugger.Break();
+        private void QueryAssociationsContent(object sender, ExecutedRoutedEventArgs e) {
+            _associationsDropdown.Clear();
 
+            var eventArgs = ((ListViewItem)e.Parameter).Content switch {
+                FeatureBindingViewModel model => new QueryAssociationsEventArgs(AssociationsType.FeatureAssociations, model.roleType, model.association, model.role, _associationsDropdown, QueryAssociationsEvent, this),
+                InformationBindingViewModel model => new QueryAssociationsEventArgs(AssociationsType.InformationAssociations, model.roleType, model.association, model.role, _associationsDropdown, QueryAssociationsEvent, this),
+                _ => throw new InvalidOperationException()
+            };
+            RaiseEvent(eventArgs);
         }
 
+        public static RoutedUICommand associationIdLoaded = new("associationIdLoaded", "associationIdLoadedContent", typeof(S100AttributeEditor));
+
+        private void associationIdLoadedContent(object sender, ExecutedRoutedEventArgs e) {
+            var control = e.Parameter as ListBox;
+            if (control != null) {
+                control.ItemsSource = _associationsDropdown;
+            }
+        }
+
+        private ObservableCollection<AssociationId> _associationsDropdown = new ObservableCollection<AssociationId>();
+
+        #endregion
 
         private ObservableCollection<FeatureBindingViewModel> _featureBindings = new ObservableCollection<FeatureBindingViewModel>();
 

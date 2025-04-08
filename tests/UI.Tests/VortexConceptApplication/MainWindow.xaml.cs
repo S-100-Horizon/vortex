@@ -290,8 +290,11 @@ namespace VortexConceptApplication
             System.Diagnostics.Debugger.Break();
         }
 
-        private void S100AttributeEditor_AssociationIdRequest(object sender, AssociationIdRequestEventArgs e) {
-
+        private void S100AttributeEditor_QueryAssociations(object sender, QueryAssociationsEventArgs e) {
+            var r = new Random(DateTime.Now.Microsecond);
+            foreach(var i in Enumerable.Range(0, r.Next(1, 8))) {
+                e.associations.Add(new AssociationId($"A{r.Next(1, 1000):0000}"));
+            }
         }
     }
 

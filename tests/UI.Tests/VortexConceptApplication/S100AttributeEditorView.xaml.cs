@@ -21,7 +21,7 @@ using Xceed.Wpf.Toolkit.PropertyGrid;
 
 namespace VortexConceptApplication
 {
-    public record AssociationId(string Id);
+//    public record AssociationId(string Id);
 
     /// <summary>
     /// Interaction logic for S100AttributeEditorView.xaml
@@ -72,16 +72,6 @@ namespace VortexConceptApplication
                 if (e.AddedItems[0] is not FeatureBindingViewModel)
                     return;
                 var item = (e.AddedItems[0] as FeatureBindingViewModel)!;
-
-                foreach(var i in item.AssociationIds.Where(x => x != item.associationId).ToArray()) {
-                    item.AssociationIds.Remove(i);
-                }
-
-                var associationIds = await OnFeatureAssociationsChanged!(item.roleType!.Value, item.association!);
-
-                foreach (var associationId in associationIds) {
-                    item.AssociationIds.Add(associationId.Id);
-                }
             }
         }
 

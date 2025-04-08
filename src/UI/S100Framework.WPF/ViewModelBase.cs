@@ -3,6 +3,7 @@ using S100Framework.WPF.Editors;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
+using System.Windows.Data;
 using Xceed.Wpf.Toolkit.PropertyGrid.Attributes;
 
 namespace S100Framework.WPF.ViewModel
@@ -189,9 +190,61 @@ namespace S100Framework.WPF.ViewModel
             OnPropertyChanged(propertyName);
         }
 
-        public abstract void Load(InformationAssociation informationAssociation, string role);
+        public roleType? roleType => string.IsNullOrEmpty(_informationBindingDefintion?.roleType) ? default : Enum.Parse<roleType>(_informationBindingDefintion.roleType);
 
-        public abstract InformationAssociation Save(InformationAssociation featureAssociation, string role);
+        public String? association => _informationBindingDefintion?.association;
+
+        public String? role => _informationBindingDefintion?.role;
+
+        private informationBinding? _informationBindingDefintion;
+
+        private String? _associationId = string.Empty;
+
+        public String? associationId {
+            get {
+                return _associationId;
+            }
+
+            set {
+                SetValue(ref _associationId, value);
+            }
+        }
+
+        private String? _featureId = string.Empty;
+
+        public String? featureId {
+            get {
+                return _featureId;
+            }
+
+            set {
+                SetValue(ref _featureId, value);
+            }
+        }
+
+        private String? _foreignId = string.Empty;
+
+        public String? foreignId {
+            get {
+                return _foreignId;
+            }
+
+            set {
+                SetValue(ref _foreignId, value);
+
+
+            }
+        }
+
+        public InformationBindingViewModel Load(informationBinding binding) {
+            _informationBindingDefintion = binding;
+            _associationId = binding.associationId;
+            _featureId = binding.informationId;
+            _foreignId = binding.foreignId;
+            return this;
+        }
+
+        //public abstract InformationAssociation Save(InformationAssociation featureAssociation, string role);
     }
 
     public class FeatureBindingsViewModel : INotifyPropertyChanged
@@ -276,24 +329,15 @@ namespace S100Framework.WPF.ViewModel
 
             set {
                 SetValue(ref _foreignId, value);
-
-
             }
         }
 
-        public ObservableCollection<String> AssociationIds { get; set; } = new ObservableCollection<string>();
-
 
         public FeatureBindingViewModel Load(featureBinding binding) {
-            AssociationIds.Clear();
-
             _featureBindingDefintion = binding;
             _associationId = binding.associationId;
             _featureId= binding.featureId;
             _foreignId = binding.foreignId;
-            if (!string.IsNullOrEmpty(_associationId)) {
-                AssociationIds.Add(_associationId);
-            }
             return this;
         }
 
