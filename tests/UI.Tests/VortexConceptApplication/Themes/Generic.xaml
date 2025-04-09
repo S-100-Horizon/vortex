@@ -26,16 +26,24 @@
 
                         <Border Background="{TemplateBinding Background}"
                             BorderBrush="{TemplateBinding BorderBrush}"
-                            BorderThickness="1">
+                            BorderThickness="0">
                             <StackPanel Margin="{TemplateBinding Padding}" Orientation="Vertical">
-                                <StackPanel>
-                                    <StackPanel Background="{x:Static SystemColors.ControlBrush}">
-                                        <xctk:TrimmedTextBlock Text="Feature Bindings"
+                                <StackPanel Orientation="Vertical" Background="#dddddd">
+                                    <DockPanel Margin="0,0,0,2">
+                                        <xctk:TrimmedTextBlock DockPanel.Dock="Left" Text="Feature Bindings"
                                                        Margin="6,2,6,4"
                                                        TextTrimming="CharacterEllipsis"
-                                                       FontWeight="Bold">
+                                                       FontWeight="Bold" VerticalAlignment="Center">
                                         </xctk:TrimmedTextBlock>
-                                    </StackPanel>
+                                        <StackPanel DockPanel.Dock="Right" Orientation="Horizontal" HorizontalAlignment="Right">
+                                            <xctk:DropDownButton Width="Auto" 
+                                                                MinWidth="200" 
+                                                                Height="Auto">
+
+                                            </xctk:DropDownButton>
+                                            <Button Margin="2,0,0,0" Width="22" Command="local:S100AttributeEditor.AddFeatureBindingCommand">+</Button>
+                                        </StackPanel>
+                                    </DockPanel>
 
                                     <ListView x:Name="PART_FeatureBindings" 
                                       SelectionMode="Single">
@@ -55,7 +63,7 @@
                                                             <xctk:DropDownButton x:Name="associationId"
                                                                 Width="Auto" 
                                                                 MinWidth="80" 
-                                                                Height="Auto" 
+                                                                Height="Auto"                                                                                  
                                                                 Content="{Binding associationId, Mode=TwoWay}"                                                                      
                                                                 IsEnabled="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ListViewItem}, Path=IsSelected, Mode=OneWay}">
                                                                 <interactivity:Interaction.Triggers>
@@ -106,7 +114,8 @@
                                                                     <interactivity:EventTrigger EventName="Click">
                                                                         <interactivity:InvokeCommandAction 
                                                                             Command="local:S100AttributeEditor.QueryFeaturesCommand" 
-                                                                            CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ListViewItem}}"/> 
+                                                                            CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ListViewItem}}"/>
+                                                                        <interactivity:InvokeCommandAction />
                                                                     </interactivity:EventTrigger>
                                                                 </interactivity:Interaction.Triggers>
 
@@ -141,14 +150,22 @@
                                     </ListView>
                                 </StackPanel>
 
-                                <StackPanel>
-                                    <StackPanel Background="{x:Static SystemColors.ControlBrush}">
-                                        <xctk:TrimmedTextBlock Text="Information Bindings"
+                                <StackPanel Orientation="Vertical" Background="#dddddd">
+                                    <DockPanel Margin="0,0,0,2">
+                                        <xctk:TrimmedTextBlock DockPanel.Dock="Left" Text="Information Bindings"
                                                        Margin="6,2,6,4"
                                                        TextTrimming="CharacterEllipsis"
-                                                       FontWeight="Bold">
+                                                       FontWeight="Bold" VerticalAlignment="Center">
                                         </xctk:TrimmedTextBlock>
-                                    </StackPanel>
+                                        <StackPanel DockPanel.Dock="Right" Orientation="Horizontal" HorizontalAlignment="Right">
+                                            <xctk:DropDownButton Width="Auto" 
+                                                                MinWidth="200" 
+                                                                Height="Auto">
+
+                                            </xctk:DropDownButton>
+                                            <Button Margin="2,0,0,0" Width="22" Command="local:S100AttributeEditor.AddInformationBindingCommand">+</Button>
+                                        </StackPanel>
+                                    </DockPanel>
 
                                     <ListView x:Name="PART_InformationBindings" 
                                       SelectionMode="Single">

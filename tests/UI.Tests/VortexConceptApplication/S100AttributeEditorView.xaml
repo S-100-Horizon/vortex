@@ -8,6 +8,23 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <StackPanel>
+        <DockPanel >
+            <xctk:TrimmedTextBlock DockPanel.Dock="Left" Text="Feature Bindings"
+                                                       Margin="6,2,6,4"
+                                                       TextTrimming="CharacterEllipsis"
+                                                       FontWeight="Bold">
+            </xctk:TrimmedTextBlock>
+            <StackPanel DockPanel.Dock="Right" Orientation="Horizontal" HorizontalAlignment="Right">
+                <xctk:DropDownButton Width="Auto" 
+                                                                MinWidth="200" 
+                                                                Height="Auto">
+
+                </xctk:DropDownButton>
+                <Button Margin="5,0,5,0" Width="32">+</Button>
+            </StackPanel>
+
+        </DockPanel>
+        
         <xctk:PropertyGrid Grid.Row="1" x:Name="_propertyGrid" 
                SelectedObject="{Binding SelectedProperty}"
                AutoGenerateProperties="True"                           

@@ -17,8 +17,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Xceed.Wpf.Toolkit;
 using Xceed.Wpf.Toolkit.PropertyGrid;
-using Xceed.Wpf.Toolkit.Zoombox;
 using static VortexConceptApplication.QueryAssociationsEventArgs;
 
 namespace VortexConceptApplication
@@ -59,12 +59,13 @@ namespace VortexConceptApplication
 
     public class QueryAssociationsEventArgs : RoutedEventArgs
     {
-        public enum AssociationsType {
+        public enum AssociationsType
+        {
             InformationAssociations = 1,
             FeatureAssociations = 2,
         }
 
-        public QueryAssociationsEventArgs(AssociationsType type, roleType? roleType, string? association, string? role, ICollection<AssociationId> associations, RoutedEvent routedEvent, object source) : base(routedEvent,source) {
+        public QueryAssociationsEventArgs(AssociationsType type, roleType? roleType, string? association, string? role, ICollection<AssociationId> associations, RoutedEvent routedEvent, object source) : base(routedEvent, source) {
             this.type = type;
             this.roleType = roleType ?? S100Framework.DomainModel.roleType.association;
             this.association = association ?? string.Empty;
@@ -81,7 +82,8 @@ namespace VortexConceptApplication
 
     public delegate void QueryAssociationsEventHandler(object sender, QueryAssociationsEventArgs e);
 
-    public class QueryFeaturesEventArgs : RoutedEventArgs {
+    public class QueryFeaturesEventArgs : RoutedEventArgs
+    {
         public QueryFeaturesEventArgs(roleType? roleType, string? association, string? role, ICollection<FeatureId> features, RoutedEvent routedEvent, object source) : base(routedEvent, source) {
             this.roleType = roleType ?? S100Framework.DomainModel.roleType.association;
             this.association = association ?? string.Empty;
@@ -167,7 +169,7 @@ namespace VortexConceptApplication
                 bindingInformation.Load(new informationBinding {
                     roleType = "association",
                     association = "AdditionalInformation",
-                    role ="theInformation",
+                    role = "theInformation",
                     associationId = "A0010",
                     informationId = "I0001",
                     foreignId = "????"
@@ -179,7 +181,7 @@ namespace VortexConceptApplication
         private void InitCommands() {
 
             CommandBinding binding;
-            
+
             binding = new CommandBinding(S100AttributeEditor.FeatureAssociationSelectedCommand, this.FeatureAssociationSelectedContent);
             this.CommandBindings.Add(binding);
 
@@ -196,6 +198,12 @@ namespace VortexConceptApplication
             this.CommandBindings.Add(binding);
 
             binding = new CommandBinding(S100AttributeEditor.FeatureIdDoubleClick, this.FeatureIdDoubleClickContent);
+            this.CommandBindings.Add(binding);
+
+            binding = new CommandBinding(S100AttributeEditor.AddInformationBindingCommand, this.AddInformationBindingCommandContent);
+            this.CommandBindings.Add(binding);
+
+            binding = new CommandBinding(S100AttributeEditor.AddFeatureBindingCommand, this.AddFeatureBindingCommandContent);
             this.CommandBindings.Add(binding);
         }
 
@@ -318,12 +326,31 @@ namespace VortexConceptApplication
             var control = e.Parameter as ListView;
             if (control != null) {
                 var selectedItem = (FeatureId)control.SelectedItem;
+
+                var featureBinding = FeatureBindingsListView?.SelectedItem as FeatureBindingViewModel;
+                if (featureBinding != null) {
+                    featureBinding.foreignId = selectedItem.Id;
+                }
             }
         }
 
         private ObservableCollection<FeatureId> _featuresDropdown = new ObservableCollection<FeatureId>();
 
         #endregion
+
+        public static RoutedUICommand AddFeatureBindingCommand = new("Add feature binding.", "AddFeatureBindingCommandContent", typeof(S100AttributeEditor));
+
+        private void AddFeatureBindingCommandContent(object sender, ExecutedRoutedEventArgs e) {
+            _featureBindings.Add(new FeatureBindingViewModel {
+            });
+        }
+
+        public static RoutedUICommand AddInformationBindingCommand = new("Add information binding.", "AddInformationBindingCommandContent", typeof(S100AttributeEditor));
+
+        private void AddInformationBindingCommandContent(object sender, ExecutedRoutedEventArgs e) {
+            _informationBindings.Add(new InformationBindingViewModel {
+            });
+        }
 
         private ObservableCollection<FeatureBindingViewModel> _featureBindings = new ObservableCollection<FeatureBindingViewModel>();
 
