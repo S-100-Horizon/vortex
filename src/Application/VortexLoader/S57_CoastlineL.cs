@@ -10,7 +10,7 @@ namespace S100Framework.Applications
         private static void S57_CoastlineL(Geodatabase source, Geodatabase target, QueryFilter filter) {
             var tableName = "CoastlineL";
 
-            var coastlinel = source.OpenDataset<FeatureClass>(source.GetName(tableName));
+            using var coastlinel = source.OpenDataset<FeatureClass>(source.GetName(tableName));
 
             using var featureClass = target.OpenDataset<FeatureClass>(target.GetName("curve"));
             

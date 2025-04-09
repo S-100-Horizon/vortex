@@ -10,7 +10,7 @@ namespace S100Framework.Applications
         private static void S57_CulturalFeaturesL(Geodatabase source, Geodatabase target, QueryFilter filter) {
             var tableName = "CulturalFeaturesL";
 
-            var culturalFeaturesL = source.OpenDataset<FeatureClass>(source.GetName(tableName));
+            using var culturalFeaturesL = source.OpenDataset<FeatureClass>(source.GetName(tableName));
 
             using var featureClass = target.OpenDataset<FeatureClass>(target.GetName("curve"));
             

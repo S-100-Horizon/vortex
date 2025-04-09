@@ -10,8 +10,8 @@ namespace S100Framework.Applications
         private static void S57_DangersA(Geodatabase source, Geodatabase target, QueryFilter filter) {
             var tableName = "DangersA";
 
-            var dangersa = source.OpenDataset<FeatureClass>(source.GetName(tableName));
-            var depthsA = source.OpenDataset<FeatureClass>(source.GetName("DepthsA"));
+            using var dangersa = source.OpenDataset<FeatureClass>(source.GetName(tableName));
+            using var depthsA = source.OpenDataset<FeatureClass>(source.GetName("DepthsA"));
 
             using var featureClass = target.OpenDataset<FeatureClass>(target.GetName("surface"));
 

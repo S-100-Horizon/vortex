@@ -15,7 +15,7 @@ namespace S100Framework.Applications
 
             var ps101 = "S-101";
 
-            var portsAndServicesL = source.OpenDataset<FeatureClass>(source.GetName(tableName));
+            using var portsAndServicesL = source.OpenDataset<FeatureClass>(source.GetName(tableName));
 
             using var featureClass = target.OpenDataset<FeatureClass>(target.GetName("curve"));
             

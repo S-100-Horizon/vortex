@@ -12,7 +12,7 @@ namespace S100Framework.Applications
             
             var tableName = "MilitaryFeaturesA";
                 
-            var militaryFeaturesA = source.OpenDataset<FeatureClass>(source.GetName(tableName));
+            using var militaryFeaturesA = source.OpenDataset<FeatureClass>(source.GetName(tableName));
 
             using var featureClass = target.OpenDataset<FeatureClass>(target.GetName("surface"));
 

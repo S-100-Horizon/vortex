@@ -12,7 +12,7 @@ namespace S100Framework.Applications
 
 
 
-            var tracksAndRoutesL = source.OpenDataset<FeatureClass>(source.GetName(tableName));
+            using var tracksAndRoutesL = source.OpenDataset<FeatureClass>(source.GetName(tableName));
 
             using var featureClass = target.OpenDataset<FeatureClass>(target.GetName("point"));
 

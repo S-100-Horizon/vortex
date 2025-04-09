@@ -16,8 +16,8 @@ namespace S100Framework.Applications
         private static void S57_DangersP(Geodatabase source, Geodatabase target, QueryFilter filter) {
             var tableName = "DangersP";
 
-            var dangersp = source.OpenDataset<FeatureClass>(source.GetName("DangersP"));
-            var depthsA = source.OpenDataset<FeatureClass>(source.GetName("DepthsA"));
+            using var dangersp = source.OpenDataset<FeatureClass>(source.GetName("DangersP"));
+            using var depthsA = source.OpenDataset<FeatureClass>(source.GetName("DepthsA"));
 
             //var dredged = source.OpenDataset<FeatureClass>("Depare");
 
@@ -39,6 +39,10 @@ namespace S100Framework.Applications
 
                 var objectid = current.OBJECTID ?? default;
                 var globalid = current.GLOBALID;
+
+                if (ConversionAnalytics.Instance.IsConverted(globalid))
+                    continue;
+
                 var subtype = current.FCSUBTYPE ?? default;
 
                 var longname = current.LNAM ?? Strings.UNKNOWN;

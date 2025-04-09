@@ -11,8 +11,8 @@ namespace S100Framework.Applications
         private static void S57_DangersL(Geodatabase source, Geodatabase target, QueryFilter filter) {
             var tableName = "DangersL";
 
-            var dangersl = source.OpenDataset<FeatureClass>(source.GetName("DangersL"));
-            var depthsA = source.OpenDataset<FeatureClass>(source.GetName("DepthsA"));
+            using var dangersl = source.OpenDataset<FeatureClass>(source.GetName("DangersL"));
+            using var depthsA = source.OpenDataset<FeatureClass>(source.GetName("DepthsA"));
 
             //var dredged = source.OpenDataset<FeatureClass>("Depare");
 

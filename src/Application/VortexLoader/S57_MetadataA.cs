@@ -13,7 +13,7 @@ namespace S100Framework.Applications
         private static void S57_MetadataA(Geodatabase source, Geodatabase target, QueryFilter filter) {
             var tableName = "MetadataA";
 
-            var coastlinea = source.OpenDataset<FeatureClass>(source.GetName(tableName));
+            using var coastlinea = source.OpenDataset<FeatureClass>(source.GetName(tableName));
 
             using var featureClass = target.OpenDataset<FeatureClass>(target.GetName("surface"));
 
