@@ -204,7 +204,7 @@ namespace VortexConceptApplication
             //var json = System.Text.Json.JsonSerializer.Serialize(fromJson);            
 
             //var viewModel = new S100Framework.WPF.ViewModel.S101.LateralBuoyViewModel();            
-            var viewModel = new TestLateralBuoyViewModel();
+            var viewModel = new TwoWayRoutePart();
 
             //viewModel.PropertyChanged += (object sender, PropertyChangedEventArgs e) => {
             //    Logger.Current.Verbose("PropertyChanged = {propertyName}", e.PropertyName);
@@ -294,6 +294,23 @@ namespace VortexConceptApplication
             var r = new Random(DateTime.Now.Microsecond);
             foreach(var i in Enumerable.Range(0, r.Next(1, 8))) {
                 e.associations.Add(new AssociationId($"A{r.Next(1, 1000):0000}"));
+            }
+        }
+
+        static Dictionary<int, string[]> featureTypes = new Dictionary<int, string[]> {
+            { 0, ["LandArea", "Sounding"] },
+            { 1, ["Coastline"] },
+            { 2, ["LandArea", "Lake"] },
+        };
+
+        private void S100AttributeEditor_QueryFeatures(object sender, QueryFeaturesEventArgs e) {
+            var r = new Random(DateTime.Now.Microsecond);
+            foreach (var i in Enumerable.Range(0, r.Next(1, 8))) {
+                e.features.Add(r.Next(0, 2) switch {
+                    0 => new FeatureId(featureTypes[0][r.Next(0, featureTypes[0].Count()-1)], $"P{r.Next(1, 1000):0000}"),
+                    1 => new FeatureId(featureTypes[1][r.Next(0, featureTypes[1].Count() - 1)], $"C{r.Next(1, 1000):0000}"),
+                    2 => new FeatureId(featureTypes[2][r.Next(0, featureTypes[2].Count() - 1)], $"S{r.Next(1, 1000):0000}"),
+                });                   
             }
         }
     }

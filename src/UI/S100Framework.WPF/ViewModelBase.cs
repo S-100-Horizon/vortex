@@ -174,7 +174,7 @@ namespace S100Framework.WPF.ViewModel
         public override string[] AssociationTypes { get; } = [];
     }
 
-    public abstract class InformationBindingViewModel : INotifyPropertyChanged
+    public class InformationBindingViewModel : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler? PropertyChanged;
 

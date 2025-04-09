@@ -29,7 +29,7 @@
             <xctk:DropDownButton x:Name="_associationIdDropDownButton"                                                                                        
                                             Width="Auto" MinWidth="80" Height="Auto" Content="Hello" ContextMenuOpening="_associationIdDropDownButton_ContextMenuOpening" Click="_associationIdDropDownButton_Click">
                 <xctk:DropDownButton.DropDownContent>
-                    <ListView MinWidth="120" MinHeight="32" ItemsSource="{Binding AssociationIds}">
+                    <ListView MinWidth="120" MinHeight="32" ItemsSource="{Binding AssociationIds}" MouseDoubleClick="ListView_MouseDoubleClick" SelectionChanged="ListView_SelectionChanged">
                         <ListView.View>
                             <GridView>
                                 <GridViewColumn Header="Id" DisplayMemberBinding="{Binding Id, Mode=OneWay}"/>

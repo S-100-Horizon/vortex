@@ -7,7 +7,7 @@
         xmlns:local="clr-namespace:VortexConceptApplication"
         mc:Ignorable="d"
         d:DataContext="{x:Static local:MainWindow.MockValue}"
-        Title="MainWindow" Height="450" Width="800" Loaded="Window_Loaded">
+        Title="MainWindow" Height="900" Width="800" Loaded="Window_Loaded">
     <Window.Resources>
         <!--<local:MyConverter x:Key="MyConverter"/>-->
         <!--<DataTemplate x:Key="RefIdEditingTemplate">
@@ -83,7 +83,10 @@
             </xctk:PropertyGrid.EditorDefinitions>--><!--
         </xctk:PropertyGrid>-->
 
-        <local:S100AttributeEditor x:Name="S100AttributeEditor" SelectedNode="{Binding SelectedProperty}" QueryAssociations="S100AttributeEditor_QueryAssociations"/>
+        <local:S100AttributeEditor x:Name="S100AttributeEditor" 
+                                   SelectedNode="{Binding SelectedProperty}" 
+                                   QueryAssociations="S100AttributeEditor_QueryAssociations"
+                                   QueryFeatures="S100AttributeEditor_QueryFeatures"/>
 
         <!--<local:S100AttributeEditor x:Name="_s100AttributeEditor" >
             

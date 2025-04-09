@@ -55,6 +55,8 @@ namespace VortexConceptApplication
 
     public record AssociationId(string Id);
 
+    public record FeatureId(string Code, string Id);
+
     public class QueryAssociationsEventArgs : RoutedEventArgs
     {
         public enum AssociationsType {
@@ -79,6 +81,21 @@ namespace VortexConceptApplication
 
     public delegate void QueryAssociationsEventHandler(object sender, QueryAssociationsEventArgs e);
 
+    public class QueryFeaturesEventArgs : RoutedEventArgs {
+        public QueryFeaturesEventArgs(roleType? roleType, string? association, string? role, ICollection<FeatureId> features, RoutedEvent routedEvent, object source) : base(routedEvent, source) {
+            this.roleType = roleType ?? S100Framework.DomainModel.roleType.association;
+            this.association = association ?? string.Empty;
+            this.role = role ?? string.Empty;
+            this.features = features;
+        }
+
+        public roleType? roleType { get; }
+        public string? association { get; }
+        public string? role { get; }
+        public ICollection<FeatureId> features { get; }
+    }
+
+    public delegate void QueryFeaturesEventHandler(object sender, QueryFeaturesEventArgs e);
 
     [TemplatePart(Name = PART_PropertyGrid, Type = typeof(Xceed.Wpf.Toolkit.PropertyGrid.PropertyGrid))]
     [TemplatePart(Name = PART_FeatureBindings, Type = typeof(ListView))]
@@ -130,12 +147,12 @@ namespace VortexConceptApplication
             this.InitCommands();
 
             if (System.Diagnostics.Debugger.IsAttached) {
-                var binding = new FeatureBindingViewModel {
+                var bindingFeature = new FeatureBindingViewModel {
                     //associationId = "A0000",
                     //featureId = "FeatureId",
                     //foreignId = "ForeignId",
                 };
-                binding.Load(new S100Framework.DomainModel.featureBinding {
+                bindingFeature.Load(new featureBinding {
                     roleType = "aggregation",
                     association = "TrafficSeparationSchemeAggregation",
                     role = "theCollection",
@@ -143,17 +160,42 @@ namespace VortexConceptApplication
                     featureId = "S0002",
                     foreignId = "S0003",
                 });
+                _featureBindings.Add(bindingFeature);
 
-                _featureBindings.Add(binding);
+                var bindingInformation = new InformationBindingViewModel {
+                };
+                bindingInformation.Load(new informationBinding {
+                    roleType = "association",
+                    association = "AdditionalInformation",
+                    role ="theInformation",
+                    associationId = "A0010",
+                    informationId = "I0001",
+                    foreignId = "????"
+                });
+                _informationBindings.Add(bindingInformation);
             }
         }
 
         private void InitCommands() {
 
-            var binding = new CommandBinding(S100AttributeEditor.QueryAssociationsCommand, this.QueryAssociationsContent);
+            CommandBinding binding;
+            
+            binding = new CommandBinding(S100AttributeEditor.FeatureAssociationSelectedCommand, this.FeatureAssociationSelectedContent);
             this.CommandBindings.Add(binding);
 
-            binding = new CommandBinding(S100AttributeEditor.associationIdLoaded, this.associationIdLoadedContent);
+            binding = new CommandBinding(S100AttributeEditor.QueryAssociationsCommand, this.QueryAssociationsContent);
+            this.CommandBindings.Add(binding);
+
+            binding = new CommandBinding(S100AttributeEditor.AssociationIdLoaded, this.AssociationIdLoadedContent);
+            this.CommandBindings.Add(binding);
+
+            binding = new CommandBinding(S100AttributeEditor.QueryFeaturesCommand, this.QueryFeaturesContent);
+            this.CommandBindings.Add(binding);
+
+            binding = new CommandBinding(S100AttributeEditor.FeatureIdLoaded, this.FeatureIdLoadedContent);
+            this.CommandBindings.Add(binding);
+
+            binding = new CommandBinding(S100AttributeEditor.FeatureIdDoubleClick, this.FeatureIdDoubleClickContent);
             this.CommandBindings.Add(binding);
         }
 
@@ -216,9 +258,9 @@ namespace VortexConceptApplication
             RaiseEvent(eventArgs);
         }
 
-        public static RoutedUICommand associationIdLoaded = new("associationIdLoaded", "associationIdLoadedContent", typeof(S100AttributeEditor));
+        public static RoutedUICommand AssociationIdLoaded = new("AssociationIdLoaded", "AssociationIdLoadedContent", typeof(S100AttributeEditor));
 
-        private void associationIdLoadedContent(object sender, ExecutedRoutedEventArgs e) {
+        private void AssociationIdLoadedContent(object sender, ExecutedRoutedEventArgs e) {
             var control = e.Parameter as ListBox;
             if (control != null) {
                 control.ItemsSource = _associationsDropdown;
@@ -226,6 +268,60 @@ namespace VortexConceptApplication
         }
 
         private ObservableCollection<AssociationId> _associationsDropdown = new ObservableCollection<AssociationId>();
+
+        #endregion
+
+        #region Features
+
+        public static RoutedUICommand FeatureAssociationSelectedCommand = new("Feature association selected.", "FeatureAssociationSelectedCommand", typeof(S100AttributeEditor));
+
+        private void FeatureAssociationSelectedContent(object sender, ExecutedRoutedEventArgs e) {
+            var model = (FeatureBindingViewModel)((ListViewItem)e.Parameter).Content;
+        }
+
+
+        public static readonly RoutedEvent QueryFeaturesEvent = EventManager.RegisterRoutedEvent("QueryFeatures", RoutingStrategy.Bubble, typeof(QueryFeaturesEventHandler), typeof(S100AttributeEditor));
+
+        public event QueryFeaturesEventHandler QueryFeatures {
+            add {
+                this.AddHandler(S100AttributeEditor.QueryFeaturesEvent, value);
+            }
+            remove {
+                this.RemoveHandler(S100AttributeEditor.QueryFeaturesEvent, value);
+            }
+        }
+
+
+        public static RoutedUICommand QueryFeaturesCommand = new("Query features.", "QueryFeaturesCommand", typeof(S100AttributeEditor));
+
+        private void QueryFeaturesContent(object sender, ExecutedRoutedEventArgs e) {
+            _featuresDropdown.Clear();
+
+            var model = (FeatureBindingViewModel)((ListViewItem)e.Parameter).Content;
+
+            var eventArgs = new QueryFeaturesEventArgs(model.roleType, model.association, model.role, _featuresDropdown, QueryFeaturesEvent, this);
+            RaiseEvent(eventArgs);
+        }
+
+        public static RoutedUICommand FeatureIdLoaded = new("FeatureIdLoaded", "FeatureIdLoadedContent", typeof(S100AttributeEditor));
+
+        private void FeatureIdLoadedContent(object sender, ExecutedRoutedEventArgs e) {
+            var control = e.Parameter as ListView;
+            if (control != null) {
+                control.ItemsSource = _featuresDropdown;
+            }
+        }
+
+        public static RoutedUICommand FeatureIdDoubleClick = new("FeatureIdDoubleClick", "FeatureIdDoubleClickContent", typeof(S100AttributeEditor));
+
+        private void FeatureIdDoubleClickContent(object sender, ExecutedRoutedEventArgs e) {
+            var control = e.Parameter as ListView;
+            if (control != null) {
+                var selectedItem = (FeatureId)control.SelectedItem;
+            }
+        }
+
+        private ObservableCollection<FeatureId> _featuresDropdown = new ObservableCollection<FeatureId>();
 
         #endregion
 

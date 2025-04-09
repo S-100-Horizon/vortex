@@ -86,5 +86,17 @@ namespace VortexConceptApplication
         private void _associationIdDropDownButton_Click(object sender, RoutedEventArgs e) {
 
         }
+
+        private void ListView_MouseDoubleClick(object sender, MouseButtonEventArgs e) {
+
+        }
+
+        private void ListView_Selected(object sender, RoutedEventArgs e) {
+
+        }
+
+        private void ListView_SelectionChanged(object sender, SelectionChangedEventArgs e) {
+
+        }
     }
 }
