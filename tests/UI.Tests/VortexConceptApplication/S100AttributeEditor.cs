@@ -182,6 +182,9 @@ namespace VortexConceptApplication
 
             CommandBinding binding;
 
+            binding = new CommandBinding(S100AttributeEditor.DropDownContextMenuOpeningCommand, this.DropDownContextMenuOpeningCommandContent);
+            this.CommandBindings.Add(binding);
+
             binding = new CommandBinding(S100AttributeEditor.FeatureAssociationSelectedCommand, this.FeatureAssociationSelectedContent);
             this.CommandBindings.Add(binding);
 
@@ -189,6 +192,9 @@ namespace VortexConceptApplication
             this.CommandBindings.Add(binding);
 
             binding = new CommandBinding(S100AttributeEditor.AssociationIdLoaded, this.AssociationIdLoadedContent);
+            this.CommandBindings.Add(binding);
+
+            binding = new CommandBinding(S100AttributeEditor.AssociationIdDoubleClick, this.AssociationIdDoubleClickContent);
             this.CommandBindings.Add(binding);
 
             binding = new CommandBinding(S100AttributeEditor.QueryFeaturesCommand, this.QueryFeaturesContent);
@@ -239,6 +245,14 @@ namespace VortexConceptApplication
             }
         }
 
+        private DropDownButton? _activeDropDownButton = default;
+
+        public static RoutedUICommand DropDownContextMenuOpeningCommand = new("DropDownContextMenuOpeningCommand", "DropDownContextMenuOpeningCommand", typeof(S100AttributeEditor));
+
+        private void DropDownContextMenuOpeningCommandContent(object sender, ExecutedRoutedEventArgs e) {
+            _activeDropDownButton = (DropDownButton)e.Parameter;
+        }
+
         #region Associations
 
         public static readonly RoutedEvent QueryAssociationsEvent = EventManager.RegisterRoutedEvent("QueryAssociations", RoutingStrategy.Bubble, typeof(QueryAssociationsEventHandler), typeof(S100AttributeEditor));
@@ -275,6 +289,24 @@ namespace VortexConceptApplication
             }
         }
 
+        public static RoutedUICommand AssociationIdDoubleClick = new("AssociationIdDoubleClick", "AssociationIdDoubleClick", typeof(S100AttributeEditor));
+
+        private void AssociationIdDoubleClickContent(object sender, ExecutedRoutedEventArgs e) {
+            var control = e.Parameter as ListBox;
+            if (control != null) {
+                var selectedItem = (AssociationId)control.SelectedItem;
+
+                var featureBinding = FeatureBindingsListView?.SelectedItem as FeatureBindingViewModel;
+                if (featureBinding != null) {
+                    featureBinding.associationId = selectedItem.Id;
+
+                    if (_activeDropDownButton != null) {
+                        _activeDropDownButton.IsOpen = false;
+                    }
+                }
+            }
+        }
+
         private ObservableCollection<AssociationId> _associationsDropdown = new ObservableCollection<AssociationId>();
 
         #endregion
@@ -284,7 +316,6 @@ namespace VortexConceptApplication
         public static RoutedUICommand FeatureAssociationSelectedCommand = new("Feature association selected.", "FeatureAssociationSelectedCommand", typeof(S100AttributeEditor));
 
         private void FeatureAssociationSelectedContent(object sender, ExecutedRoutedEventArgs e) {
-            var model = (FeatureBindingViewModel)((ListViewItem)e.Parameter).Content;
         }
 
 
@@ -299,7 +330,6 @@ namespace VortexConceptApplication
             }
         }
 
-
         public static RoutedUICommand QueryFeaturesCommand = new("Query features.", "QueryFeaturesCommand", typeof(S100AttributeEditor));
 
         private void QueryFeaturesContent(object sender, ExecutedRoutedEventArgs e) {
@@ -310,6 +340,8 @@ namespace VortexConceptApplication
             var eventArgs = new QueryFeaturesEventArgs(model.roleType, model.association, model.role, _featuresDropdown, QueryFeaturesEvent, this);
             RaiseEvent(eventArgs);
         }
+
+
 
         public static RoutedUICommand FeatureIdLoaded = new("FeatureIdLoaded", "FeatureIdLoadedContent", typeof(S100AttributeEditor));
 
@@ -330,6 +362,10 @@ namespace VortexConceptApplication
                 var featureBinding = FeatureBindingsListView?.SelectedItem as FeatureBindingViewModel;
                 if (featureBinding != null) {
                     featureBinding.foreignId = selectedItem.Id;
+
+                    if (_activeDropDownButton != null) {
+                        _activeDropDownButton.IsOpen = false;
+                    }
                 }
             }
         }
