@@ -141,29 +141,33 @@ namespace S100Framework.YAML
         //}
     }
 
-    public class CompositeCurve(Curve[] Curves)
+    public class CompositeCurve(string components)
     {
         public string? Name { get; set; }
 
-        public string? Components => Curves is null ? null : string.Join(',', Curves.Select(e => e.Name));
+        //public string? Components => Curves is null ? null : string.Join(',', Curves.Select(e => e.Name));
+        public string Components { get; set; } = components;
 
-        [YamlIgnore]
-        public Curve[]? Curves { get; private set; } = Curves;
+        //[YamlIgnore]
+        //public Curve[]? Curves { get; private set; } = Curves;
     }
 
-    public class Surface(Curve exterior)
+    public class Surface(string exterior)
     {
         public string? Name { get; set; }
 
-        public string? Exterior => ExteriorRing.Name;
-
-        public dynamic[]? Interior => InteriorRings.Length == 0 ? null : InteriorRings?.Select(e => new { Hole = e.Name }).ToArray();
+        public string Exterior { get; set; } = exterior;
 
         [YamlIgnore]
-        public Curve ExteriorRing { get; set; } = exterior;
+        public string[]? InteriorRings { get; set; }
 
-        [YamlIgnore]
-        public Curve[] InteriorRings { get; set; } = [];
+        public dynamic[]? Interior => InteriorRings?.Length == 0 ? null : InteriorRings?.Select(e => new { Hole = e }).ToArray();
+
+        //[YamlIgnore]
+        //public Curve ExteriorRing { get; set; } = exterior;
+
+        //[YamlIgnore]
+        //public Curve[] InteriorRings { get; set; } = [];
     }
 
     public class Coordinate(double x, double y)

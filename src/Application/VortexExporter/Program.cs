@@ -74,7 +74,7 @@ namespace S100Framework.Applications
 
                 // Informationtypes
                 try {
-                    using var informationType = source.OpenDataset<Table>($"{s100TablePrefix}informationType");
+                    using var informationType = source.OpenDataset<Table>($"{s100TablePrefix}informationTypes");
                     using var informationCursor = informationType.Search(null, false);
 
                     while (informationCursor.MoveNext()) {
@@ -153,9 +153,9 @@ namespace S100Framework.Applications
 
 
                             dataset.AddFeature(feature);
-                            dataset.AddGeometry(current.GetShape(), geometry!);
+                            //dataset.AddGeometry(current.GetShape(), geometry!);
 
-                            //geometries.Add(new(current.GetShape(), geometry!));
+                            geometries.Add(new(current.GetShape(), geometry!));
 
                         }
                         catch (Exception ex) {
@@ -188,6 +188,10 @@ namespace S100Framework.Applications
 namespace S100Framework.YAML
 {
     using ArcGIS.Core.Geometry;
+    using System.Globalization;
+    using System.Linq;
+
+    using System.Text.RegularExpressions;
 
     public static class Extension
     {
@@ -208,40 +212,11 @@ namespace S100Framework.YAML
                     }
                 case ArcGIS.Core.Geometry.Polyline polyline: {        // Curve
                         var vertices = polyline.Points.Select(p => new Coordinate(p.X, p.Y)).ToArray();
-                        Point first = default!;
-                        Point last = default!;
+                        var id = Regex.Replace(name, @"\D", "");
 
-                        var firstVertice = (vertices.First().X, vertices.First().Y);
+                        var first = dataset.GetStartPoint(vertices, id);
 
-                        var firstMatch = dataset?.Points?.FirstOrDefault(e => e.Coordinate?.X == firstVertice.X && e.Coordinate.Y == firstVertice.Y);
-
-
-                        if (firstMatch != null) {
-                            first = new Point(firstMatch!.Coordinate!.X, firstMatch.Coordinate.Y) { Name = firstMatch.Name };
-                        }
-                        else {
-                            first = new Point(firstVertice.X, firstVertice.Y) {
-                                Name = $"{name}_0"
-                            };
-                            dataset!.AddPoint(first);
-                        }
-
-                        // Last
-                        var lastVertice = (vertices.Last().X, vertices.Last().Y);
-                        var lastMatch = dataset?.Points?.FirstOrDefault(e => e.Coordinate?.X == lastVertice.X && e.Coordinate.Y == lastVertice.Y);
-
-
-                        if (lastMatch != null) {
-                            last = new Point(lastMatch!.Coordinate!.X, lastMatch.Coordinate.Y) { Name = lastMatch.Name };
-                        }
-                        else {
-                            last = new Point(lastVertice.X, lastVertice.Y) {
-                                Name = $"{name}_0"
-                            };
-                            dataset!.AddPoint(last);
-                        }
-
-                        var curve = new Curve(first, last, vertices) { Name = name };
+                        var curve = new Curve(first, vertices) { Name = name };
 
                         dataset!.AddCurve(curve);
 
@@ -250,71 +225,94 @@ namespace S100Framework.YAML
                 case ArcGIS.Core.Geometry.Polygon polygon: {         // Surface
                         if (polygon.ExteriorRingCount == 0 || polygon.ExteriorRingCount > 1)
                             throw new ArgumentException("Unsupported exterior ring count");
-                        //BuildCompositeCurves(dataset, polygon);
-                        var compositeCurves = new List<string>();
+                        
+                        // WITH TOPOLOGY
+                        {
+                            //var exteriorRing = polygon.GetExteriorRing(0);
 
-                        var exteriorRing = polygon.GetExteriorRing(0);
+                            //var exteriorCoordinates = exteriorRing.Parts[0].Select(segment => new Coordinate(segment.StartPoint.X, segment.StartPoint.Y)).ToArray();
 
-                        var exteriorCoordinates = exteriorRing.Parts[0].Select(segment => new Coordinate(segment.StartPoint.X, segment.StartPoint.Y)).ToArray();
+                            //// Insert starting coordinate at the end of coordinate[] to ensure its a closed polygon
+                            //exteriorCoordinates = [.. exteriorCoordinates, exteriorCoordinates[0]];
 
-                        // Insert starting coordinate at the end of coordinate[] to ensure its a closed polygon
-                        exteriorCoordinates = [.. exteriorCoordinates, exteriorCoordinates[0]];
+                            //var polygonCurve = new Curve(exteriorCoordinates) {
+                            //    Name = name
+                            //};
 
-                        Point first = default!;
+                            //var exterior = dataset.BuildTopology(polygonCurve);
 
-                        var firstVertice = (exteriorCoordinates.First().X, exteriorCoordinates.First().Y);
+                            //var surface = new Surface(exterior) {
+                            //    Name = name,
+                            //};
 
-                        var firstMatch = dataset?.Points?.FirstOrDefault(e => e.Coordinate?.X == firstVertice.X && e.Coordinate.Y == firstVertice.Y);
-
-                        if (firstMatch != null) {
-                            first = new Point(firstMatch!.Coordinate!.X, firstMatch.Coordinate.Y) { Name = firstMatch.Name };
+                            //dataset.AddSurface(surface);
                         }
-                        else {
-                            first = new Point(firstVertice.X, firstVertice.Y) {
-                                Name = $"P{name}_0"     // To-do: fix naming on points created by curves created by surfaces
+
+
+                        // WITHOUT TOPOLOGY
+                        {
+                            if (polygon.ExteriorRingCount == 0 || polygon.ExteriorRingCount > 1)
+                                throw new ArgumentException("Unsupported exterior ring count");
+
+                            var nameWithoutIdentifier = Regex.Replace(name, @"\D", "");
+
+                            //BuildCompositeCurves(dataset, polygon);
+                            var compositeCurves = new List<string>();
+
+                            var exteriorRing = polygon.GetExteriorRing(0);
+
+                            var exteriorCoordinates = exteriorRing.Parts[0].Select(segment => new Coordinate(segment.StartPoint.X, segment.StartPoint.Y)).ToArray();
+
+                            // Insert starting coordinate at the end of coordinate[] to ensure its a closed polygon
+                            exteriorCoordinates = [.. exteriorCoordinates, exteriorCoordinates[0]];
+
+
+                            var first = dataset.GetStartPoint(exteriorCoordinates, name);
+
+                            var exteriorCurve = new Curve(first, exteriorCoordinates) {
+                                Name = $"C{nameWithoutIdentifier}-0"
                             };
-                            dataset!.AddPoint(first);
-                        }
 
-                        var exteriorCurve = new Curve(first, exteriorCoordinates) {
-                            Name = $"{name}_0"
-                        };
+                            dataset?.AddCurve(exteriorCurve);
 
-                        dataset?.AddCurve(exteriorCurve);
-
-                        var surface = new Surface(exteriorCurve) {
-                            Name = name
-                        };
+                            var surface = new Surface(exteriorCurve.Name) {
+                                Name = name
+                            };
 
 
-                        // Add interior rings
-                        int id = 1;
-                        if (polygon.Parts.Count > 1) {
-                            foreach (var interiorRing in polygon.Parts.Skip(1)) {
-                                var interiorCoordinates = interiorRing.Select(segment => new Coordinate(segment.StartPoint.X, segment.StartPoint.Y)).ToArray();
+                            // Add interior rings
+                            int id = 1;
+                            if (polygon.Parts.Count > 1) {
+                                foreach (var interiorRing in polygon.Parts.Skip(1)) {
+                                    var interiorCoordinates = interiorRing.Select(segment => new Coordinate(segment.StartPoint.X, segment.StartPoint.Y)).ToArray();
 
-                                // Insert starting coordinate at the end of coordinate[] to ensure its a closed polygon
-                                interiorCoordinates = [.. interiorCoordinates, interiorCoordinates[0]];
+                                    // Insert starting coordinate at the end of coordinate[] to ensure its a closed polygon
+                                    interiorCoordinates = [.. interiorCoordinates, interiorCoordinates[0]];
 
-                                var interiorCurve = new Curve(interiorCoordinates) {
-                                    Name = $"{name}_{id}",
-                                };
-                                id++;
-                                dataset.AddCurve(interiorCurve);
+                                    var startPoint = dataset.GetStartPoint(interiorCoordinates, nameWithoutIdentifier, id);
 
-                                surface.InteriorRings = [.. surface.InteriorRings, interiorCurve];
+                                    var interiorCurve = new Curve(startPoint, interiorCoordinates) {
+                                        Name = $"C{nameWithoutIdentifier}-{id}",
+                                    };
+                                    id++;
+                                    dataset.AddCurve(interiorCurve);
+
+                                    if(surface.InteriorRings == null) {
+                                        surface.InteriorRings = [interiorCurve.Name];
+                                    } else {
+                                        surface.InteriorRings = [.. surface.InteriorRings, interiorCurve.Name];
+                                    }
+                                }
+                                ;
                             }
-                            ;
+
+                            dataset.AddSurface(surface);
                         }
-
-                        dataset.AddSurface(surface);
-
                         break;
                     }
                 default:
                     throw new ArgumentException($"Unsupported geometry type: {geometry.GeometryType}");
             }
-            ;
         }
         /// <summary>
         /// The NCPS NIS was data loaded by ENCs for Denmark. The ENC only holds depth data to One decimal place and derived from paper chart practices <br />
@@ -349,47 +347,253 @@ namespace S100Framework.YAML
             return value /= power10;
         }
 
-        public static void BuildPolyline(this Dataset dataset, Polyline polyline) {
-            var segments = polyline.Parts[0].ToArray();
+        public static string BuildTopology(this Dataset dataset, Curve polygonCurve) {
+            var polygonStr = polygonCurve.Vertices;
+            var id = Regex.Replace(polygonCurve.Name, @"\D", "");
 
-            var segmentCurves = segments.Select(p => new Coordinate(p.StartPoint.X, p.StartPoint.Y)).ToArray();
+            var curvesFound = 0;
 
-            var vertices = polyline.Points.Select(p => new Coordinate(p.X, p.Y)).ToArray();
-
-            var sameLength = segmentCurves.Length == vertices.Length;
-            //_ = BuildCompositeCurves(default, default);
-            Console.WriteLine();
-
-
-        }
-
-        static CompositeCurve BuildCompositeCurves(this Dataset dataset, Polygon polygon) {
-            var exteriorRing = polygon.GetExteriorRing(0);
-
-            var segmentCurves = exteriorRing.Parts[0].Select(sc => new Curve(
-                [
-                    new Coordinate(sc.StartPoint.X, sc.StartPoint.Y),
-                    new Coordinate(sc.EndPoint.X, sc.EndPoint.Y)
-                ])).ToArray();
-
-            var datasetCurves = dataset?.Curves?.ToArray();
-
-
-            var all = segmentCurves.Select(e => e.Vertices);
-
-            //Console.WriteLine("AllCurves: " + datasetCurves.Length);
-            Console.WriteLine("Checking curves in current polygon: " + segmentCurves.Length);
-
-            foreach (var curve in segmentCurves) {
-                var equals = datasetCurves.FirstOrDefault(e => e.Equals(curve));
-
-                if (equals != default) {
-                    Console.WriteLine("Equals found! " + equals.Name);
+            // Check for a curve match for all curves in dataset
+            foreach (var curve in dataset.Curves) {
+                if (polygonStr.Contains(curve.Vertices)) {
+                    curvesFound++;
                 }
 
+                polygonStr = polygonStr.Replace(curve.Vertices, curve.Name);
             }
 
-            return new CompositeCurve([.. new List<Curve>()]);
+            var split = polygonStr.Split(",");
+
+            // If string contains no curves, create new curve that contains entire coordinate[]
+            if (curvesFound == 0) {
+                var first = dataset.GetStartPoint(polygonCurve.Coordinate, id);
+                var curve = new Curve(first, polygonCurve.Coordinate) {
+                    Name = $"C{id}_0"
+                };
+                dataset.AddCurve(curve);
+                return curve.Name;
+            }
+
+            // If string contains just one curve, reference it directly
+            if (split.Length == 1) {
+                return polygonStr;
+            }
+
+            // If string only consists of curves, create CompositeCurve from these
+            if (split.All(s => s.StartsWith('C'))) {
+                var composite = new CompositeCurve(polygonStr) {
+                    Name = $"CC{id}"
+                };
+
+                dataset.AddCompositeCurve(composite);
+
+                return composite.Name;
+            }
+
+
+            // If string contains a mix of curves and coordinates, take all coordinates and create curves from them. replace them in the string
+            try {
+                var curveIndices = split.Select((s, i) => new { s, i }).Where(x => x.s.StartsWith('C')).Select(x => x.i).Append(split.Length);
+
+                var startIndex = 0;
+                var s2r = "";
+                int curveId = 0;
+
+                foreach (var index in curveIndices) {
+                    var range = new Range(startIndex, index);
+
+                    startIndex = index + 1;
+
+                    var curvesStr = split.Take(range).ToArray();
+
+                    // If uneven and ends with a point
+                    if (curvesStr.Length % 2 != 0) {
+                        curvesStr = [.. curvesStr.SkipLast(1)];
+                    }
+
+                    if (curvesStr.Length == 0) {
+                        //Console.WriteLine("Skipped: " + polygonCurve.Name);
+                        continue;
+                    }
+
+                    if (curvesStr.Length % 2 == 0 && curvesStr.Length > 3) {
+                        var coords = BuildCoordinateFromStringArray(curvesStr);
+                        var first = dataset.GetStartPoint(coords, id);
+                        var curve = new Curve(first, coords) {
+                            Name = $"C{id}_{curveId}"
+                        };
+                        dataset.AddCurve(curve);
+
+                        s2r = string.Join(",", curvesStr);
+
+                        polygonStr = polygonStr.Replace(s2r, curve.Name);
+                    }
+
+                    curveId++;
+                }
+
+                var polygonSplit = polygonStr.Split(",");
+
+                // If string only consists of curves, create CompositeCurve from these
+                if (polygonSplit.All(s => s.StartsWith('C'))) {
+                    var compCurve = new CompositeCurve(polygonStr) {
+                        Name = $"CC{id}"
+                    };
+                    dataset.AddCompositeCurve(compCurve);
+
+                    return compCurve.Name;
+                }
+
+                var coordinatesSplit = polygonSplit.Where(e => !e.StartsWith('C'));
+
+                var pairs = new List<(decimal X, decimal Y, string Position, int Index)>();
+
+                // Detect remaining coordinates
+                for (int i = 0; i < polygonSplit.Length - 1; i++) {
+                    if (decimal.TryParse(polygonSplit[i], CultureInfo.InvariantCulture, out decimal x) &&
+                        decimal.TryParse(polygonSplit[i + 1], CultureInfo.InvariantCulture, out decimal y)) {
+                        var position = "";
+                        if (i == 0)
+                            position = "Start";
+                        else if (i == polygonSplit.Length - 2)
+                            position = "End";
+                        else
+                            position = "Mid";
+                        pairs.Add((x, y, position, i));
+                        i++; // Skip the next element since it's part of the pair
+                    }
+                }
+
+                var replacementDict = new Dictionary<string, string>();
+
+                // Iterate remaining coordinates and replace them with curves
+                foreach (var coordinate in pairs) {
+                    var strToReplace = $"{coordinate.X.ToString(CultureInfo.InvariantCulture)},{coordinate.Y.ToString(CultureInfo.InvariantCulture)}";
+                    if (coordinate.Position == "Start") {
+                        Console.WriteLine("Found at the start! " + coordinatesSplit.Count());
+                        var curve = polygonSplit.Skip(2).First();
+
+                        // Find the next 
+                        var next = dataset.Curves.FirstOrDefault(e => e.Name == curve).Vertices.Split(",").Take(2);
+
+                        var combinedArray = next.Concat(coordinatesSplit).ToArray();
+
+                        var coords = BuildCoordinateFromStringArray(combinedArray);
+
+                        var first = dataset.GetStartPoint(coords, $"{id}");
+
+                        var curveFromComposite = new Curve(first, coords) {
+                            Name = $"C{id}_111"
+                        };
+
+                        dataset.AddCurve(curveFromComposite);
+
+                        replacementDict.Add(strToReplace, curveFromComposite.Name);
+                        //polygonStr = polygonStr.Replace(strToReplace, curveFromComposite.Name);
+                        //polygonSplit = polygonStr.Split(",");
+                    }
+                    else if (coordinate.Position == "End") {
+                        Console.WriteLine("Found at the End! " + coordinatesSplit.Count());
+                        var curve = polygonSplit.SkipLast(2).Last();
+
+                        // Find the previous 
+                        var previous = dataset.Curves.FirstOrDefault(e => e.Name == curve).Vertices.Split(",").TakeLast(2);
+
+                        var combinedArray = previous.Concat(coordinatesSplit).ToArray();
+
+                        var coords = BuildCoordinateFromStringArray(combinedArray);
+
+                        var first = dataset.GetStartPoint(coords, $"{id}");
+
+                        var curveFromComposite = new Curve(first, coords) {
+                            Name = $"C{id}_999"
+                        };
+
+                        dataset.AddCurve(curveFromComposite);
+
+                        replacementDict.Add(strToReplace, curveFromComposite.Name);
+                    }
+                    else if (coordinate.Position == "Mid") {
+                        Console.WriteLine("Found at the Middle! " + coordinatesSplit.Count());
+
+                        // Find the previous 
+                        var previousCurve = polygonSplit[coordinate.Index - 1];
+                        var previous = dataset.Curves.FirstOrDefault(e => e.Name == previousCurve).Vertices.Split(",").TakeLast(coordinatesSplit.Count());
+
+                        // Find the next
+                        var nextCurve = polygonSplit[coordinate.Index + 2];
+                        var next = dataset.Curves.FirstOrDefault(e => e.Name == nextCurve).Vertices.Split(",").Take(coordinatesSplit.Count());
+
+                        var combinedArray = previous.Concat(coordinatesSplit).Concat(next).ToArray();
+
+                        var cd = BuildCoordinateFromStringArray(coordinatesSplit.ToArray());
+                        var first = dataset.GetStartPoint(cd, $"{id}");
+
+                        var curveFromComposite = new Curve(first, cd) {
+                            Name = $"C{id}_555"
+                        };
+
+                        dataset.AddCurve(curveFromComposite);
+
+                        replacementDict.Add(strToReplace, curveFromComposite.Name);
+                    }
+                    else {
+                        Console.WriteLine("Leftover! couldnt find anywhere" + polygonCurve.Name);
+                    }
+                }
+
+                foreach (var kvp in replacementDict) {
+                    polygonStr = polygonStr.Replace(kvp.Key, kvp.Value);
+                }
+                polygonSplit = polygonStr.Split(",");
+
+                if (polygonSplit.Any(e => !e.StartsWith('C'))) {
+                    Console.WriteLine("STILL missing! " + polygonCurve.Name);
+                }
+
+                //Create a new composite curve with these coordinates
+                var compositeCurve = new CompositeCurve(polygonStr) {
+                    Name = $"CC{id}"
+                };
+
+                dataset.AddCompositeCurve(compositeCurve);
+
+                return compositeCurve.Name;
+            }
+            catch (Exception ex) {
+                Console.WriteLine(ex.Message);
+            }
+            return polygonStr;
+        }
+
+        public static Point GetStartPoint(this Dataset dataset, Coordinate[] curve, string name, int identifier = 0) {
+            var datasetPoint = dataset?.Points?.FirstOrDefault(e => e.Coordinate?.X == curve[0].X && e?.Coordinate?.Y == curve?[0].Y);
+
+            if (datasetPoint == default) {
+                var point = new Point(curve[0].X, curve[0].Y) {
+                    Name = $"P{name}-{identifier}"
+                };
+
+                dataset!.AddPoint(point);
+
+                return point;
+            }
+            else {
+                return datasetPoint;
+            }
+        }
+
+        public static Coordinate[] BuildCoordinateFromStringArray(string[] curvesStr) {
+            var coordinates = new List<Coordinate>();
+
+            for (int i = 0; i < curvesStr.Length; i += 2) {
+                _ = Double.TryParse(curvesStr[i], CultureInfo.InvariantCulture, out double x);
+                _ = Double.TryParse(curvesStr[i + 1], CultureInfo.InvariantCulture, out double y);
+
+                coordinates.Add(new(x, y));
+            }
+
+            return coordinates.ToArray();
         }
     }
 }
