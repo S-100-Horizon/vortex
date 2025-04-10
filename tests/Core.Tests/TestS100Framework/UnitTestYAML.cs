@@ -154,10 +154,10 @@ namespace TestS100Framework
                 Name = "C12011",
             };
 
-            var s1301 = new S100Framework.YAML.Surface(c1201) {
+            var s1301 = new S100Framework.YAML.Surface(c1201.Vertices!) {
                 Name = "S1301",
                 InteriorRings = [
-                    c12010, c12011
+                    c12010.Vertices!, c12011.Vertices!
                     ],
             };
 
