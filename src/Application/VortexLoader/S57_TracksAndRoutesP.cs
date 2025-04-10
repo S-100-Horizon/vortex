@@ -10,13 +10,8 @@ namespace S100Framework.Applications
         private static void S57_TracksAndRoutesP(Geodatabase source, Geodatabase target, QueryFilter filter) {
             var tableName = "TracksAndRoutesP";
 
-
-
             using var tracksAndRoutesL = source.OpenDataset<FeatureClass>(source.GetName(tableName));
-
             using var featureClass = target.OpenDataset<FeatureClass>(target.GetName("point"));
-
-
             using var buffer = featureClass.CreateRowBuffer();
             using var insert = featureClass.CreateInsertCursor();
 
@@ -70,6 +65,9 @@ namespace S100Framework.Applications
                             if (current.STATUS != default) {
                                 instance.status = GetStatus(current.STATUS);
                             }
+
+
+
                             AddInformation(instance.information, feature);
                             buffer["ps"] = ps101;
 

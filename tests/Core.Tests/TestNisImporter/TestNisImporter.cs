@@ -33,6 +33,38 @@ namespace TestNisImporter
         }
 
         [Fact]
+        public void TestScaleMinimum() {
+            ImporterNIS._scaminFilesPath = @"G:\indigo\Configuration";
+            {
+                var val1 = ScaminDenmark.Instance.GetMinimumScale("DMPGRD_DumpingGround", PrimitiveType.Area, 22000);
+                Assert.True(val1.HasValue);
+                Assert.True(val1.Value == 89999, "Wrong scamin");
+                var val2 = ScaminDenmark.Instance.GetMinimumScale("DMPGRD_DumpingGroundXX", PrimitiveType.Area, 22000);
+                Assert.False(val2.HasValue);
+            }
+            {
+                var val1 = ScaminDenmark.Instance.GetMinimumScale("FLODOC_FloatingDock", PrimitiveType.Line, 22000); 
+                Assert.False(val1.HasValue);
+                Assert.True(val1.Value == 44999, "Wrong scamin");
+
+                var val2 = ScaminDenmark.Instance.GetMinimumScale("FLODOC_FloatingDock", PrimitiveType.Area, 22000); 
+                Assert.False(val2.HasValue);
+                Assert.True(val2.Value == 44999, "Wrong scamin");
+
+                var val3 = ScaminGreenland.Instance.GetMinimumScale("FLODOC_FloatingDock", PrimitiveType.Point, 22000);
+                Assert.False(val3.HasValue);
+            }
+            {
+                var val1 = ScaminDenmark.Instance.GetMinimumScale("BRIDGE_Bridge", PrimitiveType.Area, 22000); // step value is null
+                Assert.False(val1.HasValue);
+                Assert.True(val1.Value == 44999, "Wrong scamin");
+                var val2 = ScaminGreenland.Instance.GetMinimumScale("DMPGRD_DumpingGroundXX", PrimitiveType.Area, 22000);
+                Assert.False(val2.HasValue);
+            }
+        }
+
+
+        [Fact]
         public void TestSignalSequence() {
             string input = "12.5+(34.7)+56.8+(78.9)+(91.2)+23.4+(0.09)";
             List<Sequence> sequences = new List<Sequence>();

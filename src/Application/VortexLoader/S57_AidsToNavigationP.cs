@@ -1832,7 +1832,6 @@ namespace S100Framework.Applications
                             SetShape(buffer,current.SHAPE);
                             //insert.Insert(buffer);
 
-
                             var featureN = featureClass.CreateRow(buffer);
                             var name = Convert.ToString(featureN["name"]);
 
@@ -2363,12 +2362,15 @@ namespace S100Framework.Applications
             // TODO: evaluate light sectors based on height. Assume same height for now and take data from first.
             var current = lights.First();
 
-            foreach (var lightN in lights) {
-                if (lightN.CATLIT != default) {
-                    var list = EnumHelper.GetEnumValues<categoryOfLight>(lightN.CATLIT);
-                    instance.categoryOfLight = (List<categoryOfLight>)instance.categoryOfLight.Union(list.ToList<categoryOfLight>());
-                }
-            }
+            //foreach (var lightN in lights) {
+            //    if (lightN.CATLIT != default) {
+            //        var list = EnumHelper.GetEnumValues<categoryOfLight>(lightN.CATLIT);
+            //        instance.categoryOfLight = instance.categoryOfLight.Union(list).ToList<categoryOfLight>();
+            //            //var it = (List<categoryOfLight>);
+            //        //instance.categoryOfLight = null;
+            //    }
+            //     TODO: CATLITs
+            //}
 
             if (current.EXCLIT.HasValue) {
                 instance.exhibitionConditionOfLight = EnumHelper.GetEnumValue<exhibitionConditionOfLight>(current.EXCLIT.Value);

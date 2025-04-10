@@ -111,7 +111,7 @@ namespace S100Framework.Applications.S57auto.esri
 		internal string? LNAM = default;
 
 		/// <summary>
-		/// SCAMIN step
+		/// Scamin step
 		/// </summary>
 		[Description("SCAMIN step")]
 		internal int? SCAMIN_STEP = default;
@@ -523,7 +523,7 @@ namespace S100Framework.Applications.S57auto.esri
 		internal string? TS_TSV = default;
 
 		/// <summary>
-		/// SCAMIN step
+		/// Scamin step
 		/// </summary>
 		[Description("SCAMIN step")]
 		internal int? SCAMIN_STEP = default;
@@ -929,7 +929,7 @@ namespace S100Framework.Applications.S57auto.esri
 		internal int? FCSUBTYPE = default;
 
 		/// <summary>
-		/// SCAMIN step
+		/// Scamin step
 		/// </summary>
 		[Description("SCAMIN step")]
 		internal int? SCAMIN_STEP = default;
@@ -1386,7 +1386,7 @@ namespace S100Framework.Applications.S57auto.esri
 		internal string? TS_TSV = default;
 
 		/// <summary>
-		/// SCAMIN step
+		/// Scamin step
 		/// </summary>
 		[Description("SCAMIN step")]
 		internal int? SCAMIN_STEP = default;
@@ -1819,7 +1819,7 @@ namespace S100Framework.Applications.S57auto.esri
 		internal int? FCSUBTYPE = default;
 
 		/// <summary>
-		/// SCAMIN step
+		/// Scamin step
 		/// </summary>
 		[Description("SCAMIN step")]
 		internal int? SCAMIN_STEP = default;
@@ -2180,7 +2180,7 @@ namespace S100Framework.Applications.S57auto.esri
 		internal int? CATWED = default;
 
 		/// <summary>
-		/// SCAMIN step
+		/// Scamin step
 		/// </summary>
 		[Description("SCAMIN step")]
 		internal int? SCAMIN_STEP = default;
@@ -2571,7 +2571,7 @@ namespace S100Framework.Applications.S57auto.esri
 		internal int? CATWED = default;
 
 		/// <summary>
-		/// SCAMIN step
+		/// Scamin step
 		/// </summary>
 		[Description("SCAMIN step")]
 		internal int? SCAMIN_STEP = default;
@@ -3037,7 +3037,7 @@ namespace S100Framework.Applications.S57auto.esri
 		internal int? CATOLB = default;
 
 		/// <summary>
-		/// SCAMIN step
+		/// Scamin step
 		/// </summary>
 		[Description("SCAMIN step")]
 		internal int? SCAMIN_STEP = default;
@@ -3566,7 +3566,7 @@ namespace S100Framework.Applications.S57auto.esri
 		internal int? CONVIS = default;
 
 		/// <summary>
-		/// SCAMIN step
+		/// Scamin step
 		/// </summary>
 		[Description("SCAMIN step")]
 		internal int? SCAMIN_STEP = default;
@@ -4128,7 +4128,7 @@ namespace S100Framework.Applications.S57auto.esri
 		internal int? CONVIS = default;
 
 		/// <summary>
-		/// SCAMIN step
+		/// Scamin step
 		/// </summary>
 		[Description("SCAMIN step")]
 		internal int? SCAMIN_STEP = default;
@@ -4543,7 +4543,7 @@ namespace S100Framework.Applications.S57auto.esri
 		internal decimal? VALDCO = default;
 
 		/// <summary>
-		/// SCAMIN step
+		/// Scamin step
 		/// </summary>
 		[Description("SCAMIN step")]
 		internal int? SCAMIN_STEP = default;
@@ -4940,7 +4940,7 @@ namespace S100Framework.Applications.S57auto.esri
 		internal int? CATCBL = default;
 
 		/// <summary>
-		/// SCAMIN step
+		/// Scamin step
 		/// </summary>
 		[Description("SCAMIN step")]
 		internal int? SCAMIN_STEP = default;
@@ -5394,7 +5394,7 @@ namespace S100Framework.Applications.S57auto.esri
 		internal string? RESTRN = default;
 
 		/// <summary>
-		/// SCAMIN step
+		/// Scamin step
 		/// </summary>
 		[Description("SCAMIN step")]
 		internal int? SCAMIN_STEP = default;
@@ -5758,7 +5758,7 @@ namespace S100Framework.Applications.S57auto.esri
 		internal string? PUBREF = default;
 
 		/// <summary>
-		/// SCAMIN step
+		/// Scamin step
 		/// </summary>
 		[Description("SCAMIN step")]
 		internal int? SCAMIN_STEP = default;
@@ -6194,7 +6194,7 @@ namespace S100Framework.Applications.S57auto.esri
 		internal string? RESTRN = default;
 
 		/// <summary>
-		/// SCAMIN step
+		/// Scamin step
 		/// </summary>
 		[Description("SCAMIN step")]
 		internal int? SCAMIN_STEP = default;
@@ -6660,7 +6660,7 @@ namespace S100Framework.Applications.S57auto.esri
 		internal int? FCSUBTYPE = default;
 
 		/// <summary>
-		/// SCAMIN step
+		/// Scamin step
 		/// </summary>
 		[Description("SCAMIN step")]
 		internal int? SCAMIN_STEP = default;
@@ -7069,7 +7069,7 @@ namespace S100Framework.Applications.S57auto.esri
 		internal string? RESTRN = default;
 
 		/// <summary>
-		/// SCAMIN step
+		/// Scamin step
 		/// </summary>
 		[Description("SCAMIN step")]
 		internal int? SCAMIN_STEP = default;
@@ -7730,7 +7730,7 @@ namespace S100Framework.Applications.S57auto.esri
 		internal int? FCSUBTYPE = default;
 
 		/// <summary>
-		/// SCAMIN step
+		/// Scamin step
 		/// </summary>
 		[Description("SCAMIN step")]
 		internal int? SCAMIN_STEP = default;
@@ -8282,7 +8282,7 @@ namespace S100Framework.Applications.S57auto.esri
 		internal int? FCSUBTYPE = default;
 
 		/// <summary>
-		/// SCAMIN step
+		/// Scamin step
 		/// </summary>
 		[Description("SCAMIN step")]
 		internal int? SCAMIN_STEP = default;
@@ -8655,7 +8655,7 @@ namespace S100Framework.Applications.S57auto.esri
 		internal int? FCSUBTYPE = default;
 
 		/// <summary>
-		/// SCAMIN step
+		/// Scamin step
 		/// </summary>
 		[Description("SCAMIN step")]
 		internal int? SCAMIN_STEP = default;
@@ -9019,7 +9019,7 @@ namespace S100Framework.Applications.S57auto.esri
 		internal int? FCSUBTYPE = default;
 
 		/// <summary>
-		/// SCAMIN step
+		/// Scamin step
 		/// </summary>
 		[Description("SCAMIN step")]
 		internal int? SCAMIN_STEP = default;
@@ -9464,7 +9464,7 @@ namespace S100Framework.Applications.S57auto.esri
 		internal int? FCSUBTYPE = default;
 
 		/// <summary>
-		/// SCAMIN step
+		/// Scamin step
 		/// </summary>
 		[Description("SCAMIN step")]
 		internal int? SCAMIN_STEP = default;
@@ -9909,7 +9909,7 @@ namespace S100Framework.Applications.S57auto.esri
 		internal int? FCSUBTYPE = default;
 
 		/// <summary>
-		/// SCAMIN step
+		/// Scamin step
 		/// </summary>
 		[Description("SCAMIN step")]
 		internal int? SCAMIN_STEP = default;
@@ -10381,7 +10381,7 @@ namespace S100Framework.Applications.S57auto.esri
 		internal int? FCSUBTYPE = default;
 
 		/// <summary>
-		/// SCAMIN step
+		/// Scamin step
 		/// </summary>
 		[Description("SCAMIN step")]
 		internal int? SCAMIN_STEP = default;
@@ -10772,7 +10772,7 @@ namespace S100Framework.Applications.S57auto.esri
 		internal string? TECSOU = default;
 
 		/// <summary>
-		/// SCAMIN step
+		/// Scamin step
 		/// </summary>
 		[Description("SCAMIN step")]
 		internal int? SCAMIN_STEP = default;
@@ -11148,7 +11148,7 @@ namespace S100Framework.Applications.S57auto.esri
 		internal decimal? ENTRY_DATE = default;
 
 		/// <summary>
-		/// SCAMIN step
+		/// Scamin step
 		/// </summary>
 		[Description("SCAMIN step")]
 		internal int? SCAMIN_STEP = default;
@@ -11758,7 +11758,7 @@ namespace S100Framework.Applications.S57auto.esri
 		internal decimal? RADIUS = default;
 
 		/// <summary>
-		/// SCAMIN step
+		/// Scamin step
 		/// </summary>
 		[Description("SCAMIN step")]
 		internal int? SCAMIN_STEP = default;
@@ -12392,7 +12392,7 @@ namespace S100Framework.Applications.S57auto.esri
 		internal int? CATCAN = default;
 
 		/// <summary>
-		/// SCAMIN step
+		/// Scamin step
 		/// </summary>
 		[Description("SCAMIN step")]
 		internal int? SCAMIN_STEP = default;
@@ -13026,7 +13026,7 @@ namespace S100Framework.Applications.S57auto.esri
 		internal decimal? RADIUS = default;
 
 		/// <summary>
-		/// SCAMIN step
+		/// Scamin step
 		/// </summary>
 		[Description("SCAMIN step")]
 		internal int? SCAMIN_STEP = default;
@@ -13684,7 +13684,7 @@ namespace S100Framework.Applications.S57auto.esri
 		internal int? WATLEV = default;
 
 		/// <summary>
-		/// SCAMIN step
+		/// Scamin step
 		/// </summary>
 		[Description("SCAMIN step")]
 		internal int? SCAMIN_STEP = default;
@@ -14324,7 +14324,7 @@ namespace S100Framework.Applications.S57auto.esri
 		internal decimal? VERCSA = default;
 
 		/// <summary>
-		/// SCAMIN step
+		/// Scamin step
 		/// </summary>
 		[Description("SCAMIN step")]
 		internal int? SCAMIN_STEP = default;
@@ -14964,7 +14964,7 @@ namespace S100Framework.Applications.S57auto.esri
 		internal int? WATLEV = default;
 
 		/// <summary>
-		/// SCAMIN step
+		/// Scamin step
 		/// </summary>
 		[Description("SCAMIN step")]
 		internal int? SCAMIN_STEP = default;
@@ -15514,7 +15514,7 @@ namespace S100Framework.Applications.S57auto.esri
 		internal int? WATLEV = default;
 
 		/// <summary>
-		/// SCAMIN step
+		/// Scamin step
 		/// </summary>
 		[Description("SCAMIN step")]
 		internal int? SCAMIN_STEP = default;
@@ -15986,7 +15986,7 @@ namespace S100Framework.Applications.S57auto.esri
 		internal int? FCSUBTYPE = default;
 
 		/// <summary>
-		/// SCAMIN step
+		/// Scamin step
 		/// </summary>
 		[Description("SCAMIN step")]
 		internal int? SCAMIN_STEP = default;
@@ -16440,7 +16440,7 @@ namespace S100Framework.Applications.S57auto.esri
 		internal int? WATLEV = default;
 
 		/// <summary>
-		/// SCAMIN step
+		/// Scamin step
 		/// </summary>
 		[Description("SCAMIN step")]
 		internal int? SCAMIN_STEP = default;
@@ -16921,7 +16921,7 @@ namespace S100Framework.Applications.S57auto.esri
 		internal decimal? ELEVAT = default;
 
 		/// <summary>
-		/// SCAMIN step
+		/// Scamin step
 		/// </summary>
 		[Description("SCAMIN step")]
 		internal int? SCAMIN_STEP = default;
@@ -17399,7 +17399,7 @@ namespace S100Framework.Applications.S57auto.esri
 		internal int? FCSUBTYPE = default;
 
 		/// <summary>
-		/// SCAMIN step
+		/// Scamin step
 		/// </summary>
 		[Description("SCAMIN step")]
 		internal int? SCAMIN_STEP = default;
@@ -17898,7 +17898,7 @@ namespace S100Framework.Applications.S57auto.esri
 		internal int? FCSUBTYPE = default;
 
 		/// <summary>
-		/// SCAMIN step
+		/// Scamin step
 		/// </summary>
 		[Description("SCAMIN step")]
 		internal int? SCAMIN_STEP = default;
@@ -18352,7 +18352,7 @@ namespace S100Framework.Applications.S57auto.esri
 		internal int? FCSUBTYPE = default;
 
 		/// <summary>
-		/// SCAMIN step
+		/// Scamin step
 		/// </summary>
 		[Description("SCAMIN step")]
 		internal int? SCAMIN_STEP = default;
@@ -18815,7 +18815,7 @@ namespace S100Framework.Applications.S57auto.esri
 		internal decimal? RADIUS = default;
 
 		/// <summary>
-		/// SCAMIN step
+		/// Scamin step
 		/// </summary>
 		[Description("SCAMIN step")]
 		internal int? SCAMIN_STEP = default;
@@ -19326,7 +19326,7 @@ namespace S100Framework.Applications.S57auto.esri
 		internal decimal? RADIUS = default;
 
 		/// <summary>
-		/// SCAMIN step
+		/// Scamin step
 		/// </summary>
 		[Description("SCAMIN step")]
 		internal int? SCAMIN_STEP = default;
@@ -19846,7 +19846,7 @@ namespace S100Framework.Applications.S57auto.esri
 		internal int? VERDAT = default;
 
 		/// <summary>
-		/// SCAMIN step
+		/// Scamin step
 		/// </summary>
 		[Description("SCAMIN step")]
 		internal int? SCAMIN_STEP = default;
@@ -20291,7 +20291,7 @@ namespace S100Framework.Applications.S57auto.esri
 		internal int? FCSUBTYPE = default;
 
 		/// <summary>
-		/// SCAMIN step
+		/// Scamin step
 		/// </summary>
 		[Description("SCAMIN step")]
 		internal int? SCAMIN_STEP = default;
@@ -20745,7 +20745,7 @@ namespace S100Framework.Applications.S57auto.esri
 		internal string? RESTRN = default;
 
 		/// <summary>
-		/// SCAMIN step
+		/// Scamin step
 		/// </summary>
 		[Description("SCAMIN step")]
 		internal int? SCAMIN_STEP = default;
@@ -21055,7 +21055,7 @@ namespace S100Framework.Applications.S57auto.esri
 		internal int? IS_CONFLATE = default;
 
 		/// <summary>
-		/// SCAMIN step
+		/// Scamin step
 		/// </summary>
 		[Description("SCAMIN step")]
 		internal int? SCAMIN_STEP = default;
@@ -21808,7 +21808,7 @@ namespace S100Framework.Applications.S57auto.esri
 		internal int? IS_CONFLATE = default;
 
 		/// <summary>
-		/// SCAMIN step
+		/// Scamin step
 		/// </summary>
 		[Description("SCAMIN step")]
 		internal int? SCAMIN_STEP = default;

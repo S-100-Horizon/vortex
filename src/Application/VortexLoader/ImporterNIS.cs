@@ -23,6 +23,7 @@ namespace S100Framework.Applications
 
         //  https://github.com/iho-ohi/S-57-to-S-101-conversion-sub-WG
         internal static string _notesPath = "";
+        internal static string _scaminFilesPath = "";
         internal static string ps101 = "S-101";
         internal static string ps128 = "S-128";
 
@@ -62,6 +63,9 @@ namespace S100Framework.Applications
                 }
                 if (!string.IsNullOrEmpty(o.SkinOfEarthOnly)) {
                     skinOfEarthOnly = bool.Parse(o.SkinOfEarthOnly);
+                }
+                if (!string.IsNullOrEmpty(o.ScaminFilesPath)) {
+                    _scaminFilesPath = o.ScaminFilesPath;
                 }
             });
 
@@ -118,11 +122,11 @@ namespace S100Framework.Applications
                     Store(() => S57_ProductCoverage(source, destination, filter));
                 }
                 else {
+                    Store(() => S57_MetadataA(source, destination, filter));
                     Store(() => S57_AidsToNavigationP(source, destination, filter));
                     Store(() => S57_DangersL(source, destination, filter));
                     Store(() => S57_DangersA(source, destination, filter));
                     Store(() => S57_DangersP(source, destination, filter));
-                    Store(() => S57_MetadataA(source, destination, filter));
                     Store(() => S57_ProductCoverage(source, destination, filter));
                     Store(() => S57_TracksAndRoutesL(source, destination, filter));
                     Store(() => S57_MilitaryFeatureA(source, destination, filter));

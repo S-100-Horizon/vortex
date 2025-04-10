@@ -59,9 +59,10 @@ namespace S100Framework.Applications
             public string? NotesPath { get; set; }
 
             [Option('s', "skinofearthonly", Required = false, HelpText = "Exports only DEPARE, DRGARE, UNSARE and LNDARE.")]
-            public string? SkinOfEarthOnly { get; set; } 
+            public string? SkinOfEarthOnly { get; set; }
 
-            
+            [Option('f', "scaminfiles", Required = false, HelpText = "Path to folder with scamin files. Supports only Grønland and Denmark scamin files.")]
+            public string? ScaminFilesPath { get; set; }
         }
 
         static void Main(string[] args) {
