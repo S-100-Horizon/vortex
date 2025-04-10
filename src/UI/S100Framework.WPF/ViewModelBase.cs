@@ -3,7 +3,6 @@ using S100Framework.WPF.Editors;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
-using System.Windows.Data;
 using Xceed.Wpf.Toolkit.PropertyGrid.Attributes;
 
 namespace S100Framework.WPF.ViewModel
@@ -66,6 +65,18 @@ namespace S100Framework.WPF.ViewModel
                 viewModel.Dispose();
             }
         }
+    }
+
+    public abstract class InformationViewModel : ViewModelBase
+    {
+        public abstract informationBindingDefinition[] informationBindingDefinitions { get; }
+    }
+
+    public abstract class FeatureViewModel : ViewModelBase
+    {
+        public abstract informationBindingDefinition[] informationBindingDefinitions { get; }
+
+        public abstract featureBindingDefinition[] featureBindingDefinitions { get; }
     }
 
     public abstract class ViewModelBase<T> : ViewModelBase
@@ -210,15 +221,15 @@ namespace S100Framework.WPF.ViewModel
             }
         }
 
-        private String? _featureId = string.Empty;
+        private String? _informationId = string.Empty;
 
-        public String? featureId {
+        public String? informationId {
             get {
-                return _featureId;
+                return _informationId;
             }
 
             set {
-                SetValue(ref _featureId, value);
+                SetValue(ref _informationId, value);
             }
         }
 
@@ -239,7 +250,7 @@ namespace S100Framework.WPF.ViewModel
         public InformationBindingViewModel Load(informationBinding binding) {
             _informationBindingDefintion = binding;
             _associationId = binding.associationId;
-            _featureId = binding.informationId;
+            _informationId = binding.informationId;
             _foreignId = binding.foreignId;
             return this;
         }
@@ -336,7 +347,7 @@ namespace S100Framework.WPF.ViewModel
         public FeatureBindingViewModel Load(featureBinding binding) {
             _featureBindingDefintion = binding;
             _associationId = binding.associationId;
-            _featureId= binding.featureId;
+            _featureId = binding.featureId;
             _foreignId = binding.foreignId;
             return this;
         }

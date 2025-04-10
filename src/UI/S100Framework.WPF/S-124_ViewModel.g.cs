@@ -1210,7 +1210,7 @@ namespace S100Framework.WPF.ViewModel.S124 {
     [CategoryOrder("NAVWARNPreamble", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class NAVWARNPreambleViewModel : ViewModelBase {
+    public partial class NAVWARNPreambleViewModel : InformationViewModel {
         [Category("NAVWARNPreamble")]
         public ObservableCollection<affectedChartPublications> affectedChartPublications { get; set; } = new();
 
@@ -1286,9 +1286,7 @@ namespace S100Framework.WPF.ViewModel.S124 {
             }
         }
 
-        public class NAVWARNPreambleRefIdViewModel : InformationRefIdViewModel {
-            public override string[] AssociationTypes => ["NAVWARNPreamble"];
-        }
+        public override informationBindingDefinition[] informationBindingDefinitions => NAVWARNPreamble.informationBindingDefinitions;
 
         [Browsable(false)]
         public navwarnTypeGeneral[] navwarnTypeGeneralList => CodeList.navwarnTypeGenerals.ToArray();
@@ -1373,7 +1371,7 @@ namespace S100Framework.WPF.ViewModel.S124 {
     [CategoryOrder("References", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class ReferencesViewModel : ViewModelBase {
+    public partial class ReferencesViewModel : InformationViewModel {
         [Category("References")]
         public ObservableCollection<messageSeriesIdentifier> messageSeriesIdentifier { get; set; } = new();
 
@@ -1403,9 +1401,7 @@ namespace S100Framework.WPF.ViewModel.S124 {
             }
         }
 
-        public class ReferencesRefIdViewModel : InformationRefIdViewModel {
-            public override string[] AssociationTypes => ["References"];
-        }
+        public override informationBindingDefinition[] informationBindingDefinitions => References.informationBindingDefinitions;
 
         [Browsable(false)]
         public referenceCategory[] referenceCategoryList => [];
@@ -1449,7 +1445,7 @@ namespace S100Framework.WPF.ViewModel.S124 {
     [CategoryOrder("NAVWARNPart", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class NAVWARNPartViewModel : ViewModelBase {
+    public partial class NAVWARNPartViewModel : FeatureViewModel {
         [Category("NAVWARNPart")]
         public ObservableCollection<featureName> featureName { get; set; } = new();
 
@@ -1486,9 +1482,8 @@ namespace S100Framework.WPF.ViewModel.S124 {
             }
         }
 
-        public class NAVWARNPartRefIdViewModel : FeatureRefIdViewModel {
-            public override string[] AssociationTypes => ["NAVWARNPart"];
-        }
+        public override informationBindingDefinition[] informationBindingDefinitions => NAVWARNPart.informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => NAVWARNPart.featureBindingDefinitions;
 
         [Browsable(false)]
         public restriction[] restrictionList => [(restriction)8, (restriction)7, (restriction)14, (restriction)25, (restriction)27];
@@ -1555,10 +1550,9 @@ namespace S100Framework.WPF.ViewModel.S124 {
     [CategoryOrder("NAVWARNAreaAffected", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class NAVWARNAreaAffectedViewModel : ViewModelBase {
-        public class NAVWARNAreaAffectedRefIdViewModel : FeatureRefIdViewModel {
-            public override string[] AssociationTypes => ["NAVWARNAreaAffected"];
-        }
+    public partial class NAVWARNAreaAffectedViewModel : FeatureViewModel {
+        public override informationBindingDefinition[] informationBindingDefinitions => NAVWARNAreaAffected.informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => NAVWARNAreaAffected.featureBindingDefinitions;
 
         public void Load(DomainModel.S124.FeatureTypes.NAVWARNAreaAffected instance) {
         }
@@ -1584,7 +1578,7 @@ namespace S100Framework.WPF.ViewModel.S124 {
     [CategoryOrder("TextPlacement", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class TextPlacementViewModel : ViewModelBase {
+    public partial class TextPlacementViewModel : FeatureViewModel {
         private String _text = string.Empty;
         [Category("TextPlacement")]
         public String text {
@@ -1659,9 +1653,8 @@ namespace S100Framework.WPF.ViewModel.S124 {
             }
         }
 
-        public class TextPlacementRefIdViewModel : FeatureRefIdViewModel {
-            public override string[] AssociationTypes => ["TextPlacement"];
-        }
+        public override informationBindingDefinition[] informationBindingDefinitions => TextPlacement.informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => TextPlacement.featureBindingDefinitions;
 
         [Browsable(false)]
         public textType[] textTypeList => [(textType)1, (textType)2];

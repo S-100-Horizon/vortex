@@ -3,7 +3,6 @@ using S100Framework.WPF.Editors;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
-using System.Windows.Data;
 using Xceed.Wpf.Toolkit.PropertyGrid.Attributes;
 
 namespace S100Framework.WPF.ViewModel
@@ -66,6 +65,18 @@ namespace S100Framework.WPF.ViewModel
                 viewModel.Dispose();
             }
         }
+    }
+
+    public abstract class InformationViewModel : ViewModelBase
+    {
+        public abstract informationBindingDefinition[] informationBindingDefinitions { get; }
+    }
+
+    public abstract class FeatureViewModel : ViewModelBase
+    {
+        public abstract informationBindingDefinition[] informationBindingDefinitions { get; }
+
+        public abstract featureBindingDefinition[] featureBindingDefinitions { get; }
     }
 
     public abstract class ViewModelBase<T> : ViewModelBase

@@ -4,16 +4,15 @@ using S100Framework.DomainModel;
 using S100Framework.DomainModel.S101.FeatureTypes;
 using S100Framework.DomainModel.S124;
 using S100Framework.WPF.ViewModel;
+using S100Framework.WPF.ViewModel.S101;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
-using System.DirectoryServices.ActiveDirectory;
 using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
 using Xceed.Wpf.Toolkit.PropertyGrid;
-using Xceed.Wpf.Toolkit.PropertyGrid.Attributes;
 using Xceed.Wpf.Toolkit.PropertyGrid.Editors;
 
 namespace VortexConceptApplication
@@ -42,6 +41,14 @@ namespace VortexConceptApplication
             get => _selectedProperty;
             set => SetProperty(ref _selectedProperty, value);
         }
+
+        private S100AttributeEditorViewModel? _viewModel = default;
+
+        public S100AttributeEditorViewModel? S100AttributeEditorViewModel {
+            get => _viewModel;
+            set => SetProperty(ref _viewModel, value);
+        }
+
 
         public ObservableCollection<navwarnTypeDetails> Items { get; init; } = new ObservableCollection<navwarnTypeDetails>(CodeList.navwarnTypeDetails);
 
@@ -76,7 +83,7 @@ namespace VortexConceptApplication
             dataTemplate.Seal();
             editorTemplateDefinition.EditingTemplate = dataTemplate;
 
-//            this._propertyGrid.EditorDefinitions.Add(editorTemplateDefinition);
+            //            this._propertyGrid.EditorDefinitions.Add(editorTemplateDefinition);
 
             var random = new Random();
 
@@ -204,7 +211,9 @@ namespace VortexConceptApplication
             //var json = System.Text.Json.JsonSerializer.Serialize(fromJson);            
 
             //var viewModel = new S100Framework.WPF.ViewModel.S101.LateralBuoyViewModel();            
-            var viewModel = new TwoWayRoutePart();
+            var viewModel = new TwoWayRoutePartViewModel();
+
+            var model = new TwoWayRoutePart() { };
 
             //viewModel.PropertyChanged += (object sender, PropertyChangedEventArgs e) => {
             //    Logger.Current.Verbose("PropertyChanged = {propertyName}", e.PropertyName);
@@ -212,6 +221,8 @@ namespace VortexConceptApplication
 #endif           
 
             SelectedProperty = viewModel;
+
+            S100AttributeEditorViewModel = new S100AttributeEditorViewModel(viewModel.Model, viewModel);
 
             var bindings = new FeatureBindingsViewModel(TrafficSeparationScheme.featureBindingDefinitions);
 
@@ -292,7 +303,7 @@ namespace VortexConceptApplication
 
         private void S100AttributeEditor_QueryAssociations(object sender, QueryAssociationsEventArgs e) {
             var r = new Random(DateTime.Now.Microsecond);
-            foreach(var i in Enumerable.Range(0, r.Next(1, 8))) {
+            foreach (var i in Enumerable.Range(0, r.Next(1, 8))) {
                 e.associations.Add(new AssociationId($"A{r.Next(1, 1000):0000}"));
             }
         }
@@ -307,10 +318,10 @@ namespace VortexConceptApplication
             var r = new Random(DateTime.Now.Microsecond);
             foreach (var i in Enumerable.Range(0, r.Next(1, 8))) {
                 e.features.Add(r.Next(0, 2) switch {
-                    0 => new FeatureId(featureTypes[0][r.Next(0, featureTypes[0].Count()-1)], $"P{r.Next(1, 1000):0000}"),
+                    0 => new FeatureId(featureTypes[0][r.Next(0, featureTypes[0].Count() - 1)], $"P{r.Next(1, 1000):0000}"),
                     1 => new FeatureId(featureTypes[1][r.Next(0, featureTypes[1].Count() - 1)], $"C{r.Next(1, 1000):0000}"),
                     2 => new FeatureId(featureTypes[2][r.Next(0, featureTypes[2].Count() - 1)], $"S{r.Next(1, 1000):0000}"),
-                });                   
+                });
             }
         }
     }
