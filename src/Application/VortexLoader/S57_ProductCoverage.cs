@@ -23,7 +23,6 @@ namespace S100Framework.Applications
 
             using var buffer = surfaceFeatureClass.CreateRowBuffer();
             using var insert = surfaceFeatureClass.CreateInsertCursor();
-
             using var cursor = productDefinitionsTable.Search(null, true);
 
             while (cursor.MoveNext()) {
@@ -79,7 +78,22 @@ namespace S100Framework.Applications
                                 maximumDisplayScale = displayScale.MaximumDisplayScale,
                                 optimumDisplayScale = displayScale.OptimumDisplayScale,
                                 minimumDisplayScale = displayScale.MinimumDisplayScale.Value
-                            };
+                            }; 
+                            
+                            {
+                                var vdat = new VerticalDatumOfData();
+
+                                if (current.VDAT.HasValue) {
+                                    vdat.verticalDatum = EnumHelper.GetEnumValue<DomainModel.S101.verticalDatum>(current.VDAT.Value);
+                                }
+
+                                buffer["ps"] = ps101;
+                                buffer["code"] = vdat.GetType().Name;
+                                buffer["json"] = System.Text.Json.JsonSerializer.Serialize(vdat);
+                                ImporterNIS.SetShape(buffer, productCoverage.SHAPE);
+                                insert.Insert(buffer);
+                            }
+
 
                             buffer["ps"] = ps101;
                             buffer["code"] = dataCoverage.GetType().Name;
