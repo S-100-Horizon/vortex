@@ -215,8 +215,9 @@ namespace S100Framework.YAML
                         var id = Regex.Replace(name, @"\D", "");
 
                         var first = dataset.GetStartPoint(vertices, id);
+                        var last = dataset.GetEndPoint(vertices, id);
 
-                        var curve = new Curve(first, vertices) { Name = name };
+                        var curve = new Curve(first, last, vertices) { Name = name };
 
                         dataset!.AddCurve(curve);
 
@@ -268,8 +269,9 @@ namespace S100Framework.YAML
 
 
                             var first = dataset.GetStartPoint(exteriorCoordinates, name);
+                            var last = dataset.GetEndPoint(exteriorCoordinates, name);
 
-                            var exteriorCurve = new Curve(first, exteriorCoordinates) {
+                            var exteriorCurve = new Curve(first, last, exteriorCoordinates) {
                                 Name = $"C{nameWithoutIdentifier}-0"
                             };
 
@@ -290,8 +292,9 @@ namespace S100Framework.YAML
                                     interiorCoordinates = [.. interiorCoordinates, interiorCoordinates[0]];
 
                                     var startPoint = dataset.GetStartPoint(interiorCoordinates, nameWithoutIdentifier, id);
+                                    var endPoint = dataset.GetEndPoint(interiorCoordinates, nameWithoutIdentifier, id+1);
 
-                                    var interiorCurve = new Curve(startPoint, interiorCoordinates) {
+                                    var interiorCurve = new Curve(startPoint, endPoint, interiorCoordinates) {
                                         Name = $"C{nameWithoutIdentifier}-{id}",
                                     };
                                     id++;
@@ -367,7 +370,8 @@ namespace S100Framework.YAML
             // If string contains no curves, create new curve that contains entire coordinate[]
             if (curvesFound == 0) {
                 var first = dataset.GetStartPoint(polygonCurve.Coordinate, id);
-                var curve = new Curve(first, polygonCurve.Coordinate) {
+                var last = dataset.GetEndPoint(polygonCurve.Coordinate, id);
+                var curve = new Curve(first, last, polygonCurve.Coordinate) {
                     Name = $"C{id}_0"
                 };
                 dataset.AddCurve(curve);
@@ -419,7 +423,8 @@ namespace S100Framework.YAML
                     if (curvesStr.Length % 2 == 0 && curvesStr.Length > 3) {
                         var coords = BuildCoordinateFromStringArray(curvesStr);
                         var first = dataset.GetStartPoint(coords, id);
-                        var curve = new Curve(first, coords) {
+                        var last = dataset.GetEndPoint(coords, id);
+                        var curve = new Curve(first, last, coords) {
                             Name = $"C{id}_{curveId}"
                         };
                         dataset.AddCurve(curve);
@@ -481,8 +486,8 @@ namespace S100Framework.YAML
                         var coords = BuildCoordinateFromStringArray(combinedArray);
 
                         var first = dataset.GetStartPoint(coords, $"{id}");
-
-                        var curveFromComposite = new Curve(first, coords) {
+                        var last = dataset.GetEndPoint(coords, $"{id}");
+                        var curveFromComposite = new Curve(first, last, coords) {
                             Name = $"C{id}_111"
                         };
 
@@ -504,8 +509,9 @@ namespace S100Framework.YAML
                         var coords = BuildCoordinateFromStringArray(combinedArray);
 
                         var first = dataset.GetStartPoint(coords, $"{id}");
+                        var last = dataset.GetEndPoint(coords, $"{id}");
 
-                        var curveFromComposite = new Curve(first, coords) {
+                        var curveFromComposite = new Curve(first, last, coords) {
                             Name = $"C{id}_999"
                         };
 
@@ -528,8 +534,9 @@ namespace S100Framework.YAML
 
                         var cd = BuildCoordinateFromStringArray(coordinatesSplit.ToArray());
                         var first = dataset.GetStartPoint(cd, $"{id}");
+                        var last = dataset.GetEndPoint(cd, $"{id}");
 
-                        var curveFromComposite = new Curve(first, cd) {
+                        var curveFromComposite = new Curve(first, last, cd) {
                             Name = $"C{id}_555"
                         };
 
@@ -571,6 +578,23 @@ namespace S100Framework.YAML
 
             if (datasetPoint == default) {
                 var point = new Point(curve[0].X, curve[0].Y) {
+                    Name = $"P{name}-{identifier}"
+                };
+
+                dataset!.AddPoint(point);
+
+                return point;
+            }
+            else {
+                return datasetPoint;
+            }
+        }
+
+        public static Point GetEndPoint(this Dataset dataset, Coordinate[] curve, string name, int identifier = 1) {
+            var datasetPoint = dataset?.Points?.FirstOrDefault(e => e.Coordinate?.X == curve[^1].X && e?.Coordinate?.Y == curve?[^1].Y);
+
+            if (datasetPoint == default) {
+                var point = new Point(curve[^1].X, curve[^1].Y) {
                     Name = $"P{name}-{identifier}"
                 };
 
