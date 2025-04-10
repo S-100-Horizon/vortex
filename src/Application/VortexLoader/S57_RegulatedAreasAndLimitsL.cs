@@ -1,5 +1,6 @@
 ﻿using ArcGIS.Core.Data;
 using S100Framework.Applications.S57.esri;
+using S100Framework.DomainModel.S101;
 using S100Framework.DomainModel.S101.FeatureTypes;
 
 
@@ -57,17 +58,83 @@ namespace S100Framework.Applications
                         break;
                     case 25: { // MARCUL_MarineFarmCulture
                             var instance = new MarineFarmCulture();
-                            if (plts_comp_scale != default) {
-                                //instance.scaleMinimum = plts_comp_scale;
+                            if (current.CATMFA != null) {
+                                if (current.CATMFA.Value == -32767) {
+                                    instance.categoryOfMarineFarmCulture = EnumHelper.GetEnumValue<categoryOfMarineFarmCulture>(-1);
+                                }
+                                else {
+                                    instance.categoryOfMarineFarmCulture = EnumHelper.GetEnumValue<categoryOfMarineFarmCulture>(current.CATMFA);
+                                }
                             }
-                            
+
+                            if (current.EXPSOU.HasValue) {
+                                instance.expositionOfSounding = EnumHelper.GetEnumValue<expositionOfSounding>(current.EXPSOU.Value);
+                            }
+
                             instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
+
+
+                            DateHelper.TryGetFixedDateRange(current.DATSTA, current.DATEND, out var dateRange);
+                            if (dateRange != default) {
+                                instance.fixedDateRange = dateRange;
+                            }
+
+                            // TODO: HEIGHT
+
+                            // TODO: interoperability identifier
+
+                            DateHelper.TryGetPeriodicDateRange(current.PERSTA, current.PEREND, out var periodicDateRange);
+                            if (periodicDateRange != default) {
+                                instance.periodicDateRange = periodicDateRange;
+                            }
+
+                            if (current.QUASOU != default) {
+                                if (current.QUASOU == "-32767")
+                                    instance.qualityOfVerticalMeasurement = EnumHelper.GetEnumValues<qualityOfVerticalMeasurement>("-1");
+                                else {
+                                    instance.qualityOfVerticalMeasurement = EnumHelper.GetEnumValues<qualityOfVerticalMeasurement>(current.QUASOU);
+                                }
+                            }
+
+                            if (current.RESTRN != default) {
+                                instance.restriction = EnumHelper.GetEnumValues<restriction>(current.RESTRN);
+                            }
+
+                            if (current.STATUS != default) {
+                                instance.status = GetStatus(current.STATUS);
+                            }
+
+                            if (current.VALSOU.HasValue) {
+                                instance.valueOfSounding = current.VALSOU.Value;
+                            }
+
+                            if (current.VERLEN.HasValue) {
+                                instance.verticalLength = current.VERLEN.Value;
+                            }
+
+                            // TODO: VerticalUncertainty
+
+                            // TODO: VesselSpeedLimit
+
+                            if (current.WATLEV.HasValue) {
+                                if (current.WATLEV.Value == -32767)
+                                    instance.waterLevelEffect = EnumHelper.GetEnumValue<waterLevelEffect>(-1);
+                                else {
+                                    instance.waterLevelEffect = EnumHelper.GetEnumValue<waterLevelEffect>(current.WATLEV);
+                                }
+                            }
+
+                            //if (plts_comp_scale != default) {
+                            //  instance.scaleMinimum = plts_comp_scale;
+                            //}
+
                             AddInformation(instance.information, feature);
+
                             buffer["ps"] = ps101;
 
                             buffer["code"] = instance.GetType().Name;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
-                            SetShape(buffer,current.SHAPE);
+                            SetShape(buffer, current.SHAPE);
                             insert.Insert(buffer);
                             Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
                             convertedCount++;

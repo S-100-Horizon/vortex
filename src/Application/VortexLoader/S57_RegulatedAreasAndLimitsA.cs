@@ -343,13 +343,14 @@ namespace S100Framework.Applications
                         break;
                     case 95: { // MARCUL_MarineFarmCulture
                             var instance = new MarineFarmCulture();
-                            if (plts_comp_scale != default) {
-                                //instance.scaleMinimum = plts_comp_scale;
+                            if (current.CATMFA != null) {
+                                if (current.CATMFA.Value == -32767) {
+                                    instance.categoryOfMarineFarmCulture = EnumHelper.GetEnumValue<categoryOfMarineFarmCulture>(-1);
+                                }
+                                else {
+                                    instance.categoryOfMarineFarmCulture = EnumHelper.GetEnumValue<categoryOfMarineFarmCulture>(current.CATMFA);
+                                }
                             }
-
-                            if (current.CATMFA.HasValue) {
-                                instance.categoryOfMarineFarmCulture = EnumHelper.GetEnumValue<categoryOfMarineFarmCulture>(current.CATMFA.Value);
-                            };
 
                             if (current.EXPSOU.HasValue) {
                                 instance.expositionOfSounding = EnumHelper.GetEnumValue<expositionOfSounding>(current.EXPSOU.Value);
@@ -357,38 +358,48 @@ namespace S100Framework.Applications
 
                             instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
 
+
                             DateHelper.TryGetFixedDateRange(current.DATSTA, current.DATEND, out var dateRange);
                             if (dateRange != default) {
                                 instance.fixedDateRange = dateRange;
+                            }
+
+                            // TODO: HEIGHT
+
+                            // TODO: interoperability identifier
+
+                            DateHelper.TryGetPeriodicDateRange(current.PERSTA, current.PEREND, out var periodicDateRange);
+                            if (periodicDateRange != default) {
+                                instance.periodicDateRange = periodicDateRange;
+                            }
+
+                            if (current.QUASOU != default) {
+                                if (current.QUASOU == "-32767")
+                                    instance.qualityOfVerticalMeasurement = EnumHelper.GetEnumValues<qualityOfVerticalMeasurement>("-1");
+                                else {
+                                    instance.qualityOfVerticalMeasurement = EnumHelper.GetEnumValues<qualityOfVerticalMeasurement>(current.QUASOU);
+                                }
+                            }
+
+                            if (current.RESTRN != default) {
+                                instance.restriction = EnumHelper.GetEnumValues<restriction>(current.RESTRN);
                             }
 
                             if (current.STATUS != default) {
                                 instance.status = GetStatus(current.STATUS);
                             }
 
-                            // TODO: height
-
-                            if (current.PERSTA != default) {
-                                if (current.PEREND != default) {
-                                    if (DateHelper.TryConvertToDateOnly(current.PEREND, out var dateEnd)) {
-                                        if (DateHelper.TryConvertToDateOnly(current.PERSTA, out var dateStart)) {
-                                            instance.periodicDateRange = new List<periodicDateRange>() {
-                                                new periodicDateRange() {
-                                                    dateStart = dateStart,
-                                                    dateEnd = dateEnd
-                                                }
-                                            };
-                                        }
-                                        else {
-                                            Logger.Current.DataError(current.OBJECTID.Value, tableName, current.LNAM, $"Cannot convert date {current.PERSTA}");
-                                        }
-                                    }
-                                    else {
-                                        Logger.Current.DataError(current.OBJECTID.Value, tableName, current.LNAM, $"Cannot convert date {current.PEREND}");
-                                    }
-                                }
+                            if (current.VALSOU.HasValue) {
+                                instance.valueOfSounding = current.VALSOU.Value;
                             }
 
+                            if (current.VERLEN.HasValue) {
+                                instance.verticalLength = current.VERLEN.Value;
+                            }
+
+                            // TODO: VerticalUncertainty
+
+                            // TODO: VesselSpeedLimit
 
                             if (current.WATLEV.HasValue) {
                                 if (current.WATLEV.Value == -32767)
@@ -398,25 +409,17 @@ namespace S100Framework.Applications
                                 }
                             }
 
-
-
-                            if (current.QUASOU != default) {
-                                if (current.QUASOU == "-32767")
-                                    instance.qualityOfVerticalMeasurement = EnumHelper.GetEnumValues<qualityOfVerticalMeasurement>(-1);
-                                else {
-                                    instance.qualityOfVerticalMeasurement = EnumHelper.GetEnumValues<qualityOfVerticalMeasurement>(current.QUASOU);
-                                }
-                            }
-
-                            
-
+                            //if (plts_comp_scale != default) {
+                            //  instance.scaleMinimum = plts_comp_scale;
+                            //}
 
                             AddInformation(instance.information, feature);
+
                             buffer["ps"] = ps101;
 
                             buffer["code"] = instance.GetType().Name;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
-                            SetShape(buffer,current.SHAPE);
+                            SetShape(buffer, current.SHAPE);
                             insert.Insert(buffer);
                             Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
                             convertedCount++;
