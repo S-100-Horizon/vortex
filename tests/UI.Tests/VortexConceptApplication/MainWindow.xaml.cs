@@ -224,33 +224,13 @@ namespace VortexConceptApplication
 
             S100AttributeEditorViewModel = new S100AttributeEditorViewModel(viewModel.Model, viewModel);
 
-            var bindings = new FeatureBindingsViewModel(TrafficSeparationScheme.featureBindingDefinitions);
+            S100AttributeEditorViewModel!.PropertyChanged += (object? sender, PropertyChangedEventArgs e) => {
+                
+            };
 
-            var binding = new FeatureBindingViewModel();
-            //binding.Load(TrafficSeparationScheme.featureBindingDefinitions.Single(e => e.association.Equals("TrafficSeparationSchemeAggregation") && e.role.Equals("theCollection")));
+            S100AttributeEditorViewModel!.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 
-            binding.Load(new featureBinding {
-                roleType = Enum.GetName(roleType.aggregation)!,
-                association = "TrafficSeparationSchemeAggregation",
-                role = "theCollection",
-                associationId = "A103",
-                featureId = "S105",
-                foreignId = "S106",
-            });
-
-            //this._s100PropertyGrid.FeatureBindings.Add(binding);
-
-            binding = new FeatureBindingViewModel();
-            binding.Load(new featureBinding {
-                roleType = Enum.GetName(roleType.aggregation)!,
-                association = "TrafficSeparationSchemeAggregation",
-                role = "theComponent",
-                associationId = "A103",
-                featureId = "S106",
-                foreignId = "S105",
-            });
-
-            //this._s100PropertyGrid.FeatureBindings.Add(binding);
+            };
         }
 
         private void _propertyGrid_PreparePropertyItem(object sender, PropertyItemEventArgs e) {

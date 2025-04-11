@@ -83,8 +83,7 @@
             </xctk:PropertyGrid.EditorDefinitions>--><!--
         </xctk:PropertyGrid>-->
 
-        <local:S100AttributeEditor x:Name="S100AttributeEditor" 
-                                   SelectedNode="{Binding SelectedProperty}" 
+        <local:S100AttributeEditor x:Name="S100AttributeEditor"                                    
                                    ViewModel="{Binding S100AttributeEditorViewModel}"
                                    QueryAssociations="S100AttributeEditor_QueryAssociations"
                                    QueryFeatures="S100AttributeEditor_QueryFeatures"/>

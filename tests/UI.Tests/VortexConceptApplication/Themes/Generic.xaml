@@ -27,139 +27,6 @@
                             BorderBrush="{TemplateBinding BorderBrush}"
                             BorderThickness="0">
                             <StackPanel Margin="{TemplateBinding Padding}" Orientation="Vertical">
-                                <StackPanel x:Name="PART_FeatureBindings" Orientation="Vertical" Background="#dddddd">
-                                    <DockPanel Margin="0,0,0,2">
-                                        <xctk:TrimmedTextBlock DockPanel.Dock="Left" Text="Feature Bindings"
-                                                       Margin="6,2,6,4"
-                                                       TextTrimming="CharacterEllipsis"
-                                                       FontWeight="Bold" VerticalAlignment="Center">
-                                        </xctk:TrimmedTextBlock>
-                                        <StackPanel DockPanel.Dock="Right" Orientation="Horizontal" HorizontalAlignment="Right">
-                                            <ComboBox x:Name="PART_FeatureBindingDefinitions" Width="Auto" MinWidth="200" Height="Auto">
-                                            </ComboBox>
-                                            <Button Margin="2,0,0,0" Width="22" Command="local:S100AttributeEditor.AddFeatureBindingCommand">+</Button>
-                                        </StackPanel>
-                                    </DockPanel>
-
-                                    <ListView x:Name="PART_FeatureBindingsList" 
-                                      SelectionMode="Single">
-                                        <i:Interaction.Triggers>
-                                            <i:EventTrigger EventName="SelectionChanged">
-                                                <i:InvokeCommandAction 
-                                                    Command="local:S100AttributeEditor.FeatureAssociationSelectedCommand"  
-                                                    CommandParameter="{Binding ElementName=PART_FeatureBindingsList, Path=SelectedItem}"/>
-                                            </i:EventTrigger>
-                                        </i:Interaction.Triggers>
-                                        <ListView.ItemContainerStyle>
-                                            <Style TargetType="ListViewItem">
-                                                <Setter Property="HorizontalContentAlignment" Value="Stretch" />
-                                            </Style>
-                                        </ListView.ItemContainerStyle>
-                                        <ListView.View>
-                                            <GridView>
-                                                <GridViewColumn Header="roleType" DisplayMemberBinding="{Binding roleType, Mode=OneTime}"/>
-                                                <GridViewColumn Header="association" DisplayMemberBinding="{Binding association, Mode=OneTime}" Width="Auto"/>
-                                                <GridViewColumn Header="role" DisplayMemberBinding="{Binding role, Mode=OneTime}"/>
-                                                <GridViewColumn Header="ID">
-                                                    <GridViewColumn.CellTemplate>
-                                                        <DataTemplate>
-                                                            <xctk:DropDownButton x:Name="associationId"
-                                                                Width="Auto" MinWidth="80" Height="21.96"
-                                                                Content="{Binding associationId, Mode=TwoWay}"                                                                      
-                                                                IsEnabled="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ListViewItem}, Path=IsSelected, Mode=OneWay}">
-                                                                <i:Interaction.Triggers>
-                                                                    <i:EventTrigger EventName="Click">
-                                                                        <i:InvokeCommandAction 
-                                                                            Command="local:S100AttributeEditor.QueryAssociationsCommand" 
-                                                                            CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ListViewItem}}"/>
-                                                                    </i:EventTrigger>
-                                                                    <i:EventTrigger EventName="Click">
-                                                                        <i:InvokeCommandAction 
-                                                                            Command="local:S100AttributeEditor.DropDownContextMenuOpeningCommand"
-                                                                            CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=xctk:DropDownButton}}"/>
-                                                                        <i:InvokeCommandAction />
-                                                                    </i:EventTrigger>
-                                                                </i:Interaction.Triggers>
-
-                                                                <xctk:DropDownButton.DropDownContent>
-                                                                    <ListBox>
-                                                                        <i:Interaction.Triggers>
-                                                                            <i:EventTrigger EventName="Loaded">
-                                                                                <i:InvokeCommandAction 
-                                                                                    Command="local:S100AttributeEditor.AssociationIdLoaded"
-                                                                                    CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ListBox}}"/>
-                                                                            </i:EventTrigger>
-                                                                            <i:EventTrigger EventName="MouseDoubleClick">
-                                                                                <i:InvokeCommandAction
-                                                                                    Command="local:S100AttributeEditor.FeatureAssociationIdDoubleClick"
-                                                                                    CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ListBox}}"/>
-                                                                            </i:EventTrigger>                                                                            
-                                                                        </i:Interaction.Triggers>
-                                                                        <ListBox.ItemTemplate>
-                                                                            <DataTemplate>
-                                                                                <TextBlock Text="{Binding Id}" />
-                                                                            </DataTemplate>
-                                                                        </ListBox.ItemTemplate>
-                                                                    </ListBox>
-                                                                </xctk:DropDownButton.DropDownContent>
-                                                            </xctk:DropDownButton>
-                                                        </DataTemplate>
-                                                    </GridViewColumn.CellTemplate>
-                                                </GridViewColumn>
-                                                <!--<GridViewColumn Header="FeatureID" DisplayMemberBinding="{Binding featureId, Mode=OneTime}"/>-->
-                                                <GridViewColumn Header="FeatureID">
-                                                    <GridViewColumn.CellTemplate>
-                                                        <DataTemplate>
-                                                            <xctk:DropDownButton
-                                                                Width="Auto" MinWidth="80" Height="21.96"                                                                
-                                                                Content="{Binding foreignId, Mode=TwoWay}" 
-                                                                IsEnabled="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ListViewItem}, Path=IsSelected, Mode=OneWay}">
-                                                                <i:Interaction.Triggers>
-                                                                    <i:EventTrigger EventName="Click">
-                                                                        <i:InvokeCommandAction 
-                                                                            Command="local:S100AttributeEditor.QueryFeaturesCommand"
-                                                                            CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ListViewItem}}"/>
-                                                                        <i:InvokeCommandAction />
-                                                                    </i:EventTrigger>
-                                                                    <i:EventTrigger EventName="Click">
-                                                                        <i:InvokeCommandAction 
-                                                                            Command="local:S100AttributeEditor.DropDownContextMenuOpeningCommand"
-                                                                            CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=xctk:DropDownButton}}"/>
-                                                                        <i:InvokeCommandAction />                                                                        
-                                                                    </i:EventTrigger>
-                                                                </i:Interaction.Triggers>
-
-                                                                <xctk:DropDownButton.DropDownContent>
-                                                                    <ListView>
-                                                                        <i:Interaction.Triggers>
-                                                                            <i:EventTrigger EventName="Loaded">
-                                                                                <i:InvokeCommandAction 
-                                                                                    Command="local:S100AttributeEditor.FeatureIdLoaded"
-                                                                                    CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ListView}}"/>
-                                                                            </i:EventTrigger>
-                                                                            <i:EventTrigger EventName="MouseDoubleClick">
-                                                                                <i:InvokeCommandAction
-                                                                                    Command="local:S100AttributeEditor.FeatureIdDoubleClick"
-                                                                                    CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ListView}}"/>
-                                                                            </i:EventTrigger>
-                                                                        </i:Interaction.Triggers>
-                                                                        <ListView.View>
-                                                                            <GridView>
-                                                                                <GridViewColumn Header="Code" DisplayMemberBinding="{Binding Code, Mode=OneTime}"/>
-                                                                                <GridViewColumn Header="Id" DisplayMemberBinding="{Binding Id, Mode=OneTime}"/>
-                                                                            </GridView>
-                                                                        </ListView.View>
-                                                                    </ListView>
-                                                                </xctk:DropDownButton.DropDownContent>
-                                                            </xctk:DropDownButton>
-                                                        </DataTemplate>
-                                                    </GridViewColumn.CellTemplate>
-                                                </GridViewColumn>
-                                            </GridView>
-                                        </ListView.View>
-                                    </ListView>
-                                </StackPanel>
-
                                 <StackPanel x:Name="PART_InformationBindings" Orientation="Vertical" Background="#dddddd">
                                     <DockPanel Margin="0,0,0,2">
                                         <xctk:TrimmedTextBlock DockPanel.Dock="Left" Text="Information Bindings"
@@ -273,6 +140,139 @@
                                                                             <i:EventTrigger EventName="MouseDoubleClick">
                                                                                 <i:InvokeCommandAction
                                                                                     Command="local:S100AttributeEditor.InformationIdDoubleClick"
+                                                                                    CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ListView}}"/>
+                                                                            </i:EventTrigger>
+                                                                        </i:Interaction.Triggers>
+                                                                        <ListView.View>
+                                                                            <GridView>
+                                                                                <GridViewColumn Header="Code" DisplayMemberBinding="{Binding Code, Mode=OneTime}"/>
+                                                                                <GridViewColumn Header="Id" DisplayMemberBinding="{Binding Id, Mode=OneTime}"/>
+                                                                            </GridView>
+                                                                        </ListView.View>
+                                                                    </ListView>
+                                                                </xctk:DropDownButton.DropDownContent>
+                                                            </xctk:DropDownButton>
+                                                        </DataTemplate>
+                                                    </GridViewColumn.CellTemplate>
+                                                </GridViewColumn>
+                                            </GridView>
+                                        </ListView.View>
+                                    </ListView>
+                                </StackPanel>
+
+                                <StackPanel x:Name="PART_FeatureBindings" Orientation="Vertical" Background="#dddddd">
+                                    <DockPanel Margin="0,0,0,2">
+                                        <xctk:TrimmedTextBlock DockPanel.Dock="Left" Text="Feature Bindings"
+                                                       Margin="6,2,6,4"
+                                                       TextTrimming="CharacterEllipsis"
+                                                       FontWeight="Bold" VerticalAlignment="Center">
+                                        </xctk:TrimmedTextBlock>
+                                        <StackPanel DockPanel.Dock="Right" Orientation="Horizontal" HorizontalAlignment="Right">
+                                            <ComboBox x:Name="PART_FeatureBindingDefinitions" Width="Auto" MinWidth="200" Height="Auto">
+                                            </ComboBox>
+                                            <Button Margin="2,0,0,0" Width="22" Command="local:S100AttributeEditor.AddFeatureBindingCommand">+</Button>
+                                        </StackPanel>
+                                    </DockPanel>
+
+                                    <ListView x:Name="PART_FeatureBindingsList" 
+                                      SelectionMode="Single">
+                                        <i:Interaction.Triggers>
+                                            <i:EventTrigger EventName="SelectionChanged">
+                                                <i:InvokeCommandAction 
+                                                    Command="local:S100AttributeEditor.FeatureAssociationSelectedCommand"  
+                                                    CommandParameter="{Binding ElementName=PART_FeatureBindingsList, Path=SelectedItem}"/>
+                                            </i:EventTrigger>
+                                        </i:Interaction.Triggers>
+                                        <ListView.ItemContainerStyle>
+                                            <Style TargetType="ListViewItem">
+                                                <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                                            </Style>
+                                        </ListView.ItemContainerStyle>
+                                        <ListView.View>
+                                            <GridView>
+                                                <GridViewColumn Header="roleType" DisplayMemberBinding="{Binding roleType, Mode=OneTime}"/>
+                                                <GridViewColumn Header="association" DisplayMemberBinding="{Binding association, Mode=OneTime}" Width="Auto"/>
+                                                <GridViewColumn Header="role" DisplayMemberBinding="{Binding role, Mode=OneTime}"/>
+                                                <GridViewColumn Header="ID">
+                                                    <GridViewColumn.CellTemplate>
+                                                        <DataTemplate>
+                                                            <xctk:DropDownButton x:Name="associationId"
+                                                                Width="Auto" MinWidth="80" Height="21.96"
+                                                                Content="{Binding associationId, Mode=TwoWay}"                                                                      
+                                                                IsEnabled="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ListViewItem}, Path=IsSelected, Mode=OneWay}">
+                                                                <i:Interaction.Triggers>
+                                                                    <i:EventTrigger EventName="Click">
+                                                                        <i:InvokeCommandAction 
+                                                                            Command="local:S100AttributeEditor.QueryAssociationsCommand" 
+                                                                            CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ListViewItem}}"/>
+                                                                    </i:EventTrigger>
+                                                                    <i:EventTrigger EventName="Click">
+                                                                        <i:InvokeCommandAction 
+                                                                            Command="local:S100AttributeEditor.DropDownContextMenuOpeningCommand"
+                                                                            CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=xctk:DropDownButton}}"/>
+                                                                        <i:InvokeCommandAction />
+                                                                    </i:EventTrigger>
+                                                                </i:Interaction.Triggers>
+
+                                                                <xctk:DropDownButton.DropDownContent>
+                                                                    <ListBox>
+                                                                        <i:Interaction.Triggers>
+                                                                            <i:EventTrigger EventName="Loaded">
+                                                                                <i:InvokeCommandAction 
+                                                                                    Command="local:S100AttributeEditor.AssociationIdLoaded"
+                                                                                    CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ListBox}}"/>
+                                                                            </i:EventTrigger>
+                                                                            <i:EventTrigger EventName="MouseDoubleClick">
+                                                                                <i:InvokeCommandAction
+                                                                                    Command="local:S100AttributeEditor.FeatureAssociationIdDoubleClick"
+                                                                                    CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ListBox}}"/>
+                                                                            </i:EventTrigger>
+                                                                        </i:Interaction.Triggers>
+                                                                        <ListBox.ItemTemplate>
+                                                                            <DataTemplate>
+                                                                                <TextBlock Text="{Binding Id}" />
+                                                                            </DataTemplate>
+                                                                        </ListBox.ItemTemplate>
+                                                                    </ListBox>
+                                                                </xctk:DropDownButton.DropDownContent>
+                                                            </xctk:DropDownButton>
+                                                        </DataTemplate>
+                                                    </GridViewColumn.CellTemplate>
+                                                </GridViewColumn>
+                                                <!--<GridViewColumn Header="FeatureID" DisplayMemberBinding="{Binding featureId, Mode=OneTime}"/>-->
+                                                <GridViewColumn Header="FeatureID">
+                                                    <GridViewColumn.CellTemplate>
+                                                        <DataTemplate>
+                                                            <xctk:DropDownButton
+                                                                Width="Auto" MinWidth="80" Height="21.96"                                                                
+                                                                Content="{Binding featureId, Mode=TwoWay}" 
+                                                                IsEnabled="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ListViewItem}, Path=IsSelected, Mode=OneWay}">
+                                                                <i:Interaction.Triggers>
+                                                                    <i:EventTrigger EventName="Click">
+                                                                        <i:InvokeCommandAction 
+                                                                            Command="local:S100AttributeEditor.QueryFeaturesCommand"
+                                                                            CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ListViewItem}}"/>
+                                                                        <i:InvokeCommandAction />
+                                                                    </i:EventTrigger>
+                                                                    <i:EventTrigger EventName="Click">
+                                                                        <i:InvokeCommandAction 
+                                                                            Command="local:S100AttributeEditor.DropDownContextMenuOpeningCommand"
+                                                                            CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=xctk:DropDownButton}}"/>
+                                                                        <i:InvokeCommandAction />
+                                                                    </i:EventTrigger>
+                                                                </i:Interaction.Triggers>
+
+                                                                <xctk:DropDownButton.DropDownContent>
+                                                                    <ListView>
+                                                                        <i:Interaction.Triggers>
+                                                                            <i:EventTrigger EventName="Loaded">
+                                                                                <i:InvokeCommandAction 
+                                                                                    Command="local:S100AttributeEditor.FeatureIdLoaded"
+                                                                                    CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ListView}}"/>
+                                                                            </i:EventTrigger>
+                                                                            <i:EventTrigger EventName="MouseDoubleClick">
+                                                                                <i:InvokeCommandAction
+                                                                                    Command="local:S100AttributeEditor.FeatureIdDoubleClick"
                                                                                     CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ListView}}"/>
                                                                             </i:EventTrigger>
                                                                         </i:Interaction.Triggers>

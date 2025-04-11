@@ -1,6 +1,7 @@
 ﻿using S100Framework.DomainModel;
 using S100Framework.WPF.ViewModel;
 using System.Collections.ObjectModel;
+using System.Collections.Specialized;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Windows;
@@ -95,11 +96,56 @@ namespace VortexConceptApplication
 
     public delegate void QueryInformationEventHandler(object sender, QueryInformationEventArgs e);
 
-    public class S100AttributeEditorViewModel : INotifyPropertyChanged
+    public class S100AttributeEditorViewModel : INotifyPropertyChanged, INotifyCollectionChanged
     {
-        private S100AttributeEditorViewModel(string code, object selectedObject) {
+        private S100AttributeEditorViewModel(string code, ViewModelBase selectedObject) {
             this.Code = code;
             this.SelectedObject = selectedObject;
+
+            this.SelectedObject.PropertyChanged += this.SelectedObject_PropertyChanged;
+
+            this.InformationBindings.CollectionChanged += this.InformationBindings_CollectionChanged;
+            this.FeatureBindings.CollectionChanged += this.FeatureBindings_CollectionChanged;
+        }
+
+        private void SelectedObject_PropertyChanged(object? sender, PropertyChangedEventArgs e) {
+            this.PropertyChanged?.Invoke(sender, e);
+        }
+
+        private void InformationBinding_PropertyChanged(object? sender, PropertyChangedEventArgs e) {
+            this.PropertyChanged?.Invoke(sender, e);
+        }
+
+        private void FeatureBinding_PropertyChanged(object? sender, PropertyChangedEventArgs e) {
+            this.PropertyChanged?.Invoke(sender, e);
+        }
+
+        private void InformationBindings_CollectionChanged(object? sender, NotifyCollectionChangedEventArgs e) {
+            if (e.OldItems != null) {
+                foreach (var i in e.OldItems) {
+                    ((InformationBindingViewModel)i).PropertyChanged -= InformationBinding_PropertyChanged;
+                }
+            }
+            if (e.NewItems != null) {
+                foreach (var i in e.NewItems) {
+                    ((InformationBindingViewModel)i).PropertyChanged += InformationBinding_PropertyChanged;
+                }
+            }
+            this.CollectionChanged?.Invoke(this.InformationBindings, e);
+        }
+
+        private void FeatureBindings_CollectionChanged(object? sender, NotifyCollectionChangedEventArgs e) {
+            if (e.OldItems != null) {
+                foreach (var i in e.OldItems) {
+                    ((FeatureBindingViewModel)i).PropertyChanged -= FeatureBinding_PropertyChanged;
+                }
+            }
+            if (e.NewItems != null) {
+                foreach (var i in e.NewItems) {
+                    ((FeatureBindingViewModel)i).PropertyChanged += FeatureBinding_PropertyChanged;
+                }
+            }
+            this.CollectionChanged?.Invoke(this.FeatureBindings, e);
         }
 
         public S100AttributeEditorViewModel(InformationNode informationNode, InformationViewModel selectedObject) : this(informationNode.Code, selectedObject) {
@@ -110,9 +156,11 @@ namespace VortexConceptApplication
             informationBindingDefinitions = selectedObject.informationBindingDefinitions;
             featureBindingDefinitions = selectedObject.featureBindingDefinitions;
         }
-
+        
 
         public event PropertyChangedEventHandler? PropertyChanged;
+
+        public event NotifyCollectionChangedEventHandler? CollectionChanged;
 
         protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null) {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
@@ -128,9 +176,9 @@ namespace VortexConceptApplication
 
         public string Code { get; set; } = string.Empty;
 
-        private object? _selectedObject;
+        private ViewModelBase? _selectedObject;
 
-        public object? SelectedObject {
+        public ViewModelBase? SelectedObject {
             get {
                 return _selectedObject;
             }
@@ -167,79 +215,18 @@ namespace VortexConceptApplication
         private const string PART_FeatureBindingDefinitions = "PART_FeatureBindingDefinitions";
         private const string PART_InformationBindingsList = "PART_InformationBindingsList";
         private const string PART_FeatureBindingsList = "PART_FeatureBindingsList";
-        
 
 
-        private PropertyGrid? _propertyGrid = default;
-        public PropertyGrid? PropertyGrid {
-            get {
-                return _propertyGrid;
-            }
-            set {
-                _propertyGrid = value;
-            }
-        }
+        private informationBindingDefinition? InformationBindingDefinitionSelected { get; set; } = default;
+        private featureBindingDefinition? FeatureBindingDefinitionSelected { get; set; } = default;
 
-        private StackPanel? _informationBindingsStackPanel = default;
-        public StackPanel? InformationBindingsStackPanel {
-            get {
-                return _informationBindingsStackPanel;
-            }
-            set {
-                _informationBindingsStackPanel = value;
-            }
-        }
-
-        private StackPanel? _featureBindingsStackPanel = default;
-        public StackPanel? FeatureBindingsStackPanel {
-            get {
-                return _featureBindingsStackPanel;
-            }
-            set {
-                _featureBindingsStackPanel = value;
-            }
-        }
-
-
-        private ComboBox? _informationBindingDefinitionsCheckComboBox = default;
-        public ComboBox? InformationBindingDefinitionsCheckComboBox {
-            get {
-                return _informationBindingDefinitionsCheckComboBox;
-            }
-            set {
-                _informationBindingDefinitionsCheckComboBox = value;
-            }
-        }
-
-        private ComboBox? _featureBindingDefinitionsCheckComboBox = default;
-        public ComboBox? FeatureBindingDefinitionsCheckComboBox {
-            get {
-                return _featureBindingDefinitionsCheckComboBox;
-            }
-            set {
-                _featureBindingDefinitionsCheckComboBox = value;
-            }
-        }
-
-        private ListView? _featureBindingsListView = default;
-        public ListView? FeatureBindingsListView {
-            get {
-                return _featureBindingsListView;
-            }
-            set {
-                _featureBindingsListView = value;
-            }
-        }
-
-        private ListView? _informationBindingsListView = default;
-        public ListView? InformationBindingsListView {
-            get {
-                return _informationBindingsListView;
-            }
-            set {
-                _informationBindingsListView = value;
-            }
-        }
+        private PropertyGrid? PropertyGrid { get; set; } = default;
+        private StackPanel? InformationBindingsStackPanel { get; set; } = default;
+        private StackPanel? FeatureBindingsStackPanel { get; set; } = default;
+        private ComboBox? InformationBindingDefinitionsCheckComboBox { get; set; } = default;
+        private ComboBox? FeatureBindingDefinitionsCheckComboBox { get; set; } = default;
+        private ListView? FeatureBindingsListView { get; set; } = default;
+        private ListView? InformationBindingsListView { get; set; } = default;
 
         static S100AttributeEditor() {
             DefaultStyleKeyProperty.OverrideMetadata(typeof(S100AttributeEditor), new FrameworkPropertyMetadata(typeof(S100AttributeEditor)));
@@ -247,35 +234,6 @@ namespace VortexConceptApplication
 
         public S100AttributeEditor() {
             this.InitCommands();
-
-            //if (System.Diagnostics.Debugger.IsAttached) {
-            //    var bindingFeature = new FeatureBindingViewModel {
-            //        //associationId = "A0000",
-            //        //featureId = "FeatureId",
-            //        //foreignId = "ForeignId",
-            //    };
-            //    bindingFeature.Load(new featureBinding {
-            //        roleType = "aggregation",
-            //        association = "TrafficSeparationSchemeAggregation",
-            //        role = "theCollection",
-            //        associationId = "A0001",
-            //        featureId = "S0002",
-            //        foreignId = "S0003",
-            //    });
-            //    _featureBindings.Add(bindingFeature);
-
-            //    var bindingInformation = new InformationBindingViewModel {
-            //    };
-            //    bindingInformation.Load(new informationBinding {
-            //        roleType = "association",
-            //        association = "AdditionalInformation",
-            //        role = "theInformation",
-            //        associationId = "A0010",
-            //        informationId = "I0001",
-            //        foreignId = "????"
-            //    });
-            //    _informationBindings.Add(bindingInformation);
-            //}
         }
 
         private void InitCommands() {
@@ -345,27 +303,24 @@ namespace VortexConceptApplication
             FeatureBindingDefinitionsCheckComboBox = (ComboBox)GetTemplateChild(PART_FeatureBindingDefinitions);
 
             FeatureBindingsListView = (ListView)GetTemplateChild(PART_FeatureBindingsList);
-            //FeatureBindingsListView.ItemsSource = _featureBindings;
 
             InformationBindingsListView = (ListView)GetTemplateChild(PART_InformationBindingsList);
-            //InformationBindingsListView.ItemsSource = _informationBindings;
 
             InformationBindingDefinitionsCheckComboBox.SelectionChanged += (object sender, SelectionChangedEventArgs e) => {
                 if (e.AddedItems.Count > 0) {
-                    _informationBindingDefinitionSelected = e.AddedItems[0] as informationBindingDefinition;
+                    InformationBindingDefinitionSelected = e.AddedItems[0] as informationBindingDefinition;
                 }
             };
 
             FeatureBindingDefinitionsCheckComboBox.SelectionChanged += (object sender, SelectionChangedEventArgs e) => {
                 if (e.AddedItems.Count > 0) {
-                    _featureBindingDefinitionSelected = e.AddedItems[0] as featureBindingDefinition;
+                    FeatureBindingDefinitionSelected = e.AddedItems[0] as featureBindingDefinition;
                 }
             };
         }
 
-        private informationBindingDefinition? _informationBindingDefinitionSelected = default;
-        private featureBindingDefinition? _featureBindingDefinitionSelected = default;
 
+        #region DependencyProperties
 
         public static readonly DependencyProperty S100AttributeEditorViewModel =
             DependencyProperty.Register("ViewModel", typeof(S100AttributeEditorViewModel), typeof(S100AttributeEditor), new UIPropertyMetadata(null, OnViewModelChanged));
@@ -379,10 +334,24 @@ namespace VortexConceptApplication
             }
         }
 
+        #endregion
+
+        #region Commands
+
+        private DropDownButton? _activeDropDownButton = default;
+
+        public static RoutedUICommand DropDownContextMenuOpeningCommand = new("DropDownContextMenuOpeningCommand", "DropDownContextMenuOpeningCommand", typeof(S100AttributeEditor));
+
+        private void DropDownContextMenuOpeningCommandContent(object sender, ExecutedRoutedEventArgs e) {
+            _activeDropDownButton = (DropDownButton)e.Parameter;
+        }
+
+        #endregion
+
         private static void OnViewModelChanged(DependencyObject sender, DependencyPropertyChangedEventArgs args) {
             var control = sender as S100AttributeEditor;
             if (control != null) {
-                control.ViewModel.PropertyChanged += control.ViewModel_PropertyChanged;
+                //control.ViewModel.PropertyChanged += control.PropertyChanged;
 
                 if (control.PropertyGrid != null) {
                     control.PropertyGrid.SelectedObject = control.ViewModel.SelectedObject;
@@ -411,7 +380,7 @@ namespace VortexConceptApplication
             }
         }
 
-        private void ViewModel_PropertyChanged(object? sender, PropertyChangedEventArgs e) {
+        private void PropertyChanged(object? sender, PropertyChangedEventArgs e) {
             switch (e.PropertyName) {
                 case "SelectedObject":
                     if (this.PropertyGrid != null) {
@@ -431,33 +400,6 @@ namespace VortexConceptApplication
                     }
                     break;
             }
-        }
-
-        public static readonly DependencyProperty SelectedNodeObject =
-            DependencyProperty.Register("SelectedNode", typeof(object), typeof(S100AttributeEditor), new UIPropertyMetadata(null, OnSelectedNodeChanged));
-
-        public object SelectedNode {
-            get {
-                return (object)GetValue(SelectedNodeObject);
-            }
-            set {
-                SetValue(SelectedNodeObject, value);
-            }
-        }
-
-        private static void OnSelectedNodeChanged(DependencyObject sender, DependencyPropertyChangedEventArgs args) {
-            var control = sender as S100AttributeEditor;
-            if (control != null) {
-                //propertyGrid.OnSelectedPropertyChanged((object)args.OldValue, (object)args.NewValue);
-            }
-        }
-
-        private DropDownButton? _activeDropDownButton = default;
-
-        public static RoutedUICommand DropDownContextMenuOpeningCommand = new("DropDownContextMenuOpeningCommand", "DropDownContextMenuOpeningCommand", typeof(S100AttributeEditor));
-
-        private void DropDownContextMenuOpeningCommandContent(object sender, ExecutedRoutedEventArgs e) {
-            _activeDropDownButton = (DropDownButton)e.Parameter;
         }
 
         #region Associations
@@ -585,7 +527,7 @@ namespace VortexConceptApplication
                 if (selectedItem != null) {
                     var informationBinding = InformationBindingsListView?.SelectedItem as InformationBindingViewModel;
                     if (informationBinding != null) {
-                        informationBinding.foreignId = selectedItem.Id;
+                        informationBinding.informationId = selectedItem.Id;
 
                         if (_activeDropDownButton != null) {
                             _activeDropDownButton.IsOpen = false;
@@ -600,11 +542,11 @@ namespace VortexConceptApplication
         public static RoutedUICommand AddInformationBindingCommand = new("Add information binding.", "AddInformationBindingCommandContent", typeof(S100AttributeEditor));
 
         private void AddInformationBindingCommandContent(object sender, ExecutedRoutedEventArgs e) {
-            if (_informationBindingDefinitionSelected != null) {
+            if (InformationBindingDefinitionSelected != null) {
                 var binding = new informationBinding {
-                    roleType = Enum.GetName<roleType>(_informationBindingDefinitionSelected.roleType),
-                    association = _informationBindingDefinitionSelected.association,
-                    role = _informationBindingDefinitionSelected.role,
+                    roleType = Enum.GetName<roleType>(InformationBindingDefinitionSelected.roleType),
+                    association = InformationBindingDefinitionSelected.association,
+                    role = InformationBindingDefinitionSelected.role,
                 };
 
                 ViewModel.InformationBindings.Add(new InformationBindingViewModel {
@@ -664,7 +606,7 @@ namespace VortexConceptApplication
                 if (selectedItem != null) {
                     var featureBinding = FeatureBindingsListView?.SelectedItem as FeatureBindingViewModel;
                     if (featureBinding != null) {
-                        featureBinding.foreignId = selectedItem.Id;
+                        featureBinding.featureId = selectedItem.Id;
 
                         if (_activeDropDownButton != null) {
                             _activeDropDownButton.IsOpen = false;
@@ -679,11 +621,11 @@ namespace VortexConceptApplication
         public static RoutedUICommand AddFeatureBindingCommand = new("Add feature binding.", "AddFeatureBindingCommandContent", typeof(S100AttributeEditor));
 
         private void AddFeatureBindingCommandContent(object sender, ExecutedRoutedEventArgs e) {
-            if (_featureBindingDefinitionSelected != null) {
+            if (FeatureBindingDefinitionSelected != null) {
                 var binding = new featureBinding {
-                    roleType = Enum.GetName<roleType>(_featureBindingDefinitionSelected.roleType),
-                    association = _featureBindingDefinitionSelected.association,
-                    role = _featureBindingDefinitionSelected.role,
+                    roleType = Enum.GetName<roleType>(FeatureBindingDefinitionSelected.roleType),
+                    association = FeatureBindingDefinitionSelected.association,
+                    role = FeatureBindingDefinitionSelected.role,
                 };
 
                 ViewModel.FeatureBindings.Add(new FeatureBindingViewModel {
@@ -693,10 +635,5 @@ namespace VortexConceptApplication
         }
 
         #endregion
-
-
-        //private ObservableCollection<FeatureBindingViewModel> _featureBindings = new ObservableCollection<FeatureBindingViewModel>();
-
-        //private ObservableCollection<InformationBindingViewModel> _informationBindings = new ObservableCollection<InformationBindingViewModel>();
     }
 }
