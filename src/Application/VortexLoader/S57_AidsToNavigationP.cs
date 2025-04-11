@@ -6,6 +6,7 @@ using S100Framework.Applications.S57.esri;
 using S100Framework.DomainModel.S101;
 using S100Framework.DomainModel.S101.ComplexAttributes;
 using S100Framework.DomainModel.S101.FeatureTypes;
+using System.Globalization;
 using System.Security.AccessControl;
 
 
@@ -2019,11 +2020,11 @@ namespace S100Framework.Applications
                                 instance.periodicDateRange = periodicDateRange;
                             }
 
-
-                            // TODO: radarWaveLengths #30 on action point list.
-                            //if (current.RADWAL != default) {
-                            //    instance.radarWaveLength = GetRadarWaveLengths(current.RADWAL);
-                            //}
+                            if (current.RADWAL != default) {
+                                if (TryGetRadarWaveLengths(current.RADWAL, out var lengths)) {
+                                    instance.radarWaveLength = lengths;
+                                }
+                            }
 
                             if (current.SECTR1.HasValue && current.SECTR2.HasValue) {
                                 instance.sectorLimit = new sectorLimit() {
@@ -2111,24 +2112,33 @@ namespace S100Framework.Applications
             Logger.Current.DataTotalCount(tableName, recordCount, convertedCount);
         }
 
-        private static List<radarWaveLength> GetRadarWaveLengths(string radwal) {
-            var result = new List<radarWaveLength>();
-            string[] radwals = radwal.Split(',');
-            if (radwals.Length == 1) {
-                result.Add(new radarWaveLength() {
-                    waveLengthValue = Decimal.Parse(radwals[0])
-                });
-            } else {
-                result.Add(new radarWaveLength() {
-                    radarBand = radwals[0],
-                    waveLengthValue = Decimal.Parse(radwals[1])
-                });
+        internal static bool TryGetRadarWaveLengths(string radwal, out List<radarWaveLength> radarWaveLengths) {
+            radarWaveLengths = new List<radarWaveLength>();
 
+            string[] parts = radwal.Split(',');
+            foreach (var part in parts) {
+                string[] split = part.Split('-');
+                if (split.Length == 2) {
+
+                    if (decimal.TryParse(split[0], CultureInfo.InvariantCulture, out decimal waveLength)) {
+                        string band = split[1]; 
+                        radarWaveLengths.Add(new radarWaveLength() {
+                            radarBand = band,
+                            waveLengthValue = waveLength
+                        });
+                    } else { // data error
+                        return false;
+                    }
+
+                }
+                else { // data error
+                    return false;
+                }
             }
-            return result;
+            return true;
         }
 
-        private static frequencyPair? GetFrequencyPair(int frequencyShoreStationTransmits) {
+        internal static frequencyPair? GetFrequencyPair(int frequencyShoreStationTransmits) {
             return new frequencyPair() {
                 frequencyShoreStationTransmits = frequencyShoreStationTransmits
             };
