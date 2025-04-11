@@ -2,6 +2,7 @@
 using S100Framework.Applications.S57.esri;
 using S100Framework.DomainModel.S101;
 using S100Framework.DomainModel.S101.FeatureTypes;
+using System.ComponentModel;
 
 
 namespace S100Framework.Applications
@@ -73,7 +74,6 @@ namespace S100Framework.Applications
 
                             instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
 
-
                             DateHelper.TryGetFixedDateRange(current.DATSTA, current.DATEND, out var dateRange);
                             if (dateRange != default) {
                                 instance.fixedDateRange = dateRange;
@@ -113,6 +113,12 @@ namespace S100Framework.Applications
                             }
 
                             // TODO: VerticalUncertainty
+                            //if (current.SOUACC.HasValue) {
+                            //    instance.verticalUncertainty = new DomainModel.S101.ComplexAttributes.verticalUncertainty() {
+                            //        uncertaintyFixed = "",
+                            //        uncertaintyVariableFactor = ""
+                            //    }
+                            //}
 
                             // TODO: VesselSpeedLimit
 
