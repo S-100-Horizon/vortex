@@ -211,7 +211,9 @@ namespace VortexConceptApplication
             //var json = System.Text.Json.JsonSerializer.Serialize(fromJson);            
 
             //var viewModel = new S100Framework.WPF.ViewModel.S101.LateralBuoyViewModel();            
-            var viewModel = new TwoWayRoutePartViewModel();
+            var viewModel = new TwoWayRoutePartViewModel() {
+                PID = "S202600",
+            };
 
             var model = new TwoWayRoutePart() { };
 

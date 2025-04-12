@@ -2129,7 +2129,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
     [CategoryOrder("CatalogueSectionHeader", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class CatalogueSectionHeaderViewModel : InformationViewModel {
+    public partial class CatalogueSectionHeaderViewModel : InformationViewModel<CatalogueSectionHeader> {
         private Int32 _catalogueSectionNumber;
         [Category("CatalogueSectionHeader")]
         public Int32 catalogueSectionNumber {
@@ -2169,7 +2169,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 
         public override informationBindingDefinition[] informationBindingDefinitions => CatalogueSectionHeader.informationBindingDefinitions;
 
-        public void Load(DomainModel.S128.InformationTypes.CatalogueSectionHeader instance) {
+        public override void Load(DomainModel.S128.InformationTypes.CatalogueSectionHeader instance) {
             catalogueSectionNumber = instance.catalogueSectionNumber;
             catalogueSectionTitle = instance.catalogueSectionTitle;
             information = new();
@@ -2206,7 +2206,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
     [CategoryOrder("ContactDetails", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class ContactDetailsViewModel : InformationViewModel {
+    public partial class ContactDetailsViewModel : InformationViewModel<ContactDetails> {
         private String _contactInstructions = string.Empty;
         [Category("ContactDetails")]
         public String contactInstructions {
@@ -2235,7 +2235,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
         public ObservableCollection<sourceIndication> sourceIndication { get; set; } = new();
         public override informationBindingDefinition[] informationBindingDefinitions => ContactDetails.informationBindingDefinitions;
 
-        public void Load(DomainModel.S128.InformationTypes.ContactDetails instance) {
+        public override void Load(DomainModel.S128.InformationTypes.ContactDetails instance) {
             contactInstructions = instance.contactInstructions;
             contactAddress.Clear();
             if (instance.contactAddress is not null)
@@ -2307,7 +2307,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
     [CategoryOrder("IndicationOfCarriageRequirement", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class IndicationOfCarriageRequirementViewModel : InformationViewModel {
+    public partial class IndicationOfCarriageRequirementViewModel : InformationViewModel<IndicationOfCarriageRequirement> {
         private String _domesticCarriageRequirements = string.Empty;
         [Category("IndicationOfCarriageRequirement")]
         public String domesticCarriageRequirements {
@@ -2336,7 +2336,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
         public ObservableCollection<featureName> featureName { get; set; } = new();
         public override informationBindingDefinition[] informationBindingDefinitions => IndicationOfCarriageRequirement.informationBindingDefinitions;
 
-        public void Load(DomainModel.S128.InformationTypes.IndicationOfCarriageRequirement instance) {
+        public override void Load(DomainModel.S128.InformationTypes.IndicationOfCarriageRequirement instance) {
             domesticCarriageRequirements = instance.domesticCarriageRequirements;
             internationalCarriageRequirements = instance.internationalCarriageRequirements;
             featureName.Clear();
@@ -2375,7 +2375,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
     [CategoryOrder("PriceInformation", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class PriceInformationViewModel : InformationViewModel {
+    public partial class PriceInformationViewModel : InformationViewModel<PriceInformation> {
         [Category("PriceInformation")]
         public ObservableCollection<information> information { get; set; } = new();
 
@@ -2389,7 +2389,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
         public ObservableCollection<sourceIndication> sourceIndication { get; set; } = new();
         public override informationBindingDefinition[] informationBindingDefinitions => PriceInformation.informationBindingDefinitions;
 
-        public void Load(DomainModel.S128.InformationTypes.PriceInformation instance) {
+        public override void Load(DomainModel.S128.InformationTypes.PriceInformation instance) {
             information.Clear();
             if (instance.information is not null)
                 foreach (var e in instance.information)
@@ -2449,7 +2449,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
     [CategoryOrder("ProducerInformation", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class ProducerInformationViewModel : InformationViewModel {
+    public partial class ProducerInformationViewModel : InformationViewModel<ProducerInformation> {
         private String _agencyResponsibleForProduction = string.Empty;
         [Category("ProducerInformation")]
         public String agencyResponsibleForProduction {
@@ -2476,7 +2476,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 
         public override informationBindingDefinition[] informationBindingDefinitions => ProducerInformation.informationBindingDefinitions;
 
-        public void Load(DomainModel.S128.InformationTypes.ProducerInformation instance) {
+        public override void Load(DomainModel.S128.InformationTypes.ProducerInformation instance) {
             agencyResponsibleForProduction = instance.agencyResponsibleForProduction;
             agencyName = instance.agencyName;
         }
@@ -2506,7 +2506,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
     [CategoryOrder("DistributorInformation", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class DistributorInformationViewModel : InformationViewModel {
+    public partial class DistributorInformationViewModel : InformationViewModel<DistributorInformation> {
         private String _distributorName = string.Empty;
         [Category("DistributorInformation")]
         public String distributorName {
@@ -2521,7 +2521,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 
         public override informationBindingDefinition[] informationBindingDefinitions => DistributorInformation.informationBindingDefinitions;
 
-        public void Load(DomainModel.S128.InformationTypes.DistributorInformation instance) {
+        public override void Load(DomainModel.S128.InformationTypes.DistributorInformation instance) {
             distributorName = instance.distributorName;
         }
 
@@ -2548,7 +2548,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
     [CategoryOrder("ElectronicProduct", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class ElectronicProductViewModel : FeatureViewModel {
+    public partial class ElectronicProductViewModel : FeatureViewModel<ElectronicProduct> {
         private Boolean? _compressionFlag = default;
         [Category("ElectronicProduct")]
         public Boolean? compressionFlag {
@@ -2932,7 +2932,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
         [Browsable(false)]
         public IMOMaritimeService[] IMOMaritimeServiceList => [];
 
-        public void Load(DomainModel.S128.FeatureTypes.ElectronicProduct instance) {
+        public override void Load(DomainModel.S128.FeatureTypes.ElectronicProduct instance) {
             compressionFlag = instance.compressionFlag;
             datasetName = instance.datasetName;
             issueDate = instance.issueDate;
@@ -3125,7 +3125,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
     [CategoryOrder("PhysicalProduct", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class PhysicalProductViewModel : FeatureViewModel {
+    public partial class PhysicalProductViewModel : FeatureViewModel<PhysicalProduct> {
         private DateTime _editionDate;
         [Category("PhysicalProduct")]
         public DateTime editionDate {
@@ -3505,7 +3505,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
         [Browsable(false)]
         public IMOMaritimeService[] IMOMaritimeServiceList => [];
 
-        public void Load(DomainModel.S128.FeatureTypes.PhysicalProduct instance) {
+        public override void Load(DomainModel.S128.FeatureTypes.PhysicalProduct instance) {
             editionDate = instance.editionDate;
             isbn = instance.isbn;
             publicationNumber = instance.publicationNumber;
@@ -3703,7 +3703,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
     [CategoryOrder("S100Service", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class S100ServiceViewModel : FeatureViewModel {
+    public partial class S100ServiceViewModel : FeatureViewModel<S100Service> {
         private Boolean? _compressionFlag = default;
         [Category("S100Service")]
         public Boolean? compressionFlag {
@@ -3903,7 +3903,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
         [Browsable(false)]
         public IMOMaritimeService[] IMOMaritimeServiceList => [];
 
-        public void Load(DomainModel.S128.FeatureTypes.S100Service instance) {
+        public override void Load(DomainModel.S128.FeatureTypes.S100Service instance) {
             compressionFlag = instance.compressionFlag;
             serviceName = instance.serviceName;
             serviceStatus = instance.serviceStatus;

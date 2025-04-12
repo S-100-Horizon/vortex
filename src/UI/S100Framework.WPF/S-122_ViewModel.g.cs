@@ -2051,7 +2051,7 @@ namespace S100Framework.WPF.ViewModel.S122 {
     [CategoryOrder("InformationType", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class InformationTypeViewModel : InformationViewModel {
+    public partial class InformationTypeViewModel : InformationViewModel<InformationType> {
         [Category("InformationType")]
         public ObservableCollection<featureName> featureName { get; set; } = new();
 
@@ -2117,7 +2117,7 @@ namespace S100Framework.WPF.ViewModel.S122 {
         [Browsable(false)]
         public sourceType[] sourceTypeList => [(sourceType)1, (sourceType)2, (sourceType)7, (sourceType)8, (sourceType)9, (sourceType)10, (sourceType)11, (sourceType)12, (sourceType)13, (sourceType)14];
 
-        public void Load(DomainModel.S122.InformationTypes.InformationType instance) {
+        public override void Load(DomainModel.S122.InformationTypes.InformationType instance) {
             featureName.Clear();
             if (instance.featureName is not null)
                 foreach (var e in instance.featureName)
@@ -2185,7 +2185,7 @@ namespace S100Framework.WPF.ViewModel.S122 {
     [CategoryOrder("AbstractRxN", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class AbstractRxNViewModel : InformationViewModel {
+    public partial class AbstractRxNViewModel : InformationViewModel<AbstractRxN> {
         private categoryOfAuthority? _categoryOfAuthority = default;
         [DomainModel.EnumerationAttribute(nameof(categoryOfAuthorityList))]
         [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
@@ -2284,7 +2284,7 @@ namespace S100Framework.WPF.ViewModel.S122 {
         [Browsable(false)]
         public sourceType[] sourceTypeList => [(sourceType)1, (sourceType)2, (sourceType)7, (sourceType)8, (sourceType)9, (sourceType)10, (sourceType)11, (sourceType)12, (sourceType)13, (sourceType)14];
 
-        public void Load(DomainModel.S122.InformationTypes.AbstractRxN instance) {
+        public override void Load(DomainModel.S122.InformationTypes.AbstractRxN instance) {
             categoryOfAuthority = instance.categoryOfAuthority;
             textContent = new();
             if (instance.textContent != null) {
@@ -2372,7 +2372,7 @@ namespace S100Framework.WPF.ViewModel.S122 {
     [CategoryOrder("NauticalInformation", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class NauticalInformationViewModel : InformationViewModel {
+    public partial class NauticalInformationViewModel : InformationViewModel<NauticalInformation> {
         private categoryOfAuthority? _categoryOfAuthority = default;
         [DomainModel.EnumerationAttribute(nameof(categoryOfAuthorityList))]
         [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
@@ -2471,7 +2471,7 @@ namespace S100Framework.WPF.ViewModel.S122 {
         [Browsable(false)]
         public sourceType[] sourceTypeList => [(sourceType)1, (sourceType)2, (sourceType)7, (sourceType)8, (sourceType)9, (sourceType)10, (sourceType)11, (sourceType)12, (sourceType)13, (sourceType)14];
 
-        public void Load(DomainModel.S122.InformationTypes.NauticalInformation instance) {
+        public override void Load(DomainModel.S122.InformationTypes.NauticalInformation instance) {
             categoryOfAuthority = instance.categoryOfAuthority;
             textContent = new();
             if (instance.textContent != null) {
@@ -2559,7 +2559,7 @@ namespace S100Framework.WPF.ViewModel.S122 {
     [CategoryOrder("Regulations", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class RegulationsViewModel : InformationViewModel {
+    public partial class RegulationsViewModel : InformationViewModel<Regulations> {
         private categoryOfAuthority? _categoryOfAuthority = default;
         [DomainModel.EnumerationAttribute(nameof(categoryOfAuthorityList))]
         [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
@@ -2658,7 +2658,7 @@ namespace S100Framework.WPF.ViewModel.S122 {
         [Browsable(false)]
         public sourceType[] sourceTypeList => [(sourceType)1, (sourceType)2, (sourceType)7, (sourceType)8, (sourceType)9, (sourceType)10, (sourceType)11, (sourceType)12, (sourceType)13, (sourceType)14];
 
-        public void Load(DomainModel.S122.InformationTypes.Regulations instance) {
+        public override void Load(DomainModel.S122.InformationTypes.Regulations instance) {
             categoryOfAuthority = instance.categoryOfAuthority;
             textContent = new();
             if (instance.textContent != null) {
@@ -2746,7 +2746,7 @@ namespace S100Framework.WPF.ViewModel.S122 {
     [CategoryOrder("Restrictions", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class RestrictionsViewModel : InformationViewModel {
+    public partial class RestrictionsViewModel : InformationViewModel<Restrictions> {
         private categoryOfAuthority? _categoryOfAuthority = default;
         [DomainModel.EnumerationAttribute(nameof(categoryOfAuthorityList))]
         [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
@@ -2845,7 +2845,7 @@ namespace S100Framework.WPF.ViewModel.S122 {
         [Browsable(false)]
         public sourceType[] sourceTypeList => [(sourceType)1, (sourceType)2, (sourceType)7, (sourceType)8, (sourceType)9, (sourceType)10, (sourceType)11, (sourceType)12, (sourceType)13, (sourceType)14];
 
-        public void Load(DomainModel.S122.InformationTypes.Restrictions instance) {
+        public override void Load(DomainModel.S122.InformationTypes.Restrictions instance) {
             categoryOfAuthority = instance.categoryOfAuthority;
             textContent = new();
             if (instance.textContent != null) {
@@ -2933,7 +2933,7 @@ namespace S100Framework.WPF.ViewModel.S122 {
     [CategoryOrder("Recommendations", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class RecommendationsViewModel : InformationViewModel {
+    public partial class RecommendationsViewModel : InformationViewModel<Recommendations> {
         private categoryOfAuthority? _categoryOfAuthority = default;
         [DomainModel.EnumerationAttribute(nameof(categoryOfAuthorityList))]
         [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
@@ -3032,7 +3032,7 @@ namespace S100Framework.WPF.ViewModel.S122 {
         [Browsable(false)]
         public sourceType[] sourceTypeList => [(sourceType)1, (sourceType)2, (sourceType)7, (sourceType)8, (sourceType)9, (sourceType)10, (sourceType)11, (sourceType)12, (sourceType)13, (sourceType)14];
 
-        public void Load(DomainModel.S122.InformationTypes.Recommendations instance) {
+        public override void Load(DomainModel.S122.InformationTypes.Recommendations instance) {
             categoryOfAuthority = instance.categoryOfAuthority;
             textContent = new();
             if (instance.textContent != null) {
@@ -3120,7 +3120,7 @@ namespace S100Framework.WPF.ViewModel.S122 {
     [CategoryOrder("Authority", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class AuthorityViewModel : InformationViewModel {
+    public partial class AuthorityViewModel : InformationViewModel<Authority> {
         private categoryOfAuthority _categoryOfAuthority;
         [DomainModel.EnumerationAttribute(nameof(categoryOfAuthorityList))]
         [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
@@ -3206,7 +3206,7 @@ namespace S100Framework.WPF.ViewModel.S122 {
         [Browsable(false)]
         public sourceType[] sourceTypeList => [(sourceType)1, (sourceType)2, (sourceType)7, (sourceType)8, (sourceType)9, (sourceType)10, (sourceType)11, (sourceType)12, (sourceType)13, (sourceType)14];
 
-        public void Load(DomainModel.S122.InformationTypes.Authority instance) {
+        public override void Load(DomainModel.S122.InformationTypes.Authority instance) {
             categoryOfAuthority = instance.categoryOfAuthority;
             textContent.Clear();
             if (instance.textContent is not null)
@@ -3286,7 +3286,7 @@ namespace S100Framework.WPF.ViewModel.S122 {
     [CategoryOrder("ContactDetails", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class ContactDetailsViewModel : InformationViewModel {
+    public partial class ContactDetailsViewModel : InformationViewModel<ContactDetails> {
         private String _callName = string.Empty;
         [Category("ContactDetails")]
         public String callName {
@@ -3471,7 +3471,7 @@ namespace S100Framework.WPF.ViewModel.S122 {
         [Browsable(false)]
         public sourceType[] sourceTypeList => [(sourceType)1, (sourceType)2, (sourceType)7, (sourceType)8, (sourceType)9, (sourceType)10, (sourceType)11, (sourceType)12, (sourceType)13, (sourceType)14];
 
-        public void Load(DomainModel.S122.InformationTypes.ContactDetails instance) {
+        public override void Load(DomainModel.S122.InformationTypes.ContactDetails instance) {
             callName = instance.callName;
             callSign = instance.callSign;
             categoryOfCommunicationPreference = instance.categoryOfCommunicationPreference;
@@ -3637,7 +3637,7 @@ namespace S100Framework.WPF.ViewModel.S122 {
     [CategoryOrder("NonStandardWorkingDay", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class NonStandardWorkingDayViewModel : InformationViewModel {
+    public partial class NonStandardWorkingDayViewModel : InformationViewModel<NonStandardWorkingDay> {
         [Category("NonStandardWorkingDay")]
         public ObservableCollection<DateOnly> dateFixed { get; set; } = new();
 
@@ -3712,7 +3712,7 @@ namespace S100Framework.WPF.ViewModel.S122 {
         [Browsable(false)]
         public sourceType[] sourceTypeList => [(sourceType)1, (sourceType)2, (sourceType)7, (sourceType)8, (sourceType)9, (sourceType)10, (sourceType)11, (sourceType)12, (sourceType)13, (sourceType)14];
 
-        public void Load(DomainModel.S122.InformationTypes.NonStandardWorkingDay instance) {
+        public override void Load(DomainModel.S122.InformationTypes.NonStandardWorkingDay instance) {
             dateFixed.Clear();
             if (instance.dateFixed is not null)
                 foreach (var e in instance.dateFixed)
@@ -3807,7 +3807,7 @@ namespace S100Framework.WPF.ViewModel.S122 {
     [CategoryOrder("ServiceHours", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class ServiceHoursViewModel : InformationViewModel {
+    public partial class ServiceHoursViewModel : InformationViewModel<ServiceHours> {
         [Category("ServiceHours")]
         public ObservableCollection<scheduleByDayOfWeek> scheduleByDayOfWeek { get; set; } = new();
 
@@ -3889,7 +3889,7 @@ namespace S100Framework.WPF.ViewModel.S122 {
         [Browsable(false)]
         public sourceType[] sourceTypeList => [(sourceType)1, (sourceType)2, (sourceType)7, (sourceType)8, (sourceType)9, (sourceType)10, (sourceType)11, (sourceType)12, (sourceType)13, (sourceType)14];
 
-        public void Load(DomainModel.S122.InformationTypes.ServiceHours instance) {
+        public override void Load(DomainModel.S122.InformationTypes.ServiceHours instance) {
             scheduleByDayOfWeek.Clear();
             if (instance.scheduleByDayOfWeek is not null)
                 foreach (var e in instance.scheduleByDayOfWeek)
@@ -3974,7 +3974,7 @@ namespace S100Framework.WPF.ViewModel.S122 {
     [CategoryOrder("Applicability", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class ApplicabilityViewModel : InformationViewModel {
+    public partial class ApplicabilityViewModel : InformationViewModel<Applicability> {
         private Boolean? _inBallast = default;
         [Category("Applicability")]
         public Boolean? inBallast {
@@ -4149,7 +4149,7 @@ namespace S100Framework.WPF.ViewModel.S122 {
         [Browsable(false)]
         public sourceType[] sourceTypeList => [(sourceType)1, (sourceType)2, (sourceType)7, (sourceType)8, (sourceType)9, (sourceType)10, (sourceType)11, (sourceType)12, (sourceType)13, (sourceType)14];
 
-        public void Load(DomainModel.S122.InformationTypes.Applicability instance) {
+        public override void Load(DomainModel.S122.InformationTypes.Applicability instance) {
             inBallast = instance.inBallast;
             categoryOfCargo.Clear();
             if (instance.categoryOfCargo is not null)
@@ -4271,7 +4271,7 @@ namespace S100Framework.WPF.ViewModel.S122 {
     [CategoryOrder("RestrictedArea", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class RestrictedAreaViewModel : FeatureViewModel {
+    public partial class RestrictedAreaViewModel : FeatureViewModel<RestrictedArea> {
         [DomainModel.EnumerationAttribute(nameof(categoryOfRestrictedAreaList))]
         [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("RestrictedArea")]
@@ -4374,7 +4374,7 @@ namespace S100Framework.WPF.ViewModel.S122 {
         [Browsable(false)]
         public sourceType[] sourceTypeList => [(sourceType)1, (sourceType)2, (sourceType)7, (sourceType)8, (sourceType)9, (sourceType)10, (sourceType)11, (sourceType)12, (sourceType)13, (sourceType)14];
 
-        public void Load(DomainModel.S122.FeatureTypes.RestrictedArea instance) {
+        public override void Load(DomainModel.S122.FeatureTypes.RestrictedArea instance) {
             categoryOfRestrictedArea.Clear();
             if (instance.categoryOfRestrictedArea is not null)
                 foreach (var e in instance.categoryOfRestrictedArea)
@@ -4472,7 +4472,7 @@ namespace S100Framework.WPF.ViewModel.S122 {
     [CategoryOrder("MarineProtectedArea", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class MarineProtectedAreaViewModel : FeatureViewModel {
+    public partial class MarineProtectedAreaViewModel : FeatureViewModel<MarineProtectedArea> {
         private categoryOfMarineProtectedArea _categoryOfMarineProtectedArea;
         [DomainModel.CodeList(nameof(categoryOfMarineProtectedAreaList))]
         [Editor(typeof(Editors.CodeListComboEditor), typeof(Editors.CodeListComboEditor))]
@@ -4612,7 +4612,7 @@ namespace S100Framework.WPF.ViewModel.S122 {
         [Browsable(false)]
         public sourceType[] sourceTypeList => [(sourceType)1, (sourceType)2, (sourceType)7, (sourceType)8, (sourceType)9, (sourceType)10, (sourceType)11, (sourceType)12, (sourceType)13, (sourceType)14];
 
-        public void Load(DomainModel.S122.FeatureTypes.MarineProtectedArea instance) {
+        public override void Load(DomainModel.S122.FeatureTypes.MarineProtectedArea instance) {
             categoryOfMarineProtectedArea = instance.categoryOfMarineProtectedArea;
             categoryOfRestrictedArea.Clear();
             if (instance.categoryOfRestrictedArea is not null)
@@ -4725,7 +4725,7 @@ namespace S100Framework.WPF.ViewModel.S122 {
     [CategoryOrder("VesselTrafficServiceArea", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class VesselTrafficServiceAreaViewModel : FeatureViewModel {
+    public partial class VesselTrafficServiceAreaViewModel : FeatureViewModel<VesselTrafficServiceArea> {
         private categoryOfVesselTrafficService _categoryOfVesselTrafficService;
         [DomainModel.EnumerationAttribute(nameof(categoryOfVesselTrafficServiceList))]
         [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
@@ -4821,7 +4821,7 @@ namespace S100Framework.WPF.ViewModel.S122 {
         [Browsable(false)]
         public sourceType[] sourceTypeList => [(sourceType)1, (sourceType)2, (sourceType)7, (sourceType)8, (sourceType)9, (sourceType)10, (sourceType)11, (sourceType)12, (sourceType)13, (sourceType)14];
 
-        public void Load(DomainModel.S122.FeatureTypes.VesselTrafficServiceArea instance) {
+        public override void Load(DomainModel.S122.FeatureTypes.VesselTrafficServiceArea instance) {
             categoryOfVesselTrafficService = instance.categoryOfVesselTrafficService;
             featureName.Clear();
             if (instance.featureName is not null)
@@ -4895,11 +4895,11 @@ namespace S100Framework.WPF.ViewModel.S122 {
     [CategoryOrder("DataCoverage", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class DataCoverageViewModel : FeatureViewModel {
+    public partial class DataCoverageViewModel : FeatureViewModel<DataCoverage> {
         public override informationBindingDefinition[] informationBindingDefinitions => DataCoverage.informationBindingDefinitions;
         public override featureBindingDefinition[] featureBindingDefinitions => DataCoverage.featureBindingDefinitions;
 
-        public void Load(DomainModel.S122.FeatureTypes.DataCoverage instance) {
+        public override void Load(DomainModel.S122.FeatureTypes.DataCoverage instance) {
         }
 
         public override string Serialize() {
@@ -4923,11 +4923,11 @@ namespace S100Framework.WPF.ViewModel.S122 {
     [CategoryOrder("TextPlacement", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class TextPlacementViewModel : FeatureViewModel {
+    public partial class TextPlacementViewModel : FeatureViewModel<TextPlacement> {
         public override informationBindingDefinition[] informationBindingDefinitions => TextPlacement.informationBindingDefinitions;
         public override featureBindingDefinition[] featureBindingDefinitions => TextPlacement.featureBindingDefinitions;
 
-        public void Load(DomainModel.S122.FeatureTypes.TextPlacement instance) {
+        public override void Load(DomainModel.S122.FeatureTypes.TextPlacement instance) {
         }
 
         public override string Serialize() {

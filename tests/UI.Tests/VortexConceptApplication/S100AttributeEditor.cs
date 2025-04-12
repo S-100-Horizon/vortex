@@ -16,9 +16,10 @@ namespace VortexConceptApplication
 {
 
     public record AssociationId(string Id);
-
     public record InformationId(string Code, string Id);
     public record FeatureId(string Code, string Id);
+
+    #region EventArgs
 
     public class QueryAssociationsEventArgs : RoutedEventArgs
     {
@@ -43,8 +44,6 @@ namespace VortexConceptApplication
         public ICollection<AssociationId> associations { get; }
     }
 
-    public delegate void QueryAssociationsEventHandler(object sender, QueryAssociationsEventArgs e);
-
     public class QueryInformationsEventArgs : RoutedEventArgs
     {
         public QueryInformationsEventArgs(roleType? roleType, string? association, string? role, ICollection<InformationId> informations, RoutedEvent routedEvent, object source) : base(routedEvent, source) {
@@ -59,8 +58,6 @@ namespace VortexConceptApplication
         public string? role { get; }
         public ICollection<InformationId> informations { get; }
     }
-
-    public delegate void QueryInformationsEventHandler(object sender, QueryInformationsEventArgs e);
 
     public class QueryFeaturesEventArgs : RoutedEventArgs
     {
@@ -77,24 +74,14 @@ namespace VortexConceptApplication
         public ICollection<FeatureId> features { get; }
     }
 
+    #endregion
+
+    public delegate void QueryAssociationsEventHandler(object sender, QueryAssociationsEventArgs e);
+
+    public delegate void QueryInformationsEventHandler(object sender, QueryInformationsEventArgs e);
+
     public delegate void QueryFeaturesEventHandler(object sender, QueryFeaturesEventArgs e);
 
-    public class QueryInformationEventArgs : RoutedEventArgs
-    {
-        public QueryInformationEventArgs(roleType? roleType, string? association, string? role, ICollection<FeatureId> features, RoutedEvent routedEvent, object source) : base(routedEvent, source) {
-            this.roleType = roleType ?? S100Framework.DomainModel.roleType.association;
-            this.association = association ?? string.Empty;
-            this.role = role ?? string.Empty;
-            this.features = features;
-        }
-
-        public roleType? roleType { get; }
-        public string? association { get; }
-        public string? role { get; }
-        public ICollection<FeatureId> features { get; }
-    }
-
-    public delegate void QueryInformationEventHandler(object sender, QueryInformationEventArgs e);
 
     public class S100AttributeEditorViewModel : INotifyPropertyChanged, INotifyCollectionChanged
     {
@@ -147,6 +134,8 @@ namespace VortexConceptApplication
             }
             this.CollectionChanged?.Invoke(this.FeatureBindings, e);
         }
+        
+
 
         public S100AttributeEditorViewModel(InformationNode informationNode, InformationViewModel selectedObject) : this(informationNode.Code, selectedObject) {
             informationBindingDefinitions = selectedObject.informationBindingDefinitions;
@@ -380,27 +369,6 @@ namespace VortexConceptApplication
             }
         }
 
-        private void PropertyChanged(object? sender, PropertyChangedEventArgs e) {
-            switch (e.PropertyName) {
-                case "SelectedObject":
-                    if (this.PropertyGrid != null) {
-                        this.PropertyGrid.SelectedObject = this.ViewModel.SelectedObject;
-                    }
-                    break;
-
-                case "FeatureBindings":
-                    if (this.FeatureBindingsListView != null) {
-                        this.FeatureBindingsListView.ItemsSource = this.ViewModel.FeatureBindings;
-                    }
-                    break;
-
-                case "InformationBindings":
-                    if (this.InformationBindingsListView != null) {
-                        this.InformationBindingsListView.ItemsSource = this.ViewModel.InformationBindings;
-                    }
-                    break;
-            }
-        }
 
         #region Associations
 

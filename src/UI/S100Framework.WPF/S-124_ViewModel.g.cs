@@ -1210,7 +1210,7 @@ namespace S100Framework.WPF.ViewModel.S124 {
     [CategoryOrder("NAVWARNPreamble", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class NAVWARNPreambleViewModel : InformationViewModel {
+    public partial class NAVWARNPreambleViewModel : InformationViewModel<NAVWARNPreamble> {
         [Category("NAVWARNPreamble")]
         public ObservableCollection<affectedChartPublications> affectedChartPublications { get; set; } = new();
 
@@ -1291,7 +1291,7 @@ namespace S100Framework.WPF.ViewModel.S124 {
         [Browsable(false)]
         public navwarnTypeGeneral[] navwarnTypeGeneralList => CodeList.navwarnTypeGenerals.ToArray();
 
-        public void Load(DomainModel.S124.InformationTypes.NAVWARNPreamble instance) {
+        public override void Load(DomainModel.S124.InformationTypes.NAVWARNPreamble instance) {
             affectedChartPublications.Clear();
             if (instance.affectedChartPublications is not null)
                 foreach (var e in instance.affectedChartPublications)
@@ -1371,7 +1371,7 @@ namespace S100Framework.WPF.ViewModel.S124 {
     [CategoryOrder("References", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class ReferencesViewModel : InformationViewModel {
+    public partial class ReferencesViewModel : InformationViewModel<References> {
         [Category("References")]
         public ObservableCollection<messageSeriesIdentifier> messageSeriesIdentifier { get; set; } = new();
 
@@ -1406,7 +1406,7 @@ namespace S100Framework.WPF.ViewModel.S124 {
         [Browsable(false)]
         public referenceCategory[] referenceCategoryList => [];
 
-        public void Load(DomainModel.S124.InformationTypes.References instance) {
+        public override void Load(DomainModel.S124.InformationTypes.References instance) {
             messageSeriesIdentifier.Clear();
             if (instance.messageSeriesIdentifier is not null)
                 foreach (var e in instance.messageSeriesIdentifier)
@@ -1445,7 +1445,7 @@ namespace S100Framework.WPF.ViewModel.S124 {
     [CategoryOrder("NAVWARNPart", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class NAVWARNPartViewModel : FeatureViewModel {
+    public partial class NAVWARNPartViewModel : FeatureViewModel<NAVWARNPart> {
         [Category("NAVWARNPart")]
         public ObservableCollection<featureName> featureName { get; set; } = new();
 
@@ -1488,7 +1488,7 @@ namespace S100Framework.WPF.ViewModel.S124 {
         [Browsable(false)]
         public restriction[] restrictionList => [(restriction)8, (restriction)7, (restriction)14, (restriction)25, (restriction)27];
 
-        public void Load(DomainModel.S124.FeatureTypes.NAVWARNPart instance) {
+        public override void Load(DomainModel.S124.FeatureTypes.NAVWARNPart instance) {
             featureName.Clear();
             if (instance.featureName is not null)
                 foreach (var e in instance.featureName)
@@ -1550,11 +1550,11 @@ namespace S100Framework.WPF.ViewModel.S124 {
     [CategoryOrder("NAVWARNAreaAffected", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class NAVWARNAreaAffectedViewModel : FeatureViewModel {
+    public partial class NAVWARNAreaAffectedViewModel : FeatureViewModel<NAVWARNAreaAffected> {
         public override informationBindingDefinition[] informationBindingDefinitions => NAVWARNAreaAffected.informationBindingDefinitions;
         public override featureBindingDefinition[] featureBindingDefinitions => NAVWARNAreaAffected.featureBindingDefinitions;
 
-        public void Load(DomainModel.S124.FeatureTypes.NAVWARNAreaAffected instance) {
+        public override void Load(DomainModel.S124.FeatureTypes.NAVWARNAreaAffected instance) {
         }
 
         public override string Serialize() {
@@ -1578,7 +1578,7 @@ namespace S100Framework.WPF.ViewModel.S124 {
     [CategoryOrder("TextPlacement", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class TextPlacementViewModel : FeatureViewModel {
+    public partial class TextPlacementViewModel : FeatureViewModel<TextPlacement> {
         private String _text = string.Empty;
         [Category("TextPlacement")]
         public String text {
@@ -1659,7 +1659,7 @@ namespace S100Framework.WPF.ViewModel.S124 {
         [Browsable(false)]
         public textType[] textTypeList => [(textType)1, (textType)2];
 
-        public void Load(DomainModel.S124.FeatureTypes.TextPlacement instance) {
+        public override void Load(DomainModel.S124.FeatureTypes.TextPlacement instance) {
             text = instance.text;
             textOffsetBearing = instance.textOffsetBearing;
             textOffsetDistance = instance.textOffsetDistance;

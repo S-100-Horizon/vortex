@@ -435,7 +435,7 @@ namespace S100Framework
                             attributes |= TypeAttributes.Abstract;
 
                         if (!attributes.HasFlag(TypeAttributes.Abstract)) {
-                            viewBuilder.AppendLine(BuildClassViewModel(code, name, "ViewModelBase", complexType, $"DomainModel.{productId}.ComplexAttributes", codelistTypes.Keys, enumTypes.Keys, roleTypes.Keys));
+                            viewBuilder.AppendLine(BuildClassViewModel(code, name, complexType, $"DomainModel.{productId}.ComplexAttributes", codelistTypes.Keys, enumTypes.Keys, roleTypes.Keys));
                         }
 
                         dictionaryTypesComplex.Add(code);
@@ -614,7 +614,7 @@ namespace S100Framework
                         }));
 
                         if (!attributes.HasFlag(TypeAttributes.Abstract)) {
-                            viewBuilder.AppendLine(BuildClassViewModel(code, name, "ViewModelBase", associationType, $"DomainModel.{productId}.Associations.InformationAssociations", codelistTypes.Keys, enumTypes.Keys, roleTypes.Keys, (builder) => {
+                            viewBuilder.AppendLine(BuildClassViewModel(code, name, associationType, $"DomainModel.{productId}.Associations.InformationAssociations", codelistTypes.Keys, enumTypes.Keys, roleTypes.Keys, (builder) => {
                                 var c = code;
                                 while (!string.IsNullOrEmpty(c) && superClassHierarchy.ContainsKey(c)) {
                                     c = superClassHierarchy[c];
@@ -699,7 +699,7 @@ namespace S100Framework
                         }));
 
                         if (!attributes.HasFlag(TypeAttributes.Abstract)) {
-                            viewBuilder.AppendLine(BuildClassViewModel(code, name, "ViewModelBase", associationType, $"DomainModel.{productId}.Associations.FeatureAssociations", codelistTypes.Keys, enumTypes.Keys, roleTypes.Keys, (builder) => {
+                            viewBuilder.AppendLine(BuildClassViewModel(code, name, associationType, $"DomainModel.{productId}.Associations.FeatureAssociations", codelistTypes.Keys, enumTypes.Keys, roleTypes.Keys, (builder) => {
                                 var c = code;
                                 while (!string.IsNullOrEmpty(c) && superClassHierarchy.ContainsKey(c)) {
                                     c = superClassHierarchy[c];
@@ -878,7 +878,7 @@ namespace S100Framework
                         }));
 
                         if (!attributes.HasFlag(TypeAttributes.Abstract)) {
-                            viewBuilder.AppendLine(BuildClassViewModel(code, name, "InformationViewModel", informationType, $"DomainModel.{productId}.InformationTypes", codelistTypes.Keys, enumTypes.Keys, roleTypes.Keys, (builder) => {
+                            viewBuilder.AppendLine(BuildClassViewModelTemplate(code, name, "InformationViewModel", informationType, $"DomainModel.{productId}.InformationTypes", codelistTypes.Keys, enumTypes.Keys, roleTypes.Keys, (builder) => {
                                 var c = code;
                                 while (!string.IsNullOrEmpty(c) && superClassHierarchy.ContainsKey(c)) {
                                     c = superClassHierarchy[c];
@@ -1064,7 +1064,7 @@ namespace S100Framework
                         }));
 
                         if (!attributes.HasFlag(TypeAttributes.Abstract)) {
-                            viewBuilder.AppendLine(BuildClassViewModel(code, name, "FeatureViewModel", featureType, $"DomainModel.{productId}.FeatureTypes", codelistTypes.Keys, enumTypes.Keys, roleTypes.Keys, (builder) => {
+                            viewBuilder.AppendLine(BuildClassViewModelTemplate(code, name, "FeatureViewModel", featureType, $"DomainModel.{productId}.FeatureTypes", codelistTypes.Keys, enumTypes.Keys, roleTypes.Keys, (builder) => {
                                 var c = code;
                                 while (!string.IsNullOrEmpty(c) && superClassHierarchy.ContainsKey(c)) {
                                     c = superClassHierarchy[c];
@@ -1470,7 +1470,15 @@ namespace S100Framework
         private static void BuildInformationBindings(string code, string xmlNamespace, XElement e, StringBuilder builder) {
         }
 
-        private static string BuildClassViewModel(string code, string name, string baseClass, Type type, string classNamespace, ICollection<string> codeLists, ICollection<string> enumLists, ICollection<string> roles, Action<StringBuilder>? postAction = null) {
+        private static string BuildClassViewModel(string code, string name, Type type, string classNamespace, ICollection<string> codeLists, ICollection<string> enumLists, ICollection<string> roles, Action<StringBuilder>? postAction = null) {
+            return iBuildClassViewModel(code, name, "ViewModelBase", type, false, classNamespace, codeLists, enumLists, roles, postAction);
+        }
+
+        private static string BuildClassViewModelTemplate(string code, string name, string baseClass, Type type, string classNamespace, ICollection<string> codeLists, ICollection<string> enumLists, ICollection<string> roles, Action<StringBuilder>? postAction = null) {
+            return iBuildClassViewModel(code,name,baseClass,type, true, classNamespace, codeLists, enumLists, roles, postAction);
+        }
+
+        private static string iBuildClassViewModel(string code, string name, string baseClass, Type type, bool isTemplate, string classNamespace, ICollection<string> codeLists, ICollection<string> enumLists, ICollection<string> roles, Action<StringBuilder>? postAction = null) {
             var ps = classNamespace.Split('.')[1];
 
             var classBuilder = new StringBuilder();
@@ -1488,7 +1496,11 @@ namespace S100Framework
             classBuilder.AppendLine($"\t\t\t[CategoryOrder(\"{code}\", 0)]");
             classBuilder.AppendLine("\t\t\t[CategoryOrder(\"InformationBindings\", 100)]");
             classBuilder.AppendLine("\t\t\t[CategoryOrder(\"FeatureBindings\", 200)]");
-            classBuilder.AppendLine($"{prefix} class {code}ViewModel : {baseClass}");
+
+            if(!isTemplate)
+                classBuilder.AppendLine($"{prefix} class {code}ViewModel : {baseClass}");
+            else
+                classBuilder.AppendLine($"{prefix} class {code}ViewModel : {baseClass}<{code}>");
 
             if (code.ToLowerInvariant().Equals(code))
                 classBuilder.AppendLine("#pragma warning restore CS8981");
@@ -1549,7 +1561,10 @@ namespace S100Framework
 
             //  Loader
             classBuilder.AppendLine("");
-            classBuilder.AppendLine($"\t\tpublic void Load({classNamespace}.{code} instance) {{");
+            if (!isTemplate)
+                classBuilder.AppendLine($"\t\tpublic void Load({classNamespace}.{code} instance) {{");
+            else
+                classBuilder.AppendLine($"\t\tpublic override void Load({classNamespace}.{code} instance) {{");
             classBuilder.Append(loadBuilder.ToString());
             classBuilder.AppendLine("\t\t}");
             classBuilder.AppendLine("");
@@ -2032,7 +2047,8 @@ namespace S100Framework.DomainModel
         public string? foreignId { get; set; } = null;
     }
 
-    public class informationBindingDefinition {
+    public class informationBindingDefinition
+    {
         public roleType roleType { get; set; }
         public int lower { get; set; }
         public int? upper { get; set; }

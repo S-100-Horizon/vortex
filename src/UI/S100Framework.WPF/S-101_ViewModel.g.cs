@@ -4103,7 +4103,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
     [CategoryOrder("ContactDetails", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class ContactDetailsViewModel : InformationViewModel {
+    public partial class ContactDetailsViewModel : InformationViewModel<ContactDetails> {
         private String _callSign = string.Empty;
         [Category("ContactDetails")]
         public String callSign {
@@ -4166,7 +4166,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         public ObservableCollection<telecommunications> telecommunications { get; set; } = new();
         public override informationBindingDefinition[] informationBindingDefinitions => ContactDetails.informationBindingDefinitions;
 
-        public void Load(DomainModel.S101.InformationTypes.ContactDetails instance) {
+        public override void Load(DomainModel.S101.InformationTypes.ContactDetails instance) {
             callSign = instance.callSign;
             communicationChannel.Clear();
             if (instance.communicationChannel is not null)
@@ -4243,7 +4243,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
     [CategoryOrder("ServiceHours", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class ServiceHoursViewModel : InformationViewModel {
+    public partial class ServiceHoursViewModel : InformationViewModel<ServiceHours> {
         private fixedDateRangeViewModel? _fixedDateRange;
         [Category("ServiceHours")]
         [Xceed.Wpf.Toolkit.PropertyGrid.Attributes.ExpandableObject]
@@ -4267,7 +4267,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         public ObservableCollection<information> information { get; set; } = new();
         public override informationBindingDefinition[] informationBindingDefinitions => ServiceHours.informationBindingDefinitions;
 
-        public void Load(DomainModel.S101.InformationTypes.ServiceHours instance) {
+        public override void Load(DomainModel.S101.InformationTypes.ServiceHours instance) {
             fixedDateRange = new();
             if (instance.fixedDateRange != null) {
                 fixedDateRange = new();
@@ -4326,7 +4326,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
     [CategoryOrder("NonStandardWorkingDay", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class NonStandardWorkingDayViewModel : InformationViewModel {
+    public partial class NonStandardWorkingDayViewModel : InformationViewModel<NonStandardWorkingDay> {
         [Category("NonStandardWorkingDay")]
         public ObservableCollection<DateOnly> dateFixed { get; set; } = new();
 
@@ -4353,7 +4353,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         public ObservableCollection<information> information { get; set; } = new();
         public override informationBindingDefinition[] informationBindingDefinitions => NonStandardWorkingDay.informationBindingDefinitions;
 
-        public void Load(DomainModel.S101.InformationTypes.NonStandardWorkingDay instance) {
+        public override void Load(DomainModel.S101.InformationTypes.NonStandardWorkingDay instance) {
             dateFixed.Clear();
             if (instance.dateFixed is not null)
                 foreach (var e in instance.dateFixed)
@@ -4421,7 +4421,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
     [CategoryOrder("NauticalInformation", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class NauticalInformationViewModel : InformationViewModel {
+    public partial class NauticalInformationViewModel : InformationViewModel<NauticalInformation> {
         private fixedDateRangeViewModel? _fixedDateRange;
         [Category("NauticalInformation")]
         [Xceed.Wpf.Toolkit.PropertyGrid.Attributes.ExpandableObject]
@@ -4455,7 +4455,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
         public override informationBindingDefinition[] informationBindingDefinitions => NauticalInformation.informationBindingDefinitions;
 
-        public void Load(DomainModel.S101.InformationTypes.NauticalInformation instance) {
+        public override void Load(DomainModel.S101.InformationTypes.NauticalInformation instance) {
             fixedDateRange = new();
             if (instance.fixedDateRange != null) {
                 fixedDateRange = new();
@@ -4508,7 +4508,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
     [CategoryOrder("SpatialQuality", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class SpatialQualityViewModel : InformationViewModel {
+    public partial class SpatialQualityViewModel : InformationViewModel<SpatialQuality> {
         private qualityOfHorizontalMeasurement? _qualityOfHorizontalMeasurement = default;
         [DomainModel.EnumerationAttribute(nameof(qualityOfHorizontalMeasurementList))]
         [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
@@ -4530,7 +4530,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         [Browsable(false)]
         public qualityOfHorizontalMeasurement[] qualityOfHorizontalMeasurementList => [(qualityOfHorizontalMeasurement)4];
 
-        public void Load(DomainModel.S101.InformationTypes.SpatialQuality instance) {
+        public override void Load(DomainModel.S101.InformationTypes.SpatialQuality instance) {
             qualityOfHorizontalMeasurement = instance.qualityOfHorizontalMeasurement;
             spatialAccuracy.Clear();
             if (instance.spatialAccuracy is not null)
@@ -4566,7 +4566,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
     [CategoryOrder("QualityOfNonBathymetricData", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class QualityOfNonBathymetricDataViewModel : FeatureViewModel {
+    public partial class QualityOfNonBathymetricDataViewModel : FeatureViewModel<QualityOfNonBathymetricData> {
         private categoryOfTemporalVariation? _categoryOfTemporalVariation = default;
         [DomainModel.EnumerationAttribute(nameof(categoryOfTemporalVariationList))]
         [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
@@ -4664,7 +4664,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         [Browsable(false)]
         public categoryOfTemporalVariation[] categoryOfTemporalVariationList => [(categoryOfTemporalVariation)1, (categoryOfTemporalVariation)4];
 
-        public void Load(DomainModel.S101.FeatureTypes.QualityOfNonBathymetricData instance) {
+        public override void Load(DomainModel.S101.FeatureTypes.QualityOfNonBathymetricData instance) {
             categoryOfTemporalVariation = instance.categoryOfTemporalVariation;
             horizontalDistanceUncertainty = instance.horizontalDistanceUncertainty;
             horizontalPositionUncertainty = new();
@@ -4733,7 +4733,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
     [CategoryOrder("DataCoverage", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class DataCoverageViewModel : FeatureViewModel {
+    public partial class DataCoverageViewModel : FeatureViewModel<DataCoverage> {
         private Int32? _drawingIndex = default;
         [Category("DataCoverage")]
         public Int32? drawingIndex {
@@ -4799,7 +4799,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         public override informationBindingDefinition[] informationBindingDefinitions => DataCoverage.informationBindingDefinitions;
         public override featureBindingDefinition[] featureBindingDefinitions => DataCoverage.featureBindingDefinitions;
 
-        public void Load(DomainModel.S101.FeatureTypes.DataCoverage instance) {
+        public override void Load(DomainModel.S101.FeatureTypes.DataCoverage instance) {
             drawingIndex = instance.drawingIndex;
             interoperabilityIdentifier = instance.interoperabilityIdentifier;
             maximumDisplayScale = instance.maximumDisplayScale;
@@ -4847,7 +4847,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
     [CategoryOrder("NavigationalSystemOfMarks", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class NavigationalSystemOfMarksViewModel : FeatureViewModel {
+    public partial class NavigationalSystemOfMarksViewModel : FeatureViewModel<NavigationalSystemOfMarks> {
         private marksNavigationalSystemOf _marksNavigationalSystemOf;
         [DomainModel.EnumerationAttribute(nameof(marksNavigationalSystemOfList))]
         [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
@@ -4882,7 +4882,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         [Browsable(false)]
         public marksNavigationalSystemOf[] marksNavigationalSystemOfList => [(marksNavigationalSystemOf)1, (marksNavigationalSystemOf)2, (marksNavigationalSystemOf)9, (marksNavigationalSystemOf)11];
 
-        public void Load(DomainModel.S101.FeatureTypes.NavigationalSystemOfMarks instance) {
+        public override void Load(DomainModel.S101.FeatureTypes.NavigationalSystemOfMarks instance) {
             marksNavigationalSystemOf = instance.marksNavigationalSystemOf;
             interoperabilityIdentifier = instance.interoperabilityIdentifier;
             information.Clear();
@@ -4921,7 +4921,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
     [CategoryOrder("LocalDirectionOfBuoyage", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class LocalDirectionOfBuoyageViewModel : FeatureViewModel {
+    public partial class LocalDirectionOfBuoyageViewModel : FeatureViewModel<LocalDirectionOfBuoyage> {
         private String _interoperabilityIdentifier = string.Empty;
         [Category("LocalDirectionOfBuoyage")]
         public String interoperabilityIdentifier {
@@ -4980,7 +4980,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         [Browsable(false)]
         public marksNavigationalSystemOf[] marksNavigationalSystemOfList => [(marksNavigationalSystemOf)1, (marksNavigationalSystemOf)2, (marksNavigationalSystemOf)9, (marksNavigationalSystemOf)11];
 
-        public void Load(DomainModel.S101.FeatureTypes.LocalDirectionOfBuoyage instance) {
+        public override void Load(DomainModel.S101.FeatureTypes.LocalDirectionOfBuoyage instance) {
             interoperabilityIdentifier = instance.interoperabilityIdentifier;
             marksNavigationalSystemOf = instance.marksNavigationalSystemOf;
             orientationValue = instance.orientationValue;
@@ -5025,7 +5025,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
     [CategoryOrder("QualityOfBathymetricData", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class QualityOfBathymetricDataViewModel : FeatureViewModel {
+    public partial class QualityOfBathymetricDataViewModel : FeatureViewModel<QualityOfBathymetricData> {
         private categoryOfTemporalVariation _categoryOfTemporalVariation;
         [DomainModel.EnumerationAttribute(nameof(categoryOfTemporalVariationList))]
         [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
@@ -5142,7 +5142,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         [Browsable(false)]
         public dataAssessment[] dataAssessmentList => [(dataAssessment)1, (dataAssessment)2, (dataAssessment)3];
 
-        public void Load(DomainModel.S101.FeatureTypes.QualityOfBathymetricData instance) {
+        public override void Load(DomainModel.S101.FeatureTypes.QualityOfBathymetricData instance) {
             categoryOfTemporalVariation = instance.categoryOfTemporalVariation;
             dataAssessment = instance.dataAssessment;
             depthRangeMaximumValue = instance.depthRangeMaximumValue;
@@ -5218,7 +5218,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
     [CategoryOrder("SoundingDatum", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class SoundingDatumViewModel : FeatureViewModel {
+    public partial class SoundingDatumViewModel : FeatureViewModel<SoundingDatum> {
         private String _interoperabilityIdentifier = string.Empty;
         [Category("SoundingDatum")]
         public String interoperabilityIdentifier {
@@ -5253,7 +5253,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         [Browsable(false)]
         public verticalDatum[] verticalDatumList => [(verticalDatum)1, (verticalDatum)2, (verticalDatum)3, (verticalDatum)4, (verticalDatum)5, (verticalDatum)6, (verticalDatum)7, (verticalDatum)8, (verticalDatum)9, (verticalDatum)10, (verticalDatum)11, (verticalDatum)12, (verticalDatum)13, (verticalDatum)14, (verticalDatum)15, (verticalDatum)19, (verticalDatum)22, (verticalDatum)23, (verticalDatum)24, (verticalDatum)25, (verticalDatum)26, (verticalDatum)27, (verticalDatum)44];
 
-        public void Load(DomainModel.S101.FeatureTypes.SoundingDatum instance) {
+        public override void Load(DomainModel.S101.FeatureTypes.SoundingDatum instance) {
             interoperabilityIdentifier = instance.interoperabilityIdentifier;
             verticalDatum = instance.verticalDatum;
             information.Clear();
@@ -5292,7 +5292,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
     [CategoryOrder("VerticalDatumOfData", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class VerticalDatumOfDataViewModel : FeatureViewModel {
+    public partial class VerticalDatumOfDataViewModel : FeatureViewModel<VerticalDatumOfData> {
         private String _interoperabilityIdentifier = string.Empty;
         [Category("VerticalDatumOfData")]
         public String interoperabilityIdentifier {
@@ -5327,7 +5327,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         [Browsable(false)]
         public verticalDatum[] verticalDatumList => [(verticalDatum)3, (verticalDatum)13, (verticalDatum)16, (verticalDatum)17, (verticalDatum)18, (verticalDatum)19, (verticalDatum)20, (verticalDatum)21, (verticalDatum)24, (verticalDatum)25, (verticalDatum)26, (verticalDatum)28, (verticalDatum)29, (verticalDatum)30, (verticalDatum)44];
 
-        public void Load(DomainModel.S101.FeatureTypes.VerticalDatumOfData instance) {
+        public override void Load(DomainModel.S101.FeatureTypes.VerticalDatumOfData instance) {
             interoperabilityIdentifier = instance.interoperabilityIdentifier;
             verticalDatum = instance.verticalDatum;
             information.Clear();
@@ -5366,7 +5366,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
     [CategoryOrder("QualityOfSurvey", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class QualityOfSurveyViewModel : FeatureViewModel {
+    public partial class QualityOfSurveyViewModel : FeatureViewModel<QualityOfSurvey> {
         private Decimal? _depthRangeMaximumValue = default;
         [Category("QualityOfSurvey")]
         public Decimal? depthRangeMaximumValue {
@@ -5571,7 +5571,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         [Browsable(false)]
         public techniqueOfVerticalMeasurement[] techniqueOfVerticalMeasurementList => [(techniqueOfVerticalMeasurement)1, (techniqueOfVerticalMeasurement)2, (techniqueOfVerticalMeasurement)3, (techniqueOfVerticalMeasurement)4, (techniqueOfVerticalMeasurement)5, (techniqueOfVerticalMeasurement)8, (techniqueOfVerticalMeasurement)9, (techniqueOfVerticalMeasurement)10, (techniqueOfVerticalMeasurement)11, (techniqueOfVerticalMeasurement)12, (techniqueOfVerticalMeasurement)13, (techniqueOfVerticalMeasurement)15, (techniqueOfVerticalMeasurement)16, (techniqueOfVerticalMeasurement)17, (techniqueOfVerticalMeasurement)18];
 
-        public void Load(DomainModel.S101.FeatureTypes.QualityOfSurvey instance) {
+        public override void Load(DomainModel.S101.FeatureTypes.QualityOfSurvey instance) {
             depthRangeMaximumValue = instance.depthRangeMaximumValue;
             depthRangeMinimumValue = instance.depthRangeMinimumValue;
             featuresDetected = new();
@@ -5683,7 +5683,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
     [CategoryOrder("UpdateInformation", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class UpdateInformationViewModel : FeatureViewModel {
+    public partial class UpdateInformationViewModel : FeatureViewModel<UpdateInformation> {
         private fixedDateRangeViewModel? _fixedDateRange;
         [Category("UpdateInformation")]
         [Xceed.Wpf.Toolkit.PropertyGrid.Attributes.ExpandableObject]
@@ -5767,7 +5767,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         [Browsable(false)]
         public updateType[] updateTypeList => [(updateType)1, (updateType)2, (updateType)3, (updateType)4];
 
-        public void Load(DomainModel.S101.FeatureTypes.UpdateInformation instance) {
+        public override void Load(DomainModel.S101.FeatureTypes.UpdateInformation instance) {
             fixedDateRange = new();
             if (instance.fixedDateRange != null) {
                 fixedDateRange = new();
@@ -5823,7 +5823,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
     [CategoryOrder("MagneticVariation", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class MagneticVariationViewModel : FeatureViewModel {
+    public partial class MagneticVariationViewModel : FeatureViewModel<MagneticVariation> {
         private String _interoperabilityIdentifier = string.Empty;
         [Category("MagneticVariation")]
         public String interoperabilityIdentifier {
@@ -5889,7 +5889,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         public override informationBindingDefinition[] informationBindingDefinitions => MagneticVariation.informationBindingDefinitions;
         public override featureBindingDefinition[] featureBindingDefinitions => MagneticVariation.featureBindingDefinitions;
 
-        public void Load(DomainModel.S101.FeatureTypes.MagneticVariation instance) {
+        public override void Load(DomainModel.S101.FeatureTypes.MagneticVariation instance) {
             interoperabilityIdentifier = instance.interoperabilityIdentifier;
             referenceYearForMagneticVariation = instance.referenceYearForMagneticVariation;
             valueOfAnnualChangeInMagneticVariation = instance.valueOfAnnualChangeInMagneticVariation;
@@ -5937,7 +5937,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
     [CategoryOrder("LocalMagneticAnomaly", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class LocalMagneticAnomalyViewModel : FeatureViewModel {
+    public partial class LocalMagneticAnomalyViewModel : FeatureViewModel<LocalMagneticAnomaly> {
         [Category("LocalMagneticAnomaly")]
         public ObservableCollection<featureName> featureName { get; set; } = new();
 
@@ -5985,7 +5985,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         public override informationBindingDefinition[] informationBindingDefinitions => LocalMagneticAnomaly.informationBindingDefinitions;
         public override featureBindingDefinition[] featureBindingDefinitions => LocalMagneticAnomaly.featureBindingDefinitions;
 
-        public void Load(DomainModel.S101.FeatureTypes.LocalMagneticAnomaly instance) {
+        public override void Load(DomainModel.S101.FeatureTypes.LocalMagneticAnomaly instance) {
             featureName.Clear();
             if (instance.featureName is not null)
                 foreach (var e in instance.featureName)
@@ -6045,7 +6045,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
     [CategoryOrder("Coastline", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class CoastlineViewModel : FeatureViewModel {
+    public partial class CoastlineViewModel : FeatureViewModel<Coastline> {
         private categoryOfCoastline? _categoryOfCoastline = default;
         [DomainModel.EnumerationAttribute(nameof(categoryOfCoastlineList))]
         [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
@@ -6153,7 +6153,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         [Browsable(false)]
         public visualProminence[] visualProminenceList => [(visualProminence)1, (visualProminence)2, (visualProminence)3];
 
-        public void Load(DomainModel.S101.FeatureTypes.Coastline instance) {
+        public override void Load(DomainModel.S101.FeatureTypes.Coastline instance) {
             categoryOfCoastline = instance.categoryOfCoastline;
             colour.Clear();
             if (instance.colour is not null)
@@ -6231,7 +6231,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
     [CategoryOrder("LandArea", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class LandAreaViewModel : FeatureViewModel {
+    public partial class LandAreaViewModel : FeatureViewModel<LandArea> {
         private condition? _condition = default;
         [DomainModel.EnumerationAttribute(nameof(conditionList))]
         [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
@@ -6310,7 +6310,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         [Browsable(false)]
         public status[] statusList => [(status)18];
 
-        public void Load(DomainModel.S101.FeatureTypes.LandArea instance) {
+        public override void Load(DomainModel.S101.FeatureTypes.LandArea instance) {
             condition = instance.condition;
             featureName.Clear();
             if (instance.featureName is not null)
@@ -6367,7 +6367,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
     [CategoryOrder("IslandGroup", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class IslandGroupViewModel : FeatureViewModel {
+    public partial class IslandGroupViewModel : FeatureViewModel<IslandGroup> {
         [Category("IslandGroup")]
         public ObservableCollection<featureName> featureName { get; set; } = new();
 
@@ -6400,7 +6400,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         public override informationBindingDefinition[] informationBindingDefinitions => IslandGroup.informationBindingDefinitions;
         public override featureBindingDefinition[] featureBindingDefinitions => IslandGroup.featureBindingDefinitions;
 
-        public void Load(DomainModel.S101.FeatureTypes.IslandGroup instance) {
+        public override void Load(DomainModel.S101.FeatureTypes.IslandGroup instance) {
             featureName.Clear();
             if (instance.featureName is not null)
                 foreach (var e in instance.featureName)
@@ -6448,7 +6448,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
     [CategoryOrder("LandElevation", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class LandElevationViewModel : FeatureViewModel {
+    public partial class LandElevationViewModel : FeatureViewModel<LandElevation> {
         private Decimal _elevation;
         [Category("LandElevation")]
         public Decimal elevation {
@@ -6510,7 +6510,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         [Browsable(false)]
         public visualProminence[] visualProminenceList => [(visualProminence)1, (visualProminence)2, (visualProminence)3];
 
-        public void Load(DomainModel.S101.FeatureTypes.LandElevation instance) {
+        public override void Load(DomainModel.S101.FeatureTypes.LandElevation instance) {
             elevation = instance.elevation;
             featureName.Clear();
             if (instance.featureName is not null)
@@ -6564,7 +6564,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
     [CategoryOrder("River", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class RiverViewModel : FeatureViewModel {
+    public partial class RiverViewModel : FeatureViewModel<River> {
         [Category("River")]
         public ObservableCollection<featureName> featureName { get; set; } = new();
 
@@ -6614,7 +6614,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         [Browsable(false)]
         public status[] statusList => [(status)5];
 
-        public void Load(DomainModel.S101.FeatureTypes.River instance) {
+        public override void Load(DomainModel.S101.FeatureTypes.River instance) {
             featureName.Clear();
             if (instance.featureName is not null)
                 foreach (var e in instance.featureName)
@@ -6665,7 +6665,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
     [CategoryOrder("Rapids", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class RapidsViewModel : FeatureViewModel {
+    public partial class RapidsViewModel : FeatureViewModel<Rapids> {
         [Category("Rapids")]
         public ObservableCollection<featureName> featureName { get; set; } = new();
 
@@ -6710,7 +6710,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         public override informationBindingDefinition[] informationBindingDefinitions => Rapids.informationBindingDefinitions;
         public override featureBindingDefinition[] featureBindingDefinitions => Rapids.featureBindingDefinitions;
 
-        public void Load(DomainModel.S101.FeatureTypes.Rapids instance) {
+        public override void Load(DomainModel.S101.FeatureTypes.Rapids instance) {
             featureName.Clear();
             if (instance.featureName is not null)
                 foreach (var e in instance.featureName)
@@ -6761,7 +6761,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
     [CategoryOrder("Waterfall", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class WaterfallViewModel : FeatureViewModel {
+    public partial class WaterfallViewModel : FeatureViewModel<Waterfall> {
         [Category("Waterfall")]
         public ObservableCollection<featureName> featureName { get; set; } = new();
 
@@ -6823,7 +6823,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         [Browsable(false)]
         public visualProminence[] visualProminenceList => [(visualProminence)1, (visualProminence)2, (visualProminence)3];
 
-        public void Load(DomainModel.S101.FeatureTypes.Waterfall instance) {
+        public override void Load(DomainModel.S101.FeatureTypes.Waterfall instance) {
             featureName.Clear();
             if (instance.featureName is not null)
                 foreach (var e in instance.featureName)
@@ -6877,7 +6877,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
     [CategoryOrder("Lake", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class LakeViewModel : FeatureViewModel {
+    public partial class LakeViewModel : FeatureViewModel<Lake> {
         private Decimal? _elevation = default;
         [Category("Lake")]
         public Decimal? elevation {
@@ -6939,7 +6939,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         [Browsable(false)]
         public status[] statusList => [(status)5];
 
-        public void Load(DomainModel.S101.FeatureTypes.Lake instance) {
+        public override void Load(DomainModel.S101.FeatureTypes.Lake instance) {
             elevation = instance.elevation;
             featureName.Clear();
             if (instance.featureName is not null)
@@ -6993,7 +6993,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
     [CategoryOrder("LandRegion", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class LandRegionViewModel : FeatureViewModel {
+    public partial class LandRegionViewModel : FeatureViewModel<LandRegion> {
         [DomainModel.EnumerationAttribute(nameof(categoryOfLandRegionList))]
         [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("LandRegion")]
@@ -7059,7 +7059,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         [Browsable(false)]
         public waterLevelEffect[] waterLevelEffectList => [(waterLevelEffect)1, (waterLevelEffect)6];
 
-        public void Load(DomainModel.S101.FeatureTypes.LandRegion instance) {
+        public override void Load(DomainModel.S101.FeatureTypes.LandRegion instance) {
             categoryOfLandRegion.Clear();
             if (instance.categoryOfLandRegion is not null)
                 foreach (var e in instance.categoryOfLandRegion)
@@ -7128,7 +7128,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
     [CategoryOrder("Vegetation", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class VegetationViewModel : FeatureViewModel {
+    public partial class VegetationViewModel : FeatureViewModel<Vegetation> {
         private categoryOfVegetation _categoryOfVegetation;
         [DomainModel.EnumerationAttribute(nameof(categoryOfVegetationList))]
         [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
@@ -7231,7 +7231,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         [Browsable(false)]
         public visualProminence[] visualProminenceList => [(visualProminence)1, (visualProminence)2, (visualProminence)3];
 
-        public void Load(DomainModel.S101.FeatureTypes.Vegetation instance) {
+        public override void Load(DomainModel.S101.FeatureTypes.Vegetation instance) {
             categoryOfVegetation = instance.categoryOfVegetation;
             elevation = instance.elevation;
             featureName.Clear();
@@ -7294,7 +7294,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
     [CategoryOrder("IceArea", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class IceAreaViewModel : FeatureViewModel {
+    public partial class IceAreaViewModel : FeatureViewModel<IceArea> {
         private categoryOfIce _categoryOfIce;
         [DomainModel.EnumerationAttribute(nameof(categoryOfIceList))]
         [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
@@ -7420,7 +7420,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         [Browsable(false)]
         public visualProminence[] visualProminenceList => [(visualProminence)1, (visualProminence)2, (visualProminence)3];
 
-        public void Load(DomainModel.S101.FeatureTypes.IceArea instance) {
+        public override void Load(DomainModel.S101.FeatureTypes.IceArea instance) {
             categoryOfIce = instance.categoryOfIce;
             elevation = instance.elevation;
             featureName.Clear();
@@ -7504,7 +7504,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
     [CategoryOrder("SlopingGround", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class SlopingGroundViewModel : FeatureViewModel {
+    public partial class SlopingGroundViewModel : FeatureViewModel<SlopingGround> {
         private categoryOfSlope? _categoryOfSlope = default;
         [DomainModel.EnumerationAttribute(nameof(categoryOfSlopeList))]
         [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
@@ -7599,7 +7599,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         [Browsable(false)]
         public visualProminence[] visualProminenceList => [(visualProminence)1, (visualProminence)2, (visualProminence)3];
 
-        public void Load(DomainModel.S101.FeatureTypes.SlopingGround instance) {
+        public override void Load(DomainModel.S101.FeatureTypes.SlopingGround instance) {
             categoryOfSlope = instance.categoryOfSlope;
             colour.Clear();
             if (instance.colour is not null)
@@ -7674,7 +7674,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
     [CategoryOrder("SlopeTopline", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class SlopeToplineViewModel : FeatureViewModel {
+    public partial class SlopeToplineViewModel : FeatureViewModel<SlopeTopline> {
         private categoryOfSlope? _categoryOfSlope = default;
         [DomainModel.EnumerationAttribute(nameof(categoryOfSlopeList))]
         [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
@@ -7781,7 +7781,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         [Browsable(false)]
         public visualProminence[] visualProminenceList => [(visualProminence)1, (visualProminence)2, (visualProminence)3];
 
-        public void Load(DomainModel.S101.FeatureTypes.SlopeTopline instance) {
+        public override void Load(DomainModel.S101.FeatureTypes.SlopeTopline instance) {
             categoryOfSlope = instance.categoryOfSlope;
             colour.Clear();
             if (instance.colour is not null)
@@ -7859,7 +7859,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
     [CategoryOrder("Tideway", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class TidewayViewModel : FeatureViewModel {
+    public partial class TidewayViewModel : FeatureViewModel<Tideway> {
         [Category("Tideway")]
         public ObservableCollection<featureName> featureName { get; set; } = new();
 
@@ -7892,7 +7892,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         public override informationBindingDefinition[] informationBindingDefinitions => Tideway.informationBindingDefinitions;
         public override featureBindingDefinition[] featureBindingDefinitions => Tideway.featureBindingDefinitions;
 
-        public void Load(DomainModel.S101.FeatureTypes.Tideway instance) {
+        public override void Load(DomainModel.S101.FeatureTypes.Tideway instance) {
             featureName.Clear();
             if (instance.featureName is not null)
                 foreach (var e in instance.featureName)
@@ -7940,7 +7940,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
     [CategoryOrder("BuiltUpArea", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class BuiltUpAreaViewModel : FeatureViewModel {
+    public partial class BuiltUpAreaViewModel : FeatureViewModel<BuiltUpArea> {
         private categoryOfBuiltUpArea? _categoryOfBuiltUpArea = default;
         [DomainModel.EnumerationAttribute(nameof(categoryOfBuiltUpAreaList))]
         [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
@@ -8085,7 +8085,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         [Browsable(false)]
         public visualProminence[] visualProminenceList => [(visualProminence)1, (visualProminence)2, (visualProminence)3];
 
-        public void Load(DomainModel.S101.FeatureTypes.BuiltUpArea instance) {
+        public override void Load(DomainModel.S101.FeatureTypes.BuiltUpArea instance) {
             categoryOfBuiltUpArea = instance.categoryOfBuiltUpArea;
             condition = instance.condition;
             featureName.Clear();
@@ -8157,7 +8157,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
     [CategoryOrder("Building", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class BuildingViewModel : FeatureViewModel {
+    public partial class BuildingViewModel : FeatureViewModel<Building> {
         private buildingShape? _buildingShape = default;
         [DomainModel.EnumerationAttribute(nameof(buildingShapeList))]
         [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
@@ -8388,7 +8388,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         [Browsable(false)]
         public visualProminence[] visualProminenceList => [(visualProminence)1, (visualProminence)2, (visualProminence)3];
 
-        public void Load(DomainModel.S101.FeatureTypes.Building instance) {
+        public override void Load(DomainModel.S101.FeatureTypes.Building instance) {
             buildingShape = instance.buildingShape;
             colour.Clear();
             if (instance.colour is not null)
@@ -8513,7 +8513,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
     [CategoryOrder("AirportAirfield", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class AirportAirfieldViewModel : FeatureViewModel {
+    public partial class AirportAirfieldViewModel : FeatureViewModel<AirportAirfield> {
         [DomainModel.EnumerationAttribute(nameof(categoryOfAirportAirfieldList))]
         [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("AirportAirfield")]
@@ -8604,7 +8604,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         [Browsable(false)]
         public status[] statusList => [(status)1, (status)2, (status)4, (status)5, (status)6, (status)7, (status)8, (status)12, (status)14];
 
-        public void Load(DomainModel.S101.FeatureTypes.AirportAirfield instance) {
+        public override void Load(DomainModel.S101.FeatureTypes.AirportAirfield instance) {
             categoryOfAirportAirfield.Clear();
             if (instance.categoryOfAirportAirfield is not null)
                 foreach (var e in instance.categoryOfAirportAirfield)
@@ -8679,7 +8679,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
     [CategoryOrder("Runway", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class RunwayViewModel : FeatureViewModel {
+    public partial class RunwayViewModel : FeatureViewModel<Runway> {
         private condition? _condition = default;
         [DomainModel.EnumerationAttribute(nameof(conditionList))]
         [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
@@ -8760,7 +8760,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         [Browsable(false)]
         public status[] statusList => [(status)1, (status)2, (status)4, (status)5, (status)6, (status)7, (status)8, (status)12, (status)14];
 
-        public void Load(DomainModel.S101.FeatureTypes.Runway instance) {
+        public override void Load(DomainModel.S101.FeatureTypes.Runway instance) {
             condition = instance.condition;
             featureName.Clear();
             if (instance.featureName is not null)
@@ -8841,7 +8841,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
     [CategoryOrder("Helipad", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class HelipadViewModel : FeatureViewModel {
+    public partial class HelipadViewModel : FeatureViewModel<Helipad> {
         private condition? _condition = default;
         [DomainModel.EnumerationAttribute(nameof(conditionList))]
         [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
@@ -8922,7 +8922,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         [Browsable(false)]
         public status[] statusList => [(status)1, (status)2, (status)4, (status)5, (status)6, (status)7, (status)8, (status)12, (status)14];
 
-        public void Load(DomainModel.S101.FeatureTypes.Helipad instance) {
+        public override void Load(DomainModel.S101.FeatureTypes.Helipad instance) {
             condition = instance.condition;
             featureName.Clear();
             if (instance.featureName is not null)
@@ -9003,7 +9003,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
     [CategoryOrder("Bridge", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class BridgeViewModel : FeatureViewModel {
+    public partial class BridgeViewModel : FeatureViewModel<Bridge> {
         private bridgeConstruction? _bridgeConstruction = default;
         [DomainModel.EnumerationAttribute(nameof(bridgeConstructionList))]
         [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
@@ -9227,7 +9227,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         [Browsable(false)]
         public visualProminence[] visualProminenceList => [(visualProminence)1, (visualProminence)2, (visualProminence)3];
 
-        public void Load(DomainModel.S101.FeatureTypes.Bridge instance) {
+        public override void Load(DomainModel.S101.FeatureTypes.Bridge instance) {
             bridgeConstruction = instance.bridgeConstruction;
             bridgeFunction.Clear();
             if (instance.bridgeFunction is not null)
@@ -9349,7 +9349,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
     [CategoryOrder("SpanFixed", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class SpanFixedViewModel : FeatureViewModel {
+    public partial class SpanFixedViewModel : FeatureViewModel<SpanFixed> {
         private fixedDateRangeViewModel? _fixedDateRange;
         [Category("SpanFixed")]
         [Xceed.Wpf.Toolkit.PropertyGrid.Attributes.ExpandableObject]
@@ -9448,7 +9448,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         [Browsable(false)]
         public verticalDatum[] verticalDatumList => [(verticalDatum)3, (verticalDatum)13, (verticalDatum)16, (verticalDatum)17, (verticalDatum)18, (verticalDatum)19, (verticalDatum)20, (verticalDatum)21, (verticalDatum)24, (verticalDatum)25, (verticalDatum)26, (verticalDatum)28, (verticalDatum)29, (verticalDatum)30, (verticalDatum)44];
 
-        public void Load(DomainModel.S101.FeatureTypes.SpanFixed instance) {
+        public override void Load(DomainModel.S101.FeatureTypes.SpanFixed instance) {
             fixedDateRange = new();
             if (instance.fixedDateRange != null) {
                 fixedDateRange = new();
@@ -9517,7 +9517,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
     [CategoryOrder("SpanOpening", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class SpanOpeningViewModel : FeatureViewModel {
+    public partial class SpanOpeningViewModel : FeatureViewModel<SpanOpening> {
         private fixedDateRangeViewModel? _fixedDateRange;
         [Category("SpanOpening")]
         [Xceed.Wpf.Toolkit.PropertyGrid.Attributes.ExpandableObject]
@@ -9629,7 +9629,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         [Browsable(false)]
         public verticalDatum[] verticalDatumList => [(verticalDatum)3, (verticalDatum)13, (verticalDatum)16, (verticalDatum)17, (verticalDatum)18, (verticalDatum)19, (verticalDatum)20, (verticalDatum)21, (verticalDatum)24, (verticalDatum)25, (verticalDatum)26, (verticalDatum)28, (verticalDatum)29, (verticalDatum)30, (verticalDatum)44];
 
-        public void Load(DomainModel.S101.FeatureTypes.SpanOpening instance) {
+        public override void Load(DomainModel.S101.FeatureTypes.SpanOpening instance) {
             fixedDateRange = new();
             if (instance.fixedDateRange != null) {
                 fixedDateRange = new();
@@ -9706,7 +9706,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
     [CategoryOrder("Conveyor", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class ConveyorViewModel : FeatureViewModel {
+    public partial class ConveyorViewModel : FeatureViewModel<Conveyor> {
         private categoryOfConveyor? _categoryOfConveyor = default;
         [DomainModel.EnumerationAttribute(nameof(categoryOfConveyorList))]
         [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
@@ -9960,7 +9960,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         [Browsable(false)]
         public visualProminence[] visualProminenceList => [(visualProminence)1, (visualProminence)2, (visualProminence)3];
 
-        public void Load(DomainModel.S101.FeatureTypes.Conveyor instance) {
+        public override void Load(DomainModel.S101.FeatureTypes.Conveyor instance) {
             categoryOfConveyor = instance.categoryOfConveyor;
             colour.Clear();
             if (instance.colour is not null)
@@ -10092,7 +10092,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
     [CategoryOrder("CableOverhead", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class CableOverheadViewModel : FeatureViewModel {
+    public partial class CableOverheadViewModel : FeatureViewModel<CableOverhead> {
         private categoryOfCable? _categoryOfCable = default;
         [DomainModel.EnumerationAttribute(nameof(categoryOfCableList))]
         [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
@@ -10289,7 +10289,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         [Browsable(false)]
         public visualProminence[] visualProminenceList => [(visualProminence)1, (visualProminence)2, (visualProminence)3];
 
-        public void Load(DomainModel.S101.FeatureTypes.CableOverhead instance) {
+        public override void Load(DomainModel.S101.FeatureTypes.CableOverhead instance) {
             categoryOfCable = instance.categoryOfCable;
             condition = instance.condition;
             fixedDateRange = new();
@@ -10399,7 +10399,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
     [CategoryOrder("PipelineOverhead", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class PipelineOverheadViewModel : FeatureViewModel {
+    public partial class PipelineOverheadViewModel : FeatureViewModel<PipelineOverhead> {
         private categoryOfPipelinePipe? _categoryOfPipelinePipe = default;
         [DomainModel.EnumerationAttribute(nameof(categoryOfPipelinePipeList))]
         [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
@@ -10579,7 +10579,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         [Browsable(false)]
         public visualProminence[] visualProminenceList => [(visualProminence)1, (visualProminence)2, (visualProminence)3];
 
-        public void Load(DomainModel.S101.FeatureTypes.PipelineOverhead instance) {
+        public override void Load(DomainModel.S101.FeatureTypes.PipelineOverhead instance) {
             categoryOfPipelinePipe = instance.categoryOfPipelinePipe;
             condition = instance.condition;
             featureName.Clear();
@@ -10687,7 +10687,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
     [CategoryOrder("PylonBridgeSupport", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class PylonBridgeSupportViewModel : FeatureViewModel {
+    public partial class PylonBridgeSupportViewModel : FeatureViewModel<PylonBridgeSupport> {
         private categoryOfPylon _categoryOfPylon;
         [DomainModel.EnumerationAttribute(nameof(categoryOfPylonList))]
         [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
@@ -10916,7 +10916,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         [Browsable(false)]
         public waterLevelEffect[] waterLevelEffectList => [(waterLevelEffect)1, (waterLevelEffect)2, (waterLevelEffect)3, (waterLevelEffect)4, (waterLevelEffect)5, (waterLevelEffect)6];
 
-        public void Load(DomainModel.S101.FeatureTypes.PylonBridgeSupport instance) {
+        public override void Load(DomainModel.S101.FeatureTypes.PylonBridgeSupport instance) {
             categoryOfPylon = instance.categoryOfPylon;
             colour.Clear();
             if (instance.colour is not null)
@@ -11037,7 +11037,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
     [CategoryOrder("FenceWall", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class FenceWallViewModel : FeatureViewModel {
+    public partial class FenceWallViewModel : FeatureViewModel<FenceWall> {
         private categoryOfFence? _categoryOfFence = default;
         [DomainModel.EnumerationAttribute(nameof(categoryOfFenceList))]
         [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
@@ -11222,7 +11222,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         [Browsable(false)]
         public visualProminence[] visualProminenceList => [(visualProminence)1, (visualProminence)2, (visualProminence)3];
 
-        public void Load(DomainModel.S101.FeatureTypes.FenceWall instance) {
+        public override void Load(DomainModel.S101.FeatureTypes.FenceWall instance) {
             categoryOfFence = instance.categoryOfFence;
             colour.Clear();
             if (instance.colour is not null)
@@ -11324,7 +11324,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
     [CategoryOrder("Railway", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class RailwayViewModel : FeatureViewModel {
+    public partial class RailwayViewModel : FeatureViewModel<Railway> {
         private condition? _condition = default;
         [DomainModel.EnumerationAttribute(nameof(conditionList))]
         [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
@@ -11406,7 +11406,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         [Browsable(false)]
         public status[] statusList => [(status)1, (status)4, (status)6, (status)12, (status)13, (status)14];
 
-        public void Load(DomainModel.S101.FeatureTypes.Railway instance) {
+        public override void Load(DomainModel.S101.FeatureTypes.Railway instance) {
             condition = instance.condition;
             featureName.Clear();
             if (instance.featureName is not null)
@@ -11472,7 +11472,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
     [CategoryOrder("Road", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class RoadViewModel : FeatureViewModel {
+    public partial class RoadViewModel : FeatureViewModel<Road> {
         private categoryOfRoad? _categoryOfRoad = default;
         [DomainModel.EnumerationAttribute(nameof(categoryOfRoadList))]
         [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
@@ -11567,7 +11567,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         [Browsable(false)]
         public status[] statusList => [(status)1, (status)4, (status)6, (status)7, (status)8, (status)12, (status)13, (status)14];
 
-        public void Load(DomainModel.S101.FeatureTypes.Road instance) {
+        public override void Load(DomainModel.S101.FeatureTypes.Road instance) {
             categoryOfRoad = instance.categoryOfRoad;
             condition = instance.condition;
             featureName.Clear();
@@ -11642,7 +11642,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
     [CategoryOrder("Tunnel", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class TunnelViewModel : FeatureViewModel {
+    public partial class TunnelViewModel : FeatureViewModel<Tunnel> {
         private condition? _condition = default;
         [DomainModel.EnumerationAttribute(nameof(conditionList))]
         [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
@@ -11768,7 +11768,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         [Browsable(false)]
         public verticalDatum[] verticalDatumList => [(verticalDatum)3, (verticalDatum)13, (verticalDatum)16, (verticalDatum)17, (verticalDatum)18, (verticalDatum)19, (verticalDatum)20, (verticalDatum)21, (verticalDatum)24, (verticalDatum)25, (verticalDatum)26, (verticalDatum)28, (verticalDatum)29, (verticalDatum)30, (verticalDatum)44];
 
-        public void Load(DomainModel.S101.FeatureTypes.Tunnel instance) {
+        public override void Load(DomainModel.S101.FeatureTypes.Tunnel instance) {
             condition = instance.condition;
             featureName.Clear();
             if (instance.featureName is not null)
@@ -11853,7 +11853,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
     [CategoryOrder("Landmark", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class LandmarkViewModel : FeatureViewModel {
+    public partial class LandmarkViewModel : FeatureViewModel<Landmark> {
         [DomainModel.EnumerationAttribute(nameof(categoryOfLandmarkList))]
         [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("Landmark")]
@@ -12083,7 +12083,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         [Browsable(false)]
         public visualProminence[] visualProminenceList => [(visualProminence)1, (visualProminence)2, (visualProminence)3];
 
-        public void Load(DomainModel.S101.FeatureTypes.Landmark instance) {
+        public override void Load(DomainModel.S101.FeatureTypes.Landmark instance) {
             categoryOfLandmark.Clear();
             if (instance.categoryOfLandmark is not null)
                 foreach (var e in instance.categoryOfLandmark)
@@ -12223,7 +12223,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
     [CategoryOrder("SiloTank", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class SiloTankViewModel : FeatureViewModel {
+    public partial class SiloTankViewModel : FeatureViewModel<SiloTank> {
         private buildingShape? _buildingShape = default;
         [DomainModel.EnumerationAttribute(nameof(buildingShapeList))]
         [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
@@ -12471,7 +12471,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         [Browsable(false)]
         public visualProminence[] visualProminenceList => [(visualProminence)1, (visualProminence)2, (visualProminence)3];
 
-        public void Load(DomainModel.S101.FeatureTypes.SiloTank instance) {
+        public override void Load(DomainModel.S101.FeatureTypes.SiloTank instance) {
             buildingShape = instance.buildingShape;
             categoryOfSiloTank = instance.categoryOfSiloTank;
             colour.Clear();
@@ -12599,7 +12599,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
     [CategoryOrder("WindTurbine", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class WindTurbineViewModel : FeatureViewModel {
+    public partial class WindTurbineViewModel : FeatureViewModel<WindTurbine> {
         [DomainModel.EnumerationAttribute(nameof(colourList))]
         [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("WindTurbine")]
@@ -12865,7 +12865,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         [Browsable(false)]
         public waterLevelEffect[] waterLevelEffectList => [(waterLevelEffect)2, (waterLevelEffect)7];
 
-        public void Load(DomainModel.S101.FeatureTypes.WindTurbine instance) {
+        public override void Load(DomainModel.S101.FeatureTypes.WindTurbine instance) {
             colour.Clear();
             if (instance.colour is not null)
                 foreach (var e in instance.colour)
@@ -13000,7 +13000,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
     [CategoryOrder("FortifiedStructure", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class FortifiedStructureViewModel : FeatureViewModel {
+    public partial class FortifiedStructureViewModel : FeatureViewModel<FortifiedStructure> {
         private categoryOfFortifiedStructure? _categoryOfFortifiedStructure = default;
         [DomainModel.EnumerationAttribute(nameof(categoryOfFortifiedStructureList))]
         [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
@@ -13173,7 +13173,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         [Browsable(false)]
         public visualProminence[] visualProminenceList => [(visualProminence)1, (visualProminence)2, (visualProminence)3];
 
-        public void Load(DomainModel.S101.FeatureTypes.FortifiedStructure instance) {
+        public override void Load(DomainModel.S101.FeatureTypes.FortifiedStructure instance) {
             categoryOfFortifiedStructure = instance.categoryOfFortifiedStructure;
             condition = instance.condition;
             featureName.Clear();
@@ -13266,7 +13266,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
     [CategoryOrder("ProductionStorageArea", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class ProductionStorageAreaViewModel : FeatureViewModel {
+    public partial class ProductionStorageAreaViewModel : FeatureViewModel<ProductionStorageArea> {
         private categoryOfProductionArea _categoryOfProductionArea;
         [DomainModel.EnumerationAttribute(nameof(categoryOfProductionAreaList))]
         [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
@@ -13452,7 +13452,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         [Browsable(false)]
         public visualProminence[] visualProminenceList => [(visualProminence)1, (visualProminence)2, (visualProminence)3];
 
-        public void Load(DomainModel.S101.FeatureTypes.ProductionStorageArea instance) {
+        public override void Load(DomainModel.S101.FeatureTypes.ProductionStorageArea instance) {
             categoryOfProductionArea = instance.categoryOfProductionArea;
             condition = instance.condition;
             elevation = instance.elevation;
@@ -13553,7 +13553,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
     [CategoryOrder("Checkpoint", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class CheckpointViewModel : FeatureViewModel {
+    public partial class CheckpointViewModel : FeatureViewModel<Checkpoint> {
         private categoryOfCheckpoint? _categoryOfCheckpoint = default;
         [DomainModel.EnumerationAttribute(nameof(categoryOfCheckpointList))]
         [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
@@ -13611,7 +13611,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         [Browsable(false)]
         public status[] statusList => [(status)1, (status)2, (status)5, (status)7, (status)9, (status)12];
 
-        public void Load(DomainModel.S101.FeatureTypes.Checkpoint instance) {
+        public override void Load(DomainModel.S101.FeatureTypes.Checkpoint instance) {
             categoryOfCheckpoint = instance.categoryOfCheckpoint;
             featureName.Clear();
             if (instance.featureName is not null)
@@ -13671,7 +13671,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
     [CategoryOrder("Hulk", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class HulkViewModel : FeatureViewModel {
+    public partial class HulkViewModel : FeatureViewModel<Hulk> {
         [DomainModel.EnumerationAttribute(nameof(categoryOfHulkList))]
         [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("Hulk")]
@@ -13860,7 +13860,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         [Browsable(false)]
         public visualProminence[] visualProminenceList => [(visualProminence)1, (visualProminence)2, (visualProminence)3];
 
-        public void Load(DomainModel.S101.FeatureTypes.Hulk instance) {
+        public override void Load(DomainModel.S101.FeatureTypes.Hulk instance) {
             categoryOfHulk.Clear();
             if (instance.categoryOfHulk is not null)
                 foreach (var e in instance.categoryOfHulk)
@@ -13970,7 +13970,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
     [CategoryOrder("Pile", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class PileViewModel : FeatureViewModel {
+    public partial class PileViewModel : FeatureViewModel<Pile> {
         private categoryOfPile? _categoryOfPile = default;
         [DomainModel.EnumerationAttribute(nameof(categoryOfPileList))]
         [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
@@ -14161,7 +14161,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         [Browsable(false)]
         public visualProminence[] visualProminenceList => [(visualProminence)1, (visualProminence)2, (visualProminence)3];
 
-        public void Load(DomainModel.S101.FeatureTypes.Pile instance) {
+        public override void Load(DomainModel.S101.FeatureTypes.Pile instance) {
             categoryOfPile = instance.categoryOfPile;
             colour.Clear();
             if (instance.colour is not null)
@@ -14262,7 +14262,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
     [CategoryOrder("Dyke", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class DykeViewModel : FeatureViewModel {
+    public partial class DykeViewModel : FeatureViewModel<Dyke> {
         private condition? _condition = default;
         [DomainModel.EnumerationAttribute(nameof(conditionList))]
         [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
@@ -14398,7 +14398,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         [Browsable(false)]
         public visualProminence[] visualProminenceList => [(visualProminence)1, (visualProminence)2, (visualProminence)3];
 
-        public void Load(DomainModel.S101.FeatureTypes.Dyke instance) {
+        public override void Load(DomainModel.S101.FeatureTypes.Dyke instance) {
             condition = instance.condition;
             featureName.Clear();
             if (instance.featureName is not null)
@@ -14481,7 +14481,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
     [CategoryOrder("ShorelineConstruction", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class ShorelineConstructionViewModel : FeatureViewModel {
+    public partial class ShorelineConstructionViewModel : FeatureViewModel<ShorelineConstruction> {
         private categoryOfShorelineConstruction? _categoryOfShorelineConstruction = default;
         [DomainModel.EnumerationAttribute(nameof(categoryOfShorelineConstructionList))]
         [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
@@ -14721,7 +14721,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         [Browsable(false)]
         public waterLevelEffect[] waterLevelEffectList => [(waterLevelEffect)1, (waterLevelEffect)2, (waterLevelEffect)3, (waterLevelEffect)4, (waterLevelEffect)5, (waterLevelEffect)6, (waterLevelEffect)7];
 
-        public void Load(DomainModel.S101.FeatureTypes.ShorelineConstruction instance) {
+        public override void Load(DomainModel.S101.FeatureTypes.ShorelineConstruction instance) {
             categoryOfShorelineConstruction = instance.categoryOfShorelineConstruction;
             colour.Clear();
             if (instance.colour is not null)
@@ -14845,7 +14845,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
     [CategoryOrder("StructureOverNavigableWater", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class StructureOverNavigableWaterViewModel : FeatureViewModel {
+    public partial class StructureOverNavigableWaterViewModel : FeatureViewModel<StructureOverNavigableWater> {
         [DomainModel.EnumerationAttribute(nameof(categoryOfStructureList))]
         [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("StructureOverNavigableWater")]
@@ -15122,7 +15122,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         [Browsable(false)]
         public visualProminence[] visualProminenceList => [(visualProminence)1, (visualProminence)2, (visualProminence)3];
 
-        public void Load(DomainModel.S101.FeatureTypes.StructureOverNavigableWater instance) {
+        public override void Load(DomainModel.S101.FeatureTypes.StructureOverNavigableWater instance) {
             categoryOfStructure.Clear();
             if (instance.categoryOfStructure is not null)
                 foreach (var e in instance.categoryOfStructure)
@@ -15275,7 +15275,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
     [CategoryOrder("Causeway", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class CausewayViewModel : FeatureViewModel {
+    public partial class CausewayViewModel : FeatureViewModel<Causeway> {
         private condition? _condition = default;
         [DomainModel.EnumerationAttribute(nameof(conditionList))]
         [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
@@ -15370,7 +15370,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         [Browsable(false)]
         public waterLevelEffect[] waterLevelEffectList => [(waterLevelEffect)1, (waterLevelEffect)2, (waterLevelEffect)3, (waterLevelEffect)4, (waterLevelEffect)5, (waterLevelEffect)6];
 
-        public void Load(DomainModel.S101.FeatureTypes.Causeway instance) {
+        public override void Load(DomainModel.S101.FeatureTypes.Causeway instance) {
             condition = instance.condition;
             featureName.Clear();
             if (instance.featureName is not null)
@@ -15445,7 +15445,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
     [CategoryOrder("Canal", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class CanalViewModel : FeatureViewModel {
+    public partial class CanalViewModel : FeatureViewModel<Canal> {
         private categoryOfCanal? _categoryOfCanal = default;
         [DomainModel.EnumerationAttribute(nameof(categoryOfCanalList))]
         [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
@@ -15570,7 +15570,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         [Browsable(false)]
         public status[] statusList => [(status)1, (status)3, (status)4, (status)5, (status)6, (status)8, (status)14];
 
-        public void Load(DomainModel.S101.FeatureTypes.Canal instance) {
+        public override void Load(DomainModel.S101.FeatureTypes.Canal instance) {
             categoryOfCanal = instance.categoryOfCanal;
             condition = instance.condition;
             featureName.Clear();
@@ -15655,7 +15655,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
     [CategoryOrder("DistanceMark", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class DistanceMarkViewModel : FeatureViewModel {
+    public partial class DistanceMarkViewModel : FeatureViewModel<DistanceMark> {
         private Boolean _distanceMarkVisible;
         [Category("DistanceMark")]
         public Boolean distanceMarkVisible {
@@ -15726,7 +15726,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         public override informationBindingDefinition[] informationBindingDefinitions => DistanceMark.informationBindingDefinitions;
         public override featureBindingDefinition[] featureBindingDefinitions => DistanceMark.featureBindingDefinitions;
 
-        public void Load(DomainModel.S101.FeatureTypes.DistanceMark instance) {
+        public override void Load(DomainModel.S101.FeatureTypes.DistanceMark instance) {
             distanceMarkVisible = instance.distanceMarkVisible;
             featureName.Clear();
             if (instance.featureName is not null)
@@ -15793,7 +15793,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
     [CategoryOrder("Gate", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class GateViewModel : FeatureViewModel {
+    public partial class GateViewModel : FeatureViewModel<Gate> {
         private categoryOfGate? _categoryOfGate = default;
         [DomainModel.EnumerationAttribute(nameof(categoryOfGateList))]
         [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
@@ -15952,7 +15952,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         [Browsable(false)]
         public verticalDatum[] verticalDatumList => [(verticalDatum)3, (verticalDatum)13, (verticalDatum)16, (verticalDatum)17, (verticalDatum)18, (verticalDatum)19, (verticalDatum)20, (verticalDatum)21, (verticalDatum)24, (verticalDatum)25, (verticalDatum)26, (verticalDatum)28, (verticalDatum)29, (verticalDatum)30, (verticalDatum)44];
 
-        public void Load(DomainModel.S101.FeatureTypes.Gate instance) {
+        public override void Load(DomainModel.S101.FeatureTypes.Gate instance) {
             categoryOfGate = instance.categoryOfGate;
             condition = instance.condition;
             depthRangeMinimumValue = instance.depthRangeMinimumValue;
@@ -16063,7 +16063,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
     [CategoryOrder("Dam", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class DamViewModel : FeatureViewModel {
+    public partial class DamViewModel : FeatureViewModel<Dam> {
         private categoryOfDam? _categoryOfDam = default;
         [DomainModel.EnumerationAttribute(nameof(categoryOfDamList))]
         [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
@@ -16254,7 +16254,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         [Browsable(false)]
         public waterLevelEffect[] waterLevelEffectList => [(waterLevelEffect)1, (waterLevelEffect)2, (waterLevelEffect)3, (waterLevelEffect)6];
 
-        public void Load(DomainModel.S101.FeatureTypes.Dam instance) {
+        public override void Load(DomainModel.S101.FeatureTypes.Dam instance) {
             categoryOfDam = instance.categoryOfDam;
             colour.Clear();
             if (instance.colour is not null)
@@ -16361,7 +16361,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
     [CategoryOrder("Crane", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class CraneViewModel : FeatureViewModel {
+    public partial class CraneViewModel : FeatureViewModel<Crane> {
         private categoryOfCrane? _categoryOfCrane = default;
         [DomainModel.EnumerationAttribute(nameof(categoryOfCraneList))]
         [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
@@ -16606,7 +16606,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         [Browsable(false)]
         public visualProminence[] visualProminenceList => [(visualProminence)1, (visualProminence)2, (visualProminence)3];
 
-        public void Load(DomainModel.S101.FeatureTypes.Crane instance) {
+        public override void Load(DomainModel.S101.FeatureTypes.Crane instance) {
             categoryOfCrane = instance.categoryOfCrane;
             colour.Clear();
             if (instance.colour is not null)
@@ -16724,7 +16724,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
     [CategoryOrder("Berth", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class BerthViewModel : FeatureViewModel {
+    public partial class BerthViewModel : FeatureViewModel<Berth> {
         [DomainModel.EnumerationAttribute(nameof(categoryOfCargoList))]
         [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("Berth")]
@@ -16858,7 +16858,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         [Browsable(false)]
         public status[] statusList => [(status)1, (status)2, (status)5, (status)7, (status)9, (status)12];
 
-        public void Load(DomainModel.S101.FeatureTypes.Berth instance) {
+        public override void Load(DomainModel.S101.FeatureTypes.Berth instance) {
             categoryOfCargo.Clear();
             if (instance.categoryOfCargo is not null)
                 foreach (var e in instance.categoryOfCargo)
@@ -16970,7 +16970,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
     [CategoryOrder("Dolphin", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class DolphinViewModel : FeatureViewModel {
+    public partial class DolphinViewModel : FeatureViewModel<Dolphin> {
         [DomainModel.EnumerationAttribute(nameof(categoryOfDolphinList))]
         [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("Dolphin")]
@@ -17175,7 +17175,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         [Browsable(false)]
         public visualProminence[] visualProminenceList => [(visualProminence)1, (visualProminence)2, (visualProminence)3];
 
-        public void Load(DomainModel.S101.FeatureTypes.Dolphin instance) {
+        public override void Load(DomainModel.S101.FeatureTypes.Dolphin instance) {
             categoryOfDolphin.Clear();
             if (instance.categoryOfDolphin is not null)
                 foreach (var e in instance.categoryOfDolphin)
@@ -17303,7 +17303,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
     [CategoryOrder("Bollard", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class BollardViewModel : FeatureViewModel {
+    public partial class BollardViewModel : FeatureViewModel<Bollard> {
         private condition? _condition = default;
         [DomainModel.EnumerationAttribute(nameof(conditionList))]
         [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
@@ -17402,7 +17402,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         [Browsable(false)]
         public status[] statusList => [(status)1, (status)3, (status)4, (status)6, (status)7, (status)8, (status)12, (status)14];
 
-        public void Load(DomainModel.S101.FeatureTypes.Bollard instance) {
+        public override void Load(DomainModel.S101.FeatureTypes.Bollard instance) {
             condition = instance.condition;
             featureName.Clear();
             if (instance.featureName is not null)
@@ -17485,7 +17485,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
     [CategoryOrder("DryDock", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class DryDockViewModel : FeatureViewModel {
+    public partial class DryDockViewModel : FeatureViewModel<DryDock> {
         private condition? _condition = default;
         [DomainModel.EnumerationAttribute(nameof(conditionList))]
         [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
@@ -17661,7 +17661,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         [Browsable(false)]
         public status[] statusList => [(status)1, (status)4, (status)6, (status)8, (status)12, (status)14];
 
-        public void Load(DomainModel.S101.FeatureTypes.DryDock instance) {
+        public override void Load(DomainModel.S101.FeatureTypes.DryDock instance) {
             condition = instance.condition;
             depthRangeMinimumValue = instance.depthRangeMinimumValue;
             elevation = instance.elevation;
@@ -17767,7 +17767,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
     [CategoryOrder("FloatingDock", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class FloatingDockViewModel : FeatureViewModel {
+    public partial class FloatingDockViewModel : FeatureViewModel<FloatingDock> {
         [DomainModel.EnumerationAttribute(nameof(colourList))]
         [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("FloatingDock")]
@@ -18001,7 +18001,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         [Browsable(false)]
         public visualProminence[] visualProminenceList => [(visualProminence)1, (visualProminence)2, (visualProminence)3];
 
-        public void Load(DomainModel.S101.FeatureTypes.FloatingDock instance) {
+        public override void Load(DomainModel.S101.FeatureTypes.FloatingDock instance) {
             colour.Clear();
             if (instance.colour is not null)
                 foreach (var e in instance.colour)
@@ -18114,7 +18114,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
     [CategoryOrder("Pontoon", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class PontoonViewModel : FeatureViewModel {
+    public partial class PontoonViewModel : FeatureViewModel<Pontoon> {
         private condition? _condition = default;
         [DomainModel.EnumerationAttribute(nameof(conditionList))]
         [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
@@ -18242,7 +18242,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         [Browsable(false)]
         public visualProminence[] visualProminenceList => [(visualProminence)1, (visualProminence)2, (visualProminence)3];
 
-        public void Load(DomainModel.S101.FeatureTypes.Pontoon instance) {
+        public override void Load(DomainModel.S101.FeatureTypes.Pontoon instance) {
             condition = instance.condition;
             featureName.Clear();
             if (instance.featureName is not null)
@@ -18331,7 +18331,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
     [CategoryOrder("DockArea", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class DockAreaViewModel : FeatureViewModel {
+    public partial class DockAreaViewModel : FeatureViewModel<DockArea> {
         private categoryOfDock? _categoryOfDock = default;
         [DomainModel.EnumerationAttribute(nameof(categoryOfDockList))]
         [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
@@ -18471,7 +18471,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         [Browsable(false)]
         public status[] statusList => [(status)1, (status)4, (status)6, (status)8, (status)14];
 
-        public void Load(DomainModel.S101.FeatureTypes.DockArea instance) {
+        public override void Load(DomainModel.S101.FeatureTypes.DockArea instance) {
             categoryOfDock = instance.categoryOfDock;
             condition = instance.condition;
             featureName.Clear();
@@ -18568,7 +18568,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
     [CategoryOrder("Gridiron", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class GridironViewModel : FeatureViewModel {
+    public partial class GridironViewModel : FeatureViewModel<Gridiron> {
         [Category("Gridiron")]
         public ObservableCollection<featureName> featureName { get; set; } = new();
 
@@ -18670,7 +18670,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         [Browsable(false)]
         public waterLevelEffect[] waterLevelEffectList => [(waterLevelEffect)1, (waterLevelEffect)4, (waterLevelEffect)5];
 
-        public void Load(DomainModel.S101.FeatureTypes.Gridiron instance) {
+        public override void Load(DomainModel.S101.FeatureTypes.Gridiron instance) {
             featureName.Clear();
             if (instance.featureName is not null)
                 foreach (var e in instance.featureName)
@@ -18748,7 +18748,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
     [CategoryOrder("LockBasin", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class LockBasinViewModel : FeatureViewModel {
+    public partial class LockBasinViewModel : FeatureViewModel<LockBasin> {
         [Category("LockBasin")]
         public ObservableCollection<featureName> featureName { get; set; } = new();
 
@@ -18842,7 +18842,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         [Browsable(false)]
         public status[] statusList => [(status)1, (status)4, (status)6, (status)8, (status)13, (status)14, (status)16, (status)17];
 
-        public void Load(DomainModel.S101.FeatureTypes.LockBasin instance) {
+        public override void Load(DomainModel.S101.FeatureTypes.LockBasin instance) {
             featureName.Clear();
             if (instance.featureName is not null)
                 foreach (var e in instance.featureName)
@@ -18930,7 +18930,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
     [CategoryOrder("MooringTrot", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class MooringTrotViewModel : FeatureViewModel {
+    public partial class MooringTrotViewModel : FeatureViewModel<MooringTrot> {
         [Category("MooringTrot")]
         public ObservableCollection<featureName> featureName { get; set; } = new();
 
@@ -18976,7 +18976,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         public override informationBindingDefinition[] informationBindingDefinitions => MooringTrot.informationBindingDefinitions;
         public override featureBindingDefinition[] featureBindingDefinitions => MooringTrot.featureBindingDefinitions;
 
-        public void Load(DomainModel.S101.FeatureTypes.MooringTrot instance) {
+        public override void Load(DomainModel.S101.FeatureTypes.MooringTrot instance) {
             featureName.Clear();
             if (instance.featureName is not null)
                 foreach (var e in instance.featureName)
@@ -19032,7 +19032,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
     [CategoryOrder("SeaAreaNamedWaterArea", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class SeaAreaNamedWaterAreaViewModel : FeatureViewModel {
+    public partial class SeaAreaNamedWaterAreaViewModel : FeatureViewModel<SeaAreaNamedWaterArea> {
         private categoryOfSeaArea? _categoryOfSeaArea = default;
         [DomainModel.EnumerationAttribute(nameof(categoryOfSeaAreaList))]
         [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
@@ -19082,7 +19082,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         [Browsable(false)]
         public categoryOfSeaArea[] categoryOfSeaAreaList => [(categoryOfSeaArea)2, (categoryOfSeaArea)3, (categoryOfSeaArea)4, (categoryOfSeaArea)5, (categoryOfSeaArea)6, (categoryOfSeaArea)7, (categoryOfSeaArea)8, (categoryOfSeaArea)9, (categoryOfSeaArea)10, (categoryOfSeaArea)11, (categoryOfSeaArea)12, (categoryOfSeaArea)13, (categoryOfSeaArea)14, (categoryOfSeaArea)15, (categoryOfSeaArea)16, (categoryOfSeaArea)17, (categoryOfSeaArea)18, (categoryOfSeaArea)19, (categoryOfSeaArea)20, (categoryOfSeaArea)21, (categoryOfSeaArea)22, (categoryOfSeaArea)23, (categoryOfSeaArea)24, (categoryOfSeaArea)25, (categoryOfSeaArea)26, (categoryOfSeaArea)27, (categoryOfSeaArea)28, (categoryOfSeaArea)29, (categoryOfSeaArea)30, (categoryOfSeaArea)31, (categoryOfSeaArea)32, (categoryOfSeaArea)33, (categoryOfSeaArea)34, (categoryOfSeaArea)35, (categoryOfSeaArea)36, (categoryOfSeaArea)37, (categoryOfSeaArea)38, (categoryOfSeaArea)39, (categoryOfSeaArea)40, (categoryOfSeaArea)41, (categoryOfSeaArea)42, (categoryOfSeaArea)43, (categoryOfSeaArea)44, (categoryOfSeaArea)45, (categoryOfSeaArea)46, (categoryOfSeaArea)47, (categoryOfSeaArea)48, (categoryOfSeaArea)49, (categoryOfSeaArea)50, (categoryOfSeaArea)51, (categoryOfSeaArea)52, (categoryOfSeaArea)53, (categoryOfSeaArea)54, (categoryOfSeaArea)55, (categoryOfSeaArea)56];
 
-        public void Load(DomainModel.S101.FeatureTypes.SeaAreaNamedWaterArea instance) {
+        public override void Load(DomainModel.S101.FeatureTypes.SeaAreaNamedWaterArea instance) {
             categoryOfSeaArea = instance.categoryOfSeaArea;
             featureName.Clear();
             if (instance.featureName is not null)
@@ -19133,7 +19133,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
     [CategoryOrder("TidalStreamFloodEbb", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class TidalStreamFloodEbbViewModel : FeatureViewModel {
+    public partial class TidalStreamFloodEbbViewModel : FeatureViewModel<TidalStreamFloodEbb> {
         private categoryOfTidalStream _categoryOfTidalStream;
         [DomainModel.EnumerationAttribute(nameof(categoryOfTidalStreamList))]
         [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
@@ -19222,7 +19222,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         [Browsable(false)]
         public categoryOfTidalStream[] categoryOfTidalStreamList => [(categoryOfTidalStream)1, (categoryOfTidalStream)2, (categoryOfTidalStream)3];
 
-        public void Load(DomainModel.S101.FeatureTypes.TidalStreamFloodEbb instance) {
+        public override void Load(DomainModel.S101.FeatureTypes.TidalStreamFloodEbb instance) {
             categoryOfTidalStream = instance.categoryOfTidalStream;
             featureName.Clear();
             if (instance.featureName is not null)
@@ -19297,7 +19297,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
     [CategoryOrder("CurrentNonGravitational", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class CurrentNonGravitationalViewModel : FeatureViewModel {
+    public partial class CurrentNonGravitationalViewModel : FeatureViewModel<CurrentNonGravitational> {
         [Category("CurrentNonGravitational")]
         public ObservableCollection<featureName> featureName { get; set; } = new();
 
@@ -19389,7 +19389,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         [Browsable(false)]
         public status[] statusList => [(status)5];
 
-        public void Load(DomainModel.S101.FeatureTypes.CurrentNonGravitational instance) {
+        public override void Load(DomainModel.S101.FeatureTypes.CurrentNonGravitational instance) {
             featureName.Clear();
             if (instance.featureName is not null)
                 foreach (var e in instance.featureName)
@@ -19473,7 +19473,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
     [CategoryOrder("WaterTurbulence", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class WaterTurbulenceViewModel : FeatureViewModel {
+    public partial class WaterTurbulenceViewModel : FeatureViewModel<WaterTurbulence> {
         private categoryOfWaterTurbulence _categoryOfWaterTurbulence;
         [DomainModel.EnumerationAttribute(nameof(categoryOfWaterTurbulenceList))]
         [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
@@ -19523,7 +19523,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         [Browsable(false)]
         public categoryOfWaterTurbulence[] categoryOfWaterTurbulenceList => [(categoryOfWaterTurbulence)1, (categoryOfWaterTurbulence)2, (categoryOfWaterTurbulence)3, (categoryOfWaterTurbulence)4, (categoryOfWaterTurbulence)5];
 
-        public void Load(DomainModel.S101.FeatureTypes.WaterTurbulence instance) {
+        public override void Load(DomainModel.S101.FeatureTypes.WaterTurbulence instance) {
             categoryOfWaterTurbulence = instance.categoryOfWaterTurbulence;
             featureName.Clear();
             if (instance.featureName is not null)
@@ -19574,7 +19574,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
     [CategoryOrder("TidalStreamPanelData", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class TidalStreamPanelDataViewModel : FeatureViewModel {
+    public partial class TidalStreamPanelDataViewModel : FeatureViewModel<TidalStreamPanelData> {
         [Category("TidalStreamPanelData")]
         public ObservableCollection<featureName> featureName { get; set; } = new();
 
@@ -19634,7 +19634,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         public override informationBindingDefinition[] informationBindingDefinitions => TidalStreamPanelData.informationBindingDefinitions;
         public override featureBindingDefinition[] featureBindingDefinitions => TidalStreamPanelData.featureBindingDefinitions;
 
-        public void Load(DomainModel.S101.FeatureTypes.TidalStreamPanelData instance) {
+        public override void Load(DomainModel.S101.FeatureTypes.TidalStreamPanelData instance) {
             featureName.Clear();
             if (instance.featureName is not null)
                 foreach (var e in instance.featureName)
@@ -19697,7 +19697,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
     [CategoryOrder("Sounding", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class SoundingViewModel : FeatureViewModel {
+    public partial class SoundingViewModel : FeatureViewModel<Sounding> {
         [Category("Sounding")]
         public ObservableCollection<featureName> featureName { get; set; } = new();
 
@@ -19775,7 +19775,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         [Browsable(false)]
         public techniqueOfVerticalMeasurement[] techniqueOfVerticalMeasurementList => [(techniqueOfVerticalMeasurement)1, (techniqueOfVerticalMeasurement)2, (techniqueOfVerticalMeasurement)3, (techniqueOfVerticalMeasurement)4, (techniqueOfVerticalMeasurement)5, (techniqueOfVerticalMeasurement)8, (techniqueOfVerticalMeasurement)9, (techniqueOfVerticalMeasurement)10, (techniqueOfVerticalMeasurement)11, (techniqueOfVerticalMeasurement)12, (techniqueOfVerticalMeasurement)13, (techniqueOfVerticalMeasurement)15, (techniqueOfVerticalMeasurement)16, (techniqueOfVerticalMeasurement)17, (techniqueOfVerticalMeasurement)18];
 
-        public void Load(DomainModel.S101.FeatureTypes.Sounding instance) {
+        public override void Load(DomainModel.S101.FeatureTypes.Sounding instance) {
             featureName.Clear();
             if (instance.featureName is not null)
                 foreach (var e in instance.featureName)
@@ -19847,7 +19847,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
     [CategoryOrder("DredgedArea", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class DredgedAreaViewModel : FeatureViewModel {
+    public partial class DredgedAreaViewModel : FeatureViewModel<DredgedArea> {
         private Decimal _depthRangeMinimumValue;
         [Category("DredgedArea")]
         public Decimal depthRangeMinimumValue {
@@ -19965,7 +19965,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         [Browsable(false)]
         public techniqueOfVerticalMeasurement[] techniqueOfVerticalMeasurementList => [(techniqueOfVerticalMeasurement)1, (techniqueOfVerticalMeasurement)2, (techniqueOfVerticalMeasurement)3, (techniqueOfVerticalMeasurement)8, (techniqueOfVerticalMeasurement)9, (techniqueOfVerticalMeasurement)13, (techniqueOfVerticalMeasurement)15, (techniqueOfVerticalMeasurement)16, (techniqueOfVerticalMeasurement)17, (techniqueOfVerticalMeasurement)18];
 
-        public void Load(DomainModel.S101.FeatureTypes.DredgedArea instance) {
+        public override void Load(DomainModel.S101.FeatureTypes.DredgedArea instance) {
             depthRangeMinimumValue = instance.depthRangeMinimumValue;
             depthRangeMaximumValue = instance.depthRangeMaximumValue;
             dredgedDate = instance.dredgedDate;
@@ -20060,7 +20060,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
     [CategoryOrder("SweptArea", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class SweptAreaViewModel : FeatureViewModel {
+    public partial class SweptAreaViewModel : FeatureViewModel<SweptArea> {
         private Decimal _depthRangeMinimumValue;
         [Category("SweptArea")]
         public Decimal depthRangeMinimumValue {
@@ -20114,7 +20114,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         public override informationBindingDefinition[] informationBindingDefinitions => SweptArea.informationBindingDefinitions;
         public override featureBindingDefinition[] featureBindingDefinitions => SweptArea.featureBindingDefinitions;
 
-        public void Load(DomainModel.S101.FeatureTypes.SweptArea instance) {
+        public override void Load(DomainModel.S101.FeatureTypes.SweptArea instance) {
             depthRangeMinimumValue = instance.depthRangeMinimumValue;
             interoperabilityIdentifier = instance.interoperabilityIdentifier;
             sweptDate = instance.sweptDate;
@@ -20159,7 +20159,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
     [CategoryOrder("DepthContour", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class DepthContourViewModel : FeatureViewModel {
+    public partial class DepthContourViewModel : FeatureViewModel<DepthContour> {
         private String _interoperabilityIdentifier = string.Empty;
         [Category("DepthContour")]
         public String interoperabilityIdentifier {
@@ -20201,7 +20201,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         public override informationBindingDefinition[] informationBindingDefinitions => DepthContour.informationBindingDefinitions;
         public override featureBindingDefinition[] featureBindingDefinitions => DepthContour.featureBindingDefinitions;
 
-        public void Load(DomainModel.S101.FeatureTypes.DepthContour instance) {
+        public override void Load(DomainModel.S101.FeatureTypes.DepthContour instance) {
             interoperabilityIdentifier = instance.interoperabilityIdentifier;
             valueOfDepthContour = instance.valueOfDepthContour;
             scaleMinimum = instance.scaleMinimum;
@@ -20243,7 +20243,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
     [CategoryOrder("DepthArea", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class DepthAreaViewModel : FeatureViewModel {
+    public partial class DepthAreaViewModel : FeatureViewModel<DepthArea> {
         private Decimal _depthRangeMinimumValue;
         [Category("DepthArea")]
         public Decimal depthRangeMinimumValue {
@@ -20285,7 +20285,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         public override informationBindingDefinition[] informationBindingDefinitions => DepthArea.informationBindingDefinitions;
         public override featureBindingDefinition[] featureBindingDefinitions => DepthArea.featureBindingDefinitions;
 
-        public void Load(DomainModel.S101.FeatureTypes.DepthArea instance) {
+        public override void Load(DomainModel.S101.FeatureTypes.DepthArea instance) {
             depthRangeMinimumValue = instance.depthRangeMinimumValue;
             depthRangeMaximumValue = instance.depthRangeMaximumValue;
             interoperabilityIdentifier = instance.interoperabilityIdentifier;
@@ -20327,7 +20327,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
     [CategoryOrder("DepthNoBottomFound", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class DepthNoBottomFoundViewModel : FeatureViewModel {
+    public partial class DepthNoBottomFoundViewModel : FeatureViewModel<DepthNoBottomFound> {
         private String _interoperabilityIdentifier = string.Empty;
         [Category("DepthNoBottomFound")]
         public String interoperabilityIdentifier {
@@ -20365,7 +20365,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         [Browsable(false)]
         public techniqueOfVerticalMeasurement[] techniqueOfVerticalMeasurementList => [(techniqueOfVerticalMeasurement)1, (techniqueOfVerticalMeasurement)2, (techniqueOfVerticalMeasurement)3, (techniqueOfVerticalMeasurement)5, (techniqueOfVerticalMeasurement)8, (techniqueOfVerticalMeasurement)9, (techniqueOfVerticalMeasurement)13, (techniqueOfVerticalMeasurement)15, (techniqueOfVerticalMeasurement)16, (techniqueOfVerticalMeasurement)17, (techniqueOfVerticalMeasurement)18];
 
-        public void Load(DomainModel.S101.FeatureTypes.DepthNoBottomFound instance) {
+        public override void Load(DomainModel.S101.FeatureTypes.DepthNoBottomFound instance) {
             interoperabilityIdentifier = instance.interoperabilityIdentifier;
             techniqueOfVerticalMeasurement.Clear();
             if (instance.techniqueOfVerticalMeasurement is not null)
@@ -20413,7 +20413,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
     [CategoryOrder("UnsurveyedArea", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class UnsurveyedAreaViewModel : FeatureViewModel {
+    public partial class UnsurveyedAreaViewModel : FeatureViewModel<UnsurveyedArea> {
         private String _interoperabilityIdentifier = string.Empty;
         [Category("UnsurveyedArea")]
         public String interoperabilityIdentifier {
@@ -20431,7 +20431,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         public override informationBindingDefinition[] informationBindingDefinitions => UnsurveyedArea.informationBindingDefinitions;
         public override featureBindingDefinition[] featureBindingDefinitions => UnsurveyedArea.featureBindingDefinitions;
 
-        public void Load(DomainModel.S101.FeatureTypes.UnsurveyedArea instance) {
+        public override void Load(DomainModel.S101.FeatureTypes.UnsurveyedArea instance) {
             interoperabilityIdentifier = instance.interoperabilityIdentifier;
             information.Clear();
             if (instance.information is not null)
@@ -20467,7 +20467,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
     [CategoryOrder("SeabedArea", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class SeabedAreaViewModel : FeatureViewModel {
+    public partial class SeabedAreaViewModel : FeatureViewModel<SeabedArea> {
         [Category("SeabedArea")]
         public ObservableCollection<featureName> featureName { get; set; } = new();
 
@@ -20520,7 +20520,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         [Browsable(false)]
         public waterLevelEffect[] waterLevelEffectList => [(waterLevelEffect)3, (waterLevelEffect)4, (waterLevelEffect)5];
 
-        public void Load(DomainModel.S101.FeatureTypes.SeabedArea instance) {
+        public override void Load(DomainModel.S101.FeatureTypes.SeabedArea instance) {
             featureName.Clear();
             if (instance.featureName is not null)
                 foreach (var e in instance.featureName)
@@ -20580,7 +20580,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
     [CategoryOrder("WeedKelp", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class WeedKelpViewModel : FeatureViewModel {
+    public partial class WeedKelpViewModel : FeatureViewModel<WeedKelp> {
         private categoryOfWeedKelp? _categoryOfWeedKelp = default;
         [DomainModel.EnumerationAttribute(nameof(categoryOfWeedKelpList))]
         [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
@@ -20630,7 +20630,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         [Browsable(false)]
         public categoryOfWeedKelp[] categoryOfWeedKelpList => [(categoryOfWeedKelp)1, (categoryOfWeedKelp)2, (categoryOfWeedKelp)4];
 
-        public void Load(DomainModel.S101.FeatureTypes.WeedKelp instance) {
+        public override void Load(DomainModel.S101.FeatureTypes.WeedKelp instance) {
             categoryOfWeedKelp = instance.categoryOfWeedKelp;
             featureName.Clear();
             if (instance.featureName is not null)
@@ -20681,7 +20681,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
     [CategoryOrder("Seagrass", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class SeagrassViewModel : FeatureViewModel {
+    public partial class SeagrassViewModel : FeatureViewModel<Seagrass> {
         [Category("Seagrass")]
         public ObservableCollection<featureName> featureName { get; set; } = new();
 
@@ -20714,7 +20714,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         public override informationBindingDefinition[] informationBindingDefinitions => Seagrass.informationBindingDefinitions;
         public override featureBindingDefinition[] featureBindingDefinitions => Seagrass.featureBindingDefinitions;
 
-        public void Load(DomainModel.S101.FeatureTypes.Seagrass instance) {
+        public override void Load(DomainModel.S101.FeatureTypes.Seagrass instance) {
             featureName.Clear();
             if (instance.featureName is not null)
                 foreach (var e in instance.featureName)
@@ -20762,7 +20762,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
     [CategoryOrder("Sandwave", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class SandwaveViewModel : FeatureViewModel {
+    public partial class SandwaveViewModel : FeatureViewModel<Sandwave> {
         private String _interoperabilityIdentifier = string.Empty;
         [Category("Sandwave")]
         public String interoperabilityIdentifier {
@@ -20804,7 +20804,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         public override informationBindingDefinition[] informationBindingDefinitions => Sandwave.informationBindingDefinitions;
         public override featureBindingDefinition[] featureBindingDefinitions => Sandwave.featureBindingDefinitions;
 
-        public void Load(DomainModel.S101.FeatureTypes.Sandwave instance) {
+        public override void Load(DomainModel.S101.FeatureTypes.Sandwave instance) {
             interoperabilityIdentifier = instance.interoperabilityIdentifier;
             verticalLength = instance.verticalLength;
             scaleMinimum = instance.scaleMinimum;
@@ -20846,7 +20846,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
     [CategoryOrder("Spring", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class SpringViewModel : FeatureViewModel {
+    public partial class SpringViewModel : FeatureViewModel<Spring> {
         [Category("Spring")]
         public ObservableCollection<featureName> featureName { get; set; } = new();
 
@@ -20879,7 +20879,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         public override informationBindingDefinition[] informationBindingDefinitions => Spring.informationBindingDefinitions;
         public override featureBindingDefinition[] featureBindingDefinitions => Spring.featureBindingDefinitions;
 
-        public void Load(DomainModel.S101.FeatureTypes.Spring instance) {
+        public override void Load(DomainModel.S101.FeatureTypes.Spring instance) {
             featureName.Clear();
             if (instance.featureName is not null)
                 foreach (var e in instance.featureName)
@@ -20927,7 +20927,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
     [CategoryOrder("UnderwaterAwashRock", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class UnderwaterAwashRockViewModel : FeatureViewModel {
+    public partial class UnderwaterAwashRockViewModel : FeatureViewModel<UnderwaterAwashRock> {
         private expositionOfSounding? _expositionOfSounding = default;
         [DomainModel.EnumerationAttribute(nameof(expositionOfSoundingList))]
         [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
@@ -21093,7 +21093,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         [Browsable(false)]
         public waterLevelEffect[] waterLevelEffectList => [(waterLevelEffect)3, (waterLevelEffect)4, (waterLevelEffect)5];
 
-        public void Load(DomainModel.S101.FeatureTypes.UnderwaterAwashRock instance) {
+        public override void Load(DomainModel.S101.FeatureTypes.UnderwaterAwashRock instance) {
             expositionOfSounding = instance.expositionOfSounding;
             featureName.Clear();
             if (instance.featureName is not null)
@@ -21183,7 +21183,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
     [CategoryOrder("Wreck", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class WreckViewModel : FeatureViewModel {
+    public partial class WreckViewModel : FeatureViewModel<Wreck> {
         private categoryOfWreck? _categoryOfWreck = default;
         [DomainModel.EnumerationAttribute(nameof(categoryOfWreckList))]
         [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
@@ -21393,7 +21393,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         [Browsable(false)]
         public waterLevelEffect[] waterLevelEffectList => [(waterLevelEffect)1, (waterLevelEffect)2, (waterLevelEffect)3, (waterLevelEffect)4, (waterLevelEffect)5];
 
-        public void Load(DomainModel.S101.FeatureTypes.Wreck instance) {
+        public override void Load(DomainModel.S101.FeatureTypes.Wreck instance) {
             categoryOfWreck = instance.categoryOfWreck;
             expositionOfSounding = instance.expositionOfSounding;
             featureName.Clear();
@@ -21501,7 +21501,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
     [CategoryOrder("Obstruction", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class ObstructionViewModel : FeatureViewModel {
+    public partial class ObstructionViewModel : FeatureViewModel<Obstruction> {
         private categoryOfObstruction? _categoryOfObstruction = default;
         [DomainModel.EnumerationAttribute(nameof(categoryOfObstructionList))]
         [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
@@ -21727,7 +21727,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         [Browsable(false)]
         public waterLevelEffect[] waterLevelEffectList => [(waterLevelEffect)1, (waterLevelEffect)2, (waterLevelEffect)3, (waterLevelEffect)4, (waterLevelEffect)5, (waterLevelEffect)7];
 
-        public void Load(DomainModel.S101.FeatureTypes.Obstruction instance) {
+        public override void Load(DomainModel.S101.FeatureTypes.Obstruction instance) {
             categoryOfObstruction = instance.categoryOfObstruction;
             condition = instance.condition;
             expositionOfSounding = instance.expositionOfSounding;
@@ -21853,7 +21853,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
     [CategoryOrder("FoulGround", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class FoulGroundViewModel : FeatureViewModel {
+    public partial class FoulGroundViewModel : FeatureViewModel<FoulGround> {
         [Category("FoulGround")]
         public ObservableCollection<featureName> featureName { get; set; } = new();
 
@@ -21947,7 +21947,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         [Browsable(false)]
         public techniqueOfVerticalMeasurement[] techniqueOfVerticalMeasurementList => [(techniqueOfVerticalMeasurement)1, (techniqueOfVerticalMeasurement)2, (techniqueOfVerticalMeasurement)3, (techniqueOfVerticalMeasurement)4, (techniqueOfVerticalMeasurement)5, (techniqueOfVerticalMeasurement)8, (techniqueOfVerticalMeasurement)9, (techniqueOfVerticalMeasurement)10, (techniqueOfVerticalMeasurement)11, (techniqueOfVerticalMeasurement)12, (techniqueOfVerticalMeasurement)13, (techniqueOfVerticalMeasurement)15, (techniqueOfVerticalMeasurement)16, (techniqueOfVerticalMeasurement)17, (techniqueOfVerticalMeasurement)18];
 
-        public void Load(DomainModel.S101.FeatureTypes.FoulGround instance) {
+        public override void Load(DomainModel.S101.FeatureTypes.FoulGround instance) {
             featureName.Clear();
             if (instance.featureName is not null)
                 foreach (var e in instance.featureName)
@@ -22036,7 +22036,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
     [CategoryOrder("DiscolouredWater", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class DiscolouredWaterViewModel : FeatureViewModel {
+    public partial class DiscolouredWaterViewModel : FeatureViewModel<DiscolouredWater> {
         private String _interoperabilityIdentifier = string.Empty;
         [Category("DiscolouredWater")]
         public String interoperabilityIdentifier {
@@ -22078,7 +22078,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         public override informationBindingDefinition[] informationBindingDefinitions => DiscolouredWater.informationBindingDefinitions;
         public override featureBindingDefinition[] featureBindingDefinitions => DiscolouredWater.featureBindingDefinitions;
 
-        public void Load(DomainModel.S101.FeatureTypes.DiscolouredWater instance) {
+        public override void Load(DomainModel.S101.FeatureTypes.DiscolouredWater instance) {
             interoperabilityIdentifier = instance.interoperabilityIdentifier;
             reportedDate = instance.reportedDate;
             scaleMinimum = instance.scaleMinimum;
@@ -22120,7 +22120,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
     [CategoryOrder("FishingFacility", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class FishingFacilityViewModel : FeatureViewModel {
+    public partial class FishingFacilityViewModel : FeatureViewModel<FishingFacility> {
         private categoryOfFishingFacility? _categoryOfFishingFacility = default;
         [DomainModel.EnumerationAttribute(nameof(categoryOfFishingFacilityList))]
         [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
@@ -22222,7 +22222,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         [Browsable(false)]
         public status[] statusList => [(status)1, (status)4, (status)5, (status)6, (status)7, (status)8, (status)12, (status)18, (status)28];
 
-        public void Load(DomainModel.S101.FeatureTypes.FishingFacility instance) {
+        public override void Load(DomainModel.S101.FeatureTypes.FishingFacility instance) {
             categoryOfFishingFacility = instance.categoryOfFishingFacility;
             condition = instance.condition;
             featureName.Clear();
@@ -22300,7 +22300,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
     [CategoryOrder("MarineFarmCulture", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class MarineFarmCultureViewModel : FeatureViewModel {
+    public partial class MarineFarmCultureViewModel : FeatureViewModel<MarineFarmCulture> {
         private categoryOfMarineFarmCulture? _categoryOfMarineFarmCulture = default;
         [DomainModel.EnumerationAttribute(nameof(categoryOfMarineFarmCultureList))]
         [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
@@ -22476,7 +22476,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         [Browsable(false)]
         public waterLevelEffect[] waterLevelEffectList => [(waterLevelEffect)1, (waterLevelEffect)2, (waterLevelEffect)3, (waterLevelEffect)4, (waterLevelEffect)5, (waterLevelEffect)7];
 
-        public void Load(DomainModel.S101.FeatureTypes.MarineFarmCulture instance) {
+        public override void Load(DomainModel.S101.FeatureTypes.MarineFarmCulture instance) {
             categoryOfMarineFarmCulture = instance.categoryOfMarineFarmCulture;
             expositionOfSounding = instance.expositionOfSounding;
             featureName.Clear();
@@ -22603,7 +22603,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
     [CategoryOrder("OffshorePlatform", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class OffshorePlatformViewModel : FeatureViewModel {
+    public partial class OffshorePlatformViewModel : FeatureViewModel<OffshorePlatform> {
         private categoryOfOffshorePlatform? _categoryOfOffshorePlatform = default;
         [DomainModel.EnumerationAttribute(nameof(categoryOfOffshorePlatformList))]
         [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
@@ -22814,7 +22814,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         [Browsable(false)]
         public visualProminence[] visualProminenceList => [(visualProminence)1, (visualProminence)2, (visualProminence)3];
 
-        public void Load(DomainModel.S101.FeatureTypes.OffshorePlatform instance) {
+        public override void Load(DomainModel.S101.FeatureTypes.OffshorePlatform instance) {
             categoryOfOffshorePlatform = instance.categoryOfOffshorePlatform;
             colour.Clear();
             if (instance.colour is not null)
@@ -22927,7 +22927,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
     [CategoryOrder("CableSubmarine", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class CableSubmarineViewModel : FeatureViewModel {
+    public partial class CableSubmarineViewModel : FeatureViewModel<CableSubmarine> {
         private Decimal? _buriedDepth = default;
         [Category("CableSubmarine")]
         public Decimal? buriedDepth {
@@ -23027,7 +23027,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         [Browsable(false)]
         public status[] statusList => [(status)1, (status)4, (status)13, (status)18];
 
-        public void Load(DomainModel.S101.FeatureTypes.CableSubmarine instance) {
+        public override void Load(DomainModel.S101.FeatureTypes.CableSubmarine instance) {
             buriedDepth = instance.buriedDepth;
             categoryOfCable = instance.categoryOfCable;
             condition = instance.condition;
@@ -23101,7 +23101,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
     [CategoryOrder("CableArea", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class CableAreaViewModel : FeatureViewModel {
+    public partial class CableAreaViewModel : FeatureViewModel<CableArea> {
         [DomainModel.EnumerationAttribute(nameof(categoryOfCableList))]
         [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("CableArea")]
@@ -23174,7 +23174,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         [Browsable(false)]
         public status[] statusList => [(status)1, (status)7, (status)13];
 
-        public void Load(DomainModel.S101.FeatureTypes.CableArea instance) {
+        public override void Load(DomainModel.S101.FeatureTypes.CableArea instance) {
             categoryOfCable.Clear();
             if (instance.categoryOfCable is not null)
                 foreach (var e in instance.categoryOfCable)
@@ -23266,7 +23266,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
     [CategoryOrder("PipelineSubmarineOnLand", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class PipelineSubmarineOnLandViewModel : FeatureViewModel {
+    public partial class PipelineSubmarineOnLandViewModel : FeatureViewModel<PipelineSubmarineOnLand> {
         private Decimal? _buriedDepth = default;
         [Category("PipelineSubmarineOnLand")]
         public Decimal? buriedDepth {
@@ -23435,7 +23435,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         [Browsable(false)]
         public status[] statusList => [(status)1, (status)4, (status)7, (status)12];
 
-        public void Load(DomainModel.S101.FeatureTypes.PipelineSubmarineOnLand instance) {
+        public override void Load(DomainModel.S101.FeatureTypes.PipelineSubmarineOnLand instance) {
             buriedDepth = instance.buriedDepth;
             categoryOfPipelinePipe.Clear();
             if (instance.categoryOfPipelinePipe is not null)
@@ -23553,7 +23553,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
     [CategoryOrder("SubmarinePipelineArea", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class SubmarinePipelineAreaViewModel : FeatureViewModel {
+    public partial class SubmarinePipelineAreaViewModel : FeatureViewModel<SubmarinePipelineArea> {
         [DomainModel.EnumerationAttribute(nameof(categoryOfPipelinePipeList))]
         [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("SubmarinePipelineArea")]
@@ -23634,7 +23634,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         [Browsable(false)]
         public status[] statusList => [(status)1, (status)4, (status)7];
 
-        public void Load(DomainModel.S101.FeatureTypes.SubmarinePipelineArea instance) {
+        public override void Load(DomainModel.S101.FeatureTypes.SubmarinePipelineArea instance) {
             categoryOfPipelinePipe.Clear();
             if (instance.categoryOfPipelinePipe is not null)
                 foreach (var e in instance.categoryOfPipelinePipe)
@@ -23735,7 +23735,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
     [CategoryOrder("OffshoreProductionArea", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class OffshoreProductionAreaViewModel : FeatureViewModel {
+    public partial class OffshoreProductionAreaViewModel : FeatureViewModel<OffshoreProductionArea> {
         private categoryOfOffshoreProductionArea? _categoryOfOffshoreProductionArea = default;
         [DomainModel.EnumerationAttribute(nameof(categoryOfOffshoreProductionAreaList))]
         [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
@@ -23924,7 +23924,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         [Browsable(false)]
         public waterLevelEffect[] waterLevelEffectList => [(waterLevelEffect)2, (waterLevelEffect)3, (waterLevelEffect)4, (waterLevelEffect)7];
 
-        public void Load(DomainModel.S101.FeatureTypes.OffshoreProductionArea instance) {
+        public override void Load(DomainModel.S101.FeatureTypes.OffshoreProductionArea instance) {
             categoryOfOffshoreProductionArea = instance.categoryOfOffshoreProductionArea;
             condition = instance.condition;
             featureName.Clear();
@@ -24040,7 +24040,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
     [CategoryOrder("NavigationLine", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class NavigationLineViewModel : FeatureViewModel {
+    public partial class NavigationLineViewModel : FeatureViewModel<NavigationLine> {
         private categoryOfNavigationLine _categoryOfNavigationLine;
         [DomainModel.EnumerationAttribute(nameof(categoryOfNavigationLineList))]
         [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
@@ -24136,7 +24136,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         [Browsable(false)]
         public status[] statusList => [(status)1, (status)2, (status)5, (status)7, (status)8, (status)14];
 
-        public void Load(DomainModel.S101.FeatureTypes.NavigationLine instance) {
+        public override void Load(DomainModel.S101.FeatureTypes.NavigationLine instance) {
             categoryOfNavigationLine = instance.categoryOfNavigationLine;
             fixedDateRange = new();
             if (instance.fixedDateRange != null) {
@@ -24215,7 +24215,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
     [CategoryOrder("RecommendedTrack", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class RecommendedTrackViewModel : FeatureViewModel {
+    public partial class RecommendedTrackViewModel : FeatureViewModel<RecommendedTrack> {
         private Boolean _basedOnFixedMarks;
         [Category("RecommendedTrack")]
         public Boolean basedOnFixedMarks {
@@ -24366,7 +24366,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         [Browsable(false)]
         public trafficFlow[] trafficFlowList => [(trafficFlow)1, (trafficFlow)2, (trafficFlow)3, (trafficFlow)4];
 
-        public void Load(DomainModel.S101.FeatureTypes.RecommendedTrack instance) {
+        public override void Load(DomainModel.S101.FeatureTypes.RecommendedTrack instance) {
             basedOnFixedMarks = instance.basedOnFixedMarks;
             depthRangeMinimumValue = instance.depthRangeMinimumValue;
             featureName.Clear();
@@ -24481,7 +24481,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
     [CategoryOrder("RangeSystem", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class RangeSystemViewModel : FeatureViewModel {
+    public partial class RangeSystemViewModel : FeatureViewModel<RangeSystem> {
         [Category("RangeSystem")]
         public ObservableCollection<featureName> featureName { get; set; } = new();
 
@@ -24539,7 +24539,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         public override informationBindingDefinition[] informationBindingDefinitions => RangeSystem.informationBindingDefinitions;
         public override featureBindingDefinition[] featureBindingDefinitions => RangeSystem.featureBindingDefinitions;
 
-        public void Load(DomainModel.S101.FeatureTypes.RangeSystem instance) {
+        public override void Load(DomainModel.S101.FeatureTypes.RangeSystem instance) {
             featureName.Clear();
             if (instance.featureName is not null)
                 foreach (var e in instance.featureName)
@@ -24598,7 +24598,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
     [CategoryOrder("Fairway", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class FairwayViewModel : FeatureViewModel {
+    public partial class FairwayViewModel : FeatureViewModel<Fairway> {
         private Decimal? _depthRangeMinimumValue = default;
         [Category("Fairway")]
         public Decimal? depthRangeMinimumValue {
@@ -24737,7 +24737,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         [Browsable(false)]
         public trafficFlow[] trafficFlowList => [(trafficFlow)1, (trafficFlow)2, (trafficFlow)3, (trafficFlow)4];
 
-        public void Load(DomainModel.S101.FeatureTypes.Fairway instance) {
+        public override void Load(DomainModel.S101.FeatureTypes.Fairway instance) {
             depthRangeMinimumValue = instance.depthRangeMinimumValue;
             featureName.Clear();
             if (instance.featureName is not null)
@@ -24849,7 +24849,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
     [CategoryOrder("FairwaySystem", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class FairwaySystemViewModel : FeatureViewModel {
+    public partial class FairwaySystemViewModel : FeatureViewModel<FairwaySystem> {
         [Category("FairwaySystem")]
         public ObservableCollection<featureName> featureName { get; set; } = new();
 
@@ -24910,7 +24910,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         public override informationBindingDefinition[] informationBindingDefinitions => FairwaySystem.informationBindingDefinitions;
         public override featureBindingDefinition[] featureBindingDefinitions => FairwaySystem.featureBindingDefinitions;
 
-        public void Load(DomainModel.S101.FeatureTypes.FairwaySystem instance) {
+        public override void Load(DomainModel.S101.FeatureTypes.FairwaySystem instance) {
             featureName.Clear();
             if (instance.featureName is not null)
                 foreach (var e in instance.featureName)
@@ -24978,7 +24978,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
     [CategoryOrder("RecommendedRouteCentreline", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class RecommendedRouteCentrelineViewModel : FeatureViewModel {
+    public partial class RecommendedRouteCentrelineViewModel : FeatureViewModel<RecommendedRouteCentreline> {
         private Boolean _basedOnFixedMarks;
         [Category("RecommendedRouteCentreline")]
         public Boolean basedOnFixedMarks {
@@ -25117,7 +25117,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         [Browsable(false)]
         public trafficFlow[] trafficFlowList => [(trafficFlow)1, (trafficFlow)2, (trafficFlow)3, (trafficFlow)4];
 
-        public void Load(DomainModel.S101.FeatureTypes.RecommendedRouteCentreline instance) {
+        public override void Load(DomainModel.S101.FeatureTypes.RecommendedRouteCentreline instance) {
             basedOnFixedMarks = instance.basedOnFixedMarks;
             depthRangeMinimumValue = instance.depthRangeMinimumValue;
             featureName.Clear();
@@ -25229,7 +25229,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
     [CategoryOrder("TwoWayRoutePart", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class TwoWayRoutePartViewModel : FeatureViewModel {
+    public partial class TwoWayRoutePartViewModel : FeatureViewModel<TwoWayRoutePart> {
         private Boolean? _basedOnFixedMarks = default;
         [Category("TwoWayRoutePart")]
         public Boolean? basedOnFixedMarks {
@@ -25362,7 +25362,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         [Browsable(false)]
         public trafficFlow[] trafficFlowList => [(trafficFlow)1, (trafficFlow)2, (trafficFlow)3, (trafficFlow)4];
 
-        public void Load(DomainModel.S101.FeatureTypes.TwoWayRoutePart instance) {
+        public override void Load(DomainModel.S101.FeatureTypes.TwoWayRoutePart instance) {
             basedOnFixedMarks = instance.basedOnFixedMarks;
             depthRangeMinimumValue = instance.depthRangeMinimumValue;
             fixedDateRange = new();
@@ -25456,7 +25456,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
     [CategoryOrder("TwoWayRoute", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class TwoWayRouteViewModel : FeatureViewModel {
+    public partial class TwoWayRouteViewModel : FeatureViewModel<TwoWayRoute> {
         [Category("TwoWayRoute")]
         public ObservableCollection<featureName> featureName { get; set; } = new();
 
@@ -25514,7 +25514,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         public override informationBindingDefinition[] informationBindingDefinitions => TwoWayRoute.informationBindingDefinitions;
         public override featureBindingDefinition[] featureBindingDefinitions => TwoWayRoute.featureBindingDefinitions;
 
-        public void Load(DomainModel.S101.FeatureTypes.TwoWayRoute instance) {
+        public override void Load(DomainModel.S101.FeatureTypes.TwoWayRoute instance) {
             featureName.Clear();
             if (instance.featureName is not null)
                 foreach (var e in instance.featureName)
@@ -25573,7 +25573,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
     [CategoryOrder("RecommendedTrafficLanePart", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class RecommendedTrafficLanePartViewModel : FeatureViewModel {
+    public partial class RecommendedTrafficLanePartViewModel : FeatureViewModel<RecommendedTrafficLanePart> {
         private fixedDateRangeViewModel? _fixedDateRange;
         [Category("RecommendedTrafficLanePart")]
         [Xceed.Wpf.Toolkit.PropertyGrid.Attributes.ExpandableObject]
@@ -25636,7 +25636,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         [Browsable(false)]
         public status[] statusList => [(status)1, (status)6, (status)9];
 
-        public void Load(DomainModel.S101.FeatureTypes.RecommendedTrafficLanePart instance) {
+        public override void Load(DomainModel.S101.FeatureTypes.RecommendedTrafficLanePart instance) {
             fixedDateRange = new();
             if (instance.fixedDateRange != null) {
                 fixedDateRange = new();
@@ -25695,7 +25695,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
     [CategoryOrder("DeepWaterRouteCentreline", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class DeepWaterRouteCentrelineViewModel : FeatureViewModel {
+    public partial class DeepWaterRouteCentrelineViewModel : FeatureViewModel<DeepWaterRouteCentreline> {
         private Boolean _basedOnFixedMarks;
         [Category("DeepWaterRouteCentreline")]
         public Boolean basedOnFixedMarks {
@@ -25843,7 +25843,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         [Browsable(false)]
         public trafficFlow[] trafficFlowList => [(trafficFlow)1, (trafficFlow)2, (trafficFlow)3, (trafficFlow)4];
 
-        public void Load(DomainModel.S101.FeatureTypes.DeepWaterRouteCentreline instance) {
+        public override void Load(DomainModel.S101.FeatureTypes.DeepWaterRouteCentreline instance) {
             basedOnFixedMarks = instance.basedOnFixedMarks;
             depthRangeMinimumValue = instance.depthRangeMinimumValue;
             featureName.Clear();
@@ -25949,7 +25949,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
     [CategoryOrder("DeepWaterRoutePart", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class DeepWaterRoutePartViewModel : FeatureViewModel {
+    public partial class DeepWaterRoutePartViewModel : FeatureViewModel<DeepWaterRoutePart> {
         private Decimal _depthRangeMinimumValue;
         [Category("DeepWaterRoutePart")]
         public Decimal depthRangeMinimumValue {
@@ -26096,7 +26096,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         [Browsable(false)]
         public trafficFlow[] trafficFlowList => [(trafficFlow)1, (trafficFlow)2, (trafficFlow)3, (trafficFlow)4];
 
-        public void Load(DomainModel.S101.FeatureTypes.DeepWaterRoutePart instance) {
+        public override void Load(DomainModel.S101.FeatureTypes.DeepWaterRoutePart instance) {
             depthRangeMinimumValue = instance.depthRangeMinimumValue;
             featureName.Clear();
             if (instance.featureName is not null)
@@ -26217,7 +26217,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
     [CategoryOrder("DeepWaterRoute", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class DeepWaterRouteViewModel : FeatureViewModel {
+    public partial class DeepWaterRouteViewModel : FeatureViewModel<DeepWaterRoute> {
         [Category("DeepWaterRoute")]
         public ObservableCollection<featureName> featureName { get; set; } = new();
 
@@ -26275,7 +26275,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         public override informationBindingDefinition[] informationBindingDefinitions => DeepWaterRoute.informationBindingDefinitions;
         public override featureBindingDefinition[] featureBindingDefinitions => DeepWaterRoute.featureBindingDefinitions;
 
-        public void Load(DomainModel.S101.FeatureTypes.DeepWaterRoute instance) {
+        public override void Load(DomainModel.S101.FeatureTypes.DeepWaterRoute instance) {
             featureName.Clear();
             if (instance.featureName is not null)
                 foreach (var e in instance.featureName)
@@ -26334,7 +26334,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
     [CategoryOrder("InshoreTrafficZone", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class InshoreTrafficZoneViewModel : FeatureViewModel {
+    public partial class InshoreTrafficZoneViewModel : FeatureViewModel<InshoreTrafficZone> {
         private fixedDateRangeViewModel? _fixedDateRange;
         [Category("InshoreTrafficZone")]
         [Xceed.Wpf.Toolkit.PropertyGrid.Attributes.ExpandableObject]
@@ -26396,7 +26396,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         [Browsable(false)]
         public status[] statusList => [(status)1, (status)3, (status)6, (status)9, (status)16, (status)17];
 
-        public void Load(DomainModel.S101.FeatureTypes.InshoreTrafficZone instance) {
+        public override void Load(DomainModel.S101.FeatureTypes.InshoreTrafficZone instance) {
             fixedDateRange = new();
             if (instance.fixedDateRange != null) {
                 fixedDateRange = new();
@@ -26470,7 +26470,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
     [CategoryOrder("PrecautionaryArea", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class PrecautionaryAreaViewModel : FeatureViewModel {
+    public partial class PrecautionaryAreaViewModel : FeatureViewModel<PrecautionaryArea> {
         [Category("PrecautionaryArea")]
         public ObservableCollection<featureName> featureName { get; set; } = new();
 
@@ -26547,7 +26547,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         [Browsable(false)]
         public status[] statusList => [(status)1, (status)9, (status)28];
 
-        public void Load(DomainModel.S101.FeatureTypes.PrecautionaryArea instance) {
+        public override void Load(DomainModel.S101.FeatureTypes.PrecautionaryArea instance) {
             featureName.Clear();
             if (instance.featureName is not null)
                 foreach (var e in instance.featureName)
@@ -26633,7 +26633,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
     [CategoryOrder("TrafficSeparationSchemeLanePart", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class TrafficSeparationSchemeLanePartViewModel : FeatureViewModel {
+    public partial class TrafficSeparationSchemeLanePartViewModel : FeatureViewModel<TrafficSeparationSchemeLanePart> {
         private fixedDateRangeViewModel? _fixedDateRange;
         [Category("TrafficSeparationSchemeLanePart")]
         [Xceed.Wpf.Toolkit.PropertyGrid.Attributes.ExpandableObject]
@@ -26707,7 +26707,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         [Browsable(false)]
         public status[] statusList => [(status)1, (status)3, (status)6, (status)9, (status)28];
 
-        public void Load(DomainModel.S101.FeatureTypes.TrafficSeparationSchemeLanePart instance) {
+        public override void Load(DomainModel.S101.FeatureTypes.TrafficSeparationSchemeLanePart instance) {
             fixedDateRange = new();
             if (instance.fixedDateRange != null) {
                 fixedDateRange = new();
@@ -26784,7 +26784,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
     [CategoryOrder("SeparationZoneOrLine", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class SeparationZoneOrLineViewModel : FeatureViewModel {
+    public partial class SeparationZoneOrLineViewModel : FeatureViewModel<SeparationZoneOrLine> {
         private fixedDateRangeViewModel? _fixedDateRange;
         [Category("SeparationZoneOrLine")]
         [Xceed.Wpf.Toolkit.PropertyGrid.Attributes.ExpandableObject]
@@ -26835,7 +26835,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         [Browsable(false)]
         public status[] statusList => [(status)1, (status)3, (status)9, (status)28];
 
-        public void Load(DomainModel.S101.FeatureTypes.SeparationZoneOrLine instance) {
+        public override void Load(DomainModel.S101.FeatureTypes.SeparationZoneOrLine instance) {
             fixedDateRange = new();
             if (instance.fixedDateRange != null) {
                 fixedDateRange = new();
@@ -26891,7 +26891,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
     [CategoryOrder("TrafficSeparationSchemeBoundary", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class TrafficSeparationSchemeBoundaryViewModel : FeatureViewModel {
+    public partial class TrafficSeparationSchemeBoundaryViewModel : FeatureViewModel<TrafficSeparationSchemeBoundary> {
         private fixedDateRangeViewModel? _fixedDateRange;
         [Category("TrafficSeparationSchemeBoundary")]
         [Xceed.Wpf.Toolkit.PropertyGrid.Attributes.ExpandableObject]
@@ -26942,7 +26942,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         [Browsable(false)]
         public status[] statusList => [(status)1, (status)3, (status)9, (status)28];
 
-        public void Load(DomainModel.S101.FeatureTypes.TrafficSeparationSchemeBoundary instance) {
+        public override void Load(DomainModel.S101.FeatureTypes.TrafficSeparationSchemeBoundary instance) {
             fixedDateRange = new();
             if (instance.fixedDateRange != null) {
                 fixedDateRange = new();
@@ -26998,7 +26998,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
     [CategoryOrder("TrafficSeparationSchemeCrossing", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class TrafficSeparationSchemeCrossingViewModel : FeatureViewModel {
+    public partial class TrafficSeparationSchemeCrossingViewModel : FeatureViewModel<TrafficSeparationSchemeCrossing> {
         private fixedDateRangeViewModel? _fixedDateRange;
         [Category("TrafficSeparationSchemeCrossing")]
         [Xceed.Wpf.Toolkit.PropertyGrid.Attributes.ExpandableObject]
@@ -27060,7 +27060,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         [Browsable(false)]
         public status[] statusList => [(status)1, (status)3, (status)6, (status)9];
 
-        public void Load(DomainModel.S101.FeatureTypes.TrafficSeparationSchemeCrossing instance) {
+        public override void Load(DomainModel.S101.FeatureTypes.TrafficSeparationSchemeCrossing instance) {
             fixedDateRange = new();
             if (instance.fixedDateRange != null) {
                 fixedDateRange = new();
@@ -27134,7 +27134,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
     [CategoryOrder("TrafficSeparationSchemeRoundabout", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class TrafficSeparationSchemeRoundaboutViewModel : FeatureViewModel {
+    public partial class TrafficSeparationSchemeRoundaboutViewModel : FeatureViewModel<TrafficSeparationSchemeRoundabout> {
         private fixedDateRangeViewModel? _fixedDateRange;
         [Category("TrafficSeparationSchemeRoundabout")]
         [Xceed.Wpf.Toolkit.PropertyGrid.Attributes.ExpandableObject]
@@ -27196,7 +27196,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         [Browsable(false)]
         public status[] statusList => [(status)1, (status)3, (status)6, (status)9];
 
-        public void Load(DomainModel.S101.FeatureTypes.TrafficSeparationSchemeRoundabout instance) {
+        public override void Load(DomainModel.S101.FeatureTypes.TrafficSeparationSchemeRoundabout instance) {
             fixedDateRange = new();
             if (instance.fixedDateRange != null) {
                 fixedDateRange = new();
@@ -27270,7 +27270,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
     [CategoryOrder("TrafficSeparationScheme", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class TrafficSeparationSchemeViewModel : FeatureViewModel {
+    public partial class TrafficSeparationSchemeViewModel : FeatureViewModel<TrafficSeparationScheme> {
         [Category("TrafficSeparationScheme")]
         public ObservableCollection<featureName> featureName { get; set; } = new();
 
@@ -27340,7 +27340,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         public override informationBindingDefinition[] informationBindingDefinitions => TrafficSeparationScheme.informationBindingDefinitions;
         public override featureBindingDefinition[] featureBindingDefinitions => TrafficSeparationScheme.featureBindingDefinitions;
 
-        public void Load(DomainModel.S101.FeatureTypes.TrafficSeparationScheme instance) {
+        public override void Load(DomainModel.S101.FeatureTypes.TrafficSeparationScheme instance) {
             featureName.Clear();
             if (instance.featureName is not null)
                 foreach (var e in instance.featureName)
@@ -27402,7 +27402,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
     [CategoryOrder("ArchipelagicSeaLaneArea", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class ArchipelagicSeaLaneAreaViewModel : FeatureViewModel {
+    public partial class ArchipelagicSeaLaneAreaViewModel : FeatureViewModel<ArchipelagicSeaLaneArea> {
         [Category("ArchipelagicSeaLaneArea")]
         public ObservableCollection<featureName> featureName { get; set; } = new();
 
@@ -27460,7 +27460,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         public override informationBindingDefinition[] informationBindingDefinitions => ArchipelagicSeaLaneArea.informationBindingDefinitions;
         public override featureBindingDefinition[] featureBindingDefinitions => ArchipelagicSeaLaneArea.featureBindingDefinitions;
 
-        public void Load(DomainModel.S101.FeatureTypes.ArchipelagicSeaLaneArea instance) {
+        public override void Load(DomainModel.S101.FeatureTypes.ArchipelagicSeaLaneArea instance) {
             featureName.Clear();
             if (instance.featureName is not null)
                 foreach (var e in instance.featureName)
@@ -27519,7 +27519,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
     [CategoryOrder("ArchipelagicSeaLaneAxis", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class ArchipelagicSeaLaneAxisViewModel : FeatureViewModel {
+    public partial class ArchipelagicSeaLaneAxisViewModel : FeatureViewModel<ArchipelagicSeaLaneAxis> {
         [Category("ArchipelagicSeaLaneAxis")]
         public ObservableCollection<featureName> featureName { get; set; } = new();
 
@@ -27577,7 +27577,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         public override informationBindingDefinition[] informationBindingDefinitions => ArchipelagicSeaLaneAxis.informationBindingDefinitions;
         public override featureBindingDefinition[] featureBindingDefinitions => ArchipelagicSeaLaneAxis.featureBindingDefinitions;
 
-        public void Load(DomainModel.S101.FeatureTypes.ArchipelagicSeaLaneAxis instance) {
+        public override void Load(DomainModel.S101.FeatureTypes.ArchipelagicSeaLaneAxis instance) {
             featureName.Clear();
             if (instance.featureName is not null)
                 foreach (var e in instance.featureName)
@@ -27636,7 +27636,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
     [CategoryOrder("ArchipelagicSeaLane", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class ArchipelagicSeaLaneViewModel : FeatureViewModel {
+    public partial class ArchipelagicSeaLaneViewModel : FeatureViewModel<ArchipelagicSeaLane> {
         [Category("ArchipelagicSeaLane")]
         public ObservableCollection<featureName> featureName { get; set; } = new();
 
@@ -27694,7 +27694,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         public override informationBindingDefinition[] informationBindingDefinitions => ArchipelagicSeaLane.informationBindingDefinitions;
         public override featureBindingDefinition[] featureBindingDefinitions => ArchipelagicSeaLane.featureBindingDefinitions;
 
-        public void Load(DomainModel.S101.FeatureTypes.ArchipelagicSeaLane instance) {
+        public override void Load(DomainModel.S101.FeatureTypes.ArchipelagicSeaLane instance) {
             featureName.Clear();
             if (instance.featureName is not null)
                 foreach (var e in instance.featureName)
@@ -27753,7 +27753,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
     [CategoryOrder("RadioCallingInPoint", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class RadioCallingInPointViewModel : FeatureViewModel {
+    public partial class RadioCallingInPointViewModel : FeatureViewModel<RadioCallingInPoint> {
         [Category("RadioCallingInPoint")]
         public ObservableCollection<String> communicationChannel { get; set; } = new();
 
@@ -27833,7 +27833,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         [Browsable(false)]
         public trafficFlow[] trafficFlowList => [(trafficFlow)1, (trafficFlow)2, (trafficFlow)3, (trafficFlow)4];
 
-        public void Load(DomainModel.S101.FeatureTypes.RadioCallingInPoint instance) {
+        public override void Load(DomainModel.S101.FeatureTypes.RadioCallingInPoint instance) {
             communicationChannel.Clear();
             if (instance.communicationChannel is not null)
                 foreach (var e in instance.communicationChannel)
@@ -27928,7 +27928,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
     [CategoryOrder("FerryRoute", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class FerryRouteViewModel : FeatureViewModel {
+    public partial class FerryRouteViewModel : FeatureViewModel<FerryRoute> {
         [DomainModel.EnumerationAttribute(nameof(categoryOfFerryList))]
         [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("FerryRoute")]
@@ -27993,7 +27993,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         [Browsable(false)]
         public status[] statusList => [(status)1, (status)2, (status)4, (status)5, (status)6, (status)7, (status)8, (status)9, (status)14];
 
-        public void Load(DomainModel.S101.FeatureTypes.FerryRoute instance) {
+        public override void Load(DomainModel.S101.FeatureTypes.FerryRoute instance) {
             categoryOfFerry.Clear();
             if (instance.categoryOfFerry is not null)
                 foreach (var e in instance.categoryOfFerry)
@@ -28076,7 +28076,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
     [CategoryOrder("RadarLine", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class RadarLineViewModel : FeatureViewModel {
+    public partial class RadarLineViewModel : FeatureViewModel<RadarLine> {
         [Category("RadarLine")]
         public ObservableCollection<featureName> featureName { get; set; } = new();
 
@@ -28129,7 +28129,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         [Browsable(false)]
         public status[] statusList => [(status)1, (status)2, (status)3, (status)4, (status)7];
 
-        public void Load(DomainModel.S101.FeatureTypes.RadarLine instance) {
+        public override void Load(DomainModel.S101.FeatureTypes.RadarLine instance) {
             featureName.Clear();
             if (instance.featureName is not null)
                 foreach (var e in instance.featureName)
@@ -28189,7 +28189,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
     [CategoryOrder("RadarRange", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class RadarRangeViewModel : FeatureViewModel {
+    public partial class RadarRangeViewModel : FeatureViewModel<RadarRange> {
         [Category("RadarRange")]
         public ObservableCollection<String> communicationChannel { get; set; } = new();
 
@@ -28246,7 +28246,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         [Browsable(false)]
         public status[] statusList => [(status)1, (status)2, (status)4, (status)7];
 
-        public void Load(DomainModel.S101.FeatureTypes.RadarRange instance) {
+        public override void Load(DomainModel.S101.FeatureTypes.RadarRange instance) {
             communicationChannel.Clear();
             if (instance.communicationChannel is not null)
                 foreach (var e in instance.communicationChannel)
@@ -28320,7 +28320,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
     [CategoryOrder("RadarStation", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class RadarStationViewModel : FeatureViewModel {
+    public partial class RadarStationViewModel : FeatureViewModel<RadarStation> {
         private String _callSign = string.Empty;
         [Category("RadarStation")]
         public String callSign {
@@ -28411,7 +28411,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         [Browsable(false)]
         public status[] statusList => [(status)1, (status)2, (status)4, (status)7, (status)8];
 
-        public void Load(DomainModel.S101.FeatureTypes.RadarStation instance) {
+        public override void Load(DomainModel.S101.FeatureTypes.RadarStation instance) {
             callSign = instance.callSign;
             categoryOfRadarStation.Clear();
             if (instance.categoryOfRadarStation is not null)
@@ -28504,7 +28504,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
     [CategoryOrder("AnchorageArea", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class AnchorageAreaViewModel : FeatureViewModel {
+    public partial class AnchorageAreaViewModel : FeatureViewModel<AnchorageArea> {
         [DomainModel.EnumerationAttribute(nameof(categoryOfAnchorageList))]
         [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("AnchorageArea")]
@@ -28588,7 +28588,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         [Browsable(false)]
         public status[] statusList => [(status)1, (status)2, (status)3, (status)5, (status)6, (status)7, (status)8, (status)9, (status)14];
 
-        public void Load(DomainModel.S101.FeatureTypes.AnchorageArea instance) {
+        public override void Load(DomainModel.S101.FeatureTypes.AnchorageArea instance) {
             categoryOfAnchorage.Clear();
             if (instance.categoryOfAnchorage is not null)
                 foreach (var e in instance.categoryOfAnchorage)
@@ -28698,7 +28698,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
     [CategoryOrder("MooringArea", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class MooringAreaViewModel : FeatureViewModel {
+    public partial class MooringAreaViewModel : FeatureViewModel<MooringArea> {
         [DomainModel.EnumerationAttribute(nameof(categoryOfMooringAreaList))]
         [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("MooringArea")]
@@ -28798,7 +28798,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         [Browsable(false)]
         public status[] statusList => [(status)1, (status)2, (status)3, (status)5, (status)6, (status)7, (status)8, (status)9, (status)14];
 
-        public void Load(DomainModel.S101.FeatureTypes.MooringArea instance) {
+        public override void Load(DomainModel.S101.FeatureTypes.MooringArea instance) {
             categoryOfMooringArea.Clear();
             if (instance.categoryOfMooringArea is not null)
                 foreach (var e in instance.categoryOfMooringArea)
@@ -28905,7 +28905,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
     [CategoryOrder("AnchorBerth", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class AnchorBerthViewModel : FeatureViewModel {
+    public partial class AnchorBerthViewModel : FeatureViewModel<AnchorBerth> {
         [DomainModel.EnumerationAttribute(nameof(categoryOfAnchorageList))]
         [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("AnchorBerth")]
@@ -28990,7 +28990,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         [Browsable(false)]
         public status[] statusList => [(status)1, (status)2, (status)3, (status)4, (status)5, (status)6, (status)7, (status)8, (status)9, (status)14];
 
-        public void Load(DomainModel.S101.FeatureTypes.AnchorBerth instance) {
+        public override void Load(DomainModel.S101.FeatureTypes.AnchorBerth instance) {
             categoryOfAnchorage.Clear();
             if (instance.categoryOfAnchorage is not null)
                 foreach (var e in instance.categoryOfAnchorage)
@@ -29085,7 +29085,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
     [CategoryOrder("SeaplaneLandingArea", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class SeaplaneLandingAreaViewModel : FeatureViewModel {
+    public partial class SeaplaneLandingAreaViewModel : FeatureViewModel<SeaplaneLandingArea> {
         [Category("SeaplaneLandingArea")]
         public ObservableCollection<featureName> featureName { get; set; } = new();
 
@@ -29140,7 +29140,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         [Browsable(false)]
         public status[] statusList => [(status)1, (status)2, (status)3, (status)4, (status)5, (status)6, (status)7, (status)8, (status)9, (status)14];
 
-        public void Load(DomainModel.S101.FeatureTypes.SeaplaneLandingArea instance) {
+        public override void Load(DomainModel.S101.FeatureTypes.SeaplaneLandingArea instance) {
             featureName.Clear();
             if (instance.featureName is not null)
                 foreach (var e in instance.featureName)
@@ -29224,7 +29224,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
     [CategoryOrder("DumpingGround", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class DumpingGroundViewModel : FeatureViewModel {
+    public partial class DumpingGroundViewModel : FeatureViewModel<DumpingGround> {
         [DomainModel.EnumerationAttribute(nameof(categoryOfDumpingGroundList))]
         [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("DumpingGround")]
@@ -29296,7 +29296,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         [Browsable(false)]
         public status[] statusList => [(status)1, (status)2, (status)4, (status)6, (status)7];
 
-        public void Load(DomainModel.S101.FeatureTypes.DumpingGround instance) {
+        public override void Load(DomainModel.S101.FeatureTypes.DumpingGround instance) {
             categoryOfDumpingGround.Clear();
             if (instance.categoryOfDumpingGround is not null)
                 foreach (var e in instance.categoryOfDumpingGround)
@@ -29383,7 +29383,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
     [CategoryOrder("MilitaryPracticeArea", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class MilitaryPracticeAreaViewModel : FeatureViewModel {
+    public partial class MilitaryPracticeAreaViewModel : FeatureViewModel<MilitaryPracticeArea> {
         [DomainModel.EnumerationAttribute(nameof(categoryOfMilitaryPracticeAreaList))]
         [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("MilitaryPracticeArea")]
@@ -29471,7 +29471,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         [Browsable(false)]
         public status[] statusList => [(status)1, (status)2, (status)5, (status)6, (status)7, (status)16, (status)17];
 
-        public void Load(DomainModel.S101.FeatureTypes.MilitaryPracticeArea instance) {
+        public override void Load(DomainModel.S101.FeatureTypes.MilitaryPracticeArea instance) {
             categoryOfMilitaryPracticeArea.Clear();
             if (instance.categoryOfMilitaryPracticeArea is not null)
                 foreach (var e in instance.categoryOfMilitaryPracticeArea)
@@ -29575,7 +29575,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
     [CategoryOrder("AdministrationArea", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class AdministrationAreaViewModel : FeatureViewModel {
+    public partial class AdministrationAreaViewModel : FeatureViewModel<AdministrationArea> {
         private Boolean? _inDispute = default;
         [Category("AdministrationArea")]
         public Boolean? inDispute {
@@ -29653,7 +29653,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         [Browsable(false)]
         public jurisdiction[] jurisdictionList => [(jurisdiction)1, (jurisdiction)2, (jurisdiction)3];
 
-        public void Load(DomainModel.S101.FeatureTypes.AdministrationArea instance) {
+        public override void Load(DomainModel.S101.FeatureTypes.AdministrationArea instance) {
             inDispute = instance.inDispute;
             jurisdiction = instance.jurisdiction;
             featureName.Clear();
@@ -29719,7 +29719,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
     [CategoryOrder("CargoTranshipmentArea", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class CargoTranshipmentAreaViewModel : FeatureViewModel {
+    public partial class CargoTranshipmentAreaViewModel : FeatureViewModel<CargoTranshipmentArea> {
         [Category("CargoTranshipmentArea")]
         public ObservableCollection<featureName> featureName { get; set; } = new();
 
@@ -29787,7 +29787,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         [Browsable(false)]
         public status[] statusList => [(status)1, (status)2, (status)3, (status)5, (status)6, (status)7, (status)9];
 
-        public void Load(DomainModel.S101.FeatureTypes.CargoTranshipmentArea instance) {
+        public override void Load(DomainModel.S101.FeatureTypes.CargoTranshipmentArea instance) {
             featureName.Clear();
             if (instance.featureName is not null)
                 foreach (var e in instance.featureName)
@@ -29879,7 +29879,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
     [CategoryOrder("CautionArea", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class CautionAreaViewModel : FeatureViewModel {
+    public partial class CautionAreaViewModel : FeatureViewModel<CautionArea> {
         private condition? _condition = default;
         [DomainModel.EnumerationAttribute(nameof(conditionList))]
         [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
@@ -29984,7 +29984,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         [Browsable(false)]
         public status[] statusList => [(status)5, (status)7];
 
-        public void Load(DomainModel.S101.FeatureTypes.CautionArea instance) {
+        public override void Load(DomainModel.S101.FeatureTypes.CautionArea instance) {
             condition = instance.condition;
             fixedDateRange = new();
             if (instance.fixedDateRange != null) {
@@ -30052,7 +30052,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
     [CategoryOrder("InformationArea", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class InformationAreaViewModel : FeatureViewModel {
+    public partial class InformationAreaViewModel : FeatureViewModel<InformationArea> {
         [Category("InformationArea")]
         public ObservableCollection<featureName> featureName { get; set; } = new();
 
@@ -30126,7 +30126,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         public override informationBindingDefinition[] informationBindingDefinitions => InformationArea.informationBindingDefinitions;
         public override featureBindingDefinition[] featureBindingDefinitions => InformationArea.featureBindingDefinitions;
 
-        public void Load(DomainModel.S101.FeatureTypes.InformationArea instance) {
+        public override void Load(DomainModel.S101.FeatureTypes.InformationArea instance) {
             featureName.Clear();
             if (instance.featureName is not null)
                 foreach (var e in instance.featureName)
@@ -30197,7 +30197,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
     [CategoryOrder("ContiguousZone", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class ContiguousZoneViewModel : FeatureViewModel {
+    public partial class ContiguousZoneViewModel : FeatureViewModel<ContiguousZone> {
         private fixedDateRangeViewModel? _fixedDateRange;
         [Category("ContiguousZone")]
         [Xceed.Wpf.Toolkit.PropertyGrid.Attributes.ExpandableObject]
@@ -30255,7 +30255,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         public override informationBindingDefinition[] informationBindingDefinitions => ContiguousZone.informationBindingDefinitions;
         public override featureBindingDefinition[] featureBindingDefinitions => ContiguousZone.featureBindingDefinitions;
 
-        public void Load(DomainModel.S101.FeatureTypes.ContiguousZone instance) {
+        public override void Load(DomainModel.S101.FeatureTypes.ContiguousZone instance) {
             fixedDateRange = new();
             if (instance.fixedDateRange != null) {
                 fixedDateRange = new();
@@ -30314,7 +30314,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
     [CategoryOrder("ContinentalShelfArea", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class ContinentalShelfAreaViewModel : FeatureViewModel {
+    public partial class ContinentalShelfAreaViewModel : FeatureViewModel<ContinentalShelfArea> {
         [Category("ContinentalShelfArea")]
         public ObservableCollection<featureName> featureName { get; set; } = new();
 
@@ -30350,7 +30350,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         public override informationBindingDefinition[] informationBindingDefinitions => ContinentalShelfArea.informationBindingDefinitions;
         public override featureBindingDefinition[] featureBindingDefinitions => ContinentalShelfArea.featureBindingDefinitions;
 
-        public void Load(DomainModel.S101.FeatureTypes.ContinentalShelfArea instance) {
+        public override void Load(DomainModel.S101.FeatureTypes.ContinentalShelfArea instance) {
             featureName.Clear();
             if (instance.featureName is not null)
                 foreach (var e in instance.featureName)
@@ -30407,7 +30407,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
     [CategoryOrder("CustomZone", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class CustomZoneViewModel : FeatureViewModel {
+    public partial class CustomZoneViewModel : FeatureViewModel<CustomZone> {
         private String _interoperabilityIdentifier = string.Empty;
         [Category("CustomZone")]
         public String interoperabilityIdentifier {
@@ -30449,7 +30449,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         public override informationBindingDefinition[] informationBindingDefinitions => CustomZone.informationBindingDefinitions;
         public override featureBindingDefinition[] featureBindingDefinitions => CustomZone.featureBindingDefinitions;
 
-        public void Load(DomainModel.S101.FeatureTypes.CustomZone instance) {
+        public override void Load(DomainModel.S101.FeatureTypes.CustomZone instance) {
             interoperabilityIdentifier = instance.interoperabilityIdentifier;
             nationality = instance.nationality;
             scaleMinimum = instance.scaleMinimum;
@@ -30491,7 +30491,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
     [CategoryOrder("ExclusiveEconomicZone", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class ExclusiveEconomicZoneViewModel : FeatureViewModel {
+    public partial class ExclusiveEconomicZoneViewModel : FeatureViewModel<ExclusiveEconomicZone> {
         private Boolean? _inDispute = default;
         [Category("ExclusiveEconomicZone")]
         public Boolean? inDispute {
@@ -30536,7 +30536,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         public override informationBindingDefinition[] informationBindingDefinitions => ExclusiveEconomicZone.informationBindingDefinitions;
         public override featureBindingDefinition[] featureBindingDefinitions => ExclusiveEconomicZone.featureBindingDefinitions;
 
-        public void Load(DomainModel.S101.FeatureTypes.ExclusiveEconomicZone instance) {
+        public override void Load(DomainModel.S101.FeatureTypes.ExclusiveEconomicZone instance) {
             inDispute = instance.inDispute;
             interoperabilityIdentifier = instance.interoperabilityIdentifier;
             nationality.Clear();
@@ -30587,7 +30587,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
     [CategoryOrder("FisheryZone", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class FisheryZoneViewModel : FeatureViewModel {
+    public partial class FisheryZoneViewModel : FeatureViewModel<FisheryZone> {
         [Category("FisheryZone")]
         public ObservableCollection<featureName> featureName { get; set; } = new();
 
@@ -30640,7 +30640,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         [Browsable(false)]
         public status[] statusList => [(status)1, (status)5, (status)6, (status)7];
 
-        public void Load(DomainModel.S101.FeatureTypes.FisheryZone instance) {
+        public override void Load(DomainModel.S101.FeatureTypes.FisheryZone instance) {
             featureName.Clear();
             if (instance.featureName is not null)
                 foreach (var e in instance.featureName)
@@ -30700,7 +30700,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
     [CategoryOrder("FishingGround", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class FishingGroundViewModel : FeatureViewModel {
+    public partial class FishingGroundViewModel : FeatureViewModel<FishingGround> {
         [Category("FishingGround")]
         public ObservableCollection<featureName> featureName { get; set; } = new();
 
@@ -30755,7 +30755,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         [Browsable(false)]
         public status[] statusList => [(status)1, (status)5, (status)6, (status)7, (status)8, (status)14, (status)16, (status)17, (status)28];
 
-        public void Load(DomainModel.S101.FeatureTypes.FishingGround instance) {
+        public override void Load(DomainModel.S101.FeatureTypes.FishingGround instance) {
             featureName.Clear();
             if (instance.featureName is not null)
                 foreach (var e in instance.featureName)
@@ -30839,7 +30839,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
     [CategoryOrder("FreePortArea", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class FreePortAreaViewModel : FeatureViewModel {
+    public partial class FreePortAreaViewModel : FeatureViewModel<FreePortArea> {
         [Category("FreePortArea")]
         public ObservableCollection<featureName> featureName { get; set; } = new();
 
@@ -30880,7 +30880,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         [Browsable(false)]
         public status[] statusList => [(status)1, (status)6, (status)8, (status)14];
 
-        public void Load(DomainModel.S101.FeatureTypes.FreePortArea instance) {
+        public override void Load(DomainModel.S101.FeatureTypes.FreePortArea instance) {
             featureName.Clear();
             if (instance.featureName is not null)
                 foreach (var e in instance.featureName)
@@ -30937,7 +30937,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
     [CategoryOrder("HarbourAreaAdministrative", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class HarbourAreaAdministrativeViewModel : FeatureViewModel {
+    public partial class HarbourAreaAdministrativeViewModel : FeatureViewModel<HarbourAreaAdministrative> {
         [Category("HarbourAreaAdministrative")]
         public ObservableCollection<featureName> featureName { get; set; } = new();
 
@@ -30978,7 +30978,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         [Browsable(false)]
         public status[] statusList => [(status)1, (status)4, (status)6, (status)8, (status)14];
 
-        public void Load(DomainModel.S101.FeatureTypes.HarbourAreaAdministrative instance) {
+        public override void Load(DomainModel.S101.FeatureTypes.HarbourAreaAdministrative instance) {
             featureName.Clear();
             if (instance.featureName is not null)
                 foreach (var e in instance.featureName)
@@ -31035,7 +31035,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
     [CategoryOrder("LogPond", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class LogPondViewModel : FeatureViewModel {
+    public partial class LogPondViewModel : FeatureViewModel<LogPond> {
         [Category("LogPond")]
         public ObservableCollection<featureName> featureName { get; set; } = new();
 
@@ -31079,7 +31079,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         [Browsable(false)]
         public status[] statusList => [(status)1, (status)2, (status)5, (status)6, (status)7, (status)8];
 
-        public void Load(DomainModel.S101.FeatureTypes.LogPond instance) {
+        public override void Load(DomainModel.S101.FeatureTypes.LogPond instance) {
             featureName.Clear();
             if (instance.featureName is not null)
                 foreach (var e in instance.featureName)
@@ -31145,7 +31145,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
     [CategoryOrder("OilBarrier", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class OilBarrierViewModel : FeatureViewModel {
+    public partial class OilBarrierViewModel : FeatureViewModel<OilBarrier> {
         private categoryOfOilBarrier? _categoryOfOilBarrier = default;
         [DomainModel.EnumerationAttribute(nameof(categoryOfOilBarrierList))]
         [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
@@ -31245,7 +31245,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         [Browsable(false)]
         public status[] statusList => [(status)1, (status)2, (status)4, (status)5, (status)7, (status)8];
 
-        public void Load(DomainModel.S101.FeatureTypes.OilBarrier instance) {
+        public override void Load(DomainModel.S101.FeatureTypes.OilBarrier instance) {
             categoryOfOilBarrier = instance.categoryOfOilBarrier;
             condition = instance.condition;
             featureName.Clear();
@@ -31319,7 +31319,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
     [CategoryOrder("StraightTerritorialSeaBaseline", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class StraightTerritorialSeaBaselineViewModel : FeatureViewModel {
+    public partial class StraightTerritorialSeaBaselineViewModel : FeatureViewModel<StraightTerritorialSeaBaseline> {
         private String _interoperabilityIdentifier = string.Empty;
         [Category("StraightTerritorialSeaBaseline")]
         public String interoperabilityIdentifier {
@@ -31361,7 +31361,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         public override informationBindingDefinition[] informationBindingDefinitions => StraightTerritorialSeaBaseline.informationBindingDefinitions;
         public override featureBindingDefinition[] featureBindingDefinitions => StraightTerritorialSeaBaseline.featureBindingDefinitions;
 
-        public void Load(DomainModel.S101.FeatureTypes.StraightTerritorialSeaBaseline instance) {
+        public override void Load(DomainModel.S101.FeatureTypes.StraightTerritorialSeaBaseline instance) {
             interoperabilityIdentifier = instance.interoperabilityIdentifier;
             nationality = instance.nationality;
             scaleMinimum = instance.scaleMinimum;
@@ -31403,7 +31403,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
     [CategoryOrder("TerritorialSeaArea", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class TerritorialSeaAreaViewModel : FeatureViewModel {
+    public partial class TerritorialSeaAreaViewModel : FeatureViewModel<TerritorialSeaArea> {
         private Boolean? _inDispute = default;
         [Category("TerritorialSeaArea")]
         public Boolean? inDispute {
@@ -31459,7 +31459,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         [Browsable(false)]
         public restriction[] restrictionList => [(restriction)2, (restriction)4, (restriction)6, (restriction)8, (restriction)9, (restriction)10, (restriction)12, (restriction)17, (restriction)18, (restriction)19, (restriction)20, (restriction)21, (restriction)22, (restriction)23, (restriction)24, (restriction)27];
 
-        public void Load(DomainModel.S101.FeatureTypes.TerritorialSeaArea instance) {
+        public override void Load(DomainModel.S101.FeatureTypes.TerritorialSeaArea instance) {
             inDispute = instance.inDispute;
             interoperabilityIdentifier = instance.interoperabilityIdentifier;
             nationality.Clear();
@@ -31528,7 +31528,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
     [CategoryOrder("SubmarineTransitLane", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class SubmarineTransitLaneViewModel : FeatureViewModel {
+    public partial class SubmarineTransitLaneViewModel : FeatureViewModel<SubmarineTransitLane> {
         [Category("SubmarineTransitLane")]
         public ObservableCollection<featureName> featureName { get; set; } = new();
 
@@ -31584,7 +31584,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         [Browsable(false)]
         public restriction[] restrictionList => [(restriction)1, (restriction)2, (restriction)3, (restriction)4, (restriction)5, (restriction)6, (restriction)7, (restriction)8, (restriction)9, (restriction)10, (restriction)11, (restriction)12, (restriction)13, (restriction)16, (restriction)17, (restriction)18, (restriction)19, (restriction)20, (restriction)21, (restriction)22, (restriction)23, (restriction)24, (restriction)25, (restriction)27];
 
-        public void Load(DomainModel.S101.FeatureTypes.SubmarineTransitLane instance) {
+        public override void Load(DomainModel.S101.FeatureTypes.SubmarineTransitLane instance) {
             featureName.Clear();
             if (instance.featureName is not null)
                 foreach (var e in instance.featureName)
@@ -31653,7 +31653,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
     [CategoryOrder("PilotageDistrict", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class PilotageDistrictViewModel : FeatureViewModel {
+    public partial class PilotageDistrictViewModel : FeatureViewModel<PilotageDistrict> {
         [Category("PilotageDistrict")]
         public ObservableCollection<String> communicationChannel { get; set; } = new();
 
@@ -31689,7 +31689,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         public override informationBindingDefinition[] informationBindingDefinitions => PilotageDistrict.informationBindingDefinitions;
         public override featureBindingDefinition[] featureBindingDefinitions => PilotageDistrict.featureBindingDefinitions;
 
-        public void Load(DomainModel.S101.FeatureTypes.PilotageDistrict instance) {
+        public override void Load(DomainModel.S101.FeatureTypes.PilotageDistrict instance) {
             communicationChannel.Clear();
             if (instance.communicationChannel is not null)
                 foreach (var e in instance.communicationChannel)
@@ -31746,7 +31746,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
     [CategoryOrder("CollisionRegulationsLimit", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class CollisionRegulationsLimitViewModel : FeatureViewModel {
+    public partial class CollisionRegulationsLimitViewModel : FeatureViewModel<CollisionRegulationsLimit> {
         [Category("CollisionRegulationsLimit")]
         public ObservableCollection<featureName> featureName { get; set; } = new();
 
@@ -31807,7 +31807,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         public override informationBindingDefinition[] informationBindingDefinitions => CollisionRegulationsLimit.informationBindingDefinitions;
         public override featureBindingDefinition[] featureBindingDefinitions => CollisionRegulationsLimit.featureBindingDefinitions;
 
-        public void Load(DomainModel.S101.FeatureTypes.CollisionRegulationsLimit instance) {
+        public override void Load(DomainModel.S101.FeatureTypes.CollisionRegulationsLimit instance) {
             featureName.Clear();
             if (instance.featureName is not null)
                 foreach (var e in instance.featureName)
@@ -31875,7 +31875,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
     [CategoryOrder("MarinePollutionRegulationsArea", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class MarinePollutionRegulationsAreaViewModel : FeatureViewModel {
+    public partial class MarinePollutionRegulationsAreaViewModel : FeatureViewModel<MarinePollutionRegulationsArea> {
         [Category("MarinePollutionRegulationsArea")]
         public ObservableCollection<featureName> featureName { get; set; } = new();
 
@@ -31920,7 +31920,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         public override informationBindingDefinition[] informationBindingDefinitions => MarinePollutionRegulationsArea.informationBindingDefinitions;
         public override featureBindingDefinition[] featureBindingDefinitions => MarinePollutionRegulationsArea.featureBindingDefinitions;
 
-        public void Load(DomainModel.S101.FeatureTypes.MarinePollutionRegulationsArea instance) {
+        public override void Load(DomainModel.S101.FeatureTypes.MarinePollutionRegulationsArea instance) {
             featureName.Clear();
             if (instance.featureName is not null)
                 foreach (var e in instance.featureName)
@@ -31971,7 +31971,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
     [CategoryOrder("RestrictedArea", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class RestrictedAreaViewModel : FeatureViewModel {
+    public partial class RestrictedAreaViewModel : FeatureViewModel<RestrictedArea> {
         [DomainModel.EnumerationAttribute(nameof(categoryOfRestrictedAreaList))]
         [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("RestrictedArea")]
@@ -32047,7 +32047,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         [Browsable(false)]
         public status[] statusList => [(status)1, (status)2, (status)3, (status)4, (status)5, (status)6, (status)7, (status)9, (status)18, (status)28];
 
-        public void Load(DomainModel.S101.FeatureTypes.RestrictedArea instance) {
+        public override void Load(DomainModel.S101.FeatureTypes.RestrictedArea instance) {
             categoryOfRestrictedArea.Clear();
             if (instance.categoryOfRestrictedArea is not null)
                 foreach (var e in instance.categoryOfRestrictedArea)
@@ -32148,7 +32148,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
     [CategoryOrder("LightAllAround", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class LightAllAroundViewModel : FeatureViewModel {
+    public partial class LightAllAroundViewModel : FeatureViewModel<LightAllAround> {
         [DomainModel.EnumerationAttribute(nameof(categoryOfLightList))]
         [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("LightAllAround")]
@@ -32392,7 +32392,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         [Browsable(false)]
         public verticalDatum[] verticalDatumList => [(verticalDatum)3, (verticalDatum)13, (verticalDatum)16, (verticalDatum)17, (verticalDatum)18, (verticalDatum)19, (verticalDatum)20, (verticalDatum)21, (verticalDatum)24, (verticalDatum)25, (verticalDatum)26, (verticalDatum)28, (verticalDatum)29, (verticalDatum)30, (verticalDatum)44];
 
-        public void Load(DomainModel.S101.FeatureTypes.LightAllAround instance) {
+        public override void Load(DomainModel.S101.FeatureTypes.LightAllAround instance) {
             categoryOfLight.Clear();
             if (instance.categoryOfLight is not null)
                 foreach (var e in instance.categoryOfLight)
@@ -32530,7 +32530,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
     [CategoryOrder("LightSectored", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class LightSectoredViewModel : FeatureViewModel {
+    public partial class LightSectoredViewModel : FeatureViewModel<LightSectored> {
         [DomainModel.EnumerationAttribute(nameof(categoryOfLightList))]
         [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("LightSectored")]
@@ -32691,7 +32691,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         [Browsable(false)]
         public verticalDatum[] verticalDatumList => [(verticalDatum)3, (verticalDatum)13, (verticalDatum)16, (verticalDatum)17, (verticalDatum)18, (verticalDatum)19, (verticalDatum)20, (verticalDatum)21, (verticalDatum)24, (verticalDatum)25, (verticalDatum)26, (verticalDatum)28, (verticalDatum)29, (verticalDatum)30, (verticalDatum)44];
 
-        public void Load(DomainModel.S101.FeatureTypes.LightSectored instance) {
+        public override void Load(DomainModel.S101.FeatureTypes.LightSectored instance) {
             categoryOfLight.Clear();
             if (instance.categoryOfLight is not null)
                 foreach (var e in instance.categoryOfLight)
@@ -32806,7 +32806,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
     [CategoryOrder("LightFogDetector", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class LightFogDetectorViewModel : FeatureViewModel {
+    public partial class LightFogDetectorViewModel : FeatureViewModel<LightFogDetector> {
         [DomainModel.EnumerationAttribute(nameof(colourList))]
         [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("LightFogDetector")]
@@ -32954,7 +32954,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         [Browsable(false)]
         public verticalDatum[] verticalDatumList => [(verticalDatum)3, (verticalDatum)13, (verticalDatum)16, (verticalDatum)17, (verticalDatum)18, (verticalDatum)19, (verticalDatum)20, (verticalDatum)21, (verticalDatum)24, (verticalDatum)25, (verticalDatum)26, (verticalDatum)28, (verticalDatum)29, (verticalDatum)30, (verticalDatum)44];
 
-        public void Load(DomainModel.S101.FeatureTypes.LightFogDetector instance) {
+        public override void Load(DomainModel.S101.FeatureTypes.LightFogDetector instance) {
             colour.Clear();
             if (instance.colour is not null)
                 foreach (var e in instance.colour)
@@ -33060,7 +33060,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
     [CategoryOrder("LightAirObstruction", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class LightAirObstructionViewModel : FeatureViewModel {
+    public partial class LightAirObstructionViewModel : FeatureViewModel<LightAirObstruction> {
         [DomainModel.EnumerationAttribute(nameof(colourList))]
         [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("LightAirObstruction")]
@@ -33229,7 +33229,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         [Browsable(false)]
         public verticalDatum[] verticalDatumList => [(verticalDatum)3, (verticalDatum)13, (verticalDatum)16, (verticalDatum)17, (verticalDatum)18, (verticalDatum)19, (verticalDatum)20, (verticalDatum)21, (verticalDatum)24, (verticalDatum)25, (verticalDatum)26, (verticalDatum)28, (verticalDatum)29, (verticalDatum)30, (verticalDatum)44];
 
-        public void Load(DomainModel.S101.FeatureTypes.LightAirObstruction instance) {
+        public override void Load(DomainModel.S101.FeatureTypes.LightAirObstruction instance) {
             colour.Clear();
             if (instance.colour is not null)
                 foreach (var e in instance.colour)
@@ -33352,7 +33352,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
     [CategoryOrder("LateralBuoy", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class LateralBuoyViewModel : FeatureViewModel {
+    public partial class LateralBuoyViewModel : FeatureViewModel<LateralBuoy> {
         private buoyShape _buoyShape;
         [DomainModel.EnumerationAttribute(nameof(buoyShapeList))]
         [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
@@ -33543,7 +33543,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         [Browsable(false)]
         public status[] statusList => [(status)1, (status)2, (status)5, (status)7, (status)8, (status)18];
 
-        public void Load(DomainModel.S101.FeatureTypes.LateralBuoy instance) {
+        public override void Load(DomainModel.S101.FeatureTypes.LateralBuoy instance) {
             buoyShape = instance.buoyShape;
             categoryOfLateralMark = instance.categoryOfLateralMark;
             colour.Clear();
@@ -33664,7 +33664,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
     [CategoryOrder("CardinalBuoy", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class CardinalBuoyViewModel : FeatureViewModel {
+    public partial class CardinalBuoyViewModel : FeatureViewModel<CardinalBuoy> {
         private buoyShape _buoyShape;
         [DomainModel.EnumerationAttribute(nameof(buoyShapeList))]
         [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
@@ -33855,7 +33855,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         [Browsable(false)]
         public status[] statusList => [(status)1, (status)2, (status)5, (status)7, (status)8, (status)18];
 
-        public void Load(DomainModel.S101.FeatureTypes.CardinalBuoy instance) {
+        public override void Load(DomainModel.S101.FeatureTypes.CardinalBuoy instance) {
             buoyShape = instance.buoyShape;
             categoryOfCardinalMark = instance.categoryOfCardinalMark;
             colour.Clear();
@@ -33976,7 +33976,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
     [CategoryOrder("IsolatedDangerBuoy", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class IsolatedDangerBuoyViewModel : FeatureViewModel {
+    public partial class IsolatedDangerBuoyViewModel : FeatureViewModel<IsolatedDangerBuoy> {
         private buoyShape _buoyShape;
         [DomainModel.EnumerationAttribute(nameof(buoyShapeList))]
         [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
@@ -34150,7 +34150,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         [Browsable(false)]
         public status[] statusList => [(status)1, (status)2, (status)5, (status)7, (status)8, (status)18];
 
-        public void Load(DomainModel.S101.FeatureTypes.IsolatedDangerBuoy instance) {
+        public override void Load(DomainModel.S101.FeatureTypes.IsolatedDangerBuoy instance) {
             buoyShape = instance.buoyShape;
             colour.Clear();
             if (instance.colour is not null)
@@ -34268,7 +34268,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
     [CategoryOrder("SafeWaterBuoy", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class SafeWaterBuoyViewModel : FeatureViewModel {
+    public partial class SafeWaterBuoyViewModel : FeatureViewModel<SafeWaterBuoy> {
         private buoyShape _buoyShape;
         [DomainModel.EnumerationAttribute(nameof(buoyShapeList))]
         [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
@@ -34442,7 +34442,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         [Browsable(false)]
         public status[] statusList => [(status)1, (status)2, (status)5, (status)7, (status)8, (status)18];
 
-        public void Load(DomainModel.S101.FeatureTypes.SafeWaterBuoy instance) {
+        public override void Load(DomainModel.S101.FeatureTypes.SafeWaterBuoy instance) {
             buoyShape = instance.buoyShape;
             colour.Clear();
             if (instance.colour is not null)
@@ -34560,7 +34560,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
     [CategoryOrder("SpecialPurposeGeneralBuoy", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class SpecialPurposeGeneralBuoyViewModel : FeatureViewModel {
+    public partial class SpecialPurposeGeneralBuoyViewModel : FeatureViewModel<SpecialPurposeGeneralBuoy> {
         private buoyShape _buoyShape;
         [DomainModel.EnumerationAttribute(nameof(buoyShapeList))]
         [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
@@ -34742,7 +34742,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         [Browsable(false)]
         public status[] statusList => [(status)1, (status)2, (status)5, (status)7, (status)8, (status)18];
 
-        public void Load(DomainModel.S101.FeatureTypes.SpecialPurposeGeneralBuoy instance) {
+        public override void Load(DomainModel.S101.FeatureTypes.SpecialPurposeGeneralBuoy instance) {
             buoyShape = instance.buoyShape;
             categoryOfSpecialPurposeMark.Clear();
             if (instance.categoryOfSpecialPurposeMark is not null)
@@ -34869,7 +34869,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
     [CategoryOrder("EmergencyWreckMarkingBuoy", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class EmergencyWreckMarkingBuoyViewModel : FeatureViewModel {
+    public partial class EmergencyWreckMarkingBuoyViewModel : FeatureViewModel<EmergencyWreckMarkingBuoy> {
         private buoyShape _buoyShape;
         [DomainModel.EnumerationAttribute(nameof(buoyShapeList))]
         [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
@@ -35032,7 +35032,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         [Browsable(false)]
         public natureOfConstruction[] natureOfConstructionList => [(natureOfConstruction)6, (natureOfConstruction)7, (natureOfConstruction)8, (natureOfConstruction)11];
 
-        public void Load(DomainModel.S101.FeatureTypes.EmergencyWreckMarkingBuoy instance) {
+        public override void Load(DomainModel.S101.FeatureTypes.EmergencyWreckMarkingBuoy instance) {
             buoyShape = instance.buoyShape;
             colour.Clear();
             if (instance.colour is not null)
@@ -35132,7 +35132,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
     [CategoryOrder("InstallationBuoy", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class InstallationBuoyViewModel : FeatureViewModel {
+    public partial class InstallationBuoyViewModel : FeatureViewModel<InstallationBuoy> {
         private buoyShape _buoyShape;
         [DomainModel.EnumerationAttribute(nameof(buoyShapeList))]
         [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
@@ -35306,7 +35306,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         [Browsable(false)]
         public visualProminence[] visualProminenceList => [(visualProminence)1, (visualProminence)2, (visualProminence)3];
 
-        public void Load(DomainModel.S101.FeatureTypes.InstallationBuoy instance) {
+        public override void Load(DomainModel.S101.FeatureTypes.InstallationBuoy instance) {
             buoyShape = instance.buoyShape;
             categoryOfInstallationBuoy = instance.categoryOfInstallationBuoy;
             colour.Clear();
@@ -35425,7 +35425,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
     [CategoryOrder("MooringBuoy", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class MooringBuoyViewModel : FeatureViewModel {
+    public partial class MooringBuoyViewModel : FeatureViewModel<MooringBuoy> {
         private buoyShape _buoyShape;
         [DomainModel.EnumerationAttribute(nameof(buoyShapeList))]
         [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
@@ -35593,7 +35593,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         [Browsable(false)]
         public status[] statusList => [(status)1, (status)2, (status)4, (status)5, (status)7, (status)8, (status)18];
 
-        public void Load(DomainModel.S101.FeatureTypes.MooringBuoy instance) {
+        public override void Load(DomainModel.S101.FeatureTypes.MooringBuoy instance) {
             buoyShape = instance.buoyShape;
             colour.Clear();
             if (instance.colour is not null)
@@ -35706,7 +35706,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
     [CategoryOrder("LateralBeacon", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class LateralBeaconViewModel : FeatureViewModel {
+    public partial class LateralBeaconViewModel : FeatureViewModel<LateralBeacon> {
         private beaconShape _beaconShape;
         [DomainModel.EnumerationAttribute(nameof(beaconShapeList))]
         [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
@@ -35967,7 +35967,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         [Browsable(false)]
         public visualProminence[] visualProminenceList => [(visualProminence)1, (visualProminence)2, (visualProminence)3];
 
-        public void Load(DomainModel.S101.FeatureTypes.LateralBeacon instance) {
+        public override void Load(DomainModel.S101.FeatureTypes.LateralBeacon instance) {
             beaconShape = instance.beaconShape;
             categoryOfLateralMark = instance.categoryOfLateralMark;
             colour.Clear();
@@ -36103,7 +36103,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
     [CategoryOrder("CardinalBeacon", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class CardinalBeaconViewModel : FeatureViewModel {
+    public partial class CardinalBeaconViewModel : FeatureViewModel<CardinalBeacon> {
         private beaconShape _beaconShape;
         [DomainModel.EnumerationAttribute(nameof(beaconShapeList))]
         [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
@@ -36364,7 +36364,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         [Browsable(false)]
         public visualProminence[] visualProminenceList => [(visualProminence)1, (visualProminence)2, (visualProminence)3];
 
-        public void Load(DomainModel.S101.FeatureTypes.CardinalBeacon instance) {
+        public override void Load(DomainModel.S101.FeatureTypes.CardinalBeacon instance) {
             beaconShape = instance.beaconShape;
             categoryOfCardinalMark = instance.categoryOfCardinalMark;
             colour.Clear();
@@ -36500,7 +36500,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
     [CategoryOrder("IsolatedDangerBeacon", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class IsolatedDangerBeaconViewModel : FeatureViewModel {
+    public partial class IsolatedDangerBeaconViewModel : FeatureViewModel<IsolatedDangerBeacon> {
         private beaconShape _beaconShape;
         [DomainModel.EnumerationAttribute(nameof(beaconShapeList))]
         [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
@@ -36744,7 +36744,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         [Browsable(false)]
         public visualProminence[] visualProminenceList => [(visualProminence)1, (visualProminence)2, (visualProminence)3];
 
-        public void Load(DomainModel.S101.FeatureTypes.IsolatedDangerBeacon instance) {
+        public override void Load(DomainModel.S101.FeatureTypes.IsolatedDangerBeacon instance) {
             beaconShape = instance.beaconShape;
             colour.Clear();
             if (instance.colour is not null)
@@ -36877,7 +36877,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
     [CategoryOrder("SafeWaterBeacon", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class SafeWaterBeaconViewModel : FeatureViewModel {
+    public partial class SafeWaterBeaconViewModel : FeatureViewModel<SafeWaterBeacon> {
         private beaconShape _beaconShape;
         [DomainModel.EnumerationAttribute(nameof(beaconShapeList))]
         [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
@@ -37121,7 +37121,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         [Browsable(false)]
         public visualProminence[] visualProminenceList => [(visualProminence)1, (visualProminence)2, (visualProminence)3];
 
-        public void Load(DomainModel.S101.FeatureTypes.SafeWaterBeacon instance) {
+        public override void Load(DomainModel.S101.FeatureTypes.SafeWaterBeacon instance) {
             beaconShape = instance.beaconShape;
             colour.Clear();
             if (instance.colour is not null)
@@ -37254,7 +37254,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
     [CategoryOrder("SpecialPurposeGeneralBeacon", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class SpecialPurposeGeneralBeaconViewModel : FeatureViewModel {
+    public partial class SpecialPurposeGeneralBeaconViewModel : FeatureViewModel<SpecialPurposeGeneralBeacon> {
         private beaconShape _beaconShape;
         [DomainModel.EnumerationAttribute(nameof(beaconShapeList))]
         [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
@@ -37506,7 +37506,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         [Browsable(false)]
         public visualProminence[] visualProminenceList => [(visualProminence)1, (visualProminence)2, (visualProminence)3];
 
-        public void Load(DomainModel.S101.FeatureTypes.SpecialPurposeGeneralBeacon instance) {
+        public override void Load(DomainModel.S101.FeatureTypes.SpecialPurposeGeneralBeacon instance) {
             beaconShape = instance.beaconShape;
             categoryOfSpecialPurposeMark.Clear();
             if (instance.categoryOfSpecialPurposeMark is not null)
@@ -37648,7 +37648,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
     [CategoryOrder("Daymark", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class DaymarkViewModel : FeatureViewModel {
+    public partial class DaymarkViewModel : FeatureViewModel<Daymark> {
         [DomainModel.EnumerationAttribute(nameof(categoryOfSpecialPurposeMarkList))]
         [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("Daymark")]
@@ -37827,7 +37827,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         [Browsable(false)]
         public topmarkDaymarkShape[] topmarkDaymarkShapeList => [(topmarkDaymarkShape)1, (topmarkDaymarkShape)2, (topmarkDaymarkShape)3, (topmarkDaymarkShape)4, (topmarkDaymarkShape)5, (topmarkDaymarkShape)6, (topmarkDaymarkShape)7, (topmarkDaymarkShape)8, (topmarkDaymarkShape)9, (topmarkDaymarkShape)10, (topmarkDaymarkShape)11, (topmarkDaymarkShape)12, (topmarkDaymarkShape)13, (topmarkDaymarkShape)14, (topmarkDaymarkShape)15, (topmarkDaymarkShape)16, (topmarkDaymarkShape)17, (topmarkDaymarkShape)18, (topmarkDaymarkShape)19, (topmarkDaymarkShape)20, (topmarkDaymarkShape)21, (topmarkDaymarkShape)22, (topmarkDaymarkShape)23, (topmarkDaymarkShape)24, (topmarkDaymarkShape)25, (topmarkDaymarkShape)26, (topmarkDaymarkShape)27, (topmarkDaymarkShape)28, (topmarkDaymarkShape)29, (topmarkDaymarkShape)30, (topmarkDaymarkShape)31, (topmarkDaymarkShape)32, (topmarkDaymarkShape)33];
 
-        public void Load(DomainModel.S101.FeatureTypes.Daymark instance) {
+        public override void Load(DomainModel.S101.FeatureTypes.Daymark instance) {
             categoryOfSpecialPurposeMark.Clear();
             if (instance.categoryOfSpecialPurposeMark is not null)
                 foreach (var e in instance.categoryOfSpecialPurposeMark)
@@ -37958,7 +37958,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
     [CategoryOrder("LightFloat", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class LightFloatViewModel : FeatureViewModel {
+    public partial class LightFloatViewModel : FeatureViewModel<LightFloat> {
         [DomainModel.EnumerationAttribute(nameof(colourList))]
         [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("LightFloat")]
@@ -38139,7 +38139,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         [Browsable(false)]
         public visualProminence[] visualProminenceList => [(visualProminence)1, (visualProminence)2, (visualProminence)3];
 
-        public void Load(DomainModel.S101.FeatureTypes.LightFloat instance) {
+        public override void Load(DomainModel.S101.FeatureTypes.LightFloat instance) {
             colour.Clear();
             if (instance.colour is not null)
                 foreach (var e in instance.colour)
@@ -38260,7 +38260,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
     [CategoryOrder("LightVessel", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class LightVesselViewModel : FeatureViewModel {
+    public partial class LightVesselViewModel : FeatureViewModel<LightVessel> {
         [DomainModel.EnumerationAttribute(nameof(colourList))]
         [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("LightVessel")]
@@ -38428,7 +38428,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         [Browsable(false)]
         public visualProminence[] visualProminenceList => [(visualProminence)1, (visualProminence)2, (visualProminence)3];
 
-        public void Load(DomainModel.S101.FeatureTypes.LightVessel instance) {
+        public override void Load(DomainModel.S101.FeatureTypes.LightVessel instance) {
             colour.Clear();
             if (instance.colour is not null)
                 foreach (var e in instance.colour)
@@ -38541,7 +38541,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
     [CategoryOrder("Retroreflector", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class RetroreflectorViewModel : FeatureViewModel {
+    public partial class RetroreflectorViewModel : FeatureViewModel<Retroreflector> {
         [DomainModel.EnumerationAttribute(nameof(colourList))]
         [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("Retroreflector")]
@@ -38632,7 +38632,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         [Browsable(false)]
         public status[] statusList => [(status)1, (status)4, (status)8];
 
-        public void Load(DomainModel.S101.FeatureTypes.Retroreflector instance) {
+        public override void Load(DomainModel.S101.FeatureTypes.Retroreflector instance) {
             colour.Clear();
             if (instance.colour is not null)
                 foreach (var e in instance.colour)
@@ -38712,7 +38712,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
     [CategoryOrder("RadarReflector", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class RadarReflectorViewModel : FeatureViewModel {
+    public partial class RadarReflectorViewModel : FeatureViewModel<RadarReflector> {
         private fixedDateRangeViewModel? _fixedDateRange;
         [Category("RadarReflector")]
         [Xceed.Wpf.Toolkit.PropertyGrid.Attributes.ExpandableObject]
@@ -38778,7 +38778,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         [Browsable(false)]
         public status[] statusList => [(status)1, (status)4, (status)8];
 
-        public void Load(DomainModel.S101.FeatureTypes.RadarReflector instance) {
+        public override void Load(DomainModel.S101.FeatureTypes.RadarReflector instance) {
             fixedDateRange = new();
             if (instance.fixedDateRange != null) {
                 fixedDateRange = new();
@@ -38846,7 +38846,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
     [CategoryOrder("FogSignal", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class FogSignalViewModel : FeatureViewModel {
+    public partial class FogSignalViewModel : FeatureViewModel<FogSignal> {
         private categoryOfFogSignal _categoryOfFogSignal;
         [DomainModel.EnumerationAttribute(nameof(categoryOfFogSignalList))]
         [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
@@ -38988,7 +38988,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         [Browsable(false)]
         public status[] statusList => [(status)1, (status)2, (status)4, (status)5, (status)7, (status)8, (status)15];
 
-        public void Load(DomainModel.S101.FeatureTypes.FogSignal instance) {
+        public override void Load(DomainModel.S101.FeatureTypes.FogSignal instance) {
             categoryOfFogSignal = instance.categoryOfFogSignal;
             featureName.Clear();
             if (instance.featureName is not null)
@@ -39089,7 +39089,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
     [CategoryOrder("PhysicalAISAidToNavigation", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class PhysicalAISAidToNavigationViewModel : FeatureViewModel {
+    public partial class PhysicalAISAidToNavigationViewModel : FeatureViewModel<PhysicalAISAidToNavigation> {
         private Decimal? _estimatedRangeOfTransmission = default;
         [Category("PhysicalAISAidToNavigation")]
         public Decimal? estimatedRangeOfTransmission {
@@ -39179,7 +39179,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         [Browsable(false)]
         public status[] statusList => [(status)1, (status)5, (status)7];
 
-        public void Load(DomainModel.S101.FeatureTypes.PhysicalAISAidToNavigation instance) {
+        public override void Load(DomainModel.S101.FeatureTypes.PhysicalAISAidToNavigation instance) {
             estimatedRangeOfTransmission = instance.estimatedRangeOfTransmission;
             featureName.Clear();
             if (instance.featureName is not null)
@@ -39253,7 +39253,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
     [CategoryOrder("VirtualAISAidToNavigation", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class VirtualAISAidToNavigationViewModel : FeatureViewModel {
+    public partial class VirtualAISAidToNavigationViewModel : FeatureViewModel<VirtualAISAidToNavigation> {
         private Decimal? _estimatedRangeOfTransmission = default;
         [Category("VirtualAISAidToNavigation")]
         public Decimal? estimatedRangeOfTransmission {
@@ -39360,7 +39360,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         [Browsable(false)]
         public virtualAISAidToNavigationType[] virtualAISAidToNavigationTypeList => [(virtualAISAidToNavigationType)1, (virtualAISAidToNavigationType)2, (virtualAISAidToNavigationType)3, (virtualAISAidToNavigationType)4, (virtualAISAidToNavigationType)5, (virtualAISAidToNavigationType)6, (virtualAISAidToNavigationType)7, (virtualAISAidToNavigationType)8, (virtualAISAidToNavigationType)9, (virtualAISAidToNavigationType)10, (virtualAISAidToNavigationType)11, (virtualAISAidToNavigationType)12];
 
-        public void Load(DomainModel.S101.FeatureTypes.VirtualAISAidToNavigation instance) {
+        public override void Load(DomainModel.S101.FeatureTypes.VirtualAISAidToNavigation instance) {
             estimatedRangeOfTransmission = instance.estimatedRangeOfTransmission;
             featureName.Clear();
             if (instance.featureName is not null)
@@ -39437,7 +39437,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
     [CategoryOrder("RadioStation", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class RadioStationViewModel : FeatureViewModel {
+    public partial class RadioStationViewModel : FeatureViewModel<RadioStation> {
         private String _callSign = string.Empty;
         [Category("RadioStation")]
         public String callSign {
@@ -39542,7 +39542,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         [Browsable(false)]
         public status[] statusList => [(status)1, (status)2, (status)4, (status)5, (status)7, (status)8];
 
-        public void Load(DomainModel.S101.FeatureTypes.RadioStation instance) {
+        public override void Load(DomainModel.S101.FeatureTypes.RadioStation instance) {
             callSign = instance.callSign;
             categoryOfRadioStation.Clear();
             if (instance.categoryOfRadioStation is not null)
@@ -39648,7 +39648,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
     [CategoryOrder("RadarTransponderBeacon", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class RadarTransponderBeaconViewModel : FeatureViewModel {
+    public partial class RadarTransponderBeaconViewModel : FeatureViewModel<RadarTransponderBeacon> {
         private categoryOfRadarTransponderBeacon _categoryOfRadarTransponderBeacon;
         [DomainModel.EnumerationAttribute(nameof(categoryOfRadarTransponderBeaconList))]
         [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
@@ -39765,7 +39765,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         [Browsable(false)]
         public status[] statusList => [(status)1, (status)2, (status)4, (status)5, (status)7, (status)8];
 
-        public void Load(DomainModel.S101.FeatureTypes.RadarTransponderBeacon instance) {
+        public override void Load(DomainModel.S101.FeatureTypes.RadarTransponderBeacon instance) {
             categoryOfRadarTransponderBeacon = instance.categoryOfRadarTransponderBeacon;
             featureName.Clear();
             if (instance.featureName is not null)
@@ -39874,7 +39874,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
     [CategoryOrder("PilotBoardingPlace", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class PilotBoardingPlaceViewModel : FeatureViewModel {
+    public partial class PilotBoardingPlaceViewModel : FeatureViewModel<PilotBoardingPlace> {
         private categoryOfPilotBoardingPlace? _categoryOfPilotBoardingPlace = default;
         [DomainModel.EnumerationAttribute(nameof(categoryOfPilotBoardingPlaceList))]
         [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
@@ -39979,7 +39979,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         [Browsable(false)]
         public status[] statusList => [(status)1, (status)2, (status)5, (status)6, (status)9, (status)16, (status)17, (status)28];
 
-        public void Load(DomainModel.S101.FeatureTypes.PilotBoardingPlace instance) {
+        public override void Load(DomainModel.S101.FeatureTypes.PilotBoardingPlace instance) {
             categoryOfPilotBoardingPlace = instance.categoryOfPilotBoardingPlace;
             categoryOfPreference = instance.categoryOfPreference;
             communicationChannel.Clear();
@@ -40086,7 +40086,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
     [CategoryOrder("VesselTrafficServiceArea", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class VesselTrafficServiceAreaViewModel : FeatureViewModel {
+    public partial class VesselTrafficServiceAreaViewModel : FeatureViewModel<VesselTrafficServiceArea> {
         [Category("VesselTrafficServiceArea")]
         public ObservableCollection<featureName> featureName { get; set; } = new();
 
@@ -40119,7 +40119,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         public override informationBindingDefinition[] informationBindingDefinitions => VesselTrafficServiceArea.informationBindingDefinitions;
         public override featureBindingDefinition[] featureBindingDefinitions => VesselTrafficServiceArea.featureBindingDefinitions;
 
-        public void Load(DomainModel.S101.FeatureTypes.VesselTrafficServiceArea instance) {
+        public override void Load(DomainModel.S101.FeatureTypes.VesselTrafficServiceArea instance) {
             featureName.Clear();
             if (instance.featureName is not null)
                 foreach (var e in instance.featureName)
@@ -40167,7 +40167,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
     [CategoryOrder("CoastGuardStation", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class CoastGuardStationViewModel : FeatureViewModel {
+    public partial class CoastGuardStationViewModel : FeatureViewModel<CoastGuardStation> {
         [Category("CoastGuardStation")]
         public ObservableCollection<String> communicationChannel { get; set; } = new();
 
@@ -40239,7 +40239,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         [Browsable(false)]
         public status[] statusList => [(status)1, (status)4, (status)5, (status)16, (status)17];
 
-        public void Load(DomainModel.S101.FeatureTypes.CoastGuardStation instance) {
+        public override void Load(DomainModel.S101.FeatureTypes.CoastGuardStation instance) {
             communicationChannel.Clear();
             if (instance.communicationChannel is not null)
                 foreach (var e in instance.communicationChannel)
@@ -40325,7 +40325,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
     [CategoryOrder("SignalStationWarning", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class SignalStationWarningViewModel : FeatureViewModel {
+    public partial class SignalStationWarningViewModel : FeatureViewModel<SignalStationWarning> {
         [DomainModel.EnumerationAttribute(nameof(categoryOfSignalStationWarningList))]
         [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("SignalStationWarning")]
@@ -40393,7 +40393,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         [Browsable(false)]
         public status[] statusList => [(status)1, (status)2, (status)4, (status)5, (status)7, (status)8, (status)12, (status)14, (status)15, (status)16, (status)17];
 
-        public void Load(DomainModel.S101.FeatureTypes.SignalStationWarning instance) {
+        public override void Load(DomainModel.S101.FeatureTypes.SignalStationWarning instance) {
             categoryOfSignalStationWarning.Clear();
             if (instance.categoryOfSignalStationWarning is not null)
                 foreach (var e in instance.categoryOfSignalStationWarning)
@@ -40485,7 +40485,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
     [CategoryOrder("SignalStationTraffic", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class SignalStationTrafficViewModel : FeatureViewModel {
+    public partial class SignalStationTrafficViewModel : FeatureViewModel<SignalStationTraffic> {
         [DomainModel.EnumerationAttribute(nameof(categoryOfSignalStationTrafficList))]
         [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("SignalStationTraffic")]
@@ -40553,7 +40553,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         [Browsable(false)]
         public status[] statusList => [(status)1, (status)2, (status)4, (status)5, (status)7, (status)8, (status)12, (status)14, (status)15, (status)16, (status)17];
 
-        public void Load(DomainModel.S101.FeatureTypes.SignalStationTraffic instance) {
+        public override void Load(DomainModel.S101.FeatureTypes.SignalStationTraffic instance) {
             categoryOfSignalStationTraffic.Clear();
             if (instance.categoryOfSignalStationTraffic is not null)
                 foreach (var e in instance.categoryOfSignalStationTraffic)
@@ -40645,7 +40645,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
     [CategoryOrder("RescueStation", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class RescueStationViewModel : FeatureViewModel {
+    public partial class RescueStationViewModel : FeatureViewModel<RescueStation> {
         [DomainModel.EnumerationAttribute(nameof(categoryOfRescueStationList))]
         [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("RescueStation")]
@@ -40713,7 +40713,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         [Browsable(false)]
         public status[] statusList => [(status)1, (status)2, (status)4, (status)5, (status)7, (status)8, (status)14, (status)16, (status)17];
 
-        public void Load(DomainModel.S101.FeatureTypes.RescueStation instance) {
+        public override void Load(DomainModel.S101.FeatureTypes.RescueStation instance) {
             categoryOfRescueStation.Clear();
             if (instance.categoryOfRescueStation is not null)
                 foreach (var e in instance.categoryOfRescueStation)
@@ -40805,7 +40805,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
     [CategoryOrder("HarbourFacility", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class HarbourFacilityViewModel : FeatureViewModel {
+    public partial class HarbourFacilityViewModel : FeatureViewModel<HarbourFacility> {
         [DomainModel.EnumerationAttribute(nameof(categoryOfHarbourFacilityList))]
         [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("HarbourFacility")]
@@ -40951,7 +40951,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         [Browsable(false)]
         public status[] statusList => [(status)1, (status)4, (status)5, (status)6, (status)7, (status)8, (status)9, (status)12, (status)13, (status)14, (status)16, (status)17];
 
-        public void Load(DomainModel.S101.FeatureTypes.HarbourFacility instance) {
+        public override void Load(DomainModel.S101.FeatureTypes.HarbourFacility instance) {
             categoryOfHarbourFacility.Clear();
             if (instance.categoryOfHarbourFacility is not null)
                 foreach (var e in instance.categoryOfHarbourFacility)
@@ -41082,7 +41082,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
     [CategoryOrder("SmallCraftFacility", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class SmallCraftFacilityViewModel : FeatureViewModel {
+    public partial class SmallCraftFacilityViewModel : FeatureViewModel<SmallCraftFacility> {
         [DomainModel.EnumerationAttribute(nameof(categoryOfSmallCraftFacilityList))]
         [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("SmallCraftFacility")]
@@ -41147,7 +41147,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         [Browsable(false)]
         public status[] statusList => [(status)1, (status)2, (status)3, (status)4, (status)5, (status)6, (status)7, (status)8, (status)9, (status)12, (status)14, (status)16, (status)17];
 
-        public void Load(DomainModel.S101.FeatureTypes.SmallCraftFacility instance) {
+        public override void Load(DomainModel.S101.FeatureTypes.SmallCraftFacility instance) {
             categoryOfSmallCraftFacility.Clear();
             if (instance.categoryOfSmallCraftFacility is not null)
                 foreach (var e in instance.categoryOfSmallCraftFacility)
@@ -41225,7 +41225,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
     [CategoryOrder("TextPlacement", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class TextPlacementViewModel : FeatureViewModel {
+    public partial class TextPlacementViewModel : FeatureViewModel<TextPlacement> {
         private Int32 _textOffsetBearing;
         [Category("TextPlacement")]
         public Int32 textOffsetBearing {
@@ -41285,7 +41285,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         [Browsable(false)]
         public textType[] textTypeList => [(textType)1, (textType)2];
 
-        public void Load(DomainModel.S101.FeatureTypes.TextPlacement instance) {
+        public override void Load(DomainModel.S101.FeatureTypes.TextPlacement instance) {
             textOffsetBearing = instance.textOffsetBearing;
             textOffsetDistance = instance.textOffsetDistance;
             textRotation = instance.textRotation;
@@ -41330,7 +41330,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
     [CategoryOrder("Chart1Feature", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class Chart1FeatureViewModel : FeatureViewModel {
+    public partial class Chart1FeatureViewModel : FeatureViewModel<Chart1Feature> {
         [Category("Chart1Feature")]
         public ObservableCollection<String> drawingInstruction { get; set; } = new();
 
@@ -41339,7 +41339,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         public override informationBindingDefinition[] informationBindingDefinitions => Chart1Feature.informationBindingDefinitions;
         public override featureBindingDefinition[] featureBindingDefinitions => Chart1Feature.featureBindingDefinitions;
 
-        public void Load(DomainModel.S101.FeatureTypes.Chart1Feature instance) {
+        public override void Load(DomainModel.S101.FeatureTypes.Chart1Feature instance) {
             drawingInstruction.Clear();
             if (instance.drawingInstruction is not null)
                 foreach (var e in instance.drawingInstruction)

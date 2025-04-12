@@ -69,19 +69,28 @@ namespace S100Framework.WPF.ViewModel
 
     public abstract class InformationViewModel : ViewModelBase
     {
+        public string? PID { get; set; } = default;
+
         public abstract informationBindingDefinition[] informationBindingDefinitions { get; }
     }
 
     public abstract class FeatureViewModel : ViewModelBase
     {
+        public string? PID { get; set; } = default;
+
         public abstract informationBindingDefinition[] informationBindingDefinitions { get; }
 
         public abstract featureBindingDefinition[] featureBindingDefinitions { get; }
     }
 
-    public abstract class ViewModelBase<T> : ViewModelBase
+    public abstract class InformationViewModel<TInformationType> : InformationViewModel where TInformationType : InformationNode
     {
-        public abstract void Load(T instance);
+        public abstract void Load(TInformationType instance);
+    }
+
+    public abstract class FeatureViewModel<TFeatureType> : FeatureViewModel where TFeatureType : FeatureNode
+    {
+        public abstract void Load(TFeatureType instance);
     }
 
     public abstract class AssociationViewModel : ViewModelBase
