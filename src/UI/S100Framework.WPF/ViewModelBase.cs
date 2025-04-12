@@ -17,6 +17,11 @@ namespace S100Framework.WPF.ViewModel
         public static Func<FeatureRefIdViewModel?, Task<string[]>> GetFeaturesRefId { get; set; } = (e) => { return Task.FromResult(Array.Empty<string>()); };
     }
 
+    public interface IPID
+    {
+        public string? PID { get; }
+    }
+
     public abstract class ViewModelBase : INotifyPropertyChanged, IDisposable
     {
         public event PropertyChangedEventHandler? PropertyChanged;
@@ -66,7 +71,7 @@ namespace S100Framework.WPF.ViewModel
         }
     }
 
-    public abstract class AssociationViewModel : ViewModelBase
+    public abstract class AssociationViewModel : ViewModelBase, IPID
     {
         public string? PID { get; set; } = default;
         //[PropertyOrder(0)]
@@ -83,14 +88,14 @@ namespace S100Framework.WPF.ViewModel
         public abstract void Load(S100Framework.DomainModel.FeatureAssociation featureAssociation);
     }
 
-    public abstract class InformationViewModel : ViewModelBase
+    public abstract class InformationViewModel : ViewModelBase, IPID
     {
         public string? PID { get; set; } = default;
 
         public abstract informationBindingDefinition[] informationBindingDefinitions { get; }
     }
 
-    public abstract class FeatureViewModel : ViewModelBase
+    public abstract class FeatureViewModel : ViewModelBase, IPID
     {
         public string? PID { get; set; } = default;
 
@@ -243,15 +248,15 @@ namespace S100Framework.WPF.ViewModel
             }
         }
 
-        private String? _foreignId = string.Empty;
+        private String? _pid = string.Empty;
 
-        public String? foreignId {
+        public String? PID {
             get {
-                return _foreignId;
+                return _pid;
             }
 
             set {
-                SetValue(ref _foreignId, value);
+                SetValue(ref _pid, value);
 
 
             }
@@ -261,7 +266,7 @@ namespace S100Framework.WPF.ViewModel
             _informationBindingDefintion = binding;
             _associationId = binding.associationId;
             _informationId = binding.informationId;
-            _foreignId = binding.foreignId;
+            _pid = binding.PID;
             return this;
         }
 
@@ -341,15 +346,15 @@ namespace S100Framework.WPF.ViewModel
             }
         }
 
-        private String? _foreignId = string.Empty;
+        private String? _pid = string.Empty;
 
-        public String? foreignId {
+        public String? PID {
             get {
-                return _foreignId;
+                return _pid;
             }
 
             set {
-                SetValue(ref _foreignId, value);
+                SetValue(ref _pid, value);
             }
         }
 
@@ -358,7 +363,7 @@ namespace S100Framework.WPF.ViewModel
             _featureBindingDefintion = binding;
             _associationId = binding.associationId;
             _featureId = binding.featureId;
-            _foreignId = binding.foreignId;
+            _pid = binding.PID;
             return this;
         }
 

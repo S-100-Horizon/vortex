@@ -1260,7 +1260,7 @@ namespace S100Framework
             common.AppendLine("\t\tpublic string role { get; set; } = string.Empty;");
             common.AppendLine("\t\tpublic string? associationId { get; set; } = null;");
             common.AppendLine("\t\tpublic string? informationId { get; set; } = null;");
-            common.AppendLine("\t\tpublic string? foreignId { get; set; } = null;");
+            common.AppendLine("\t\tpublic string? PID { get; set; } = null;");
             common.AppendLine("\t}");
 
             common.AppendLine("\tpublic class informationBindingDefinition {");
@@ -1280,7 +1280,7 @@ namespace S100Framework
             common.AppendLine("\t\tpublic string role { get; set; } = string.Empty;");
             common.AppendLine("\t\tpublic string? associationId { get; set; } = null;");
             common.AppendLine("\t\tpublic string? featureId { get; set; } = null;");
-            common.AppendLine("\t\tpublic string? foreignId { get; set; } = null;");
+            common.AppendLine("\t\tpublic string? PID { get; set; } = null;");
             common.AppendLine("\t\t}");
 
             common.AppendLine("\tpublic class featureBindingDefinition {");
@@ -2086,7 +2086,7 @@ namespace S100Framework.DomainModel
 
         public string? associationId { get; set; } = null;
         public string? informationId { get; set; } = null;
-        public string? foreignId { get; set; } = null;
+        public string? PID { get; set; } = null;
     }
 
     public class informationBindingDefinition
@@ -2109,7 +2109,7 @@ namespace S100Framework.DomainModel
 
         public string? associationId { get; set; } = null;
         public string? featureId { get; set; } = null;
-        public string? foreignId { get; set; } = null;
+        public string? PID { get; set; } = null;
     }
 
     public class featureBindingDefinition

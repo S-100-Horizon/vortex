@@ -135,6 +135,9 @@ namespace VortexConceptApplication
             this.CollectionChanged?.Invoke(this.FeatureBindings, e);
         }
 
+        public InformationViewModel? InformationViewModel => this.SelectedObject as InformationViewModel;
+
+        public FeatureViewModel? FeatureViewModel => this.SelectedObject as FeatureViewModel;
 
 
         public S100AttributeEditorViewModel(InformationNode informationNode, InformationViewModel selectedObject) : this(informationNode.Code, selectedObject) {
@@ -512,13 +515,13 @@ namespace VortexConceptApplication
         private void AddInformationBindingCommandContent(object sender, ExecutedRoutedEventArgs e) {
             if (InformationBindingDefinitionSelected != null) {
                 var binding = new informationBinding {
-                    roleType = Enum.GetName<roleType>(InformationBindingDefinitionSelected.roleType),
+                    roleType = Enum.GetName<roleType>(InformationBindingDefinitionSelected.roleType)!,
                     association = InformationBindingDefinitionSelected.association,
                     role = InformationBindingDefinitionSelected.role,
+                    PID = this.ViewModel.InformationViewModel?.PID,
                 };
 
                 ViewModel.InformationBindings.Add(new InformationBindingViewModel {
-                    // foreeignId = ME
                 }.Load(binding));
             }
         }
@@ -591,13 +594,13 @@ namespace VortexConceptApplication
         private void AddFeatureBindingCommandContent(object sender, ExecutedRoutedEventArgs e) {
             if (FeatureBindingDefinitionSelected != null) {
                 var binding = new featureBinding {
-                    roleType = Enum.GetName<roleType>(FeatureBindingDefinitionSelected.roleType),
+                    roleType = Enum.GetName<roleType>(FeatureBindingDefinitionSelected.roleType)!,
                     association = FeatureBindingDefinitionSelected.association,
                     role = FeatureBindingDefinitionSelected.role,
+                    PID = this.ViewModel.FeatureViewModel?.PID,
                 };
 
-                ViewModel.FeatureBindings.Add(new FeatureBindingViewModel {
-                    // foreeignId = ME
+                ViewModel.FeatureBindings.Add(new FeatureBindingViewModel {                    
                 }.Load(binding));
             }
         }

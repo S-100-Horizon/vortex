@@ -95,7 +95,7 @@ namespace S100Framework.DomainModel
         public string role { get; set; } = string.Empty;
         public string? associationId { get; set; } = null;
         public string? informationId { get; set; } = null;
-        public string? foreignId { get; set; } = null;
+        public string? PID { get; set; } = null;
     }
 
     public class informationBindingDefinition
@@ -118,7 +118,7 @@ namespace S100Framework.DomainModel
         public string role { get; set; } = string.Empty;
         public string? associationId { get; set; } = null;
         public string? featureId { get; set; } = null;
-        public string? foreignId { get; set; } = null;
+        public string? PID { get; set; } = null;
     }
 
     public class featureBindingDefinition
