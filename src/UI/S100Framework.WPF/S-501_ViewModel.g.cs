@@ -15,282 +15,386 @@ using Xceed.Wpf.Toolkit.PropertyGrid.Attributes;
 #nullable enable
 namespace S100Framework.WPF.ViewModel.S501 {
     internal static class Bootstrap {
-        public static bool Exist(string type) => _creators.ContainsKey(type);
-        public static ViewModelBase Create(string type) => _creators[type]();
-        private static ImmutableDictionary<string, Func<ViewModelBase>> _creators => ImmutableDictionary.Create<string, Func<ViewModelBase>>().AddRange(new Dictionary<string, Func<ViewModelBase>> { { "ReferenceToAPublication", () =>
-        {
-            return new ReferenceToAPublicationViewModel();
-        } }, { "InstallationBuoy", () =>
-        {
-            return new InstallationBuoyViewModel();
-        } }, { "DepthArea", () =>
-        {
-            return new DepthAreaViewModel();
-        } }, { "RadioCallingInPoint", () =>
-        {
-            return new RadioCallingInPointViewModel();
-        } }, { "PatrolArea", () =>
-        {
-            return new PatrolAreaViewModel();
-        } }, { "Checkpoint", () =>
-        {
-            return new CheckpointViewModel();
-        } }, { "MarineManagementArea", () =>
-        {
-            return new MarineManagementAreaViewModel();
-        } }, { "DepthContour", () =>
-        {
-            return new DepthContourViewModel();
-        } }, { "EnvironmentallySensitiveSeaArea", () =>
-        {
-            return new EnvironmentallySensitiveSeaAreaViewModel();
-        } }, { "Road", () =>
-        {
-            return new RoadViewModel();
-        } }, { "River", () =>
-        {
-            return new RiverViewModel();
-        } }, { "MilitaryPracticeArea", () =>
-        {
-            return new MilitaryPracticeAreaViewModel();
-        } }, { "DiscolouredWater", () =>
-        {
-            return new DiscolouredWaterViewModel();
-        } }, { "CardinalBuoy", () =>
-        {
-            return new CardinalBuoyViewModel();
-        } }, { "SafeWaterBuoy", () =>
-        {
-            return new SafeWaterBuoyViewModel();
-        } }, { "RadioStation", () =>
-        {
-            return new RadioStationViewModel();
-        } }, { "MilitaryExerciseAirspace", () =>
-        {
-            return new MilitaryExerciseAirspaceViewModel();
-        } }, { "ContiguousZone", () =>
-        {
-            return new ContiguousZoneViewModel();
-        } }, { "NormalBaseline", () =>
-        {
-            return new NormalBaselineViewModel();
-        } }, { "CableArea", () =>
-        {
-            return new CableAreaViewModel();
-        } }, { "ContinentalShelfArea", () =>
-        {
-            return new ContinentalShelfAreaViewModel();
-        } }, { "InternalWaters", () =>
-        {
-            return new InternalWatersViewModel();
-        } }, { "AdministrationArea", () =>
-        {
-            return new AdministrationAreaViewModel();
-        } }, { "Bollard", () =>
-        {
-            return new BollardViewModel();
-        } }, { "Dolphin", () =>
-        {
-            return new DolphinViewModel();
-        } }, { "RadarRange", () =>
-        {
-            return new RadarRangeViewModel();
-        } }, { "IsolatedDangerBeacon", () =>
-        {
-            return new IsolatedDangerBeaconViewModel();
-        } }, { "IsolatedDangerBuoy", () =>
-        {
-            return new IsolatedDangerBuoyViewModel();
-        } }, { "SubmarineTransitLane", () =>
-        {
-            return new SubmarineTransitLaneViewModel();
-        } }, { "MaritimeSafetyInformationArea", () =>
-        {
-            return new MaritimeSafetyInformationAreaViewModel();
-        } }, { "AirspaceRestriction", () =>
-        {
-            return new AirspaceRestrictionViewModel();
-        } }, { "Sounding", () =>
-        {
-            return new SoundingViewModel();
-        } }, { "TrafficSeparationSchemeBoundary", () =>
-        {
-            return new TrafficSeparationSchemeBoundaryViewModel();
-        } }, { "DumpingGround", () =>
-        {
-            return new DumpingGroundViewModel();
-        } }, { "AirportAirfield", () =>
-        {
-            return new AirportAirfieldViewModel();
-        } }, { "FoulGround", () =>
-        {
-            return new FoulGroundViewModel();
-        } }, { "LightAirObstruction", () =>
-        {
-            return new LightAirObstructionViewModel();
-        } }, { "MooringBuoy", () =>
-        {
-            return new MooringBuoyViewModel();
-        } }, { "UnderwaterAwashRock", () =>
-        {
-            return new UnderwaterAwashRockViewModel();
-        } }, { "CableOverhead", () =>
-        {
-            return new CableOverheadViewModel();
-        } }, { "ControlledAirspace", () =>
-        {
-            return new ControlledAirspaceViewModel();
-        } }, { "Obstruction", () =>
-        {
-            return new ObstructionViewModel();
-        } }, { "FishingGround", () =>
-        {
-            return new FishingGroundViewModel();
-        } }, { "FishingFacility", () =>
-        {
-            return new FishingFacilityViewModel();
-        } }, { "NavigationSystem", () =>
-        {
-            return new NavigationSystemViewModel();
-        } }, { "TrafficSeparationSchemeCrossing", () =>
-        {
-            return new TrafficSeparationSchemeCrossingViewModel();
-        } }, { "TrafficSeparationSchemeLanePart", () =>
-        {
-            return new TrafficSeparationSchemeLanePartViewModel();
-        } }, { "TerritorialSeaArea", () =>
-        {
-            return new TerritorialSeaAreaViewModel();
-        } }, { "LateralBeacon", () =>
-        {
-            return new LateralBeaconViewModel();
-        } }, { "CoastGuardStation", () =>
-        {
-            return new CoastGuardStationViewModel();
-        } }, { "SeparationZoneOrLine", () =>
-        {
-            return new SeparationZoneOrLineViewModel();
-        } }, { "BottomFeature", () =>
-        {
-            return new BottomFeatureViewModel();
-        } }, { "ArchipelagicBaseline", () =>
-        {
-            return new ArchipelagicBaselineViewModel();
-        } }, { "SmallBottomObject", () =>
-        {
-            return new SmallBottomObjectViewModel();
-        } }, { "ExclusiveEconomicZone", () =>
-        {
-            return new ExclusiveEconomicZoneViewModel();
-        } }, { "RadarStation", () =>
-        {
-            return new RadarStationViewModel();
-        } }, { "DivingLocation", () =>
-        {
-            return new DivingLocationViewModel();
-        } }, { "RestrictedArea", () =>
-        {
-            return new RestrictedAreaViewModel();
-        } }, { "CableSubmarine", () =>
-        {
-            return new CableSubmarineViewModel();
-        } }, { "Wreck", () =>
-        {
-            return new WreckViewModel();
-        } }, { "QRoute", () =>
-        {
-            return new QRouteViewModel();
-        } }, { "CompletenessOfProductSpecification", () =>
-        {
-            return new CompletenessOfProductSpecificationViewModel();
-        } }, { "RescueStation", () =>
-        {
-            return new RescueStationViewModel();
-        } }, { "CardinalBeacon", () =>
-        {
-            return new CardinalBeaconViewModel();
-        } }, { "LightVessel", () =>
-        {
-            return new LightVesselViewModel();
-        } }, { "FisheryZone", () =>
-        {
-            return new FisheryZoneViewModel();
-        } }, { "DredgedArea", () =>
-        {
-            return new DredgedAreaViewModel();
-        } }, { "FerryRoute", () =>
-        {
-            return new FerryRouteViewModel();
-        } }, { "ShorelineConstruction", () =>
-        {
-            return new ShorelineConstructionViewModel();
-        } }, { "CautionArea", () =>
-        {
-            return new CautionAreaViewModel();
-        } }, { "DeepWaterRoutePart", () =>
-        {
-            return new DeepWaterRoutePartViewModel();
-        } }, { "CurrentNonGravitational", () =>
-        {
-            return new CurrentNonGravitationalViewModel();
-        } }, { "DataCoverage", () =>
-        {
-            return new DataCoverageViewModel();
-        } }, { "SeabedArea", () =>
-        {
-            return new SeabedAreaViewModel();
-        } }, { "SpecialPurposeGeneralBuoy", () =>
-        {
-            return new SpecialPurposeGeneralBuoyViewModel();
-        } }, { "LightSectored", () =>
-        {
-            return new LightSectoredViewModel();
-        } }, { "IceLine", () =>
-        {
-            return new IceLineViewModel();
-        } }, { "AnchorageArea", () =>
-        {
-            return new AnchorageAreaViewModel();
-        } }, { "LateralBuoy", () =>
-        {
-            return new LateralBuoyViewModel();
-        } }, { "TrafficSeparationSchemeRoundabout", () =>
-        {
-            return new TrafficSeparationSchemeRoundaboutViewModel();
-        } }, { "DeepWaterRouteCentreline", () =>
-        {
-            return new DeepWaterRouteCentrelineViewModel();
-        } }, { "LightFloat", () =>
-        {
-            return new LightFloatViewModel();
-        } }, { "LightAllAround", () =>
-        {
-            return new LightAllAroundViewModel();
-        } }, { "Coastline", () =>
-        {
-            return new CoastlineViewModel();
-        } }, { "SeaAreaNamedWaterArea", () =>
-        {
-            return new SeaAreaNamedWaterAreaViewModel();
-        } }, { "DropZone", () =>
-        {
-            return new DropZoneViewModel();
-        } }, { "Conveyor", () =>
-        {
-            return new ConveyorViewModel();
-        } }, { "LineOfDelimitation", () =>
-        {
-            return new LineOfDelimitationViewModel();
-        } }, { "StraightTerritorialSeaBaseline", () =>
-        {
-            return new StraightTerritorialSeaBaselineViewModel();
-        } }, { "SafeWaterBeacon", () =>
-        {
-            return new SafeWaterBeaconViewModel();
-        } }, { "SpecialPurposeGeneralBeacon", () =>
-        {
-            return new SpecialPurposeGeneralBeaconViewModel();
-        } }, });
+        public static AssociationViewModel CreateInformationAssociation(string type, string? pid = default) => type switch
+        {
+            _ => throw new InvalidOperationException(),
+        };
+        public static AssociationViewModel CreateFeatureAssociation(string type, string? pid = default) => type switch
+        {
+            _ => throw new InvalidOperationException(),
+        };
+        public static InformationViewModel CreateInformationType(string type, string? pid = default) => type switch
+        {
+            "ReferenceToAPublication" => new ReferenceToAPublicationViewModel
+            {
+                PID = pid
+            },
+            _ => throw new InvalidOperationException(),
+        };
+        public static FeatureViewModel CreateFeatureType(string type, string? pid = default) => type switch
+        {
+            "InstallationBuoy" => new InstallationBuoyViewModel
+            {
+                PID = pid
+            },
+            "DepthArea" => new DepthAreaViewModel
+            {
+                PID = pid
+            },
+            "RadioCallingInPoint" => new RadioCallingInPointViewModel
+            {
+                PID = pid
+            },
+            "PatrolArea" => new PatrolAreaViewModel
+            {
+                PID = pid
+            },
+            "Checkpoint" => new CheckpointViewModel
+            {
+                PID = pid
+            },
+            "MarineManagementArea" => new MarineManagementAreaViewModel
+            {
+                PID = pid
+            },
+            "DepthContour" => new DepthContourViewModel
+            {
+                PID = pid
+            },
+            "EnvironmentallySensitiveSeaArea" => new EnvironmentallySensitiveSeaAreaViewModel
+            {
+                PID = pid
+            },
+            "Road" => new RoadViewModel
+            {
+                PID = pid
+            },
+            "River" => new RiverViewModel
+            {
+                PID = pid
+            },
+            "MilitaryPracticeArea" => new MilitaryPracticeAreaViewModel
+            {
+                PID = pid
+            },
+            "DiscolouredWater" => new DiscolouredWaterViewModel
+            {
+                PID = pid
+            },
+            "CardinalBuoy" => new CardinalBuoyViewModel
+            {
+                PID = pid
+            },
+            "SafeWaterBuoy" => new SafeWaterBuoyViewModel
+            {
+                PID = pid
+            },
+            "RadioStation" => new RadioStationViewModel
+            {
+                PID = pid
+            },
+            "MilitaryExerciseAirspace" => new MilitaryExerciseAirspaceViewModel
+            {
+                PID = pid
+            },
+            "ContiguousZone" => new ContiguousZoneViewModel
+            {
+                PID = pid
+            },
+            "NormalBaseline" => new NormalBaselineViewModel
+            {
+                PID = pid
+            },
+            "CableArea" => new CableAreaViewModel
+            {
+                PID = pid
+            },
+            "ContinentalShelfArea" => new ContinentalShelfAreaViewModel
+            {
+                PID = pid
+            },
+            "InternalWaters" => new InternalWatersViewModel
+            {
+                PID = pid
+            },
+            "AdministrationArea" => new AdministrationAreaViewModel
+            {
+                PID = pid
+            },
+            "Bollard" => new BollardViewModel
+            {
+                PID = pid
+            },
+            "Dolphin" => new DolphinViewModel
+            {
+                PID = pid
+            },
+            "RadarRange" => new RadarRangeViewModel
+            {
+                PID = pid
+            },
+            "IsolatedDangerBeacon" => new IsolatedDangerBeaconViewModel
+            {
+                PID = pid
+            },
+            "IsolatedDangerBuoy" => new IsolatedDangerBuoyViewModel
+            {
+                PID = pid
+            },
+            "SubmarineTransitLane" => new SubmarineTransitLaneViewModel
+            {
+                PID = pid
+            },
+            "MaritimeSafetyInformationArea" => new MaritimeSafetyInformationAreaViewModel
+            {
+                PID = pid
+            },
+            "AirspaceRestriction" => new AirspaceRestrictionViewModel
+            {
+                PID = pid
+            },
+            "Sounding" => new SoundingViewModel
+            {
+                PID = pid
+            },
+            "TrafficSeparationSchemeBoundary" => new TrafficSeparationSchemeBoundaryViewModel
+            {
+                PID = pid
+            },
+            "DumpingGround" => new DumpingGroundViewModel
+            {
+                PID = pid
+            },
+            "AirportAirfield" => new AirportAirfieldViewModel
+            {
+                PID = pid
+            },
+            "FoulGround" => new FoulGroundViewModel
+            {
+                PID = pid
+            },
+            "LightAirObstruction" => new LightAirObstructionViewModel
+            {
+                PID = pid
+            },
+            "MooringBuoy" => new MooringBuoyViewModel
+            {
+                PID = pid
+            },
+            "UnderwaterAwashRock" => new UnderwaterAwashRockViewModel
+            {
+                PID = pid
+            },
+            "CableOverhead" => new CableOverheadViewModel
+            {
+                PID = pid
+            },
+            "ControlledAirspace" => new ControlledAirspaceViewModel
+            {
+                PID = pid
+            },
+            "Obstruction" => new ObstructionViewModel
+            {
+                PID = pid
+            },
+            "FishingGround" => new FishingGroundViewModel
+            {
+                PID = pid
+            },
+            "FishingFacility" => new FishingFacilityViewModel
+            {
+                PID = pid
+            },
+            "NavigationSystem" => new NavigationSystemViewModel
+            {
+                PID = pid
+            },
+            "TrafficSeparationSchemeCrossing" => new TrafficSeparationSchemeCrossingViewModel
+            {
+                PID = pid
+            },
+            "TrafficSeparationSchemeLanePart" => new TrafficSeparationSchemeLanePartViewModel
+            {
+                PID = pid
+            },
+            "TerritorialSeaArea" => new TerritorialSeaAreaViewModel
+            {
+                PID = pid
+            },
+            "LateralBeacon" => new LateralBeaconViewModel
+            {
+                PID = pid
+            },
+            "CoastGuardStation" => new CoastGuardStationViewModel
+            {
+                PID = pid
+            },
+            "SeparationZoneOrLine" => new SeparationZoneOrLineViewModel
+            {
+                PID = pid
+            },
+            "BottomFeature" => new BottomFeatureViewModel
+            {
+                PID = pid
+            },
+            "ArchipelagicBaseline" => new ArchipelagicBaselineViewModel
+            {
+                PID = pid
+            },
+            "SmallBottomObject" => new SmallBottomObjectViewModel
+            {
+                PID = pid
+            },
+            "ExclusiveEconomicZone" => new ExclusiveEconomicZoneViewModel
+            {
+                PID = pid
+            },
+            "RadarStation" => new RadarStationViewModel
+            {
+                PID = pid
+            },
+            "DivingLocation" => new DivingLocationViewModel
+            {
+                PID = pid
+            },
+            "RestrictedArea" => new RestrictedAreaViewModel
+            {
+                PID = pid
+            },
+            "CableSubmarine" => new CableSubmarineViewModel
+            {
+                PID = pid
+            },
+            "Wreck" => new WreckViewModel
+            {
+                PID = pid
+            },
+            "QRoute" => new QRouteViewModel
+            {
+                PID = pid
+            },
+            "CompletenessOfProductSpecification" => new CompletenessOfProductSpecificationViewModel
+            {
+                PID = pid
+            },
+            "RescueStation" => new RescueStationViewModel
+            {
+                PID = pid
+            },
+            "CardinalBeacon" => new CardinalBeaconViewModel
+            {
+                PID = pid
+            },
+            "LightVessel" => new LightVesselViewModel
+            {
+                PID = pid
+            },
+            "FisheryZone" => new FisheryZoneViewModel
+            {
+                PID = pid
+            },
+            "DredgedArea" => new DredgedAreaViewModel
+            {
+                PID = pid
+            },
+            "FerryRoute" => new FerryRouteViewModel
+            {
+                PID = pid
+            },
+            "ShorelineConstruction" => new ShorelineConstructionViewModel
+            {
+                PID = pid
+            },
+            "CautionArea" => new CautionAreaViewModel
+            {
+                PID = pid
+            },
+            "DeepWaterRoutePart" => new DeepWaterRoutePartViewModel
+            {
+                PID = pid
+            },
+            "CurrentNonGravitational" => new CurrentNonGravitationalViewModel
+            {
+                PID = pid
+            },
+            "DataCoverage" => new DataCoverageViewModel
+            {
+                PID = pid
+            },
+            "SeabedArea" => new SeabedAreaViewModel
+            {
+                PID = pid
+            },
+            "SpecialPurposeGeneralBuoy" => new SpecialPurposeGeneralBuoyViewModel
+            {
+                PID = pid
+            },
+            "LightSectored" => new LightSectoredViewModel
+            {
+                PID = pid
+            },
+            "IceLine" => new IceLineViewModel
+            {
+                PID = pid
+            },
+            "AnchorageArea" => new AnchorageAreaViewModel
+            {
+                PID = pid
+            },
+            "LateralBuoy" => new LateralBuoyViewModel
+            {
+                PID = pid
+            },
+            "TrafficSeparationSchemeRoundabout" => new TrafficSeparationSchemeRoundaboutViewModel
+            {
+                PID = pid
+            },
+            "DeepWaterRouteCentreline" => new DeepWaterRouteCentrelineViewModel
+            {
+                PID = pid
+            },
+            "LightFloat" => new LightFloatViewModel
+            {
+                PID = pid
+            },
+            "LightAllAround" => new LightAllAroundViewModel
+            {
+                PID = pid
+            },
+            "Coastline" => new CoastlineViewModel
+            {
+                PID = pid
+            },
+            "SeaAreaNamedWaterArea" => new SeaAreaNamedWaterAreaViewModel
+            {
+                PID = pid
+            },
+            "DropZone" => new DropZoneViewModel
+            {
+                PID = pid
+            },
+            "Conveyor" => new ConveyorViewModel
+            {
+                PID = pid
+            },
+            "LineOfDelimitation" => new LineOfDelimitationViewModel
+            {
+                PID = pid
+            },
+            "StraightTerritorialSeaBaseline" => new StraightTerritorialSeaBaselineViewModel
+            {
+                PID = pid
+            },
+            "SafeWaterBeacon" => new SafeWaterBeaconViewModel
+            {
+                PID = pid
+            },
+            "SpecialPurposeGeneralBeacon" => new SpecialPurposeGeneralBeaconViewModel
+            {
+                PID = pid
+            },
+            _ => throw new InvalidOperationException(),
+        };
     }
 
     [CategoryOrder("qRouteChannelWidth", 0)]

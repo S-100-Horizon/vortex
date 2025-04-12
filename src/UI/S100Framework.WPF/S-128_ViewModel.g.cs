@@ -15,66 +15,98 @@ using Xceed.Wpf.Toolkit.PropertyGrid.Attributes;
 #nullable enable
 namespace S100Framework.WPF.ViewModel.S128 {
     internal static class Bootstrap {
-        public static bool Exist(string type) => _creators.ContainsKey(type);
-        public static ViewModelBase Create(string type) => _creators[type]();
-        private static ImmutableDictionary<string, Func<ViewModelBase>> _creators => ImmutableDictionary.Create<string, Func<ViewModelBase>>().AddRange(new Dictionary<string, Func<ViewModelBase>> { { "CarriageRequirement", () =>
+        public static AssociationViewModel CreateInformationAssociation(string type, string? pid = default) => type switch
         {
-            return new CarriageRequirementViewModel();
-        } }, { "DistributionDetails", () =>
+            "CarriageRequirement" => new CarriageRequirementViewModel
+            {
+                PID = pid
+            },
+            "DistributionDetails" => new DistributionDetailsViewModel
+            {
+                PID = pid
+            },
+            "DistributorContact" => new DistributorContactViewModel
+            {
+                PID = pid
+            },
+            "PriceOfElement" => new PriceOfElementViewModel
+            {
+                PID = pid
+            },
+            "PriceOfNauticalProduct" => new PriceOfNauticalProductViewModel
+            {
+                PID = pid
+            },
+            "ProducerContact" => new ProducerContactViewModel
+            {
+                PID = pid
+            },
+            "ProductionDetails" => new ProductionDetailsViewModel
+            {
+                PID = pid
+            },
+            "ProductPackage" => new ProductPackageViewModel
+            {
+                PID = pid
+            },
+            _ => throw new InvalidOperationException(),
+        };
+        public static AssociationViewModel CreateFeatureAssociation(string type, string? pid = default) => type switch
         {
-            return new DistributionDetailsViewModel();
-        } }, { "DistributorContact", () =>
+            "ProductMapping" => new ProductMappingViewModel
+            {
+                PID = pid
+            },
+            "Correlated" => new CorrelatedViewModel
+            {
+                PID = pid
+            },
+            _ => throw new InvalidOperationException(),
+        };
+        public static InformationViewModel CreateInformationType(string type, string? pid = default) => type switch
         {
-            return new DistributorContactViewModel();
-        } }, { "PriceOfElement", () =>
+            "CatalogueSectionHeader" => new CatalogueSectionHeaderViewModel
+            {
+                PID = pid
+            },
+            "ContactDetails" => new ContactDetailsViewModel
+            {
+                PID = pid
+            },
+            "IndicationOfCarriageRequirement" => new IndicationOfCarriageRequirementViewModel
+            {
+                PID = pid
+            },
+            "PriceInformation" => new PriceInformationViewModel
+            {
+                PID = pid
+            },
+            "ProducerInformation" => new ProducerInformationViewModel
+            {
+                PID = pid
+            },
+            "DistributorInformation" => new DistributorInformationViewModel
+            {
+                PID = pid
+            },
+            _ => throw new InvalidOperationException(),
+        };
+        public static FeatureViewModel CreateFeatureType(string type, string? pid = default) => type switch
         {
-            return new PriceOfElementViewModel();
-        } }, { "PriceOfNauticalProduct", () =>
-        {
-            return new PriceOfNauticalProductViewModel();
-        } }, { "ProducerContact", () =>
-        {
-            return new ProducerContactViewModel();
-        } }, { "ProductionDetails", () =>
-        {
-            return new ProductionDetailsViewModel();
-        } }, { "ProductPackage", () =>
-        {
-            return new ProductPackageViewModel();
-        } }, { "ProductMapping", () =>
-        {
-            return new ProductMappingViewModel();
-        } }, { "Correlated", () =>
-        {
-            return new CorrelatedViewModel();
-        } }, { "CatalogueSectionHeader", () =>
-        {
-            return new CatalogueSectionHeaderViewModel();
-        } }, { "ContactDetails", () =>
-        {
-            return new ContactDetailsViewModel();
-        } }, { "IndicationOfCarriageRequirement", () =>
-        {
-            return new IndicationOfCarriageRequirementViewModel();
-        } }, { "PriceInformation", () =>
-        {
-            return new PriceInformationViewModel();
-        } }, { "ProducerInformation", () =>
-        {
-            return new ProducerInformationViewModel();
-        } }, { "DistributorInformation", () =>
-        {
-            return new DistributorInformationViewModel();
-        } }, { "ElectronicProduct", () =>
-        {
-            return new ElectronicProductViewModel();
-        } }, { "PhysicalProduct", () =>
-        {
-            return new PhysicalProductViewModel();
-        } }, { "S100Service", () =>
-        {
-            return new S100ServiceViewModel();
-        } }, });
+            "ElectronicProduct" => new ElectronicProductViewModel
+            {
+                PID = pid
+            },
+            "PhysicalProduct" => new PhysicalProductViewModel
+            {
+                PID = pid
+            },
+            "S100Service" => new S100ServiceViewModel
+            {
+                PID = pid
+            },
+            _ => throw new InvalidOperationException(),
+        };
     }
 
     [CategoryOrder("contactAddress", 0)]
@@ -1859,7 +1891,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
     [CategoryOrder("CarriageRequirement", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class CarriageRequirementViewModel : ViewModelBase {
+    public partial class CarriageRequirementViewModel : AssociationViewModel {
         public void Load(DomainModel.S128.Associations.InformationAssociations.CarriageRequirement instance) {
         }
 
@@ -1884,7 +1916,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
     [CategoryOrder("DistributionDetails", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class DistributionDetailsViewModel : ViewModelBase {
+    public partial class DistributionDetailsViewModel : AssociationViewModel {
         public void Load(DomainModel.S128.Associations.InformationAssociations.DistributionDetails instance) {
         }
 
@@ -1909,7 +1941,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
     [CategoryOrder("DistributorContact", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class DistributorContactViewModel : ViewModelBase {
+    public partial class DistributorContactViewModel : AssociationViewModel {
         public void Load(DomainModel.S128.Associations.InformationAssociations.DistributorContact instance) {
         }
 
@@ -1934,7 +1966,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
     [CategoryOrder("PriceOfElement", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class PriceOfElementViewModel : ViewModelBase {
+    public partial class PriceOfElementViewModel : AssociationViewModel {
         public void Load(DomainModel.S128.Associations.InformationAssociations.PriceOfElement instance) {
         }
 
@@ -1959,7 +1991,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
     [CategoryOrder("PriceOfNauticalProduct", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class PriceOfNauticalProductViewModel : ViewModelBase {
+    public partial class PriceOfNauticalProductViewModel : AssociationViewModel {
         public void Load(DomainModel.S128.Associations.InformationAssociations.PriceOfNauticalProduct instance) {
         }
 
@@ -1984,7 +2016,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
     [CategoryOrder("ProducerContact", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class ProducerContactViewModel : ViewModelBase {
+    public partial class ProducerContactViewModel : AssociationViewModel {
         public void Load(DomainModel.S128.Associations.InformationAssociations.ProducerContact instance) {
         }
 
@@ -2009,7 +2041,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
     [CategoryOrder("ProductionDetails", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class ProductionDetailsViewModel : ViewModelBase {
+    public partial class ProductionDetailsViewModel : AssociationViewModel {
         public void Load(DomainModel.S128.Associations.InformationAssociations.ProductionDetails instance) {
         }
 
@@ -2034,7 +2066,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
     [CategoryOrder("ProductPackage", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class ProductPackageViewModel : ViewModelBase {
+    public partial class ProductPackageViewModel : AssociationViewModel {
         public void Load(DomainModel.S128.Associations.InformationAssociations.ProductPackage instance) {
         }
 
@@ -2059,7 +2091,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
     [CategoryOrder("ProductMapping", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class ProductMappingViewModel : ViewModelBase {
+    public partial class ProductMappingViewModel : AssociationViewModel {
         private categoryOfProductMapping _categoryOfProductMapping;
         [DomainModel.EnumerationAttribute(nameof(categoryOfProductMappingList))]
         [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
@@ -2104,7 +2136,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
     [CategoryOrder("Correlated", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class CorrelatedViewModel : ViewModelBase {
+    public partial class CorrelatedViewModel : AssociationViewModel {
         public void Load(DomainModel.S128.Associations.FeatureAssociations.Correlated instance) {
         }
 

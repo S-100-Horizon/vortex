@@ -15,87 +15,126 @@ using Xceed.Wpf.Toolkit.PropertyGrid.Attributes;
 #nullable enable
 namespace S100Framework.WPF.ViewModel.S122 {
     internal static class Bootstrap {
-        public static bool Exist(string type) => _creators.ContainsKey(type);
-        public static ViewModelBase Create(string type) => _creators[type]();
-        private static ImmutableDictionary<string, Func<ViewModelBase>> _creators => ImmutableDictionary.Create<string, Func<ViewModelBase>>().AddRange(new Dictionary<string, Func<ViewModelBase>> { { "AssociatedRxN", () =>
+        public static AssociationViewModel CreateInformationAssociation(string type, string? pid = default) => type switch
         {
-            return new AssociatedRxNViewModel();
-        } }, { "ExceptionalWorkday", () =>
+            "AssociatedRxN" => new AssociatedRxNViewModel
+            {
+                PID = pid
+            },
+            "ExceptionalWorkday" => new ExceptionalWorkdayViewModel
+            {
+                PID = pid
+            },
+            "ProtectedAreaAuthority" => new ProtectedAreaAuthorityViewModel
+            {
+                PID = pid
+            },
+            "ServiceControl" => new ServiceControlViewModel
+            {
+                PID = pid
+            },
+            "RelatedOrganisation" => new RelatedOrganisationViewModel
+            {
+                PID = pid
+            },
+            "PermissionType" => new PermissionTypeViewModel
+            {
+                PID = pid
+            },
+            "InclusionType" => new InclusionTypeViewModel
+            {
+                PID = pid
+            },
+            "AuthorityContact" => new AuthorityContactViewModel
+            {
+                PID = pid
+            },
+            "AuthorityHours" => new AuthorityHoursViewModel
+            {
+                PID = pid
+            },
+            "additionalInformation" => new additionalInformationViewModel
+            {
+                PID = pid
+            },
+            _ => throw new InvalidOperationException(),
+        };
+        public static AssociationViewModel CreateFeatureAssociation(string type, string? pid = default) => type switch
         {
-            return new ExceptionalWorkdayViewModel();
-        } }, { "ProtectedAreaAuthority", () =>
+            _ => throw new InvalidOperationException(),
+        };
+        public static InformationViewModel CreateInformationType(string type, string? pid = default) => type switch
         {
-            return new ProtectedAreaAuthorityViewModel();
-        } }, { "ServiceControl", () =>
+            "InformationType" => new InformationTypeViewModel
+            {
+                PID = pid
+            },
+            "AbstractRxN" => new AbstractRxNViewModel
+            {
+                PID = pid
+            },
+            "NauticalInformation" => new NauticalInformationViewModel
+            {
+                PID = pid
+            },
+            "Regulations" => new RegulationsViewModel
+            {
+                PID = pid
+            },
+            "Restrictions" => new RestrictionsViewModel
+            {
+                PID = pid
+            },
+            "Recommendations" => new RecommendationsViewModel
+            {
+                PID = pid
+            },
+            "Authority" => new AuthorityViewModel
+            {
+                PID = pid
+            },
+            "ContactDetails" => new ContactDetailsViewModel
+            {
+                PID = pid
+            },
+            "NonStandardWorkingDay" => new NonStandardWorkingDayViewModel
+            {
+                PID = pid
+            },
+            "ServiceHours" => new ServiceHoursViewModel
+            {
+                PID = pid
+            },
+            "Applicability" => new ApplicabilityViewModel
+            {
+                PID = pid
+            },
+            _ => throw new InvalidOperationException(),
+        };
+        public static FeatureViewModel CreateFeatureType(string type, string? pid = default) => type switch
         {
-            return new ServiceControlViewModel();
-        } }, { "RelatedOrganisation", () =>
-        {
-            return new RelatedOrganisationViewModel();
-        } }, { "PermissionType", () =>
-        {
-            return new PermissionTypeViewModel();
-        } }, { "InclusionType", () =>
-        {
-            return new InclusionTypeViewModel();
-        } }, { "AuthorityContact", () =>
-        {
-            return new AuthorityContactViewModel();
-        } }, { "AuthorityHours", () =>
-        {
-            return new AuthorityHoursViewModel();
-        } }, { "additionalInformation", () =>
-        {
-            return new additionalInformationViewModel();
-        } }, { "InformationType", () =>
-        {
-            return new InformationTypeViewModel();
-        } }, { "AbstractRxN", () =>
-        {
-            return new AbstractRxNViewModel();
-        } }, { "NauticalInformation", () =>
-        {
-            return new NauticalInformationViewModel();
-        } }, { "Regulations", () =>
-        {
-            return new RegulationsViewModel();
-        } }, { "Restrictions", () =>
-        {
-            return new RestrictionsViewModel();
-        } }, { "Recommendations", () =>
-        {
-            return new RecommendationsViewModel();
-        } }, { "Authority", () =>
-        {
-            return new AuthorityViewModel();
-        } }, { "ContactDetails", () =>
-        {
-            return new ContactDetailsViewModel();
-        } }, { "NonStandardWorkingDay", () =>
-        {
-            return new NonStandardWorkingDayViewModel();
-        } }, { "ServiceHours", () =>
-        {
-            return new ServiceHoursViewModel();
-        } }, { "Applicability", () =>
-        {
-            return new ApplicabilityViewModel();
-        } }, { "RestrictedArea", () =>
-        {
-            return new RestrictedAreaViewModel();
-        } }, { "MarineProtectedArea", () =>
-        {
-            return new MarineProtectedAreaViewModel();
-        } }, { "VesselTrafficServiceArea", () =>
-        {
-            return new VesselTrafficServiceAreaViewModel();
-        } }, { "DataCoverage", () =>
-        {
-            return new DataCoverageViewModel();
-        } }, { "TextPlacement", () =>
-        {
-            return new TextPlacementViewModel();
-        } }, });
+            "RestrictedArea" => new RestrictedAreaViewModel
+            {
+                PID = pid
+            },
+            "MarineProtectedArea" => new MarineProtectedAreaViewModel
+            {
+                PID = pid
+            },
+            "VesselTrafficServiceArea" => new VesselTrafficServiceAreaViewModel
+            {
+                PID = pid
+            },
+            "DataCoverage" => new DataCoverageViewModel
+            {
+                PID = pid
+            },
+            "TextPlacement" => new TextPlacementViewModel
+            {
+                PID = pid
+            },
+            _ => throw new InvalidOperationException(),
+        };
     }
 
     [CategoryOrder("contactAddress", 0)]
@@ -1761,7 +1800,7 @@ namespace S100Framework.WPF.ViewModel.S122 {
     [CategoryOrder("AssociatedRxN", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class AssociatedRxNViewModel : ViewModelBase {
+    public partial class AssociatedRxNViewModel : AssociationViewModel {
         public void Load(DomainModel.S122.Associations.InformationAssociations.AssociatedRxN instance) {
         }
 
@@ -1786,7 +1825,7 @@ namespace S100Framework.WPF.ViewModel.S122 {
     [CategoryOrder("ExceptionalWorkday", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class ExceptionalWorkdayViewModel : ViewModelBase {
+    public partial class ExceptionalWorkdayViewModel : AssociationViewModel {
         public void Load(DomainModel.S122.Associations.InformationAssociations.ExceptionalWorkday instance) {
         }
 
@@ -1811,7 +1850,7 @@ namespace S100Framework.WPF.ViewModel.S122 {
     [CategoryOrder("ProtectedAreaAuthority", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class ProtectedAreaAuthorityViewModel : ViewModelBase {
+    public partial class ProtectedAreaAuthorityViewModel : AssociationViewModel {
         public void Load(DomainModel.S122.Associations.InformationAssociations.ProtectedAreaAuthority instance) {
         }
 
@@ -1836,7 +1875,7 @@ namespace S100Framework.WPF.ViewModel.S122 {
     [CategoryOrder("ServiceControl", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class ServiceControlViewModel : ViewModelBase {
+    public partial class ServiceControlViewModel : AssociationViewModel {
         public void Load(DomainModel.S122.Associations.InformationAssociations.ServiceControl instance) {
         }
 
@@ -1861,7 +1900,7 @@ namespace S100Framework.WPF.ViewModel.S122 {
     [CategoryOrder("RelatedOrganisation", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class RelatedOrganisationViewModel : ViewModelBase {
+    public partial class RelatedOrganisationViewModel : AssociationViewModel {
         public void Load(DomainModel.S122.Associations.InformationAssociations.RelatedOrganisation instance) {
         }
 
@@ -1886,7 +1925,7 @@ namespace S100Framework.WPF.ViewModel.S122 {
     [CategoryOrder("PermissionType", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class PermissionTypeViewModel : ViewModelBase {
+    public partial class PermissionTypeViewModel : AssociationViewModel {
         private categoryOfRelationship _categoryOfRelationship;
         [DomainModel.EnumerationAttribute(nameof(categoryOfRelationshipList))]
         [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
@@ -1931,7 +1970,7 @@ namespace S100Framework.WPF.ViewModel.S122 {
     [CategoryOrder("InclusionType", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class InclusionTypeViewModel : ViewModelBase {
+    public partial class InclusionTypeViewModel : AssociationViewModel {
         private membership _membership;
         [DomainModel.EnumerationAttribute(nameof(membershipList))]
         [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
@@ -1976,7 +2015,7 @@ namespace S100Framework.WPF.ViewModel.S122 {
     [CategoryOrder("AuthorityContact", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class AuthorityContactViewModel : ViewModelBase {
+    public partial class AuthorityContactViewModel : AssociationViewModel {
         public void Load(DomainModel.S122.Associations.InformationAssociations.AuthorityContact instance) {
         }
 
@@ -2001,7 +2040,7 @@ namespace S100Framework.WPF.ViewModel.S122 {
     [CategoryOrder("AuthorityHours", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class AuthorityHoursViewModel : ViewModelBase {
+    public partial class AuthorityHoursViewModel : AssociationViewModel {
         public void Load(DomainModel.S122.Associations.InformationAssociations.AuthorityHours instance) {
         }
 
@@ -2026,7 +2065,7 @@ namespace S100Framework.WPF.ViewModel.S122 {
     [CategoryOrder("additionalInformation", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class additionalInformationViewModel : ViewModelBase {
+    public partial class additionalInformationViewModel : AssociationViewModel {
         public void Load(DomainModel.S122.Associations.InformationAssociations.additionalInformation instance) {
         }
 

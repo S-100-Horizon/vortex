@@ -35,7 +35,7 @@ namespace VortexProAppModule
 
             public Func<FeatureCatalogue, IEnumerable<string>> Types { get; set; }
 
-            public Func<string, string, string, S100Framework.WPF.ViewModel.ViewModelBase> CreateViewModel { get; set; }
+            public Func<string, string, string, string?, S100Framework.WPF.ViewModel.ViewModelBase> CreateViewModel { get; set; }
         }
 
         internal record SelectedTemplate(string Schema, string Code)
@@ -49,37 +49,39 @@ namespace VortexProAppModule
 
         private InspectorHandle _inspectorHandle = default;
 
-        private InspectorHandle _inspectorHandleFeature => new() {
-            TypeSelector = this.FeatureTypeSelector,
-            Types = (e) => e.FeatureTypes.Select(e => e.Code),
-            CreateViewModel = (schema, code, type) => {
-                return S100Framework.WPF.Helper.CreateViewModel(schema, type);
+        private InspectorHandle _inspectorHandleInformationAssociation => new() {
+            TypeSelector = this.InformationAssociationTypeSelector,
+            Types = (e) => e.InformationAssociationTypes.Select(e => e.Code),
+            CreateViewModel = (schema, code, type, pid) => {
+                return S100Framework.WPF.Helper.CreateInformationAssociationViewModel(schema, code, pid);
             },
         };
 
         private InspectorHandle _inspectorHandleFeatureAssociation => new() {
             TypeSelector = this.FeatureAssociationTypeSelector,
             Types = (e) => e.FeatureAssociationTypes.Select(e => e.Code),
-            CreateViewModel = (schema, code, type) => {
-                return S100Framework.WPF.Helper.CreateViewModel(schema, code);
+            CreateViewModel = (schema, code, type, pid) => {
+                return S100Framework.WPF.Helper.CreateFeatureAssociationViewModel(schema, code, pid);
             },
         };
 
         private InspectorHandle _inspectorHandleInformation => new() {
             TypeSelector = this.InformationTypeSelector,
             Types = (e) => e.InformationTypes.Select(e => e.Code),
-            CreateViewModel = (schema, code, type) => {
-                return S100Framework.WPF.Helper.CreateViewModel(schema, type);
+            CreateViewModel = (schema, code, type, pid) => {
+                return S100Framework.WPF.Helper.CreateInformationTypeViewModel(schema, type, pid);
             },
         };
 
-        private InspectorHandle _inspectorHandleInformationAssociation => new() {
-            TypeSelector = this.InformationAssociationTypeSelector,
-            Types = (e) => e.InformationAssociationTypes.Select(e => e.Code),
-            CreateViewModel = (schema, code, type) => {
-                return S100Framework.WPF.Helper.CreateViewModel(schema, code);
+        private InspectorHandle _inspectorHandleFeature => new() {
+            TypeSelector = this.FeatureTypeSelector,
+            Types = (e) => e.FeatureTypes.Select(e => e.Code),
+            CreateViewModel = (schema, code, type, pid) => {
+                return S100Framework.WPF.Helper.CreateFeatureTypeViewModel(schema, type, pid);
             },
         };
+
+
 
         private SelectedTemplate _selectedTemplate = SelectedTemplate.Empty;
 
@@ -319,13 +321,15 @@ namespace VortexProAppModule
 
                     var code = Convert.ToString(inspector["code"]);
 
+                    var name = Convert.ToString(inspector["name"]);
+
                     var type = this._inspectorHandle.TypeSelector(inspector, schema);
 
                     if (type is null) {
                         return default;
                     }
 
-                    var viewmodel = this._inspectorHandle.CreateViewModel(schema, code, type.Name);
+                    var viewmodel = this._inspectorHandle.CreateViewModel(schema, code, type.Name, name);
 
                     object instance;
                     if (DBNull.Value.Equals(inspector["JSON"]) || string.IsNullOrEmpty(Convert.ToString(inspector["JSON"]))) {

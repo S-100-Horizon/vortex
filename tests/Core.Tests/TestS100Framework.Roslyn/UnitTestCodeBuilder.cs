@@ -74,7 +74,7 @@ namespace TestS100Framework
 
                 //Build_S201();
 
-                //Build_S501();
+                Build_S501();
             }
 
             [Fact]
@@ -110,141 +110,6 @@ namespace TestS100Framework
                 File.WriteAllText(@"..\..\..\..\..\..\src\UI\S100Framework.WPF\S-501_ViewModel.g.cs", File.ReadAllText(@".\..\..\..\S-501_ViewModel.cs"));
             }
 
-            private bool VerifyProductSpecification(XDocument productSpecification) {
-                var navigator = productSpecification.CreateNavigator();
-                navigator.MoveToFollowing(XPathNodeType.Element);
-                var scopes = navigator.GetNamespacesInScope(XmlNamespaceScope.All);
-
-                var scope_S100 = scopes["S100FC"];
-
-                var xmlNamespaceManager = new XmlNamespaceManager(new NameTable());
-                foreach (var e in scopes)
-                    xmlNamespaceManager.AddNamespace(e.Key, e.Value);
-
-                //  Roles
-                {
-                    var elementInformationTypes = productSpecification.XPathSelectElements("//S100FC:S100_FC_InformationTypes", xmlNamespaceManager);
-                    var elementFeatureTypes = productSpecification.XPathSelectElements("//S100FC:S100_FC_FeatureTypes", xmlNamespaceManager);
-
-                    var elementRoles = productSpecification.XPathSelectElement("//S100FC:S100_FC_Roles", xmlNamespaceManager);
-                    if (elementRoles == null) {
-                        _output.WriteLine("no roles found");
-                    }
-                    else {
-                        foreach (var role in elementRoles!.Elements()) {
-                            var name = role.Element(XName.Get("name", scope_S100))!.Value;
-                            var code = role.Element(XName.Get("code", scope_S100))!.Value;
-
-                            //var query = $"//S100FC:featureBinding/S100FC:role[@ref=\"{code}\"]";
-                            var query = $"//S100FC:role[@ref=\"{code}\"]";
-
-                            if (elementInformationTypes.Any(e => e.XPathSelectElements(query, xmlNamespaceManager).Any())) {
-                                continue;
-                            }
-                            if (elementFeatureTypes.Any(e => e.XPathSelectElements(query, xmlNamespaceManager).Any())) {
-                                continue;
-                            }
-
-                            _output.WriteLine($"role not used: {code}");
-                        }
-                    }
-                }
-
-                //  Associations
-                {
-                    var elementInformationAssociations = productSpecification.XPathSelectElements("//S100FC:S100_FC_InformationAssociation", xmlNamespaceManager);
-                    if (elementInformationAssociations is null) {
-
-                    }
-                    else {
-                        foreach (var e in elementInformationAssociations) {
-                            var name = e.Element(XName.Get("name", scope_S100))!.Value;
-                            var code = e.Element(XName.Get("code", scope_S100))!.Value;
-
-                            _output.WriteLine($"{code}:");
-
-                            var roles = e.Elements(XName.Get("role", scope_S100)).Select(e => e.Attribute("ref")!.Value);
-
-                            var dictionary = new Dictionary<string, (int lower, int? upper)>();
-
-                            var bindings = productSpecification.XPathSelectElements($"//S100FC:informationBinding/S100FC:association[@ref=\"{code}\"]", xmlNamespaceManager);
-                            foreach (var b in bindings) {
-                                var binding = b.Parent!;
-
-                                var role = binding.Element(XName.Get("role", scope_S100))!.Attribute("ref")!.Value;
-
-                                var lower = int.Parse(binding.XPathSelectElement("S100FC:multiplicity/S100Base:lower", xmlNamespaceManager)!.Value);
-                                var upper = binding.XPathSelectElement("S100FC:multiplicity/S100Base:upper", xmlNamespaceManager)!.Attribute(XName.Get("infinite")) != default ? default(int?) : int.Parse(binding.XPathSelectElement("S100FC:multiplicity/S100Base:upper", xmlNamespaceManager)!.Value);
-
-                                if (!dictionary.ContainsKey(role)) {
-                                    dictionary.Add(role, (lower, upper));
-                                }
-                                else {
-                                    Assert.True(dictionary[role].Equals((lower, upper)));
-                                }
-                            }
-
-                            foreach (var pair in dictionary) {
-                                var upper = pair.Value.upper.HasValue ? $"{pair.Value.upper.Value}" : "∞";
-                                _output.WriteLine($"\t{pair.Key}: {pair.Value.lower} {upper}");
-                            }
-                            foreach (var r in roles) {
-                                if (dictionary.ContainsKey(r))
-                                    continue;
-                                _output.WriteLine($"\t{r} not used!");
-                            }
-
-                            _output.WriteLine("");
-                        }
-                    }
-
-                    var elementFeatureAssociations = productSpecification.XPathSelectElements("//S100FC:S100_FC_FeatureAssociation", xmlNamespaceManager);
-                    if (elementFeatureAssociations is null) {
-
-                    }
-                    else {
-                        foreach (var e in elementFeatureAssociations) {
-                            var name = e.Element(XName.Get("name", scope_S100))!.Value;
-                            var code = e.Element(XName.Get("code", scope_S100))!.Value;
-
-                            _output.WriteLine($"{code}:");
-
-                            var roles = e.Elements(XName.Get("role", scope_S100)).Select(e => e.Attribute("ref")!.Value);
-
-                            var dictionary = new Dictionary<string, (int lower, int? upper)>();
-
-                            var bindings = productSpecification.XPathSelectElements($"//S100FC:featureBinding/S100FC:association[@ref=\"{code}\"]", xmlNamespaceManager);
-                            foreach (var b in bindings) {
-                                var binding = b.Parent!;
-
-                                var role = binding.Element(XName.Get("role", scope_S100))!.Attribute("ref")!.Value;
-
-                                var lower = int.Parse(binding.XPathSelectElement("S100FC:multiplicity/S100Base:lower", xmlNamespaceManager)!.Value);
-                                var upper = binding.XPathSelectElement("S100FC:multiplicity/S100Base:upper", xmlNamespaceManager)!.Attribute(XName.Get("infinite")) != default ? default(int?) : int.Parse(binding.XPathSelectElement("S100FC:multiplicity/S100Base:upper", xmlNamespaceManager)!.Value);
-
-                                if (!dictionary.ContainsKey(role)) {
-                                    dictionary.Add(role, (lower, upper));
-                                }
-                                else {
-                                    Assert.True(dictionary[role].Equals((lower, upper)));
-                                }
-                            }
-
-                            foreach (var pair in dictionary) {
-                                var upper = pair.Value.upper.HasValue ? $"{pair.Value.upper.Value}" : "∞";
-                                _output.WriteLine($"\t{pair.Key}: {pair.Value.lower} {upper}");
-                            }
-                            foreach (var r in roles) {
-                                if (dictionary.ContainsKey(r))
-                                    continue;
-                                _output.WriteLine($"\t{r} not used!");
-                            }
-                            _output.WriteLine("");
-                        }
-                    }
-                }
-                return true;
-            }
 
             [Fact]
             public void Validate() {
@@ -596,6 +461,142 @@ namespace TestS100Framework
                 var json = System.Text.Json.JsonSerializer.Serialize(instance);
 
                 System.Diagnostics.Debugger.Break();
+            }
+
+            private bool VerifyProductSpecification(XDocument productSpecification) {
+                var navigator = productSpecification.CreateNavigator();
+                navigator.MoveToFollowing(XPathNodeType.Element);
+                var scopes = navigator.GetNamespacesInScope(XmlNamespaceScope.All);
+
+                var scope_S100 = scopes["S100FC"];
+
+                var xmlNamespaceManager = new XmlNamespaceManager(new NameTable());
+                foreach (var e in scopes)
+                    xmlNamespaceManager.AddNamespace(e.Key, e.Value);
+
+                //  Roles
+                {
+                    var elementInformationTypes = productSpecification.XPathSelectElements("//S100FC:S100_FC_InformationTypes", xmlNamespaceManager);
+                    var elementFeatureTypes = productSpecification.XPathSelectElements("//S100FC:S100_FC_FeatureTypes", xmlNamespaceManager);
+
+                    var elementRoles = productSpecification.XPathSelectElement("//S100FC:S100_FC_Roles", xmlNamespaceManager);
+                    if (elementRoles == null) {
+                        _output.WriteLine("no roles found");
+                    }
+                    else {
+                        foreach (var role in elementRoles!.Elements()) {
+                            var name = role.Element(XName.Get("name", scope_S100))!.Value;
+                            var code = role.Element(XName.Get("code", scope_S100))!.Value;
+
+                            //var query = $"//S100FC:featureBinding/S100FC:role[@ref=\"{code}\"]";
+                            var query = $"//S100FC:role[@ref=\"{code}\"]";
+
+                            if (elementInformationTypes.Any(e => e.XPathSelectElements(query, xmlNamespaceManager).Any())) {
+                                continue;
+                            }
+                            if (elementFeatureTypes.Any(e => e.XPathSelectElements(query, xmlNamespaceManager).Any())) {
+                                continue;
+                            }
+
+                            _output.WriteLine($"role not used: {code}");
+                        }
+                    }
+                }
+
+                //  Associations
+                {
+                    var elementInformationAssociations = productSpecification.XPathSelectElements("//S100FC:S100_FC_InformationAssociation", xmlNamespaceManager);
+                    if (elementInformationAssociations is null) {
+
+                    }
+                    else {
+                        foreach (var e in elementInformationAssociations) {
+                            var name = e.Element(XName.Get("name", scope_S100))!.Value;
+                            var code = e.Element(XName.Get("code", scope_S100))!.Value;
+
+                            _output.WriteLine($"{code}:");
+
+                            var roles = e.Elements(XName.Get("role", scope_S100)).Select(e => e.Attribute("ref")!.Value);
+
+                            var dictionary = new Dictionary<string, (int lower, int? upper)>();
+
+                            var bindings = productSpecification.XPathSelectElements($"//S100FC:informationBinding/S100FC:association[@ref=\"{code}\"]", xmlNamespaceManager);
+                            foreach (var b in bindings) {
+                                var binding = b.Parent!;
+
+                                var role = binding.Element(XName.Get("role", scope_S100))!.Attribute("ref")!.Value;
+
+                                var lower = int.Parse(binding.XPathSelectElement("S100FC:multiplicity/S100Base:lower", xmlNamespaceManager)!.Value);
+                                var upper = binding.XPathSelectElement("S100FC:multiplicity/S100Base:upper", xmlNamespaceManager)!.Attribute(XName.Get("infinite")) != default ? default(int?) : int.Parse(binding.XPathSelectElement("S100FC:multiplicity/S100Base:upper", xmlNamespaceManager)!.Value);
+
+                                if (!dictionary.ContainsKey(role)) {
+                                    dictionary.Add(role, (lower, upper));
+                                }
+                                else {
+                                    Assert.True(dictionary[role].Equals((lower, upper)));
+                                }
+                            }
+
+                            foreach (var pair in dictionary) {
+                                var upper = pair.Value.upper.HasValue ? $"{pair.Value.upper.Value}" : "∞";
+                                _output.WriteLine($"\t{pair.Key}: {pair.Value.lower} {upper}");
+                            }
+                            foreach (var r in roles) {
+                                if (dictionary.ContainsKey(r))
+                                    continue;
+                                _output.WriteLine($"\t{r} not used!");
+                            }
+
+                            _output.WriteLine("");
+                        }
+                    }
+
+                    var elementFeatureAssociations = productSpecification.XPathSelectElements("//S100FC:S100_FC_FeatureAssociation", xmlNamespaceManager);
+                    if (elementFeatureAssociations is null) {
+
+                    }
+                    else {
+                        foreach (var e in elementFeatureAssociations) {
+                            var name = e.Element(XName.Get("name", scope_S100))!.Value;
+                            var code = e.Element(XName.Get("code", scope_S100))!.Value;
+
+                            _output.WriteLine($"{code}:");
+
+                            var roles = e.Elements(XName.Get("role", scope_S100)).Select(e => e.Attribute("ref")!.Value);
+
+                            var dictionary = new Dictionary<string, (int lower, int? upper)>();
+
+                            var bindings = productSpecification.XPathSelectElements($"//S100FC:featureBinding/S100FC:association[@ref=\"{code}\"]", xmlNamespaceManager);
+                            foreach (var b in bindings) {
+                                var binding = b.Parent!;
+
+                                var role = binding.Element(XName.Get("role", scope_S100))!.Attribute("ref")!.Value;
+
+                                var lower = int.Parse(binding.XPathSelectElement("S100FC:multiplicity/S100Base:lower", xmlNamespaceManager)!.Value);
+                                var upper = binding.XPathSelectElement("S100FC:multiplicity/S100Base:upper", xmlNamespaceManager)!.Attribute(XName.Get("infinite")) != default ? default(int?) : int.Parse(binding.XPathSelectElement("S100FC:multiplicity/S100Base:upper", xmlNamespaceManager)!.Value);
+
+                                if (!dictionary.ContainsKey(role)) {
+                                    dictionary.Add(role, (lower, upper));
+                                }
+                                else {
+                                    Assert.True(dictionary[role].Equals((lower, upper)));
+                                }
+                            }
+
+                            foreach (var pair in dictionary) {
+                                var upper = pair.Value.upper.HasValue ? $"{pair.Value.upper.Value}" : "∞";
+                                _output.WriteLine($"\t{pair.Key}: {pair.Value.lower} {upper}");
+                            }
+                            foreach (var r in roles) {
+                                if (dictionary.ContainsKey(r))
+                                    continue;
+                                _output.WriteLine($"\t{r} not used!");
+                            }
+                            _output.WriteLine("");
+                        }
+                    }
+                }
+                return true;
             }
 
             public partial class StructureEquipment

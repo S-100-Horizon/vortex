@@ -134,7 +134,7 @@ namespace VortexConceptApplication
             }
             this.CollectionChanged?.Invoke(this.FeatureBindings, e);
         }
-        
+
 
 
         public S100AttributeEditorViewModel(InformationNode informationNode, InformationViewModel selectedObject) : this(informationNode.Code, selectedObject) {
@@ -145,7 +145,7 @@ namespace VortexConceptApplication
             informationBindingDefinitions = selectedObject.informationBindingDefinitions;
             featureBindingDefinitions = selectedObject.featureBindingDefinitions;
         }
-        
+
 
         public event PropertyChangedEventHandler? PropertyChanged;
 
@@ -345,7 +345,7 @@ namespace VortexConceptApplication
                 if (control.PropertyGrid != null) {
                     control.PropertyGrid.SelectedObject = control.ViewModel.SelectedObject;
                 }
-                if(control.FeatureBindingDefinitionsCheckComboBox != null) {
+                if (control.FeatureBindingDefinitionsCheckComboBox != null) {
                     control.FeatureBindingDefinitionsCheckComboBox.ItemsSource = control.ViewModel.featureBindingDefinitions;
                     if (!control.ViewModel.featureBindingDefinitions.Any()) {
                         if (control.FeatureBindingsStackPanel != null)
@@ -359,7 +359,7 @@ namespace VortexConceptApplication
                     control.InformationBindingDefinitionsCheckComboBox.ItemsSource = control.ViewModel.informationBindingDefinitions;
 
                     if (!control.ViewModel.informationBindingDefinitions.Any()) {
-                        if(control.InformationBindingsStackPanel != null)
+                        if (control.InformationBindingsStackPanel != null)
                             control.InformationBindingsStackPanel.Visibility = Visibility.Hidden;
                     }
                 }
@@ -562,7 +562,7 @@ namespace VortexConceptApplication
             if (control != null) {
                 control.ItemsSource = _featuresDropdown;
             }
-        }       
+        }
 
         public static RoutedUICommand FeatureIdDoubleClick = new("FeatureIdDoubleClick", "FeatureIdDoubleClickContent", typeof(S100AttributeEditor));
 

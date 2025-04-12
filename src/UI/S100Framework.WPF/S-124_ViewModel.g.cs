@@ -15,36 +15,58 @@ using Xceed.Wpf.Toolkit.PropertyGrid.Attributes;
 #nullable enable
 namespace S100Framework.WPF.ViewModel.S124 {
     internal static class Bootstrap {
-        public static bool Exist(string type) => _creators.ContainsKey(type);
-        public static ViewModelBase Create(string type) => _creators[type]();
-        private static ImmutableDictionary<string, Func<ViewModelBase>> _creators => ImmutableDictionary.Create<string, Func<ViewModelBase>>().AddRange(new Dictionary<string, Func<ViewModelBase>> { { "NWPreambleContent", () =>
+        public static AssociationViewModel CreateInformationAssociation(string type, string? pid = default) => type switch
         {
-            return new NWPreambleContentViewModel();
-        } }, { "NWReferences", () =>
+            "NWPreambleContent" => new NWPreambleContentViewModel
+            {
+                PID = pid
+            },
+            "NWReferences" => new NWReferencesViewModel
+            {
+                PID = pid
+            },
+            _ => throw new InvalidOperationException(),
+        };
+        public static AssociationViewModel CreateFeatureAssociation(string type, string? pid = default) => type switch
         {
-            return new NWReferencesViewModel();
-        } }, { "AreaAffected", () =>
+            "AreaAffected" => new AreaAffectedViewModel
+            {
+                PID = pid
+            },
+            "TextAssociation" => new TextAssociationViewModel
+            {
+                PID = pid
+            },
+            _ => throw new InvalidOperationException(),
+        };
+        public static InformationViewModel CreateInformationType(string type, string? pid = default) => type switch
         {
-            return new AreaAffectedViewModel();
-        } }, { "TextAssociation", () =>
+            "NAVWARNPreamble" => new NAVWARNPreambleViewModel
+            {
+                PID = pid
+            },
+            "References" => new ReferencesViewModel
+            {
+                PID = pid
+            },
+            _ => throw new InvalidOperationException(),
+        };
+        public static FeatureViewModel CreateFeatureType(string type, string? pid = default) => type switch
         {
-            return new TextAssociationViewModel();
-        } }, { "NAVWARNPreamble", () =>
-        {
-            return new NAVWARNPreambleViewModel();
-        } }, { "References", () =>
-        {
-            return new ReferencesViewModel();
-        } }, { "NAVWARNPart", () =>
-        {
-            return new NAVWARNPartViewModel();
-        } }, { "NAVWARNAreaAffected", () =>
-        {
-            return new NAVWARNAreaAffectedViewModel();
-        } }, { "TextPlacement", () =>
-        {
-            return new TextPlacementViewModel();
-        } }, });
+            "NAVWARNPart" => new NAVWARNPartViewModel
+            {
+                PID = pid
+            },
+            "NAVWARNAreaAffected" => new NAVWARNAreaAffectedViewModel
+            {
+                PID = pid
+            },
+            "TextPlacement" => new TextPlacementViewModel
+            {
+                PID = pid
+            },
+            _ => throw new InvalidOperationException(),
+        };
     }
 
     [CategoryOrder("featureName", 0)]
@@ -1110,7 +1132,7 @@ namespace S100Framework.WPF.ViewModel.S124 {
     [CategoryOrder("NWPreambleContent", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class NWPreambleContentViewModel : ViewModelBase {
+    public partial class NWPreambleContentViewModel : AssociationViewModel {
         public void Load(DomainModel.S124.Associations.InformationAssociations.NWPreambleContent instance) {
         }
 
@@ -1135,7 +1157,7 @@ namespace S100Framework.WPF.ViewModel.S124 {
     [CategoryOrder("NWReferences", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class NWReferencesViewModel : ViewModelBase {
+    public partial class NWReferencesViewModel : AssociationViewModel {
         public void Load(DomainModel.S124.Associations.InformationAssociations.NWReferences instance) {
         }
 
@@ -1160,7 +1182,7 @@ namespace S100Framework.WPF.ViewModel.S124 {
     [CategoryOrder("AreaAffected", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class AreaAffectedViewModel : ViewModelBase {
+    public partial class AreaAffectedViewModel : AssociationViewModel {
         public void Load(DomainModel.S124.Associations.FeatureAssociations.AreaAffected instance) {
         }
 
@@ -1185,7 +1207,7 @@ namespace S100Framework.WPF.ViewModel.S124 {
     [CategoryOrder("TextAssociation", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class TextAssociationViewModel : ViewModelBase {
+    public partial class TextAssociationViewModel : AssociationViewModel {
         public void Load(DomainModel.S124.Associations.FeatureAssociations.TextAssociation instance) {
         }
 

@@ -4,32 +4,62 @@ namespace S100Framework.WPF
 {
     public static class Helper
     {
-        public static ViewModelBase? CreateViewModel(string ps, Type type) {
+        public static ViewModelBase? CreateInformationAssociationViewModel(string ps, string type, string pid) {
             if (string.IsNullOrEmpty(ps)) return null;
 
             return ps.ToLowerInvariant() switch {
-                "s101" or "s-101" => ViewModel.S101.Bootstrap.Exist(type.Name) ? ViewModel.S101.Bootstrap.Create(type.Name) : null,
-                "s122" or "s-122" => ViewModel.S122.Bootstrap.Exist(type.Name) ? ViewModel.S122.Bootstrap.Create(type.Name) : null,
-                "s124" or "s-124" => ViewModel.S124.Bootstrap.Exist(type.Name) ? ViewModel.S124.Bootstrap.Create(type.Name) : null,
-                "s128" or "s-128" => ViewModel.S128.Bootstrap.Exist(type.Name) ? ViewModel.S128.Bootstrap.Create(type.Name) : null,
-                "s131" or "s-131" => ViewModel.S131.Bootstrap.Exist(type.Name) ? ViewModel.S131.Bootstrap.Create(type.Name) : null,
-                //"s201" or "s-201" => ViewModel.S201.Bootstrap.Exist(type.Name) ? ViewModel.S201.Bootstrap.Create(type.Name) : null,
-                "s501" or "s-501" => ViewModel.S501.Bootstrap.Exist(type.Name) ? ViewModel.S501.Bootstrap.Create(type.Name) : null,
+                "s101" or "s-101" => ViewModel.S101.Bootstrap.CreateInformationAssociation(type, pid),
+                "s122" or "s-122" => (ViewModelBase)ViewModel.S122.Bootstrap.CreateInformationAssociation(type, pid),
+                "s124" or "s-124" => (ViewModelBase)ViewModel.S124.Bootstrap.CreateInformationAssociation(type, pid),
+                "s128" or "s-128" => (ViewModelBase)ViewModel.S128.Bootstrap.CreateInformationAssociation(type, pid),
+                "s131" or "s-131" => (ViewModelBase)ViewModel.S131.Bootstrap.CreateInformationAssociation(type, pid),
+                //"s201" or "s-201" => ViewModel.S201.Bootstrap.CreateInformationAssociation(type, pid),
+                "s501" or "s-501" => (ViewModelBase)ViewModel.S501.Bootstrap.CreateInformationAssociation(type, pid),
                 _ => null
             };
         }
 
-        public static ViewModelBase? CreateViewModel(string ps, string type) {
+        public static ViewModelBase? CreateFeatureAssociationViewModel(string ps, string type, string pid) {
             if (string.IsNullOrEmpty(ps)) return null;
 
             return ps.ToLowerInvariant() switch {
-                "s101" or "s-101" => ViewModel.S101.Bootstrap.Exist(type) ? ViewModel.S101.Bootstrap.Create(type) : null,
-                "s122" or "s-122" => ViewModel.S122.Bootstrap.Exist(type) ? ViewModel.S122.Bootstrap.Create(type) : null,
-                "s124" or "s-124" => ViewModel.S124.Bootstrap.Exist(type) ? ViewModel.S124.Bootstrap.Create(type) : null,
-                "s128" or "s-128" => ViewModel.S128.Bootstrap.Exist(type) ? ViewModel.S128.Bootstrap.Create(type) : null,
-                "s131" or "s-131" => ViewModel.S131.Bootstrap.Exist(type) ? ViewModel.S131.Bootstrap.Create(type) : null,
-                //"s201" or "s-201" => ViewModel.S201.Bootstrap.Exist(type.Name) ? ViewModel.S201.Bootstrap.Create(type) : null,
-                "s501" or "s-501" => ViewModel.S501.Bootstrap.Exist(type) ? ViewModel.S501.Bootstrap.Create(type) : null,
+                "s101" or "s-101" => ViewModel.S101.Bootstrap.CreateFeatureAssociation(type, pid),
+                "s122" or "s-122" => (ViewModelBase)ViewModel.S122.Bootstrap.CreateFeatureAssociation(type, pid),
+                "s124" or "s-124" => (ViewModelBase)ViewModel.S124.Bootstrap.CreateFeatureAssociation(type, pid),
+                "s128" or "s-128" => (ViewModelBase)ViewModel.S128.Bootstrap.CreateFeatureAssociation(type, pid),
+                "s131" or "s-131" => (ViewModelBase)ViewModel.S131.Bootstrap.CreateFeatureAssociation(type, pid),
+                //"s201" or "s-201" => ViewModel.S201.Bootstrap.CreateFeatureAssociation(type, pid),
+                "s501" or "s-501" => (ViewModelBase)ViewModel.S501.Bootstrap.CreateFeatureAssociation(type, pid),
+                _ => null
+            };
+        }
+
+        public static InformationViewModel? CreateInformationTypeViewModel(string ps, string type, string pid) {
+            if (string.IsNullOrEmpty(ps)) return null;
+
+            return ps.ToLowerInvariant() switch {
+                "s101" or "s-101" => ViewModel.S101.Bootstrap.CreateInformationType(type, pid),
+                "s122" or "s-122" => ViewModel.S122.Bootstrap.CreateInformationType(type, pid),
+                "s124" or "s-124" => ViewModel.S124.Bootstrap.CreateInformationType(type, pid),
+                "s128" or "s-128" => ViewModel.S128.Bootstrap.CreateInformationType(type, pid),
+                "s131" or "s-131" => ViewModel.S131.Bootstrap.CreateInformationType(type, pid),
+                //"s201" or "s-201" => ViewModel.S201.Bootstrap.CreateInformationType(type, pid),
+                "s501" or "s-501" => ViewModel.S501.Bootstrap.CreateInformationType(type, pid),
+                _ => null
+            };
+        }
+
+        public static FeatureViewModel? CreateFeatureTypeViewModel(string ps, string type, string pid) {
+            if (string.IsNullOrEmpty(ps)) return null;
+
+            return ps.ToLowerInvariant() switch {
+                "s101" or "s-101" => ViewModel.S101.Bootstrap.CreateFeatureType(type, pid),
+                "s122" or "s-122" => ViewModel.S122.Bootstrap.CreateFeatureType(type, pid),
+                "s124" or "s-124" => ViewModel.S124.Bootstrap.CreateFeatureType(type, pid),
+                "s128" or "s-128" => ViewModel.S128.Bootstrap.CreateFeatureType(type, pid),
+                "s131" or "s-131" => ViewModel.S131.Bootstrap.CreateFeatureType(type, pid),
+                //"s201" or "s-201" => ViewModel.S201.Bootstrap.CreateFeatureType(type, pid),
+                "s501" or "s-501" => ViewModel.S501.Bootstrap.CreateFeatureType(type, pid),
                 _ => null
             };
         }

@@ -227,7 +227,7 @@ namespace VortexConceptApplication
             S100AttributeEditorViewModel = new S100AttributeEditorViewModel(viewModel.Model, viewModel);
 
             S100AttributeEditorViewModel!.PropertyChanged += (object? sender, PropertyChangedEventArgs e) => {
-                
+
             };
 
             S100AttributeEditorViewModel!.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {

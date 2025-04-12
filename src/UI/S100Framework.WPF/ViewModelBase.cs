@@ -3,7 +3,6 @@ using S100Framework.WPF.Editors;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
-using Xceed.Wpf.Toolkit.PropertyGrid.Attributes;
 
 namespace S100Framework.WPF.ViewModel
 {
@@ -67,6 +66,23 @@ namespace S100Framework.WPF.ViewModel
         }
     }
 
+    public abstract class AssociationViewModel : ViewModelBase
+    {
+        public string? PID { get; set; } = default;
+        //[PropertyOrder(0)]
+        //public abstract string Code { get; }
+    }
+
+    public abstract class InformationAssociationViewModel : AssociationViewModel
+    {
+        public abstract void Load(S100Framework.DomainModel.InformationAssociation informationAssociation);
+    }
+
+    public abstract class FeatureAssociationViewModel : AssociationViewModel
+    {
+        public abstract void Load(S100Framework.DomainModel.FeatureAssociation featureAssociation);
+    }
+
     public abstract class InformationViewModel : ViewModelBase
     {
         public string? PID { get; set; } = default;
@@ -93,21 +109,6 @@ namespace S100Framework.WPF.ViewModel
         public abstract void Load(TFeatureType instance);
     }
 
-    public abstract class AssociationViewModel : ViewModelBase
-    {
-        [PropertyOrder(0)]
-        public abstract string Code { get; }
-    }
-
-    public abstract class InformationAssociationViewModel : AssociationViewModel
-    {
-        public abstract void Load(S100Framework.DomainModel.InformationAssociation informationAssociation);
-    }
-
-    public abstract class FeatureAssociationViewModel : AssociationViewModel
-    {
-        public abstract void Load(S100Framework.DomainModel.FeatureAssociation featureAssociation);
-    }
 
     public abstract class RefIdViewModel : INotifyPropertyChanged
     {

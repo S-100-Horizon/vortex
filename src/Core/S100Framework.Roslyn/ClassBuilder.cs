@@ -459,9 +459,15 @@ namespace S100Framework
             classBuilder.AppendLine();
 
             creatorBuilder.AppendLine("\tinternal static class Bootstrap {");
-            creatorBuilder.AppendLine("\t\tpublic static bool Exist(string type) => _creators.ContainsKey(type);");
-            creatorBuilder.AppendLine("\t\tpublic static ViewModelBase Create(string type) => _creators[type]();");
-            creatorBuilder.AppendLine("\t\tprivate static ImmutableDictionary<string, Func<ViewModelBase>> _creators => ImmutableDictionary.Create<string, Func<ViewModelBase>>().AddRange(new Dictionary<string, Func<ViewModelBase>> {");
+            //creatorBuilder.AppendLine("\t\tpublic static bool Exist(string type) => _creators.ContainsKey(type);");
+            //creatorBuilder.AppendLine("\t\tpublic static ViewModelBase Create(string type) => _creators[type]();");
+            //creatorBuilder.AppendLine("\t\tprivate static ImmutableDictionary<string, Func<ViewModelBase>> _creators => ImmutableDictionary.Create<string, Func<ViewModelBase>>().AddRange(new Dictionary<string, Func<ViewModelBase>> {");
+
+            var creatorInformationAssociations = new StringBuilder();
+            var creatorFeatureAssociations = new StringBuilder();
+
+            var creatorInformationTypes = new StringBuilder();
+            var creatorFeatureTypes = new StringBuilder();
 
             var spatialAssociationTypes = new List<string>();
 
@@ -614,7 +620,7 @@ namespace S100Framework
                         }));
 
                         if (!attributes.HasFlag(TypeAttributes.Abstract)) {
-                            viewBuilder.AppendLine(BuildClassViewModel(code, name, associationType, $"DomainModel.{productId}.Associations.InformationAssociations", codelistTypes.Keys, enumTypes.Keys, roleTypes.Keys, (builder) => {
+                            viewBuilder.AppendLine(BuildClassViewModelAssociation(code, name, associationType, $"DomainModel.{productId}.Associations.InformationAssociations", codelistTypes.Keys, enumTypes.Keys, roleTypes.Keys, (builder) => {
                                 var c = code;
                                 while (!string.IsNullOrEmpty(c) && superClassHierarchy.ContainsKey(c)) {
                                     c = superClassHierarchy[c];
@@ -631,10 +637,12 @@ namespace S100Framework
                             }));
 
 
-                            creatorBuilder.AppendLine($"\t\t\t{{ \"{code}\", ()=> {{");
-                            creatorBuilder.AppendLine($"\t\t\t\treturn new {code}ViewModel();");
-                            creatorBuilder.AppendLine("\t\t\t  }");
-                            creatorBuilder.AppendLine("\t\t\t},");
+                            //creatorBuilder.AppendLine($"\t\t\t{{ \"{code}\", ()=> {{");
+                            //creatorBuilder.AppendLine($"\t\t\t\treturn new {code}ViewModel();");
+                            //creatorBuilder.AppendLine("\t\t\t  }");
+                            //creatorBuilder.AppendLine("\t\t\t},");
+
+                            creatorInformationAssociations.AppendLine($"\t\t\"{code}\" => new {code}ViewModel {{ PID = pid }},");
                         }
                         else
                             superClassViewModels.Add(code, viewModelBindingBuilder.ToString());
@@ -699,7 +707,7 @@ namespace S100Framework
                         }));
 
                         if (!attributes.HasFlag(TypeAttributes.Abstract)) {
-                            viewBuilder.AppendLine(BuildClassViewModel(code, name, associationType, $"DomainModel.{productId}.Associations.FeatureAssociations", codelistTypes.Keys, enumTypes.Keys, roleTypes.Keys, (builder) => {
+                            viewBuilder.AppendLine(BuildClassViewModelAssociation(code, name, associationType, $"DomainModel.{productId}.Associations.FeatureAssociations", codelistTypes.Keys, enumTypes.Keys, roleTypes.Keys, (builder) => {
                                 var c = code;
                                 while (!string.IsNullOrEmpty(c) && superClassHierarchy.ContainsKey(c)) {
                                     c = superClassHierarchy[c];
@@ -716,10 +724,12 @@ namespace S100Framework
                             }));
 
 
-                            creatorBuilder.AppendLine($"\t\t\t{{ \"{code}\", ()=> {{");
-                            creatorBuilder.AppendLine($"\t\t\t\treturn new {code}ViewModel();");
-                            creatorBuilder.AppendLine("\t\t\t  }");
-                            creatorBuilder.AppendLine("\t\t\t},");
+                            //creatorBuilder.AppendLine($"\t\t\t{{ \"{code}\", ()=> {{");
+                            //creatorBuilder.AppendLine($"\t\t\t\treturn new {code}ViewModel();");
+                            //creatorBuilder.AppendLine("\t\t\t  }");
+                            //creatorBuilder.AppendLine("\t\t\t},");
+
+                            creatorFeatureAssociations.AppendLine($"\t\t\"{code}\" => new {code}ViewModel {{ PID = pid }},");
                         }
                         else
                             superClassViewModels.Add(code, viewModelBindingBuilder.ToString());
@@ -896,10 +906,12 @@ namespace S100Framework
                                 builder.AppendLine($"\t\t\tpublic override informationBindingDefinition[] informationBindingDefinitions => {code}.informationBindingDefinitions;");
                             }));
 
-                            creatorBuilder.AppendLine($"\t\t\t{{ \"{code}\", ()=> {{");
-                            creatorBuilder.AppendLine($"\t\t\t\treturn new {code}ViewModel();");
-                            creatorBuilder.AppendLine("\t\t\t  }");
-                            creatorBuilder.AppendLine("\t\t\t},");
+                            //creatorBuilder.AppendLine($"\t\t\t{{ \"{code}\", ()=> {{");
+                            //creatorBuilder.AppendLine($"\t\t\t\treturn new {code}ViewModel();");
+                            //creatorBuilder.AppendLine("\t\t\t  }");
+                            //creatorBuilder.AppendLine("\t\t\t},");
+
+                            creatorInformationTypes.AppendLine($"\t\t\"{code}\" => new {code}ViewModel {{ PID = pid }},");
                         }
                         else
                             superClassViewModels.Add(code, viewModelBindingBuilder.ToString());
@@ -1085,10 +1097,12 @@ namespace S100Framework
                             }));
 
 
-                            creatorBuilder.AppendLine($"\t\t\t{{ \"{code}\", ()=> {{");
-                            creatorBuilder.AppendLine($"\t\t\t\treturn new {code}ViewModel();");
-                            creatorBuilder.AppendLine("\t\t\t  }");
-                            creatorBuilder.AppendLine("\t\t\t},");
+                            //creatorBuilder.AppendLine($"\t\t\t{{ \"{code}\", ()=> {{");
+                            //creatorBuilder.AppendLine($"\t\t\t\treturn new {code}ViewModel();");
+                            //creatorBuilder.AppendLine("\t\t\t  }");
+                            //creatorBuilder.AppendLine("\t\t\t},");
+
+                            creatorFeatureTypes.AppendLine($"\t\t\"{code}\" => new {code}ViewModel {{ PID = pid }},");
                         }
                         else
                             superClassViewModels.Add(code, viewModelBindingBuilder.ToString());
@@ -1108,8 +1122,30 @@ namespace S100Framework
 
             classBuilder.AppendLine("}");
 
-            creatorBuilder.AppendLine("\t\t});");
+            //creatorBuilder.AppendLine("\t\t});");
+
+            creatorBuilder.AppendLine("\t\tpublic static AssociationViewModel CreateInformationAssociation(string type, string? pid = default) => type switch {");
+            creatorBuilder.AppendLine(creatorInformationAssociations.ToString());
+            creatorBuilder.AppendLine("\t\t\t_ => throw new InvalidOperationException(),");
+            creatorBuilder.AppendLine("\t\t};");
+
+            creatorBuilder.AppendLine("\t\tpublic static AssociationViewModel CreateFeatureAssociation(string type, string? pid = default) => type switch {");
+            creatorBuilder.AppendLine(creatorFeatureAssociations.ToString());
+            creatorBuilder.AppendLine("\t\t\t_ => throw new InvalidOperationException(),");
+            creatorBuilder.AppendLine("\t\t};");
+
+            creatorBuilder.AppendLine("\t\tpublic static InformationViewModel CreateInformationType(string type, string? pid = default) => type switch {");
+            creatorBuilder.AppendLine(creatorInformationTypes.ToString());
+            creatorBuilder.AppendLine("\t\t\t_ => throw new InvalidOperationException(),");
+            creatorBuilder.AppendLine("\t\t};");
+
+            creatorBuilder.AppendLine("\t\tpublic static FeatureViewModel CreateFeatureType(string type, string? pid = default) => type switch {");
+            creatorBuilder.AppendLine(creatorFeatureTypes.ToString());
+            creatorBuilder.AppendLine("\t\t\t_ => throw new InvalidOperationException(),");
+            creatorBuilder.AppendLine("\t\t};");
+
             creatorBuilder.AppendLine("\t}");
+
 
             classBuilder.Insert(informationPosition, staticBuilder.ToString());
 
@@ -1474,8 +1510,14 @@ namespace S100Framework
             return iBuildClassViewModel(code, name, "ViewModelBase", type, false, classNamespace, codeLists, enumLists, roles, postAction);
         }
 
+        private static string BuildClassViewModelAssociation(string code, string name, Type type, string classNamespace, ICollection<string> codeLists, ICollection<string> enumLists, ICollection<string> roles, Action<StringBuilder>? postAction = null) {
+            return iBuildClassViewModel(code, name, "AssociationViewModel", type, false, classNamespace, codeLists, enumLists, roles, postAction);
+        }
+
+
+
         private static string BuildClassViewModelTemplate(string code, string name, string baseClass, Type type, string classNamespace, ICollection<string> codeLists, ICollection<string> enumLists, ICollection<string> roles, Action<StringBuilder>? postAction = null) {
-            return iBuildClassViewModel(code,name,baseClass,type, true, classNamespace, codeLists, enumLists, roles, postAction);
+            return iBuildClassViewModel(code, name, baseClass, type, true, classNamespace, codeLists, enumLists, roles, postAction);
         }
 
         private static string iBuildClassViewModel(string code, string name, string baseClass, Type type, bool isTemplate, string classNamespace, ICollection<string> codeLists, ICollection<string> enumLists, ICollection<string> roles, Action<StringBuilder>? postAction = null) {
@@ -1497,7 +1539,7 @@ namespace S100Framework
             classBuilder.AppendLine("\t\t\t[CategoryOrder(\"InformationBindings\", 100)]");
             classBuilder.AppendLine("\t\t\t[CategoryOrder(\"FeatureBindings\", 200)]");
 
-            if(!isTemplate)
+            if (!isTemplate)
                 classBuilder.AppendLine($"{prefix} class {code}ViewModel : {baseClass}");
             else
                 classBuilder.AppendLine($"{prefix} class {code}ViewModel : {baseClass}<{code}>");
