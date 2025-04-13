@@ -22,6 +22,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove="Images\Delete16.png" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Extended.Wpf.Toolkit" Version="4.7.25104.5739" />
     <PackageReference Include="Microsoft.Xaml.Behaviors.Wpf" Version="1.1.135" />
     <PackageReference Include="Serilog.AspNetCore" Version="9.0.0" />
@@ -31,6 +35,10 @@
   <ItemGroup>
     <ProjectReference Include="..\..\..\src\Core\S100Framework.Catalogues\S100Framework.Catalogues.csproj" />
     <ProjectReference Include="..\..\..\src\UI\S100Framework.WPF\S100Framework.WPF.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Images\Delete16.png" />
   </ItemGroup>
 
 </Project>

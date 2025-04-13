@@ -17,13 +17,21 @@ namespace S100Framework.WPF.ViewModel
         public static Func<FeatureRefIdViewModel?, Task<string[]>> GetFeaturesRefId { get; set; } = (e) => { return Task.FromResult(Array.Empty<string>()); };
     }
 
-    public interface IPID
+    public interface PID
     {
         public string? PID { get; }
     }
 
+    public interface ISerializable
+    {
+        //public string Serialize();
+    }
+
     public abstract class ViewModelBase : INotifyPropertyChanged, IDisposable
     {
+        [Browsable(false)]
+        public Guid? UID { get; set; } = default;
+
         public event PropertyChangedEventHandler? PropertyChanged;
 
         protected Dictionary<ViewModelBase, string> nestedProperties = new();
@@ -71,11 +79,10 @@ namespace S100Framework.WPF.ViewModel
         }
     }
 
-    public abstract class AssociationViewModel : ViewModelBase, IPID
+    public abstract class AssociationViewModel : ViewModelBase, PID
     {
+        [Browsable(false)]
         public string? PID { get; set; } = default;
-        //[PropertyOrder(0)]
-        //public abstract string Code { get; }
     }
 
     public abstract class InformationAssociationViewModel : AssociationViewModel
@@ -88,20 +95,29 @@ namespace S100Framework.WPF.ViewModel
         public abstract void Load(S100Framework.DomainModel.FeatureAssociation featureAssociation);
     }
 
-    public abstract class InformationViewModel : ViewModelBase, IPID
+    public abstract class InformationViewModel : ViewModelBase, PID, ISerializable
     {
+        [Browsable(false)]
         public string? PID { get; set; } = default;
 
+        [Browsable(false)]
         public abstract informationBindingDefinition[] informationBindingDefinitions { get; }
+
+        //public abstract string Serialize();
     }
 
-    public abstract class FeatureViewModel : ViewModelBase, IPID
+    public abstract class FeatureViewModel : ViewModelBase, PID, ISerializable
     {
+        [Browsable(false)]
         public string? PID { get; set; } = default;
 
+        [Browsable(false)]
         public abstract informationBindingDefinition[] informationBindingDefinitions { get; }
 
+        [Browsable(false)]
         public abstract featureBindingDefinition[] featureBindingDefinitions { get; }
+
+        //public abstract string Serialize();
     }
 
     public abstract class InformationViewModel<TInformationType> : InformationViewModel where TInformationType : InformationNode
@@ -202,6 +218,8 @@ namespace S100Framework.WPF.ViewModel
 
     public class InformationBindingViewModel : INotifyPropertyChanged
     {
+        public Guid? UID { get; set; } = default;
+
         public event PropertyChangedEventHandler? PropertyChanged;
 
         protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null) {
@@ -248,15 +266,15 @@ namespace S100Framework.WPF.ViewModel
             }
         }
 
-        private String? _foreignId = string.Empty;
+        private String? _pid = string.Empty;
 
-        public String? foreignId {
+        public String? PID {
             get {
-                return _foreignId;
+                return _pid;
             }
 
             set {
-                SetValue(ref _foreignId, value);
+                SetValue(ref _pid, value);
 
 
             }
@@ -266,40 +284,17 @@ namespace S100Framework.WPF.ViewModel
             _informationBindingDefintion = binding;
             _associationId = binding.associationId;
             _informationId = binding.informationId;
-            _foreignId = binding.PID;
+            _pid = binding.PID;
             return this;
         }
 
         //public abstract InformationAssociation Save(InformationAssociation featureAssociation, string role);
     }
 
-    public class FeatureBindingsViewModel : INotifyPropertyChanged
-    {
-        public event PropertyChangedEventHandler? PropertyChanged;
-
-        protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null) {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
-
-        protected void SetValue<T>(ref T backingFiled, T value, [CallerMemberName] string? propertyName = null) {
-            if (string.IsNullOrWhiteSpace(propertyName)) return;
-
-            if (EqualityComparer<T>.Default.Equals(backingFiled, value)) return;
-            backingFiled = value;
-            OnPropertyChanged(propertyName);
-        }
-
-        public ObservableCollection<FeatureBindingViewModel> FeatureBindings { get; set; } = new ObservableCollection<FeatureBindingViewModel>();
-
-        public FeatureBindingsViewModel(featureBindingDefinition[] featureBindings) {
-            _featureBindings = featureBindings;
-        }
-
-        private featureBindingDefinition[] _featureBindings;
-    }
-
     public class FeatureBindingViewModel : INotifyPropertyChanged
     {
+        public Guid? UID { get; set; } = default;
+
         public event PropertyChangedEventHandler? PropertyChanged;
 
         protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null) {
@@ -346,15 +341,15 @@ namespace S100Framework.WPF.ViewModel
             }
         }
 
-        private String? _foreignId = string.Empty;
+        private String? _pid = string.Empty;
 
-        public String? foreignId {
+        public String? PID {
             get {
-                return _foreignId;
+                return _pid;
             }
 
             set {
-                SetValue(ref _foreignId, value);
+                SetValue(ref _pid, value);
             }
         }
 
@@ -363,7 +358,7 @@ namespace S100Framework.WPF.ViewModel
             _featureBindingDefintion = binding;
             _associationId = binding.associationId;
             _featureId = binding.featureId;
-            _foreignId = binding.PID;
+            _pid = binding.PID;
             return this;
         }
 

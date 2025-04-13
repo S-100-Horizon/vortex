@@ -34,10 +34,12 @@
                                                        TextTrimming="CharacterEllipsis"
                                                        FontWeight="Bold" VerticalAlignment="Center">
                                         </xctk:TrimmedTextBlock>
-                                        <StackPanel DockPanel.Dock="Right" Orientation="Horizontal" HorizontalAlignment="Right">
-                                            <ComboBox x:Name="PART_InformationBindingDefinitions" Width="Auto" MinWidth="200" Height="Auto">
-                                            </ComboBox>                                            
-                                            <Button Margin="2,0,0,0" Width="22" Command="local:S100AttributeEditor.AddInformationBindingCommand">+</Button>
+                                        <StackPanel DockPanel.Dock="Right" Orientation="Horizontal" HorizontalAlignment="Right" Height="Auto">
+                                            <ComboBox x:Name="PART_InformationBindingDefinitions" Width="Auto" MinWidth="200">
+                                            </ComboBox>
+                                            <Button Margin="3,0,0,0" Padding="5,0" VerticalContentAlignment="Center"
+                                                    Content="Add"
+                                                    Command="local:S100AttributeEditor.AddInformationBindingCommand" />
                                         </StackPanel>
                                     </DockPanel>
 
@@ -57,10 +59,10 @@
                                         </ListView.ItemContainerStyle>
                                         <ListView.View>
                                             <GridView>
-                                                <GridViewColumn Header="roleType" DisplayMemberBinding="{Binding roleType, Mode=OneTime}"/>
-                                                <GridViewColumn Header="association" DisplayMemberBinding="{Binding association, Mode=OneTime}"/>
-                                                <GridViewColumn Header="role" DisplayMemberBinding="{Binding role, Mode=OneTime}"/>
-                                                <GridViewColumn Header="ID">
+                                                <GridViewColumn Header="roleType" DisplayMemberBinding="{Binding roleType, Mode=OneTime}" Width="80"/>
+                                                <GridViewColumn Header="association" DisplayMemberBinding="{Binding association, Mode=OneTime}" />
+                                                <GridViewColumn Header="role" DisplayMemberBinding="{Binding role, Mode=OneTime}" Width="80"/>
+                                                <GridViewColumn Header="ID" Width="120">
                                                     <GridViewColumn.CellTemplate>
                                                         <DataTemplate>
                                                             <xctk:DropDownButton
@@ -106,8 +108,7 @@
                                                         </DataTemplate>
                                                     </GridViewColumn.CellTemplate>
                                                 </GridViewColumn>
-                                                <!--<GridViewColumn Header="FeatureID" DisplayMemberBinding="{Binding featureId, Mode=OneTime}"/>-->
-                                                <GridViewColumn Header="InformationID">
+                                                <GridViewColumn Header="InformationID" Width="120">
                                                     <GridViewColumn.CellTemplate>
                                                         <DataTemplate>
                                                             <xctk:DropDownButton
@@ -155,6 +156,17 @@
                                                         </DataTemplate>
                                                     </GridViewColumn.CellTemplate>
                                                 </GridViewColumn>
+                                                <GridViewColumn Width="32">
+                                                    <GridViewColumn.CellTemplate>
+                                                        <DataTemplate>
+                                                            <Button>
+                                                                <Image Height="16" Width="16" Margin="1" Source="./../Images/Delete16.png">
+
+                                                                </Image>
+                                                            </Button>
+                                                        </DataTemplate>
+                                                    </GridViewColumn.CellTemplate>
+                                                </GridViewColumn>
                                             </GridView>
                                         </ListView.View>
                                     </ListView>
@@ -167,10 +179,12 @@
                                                        TextTrimming="CharacterEllipsis"
                                                        FontWeight="Bold" VerticalAlignment="Center">
                                         </xctk:TrimmedTextBlock>
-                                        <StackPanel DockPanel.Dock="Right" Orientation="Horizontal" HorizontalAlignment="Right">
-                                            <ComboBox x:Name="PART_FeatureBindingDefinitions" Width="Auto" MinWidth="200" Height="Auto">
+                                        <StackPanel DockPanel.Dock="Right" Orientation="Horizontal" HorizontalAlignment="Right" Height="Auto">
+                                            <ComboBox x:Name="PART_FeatureBindingDefinitions" Width="Auto" MinWidth="200">
                                             </ComboBox>
-                                            <Button Margin="2,0,0,0" Width="22" Command="local:S100AttributeEditor.AddFeatureBindingCommand">+</Button>
+                                            <Button Margin="3,0,0,0" Padding="5,0" VerticalContentAlignment="Center"
+                                                    Content="Add"
+                                                    Command="local:S100AttributeEditor.AddFeatureBindingCommand" />
                                         </StackPanel>
                                     </DockPanel>
 
@@ -190,10 +204,10 @@
                                         </ListView.ItemContainerStyle>
                                         <ListView.View>
                                             <GridView>
-                                                <GridViewColumn Header="roleType" DisplayMemberBinding="{Binding roleType, Mode=OneTime}"/>
-                                                <GridViewColumn Header="association" DisplayMemberBinding="{Binding association, Mode=OneTime}" Width="Auto"/>
-                                                <GridViewColumn Header="role" DisplayMemberBinding="{Binding role, Mode=OneTime}"/>
-                                                <GridViewColumn Header="ID">
+                                                <GridViewColumn Header="roleType" DisplayMemberBinding="{Binding roleType, Mode=OneTime}" Width="80"/>
+                                                <GridViewColumn Header="association" DisplayMemberBinding="{Binding association, Mode=OneTime}" />
+                                                <GridViewColumn Header="role" DisplayMemberBinding="{Binding role, Mode=OneTime}" Width="80"/>
+                                                <GridViewColumn Header="ID" Width="120">
                                                     <GridViewColumn.CellTemplate>
                                                         <DataTemplate>
                                                             <xctk:DropDownButton x:Name="associationId"
@@ -239,8 +253,7 @@
                                                         </DataTemplate>
                                                     </GridViewColumn.CellTemplate>
                                                 </GridViewColumn>
-                                                <!--<GridViewColumn Header="FeatureID" DisplayMemberBinding="{Binding featureId, Mode=OneTime}"/>-->
-                                                <GridViewColumn Header="FeatureID">
+                                                <GridViewColumn Header="FeatureID" Width="120">
                                                     <GridViewColumn.CellTemplate>
                                                         <DataTemplate>
                                                             <xctk:DropDownButton
@@ -285,6 +298,17 @@
                                                                     </ListView>
                                                                 </xctk:DropDownButton.DropDownContent>
                                                             </xctk:DropDownButton>
+                                                        </DataTemplate>
+                                                    </GridViewColumn.CellTemplate>
+                                                </GridViewColumn>
+                                                <GridViewColumn Width="32">
+                                                    <GridViewColumn.CellTemplate>
+                                                        <DataTemplate>
+                                                            <Button>
+                                                                <Image Height="16" Width="16" Margin="1" Source="./../Images/Delete16.png">
+                                                                    
+                                                                </Image>
+                                                            </Button>
                                                         </DataTemplate>
                                                     </GridViewColumn.CellTemplate>
                                                 </GridViewColumn>

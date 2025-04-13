@@ -231,7 +231,18 @@ namespace VortexConceptApplication
             };
 
             S100AttributeEditorViewModel!.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
-
+                if (e.Action == System.Collections.Specialized.NotifyCollectionChangedAction.Add) {
+                    if (e.NewItems != null) {
+                        foreach (var binding in e.NewItems) {
+                            if (sender is ICollection<InformationBindingViewModel>) {
+                                ((InformationBindingViewModel)binding).UID = Guid.NewGuid();
+                            }
+                            else {
+                                ((FeatureBindingViewModel)binding).UID = Guid.NewGuid();
+                            }
+                        }
+                    }
+                }
             };
         }
 
