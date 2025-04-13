@@ -7,6 +7,9 @@ using ArcGIS.Desktop.Framework;
 using ArcGIS.Desktop.Framework.Threading.Tasks;
 using ArcGIS.Desktop.Mapping;
 using S100Framework.Catalogues;
+using S100Framework.DomainModel;
+using S100Framework.WPF;
+using S100Framework.WPF.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -92,6 +95,8 @@ namespace VortexProAppModule
         private string _selectedSchema = default;
 
         private object _selectedProperty = default;
+
+        private S100AttributeEditorViewModel? _viewModel = default;
 
         private ObservableCollection<SelectedType> _modelTypes = new();
 
@@ -344,17 +349,26 @@ namespace VortexProAppModule
                     var methodInfo = viewmodel.GetType().GetMethod("Load");
                     methodInfo.Invoke(viewmodel, new object[1] { instance });
 
-                    viewmodel.PropertyChanged += (object sender, PropertyChangedEventArgs e) => {
-                        var json = ((S100Framework.WPF.ViewModel.ViewModelBase)sender).Serialize();
 
-                        if (DBNull.Value != inspector["json"]) {
-                            if (Convert.ToString(inspector["json"]).Equals(json))
-                                return;
-                        }
-
-                        inspector["json"] = ((S100Framework.WPF.ViewModel.ViewModelBase)sender).Serialize();
+                    this.S100AttributeEditorViewModel = instance switch {
+                        InformationNode m => new S100AttributeEditorViewModel(m, (InformationViewModel)viewmodel),
+                        FeatureNode m => new S100AttributeEditorViewModel(m, (FeatureViewModel)viewmodel),
+                        _ => throw new NotImplementedException(),
                     };
+                    
+                    
 
+                    //viewmodel.PropertyChanged += (object sender, PropertyChangedEventArgs e) => {
+                    //    var json = ((S100Framework.WPF.ViewModel.ViewModelBase)sender).Serialize();
+
+                    //    if (DBNull.Value != inspector["json"]) {
+                    //        if (Convert.ToString(inspector["json"]).Equals(json))
+                    //            return;
+                    //    }
+
+                    //    inspector["json"] = ((S100Framework.WPF.ViewModel.ViewModelBase)sender).Serialize();
+                    //};
+                    
                     return viewmodel;
                 }));
 
@@ -365,7 +379,7 @@ namespace VortexProAppModule
                     IsSelectedSchemaEnabled = true;
                     IsSelectedModelTypeEnabled = SelectedSchema != default;
                 }
-                else {
+                else {                    
                     IsSelectedSchemaEnabled = false;
                     IsSelectedModelTypeEnabled = false;
                 }
@@ -510,6 +524,11 @@ namespace VortexProAppModule
             set => SetProperty(ref _selectedProperty, value);
         }
 
+        public S100AttributeEditorViewModel? S100AttributeEditorViewModel {
+            get => _viewModel;
+            set => SetProperty(ref _viewModel, value);
+        }
+        
         public bool IsSelectedSchemaEnabled {
             get => _isSelectedSchemaEnabled;
             set => SetProperty(ref _isSelectedSchemaEnabled, value);
@@ -521,6 +540,31 @@ namespace VortexProAppModule
         }
 
         public bool IsCreateButtonEnabled => IsSelectedSchemaEnabled && IsSelectedModelTypeEnabled && _selectedTemplate != SelectedTemplate.Empty;
+
+
+        public void S100AttributeEditor_QueryAssociations(object sender, QueryAssociationsEventArgs e) {
+            var r = new Random(DateTime.Now.Microsecond);
+            foreach (var i in Enumerable.Range(0, r.Next(1, 8))) {
+                e.associations.Add(new AssociationId($"A{r.Next(1, 1000):0000}"));
+            }
+        }
+
+        static Dictionary<int, string[]> featureTypes = new Dictionary<int, string[]> {
+            { 0, ["LandArea", "Sounding"] },
+            { 1, ["Coastline"] },
+            { 2, ["LandArea", "Lake"] },
+        };
+
+        public void S100AttributeEditor_QueryFeatures(object sender, QueryFeaturesEventArgs e) {
+            var r = new Random(DateTime.Now.Microsecond);
+            foreach (var i in Enumerable.Range(0, r.Next(1, 8))) {
+                e.features.Add(r.Next(0, 2) switch {
+                    0 => new FeatureId(featureTypes[0][r.Next(0, featureTypes[0].Count() - 1)], $"P{r.Next(1, 1000):0000}"),
+                    1 => new FeatureId(featureTypes[1][r.Next(0, featureTypes[1].Count() - 1)], $"C{r.Next(1, 1000):0000}"),
+                    2 => new FeatureId(featureTypes[2][r.Next(0, featureTypes[2].Count() - 1)], $"S{r.Next(1, 1000):0000}"),
+                });
+            }
+        }
 
         private static JsonNode Unflatten(Dictionary<string, JsonValue> source) {
             var regex = new System.Text.RegularExpressions.Regex(@"(?!\.)([^. ^\[\]]+)|(?!\[)(\d+)(?=\])");

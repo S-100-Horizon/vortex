@@ -1,4 +1,5 @@
-﻿using Serilog;
+﻿using S100Framework.WPF;
+using Serilog;
 using System;
 using System.Reflection;
 using System.Windows.Controls;

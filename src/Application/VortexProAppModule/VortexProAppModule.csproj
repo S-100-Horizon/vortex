@@ -9,6 +9,7 @@
     <RootNamespace>VortexProAppModule</RootNamespace>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Remove="Views\S100AttributeEditorView.xaml.cs" />
     <Compile Remove="Views\S100PropertyGridView.xaml.cs" />
     <Compile Remove="Views\S100PropertyItemView.xaml.cs" />
   </ItemGroup>
@@ -18,6 +19,7 @@
     <None Remove="Images\logo.png" />
   </ItemGroup>
   <ItemGroup>
+    <Page Remove="Views\S100AttributeEditorView.xaml" />
     <Page Remove="Views\S100PropertyGridView.xaml" />
     <Page Remove="Views\S100PropertyItemView.xaml" />
   </ItemGroup>

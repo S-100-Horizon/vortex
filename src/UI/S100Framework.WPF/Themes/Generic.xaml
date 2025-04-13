@@ -3,9 +3,9 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"   
     xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
     xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"             
-    xmlns:local="clr-namespace:VortexConceptApplication">
+    xmlns:local="clr-namespace:S100Framework.WPF">
 
-    <Style TargetType="{x:Type local:S100AttributeEditor}">
+    <Style TargetType="{x:Type local:S100AttributeEditorControl}">
         <Setter Property="Background"
             Value="#BCC7D8" />
         <Setter Property="BorderBrush"
@@ -14,9 +14,9 @@
             Value="1" />
         <Setter Property="Template">
             <Setter.Value>
-                <ControlTemplate TargetType="{x:Type local:S100AttributeEditor}">
+                <ControlTemplate TargetType="{x:Type local:S100AttributeEditorControl}">
                     <StackPanel Margin="{TemplateBinding Padding}" Orientation="Vertical">
-                        <xctk:PropertyGrid x:Name="PART_PropertyGrid"                                                    
+                        <xctk:PropertyGrid x:Name="PART_PropertyGrid"
                                                    AutoGenerateProperties="True"                           
                                                    UpdateTextBoxSourceOnEnterKey="True"
                                                    ShowAdvancedOptions="True"
@@ -39,7 +39,7 @@
                                             </ComboBox>
                                             <Button Margin="3,0,0,0" Padding="5,0" VerticalContentAlignment="Center"
                                                     Content="Add"
-                                                    Command="local:S100AttributeEditor.AddInformationBindingCommand" />
+                                                    Command="local:S100AttributeEditorControl.AddInformationBindingCommand" />
                                         </StackPanel>
                                     </DockPanel>
 
@@ -48,7 +48,7 @@
                                         <i:Interaction.Triggers>
                                             <i:EventTrigger EventName="SelectionChanged">
                                                 <i:InvokeCommandAction 
-                                                    Command="local:S100AttributeEditor.InformationAssociationSelectedCommand"  
+                                                    Command="local:S100AttributeEditorControl.InformationAssociationSelectedCommand"  
                                                     CommandParameter="{Binding ElementName=PART_InformationBindingsList, Path=SelectedItem}"/>
                                             </i:EventTrigger>
                                         </i:Interaction.Triggers>
@@ -72,12 +72,12 @@
                                                                 <i:Interaction.Triggers>
                                                                     <i:EventTrigger EventName="Click">
                                                                         <i:InvokeCommandAction 
-                                                                            Command="local:S100AttributeEditor.QueryAssociationsCommand" 
+                                                                            Command="local:S100AttributeEditorControl.QueryAssociationsCommand" 
                                                                             CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ListViewItem}}"/>
                                                                     </i:EventTrigger>
                                                                     <i:EventTrigger EventName="Click">
                                                                         <i:InvokeCommandAction 
-                                                                            Command="local:S100AttributeEditor.DropDownContextMenuOpeningCommand"
+                                                                            Command="local:S100AttributeEditorControl.DropDownContextMenuOpeningCommand"
                                                                             CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=xctk:DropDownButton}}"/>
                                                                         <i:InvokeCommandAction />
                                                                     </i:EventTrigger>
@@ -88,12 +88,12 @@
                                                                         <i:Interaction.Triggers>
                                                                             <i:EventTrigger EventName="Loaded">
                                                                                 <i:InvokeCommandAction 
-                                                                                    Command="local:S100AttributeEditor.AssociationIdLoaded"
+                                                                                    Command="local:S100AttributeEditorControl.AssociationIdLoaded"
                                                                                     CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ListBox}}"/>
                                                                             </i:EventTrigger>
                                                                             <i:EventTrigger EventName="MouseDoubleClick">
                                                                                 <i:InvokeCommandAction
-                                                                                    Command="local:S100AttributeEditor.InformationAssociationIdDoubleClick"
+                                                                                    Command="local:S100AttributeEditorControl.InformationAssociationIdDoubleClick"
                                                                                     CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ListBox}}"/>
                                                                             </i:EventTrigger>
                                                                         </i:Interaction.Triggers>
@@ -118,13 +118,13 @@
                                                                 <i:Interaction.Triggers>
                                                                     <i:EventTrigger EventName="Click">
                                                                         <i:InvokeCommandAction 
-                                                                            Command="local:S100AttributeEditor.QueryInformationsCommand"
+                                                                            Command="local:S100AttributeEditorControl.QueryInformationsCommand"
                                                                             CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ListViewItem}}"/>
                                                                         <i:InvokeCommandAction />
                                                                     </i:EventTrigger>
                                                                     <i:EventTrigger EventName="Click">
                                                                         <i:InvokeCommandAction 
-                                                                            Command="local:S100AttributeEditor.DropDownContextMenuOpeningCommand"
+                                                                            Command="local:S100AttributeEditorControl.DropDownContextMenuOpeningCommand"
                                                                             CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=xctk:DropDownButton}}"/>
                                                                         <i:InvokeCommandAction />
                                                                     </i:EventTrigger>
@@ -135,12 +135,12 @@
                                                                         <i:Interaction.Triggers>
                                                                             <i:EventTrigger EventName="Loaded">
                                                                                 <i:InvokeCommandAction 
-                                                                                    Command="local:S100AttributeEditor.InformationIdLoaded"
+                                                                                    Command="local:S100AttributeEditorControl.InformationIdLoaded"
                                                                                     CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ListView}}"/>
                                                                             </i:EventTrigger>
                                                                             <i:EventTrigger EventName="MouseDoubleClick">
                                                                                 <i:InvokeCommandAction
-                                                                                    Command="local:S100AttributeEditor.InformationIdDoubleClick"
+                                                                                    Command="local:S100AttributeEditorControl.InformationIdDoubleClick"
                                                                                     CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ListView}}"/>
                                                                             </i:EventTrigger>
                                                                         </i:Interaction.Triggers>
@@ -184,7 +184,7 @@
                                             </ComboBox>
                                             <Button Margin="3,0,0,0" Padding="5,0" VerticalContentAlignment="Center"
                                                     Content="Add"
-                                                    Command="local:S100AttributeEditor.AddFeatureBindingCommand" />
+                                                    Command="local:S100AttributeEditorControl.AddFeatureBindingCommand" />
                                         </StackPanel>
                                     </DockPanel>
 
@@ -193,7 +193,7 @@
                                         <i:Interaction.Triggers>
                                             <i:EventTrigger EventName="SelectionChanged">
                                                 <i:InvokeCommandAction 
-                                                    Command="local:S100AttributeEditor.FeatureAssociationSelectedCommand"  
+                                                    Command="local:S100AttributeEditorControl.FeatureAssociationSelectedCommand"  
                                                     CommandParameter="{Binding ElementName=PART_FeatureBindingsList, Path=SelectedItem}"/>
                                             </i:EventTrigger>
                                         </i:Interaction.Triggers>
@@ -217,12 +217,12 @@
                                                                 <i:Interaction.Triggers>
                                                                     <i:EventTrigger EventName="Click">
                                                                         <i:InvokeCommandAction 
-                                                                            Command="local:S100AttributeEditor.QueryAssociationsCommand" 
+                                                                            Command="local:S100AttributeEditorControl.QueryAssociationsCommand" 
                                                                             CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ListViewItem}}"/>
                                                                     </i:EventTrigger>
                                                                     <i:EventTrigger EventName="Click">
                                                                         <i:InvokeCommandAction 
-                                                                            Command="local:S100AttributeEditor.DropDownContextMenuOpeningCommand"
+                                                                            Command="local:S100AttributeEditorControl.DropDownContextMenuOpeningCommand"
                                                                             CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=xctk:DropDownButton}}"/>
                                                                         <i:InvokeCommandAction />
                                                                     </i:EventTrigger>
@@ -233,12 +233,12 @@
                                                                         <i:Interaction.Triggers>
                                                                             <i:EventTrigger EventName="Loaded">
                                                                                 <i:InvokeCommandAction 
-                                                                                    Command="local:S100AttributeEditor.AssociationIdLoaded"
+                                                                                    Command="local:S100AttributeEditorControl.AssociationIdLoaded"
                                                                                     CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ListBox}}"/>
                                                                             </i:EventTrigger>
                                                                             <i:EventTrigger EventName="MouseDoubleClick">
                                                                                 <i:InvokeCommandAction
-                                                                                    Command="local:S100AttributeEditor.FeatureAssociationIdDoubleClick"
+                                                                                    Command="local:S100AttributeEditorControl.FeatureAssociationIdDoubleClick"
                                                                                     CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ListBox}}"/>
                                                                             </i:EventTrigger>
                                                                         </i:Interaction.Triggers>
@@ -263,13 +263,13 @@
                                                                 <i:Interaction.Triggers>
                                                                     <i:EventTrigger EventName="Click">
                                                                         <i:InvokeCommandAction 
-                                                                            Command="local:S100AttributeEditor.QueryFeaturesCommand"
+                                                                            Command="local:S100AttributeEditorControl.QueryFeaturesCommand"
                                                                             CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ListViewItem}}"/>
                                                                         <i:InvokeCommandAction />
                                                                     </i:EventTrigger>
                                                                     <i:EventTrigger EventName="Click">
                                                                         <i:InvokeCommandAction 
-                                                                            Command="local:S100AttributeEditor.DropDownContextMenuOpeningCommand"
+                                                                            Command="local:S100AttributeEditorControl.DropDownContextMenuOpeningCommand"
                                                                             CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=xctk:DropDownButton}}"/>
                                                                         <i:InvokeCommandAction />
                                                                     </i:EventTrigger>
@@ -280,12 +280,12 @@
                                                                         <i:Interaction.Triggers>
                                                                             <i:EventTrigger EventName="Loaded">
                                                                                 <i:InvokeCommandAction 
-                                                                                    Command="local:S100AttributeEditor.FeatureIdLoaded"
+                                                                                    Command="local:S100AttributeEditorControl.FeatureIdLoaded"
                                                                                     CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ListView}}"/>
                                                                             </i:EventTrigger>
                                                                             <i:EventTrigger EventName="MouseDoubleClick">
                                                                                 <i:InvokeCommandAction
-                                                                                    Command="local:S100AttributeEditor.FeatureIdDoubleClick"
+                                                                                    Command="local:S100AttributeEditorControl.FeatureIdDoubleClick"
                                                                                     CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ListView}}"/>
                                                                             </i:EventTrigger>
                                                                         </i:Interaction.Triggers>

@@ -1,4 +1,5 @@
 ﻿using S100Framework.DomainModel;
+using S100Framework.WPF;
 using S100Framework.WPF.ViewModel;
 using System.Collections.ObjectModel;
 using System.Windows;

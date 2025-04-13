@@ -3,6 +3,7 @@
 using S100Framework.DomainModel;
 using S100Framework.DomainModel.S101.FeatureTypes;
 using S100Framework.DomainModel.S124;
+using S100Framework.WPF;
 using S100Framework.WPF.ViewModel;
 using S100Framework.WPF.ViewModel.S101;
 using System.Collections.ObjectModel;
@@ -244,6 +245,8 @@ namespace VortexConceptApplication
                     }
                 }
             };
+
+            S100AttributeEditor.S100AttributeEditorViewModel = S100AttributeEditorViewModel;
         }
 
         private void _propertyGrid_PreparePropertyItem(object sender, PropertyItemEventArgs e) {
