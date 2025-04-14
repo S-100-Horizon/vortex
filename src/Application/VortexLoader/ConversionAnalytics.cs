@@ -24,7 +24,11 @@ namespace S100Framework.Applications
 
         internal void AddConverted(string tableName, Guid guid) {
             if (_tableNameToConvertedS57Objects.ContainsKey(tableName)) {
+                if (_tableNameToConvertedS57Objects[tableName].Contains(guid)) {
+                    throw new ArgumentException($"{guid} for {tableName} already converted.");
+                }
                 _tableNameToConvertedS57Objects[tableName].Add(guid);
+
             }
             else {
                 _tableNameToConvertedS57Objects[tableName] = new HashSet<Guid> { guid };
@@ -34,6 +38,10 @@ namespace S100Framework.Applications
 
         internal void AddConverted(string tableName, IList<Guid> guids) {
             if (_tableNameToConvertedS57Objects.ContainsKey(tableName)) {
+                var commonGuids = _tableNameToConvertedS57Objects[tableName].Intersect(guids).ToList();
+                if (commonGuids.Count > 0) {
+                    throw new ArgumentException($"Object already converted {string.Join(",", commonGuids)} in {tableName}.");
+                }
                 _tableNameToConvertedS57Objects[tableName].UnionWith(guids);
             }
             else {
