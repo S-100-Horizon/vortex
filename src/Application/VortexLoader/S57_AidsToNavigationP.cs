@@ -63,19 +63,11 @@ namespace S100Framework.Applications
                             
                             #region aidstonavigation
                             if (current.BCNSHP.HasValue) {
-                                if (current.BCNSHP.Value == -32767)
-                                    instance.beaconShape = EnumHelper.GetEnumValue<beaconShape>(-1);
-                                else {
-                                    instance.beaconShape = EnumHelper.GetEnumValue<beaconShape>(current.BCNSHP);
-                                }
+                                instance.beaconShape = EnumHelper.GetEnumValue<beaconShape>(current.BCNSHP);
                             }
 
                             if (current.CATCAM.HasValue) {
-                                if (current.CATCAM.Value == -32767)
-                                    instance.categoryOfCardinalMark = EnumHelper.GetEnumValue<categoryOfCardinalMark>(-1);
-                                else {
-                                    instance.categoryOfCardinalMark = EnumHelper.GetEnumValue<categoryOfCardinalMark>(current.CATCAM.Value);
-                                }
+                                instance.categoryOfCardinalMark = EnumHelper.GetEnumValue<categoryOfCardinalMark>(current.CATCAM.Value);
                             }
 
                             if (current.COLOUR != default) {
@@ -151,11 +143,7 @@ namespace S100Framework.Applications
 
 
                             if (current.CONVIS.HasValue) {
-                                if (current.CONVIS.Value == -32767)
-                                    instance.visualProminence = EnumHelper.GetEnumValue<visualProminence>(-1);
-                                else {
-                                    instance.visualProminence = EnumHelper.GetEnumValue<visualProminence>(current.CONVIS.Value);
-                                }
+                                instance.visualProminence = EnumHelper.GetEnumValue<visualProminence>(current.CONVIS.Value);
                             }
 
                             //if (plts_comp_scale != default) {
@@ -193,11 +181,7 @@ namespace S100Framework.Applications
 
                             #region aidstonavigation
                             if (current.BCNSHP.HasValue) {
-                                if (current.BCNSHP.Value == -32767)
-                                    instance.beaconShape = EnumHelper.GetEnumValue<beaconShape>(-1);
-                                else {
-                                    instance.beaconShape = EnumHelper.GetEnumValue<beaconShape>(current.BCNSHP);
-                                }
+                                instance.beaconShape = EnumHelper.GetEnumValue<beaconShape>(current.BCNSHP);
                             }
 
                             if (current.COLOUR != default) {
@@ -271,11 +255,7 @@ namespace S100Framework.Applications
                             }
 
                             if (current.CONVIS.HasValue) {
-                                if (current.CONVIS.Value == -32767)
-                                    instance.visualProminence = EnumHelper.GetEnumValue<visualProminence>(-1);
-                                else {
-                                    instance.visualProminence = EnumHelper.GetEnumValue<visualProminence>(current.CONVIS.Value);
-                                }
+                                instance.visualProminence = EnumHelper.GetEnumValue<visualProminence>(current.CONVIS.Value);
                             }
 
                             //if (plts_comp_scale != default) {
@@ -313,19 +293,11 @@ namespace S100Framework.Applications
 
                             #region aidstonavigation
                             if (current.BCNSHP.HasValue) {
-                                if (current.BCNSHP.Value == -32767)
-                                    instance.beaconShape = EnumHelper.GetEnumValue<beaconShape>(-1);
-                                else {
-                                    instance.beaconShape = EnumHelper.GetEnumValue<beaconShape>(current.BCNSHP);
-                                }
+                                instance.beaconShape = EnumHelper.GetEnumValue<beaconShape>(current.BCNSHP);
                             }
 
                             if (current.CATLAM.HasValue) {
-                                if (current.CATLAM.Value == -32767)
-                                    instance.categoryOfLateralMark = EnumHelper.GetEnumValue<categoryOfLateralMark>(-1);
-                                else {
-                                    instance.categoryOfLateralMark = EnumHelper.GetEnumValue<categoryOfLateralMark>(current.CATLAM.Value);
-                                }
+                                instance.categoryOfLateralMark = EnumHelper.GetEnumValue<categoryOfLateralMark>(current.CATLAM.Value);
                             }
 
                             if (current.COLOUR != default) {
@@ -400,11 +372,7 @@ namespace S100Framework.Applications
                             }
 
                             if (current.CONVIS.HasValue) {
-                                if (current.CONVIS.Value == -32767)
-                                    instance.visualProminence = EnumHelper.GetEnumValue<visualProminence>(-1);
-                                else {
-                                    instance.visualProminence = EnumHelper.GetEnumValue<visualProminence>(current.CONVIS.Value);
-                                }
+                                instance.visualProminence = EnumHelper.GetEnumValue<visualProminence>(current.CONVIS.Value);
                             }
 
                             //if (plts_comp_scale != default) {
@@ -446,11 +414,7 @@ namespace S100Framework.Applications
 
                             #region aidstonavigation
                             if (current.BCNSHP.HasValue) {
-                                if (current.BCNSHP.Value == -32767)
-                                    instance.beaconShape = EnumHelper.GetEnumValue<beaconShape>(-1);
-                                else {
-                                    instance.beaconShape = EnumHelper.GetEnumValue<beaconShape>(current.BCNSHP);
-                                }
+                                instance.beaconShape = EnumHelper.GetEnumValue<beaconShape>(current.BCNSHP);
                             }
 
                             if (current.COLOUR != default) {
@@ -522,11 +486,7 @@ namespace S100Framework.Applications
                             }
 
                             if (current.CONVIS.HasValue) {
-                                if (current.CONVIS.Value == -32767)
-                                    instance.visualProminence = EnumHelper.GetEnumValue<visualProminence>(-1);
-                                else {
-                                    instance.visualProminence = EnumHelper.GetEnumValue<visualProminence>(current.CONVIS.Value);
-                                }
+                                instance.visualProminence = EnumHelper.GetEnumValue<visualProminence>(current.CONVIS.Value);
                             }
 
                             //if (plts_comp_scale != default) {
@@ -567,19 +527,11 @@ namespace S100Framework.Applications
                             #region aidstonavigation
 
                             if (current.BCNSHP.HasValue) {
-                                if (current.BCNSHP.Value == -32767)
-                                    instance.beaconShape = EnumHelper.GetEnumValue<beaconShape>(-1);
-                                else {
-                                    instance.beaconShape = EnumHelper.GetEnumValue<beaconShape>(current.BCNSHP);
-                                }
+                                instance.beaconShape = EnumHelper.GetEnumValue<beaconShape>(current.BCNSHP);
                             }
 
                             if (current.CATSPM != default) {
-                                if (current.CATSPM == "-32767")
-                                    instance.categoryOfSpecialPurposeMark = EnumHelper.GetEnumValues<categoryOfSpecialPurposeMark>(-1);
-                                else {
-                                    instance.categoryOfSpecialPurposeMark = EnumHelper.GetEnumValues<categoryOfSpecialPurposeMark>(current.CATSPM);
-                                }
+                                instance.categoryOfSpecialPurposeMark = EnumHelper.GetEnumValues<categoryOfSpecialPurposeMark>(current.CATSPM);
                             }
 
                             if (current.COLOUR != default) {
@@ -651,11 +603,7 @@ namespace S100Framework.Applications
                             }
 
                             if (current.CONVIS.HasValue) {
-                                if (current.CONVIS.Value == -32767)
-                                    instance.visualProminence = EnumHelper.GetEnumValue<visualProminence>(-1);
-                                else {
-                                    instance.visualProminence = EnumHelper.GetEnumValue<visualProminence>(current.CONVIS.Value);
-                                }
+                                instance.visualProminence = EnumHelper.GetEnumValue<visualProminence>(current.CONVIS.Value);
                             }
 
                             //if (plts_comp_scale != default) {
@@ -695,19 +643,11 @@ namespace S100Framework.Applications
                             #region aidstonavigation
 
                             if (current.BOYSHP.HasValue) {
-                                if (current.BOYSHP.Value == -32767)
-                                    instance.buoyShape = EnumHelper.GetEnumValue<buoyShape>(-1);
-                                else {
-                                    instance.buoyShape = EnumHelper.GetEnumValue<buoyShape>(current.BOYSHP);
-                                }
+                                instance.buoyShape = EnumHelper.GetEnumValue<buoyShape>(current.BOYSHP);
                             }
 
                             if (current.CATCAM.HasValue) {
-                                if (current.CATCAM.Value == -32767)
-                                    instance.categoryOfCardinalMark = EnumHelper.GetEnumValue<categoryOfCardinalMark>(-1);
-                                else {
-                                    instance.categoryOfCardinalMark = EnumHelper.GetEnumValue<categoryOfCardinalMark>(current.CATCAM.Value);
-                                }
+                                instance.categoryOfCardinalMark = EnumHelper.GetEnumValue<categoryOfCardinalMark>(current.CATCAM.Value);
                             }
 
                             if (current.COLOUR != default) {
@@ -794,11 +734,7 @@ namespace S100Framework.Applications
                             var instance = new InstallationBuoy();
                             #region aidstonavigation
                             if (current.BOYSHP.HasValue) {
-                                if (current.BOYSHP.Value == -32767)
-                                    instance.buoyShape = EnumHelper.GetEnumValue<buoyShape>(-1);
-                                else {
-                                    instance.buoyShape = EnumHelper.GetEnumValue<buoyShape>(current.BOYSHP);
-                                }
+                                instance.buoyShape = EnumHelper.GetEnumValue<buoyShape>(current.BOYSHP);
                             }
 
                             if (current.CATINB.HasValue) {
@@ -845,11 +781,7 @@ namespace S100Framework.Applications
                             }
 
                             if (current.CONVIS.HasValue) {
-                                if (current.CONVIS.Value == -32767)
-                                    instance.visualProminence = EnumHelper.GetEnumValue<visualProminence>(-1);
-                                else {
-                                    instance.visualProminence = EnumHelper.GetEnumValue<visualProminence>(current.CONVIS.Value);
-                                }
+                                instance.visualProminence = EnumHelper.GetEnumValue<visualProminence>(current.CONVIS.Value);
                             }
 
                             //if (plts_comp_scale != default) {
@@ -888,11 +820,7 @@ namespace S100Framework.Applications
                             var instance = new IsolatedDangerBuoy();
                             #region aidstonavigation
                             if (current.BOYSHP.HasValue) {
-                                if (current.BOYSHP.Value == -32767)
-                                    instance.buoyShape = EnumHelper.GetEnumValue<buoyShape>(-1);
-                                else {
-                                    instance.buoyShape = EnumHelper.GetEnumValue<buoyShape>(current.BOYSHP);
-                                }
+                                instance.buoyShape = EnumHelper.GetEnumValue<buoyShape>(current.BOYSHP);
                             }
 
                             if (current.COLOUR != default) {
@@ -981,19 +909,11 @@ namespace S100Framework.Applications
                             #region aidstonavigation
 
                             if (current.BOYSHP.HasValue) {
-                                if (current.BOYSHP.Value == -32767)
-                                    instance.buoyShape = EnumHelper.GetEnumValue<buoyShape>(-1);
-                                else {
-                                    instance.buoyShape = EnumHelper.GetEnumValue<buoyShape>(current.BOYSHP);
-                                }
+                                instance.buoyShape = EnumHelper.GetEnumValue<buoyShape>(current.BOYSHP);
                             }
 
                             if (current.CATLAM.HasValue) {
-                                if (current.CATLAM.Value == -32767)
-                                    instance.categoryOfLateralMark = EnumHelper.GetEnumValue<categoryOfLateralMark>(-1);
-                                else {
-                                    instance.categoryOfLateralMark = EnumHelper.GetEnumValue<categoryOfLateralMark>(current.CATLAM.Value);
-                                }
+                                instance.categoryOfLateralMark = EnumHelper.GetEnumValue<categoryOfLateralMark>(current.CATLAM.Value);
                             }
 
                             if (current.COLOUR != default) {
@@ -1081,11 +1001,7 @@ namespace S100Framework.Applications
                             var instance = new SafeWaterBuoy();
                             #region aidstonavigation
                             if (current.BOYSHP.HasValue) {
-                                if (current.BOYSHP.Value == -32767)
-                                    instance.buoyShape = EnumHelper.GetEnumValue<buoyShape>(-1);
-                                else {
-                                    instance.buoyShape = EnumHelper.GetEnumValue<buoyShape>(current.BOYSHP);
-                                }
+                                instance.buoyShape = EnumHelper.GetEnumValue<buoyShape>(current.BOYSHP);
                             }
 
                             if (current.COLOUR != default) {
@@ -1174,19 +1090,11 @@ namespace S100Framework.Applications
 
                             #region aidstonavigation
                             if (current.BOYSHP.HasValue) {
-                                if (current.BOYSHP.Value == -32767)
-                                    instance.buoyShape = EnumHelper.GetEnumValue<buoyShape>(-1);
-                                else {
-                                    instance.buoyShape = EnumHelper.GetEnumValue<buoyShape>(current.BOYSHP);
-                                }
+                                instance.buoyShape = EnumHelper.GetEnumValue<buoyShape>(current.BOYSHP);
                             }
 
                             if (current.CATSPM != default) {
-                                if (current.CATSPM == "-32767")
-                                    instance.categoryOfSpecialPurposeMark = EnumHelper.GetEnumValues<categoryOfSpecialPurposeMark>(-1);
-                                else {
-                                    instance.categoryOfSpecialPurposeMark = EnumHelper.GetEnumValues<categoryOfSpecialPurposeMark>(current.CATSPM);
-                                }
+                                instance.categoryOfSpecialPurposeMark = EnumHelper.GetEnumValues<categoryOfSpecialPurposeMark>(current.CATSPM);
                             }
 
                             if (current.COLOUR != default) {
@@ -1275,11 +1183,7 @@ namespace S100Framework.Applications
 
                             #region aidstonavigation
                             if (current.CATSPM != default) {
-                                if (current.CATSPM == "-32767")
-                                    instance.categoryOfSpecialPurposeMark = EnumHelper.GetEnumValues<categoryOfSpecialPurposeMark>(-1);
-                                else {
-                                    instance.categoryOfSpecialPurposeMark = EnumHelper.GetEnumValues<categoryOfSpecialPurposeMark>(current.CATSPM);
-                                }
+                                instance.categoryOfSpecialPurposeMark = EnumHelper.GetEnumValues<categoryOfSpecialPurposeMark>(current.CATSPM);
                             }
 
                             if (current.COLOUR != default) {
@@ -1379,11 +1283,7 @@ namespace S100Framework.Applications
 
                             #region aidstonavigation
                             if (current.CATFOG.HasValue!= default) {
-                                if (current.CATFOG.Value == -32767)
-                                    instance.categoryOfFogSignal = EnumHelper.GetEnumValue<categoryOfFogSignal>(-1);
-                                else {
-                                    instance.categoryOfFogSignal = EnumHelper.GetEnumValue<categoryOfFogSignal>(current.CATFOG.Value);
-                                }
+                                instance.categoryOfFogSignal = EnumHelper.GetEnumValue<categoryOfFogSignal>(current.CATFOG.Value);
                             }
 
                             instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
@@ -1592,11 +1492,7 @@ namespace S100Framework.Applications
                             }
 
                             if (current.CONVIS.HasValue) {
-                                if (current.CONVIS.Value == -32767)
-                                    instance.visualProminence = EnumHelper.GetEnumValue<visualProminence>(-1);
-                                else {
-                                    instance.visualProminence = EnumHelper.GetEnumValue<visualProminence>(current.CONVIS.Value);
-                                }
+                                instance.visualProminence = EnumHelper.GetEnumValue<visualProminence>(current.CONVIS.Value);
                             }
 
                             //if (plts_comp_scale != default) {
@@ -1684,11 +1580,7 @@ namespace S100Framework.Applications
                             }
 
                             if (current.CONVIS.HasValue) {
-                                if (current.CONVIS.Value == -32767)
-                                    instance.visualProminence = EnumHelper.GetEnumValue<visualProminence>(-1);
-                                else {
-                                    instance.visualProminence = EnumHelper.GetEnumValue<visualProminence>(current.CONVIS.Value);
-                                }
+                                instance.visualProminence = EnumHelper.GetEnumValue<visualProminence>(current.CONVIS.Value);
                             }
 
                             //if (plts_comp_scale != default) {
@@ -1788,12 +1680,7 @@ namespace S100Framework.Applications
                             }
 
                             if (current.CATRAS != null) {
-                                if (current.CATRAS == -32767) {
-                                    instance.categoryOfRadarStation = EnumHelper.GetEnumValues<categoryOfRadarStation>(-1);
-                                }
-                                else {
-                                    instance.categoryOfRadarStation = EnumHelper.GetEnumValues<categoryOfRadarStation>(current.CATRAS);
-                                }
+                                instance.categoryOfRadarStation = EnumHelper.GetEnumValues<categoryOfRadarStation>(current.CATRAS);
                             }
                             
                             if (current.COMCHA != default) {
@@ -1862,12 +1749,7 @@ namespace S100Framework.Applications
                             }
 
                             if (current.CATROS != null) {
-                                if (current.CATROS == "-32767") {
-                                    instance.categoryOfRadioStation = EnumHelper.GetEnumValues<categoryOfRadioStation>(-1);
-                                }
-                                else {
-                                    instance.categoryOfRadioStation = EnumHelper.GetEnumValues<categoryOfRadioStation>(current.CATROS);
-                                }
+                                instance.categoryOfRadioStation = EnumHelper.GetEnumValues<categoryOfRadioStation>(current.CATROS);
                             }
 
                             if (current.COMCHA != default) {
@@ -1906,6 +1788,8 @@ namespace S100Framework.Applications
 
                             AddInformation(instance.information, feature);
 
+
+                            
                             buffer["ps"] = ps101;
                             buffer["code"] = instance.GetType().Name;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
@@ -1998,12 +1882,7 @@ namespace S100Framework.Applications
                             #region aidstonavigation
 
                             if (current.CATROS != null) {
-                                if (current.CATROS == "-32767") {
-                                    instance.categoryOfRadarTransponderBeacon = EnumHelper.GetEnumValue<categoryOfRadarTransponderBeacon>(-1);
-                                }
-                                else {
-                                    instance.categoryOfRadarTransponderBeacon = EnumHelper.GetEnumValue<categoryOfRadarTransponderBeacon>(current.CATROS);
-                                }
+                                instance.categoryOfRadarTransponderBeacon = EnumHelper.GetEnumValue<categoryOfRadarTransponderBeacon>(current.CATROS);
                             }
 
                             instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
@@ -2097,7 +1976,11 @@ namespace S100Framework.Applications
                                 topmark shape information populated in the S-57 attribute INFORM will be converted to the S-101
                                 complex attribute shape information. See also clause 12.6.
                             */
-                            throw new NotImplementedException("Master topmarks");
+
+
+
+
+                            //throw new NotImplementedException("Master topmarks");
                             convertedCount++;
 
                         }
@@ -2110,6 +1993,7 @@ namespace S100Framework.Applications
                 }
             }
             Logger.Current.DataTotalCount(tableName, recordCount, convertedCount);
+
         }
 
         internal static bool TryGetRadarWaveLengths(string radwal, out List<radarWaveLength> radarWaveLengths) {
@@ -2148,12 +2032,7 @@ namespace S100Framework.Applications
             var instance = new LightAllAround();
 
             if (current.CATLIT != null) {
-                if (current.CATLIT == "-32767") {
-                    instance.categoryOfLight = EnumHelper.GetEnumValues<categoryOfLight>(-1);
-                }
-                else {
-                    instance.categoryOfLight = EnumHelper.GetEnumValues<categoryOfLight>(current.CATLIT);
-                }
+                instance.categoryOfLight = EnumHelper.GetEnumValues<categoryOfLight>(current.CATLIT);
             }
 
             if (current.COLOUR != default) {

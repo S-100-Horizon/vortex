@@ -12,10 +12,8 @@ using IO = System.IO;
 
 namespace TestNisImporter
 {
-    public class TestNisImporter
-    {
-        internal struct Sequence
-        {
+    public class TestNisImporter {
+        internal struct Sequence {
             public decimal Duration { get; set; }
             public int Status { get; set; }
 
@@ -24,13 +22,20 @@ namespace TestNisImporter
                 Status = status;
             }
         }
-        
+
         private readonly ITestOutputHelper _output;
 
         public TestNisImporter(ITestOutputHelper output) {
             this._output = output;
             ArcGIS.Core.Hosting.Host.Initialize();
         }
+
+        [Fact]
+        public void TestStatus() {
+            var status = "2,15";
+            Assert.True(ImporterNIS.GetStatus(status).Count == 2, "");
+        }
+
 
         [Fact]
         public void TestRadarWaveLength() {

@@ -94,6 +94,7 @@ namespace S100Framework.Applications
             _logger = new LoggerConfiguration()
                 .MinimumLevel.Verbose()  
                 .WriteTo.Logger(lc => lc
+                    .WriteTo.Console()
                     .Filter.ByIncludingOnly(e => e.Level < (LogEventLevel)6)
                     .Enrich.WithExceptionData()
                     .WriteTo.File(System.IO.Path.Combine(_logDir, @"Vortex", "Loader",$"{_dateTimeString}", "Loader_System.log"),

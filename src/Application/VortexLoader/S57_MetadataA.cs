@@ -133,7 +133,9 @@ namespace S100Framework.Applications
 
                             var instance = new QualityOfBathymetricData();
                             // TODO: categoryOfTemporalVariation
-                            //instance.categoryOfTemporalVariation = EnumHelper.GetEnumValue<categoryOfTemporalVariation>()
+                            
+
+
 
                             buffer["ps"] = ps101;
                             buffer["code"] = instance.GetType().Name;

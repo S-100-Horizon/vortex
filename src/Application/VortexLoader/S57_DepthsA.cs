@@ -77,21 +77,13 @@ namespace S100Framework.Applications
                             }
 
                             if (current.RESTRN != default) {
-                                if (current.RESTRN == "-32767")
-                                    instance.restriction = EnumHelper.GetEnumValues<restriction>(-1);
-                                else {
-                                    instance.restriction = EnumHelper.GetEnumValues<restriction>(current.RESTRN);
-                                }
+                                instance.restriction = EnumHelper.GetEnumValues<restriction>(current.RESTRN);
                             }
 
                             // The S-57 attribute QUASOU for DEPARE will not be converted. It is considered that this attribute is
                             // not relevant for Depth Area in S - 101.
                             //if (current.QUASOU != default) {
-                            //    if (current.QUASOU == "-32767")
-                            //        instance.qualityOfVerticalMeasurement = EnumHelper.GetEnumValue<qualityOfVerticalMeasurement>(-1);
-                            //    else {
-                            //        instance.qualityOfVerticalMeasurement = EnumHelper.GetEnumValue<qualityOfVerticalMeasurement>(current);
-                            //    }
+                            //    instance.qualityOfVerticalMeasurement = EnumHelper.GetEnumValue<qualityOfVerticalMeasurement>(current);
                             //}
 
                             //if (current.SOUACC.HasValue) {

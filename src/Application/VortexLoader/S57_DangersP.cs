@@ -87,10 +87,7 @@ namespace S100Framework.Applications
                         break;
 
                     case 10: { // FSHFAC Fishing facilities
-                            var instance = new FishingFacility {
-
-                            };
-
+                            var instance = new FishingFacility {};
 
                             //if (current.PLTS_COMP_SCALE.HasValue) {
                             //    instance.scaleMinimum = current.PLTS_COMP_SCALE.Value;
@@ -166,12 +163,7 @@ namespace S100Framework.Applications
                                 var instance = new Obstruction();
 
                                 if (current.CATOBS.HasValue) {
-                                    if (current.CATOBS.Value == -32767)
-                                        instance.categoryOfObstruction = EnumHelper.GetEnumValue<categoryOfObstruction>(-1);
-                                    else {
-
-                                        instance.categoryOfObstruction = EnumHelper.GetEnumValue<categoryOfObstruction>(current.CATOBS.Value);
-                                    }
+                                    instance.categoryOfObstruction = EnumHelper.GetEnumValue<categoryOfObstruction>(current.CATOBS.Value);
                                 }
 
 
@@ -227,11 +219,7 @@ namespace S100Framework.Applications
                                 }
 
                                 if (current.WATLEV.HasValue) {
-                                    if (current.WATLEV.Value == -32767)
-                                        instance.waterLevelEffect = EnumHelper.GetEnumValue<waterLevelEffect>(-1);
-                                    else {
-                                        instance.waterLevelEffect = EnumHelper.GetEnumValue<waterLevelEffect>(current.WATLEV);
-                                    }
+                                    instance.waterLevelEffect = EnumHelper.GetEnumValue<waterLevelEffect>(current.WATLEV);
                                 }
 
                                 //if (current.PLTS_COMP_SCALE.HasValue) {
@@ -327,11 +315,7 @@ namespace S100Framework.Applications
 
 
                             if (current.WATLEV.HasValue) {
-                                if (current.WATLEV.Value == -32767)
-                                    instance.waterLevelEffect = EnumHelper.GetEnumValue<waterLevelEffect>(-1);
-                                else {
-                                    instance.waterLevelEffect = EnumHelper.GetEnumValue<waterLevelEffect>(current.WATLEV);
-                                }
+                                instance.waterLevelEffect = EnumHelper.GetEnumValue<waterLevelEffect>(current.WATLEV);
                             }
 
                             //if (current.PLTS_COMP_SCALE.HasValue) {
@@ -365,11 +349,7 @@ namespace S100Framework.Applications
                             };
 
                             if (current.CATWAT.HasValue) {
-                                if (current.CATWAT.Value == -32767)
-                                    instance.categoryOfWaterTurbulence = EnumHelper.GetEnumValue<categoryOfWaterTurbulence>(-1);
-                                else {
-                                    instance.categoryOfWaterTurbulence = EnumHelper.GetEnumValue<categoryOfWaterTurbulence>(current.CATWAT);
-                                }
+                                instance.categoryOfWaterTurbulence = EnumHelper.GetEnumValue<categoryOfWaterTurbulence>(current.CATWAT);
                             }
 
 
@@ -403,19 +383,11 @@ namespace S100Framework.Applications
                             }
 
                             if (current.WATLEV.HasValue) {
-                                if (current.WATLEV.Value == -32767)
-                                    instance.waterLevelEffect = EnumHelper.GetEnumValue<waterLevelEffect>(-1);
-                                else {
-                                    instance.waterLevelEffect = EnumHelper.GetEnumValue<waterLevelEffect>(current.WATLEV);
-                                }
+                                instance.waterLevelEffect = EnumHelper.GetEnumValue<waterLevelEffect>(current.WATLEV);
                             }
 
                             if (current.CATWRK.HasValue) {
-                                if (current.CATWRK.Value == -32767)
-                                    instance.categoryOfWreck = EnumHelper.GetEnumValue<categoryOfWreck>(-1);
-                                else {
-                                    instance.categoryOfWreck = EnumHelper.GetEnumValue<categoryOfWreck>(current.CATWRK.Value);
-                                }
+                                instance.categoryOfWreck = EnumHelper.GetEnumValue<categoryOfWreck>(current.CATWRK.Value);
                             }
 
                             if (current.VALSOU.HasValue) {

@@ -26,7 +26,7 @@ namespace S100Framework.Applications
         }
 
         internal static string GetName(this Geodatabase geodatabase, string name) {
-            if (!_isInitialized) { 
+            if (!_isInitialized) {
                 geodatabase.Initialize();
                 //_isInitialized = true;
             }
@@ -34,9 +34,21 @@ namespace S100Framework.Applications
             var tableName = _layerDefinitions.FirstOrDefault<FeatureClassDefinition>(e => e.GetAliasName().ToLower().Equals(name.ToLower(), StringComparison.InvariantCultureIgnoreCase))?.GetName();
             if (tableName == null) {
                 tableName = _tableDefinitions.FirstOrDefault<TableDefinition>(e => e.GetAliasName().ToLower().Equals(name.ToLower(), StringComparison.InvariantCultureIgnoreCase))?.GetName();
-
             }
             return tableName;
+        }
+        internal static bool IsFeatureClass(this Geodatabase geodatabase, string name) {
+            if (!_isInitialized) {
+                geodatabase.Initialize();
+                //_isInitialized = true;
+            }
+
+            var tableName = _layerDefinitions.FirstOrDefault<FeatureClassDefinition>(e => e.GetAliasName().ToLower().Equals(name.ToLower(), StringComparison.InvariantCultureIgnoreCase) || e.GetName().ToLower().Equals(name.ToLower(), StringComparison.InvariantCultureIgnoreCase))?.GetName();
+            if (tableName == null) {
+                tableName = _tableDefinitions.FirstOrDefault<TableDefinition>(e => e.GetAliasName().ToLower().Equals(name.ToLower(), StringComparison.InvariantCultureIgnoreCase) || e.GetName().ToLower().Equals(name.ToLower(), StringComparison.InvariantCultureIgnoreCase))?.GetName();
+                return false;
+            }
+            return true;
         }
 
         internal static bool IsTraditionallyVersioned(this Geodatabase geodatabase) {

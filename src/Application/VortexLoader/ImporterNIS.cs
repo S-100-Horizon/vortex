@@ -33,6 +33,7 @@ namespace S100Framework.Applications
         internal static RelatedEquipment relatedEquipment;
 
         public static bool Load(Geodatabase destination, ParserResult<Options> arguments) {
+            Logger.Current.Information("Starting");
             Func<Geodatabase> createGeodatabase = () => { throw new NotImplementedException(); };
 
             // default value - overwritten by args
@@ -122,6 +123,7 @@ namespace S100Framework.Applications
                     Store(() => S57_ProductCoverage(source, destination, filter));
                 }
                 else {
+                    
                     Store(() => S57_MetadataA(source, destination, filter));
                     Store(() => S57_AidsToNavigationP(source, destination, filter));
                     Store(() => S57_DangersL(source, destination, filter));
@@ -158,7 +160,7 @@ namespace S100Framework.Applications
                     Store(() => S57_SoundingsP(source, destination, filter));
 
                 }
-
+                Logger.Current.Information("Done");
 
                 return true;
             }
@@ -219,11 +221,20 @@ namespace S100Framework.Applications
 
             var sigseq = current.SIGSEQ;
 
+            lightCharacteristic lightCharacteristicsValue = default;
+
+            if (current.LITCHR.HasValue) {
+                //if (current.LITCHR.Value == -32767) {
+                //    lightCharacteristicsValue = EnumHelper.GetEnumValue<lightCharacteristic>(-1);
+                //} else {
+                    lightCharacteristicsValue = EnumHelper.GetEnumValue<lightCharacteristic>(current.LITCHR.Value);
+                //}
+            }
 
             var signalSequences = GetSignalSequences(current.SIGSEQ);
 
             var rhythmOfLight = new rhythmOfLight() {
-                lightCharacteristic = EnumHelper.GetEnumValue<lightCharacteristic>(current.LITCHR.Value),
+                lightCharacteristic = lightCharacteristicsValue,
                 signalGroup = signalGroupN,
                 signalPeriod = signalPeriodN,
                 signalSequence = signalSequences
@@ -386,7 +397,7 @@ namespace S100Framework.Applications
                         other than the allowable values will not be converted across to S-101. Data Producers are advised to
                         check any populated values for STATUS on LNDARE and amend appropriately. */
                     foreach (var c in featureStatus.Split(',', StringSplitOptions.RemoveEmptyEntries)) {
-                        status? e = featureStatus.ToLowerInvariant() switch {
+                        status? e = c.ToLowerInvariant() switch {
                             "1" => status.Permanent,
                             "2" => status.Occasional,
                             "3" => status.Recommended,

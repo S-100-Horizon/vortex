@@ -344,12 +344,7 @@ namespace S100Framework.Applications
                     case 95: { // MARCUL_MarineFarmCulture
                             var instance = new MarineFarmCulture();
                             if (current.CATMFA != null) {
-                                if (current.CATMFA.Value == -32767) {
-                                    instance.categoryOfMarineFarmCulture = EnumHelper.GetEnumValue<categoryOfMarineFarmCulture>(-1);
-                                }
-                                else {
-                                    instance.categoryOfMarineFarmCulture = EnumHelper.GetEnumValue<categoryOfMarineFarmCulture>(current.CATMFA);
-                                }
+                                instance.categoryOfMarineFarmCulture = EnumHelper.GetEnumValue<categoryOfMarineFarmCulture>(current.CATMFA);
                             }
 
                             if (current.EXPSOU.HasValue) {
@@ -374,11 +369,7 @@ namespace S100Framework.Applications
                             }
 
                             if (current.QUASOU != default) {
-                                if (current.QUASOU == "-32767")
-                                    instance.qualityOfVerticalMeasurement = EnumHelper.GetEnumValues<qualityOfVerticalMeasurement>("-1");
-                                else {
-                                    instance.qualityOfVerticalMeasurement = EnumHelper.GetEnumValues<qualityOfVerticalMeasurement>(current.QUASOU);
-                                }
+                                instance.qualityOfVerticalMeasurement = EnumHelper.GetEnumValues<qualityOfVerticalMeasurement>(current.QUASOU);
                             }
 
                             if (current.RESTRN != default) {
@@ -402,11 +393,7 @@ namespace S100Framework.Applications
                             // TODO: VesselSpeedLimit
 
                             if (current.WATLEV.HasValue) {
-                                if (current.WATLEV.Value == -32767)
-                                    instance.waterLevelEffect = EnumHelper.GetEnumValue<waterLevelEffect>(-1);
-                                else {
-                                    instance.waterLevelEffect = EnumHelper.GetEnumValue<waterLevelEffect>(current.WATLEV);
-                                }
+                                instance.waterLevelEffect = EnumHelper.GetEnumValue<waterLevelEffect>(current.WATLEV);
                             }
 
                             //if (plts_comp_scale != default) {

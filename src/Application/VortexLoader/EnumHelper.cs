@@ -1,4 +1,6 @@
-﻿using System;
+﻿using ArcGIS.Core.Data.UtilityNetwork.Trace;
+using ArcGIS.Desktop.Core;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,8 +12,15 @@ namespace S100Framework.Applications
     {
         public static TEnum GetEnumValue<TEnum>(object value) where TEnum : struct, Enum {
             if (value is string strValue) {
-
-                if (Enum.TryParse(strValue, true, out TEnum enumValue) && Enum.IsDefined(typeof(TEnum), enumValue)) {
+                if (value.ToString() == "-32767") {
+                    if (Enum.TryParse("-1", true, out TEnum enumValueUnknown)) {
+                        return enumValueUnknown;
+                    }
+                    else {
+                        throw new ArgumentException($"Invalid string value for enum {typeof(TEnum).Name}: {strValue}");
+                    }
+                }
+                else if (Enum.TryParse(strValue, true, out TEnum enumValue) && Enum.IsDefined(typeof(TEnum), enumValue)) {
                     return enumValue;
                 }
                 else {
@@ -19,7 +28,11 @@ namespace S100Framework.Applications
                 }
             }
             else if (value is int intValue) {
-                if (Enum.IsDefined(typeof(TEnum), intValue)) {
+                if (intValue == -32767) {
+                    return (TEnum)(object)-1;
+                }
+
+                else if (Enum.IsDefined(typeof(TEnum), intValue)) {
                     return (TEnum)(object)intValue;
                 }
                 else {
@@ -38,7 +51,15 @@ namespace S100Framework.Applications
                 var values = strValue.Split(new[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
 
                 foreach (var item in values) {
-                    if (Enum.TryParse(item.Trim(), true, out TEnum enumValue) && Enum.IsDefined(typeof(TEnum), enumValue)) {
+                    if (item == "-32767") {
+                        if (Enum.TryParse("-1", true, out TEnum enumValueUnknown)) {
+                            result.Add(enumValueUnknown);
+                        }
+                        else {
+                            throw new ArgumentException($"Invalid string value for enum {typeof(TEnum).Name}: {item.Trim()}");
+                        }
+                    }
+                    else if (Enum.TryParse(item.Trim(), true, out TEnum enumValue) && Enum.IsDefined(typeof(TEnum), enumValue)) {
                         result.Add(enumValue);
                     }
                     else {
@@ -46,8 +67,12 @@ namespace S100Framework.Applications
                     }
                 }
             }
+
             else if (value is int intValue) {
-                if (Enum.IsDefined(typeof(TEnum), intValue)) {
+                if (intValue == -32767) {
+                    result.Add((TEnum)(object)-1);
+                }
+                else if (Enum.IsDefined(typeof(TEnum), intValue)) {
                     result.Add((TEnum)(object)intValue);
                 }
                 else {
@@ -60,12 +85,12 @@ namespace S100Framework.Applications
 
             return result;
         }
-
-
     }
 
-
-
-
-
 }
+
+
+
+
+
+
