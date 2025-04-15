@@ -3,10 +3,13 @@
 using ActiproSoftware.Windows.Extensions;
 using ArcGIS.Core.Data;
 using ArcGIS.Core.Events;
+using ArcGIS.Desktop.Editing;
 using ArcGIS.Desktop.Editing.Attributes;
 using ArcGIS.Desktop.Editing.Events;
 using ArcGIS.Desktop.Framework;
 using ArcGIS.Desktop.Framework.Threading.Tasks;
+using ArcGIS.Desktop.Internal.Editing.Attributes;
+using ArcGIS.Desktop.Internal.Mapping;
 using ArcGIS.Desktop.Mapping;
 using S100Framework.Catalogues;
 using S100Framework.DomainModel;
@@ -24,6 +27,7 @@ using System.Text.Json;
 using System.Text.Json.Nodes;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Data;
 using System.Windows.Input;
 using System.Xml.Linq;
 using IO = System.IO;
@@ -34,6 +38,8 @@ namespace VortexProAppModule
 
     internal class S100AttributeTabViewModel : AttributeTabEmbeddableControl
     {
+        const string S100AttributesUpdate = "S100AttributesUpdate";
+
         private static CultureInfo culture = new("en-GB", false);
 
         public class InspectorHandle
@@ -134,7 +140,7 @@ namespace VortexProAppModule
 
                     await QueuedTask.Run(() => {
                         inspector.Apply();
-                    });
+                    }, TaskCreationOptions.None);
                 }
             });
 
@@ -168,7 +174,7 @@ namespace VortexProAppModule
                     }
 
                     return objectid.ToArray();
-                });
+                }, TaskCreationOptions.None);
                 return result;
             };
 
@@ -203,7 +209,7 @@ namespace VortexProAppModule
                     }
 
                     return objectid.ToArray();
-                });
+                }, TaskCreationOptions.None);
                 return result;
             };
 
@@ -315,7 +321,7 @@ namespace VortexProAppModule
                         FileGeodatabaseConnectionPath fileGeodatabase => _catalogues.SingleOrDefault(e => e.Equals(IO.Path.GetFileNameWithoutExtension(fileGeodatabase.Path.AbsolutePath), StringComparison.InvariantCultureIgnoreCase) || e.Replace("-", string.Empty).Equals(IO.Path.GetFileNameWithoutExtension(fileGeodatabase.Path.AbsolutePath), StringComparison.InvariantCultureIgnoreCase)),
                         _ => null,
                     };
-                });
+                }, TaskCreationOptions.None);
 
                 System.Windows.Application.Current.Dispatcher.Invoke(() => {
                     if (!string.IsNullOrEmpty(catalogue)) {
@@ -370,27 +376,96 @@ namespace VortexProAppModule
 
                     SelectedObjectViewModel selectedObjectViewModel = null;
                     if (instance is IInformationBindingDefinition) {
-                        this.SelectedInformationProperty = new SelectedInformationObjectViewModel((InformationViewModel)viewmodel, (IInformationBindingDefinition)instance);
+                        var informationViewModel = (InformationViewModel)viewmodel;
+
+                        this.SelectedInformationProperty = new SelectedInformationObjectViewModel(informationViewModel, (IInformationBindingDefinition)instance);
                         selectedObjectViewModel = this.SelectedInformationProperty;
+
+                        using var table = inspector.OpenDataset<Table>("informationBinding");
+
+                        var q = new QueryFilter {
+                            WhereClause = $"PID = '{informationViewModel.PID}'",
+                        };
+                        using var cursor = table.Search(q, true);
+                        while (cursor.MoveNext()) {
+                            var row = cursor.Current;
+                            var binding = new InformationBindingViewModel {
+                                UID = row.GetGlobalID(),
+                            }.Load(new informationBinding {
+                                roleType = Convert.ToString(row["roleType"]),
+                                association = Convert.ToString(row["association"]),
+                                role = Convert.ToString(row["role"]),
+                                associationId = Convert.ToString(row["associationId"]),
+                                informationId = Convert.ToString(row["informationId"]),
+                                PID = informationViewModel.PID,
+                            });
+                            this.SelectedInformationProperty.InformationBindings.Add(binding);
+                        }
                     }
                     if (instance is IFeatureBindingDefinition) {
-                        this.SelectedFeatureProperty = new SelectedFeatureObjectViewModel((FeatureViewModel)viewmodel, (IFeatureBindingDefinition)instance);
+                        var featureViewModel = (FeatureViewModel)viewmodel;
+
+
+                        this.SelectedFeatureProperty = new SelectedFeatureObjectViewModel(featureViewModel, (IFeatureBindingDefinition)instance);
                         selectedObjectViewModel = this.SelectedFeatureProperty;
-                    }
 
-                    selectedObjectViewModel.PropertyChanged += (object sender, PropertyChangedEventArgs e) => {
-                        var json = ((S100Framework.WPF.ViewModel.ViewModelBase)sender).Serialize();
+                        //  informationBinding
+                        {
+                            using var table = inspector.OpenDataset<Table>("informationBinding");
 
-                        if (DBNull.Value != inspector["json"]) {
-                            if (string.Compare(json, Convert.ToString(inspector["json"]), true) == 0)
-                                return;
+                            var q = new QueryFilter {
+                                WhereClause = $"PID = '{featureViewModel.PID}'",
+                            };
+                            using var cursor = table.Search(q, true);
+                            while (cursor.MoveNext()) {
+                                var row = cursor.Current;
+                                var binding = new InformationBindingViewModel {
+                                    UID = row.GetGlobalID(),
+                                }.Load(new informationBinding {
+                                    roleType = Convert.ToString(row["roleType"]),
+                                    association = Convert.ToString(row["association"]),
+                                    role = Convert.ToString(row["role"]),
+                                    associationId = Convert.ToString(row["associationId"]),
+                                    informationId = Convert.ToString(row["informationId"]),
+                                    PID = featureViewModel.PID,
+                                });
+                                this.SelectedFeatureProperty.InformationBindings.Add(binding);
+                            }
                         }
 
-                        inspector["json"] = json;
-                    };
+                        //  featureBinding
+                        {
+                            using var table = inspector.OpenDataset<Table>("featureBinding");
+
+                            var q = new QueryFilter {
+                                WhereClause = $"PID = '{featureViewModel.PID}'",
+                            };
+                            using var cursor = table.Search(q, true);
+                            while (cursor.MoveNext()) {
+                                var row = cursor.Current;
+                                var binding = new FeatureBindingViewModel {
+                                    UID = row.GetGlobalID(),
+                                }.Load(new featureBinding {
+                                    roleType = Convert.ToString(row["roleType"]),
+                                    association = Convert.ToString(row["association"]),
+                                    role = Convert.ToString(row["role"]),
+                                    associationId = Convert.ToString(row["associationId"]),
+                                    featureId = Convert.ToString(row["featureId"]),
+                                    PID = featureViewModel.PID,
+                                });
+                                this.SelectedFeatureProperty.FeatureBindings.Add(binding);
+                            }
+                        }
+                    }
+
+                    selectedObjectViewModel.PropertyChanged += this.OnPropertyChanged;
 
                     selectedObjectViewModel.CollectionChanged += async (object sender, NotifyCollectionChangedEventArgs e) => {
                         await QueuedTask.Run(() => {
+                            var editOperation = new EditOperation {
+                                Name = S100AttributesUpdate,
+                            };
+
                             using var fc = Inspector.MapMember switch {
                                 FeatureLayer l => l.GetFeatureClass(),
                                 StandaloneTable t => t.GetTable(),
@@ -404,41 +479,49 @@ namespace VortexProAppModule
 
                             if (sender is ICollection<InformationBindingViewModel>) {
                                 using var table = geodatabase.OpenDataset<Table>(syntax.QualifyTableName(tableNames.Item1, tableNames.Item2, "InformationBinding"));
-                                using var buffer = table.CreateRowBuffer();
 
-                                buffer["ps"] = SelectedSchema;
+                                foreach (var b in e.NewItems) {
+                                    var binding = (InformationBindingViewModel)b;
+
+                                    var token = editOperation.Create(table, new Dictionary<string, object> {
+                                        {"ps", inspector["ps"] },
+                                        {"roleType", Enum.GetName<roleType>(binding.roleType.Value)},
+                                        {"association", binding.association},
+                                        {"role", binding.role },
+                                        {"pid", binding.PID },
+                                    });
+
+                                    if (!editOperation.IsEmpty) {
+                                        if (editOperation.Execute())
+                                            binding.UID = token.GlobalID;
+                                    }
+                                }
+                            }
+                            if (sender is ICollection<FeatureBindingViewModel>) {
+                                using var table = geodatabase.OpenDataset<Table>(syntax.QualifyTableName(tableNames.Item1, tableNames.Item2, "FeatureBinding"));
 
                                 foreach (var b in e.NewItems) {
                                     var binding = (FeatureBindingViewModel)b;
-                                    buffer["roleType"] = Enum.GetName<roleType>(binding.roleType.Value);
-                                    buffer["association"] = binding.association;
-                                    buffer["role"] = binding.role;
 
-                                    using var row = table.CreateRow(buffer);
-                                    binding.UID = row.GetGlobalID();
+                                    var token = editOperation.Create(table, new Dictionary<string, object> {
+                                        {"ps", inspector["ps"] },
+                                        {"roleType", Enum.GetName<roleType>(binding.roleType.Value)},
+                                        {"association", binding.association},
+                                        {"role", binding.role },
+                                        {"pid", binding.PID },
+                                    });
+
+                                    if (!editOperation.IsEmpty) {
+                                        if (editOperation.Execute())
+                                            binding.UID = token.GlobalID;
+                                    }
                                 }
-                            };
-                            if (sender is ICollection<FeatureBindingViewModel>) {
-                                using var table = geodatabase.OpenDataset<Table>(syntax.QualifyTableName(tableNames.Item1, tableNames.Item2, "FeatureBinding"));
-                                using var buffer = table.CreateRowBuffer();
-
-                                buffer["ps"] = SelectedSchema;
-
-                                foreach (var b in e.NewItems) {
-                                    var binding =(FeatureBindingViewModel)b;
-                                    buffer["roleType"] = Enum.GetName<roleType>(binding.roleType.Value);
-                                    buffer["association"] = binding.association;
-                                    buffer["role"] = binding.role;
-                                    
-                                    using var row = table.CreateRow(buffer);
-                                    binding.UID = row.GetGlobalID();
-                                }
-                            }                            
-                        });
+                            }
+                        }, TaskCreationOptions.None);
                     };
 
                     return viewmodel;
-                }));
+                }), TaskCreationOptions.None);
 
                 if (SelectedProperty == default) {
                     SelectedSchema = default;
@@ -454,6 +537,56 @@ namespace VortexProAppModule
                 NotifyPropertyChanged(() => IsCreateButtonEnabled);
             }
             catch { }
+        }
+
+        private async void OnPropertyChanged(object sender, PropertyChangedEventArgs e) {
+            await QueuedTask.Run(() => {
+                var editOperation = new EditOperation {
+                    Name = S100AttributesUpdate,
+                };
+
+                if (sender is ViewModelBase viewModel) {
+                    var json = viewModel.Serialize();
+
+                    if (DBNull.Value != Inspector["json"]) {
+                        if (string.Compare(json, Convert.ToString(Inspector["json"]), true) == 0)
+                            return;
+                    }
+
+                    Inspector["json"] = json;
+                }
+                if (sender is InformationBindingViewModel informationBinding) {
+                    using var table = Inspector.OpenDataset<Table>("informationBinding");
+
+                    var q = new QueryFilter {
+                        WhereClause = $"GLOBALID = '{informationBinding.UID:B}'",
+                    };
+                    using var cursor = table.Search(q, false);
+                    if (cursor.MoveNext()) {
+                        editOperation.Modify(cursor.Current, new Dictionary<string, object> {
+                                        { "associationid", informationBinding.associationId },
+                                        { "informationid", informationBinding.informationId },
+                                    });
+                    }
+                }
+                if (sender is FeatureBindingViewModel featureBinding) {
+                    using var table = Inspector.OpenDataset<Table>("featureBinding");
+
+                    var q = new QueryFilter {
+                        WhereClause = $"GLOBALID = '{featureBinding.UID:B}'",
+                    };
+                    using var cursor = table.Search(q, false);
+                    if (cursor.MoveNext()) {
+                        editOperation.Modify(cursor.Current, new Dictionary<string, object> {
+                                        { "associationid", featureBinding.associationId },
+                                        { "informationid", featureBinding.featureId },
+                                    });
+                    }
+                }
+                if (!editOperation.IsEmpty) {
+                    var success = editOperation.Execute();
+                }
+            }, TaskCreationOptions.None);
         }
 
         private Type FeatureTypeSelector(Inspector inspector, string schema) {
@@ -642,18 +775,18 @@ namespace VortexProAppModule
                 using var association = geodatabase.OpenDataset<Table>(associationName);
 
                 var q = new QueryFilter {
-                    WhereClause = $"ps = '{this.SelectedSchema}' AND code = '{e.association}'",
+                    WhereClause = $"ps = '{Inspector["ps"]}' AND code = '{e.association}'",
                 };
 
                 var ids = new List<AssociationId>();
 
                 using var cursor = association.Search(q, true);
                 while (cursor.MoveNext()) {
-                    ids.Add(new AssociationId($"{Convert.ToString(cursor.Current["name"])}"));                    
+                    ids.Add(new AssociationId($"{Convert.ToString(cursor.Current["name"])}"));
                 }
 
                 return ids;
-            });
+            }, TaskCreationOptions.None);
 
             if (rows.Any()) {
                 System.Windows.Application.Current.Dispatcher.Invoke(() => {
@@ -747,5 +880,25 @@ namespace VortexProAppModule
         }
 
         private static JsonValueKind GetSegmentKind(string pathSegment) => int.TryParse(pathSegment, out _) ? JsonValueKind.Array : JsonValueKind.Object;
+    }
+}
+
+namespace ArcGIS.Desktop.Editing.Attributes
+{
+    public static class Extension
+    {
+        public static T OpenDataset<T>(this Inspector inspector, string name) where T : Dataset {
+            using var fc = inspector.MapMember switch {
+                FeatureLayer l => l.GetFeatureClass(),
+                StandaloneTable t => t.GetTable(),
+                _ => throw new InvalidOperationException(),
+            };
+            using var geodatabase = (Geodatabase)fc.GetDatastore();
+
+            var syntax = geodatabase.GetSQLSyntax();
+            var tableNames = syntax.ParseTableName(fc.GetName());
+
+            return geodatabase.OpenDataset<T>(syntax.QualifyTableName(tableNames.Item1, tableNames.Item2, name));
+        }
     }
 }
