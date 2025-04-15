@@ -1,7 +1,10 @@
 using ArcGIS.Core.CIM;
 using ArcGIS.Core.Data;
 using ArcGIS.Core.Data.Exceptions;
+using ArcGIS.Core.Geometry;
+using ArcGIS.Core.Internal.Geometry;
 using S100Framework.Applications;
+using Serilog;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Text;
@@ -60,29 +63,30 @@ namespace TestNisImporter
         public void TestScaleMinimum() {
             ImporterNIS._scaminFilesPath = @"G:\indigo\Configuration";
             {
-                var val1 = ScaminDenmark.Instance.GetMinimumScale("DMPGRD_DumpingGround", PrimitiveType.Area, 22000);
+                var val1 = Scamin.Instance.GetMinimumScale(MapPointBuilder.CreateMapPoint(57.0488, 9.9217, SpatialReferences.WGS84),"DMPGRD_DumpingGround", PrimitiveType.Area, 22000);
                 Assert.True(val1.HasValue);
                 Assert.True(val1.Value == 89999, "Wrong scamin");
-                var val2 = ScaminDenmark.Instance.GetMinimumScale("DMPGRD_DumpingGroundXX", PrimitiveType.Area, 22000);
+                
+                var val2 = Scamin.Instance.GetMinimumScale(MapPointBuilder.CreateMapPoint(57.0488, 9.9217, SpatialReferences.WGS84), "DMPGRD_DumpingGroundXX", PrimitiveType.Area, 22000);
                 Assert.False(val2.HasValue);
             }
             {
-                var val1 = ScaminDenmark.Instance.GetMinimumScale("FLODOC_FloatingDock", PrimitiveType.Line, 22000); 
+                var val1 = Scamin.Instance.GetMinimumScale(MapPointBuilder.CreateMapPoint(57.0488, 9.9217, SpatialReferences.WGS84), "FLODOC_FloatingDock", PrimitiveType.Line, 22000); 
                 Assert.False(val1.HasValue);
                 Assert.True(val1.Value == 44999, "Wrong scamin");
 
-                var val2 = ScaminDenmark.Instance.GetMinimumScale("FLODOC_FloatingDock", PrimitiveType.Area, 22000); 
+                var val2 = Scamin.Instance.GetMinimumScale(MapPointBuilder.CreateMapPoint(57.0488, 9.9217, SpatialReferences.WGS84), "FLODOC_FloatingDock", PrimitiveType.Area, 22000); 
                 Assert.False(val2.HasValue);
                 Assert.True(val2.Value == 44999, "Wrong scamin");
 
-                var val3 = ScaminGreenland.Instance.GetMinimumScale("FLODOC_FloatingDock", PrimitiveType.Point, 22000);
+                var val3 = Scamin.Instance.GetMinimumScale(MapPointBuilder.CreateMapPoint(57.0488, 9.9217, SpatialReferences.WGS84), "FLODOC_FloatingDock", PrimitiveType.Point, 22000);
                 Assert.False(val3.HasValue);
             }
             {
-                var val1 = ScaminDenmark.Instance.GetMinimumScale("BRIDGE_Bridge", PrimitiveType.Area, 22000); // step value is null
+                var val1 = Scamin.Instance.GetMinimumScale(MapPointBuilder.CreateMapPoint(57.0488, 9.9217, SpatialReferences.WGS84), "BRIDGE_Bridge", PrimitiveType.Area, 22000); // step value is null
                 Assert.False(val1.HasValue);
                 Assert.True(val1.Value == 44999, "Wrong scamin");
-                var val2 = ScaminGreenland.Instance.GetMinimumScale("DMPGRD_DumpingGroundXX", PrimitiveType.Area, 22000);
+                var val2 = Scamin.Instance.GetMinimumScale(MapPointBuilder.CreateMapPoint(57.0488, 9.9217, SpatialReferences.WGS84), "DMPGRD_DumpingGroundXX", PrimitiveType.Area, 22000);
                 Assert.False(val2.HasValue);
             }
         }

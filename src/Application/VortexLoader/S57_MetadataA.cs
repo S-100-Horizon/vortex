@@ -14,6 +14,8 @@ namespace S100Framework.Applications
             var tableName = "MetadataA";
 
             using var coastlinea = source.OpenDataset<FeatureClass>(source.GetName(tableName));
+            var subtypes = coastlinea.GetSubtypes();
+            var featureType = PrimitiveType.Area;
 
             using var featureClass = target.OpenDataset<FeatureClass>(target.GetName("surface"));
 
@@ -83,9 +85,10 @@ namespace S100Framework.Applications
                         break;
                     case 30: { // M_NPUB_NauticalPublicationInformation
                             var instance = new InformationArea();
-                            if (plts_comp_scale != default) {
-                                //instance.scaleMinimum = plts_comp_scale;
+                            if (current.PLTS_COMP_SCALE.HasValue) {
+                                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtypes[subtype], featureType, current.PLTS_COMP_SCALE.Value);
                             }
+
 
                             instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
                             AddInformation(instance.information, feature);
@@ -101,22 +104,8 @@ namespace S100Framework.Applications
                     case 35: { // M_NSYS_NavigationalSystemOfMarks // Navigational System of Marks - region A and B globally
                             var instance = new NavigationalSystemOfMarks();
 
-                            marksNavigationalSystemOf? marsysConverted = null;
-
                             if (current.MARSYS.HasValue) {
-                                var marsys = Convert.ToInt32(current.MARSYS);
-                                if (marsys != default) {
-                                    marsysConverted = marsys switch {
-                                        1 => DomainModel.S101.marksNavigationalSystemOf.IalaA,
-                                        2 => DomainModel.S101.marksNavigationalSystemOf.IalaB,
-                                        -32767 => (DomainModel.S101.marksNavigationalSystemOf)(-1),
-                                        _ => throw new IndexOutOfRangeException(),
-                                    };
-                                }
-                            }
-
-                            if (marsysConverted.HasValue && marsysConverted.Value != marksNavigationalSystemOf.Unknown) {
-                                instance.marksNavigationalSystemOf = marsysConverted.Value;
+                                instance.marksNavigationalSystemOf = EnumHelper.GetEnumValue<marksNavigationalSystemOf>(current.MARSYS.Value);
                             }
 
                             AddInformation(instance.information, feature);
@@ -133,9 +122,12 @@ namespace S100Framework.Applications
 
                             var instance = new QualityOfBathymetricData();
                             // TODO: categoryOfTemporalVariation
-                            
 
+                            //instance.categoryOfTemporalVariation = EnumHelper.GetEnumValue<categoryOfTemporalVariation>(current.
 
+                            //instance.zoneOfConfidence = GetZoneOfConfidence(current.CATZOC);
+
+                            //instance.dataAssessment = EnumHelper.GetEnumValue<dataAssessment>(
 
                             buffer["ps"] = ps101;
                             buffer["code"] = instance.GetType().Name;
@@ -148,6 +140,9 @@ namespace S100Framework.Applications
                         break;
                     case 45: { // M_SDAT_SoundingDatum
                             var instance = new SoundingDatum();
+
+
+
                             AddInformation(instance.information, feature);
                             buffer["ps"] = ps101;
                             buffer["code"] = instance.GetType().Name;

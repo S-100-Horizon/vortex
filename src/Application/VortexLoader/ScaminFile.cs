@@ -1,58 +1,76 @@
-﻿using ArcGIS.Desktop.Internal.Core;
-using ArcGIS.Desktop.Internal.Mapping.PropertyPages;
-using S100Framework.DomainModel.S131.Associations.FeatureAssociations;
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Runtime.CompilerServices;
+﻿using ArcGIS.Core.Geometry;
+using S100Framework.Applications.S57.esri;
 using System.Xml.Linq;
 namespace S100Framework.Applications
 {
 
-    public enum PrimitiveType {
-        Point=1,
-        Line=2,
-        Area=4
-    }
-
-    /*
-    var objects = parser.GetObjects();
-    foreach (var obj in objects) {
-        Console.WriteLine($"\nObject Name: {obj.Name}");
-        Console.WriteLine($"Primitive Type: {obj.PrimitiveType}");
-        Console.WriteLine($"Has Condition: {obj.HasCondition}");
-        Console.WriteLine($"Default Step Value: {obj.DefaultStepValue}");
-        if (obj.Conditions.Any()) {
-            Console.WriteLine("Conditions:");
-            foreach (var condition in obj.Conditions) {
-                Console.WriteLine("  - Rules: " + string.Join(", ", condition));
-            }
-        }
-        else {
-            Console.WriteLine("No conditions.");
-        }
-    }
-    */
-
-    public class ScaminDenmark : ScaminFile
+    public enum PrimitiveType
     {
-        private static ScaminDenmark _instance;
+        Point = 1,
+        Line = 2,
+        Area = 4
+    }
+   
+    class NamedPolygon
+    {
+        public string Name { get; }
+        public Polygon Polygon { get; }
+
+        public NamedPolygon(string name, Polygon polygon) {
+            Name = name;
+            Polygon = polygon;
+        }
+    }
+
+    public class Scamin
+    {
+        private static Scamin? _instance;
+        private static readonly Dictionary<string, ScaminFile> _scaminFiles = new();
+        private static readonly List<NamedPolygon> _polygons = new();
         private static readonly object _lock = new object();
 
-        public string PathToScaminFile { get; private set; }
+        private Scamin(string pathToScaminFiles) {
+            var sr = SpatialReferences.WGS84;
 
-        private ScaminDenmark(string pathToScaminFiles) : base(@$"{pathToScaminFiles}\SCAMIN_GST_Danmark.xml") {
-            PathToScaminFile = pathToScaminFiles;
+            // TODO: Get Scamin polygons and corresponding filenames from external datasource. Ie. database, geopackage, shapefiles etc.
+            AddPolygon("SCAMIN_GST_Danmark.xml", new List<Coordinate2D>
+            {
+                new(14.8303810, 55.8645445),
+                new(16.8899873, 55.8827711),
+                new(16.8596097, 54.4003405),
+                new(11.8350354, 54.2466303),
+                new(7.3817750,  54.4307182),
+                new(3.2261091,  55.6883540),
+                new(3.2807889,  57.0188961),
+                new(10.0732371, 58.4405713),
+                new(12.0217782, 57.3854226),
+                new(12.4852245, 56.3505873),
+                new(14.8303810, 55.8645445)
+            }, sr);
+
+            AddPolygon("SCAMIN_GST_Grønland.xml", new List<Coordinate2D>
+            {
+                new(58.0858105,83.9901370),
+                new(0.7072854,  84.3437797),
+                new(8.6642457,  72.2315178),
+                new(42.4371219,54.9914371),
+                new(76.2984087,74.6186059),
+                new(76.2099980,78.8623181),
+                new(58.0858105,83.9901370)
+            }, sr);
+
+            foreach (var filePath in Directory.GetFiles(pathToScaminFiles, "*.xml")) {
+                var fileName = System.IO.Path.GetFileName(filePath);
+                _scaminFiles.Add(System.IO.Path.GetFileName(fileName), new ScaminFile(System.IO.Path.Combine(pathToScaminFiles, fileName)));
+            }
         }
 
-
-        public static ScaminDenmark Instance {
+        public static Scamin Instance {
             get {
                 if (_instance == null) {
                     {
                         lock (_lock) {
-                            _instance = new ScaminDenmark(ImporterNIS._scaminFilesPath);
+                            _instance = new Scamin(ImporterNIS._scaminFilesPath);
                         }
                     }
                 }
@@ -60,33 +78,42 @@ namespace S100Framework.Applications
             }
         }
 
-    }
 
-    public class ScaminGreenland : ScaminFile
-    {
-        private static ScaminGreenland _instance;
-        private static readonly object _lock = new object();
-
-        public string PathToScaminFile { get; private set; }
-
-        private ScaminGreenland(string pathToScaminFiles) : base(@$"{pathToScaminFiles}\SCAMIN_GST_Grønland.xml") {
-            PathToScaminFile = pathToScaminFiles;
-        }
-
-        public static ScaminGreenland Instance {
-            get {
-                if (_instance == null) {
-                    _instance = new ScaminGreenland(ImporterNIS._scaminFilesPath);
-                }
-                return _instance;
+        public int? GetMinimumScale(Geometry geometry, string subtypeName/*, string relatedStructureName*/, PrimitiveType primitiveType, int compilationScale, bool isRelatedToStructure = false) {
+            var touched = GetTouchedPolygonNames(geometry);
+            if (touched.Count != 1) {
+                throw new ArgumentException("Cannot determine scamin");
+                //return null;
             }
+
+            return _scaminFiles[touched[0]].GetMinimumScale(subtypeName, primitiveType, compilationScale, isRelatedToStructure);
         }
 
-    }
+        private static void AddPolygon(string name, IReadOnlyList<Coordinate2D> points, SpatialReference sr) {
+            var builder = new PolygonBuilderEx(sr);
+            builder.AddPart(points);
+            var polygon = builder.ToGeometry();
+            _polygons.Add(new NamedPolygon(name, polygon));
+        }
 
-    public abstract class ScaminFile
+        private static List<string> GetTouchedPolygonNames(Geometry inputGeometry) {
+            var touchedPolygons = new List<string>();
+
+            foreach (var np in _polygons) {
+                // Check if inputGeometry touches the polygon
+                if (GeometryEngine.Instance.Touches(inputGeometry, np.Polygon) ||
+                    GeometryEngine.Instance.Intersects(inputGeometry, np.Polygon)) {
+                    touchedPolygons.Add(np.Name);
+                }
+            }
+
+            return touchedPolygons;
+        }
+    }
+    class ScaminFile
     {
         private XElement root;
+        private List<ObjectData> _objects;
         private List<int> _radarScales;
         private List<int> _scaminValues;
 
@@ -110,8 +137,8 @@ namespace S100Framework.Applications
                        .ToList();
         }
 
-        private List<ObjectData> LoadObjects() {
-            var objects = root.Descendants("Object")
+        private void LoadObjects() {
+            _objects = root.Descendants("Object")
                               .Select(o => new ObjectData {
                                   Name = (string)o.Attribute("Name"),
                                   PrimitiveType = (string)o.Attribute("PrimitiveType"),
@@ -124,35 +151,55 @@ namespace S100Framework.Applications
                                                 .ToList()
                               })
                               .ToList();
-
-            return objects;
         }
 
-        private int? GetDefaultStepValueByName(string name, PrimitiveType primitiveType) {
-            var obj = root.Descendants("Object")
-                          .FirstOrDefault(o => (string)o.Attribute("Name") == name && o.Attribute("PrimitiveType").ToString().ToLower().Contains(primitiveType.ToString().ToLower()));
+        private int? GetDefaultStepValueByName(string name, PrimitiveType primitiveType, bool isRelatedToStructure) {
+            var obj = _objects.FirstOrDefault(obj => obj.Name.Equals(name,StringComparison.InvariantCultureIgnoreCase));
             if (obj == null) {
                 return null;
             }
 
-            if (int.TryParse(obj.Attribute("DefaultStepValue").Value.ToString(), out var result)) {
-                return result;
+            // https://pro.arcgis.com/en/pro-app/latest/help/production/maritime/scale-minimum-radar-range-method.htm
+            // if type = R - Related - Object receives same step as related structure else defaultStepValue (if stand alone)
+            // if type = S - Spatially associated - Operator = "Cover" or operator = "Share" - receives StepValue accordingly
+            // if type = A - Attribute value - 
+            {
+                if (!isRelatedToStructure) {
+                    if (int.TryParse(obj.DefaultStepValue, out var defaultStepValue)) {
+                        return defaultStepValue;
+                    }
+                    else {
+                        return null;
+                    }
+                }
             }
+            {
+                // TODO: implement scamin conditions. For now returning null if 
+                if (obj.HasCondition) {
+                    return null;
+                }
 
-            return null;
+                if (int.TryParse(obj.DefaultStepValue, out var defaultStepValue)) {
+                    return defaultStepValue;
+                }
+                else {
+                    return null;
+
+                }
+            }
         }
 
-        public int GetClosestScaminValue(int inputValue) {
+        internal int GetClosestScaminValue(int inputValue) {
             var closestScamin = _scaminValues
                                 .OrderBy(v => Math.Abs(v - inputValue))
                                 .FirstOrDefault();
             return closestScamin;
         }
 
-        internal protected int? GetMinimumScale(string name, PrimitiveType primitiveType, int compilationScale) {
-            var closestScamin = GetClosestScaminValue(22000);
+        internal protected int? GetMinimumScale(string name, PrimitiveType primitiveType, int compilationScale, bool isRelatedToStructure) {
+            var closestScamin = GetClosestScaminValue(compilationScale);
 
-            var defaultStepValue = GetDefaultStepValueByName(name, primitiveType);
+            var defaultStepValue = GetDefaultStepValueByName(name, primitiveType, isRelatedToStructure);
 
             var higherScamins = _scaminValues.Where(v => v >= closestScamin).Order<int>().ToArray<int>();
 
@@ -168,7 +215,7 @@ namespace S100Framework.Applications
 
     }
 
-    public class ObjectData
+    internal class ObjectData
     {
         public string Name { get; set; }
         public string PrimitiveType { get; set; }

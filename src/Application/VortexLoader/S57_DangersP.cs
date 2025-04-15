@@ -18,6 +18,8 @@ namespace S100Framework.Applications
 
             using var dangersp = source.OpenDataset<FeatureClass>(source.GetName("DangersP"));
             using var depthsA = source.OpenDataset<FeatureClass>(source.GetName("DepthsA"));
+            var subtypes = dangersp.GetSubtypes();
+            var featureType = PrimitiveType.Point;
 
             //var dredged = source.OpenDataset<FeatureClass>("Depare");
 
@@ -127,7 +129,7 @@ namespace S100Framework.Applications
                                         instance.status = GetStatus(current.STATUS);
                                     }
 
-                                    if (current.VALSOU.HasValue) {
+                                    if (current.VALSOU.HasValue && current.VALSOU.Value != -32767) {
                                         instance.valueOfSounding = current.VALSOU.Value;
                                     }
 
@@ -210,7 +212,7 @@ namespace S100Framework.Applications
 
                                 // TODO: techniqueOfVerticalMeasurement
 
-                                if (current.VALSOU.HasValue) {
+                                if (current.VALSOU.HasValue && current.VALSOU.Value != -32767) {
                                     instance.valueOfSounding = current.VALSOU.Value;
                                 }
 
@@ -222,9 +224,10 @@ namespace S100Framework.Applications
                                     instance.waterLevelEffect = EnumHelper.GetEnumValue<waterLevelEffect>(current.WATLEV);
                                 }
 
-                                //if (current.PLTS_COMP_SCALE.HasValue) {
-                                //  instance.scaleMinimum = current.PLTS_COMP_SCALE;
-                                //}
+                                if (current.PLTS_COMP_SCALE.HasValue) {
+                                    instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtypes[subtype], featureType, current.PLTS_COMP_SCALE.Value);
+                                }
+
 
                                 AddInformation(instance.information, feature);
 
@@ -298,7 +301,7 @@ namespace S100Framework.Applications
                                 instance.techniqueOfVerticalMeasurement = EnumHelper.GetEnumValues<techniqueOfVerticalMeasurement>(current.TECSOU);
                             }
 
-                            if (current.VALSOU.HasValue) {
+                            if (current.VALSOU.HasValue && current.VALSOU.Value != -32767) {
                                 instance.valueOfSounding = current.VALSOU.Value;
                             }
 
@@ -318,9 +321,9 @@ namespace S100Framework.Applications
                                 instance.waterLevelEffect = EnumHelper.GetEnumValue<waterLevelEffect>(current.WATLEV);
                             }
 
-                            //if (current.PLTS_COMP_SCALE.HasValue) {
-                            //    //instance.scaleMinimum = current.PLTS_COMP_SCALE;
-                            //}
+                            if (current.PLTS_COMP_SCALE.HasValue) {
+                                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtypes[subtype], featureType, current.PLTS_COMP_SCALE.Value);
+                            }
 
                             // TODO: defaultClearanceDepth
 
@@ -352,11 +355,11 @@ namespace S100Framework.Applications
                                 instance.categoryOfWaterTurbulence = EnumHelper.GetEnumValue<categoryOfWaterTurbulence>(current.CATWAT);
                             }
 
+                            
 
-
-                            //if (current.PLTS_COMP_SCALE.HasValue) {
-                            //    //instance.scaleMinimum = current.PLTS_COMP_SCALE;
-                            //}
+                            if (current.PLTS_COMP_SCALE.HasValue) {
+                                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtypes[subtype], featureType, current.PLTS_COMP_SCALE.Value);
+                            }
 
                             instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
                             AddInformation(instance.information, feature);
@@ -390,7 +393,7 @@ namespace S100Framework.Applications
                                 instance.categoryOfWreck = EnumHelper.GetEnumValue<categoryOfWreck>(current.CATWRK.Value);
                             }
 
-                            if (current.VALSOU.HasValue) {
+                            if (current.VALSOU.HasValue && current.VALSOU.Value != -32767) {
                                 instance.valueOfSounding = current.VALSOU.Value;
                             }
 

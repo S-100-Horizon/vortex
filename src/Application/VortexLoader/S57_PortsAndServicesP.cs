@@ -13,6 +13,8 @@ namespace S100Framework.Applications
             var ps101 = "S-101";
 
             using var portsAndServicesP = source.OpenDataset<FeatureClass>(source.GetName(tableName));
+            var subtypes = portsAndServicesP.GetSubtypes();
+            var featureType = PrimitiveType.Point;
 
             using var featureClass = target.OpenDataset<FeatureClass>(target.GetName("point"));
             
@@ -71,9 +73,10 @@ namespace S100Framework.Applications
                         break;
                     case 5: { // CGUSTA_CoastguardStation
                             var instance = new CoastGuardStation();
-                            if (plts_comp_scale != default) {
-                                //instance.scaleMinimum = plts_comp_scale;
+                            if (current.PLTS_COMP_SCALE.HasValue) {
+                                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtypes[subtype], featureType, current.PLTS_COMP_SCALE.Value);
                             }
+
 
                             if (current.STATUS != default) {
                                 instance.status = GetStatus(current.STATUS);
@@ -93,9 +96,10 @@ namespace S100Framework.Applications
                         break;
                     case 10: { // CHKPNT_CheckPoint
                             var instance = new Checkpoint();
-                            if (plts_comp_scale != default) {
-                                //instance.scaleMinimum = plts_comp_scale;
+                            if (current.PLTS_COMP_SCALE.HasValue) {
+                                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtypes[subtype], featureType, current.PLTS_COMP_SCALE.Value);
                             }
+
 
 
                             if (current.STATUS != default) {
@@ -117,9 +121,10 @@ namespace S100Framework.Applications
                     case 15: { // CRANES_Cranes
                             var instance = new Crane();
 
-                            if (plts_comp_scale != default) {
-                                //instance.scaleMinimum = plts_comp_scale;
+                            if (current.PLTS_COMP_SCALE.HasValue) {
+                                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtypes[subtype], featureType, current.PLTS_COMP_SCALE.Value);
                             }
+
 
                             if (current.COLOUR != default) {
                                 instance.colour = GetColours(current.COLOUR);
@@ -152,9 +157,10 @@ namespace S100Framework.Applications
                         break;
                     case 20: { // DISMAR_DistanceMark
                             var instance = new DistanceMark();
-                            if (plts_comp_scale != default) {
-                                //instance.scaleMinimum = plts_comp_scale;
+                            if (current.PLTS_COMP_SCALE.HasValue) {
+                                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtypes[subtype], featureType, current.PLTS_COMP_SCALE.Value);
                             }
+
 
                             
                             instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
@@ -171,9 +177,10 @@ namespace S100Framework.Applications
                         break;
                     case 25: { // GATCON_Gate
                             var instance = new Gate();
-                            if (plts_comp_scale != default) {
-                                //instance.scaleMinimum = plts_comp_scale;
+                            if (current.PLTS_COMP_SCALE.HasValue) {
+                                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtypes[subtype], featureType, current.PLTS_COMP_SCALE.Value);
                             }
+
 
                             if (current.CONDTN.HasValue) {
                                 instance.condition = GetCondition(current.CONDTN.Value);
@@ -197,9 +204,10 @@ namespace S100Framework.Applications
                         break;
                     case 30: { // GRIDRN_Gridiron
                             var instance = new Gridiron();
-                            if (plts_comp_scale != default) {
-                                //instance.scaleMinimum = plts_comp_scale;
+                            if (current.PLTS_COMP_SCALE.HasValue) {
+                                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtypes[subtype], featureType, current.PLTS_COMP_SCALE.Value);
                             }
+
 
 
                             if (current.STATUS != default) {
@@ -219,9 +227,10 @@ namespace S100Framework.Applications
                         break;
                     case 35: { // HRBFAC_HarbourFacility
                             var instance = new HarbourFacility();
-                            if (plts_comp_scale != default) {
-                                //instance.scaleMinimum = plts_comp_scale;
+                            if (current.PLTS_COMP_SCALE.HasValue) {
+                                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtypes[subtype], featureType, current.PLTS_COMP_SCALE.Value);
                             }
+
 
                             if (current.CONDTN.HasValue) {
                                 instance.condition = GetCondition(current.CONDTN.Value);
@@ -244,9 +253,10 @@ namespace S100Framework.Applications
                         break;
                     case 40: { // HULKES_Hulk
                             var instance = new Hulk();
-                            if (plts_comp_scale != default) {
-                                //instance.scaleMinimum = plts_comp_scale;
+                            if (current.PLTS_COMP_SCALE.HasValue) {
+                                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtypes[subtype], featureType, current.PLTS_COMP_SCALE.Value);
                             }
+
 
                             if (current.COLOUR != default) {
                                 instance.colour = GetColours(current.COLOUR);
@@ -485,9 +495,10 @@ namespace S100Framework.Applications
                         break;
                     case 50: { // PILBOP_PilotBoardingPlace
                             var instance = new PilotBoardingPlace();
-                            if (plts_comp_scale != default) {
-                                //instance.scaleMinimum = plts_comp_scale;
+                            if (current.PLTS_COMP_SCALE.HasValue) {
+                                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtypes[subtype], featureType, current.PLTS_COMP_SCALE.Value);
                             }
+
 
 
                             if (current.STATUS != default) {
@@ -508,9 +519,10 @@ namespace S100Framework.Applications
                         break;
                     case 55: { // PILPNT_Pile
                             var instance = new Pile();
-                            if (plts_comp_scale != default) {
-                                //instance.scaleMinimum = plts_comp_scale;
+                            if (current.PLTS_COMP_SCALE.HasValue) {
+                                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtypes[subtype], featureType, current.PLTS_COMP_SCALE.Value);
                             }
+
 
                             if (current.COLOUR != default) {
                                 instance.colour = GetColours(current.COLOUR);
@@ -541,9 +553,10 @@ namespace S100Framework.Applications
                         break;
                     case 60: { // RSCSTA_RescueStation
                             var instance = new RescueStation();
-                            if (plts_comp_scale != default) {
-                                //instance.scaleMinimum = plts_comp_scale;
+                            if (current.PLTS_COMP_SCALE.HasValue) {
+                                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtypes[subtype], featureType, current.PLTS_COMP_SCALE.Value);
                             }
+
 
                             if (current.STATUS != default) {
                                 instance.status = GetStatus(current.STATUS);
@@ -562,9 +575,10 @@ namespace S100Framework.Applications
                         break;
                     case 65: { // SISTAT_SignalStationTraffic
                             var instance = new SignalStationTraffic();
-                            if (plts_comp_scale != default) {
-                                //instance.scaleMinimum = plts_comp_scale;
+                            if (current.PLTS_COMP_SCALE.HasValue) {
+                                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtypes[subtype], featureType, current.PLTS_COMP_SCALE.Value);
                             }
+
 
 
                             if (current.STATUS != default) {
@@ -584,9 +598,10 @@ namespace S100Framework.Applications
                         break;
                     case 70: { // SISTAW_SignalStationWarning
                             var instance = new SignalStationWarning();
-                            if (plts_comp_scale != default) {
-                                //instance.scaleMinimum = plts_comp_scale;
+                            if (current.PLTS_COMP_SCALE.HasValue) {
+                                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtypes[subtype], featureType, current.PLTS_COMP_SCALE.Value);
                             }
+
 
 
                             if (current.STATUS != default) {
@@ -607,9 +622,10 @@ namespace S100Framework.Applications
                         break;
                     case 75: { // SMCFAC_SmallCraftFacility
                             var instance = new SmallCraftFacility();
-                            if (plts_comp_scale != default) {
-                                //instance.scaleMinimum = plts_comp_scale;
+                            if (current.PLTS_COMP_SCALE.HasValue) {
+                                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtypes[subtype], featureType, current.PLTS_COMP_SCALE.Value);
                             }
+
 
 
                             if (current.STATUS != default) {

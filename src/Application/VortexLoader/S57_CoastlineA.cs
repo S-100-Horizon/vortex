@@ -10,6 +10,8 @@ namespace S100Framework.Applications
             var tableName = "CoastlineA";
 
             using var coastlinea = source.OpenDataset<FeatureClass>(source.GetName(tableName));
+            var subtypes = coastlinea.GetSubtypes();
+            var featureType = PrimitiveType.Area;
 
             using var featureClass = target.OpenDataset<FeatureClass>(target.GetName("surface"));
 
@@ -38,9 +40,10 @@ namespace S100Framework.Applications
                     case 1: { // SLCONS_ShorelineConstruction
                             var instance = new ShorelineConstruction() {
                             };
-                            if (plts_comp_scale != default) {
-                                //instance.scaleMinimum = plts_comp_scale;
+                            if (current.PLTS_COMP_SCALE.HasValue) {
+                                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtypes[subtype], featureType, current.PLTS_COMP_SCALE.Value);
                             }
+
 
                             if (current.CONDTN.HasValue) {
                                 instance.condition = GetCondition(current.CONDTN.Value);

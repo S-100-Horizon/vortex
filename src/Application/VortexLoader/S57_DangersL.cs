@@ -13,6 +13,8 @@ namespace S100Framework.Applications
 
             using var dangersl = source.OpenDataset<FeatureClass>(source.GetName("DangersL"));
             using var depthsA = source.OpenDataset<FeatureClass>(source.GetName("DepthsA"));
+            var subtypes = dangersl.GetSubtypes();
+            var featureType = PrimitiveType.Line;
 
             //var dredged = source.OpenDataset<FeatureClass>("Depare");
 
@@ -151,7 +153,7 @@ namespace S100Framework.Applications
 
                                 // TODO: techniqueOfVerticalMeasurement
 
-                                if (current.VALSOU.HasValue) {
+                                if (current.VALSOU.HasValue && current.VALSOU.Value != -32767) {
                                     instance.valueOfSounding = current.VALSOU.Value;
                                 }
 
@@ -163,9 +165,10 @@ namespace S100Framework.Applications
                                     instance.waterLevelEffect = EnumHelper.GetEnumValue<waterLevelEffect>(current.WATLEV);
                                 }
 
-                                //if (current.PLTS_COMP_SCALE.HasValue) {
-                                //  instance.scaleMinimum = current.PLTS_COMP_SCALE;
-                                //}
+                            if (current.PLTS_COMP_SCALE.HasValue) {
+                                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtypes[subtype], featureType, current.PLTS_COMP_SCALE.Value);
+                            }
+
 
                                 AddInformation(instance.information, feature);
 

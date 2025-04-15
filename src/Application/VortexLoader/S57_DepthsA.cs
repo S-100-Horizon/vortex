@@ -10,13 +10,16 @@ namespace S100Framework.Applications
         private static void S57_DepthsA(Geodatabase source, Geodatabase target, QueryFilter filter) {
             var tableName = "DepthsA";
 
-            using var s = source.OpenDataset<FeatureClass>(source.GetName("DepthsA"));
+            using var depthsA = source.OpenDataset<FeatureClass>(source.GetName("DepthsA"));
+            var subtypes = depthsA.GetSubtypes();
+            var featureType = PrimitiveType.Area;
+
             using var featureClass = target.OpenDataset<FeatureClass>(target.GetName("surface"));
 
             using var buffer = featureClass.CreateRowBuffer();
             using var insert = featureClass.CreateInsertCursor();
 
-            using var cursor = s.Search(filter, true);
+            using var cursor = depthsA.Search(filter, true);
             
             var recordCount = 0;
             var convertedCount = 0;
@@ -54,6 +57,7 @@ namespace S100Framework.Applications
                             buffer["code"] = instance.GetType().Name;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                             SetShape(buffer,current.SHAPE);
+
 
 
                             insert.Insert(buffer);
@@ -103,8 +107,7 @@ namespace S100Framework.Applications
                             //TODO: 	verticalUncertainty
 
                             //TODO: maximumPermittedDraught - Not converted
-                            
-                            
+
 
                             instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
 
@@ -130,6 +133,9 @@ namespace S100Framework.Applications
                             if (!string.IsNullOrEmpty(sordat)) {
                                 System.Diagnostics.Debugger.Break();    //  Swept Date
                             }
+                            if (current.PLTS_COMP_SCALE.HasValue) {
+                                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtypes[subtype], featureType, current.PLTS_COMP_SCALE.Value);
+                            }
 
                             AddInformation(instance.information, feature);
 
@@ -148,6 +154,7 @@ namespace S100Framework.Applications
                             var instance = new UnsurveyedArea {
                             };
                             AddInformation(instance.information, feature);
+
 
                             buffer["ps"] = ps101;
 

@@ -423,11 +423,10 @@ namespace S100Framework.Applications
         internal int GetRelatedCount(Guid uid) {
             if (!_isInitialized)
                 throw new ArgumentException("Not initalized. Call intialize.");
-            if (!_srcObjectToSlaves.ContainsKey(uid))
+            if (_srcObjectToSlaves.ContainsKey(uid))
                 return _srcObjectToSlaves[uid].Count;
-
             else {
-                return -1;
+                return 0;
             }
         }
 

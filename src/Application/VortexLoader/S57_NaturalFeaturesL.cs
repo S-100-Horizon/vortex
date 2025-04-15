@@ -10,13 +10,15 @@ namespace S100Framework.Applications
         private static void S57_NaturalFeaturesL(Geodatabase source, Geodatabase target, QueryFilter filter) {
             var tableName = "NaturalFeaturesL";
 
-            using var s = source.OpenDataset<FeatureClass>(source.GetName(tableName));
+            using var naturalFeaturesL = source.OpenDataset<FeatureClass>(source.GetName(tableName));
+            var subtypes = naturalFeaturesL.GetSubtypes();
+            var featureType = PrimitiveType.Line;
             using var featureclass = target.OpenDataset<FeatureClass>(target.GetName("curve"));
 
             using var buffer = featureclass.CreateRowBuffer();
             using var insert = featureclass.CreateInsertCursor();
 
-            using var cursor = s.Search(filter, true);
+            using var cursor = naturalFeaturesL.Search(filter, true);
 
             var convertedCount = 0;
             var recordCount = 0;
@@ -51,9 +53,10 @@ namespace S100Framework.Applications
                                 status = null,
                                 scaleMinimum = null,
                             };
-                            if (plts_comp_scale != default) {
-                                //instance.scaleMinimum = plts_comp_scale;
+                            if (current.PLTS_COMP_SCALE.HasValue) {
+                                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtypes[subtype], featureType, current.PLTS_COMP_SCALE.Value);
                             }
+
 
                             if (current.CONDTN.HasValue) {
                                 instance.condition = GetCondition(current.CONDTN.Value);
@@ -78,9 +81,10 @@ namespace S100Framework.Applications
                                 scaleMinimum = null,
                             };
 
-                            if (plts_comp_scale != default) {
-                                //instance.scaleMinimum = plts_comp_scale;
+                            if (current.PLTS_COMP_SCALE.HasValue) {
+                                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtypes[subtype], featureType, current.PLTS_COMP_SCALE.Value);
                             }
+
 
                             if (current.ELEVAT != default) {
                                 instance.elevation = current.ELEVAT ?? default;
@@ -104,9 +108,10 @@ namespace S100Framework.Applications
                             var instance = new Rapids {
                                 
                             };
-                            if (plts_comp_scale != default) {
-                                //instance.scaleMinimum = plts_comp_scale;
+                            if (current.PLTS_COMP_SCALE.HasValue) {
+                                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtypes[subtype], featureType, current.PLTS_COMP_SCALE.Value);
                             }
+
 
                             instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
                             AddInformation(instance.information, feature);
@@ -126,9 +131,10 @@ namespace S100Framework.Applications
                             var instance = new River {
                                 
                             };
-                            if (plts_comp_scale != default) {
-                                //instance.scaleMinimum = plts_comp_scale;
+                            if (current.PLTS_COMP_SCALE.HasValue) {
+                                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtypes[subtype], featureType, current.PLTS_COMP_SCALE.Value);
                             }
+
 
                             instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
                             AddInformation(instance.information, feature);
@@ -148,9 +154,10 @@ namespace S100Framework.Applications
                             var instance = new SlopeTopline {
 
                             };
-                            if (plts_comp_scale != default) {
-                                //instance.scaleMinimum = plts_comp_scale;
+                            if (current.PLTS_COMP_SCALE.HasValue) {
+                                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtypes[subtype], featureType, current.PLTS_COMP_SCALE.Value);
                             }
+
 
                             instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
                             AddInformation(instance.information, feature);
@@ -170,9 +177,10 @@ namespace S100Framework.Applications
                             var instance = new Vegetation {
 
                             };
-                            if (plts_comp_scale != default) {
-                                //instance.scaleMinimum = plts_comp_scale;
+                            if (current.PLTS_COMP_SCALE.HasValue) {
+                                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtypes[subtype], featureType, current.PLTS_COMP_SCALE.Value);
                             }
+
 
                             instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
                             AddInformation(instance.information, feature);
@@ -192,9 +200,10 @@ namespace S100Framework.Applications
                             var instance = new Waterfall {
 
                             };
-                            if (plts_comp_scale != default) {
-                                //instance.scaleMinimum = plts_comp_scale;
+                            if (current.PLTS_COMP_SCALE.HasValue) {
+                                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtypes[subtype], featureType, current.PLTS_COMP_SCALE.Value);
                             }
+
 
                             
                             instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);

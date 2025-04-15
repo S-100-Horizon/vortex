@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 
 namespace S100Framework.Applications
 {
+
     internal static class GeodatabaseExtensions
     {
         static bool _isInitialized = false;
@@ -50,6 +51,16 @@ namespace S100Framework.Applications
             }
             return true;
         }
+
+        internal static SortedDictionary<int, string> GetSubtypes(this FeatureClass featureClass) {
+            var subtypes = featureClass.GetDefinition().GetSubtypes();
+            var sortedDict = new SortedDictionary<int, string>();
+            foreach (var subtype in subtypes) {
+                sortedDict.Add(subtype.GetCode(), subtype.GetName());
+            }
+            return sortedDict;
+        }
+
 
         internal static bool IsTraditionallyVersioned(this Geodatabase geodatabase) {
             if (geodatabase.IsVersioningSupported()) {

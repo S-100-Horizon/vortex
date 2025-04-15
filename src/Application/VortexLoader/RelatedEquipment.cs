@@ -64,6 +64,9 @@ namespace S100Framework.Applications
             return null;
         }
 
+        internal bool HasRelatedSlaves(Guid globalid) {
+            return _featureRelations.GetRelatedCount(globalid) > 0;
+        }
 
         internal Daymark GetDayMark(AidsToNavigationP structure) {
             var daymarks = _featureRelations.GetRelated<AidsToNavigationP>(typeof(Daymark), structure.GLOBALID);

@@ -13,6 +13,8 @@ namespace S100Framework.Applications
             var ps101 = "S-101";
 
             using var seabedp = source.OpenDataset<FeatureClass>(source.GetName(tableName));
+            var subtypes = seabedp.GetSubtypes();
+            var featureType = PrimitiveType.Point;
 
             using var featureClass = target.OpenDataset<FeatureClass>(target.GetName("point"));
             
@@ -50,9 +52,10 @@ namespace S100Framework.Applications
                     case 15: { // SBDARE_SeabedArea
                             var instance = new SeabedArea() {
                             };
-                            if (plts_comp_scale != default) {
-                                //instance.scaleMinimum = plts_comp_scale;
+                            if (current.PLTS_COMP_SCALE.HasValue) {
+                                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtypes[subtype], featureType, current.PLTS_COMP_SCALE.Value);
                             }
+
                             instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
                             AddInformation(instance.information, feature);
                             buffer["ps"] = ps101;
@@ -68,9 +71,10 @@ namespace S100Framework.Applications
                     case 25: { // SNDWAV_SandWaves
                             var instance = new Sandwave() {
                             };
-                            if (plts_comp_scale != default) {
-                                //instance.scaleMinimum = plts_comp_scale;
+                            if (current.PLTS_COMP_SCALE.HasValue) {
+                                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtypes[subtype], featureType, current.PLTS_COMP_SCALE.Value);
                             }
+
                             AddInformation(instance.information, feature);
                             buffer["ps"] = ps101;
 
@@ -85,9 +89,10 @@ namespace S100Framework.Applications
                     case 30: { // SPRING_Spring
                             var instance = new Spring() {
                             };
-                            if (plts_comp_scale != default) {
-                                //instance.scaleMinimum = plts_comp_scale;
+                            if (current.PLTS_COMP_SCALE.HasValue) {
+                                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtypes[subtype], featureType, current.PLTS_COMP_SCALE.Value);
                             }
+
 
                             instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
                             AddInformation(instance.information, feature);
@@ -104,9 +109,10 @@ namespace S100Framework.Applications
                     case 35: { // WEDKLP_WeedKelp
                             var instance = new WeedKelp() {
                             };
-                            if (plts_comp_scale != default) {
-                                //instance.scaleMinimum = plts_comp_scale;
+                            if (current.PLTS_COMP_SCALE.HasValue) {
+                                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtypes[subtype], featureType, current.PLTS_COMP_SCALE.Value);
                             }
+
                             instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
                             AddInformation(instance.information, feature);
                             buffer["ps"] = ps101;

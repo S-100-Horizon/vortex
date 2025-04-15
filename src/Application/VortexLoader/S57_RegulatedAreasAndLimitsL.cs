@@ -16,6 +16,8 @@ namespace S100Framework.Applications
             using var featureclass = target.OpenDataset<FeatureClass>(target.GetName("curve"));
 
             using var regulatedAreasAndLimitsL = source.OpenDataset<FeatureClass>(source.GetName(tableName));
+            var subtypes = regulatedAreasAndLimitsL.GetSubtypes();
+            var featureType = PrimitiveType.Line;
 
             int recordCount = 0;
             int convertedCount = 0;
@@ -41,9 +43,10 @@ namespace S100Framework.Applications
                 switch (subtype) {
                     case 1: { // ASLXIS_ArchipelagicSeaLaneAxis
                             var instance = new ArchipelagicSeaLaneAxis();
-                            if (plts_comp_scale != default) {
-                                //instance.scaleMinimum = plts_comp_scale;
+                            if (current.PLTS_COMP_SCALE.HasValue) {
+                                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtypes[subtype], featureType, current.PLTS_COMP_SCALE.Value);
                             }
+
 
                             instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
                             AddInformation(instance.information, feature);
@@ -95,7 +98,7 @@ namespace S100Framework.Applications
                                 instance.status = GetStatus(current.STATUS);
                             }
 
-                            if (current.VALSOU.HasValue) {
+                            if (current.VALSOU.HasValue && current.VALSOU.Value != -32767) {
                                 instance.valueOfSounding = current.VALSOU.Value;
                             }
 
@@ -135,9 +138,10 @@ namespace S100Framework.Applications
                         break;
                     case 30: { // STSLNE_StraightTerritorialSeaBaseline
                             var instance = new StraightTerritorialSeaBaseline();
-                            if (plts_comp_scale != default) {
-                                //instance.scaleMinimum = plts_comp_scale;
+                            if (current.PLTS_COMP_SCALE.HasValue) {
+                                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtypes[subtype], featureType, current.PLTS_COMP_SCALE.Value);
                             }
+
 
                             if (current.NATION != default) 
                             { 
