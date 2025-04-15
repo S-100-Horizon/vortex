@@ -3,8 +3,6 @@ using S100Framework.WPF.ViewModel;
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 using System.ComponentModel;
-using System.Reflection;
-using System.Runtime.CompilerServices;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -464,7 +462,7 @@ namespace S100Framework.WPF
             if (control.PropertyGrid != null) {
                 control.PropertyGrid.IsEnabled = (Boolean)args.NewValue;
             }
-            if(control.InformationBindingsStackPanel != null) {
+            if (control.InformationBindingsStackPanel != null) {
                 control.InformationBindingsStackPanel.IsEnabled = (Boolean)args.NewValue;
             }
             if (control.FeatureBindingsStackPanel != null) {
