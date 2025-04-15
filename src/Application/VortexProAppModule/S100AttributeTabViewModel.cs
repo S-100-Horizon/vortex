@@ -492,8 +492,10 @@ namespace VortexProAppModule
                                     });
 
                                     if (!editOperation.IsEmpty) {
-                                        if (editOperation.Execute())
+                                        if (editOperation.Execute()) {                                            
                                             binding.UID = token.GlobalID;
+                                            //Inspector.Load(table, token.ObjectID.Value);
+                                        }
                                     }
                                 }
                             }
@@ -512,8 +514,10 @@ namespace VortexProAppModule
                                     });
 
                                     if (!editOperation.IsEmpty) {
-                                        if (editOperation.Execute())
+                                        if (editOperation.Execute()) {
                                             binding.UID = token.GlobalID;
+                                            //Inspector.Load(table, token.ObjectID.Value);
+                                        }
                                     }
                                 }
                             }
