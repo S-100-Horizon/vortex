@@ -4167,7 +4167,7 @@ namespace S100Framework.DomainModel.S501 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class ReferenceToAPublication : InformationNode {
+        public partial class ReferenceToAPublication : InformationNode, IInformationBindingDefinition {
             public DateOnly? editionDate { get; set; } = default;
             public String? editionNumber { get; set; } = null;
             public List<onlineResource> onlineResource { get; set; } = [];
@@ -4175,7 +4175,8 @@ namespace S100Framework.DomainModel.S501 {
 
             [JsonIgnore]
             public override string Code => nameof(ReferenceToAPublication);
-            public static informationBindingDefinition[] informationBindingDefinitions => [];
+            public informationBindingDefinition[] informationBindingDefinitions => ReferenceToAPublication._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [];
 
             public ReferenceToAPublication() {
             }
@@ -4192,7 +4193,7 @@ namespace S100Framework.DomainModel.S501 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class InstallationBuoy : FeatureNode {
+        public partial class InstallationBuoy : FeatureNode, IFeatureBindingDefinition {
             public List<featureName> featureName { get; set; } = [];
 
             [EnumerationValue(1)]
@@ -4267,8 +4268,10 @@ namespace S100Framework.DomainModel.S501 {
 
             [JsonIgnore]
             public override string Code => nameof(InstallationBuoy);
-            public static informationBindingDefinition[] informationBindingDefinitions => [];
-            public static featureBindingDefinition[] featureBindingDefinitions => [];
+            public informationBindingDefinition[] informationBindingDefinitions => InstallationBuoy._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [];
+            public featureBindingDefinition[] featureBindingDefinitions => InstallationBuoy._featureBindingDefinitions;
+            public static featureBindingDefinition[] _featureBindingDefinitions => [];
 
             public InstallationBuoy() {
                 colour = new();
@@ -4278,7 +4281,7 @@ namespace S100Framework.DomainModel.S501 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class DepthArea : FeatureNode {
+        public partial class DepthArea : FeatureNode, IFeatureBindingDefinition {
             [Required()]
             public Decimal depthRangeMaximumValue { get; set; }
             public String? interoperabilityIdentifier { get; set; } = null;
@@ -4290,8 +4293,10 @@ namespace S100Framework.DomainModel.S501 {
 
             [JsonIgnore]
             public override string Code => nameof(DepthArea);
-            public static informationBindingDefinition[] informationBindingDefinitions => [];
-            public static featureBindingDefinition[] featureBindingDefinitions => [];
+            public informationBindingDefinition[] informationBindingDefinitions => DepthArea._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [];
+            public featureBindingDefinition[] featureBindingDefinitions => DepthArea._featureBindingDefinitions;
+            public static featureBindingDefinition[] _featureBindingDefinitions => [];
 
             public DepthArea() {
             }
@@ -4299,7 +4304,7 @@ namespace S100Framework.DomainModel.S501 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class RadioCallingInPoint : FeatureNode {
+        public partial class RadioCallingInPoint : FeatureNode, IFeatureBindingDefinition {
             [EnumerationValue(501)]
             public categoryOfReportingRadioCallingInPoint? categoryOfReportingRadioCallingInPoint { get; set; } = default;
             public List<information> information { get; set; } = [];
@@ -4330,8 +4335,10 @@ namespace S100Framework.DomainModel.S501 {
 
             [JsonIgnore]
             public override string Code => nameof(RadioCallingInPoint);
-            public static informationBindingDefinition[] informationBindingDefinitions => [];
-            public static featureBindingDefinition[] featureBindingDefinitions => [];
+            public informationBindingDefinition[] informationBindingDefinitions => RadioCallingInPoint._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [];
+            public featureBindingDefinition[] featureBindingDefinitions => RadioCallingInPoint._featureBindingDefinitions;
+            public static featureBindingDefinition[] _featureBindingDefinitions => [];
 
             public RadioCallingInPoint() {
             }
@@ -4339,7 +4346,7 @@ namespace S100Framework.DomainModel.S501 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class PatrolArea : FeatureNode {
+        public partial class PatrolArea : FeatureNode, IFeatureBindingDefinition {
             public String? agencyResponsibleForProduction { get; set; } = null;
             public DateOnly? reportedDate { get; set; } = default;
             public String? nationality { get; set; } = null;
@@ -4359,8 +4366,10 @@ namespace S100Framework.DomainModel.S501 {
 
             [JsonIgnore]
             public override string Code => nameof(PatrolArea);
-            public static informationBindingDefinition[] informationBindingDefinitions => [];
-            public static featureBindingDefinition[] featureBindingDefinitions => [];
+            public informationBindingDefinition[] informationBindingDefinitions => PatrolArea._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [];
+            public featureBindingDefinition[] featureBindingDefinitions => PatrolArea._featureBindingDefinitions;
+            public static featureBindingDefinition[] _featureBindingDefinitions => [];
 
             public PatrolArea() {
             }
@@ -4368,7 +4377,7 @@ namespace S100Framework.DomainModel.S501 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class Checkpoint : FeatureNode {
+        public partial class Checkpoint : FeatureNode, IFeatureBindingDefinition {
             public String? controllingAuthority { get; set; } = null;
             public List<featureName> featureName { get; set; } = [];
             public String? agencyResponsibleForProduction { get; set; } = null;
@@ -4390,8 +4399,10 @@ namespace S100Framework.DomainModel.S501 {
 
             [JsonIgnore]
             public override string Code => nameof(Checkpoint);
-            public static informationBindingDefinition[] informationBindingDefinitions => [];
-            public static featureBindingDefinition[] featureBindingDefinitions => [];
+            public informationBindingDefinition[] informationBindingDefinitions => Checkpoint._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [];
+            public featureBindingDefinition[] featureBindingDefinitions => Checkpoint._featureBindingDefinitions;
+            public static featureBindingDefinition[] _featureBindingDefinitions => [];
 
             public Checkpoint() {
             }
@@ -4399,7 +4410,7 @@ namespace S100Framework.DomainModel.S501 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class MarineManagementArea : FeatureNode {
+        public partial class MarineManagementArea : FeatureNode, IFeatureBindingDefinition {
             [EnumerationValue(1)]
             [EnumerationValue(2)]
             [EnumerationValue(3)]
@@ -4499,8 +4510,10 @@ namespace S100Framework.DomainModel.S501 {
 
             [JsonIgnore]
             public override string Code => nameof(MarineManagementArea);
-            public static informationBindingDefinition[] informationBindingDefinitions => [];
-            public static featureBindingDefinition[] featureBindingDefinitions => [];
+            public informationBindingDefinition[] informationBindingDefinitions => MarineManagementArea._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [];
+            public featureBindingDefinition[] featureBindingDefinitions => MarineManagementArea._featureBindingDefinitions;
+            public static featureBindingDefinition[] _featureBindingDefinitions => [];
 
             public MarineManagementArea() {
                 nationalMaritimeAuthority = new();
@@ -4510,7 +4523,7 @@ namespace S100Framework.DomainModel.S501 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class DepthContour : FeatureNode {
+        public partial class DepthContour : FeatureNode, IFeatureBindingDefinition {
             public List<information> information { get; set; } = [];
             public verticalUncertainty? verticalUncertainty { get; set; }
             public sourceIdentification? sourceIdentification { get; set; }
@@ -4523,8 +4536,10 @@ namespace S100Framework.DomainModel.S501 {
 
             [JsonIgnore]
             public override string Code => nameof(DepthContour);
-            public static informationBindingDefinition[] informationBindingDefinitions => [];
-            public static featureBindingDefinition[] featureBindingDefinitions => [];
+            public informationBindingDefinition[] informationBindingDefinitions => DepthContour._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [];
+            public featureBindingDefinition[] featureBindingDefinitions => DepthContour._featureBindingDefinitions;
+            public static featureBindingDefinition[] _featureBindingDefinitions => [];
 
             public DepthContour() {
             }
@@ -4532,15 +4547,17 @@ namespace S100Framework.DomainModel.S501 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class EnvironmentallySensitiveSeaArea : FeatureNode {
+        public partial class EnvironmentallySensitiveSeaArea : FeatureNode, IFeatureBindingDefinition {
             public List<featureName> featureName { get; set; } = [];
             public String? controllingAuthority { get; set; } = null;
             public List<information> information { get; set; } = [];
 
             [JsonIgnore]
             public override string Code => nameof(EnvironmentallySensitiveSeaArea);
-            public static informationBindingDefinition[] informationBindingDefinitions => [];
-            public static featureBindingDefinition[] featureBindingDefinitions => [];
+            public informationBindingDefinition[] informationBindingDefinitions => EnvironmentallySensitiveSeaArea._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [];
+            public featureBindingDefinition[] featureBindingDefinitions => EnvironmentallySensitiveSeaArea._featureBindingDefinitions;
+            public static featureBindingDefinition[] _featureBindingDefinitions => [];
 
             public EnvironmentallySensitiveSeaArea() {
             }
@@ -4548,7 +4565,7 @@ namespace S100Framework.DomainModel.S501 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class Road : FeatureNode {
+        public partial class Road : FeatureNode, IFeatureBindingDefinition {
             [EnumerationValue(4)]
             [EnumerationValue(5)]
             public List<natureOfConstruction> natureOfConstruction { get; set; } = [];
@@ -4585,8 +4602,10 @@ namespace S100Framework.DomainModel.S501 {
 
             [JsonIgnore]
             public override string Code => nameof(Road);
-            public static informationBindingDefinition[] informationBindingDefinitions => [];
-            public static featureBindingDefinition[] featureBindingDefinitions => [];
+            public informationBindingDefinition[] informationBindingDefinitions => Road._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [];
+            public featureBindingDefinition[] featureBindingDefinitions => Road._featureBindingDefinitions;
+            public static featureBindingDefinition[] _featureBindingDefinitions => [];
 
             public Road() {
             }
@@ -4594,7 +4613,7 @@ namespace S100Framework.DomainModel.S501 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class River : FeatureNode {
+        public partial class River : FeatureNode, IFeatureBindingDefinition {
             public Int32? scaleMinimum { get; set; } = default;
             public List<featureName> featureName { get; set; } = [];
 
@@ -4605,8 +4624,10 @@ namespace S100Framework.DomainModel.S501 {
 
             [JsonIgnore]
             public override string Code => nameof(River);
-            public static informationBindingDefinition[] informationBindingDefinitions => [];
-            public static featureBindingDefinition[] featureBindingDefinitions => [];
+            public informationBindingDefinition[] informationBindingDefinitions => River._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [];
+            public featureBindingDefinition[] featureBindingDefinitions => River._featureBindingDefinitions;
+            public static featureBindingDefinition[] _featureBindingDefinitions => [];
 
             public River() {
             }
@@ -4614,7 +4635,7 @@ namespace S100Framework.DomainModel.S501 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class MilitaryPracticeArea : FeatureNode {
+        public partial class MilitaryPracticeArea : FeatureNode, IFeatureBindingDefinition {
             public altitudeRange? altitudeRange { get; set; }
             public String depthRestriction { get; set; } = string.Empty;
 
@@ -4765,8 +4786,10 @@ namespace S100Framework.DomainModel.S501 {
 
             [JsonIgnore]
             public override string Code => nameof(MilitaryPracticeArea);
-            public static informationBindingDefinition[] informationBindingDefinitions => [];
-            public static featureBindingDefinition[] featureBindingDefinitions => [];
+            public informationBindingDefinition[] informationBindingDefinitions => MilitaryPracticeArea._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [];
+            public featureBindingDefinition[] featureBindingDefinitions => MilitaryPracticeArea._featureBindingDefinitions;
+            public static featureBindingDefinition[] _featureBindingDefinitions => [];
 
             public MilitaryPracticeArea() {
                 depthRestriction = string.Empty;
@@ -4775,15 +4798,17 @@ namespace S100Framework.DomainModel.S501 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class DiscolouredWater : FeatureNode {
+        public partial class DiscolouredWater : FeatureNode, IFeatureBindingDefinition {
             public List<information> information { get; set; } = [];
             public Int32? scaleMinimum { get; set; } = default;
             public DateOnly? reportedDate { get; set; } = default;
 
             [JsonIgnore]
             public override string Code => nameof(DiscolouredWater);
-            public static informationBindingDefinition[] informationBindingDefinitions => [];
-            public static featureBindingDefinition[] featureBindingDefinitions => [];
+            public informationBindingDefinition[] informationBindingDefinitions => DiscolouredWater._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [];
+            public featureBindingDefinition[] featureBindingDefinitions => DiscolouredWater._featureBindingDefinitions;
+            public static featureBindingDefinition[] _featureBindingDefinitions => [];
 
             public DiscolouredWater() {
             }
@@ -4791,7 +4816,7 @@ namespace S100Framework.DomainModel.S501 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class CardinalBuoy : FeatureNode {
+        public partial class CardinalBuoy : FeatureNode, IFeatureBindingDefinition {
             [EnumerationValue(1)]
             [EnumerationValue(2)]
             [EnumerationValue(3)]
@@ -4868,8 +4893,10 @@ namespace S100Framework.DomainModel.S501 {
 
             [JsonIgnore]
             public override string Code => nameof(CardinalBuoy);
-            public static informationBindingDefinition[] informationBindingDefinitions => [];
-            public static featureBindingDefinition[] featureBindingDefinitions => [];
+            public informationBindingDefinition[] informationBindingDefinitions => CardinalBuoy._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [];
+            public featureBindingDefinition[] featureBindingDefinitions => CardinalBuoy._featureBindingDefinitions;
+            public static featureBindingDefinition[] _featureBindingDefinitions => [];
 
             public CardinalBuoy() {
                 colour = new();
@@ -4879,7 +4906,7 @@ namespace S100Framework.DomainModel.S501 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class SafeWaterBuoy : FeatureNode {
+        public partial class SafeWaterBuoy : FeatureNode, IFeatureBindingDefinition {
             [EnumerationValue(1)]
             [EnumerationValue(2)]
             [EnumerationValue(3)]
@@ -4949,8 +4976,10 @@ namespace S100Framework.DomainModel.S501 {
 
             [JsonIgnore]
             public override string Code => nameof(SafeWaterBuoy);
-            public static informationBindingDefinition[] informationBindingDefinitions => [];
-            public static featureBindingDefinition[] featureBindingDefinitions => [];
+            public informationBindingDefinition[] informationBindingDefinitions => SafeWaterBuoy._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [];
+            public featureBindingDefinition[] featureBindingDefinitions => SafeWaterBuoy._featureBindingDefinitions;
+            public static featureBindingDefinition[] _featureBindingDefinitions => [];
 
             public SafeWaterBuoy() {
                 colour = new();
@@ -4960,7 +4989,7 @@ namespace S100Framework.DomainModel.S501 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class RadioStation : FeatureNode {
+        public partial class RadioStation : FeatureNode, IFeatureBindingDefinition {
             public List<featureName> featureName { get; set; } = [];
             public Int32? scaleMinimum { get; set; } = default;
             public DateOnly? reportedDate { get; set; } = default;
@@ -4992,8 +5021,10 @@ namespace S100Framework.DomainModel.S501 {
 
             [JsonIgnore]
             public override string Code => nameof(RadioStation);
-            public static informationBindingDefinition[] informationBindingDefinitions => [];
-            public static featureBindingDefinition[] featureBindingDefinitions => [];
+            public informationBindingDefinition[] informationBindingDefinitions => RadioStation._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [];
+            public featureBindingDefinition[] featureBindingDefinitions => RadioStation._featureBindingDefinitions;
+            public static featureBindingDefinition[] _featureBindingDefinitions => [];
 
             public RadioStation() {
             }
@@ -5001,7 +5032,7 @@ namespace S100Framework.DomainModel.S501 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class MilitaryExerciseAirspace : FeatureNode {
+        public partial class MilitaryExerciseAirspace : FeatureNode, IFeatureBindingDefinition {
             public List<featureName> featureName { get; set; } = [];
             public List<information> information { get; set; } = [];
             public String? pictorialRepresentation { get; set; } = null;
@@ -5013,8 +5044,10 @@ namespace S100Framework.DomainModel.S501 {
 
             [JsonIgnore]
             public override string Code => nameof(MilitaryExerciseAirspace);
-            public static informationBindingDefinition[] informationBindingDefinitions => [];
-            public static featureBindingDefinition[] featureBindingDefinitions => [];
+            public informationBindingDefinition[] informationBindingDefinitions => MilitaryExerciseAirspace._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [];
+            public featureBindingDefinition[] featureBindingDefinitions => MilitaryExerciseAirspace._featureBindingDefinitions;
+            public static featureBindingDefinition[] _featureBindingDefinitions => [];
 
             public MilitaryExerciseAirspace() {
             }
@@ -5022,7 +5055,7 @@ namespace S100Framework.DomainModel.S501 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class ContiguousZone : FeatureNode {
+        public partial class ContiguousZone : FeatureNode, IFeatureBindingDefinition {
             public sourceIdentification? sourceIdentification { get; set; }
             public fixedDateRange? fixedDateRange { get; set; }
             public String? interoperabilityIdentifier { get; set; } = null;
@@ -5044,8 +5077,10 @@ namespace S100Framework.DomainModel.S501 {
 
             [JsonIgnore]
             public override string Code => nameof(ContiguousZone);
-            public static informationBindingDefinition[] informationBindingDefinitions => [];
-            public static featureBindingDefinition[] featureBindingDefinitions => [];
+            public informationBindingDefinition[] informationBindingDefinitions => ContiguousZone._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [];
+            public featureBindingDefinition[] featureBindingDefinitions => ContiguousZone._featureBindingDefinitions;
+            public static featureBindingDefinition[] _featureBindingDefinitions => [];
 
             public ContiguousZone() {
                 nationality = new();
@@ -5057,7 +5092,7 @@ namespace S100Framework.DomainModel.S501 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class NormalBaseline : FeatureNode {
+        public partial class NormalBaseline : FeatureNode, IFeatureBindingDefinition {
             public List<information> information { get; set; } = [];
             public Int32? scaleMinimum { get; set; } = default;
             public DateOnly? reportedDate { get; set; } = default;
@@ -5071,8 +5106,10 @@ namespace S100Framework.DomainModel.S501 {
 
             [JsonIgnore]
             public override string Code => nameof(NormalBaseline);
-            public static informationBindingDefinition[] informationBindingDefinitions => [];
-            public static featureBindingDefinition[] featureBindingDefinitions => [];
+            public informationBindingDefinition[] informationBindingDefinitions => NormalBaseline._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [];
+            public featureBindingDefinition[] featureBindingDefinitions => NormalBaseline._featureBindingDefinitions;
+            public static featureBindingDefinition[] _featureBindingDefinitions => [];
 
             public NormalBaseline() {
                 nationality = string.Empty;
@@ -5081,7 +5118,7 @@ namespace S100Framework.DomainModel.S501 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class CableArea : FeatureNode {
+        public partial class CableArea : FeatureNode, IFeatureBindingDefinition {
             public List<information> information { get; set; } = [];
 
             [EnumerationValue(1)]
@@ -5127,8 +5164,10 @@ namespace S100Framework.DomainModel.S501 {
 
             [JsonIgnore]
             public override string Code => nameof(CableArea);
-            public static informationBindingDefinition[] informationBindingDefinitions => [];
-            public static featureBindingDefinition[] featureBindingDefinitions => [];
+            public informationBindingDefinition[] informationBindingDefinitions => CableArea._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [];
+            public featureBindingDefinition[] featureBindingDefinitions => CableArea._featureBindingDefinitions;
+            public static featureBindingDefinition[] _featureBindingDefinitions => [];
 
             public CableArea() {
             }
@@ -5136,7 +5175,7 @@ namespace S100Framework.DomainModel.S501 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class ContinentalShelfArea : FeatureNode {
+        public partial class ContinentalShelfArea : FeatureNode, IFeatureBindingDefinition {
             [EnumerationValue(502)]
             [EnumerationValue(504)]
             [EnumerationValue(520)]
@@ -5156,8 +5195,10 @@ namespace S100Framework.DomainModel.S501 {
 
             [JsonIgnore]
             public override string Code => nameof(ContinentalShelfArea);
-            public static informationBindingDefinition[] informationBindingDefinitions => [];
-            public static featureBindingDefinition[] featureBindingDefinitions => [];
+            public informationBindingDefinition[] informationBindingDefinitions => ContinentalShelfArea._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [];
+            public featureBindingDefinition[] featureBindingDefinitions => ContinentalShelfArea._featureBindingDefinitions;
+            public static featureBindingDefinition[] _featureBindingDefinitions => [];
 
             public ContinentalShelfArea() {
                 nationalMaritimeAuthority = new();
@@ -5169,7 +5210,7 @@ namespace S100Framework.DomainModel.S501 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class InternalWaters : FeatureNode {
+        public partial class InternalWaters : FeatureNode, IFeatureBindingDefinition {
             [Required()]
             public List<String> nationality { get; set; }
 
@@ -5189,8 +5230,10 @@ namespace S100Framework.DomainModel.S501 {
 
             [JsonIgnore]
             public override string Code => nameof(InternalWaters);
-            public static informationBindingDefinition[] informationBindingDefinitions => [];
-            public static featureBindingDefinition[] featureBindingDefinitions => [];
+            public informationBindingDefinition[] informationBindingDefinitions => InternalWaters._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [];
+            public featureBindingDefinition[] featureBindingDefinitions => InternalWaters._featureBindingDefinitions;
+            public static featureBindingDefinition[] _featureBindingDefinitions => [];
 
             public InternalWaters() {
                 nationality = new();
@@ -5202,7 +5245,7 @@ namespace S100Framework.DomainModel.S501 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class AdministrationArea : FeatureNode {
+        public partial class AdministrationArea : FeatureNode, IFeatureBindingDefinition {
             public String? pictorialRepresentation { get; set; } = null;
             public Boolean? inDispute { get; set; } = default;
 
@@ -5218,8 +5261,10 @@ namespace S100Framework.DomainModel.S501 {
 
             [JsonIgnore]
             public override string Code => nameof(AdministrationArea);
-            public static informationBindingDefinition[] informationBindingDefinitions => [];
-            public static featureBindingDefinition[] featureBindingDefinitions => [];
+            public informationBindingDefinition[] informationBindingDefinitions => AdministrationArea._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [];
+            public featureBindingDefinition[] featureBindingDefinitions => AdministrationArea._featureBindingDefinitions;
+            public static featureBindingDefinition[] _featureBindingDefinitions => [];
 
             public AdministrationArea() {
             }
@@ -5227,7 +5272,7 @@ namespace S100Framework.DomainModel.S501 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class Bollard : FeatureNode {
+        public partial class Bollard : FeatureNode, IFeatureBindingDefinition {
             public Int32? scaleMinimum { get; set; } = default;
             public List<periodicDateRange> periodicDateRange { get; set; } = [];
             public List<featureName> featureName { get; set; } = [];
@@ -5254,8 +5299,10 @@ namespace S100Framework.DomainModel.S501 {
 
             [JsonIgnore]
             public override string Code => nameof(Bollard);
-            public static informationBindingDefinition[] informationBindingDefinitions => [];
-            public static featureBindingDefinition[] featureBindingDefinitions => [];
+            public informationBindingDefinition[] informationBindingDefinitions => Bollard._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [];
+            public featureBindingDefinition[] featureBindingDefinitions => Bollard._featureBindingDefinitions;
+            public static featureBindingDefinition[] _featureBindingDefinitions => [];
 
             public Bollard() {
             }
@@ -5263,7 +5310,7 @@ namespace S100Framework.DomainModel.S501 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class Dolphin : FeatureNode {
+        public partial class Dolphin : FeatureNode, IFeatureBindingDefinition {
             public String? pictorialRepresentation { get; set; } = null;
             public Decimal? verticalLength { get; set; } = default;
 
@@ -5337,8 +5384,10 @@ namespace S100Framework.DomainModel.S501 {
 
             [JsonIgnore]
             public override string Code => nameof(Dolphin);
-            public static informationBindingDefinition[] informationBindingDefinitions => [];
-            public static featureBindingDefinition[] featureBindingDefinitions => [];
+            public informationBindingDefinition[] informationBindingDefinitions => Dolphin._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [];
+            public featureBindingDefinition[] featureBindingDefinitions => Dolphin._featureBindingDefinitions;
+            public static featureBindingDefinition[] _featureBindingDefinitions => [];
 
             public Dolphin() {
             }
@@ -5346,7 +5395,7 @@ namespace S100Framework.DomainModel.S501 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class RadarRange : FeatureNode {
+        public partial class RadarRange : FeatureNode, IFeatureBindingDefinition {
             public List<information> information { get; set; } = [];
             public String? interoperabilityIdentifier { get; set; } = null;
             public List<featureName> featureName { get; set; } = [];
@@ -5362,8 +5411,10 @@ namespace S100Framework.DomainModel.S501 {
 
             [JsonIgnore]
             public override string Code => nameof(RadarRange);
-            public static informationBindingDefinition[] informationBindingDefinitions => [];
-            public static featureBindingDefinition[] featureBindingDefinitions => [];
+            public informationBindingDefinition[] informationBindingDefinitions => RadarRange._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [];
+            public featureBindingDefinition[] featureBindingDefinitions => RadarRange._featureBindingDefinitions;
+            public static featureBindingDefinition[] _featureBindingDefinitions => [];
 
             public RadarRange() {
             }
@@ -5371,7 +5422,7 @@ namespace S100Framework.DomainModel.S501 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class IsolatedDangerBeacon : FeatureNode {
+        public partial class IsolatedDangerBeacon : FeatureNode, IFeatureBindingDefinition {
             [EnumerationValue(1)]
             [EnumerationValue(2)]
             [EnumerationValue(3)]
@@ -5457,8 +5508,10 @@ namespace S100Framework.DomainModel.S501 {
 
             [JsonIgnore]
             public override string Code => nameof(IsolatedDangerBeacon);
-            public static informationBindingDefinition[] informationBindingDefinitions => [];
-            public static featureBindingDefinition[] featureBindingDefinitions => [];
+            public informationBindingDefinition[] informationBindingDefinitions => IsolatedDangerBeacon._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [];
+            public featureBindingDefinition[] featureBindingDefinitions => IsolatedDangerBeacon._featureBindingDefinitions;
+            public static featureBindingDefinition[] _featureBindingDefinitions => [];
 
             public IsolatedDangerBeacon() {
                 colour = new();
@@ -5468,7 +5521,7 @@ namespace S100Framework.DomainModel.S501 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class IsolatedDangerBuoy : FeatureNode {
+        public partial class IsolatedDangerBuoy : FeatureNode, IFeatureBindingDefinition {
             public fixedDateRange? fixedDateRange { get; set; }
             public topmark? topmark { get; set; }
             public List<featureName> featureName { get; set; } = [];
@@ -5537,8 +5590,10 @@ namespace S100Framework.DomainModel.S501 {
 
             [JsonIgnore]
             public override string Code => nameof(IsolatedDangerBuoy);
-            public static informationBindingDefinition[] informationBindingDefinitions => [];
-            public static featureBindingDefinition[] featureBindingDefinitions => [];
+            public informationBindingDefinition[] informationBindingDefinitions => IsolatedDangerBuoy._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [];
+            public featureBindingDefinition[] featureBindingDefinitions => IsolatedDangerBuoy._featureBindingDefinitions;
+            public static featureBindingDefinition[] _featureBindingDefinitions => [];
 
             public IsolatedDangerBuoy() {
                 colour = new();
@@ -5548,7 +5603,7 @@ namespace S100Framework.DomainModel.S501 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class SubmarineTransitLane : FeatureNode {
+        public partial class SubmarineTransitLane : FeatureNode, IFeatureBindingDefinition {
             public List<featureName> featureName { get; set; } = [];
             public String? interoperabilityIdentifier { get; set; } = null;
             public String? nationality { get; set; } = null;
@@ -5588,8 +5643,10 @@ namespace S100Framework.DomainModel.S501 {
 
             [JsonIgnore]
             public override string Code => nameof(SubmarineTransitLane);
-            public static informationBindingDefinition[] informationBindingDefinitions => [];
-            public static featureBindingDefinition[] featureBindingDefinitions => [];
+            public informationBindingDefinition[] informationBindingDefinitions => SubmarineTransitLane._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [];
+            public featureBindingDefinition[] featureBindingDefinitions => SubmarineTransitLane._featureBindingDefinitions;
+            public static featureBindingDefinition[] _featureBindingDefinitions => [];
 
             public SubmarineTransitLane() {
             }
@@ -5597,7 +5654,7 @@ namespace S100Framework.DomainModel.S501 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class MaritimeSafetyInformationArea : FeatureNode {
+        public partial class MaritimeSafetyInformationArea : FeatureNode, IFeatureBindingDefinition {
             public DateOnly? reportedDate { get; set; } = default;
             public sourceIdentification? sourceIdentification { get; set; }
             public List<information> information { get; set; } = [];
@@ -5606,8 +5663,10 @@ namespace S100Framework.DomainModel.S501 {
 
             [JsonIgnore]
             public override string Code => nameof(MaritimeSafetyInformationArea);
-            public static informationBindingDefinition[] informationBindingDefinitions => [];
-            public static featureBindingDefinition[] featureBindingDefinitions => [];
+            public informationBindingDefinition[] informationBindingDefinitions => MaritimeSafetyInformationArea._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [];
+            public featureBindingDefinition[] featureBindingDefinitions => MaritimeSafetyInformationArea._featureBindingDefinitions;
+            public static featureBindingDefinition[] _featureBindingDefinitions => [];
 
             public MaritimeSafetyInformationArea() {
             }
@@ -5615,7 +5674,7 @@ namespace S100Framework.DomainModel.S501 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class AirspaceRestriction : FeatureNode {
+        public partial class AirspaceRestriction : FeatureNode, IFeatureBindingDefinition {
             public List<featureName> featureName { get; set; } = [];
             public String? agencyResponsibleForProduction { get; set; } = null;
             public flightLevel? flightLevel { get; set; }
@@ -5651,8 +5710,10 @@ namespace S100Framework.DomainModel.S501 {
 
             [JsonIgnore]
             public override string Code => nameof(AirspaceRestriction);
-            public static informationBindingDefinition[] informationBindingDefinitions => [];
-            public static featureBindingDefinition[] featureBindingDefinitions => [];
+            public informationBindingDefinition[] informationBindingDefinitions => AirspaceRestriction._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [];
+            public featureBindingDefinition[] featureBindingDefinitions => AirspaceRestriction._featureBindingDefinitions;
+            public static featureBindingDefinition[] _featureBindingDefinitions => [];
 
             public AirspaceRestriction() {
             }
@@ -5660,7 +5721,7 @@ namespace S100Framework.DomainModel.S501 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class Sounding : FeatureNode {
+        public partial class Sounding : FeatureNode, IFeatureBindingDefinition {
             [EnumerationValue(18)]
             public status? status { get; set; } = default;
 
@@ -5696,8 +5757,10 @@ namespace S100Framework.DomainModel.S501 {
 
             [JsonIgnore]
             public override string Code => nameof(Sounding);
-            public static informationBindingDefinition[] informationBindingDefinitions => [];
-            public static featureBindingDefinition[] featureBindingDefinitions => [];
+            public informationBindingDefinition[] informationBindingDefinitions => Sounding._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [];
+            public featureBindingDefinition[] featureBindingDefinitions => Sounding._featureBindingDefinitions;
+            public static featureBindingDefinition[] _featureBindingDefinitions => [];
 
             public Sounding() {
             }
@@ -5705,7 +5768,7 @@ namespace S100Framework.DomainModel.S501 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class TrafficSeparationSchemeBoundary : FeatureNode {
+        public partial class TrafficSeparationSchemeBoundary : FeatureNode, IFeatureBindingDefinition {
             public String? interoperabilityIdentifier { get; set; } = null;
 
             [EnumerationValue(1)]
@@ -5721,8 +5784,10 @@ namespace S100Framework.DomainModel.S501 {
 
             [JsonIgnore]
             public override string Code => nameof(TrafficSeparationSchemeBoundary);
-            public static informationBindingDefinition[] informationBindingDefinitions => [];
-            public static featureBindingDefinition[] featureBindingDefinitions => [];
+            public informationBindingDefinition[] informationBindingDefinitions => TrafficSeparationSchemeBoundary._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [];
+            public featureBindingDefinition[] featureBindingDefinitions => TrafficSeparationSchemeBoundary._featureBindingDefinitions;
+            public static featureBindingDefinition[] _featureBindingDefinitions => [];
 
             public TrafficSeparationSchemeBoundary() {
             }
@@ -5730,7 +5795,7 @@ namespace S100Framework.DomainModel.S501 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class DumpingGround : FeatureNode {
+        public partial class DumpingGround : FeatureNode, IFeatureBindingDefinition {
             [EnumerationValue(2)]
             [EnumerationValue(3)]
             [EnumerationValue(4)]
@@ -5776,8 +5841,10 @@ namespace S100Framework.DomainModel.S501 {
 
             [JsonIgnore]
             public override string Code => nameof(DumpingGround);
-            public static informationBindingDefinition[] informationBindingDefinitions => [];
-            public static featureBindingDefinition[] featureBindingDefinitions => [];
+            public informationBindingDefinition[] informationBindingDefinitions => DumpingGround._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [];
+            public featureBindingDefinition[] featureBindingDefinitions => DumpingGround._featureBindingDefinitions;
+            public static featureBindingDefinition[] _featureBindingDefinitions => [];
 
             public DumpingGround() {
             }
@@ -5785,7 +5852,7 @@ namespace S100Framework.DomainModel.S501 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class AirportAirfield : FeatureNode {
+        public partial class AirportAirfield : FeatureNode, IFeatureBindingDefinition {
             [EnumerationValue(1)]
             [EnumerationValue(2)]
             [EnumerationValue(3)]
@@ -5847,8 +5914,10 @@ namespace S100Framework.DomainModel.S501 {
 
             [JsonIgnore]
             public override string Code => nameof(AirportAirfield);
-            public static informationBindingDefinition[] informationBindingDefinitions => [];
-            public static featureBindingDefinition[] featureBindingDefinitions => [];
+            public informationBindingDefinition[] informationBindingDefinitions => AirportAirfield._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [];
+            public featureBindingDefinition[] featureBindingDefinitions => AirportAirfield._featureBindingDefinitions;
+            public static featureBindingDefinition[] _featureBindingDefinitions => [];
 
             public AirportAirfield() {
             }
@@ -5856,7 +5925,7 @@ namespace S100Framework.DomainModel.S501 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class FoulGround : FeatureNode {
+        public partial class FoulGround : FeatureNode, IFeatureBindingDefinition {
             [EnumerationValue(13)]
             [EnumerationValue(18)]
             [EnumerationValue(28)]
@@ -5897,8 +5966,10 @@ namespace S100Framework.DomainModel.S501 {
 
             [JsonIgnore]
             public override string Code => nameof(FoulGround);
-            public static informationBindingDefinition[] informationBindingDefinitions => [];
-            public static featureBindingDefinition[] featureBindingDefinitions => [];
+            public informationBindingDefinition[] informationBindingDefinitions => FoulGround._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [];
+            public featureBindingDefinition[] featureBindingDefinitions => FoulGround._featureBindingDefinitions;
+            public static featureBindingDefinition[] _featureBindingDefinitions => [];
 
             public FoulGround() {
             }
@@ -5906,7 +5977,7 @@ namespace S100Framework.DomainModel.S501 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class LightAirObstruction : FeatureNode {
+        public partial class LightAirObstruction : FeatureNode, IFeatureBindingDefinition {
             public String pictorialRepresentation { get; set; } = string.Empty;
             public Decimal? valueOfNominalRange { get; set; } = default;
             public multiplicityOfFeatures? multiplicityOfFeatures { get; set; }
@@ -5986,8 +6057,10 @@ namespace S100Framework.DomainModel.S501 {
 
             [JsonIgnore]
             public override string Code => nameof(LightAirObstruction);
-            public static informationBindingDefinition[] informationBindingDefinitions => [];
-            public static featureBindingDefinition[] featureBindingDefinitions => [];
+            public informationBindingDefinition[] informationBindingDefinitions => LightAirObstruction._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [];
+            public featureBindingDefinition[] featureBindingDefinitions => LightAirObstruction._featureBindingDefinitions;
+            public static featureBindingDefinition[] _featureBindingDefinitions => [];
 
             public LightAirObstruction() {
                 pictorialRepresentation = string.Empty;
@@ -5996,7 +6069,7 @@ namespace S100Framework.DomainModel.S501 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class MooringBuoy : FeatureNode {
+        public partial class MooringBuoy : FeatureNode, IFeatureBindingDefinition {
             public Decimal? maximumPermittedVesselLength { get; set; } = default;
             public Decimal? maximumPermittedDraught { get; set; } = default;
             public List<periodicDateRange> periodicDateRange { get; set; } = [];
@@ -6059,8 +6132,10 @@ namespace S100Framework.DomainModel.S501 {
 
             [JsonIgnore]
             public override string Code => nameof(MooringBuoy);
-            public static informationBindingDefinition[] informationBindingDefinitions => [];
-            public static featureBindingDefinition[] featureBindingDefinitions => [];
+            public informationBindingDefinition[] informationBindingDefinitions => MooringBuoy._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [];
+            public featureBindingDefinition[] featureBindingDefinitions => MooringBuoy._featureBindingDefinitions;
+            public static featureBindingDefinition[] _featureBindingDefinitions => [];
 
             public MooringBuoy() {
             }
@@ -6068,7 +6143,7 @@ namespace S100Framework.DomainModel.S501 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class UnderwaterAwashRock : FeatureNode {
+        public partial class UnderwaterAwashRock : FeatureNode, IFeatureBindingDefinition {
             [Required()]
             public Decimal valueOfSounding { get; set; }
             public verticalUncertainty? verticalUncertainty { get; set; }
@@ -6132,8 +6207,10 @@ namespace S100Framework.DomainModel.S501 {
 
             [JsonIgnore]
             public override string Code => nameof(UnderwaterAwashRock);
-            public static informationBindingDefinition[] informationBindingDefinitions => [];
-            public static featureBindingDefinition[] featureBindingDefinitions => [];
+            public informationBindingDefinition[] informationBindingDefinitions => UnderwaterAwashRock._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [];
+            public featureBindingDefinition[] featureBindingDefinitions => UnderwaterAwashRock._featureBindingDefinitions;
+            public static featureBindingDefinition[] _featureBindingDefinitions => [];
 
             public UnderwaterAwashRock() {
             }
@@ -6141,7 +6218,7 @@ namespace S100Framework.DomainModel.S501 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class CableOverhead : FeatureNode {
+        public partial class CableOverhead : FeatureNode, IFeatureBindingDefinition {
             [EnumerationValue(1)]
             [EnumerationValue(5)]
             public condition? condition { get; set; } = default;
@@ -6192,8 +6269,10 @@ namespace S100Framework.DomainModel.S501 {
 
             [JsonIgnore]
             public override string Code => nameof(CableOverhead);
-            public static informationBindingDefinition[] informationBindingDefinitions => [];
-            public static featureBindingDefinition[] featureBindingDefinitions => [];
+            public informationBindingDefinition[] informationBindingDefinitions => CableOverhead._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [];
+            public featureBindingDefinition[] featureBindingDefinitions => CableOverhead._featureBindingDefinitions;
+            public static featureBindingDefinition[] _featureBindingDefinitions => [];
 
             public CableOverhead() {
             }
@@ -6201,7 +6280,7 @@ namespace S100Framework.DomainModel.S501 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class ControlledAirspace : FeatureNode {
+        public partial class ControlledAirspace : FeatureNode, IFeatureBindingDefinition {
             [EnumerationValue(501)]
             [EnumerationValue(502)]
             [EnumerationValue(503)]
@@ -6264,8 +6343,10 @@ namespace S100Framework.DomainModel.S501 {
 
             [JsonIgnore]
             public override string Code => nameof(ControlledAirspace);
-            public static informationBindingDefinition[] informationBindingDefinitions => [];
-            public static featureBindingDefinition[] featureBindingDefinitions => [];
+            public informationBindingDefinition[] informationBindingDefinitions => ControlledAirspace._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [];
+            public featureBindingDefinition[] featureBindingDefinitions => ControlledAirspace._featureBindingDefinitions;
+            public static featureBindingDefinition[] _featureBindingDefinitions => [];
 
             public ControlledAirspace() {
             }
@@ -6273,7 +6354,7 @@ namespace S100Framework.DomainModel.S501 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class Obstruction : FeatureNode {
+        public partial class Obstruction : FeatureNode, IFeatureBindingDefinition {
             [EnumerationValue(1)]
             [EnumerationValue(2)]
             [EnumerationValue(3)]
@@ -6554,8 +6635,10 @@ namespace S100Framework.DomainModel.S501 {
 
             [JsonIgnore]
             public override string Code => nameof(Obstruction);
-            public static informationBindingDefinition[] informationBindingDefinitions => [];
-            public static featureBindingDefinition[] featureBindingDefinitions => [];
+            public informationBindingDefinition[] informationBindingDefinitions => Obstruction._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [];
+            public featureBindingDefinition[] featureBindingDefinitions => Obstruction._featureBindingDefinitions;
+            public static featureBindingDefinition[] _featureBindingDefinitions => [];
 
             public Obstruction() {
             }
@@ -6563,7 +6646,7 @@ namespace S100Framework.DomainModel.S501 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class FishingGround : FeatureNode {
+        public partial class FishingGround : FeatureNode, IFeatureBindingDefinition {
             [EnumerationValue(1)]
             [EnumerationValue(5)]
             [EnumerationValue(6)]
@@ -6611,8 +6694,10 @@ namespace S100Framework.DomainModel.S501 {
 
             [JsonIgnore]
             public override string Code => nameof(FishingGround);
-            public static informationBindingDefinition[] informationBindingDefinitions => [];
-            public static featureBindingDefinition[] featureBindingDefinitions => [];
+            public informationBindingDefinition[] informationBindingDefinitions => FishingGround._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [];
+            public featureBindingDefinition[] featureBindingDefinitions => FishingGround._featureBindingDefinitions;
+            public static featureBindingDefinition[] _featureBindingDefinitions => [];
 
             public FishingGround() {
             }
@@ -6620,7 +6705,7 @@ namespace S100Framework.DomainModel.S501 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class FishingFacility : FeatureNode {
+        public partial class FishingFacility : FeatureNode, IFeatureBindingDefinition {
             public List<information> information { get; set; } = [];
             public List<periodicDateRange> periodicDateRange { get; set; } = [];
 
@@ -6653,8 +6738,10 @@ namespace S100Framework.DomainModel.S501 {
 
             [JsonIgnore]
             public override string Code => nameof(FishingFacility);
-            public static informationBindingDefinition[] informationBindingDefinitions => [];
-            public static featureBindingDefinition[] featureBindingDefinitions => [];
+            public informationBindingDefinition[] informationBindingDefinitions => FishingFacility._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [];
+            public featureBindingDefinition[] featureBindingDefinitions => FishingFacility._featureBindingDefinitions;
+            public static featureBindingDefinition[] _featureBindingDefinitions => [];
 
             public FishingFacility() {
             }
@@ -6662,7 +6749,7 @@ namespace S100Framework.DomainModel.S501 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class NavigationSystem : FeatureNode {
+        public partial class NavigationSystem : FeatureNode, IFeatureBindingDefinition {
             public sourceIdentification? sourceIdentification { get; set; }
             public List<information> information { get; set; } = [];
             public String? agencyResponsibleForProduction { get; set; } = null;
@@ -6698,8 +6785,10 @@ namespace S100Framework.DomainModel.S501 {
 
             [JsonIgnore]
             public override string Code => nameof(NavigationSystem);
-            public static informationBindingDefinition[] informationBindingDefinitions => [];
-            public static featureBindingDefinition[] featureBindingDefinitions => [];
+            public informationBindingDefinition[] informationBindingDefinitions => NavigationSystem._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [];
+            public featureBindingDefinition[] featureBindingDefinitions => NavigationSystem._featureBindingDefinitions;
+            public static featureBindingDefinition[] _featureBindingDefinitions => [];
 
             public NavigationSystem() {
             }
@@ -6707,7 +6796,7 @@ namespace S100Framework.DomainModel.S501 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class TrafficSeparationSchemeCrossing : FeatureNode {
+        public partial class TrafficSeparationSchemeCrossing : FeatureNode, IFeatureBindingDefinition {
             [EnumerationValue(1)]
             [EnumerationValue(2)]
             [EnumerationValue(3)]
@@ -6748,8 +6837,10 @@ namespace S100Framework.DomainModel.S501 {
 
             [JsonIgnore]
             public override string Code => nameof(TrafficSeparationSchemeCrossing);
-            public static informationBindingDefinition[] informationBindingDefinitions => [];
-            public static featureBindingDefinition[] featureBindingDefinitions => [];
+            public informationBindingDefinition[] informationBindingDefinitions => TrafficSeparationSchemeCrossing._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [];
+            public featureBindingDefinition[] featureBindingDefinitions => TrafficSeparationSchemeCrossing._featureBindingDefinitions;
+            public static featureBindingDefinition[] _featureBindingDefinitions => [];
 
             public TrafficSeparationSchemeCrossing() {
             }
@@ -6757,7 +6848,7 @@ namespace S100Framework.DomainModel.S501 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class TrafficSeparationSchemeLanePart : FeatureNode {
+        public partial class TrafficSeparationSchemeLanePart : FeatureNode, IFeatureBindingDefinition {
             public List<information> information { get; set; } = [];
             public DateOnly? reportedDate { get; set; } = default;
             public List<vesselSpeedLimit> vesselSpeedLimit { get; set; } = [];
@@ -6800,8 +6891,10 @@ namespace S100Framework.DomainModel.S501 {
 
             [JsonIgnore]
             public override string Code => nameof(TrafficSeparationSchemeLanePart);
-            public static informationBindingDefinition[] informationBindingDefinitions => [];
-            public static featureBindingDefinition[] featureBindingDefinitions => [];
+            public informationBindingDefinition[] informationBindingDefinitions => TrafficSeparationSchemeLanePart._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [];
+            public featureBindingDefinition[] featureBindingDefinitions => TrafficSeparationSchemeLanePart._featureBindingDefinitions;
+            public static featureBindingDefinition[] _featureBindingDefinitions => [];
 
             public TrafficSeparationSchemeLanePart() {
             }
@@ -6809,7 +6902,7 @@ namespace S100Framework.DomainModel.S501 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class TerritorialSeaArea : FeatureNode {
+        public partial class TerritorialSeaArea : FeatureNode, IFeatureBindingDefinition {
             [Required()]
             public List<String> nationality { get; set; }
             public List<featureName> featureName { get; set; } = [];
@@ -6849,8 +6942,10 @@ namespace S100Framework.DomainModel.S501 {
 
             [JsonIgnore]
             public override string Code => nameof(TerritorialSeaArea);
-            public static informationBindingDefinition[] informationBindingDefinitions => [];
-            public static featureBindingDefinition[] featureBindingDefinitions => [];
+            public informationBindingDefinition[] informationBindingDefinitions => TerritorialSeaArea._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [];
+            public featureBindingDefinition[] featureBindingDefinitions => TerritorialSeaArea._featureBindingDefinitions;
+            public static featureBindingDefinition[] _featureBindingDefinitions => [];
 
             public TerritorialSeaArea() {
                 nationality = new();
@@ -6862,7 +6957,7 @@ namespace S100Framework.DomainModel.S501 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class LateralBeacon : FeatureNode {
+        public partial class LateralBeacon : FeatureNode, IFeatureBindingDefinition {
             public Decimal? elevation { get; set; } = default;
 
             [EnumerationValue(1)]
@@ -6954,8 +7049,10 @@ namespace S100Framework.DomainModel.S501 {
 
             [JsonIgnore]
             public override string Code => nameof(LateralBeacon);
-            public static informationBindingDefinition[] informationBindingDefinitions => [];
-            public static featureBindingDefinition[] featureBindingDefinitions => [];
+            public informationBindingDefinition[] informationBindingDefinitions => LateralBeacon._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [];
+            public featureBindingDefinition[] featureBindingDefinitions => LateralBeacon._featureBindingDefinitions;
+            public static featureBindingDefinition[] _featureBindingDefinitions => [];
 
             public LateralBeacon() {
                 colour = new();
@@ -6965,7 +7062,7 @@ namespace S100Framework.DomainModel.S501 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class CoastGuardStation : FeatureNode {
+        public partial class CoastGuardStation : FeatureNode, IFeatureBindingDefinition {
             [EnumerationValue(1)]
             [EnumerationValue(4)]
             [EnumerationValue(5)]
@@ -6982,8 +7079,10 @@ namespace S100Framework.DomainModel.S501 {
 
             [JsonIgnore]
             public override string Code => nameof(CoastGuardStation);
-            public static informationBindingDefinition[] informationBindingDefinitions => [];
-            public static featureBindingDefinition[] featureBindingDefinitions => [];
+            public informationBindingDefinition[] informationBindingDefinitions => CoastGuardStation._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [];
+            public featureBindingDefinition[] featureBindingDefinitions => CoastGuardStation._featureBindingDefinitions;
+            public static featureBindingDefinition[] _featureBindingDefinitions => [];
 
             public CoastGuardStation() {
             }
@@ -6991,7 +7090,7 @@ namespace S100Framework.DomainModel.S501 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class SeparationZoneOrLine : FeatureNode {
+        public partial class SeparationZoneOrLine : FeatureNode, IFeatureBindingDefinition {
             public DateOnly? reportedDate { get; set; } = default;
             public String? interoperabilityIdentifier { get; set; } = null;
 
@@ -7007,8 +7106,10 @@ namespace S100Framework.DomainModel.S501 {
 
             [JsonIgnore]
             public override string Code => nameof(SeparationZoneOrLine);
-            public static informationBindingDefinition[] informationBindingDefinitions => [];
-            public static featureBindingDefinition[] featureBindingDefinitions => [];
+            public informationBindingDefinition[] informationBindingDefinitions => SeparationZoneOrLine._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [];
+            public featureBindingDefinition[] featureBindingDefinitions => SeparationZoneOrLine._featureBindingDefinitions;
+            public static featureBindingDefinition[] _featureBindingDefinitions => [];
 
             public SeparationZoneOrLine() {
             }
@@ -7016,7 +7117,7 @@ namespace S100Framework.DomainModel.S501 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class BottomFeature : FeatureNode {
+        public partial class BottomFeature : FeatureNode, IFeatureBindingDefinition {
             public List<information> information { get; set; } = [];
             public Int32? migrationDirection { get; set; } = default;
             public List<featureName> featureName { get; set; } = [];
@@ -7030,8 +7131,10 @@ namespace S100Framework.DomainModel.S501 {
 
             [JsonIgnore]
             public override string Code => nameof(BottomFeature);
-            public static informationBindingDefinition[] informationBindingDefinitions => [];
-            public static featureBindingDefinition[] featureBindingDefinitions => [];
+            public informationBindingDefinition[] informationBindingDefinitions => BottomFeature._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [];
+            public featureBindingDefinition[] featureBindingDefinitions => BottomFeature._featureBindingDefinitions;
+            public static featureBindingDefinition[] _featureBindingDefinitions => [];
 
             public BottomFeature() {
             }
@@ -7039,7 +7142,7 @@ namespace S100Framework.DomainModel.S501 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class ArchipelagicBaseline : FeatureNode {
+        public partial class ArchipelagicBaseline : FeatureNode, IFeatureBindingDefinition {
             public DateOnly? reportedDate { get; set; } = default;
 
             [EnumerationValue(502)]
@@ -7054,8 +7157,10 @@ namespace S100Framework.DomainModel.S501 {
 
             [JsonIgnore]
             public override string Code => nameof(ArchipelagicBaseline);
-            public static informationBindingDefinition[] informationBindingDefinitions => [];
-            public static featureBindingDefinition[] featureBindingDefinitions => [];
+            public informationBindingDefinition[] informationBindingDefinitions => ArchipelagicBaseline._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [];
+            public featureBindingDefinition[] featureBindingDefinitions => ArchipelagicBaseline._featureBindingDefinitions;
+            public static featureBindingDefinition[] _featureBindingDefinitions => [];
 
             public ArchipelagicBaseline() {
                 nationality = string.Empty;
@@ -7064,7 +7169,7 @@ namespace S100Framework.DomainModel.S501 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class SmallBottomObject : FeatureNode {
+        public partial class SmallBottomObject : FeatureNode, IFeatureBindingDefinition {
             public String? agencyResponsibleForProduction { get; set; } = null;
 
             [EnumerationValue(504)]
@@ -7077,8 +7182,10 @@ namespace S100Framework.DomainModel.S501 {
 
             [JsonIgnore]
             public override string Code => nameof(SmallBottomObject);
-            public static informationBindingDefinition[] informationBindingDefinitions => [];
-            public static featureBindingDefinition[] featureBindingDefinitions => [];
+            public informationBindingDefinition[] informationBindingDefinitions => SmallBottomObject._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [];
+            public featureBindingDefinition[] featureBindingDefinitions => SmallBottomObject._featureBindingDefinitions;
+            public static featureBindingDefinition[] _featureBindingDefinitions => [];
 
             public SmallBottomObject() {
             }
@@ -7086,7 +7193,7 @@ namespace S100Framework.DomainModel.S501 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class ExclusiveEconomicZone : FeatureNode {
+        public partial class ExclusiveEconomicZone : FeatureNode, IFeatureBindingDefinition {
             [Required()]
             public List<String> nationalMaritimeAuthority { get; set; }
             public Int32? scaleMinimum { get; set; } = default;
@@ -7102,8 +7209,10 @@ namespace S100Framework.DomainModel.S501 {
 
             [JsonIgnore]
             public override string Code => nameof(ExclusiveEconomicZone);
-            public static informationBindingDefinition[] informationBindingDefinitions => [];
-            public static featureBindingDefinition[] featureBindingDefinitions => [];
+            public informationBindingDefinition[] informationBindingDefinitions => ExclusiveEconomicZone._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [];
+            public featureBindingDefinition[] featureBindingDefinitions => ExclusiveEconomicZone._featureBindingDefinitions;
+            public static featureBindingDefinition[] _featureBindingDefinitions => [];
 
             public ExclusiveEconomicZone() {
                 nationalMaritimeAuthority = new();
@@ -7115,7 +7224,7 @@ namespace S100Framework.DomainModel.S501 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class RadarStation : FeatureNode {
+        public partial class RadarStation : FeatureNode, IFeatureBindingDefinition {
             [EnumerationValue(1)]
             [EnumerationValue(2)]
             [EnumerationValue(4)]
@@ -7138,8 +7247,10 @@ namespace S100Framework.DomainModel.S501 {
 
             [JsonIgnore]
             public override string Code => nameof(RadarStation);
-            public static informationBindingDefinition[] informationBindingDefinitions => [];
-            public static featureBindingDefinition[] featureBindingDefinitions => [];
+            public informationBindingDefinition[] informationBindingDefinitions => RadarStation._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [];
+            public featureBindingDefinition[] featureBindingDefinitions => RadarStation._featureBindingDefinitions;
+            public static featureBindingDefinition[] _featureBindingDefinitions => [];
 
             public RadarStation() {
             }
@@ -7147,7 +7258,7 @@ namespace S100Framework.DomainModel.S501 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class DivingLocation : FeatureNode {
+        public partial class DivingLocation : FeatureNode, IFeatureBindingDefinition {
             public Decimal? waterClarity { get; set; } = default;
             public List<featureName> featureName { get; set; } = [];
 
@@ -7158,8 +7269,10 @@ namespace S100Framework.DomainModel.S501 {
 
             [JsonIgnore]
             public override string Code => nameof(DivingLocation);
-            public static informationBindingDefinition[] informationBindingDefinitions => [];
-            public static featureBindingDefinition[] featureBindingDefinitions => [];
+            public informationBindingDefinition[] informationBindingDefinitions => DivingLocation._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [];
+            public featureBindingDefinition[] featureBindingDefinitions => DivingLocation._featureBindingDefinitions;
+            public static featureBindingDefinition[] _featureBindingDefinitions => [];
 
             public DivingLocation() {
             }
@@ -7167,7 +7280,7 @@ namespace S100Framework.DomainModel.S501 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class RestrictedArea : FeatureNode {
+        public partial class RestrictedArea : FeatureNode, IFeatureBindingDefinition {
             public List<featureName> featureName { get; set; } = [];
             public Int32? scaleMinimum { get; set; } = default;
 
@@ -7252,8 +7365,10 @@ namespace S100Framework.DomainModel.S501 {
 
             [JsonIgnore]
             public override string Code => nameof(RestrictedArea);
-            public static informationBindingDefinition[] informationBindingDefinitions => [];
-            public static featureBindingDefinition[] featureBindingDefinitions => [];
+            public informationBindingDefinition[] informationBindingDefinitions => RestrictedArea._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [];
+            public featureBindingDefinition[] featureBindingDefinitions => RestrictedArea._featureBindingDefinitions;
+            public static featureBindingDefinition[] _featureBindingDefinitions => [];
 
             public RestrictedArea() {
                 restriction = new();
@@ -7263,7 +7378,7 @@ namespace S100Framework.DomainModel.S501 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class CableSubmarine : FeatureNode {
+        public partial class CableSubmarine : FeatureNode, IFeatureBindingDefinition {
             [EnumerationValue(1)]
             [EnumerationValue(4)]
             [EnumerationValue(13)]
@@ -7293,8 +7408,10 @@ namespace S100Framework.DomainModel.S501 {
 
             [JsonIgnore]
             public override string Code => nameof(CableSubmarine);
-            public static informationBindingDefinition[] informationBindingDefinitions => [];
-            public static featureBindingDefinition[] featureBindingDefinitions => [];
+            public informationBindingDefinition[] informationBindingDefinitions => CableSubmarine._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [];
+            public featureBindingDefinition[] featureBindingDefinitions => CableSubmarine._featureBindingDefinitions;
+            public static featureBindingDefinition[] _featureBindingDefinitions => [];
 
             public CableSubmarine() {
             }
@@ -7302,7 +7419,7 @@ namespace S100Framework.DomainModel.S501 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class Wreck : FeatureNode {
+        public partial class Wreck : FeatureNode, IFeatureBindingDefinition {
             public Decimal? surroundingDepth { get; set; } = default;
 
             [EnumerationValue(1)]
@@ -7456,8 +7573,10 @@ namespace S100Framework.DomainModel.S501 {
 
             [JsonIgnore]
             public override string Code => nameof(Wreck);
-            public static informationBindingDefinition[] informationBindingDefinitions => [];
-            public static featureBindingDefinition[] featureBindingDefinitions => [];
+            public informationBindingDefinition[] informationBindingDefinitions => Wreck._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [];
+            public featureBindingDefinition[] featureBindingDefinitions => Wreck._featureBindingDefinitions;
+            public static featureBindingDefinition[] _featureBindingDefinitions => [];
 
             public Wreck() {
                 nationality = new();
@@ -7467,7 +7586,7 @@ namespace S100Framework.DomainModel.S501 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class QRoute : FeatureNode {
+        public partial class QRoute : FeatureNode, IFeatureBindingDefinition {
             public String? agencyResponsibleForProduction { get; set; } = null;
             public List<information> information { get; set; } = [];
             public List<featureName> featureName { get; set; } = [];
@@ -7481,8 +7600,10 @@ namespace S100Framework.DomainModel.S501 {
 
             [JsonIgnore]
             public override string Code => nameof(QRoute);
-            public static informationBindingDefinition[] informationBindingDefinitions => [];
-            public static featureBindingDefinition[] featureBindingDefinitions => [];
+            public informationBindingDefinition[] informationBindingDefinitions => QRoute._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [];
+            public featureBindingDefinition[] featureBindingDefinitions => QRoute._featureBindingDefinitions;
+            public static featureBindingDefinition[] _featureBindingDefinitions => [];
 
             public QRoute() {
             }
@@ -7490,7 +7611,7 @@ namespace S100Framework.DomainModel.S501 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class CompletenessOfProductSpecification : FeatureNode {
+        public partial class CompletenessOfProductSpecification : FeatureNode, IFeatureBindingDefinition {
             public String? agencyResponsibleForProduction { get; set; } = null;
 
             [EnumerationValue(501)]
@@ -7504,8 +7625,10 @@ namespace S100Framework.DomainModel.S501 {
 
             [JsonIgnore]
             public override string Code => nameof(CompletenessOfProductSpecification);
-            public static informationBindingDefinition[] informationBindingDefinitions => [];
-            public static featureBindingDefinition[] featureBindingDefinitions => [];
+            public informationBindingDefinition[] informationBindingDefinitions => CompletenessOfProductSpecification._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [];
+            public featureBindingDefinition[] featureBindingDefinitions => CompletenessOfProductSpecification._featureBindingDefinitions;
+            public static featureBindingDefinition[] _featureBindingDefinitions => [];
 
             public CompletenessOfProductSpecification() {
             }
@@ -7513,7 +7636,7 @@ namespace S100Framework.DomainModel.S501 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class RescueStation : FeatureNode {
+        public partial class RescueStation : FeatureNode, IFeatureBindingDefinition {
             [EnumerationValue(1)]
             [EnumerationValue(2)]
             [EnumerationValue(4)]
@@ -7543,8 +7666,10 @@ namespace S100Framework.DomainModel.S501 {
 
             [JsonIgnore]
             public override string Code => nameof(RescueStation);
-            public static informationBindingDefinition[] informationBindingDefinitions => [];
-            public static featureBindingDefinition[] featureBindingDefinitions => [];
+            public informationBindingDefinition[] informationBindingDefinitions => RescueStation._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [];
+            public featureBindingDefinition[] featureBindingDefinitions => RescueStation._featureBindingDefinitions;
+            public static featureBindingDefinition[] _featureBindingDefinitions => [];
 
             public RescueStation() {
             }
@@ -7552,7 +7677,7 @@ namespace S100Framework.DomainModel.S501 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class CardinalBeacon : FeatureNode {
+        public partial class CardinalBeacon : FeatureNode, IFeatureBindingDefinition {
             public List<information> information { get; set; } = [];
 
             [EnumerationValue(1)]
@@ -7643,8 +7768,10 @@ namespace S100Framework.DomainModel.S501 {
 
             [JsonIgnore]
             public override string Code => nameof(CardinalBeacon);
-            public static informationBindingDefinition[] informationBindingDefinitions => [];
-            public static featureBindingDefinition[] featureBindingDefinitions => [];
+            public informationBindingDefinition[] informationBindingDefinitions => CardinalBeacon._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [];
+            public featureBindingDefinition[] featureBindingDefinitions => CardinalBeacon._featureBindingDefinitions;
+            public static featureBindingDefinition[] _featureBindingDefinitions => [];
 
             public CardinalBeacon() {
                 colour = new();
@@ -7654,7 +7781,7 @@ namespace S100Framework.DomainModel.S501 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class LightVessel : FeatureNode {
+        public partial class LightVessel : FeatureNode, IFeatureBindingDefinition {
             [EnumerationValue(1)]
             [EnumerationValue(2)]
             [EnumerationValue(4)]
@@ -7712,8 +7839,10 @@ namespace S100Framework.DomainModel.S501 {
 
             [JsonIgnore]
             public override string Code => nameof(LightVessel);
-            public static informationBindingDefinition[] informationBindingDefinitions => [];
-            public static featureBindingDefinition[] featureBindingDefinitions => [];
+            public informationBindingDefinition[] informationBindingDefinitions => LightVessel._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [];
+            public featureBindingDefinition[] featureBindingDefinitions => LightVessel._featureBindingDefinitions;
+            public static featureBindingDefinition[] _featureBindingDefinitions => [];
 
             public LightVessel() {
                 colour = new();
@@ -7723,7 +7852,7 @@ namespace S100Framework.DomainModel.S501 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class FisheryZone : FeatureNode {
+        public partial class FisheryZone : FeatureNode, IFeatureBindingDefinition {
             public String? interoperabilityIdentifier { get; set; } = null;
             public String nationality { get; set; } = string.Empty;
 
@@ -7748,8 +7877,10 @@ namespace S100Framework.DomainModel.S501 {
 
             [JsonIgnore]
             public override string Code => nameof(FisheryZone);
-            public static informationBindingDefinition[] informationBindingDefinitions => [];
-            public static featureBindingDefinition[] featureBindingDefinitions => [];
+            public informationBindingDefinition[] informationBindingDefinitions => FisheryZone._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [];
+            public featureBindingDefinition[] featureBindingDefinitions => FisheryZone._featureBindingDefinitions;
+            public static featureBindingDefinition[] _featureBindingDefinitions => [];
 
             public FisheryZone() {
                 nationality = string.Empty;
@@ -7760,7 +7891,7 @@ namespace S100Framework.DomainModel.S501 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class DredgedArea : FeatureNode {
+        public partial class DredgedArea : FeatureNode, IFeatureBindingDefinition {
             public Decimal? maximumPermittedDraught { get; set; } = default;
             public verticalUncertainty? verticalUncertainty { get; set; }
             public DateOnly? dredgedDate { get; set; } = default;
@@ -7811,8 +7942,10 @@ namespace S100Framework.DomainModel.S501 {
 
             [JsonIgnore]
             public override string Code => nameof(DredgedArea);
-            public static informationBindingDefinition[] informationBindingDefinitions => [];
-            public static featureBindingDefinition[] featureBindingDefinitions => [];
+            public informationBindingDefinition[] informationBindingDefinitions => DredgedArea._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [];
+            public featureBindingDefinition[] featureBindingDefinitions => DredgedArea._featureBindingDefinitions;
+            public static featureBindingDefinition[] _featureBindingDefinitions => [];
 
             public DredgedArea() {
             }
@@ -7820,7 +7953,7 @@ namespace S100Framework.DomainModel.S501 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class FerryRoute : FeatureNode {
+        public partial class FerryRoute : FeatureNode, IFeatureBindingDefinition {
             [EnumerationValue(1)]
             [EnumerationValue(2)]
             [EnumerationValue(4)]
@@ -7851,8 +7984,10 @@ namespace S100Framework.DomainModel.S501 {
 
             [JsonIgnore]
             public override string Code => nameof(FerryRoute);
-            public static informationBindingDefinition[] informationBindingDefinitions => [];
-            public static featureBindingDefinition[] featureBindingDefinitions => [];
+            public informationBindingDefinition[] informationBindingDefinitions => FerryRoute._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [];
+            public featureBindingDefinition[] featureBindingDefinitions => FerryRoute._featureBindingDefinitions;
+            public static featureBindingDefinition[] _featureBindingDefinitions => [];
 
             public FerryRoute() {
                 categoryOfFerry = new();
@@ -7862,7 +7997,7 @@ namespace S100Framework.DomainModel.S501 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class ShorelineConstruction : FeatureNode {
+        public partial class ShorelineConstruction : FeatureNode, IFeatureBindingDefinition {
             public Decimal? horizontalLength { get; set; } = default;
 
             [EnumerationValue(501)]
@@ -7976,8 +8111,10 @@ namespace S100Framework.DomainModel.S501 {
 
             [JsonIgnore]
             public override string Code => nameof(ShorelineConstruction);
-            public static informationBindingDefinition[] informationBindingDefinitions => [];
-            public static featureBindingDefinition[] featureBindingDefinitions => [];
+            public informationBindingDefinition[] informationBindingDefinitions => ShorelineConstruction._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [];
+            public featureBindingDefinition[] featureBindingDefinitions => ShorelineConstruction._featureBindingDefinitions;
+            public static featureBindingDefinition[] _featureBindingDefinitions => [];
 
             public ShorelineConstruction() {
             }
@@ -7985,7 +8122,7 @@ namespace S100Framework.DomainModel.S501 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class CautionArea : FeatureNode {
+        public partial class CautionArea : FeatureNode, IFeatureBindingDefinition {
             public DateOnly? reportedDate { get; set; } = default;
             public List<periodicDateRange> periodicDateRange { get; set; } = [];
             public fixedDateRange? fixedDateRange { get; set; }
@@ -8004,8 +8141,10 @@ namespace S100Framework.DomainModel.S501 {
 
             [JsonIgnore]
             public override string Code => nameof(CautionArea);
-            public static informationBindingDefinition[] informationBindingDefinitions => [];
-            public static featureBindingDefinition[] featureBindingDefinitions => [];
+            public informationBindingDefinition[] informationBindingDefinitions => CautionArea._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [];
+            public featureBindingDefinition[] featureBindingDefinitions => CautionArea._featureBindingDefinitions;
+            public static featureBindingDefinition[] _featureBindingDefinitions => [];
 
             public CautionArea() {
             }
@@ -8013,7 +8152,7 @@ namespace S100Framework.DomainModel.S501 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class DeepWaterRoutePart : FeatureNode {
+        public partial class DeepWaterRoutePart : FeatureNode, IFeatureBindingDefinition {
             public Boolean? imoAdopted { get; set; } = default;
             public verticalUncertainty? verticalUncertainty { get; set; }
             public List<information> information { get; set; } = [];
@@ -8090,8 +8229,10 @@ namespace S100Framework.DomainModel.S501 {
 
             [JsonIgnore]
             public override string Code => nameof(DeepWaterRoutePart);
-            public static informationBindingDefinition[] informationBindingDefinitions => [];
-            public static featureBindingDefinition[] featureBindingDefinitions => [];
+            public informationBindingDefinition[] informationBindingDefinitions => DeepWaterRoutePart._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [];
+            public featureBindingDefinition[] featureBindingDefinitions => DeepWaterRoutePart._featureBindingDefinitions;
+            public static featureBindingDefinition[] _featureBindingDefinitions => [];
 
             public DeepWaterRoutePart() {
             }
@@ -8099,7 +8240,7 @@ namespace S100Framework.DomainModel.S501 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class CurrentNonGravitational : FeatureNode {
+        public partial class CurrentNonGravitational : FeatureNode, IFeatureBindingDefinition {
             public List<featureName> featureName { get; set; } = [];
             public List<information> information { get; set; } = [];
             public Int32? scaleMinimum { get; set; } = default;
@@ -8117,8 +8258,10 @@ namespace S100Framework.DomainModel.S501 {
 
             [JsonIgnore]
             public override string Code => nameof(CurrentNonGravitational);
-            public static informationBindingDefinition[] informationBindingDefinitions => [];
-            public static featureBindingDefinition[] featureBindingDefinitions => [];
+            public informationBindingDefinition[] informationBindingDefinitions => CurrentNonGravitational._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [];
+            public featureBindingDefinition[] featureBindingDefinitions => CurrentNonGravitational._featureBindingDefinitions;
+            public static featureBindingDefinition[] _featureBindingDefinitions => [];
 
             public CurrentNonGravitational() {
                 orientation = new orientation()
@@ -8134,7 +8277,7 @@ namespace S100Framework.DomainModel.S501 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class DataCoverage : FeatureNode {
+        public partial class DataCoverage : FeatureNode, IFeatureBindingDefinition {
             public Int32? drawingIndex { get; set; } = default;
             public String? interoperabilityIdentifier { get; set; } = null;
 
@@ -8154,8 +8297,10 @@ namespace S100Framework.DomainModel.S501 {
 
             [JsonIgnore]
             public override string Code => nameof(DataCoverage);
-            public static informationBindingDefinition[] informationBindingDefinitions => [];
-            public static featureBindingDefinition[] featureBindingDefinitions => [];
+            public informationBindingDefinition[] informationBindingDefinitions => DataCoverage._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [];
+            public featureBindingDefinition[] featureBindingDefinitions => DataCoverage._featureBindingDefinitions;
+            public static featureBindingDefinition[] _featureBindingDefinitions => [];
 
             public DataCoverage() {
             }
@@ -8163,7 +8308,7 @@ namespace S100Framework.DomainModel.S501 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class SeabedArea : FeatureNode {
+        public partial class SeabedArea : FeatureNode, IFeatureBindingDefinition {
             public List<information> information { get; set; } = [];
             public String? agencyResponsibleForProduction { get; set; } = null;
             public Int32? scaleMinimum { get; set; } = default;
@@ -8181,8 +8326,10 @@ namespace S100Framework.DomainModel.S501 {
 
             [JsonIgnore]
             public override string Code => nameof(SeabedArea);
-            public static informationBindingDefinition[] informationBindingDefinitions => [];
-            public static featureBindingDefinition[] featureBindingDefinitions => [];
+            public informationBindingDefinition[] informationBindingDefinitions => SeabedArea._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [];
+            public featureBindingDefinition[] featureBindingDefinitions => SeabedArea._featureBindingDefinitions;
+            public static featureBindingDefinition[] _featureBindingDefinitions => [];
 
             public SeabedArea() {
                 surfaceCharacteristics = new();
@@ -8192,7 +8339,7 @@ namespace S100Framework.DomainModel.S501 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class SpecialPurposeGeneralBuoy : FeatureNode {
+        public partial class SpecialPurposeGeneralBuoy : FeatureNode, IFeatureBindingDefinition {
             public List<information> information { get; set; } = [];
 
             [EnumerationValue(1)]
@@ -8324,8 +8471,10 @@ namespace S100Framework.DomainModel.S501 {
 
             [JsonIgnore]
             public override string Code => nameof(SpecialPurposeGeneralBuoy);
-            public static informationBindingDefinition[] informationBindingDefinitions => [];
-            public static featureBindingDefinition[] featureBindingDefinitions => [];
+            public informationBindingDefinition[] informationBindingDefinitions => SpecialPurposeGeneralBuoy._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [];
+            public featureBindingDefinition[] featureBindingDefinitions => SpecialPurposeGeneralBuoy._featureBindingDefinitions;
+            public static featureBindingDefinition[] _featureBindingDefinitions => [];
 
             public SpecialPurposeGeneralBuoy() {
                 categoryOfSpecialPurposeMark = new();
@@ -8337,7 +8486,7 @@ namespace S100Framework.DomainModel.S501 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class LightSectored : FeatureNode {
+        public partial class LightSectored : FeatureNode, IFeatureBindingDefinition {
             [EnumerationValue(1)]
             [EnumerationValue(2)]
             [EnumerationValue(4)]
@@ -8419,8 +8568,10 @@ namespace S100Framework.DomainModel.S501 {
 
             [JsonIgnore]
             public override string Code => nameof(LightSectored);
-            public static informationBindingDefinition[] informationBindingDefinitions => [];
-            public static featureBindingDefinition[] featureBindingDefinitions => [];
+            public informationBindingDefinition[] informationBindingDefinitions => LightSectored._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [];
+            public featureBindingDefinition[] featureBindingDefinitions => LightSectored._featureBindingDefinitions;
+            public static featureBindingDefinition[] _featureBindingDefinitions => [];
 
             public LightSectored() {
                 pictorialRepresentation = string.Empty;
@@ -8431,14 +8582,16 @@ namespace S100Framework.DomainModel.S501 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class IceLine : FeatureNode {
+        public partial class IceLine : FeatureNode, IFeatureBindingDefinition {
             public List<information> information { get; set; } = [];
             public List<featureName> featureName { get; set; } = [];
 
             [JsonIgnore]
             public override string Code => nameof(IceLine);
-            public static informationBindingDefinition[] informationBindingDefinitions => [];
-            public static featureBindingDefinition[] featureBindingDefinitions => [];
+            public informationBindingDefinition[] informationBindingDefinitions => IceLine._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [];
+            public featureBindingDefinition[] featureBindingDefinitions => IceLine._featureBindingDefinitions;
+            public static featureBindingDefinition[] _featureBindingDefinitions => [];
 
             public IceLine() {
             }
@@ -8446,7 +8599,7 @@ namespace S100Framework.DomainModel.S501 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class AnchorageArea : FeatureNode {
+        public partial class AnchorageArea : FeatureNode, IFeatureBindingDefinition {
             [EnumerationValue(2)]
             [EnumerationValue(3)]
             [EnumerationValue(4)]
@@ -8518,8 +8671,10 @@ namespace S100Framework.DomainModel.S501 {
 
             [JsonIgnore]
             public override string Code => nameof(AnchorageArea);
-            public static informationBindingDefinition[] informationBindingDefinitions => [];
-            public static featureBindingDefinition[] featureBindingDefinitions => [];
+            public informationBindingDefinition[] informationBindingDefinitions => AnchorageArea._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [];
+            public featureBindingDefinition[] featureBindingDefinitions => AnchorageArea._featureBindingDefinitions;
+            public static featureBindingDefinition[] _featureBindingDefinitions => [];
 
             public AnchorageArea() {
             }
@@ -8527,7 +8682,7 @@ namespace S100Framework.DomainModel.S501 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class LateralBuoy : FeatureNode {
+        public partial class LateralBuoy : FeatureNode, IFeatureBindingDefinition {
             public Boolean? radarConspicuous { get; set; } = default;
             public fixedDateRange? fixedDateRange { get; set; }
 
@@ -8604,8 +8759,10 @@ namespace S100Framework.DomainModel.S501 {
 
             [JsonIgnore]
             public override string Code => nameof(LateralBuoy);
-            public static informationBindingDefinition[] informationBindingDefinitions => [];
-            public static featureBindingDefinition[] featureBindingDefinitions => [];
+            public informationBindingDefinition[] informationBindingDefinitions => LateralBuoy._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [];
+            public featureBindingDefinition[] featureBindingDefinitions => LateralBuoy._featureBindingDefinitions;
+            public static featureBindingDefinition[] _featureBindingDefinitions => [];
 
             public LateralBuoy() {
                 colour = new();
@@ -8615,7 +8772,7 @@ namespace S100Framework.DomainModel.S501 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class TrafficSeparationSchemeRoundabout : FeatureNode {
+        public partial class TrafficSeparationSchemeRoundabout : FeatureNode, IFeatureBindingDefinition {
             public List<vesselSpeedLimit> vesselSpeedLimit { get; set; } = [];
             public String? interoperabilityIdentifier { get; set; } = null;
             public sourceIdentification? sourceIdentification { get; set; }
@@ -8657,8 +8814,10 @@ namespace S100Framework.DomainModel.S501 {
 
             [JsonIgnore]
             public override string Code => nameof(TrafficSeparationSchemeRoundabout);
-            public static informationBindingDefinition[] informationBindingDefinitions => [];
-            public static featureBindingDefinition[] featureBindingDefinitions => [];
+            public informationBindingDefinition[] informationBindingDefinitions => TrafficSeparationSchemeRoundabout._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [];
+            public featureBindingDefinition[] featureBindingDefinitions => TrafficSeparationSchemeRoundabout._featureBindingDefinitions;
+            public static featureBindingDefinition[] _featureBindingDefinitions => [];
 
             public TrafficSeparationSchemeRoundabout() {
             }
@@ -8666,7 +8825,7 @@ namespace S100Framework.DomainModel.S501 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class DeepWaterRouteCentreline : FeatureNode {
+        public partial class DeepWaterRouteCentreline : FeatureNode, IFeatureBindingDefinition {
             [EnumerationValue(1)]
             [EnumerationValue(2)]
             [EnumerationValue(3)]
@@ -8716,8 +8875,10 @@ namespace S100Framework.DomainModel.S501 {
 
             [JsonIgnore]
             public override string Code => nameof(DeepWaterRouteCentreline);
-            public static informationBindingDefinition[] informationBindingDefinitions => [];
-            public static featureBindingDefinition[] featureBindingDefinitions => [];
+            public informationBindingDefinition[] informationBindingDefinitions => DeepWaterRouteCentreline._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [];
+            public featureBindingDefinition[] featureBindingDefinitions => DeepWaterRouteCentreline._featureBindingDefinitions;
+            public static featureBindingDefinition[] _featureBindingDefinitions => [];
 
             public DeepWaterRouteCentreline() {
             }
@@ -8725,7 +8886,7 @@ namespace S100Framework.DomainModel.S501 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class LightFloat : FeatureNode {
+        public partial class LightFloat : FeatureNode, IFeatureBindingDefinition {
             public Decimal? verticalLength { get; set; } = default;
 
             [EnumerationValue(1)]
@@ -8786,8 +8947,10 @@ namespace S100Framework.DomainModel.S501 {
 
             [JsonIgnore]
             public override string Code => nameof(LightFloat);
-            public static informationBindingDefinition[] informationBindingDefinitions => [];
-            public static featureBindingDefinition[] featureBindingDefinitions => [];
+            public informationBindingDefinition[] informationBindingDefinitions => LightFloat._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [];
+            public featureBindingDefinition[] featureBindingDefinitions => LightFloat._featureBindingDefinitions;
+            public static featureBindingDefinition[] _featureBindingDefinitions => [];
 
             public LightFloat() {
                 colour = new();
@@ -8797,7 +8960,7 @@ namespace S100Framework.DomainModel.S501 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class LightAllAround : FeatureNode {
+        public partial class LightAllAround : FeatureNode, IFeatureBindingDefinition {
             public Decimal? verticalLength { get; set; } = default;
 
             [EnumerationValue(1)]
@@ -8899,8 +9062,10 @@ namespace S100Framework.DomainModel.S501 {
 
             [JsonIgnore]
             public override string Code => nameof(LightAllAround);
-            public static informationBindingDefinition[] informationBindingDefinitions => [];
-            public static featureBindingDefinition[] featureBindingDefinitions => [];
+            public informationBindingDefinition[] informationBindingDefinitions => LightAllAround._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [];
+            public featureBindingDefinition[] featureBindingDefinitions => LightAllAround._featureBindingDefinitions;
+            public static featureBindingDefinition[] _featureBindingDefinitions => [];
 
             public LightAllAround() {
                 multiplicityOfFeatures = new multiplicityOfFeatures()
@@ -8918,7 +9083,7 @@ namespace S100Framework.DomainModel.S501 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class Coastline : FeatureNode {
+        public partial class Coastline : FeatureNode, IFeatureBindingDefinition {
             [EnumerationValue(1)]
             [EnumerationValue(2)]
             [EnumerationValue(3)]
@@ -8967,8 +9132,10 @@ namespace S100Framework.DomainModel.S501 {
 
             [JsonIgnore]
             public override string Code => nameof(Coastline);
-            public static informationBindingDefinition[] informationBindingDefinitions => [];
-            public static featureBindingDefinition[] featureBindingDefinitions => [];
+            public informationBindingDefinition[] informationBindingDefinitions => Coastline._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [];
+            public featureBindingDefinition[] featureBindingDefinitions => Coastline._featureBindingDefinitions;
+            public static featureBindingDefinition[] _featureBindingDefinitions => [];
 
             public Coastline() {
             }
@@ -8976,7 +9143,7 @@ namespace S100Framework.DomainModel.S501 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class SeaAreaNamedWaterArea : FeatureNode {
+        public partial class SeaAreaNamedWaterArea : FeatureNode, IFeatureBindingDefinition {
             [EnumerationValue(2)]
             [EnumerationValue(3)]
             [EnumerationValue(4)]
@@ -9050,8 +9217,10 @@ namespace S100Framework.DomainModel.S501 {
 
             [JsonIgnore]
             public override string Code => nameof(SeaAreaNamedWaterArea);
-            public static informationBindingDefinition[] informationBindingDefinitions => [];
-            public static featureBindingDefinition[] featureBindingDefinitions => [];
+            public informationBindingDefinition[] informationBindingDefinitions => SeaAreaNamedWaterArea._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [];
+            public featureBindingDefinition[] featureBindingDefinitions => SeaAreaNamedWaterArea._featureBindingDefinitions;
+            public static featureBindingDefinition[] _featureBindingDefinitions => [];
 
             public SeaAreaNamedWaterArea() {
             }
@@ -9059,13 +9228,15 @@ namespace S100Framework.DomainModel.S501 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class DropZone : FeatureNode {
+        public partial class DropZone : FeatureNode, IFeatureBindingDefinition {
             public List<information> information { get; set; } = [];
 
             [JsonIgnore]
             public override string Code => nameof(DropZone);
-            public static informationBindingDefinition[] informationBindingDefinitions => [];
-            public static featureBindingDefinition[] featureBindingDefinitions => [];
+            public informationBindingDefinition[] informationBindingDefinitions => DropZone._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [];
+            public featureBindingDefinition[] featureBindingDefinitions => DropZone._featureBindingDefinitions;
+            public static featureBindingDefinition[] _featureBindingDefinitions => [];
 
             public DropZone() {
             }
@@ -9073,7 +9244,7 @@ namespace S100Framework.DomainModel.S501 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class Conveyor : FeatureNode {
+        public partial class Conveyor : FeatureNode, IFeatureBindingDefinition {
             [EnumerationValue(1)]
             [EnumerationValue(2)]
             [EnumerationValue(3)]
@@ -9163,8 +9334,10 @@ namespace S100Framework.DomainModel.S501 {
 
             [JsonIgnore]
             public override string Code => nameof(Conveyor);
-            public static informationBindingDefinition[] informationBindingDefinitions => [];
-            public static featureBindingDefinition[] featureBindingDefinitions => [];
+            public informationBindingDefinition[] informationBindingDefinitions => Conveyor._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [];
+            public featureBindingDefinition[] featureBindingDefinitions => Conveyor._featureBindingDefinitions;
+            public static featureBindingDefinition[] _featureBindingDefinitions => [];
 
             public Conveyor() {
             }
@@ -9172,7 +9345,7 @@ namespace S100Framework.DomainModel.S501 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class LineOfDelimitation : FeatureNode {
+        public partial class LineOfDelimitation : FeatureNode, IFeatureBindingDefinition {
             [Required()]
             public List<String> nationalMaritimeAuthority { get; set; }
 
@@ -9199,8 +9372,10 @@ namespace S100Framework.DomainModel.S501 {
 
             [JsonIgnore]
             public override string Code => nameof(LineOfDelimitation);
-            public static informationBindingDefinition[] informationBindingDefinitions => [];
-            public static featureBindingDefinition[] featureBindingDefinitions => [];
+            public informationBindingDefinition[] informationBindingDefinitions => LineOfDelimitation._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [];
+            public featureBindingDefinition[] featureBindingDefinitions => LineOfDelimitation._featureBindingDefinitions;
+            public static featureBindingDefinition[] _featureBindingDefinitions => [];
 
             public LineOfDelimitation() {
                 nationalMaritimeAuthority = new();
@@ -9210,7 +9385,7 @@ namespace S100Framework.DomainModel.S501 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class StraightTerritorialSeaBaseline : FeatureNode {
+        public partial class StraightTerritorialSeaBaseline : FeatureNode, IFeatureBindingDefinition {
             public String nationality { get; set; } = string.Empty;
             public sourceIdentification? sourceIdentification { get; set; }
             public DateOnly? reportedDate { get; set; } = default;
@@ -9225,8 +9400,10 @@ namespace S100Framework.DomainModel.S501 {
 
             [JsonIgnore]
             public override string Code => nameof(StraightTerritorialSeaBaseline);
-            public static informationBindingDefinition[] informationBindingDefinitions => [];
-            public static featureBindingDefinition[] featureBindingDefinitions => [];
+            public informationBindingDefinition[] informationBindingDefinitions => StraightTerritorialSeaBaseline._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [];
+            public featureBindingDefinition[] featureBindingDefinitions => StraightTerritorialSeaBaseline._featureBindingDefinitions;
+            public static featureBindingDefinition[] _featureBindingDefinitions => [];
 
             public StraightTerritorialSeaBaseline() {
                 nationality = string.Empty;
@@ -9235,7 +9412,7 @@ namespace S100Framework.DomainModel.S501 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class SafeWaterBeacon : FeatureNode {
+        public partial class SafeWaterBeacon : FeatureNode, IFeatureBindingDefinition {
             public List<information> information { get; set; } = [];
             public List<featureName> featureName { get; set; } = [];
             public Decimal? elevation { get; set; } = default;
@@ -9319,8 +9496,10 @@ namespace S100Framework.DomainModel.S501 {
 
             [JsonIgnore]
             public override string Code => nameof(SafeWaterBeacon);
-            public static informationBindingDefinition[] informationBindingDefinitions => [];
-            public static featureBindingDefinition[] featureBindingDefinitions => [];
+            public informationBindingDefinition[] informationBindingDefinitions => SafeWaterBeacon._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [];
+            public featureBindingDefinition[] featureBindingDefinitions => SafeWaterBeacon._featureBindingDefinitions;
+            public static featureBindingDefinition[] _featureBindingDefinitions => [];
 
             public SafeWaterBeacon() {
                 colour = new();
@@ -9330,7 +9509,7 @@ namespace S100Framework.DomainModel.S501 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class SpecialPurposeGeneralBeacon : FeatureNode {
+        public partial class SpecialPurposeGeneralBeacon : FeatureNode, IFeatureBindingDefinition {
             public sourceIdentification? sourceIdentification { get; set; }
             public List<information> information { get; set; } = [];
 
@@ -9476,8 +9655,10 @@ namespace S100Framework.DomainModel.S501 {
 
             [JsonIgnore]
             public override string Code => nameof(SpecialPurposeGeneralBeacon);
-            public static informationBindingDefinition[] informationBindingDefinitions => [];
-            public static featureBindingDefinition[] featureBindingDefinitions => [];
+            public informationBindingDefinition[] informationBindingDefinitions => SpecialPurposeGeneralBeacon._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [];
+            public featureBindingDefinition[] featureBindingDefinitions => SpecialPurposeGeneralBeacon._featureBindingDefinitions;
+            public static featureBindingDefinition[] _featureBindingDefinitions => [];
 
             public SpecialPurposeGeneralBeacon() {
                 categoryOfSpecialPurposeMark = new();

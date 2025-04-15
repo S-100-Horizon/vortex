@@ -28,8 +28,7 @@
            <Button x:Name="SAVE" MinWidth="100" Padding="10 0 10 0" Click="SAVE_Click">Save</Button>
        </StackPanel>
 
-       <wpf:S100AttributeEditorControl x:Name="S100AttributeEditor" MinHeight="500" 
-                                       S100AttributeEditorViewModel="{Binding S100AttributeEditorViewModel}"
+       <wpf:S100AttributeEditorControl x:Name="S100AttributeEditor" MinHeight="500"     
                                        QueryAssociations="S100AttributeEditor_QueryAssociations"
                                        QueryFeatures="S100AttributeEditor_QueryFeatures"/>
    </StackPanel>

@@ -849,7 +849,7 @@ namespace S100Framework
 
                         var informationBindingsList = new List<string>();
 
-                        classBuilder.AppendLine(BuildClass(code, informationType, xmlNamespace, "S100Framework.DomainModel.InformationType", (builder) => {
+                        classBuilder.AppendLine(BuildClass(code, informationType, xmlNamespace, "S100Framework.DomainModel.InformationType", "IInformationBindingDefinition", (builder) => {
                             builder.AppendLine("\t\t\t[JsonIgnore]");
                             builder.AppendLine($"\t\t\tpublic override string Code => nameof({code});");
 
@@ -860,7 +860,10 @@ namespace S100Framework
                             //var builderAssociations = new Dictionary<string, StringBuilder>();
 
                             var informationBindings = new StringBuilder();
-                            informationBindings.AppendLine("\t\t\tpublic static informationBindingDefinition[] informationBindingDefinitions => [");
+
+
+                            informationBindings.AppendLine($"\t\t\tpublic informationBindingDefinition[] informationBindingDefinitions => {code}._informationBindingDefinitions;");
+                            informationBindings.AppendLine("\t\t\tpublic static informationBindingDefinition[] _informationBindingDefinitions => [");
 
                             foreach (var informationBinding in e.XPathSelectElements("S100FC:informationBinding", xmlNamespaceManager)) {
                                 var roleType = informationBinding.Attribute("roleType")!.Value;
@@ -903,7 +906,7 @@ namespace S100Framework
                                 //builder.AppendLine($"\t\t\t\tpublic override string[] AssociationTypes => [\"{code}\"];");
                                 //builder.AppendLine($"\t\t\t}}");
 
-                                builder.AppendLine($"\t\t\tpublic override informationBindingDefinition[] informationBindingDefinitions => {code}.informationBindingDefinitions;");
+                                builder.AppendLine($"\t\t\tpublic override informationBindingDefinition[] informationBindingDefinitions => {code}._informationBindingDefinitions;");
                             }));
 
                             //creatorBuilder.AppendLine($"\t\t\t{{ \"{code}\", ()=> {{");
@@ -949,6 +952,7 @@ namespace S100Framework
                 Type featureTypeBase;
                 {
                     var attributes = TypeAttributes.Public | TypeAttributes.Class | /*TypeAttributes.AutoClass |*/ TypeAttributes.AutoLayout | TypeAttributes.Abstract;
+
                     var featureTypeBuilder = moduleBuilder.DefineType($"S100Framework.DomainModel.FeatureNode", attributes);
 
                     featureTypeBase = featureTypeBuilder.CreateType();
@@ -1009,7 +1013,7 @@ namespace S100Framework
 
                         var viewModelBindingBuilder = new StringBuilder();
 
-                        classBuilder.AppendLine(BuildClass(code, featureType, xmlNamespace, "S100Framework.DomainModel.FeatureType", (builder) => {
+                        classBuilder.AppendLine(BuildClass(code, featureType, xmlNamespace, "S100Framework.DomainModel.FeatureType", "IFeatureBindingDefinition", (builder) => {
                             builder.AppendLine("\t\t\t[JsonIgnore]");
                             builder.AppendLine($"\t\t\tpublic override string Code => nameof({code});");
 
@@ -1020,7 +1024,8 @@ namespace S100Framework
                             //var builderAssociations = new Dictionary<string, StringBuilder>();
 
                             var informationBindings = new StringBuilder();
-                            informationBindings.AppendLine("\t\t\tpublic static informationBindingDefinition[] informationBindingDefinitions => [");
+                            informationBindings.AppendLine($"\t\t\tpublic informationBindingDefinition[] informationBindingDefinitions => {code}._informationBindingDefinitions;");
+                            informationBindings.AppendLine("\t\t\tpublic static informationBindingDefinition[] _informationBindingDefinitions => [");
 
                             foreach (var informationBinding in e.XPathSelectElements("S100FC:informationBinding", xmlNamespaceManager)) {
                                 var roleType = informationBinding.Attribute("roleType")!.Value;
@@ -1048,7 +1053,8 @@ namespace S100Framework
                             builder.AppendLine(informationBindings.ToString());
 
                             var featureBindings = new StringBuilder();
-                            featureBindings.AppendLine("\t\t\tpublic static featureBindingDefinition[] featureBindingDefinitions => [");
+                            featureBindings.AppendLine($"\t\t\tpublic featureBindingDefinition[] featureBindingDefinitions => {code}._featureBindingDefinitions;");
+                            featureBindings.AppendLine("\t\t\tpublic static featureBindingDefinition[] _featureBindingDefinitions => [");
 
                             foreach (var featureBinding in e.XPathSelectElements("S100FC:featureBinding", xmlNamespaceManager)) {
                                 var roleType = featureBinding.Attribute("roleType")!.Value;
@@ -1091,9 +1097,9 @@ namespace S100Framework
                                 //builder.AppendLine($"\t\t\t\tpublic override string[] AssociationTypes => [\"{code}\"];");
                                 //builder.AppendLine($"\t\t\t}}");
 
-                                builder.AppendLine($"\t\t\tpublic override informationBindingDefinition[] informationBindingDefinitions => {code}.informationBindingDefinitions;");
+                                builder.AppendLine($"\t\t\tpublic override informationBindingDefinition[] informationBindingDefinitions => {code}._informationBindingDefinitions;");
 
-                                builder.AppendLine($"\t\t\tpublic override featureBindingDefinition[] featureBindingDefinitions => {code}.featureBindingDefinitions;");
+                                builder.AppendLine($"\t\t\tpublic override featureBindingDefinition[] featureBindingDefinitions => {code}._featureBindingDefinitions;");
                             }));
 
 
@@ -1222,6 +1228,17 @@ namespace S100Framework
             common.AppendLine("\t{");
             common.AppendLine("\t}");
             common.AppendLine();
+
+
+            common.AppendLine("\tpublic interface IInformationBindingDefinition");
+            common.AppendLine("\t\t{");
+            common.AppendLine("\t\tinformationBindingDefinition[] informationBindingDefinitions { get; }");
+            common.AppendLine("\t}");
+            common.AppendLine("\tpublic interface IFeatureBindingDefinition");
+            common.AppendLine("\t\t{");
+            common.AppendLine("\t\tinformationBindingDefinition[] informationBindingDefinitions { get; }");
+            common.AppendLine("\t\tfeatureBindingDefinition[] featureBindingDefinitions { get; }");
+            common.AppendLine("\t}");
 
             common.AppendLine("\t[System.SerializableAttribute()]");
             common.AppendLine("\tpublic abstract class Node {");
@@ -1366,10 +1383,10 @@ namespace S100Framework
         }
 
         private static string BuildClass(string code, Type type, string xmlNamespace, Action<StringBuilder>? postAction) {
-            return BuildClass(code, type, xmlNamespace, null, postAction);
+            return BuildClass(code, type, xmlNamespace, null, null, postAction);
         }
 
-        private static string BuildClass(string code, Type type, string xmlNamespace, string? parent = null, Action<StringBuilder>? postAction = null) {
+        private static string BuildClass(string code, Type type, string xmlNamespace, string? parent = null, string? interfaces = null, Action<StringBuilder>? postAction = null) {
             var S100FC = xmlNamespace;
             var classBuilder = new StringBuilder();
 
@@ -1387,7 +1404,10 @@ namespace S100Framework
                 prefix += " abstract";
 
             if (type.BaseType != null && !type.BaseType.IsValueType && type.BaseType != typeof(Object)) {
-                classBuilder.AppendLine($"{prefix} partial class {code} : {type.BaseType.Name}");
+                var def = $"{prefix} partial class {code} : {type.BaseType.Name}";
+                if (!string.IsNullOrEmpty(interfaces))
+                    def = $"{def}, {interfaces}";
+                classBuilder.AppendLine(def);
             }
             else {
                 if (string.IsNullOrEmpty(parent))
@@ -1606,8 +1626,11 @@ namespace S100Framework
             if (!isTemplate)
                 classBuilder.AppendLine($"\t\tpublic void Load({classNamespace}.{code} instance) {{");
             else
-                classBuilder.AppendLine($"\t\tpublic override void Load({classNamespace}.{code} instance) {{");
+                classBuilder.AppendLine($"\t\tpublic override {baseClass}<{code}> Load({classNamespace}.{code} instance) {{");
             classBuilder.Append(loadBuilder.ToString());
+
+            if (isTemplate)
+                classBuilder.AppendLine("\t\treturn this;");
             classBuilder.AppendLine("\t\t}");
             classBuilder.AppendLine("");
 
@@ -2036,6 +2059,18 @@ namespace S100Framework.DomainModel
     public class RequiredAttribute : System.Attribute
     {
     }
+
+    public interface IInformationBindingDefinition
+    {
+        informationBindingDefinition[] informationBindingDefinitions { get; }
+    }
+
+    public interface IFeatureBindingDefinition
+    {
+        informationBindingDefinition[] informationBindingDefinitions { get; }
+        featureBindingDefinition[] featureBindingDefinitions { get; }
+    }
+
 
     [System.SerializableAttribute()]
     public abstract class Node

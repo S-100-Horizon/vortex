@@ -49,6 +49,16 @@ namespace S100Framework.DomainModel {
     public class RequiredAttribute : System.Attribute {
     }
 
+    public interface IInformationBindingDefinition {
+        informationBindingDefinition[] informationBindingDefinitions { get; }
+    }
+
+    public interface IFeatureBindingDefinition {
+        informationBindingDefinition[] informationBindingDefinitions { get; }
+
+        featureBindingDefinition[] featureBindingDefinitions { get; }
+    }
+
     [System.SerializableAttribute()]
     public abstract class Node {
         public virtual string Code { get; set; } = string.Empty;

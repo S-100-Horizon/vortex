@@ -4392,9 +4392,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
         [Category("ContactDetails")]
         public ObservableCollection<telecommunications> telecommunications { get; set; } = new();
-        public override informationBindingDefinition[] informationBindingDefinitions => ContactDetails.informationBindingDefinitions;
+        public override informationBindingDefinition[] informationBindingDefinitions => ContactDetails._informationBindingDefinitions;
 
-        public override void Load(DomainModel.S101.InformationTypes.ContactDetails instance) {
+        public override InformationViewModel<ContactDetails> Load(DomainModel.S101.InformationTypes.ContactDetails instance) {
             callSign = instance.callSign;
             communicationChannel.Clear();
             if (instance.communicationChannel is not null)
@@ -4420,6 +4420,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
             if (instance.telecommunications is not null)
                 foreach (var e in instance.telecommunications)
                     telecommunications.Add(e);
+            return this;
         }
 
         public override string Serialize() {
@@ -4493,9 +4494,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
         [Category("ServiceHours")]
         public ObservableCollection<information> information { get; set; } = new();
-        public override informationBindingDefinition[] informationBindingDefinitions => ServiceHours.informationBindingDefinitions;
+        public override informationBindingDefinition[] informationBindingDefinitions => ServiceHours._informationBindingDefinitions;
 
-        public override void Load(DomainModel.S101.InformationTypes.ServiceHours instance) {
+        public override InformationViewModel<ServiceHours> Load(DomainModel.S101.InformationTypes.ServiceHours instance) {
             fixedDateRange = new();
             if (instance.fixedDateRange != null) {
                 fixedDateRange = new();
@@ -4514,6 +4515,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
             if (instance.information is not null)
                 foreach (var e in instance.information)
                     information.Add(e);
+            return this;
         }
 
         public override string Serialize() {
@@ -4579,9 +4581,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
         [Category("NonStandardWorkingDay")]
         public ObservableCollection<information> information { get; set; } = new();
-        public override informationBindingDefinition[] informationBindingDefinitions => NonStandardWorkingDay.informationBindingDefinitions;
+        public override informationBindingDefinition[] informationBindingDefinitions => NonStandardWorkingDay._informationBindingDefinitions;
 
-        public override void Load(DomainModel.S101.InformationTypes.NonStandardWorkingDay instance) {
+        public override InformationViewModel<NonStandardWorkingDay> Load(DomainModel.S101.InformationTypes.NonStandardWorkingDay instance) {
             dateFixed.Clear();
             if (instance.dateFixed is not null)
                 foreach (var e in instance.dateFixed)
@@ -4604,6 +4606,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
             if (instance.information is not null)
                 foreach (var e in instance.information)
                     information.Add(e);
+            return this;
         }
 
         public override string Serialize() {
@@ -4681,9 +4684,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
             }
         }
 
-        public override informationBindingDefinition[] informationBindingDefinitions => NauticalInformation.informationBindingDefinitions;
+        public override informationBindingDefinition[] informationBindingDefinitions => NauticalInformation._informationBindingDefinitions;
 
-        public override void Load(DomainModel.S101.InformationTypes.NauticalInformation instance) {
+        public override InformationViewModel<NauticalInformation> Load(DomainModel.S101.InformationTypes.NauticalInformation instance) {
             fixedDateRange = new();
             if (instance.fixedDateRange != null) {
                 fixedDateRange = new();
@@ -4699,6 +4702,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
                 foreach (var e in instance.information)
                     information.Add(e);
             pictorialRepresentation = instance.pictorialRepresentation;
+            return this;
         }
 
         public override string Serialize() {
@@ -4753,17 +4757,18 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
         [Category("SpatialQuality")]
         public ObservableCollection<spatialAccuracy> spatialAccuracy { get; set; } = new();
-        public override informationBindingDefinition[] informationBindingDefinitions => SpatialQuality.informationBindingDefinitions;
+        public override informationBindingDefinition[] informationBindingDefinitions => SpatialQuality._informationBindingDefinitions;
 
         [Browsable(false)]
         public qualityOfHorizontalMeasurement[] qualityOfHorizontalMeasurementList => [(qualityOfHorizontalMeasurement)4];
 
-        public override void Load(DomainModel.S101.InformationTypes.SpatialQuality instance) {
+        public override InformationViewModel<SpatialQuality> Load(DomainModel.S101.InformationTypes.SpatialQuality instance) {
             qualityOfHorizontalMeasurement = instance.qualityOfHorizontalMeasurement;
             spatialAccuracy.Clear();
             if (instance.spatialAccuracy is not null)
                 foreach (var e in instance.spatialAccuracy)
                     spatialAccuracy.Add(e);
+            return this;
         }
 
         public override string Serialize() {
@@ -4886,13 +4891,13 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
         [Category("QualityOfNonBathymetricData")]
         public ObservableCollection<information> information { get; set; } = new();
-        public override informationBindingDefinition[] informationBindingDefinitions => QualityOfNonBathymetricData.informationBindingDefinitions;
-        public override featureBindingDefinition[] featureBindingDefinitions => QualityOfNonBathymetricData.featureBindingDefinitions;
+        public override informationBindingDefinition[] informationBindingDefinitions => QualityOfNonBathymetricData._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => QualityOfNonBathymetricData._featureBindingDefinitions;
 
         [Browsable(false)]
         public categoryOfTemporalVariation[] categoryOfTemporalVariationList => [(categoryOfTemporalVariation)1, (categoryOfTemporalVariation)4];
 
-        public override void Load(DomainModel.S101.FeatureTypes.QualityOfNonBathymetricData instance) {
+        public override FeatureViewModel<QualityOfNonBathymetricData> Load(DomainModel.S101.FeatureTypes.QualityOfNonBathymetricData instance) {
             categoryOfTemporalVariation = instance.categoryOfTemporalVariation;
             horizontalDistanceUncertainty = instance.horizontalDistanceUncertainty;
             horizontalPositionUncertainty = new();
@@ -4919,6 +4924,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
             if (instance.information is not null)
                 foreach (var e in instance.information)
                     information.Add(e);
+            return this;
         }
 
         public override string Serialize() {
@@ -5024,10 +5030,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
         [Category("DataCoverage")]
         public ObservableCollection<information> information { get; set; } = new();
-        public override informationBindingDefinition[] informationBindingDefinitions => DataCoverage.informationBindingDefinitions;
-        public override featureBindingDefinition[] featureBindingDefinitions => DataCoverage.featureBindingDefinitions;
+        public override informationBindingDefinition[] informationBindingDefinitions => DataCoverage._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => DataCoverage._featureBindingDefinitions;
 
-        public override void Load(DomainModel.S101.FeatureTypes.DataCoverage instance) {
+        public override FeatureViewModel<DataCoverage> Load(DomainModel.S101.FeatureTypes.DataCoverage instance) {
             drawingIndex = instance.drawingIndex;
             interoperabilityIdentifier = instance.interoperabilityIdentifier;
             maximumDisplayScale = instance.maximumDisplayScale;
@@ -5037,6 +5043,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
             if (instance.information is not null)
                 foreach (var e in instance.information)
                     information.Add(e);
+            return this;
         }
 
         public override string Serialize() {
@@ -5104,19 +5111,20 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
         [Category("NavigationalSystemOfMarks")]
         public ObservableCollection<information> information { get; set; } = new();
-        public override informationBindingDefinition[] informationBindingDefinitions => NavigationalSystemOfMarks.informationBindingDefinitions;
-        public override featureBindingDefinition[] featureBindingDefinitions => NavigationalSystemOfMarks.featureBindingDefinitions;
+        public override informationBindingDefinition[] informationBindingDefinitions => NavigationalSystemOfMarks._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => NavigationalSystemOfMarks._featureBindingDefinitions;
 
         [Browsable(false)]
         public marksNavigationalSystemOf[] marksNavigationalSystemOfList => [(marksNavigationalSystemOf)1, (marksNavigationalSystemOf)2, (marksNavigationalSystemOf)9, (marksNavigationalSystemOf)11];
 
-        public override void Load(DomainModel.S101.FeatureTypes.NavigationalSystemOfMarks instance) {
+        public override FeatureViewModel<NavigationalSystemOfMarks> Load(DomainModel.S101.FeatureTypes.NavigationalSystemOfMarks instance) {
             marksNavigationalSystemOf = instance.marksNavigationalSystemOf;
             interoperabilityIdentifier = instance.interoperabilityIdentifier;
             information.Clear();
             if (instance.information is not null)
                 foreach (var e in instance.information)
                     information.Add(e);
+            return this;
         }
 
         public override string Serialize() {
@@ -5202,13 +5210,13 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
         [Category("LocalDirectionOfBuoyage")]
         public ObservableCollection<information> information { get; set; } = new();
-        public override informationBindingDefinition[] informationBindingDefinitions => LocalDirectionOfBuoyage.informationBindingDefinitions;
-        public override featureBindingDefinition[] featureBindingDefinitions => LocalDirectionOfBuoyage.featureBindingDefinitions;
+        public override informationBindingDefinition[] informationBindingDefinitions => LocalDirectionOfBuoyage._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => LocalDirectionOfBuoyage._featureBindingDefinitions;
 
         [Browsable(false)]
         public marksNavigationalSystemOf[] marksNavigationalSystemOfList => [(marksNavigationalSystemOf)1, (marksNavigationalSystemOf)2, (marksNavigationalSystemOf)9, (marksNavigationalSystemOf)11];
 
-        public override void Load(DomainModel.S101.FeatureTypes.LocalDirectionOfBuoyage instance) {
+        public override FeatureViewModel<LocalDirectionOfBuoyage> Load(DomainModel.S101.FeatureTypes.LocalDirectionOfBuoyage instance) {
             interoperabilityIdentifier = instance.interoperabilityIdentifier;
             marksNavigationalSystemOf = instance.marksNavigationalSystemOf;
             orientationValue = instance.orientationValue;
@@ -5217,6 +5225,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
             if (instance.information is not null)
                 foreach (var e in instance.information)
                     information.Add(e);
+            return this;
         }
 
         public override string Serialize() {
@@ -5361,8 +5370,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
         [Category("QualityOfBathymetricData")]
         public ObservableCollection<information> information { get; set; } = new();
-        public override informationBindingDefinition[] informationBindingDefinitions => QualityOfBathymetricData.informationBindingDefinitions;
-        public override featureBindingDefinition[] featureBindingDefinitions => QualityOfBathymetricData.featureBindingDefinitions;
+        public override informationBindingDefinition[] informationBindingDefinitions => QualityOfBathymetricData._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => QualityOfBathymetricData._featureBindingDefinitions;
 
         [Browsable(false)]
         public categoryOfTemporalVariation[] categoryOfTemporalVariationList => [(categoryOfTemporalVariation)1, (categoryOfTemporalVariation)2, (categoryOfTemporalVariation)3, (categoryOfTemporalVariation)5, (categoryOfTemporalVariation)6];
@@ -5370,7 +5379,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         [Browsable(false)]
         public dataAssessment[] dataAssessmentList => [(dataAssessment)1, (dataAssessment)2, (dataAssessment)3];
 
-        public override void Load(DomainModel.S101.FeatureTypes.QualityOfBathymetricData instance) {
+        public override FeatureViewModel<QualityOfBathymetricData> Load(DomainModel.S101.FeatureTypes.QualityOfBathymetricData instance) {
             categoryOfTemporalVariation = instance.categoryOfTemporalVariation;
             dataAssessment = instance.dataAssessment;
             depthRangeMaximumValue = instance.depthRangeMaximumValue;
@@ -5397,6 +5406,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
             if (instance.information is not null)
                 foreach (var e in instance.information)
                     information.Add(e);
+            return this;
         }
 
         public override string Serialize() {
@@ -5475,19 +5485,20 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
         [Category("SoundingDatum")]
         public ObservableCollection<information> information { get; set; } = new();
-        public override informationBindingDefinition[] informationBindingDefinitions => SoundingDatum.informationBindingDefinitions;
-        public override featureBindingDefinition[] featureBindingDefinitions => SoundingDatum.featureBindingDefinitions;
+        public override informationBindingDefinition[] informationBindingDefinitions => SoundingDatum._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => SoundingDatum._featureBindingDefinitions;
 
         [Browsable(false)]
         public verticalDatum[] verticalDatumList => [(verticalDatum)1, (verticalDatum)2, (verticalDatum)3, (verticalDatum)4, (verticalDatum)5, (verticalDatum)6, (verticalDatum)7, (verticalDatum)8, (verticalDatum)9, (verticalDatum)10, (verticalDatum)11, (verticalDatum)12, (verticalDatum)13, (verticalDatum)14, (verticalDatum)15, (verticalDatum)19, (verticalDatum)22, (verticalDatum)23, (verticalDatum)24, (verticalDatum)25, (verticalDatum)26, (verticalDatum)27, (verticalDatum)44];
 
-        public override void Load(DomainModel.S101.FeatureTypes.SoundingDatum instance) {
+        public override FeatureViewModel<SoundingDatum> Load(DomainModel.S101.FeatureTypes.SoundingDatum instance) {
             interoperabilityIdentifier = instance.interoperabilityIdentifier;
             verticalDatum = instance.verticalDatum;
             information.Clear();
             if (instance.information is not null)
                 foreach (var e in instance.information)
                     information.Add(e);
+            return this;
         }
 
         public override string Serialize() {
@@ -5549,19 +5560,20 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
         [Category("VerticalDatumOfData")]
         public ObservableCollection<information> information { get; set; } = new();
-        public override informationBindingDefinition[] informationBindingDefinitions => VerticalDatumOfData.informationBindingDefinitions;
-        public override featureBindingDefinition[] featureBindingDefinitions => VerticalDatumOfData.featureBindingDefinitions;
+        public override informationBindingDefinition[] informationBindingDefinitions => VerticalDatumOfData._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => VerticalDatumOfData._featureBindingDefinitions;
 
         [Browsable(false)]
         public verticalDatum[] verticalDatumList => [(verticalDatum)3, (verticalDatum)13, (verticalDatum)16, (verticalDatum)17, (verticalDatum)18, (verticalDatum)19, (verticalDatum)20, (verticalDatum)21, (verticalDatum)24, (verticalDatum)25, (verticalDatum)26, (verticalDatum)28, (verticalDatum)29, (verticalDatum)30, (verticalDatum)44];
 
-        public override void Load(DomainModel.S101.FeatureTypes.VerticalDatumOfData instance) {
+        public override FeatureViewModel<VerticalDatumOfData> Load(DomainModel.S101.FeatureTypes.VerticalDatumOfData instance) {
             interoperabilityIdentifier = instance.interoperabilityIdentifier;
             verticalDatum = instance.verticalDatum;
             information.Clear();
             if (instance.information is not null)
                 foreach (var e in instance.information)
                     information.Add(e);
+            return this;
         }
 
         public override string Serialize() {
@@ -5784,8 +5796,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
         [Category("QualityOfSurvey")]
         public ObservableCollection<information> information { get; set; } = new();
-        public override informationBindingDefinition[] informationBindingDefinitions => QualityOfSurvey.informationBindingDefinitions;
-        public override featureBindingDefinition[] featureBindingDefinitions => QualityOfSurvey.featureBindingDefinitions;
+        public override informationBindingDefinition[] informationBindingDefinitions => QualityOfSurvey._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => QualityOfSurvey._featureBindingDefinitions;
 
         [Browsable(false)]
         public qualityOfHorizontalMeasurement[] qualityOfHorizontalMeasurementList => [(qualityOfHorizontalMeasurement)4];
@@ -5799,7 +5811,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         [Browsable(false)]
         public techniqueOfVerticalMeasurement[] techniqueOfVerticalMeasurementList => [(techniqueOfVerticalMeasurement)1, (techniqueOfVerticalMeasurement)2, (techniqueOfVerticalMeasurement)3, (techniqueOfVerticalMeasurement)4, (techniqueOfVerticalMeasurement)5, (techniqueOfVerticalMeasurement)8, (techniqueOfVerticalMeasurement)9, (techniqueOfVerticalMeasurement)10, (techniqueOfVerticalMeasurement)11, (techniqueOfVerticalMeasurement)12, (techniqueOfVerticalMeasurement)13, (techniqueOfVerticalMeasurement)15, (techniqueOfVerticalMeasurement)16, (techniqueOfVerticalMeasurement)17, (techniqueOfVerticalMeasurement)18];
 
-        public override void Load(DomainModel.S101.FeatureTypes.QualityOfSurvey instance) {
+        public override FeatureViewModel<QualityOfSurvey> Load(DomainModel.S101.FeatureTypes.QualityOfSurvey instance) {
             depthRangeMaximumValue = instance.depthRangeMaximumValue;
             depthRangeMinimumValue = instance.depthRangeMinimumValue;
             featuresDetected = new();
@@ -5840,6 +5852,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
             if (instance.information is not null)
                 foreach (var e in instance.information)
                     information.Add(e);
+            return this;
         }
 
         public override string Serialize() {
@@ -5989,13 +6002,13 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
         [Category("UpdateInformation")]
         public ObservableCollection<information> information { get; set; } = new();
-        public override informationBindingDefinition[] informationBindingDefinitions => UpdateInformation.informationBindingDefinitions;
-        public override featureBindingDefinition[] featureBindingDefinitions => UpdateInformation.featureBindingDefinitions;
+        public override informationBindingDefinition[] informationBindingDefinitions => UpdateInformation._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => UpdateInformation._featureBindingDefinitions;
 
         [Browsable(false)]
         public updateType[] updateTypeList => [(updateType)1, (updateType)2, (updateType)3, (updateType)4];
 
-        public override void Load(DomainModel.S101.FeatureTypes.UpdateInformation instance) {
+        public override FeatureViewModel<UpdateInformation> Load(DomainModel.S101.FeatureTypes.UpdateInformation instance) {
             fixedDateRange = new();
             if (instance.fixedDateRange != null) {
                 fixedDateRange = new();
@@ -6011,6 +6024,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
             if (instance.information is not null)
                 foreach (var e in instance.information)
                     information.Add(e);
+            return this;
         }
 
         public override string Serialize() {
@@ -6114,10 +6128,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
         [Category("MagneticVariation")]
         public ObservableCollection<information> information { get; set; } = new();
-        public override informationBindingDefinition[] informationBindingDefinitions => MagneticVariation.informationBindingDefinitions;
-        public override featureBindingDefinition[] featureBindingDefinitions => MagneticVariation.featureBindingDefinitions;
+        public override informationBindingDefinition[] informationBindingDefinitions => MagneticVariation._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => MagneticVariation._featureBindingDefinitions;
 
-        public override void Load(DomainModel.S101.FeatureTypes.MagneticVariation instance) {
+        public override FeatureViewModel<MagneticVariation> Load(DomainModel.S101.FeatureTypes.MagneticVariation instance) {
             interoperabilityIdentifier = instance.interoperabilityIdentifier;
             referenceYearForMagneticVariation = instance.referenceYearForMagneticVariation;
             valueOfAnnualChangeInMagneticVariation = instance.valueOfAnnualChangeInMagneticVariation;
@@ -6127,6 +6141,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
             if (instance.information is not null)
                 foreach (var e in instance.information)
                     information.Add(e);
+            return this;
         }
 
         public override string Serialize() {
@@ -6210,10 +6225,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
         [Category("LocalMagneticAnomaly")]
         public ObservableCollection<information> information { get; set; } = new();
-        public override informationBindingDefinition[] informationBindingDefinitions => LocalMagneticAnomaly.informationBindingDefinitions;
-        public override featureBindingDefinition[] featureBindingDefinitions => LocalMagneticAnomaly.featureBindingDefinitions;
+        public override informationBindingDefinition[] informationBindingDefinitions => LocalMagneticAnomaly._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => LocalMagneticAnomaly._featureBindingDefinitions;
 
-        public override void Load(DomainModel.S101.FeatureTypes.LocalMagneticAnomaly instance) {
+        public override FeatureViewModel<LocalMagneticAnomaly> Load(DomainModel.S101.FeatureTypes.LocalMagneticAnomaly instance) {
             featureName.Clear();
             if (instance.featureName is not null)
                 foreach (var e in instance.featureName)
@@ -6229,6 +6244,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
             if (instance.information is not null)
                 foreach (var e in instance.information)
                     information.Add(e);
+            return this;
         }
 
         public override string Serialize() {
@@ -6366,8 +6382,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
             }
         }
 
-        public override informationBindingDefinition[] informationBindingDefinitions => Coastline.informationBindingDefinitions;
-        public override featureBindingDefinition[] featureBindingDefinitions => Coastline.featureBindingDefinitions;
+        public override informationBindingDefinition[] informationBindingDefinitions => Coastline._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => Coastline._featureBindingDefinitions;
 
         [Browsable(false)]
         public categoryOfCoastline[] categoryOfCoastlineList => [(categoryOfCoastline)1, (categoryOfCoastline)2, (categoryOfCoastline)6, (categoryOfCoastline)7, (categoryOfCoastline)8, (categoryOfCoastline)10];
@@ -6381,7 +6397,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         [Browsable(false)]
         public visualProminence[] visualProminenceList => [(visualProminence)1, (visualProminence)2, (visualProminence)3];
 
-        public override void Load(DomainModel.S101.FeatureTypes.Coastline instance) {
+        public override FeatureViewModel<Coastline> Load(DomainModel.S101.FeatureTypes.Coastline instance) {
             categoryOfCoastline = instance.categoryOfCoastline;
             colour.Clear();
             if (instance.colour is not null)
@@ -6404,6 +6420,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
                 foreach (var e in instance.information)
                     information.Add(e);
             pictorialRepresentation = instance.pictorialRepresentation;
+            return this;
         }
 
         public override string Serialize() {
@@ -6529,8 +6546,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
         [Category("LandArea")]
         public ObservableCollection<information> information { get; set; } = new();
-        public override informationBindingDefinition[] informationBindingDefinitions => LandArea.informationBindingDefinitions;
-        public override featureBindingDefinition[] featureBindingDefinitions => LandArea.featureBindingDefinitions;
+        public override informationBindingDefinition[] informationBindingDefinitions => LandArea._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => LandArea._featureBindingDefinitions;
 
         [Browsable(false)]
         public condition[] conditionList => [(condition)1, (condition)3, (condition)5];
@@ -6538,7 +6555,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         [Browsable(false)]
         public status[] statusList => [(status)18];
 
-        public override void Load(DomainModel.S101.FeatureTypes.LandArea instance) {
+        public override FeatureViewModel<LandArea> Load(DomainModel.S101.FeatureTypes.LandArea instance) {
             condition = instance.condition;
             featureName.Clear();
             if (instance.featureName is not null)
@@ -6552,6 +6569,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
             if (instance.information is not null)
                 foreach (var e in instance.information)
                     information.Add(e);
+            return this;
         }
 
         public override string Serialize() {
@@ -6625,10 +6643,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
         [Category("IslandGroup")]
         public ObservableCollection<information> information { get; set; } = new();
-        public override informationBindingDefinition[] informationBindingDefinitions => IslandGroup.informationBindingDefinitions;
-        public override featureBindingDefinition[] featureBindingDefinitions => IslandGroup.featureBindingDefinitions;
+        public override informationBindingDefinition[] informationBindingDefinitions => IslandGroup._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => IslandGroup._featureBindingDefinitions;
 
-        public override void Load(DomainModel.S101.FeatureTypes.IslandGroup instance) {
+        public override FeatureViewModel<IslandGroup> Load(DomainModel.S101.FeatureTypes.IslandGroup instance) {
             featureName.Clear();
             if (instance.featureName is not null)
                 foreach (var e in instance.featureName)
@@ -6639,6 +6657,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
             if (instance.information is not null)
                 foreach (var e in instance.information)
                     information.Add(e);
+            return this;
         }
 
         public override string Serialize() {
@@ -6732,13 +6751,13 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
         [Category("LandElevation")]
         public ObservableCollection<information> information { get; set; } = new();
-        public override informationBindingDefinition[] informationBindingDefinitions => LandElevation.informationBindingDefinitions;
-        public override featureBindingDefinition[] featureBindingDefinitions => LandElevation.featureBindingDefinitions;
+        public override informationBindingDefinition[] informationBindingDefinitions => LandElevation._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => LandElevation._featureBindingDefinitions;
 
         [Browsable(false)]
         public visualProminence[] visualProminenceList => [(visualProminence)1, (visualProminence)2, (visualProminence)3];
 
-        public override void Load(DomainModel.S101.FeatureTypes.LandElevation instance) {
+        public override FeatureViewModel<LandElevation> Load(DomainModel.S101.FeatureTypes.LandElevation instance) {
             elevation = instance.elevation;
             featureName.Clear();
             if (instance.featureName is not null)
@@ -6751,6 +6770,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
             if (instance.information is not null)
                 foreach (var e in instance.information)
                     information.Add(e);
+            return this;
         }
 
         public override string Serialize() {
@@ -6836,13 +6856,13 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
         [Category("River")]
         public ObservableCollection<information> information { get; set; } = new();
-        public override informationBindingDefinition[] informationBindingDefinitions => River.informationBindingDefinitions;
-        public override featureBindingDefinition[] featureBindingDefinitions => River.featureBindingDefinitions;
+        public override informationBindingDefinition[] informationBindingDefinitions => River._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => River._featureBindingDefinitions;
 
         [Browsable(false)]
         public status[] statusList => [(status)5];
 
-        public override void Load(DomainModel.S101.FeatureTypes.River instance) {
+        public override FeatureViewModel<River> Load(DomainModel.S101.FeatureTypes.River instance) {
             featureName.Clear();
             if (instance.featureName is not null)
                 foreach (var e in instance.featureName)
@@ -6854,6 +6874,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
             if (instance.information is not null)
                 foreach (var e in instance.information)
                     information.Add(e);
+            return this;
         }
 
         public override string Serialize() {
@@ -6935,10 +6956,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
         [Category("Rapids")]
         public ObservableCollection<information> information { get; set; } = new();
-        public override informationBindingDefinition[] informationBindingDefinitions => Rapids.informationBindingDefinitions;
-        public override featureBindingDefinition[] featureBindingDefinitions => Rapids.featureBindingDefinitions;
+        public override informationBindingDefinition[] informationBindingDefinitions => Rapids._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => Rapids._featureBindingDefinitions;
 
-        public override void Load(DomainModel.S101.FeatureTypes.Rapids instance) {
+        public override FeatureViewModel<Rapids> Load(DomainModel.S101.FeatureTypes.Rapids instance) {
             featureName.Clear();
             if (instance.featureName is not null)
                 foreach (var e in instance.featureName)
@@ -6950,6 +6971,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
             if (instance.information is not null)
                 foreach (var e in instance.information)
                     information.Add(e);
+            return this;
         }
 
         public override string Serialize() {
@@ -7045,13 +7067,13 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
         [Category("Waterfall")]
         public ObservableCollection<information> information { get; set; } = new();
-        public override informationBindingDefinition[] informationBindingDefinitions => Waterfall.informationBindingDefinitions;
-        public override featureBindingDefinition[] featureBindingDefinitions => Waterfall.featureBindingDefinitions;
+        public override informationBindingDefinition[] informationBindingDefinitions => Waterfall._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => Waterfall._featureBindingDefinitions;
 
         [Browsable(false)]
         public visualProminence[] visualProminenceList => [(visualProminence)1, (visualProminence)2, (visualProminence)3];
 
-        public override void Load(DomainModel.S101.FeatureTypes.Waterfall instance) {
+        public override FeatureViewModel<Waterfall> Load(DomainModel.S101.FeatureTypes.Waterfall instance) {
             featureName.Clear();
             if (instance.featureName is not null)
                 foreach (var e in instance.featureName)
@@ -7064,6 +7086,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
             if (instance.information is not null)
                 foreach (var e in instance.information)
                     information.Add(e);
+            return this;
         }
 
         public override string Serialize() {
@@ -7161,13 +7184,13 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
         [Category("Lake")]
         public ObservableCollection<information> information { get; set; } = new();
-        public override informationBindingDefinition[] informationBindingDefinitions => Lake.informationBindingDefinitions;
-        public override featureBindingDefinition[] featureBindingDefinitions => Lake.featureBindingDefinitions;
+        public override informationBindingDefinition[] informationBindingDefinitions => Lake._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => Lake._featureBindingDefinitions;
 
         [Browsable(false)]
         public status[] statusList => [(status)5];
 
-        public override void Load(DomainModel.S101.FeatureTypes.Lake instance) {
+        public override FeatureViewModel<Lake> Load(DomainModel.S101.FeatureTypes.Lake instance) {
             elevation = instance.elevation;
             featureName.Clear();
             if (instance.featureName is not null)
@@ -7180,6 +7203,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
             if (instance.information is not null)
                 foreach (var e in instance.information)
                     information.Add(e);
+            return this;
         }
 
         public override string Serialize() {
@@ -7275,8 +7299,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
         [Category("LandRegion")]
         public ObservableCollection<information> information { get; set; } = new();
-        public override informationBindingDefinition[] informationBindingDefinitions => LandRegion.informationBindingDefinitions;
-        public override featureBindingDefinition[] featureBindingDefinitions => LandRegion.featureBindingDefinitions;
+        public override informationBindingDefinition[] informationBindingDefinitions => LandRegion._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => LandRegion._featureBindingDefinitions;
 
         [Browsable(false)]
         public categoryOfLandRegion[] categoryOfLandRegionList => [(categoryOfLandRegion)1, (categoryOfLandRegion)2, (categoryOfLandRegion)3, (categoryOfLandRegion)4, (categoryOfLandRegion)5, (categoryOfLandRegion)6, (categoryOfLandRegion)7, (categoryOfLandRegion)8, (categoryOfLandRegion)9, (categoryOfLandRegion)10, (categoryOfLandRegion)11, (categoryOfLandRegion)12, (categoryOfLandRegion)13, (categoryOfLandRegion)14, (categoryOfLandRegion)15, (categoryOfLandRegion)16, (categoryOfLandRegion)17, (categoryOfLandRegion)18, (categoryOfLandRegion)19, (categoryOfLandRegion)20, (categoryOfLandRegion)21];
@@ -7287,7 +7311,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         [Browsable(false)]
         public waterLevelEffect[] waterLevelEffectList => [(waterLevelEffect)1, (waterLevelEffect)6];
 
-        public override void Load(DomainModel.S101.FeatureTypes.LandRegion instance) {
+        public override FeatureViewModel<LandRegion> Load(DomainModel.S101.FeatureTypes.LandRegion instance) {
             categoryOfLandRegion.Clear();
             if (instance.categoryOfLandRegion is not null)
                 foreach (var e in instance.categoryOfLandRegion)
@@ -7307,6 +7331,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
             if (instance.information is not null)
                 foreach (var e in instance.information)
                     information.Add(e);
+            return this;
         }
 
         public override string Serialize() {
@@ -7450,8 +7475,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
         [Category("Vegetation")]
         public ObservableCollection<information> information { get; set; } = new();
-        public override informationBindingDefinition[] informationBindingDefinitions => Vegetation.informationBindingDefinitions;
-        public override featureBindingDefinition[] featureBindingDefinitions => Vegetation.featureBindingDefinitions;
+        public override informationBindingDefinition[] informationBindingDefinitions => Vegetation._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => Vegetation._featureBindingDefinitions;
 
         [Browsable(false)]
         public categoryOfVegetation[] categoryOfVegetationList => [(categoryOfVegetation)3, (categoryOfVegetation)4, (categoryOfVegetation)5, (categoryOfVegetation)6, (categoryOfVegetation)11, (categoryOfVegetation)13, (categoryOfVegetation)14, (categoryOfVegetation)15, (categoryOfVegetation)16, (categoryOfVegetation)17, (categoryOfVegetation)18, (categoryOfVegetation)19, (categoryOfVegetation)20, (categoryOfVegetation)22];
@@ -7459,7 +7484,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         [Browsable(false)]
         public visualProminence[] visualProminenceList => [(visualProminence)1, (visualProminence)2, (visualProminence)3];
 
-        public override void Load(DomainModel.S101.FeatureTypes.Vegetation instance) {
+        public override FeatureViewModel<Vegetation> Load(DomainModel.S101.FeatureTypes.Vegetation instance) {
             categoryOfVegetation = instance.categoryOfVegetation;
             elevation = instance.elevation;
             featureName.Clear();
@@ -7475,6 +7500,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
             if (instance.information is not null)
                 foreach (var e in instance.information)
                     information.Add(e);
+            return this;
         }
 
         public override string Serialize() {
@@ -7636,8 +7662,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
         [Category("IceArea")]
         public ObservableCollection<information> information { get; set; } = new();
-        public override informationBindingDefinition[] informationBindingDefinitions => IceArea.informationBindingDefinitions;
-        public override featureBindingDefinition[] featureBindingDefinitions => IceArea.featureBindingDefinitions;
+        public override informationBindingDefinition[] informationBindingDefinitions => IceArea._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => IceArea._featureBindingDefinitions;
 
         [Browsable(false)]
         public categoryOfIce[] categoryOfIceList => [(categoryOfIce)1, (categoryOfIce)5, (categoryOfIce)8];
@@ -7648,7 +7674,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         [Browsable(false)]
         public visualProminence[] visualProminenceList => [(visualProminence)1, (visualProminence)2, (visualProminence)3];
 
-        public override void Load(DomainModel.S101.FeatureTypes.IceArea instance) {
+        public override FeatureViewModel<IceArea> Load(DomainModel.S101.FeatureTypes.IceArea instance) {
             categoryOfIce = instance.categoryOfIce;
             elevation = instance.elevation;
             featureName.Clear();
@@ -7673,6 +7699,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
             if (instance.information is not null)
                 foreach (var e in instance.information)
                     information.Add(e);
+            return this;
         }
 
         public override string Serialize() {
@@ -7812,8 +7839,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
         [Category("SlopingGround")]
         public ObservableCollection<information> information { get; set; } = new();
-        public override informationBindingDefinition[] informationBindingDefinitions => SlopingGround.informationBindingDefinitions;
-        public override featureBindingDefinition[] featureBindingDefinitions => SlopingGround.featureBindingDefinitions;
+        public override informationBindingDefinition[] informationBindingDefinitions => SlopingGround._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => SlopingGround._featureBindingDefinitions;
 
         [Browsable(false)]
         public categoryOfSlope[] categoryOfSlopeList => [(categoryOfSlope)1, (categoryOfSlope)2, (categoryOfSlope)3, (categoryOfSlope)4, (categoryOfSlope)5, (categoryOfSlope)6, (categoryOfSlope)7];
@@ -7827,7 +7854,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         [Browsable(false)]
         public visualProminence[] visualProminenceList => [(visualProminence)1, (visualProminence)2, (visualProminence)3];
 
-        public override void Load(DomainModel.S101.FeatureTypes.SlopingGround instance) {
+        public override FeatureViewModel<SlopingGround> Load(DomainModel.S101.FeatureTypes.SlopingGround instance) {
             categoryOfSlope = instance.categoryOfSlope;
             colour.Clear();
             if (instance.colour is not null)
@@ -7849,6 +7876,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
             if (instance.information is not null)
                 foreach (var e in instance.information)
                     information.Add(e);
+            return this;
         }
 
         public override string Serialize() {
@@ -7994,8 +8022,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
         [Category("SlopeTopline")]
         public ObservableCollection<information> information { get; set; } = new();
-        public override informationBindingDefinition[] informationBindingDefinitions => SlopeTopline.informationBindingDefinitions;
-        public override featureBindingDefinition[] featureBindingDefinitions => SlopeTopline.featureBindingDefinitions;
+        public override informationBindingDefinition[] informationBindingDefinitions => SlopeTopline._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => SlopeTopline._featureBindingDefinitions;
 
         [Browsable(false)]
         public categoryOfSlope[] categoryOfSlopeList => [(categoryOfSlope)1, (categoryOfSlope)2, (categoryOfSlope)6];
@@ -8009,7 +8037,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         [Browsable(false)]
         public visualProminence[] visualProminenceList => [(visualProminence)1, (visualProminence)2, (visualProminence)3];
 
-        public override void Load(DomainModel.S101.FeatureTypes.SlopeTopline instance) {
+        public override FeatureViewModel<SlopeTopline> Load(DomainModel.S101.FeatureTypes.SlopeTopline instance) {
             categoryOfSlope = instance.categoryOfSlope;
             colour.Clear();
             if (instance.colour is not null)
@@ -8032,6 +8060,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
             if (instance.information is not null)
                 foreach (var e in instance.information)
                     information.Add(e);
+            return this;
         }
 
         public override string Serialize() {
@@ -8117,10 +8146,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
         [Category("Tideway")]
         public ObservableCollection<information> information { get; set; } = new();
-        public override informationBindingDefinition[] informationBindingDefinitions => Tideway.informationBindingDefinitions;
-        public override featureBindingDefinition[] featureBindingDefinitions => Tideway.featureBindingDefinitions;
+        public override informationBindingDefinition[] informationBindingDefinitions => Tideway._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => Tideway._featureBindingDefinitions;
 
-        public override void Load(DomainModel.S101.FeatureTypes.Tideway instance) {
+        public override FeatureViewModel<Tideway> Load(DomainModel.S101.FeatureTypes.Tideway instance) {
             featureName.Clear();
             if (instance.featureName is not null)
                 foreach (var e in instance.featureName)
@@ -8131,6 +8160,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
             if (instance.information is not null)
                 foreach (var e in instance.information)
                     information.Add(e);
+            return this;
         }
 
         public override string Serialize() {
@@ -8301,8 +8331,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
             }
         }
 
-        public override informationBindingDefinition[] informationBindingDefinitions => BuiltUpArea.informationBindingDefinitions;
-        public override featureBindingDefinition[] featureBindingDefinitions => BuiltUpArea.featureBindingDefinitions;
+        public override informationBindingDefinition[] informationBindingDefinitions => BuiltUpArea._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => BuiltUpArea._featureBindingDefinitions;
 
         [Browsable(false)]
         public categoryOfBuiltUpArea[] categoryOfBuiltUpAreaList => [(categoryOfBuiltUpArea)1, (categoryOfBuiltUpArea)2, (categoryOfBuiltUpArea)3, (categoryOfBuiltUpArea)4, (categoryOfBuiltUpArea)5, (categoryOfBuiltUpArea)6];
@@ -8313,7 +8343,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         [Browsable(false)]
         public visualProminence[] visualProminenceList => [(visualProminence)1, (visualProminence)2, (visualProminence)3];
 
-        public override void Load(DomainModel.S101.FeatureTypes.BuiltUpArea instance) {
+        public override FeatureViewModel<BuiltUpArea> Load(DomainModel.S101.FeatureTypes.BuiltUpArea instance) {
             categoryOfBuiltUpArea = instance.categoryOfBuiltUpArea;
             condition = instance.condition;
             featureName.Clear();
@@ -8332,6 +8362,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     information.Add(e);
             pictorialRepresentation = instance.pictorialRepresentation;
             inTheWater = instance.inTheWater;
+            return this;
         }
 
         public override string Serialize() {
@@ -8589,8 +8620,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
             }
         }
 
-        public override informationBindingDefinition[] informationBindingDefinitions => Building.informationBindingDefinitions;
-        public override featureBindingDefinition[] featureBindingDefinitions => Building.featureBindingDefinitions;
+        public override informationBindingDefinition[] informationBindingDefinitions => Building._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => Building._featureBindingDefinitions;
 
         [Browsable(false)]
         public buildingShape[] buildingShapeList => [(buildingShape)5, (buildingShape)6, (buildingShape)7, (buildingShape)8, (buildingShape)9];
@@ -8616,7 +8647,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         [Browsable(false)]
         public visualProminence[] visualProminenceList => [(visualProminence)1, (visualProminence)2, (visualProminence)3];
 
-        public override void Load(DomainModel.S101.FeatureTypes.Building instance) {
+        public override FeatureViewModel<Building> Load(DomainModel.S101.FeatureTypes.Building instance) {
             buildingShape = instance.buildingShape;
             colour.Clear();
             if (instance.colour is not null)
@@ -8660,6 +8691,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     information.Add(e);
             pictorialRepresentation = instance.pictorialRepresentation;
             inTheWater = instance.inTheWater;
+            return this;
         }
 
         public override string Serialize() {
@@ -8820,8 +8852,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
             }
         }
 
-        public override informationBindingDefinition[] informationBindingDefinitions => AirportAirfield.informationBindingDefinitions;
-        public override featureBindingDefinition[] featureBindingDefinitions => AirportAirfield.featureBindingDefinitions;
+        public override informationBindingDefinition[] informationBindingDefinitions => AirportAirfield._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => AirportAirfield._featureBindingDefinitions;
 
         [Browsable(false)]
         public categoryOfAirportAirfield[] categoryOfAirportAirfieldList => [(categoryOfAirportAirfield)1, (categoryOfAirportAirfield)2, (categoryOfAirportAirfield)3, (categoryOfAirportAirfield)4, (categoryOfAirportAirfield)5, (categoryOfAirportAirfield)6, (categoryOfAirportAirfield)8, (categoryOfAirportAirfield)9];
@@ -8832,7 +8864,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         [Browsable(false)]
         public status[] statusList => [(status)1, (status)2, (status)4, (status)5, (status)6, (status)7, (status)8, (status)12, (status)14];
 
-        public override void Load(DomainModel.S101.FeatureTypes.AirportAirfield instance) {
+        public override FeatureViewModel<AirportAirfield> Load(DomainModel.S101.FeatureTypes.AirportAirfield instance) {
             categoryOfAirportAirfield.Clear();
             if (instance.categoryOfAirportAirfield is not null)
                 foreach (var e in instance.categoryOfAirportAirfield)
@@ -8854,6 +8886,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
                 foreach (var e in instance.information)
                     information.Add(e);
             pictorialRepresentation = instance.pictorialRepresentation;
+            return this;
         }
 
         public override string Serialize() {
@@ -8976,8 +9009,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
         [Category("Runway")]
         public ObservableCollection<information> information { get; set; } = new();
-        public override informationBindingDefinition[] informationBindingDefinitions => Runway.informationBindingDefinitions;
-        public override featureBindingDefinition[] featureBindingDefinitions => Runway.featureBindingDefinitions;
+        public override informationBindingDefinition[] informationBindingDefinitions => Runway._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => Runway._featureBindingDefinitions;
 
         [Browsable(false)]
         public condition[] conditionList => [(condition)1, (condition)2, (condition)3, (condition)5];
@@ -8988,7 +9021,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         [Browsable(false)]
         public status[] statusList => [(status)1, (status)2, (status)4, (status)5, (status)6, (status)7, (status)8, (status)12, (status)14];
 
-        public override void Load(DomainModel.S101.FeatureTypes.Runway instance) {
+        public override FeatureViewModel<Runway> Load(DomainModel.S101.FeatureTypes.Runway instance) {
             condition = instance.condition;
             featureName.Clear();
             if (instance.featureName is not null)
@@ -9013,6 +9046,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
             if (instance.information is not null)
                 foreach (var e in instance.information)
                     information.Add(e);
+            return this;
         }
 
         public override string Serialize() {
@@ -9138,8 +9172,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
         [Category("Helipad")]
         public ObservableCollection<information> information { get; set; } = new();
-        public override informationBindingDefinition[] informationBindingDefinitions => Helipad.informationBindingDefinitions;
-        public override featureBindingDefinition[] featureBindingDefinitions => Helipad.featureBindingDefinitions;
+        public override informationBindingDefinition[] informationBindingDefinitions => Helipad._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => Helipad._featureBindingDefinitions;
 
         [Browsable(false)]
         public condition[] conditionList => [(condition)1, (condition)2, (condition)3, (condition)5];
@@ -9150,7 +9184,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         [Browsable(false)]
         public status[] statusList => [(status)1, (status)2, (status)4, (status)5, (status)6, (status)7, (status)8, (status)12, (status)14];
 
-        public override void Load(DomainModel.S101.FeatureTypes.Helipad instance) {
+        public override FeatureViewModel<Helipad> Load(DomainModel.S101.FeatureTypes.Helipad instance) {
             condition = instance.condition;
             featureName.Clear();
             if (instance.featureName is not null)
@@ -9175,6 +9209,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
             if (instance.information is not null)
                 foreach (var e in instance.information)
                     information.Add(e);
+            return this;
         }
 
         public override string Serialize() {
@@ -9425,8 +9460,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
             }
         }
 
-        public override informationBindingDefinition[] informationBindingDefinitions => Bridge.informationBindingDefinitions;
-        public override featureBindingDefinition[] featureBindingDefinitions => Bridge.featureBindingDefinitions;
+        public override informationBindingDefinition[] informationBindingDefinitions => Bridge._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => Bridge._featureBindingDefinitions;
 
         [Browsable(false)]
         public bridgeConstruction[] bridgeConstructionList => [(bridgeConstruction)1, (bridgeConstruction)2, (bridgeConstruction)3, (bridgeConstruction)4, (bridgeConstruction)5];
@@ -9455,7 +9490,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         [Browsable(false)]
         public visualProminence[] visualProminenceList => [(visualProminence)1, (visualProminence)2, (visualProminence)3];
 
-        public override void Load(DomainModel.S101.FeatureTypes.Bridge instance) {
+        public override FeatureViewModel<Bridge> Load(DomainModel.S101.FeatureTypes.Bridge instance) {
             bridgeConstruction = instance.bridgeConstruction;
             bridgeFunction.Clear();
             if (instance.bridgeFunction is not null)
@@ -9498,6 +9533,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
                 foreach (var e in instance.information)
                     information.Add(e);
             pictorialRepresentation = instance.pictorialRepresentation;
+            return this;
         }
 
         public override string Serialize() {
@@ -9670,13 +9706,13 @@ namespace S100Framework.WPF.ViewModel.S101 {
             }
         }
 
-        public override informationBindingDefinition[] informationBindingDefinitions => SpanFixed.informationBindingDefinitions;
-        public override featureBindingDefinition[] featureBindingDefinitions => SpanFixed.featureBindingDefinitions;
+        public override informationBindingDefinition[] informationBindingDefinitions => SpanFixed._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => SpanFixed._featureBindingDefinitions;
 
         [Browsable(false)]
         public verticalDatum[] verticalDatumList => [(verticalDatum)3, (verticalDatum)13, (verticalDatum)16, (verticalDatum)17, (verticalDatum)18, (verticalDatum)19, (verticalDatum)20, (verticalDatum)21, (verticalDatum)24, (verticalDatum)25, (verticalDatum)26, (verticalDatum)28, (verticalDatum)29, (verticalDatum)30, (verticalDatum)44];
 
-        public override void Load(DomainModel.S101.FeatureTypes.SpanFixed instance) {
+        public override FeatureViewModel<SpanFixed> Load(DomainModel.S101.FeatureTypes.SpanFixed instance) {
             fixedDateRange = new();
             if (instance.fixedDateRange != null) {
                 fixedDateRange = new();
@@ -9703,6 +9739,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
                 foreach (var e in instance.information)
                     information.Add(e);
             pictorialRepresentation = instance.pictorialRepresentation;
+            return this;
         }
 
         public override string Serialize() {
@@ -9851,13 +9888,13 @@ namespace S100Framework.WPF.ViewModel.S101 {
             }
         }
 
-        public override informationBindingDefinition[] informationBindingDefinitions => SpanOpening.informationBindingDefinitions;
-        public override featureBindingDefinition[] featureBindingDefinitions => SpanOpening.featureBindingDefinitions;
+        public override informationBindingDefinition[] informationBindingDefinitions => SpanOpening._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => SpanOpening._featureBindingDefinitions;
 
         [Browsable(false)]
         public verticalDatum[] verticalDatumList => [(verticalDatum)3, (verticalDatum)13, (verticalDatum)16, (verticalDatum)17, (verticalDatum)18, (verticalDatum)19, (verticalDatum)20, (verticalDatum)21, (verticalDatum)24, (verticalDatum)25, (verticalDatum)26, (verticalDatum)28, (verticalDatum)29, (verticalDatum)30, (verticalDatum)44];
 
-        public override void Load(DomainModel.S101.FeatureTypes.SpanOpening instance) {
+        public override FeatureViewModel<SpanOpening> Load(DomainModel.S101.FeatureTypes.SpanOpening instance) {
             fixedDateRange = new();
             if (instance.fixedDateRange != null) {
                 fixedDateRange = new();
@@ -9890,6 +9927,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
                 foreach (var e in instance.information)
                     information.Add(e);
             pictorialRepresentation = instance.pictorialRepresentation;
+            return this;
         }
 
         public override string Serialize() {
@@ -10161,8 +10199,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
             }
         }
 
-        public override informationBindingDefinition[] informationBindingDefinitions => Conveyor.informationBindingDefinitions;
-        public override featureBindingDefinition[] featureBindingDefinitions => Conveyor.featureBindingDefinitions;
+        public override informationBindingDefinition[] informationBindingDefinitions => Conveyor._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => Conveyor._featureBindingDefinitions;
 
         [Browsable(false)]
         public categoryOfConveyor[] categoryOfConveyorList => [(categoryOfConveyor)1, (categoryOfConveyor)2, (categoryOfConveyor)3, (categoryOfConveyor)4];
@@ -10188,7 +10226,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         [Browsable(false)]
         public visualProminence[] visualProminenceList => [(visualProminence)1, (visualProminence)2, (visualProminence)3];
 
-        public override void Load(DomainModel.S101.FeatureTypes.Conveyor instance) {
+        public override FeatureViewModel<Conveyor> Load(DomainModel.S101.FeatureTypes.Conveyor instance) {
             categoryOfConveyor = instance.categoryOfConveyor;
             colour.Clear();
             if (instance.colour is not null)
@@ -10240,6 +10278,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
                 foreach (var e in instance.information)
                     information.Add(e);
             pictorialRepresentation = instance.pictorialRepresentation;
+            return this;
         }
 
         public override string Serialize() {
@@ -10499,8 +10538,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
         [Category("CableOverhead")]
         public ObservableCollection<information> information { get; set; } = new();
-        public override informationBindingDefinition[] informationBindingDefinitions => CableOverhead.informationBindingDefinitions;
-        public override featureBindingDefinition[] featureBindingDefinitions => CableOverhead.featureBindingDefinitions;
+        public override informationBindingDefinition[] informationBindingDefinitions => CableOverhead._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => CableOverhead._featureBindingDefinitions;
 
         [Browsable(false)]
         public categoryOfCable[] categoryOfCableList => [(categoryOfCable)1, (categoryOfCable)3, (categoryOfCable)10];
@@ -10517,7 +10556,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         [Browsable(false)]
         public visualProminence[] visualProminenceList => [(visualProminence)1, (visualProminence)2, (visualProminence)3];
 
-        public override void Load(DomainModel.S101.FeatureTypes.CableOverhead instance) {
+        public override FeatureViewModel<CableOverhead> Load(DomainModel.S101.FeatureTypes.CableOverhead instance) {
             categoryOfCable = instance.categoryOfCable;
             condition = instance.condition;
             fixedDateRange = new();
@@ -10563,6 +10602,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
             if (instance.information is not null)
                 foreach (var e in instance.information)
                     information.Add(e);
+            return this;
         }
 
         public override string Serialize() {
@@ -10786,8 +10826,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
         [Category("PipelineOverhead")]
         public ObservableCollection<information> information { get; set; } = new();
-        public override informationBindingDefinition[] informationBindingDefinitions => PipelineOverhead.informationBindingDefinitions;
-        public override featureBindingDefinition[] featureBindingDefinitions => PipelineOverhead.featureBindingDefinitions;
+        public override informationBindingDefinition[] informationBindingDefinitions => PipelineOverhead._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => PipelineOverhead._featureBindingDefinitions;
 
         [Browsable(false)]
         public categoryOfPipelinePipe[] categoryOfPipelinePipeList => [(categoryOfPipelinePipe)2, (categoryOfPipelinePipe)3, (categoryOfPipelinePipe)4, (categoryOfPipelinePipe)6];
@@ -10807,7 +10847,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         [Browsable(false)]
         public visualProminence[] visualProminenceList => [(visualProminence)1, (visualProminence)2, (visualProminence)3];
 
-        public override void Load(DomainModel.S101.FeatureTypes.PipelineOverhead instance) {
+        public override FeatureViewModel<PipelineOverhead> Load(DomainModel.S101.FeatureTypes.PipelineOverhead instance) {
             categoryOfPipelinePipe = instance.categoryOfPipelinePipe;
             condition = instance.condition;
             featureName.Clear();
@@ -10850,6 +10890,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
             if (instance.information is not null)
                 foreach (var e in instance.information)
                     information.Add(e);
+            return this;
         }
 
         public override string Serialize() {
@@ -11117,8 +11158,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
             }
         }
 
-        public override informationBindingDefinition[] informationBindingDefinitions => PylonBridgeSupport.informationBindingDefinitions;
-        public override featureBindingDefinition[] featureBindingDefinitions => PylonBridgeSupport.featureBindingDefinitions;
+        public override informationBindingDefinition[] informationBindingDefinitions => PylonBridgeSupport._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => PylonBridgeSupport._featureBindingDefinitions;
 
         [Browsable(false)]
         public categoryOfPylon[] categoryOfPylonList => [(categoryOfPylon)1, (categoryOfPylon)2, (categoryOfPylon)3, (categoryOfPylon)4, (categoryOfPylon)5, (categoryOfPylon)6];
@@ -11144,7 +11185,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         [Browsable(false)]
         public waterLevelEffect[] waterLevelEffectList => [(waterLevelEffect)1, (waterLevelEffect)2, (waterLevelEffect)3, (waterLevelEffect)4, (waterLevelEffect)5, (waterLevelEffect)6];
 
-        public override void Load(DomainModel.S101.FeatureTypes.PylonBridgeSupport instance) {
+        public override FeatureViewModel<PylonBridgeSupport> Load(DomainModel.S101.FeatureTypes.PylonBridgeSupport instance) {
             categoryOfPylon = instance.categoryOfPylon;
             colour.Clear();
             if (instance.colour is not null)
@@ -11189,6 +11230,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
                 foreach (var e in instance.information)
                     information.Add(e);
             pictorialRepresentation = instance.pictorialRepresentation;
+            return this;
         }
 
         public override string Serialize() {
@@ -11426,8 +11468,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
         [Category("FenceWall")]
         public ObservableCollection<information> information { get; set; } = new();
-        public override informationBindingDefinition[] informationBindingDefinitions => FenceWall.informationBindingDefinitions;
-        public override featureBindingDefinition[] featureBindingDefinitions => FenceWall.featureBindingDefinitions;
+        public override informationBindingDefinition[] informationBindingDefinitions => FenceWall._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => FenceWall._featureBindingDefinitions;
 
         [Browsable(false)]
         public categoryOfFence[] categoryOfFenceList => [(categoryOfFence)1, (categoryOfFence)3, (categoryOfFence)4];
@@ -11450,7 +11492,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         [Browsable(false)]
         public visualProminence[] visualProminenceList => [(visualProminence)1, (visualProminence)2, (visualProminence)3];
 
-        public override void Load(DomainModel.S101.FeatureTypes.FenceWall instance) {
+        public override FeatureViewModel<FenceWall> Load(DomainModel.S101.FeatureTypes.FenceWall instance) {
             categoryOfFence = instance.categoryOfFence;
             colour.Clear();
             if (instance.colour is not null)
@@ -11482,6 +11524,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
             if (instance.information is not null)
                 foreach (var e in instance.information)
                     information.Add(e);
+            return this;
         }
 
         public override string Serialize() {
@@ -11625,8 +11668,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
         [Category("Railway")]
         public ObservableCollection<information> information { get; set; } = new();
-        public override informationBindingDefinition[] informationBindingDefinitions => Railway.informationBindingDefinitions;
-        public override featureBindingDefinition[] featureBindingDefinitions => Railway.featureBindingDefinitions;
+        public override informationBindingDefinition[] informationBindingDefinitions => Railway._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => Railway._featureBindingDefinitions;
 
         [Browsable(false)]
         public condition[] conditionList => [(condition)1, (condition)2, (condition)5];
@@ -11634,7 +11677,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         [Browsable(false)]
         public status[] statusList => [(status)1, (status)4, (status)6, (status)12, (status)13, (status)14];
 
-        public override void Load(DomainModel.S101.FeatureTypes.Railway instance) {
+        public override FeatureViewModel<Railway> Load(DomainModel.S101.FeatureTypes.Railway instance) {
             condition = instance.condition;
             featureName.Clear();
             if (instance.featureName is not null)
@@ -11652,6 +11695,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
             if (instance.information is not null)
                 foreach (var e in instance.information)
                     information.Add(e);
+            return this;
         }
 
         public override string Serialize() {
@@ -11780,8 +11824,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
         [Category("Road")]
         public ObservableCollection<information> information { get; set; } = new();
-        public override informationBindingDefinition[] informationBindingDefinitions => Road.informationBindingDefinitions;
-        public override featureBindingDefinition[] featureBindingDefinitions => Road.featureBindingDefinitions;
+        public override informationBindingDefinition[] informationBindingDefinitions => Road._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => Road._featureBindingDefinitions;
 
         [Browsable(false)]
         public categoryOfRoad[] categoryOfRoadList => [(categoryOfRoad)1, (categoryOfRoad)2, (categoryOfRoad)3, (categoryOfRoad)4, (categoryOfRoad)5, (categoryOfRoad)6];
@@ -11795,7 +11839,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         [Browsable(false)]
         public status[] statusList => [(status)1, (status)4, (status)6, (status)7, (status)8, (status)12, (status)13, (status)14];
 
-        public override void Load(DomainModel.S101.FeatureTypes.Road instance) {
+        public override FeatureViewModel<Road> Load(DomainModel.S101.FeatureTypes.Road instance) {
             categoryOfRoad = instance.categoryOfRoad;
             condition = instance.condition;
             featureName.Clear();
@@ -11817,6 +11861,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
             if (instance.information is not null)
                 foreach (var e in instance.information)
                     information.Add(e);
+            return this;
         }
 
         public override string Serialize() {
@@ -11984,8 +12029,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
             }
         }
 
-        public override informationBindingDefinition[] informationBindingDefinitions => Tunnel.informationBindingDefinitions;
-        public override featureBindingDefinition[] featureBindingDefinitions => Tunnel.featureBindingDefinitions;
+        public override informationBindingDefinition[] informationBindingDefinitions => Tunnel._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => Tunnel._featureBindingDefinitions;
 
         [Browsable(false)]
         public condition[] conditionList => [(condition)1, (condition)2, (condition)5];
@@ -11996,7 +12041,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         [Browsable(false)]
         public verticalDatum[] verticalDatumList => [(verticalDatum)3, (verticalDatum)13, (verticalDatum)16, (verticalDatum)17, (verticalDatum)18, (verticalDatum)19, (verticalDatum)20, (verticalDatum)21, (verticalDatum)24, (verticalDatum)25, (verticalDatum)26, (verticalDatum)28, (verticalDatum)29, (verticalDatum)30, (verticalDatum)44];
 
-        public override void Load(DomainModel.S101.FeatureTypes.Tunnel instance) {
+        public override FeatureViewModel<Tunnel> Load(DomainModel.S101.FeatureTypes.Tunnel instance) {
             condition = instance.condition;
             featureName.Clear();
             if (instance.featureName is not null)
@@ -12027,6 +12072,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
                 foreach (var e in instance.information)
                     information.Add(e);
             pictorialRepresentation = instance.pictorialRepresentation;
+            return this;
         }
 
         public override string Serialize() {
@@ -12281,8 +12327,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
             }
         }
 
-        public override informationBindingDefinition[] informationBindingDefinitions => Landmark.informationBindingDefinitions;
-        public override featureBindingDefinition[] featureBindingDefinitions => Landmark.featureBindingDefinitions;
+        public override informationBindingDefinition[] informationBindingDefinitions => Landmark._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => Landmark._featureBindingDefinitions;
 
         [Browsable(false)]
         public categoryOfLandmark[] categoryOfLandmarkList => [(categoryOfLandmark)1, (categoryOfLandmark)2, (categoryOfLandmark)3, (categoryOfLandmark)4, (categoryOfLandmark)5, (categoryOfLandmark)6, (categoryOfLandmark)7, (categoryOfLandmark)8, (categoryOfLandmark)9, (categoryOfLandmark)10, (categoryOfLandmark)11, (categoryOfLandmark)12, (categoryOfLandmark)13, (categoryOfLandmark)14, (categoryOfLandmark)15, (categoryOfLandmark)16, (categoryOfLandmark)17, (categoryOfLandmark)18, (categoryOfLandmark)20, (categoryOfLandmark)21, (categoryOfLandmark)22, (categoryOfLandmark)23, (categoryOfLandmark)24, (categoryOfLandmark)25, (categoryOfLandmark)26, (categoryOfLandmark)27];
@@ -12311,7 +12357,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         [Browsable(false)]
         public visualProminence[] visualProminenceList => [(visualProminence)1, (visualProminence)2, (visualProminence)3];
 
-        public override void Load(DomainModel.S101.FeatureTypes.Landmark instance) {
+        public override FeatureViewModel<Landmark> Load(DomainModel.S101.FeatureTypes.Landmark instance) {
             categoryOfLandmark.Clear();
             if (instance.categoryOfLandmark is not null)
                 foreach (var e in instance.categoryOfLandmark)
@@ -12362,6 +12408,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     information.Add(e);
             pictorialRepresentation = instance.pictorialRepresentation;
             inTheWater = instance.inTheWater;
+            return this;
         }
 
         public override string Serialize() {
@@ -12669,8 +12716,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
             }
         }
 
-        public override informationBindingDefinition[] informationBindingDefinitions => SiloTank.informationBindingDefinitions;
-        public override featureBindingDefinition[] featureBindingDefinitions => SiloTank.featureBindingDefinitions;
+        public override informationBindingDefinition[] informationBindingDefinitions => SiloTank._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => SiloTank._featureBindingDefinitions;
 
         [Browsable(false)]
         public buildingShape[] buildingShapeList => [(buildingShape)5, (buildingShape)6, (buildingShape)7, (buildingShape)8, (buildingShape)9];
@@ -12699,7 +12746,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         [Browsable(false)]
         public visualProminence[] visualProminenceList => [(visualProminence)1, (visualProminence)2, (visualProminence)3];
 
-        public override void Load(DomainModel.S101.FeatureTypes.SiloTank instance) {
+        public override FeatureViewModel<SiloTank> Load(DomainModel.S101.FeatureTypes.SiloTank instance) {
             buildingShape = instance.buildingShape;
             categoryOfSiloTank = instance.categoryOfSiloTank;
             colour.Clear();
@@ -12744,6 +12791,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     information.Add(e);
             pictorialRepresentation = instance.pictorialRepresentation;
             inTheWater = instance.inTheWater;
+            return this;
         }
 
         public override string Serialize() {
@@ -13066,8 +13114,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
             }
         }
 
-        public override informationBindingDefinition[] informationBindingDefinitions => WindTurbine.informationBindingDefinitions;
-        public override featureBindingDefinition[] featureBindingDefinitions => WindTurbine.featureBindingDefinitions;
+        public override informationBindingDefinition[] informationBindingDefinitions => WindTurbine._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => WindTurbine._featureBindingDefinitions;
 
         [Browsable(false)]
         public colour[] colourList => [(colour)1, (colour)2, (colour)3, (colour)4, (colour)5, (colour)6, (colour)7, (colour)8, (colour)9, (colour)10, (colour)11, (colour)12, (colour)13];
@@ -13093,7 +13141,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         [Browsable(false)]
         public waterLevelEffect[] waterLevelEffectList => [(waterLevelEffect)2, (waterLevelEffect)7];
 
-        public override void Load(DomainModel.S101.FeatureTypes.WindTurbine instance) {
+        public override FeatureViewModel<WindTurbine> Load(DomainModel.S101.FeatureTypes.WindTurbine instance) {
             colour.Clear();
             if (instance.colour is not null)
                 foreach (var e in instance.colour)
@@ -13146,6 +13194,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     information.Add(e);
             pictorialRepresentation = instance.pictorialRepresentation;
             inTheWater = instance.inTheWater;
+            return this;
         }
 
         public override string Serialize() {
@@ -13383,8 +13432,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
             }
         }
 
-        public override informationBindingDefinition[] informationBindingDefinitions => FortifiedStructure.informationBindingDefinitions;
-        public override featureBindingDefinition[] featureBindingDefinitions => FortifiedStructure.featureBindingDefinitions;
+        public override informationBindingDefinition[] informationBindingDefinitions => FortifiedStructure._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => FortifiedStructure._featureBindingDefinitions;
 
         [Browsable(false)]
         public categoryOfFortifiedStructure[] categoryOfFortifiedStructureList => [(categoryOfFortifiedStructure)1, (categoryOfFortifiedStructure)2, (categoryOfFortifiedStructure)3, (categoryOfFortifiedStructure)4, (categoryOfFortifiedStructure)5, (categoryOfFortifiedStructure)6, (categoryOfFortifiedStructure)8, (categoryOfFortifiedStructure)9];
@@ -13401,7 +13450,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         [Browsable(false)]
         public visualProminence[] visualProminenceList => [(visualProminence)1, (visualProminence)2, (visualProminence)3];
 
-        public override void Load(DomainModel.S101.FeatureTypes.FortifiedStructure instance) {
+        public override FeatureViewModel<FortifiedStructure> Load(DomainModel.S101.FeatureTypes.FortifiedStructure instance) {
             categoryOfFortifiedStructure = instance.categoryOfFortifiedStructure;
             condition = instance.condition;
             featureName.Clear();
@@ -13429,6 +13478,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     information.Add(e);
             pictorialRepresentation = instance.pictorialRepresentation;
             inTheWater = instance.inTheWater;
+            return this;
         }
 
         public override string Serialize() {
@@ -13662,8 +13712,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
             }
         }
 
-        public override informationBindingDefinition[] informationBindingDefinitions => ProductionStorageArea.informationBindingDefinitions;
-        public override featureBindingDefinition[] featureBindingDefinitions => ProductionStorageArea.featureBindingDefinitions;
+        public override informationBindingDefinition[] informationBindingDefinitions => ProductionStorageArea._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => ProductionStorageArea._featureBindingDefinitions;
 
         [Browsable(false)]
         public categoryOfProductionArea[] categoryOfProductionAreaList => [(categoryOfProductionArea)1, (categoryOfProductionArea)2, (categoryOfProductionArea)3, (categoryOfProductionArea)4, (categoryOfProductionArea)5, (categoryOfProductionArea)6, (categoryOfProductionArea)7, (categoryOfProductionArea)8, (categoryOfProductionArea)9, (categoryOfProductionArea)10, (categoryOfProductionArea)11, (categoryOfProductionArea)12];
@@ -13680,7 +13730,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         [Browsable(false)]
         public visualProminence[] visualProminenceList => [(visualProminence)1, (visualProminence)2, (visualProminence)3];
 
-        public override void Load(DomainModel.S101.FeatureTypes.ProductionStorageArea instance) {
+        public override FeatureViewModel<ProductionStorageArea> Load(DomainModel.S101.FeatureTypes.ProductionStorageArea instance) {
             categoryOfProductionArea = instance.categoryOfProductionArea;
             condition = instance.condition;
             elevation = instance.elevation;
@@ -13714,6 +13764,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
                 foreach (var e in instance.information)
                     information.Add(e);
             pictorialRepresentation = instance.pictorialRepresentation;
+            return this;
         }
 
         public override string Serialize() {
@@ -13830,8 +13881,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
         [Category("Checkpoint")]
         public ObservableCollection<information> information { get; set; } = new();
-        public override informationBindingDefinition[] informationBindingDefinitions => Checkpoint.informationBindingDefinitions;
-        public override featureBindingDefinition[] featureBindingDefinitions => Checkpoint.featureBindingDefinitions;
+        public override informationBindingDefinition[] informationBindingDefinitions => Checkpoint._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => Checkpoint._featureBindingDefinitions;
 
         [Browsable(false)]
         public categoryOfCheckpoint[] categoryOfCheckpointList => [(categoryOfCheckpoint)1];
@@ -13839,7 +13890,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         [Browsable(false)]
         public status[] statusList => [(status)1, (status)2, (status)5, (status)7, (status)9, (status)12];
 
-        public override void Load(DomainModel.S101.FeatureTypes.Checkpoint instance) {
+        public override FeatureViewModel<Checkpoint> Load(DomainModel.S101.FeatureTypes.Checkpoint instance) {
             categoryOfCheckpoint = instance.categoryOfCheckpoint;
             featureName.Clear();
             if (instance.featureName is not null)
@@ -13855,6 +13906,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
             if (instance.information is not null)
                 foreach (var e in instance.information)
                     information.Add(e);
+            return this;
         }
 
         public override string Serialize() {
@@ -14070,8 +14122,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
             }
         }
 
-        public override informationBindingDefinition[] informationBindingDefinitions => Hulk.informationBindingDefinitions;
-        public override featureBindingDefinition[] featureBindingDefinitions => Hulk.featureBindingDefinitions;
+        public override informationBindingDefinition[] informationBindingDefinitions => Hulk._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => Hulk._featureBindingDefinitions;
 
         [Browsable(false)]
         public categoryOfHulk[] categoryOfHulkList => [(categoryOfHulk)1, (categoryOfHulk)2, (categoryOfHulk)3, (categoryOfHulk)4, (categoryOfHulk)5, (categoryOfHulk)6, (categoryOfHulk)7];
@@ -14088,7 +14140,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         [Browsable(false)]
         public visualProminence[] visualProminenceList => [(visualProminence)1, (visualProminence)2, (visualProminence)3];
 
-        public override void Load(DomainModel.S101.FeatureTypes.Hulk instance) {
+        public override FeatureViewModel<Hulk> Load(DomainModel.S101.FeatureTypes.Hulk instance) {
             categoryOfHulk.Clear();
             if (instance.categoryOfHulk is not null)
                 foreach (var e in instance.categoryOfHulk)
@@ -14126,6 +14178,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
                 foreach (var e in instance.information)
                     information.Add(e);
             pictorialRepresentation = instance.pictorialRepresentation;
+            return this;
         }
 
         public override string Serialize() {
@@ -14368,8 +14421,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
             }
         }
 
-        public override informationBindingDefinition[] informationBindingDefinitions => Pile.informationBindingDefinitions;
-        public override featureBindingDefinition[] featureBindingDefinitions => Pile.featureBindingDefinitions;
+        public override informationBindingDefinition[] informationBindingDefinitions => Pile._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => Pile._featureBindingDefinitions;
 
         [Browsable(false)]
         public categoryOfPile[] categoryOfPileList => [(categoryOfPile)1, (categoryOfPile)3, (categoryOfPile)4, (categoryOfPile)5, (categoryOfPile)6, (categoryOfPile)7, (categoryOfPile)8];
@@ -14389,7 +14442,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         [Browsable(false)]
         public visualProminence[] visualProminenceList => [(visualProminence)1, (visualProminence)2, (visualProminence)3];
 
-        public override void Load(DomainModel.S101.FeatureTypes.Pile instance) {
+        public override FeatureViewModel<Pile> Load(DomainModel.S101.FeatureTypes.Pile instance) {
             categoryOfPile = instance.categoryOfPile;
             colour.Clear();
             if (instance.colour is not null)
@@ -14423,6 +14476,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
                 foreach (var e in instance.information)
                     information.Add(e);
             pictorialRepresentation = instance.pictorialRepresentation;
+            return this;
         }
 
         public override string Serialize() {
@@ -14614,8 +14668,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
         [Category("Dyke")]
         public ObservableCollection<information> information { get; set; } = new();
-        public override informationBindingDefinition[] informationBindingDefinitions => Dyke.informationBindingDefinitions;
-        public override featureBindingDefinition[] featureBindingDefinitions => Dyke.featureBindingDefinitions;
+        public override informationBindingDefinition[] informationBindingDefinitions => Dyke._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => Dyke._featureBindingDefinitions;
 
         [Browsable(false)]
         public condition[] conditionList => [(condition)1, (condition)2, (condition)3, (condition)5];
@@ -14626,7 +14680,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         [Browsable(false)]
         public visualProminence[] visualProminenceList => [(visualProminence)1, (visualProminence)2, (visualProminence)3];
 
-        public override void Load(DomainModel.S101.FeatureTypes.Dyke instance) {
+        public override FeatureViewModel<Dyke> Load(DomainModel.S101.FeatureTypes.Dyke instance) {
             condition = instance.condition;
             featureName.Clear();
             if (instance.featureName is not null)
@@ -14653,6 +14707,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
             if (instance.information is not null)
                 foreach (var e in instance.information)
                     information.Add(e);
+            return this;
         }
 
         public override string Serialize() {
@@ -14922,8 +14977,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
         [Category("ShorelineConstruction")]
         public ObservableCollection<information> information { get; set; } = new();
-        public override informationBindingDefinition[] informationBindingDefinitions => ShorelineConstruction.informationBindingDefinitions;
-        public override featureBindingDefinition[] featureBindingDefinitions => ShorelineConstruction.featureBindingDefinitions;
+        public override informationBindingDefinition[] informationBindingDefinitions => ShorelineConstruction._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => ShorelineConstruction._featureBindingDefinitions;
 
         [Browsable(false)]
         public categoryOfShorelineConstruction[] categoryOfShorelineConstructionList => [(categoryOfShorelineConstruction)1, (categoryOfShorelineConstruction)2, (categoryOfShorelineConstruction)3, (categoryOfShorelineConstruction)4, (categoryOfShorelineConstruction)5, (categoryOfShorelineConstruction)6, (categoryOfShorelineConstruction)7, (categoryOfShorelineConstruction)8, (categoryOfShorelineConstruction)9, (categoryOfShorelineConstruction)10, (categoryOfShorelineConstruction)11, (categoryOfShorelineConstruction)12, (categoryOfShorelineConstruction)13, (categoryOfShorelineConstruction)14, (categoryOfShorelineConstruction)15, (categoryOfShorelineConstruction)16, (categoryOfShorelineConstruction)17, (categoryOfShorelineConstruction)20, (categoryOfShorelineConstruction)22, (categoryOfShorelineConstruction)23];
@@ -14949,7 +15004,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         [Browsable(false)]
         public waterLevelEffect[] waterLevelEffectList => [(waterLevelEffect)1, (waterLevelEffect)2, (waterLevelEffect)3, (waterLevelEffect)4, (waterLevelEffect)5, (waterLevelEffect)6, (waterLevelEffect)7];
 
-        public override void Load(DomainModel.S101.FeatureTypes.ShorelineConstruction instance) {
+        public override FeatureViewModel<ShorelineConstruction> Load(DomainModel.S101.FeatureTypes.ShorelineConstruction instance) {
             categoryOfShorelineConstruction = instance.categoryOfShorelineConstruction;
             colour.Clear();
             if (instance.colour is not null)
@@ -14995,6 +15050,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
             if (instance.information is not null)
                 foreach (var e in instance.information)
                     information.Add(e);
+            return this;
         }
 
         public override string Serialize() {
@@ -15320,8 +15376,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
             }
         }
 
-        public override informationBindingDefinition[] informationBindingDefinitions => StructureOverNavigableWater.informationBindingDefinitions;
-        public override featureBindingDefinition[] featureBindingDefinitions => StructureOverNavigableWater.featureBindingDefinitions;
+        public override informationBindingDefinition[] informationBindingDefinitions => StructureOverNavigableWater._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => StructureOverNavigableWater._featureBindingDefinitions;
 
         [Browsable(false)]
         public categoryOfStructure[] categoryOfStructureList => [(categoryOfStructure)1, (categoryOfStructure)2, (categoryOfStructure)3, (categoryOfStructure)4, (categoryOfStructure)5];
@@ -15350,7 +15406,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         [Browsable(false)]
         public visualProminence[] visualProminenceList => [(visualProminence)1, (visualProminence)2, (visualProminence)3];
 
-        public override void Load(DomainModel.S101.FeatureTypes.StructureOverNavigableWater instance) {
+        public override FeatureViewModel<StructureOverNavigableWater> Load(DomainModel.S101.FeatureTypes.StructureOverNavigableWater instance) {
             categoryOfStructure.Clear();
             if (instance.categoryOfStructure is not null)
                 foreach (var e in instance.categoryOfStructure)
@@ -15411,6 +15467,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
                 foreach (var e in instance.information)
                     information.Add(e);
             pictorialRepresentation = instance.pictorialRepresentation;
+            return this;
         }
 
         public override string Serialize() {
@@ -15583,8 +15640,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
         [Category("Causeway")]
         public ObservableCollection<information> information { get; set; } = new();
-        public override informationBindingDefinition[] informationBindingDefinitions => Causeway.informationBindingDefinitions;
-        public override featureBindingDefinition[] featureBindingDefinitions => Causeway.featureBindingDefinitions;
+        public override informationBindingDefinition[] informationBindingDefinitions => Causeway._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => Causeway._featureBindingDefinitions;
 
         [Browsable(false)]
         public condition[] conditionList => [(condition)1, (condition)2, (condition)3, (condition)5];
@@ -15598,7 +15655,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         [Browsable(false)]
         public waterLevelEffect[] waterLevelEffectList => [(waterLevelEffect)1, (waterLevelEffect)2, (waterLevelEffect)3, (waterLevelEffect)4, (waterLevelEffect)5, (waterLevelEffect)6];
 
-        public override void Load(DomainModel.S101.FeatureTypes.Causeway instance) {
+        public override FeatureViewModel<Causeway> Load(DomainModel.S101.FeatureTypes.Causeway instance) {
             condition = instance.condition;
             featureName.Clear();
             if (instance.featureName is not null)
@@ -15620,6 +15677,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
             if (instance.information is not null)
                 foreach (var e in instance.information)
                     information.Add(e);
+            return this;
         }
 
         public override string Serialize() {
@@ -15786,8 +15844,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
         [Category("Canal")]
         public ObservableCollection<information> information { get; set; } = new();
-        public override informationBindingDefinition[] informationBindingDefinitions => Canal.informationBindingDefinitions;
-        public override featureBindingDefinition[] featureBindingDefinitions => Canal.featureBindingDefinitions;
+        public override informationBindingDefinition[] informationBindingDefinitions => Canal._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => Canal._featureBindingDefinitions;
 
         [Browsable(false)]
         public categoryOfCanal[] categoryOfCanalList => [(categoryOfCanal)1, (categoryOfCanal)2, (categoryOfCanal)3];
@@ -15798,7 +15856,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         [Browsable(false)]
         public status[] statusList => [(status)1, (status)3, (status)4, (status)5, (status)6, (status)8, (status)14];
 
-        public override void Load(DomainModel.S101.FeatureTypes.Canal instance) {
+        public override FeatureViewModel<Canal> Load(DomainModel.S101.FeatureTypes.Canal instance) {
             categoryOfCanal = instance.categoryOfCanal;
             condition = instance.condition;
             featureName.Clear();
@@ -15829,6 +15887,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
             if (instance.information is not null)
                 foreach (var e in instance.information)
                     information.Add(e);
+            return this;
         }
 
         public override string Serialize() {
@@ -15951,10 +16010,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
         [Category("DistanceMark")]
         public ObservableCollection<information> information { get; set; } = new();
-        public override informationBindingDefinition[] informationBindingDefinitions => DistanceMark.informationBindingDefinitions;
-        public override featureBindingDefinition[] featureBindingDefinitions => DistanceMark.featureBindingDefinitions;
+        public override informationBindingDefinition[] informationBindingDefinitions => DistanceMark._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => DistanceMark._featureBindingDefinitions;
 
-        public override void Load(DomainModel.S101.FeatureTypes.DistanceMark instance) {
+        public override FeatureViewModel<DistanceMark> Load(DomainModel.S101.FeatureTypes.DistanceMark instance) {
             distanceMarkVisible = instance.distanceMarkVisible;
             featureName.Clear();
             if (instance.featureName is not null)
@@ -15978,6 +16037,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
             if (instance.information is not null)
                 foreach (var e in instance.information)
                     information.Add(e);
+            return this;
         }
 
         public override string Serialize() {
@@ -16159,8 +16219,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
         [Category("Gate")]
         public ObservableCollection<information> information { get; set; } = new();
-        public override informationBindingDefinition[] informationBindingDefinitions => Gate.informationBindingDefinitions;
-        public override featureBindingDefinition[] featureBindingDefinitions => Gate.featureBindingDefinitions;
+        public override informationBindingDefinition[] informationBindingDefinitions => Gate._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => Gate._featureBindingDefinitions;
 
         [Browsable(false)]
         public categoryOfGate[] categoryOfGateList => [(categoryOfGate)2, (categoryOfGate)3, (categoryOfGate)4, (categoryOfGate)5, (categoryOfGate)6];
@@ -16180,7 +16240,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         [Browsable(false)]
         public verticalDatum[] verticalDatumList => [(verticalDatum)3, (verticalDatum)13, (verticalDatum)16, (verticalDatum)17, (verticalDatum)18, (verticalDatum)19, (verticalDatum)20, (verticalDatum)21, (verticalDatum)24, (verticalDatum)25, (verticalDatum)26, (verticalDatum)28, (verticalDatum)29, (verticalDatum)30, (verticalDatum)44];
 
-        public override void Load(DomainModel.S101.FeatureTypes.Gate instance) {
+        public override FeatureViewModel<Gate> Load(DomainModel.S101.FeatureTypes.Gate instance) {
             categoryOfGate = instance.categoryOfGate;
             condition = instance.condition;
             depthRangeMinimumValue = instance.depthRangeMinimumValue;
@@ -16225,6 +16285,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
             if (instance.information is not null)
                 foreach (var e in instance.information)
                     information.Add(e);
+            return this;
         }
 
         public override string Serialize() {
@@ -16455,8 +16516,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
         [Category("Dam")]
         public ObservableCollection<information> information { get; set; } = new();
-        public override informationBindingDefinition[] informationBindingDefinitions => Dam.informationBindingDefinitions;
-        public override featureBindingDefinition[] featureBindingDefinitions => Dam.featureBindingDefinitions;
+        public override informationBindingDefinition[] informationBindingDefinitions => Dam._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => Dam._featureBindingDefinitions;
 
         [Browsable(false)]
         public categoryOfDam[] categoryOfDamList => [(categoryOfDam)1, (categoryOfDam)2, (categoryOfDam)3];
@@ -16482,7 +16543,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         [Browsable(false)]
         public waterLevelEffect[] waterLevelEffectList => [(waterLevelEffect)1, (waterLevelEffect)2, (waterLevelEffect)3, (waterLevelEffect)6];
 
-        public override void Load(DomainModel.S101.FeatureTypes.Dam instance) {
+        public override FeatureViewModel<Dam> Load(DomainModel.S101.FeatureTypes.Dam instance) {
             categoryOfDam = instance.categoryOfDam;
             colour.Clear();
             if (instance.colour is not null)
@@ -16519,6 +16580,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
             if (instance.information is not null)
                 foreach (var e in instance.information)
                     information.Add(e);
+            return this;
         }
 
         public override string Serialize() {
@@ -16810,8 +16872,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
             }
         }
 
-        public override informationBindingDefinition[] informationBindingDefinitions => Crane.informationBindingDefinitions;
-        public override featureBindingDefinition[] featureBindingDefinitions => Crane.featureBindingDefinitions;
+        public override informationBindingDefinition[] informationBindingDefinitions => Crane._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => Crane._featureBindingDefinitions;
 
         [Browsable(false)]
         public categoryOfCrane[] categoryOfCraneList => [(categoryOfCrane)2, (categoryOfCrane)3, (categoryOfCrane)4, (categoryOfCrane)5, (categoryOfCrane)6];
@@ -16834,7 +16896,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         [Browsable(false)]
         public visualProminence[] visualProminenceList => [(visualProminence)1, (visualProminence)2, (visualProminence)3];
 
-        public override void Load(DomainModel.S101.FeatureTypes.Crane instance) {
+        public override FeatureViewModel<Crane> Load(DomainModel.S101.FeatureTypes.Crane instance) {
             categoryOfCrane = instance.categoryOfCrane;
             colour.Clear();
             if (instance.colour is not null)
@@ -16877,6 +16939,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     information.Add(e);
             pictorialRepresentation = instance.pictorialRepresentation;
             inTheWater = instance.inTheWater;
+            return this;
         }
 
         public override string Serialize() {
@@ -17074,8 +17137,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
         [Category("Berth")]
         public ObservableCollection<information> information { get; set; } = new();
-        public override informationBindingDefinition[] informationBindingDefinitions => Berth.informationBindingDefinitions;
-        public override featureBindingDefinition[] featureBindingDefinitions => Berth.featureBindingDefinitions;
+        public override informationBindingDefinition[] informationBindingDefinitions => Berth._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => Berth._featureBindingDefinitions;
 
         [Browsable(false)]
         public categoryOfCargo[] categoryOfCargoList => [(categoryOfCargo)1, (categoryOfCargo)2, (categoryOfCargo)3, (categoryOfCargo)4, (categoryOfCargo)5, (categoryOfCargo)6, (categoryOfCargo)7, (categoryOfCargo)8, (categoryOfCargo)9, (categoryOfCargo)10, (categoryOfCargo)11, (categoryOfCargo)12, (categoryOfCargo)13, (categoryOfCargo)14, (categoryOfCargo)15];
@@ -17086,7 +17149,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         [Browsable(false)]
         public status[] statusList => [(status)1, (status)2, (status)5, (status)7, (status)9, (status)12];
 
-        public override void Load(DomainModel.S101.FeatureTypes.Berth instance) {
+        public override FeatureViewModel<Berth> Load(DomainModel.S101.FeatureTypes.Berth instance) {
             categoryOfCargo.Clear();
             if (instance.categoryOfCargo is not null)
                 foreach (var e in instance.categoryOfCargo)
@@ -17129,6 +17192,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
             if (instance.information is not null)
                 foreach (var e in instance.information)
                     information.Add(e);
+            return this;
         }
 
         public override string Serialize() {
@@ -17379,8 +17443,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
             }
         }
 
-        public override informationBindingDefinition[] informationBindingDefinitions => Dolphin.informationBindingDefinitions;
-        public override featureBindingDefinition[] featureBindingDefinitions => Dolphin.featureBindingDefinitions;
+        public override informationBindingDefinition[] informationBindingDefinitions => Dolphin._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => Dolphin._featureBindingDefinitions;
 
         [Browsable(false)]
         public categoryOfDolphin[] categoryOfDolphinList => [(categoryOfDolphin)1, (categoryOfDolphin)2, (categoryOfDolphin)3, (categoryOfDolphin)4];
@@ -17403,7 +17467,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         [Browsable(false)]
         public visualProminence[] visualProminenceList => [(visualProminence)1, (visualProminence)2, (visualProminence)3];
 
-        public override void Load(DomainModel.S101.FeatureTypes.Dolphin instance) {
+        public override FeatureViewModel<Dolphin> Load(DomainModel.S101.FeatureTypes.Dolphin instance) {
             categoryOfDolphin.Clear();
             if (instance.categoryOfDolphin is not null)
                 foreach (var e in instance.categoryOfDolphin)
@@ -17449,6 +17513,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
                 foreach (var e in instance.information)
                     information.Add(e);
             pictorialRepresentation = instance.pictorialRepresentation;
+            return this;
         }
 
         public override string Serialize() {
@@ -17621,8 +17686,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
             }
         }
 
-        public override informationBindingDefinition[] informationBindingDefinitions => Bollard.informationBindingDefinitions;
-        public override featureBindingDefinition[] featureBindingDefinitions => Bollard.featureBindingDefinitions;
+        public override informationBindingDefinition[] informationBindingDefinitions => Bollard._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => Bollard._featureBindingDefinitions;
 
         [Browsable(false)]
         public condition[] conditionList => [(condition)1, (condition)2, (condition)5];
@@ -17630,7 +17695,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         [Browsable(false)]
         public status[] statusList => [(status)1, (status)3, (status)4, (status)6, (status)7, (status)8, (status)12, (status)14];
 
-        public override void Load(DomainModel.S101.FeatureTypes.Bollard instance) {
+        public override FeatureViewModel<Bollard> Load(DomainModel.S101.FeatureTypes.Bollard instance) {
             condition = instance.condition;
             featureName.Clear();
             if (instance.featureName is not null)
@@ -17658,6 +17723,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
                 foreach (var e in instance.information)
                     information.Add(e);
             pictorialRepresentation = instance.pictorialRepresentation;
+            return this;
         }
 
         public override string Serialize() {
@@ -17877,8 +17943,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
         [Category("DryDock")]
         public ObservableCollection<information> information { get; set; } = new();
-        public override informationBindingDefinition[] informationBindingDefinitions => DryDock.informationBindingDefinitions;
-        public override featureBindingDefinition[] featureBindingDefinitions => DryDock.featureBindingDefinitions;
+        public override informationBindingDefinition[] informationBindingDefinitions => DryDock._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => DryDock._featureBindingDefinitions;
 
         [Browsable(false)]
         public condition[] conditionList => [(condition)1, (condition)2, (condition)3, (condition)5];
@@ -17889,7 +17955,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         [Browsable(false)]
         public status[] statusList => [(status)1, (status)4, (status)6, (status)8, (status)12, (status)14];
 
-        public override void Load(DomainModel.S101.FeatureTypes.DryDock instance) {
+        public override FeatureViewModel<DryDock> Load(DomainModel.S101.FeatureTypes.DryDock instance) {
             condition = instance.condition;
             depthRangeMinimumValue = instance.depthRangeMinimumValue;
             elevation = instance.elevation;
@@ -17928,6 +17994,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
             if (instance.information is not null)
                 foreach (var e in instance.information)
                     information.Add(e);
+            return this;
         }
 
         public override string Serialize() {
@@ -18211,8 +18278,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
             }
         }
 
-        public override informationBindingDefinition[] informationBindingDefinitions => FloatingDock.informationBindingDefinitions;
-        public override featureBindingDefinition[] featureBindingDefinitions => FloatingDock.featureBindingDefinitions;
+        public override informationBindingDefinition[] informationBindingDefinitions => FloatingDock._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => FloatingDock._featureBindingDefinitions;
 
         [Browsable(false)]
         public colour[] colourList => [(colour)1, (colour)2, (colour)3, (colour)4, (colour)5, (colour)6, (colour)7, (colour)8, (colour)9, (colour)10, (colour)11, (colour)12, (colour)13];
@@ -18229,7 +18296,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         [Browsable(false)]
         public visualProminence[] visualProminenceList => [(visualProminence)1, (visualProminence)2, (visualProminence)3];
 
-        public override void Load(DomainModel.S101.FeatureTypes.FloatingDock instance) {
+        public override FeatureViewModel<FloatingDock> Load(DomainModel.S101.FeatureTypes.FloatingDock instance) {
             colour.Clear();
             if (instance.colour is not null)
                 foreach (var e in instance.colour)
@@ -18267,6 +18334,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
                 foreach (var e in instance.information)
                     information.Add(e);
             pictorialRepresentation = instance.pictorialRepresentation;
+            return this;
         }
 
         public override string Serialize() {
@@ -18458,8 +18526,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
             }
         }
 
-        public override informationBindingDefinition[] informationBindingDefinitions => Pontoon.informationBindingDefinitions;
-        public override featureBindingDefinition[] featureBindingDefinitions => Pontoon.featureBindingDefinitions;
+        public override informationBindingDefinition[] informationBindingDefinitions => Pontoon._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => Pontoon._featureBindingDefinitions;
 
         [Browsable(false)]
         public condition[] conditionList => [(condition)1, (condition)2, (condition)5];
@@ -18470,7 +18538,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         [Browsable(false)]
         public visualProminence[] visualProminenceList => [(visualProminence)1, (visualProminence)2, (visualProminence)3];
 
-        public override void Load(DomainModel.S101.FeatureTypes.Pontoon instance) {
+        public override FeatureViewModel<Pontoon> Load(DomainModel.S101.FeatureTypes.Pontoon instance) {
             condition = instance.condition;
             featureName.Clear();
             if (instance.featureName is not null)
@@ -18500,6 +18568,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
                 foreach (var e in instance.information)
                     information.Add(e);
             pictorialRepresentation = instance.pictorialRepresentation;
+            return this;
         }
 
         public override string Serialize() {
@@ -18687,8 +18756,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
         [Category("DockArea")]
         public ObservableCollection<information> information { get; set; } = new();
-        public override informationBindingDefinition[] informationBindingDefinitions => DockArea.informationBindingDefinitions;
-        public override featureBindingDefinition[] featureBindingDefinitions => DockArea.featureBindingDefinitions;
+        public override informationBindingDefinition[] informationBindingDefinitions => DockArea._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => DockArea._featureBindingDefinitions;
 
         [Browsable(false)]
         public categoryOfDock[] categoryOfDockList => [(categoryOfDock)1, (categoryOfDock)2];
@@ -18699,7 +18768,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         [Browsable(false)]
         public status[] statusList => [(status)1, (status)4, (status)6, (status)8, (status)14];
 
-        public override void Load(DomainModel.S101.FeatureTypes.DockArea instance) {
+        public override FeatureViewModel<DockArea> Load(DomainModel.S101.FeatureTypes.DockArea instance) {
             categoryOfDock = instance.categoryOfDock;
             condition = instance.condition;
             featureName.Clear();
@@ -18735,6 +18804,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
             if (instance.information is not null)
                 foreach (var e in instance.information)
                     information.Add(e);
+            return this;
         }
 
         public override string Serialize() {
@@ -18886,8 +18956,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
         [Category("Gridiron")]
         public ObservableCollection<information> information { get; set; } = new();
-        public override informationBindingDefinition[] informationBindingDefinitions => Gridiron.informationBindingDefinitions;
-        public override featureBindingDefinition[] featureBindingDefinitions => Gridiron.featureBindingDefinitions;
+        public override informationBindingDefinition[] informationBindingDefinitions => Gridiron._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => Gridiron._featureBindingDefinitions;
 
         [Browsable(false)]
         public natureOfConstruction[] natureOfConstructionList => [(natureOfConstruction)1, (natureOfConstruction)2, (natureOfConstruction)6, (natureOfConstruction)7, (natureOfConstruction)11];
@@ -18898,7 +18968,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         [Browsable(false)]
         public waterLevelEffect[] waterLevelEffectList => [(waterLevelEffect)1, (waterLevelEffect)4, (waterLevelEffect)5];
 
-        public override void Load(DomainModel.S101.FeatureTypes.Gridiron instance) {
+        public override FeatureViewModel<Gridiron> Load(DomainModel.S101.FeatureTypes.Gridiron instance) {
             featureName.Clear();
             if (instance.featureName is not null)
                 foreach (var e in instance.featureName)
@@ -18921,6 +18991,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
             if (instance.information is not null)
                 foreach (var e in instance.information)
                     information.Add(e);
+            return this;
         }
 
         public override string Serialize() {
@@ -19064,13 +19135,13 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
         [Category("LockBasin")]
         public ObservableCollection<information> information { get; set; } = new();
-        public override informationBindingDefinition[] informationBindingDefinitions => LockBasin.informationBindingDefinitions;
-        public override featureBindingDefinition[] featureBindingDefinitions => LockBasin.featureBindingDefinitions;
+        public override informationBindingDefinition[] informationBindingDefinitions => LockBasin._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => LockBasin._featureBindingDefinitions;
 
         [Browsable(false)]
         public status[] statusList => [(status)1, (status)4, (status)6, (status)8, (status)13, (status)14, (status)16, (status)17];
 
-        public override void Load(DomainModel.S101.FeatureTypes.LockBasin instance) {
+        public override FeatureViewModel<LockBasin> Load(DomainModel.S101.FeatureTypes.LockBasin instance) {
             featureName.Clear();
             if (instance.featureName is not null)
                 foreach (var e in instance.featureName)
@@ -19103,6 +19174,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
             if (instance.information is not null)
                 foreach (var e in instance.information)
                     information.Add(e);
+            return this;
         }
 
         public override string Serialize() {
@@ -19201,10 +19273,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
         [Category("MooringTrot")]
         public ObservableCollection<information> information { get; set; } = new();
-        public override informationBindingDefinition[] informationBindingDefinitions => MooringTrot.informationBindingDefinitions;
-        public override featureBindingDefinition[] featureBindingDefinitions => MooringTrot.featureBindingDefinitions;
+        public override informationBindingDefinition[] informationBindingDefinitions => MooringTrot._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => MooringTrot._featureBindingDefinitions;
 
-        public override void Load(DomainModel.S101.FeatureTypes.MooringTrot instance) {
+        public override FeatureViewModel<MooringTrot> Load(DomainModel.S101.FeatureTypes.MooringTrot instance) {
             featureName.Clear();
             if (instance.featureName is not null)
                 foreach (var e in instance.featureName)
@@ -19221,6 +19293,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
             if (instance.information is not null)
                 foreach (var e in instance.information)
                     information.Add(e);
+            return this;
         }
 
         public override string Serialize() {
@@ -19304,13 +19377,13 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
         [Category("SeaAreaNamedWaterArea")]
         public ObservableCollection<information> information { get; set; } = new();
-        public override informationBindingDefinition[] informationBindingDefinitions => SeaAreaNamedWaterArea.informationBindingDefinitions;
-        public override featureBindingDefinition[] featureBindingDefinitions => SeaAreaNamedWaterArea.featureBindingDefinitions;
+        public override informationBindingDefinition[] informationBindingDefinitions => SeaAreaNamedWaterArea._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => SeaAreaNamedWaterArea._featureBindingDefinitions;
 
         [Browsable(false)]
         public categoryOfSeaArea[] categoryOfSeaAreaList => [(categoryOfSeaArea)2, (categoryOfSeaArea)3, (categoryOfSeaArea)4, (categoryOfSeaArea)5, (categoryOfSeaArea)6, (categoryOfSeaArea)7, (categoryOfSeaArea)8, (categoryOfSeaArea)9, (categoryOfSeaArea)10, (categoryOfSeaArea)11, (categoryOfSeaArea)12, (categoryOfSeaArea)13, (categoryOfSeaArea)14, (categoryOfSeaArea)15, (categoryOfSeaArea)16, (categoryOfSeaArea)17, (categoryOfSeaArea)18, (categoryOfSeaArea)19, (categoryOfSeaArea)20, (categoryOfSeaArea)21, (categoryOfSeaArea)22, (categoryOfSeaArea)23, (categoryOfSeaArea)24, (categoryOfSeaArea)25, (categoryOfSeaArea)26, (categoryOfSeaArea)27, (categoryOfSeaArea)28, (categoryOfSeaArea)29, (categoryOfSeaArea)30, (categoryOfSeaArea)31, (categoryOfSeaArea)32, (categoryOfSeaArea)33, (categoryOfSeaArea)34, (categoryOfSeaArea)35, (categoryOfSeaArea)36, (categoryOfSeaArea)37, (categoryOfSeaArea)38, (categoryOfSeaArea)39, (categoryOfSeaArea)40, (categoryOfSeaArea)41, (categoryOfSeaArea)42, (categoryOfSeaArea)43, (categoryOfSeaArea)44, (categoryOfSeaArea)45, (categoryOfSeaArea)46, (categoryOfSeaArea)47, (categoryOfSeaArea)48, (categoryOfSeaArea)49, (categoryOfSeaArea)50, (categoryOfSeaArea)51, (categoryOfSeaArea)52, (categoryOfSeaArea)53, (categoryOfSeaArea)54, (categoryOfSeaArea)55, (categoryOfSeaArea)56];
 
-        public override void Load(DomainModel.S101.FeatureTypes.SeaAreaNamedWaterArea instance) {
+        public override FeatureViewModel<SeaAreaNamedWaterArea> Load(DomainModel.S101.FeatureTypes.SeaAreaNamedWaterArea instance) {
             categoryOfSeaArea = instance.categoryOfSeaArea;
             featureName.Clear();
             if (instance.featureName is not null)
@@ -19322,6 +19395,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
             if (instance.information is not null)
                 foreach (var e in instance.information)
                     information.Add(e);
+            return this;
         }
 
         public override string Serialize() {
@@ -19444,13 +19518,13 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
         [Category("TidalStreamFloodEbb")]
         public ObservableCollection<information> information { get; set; } = new();
-        public override informationBindingDefinition[] informationBindingDefinitions => TidalStreamFloodEbb.informationBindingDefinitions;
-        public override featureBindingDefinition[] featureBindingDefinitions => TidalStreamFloodEbb.featureBindingDefinitions;
+        public override informationBindingDefinition[] informationBindingDefinitions => TidalStreamFloodEbb._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => TidalStreamFloodEbb._featureBindingDefinitions;
 
         [Browsable(false)]
         public categoryOfTidalStream[] categoryOfTidalStreamList => [(categoryOfTidalStream)1, (categoryOfTidalStream)2, (categoryOfTidalStream)3];
 
-        public override void Load(DomainModel.S101.FeatureTypes.TidalStreamFloodEbb instance) {
+        public override FeatureViewModel<TidalStreamFloodEbb> Load(DomainModel.S101.FeatureTypes.TidalStreamFloodEbb instance) {
             categoryOfTidalStream = instance.categoryOfTidalStream;
             featureName.Clear();
             if (instance.featureName is not null)
@@ -19480,6 +19554,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
             if (instance.information is not null)
                 foreach (var e in instance.information)
                     information.Add(e);
+            return this;
         }
 
         public override string Serialize() {
@@ -19611,13 +19686,13 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
         [Category("CurrentNonGravitational")]
         public ObservableCollection<information> information { get; set; } = new();
-        public override informationBindingDefinition[] informationBindingDefinitions => CurrentNonGravitational.informationBindingDefinitions;
-        public override featureBindingDefinition[] featureBindingDefinitions => CurrentNonGravitational.featureBindingDefinitions;
+        public override informationBindingDefinition[] informationBindingDefinitions => CurrentNonGravitational._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => CurrentNonGravitational._featureBindingDefinitions;
 
         [Browsable(false)]
         public status[] statusList => [(status)5];
 
-        public override void Load(DomainModel.S101.FeatureTypes.CurrentNonGravitational instance) {
+        public override FeatureViewModel<CurrentNonGravitational> Load(DomainModel.S101.FeatureTypes.CurrentNonGravitational instance) {
             featureName.Clear();
             if (instance.featureName is not null)
                 foreach (var e in instance.featureName)
@@ -19651,6 +19726,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
             if (instance.information is not null)
                 foreach (var e in instance.information)
                     information.Add(e);
+            return this;
         }
 
         public override string Serialize() {
@@ -19745,13 +19821,13 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
         [Category("WaterTurbulence")]
         public ObservableCollection<information> information { get; set; } = new();
-        public override informationBindingDefinition[] informationBindingDefinitions => WaterTurbulence.informationBindingDefinitions;
-        public override featureBindingDefinition[] featureBindingDefinitions => WaterTurbulence.featureBindingDefinitions;
+        public override informationBindingDefinition[] informationBindingDefinitions => WaterTurbulence._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => WaterTurbulence._featureBindingDefinitions;
 
         [Browsable(false)]
         public categoryOfWaterTurbulence[] categoryOfWaterTurbulenceList => [(categoryOfWaterTurbulence)1, (categoryOfWaterTurbulence)2, (categoryOfWaterTurbulence)3, (categoryOfWaterTurbulence)4, (categoryOfWaterTurbulence)5];
 
-        public override void Load(DomainModel.S101.FeatureTypes.WaterTurbulence instance) {
+        public override FeatureViewModel<WaterTurbulence> Load(DomainModel.S101.FeatureTypes.WaterTurbulence instance) {
             categoryOfWaterTurbulence = instance.categoryOfWaterTurbulence;
             featureName.Clear();
             if (instance.featureName is not null)
@@ -19763,6 +19839,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
             if (instance.information is not null)
                 foreach (var e in instance.information)
                     information.Add(e);
+            return this;
         }
 
         public override string Serialize() {
@@ -19859,10 +19936,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
         [Category("TidalStreamPanelData")]
         public ObservableCollection<information> information { get; set; } = new();
-        public override informationBindingDefinition[] informationBindingDefinitions => TidalStreamPanelData.informationBindingDefinitions;
-        public override featureBindingDefinition[] featureBindingDefinitions => TidalStreamPanelData.featureBindingDefinitions;
+        public override informationBindingDefinition[] informationBindingDefinitions => TidalStreamPanelData._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => TidalStreamPanelData._featureBindingDefinitions;
 
-        public override void Load(DomainModel.S101.FeatureTypes.TidalStreamPanelData instance) {
+        public override FeatureViewModel<TidalStreamPanelData> Load(DomainModel.S101.FeatureTypes.TidalStreamPanelData instance) {
             featureName.Clear();
             if (instance.featureName is not null)
                 foreach (var e in instance.featureName)
@@ -19879,6 +19956,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
             if (instance.information is not null)
                 foreach (var e in instance.information)
                     information.Add(e);
+            return this;
         }
 
         public override string Serialize() {
@@ -19991,8 +20069,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
         [Category("Sounding")]
         public ObservableCollection<information> information { get; set; } = new();
-        public override informationBindingDefinition[] informationBindingDefinitions => Sounding.informationBindingDefinitions;
-        public override featureBindingDefinition[] featureBindingDefinitions => Sounding.featureBindingDefinitions;
+        public override informationBindingDefinition[] informationBindingDefinitions => Sounding._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => Sounding._featureBindingDefinitions;
 
         [Browsable(false)]
         public qualityOfVerticalMeasurement[] qualityOfVerticalMeasurementList => [(qualityOfVerticalMeasurement)1, (qualityOfVerticalMeasurement)3, (qualityOfVerticalMeasurement)4, (qualityOfVerticalMeasurement)8, (qualityOfVerticalMeasurement)9];
@@ -20003,7 +20081,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         [Browsable(false)]
         public techniqueOfVerticalMeasurement[] techniqueOfVerticalMeasurementList => [(techniqueOfVerticalMeasurement)1, (techniqueOfVerticalMeasurement)2, (techniqueOfVerticalMeasurement)3, (techniqueOfVerticalMeasurement)4, (techniqueOfVerticalMeasurement)5, (techniqueOfVerticalMeasurement)8, (techniqueOfVerticalMeasurement)9, (techniqueOfVerticalMeasurement)10, (techniqueOfVerticalMeasurement)11, (techniqueOfVerticalMeasurement)12, (techniqueOfVerticalMeasurement)13, (techniqueOfVerticalMeasurement)15, (techniqueOfVerticalMeasurement)16, (techniqueOfVerticalMeasurement)17, (techniqueOfVerticalMeasurement)18];
 
-        public override void Load(DomainModel.S101.FeatureTypes.Sounding instance) {
+        public override FeatureViewModel<Sounding> Load(DomainModel.S101.FeatureTypes.Sounding instance) {
             featureName.Clear();
             if (instance.featureName is not null)
                 foreach (var e in instance.featureName)
@@ -20024,6 +20102,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
             if (instance.information is not null)
                 foreach (var e in instance.information)
                     information.Add(e);
+            return this;
         }
 
         public override string Serialize() {
@@ -20181,8 +20260,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
         [Category("DredgedArea")]
         public ObservableCollection<information> information { get; set; } = new();
-        public override informationBindingDefinition[] informationBindingDefinitions => DredgedArea.informationBindingDefinitions;
-        public override featureBindingDefinition[] featureBindingDefinitions => DredgedArea.featureBindingDefinitions;
+        public override informationBindingDefinition[] informationBindingDefinitions => DredgedArea._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => DredgedArea._featureBindingDefinitions;
 
         [Browsable(false)]
         public qualityOfVerticalMeasurement[] qualityOfVerticalMeasurementList => [(qualityOfVerticalMeasurement)10, (qualityOfVerticalMeasurement)11];
@@ -20193,7 +20272,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         [Browsable(false)]
         public techniqueOfVerticalMeasurement[] techniqueOfVerticalMeasurementList => [(techniqueOfVerticalMeasurement)1, (techniqueOfVerticalMeasurement)2, (techniqueOfVerticalMeasurement)3, (techniqueOfVerticalMeasurement)8, (techniqueOfVerticalMeasurement)9, (techniqueOfVerticalMeasurement)13, (techniqueOfVerticalMeasurement)15, (techniqueOfVerticalMeasurement)16, (techniqueOfVerticalMeasurement)17, (techniqueOfVerticalMeasurement)18];
 
-        public override void Load(DomainModel.S101.FeatureTypes.DredgedArea instance) {
+        public override FeatureViewModel<DredgedArea> Load(DomainModel.S101.FeatureTypes.DredgedArea instance) {
             depthRangeMinimumValue = instance.depthRangeMinimumValue;
             depthRangeMaximumValue = instance.depthRangeMaximumValue;
             dredgedDate = instance.dredgedDate;
@@ -20226,6 +20305,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
             if (instance.information is not null)
                 foreach (var e in instance.information)
                     information.Add(e);
+            return this;
         }
 
         public override string Serialize() {
@@ -20339,10 +20419,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
         [Category("SweptArea")]
         public ObservableCollection<information> information { get; set; } = new();
-        public override informationBindingDefinition[] informationBindingDefinitions => SweptArea.informationBindingDefinitions;
-        public override featureBindingDefinition[] featureBindingDefinitions => SweptArea.featureBindingDefinitions;
+        public override informationBindingDefinition[] informationBindingDefinitions => SweptArea._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => SweptArea._featureBindingDefinitions;
 
-        public override void Load(DomainModel.S101.FeatureTypes.SweptArea instance) {
+        public override FeatureViewModel<SweptArea> Load(DomainModel.S101.FeatureTypes.SweptArea instance) {
             depthRangeMinimumValue = instance.depthRangeMinimumValue;
             interoperabilityIdentifier = instance.interoperabilityIdentifier;
             sweptDate = instance.sweptDate;
@@ -20351,6 +20431,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
             if (instance.information is not null)
                 foreach (var e in instance.information)
                     information.Add(e);
+            return this;
         }
 
         public override string Serialize() {
@@ -20426,10 +20507,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
         [Category("DepthContour")]
         public ObservableCollection<information> information { get; set; } = new();
-        public override informationBindingDefinition[] informationBindingDefinitions => DepthContour.informationBindingDefinitions;
-        public override featureBindingDefinition[] featureBindingDefinitions => DepthContour.featureBindingDefinitions;
+        public override informationBindingDefinition[] informationBindingDefinitions => DepthContour._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => DepthContour._featureBindingDefinitions;
 
-        public override void Load(DomainModel.S101.FeatureTypes.DepthContour instance) {
+        public override FeatureViewModel<DepthContour> Load(DomainModel.S101.FeatureTypes.DepthContour instance) {
             interoperabilityIdentifier = instance.interoperabilityIdentifier;
             valueOfDepthContour = instance.valueOfDepthContour;
             scaleMinimum = instance.scaleMinimum;
@@ -20437,6 +20518,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
             if (instance.information is not null)
                 foreach (var e in instance.information)
                     information.Add(e);
+            return this;
         }
 
         public override string Serialize() {
@@ -20510,10 +20592,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
         [Category("DepthArea")]
         public ObservableCollection<information> information { get; set; } = new();
-        public override informationBindingDefinition[] informationBindingDefinitions => DepthArea.informationBindingDefinitions;
-        public override featureBindingDefinition[] featureBindingDefinitions => DepthArea.featureBindingDefinitions;
+        public override informationBindingDefinition[] informationBindingDefinitions => DepthArea._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => DepthArea._featureBindingDefinitions;
 
-        public override void Load(DomainModel.S101.FeatureTypes.DepthArea instance) {
+        public override FeatureViewModel<DepthArea> Load(DomainModel.S101.FeatureTypes.DepthArea instance) {
             depthRangeMinimumValue = instance.depthRangeMinimumValue;
             depthRangeMaximumValue = instance.depthRangeMaximumValue;
             interoperabilityIdentifier = instance.interoperabilityIdentifier;
@@ -20521,6 +20603,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
             if (instance.information is not null)
                 foreach (var e in instance.information)
                     information.Add(e);
+            return this;
         }
 
         public override string Serialize() {
@@ -20587,13 +20670,13 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
         [Category("DepthNoBottomFound")]
         public ObservableCollection<information> information { get; set; } = new();
-        public override informationBindingDefinition[] informationBindingDefinitions => DepthNoBottomFound.informationBindingDefinitions;
-        public override featureBindingDefinition[] featureBindingDefinitions => DepthNoBottomFound.featureBindingDefinitions;
+        public override informationBindingDefinition[] informationBindingDefinitions => DepthNoBottomFound._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => DepthNoBottomFound._featureBindingDefinitions;
 
         [Browsable(false)]
         public techniqueOfVerticalMeasurement[] techniqueOfVerticalMeasurementList => [(techniqueOfVerticalMeasurement)1, (techniqueOfVerticalMeasurement)2, (techniqueOfVerticalMeasurement)3, (techniqueOfVerticalMeasurement)5, (techniqueOfVerticalMeasurement)8, (techniqueOfVerticalMeasurement)9, (techniqueOfVerticalMeasurement)13, (techniqueOfVerticalMeasurement)15, (techniqueOfVerticalMeasurement)16, (techniqueOfVerticalMeasurement)17, (techniqueOfVerticalMeasurement)18];
 
-        public override void Load(DomainModel.S101.FeatureTypes.DepthNoBottomFound instance) {
+        public override FeatureViewModel<DepthNoBottomFound> Load(DomainModel.S101.FeatureTypes.DepthNoBottomFound instance) {
             interoperabilityIdentifier = instance.interoperabilityIdentifier;
             techniqueOfVerticalMeasurement.Clear();
             if (instance.techniqueOfVerticalMeasurement is not null)
@@ -20604,6 +20687,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
             if (instance.information is not null)
                 foreach (var e in instance.information)
                     information.Add(e);
+            return this;
         }
 
         public override string Serialize() {
@@ -20656,15 +20740,16 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
         [Category("UnsurveyedArea")]
         public ObservableCollection<information> information { get; set; } = new();
-        public override informationBindingDefinition[] informationBindingDefinitions => UnsurveyedArea.informationBindingDefinitions;
-        public override featureBindingDefinition[] featureBindingDefinitions => UnsurveyedArea.featureBindingDefinitions;
+        public override informationBindingDefinition[] informationBindingDefinitions => UnsurveyedArea._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => UnsurveyedArea._featureBindingDefinitions;
 
-        public override void Load(DomainModel.S101.FeatureTypes.UnsurveyedArea instance) {
+        public override FeatureViewModel<UnsurveyedArea> Load(DomainModel.S101.FeatureTypes.UnsurveyedArea instance) {
             interoperabilityIdentifier = instance.interoperabilityIdentifier;
             information.Clear();
             if (instance.information is not null)
                 foreach (var e in instance.information)
                     information.Add(e);
+            return this;
         }
 
         public override string Serialize() {
@@ -20742,13 +20827,13 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
         [Category("SeabedArea")]
         public ObservableCollection<information> information { get; set; } = new();
-        public override informationBindingDefinition[] informationBindingDefinitions => SeabedArea.informationBindingDefinitions;
-        public override featureBindingDefinition[] featureBindingDefinitions => SeabedArea.featureBindingDefinitions;
+        public override informationBindingDefinition[] informationBindingDefinitions => SeabedArea._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => SeabedArea._featureBindingDefinitions;
 
         [Browsable(false)]
         public waterLevelEffect[] waterLevelEffectList => [(waterLevelEffect)3, (waterLevelEffect)4, (waterLevelEffect)5];
 
-        public override void Load(DomainModel.S101.FeatureTypes.SeabedArea instance) {
+        public override FeatureViewModel<SeabedArea> Load(DomainModel.S101.FeatureTypes.SeabedArea instance) {
             featureName.Clear();
             if (instance.featureName is not null)
                 foreach (var e in instance.featureName)
@@ -20764,6 +20849,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
             if (instance.information is not null)
                 foreach (var e in instance.information)
                     information.Add(e);
+            return this;
         }
 
         public override string Serialize() {
@@ -20852,13 +20938,13 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
         [Category("WeedKelp")]
         public ObservableCollection<information> information { get; set; } = new();
-        public override informationBindingDefinition[] informationBindingDefinitions => WeedKelp.informationBindingDefinitions;
-        public override featureBindingDefinition[] featureBindingDefinitions => WeedKelp.featureBindingDefinitions;
+        public override informationBindingDefinition[] informationBindingDefinitions => WeedKelp._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => WeedKelp._featureBindingDefinitions;
 
         [Browsable(false)]
         public categoryOfWeedKelp[] categoryOfWeedKelpList => [(categoryOfWeedKelp)1, (categoryOfWeedKelp)2, (categoryOfWeedKelp)4];
 
-        public override void Load(DomainModel.S101.FeatureTypes.WeedKelp instance) {
+        public override FeatureViewModel<WeedKelp> Load(DomainModel.S101.FeatureTypes.WeedKelp instance) {
             categoryOfWeedKelp = instance.categoryOfWeedKelp;
             featureName.Clear();
             if (instance.featureName is not null)
@@ -20870,6 +20956,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
             if (instance.information is not null)
                 foreach (var e in instance.information)
                     information.Add(e);
+            return this;
         }
 
         public override string Serialize() {
@@ -20939,10 +21026,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
         [Category("Seagrass")]
         public ObservableCollection<information> information { get; set; } = new();
-        public override informationBindingDefinition[] informationBindingDefinitions => Seagrass.informationBindingDefinitions;
-        public override featureBindingDefinition[] featureBindingDefinitions => Seagrass.featureBindingDefinitions;
+        public override informationBindingDefinition[] informationBindingDefinitions => Seagrass._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => Seagrass._featureBindingDefinitions;
 
-        public override void Load(DomainModel.S101.FeatureTypes.Seagrass instance) {
+        public override FeatureViewModel<Seagrass> Load(DomainModel.S101.FeatureTypes.Seagrass instance) {
             featureName.Clear();
             if (instance.featureName is not null)
                 foreach (var e in instance.featureName)
@@ -20953,6 +21040,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
             if (instance.information is not null)
                 foreach (var e in instance.information)
                     information.Add(e);
+            return this;
         }
 
         public override string Serialize() {
@@ -21029,10 +21117,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
         [Category("Sandwave")]
         public ObservableCollection<information> information { get; set; } = new();
-        public override informationBindingDefinition[] informationBindingDefinitions => Sandwave.informationBindingDefinitions;
-        public override featureBindingDefinition[] featureBindingDefinitions => Sandwave.featureBindingDefinitions;
+        public override informationBindingDefinition[] informationBindingDefinitions => Sandwave._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => Sandwave._featureBindingDefinitions;
 
-        public override void Load(DomainModel.S101.FeatureTypes.Sandwave instance) {
+        public override FeatureViewModel<Sandwave> Load(DomainModel.S101.FeatureTypes.Sandwave instance) {
             interoperabilityIdentifier = instance.interoperabilityIdentifier;
             verticalLength = instance.verticalLength;
             scaleMinimum = instance.scaleMinimum;
@@ -21040,6 +21128,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
             if (instance.information is not null)
                 foreach (var e in instance.information)
                     information.Add(e);
+            return this;
         }
 
         public override string Serialize() {
@@ -21104,10 +21193,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
         [Category("Spring")]
         public ObservableCollection<information> information { get; set; } = new();
-        public override informationBindingDefinition[] informationBindingDefinitions => Spring.informationBindingDefinitions;
-        public override featureBindingDefinition[] featureBindingDefinitions => Spring.featureBindingDefinitions;
+        public override informationBindingDefinition[] informationBindingDefinitions => Spring._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => Spring._featureBindingDefinitions;
 
-        public override void Load(DomainModel.S101.FeatureTypes.Spring instance) {
+        public override FeatureViewModel<Spring> Load(DomainModel.S101.FeatureTypes.Spring instance) {
             featureName.Clear();
             if (instance.featureName is not null)
                 foreach (var e in instance.featureName)
@@ -21118,6 +21207,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
             if (instance.information is not null)
                 foreach (var e in instance.information)
                     information.Add(e);
+            return this;
         }
 
         public override string Serialize() {
@@ -21300,8 +21390,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
             }
         }
 
-        public override informationBindingDefinition[] informationBindingDefinitions => UnderwaterAwashRock.informationBindingDefinitions;
-        public override featureBindingDefinition[] featureBindingDefinitions => UnderwaterAwashRock.featureBindingDefinitions;
+        public override informationBindingDefinition[] informationBindingDefinitions => UnderwaterAwashRock._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => UnderwaterAwashRock._featureBindingDefinitions;
 
         [Browsable(false)]
         public expositionOfSounding[] expositionOfSoundingList => [(expositionOfSounding)1, (expositionOfSounding)2];
@@ -21321,7 +21411,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         [Browsable(false)]
         public waterLevelEffect[] waterLevelEffectList => [(waterLevelEffect)3, (waterLevelEffect)4, (waterLevelEffect)5];
 
-        public override void Load(DomainModel.S101.FeatureTypes.UnderwaterAwashRock instance) {
+        public override FeatureViewModel<UnderwaterAwashRock> Load(DomainModel.S101.FeatureTypes.UnderwaterAwashRock instance) {
             expositionOfSounding = instance.expositionOfSounding;
             featureName.Clear();
             if (instance.featureName is not null)
@@ -21348,6 +21438,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     information.Add(e);
             defaultClearanceDepth = instance.defaultClearanceDepth;
             surroundingDepth = instance.surroundingDepth;
+            return this;
         }
 
         public override string Serialize() {
@@ -21597,8 +21688,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
             }
         }
 
-        public override informationBindingDefinition[] informationBindingDefinitions => Wreck.informationBindingDefinitions;
-        public override featureBindingDefinition[] featureBindingDefinitions => Wreck.featureBindingDefinitions;
+        public override informationBindingDefinition[] informationBindingDefinitions => Wreck._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => Wreck._featureBindingDefinitions;
 
         [Browsable(false)]
         public categoryOfWreck[] categoryOfWreckList => [(categoryOfWreck)1, (categoryOfWreck)2, (categoryOfWreck)3, (categoryOfWreck)4, (categoryOfWreck)5];
@@ -21621,7 +21712,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         [Browsable(false)]
         public waterLevelEffect[] waterLevelEffectList => [(waterLevelEffect)1, (waterLevelEffect)2, (waterLevelEffect)3, (waterLevelEffect)4, (waterLevelEffect)5];
 
-        public override void Load(DomainModel.S101.FeatureTypes.Wreck instance) {
+        public override FeatureViewModel<Wreck> Load(DomainModel.S101.FeatureTypes.Wreck instance) {
             categoryOfWreck = instance.categoryOfWreck;
             expositionOfSounding = instance.expositionOfSounding;
             featureName.Clear();
@@ -21655,6 +21746,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
             pictorialRepresentation = instance.pictorialRepresentation;
             defaultClearanceDepth = instance.defaultClearanceDepth;
             surroundingDepth = instance.surroundingDepth;
+            return this;
         }
 
         public override string Serialize() {
@@ -21925,8 +22017,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
             }
         }
 
-        public override informationBindingDefinition[] informationBindingDefinitions => Obstruction.informationBindingDefinitions;
-        public override featureBindingDefinition[] featureBindingDefinitions => Obstruction.featureBindingDefinitions;
+        public override informationBindingDefinition[] informationBindingDefinitions => Obstruction._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => Obstruction._featureBindingDefinitions;
 
         [Browsable(false)]
         public categoryOfObstruction[] categoryOfObstructionList => [(categoryOfObstruction)1, (categoryOfObstruction)2, (categoryOfObstruction)3, (categoryOfObstruction)4, (categoryOfObstruction)5, (categoryOfObstruction)6, (categoryOfObstruction)8, (categoryOfObstruction)9, (categoryOfObstruction)10, (categoryOfObstruction)12, (categoryOfObstruction)13, (categoryOfObstruction)14, (categoryOfObstruction)15, (categoryOfObstruction)16, (categoryOfObstruction)17, (categoryOfObstruction)18, (categoryOfObstruction)19, (categoryOfObstruction)20, (categoryOfObstruction)21, (categoryOfObstruction)22, (categoryOfObstruction)23];
@@ -21955,7 +22047,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         [Browsable(false)]
         public waterLevelEffect[] waterLevelEffectList => [(waterLevelEffect)1, (waterLevelEffect)2, (waterLevelEffect)3, (waterLevelEffect)4, (waterLevelEffect)5, (waterLevelEffect)7];
 
-        public override void Load(DomainModel.S101.FeatureTypes.Obstruction instance) {
+        public override FeatureViewModel<Obstruction> Load(DomainModel.S101.FeatureTypes.Obstruction instance) {
             categoryOfObstruction = instance.categoryOfObstruction;
             condition = instance.condition;
             expositionOfSounding = instance.expositionOfSounding;
@@ -21997,6 +22089,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     information.Add(e);
             defaultClearanceDepth = instance.defaultClearanceDepth;
             surroundingDepth = instance.surroundingDepth;
+            return this;
         }
 
         public override string Serialize() {
@@ -22163,8 +22256,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
         [Category("FoulGround")]
         public ObservableCollection<information> information { get; set; } = new();
-        public override informationBindingDefinition[] informationBindingDefinitions => FoulGround.informationBindingDefinitions;
-        public override featureBindingDefinition[] featureBindingDefinitions => FoulGround.featureBindingDefinitions;
+        public override informationBindingDefinition[] informationBindingDefinitions => FoulGround._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => FoulGround._featureBindingDefinitions;
 
         [Browsable(false)]
         public qualityOfVerticalMeasurement[] qualityOfVerticalMeasurementList => [(qualityOfVerticalMeasurement)1, (qualityOfVerticalMeasurement)2, (qualityOfVerticalMeasurement)3, (qualityOfVerticalMeasurement)4, (qualityOfVerticalMeasurement)6, (qualityOfVerticalMeasurement)7, (qualityOfVerticalMeasurement)8, (qualityOfVerticalMeasurement)9];
@@ -22175,7 +22268,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         [Browsable(false)]
         public techniqueOfVerticalMeasurement[] techniqueOfVerticalMeasurementList => [(techniqueOfVerticalMeasurement)1, (techniqueOfVerticalMeasurement)2, (techniqueOfVerticalMeasurement)3, (techniqueOfVerticalMeasurement)4, (techniqueOfVerticalMeasurement)5, (techniqueOfVerticalMeasurement)8, (techniqueOfVerticalMeasurement)9, (techniqueOfVerticalMeasurement)10, (techniqueOfVerticalMeasurement)11, (techniqueOfVerticalMeasurement)12, (techniqueOfVerticalMeasurement)13, (techniqueOfVerticalMeasurement)15, (techniqueOfVerticalMeasurement)16, (techniqueOfVerticalMeasurement)17, (techniqueOfVerticalMeasurement)18];
 
-        public override void Load(DomainModel.S101.FeatureTypes.FoulGround instance) {
+        public override FeatureViewModel<FoulGround> Load(DomainModel.S101.FeatureTypes.FoulGround instance) {
             featureName.Clear();
             if (instance.featureName is not null)
                 foreach (var e in instance.featureName)
@@ -22206,6 +22299,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
             if (instance.information is not null)
                 foreach (var e in instance.information)
                     information.Add(e);
+            return this;
         }
 
         public override string Serialize() {
@@ -22303,10 +22397,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
         [Category("DiscolouredWater")]
         public ObservableCollection<information> information { get; set; } = new();
-        public override informationBindingDefinition[] informationBindingDefinitions => DiscolouredWater.informationBindingDefinitions;
-        public override featureBindingDefinition[] featureBindingDefinitions => DiscolouredWater.featureBindingDefinitions;
+        public override informationBindingDefinition[] informationBindingDefinitions => DiscolouredWater._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => DiscolouredWater._featureBindingDefinitions;
 
-        public override void Load(DomainModel.S101.FeatureTypes.DiscolouredWater instance) {
+        public override FeatureViewModel<DiscolouredWater> Load(DomainModel.S101.FeatureTypes.DiscolouredWater instance) {
             interoperabilityIdentifier = instance.interoperabilityIdentifier;
             reportedDate = instance.reportedDate;
             scaleMinimum = instance.scaleMinimum;
@@ -22314,6 +22408,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
             if (instance.information is not null)
                 foreach (var e in instance.information)
                     information.Add(e);
+            return this;
         }
 
         public override string Serialize() {
@@ -22438,8 +22533,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
         [Category("FishingFacility")]
         public ObservableCollection<information> information { get; set; } = new();
-        public override informationBindingDefinition[] informationBindingDefinitions => FishingFacility.informationBindingDefinitions;
-        public override featureBindingDefinition[] featureBindingDefinitions => FishingFacility.featureBindingDefinitions;
+        public override informationBindingDefinition[] informationBindingDefinitions => FishingFacility._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => FishingFacility._featureBindingDefinitions;
 
         [Browsable(false)]
         public categoryOfFishingFacility[] categoryOfFishingFacilityList => [(categoryOfFishingFacility)1, (categoryOfFishingFacility)2, (categoryOfFishingFacility)3, (categoryOfFishingFacility)4];
@@ -22450,7 +22545,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         [Browsable(false)]
         public status[] statusList => [(status)1, (status)4, (status)5, (status)6, (status)7, (status)8, (status)12, (status)18, (status)28];
 
-        public override void Load(DomainModel.S101.FeatureTypes.FishingFacility instance) {
+        public override FeatureViewModel<FishingFacility> Load(DomainModel.S101.FeatureTypes.FishingFacility instance) {
             categoryOfFishingFacility = instance.categoryOfFishingFacility;
             condition = instance.condition;
             featureName.Clear();
@@ -22473,6 +22568,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
             if (instance.information is not null)
                 foreach (var e in instance.information)
                     information.Add(e);
+            return this;
         }
 
         public override string Serialize() {
@@ -22683,8 +22779,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
         [Category("MarineFarmCulture")]
         public ObservableCollection<information> information { get; set; } = new();
-        public override informationBindingDefinition[] informationBindingDefinitions => MarineFarmCulture.informationBindingDefinitions;
-        public override featureBindingDefinition[] featureBindingDefinitions => MarineFarmCulture.featureBindingDefinitions;
+        public override informationBindingDefinition[] informationBindingDefinitions => MarineFarmCulture._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => MarineFarmCulture._featureBindingDefinitions;
 
         [Browsable(false)]
         public categoryOfMarineFarmCulture[] categoryOfMarineFarmCultureList => [(categoryOfMarineFarmCulture)1, (categoryOfMarineFarmCulture)2, (categoryOfMarineFarmCulture)3, (categoryOfMarineFarmCulture)4, (categoryOfMarineFarmCulture)5];
@@ -22704,7 +22800,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         [Browsable(false)]
         public waterLevelEffect[] waterLevelEffectList => [(waterLevelEffect)1, (waterLevelEffect)2, (waterLevelEffect)3, (waterLevelEffect)4, (waterLevelEffect)5, (waterLevelEffect)7];
 
-        public override void Load(DomainModel.S101.FeatureTypes.MarineFarmCulture instance) {
+        public override FeatureViewModel<MarineFarmCulture> Load(DomainModel.S101.FeatureTypes.MarineFarmCulture instance) {
             categoryOfMarineFarmCulture = instance.categoryOfMarineFarmCulture;
             expositionOfSounding = instance.expositionOfSounding;
             featureName.Clear();
@@ -22753,6 +22849,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
             if (instance.information is not null)
                 foreach (var e in instance.information)
                     information.Add(e);
+            return this;
         }
 
         public override string Serialize() {
@@ -23018,8 +23115,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
             }
         }
 
-        public override informationBindingDefinition[] informationBindingDefinitions => OffshorePlatform.informationBindingDefinitions;
-        public override featureBindingDefinition[] featureBindingDefinitions => OffshorePlatform.featureBindingDefinitions;
+        public override informationBindingDefinition[] informationBindingDefinitions => OffshorePlatform._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => OffshorePlatform._featureBindingDefinitions;
 
         [Browsable(false)]
         public categoryOfOffshorePlatform[] categoryOfOffshorePlatformList => [(categoryOfOffshorePlatform)1, (categoryOfOffshorePlatform)2, (categoryOfOffshorePlatform)3, (categoryOfOffshorePlatform)4, (categoryOfOffshorePlatform)5, (categoryOfOffshorePlatform)6, (categoryOfOffshorePlatform)7, (categoryOfOffshorePlatform)8, (categoryOfOffshorePlatform)9, (categoryOfOffshorePlatform)10, (categoryOfOffshorePlatform)11];
@@ -23042,7 +23139,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         [Browsable(false)]
         public visualProminence[] visualProminenceList => [(visualProminence)1, (visualProminence)2, (visualProminence)3];
 
-        public override void Load(DomainModel.S101.FeatureTypes.OffshorePlatform instance) {
+        public override FeatureViewModel<OffshorePlatform> Load(DomainModel.S101.FeatureTypes.OffshorePlatform instance) {
             categoryOfOffshorePlatform = instance.categoryOfOffshorePlatform;
             colour.Clear();
             if (instance.colour is not null)
@@ -23081,6 +23178,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
                 foreach (var e in instance.information)
                     information.Add(e);
             pictorialRepresentation = instance.pictorialRepresentation;
+            return this;
         }
 
         public override string Serialize() {
@@ -23243,8 +23341,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
         [Category("CableSubmarine")]
         public ObservableCollection<information> information { get; set; } = new();
-        public override informationBindingDefinition[] informationBindingDefinitions => CableSubmarine.informationBindingDefinitions;
-        public override featureBindingDefinition[] featureBindingDefinitions => CableSubmarine.featureBindingDefinitions;
+        public override informationBindingDefinition[] informationBindingDefinitions => CableSubmarine._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => CableSubmarine._featureBindingDefinitions;
 
         [Browsable(false)]
         public categoryOfCable[] categoryOfCableList => [(categoryOfCable)1, (categoryOfCable)6, (categoryOfCable)7, (categoryOfCable)9, (categoryOfCable)10];
@@ -23255,7 +23353,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         [Browsable(false)]
         public status[] statusList => [(status)1, (status)4, (status)13, (status)18];
 
-        public override void Load(DomainModel.S101.FeatureTypes.CableSubmarine instance) {
+        public override FeatureViewModel<CableSubmarine> Load(DomainModel.S101.FeatureTypes.CableSubmarine instance) {
             buriedDepth = instance.buriedDepth;
             categoryOfCable = instance.categoryOfCable;
             condition = instance.condition;
@@ -23279,6 +23377,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
             if (instance.information is not null)
                 foreach (var e in instance.information)
                     information.Add(e);
+            return this;
         }
 
         public override string Serialize() {
@@ -23390,8 +23489,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
         [Category("CableArea")]
         public ObservableCollection<information> information { get; set; } = new();
-        public override informationBindingDefinition[] informationBindingDefinitions => CableArea.informationBindingDefinitions;
-        public override featureBindingDefinition[] featureBindingDefinitions => CableArea.featureBindingDefinitions;
+        public override informationBindingDefinition[] informationBindingDefinitions => CableArea._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => CableArea._featureBindingDefinitions;
 
         [Browsable(false)]
         public categoryOfCable[] categoryOfCableList => [(categoryOfCable)1, (categoryOfCable)7, (categoryOfCable)10];
@@ -23402,7 +23501,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         [Browsable(false)]
         public status[] statusList => [(status)1, (status)7, (status)13];
 
-        public override void Load(DomainModel.S101.FeatureTypes.CableArea instance) {
+        public override FeatureViewModel<CableArea> Load(DomainModel.S101.FeatureTypes.CableArea instance) {
             categoryOfCable.Clear();
             if (instance.categoryOfCable is not null)
                 foreach (var e in instance.categoryOfCable)
@@ -23435,6 +23534,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
             if (instance.information is not null)
                 foreach (var e in instance.information)
                     information.Add(e);
+            return this;
         }
 
         public override string Serialize() {
@@ -23645,8 +23745,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
             }
         }
 
-        public override informationBindingDefinition[] informationBindingDefinitions => PipelineSubmarineOnLand.informationBindingDefinitions;
-        public override featureBindingDefinition[] featureBindingDefinitions => PipelineSubmarineOnLand.featureBindingDefinitions;
+        public override informationBindingDefinition[] informationBindingDefinitions => PipelineSubmarineOnLand._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => PipelineSubmarineOnLand._featureBindingDefinitions;
 
         [Browsable(false)]
         public categoryOfPipelinePipe[] categoryOfPipelinePipeList => [(categoryOfPipelinePipe)2, (categoryOfPipelinePipe)3, (categoryOfPipelinePipe)4, (categoryOfPipelinePipe)5, (categoryOfPipelinePipe)6, (categoryOfPipelinePipe)7];
@@ -23663,7 +23763,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         [Browsable(false)]
         public status[] statusList => [(status)1, (status)4, (status)7, (status)12];
 
-        public override void Load(DomainModel.S101.FeatureTypes.PipelineSubmarineOnLand instance) {
+        public override FeatureViewModel<PipelineSubmarineOnLand> Load(DomainModel.S101.FeatureTypes.PipelineSubmarineOnLand instance) {
             buriedDepth = instance.buriedDepth;
             categoryOfPipelinePipe.Clear();
             if (instance.categoryOfPipelinePipe is not null)
@@ -23708,6 +23808,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
                 foreach (var e in instance.information)
                     information.Add(e);
             pictorialRepresentation = instance.pictorialRepresentation;
+            return this;
         }
 
         public override string Serialize() {
@@ -23847,8 +23948,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
         [Category("SubmarinePipelineArea")]
         public ObservableCollection<information> information { get; set; } = new();
-        public override informationBindingDefinition[] informationBindingDefinitions => SubmarinePipelineArea.informationBindingDefinitions;
-        public override featureBindingDefinition[] featureBindingDefinitions => SubmarinePipelineArea.featureBindingDefinitions;
+        public override informationBindingDefinition[] informationBindingDefinitions => SubmarinePipelineArea._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => SubmarinePipelineArea._featureBindingDefinitions;
 
         [Browsable(false)]
         public categoryOfPipelinePipe[] categoryOfPipelinePipeList => [(categoryOfPipelinePipe)2, (categoryOfPipelinePipe)3, (categoryOfPipelinePipe)4, (categoryOfPipelinePipe)5, (categoryOfPipelinePipe)6];
@@ -23862,7 +23963,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         [Browsable(false)]
         public status[] statusList => [(status)1, (status)4, (status)7];
 
-        public override void Load(DomainModel.S101.FeatureTypes.SubmarinePipelineArea instance) {
+        public override FeatureViewModel<SubmarinePipelineArea> Load(DomainModel.S101.FeatureTypes.SubmarinePipelineArea instance) {
             categoryOfPipelinePipe.Clear();
             if (instance.categoryOfPipelinePipe is not null)
                 foreach (var e in instance.categoryOfPipelinePipe)
@@ -23899,6 +24000,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
             if (instance.information is not null)
                 foreach (var e in instance.information)
                     information.Add(e);
+            return this;
         }
 
         public override string Serialize() {
@@ -24128,8 +24230,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
         [Category("OffshoreProductionArea")]
         public ObservableCollection<information> information { get; set; } = new();
-        public override informationBindingDefinition[] informationBindingDefinitions => OffshoreProductionArea.informationBindingDefinitions;
-        public override featureBindingDefinition[] featureBindingDefinitions => OffshoreProductionArea.featureBindingDefinitions;
+        public override informationBindingDefinition[] informationBindingDefinitions => OffshoreProductionArea._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => OffshoreProductionArea._featureBindingDefinitions;
 
         [Browsable(false)]
         public categoryOfOffshoreProductionArea[] categoryOfOffshoreProductionAreaList => [(categoryOfOffshoreProductionArea)1, (categoryOfOffshoreProductionArea)2, (categoryOfOffshoreProductionArea)3, (categoryOfOffshoreProductionArea)4, (categoryOfOffshoreProductionArea)5, (categoryOfOffshoreProductionArea)6];
@@ -24152,7 +24254,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         [Browsable(false)]
         public waterLevelEffect[] waterLevelEffectList => [(waterLevelEffect)2, (waterLevelEffect)3, (waterLevelEffect)4, (waterLevelEffect)7];
 
-        public override void Load(DomainModel.S101.FeatureTypes.OffshoreProductionArea instance) {
+        public override FeatureViewModel<OffshoreProductionArea> Load(DomainModel.S101.FeatureTypes.OffshoreProductionArea instance) {
             categoryOfOffshoreProductionArea = instance.categoryOfOffshoreProductionArea;
             condition = instance.condition;
             featureName.Clear();
@@ -24193,6 +24295,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
             if (instance.information is not null)
                 foreach (var e in instance.information)
                     information.Add(e);
+            return this;
         }
 
         public override string Serialize() {
@@ -24355,8 +24458,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
         [Category("NavigationLine")]
         public ObservableCollection<information> information { get; set; } = new();
-        public override informationBindingDefinition[] informationBindingDefinitions => NavigationLine.informationBindingDefinitions;
-        public override featureBindingDefinition[] featureBindingDefinitions => NavigationLine.featureBindingDefinitions;
+        public override informationBindingDefinition[] informationBindingDefinitions => NavigationLine._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => NavigationLine._featureBindingDefinitions;
 
         [Browsable(false)]
         public categoryOfNavigationLine[] categoryOfNavigationLineList => [(categoryOfNavigationLine)1, (categoryOfNavigationLine)2, (categoryOfNavigationLine)3];
@@ -24364,7 +24467,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         [Browsable(false)]
         public status[] statusList => [(status)1, (status)2, (status)5, (status)7, (status)8, (status)14];
 
-        public override void Load(DomainModel.S101.FeatureTypes.NavigationLine instance) {
+        public override FeatureViewModel<NavigationLine> Load(DomainModel.S101.FeatureTypes.NavigationLine instance) {
             categoryOfNavigationLine = instance.categoryOfNavigationLine;
             fixedDateRange = new();
             if (instance.fixedDateRange != null) {
@@ -24393,6 +24496,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
             if (instance.information is not null)
                 foreach (var e in instance.information)
                     information.Add(e);
+            return this;
         }
 
         public override string Serialize() {
@@ -24579,8 +24683,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
         [Category("RecommendedTrack")]
         public ObservableCollection<information> information { get; set; } = new();
-        public override informationBindingDefinition[] informationBindingDefinitions => RecommendedTrack.informationBindingDefinitions;
-        public override featureBindingDefinition[] featureBindingDefinitions => RecommendedTrack.featureBindingDefinitions;
+        public override informationBindingDefinition[] informationBindingDefinitions => RecommendedTrack._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => RecommendedTrack._featureBindingDefinitions;
 
         [Browsable(false)]
         public qualityOfVerticalMeasurement[] qualityOfVerticalMeasurementList => [(qualityOfVerticalMeasurement)1, (qualityOfVerticalMeasurement)2, (qualityOfVerticalMeasurement)6];
@@ -24594,7 +24698,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         [Browsable(false)]
         public trafficFlow[] trafficFlowList => [(trafficFlow)1, (trafficFlow)2, (trafficFlow)3, (trafficFlow)4];
 
-        public override void Load(DomainModel.S101.FeatureTypes.RecommendedTrack instance) {
+        public override FeatureViewModel<RecommendedTrack> Load(DomainModel.S101.FeatureTypes.RecommendedTrack instance) {
             basedOnFixedMarks = instance.basedOnFixedMarks;
             depthRangeMinimumValue = instance.depthRangeMinimumValue;
             featureName.Clear();
@@ -24638,6 +24742,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
             if (instance.information is not null)
                 foreach (var e in instance.information)
                     information.Add(e);
+            return this;
         }
 
         public override string Serialize() {
@@ -24764,10 +24869,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
         [Category("RangeSystem")]
         public ObservableCollection<information> information { get; set; } = new();
-        public override informationBindingDefinition[] informationBindingDefinitions => RangeSystem.informationBindingDefinitions;
-        public override featureBindingDefinition[] featureBindingDefinitions => RangeSystem.featureBindingDefinitions;
+        public override informationBindingDefinition[] informationBindingDefinitions => RangeSystem._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => RangeSystem._featureBindingDefinitions;
 
-        public override void Load(DomainModel.S101.FeatureTypes.RangeSystem instance) {
+        public override FeatureViewModel<RangeSystem> Load(DomainModel.S101.FeatureTypes.RangeSystem instance) {
             featureName.Clear();
             if (instance.featureName is not null)
                 foreach (var e in instance.featureName)
@@ -24785,6 +24890,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
             if (instance.information is not null)
                 foreach (var e in instance.information)
                     information.Add(e);
+            return this;
         }
 
         public override string Serialize() {
@@ -24950,8 +25056,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
         [Category("Fairway")]
         public ObservableCollection<information> information { get; set; } = new();
-        public override informationBindingDefinition[] informationBindingDefinitions => Fairway.informationBindingDefinitions;
-        public override featureBindingDefinition[] featureBindingDefinitions => Fairway.featureBindingDefinitions;
+        public override informationBindingDefinition[] informationBindingDefinitions => Fairway._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => Fairway._featureBindingDefinitions;
 
         [Browsable(false)]
         public qualityOfVerticalMeasurement[] qualityOfVerticalMeasurementList => [(qualityOfVerticalMeasurement)1, (qualityOfVerticalMeasurement)2, (qualityOfVerticalMeasurement)6];
@@ -24965,7 +25071,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         [Browsable(false)]
         public trafficFlow[] trafficFlowList => [(trafficFlow)1, (trafficFlow)2, (trafficFlow)3, (trafficFlow)4];
 
-        public override void Load(DomainModel.S101.FeatureTypes.Fairway instance) {
+        public override FeatureViewModel<Fairway> Load(DomainModel.S101.FeatureTypes.Fairway instance) {
             depthRangeMinimumValue = instance.depthRangeMinimumValue;
             featureName.Clear();
             if (instance.featureName is not null)
@@ -25008,6 +25114,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
             if (instance.information is not null)
                 foreach (var e in instance.information)
                     information.Add(e);
+            return this;
         }
 
         public override string Serialize() {
@@ -25135,10 +25242,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
         [Category("FairwaySystem")]
         public ObservableCollection<information> information { get; set; } = new();
-        public override informationBindingDefinition[] informationBindingDefinitions => FairwaySystem.informationBindingDefinitions;
-        public override featureBindingDefinition[] featureBindingDefinitions => FairwaySystem.featureBindingDefinitions;
+        public override informationBindingDefinition[] informationBindingDefinitions => FairwaySystem._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => FairwaySystem._featureBindingDefinitions;
 
-        public override void Load(DomainModel.S101.FeatureTypes.FairwaySystem instance) {
+        public override FeatureViewModel<FairwaySystem> Load(DomainModel.S101.FeatureTypes.FairwaySystem instance) {
             featureName.Clear();
             if (instance.featureName is not null)
                 foreach (var e in instance.featureName)
@@ -25160,6 +25267,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
             if (instance.information is not null)
                 foreach (var e in instance.information)
                     information.Add(e);
+            return this;
         }
 
         public override string Serialize() {
@@ -25330,8 +25438,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
         [Category("RecommendedRouteCentreline")]
         public ObservableCollection<information> information { get; set; } = new();
-        public override informationBindingDefinition[] informationBindingDefinitions => RecommendedRouteCentreline.informationBindingDefinitions;
-        public override featureBindingDefinition[] featureBindingDefinitions => RecommendedRouteCentreline.featureBindingDefinitions;
+        public override informationBindingDefinition[] informationBindingDefinitions => RecommendedRouteCentreline._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => RecommendedRouteCentreline._featureBindingDefinitions;
 
         [Browsable(false)]
         public qualityOfVerticalMeasurement[] qualityOfVerticalMeasurementList => [(qualityOfVerticalMeasurement)1, (qualityOfVerticalMeasurement)2, (qualityOfVerticalMeasurement)3, (qualityOfVerticalMeasurement)4, (qualityOfVerticalMeasurement)6];
@@ -25345,7 +25453,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         [Browsable(false)]
         public trafficFlow[] trafficFlowList => [(trafficFlow)1, (trafficFlow)2, (trafficFlow)3, (trafficFlow)4];
 
-        public override void Load(DomainModel.S101.FeatureTypes.RecommendedRouteCentreline instance) {
+        public override FeatureViewModel<RecommendedRouteCentreline> Load(DomainModel.S101.FeatureTypes.RecommendedRouteCentreline instance) {
             basedOnFixedMarks = instance.basedOnFixedMarks;
             depthRangeMinimumValue = instance.depthRangeMinimumValue;
             featureName.Clear();
@@ -25388,6 +25496,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
             if (instance.information is not null)
                 foreach (var e in instance.information)
                     information.Add(e);
+            return this;
         }
 
         public override string Serialize() {
@@ -25575,8 +25684,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
         [Category("TwoWayRoutePart")]
         public ObservableCollection<information> information { get; set; } = new();
-        public override informationBindingDefinition[] informationBindingDefinitions => TwoWayRoutePart.informationBindingDefinitions;
-        public override featureBindingDefinition[] featureBindingDefinitions => TwoWayRoutePart.featureBindingDefinitions;
+        public override informationBindingDefinition[] informationBindingDefinitions => TwoWayRoutePart._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => TwoWayRoutePart._featureBindingDefinitions;
 
         [Browsable(false)]
         public qualityOfVerticalMeasurement[] qualityOfVerticalMeasurementList => [(qualityOfVerticalMeasurement)1, (qualityOfVerticalMeasurement)2, (qualityOfVerticalMeasurement)3, (qualityOfVerticalMeasurement)4, (qualityOfVerticalMeasurement)6];
@@ -25590,7 +25699,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         [Browsable(false)]
         public trafficFlow[] trafficFlowList => [(trafficFlow)1, (trafficFlow)2, (trafficFlow)3, (trafficFlow)4];
 
-        public override void Load(DomainModel.S101.FeatureTypes.TwoWayRoutePart instance) {
+        public override FeatureViewModel<TwoWayRoutePart> Load(DomainModel.S101.FeatureTypes.TwoWayRoutePart instance) {
             basedOnFixedMarks = instance.basedOnFixedMarks;
             depthRangeMinimumValue = instance.depthRangeMinimumValue;
             fixedDateRange = new();
@@ -25625,6 +25734,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
             if (instance.information is not null)
                 foreach (var e in instance.information)
                     information.Add(e);
+            return this;
         }
 
         public override string Serialize() {
@@ -25739,10 +25849,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
         [Category("TwoWayRoute")]
         public ObservableCollection<information> information { get; set; } = new();
-        public override informationBindingDefinition[] informationBindingDefinitions => TwoWayRoute.informationBindingDefinitions;
-        public override featureBindingDefinition[] featureBindingDefinitions => TwoWayRoute.featureBindingDefinitions;
+        public override informationBindingDefinition[] informationBindingDefinitions => TwoWayRoute._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => TwoWayRoute._featureBindingDefinitions;
 
-        public override void Load(DomainModel.S101.FeatureTypes.TwoWayRoute instance) {
+        public override FeatureViewModel<TwoWayRoute> Load(DomainModel.S101.FeatureTypes.TwoWayRoute instance) {
             featureName.Clear();
             if (instance.featureName is not null)
                 foreach (var e in instance.featureName)
@@ -25760,6 +25870,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
             if (instance.information is not null)
                 foreach (var e in instance.information)
                     information.Add(e);
+            return this;
         }
 
         public override string Serialize() {
@@ -25858,13 +25969,13 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
         [Category("RecommendedTrafficLanePart")]
         public ObservableCollection<information> information { get; set; } = new();
-        public override informationBindingDefinition[] informationBindingDefinitions => RecommendedTrafficLanePart.informationBindingDefinitions;
-        public override featureBindingDefinition[] featureBindingDefinitions => RecommendedTrafficLanePart.featureBindingDefinitions;
+        public override informationBindingDefinition[] informationBindingDefinitions => RecommendedTrafficLanePart._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => RecommendedTrafficLanePart._featureBindingDefinitions;
 
         [Browsable(false)]
         public status[] statusList => [(status)1, (status)6, (status)9];
 
-        public override void Load(DomainModel.S101.FeatureTypes.RecommendedTrafficLanePart instance) {
+        public override FeatureViewModel<RecommendedTrafficLanePart> Load(DomainModel.S101.FeatureTypes.RecommendedTrafficLanePart instance) {
             fixedDateRange = new();
             if (instance.fixedDateRange != null) {
                 fixedDateRange = new();
@@ -25882,6 +25993,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
             if (instance.information is not null)
                 foreach (var e in instance.information)
                     information.Add(e);
+            return this;
         }
 
         public override string Serialize() {
@@ -26056,8 +26168,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
         [Category("DeepWaterRouteCentreline")]
         public ObservableCollection<information> information { get; set; } = new();
-        public override informationBindingDefinition[] informationBindingDefinitions => DeepWaterRouteCentreline.informationBindingDefinitions;
-        public override featureBindingDefinition[] featureBindingDefinitions => DeepWaterRouteCentreline.featureBindingDefinitions;
+        public override informationBindingDefinition[] informationBindingDefinitions => DeepWaterRouteCentreline._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => DeepWaterRouteCentreline._featureBindingDefinitions;
 
         [Browsable(false)]
         public qualityOfVerticalMeasurement[] qualityOfVerticalMeasurementList => [(qualityOfVerticalMeasurement)1, (qualityOfVerticalMeasurement)2, (qualityOfVerticalMeasurement)3, (qualityOfVerticalMeasurement)4, (qualityOfVerticalMeasurement)6, (qualityOfVerticalMeasurement)7];
@@ -26071,7 +26183,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         [Browsable(false)]
         public trafficFlow[] trafficFlowList => [(trafficFlow)1, (trafficFlow)2, (trafficFlow)3, (trafficFlow)4];
 
-        public override void Load(DomainModel.S101.FeatureTypes.DeepWaterRouteCentreline instance) {
+        public override FeatureViewModel<DeepWaterRouteCentreline> Load(DomainModel.S101.FeatureTypes.DeepWaterRouteCentreline instance) {
             basedOnFixedMarks = instance.basedOnFixedMarks;
             depthRangeMinimumValue = instance.depthRangeMinimumValue;
             featureName.Clear();
@@ -26111,6 +26223,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
             if (instance.information is not null)
                 foreach (var e in instance.information)
                     information.Add(e);
+            return this;
         }
 
         public override string Serialize() {
@@ -26306,8 +26419,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
         [Category("DeepWaterRoutePart")]
         public ObservableCollection<information> information { get; set; } = new();
-        public override informationBindingDefinition[] informationBindingDefinitions => DeepWaterRoutePart.informationBindingDefinitions;
-        public override featureBindingDefinition[] featureBindingDefinitions => DeepWaterRoutePart.featureBindingDefinitions;
+        public override informationBindingDefinition[] informationBindingDefinitions => DeepWaterRoutePart._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => DeepWaterRoutePart._featureBindingDefinitions;
 
         [Browsable(false)]
         public qualityOfVerticalMeasurement[] qualityOfVerticalMeasurementList => [(qualityOfVerticalMeasurement)1, (qualityOfVerticalMeasurement)2, (qualityOfVerticalMeasurement)3, (qualityOfVerticalMeasurement)4, (qualityOfVerticalMeasurement)6, (qualityOfVerticalMeasurement)7];
@@ -26324,7 +26437,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         [Browsable(false)]
         public trafficFlow[] trafficFlowList => [(trafficFlow)1, (trafficFlow)2, (trafficFlow)3, (trafficFlow)4];
 
-        public override void Load(DomainModel.S101.FeatureTypes.DeepWaterRoutePart instance) {
+        public override FeatureViewModel<DeepWaterRoutePart> Load(DomainModel.S101.FeatureTypes.DeepWaterRoutePart instance) {
             depthRangeMinimumValue = instance.depthRangeMinimumValue;
             featureName.Clear();
             if (instance.featureName is not null)
@@ -26371,6 +26484,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
             if (instance.information is not null)
                 foreach (var e in instance.information)
                     information.Add(e);
+            return this;
         }
 
         public override string Serialize() {
@@ -26500,10 +26614,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
         [Category("DeepWaterRoute")]
         public ObservableCollection<information> information { get; set; } = new();
-        public override informationBindingDefinition[] informationBindingDefinitions => DeepWaterRoute.informationBindingDefinitions;
-        public override featureBindingDefinition[] featureBindingDefinitions => DeepWaterRoute.featureBindingDefinitions;
+        public override informationBindingDefinition[] informationBindingDefinitions => DeepWaterRoute._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => DeepWaterRoute._featureBindingDefinitions;
 
-        public override void Load(DomainModel.S101.FeatureTypes.DeepWaterRoute instance) {
+        public override FeatureViewModel<DeepWaterRoute> Load(DomainModel.S101.FeatureTypes.DeepWaterRoute instance) {
             featureName.Clear();
             if (instance.featureName is not null)
                 foreach (var e in instance.featureName)
@@ -26521,6 +26635,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
             if (instance.information is not null)
                 foreach (var e in instance.information)
                     information.Add(e);
+            return this;
         }
 
         public override string Serialize() {
@@ -26615,8 +26730,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
         [Category("InshoreTrafficZone")]
         public ObservableCollection<information> information { get; set; } = new();
-        public override informationBindingDefinition[] informationBindingDefinitions => InshoreTrafficZone.informationBindingDefinitions;
-        public override featureBindingDefinition[] featureBindingDefinitions => InshoreTrafficZone.featureBindingDefinitions;
+        public override informationBindingDefinition[] informationBindingDefinitions => InshoreTrafficZone._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => InshoreTrafficZone._featureBindingDefinitions;
 
         [Browsable(false)]
         public restriction[] restrictionList => [(restriction)1, (restriction)2, (restriction)3, (restriction)4, (restriction)5, (restriction)6, (restriction)8, (restriction)9, (restriction)10, (restriction)11, (restriction)12, (restriction)13, (restriction)16, (restriction)17, (restriction)18, (restriction)19, (restriction)20, (restriction)21, (restriction)22, (restriction)23, (restriction)24, (restriction)25, (restriction)27];
@@ -26624,7 +26739,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         [Browsable(false)]
         public status[] statusList => [(status)1, (status)3, (status)6, (status)9, (status)16, (status)17];
 
-        public override void Load(DomainModel.S101.FeatureTypes.InshoreTrafficZone instance) {
+        public override FeatureViewModel<InshoreTrafficZone> Load(DomainModel.S101.FeatureTypes.InshoreTrafficZone instance) {
             fixedDateRange = new();
             if (instance.fixedDateRange != null) {
                 fixedDateRange = new();
@@ -26649,6 +26764,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
             if (instance.information is not null)
                 foreach (var e in instance.information)
                     information.Add(e);
+            return this;
         }
 
         public override string Serialize() {
@@ -26766,8 +26882,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
         [Category("PrecautionaryArea")]
         public ObservableCollection<information> information { get; set; } = new();
-        public override informationBindingDefinition[] informationBindingDefinitions => PrecautionaryArea.informationBindingDefinitions;
-        public override featureBindingDefinition[] featureBindingDefinitions => PrecautionaryArea.featureBindingDefinitions;
+        public override informationBindingDefinition[] informationBindingDefinitions => PrecautionaryArea._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => PrecautionaryArea._featureBindingDefinitions;
 
         [Browsable(false)]
         public restriction[] restrictionList => [(restriction)1, (restriction)2, (restriction)3, (restriction)4, (restriction)5, (restriction)6, (restriction)8, (restriction)9, (restriction)10, (restriction)11, (restriction)12, (restriction)13, (restriction)14, (restriction)16, (restriction)17, (restriction)18, (restriction)19, (restriction)20, (restriction)21, (restriction)22, (restriction)23, (restriction)24, (restriction)25, (restriction)27];
@@ -26775,7 +26891,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         [Browsable(false)]
         public status[] statusList => [(status)1, (status)9, (status)28];
 
-        public override void Load(DomainModel.S101.FeatureTypes.PrecautionaryArea instance) {
+        public override FeatureViewModel<PrecautionaryArea> Load(DomainModel.S101.FeatureTypes.PrecautionaryArea instance) {
             featureName.Clear();
             if (instance.featureName is not null)
                 foreach (var e in instance.featureName)
@@ -26805,6 +26921,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
             if (instance.information is not null)
                 foreach (var e in instance.information)
                     information.Add(e);
+            return this;
         }
 
         public override string Serialize() {
@@ -26926,8 +27043,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
         [Category("TrafficSeparationSchemeLanePart")]
         public ObservableCollection<information> information { get; set; } = new();
-        public override informationBindingDefinition[] informationBindingDefinitions => TrafficSeparationSchemeLanePart.informationBindingDefinitions;
-        public override featureBindingDefinition[] featureBindingDefinitions => TrafficSeparationSchemeLanePart.featureBindingDefinitions;
+        public override informationBindingDefinition[] informationBindingDefinitions => TrafficSeparationSchemeLanePart._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => TrafficSeparationSchemeLanePart._featureBindingDefinitions;
 
         [Browsable(false)]
         public restriction[] restrictionList => [(restriction)1, (restriction)2, (restriction)3, (restriction)4, (restriction)5, (restriction)6, (restriction)8, (restriction)9, (restriction)10, (restriction)11, (restriction)12, (restriction)13, (restriction)16, (restriction)17, (restriction)18, (restriction)19, (restriction)20, (restriction)21, (restriction)22, (restriction)23, (restriction)24, (restriction)25, (restriction)27];
@@ -26935,7 +27052,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         [Browsable(false)]
         public status[] statusList => [(status)1, (status)3, (status)6, (status)9, (status)28];
 
-        public override void Load(DomainModel.S101.FeatureTypes.TrafficSeparationSchemeLanePart instance) {
+        public override FeatureViewModel<TrafficSeparationSchemeLanePart> Load(DomainModel.S101.FeatureTypes.TrafficSeparationSchemeLanePart instance) {
             fixedDateRange = new();
             if (instance.fixedDateRange != null) {
                 fixedDateRange = new();
@@ -26961,6 +27078,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
             if (instance.information is not null)
                 foreach (var e in instance.information)
                     information.Add(e);
+            return this;
         }
 
         public override string Serialize() {
@@ -27057,13 +27175,13 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
         [Category("SeparationZoneOrLine")]
         public ObservableCollection<information> information { get; set; } = new();
-        public override informationBindingDefinition[] informationBindingDefinitions => SeparationZoneOrLine.informationBindingDefinitions;
-        public override featureBindingDefinition[] featureBindingDefinitions => SeparationZoneOrLine.featureBindingDefinitions;
+        public override informationBindingDefinition[] informationBindingDefinitions => SeparationZoneOrLine._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => SeparationZoneOrLine._featureBindingDefinitions;
 
         [Browsable(false)]
         public status[] statusList => [(status)1, (status)3, (status)9, (status)28];
 
-        public override void Load(DomainModel.S101.FeatureTypes.SeparationZoneOrLine instance) {
+        public override FeatureViewModel<SeparationZoneOrLine> Load(DomainModel.S101.FeatureTypes.SeparationZoneOrLine instance) {
             fixedDateRange = new();
             if (instance.fixedDateRange != null) {
                 fixedDateRange = new();
@@ -27080,6 +27198,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
             if (instance.information is not null)
                 foreach (var e in instance.information)
                     information.Add(e);
+            return this;
         }
 
         public override string Serialize() {
@@ -27164,13 +27283,13 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
         [Category("TrafficSeparationSchemeBoundary")]
         public ObservableCollection<information> information { get; set; } = new();
-        public override informationBindingDefinition[] informationBindingDefinitions => TrafficSeparationSchemeBoundary.informationBindingDefinitions;
-        public override featureBindingDefinition[] featureBindingDefinitions => TrafficSeparationSchemeBoundary.featureBindingDefinitions;
+        public override informationBindingDefinition[] informationBindingDefinitions => TrafficSeparationSchemeBoundary._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => TrafficSeparationSchemeBoundary._featureBindingDefinitions;
 
         [Browsable(false)]
         public status[] statusList => [(status)1, (status)3, (status)9, (status)28];
 
-        public override void Load(DomainModel.S101.FeatureTypes.TrafficSeparationSchemeBoundary instance) {
+        public override FeatureViewModel<TrafficSeparationSchemeBoundary> Load(DomainModel.S101.FeatureTypes.TrafficSeparationSchemeBoundary instance) {
             fixedDateRange = new();
             if (instance.fixedDateRange != null) {
                 fixedDateRange = new();
@@ -27187,6 +27306,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
             if (instance.information is not null)
                 foreach (var e in instance.information)
                     information.Add(e);
+            return this;
         }
 
         public override string Serialize() {
@@ -27279,8 +27399,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
         [Category("TrafficSeparationSchemeCrossing")]
         public ObservableCollection<information> information { get; set; } = new();
-        public override informationBindingDefinition[] informationBindingDefinitions => TrafficSeparationSchemeCrossing.informationBindingDefinitions;
-        public override featureBindingDefinition[] featureBindingDefinitions => TrafficSeparationSchemeCrossing.featureBindingDefinitions;
+        public override informationBindingDefinition[] informationBindingDefinitions => TrafficSeparationSchemeCrossing._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => TrafficSeparationSchemeCrossing._featureBindingDefinitions;
 
         [Browsable(false)]
         public restriction[] restrictionList => [(restriction)1, (restriction)2, (restriction)3, (restriction)4, (restriction)5, (restriction)6, (restriction)8, (restriction)9, (restriction)10, (restriction)11, (restriction)12, (restriction)13, (restriction)16, (restriction)17, (restriction)18, (restriction)19, (restriction)20, (restriction)21, (restriction)22, (restriction)23, (restriction)24, (restriction)25, (restriction)27];
@@ -27288,7 +27408,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         [Browsable(false)]
         public status[] statusList => [(status)1, (status)3, (status)6, (status)9];
 
-        public override void Load(DomainModel.S101.FeatureTypes.TrafficSeparationSchemeCrossing instance) {
+        public override FeatureViewModel<TrafficSeparationSchemeCrossing> Load(DomainModel.S101.FeatureTypes.TrafficSeparationSchemeCrossing instance) {
             fixedDateRange = new();
             if (instance.fixedDateRange != null) {
                 fixedDateRange = new();
@@ -27313,6 +27433,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
             if (instance.information is not null)
                 foreach (var e in instance.information)
                     information.Add(e);
+            return this;
         }
 
         public override string Serialize() {
@@ -27415,8 +27536,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
         [Category("TrafficSeparationSchemeRoundabout")]
         public ObservableCollection<information> information { get; set; } = new();
-        public override informationBindingDefinition[] informationBindingDefinitions => TrafficSeparationSchemeRoundabout.informationBindingDefinitions;
-        public override featureBindingDefinition[] featureBindingDefinitions => TrafficSeparationSchemeRoundabout.featureBindingDefinitions;
+        public override informationBindingDefinition[] informationBindingDefinitions => TrafficSeparationSchemeRoundabout._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => TrafficSeparationSchemeRoundabout._featureBindingDefinitions;
 
         [Browsable(false)]
         public restriction[] restrictionList => [(restriction)1, (restriction)2, (restriction)3, (restriction)4, (restriction)5, (restriction)6, (restriction)8, (restriction)9, (restriction)10, (restriction)11, (restriction)12, (restriction)13, (restriction)16, (restriction)17, (restriction)18, (restriction)19, (restriction)20, (restriction)21, (restriction)22, (restriction)23, (restriction)24, (restriction)25, (restriction)27];
@@ -27424,7 +27545,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         [Browsable(false)]
         public status[] statusList => [(status)1, (status)3, (status)6, (status)9];
 
-        public override void Load(DomainModel.S101.FeatureTypes.TrafficSeparationSchemeRoundabout instance) {
+        public override FeatureViewModel<TrafficSeparationSchemeRoundabout> Load(DomainModel.S101.FeatureTypes.TrafficSeparationSchemeRoundabout instance) {
             fixedDateRange = new();
             if (instance.fixedDateRange != null) {
                 fixedDateRange = new();
@@ -27449,6 +27570,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
             if (instance.information is not null)
                 foreach (var e in instance.information)
                     information.Add(e);
+            return this;
         }
 
         public override string Serialize() {
@@ -27565,10 +27687,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
         [Category("TrafficSeparationScheme")]
         public ObservableCollection<information> information { get; set; } = new();
-        public override informationBindingDefinition[] informationBindingDefinitions => TrafficSeparationScheme.informationBindingDefinitions;
-        public override featureBindingDefinition[] featureBindingDefinitions => TrafficSeparationScheme.featureBindingDefinitions;
+        public override informationBindingDefinition[] informationBindingDefinitions => TrafficSeparationScheme._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => TrafficSeparationScheme._featureBindingDefinitions;
 
-        public override void Load(DomainModel.S101.FeatureTypes.TrafficSeparationScheme instance) {
+        public override FeatureViewModel<TrafficSeparationScheme> Load(DomainModel.S101.FeatureTypes.TrafficSeparationScheme instance) {
             featureName.Clear();
             if (instance.featureName is not null)
                 foreach (var e in instance.featureName)
@@ -27587,6 +27709,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
             if (instance.information is not null)
                 foreach (var e in instance.information)
                     information.Add(e);
+            return this;
         }
 
         public override string Serialize() {
@@ -27685,10 +27808,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
         [Category("ArchipelagicSeaLaneArea")]
         public ObservableCollection<information> information { get; set; } = new();
-        public override informationBindingDefinition[] informationBindingDefinitions => ArchipelagicSeaLaneArea.informationBindingDefinitions;
-        public override featureBindingDefinition[] featureBindingDefinitions => ArchipelagicSeaLaneArea.featureBindingDefinitions;
+        public override informationBindingDefinition[] informationBindingDefinitions => ArchipelagicSeaLaneArea._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => ArchipelagicSeaLaneArea._featureBindingDefinitions;
 
-        public override void Load(DomainModel.S101.FeatureTypes.ArchipelagicSeaLaneArea instance) {
+        public override FeatureViewModel<ArchipelagicSeaLaneArea> Load(DomainModel.S101.FeatureTypes.ArchipelagicSeaLaneArea instance) {
             featureName.Clear();
             if (instance.featureName is not null)
                 foreach (var e in instance.featureName)
@@ -27706,6 +27829,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
             if (instance.information is not null)
                 foreach (var e in instance.information)
                     information.Add(e);
+            return this;
         }
 
         public override string Serialize() {
@@ -27802,10 +27926,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
         [Category("ArchipelagicSeaLaneAxis")]
         public ObservableCollection<information> information { get; set; } = new();
-        public override informationBindingDefinition[] informationBindingDefinitions => ArchipelagicSeaLaneAxis.informationBindingDefinitions;
-        public override featureBindingDefinition[] featureBindingDefinitions => ArchipelagicSeaLaneAxis.featureBindingDefinitions;
+        public override informationBindingDefinition[] informationBindingDefinitions => ArchipelagicSeaLaneAxis._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => ArchipelagicSeaLaneAxis._featureBindingDefinitions;
 
-        public override void Load(DomainModel.S101.FeatureTypes.ArchipelagicSeaLaneAxis instance) {
+        public override FeatureViewModel<ArchipelagicSeaLaneAxis> Load(DomainModel.S101.FeatureTypes.ArchipelagicSeaLaneAxis instance) {
             featureName.Clear();
             if (instance.featureName is not null)
                 foreach (var e in instance.featureName)
@@ -27823,6 +27947,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
             if (instance.information is not null)
                 foreach (var e in instance.information)
                     information.Add(e);
+            return this;
         }
 
         public override string Serialize() {
@@ -27919,10 +28044,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
         [Category("ArchipelagicSeaLane")]
         public ObservableCollection<information> information { get; set; } = new();
-        public override informationBindingDefinition[] informationBindingDefinitions => ArchipelagicSeaLane.informationBindingDefinitions;
-        public override featureBindingDefinition[] featureBindingDefinitions => ArchipelagicSeaLane.featureBindingDefinitions;
+        public override informationBindingDefinition[] informationBindingDefinitions => ArchipelagicSeaLane._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => ArchipelagicSeaLane._featureBindingDefinitions;
 
-        public override void Load(DomainModel.S101.FeatureTypes.ArchipelagicSeaLane instance) {
+        public override FeatureViewModel<ArchipelagicSeaLane> Load(DomainModel.S101.FeatureTypes.ArchipelagicSeaLane instance) {
             featureName.Clear();
             if (instance.featureName is not null)
                 foreach (var e in instance.featureName)
@@ -27940,6 +28065,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
             if (instance.information is not null)
                 foreach (var e in instance.information)
                     information.Add(e);
+            return this;
         }
 
         public override string Serialize() {
@@ -28052,8 +28178,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
         [Category("RadioCallingInPoint")]
         public ObservableCollection<information> information { get; set; } = new();
-        public override informationBindingDefinition[] informationBindingDefinitions => RadioCallingInPoint.informationBindingDefinitions;
-        public override featureBindingDefinition[] featureBindingDefinitions => RadioCallingInPoint.featureBindingDefinitions;
+        public override informationBindingDefinition[] informationBindingDefinitions => RadioCallingInPoint._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => RadioCallingInPoint._featureBindingDefinitions;
 
         [Browsable(false)]
         public status[] statusList => [(status)1, (status)3, (status)4, (status)5, (status)6, (status)7, (status)9];
@@ -28061,7 +28187,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         [Browsable(false)]
         public trafficFlow[] trafficFlowList => [(trafficFlow)1, (trafficFlow)2, (trafficFlow)3, (trafficFlow)4];
 
-        public override void Load(DomainModel.S101.FeatureTypes.RadioCallingInPoint instance) {
+        public override FeatureViewModel<RadioCallingInPoint> Load(DomainModel.S101.FeatureTypes.RadioCallingInPoint instance) {
             communicationChannel.Clear();
             if (instance.communicationChannel is not null)
                 foreach (var e in instance.communicationChannel)
@@ -28095,6 +28221,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
             if (instance.information is not null)
                 foreach (var e in instance.information)
                     information.Add(e);
+            return this;
         }
 
         public override string Serialize() {
@@ -28212,8 +28339,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
         [Category("FerryRoute")]
         public ObservableCollection<information> information { get; set; } = new();
-        public override informationBindingDefinition[] informationBindingDefinitions => FerryRoute.informationBindingDefinitions;
-        public override featureBindingDefinition[] featureBindingDefinitions => FerryRoute.featureBindingDefinitions;
+        public override informationBindingDefinition[] informationBindingDefinitions => FerryRoute._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => FerryRoute._featureBindingDefinitions;
 
         [Browsable(false)]
         public categoryOfFerry[] categoryOfFerryList => [(categoryOfFerry)1, (categoryOfFerry)2, (categoryOfFerry)3, (categoryOfFerry)5];
@@ -28221,7 +28348,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         [Browsable(false)]
         public status[] statusList => [(status)1, (status)2, (status)4, (status)5, (status)6, (status)7, (status)8, (status)9, (status)14];
 
-        public override void Load(DomainModel.S101.FeatureTypes.FerryRoute instance) {
+        public override FeatureViewModel<FerryRoute> Load(DomainModel.S101.FeatureTypes.FerryRoute instance) {
             categoryOfFerry.Clear();
             if (instance.categoryOfFerry is not null)
                 foreach (var e in instance.categoryOfFerry)
@@ -28250,6 +28377,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
             if (instance.information is not null)
                 foreach (var e in instance.information)
                     information.Add(e);
+            return this;
         }
 
         public override string Serialize() {
@@ -28351,13 +28479,13 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
         [Category("RadarLine")]
         public ObservableCollection<information> information { get; set; } = new();
-        public override informationBindingDefinition[] informationBindingDefinitions => RadarLine.informationBindingDefinitions;
-        public override featureBindingDefinition[] featureBindingDefinitions => RadarLine.featureBindingDefinitions;
+        public override informationBindingDefinition[] informationBindingDefinitions => RadarLine._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => RadarLine._featureBindingDefinitions;
 
         [Browsable(false)]
         public status[] statusList => [(status)1, (status)2, (status)3, (status)4, (status)7];
 
-        public override void Load(DomainModel.S101.FeatureTypes.RadarLine instance) {
+        public override FeatureViewModel<RadarLine> Load(DomainModel.S101.FeatureTypes.RadarLine instance) {
             featureName.Clear();
             if (instance.featureName is not null)
                 foreach (var e in instance.featureName)
@@ -28373,6 +28501,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
             if (instance.information is not null)
                 foreach (var e in instance.information)
                     information.Add(e);
+            return this;
         }
 
         public override string Serialize() {
@@ -28468,13 +28597,13 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
         [Category("RadarRange")]
         public ObservableCollection<information> information { get; set; } = new();
-        public override informationBindingDefinition[] informationBindingDefinitions => RadarRange.informationBindingDefinitions;
-        public override featureBindingDefinition[] featureBindingDefinitions => RadarRange.featureBindingDefinitions;
+        public override informationBindingDefinition[] informationBindingDefinitions => RadarRange._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => RadarRange._featureBindingDefinitions;
 
         [Browsable(false)]
         public status[] statusList => [(status)1, (status)2, (status)4, (status)7];
 
-        public override void Load(DomainModel.S101.FeatureTypes.RadarRange instance) {
+        public override FeatureViewModel<RadarRange> Load(DomainModel.S101.FeatureTypes.RadarRange instance) {
             communicationChannel.Clear();
             if (instance.communicationChannel is not null)
                 foreach (var e in instance.communicationChannel)
@@ -28499,6 +28628,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
             if (instance.information is not null)
                 foreach (var e in instance.information)
                     information.Add(e);
+            return this;
         }
 
         public override string Serialize() {
@@ -28630,8 +28760,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
         [Category("RadarStation")]
         public ObservableCollection<information> information { get; set; } = new();
-        public override informationBindingDefinition[] informationBindingDefinitions => RadarStation.informationBindingDefinitions;
-        public override featureBindingDefinition[] featureBindingDefinitions => RadarStation.featureBindingDefinitions;
+        public override informationBindingDefinition[] informationBindingDefinitions => RadarStation._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => RadarStation._featureBindingDefinitions;
 
         [Browsable(false)]
         public categoryOfRadarStation[] categoryOfRadarStationList => [(categoryOfRadarStation)1, (categoryOfRadarStation)2];
@@ -28639,7 +28769,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         [Browsable(false)]
         public status[] statusList => [(status)1, (status)2, (status)4, (status)7, (status)8];
 
-        public override void Load(DomainModel.S101.FeatureTypes.RadarStation instance) {
+        public override FeatureViewModel<RadarStation> Load(DomainModel.S101.FeatureTypes.RadarStation instance) {
             callSign = instance.callSign;
             categoryOfRadarStation.Clear();
             if (instance.categoryOfRadarStation is not null)
@@ -28669,6 +28799,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
             if (instance.information is not null)
                 foreach (var e in instance.information)
                     information.Add(e);
+            return this;
         }
 
         public override string Serialize() {
@@ -28801,8 +28932,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
         [Category("AnchorageArea")]
         public ObservableCollection<information> information { get; set; } = new();
-        public override informationBindingDefinition[] informationBindingDefinitions => AnchorageArea.informationBindingDefinitions;
-        public override featureBindingDefinition[] featureBindingDefinitions => AnchorageArea.featureBindingDefinitions;
+        public override informationBindingDefinition[] informationBindingDefinitions => AnchorageArea._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => AnchorageArea._featureBindingDefinitions;
 
         [Browsable(false)]
         public categoryOfAnchorage[] categoryOfAnchorageList => [(categoryOfAnchorage)1, (categoryOfAnchorage)2, (categoryOfAnchorage)3, (categoryOfAnchorage)5, (categoryOfAnchorage)6, (categoryOfAnchorage)7, (categoryOfAnchorage)9, (categoryOfAnchorage)10, (categoryOfAnchorage)14, (categoryOfAnchorage)15];
@@ -28816,7 +28947,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         [Browsable(false)]
         public status[] statusList => [(status)1, (status)2, (status)3, (status)5, (status)6, (status)7, (status)8, (status)9, (status)14];
 
-        public override void Load(DomainModel.S101.FeatureTypes.AnchorageArea instance) {
+        public override FeatureViewModel<AnchorageArea> Load(DomainModel.S101.FeatureTypes.AnchorageArea instance) {
             categoryOfAnchorage.Clear();
             if (instance.categoryOfAnchorage is not null)
                 foreach (var e in instance.categoryOfAnchorage)
@@ -28857,6 +28988,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
             if (instance.information is not null)
                 foreach (var e in instance.information)
                     information.Add(e);
+            return this;
         }
 
         public override string Serialize() {
@@ -29014,8 +29146,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
         [Category("MooringArea")]
         public ObservableCollection<vesselSpeedLimit> vesselSpeedLimit { get; set; } = new();
-        public override informationBindingDefinition[] informationBindingDefinitions => MooringArea.informationBindingDefinitions;
-        public override featureBindingDefinition[] featureBindingDefinitions => MooringArea.featureBindingDefinitions;
+        public override informationBindingDefinition[] informationBindingDefinitions => MooringArea._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => MooringArea._featureBindingDefinitions;
 
         [Browsable(false)]
         public categoryOfMooringArea[] categoryOfMooringAreaList => [(categoryOfMooringArea)1, (categoryOfMooringArea)2, (categoryOfMooringArea)3];
@@ -29026,7 +29158,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         [Browsable(false)]
         public status[] statusList => [(status)1, (status)2, (status)3, (status)5, (status)6, (status)7, (status)8, (status)9, (status)14];
 
-        public override void Load(DomainModel.S101.FeatureTypes.MooringArea instance) {
+        public override FeatureViewModel<MooringArea> Load(DomainModel.S101.FeatureTypes.MooringArea instance) {
             categoryOfMooringArea.Clear();
             if (instance.categoryOfMooringArea is not null)
                 foreach (var e in instance.categoryOfMooringArea)
@@ -29065,6 +29197,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
             if (instance.vesselSpeedLimit is not null)
                 foreach (var e in instance.vesselSpeedLimit)
                     vesselSpeedLimit.Add(e);
+            return this;
         }
 
         public override string Serialize() {
@@ -29206,8 +29339,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
         [Category("AnchorBerth")]
         public ObservableCollection<information> information { get; set; } = new();
-        public override informationBindingDefinition[] informationBindingDefinitions => AnchorBerth.informationBindingDefinitions;
-        public override featureBindingDefinition[] featureBindingDefinitions => AnchorBerth.featureBindingDefinitions;
+        public override informationBindingDefinition[] informationBindingDefinitions => AnchorBerth._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => AnchorBerth._featureBindingDefinitions;
 
         [Browsable(false)]
         public categoryOfAnchorage[] categoryOfAnchorageList => [(categoryOfAnchorage)1, (categoryOfAnchorage)2, (categoryOfAnchorage)3, (categoryOfAnchorage)5, (categoryOfAnchorage)6, (categoryOfAnchorage)7, (categoryOfAnchorage)9, (categoryOfAnchorage)10, (categoryOfAnchorage)14];
@@ -29218,7 +29351,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         [Browsable(false)]
         public status[] statusList => [(status)1, (status)2, (status)3, (status)4, (status)5, (status)6, (status)7, (status)8, (status)9, (status)14];
 
-        public override void Load(DomainModel.S101.FeatureTypes.AnchorBerth instance) {
+        public override FeatureViewModel<AnchorBerth> Load(DomainModel.S101.FeatureTypes.AnchorBerth instance) {
             categoryOfAnchorage.Clear();
             if (instance.categoryOfAnchorage is not null)
                 foreach (var e in instance.categoryOfAnchorage)
@@ -29252,6 +29385,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
             if (instance.information is not null)
                 foreach (var e in instance.information)
                     information.Add(e);
+            return this;
         }
 
         public override string Serialize() {
@@ -29359,8 +29493,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
         [Category("SeaplaneLandingArea")]
         public ObservableCollection<information> information { get; set; } = new();
-        public override informationBindingDefinition[] informationBindingDefinitions => SeaplaneLandingArea.informationBindingDefinitions;
-        public override featureBindingDefinition[] featureBindingDefinitions => SeaplaneLandingArea.featureBindingDefinitions;
+        public override informationBindingDefinition[] informationBindingDefinitions => SeaplaneLandingArea._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => SeaplaneLandingArea._featureBindingDefinitions;
 
         [Browsable(false)]
         public restriction[] restrictionList => [(restriction)1, (restriction)2, (restriction)3, (restriction)4, (restriction)5, (restriction)6, (restriction)7, (restriction)8, (restriction)9, (restriction)10, (restriction)11, (restriction)12, (restriction)13, (restriction)15, (restriction)16, (restriction)17, (restriction)18, (restriction)19, (restriction)20, (restriction)21, (restriction)22, (restriction)23, (restriction)24, (restriction)25, (restriction)27, (restriction)39];
@@ -29368,7 +29502,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         [Browsable(false)]
         public status[] statusList => [(status)1, (status)2, (status)3, (status)4, (status)5, (status)6, (status)7, (status)8, (status)9, (status)14];
 
-        public override void Load(DomainModel.S101.FeatureTypes.SeaplaneLandingArea instance) {
+        public override FeatureViewModel<SeaplaneLandingArea> Load(DomainModel.S101.FeatureTypes.SeaplaneLandingArea instance) {
             featureName.Clear();
             if (instance.featureName is not null)
                 foreach (var e in instance.featureName)
@@ -29395,6 +29529,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
             if (instance.information is not null)
                 foreach (var e in instance.information)
                     information.Add(e);
+            return this;
         }
 
         public override string Serialize() {
@@ -29512,8 +29647,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
         [Category("DumpingGround")]
         public ObservableCollection<information> information { get; set; } = new();
-        public override informationBindingDefinition[] informationBindingDefinitions => DumpingGround.informationBindingDefinitions;
-        public override featureBindingDefinition[] featureBindingDefinitions => DumpingGround.featureBindingDefinitions;
+        public override informationBindingDefinition[] informationBindingDefinitions => DumpingGround._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => DumpingGround._featureBindingDefinitions;
 
         [Browsable(false)]
         public categoryOfDumpingGround[] categoryOfDumpingGroundList => [(categoryOfDumpingGround)2, (categoryOfDumpingGround)3, (categoryOfDumpingGround)4, (categoryOfDumpingGround)5, (categoryOfDumpingGround)6];
@@ -29524,7 +29659,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         [Browsable(false)]
         public status[] statusList => [(status)1, (status)2, (status)4, (status)6, (status)7];
 
-        public override void Load(DomainModel.S101.FeatureTypes.DumpingGround instance) {
+        public override FeatureViewModel<DumpingGround> Load(DomainModel.S101.FeatureTypes.DumpingGround instance) {
             categoryOfDumpingGround.Clear();
             if (instance.categoryOfDumpingGround is not null)
                 foreach (var e in instance.categoryOfDumpingGround)
@@ -29552,6 +29687,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
             if (instance.information is not null)
                 foreach (var e in instance.information)
                     information.Add(e);
+            return this;
         }
 
         public override string Serialize() {
@@ -29687,8 +29823,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
         [Category("MilitaryPracticeArea")]
         public ObservableCollection<information> information { get; set; } = new();
-        public override informationBindingDefinition[] informationBindingDefinitions => MilitaryPracticeArea.informationBindingDefinitions;
-        public override featureBindingDefinition[] featureBindingDefinitions => MilitaryPracticeArea.featureBindingDefinitions;
+        public override informationBindingDefinition[] informationBindingDefinitions => MilitaryPracticeArea._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => MilitaryPracticeArea._featureBindingDefinitions;
 
         [Browsable(false)]
         public categoryOfMilitaryPracticeArea[] categoryOfMilitaryPracticeAreaList => [(categoryOfMilitaryPracticeArea)2, (categoryOfMilitaryPracticeArea)3, (categoryOfMilitaryPracticeArea)4, (categoryOfMilitaryPracticeArea)5, (categoryOfMilitaryPracticeArea)6];
@@ -29699,7 +29835,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         [Browsable(false)]
         public status[] statusList => [(status)1, (status)2, (status)5, (status)6, (status)7, (status)16, (status)17];
 
-        public override void Load(DomainModel.S101.FeatureTypes.MilitaryPracticeArea instance) {
+        public override FeatureViewModel<MilitaryPracticeArea> Load(DomainModel.S101.FeatureTypes.MilitaryPracticeArea instance) {
             categoryOfMilitaryPracticeArea.Clear();
             if (instance.categoryOfMilitaryPracticeArea is not null)
                 foreach (var e in instance.categoryOfMilitaryPracticeArea)
@@ -29737,6 +29873,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
             if (instance.information is not null)
                 foreach (var e in instance.information)
                     information.Add(e);
+            return this;
         }
 
         public override string Serialize() {
@@ -29875,13 +30012,13 @@ namespace S100Framework.WPF.ViewModel.S101 {
             }
         }
 
-        public override informationBindingDefinition[] informationBindingDefinitions => AdministrationArea.informationBindingDefinitions;
-        public override featureBindingDefinition[] featureBindingDefinitions => AdministrationArea.featureBindingDefinitions;
+        public override informationBindingDefinition[] informationBindingDefinitions => AdministrationArea._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => AdministrationArea._featureBindingDefinitions;
 
         [Browsable(false)]
         public jurisdiction[] jurisdictionList => [(jurisdiction)1, (jurisdiction)2, (jurisdiction)3];
 
-        public override void Load(DomainModel.S101.FeatureTypes.AdministrationArea instance) {
+        public override FeatureViewModel<AdministrationArea> Load(DomainModel.S101.FeatureTypes.AdministrationArea instance) {
             inDispute = instance.inDispute;
             jurisdiction = instance.jurisdiction;
             featureName.Clear();
@@ -29899,6 +30036,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
                 foreach (var e in instance.information)
                     information.Add(e);
             pictorialRepresentation = instance.pictorialRepresentation;
+            return this;
         }
 
         public override string Serialize() {
@@ -30006,8 +30144,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
         [Category("CargoTranshipmentArea")]
         public ObservableCollection<information> information { get; set; } = new();
-        public override informationBindingDefinition[] informationBindingDefinitions => CargoTranshipmentArea.informationBindingDefinitions;
-        public override featureBindingDefinition[] featureBindingDefinitions => CargoTranshipmentArea.featureBindingDefinitions;
+        public override informationBindingDefinition[] informationBindingDefinitions => CargoTranshipmentArea._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => CargoTranshipmentArea._featureBindingDefinitions;
 
         [Browsable(false)]
         public restriction[] restrictionList => [(restriction)2, (restriction)3, (restriction)4, (restriction)5, (restriction)6, (restriction)8, (restriction)9, (restriction)10, (restriction)11, (restriction)12, (restriction)13, (restriction)15, (restriction)16, (restriction)17, (restriction)18, (restriction)19, (restriction)20, (restriction)21, (restriction)22, (restriction)24, (restriction)27, (restriction)39];
@@ -30015,7 +30153,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         [Browsable(false)]
         public status[] statusList => [(status)1, (status)2, (status)3, (status)5, (status)6, (status)7, (status)9];
 
-        public override void Load(DomainModel.S101.FeatureTypes.CargoTranshipmentArea instance) {
+        public override FeatureViewModel<CargoTranshipmentArea> Load(DomainModel.S101.FeatureTypes.CargoTranshipmentArea instance) {
             featureName.Clear();
             if (instance.featureName is not null)
                 foreach (var e in instance.featureName)
@@ -30048,6 +30186,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
             if (instance.information is not null)
                 foreach (var e in instance.information)
                     information.Add(e);
+            return this;
         }
 
         public override string Serialize() {
@@ -30203,8 +30342,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
             }
         }
 
-        public override informationBindingDefinition[] informationBindingDefinitions => CautionArea.informationBindingDefinitions;
-        public override featureBindingDefinition[] featureBindingDefinitions => CautionArea.featureBindingDefinitions;
+        public override informationBindingDefinition[] informationBindingDefinitions => CautionArea._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => CautionArea._featureBindingDefinitions;
 
         [Browsable(false)]
         public condition[] conditionList => [(condition)1, (condition)3, (condition)5];
@@ -30212,7 +30351,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         [Browsable(false)]
         public status[] statusList => [(status)5, (status)7];
 
-        public override void Load(DomainModel.S101.FeatureTypes.CautionArea instance) {
+        public override FeatureViewModel<CautionArea> Load(DomainModel.S101.FeatureTypes.CautionArea instance) {
             condition = instance.condition;
             fixedDateRange = new();
             if (instance.fixedDateRange != null) {
@@ -30233,6 +30372,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
                 foreach (var e in instance.information)
                     information.Add(e);
             pictorialRepresentation = instance.pictorialRepresentation;
+            return this;
         }
 
         public override string Serialize() {
@@ -30351,10 +30491,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
             }
         }
 
-        public override informationBindingDefinition[] informationBindingDefinitions => InformationArea.informationBindingDefinitions;
-        public override featureBindingDefinition[] featureBindingDefinitions => InformationArea.featureBindingDefinitions;
+        public override informationBindingDefinition[] informationBindingDefinitions => InformationArea._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => InformationArea._featureBindingDefinitions;
 
-        public override void Load(DomainModel.S101.FeatureTypes.InformationArea instance) {
+        public override FeatureViewModel<InformationArea> Load(DomainModel.S101.FeatureTypes.InformationArea instance) {
             featureName.Clear();
             if (instance.featureName is not null)
                 foreach (var e in instance.featureName)
@@ -30377,6 +30517,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
                 foreach (var e in instance.information)
                     information.Add(e);
             pictorialRepresentation = instance.pictorialRepresentation;
+            return this;
         }
 
         public override string Serialize() {
@@ -30480,10 +30621,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
         [Category("ContiguousZone")]
         public ObservableCollection<information> information { get; set; } = new();
-        public override informationBindingDefinition[] informationBindingDefinitions => ContiguousZone.informationBindingDefinitions;
-        public override featureBindingDefinition[] featureBindingDefinitions => ContiguousZone.featureBindingDefinitions;
+        public override informationBindingDefinition[] informationBindingDefinitions => ContiguousZone._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => ContiguousZone._featureBindingDefinitions;
 
-        public override void Load(DomainModel.S101.FeatureTypes.ContiguousZone instance) {
+        public override FeatureViewModel<ContiguousZone> Load(DomainModel.S101.FeatureTypes.ContiguousZone instance) {
             fixedDateRange = new();
             if (instance.fixedDateRange != null) {
                 fixedDateRange = new();
@@ -30501,6 +30642,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
             if (instance.information is not null)
                 foreach (var e in instance.information)
                     information.Add(e);
+            return this;
         }
 
         public override string Serialize() {
@@ -30575,10 +30717,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
         [Category("ContinentalShelfArea")]
         public ObservableCollection<information> information { get; set; } = new();
-        public override informationBindingDefinition[] informationBindingDefinitions => ContinentalShelfArea.informationBindingDefinitions;
-        public override featureBindingDefinition[] featureBindingDefinitions => ContinentalShelfArea.featureBindingDefinitions;
+        public override informationBindingDefinition[] informationBindingDefinitions => ContinentalShelfArea._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => ContinentalShelfArea._featureBindingDefinitions;
 
-        public override void Load(DomainModel.S101.FeatureTypes.ContinentalShelfArea instance) {
+        public override FeatureViewModel<ContinentalShelfArea> Load(DomainModel.S101.FeatureTypes.ContinentalShelfArea instance) {
             featureName.Clear();
             if (instance.featureName is not null)
                 foreach (var e in instance.featureName)
@@ -30593,6 +30735,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
             if (instance.information is not null)
                 foreach (var e in instance.information)
                     information.Add(e);
+            return this;
         }
 
         public override string Serialize() {
@@ -30674,10 +30817,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
         [Category("CustomZone")]
         public ObservableCollection<information> information { get; set; } = new();
-        public override informationBindingDefinition[] informationBindingDefinitions => CustomZone.informationBindingDefinitions;
-        public override featureBindingDefinition[] featureBindingDefinitions => CustomZone.featureBindingDefinitions;
+        public override informationBindingDefinition[] informationBindingDefinitions => CustomZone._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => CustomZone._featureBindingDefinitions;
 
-        public override void Load(DomainModel.S101.FeatureTypes.CustomZone instance) {
+        public override FeatureViewModel<CustomZone> Load(DomainModel.S101.FeatureTypes.CustomZone instance) {
             interoperabilityIdentifier = instance.interoperabilityIdentifier;
             nationality = instance.nationality;
             scaleMinimum = instance.scaleMinimum;
@@ -30685,6 +30828,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
             if (instance.information is not null)
                 foreach (var e in instance.information)
                     information.Add(e);
+            return this;
         }
 
         public override string Serialize() {
@@ -30761,10 +30905,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
         [Category("ExclusiveEconomicZone")]
         public ObservableCollection<information> information { get; set; } = new();
-        public override informationBindingDefinition[] informationBindingDefinitions => ExclusiveEconomicZone.informationBindingDefinitions;
-        public override featureBindingDefinition[] featureBindingDefinitions => ExclusiveEconomicZone.featureBindingDefinitions;
+        public override informationBindingDefinition[] informationBindingDefinitions => ExclusiveEconomicZone._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => ExclusiveEconomicZone._featureBindingDefinitions;
 
-        public override void Load(DomainModel.S101.FeatureTypes.ExclusiveEconomicZone instance) {
+        public override FeatureViewModel<ExclusiveEconomicZone> Load(DomainModel.S101.FeatureTypes.ExclusiveEconomicZone instance) {
             inDispute = instance.inDispute;
             interoperabilityIdentifier = instance.interoperabilityIdentifier;
             nationality.Clear();
@@ -30776,6 +30920,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
             if (instance.information is not null)
                 foreach (var e in instance.information)
                     information.Add(e);
+            return this;
         }
 
         public override string Serialize() {
@@ -30862,13 +31007,13 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
         [Category("FisheryZone")]
         public ObservableCollection<information> information { get; set; } = new();
-        public override informationBindingDefinition[] informationBindingDefinitions => FisheryZone.informationBindingDefinitions;
-        public override featureBindingDefinition[] featureBindingDefinitions => FisheryZone.featureBindingDefinitions;
+        public override informationBindingDefinition[] informationBindingDefinitions => FisheryZone._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => FisheryZone._featureBindingDefinitions;
 
         [Browsable(false)]
         public status[] statusList => [(status)1, (status)5, (status)6, (status)7];
 
-        public override void Load(DomainModel.S101.FeatureTypes.FisheryZone instance) {
+        public override FeatureViewModel<FisheryZone> Load(DomainModel.S101.FeatureTypes.FisheryZone instance) {
             featureName.Clear();
             if (instance.featureName is not null)
                 foreach (var e in instance.featureName)
@@ -30884,6 +31029,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
             if (instance.information is not null)
                 foreach (var e in instance.information)
                     information.Add(e);
+            return this;
         }
 
         public override string Serialize() {
@@ -30974,8 +31120,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
         [Category("FishingGround")]
         public ObservableCollection<information> information { get; set; } = new();
-        public override informationBindingDefinition[] informationBindingDefinitions => FishingGround.informationBindingDefinitions;
-        public override featureBindingDefinition[] featureBindingDefinitions => FishingGround.featureBindingDefinitions;
+        public override informationBindingDefinition[] informationBindingDefinitions => FishingGround._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => FishingGround._featureBindingDefinitions;
 
         [Browsable(false)]
         public restriction[] restrictionList => [(restriction)1, (restriction)2, (restriction)4, (restriction)5, (restriction)6, (restriction)8, (restriction)9, (restriction)10, (restriction)11, (restriction)12, (restriction)15, (restriction)16, (restriction)17, (restriction)18, (restriction)19, (restriction)20, (restriction)21, (restriction)22, (restriction)23, (restriction)24, (restriction)25, (restriction)26, (restriction)27, (restriction)39];
@@ -30983,7 +31129,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         [Browsable(false)]
         public status[] statusList => [(status)1, (status)5, (status)6, (status)7, (status)8, (status)14, (status)16, (status)17, (status)28];
 
-        public override void Load(DomainModel.S101.FeatureTypes.FishingGround instance) {
+        public override FeatureViewModel<FishingGround> Load(DomainModel.S101.FeatureTypes.FishingGround instance) {
             featureName.Clear();
             if (instance.featureName is not null)
                 foreach (var e in instance.featureName)
@@ -31010,6 +31156,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
             if (instance.information is not null)
                 foreach (var e in instance.information)
                     information.Add(e);
+            return this;
         }
 
         public override string Serialize() {
@@ -31102,13 +31249,13 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
         [Category("FreePortArea")]
         public ObservableCollection<information> information { get; set; } = new();
-        public override informationBindingDefinition[] informationBindingDefinitions => FreePortArea.informationBindingDefinitions;
-        public override featureBindingDefinition[] featureBindingDefinitions => FreePortArea.featureBindingDefinitions;
+        public override informationBindingDefinition[] informationBindingDefinitions => FreePortArea._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => FreePortArea._featureBindingDefinitions;
 
         [Browsable(false)]
         public status[] statusList => [(status)1, (status)6, (status)8, (status)14];
 
-        public override void Load(DomainModel.S101.FeatureTypes.FreePortArea instance) {
+        public override FeatureViewModel<FreePortArea> Load(DomainModel.S101.FeatureTypes.FreePortArea instance) {
             featureName.Clear();
             if (instance.featureName is not null)
                 foreach (var e in instance.featureName)
@@ -31123,6 +31270,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
             if (instance.information is not null)
                 foreach (var e in instance.information)
                     information.Add(e);
+            return this;
         }
 
         public override string Serialize() {
@@ -31200,13 +31348,13 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
         [Category("HarbourAreaAdministrative")]
         public ObservableCollection<information> information { get; set; } = new();
-        public override informationBindingDefinition[] informationBindingDefinitions => HarbourAreaAdministrative.informationBindingDefinitions;
-        public override featureBindingDefinition[] featureBindingDefinitions => HarbourAreaAdministrative.featureBindingDefinitions;
+        public override informationBindingDefinition[] informationBindingDefinitions => HarbourAreaAdministrative._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => HarbourAreaAdministrative._featureBindingDefinitions;
 
         [Browsable(false)]
         public status[] statusList => [(status)1, (status)4, (status)6, (status)8, (status)14];
 
-        public override void Load(DomainModel.S101.FeatureTypes.HarbourAreaAdministrative instance) {
+        public override FeatureViewModel<HarbourAreaAdministrative> Load(DomainModel.S101.FeatureTypes.HarbourAreaAdministrative instance) {
             featureName.Clear();
             if (instance.featureName is not null)
                 foreach (var e in instance.featureName)
@@ -31221,6 +31369,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
             if (instance.information is not null)
                 foreach (var e in instance.information)
                     information.Add(e);
+            return this;
         }
 
         public override string Serialize() {
@@ -31301,13 +31450,13 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
         [Category("LogPond")]
         public ObservableCollection<information> information { get; set; } = new();
-        public override informationBindingDefinition[] informationBindingDefinitions => LogPond.informationBindingDefinitions;
-        public override featureBindingDefinition[] featureBindingDefinitions => LogPond.featureBindingDefinitions;
+        public override informationBindingDefinition[] informationBindingDefinitions => LogPond._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => LogPond._featureBindingDefinitions;
 
         [Browsable(false)]
         public status[] statusList => [(status)1, (status)2, (status)5, (status)6, (status)7, (status)8];
 
-        public override void Load(DomainModel.S101.FeatureTypes.LogPond instance) {
+        public override FeatureViewModel<LogPond> Load(DomainModel.S101.FeatureTypes.LogPond instance) {
             featureName.Clear();
             if (instance.featureName is not null)
                 foreach (var e in instance.featureName)
@@ -31326,6 +31475,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
             if (instance.information is not null)
                 foreach (var e in instance.information)
                     information.Add(e);
+            return this;
         }
 
         public override string Serialize() {
@@ -31461,8 +31611,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
         [Category("OilBarrier")]
         public ObservableCollection<information> information { get; set; } = new();
-        public override informationBindingDefinition[] informationBindingDefinitions => OilBarrier.informationBindingDefinitions;
-        public override featureBindingDefinition[] featureBindingDefinitions => OilBarrier.featureBindingDefinitions;
+        public override informationBindingDefinition[] informationBindingDefinitions => OilBarrier._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => OilBarrier._featureBindingDefinitions;
 
         [Browsable(false)]
         public categoryOfOilBarrier[] categoryOfOilBarrierList => [(categoryOfOilBarrier)1, (categoryOfOilBarrier)2];
@@ -31473,7 +31623,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         [Browsable(false)]
         public status[] statusList => [(status)1, (status)2, (status)4, (status)5, (status)7, (status)8];
 
-        public override void Load(DomainModel.S101.FeatureTypes.OilBarrier instance) {
+        public override FeatureViewModel<OilBarrier> Load(DomainModel.S101.FeatureTypes.OilBarrier instance) {
             categoryOfOilBarrier = instance.categoryOfOilBarrier;
             condition = instance.condition;
             featureName.Clear();
@@ -31497,6 +31647,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
             if (instance.information is not null)
                 foreach (var e in instance.information)
                     information.Add(e);
+            return this;
         }
 
         public override string Serialize() {
@@ -31586,10 +31737,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
         [Category("StraightTerritorialSeaBaseline")]
         public ObservableCollection<information> information { get; set; } = new();
-        public override informationBindingDefinition[] informationBindingDefinitions => StraightTerritorialSeaBaseline.informationBindingDefinitions;
-        public override featureBindingDefinition[] featureBindingDefinitions => StraightTerritorialSeaBaseline.featureBindingDefinitions;
+        public override informationBindingDefinition[] informationBindingDefinitions => StraightTerritorialSeaBaseline._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => StraightTerritorialSeaBaseline._featureBindingDefinitions;
 
-        public override void Load(DomainModel.S101.FeatureTypes.StraightTerritorialSeaBaseline instance) {
+        public override FeatureViewModel<StraightTerritorialSeaBaseline> Load(DomainModel.S101.FeatureTypes.StraightTerritorialSeaBaseline instance) {
             interoperabilityIdentifier = instance.interoperabilityIdentifier;
             nationality = instance.nationality;
             scaleMinimum = instance.scaleMinimum;
@@ -31597,6 +31748,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
             if (instance.information is not null)
                 foreach (var e in instance.information)
                     information.Add(e);
+            return this;
         }
 
         public override string Serialize() {
@@ -31681,13 +31833,13 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
         [Category("TerritorialSeaArea")]
         public ObservableCollection<information> information { get; set; } = new();
-        public override informationBindingDefinition[] informationBindingDefinitions => TerritorialSeaArea.informationBindingDefinitions;
-        public override featureBindingDefinition[] featureBindingDefinitions => TerritorialSeaArea.featureBindingDefinitions;
+        public override informationBindingDefinition[] informationBindingDefinitions => TerritorialSeaArea._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => TerritorialSeaArea._featureBindingDefinitions;
 
         [Browsable(false)]
         public restriction[] restrictionList => [(restriction)2, (restriction)4, (restriction)6, (restriction)8, (restriction)9, (restriction)10, (restriction)12, (restriction)17, (restriction)18, (restriction)19, (restriction)20, (restriction)21, (restriction)22, (restriction)23, (restriction)24, (restriction)27];
 
-        public override void Load(DomainModel.S101.FeatureTypes.TerritorialSeaArea instance) {
+        public override FeatureViewModel<TerritorialSeaArea> Load(DomainModel.S101.FeatureTypes.TerritorialSeaArea instance) {
             inDispute = instance.inDispute;
             interoperabilityIdentifier = instance.interoperabilityIdentifier;
             nationality.Clear();
@@ -31707,6 +31859,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
             if (instance.information is not null)
                 foreach (var e in instance.information)
                     information.Add(e);
+            return this;
         }
 
         public override string Serialize() {
@@ -31806,13 +31959,13 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
         [Category("SubmarineTransitLane")]
         public ObservableCollection<information> information { get; set; } = new();
-        public override informationBindingDefinition[] informationBindingDefinitions => SubmarineTransitLane.informationBindingDefinitions;
-        public override featureBindingDefinition[] featureBindingDefinitions => SubmarineTransitLane.featureBindingDefinitions;
+        public override informationBindingDefinition[] informationBindingDefinitions => SubmarineTransitLane._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => SubmarineTransitLane._featureBindingDefinitions;
 
         [Browsable(false)]
         public restriction[] restrictionList => [(restriction)1, (restriction)2, (restriction)3, (restriction)4, (restriction)5, (restriction)6, (restriction)7, (restriction)8, (restriction)9, (restriction)10, (restriction)11, (restriction)12, (restriction)13, (restriction)16, (restriction)17, (restriction)18, (restriction)19, (restriction)20, (restriction)21, (restriction)22, (restriction)23, (restriction)24, (restriction)25, (restriction)27];
 
-        public override void Load(DomainModel.S101.FeatureTypes.SubmarineTransitLane instance) {
+        public override FeatureViewModel<SubmarineTransitLane> Load(DomainModel.S101.FeatureTypes.SubmarineTransitLane instance) {
             featureName.Clear();
             if (instance.featureName is not null)
                 foreach (var e in instance.featureName)
@@ -31832,6 +31985,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
             if (instance.information is not null)
                 foreach (var e in instance.information)
                     information.Add(e);
+            return this;
         }
 
         public override string Serialize() {
@@ -31914,10 +32068,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
         [Category("PilotageDistrict")]
         public ObservableCollection<information> information { get; set; } = new();
-        public override informationBindingDefinition[] informationBindingDefinitions => PilotageDistrict.informationBindingDefinitions;
-        public override featureBindingDefinition[] featureBindingDefinitions => PilotageDistrict.featureBindingDefinitions;
+        public override informationBindingDefinition[] informationBindingDefinitions => PilotageDistrict._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => PilotageDistrict._featureBindingDefinitions;
 
-        public override void Load(DomainModel.S101.FeatureTypes.PilotageDistrict instance) {
+        public override FeatureViewModel<PilotageDistrict> Load(DomainModel.S101.FeatureTypes.PilotageDistrict instance) {
             communicationChannel.Clear();
             if (instance.communicationChannel is not null)
                 foreach (var e in instance.communicationChannel)
@@ -31932,6 +32086,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
             if (instance.information is not null)
                 foreach (var e in instance.information)
                     information.Add(e);
+            return this;
         }
 
         public override string Serialize() {
@@ -32032,10 +32187,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
         [Category("CollisionRegulationsLimit")]
         public ObservableCollection<information> information { get; set; } = new();
-        public override informationBindingDefinition[] informationBindingDefinitions => CollisionRegulationsLimit.informationBindingDefinitions;
-        public override featureBindingDefinition[] featureBindingDefinitions => CollisionRegulationsLimit.featureBindingDefinitions;
+        public override informationBindingDefinition[] informationBindingDefinitions => CollisionRegulationsLimit._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => CollisionRegulationsLimit._featureBindingDefinitions;
 
-        public override void Load(DomainModel.S101.FeatureTypes.CollisionRegulationsLimit instance) {
+        public override FeatureViewModel<CollisionRegulationsLimit> Load(DomainModel.S101.FeatureTypes.CollisionRegulationsLimit instance) {
             featureName.Clear();
             if (instance.featureName is not null)
                 foreach (var e in instance.featureName)
@@ -32057,6 +32212,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
             if (instance.information is not null)
                 foreach (var e in instance.information)
                     information.Add(e);
+            return this;
         }
 
         public override string Serialize() {
@@ -32145,10 +32301,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
         [Category("MarinePollutionRegulationsArea")]
         public ObservableCollection<information> information { get; set; } = new();
-        public override informationBindingDefinition[] informationBindingDefinitions => MarinePollutionRegulationsArea.informationBindingDefinitions;
-        public override featureBindingDefinition[] featureBindingDefinitions => MarinePollutionRegulationsArea.featureBindingDefinitions;
+        public override informationBindingDefinition[] informationBindingDefinitions => MarinePollutionRegulationsArea._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => MarinePollutionRegulationsArea._featureBindingDefinitions;
 
-        public override void Load(DomainModel.S101.FeatureTypes.MarinePollutionRegulationsArea instance) {
+        public override FeatureViewModel<MarinePollutionRegulationsArea> Load(DomainModel.S101.FeatureTypes.MarinePollutionRegulationsArea instance) {
             featureName.Clear();
             if (instance.featureName is not null)
                 foreach (var e in instance.featureName)
@@ -32160,6 +32316,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
             if (instance.information is not null)
                 foreach (var e in instance.information)
                     information.Add(e);
+            return this;
         }
 
         public override string Serialize() {
@@ -32263,8 +32420,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
         [Category("RestrictedArea")]
         public ObservableCollection<information> information { get; set; } = new();
-        public override informationBindingDefinition[] informationBindingDefinitions => RestrictedArea.informationBindingDefinitions;
-        public override featureBindingDefinition[] featureBindingDefinitions => RestrictedArea.featureBindingDefinitions;
+        public override informationBindingDefinition[] informationBindingDefinitions => RestrictedArea._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => RestrictedArea._featureBindingDefinitions;
 
         [Browsable(false)]
         public categoryOfRestrictedArea[] categoryOfRestrictedAreaList => [(categoryOfRestrictedArea)1, (categoryOfRestrictedArea)4, (categoryOfRestrictedArea)5, (categoryOfRestrictedArea)6, (categoryOfRestrictedArea)7, (categoryOfRestrictedArea)8, (categoryOfRestrictedArea)9, (categoryOfRestrictedArea)10, (categoryOfRestrictedArea)12, (categoryOfRestrictedArea)14, (categoryOfRestrictedArea)18, (categoryOfRestrictedArea)19, (categoryOfRestrictedArea)20, (categoryOfRestrictedArea)21, (categoryOfRestrictedArea)22, (categoryOfRestrictedArea)23, (categoryOfRestrictedArea)24, (categoryOfRestrictedArea)25, (categoryOfRestrictedArea)27, (categoryOfRestrictedArea)28, (categoryOfRestrictedArea)29, (categoryOfRestrictedArea)30, (categoryOfRestrictedArea)31, (categoryOfRestrictedArea)32];
@@ -32275,7 +32432,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         [Browsable(false)]
         public status[] statusList => [(status)1, (status)2, (status)3, (status)4, (status)5, (status)6, (status)7, (status)9, (status)18, (status)28];
 
-        public override void Load(DomainModel.S101.FeatureTypes.RestrictedArea instance) {
+        public override FeatureViewModel<RestrictedArea> Load(DomainModel.S101.FeatureTypes.RestrictedArea instance) {
             categoryOfRestrictedArea.Clear();
             if (instance.categoryOfRestrictedArea is not null)
                 foreach (var e in instance.categoryOfRestrictedArea)
@@ -32312,6 +32469,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
             if (instance.information is not null)
                 foreach (var e in instance.information)
                     information.Add(e);
+            return this;
         }
 
         public override string Serialize() {
@@ -32593,8 +32751,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
         [Category("LightAllAround")]
         public ObservableCollection<information> information { get; set; } = new();
-        public override informationBindingDefinition[] informationBindingDefinitions => LightAllAround.informationBindingDefinitions;
-        public override featureBindingDefinition[] featureBindingDefinitions => LightAllAround.featureBindingDefinitions;
+        public override informationBindingDefinition[] informationBindingDefinitions => LightAllAround._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => LightAllAround._featureBindingDefinitions;
 
         [Browsable(false)]
         public categoryOfLight[] categoryOfLightList => [(categoryOfLight)4, (categoryOfLight)5, (categoryOfLight)8, (categoryOfLight)9, (categoryOfLight)10, (categoryOfLight)11, (categoryOfLight)12, (categoryOfLight)13, (categoryOfLight)14, (categoryOfLight)15, (categoryOfLight)17, (categoryOfLight)18, (categoryOfLight)19, (categoryOfLight)20];
@@ -32620,7 +32778,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         [Browsable(false)]
         public verticalDatum[] verticalDatumList => [(verticalDatum)3, (verticalDatum)13, (verticalDatum)16, (verticalDatum)17, (verticalDatum)18, (verticalDatum)19, (verticalDatum)20, (verticalDatum)21, (verticalDatum)24, (verticalDatum)25, (verticalDatum)26, (verticalDatum)28, (verticalDatum)29, (verticalDatum)30, (verticalDatum)44];
 
-        public override void Load(DomainModel.S101.FeatureTypes.LightAllAround instance) {
+        public override FeatureViewModel<LightAllAround> Load(DomainModel.S101.FeatureTypes.LightAllAround instance) {
             categoryOfLight.Clear();
             if (instance.categoryOfLight is not null)
                 foreach (var e in instance.categoryOfLight)
@@ -32675,6 +32833,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
             if (instance.information is not null)
                 foreach (var e in instance.information)
                     information.Add(e);
+            return this;
         }
 
         public override string Serialize() {
@@ -32898,8 +33057,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
         [Category("LightSectored")]
         public ObservableCollection<information> information { get; set; } = new();
-        public override informationBindingDefinition[] informationBindingDefinitions => LightSectored.informationBindingDefinitions;
-        public override featureBindingDefinition[] featureBindingDefinitions => LightSectored.featureBindingDefinitions;
+        public override informationBindingDefinition[] informationBindingDefinitions => LightSectored._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => LightSectored._featureBindingDefinitions;
 
         [Browsable(false)]
         public categoryOfLight[] categoryOfLightList => [(categoryOfLight)4, (categoryOfLight)5, (categoryOfLight)8, (categoryOfLight)9, (categoryOfLight)10, (categoryOfLight)11, (categoryOfLight)12, (categoryOfLight)13, (categoryOfLight)14, (categoryOfLight)15, (categoryOfLight)17, (categoryOfLight)18, (categoryOfLight)19, (categoryOfLight)20];
@@ -32919,7 +33078,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         [Browsable(false)]
         public verticalDatum[] verticalDatumList => [(verticalDatum)3, (verticalDatum)13, (verticalDatum)16, (verticalDatum)17, (verticalDatum)18, (verticalDatum)19, (verticalDatum)20, (verticalDatum)21, (verticalDatum)24, (verticalDatum)25, (verticalDatum)26, (verticalDatum)28, (verticalDatum)29, (verticalDatum)30, (verticalDatum)44];
 
-        public override void Load(DomainModel.S101.FeatureTypes.LightSectored instance) {
+        public override FeatureViewModel<LightSectored> Load(DomainModel.S101.FeatureTypes.LightSectored instance) {
             categoryOfLight.Clear();
             if (instance.categoryOfLight is not null)
                 foreach (var e in instance.categoryOfLight)
@@ -32963,6 +33122,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
             if (instance.information is not null)
                 foreach (var e in instance.information)
                     information.Add(e);
+            return this;
         }
 
         public override string Serialize() {
@@ -33167,8 +33327,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
         [Category("LightFogDetector")]
         public ObservableCollection<information> information { get; set; } = new();
-        public override informationBindingDefinition[] informationBindingDefinitions => LightFogDetector.informationBindingDefinitions;
-        public override featureBindingDefinition[] featureBindingDefinitions => LightFogDetector.featureBindingDefinitions;
+        public override informationBindingDefinition[] informationBindingDefinitions => LightFogDetector._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => LightFogDetector._featureBindingDefinitions;
 
         [Browsable(false)]
         public colour[] colourList => [(colour)1, (colour)3, (colour)4, (colour)5, (colour)6, (colour)9, (colour)10, (colour)11];
@@ -33182,7 +33342,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         [Browsable(false)]
         public verticalDatum[] verticalDatumList => [(verticalDatum)3, (verticalDatum)13, (verticalDatum)16, (verticalDatum)17, (verticalDatum)18, (verticalDatum)19, (verticalDatum)20, (verticalDatum)21, (verticalDatum)24, (verticalDatum)25, (verticalDatum)26, (verticalDatum)28, (verticalDatum)29, (verticalDatum)30, (verticalDatum)44];
 
-        public override void Load(DomainModel.S101.FeatureTypes.LightFogDetector instance) {
+        public override FeatureViewModel<LightFogDetector> Load(DomainModel.S101.FeatureTypes.LightFogDetector instance) {
             colour.Clear();
             if (instance.colour is not null)
                 foreach (var e in instance.colour)
@@ -33222,6 +33382,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
             if (instance.information is not null)
                 foreach (var e in instance.information)
                     information.Add(e);
+            return this;
         }
 
         public override string Serialize() {
@@ -33439,8 +33600,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
         [Category("LightAirObstruction")]
         public ObservableCollection<information> information { get; set; } = new();
-        public override informationBindingDefinition[] informationBindingDefinitions => LightAirObstruction.informationBindingDefinitions;
-        public override featureBindingDefinition[] featureBindingDefinitions => LightAirObstruction.featureBindingDefinitions;
+        public override informationBindingDefinition[] informationBindingDefinitions => LightAirObstruction._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => LightAirObstruction._featureBindingDefinitions;
 
         [Browsable(false)]
         public colour[] colourList => [(colour)1, (colour)3, (colour)4, (colour)5, (colour)6, (colour)9, (colour)10, (colour)11];
@@ -33457,7 +33618,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         [Browsable(false)]
         public verticalDatum[] verticalDatumList => [(verticalDatum)3, (verticalDatum)13, (verticalDatum)16, (verticalDatum)17, (verticalDatum)18, (verticalDatum)19, (verticalDatum)20, (verticalDatum)21, (verticalDatum)24, (verticalDatum)25, (verticalDatum)26, (verticalDatum)28, (verticalDatum)29, (verticalDatum)30, (verticalDatum)44];
 
-        public override void Load(DomainModel.S101.FeatureTypes.LightAirObstruction instance) {
+        public override FeatureViewModel<LightAirObstruction> Load(DomainModel.S101.FeatureTypes.LightAirObstruction instance) {
             colour.Clear();
             if (instance.colour is not null)
                 foreach (var e in instance.colour)
@@ -33507,6 +33668,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
             if (instance.information is not null)
                 foreach (var e in instance.information)
                     information.Add(e);
+            return this;
         }
 
         public override string Serialize() {
@@ -33747,8 +33909,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
             }
         }
 
-        public override informationBindingDefinition[] informationBindingDefinitions => LateralBuoy.informationBindingDefinitions;
-        public override featureBindingDefinition[] featureBindingDefinitions => LateralBuoy.featureBindingDefinitions;
+        public override informationBindingDefinition[] informationBindingDefinitions => LateralBuoy._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => LateralBuoy._featureBindingDefinitions;
 
         [Browsable(false)]
         public buoyShape[] buoyShapeList => [(buoyShape)1, (buoyShape)2, (buoyShape)3, (buoyShape)4, (buoyShape)5, (buoyShape)6, (buoyShape)7, (buoyShape)8];
@@ -33771,7 +33933,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         [Browsable(false)]
         public status[] statusList => [(status)1, (status)2, (status)5, (status)7, (status)8, (status)18];
 
-        public override void Load(DomainModel.S101.FeatureTypes.LateralBuoy instance) {
+        public override FeatureViewModel<LateralBuoy> Load(DomainModel.S101.FeatureTypes.LateralBuoy instance) {
             buoyShape = instance.buoyShape;
             categoryOfLateralMark = instance.categoryOfLateralMark;
             colour.Clear();
@@ -33817,6 +33979,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
                 foreach (var e in instance.information)
                     information.Add(e);
             pictorialRepresentation = instance.pictorialRepresentation;
+            return this;
         }
 
         public override string Serialize() {
@@ -34059,8 +34222,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
             }
         }
 
-        public override informationBindingDefinition[] informationBindingDefinitions => CardinalBuoy.informationBindingDefinitions;
-        public override featureBindingDefinition[] featureBindingDefinitions => CardinalBuoy.featureBindingDefinitions;
+        public override informationBindingDefinition[] informationBindingDefinitions => CardinalBuoy._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => CardinalBuoy._featureBindingDefinitions;
 
         [Browsable(false)]
         public buoyShape[] buoyShapeList => [(buoyShape)1, (buoyShape)2, (buoyShape)3, (buoyShape)4, (buoyShape)5, (buoyShape)6, (buoyShape)7, (buoyShape)8];
@@ -34083,7 +34246,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         [Browsable(false)]
         public status[] statusList => [(status)1, (status)2, (status)5, (status)7, (status)8, (status)18];
 
-        public override void Load(DomainModel.S101.FeatureTypes.CardinalBuoy instance) {
+        public override FeatureViewModel<CardinalBuoy> Load(DomainModel.S101.FeatureTypes.CardinalBuoy instance) {
             buoyShape = instance.buoyShape;
             categoryOfCardinalMark = instance.categoryOfCardinalMark;
             colour.Clear();
@@ -34129,6 +34292,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
                 foreach (var e in instance.information)
                     information.Add(e);
             pictorialRepresentation = instance.pictorialRepresentation;
+            return this;
         }
 
         public override string Serialize() {
@@ -34357,8 +34521,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
             }
         }
 
-        public override informationBindingDefinition[] informationBindingDefinitions => IsolatedDangerBuoy.informationBindingDefinitions;
-        public override featureBindingDefinition[] featureBindingDefinitions => IsolatedDangerBuoy.featureBindingDefinitions;
+        public override informationBindingDefinition[] informationBindingDefinitions => IsolatedDangerBuoy._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => IsolatedDangerBuoy._featureBindingDefinitions;
 
         [Browsable(false)]
         public buoyShape[] buoyShapeList => [(buoyShape)1, (buoyShape)2, (buoyShape)3, (buoyShape)4, (buoyShape)5, (buoyShape)6, (buoyShape)7, (buoyShape)8];
@@ -34378,7 +34542,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         [Browsable(false)]
         public status[] statusList => [(status)1, (status)2, (status)5, (status)7, (status)8, (status)18];
 
-        public override void Load(DomainModel.S101.FeatureTypes.IsolatedDangerBuoy instance) {
+        public override FeatureViewModel<IsolatedDangerBuoy> Load(DomainModel.S101.FeatureTypes.IsolatedDangerBuoy instance) {
             buoyShape = instance.buoyShape;
             colour.Clear();
             if (instance.colour is not null)
@@ -34423,6 +34587,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
                 foreach (var e in instance.information)
                     information.Add(e);
             pictorialRepresentation = instance.pictorialRepresentation;
+            return this;
         }
 
         public override string Serialize() {
@@ -34649,8 +34814,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
             }
         }
 
-        public override informationBindingDefinition[] informationBindingDefinitions => SafeWaterBuoy.informationBindingDefinitions;
-        public override featureBindingDefinition[] featureBindingDefinitions => SafeWaterBuoy.featureBindingDefinitions;
+        public override informationBindingDefinition[] informationBindingDefinitions => SafeWaterBuoy._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => SafeWaterBuoy._featureBindingDefinitions;
 
         [Browsable(false)]
         public buoyShape[] buoyShapeList => [(buoyShape)1, (buoyShape)2, (buoyShape)3, (buoyShape)4, (buoyShape)5, (buoyShape)6, (buoyShape)7, (buoyShape)8];
@@ -34670,7 +34835,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         [Browsable(false)]
         public status[] statusList => [(status)1, (status)2, (status)5, (status)7, (status)8, (status)18];
 
-        public override void Load(DomainModel.S101.FeatureTypes.SafeWaterBuoy instance) {
+        public override FeatureViewModel<SafeWaterBuoy> Load(DomainModel.S101.FeatureTypes.SafeWaterBuoy instance) {
             buoyShape = instance.buoyShape;
             colour.Clear();
             if (instance.colour is not null)
@@ -34715,6 +34880,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
                 foreach (var e in instance.information)
                     information.Add(e);
             pictorialRepresentation = instance.pictorialRepresentation;
+            return this;
         }
 
         public override string Serialize() {
@@ -34946,8 +35112,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
             }
         }
 
-        public override informationBindingDefinition[] informationBindingDefinitions => SpecialPurposeGeneralBuoy.informationBindingDefinitions;
-        public override featureBindingDefinition[] featureBindingDefinitions => SpecialPurposeGeneralBuoy.featureBindingDefinitions;
+        public override informationBindingDefinition[] informationBindingDefinitions => SpecialPurposeGeneralBuoy._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => SpecialPurposeGeneralBuoy._featureBindingDefinitions;
 
         [Browsable(false)]
         public buoyShape[] buoyShapeList => [(buoyShape)1, (buoyShape)2, (buoyShape)3, (buoyShape)4, (buoyShape)5, (buoyShape)6, (buoyShape)7, (buoyShape)8];
@@ -34970,7 +35136,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         [Browsable(false)]
         public status[] statusList => [(status)1, (status)2, (status)5, (status)7, (status)8, (status)18];
 
-        public override void Load(DomainModel.S101.FeatureTypes.SpecialPurposeGeneralBuoy instance) {
+        public override FeatureViewModel<SpecialPurposeGeneralBuoy> Load(DomainModel.S101.FeatureTypes.SpecialPurposeGeneralBuoy instance) {
             buoyShape = instance.buoyShape;
             categoryOfSpecialPurposeMark.Clear();
             if (instance.categoryOfSpecialPurposeMark is not null)
@@ -35019,6 +35185,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
                 foreach (var e in instance.information)
                     information.Add(e);
             pictorialRepresentation = instance.pictorialRepresentation;
+            return this;
         }
 
         public override string Serialize() {
@@ -35242,8 +35409,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
             }
         }
 
-        public override informationBindingDefinition[] informationBindingDefinitions => EmergencyWreckMarkingBuoy.informationBindingDefinitions;
-        public override featureBindingDefinition[] featureBindingDefinitions => EmergencyWreckMarkingBuoy.featureBindingDefinitions;
+        public override informationBindingDefinition[] informationBindingDefinitions => EmergencyWreckMarkingBuoy._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => EmergencyWreckMarkingBuoy._featureBindingDefinitions;
 
         [Browsable(false)]
         public buoyShape[] buoyShapeList => [(buoyShape)1, (buoyShape)2, (buoyShape)3, (buoyShape)4, (buoyShape)5, (buoyShape)6];
@@ -35260,7 +35427,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         [Browsable(false)]
         public natureOfConstruction[] natureOfConstructionList => [(natureOfConstruction)6, (natureOfConstruction)7, (natureOfConstruction)8, (natureOfConstruction)11];
 
-        public override void Load(DomainModel.S101.FeatureTypes.EmergencyWreckMarkingBuoy instance) {
+        public override FeatureViewModel<EmergencyWreckMarkingBuoy> Load(DomainModel.S101.FeatureTypes.EmergencyWreckMarkingBuoy instance) {
             buoyShape = instance.buoyShape;
             colour.Clear();
             if (instance.colour is not null)
@@ -35297,6 +35464,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
                 foreach (var e in instance.information)
                     information.Add(e);
             pictorialRepresentation = instance.pictorialRepresentation;
+            return this;
         }
 
         public override string Serialize() {
@@ -35507,8 +35675,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
             }
         }
 
-        public override informationBindingDefinition[] informationBindingDefinitions => InstallationBuoy.informationBindingDefinitions;
-        public override featureBindingDefinition[] featureBindingDefinitions => InstallationBuoy.featureBindingDefinitions;
+        public override informationBindingDefinition[] informationBindingDefinitions => InstallationBuoy._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => InstallationBuoy._featureBindingDefinitions;
 
         [Browsable(false)]
         public buoyShape[] buoyShapeList => [(buoyShape)1, (buoyShape)2, (buoyShape)3, (buoyShape)4, (buoyShape)5, (buoyShape)6, (buoyShape)7, (buoyShape)8];
@@ -35534,7 +35702,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         [Browsable(false)]
         public visualProminence[] visualProminenceList => [(visualProminence)1, (visualProminence)2, (visualProminence)3];
 
-        public override void Load(DomainModel.S101.FeatureTypes.InstallationBuoy instance) {
+        public override FeatureViewModel<InstallationBuoy> Load(DomainModel.S101.FeatureTypes.InstallationBuoy instance) {
             buoyShape = instance.buoyShape;
             categoryOfInstallationBuoy = instance.categoryOfInstallationBuoy;
             colour.Clear();
@@ -35577,6 +35745,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
                 foreach (var e in instance.information)
                     information.Add(e);
             pictorialRepresentation = instance.pictorialRepresentation;
+            return this;
         }
 
         public override string Serialize() {
@@ -35803,8 +35972,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
             }
         }
 
-        public override informationBindingDefinition[] informationBindingDefinitions => MooringBuoy.informationBindingDefinitions;
-        public override featureBindingDefinition[] featureBindingDefinitions => MooringBuoy.featureBindingDefinitions;
+        public override informationBindingDefinition[] informationBindingDefinitions => MooringBuoy._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => MooringBuoy._featureBindingDefinitions;
 
         [Browsable(false)]
         public buoyShape[] buoyShapeList => [(buoyShape)1, (buoyShape)2, (buoyShape)3, (buoyShape)4, (buoyShape)5, (buoyShape)6, (buoyShape)7, (buoyShape)8];
@@ -35821,7 +35990,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         [Browsable(false)]
         public status[] statusList => [(status)1, (status)2, (status)4, (status)5, (status)7, (status)8, (status)18];
 
-        public override void Load(DomainModel.S101.FeatureTypes.MooringBuoy instance) {
+        public override FeatureViewModel<MooringBuoy> Load(DomainModel.S101.FeatureTypes.MooringBuoy instance) {
             buoyShape = instance.buoyShape;
             colour.Clear();
             if (instance.colour is not null)
@@ -35861,6 +36030,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
                 foreach (var e in instance.information)
                     information.Add(e);
             pictorialRepresentation = instance.pictorialRepresentation;
+            return this;
         }
 
         public override string Serialize() {
@@ -36165,8 +36335,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
             }
         }
 
-        public override informationBindingDefinition[] informationBindingDefinitions => LateralBeacon.informationBindingDefinitions;
-        public override featureBindingDefinition[] featureBindingDefinitions => LateralBeacon.featureBindingDefinitions;
+        public override informationBindingDefinition[] informationBindingDefinitions => LateralBeacon._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => LateralBeacon._featureBindingDefinitions;
 
         [Browsable(false)]
         public beaconShape[] beaconShapeList => [(beaconShape)1, (beaconShape)2, (beaconShape)3, (beaconShape)4, (beaconShape)5, (beaconShape)6, (beaconShape)7];
@@ -36195,7 +36365,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         [Browsable(false)]
         public visualProminence[] visualProminenceList => [(visualProminence)1, (visualProminence)2, (visualProminence)3];
 
-        public override void Load(DomainModel.S101.FeatureTypes.LateralBeacon instance) {
+        public override FeatureViewModel<LateralBeacon> Load(DomainModel.S101.FeatureTypes.LateralBeacon instance) {
             beaconShape = instance.beaconShape;
             categoryOfLateralMark = instance.categoryOfLateralMark;
             colour.Clear();
@@ -36246,6 +36416,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
                 foreach (var e in instance.information)
                     information.Add(e);
             pictorialRepresentation = instance.pictorialRepresentation;
+            return this;
         }
 
         public override string Serialize() {
@@ -36562,8 +36733,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
             }
         }
 
-        public override informationBindingDefinition[] informationBindingDefinitions => CardinalBeacon.informationBindingDefinitions;
-        public override featureBindingDefinition[] featureBindingDefinitions => CardinalBeacon.featureBindingDefinitions;
+        public override informationBindingDefinition[] informationBindingDefinitions => CardinalBeacon._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => CardinalBeacon._featureBindingDefinitions;
 
         [Browsable(false)]
         public beaconShape[] beaconShapeList => [(beaconShape)1, (beaconShape)2, (beaconShape)3, (beaconShape)4, (beaconShape)5, (beaconShape)6, (beaconShape)7];
@@ -36592,7 +36763,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         [Browsable(false)]
         public visualProminence[] visualProminenceList => [(visualProminence)1, (visualProminence)2, (visualProminence)3];
 
-        public override void Load(DomainModel.S101.FeatureTypes.CardinalBeacon instance) {
+        public override FeatureViewModel<CardinalBeacon> Load(DomainModel.S101.FeatureTypes.CardinalBeacon instance) {
             beaconShape = instance.beaconShape;
             categoryOfCardinalMark = instance.categoryOfCardinalMark;
             colour.Clear();
@@ -36643,6 +36814,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
                 foreach (var e in instance.information)
                     information.Add(e);
             pictorialRepresentation = instance.pictorialRepresentation;
+            return this;
         }
 
         public override string Serialize() {
@@ -36945,8 +37117,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
             }
         }
 
-        public override informationBindingDefinition[] informationBindingDefinitions => IsolatedDangerBeacon.informationBindingDefinitions;
-        public override featureBindingDefinition[] featureBindingDefinitions => IsolatedDangerBeacon.featureBindingDefinitions;
+        public override informationBindingDefinition[] informationBindingDefinitions => IsolatedDangerBeacon._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => IsolatedDangerBeacon._featureBindingDefinitions;
 
         [Browsable(false)]
         public beaconShape[] beaconShapeList => [(beaconShape)1, (beaconShape)2, (beaconShape)3, (beaconShape)4, (beaconShape)5, (beaconShape)6, (beaconShape)7];
@@ -36972,7 +37144,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         [Browsable(false)]
         public visualProminence[] visualProminenceList => [(visualProminence)1, (visualProminence)2, (visualProminence)3];
 
-        public override void Load(DomainModel.S101.FeatureTypes.IsolatedDangerBeacon instance) {
+        public override FeatureViewModel<IsolatedDangerBeacon> Load(DomainModel.S101.FeatureTypes.IsolatedDangerBeacon instance) {
             beaconShape = instance.beaconShape;
             colour.Clear();
             if (instance.colour is not null)
@@ -37022,6 +37194,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
                 foreach (var e in instance.information)
                     information.Add(e);
             pictorialRepresentation = instance.pictorialRepresentation;
+            return this;
         }
 
         public override string Serialize() {
@@ -37322,8 +37495,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
             }
         }
 
-        public override informationBindingDefinition[] informationBindingDefinitions => SafeWaterBeacon.informationBindingDefinitions;
-        public override featureBindingDefinition[] featureBindingDefinitions => SafeWaterBeacon.featureBindingDefinitions;
+        public override informationBindingDefinition[] informationBindingDefinitions => SafeWaterBeacon._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => SafeWaterBeacon._featureBindingDefinitions;
 
         [Browsable(false)]
         public beaconShape[] beaconShapeList => [(beaconShape)1, (beaconShape)2, (beaconShape)3, (beaconShape)4, (beaconShape)5, (beaconShape)6, (beaconShape)7];
@@ -37349,7 +37522,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         [Browsable(false)]
         public visualProminence[] visualProminenceList => [(visualProminence)1, (visualProminence)2, (visualProminence)3];
 
-        public override void Load(DomainModel.S101.FeatureTypes.SafeWaterBeacon instance) {
+        public override FeatureViewModel<SafeWaterBeacon> Load(DomainModel.S101.FeatureTypes.SafeWaterBeacon instance) {
             beaconShape = instance.beaconShape;
             colour.Clear();
             if (instance.colour is not null)
@@ -37399,6 +37572,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
                 foreach (var e in instance.information)
                     information.Add(e);
             pictorialRepresentation = instance.pictorialRepresentation;
+            return this;
         }
 
         public override string Serialize() {
@@ -37704,8 +37878,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
             }
         }
 
-        public override informationBindingDefinition[] informationBindingDefinitions => SpecialPurposeGeneralBeacon.informationBindingDefinitions;
-        public override featureBindingDefinition[] featureBindingDefinitions => SpecialPurposeGeneralBeacon.featureBindingDefinitions;
+        public override informationBindingDefinition[] informationBindingDefinitions => SpecialPurposeGeneralBeacon._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => SpecialPurposeGeneralBeacon._featureBindingDefinitions;
 
         [Browsable(false)]
         public beaconShape[] beaconShapeList => [(beaconShape)1, (beaconShape)2, (beaconShape)3, (beaconShape)4, (beaconShape)5, (beaconShape)6, (beaconShape)7];
@@ -37734,7 +37908,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         [Browsable(false)]
         public visualProminence[] visualProminenceList => [(visualProminence)1, (visualProminence)2, (visualProminence)3];
 
-        public override void Load(DomainModel.S101.FeatureTypes.SpecialPurposeGeneralBeacon instance) {
+        public override FeatureViewModel<SpecialPurposeGeneralBeacon> Load(DomainModel.S101.FeatureTypes.SpecialPurposeGeneralBeacon instance) {
             beaconShape = instance.beaconShape;
             categoryOfSpecialPurposeMark.Clear();
             if (instance.categoryOfSpecialPurposeMark is not null)
@@ -37788,6 +37962,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
                 foreach (var e in instance.information)
                     information.Add(e);
             pictorialRepresentation = instance.pictorialRepresentation;
+            return this;
         }
 
         public override string Serialize() {
@@ -38034,8 +38209,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
             }
         }
 
-        public override informationBindingDefinition[] informationBindingDefinitions => Daymark.informationBindingDefinitions;
-        public override featureBindingDefinition[] featureBindingDefinitions => Daymark.featureBindingDefinitions;
+        public override informationBindingDefinition[] informationBindingDefinitions => Daymark._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => Daymark._featureBindingDefinitions;
 
         [Browsable(false)]
         public categoryOfSpecialPurposeMark[] categoryOfSpecialPurposeMarkList => [(categoryOfSpecialPurposeMark)1, (categoryOfSpecialPurposeMark)2, (categoryOfSpecialPurposeMark)3, (categoryOfSpecialPurposeMark)4, (categoryOfSpecialPurposeMark)5, (categoryOfSpecialPurposeMark)6, (categoryOfSpecialPurposeMark)7, (categoryOfSpecialPurposeMark)8, (categoryOfSpecialPurposeMark)10, (categoryOfSpecialPurposeMark)11, (categoryOfSpecialPurposeMark)12, (categoryOfSpecialPurposeMark)14, (categoryOfSpecialPurposeMark)15, (categoryOfSpecialPurposeMark)16, (categoryOfSpecialPurposeMark)17, (categoryOfSpecialPurposeMark)18, (categoryOfSpecialPurposeMark)19, (categoryOfSpecialPurposeMark)20, (categoryOfSpecialPurposeMark)21, (categoryOfSpecialPurposeMark)22, (categoryOfSpecialPurposeMark)23, (categoryOfSpecialPurposeMark)24, (categoryOfSpecialPurposeMark)25, (categoryOfSpecialPurposeMark)26, (categoryOfSpecialPurposeMark)27, (categoryOfSpecialPurposeMark)28, (categoryOfSpecialPurposeMark)29, (categoryOfSpecialPurposeMark)30, (categoryOfSpecialPurposeMark)31, (categoryOfSpecialPurposeMark)32, (categoryOfSpecialPurposeMark)33, (categoryOfSpecialPurposeMark)34, (categoryOfSpecialPurposeMark)35, (categoryOfSpecialPurposeMark)36, (categoryOfSpecialPurposeMark)37, (categoryOfSpecialPurposeMark)39, (categoryOfSpecialPurposeMark)40, (categoryOfSpecialPurposeMark)41, (categoryOfSpecialPurposeMark)42, (categoryOfSpecialPurposeMark)43, (categoryOfSpecialPurposeMark)44, (categoryOfSpecialPurposeMark)45, (categoryOfSpecialPurposeMark)46, (categoryOfSpecialPurposeMark)47, (categoryOfSpecialPurposeMark)48, (categoryOfSpecialPurposeMark)49, (categoryOfSpecialPurposeMark)50, (categoryOfSpecialPurposeMark)51, (categoryOfSpecialPurposeMark)52, (categoryOfSpecialPurposeMark)53, (categoryOfSpecialPurposeMark)54, (categoryOfSpecialPurposeMark)55, (categoryOfSpecialPurposeMark)56, (categoryOfSpecialPurposeMark)57, (categoryOfSpecialPurposeMark)58, (categoryOfSpecialPurposeMark)60, (categoryOfSpecialPurposeMark)61, (categoryOfSpecialPurposeMark)62, (categoryOfSpecialPurposeMark)63];
@@ -38055,7 +38230,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         [Browsable(false)]
         public topmarkDaymarkShape[] topmarkDaymarkShapeList => [(topmarkDaymarkShape)1, (topmarkDaymarkShape)2, (topmarkDaymarkShape)3, (topmarkDaymarkShape)4, (topmarkDaymarkShape)5, (topmarkDaymarkShape)6, (topmarkDaymarkShape)7, (topmarkDaymarkShape)8, (topmarkDaymarkShape)9, (topmarkDaymarkShape)10, (topmarkDaymarkShape)11, (topmarkDaymarkShape)12, (topmarkDaymarkShape)13, (topmarkDaymarkShape)14, (topmarkDaymarkShape)15, (topmarkDaymarkShape)16, (topmarkDaymarkShape)17, (topmarkDaymarkShape)18, (topmarkDaymarkShape)19, (topmarkDaymarkShape)20, (topmarkDaymarkShape)21, (topmarkDaymarkShape)22, (topmarkDaymarkShape)23, (topmarkDaymarkShape)24, (topmarkDaymarkShape)25, (topmarkDaymarkShape)26, (topmarkDaymarkShape)27, (topmarkDaymarkShape)28, (topmarkDaymarkShape)29, (topmarkDaymarkShape)30, (topmarkDaymarkShape)31, (topmarkDaymarkShape)32, (topmarkDaymarkShape)33];
 
-        public override void Load(DomainModel.S101.FeatureTypes.Daymark instance) {
+        public override FeatureViewModel<Daymark> Load(DomainModel.S101.FeatureTypes.Daymark instance) {
             categoryOfSpecialPurposeMark.Clear();
             if (instance.categoryOfSpecialPurposeMark is not null)
                 foreach (var e in instance.categoryOfSpecialPurposeMark)
@@ -38103,6 +38278,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
                 foreach (var e in instance.information)
                     information.Add(e);
             pictorialRepresentation = instance.pictorialRepresentation;
+            return this;
         }
 
         public override string Serialize() {
@@ -38349,8 +38525,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
             }
         }
 
-        public override informationBindingDefinition[] informationBindingDefinitions => LightFloat.informationBindingDefinitions;
-        public override featureBindingDefinition[] featureBindingDefinitions => LightFloat.featureBindingDefinitions;
+        public override informationBindingDefinition[] informationBindingDefinitions => LightFloat._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => LightFloat._featureBindingDefinitions;
 
         [Browsable(false)]
         public colour[] colourList => [(colour)1, (colour)2, (colour)3, (colour)4, (colour)5, (colour)6, (colour)7, (colour)8, (colour)9, (colour)10, (colour)11, (colour)12, (colour)13];
@@ -38367,7 +38543,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         [Browsable(false)]
         public visualProminence[] visualProminenceList => [(visualProminence)1, (visualProminence)2, (visualProminence)3];
 
-        public override void Load(DomainModel.S101.FeatureTypes.LightFloat instance) {
+        public override FeatureViewModel<LightFloat> Load(DomainModel.S101.FeatureTypes.LightFloat instance) {
             colour.Clear();
             if (instance.colour is not null)
                 foreach (var e in instance.colour)
@@ -38413,6 +38589,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
                 foreach (var e in instance.information)
                     information.Add(e);
             pictorialRepresentation = instance.pictorialRepresentation;
+            return this;
         }
 
         public override string Serialize() {
@@ -38638,8 +38815,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
             }
         }
 
-        public override informationBindingDefinition[] informationBindingDefinitions => LightVessel.informationBindingDefinitions;
-        public override featureBindingDefinition[] featureBindingDefinitions => LightVessel.featureBindingDefinitions;
+        public override informationBindingDefinition[] informationBindingDefinitions => LightVessel._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => LightVessel._featureBindingDefinitions;
 
         [Browsable(false)]
         public colour[] colourList => [(colour)1, (colour)2, (colour)3, (colour)4, (colour)5, (colour)6, (colour)7, (colour)8, (colour)9, (colour)10, (colour)11, (colour)12, (colour)13];
@@ -38656,7 +38833,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         [Browsable(false)]
         public visualProminence[] visualProminenceList => [(visualProminence)1, (visualProminence)2, (visualProminence)3];
 
-        public override void Load(DomainModel.S101.FeatureTypes.LightVessel instance) {
+        public override FeatureViewModel<LightVessel> Load(DomainModel.S101.FeatureTypes.LightVessel instance) {
             colour.Clear();
             if (instance.colour is not null)
                 foreach (var e in instance.colour)
@@ -38696,6 +38873,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
                 foreach (var e in instance.information)
                     information.Add(e);
             pictorialRepresentation = instance.pictorialRepresentation;
+            return this;
         }
 
         public override string Serialize() {
@@ -38848,8 +39026,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
         [Category("Retroreflector")]
         public ObservableCollection<information> information { get; set; } = new();
-        public override informationBindingDefinition[] informationBindingDefinitions => Retroreflector.informationBindingDefinitions;
-        public override featureBindingDefinition[] featureBindingDefinitions => Retroreflector.featureBindingDefinitions;
+        public override informationBindingDefinition[] informationBindingDefinitions => Retroreflector._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => Retroreflector._featureBindingDefinitions;
 
         [Browsable(false)]
         public colour[] colourList => [(colour)1, (colour)3, (colour)4, (colour)5, (colour)6, (colour)7, (colour)8, (colour)9, (colour)10, (colour)11, (colour)12, (colour)13];
@@ -38860,7 +39038,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         [Browsable(false)]
         public status[] statusList => [(status)1, (status)4, (status)8];
 
-        public override void Load(DomainModel.S101.FeatureTypes.Retroreflector instance) {
+        public override FeatureViewModel<Retroreflector> Load(DomainModel.S101.FeatureTypes.Retroreflector instance) {
             colour.Clear();
             if (instance.colour is not null)
                 foreach (var e in instance.colour)
@@ -38887,6 +39065,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
             if (instance.information is not null)
                 foreach (var e in instance.information)
                     information.Add(e);
+            return this;
         }
 
         public override string Serialize() {
@@ -39000,13 +39179,13 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
         [Category("RadarReflector")]
         public ObservableCollection<information> information { get; set; } = new();
-        public override informationBindingDefinition[] informationBindingDefinitions => RadarReflector.informationBindingDefinitions;
-        public override featureBindingDefinition[] featureBindingDefinitions => RadarReflector.featureBindingDefinitions;
+        public override informationBindingDefinition[] informationBindingDefinitions => RadarReflector._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => RadarReflector._featureBindingDefinitions;
 
         [Browsable(false)]
         public status[] statusList => [(status)1, (status)4, (status)8];
 
-        public override void Load(DomainModel.S101.FeatureTypes.RadarReflector instance) {
+        public override FeatureViewModel<RadarReflector> Load(DomainModel.S101.FeatureTypes.RadarReflector instance) {
             fixedDateRange = new();
             if (instance.fixedDateRange != null) {
                 fixedDateRange = new();
@@ -39028,6 +39207,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
             if (instance.information is not null)
                 foreach (var e in instance.information)
                     information.Add(e);
+            return this;
         }
 
         public override string Serialize() {
@@ -39204,8 +39384,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
         [Category("FogSignal")]
         public ObservableCollection<information> information { get; set; } = new();
-        public override informationBindingDefinition[] informationBindingDefinitions => FogSignal.informationBindingDefinitions;
-        public override featureBindingDefinition[] featureBindingDefinitions => FogSignal.featureBindingDefinitions;
+        public override informationBindingDefinition[] informationBindingDefinitions => FogSignal._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => FogSignal._featureBindingDefinitions;
 
         [Browsable(false)]
         public categoryOfFogSignal[] categoryOfFogSignalList => [(categoryOfFogSignal)1, (categoryOfFogSignal)2, (categoryOfFogSignal)3, (categoryOfFogSignal)4, (categoryOfFogSignal)5, (categoryOfFogSignal)6, (categoryOfFogSignal)7, (categoryOfFogSignal)8, (categoryOfFogSignal)9, (categoryOfFogSignal)10];
@@ -39216,7 +39396,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         [Browsable(false)]
         public status[] statusList => [(status)1, (status)2, (status)4, (status)5, (status)7, (status)8, (status)15];
 
-        public override void Load(DomainModel.S101.FeatureTypes.FogSignal instance) {
+        public override FeatureViewModel<FogSignal> Load(DomainModel.S101.FeatureTypes.FogSignal instance) {
             categoryOfFogSignal = instance.categoryOfFogSignal;
             featureName.Clear();
             if (instance.featureName is not null)
@@ -39251,6 +39431,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
             if (instance.information is not null)
                 foreach (var e in instance.information)
                     information.Add(e);
+            return this;
         }
 
         public override string Serialize() {
@@ -39401,13 +39582,13 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
         [Category("PhysicalAISAidToNavigation")]
         public ObservableCollection<information> information { get; set; } = new();
-        public override informationBindingDefinition[] informationBindingDefinitions => PhysicalAISAidToNavigation.informationBindingDefinitions;
-        public override featureBindingDefinition[] featureBindingDefinitions => PhysicalAISAidToNavigation.featureBindingDefinitions;
+        public override informationBindingDefinition[] informationBindingDefinitions => PhysicalAISAidToNavigation._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => PhysicalAISAidToNavigation._featureBindingDefinitions;
 
         [Browsable(false)]
         public status[] statusList => [(status)1, (status)5, (status)7];
 
-        public override void Load(DomainModel.S101.FeatureTypes.PhysicalAISAidToNavigation instance) {
+        public override FeatureViewModel<PhysicalAISAidToNavigation> Load(DomainModel.S101.FeatureTypes.PhysicalAISAidToNavigation instance) {
             estimatedRangeOfTransmission = instance.estimatedRangeOfTransmission;
             featureName.Clear();
             if (instance.featureName is not null)
@@ -39431,6 +39612,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
             if (instance.information is not null)
                 foreach (var e in instance.information)
                     information.Add(e);
+            return this;
         }
 
         public override string Serialize() {
@@ -39579,8 +39761,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
         [Category("VirtualAISAidToNavigation")]
         public ObservableCollection<information> information { get; set; } = new();
-        public override informationBindingDefinition[] informationBindingDefinitions => VirtualAISAidToNavigation.informationBindingDefinitions;
-        public override featureBindingDefinition[] featureBindingDefinitions => VirtualAISAidToNavigation.featureBindingDefinitions;
+        public override informationBindingDefinition[] informationBindingDefinitions => VirtualAISAidToNavigation._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => VirtualAISAidToNavigation._featureBindingDefinitions;
 
         [Browsable(false)]
         public status[] statusList => [(status)1, (status)5, (status)7];
@@ -39588,7 +39770,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         [Browsable(false)]
         public virtualAISAidToNavigationType[] virtualAISAidToNavigationTypeList => [(virtualAISAidToNavigationType)1, (virtualAISAidToNavigationType)2, (virtualAISAidToNavigationType)3, (virtualAISAidToNavigationType)4, (virtualAISAidToNavigationType)5, (virtualAISAidToNavigationType)6, (virtualAISAidToNavigationType)7, (virtualAISAidToNavigationType)8, (virtualAISAidToNavigationType)9, (virtualAISAidToNavigationType)10, (virtualAISAidToNavigationType)11, (virtualAISAidToNavigationType)12];
 
-        public override void Load(DomainModel.S101.FeatureTypes.VirtualAISAidToNavigation instance) {
+        public override FeatureViewModel<VirtualAISAidToNavigation> Load(DomainModel.S101.FeatureTypes.VirtualAISAidToNavigation instance) {
             estimatedRangeOfTransmission = instance.estimatedRangeOfTransmission;
             featureName.Clear();
             if (instance.featureName is not null)
@@ -39613,6 +39795,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
             if (instance.information is not null)
                 foreach (var e in instance.information)
                     information.Add(e);
+            return this;
         }
 
         public override string Serialize() {
@@ -39761,8 +39944,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
         [Category("RadioStation")]
         public ObservableCollection<information> information { get; set; } = new();
-        public override informationBindingDefinition[] informationBindingDefinitions => RadioStation.informationBindingDefinitions;
-        public override featureBindingDefinition[] featureBindingDefinitions => RadioStation.featureBindingDefinitions;
+        public override informationBindingDefinition[] informationBindingDefinitions => RadioStation._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => RadioStation._featureBindingDefinitions;
 
         [Browsable(false)]
         public categoryOfRadioStation[] categoryOfRadioStationList => [(categoryOfRadioStation)5, (categoryOfRadioStation)10, (categoryOfRadioStation)11, (categoryOfRadioStation)14, (categoryOfRadioStation)19, (categoryOfRadioStation)20];
@@ -39770,7 +39953,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         [Browsable(false)]
         public status[] statusList => [(status)1, (status)2, (status)4, (status)5, (status)7, (status)8];
 
-        public override void Load(DomainModel.S101.FeatureTypes.RadioStation instance) {
+        public override FeatureViewModel<RadioStation> Load(DomainModel.S101.FeatureTypes.RadioStation instance) {
             callSign = instance.callSign;
             categoryOfRadioStation.Clear();
             if (instance.categoryOfRadioStation is not null)
@@ -39811,6 +39994,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
             if (instance.information is not null)
                 foreach (var e in instance.information)
                     information.Add(e);
+            return this;
         }
 
         public override string Serialize() {
@@ -39984,8 +40168,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
         [Category("RadarTransponderBeacon")]
         public ObservableCollection<information> information { get; set; } = new();
-        public override informationBindingDefinition[] informationBindingDefinitions => RadarTransponderBeacon.informationBindingDefinitions;
-        public override featureBindingDefinition[] featureBindingDefinitions => RadarTransponderBeacon.featureBindingDefinitions;
+        public override informationBindingDefinition[] informationBindingDefinitions => RadarTransponderBeacon._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => RadarTransponderBeacon._featureBindingDefinitions;
 
         [Browsable(false)]
         public categoryOfRadarTransponderBeacon[] categoryOfRadarTransponderBeaconList => [(categoryOfRadarTransponderBeacon)1, (categoryOfRadarTransponderBeacon)2, (categoryOfRadarTransponderBeacon)3];
@@ -39993,7 +40177,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         [Browsable(false)]
         public status[] statusList => [(status)1, (status)2, (status)4, (status)5, (status)7, (status)8];
 
-        public override void Load(DomainModel.S101.FeatureTypes.RadarTransponderBeacon instance) {
+        public override FeatureViewModel<RadarTransponderBeacon> Load(DomainModel.S101.FeatureTypes.RadarTransponderBeacon instance) {
             categoryOfRadarTransponderBeacon = instance.categoryOfRadarTransponderBeacon;
             featureName.Clear();
             if (instance.featureName is not null)
@@ -40035,6 +40219,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
             if (instance.information is not null)
                 foreach (var e in instance.information)
                     information.Add(e);
+            return this;
         }
 
         public override string Serialize() {
@@ -40192,8 +40377,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
         [Category("PilotBoardingPlace")]
         public ObservableCollection<information> information { get; set; } = new();
-        public override informationBindingDefinition[] informationBindingDefinitions => PilotBoardingPlace.informationBindingDefinitions;
-        public override featureBindingDefinition[] featureBindingDefinitions => PilotBoardingPlace.featureBindingDefinitions;
+        public override informationBindingDefinition[] informationBindingDefinitions => PilotBoardingPlace._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => PilotBoardingPlace._featureBindingDefinitions;
 
         [Browsable(false)]
         public categoryOfPilotBoardingPlace[] categoryOfPilotBoardingPlaceList => [(categoryOfPilotBoardingPlace)1, (categoryOfPilotBoardingPlace)2, (categoryOfPilotBoardingPlace)3];
@@ -40207,7 +40392,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         [Browsable(false)]
         public status[] statusList => [(status)1, (status)2, (status)5, (status)6, (status)9, (status)16, (status)17, (status)28];
 
-        public override void Load(DomainModel.S101.FeatureTypes.PilotBoardingPlace instance) {
+        public override FeatureViewModel<PilotBoardingPlace> Load(DomainModel.S101.FeatureTypes.PilotBoardingPlace instance) {
             categoryOfPilotBoardingPlace = instance.categoryOfPilotBoardingPlace;
             categoryOfPreference = instance.categoryOfPreference;
             communicationChannel.Clear();
@@ -40246,6 +40431,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
             if (instance.information is not null)
                 foreach (var e in instance.information)
                     information.Add(e);
+            return this;
         }
 
         public override string Serialize() {
@@ -40344,10 +40530,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
         [Category("VesselTrafficServiceArea")]
         public ObservableCollection<information> information { get; set; } = new();
-        public override informationBindingDefinition[] informationBindingDefinitions => VesselTrafficServiceArea.informationBindingDefinitions;
-        public override featureBindingDefinition[] featureBindingDefinitions => VesselTrafficServiceArea.featureBindingDefinitions;
+        public override informationBindingDefinition[] informationBindingDefinitions => VesselTrafficServiceArea._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => VesselTrafficServiceArea._featureBindingDefinitions;
 
-        public override void Load(DomainModel.S101.FeatureTypes.VesselTrafficServiceArea instance) {
+        public override FeatureViewModel<VesselTrafficServiceArea> Load(DomainModel.S101.FeatureTypes.VesselTrafficServiceArea instance) {
             featureName.Clear();
             if (instance.featureName is not null)
                 foreach (var e in instance.featureName)
@@ -40358,6 +40544,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
             if (instance.information is not null)
                 foreach (var e in instance.information)
                     information.Add(e);
+            return this;
         }
 
         public override string Serialize() {
@@ -40461,13 +40648,13 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
         [Category("CoastGuardStation")]
         public ObservableCollection<information> information { get; set; } = new();
-        public override informationBindingDefinition[] informationBindingDefinitions => CoastGuardStation.informationBindingDefinitions;
-        public override featureBindingDefinition[] featureBindingDefinitions => CoastGuardStation.featureBindingDefinitions;
+        public override informationBindingDefinition[] informationBindingDefinitions => CoastGuardStation._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => CoastGuardStation._featureBindingDefinitions;
 
         [Browsable(false)]
         public status[] statusList => [(status)1, (status)4, (status)5, (status)16, (status)17];
 
-        public override void Load(DomainModel.S101.FeatureTypes.CoastGuardStation instance) {
+        public override FeatureViewModel<CoastGuardStation> Load(DomainModel.S101.FeatureTypes.CoastGuardStation instance) {
             communicationChannel.Clear();
             if (instance.communicationChannel is not null)
                 foreach (var e in instance.communicationChannel)
@@ -40497,6 +40684,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
             if (instance.information is not null)
                 foreach (var e in instance.information)
                     information.Add(e);
+            return this;
         }
 
         public override string Serialize() {
@@ -40612,8 +40800,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
         [Category("SignalStationWarning")]
         public ObservableCollection<information> information { get; set; } = new();
-        public override informationBindingDefinition[] informationBindingDefinitions => SignalStationWarning.informationBindingDefinitions;
-        public override featureBindingDefinition[] featureBindingDefinitions => SignalStationWarning.featureBindingDefinitions;
+        public override informationBindingDefinition[] informationBindingDefinitions => SignalStationWarning._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => SignalStationWarning._featureBindingDefinitions;
 
         [Browsable(false)]
         public categoryOfSignalStationWarning[] categoryOfSignalStationWarningList => [(categoryOfSignalStationWarning)1, (categoryOfSignalStationWarning)2, (categoryOfSignalStationWarning)3, (categoryOfSignalStationWarning)4, (categoryOfSignalStationWarning)5, (categoryOfSignalStationWarning)6, (categoryOfSignalStationWarning)7, (categoryOfSignalStationWarning)8, (categoryOfSignalStationWarning)9, (categoryOfSignalStationWarning)10, (categoryOfSignalStationWarning)11, (categoryOfSignalStationWarning)12, (categoryOfSignalStationWarning)13, (categoryOfSignalStationWarning)14, (categoryOfSignalStationWarning)15];
@@ -40621,7 +40809,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         [Browsable(false)]
         public status[] statusList => [(status)1, (status)2, (status)4, (status)5, (status)7, (status)8, (status)12, (status)14, (status)15, (status)16, (status)17];
 
-        public override void Load(DomainModel.S101.FeatureTypes.SignalStationWarning instance) {
+        public override FeatureViewModel<SignalStationWarning> Load(DomainModel.S101.FeatureTypes.SignalStationWarning instance) {
             categoryOfSignalStationWarning.Clear();
             if (instance.categoryOfSignalStationWarning is not null)
                 foreach (var e in instance.categoryOfSignalStationWarning)
@@ -40654,6 +40842,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
             if (instance.information is not null)
                 foreach (var e in instance.information)
                     information.Add(e);
+            return this;
         }
 
         public override string Serialize() {
@@ -40772,8 +40961,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
         [Category("SignalStationTraffic")]
         public ObservableCollection<information> information { get; set; } = new();
-        public override informationBindingDefinition[] informationBindingDefinitions => SignalStationTraffic.informationBindingDefinitions;
-        public override featureBindingDefinition[] featureBindingDefinitions => SignalStationTraffic.featureBindingDefinitions;
+        public override informationBindingDefinition[] informationBindingDefinitions => SignalStationTraffic._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => SignalStationTraffic._featureBindingDefinitions;
 
         [Browsable(false)]
         public categoryOfSignalStationTraffic[] categoryOfSignalStationTrafficList => [(categoryOfSignalStationTraffic)1, (categoryOfSignalStationTraffic)2, (categoryOfSignalStationTraffic)3, (categoryOfSignalStationTraffic)4, (categoryOfSignalStationTraffic)5, (categoryOfSignalStationTraffic)6, (categoryOfSignalStationTraffic)7, (categoryOfSignalStationTraffic)8, (categoryOfSignalStationTraffic)9, (categoryOfSignalStationTraffic)10];
@@ -40781,7 +40970,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         [Browsable(false)]
         public status[] statusList => [(status)1, (status)2, (status)4, (status)5, (status)7, (status)8, (status)12, (status)14, (status)15, (status)16, (status)17];
 
-        public override void Load(DomainModel.S101.FeatureTypes.SignalStationTraffic instance) {
+        public override FeatureViewModel<SignalStationTraffic> Load(DomainModel.S101.FeatureTypes.SignalStationTraffic instance) {
             categoryOfSignalStationTraffic.Clear();
             if (instance.categoryOfSignalStationTraffic is not null)
                 foreach (var e in instance.categoryOfSignalStationTraffic)
@@ -40814,6 +41003,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
             if (instance.information is not null)
                 foreach (var e in instance.information)
                     information.Add(e);
+            return this;
         }
 
         public override string Serialize() {
@@ -40932,8 +41122,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
         [Category("RescueStation")]
         public ObservableCollection<information> information { get; set; } = new();
-        public override informationBindingDefinition[] informationBindingDefinitions => RescueStation.informationBindingDefinitions;
-        public override featureBindingDefinition[] featureBindingDefinitions => RescueStation.featureBindingDefinitions;
+        public override informationBindingDefinition[] informationBindingDefinitions => RescueStation._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => RescueStation._featureBindingDefinitions;
 
         [Browsable(false)]
         public categoryOfRescueStation[] categoryOfRescueStationList => [(categoryOfRescueStation)1, (categoryOfRescueStation)2, (categoryOfRescueStation)4, (categoryOfRescueStation)5, (categoryOfRescueStation)6, (categoryOfRescueStation)7, (categoryOfRescueStation)8];
@@ -40941,7 +41131,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         [Browsable(false)]
         public status[] statusList => [(status)1, (status)2, (status)4, (status)5, (status)7, (status)8, (status)14, (status)16, (status)17];
 
-        public override void Load(DomainModel.S101.FeatureTypes.RescueStation instance) {
+        public override FeatureViewModel<RescueStation> Load(DomainModel.S101.FeatureTypes.RescueStation instance) {
             categoryOfRescueStation.Clear();
             if (instance.categoryOfRescueStation is not null)
                 foreach (var e in instance.categoryOfRescueStation)
@@ -40974,6 +41164,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
             if (instance.information is not null)
                 foreach (var e in instance.information)
                     information.Add(e);
+            return this;
         }
 
         public override string Serialize() {
@@ -41158,8 +41349,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
             }
         }
 
-        public override informationBindingDefinition[] informationBindingDefinitions => HarbourFacility.informationBindingDefinitions;
-        public override featureBindingDefinition[] featureBindingDefinitions => HarbourFacility.featureBindingDefinitions;
+        public override informationBindingDefinition[] informationBindingDefinitions => HarbourFacility._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => HarbourFacility._featureBindingDefinitions;
 
         [Browsable(false)]
         public categoryOfHarbourFacility[] categoryOfHarbourFacilityList => [(categoryOfHarbourFacility)1, (categoryOfHarbourFacility)3, (categoryOfHarbourFacility)4, (categoryOfHarbourFacility)5, (categoryOfHarbourFacility)6, (categoryOfHarbourFacility)7, (categoryOfHarbourFacility)8, (categoryOfHarbourFacility)9, (categoryOfHarbourFacility)10, (categoryOfHarbourFacility)11, (categoryOfHarbourFacility)12, (categoryOfHarbourFacility)13, (categoryOfHarbourFacility)14, (categoryOfHarbourFacility)15];
@@ -41179,7 +41370,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         [Browsable(false)]
         public status[] statusList => [(status)1, (status)4, (status)5, (status)6, (status)7, (status)8, (status)9, (status)12, (status)13, (status)14, (status)16, (status)17];
 
-        public override void Load(DomainModel.S101.FeatureTypes.HarbourFacility instance) {
+        public override FeatureViewModel<HarbourFacility> Load(DomainModel.S101.FeatureTypes.HarbourFacility instance) {
             categoryOfHarbourFacility.Clear();
             if (instance.categoryOfHarbourFacility is not null)
                 foreach (var e in instance.categoryOfHarbourFacility)
@@ -41228,6 +41419,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
                 foreach (var e in instance.information)
                     information.Add(e);
             pictorialRepresentation = instance.pictorialRepresentation;
+            return this;
         }
 
         public override string Serialize() {
@@ -41366,8 +41558,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
             }
         }
 
-        public override informationBindingDefinition[] informationBindingDefinitions => SmallCraftFacility.informationBindingDefinitions;
-        public override featureBindingDefinition[] featureBindingDefinitions => SmallCraftFacility.featureBindingDefinitions;
+        public override informationBindingDefinition[] informationBindingDefinitions => SmallCraftFacility._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => SmallCraftFacility._featureBindingDefinitions;
 
         [Browsable(false)]
         public categoryOfSmallCraftFacility[] categoryOfSmallCraftFacilityList => [(categoryOfSmallCraftFacility)1, (categoryOfSmallCraftFacility)2, (categoryOfSmallCraftFacility)3, (categoryOfSmallCraftFacility)4, (categoryOfSmallCraftFacility)5, (categoryOfSmallCraftFacility)6, (categoryOfSmallCraftFacility)7, (categoryOfSmallCraftFacility)8, (categoryOfSmallCraftFacility)9, (categoryOfSmallCraftFacility)10, (categoryOfSmallCraftFacility)11, (categoryOfSmallCraftFacility)12, (categoryOfSmallCraftFacility)13, (categoryOfSmallCraftFacility)14, (categoryOfSmallCraftFacility)15, (categoryOfSmallCraftFacility)16, (categoryOfSmallCraftFacility)17, (categoryOfSmallCraftFacility)18, (categoryOfSmallCraftFacility)19, (categoryOfSmallCraftFacility)20, (categoryOfSmallCraftFacility)21, (categoryOfSmallCraftFacility)22, (categoryOfSmallCraftFacility)23, (categoryOfSmallCraftFacility)24, (categoryOfSmallCraftFacility)25, (categoryOfSmallCraftFacility)26, (categoryOfSmallCraftFacility)27, (categoryOfSmallCraftFacility)28, (categoryOfSmallCraftFacility)30, (categoryOfSmallCraftFacility)31, (categoryOfSmallCraftFacility)32, (categoryOfSmallCraftFacility)33];
@@ -41375,7 +41567,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
         [Browsable(false)]
         public status[] statusList => [(status)1, (status)2, (status)3, (status)4, (status)5, (status)6, (status)7, (status)8, (status)9, (status)12, (status)14, (status)16, (status)17];
 
-        public override void Load(DomainModel.S101.FeatureTypes.SmallCraftFacility instance) {
+        public override FeatureViewModel<SmallCraftFacility> Load(DomainModel.S101.FeatureTypes.SmallCraftFacility instance) {
             categoryOfSmallCraftFacility.Clear();
             if (instance.categoryOfSmallCraftFacility is not null)
                 foreach (var e in instance.categoryOfSmallCraftFacility)
@@ -41399,6 +41591,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
                 foreach (var e in instance.information)
                     information.Add(e);
             pictorialRepresentation = instance.pictorialRepresentation;
+            return this;
         }
 
         public override string Serialize() {
@@ -41507,13 +41700,13 @@ namespace S100Framework.WPF.ViewModel.S101 {
             }
         }
 
-        public override informationBindingDefinition[] informationBindingDefinitions => TextPlacement.informationBindingDefinitions;
-        public override featureBindingDefinition[] featureBindingDefinitions => TextPlacement.featureBindingDefinitions;
+        public override informationBindingDefinition[] informationBindingDefinitions => TextPlacement._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => TextPlacement._featureBindingDefinitions;
 
         [Browsable(false)]
         public textType[] textTypeList => [(textType)1, (textType)2];
 
-        public override void Load(DomainModel.S101.FeatureTypes.TextPlacement instance) {
+        public override FeatureViewModel<TextPlacement> Load(DomainModel.S101.FeatureTypes.TextPlacement instance) {
             textOffsetBearing = instance.textOffsetBearing;
             textOffsetDistance = instance.textOffsetDistance;
             textRotation = instance.textRotation;
@@ -41522,6 +41715,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
                 foreach (var e in instance.textType)
                     textType.Add(e);
             scaleMinimum = instance.scaleMinimum;
+            return this;
         }
 
         public override string Serialize() {
@@ -41564,10 +41758,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
         [Category("Chart1Feature")]
         public ObservableCollection<featureName> featureName { get; set; } = new();
-        public override informationBindingDefinition[] informationBindingDefinitions => Chart1Feature.informationBindingDefinitions;
-        public override featureBindingDefinition[] featureBindingDefinitions => Chart1Feature.featureBindingDefinitions;
+        public override informationBindingDefinition[] informationBindingDefinitions => Chart1Feature._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => Chart1Feature._featureBindingDefinitions;
 
-        public override void Load(DomainModel.S101.FeatureTypes.Chart1Feature instance) {
+        public override FeatureViewModel<Chart1Feature> Load(DomainModel.S101.FeatureTypes.Chart1Feature instance) {
             drawingInstruction.Clear();
             if (instance.drawingInstruction is not null)
                 foreach (var e in instance.drawingInstruction)
@@ -41576,6 +41770,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
             if (instance.featureName is not null)
                 foreach (var e in instance.featureName)
                     featureName.Add(e);
+            return this;
         }
 
         public override string Serialize() {

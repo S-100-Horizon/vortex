@@ -70,8 +70,10 @@
             </Button>
         </Grid>
 
-        <s100:S100AttributeEditorControl x:Name="S100AttributeEditor"  
-                                         S100AttributeEditorViewModel="{Binding S100AttributeEditorViewModel}"/>
+        <s100:S100AttributeEditorControl x:Name="S100AttributeEditor"
+                                         IsEditingEnabled="{Binding IsEditingEnabled, Mode=OneWay}"
+                                         SelectedFeatureObject="{Binding SelectedFeatureProperty, Mode=OneWay}"
+                                         SelectedInformationObject="{Binding SelectedInformationProperty, Mode=OneWay}" Loaded="S100AttributeEditor_Loaded"/>
 
         <!--<xctk:PropertyGrid Grid.Row="1" x:Name="_propertyGrid" 
                SelectedObject="{Binding SelectedProperty}" 

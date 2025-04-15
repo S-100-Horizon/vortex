@@ -5038,7 +5038,7 @@ namespace S100Framework.DomainModel.S101 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class ContactDetails : InformationNode {
+        public partial class ContactDetails : InformationNode, IInformationBindingDefinition {
             public String? callSign { get; set; } = null;
             public List<String> communicationChannel { get; set; } = [];
             public String? contactInstructions { get; set; } = null;
@@ -5050,7 +5050,8 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(ContactDetails);
-            public static informationBindingDefinition[] informationBindingDefinitions => [];
+            public informationBindingDefinition[] informationBindingDefinitions => ContactDetails._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [];
 
             public ContactDetails() {
             }
@@ -5058,7 +5059,7 @@ namespace S100Framework.DomainModel.S101 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class ServiceHours : InformationNode {
+        public partial class ServiceHours : InformationNode, IInformationBindingDefinition {
             public fixedDateRange? fixedDateRange { get; set; }
             public List<periodicDateRange> periodicDateRange { get; set; } = [];
 
@@ -5068,7 +5069,8 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(ServiceHours);
-            public static informationBindingDefinition[] informationBindingDefinitions => [];
+            public informationBindingDefinition[] informationBindingDefinitions => ServiceHours._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [];
 
             public ServiceHours() {
                 scheduleByDayOfWeek = new();
@@ -5078,7 +5080,7 @@ namespace S100Framework.DomainModel.S101 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class NonStandardWorkingDay : InformationNode {
+        public partial class NonStandardWorkingDay : InformationNode, IInformationBindingDefinition {
             public List<DateOnly> dateFixed { get; set; } = [];
             public List<String> dateVariable { get; set; } = [];
             public fixedDateRange? fixedDateRange { get; set; }
@@ -5087,7 +5089,8 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(NonStandardWorkingDay);
-            public static informationBindingDefinition[] informationBindingDefinitions => [];
+            public informationBindingDefinition[] informationBindingDefinitions => NonStandardWorkingDay._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [];
 
             public NonStandardWorkingDay() {
             }
@@ -5095,7 +5098,7 @@ namespace S100Framework.DomainModel.S101 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class NauticalInformation : InformationNode {
+        public partial class NauticalInformation : InformationNode, IInformationBindingDefinition {
             public fixedDateRange? fixedDateRange { get; set; }
             public List<periodicDateRange> periodicDateRange { get; set; } = [];
             public List<information> information { get; set; } = [];
@@ -5103,7 +5106,8 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(NauticalInformation);
-            public static informationBindingDefinition[] informationBindingDefinitions => [];
+            public informationBindingDefinition[] informationBindingDefinitions => NauticalInformation._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [];
 
             public NauticalInformation() {
             }
@@ -5111,14 +5115,15 @@ namespace S100Framework.DomainModel.S101 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class SpatialQuality : InformationNode {
+        public partial class SpatialQuality : InformationNode, IInformationBindingDefinition {
             [EnumerationValue(4)]
             public qualityOfHorizontalMeasurement? qualityOfHorizontalMeasurement { get; set; } = default;
             public List<spatialAccuracy> spatialAccuracy { get; set; } = [];
 
             [JsonIgnore]
             public override string Code => nameof(SpatialQuality);
-            public static informationBindingDefinition[] informationBindingDefinitions => [];
+            public informationBindingDefinition[] informationBindingDefinitions => SpatialQuality._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [];
 
             public SpatialQuality() {
             }
@@ -5135,7 +5140,7 @@ namespace S100Framework.DomainModel.S101 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class QualityOfNonBathymetricData : FeatureNode {
+        public partial class QualityOfNonBathymetricData : FeatureNode, IFeatureBindingDefinition {
             [EnumerationValue(1)]
             [EnumerationValue(4)]
             public categoryOfTemporalVariation? categoryOfTemporalVariation { get; set; } = default;
@@ -5151,8 +5156,10 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(QualityOfNonBathymetricData);
-            public static informationBindingDefinition[] informationBindingDefinitions => [];
-            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
+            public informationBindingDefinition[] informationBindingDefinitions => QualityOfNonBathymetricData._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [];
+            public featureBindingDefinition[] featureBindingDefinitions => QualityOfNonBathymetricData._featureBindingDefinitions;
+            public static featureBindingDefinition[] _featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -5172,7 +5179,7 @@ namespace S100Framework.DomainModel.S101 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class DataCoverage : FeatureNode {
+        public partial class DataCoverage : FeatureNode, IFeatureBindingDefinition {
             public Int32? drawingIndex { get; set; } = default;
             public String? interoperabilityIdentifier { get; set; } = null;
 
@@ -5188,8 +5195,10 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(DataCoverage);
-            public static informationBindingDefinition[] informationBindingDefinitions => [];
-            public static featureBindingDefinition[] featureBindingDefinitions => [];
+            public informationBindingDefinition[] informationBindingDefinitions => DataCoverage._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [];
+            public featureBindingDefinition[] featureBindingDefinitions => DataCoverage._featureBindingDefinitions;
+            public static featureBindingDefinition[] _featureBindingDefinitions => [];
 
             public DataCoverage() {
             }
@@ -5197,7 +5206,7 @@ namespace S100Framework.DomainModel.S101 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class NavigationalSystemOfMarks : FeatureNode {
+        public partial class NavigationalSystemOfMarks : FeatureNode, IFeatureBindingDefinition {
             [EnumerationValue(1)]
             [EnumerationValue(2)]
             [EnumerationValue(9)]
@@ -5209,8 +5218,10 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(NavigationalSystemOfMarks);
-            public static informationBindingDefinition[] informationBindingDefinitions => [];
-            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
+            public informationBindingDefinition[] informationBindingDefinitions => NavigationalSystemOfMarks._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [];
+            public featureBindingDefinition[] featureBindingDefinitions => NavigationalSystemOfMarks._featureBindingDefinitions;
+            public static featureBindingDefinition[] _featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -5226,7 +5237,7 @@ namespace S100Framework.DomainModel.S101 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class LocalDirectionOfBuoyage : FeatureNode {
+        public partial class LocalDirectionOfBuoyage : FeatureNode, IFeatureBindingDefinition {
             public String? interoperabilityIdentifier { get; set; } = null;
 
             [EnumerationValue(1)]
@@ -5243,8 +5254,10 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(LocalDirectionOfBuoyage);
-            public static informationBindingDefinition[] informationBindingDefinitions => [];
-            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
+            public informationBindingDefinition[] informationBindingDefinitions => LocalDirectionOfBuoyage._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [];
+            public featureBindingDefinition[] featureBindingDefinitions => LocalDirectionOfBuoyage._featureBindingDefinitions;
+            public static featureBindingDefinition[] _featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -5260,7 +5273,7 @@ namespace S100Framework.DomainModel.S101 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class QualityOfBathymetricData : FeatureNode {
+        public partial class QualityOfBathymetricData : FeatureNode, IFeatureBindingDefinition {
             [EnumerationValue(1)]
             [EnumerationValue(2)]
             [EnumerationValue(3)]
@@ -5291,7 +5304,8 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(QualityOfBathymetricData);
-            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
+            public informationBindingDefinition[] informationBindingDefinitions => QualityOfBathymetricData._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -5300,7 +5314,8 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theQualityInformation)!,
                 informationTypes = [nameof(SpatialQuality)],
             }, ];
-            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
+            public featureBindingDefinition[] featureBindingDefinitions => QualityOfBathymetricData._featureBindingDefinitions;
+            public static featureBindingDefinition[] _featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -5323,7 +5338,7 @@ namespace S100Framework.DomainModel.S101 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class SoundingDatum : FeatureNode {
+        public partial class SoundingDatum : FeatureNode, IFeatureBindingDefinition {
             public String? interoperabilityIdentifier { get; set; } = null;
 
             [EnumerationValue(1)]
@@ -5355,8 +5370,10 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(SoundingDatum);
-            public static informationBindingDefinition[] informationBindingDefinitions => [];
-            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
+            public informationBindingDefinition[] informationBindingDefinitions => SoundingDatum._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [];
+            public featureBindingDefinition[] featureBindingDefinitions => SoundingDatum._featureBindingDefinitions;
+            public static featureBindingDefinition[] _featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -5372,7 +5389,7 @@ namespace S100Framework.DomainModel.S101 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class VerticalDatumOfData : FeatureNode {
+        public partial class VerticalDatumOfData : FeatureNode, IFeatureBindingDefinition {
             public String? interoperabilityIdentifier { get; set; } = null;
 
             [EnumerationValue(3)]
@@ -5396,8 +5413,10 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(VerticalDatumOfData);
-            public static informationBindingDefinition[] informationBindingDefinitions => [];
-            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
+            public informationBindingDefinition[] informationBindingDefinitions => VerticalDatumOfData._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [];
+            public featureBindingDefinition[] featureBindingDefinitions => VerticalDatumOfData._featureBindingDefinitions;
+            public static featureBindingDefinition[] _featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -5413,7 +5432,7 @@ namespace S100Framework.DomainModel.S101 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class QualityOfSurvey : FeatureNode {
+        public partial class QualityOfSurvey : FeatureNode, IFeatureBindingDefinition {
             public Decimal? depthRangeMaximumValue { get; set; } = default;
             public Decimal? depthRangeMinimumValue { get; set; } = default;
             public featuresDetected? featuresDetected { get; set; }
@@ -5480,8 +5499,10 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(QualityOfSurvey);
-            public static informationBindingDefinition[] informationBindingDefinitions => [];
-            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
+            public informationBindingDefinition[] informationBindingDefinitions => QualityOfSurvey._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [];
+            public featureBindingDefinition[] featureBindingDefinitions => QualityOfSurvey._featureBindingDefinitions;
+            public static featureBindingDefinition[] _featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -5504,7 +5525,7 @@ namespace S100Framework.DomainModel.S101 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class UpdateInformation : FeatureNode {
+        public partial class UpdateInformation : FeatureNode, IFeatureBindingDefinition {
             public fixedDateRange? fixedDateRange { get; set; }
             public String? interoperabilityIdentifier { get; set; } = null;
 
@@ -5523,8 +5544,10 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(UpdateInformation);
-            public static informationBindingDefinition[] informationBindingDefinitions => [];
-            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
+            public informationBindingDefinition[] informationBindingDefinitions => UpdateInformation._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [];
+            public featureBindingDefinition[] featureBindingDefinitions => UpdateInformation._featureBindingDefinitions;
+            public static featureBindingDefinition[] _featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -5564,7 +5587,7 @@ namespace S100Framework.DomainModel.S101 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class MagneticVariation : FeatureNode {
+        public partial class MagneticVariation : FeatureNode, IFeatureBindingDefinition {
             public String? interoperabilityIdentifier { get; set; } = null;
 
             [Required()]
@@ -5580,7 +5603,8 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(MagneticVariation);
-            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
+            public informationBindingDefinition[] informationBindingDefinitions => MagneticVariation._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -5589,7 +5613,8 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(NauticalInformation)],
             }, ];
-            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
+            public featureBindingDefinition[] featureBindingDefinitions => MagneticVariation._featureBindingDefinitions;
+            public static featureBindingDefinition[] _featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -5605,7 +5630,7 @@ namespace S100Framework.DomainModel.S101 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class LocalMagneticAnomaly : FeatureNode {
+        public partial class LocalMagneticAnomaly : FeatureNode, IFeatureBindingDefinition {
             public List<featureName> featureName { get; set; } = [];
             public String? interoperabilityIdentifier { get; set; } = null;
             public DateOnly? reportedDate { get; set; } = default;
@@ -5617,7 +5642,8 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(LocalMagneticAnomaly);
-            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
+            public informationBindingDefinition[] informationBindingDefinitions => LocalMagneticAnomaly._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -5626,7 +5652,8 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(NauticalInformation)],
             }, ];
-            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
+            public featureBindingDefinition[] featureBindingDefinitions => LocalMagneticAnomaly._featureBindingDefinitions;
+            public static featureBindingDefinition[] _featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -5652,7 +5679,7 @@ namespace S100Framework.DomainModel.S101 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class Coastline : FeatureNode {
+        public partial class Coastline : FeatureNode, IFeatureBindingDefinition {
             [EnumerationValue(1)]
             [EnumerationValue(2)]
             [EnumerationValue(6)]
@@ -5699,7 +5726,8 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(Coastline);
-            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
+            public informationBindingDefinition[] informationBindingDefinitions => Coastline._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -5708,7 +5736,8 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(NauticalInformation)],
             }, ];
-            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
+            public featureBindingDefinition[] featureBindingDefinitions => Coastline._featureBindingDefinitions;
+            public static featureBindingDefinition[] _featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -5732,7 +5761,7 @@ namespace S100Framework.DomainModel.S101 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class LandArea : FeatureNode {
+        public partial class LandArea : FeatureNode, IFeatureBindingDefinition {
             [EnumerationValue(1)]
             [EnumerationValue(3)]
             [EnumerationValue(5)]
@@ -5748,7 +5777,8 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(LandArea);
-            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
+            public informationBindingDefinition[] informationBindingDefinitions => LandArea._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -5757,7 +5787,8 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(NauticalInformation)],
             }, ];
-            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
+            public featureBindingDefinition[] featureBindingDefinitions => LandArea._featureBindingDefinitions;
+            public static featureBindingDefinition[] _featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.aggregation,
                 lower = 0,
@@ -5789,7 +5820,7 @@ namespace S100Framework.DomainModel.S101 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class IslandGroup : FeatureNode {
+        public partial class IslandGroup : FeatureNode, IFeatureBindingDefinition {
             [Required()]
             public List<featureName> featureName { get; set; }
             public String? interoperabilityIdentifier { get; set; } = null;
@@ -5798,7 +5829,8 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(IslandGroup);
-            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
+            public informationBindingDefinition[] informationBindingDefinitions => IslandGroup._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -5807,7 +5839,8 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(NauticalInformation)],
             }, ];
-            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
+            public featureBindingDefinition[] featureBindingDefinitions => IslandGroup._featureBindingDefinitions;
+            public static featureBindingDefinition[] _featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -5849,7 +5882,7 @@ namespace S100Framework.DomainModel.S101 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class LandElevation : FeatureNode {
+        public partial class LandElevation : FeatureNode, IFeatureBindingDefinition {
             [Required()]
             public Decimal elevation { get; set; }
             public List<featureName> featureName { get; set; } = [];
@@ -5864,7 +5897,8 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(LandElevation);
-            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
+            public informationBindingDefinition[] informationBindingDefinitions => LandElevation._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -5873,7 +5907,8 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(NauticalInformation)],
             }, ];
-            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
+            public featureBindingDefinition[] featureBindingDefinitions => LandElevation._featureBindingDefinitions;
+            public static featureBindingDefinition[] _featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -5897,7 +5932,7 @@ namespace S100Framework.DomainModel.S101 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class River : FeatureNode {
+        public partial class River : FeatureNode, IFeatureBindingDefinition {
             public List<featureName> featureName { get; set; } = [];
             public String? interoperabilityIdentifier { get; set; } = null;
 
@@ -5908,7 +5943,8 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(River);
-            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
+            public informationBindingDefinition[] informationBindingDefinitions => River._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -5917,7 +5953,8 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(NauticalInformation)],
             }, ];
-            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
+            public featureBindingDefinition[] featureBindingDefinitions => River._featureBindingDefinitions;
+            public static featureBindingDefinition[] _featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -5941,7 +5978,7 @@ namespace S100Framework.DomainModel.S101 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class Rapids : FeatureNode {
+        public partial class Rapids : FeatureNode, IFeatureBindingDefinition {
             public List<featureName> featureName { get; set; } = [];
             public String? interoperabilityIdentifier { get; set; } = null;
             public Decimal? verticalLength { get; set; } = default;
@@ -5950,7 +5987,8 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(Rapids);
-            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
+            public informationBindingDefinition[] informationBindingDefinitions => Rapids._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -5959,7 +5997,8 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(NauticalInformation)],
             }, ];
-            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
+            public featureBindingDefinition[] featureBindingDefinitions => Rapids._featureBindingDefinitions;
+            public static featureBindingDefinition[] _featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -5983,7 +6022,7 @@ namespace S100Framework.DomainModel.S101 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class Waterfall : FeatureNode {
+        public partial class Waterfall : FeatureNode, IFeatureBindingDefinition {
             public List<featureName> featureName { get; set; } = [];
             public String? interoperabilityIdentifier { get; set; } = null;
             public Decimal? verticalLength { get; set; } = default;
@@ -5997,7 +6036,8 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(Waterfall);
-            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
+            public informationBindingDefinition[] informationBindingDefinitions => Waterfall._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -6006,7 +6046,8 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(NauticalInformation)],
             }, ];
-            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
+            public featureBindingDefinition[] featureBindingDefinitions => Waterfall._featureBindingDefinitions;
+            public static featureBindingDefinition[] _featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -6030,7 +6071,7 @@ namespace S100Framework.DomainModel.S101 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class Lake : FeatureNode {
+        public partial class Lake : FeatureNode, IFeatureBindingDefinition {
             public Decimal? elevation { get; set; } = default;
             public List<featureName> featureName { get; set; } = [];
             public String? interoperabilityIdentifier { get; set; } = null;
@@ -6042,7 +6083,8 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(Lake);
-            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
+            public informationBindingDefinition[] informationBindingDefinitions => Lake._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -6051,7 +6093,8 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(NauticalInformation)],
             }, ];
-            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
+            public featureBindingDefinition[] featureBindingDefinitions => Lake._featureBindingDefinitions;
+            public static featureBindingDefinition[] _featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -6075,7 +6118,7 @@ namespace S100Framework.DomainModel.S101 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class LandRegion : FeatureNode {
+        public partial class LandRegion : FeatureNode, IFeatureBindingDefinition {
             [EnumerationValue(1)]
             [EnumerationValue(2)]
             [EnumerationValue(3)]
@@ -6124,7 +6167,8 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(LandRegion);
-            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
+            public informationBindingDefinition[] informationBindingDefinitions => LandRegion._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -6133,7 +6177,8 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(ContactDetails), nameof(NauticalInformation)],
             }, ];
-            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
+            public featureBindingDefinition[] featureBindingDefinitions => LandRegion._featureBindingDefinitions;
+            public static featureBindingDefinition[] _featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -6157,7 +6202,7 @@ namespace S100Framework.DomainModel.S101 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class Vegetation : FeatureNode {
+        public partial class Vegetation : FeatureNode, IFeatureBindingDefinition {
             [EnumerationValue(3)]
             [EnumerationValue(4)]
             [EnumerationValue(5)]
@@ -6189,7 +6234,8 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(Vegetation);
-            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
+            public informationBindingDefinition[] informationBindingDefinitions => Vegetation._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -6198,7 +6244,8 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(NauticalInformation)],
             }, ];
-            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
+            public featureBindingDefinition[] featureBindingDefinitions => Vegetation._featureBindingDefinitions;
+            public static featureBindingDefinition[] _featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -6222,7 +6269,7 @@ namespace S100Framework.DomainModel.S101 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class IceArea : FeatureNode {
+        public partial class IceArea : FeatureNode, IFeatureBindingDefinition {
             [EnumerationValue(1)]
             [EnumerationValue(5)]
             [EnumerationValue(8)]
@@ -6250,7 +6297,8 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(IceArea);
-            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
+            public informationBindingDefinition[] informationBindingDefinitions => IceArea._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -6259,7 +6307,8 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(NauticalInformation)],
             }, ];
-            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
+            public featureBindingDefinition[] featureBindingDefinitions => IceArea._featureBindingDefinitions;
+            public static featureBindingDefinition[] _featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -6283,7 +6332,7 @@ namespace S100Framework.DomainModel.S101 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class SlopingGround : FeatureNode {
+        public partial class SlopingGround : FeatureNode, IFeatureBindingDefinition {
             [EnumerationValue(1)]
             [EnumerationValue(2)]
             [EnumerationValue(3)]
@@ -6324,7 +6373,8 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(SlopingGround);
-            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
+            public informationBindingDefinition[] informationBindingDefinitions => SlopingGround._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -6333,7 +6383,8 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(NauticalInformation)],
             }, ];
-            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
+            public featureBindingDefinition[] featureBindingDefinitions => SlopingGround._featureBindingDefinitions;
+            public static featureBindingDefinition[] _featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -6357,7 +6408,7 @@ namespace S100Framework.DomainModel.S101 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class SlopeTopline : FeatureNode {
+        public partial class SlopeTopline : FeatureNode, IFeatureBindingDefinition {
             [EnumerationValue(1)]
             [EnumerationValue(2)]
             [EnumerationValue(6)]
@@ -6395,7 +6446,8 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(SlopeTopline);
-            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
+            public informationBindingDefinition[] informationBindingDefinitions => SlopeTopline._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -6404,7 +6456,8 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(NauticalInformation)],
             }, ];
-            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
+            public featureBindingDefinition[] featureBindingDefinitions => SlopeTopline._featureBindingDefinitions;
+            public static featureBindingDefinition[] _featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -6428,7 +6481,7 @@ namespace S100Framework.DomainModel.S101 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class Tideway : FeatureNode {
+        public partial class Tideway : FeatureNode, IFeatureBindingDefinition {
             public List<featureName> featureName { get; set; } = [];
             public String? interoperabilityIdentifier { get; set; } = null;
             public Int32? scaleMinimum { get; set; } = default;
@@ -6436,7 +6489,8 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(Tideway);
-            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
+            public informationBindingDefinition[] informationBindingDefinitions => Tideway._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -6445,7 +6499,8 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(NauticalInformation)],
             }, ];
-            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
+            public featureBindingDefinition[] featureBindingDefinitions => Tideway._featureBindingDefinitions;
+            public static featureBindingDefinition[] _featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -6469,7 +6524,7 @@ namespace S100Framework.DomainModel.S101 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class BuiltUpArea : FeatureNode {
+        public partial class BuiltUpArea : FeatureNode, IFeatureBindingDefinition {
             [EnumerationValue(1)]
             [EnumerationValue(2)]
             [EnumerationValue(3)]
@@ -6499,7 +6554,8 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(BuiltUpArea);
-            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
+            public informationBindingDefinition[] informationBindingDefinitions => BuiltUpArea._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -6508,7 +6564,8 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(NauticalInformation)],
             }, ];
-            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
+            public featureBindingDefinition[] featureBindingDefinitions => BuiltUpArea._featureBindingDefinitions;
+            public static featureBindingDefinition[] _featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -6532,7 +6589,7 @@ namespace S100Framework.DomainModel.S101 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class Building : FeatureNode {
+        public partial class Building : FeatureNode, IFeatureBindingDefinition {
             [EnumerationValue(5)]
             [EnumerationValue(6)]
             [EnumerationValue(7)]
@@ -6651,7 +6708,8 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(Building);
-            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
+            public informationBindingDefinition[] informationBindingDefinitions => Building._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -6660,7 +6718,8 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(ContactDetails), nameof(NauticalInformation), nameof(NonStandardWorkingDay), nameof(ServiceHours)],
             }, ];
-            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
+            public featureBindingDefinition[] featureBindingDefinitions => Building._featureBindingDefinitions;
+            public static featureBindingDefinition[] _featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -6708,7 +6767,7 @@ namespace S100Framework.DomainModel.S101 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class AirportAirfield : FeatureNode {
+        public partial class AirportAirfield : FeatureNode, IFeatureBindingDefinition {
             [EnumerationValue(1)]
             [EnumerationValue(2)]
             [EnumerationValue(3)]
@@ -6744,7 +6803,8 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(AirportAirfield);
-            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
+            public informationBindingDefinition[] informationBindingDefinitions => AirportAirfield._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -6753,7 +6813,8 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(ContactDetails), nameof(NauticalInformation), nameof(NonStandardWorkingDay), nameof(ServiceHours)],
             }, ];
-            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
+            public featureBindingDefinition[] featureBindingDefinitions => AirportAirfield._featureBindingDefinitions;
+            public static featureBindingDefinition[] _featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -6777,7 +6838,7 @@ namespace S100Framework.DomainModel.S101 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class Runway : FeatureNode {
+        public partial class Runway : FeatureNode, IFeatureBindingDefinition {
             [EnumerationValue(1)]
             [EnumerationValue(2)]
             [EnumerationValue(3)]
@@ -6811,7 +6872,8 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(Runway);
-            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
+            public informationBindingDefinition[] informationBindingDefinitions => Runway._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -6820,7 +6882,8 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(ContactDetails), nameof(NauticalInformation), nameof(NonStandardWorkingDay), nameof(ServiceHours)],
             }, ];
-            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
+            public featureBindingDefinition[] featureBindingDefinitions => Runway._featureBindingDefinitions;
+            public static featureBindingDefinition[] _featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -6844,7 +6907,7 @@ namespace S100Framework.DomainModel.S101 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class Helipad : FeatureNode {
+        public partial class Helipad : FeatureNode, IFeatureBindingDefinition {
             [EnumerationValue(1)]
             [EnumerationValue(2)]
             [EnumerationValue(3)]
@@ -6878,7 +6941,8 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(Helipad);
-            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
+            public informationBindingDefinition[] informationBindingDefinitions => Helipad._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -6887,7 +6951,8 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(ContactDetails), nameof(NauticalInformation), nameof(NonStandardWorkingDay), nameof(ServiceHours)],
             }, ];
-            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
+            public featureBindingDefinition[] featureBindingDefinitions => Helipad._featureBindingDefinitions;
+            public static featureBindingDefinition[] _featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.composition,
                 lower = 0,
@@ -6919,7 +6984,7 @@ namespace S100Framework.DomainModel.S101 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class Bridge : FeatureNode {
+        public partial class Bridge : FeatureNode, IFeatureBindingDefinition {
             [EnumerationValue(1)]
             [EnumerationValue(2)]
             [EnumerationValue(3)]
@@ -6999,7 +7064,8 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(Bridge);
-            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
+            public informationBindingDefinition[] informationBindingDefinitions => Bridge._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -7008,7 +7074,8 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(ContactDetails), nameof(NauticalInformation), nameof(NonStandardWorkingDay), nameof(ServiceHours)],
             }, ];
-            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
+            public featureBindingDefinition[] featureBindingDefinitions => Bridge._featureBindingDefinitions;
+            public static featureBindingDefinition[] _featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -7056,7 +7123,7 @@ namespace S100Framework.DomainModel.S101 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class SpanFixed : FeatureNode {
+        public partial class SpanFixed : FeatureNode, IFeatureBindingDefinition {
             public fixedDateRange? fixedDateRange { get; set; }
             public horizontalClearanceFixed? horizontalClearanceFixed { get; set; }
             public String? interoperabilityIdentifier { get; set; } = null;
@@ -7086,7 +7153,8 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(SpanFixed);
-            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
+            public informationBindingDefinition[] informationBindingDefinitions => SpanFixed._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -7095,7 +7163,8 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(ContactDetails), nameof(NauticalInformation), nameof(NonStandardWorkingDay), nameof(ServiceHours)],
             }, ];
-            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
+            public featureBindingDefinition[] featureBindingDefinitions => SpanFixed._featureBindingDefinitions;
+            public static featureBindingDefinition[] _featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.aggregation,
                 lower = 0,
@@ -7147,7 +7216,7 @@ namespace S100Framework.DomainModel.S101 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class SpanOpening : FeatureNode {
+        public partial class SpanOpening : FeatureNode, IFeatureBindingDefinition {
             public fixedDateRange? fixedDateRange { get; set; }
             public horizontalClearanceFixed? horizontalClearanceFixed { get; set; }
             public String? interoperabilityIdentifier { get; set; } = null;
@@ -7180,7 +7249,8 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(SpanOpening);
-            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
+            public informationBindingDefinition[] informationBindingDefinitions => SpanOpening._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -7189,7 +7259,8 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(ContactDetails), nameof(NauticalInformation), nameof(NonStandardWorkingDay), nameof(ServiceHours)],
             }, ];
-            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
+            public featureBindingDefinition[] featureBindingDefinitions => SpanOpening._featureBindingDefinitions;
+            public static featureBindingDefinition[] _featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.aggregation,
                 lower = 0,
@@ -7245,7 +7316,7 @@ namespace S100Framework.DomainModel.S101 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class Conveyor : FeatureNode {
+        public partial class Conveyor : FeatureNode, IFeatureBindingDefinition {
             [EnumerationValue(1)]
             [EnumerationValue(2)]
             [EnumerationValue(3)]
@@ -7337,7 +7408,8 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(Conveyor);
-            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
+            public informationBindingDefinition[] informationBindingDefinitions => Conveyor._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -7346,7 +7418,8 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(ContactDetails), nameof(NauticalInformation), nameof(NonStandardWorkingDay), nameof(ServiceHours)],
             }, ];
-            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
+            public featureBindingDefinition[] featureBindingDefinitions => Conveyor._featureBindingDefinitions;
+            public static featureBindingDefinition[] _featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -7386,7 +7459,7 @@ namespace S100Framework.DomainModel.S101 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class CableOverhead : FeatureNode {
+        public partial class CableOverhead : FeatureNode, IFeatureBindingDefinition {
             [EnumerationValue(1)]
             [EnumerationValue(3)]
             [EnumerationValue(10)]
@@ -7439,7 +7512,8 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(CableOverhead);
-            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
+            public informationBindingDefinition[] informationBindingDefinitions => CableOverhead._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -7448,7 +7522,8 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(ContactDetails), nameof(NauticalInformation)],
             }, ];
-            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
+            public featureBindingDefinition[] featureBindingDefinitions => CableOverhead._featureBindingDefinitions;
+            public static featureBindingDefinition[] _featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -7480,7 +7555,7 @@ namespace S100Framework.DomainModel.S101 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class PipelineOverhead : FeatureNode {
+        public partial class PipelineOverhead : FeatureNode, IFeatureBindingDefinition {
             [EnumerationValue(2)]
             [EnumerationValue(3)]
             [EnumerationValue(4)]
@@ -7542,7 +7617,8 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(PipelineOverhead);
-            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
+            public informationBindingDefinition[] informationBindingDefinitions => PipelineOverhead._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -7551,7 +7627,8 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(ContactDetails), nameof(NauticalInformation)],
             }, ];
-            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
+            public featureBindingDefinition[] featureBindingDefinitions => PipelineOverhead._featureBindingDefinitions;
+            public static featureBindingDefinition[] _featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -7591,7 +7668,7 @@ namespace S100Framework.DomainModel.S101 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class PylonBridgeSupport : FeatureNode {
+        public partial class PylonBridgeSupport : FeatureNode, IFeatureBindingDefinition {
             [EnumerationValue(1)]
             [EnumerationValue(2)]
             [EnumerationValue(3)]
@@ -7666,7 +7743,8 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(PylonBridgeSupport);
-            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
+            public informationBindingDefinition[] informationBindingDefinitions => PylonBridgeSupport._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -7675,7 +7753,8 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(NauticalInformation)],
             }, ];
-            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
+            public featureBindingDefinition[] featureBindingDefinitions => PylonBridgeSupport._featureBindingDefinitions;
+            public static featureBindingDefinition[] _featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.aggregation,
                 lower = 0,
@@ -7731,7 +7810,7 @@ namespace S100Framework.DomainModel.S101 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class FenceWall : FeatureNode {
+        public partial class FenceWall : FeatureNode, IFeatureBindingDefinition {
             [EnumerationValue(1)]
             [EnumerationValue(3)]
             [EnumerationValue(4)]
@@ -7795,7 +7874,8 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(FenceWall);
-            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
+            public informationBindingDefinition[] informationBindingDefinitions => FenceWall._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -7804,7 +7884,8 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(NauticalInformation)],
             }, ];
-            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
+            public featureBindingDefinition[] featureBindingDefinitions => FenceWall._featureBindingDefinitions;
+            public static featureBindingDefinition[] _featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -7828,7 +7909,7 @@ namespace S100Framework.DomainModel.S101 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class Railway : FeatureNode {
+        public partial class Railway : FeatureNode, IFeatureBindingDefinition {
             [EnumerationValue(1)]
             [EnumerationValue(2)]
             [EnumerationValue(5)]
@@ -7850,7 +7931,8 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(Railway);
-            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
+            public informationBindingDefinition[] informationBindingDefinitions => Railway._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -7859,7 +7941,8 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(ContactDetails), nameof(NauticalInformation)],
             }, ];
-            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
+            public featureBindingDefinition[] featureBindingDefinitions => Railway._featureBindingDefinitions;
+            public static featureBindingDefinition[] _featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -7883,7 +7966,7 @@ namespace S100Framework.DomainModel.S101 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class Road : FeatureNode {
+        public partial class Road : FeatureNode, IFeatureBindingDefinition {
             [EnumerationValue(1)]
             [EnumerationValue(2)]
             [EnumerationValue(3)]
@@ -7918,7 +8001,8 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(Road);
-            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
+            public informationBindingDefinition[] informationBindingDefinitions => Road._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -7927,7 +8011,8 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(NauticalInformation)],
             }, ];
-            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
+            public featureBindingDefinition[] featureBindingDefinitions => Road._featureBindingDefinitions;
+            public static featureBindingDefinition[] _featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -7951,7 +8036,7 @@ namespace S100Framework.DomainModel.S101 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class Tunnel : FeatureNode {
+        public partial class Tunnel : FeatureNode, IFeatureBindingDefinition {
             [EnumerationValue(1)]
             [EnumerationValue(2)]
             [EnumerationValue(5)]
@@ -7992,7 +8077,8 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(Tunnel);
-            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
+            public informationBindingDefinition[] informationBindingDefinitions => Tunnel._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -8001,7 +8087,8 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(ContactDetails), nameof(NauticalInformation)],
             }, ];
-            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
+            public featureBindingDefinition[] featureBindingDefinitions => Tunnel._featureBindingDefinitions;
+            public static featureBindingDefinition[] _featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -8025,7 +8112,7 @@ namespace S100Framework.DomainModel.S101 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class Landmark : FeatureNode {
+        public partial class Landmark : FeatureNode, IFeatureBindingDefinition {
             [EnumerationValue(1)]
             [EnumerationValue(2)]
             [EnumerationValue(3)]
@@ -8177,7 +8264,8 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(Landmark);
-            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
+            public informationBindingDefinition[] informationBindingDefinitions => Landmark._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -8186,7 +8274,8 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(ContactDetails), nameof(NauticalInformation), nameof(NonStandardWorkingDay), nameof(ServiceHours)],
             }, ];
-            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
+            public featureBindingDefinition[] featureBindingDefinitions => Landmark._featureBindingDefinitions;
+            public static featureBindingDefinition[] _featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -8244,7 +8333,7 @@ namespace S100Framework.DomainModel.S101 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class SiloTank : FeatureNode {
+        public partial class SiloTank : FeatureNode, IFeatureBindingDefinition {
             [EnumerationValue(5)]
             [EnumerationValue(6)]
             [EnumerationValue(7)]
@@ -8335,7 +8424,8 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(SiloTank);
-            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
+            public informationBindingDefinition[] informationBindingDefinitions => SiloTank._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -8344,7 +8434,8 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(ContactDetails), nameof(NauticalInformation)],
             }, ];
-            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
+            public featureBindingDefinition[] featureBindingDefinitions => SiloTank._featureBindingDefinitions;
+            public static featureBindingDefinition[] _featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -8392,7 +8483,7 @@ namespace S100Framework.DomainModel.S101 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class WindTurbine : FeatureNode {
+        public partial class WindTurbine : FeatureNode, IFeatureBindingDefinition {
             [EnumerationValue(1)]
             [EnumerationValue(2)]
             [EnumerationValue(3)]
@@ -8482,7 +8573,8 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(WindTurbine);
-            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
+            public informationBindingDefinition[] informationBindingDefinitions => WindTurbine._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -8491,7 +8583,8 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(ContactDetails), nameof(NauticalInformation)],
             }, ];
-            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
+            public featureBindingDefinition[] featureBindingDefinitions => WindTurbine._featureBindingDefinitions;
+            public static featureBindingDefinition[] _featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -8531,7 +8624,7 @@ namespace S100Framework.DomainModel.S101 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class FortifiedStructure : FeatureNode {
+        public partial class FortifiedStructure : FeatureNode, IFeatureBindingDefinition {
             [EnumerationValue(1)]
             [EnumerationValue(2)]
             [EnumerationValue(3)]
@@ -8579,7 +8672,8 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(FortifiedStructure);
-            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
+            public informationBindingDefinition[] informationBindingDefinitions => FortifiedStructure._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -8588,7 +8682,8 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(NauticalInformation)],
             }, ];
-            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
+            public featureBindingDefinition[] featureBindingDefinitions => FortifiedStructure._featureBindingDefinitions;
+            public static featureBindingDefinition[] _featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -8636,7 +8731,7 @@ namespace S100Framework.DomainModel.S101 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class ProductionStorageArea : FeatureNode {
+        public partial class ProductionStorageArea : FeatureNode, IFeatureBindingDefinition {
             [EnumerationValue(1)]
             [EnumerationValue(2)]
             [EnumerationValue(3)]
@@ -8706,7 +8801,8 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(ProductionStorageArea);
-            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
+            public informationBindingDefinition[] informationBindingDefinitions => ProductionStorageArea._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -8715,7 +8811,8 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(ContactDetails), nameof(NauticalInformation), nameof(NonStandardWorkingDay), nameof(ServiceHours)],
             }, ];
-            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
+            public featureBindingDefinition[] featureBindingDefinitions => ProductionStorageArea._featureBindingDefinitions;
+            public static featureBindingDefinition[] _featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -8739,7 +8836,7 @@ namespace S100Framework.DomainModel.S101 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class Checkpoint : FeatureNode {
+        public partial class Checkpoint : FeatureNode, IFeatureBindingDefinition {
             [EnumerationValue(1)]
             public categoryOfCheckpoint? categoryOfCheckpoint { get; set; } = default;
             public List<featureName> featureName { get; set; } = [];
@@ -8757,7 +8854,8 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(Checkpoint);
-            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
+            public informationBindingDefinition[] informationBindingDefinitions => Checkpoint._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -8766,7 +8864,8 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(ContactDetails), nameof(NauticalInformation), nameof(NonStandardWorkingDay), nameof(ServiceHours)],
             }, ];
-            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
+            public featureBindingDefinition[] featureBindingDefinitions => Checkpoint._featureBindingDefinitions;
+            public static featureBindingDefinition[] _featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -8790,7 +8889,7 @@ namespace S100Framework.DomainModel.S101 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class Hulk : FeatureNode {
+        public partial class Hulk : FeatureNode, IFeatureBindingDefinition {
             [EnumerationValue(1)]
             [EnumerationValue(2)]
             [EnumerationValue(3)]
@@ -8847,7 +8946,8 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(Hulk);
-            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
+            public informationBindingDefinition[] informationBindingDefinitions => Hulk._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -8856,7 +8956,8 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(NauticalInformation)],
             }, ];
-            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
+            public featureBindingDefinition[] featureBindingDefinitions => Hulk._featureBindingDefinitions;
+            public static featureBindingDefinition[] _featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -8896,7 +8997,7 @@ namespace S100Framework.DomainModel.S101 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class Pile : FeatureNode {
+        public partial class Pile : FeatureNode, IFeatureBindingDefinition {
             [EnumerationValue(1)]
             [EnumerationValue(3)]
             [EnumerationValue(4)]
@@ -8960,7 +9061,8 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(Pile);
-            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
+            public informationBindingDefinition[] informationBindingDefinitions => Pile._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -8969,7 +9071,8 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(NauticalInformation)],
             }, ];
-            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
+            public featureBindingDefinition[] featureBindingDefinitions => Pile._featureBindingDefinitions;
+            public static featureBindingDefinition[] _featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -9025,7 +9128,7 @@ namespace S100Framework.DomainModel.S101 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class Dyke : FeatureNode {
+        public partial class Dyke : FeatureNode, IFeatureBindingDefinition {
             [EnumerationValue(1)]
             [EnumerationValue(2)]
             [EnumerationValue(3)]
@@ -9057,7 +9160,8 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(Dyke);
-            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
+            public informationBindingDefinition[] informationBindingDefinitions => Dyke._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -9066,7 +9170,8 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(NauticalInformation)],
             }, ];
-            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
+            public featureBindingDefinition[] featureBindingDefinitions => Dyke._featureBindingDefinitions;
+            public static featureBindingDefinition[] _featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -9090,7 +9195,7 @@ namespace S100Framework.DomainModel.S101 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class ShorelineConstruction : FeatureNode {
+        public partial class ShorelineConstruction : FeatureNode, IFeatureBindingDefinition {
             [EnumerationValue(1)]
             [EnumerationValue(2)]
             [EnumerationValue(3)]
@@ -9194,7 +9299,8 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(ShorelineConstruction);
-            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
+            public informationBindingDefinition[] informationBindingDefinitions => ShorelineConstruction._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -9203,7 +9309,8 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(NauticalInformation)],
             }, ];
-            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
+            public featureBindingDefinition[] featureBindingDefinitions => ShorelineConstruction._featureBindingDefinitions;
+            public static featureBindingDefinition[] _featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -9243,7 +9350,7 @@ namespace S100Framework.DomainModel.S101 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class StructureOverNavigableWater : FeatureNode {
+        public partial class StructureOverNavigableWater : FeatureNode, IFeatureBindingDefinition {
             [EnumerationValue(1)]
             [EnumerationValue(2)]
             [EnumerationValue(3)]
@@ -9348,7 +9455,8 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(StructureOverNavigableWater);
-            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
+            public informationBindingDefinition[] informationBindingDefinitions => StructureOverNavigableWater._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -9357,7 +9465,8 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(NauticalInformation)],
             }, ];
-            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
+            public featureBindingDefinition[] featureBindingDefinitions => StructureOverNavigableWater._featureBindingDefinitions;
+            public static featureBindingDefinition[] _featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.aggregation,
                 lower = 0,
@@ -9413,7 +9522,7 @@ namespace S100Framework.DomainModel.S101 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class Causeway : FeatureNode {
+        public partial class Causeway : FeatureNode, IFeatureBindingDefinition {
             [EnumerationValue(1)]
             [EnumerationValue(2)]
             [EnumerationValue(3)]
@@ -9451,7 +9560,8 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(Causeway);
-            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
+            public informationBindingDefinition[] informationBindingDefinitions => Causeway._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -9460,7 +9570,8 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(NauticalInformation)],
             }, ];
-            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
+            public featureBindingDefinition[] featureBindingDefinitions => Causeway._featureBindingDefinitions;
+            public static featureBindingDefinition[] _featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -9484,7 +9595,7 @@ namespace S100Framework.DomainModel.S101 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class Canal : FeatureNode {
+        public partial class Canal : FeatureNode, IFeatureBindingDefinition {
             [EnumerationValue(1)]
             [EnumerationValue(2)]
             [EnumerationValue(3)]
@@ -9515,7 +9626,8 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(Canal);
-            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
+            public informationBindingDefinition[] informationBindingDefinitions => Canal._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -9524,7 +9636,8 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(NauticalInformation)],
             }, ];
-            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
+            public featureBindingDefinition[] featureBindingDefinitions => Canal._featureBindingDefinitions;
+            public static featureBindingDefinition[] _featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -9548,7 +9661,7 @@ namespace S100Framework.DomainModel.S101 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class DistanceMark : FeatureNode {
+        public partial class DistanceMark : FeatureNode, IFeatureBindingDefinition {
             [Required()]
             public Boolean distanceMarkVisible { get; set; }
             public List<featureName> featureName { get; set; } = [];
@@ -9562,7 +9675,8 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(DistanceMark);
-            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
+            public informationBindingDefinition[] informationBindingDefinitions => DistanceMark._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -9571,7 +9685,8 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(NauticalInformation)],
             }, ];
-            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
+            public featureBindingDefinition[] featureBindingDefinitions => DistanceMark._featureBindingDefinitions;
+            public static featureBindingDefinition[] _featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.composition,
                 lower = 0,
@@ -9608,7 +9723,7 @@ namespace S100Framework.DomainModel.S101 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class Gate : FeatureNode {
+        public partial class Gate : FeatureNode, IFeatureBindingDefinition {
             [EnumerationValue(2)]
             [EnumerationValue(3)]
             [EnumerationValue(4)]
@@ -9668,7 +9783,8 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(Gate);
-            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
+            public informationBindingDefinition[] informationBindingDefinitions => Gate._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -9677,7 +9793,8 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(ContactDetails), nameof(NauticalInformation), nameof(NonStandardWorkingDay), nameof(ServiceHours)],
             }, ];
-            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
+            public featureBindingDefinition[] featureBindingDefinitions => Gate._featureBindingDefinitions;
+            public static featureBindingDefinition[] _featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -9701,7 +9818,7 @@ namespace S100Framework.DomainModel.S101 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class Dam : FeatureNode {
+        public partial class Dam : FeatureNode, IFeatureBindingDefinition {
             [EnumerationValue(1)]
             [EnumerationValue(2)]
             [EnumerationValue(3)]
@@ -9773,7 +9890,8 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(Dam);
-            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
+            public informationBindingDefinition[] informationBindingDefinitions => Dam._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -9782,7 +9900,8 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(NauticalInformation)],
             }, ];
-            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
+            public featureBindingDefinition[] featureBindingDefinitions => Dam._featureBindingDefinitions;
+            public static featureBindingDefinition[] _featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -9806,7 +9925,7 @@ namespace S100Framework.DomainModel.S101 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class Crane : FeatureNode {
+        public partial class Crane : FeatureNode, IFeatureBindingDefinition {
             [EnumerationValue(2)]
             [EnumerationValue(3)]
             [EnumerationValue(4)]
@@ -9885,7 +10004,8 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(Crane);
-            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
+            public informationBindingDefinition[] informationBindingDefinitions => Crane._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -9894,7 +10014,8 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(ContactDetails), nameof(NauticalInformation), nameof(NonStandardWorkingDay), nameof(ServiceHours)],
             }, ];
-            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
+            public featureBindingDefinition[] featureBindingDefinitions => Crane._featureBindingDefinitions;
+            public static featureBindingDefinition[] _featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -9934,7 +10055,7 @@ namespace S100Framework.DomainModel.S101 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class Berth : FeatureNode {
+        public partial class Berth : FeatureNode, IFeatureBindingDefinition {
             [EnumerationValue(1)]
             [EnumerationValue(2)]
             [EnumerationValue(3)]
@@ -9979,7 +10100,8 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(Berth);
-            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
+            public informationBindingDefinition[] informationBindingDefinitions => Berth._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -9988,7 +10110,8 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(ContactDetails), nameof(NauticalInformation), nameof(NonStandardWorkingDay), nameof(ServiceHours)],
             }, ];
-            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
+            public featureBindingDefinition[] featureBindingDefinitions => Berth._featureBindingDefinitions;
+            public static featureBindingDefinition[] _featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.aggregation,
                 lower = 0,
@@ -10022,7 +10145,7 @@ namespace S100Framework.DomainModel.S101 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class Dolphin : FeatureNode {
+        public partial class Dolphin : FeatureNode, IFeatureBindingDefinition {
             [EnumerationValue(1)]
             [EnumerationValue(2)]
             [EnumerationValue(3)]
@@ -10096,7 +10219,8 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(Dolphin);
-            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
+            public informationBindingDefinition[] informationBindingDefinitions => Dolphin._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -10105,7 +10229,8 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(ContactDetails), nameof(NauticalInformation)],
             }, ];
-            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
+            public featureBindingDefinition[] featureBindingDefinitions => Dolphin._featureBindingDefinitions;
+            public static featureBindingDefinition[] _featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -10155,7 +10280,7 @@ namespace S100Framework.DomainModel.S101 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class Bollard : FeatureNode {
+        public partial class Bollard : FeatureNode, IFeatureBindingDefinition {
             [EnumerationValue(1)]
             [EnumerationValue(2)]
             [EnumerationValue(5)]
@@ -10181,7 +10306,8 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(Bollard);
-            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
+            public informationBindingDefinition[] informationBindingDefinitions => Bollard._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -10190,7 +10316,8 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(NauticalInformation)],
             }, ];
-            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
+            public featureBindingDefinition[] featureBindingDefinitions => Bollard._featureBindingDefinitions;
+            public static featureBindingDefinition[] _featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.composition,
                 lower = 0,
@@ -10222,7 +10349,7 @@ namespace S100Framework.DomainModel.S101 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class DryDock : FeatureNode {
+        public partial class DryDock : FeatureNode, IFeatureBindingDefinition {
             [EnumerationValue(1)]
             [EnumerationValue(2)]
             [EnumerationValue(3)]
@@ -10261,7 +10388,8 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(DryDock);
-            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
+            public informationBindingDefinition[] informationBindingDefinitions => DryDock._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -10270,7 +10398,8 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(ContactDetails), nameof(NauticalInformation), nameof(NonStandardWorkingDay), nameof(ServiceHours)],
             }, ];
-            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
+            public featureBindingDefinition[] featureBindingDefinitions => DryDock._featureBindingDefinitions;
+            public static featureBindingDefinition[] _featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -10294,7 +10423,7 @@ namespace S100Framework.DomainModel.S101 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class FloatingDock : FeatureNode {
+        public partial class FloatingDock : FeatureNode, IFeatureBindingDefinition {
             [EnumerationValue(1)]
             [EnumerationValue(2)]
             [EnumerationValue(3)]
@@ -10353,7 +10482,8 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(FloatingDock);
-            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
+            public informationBindingDefinition[] informationBindingDefinitions => FloatingDock._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -10362,7 +10492,8 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(ContactDetails), nameof(NauticalInformation), nameof(NonStandardWorkingDay), nameof(ServiceHours)],
             }, ];
-            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
+            public featureBindingDefinition[] featureBindingDefinitions => FloatingDock._featureBindingDefinitions;
+            public static featureBindingDefinition[] _featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -10402,7 +10533,7 @@ namespace S100Framework.DomainModel.S101 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class Pontoon : FeatureNode {
+        public partial class Pontoon : FeatureNode, IFeatureBindingDefinition {
             [EnumerationValue(1)]
             [EnumerationValue(2)]
             [EnumerationValue(5)]
@@ -10435,7 +10566,8 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(Pontoon);
-            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
+            public informationBindingDefinition[] informationBindingDefinitions => Pontoon._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -10444,7 +10576,8 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(NauticalInformation)],
             }, ];
-            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
+            public featureBindingDefinition[] featureBindingDefinitions => Pontoon._featureBindingDefinitions;
+            public static featureBindingDefinition[] _featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.aggregation,
                 lower = 0,
@@ -10492,7 +10625,7 @@ namespace S100Framework.DomainModel.S101 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class DockArea : FeatureNode {
+        public partial class DockArea : FeatureNode, IFeatureBindingDefinition {
             [EnumerationValue(1)]
             [EnumerationValue(2)]
             public categoryOfDock? categoryOfDock { get; set; } = default;
@@ -10522,7 +10655,8 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(DockArea);
-            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
+            public informationBindingDefinition[] informationBindingDefinitions => DockArea._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -10531,7 +10665,8 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(ContactDetails), nameof(NauticalInformation), nameof(NonStandardWorkingDay), nameof(ServiceHours)],
             }, ];
-            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
+            public featureBindingDefinition[] featureBindingDefinitions => DockArea._featureBindingDefinitions;
+            public static featureBindingDefinition[] _featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -10555,7 +10690,7 @@ namespace S100Framework.DomainModel.S101 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class Gridiron : FeatureNode {
+        public partial class Gridiron : FeatureNode, IFeatureBindingDefinition {
             public List<featureName> featureName { get; set; } = [];
             public Decimal? horizontalLength { get; set; } = default;
             public Decimal? horizontalWidth { get; set; } = default;
@@ -10586,7 +10721,8 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(Gridiron);
-            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
+            public informationBindingDefinition[] informationBindingDefinitions => Gridiron._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -10595,7 +10731,8 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(NauticalInformation)],
             }, ];
-            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
+            public featureBindingDefinition[] featureBindingDefinitions => Gridiron._featureBindingDefinitions;
+            public static featureBindingDefinition[] _featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -10619,7 +10756,7 @@ namespace S100Framework.DomainModel.S101 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class LockBasin : FeatureNode {
+        public partial class LockBasin : FeatureNode, IFeatureBindingDefinition {
             public List<featureName> featureName { get; set; } = [];
             public fixedDateRange? fixedDateRange { get; set; }
             public List<periodicDateRange> periodicDateRange { get; set; } = [];
@@ -10642,7 +10779,8 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(LockBasin);
-            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
+            public informationBindingDefinition[] informationBindingDefinitions => LockBasin._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -10651,7 +10789,8 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(ContactDetails), nameof(NauticalInformation), nameof(NonStandardWorkingDay), nameof(ServiceHours)],
             }, ];
-            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
+            public featureBindingDefinition[] featureBindingDefinitions => LockBasin._featureBindingDefinitions;
+            public static featureBindingDefinition[] _featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -10675,7 +10814,7 @@ namespace S100Framework.DomainModel.S101 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class MooringTrot : FeatureNode {
+        public partial class MooringTrot : FeatureNode, IFeatureBindingDefinition {
             public List<featureName> featureName { get; set; } = [];
             public fixedDateRange? fixedDateRange { get; set; }
             public String? interoperabilityIdentifier { get; set; } = null;
@@ -10684,7 +10823,8 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(MooringTrot);
-            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
+            public informationBindingDefinition[] informationBindingDefinitions => MooringTrot._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -10693,7 +10833,8 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(ContactDetails), nameof(NauticalInformation)],
             }, ];
-            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
+            public featureBindingDefinition[] featureBindingDefinitions => MooringTrot._featureBindingDefinitions;
+            public static featureBindingDefinition[] _featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -10725,7 +10866,7 @@ namespace S100Framework.DomainModel.S101 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class SeaAreaNamedWaterArea : FeatureNode {
+        public partial class SeaAreaNamedWaterArea : FeatureNode, IFeatureBindingDefinition {
             [EnumerationValue(2)]
             [EnumerationValue(3)]
             [EnumerationValue(4)]
@@ -10789,7 +10930,8 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(SeaAreaNamedWaterArea);
-            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
+            public informationBindingDefinition[] informationBindingDefinitions => SeaAreaNamedWaterArea._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -10798,7 +10940,8 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(NauticalInformation)],
             }, ];
-            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
+            public featureBindingDefinition[] featureBindingDefinitions => SeaAreaNamedWaterArea._featureBindingDefinitions;
+            public static featureBindingDefinition[] _featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -10822,7 +10965,7 @@ namespace S100Framework.DomainModel.S101 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class TidalStreamFloodEbb : FeatureNode {
+        public partial class TidalStreamFloodEbb : FeatureNode, IFeatureBindingDefinition {
             [EnumerationValue(1)]
             [EnumerationValue(2)]
             [EnumerationValue(3)]
@@ -10842,7 +10985,8 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(TidalStreamFloodEbb);
-            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
+            public informationBindingDefinition[] informationBindingDefinitions => TidalStreamFloodEbb._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -10851,7 +10995,8 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(NauticalInformation)],
             }, ];
-            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
+            public featureBindingDefinition[] featureBindingDefinitions => TidalStreamFloodEbb._featureBindingDefinitions;
+            public static featureBindingDefinition[] _featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -10883,7 +11028,7 @@ namespace S100Framework.DomainModel.S101 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class CurrentNonGravitational : FeatureNode {
+        public partial class CurrentNonGravitational : FeatureNode, IFeatureBindingDefinition {
             public List<featureName> featureName { get; set; } = [];
             public fixedDateRange? fixedDateRange { get; set; }
             public String? interoperabilityIdentifier { get; set; } = null;
@@ -10902,7 +11047,8 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(CurrentNonGravitational);
-            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
+            public informationBindingDefinition[] informationBindingDefinitions => CurrentNonGravitational._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -10911,7 +11057,8 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(NauticalInformation)],
             }, ];
-            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
+            public featureBindingDefinition[] featureBindingDefinitions => CurrentNonGravitational._featureBindingDefinitions;
+            public static featureBindingDefinition[] _featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -10943,7 +11090,7 @@ namespace S100Framework.DomainModel.S101 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class WaterTurbulence : FeatureNode {
+        public partial class WaterTurbulence : FeatureNode, IFeatureBindingDefinition {
             [EnumerationValue(1)]
             [EnumerationValue(2)]
             [EnumerationValue(3)]
@@ -10958,7 +11105,8 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(WaterTurbulence);
-            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
+            public informationBindingDefinition[] informationBindingDefinitions => WaterTurbulence._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -10967,7 +11115,8 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(NauticalInformation)],
             }, ];
-            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
+            public featureBindingDefinition[] featureBindingDefinitions => WaterTurbulence._featureBindingDefinitions;
+            public static featureBindingDefinition[] _featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -10991,7 +11140,7 @@ namespace S100Framework.DomainModel.S101 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class TidalStreamPanelData : FeatureNode {
+        public partial class TidalStreamPanelData : FeatureNode, IFeatureBindingDefinition {
             public List<featureName> featureName { get; set; } = [];
             public String? interoperabilityIdentifier { get; set; } = null;
             public String stationName { get; set; } = string.Empty;
@@ -11004,7 +11153,8 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(TidalStreamPanelData);
-            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
+            public informationBindingDefinition[] informationBindingDefinitions => TidalStreamPanelData._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -11013,7 +11163,8 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(NauticalInformation)],
             }, ];
-            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
+            public featureBindingDefinition[] featureBindingDefinitions => TidalStreamPanelData._featureBindingDefinitions;
+            public static featureBindingDefinition[] _featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -11040,7 +11191,7 @@ namespace S100Framework.DomainModel.S101 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class Sounding : FeatureNode {
+        public partial class Sounding : FeatureNode, IFeatureBindingDefinition {
             public List<featureName> featureName { get; set; } = [];
             public String? interoperabilityIdentifier { get; set; } = null;
 
@@ -11076,7 +11227,8 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(Sounding);
-            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
+            public informationBindingDefinition[] informationBindingDefinitions => Sounding._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -11085,7 +11237,8 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(NauticalInformation)],
             }, ];
-            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
+            public featureBindingDefinition[] featureBindingDefinitions => Sounding._featureBindingDefinitions;
+            public static featureBindingDefinition[] _featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -11109,7 +11262,7 @@ namespace S100Framework.DomainModel.S101 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class DredgedArea : FeatureNode {
+        public partial class DredgedArea : FeatureNode, IFeatureBindingDefinition {
             [Required()]
             public Decimal depthRangeMinimumValue { get; set; }
             public Decimal? depthRangeMaximumValue { get; set; } = default;
@@ -11161,7 +11314,8 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(DredgedArea);
-            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
+            public informationBindingDefinition[] informationBindingDefinitions => DredgedArea._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -11170,7 +11324,8 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(NauticalInformation)],
             }, ];
-            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
+            public featureBindingDefinition[] featureBindingDefinitions => DredgedArea._featureBindingDefinitions;
+            public static featureBindingDefinition[] _featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.aggregation,
                 lower = 0,
@@ -11202,7 +11357,7 @@ namespace S100Framework.DomainModel.S101 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class SweptArea : FeatureNode {
+        public partial class SweptArea : FeatureNode, IFeatureBindingDefinition {
             [Required()]
             public Decimal depthRangeMinimumValue { get; set; }
             public String? interoperabilityIdentifier { get; set; } = null;
@@ -11212,7 +11367,8 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(SweptArea);
-            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
+            public informationBindingDefinition[] informationBindingDefinitions => SweptArea._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -11221,7 +11377,8 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(NauticalInformation)],
             }, ];
-            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
+            public featureBindingDefinition[] featureBindingDefinitions => SweptArea._featureBindingDefinitions;
+            public static featureBindingDefinition[] _featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.aggregation,
                 lower = 0,
@@ -11253,7 +11410,7 @@ namespace S100Framework.DomainModel.S101 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class DepthContour : FeatureNode {
+        public partial class DepthContour : FeatureNode, IFeatureBindingDefinition {
             public String? interoperabilityIdentifier { get; set; } = null;
 
             [Required()]
@@ -11263,7 +11420,8 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(DepthContour);
-            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
+            public informationBindingDefinition[] informationBindingDefinitions => DepthContour._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -11272,7 +11430,8 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(NauticalInformation)],
             }, ];
-            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
+            public featureBindingDefinition[] featureBindingDefinitions => DepthContour._featureBindingDefinitions;
+            public static featureBindingDefinition[] _featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -11288,7 +11447,7 @@ namespace S100Framework.DomainModel.S101 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class DepthArea : FeatureNode {
+        public partial class DepthArea : FeatureNode, IFeatureBindingDefinition {
             [Required()]
             public Decimal depthRangeMinimumValue { get; set; }
 
@@ -11299,7 +11458,8 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(DepthArea);
-            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
+            public informationBindingDefinition[] informationBindingDefinitions => DepthArea._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -11308,7 +11468,8 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(NauticalInformation)],
             }, ];
-            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
+            public featureBindingDefinition[] featureBindingDefinitions => DepthArea._featureBindingDefinitions;
+            public static featureBindingDefinition[] _featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -11324,7 +11485,7 @@ namespace S100Framework.DomainModel.S101 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class DepthNoBottomFound : FeatureNode {
+        public partial class DepthNoBottomFound : FeatureNode, IFeatureBindingDefinition {
             public String? interoperabilityIdentifier { get; set; } = null;
 
             [EnumerationValue(1)]
@@ -11344,7 +11505,8 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(DepthNoBottomFound);
-            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
+            public informationBindingDefinition[] informationBindingDefinitions => DepthNoBottomFound._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -11353,7 +11515,8 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(NauticalInformation)],
             }, ];
-            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
+            public featureBindingDefinition[] featureBindingDefinitions => DepthNoBottomFound._featureBindingDefinitions;
+            public static featureBindingDefinition[] _featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -11369,13 +11532,14 @@ namespace S100Framework.DomainModel.S101 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class UnsurveyedArea : FeatureNode {
+        public partial class UnsurveyedArea : FeatureNode, IFeatureBindingDefinition {
             public String? interoperabilityIdentifier { get; set; } = null;
             public List<information> information { get; set; } = [];
 
             [JsonIgnore]
             public override string Code => nameof(UnsurveyedArea);
-            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
+            public informationBindingDefinition[] informationBindingDefinitions => UnsurveyedArea._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -11384,7 +11548,8 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(NauticalInformation)],
             }, ];
-            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
+            public featureBindingDefinition[] featureBindingDefinitions => UnsurveyedArea._featureBindingDefinitions;
+            public static featureBindingDefinition[] _featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -11400,7 +11565,7 @@ namespace S100Framework.DomainModel.S101 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class SeabedArea : FeatureNode {
+        public partial class SeabedArea : FeatureNode, IFeatureBindingDefinition {
             public List<featureName> featureName { get; set; } = [];
             public String? interoperabilityIdentifier { get; set; } = null;
 
@@ -11416,7 +11581,8 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(SeabedArea);
-            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
+            public informationBindingDefinition[] informationBindingDefinitions => SeabedArea._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -11425,7 +11591,8 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(NauticalInformation)],
             }, ];
-            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
+            public featureBindingDefinition[] featureBindingDefinitions => SeabedArea._featureBindingDefinitions;
+            public static featureBindingDefinition[] _featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -11451,7 +11618,7 @@ namespace S100Framework.DomainModel.S101 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class WeedKelp : FeatureNode {
+        public partial class WeedKelp : FeatureNode, IFeatureBindingDefinition {
             [EnumerationValue(1)]
             [EnumerationValue(2)]
             [EnumerationValue(4)]
@@ -11463,7 +11630,8 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(WeedKelp);
-            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
+            public informationBindingDefinition[] informationBindingDefinitions => WeedKelp._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -11472,7 +11640,8 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(NauticalInformation)],
             }, ];
-            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
+            public featureBindingDefinition[] featureBindingDefinitions => WeedKelp._featureBindingDefinitions;
+            public static featureBindingDefinition[] _featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -11496,7 +11665,7 @@ namespace S100Framework.DomainModel.S101 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class Seagrass : FeatureNode {
+        public partial class Seagrass : FeatureNode, IFeatureBindingDefinition {
             public List<featureName> featureName { get; set; } = [];
             public String? interoperabilityIdentifier { get; set; } = null;
             public Int32? scaleMinimum { get; set; } = default;
@@ -11504,7 +11673,8 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(Seagrass);
-            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
+            public informationBindingDefinition[] informationBindingDefinitions => Seagrass._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -11513,7 +11683,8 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(NauticalInformation)],
             }, ];
-            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
+            public featureBindingDefinition[] featureBindingDefinitions => Seagrass._featureBindingDefinitions;
+            public static featureBindingDefinition[] _featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -11537,7 +11708,7 @@ namespace S100Framework.DomainModel.S101 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class Sandwave : FeatureNode {
+        public partial class Sandwave : FeatureNode, IFeatureBindingDefinition {
             public String? interoperabilityIdentifier { get; set; } = null;
             public Decimal? verticalLength { get; set; } = default;
             public Int32? scaleMinimum { get; set; } = default;
@@ -11545,7 +11716,8 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(Sandwave);
-            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
+            public informationBindingDefinition[] informationBindingDefinitions => Sandwave._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -11554,7 +11726,8 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(NauticalInformation)],
             }, ];
-            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
+            public featureBindingDefinition[] featureBindingDefinitions => Sandwave._featureBindingDefinitions;
+            public static featureBindingDefinition[] _featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -11570,7 +11743,7 @@ namespace S100Framework.DomainModel.S101 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class Spring : FeatureNode {
+        public partial class Spring : FeatureNode, IFeatureBindingDefinition {
             public List<featureName> featureName { get; set; } = [];
             public String? interoperabilityIdentifier { get; set; } = null;
             public Int32? scaleMinimum { get; set; } = default;
@@ -11578,7 +11751,8 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(Spring);
-            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
+            public informationBindingDefinition[] informationBindingDefinitions => Spring._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -11587,7 +11761,8 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(NauticalInformation)],
             }, ];
-            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
+            public featureBindingDefinition[] featureBindingDefinitions => Spring._featureBindingDefinitions;
+            public static featureBindingDefinition[] _featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -11611,7 +11786,7 @@ namespace S100Framework.DomainModel.S101 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class UnderwaterAwashRock : FeatureNode {
+        public partial class UnderwaterAwashRock : FeatureNode, IFeatureBindingDefinition {
             [EnumerationValue(1)]
             [EnumerationValue(2)]
             public expositionOfSounding? expositionOfSounding { get; set; } = default;
@@ -11669,7 +11844,8 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(UnderwaterAwashRock);
-            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
+            public informationBindingDefinition[] informationBindingDefinitions => UnderwaterAwashRock._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -11678,7 +11854,8 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(NauticalInformation)],
             }, ];
-            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
+            public featureBindingDefinition[] featureBindingDefinitions => UnderwaterAwashRock._featureBindingDefinitions;
+            public static featureBindingDefinition[] _featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -11702,7 +11879,7 @@ namespace S100Framework.DomainModel.S101 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class Wreck : FeatureNode {
+        public partial class Wreck : FeatureNode, IFeatureBindingDefinition {
             [EnumerationValue(1)]
             [EnumerationValue(2)]
             [EnumerationValue(3)]
@@ -11775,7 +11952,8 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(Wreck);
-            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
+            public informationBindingDefinition[] informationBindingDefinitions => Wreck._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -11784,7 +11962,8 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(NauticalInformation)],
             }, ];
-            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
+            public featureBindingDefinition[] featureBindingDefinitions => Wreck._featureBindingDefinitions;
+            public static featureBindingDefinition[] _featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -11816,7 +11995,7 @@ namespace S100Framework.DomainModel.S101 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class Obstruction : FeatureNode {
+        public partial class Obstruction : FeatureNode, IFeatureBindingDefinition {
             [EnumerationValue(1)]
             [EnumerationValue(2)]
             [EnumerationValue(3)]
@@ -11933,7 +12112,8 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(Obstruction);
-            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
+            public informationBindingDefinition[] informationBindingDefinitions => Obstruction._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -11942,7 +12122,8 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(NauticalInformation)],
             }, ];
-            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
+            public featureBindingDefinition[] featureBindingDefinitions => Obstruction._featureBindingDefinitions;
+            public static featureBindingDefinition[] _featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.aggregation,
                 lower = 0,
@@ -11974,7 +12155,7 @@ namespace S100Framework.DomainModel.S101 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class FoulGround : FeatureNode {
+        public partial class FoulGround : FeatureNode, IFeatureBindingDefinition {
             public List<featureName> featureName { get; set; } = [];
             public String? interoperabilityIdentifier { get; set; } = null;
 
@@ -12017,7 +12198,8 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(FoulGround);
-            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
+            public informationBindingDefinition[] informationBindingDefinitions => FoulGround._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -12026,7 +12208,8 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(NauticalInformation)],
             }, ];
-            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
+            public featureBindingDefinition[] featureBindingDefinitions => FoulGround._featureBindingDefinitions;
+            public static featureBindingDefinition[] _featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -12050,7 +12233,7 @@ namespace S100Framework.DomainModel.S101 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class DiscolouredWater : FeatureNode {
+        public partial class DiscolouredWater : FeatureNode, IFeatureBindingDefinition {
             public String? interoperabilityIdentifier { get; set; } = null;
             public DateOnly? reportedDate { get; set; } = default;
             public Int32? scaleMinimum { get; set; } = default;
@@ -12058,7 +12241,8 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(DiscolouredWater);
-            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
+            public informationBindingDefinition[] informationBindingDefinitions => DiscolouredWater._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -12067,7 +12251,8 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(NauticalInformation)],
             }, ];
-            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
+            public featureBindingDefinition[] featureBindingDefinitions => DiscolouredWater._featureBindingDefinitions;
+            public static featureBindingDefinition[] _featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -12083,7 +12268,7 @@ namespace S100Framework.DomainModel.S101 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class FishingFacility : FeatureNode {
+        public partial class FishingFacility : FeatureNode, IFeatureBindingDefinition {
             [EnumerationValue(1)]
             [EnumerationValue(2)]
             [EnumerationValue(3)]
@@ -12115,7 +12300,8 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(FishingFacility);
-            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
+            public informationBindingDefinition[] informationBindingDefinitions => FishingFacility._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -12124,7 +12310,8 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(ContactDetails), nameof(NauticalInformation)],
             }, ];
-            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
+            public featureBindingDefinition[] featureBindingDefinitions => FishingFacility._featureBindingDefinitions;
+            public static featureBindingDefinition[] _featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -12164,7 +12351,7 @@ namespace S100Framework.DomainModel.S101 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class MarineFarmCulture : FeatureNode {
+        public partial class MarineFarmCulture : FeatureNode, IFeatureBindingDefinition {
             [EnumerationValue(1)]
             [EnumerationValue(2)]
             [EnumerationValue(3)]
@@ -12251,7 +12438,8 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(MarineFarmCulture);
-            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
+            public informationBindingDefinition[] informationBindingDefinitions => MarineFarmCulture._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -12260,7 +12448,8 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(ContactDetails), nameof(NauticalInformation)],
             }, ];
-            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
+            public featureBindingDefinition[] featureBindingDefinitions => MarineFarmCulture._featureBindingDefinitions;
+            public static featureBindingDefinition[] _featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -12284,7 +12473,7 @@ namespace S100Framework.DomainModel.S101 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class OffshorePlatform : FeatureNode {
+        public partial class OffshorePlatform : FeatureNode, IFeatureBindingDefinition {
             [EnumerationValue(1)]
             [EnumerationValue(2)]
             [EnumerationValue(3)]
@@ -12361,7 +12550,8 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(OffshorePlatform);
-            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
+            public informationBindingDefinition[] informationBindingDefinitions => OffshorePlatform._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -12370,7 +12560,8 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(ContactDetails), nameof(NauticalInformation)],
             }, ];
-            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
+            public featureBindingDefinition[] featureBindingDefinitions => OffshorePlatform._featureBindingDefinitions;
+            public static featureBindingDefinition[] _featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -12410,7 +12601,7 @@ namespace S100Framework.DomainModel.S101 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class CableSubmarine : FeatureNode {
+        public partial class CableSubmarine : FeatureNode, IFeatureBindingDefinition {
             public Decimal? buriedDepth { get; set; } = default;
 
             [EnumerationValue(1)]
@@ -12437,7 +12628,8 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(CableSubmarine);
-            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
+            public informationBindingDefinition[] informationBindingDefinitions => CableSubmarine._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -12446,7 +12638,8 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(ContactDetails), nameof(NauticalInformation)],
             }, ];
-            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
+            public featureBindingDefinition[] featureBindingDefinitions => CableSubmarine._featureBindingDefinitions;
+            public static featureBindingDefinition[] _featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.aggregation,
                 lower = 0,
@@ -12478,7 +12671,7 @@ namespace S100Framework.DomainModel.S101 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class CableArea : FeatureNode {
+        public partial class CableArea : FeatureNode, IFeatureBindingDefinition {
             [EnumerationValue(1)]
             [EnumerationValue(7)]
             [EnumerationValue(10)]
@@ -12521,7 +12714,8 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(CableArea);
-            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
+            public informationBindingDefinition[] informationBindingDefinitions => CableArea._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -12530,7 +12724,8 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(ContactDetails), nameof(NauticalInformation)],
             }, ];
-            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
+            public featureBindingDefinition[] featureBindingDefinitions => CableArea._featureBindingDefinitions;
+            public static featureBindingDefinition[] _featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -12554,7 +12749,7 @@ namespace S100Framework.DomainModel.S101 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class PipelineSubmarineOnLand : FeatureNode {
+        public partial class PipelineSubmarineOnLand : FeatureNode, IFeatureBindingDefinition {
             public Decimal? buriedDepth { get; set; } = default;
 
             [EnumerationValue(2)]
@@ -12618,7 +12813,8 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(PipelineSubmarineOnLand);
-            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
+            public informationBindingDefinition[] informationBindingDefinitions => PipelineSubmarineOnLand._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -12627,7 +12823,8 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(ContactDetails), nameof(NauticalInformation)],
             }, ];
-            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
+            public featureBindingDefinition[] featureBindingDefinitions => PipelineSubmarineOnLand._featureBindingDefinitions;
+            public static featureBindingDefinition[] _featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -12651,7 +12848,7 @@ namespace S100Framework.DomainModel.S101 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class SubmarinePipelineArea : FeatureNode {
+        public partial class SubmarinePipelineArea : FeatureNode, IFeatureBindingDefinition {
             [EnumerationValue(2)]
             [EnumerationValue(3)]
             [EnumerationValue(4)]
@@ -12711,7 +12908,8 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(SubmarinePipelineArea);
-            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
+            public informationBindingDefinition[] informationBindingDefinitions => SubmarinePipelineArea._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -12720,7 +12918,8 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(ContactDetails), nameof(NauticalInformation)],
             }, ];
-            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
+            public featureBindingDefinition[] featureBindingDefinitions => SubmarinePipelineArea._featureBindingDefinitions;
+            public static featureBindingDefinition[] _featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -12744,7 +12943,7 @@ namespace S100Framework.DomainModel.S101 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class OffshoreProductionArea : FeatureNode {
+        public partial class OffshoreProductionArea : FeatureNode, IFeatureBindingDefinition {
             [EnumerationValue(1)]
             [EnumerationValue(2)]
             [EnumerationValue(3)]
@@ -12829,7 +13028,8 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(OffshoreProductionArea);
-            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
+            public informationBindingDefinition[] informationBindingDefinitions => OffshoreProductionArea._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -12838,7 +13038,8 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(ContactDetails), nameof(NauticalInformation)],
             }, ];
-            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
+            public featureBindingDefinition[] featureBindingDefinitions => OffshoreProductionArea._featureBindingDefinitions;
+            public static featureBindingDefinition[] _featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -12862,7 +13063,7 @@ namespace S100Framework.DomainModel.S101 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class NavigationLine : FeatureNode {
+        public partial class NavigationLine : FeatureNode, IFeatureBindingDefinition {
             [EnumerationValue(1)]
             [EnumerationValue(2)]
             [EnumerationValue(3)]
@@ -12888,7 +13089,8 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(NavigationLine);
-            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
+            public informationBindingDefinition[] informationBindingDefinitions => NavigationLine._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -12897,7 +13099,8 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(NauticalInformation)],
             }, ];
-            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
+            public featureBindingDefinition[] featureBindingDefinitions => NavigationLine._featureBindingDefinitions;
+            public static featureBindingDefinition[] _featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.aggregation,
                 lower = 0,
@@ -12925,7 +13128,7 @@ namespace S100Framework.DomainModel.S101 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class RecommendedTrack : FeatureNode {
+        public partial class RecommendedTrack : FeatureNode, IFeatureBindingDefinition {
             [Required()]
             public Boolean basedOnFixedMarks { get; set; }
             public Decimal? depthRangeMinimumValue { get; set; } = default;
@@ -12976,7 +13179,8 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(RecommendedTrack);
-            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
+            public informationBindingDefinition[] informationBindingDefinitions => RecommendedTrack._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -12985,7 +13189,8 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(NauticalInformation)],
             }, ];
-            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
+            public featureBindingDefinition[] featureBindingDefinitions => RecommendedTrack._featureBindingDefinitions;
+            public static featureBindingDefinition[] _featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.aggregation,
                 lower = 0,
@@ -13025,7 +13230,7 @@ namespace S100Framework.DomainModel.S101 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class RangeSystem : FeatureNode {
+        public partial class RangeSystem : FeatureNode, IFeatureBindingDefinition {
             public List<featureName> featureName { get; set; } = [];
             public fixedDateRange? fixedDateRange { get; set; }
             public String? interoperabilityIdentifier { get; set; } = null;
@@ -13035,7 +13240,8 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(RangeSystem);
-            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
+            public informationBindingDefinition[] informationBindingDefinitions => RangeSystem._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -13044,7 +13250,8 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(NauticalInformation)],
             }, ];
-            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
+            public featureBindingDefinition[] featureBindingDefinitions => RangeSystem._featureBindingDefinitions;
+            public static featureBindingDefinition[] _featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -13092,7 +13299,7 @@ namespace S100Framework.DomainModel.S101 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class Fairway : FeatureNode {
+        public partial class Fairway : FeatureNode, IFeatureBindingDefinition {
             public Decimal? depthRangeMinimumValue { get; set; } = default;
             public List<featureName> featureName { get; set; } = [];
             public fixedDateRange? fixedDateRange { get; set; }
@@ -13152,7 +13359,8 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(Fairway);
-            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
+            public informationBindingDefinition[] informationBindingDefinitions => Fairway._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -13161,7 +13369,8 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(NauticalInformation)],
             }, ];
-            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
+            public featureBindingDefinition[] featureBindingDefinitions => Fairway._featureBindingDefinitions;
+            public static featureBindingDefinition[] _featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.aggregation,
                 lower = 0,
@@ -13201,7 +13410,7 @@ namespace S100Framework.DomainModel.S101 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class FairwaySystem : FeatureNode {
+        public partial class FairwaySystem : FeatureNode, IFeatureBindingDefinition {
             public List<featureName> featureName { get; set; } = [];
             public fixedDateRange? fixedDateRange { get; set; }
             public String? interoperabilityIdentifier { get; set; } = null;
@@ -13212,7 +13421,8 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(FairwaySystem);
-            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
+            public informationBindingDefinition[] informationBindingDefinitions => FairwaySystem._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -13221,7 +13431,8 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(NauticalInformation)],
             }, ];
-            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
+            public featureBindingDefinition[] featureBindingDefinitions => FairwaySystem._featureBindingDefinitions;
+            public static featureBindingDefinition[] _featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -13261,7 +13472,7 @@ namespace S100Framework.DomainModel.S101 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class RecommendedRouteCentreline : FeatureNode {
+        public partial class RecommendedRouteCentreline : FeatureNode, IFeatureBindingDefinition {
             [Required()]
             public Boolean basedOnFixedMarks { get; set; }
             public Decimal? depthRangeMinimumValue { get; set; } = default;
@@ -13306,7 +13517,8 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(RecommendedRouteCentreline);
-            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
+            public informationBindingDefinition[] informationBindingDefinitions => RecommendedRouteCentreline._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -13315,7 +13527,8 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(NauticalInformation)],
             }, ];
-            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
+            public featureBindingDefinition[] featureBindingDefinitions => RecommendedRouteCentreline._featureBindingDefinitions;
+            public static featureBindingDefinition[] _featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.aggregation,
                 lower = 0,
@@ -13355,7 +13568,7 @@ namespace S100Framework.DomainModel.S101 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class TwoWayRoutePart : FeatureNode {
+        public partial class TwoWayRoutePart : FeatureNode, IFeatureBindingDefinition {
             public Boolean? basedOnFixedMarks { get; set; } = default;
             public Decimal? depthRangeMinimumValue { get; set; } = default;
             public fixedDateRange? fixedDateRange { get; set; }
@@ -13401,7 +13614,8 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(TwoWayRoutePart);
-            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
+            public informationBindingDefinition[] informationBindingDefinitions => TwoWayRoutePart._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -13410,7 +13624,8 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(NauticalInformation)],
             }, ];
-            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
+            public featureBindingDefinition[] featureBindingDefinitions => TwoWayRoutePart._featureBindingDefinitions;
+            public static featureBindingDefinition[] _featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.aggregation,
                 lower = 0,
@@ -13442,7 +13657,7 @@ namespace S100Framework.DomainModel.S101 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class TwoWayRoute : FeatureNode {
+        public partial class TwoWayRoute : FeatureNode, IFeatureBindingDefinition {
             public List<featureName> featureName { get; set; } = [];
             public fixedDateRange? fixedDateRange { get; set; }
             public String? interoperabilityIdentifier { get; set; } = null;
@@ -13452,7 +13667,8 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(TwoWayRoute);
-            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
+            public informationBindingDefinition[] informationBindingDefinitions => TwoWayRoute._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -13461,7 +13677,8 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(NauticalInformation)],
             }, ];
-            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
+            public featureBindingDefinition[] featureBindingDefinitions => TwoWayRoute._featureBindingDefinitions;
+            public static featureBindingDefinition[] _featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -13509,7 +13726,7 @@ namespace S100Framework.DomainModel.S101 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class RecommendedTrafficLanePart : FeatureNode {
+        public partial class RecommendedTrafficLanePart : FeatureNode, IFeatureBindingDefinition {
             public fixedDateRange? fixedDateRange { get; set; }
             public String? interoperabilityIdentifier { get; set; } = null;
 
@@ -13525,7 +13742,8 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(RecommendedTrafficLanePart);
-            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
+            public informationBindingDefinition[] informationBindingDefinitions => RecommendedTrafficLanePart._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -13534,7 +13752,8 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(NauticalInformation)],
             }, ];
-            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
+            public featureBindingDefinition[] featureBindingDefinitions => RecommendedTrafficLanePart._featureBindingDefinitions;
+            public static featureBindingDefinition[] _featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -13550,7 +13769,7 @@ namespace S100Framework.DomainModel.S101 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class DeepWaterRouteCentreline : FeatureNode {
+        public partial class DeepWaterRouteCentreline : FeatureNode, IFeatureBindingDefinition {
             [Required()]
             public Boolean basedOnFixedMarks { get; set; }
             public Decimal? depthRangeMinimumValue { get; set; } = default;
@@ -13600,7 +13819,8 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(DeepWaterRouteCentreline);
-            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
+            public informationBindingDefinition[] informationBindingDefinitions => DeepWaterRouteCentreline._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -13609,7 +13829,8 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(NauticalInformation)],
             }, ];
-            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
+            public featureBindingDefinition[] featureBindingDefinitions => DeepWaterRouteCentreline._featureBindingDefinitions;
+            public static featureBindingDefinition[] _featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.aggregation,
                 lower = 0,
@@ -13649,7 +13870,7 @@ namespace S100Framework.DomainModel.S101 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class DeepWaterRoutePart : FeatureNode {
+        public partial class DeepWaterRoutePart : FeatureNode, IFeatureBindingDefinition {
             [Required()]
             public Decimal depthRangeMinimumValue { get; set; }
             public List<featureName> featureName { get; set; } = [];
@@ -13725,7 +13946,8 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(DeepWaterRoutePart);
-            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
+            public informationBindingDefinition[] informationBindingDefinitions => DeepWaterRoutePart._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -13734,7 +13956,8 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(NauticalInformation)],
             }, ];
-            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
+            public featureBindingDefinition[] featureBindingDefinitions => DeepWaterRoutePart._featureBindingDefinitions;
+            public static featureBindingDefinition[] _featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.aggregation,
                 lower = 0,
@@ -13774,7 +13997,7 @@ namespace S100Framework.DomainModel.S101 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class DeepWaterRoute : FeatureNode {
+        public partial class DeepWaterRoute : FeatureNode, IFeatureBindingDefinition {
             public List<featureName> featureName { get; set; } = [];
             public fixedDateRange? fixedDateRange { get; set; }
             public Boolean? iMOAdopted { get; set; } = default;
@@ -13784,7 +14007,8 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(DeepWaterRoute);
-            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
+            public informationBindingDefinition[] informationBindingDefinitions => DeepWaterRoute._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -13793,7 +14017,8 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(NauticalInformation)],
             }, ];
-            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
+            public featureBindingDefinition[] featureBindingDefinitions => DeepWaterRoute._featureBindingDefinitions;
+            public static featureBindingDefinition[] _featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -13841,7 +14066,7 @@ namespace S100Framework.DomainModel.S101 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class InshoreTrafficZone : FeatureNode {
+        public partial class InshoreTrafficZone : FeatureNode, IFeatureBindingDefinition {
             public fixedDateRange? fixedDateRange { get; set; }
             public String? interoperabilityIdentifier { get; set; } = null;
 
@@ -13883,7 +14108,8 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(InshoreTrafficZone);
-            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
+            public informationBindingDefinition[] informationBindingDefinitions => InshoreTrafficZone._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -13892,7 +14118,8 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(NauticalInformation)],
             }, ];
-            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
+            public featureBindingDefinition[] featureBindingDefinitions => InshoreTrafficZone._featureBindingDefinitions;
+            public static featureBindingDefinition[] _featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.aggregation,
                 lower = 0,
@@ -13916,7 +14143,7 @@ namespace S100Framework.DomainModel.S101 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class PrecautionaryArea : FeatureNode {
+        public partial class PrecautionaryArea : FeatureNode, IFeatureBindingDefinition {
             public List<featureName> featureName { get; set; } = [];
             public fixedDateRange? fixedDateRange { get; set; }
             public Boolean? iMOAdopted { get; set; } = default;
@@ -13960,7 +14187,8 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(PrecautionaryArea);
-            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
+            public informationBindingDefinition[] informationBindingDefinitions => PrecautionaryArea._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -13969,7 +14197,8 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(NauticalInformation)],
             }, ];
-            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
+            public featureBindingDefinition[] featureBindingDefinitions => PrecautionaryArea._featureBindingDefinitions;
+            public static featureBindingDefinition[] _featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.aggregation,
                 lower = 0,
@@ -14003,7 +14232,7 @@ namespace S100Framework.DomainModel.S101 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class TrafficSeparationSchemeLanePart : FeatureNode {
+        public partial class TrafficSeparationSchemeLanePart : FeatureNode, IFeatureBindingDefinition {
             public fixedDateRange? fixedDateRange { get; set; }
             public String? interoperabilityIdentifier { get; set; } = null;
             public Decimal? orientationValue { get; set; } = default;
@@ -14045,7 +14274,8 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(TrafficSeparationSchemeLanePart);
-            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
+            public informationBindingDefinition[] informationBindingDefinitions => TrafficSeparationSchemeLanePart._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -14054,7 +14284,8 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(NauticalInformation)],
             }, ];
-            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
+            public featureBindingDefinition[] featureBindingDefinitions => TrafficSeparationSchemeLanePart._featureBindingDefinitions;
+            public static featureBindingDefinition[] _featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.aggregation,
                 lower = 0,
@@ -14078,7 +14309,7 @@ namespace S100Framework.DomainModel.S101 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class SeparationZoneOrLine : FeatureNode {
+        public partial class SeparationZoneOrLine : FeatureNode, IFeatureBindingDefinition {
             public fixedDateRange? fixedDateRange { get; set; }
             public String? interoperabilityIdentifier { get; set; } = null;
 
@@ -14092,7 +14323,8 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(SeparationZoneOrLine);
-            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
+            public informationBindingDefinition[] informationBindingDefinitions => SeparationZoneOrLine._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -14101,7 +14333,8 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(NauticalInformation)],
             }, ];
-            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
+            public featureBindingDefinition[] featureBindingDefinitions => SeparationZoneOrLine._featureBindingDefinitions;
+            public static featureBindingDefinition[] _featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.aggregation,
                 lower = 0,
@@ -14125,7 +14358,7 @@ namespace S100Framework.DomainModel.S101 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class TrafficSeparationSchemeBoundary : FeatureNode {
+        public partial class TrafficSeparationSchemeBoundary : FeatureNode, IFeatureBindingDefinition {
             public fixedDateRange? fixedDateRange { get; set; }
             public String? interoperabilityIdentifier { get; set; } = null;
 
@@ -14139,7 +14372,8 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(TrafficSeparationSchemeBoundary);
-            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
+            public informationBindingDefinition[] informationBindingDefinitions => TrafficSeparationSchemeBoundary._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -14148,7 +14382,8 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(NauticalInformation)],
             }, ];
-            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
+            public featureBindingDefinition[] featureBindingDefinitions => TrafficSeparationSchemeBoundary._featureBindingDefinitions;
+            public static featureBindingDefinition[] _featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.aggregation,
                 lower = 0,
@@ -14172,7 +14407,7 @@ namespace S100Framework.DomainModel.S101 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class TrafficSeparationSchemeCrossing : FeatureNode {
+        public partial class TrafficSeparationSchemeCrossing : FeatureNode, IFeatureBindingDefinition {
             public fixedDateRange? fixedDateRange { get; set; }
             public String? interoperabilityIdentifier { get; set; } = null;
 
@@ -14212,7 +14447,8 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(TrafficSeparationSchemeCrossing);
-            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
+            public informationBindingDefinition[] informationBindingDefinitions => TrafficSeparationSchemeCrossing._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -14221,7 +14457,8 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(NauticalInformation)],
             }, ];
-            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
+            public featureBindingDefinition[] featureBindingDefinitions => TrafficSeparationSchemeCrossing._featureBindingDefinitions;
+            public static featureBindingDefinition[] _featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.aggregation,
                 lower = 0,
@@ -14245,7 +14482,7 @@ namespace S100Framework.DomainModel.S101 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class TrafficSeparationSchemeRoundabout : FeatureNode {
+        public partial class TrafficSeparationSchemeRoundabout : FeatureNode, IFeatureBindingDefinition {
             public fixedDateRange? fixedDateRange { get; set; }
             public String? interoperabilityIdentifier { get; set; } = null;
 
@@ -14285,7 +14522,8 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(TrafficSeparationSchemeRoundabout);
-            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
+            public informationBindingDefinition[] informationBindingDefinitions => TrafficSeparationSchemeRoundabout._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -14294,7 +14532,8 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(NauticalInformation)],
             }, ];
-            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
+            public featureBindingDefinition[] featureBindingDefinitions => TrafficSeparationSchemeRoundabout._featureBindingDefinitions;
+            public static featureBindingDefinition[] _featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.aggregation,
                 lower = 0,
@@ -14318,7 +14557,7 @@ namespace S100Framework.DomainModel.S101 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class TrafficSeparationScheme : FeatureNode {
+        public partial class TrafficSeparationScheme : FeatureNode, IFeatureBindingDefinition {
             public List<featureName> featureName { get; set; } = [];
             public fixedDateRange? fixedDateRange { get; set; }
             public Boolean? iMOAdopted { get; set; } = default;
@@ -14329,7 +14568,8 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(TrafficSeparationScheme);
-            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
+            public informationBindingDefinition[] informationBindingDefinitions => TrafficSeparationScheme._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -14338,7 +14578,8 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(NauticalInformation)],
             }, ];
-            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
+            public featureBindingDefinition[] featureBindingDefinitions => TrafficSeparationScheme._featureBindingDefinitions;
+            public static featureBindingDefinition[] _featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -14394,7 +14635,7 @@ namespace S100Framework.DomainModel.S101 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class ArchipelagicSeaLaneArea : FeatureNode {
+        public partial class ArchipelagicSeaLaneArea : FeatureNode, IFeatureBindingDefinition {
             public List<featureName> featureName { get; set; } = [];
             public fixedDateRange? fixedDateRange { get; set; }
             public String? interoperabilityIdentifier { get; set; } = null;
@@ -14404,7 +14645,8 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(ArchipelagicSeaLaneArea);
-            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
+            public informationBindingDefinition[] informationBindingDefinitions => ArchipelagicSeaLaneArea._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -14413,7 +14655,8 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(NauticalInformation)],
             }, ];
-            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
+            public featureBindingDefinition[] featureBindingDefinitions => ArchipelagicSeaLaneArea._featureBindingDefinitions;
+            public static featureBindingDefinition[] _featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.aggregation,
                 lower = 0,
@@ -14445,7 +14688,7 @@ namespace S100Framework.DomainModel.S101 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class ArchipelagicSeaLaneAxis : FeatureNode {
+        public partial class ArchipelagicSeaLaneAxis : FeatureNode, IFeatureBindingDefinition {
             public List<featureName> featureName { get; set; } = [];
             public fixedDateRange? fixedDateRange { get; set; }
             public String? interoperabilityIdentifier { get; set; } = null;
@@ -14455,7 +14698,8 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(ArchipelagicSeaLaneAxis);
-            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
+            public informationBindingDefinition[] informationBindingDefinitions => ArchipelagicSeaLaneAxis._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -14464,7 +14708,8 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(NauticalInformation)],
             }, ];
-            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
+            public featureBindingDefinition[] featureBindingDefinitions => ArchipelagicSeaLaneAxis._featureBindingDefinitions;
+            public static featureBindingDefinition[] _featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.aggregation,
                 lower = 0,
@@ -14496,7 +14741,7 @@ namespace S100Framework.DomainModel.S101 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class ArchipelagicSeaLane : FeatureNode {
+        public partial class ArchipelagicSeaLane : FeatureNode, IFeatureBindingDefinition {
             public List<featureName> featureName { get; set; } = [];
             public fixedDateRange? fixedDateRange { get; set; }
             public String? interoperabilityIdentifier { get; set; } = null;
@@ -14506,7 +14751,8 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(ArchipelagicSeaLane);
-            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
+            public informationBindingDefinition[] informationBindingDefinitions => ArchipelagicSeaLane._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -14515,7 +14761,8 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(NauticalInformation)],
             }, ];
-            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
+            public featureBindingDefinition[] featureBindingDefinitions => ArchipelagicSeaLane._featureBindingDefinitions;
+            public static featureBindingDefinition[] _featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -14564,7 +14811,7 @@ namespace S100Framework.DomainModel.S101 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class RadioCallingInPoint : FeatureNode {
+        public partial class RadioCallingInPoint : FeatureNode, IFeatureBindingDefinition {
             public List<String> communicationChannel { get; set; } = [];
             public List<featureName> featureName { get; set; } = [];
             public fixedDateRange? fixedDateRange { get; set; }
@@ -14592,7 +14839,8 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(RadioCallingInPoint);
-            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
+            public informationBindingDefinition[] informationBindingDefinitions => RadioCallingInPoint._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -14601,7 +14849,8 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(ContactDetails), nameof(NauticalInformation), nameof(NonStandardWorkingDay), nameof(ServiceHours)],
             }, ];
-            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
+            public featureBindingDefinition[] featureBindingDefinitions => RadioCallingInPoint._featureBindingDefinitions;
+            public static featureBindingDefinition[] _featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -14625,7 +14874,7 @@ namespace S100Framework.DomainModel.S101 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class FerryRoute : FeatureNode {
+        public partial class FerryRoute : FeatureNode, IFeatureBindingDefinition {
             [EnumerationValue(1)]
             [EnumerationValue(2)]
             [EnumerationValue(3)]
@@ -14652,7 +14901,8 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(FerryRoute);
-            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
+            public informationBindingDefinition[] informationBindingDefinitions => FerryRoute._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -14661,7 +14911,8 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(NauticalInformation)],
             }, ];
-            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
+            public featureBindingDefinition[] featureBindingDefinitions => FerryRoute._featureBindingDefinitions;
+            public static featureBindingDefinition[] _featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -14687,7 +14938,7 @@ namespace S100Framework.DomainModel.S101 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class RadarLine : FeatureNode {
+        public partial class RadarLine : FeatureNode, IFeatureBindingDefinition {
             public List<featureName> featureName { get; set; } = [];
             public String? interoperabilityIdentifier { get; set; } = null;
 
@@ -14705,7 +14956,8 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(RadarLine);
-            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
+            public informationBindingDefinition[] informationBindingDefinitions => RadarLine._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -14714,7 +14966,8 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(NauticalInformation)],
             }, ];
-            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
+            public featureBindingDefinition[] featureBindingDefinitions => RadarLine._featureBindingDefinitions;
+            public static featureBindingDefinition[] _featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -14738,7 +14991,7 @@ namespace S100Framework.DomainModel.S101 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class RadarRange : FeatureNode {
+        public partial class RadarRange : FeatureNode, IFeatureBindingDefinition {
             public List<String> communicationChannel { get; set; } = [];
             public List<featureName> featureName { get; set; } = [];
             public fixedDateRange? fixedDateRange { get; set; }
@@ -14754,7 +15007,8 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(RadarRange);
-            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
+            public informationBindingDefinition[] informationBindingDefinitions => RadarRange._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -14763,7 +15017,8 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(ContactDetails), nameof(NauticalInformation)],
             }, ];
-            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
+            public featureBindingDefinition[] featureBindingDefinitions => RadarRange._featureBindingDefinitions;
+            public static featureBindingDefinition[] _featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -14787,7 +15042,7 @@ namespace S100Framework.DomainModel.S101 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class RadarStation : FeatureNode {
+        public partial class RadarStation : FeatureNode, IFeatureBindingDefinition {
             public String? callSign { get; set; } = null;
 
             [EnumerationValue(1)]
@@ -14811,7 +15066,8 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(RadarStation);
-            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
+            public informationBindingDefinition[] informationBindingDefinitions => RadarStation._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -14820,7 +15076,8 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(ContactDetails), nameof(NauticalInformation)],
             }, ];
-            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
+            public featureBindingDefinition[] featureBindingDefinitions => RadarStation._featureBindingDefinitions;
+            public static featureBindingDefinition[] _featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -14844,7 +15101,7 @@ namespace S100Framework.DomainModel.S101 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class AnchorageArea : FeatureNode {
+        public partial class AnchorageArea : FeatureNode, IFeatureBindingDefinition {
             [EnumerationValue(1)]
             [EnumerationValue(2)]
             [EnumerationValue(3)]
@@ -14918,7 +15175,8 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(AnchorageArea);
-            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
+            public informationBindingDefinition[] informationBindingDefinitions => AnchorageArea._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -14927,7 +15185,8 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(ContactDetails), nameof(NauticalInformation), nameof(NonStandardWorkingDay), nameof(ServiceHours)],
             }, ];
-            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
+            public featureBindingDefinition[] featureBindingDefinitions => AnchorageArea._featureBindingDefinitions;
+            public static featureBindingDefinition[] _featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -14951,7 +15210,7 @@ namespace S100Framework.DomainModel.S101 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class MooringArea : FeatureNode {
+        public partial class MooringArea : FeatureNode, IFeatureBindingDefinition {
             [EnumerationValue(1)]
             [EnumerationValue(2)]
             [EnumerationValue(3)]
@@ -15006,7 +15265,8 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(MooringArea);
-            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
+            public informationBindingDefinition[] informationBindingDefinitions => MooringArea._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -15015,7 +15275,8 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(ContactDetails), nameof(NauticalInformation), nameof(NonStandardWorkingDay), nameof(ServiceHours)],
             }, ];
-            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
+            public featureBindingDefinition[] featureBindingDefinitions => MooringArea._featureBindingDefinitions;
+            public static featureBindingDefinition[] _featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -15039,7 +15300,7 @@ namespace S100Framework.DomainModel.S101 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class AnchorBerth : FeatureNode {
+        public partial class AnchorBerth : FeatureNode, IFeatureBindingDefinition {
             [EnumerationValue(1)]
             [EnumerationValue(2)]
             [EnumerationValue(3)]
@@ -15089,7 +15350,8 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(AnchorBerth);
-            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
+            public informationBindingDefinition[] informationBindingDefinitions => AnchorBerth._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -15098,7 +15360,8 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(ContactDetails), nameof(NauticalInformation), nameof(NonStandardWorkingDay), nameof(ServiceHours)],
             }, ];
-            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
+            public featureBindingDefinition[] featureBindingDefinitions => AnchorBerth._featureBindingDefinitions;
+            public static featureBindingDefinition[] _featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -15122,7 +15385,7 @@ namespace S100Framework.DomainModel.S101 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class SeaplaneLandingArea : FeatureNode {
+        public partial class SeaplaneLandingArea : FeatureNode, IFeatureBindingDefinition {
             public List<featureName> featureName { get; set; } = [];
             public String? interoperabilityIdentifier { get; set; } = null;
             public List<periodicDateRange> periodicDateRange { get; set; } = [];
@@ -15172,7 +15435,8 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(SeaplaneLandingArea);
-            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
+            public informationBindingDefinition[] informationBindingDefinitions => SeaplaneLandingArea._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -15181,7 +15445,8 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(ContactDetails), nameof(NauticalInformation), nameof(NonStandardWorkingDay), nameof(ServiceHours)],
             }, ];
-            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
+            public featureBindingDefinition[] featureBindingDefinitions => SeaplaneLandingArea._featureBindingDefinitions;
+            public static featureBindingDefinition[] _featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -15205,7 +15470,7 @@ namespace S100Framework.DomainModel.S101 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class DumpingGround : FeatureNode {
+        public partial class DumpingGround : FeatureNode, IFeatureBindingDefinition {
             [EnumerationValue(2)]
             [EnumerationValue(3)]
             [EnumerationValue(4)]
@@ -15253,7 +15518,8 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(DumpingGround);
-            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
+            public informationBindingDefinition[] informationBindingDefinitions => DumpingGround._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -15262,7 +15528,8 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(NauticalInformation)],
             }, ];
-            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
+            public featureBindingDefinition[] featureBindingDefinitions => DumpingGround._featureBindingDefinitions;
+            public static featureBindingDefinition[] _featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -15286,7 +15553,7 @@ namespace S100Framework.DomainModel.S101 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class MilitaryPracticeArea : FeatureNode {
+        public partial class MilitaryPracticeArea : FeatureNode, IFeatureBindingDefinition {
             [EnumerationValue(2)]
             [EnumerationValue(3)]
             [EnumerationValue(4)]
@@ -15342,7 +15609,8 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(MilitaryPracticeArea);
-            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
+            public informationBindingDefinition[] informationBindingDefinitions => MilitaryPracticeArea._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -15351,7 +15619,8 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(NauticalInformation)],
             }, ];
-            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
+            public featureBindingDefinition[] featureBindingDefinitions => MilitaryPracticeArea._featureBindingDefinitions;
+            public static featureBindingDefinition[] _featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -15375,7 +15644,7 @@ namespace S100Framework.DomainModel.S101 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class AdministrationArea : FeatureNode {
+        public partial class AdministrationArea : FeatureNode, IFeatureBindingDefinition {
             public Boolean? inDispute { get; set; } = default;
 
             [EnumerationValue(1)]
@@ -15392,7 +15661,8 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(AdministrationArea);
-            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
+            public informationBindingDefinition[] informationBindingDefinitions => AdministrationArea._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -15401,7 +15671,8 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(ContactDetails), nameof(NauticalInformation)],
             }, ];
-            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
+            public featureBindingDefinition[] featureBindingDefinitions => AdministrationArea._featureBindingDefinitions;
+            public static featureBindingDefinition[] _featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -15425,7 +15696,7 @@ namespace S100Framework.DomainModel.S101 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class CargoTranshipmentArea : FeatureNode {
+        public partial class CargoTranshipmentArea : FeatureNode, IFeatureBindingDefinition {
             public List<featureName> featureName { get; set; } = [];
             public fixedDateRange? fixedDateRange { get; set; }
             public String? interoperabilityIdentifier { get; set; } = null;
@@ -15469,7 +15740,8 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(CargoTranshipmentArea);
-            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
+            public informationBindingDefinition[] informationBindingDefinitions => CargoTranshipmentArea._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -15478,7 +15750,8 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(NauticalInformation)],
             }, ];
-            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
+            public featureBindingDefinition[] featureBindingDefinitions => CargoTranshipmentArea._featureBindingDefinitions;
+            public static featureBindingDefinition[] _featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -15502,7 +15775,7 @@ namespace S100Framework.DomainModel.S101 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class CautionArea : FeatureNode {
+        public partial class CautionArea : FeatureNode, IFeatureBindingDefinition {
             [EnumerationValue(1)]
             [EnumerationValue(3)]
             [EnumerationValue(5)]
@@ -15521,7 +15794,8 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(CautionArea);
-            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
+            public informationBindingDefinition[] informationBindingDefinitions => CautionArea._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -15530,7 +15804,8 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(NauticalInformation)],
             }, ];
-            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
+            public featureBindingDefinition[] featureBindingDefinitions => CautionArea._featureBindingDefinitions;
+            public static featureBindingDefinition[] _featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -15562,7 +15837,7 @@ namespace S100Framework.DomainModel.S101 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class InformationArea : FeatureNode {
+        public partial class InformationArea : FeatureNode, IFeatureBindingDefinition {
             public List<featureName> featureName { get; set; } = [];
             public fixedDateRange? fixedDateRange { get; set; }
             public String? interoperabilityIdentifier { get; set; } = null;
@@ -15574,7 +15849,8 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(InformationArea);
-            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
+            public informationBindingDefinition[] informationBindingDefinitions => InformationArea._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -15583,7 +15859,8 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(NauticalInformation)],
             }, ];
-            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
+            public featureBindingDefinition[] featureBindingDefinitions => InformationArea._featureBindingDefinitions;
+            public static featureBindingDefinition[] _featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -15607,7 +15884,7 @@ namespace S100Framework.DomainModel.S101 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class ContiguousZone : FeatureNode {
+        public partial class ContiguousZone : FeatureNode, IFeatureBindingDefinition {
             public fixedDateRange? fixedDateRange { get; set; }
             public Boolean? inDispute { get; set; } = default;
             public String? interoperabilityIdentifier { get; set; } = null;
@@ -15619,7 +15896,8 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(ContiguousZone);
-            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
+            public informationBindingDefinition[] informationBindingDefinitions => ContiguousZone._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -15628,7 +15906,8 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(NauticalInformation)],
             }, ];
-            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
+            public featureBindingDefinition[] featureBindingDefinitions => ContiguousZone._featureBindingDefinitions;
+            public static featureBindingDefinition[] _featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -15646,7 +15925,7 @@ namespace S100Framework.DomainModel.S101 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class ContinentalShelfArea : FeatureNode {
+        public partial class ContinentalShelfArea : FeatureNode, IFeatureBindingDefinition {
             public List<featureName> featureName { get; set; } = [];
             public String? interoperabilityIdentifier { get; set; } = null;
 
@@ -15657,7 +15936,8 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(ContinentalShelfArea);
-            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
+            public informationBindingDefinition[] informationBindingDefinitions => ContinentalShelfArea._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -15666,7 +15946,8 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(NauticalInformation)],
             }, ];
-            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
+            public featureBindingDefinition[] featureBindingDefinitions => ContinentalShelfArea._featureBindingDefinitions;
+            public static featureBindingDefinition[] _featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -15692,7 +15973,7 @@ namespace S100Framework.DomainModel.S101 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class CustomZone : FeatureNode {
+        public partial class CustomZone : FeatureNode, IFeatureBindingDefinition {
             public String? interoperabilityIdentifier { get; set; } = null;
             public String nationality { get; set; } = string.Empty;
             public Int32? scaleMinimum { get; set; } = default;
@@ -15700,7 +15981,8 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(CustomZone);
-            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
+            public informationBindingDefinition[] informationBindingDefinitions => CustomZone._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -15709,7 +15991,8 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(NauticalInformation)],
             }, ];
-            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
+            public featureBindingDefinition[] featureBindingDefinitions => CustomZone._featureBindingDefinitions;
+            public static featureBindingDefinition[] _featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -15726,7 +16009,7 @@ namespace S100Framework.DomainModel.S101 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class ExclusiveEconomicZone : FeatureNode {
+        public partial class ExclusiveEconomicZone : FeatureNode, IFeatureBindingDefinition {
             public Boolean? inDispute { get; set; } = default;
             public String? interoperabilityIdentifier { get; set; } = null;
 
@@ -15737,7 +16020,8 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(ExclusiveEconomicZone);
-            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
+            public informationBindingDefinition[] informationBindingDefinitions => ExclusiveEconomicZone._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -15746,7 +16030,8 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(NauticalInformation)],
             }, ];
-            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
+            public featureBindingDefinition[] featureBindingDefinitions => ExclusiveEconomicZone._featureBindingDefinitions;
+            public static featureBindingDefinition[] _featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -15764,7 +16049,7 @@ namespace S100Framework.DomainModel.S101 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class FisheryZone : FeatureNode {
+        public partial class FisheryZone : FeatureNode, IFeatureBindingDefinition {
             public List<featureName> featureName { get; set; } = [];
             public String? interoperabilityIdentifier { get; set; } = null;
             public String nationality { get; set; } = string.Empty;
@@ -15779,7 +16064,8 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(FisheryZone);
-            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
+            public informationBindingDefinition[] informationBindingDefinitions => FisheryZone._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -15788,7 +16074,8 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(NauticalInformation)],
             }, ];
-            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
+            public featureBindingDefinition[] featureBindingDefinitions => FisheryZone._featureBindingDefinitions;
+            public static featureBindingDefinition[] _featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -15813,7 +16100,7 @@ namespace S100Framework.DomainModel.S101 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class FishingGround : FeatureNode {
+        public partial class FishingGround : FeatureNode, IFeatureBindingDefinition {
             public List<featureName> featureName { get; set; } = [];
             public String? interoperabilityIdentifier { get; set; } = null;
             public List<periodicDateRange> periodicDateRange { get; set; } = [];
@@ -15860,7 +16147,8 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(FishingGround);
-            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
+            public informationBindingDefinition[] informationBindingDefinitions => FishingGround._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -15869,7 +16157,8 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(NauticalInformation)],
             }, ];
-            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
+            public featureBindingDefinition[] featureBindingDefinitions => FishingGround._featureBindingDefinitions;
+            public static featureBindingDefinition[] _featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -15893,7 +16182,7 @@ namespace S100Framework.DomainModel.S101 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class FreePortArea : FeatureNode {
+        public partial class FreePortArea : FeatureNode, IFeatureBindingDefinition {
             public List<featureName> featureName { get; set; } = [];
             public String? interoperabilityIdentifier { get; set; } = null;
 
@@ -15907,7 +16196,8 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(FreePortArea);
-            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
+            public informationBindingDefinition[] informationBindingDefinitions => FreePortArea._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -15916,7 +16206,8 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(NauticalInformation)],
             }, ];
-            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
+            public featureBindingDefinition[] featureBindingDefinitions => FreePortArea._featureBindingDefinitions;
+            public static featureBindingDefinition[] _featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -15940,7 +16231,7 @@ namespace S100Framework.DomainModel.S101 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class HarbourAreaAdministrative : FeatureNode {
+        public partial class HarbourAreaAdministrative : FeatureNode, IFeatureBindingDefinition {
             public List<featureName> featureName { get; set; } = [];
             public String? interoperabilityIdentifier { get; set; } = null;
 
@@ -15955,7 +16246,8 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(HarbourAreaAdministrative);
-            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
+            public informationBindingDefinition[] informationBindingDefinitions => HarbourAreaAdministrative._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -15964,7 +16256,8 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(ContactDetails), nameof(NauticalInformation)],
             }, ];
-            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
+            public featureBindingDefinition[] featureBindingDefinitions => HarbourAreaAdministrative._featureBindingDefinitions;
+            public static featureBindingDefinition[] _featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -15988,7 +16281,7 @@ namespace S100Framework.DomainModel.S101 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class LogPond : FeatureNode {
+        public partial class LogPond : FeatureNode, IFeatureBindingDefinition {
             public List<featureName> featureName { get; set; } = [];
             public String? interoperabilityIdentifier { get; set; } = null;
             public List<periodicDateRange> periodicDateRange { get; set; } = [];
@@ -16005,7 +16298,8 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(LogPond);
-            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
+            public informationBindingDefinition[] informationBindingDefinitions => LogPond._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -16014,7 +16308,8 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(NauticalInformation)],
             }, ];
-            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
+            public featureBindingDefinition[] featureBindingDefinitions => LogPond._featureBindingDefinitions;
+            public static featureBindingDefinition[] _featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -16038,7 +16333,7 @@ namespace S100Framework.DomainModel.S101 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class OilBarrier : FeatureNode {
+        public partial class OilBarrier : FeatureNode, IFeatureBindingDefinition {
             [EnumerationValue(1)]
             [EnumerationValue(2)]
             public categoryOfOilBarrier? categoryOfOilBarrier { get; set; } = default;
@@ -16064,7 +16359,8 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(OilBarrier);
-            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
+            public informationBindingDefinition[] informationBindingDefinitions => OilBarrier._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -16073,7 +16369,8 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(NauticalInformation)],
             }, ];
-            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
+            public featureBindingDefinition[] featureBindingDefinitions => OilBarrier._featureBindingDefinitions;
+            public static featureBindingDefinition[] _featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -16097,7 +16394,7 @@ namespace S100Framework.DomainModel.S101 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class StraightTerritorialSeaBaseline : FeatureNode {
+        public partial class StraightTerritorialSeaBaseline : FeatureNode, IFeatureBindingDefinition {
             public String? interoperabilityIdentifier { get; set; } = null;
             public String nationality { get; set; } = string.Empty;
             public Int32? scaleMinimum { get; set; } = default;
@@ -16105,7 +16402,8 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(StraightTerritorialSeaBaseline);
-            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
+            public informationBindingDefinition[] informationBindingDefinitions => StraightTerritorialSeaBaseline._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -16114,7 +16412,8 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(NauticalInformation)],
             }, ];
-            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
+            public featureBindingDefinition[] featureBindingDefinitions => StraightTerritorialSeaBaseline._featureBindingDefinitions;
+            public static featureBindingDefinition[] _featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -16131,7 +16430,7 @@ namespace S100Framework.DomainModel.S101 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class TerritorialSeaArea : FeatureNode {
+        public partial class TerritorialSeaArea : FeatureNode, IFeatureBindingDefinition {
             public Boolean? inDispute { get; set; } = default;
             public String? interoperabilityIdentifier { get; set; } = null;
 
@@ -16161,7 +16460,8 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(TerritorialSeaArea);
-            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
+            public informationBindingDefinition[] informationBindingDefinitions => TerritorialSeaArea._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -16170,7 +16470,8 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(NauticalInformation)],
             }, ];
-            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
+            public featureBindingDefinition[] featureBindingDefinitions => TerritorialSeaArea._featureBindingDefinitions;
+            public static featureBindingDefinition[] _featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -16188,7 +16489,7 @@ namespace S100Framework.DomainModel.S101 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class SubmarineTransitLane : FeatureNode {
+        public partial class SubmarineTransitLane : FeatureNode, IFeatureBindingDefinition {
             public List<featureName> featureName { get; set; } = [];
             public String? interoperabilityIdentifier { get; set; } = null;
             public String? nationality { get; set; } = null;
@@ -16224,7 +16525,8 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(SubmarineTransitLane);
-            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
+            public informationBindingDefinition[] informationBindingDefinitions => SubmarineTransitLane._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -16233,7 +16535,8 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(NauticalInformation)],
             }, ];
-            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
+            public featureBindingDefinition[] featureBindingDefinitions => SubmarineTransitLane._featureBindingDefinitions;
+            public static featureBindingDefinition[] _featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -16257,7 +16560,7 @@ namespace S100Framework.DomainModel.S101 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class PilotageDistrict : FeatureNode {
+        public partial class PilotageDistrict : FeatureNode, IFeatureBindingDefinition {
             public List<String> communicationChannel { get; set; } = [];
             public List<featureName> featureName { get; set; } = [];
             public String? interoperabilityIdentifier { get; set; } = null;
@@ -16266,7 +16569,8 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(PilotageDistrict);
-            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
+            public informationBindingDefinition[] informationBindingDefinitions => PilotageDistrict._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -16275,7 +16579,8 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(ContactDetails), nameof(NauticalInformation)],
             }, ];
-            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
+            public featureBindingDefinition[] featureBindingDefinitions => PilotageDistrict._featureBindingDefinitions;
+            public static featureBindingDefinition[] _featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -16307,7 +16612,7 @@ namespace S100Framework.DomainModel.S101 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class CollisionRegulationsLimit : FeatureNode {
+        public partial class CollisionRegulationsLimit : FeatureNode, IFeatureBindingDefinition {
             public List<featureName> featureName { get; set; } = [];
             public fixedDateRange? fixedDateRange { get; set; }
             public String? interoperabilityIdentifier { get; set; } = null;
@@ -16318,7 +16623,8 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(CollisionRegulationsLimit);
-            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
+            public informationBindingDefinition[] informationBindingDefinitions => CollisionRegulationsLimit._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -16327,7 +16633,8 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(NauticalInformation)],
             }, ];
-            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
+            public featureBindingDefinition[] featureBindingDefinitions => CollisionRegulationsLimit._featureBindingDefinitions;
+            public static featureBindingDefinition[] _featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -16351,7 +16658,7 @@ namespace S100Framework.DomainModel.S101 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class MarinePollutionRegulationsArea : FeatureNode {
+        public partial class MarinePollutionRegulationsArea : FeatureNode, IFeatureBindingDefinition {
             public List<featureName> featureName { get; set; } = [];
             public String? interoperabilityIdentifier { get; set; } = null;
             public String? regulationCitation { get; set; } = null;
@@ -16360,7 +16667,8 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(MarinePollutionRegulationsArea);
-            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
+            public informationBindingDefinition[] informationBindingDefinitions => MarinePollutionRegulationsArea._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -16369,7 +16677,8 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(NauticalInformation)],
             }, ];
-            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
+            public featureBindingDefinition[] featureBindingDefinitions => MarinePollutionRegulationsArea._featureBindingDefinitions;
+            public static featureBindingDefinition[] _featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -16393,7 +16702,7 @@ namespace S100Framework.DomainModel.S101 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class RestrictedArea : FeatureNode {
+        public partial class RestrictedArea : FeatureNode, IFeatureBindingDefinition {
             [EnumerationValue(1)]
             [EnumerationValue(4)]
             [EnumerationValue(5)]
@@ -16473,7 +16782,8 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(RestrictedArea);
-            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
+            public informationBindingDefinition[] informationBindingDefinitions => RestrictedArea._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -16482,7 +16792,8 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(NauticalInformation)],
             }, ];
-            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
+            public featureBindingDefinition[] featureBindingDefinitions => RestrictedArea._featureBindingDefinitions;
+            public static featureBindingDefinition[] _featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.aggregation,
                 lower = 0,
@@ -16524,7 +16835,7 @@ namespace S100Framework.DomainModel.S101 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class LightAllAround : FeatureNode {
+        public partial class LightAllAround : FeatureNode, IFeatureBindingDefinition {
             [EnumerationValue(4)]
             [EnumerationValue(5)]
             [EnumerationValue(8)]
@@ -16620,7 +16931,8 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(LightAllAround);
-            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
+            public informationBindingDefinition[] informationBindingDefinitions => LightAllAround._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -16629,7 +16941,8 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(ContactDetails), nameof(NauticalInformation)],
             }, ];
-            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
+            public featureBindingDefinition[] featureBindingDefinitions => LightAllAround._featureBindingDefinitions;
+            public static featureBindingDefinition[] _featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.composition,
                 lower = 0,
@@ -16683,7 +16996,7 @@ namespace S100Framework.DomainModel.S101 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class LightSectored : FeatureNode {
+        public partial class LightSectored : FeatureNode, IFeatureBindingDefinition {
             [EnumerationValue(4)]
             [EnumerationValue(5)]
             [EnumerationValue(8)]
@@ -16760,7 +17073,8 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(LightSectored);
-            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
+            public informationBindingDefinition[] informationBindingDefinitions => LightSectored._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -16769,7 +17083,8 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(ContactDetails), nameof(NauticalInformation)],
             }, ];
-            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
+            public featureBindingDefinition[] featureBindingDefinitions => LightSectored._featureBindingDefinitions;
+            public static featureBindingDefinition[] _featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -16819,7 +17134,7 @@ namespace S100Framework.DomainModel.S101 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class LightFogDetector : FeatureNode {
+        public partial class LightFogDetector : FeatureNode, IFeatureBindingDefinition {
             [EnumerationValue(1)]
             [EnumerationValue(3)]
             [EnumerationValue(4)]
@@ -16877,7 +17192,8 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(LightFogDetector);
-            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
+            public informationBindingDefinition[] informationBindingDefinitions => LightFogDetector._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -16886,7 +17202,8 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(NauticalInformation)],
             }, ];
-            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
+            public featureBindingDefinition[] featureBindingDefinitions => LightFogDetector._featureBindingDefinitions;
+            public static featureBindingDefinition[] _featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.composition,
                 lower = 0,
@@ -16918,7 +17235,7 @@ namespace S100Framework.DomainModel.S101 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class LightAirObstruction : FeatureNode {
+        public partial class LightAirObstruction : FeatureNode, IFeatureBindingDefinition {
             [EnumerationValue(1)]
             [EnumerationValue(3)]
             [EnumerationValue(4)]
@@ -16990,7 +17307,8 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(LightAirObstruction);
-            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
+            public informationBindingDefinition[] informationBindingDefinitions => LightAirObstruction._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -16999,7 +17317,8 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(NauticalInformation)],
             }, ];
-            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
+            public featureBindingDefinition[] featureBindingDefinitions => LightAirObstruction._featureBindingDefinitions;
+            public static featureBindingDefinition[] _featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.composition,
                 lower = 0,
@@ -17031,7 +17350,7 @@ namespace S100Framework.DomainModel.S101 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class LateralBuoy : FeatureNode {
+        public partial class LateralBuoy : FeatureNode, IFeatureBindingDefinition {
             [EnumerationValue(1)]
             [EnumerationValue(2)]
             [EnumerationValue(3)]
@@ -17106,7 +17425,8 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(LateralBuoy);
-            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
+            public informationBindingDefinition[] informationBindingDefinitions => LateralBuoy._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -17115,7 +17435,8 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(ContactDetails), nameof(NauticalInformation)],
             }, ];
-            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
+            public featureBindingDefinition[] featureBindingDefinitions => LateralBuoy._featureBindingDefinitions;
+            public static featureBindingDefinition[] _featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -17165,7 +17486,7 @@ namespace S100Framework.DomainModel.S101 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class CardinalBuoy : FeatureNode {
+        public partial class CardinalBuoy : FeatureNode, IFeatureBindingDefinition {
             [EnumerationValue(1)]
             [EnumerationValue(2)]
             [EnumerationValue(3)]
@@ -17240,7 +17561,8 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(CardinalBuoy);
-            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
+            public informationBindingDefinition[] informationBindingDefinitions => CardinalBuoy._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -17249,7 +17571,8 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(ContactDetails), nameof(NauticalInformation)],
             }, ];
-            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
+            public featureBindingDefinition[] featureBindingDefinitions => CardinalBuoy._featureBindingDefinitions;
+            public static featureBindingDefinition[] _featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -17299,7 +17622,7 @@ namespace S100Framework.DomainModel.S101 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class IsolatedDangerBuoy : FeatureNode {
+        public partial class IsolatedDangerBuoy : FeatureNode, IFeatureBindingDefinition {
             [EnumerationValue(1)]
             [EnumerationValue(2)]
             [EnumerationValue(3)]
@@ -17367,7 +17690,8 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(IsolatedDangerBuoy);
-            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
+            public informationBindingDefinition[] informationBindingDefinitions => IsolatedDangerBuoy._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -17376,7 +17700,8 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(ContactDetails), nameof(NauticalInformation)],
             }, ];
-            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
+            public featureBindingDefinition[] featureBindingDefinitions => IsolatedDangerBuoy._featureBindingDefinitions;
+            public static featureBindingDefinition[] _featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -17426,7 +17751,7 @@ namespace S100Framework.DomainModel.S101 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class SafeWaterBuoy : FeatureNode {
+        public partial class SafeWaterBuoy : FeatureNode, IFeatureBindingDefinition {
             [EnumerationValue(1)]
             [EnumerationValue(2)]
             [EnumerationValue(3)]
@@ -17494,7 +17819,8 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(SafeWaterBuoy);
-            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
+            public informationBindingDefinition[] informationBindingDefinitions => SafeWaterBuoy._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -17503,7 +17829,8 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(ContactDetails), nameof(NauticalInformation)],
             }, ];
-            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
+            public featureBindingDefinition[] featureBindingDefinitions => SafeWaterBuoy._featureBindingDefinitions;
+            public static featureBindingDefinition[] _featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -17553,7 +17880,7 @@ namespace S100Framework.DomainModel.S101 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class SpecialPurposeGeneralBuoy : FeatureNode {
+        public partial class SpecialPurposeGeneralBuoy : FeatureNode, IFeatureBindingDefinition {
             [EnumerationValue(1)]
             [EnumerationValue(2)]
             [EnumerationValue(3)]
@@ -17682,7 +18009,8 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(SpecialPurposeGeneralBuoy);
-            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
+            public informationBindingDefinition[] informationBindingDefinitions => SpecialPurposeGeneralBuoy._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -17691,7 +18019,8 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(ContactDetails), nameof(NauticalInformation)],
             }, ];
-            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
+            public featureBindingDefinition[] featureBindingDefinitions => SpecialPurposeGeneralBuoy._featureBindingDefinitions;
+            public static featureBindingDefinition[] _featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -17743,7 +18072,7 @@ namespace S100Framework.DomainModel.S101 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class EmergencyWreckMarkingBuoy : FeatureNode {
+        public partial class EmergencyWreckMarkingBuoy : FeatureNode, IFeatureBindingDefinition {
             [EnumerationValue(1)]
             [EnumerationValue(2)]
             [EnumerationValue(3)]
@@ -17800,7 +18129,8 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(EmergencyWreckMarkingBuoy);
-            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
+            public informationBindingDefinition[] informationBindingDefinitions => EmergencyWreckMarkingBuoy._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -17809,7 +18139,8 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(ContactDetails), nameof(NauticalInformation)],
             }, ];
-            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
+            public featureBindingDefinition[] featureBindingDefinitions => EmergencyWreckMarkingBuoy._featureBindingDefinitions;
+            public static featureBindingDefinition[] _featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.aggregation,
                 lower = 0,
@@ -17851,7 +18182,7 @@ namespace S100Framework.DomainModel.S101 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class InstallationBuoy : FeatureNode {
+        public partial class InstallationBuoy : FeatureNode, IFeatureBindingDefinition {
             [EnumerationValue(1)]
             [EnumerationValue(2)]
             [EnumerationValue(3)]
@@ -17925,7 +18256,8 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(InstallationBuoy);
-            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
+            public informationBindingDefinition[] informationBindingDefinitions => InstallationBuoy._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -17934,7 +18266,8 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(ContactDetails), nameof(NauticalInformation)],
             }, ];
-            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
+            public featureBindingDefinition[] featureBindingDefinitions => InstallationBuoy._featureBindingDefinitions;
+            public static featureBindingDefinition[] _featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -17968,7 +18301,7 @@ namespace S100Framework.DomainModel.S101 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class MooringBuoy : FeatureNode {
+        public partial class MooringBuoy : FeatureNode, IFeatureBindingDefinition {
             [EnumerationValue(1)]
             [EnumerationValue(2)]
             [EnumerationValue(3)]
@@ -18030,7 +18363,8 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(MooringBuoy);
-            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
+            public informationBindingDefinition[] informationBindingDefinitions => MooringBuoy._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -18039,7 +18373,8 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(ContactDetails), nameof(NauticalInformation)],
             }, ];
-            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
+            public featureBindingDefinition[] featureBindingDefinitions => MooringBuoy._featureBindingDefinitions;
+            public static featureBindingDefinition[] _featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.aggregation,
                 lower = 0,
@@ -18087,7 +18422,7 @@ namespace S100Framework.DomainModel.S101 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class LateralBeacon : FeatureNode {
+        public partial class LateralBeacon : FeatureNode, IFeatureBindingDefinition {
             [EnumerationValue(1)]
             [EnumerationValue(2)]
             [EnumerationValue(3)]
@@ -18177,7 +18512,8 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(LateralBeacon);
-            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
+            public informationBindingDefinition[] informationBindingDefinitions => LateralBeacon._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -18186,7 +18522,8 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(ContactDetails), nameof(NauticalInformation)],
             }, ];
-            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
+            public featureBindingDefinition[] featureBindingDefinitions => LateralBeacon._featureBindingDefinitions;
+            public static featureBindingDefinition[] _featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -18244,7 +18581,7 @@ namespace S100Framework.DomainModel.S101 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class CardinalBeacon : FeatureNode {
+        public partial class CardinalBeacon : FeatureNode, IFeatureBindingDefinition {
             [EnumerationValue(1)]
             [EnumerationValue(2)]
             [EnumerationValue(3)]
@@ -18334,7 +18671,8 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(CardinalBeacon);
-            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
+            public informationBindingDefinition[] informationBindingDefinitions => CardinalBeacon._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -18343,7 +18681,8 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(ContactDetails), nameof(NauticalInformation)],
             }, ];
-            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
+            public featureBindingDefinition[] featureBindingDefinitions => CardinalBeacon._featureBindingDefinitions;
+            public static featureBindingDefinition[] _featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -18401,7 +18740,7 @@ namespace S100Framework.DomainModel.S101 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class IsolatedDangerBeacon : FeatureNode {
+        public partial class IsolatedDangerBeacon : FeatureNode, IFeatureBindingDefinition {
             [EnumerationValue(1)]
             [EnumerationValue(2)]
             [EnumerationValue(3)]
@@ -18484,7 +18823,8 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(IsolatedDangerBeacon);
-            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
+            public informationBindingDefinition[] informationBindingDefinitions => IsolatedDangerBeacon._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -18493,7 +18833,8 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(ContactDetails), nameof(NauticalInformation)],
             }, ];
-            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
+            public featureBindingDefinition[] featureBindingDefinitions => IsolatedDangerBeacon._featureBindingDefinitions;
+            public static featureBindingDefinition[] _featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -18551,7 +18892,7 @@ namespace S100Framework.DomainModel.S101 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class SafeWaterBeacon : FeatureNode {
+        public partial class SafeWaterBeacon : FeatureNode, IFeatureBindingDefinition {
             [EnumerationValue(1)]
             [EnumerationValue(2)]
             [EnumerationValue(3)]
@@ -18634,7 +18975,8 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(SafeWaterBeacon);
-            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
+            public informationBindingDefinition[] informationBindingDefinitions => SafeWaterBeacon._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -18643,7 +18985,8 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(ContactDetails), nameof(NauticalInformation)],
             }, ];
-            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
+            public featureBindingDefinition[] featureBindingDefinitions => SafeWaterBeacon._featureBindingDefinitions;
+            public static featureBindingDefinition[] _featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -18701,7 +19044,7 @@ namespace S100Framework.DomainModel.S101 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class SpecialPurposeGeneralBeacon : FeatureNode {
+        public partial class SpecialPurposeGeneralBeacon : FeatureNode, IFeatureBindingDefinition {
             [EnumerationValue(1)]
             [EnumerationValue(2)]
             [EnumerationValue(3)]
@@ -18845,7 +19188,8 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(SpecialPurposeGeneralBeacon);
-            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
+            public informationBindingDefinition[] informationBindingDefinitions => SpecialPurposeGeneralBeacon._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -18854,7 +19198,8 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(ContactDetails), nameof(NauticalInformation)],
             }, ];
-            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
+            public featureBindingDefinition[] featureBindingDefinitions => SpecialPurposeGeneralBeacon._featureBindingDefinitions;
+            public static featureBindingDefinition[] _featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -18914,7 +19259,7 @@ namespace S100Framework.DomainModel.S101 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class Daymark : FeatureNode {
+        public partial class Daymark : FeatureNode, IFeatureBindingDefinition {
             [EnumerationValue(1)]
             [EnumerationValue(2)]
             [EnumerationValue(3)]
@@ -19067,7 +19412,8 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(Daymark);
-            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
+            public informationBindingDefinition[] informationBindingDefinitions => Daymark._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -19076,7 +19422,8 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(ContactDetails), nameof(NauticalInformation)],
             }, ];
-            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
+            public featureBindingDefinition[] featureBindingDefinitions => Daymark._featureBindingDefinitions;
+            public static featureBindingDefinition[] _featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -19142,7 +19489,7 @@ namespace S100Framework.DomainModel.S101 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class LightFloat : FeatureNode {
+        public partial class LightFloat : FeatureNode, IFeatureBindingDefinition {
             [EnumerationValue(1)]
             [EnumerationValue(2)]
             [EnumerationValue(3)]
@@ -19202,7 +19549,8 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(LightFloat);
-            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
+            public informationBindingDefinition[] informationBindingDefinitions => LightFloat._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -19211,7 +19559,8 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(ContactDetails), nameof(NauticalInformation)],
             }, ];
-            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
+            public featureBindingDefinition[] featureBindingDefinitions => LightFloat._featureBindingDefinitions;
+            public static featureBindingDefinition[] _featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -19261,7 +19610,7 @@ namespace S100Framework.DomainModel.S101 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class LightVessel : FeatureNode {
+        public partial class LightVessel : FeatureNode, IFeatureBindingDefinition {
             [EnumerationValue(1)]
             [EnumerationValue(2)]
             [EnumerationValue(3)]
@@ -19319,7 +19668,8 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(LightVessel);
-            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
+            public informationBindingDefinition[] informationBindingDefinitions => LightVessel._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -19328,7 +19678,8 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(ContactDetails), nameof(NauticalInformation)],
             }, ];
-            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
+            public featureBindingDefinition[] featureBindingDefinitions => LightVessel._featureBindingDefinitions;
+            public static featureBindingDefinition[] _featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -19378,7 +19729,7 @@ namespace S100Framework.DomainModel.S101 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class Retroreflector : FeatureNode {
+        public partial class Retroreflector : FeatureNode, IFeatureBindingDefinition {
             [EnumerationValue(1)]
             [EnumerationValue(3)]
             [EnumerationValue(4)]
@@ -19414,7 +19765,8 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(Retroreflector);
-            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
+            public informationBindingDefinition[] informationBindingDefinitions => Retroreflector._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -19423,7 +19775,8 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(NauticalInformation)],
             }, ];
-            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
+            public featureBindingDefinition[] featureBindingDefinitions => Retroreflector._featureBindingDefinitions;
+            public static featureBindingDefinition[] _featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.composition,
                 lower = 0,
@@ -19447,7 +19800,7 @@ namespace S100Framework.DomainModel.S101 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class RadarReflector : FeatureNode {
+        public partial class RadarReflector : FeatureNode, IFeatureBindingDefinition {
             public fixedDateRange? fixedDateRange { get; set; }
             public Decimal? height { get; set; } = default;
             public String? interoperabilityIdentifier { get; set; } = null;
@@ -19462,7 +19815,8 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(RadarReflector);
-            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
+            public informationBindingDefinition[] informationBindingDefinitions => RadarReflector._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -19471,7 +19825,8 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(NauticalInformation)],
             }, ];
-            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
+            public featureBindingDefinition[] featureBindingDefinitions => RadarReflector._featureBindingDefinitions;
+            public static featureBindingDefinition[] _featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.composition,
                 lower = 0,
@@ -19495,7 +19850,7 @@ namespace S100Framework.DomainModel.S101 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class FogSignal : FeatureNode {
+        public partial class FogSignal : FeatureNode, IFeatureBindingDefinition {
             [EnumerationValue(1)]
             [EnumerationValue(2)]
             [EnumerationValue(3)]
@@ -19539,7 +19894,8 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(FogSignal);
-            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
+            public informationBindingDefinition[] informationBindingDefinitions => FogSignal._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -19548,7 +19904,8 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(ContactDetails), nameof(NauticalInformation)],
             }, ];
-            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
+            public featureBindingDefinition[] featureBindingDefinitions => FogSignal._featureBindingDefinitions;
+            public static featureBindingDefinition[] _featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.composition,
                 lower = 0,
@@ -19580,7 +19937,7 @@ namespace S100Framework.DomainModel.S101 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class PhysicalAISAidToNavigation : FeatureNode {
+        public partial class PhysicalAISAidToNavigation : FeatureNode, IFeatureBindingDefinition {
             public Decimal? estimatedRangeOfTransmission { get; set; } = default;
             public List<featureName> featureName { get; set; } = [];
             public fixedDateRange? fixedDateRange { get; set; }
@@ -19597,7 +19954,8 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(PhysicalAISAidToNavigation);
-            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
+            public informationBindingDefinition[] informationBindingDefinitions => PhysicalAISAidToNavigation._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -19606,7 +19964,8 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(NauticalInformation)],
             }, ];
-            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
+            public featureBindingDefinition[] featureBindingDefinitions => PhysicalAISAidToNavigation._featureBindingDefinitions;
+            public static featureBindingDefinition[] _featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.composition,
                 lower = 0,
@@ -19638,7 +19997,7 @@ namespace S100Framework.DomainModel.S101 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class VirtualAISAidToNavigation : FeatureNode {
+        public partial class VirtualAISAidToNavigation : FeatureNode, IFeatureBindingDefinition {
             public Decimal? estimatedRangeOfTransmission { get; set; } = default;
             public List<featureName> featureName { get; set; } = [];
             public fixedDateRange? fixedDateRange { get; set; }
@@ -19670,7 +20029,8 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(VirtualAISAidToNavigation);
-            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
+            public informationBindingDefinition[] informationBindingDefinitions => VirtualAISAidToNavigation._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -19679,7 +20039,8 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(NauticalInformation)],
             }, ];
-            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
+            public featureBindingDefinition[] featureBindingDefinitions => VirtualAISAidToNavigation._featureBindingDefinitions;
+            public static featureBindingDefinition[] _featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -19703,7 +20064,7 @@ namespace S100Framework.DomainModel.S101 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class RadioStation : FeatureNode {
+        public partial class RadioStation : FeatureNode, IFeatureBindingDefinition {
             public String? callSign { get; set; } = null;
 
             [EnumerationValue(5)]
@@ -19733,7 +20094,8 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(RadioStation);
-            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
+            public informationBindingDefinition[] informationBindingDefinitions => RadioStation._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -19742,7 +20104,8 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(ContactDetails), nameof(NauticalInformation)],
             }, ];
-            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
+            public featureBindingDefinition[] featureBindingDefinitions => RadioStation._featureBindingDefinitions;
+            public static featureBindingDefinition[] _featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -19766,7 +20129,7 @@ namespace S100Framework.DomainModel.S101 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class RadarTransponderBeacon : FeatureNode {
+        public partial class RadarTransponderBeacon : FeatureNode, IFeatureBindingDefinition {
             [EnumerationValue(1)]
             [EnumerationValue(2)]
             [EnumerationValue(3)]
@@ -19794,7 +20157,8 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(RadarTransponderBeacon);
-            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
+            public informationBindingDefinition[] informationBindingDefinitions => RadarTransponderBeacon._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -19803,7 +20167,8 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(NauticalInformation)],
             }, ];
-            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
+            public featureBindingDefinition[] featureBindingDefinitions => RadarTransponderBeacon._featureBindingDefinitions;
+            public static featureBindingDefinition[] _featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.composition,
                 lower = 0,
@@ -19843,7 +20208,7 @@ namespace S100Framework.DomainModel.S101 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class PilotBoardingPlace : FeatureNode {
+        public partial class PilotBoardingPlace : FeatureNode, IFeatureBindingDefinition {
             [EnumerationValue(1)]
             [EnumerationValue(2)]
             [EnumerationValue(3)]
@@ -19878,7 +20243,8 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(PilotBoardingPlace);
-            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
+            public informationBindingDefinition[] informationBindingDefinitions => PilotBoardingPlace._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -19887,7 +20253,8 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(ContactDetails), nameof(NauticalInformation)],
             }, ];
-            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
+            public featureBindingDefinition[] featureBindingDefinitions => PilotBoardingPlace._featureBindingDefinitions;
+            public static featureBindingDefinition[] _featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.aggregation,
                 lower = 0,
@@ -19919,7 +20286,7 @@ namespace S100Framework.DomainModel.S101 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class VesselTrafficServiceArea : FeatureNode {
+        public partial class VesselTrafficServiceArea : FeatureNode, IFeatureBindingDefinition {
             public List<featureName> featureName { get; set; } = [];
             public String? interoperabilityIdentifier { get; set; } = null;
             public Int32? scaleMinimum { get; set; } = default;
@@ -19927,7 +20294,8 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(VesselTrafficServiceArea);
-            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
+            public informationBindingDefinition[] informationBindingDefinitions => VesselTrafficServiceArea._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -19936,7 +20304,8 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(ContactDetails), nameof(NauticalInformation)],
             }, ];
-            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
+            public featureBindingDefinition[] featureBindingDefinitions => VesselTrafficServiceArea._featureBindingDefinitions;
+            public static featureBindingDefinition[] _featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -19960,7 +20329,7 @@ namespace S100Framework.DomainModel.S101 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class CoastGuardStation : FeatureNode {
+        public partial class CoastGuardStation : FeatureNode, IFeatureBindingDefinition {
             public List<String> communicationChannel { get; set; } = [];
             public List<featureName> featureName { get; set; } = [];
             public fixedDateRange? fixedDateRange { get; set; }
@@ -19979,7 +20348,8 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(CoastGuardStation);
-            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
+            public informationBindingDefinition[] informationBindingDefinitions => CoastGuardStation._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -19988,7 +20358,8 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(ContactDetails), nameof(NauticalInformation), nameof(NonStandardWorkingDay), nameof(ServiceHours)],
             }, ];
-            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
+            public featureBindingDefinition[] featureBindingDefinitions => CoastGuardStation._featureBindingDefinitions;
+            public static featureBindingDefinition[] _featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -20012,7 +20383,7 @@ namespace S100Framework.DomainModel.S101 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class SignalStationWarning : FeatureNode {
+        public partial class SignalStationWarning : FeatureNode, IFeatureBindingDefinition {
             [EnumerationValue(1)]
             [EnumerationValue(2)]
             [EnumerationValue(3)]
@@ -20053,7 +20424,8 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(SignalStationWarning);
-            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
+            public informationBindingDefinition[] informationBindingDefinitions => SignalStationWarning._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -20062,7 +20434,8 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(ContactDetails), nameof(NauticalInformation)],
             }, ];
-            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
+            public featureBindingDefinition[] featureBindingDefinitions => SignalStationWarning._featureBindingDefinitions;
+            public static featureBindingDefinition[] _featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.composition,
                 lower = 0,
@@ -20096,7 +20469,7 @@ namespace S100Framework.DomainModel.S101 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class SignalStationTraffic : FeatureNode {
+        public partial class SignalStationTraffic : FeatureNode, IFeatureBindingDefinition {
             [EnumerationValue(1)]
             [EnumerationValue(2)]
             [EnumerationValue(3)]
@@ -20132,7 +20505,8 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(SignalStationTraffic);
-            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
+            public informationBindingDefinition[] informationBindingDefinitions => SignalStationTraffic._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -20141,7 +20515,8 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(ContactDetails), nameof(NauticalInformation)],
             }, ];
-            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
+            public featureBindingDefinition[] featureBindingDefinitions => SignalStationTraffic._featureBindingDefinitions;
+            public static featureBindingDefinition[] _featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.composition,
                 lower = 0,
@@ -20175,7 +20550,7 @@ namespace S100Framework.DomainModel.S101 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class RescueStation : FeatureNode {
+        public partial class RescueStation : FeatureNode, IFeatureBindingDefinition {
             [EnumerationValue(1)]
             [EnumerationValue(2)]
             [EnumerationValue(4)]
@@ -20205,7 +20580,8 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(RescueStation);
-            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
+            public informationBindingDefinition[] informationBindingDefinitions => RescueStation._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -20214,7 +20590,8 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(ContactDetails), nameof(NauticalInformation)],
             }, ];
-            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
+            public featureBindingDefinition[] featureBindingDefinitions => RescueStation._featureBindingDefinitions;
+            public static featureBindingDefinition[] _featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -20238,7 +20615,7 @@ namespace S100Framework.DomainModel.S101 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class HarbourFacility : FeatureNode {
+        public partial class HarbourFacility : FeatureNode, IFeatureBindingDefinition {
             [EnumerationValue(1)]
             [EnumerationValue(3)]
             [EnumerationValue(4)]
@@ -20344,7 +20721,8 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(HarbourFacility);
-            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
+            public informationBindingDefinition[] informationBindingDefinitions => HarbourFacility._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -20353,7 +20731,8 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(ContactDetails), nameof(NauticalInformation)],
             }, ];
-            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
+            public featureBindingDefinition[] featureBindingDefinitions => HarbourFacility._featureBindingDefinitions;
+            public static featureBindingDefinition[] _featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -20379,7 +20758,7 @@ namespace S100Framework.DomainModel.S101 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class SmallCraftFacility : FeatureNode {
+        public partial class SmallCraftFacility : FeatureNode, IFeatureBindingDefinition {
             [EnumerationValue(1)]
             [EnumerationValue(2)]
             [EnumerationValue(3)]
@@ -20438,7 +20817,8 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(SmallCraftFacility);
-            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
+            public informationBindingDefinition[] informationBindingDefinitions => SmallCraftFacility._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -20447,7 +20827,8 @@ namespace S100Framework.DomainModel.S101 {
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 informationTypes = [nameof(ContactDetails), nameof(NauticalInformation)],
             }, ];
-            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
+            public featureBindingDefinition[] featureBindingDefinitions => SmallCraftFacility._featureBindingDefinitions;
+            public static featureBindingDefinition[] _featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -20473,7 +20854,7 @@ namespace S100Framework.DomainModel.S101 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class TextPlacement : FeatureNode {
+        public partial class TextPlacement : FeatureNode, IFeatureBindingDefinition {
             [Required()]
             public Int32 textOffsetBearing { get; set; }
 
@@ -20489,8 +20870,10 @@ namespace S100Framework.DomainModel.S101 {
 
             [JsonIgnore]
             public override string Code => nameof(TextPlacement);
-            public static informationBindingDefinition[] informationBindingDefinitions => [];
-            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
+            public informationBindingDefinition[] informationBindingDefinitions => TextPlacement._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [];
+            public featureBindingDefinition[] featureBindingDefinitions => TextPlacement._featureBindingDefinitions;
+            public static featureBindingDefinition[] _featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.composition,
                 lower = 0,
@@ -20508,14 +20891,16 @@ namespace S100Framework.DomainModel.S101 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class Chart1Feature : FeatureNode {
+        public partial class Chart1Feature : FeatureNode, IFeatureBindingDefinition {
             public List<String> drawingInstruction { get; set; } = [];
             public List<featureName> featureName { get; set; } = [];
 
             [JsonIgnore]
             public override string Code => nameof(Chart1Feature);
-            public static informationBindingDefinition[] informationBindingDefinitions => [];
-            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
+            public informationBindingDefinition[] informationBindingDefinitions => Chart1Feature._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [];
+            public featureBindingDefinition[] featureBindingDefinitions => Chart1Feature._featureBindingDefinitions;
+            public static featureBindingDefinition[] _featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,

@@ -122,12 +122,12 @@ namespace S100Framework.WPF.ViewModel
 
     public abstract class InformationViewModel<TInformationType> : InformationViewModel where TInformationType : InformationNode
     {
-        public abstract void Load(TInformationType instance);
+        public abstract InformationViewModel<TInformationType> Load(TInformationType instance);
     }
 
     public abstract class FeatureViewModel<TFeatureType> : FeatureViewModel where TFeatureType : FeatureNode
     {
-        public abstract void Load(TFeatureType instance);
+        public abstract FeatureViewModel<TFeatureType> Load(TFeatureType instance);
     }
 
 

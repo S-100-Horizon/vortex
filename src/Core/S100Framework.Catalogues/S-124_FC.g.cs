@@ -556,7 +556,7 @@ namespace S100Framework.DomainModel.S124 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class NAVWARNPreamble : InformationNode {
+        public partial class NAVWARNPreamble : InformationNode, IInformationBindingDefinition {
             public List<affectedChartPublications> affectedChartPublications { get; set; } = [];
 
             [Required()]
@@ -579,7 +579,8 @@ namespace S100Framework.DomainModel.S124 {
 
             [JsonIgnore]
             public override string Code => nameof(NAVWARNPreamble);
-            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
+            public informationBindingDefinition[] informationBindingDefinitions => NAVWARNPreamble._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -608,7 +609,7 @@ namespace S100Framework.DomainModel.S124 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class References : InformationNode {
+        public partial class References : InformationNode, IInformationBindingDefinition {
             public List<messageSeriesIdentifier> messageSeriesIdentifier { get; set; } = [];
 
             [Required()]
@@ -619,7 +620,8 @@ namespace S100Framework.DomainModel.S124 {
 
             [JsonIgnore]
             public override string Code => nameof(References);
-            public static informationBindingDefinition[] informationBindingDefinitions => [];
+            public informationBindingDefinition[] informationBindingDefinitions => References._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [];
 
             public References() {
             }
@@ -636,7 +638,7 @@ namespace S100Framework.DomainModel.S124 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class NAVWARNPart : FeatureNode {
+        public partial class NAVWARNPart : FeatureNode, IFeatureBindingDefinition {
             public List<featureName> featureName { get; set; } = [];
             public List<featureReference> featureReference { get; set; } = [];
             public List<fixedDateRange> fixedDateRange { get; set; } = [];
@@ -653,7 +655,8 @@ namespace S100Framework.DomainModel.S124 {
 
             [JsonIgnore]
             public override string Code => nameof(NAVWARNPart);
-            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
+            public informationBindingDefinition[] informationBindingDefinitions => NAVWARNPart._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 1,
@@ -662,7 +665,8 @@ namespace S100Framework.DomainModel.S124 {
                 role = Enum.GetName<Role>(Role.header)!,
                 informationTypes = [nameof(NAVWARNPreamble)],
             }, ];
-            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
+            public featureBindingDefinition[] featureBindingDefinitions => NAVWARNPart._featureBindingDefinitions;
+            public static featureBindingDefinition[] _featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -689,11 +693,13 @@ namespace S100Framework.DomainModel.S124 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class NAVWARNAreaAffected : FeatureNode {
+        public partial class NAVWARNAreaAffected : FeatureNode, IFeatureBindingDefinition {
             [JsonIgnore]
             public override string Code => nameof(NAVWARNAreaAffected);
-            public static informationBindingDefinition[] informationBindingDefinitions => [];
-            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
+            public informationBindingDefinition[] informationBindingDefinitions => NAVWARNAreaAffected._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [];
+            public featureBindingDefinition[] featureBindingDefinitions => NAVWARNAreaAffected._featureBindingDefinitions;
+            public static featureBindingDefinition[] _featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 1,
@@ -709,7 +715,7 @@ namespace S100Framework.DomainModel.S124 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class TextPlacement : FeatureNode {
+        public partial class TextPlacement : FeatureNode, IFeatureBindingDefinition {
             public String? text { get; set; } = null;
 
             [Required()]
@@ -726,8 +732,10 @@ namespace S100Framework.DomainModel.S124 {
 
             [JsonIgnore]
             public override string Code => nameof(TextPlacement);
-            public static informationBindingDefinition[] informationBindingDefinitions => [];
-            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
+            public informationBindingDefinition[] informationBindingDefinitions => TextPlacement._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [];
+            public featureBindingDefinition[] featureBindingDefinitions => TextPlacement._featureBindingDefinitions;
+            public static featureBindingDefinition[] _featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.composition,
                 lower = 0,

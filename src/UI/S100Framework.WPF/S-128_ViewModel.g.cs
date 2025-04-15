@@ -2199,9 +2199,9 @@ namespace S100Framework.WPF.ViewModel.S128 {
             }
         }
 
-        public override informationBindingDefinition[] informationBindingDefinitions => CatalogueSectionHeader.informationBindingDefinitions;
+        public override informationBindingDefinition[] informationBindingDefinitions => CatalogueSectionHeader._informationBindingDefinitions;
 
-        public override void Load(DomainModel.S128.InformationTypes.CatalogueSectionHeader instance) {
+        public override InformationViewModel<CatalogueSectionHeader> Load(DomainModel.S128.InformationTypes.CatalogueSectionHeader instance) {
             catalogueSectionNumber = instance.catalogueSectionNumber;
             catalogueSectionTitle = instance.catalogueSectionTitle;
             information = new();
@@ -2209,6 +2209,8 @@ namespace S100Framework.WPF.ViewModel.S128 {
                 information = new();
                 information.Load(instance.information);
             }
+
+            return this;
         }
 
         public override string Serialize() {
@@ -2265,9 +2267,9 @@ namespace S100Framework.WPF.ViewModel.S128 {
 
         [Category("ContactDetails")]
         public ObservableCollection<sourceIndication> sourceIndication { get; set; } = new();
-        public override informationBindingDefinition[] informationBindingDefinitions => ContactDetails.informationBindingDefinitions;
+        public override informationBindingDefinition[] informationBindingDefinitions => ContactDetails._informationBindingDefinitions;
 
-        public override void Load(DomainModel.S128.InformationTypes.ContactDetails instance) {
+        public override InformationViewModel<ContactDetails> Load(DomainModel.S128.InformationTypes.ContactDetails instance) {
             contactInstructions = instance.contactInstructions;
             contactAddress.Clear();
             if (instance.contactAddress is not null)
@@ -2289,6 +2291,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
             if (instance.sourceIndication is not null)
                 foreach (var e in instance.sourceIndication)
                     sourceIndication.Add(e);
+            return this;
         }
 
         public override string Serialize() {
@@ -2366,15 +2369,16 @@ namespace S100Framework.WPF.ViewModel.S128 {
 
         [Category("IndicationOfCarriageRequirement")]
         public ObservableCollection<featureName> featureName { get; set; } = new();
-        public override informationBindingDefinition[] informationBindingDefinitions => IndicationOfCarriageRequirement.informationBindingDefinitions;
+        public override informationBindingDefinition[] informationBindingDefinitions => IndicationOfCarriageRequirement._informationBindingDefinitions;
 
-        public override void Load(DomainModel.S128.InformationTypes.IndicationOfCarriageRequirement instance) {
+        public override InformationViewModel<IndicationOfCarriageRequirement> Load(DomainModel.S128.InformationTypes.IndicationOfCarriageRequirement instance) {
             domesticCarriageRequirements = instance.domesticCarriageRequirements;
             internationalCarriageRequirements = instance.internationalCarriageRequirements;
             featureName.Clear();
             if (instance.featureName is not null)
                 foreach (var e in instance.featureName)
                     featureName.Add(e);
+            return this;
         }
 
         public override string Serialize() {
@@ -2419,9 +2423,9 @@ namespace S100Framework.WPF.ViewModel.S128 {
 
         [Category("PriceInformation")]
         public ObservableCollection<sourceIndication> sourceIndication { get; set; } = new();
-        public override informationBindingDefinition[] informationBindingDefinitions => PriceInformation.informationBindingDefinitions;
+        public override informationBindingDefinition[] informationBindingDefinitions => PriceInformation._informationBindingDefinitions;
 
-        public override void Load(DomainModel.S128.InformationTypes.PriceInformation instance) {
+        public override InformationViewModel<PriceInformation> Load(DomainModel.S128.InformationTypes.PriceInformation instance) {
             information.Clear();
             if (instance.information is not null)
                 foreach (var e in instance.information)
@@ -2438,6 +2442,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
             if (instance.sourceIndication is not null)
                 foreach (var e in instance.sourceIndication)
                     sourceIndication.Add(e);
+            return this;
         }
 
         public override string Serialize() {
@@ -2506,11 +2511,12 @@ namespace S100Framework.WPF.ViewModel.S128 {
             }
         }
 
-        public override informationBindingDefinition[] informationBindingDefinitions => ProducerInformation.informationBindingDefinitions;
+        public override informationBindingDefinition[] informationBindingDefinitions => ProducerInformation._informationBindingDefinitions;
 
-        public override void Load(DomainModel.S128.InformationTypes.ProducerInformation instance) {
+        public override InformationViewModel<ProducerInformation> Load(DomainModel.S128.InformationTypes.ProducerInformation instance) {
             agencyResponsibleForProduction = instance.agencyResponsibleForProduction;
             agencyName = instance.agencyName;
+            return this;
         }
 
         public override string Serialize() {
@@ -2551,10 +2557,11 @@ namespace S100Framework.WPF.ViewModel.S128 {
             }
         }
 
-        public override informationBindingDefinition[] informationBindingDefinitions => DistributorInformation.informationBindingDefinitions;
+        public override informationBindingDefinition[] informationBindingDefinitions => DistributorInformation._informationBindingDefinitions;
 
-        public override void Load(DomainModel.S128.InformationTypes.DistributorInformation instance) {
+        public override InformationViewModel<DistributorInformation> Load(DomainModel.S128.InformationTypes.DistributorInformation instance) {
             distributorName = instance.distributorName;
+            return this;
         }
 
         public override string Serialize() {
@@ -2937,8 +2944,8 @@ namespace S100Framework.WPF.ViewModel.S128 {
             }
         }
 
-        public override informationBindingDefinition[] informationBindingDefinitions => ElectronicProduct.informationBindingDefinitions;
-        public override featureBindingDefinition[] featureBindingDefinitions => ElectronicProduct.featureBindingDefinitions;
+        public override informationBindingDefinition[] informationBindingDefinitions => ElectronicProduct._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => ElectronicProduct._featureBindingDefinitions;
 
         [Browsable(false)]
         public horizontalDatumEpsg[] horizontalDatumEpsgList => CodeList.horizontalDatumEpsgs.ToArray();
@@ -2964,7 +2971,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
         [Browsable(false)]
         public IMOMaritimeService[] IMOMaritimeServiceList => [];
 
-        public override void Load(DomainModel.S128.FeatureTypes.ElectronicProduct instance) {
+        public override FeatureViewModel<ElectronicProduct> Load(DomainModel.S128.FeatureTypes.ElectronicProduct instance) {
             compressionFlag = instance.compressionFlag;
             datasetName = instance.datasetName;
             issueDate = instance.issueDate;
@@ -3042,6 +3049,8 @@ namespace S100Framework.WPF.ViewModel.S128 {
                 timeIntervalOfProduct = new();
                 timeIntervalOfProduct.Load(instance.timeIntervalOfProduct);
             }
+
+            return this;
         }
 
         public override string Serialize() {
@@ -3513,8 +3522,8 @@ namespace S100Framework.WPF.ViewModel.S128 {
             }
         }
 
-        public override informationBindingDefinition[] informationBindingDefinitions => PhysicalProduct.informationBindingDefinitions;
-        public override featureBindingDefinition[] featureBindingDefinitions => PhysicalProduct.featureBindingDefinitions;
+        public override informationBindingDefinition[] informationBindingDefinitions => PhysicalProduct._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => PhysicalProduct._featureBindingDefinitions;
 
         [Browsable(false)]
         public horizontalDatumEpsg[] horizontalDatumEpsgList => CodeList.horizontalDatumEpsgs.ToArray();
@@ -3537,7 +3546,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
         [Browsable(false)]
         public IMOMaritimeService[] IMOMaritimeServiceList => [];
 
-        public override void Load(DomainModel.S128.FeatureTypes.PhysicalProduct instance) {
+        public override FeatureViewModel<PhysicalProduct> Load(DomainModel.S128.FeatureTypes.PhysicalProduct instance) {
             editionDate = instance.editionDate;
             isbn = instance.isbn;
             publicationNumber = instance.publicationNumber;
@@ -3620,6 +3629,8 @@ namespace S100Framework.WPF.ViewModel.S128 {
                 timeIntervalOfProduct = new();
                 timeIntervalOfProduct.Load(instance.timeIntervalOfProduct);
             }
+
+            return this;
         }
 
         public override string Serialize() {
@@ -3920,8 +3931,8 @@ namespace S100Framework.WPF.ViewModel.S128 {
             }
         }
 
-        public override informationBindingDefinition[] informationBindingDefinitions => S100Service.informationBindingDefinitions;
-        public override featureBindingDefinition[] featureBindingDefinitions => S100Service.featureBindingDefinitions;
+        public override informationBindingDefinition[] informationBindingDefinitions => S100Service._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => S100Service._featureBindingDefinitions;
 
         [Browsable(false)]
         public serviceStatus[] serviceStatusList => [(serviceStatus)1, (serviceStatus)2, (serviceStatus)3, (serviceStatus)4];
@@ -3935,7 +3946,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
         [Browsable(false)]
         public IMOMaritimeService[] IMOMaritimeServiceList => [];
 
-        public override void Load(DomainModel.S128.FeatureTypes.S100Service instance) {
+        public override FeatureViewModel<S100Service> Load(DomainModel.S128.FeatureTypes.S100Service instance) {
             compressionFlag = instance.compressionFlag;
             serviceName = instance.serviceName;
             serviceStatus = instance.serviceStatus;
@@ -3993,6 +4004,8 @@ namespace S100Framework.WPF.ViewModel.S128 {
                 timeIntervalOfProduct = new();
                 timeIntervalOfProduct.Load(instance.timeIntervalOfProduct);
             }
+
+            return this;
         }
 
         public override string Serialize() {

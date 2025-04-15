@@ -3,6 +3,7 @@ using S100Framework.WPF.ViewModel;
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 using System.ComponentModel;
+using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Windows;
 using System.Windows.Controls;
@@ -81,112 +82,229 @@ namespace S100Framework.WPF
     public delegate void QueryFeaturesEventHandler(object sender, QueryFeaturesEventArgs e);
 
 
-    public class S100AttributeEditorViewModel : INotifyPropertyChanged, INotifyCollectionChanged
+    //public class S100AttributeEditorViewModel : INotifyPropertyChanged, INotifyCollectionChanged
+    //{
+    //    public S100AttributeEditorViewModel() {
+    //        this.InformationBindings.CollectionChanged += this.InformationBindings_CollectionChanged;
+    //        this.FeatureBindings.CollectionChanged += this.FeatureBindings_CollectionChanged;
+    //    }
+
+    //    private void SelectedObject_PropertyChanged(object? sender, PropertyChangedEventArgs e) {
+    //        this.PropertyChanged?.Invoke(sender, e);
+    //    }
+
+    //    private void InformationBinding_PropertyChanged(object? sender, PropertyChangedEventArgs e) {
+    //        this.PropertyChanged?.Invoke(sender, e);
+    //    }
+
+    //    private void FeatureBinding_PropertyChanged(object? sender, PropertyChangedEventArgs e) {
+    //        this.PropertyChanged?.Invoke(sender, e);
+    //    }
+
+    //    private void InformationBindings_CollectionChanged(object? sender, NotifyCollectionChangedEventArgs e) {
+    //        if (e.OldItems != null) {
+    //            foreach (var i in e.OldItems) {
+    //                ((InformationBindingViewModel)i).PropertyChanged -= InformationBinding_PropertyChanged;
+    //            }
+    //        }
+    //        if (e.NewItems != null) {
+    //            foreach (var i in e.NewItems) {
+    //                ((InformationBindingViewModel)i).PropertyChanged += InformationBinding_PropertyChanged;
+    //            }
+    //        }
+    //        this.CollectionChanged?.Invoke(this.InformationBindings, e);
+    //    }
+
+    //    private void FeatureBindings_CollectionChanged(object? sender, NotifyCollectionChangedEventArgs e) {
+    //        if (e.OldItems != null) {
+    //            foreach (var i in e.OldItems) {
+    //                ((FeatureBindingViewModel)i).PropertyChanged -= FeatureBinding_PropertyChanged;
+    //            }
+    //        }
+    //        if (e.NewItems != null) {
+    //            foreach (var i in e.NewItems) {
+    //                ((FeatureBindingViewModel)i).PropertyChanged += FeatureBinding_PropertyChanged;
+    //            }
+    //        }
+    //        this.CollectionChanged?.Invoke(this.FeatureBindings, e);
+    //    }
+
+    //    public InformationViewModel? InformationViewModel => this.SelectedObject as InformationViewModel;
+
+    //    public FeatureViewModel? FeatureViewModel => this.SelectedObject as FeatureViewModel;
+
+
+
+    //    //public S100AttributeEditorViewModel(InformationNode informationNode, InformationViewModel selectedObject) : this(informationNode.Code, selectedObject) {
+    //    //    informationBindingDefinitions = selectedObject.informationBindingDefinitions;
+    //    //}
+
+    //    //public S100AttributeEditorViewModel(FeatureNode featureNode, FeatureViewModel selectedObject) : this(featureNode.Code, selectedObject) {
+    //    //    informationBindingDefinitions = selectedObject.informationBindingDefinitions;
+    //    //    featureBindingDefinitions = selectedObject.featureBindingDefinitions;
+    //    //}
+
+    //    #region INotifyPropertyChanged/INotifyCollectionChanged
+
+    //    public event PropertyChangedEventHandler? PropertyChanged;
+
+    //    public event NotifyCollectionChangedEventHandler? CollectionChanged;
+
+    //    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null) {
+    //        PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    //    }
+
+    //    protected void SetValue<T>(ref T backingFiled, T value, [CallerMemberName] string? propertyName = null) {
+    //        if (string.IsNullOrWhiteSpace(propertyName)) return;
+
+    //        if (EqualityComparer<T>.Default.Equals(backingFiled, value)) return;
+    //        backingFiled = value;
+    //        OnPropertyChanged(propertyName);
+    //    }
+
+    //    #endregion
+
+    //    public string Code { get; set; } = string.Empty;
+
+
+    //    #region DependencyProperties
+
+    //    private object? _selectedObject = default;
+
+    //    public object? SelectedObject {
+    //        get {
+    //            return _selectedObject;
+    //        }
+
+    //        set {
+    //            if(_selectedObject != null && _selectedObject is INotifyPropertyChanged) {
+    //                //((INotifyPropertyChanged)this._selectedObject).PropertyChanged -= this.SelectedObject_PropertyChanged;
+
+    //                this.InformationBindings.Clear();
+    //                this.FeatureBindings.Clear();
+
+    //                this.InformationBindingDefinitions.Clear();
+    //                this.FeatureBindingDefinitions.Clear();
+    //            }
+
+    //            SetValue(ref _selectedObject, value);
+
+    //            if (value != null && value is INotifyPropertyChanged) {
+    //                //((INotifyPropertyChanged)this._selectedObject!).PropertyChanged += this.SelectedObject_PropertyChanged;
+    //            }
+    //        }
+    //    }
+
+    //    public ObservableCollection<informationBindingDefinition> InformationBindingDefinitions = new ObservableCollection<informationBindingDefinition>();
+
+    //    public ObservableCollection<featureBindingDefinition> FeatureBindingDefinitions = new ObservableCollection<featureBindingDefinition>();
+
+
+    //    public ObservableCollection<FeatureBindingViewModel> FeatureBindings = new ObservableCollection<FeatureBindingViewModel>();
+
+    //    public ObservableCollection<InformationBindingViewModel> InformationBindings = new ObservableCollection<InformationBindingViewModel>();
+    //}
+
+
+    //public record SelectedInformation(InformationViewModel InformationObject, IInformationBindingDefinition InformationBinding);
+
+    //public record SelectedFeature(FeatureViewModel FeatureObject, IFeatureBindingDefinition FeatureBinding);
+
+    public abstract class SelectedObjectViewModel : INotifyPropertyChanged, INotifyCollectionChanged
     {
-        private S100AttributeEditorViewModel(string code, ViewModelBase selectedObject) {
-            this.Code = code;
-            this.SelectedObject = selectedObject;
-
-            this.SelectedObject.PropertyChanged += this.SelectedObject_PropertyChanged;
-
-            this.InformationBindings.CollectionChanged += this.InformationBindings_CollectionChanged;
-            this.FeatureBindings.CollectionChanged += this.FeatureBindings_CollectionChanged;
-        }
-
-        private void SelectedObject_PropertyChanged(object? sender, PropertyChangedEventArgs e) {
-            this.PropertyChanged?.Invoke(sender, e);
-        }
-
-        private void InformationBinding_PropertyChanged(object? sender, PropertyChangedEventArgs e) {
-            this.PropertyChanged?.Invoke(sender, e);
-        }
-
-        private void FeatureBinding_PropertyChanged(object? sender, PropertyChangedEventArgs e) {
-            this.PropertyChanged?.Invoke(sender, e);
-        }
-
-        private void InformationBindings_CollectionChanged(object? sender, NotifyCollectionChangedEventArgs e) {
-            if (e.OldItems != null) {
-                foreach (var i in e.OldItems) {
-                    ((InformationBindingViewModel)i).PropertyChanged -= InformationBinding_PropertyChanged;
-                }
-            }
-            if (e.NewItems != null) {
-                foreach (var i in e.NewItems) {
-                    ((InformationBindingViewModel)i).PropertyChanged += InformationBinding_PropertyChanged;
-                }
-            }
-            this.CollectionChanged?.Invoke(this.InformationBindings, e);
-        }
-
-        private void FeatureBindings_CollectionChanged(object? sender, NotifyCollectionChangedEventArgs e) {
-            if (e.OldItems != null) {
-                foreach (var i in e.OldItems) {
-                    ((FeatureBindingViewModel)i).PropertyChanged -= FeatureBinding_PropertyChanged;
-                }
-            }
-            if (e.NewItems != null) {
-                foreach (var i in e.NewItems) {
-                    ((FeatureBindingViewModel)i).PropertyChanged += FeatureBinding_PropertyChanged;
-                }
-            }
-            this.CollectionChanged?.Invoke(this.FeatureBindings, e);
-        }
-
-        public InformationViewModel? InformationViewModel => this.SelectedObject as InformationViewModel;
-
-        public FeatureViewModel? FeatureViewModel => this.SelectedObject as FeatureViewModel;
-
-
-        public S100AttributeEditorViewModel(InformationNode informationNode, InformationViewModel selectedObject) : this(informationNode.Code, selectedObject) {
-            informationBindingDefinitions = selectedObject.informationBindingDefinitions;
-        }
-
-        public S100AttributeEditorViewModel(FeatureNode featureNode, FeatureViewModel selectedObject) : this(featureNode.Code, selectedObject) {
-            informationBindingDefinitions = selectedObject.informationBindingDefinitions;
-            featureBindingDefinitions = selectedObject.featureBindingDefinitions;
-        }
-
-
         public event PropertyChangedEventHandler? PropertyChanged;
 
         public event NotifyCollectionChangedEventHandler? CollectionChanged;
 
-        protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null) {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        protected void OnPropertyChanged(object? sender, PropertyChangedEventArgs e) {
+            this.PropertyChanged?.Invoke(sender, e);
         }
 
-        protected void SetValue<T>(ref T backingFiled, T value, [CallerMemberName] string? propertyName = null) {
-            if (string.IsNullOrWhiteSpace(propertyName)) return;
+        protected void OnCollectionChanged(object? sender, NotifyCollectionChangedEventArgs e) {
+            this.CollectionChanged?.Invoke(sender, e);
+        }
+    }
 
-            if (EqualityComparer<T>.Default.Equals(backingFiled, value)) return;
-            backingFiled = value;
-            OnPropertyChanged(propertyName);
+    public class SelectedInformationObjectViewModel : SelectedObjectViewModel
+    {
+        public SelectedInformationObjectViewModel(InformationViewModel informationObject, IInformationBindingDefinition informationBinding) {
+            this.InformationObject = informationObject;
+            this.InformationBinding = informationBinding;
+
+            this.InformationObject.PropertyChanged += base.OnPropertyChanged;
+
+            this.InformationBindings.CollectionChanged += this.OnInformationBindings_CollectionChanged;
         }
 
-        public string Code { get; set; } = string.Empty;
+        public InformationViewModel InformationObject { get; private set; }
 
-        private ViewModelBase? _selectedObject;
+        public IInformationBindingDefinition InformationBinding { get; private set; }
 
-        internal ViewModelBase? SelectedObject {
-            get {
-                return _selectedObject;
+        public ObservableCollection<InformationBindingViewModel> InformationBindings = new ObservableCollection<InformationBindingViewModel>();
+
+        protected void OnInformationBindings_CollectionChanged(object? sender, NotifyCollectionChangedEventArgs e) {
+            if (e.OldItems != null) {
+                foreach (var i in e.OldItems) {
+                    ((InformationBindingViewModel)i).PropertyChanged -= OnPropertyChanged;
+                }
             }
-
-            set {
-                SetValue(ref _selectedObject, value);
+            if (e.NewItems != null) {
+                foreach (var i in e.NewItems) {
+                    ((InformationBindingViewModel)i).PropertyChanged += OnPropertyChanged;
+                }
             }
+            base.OnCollectionChanged(sender, e);
+        }
+    }
+
+    public class SelectedFeatureObjectViewModel : SelectedObjectViewModel
+    {
+        public SelectedFeatureObjectViewModel(FeatureViewModel featureObject, IFeatureBindingDefinition featureBinding) {
+            this.FeatureObject = featureObject;
+            this.FeatureBinding = featureBinding;
+
+            this.FeatureObject.PropertyChanged += base.OnPropertyChanged;
+            this.InformationBindings.CollectionChanged += this.OnInformationBindings_CollectionChanged;
+            this.FeatureBindings.CollectionChanged += this.OnFeatureBindings_CollectionChanged;
         }
 
-        public ICollection<informationBindingDefinition> informationBindingDefinitions { get; } = Enumerable.Empty<informationBindingDefinition>().ToList();
+        public FeatureViewModel FeatureObject { get; private set; }
 
-        public ICollection<featureBindingDefinition> featureBindingDefinitions { get; } = Enumerable.Empty<featureBindingDefinition>().ToList();
-
+        public IFeatureBindingDefinition FeatureBinding { get; private set; }
 
         public ObservableCollection<FeatureBindingViewModel> FeatureBindings = new ObservableCollection<FeatureBindingViewModel>();
 
         public ObservableCollection<InformationBindingViewModel> InformationBindings = new ObservableCollection<InformationBindingViewModel>();
+
+        protected void OnInformationBindings_CollectionChanged(object? sender, NotifyCollectionChangedEventArgs e) {
+            if (e.OldItems != null) {
+                foreach (var i in e.OldItems) {
+                    ((InformationBindingViewModel)i).PropertyChanged -= OnPropertyChanged;
+                }
+            }
+            if (e.NewItems != null) {
+                foreach (var i in e.NewItems) {
+                    ((InformationBindingViewModel)i).PropertyChanged += OnPropertyChanged;
+                }
+            }
+            base.OnCollectionChanged(sender, e);
+        }
+
+        protected void OnFeatureBindings_CollectionChanged(object? sender, NotifyCollectionChangedEventArgs e) {
+            if (e.OldItems != null) {
+                foreach (var i in e.OldItems) {
+                    ((FeatureBindingViewModel)i).PropertyChanged -= OnPropertyChanged;
+                }
+            }
+            if (e.NewItems != null) {
+                foreach (var i in e.NewItems) {
+                    ((FeatureBindingViewModel)i).PropertyChanged += OnPropertyChanged;
+                }
+            }
+            base.OnCollectionChanged(sender, e);
+        }
     }
+
 
     [TemplatePart(Name = PART_PropertyGrid, Type = typeof(Xceed.Wpf.Toolkit.PropertyGrid.PropertyGrid))]
     [TemplatePart(Name = PART_FeatureBindings, Type = typeof(StackPanel))]
@@ -196,7 +314,7 @@ namespace S100Framework.WPF
     [TemplatePart(Name = PART_FeatureBindingsList, Type = typeof(ListView))]
     [TemplatePart(Name = PART_InformationBindingsList, Type = typeof(ListView))]
     [ContentProperty("Content")]
-    public class S100AttributeEditorControl : Control
+    public class S100AttributeEditorControl : Control, INotifyPropertyChanged, INotifyCollectionChanged
     {
         private const string PART_PropertyGrid = "PART_PropertyGrid";
         private const string PART_InformationBindings = "PART_InformationBindings";
@@ -217,6 +335,10 @@ namespace S100Framework.WPF
         private ComboBox? FeatureBindingDefinitionsCheckComboBox { get; set; } = default;
         private ListView? FeatureBindingsListView { get; set; } = default;
         private ListView? InformationBindingsListView { get; set; } = default;
+
+        public event PropertyChangedEventHandler? PropertyChanged;
+
+        public event NotifyCollectionChangedEventHandler? CollectionChanged;
 
         static S100AttributeEditorControl() {
             DefaultStyleKeyProperty.OverrideMetadata(typeof(S100AttributeEditorControl), new FrameworkPropertyMetadata(typeof(S100AttributeEditorControl)));
@@ -285,16 +407,22 @@ namespace S100Framework.WPF
             base.OnApplyTemplate();
 
             PropertyGrid = (PropertyGrid)GetTemplateChild(PART_PropertyGrid);
+            PropertyGrid.IsEnabled = this.IsEditingEnabled;
 
             InformationBindingsStackPanel = (StackPanel)GetTemplateChild(PART_InformationBindings);
+            InformationBindingsStackPanel.IsEnabled = this.IsEditingEnabled;
+
             FeatureBindingsStackPanel = (StackPanel)GetTemplateChild(PART_FeatureBindings);
+            FeatureBindingsStackPanel.IsEnabled = this.IsEditingEnabled;
 
             InformationBindingDefinitionsCheckComboBox = (ComboBox)GetTemplateChild(PART_InformationBindingDefinitions);
             FeatureBindingDefinitionsCheckComboBox = (ComboBox)GetTemplateChild(PART_FeatureBindingDefinitions);
 
-            FeatureBindingsListView = (ListView)GetTemplateChild(PART_FeatureBindingsList);
-
             InformationBindingsListView = (ListView)GetTemplateChild(PART_InformationBindingsList);
+            //InformationBindingsListView.ItemsSource = this.InformationBindings;
+
+            FeatureBindingsListView = (ListView)GetTemplateChild(PART_FeatureBindingsList);
+            //FeatureBindingsListView.ItemsSource = this.FeatureBindings;
 
             InformationBindingDefinitionsCheckComboBox.SelectionChanged += (object sender, SelectionChangedEventArgs e) => {
                 if (e.AddedItems.Count > 0) {
@@ -309,33 +437,169 @@ namespace S100Framework.WPF
             };
         }
 
+        private object? _selectedObject = default;
 
-        #region DependencyProperties
+        private ICollection<InformationBindingViewModel>? _selectedInformationBindings = default;
+        private ICollection<FeatureBindingViewModel>? _selectedFeatureBindings = default;
 
-        public static readonly DependencyProperty S100AttributeEditorViewModelProperty =
-            DependencyProperty.Register("S100AttributeEditorViewModel", typeof(S100AttributeEditorViewModel), typeof(S100AttributeEditorControl), new UIPropertyMetadata(null, OnViewModelChanged));
+        #region DependencyProperties       
 
-        public S100AttributeEditorViewModel? S100AttributeEditorViewModel {
+        public static readonly DependencyProperty IsEditingEnabledProperty =
+            DependencyProperty.Register("IsEditingEnabled", typeof(Boolean), typeof(S100AttributeEditorControl), new UIPropertyMetadata(false, IsEditingEnabledChanged));
+
+        public Boolean IsEditingEnabled {
             get {
-                return (S100AttributeEditorViewModel?)GetValue(S100AttributeEditorViewModelProperty);
+                return (Boolean)GetValue(IsEditingEnabledProperty);
             }
             set {
-                SetValue(S100AttributeEditorViewModelProperty, value);
+                SetValue(IsEditingEnabledProperty, value);
             }
         }
 
-        //public static readonly DependencyProperty SelectedObjectProperty = DependencyProperty.Register("SelectedObject", typeof(object), typeof(PropertyGrid), new UIPropertyMetadata(null));
-        //public object SelectedObject {
-        //    get {
-        //        return (object)GetValue(SelectedObjectProperty);
-        //    }
-        //    set {
-        //        SetValue(SelectedObjectProperty, value);
-        //    }
-        //}
+        private static void IsEditingEnabledChanged(DependencyObject sender, DependencyPropertyChangedEventArgs args) {
+            var control = sender as S100AttributeEditorControl;
+            if (control is null)
+                return;
+
+            if (control.PropertyGrid != null) {
+                control.PropertyGrid.IsEnabled = (Boolean)args.NewValue;
+            }
+            if(control.InformationBindingsStackPanel != null) {
+                control.InformationBindingsStackPanel.IsEnabled = (Boolean)args.NewValue;
+            }
+            if (control.FeatureBindingsStackPanel != null) {
+                control.FeatureBindingsStackPanel.IsEnabled = (Boolean)args.NewValue;
+            }
+        }
+
+        public static readonly DependencyProperty SelectedInformationObjectProperty =
+            DependencyProperty.Register("SelectedInformationObject", typeof(SelectedInformationObjectViewModel), typeof(S100AttributeEditorControl), new UIPropertyMetadata(null, OnSelectedInformationChanged));
+
+        public SelectedInformationObjectViewModel SelectedInformationObject {
+            get {
+                return (SelectedInformationObjectViewModel)GetValue(SelectedInformationObjectProperty);
+            }
+            set {
+                if (SelectedFeatureObject != null) {
+                    this.SelectedFeatureObject.FeatureObject.PropertyChanged -= this.SelectedObject_PropertyChanged;
+                }
+                if (SelectedInformationObject != null) {
+                    this.SelectedInformationObject.InformationObject.PropertyChanged -= this.SelectedObject_PropertyChanged;
+                }
+                SetValue(SelectedInformationObjectProperty, value);
+            }
+        }
+
+        private static void OnSelectedInformationChanged(DependencyObject sender, DependencyPropertyChangedEventArgs args) {
+            var control = sender as S100AttributeEditorControl;
+            if (control is null)
+                return;
+
+            control._selectedObject = control.SelectedInformationObject.InformationObject;
+            control._selectedInformationBindings = control.SelectedInformationObject.InformationBindings;
+            control._selectedFeatureBindings = default;
+
+            if (control.PropertyGrid != null) {
+                control.PropertyGrid.SelectedObject = control.SelectedInformationObject.InformationObject;
+            }
+
+            if (control.SelectedInformationObject.InformationObject != null) {
+                control.SelectedInformationObject.InformationObject.PropertyChanged += control.SelectedObject_PropertyChanged;
+            }
+            if (control.SelectedInformationObject.InformationBinding != null) {
+                if (control.InformationBindingDefinitionsCheckComboBox != null) {
+                    control.InformationBindingDefinitionsCheckComboBox.ItemsSource = control.SelectedInformationObject.InformationBinding.informationBindingDefinitions;
+
+                    if (!control.SelectedInformationObject.InformationBinding.informationBindingDefinitions.Any()) {
+                        if (control.InformationBindingsStackPanel != null)
+                            control.InformationBindingsStackPanel.Visibility = Visibility.Collapsed;
+                    }
+                }
+
+                if (control.InformationBindingsListView != null) {
+                    control.InformationBindingsListView.ItemsSource = control.SelectedInformationObject.InformationBindings;
+                }
+
+                if (control.FeatureBindingsStackPanel != null) {
+                    control.FeatureBindingsStackPanel.Visibility = Visibility.Collapsed;
+                }
+            }
+        }
+
+        public static readonly DependencyProperty SelectedFeatureObjectProperty =
+            DependencyProperty.Register("SelectedFeatureObject", typeof(SelectedFeatureObjectViewModel), typeof(S100AttributeEditorControl), new UIPropertyMetadata(null, OnSelectedFeatureChanged));
+
+        public SelectedFeatureObjectViewModel SelectedFeatureObject {
+            get {
+                return (SelectedFeatureObjectViewModel)GetValue(SelectedFeatureObjectProperty);
+            }
+            set {
+                if (SelectedFeatureObject != null) {
+                    this.SelectedFeatureObject.FeatureObject.PropertyChanged -= this.SelectedObject_PropertyChanged;
+                }
+                if (SelectedInformationObject != null) {
+                    this.SelectedInformationObject.InformationObject.PropertyChanged -= this.SelectedObject_PropertyChanged;
+                }
+
+                SetValue(SelectedFeatureObjectProperty, value);
+            }
+        }
+
+        private static void OnSelectedFeatureChanged(DependencyObject sender, DependencyPropertyChangedEventArgs args) {
+            var control = sender as S100AttributeEditorControl;
+            if (control is null)
+                return;
+
+            control._selectedObject = control.SelectedFeatureObject.FeatureObject;
+            control._selectedInformationBindings = control.SelectedFeatureObject.InformationBindings;
+            control._selectedFeatureBindings = control.SelectedFeatureObject.FeatureBindings;
+
+            if (control.PropertyGrid != null) {
+                control.PropertyGrid.SelectedObject = control.SelectedFeatureObject.FeatureObject;
+            }
+
+            if (control.SelectedFeatureObject.FeatureObject != null) {
+                control.SelectedFeatureObject.FeatureObject.PropertyChanged += control.SelectedObject_PropertyChanged;
+            }
+            if (control.SelectedFeatureObject.FeatureBinding != null) {
+                if (control.InformationBindingDefinitionsCheckComboBox != null) {
+                    control.InformationBindingDefinitionsCheckComboBox.ItemsSource = control.SelectedFeatureObject.FeatureBinding.informationBindingDefinitions;
+
+                    if (!control.SelectedFeatureObject.FeatureBinding.informationBindingDefinitions.Any()) {
+                        if (control.InformationBindingsStackPanel != null)
+                            control.InformationBindingsStackPanel.Visibility = Visibility.Collapsed;
+                    }
+                }
+
+                if (control.FeatureBindingsStackPanel != null) {
+                    control.FeatureBindingsStackPanel.Visibility = Visibility.Visible;
+                }
+
+                if (control.FeatureBindingDefinitionsCheckComboBox != null) {
+                    control.FeatureBindingDefinitionsCheckComboBox.ItemsSource = control.SelectedFeatureObject.FeatureBinding.featureBindingDefinitions;
+
+                    if (!control.SelectedFeatureObject.FeatureBinding.featureBindingDefinitions.Any()) {
+                        if (control.FeatureBindingsStackPanel != null)
+                            control.FeatureBindingsStackPanel.Visibility = Visibility.Collapsed;
+                    }
+                }
+
+                if (control.InformationBindingsListView != null) {
+                    control.InformationBindingsListView.ItemsSource = control.SelectedFeatureObject.InformationBindings;
+                }
+                if (control.FeatureBindingsListView != null) {
+                    control.FeatureBindingsListView.ItemsSource = control.SelectedFeatureObject.FeatureBindings;
+                }
+            }
+        }
+
+        private void SelectedObject_PropertyChanged(object? sender, PropertyChangedEventArgs e) {
+            this.PropertyChanged?.Invoke(sender, e);
+        }
 
 
         #endregion
+
 
         #region Commands
 
@@ -348,38 +612,6 @@ namespace S100Framework.WPF
         }
 
         #endregion
-
-        private static void OnViewModelChanged(DependencyObject sender, DependencyPropertyChangedEventArgs args) {
-            var control = sender as S100AttributeEditorControl;
-            if (control != null) {
-                //control.ViewModel.PropertyChanged += control.PropertyChanged;
-
-                if (control.PropertyGrid != null) {
-                    control.PropertyGrid.SelectedObject = control.S100AttributeEditorViewModel!.SelectedObject;
-                }
-                if (control.FeatureBindingDefinitionsCheckComboBox != null) {
-                    control.FeatureBindingDefinitionsCheckComboBox.ItemsSource = control.S100AttributeEditorViewModel!.featureBindingDefinitions;
-                    if (!control.S100AttributeEditorViewModel!.featureBindingDefinitions.Any()) {
-                        if (control.FeatureBindingsStackPanel != null)
-                            control.FeatureBindingsStackPanel.Visibility = Visibility.Hidden;
-                    }
-                }
-                if (control.FeatureBindingsListView != null) {
-                    control.FeatureBindingsListView.ItemsSource = control.S100AttributeEditorViewModel!.FeatureBindings;
-                }
-                if (control.InformationBindingDefinitionsCheckComboBox != null) {
-                    control.InformationBindingDefinitionsCheckComboBox.ItemsSource = control.S100AttributeEditorViewModel!.informationBindingDefinitions;
-
-                    if (!control.S100AttributeEditorViewModel!.informationBindingDefinitions.Any()) {
-                        if (control.InformationBindingsStackPanel != null)
-                            control.InformationBindingsStackPanel.Visibility = Visibility.Hidden;
-                    }
-                }
-                if (control.InformationBindingsListView != null) {
-                    control.InformationBindingsListView.ItemsSource = control.S100AttributeEditorViewModel!.InformationBindings;
-                }
-            }
-        }
 
 
         #region Associations
@@ -527,10 +759,10 @@ namespace S100Framework.WPF
                     roleType = Enum.GetName<roleType>(InformationBindingDefinitionSelected.roleType)!,
                     association = InformationBindingDefinitionSelected.association,
                     role = InformationBindingDefinitionSelected.role,
-                    PID = this.S100AttributeEditorViewModel!.InformationViewModel?.PID,
+                    PID = ((PID?)this._selectedObject)?.PID,
                 };
 
-                S100AttributeEditorViewModel!.InformationBindings.Add(new InformationBindingViewModel {
+                this._selectedInformationBindings!.Add(new InformationBindingViewModel {
                 }.Load(binding));
             }
         }
@@ -606,10 +838,10 @@ namespace S100Framework.WPF
                     roleType = Enum.GetName<roleType>(FeatureBindingDefinitionSelected.roleType)!,
                     association = FeatureBindingDefinitionSelected.association,
                     role = FeatureBindingDefinitionSelected.role,
-                    PID = this.S100AttributeEditorViewModel!.FeatureViewModel?.PID,
+                    PID = ((PID?)this._selectedObject)?.PID,
                 };
 
-                S100AttributeEditorViewModel!.FeatureBindings.Add(new FeatureBindingViewModel {                    
+                this._selectedFeatureBindings!.Add(new FeatureBindingViewModel {
                 }.Load(binding));
             }
         }

@@ -1229,7 +1229,7 @@ namespace S100Framework.DomainModel.S128 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class CatalogueSectionHeader : InformationNode {
+        public partial class CatalogueSectionHeader : InformationNode, IInformationBindingDefinition {
             [Required()]
             public Int32 catalogueSectionNumber { get; set; }
             public String? catalogueSectionTitle { get; set; } = null;
@@ -1237,7 +1237,8 @@ namespace S100Framework.DomainModel.S128 {
 
             [JsonIgnore]
             public override string Code => nameof(CatalogueSectionHeader);
-            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
+            public informationBindingDefinition[] informationBindingDefinitions => CatalogueSectionHeader._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -1269,7 +1270,7 @@ namespace S100Framework.DomainModel.S128 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class ContactDetails : InformationNode {
+        public partial class ContactDetails : InformationNode, IInformationBindingDefinition {
             public String contactInstructions { get; set; } = string.Empty;
             public List<contactAddress> contactAddress { get; set; } = [];
             public List<information> information { get; set; } = [];
@@ -1279,7 +1280,8 @@ namespace S100Framework.DomainModel.S128 {
 
             [JsonIgnore]
             public override string Code => nameof(ContactDetails);
-            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
+            public informationBindingDefinition[] informationBindingDefinitions => ContactDetails._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -1304,14 +1306,15 @@ namespace S100Framework.DomainModel.S128 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class IndicationOfCarriageRequirement : InformationNode {
+        public partial class IndicationOfCarriageRequirement : InformationNode, IInformationBindingDefinition {
             public String? domesticCarriageRequirements { get; set; } = null;
             public String? internationalCarriageRequirements { get; set; } = null;
             public List<featureName> featureName { get; set; } = [];
 
             [JsonIgnore]
             public override string Code => nameof(IndicationOfCarriageRequirement);
-            public static informationBindingDefinition[] informationBindingDefinitions => [];
+            public informationBindingDefinition[] informationBindingDefinitions => IndicationOfCarriageRequirement._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [];
 
             public IndicationOfCarriageRequirement() {
             }
@@ -1319,7 +1322,7 @@ namespace S100Framework.DomainModel.S128 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class PriceInformation : InformationNode {
+        public partial class PriceInformation : InformationNode, IInformationBindingDefinition {
             public List<information> information { get; set; } = [];
             public List<onlineResource> onlineResource { get; set; } = [];
             public List<pricing> pricing { get; set; } = [];
@@ -1327,7 +1330,8 @@ namespace S100Framework.DomainModel.S128 {
 
             [JsonIgnore]
             public override string Code => nameof(PriceInformation);
-            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
+            public informationBindingDefinition[] informationBindingDefinitions => PriceInformation._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -1343,13 +1347,14 @@ namespace S100Framework.DomainModel.S128 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class ProducerInformation : InformationNode {
+        public partial class ProducerInformation : InformationNode, IInformationBindingDefinition {
             public String agencyResponsibleForProduction { get; set; } = string.Empty;
             public String? agencyName { get; set; } = null;
 
             [JsonIgnore]
             public override string Code => nameof(ProducerInformation);
-            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
+            public informationBindingDefinition[] informationBindingDefinitions => ProducerInformation._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -1374,12 +1379,13 @@ namespace S100Framework.DomainModel.S128 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class DistributorInformation : InformationNode {
+        public partial class DistributorInformation : InformationNode, IInformationBindingDefinition {
             public String distributorName { get; set; } = string.Empty;
 
             [JsonIgnore]
             public override string Code => nameof(DistributorInformation);
-            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
+            public informationBindingDefinition[] informationBindingDefinitions => DistributorInformation._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -1413,7 +1419,7 @@ namespace S100Framework.DomainModel.S128 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public abstract partial class CatalogueElement : FeatureNode {
+        public abstract partial class CatalogueElement : FeatureNode, IFeatureBindingDefinition {
             public String? agencyResponsibleForProduction { get; set; } = null;
 
             [Required()]
@@ -1433,7 +1439,8 @@ namespace S100Framework.DomainModel.S128 {
 
             [JsonIgnore]
             public override string Code => nameof(CatalogueElement);
-            public static informationBindingDefinition[] informationBindingDefinitions => [new informationBindingDefinition
+            public informationBindingDefinition[] informationBindingDefinitions => CatalogueElement._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [new informationBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -1458,7 +1465,8 @@ namespace S100Framework.DomainModel.S128 {
                 role = Enum.GetName<Role>(Role.elementContainer)!,
                 informationTypes = [nameof(CatalogueSectionHeader)],
             }, ];
-            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
+            public featureBindingDefinition[] featureBindingDefinitions => CatalogueElement._featureBindingDefinitions;
+            public static featureBindingDefinition[] _featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 0,
@@ -1476,7 +1484,7 @@ namespace S100Framework.DomainModel.S128 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public abstract partial class NavigationalProduct : CatalogueElement {
+        public abstract partial class NavigationalProduct : CatalogueElement, IFeatureBindingDefinition {
             public List<Decimal> approximateGridResolution { get; set; } = [];
             public List<Int32> compilationScale { get; set; } = [];
 
@@ -1556,8 +1564,10 @@ namespace S100Framework.DomainModel.S128 {
 
             [JsonIgnore]
             public override string Code => nameof(NavigationalProduct);
-            public static informationBindingDefinition[] informationBindingDefinitions => [];
-            public static featureBindingDefinition[] featureBindingDefinitions => [new featureBindingDefinition
+            public informationBindingDefinition[] informationBindingDefinitions => NavigationalProduct._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [];
+            public featureBindingDefinition[] featureBindingDefinitions => NavigationalProduct._featureBindingDefinitions;
+            public static featureBindingDefinition[] _featureBindingDefinitions => [new featureBindingDefinition
             {
                 roleType = roleType.association,
                 lower = 1,
@@ -1573,7 +1583,7 @@ namespace S100Framework.DomainModel.S128 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class ElectronicProduct : NavigationalProduct {
+        public partial class ElectronicProduct : NavigationalProduct, IFeatureBindingDefinition {
             public Boolean? compressionFlag { get; set; } = default;
             public String? datasetName { get; set; } = null;
 
@@ -1599,8 +1609,10 @@ namespace S100Framework.DomainModel.S128 {
 
             [JsonIgnore]
             public override string Code => nameof(ElectronicProduct);
-            public static informationBindingDefinition[] informationBindingDefinitions => [];
-            public static featureBindingDefinition[] featureBindingDefinitions => [];
+            public informationBindingDefinition[] informationBindingDefinitions => ElectronicProduct._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [];
+            public featureBindingDefinition[] featureBindingDefinitions => ElectronicProduct._featureBindingDefinitions;
+            public static featureBindingDefinition[] _featureBindingDefinitions => [];
 
             public ElectronicProduct() {
             }
@@ -1608,7 +1620,7 @@ namespace S100Framework.DomainModel.S128 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class PhysicalProduct : NavigationalProduct {
+        public partial class PhysicalProduct : NavigationalProduct, IFeatureBindingDefinition {
             [Required()]
             public DateTime editionDate { get; set; }
             public String? isbn { get; set; } = null;
@@ -1619,8 +1631,10 @@ namespace S100Framework.DomainModel.S128 {
 
             [JsonIgnore]
             public override string Code => nameof(PhysicalProduct);
-            public static informationBindingDefinition[] informationBindingDefinitions => [];
-            public static featureBindingDefinition[] featureBindingDefinitions => [];
+            public informationBindingDefinition[] informationBindingDefinitions => PhysicalProduct._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [];
+            public featureBindingDefinition[] featureBindingDefinitions => PhysicalProduct._featureBindingDefinitions;
+            public static featureBindingDefinition[] _featureBindingDefinitions => [];
 
             public PhysicalProduct() {
             }
@@ -1628,7 +1642,7 @@ namespace S100Framework.DomainModel.S128 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class S100Service : CatalogueElement {
+        public partial class S100Service : CatalogueElement, IFeatureBindingDefinition {
             public Boolean? compressionFlag { get; set; } = default;
             public String? serviceName { get; set; } = null;
 
@@ -1657,8 +1671,10 @@ namespace S100Framework.DomainModel.S128 {
 
             [JsonIgnore]
             public override string Code => nameof(S100Service);
-            public static informationBindingDefinition[] informationBindingDefinitions => [];
-            public static featureBindingDefinition[] featureBindingDefinitions => [];
+            public informationBindingDefinition[] informationBindingDefinitions => S100Service._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [];
+            public featureBindingDefinition[] featureBindingDefinitions => S100Service._featureBindingDefinitions;
+            public static featureBindingDefinition[] _featureBindingDefinitions => [];
 
             public S100Service() {
             }

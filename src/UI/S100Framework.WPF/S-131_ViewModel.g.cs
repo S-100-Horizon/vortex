@@ -3354,7 +3354,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
             }
         }
 
-        public override informationBindingDefinition[] informationBindingDefinitions => Applicability.informationBindingDefinitions;
+        public override informationBindingDefinition[] informationBindingDefinitions => Applicability._informationBindingDefinitions;
 
         [Browsable(false)]
         public categoryOfVessel[] categoryOfVesselList => CodeList.categoryOfVessels.ToArray();
@@ -3374,7 +3374,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
         [Browsable(false)]
         public sourceType[] sourceTypeList => [(sourceType)1, (sourceType)2, (sourceType)7, (sourceType)8, (sourceType)9, (sourceType)10, (sourceType)11, (sourceType)12, (sourceType)13, (sourceType)14];
 
-        public override void Load(DomainModel.S131.InformationTypes.Applicability instance) {
+        public override InformationViewModel<Applicability> Load(DomainModel.S131.InformationTypes.Applicability instance) {
             inBallast = instance.inBallast;
             categoryOfCargo.Clear();
             if (instance.categoryOfCargo is not null)
@@ -3418,6 +3418,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
             source = instance.source;
             sourceType = instance.sourceType;
             reportedDate = instance.reportedDate;
+            return this;
         }
 
         public override string Serialize() {
@@ -3584,7 +3585,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
             }
         }
 
-        public override informationBindingDefinition[] informationBindingDefinitions => Authority.informationBindingDefinitions;
+        public override informationBindingDefinition[] informationBindingDefinitions => Authority._informationBindingDefinitions;
 
         [Browsable(false)]
         public categoryOfAuthority[] categoryOfAuthorityList => [(categoryOfAuthority)2, (categoryOfAuthority)3, (categoryOfAuthority)4, (categoryOfAuthority)5, (categoryOfAuthority)6, (categoryOfAuthority)7, (categoryOfAuthority)8, (categoryOfAuthority)9, (categoryOfAuthority)10, (categoryOfAuthority)11, (categoryOfAuthority)12, (categoryOfAuthority)13, (categoryOfAuthority)14, (categoryOfAuthority)15, (categoryOfAuthority)16];
@@ -3592,7 +3593,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
         [Browsable(false)]
         public sourceType[] sourceTypeList => [(sourceType)1, (sourceType)2, (sourceType)7, (sourceType)8, (sourceType)9, (sourceType)10, (sourceType)11, (sourceType)12, (sourceType)13, (sourceType)14];
 
-        public override void Load(DomainModel.S131.InformationTypes.Authority instance) {
+        public override InformationViewModel<Authority> Load(DomainModel.S131.InformationTypes.Authority instance) {
             categoryOfAuthority = instance.categoryOfAuthority;
             textContent = new();
             if (instance.textContent != null) {
@@ -3621,6 +3622,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
             source = instance.source;
             sourceType = instance.sourceType;
             reportedDate = instance.reportedDate;
+            return this;
         }
 
         public override string Serialize() {
@@ -3802,7 +3804,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
             }
         }
 
-        public override informationBindingDefinition[] informationBindingDefinitions => AvailablePortServices.informationBindingDefinitions;
+        public override informationBindingDefinition[] informationBindingDefinitions => AvailablePortServices._informationBindingDefinitions;
 
         [Browsable(false)]
         public transportConnection[] transportConnectionList => CodeList.transportConnections.ToArray();
@@ -3840,7 +3842,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
         [Browsable(false)]
         public sourceType[] sourceTypeList => [(sourceType)1, (sourceType)2, (sourceType)7, (sourceType)8, (sourceType)9, (sourceType)10, (sourceType)11, (sourceType)12, (sourceType)13, (sourceType)14];
 
-        public override void Load(DomainModel.S131.InformationTypes.AvailablePortServices instance) {
+        public override InformationViewModel<AvailablePortServices> Load(DomainModel.S131.InformationTypes.AvailablePortServices instance) {
             firefightingService.Clear();
             if (instance.firefightingService is not null)
                 foreach (var e in instance.firefightingService)
@@ -3911,6 +3913,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
             source = instance.source;
             sourceType = instance.sourceType;
             reportedDate = instance.reportedDate;
+            return this;
         }
 
         public override string Serialize() {
@@ -4163,7 +4166,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
             }
         }
 
-        public override informationBindingDefinition[] informationBindingDefinitions => ContactDetails.informationBindingDefinitions;
+        public override informationBindingDefinition[] informationBindingDefinitions => ContactDetails._informationBindingDefinitions;
 
         [Browsable(false)]
         public categoryOfCommunicationPreference[] categoryOfCommunicationPreferenceList => [(categoryOfCommunicationPreference)1, (categoryOfCommunicationPreference)2, (categoryOfCommunicationPreference)3, (categoryOfCommunicationPreference)4];
@@ -4171,7 +4174,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
         [Browsable(false)]
         public sourceType[] sourceTypeList => [(sourceType)1, (sourceType)2, (sourceType)7, (sourceType)8, (sourceType)9, (sourceType)10, (sourceType)11, (sourceType)12, (sourceType)13, (sourceType)14];
 
-        public override void Load(DomainModel.S131.InformationTypes.ContactDetails instance) {
+        public override InformationViewModel<ContactDetails> Load(DomainModel.S131.InformationTypes.ContactDetails instance) {
             callName = instance.callName;
             callSign = instance.callSign;
             categoryOfCommunicationPreference = instance.categoryOfCommunicationPreference;
@@ -4226,6 +4229,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
             source = instance.source;
             sourceType = instance.sourceType;
             reportedDate = instance.reportedDate;
+            return this;
         }
 
         public override string Serialize() {
@@ -4435,12 +4439,12 @@ namespace S100Framework.WPF.ViewModel.S131 {
             }
         }
 
-        public override informationBindingDefinition[] informationBindingDefinitions => Entrance.informationBindingDefinitions;
+        public override informationBindingDefinition[] informationBindingDefinitions => Entrance._informationBindingDefinitions;
 
         [Browsable(false)]
         public sourceType[] sourceTypeList => [(sourceType)1, (sourceType)2, (sourceType)7, (sourceType)8, (sourceType)9, (sourceType)10, (sourceType)11, (sourceType)12, (sourceType)13, (sourceType)14];
 
-        public override void Load(DomainModel.S131.InformationTypes.Entrance instance) {
+        public override InformationViewModel<Entrance> Load(DomainModel.S131.InformationTypes.Entrance instance) {
             entranceDescription = instance.entranceDescription;
             associatedFeatureName.Clear();
             if (instance.associatedFeatureName is not null)
@@ -4493,6 +4497,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
             source = instance.source;
             sourceType = instance.sourceType;
             reportedDate = instance.reportedDate;
+            return this;
         }
 
         public override string Serialize() {
@@ -4661,7 +4666,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
             }
         }
 
-        public override informationBindingDefinition[] informationBindingDefinitions => NauticalInformation.informationBindingDefinitions;
+        public override informationBindingDefinition[] informationBindingDefinitions => NauticalInformation._informationBindingDefinitions;
 
         [Browsable(false)]
         public categoryOfAuthority[] categoryOfAuthorityList => [(categoryOfAuthority)2, (categoryOfAuthority)3, (categoryOfAuthority)4, (categoryOfAuthority)5, (categoryOfAuthority)6, (categoryOfAuthority)7, (categoryOfAuthority)8, (categoryOfAuthority)9, (categoryOfAuthority)10, (categoryOfAuthority)11, (categoryOfAuthority)12, (categoryOfAuthority)13, (categoryOfAuthority)14, (categoryOfAuthority)15, (categoryOfAuthority)16];
@@ -4669,7 +4674,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
         [Browsable(false)]
         public sourceType[] sourceTypeList => [(sourceType)1, (sourceType)2, (sourceType)7, (sourceType)8, (sourceType)9, (sourceType)10, (sourceType)11, (sourceType)12, (sourceType)13, (sourceType)14];
 
-        public override void Load(DomainModel.S131.InformationTypes.NauticalInformation instance) {
+        public override InformationViewModel<NauticalInformation> Load(DomainModel.S131.InformationTypes.NauticalInformation instance) {
             categoryOfAuthority = instance.categoryOfAuthority;
             rxNCode.Clear();
             if (instance.rxNCode is not null)
@@ -4700,6 +4705,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
             source = instance.source;
             sourceType = instance.sourceType;
             reportedDate = instance.reportedDate;
+            return this;
         }
 
         public override string Serialize() {
@@ -4828,12 +4834,12 @@ namespace S100Framework.WPF.ViewModel.S131 {
             }
         }
 
-        public override informationBindingDefinition[] informationBindingDefinitions => NonStandardWorkingDay.informationBindingDefinitions;
+        public override informationBindingDefinition[] informationBindingDefinitions => NonStandardWorkingDay._informationBindingDefinitions;
 
         [Browsable(false)]
         public sourceType[] sourceTypeList => [(sourceType)1, (sourceType)2, (sourceType)7, (sourceType)8, (sourceType)9, (sourceType)10, (sourceType)11, (sourceType)12, (sourceType)13, (sourceType)14];
 
-        public override void Load(DomainModel.S131.InformationTypes.NonStandardWorkingDay instance) {
+        public override InformationViewModel<NonStandardWorkingDay> Load(DomainModel.S131.InformationTypes.NonStandardWorkingDay instance) {
             dateFixed.Clear();
             if (instance.dateFixed is not null)
                 foreach (var e in instance.dateFixed)
@@ -4867,6 +4873,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
             source = instance.source;
             sourceType = instance.sourceType;
             reportedDate = instance.reportedDate;
+            return this;
         }
 
         public override string Serialize() {
@@ -5009,7 +5016,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
             }
         }
 
-        public override informationBindingDefinition[] informationBindingDefinitions => Recommendations.informationBindingDefinitions;
+        public override informationBindingDefinition[] informationBindingDefinitions => Recommendations._informationBindingDefinitions;
 
         [Browsable(false)]
         public categoryOfAuthority[] categoryOfAuthorityList => [(categoryOfAuthority)2, (categoryOfAuthority)3, (categoryOfAuthority)4, (categoryOfAuthority)5, (categoryOfAuthority)6, (categoryOfAuthority)7, (categoryOfAuthority)8, (categoryOfAuthority)9, (categoryOfAuthority)10, (categoryOfAuthority)11, (categoryOfAuthority)12, (categoryOfAuthority)13, (categoryOfAuthority)14, (categoryOfAuthority)15, (categoryOfAuthority)16];
@@ -5017,7 +5024,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
         [Browsable(false)]
         public sourceType[] sourceTypeList => [(sourceType)1, (sourceType)2, (sourceType)7, (sourceType)8, (sourceType)9, (sourceType)10, (sourceType)11, (sourceType)12, (sourceType)13, (sourceType)14];
 
-        public override void Load(DomainModel.S131.InformationTypes.Recommendations instance) {
+        public override InformationViewModel<Recommendations> Load(DomainModel.S131.InformationTypes.Recommendations instance) {
             categoryOfAuthority = instance.categoryOfAuthority;
             rxNCode.Clear();
             if (instance.rxNCode is not null)
@@ -5048,6 +5055,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
             source = instance.source;
             sourceType = instance.sourceType;
             reportedDate = instance.reportedDate;
+            return this;
         }
 
         public override string Serialize() {
@@ -5187,7 +5195,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
             }
         }
 
-        public override informationBindingDefinition[] informationBindingDefinitions => Regulations.informationBindingDefinitions;
+        public override informationBindingDefinition[] informationBindingDefinitions => Regulations._informationBindingDefinitions;
 
         [Browsable(false)]
         public categoryOfAuthority[] categoryOfAuthorityList => [(categoryOfAuthority)2, (categoryOfAuthority)3, (categoryOfAuthority)4, (categoryOfAuthority)5, (categoryOfAuthority)6, (categoryOfAuthority)7, (categoryOfAuthority)8, (categoryOfAuthority)9, (categoryOfAuthority)10, (categoryOfAuthority)11, (categoryOfAuthority)12, (categoryOfAuthority)13, (categoryOfAuthority)14, (categoryOfAuthority)15, (categoryOfAuthority)16];
@@ -5195,7 +5203,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
         [Browsable(false)]
         public sourceType[] sourceTypeList => [(sourceType)1, (sourceType)2, (sourceType)7, (sourceType)8, (sourceType)9, (sourceType)10, (sourceType)11, (sourceType)12, (sourceType)13, (sourceType)14];
 
-        public override void Load(DomainModel.S131.InformationTypes.Regulations instance) {
+        public override InformationViewModel<Regulations> Load(DomainModel.S131.InformationTypes.Regulations instance) {
             categoryOfAuthority = instance.categoryOfAuthority;
             rxNCode.Clear();
             if (instance.rxNCode is not null)
@@ -5226,6 +5234,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
             source = instance.source;
             sourceType = instance.sourceType;
             reportedDate = instance.reportedDate;
+            return this;
         }
 
         public override string Serialize() {
@@ -5365,7 +5374,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
             }
         }
 
-        public override informationBindingDefinition[] informationBindingDefinitions => Restrictions.informationBindingDefinitions;
+        public override informationBindingDefinition[] informationBindingDefinitions => Restrictions._informationBindingDefinitions;
 
         [Browsable(false)]
         public categoryOfAuthority[] categoryOfAuthorityList => [(categoryOfAuthority)2, (categoryOfAuthority)3, (categoryOfAuthority)4, (categoryOfAuthority)5, (categoryOfAuthority)6, (categoryOfAuthority)7, (categoryOfAuthority)8, (categoryOfAuthority)9, (categoryOfAuthority)10, (categoryOfAuthority)11, (categoryOfAuthority)12, (categoryOfAuthority)13, (categoryOfAuthority)14, (categoryOfAuthority)15, (categoryOfAuthority)16];
@@ -5373,7 +5382,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
         [Browsable(false)]
         public sourceType[] sourceTypeList => [(sourceType)1, (sourceType)2, (sourceType)7, (sourceType)8, (sourceType)9, (sourceType)10, (sourceType)11, (sourceType)12, (sourceType)13, (sourceType)14];
 
-        public override void Load(DomainModel.S131.InformationTypes.Restrictions instance) {
+        public override InformationViewModel<Restrictions> Load(DomainModel.S131.InformationTypes.Restrictions instance) {
             categoryOfAuthority = instance.categoryOfAuthority;
             rxNCode.Clear();
             if (instance.rxNCode is not null)
@@ -5404,6 +5413,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
             source = instance.source;
             sourceType = instance.sourceType;
             reportedDate = instance.reportedDate;
+            return this;
         }
 
         public override string Serialize() {
@@ -5529,12 +5539,12 @@ namespace S100Framework.WPF.ViewModel.S131 {
             }
         }
 
-        public override informationBindingDefinition[] informationBindingDefinitions => ServiceHours.informationBindingDefinitions;
+        public override informationBindingDefinition[] informationBindingDefinitions => ServiceHours._informationBindingDefinitions;
 
         [Browsable(false)]
         public sourceType[] sourceTypeList => [(sourceType)1, (sourceType)2, (sourceType)7, (sourceType)8, (sourceType)9, (sourceType)10, (sourceType)11, (sourceType)12, (sourceType)13, (sourceType)14];
 
-        public override void Load(DomainModel.S131.InformationTypes.ServiceHours instance) {
+        public override InformationViewModel<ServiceHours> Load(DomainModel.S131.InformationTypes.ServiceHours instance) {
             scheduleByDayOfWeek.Clear();
             if (instance.scheduleByDayOfWeek is not null)
                 foreach (var e in instance.scheduleByDayOfWeek)
@@ -5564,6 +5574,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
             source = instance.source;
             sourceType = instance.sourceType;
             reportedDate = instance.reportedDate;
+            return this;
         }
 
         public override string Serialize() {
@@ -5637,17 +5648,18 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
         [Category("SpatialQuality")]
         public ObservableCollection<spatialAccuracy> spatialAccuracy { get; set; } = new();
-        public override informationBindingDefinition[] informationBindingDefinitions => SpatialQuality.informationBindingDefinitions;
+        public override informationBindingDefinition[] informationBindingDefinitions => SpatialQuality._informationBindingDefinitions;
 
         [Browsable(false)]
         public qualityOfHorizontalMeasurement[] qualityOfHorizontalMeasurementList => [(qualityOfHorizontalMeasurement)1, (qualityOfHorizontalMeasurement)2, (qualityOfHorizontalMeasurement)3, (qualityOfHorizontalMeasurement)4, (qualityOfHorizontalMeasurement)5, (qualityOfHorizontalMeasurement)6, (qualityOfHorizontalMeasurement)7, (qualityOfHorizontalMeasurement)8, (qualityOfHorizontalMeasurement)9, (qualityOfHorizontalMeasurement)10, (qualityOfHorizontalMeasurement)11];
 
-        public override void Load(DomainModel.S131.InformationTypes.SpatialQuality instance) {
+        public override InformationViewModel<SpatialQuality> Load(DomainModel.S131.InformationTypes.SpatialQuality instance) {
             qualityOfHorizontalMeasurement = instance.qualityOfHorizontalMeasurement;
             spatialAccuracy.Clear();
             if (instance.spatialAccuracy is not null)
                 foreach (var e in instance.spatialAccuracy)
                     spatialAccuracy.Add(e);
+            return this;
         }
 
         public override string Serialize() {
@@ -5768,13 +5780,13 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
         [Category("FeatureType")]
         public ObservableCollection<textContent> textContent { get; set; } = new();
-        public override informationBindingDefinition[] informationBindingDefinitions => AnchorBerth.informationBindingDefinitions;
-        public override featureBindingDefinition[] featureBindingDefinitions => AnchorBerth.featureBindingDefinitions;
+        public override informationBindingDefinition[] informationBindingDefinitions => AnchorBerth._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => AnchorBerth._featureBindingDefinitions;
 
         [Browsable(false)]
         public sourceType[] sourceTypeList => [(sourceType)1, (sourceType)2, (sourceType)7, (sourceType)8, (sourceType)9, (sourceType)10, (sourceType)11, (sourceType)12, (sourceType)13, (sourceType)14];
 
-        public override void Load(DomainModel.S131.FeatureTypes.AnchorBerth instance) {
+        public override FeatureViewModel<AnchorBerth> Load(DomainModel.S131.FeatureTypes.AnchorBerth instance) {
             locationMRN = instance.locationMRN;
             globalLocationNumber = instance.globalLocationNumber;
             featureName.Clear();
@@ -5806,6 +5818,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
             if (instance.textContent is not null)
                 foreach (var e in instance.textContent)
                     textContent.Add(e);
+            return this;
         }
 
         public override string Serialize() {
@@ -6008,8 +6021,8 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
         [Category("FeatureType")]
         public ObservableCollection<textContent> textContent { get; set; } = new();
-        public override informationBindingDefinition[] informationBindingDefinitions => AnchorageArea.informationBindingDefinitions;
-        public override featureBindingDefinition[] featureBindingDefinitions => AnchorageArea.featureBindingDefinitions;
+        public override informationBindingDefinition[] informationBindingDefinitions => AnchorageArea._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => AnchorageArea._featureBindingDefinitions;
 
         [Browsable(false)]
         public iSPSLevel[] iSPSLevelList => [(iSPSLevel)1, (iSPSLevel)2, (iSPSLevel)3];
@@ -6017,7 +6030,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
         [Browsable(false)]
         public sourceType[] sourceTypeList => [(sourceType)1, (sourceType)2, (sourceType)7, (sourceType)8, (sourceType)9, (sourceType)10, (sourceType)11, (sourceType)12, (sourceType)13, (sourceType)14];
 
-        public override void Load(DomainModel.S131.FeatureTypes.AnchorageArea instance) {
+        public override FeatureViewModel<AnchorageArea> Load(DomainModel.S131.FeatureTypes.AnchorageArea instance) {
             depthsDescription = new();
             if (instance.depthsDescription != null) {
                 depthsDescription = new();
@@ -6063,6 +6076,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
             if (instance.textContent is not null)
                 foreach (var e in instance.textContent)
                     textContent.Add(e);
+            return this;
         }
 
         public override string Serialize() {
@@ -6402,8 +6416,8 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
         [Category("FeatureType")]
         public ObservableCollection<textContent> textContent { get; set; } = new();
-        public override informationBindingDefinition[] informationBindingDefinitions => Berth.informationBindingDefinitions;
-        public override featureBindingDefinition[] featureBindingDefinitions => Berth.featureBindingDefinitions;
+        public override informationBindingDefinition[] informationBindingDefinitions => Berth._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => Berth._featureBindingDefinitions;
 
         [Browsable(false)]
         public categoryOfBerthLocation[] categoryOfBerthLocationList => [(categoryOfBerthLocation)1, (categoryOfBerthLocation)2, (categoryOfBerthLocation)3, (categoryOfBerthLocation)4];
@@ -6414,7 +6428,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
         [Browsable(false)]
         public sourceType[] sourceTypeList => [(sourceType)1, (sourceType)2, (sourceType)7, (sourceType)8, (sourceType)9, (sourceType)10, (sourceType)11, (sourceType)12, (sourceType)13, (sourceType)14];
 
-        public override void Load(DomainModel.S131.FeatureTypes.Berth instance) {
+        public override FeatureViewModel<Berth> Load(DomainModel.S131.FeatureTypes.Berth instance) {
             availableBerthingLength = instance.availableBerthingLength;
             bollardDescription = instance.bollardDescription;
             bollardPull = instance.bollardPull;
@@ -6472,6 +6486,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
             if (instance.textContent is not null)
                 foreach (var e in instance.textContent)
                     textContent.Add(e);
+            return this;
         }
 
         public override string Serialize() {
@@ -6746,13 +6761,13 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
         [Category("FeatureType")]
         public ObservableCollection<textContent> textContent { get; set; } = new();
-        public override informationBindingDefinition[] informationBindingDefinitions => BerthPosition.informationBindingDefinitions;
-        public override featureBindingDefinition[] featureBindingDefinitions => BerthPosition.featureBindingDefinitions;
+        public override informationBindingDefinition[] informationBindingDefinitions => BerthPosition._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => BerthPosition._featureBindingDefinitions;
 
         [Browsable(false)]
         public sourceType[] sourceTypeList => [(sourceType)1, (sourceType)2, (sourceType)7, (sourceType)8, (sourceType)9, (sourceType)10, (sourceType)11, (sourceType)12, (sourceType)13, (sourceType)14];
 
-        public override void Load(DomainModel.S131.FeatureTypes.BerthPosition instance) {
+        public override FeatureViewModel<BerthPosition> Load(DomainModel.S131.FeatureTypes.BerthPosition instance) {
             availableBerthingLength = instance.availableBerthingLength;
             bollardDescription = instance.bollardDescription;
             bollardPull = instance.bollardPull;
@@ -6802,6 +6817,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
             if (instance.textContent is not null)
                 foreach (var e in instance.textContent)
                     textContent.Add(e);
+            return this;
         }
 
         public override string Serialize() {
@@ -7031,8 +7047,8 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
         [Category("FeatureType")]
         public ObservableCollection<textContent> textContent { get; set; } = new();
-        public override informationBindingDefinition[] informationBindingDefinitions => DockArea.informationBindingDefinitions;
-        public override featureBindingDefinition[] featureBindingDefinitions => DockArea.featureBindingDefinitions;
+        public override informationBindingDefinition[] informationBindingDefinitions => DockArea._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => DockArea._featureBindingDefinitions;
 
         [Browsable(false)]
         public iSPSLevel[] iSPSLevelList => [(iSPSLevel)1, (iSPSLevel)2, (iSPSLevel)3];
@@ -7040,7 +7056,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
         [Browsable(false)]
         public sourceType[] sourceTypeList => [(sourceType)1, (sourceType)2, (sourceType)7, (sourceType)8, (sourceType)9, (sourceType)10, (sourceType)11, (sourceType)12, (sourceType)13, (sourceType)14];
 
-        public override void Load(DomainModel.S131.FeatureTypes.DockArea instance) {
+        public override FeatureViewModel<DockArea> Load(DomainModel.S131.FeatureTypes.DockArea instance) {
             depthsDescription = new();
             if (instance.depthsDescription != null) {
                 depthsDescription = new();
@@ -7086,6 +7102,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
             if (instance.textContent is not null)
                 foreach (var e in instance.textContent)
                     textContent.Add(e);
+            return this;
         }
 
         public override string Serialize() {
@@ -7268,13 +7285,13 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
         [Category("FeatureType")]
         public ObservableCollection<textContent> textContent { get; set; } = new();
-        public override informationBindingDefinition[] informationBindingDefinitions => DryDock.informationBindingDefinitions;
-        public override featureBindingDefinition[] featureBindingDefinitions => DryDock.featureBindingDefinitions;
+        public override informationBindingDefinition[] informationBindingDefinitions => DryDock._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => DryDock._featureBindingDefinitions;
 
         [Browsable(false)]
         public sourceType[] sourceTypeList => [(sourceType)1, (sourceType)2, (sourceType)7, (sourceType)8, (sourceType)9, (sourceType)10, (sourceType)11, (sourceType)12, (sourceType)13, (sourceType)14];
 
-        public override void Load(DomainModel.S131.FeatureTypes.DryDock instance) {
+        public override FeatureViewModel<DryDock> Load(DomainModel.S131.FeatureTypes.DryDock instance) {
             sillDepth = instance.sillDepth;
             verticalClearanceValue = instance.verticalClearanceValue;
             locationMRN = instance.locationMRN;
@@ -7308,6 +7325,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
             if (instance.textContent is not null)
                 foreach (var e in instance.textContent)
                     textContent.Add(e);
+            return this;
         }
 
         public override string Serialize() {
@@ -7514,8 +7532,8 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
         [Category("FeatureType")]
         public ObservableCollection<textContent> textContent { get; set; } = new();
-        public override informationBindingDefinition[] informationBindingDefinitions => DumpingGround.informationBindingDefinitions;
-        public override featureBindingDefinition[] featureBindingDefinitions => DumpingGround.featureBindingDefinitions;
+        public override informationBindingDefinition[] informationBindingDefinitions => DumpingGround._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => DumpingGround._featureBindingDefinitions;
 
         [Browsable(false)]
         public iSPSLevel[] iSPSLevelList => [(iSPSLevel)1, (iSPSLevel)2, (iSPSLevel)3];
@@ -7523,7 +7541,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
         [Browsable(false)]
         public sourceType[] sourceTypeList => [(sourceType)1, (sourceType)2, (sourceType)7, (sourceType)8, (sourceType)9, (sourceType)10, (sourceType)11, (sourceType)12, (sourceType)13, (sourceType)14];
 
-        public override void Load(DomainModel.S131.FeatureTypes.DumpingGround instance) {
+        public override FeatureViewModel<DumpingGround> Load(DomainModel.S131.FeatureTypes.DumpingGround instance) {
             depthsDescription = new();
             if (instance.depthsDescription != null) {
                 depthsDescription = new();
@@ -7569,6 +7587,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
             if (instance.textContent is not null)
                 foreach (var e in instance.textContent)
                     textContent.Add(e);
+            return this;
         }
 
         public override string Serialize() {
@@ -7751,13 +7770,13 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
         [Category("FeatureType")]
         public ObservableCollection<textContent> textContent { get; set; } = new();
-        public override informationBindingDefinition[] informationBindingDefinitions => FloatingDock.informationBindingDefinitions;
-        public override featureBindingDefinition[] featureBindingDefinitions => FloatingDock.featureBindingDefinitions;
+        public override informationBindingDefinition[] informationBindingDefinitions => FloatingDock._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => FloatingDock._featureBindingDefinitions;
 
         [Browsable(false)]
         public sourceType[] sourceTypeList => [(sourceType)1, (sourceType)2, (sourceType)7, (sourceType)8, (sourceType)9, (sourceType)10, (sourceType)11, (sourceType)12, (sourceType)13, (sourceType)14];
 
-        public override void Load(DomainModel.S131.FeatureTypes.FloatingDock instance) {
+        public override FeatureViewModel<FloatingDock> Load(DomainModel.S131.FeatureTypes.FloatingDock instance) {
             sillDepth = instance.sillDepth;
             verticalClearanceValue = instance.verticalClearanceValue;
             locationMRN = instance.locationMRN;
@@ -7791,6 +7810,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
             if (instance.textContent is not null)
                 foreach (var e in instance.textContent)
                     textContent.Add(e);
+            return this;
         }
 
         public override string Serialize() {
@@ -7969,13 +7989,13 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
         [Category("FeatureType")]
         public ObservableCollection<textContent> textContent { get; set; } = new();
-        public override informationBindingDefinition[] informationBindingDefinitions => Gridiron.informationBindingDefinitions;
-        public override featureBindingDefinition[] featureBindingDefinitions => Gridiron.featureBindingDefinitions;
+        public override informationBindingDefinition[] informationBindingDefinitions => Gridiron._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => Gridiron._featureBindingDefinitions;
 
         [Browsable(false)]
         public sourceType[] sourceTypeList => [(sourceType)1, (sourceType)2, (sourceType)7, (sourceType)8, (sourceType)9, (sourceType)10, (sourceType)11, (sourceType)12, (sourceType)13, (sourceType)14];
 
-        public override void Load(DomainModel.S131.FeatureTypes.Gridiron instance) {
+        public override FeatureViewModel<Gridiron> Load(DomainModel.S131.FeatureTypes.Gridiron instance) {
             sillDepth = instance.sillDepth;
             verticalClearanceValue = instance.verticalClearanceValue;
             locationMRN = instance.locationMRN;
@@ -8009,6 +8029,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
             if (instance.textContent is not null)
                 foreach (var e in instance.textContent)
                     textContent.Add(e);
+            return this;
         }
 
         public override string Serialize() {
@@ -8231,8 +8252,8 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
         [Category("FeatureType")]
         public ObservableCollection<textContent> textContent { get; set; } = new();
-        public override informationBindingDefinition[] informationBindingDefinitions => HarbourAreaAdministrative.informationBindingDefinitions;
-        public override featureBindingDefinition[] featureBindingDefinitions => HarbourAreaAdministrative.featureBindingDefinitions;
+        public override informationBindingDefinition[] informationBindingDefinitions => HarbourAreaAdministrative._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => HarbourAreaAdministrative._featureBindingDefinitions;
 
         [Browsable(false)]
         public iSPSLevel[] iSPSLevelList => [(iSPSLevel)1, (iSPSLevel)2, (iSPSLevel)3];
@@ -8243,7 +8264,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
         [Browsable(false)]
         public sourceType[] sourceTypeList => [(sourceType)1, (sourceType)2, (sourceType)7, (sourceType)8, (sourceType)9, (sourceType)10, (sourceType)11, (sourceType)12, (sourceType)13, (sourceType)14];
 
-        public override void Load(DomainModel.S131.FeatureTypes.HarbourAreaAdministrative instance) {
+        public override FeatureViewModel<HarbourAreaAdministrative> Load(DomainModel.S131.FeatureTypes.HarbourAreaAdministrative instance) {
             uNLocationCode = instance.uNLocationCode;
             nationality = instance.nationality;
             applicableLoadLineZone = instance.applicableLoadLineZone;
@@ -8289,6 +8310,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
             if (instance.textContent is not null)
                 foreach (var e in instance.textContent)
                     textContent.Add(e);
+            return this;
         }
 
         public override string Serialize() {
@@ -8500,8 +8522,8 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
         [Category("FeatureType")]
         public ObservableCollection<textContent> textContent { get; set; } = new();
-        public override informationBindingDefinition[] informationBindingDefinitions => HarbourAreaSection.informationBindingDefinitions;
-        public override featureBindingDefinition[] featureBindingDefinitions => HarbourAreaSection.featureBindingDefinitions;
+        public override informationBindingDefinition[] informationBindingDefinitions => HarbourAreaSection._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => HarbourAreaSection._featureBindingDefinitions;
 
         [Browsable(false)]
         public categoryOfPortSection[] categoryOfPortSectionList => [(categoryOfPortSection)1, (categoryOfPortSection)3, (categoryOfPortSection)8, (categoryOfPortSection)9, (categoryOfPortSection)11, (categoryOfPortSection)12];
@@ -8515,7 +8537,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
         [Browsable(false)]
         public sourceType[] sourceTypeList => [(sourceType)1, (sourceType)2, (sourceType)7, (sourceType)8, (sourceType)9, (sourceType)10, (sourceType)11, (sourceType)12, (sourceType)13, (sourceType)14];
 
-        public override void Load(DomainModel.S131.FeatureTypes.HarbourAreaSection instance) {
+        public override FeatureViewModel<HarbourAreaSection> Load(DomainModel.S131.FeatureTypes.HarbourAreaSection instance) {
             categoryOfPortSection = instance.categoryOfPortSection;
             categoryOfHarbourFacility.Clear();
             if (instance.categoryOfHarbourFacility is not null)
@@ -8559,6 +8581,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
             if (instance.textContent is not null)
                 foreach (var e in instance.textContent)
                     textContent.Add(e);
+            return this;
         }
 
         public override string Serialize() {
@@ -8772,8 +8795,8 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
         [Category("FeatureType")]
         public ObservableCollection<textContent> textContent { get; set; } = new();
-        public override informationBindingDefinition[] informationBindingDefinitions => HarbourBasin.informationBindingDefinitions;
-        public override featureBindingDefinition[] featureBindingDefinitions => HarbourBasin.featureBindingDefinitions;
+        public override informationBindingDefinition[] informationBindingDefinitions => HarbourBasin._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => HarbourBasin._featureBindingDefinitions;
 
         [Browsable(false)]
         public iSPSLevel[] iSPSLevelList => [(iSPSLevel)1, (iSPSLevel)2, (iSPSLevel)3];
@@ -8781,7 +8804,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
         [Browsable(false)]
         public sourceType[] sourceTypeList => [(sourceType)1, (sourceType)2, (sourceType)7, (sourceType)8, (sourceType)9, (sourceType)10, (sourceType)11, (sourceType)12, (sourceType)13, (sourceType)14];
 
-        public override void Load(DomainModel.S131.FeatureTypes.HarbourBasin instance) {
+        public override FeatureViewModel<HarbourBasin> Load(DomainModel.S131.FeatureTypes.HarbourBasin instance) {
             depthsDescription = new();
             if (instance.depthsDescription != null) {
                 depthsDescription = new();
@@ -8827,6 +8850,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
             if (instance.textContent is not null)
                 foreach (var e in instance.textContent)
                     textContent.Add(e);
+            return this;
         }
 
         public override string Serialize() {
@@ -9002,8 +9026,8 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
         [Category("FeatureType")]
         public ObservableCollection<textContent> textContent { get; set; } = new();
-        public override informationBindingDefinition[] informationBindingDefinitions => HarbourFacility.informationBindingDefinitions;
-        public override featureBindingDefinition[] featureBindingDefinitions => HarbourFacility.featureBindingDefinitions;
+        public override informationBindingDefinition[] informationBindingDefinitions => HarbourFacility._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => HarbourFacility._featureBindingDefinitions;
 
         [Browsable(false)]
         public categoryOfHarbourFacility[] categoryOfHarbourFacilityList => [(categoryOfHarbourFacility)12, (categoryOfHarbourFacility)13];
@@ -9011,7 +9035,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
         [Browsable(false)]
         public sourceType[] sourceTypeList => [(sourceType)1, (sourceType)2, (sourceType)7, (sourceType)8, (sourceType)9, (sourceType)10, (sourceType)11, (sourceType)12, (sourceType)13, (sourceType)14];
 
-        public override void Load(DomainModel.S131.FeatureTypes.HarbourFacility instance) {
+        public override FeatureViewModel<HarbourFacility> Load(DomainModel.S131.FeatureTypes.HarbourFacility instance) {
             categoryOfHarbourFacility.Clear();
             if (instance.categoryOfHarbourFacility is not null)
                 foreach (var e in instance.categoryOfHarbourFacility)
@@ -9048,6 +9072,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
             if (instance.textContent is not null)
                 foreach (var e in instance.textContent)
                     textContent.Add(e);
+            return this;
         }
 
         public override string Serialize() {
@@ -9267,8 +9292,8 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
         [Category("FeatureType")]
         public ObservableCollection<textContent> textContent { get; set; } = new();
-        public override informationBindingDefinition[] informationBindingDefinitions => MooringWarpingFacility.informationBindingDefinitions;
-        public override featureBindingDefinition[] featureBindingDefinitions => MooringWarpingFacility.featureBindingDefinitions;
+        public override informationBindingDefinition[] informationBindingDefinitions => MooringWarpingFacility._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => MooringWarpingFacility._featureBindingDefinitions;
 
         [Browsable(false)]
         public categoryOfMooringWarpingFacility[] categoryOfMooringWarpingFacilityList => [(categoryOfMooringWarpingFacility)1, (categoryOfMooringWarpingFacility)2, (categoryOfMooringWarpingFacility)3, (categoryOfMooringWarpingFacility)4, (categoryOfMooringWarpingFacility)5, (categoryOfMooringWarpingFacility)6, (categoryOfMooringWarpingFacility)7];
@@ -9276,7 +9301,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
         [Browsable(false)]
         public sourceType[] sourceTypeList => [(sourceType)1, (sourceType)2, (sourceType)7, (sourceType)8, (sourceType)9, (sourceType)10, (sourceType)11, (sourceType)12, (sourceType)13, (sourceType)14];
 
-        public override void Load(DomainModel.S131.FeatureTypes.MooringWarpingFacility instance) {
+        public override FeatureViewModel<MooringWarpingFacility> Load(DomainModel.S131.FeatureTypes.MooringWarpingFacility instance) {
             categoryOfMooringWarpingFacility = instance.categoryOfMooringWarpingFacility;
             iDCode = instance.iDCode;
             bollardDescription = instance.bollardDescription;
@@ -9313,6 +9338,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
             if (instance.textContent is not null)
                 foreach (var e in instance.textContent)
                     textContent.Add(e);
+            return this;
         }
 
         public override string Serialize() {
@@ -9501,13 +9527,13 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
         [Category("FeatureType")]
         public ObservableCollection<textContent> textContent { get; set; } = new();
-        public override informationBindingDefinition[] informationBindingDefinitions => OuterLimit.informationBindingDefinitions;
-        public override featureBindingDefinition[] featureBindingDefinitions => OuterLimit.featureBindingDefinitions;
+        public override informationBindingDefinition[] informationBindingDefinitions => OuterLimit._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => OuterLimit._featureBindingDefinitions;
 
         [Browsable(false)]
         public sourceType[] sourceTypeList => [(sourceType)1, (sourceType)2, (sourceType)7, (sourceType)8, (sourceType)9, (sourceType)10, (sourceType)11, (sourceType)12, (sourceType)13, (sourceType)14];
 
-        public override void Load(DomainModel.S131.FeatureTypes.OuterLimit instance) {
+        public override FeatureViewModel<OuterLimit> Load(DomainModel.S131.FeatureTypes.OuterLimit instance) {
             limitsDescription = new();
             if (instance.limitsDescription != null) {
                 limitsDescription = new();
@@ -9565,6 +9591,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
             if (instance.textContent is not null)
                 foreach (var e in instance.textContent)
                     textContent.Add(e);
+            return this;
         }
 
         public override string Serialize() {
@@ -9794,8 +9821,8 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
         [Category("FeatureType")]
         public ObservableCollection<textContent> textContent { get; set; } = new();
-        public override informationBindingDefinition[] informationBindingDefinitions => PilotBoardingPlace.informationBindingDefinitions;
-        public override featureBindingDefinition[] featureBindingDefinitions => PilotBoardingPlace.featureBindingDefinitions;
+        public override informationBindingDefinition[] informationBindingDefinitions => PilotBoardingPlace._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => PilotBoardingPlace._featureBindingDefinitions;
 
         [Browsable(false)]
         public iSPSLevel[] iSPSLevelList => [(iSPSLevel)1, (iSPSLevel)2, (iSPSLevel)3];
@@ -9803,7 +9830,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
         [Browsable(false)]
         public sourceType[] sourceTypeList => [(sourceType)1, (sourceType)2, (sourceType)7, (sourceType)8, (sourceType)9, (sourceType)10, (sourceType)11, (sourceType)12, (sourceType)13, (sourceType)14];
 
-        public override void Load(DomainModel.S131.FeatureTypes.PilotBoardingPlace instance) {
+        public override FeatureViewModel<PilotBoardingPlace> Load(DomainModel.S131.FeatureTypes.PilotBoardingPlace instance) {
             depthsDescription = new();
             if (instance.depthsDescription != null) {
                 depthsDescription = new();
@@ -9849,6 +9876,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
             if (instance.textContent is not null)
                 foreach (var e in instance.textContent)
                     textContent.Add(e);
+            return this;
         }
 
         public override string Serialize() {
@@ -10059,8 +10087,8 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
         [Category("FeatureType")]
         public ObservableCollection<textContent> textContent { get; set; } = new();
-        public override informationBindingDefinition[] informationBindingDefinitions => SeaplaneLandingArea.informationBindingDefinitions;
-        public override featureBindingDefinition[] featureBindingDefinitions => SeaplaneLandingArea.featureBindingDefinitions;
+        public override informationBindingDefinition[] informationBindingDefinitions => SeaplaneLandingArea._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => SeaplaneLandingArea._featureBindingDefinitions;
 
         [Browsable(false)]
         public iSPSLevel[] iSPSLevelList => [(iSPSLevel)1, (iSPSLevel)2, (iSPSLevel)3];
@@ -10068,7 +10096,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
         [Browsable(false)]
         public sourceType[] sourceTypeList => [(sourceType)1, (sourceType)2, (sourceType)7, (sourceType)8, (sourceType)9, (sourceType)10, (sourceType)11, (sourceType)12, (sourceType)13, (sourceType)14];
 
-        public override void Load(DomainModel.S131.FeatureTypes.SeaplaneLandingArea instance) {
+        public override FeatureViewModel<SeaplaneLandingArea> Load(DomainModel.S131.FeatureTypes.SeaplaneLandingArea instance) {
             depthsDescription = new();
             if (instance.depthsDescription != null) {
                 depthsDescription = new();
@@ -10114,6 +10142,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
             if (instance.textContent is not null)
                 foreach (var e in instance.textContent)
                     textContent.Add(e);
+            return this;
         }
 
         public override string Serialize() {
@@ -10344,8 +10373,8 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
         [Category("FeatureType")]
         public ObservableCollection<textContent> textContent { get; set; } = new();
-        public override informationBindingDefinition[] informationBindingDefinitions => Terminal.informationBindingDefinitions;
-        public override featureBindingDefinition[] featureBindingDefinitions => Terminal.featureBindingDefinitions;
+        public override informationBindingDefinition[] informationBindingDefinitions => Terminal._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => Terminal._featureBindingDefinitions;
 
         [Browsable(false)]
         public categoryOfHarbourFacility[] categoryOfHarbourFacilityList => [(categoryOfHarbourFacility)1, (categoryOfHarbourFacility)3, (categoryOfHarbourFacility)5, (categoryOfHarbourFacility)7, (categoryOfHarbourFacility)8, (categoryOfHarbourFacility)10, (categoryOfHarbourFacility)11];
@@ -10359,7 +10388,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
         [Browsable(false)]
         public sourceType[] sourceTypeList => [(sourceType)1, (sourceType)2, (sourceType)7, (sourceType)8, (sourceType)9, (sourceType)10, (sourceType)11, (sourceType)12, (sourceType)13, (sourceType)14];
 
-        public override void Load(DomainModel.S131.FeatureTypes.Terminal instance) {
+        public override FeatureViewModel<Terminal> Load(DomainModel.S131.FeatureTypes.Terminal instance) {
             portFacilityNumber = instance.portFacilityNumber;
             categoryOfHarbourFacility = instance.categoryOfHarbourFacility;
             categoryOfCargo.Clear();
@@ -10404,6 +10433,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
             if (instance.textContent is not null)
                 foreach (var e in instance.textContent)
                     textContent.Add(e);
+            return this;
         }
 
         public override string Serialize() {
@@ -10626,8 +10656,8 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
         [Category("FeatureType")]
         public ObservableCollection<textContent> textContent { get; set; } = new();
-        public override informationBindingDefinition[] informationBindingDefinitions => TurningBasin.informationBindingDefinitions;
-        public override featureBindingDefinition[] featureBindingDefinitions => TurningBasin.featureBindingDefinitions;
+        public override informationBindingDefinition[] informationBindingDefinitions => TurningBasin._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => TurningBasin._featureBindingDefinitions;
 
         [Browsable(false)]
         public iSPSLevel[] iSPSLevelList => [(iSPSLevel)1, (iSPSLevel)2, (iSPSLevel)3];
@@ -10635,7 +10665,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
         [Browsable(false)]
         public sourceType[] sourceTypeList => [(sourceType)1, (sourceType)2, (sourceType)7, (sourceType)8, (sourceType)9, (sourceType)10, (sourceType)11, (sourceType)12, (sourceType)13, (sourceType)14];
 
-        public override void Load(DomainModel.S131.FeatureTypes.TurningBasin instance) {
+        public override FeatureViewModel<TurningBasin> Load(DomainModel.S131.FeatureTypes.TurningBasin instance) {
             depthsDescription = new();
             if (instance.depthsDescription != null) {
                 depthsDescription = new();
@@ -10681,6 +10711,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
             if (instance.textContent is not null)
                 foreach (var e in instance.textContent)
                     textContent.Add(e);
+            return this;
         }
 
         public override string Serialize() {
@@ -10891,8 +10922,8 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
         [Category("FeatureType")]
         public ObservableCollection<textContent> textContent { get; set; } = new();
-        public override informationBindingDefinition[] informationBindingDefinitions => WaterwayArea.informationBindingDefinitions;
-        public override featureBindingDefinition[] featureBindingDefinitions => WaterwayArea.featureBindingDefinitions;
+        public override informationBindingDefinition[] informationBindingDefinitions => WaterwayArea._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => WaterwayArea._featureBindingDefinitions;
 
         [Browsable(false)]
         public categoryOfPortSection[] categoryOfPortSectionList => [(categoryOfPortSection)1, (categoryOfPortSection)3, (categoryOfPortSection)8, (categoryOfPortSection)9, (categoryOfPortSection)11, (categoryOfPortSection)12];
@@ -10900,7 +10931,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
         [Browsable(false)]
         public sourceType[] sourceTypeList => [(sourceType)1, (sourceType)2, (sourceType)7, (sourceType)8, (sourceType)9, (sourceType)10, (sourceType)11, (sourceType)12, (sourceType)13, (sourceType)14];
 
-        public override void Load(DomainModel.S131.FeatureTypes.WaterwayArea instance) {
+        public override FeatureViewModel<WaterwayArea> Load(DomainModel.S131.FeatureTypes.WaterwayArea instance) {
             categoryOfPortSection = instance.categoryOfPortSection;
             depthsDescription = new();
             if (instance.depthsDescription != null) {
@@ -10946,6 +10977,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
             if (instance.textContent is not null)
                 foreach (var e in instance.textContent)
                     textContent.Add(e);
+            return this;
         }
 
         public override string Serialize() {
@@ -11039,12 +11071,13 @@ namespace S100Framework.WPF.ViewModel.S131 {
             }
         }
 
-        public override informationBindingDefinition[] informationBindingDefinitions => DataCoverage.informationBindingDefinitions;
-        public override featureBindingDefinition[] featureBindingDefinitions => DataCoverage.featureBindingDefinitions;
+        public override informationBindingDefinition[] informationBindingDefinitions => DataCoverage._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => DataCoverage._featureBindingDefinitions;
 
-        public override void Load(DomainModel.S131.FeatureTypes.DataCoverage instance) {
+        public override FeatureViewModel<DataCoverage> Load(DomainModel.S131.FeatureTypes.DataCoverage instance) {
             maximumDisplayScale = instance.maximumDisplayScale;
             minimumDisplayScale = instance.minimumDisplayScale;
+            return this;
         }
 
         public override string Serialize() {
@@ -11152,13 +11185,13 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
         [Category("QualityOfNonBathymetricData")]
         public ObservableCollection<information> information { get; set; } = new();
-        public override informationBindingDefinition[] informationBindingDefinitions => QualityOfNonBathymetricData.informationBindingDefinitions;
-        public override featureBindingDefinition[] featureBindingDefinitions => QualityOfNonBathymetricData.featureBindingDefinitions;
+        public override informationBindingDefinition[] informationBindingDefinitions => QualityOfNonBathymetricData._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => QualityOfNonBathymetricData._featureBindingDefinitions;
 
         [Browsable(false)]
         public categoryOfTemporalVariation[] categoryOfTemporalVariationList => [(categoryOfTemporalVariation)1, (categoryOfTemporalVariation)2, (categoryOfTemporalVariation)3, (categoryOfTemporalVariation)4, (categoryOfTemporalVariation)5, (categoryOfTemporalVariation)6];
 
-        public override void Load(DomainModel.S131.FeatureTypes.QualityOfNonBathymetricData instance) {
+        public override FeatureViewModel<QualityOfNonBathymetricData> Load(DomainModel.S131.FeatureTypes.QualityOfNonBathymetricData instance) {
             categoryOfTemporalVariation = instance.categoryOfTemporalVariation;
             horizontalDistanceUncertainty = instance.horizontalDistanceUncertainty;
             horizontalPositionUncertainty = new();
@@ -11184,6 +11217,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
             if (instance.information is not null)
                 foreach (var e in instance.information)
                     information.Add(e);
+            return this;
         }
 
         public override string Serialize() {
@@ -11241,18 +11275,19 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
         [Category("SoundingDatum")]
         public ObservableCollection<information> information { get; set; } = new();
-        public override informationBindingDefinition[] informationBindingDefinitions => SoundingDatum.informationBindingDefinitions;
-        public override featureBindingDefinition[] featureBindingDefinitions => SoundingDatum.featureBindingDefinitions;
+        public override informationBindingDefinition[] informationBindingDefinitions => SoundingDatum._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => SoundingDatum._featureBindingDefinitions;
 
         [Browsable(false)]
         public verticalDatum[] verticalDatumList => [(verticalDatum)1, (verticalDatum)2, (verticalDatum)3, (verticalDatum)4, (verticalDatum)5, (verticalDatum)6, (verticalDatum)7, (verticalDatum)8, (verticalDatum)9, (verticalDatum)10, (verticalDatum)11, (verticalDatum)12, (verticalDatum)13, (verticalDatum)14, (verticalDatum)15, (verticalDatum)19, (verticalDatum)22, (verticalDatum)23, (verticalDatum)24, (verticalDatum)25, (verticalDatum)26, (verticalDatum)27, (verticalDatum)44];
 
-        public override void Load(DomainModel.S131.FeatureTypes.SoundingDatum instance) {
+        public override FeatureViewModel<SoundingDatum> Load(DomainModel.S131.FeatureTypes.SoundingDatum instance) {
             verticalDatum = instance.verticalDatum;
             information.Clear();
             if (instance.information is not null)
                 foreach (var e in instance.information)
                     information.Add(e);
+            return this;
         }
 
         public override string Serialize() {
@@ -11300,18 +11335,19 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
         [Category("VerticalDatumOfData")]
         public ObservableCollection<information> information { get; set; } = new();
-        public override informationBindingDefinition[] informationBindingDefinitions => VerticalDatumOfData.informationBindingDefinitions;
-        public override featureBindingDefinition[] featureBindingDefinitions => VerticalDatumOfData.featureBindingDefinitions;
+        public override informationBindingDefinition[] informationBindingDefinitions => VerticalDatumOfData._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => VerticalDatumOfData._featureBindingDefinitions;
 
         [Browsable(false)]
         public verticalDatum[] verticalDatumList => [(verticalDatum)3, (verticalDatum)16, (verticalDatum)17, (verticalDatum)18, (verticalDatum)19, (verticalDatum)20, (verticalDatum)21, (verticalDatum)24, (verticalDatum)25, (verticalDatum)26, (verticalDatum)28, (verticalDatum)29, (verticalDatum)30, (verticalDatum)44];
 
-        public override void Load(DomainModel.S131.FeatureTypes.VerticalDatumOfData instance) {
+        public override FeatureViewModel<VerticalDatumOfData> Load(DomainModel.S131.FeatureTypes.VerticalDatumOfData instance) {
             verticalDatum = instance.verticalDatum;
             information.Clear();
             if (instance.information is not null)
                 foreach (var e in instance.information)
                     information.Add(e);
+            return this;
         }
 
         public override string Serialize() {
@@ -11405,18 +11441,19 @@ namespace S100Framework.WPF.ViewModel.S131 {
             }
         }
 
-        public override informationBindingDefinition[] informationBindingDefinitions => TextPlacement.informationBindingDefinitions;
-        public override featureBindingDefinition[] featureBindingDefinitions => TextPlacement.featureBindingDefinitions;
+        public override informationBindingDefinition[] informationBindingDefinitions => TextPlacement._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => TextPlacement._featureBindingDefinitions;
 
         [Browsable(false)]
         public textType[] textTypeList => [(textType)1];
 
-        public override void Load(DomainModel.S131.FeatureTypes.TextPlacement instance) {
+        public override FeatureViewModel<TextPlacement> Load(DomainModel.S131.FeatureTypes.TextPlacement instance) {
             orientationValue = instance.orientationValue;
             text = instance.text;
             textOffsetMm = instance.textOffsetMm;
             textType = instance.textType;
             scaleMinimum = instance.scaleMinimum;
+            return this;
         }
 
         public override string Serialize() {
