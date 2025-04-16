@@ -69,6 +69,8 @@ namespace VortexProAppModule.Views
             var control = (S100AttributeEditorControl)sender;
 
             control.QueryAssociations += viewModel.S100AttributeEditor_QueryAssociations;
+            control.QueryInformations += viewModel.S100AttributeEditor_QueryInformations;
+            control.QueryFeatures += viewModel.S100AttributeEditor_QueryFeatures;
         }
     }
 }

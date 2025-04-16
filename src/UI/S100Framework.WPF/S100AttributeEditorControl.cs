@@ -321,25 +321,6 @@ namespace S100Framework.WPF
 
         #region DependencyProperties       
 
-        //public static readonly DependencyProperty VisibilityProperty =
-        //            DependencyProperty.Register("Visibility", typeof(Visibility), typeof(S100AttributeEditorControl), new UIPropertyMetadata(false, VisibilityChanged));
-
-        //public Visibility Visibility {
-        //    get {
-        //        return (Visibility)GetValue(VisibilityProperty);
-        //    }
-        //    set {
-        //        SetValue(VisibilityProperty, value);
-        //    }
-        //}
-
-        //private static void VisibilityChanged(DependencyObject sender, DependencyPropertyChangedEventArgs args) {
-        //    var control = sender as S100AttributeEditorControl;
-        //    if (control is null)
-        //        return;
-        //    control.Visibility = (Visibility)args.NewValue;
-        //}
-
         public static readonly DependencyProperty IsEditingEnabledProperty =
             DependencyProperty.Register("IsEditingEnabled", typeof(Boolean), typeof(S100AttributeEditorControl), new UIPropertyMetadata(false, IsEditingEnabledChanged));
 

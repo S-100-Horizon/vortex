@@ -128,8 +128,8 @@ namespace VortexProAppModule
             _module = VortexProAppModule.Module.Current;
             _catalogues = _module.GetFeatureCatalogues();
 
-            
 
+            //TODO: New project loaded ???
             Project.Current.PropertyChanged += this.Current_PropertyChanged;
 
             Schemas.AddRange(_catalogues);
@@ -138,10 +138,10 @@ namespace VortexProAppModule
                 var inspector = base.Inspector;
 
                 if (inspector != default) {
-                    if (!Project.Current.IsEditingEnabled) {
-                        await Project.Current.SetIsEditingEnabledAsync(true);
-                    }
-                    
+                    //if (!Project.Current.IsEditingEnabled) {
+                    //    await Project.Current.SetIsEditingEnabledAsync(true);
+                    //}
+
                     inspector["ps"] = SelectedSchema;
                     inspector["code"] = SelectedModelType.Code;
 
@@ -222,12 +222,10 @@ namespace VortexProAppModule
                 }, TaskCreationOptions.None);
                 return result;
             };
-
-            //this.IsEditingEnabled = true;
         }
 
-        private void Current_PropertyChanged(object sender, PropertyChangedEventArgs e) {            
-            if(e.PropertyName == "IsEditingEnabled") {
+        private void Current_PropertyChanged(object sender, PropertyChangedEventArgs e) {
+            if (e.PropertyName == "IsEditingEnabled") {
                 this.IsEditingEnabled = Project.Current.IsEditingEnabled;
             }
         }
@@ -437,7 +435,7 @@ namespace VortexProAppModule
                                     association = Convert.ToString(row["association"]),
                                     role = Convert.ToString(row["role"]),
                                     associationId = Convert.ToString(row["associationId"]),
-                                    informationId = Convert.ToString(row["informationId"]),
+                                    informationId = Convert.ToString(row["fid"]),
                                     PID = featureViewModel.PID,
                                 });
                                 this.SelectedFeatureProperty.InformationBindings.Add(binding);
@@ -461,14 +459,14 @@ namespace VortexProAppModule
                                     association = Convert.ToString(row["association"]),
                                     role = Convert.ToString(row["role"]),
                                     associationId = Convert.ToString(row["associationId"]),
-                                    featureId = Convert.ToString(row["featureId"]),
+                                    featureId = Convert.ToString(row["fid"]),
                                     PID = featureViewModel.PID,
                                 });
                                 this.SelectedFeatureProperty.FeatureBindings.Add(binding);
                             }
                         }
                     }
-                    if(instance is Association) {
+                    if (instance is Association) {
                         var association = (AssociationViewModel)viewmodel;
 
                         this.SelectedAssociationProperty = new SelectedAssociationObjectViewModel(association);
@@ -479,9 +477,9 @@ namespace VortexProAppModule
 
                     selectedObjectViewModel.CollectionChanged += async (object sender, NotifyCollectionChangedEventArgs e) => {
                         await QueuedTask.Run(async () => {
-                            if (!Project.Current.IsEditingEnabled) {
-                                await Project.Current.SetIsEditingEnabledAsync(true);
-                            }
+                            //if (!Project.Current.IsEditingEnabled) {
+                            //    await Project.Current.SetIsEditingEnabledAsync(true);
+                            //}
 
                             var editOperation = new EditOperation {
                                 Name = S100AttributesUpdate,
@@ -516,7 +514,7 @@ namespace VortexProAppModule
                                     if (!editOperation.IsEmpty) {
                                         if (editOperation.Execute()) {
                                             binding.UID = token.GlobalID;
-                                            Inspector.Load(table, token.ObjectID.Value);
+                                            //Inspector.Load(table, token.ObjectID.Value);
                                         }
                                         else if (System.Diagnostics.Debugger.IsAttached)
                                             System.Diagnostics.Debugger.Break();
@@ -541,7 +539,7 @@ namespace VortexProAppModule
                                     if (!editOperation.IsEmpty) {
                                         if (editOperation.Execute()) {
                                             binding.UID = token.GlobalID;
-                                            Inspector.Load(table, token.ObjectID.Value);
+                                            //Inspector.Load(table, token.ObjectID.Value);
                                         }
                                         else if (System.Diagnostics.Debugger.IsAttached)
                                             System.Diagnostics.Debugger.Break();
@@ -576,9 +574,9 @@ namespace VortexProAppModule
 
         private async void OnPropertyChanged(object sender, PropertyChangedEventArgs e) {
             await QueuedTask.Run(async () => {
-                if (!Project.Current.IsEditingEnabled) {
-                    await Project.Current.SetIsEditingEnabledAsync(true);
-                }
+                //if (!Project.Current.IsEditingEnabled) {
+                //    await Project.Current.SetIsEditingEnabledAsync(true);
+                //}
 
                 var editOperation = new EditOperation {
                     Name = S100AttributesUpdate,
@@ -773,7 +771,7 @@ namespace VortexProAppModule
             get => _isEditingEnabled;
             set => SetProperty(ref _isEditingEnabled, value);
         }
-        
+
         public SelectedAssociationObjectViewModel SelectedAssociationProperty {
             get => _selectedAssociationProperty;
             set => SetProperty(ref _selectedAssociationProperty, value);
@@ -845,21 +843,13 @@ namespace VortexProAppModule
             }
         }
 
-        static Dictionary<int, string[]> featureTypes = new Dictionary<int, string[]> {
-            { 0, ["LandArea", "Sounding"] },
-            { 1, ["Coastline"] },
-            { 2, ["LandArea", "Lake"] },
-        };
+        public async void S100AttributeEditor_QueryInformations(object sender, QueryInformationsEventArgs e) {
+        }
 
-        public void S100AttributeEditor_QueryFeatures(object sender, QueryFeaturesEventArgs e) {
-            var r = new Random(DateTime.Now.Microsecond);
-            foreach (var i in Enumerable.Range(0, r.Next(1, 8))) {
-                e.features.Add(r.Next(0, 2) switch {
-                    0 => new FeatureId(featureTypes[0][r.Next(0, featureTypes[0].Count() - 1)], $"P{r.Next(1, 1000):0000}"),
-                    1 => new FeatureId(featureTypes[1][r.Next(0, featureTypes[1].Count() - 1)], $"C{r.Next(1, 1000):0000}"),
-                    2 => new FeatureId(featureTypes[2][r.Next(0, featureTypes[2].Count() - 1)], $"S{r.Next(1, 1000):0000}"),
-                });
-            }
+        public async void S100AttributeEditor_QueryFeatures(object sender, QueryFeaturesEventArgs e) {
+            await QueuedTask.Run(() => {
+                
+            }, TaskCreationOptions.None);
         }
 
         private static JsonNode Unflatten(Dictionary<string, JsonValue> source) {
