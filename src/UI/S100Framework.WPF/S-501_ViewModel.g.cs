@@ -395,6 +395,14 @@ namespace S100Framework.WPF.ViewModel.S501 {
             },
             _ => throw new InvalidOperationException(),
         };
+        public static ICollection<string> InformationAssociationBindings(string association, string role) => (association, role) switch
+        {
+            _ => throw new InvalidOperationException(),
+        };
+        public static ICollection<string> FeatureAssociationBindings(string association, string role) => (association, role) switch
+        {
+            _ => throw new InvalidOperationException(),
+        };
     }
 
     [CategoryOrder("qRouteChannelWidth", 0)]

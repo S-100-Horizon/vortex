@@ -67,6 +67,20 @@ namespace S100Framework.WPF.ViewModel.S124 {
             },
             _ => throw new InvalidOperationException(),
         };
+        public static ICollection<string> InformationAssociationBindings(string association, string role) => (association, role) switch
+        {
+            ("NWReferences", "theReferences") => ["References"],
+            ("NWPreambleContent", "header") => ["NAVWARNPreamble"],
+            _ => throw new InvalidOperationException(),
+        };
+        public static ICollection<string> FeatureAssociationBindings(string association, string role) => (association, role) switch
+        {
+            ("AreaAffected", "affects") => ["NAVWARNAreaAffected"],
+            ("TextAssociation", "positions") => ["TextPlacement"],
+            ("AreaAffected", "impacts") => ["NAVWARNPart"],
+            ("TextAssociation", "identifies") => ["NAVWARNPart"],
+            _ => throw new InvalidOperationException(),
+        };
     }
 
     [CategoryOrder("featureName", 0)]

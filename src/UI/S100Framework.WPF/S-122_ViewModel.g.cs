@@ -135,6 +135,26 @@ namespace S100Framework.WPF.ViewModel.S122 {
             },
             _ => throw new InvalidOperationException(),
         };
+        public static ICollection<string> InformationAssociationBindings(string association, string role) => (association, role) switch
+        {
+            ("RelatedOrganisation", "theOrganisation") => ["Authority"],
+            ("RelatedOrganisation", "theInformation") => ["AbstractRxN"],
+            ("AuthorityContact", "theContactDetails") => ["ContactDetails"],
+            ("AuthorityHours", "theServiceHours") => ["ServiceHours"],
+            ("AuthorityContact", "theAuthority") => ["Authority"],
+            ("ExceptionalWorkday", "theServiceHours_nsdy") => ["ServiceHours"],
+            ("AuthorityHours", "theAuthority_srvHrs") => ["Authority"],
+            ("ExceptionalWorkday", "partialWorkingDay") => ["NonStandardWorkingDay"],
+            ("AssociatedRxN", "theRxN") => ["AbstractRxN"],
+            ("additionalInformation", "providesInformation") => ["NauticalInformation"],
+            ("ProtectedAreaAuthority", "responsibleAuthority") => ["Authority"],
+            ("ServiceControl", "controlAuthority") => ["Authority"],
+            _ => throw new InvalidOperationException(),
+        };
+        public static ICollection<string> FeatureAssociationBindings(string association, string role) => (association, role) switch
+        {
+            _ => throw new InvalidOperationException(),
+        };
     }
 
     [CategoryOrder("contactAddress", 0)]

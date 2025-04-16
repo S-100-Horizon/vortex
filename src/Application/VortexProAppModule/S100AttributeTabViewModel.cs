@@ -847,9 +847,39 @@ namespace VortexProAppModule
         }
 
         public async void S100AttributeEditor_QueryFeatures(object sender, QueryFeaturesEventArgs e) {
-            await QueuedTask.Run(() => {
-                
+            var features = S100Framework.WPF.Helper.FeatureAssociationBindings(SelectedSchema, e.association!, e.role!);
+
+            if (!features.Any())
+                return;
+
+            var rows = await QueuedTask.Run(() => {
+
+                //TODO: Selected features only!!!
+                var values = features.Select(i => $"'{i}'");
+                var q = new QueryFilter {
+                    WhereClause = $"ps = '{Inspector["ps"]}' AND code IN ({string.Join(',',values)})",
+                };
+
+                var ids = new List<FeatureId>();
+
+                foreach (var primitive in new string[] { "point", "pointset", "curve", "surface" }) {
+                    using var f = Inspector.OpenDataset<FeatureClass>(primitive);
+
+                    using var cursor = f.Search(q, true);
+                    while (cursor.MoveNext()) {
+                        var feature = cursor.Current;
+                        ids.Add(new FeatureId(Convert.ToString(feature["code"]), Convert.ToString(feature["name"])));
+                    }
+                }
+                return ids;
             }, TaskCreationOptions.None);
+
+            if (rows.Any()) {
+                System.Windows.Application.Current.Dispatcher.Invoke(() => {
+                    foreach (var row in rows)
+                        e.features.Add(row);
+                });
+            }
         }
 
         private static JsonNode Unflatten(Dictionary<string, JsonValue> source) {

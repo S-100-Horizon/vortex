@@ -6,6 +6,21 @@ using System.Runtime.CompilerServices;
 
 namespace S100Framework.WPF.ViewModel
 {
+    public interface iBootstrap
+    {
+        static AssociationViewModel CreateInformationAssociation(string type, string? pid = default) { throw new NotImplementedException(); }
+
+        static AssociationViewModel CreateFeatureAssociation(string type, string? pid = default) { throw new NotImplementedException(); }
+
+        static InformationViewModel CreateInformationType(string type, string? pid = default) { throw new NotImplementedException(); }
+
+        static FeatureViewModel CreateFeatureType(string type, string? pid = default) { throw new NotImplementedException(); }
+
+        static ICollection<string> InformationAssociationBindings(string association, string role) { throw new NotImplementedException(); }
+
+        static ICollection<string> FeatureAssociationBindings(string association, string role) { throw new NotImplementedException(); }
+    }
+
     public static class Handles
     {
         public static Func<InformationBindingViewModel?, string[]> GetInformations { get; set; } = (e) => { return []; };

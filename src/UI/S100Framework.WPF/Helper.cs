@@ -64,5 +64,34 @@ namespace S100Framework.WPF
             };
         }
 
+        public static ICollection<string>? InformationAssociationBindings(string ps, string association, string role) {
+            if (string.IsNullOrEmpty(ps)) return null;
+
+            return ps.ToLowerInvariant() switch {
+                "s101" or "s-101" => ViewModel.S101.Bootstrap.InformationAssociationBindings(association, role),
+                "s122" or "s-122" => ViewModel.S122.Bootstrap.InformationAssociationBindings(association, role),
+                "s124" or "s-124" => ViewModel.S124.Bootstrap.InformationAssociationBindings(association, role),
+                "s128" or "s-128" => ViewModel.S128.Bootstrap.InformationAssociationBindings(association, role),
+                "s131" or "s-131" => ViewModel.S131.Bootstrap.InformationAssociationBindings(association, role),
+                //"s201" or "s-201" => ViewModel.S201.Bootstrap.InformationAssociationBindings(association, role),
+                "s501" or "s-501" => ViewModel.S501.Bootstrap.InformationAssociationBindings(association, role),
+                _ => null
+            };
+        }
+
+        public static ICollection<string>? FeatureAssociationBindings(string ps, string association, string role) {
+            if (string.IsNullOrEmpty(ps)) return null;
+
+            return ps.ToLowerInvariant() switch {
+                "s101" or "s-101" => ViewModel.S101.Bootstrap.FeatureAssociationBindings(association, role),
+                "s122" or "s-122" => ViewModel.S122.Bootstrap.FeatureAssociationBindings(association, role),
+                "s124" or "s-124" => ViewModel.S124.Bootstrap.FeatureAssociationBindings(association, role),
+                "s128" or "s-128" => ViewModel.S128.Bootstrap.FeatureAssociationBindings(association, role),
+                "s131" or "s-131" => ViewModel.S131.Bootstrap.FeatureAssociationBindings(association, role),
+                //"s201" or "s-201" => ViewModel.S201.Bootstrap.FeatureAssociationBindings(association, role),
+                "s501" or "s-501" => ViewModel.S501.Bootstrap.FeatureAssociationBindings(association, role),
+                _ => null
+            };
+        }
     }
 }

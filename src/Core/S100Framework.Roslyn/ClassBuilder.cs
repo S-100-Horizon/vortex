@@ -459,9 +459,6 @@ namespace S100Framework
             classBuilder.AppendLine();
 
             creatorBuilder.AppendLine("\tinternal static class Bootstrap {");
-            //creatorBuilder.AppendLine("\t\tpublic static bool Exist(string type) => _creators.ContainsKey(type);");
-            //creatorBuilder.AppendLine("\t\tpublic static ViewModelBase Create(string type) => _creators[type]();");
-            //creatorBuilder.AppendLine("\t\tprivate static ImmutableDictionary<string, Func<ViewModelBase>> _creators => ImmutableDictionary.Create<string, Func<ViewModelBase>>().AddRange(new Dictionary<string, Func<ViewModelBase>> {");
 
             var creatorInformationAssociations = new StringBuilder();
             var creatorFeatureAssociations = new StringBuilder();
@@ -469,10 +466,14 @@ namespace S100Framework
             var creatorInformationTypes = new StringBuilder();
             var creatorFeatureTypes = new StringBuilder();
 
+            var informationAssociationsLookup = new Dictionary<string, ICollection<string>>();
+            var featureAssociationsLookup = new Dictionary<string, ICollection<string>>();
+
             var spatialAssociationTypes = new List<string>();
 
             var informationAssociationRoles = new Dictionary<string, string[]>();
             var featureAssociationRoles = new Dictionary<string, string[]>();
+            
 
             classBuilder.AppendLine("}");
             classBuilder.AppendLine($"namespace S100Framework.DomainModel.{productId}");
@@ -885,6 +886,13 @@ namespace S100Framework
                                 informationBindings.AppendLine($"\t\t\t\t\trole = Enum.GetName<Role>(Role.{role})!,");
                                 informationBindings.AppendLine($"\t\t\t\t\tinformationTypes = [{string.Join(',', informationBinding.Elements(XName.Get("informationType", scope_S100)).Select(e => $"nameof({e.Attribute("ref")!.Value})"))}],");
                                 informationBindings.AppendLine("\t\t\t\t},");
+
+                                var key = $"\"{association}\", \"{role}\"";
+                                if (!informationAssociationsLookup.ContainsKey(key))
+                                    informationAssociationsLookup.Add(key, new List<string>());
+                                foreach (var informationType in informationBinding.Elements(XName.Get("informationType", scope_S100))) {
+                                    informationAssociationsLookup[key].Add(informationType.Attribute("ref")!.Value);
+                                }
                             }
                             informationBindings.AppendLine("\t\t\t];");
                             builder.AppendLine(informationBindings.ToString());
@@ -1048,6 +1056,12 @@ namespace S100Framework
                                 informationBindings.AppendLine($"\t\t\t\t\tinformationTypes = [{string.Join(',', informationBinding.Elements(XName.Get("informationType", scope_S100)).Select(e => $"nameof({e.Attribute("ref")!.Value})"))}],");
                                 informationBindings.AppendLine("\t\t\t\t},");
 
+                                var key = $"\"{association}\", \"{role}\"";
+                                if (!informationAssociationsLookup.ContainsKey(key))
+                                    informationAssociationsLookup.Add(key, new List<string>());
+                                foreach (var informationType in informationBinding.Elements(XName.Get("informationType", scope_S100))) {
+                                    informationAssociationsLookup[key].Add(informationType.Attribute("ref")!.Value);
+                                }
                             }
                             informationBindings.AppendLine("\t\t\t];");
                             builder.AppendLine(informationBindings.ToString());
@@ -1076,6 +1090,13 @@ namespace S100Framework
                                 featureBindings.AppendLine($"\t\t\t\t\trole = Enum.GetName<Role>(Role.{role})!,");
                                 featureBindings.AppendLine($"\t\t\t\t\tfeatureTypes = [{string.Join(',', featureBinding.Elements(XName.Get("featureType", scope_S100)).Select(e => $"nameof({e.Attribute("ref")!.Value})"))}],");
                                 featureBindings.AppendLine("\t\t\t\t},");
+
+                                var key = $"\"{association}\", \"{role}\"";
+                                if (!featureAssociationsLookup.ContainsKey(key))
+                                    featureAssociationsLookup.Add(key, new List<string>());
+                                foreach(var featureType in featureBinding.Elements(XName.Get("featureType", scope_S100))) {
+                                    featureAssociationsLookup[key].Add(featureType.Attribute("ref")!.Value);
+                                }                                
                             }
                             featureBindings.AppendLine("\t\t\t];");
                             builder.AppendLine(featureBindings.ToString());
@@ -1147,6 +1168,22 @@ namespace S100Framework
 
             creatorBuilder.AppendLine("\t\tpublic static FeatureViewModel CreateFeatureType(string type, string? pid = default) => type switch {");
             creatorBuilder.AppendLine(creatorFeatureTypes.ToString());
+            creatorBuilder.AppendLine("\t\t\t_ => throw new InvalidOperationException(),");
+            creatorBuilder.AppendLine("\t\t};");
+
+            creatorBuilder.AppendLine("\t\tpublic static ICollection<string> InformationAssociationBindings(string association, string role) => (association,role) switch {");
+            foreach (var e in informationAssociationsLookup) {
+                var values = e.Value.Distinct().Select(i => $"\"{i}\"");
+                creatorBuilder.AppendLine($"\t\t\t({e.Key}) => [{string.Join(',', values)}],");
+            }
+            creatorBuilder.AppendLine("\t\t\t_ => throw new InvalidOperationException(),");
+            creatorBuilder.AppendLine("\t\t};");
+
+            creatorBuilder.AppendLine("\t\tpublic static ICollection<string> FeatureAssociationBindings(string association, string role) => (association,role) switch {");
+            foreach(var e in featureAssociationsLookup) {
+                var values = e.Value.Distinct().Select(i => $"\"{i}\"");
+                creatorBuilder.AppendLine($"\t\t\t({e.Key}) => [{string.Join(',', values)}],");
+            }
             creatorBuilder.AppendLine("\t\t\t_ => throw new InvalidOperationException(),");
             creatorBuilder.AppendLine("\t\t};");
 

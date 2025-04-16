@@ -107,6 +107,29 @@ namespace S100Framework.WPF.ViewModel.S128 {
             },
             _ => throw new InvalidOperationException(),
         };
+        public static ICollection<string> InformationAssociationBindings(string association, string role) => (association, role) switch
+        {
+            ("PriceOfNauticalProduct", "thePriceInformation") => ["PriceInformation"],
+            ("ProductionDetails", "theProducer") => ["ProducerInformation"],
+            ("DistributionDetails", "theDistributor") => ["DistributorInformation"],
+            ("ProducerContact", "theProducer") => ["ProducerInformation"],
+            ("DistributorContact", "theDistributor") => ["DistributorInformation"],
+            ("PriceOfNauticalProduct", "theCatalogueOfNauticalProduct") => ["CatalogueSectionHeader"],
+            ("ProducerContact", "theContactDetails") => ["ContactDetails"],
+            ("ProductionDetails", "catalogueHeader") => ["CatalogueSectionHeader"],
+            ("DistributionDetails", "catalogueHeader") => ["CatalogueSectionHeader"],
+            ("DistributorContact", "theContactDetails") => ["ContactDetails"],
+            ("CarriageRequirement", "theRequirement") => ["IndicationOfCarriageRequirement"],
+            ("PriceOfElement", "thePriceInformation") => ["PriceInformation"],
+            ("ProductPackage", "elementContainer") => ["CatalogueSectionHeader"],
+            _ => throw new InvalidOperationException(),
+        };
+        public static ICollection<string> FeatureAssociationBindings(string association, string role) => (association, role) switch
+        {
+            ("ProductMapping", "theReference") => ["CatalogueElement"],
+            ("Correlated", "main") => ["NavigationalProduct"],
+            _ => throw new InvalidOperationException(),
+        };
     }
 
     [CategoryOrder("contactAddress", 0)]

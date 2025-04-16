@@ -259,6 +259,47 @@ namespace S100Framework.WPF.ViewModel.S131 {
             },
             _ => throw new InvalidOperationException(),
         };
+        public static ICollection<string> InformationAssociationBindings(string association, string role) => (association, role) switch
+        {
+            ("AdditionalInformation", "providesInformation") => ["NauticalInformation"],
+            ("InclusionType", "isApplicableTo") => ["Applicability"],
+            ("RelatedOrganisation", "theOrganisation") => ["Authority"],
+            ("InclusionType", "theApplicableRxN") => ["AbstractRxN"],
+            ("PermissionType", "vslLocation") => ["InformationType"],
+            ("AuthorityContact", "theContactDetails") => ["ContactDetails"],
+            ("RelatedOrganisation", "theInformation") => ["AbstractRxN"],
+            ("AuthorityHours", "theServiceHours") => ["ServiceHours"],
+            ("AuthorityContact", "theAuthority") => ["Authority"],
+            ("AdditionalInformation", "informationProvidedFor") => ["InformationType"],
+            ("ExceptionalWorkday", "partialWorkingDay") => ["NonStandardWorkingDay"],
+            ("AuthorityHours", "theAuthority_srvHrs") => ["Authority"],
+            ("PermissionType", "permission") => ["Applicability"],
+            ("AssociatedRxN", "theRxN") => ["AbstractRxN"],
+            ("ServiceContact", "theContactDetails") => ["ContactDetails"],
+            ("ServiceControl", "controlAuthority") => ["Authority"],
+            ("ServiceAvailability", "serviceDescriptionReference") => ["AvailablePortServices"],
+            ("LocationHours", "location_srvHrs") => ["ServiceHours"],
+            ("LimitEntrance", "entranceReference") => ["Entrance"],
+            _ => throw new InvalidOperationException(),
+        };
+        public static ICollection<string> FeatureAssociationBindings(string association, string role) => (association, role) switch
+        {
+            ("TextAssociation", "positions") => ["TextPlacement"],
+            ("Infrastructure", "infrastructureLocation") => ["HarbourAreaSection", "Terminal"],
+            ("PrimaryAuxiliaryFacility", "auxiliaryFacility") => ["MooringWarpingFacility"],
+            ("LayoutDivision", "componentOf") => ["HarbourAreaSection", "Terminal", "HarbourAreaAdministrative"],
+            ("Demarcation", "demarcationIndicator") => ["BerthPosition"],
+            ("Demarcation", "demarcatedFeature") => ["Berth"],
+            ("JurisdictionalLimit", "limitExtent") => ["OuterLimit"],
+            ("LayoutDivision", "layoutUnit") => ["HarbourAreaSection", "AnchorageArea", "Berth", "DockArea", "DumpingGround", "HarbourBasin", "PilotBoardingPlace", "SeaplaneLandingArea", "Terminal", "TurningBasin", "WaterwayArea"],
+            ("Subsection", "constitute") => ["HarbourAreaSection"],
+            ("Subsection", "subUnit") => ["HarbourAreaSection"],
+            ("Infrastructure", "hasInfrastructure") => ["HarbourPhysicalInfrastructure"],
+            ("PrimaryAuxiliaryFacility", "primaryFacility") => ["AnchorBerth", "BerthPosition"],
+            ("JurisdictionalLimit", "limitReference") => ["HarbourAreaAdministrative"],
+            ("TextAssociation", "identifies") => ["FeatureType"],
+            _ => throw new InvalidOperationException(),
+        };
     }
 
     [CategoryOrder("contactAddress", 0)]

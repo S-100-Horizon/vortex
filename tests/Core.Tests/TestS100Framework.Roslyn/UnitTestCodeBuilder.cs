@@ -463,6 +463,19 @@ namespace TestS100Framework
                 System.Diagnostics.Debugger.Break();
             }
 
+            [Fact]
+            public void Test_Switch() {
+                ICollection<string> featureAssociations(string association, string role) => (association, role) switch {
+                    ("TrafficSeparationSchemeAggregation", "theCollection") => ["TwoWayRoutePart"],
+
+                    _ => throw new InvalidOperationException(),
+                };
+
+                var roles = featureAssociations("TrafficSeparationSchemeAggregation", "theCollection");
+
+                Assert.Single(roles);
+            }
+
             private bool VerifyProductSpecification(XDocument productSpecification) {
                 var navigator = productSpecification.CreateNavigator();
                 navigator.MoveToFollowing(XPathNodeType.Element);
