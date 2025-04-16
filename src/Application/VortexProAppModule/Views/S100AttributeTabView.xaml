@@ -71,9 +71,12 @@
         </Grid>
 
         <s100:S100AttributeEditorControl x:Name="S100AttributeEditor"
+                                         Visibility="{Binding IsVisible, Mode=OneWay}"
                                          IsEditingEnabled="{Binding IsEditingEnabled, Mode=OneWay}"
                                          SelectedFeatureObject="{Binding SelectedFeatureProperty, Mode=OneWay}"
-                                         SelectedInformationObject="{Binding SelectedInformationProperty, Mode=OneWay}" Loaded="S100AttributeEditor_Loaded"/>
+                                         SelectedInformationObject="{Binding SelectedInformationProperty, Mode=OneWay}" 
+                                         SelectedAssociationObject="{Binding SelectedAssociationProperty, Mode=OneWay}"
+                                         Loaded="S100AttributeEditor_Loaded"/>
 
         <!--<xctk:PropertyGrid Grid.Row="1" x:Name="_propertyGrid" 
                SelectedObject="{Binding SelectedProperty}" 

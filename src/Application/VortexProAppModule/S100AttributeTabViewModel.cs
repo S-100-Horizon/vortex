@@ -3,13 +3,12 @@
 using ActiproSoftware.Windows.Extensions;
 using ArcGIS.Core.Data;
 using ArcGIS.Core.Events;
+using ArcGIS.Desktop.Core;
 using ArcGIS.Desktop.Editing;
 using ArcGIS.Desktop.Editing.Attributes;
 using ArcGIS.Desktop.Editing.Events;
 using ArcGIS.Desktop.Framework;
 using ArcGIS.Desktop.Framework.Threading.Tasks;
-using ArcGIS.Desktop.Internal.Editing.Attributes;
-using ArcGIS.Desktop.Internal.Mapping;
 using ArcGIS.Desktop.Mapping;
 using S100Framework.Catalogues;
 using S100Framework.DomainModel;
@@ -27,7 +26,6 @@ using System.Text.Json;
 using System.Text.Json.Nodes;
 using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Data;
 using System.Windows.Input;
 using System.Xml.Linq;
 using IO = System.IO;
@@ -106,11 +104,15 @@ namespace VortexProAppModule
 
         private object _selectedProperty = default;
 
+        private SelectedAssociationObjectViewModel _selectedAssociationProperty = default;
+
         private SelectedInformationObjectViewModel _selectedInformationProperty = default;
+
+        private SelectedFeatureObjectViewModel _selectedFeatureProperty = default;
 
         private Boolean _isEditingEnabled = false;
 
-        private SelectedFeatureObjectViewModel _selectedFeatureProperty = default;
+        private Boolean _isVisible = false;
 
         private ObservableCollection<SelectedType> _modelTypes = new();
 
@@ -126,12 +128,20 @@ namespace VortexProAppModule
             _module = VortexProAppModule.Module.Current;
             _catalogues = _module.GetFeatureCatalogues();
 
+            
+
+            Project.Current.PropertyChanged += this.Current_PropertyChanged;
+
             Schemas.AddRange(_catalogues);
 
             CreateInstance = new RelayCommand(async () => {
                 var inspector = base.Inspector;
 
                 if (inspector != default) {
+                    if (!Project.Current.IsEditingEnabled) {
+                        await Project.Current.SetIsEditingEnabledAsync(true);
+                    }
+                    
                     inspector["ps"] = SelectedSchema;
                     inspector["code"] = SelectedModelType.Code;
 
@@ -213,15 +223,14 @@ namespace VortexProAppModule
                 return result;
             };
 
-            _tokenEditStarted = EditStartedEvent.Subscribe(OnEditStarted);
-
-            this.IsEditingEnabled = true;
+            //this.IsEditingEnabled = true;
         }
 
-        private void OnEditStarted(EditStartedEventArgs e) {
-            this.IsEditingEnabled = true;
+        private void Current_PropertyChanged(object sender, PropertyChangedEventArgs e) {            
+            if(e.PropertyName == "IsEditingEnabled") {
+                this.IsEditingEnabled = Project.Current.IsEditingEnabled;
+            }
         }
-
 
         protected override void NotifyPropertyChanged([CallerMemberName] string name = "") {
             base.NotifyPropertyChanged(name);
@@ -304,8 +313,10 @@ namespace VortexProAppModule
                         "curve" => _inspectorHandleFeature,
                         "surface" => _inspectorHandleFeature,
                         "informationtype" => _inspectorHandleInformation,
+                        "associationbinding" => null,
                         "featureassociation" => _inspectorHandleFeatureAssociation,
                         "informationassociation" => _inspectorHandleInformationAssociation,
+
                         _ => throw new NotImplementedException(),
                     };
 
@@ -381,10 +392,10 @@ namespace VortexProAppModule
                         this.SelectedInformationProperty = new SelectedInformationObjectViewModel(informationViewModel, (IInformationBindingDefinition)instance);
                         selectedObjectViewModel = this.SelectedInformationProperty;
 
-                        using var table = inspector.OpenDataset<Table>("informationBinding");
+                        using var table = inspector.OpenDataset<Table>("associationbinding");
 
                         var q = new QueryFilter {
-                            WhereClause = $"PID = '{informationViewModel.PID}'",
+                            WhereClause = $"TYPE = 'InformationBinding' AND PID = '{informationViewModel.PID}'",
                         };
                         using var cursor = table.Search(q, true);
                         while (cursor.MoveNext()) {
@@ -411,10 +422,10 @@ namespace VortexProAppModule
 
                         //  informationBinding
                         {
-                            using var table = inspector.OpenDataset<Table>("informationBinding");
+                            using var table = inspector.OpenDataset<Table>("associationbinding");
 
                             var q = new QueryFilter {
-                                WhereClause = $"PID = '{featureViewModel.PID}'",
+                                WhereClause = $"TYPE = 'InformationBinding' AND PID = '{featureViewModel.PID}'",
                             };
                             using var cursor = table.Search(q, true);
                             while (cursor.MoveNext()) {
@@ -435,10 +446,10 @@ namespace VortexProAppModule
 
                         //  featureBinding
                         {
-                            using var table = inspector.OpenDataset<Table>("featureBinding");
+                            using var table = inspector.OpenDataset<Table>("associationbinding");
 
                             var q = new QueryFilter {
-                                WhereClause = $"PID = '{featureViewModel.PID}'",
+                                WhereClause = $"TYPE = 'FeatureBinding' AND PID = '{featureViewModel.PID}'",
                             };
                             using var cursor = table.Search(q, true);
                             while (cursor.MoveNext()) {
@@ -457,11 +468,21 @@ namespace VortexProAppModule
                             }
                         }
                     }
+                    if(instance is Association) {
+                        var association = (AssociationViewModel)viewmodel;
+
+                        this.SelectedAssociationProperty = new SelectedAssociationObjectViewModel(association);
+                        selectedObjectViewModel = this.SelectedAssociationProperty;
+                    }
 
                     selectedObjectViewModel.PropertyChanged += this.OnPropertyChanged;
 
                     selectedObjectViewModel.CollectionChanged += async (object sender, NotifyCollectionChangedEventArgs e) => {
-                        await QueuedTask.Run(() => {
+                        await QueuedTask.Run(async () => {
+                            if (!Project.Current.IsEditingEnabled) {
+                                await Project.Current.SetIsEditingEnabledAsync(true);
+                            }
+
                             var editOperation = new EditOperation {
                                 Name = S100AttributesUpdate,
                             };
@@ -478,34 +499,13 @@ namespace VortexProAppModule
                             var tableNames = syntax.ParseTableName(fc.GetName());
 
                             if (sender is ICollection<InformationBindingViewModel>) {
-                                using var table = geodatabase.OpenDataset<Table>(syntax.QualifyTableName(tableNames.Item1, tableNames.Item2, "InformationBinding"));
+                                using var table = geodatabase.OpenDataset<Table>(syntax.QualifyTableName(tableNames.Item1, tableNames.Item2, "associationbinding"));
 
                                 foreach (var b in e.NewItems) {
                                     var binding = (InformationBindingViewModel)b;
 
                                     var token = editOperation.Create(table, new Dictionary<string, object> {
-                                        {"ps", inspector["ps"] },
-                                        {"roleType", Enum.GetName<roleType>(binding.roleType.Value)},
-                                        {"association", binding.association},
-                                        {"role", binding.role },
-                                        {"pid", binding.PID },
-                                    });
-
-                                    if (!editOperation.IsEmpty) {
-                                        if (editOperation.Execute()) {                                            
-                                            binding.UID = token.GlobalID;
-                                            //Inspector.Load(table, token.ObjectID.Value);
-                                        }
-                                    }
-                                }
-                            }
-                            if (sender is ICollection<FeatureBindingViewModel>) {
-                                using var table = geodatabase.OpenDataset<Table>(syntax.QualifyTableName(tableNames.Item1, tableNames.Item2, "FeatureBinding"));
-
-                                foreach (var b in e.NewItems) {
-                                    var binding = (FeatureBindingViewModel)b;
-
-                                    var token = editOperation.Create(table, new Dictionary<string, object> {
+                                        {"type", "InformationBinding" },
                                         {"ps", inspector["ps"] },
                                         {"roleType", Enum.GetName<roleType>(binding.roleType.Value)},
                                         {"association", binding.association},
@@ -516,8 +516,35 @@ namespace VortexProAppModule
                                     if (!editOperation.IsEmpty) {
                                         if (editOperation.Execute()) {
                                             binding.UID = token.GlobalID;
-                                            //Inspector.Load(table, token.ObjectID.Value);
+                                            Inspector.Load(table, token.ObjectID.Value);
                                         }
+                                        else if (System.Diagnostics.Debugger.IsAttached)
+                                            System.Diagnostics.Debugger.Break();
+                                    }
+                                }
+                            }
+                            if (sender is ICollection<FeatureBindingViewModel>) {
+                                using var table = geodatabase.OpenDataset<Table>(syntax.QualifyTableName(tableNames.Item1, tableNames.Item2, "associationbinding"));
+
+                                foreach (var b in e.NewItems) {
+                                    var binding = (FeatureBindingViewModel)b;
+
+                                    var token = editOperation.Create(table, new Dictionary<string, object> {
+                                        {"type", "FeatureBinding" },
+                                        {"ps", inspector["ps"] },
+                                        {"roleType", Enum.GetName<roleType>(binding.roleType.Value)},
+                                        {"association", binding.association},
+                                        {"role", binding.role },
+                                        {"pid", binding.PID },
+                                    });
+
+                                    if (!editOperation.IsEmpty) {
+                                        if (editOperation.Execute()) {
+                                            binding.UID = token.GlobalID;
+                                            Inspector.Load(table, token.ObjectID.Value);
+                                        }
+                                        else if (System.Diagnostics.Debugger.IsAttached)
+                                            System.Diagnostics.Debugger.Break();
                                     }
                                 }
                             }
@@ -533,10 +560,14 @@ namespace VortexProAppModule
 
                     IsSelectedSchemaEnabled = true;
                     IsSelectedModelTypeEnabled = SelectedSchema != default;
+
+                    IsVisible = Visibility.Collapsed;
                 }
                 else {
                     IsSelectedSchemaEnabled = false;
                     IsSelectedModelTypeEnabled = false;
+
+                    IsVisible = Visibility.Visible;
                 }
                 NotifyPropertyChanged(() => IsCreateButtonEnabled);
             }
@@ -544,7 +575,11 @@ namespace VortexProAppModule
         }
 
         private async void OnPropertyChanged(object sender, PropertyChangedEventArgs e) {
-            await QueuedTask.Run(() => {
+            await QueuedTask.Run(async () => {
+                if (!Project.Current.IsEditingEnabled) {
+                    await Project.Current.SetIsEditingEnabledAsync(true);
+                }
+
                 var editOperation = new EditOperation {
                     Name = S100AttributesUpdate,
                 };
@@ -560,7 +595,7 @@ namespace VortexProAppModule
                     Inspector["json"] = json;
                 }
                 if (sender is InformationBindingViewModel informationBinding) {
-                    using var table = Inspector.OpenDataset<Table>("informationBinding");
+                    using var table = Inspector.OpenDataset<Table>("associationbinding");
 
                     var q = new QueryFilter {
                         WhereClause = $"GLOBALID = '{informationBinding.UID:B}'",
@@ -569,12 +604,12 @@ namespace VortexProAppModule
                     if (cursor.MoveNext()) {
                         editOperation.Modify(cursor.Current, new Dictionary<string, object> {
                                         { "associationid", informationBinding.associationId },
-                                        { "informationid", informationBinding.informationId },
+                                        { "fid", informationBinding.informationId },
                                     });
                     }
                 }
                 if (sender is FeatureBindingViewModel featureBinding) {
-                    using var table = Inspector.OpenDataset<Table>("featureBinding");
+                    using var table = Inspector.OpenDataset<Table>("associationbinding");
 
                     var q = new QueryFilter {
                         WhereClause = $"GLOBALID = '{featureBinding.UID:B}'",
@@ -583,7 +618,7 @@ namespace VortexProAppModule
                     if (cursor.MoveNext()) {
                         editOperation.Modify(cursor.Current, new Dictionary<string, object> {
                                         { "associationid", featureBinding.associationId },
-                                        { "informationid", featureBinding.featureId },
+                                        { "fid", featureBinding.featureId },
                                     });
                     }
                 }
@@ -729,17 +764,27 @@ namespace VortexProAppModule
             set => SetProperty(ref _selectedProperty, value);
         }
 
+        public Visibility IsVisible {
+            get => _isVisible ? Visibility.Visible : Visibility.Collapsed;
+            set => SetProperty(ref _isVisible, value == Visibility.Visible);
+        }
+
         public Boolean IsEditingEnabled {
             get => _isEditingEnabled;
             set => SetProperty(ref _isEditingEnabled, value);
         }
+        
+        public SelectedAssociationObjectViewModel SelectedAssociationProperty {
+            get => _selectedAssociationProperty;
+            set => SetProperty(ref _selectedAssociationProperty, value);
+        }
 
-        public SelectedInformationObjectViewModel? SelectedInformationProperty {
+        public SelectedInformationObjectViewModel SelectedInformationProperty {
             get => _selectedInformationProperty;
             set => SetProperty(ref _selectedInformationProperty, value);
         }
 
-        public SelectedFeatureObjectViewModel? SelectedFeatureProperty {
+        public SelectedFeatureObjectViewModel SelectedFeatureProperty {
             get => _selectedFeatureProperty;
             set => SetProperty(ref _selectedFeatureProperty, value);
         }
@@ -771,8 +816,8 @@ namespace VortexProAppModule
                 var tableNames = syntax.ParseTableName(fc.GetName());
 
                 var associationName = e.type switch {
-                    QueryAssociationsEventArgs.AssociationsType.InformationAssociations => syntax.QualifyTableName(tableNames.Item1, tableNames.Item2, "InformationAssociation"),
-                    QueryAssociationsEventArgs.AssociationsType.FeatureAssociations => syntax.QualifyTableName(tableNames.Item1, tableNames.Item2, "FeatureAssociation"),
+                    QueryAssociationsEventArgs.AssociationsType.InformationAssociations => syntax.QualifyTableName(tableNames.Item1, tableNames.Item2, "informationassociation"),
+                    QueryAssociationsEventArgs.AssociationsType.FeatureAssociations => syntax.QualifyTableName(tableNames.Item1, tableNames.Item2, "featureassociation"),
                     _ => throw new InvalidOperationException(),
                 };
 
