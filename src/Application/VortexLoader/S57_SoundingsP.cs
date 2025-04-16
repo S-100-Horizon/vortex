@@ -19,15 +19,15 @@ namespace S100Framework.Applications
             var featureType = PrimitiveType.Point;
 
 
-            using var pointset = target.OpenDataset<FeatureClass>(target.GetName("pointset"));
+            using var featureClass = target.OpenDataset<FeatureClass>(target.GetName("pointset"));
             using var informationtype = target.OpenDataset<Table>(target.GetName("informationType"));
 
-            using var bufferPointset = pointset.CreateRowBuffer();
-            using var insertPointset = pointset.CreateInsertCursor();
+            using var bufferPointset = featureClass.CreateRowBuffer();
+            using var insertPointset = featureClass.CreateInsertCursor();
 
             using var cursor = soundingsP.Search(filter, true);
 
-            var convertedCount = 0;
+            
             var recordCount = 0;
 
 
@@ -97,16 +97,24 @@ namespace S100Framework.Applications
 
                             
                             sounding.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
+
+                            if (current.PLTS_COMP_SCALE.HasValue) {
+                                sounding.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtypes[subtype], featureType, current.PLTS_COMP_SCALE.Value);
+                            }
+
                             AddInformation(sounding.information, feature);
 
                             bufferPointset["json"] = System.Text.Json.JsonSerializer.Serialize(sounding);
                             bufferPointset["ps"] = ps101;
                             bufferPointset["code"] = sounding.GetType().Name;
 
-                            var oid = insertPointset.Insert(bufferPointset);
-                            Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(sounding));
-                            convertedCount++;
+                            var featureN = featureClass.CreateRow(bufferPointset);
+                            var name = Convert.ToString(featureN["name"]);
 
+                            // TODO: Create relations
+
+                             ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID, name); Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(sounding));
+                            Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(sounding));
 
                             // TODO: Handle Spatialquality
                             //if (quapos != default && quapos == 4) {
@@ -130,14 +138,22 @@ namespace S100Framework.Applications
                                 instance of the S-101 Feature type Depth – No Bottom Found. Where this is the case, the attributes
                                 EXPSOU, NOBJNM, OBJNAM, SOUACC and STATUS will not be converted. It is considered that
                                 these attributes are not relevant for Depth – No Bottom Found in S-101. */
-                            var instance = new DepthNoBottomFound {
-
-                            };
+                            var instance = new DepthNoBottomFound();
 
                             bufferPointset["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
-                            var oid = insertPointset.Insert(bufferPointset);
+
+                            if (current.PLTS_COMP_SCALE.HasValue) {
+                                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtypes[subtype], featureType, current.PLTS_COMP_SCALE.Value);
+                            }
+
+                            var featureN = featureClass.CreateRow(bufferPointset);
+                            var name = Convert.ToString(featureN["name"]);
+
+                            // TODO: Create relations
+
+                            ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID, name); Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
                             Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
-                            convertedCount++;
+
                         }
                         break;
                     default:
@@ -147,7 +163,7 @@ namespace S100Framework.Applications
 
                 }
             }
-            Logger.Current.DataTotalCount(tableName, recordCount, convertedCount);
+            Logger.Current.DataTotalCount(tableName, recordCount, ConversionAnalytics.Instance.GetConvertedCount(tableName));
         }
     }
 }

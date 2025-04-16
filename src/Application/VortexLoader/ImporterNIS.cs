@@ -124,7 +124,8 @@ namespace S100Framework.Applications
                     Store(() => S57_ProductCoverage(source, destination, filter));
                 }
                 else {
-                    
+
+                    Store(() => S57_CulturalFeaturesA(source, destination, filter));
                     Store(() => S57_MetadataA(source, destination, filter));
                     Store(() => S57_AidsToNavigationP(source, destination, filter));
                     Store(() => S57_DangersL(source, destination, filter));
@@ -141,7 +142,6 @@ namespace S100Framework.Applications
                     Store(() => S57_CoastlineA(source, destination, filter));
                     Store(() => S57_CoastlineP(source, destination, filter));
                     Store(() => S57_CulturalFeaturesL(source, destination, filter));
-                    Store(() => S57_CulturalFeaturesA(source, destination, filter));
                     Store(() => S57_CulturalFeaturesP(source, destination, filter));
                     Store(() => S57_SeabedP(source, destination, filter));
                     Store(() => S57_PortsAndServicesL(source, destination, filter));

@@ -19,7 +19,7 @@ namespace S100Framework.Applications
             });
 
             int recordCount = 0;
-            int convertedCount = 0;
+            
 
             using var buffer = featureClass.CreateRowBuffer();
             using var insert = featureClass.CreateInsertCursor();
@@ -65,18 +65,16 @@ namespace S100Framework.Applications
 
 
                     switch (catcov) {
-                        case 1:
-                            //buffer["ps"] = ps128;
-                            //buffer["code"] = instance.GetType().Name;
-                            //buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
-                            //ImporterNIS.SetShape(buffer, productCoverage.SHAPE);
-                            //var featureN = featureClass.CreateRow(buffer);
-                            //var name = Convert.ToString(featureN["name"]);
-                            // TODO: Create relations
-                            //ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID,name);
-
-
-
+                        case 1: {
+                                buffer["ps"] = ps128;
+                                buffer["code"] = instance.GetType().Name;
+                                buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
+                                ImporterNIS.SetShape(buffer, productCoverage.SHAPE);
+                                var featureN = featureClass.CreateRow(buffer);
+                                var name = Convert.ToString(featureN["name"]);
+                                // TODO: Create relations
+                                ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID, name);
+                            }
 
                             var dataCoverage = new DataCoverage() { 
                                 maximumDisplayScale = displayScale.MaximumDisplayScale,
@@ -117,7 +115,7 @@ namespace S100Framework.Applications
                 }
 
                 Logger.Current.DataObject(objectid, tableName, dsnm, System.Text.Json.JsonSerializer.Serialize(instance));
-                convertedCount++;
+                
 
 
 
@@ -126,7 +124,7 @@ namespace S100Framework.Applications
 
             }
 
-            Logger.Current.DataTotalCount(tableName, recordCount, convertedCount);
+            Logger.Current.DataTotalCount(tableName, recordCount, ConversionAnalytics.Instance.GetConvertedCount(tableName));
         }
     }
 }

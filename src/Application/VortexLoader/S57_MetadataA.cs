@@ -1,11 +1,8 @@
 ﻿using ArcGIS.Core.Data;
-using ArcGIS.Core.Data.UtilityNetwork;
 using S100Framework.Applications.S57.esri;
 using S100Framework.DomainModel.S101.FeatureTypes;
-using S100Framework.DomainModel.S101.InformationTypes;
 using S100Framework.DomainModel.S101;
 using S100Framework.DomainModel.S101.ComplexAttributes;
-using Microsoft.AspNetCore.Http.HttpResults;
 
 namespace S100Framework.Applications
 {
@@ -26,7 +23,7 @@ namespace S100Framework.Applications
 
             using var cursor = coastlinea.Search(filter, true);
             int recordCount = 0;
-            int convertedCount = 0;
+            
             while (cursor.MoveNext()) {
                 recordCount += 1;
                 var feature = (Feature)cursor.Current;
@@ -60,7 +57,7 @@ namespace S100Framework.Applications
                             //ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID,name);
 
                             //Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
-                            //convertedCount++;
+                            //
                         }
                         break;
 
@@ -84,7 +81,7 @@ namespace S100Framework.Applications
                             ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID,name);
 
                             Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
-                            convertedCount++;
+                            
                         }
                         break;
 
@@ -92,9 +89,9 @@ namespace S100Framework.Applications
                             //There is no equivalent Meta Feature type in S - 101 for the S-57 Meta Object M_HOPA.It is considered
                             //that this information is not required for S - 101.Data Producers should consider removing instances of
                             //M_HOPA from their S-57 data for consistency.
-
+                            ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID, "DEPRECATED");
                             Logger.Current.DataObject(objectid, tableName, longname, "Not converted");
-                            convertedCount++;
+                            
                         }
                         break;
                     case 30: { // M_NPUB_NauticalPublicationInformation
@@ -118,7 +115,7 @@ namespace S100Framework.Applications
                             ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID,name);
 
                             Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
-                            convertedCount++;
+                            
                         }
                         break;
                     case 35: { // M_NSYS_NavigationalSystemOfMarks // Navigational System of Marks - region A and B globally
@@ -141,7 +138,7 @@ namespace S100Framework.Applications
                             ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID,name);
 
                             Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
-                            convertedCount++;
+                            
                         }
                         break;
                     case 40: { // M_QUAL_QualityOfData // SKIN OF EARTH
@@ -149,11 +146,41 @@ namespace S100Framework.Applications
                             var instance = new QualityOfBathymetricData();
                             // TODO: categoryOfTemporalVariation
 
-                            //instance.categoryOfTemporalVariation = EnumHelper.GetEnumValue<categoryOfTemporalVariation>(current.
+                            /*
+                                Temporal Variation: The S-101 mandatory attribute category of temporal variation introduces the
+                                ability for the Data Producer to incorporate the temporal impact on bathymetric data quality in areas
+                                where the seabed is likely to change over time, or in the wake of an extreme event such as a hurricane
+                                S-57 ENC to S-101 Conversion Guidance 9
+                                S-65 Annex B April 2024 Edition 1.2.0
+                                or tsunami. During the automated conversion process, for all M_QUAL except those where CATZOC =
+                                6 (zone of confidence U (data not assessed)), the corresponding Quality of Bathymetric Data will
+                                have category of temporal variation populated with value 5 (unlikely to change). For full S-101
+                                functionality, Data Producers will be required to reassess the value of this attribute as required. For
+                                CATZOC = 6 (zone of confidence U (data not assessed)), category of temporal variation will be
+                                populated with value 6 (unassessed).
+                            */
 
-                            //instance.zoneOfConfidence = GetZoneOfConfidence(current.CATZOC);
+                            if (current.CATZOC.HasValue && current.CATZOC.Value != -32767) {
+                                if (current.CATZOC.Value == 6) {
+                                    instance.categoryOfTemporalVariation = categoryOfTemporalVariation.Unassessed;
+                                    instance.dataAssessment = dataAssessment.Unassessed;
+                                } else {
+                                    instance.categoryOfTemporalVariation = categoryOfTemporalVariation.UnlikelyToChange;
+                                    instance.dataAssessment = dataAssessment.Unassessed;
+                                }
+                            }
 
-                            //instance.dataAssessment = EnumHelper.GetEnumValue<dataAssessment>(
+                            if (DateHelper.TryGetSurveyDateRange(current.SURSTA, current.SUREND, out var dateRange)) {
+                                instance.surveyDateRange = dateRange;
+                            }
+
+                            if (current.CATZOC.HasValue && current.CATZOC.Value != -32767) {
+                                instance.zoneOfConfidence = new() { 
+                                    new zoneOfConfidence() {
+                                        categoryOfZoneOfConfidenceInData = EnumHelper.GetEnumValue<categoryOfZoneOfConfidenceInData>(current.CATZOC.Value)
+                                    }
+                                };
+                            }
 
                             buffer["ps"] = ps101;
                             buffer["code"] = instance.GetType().Name;
@@ -165,7 +192,7 @@ namespace S100Framework.Applications
 
 
                             Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
-                            convertedCount++;
+                            
                         }
                         break;
                     case 45: { // M_SDAT_SoundingDatum
@@ -186,7 +213,7 @@ namespace S100Framework.Applications
                             ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID,name);
 
                             Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
-                            convertedCount++;
+                            
                         }
                         break;
                     case 50: { // M_SREL_SurveyReliability
@@ -206,7 +233,7 @@ namespace S100Framework.Applications
                             ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID,name);
 
                             Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
-                            convertedCount++;
+                            
                         }
                         break;
                     case 55: { // M_VDAT_VerticalDatumOfData
@@ -256,15 +283,16 @@ namespace S100Framework.Applications
                                     buffer["code"] = instance.GetType().Name;
                                     buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                                     SetShape(buffer,current.SHAPE);
-                                                                var featureN = featureClass.CreateRow(buffer);
-                            var name = Convert.ToString(featureN["name"]);
+                                    
+                                    var featureN = featureClass.CreateRow(buffer);
+                                    var name = Convert.ToString(featureN["name"]);
 
-                            // TODO: Create relations
+                                    // TODO: Create relations
                             
-                            ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID,name);
+                                    ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID,name);
 
                                     Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
-                                    convertedCount++;
+                                    
                                 }
                                 break;
                             }
@@ -279,7 +307,7 @@ namespace S100Framework.Applications
 
 
             }
-            Logger.Current.DataTotalCount(tableName, recordCount, convertedCount);
+            Logger.Current.DataTotalCount(tableName, recordCount, ConversionAnalytics.Instance.GetConvertedCount(tableName));
         }
 
 

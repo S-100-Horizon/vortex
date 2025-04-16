@@ -23,7 +23,7 @@ namespace S100Framework.Applications
 
             using var cursor = culturalFeaturesA.Search(filter, true);
             int recordCount = 0;
-            int convertedCount = 0;
+            
             while (cursor.MoveNext()) {
                 recordCount += 1;
 
@@ -71,7 +71,7 @@ namespace S100Framework.Applications
                             ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID,name);
 
                             Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
-                            convertedCount++;
+                            
                         }
                         break;
                     case 5: { // BRIDGE_Bridge
@@ -95,6 +95,60 @@ namespace S100Framework.Applications
                             if (current.STATUS != default) {
                                 instance.status = GetStatus(current.STATUS);
                             }
+                            
+                            if (current.CATBRG != default && current.CATBRG == "1") {
+                                instance.openingBridge = false;
+                            }
+                            else if (current.CATBRG != default && current.CATBRG == "2") {
+                                instance.openingBridge = true;
+                            }
+                            else if (current.CATBRG != default && current.CATBRG == "3") {
+                                instance.openingBridge = true;
+                                instance.categoryOfOpeningBridge = categoryOfOpeningBridge.SwingBridge;
+                            }
+                            else if (current.CATBRG != default && current.CATBRG == "4") {
+                                instance.openingBridge = true;
+                                instance.categoryOfOpeningBridge = categoryOfOpeningBridge.LiftingBridge;
+                            }
+                            else if (current.CATBRG != default && current.CATBRG == "5") {
+                                instance.openingBridge = true;
+                                instance.categoryOfOpeningBridge = categoryOfOpeningBridge.BasculeBridge;
+                            }
+                            else if (current.CATBRG != default && current.CATBRG == "6") {
+                                instance.openingBridge = false;
+                                instance.bridgeConstruction = bridgeConstruction.PontoonBridge;
+                            }
+                            else if (current.CATBRG != default && current.CATBRG == "7") {
+                                instance.openingBridge = true;
+                                instance.categoryOfOpeningBridge = categoryOfOpeningBridge.Drawbridge;
+                            }
+                            else if (current.CATBRG != default && current.CATBRG == "8") {
+                                instance.openingBridge = false;
+                                instance.bridgeConstruction = bridgeConstruction.TransporterBridge;
+                            }
+                            else if (current.CATBRG != default && current.CATBRG == "9") {
+                                instance.openingBridge = false;
+                                instance.bridgeFunction = new List<bridgeFunction>() { bridgeFunction.Pedestrian };
+                            }
+                            else if (current.CATBRG != default && current.CATBRG == "10") {
+                                instance.openingBridge = false;
+                                instance.bridgeConstruction = bridgeConstruction.Viaduct;
+                            }
+                            else if (current.CATBRG != default && current.CATBRG == "11") {
+                                instance.openingBridge = false;
+                                instance.bridgeFunction = new List<bridgeFunction>() { bridgeFunction.Aqueduct };
+                            }
+                            else if (current.CATBRG != default && current.CATBRG == "12") {
+                                instance.openingBridge = false;
+                                instance.bridgeConstruction = bridgeConstruction.SuspensionBridge;
+                            }
+                            else if (current.CATBRG != default && current.CATBRG == "-32767") {
+                                instance.bridgeConstruction = bridgeConstruction.Unknown;
+                            }
+
+                            if (current.NATCON != default) {
+                                instance.natureOfConstruction = EnumHelper.GetEnumValues<natureOfConstruction>(current.NATCON);
+                            }
 
                             instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
 
@@ -112,7 +166,7 @@ namespace S100Framework.Applications
                             ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID,name);
 
                             Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
-                            convertedCount++;
+                            
                         }
                         break;
                     case 10: { // BUAARE_BuiltUpArea
@@ -141,7 +195,7 @@ namespace S100Framework.Applications
                             ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID,name);
 
                             Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
-                            convertedCount++;
+                            
                         }
                         break;
                     case 15: { // BUISGL_BuildingSingle
@@ -185,7 +239,7 @@ namespace S100Framework.Applications
                             ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID,name);
 
                             Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
-                            convertedCount++;
+                            
                         }
                         break;
                     case 20: { // CONVYR_Conveyor
@@ -225,7 +279,7 @@ namespace S100Framework.Applications
                             ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID,name);
 
                             Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
-                            convertedCount++;
+                            
                         }
                         break;
                     case 25: { // DAMCON_Dam
@@ -266,7 +320,7 @@ namespace S100Framework.Applications
                             ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID,name);
 
                             Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
-                            convertedCount++;
+                            
                         }
                         break;
                     case 30: { // FORSTC_FortifiedStructure
@@ -299,7 +353,7 @@ namespace S100Framework.Applications
                             ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID,name);
 
                             Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
-                            convertedCount++;
+                            
                         }
                         break;
                     case 35: { // LNDMRK_Landmark
@@ -344,7 +398,7 @@ namespace S100Framework.Applications
                             ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID,name);
 
                             Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
-                            convertedCount++;
+                            
                         }
                         break;
                     case 40: { // PRDARE_ProductionStorageArea
@@ -377,7 +431,7 @@ namespace S100Framework.Applications
                             ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID,name);
 
                             Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
-                            convertedCount++;
+                            
                         }
                         break;
                     case 45: { // PYLONS_PylonBridgeSupport
@@ -417,7 +471,7 @@ namespace S100Framework.Applications
                             ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID,name);
 
                             Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
-                            convertedCount++;
+                            
                         }
                         break;
                     case 50: { // ROADWY_Road
@@ -450,7 +504,7 @@ namespace S100Framework.Applications
                             ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID,name);
 
                             Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
-                            convertedCount++;
+                            
                         }
                         break;
                     case 55: { // RUNWAY_Runway
@@ -482,7 +536,7 @@ namespace S100Framework.Applications
                             ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID,name);
 
                             Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
-                            convertedCount++;
+                            
                         }
                         break;
                     case 60: { // SILTNK_SiloTank
@@ -522,7 +576,7 @@ namespace S100Framework.Applications
                             ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID,name);
 
                             Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
-                            convertedCount++;
+                            
                         }
                         break;
                     case 65: { // TUNNEL_Tunnel
@@ -556,7 +610,7 @@ namespace S100Framework.Applications
                             ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID,name);
 
                             Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
-                            convertedCount++;
+                            
                         }
                         break;
                     default:
@@ -568,7 +622,7 @@ namespace S100Framework.Applications
 
 
             }
-            Logger.Current.DataTotalCount(tableName, recordCount, convertedCount);
+            Logger.Current.DataTotalCount(tableName, recordCount, ConversionAnalytics.Instance.GetConvertedCount(tableName));
         }
 
 

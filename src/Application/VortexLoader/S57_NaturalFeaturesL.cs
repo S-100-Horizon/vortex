@@ -20,7 +20,7 @@ namespace S100Framework.Applications
 
             using var cursor = naturalFeaturesL.Search(filter, true);
 
-            var convertedCount = 0;
+            
             var recordCount = 0;
 
 
@@ -79,7 +79,7 @@ namespace S100Framework.Applications
 
                             
                             Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
-                            convertedCount++;
+                            
                         }
                         break;
                     case 5: { // LNDELV_LandElevation
@@ -113,7 +113,7 @@ namespace S100Framework.Applications
 
                             
                             Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
-                            convertedCount++;
+                            
                         }
                         break;
                     case 10: { // RAPIDS_Rapids
@@ -142,7 +142,7 @@ namespace S100Framework.Applications
 
 
                             Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
-                            convertedCount++; 
+                             
                         }
                         break;
                     case 15: { // RIVERS_River
@@ -171,7 +171,7 @@ namespace S100Framework.Applications
 
 
                             Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
-                            convertedCount++; 
+                             
                         }
                         break;
                     case 20: { // SLOTOP_SlopeTopline
@@ -200,7 +200,7 @@ namespace S100Framework.Applications
 
 
                             Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
-                            convertedCount++; 
+                             
                         }
                         break;
                     case 25: { // VEGATN_Vegetation
@@ -229,7 +229,7 @@ namespace S100Framework.Applications
 
 
                             Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
-                            convertedCount++; 
+                             
                         }
                         break;
                     case 30: { // WATFAL_Waterfall
@@ -259,7 +259,7 @@ namespace S100Framework.Applications
 
 
                             Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
-                            convertedCount++;
+                            
                         }
                         break;
                     default:
@@ -269,7 +269,7 @@ namespace S100Framework.Applications
 
                 }
             }
-            Logger.Current.DataTotalCount(tableName, recordCount, convertedCount);
+            Logger.Current.DataTotalCount(tableName, recordCount, ConversionAnalytics.Instance.GetConvertedCount(tableName));
 
         }
     }

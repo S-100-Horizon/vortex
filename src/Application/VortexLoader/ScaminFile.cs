@@ -3,14 +3,12 @@ using S100Framework.Applications.S57.esri;
 using System.Xml.Linq;
 namespace S100Framework.Applications
 {
-
     public enum PrimitiveType
     {
         Point = 1,
         Line = 2,
         Area = 4
     }
-   
     class NamedPolygon
     {
         public string Name { get; }
@@ -31,6 +29,7 @@ namespace S100Framework.Applications
 
         private Scamin(string pathToScaminFiles) {
             var sr = SpatialReferences.WGS84;
+
 
             // TODO: Get Scamin polygons and corresponding filenames from external datasource. Ie. database, geopackage, shapefiles etc.
             AddPolygon("SCAMIN_GST_Danmark.xml", new List<Coordinate2D>
@@ -89,11 +88,17 @@ namespace S100Framework.Applications
             return _scaminFiles[touched[0]].GetMinimumScale(subtypeName, primitiveType, compilationScale, isRelatedToStructure);
         }
 
-        private static void AddPolygon(string name, IReadOnlyList<Coordinate2D> points, SpatialReference sr) {
-            var builder = new PolygonBuilderEx(sr);
+        /// <summary>
+        /// Adds the polygon
+        /// </summary>
+        /// <param xmlFileName="xmlFileName"></param>
+        /// <param xmlFileName="points">Coordinate2D points</param>
+        /// <param xmlFileName="spatialReference">The spatial reference</param>
+        private static void AddPolygon(string xmlFileName, IReadOnlyList<Coordinate2D> points, SpatialReference spatialReference) {
+            var builder = new PolygonBuilderEx(spatialReference);
             builder.AddPart(points);
             var polygon = builder.ToGeometry();
-            _polygons.Add(new NamedPolygon(name, polygon));
+            _polygons.Add(new NamedPolygon(xmlFileName, polygon));
         }
 
         private static List<string> GetTouchedPolygonNames(Geometry inputGeometry) {
