@@ -141,15 +141,22 @@ namespace S100Framework.YAML
         //}
     }
 
-    public class CompositeCurve(string components)
+    public class CompositeCurve
     {
+        public CompositeCurve(string components) {
+            Curves = components.Split(",");
+        }
+
+        public CompositeCurve(string[] curves) {
+            Curves = curves;
+        }
         public string? Name { get; set; }
 
         //public string? Components => Curves is null ? null : string.Join(',', Curves.Select(e => e.Name));
-        public string Components { get; set; } = components;
+        public string Components => string.Join(",", Curves);
 
-        //[YamlIgnore]
-        //public Curve[]? Curves { get; private set; } = Curves;
+        [YamlIgnore]
+        public string[] Curves { get; set; } = [];
     }
 
     public class Surface(string exterior)
