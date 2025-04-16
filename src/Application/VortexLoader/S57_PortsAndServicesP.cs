@@ -66,7 +66,13 @@ namespace S100Framework.Applications
                             buffer["code"] = instance.GetType().Name;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                             SetShape(buffer,current.SHAPE);
-                            insert.Insert(buffer);
+                            var featureN = featureClass.CreateRow(buffer);
+                            var name = Convert.ToString(featureN["name"]);
+
+                            // TODO: Create relations
+                            
+                            ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID,name);
+
                             Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
                             convertedCount++;
                         }
@@ -77,7 +83,6 @@ namespace S100Framework.Applications
                                 instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtypes[subtype], featureType, current.PLTS_COMP_SCALE.Value);
                             }
 
-
                             if (current.STATUS != default) {
                                 instance.status = GetStatus(current.STATUS);
                             }
@@ -89,7 +94,13 @@ namespace S100Framework.Applications
                             buffer["code"] = instance.GetType().Name;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                             SetShape(buffer,current.SHAPE);
-                            insert.Insert(buffer);
+                            var featureN = featureClass.CreateRow(buffer);
+                            var name = Convert.ToString(featureN["name"]);
+
+                            // TODO: Create relations
+                            
+                            ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID,name);
+
                             Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
                             convertedCount++;
                         }
@@ -100,8 +111,6 @@ namespace S100Framework.Applications
                                 instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtypes[subtype], featureType, current.PLTS_COMP_SCALE.Value);
                             }
 
-
-
                             if (current.STATUS != default) {
                                 instance.status = GetStatus(current.STATUS);
                             }
@@ -113,7 +122,13 @@ namespace S100Framework.Applications
                             buffer["code"] = instance.GetType().Name;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                             SetShape(buffer,current.SHAPE);
-                            insert.Insert(buffer);
+                            var featureN = featureClass.CreateRow(buffer);
+                            var name = Convert.ToString(featureN["name"]);
+
+                            // TODO: Create relations
+                            
+                            ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID,name);
+
                             Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
                             convertedCount++;
                         }
@@ -125,7 +140,6 @@ namespace S100Framework.Applications
                                 instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtypes[subtype], featureType, current.PLTS_COMP_SCALE.Value);
                             }
 
-
                             if (current.COLOUR != default) {
                                 instance.colour = GetColours(current.COLOUR);
                             }
@@ -150,7 +164,13 @@ namespace S100Framework.Applications
                             buffer["code"] = instance.GetType().Name;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                             SetShape(buffer,current.SHAPE);
-                            insert.Insert(buffer);
+                            var featureN = featureClass.CreateRow(buffer);
+                            var name = Convert.ToString(featureN["name"]);
+
+                            // TODO: Create relations
+                            
+                            ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID,name);
+
                             Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
                             convertedCount++;
                         }
@@ -160,8 +180,6 @@ namespace S100Framework.Applications
                             if (current.PLTS_COMP_SCALE.HasValue) {
                                 instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtypes[subtype], featureType, current.PLTS_COMP_SCALE.Value);
                             }
-
-
                             
                             instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
                             AddInformation(instance.information, feature);
@@ -170,7 +188,13 @@ namespace S100Framework.Applications
                             buffer["code"] = instance.GetType().Name;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                             SetShape(buffer,current.SHAPE);
-                            insert.Insert(buffer);
+                            var featureN = featureClass.CreateRow(buffer);
+                            var name = Convert.ToString(featureN["name"]);
+
+                            // TODO: Create relations
+                            
+                            ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID,name);
+
                             Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
                             convertedCount++;
                         }
@@ -181,7 +205,6 @@ namespace S100Framework.Applications
                                 instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtypes[subtype], featureType, current.PLTS_COMP_SCALE.Value);
                             }
 
-
                             if (current.CONDTN.HasValue) {
                                 instance.condition = GetCondition(current.CONDTN.Value);
                             }
@@ -197,7 +220,13 @@ namespace S100Framework.Applications
                             buffer["code"] = instance.GetType().Name;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                             SetShape(buffer,current.SHAPE);
-                            insert.Insert(buffer);
+                            var featureN = featureClass.CreateRow(buffer);
+                            var name = Convert.ToString(featureN["name"]);
+
+                            // TODO: Create relations
+                            
+                            ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID,name);
+
                             Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
                             convertedCount++;
                         }
@@ -208,8 +237,6 @@ namespace S100Framework.Applications
                                 instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtypes[subtype], featureType, current.PLTS_COMP_SCALE.Value);
                             }
 
-
-
                             if (current.STATUS != default) {
                                 instance.status = GetStatus(current.STATUS);
                             }
@@ -220,7 +247,13 @@ namespace S100Framework.Applications
                             buffer["code"] = instance.GetType().Name;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                             SetShape(buffer,current.SHAPE);
-                            insert.Insert(buffer);
+                            var featureN = featureClass.CreateRow(buffer);
+                            var name = Convert.ToString(featureN["name"]);
+
+                            // TODO: Create relations
+                            
+                            ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID,name);
+
                             Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
                             convertedCount++;
                         }
@@ -230,7 +263,6 @@ namespace S100Framework.Applications
                             if (current.PLTS_COMP_SCALE.HasValue) {
                                 instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtypes[subtype], featureType, current.PLTS_COMP_SCALE.Value);
                             }
-
 
                             if (current.CONDTN.HasValue) {
                                 instance.condition = GetCondition(current.CONDTN.Value);
@@ -246,7 +278,13 @@ namespace S100Framework.Applications
                             buffer["code"] = instance.GetType().Name;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                             SetShape(buffer,current.SHAPE);
-                            insert.Insert(buffer);
+                            var featureN = featureClass.CreateRow(buffer);
+                            var name = Convert.ToString(featureN["name"]);
+
+                            // TODO: Create relations
+                            
+                            ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID,name);
+
                             Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
                             convertedCount++;
                         }
@@ -256,7 +294,6 @@ namespace S100Framework.Applications
                             if (current.PLTS_COMP_SCALE.HasValue) {
                                 instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtypes[subtype], featureType, current.PLTS_COMP_SCALE.Value);
                             }
-
 
                             if (current.COLOUR != default) {
                                 instance.colour = GetColours(current.COLOUR);
@@ -278,7 +315,13 @@ namespace S100Framework.Applications
                             buffer["code"] = instance.GetType().Name;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                             SetShape(buffer,current.SHAPE);
-                            insert.Insert(buffer);
+                            var featureN = featureClass.CreateRow(buffer);
+                            var name = Convert.ToString(featureN["name"]);
+
+                            // TODO: Create relations
+                            
+                            ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID,name);
+
                             Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
                             convertedCount++;
                         }
@@ -326,7 +369,13 @@ namespace S100Framework.Applications
                                 buffer["code"] = instance.GetType().Name;
                                 buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                                 SetShape(buffer,current.SHAPE);
-                                insert.Insert(buffer);
+                                var featureN = featureClass.CreateRow(buffer);
+                            var name = Convert.ToString(featureN["name"]);
+
+                            // TODO: Create relations
+                            
+                            ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID,name);
+
                                 Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
                                 convertedCount++;
                             }
@@ -353,7 +402,13 @@ namespace S100Framework.Applications
                                 buffer["code"] = instance.GetType().Name;
                                 buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                                 SetShape(buffer,current.SHAPE);
-                                insert.Insert(buffer);
+                                var featureN = featureClass.CreateRow(buffer);
+                            var name = Convert.ToString(featureN["name"]);
+
+                            // TODO: Create relations
+                            
+                            ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID,name);
+
                                 Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
                                 convertedCount++;
                             }
@@ -390,7 +445,13 @@ namespace S100Framework.Applications
                                 buffer["code"] = instance.GetType().Name;
                                 buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                                 SetShape(buffer,current.SHAPE);
-                                insert.Insert(buffer);
+                                var featureN = featureClass.CreateRow(buffer);
+                            var name = Convert.ToString(featureN["name"]);
+
+                            // TODO: Create relations
+                            
+                            ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID,name);
+
                                 Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
                                 convertedCount++;
                             }
@@ -428,7 +489,13 @@ namespace S100Framework.Applications
                                 buffer["code"] = instance.GetType().Name;
                                 buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                                 SetShape(buffer,current.SHAPE);
-                                insert.Insert(buffer);
+                                var featureN = featureClass.CreateRow(buffer);
+                            var name = Convert.ToString(featureN["name"]);
+
+                            // TODO: Create relations
+                            
+                            ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID,name);
+
                                 Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
                                 convertedCount++;
                             }
@@ -460,7 +527,13 @@ namespace S100Framework.Applications
                                 buffer["code"] = instance.GetType().Name;
                                 buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                                 SetShape(buffer,current.SHAPE);
-                                insert.Insert(buffer);
+                                var featureN = featureClass.CreateRow(buffer);
+                            var name = Convert.ToString(featureN["name"]);
+
+                            // TODO: Create relations
+                            
+                            ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID,name);
+
                                 Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
                                 convertedCount++;
                             }
@@ -487,7 +560,13 @@ namespace S100Framework.Applications
                                 buffer["code"] = instance.GetType().Name;
                                 buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                                 SetShape(buffer,current.SHAPE);
-                                insert.Insert(buffer);
+                                var featureN = featureClass.CreateRow(buffer);
+                            var name = Convert.ToString(featureN["name"]);
+
+                            // TODO: Create relations
+                            
+                            ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID,name);
+
                                 Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
                                 convertedCount++;
                             }
@@ -498,8 +577,6 @@ namespace S100Framework.Applications
                             if (current.PLTS_COMP_SCALE.HasValue) {
                                 instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtypes[subtype], featureType, current.PLTS_COMP_SCALE.Value);
                             }
-
-
 
                             if (current.STATUS != default) {
                                 instance.status = GetStatus(current.STATUS);
@@ -512,7 +589,13 @@ namespace S100Framework.Applications
                             buffer["code"] = instance.GetType().Name;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                             SetShape(buffer,current.SHAPE);
-                            insert.Insert(buffer);
+                            var featureN = featureClass.CreateRow(buffer);
+                            var name = Convert.ToString(featureN["name"]);
+
+                            // TODO: Create relations
+                            
+                            ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID,name);
+
                             Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
                             convertedCount++;
                         }
@@ -522,7 +605,6 @@ namespace S100Framework.Applications
                             if (current.PLTS_COMP_SCALE.HasValue) {
                                 instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtypes[subtype], featureType, current.PLTS_COMP_SCALE.Value);
                             }
-
 
                             if (current.COLOUR != default) {
                                 instance.colour = GetColours(current.COLOUR);
@@ -546,7 +628,13 @@ namespace S100Framework.Applications
                             buffer["code"] = instance.GetType().Name;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                             SetShape(buffer,current.SHAPE);
-                            insert.Insert(buffer);
+                            var featureN = featureClass.CreateRow(buffer);
+                            var name = Convert.ToString(featureN["name"]);
+
+                            // TODO: Create relations
+                            
+                            ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID,name);
+
                             Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
                             convertedCount++;
                         }
@@ -557,7 +645,6 @@ namespace S100Framework.Applications
                                 instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtypes[subtype], featureType, current.PLTS_COMP_SCALE.Value);
                             }
 
-
                             if (current.STATUS != default) {
                                 instance.status = GetStatus(current.STATUS);
                             }
@@ -568,7 +655,13 @@ namespace S100Framework.Applications
                             buffer["code"] = instance.GetType().Name;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                             SetShape(buffer,current.SHAPE);
-                            insert.Insert(buffer);
+                            var featureN = featureClass.CreateRow(buffer);
+                            var name = Convert.ToString(featureN["name"]);
+
+                            // TODO: Create relations
+                            
+                            ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID,name);
+
                             Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
                             convertedCount++;
                         }
@@ -579,8 +672,6 @@ namespace S100Framework.Applications
                                 instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtypes[subtype], featureType, current.PLTS_COMP_SCALE.Value);
                             }
 
-
-
                             if (current.STATUS != default) {
                                 instance.status = GetStatus(current.STATUS);
                             }
@@ -591,7 +682,13 @@ namespace S100Framework.Applications
                             buffer["code"] = instance.GetType().Name;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                             SetShape(buffer,current.SHAPE);
-                            insert.Insert(buffer);
+                            var featureN = featureClass.CreateRow(buffer);
+                            var name = Convert.ToString(featureN["name"]);
+
+                            // TODO: Create relations
+                            
+                            ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID,name);
+
                             Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
                             convertedCount++;
                         }
@@ -602,8 +699,6 @@ namespace S100Framework.Applications
                                 instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtypes[subtype], featureType, current.PLTS_COMP_SCALE.Value);
                             }
 
-
-
                             if (current.STATUS != default) {
                                 instance.status = GetStatus(current.STATUS);
                             }
@@ -615,7 +710,13 @@ namespace S100Framework.Applications
                             buffer["code"] = instance.GetType().Name;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                             SetShape(buffer,current.SHAPE);
-                            insert.Insert(buffer);
+                            var featureN = featureClass.CreateRow(buffer);
+                            var name = Convert.ToString(featureN["name"]);
+
+                            // TODO: Create relations
+                            
+                            ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID,name);
+
                             Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
                             convertedCount++;
                         }
@@ -626,8 +727,6 @@ namespace S100Framework.Applications
                                 instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtypes[subtype], featureType, current.PLTS_COMP_SCALE.Value);
                             }
 
-
-
                             if (current.STATUS != default) {
                                 instance.status = GetStatus(current.STATUS);
                             }
@@ -639,7 +738,13 @@ namespace S100Framework.Applications
                             buffer["code"] = instance.GetType().Name;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                             SetShape(buffer,current.SHAPE);
-                            insert.Insert(buffer);
+                            var featureN = featureClass.CreateRow(buffer);
+                            var name = Convert.ToString(featureN["name"]);
+
+                            // TODO: Create relations
+                            
+                            ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID,name);
+
                             Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
                             convertedCount++;
                         }

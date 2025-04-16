@@ -12,17 +12,17 @@ namespace S100Framework.Applications
 
             using var productDefinitionsTable = source.OpenDataset<Table>(source.GetName("ProductDefinitions"));
             using var productCoverageFeatureClass = source.OpenDataset<FeatureClass>(source.GetName("ProductCoverage"));
-            using var surfaceFeatureClass = target.OpenDataset<FeatureClass>(target.GetName("surface"));
+            using var featureClass = target.OpenDataset<FeatureClass>(target.GetName("surface"));
 
-            surfaceFeatureClass.DeleteRows(new QueryFilter {
+            featureClass.DeleteRows(new QueryFilter {
                 WhereClause = $"ps = 'S-128' AND (code = 'ElectronicProduct' or code = 'instance')",
             });
 
             int recordCount = 0;
             int convertedCount = 0;
 
-            using var buffer = surfaceFeatureClass.CreateRowBuffer();
-            using var insert = surfaceFeatureClass.CreateInsertCursor();
+            using var buffer = featureClass.CreateRowBuffer();
+            using var insert = featureClass.CreateInsertCursor();
             using var cursor = productDefinitionsTable.Search(null, true);
 
             while (cursor.MoveNext()) {
@@ -70,7 +70,11 @@ namespace S100Framework.Applications
                             //buffer["code"] = instance.GetType().Name;
                             //buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                             //ImporterNIS.SetShape(buffer, productCoverage.SHAPE);
-                            //insert.Insert(buffer);
+                            //var featureN = featureClass.CreateRow(buffer);
+                            //var name = Convert.ToString(featureN["name"]);
+                            // TODO: Create relations
+                            //ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID,name);
+
 
 
 
@@ -91,15 +95,23 @@ namespace S100Framework.Applications
                                 buffer["code"] = vdat.GetType().Name;
                                 buffer["json"] = System.Text.Json.JsonSerializer.Serialize(vdat);
                                 ImporterNIS.SetShape(buffer, productCoverage.SHAPE);
-                                insert.Insert(buffer);
+                                var featureN = featureClass.CreateRow(buffer);
+                                var name = Convert.ToString(featureN["name"]);
+
+                                // TODO: Create relations
+                                ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID,name);
+                            } 
+                            {
+                                buffer["ps"] = ps101;
+                                buffer["code"] = dataCoverage.GetType().Name;
+                                buffer["json"] = System.Text.Json.JsonSerializer.Serialize(dataCoverage);
+                                ImporterNIS.SetShape(buffer, productCoverage.SHAPE);
+                                var featureN = featureClass.CreateRow(buffer);
+                                var name = Convert.ToString(featureN["name"]);
+
+                                // TODO: Create relations
+                                ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID, name);
                             }
-
-
-                            buffer["ps"] = ps101;
-                            buffer["code"] = dataCoverage.GetType().Name;
-                            buffer["json"] = System.Text.Json.JsonSerializer.Serialize(dataCoverage);
-                            ImporterNIS.SetShape(buffer, productCoverage.SHAPE);
-                            insert.Insert(buffer);
                             break;
                     }
                 }

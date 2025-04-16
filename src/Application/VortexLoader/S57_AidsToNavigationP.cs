@@ -1,16 +1,9 @@
 ﻿using ArcGIS.Core.Data;
-using ArcGIS.Core.Geometry;
-using ArcGIS.Desktop.Internal.Mapping;
-using Microsoft.Extensions.Configuration;
 using S100Framework.Applications.S57.esri;
-using S100Framework.Catalogues;
 using S100Framework.DomainModel.S101;
 using S100Framework.DomainModel.S101.ComplexAttributes;
 using S100Framework.DomainModel.S101.FeatureTypes;
 using System.Globalization;
-using System.Security.AccessControl;
-
-
 
 
 namespace S100Framework.Applications
@@ -165,7 +158,7 @@ namespace S100Framework.Applications
 
                             // TODO: Create relation
 
-                            ConversionAnalytics.Instance.AddConverted(tableName, featureN.GetGlobalID());
+                            ConversionAnalytics.Instance.AddConverted(tableName, featureN.GetGlobalID(),name);
                             Logger.Current.DataObject((int)featureN.GetObjectID(), tableName, name, System.Text.Json.JsonSerializer.Serialize(instance));
                             convertedCount++;
 
@@ -276,7 +269,7 @@ namespace S100Framework.Applications
 
                             // TODO: Create relation
 
-                            ConversionAnalytics.Instance.AddConverted(tableName, featureN.GetGlobalID());
+                            ConversionAnalytics.Instance.AddConverted(tableName, featureN.GetGlobalID(), name);
                             Logger.Current.DataObject((int)featureN.GetObjectID(), tableName, name, System.Text.Json.JsonSerializer.Serialize(instance));
                             convertedCount++;
 
@@ -382,19 +375,17 @@ namespace S100Framework.Applications
                                 instance.pictorialRepresentation = current.PICREP;
                             }
 
-
                             buffer["ps"] = ps101;
                             buffer["code"] = instance.GetType().Name;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                             SetShape(buffer,current.SHAPE);
-                            //insert.Insert(buffer);
 
                             var featureN = featureClass.CreateRow(buffer);
                             var name = Convert.ToString(featureN["name"]);
 
                             // TODO: Create relation
 
-                            ConversionAnalytics.Instance.AddConverted(tableName, featureN.GetGlobalID());
+                            ConversionAnalytics.Instance.AddConverted(tableName, featureN.GetGlobalID(), name);
                             Logger.Current.DataObject((int)featureN.GetObjectID(), tableName, name, System.Text.Json.JsonSerializer.Serialize(instance));
                             convertedCount++;
 
@@ -506,7 +497,7 @@ namespace S100Framework.Applications
 
                             // TODO: Create relation
 
-                            ConversionAnalytics.Instance.AddConverted(tableName, featureN.GetGlobalID());
+                            ConversionAnalytics.Instance.AddConverted(tableName, featureN.GetGlobalID() , name);
                             Logger.Current.DataObject((int)featureN.GetObjectID(), tableName, name, System.Text.Json.JsonSerializer.Serialize(instance));
                             convertedCount++;
 
@@ -623,7 +614,7 @@ namespace S100Framework.Applications
 
                             // TODO: Create relation
 
-                            ConversionAnalytics.Instance.AddConverted(tableName, featureN.GetGlobalID());
+                            ConversionAnalytics.Instance.AddConverted(tableName, featureN.GetGlobalID(), name);
                             Logger.Current.DataObject((int)featureN.GetObjectID(), tableName, name, System.Text.Json.JsonSerializer.Serialize(instance));
                             convertedCount++;
 
@@ -708,14 +699,13 @@ namespace S100Framework.Applications
                             buffer["code"] = instance.GetType().Name;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                             SetShape(buffer,current.SHAPE);
-                            //insert.Insert(buffer);
 
                             var featureN = featureClass.CreateRow(buffer);
                             var name = Convert.ToString(featureN["name"]);
 
                             // TODO: Create relation
 
-                            ConversionAnalytics.Instance.AddConverted(tableName, featureN.GetGlobalID());
+                            ConversionAnalytics.Instance.AddConverted(tableName, featureN.GetGlobalID(), name);
                             Logger.Current.DataObject((int)featureN.GetObjectID(), tableName, name, System.Text.Json.JsonSerializer.Serialize(instance));
                             convertedCount++;
 
@@ -801,7 +791,7 @@ namespace S100Framework.Applications
 
                             // TODO: Create relation
 
-                            ConversionAnalytics.Instance.AddConverted(tableName, featureN.GetGlobalID());
+                            ConversionAnalytics.Instance.AddConverted(tableName, featureN.GetGlobalID(), name);
                             Logger.Current.DataObject((int)featureN.GetObjectID(), tableName, name, System.Text.Json.JsonSerializer.Serialize(instance));
                             convertedCount++;
 
@@ -888,7 +878,7 @@ namespace S100Framework.Applications
 
                             // TODO: Create relation
 
-                            ConversionAnalytics.Instance.AddConverted(tableName, featureN.GetGlobalID());
+                            ConversionAnalytics.Instance.AddConverted(tableName, featureN.GetGlobalID(), name);
                             Logger.Current.DataObject((int)featureN.GetObjectID(), tableName, name, System.Text.Json.JsonSerializer.Serialize(instance));
                             convertedCount++;
 
@@ -981,7 +971,7 @@ namespace S100Framework.Applications
 
                             // TODO: Create relation
 
-                            ConversionAnalytics.Instance.AddConverted(tableName, featureN.GetGlobalID());
+                            ConversionAnalytics.Instance.AddConverted(tableName, featureN.GetGlobalID(),name);
                             Logger.Current.DataObject((int)featureN.GetObjectID(), tableName, name, System.Text.Json.JsonSerializer.Serialize(instance));
                             convertedCount++;
 
@@ -1062,14 +1052,14 @@ namespace S100Framework.Applications
                             buffer["code"] = instance.GetType().Name;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                             SetShape(buffer,current.SHAPE);
-                            //insert.Insert(buffer);
+                            
 
                             var featureN = featureClass.CreateRow(buffer);
                             var name = Convert.ToString(featureN["name"]);
 
                             // TODO: Create relation
 
-                            ConversionAnalytics.Instance.AddConverted(tableName, featureN.GetGlobalID());
+                            ConversionAnalytics.Instance.AddConverted(tableName, featureN.GetGlobalID(), name);
                             Logger.Current.DataObject((int)featureN.GetObjectID(), tableName, name, System.Text.Json.JsonSerializer.Serialize(instance));
                             convertedCount++;
 
@@ -1155,14 +1145,14 @@ namespace S100Framework.Applications
                             buffer["code"] = instance.GetType().Name;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                             SetShape(buffer,current.SHAPE);
-                            //insert.Insert(buffer);
+                            
 
                             var featureN = featureClass.CreateRow(buffer);
                             var name = Convert.ToString(featureN["name"]);
 
                             // TODO: Create relation
 
-                            ConversionAnalytics.Instance.AddConverted(tableName, featureN.GetGlobalID());
+                            ConversionAnalytics.Instance.AddConverted(tableName, featureN.GetGlobalID(), name);
                             Logger.Current.DataObject((int)featureN.GetObjectID(), tableName, name, System.Text.Json.JsonSerializer.Serialize(instance));
                             convertedCount++;
 
@@ -1250,14 +1240,14 @@ namespace S100Framework.Applications
                             buffer["code"] = instance.GetType().Name;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                             SetShape(buffer,current.SHAPE);
-                            //insert.Insert(buffer);
+                            
 
                             var featureN = featureClass.CreateRow(buffer);
                             var name = Convert.ToString(featureN["name"]);
 
                             // TODO: Create relation
 
-                            ConversionAnalytics.Instance.AddConverted(tableName, featureN.GetGlobalID());
+                            ConversionAnalytics.Instance.AddConverted(tableName, featureN.GetGlobalID(), name);
                             Logger.Current.DataObject((int)featureN.GetObjectID(), tableName, name, System.Text.Json.JsonSerializer.Serialize(instance));
                             convertedCount++;
 
@@ -1336,7 +1326,7 @@ namespace S100Framework.Applications
                             buffer["code"] = instance.GetType().Name;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                             SetShape(buffer,current.SHAPE);
-                            //insert.Insert(buffer);
+                            
 
 
                             var featureN = featureClass.CreateRow(buffer);
@@ -1344,7 +1334,7 @@ namespace S100Framework.Applications
 
                             // TODO: Create relation
 
-                            ConversionAnalytics.Instance.AddConverted(tableName, featureN.GetGlobalID());
+                            ConversionAnalytics.Instance.AddConverted(tableName, featureN.GetGlobalID(), name);
                             Logger.Current.DataObject((int)featureN.GetObjectID(), tableName, name, System.Text.Json.JsonSerializer.Serialize(instance));
                             convertedCount++;
 
@@ -1377,11 +1367,12 @@ namespace S100Framework.Applications
                                 buffer["code"] = instance.GetType().Name;
                                 buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                                 SetShape(buffer,current.SHAPE);
-                                //insert.Insert(buffer);
+                                
 
                                 var featureN = featureClass.CreateRow(buffer);
                                 var structureName = Convert.ToString(featureN["name"]);
 
+                                ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID, structureName);
                                 Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
                                 convertedCount++;
 
@@ -1401,7 +1392,9 @@ namespace S100Framework.Applications
                                 SetShape(buffer,current.SHAPE);
 
                                 var featureN = featureClass.CreateRow(buffer);
+                                var structureName = Convert.ToString(featureN["name"]);
 
+                                ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID, structureName);
                                 Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
                                 convertedCount++;
                             }
@@ -1422,6 +1415,7 @@ namespace S100Framework.Applications
                                 var featureN = featureClass.CreateRow(buffer);
                                 var structureName = Convert.ToString(featureN["name"]);
 
+                                ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID, structureName);
                                 Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
                                 convertedCount++;
                             }
@@ -1437,9 +1431,11 @@ namespace S100Framework.Applications
                                 buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                                 SetShape(buffer,current.SHAPE);
 
-                                //insert.Insert(buffer);
+                                
                                 var featureN = featureClass.CreateRow(buffer);
+                                var structureName = Convert.ToString(featureN["name"]);
 
+                                ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID, structureName);
                                 Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
                                 convertedCount++;
                             }
@@ -1523,14 +1519,14 @@ namespace S100Framework.Applications
                             buffer["code"] = instance.GetType().Name;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                             SetShape(buffer,current.SHAPE);
-                            //insert.Insert(buffer);
+                            
 
                             var featureN = featureClass.CreateRow(buffer);
                             var name = Convert.ToString(featureN["name"]);
 
                             // TODO: Create relation
 
-                            ConversionAnalytics.Instance.AddConverted(tableName, featureN.GetGlobalID());
+                            ConversionAnalytics.Instance.AddConverted(tableName, featureN.GetGlobalID(), name);
                             Logger.Current.DataObject((int)featureN.GetObjectID(), tableName, name, System.Text.Json.JsonSerializer.Serialize(instance));
                             convertedCount++;
 
@@ -1612,14 +1608,14 @@ namespace S100Framework.Applications
                             buffer["code"] = instance.GetType().Name;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                             SetShape(buffer, current.SHAPE);
-                            //insert.Insert(buffer);
+                            
 
                             var featureN = featureClass.CreateRow(buffer);
                             var name = Convert.ToString(featureN["name"]);
 
                             // TODO: Create relation
 
-                            ConversionAnalytics.Instance.AddConverted(tableName, featureN.GetGlobalID());
+                            ConversionAnalytics.Instance.AddConverted(tableName, featureN.GetGlobalID() , name);
                             Logger.Current.DataObject((int)featureN.GetObjectID(), tableName, name, System.Text.Json.JsonSerializer.Serialize(instance));
                             convertedCount++;
 
@@ -1673,7 +1669,7 @@ namespace S100Framework.Applications
 
                             // TODO: Create relation
 
-                            ConversionAnalytics.Instance.AddConverted(tableName, featureN.GetGlobalID());
+                            ConversionAnalytics.Instance.AddConverted(tableName, featureN.GetGlobalID(), name);
                             Logger.Current.DataObject((int)featureN.GetObjectID(), tableName, name, System.Text.Json.JsonSerializer.Serialize(instance));
                             convertedCount++;
 
@@ -1735,14 +1731,14 @@ namespace S100Framework.Applications
                             buffer["code"] = instance.GetType().Name;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                             SetShape(buffer,current.SHAPE);
-                            //insert.Insert(buffer);
+                            
 
                             var featureN = featureClass.CreateRow(buffer);
                             var name = Convert.ToString(featureN["name"]);
 
                             // TODO: Create relation
 
-                            ConversionAnalytics.Instance.AddConverted(tableName, featureN.GetGlobalID());
+                            ConversionAnalytics.Instance.AddConverted(tableName, featureN.GetGlobalID(),name);
                             Logger.Current.DataObject((int)featureN.GetObjectID(), tableName, name, System.Text.Json.JsonSerializer.Serialize(instance));
                             convertedCount++;
 
@@ -1818,7 +1814,7 @@ namespace S100Framework.Applications
 
                             // TODO: Create relation
 
-                            ConversionAnalytics.Instance.AddConverted(tableName, featureN.GetGlobalID());
+                            ConversionAnalytics.Instance.AddConverted(tableName, featureN.GetGlobalID(), name);
                             Logger.Current.DataObject((int)featureN.GetObjectID(), tableName, name, System.Text.Json.JsonSerializer.Serialize(instance));
                             convertedCount++;
 
@@ -1883,7 +1879,7 @@ namespace S100Framework.Applications
 
                             // TODO: Create relation
 
-                            ConversionAnalytics.Instance.AddConverted(tableName, featureN.GetGlobalID());
+                            ConversionAnalytics.Instance.AddConverted(tableName, featureN.GetGlobalID(), name);
                             Logger.Current.DataObject((int)featureN.GetObjectID(), tableName, name, System.Text.Json.JsonSerializer.Serialize(instance));
                             convertedCount++;
 
@@ -1970,7 +1966,7 @@ namespace S100Framework.Applications
 
                             // TODO: Create relation
 
-                            ConversionAnalytics.Instance.AddConverted(tableName, featureN.GetGlobalID());
+                            ConversionAnalytics.Instance.AddConverted(tableName, featureN.GetGlobalID(), name);
                             Logger.Current.DataObject((int)featureN.GetObjectID(), tableName, name, System.Text.Json.JsonSerializer.Serialize(instance));
                             convertedCount++;
 

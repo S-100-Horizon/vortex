@@ -36,17 +36,8 @@ namespace S100Framework.Applications
                 var globalid = current.GLOBALID;
                 var subtype = current.FCSUBTYPE ?? default;
                 var watlev = current.WATLEV ?? default;
-
-                var natsur = current.NATSUR ?? default;
-                var natqua = current.NATQUA ?? default; 
-
-                // TODO: natsur, natqua
-
-
                 var plts_comp_scale = current.PLTS_COMP_SCALE ?? default;
                 var longname = current.LNAM ?? Strings.UNKNOWN;
-
-
 
                 switch (subtype) {
                     case 15: { // SBDARE_SeabedArea
@@ -63,7 +54,13 @@ namespace S100Framework.Applications
                             buffer["code"] = instance.GetType().Name;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                             SetShape(buffer,current.SHAPE);
-                            insert.Insert(buffer);
+                            var featureN = featureClass.CreateRow(buffer);
+                            var name = Convert.ToString(featureN["name"]);
+
+                            // TODO: Create relations
+                            
+                            ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID,name);
+
                             Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
                             convertedCount++;
                         }
@@ -81,7 +78,13 @@ namespace S100Framework.Applications
                             buffer["code"] = instance.GetType().Name;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                             SetShape(buffer,current.SHAPE);
-                            insert.Insert(buffer);
+                            var featureN = featureClass.CreateRow(buffer);
+                            var name = Convert.ToString(featureN["name"]);
+
+                            // TODO: Create relations
+                            
+                            ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID,name);
+
                             Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
                             convertedCount++;
                         }
@@ -101,7 +104,13 @@ namespace S100Framework.Applications
                             buffer["code"] = instance.GetType().Name;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                             SetShape(buffer,current.SHAPE);
-                            insert.Insert(buffer);
+                            var featureN = featureClass.CreateRow(buffer);
+                            var name = Convert.ToString(featureN["name"]);
+
+                            // TODO: Create relations
+                            
+                            ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID,name);
+
                             Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
                             convertedCount++;
                         }
@@ -120,7 +129,13 @@ namespace S100Framework.Applications
                             buffer["code"] = instance.GetType().Name;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                             SetShape(buffer,current.SHAPE);
-                            insert.Insert(buffer);
+                            var featureN = featureClass.CreateRow(buffer);
+                            var name = Convert.ToString(featureN["name"]);
+
+                            // TODO: Create relations
+                            
+                            ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID,name);
+
                             Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
                             convertedCount++;
                         }
@@ -130,9 +145,6 @@ namespace S100Framework.Applications
                         System.Diagnostics.Debugger.Break();
                         break;
                 }
-
-
-
             }
             Logger.Current.DataTotalCount(tableName, recordCount, convertedCount);
         }

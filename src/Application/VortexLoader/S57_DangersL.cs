@@ -68,7 +68,13 @@ namespace S100Framework.Applications
                             buffer["code"] = instance.GetType().Name;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                             SetShape(buffer,current.SHAPE);
-                            insert.Insert(buffer);
+                            var featureN = featureClass.CreateRow(buffer);
+                            var name = Convert.ToString(featureN["name"]);
+
+                            // TODO: Create relations
+                            
+                            ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID,name);
+
 
                             Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
                             convertedCount++;
@@ -96,7 +102,13 @@ namespace S100Framework.Applications
                                 buffer["code"] = instance.GetType().Name;
                                 buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                                 ImporterNIS.SetShape(buffer, current.SHAPE);
-                                insert.Insert(buffer);
+                                var featureN = featureClass.CreateRow(buffer);
+                            var name = Convert.ToString(featureN["name"]);
+
+                            // TODO: Create relations
+                            
+                            ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID,name);
+
                                 Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
                                 convertedCount++;
                                 break;
@@ -165,9 +177,9 @@ namespace S100Framework.Applications
                                     instance.waterLevelEffect = EnumHelper.GetEnumValue<waterLevelEffect>(current.WATLEV);
                                 }
 
-                            if (current.PLTS_COMP_SCALE.HasValue) {
-                                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtypes[subtype], featureType, current.PLTS_COMP_SCALE.Value);
-                            }
+                                if (current.PLTS_COMP_SCALE.HasValue) {
+                                    instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtypes[subtype], featureType, current.PLTS_COMP_SCALE.Value);
+                                }
 
 
                                 AddInformation(instance.information, feature);
@@ -185,7 +197,13 @@ namespace S100Framework.Applications
                                 buffer["code"] = instance.GetType().Name;
                                 buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance);
                                 SetShape(buffer, current.SHAPE);
-                                insert.Insert(buffer);
+                                var featureN = featureClass.CreateRow(buffer);
+                            var name = Convert.ToString(featureN["name"]);
+
+                            // TODO: Create relations
+                            
+                            ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID,name);
+
                                 Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
                                 convertedCount++;
                             }
@@ -212,7 +230,13 @@ namespace S100Framework.Applications
                             buffer["code"] = instance.GetType().Name;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                             SetShape(buffer,current.SHAPE);
-                            insert.Insert(buffer);
+                            var featureN = featureClass.CreateRow(buffer);
+                            var name = Convert.ToString(featureN["name"]);
+
+                            // TODO: Create relations
+                            
+                            ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID,name);
+
 
                             Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
                             convertedCount++;
@@ -232,7 +256,13 @@ namespace S100Framework.Applications
                             buffer["code"] = instance.GetType().Name;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                             SetShape(buffer,current.SHAPE);
-                            insert.Insert(buffer);
+                            var featureN = featureClass.CreateRow(buffer);
+                            var name = Convert.ToString(featureN["name"]);
+
+                            // TODO: Create relations
+                            
+                            ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID,name);
+
 
                             Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
                             convertedCount++;

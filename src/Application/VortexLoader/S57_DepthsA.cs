@@ -51,6 +51,8 @@ namespace S100Framework.Applications
 
                             // TODO: Spatial association to Spatial Quality
 
+                            // TODO: InteroperabilityIdentifier
+
                             AddInformation(instance.information, feature);
 
                             buffer["ps"] = ps101;
@@ -58,9 +60,13 @@ namespace S100Framework.Applications
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                             SetShape(buffer,current.SHAPE);
 
+                            var featureN = featureClass.CreateRow(buffer);
+                            var name = Convert.ToString(featureN["name"]);
 
+                            // TODO: Create relations
+                            
+                            ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID,name);
 
-                            insert.Insert(buffer);
                             Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
                             convertedCount++;
 
@@ -73,27 +79,30 @@ namespace S100Framework.Applications
                                 depthRangeMaximumValue = drval2,
                             };
 
-                            
-
-                            if (!string.IsNullOrEmpty(sordat)) {
-                                DateHelper.TryConvertToDateOnly(sordat, out var date);
-                                instance.dredgedDate = date;
+                            if (current.SORDAT != default) {
+                                if (DateHelper.TryConvertToDateOnly(current.SORDAT, out var dateOnly)) {
+                                    instance.dredgedDate = dateOnly;
+                                }
+                                else {
+                                    Logger.Current.DataError(current.OBJECTID.Value, tableName, current.LNAM, $"Cannot convert date {current.SORDAT}");
+                                }
                             }
+
+                            instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
 
                             if (current.RESTRN != default) {
                                 instance.restriction = EnumHelper.GetEnumValues<restriction>(current.RESTRN);
                             }
 
+                            // TODO: InteroperabilityIdentifier
+
+                            // TODO: maximumPermittedDraught - Not converted
+                            
+
                             // The S-57 attribute QUASOU for DEPARE will not be converted. It is considered that this attribute is
-                            // not relevant for Depth Area in S - 101.
+                            // not relevant for Depth Area in S-101.
                             //if (current.QUASOU != default) {
                             //    instance.qualityOfVerticalMeasurement = EnumHelper.GetEnumValue<qualityOfVerticalMeasurement>(current);
-                            //}
-
-                            //if (current.SOUACC.HasValue) {
-                            //    instance.verticalUncertainty = new DomainModel.S101.ComplexAttributes.verticalUncertainty() {
-                            //        uncertaintyFixed = current.SOUACC.Value
-                            //    };
                             //}
 
                             if (!string.IsNullOrEmpty(restrn)) {
@@ -104,21 +113,30 @@ namespace S100Framework.Applications
                                 instance.techniqueOfVerticalMeasurement = EnumHelper.GetEnumValues<techniqueOfVerticalMeasurement>(tecsou);
                             }
 
-                            //TODO: 	verticalUncertainty
+                            //TODO: verticalUncertainty - Not converted
+                            //if (current.SOUACC.HasValue) {
+                            //    instance.verticalUncertainty = new DomainModel.S101.ComplexAttributes.verticalUncertainty() {
+                            //        uncertaintyFixed = current.SOUACC.Value
+                            //    };
+                            //}
 
-                            //TODO: maximumPermittedDraught - Not converted
-
-
-                            instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
+                            // TODO: VesselSpeedLimit
 
                             AddInformation(instance.information, feature);
 
                             buffer["ps"] = ps101;
-
                             buffer["code"] = instance.GetType().Name;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                             SetShape(buffer,current.SHAPE);
-                            insert.Insert(buffer);
+
+                            var featureN = featureClass.CreateRow(buffer);
+                            var name = Convert.ToString(featureN["name"]);
+
+                            // TODO: Create relations
+                            
+                            ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID,name);
+
+
                             Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
                             convertedCount++;
                         }
@@ -130,9 +148,20 @@ namespace S100Framework.Applications
                                 scaleMinimum = null,
                                 sweptDate = null,
                             };
-                            if (!string.IsNullOrEmpty(sordat)) {
-                                System.Diagnostics.Debugger.Break();    //  Swept Date
+
+                            if (current.DRVAL1.HasValue && current.DRVAL1.Value != -32767) {
+                                instance.depthRangeMinimumValue = current.DRVAL1.Value;
                             }
+
+                            if (current.SORDAT != default) {
+                                if (DateHelper.TryConvertToDateOnly(current.SORDAT, out var dateOnly)) {
+                                    instance.sweptDate = dateOnly;
+                                }
+                                else {
+                                    Logger.Current.DataError(current.OBJECTID.Value, tableName, current.LNAM, $"Cannot convert date {current.SORDAT}");
+                                }
+                            }
+
                             if (current.PLTS_COMP_SCALE.HasValue) {
                                 instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtypes[subtype], featureType, current.PLTS_COMP_SCALE.Value);
                             }
@@ -144,7 +173,16 @@ namespace S100Framework.Applications
                             buffer["code"] = instance.GetType().Name;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                             SetShape(buffer,current.SHAPE);
-                            insert.Insert(buffer);
+                            var featureN = featureClass.CreateRow(buffer);
+                            var name = Convert.ToString(featureN["name"]);
+
+                            // TODO: Create relations
+                            
+                            ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID,name);
+
+
+                            // TODO: Create relations
+
                             Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
                             convertedCount++;
                         }
@@ -161,7 +199,13 @@ namespace S100Framework.Applications
                             buffer["code"] = instance.GetType().Name;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                             SetShape(buffer,current.SHAPE);
-                            insert.Insert(buffer);
+                            var featureN = featureClass.CreateRow(buffer);
+                            var name = Convert.ToString(featureN["name"]);
+
+                            // TODO: Create relations
+                            
+                            ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID,name);
+
                             Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
                             convertedCount++;
 
