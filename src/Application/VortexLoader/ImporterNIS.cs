@@ -40,6 +40,7 @@ namespace S100Framework.Applications
             var filter = new QueryFilter {
                 WhereClause = "PLTS_COMP_SCALE = 22000",
             };
+
             // default value - overwritten by args
             var skinOfEarthOnly = false;
 
@@ -94,7 +95,7 @@ namespace S100Framework.Applications
                     using var pointset = destination.OpenDataset<FeatureClass>(destination.GetName("pointset"));
                     using var curve = destination.OpenDataset<FeatureClass>(destination.GetName("curve"));
                     using var surface = destination.OpenDataset<FeatureClass>(destination.GetName("surface"));
-                    using var informationtype = destination.OpenDataset<Table>(destination.GetName("InformationTypes"));
+                    using var informationtype = destination.OpenDataset<Table>(destination.GetName("InformationType"));
                     using var informationAssociation = destination.OpenDataset<Table>(destination.GetName("InformationAssociation"));
 
                     point.DeleteRows(query);

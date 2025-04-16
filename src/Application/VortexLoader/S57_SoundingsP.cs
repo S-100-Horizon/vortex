@@ -13,14 +13,19 @@ namespace S100Framework.Applications
         private static void S57_SoundingsP(Geodatabase source, Geodatabase target, QueryFilter filter) {
             var tableName = "SoundingsP";
 
-            using var s = source.OpenDataset<FeatureClass>(source.GetName("SoundingsP"));
+            using var soundingsP = source.OpenDataset<FeatureClass>(source.GetName("SoundingsP"));
+
+            var subtypes = soundingsP.GetSubtypes();
+            var featureType = PrimitiveType.Point;
+
+
             using var pointset = target.OpenDataset<FeatureClass>(target.GetName("pointset"));
-            using var informationtype = target.OpenDataset<Table>(target.GetName("informationTypes"));
+            using var informationtype = target.OpenDataset<Table>(target.GetName("informationType"));
 
             using var bufferPointset = pointset.CreateRowBuffer();
             using var insertPointset = pointset.CreateInsertCursor();
 
-            using var cursor = s.Search(filter, true);
+            using var cursor = soundingsP.Search(filter, true);
 
             var convertedCount = 0;
             var recordCount = 0;

@@ -21,11 +21,13 @@ namespace S100Framework.Applications
         private static void S57_DepthsL(Geodatabase source, Geodatabase target, QueryFilter filter) {
             var tableName = "DepthsL";
 
-            
-
             using var depthsl = source.OpenDataset<FeatureClass>(source.GetName("DepthsL"));
+            var subtypes = depthsl.GetSubtypes();
+            var featureType = PrimitiveType.Line;
+
             using var plts_spatialattributel = source.OpenDataset<FeatureClass>(source.GetName("PLTS_SpatialAttributeL"));
-            using var informationtype = target.OpenDataset<Table>(target.GetName("informationTypes"));
+            using var informationtype = target.OpenDataset<Table>(target.GetName("informationType"));
+
 
             using var featureClass = target.OpenDataset<FeatureClass>(target.GetName("curve"));
             
@@ -64,9 +66,10 @@ namespace S100Framework.Applications
                                 valueOfDepthContour = valco
                             };
 
-                            if (plts_comp_scale != default) {
-                                //instance.scaleMinimum = plts_comp_scale;
+                            if (current.PLTS_COMP_SCALE.HasValue) {
+                                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtypes[subtype], featureType, current.PLTS_COMP_SCALE.Value);
                             }
+
 
                             /*
                                QUAPOS = 1 (surveyed) -> will not be converted
@@ -83,7 +86,7 @@ namespace S100Framework.Applications
 
                             */
 
-                            
+
                             // TODO: handle spatial quality spatial relation
 
                             //if (current.SHAPE != null) {
@@ -115,14 +118,20 @@ namespace S100Framework.Applications
                             //        }
                             //    }
                             //}
-                            
+
                             AddInformation(instance.information, feature);
                             buffer["ps"] = ps101;
 
                             buffer["code"] = instance.GetType().Name;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                             SetShape(buffer,current.SHAPE);
-                            insert.Insert(buffer);
+                            var featureN = featureClass.CreateRow(buffer);
+                            var name = Convert.ToString(featureN["name"]);
+
+                            // TODO: Create relations
+                            
+                            ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID,name);
+
 
                             Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
                             convertedCount++;

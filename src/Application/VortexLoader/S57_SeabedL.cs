@@ -13,6 +13,8 @@ namespace S100Framework.Applications
             var ps101 = "S-101";
 
             var seabedL = source.OpenDataset<FeatureClass>(source.GetName(tableName));
+            var subtypes = seabedL.GetSubtypes();
+            var featureType = PrimitiveType.Line;
 
             using var featureClass = target.OpenDataset<FeatureClass>(target.GetName("curve"));
 
