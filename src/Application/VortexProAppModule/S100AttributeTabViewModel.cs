@@ -6,7 +6,6 @@ using ArcGIS.Core.Events;
 using ArcGIS.Desktop.Core;
 using ArcGIS.Desktop.Editing;
 using ArcGIS.Desktop.Editing.Attributes;
-using ArcGIS.Desktop.Editing.Events;
 using ArcGIS.Desktop.Framework;
 using ArcGIS.Desktop.Framework.Threading.Tasks;
 using ArcGIS.Desktop.Mapping;
@@ -129,8 +128,8 @@ namespace VortexProAppModule
             _catalogues = _module.GetFeatureCatalogues();
 
 
-            //TODO: New project loaded ???
             Project.Current.PropertyChanged += this.Current_PropertyChanged;
+            this.IsEditingEnabled = Project.Current.IsEditingEnabled;
 
             Schemas.AddRange(_catalogues);
 
@@ -844,6 +843,72 @@ namespace VortexProAppModule
         }
 
         public async void S100AttributeEditor_QueryInformations(object sender, QueryInformationsEventArgs e) {
+            var informationtypes = S100Framework.WPF.Helper.InformationAssociationBindings(SelectedSchema, e.association!, e.role!);
+
+            if (!informationtypes.Any())
+                return;
+
+            var rows = await QueuedTask.Run(() => {
+                var ids = new List<InformationId>();
+
+                var mapView = MapView.Active?.Map;
+                if (mapView is not null) {
+                    var local = new ArcGIS.Desktop.Editing.Attributes.Inspector();
+
+                    var selection = mapView.GetSelection();
+
+                    foreach (var selectionSet in selection.ToDictionary()) {
+                        if (!(selectionSet.Key is ArcGIS.Desktop.Mapping.StandaloneTable))
+                            continue;
+                        foreach (var i in selectionSet.Value) {
+                            local.Load(selectionSet.Key, i);
+
+                            var ps = Convert.ToString(local["ps"]);
+                            var code = Convert.ToString(local["code"]);
+                            if (string.Compare(Convert.ToString(Inspector["ps"]), ps, true) != 0)
+                                continue;
+                            if (string.IsNullOrEmpty(code))
+                                continue;
+
+                            if (!informationtypes.Contains(code))
+                                continue;
+
+                            ids.Add(new InformationId(code, Convert.ToString(local["name"])));
+                        }
+                    }
+
+                    if (ids.Any())
+                        return ids;
+                }
+
+                var values = informationtypes.Select(i => $"'{i}'");
+                var q = new QueryFilter {
+                    WhereClause = $"ps = '{Inspector["ps"]}' AND code IN ({string.Join(',', values)})",
+                    //PrefixClause = "TOP 10" ONLY MSSQL
+                };
+
+                foreach (var primitive in new string[] { "informationtype" }) {
+                    int top = 5;
+
+                    using var r = Inspector.OpenDataset<Table>(primitive);
+
+                    using var cursor = r.Search(q, true);
+                    while (cursor.MoveNext() && top > 0) {
+                        var row = cursor.Current;
+                        ids.Add(new InformationId(Convert.ToString(row["code"]), Convert.ToString(row["name"])));
+
+                        top -= 1;
+                    }
+                }
+                return ids;
+            }, TaskCreationOptions.None);
+
+            if (rows.Any()) {
+                System.Windows.Application.Current.Dispatcher.Invoke(() => {
+                    foreach (var row in rows)
+                        e.informations.Add(row);
+                });
+            }
         }
 
         public async void S100AttributeEditor_QueryFeatures(object sender, QueryFeaturesEventArgs e) {
@@ -853,22 +918,55 @@ namespace VortexProAppModule
                 return;
 
             var rows = await QueuedTask.Run(() => {
-
-                //TODO: Selected features only!!!
-                var values = features.Select(i => $"'{i}'");
-                var q = new QueryFilter {
-                    WhereClause = $"ps = '{Inspector["ps"]}' AND code IN ({string.Join(',',values)})",
-                };
-
                 var ids = new List<FeatureId>();
 
+                var mapView = MapView.Active?.Map;
+                if (mapView is not null) {
+                    var local = new ArcGIS.Desktop.Editing.Attributes.Inspector();
+
+                    var selection = mapView.GetSelection();
+
+                    foreach (var selectionSet in selection.ToDictionary()) {
+                        if (!(selectionSet.Key is ArcGIS.Desktop.Mapping.FeatureLayer))
+                            continue;
+                        foreach (var i in selectionSet.Value) {
+                            local.Load(selectionSet.Key, i);
+
+                            var ps = Convert.ToString(local["ps"]);
+                            var code = Convert.ToString(local["code"]);
+                            if (string.Compare(Convert.ToString(Inspector["ps"]), ps, true) != 0)
+                                continue;
+                            if (string.IsNullOrEmpty(code))
+                                continue;
+
+                            if (!features.Contains(code))
+                                continue;
+
+                            ids.Add(new FeatureId(code, Convert.ToString(local["name"])));
+                        }
+                    }
+
+                    if (ids.Any())
+                        return ids;
+                }
+
+                var values = features.Select(i => $"'{i}'");
+                var q = new QueryFilter {
+                    WhereClause = $"ps = '{Inspector["ps"]}' AND code IN ({string.Join(',', values)})",
+                    //PrefixClause = "TOP 10" ONLY MSSQL
+                };
+
                 foreach (var primitive in new string[] { "point", "pointset", "curve", "surface" }) {
+                    int top = 5;
+
                     using var f = Inspector.OpenDataset<FeatureClass>(primitive);
 
                     using var cursor = f.Search(q, true);
-                    while (cursor.MoveNext()) {
+                    while (cursor.MoveNext() && top > 0) {
                         var feature = cursor.Current;
                         ids.Add(new FeatureId(Convert.ToString(feature["code"]), Convert.ToString(feature["name"])));
+
+                        top -= 1;
                     }
                 }
                 return ids;

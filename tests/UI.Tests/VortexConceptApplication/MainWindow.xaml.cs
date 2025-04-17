@@ -33,7 +33,7 @@ namespace VortexConceptApplication
         public MainWindow() {
             InitializeComponent();
 
-            this.DataContext = this;            
+            this.DataContext = this;
         }
 
         private object? _selectedProperty = default;
@@ -152,7 +152,7 @@ namespace VortexConceptApplication
             //viewModel.PropertyChanged += (object sender, PropertyChangedEventArgs e) => {
             //    Logger.Current.Verbose("PropertyChanged = {propertyName}", e.PropertyName);
             //};
-      
+
 
             SelectedProperty = viewModel;
 
@@ -178,7 +178,7 @@ namespace VortexConceptApplication
                         }
                     }
                 }
-                if(e.Action== System.Collections.Specialized.NotifyCollectionChangedAction.Remove) {
+                if (e.Action == System.Collections.Specialized.NotifyCollectionChangedAction.Remove) {
 
                 }
             };
