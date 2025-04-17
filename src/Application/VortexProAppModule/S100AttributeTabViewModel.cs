@@ -2,14 +2,21 @@
 
 using ActiproSoftware.Windows.Extensions;
 using ArcGIS.Core.Data;
+using ArcGIS.Core.Events;
+using ArcGIS.Desktop.Core;
+using ArcGIS.Desktop.Editing;
 using ArcGIS.Desktop.Editing.Attributes;
 using ArcGIS.Desktop.Framework;
 using ArcGIS.Desktop.Framework.Threading.Tasks;
 using ArcGIS.Desktop.Mapping;
 using S100Framework.Catalogues;
+using S100Framework.DomainModel;
+using S100Framework.WPF;
+using S100Framework.WPF.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Collections.Specialized;
 using System.ComponentModel;
 using System.Globalization;
 using System.Linq;
@@ -17,6 +24,7 @@ using System.Runtime.CompilerServices;
 using System.Text.Json;
 using System.Text.Json.Nodes;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Input;
 using System.Xml.Linq;
 using IO = System.IO;
@@ -27,6 +35,8 @@ namespace VortexProAppModule
 
     internal class S100AttributeTabViewModel : AttributeTabEmbeddableControl
     {
+        const string S100AttributesUpdate = "S100AttributesUpdate";
+
         private static CultureInfo culture = new("en-GB", false);
 
         public class InspectorHandle
@@ -35,7 +45,7 @@ namespace VortexProAppModule
 
             public Func<FeatureCatalogue, IEnumerable<string>> Types { get; set; }
 
-            public Func<string, string, string, S100Framework.WPF.ViewModel.ViewModelBase> CreateViewModel { get; set; }
+            public Func<string, string, string, string?, S100Framework.WPF.ViewModel.ViewModelBase> CreateViewModel { get; set; }
         }
 
         internal record SelectedTemplate(string Schema, string Code)
@@ -49,37 +59,39 @@ namespace VortexProAppModule
 
         private InspectorHandle _inspectorHandle = default;
 
-        private InspectorHandle _inspectorHandleFeature => new() {
-            TypeSelector = this.FeatureTypeSelector,
-            Types = (e) => e.FeatureTypes.Select(e => e.Code),
-            CreateViewModel = (schema, code, type) => {
-                return S100Framework.WPF.Helper.CreateViewModel(schema, type);
+        private InspectorHandle _inspectorHandleInformationAssociation => new() {
+            TypeSelector = this.InformationAssociationTypeSelector,
+            Types = (e) => e.InformationAssociationTypes.Select(e => e.Code),
+            CreateViewModel = (schema, code, type, pid) => {
+                return S100Framework.WPF.Helper.CreateInformationAssociationViewModel(schema, code, pid);
             },
         };
 
         private InspectorHandle _inspectorHandleFeatureAssociation => new() {
             TypeSelector = this.FeatureAssociationTypeSelector,
             Types = (e) => e.FeatureAssociationTypes.Select(e => e.Code),
-            CreateViewModel = (schema, code, type) => {
-                return S100Framework.WPF.Helper.CreateViewModel(schema, code);
+            CreateViewModel = (schema, code, type, pid) => {
+                return S100Framework.WPF.Helper.CreateFeatureAssociationViewModel(schema, code, pid);
             },
         };
 
         private InspectorHandle _inspectorHandleInformation => new() {
             TypeSelector = this.InformationTypeSelector,
             Types = (e) => e.InformationTypes.Select(e => e.Code),
-            CreateViewModel = (schema, code, type) => {
-                return S100Framework.WPF.Helper.CreateViewModel(schema, type);
+            CreateViewModel = (schema, code, type, pid) => {
+                return S100Framework.WPF.Helper.CreateInformationTypeViewModel(schema, type, pid);
             },
         };
 
-        private InspectorHandle _inspectorHandleInformationAssociation => new() {
-            TypeSelector = this.InformationAssociationTypeSelector,
-            Types = (e) => e.InformationAssociationTypes.Select(e => e.Code),
-            CreateViewModel = (schema, code, type) => {
-                return S100Framework.WPF.Helper.CreateViewModel(schema, code);
+        private InspectorHandle _inspectorHandleFeature => new() {
+            TypeSelector = this.FeatureTypeSelector,
+            Types = (e) => e.FeatureTypes.Select(e => e.Code),
+            CreateViewModel = (schema, code, type, pid) => {
+                return S100Framework.WPF.Helper.CreateFeatureTypeViewModel(schema, type, pid);
             },
         };
+
+
 
         private SelectedTemplate _selectedTemplate = SelectedTemplate.Empty;
 
@@ -91,6 +103,16 @@ namespace VortexProAppModule
 
         private object _selectedProperty = default;
 
+        private SelectedAssociationObjectViewModel _selectedAssociationProperty = default;
+
+        private SelectedInformationObjectViewModel _selectedInformationProperty = default;
+
+        private SelectedFeatureObjectViewModel _selectedFeatureProperty = default;
+
+        private Boolean _isEditingEnabled = false;
+
+        private Boolean _isVisible = false;
+
         private ObservableCollection<SelectedType> _modelTypes = new();
 
         private bool _isSelectedSchemaEnabled = true;
@@ -99,9 +121,15 @@ namespace VortexProAppModule
 
         private string[] _catalogues;
 
+        private SubscriptionToken _tokenEditStarted;
+
         public S100AttributeTabViewModel(XElement options, bool canChangeOptions) : base(options, canChangeOptions) {
             _module = VortexProAppModule.Module.Current;
             _catalogues = _module.GetFeatureCatalogues();
+
+
+            Project.Current.PropertyChanged += this.Current_PropertyChanged;
+            this.IsEditingEnabled = Project.Current.IsEditingEnabled;
 
             Schemas.AddRange(_catalogues);
 
@@ -109,6 +137,10 @@ namespace VortexProAppModule
                 var inspector = base.Inspector;
 
                 if (inspector != default) {
+                    //if (!Project.Current.IsEditingEnabled) {
+                    //    await Project.Current.SetIsEditingEnabledAsync(true);
+                    //}
+
                     inspector["ps"] = SelectedSchema;
                     inspector["code"] = SelectedModelType.Code;
 
@@ -117,7 +149,7 @@ namespace VortexProAppModule
 
                     await QueuedTask.Run(() => {
                         inspector.Apply();
-                    });
+                    }, TaskCreationOptions.None);
                 }
             });
 
@@ -151,7 +183,7 @@ namespace VortexProAppModule
                     }
 
                     return objectid.ToArray();
-                });
+                }, TaskCreationOptions.None);
                 return result;
             };
 
@@ -186,9 +218,15 @@ namespace VortexProAppModule
                     }
 
                     return objectid.ToArray();
-                });
+                }, TaskCreationOptions.None);
                 return result;
             };
+        }
+
+        private void Current_PropertyChanged(object sender, PropertyChangedEventArgs e) {
+            if (e.PropertyName == "IsEditingEnabled") {
+                this.IsEditingEnabled = Project.Current.IsEditingEnabled;
+            }
         }
 
         protected override void NotifyPropertyChanged([CallerMemberName] string name = "") {
@@ -272,8 +310,10 @@ namespace VortexProAppModule
                         "curve" => _inspectorHandleFeature,
                         "surface" => _inspectorHandleFeature,
                         "informationtype" => _inspectorHandleInformation,
+                        "associationbinding" => null,
                         "featureassociation" => _inspectorHandleFeatureAssociation,
                         "informationassociation" => _inspectorHandleInformationAssociation,
+
                         _ => throw new NotImplementedException(),
                     };
 
@@ -289,7 +329,7 @@ namespace VortexProAppModule
                         FileGeodatabaseConnectionPath fileGeodatabase => _catalogues.SingleOrDefault(e => e.Equals(IO.Path.GetFileNameWithoutExtension(fileGeodatabase.Path.AbsolutePath), StringComparison.InvariantCultureIgnoreCase) || e.Replace("-", string.Empty).Equals(IO.Path.GetFileNameWithoutExtension(fileGeodatabase.Path.AbsolutePath), StringComparison.InvariantCultureIgnoreCase)),
                         _ => null,
                     };
-                });
+                }, TaskCreationOptions.None);
 
                 System.Windows.Application.Current.Dispatcher.Invoke(() => {
                     if (!string.IsNullOrEmpty(catalogue)) {
@@ -319,13 +359,15 @@ namespace VortexProAppModule
 
                     var code = Convert.ToString(inspector["code"]);
 
+                    var name = Convert.ToString(inspector["name"]);
+
                     var type = this._inspectorHandle.TypeSelector(inspector, schema);
 
                     if (type is null) {
                         return default;
                     }
 
-                    var viewmodel = this._inspectorHandle.CreateViewModel(schema, code, type.Name);
+                    var viewmodel = this._inspectorHandle.CreateViewModel(schema, code, type.Name, name);
 
                     object instance;
                     if (DBNull.Value.Equals(inspector["JSON"]) || string.IsNullOrEmpty(Convert.ToString(inspector["JSON"]))) {
@@ -340,19 +382,174 @@ namespace VortexProAppModule
                     var methodInfo = viewmodel.GetType().GetMethod("Load");
                     methodInfo.Invoke(viewmodel, new object[1] { instance });
 
-                    viewmodel.PropertyChanged += (object sender, PropertyChangedEventArgs e) => {
-                        var json = ((S100Framework.WPF.ViewModel.ViewModelBase)sender).Serialize();
+                    SelectedObjectViewModel selectedObjectViewModel = null;
+                    if (instance is IInformationBindingDefinition) {
+                        var informationViewModel = (InformationViewModel)viewmodel;
 
-                        if (DBNull.Value != inspector["json"]) {
-                            if (Convert.ToString(inspector["json"]).Equals(json))
-                                return;
+                        this.SelectedInformationProperty = new SelectedInformationObjectViewModel(informationViewModel, (IInformationBindingDefinition)instance);
+                        selectedObjectViewModel = this.SelectedInformationProperty;
+
+                        using var table = inspector.OpenDataset<Table>("associationbinding");
+
+                        var q = new QueryFilter {
+                            WhereClause = $"TYPE = 'InformationBinding' AND PID = '{informationViewModel.PID}'",
+                        };
+                        using var cursor = table.Search(q, true);
+                        while (cursor.MoveNext()) {
+                            var row = cursor.Current;
+                            var binding = new InformationBindingViewModel {
+                                UID = row.GetGlobalID(),
+                            }.Load(new informationBinding {
+                                roleType = Convert.ToString(row["roleType"]),
+                                association = Convert.ToString(row["association"]),
+                                role = Convert.ToString(row["role"]),
+                                associationId = Convert.ToString(row["associationId"]),
+                                informationId = Convert.ToString(row["informationId"]),
+                                PID = informationViewModel.PID,
+                            });
+                            this.SelectedInformationProperty.InformationBindings.Add(binding);
+                        }
+                    }
+                    if (instance is IFeatureBindingDefinition) {
+                        var featureViewModel = (FeatureViewModel)viewmodel;
+
+
+                        this.SelectedFeatureProperty = new SelectedFeatureObjectViewModel(featureViewModel, (IFeatureBindingDefinition)instance);
+                        selectedObjectViewModel = this.SelectedFeatureProperty;
+
+                        //  informationBinding
+                        {
+                            using var table = inspector.OpenDataset<Table>("associationbinding");
+
+                            var q = new QueryFilter {
+                                WhereClause = $"TYPE = 'InformationBinding' AND PID = '{featureViewModel.PID}'",
+                            };
+                            using var cursor = table.Search(q, true);
+                            while (cursor.MoveNext()) {
+                                var row = cursor.Current;
+                                var binding = new InformationBindingViewModel {
+                                    UID = row.GetGlobalID(),
+                                }.Load(new informationBinding {
+                                    roleType = Convert.ToString(row["roleType"]),
+                                    association = Convert.ToString(row["association"]),
+                                    role = Convert.ToString(row["role"]),
+                                    associationId = Convert.ToString(row["associationId"]),
+                                    informationId = Convert.ToString(row["fid"]),
+                                    PID = featureViewModel.PID,
+                                });
+                                this.SelectedFeatureProperty.InformationBindings.Add(binding);
+                            }
                         }
 
-                        inspector["json"] = ((S100Framework.WPF.ViewModel.ViewModelBase)sender).Serialize();
+                        //  featureBinding
+                        {
+                            using var table = inspector.OpenDataset<Table>("associationbinding");
+
+                            var q = new QueryFilter {
+                                WhereClause = $"TYPE = 'FeatureBinding' AND PID = '{featureViewModel.PID}'",
+                            };
+                            using var cursor = table.Search(q, true);
+                            while (cursor.MoveNext()) {
+                                var row = cursor.Current;
+                                var binding = new FeatureBindingViewModel {
+                                    UID = row.GetGlobalID(),
+                                }.Load(new featureBinding {
+                                    roleType = Convert.ToString(row["roleType"]),
+                                    association = Convert.ToString(row["association"]),
+                                    role = Convert.ToString(row["role"]),
+                                    associationId = Convert.ToString(row["associationId"]),
+                                    featureId = Convert.ToString(row["fid"]),
+                                    PID = featureViewModel.PID,
+                                });
+                                this.SelectedFeatureProperty.FeatureBindings.Add(binding);
+                            }
+                        }
+                    }
+                    if (instance is Association) {
+                        var association = (AssociationViewModel)viewmodel;
+
+                        this.SelectedAssociationProperty = new SelectedAssociationObjectViewModel(association);
+                        selectedObjectViewModel = this.SelectedAssociationProperty;
+                    }
+
+                    selectedObjectViewModel.PropertyChanged += this.OnPropertyChanged;
+
+                    selectedObjectViewModel.CollectionChanged += async (object sender, NotifyCollectionChangedEventArgs e) => {
+                        await QueuedTask.Run(async () => {
+                            //if (!Project.Current.IsEditingEnabled) {
+                            //    await Project.Current.SetIsEditingEnabledAsync(true);
+                            //}
+
+                            var editOperation = new EditOperation {
+                                Name = S100AttributesUpdate,
+                            };
+
+                            using var fc = Inspector.MapMember switch {
+                                FeatureLayer l => l.GetFeatureClass(),
+                                StandaloneTable t => t.GetTable(),
+                                _ => throw new InvalidOperationException(),
+                            };
+
+                            using var geodatabase = (Geodatabase)fc.GetDatastore();
+
+                            var syntax = geodatabase.GetSQLSyntax();
+                            var tableNames = syntax.ParseTableName(fc.GetName());
+
+                            if (sender is ICollection<InformationBindingViewModel>) {
+                                using var table = geodatabase.OpenDataset<Table>(syntax.QualifyTableName(tableNames.Item1, tableNames.Item2, "associationbinding"));
+
+                                foreach (var b in e.NewItems) {
+                                    var binding = (InformationBindingViewModel)b;
+
+                                    var token = editOperation.Create(table, new Dictionary<string, object> {
+                                        {"type", "InformationBinding" },
+                                        {"ps", inspector["ps"] },
+                                        {"roleType", Enum.GetName<roleType>(binding.roleType.Value)},
+                                        {"association", binding.association},
+                                        {"role", binding.role },
+                                        {"pid", binding.PID },
+                                    });
+
+                                    if (!editOperation.IsEmpty) {
+                                        if (editOperation.Execute()) {
+                                            binding.UID = token.GlobalID;
+                                            //Inspector.Load(table, token.ObjectID.Value);
+                                        }
+                                        else if (System.Diagnostics.Debugger.IsAttached)
+                                            System.Diagnostics.Debugger.Break();
+                                    }
+                                }
+                            }
+                            if (sender is ICollection<FeatureBindingViewModel>) {
+                                using var table = geodatabase.OpenDataset<Table>(syntax.QualifyTableName(tableNames.Item1, tableNames.Item2, "associationbinding"));
+
+                                foreach (var b in e.NewItems) {
+                                    var binding = (FeatureBindingViewModel)b;
+
+                                    var token = editOperation.Create(table, new Dictionary<string, object> {
+                                        {"type", "FeatureBinding" },
+                                        {"ps", inspector["ps"] },
+                                        {"roleType", Enum.GetName<roleType>(binding.roleType.Value)},
+                                        {"association", binding.association},
+                                        {"role", binding.role },
+                                        {"pid", binding.PID },
+                                    });
+
+                                    if (!editOperation.IsEmpty) {
+                                        if (editOperation.Execute()) {
+                                            binding.UID = token.GlobalID;
+                                            //Inspector.Load(table, token.ObjectID.Value);
+                                        }
+                                        else if (System.Diagnostics.Debugger.IsAttached)
+                                            System.Diagnostics.Debugger.Break();
+                                    }
+                                }
+                            }
+                        }, TaskCreationOptions.None);
                     };
 
                     return viewmodel;
-                }));
+                }), TaskCreationOptions.None);
 
                 if (SelectedProperty == default) {
                     SelectedSchema = default;
@@ -360,14 +557,72 @@ namespace VortexProAppModule
 
                     IsSelectedSchemaEnabled = true;
                     IsSelectedModelTypeEnabled = SelectedSchema != default;
+
+                    IsVisible = Visibility.Collapsed;
                 }
                 else {
                     IsSelectedSchemaEnabled = false;
                     IsSelectedModelTypeEnabled = false;
+
+                    IsVisible = Visibility.Visible;
                 }
                 NotifyPropertyChanged(() => IsCreateButtonEnabled);
             }
             catch { }
+        }
+
+        private async void OnPropertyChanged(object sender, PropertyChangedEventArgs e) {
+            await QueuedTask.Run(async () => {
+                //if (!Project.Current.IsEditingEnabled) {
+                //    await Project.Current.SetIsEditingEnabledAsync(true);
+                //}
+
+                var editOperation = new EditOperation {
+                    Name = S100AttributesUpdate,
+                };
+
+                if (sender is ViewModelBase viewModel) {
+                    var json = viewModel.Serialize();
+
+                    if (DBNull.Value != Inspector["json"]) {
+                        if (string.Compare(json, Convert.ToString(Inspector["json"]), true) == 0)
+                            return;
+                    }
+
+                    Inspector["json"] = json;
+                }
+                if (sender is InformationBindingViewModel informationBinding) {
+                    using var table = Inspector.OpenDataset<Table>("associationbinding");
+
+                    var q = new QueryFilter {
+                        WhereClause = $"GLOBALID = '{informationBinding.UID:B}'",
+                    };
+                    using var cursor = table.Search(q, false);
+                    if (cursor.MoveNext()) {
+                        editOperation.Modify(cursor.Current, new Dictionary<string, object> {
+                                        { "associationid", informationBinding.associationId },
+                                        { "fid", informationBinding.informationId },
+                                    });
+                    }
+                }
+                if (sender is FeatureBindingViewModel featureBinding) {
+                    using var table = Inspector.OpenDataset<Table>("associationbinding");
+
+                    var q = new QueryFilter {
+                        WhereClause = $"GLOBALID = '{featureBinding.UID:B}'",
+                    };
+                    using var cursor = table.Search(q, false);
+                    if (cursor.MoveNext()) {
+                        editOperation.Modify(cursor.Current, new Dictionary<string, object> {
+                                        { "associationid", featureBinding.associationId },
+                                        { "fid", featureBinding.featureId },
+                                    });
+                    }
+                }
+                if (!editOperation.IsEmpty) {
+                    var success = editOperation.Execute();
+                }
+            }, TaskCreationOptions.None);
         }
 
         private Type FeatureTypeSelector(Inspector inspector, string schema) {
@@ -419,7 +674,9 @@ namespace VortexProAppModule
                 SelectedModelType = ModelTypes.Single(e => e.Code == code);
             }
 
-            return typeof(S100Framework.DomainModel.FeatureAssociation);
+            var type = featureCatalogue.Assembly!.GetType($"{S100Framework.Catalogues.FeatureCatalogue.Namespace(schema, "Associations.FeatureAssociations")}.{code}", true);
+
+            return type;
         }
 
         private Type InformationTypeSelector(Inspector inspector, string schema) {
@@ -471,7 +728,10 @@ namespace VortexProAppModule
                 SelectedModelType = ModelTypes.Single(e => e.Code == code);
             }
 
-            return typeof(S100Framework.DomainModel.InformationAssociation);
+            var type = featureCatalogue.Assembly!.GetType($"{S100Framework.Catalogues.FeatureCatalogue.Namespace(schema, "Associations.InfromationAssociations")}.{code}", true);
+
+            return type;
+
         }
 
         public ICommand CreateInstance { get; set; }
@@ -501,6 +761,31 @@ namespace VortexProAppModule
             set => SetProperty(ref _selectedProperty, value);
         }
 
+        public Visibility IsVisible {
+            get => _isVisible ? Visibility.Visible : Visibility.Collapsed;
+            set => SetProperty(ref _isVisible, value == Visibility.Visible);
+        }
+
+        public Boolean IsEditingEnabled {
+            get => _isEditingEnabled;
+            set => SetProperty(ref _isEditingEnabled, value);
+        }
+
+        public SelectedAssociationObjectViewModel SelectedAssociationProperty {
+            get => _selectedAssociationProperty;
+            set => SetProperty(ref _selectedAssociationProperty, value);
+        }
+
+        public SelectedInformationObjectViewModel SelectedInformationProperty {
+            get => _selectedInformationProperty;
+            set => SetProperty(ref _selectedInformationProperty, value);
+        }
+
+        public SelectedFeatureObjectViewModel SelectedFeatureProperty {
+            get => _selectedFeatureProperty;
+            set => SetProperty(ref _selectedFeatureProperty, value);
+        }
+
         public bool IsSelectedSchemaEnabled {
             get => _isSelectedSchemaEnabled;
             set => SetProperty(ref _isSelectedSchemaEnabled, value);
@@ -512,6 +797,188 @@ namespace VortexProAppModule
         }
 
         public bool IsCreateButtonEnabled => IsSelectedSchemaEnabled && IsSelectedModelTypeEnabled && _selectedTemplate != SelectedTemplate.Empty;
+
+
+        public async void S100AttributeEditor_QueryAssociations(object sender, QueryAssociationsEventArgs e) {
+            var rows = await QueuedTask.Run(() => {
+                using var fc = Inspector.MapMember switch {
+                    FeatureLayer l => l.GetFeatureClass(),
+                    StandaloneTable t => t.GetTable(),
+                    _ => throw new InvalidOperationException(),
+                };
+
+                using var geodatabase = (Geodatabase)fc.GetDatastore();
+
+                var syntax = geodatabase.GetSQLSyntax();
+                var tableNames = syntax.ParseTableName(fc.GetName());
+
+                var associationName = e.type switch {
+                    QueryAssociationsEventArgs.AssociationsType.InformationAssociations => syntax.QualifyTableName(tableNames.Item1, tableNames.Item2, "informationassociation"),
+                    QueryAssociationsEventArgs.AssociationsType.FeatureAssociations => syntax.QualifyTableName(tableNames.Item1, tableNames.Item2, "featureassociation"),
+                    _ => throw new InvalidOperationException(),
+                };
+
+                using var association = geodatabase.OpenDataset<Table>(associationName);
+
+                var q = new QueryFilter {
+                    WhereClause = $"ps = '{Inspector["ps"]}' AND code = '{e.association}'",
+                };
+
+                var ids = new List<AssociationId>();
+
+                using var cursor = association.Search(q, true);
+                while (cursor.MoveNext()) {
+                    ids.Add(new AssociationId($"{Convert.ToString(cursor.Current["name"])}"));
+                }
+
+                return ids;
+            }, TaskCreationOptions.None);
+
+            if (rows.Any()) {
+                System.Windows.Application.Current.Dispatcher.Invoke(() => {
+                    foreach (var row in rows)
+                        e.associations.Add(row);
+                });
+            }
+        }
+
+        public async void S100AttributeEditor_QueryInformations(object sender, QueryInformationsEventArgs e) {
+            var informationtypes = S100Framework.WPF.Helper.InformationAssociationBindings(SelectedSchema, e.association!, e.role!);
+
+            if (!informationtypes.Any())
+                return;
+
+            var rows = await QueuedTask.Run(() => {
+                var ids = new List<InformationId>();
+
+                var mapView = MapView.Active?.Map;
+                if (mapView is not null) {
+                    var local = new ArcGIS.Desktop.Editing.Attributes.Inspector();
+
+                    var selection = mapView.GetSelection();
+
+                    foreach (var selectionSet in selection.ToDictionary()) {
+                        if (!(selectionSet.Key is ArcGIS.Desktop.Mapping.StandaloneTable))
+                            continue;
+                        foreach (var i in selectionSet.Value) {
+                            local.Load(selectionSet.Key, i);
+
+                            var ps = Convert.ToString(local["ps"]);
+                            var code = Convert.ToString(local["code"]);
+                            if (string.Compare(Convert.ToString(Inspector["ps"]), ps, true) != 0)
+                                continue;
+                            if (string.IsNullOrEmpty(code))
+                                continue;
+
+                            if (!informationtypes.Contains(code))
+                                continue;
+
+                            ids.Add(new InformationId(code, Convert.ToString(local["name"])));
+                        }
+                    }
+
+                    if (ids.Any())
+                        return ids;
+                }
+
+                var values = informationtypes.Select(i => $"'{i}'");
+                var q = new QueryFilter {
+                    WhereClause = $"ps = '{Inspector["ps"]}' AND code IN ({string.Join(',', values)})",
+                    //PrefixClause = "TOP 10" ONLY MSSQL
+                };
+
+                foreach (var primitive in new string[] { "informationtype" }) {
+                    int top = 5;
+
+                    using var r = Inspector.OpenDataset<Table>(primitive);
+
+                    using var cursor = r.Search(q, true);
+                    while (cursor.MoveNext() && top > 0) {
+                        var row = cursor.Current;
+                        ids.Add(new InformationId(Convert.ToString(row["code"]), Convert.ToString(row["name"])));
+
+                        top -= 1;
+                    }
+                }
+                return ids;
+            }, TaskCreationOptions.None);
+
+            if (rows.Any()) {
+                System.Windows.Application.Current.Dispatcher.Invoke(() => {
+                    foreach (var row in rows)
+                        e.informations.Add(row);
+                });
+            }
+        }
+
+        public async void S100AttributeEditor_QueryFeatures(object sender, QueryFeaturesEventArgs e) {
+            var features = S100Framework.WPF.Helper.FeatureAssociationBindings(SelectedSchema, e.association!, e.role!);
+
+            if (!features.Any())
+                return;
+
+            var rows = await QueuedTask.Run(() => {
+                var ids = new List<FeatureId>();
+
+                var mapView = MapView.Active?.Map;
+                if (mapView is not null) {
+                    var local = new ArcGIS.Desktop.Editing.Attributes.Inspector();
+
+                    var selection = mapView.GetSelection();
+
+                    foreach (var selectionSet in selection.ToDictionary()) {
+                        if (!(selectionSet.Key is ArcGIS.Desktop.Mapping.FeatureLayer))
+                            continue;
+                        foreach (var i in selectionSet.Value) {
+                            local.Load(selectionSet.Key, i);
+
+                            var ps = Convert.ToString(local["ps"]);
+                            var code = Convert.ToString(local["code"]);
+                            if (string.Compare(Convert.ToString(Inspector["ps"]), ps, true) != 0)
+                                continue;
+                            if (string.IsNullOrEmpty(code))
+                                continue;
+
+                            if (!features.Contains(code))
+                                continue;
+
+                            ids.Add(new FeatureId(code, Convert.ToString(local["name"])));
+                        }
+                    }
+
+                    if (ids.Any())
+                        return ids;
+                }
+
+                var values = features.Select(i => $"'{i}'");
+                var q = new QueryFilter {
+                    WhereClause = $"ps = '{Inspector["ps"]}' AND code IN ({string.Join(',', values)})",
+                    //PrefixClause = "TOP 10" ONLY MSSQL
+                };
+
+                foreach (var primitive in new string[] { "point", "pointset", "curve", "surface" }) {
+                    int top = 5;
+
+                    using var f = Inspector.OpenDataset<FeatureClass>(primitive);
+
+                    using var cursor = f.Search(q, true);
+                    while (cursor.MoveNext() && top > 0) {
+                        var feature = cursor.Current;
+                        ids.Add(new FeatureId(Convert.ToString(feature["code"]), Convert.ToString(feature["name"])));
+
+                        top -= 1;
+                    }
+                }
+                return ids;
+            }, TaskCreationOptions.None);
+
+            if (rows.Any()) {
+                System.Windows.Application.Current.Dispatcher.Invoke(() => {
+                    foreach (var row in rows)
+                        e.features.Add(row);
+                });
+            }
+        }
 
         private static JsonNode Unflatten(Dictionary<string, JsonValue> source) {
             var regex = new System.Text.RegularExpressions.Regex(@"(?!\.)([^. ^\[\]]+)|(?!\[)(\d+)(?=\])");
@@ -580,5 +1047,25 @@ namespace VortexProAppModule
         }
 
         private static JsonValueKind GetSegmentKind(string pathSegment) => int.TryParse(pathSegment, out _) ? JsonValueKind.Array : JsonValueKind.Object;
+    }
+}
+
+namespace ArcGIS.Desktop.Editing.Attributes
+{
+    public static class Extension
+    {
+        public static T OpenDataset<T>(this Inspector inspector, string name) where T : Dataset {
+            using var fc = inspector.MapMember switch {
+                FeatureLayer l => l.GetFeatureClass(),
+                StandaloneTable t => t.GetTable(),
+                _ => throw new InvalidOperationException(),
+            };
+            using var geodatabase = (Geodatabase)fc.GetDatastore();
+
+            var syntax = geodatabase.GetSQLSyntax();
+            var tableNames = syntax.ParseTableName(fc.GetName());
+
+            return geodatabase.OpenDataset<T>(syntax.QualifyTableName(tableNames.Item1, tableNames.Item2, name));
+        }
     }
 }

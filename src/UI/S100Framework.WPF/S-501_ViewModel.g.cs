@@ -14,289 +14,394 @@ using Xceed.Wpf.Toolkit.PropertyGrid.Attributes;
 
 #nullable enable
 namespace S100Framework.WPF.ViewModel.S501 {
-    internal static class Preamble {
-        public static ImmutableDictionary<string, Func<ViewModelBase>> _creators => ImmutableDictionary.Create<string, Func<ViewModelBase>>().AddRange(new Dictionary<string, Func<ViewModelBase>> { { "ReferenceToAPublication", () =>
+    internal static class Bootstrap {
+        public static AssociationViewModel CreateInformationAssociation(string type, string? pid = default) => type switch
         {
-            return new ReferenceToAPublicationViewModel();
-        } }, { "InstallationBuoy", () =>
-        {
-            return new InstallationBuoyViewModel();
-        } }, { "DepthArea", () =>
-        {
-            return new DepthAreaViewModel();
-        } }, { "RadioCallingInPoint", () =>
-        {
-            return new RadioCallingInPointViewModel();
-        } }, { "PatrolArea", () =>
-        {
-            return new PatrolAreaViewModel();
-        } }, { "Checkpoint", () =>
-        {
-            return new CheckpointViewModel();
-        } }, { "MarineManagementArea", () =>
-        {
-            return new MarineManagementAreaViewModel();
-        } }, { "DepthContour", () =>
-        {
-            return new DepthContourViewModel();
-        } }, { "EnvironmentallySensitiveSeaArea", () =>
-        {
-            return new EnvironmentallySensitiveSeaAreaViewModel();
-        } }, { "Road", () =>
-        {
-            return new RoadViewModel();
-        } }, { "River", () =>
-        {
-            return new RiverViewModel();
-        } }, { "MilitaryPracticeArea", () =>
-        {
-            return new MilitaryPracticeAreaViewModel();
-        } }, { "DiscolouredWater", () =>
-        {
-            return new DiscolouredWaterViewModel();
-        } }, { "CardinalBuoy", () =>
-        {
-            return new CardinalBuoyViewModel();
-        } }, { "SafeWaterBuoy", () =>
-        {
-            return new SafeWaterBuoyViewModel();
-        } }, { "RadioStation", () =>
-        {
-            return new RadioStationViewModel();
-        } }, { "MilitaryExerciseAirspace", () =>
-        {
-            return new MilitaryExerciseAirspaceViewModel();
-        } }, { "ContiguousZone", () =>
-        {
-            return new ContiguousZoneViewModel();
-        } }, { "NormalBaseline", () =>
-        {
-            return new NormalBaselineViewModel();
-        } }, { "CableArea", () =>
-        {
-            return new CableAreaViewModel();
-        } }, { "ContinentalShelfArea", () =>
-        {
-            return new ContinentalShelfAreaViewModel();
-        } }, { "InternalWaters", () =>
-        {
-            return new InternalWatersViewModel();
-        } }, { "AdministrationArea", () =>
-        {
-            return new AdministrationAreaViewModel();
-        } }, { "Bollard", () =>
-        {
-            return new BollardViewModel();
-        } }, { "Dolphin", () =>
-        {
-            return new DolphinViewModel();
-        } }, { "RadarRange", () =>
-        {
-            return new RadarRangeViewModel();
-        } }, { "IsolatedDangerBeacon", () =>
-        {
-            return new IsolatedDangerBeaconViewModel();
-        } }, { "IsolatedDangerBuoy", () =>
-        {
-            return new IsolatedDangerBuoyViewModel();
-        } }, { "SubmarineTransitLane", () =>
-        {
-            return new SubmarineTransitLaneViewModel();
-        } }, { "MaritimeSafetyInformationArea", () =>
-        {
-            return new MaritimeSafetyInformationAreaViewModel();
-        } }, { "AirspaceRestriction", () =>
-        {
-            return new AirspaceRestrictionViewModel();
-        } }, { "Sounding", () =>
-        {
-            return new SoundingViewModel();
-        } }, { "TrafficSeparationSchemeBoundary", () =>
-        {
-            return new TrafficSeparationSchemeBoundaryViewModel();
-        } }, { "DumpingGround", () =>
-        {
-            return new DumpingGroundViewModel();
-        } }, { "AirportAirfield", () =>
-        {
-            return new AirportAirfieldViewModel();
-        } }, { "FoulGround", () =>
-        {
-            return new FoulGroundViewModel();
-        } }, { "LightAirObstruction", () =>
-        {
-            return new LightAirObstructionViewModel();
-        } }, { "MooringBuoy", () =>
-        {
-            return new MooringBuoyViewModel();
-        } }, { "UnderwaterAwashRock", () =>
-        {
-            return new UnderwaterAwashRockViewModel();
-        } }, { "CableOverhead", () =>
-        {
-            return new CableOverheadViewModel();
-        } }, { "ControlledAirspace", () =>
-        {
-            return new ControlledAirspaceViewModel();
-        } }, { "Obstruction", () =>
-        {
-            return new ObstructionViewModel();
-        } }, { "FishingGround", () =>
-        {
-            return new FishingGroundViewModel();
-        } }, { "FishingFacility", () =>
-        {
-            return new FishingFacilityViewModel();
-        } }, { "NavigationSystem", () =>
-        {
-            return new NavigationSystemViewModel();
-        } }, { "TrafficSeparationSchemeCrossing", () =>
-        {
-            return new TrafficSeparationSchemeCrossingViewModel();
-        } }, { "TrafficSeparationSchemeLanePart", () =>
-        {
-            return new TrafficSeparationSchemeLanePartViewModel();
-        } }, { "TerritorialSeaArea", () =>
-        {
-            return new TerritorialSeaAreaViewModel();
-        } }, { "LateralBeacon", () =>
-        {
-            return new LateralBeaconViewModel();
-        } }, { "CoastGuardStation", () =>
-        {
-            return new CoastGuardStationViewModel();
-        } }, { "SeparationZoneOrLine", () =>
-        {
-            return new SeparationZoneOrLineViewModel();
-        } }, { "BottomFeature", () =>
-        {
-            return new BottomFeatureViewModel();
-        } }, { "ArchipelagicBaseline", () =>
-        {
-            return new ArchipelagicBaselineViewModel();
-        } }, { "SmallBottomObject", () =>
-        {
-            return new SmallBottomObjectViewModel();
-        } }, { "ExclusiveEconomicZone", () =>
-        {
-            return new ExclusiveEconomicZoneViewModel();
-        } }, { "RadarStation", () =>
-        {
-            return new RadarStationViewModel();
-        } }, { "DivingLocation", () =>
-        {
-            return new DivingLocationViewModel();
-        } }, { "RestrictedArea", () =>
-        {
-            return new RestrictedAreaViewModel();
-        } }, { "CableSubmarine", () =>
-        {
-            return new CableSubmarineViewModel();
-        } }, { "Wreck", () =>
-        {
-            return new WreckViewModel();
-        } }, { "QRoute", () =>
-        {
-            return new QRouteViewModel();
-        } }, { "CompletenessOfProductSpecification", () =>
-        {
-            return new CompletenessOfProductSpecificationViewModel();
-        } }, { "RescueStation", () =>
-        {
-            return new RescueStationViewModel();
-        } }, { "CardinalBeacon", () =>
-        {
-            return new CardinalBeaconViewModel();
-        } }, { "LightVessel", () =>
-        {
-            return new LightVesselViewModel();
-        } }, { "FisheryZone", () =>
-        {
-            return new FisheryZoneViewModel();
-        } }, { "DredgedArea", () =>
-        {
-            return new DredgedAreaViewModel();
-        } }, { "FerryRoute", () =>
-        {
-            return new FerryRouteViewModel();
-        } }, { "ShorelineConstruction", () =>
-        {
-            return new ShorelineConstructionViewModel();
-        } }, { "CautionArea", () =>
-        {
-            return new CautionAreaViewModel();
-        } }, { "DeepWaterRoutePart", () =>
-        {
-            return new DeepWaterRoutePartViewModel();
-        } }, { "CurrentNonGravitational", () =>
-        {
-            return new CurrentNonGravitationalViewModel();
-        } }, { "DataCoverage", () =>
-        {
-            return new DataCoverageViewModel();
-        } }, { "SeabedArea", () =>
-        {
-            return new SeabedAreaViewModel();
-        } }, { "SpecialPurposeGeneralBuoy", () =>
-        {
-            return new SpecialPurposeGeneralBuoyViewModel();
-        } }, { "LightSectored", () =>
-        {
-            return new LightSectoredViewModel();
-        } }, { "IceLine", () =>
-        {
-            return new IceLineViewModel();
-        } }, { "AnchorageArea", () =>
-        {
-            return new AnchorageAreaViewModel();
-        } }, { "LateralBuoy", () =>
-        {
-            return new LateralBuoyViewModel();
-        } }, { "TrafficSeparationSchemeRoundabout", () =>
-        {
-            return new TrafficSeparationSchemeRoundaboutViewModel();
-        } }, { "DeepWaterRouteCentreline", () =>
-        {
-            return new DeepWaterRouteCentrelineViewModel();
-        } }, { "LightFloat", () =>
-        {
-            return new LightFloatViewModel();
-        } }, { "LightAllAround", () =>
-        {
-            return new LightAllAroundViewModel();
-        } }, { "Coastline", () =>
-        {
-            return new CoastlineViewModel();
-        } }, { "SeaAreaNamedWaterArea", () =>
-        {
-            return new SeaAreaNamedWaterAreaViewModel();
-        } }, { "DropZone", () =>
-        {
-            return new DropZoneViewModel();
-        } }, { "Conveyor", () =>
-        {
-            return new ConveyorViewModel();
-        } }, { "LineOfDelimitation", () =>
-        {
-            return new LineOfDelimitationViewModel();
-        } }, { "StraightTerritorialSeaBaseline", () =>
-        {
-            return new StraightTerritorialSeaBaselineViewModel();
-        } }, { "SafeWaterBeacon", () =>
-        {
-            return new SafeWaterBeaconViewModel();
-        } }, { "SpecialPurposeGeneralBeacon", () =>
-        {
-            return new SpecialPurposeGeneralBeaconViewModel();
-        } }, });
-    }
-
-    public class Handles : iHandles {
-        public static IDictionary<Type, Func<InformationAssociationConnector[]>> AssociationConnectorInformations => new Dictionary<Type, Func<InformationAssociationConnector[]>>
-        {
+            _ => throw new InvalidOperationException(),
         };
-        public static IDictionary<Type, Func<FeatureAssociationConnector[]>> AssociationConnectorFeatures => new Dictionary<Type, Func<FeatureAssociationConnector[]>>
+        public static AssociationViewModel CreateFeatureAssociation(string type, string? pid = default) => type switch
         {
+            _ => throw new InvalidOperationException(),
+        };
+        public static InformationViewModel CreateInformationType(string type, string? pid = default) => type switch
+        {
+            "ReferenceToAPublication" => new ReferenceToAPublicationViewModel
+            {
+                PID = pid
+            },
+            _ => throw new InvalidOperationException(),
+        };
+        public static FeatureViewModel CreateFeatureType(string type, string? pid = default) => type switch
+        {
+            "InstallationBuoy" => new InstallationBuoyViewModel
+            {
+                PID = pid
+            },
+            "DepthArea" => new DepthAreaViewModel
+            {
+                PID = pid
+            },
+            "RadioCallingInPoint" => new RadioCallingInPointViewModel
+            {
+                PID = pid
+            },
+            "PatrolArea" => new PatrolAreaViewModel
+            {
+                PID = pid
+            },
+            "Checkpoint" => new CheckpointViewModel
+            {
+                PID = pid
+            },
+            "MarineManagementArea" => new MarineManagementAreaViewModel
+            {
+                PID = pid
+            },
+            "DepthContour" => new DepthContourViewModel
+            {
+                PID = pid
+            },
+            "EnvironmentallySensitiveSeaArea" => new EnvironmentallySensitiveSeaAreaViewModel
+            {
+                PID = pid
+            },
+            "Road" => new RoadViewModel
+            {
+                PID = pid
+            },
+            "River" => new RiverViewModel
+            {
+                PID = pid
+            },
+            "MilitaryPracticeArea" => new MilitaryPracticeAreaViewModel
+            {
+                PID = pid
+            },
+            "DiscolouredWater" => new DiscolouredWaterViewModel
+            {
+                PID = pid
+            },
+            "CardinalBuoy" => new CardinalBuoyViewModel
+            {
+                PID = pid
+            },
+            "SafeWaterBuoy" => new SafeWaterBuoyViewModel
+            {
+                PID = pid
+            },
+            "RadioStation" => new RadioStationViewModel
+            {
+                PID = pid
+            },
+            "MilitaryExerciseAirspace" => new MilitaryExerciseAirspaceViewModel
+            {
+                PID = pid
+            },
+            "ContiguousZone" => new ContiguousZoneViewModel
+            {
+                PID = pid
+            },
+            "NormalBaseline" => new NormalBaselineViewModel
+            {
+                PID = pid
+            },
+            "CableArea" => new CableAreaViewModel
+            {
+                PID = pid
+            },
+            "ContinentalShelfArea" => new ContinentalShelfAreaViewModel
+            {
+                PID = pid
+            },
+            "InternalWaters" => new InternalWatersViewModel
+            {
+                PID = pid
+            },
+            "AdministrationArea" => new AdministrationAreaViewModel
+            {
+                PID = pid
+            },
+            "Bollard" => new BollardViewModel
+            {
+                PID = pid
+            },
+            "Dolphin" => new DolphinViewModel
+            {
+                PID = pid
+            },
+            "RadarRange" => new RadarRangeViewModel
+            {
+                PID = pid
+            },
+            "IsolatedDangerBeacon" => new IsolatedDangerBeaconViewModel
+            {
+                PID = pid
+            },
+            "IsolatedDangerBuoy" => new IsolatedDangerBuoyViewModel
+            {
+                PID = pid
+            },
+            "SubmarineTransitLane" => new SubmarineTransitLaneViewModel
+            {
+                PID = pid
+            },
+            "MaritimeSafetyInformationArea" => new MaritimeSafetyInformationAreaViewModel
+            {
+                PID = pid
+            },
+            "AirspaceRestriction" => new AirspaceRestrictionViewModel
+            {
+                PID = pid
+            },
+            "Sounding" => new SoundingViewModel
+            {
+                PID = pid
+            },
+            "TrafficSeparationSchemeBoundary" => new TrafficSeparationSchemeBoundaryViewModel
+            {
+                PID = pid
+            },
+            "DumpingGround" => new DumpingGroundViewModel
+            {
+                PID = pid
+            },
+            "AirportAirfield" => new AirportAirfieldViewModel
+            {
+                PID = pid
+            },
+            "FoulGround" => new FoulGroundViewModel
+            {
+                PID = pid
+            },
+            "LightAirObstruction" => new LightAirObstructionViewModel
+            {
+                PID = pid
+            },
+            "MooringBuoy" => new MooringBuoyViewModel
+            {
+                PID = pid
+            },
+            "UnderwaterAwashRock" => new UnderwaterAwashRockViewModel
+            {
+                PID = pid
+            },
+            "CableOverhead" => new CableOverheadViewModel
+            {
+                PID = pid
+            },
+            "ControlledAirspace" => new ControlledAirspaceViewModel
+            {
+                PID = pid
+            },
+            "Obstruction" => new ObstructionViewModel
+            {
+                PID = pid
+            },
+            "FishingGround" => new FishingGroundViewModel
+            {
+                PID = pid
+            },
+            "FishingFacility" => new FishingFacilityViewModel
+            {
+                PID = pid
+            },
+            "NavigationSystem" => new NavigationSystemViewModel
+            {
+                PID = pid
+            },
+            "TrafficSeparationSchemeCrossing" => new TrafficSeparationSchemeCrossingViewModel
+            {
+                PID = pid
+            },
+            "TrafficSeparationSchemeLanePart" => new TrafficSeparationSchemeLanePartViewModel
+            {
+                PID = pid
+            },
+            "TerritorialSeaArea" => new TerritorialSeaAreaViewModel
+            {
+                PID = pid
+            },
+            "LateralBeacon" => new LateralBeaconViewModel
+            {
+                PID = pid
+            },
+            "CoastGuardStation" => new CoastGuardStationViewModel
+            {
+                PID = pid
+            },
+            "SeparationZoneOrLine" => new SeparationZoneOrLineViewModel
+            {
+                PID = pid
+            },
+            "BottomFeature" => new BottomFeatureViewModel
+            {
+                PID = pid
+            },
+            "ArchipelagicBaseline" => new ArchipelagicBaselineViewModel
+            {
+                PID = pid
+            },
+            "SmallBottomObject" => new SmallBottomObjectViewModel
+            {
+                PID = pid
+            },
+            "ExclusiveEconomicZone" => new ExclusiveEconomicZoneViewModel
+            {
+                PID = pid
+            },
+            "RadarStation" => new RadarStationViewModel
+            {
+                PID = pid
+            },
+            "DivingLocation" => new DivingLocationViewModel
+            {
+                PID = pid
+            },
+            "RestrictedArea" => new RestrictedAreaViewModel
+            {
+                PID = pid
+            },
+            "CableSubmarine" => new CableSubmarineViewModel
+            {
+                PID = pid
+            },
+            "Wreck" => new WreckViewModel
+            {
+                PID = pid
+            },
+            "QRoute" => new QRouteViewModel
+            {
+                PID = pid
+            },
+            "CompletenessOfProductSpecification" => new CompletenessOfProductSpecificationViewModel
+            {
+                PID = pid
+            },
+            "RescueStation" => new RescueStationViewModel
+            {
+                PID = pid
+            },
+            "CardinalBeacon" => new CardinalBeaconViewModel
+            {
+                PID = pid
+            },
+            "LightVessel" => new LightVesselViewModel
+            {
+                PID = pid
+            },
+            "FisheryZone" => new FisheryZoneViewModel
+            {
+                PID = pid
+            },
+            "DredgedArea" => new DredgedAreaViewModel
+            {
+                PID = pid
+            },
+            "FerryRoute" => new FerryRouteViewModel
+            {
+                PID = pid
+            },
+            "ShorelineConstruction" => new ShorelineConstructionViewModel
+            {
+                PID = pid
+            },
+            "CautionArea" => new CautionAreaViewModel
+            {
+                PID = pid
+            },
+            "DeepWaterRoutePart" => new DeepWaterRoutePartViewModel
+            {
+                PID = pid
+            },
+            "CurrentNonGravitational" => new CurrentNonGravitationalViewModel
+            {
+                PID = pid
+            },
+            "DataCoverage" => new DataCoverageViewModel
+            {
+                PID = pid
+            },
+            "SeabedArea" => new SeabedAreaViewModel
+            {
+                PID = pid
+            },
+            "SpecialPurposeGeneralBuoy" => new SpecialPurposeGeneralBuoyViewModel
+            {
+                PID = pid
+            },
+            "LightSectored" => new LightSectoredViewModel
+            {
+                PID = pid
+            },
+            "IceLine" => new IceLineViewModel
+            {
+                PID = pid
+            },
+            "AnchorageArea" => new AnchorageAreaViewModel
+            {
+                PID = pid
+            },
+            "LateralBuoy" => new LateralBuoyViewModel
+            {
+                PID = pid
+            },
+            "TrafficSeparationSchemeRoundabout" => new TrafficSeparationSchemeRoundaboutViewModel
+            {
+                PID = pid
+            },
+            "DeepWaterRouteCentreline" => new DeepWaterRouteCentrelineViewModel
+            {
+                PID = pid
+            },
+            "LightFloat" => new LightFloatViewModel
+            {
+                PID = pid
+            },
+            "LightAllAround" => new LightAllAroundViewModel
+            {
+                PID = pid
+            },
+            "Coastline" => new CoastlineViewModel
+            {
+                PID = pid
+            },
+            "SeaAreaNamedWaterArea" => new SeaAreaNamedWaterAreaViewModel
+            {
+                PID = pid
+            },
+            "DropZone" => new DropZoneViewModel
+            {
+                PID = pid
+            },
+            "Conveyor" => new ConveyorViewModel
+            {
+                PID = pid
+            },
+            "LineOfDelimitation" => new LineOfDelimitationViewModel
+            {
+                PID = pid
+            },
+            "StraightTerritorialSeaBaseline" => new StraightTerritorialSeaBaselineViewModel
+            {
+                PID = pid
+            },
+            "SafeWaterBeacon" => new SafeWaterBeaconViewModel
+            {
+                PID = pid
+            },
+            "SpecialPurposeGeneralBeacon" => new SpecialPurposeGeneralBeaconViewModel
+            {
+                PID = pid
+            },
+            _ => throw new InvalidOperationException(),
+        };
+        public static ICollection<string> InformationAssociationBindings(string association, string role) => (association, role) switch
+        {
+            _ => throw new InvalidOperationException(),
+        };
+        public static ICollection<string> FeatureAssociationBindings(string association, string role) => (association, role) switch
+        {
+            _ => throw new InvalidOperationException(),
         };
     }
 
@@ -2924,7 +3029,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
     [CategoryOrder("ReferenceToAPublication", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class ReferenceToAPublicationViewModel : ViewModelBase {
+    public partial class ReferenceToAPublicationViewModel : InformationViewModel<ReferenceToAPublication> {
         private DateOnly? _editionDate = default;
         [Category("ReferenceToAPublication")]
         public DateOnly? editionDate {
@@ -2954,12 +3059,9 @@ namespace S100Framework.WPF.ViewModel.S501 {
 
         [Category("ReferenceToAPublication")]
         public ObservableCollection<information> information { get; set; } = new();
+        public override informationBindingDefinition[] informationBindingDefinitions => ReferenceToAPublication._informationBindingDefinitions;
 
-        public class ReferenceToAPublicationRefIdViewModel : InformationRefIdViewModel {
-            public override string[] AssociationTypes => ["ReferenceToAPublication"];
-        }
-
-        public void Load(DomainModel.S501.InformationTypes.ReferenceToAPublication instance) {
+        public override InformationViewModel<ReferenceToAPublication> Load(DomainModel.S501.InformationTypes.ReferenceToAPublication instance) {
             editionDate = instance.editionDate;
             editionNumber = instance.editionNumber;
             onlineResource.Clear();
@@ -2970,6 +3072,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
             if (instance.information is not null)
                 foreach (var e in instance.information)
                     information.Add(e);
+            return this;
         }
 
         public override string Serialize() {
@@ -3007,7 +3110,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
     [CategoryOrder("InstallationBuoy", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class InstallationBuoyViewModel : ViewModelBase {
+    public partial class InstallationBuoyViewModel : FeatureViewModel<InstallationBuoy> {
         [Category("InstallationBuoy")]
         public ObservableCollection<featureName> featureName { get; set; } = new();
 
@@ -3154,9 +3257,8 @@ namespace S100Framework.WPF.ViewModel.S501 {
             }
         }
 
-        public class InstallationBuoyRefIdViewModel : FeatureRefIdViewModel {
-            public override string[] AssociationTypes => ["InstallationBuoy"];
-        }
+        public override informationBindingDefinition[] informationBindingDefinitions => InstallationBuoy._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => InstallationBuoy._featureBindingDefinitions;
 
         [Browsable(false)]
         public colourPattern[] colourPatternList => [(colourPattern)1, (colourPattern)2, (colourPattern)3, (colourPattern)4, (colourPattern)5, (colourPattern)6];
@@ -3182,7 +3284,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
         [Browsable(false)]
         public categoryOfInstallationBuoy[] categoryOfInstallationBuoyList => [(categoryOfInstallationBuoy)1, (categoryOfInstallationBuoy)2];
 
-        public void Load(DomainModel.S501.FeatureTypes.InstallationBuoy instance) {
+        public override FeatureViewModel<InstallationBuoy> Load(DomainModel.S501.FeatureTypes.InstallationBuoy instance) {
             featureName.Clear();
             if (instance.featureName is not null)
                 foreach (var e in instance.featureName)
@@ -3225,6 +3327,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
                     natureOfConstruction.Add(e);
             radarConspicuous = instance.radarConspicuous;
             categoryOfInstallationBuoy = instance.categoryOfInstallationBuoy;
+            return this;
         }
 
         public override string Serialize() {
@@ -3301,7 +3404,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
     [CategoryOrder("DepthArea", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class DepthAreaViewModel : ViewModelBase {
+    public partial class DepthAreaViewModel : FeatureViewModel<DepthArea> {
         private Decimal _depthRangeMaximumValue;
         [Category("DepthArea")]
         public Decimal depthRangeMaximumValue {
@@ -3354,11 +3457,10 @@ namespace S100Framework.WPF.ViewModel.S501 {
             }
         }
 
-        public class DepthAreaRefIdViewModel : FeatureRefIdViewModel {
-            public override string[] AssociationTypes => ["DepthArea"];
-        }
+        public override informationBindingDefinition[] informationBindingDefinitions => DepthArea._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => DepthArea._featureBindingDefinitions;
 
-        public void Load(DomainModel.S501.FeatureTypes.DepthArea instance) {
+        public override FeatureViewModel<DepthArea> Load(DomainModel.S501.FeatureTypes.DepthArea instance) {
             depthRangeMaximumValue = instance.depthRangeMaximumValue;
             interoperabilityIdentifier = instance.interoperabilityIdentifier;
             information.Clear();
@@ -3371,6 +3473,8 @@ namespace S100Framework.WPF.ViewModel.S501 {
                 sourceIdentification = new();
                 sourceIdentification.Load(instance.sourceIdentification);
             }
+
+            return this;
         }
 
         public override string Serialize() {
@@ -3407,7 +3511,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
     [CategoryOrder("RadioCallingInPoint", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class RadioCallingInPointViewModel : ViewModelBase {
+    public partial class RadioCallingInPointViewModel : FeatureViewModel<RadioCallingInPoint> {
         private categoryOfReportingRadioCallingInPoint? _categoryOfReportingRadioCallingInPoint = default;
         [DomainModel.EnumerationAttribute(nameof(categoryOfReportingRadioCallingInPointList))]
         [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
@@ -3493,9 +3597,8 @@ namespace S100Framework.WPF.ViewModel.S501 {
             }
         }
 
-        public class RadioCallingInPointRefIdViewModel : FeatureRefIdViewModel {
-            public override string[] AssociationTypes => ["RadioCallingInPoint"];
-        }
+        public override informationBindingDefinition[] informationBindingDefinitions => RadioCallingInPoint._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => RadioCallingInPoint._featureBindingDefinitions;
 
         [Browsable(false)]
         public categoryOfReportingRadioCallingInPoint[] categoryOfReportingRadioCallingInPointList => [(categoryOfReportingRadioCallingInPoint)501];
@@ -3506,7 +3609,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
         [Browsable(false)]
         public trafficFlow[] trafficFlowList => [(trafficFlow)1, (trafficFlow)2, (trafficFlow)3, (trafficFlow)4];
 
-        public void Load(DomainModel.S501.FeatureTypes.RadioCallingInPoint instance) {
+        public override FeatureViewModel<RadioCallingInPoint> Load(DomainModel.S501.FeatureTypes.RadioCallingInPoint instance) {
             categoryOfReportingRadioCallingInPoint = instance.categoryOfReportingRadioCallingInPoint;
             information.Clear();
             if (instance.information is not null)
@@ -3541,6 +3644,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
             }
 
             trafficFlow = instance.trafficFlow;
+            return this;
         }
 
         public override string Serialize() {
@@ -3604,7 +3708,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
     [CategoryOrder("PatrolArea", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class PatrolAreaViewModel : ViewModelBase {
+    public partial class PatrolAreaViewModel : FeatureViewModel<PatrolArea> {
         private String _agencyResponsibleForProduction = string.Empty;
         [Category("PatrolArea")]
         public String agencyResponsibleForProduction {
@@ -3690,10 +3794,8 @@ namespace S100Framework.WPF.ViewModel.S501 {
         [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("PatrolArea")]
         public ObservableCollection<status> status { get; set; } = new();
-
-        public class PatrolAreaRefIdViewModel : FeatureRefIdViewModel {
-            public override string[] AssociationTypes => ["PatrolArea"];
-        }
+        public override informationBindingDefinition[] informationBindingDefinitions => PatrolArea._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => PatrolArea._featureBindingDefinitions;
 
         [Browsable(false)]
         public categoryOfPatrolArea[] categoryOfPatrolAreaList => [(categoryOfPatrolArea)501, (categoryOfPatrolArea)502];
@@ -3701,7 +3803,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
         [Browsable(false)]
         public status[] statusList => [(status)1, (status)501];
 
-        public void Load(DomainModel.S501.FeatureTypes.PatrolArea instance) {
+        public override FeatureViewModel<PatrolArea> Load(DomainModel.S501.FeatureTypes.PatrolArea instance) {
             agencyResponsibleForProduction = instance.agencyResponsibleForProduction;
             reportedDate = instance.reportedDate;
             nationality = instance.nationality;
@@ -3725,6 +3827,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
             if (instance.status is not null)
                 foreach (var e in instance.status)
                     status.Add(e);
+            return this;
         }
 
         public override string Serialize() {
@@ -3775,7 +3878,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
     [CategoryOrder("Checkpoint", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class CheckpointViewModel : ViewModelBase {
+    public partial class CheckpointViewModel : FeatureViewModel<Checkpoint> {
         private String _controllingAuthority = string.Empty;
         [Category("Checkpoint")]
         public String controllingAuthority {
@@ -3849,9 +3952,8 @@ namespace S100Framework.WPF.ViewModel.S501 {
             }
         }
 
-        public class CheckpointRefIdViewModel : FeatureRefIdViewModel {
-            public override string[] AssociationTypes => ["Checkpoint"];
-        }
+        public override informationBindingDefinition[] informationBindingDefinitions => Checkpoint._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => Checkpoint._featureBindingDefinitions;
 
         [Browsable(false)]
         public status[] statusList => [(status)1, (status)2, (status)5, (status)7, (status)9, (status)12];
@@ -3859,7 +3961,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
         [Browsable(false)]
         public categoryOfCheckpoint[] categoryOfCheckpointList => [(categoryOfCheckpoint)1, (categoryOfCheckpoint)501];
 
-        public void Load(DomainModel.S501.FeatureTypes.Checkpoint instance) {
+        public override FeatureViewModel<Checkpoint> Load(DomainModel.S501.FeatureTypes.Checkpoint instance) {
             controllingAuthority = instance.controllingAuthority;
             featureName.Clear();
             if (instance.featureName is not null)
@@ -3877,6 +3979,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
             interoperabilityIdentifier = instance.interoperabilityIdentifier;
             scaleMinimum = instance.scaleMinimum;
             categoryOfCheckpoint = instance.categoryOfCheckpoint;
+            return this;
         }
 
         public override string Serialize() {
@@ -3925,7 +4028,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
     [CategoryOrder("MarineManagementArea", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class MarineManagementAreaViewModel : ViewModelBase {
+    public partial class MarineManagementAreaViewModel : FeatureViewModel<MarineManagementArea> {
         private restriction? _restriction = default;
         [DomainModel.EnumerationAttribute(nameof(restrictionList))]
         [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
@@ -4064,10 +4167,8 @@ namespace S100Framework.WPF.ViewModel.S501 {
 
         [Category("MarineManagementArea")]
         public ObservableCollection<String> species { get; set; } = new();
-
-        public class MarineManagementAreaRefIdViewModel : FeatureRefIdViewModel {
-            public override string[] AssociationTypes => ["MarineManagementArea"];
-        }
+        public override informationBindingDefinition[] informationBindingDefinitions => MarineManagementArea._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => MarineManagementArea._featureBindingDefinitions;
 
         [Browsable(false)]
         public restriction[] restrictionList => [(restriction)1, (restriction)2, (restriction)3, (restriction)4, (restriction)5, (restriction)6, (restriction)7, (restriction)8, (restriction)9, (restriction)10, (restriction)11, (restriction)12, (restriction)13, (restriction)14, (restriction)15, (restriction)16, (restriction)17, (restriction)18, (restriction)19, (restriction)20, (restriction)21, (restriction)22, (restriction)23, (restriction)24, (restriction)25, (restriction)26, (restriction)27];
@@ -4087,7 +4188,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
         [Browsable(false)]
         public categoryofRestrictions[] categoryofRestrictionsList => [(categoryofRestrictions)4, (categoryofRestrictions)5, (categoryofRestrictions)6, (categoryofRestrictions)7, (categoryofRestrictions)10, (categoryofRestrictions)20, (categoryofRestrictions)22, (categoryofRestrictions)23, (categoryofRestrictions)27, (categoryofRestrictions)28, (categoryofRestrictions)31, (categoryofRestrictions)32];
 
-        public void Load(DomainModel.S501.FeatureTypes.MarineManagementArea instance) {
+        public override FeatureViewModel<MarineManagementArea> Load(DomainModel.S501.FeatureTypes.MarineManagementArea instance) {
             restriction = instance.restriction;
             sourceIdentification = new();
             if (instance.sourceIdentification != null) {
@@ -4126,6 +4227,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
             if (instance.species is not null)
                 foreach (var e in instance.species)
                     species.Add(e);
+            return this;
         }
 
         public override string Serialize() {
@@ -4197,7 +4299,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
     [CategoryOrder("DepthContour", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class DepthContourViewModel : ViewModelBase {
+    public partial class DepthContourViewModel : FeatureViewModel<DepthContour> {
         [Category("DepthContour")]
         public ObservableCollection<information> information { get; set; } = new();
 
@@ -4275,11 +4377,10 @@ namespace S100Framework.WPF.ViewModel.S501 {
             }
         }
 
-        public class DepthContourRefIdViewModel : FeatureRefIdViewModel {
-            public override string[] AssociationTypes => ["DepthContour"];
-        }
+        public override informationBindingDefinition[] informationBindingDefinitions => DepthContour._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => DepthContour._featureBindingDefinitions;
 
-        public void Load(DomainModel.S501.FeatureTypes.DepthContour instance) {
+        public override FeatureViewModel<DepthContour> Load(DomainModel.S501.FeatureTypes.DepthContour instance) {
             information.Clear();
             if (instance.information is not null)
                 foreach (var e in instance.information)
@@ -4300,6 +4401,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
             agencyResponsibleForProduction = instance.agencyResponsibleForProduction;
             interoperabilityIdentifier = instance.interoperabilityIdentifier;
             scaleMinimum = instance.scaleMinimum;
+            return this;
         }
 
         public override string Serialize() {
@@ -4340,7 +4442,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
     [CategoryOrder("EnvironmentallySensitiveSeaArea", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class EnvironmentallySensitiveSeaAreaViewModel : ViewModelBase {
+    public partial class EnvironmentallySensitiveSeaAreaViewModel : FeatureViewModel<EnvironmentallySensitiveSeaArea> {
         [Category("EnvironmentallySensitiveSeaArea")]
         public ObservableCollection<featureName> featureName { get; set; } = new();
 
@@ -4358,12 +4460,10 @@ namespace S100Framework.WPF.ViewModel.S501 {
 
         [Category("EnvironmentallySensitiveSeaArea")]
         public ObservableCollection<information> information { get; set; } = new();
+        public override informationBindingDefinition[] informationBindingDefinitions => EnvironmentallySensitiveSeaArea._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => EnvironmentallySensitiveSeaArea._featureBindingDefinitions;
 
-        public class EnvironmentallySensitiveSeaAreaRefIdViewModel : FeatureRefIdViewModel {
-            public override string[] AssociationTypes => ["EnvironmentallySensitiveSeaArea"];
-        }
-
-        public void Load(DomainModel.S501.FeatureTypes.EnvironmentallySensitiveSeaArea instance) {
+        public override FeatureViewModel<EnvironmentallySensitiveSeaArea> Load(DomainModel.S501.FeatureTypes.EnvironmentallySensitiveSeaArea instance) {
             featureName.Clear();
             if (instance.featureName is not null)
                 foreach (var e in instance.featureName)
@@ -4373,6 +4473,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
             if (instance.information is not null)
                 foreach (var e in instance.information)
                     information.Add(e);
+            return this;
         }
 
         public override string Serialize() {
@@ -4408,7 +4509,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
     [CategoryOrder("Road", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class RoadViewModel : ViewModelBase {
+    public partial class RoadViewModel : FeatureViewModel<Road> {
         [DomainModel.EnumerationAttribute(nameof(natureOfConstructionList))]
         [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("Road")]
@@ -4501,9 +4602,8 @@ namespace S100Framework.WPF.ViewModel.S501 {
             }
         }
 
-        public class RoadRefIdViewModel : FeatureRefIdViewModel {
-            public override string[] AssociationTypes => ["Road"];
-        }
+        public override informationBindingDefinition[] informationBindingDefinitions => Road._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => Road._featureBindingDefinitions;
 
         [Browsable(false)]
         public natureOfConstruction[] natureOfConstructionList => [(natureOfConstruction)4, (natureOfConstruction)5];
@@ -4517,7 +4617,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
         [Browsable(false)]
         public status[] statusList => [(status)1, (status)4, (status)6, (status)7, (status)8, (status)12, (status)13, (status)14];
 
-        public void Load(DomainModel.S501.FeatureTypes.Road instance) {
+        public override FeatureViewModel<Road> Load(DomainModel.S501.FeatureTypes.Road instance) {
             natureOfConstruction.Clear();
             if (instance.natureOfConstruction is not null)
                 foreach (var e in instance.natureOfConstruction)
@@ -4540,6 +4640,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
                 foreach (var e in instance.status)
                     status.Add(e);
             scaleMinimum = instance.scaleMinimum;
+            return this;
         }
 
         public override string Serialize() {
@@ -4595,7 +4696,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
     [CategoryOrder("River", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class RiverViewModel : ViewModelBase {
+    public partial class RiverViewModel : FeatureViewModel<River> {
         private Int32? _scaleMinimum = default;
         [Category("River")]
         public Int32? scaleMinimum {
@@ -4630,15 +4731,13 @@ namespace S100Framework.WPF.ViewModel.S501 {
 
         [Category("River")]
         public ObservableCollection<information> information { get; set; } = new();
-
-        public class RiverRefIdViewModel : FeatureRefIdViewModel {
-            public override string[] AssociationTypes => ["River"];
-        }
+        public override informationBindingDefinition[] informationBindingDefinitions => River._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => River._featureBindingDefinitions;
 
         [Browsable(false)]
         public status[] statusList => [(status)5];
 
-        public void Load(DomainModel.S501.FeatureTypes.River instance) {
+        public override FeatureViewModel<River> Load(DomainModel.S501.FeatureTypes.River instance) {
             scaleMinimum = instance.scaleMinimum;
             featureName.Clear();
             if (instance.featureName is not null)
@@ -4653,6 +4752,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
             if (instance.information is not null)
                 foreach (var e in instance.information)
                     information.Add(e);
+            return this;
         }
 
         public override string Serialize() {
@@ -4695,7 +4795,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
     [CategoryOrder("MilitaryPracticeArea", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class MilitaryPracticeAreaViewModel : ViewModelBase {
+    public partial class MilitaryPracticeAreaViewModel : FeatureViewModel<MilitaryPracticeArea> {
         private altitudeRangeViewModel? _altitudeRange;
         [Category("MilitaryPracticeArea")]
         [Xceed.Wpf.Toolkit.PropertyGrid.Attributes.ExpandableObject]
@@ -4926,9 +5026,8 @@ namespace S100Framework.WPF.ViewModel.S501 {
             }
         }
 
-        public class MilitaryPracticeAreaRefIdViewModel : FeatureRefIdViewModel {
-            public override string[] AssociationTypes => ["MilitaryPracticeArea"];
-        }
+        public override informationBindingDefinition[] informationBindingDefinitions => MilitaryPracticeArea._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => MilitaryPracticeArea._featureBindingDefinitions;
 
         [Browsable(false)]
         public depthUnits[] depthUnitsList => [(depthUnits)1];
@@ -4951,7 +5050,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
         [Browsable(false)]
         public status[] statusList => [(status)1, (status)2, (status)5, (status)6, (status)7, (status)16, (status)17, (status)501, (status)503, (status)517, (status)520];
 
-        public void Load(DomainModel.S501.FeatureTypes.MilitaryPracticeArea instance) {
+        public override FeatureViewModel<MilitaryPracticeArea> Load(DomainModel.S501.FeatureTypes.MilitaryPracticeArea instance) {
             altitudeRange = new();
             if (instance.altitudeRange != null) {
                 altitudeRange = new();
@@ -5011,6 +5110,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
             }
 
             controllingAuthority = instance.controllingAuthority;
+            return this;
         }
 
         public override string Serialize() {
@@ -5101,7 +5201,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
     [CategoryOrder("DiscolouredWater", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class DiscolouredWaterViewModel : ViewModelBase {
+    public partial class DiscolouredWaterViewModel : FeatureViewModel<DiscolouredWater> {
         [Category("DiscolouredWater")]
         public ObservableCollection<information> information { get; set; } = new();
 
@@ -5129,17 +5229,17 @@ namespace S100Framework.WPF.ViewModel.S501 {
             }
         }
 
-        public class DiscolouredWaterRefIdViewModel : FeatureRefIdViewModel {
-            public override string[] AssociationTypes => ["DiscolouredWater"];
-        }
+        public override informationBindingDefinition[] informationBindingDefinitions => DiscolouredWater._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => DiscolouredWater._featureBindingDefinitions;
 
-        public void Load(DomainModel.S501.FeatureTypes.DiscolouredWater instance) {
+        public override FeatureViewModel<DiscolouredWater> Load(DomainModel.S501.FeatureTypes.DiscolouredWater instance) {
             information.Clear();
             if (instance.information is not null)
                 foreach (var e in instance.information)
                     information.Add(e);
             scaleMinimum = instance.scaleMinimum;
             reportedDate = instance.reportedDate;
+            return this;
         }
 
         public override string Serialize() {
@@ -5172,7 +5272,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
     [CategoryOrder("CardinalBuoy", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class CardinalBuoyViewModel : ViewModelBase {
+    public partial class CardinalBuoyViewModel : FeatureViewModel<CardinalBuoy> {
         private categoryOfCardinalMark _categoryOfCardinalMark;
         [DomainModel.EnumerationAttribute(nameof(categoryOfCardinalMarkList))]
         [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
@@ -5364,9 +5464,8 @@ namespace S100Framework.WPF.ViewModel.S501 {
             }
         }
 
-        public class CardinalBuoyRefIdViewModel : FeatureRefIdViewModel {
-            public override string[] AssociationTypes => ["CardinalBuoy"];
-        }
+        public override informationBindingDefinition[] informationBindingDefinitions => CardinalBuoy._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => CardinalBuoy._featureBindingDefinitions;
 
         [Browsable(false)]
         public categoryOfCardinalMark[] categoryOfCardinalMarkList => [(categoryOfCardinalMark)1, (categoryOfCardinalMark)2, (categoryOfCardinalMark)3, (categoryOfCardinalMark)4];
@@ -5389,7 +5488,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
         [Browsable(false)]
         public colourPattern[] colourPatternList => [(colourPattern)1, (colourPattern)2, (colourPattern)3, (colourPattern)4, (colourPattern)5, (colourPattern)6];
 
-        public void Load(DomainModel.S501.FeatureTypes.CardinalBuoy instance) {
+        public override FeatureViewModel<CardinalBuoy> Load(DomainModel.S501.FeatureTypes.CardinalBuoy instance) {
             categoryOfCardinalMark = instance.categoryOfCardinalMark;
             fixedDateRange = new();
             if (instance.fixedDateRange != null) {
@@ -5442,6 +5541,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
                 foreach (var e in instance.information)
                     information.Add(e);
             pictorialRepresentation = instance.pictorialRepresentation;
+            return this;
         }
 
         public override string Serialize() {
@@ -5521,7 +5621,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
     [CategoryOrder("SafeWaterBuoy", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class SafeWaterBuoyViewModel : ViewModelBase {
+    public partial class SafeWaterBuoyViewModel : FeatureViewModel<SafeWaterBuoy> {
         private buoyShape _buoyShape;
         [DomainModel.EnumerationAttribute(nameof(buoyShapeList))]
         [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
@@ -5698,10 +5798,8 @@ namespace S100Framework.WPF.ViewModel.S501 {
 
         [Category("SafeWaterBuoy")]
         public ObservableCollection<information> information { get; set; } = new();
-
-        public class SafeWaterBuoyRefIdViewModel : FeatureRefIdViewModel {
-            public override string[] AssociationTypes => ["SafeWaterBuoy"];
-        }
+        public override informationBindingDefinition[] informationBindingDefinitions => SafeWaterBuoy._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => SafeWaterBuoy._featureBindingDefinitions;
 
         [Browsable(false)]
         public buoyShape[] buoyShapeList => [(buoyShape)1, (buoyShape)2, (buoyShape)3, (buoyShape)4, (buoyShape)5, (buoyShape)6, (buoyShape)7, (buoyShape)8];
@@ -5721,7 +5819,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
         [Browsable(false)]
         public colourPattern[] colourPatternList => [(colourPattern)1, (colourPattern)2, (colourPattern)3, (colourPattern)4, (colourPattern)5, (colourPattern)6];
 
-        public void Load(DomainModel.S501.FeatureTypes.SafeWaterBuoy instance) {
+        public override FeatureViewModel<SafeWaterBuoy> Load(DomainModel.S501.FeatureTypes.SafeWaterBuoy instance) {
             buoyShape = instance.buoyShape;
             colour.Clear();
             if (instance.colour is not null)
@@ -5773,6 +5871,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
             if (instance.information is not null)
                 foreach (var e in instance.information)
                     information.Add(e);
+            return this;
         }
 
         public override string Serialize() {
@@ -5850,7 +5949,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
     [CategoryOrder("RadioStation", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class RadioStationViewModel : ViewModelBase {
+    public partial class RadioStationViewModel : FeatureViewModel<RadioStation> {
         [Category("RadioStation")]
         public ObservableCollection<featureName> featureName { get; set; } = new();
 
@@ -5981,9 +6080,8 @@ namespace S100Framework.WPF.ViewModel.S501 {
             }
         }
 
-        public class RadioStationRefIdViewModel : FeatureRefIdViewModel {
-            public override string[] AssociationTypes => ["RadioStation"];
-        }
+        public override informationBindingDefinition[] informationBindingDefinitions => RadioStation._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => RadioStation._featureBindingDefinitions;
 
         [Browsable(false)]
         public status[] statusList => [(status)1, (status)2, (status)4, (status)5, (status)7, (status)8];
@@ -5991,7 +6089,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
         [Browsable(false)]
         public categoryOfRadioStation[] categoryOfRadioStationList => [(categoryOfRadioStation)5, (categoryOfRadioStation)10, (categoryOfRadioStation)11, (categoryOfRadioStation)14, (categoryOfRadioStation)19, (categoryOfRadioStation)20];
 
-        public void Load(DomainModel.S501.FeatureTypes.RadioStation instance) {
+        public override FeatureViewModel<RadioStation> Load(DomainModel.S501.FeatureTypes.RadioStation instance) {
             featureName.Clear();
             if (instance.featureName is not null)
                 foreach (var e in instance.featureName)
@@ -6036,6 +6134,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
                     periodicDateRange.Add(e);
             estimatedRangeofTransmission = instance.estimatedRangeofTransmission;
             interoperabilityIdentifier = instance.interoperabilityIdentifier;
+            return this;
         }
 
         public override string Serialize() {
@@ -6102,7 +6201,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
     [CategoryOrder("MilitaryExerciseAirspace", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class MilitaryExerciseAirspaceViewModel : ViewModelBase {
+    public partial class MilitaryExerciseAirspaceViewModel : FeatureViewModel<MilitaryExerciseAirspace> {
         [Category("MilitaryExerciseAirspace")]
         public ObservableCollection<featureName> featureName { get; set; } = new();
 
@@ -6183,11 +6282,10 @@ namespace S100Framework.WPF.ViewModel.S501 {
             }
         }
 
-        public class MilitaryExerciseAirspaceRefIdViewModel : FeatureRefIdViewModel {
-            public override string[] AssociationTypes => ["MilitaryExerciseAirspace"];
-        }
+        public override informationBindingDefinition[] informationBindingDefinitions => MilitaryExerciseAirspace._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => MilitaryExerciseAirspace._featureBindingDefinitions;
 
-        public void Load(DomainModel.S501.FeatureTypes.MilitaryExerciseAirspace instance) {
+        public override FeatureViewModel<MilitaryExerciseAirspace> Load(DomainModel.S501.FeatureTypes.MilitaryExerciseAirspace instance) {
             featureName.Clear();
             if (instance.featureName is not null)
                 foreach (var e in instance.featureName)
@@ -6211,6 +6309,8 @@ namespace S100Framework.WPF.ViewModel.S501 {
                 flightLevel = new();
                 flightLevel.Load(instance.flightLevel);
             }
+
+            return this;
         }
 
         public override string Serialize() {
@@ -6256,7 +6356,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
     [CategoryOrder("ContiguousZone", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class ContiguousZoneViewModel : ViewModelBase {
+    public partial class ContiguousZoneViewModel : FeatureViewModel<ContiguousZone> {
         private sourceIdentificationViewModel? _sourceIdentification;
         [Category("ContiguousZone")]
         [Xceed.Wpf.Toolkit.PropertyGrid.Attributes.ExpandableObject]
@@ -6344,15 +6444,13 @@ namespace S100Framework.WPF.ViewModel.S501 {
 
         [Category("ContiguousZone")]
         public ObservableCollection<information> information { get; set; } = new();
-
-        public class ContiguousZoneRefIdViewModel : FeatureRefIdViewModel {
-            public override string[] AssociationTypes => ["ContiguousZone"];
-        }
+        public override informationBindingDefinition[] informationBindingDefinitions => ContiguousZone._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => ContiguousZone._featureBindingDefinitions;
 
         [Browsable(false)]
         public status[] statusList => [(status)502, (status)504, (status)520];
 
-        public void Load(DomainModel.S501.FeatureTypes.ContiguousZone instance) {
+        public override FeatureViewModel<ContiguousZone> Load(DomainModel.S501.FeatureTypes.ContiguousZone instance) {
             sourceIdentification = new();
             if (instance.sourceIdentification != null) {
                 sourceIdentification = new();
@@ -6385,6 +6483,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
             if (instance.information is not null)
                 foreach (var e in instance.information)
                     information.Add(e);
+            return this;
         }
 
         public override string Serialize() {
@@ -6440,7 +6539,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
     [CategoryOrder("NormalBaseline", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class NormalBaselineViewModel : ViewModelBase {
+    public partial class NormalBaselineViewModel : FeatureViewModel<NormalBaseline> {
         [Category("NormalBaseline")]
         public ObservableCollection<information> information { get; set; } = new();
 
@@ -6519,14 +6618,13 @@ namespace S100Framework.WPF.ViewModel.S501 {
             }
         }
 
-        public class NormalBaselineRefIdViewModel : FeatureRefIdViewModel {
-            public override string[] AssociationTypes => ["NormalBaseline"];
-        }
+        public override informationBindingDefinition[] informationBindingDefinitions => NormalBaseline._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => NormalBaseline._featureBindingDefinitions;
 
         [Browsable(false)]
         public status[] statusList => [(status)502, (status)504];
 
-        public void Load(DomainModel.S501.FeatureTypes.NormalBaseline instance) {
+        public override FeatureViewModel<NormalBaseline> Load(DomainModel.S501.FeatureTypes.NormalBaseline instance) {
             information.Clear();
             if (instance.information is not null)
                 foreach (var e in instance.information)
@@ -6541,6 +6639,8 @@ namespace S100Framework.WPF.ViewModel.S501 {
                 sourceIdentification = new();
                 sourceIdentification.Load(instance.sourceIdentification);
             }
+
+            return this;
         }
 
         public override string Serialize() {
@@ -6581,7 +6681,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
     [CategoryOrder("CableArea", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class CableAreaViewModel : ViewModelBase {
+    public partial class CableAreaViewModel : FeatureViewModel<CableArea> {
         [Category("CableArea")]
         public ObservableCollection<information> information { get; set; } = new();
 
@@ -6667,10 +6767,8 @@ namespace S100Framework.WPF.ViewModel.S501 {
         [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("CableArea")]
         public ObservableCollection<categoryOfCable> categoryOfCable { get; set; } = new();
-
-        public class CableAreaRefIdViewModel : FeatureRefIdViewModel {
-            public override string[] AssociationTypes => ["CableArea"];
-        }
+        public override informationBindingDefinition[] informationBindingDefinitions => CableArea._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => CableArea._featureBindingDefinitions;
 
         [Browsable(false)]
         public status[] statusList => [(status)1, (status)7, (status)13];
@@ -6681,7 +6779,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
         [Browsable(false)]
         public categoryOfCable[] categoryOfCableList => [(categoryOfCable)1, (categoryOfCable)7, (categoryOfCable)10];
 
-        public void Load(DomainModel.S501.FeatureTypes.CableArea instance) {
+        public override FeatureViewModel<CableArea> Load(DomainModel.S501.FeatureTypes.CableArea instance) {
             information.Clear();
             if (instance.information is not null)
                 foreach (var e in instance.information)
@@ -6721,6 +6819,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
             if (instance.categoryOfCable is not null)
                 foreach (var e in instance.categoryOfCable)
                     categoryOfCable.Add(e);
+            return this;
         }
 
         public override string Serialize() {
@@ -6784,7 +6883,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
     [CategoryOrder("ContinentalShelfArea", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class ContinentalShelfAreaViewModel : ViewModelBase {
+    public partial class ContinentalShelfAreaViewModel : FeatureViewModel<ContinentalShelfArea> {
         private status? _status = default;
         [DomainModel.EnumerationAttribute(nameof(statusList))]
         [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
@@ -6860,14 +6959,13 @@ namespace S100Framework.WPF.ViewModel.S501 {
             }
         }
 
-        public class ContinentalShelfAreaRefIdViewModel : FeatureRefIdViewModel {
-            public override string[] AssociationTypes => ["ContinentalShelfArea"];
-        }
+        public override informationBindingDefinition[] informationBindingDefinitions => ContinentalShelfArea._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => ContinentalShelfArea._featureBindingDefinitions;
 
         [Browsable(false)]
         public status[] statusList => [(status)502, (status)504, (status)520];
 
-        public void Load(DomainModel.S501.FeatureTypes.ContinentalShelfArea instance) {
+        public override FeatureViewModel<ContinentalShelfArea> Load(DomainModel.S501.FeatureTypes.ContinentalShelfArea instance) {
             status = instance.status;
             inDispute = instance.inDispute;
             sourceIdentification = new();
@@ -6894,6 +6992,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
                 foreach (var e in instance.nationality)
                     nationality.Add(e);
             interoperabilityIdentifier = instance.interoperabilityIdentifier;
+            return this;
         }
 
         public override string Serialize() {
@@ -6947,7 +7046,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
     [CategoryOrder("InternalWaters", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class InternalWatersViewModel : ViewModelBase {
+    public partial class InternalWatersViewModel : FeatureViewModel<InternalWaters> {
         [Category("InternalWaters")]
         public ObservableCollection<String> nationality { get; set; } = new();
 
@@ -7032,14 +7131,13 @@ namespace S100Framework.WPF.ViewModel.S501 {
             }
         }
 
-        public class InternalWatersRefIdViewModel : FeatureRefIdViewModel {
-            public override string[] AssociationTypes => ["InternalWaters"];
-        }
+        public override informationBindingDefinition[] informationBindingDefinitions => InternalWaters._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => InternalWaters._featureBindingDefinitions;
 
         [Browsable(false)]
         public status[] statusList => [(status)502, (status)504, (status)520];
 
-        public void Load(DomainModel.S501.FeatureTypes.InternalWaters instance) {
+        public override FeatureViewModel<InternalWaters> Load(DomainModel.S501.FeatureTypes.InternalWaters instance) {
             nationality.Clear();
             if (instance.nationality is not null)
                 foreach (var e in instance.nationality)
@@ -7063,6 +7161,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
             lineTypeGeodesic = instance.lineTypeGeodesic;
             reportedDate = instance.reportedDate;
             status = instance.status;
+            return this;
         }
 
         public override string Serialize() {
@@ -7113,7 +7212,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
     [CategoryOrder("AdministrationArea", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class AdministrationAreaViewModel : ViewModelBase {
+    public partial class AdministrationAreaViewModel : FeatureViewModel<AdministrationArea> {
         private String _pictorialRepresentation = string.Empty;
         [Category("AdministrationArea")]
         public String pictorialRepresentation {
@@ -7172,15 +7271,13 @@ namespace S100Framework.WPF.ViewModel.S501 {
 
         [Category("AdministrationArea")]
         public ObservableCollection<String> nationality { get; set; } = new();
-
-        public class AdministrationAreaRefIdViewModel : FeatureRefIdViewModel {
-            public override string[] AssociationTypes => ["AdministrationArea"];
-        }
+        public override informationBindingDefinition[] informationBindingDefinitions => AdministrationArea._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => AdministrationArea._featureBindingDefinitions;
 
         [Browsable(false)]
         public jurisdiction[] jurisdictionList => [(jurisdiction)1, (jurisdiction)2, (jurisdiction)3];
 
-        public void Load(DomainModel.S501.FeatureTypes.AdministrationArea instance) {
+        public override FeatureViewModel<AdministrationArea> Load(DomainModel.S501.FeatureTypes.AdministrationArea instance) {
             pictorialRepresentation = instance.pictorialRepresentation;
             inDispute = instance.inDispute;
             jurisdiction = instance.jurisdiction;
@@ -7197,6 +7294,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
             if (instance.nationality is not null)
                 foreach (var e in instance.nationality)
                     nationality.Add(e);
+            return this;
         }
 
         public override string Serialize() {
@@ -7243,7 +7341,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
     [CategoryOrder("Bollard", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class BollardViewModel : ViewModelBase {
+    public partial class BollardViewModel : FeatureViewModel<Bollard> {
         private Int32? _scaleMinimum = default;
         [Category("Bollard")]
         public Int32? scaleMinimum {
@@ -7320,10 +7418,8 @@ namespace S100Framework.WPF.ViewModel.S501 {
         [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("Bollard")]
         public ObservableCollection<status> status { get; set; } = new();
-
-        public class BollardRefIdViewModel : FeatureRefIdViewModel {
-            public override string[] AssociationTypes => ["Bollard"];
-        }
+        public override informationBindingDefinition[] informationBindingDefinitions => Bollard._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => Bollard._featureBindingDefinitions;
 
         [Browsable(false)]
         public condition[] conditionList => [(condition)1, (condition)2, (condition)5];
@@ -7331,7 +7427,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
         [Browsable(false)]
         public status[] statusList => [(status)1, (status)3, (status)4, (status)6, (status)7, (status)8, (status)12, (status)14, (status)18];
 
-        public void Load(DomainModel.S501.FeatureTypes.Bollard instance) {
+        public override FeatureViewModel<Bollard> Load(DomainModel.S501.FeatureTypes.Bollard instance) {
             scaleMinimum = instance.scaleMinimum;
             periodicDateRange.Clear();
             if (instance.periodicDateRange is not null)
@@ -7358,6 +7454,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
             if (instance.status is not null)
                 foreach (var e in instance.status)
                     status.Add(e);
+            return this;
         }
 
         public override string Serialize() {
@@ -7411,7 +7508,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
     [CategoryOrder("Dolphin", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class DolphinViewModel : ViewModelBase {
+    public partial class DolphinViewModel : FeatureViewModel<Dolphin> {
         private String _pictorialRepresentation = string.Empty;
         [Category("Dolphin")]
         public String pictorialRepresentation {
@@ -7588,10 +7685,8 @@ namespace S100Framework.WPF.ViewModel.S501 {
         [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("Dolphin")]
         public ObservableCollection<natureOfConstruction> natureOfConstruction { get; set; } = new();
-
-        public class DolphinRefIdViewModel : FeatureRefIdViewModel {
-            public override string[] AssociationTypes => ["Dolphin"];
-        }
+        public override informationBindingDefinition[] informationBindingDefinitions => Dolphin._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => Dolphin._featureBindingDefinitions;
 
         [Browsable(false)]
         public colourPattern[] colourPatternList => [(colourPattern)1, (colourPattern)2, (colourPattern)3, (colourPattern)4, (colourPattern)5, (colourPattern)6];
@@ -7614,7 +7709,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
         [Browsable(false)]
         public natureOfConstruction[] natureOfConstructionList => [(natureOfConstruction)1, (natureOfConstruction)2, (natureOfConstruction)6, (natureOfConstruction)7];
 
-        public void Load(DomainModel.S501.FeatureTypes.Dolphin instance) {
+        public override FeatureViewModel<Dolphin> Load(DomainModel.S501.FeatureTypes.Dolphin instance) {
             pictorialRepresentation = instance.pictorialRepresentation;
             verticalLength = instance.verticalLength;
             colourPattern = instance.colourPattern;
@@ -7656,6 +7751,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
             if (instance.natureOfConstruction is not null)
                 foreach (var e in instance.natureOfConstruction)
                     natureOfConstruction.Add(e);
+            return this;
         }
 
         public override string Serialize() {
@@ -7733,7 +7829,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
     [CategoryOrder("RadarRange", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class RadarRangeViewModel : ViewModelBase {
+    public partial class RadarRangeViewModel : FeatureViewModel<RadarRange> {
         [Category("RadarRange")]
         public ObservableCollection<information> information { get; set; } = new();
 
@@ -7784,15 +7880,13 @@ namespace S100Framework.WPF.ViewModel.S501 {
         [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("RadarRange")]
         public ObservableCollection<status> status { get; set; } = new();
-
-        public class RadarRangeRefIdViewModel : FeatureRefIdViewModel {
-            public override string[] AssociationTypes => ["RadarRange"];
-        }
+        public override informationBindingDefinition[] informationBindingDefinitions => RadarRange._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => RadarRange._featureBindingDefinitions;
 
         [Browsable(false)]
         public status[] statusList => [(status)1, (status)2, (status)4, (status)7];
 
-        public void Load(DomainModel.S501.FeatureTypes.RadarRange instance) {
+        public override FeatureViewModel<RadarRange> Load(DomainModel.S501.FeatureTypes.RadarRange instance) {
             information.Clear();
             if (instance.information is not null)
                 foreach (var e in instance.information)
@@ -7817,6 +7911,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
             if (instance.status is not null)
                 foreach (var e in instance.status)
                     status.Add(e);
+            return this;
         }
 
         public override string Serialize() {
@@ -7866,7 +7961,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
     [CategoryOrder("IsolatedDangerBeacon", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class IsolatedDangerBeaconViewModel : ViewModelBase {
+    public partial class IsolatedDangerBeaconViewModel : FeatureViewModel<IsolatedDangerBeacon> {
         private condition? _condition = default;
         [DomainModel.EnumerationAttribute(nameof(conditionList))]
         [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
@@ -8108,9 +8203,8 @@ namespace S100Framework.WPF.ViewModel.S501 {
             }
         }
 
-        public class IsolatedDangerBeaconRefIdViewModel : FeatureRefIdViewModel {
-            public override string[] AssociationTypes => ["IsolatedDangerBeacon"];
-        }
+        public override informationBindingDefinition[] informationBindingDefinitions => IsolatedDangerBeacon._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => IsolatedDangerBeacon._featureBindingDefinitions;
 
         [Browsable(false)]
         public condition[] conditionList => [(condition)1, (condition)2, (condition)3, (condition)5];
@@ -8136,7 +8230,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
         [Browsable(false)]
         public colourPattern[] colourPatternList => [(colourPattern)1, (colourPattern)2, (colourPattern)3, (colourPattern)4, (colourPattern)5, (colourPattern)6];
 
-        public void Load(DomainModel.S501.FeatureTypes.IsolatedDangerBeacon instance) {
+        public override FeatureViewModel<IsolatedDangerBeacon> Load(DomainModel.S501.FeatureTypes.IsolatedDangerBeacon instance) {
             condition = instance.condition;
             periodicDateRange.Clear();
             if (instance.periodicDateRange is not null)
@@ -8193,6 +8287,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 
             interoperabilityIdentifier = instance.interoperabilityIdentifier;
             colourPattern = instance.colourPattern;
+            return this;
         }
 
         public override string Serialize() {
@@ -8280,7 +8375,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
     [CategoryOrder("IsolatedDangerBuoy", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class IsolatedDangerBuoyViewModel : ViewModelBase {
+    public partial class IsolatedDangerBuoyViewModel : FeatureViewModel<IsolatedDangerBuoy> {
         private fixedDateRangeViewModel? _fixedDateRange;
         [Category("IsolatedDangerBuoy")]
         [Xceed.Wpf.Toolkit.PropertyGrid.Attributes.ExpandableObject]
@@ -8432,10 +8527,8 @@ namespace S100Framework.WPF.ViewModel.S501 {
         [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("IsolatedDangerBuoy")]
         public ObservableCollection<status> status { get; set; } = new();
-
-        public class IsolatedDangerBuoyRefIdViewModel : FeatureRefIdViewModel {
-            public override string[] AssociationTypes => ["IsolatedDangerBuoy"];
-        }
+        public override informationBindingDefinition[] informationBindingDefinitions => IsolatedDangerBuoy._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => IsolatedDangerBuoy._featureBindingDefinitions;
 
         [Browsable(false)]
         public colour[] colourList => [(colour)1, (colour)2, (colour)3, (colour)4, (colour)5, (colour)6, (colour)7, (colour)8, (colour)9, (colour)10, (colour)11, (colour)12, (colour)13];
@@ -8455,7 +8548,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
         [Browsable(false)]
         public status[] statusList => [(status)1, (status)2, (status)5, (status)7, (status)8, (status)18];
 
-        public void Load(DomainModel.S501.FeatureTypes.IsolatedDangerBuoy instance) {
+        public override FeatureViewModel<IsolatedDangerBuoy> Load(DomainModel.S501.FeatureTypes.IsolatedDangerBuoy instance) {
             fixedDateRange = new();
             if (instance.fixedDateRange != null) {
                 fixedDateRange = new();
@@ -8500,6 +8593,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
             if (instance.status is not null)
                 foreach (var e in instance.status)
                     status.Add(e);
+            return this;
         }
 
         public override string Serialize() {
@@ -8573,7 +8667,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
     [CategoryOrder("SubmarineTransitLane", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class SubmarineTransitLaneViewModel : ViewModelBase {
+    public partial class SubmarineTransitLaneViewModel : FeatureViewModel<SubmarineTransitLane> {
         [Category("SubmarineTransitLane")]
         public ObservableCollection<featureName> featureName { get; set; } = new();
 
@@ -8672,14 +8766,13 @@ namespace S100Framework.WPF.ViewModel.S501 {
             }
         }
 
-        public class SubmarineTransitLaneRefIdViewModel : FeatureRefIdViewModel {
-            public override string[] AssociationTypes => ["SubmarineTransitLane"];
-        }
+        public override informationBindingDefinition[] informationBindingDefinitions => SubmarineTransitLane._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => SubmarineTransitLane._featureBindingDefinitions;
 
         [Browsable(false)]
         public restriction[] restrictionList => [(restriction)1, (restriction)2, (restriction)3, (restriction)4, (restriction)5, (restriction)6, (restriction)7, (restriction)8, (restriction)9, (restriction)10, (restriction)11, (restriction)12, (restriction)13, (restriction)16, (restriction)17, (restriction)18, (restriction)19, (restriction)20, (restriction)21, (restriction)22, (restriction)23, (restriction)24, (restriction)25, (restriction)27];
 
-        public void Load(DomainModel.S501.FeatureTypes.SubmarineTransitLane instance) {
+        public override FeatureViewModel<SubmarineTransitLane> Load(DomainModel.S501.FeatureTypes.SubmarineTransitLane instance) {
             featureName.Clear();
             if (instance.featureName is not null)
                 foreach (var e in instance.featureName)
@@ -8703,6 +8796,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
             agencyResponsibleForProduction = instance.agencyResponsibleForProduction;
             minimumSafeDepth = instance.minimumSafeDepth;
             scaleMinimum = instance.scaleMinimum;
+            return this;
         }
 
         public override string Serialize() {
@@ -8760,7 +8854,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
     [CategoryOrder("MaritimeSafetyInformationArea", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class MaritimeSafetyInformationAreaViewModel : ViewModelBase {
+    public partial class MaritimeSafetyInformationAreaViewModel : FeatureViewModel<MaritimeSafetyInformationArea> {
         private DateOnly? _reportedDate = default;
         [Category("MaritimeSafetyInformationArea")]
         public DateOnly? reportedDate {
@@ -8803,12 +8897,10 @@ namespace S100Framework.WPF.ViewModel.S501 {
 
         [Category("MaritimeSafetyInformationArea")]
         public ObservableCollection<featureName> featureName { get; set; } = new();
+        public override informationBindingDefinition[] informationBindingDefinitions => MaritimeSafetyInformationArea._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => MaritimeSafetyInformationArea._featureBindingDefinitions;
 
-        public class MaritimeSafetyInformationAreaRefIdViewModel : FeatureRefIdViewModel {
-            public override string[] AssociationTypes => ["MaritimeSafetyInformationArea"];
-        }
-
-        public void Load(DomainModel.S501.FeatureTypes.MaritimeSafetyInformationArea instance) {
+        public override FeatureViewModel<MaritimeSafetyInformationArea> Load(DomainModel.S501.FeatureTypes.MaritimeSafetyInformationArea instance) {
             reportedDate = instance.reportedDate;
             sourceIdentification = new();
             if (instance.sourceIdentification != null) {
@@ -8825,6 +8917,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
             if (instance.featureName is not null)
                 foreach (var e in instance.featureName)
                     featureName.Add(e);
+            return this;
         }
 
         public override string Serialize() {
@@ -8864,7 +8957,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
     [CategoryOrder("AirspaceRestriction", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class AirspaceRestrictionViewModel : ViewModelBase {
+    public partial class AirspaceRestrictionViewModel : FeatureViewModel<AirspaceRestriction> {
         [Category("AirspaceRestriction")]
         public ObservableCollection<featureName> featureName { get; set; } = new();
 
@@ -8988,9 +9081,8 @@ namespace S100Framework.WPF.ViewModel.S501 {
             }
         }
 
-        public class AirspaceRestrictionRefIdViewModel : FeatureRefIdViewModel {
-            public override string[] AssociationTypes => ["AirspaceRestriction"];
-        }
+        public override informationBindingDefinition[] informationBindingDefinitions => AirspaceRestriction._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => AirspaceRestriction._featureBindingDefinitions;
 
         [Browsable(false)]
         public verticalDatum[] verticalDatumList => [(verticalDatum)3, (verticalDatum)16, (verticalDatum)17, (verticalDatum)18, (verticalDatum)19, (verticalDatum)20, (verticalDatum)21, (verticalDatum)24, (verticalDatum)25, (verticalDatum)26, (verticalDatum)28, (verticalDatum)29, (verticalDatum)30, (verticalDatum)44];
@@ -9001,7 +9093,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
         [Browsable(false)]
         public catagoryOfAirspaceRestriction[] catagoryOfAirspaceRestrictionList => [(catagoryOfAirspaceRestriction)501, (catagoryOfAirspaceRestriction)502, (catagoryOfAirspaceRestriction)503];
 
-        public void Load(DomainModel.S501.FeatureTypes.AirspaceRestriction instance) {
+        public override FeatureViewModel<AirspaceRestriction> Load(DomainModel.S501.FeatureTypes.AirspaceRestriction instance) {
             featureName.Clear();
             if (instance.featureName is not null)
                 foreach (var e in instance.featureName)
@@ -9034,6 +9126,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
             reportedDate = instance.reportedDate;
             heightLengthUnits = instance.heightLengthUnits;
             catagoryOfAirspaceRestriction = instance.catagoryOfAirspaceRestriction;
+            return this;
         }
 
         public override string Serialize() {
@@ -9085,7 +9178,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
     [CategoryOrder("Sounding", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class SoundingViewModel : ViewModelBase {
+    public partial class SoundingViewModel : FeatureViewModel<Sounding> {
         private status? _status = default;
         [DomainModel.EnumerationAttribute(nameof(statusList))]
         [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
@@ -9165,9 +9258,8 @@ namespace S100Framework.WPF.ViewModel.S501 {
             }
         }
 
-        public class SoundingRefIdViewModel : FeatureRefIdViewModel {
-            public override string[] AssociationTypes => ["Sounding"];
-        }
+        public override informationBindingDefinition[] informationBindingDefinitions => Sounding._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => Sounding._featureBindingDefinitions;
 
         [Browsable(false)]
         public status[] statusList => [(status)18];
@@ -9178,7 +9270,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
         [Browsable(false)]
         public qualityOfVerticalMeasurement[] qualityOfVerticalMeasurementList => [(qualityOfVerticalMeasurement)1, (qualityOfVerticalMeasurement)3, (qualityOfVerticalMeasurement)4, (qualityOfVerticalMeasurement)8, (qualityOfVerticalMeasurement)9];
 
-        public void Load(DomainModel.S501.FeatureTypes.Sounding instance) {
+        public override FeatureViewModel<Sounding> Load(DomainModel.S501.FeatureTypes.Sounding instance) {
             status = instance.status;
             techniqueOfVerticalMeasurement.Clear();
             if (instance.techniqueOfVerticalMeasurement is not null)
@@ -9205,6 +9297,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 
             reportedDate = instance.reportedDate;
             displayUncertainties = instance.displayUncertainties;
+            return this;
         }
 
         public override string Serialize() {
@@ -9258,7 +9351,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
     [CategoryOrder("TrafficSeparationSchemeBoundary", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class TrafficSeparationSchemeBoundaryViewModel : ViewModelBase {
+    public partial class TrafficSeparationSchemeBoundaryViewModel : FeatureViewModel<TrafficSeparationSchemeBoundary> {
         private String _interoperabilityIdentifier = string.Empty;
         [Category("TrafficSeparationSchemeBoundary")]
         public String interoperabilityIdentifier {
@@ -9329,14 +9422,13 @@ namespace S100Framework.WPF.ViewModel.S501 {
             }
         }
 
-        public class TrafficSeparationSchemeBoundaryRefIdViewModel : FeatureRefIdViewModel {
-            public override string[] AssociationTypes => ["TrafficSeparationSchemeBoundary"];
-        }
+        public override informationBindingDefinition[] informationBindingDefinitions => TrafficSeparationSchemeBoundary._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => TrafficSeparationSchemeBoundary._featureBindingDefinitions;
 
         [Browsable(false)]
         public status[] statusList => [(status)1, (status)3, (status)9, (status)28];
 
-        public void Load(DomainModel.S501.FeatureTypes.TrafficSeparationSchemeBoundary instance) {
+        public override FeatureViewModel<TrafficSeparationSchemeBoundary> Load(DomainModel.S501.FeatureTypes.TrafficSeparationSchemeBoundary instance) {
             interoperabilityIdentifier = instance.interoperabilityIdentifier;
             status.Clear();
             if (instance.status is not null)
@@ -9360,6 +9452,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
             }
 
             scaleMinimum = instance.scaleMinimum;
+            return this;
         }
 
         public override string Serialize() {
@@ -9403,7 +9496,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
     [CategoryOrder("DumpingGround", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class DumpingGroundViewModel : ViewModelBase {
+    public partial class DumpingGroundViewModel : FeatureViewModel<DumpingGround> {
         [DomainModel.EnumerationAttribute(nameof(categoryOfDumpingGroundList))]
         [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("DumpingGround")]
@@ -9448,10 +9541,8 @@ namespace S100Framework.WPF.ViewModel.S501 {
 
         [Category("DumpingGround")]
         public ObservableCollection<information> information { get; set; } = new();
-
-        public class DumpingGroundRefIdViewModel : FeatureRefIdViewModel {
-            public override string[] AssociationTypes => ["DumpingGround"];
-        }
+        public override informationBindingDefinition[] informationBindingDefinitions => DumpingGround._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => DumpingGround._featureBindingDefinitions;
 
         [Browsable(false)]
         public categoryOfDumpingGround[] categoryOfDumpingGroundList => [(categoryOfDumpingGround)2, (categoryOfDumpingGround)3, (categoryOfDumpingGround)4, (categoryOfDumpingGround)5, (categoryOfDumpingGround)6];
@@ -9462,7 +9553,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
         [Browsable(false)]
         public status[] statusList => [(status)1, (status)2, (status)4, (status)6, (status)7];
 
-        public void Load(DomainModel.S501.FeatureTypes.DumpingGround instance) {
+        public override FeatureViewModel<DumpingGround> Load(DomainModel.S501.FeatureTypes.DumpingGround instance) {
             categoryOfDumpingGround.Clear();
             if (instance.categoryOfDumpingGround is not null)
                 foreach (var e in instance.categoryOfDumpingGround)
@@ -9485,6 +9576,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
             if (instance.information is not null)
                 foreach (var e in instance.information)
                     information.Add(e);
+            return this;
         }
 
         public override string Serialize() {
@@ -9537,7 +9629,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
     [CategoryOrder("AirportAirfield", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class AirportAirfieldViewModel : ViewModelBase {
+    public partial class AirportAirfieldViewModel : FeatureViewModel<AirportAirfield> {
         [DomainModel.EnumerationAttribute(nameof(categoryOfAirportAirfieldList))]
         [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("AirportAirfield")]
@@ -9720,9 +9812,8 @@ namespace S100Framework.WPF.ViewModel.S501 {
             }
         }
 
-        public class AirportAirfieldRefIdViewModel : FeatureRefIdViewModel {
-            public override string[] AssociationTypes => ["AirportAirfield"];
-        }
+        public override informationBindingDefinition[] informationBindingDefinitions => AirportAirfield._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => AirportAirfield._featureBindingDefinitions;
 
         [Browsable(false)]
         public categoryOfAirportAirfield[] categoryOfAirportAirfieldList => [(categoryOfAirportAirfield)1, (categoryOfAirportAirfield)2, (categoryOfAirportAirfield)3, (categoryOfAirportAirfield)4, (categoryOfAirportAirfield)5, (categoryOfAirportAirfield)6, (categoryOfAirportAirfield)8, (categoryOfAirportAirfield)9];
@@ -9739,7 +9830,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
         [Browsable(false)]
         public status[] statusList => [(status)1, (status)2, (status)4, (status)5, (status)6, (status)7, (status)8, (status)12, (status)14];
 
-        public void Load(DomainModel.S501.FeatureTypes.AirportAirfield instance) {
+        public override FeatureViewModel<AirportAirfield> Load(DomainModel.S501.FeatureTypes.AirportAirfield instance) {
             categoryOfAirportAirfield.Clear();
             if (instance.categoryOfAirportAirfield is not null)
                 foreach (var e in instance.categoryOfAirportAirfield)
@@ -9778,6 +9869,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
                     status.Add(e);
             reportedDate = instance.reportedDate;
             interoperabilityIdentifier = instance.interoperabilityIdentifier;
+            return this;
         }
 
         public override string Serialize() {
@@ -9852,7 +9944,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
     [CategoryOrder("FoulGround", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class FoulGroundViewModel : ViewModelBase {
+    public partial class FoulGroundViewModel : FeatureViewModel<FoulGround> {
         [DomainModel.EnumerationAttribute(nameof(statusList))]
         [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("FoulGround")]
@@ -9922,10 +10014,8 @@ namespace S100Framework.WPF.ViewModel.S501 {
 
         [Category("FoulGround")]
         public ObservableCollection<information> information { get; set; } = new();
-
-        public class FoulGroundRefIdViewModel : FeatureRefIdViewModel {
-            public override string[] AssociationTypes => ["FoulGround"];
-        }
+        public override informationBindingDefinition[] informationBindingDefinitions => FoulGround._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => FoulGround._featureBindingDefinitions;
 
         [Browsable(false)]
         public status[] statusList => [(status)13, (status)18, (status)28];
@@ -9936,7 +10026,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
         [Browsable(false)]
         public techniqueOfVerticalMeasurement[] techniqueOfVerticalMeasurementList => [(techniqueOfVerticalMeasurement)1, (techniqueOfVerticalMeasurement)2, (techniqueOfVerticalMeasurement)3, (techniqueOfVerticalMeasurement)4, (techniqueOfVerticalMeasurement)5, (techniqueOfVerticalMeasurement)8, (techniqueOfVerticalMeasurement)9, (techniqueOfVerticalMeasurement)10, (techniqueOfVerticalMeasurement)11, (techniqueOfVerticalMeasurement)12, (techniqueOfVerticalMeasurement)13, (techniqueOfVerticalMeasurement)15, (techniqueOfVerticalMeasurement)16, (techniqueOfVerticalMeasurement)17, (techniqueOfVerticalMeasurement)18];
 
-        public void Load(DomainModel.S501.FeatureTypes.FoulGround instance) {
+        public override FeatureViewModel<FoulGround> Load(DomainModel.S501.FeatureTypes.FoulGround instance) {
             status.Clear();
             if (instance.status is not null)
                 foreach (var e in instance.status)
@@ -9966,6 +10056,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
             if (instance.information is not null)
                 foreach (var e in instance.information)
                     information.Add(e);
+            return this;
         }
 
         public override string Serialize() {
@@ -10022,7 +10113,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
     [CategoryOrder("LightAirObstruction", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class LightAirObstructionViewModel : ViewModelBase {
+    public partial class LightAirObstructionViewModel : FeatureViewModel<LightAirObstruction> {
         private String _pictorialRepresentation = string.Empty;
         [Category("LightAirObstruction")]
         public String pictorialRepresentation {
@@ -10248,10 +10339,8 @@ namespace S100Framework.WPF.ViewModel.S501 {
         [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("LightAirObstruction")]
         public ObservableCollection<colour> colour { get; set; } = new();
-
-        public class LightAirObstructionRefIdViewModel : FeatureRefIdViewModel {
-            public override string[] AssociationTypes => ["LightAirObstruction"];
-        }
+        public override informationBindingDefinition[] informationBindingDefinitions => LightAirObstruction._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => LightAirObstruction._featureBindingDefinitions;
 
         [Browsable(false)]
         public status[] statusList => [(status)1, (status)2, (status)4, (status)5, (status)6, (status)7, (status)8, (status)11, (status)14, (status)15, (status)16, (status)17];
@@ -10271,7 +10360,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
         [Browsable(false)]
         public colour[] colourList => [(colour)1, (colour)3, (colour)4, (colour)5, (colour)6, (colour)9, (colour)10, (colour)11];
 
-        public void Load(DomainModel.S501.FeatureTypes.LightAirObstruction instance) {
+        public override FeatureViewModel<LightAirObstruction> Load(DomainModel.S501.FeatureTypes.LightAirObstruction instance) {
             pictorialRepresentation = instance.pictorialRepresentation;
             valueOfNominalRange = instance.valueOfNominalRange;
             multiplicityOfFeatures = new();
@@ -10332,6 +10421,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
             if (instance.colour is not null)
                 foreach (var e in instance.colour)
                     colour.Add(e);
+            return this;
         }
 
         public override string Serialize() {
@@ -10417,7 +10507,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
     [CategoryOrder("MooringBuoy", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class MooringBuoyViewModel : ViewModelBase {
+    public partial class MooringBuoyViewModel : FeatureViewModel<MooringBuoy> {
         private Decimal? _maximumPermittedVesselLength = default;
         [Category("MooringBuoy")]
         public Decimal? maximumPermittedVesselLength {
@@ -10567,9 +10657,8 @@ namespace S100Framework.WPF.ViewModel.S501 {
             }
         }
 
-        public class MooringBuoyRefIdViewModel : FeatureRefIdViewModel {
-            public override string[] AssociationTypes => ["MooringBuoy"];
-        }
+        public override informationBindingDefinition[] informationBindingDefinitions => MooringBuoy._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => MooringBuoy._featureBindingDefinitions;
 
         [Browsable(false)]
         public natureOfConstruction[] natureOfConstructionList => [(natureOfConstruction)7, (natureOfConstruction)8, (natureOfConstruction)11];
@@ -10586,7 +10675,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
         [Browsable(false)]
         public buoyShape[] buoyShapeList => [(buoyShape)1, (buoyShape)2, (buoyShape)3, (buoyShape)4, (buoyShape)5, (buoyShape)6, (buoyShape)7, (buoyShape)8];
 
-        public void Load(DomainModel.S501.FeatureTypes.MooringBuoy instance) {
+        public override FeatureViewModel<MooringBuoy> Load(DomainModel.S501.FeatureTypes.MooringBuoy instance) {
             maximumPermittedVesselLength = instance.maximumPermittedVesselLength;
             maximumPermittedDraught = instance.maximumPermittedDraught;
             periodicDateRange.Clear();
@@ -10625,6 +10714,8 @@ namespace S100Framework.WPF.ViewModel.S501 {
                 fixedDateRange = new();
                 fixedDateRange.Load(instance.fixedDateRange);
             }
+
+            return this;
         }
 
         public override string Serialize() {
@@ -10698,7 +10789,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
     [CategoryOrder("UnderwaterAwashRock", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class UnderwaterAwashRockViewModel : ViewModelBase {
+    public partial class UnderwaterAwashRockViewModel : FeatureViewModel<UnderwaterAwashRock> {
         private Decimal _valueOfSounding;
         [Category("UnderwaterAwashRock")]
         public Decimal valueOfSounding {
@@ -10931,9 +11022,8 @@ namespace S100Framework.WPF.ViewModel.S501 {
             }
         }
 
-        public class UnderwaterAwashRockRefIdViewModel : FeatureRefIdViewModel {
-            public override string[] AssociationTypes => ["UnderwaterAwashRock"];
-        }
+        public override informationBindingDefinition[] informationBindingDefinitions => UnderwaterAwashRock._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => UnderwaterAwashRock._featureBindingDefinitions;
 
         [Browsable(false)]
         public waterLevelEffect[] waterLevelEffectList => [(waterLevelEffect)3, (waterLevelEffect)4, (waterLevelEffect)5];
@@ -10953,7 +11043,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
         [Browsable(false)]
         public qualityOfVerticalMeasurement[] qualityOfVerticalMeasurementList => [(qualityOfVerticalMeasurement)1, (qualityOfVerticalMeasurement)2, (qualityOfVerticalMeasurement)3, (qualityOfVerticalMeasurement)4, (qualityOfVerticalMeasurement)6, (qualityOfVerticalMeasurement)7, (qualityOfVerticalMeasurement)8, (qualityOfVerticalMeasurement)9];
 
-        public void Load(DomainModel.S501.FeatureTypes.UnderwaterAwashRock instance) {
+        public override FeatureViewModel<UnderwaterAwashRock> Load(DomainModel.S501.FeatureTypes.UnderwaterAwashRock instance) {
             valueOfSounding = instance.valueOfSounding;
             verticalUncertainty = new();
             if (instance.verticalUncertainty != null) {
@@ -11007,6 +11097,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
             }
 
             qualityOfVerticalMeasurement = instance.qualityOfVerticalMeasurement;
+            return this;
         }
 
         public override string Serialize() {
@@ -11084,7 +11175,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
     [CategoryOrder("CableOverhead", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class CableOverheadViewModel : ViewModelBase {
+    public partial class CableOverheadViewModel : FeatureViewModel<CableOverhead> {
         private condition? _condition = default;
         [DomainModel.EnumerationAttribute(nameof(conditionList))]
         [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
@@ -11252,9 +11343,8 @@ namespace S100Framework.WPF.ViewModel.S501 {
             }
         }
 
-        public class CableOverheadRefIdViewModel : FeatureRefIdViewModel {
-            public override string[] AssociationTypes => ["CableOverhead"];
-        }
+        public override informationBindingDefinition[] informationBindingDefinitions => CableOverhead._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => CableOverhead._featureBindingDefinitions;
 
         [Browsable(false)]
         public condition[] conditionList => [(condition)1, (condition)5];
@@ -11271,7 +11361,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
         [Browsable(false)]
         public visualProminence[] visualProminenceList => [(visualProminence)1, (visualProminence)2, (visualProminence)3];
 
-        public void Load(DomainModel.S501.FeatureTypes.CableOverhead instance) {
+        public override FeatureViewModel<CableOverhead> Load(DomainModel.S501.FeatureTypes.CableOverhead instance) {
             condition = instance.condition;
             status.Clear();
             if (instance.status is not null)
@@ -11316,6 +11406,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
             scaleMinimum = instance.scaleMinimum;
             radarConspicuous = instance.radarConspicuous;
             iceFactor = instance.iceFactor;
+            return this;
         }
 
         public override string Serialize() {
@@ -11378,7 +11469,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
     [CategoryOrder("ControlledAirspace", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class ControlledAirspaceViewModel : ViewModelBase {
+    public partial class ControlledAirspaceViewModel : FeatureViewModel<ControlledAirspace> {
         private controlledAirspaceClassDesignation? _controlledAirspaceClassDesignation = default;
         [DomainModel.EnumerationAttribute(nameof(controlledAirspaceClassDesignationList))]
         [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
@@ -11516,9 +11607,8 @@ namespace S100Framework.WPF.ViewModel.S501 {
             }
         }
 
-        public class ControlledAirspaceRefIdViewModel : FeatureRefIdViewModel {
-            public override string[] AssociationTypes => ["ControlledAirspace"];
-        }
+        public override informationBindingDefinition[] informationBindingDefinitions => ControlledAirspace._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => ControlledAirspace._featureBindingDefinitions;
 
         [Browsable(false)]
         public controlledAirspaceClassDesignation[] controlledAirspaceClassDesignationList => [(controlledAirspaceClassDesignation)501, (controlledAirspaceClassDesignation)502, (controlledAirspaceClassDesignation)503, (controlledAirspaceClassDesignation)504, (controlledAirspaceClassDesignation)505, (controlledAirspaceClassDesignation)506, (controlledAirspaceClassDesignation)507];
@@ -11532,7 +11622,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
         [Browsable(false)]
         public heightLengthUnits[] heightLengthUnitsList => [(heightLengthUnits)2];
 
-        public void Load(DomainModel.S501.FeatureTypes.ControlledAirspace instance) {
+        public override FeatureViewModel<ControlledAirspace> Load(DomainModel.S501.FeatureTypes.ControlledAirspace instance) {
             controlledAirspaceClassDesignation = instance.controlledAirspaceClassDesignation;
             information.Clear();
             if (instance.information is not null)
@@ -11565,6 +11655,8 @@ namespace S100Framework.WPF.ViewModel.S501 {
                 flightLevel = new();
                 flightLevel.Load(instance.flightLevel);
             }
+
+            return this;
         }
 
         public override string Serialize() {
@@ -11618,7 +11710,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
     [CategoryOrder("Obstruction", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class ObstructionViewModel : ViewModelBase {
+    public partial class ObstructionViewModel : FeatureViewModel<Obstruction> {
         [DomainModel.EnumerationAttribute(nameof(natureOfConstructionList))]
         [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("Obstruction")]
@@ -12136,9 +12228,8 @@ namespace S100Framework.WPF.ViewModel.S501 {
             }
         }
 
-        public class ObstructionRefIdViewModel : FeatureRefIdViewModel {
-            public override string[] AssociationTypes => ["Obstruction"];
-        }
+        public override informationBindingDefinition[] informationBindingDefinitions => Obstruction._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => Obstruction._featureBindingDefinitions;
 
         [Browsable(false)]
         public natureOfConstruction[] natureOfConstructionList => [(natureOfConstruction)1, (natureOfConstruction)2, (natureOfConstruction)3, (natureOfConstruction)4, (natureOfConstruction)5, (natureOfConstruction)6, (natureOfConstruction)7, (natureOfConstruction)8, (natureOfConstruction)11, (natureOfConstruction)12];
@@ -12185,7 +12276,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
         [Browsable(false)]
         public waterLevelEffect[] waterLevelEffectList => [(waterLevelEffect)1, (waterLevelEffect)2, (waterLevelEffect)3, (waterLevelEffect)4, (waterLevelEffect)5, (waterLevelEffect)7];
 
-        public void Load(DomainModel.S501.FeatureTypes.Obstruction instance) {
+        public override FeatureViewModel<Obstruction> Load(DomainModel.S501.FeatureTypes.Obstruction instance) {
             natureOfConstruction.Clear();
             if (instance.natureOfConstruction is not null)
                 foreach (var e in instance.natureOfConstruction)
@@ -12291,6 +12382,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
             nation = instance.nation;
             defaultClearanceDepth = instance.defaultClearanceDepth;
             displayUncertainties = instance.displayUncertainties;
+            return this;
         }
 
         public override string Serialize() {
@@ -12430,7 +12522,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
     [CategoryOrder("FishingGround", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class FishingGroundViewModel : ViewModelBase {
+    public partial class FishingGroundViewModel : FeatureViewModel<FishingGround> {
         [DomainModel.EnumerationAttribute(nameof(statusList))]
         [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("FishingGround")]
@@ -12501,10 +12593,8 @@ namespace S100Framework.WPF.ViewModel.S501 {
 
         [Category("FishingGround")]
         public ObservableCollection<information> information { get; set; } = new();
-
-        public class FishingGroundRefIdViewModel : FeatureRefIdViewModel {
-            public override string[] AssociationTypes => ["FishingGround"];
-        }
+        public override informationBindingDefinition[] informationBindingDefinitions => FishingGround._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => FishingGround._featureBindingDefinitions;
 
         [Browsable(false)]
         public status[] statusList => [(status)1, (status)5, (status)6, (status)7, (status)8, (status)14, (status)16, (status)17, (status)28];
@@ -12512,7 +12602,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
         [Browsable(false)]
         public restriction[] restrictionList => [(restriction)1, (restriction)2, (restriction)4, (restriction)5, (restriction)6, (restriction)8, (restriction)9, (restriction)10, (restriction)11, (restriction)12, (restriction)15, (restriction)16, (restriction)17, (restriction)18, (restriction)19, (restriction)20, (restriction)21, (restriction)22, (restriction)23, (restriction)24, (restriction)25, (restriction)26, (restriction)27, (restriction)39];
 
-        public void Load(DomainModel.S501.FeatureTypes.FishingGround instance) {
+        public override FeatureViewModel<FishingGround> Load(DomainModel.S501.FeatureTypes.FishingGround instance) {
             status.Clear();
             if (instance.status is not null)
                 foreach (var e in instance.status)
@@ -12546,6 +12636,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
             if (instance.information is not null)
                 foreach (var e in instance.information)
                     information.Add(e);
+            return this;
         }
 
         public override string Serialize() {
@@ -12607,7 +12698,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
     [CategoryOrder("FishingFacility", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class FishingFacilityViewModel : ViewModelBase {
+    public partial class FishingFacilityViewModel : FeatureViewModel<FishingFacility> {
         [Category("FishingFacility")]
         public ObservableCollection<information> information { get; set; } = new();
 
@@ -12698,9 +12789,8 @@ namespace S100Framework.WPF.ViewModel.S501 {
             }
         }
 
-        public class FishingFacilityRefIdViewModel : FeatureRefIdViewModel {
-            public override string[] AssociationTypes => ["FishingFacility"];
-        }
+        public override informationBindingDefinition[] informationBindingDefinitions => FishingFacility._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => FishingFacility._featureBindingDefinitions;
 
         [Browsable(false)]
         public condition[] conditionList => [(condition)1, (condition)2, (condition)5];
@@ -12711,7 +12801,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
         [Browsable(false)]
         public categoryOfFishingFacility[] categoryOfFishingFacilityList => [(categoryOfFishingFacility)1, (categoryOfFishingFacility)2, (categoryOfFishingFacility)3, (categoryOfFishingFacility)4];
 
-        public void Load(DomainModel.S501.FeatureTypes.FishingFacility instance) {
+        public override FeatureViewModel<FishingFacility> Load(DomainModel.S501.FeatureTypes.FishingFacility instance) {
             information.Clear();
             if (instance.information is not null)
                 foreach (var e in instance.information)
@@ -12734,6 +12824,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
                 foreach (var e in instance.featureName)
                     featureName.Add(e);
             reportedDate = instance.reportedDate;
+            return this;
         }
 
         public override string Serialize() {
@@ -12789,7 +12880,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
     [CategoryOrder("NavigationSystem", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class NavigationSystemViewModel : ViewModelBase {
+    public partial class NavigationSystemViewModel : FeatureViewModel<NavigationSystem> {
         private sourceIdentificationViewModel? _sourceIdentification;
         [Category("NavigationSystem")]
         [Xceed.Wpf.Toolkit.PropertyGrid.Attributes.ExpandableObject]
@@ -12883,14 +12974,13 @@ namespace S100Framework.WPF.ViewModel.S501 {
             }
         }
 
-        public class NavigationSystemRefIdViewModel : FeatureRefIdViewModel {
-            public override string[] AssociationTypes => ["NavigationSystem"];
-        }
+        public override informationBindingDefinition[] informationBindingDefinitions => NavigationSystem._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => NavigationSystem._featureBindingDefinitions;
 
         [Browsable(false)]
         public categoryOfRadioStation[] categoryOfRadioStationList => [(categoryOfRadioStation)1, (categoryOfRadioStation)2, (categoryOfRadioStation)3, (categoryOfRadioStation)4, (categoryOfRadioStation)5, (categoryOfRadioStation)6, (categoryOfRadioStation)7, (categoryOfRadioStation)8, (categoryOfRadioStation)9, (categoryOfRadioStation)10, (categoryOfRadioStation)11, (categoryOfRadioStation)12, (categoryOfRadioStation)13, (categoryOfRadioStation)14, (categoryOfRadioStation)19, (categoryOfRadioStation)20, (categoryOfRadioStation)504, (categoryOfRadioStation)505, (categoryOfRadioStation)506, (categoryOfRadioStation)508, (categoryOfRadioStation)509, (categoryOfRadioStation)510];
 
-        public void Load(DomainModel.S501.FeatureTypes.NavigationSystem instance) {
+        public override FeatureViewModel<NavigationSystem> Load(DomainModel.S501.FeatureTypes.NavigationSystem instance) {
             sourceIdentification = new();
             if (instance.sourceIdentification != null) {
                 sourceIdentification = new();
@@ -12911,6 +13001,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
                     featureName.Add(e);
             communicationChannel = instance.communicationChannel;
             signalFrequency = instance.signalFrequency;
+            return this;
         }
 
         public override string Serialize() {
@@ -12958,7 +13049,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
     [CategoryOrder("TrafficSeparationSchemeCrossing", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class TrafficSeparationSchemeCrossingViewModel : ViewModelBase {
+    public partial class TrafficSeparationSchemeCrossingViewModel : FeatureViewModel<TrafficSeparationSchemeCrossing> {
         [DomainModel.EnumerationAttribute(nameof(restrictionList))]
         [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("TrafficSeparationSchemeCrossing")]
@@ -13037,9 +13128,8 @@ namespace S100Framework.WPF.ViewModel.S501 {
             }
         }
 
-        public class TrafficSeparationSchemeCrossingRefIdViewModel : FeatureRefIdViewModel {
-            public override string[] AssociationTypes => ["TrafficSeparationSchemeCrossing"];
-        }
+        public override informationBindingDefinition[] informationBindingDefinitions => TrafficSeparationSchemeCrossing._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => TrafficSeparationSchemeCrossing._featureBindingDefinitions;
 
         [Browsable(false)]
         public restriction[] restrictionList => [(restriction)1, (restriction)2, (restriction)3, (restriction)4, (restriction)5, (restriction)6, (restriction)8, (restriction)9, (restriction)10, (restriction)11, (restriction)12, (restriction)13, (restriction)16, (restriction)17, (restriction)18, (restriction)19, (restriction)20, (restriction)21, (restriction)22, (restriction)23, (restriction)24, (restriction)25, (restriction)27];
@@ -13047,7 +13137,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
         [Browsable(false)]
         public status[] statusList => [(status)1, (status)3, (status)6, (status)9];
 
-        public void Load(DomainModel.S501.FeatureTypes.TrafficSeparationSchemeCrossing instance) {
+        public override FeatureViewModel<TrafficSeparationSchemeCrossing> Load(DomainModel.S501.FeatureTypes.TrafficSeparationSchemeCrossing instance) {
             restriction.Clear();
             if (instance.restriction is not null)
                 foreach (var e in instance.restriction)
@@ -13079,6 +13169,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
                 foreach (var e in instance.information)
                     information.Add(e);
             reportedDate = instance.reportedDate;
+            return this;
         }
 
         public override string Serialize() {
@@ -13132,7 +13223,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
     [CategoryOrder("TrafficSeparationSchemeLanePart", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class TrafficSeparationSchemeLanePartViewModel : ViewModelBase {
+    public partial class TrafficSeparationSchemeLanePartViewModel : FeatureViewModel<TrafficSeparationSchemeLanePart> {
         [Category("TrafficSeparationSchemeLanePart")]
         public ObservableCollection<information> information { get; set; } = new();
 
@@ -13223,9 +13314,8 @@ namespace S100Framework.WPF.ViewModel.S501 {
             }
         }
 
-        public class TrafficSeparationSchemeLanePartRefIdViewModel : FeatureRefIdViewModel {
-            public override string[] AssociationTypes => ["TrafficSeparationSchemeLanePart"];
-        }
+        public override informationBindingDefinition[] informationBindingDefinitions => TrafficSeparationSchemeLanePart._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => TrafficSeparationSchemeLanePart._featureBindingDefinitions;
 
         [Browsable(false)]
         public restriction[] restrictionList => [(restriction)1, (restriction)2, (restriction)3, (restriction)4, (restriction)5, (restriction)6, (restriction)8, (restriction)9, (restriction)10, (restriction)11, (restriction)12, (restriction)13, (restriction)16, (restriction)17, (restriction)18, (restriction)19, (restriction)20, (restriction)21, (restriction)22, (restriction)23, (restriction)24, (restriction)25, (restriction)27];
@@ -13233,7 +13323,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
         [Browsable(false)]
         public status[] statusList => [(status)1, (status)3, (status)9, (status)28];
 
-        public void Load(DomainModel.S501.FeatureTypes.TrafficSeparationSchemeLanePart instance) {
+        public override FeatureViewModel<TrafficSeparationSchemeLanePart> Load(DomainModel.S501.FeatureTypes.TrafficSeparationSchemeLanePart instance) {
             information.Clear();
             if (instance.information is not null)
                 foreach (var e in instance.information)
@@ -13266,6 +13356,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
             }
 
             scaleMinimum = instance.scaleMinimum;
+            return this;
         }
 
         public override string Serialize() {
@@ -13321,7 +13412,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
     [CategoryOrder("TerritorialSeaArea", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class TerritorialSeaAreaViewModel : ViewModelBase {
+    public partial class TerritorialSeaAreaViewModel : FeatureViewModel<TerritorialSeaArea> {
         [Category("TerritorialSeaArea")]
         public ObservableCollection<String> nationality { get; set; } = new();
 
@@ -13416,10 +13507,8 @@ namespace S100Framework.WPF.ViewModel.S501 {
 
         [Category("TerritorialSeaArea")]
         public ObservableCollection<information> information { get; set; } = new();
-
-        public class TerritorialSeaAreaRefIdViewModel : FeatureRefIdViewModel {
-            public override string[] AssociationTypes => ["TerritorialSeaArea"];
-        }
+        public override informationBindingDefinition[] informationBindingDefinitions => TerritorialSeaArea._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => TerritorialSeaArea._featureBindingDefinitions;
 
         [Browsable(false)]
         public status[] statusList => [(status)502, (status)504, (status)520];
@@ -13427,7 +13516,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
         [Browsable(false)]
         public restriction[] restrictionList => [(restriction)2, (restriction)4, (restriction)6, (restriction)8, (restriction)9, (restriction)10, (restriction)12, (restriction)17, (restriction)18, (restriction)19, (restriction)20, (restriction)21, (restriction)22, (restriction)23, (restriction)24, (restriction)27];
 
-        public void Load(DomainModel.S501.FeatureTypes.TerritorialSeaArea instance) {
+        public override FeatureViewModel<TerritorialSeaArea> Load(DomainModel.S501.FeatureTypes.TerritorialSeaArea instance) {
             nationality.Clear();
             if (instance.nationality is not null)
                 foreach (var e in instance.nationality)
@@ -13463,6 +13552,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
             if (instance.information is not null)
                 foreach (var e in instance.information)
                     information.Add(e);
+            return this;
         }
 
         public override string Serialize() {
@@ -13528,7 +13618,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
     [CategoryOrder("LateralBeacon", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class LateralBeaconViewModel : ViewModelBase {
+    public partial class LateralBeaconViewModel : FeatureViewModel<LateralBeacon> {
         private Decimal? _elevation = default;
         [Category("LateralBeacon")]
         public Decimal? elevation {
@@ -13771,10 +13861,8 @@ namespace S100Framework.WPF.ViewModel.S501 {
         [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("LateralBeacon")]
         public ObservableCollection<colour> colour { get; set; } = new();
-
-        public class LateralBeaconRefIdViewModel : FeatureRefIdViewModel {
-            public override string[] AssociationTypes => ["LateralBeacon"];
-        }
+        public override informationBindingDefinition[] informationBindingDefinitions => LateralBeacon._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => LateralBeacon._featureBindingDefinitions;
 
         [Browsable(false)]
         public beaconShape[] beaconShapeList => [(beaconShape)1, (beaconShape)2, (beaconShape)3, (beaconShape)4, (beaconShape)5, (beaconShape)6, (beaconShape)7];
@@ -13803,7 +13891,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
         [Browsable(false)]
         public colour[] colourList => [(colour)1, (colour)2, (colour)3, (colour)4, (colour)5, (colour)6, (colour)7, (colour)8, (colour)9, (colour)10, (colour)11, (colour)12, (colour)13];
 
-        public void Load(DomainModel.S501.FeatureTypes.LateralBeacon instance) {
+        public override FeatureViewModel<LateralBeacon> Load(DomainModel.S501.FeatureTypes.LateralBeacon instance) {
             elevation = instance.elevation;
             beaconShape = instance.beaconShape;
             marksNavigationalSystemOf = instance.marksNavigationalSystemOf;
@@ -13860,6 +13948,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
             if (instance.colour is not null)
                 foreach (var e in instance.colour)
                     colour.Add(e);
+            return this;
         }
 
         public override string Serialize() {
@@ -13947,7 +14036,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
     [CategoryOrder("CoastGuardStation", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class CoastGuardStationViewModel : ViewModelBase {
+    public partial class CoastGuardStationViewModel : FeatureViewModel<CoastGuardStation> {
         [DomainModel.EnumerationAttribute(nameof(statusList))]
         [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("CoastGuardStation")]
@@ -14001,15 +14090,13 @@ namespace S100Framework.WPF.ViewModel.S501 {
 
         [Category("CoastGuardStation")]
         public ObservableCollection<String> communicationsChannel { get; set; } = new();
-
-        public class CoastGuardStationRefIdViewModel : FeatureRefIdViewModel {
-            public override string[] AssociationTypes => ["CoastGuardStation"];
-        }
+        public override informationBindingDefinition[] informationBindingDefinitions => CoastGuardStation._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => CoastGuardStation._featureBindingDefinitions;
 
         [Browsable(false)]
         public status[] statusList => [(status)1, (status)4, (status)5, (status)16, (status)17];
 
-        public void Load(DomainModel.S501.FeatureTypes.CoastGuardStation instance) {
+        public override FeatureViewModel<CoastGuardStation> Load(DomainModel.S501.FeatureTypes.CoastGuardStation instance) {
             status.Clear();
             if (instance.status is not null)
                 foreach (var e in instance.status)
@@ -14038,6 +14125,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
             if (instance.communicationsChannel is not null)
                 foreach (var e in instance.communicationsChannel)
                     communicationsChannel.Add(e);
+            return this;
         }
 
         public override string Serialize() {
@@ -14092,7 +14180,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
     [CategoryOrder("SeparationZoneOrLine", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class SeparationZoneOrLineViewModel : ViewModelBase {
+    public partial class SeparationZoneOrLineViewModel : FeatureViewModel<SeparationZoneOrLine> {
         private DateOnly? _reportedDate = default;
         [Category("SeparationZoneOrLine")]
         public DateOnly? reportedDate {
@@ -14163,14 +14251,13 @@ namespace S100Framework.WPF.ViewModel.S501 {
             }
         }
 
-        public class SeparationZoneOrLineRefIdViewModel : FeatureRefIdViewModel {
-            public override string[] AssociationTypes => ["SeparationZoneOrLine"];
-        }
+        public override informationBindingDefinition[] informationBindingDefinitions => SeparationZoneOrLine._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => SeparationZoneOrLine._featureBindingDefinitions;
 
         [Browsable(false)]
         public status[] statusList => [(status)1, (status)3, (status)9, (status)28];
 
-        public void Load(DomainModel.S501.FeatureTypes.SeparationZoneOrLine instance) {
+        public override FeatureViewModel<SeparationZoneOrLine> Load(DomainModel.S501.FeatureTypes.SeparationZoneOrLine instance) {
             reportedDate = instance.reportedDate;
             interoperabilityIdentifier = instance.interoperabilityIdentifier;
             status.Clear();
@@ -14193,6 +14280,8 @@ namespace S100Framework.WPF.ViewModel.S501 {
                 sourceIdentification = new();
                 sourceIdentification.Load(instance.sourceIdentification);
             }
+
+            return this;
         }
 
         public override string Serialize() {
@@ -14236,7 +14325,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
     [CategoryOrder("BottomFeature", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class BottomFeatureViewModel : ViewModelBase {
+    public partial class BottomFeatureViewModel : FeatureViewModel<BottomFeature> {
         [Category("BottomFeature")]
         public ObservableCollection<information> information { get; set; } = new();
 
@@ -14305,14 +14394,13 @@ namespace S100Framework.WPF.ViewModel.S501 {
             }
         }
 
-        public class BottomFeatureRefIdViewModel : FeatureRefIdViewModel {
-            public override string[] AssociationTypes => ["BottomFeature"];
-        }
+        public override informationBindingDefinition[] informationBindingDefinitions => BottomFeature._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => BottomFeature._featureBindingDefinitions;
 
         [Browsable(false)]
         public bottomFeatureClassification[] bottomFeatureClassificationList => [(bottomFeatureClassification)502, (bottomFeatureClassification)510];
 
-        public void Load(DomainModel.S501.FeatureTypes.BottomFeature instance) {
+        public override FeatureViewModel<BottomFeature> Load(DomainModel.S501.FeatureTypes.BottomFeature instance) {
             information.Clear();
             if (instance.information is not null)
                 foreach (var e in instance.information)
@@ -14326,6 +14414,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
             bottomFeatureClassification = instance.bottomFeatureClassification;
             reportedDate = instance.reportedDate;
             verticalLength = instance.verticalLength;
+            return this;
         }
 
         public override string Serialize() {
@@ -14369,7 +14458,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
     [CategoryOrder("ArchipelagicBaseline", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class ArchipelagicBaselineViewModel : ViewModelBase {
+    public partial class ArchipelagicBaselineViewModel : FeatureViewModel<ArchipelagicBaseline> {
         private DateOnly? _reportedDate = default;
         [Category("ArchipelagicBaseline")]
         public DateOnly? reportedDate {
@@ -14460,14 +14549,13 @@ namespace S100Framework.WPF.ViewModel.S501 {
             }
         }
 
-        public class ArchipelagicBaselineRefIdViewModel : FeatureRefIdViewModel {
-            public override string[] AssociationTypes => ["ArchipelagicBaseline"];
-        }
+        public override informationBindingDefinition[] informationBindingDefinitions => ArchipelagicBaseline._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => ArchipelagicBaseline._featureBindingDefinitions;
 
         [Browsable(false)]
         public status[] statusList => [(status)502, (status)504];
 
-        public void Load(DomainModel.S501.FeatureTypes.ArchipelagicBaseline instance) {
+        public override FeatureViewModel<ArchipelagicBaseline> Load(DomainModel.S501.FeatureTypes.ArchipelagicBaseline instance) {
             reportedDate = instance.reportedDate;
             status = instance.status;
             inDispute = instance.inDispute;
@@ -14484,6 +14572,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 
             agencyResponsibleForProduction = instance.agencyResponsibleForProduction;
             scaleMinimum = instance.scaleMinimum;
+            return this;
         }
 
         public override string Serialize() {
@@ -14526,7 +14615,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
     [CategoryOrder("SmallBottomObject", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class SmallBottomObjectViewModel : ViewModelBase {
+    public partial class SmallBottomObjectViewModel : FeatureViewModel<SmallBottomObject> {
         private String _agencyResponsibleForProduction = string.Empty;
         [Category("SmallBottomObject")]
         public String agencyResponsibleForProduction {
@@ -14571,14 +14660,13 @@ namespace S100Framework.WPF.ViewModel.S501 {
             }
         }
 
-        public class SmallBottomObjectRefIdViewModel : FeatureRefIdViewModel {
-            public override string[] AssociationTypes => ["SmallBottomObject"];
-        }
+        public override informationBindingDefinition[] informationBindingDefinitions => SmallBottomObject._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => SmallBottomObject._featureBindingDefinitions;
 
         [Browsable(false)]
         public statusOfSmallBottomObject[] statusOfSmallBottomObjectList => [(statusOfSmallBottomObject)504];
 
-        public void Load(DomainModel.S501.FeatureTypes.SmallBottomObject instance) {
+        public override FeatureViewModel<SmallBottomObject> Load(DomainModel.S501.FeatureTypes.SmallBottomObject instance) {
             agencyResponsibleForProduction = instance.agencyResponsibleForProduction;
             statusOfSmallBottomObject = instance.statusOfSmallBottomObject;
             featureName.Clear();
@@ -14590,6 +14678,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
                 foreach (var e in instance.information)
                     information.Add(e);
             valueOfSounding = instance.valueOfSounding;
+            return this;
         }
 
         public override string Serialize() {
@@ -14629,7 +14718,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
     [CategoryOrder("ExclusiveEconomicZone", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class ExclusiveEconomicZoneViewModel : ViewModelBase {
+    public partial class ExclusiveEconomicZoneViewModel : FeatureViewModel<ExclusiveEconomicZone> {
         [Category("ExclusiveEconomicZone")]
         public ObservableCollection<String> nationalMaritimeAuthority { get; set; } = new();
 
@@ -14702,12 +14791,10 @@ namespace S100Framework.WPF.ViewModel.S501 {
 
         [Category("ExclusiveEconomicZone")]
         public ObservableCollection<String> nationality { get; set; } = new();
+        public override informationBindingDefinition[] informationBindingDefinitions => ExclusiveEconomicZone._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => ExclusiveEconomicZone._featureBindingDefinitions;
 
-        public class ExclusiveEconomicZoneRefIdViewModel : FeatureRefIdViewModel {
-            public override string[] AssociationTypes => ["ExclusiveEconomicZone"];
-        }
-
-        public void Load(DomainModel.S501.FeatureTypes.ExclusiveEconomicZone instance) {
+        public override FeatureViewModel<ExclusiveEconomicZone> Load(DomainModel.S501.FeatureTypes.ExclusiveEconomicZone instance) {
             nationalMaritimeAuthority.Clear();
             if (instance.nationalMaritimeAuthority is not null)
                 foreach (var e in instance.nationalMaritimeAuthority)
@@ -14734,6 +14821,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
             if (instance.nationality is not null)
                 foreach (var e in instance.nationality)
                     nationality.Add(e);
+            return this;
         }
 
         public override string Serialize() {
@@ -14787,7 +14875,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
     [CategoryOrder("RadarStation", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class RadarStationViewModel : ViewModelBase {
+    public partial class RadarStationViewModel : FeatureViewModel<RadarStation> {
         [DomainModel.EnumerationAttribute(nameof(statusList))]
         [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("RadarStation")]
@@ -14879,9 +14967,8 @@ namespace S100Framework.WPF.ViewModel.S501 {
             }
         }
 
-        public class RadarStationRefIdViewModel : FeatureRefIdViewModel {
-            public override string[] AssociationTypes => ["RadarStation"];
-        }
+        public override informationBindingDefinition[] informationBindingDefinitions => RadarStation._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => RadarStation._featureBindingDefinitions;
 
         [Browsable(false)]
         public status[] statusList => [(status)1, (status)2, (status)4, (status)7, (status)8];
@@ -14889,7 +14976,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
         [Browsable(false)]
         public categoryOfRadarStation[] categoryOfRadarStationList => [(categoryOfRadarStation)1, (categoryOfRadarStation)2];
 
-        public void Load(DomainModel.S501.FeatureTypes.RadarStation instance) {
+        public override FeatureViewModel<RadarStation> Load(DomainModel.S501.FeatureTypes.RadarStation instance) {
             status.Clear();
             if (instance.status is not null)
                 foreach (var e in instance.status)
@@ -14916,6 +15003,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
                 foreach (var e in instance.communicationChannel)
                     communicationChannel.Add(e);
             valueOfMaximumRange = instance.valueOfMaximumRange;
+            return this;
         }
 
         public override string Serialize() {
@@ -14976,7 +15064,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
     [CategoryOrder("DivingLocation", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class DivingLocationViewModel : ViewModelBase {
+    public partial class DivingLocationViewModel : FeatureViewModel<DivingLocation> {
         private Decimal? _waterClarity = default;
         [Category("DivingLocation")]
         public Decimal? waterClarity {
@@ -15006,20 +15094,20 @@ namespace S100Framework.WPF.ViewModel.S501 {
             }
         }
 
-        public class DivingLocationRefIdViewModel : FeatureRefIdViewModel {
-            public override string[] AssociationTypes => ["DivingLocation"];
-        }
+        public override informationBindingDefinition[] informationBindingDefinitions => DivingLocation._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => DivingLocation._featureBindingDefinitions;
 
         [Browsable(false)]
         public divingActivity[] divingActivityList => [(divingActivity)501, (divingActivity)502, (divingActivity)503];
 
-        public void Load(DomainModel.S501.FeatureTypes.DivingLocation instance) {
+        public override FeatureViewModel<DivingLocation> Load(DomainModel.S501.FeatureTypes.DivingLocation instance) {
             waterClarity = instance.waterClarity;
             featureName.Clear();
             if (instance.featureName is not null)
                 foreach (var e in instance.featureName)
                     featureName.Add(e);
             divingActivity = instance.divingActivity;
+            return this;
         }
 
         public override string Serialize() {
@@ -15052,7 +15140,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
     [CategoryOrder("RestrictedArea", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class RestrictedAreaViewModel : ViewModelBase {
+    public partial class RestrictedAreaViewModel : FeatureViewModel<RestrictedArea> {
         [Category("RestrictedArea")]
         public ObservableCollection<featureName> featureName { get; set; } = new();
 
@@ -15140,10 +15228,8 @@ namespace S100Framework.WPF.ViewModel.S501 {
         [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("RestrictedArea")]
         public ObservableCollection<restriction> restriction { get; set; } = new();
-
-        public class RestrictedAreaRefIdViewModel : FeatureRefIdViewModel {
-            public override string[] AssociationTypes => ["RestrictedArea"];
-        }
+        public override informationBindingDefinition[] informationBindingDefinitions => RestrictedArea._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => RestrictedArea._featureBindingDefinitions;
 
         [Browsable(false)]
         public categoryOfRestrictedArea[] categoryOfRestrictedAreaList => [(categoryOfRestrictedArea)1, (categoryOfRestrictedArea)4, (categoryOfRestrictedArea)5, (categoryOfRestrictedArea)6, (categoryOfRestrictedArea)7, (categoryOfRestrictedArea)8, (categoryOfRestrictedArea)9, (categoryOfRestrictedArea)10, (categoryOfRestrictedArea)12, (categoryOfRestrictedArea)14, (categoryOfRestrictedArea)18, (categoryOfRestrictedArea)19, (categoryOfRestrictedArea)20, (categoryOfRestrictedArea)21, (categoryOfRestrictedArea)22, (categoryOfRestrictedArea)23, (categoryOfRestrictedArea)24, (categoryOfRestrictedArea)25, (categoryOfRestrictedArea)27, (categoryOfRestrictedArea)28, (categoryOfRestrictedArea)29, (categoryOfRestrictedArea)30, (categoryOfRestrictedArea)31, (categoryOfRestrictedArea)32, (categoryOfRestrictedArea)501];
@@ -15154,7 +15240,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
         [Browsable(false)]
         public restriction[] restrictionList => [(restriction)1, (restriction)2, (restriction)3, (restriction)4, (restriction)5, (restriction)6, (restriction)7, (restriction)8, (restriction)9, (restriction)10, (restriction)11, (restriction)12, (restriction)13, (restriction)14, (restriction)15, (restriction)16, (restriction)17, (restriction)18, (restriction)19, (restriction)20, (restriction)21, (restriction)22, (restriction)23, (restriction)24, (restriction)25, (restriction)26, (restriction)27, (restriction)39, (restriction)42];
 
-        public void Load(DomainModel.S501.FeatureTypes.RestrictedArea instance) {
+        public override FeatureViewModel<RestrictedArea> Load(DomainModel.S501.FeatureTypes.RestrictedArea instance) {
             featureName.Clear();
             if (instance.featureName is not null)
                 foreach (var e in instance.featureName)
@@ -15193,6 +15279,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
             if (instance.restriction is not null)
                 foreach (var e in instance.restriction)
                     restriction.Add(e);
+            return this;
         }
 
         public override string Serialize() {
@@ -15261,7 +15348,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
     [CategoryOrder("CableSubmarine", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class CableSubmarineViewModel : ViewModelBase {
+    public partial class CableSubmarineViewModel : FeatureViewModel<CableSubmarine> {
         [DomainModel.EnumerationAttribute(nameof(statusList))]
         [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("CableSubmarine")]
@@ -15399,9 +15486,8 @@ namespace S100Framework.WPF.ViewModel.S501 {
             }
         }
 
-        public class CableSubmarineRefIdViewModel : FeatureRefIdViewModel {
-            public override string[] AssociationTypes => ["CableSubmarine"];
-        }
+        public override informationBindingDefinition[] informationBindingDefinitions => CableSubmarine._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => CableSubmarine._featureBindingDefinitions;
 
         [Browsable(false)]
         public status[] statusList => [(status)1, (status)4, (status)13, (status)18];
@@ -15412,7 +15498,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
         [Browsable(false)]
         public condition[] conditionList => [(condition)1, (condition)5];
 
-        public void Load(DomainModel.S501.FeatureTypes.CableSubmarine instance) {
+        public override FeatureViewModel<CableSubmarine> Load(DomainModel.S501.FeatureTypes.CableSubmarine instance) {
             status.Clear();
             if (instance.status is not null)
                 foreach (var e in instance.status)
@@ -15444,6 +15530,8 @@ namespace S100Framework.WPF.ViewModel.S501 {
                 fixedDateRange = new();
                 fixedDateRange.Load(instance.fixedDateRange);
             }
+
+            return this;
         }
 
         public override string Serialize() {
@@ -15502,7 +15590,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
     [CategoryOrder("Wreck", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class WreckViewModel : ViewModelBase {
+    public partial class WreckViewModel : FeatureViewModel<Wreck> {
         private Decimal? _surroundingDepth = default;
         [Category("Wreck")]
         public Decimal? surroundingDepth {
@@ -15953,10 +16041,8 @@ namespace S100Framework.WPF.ViewModel.S501 {
 
         [Category("Wreck")]
         public ObservableCollection<featureName> featureName { get; set; } = new();
-
-        public class WreckRefIdViewModel : FeatureRefIdViewModel {
-            public override string[] AssociationTypes => ["Wreck"];
-        }
+        public override informationBindingDefinition[] informationBindingDefinitions => Wreck._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => Wreck._featureBindingDefinitions;
 
         [Browsable(false)]
         public techniqueOfVerticalMeasurement[] techniqueOfVerticalMeasurementList => [(techniqueOfVerticalMeasurement)1, (techniqueOfVerticalMeasurement)2, (techniqueOfVerticalMeasurement)3, (techniqueOfVerticalMeasurement)4, (techniqueOfVerticalMeasurement)5, (techniqueOfVerticalMeasurement)8, (techniqueOfVerticalMeasurement)9, (techniqueOfVerticalMeasurement)10, (techniqueOfVerticalMeasurement)11, (techniqueOfVerticalMeasurement)12, (techniqueOfVerticalMeasurement)13, (techniqueOfVerticalMeasurement)15, (techniqueOfVerticalMeasurement)16, (techniqueOfVerticalMeasurement)17, (techniqueOfVerticalMeasurement)18];
@@ -15997,7 +16083,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
         [Browsable(false)]
         public expositionOfSounding[] expositionOfSoundingList => [(expositionOfSounding)1, (expositionOfSounding)2, (expositionOfSounding)3];
 
-        public void Load(DomainModel.S501.FeatureTypes.Wreck instance) {
+        public override FeatureViewModel<Wreck> Load(DomainModel.S501.FeatureTypes.Wreck instance) {
             surroundingDepth = instance.surroundingDepth;
             techniqueOfVerticalMeasurement.Clear();
             if (instance.techniqueOfVerticalMeasurement is not null)
@@ -16088,6 +16174,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
             if (instance.featureName is not null)
                 foreach (var e in instance.featureName)
                     featureName.Add(e);
+            return this;
         }
 
         public override string Serialize() {
@@ -16217,7 +16304,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
     [CategoryOrder("QRoute", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class QRouteViewModel : ViewModelBase {
+    public partial class QRouteViewModel : FeatureViewModel<QRoute> {
         private String _agencyResponsibleForProduction = string.Empty;
         [Category("QRoute")]
         public String agencyResponsibleForProduction {
@@ -16279,14 +16366,13 @@ namespace S100Framework.WPF.ViewModel.S501 {
             }
         }
 
-        public class QRouteRefIdViewModel : FeatureRefIdViewModel {
-            public override string[] AssociationTypes => ["QRoute"];
-        }
+        public override informationBindingDefinition[] informationBindingDefinitions => QRoute._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => QRoute._featureBindingDefinitions;
 
         [Browsable(false)]
         public status[] statusList => [(status)2, (status)503];
 
-        public void Load(DomainModel.S501.FeatureTypes.QRoute instance) {
+        public override FeatureViewModel<QRoute> Load(DomainModel.S501.FeatureTypes.QRoute instance) {
             agencyResponsibleForProduction = instance.agencyResponsibleForProduction;
             information.Clear();
             if (instance.information is not null)
@@ -16313,6 +16399,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
             }
 
             nationality = instance.nationality;
+            return this;
         }
 
         public override string Serialize() {
@@ -16359,7 +16446,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
     [CategoryOrder("CompletenessOfProductSpecification", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class CompletenessOfProductSpecificationViewModel : ViewModelBase {
+    public partial class CompletenessOfProductSpecificationViewModel : FeatureViewModel<CompletenessOfProductSpecification> {
         private String _agencyResponsibleForProduction = string.Empty;
         [Category("CompletenessOfProductSpecification")]
         public String agencyResponsibleForProduction {
@@ -16425,15 +16512,13 @@ namespace S100Framework.WPF.ViewModel.S501 {
 
         [Category("CompletenessOfProductSpecification")]
         public ObservableCollection<information> information { get; set; } = new();
-
-        public class CompletenessOfProductSpecificationRefIdViewModel : FeatureRefIdViewModel {
-            public override string[] AssociationTypes => ["CompletenessOfProductSpecification"];
-        }
+        public override informationBindingDefinition[] informationBindingDefinitions => CompletenessOfProductSpecification._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => CompletenessOfProductSpecification._featureBindingDefinitions;
 
         [Browsable(false)]
         public categoryOfCompleteness[] categoryOfCompletenessList => [(categoryOfCompleteness)501, (categoryOfCompleteness)502];
 
-        public void Load(DomainModel.S501.FeatureTypes.CompletenessOfProductSpecification instance) {
+        public override FeatureViewModel<CompletenessOfProductSpecification> Load(DomainModel.S501.FeatureTypes.CompletenessOfProductSpecification instance) {
             agencyResponsibleForProduction = instance.agencyResponsibleForProduction;
             categoryOfCompleteness = instance.categoryOfCompleteness;
             copyrightStatement = instance.copyrightStatement;
@@ -16448,6 +16533,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
             if (instance.information is not null)
                 foreach (var e in instance.information)
                     information.Add(e);
+            return this;
         }
 
         public override string Serialize() {
@@ -16486,7 +16572,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
     [CategoryOrder("RescueStation", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class RescueStationViewModel : ViewModelBase {
+    public partial class RescueStationViewModel : FeatureViewModel<RescueStation> {
         [DomainModel.EnumerationAttribute(nameof(statusList))]
         [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("RescueStation")]
@@ -16545,10 +16631,8 @@ namespace S100Framework.WPF.ViewModel.S501 {
 
         [Category("RescueStation")]
         public ObservableCollection<information> information { get; set; } = new();
-
-        public class RescueStationRefIdViewModel : FeatureRefIdViewModel {
-            public override string[] AssociationTypes => ["RescueStation"];
-        }
+        public override informationBindingDefinition[] informationBindingDefinitions => RescueStation._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => RescueStation._featureBindingDefinitions;
 
         [Browsable(false)]
         public status[] statusList => [(status)1, (status)2, (status)4, (status)5, (status)7, (status)8, (status)14, (status)16, (status)17];
@@ -16556,7 +16640,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
         [Browsable(false)]
         public categoryOfRescueStation[] categoryOfRescueStationList => [(categoryOfRescueStation)1, (categoryOfRescueStation)2, (categoryOfRescueStation)4, (categoryOfRescueStation)5, (categoryOfRescueStation)6, (categoryOfRescueStation)7, (categoryOfRescueStation)8];
 
-        public void Load(DomainModel.S501.FeatureTypes.RescueStation instance) {
+        public override FeatureViewModel<RescueStation> Load(DomainModel.S501.FeatureTypes.RescueStation instance) {
             status.Clear();
             if (instance.status is not null)
                 foreach (var e in instance.status)
@@ -16589,6 +16673,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
             if (instance.information is not null)
                 foreach (var e in instance.information)
                     information.Add(e);
+            return this;
         }
 
         public override string Serialize() {
@@ -16648,7 +16733,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
     [CategoryOrder("CardinalBeacon", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class CardinalBeaconViewModel : ViewModelBase {
+    public partial class CardinalBeaconViewModel : FeatureViewModel<CardinalBeacon> {
         [Category("CardinalBeacon")]
         public ObservableCollection<information> information { get; set; } = new();
 
@@ -16878,10 +16963,8 @@ namespace S100Framework.WPF.ViewModel.S501 {
 
         [Category("CardinalBeacon")]
         public ObservableCollection<featureName> featureName { get; set; } = new();
-
-        public class CardinalBeaconRefIdViewModel : FeatureRefIdViewModel {
-            public override string[] AssociationTypes => ["CardinalBeacon"];
-        }
+        public override informationBindingDefinition[] informationBindingDefinitions => CardinalBeacon._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => CardinalBeacon._featureBindingDefinitions;
 
         [Browsable(false)]
         public natureOfConstruction[] natureOfConstructionList => [(natureOfConstruction)1, (natureOfConstruction)2, (natureOfConstruction)6, (natureOfConstruction)7, (natureOfConstruction)8];
@@ -16910,7 +16993,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
         [Browsable(false)]
         public visualProminence[] visualProminenceList => [(visualProminence)1, (visualProminence)2, (visualProminence)3];
 
-        public void Load(DomainModel.S501.FeatureTypes.CardinalBeacon instance) {
+        public override FeatureViewModel<CardinalBeacon> Load(DomainModel.S501.FeatureTypes.CardinalBeacon instance) {
             information.Clear();
             if (instance.information is not null)
                 foreach (var e in instance.information)
@@ -16961,6 +17044,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
             if (instance.featureName is not null)
                 foreach (var e in instance.featureName)
                     featureName.Add(e);
+            return this;
         }
 
         public override string Serialize() {
@@ -17046,7 +17130,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
     [CategoryOrder("LightVessel", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class LightVesselViewModel : ViewModelBase {
+    public partial class LightVesselViewModel : FeatureViewModel<LightVessel> {
         [DomainModel.EnumerationAttribute(nameof(statusList))]
         [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("LightVessel")]
@@ -17196,9 +17280,8 @@ namespace S100Framework.WPF.ViewModel.S501 {
             }
         }
 
-        public class LightVesselRefIdViewModel : FeatureRefIdViewModel {
-            public override string[] AssociationTypes => ["LightVessel"];
-        }
+        public override informationBindingDefinition[] informationBindingDefinitions => LightVessel._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => LightVessel._featureBindingDefinitions;
 
         [Browsable(false)]
         public status[] statusList => [(status)1, (status)2, (status)4, (status)5, (status)7, (status)8, (status)14, (status)16, (status)17];
@@ -17215,7 +17298,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
         [Browsable(false)]
         public colourPattern[] colourPatternList => [(colourPattern)1, (colourPattern)2, (colourPattern)3, (colourPattern)4, (colourPattern)5, (colourPattern)6];
 
-        public void Load(DomainModel.S501.FeatureTypes.LightVessel instance) {
+        public override FeatureViewModel<LightVessel> Load(DomainModel.S501.FeatureTypes.LightVessel instance) {
             status.Clear();
             if (instance.status is not null)
                 foreach (var e in instance.status)
@@ -17255,6 +17338,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
                     information.Add(e);
             horizontalWidth = instance.horizontalWidth;
             verticalLength = instance.verticalLength;
+            return this;
         }
 
         public override string Serialize() {
@@ -17328,7 +17412,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
     [CategoryOrder("FisheryZone", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class FisheryZoneViewModel : ViewModelBase {
+    public partial class FisheryZoneViewModel : FeatureViewModel<FisheryZone> {
         private String _interoperabilityIdentifier = string.Empty;
         [Category("FisheryZone")]
         public String interoperabilityIdentifier {
@@ -17404,14 +17488,13 @@ namespace S100Framework.WPF.ViewModel.S501 {
             }
         }
 
-        public class FisheryZoneRefIdViewModel : FeatureRefIdViewModel {
-            public override string[] AssociationTypes => ["FisheryZone"];
-        }
+        public override informationBindingDefinition[] informationBindingDefinitions => FisheryZone._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => FisheryZone._featureBindingDefinitions;
 
         [Browsable(false)]
         public status[] statusList => [(status)1, (status)5, (status)6, (status)7, (status)501, (status)502, (status)504, (status)519, (status)521];
 
-        public void Load(DomainModel.S501.FeatureTypes.FisheryZone instance) {
+        public override FeatureViewModel<FisheryZone> Load(DomainModel.S501.FeatureTypes.FisheryZone instance) {
             interoperabilityIdentifier = instance.interoperabilityIdentifier;
             nationality = instance.nationality;
             nationalMaritimeAuthority.Clear();
@@ -17438,6 +17521,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
                 foreach (var e in instance.featureName)
                     featureName.Add(e);
             status = instance.status;
+            return this;
         }
 
         public override string Serialize() {
@@ -17491,7 +17575,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
     [CategoryOrder("DredgedArea", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class DredgedAreaViewModel : ViewModelBase {
+    public partial class DredgedAreaViewModel : FeatureViewModel<DredgedArea> {
         private Decimal? _maximumPermittedDraught = default;
         [Category("DredgedArea")]
         public Decimal? maximumPermittedDraught {
@@ -17582,10 +17666,8 @@ namespace S100Framework.WPF.ViewModel.S501 {
 
         [Category("DredgedArea")]
         public ObservableCollection<information> information { get; set; } = new();
-
-        public class DredgedAreaRefIdViewModel : FeatureRefIdViewModel {
-            public override string[] AssociationTypes => ["DredgedArea"];
-        }
+        public override informationBindingDefinition[] informationBindingDefinitions => DredgedArea._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => DredgedArea._featureBindingDefinitions;
 
         [Browsable(false)]
         public qualityOfVerticalMeasurement[] qualityOfVerticalMeasurementList => [(qualityOfVerticalMeasurement)10, (qualityOfVerticalMeasurement)11];
@@ -17596,7 +17678,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
         [Browsable(false)]
         public restriction[] restrictionList => [(restriction)1, (restriction)2, (restriction)3, (restriction)4, (restriction)5, (restriction)6, (restriction)8, (restriction)11, (restriction)12, (restriction)13, (restriction)16, (restriction)17, (restriction)18, (restriction)19, (restriction)20, (restriction)21, (restriction)23, (restriction)25, (restriction)27, (restriction)39];
 
-        public void Load(DomainModel.S501.FeatureTypes.DredgedArea instance) {
+        public override FeatureViewModel<DredgedArea> Load(DomainModel.S501.FeatureTypes.DredgedArea instance) {
             maximumPermittedDraught = instance.maximumPermittedDraught;
             verticalUncertainty = new();
             if (instance.verticalUncertainty != null) {
@@ -17624,6 +17706,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
             if (instance.information is not null)
                 foreach (var e in instance.information)
                     information.Add(e);
+            return this;
         }
 
         public override string Serialize() {
@@ -17679,7 +17762,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
     [CategoryOrder("FerryRoute", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class FerryRouteViewModel : ViewModelBase {
+    public partial class FerryRouteViewModel : FeatureViewModel<FerryRoute> {
         [DomainModel.EnumerationAttribute(nameof(statusList))]
         [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("FerryRoute")]
@@ -17785,9 +17868,8 @@ namespace S100Framework.WPF.ViewModel.S501 {
             }
         }
 
-        public class FerryRouteRefIdViewModel : FeatureRefIdViewModel {
-            public override string[] AssociationTypes => ["FerryRoute"];
-        }
+        public override informationBindingDefinition[] informationBindingDefinitions => FerryRoute._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => FerryRoute._featureBindingDefinitions;
 
         [Browsable(false)]
         public status[] statusList => [(status)1, (status)2, (status)4, (status)5, (status)6, (status)7, (status)8, (status)9, (status)14];
@@ -17795,7 +17877,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
         [Browsable(false)]
         public categoryOfFerry[] categoryOfFerryList => [(categoryOfFerry)1, (categoryOfFerry)2, (categoryOfFerry)3, (categoryOfFerry)5];
 
-        public void Load(DomainModel.S501.FeatureTypes.FerryRoute instance) {
+        public override FeatureViewModel<FerryRoute> Load(DomainModel.S501.FeatureTypes.FerryRoute instance) {
             status.Clear();
             if (instance.status is not null)
                 foreach (var e in instance.status)
@@ -17832,6 +17914,8 @@ namespace S100Framework.WPF.ViewModel.S501 {
                 fixedDateRange = new();
                 fixedDateRange.Load(instance.fixedDateRange);
             }
+
+            return this;
         }
 
         public override string Serialize() {
@@ -17894,7 +17978,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
     [CategoryOrder("ShorelineConstruction", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class ShorelineConstructionViewModel : ViewModelBase {
+    public partial class ShorelineConstructionViewModel : FeatureViewModel<ShorelineConstruction> {
         private Decimal? _horizontalLength = default;
         [Category("ShorelineConstruction")]
         public Decimal? horizontalLength {
@@ -18122,9 +18206,8 @@ namespace S100Framework.WPF.ViewModel.S501 {
             }
         }
 
-        public class ShorelineConstructionRefIdViewModel : FeatureRefIdViewModel {
-            public override string[] AssociationTypes => ["ShorelineConstruction"];
-        }
+        public override informationBindingDefinition[] informationBindingDefinitions => ShorelineConstruction._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => ShorelineConstruction._featureBindingDefinitions;
 
         [Browsable(false)]
         public gradientOfSlope[] gradientOfSlopeList => [(gradientOfSlope)501, (gradientOfSlope)502, (gradientOfSlope)503, (gradientOfSlope)504, (gradientOfSlope)505];
@@ -18153,7 +18236,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
         [Browsable(false)]
         public colourPattern[] colourPatternList => [(colourPattern)1, (colourPattern)2, (colourPattern)3, (colourPattern)4, (colourPattern)5, (colourPattern)6];
 
-        public void Load(DomainModel.S501.FeatureTypes.ShorelineConstruction instance) {
+        public override FeatureViewModel<ShorelineConstruction> Load(DomainModel.S501.FeatureTypes.ShorelineConstruction instance) {
             horizontalLength = instance.horizontalLength;
             gradientOfSlope = instance.gradientOfSlope;
             featureName.Clear();
@@ -18200,6 +18283,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
             colourPattern = instance.colourPattern;
             height = instance.height;
             reportedDate = instance.reportedDate;
+            return this;
         }
 
         public override string Serialize() {
@@ -18280,7 +18364,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
     [CategoryOrder("CautionArea", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class CautionAreaViewModel : ViewModelBase {
+    public partial class CautionAreaViewModel : FeatureViewModel<CautionArea> {
         private DateOnly? _reportedDate = default;
         [Category("CautionArea")]
         public DateOnly? reportedDate {
@@ -18363,10 +18447,8 @@ namespace S100Framework.WPF.ViewModel.S501 {
 
         [Category("CautionArea")]
         public ObservableCollection<information> information { get; set; } = new();
-
-        public class CautionAreaRefIdViewModel : FeatureRefIdViewModel {
-            public override string[] AssociationTypes => ["CautionArea"];
-        }
+        public override informationBindingDefinition[] informationBindingDefinitions => CautionArea._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => CautionArea._featureBindingDefinitions;
 
         [Browsable(false)]
         public status[] statusList => [(status)5, (status)7];
@@ -18374,7 +18456,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
         [Browsable(false)]
         public condition[] conditionList => [(condition)1, (condition)3, (condition)5];
 
-        public void Load(DomainModel.S501.FeatureTypes.CautionArea instance) {
+        public override FeatureViewModel<CautionArea> Load(DomainModel.S501.FeatureTypes.CautionArea instance) {
             reportedDate = instance.reportedDate;
             periodicDateRange.Clear();
             if (instance.periodicDateRange is not null)
@@ -18394,6 +18476,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
             if (instance.information is not null)
                 foreach (var e in instance.information)
                     information.Add(e);
+            return this;
         }
 
         public override string Serialize() {
@@ -18439,7 +18522,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
     [CategoryOrder("DeepWaterRoutePart", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class DeepWaterRoutePartViewModel : ViewModelBase {
+    public partial class DeepWaterRoutePartViewModel : FeatureViewModel<DeepWaterRoutePart> {
         private Boolean? _imoAdopted = default;
         [Category("DeepWaterRoutePart")]
         public Boolean? imoAdopted {
@@ -18568,10 +18651,8 @@ namespace S100Framework.WPF.ViewModel.S501 {
         [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("DeepWaterRoutePart")]
         public ObservableCollection<qualityOfVerticalMeasurement> qualityOfVerticalMeasurement { get; set; } = new();
-
-        public class DeepWaterRoutePartRefIdViewModel : FeatureRefIdViewModel {
-            public override string[] AssociationTypes => ["DeepWaterRoutePart"];
-        }
+        public override informationBindingDefinition[] informationBindingDefinitions => DeepWaterRoutePart._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => DeepWaterRoutePart._featureBindingDefinitions;
 
         [Browsable(false)]
         public trafficFlow[] trafficFlowList => [(trafficFlow)1, (trafficFlow)2, (trafficFlow)3, (trafficFlow)4];
@@ -18588,7 +18669,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
         [Browsable(false)]
         public qualityOfVerticalMeasurement[] qualityOfVerticalMeasurementList => [(qualityOfVerticalMeasurement)1, (qualityOfVerticalMeasurement)2, (qualityOfVerticalMeasurement)3, (qualityOfVerticalMeasurement)4, (qualityOfVerticalMeasurement)6, (qualityOfVerticalMeasurement)7];
 
-        public void Load(DomainModel.S501.FeatureTypes.DeepWaterRoutePart instance) {
+        public override FeatureViewModel<DeepWaterRoutePart> Load(DomainModel.S501.FeatureTypes.DeepWaterRoutePart instance) {
             imoAdopted = instance.imoAdopted;
             verticalUncertainty = new();
             if (instance.verticalUncertainty != null) {
@@ -18635,6 +18716,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
             if (instance.qualityOfVerticalMeasurement is not null)
                 foreach (var e in instance.qualityOfVerticalMeasurement)
                     qualityOfVerticalMeasurement.Add(e);
+            return this;
         }
 
         public override string Serialize() {
@@ -18709,7 +18791,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
     [CategoryOrder("CurrentNonGravitational", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class CurrentNonGravitationalViewModel : ViewModelBase {
+    public partial class CurrentNonGravitationalViewModel : FeatureViewModel<CurrentNonGravitational> {
         [Category("CurrentNonGravitational")]
         public ObservableCollection<featureName> featureName { get; set; } = new();
 
@@ -18784,14 +18866,13 @@ namespace S100Framework.WPF.ViewModel.S501 {
             }
         }
 
-        public class CurrentNonGravitationalRefIdViewModel : FeatureRefIdViewModel {
-            public override string[] AssociationTypes => ["CurrentNonGravitational"];
-        }
+        public override informationBindingDefinition[] informationBindingDefinitions => CurrentNonGravitational._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => CurrentNonGravitational._featureBindingDefinitions;
 
         [Browsable(false)]
         public status[] statusList => [(status)5];
 
-        public void Load(DomainModel.S501.FeatureTypes.CurrentNonGravitational instance) {
+        public override FeatureViewModel<CurrentNonGravitational> Load(DomainModel.S501.FeatureTypes.CurrentNonGravitational instance) {
             featureName.Clear();
             if (instance.featureName is not null)
                 foreach (var e in instance.featureName)
@@ -18824,6 +18905,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
             }
 
             status = instance.status;
+            return this;
         }
 
         public override string Serialize() {
@@ -18872,7 +18954,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
     [CategoryOrder("DataCoverage", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class DataCoverageViewModel : ViewModelBase {
+    public partial class DataCoverageViewModel : FeatureViewModel<DataCoverage> {
         private Int32? _drawingIndex = default;
         [Category("DataCoverage")]
         public Int32? drawingIndex {
@@ -18950,14 +19032,13 @@ namespace S100Framework.WPF.ViewModel.S501 {
             }
         }
 
-        public class DataCoverageRefIdViewModel : FeatureRefIdViewModel {
-            public override string[] AssociationTypes => ["DataCoverage"];
-        }
+        public override informationBindingDefinition[] informationBindingDefinitions => DataCoverage._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => DataCoverage._featureBindingDefinitions;
 
         [Browsable(false)]
         public categoryOfCoverage[] categoryOfCoverageList => [(categoryOfCoverage)1, (categoryOfCoverage)2];
 
-        public void Load(DomainModel.S501.FeatureTypes.DataCoverage instance) {
+        public override FeatureViewModel<DataCoverage> Load(DomainModel.S501.FeatureTypes.DataCoverage instance) {
             drawingIndex = instance.drawingIndex;
             interoperabilityIdentifier = instance.interoperabilityIdentifier;
             categoryOfCoverage = instance.categoryOfCoverage;
@@ -18968,6 +19049,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
                 foreach (var e in instance.information)
                     information.Add(e);
             maximumDisplayScale = instance.maximumDisplayScale;
+            return this;
         }
 
         public override string Serialize() {
@@ -19008,7 +19090,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
     [CategoryOrder("SeabedArea", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class SeabedAreaViewModel : ViewModelBase {
+    public partial class SeabedAreaViewModel : FeatureViewModel<SeabedArea> {
         [Category("SeabedArea")]
         public ObservableCollection<information> information { get; set; } = new();
 
@@ -19068,14 +19150,13 @@ namespace S100Framework.WPF.ViewModel.S501 {
             }
         }
 
-        public class SeabedAreaRefIdViewModel : FeatureRefIdViewModel {
-            public override string[] AssociationTypes => ["SeabedArea"];
-        }
+        public override informationBindingDefinition[] informationBindingDefinitions => SeabedArea._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => SeabedArea._featureBindingDefinitions;
 
         [Browsable(false)]
         public waterLevelEffect[] waterLevelEffectList => [(waterLevelEffect)3, (waterLevelEffect)4, (waterLevelEffect)5];
 
-        public void Load(DomainModel.S501.FeatureTypes.SeabedArea instance) {
+        public override FeatureViewModel<SeabedArea> Load(DomainModel.S501.FeatureTypes.SeabedArea instance) {
             information.Clear();
             if (instance.information is not null)
                 foreach (var e in instance.information)
@@ -19092,6 +19173,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
                 foreach (var e in instance.surfaceCharacteristics)
                     surfaceCharacteristics.Add(e);
             attenuation = instance.attenuation;
+            return this;
         }
 
         public override string Serialize() {
@@ -19138,7 +19220,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
     [CategoryOrder("SpecialPurposeGeneralBuoy", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class SpecialPurposeGeneralBuoyViewModel : ViewModelBase {
+    public partial class SpecialPurposeGeneralBuoyViewModel : FeatureViewModel<SpecialPurposeGeneralBuoy> {
         [Category("SpecialPurposeGeneralBuoy")]
         public ObservableCollection<information> information { get; set; } = new();
 
@@ -19298,10 +19380,8 @@ namespace S100Framework.WPF.ViewModel.S501 {
 
         [Category("SpecialPurposeGeneralBuoy")]
         public ObservableCollection<periodicDateRange> periodicDateRange { get; set; } = new();
-
-        public class SpecialPurposeGeneralBuoyRefIdViewModel : FeatureRefIdViewModel {
-            public override string[] AssociationTypes => ["SpecialPurposeGeneralBuoy"];
-        }
+        public override informationBindingDefinition[] informationBindingDefinitions => SpecialPurposeGeneralBuoy._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => SpecialPurposeGeneralBuoy._featureBindingDefinitions;
 
         [Browsable(false)]
         public buoyShape[] buoyShapeList => [(buoyShape)1, (buoyShape)2, (buoyShape)3, (buoyShape)4, (buoyShape)5, (buoyShape)6, (buoyShape)7, (buoyShape)8];
@@ -19324,7 +19404,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
         [Browsable(false)]
         public natureOfConstruction[] natureOfConstructionList => [(natureOfConstruction)6, (natureOfConstruction)7, (natureOfConstruction)8, (natureOfConstruction)11];
 
-        public void Load(DomainModel.S501.FeatureTypes.SpecialPurposeGeneralBuoy instance) {
+        public override FeatureViewModel<SpecialPurposeGeneralBuoy> Load(DomainModel.S501.FeatureTypes.SpecialPurposeGeneralBuoy instance) {
             information.Clear();
             if (instance.information is not null)
                 foreach (var e in instance.information)
@@ -19377,6 +19457,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
             if (instance.periodicDateRange is not null)
                 foreach (var e in instance.periodicDateRange)
                     periodicDateRange.Add(e);
+            return this;
         }
 
         public override string Serialize() {
@@ -19460,7 +19541,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
     [CategoryOrder("LightSectored", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class LightSectoredViewModel : ViewModelBase {
+    public partial class LightSectoredViewModel : FeatureViewModel<LightSectored> {
         [DomainModel.EnumerationAttribute(nameof(statusList))]
         [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("LightSectored")]
@@ -19662,10 +19743,8 @@ namespace S100Framework.WPF.ViewModel.S501 {
 
         [Category("LightSectored")]
         public ObservableCollection<featureName> featureName { get; set; } = new();
-
-        public class LightSectoredRefIdViewModel : FeatureRefIdViewModel {
-            public override string[] AssociationTypes => ["LightSectored"];
-        }
+        public override informationBindingDefinition[] informationBindingDefinitions => LightSectored._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => LightSectored._featureBindingDefinitions;
 
         [Browsable(false)]
         public status[] statusList => [(status)1, (status)2, (status)4, (status)5, (status)6, (status)7, (status)8, (status)11, (status)14, (status)15, (status)16, (status)17];
@@ -19688,7 +19767,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
         [Browsable(false)]
         public marksNavigationalSystemOf[] marksNavigationalSystemOfList => [(marksNavigationalSystemOf)1, (marksNavigationalSystemOf)2, (marksNavigationalSystemOf)9, (marksNavigationalSystemOf)11];
 
-        public void Load(DomainModel.S501.FeatureTypes.LightSectored instance) {
+        public override FeatureViewModel<LightSectored> Load(DomainModel.S501.FeatureTypes.LightSectored instance) {
             status.Clear();
             if (instance.status is not null)
                 foreach (var e in instance.status)
@@ -19737,6 +19816,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
             if (instance.featureName is not null)
                 foreach (var e in instance.featureName)
                     featureName.Add(e);
+            return this;
         }
 
         public override string Serialize() {
@@ -19818,18 +19898,16 @@ namespace S100Framework.WPF.ViewModel.S501 {
     [CategoryOrder("IceLine", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class IceLineViewModel : ViewModelBase {
+    public partial class IceLineViewModel : FeatureViewModel<IceLine> {
         [Category("IceLine")]
         public ObservableCollection<information> information { get; set; } = new();
 
         [Category("IceLine")]
         public ObservableCollection<featureName> featureName { get; set; } = new();
+        public override informationBindingDefinition[] informationBindingDefinitions => IceLine._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => IceLine._featureBindingDefinitions;
 
-        public class IceLineRefIdViewModel : FeatureRefIdViewModel {
-            public override string[] AssociationTypes => ["IceLine"];
-        }
-
-        public void Load(DomainModel.S501.FeatureTypes.IceLine instance) {
+        public override FeatureViewModel<IceLine> Load(DomainModel.S501.FeatureTypes.IceLine instance) {
             information.Clear();
             if (instance.information is not null)
                 foreach (var e in instance.information)
@@ -19838,6 +19916,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
             if (instance.featureName is not null)
                 foreach (var e in instance.featureName)
                     featureName.Add(e);
+            return this;
         }
 
         public override string Serialize() {
@@ -19871,7 +19950,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
     [CategoryOrder("AnchorageArea", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class AnchorageAreaViewModel : ViewModelBase {
+    public partial class AnchorageAreaViewModel : FeatureViewModel<AnchorageArea> {
         [DomainModel.EnumerationAttribute(nameof(restrictionList))]
         [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("AnchorageArea")]
@@ -19935,10 +20014,8 @@ namespace S100Framework.WPF.ViewModel.S501 {
         [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("AnchorageArea")]
         public ObservableCollection<categoryOfCargo> categoryOfCargo { get; set; } = new();
-
-        public class AnchorageAreaRefIdViewModel : FeatureRefIdViewModel {
-            public override string[] AssociationTypes => ["AnchorageArea"];
-        }
+        public override informationBindingDefinition[] informationBindingDefinitions => AnchorageArea._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => AnchorageArea._featureBindingDefinitions;
 
         [Browsable(false)]
         public restriction[] restrictionList => [(restriction)2, (restriction)3, (restriction)4, (restriction)5, (restriction)6, (restriction)8, (restriction)9, (restriction)10, (restriction)11, (restriction)12, (restriction)13, (restriction)15, (restriction)16, (restriction)17, (restriction)18, (restriction)19, (restriction)20, (restriction)21, (restriction)23, (restriction)24, (restriction)27, (restriction)39];
@@ -19952,7 +20029,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
         [Browsable(false)]
         public categoryOfCargo[] categoryOfCargoList => [(categoryOfCargo)1, (categoryOfCargo)2, (categoryOfCargo)3, (categoryOfCargo)4, (categoryOfCargo)5, (categoryOfCargo)6, (categoryOfCargo)7, (categoryOfCargo)8, (categoryOfCargo)9, (categoryOfCargo)10, (categoryOfCargo)11, (categoryOfCargo)12, (categoryOfCargo)13, (categoryOfCargo)14, (categoryOfCargo)15];
 
-        public void Load(DomainModel.S501.FeatureTypes.AnchorageArea instance) {
+        public override FeatureViewModel<AnchorageArea> Load(DomainModel.S501.FeatureTypes.AnchorageArea instance) {
             restriction.Clear();
             if (instance.restriction is not null)
                 foreach (var e in instance.restriction)
@@ -19990,6 +20067,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
             if (instance.categoryOfCargo is not null)
                 foreach (var e in instance.categoryOfCargo)
                     categoryOfCargo.Add(e);
+            return this;
         }
 
         public override string Serialize() {
@@ -20049,7 +20127,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
     [CategoryOrder("LateralBuoy", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class LateralBuoyViewModel : ViewModelBase {
+    public partial class LateralBuoyViewModel : FeatureViewModel<LateralBuoy> {
         private Boolean? _radarConspicuous = default;
         [Category("LateralBuoy")]
         public Boolean? radarConspicuous {
@@ -20229,9 +20307,8 @@ namespace S100Framework.WPF.ViewModel.S501 {
             }
         }
 
-        public class LateralBuoyRefIdViewModel : FeatureRefIdViewModel {
-            public override string[] AssociationTypes => ["LateralBuoy"];
-        }
+        public override informationBindingDefinition[] informationBindingDefinitions => LateralBuoy._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => LateralBuoy._featureBindingDefinitions;
 
         [Browsable(false)]
         public colour[] colourList => [(colour)1, (colour)2, (colour)3, (colour)4, (colour)5, (colour)6, (colour)7, (colour)8, (colour)9, (colour)10, (colour)11, (colour)12, (colour)13];
@@ -20254,7 +20331,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
         [Browsable(false)]
         public marksNavigationalSystemOf[] marksNavigationalSystemOfList => [(marksNavigationalSystemOf)1, (marksNavigationalSystemOf)2, (marksNavigationalSystemOf)9, (marksNavigationalSystemOf)11];
 
-        public void Load(DomainModel.S501.FeatureTypes.LateralBuoy instance) {
+        public override FeatureViewModel<LateralBuoy> Load(DomainModel.S501.FeatureTypes.LateralBuoy instance) {
             radarConspicuous = instance.radarConspicuous;
             fixedDateRange = new();
             if (instance.fixedDateRange != null) {
@@ -20306,6 +20383,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
             }
 
             verticalLength = instance.verticalLength;
+            return this;
         }
 
         public override string Serialize() {
@@ -20383,7 +20461,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
     [CategoryOrder("TrafficSeparationSchemeRoundabout", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class TrafficSeparationSchemeRoundaboutViewModel : ViewModelBase {
+    public partial class TrafficSeparationSchemeRoundaboutViewModel : FeatureViewModel<TrafficSeparationSchemeRoundabout> {
         [Category("TrafficSeparationSchemeRoundabout")]
         public ObservableCollection<vesselSpeedLimit> vesselSpeedLimit { get; set; } = new();
 
@@ -20461,10 +20539,8 @@ namespace S100Framework.WPF.ViewModel.S501 {
         [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("TrafficSeparationSchemeRoundabout")]
         public ObservableCollection<restriction> restriction { get; set; } = new();
-
-        public class TrafficSeparationSchemeRoundaboutRefIdViewModel : FeatureRefIdViewModel {
-            public override string[] AssociationTypes => ["TrafficSeparationSchemeRoundabout"];
-        }
+        public override informationBindingDefinition[] informationBindingDefinitions => TrafficSeparationSchemeRoundabout._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => TrafficSeparationSchemeRoundabout._featureBindingDefinitions;
 
         [Browsable(false)]
         public status[] statusList => [(status)1, (status)3, (status)6, (status)9];
@@ -20472,7 +20548,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
         [Browsable(false)]
         public restriction[] restrictionList => [(restriction)1, (restriction)2, (restriction)3, (restriction)4, (restriction)5, (restriction)6, (restriction)8, (restriction)9, (restriction)10, (restriction)11, (restriction)12, (restriction)13, (restriction)16, (restriction)17, (restriction)18, (restriction)19, (restriction)20, (restriction)21, (restriction)22, (restriction)23, (restriction)24, (restriction)25, (restriction)27];
 
-        public void Load(DomainModel.S501.FeatureTypes.TrafficSeparationSchemeRoundabout instance) {
+        public override FeatureViewModel<TrafficSeparationSchemeRoundabout> Load(DomainModel.S501.FeatureTypes.TrafficSeparationSchemeRoundabout instance) {
             vesselSpeedLimit.Clear();
             if (instance.vesselSpeedLimit is not null)
                 foreach (var e in instance.vesselSpeedLimit)
@@ -20504,6 +20580,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
             if (instance.restriction is not null)
                 foreach (var e in instance.restriction)
                     restriction.Add(e);
+            return this;
         }
 
         public override string Serialize() {
@@ -20557,7 +20634,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
     [CategoryOrder("DeepWaterRouteCentreline", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class DeepWaterRouteCentrelineViewModel : ViewModelBase {
+    public partial class DeepWaterRouteCentrelineViewModel : FeatureViewModel<DeepWaterRouteCentreline> {
         [DomainModel.EnumerationAttribute(nameof(qualityOfVerticalMeasurementList))]
         [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("DeepWaterRouteCentreline")]
@@ -20690,10 +20767,8 @@ namespace S100Framework.WPF.ViewModel.S501 {
         [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("DeepWaterRouteCentreline")]
         public ObservableCollection<techniqueOfVerticalMeasurement> techniqueOfVerticalMeasurement { get; set; } = new();
-
-        public class DeepWaterRouteCentrelineRefIdViewModel : FeatureRefIdViewModel {
-            public override string[] AssociationTypes => ["DeepWaterRouteCentreline"];
-        }
+        public override informationBindingDefinition[] informationBindingDefinitions => DeepWaterRouteCentreline._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => DeepWaterRouteCentreline._featureBindingDefinitions;
 
         [Browsable(false)]
         public qualityOfVerticalMeasurement[] qualityOfVerticalMeasurementList => [(qualityOfVerticalMeasurement)1, (qualityOfVerticalMeasurement)2, (qualityOfVerticalMeasurement)3, (qualityOfVerticalMeasurement)4, (qualityOfVerticalMeasurement)6, (qualityOfVerticalMeasurement)7];
@@ -20707,7 +20782,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
         [Browsable(false)]
         public techniqueOfVerticalMeasurement[] techniqueOfVerticalMeasurementList => [(techniqueOfVerticalMeasurement)1, (techniqueOfVerticalMeasurement)3, (techniqueOfVerticalMeasurement)5, (techniqueOfVerticalMeasurement)8, (techniqueOfVerticalMeasurement)9, (techniqueOfVerticalMeasurement)13, (techniqueOfVerticalMeasurement)15, (techniqueOfVerticalMeasurement)16, (techniqueOfVerticalMeasurement)17, (techniqueOfVerticalMeasurement)18];
 
-        public void Load(DomainModel.S501.FeatureTypes.DeepWaterRouteCentreline instance) {
+        public override FeatureViewModel<DeepWaterRouteCentreline> Load(DomainModel.S501.FeatureTypes.DeepWaterRouteCentreline instance) {
             qualityOfVerticalMeasurement.Clear();
             if (instance.qualityOfVerticalMeasurement is not null)
                 foreach (var e in instance.qualityOfVerticalMeasurement)
@@ -20747,6 +20822,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
             if (instance.techniqueOfVerticalMeasurement is not null)
                 foreach (var e in instance.techniqueOfVerticalMeasurement)
                     techniqueOfVerticalMeasurement.Add(e);
+            return this;
         }
 
         public override string Serialize() {
@@ -20813,7 +20889,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
     [CategoryOrder("LightFloat", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class LightFloatViewModel : ViewModelBase {
+    public partial class LightFloatViewModel : FeatureViewModel<LightFloat> {
         private Decimal? _verticalLength = default;
         [Category("LightFloat")]
         public Decimal? verticalLength {
@@ -20975,10 +21051,8 @@ namespace S100Framework.WPF.ViewModel.S501 {
 
         [Category("LightFloat")]
         public ObservableCollection<featureName> featureName { get; set; } = new();
-
-        public class LightFloatRefIdViewModel : FeatureRefIdViewModel {
-            public override string[] AssociationTypes => ["LightFloat"];
-        }
+        public override informationBindingDefinition[] informationBindingDefinitions => LightFloat._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => LightFloat._featureBindingDefinitions;
 
         [Browsable(false)]
         public status[] statusList => [(status)1, (status)2, (status)4, (status)5, (status)7, (status)8, (status)14, (status)16, (status)17];
@@ -20995,7 +21069,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
         [Browsable(false)]
         public visualProminence[] visualProminenceList => [(visualProminence)1, (visualProminence)2, (visualProminence)3];
 
-        public void Load(DomainModel.S501.FeatureTypes.LightFloat instance) {
+        public override FeatureViewModel<LightFloat> Load(DomainModel.S501.FeatureTypes.LightFloat instance) {
             verticalLength = instance.verticalLength;
             status.Clear();
             if (instance.status is not null)
@@ -21041,6 +21115,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
             if (instance.featureName is not null)
                 foreach (var e in instance.featureName)
                     featureName.Add(e);
+            return this;
         }
 
         public override string Serialize() {
@@ -21116,7 +21191,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
     [CategoryOrder("LightAllAround", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class LightAllAroundViewModel : ViewModelBase {
+    public partial class LightAllAroundViewModel : FeatureViewModel<LightAllAround> {
         private Decimal? _verticalLength = default;
         [Category("LightAllAround")]
         public Decimal? verticalLength {
@@ -21359,10 +21434,8 @@ namespace S100Framework.WPF.ViewModel.S501 {
 
         [Category("LightAllAround")]
         public ObservableCollection<featureName> featureName { get; set; } = new();
-
-        public class LightAllAroundRefIdViewModel : FeatureRefIdViewModel {
-            public override string[] AssociationTypes => ["LightAllAround"];
-        }
+        public override informationBindingDefinition[] informationBindingDefinitions => LightAllAround._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => LightAllAround._featureBindingDefinitions;
 
         [Browsable(false)]
         public marksNavigationalSystemOf[] marksNavigationalSystemOfList => [(marksNavigationalSystemOf)1, (marksNavigationalSystemOf)2, (marksNavigationalSystemOf)9, (marksNavigationalSystemOf)11];
@@ -21391,7 +21464,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
         [Browsable(false)]
         public colour[] colourList => [(colour)1, (colour)3, (colour)4, (colour)5, (colour)6, (colour)9, (colour)10, (colour)11];
 
-        public void Load(DomainModel.S501.FeatureTypes.LightAllAround instance) {
+        public override FeatureViewModel<LightAllAround> Load(DomainModel.S501.FeatureTypes.LightAllAround instance) {
             verticalLength = instance.verticalLength;
             marksNavigationalSystemOf = instance.marksNavigationalSystemOf;
             signalGeneration = instance.signalGeneration;
@@ -21448,6 +21521,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
             if (instance.featureName is not null)
                 foreach (var e in instance.featureName)
                     featureName.Add(e);
+            return this;
         }
 
         public override string Serialize() {
@@ -21535,7 +21609,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
     [CategoryOrder("Coastline", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class CoastlineViewModel : ViewModelBase {
+    public partial class CoastlineViewModel : FeatureViewModel<Coastline> {
         [DomainModel.EnumerationAttribute(nameof(colourList))]
         [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("Coastline")]
@@ -21653,9 +21727,8 @@ namespace S100Framework.WPF.ViewModel.S501 {
             }
         }
 
-        public class CoastlineRefIdViewModel : FeatureRefIdViewModel {
-            public override string[] AssociationTypes => ["Coastline"];
-        }
+        public override informationBindingDefinition[] informationBindingDefinitions => Coastline._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => Coastline._featureBindingDefinitions;
 
         [Browsable(false)]
         public colour[] colourList => [(colour)1, (colour)2, (colour)3, (colour)4, (colour)6, (colour)7, (colour)8, (colour)11, (colour)13];
@@ -21669,7 +21742,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
         [Browsable(false)]
         public visualProminence[] visualProminenceList => [(visualProminence)1, (visualProminence)2, (visualProminence)3];
 
-        public void Load(DomainModel.S501.FeatureTypes.Coastline instance) {
+        public override FeatureViewModel<Coastline> Load(DomainModel.S501.FeatureTypes.Coastline instance) {
             colour.Clear();
             if (instance.colour is not null)
                 foreach (var e in instance.colour)
@@ -21699,6 +21772,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
             pictorialRepresentation = instance.pictorialRepresentation;
             reportedDate = instance.reportedDate;
             radarConspicuous = instance.radarConspicuous;
+            return this;
         }
 
         public override string Serialize() {
@@ -21758,7 +21832,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
     [CategoryOrder("SeaAreaNamedWaterArea", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class SeaAreaNamedWaterAreaViewModel : ViewModelBase {
+    public partial class SeaAreaNamedWaterAreaViewModel : FeatureViewModel<SeaAreaNamedWaterArea> {
         private categoryOfSeaArea? _categoryOfSeaArea = default;
         [DomainModel.EnumerationAttribute(nameof(categoryOfSeaAreaList))]
         [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
@@ -21831,9 +21905,8 @@ namespace S100Framework.WPF.ViewModel.S501 {
             }
         }
 
-        public class SeaAreaNamedWaterAreaRefIdViewModel : FeatureRefIdViewModel {
-            public override string[] AssociationTypes => ["SeaAreaNamedWaterArea"];
-        }
+        public override informationBindingDefinition[] informationBindingDefinitions => SeaAreaNamedWaterArea._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => SeaAreaNamedWaterArea._featureBindingDefinitions;
 
         [Browsable(false)]
         public categoryOfSeaArea[] categoryOfSeaAreaList => [(categoryOfSeaArea)2, (categoryOfSeaArea)3, (categoryOfSeaArea)4, (categoryOfSeaArea)5, (categoryOfSeaArea)6, (categoryOfSeaArea)7, (categoryOfSeaArea)8, (categoryOfSeaArea)9, (categoryOfSeaArea)10, (categoryOfSeaArea)11, (categoryOfSeaArea)12, (categoryOfSeaArea)13, (categoryOfSeaArea)14, (categoryOfSeaArea)15, (categoryOfSeaArea)16, (categoryOfSeaArea)17, (categoryOfSeaArea)18, (categoryOfSeaArea)19, (categoryOfSeaArea)20, (categoryOfSeaArea)21, (categoryOfSeaArea)22, (categoryOfSeaArea)23, (categoryOfSeaArea)24, (categoryOfSeaArea)25, (categoryOfSeaArea)26, (categoryOfSeaArea)27, (categoryOfSeaArea)28, (categoryOfSeaArea)29, (categoryOfSeaArea)30, (categoryOfSeaArea)31, (categoryOfSeaArea)32, (categoryOfSeaArea)33, (categoryOfSeaArea)34, (categoryOfSeaArea)35, (categoryOfSeaArea)36, (categoryOfSeaArea)37, (categoryOfSeaArea)38, (categoryOfSeaArea)39, (categoryOfSeaArea)40, (categoryOfSeaArea)41, (categoryOfSeaArea)42, (categoryOfSeaArea)43, (categoryOfSeaArea)44, (categoryOfSeaArea)45, (categoryOfSeaArea)46, (categoryOfSeaArea)47, (categoryOfSeaArea)48, (categoryOfSeaArea)49, (categoryOfSeaArea)50, (categoryOfSeaArea)51, (categoryOfSeaArea)52, (categoryOfSeaArea)53, (categoryOfSeaArea)54, (categoryOfSeaArea)55, (categoryOfSeaArea)56];
@@ -21844,7 +21917,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
         [Browsable(false)]
         public qualityOfHorizontalMeasurement[] qualityOfHorizontalMeasurementList => [(qualityOfHorizontalMeasurement)4];
 
-        public void Load(DomainModel.S501.FeatureTypes.SeaAreaNamedWaterArea instance) {
+        public override FeatureViewModel<SeaAreaNamedWaterArea> Load(DomainModel.S501.FeatureTypes.SeaAreaNamedWaterArea instance) {
             categoryOfSeaArea = instance.categoryOfSeaArea;
             information.Clear();
             if (instance.information is not null)
@@ -21858,6 +21931,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
             gradient = instance.gradient;
             scaleMinimum = instance.scaleMinimum;
             qualityOfHorizontalMeasurement = instance.qualityOfHorizontalMeasurement;
+            return this;
         }
 
         public override string Serialize() {
@@ -21901,19 +21975,18 @@ namespace S100Framework.WPF.ViewModel.S501 {
     [CategoryOrder("DropZone", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class DropZoneViewModel : ViewModelBase {
+    public partial class DropZoneViewModel : FeatureViewModel<DropZone> {
         [Category("DropZone")]
         public ObservableCollection<information> information { get; set; } = new();
+        public override informationBindingDefinition[] informationBindingDefinitions => DropZone._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => DropZone._featureBindingDefinitions;
 
-        public class DropZoneRefIdViewModel : FeatureRefIdViewModel {
-            public override string[] AssociationTypes => ["DropZone"];
-        }
-
-        public void Load(DomainModel.S501.FeatureTypes.DropZone instance) {
+        public override FeatureViewModel<DropZone> Load(DomainModel.S501.FeatureTypes.DropZone instance) {
             information.Clear();
             if (instance.information is not null)
                 foreach (var e in instance.information)
                     information.Add(e);
+            return this;
         }
 
         public override string Serialize() {
@@ -21942,7 +22015,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
     [CategoryOrder("Conveyor", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class ConveyorViewModel : ViewModelBase {
+    public partial class ConveyorViewModel : FeatureViewModel<Conveyor> {
         private categoryOfConveyor? _categoryOfConveyor = default;
         [DomainModel.EnumerationAttribute(nameof(categoryOfConveyorList))]
         [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
@@ -22157,9 +22230,8 @@ namespace S100Framework.WPF.ViewModel.S501 {
             }
         }
 
-        public class ConveyorRefIdViewModel : FeatureRefIdViewModel {
-            public override string[] AssociationTypes => ["Conveyor"];
-        }
+        public override informationBindingDefinition[] informationBindingDefinitions => Conveyor._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => Conveyor._featureBindingDefinitions;
 
         [Browsable(false)]
         public categoryOfConveyor[] categoryOfConveyorList => [(categoryOfConveyor)1, (categoryOfConveyor)2, (categoryOfConveyor)3, (categoryOfConveyor)4];
@@ -22185,7 +22257,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
         [Browsable(false)]
         public product[] productList => [(product)4, (product)5, (product)6, (product)10, (product)11, (product)12, (product)13, (product)14, (product)15, (product)16, (product)17, (product)22, (product)25];
 
-        public void Load(DomainModel.S501.FeatureTypes.Conveyor instance) {
+        public override FeatureViewModel<Conveyor> Load(DomainModel.S501.FeatureTypes.Conveyor instance) {
             categoryOfConveyor = instance.categoryOfConveyor;
             featureName.Clear();
             if (instance.featureName is not null)
@@ -22236,6 +22308,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
                 foreach (var e in instance.product)
                     product.Add(e);
             verticalLength = instance.verticalLength;
+            return this;
         }
 
         public override string Serialize() {
@@ -22314,7 +22387,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
     [CategoryOrder("LineOfDelimitation", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class LineOfDelimitationViewModel : ViewModelBase {
+    public partial class LineOfDelimitationViewModel : FeatureViewModel<LineOfDelimitation> {
         [Category("LineOfDelimitation")]
         public ObservableCollection<String> nationalMaritimeAuthority { get; set; } = new();
 
@@ -22400,9 +22473,8 @@ namespace S100Framework.WPF.ViewModel.S501 {
             }
         }
 
-        public class LineOfDelimitationRefIdViewModel : FeatureRefIdViewModel {
-            public override string[] AssociationTypes => ["LineOfDelimitation"];
-        }
+        public override informationBindingDefinition[] informationBindingDefinitions => LineOfDelimitation._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => LineOfDelimitation._featureBindingDefinitions;
 
         [Browsable(false)]
         public boundaryStatusType[] boundaryStatusTypeList => [(boundaryStatusType)501, (boundaryStatusType)502, (boundaryStatusType)504, (boundaryStatusType)599];
@@ -22413,7 +22485,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
         [Browsable(false)]
         public categoryofBoundaryLine[] categoryofBoundaryLineList => [(categoryofBoundaryLine)501, (categoryofBoundaryLine)506, (categoryofBoundaryLine)511, (categoryofBoundaryLine)599];
 
-        public void Load(DomainModel.S501.FeatureTypes.LineOfDelimitation instance) {
+        public override FeatureViewModel<LineOfDelimitation> Load(DomainModel.S501.FeatureTypes.LineOfDelimitation instance) {
             nationalMaritimeAuthority.Clear();
             if (instance.nationalMaritimeAuthority is not null)
                 foreach (var e in instance.nationalMaritimeAuthority)
@@ -22433,6 +22505,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
             jurisdiction = instance.jurisdiction;
             categoryofBoundaryLine = instance.categoryofBoundaryLine;
             inDispute = instance.inDispute;
+            return this;
         }
 
         public override string Serialize() {
@@ -22478,7 +22551,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
     [CategoryOrder("StraightTerritorialSeaBaseline", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class StraightTerritorialSeaBaselineViewModel : ViewModelBase {
+    public partial class StraightTerritorialSeaBaselineViewModel : FeatureViewModel<StraightTerritorialSeaBaseline> {
         private String _nationality = string.Empty;
         [Category("StraightTerritorialSeaBaseline")]
         public String nationality {
@@ -22569,14 +22642,13 @@ namespace S100Framework.WPF.ViewModel.S501 {
             }
         }
 
-        public class StraightTerritorialSeaBaselineRefIdViewModel : FeatureRefIdViewModel {
-            public override string[] AssociationTypes => ["StraightTerritorialSeaBaseline"];
-        }
+        public override informationBindingDefinition[] informationBindingDefinitions => StraightTerritorialSeaBaseline._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => StraightTerritorialSeaBaseline._featureBindingDefinitions;
 
         [Browsable(false)]
         public status[] statusList => [(status)502, (status)504];
 
-        public void Load(DomainModel.S501.FeatureTypes.StraightTerritorialSeaBaseline instance) {
+        public override FeatureViewModel<StraightTerritorialSeaBaseline> Load(DomainModel.S501.FeatureTypes.StraightTerritorialSeaBaseline instance) {
             nationality = instance.nationality;
             sourceIdentification = new();
             if (instance.sourceIdentification != null) {
@@ -22593,6 +22665,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
             inDispute = instance.inDispute;
             agencyResponsibleForProduction = instance.agencyResponsibleForProduction;
             scaleMinimum = instance.scaleMinimum;
+            return this;
         }
 
         public override string Serialize() {
@@ -22635,7 +22708,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
     [CategoryOrder("SafeWaterBeacon", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class SafeWaterBeaconViewModel : ViewModelBase {
+    public partial class SafeWaterBeaconViewModel : FeatureViewModel<SafeWaterBeacon> {
         [Category("SafeWaterBeacon")]
         public ObservableCollection<information> information { get; set; } = new();
 
@@ -22865,9 +22938,8 @@ namespace S100Framework.WPF.ViewModel.S501 {
             }
         }
 
-        public class SafeWaterBeaconRefIdViewModel : FeatureRefIdViewModel {
-            public override string[] AssociationTypes => ["SafeWaterBeacon"];
-        }
+        public override informationBindingDefinition[] informationBindingDefinitions => SafeWaterBeacon._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => SafeWaterBeacon._featureBindingDefinitions;
 
         [Browsable(false)]
         public natureOfConstruction[] natureOfConstructionList => [(natureOfConstruction)1, (natureOfConstruction)2, (natureOfConstruction)6, (natureOfConstruction)7, (natureOfConstruction)8];
@@ -22893,7 +22965,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
         [Browsable(false)]
         public visualProminence[] visualProminenceList => [(visualProminence)1, (visualProminence)2, (visualProminence)3];
 
-        public void Load(DomainModel.S501.FeatureTypes.SafeWaterBeacon instance) {
+        public override FeatureViewModel<SafeWaterBeacon> Load(DomainModel.S501.FeatureTypes.SafeWaterBeacon instance) {
             information.Clear();
             if (instance.information is not null)
                 foreach (var e in instance.information)
@@ -22949,6 +23021,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
                 foreach (var e in instance.colour)
                     colour.Add(e);
             visualProminence = instance.visualProminence;
+            return this;
         }
 
         public override string Serialize() {
@@ -23034,7 +23107,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
     [CategoryOrder("SpecialPurposeGeneralBeacon", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class SpecialPurposeGeneralBeaconViewModel : ViewModelBase {
+    public partial class SpecialPurposeGeneralBeaconViewModel : FeatureViewModel<SpecialPurposeGeneralBeacon> {
         private sourceIdentificationViewModel? _sourceIdentification;
         [Category("SpecialPurposeGeneralBeacon")]
         [Xceed.Wpf.Toolkit.PropertyGrid.Attributes.ExpandableObject]
@@ -23268,10 +23341,8 @@ namespace S100Framework.WPF.ViewModel.S501 {
 
         [Category("SpecialPurposeGeneralBeacon")]
         public ObservableCollection<periodicDateRange> periodicDateRange { get; set; } = new();
-
-        public class SpecialPurposeGeneralBeaconRefIdViewModel : FeatureRefIdViewModel {
-            public override string[] AssociationTypes => ["SpecialPurposeGeneralBeacon"];
-        }
+        public override informationBindingDefinition[] informationBindingDefinitions => SpecialPurposeGeneralBeacon._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => SpecialPurposeGeneralBeacon._featureBindingDefinitions;
 
         [Browsable(false)]
         public status[] statusList => [(status)1, (status)2, (status)4, (status)5, (status)7, (status)8, (status)12, (status)18];
@@ -23300,7 +23371,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
         [Browsable(false)]
         public colour[] colourList => [(colour)1, (colour)2, (colour)3, (colour)4, (colour)5, (colour)6, (colour)7, (colour)8, (colour)9, (colour)10, (colour)11, (colour)12, (colour)13];
 
-        public void Load(DomainModel.S501.FeatureTypes.SpecialPurposeGeneralBeacon instance) {
+        public override FeatureViewModel<SpecialPurposeGeneralBeacon> Load(DomainModel.S501.FeatureTypes.SpecialPurposeGeneralBeacon instance) {
             sourceIdentification = new();
             if (instance.sourceIdentification != null) {
                 sourceIdentification = new();
@@ -23360,6 +23431,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
             if (instance.periodicDateRange is not null)
                 foreach (var e in instance.periodicDateRange)
                     periodicDateRange.Add(e);
+            return this;
         }
 
         public override string Serialize() {

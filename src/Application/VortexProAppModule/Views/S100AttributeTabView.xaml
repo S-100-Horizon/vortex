@@ -5,14 +5,16 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+             xmlns:s100="clr-namespace:S100Framework.WPF;assembly=S100Framework.WPF"
              xmlns:local="clr-namespace:VortexProAppModule.Views"
              xmlns:extensions="clr-namespace:ArcGIS.Desktop.Extensions;assembly=ArcGIS.Desktop.Extensions" 
-             xmlns:vortexproappmodule="clr-namespace:VortexProAppModule"              
+             xmlns:vortexproappmodule="clr-namespace:VortexProAppModule" d:DataContext="{d:DesignInstance Type=vortexproappmodule:S100AttributeTabViewModel}"
              mc:Ignorable="d"              
              d:DesignHeight="450" d:DesignWidth="800">
     <UserControl.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/S100Framework.WPF;component/Themes/Generic.xaml"/>
                 <extensions:DesignOnlyResourceDictionary Source="pack://application:,,,/ArcGIS.Desktop.Framework;component\Themes\Default.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
@@ -68,17 +70,21 @@
             </Button>
         </Grid>
 
-        <!--<local:S100PropertyGridView DockPanel.Dock="Bottom" x:Name="_s100PropertyGrid" SelectedObject="{Binding SelectedProperty}">
+        <s100:S100AttributeEditorControl x:Name="S100AttributeEditor"
+                                         Visibility="{Binding IsVisible, Mode=OneWay}"
+                                         IsEditingEnabled="{Binding IsEditingEnabled, Mode=OneWay}"
+                                         SelectedFeatureObject="{Binding SelectedFeatureProperty, Mode=OneWay}"
+                                         SelectedInformationObject="{Binding SelectedInformationProperty, Mode=OneWay}" 
+                                         SelectedAssociationObject="{Binding SelectedAssociationProperty, Mode=OneWay}"
+                                         Loaded="S100AttributeEditor_Loaded"/>
 
-        </local:S100PropertyGridView>-->
-
-        <xctk:PropertyGrid Grid.Row="1" x:Name="_propertyGrid" 
+        <!--<xctk:PropertyGrid Grid.Row="1" x:Name="_propertyGrid" 
                SelectedObject="{Binding SelectedProperty}" 
                PropertyValueChanged="_propertyGrid_PropertyValueChanged" 
                            SelectedPropertyItemChanged="_propertyGrid_SelectedPropertyItemChanged"
                AutoGenerateProperties="True"                           
                UpdateTextBoxSourceOnEnterKey="True"
-               PreparePropertyItem="_propertyGrid_PreparePropertyItem" ShowAdvancedOptions="True"/>
+               PreparePropertyItem="_propertyGrid_PreparePropertyItem" ShowAdvancedOptions="True" ShowSummary="False"/>-->
 
     </DockPanel>
 </UserControl>

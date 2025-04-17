@@ -410,3 +410,6 @@ FodyWeavers.xsd
 /tests/Core.Tests/TestS100Framework.Roslyn/S-501_FC.cs
 /tests/Core.Tests/TestS100Framework.Roslyn/S-501_ViewModel.cs
 /src/Application/VortexExporter/Properties/appsettings.json
+/tests/Core.Tests/TestS100Framework.Roslyn/S-201_FC.cs
+/tests/Core.Tests/TestS100Framework.Roslyn/S-201_ViewModel.cs
+/src/Application/VortexLoader/Properties/launchSettings.json

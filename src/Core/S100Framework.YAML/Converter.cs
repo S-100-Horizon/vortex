@@ -1,13 +1,12 @@
-﻿using System.Collections;
-using YamlDotNet.Serialization.NamingConventions;
-using YamlDotNet.Serialization;
-using S100Framework.DomainModel;
-using YamlDotNet.Core;
-using YamlDotNet.Core.Events;
+﻿using S100Framework.DomainModel;
+using System.Collections;
+using System.Globalization;
 using System.Reflection;
 using System.Runtime.Serialization;
-using System.Globalization;
-using System.Security.AccessControl;
+using YamlDotNet.Core;
+using YamlDotNet.Core.Events;
+using YamlDotNet.Serialization;
+using YamlDotNet.Serialization.NamingConventions;
 
 namespace S100Framework.YAML
 {
@@ -61,7 +60,7 @@ namespace S100Framework.YAML
 
             switch (typed) {
                 // Ensure strings are without newlines
-                case Type t when t == typeof(string):              
+                case Type t when t == typeof(string):
                     var stringval = propertyValue?.ToString();
                     stringval = stringval?.Replace(System.Environment.NewLine, " ");
 
@@ -69,21 +68,21 @@ namespace S100Framework.YAML
                     break;
 
                 // Ensure booleans as integers
-                case Type t when t == typeof(bool):               
+                case Type t when t == typeof(bool):
                     var booleanValue = propertyValue is bool b ? (b ? "1" : "0") : null;
 
                     attributes.Add(new(propertyName, booleanValue, null, parentId));
                     break;
 
                 // Ensure decimals with point 2.0
-                case Type t when t == typeof(decimal):             
+                case Type t when t == typeof(decimal):
                     var parsed = (decimal?)propertyValue!;
 
                     attributes.Add(new(propertyName, parsed?.ToString(CultureInfo.InvariantCulture), null, parentId));
                     break;
 
                 // Ensure enum value comes 'EnumMemberAttribute' and no enums are sat to 0, -1 or "unknown".
-                case Type t when t.IsEnum:                         
+                case Type t when t.IsEnum:
                     var enumvalue = ToEnumString(propertyValue);
                     if (enumvalue == null)
                         break;

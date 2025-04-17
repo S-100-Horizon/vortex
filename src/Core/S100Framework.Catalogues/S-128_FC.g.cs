@@ -949,6 +949,7 @@ namespace S100Framework.DomainModel.S128 {
 
             public timeIntervalOfCycle() {
                 typeOfTimeIntervalUnit = new();
+                ;
             }
         }
 
@@ -1073,7 +1074,9 @@ namespace S100Framework.DomainModel.S128 {
             }
         }
     }
+}
 
+namespace S100Framework.DomainModel.S128 {
     public enum Role {
         [System.ComponentModel.Description("the top section of a catalogue")]
         catalogueHeader,
@@ -1115,18 +1118,7 @@ namespace S100Framework.DomainModel.S128 {
             [System.Serializable()]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
             public partial class CarriageRequirement : InformationAssociation {
-                [JsonIgnore]
-                IEnumerable<RefId> theRequirement => base.RefIds.Where(e => e.Role.Equals("theRequirement"));
-                public override string Code => nameof(CarriageRequirement);
-
-                public string[]? this[Role role] => this[role.ToString()];
-                public override string[]? this[string role] => role switch
-                {
-                    "theRequirement" => theRequirementInformationTypes,
-                    _ => throw new InvalidOperationException(),
-                };
-                [JsonIgnore]
-                public virtual String[] theRequirementInformationTypes => [];
+                public string Code => nameof(CarriageRequirement);
 
                 public CarriageRequirement() {
                 }
@@ -1135,25 +1127,7 @@ namespace S100Framework.DomainModel.S128 {
             [System.Serializable()]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
             public partial class DistributionDetails : InformationAssociation {
-                [JsonIgnore]
-                IEnumerable<RefId> catalogueHeader => base.RefIds.Where(e => e.Role.Equals("catalogueHeader"));
-
-                [JsonIgnore]
-                IEnumerable<RefId> theDistributor => base.RefIds.Where(e => e.Role.Equals("theDistributor"));
-                public override string Code => nameof(DistributionDetails);
-
-                public string[]? this[Role role] => this[role.ToString()];
-                public override string[]? this[string role] => role switch
-                {
-                    "catalogueHeader" => catalogueHeaderInformationTypes,
-                    "theDistributor" => theDistributorInformationTypes,
-                    _ => throw new InvalidOperationException(),
-                };
-                [JsonIgnore]
-                public virtual String[] catalogueHeaderInformationTypes => [];
-
-                [JsonIgnore]
-                public virtual String[] theDistributorInformationTypes => [];
+                public string Code => nameof(DistributionDetails);
 
                 public DistributionDetails() {
                 }
@@ -1162,25 +1136,7 @@ namespace S100Framework.DomainModel.S128 {
             [System.Serializable()]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
             public partial class DistributorContact : InformationAssociation {
-                [JsonIgnore]
-                RefId? theDistributor => base.RefIds.FirstOrDefault(e => e.Role.Equals("theDistributor"));
-
-                [JsonIgnore]
-                IEnumerable<RefId> theContactDetails => base.RefIds.Where(e => e.Role.Equals("theContactDetails"));
-                public override string Code => nameof(DistributorContact);
-
-                public string[]? this[Role role] => this[role.ToString()];
-                public override string[]? this[string role] => role switch
-                {
-                    "theDistributor" => theDistributorInformationTypes,
-                    "theContactDetails" => theContactDetailsInformationTypes,
-                    _ => throw new InvalidOperationException(),
-                };
-                [JsonIgnore]
-                public virtual String[] theDistributorInformationTypes => [];
-
-                [JsonIgnore]
-                public virtual String[] theContactDetailsInformationTypes => [];
+                public string Code => nameof(DistributorContact);
 
                 public DistributorContact() {
                 }
@@ -1189,18 +1145,7 @@ namespace S100Framework.DomainModel.S128 {
             [System.Serializable()]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
             public partial class PriceOfElement : InformationAssociation {
-                [JsonIgnore]
-                IEnumerable<RefId> thePriceInformation => base.RefIds.Where(e => e.Role.Equals("thePriceInformation"));
-                public override string Code => nameof(PriceOfElement);
-
-                public string[]? this[Role role] => this[role.ToString()];
-                public override string[]? this[string role] => role switch
-                {
-                    "thePriceInformation" => thePriceInformationInformationTypes,
-                    _ => throw new InvalidOperationException(),
-                };
-                [JsonIgnore]
-                public virtual String[] thePriceInformationInformationTypes => [];
+                public string Code => nameof(PriceOfElement);
 
                 public PriceOfElement() {
                 }
@@ -1209,25 +1154,7 @@ namespace S100Framework.DomainModel.S128 {
             [System.Serializable()]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
             public partial class PriceOfNauticalProduct : InformationAssociation {
-                [JsonIgnore]
-                IEnumerable<RefId> theCatalogueOfNauticalProduct => base.RefIds.Where(e => e.Role.Equals("theCatalogueOfNauticalProduct"));
-
-                [JsonIgnore]
-                IEnumerable<RefId> thePriceInformation => base.RefIds.Where(e => e.Role.Equals("thePriceInformation"));
-                public override string Code => nameof(PriceOfNauticalProduct);
-
-                public string[]? this[Role role] => this[role.ToString()];
-                public override string[]? this[string role] => role switch
-                {
-                    "theCatalogueOfNauticalProduct" => theCatalogueOfNauticalProductInformationTypes,
-                    "thePriceInformation" => thePriceInformationInformationTypes,
-                    _ => throw new InvalidOperationException(),
-                };
-                [JsonIgnore]
-                public virtual String[] theCatalogueOfNauticalProductInformationTypes => [];
-
-                [JsonIgnore]
-                public virtual String[] thePriceInformationInformationTypes => [];
+                public string Code => nameof(PriceOfNauticalProduct);
 
                 public PriceOfNauticalProduct() {
                 }
@@ -1236,25 +1163,7 @@ namespace S100Framework.DomainModel.S128 {
             [System.Serializable()]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
             public partial class ProducerContact : InformationAssociation {
-                [JsonIgnore]
-                RefId? theProducer => base.RefIds.FirstOrDefault(e => e.Role.Equals("theProducer"));
-
-                [JsonIgnore]
-                IEnumerable<RefId> theContactDetails => base.RefIds.Where(e => e.Role.Equals("theContactDetails"));
-                public override string Code => nameof(ProducerContact);
-
-                public string[]? this[Role role] => this[role.ToString()];
-                public override string[]? this[string role] => role switch
-                {
-                    "theProducer" => theProducerInformationTypes,
-                    "theContactDetails" => theContactDetailsInformationTypes,
-                    _ => throw new InvalidOperationException(),
-                };
-                [JsonIgnore]
-                public virtual String[] theProducerInformationTypes => [];
-
-                [JsonIgnore]
-                public virtual String[] theContactDetailsInformationTypes => [];
+                public string Code => nameof(ProducerContact);
 
                 public ProducerContact() {
                 }
@@ -1263,25 +1172,7 @@ namespace S100Framework.DomainModel.S128 {
             [System.Serializable()]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
             public partial class ProductionDetails : InformationAssociation {
-                [JsonIgnore]
-                IEnumerable<RefId> catalogueHeader => base.RefIds.Where(e => e.Role.Equals("catalogueHeader"));
-
-                [JsonIgnore]
-                RefId? theProducer => base.RefIds.FirstOrDefault(e => e.Role.Equals("theProducer"));
-                public override string Code => nameof(ProductionDetails);
-
-                public string[]? this[Role role] => this[role.ToString()];
-                public override string[]? this[string role] => role switch
-                {
-                    "catalogueHeader" => catalogueHeaderInformationTypes,
-                    "theProducer" => theProducerInformationTypes,
-                    _ => throw new InvalidOperationException(),
-                };
-                [JsonIgnore]
-                public virtual String[] catalogueHeaderInformationTypes => [];
-
-                [JsonIgnore]
-                public virtual String[] theProducerInformationTypes => [];
+                public string Code => nameof(ProductionDetails);
 
                 public ProductionDetails() {
                 }
@@ -1290,18 +1181,7 @@ namespace S100Framework.DomainModel.S128 {
             [System.Serializable()]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
             public partial class ProductPackage : InformationAssociation {
-                [JsonIgnore]
-                IEnumerable<RefId> elementContainer => base.RefIds.Where(e => e.Role.Equals("elementContainer"));
-                public override string Code => nameof(ProductPackage);
-
-                public string[]? this[Role role] => this[role.ToString()];
-                public override string[]? this[string role] => role switch
-                {
-                    "elementContainer" => elementContainerInformationTypes,
-                    _ => throw new InvalidOperationException(),
-                };
-                [JsonIgnore]
-                public virtual String[] elementContainerInformationTypes => [];
+                public string Code => nameof(ProductPackage);
 
                 public ProductPackage() {
                 }
@@ -1313,26 +1193,14 @@ namespace S100Framework.DomainModel.S128 {
 
             [System.Serializable()]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-            public abstract partial class ProductMapping : FeatureAssociation {
+            public partial class ProductMapping : FeatureAssociation {
                 [EnumerationValue(1)]
                 [EnumerationValue(2)]
                 [EnumerationValue(3)]
                 [EnumerationValue(4)]
                 [Required()]
                 public categoryOfProductMapping categoryOfProductMapping { get; set; }
-
-                [JsonIgnore]
-                public IEnumerable<RefId> theReference => base.RefIds.Where(e => e.Role.Equals("theReference"));
-                public override string Code => "ProductMapping";
-
-                public string[]? this[Role role] => this[role.ToString()];
-                public override string[]? this[string role] => role switch
-                {
-                    "theReference" => theReferenceFeatureTypes,
-                    _ => throw new InvalidOperationException(),
-                };
-                [JsonIgnore]
-                public virtual String[] theReferenceFeatureTypes => [];
+                public string Code => "ProductMapping";
 
                 public ProductMapping() {
                 }
@@ -1340,19 +1208,8 @@ namespace S100Framework.DomainModel.S128 {
 
             [System.Serializable()]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-            public abstract partial class Correlated : FeatureAssociation {
-                [JsonIgnore]
-                public RefId main => base.RefIds.First(e => e.Role.Equals("main"));
-                public override string Code => "Correlated";
-
-                public string[]? this[Role role] => this[role.ToString()];
-                public override string[]? this[string role] => role switch
-                {
-                    "main" => mainFeatureTypes,
-                    _ => throw new InvalidOperationException(),
-                };
-                [JsonIgnore]
-                public virtual String[] mainFeatureTypes => [];
+            public partial class Correlated : FeatureAssociation {
+                public string Code => "Correlated";
 
                 public Correlated() {
                 }
@@ -1362,16 +1219,17 @@ namespace S100Framework.DomainModel.S128 {
 
     namespace Bindings {
     }
+}
 
+namespace S100Framework.DomainModel.S128 {
     namespace InformationTypes {
         using ComplexAttributes;
         using DomainModel;
-        using System.Runtime.Serialization;
         using S100Framework.DomainModel.S128.Associations.InformationAssociations;
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class CatalogueSectionHeader : InformationNode {
+        public partial class CatalogueSectionHeader : InformationNode, IInformationBindingDefinition {
             [Required()]
             public Int32 catalogueSectionNumber { get; set; }
             public String? catalogueSectionTitle { get; set; } = null;
@@ -1379,44 +1237,40 @@ namespace S100Framework.DomainModel.S128 {
 
             [JsonIgnore]
             public override string Code => nameof(CatalogueSectionHeader);
+            public informationBindingDefinition[] informationBindingDefinitions => CatalogueSectionHeader._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [new informationBindingDefinition
+            {
+                roleType = roleType.association,
+                lower = 0,
+                upper = default,
+                association = nameof(PriceOfNauticalProduct),
+                role = Enum.GetName<Role>(Role.thePriceInformation)!,
+                informationTypes = [nameof(PriceInformation)],
+            }, new informationBindingDefinition
+            {
+                roleType = roleType.association,
+                lower = 0,
+                upper = 1,
+                association = nameof(ProductionDetails),
+                role = Enum.GetName<Role>(Role.theProducer)!,
+                informationTypes = [nameof(ProducerInformation)],
+            }, new informationBindingDefinition
+            {
+                roleType = roleType.association,
+                lower = 0,
+                upper = default,
+                association = nameof(DistributionDetails),
+                role = Enum.GetName<Role>(Role.theDistributor)!,
+                informationTypes = [nameof(DistributorInformation)],
+            }, ];
 
-            public class PriceOfNauticalProduct_thePriceInformation : PriceOfNauticalProduct {
-                public override roleType? roleType => DomainModel.roleType.association;
-
-                [JsonIgnore]
-                public override String[] thePriceInformationInformationTypes => ["PriceInformation"];
-
-                public PriceOfNauticalProduct_thePriceInformation() {
-                    base.AssociationConnectorTypeName = typeof(CatalogueSectionHeader).Name;
-                }
-            };
-            public class ProductionDetails_theProducer : ProductionDetails {
-                public override roleType? roleType => DomainModel.roleType.association;
-
-                [JsonIgnore]
-                public override String[] theProducerInformationTypes => ["ProducerInformation"];
-
-                public ProductionDetails_theProducer() {
-                    base.AssociationConnectorTypeName = typeof(CatalogueSectionHeader).Name;
-                }
-            };
-            public class DistributionDetails_theDistributor : DistributionDetails {
-                public override roleType? roleType => DomainModel.roleType.association;
-
-                [JsonIgnore]
-                public override String[] theDistributorInformationTypes => ["DistributorInformation"];
-
-                public DistributionDetails_theDistributor() {
-                    base.AssociationConnectorTypeName = typeof(CatalogueSectionHeader).Name;
-                }
-            };
             public CatalogueSectionHeader() {
             }
         }
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class ContactDetails : InformationNode {
+        public partial class ContactDetails : InformationNode, IInformationBindingDefinition {
             public String contactInstructions { get; set; } = string.Empty;
             public List<contactAddress> contactAddress { get; set; } = [];
             public List<information> information { get; set; } = [];
@@ -1426,27 +1280,25 @@ namespace S100Framework.DomainModel.S128 {
 
             [JsonIgnore]
             public override string Code => nameof(ContactDetails);
+            public informationBindingDefinition[] informationBindingDefinitions => ContactDetails._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [new informationBindingDefinition
+            {
+                roleType = roleType.association,
+                lower = 0,
+                upper = 1,
+                association = nameof(ProducerContact),
+                role = Enum.GetName<Role>(Role.theProducer)!,
+                informationTypes = [nameof(ProducerInformation)],
+            }, new informationBindingDefinition
+            {
+                roleType = roleType.association,
+                lower = 0,
+                upper = 1,
+                association = nameof(DistributorContact),
+                role = Enum.GetName<Role>(Role.theDistributor)!,
+                informationTypes = [nameof(DistributorInformation)],
+            }, ];
 
-            public class ProducerContact_theProducer : ProducerContact {
-                public override roleType? roleType => DomainModel.roleType.association;
-
-                [JsonIgnore]
-                public override String[] theProducerInformationTypes => ["ProducerInformation"];
-
-                public ProducerContact_theProducer() {
-                    base.AssociationConnectorTypeName = typeof(ContactDetails).Name;
-                }
-            };
-            public class DistributorContact_theDistributor : DistributorContact {
-                public override roleType? roleType => DomainModel.roleType.association;
-
-                [JsonIgnore]
-                public override String[] theDistributorInformationTypes => ["DistributorInformation"];
-
-                public DistributorContact_theDistributor() {
-                    base.AssociationConnectorTypeName = typeof(ContactDetails).Name;
-                }
-            };
             public ContactDetails() {
                 contactInstructions = string.Empty;
             }
@@ -1454,13 +1306,15 @@ namespace S100Framework.DomainModel.S128 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class IndicationOfCarriageRequirement : InformationNode {
+        public partial class IndicationOfCarriageRequirement : InformationNode, IInformationBindingDefinition {
             public String? domesticCarriageRequirements { get; set; } = null;
             public String? internationalCarriageRequirements { get; set; } = null;
             public List<featureName> featureName { get; set; } = [];
 
             [JsonIgnore]
             public override string Code => nameof(IndicationOfCarriageRequirement);
+            public informationBindingDefinition[] informationBindingDefinitions => IndicationOfCarriageRequirement._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [];
 
             public IndicationOfCarriageRequirement() {
             }
@@ -1468,7 +1322,7 @@ namespace S100Framework.DomainModel.S128 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class PriceInformation : InformationNode {
+        public partial class PriceInformation : InformationNode, IInformationBindingDefinition {
             public List<information> information { get; set; } = [];
             public List<onlineResource> onlineResource { get; set; } = [];
             public List<pricing> pricing { get; set; } = [];
@@ -1476,50 +1330,48 @@ namespace S100Framework.DomainModel.S128 {
 
             [JsonIgnore]
             public override string Code => nameof(PriceInformation);
+            public informationBindingDefinition[] informationBindingDefinitions => PriceInformation._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [new informationBindingDefinition
+            {
+                roleType = roleType.association,
+                lower = 0,
+                upper = default,
+                association = nameof(PriceOfNauticalProduct),
+                role = Enum.GetName<Role>(Role.theCatalogueOfNauticalProduct)!,
+                informationTypes = [nameof(CatalogueSectionHeader)],
+            }, ];
 
-            public class PriceOfNauticalProduct_theCatalogueOfNauticalProduct : PriceOfNauticalProduct {
-                public override roleType? roleType => DomainModel.roleType.association;
-
-                [JsonIgnore]
-                public override String[] theCatalogueOfNauticalProductInformationTypes => ["CatalogueSectionHeader"];
-
-                public PriceOfNauticalProduct_theCatalogueOfNauticalProduct() {
-                    base.AssociationConnectorTypeName = typeof(PriceInformation).Name;
-                }
-            };
             public PriceInformation() {
             }
         }
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class ProducerInformation : InformationNode {
+        public partial class ProducerInformation : InformationNode, IInformationBindingDefinition {
             public String agencyResponsibleForProduction { get; set; } = string.Empty;
             public String? agencyName { get; set; } = null;
 
             [JsonIgnore]
             public override string Code => nameof(ProducerInformation);
+            public informationBindingDefinition[] informationBindingDefinitions => ProducerInformation._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [new informationBindingDefinition
+            {
+                roleType = roleType.association,
+                lower = 0,
+                upper = default,
+                association = nameof(ProducerContact),
+                role = Enum.GetName<Role>(Role.theContactDetails)!,
+                informationTypes = [nameof(ContactDetails)],
+            }, new informationBindingDefinition
+            {
+                roleType = roleType.association,
+                lower = 0,
+                upper = default,
+                association = nameof(ProductionDetails),
+                role = Enum.GetName<Role>(Role.catalogueHeader)!,
+                informationTypes = [nameof(CatalogueSectionHeader)],
+            }, ];
 
-            public class ProducerContact_theContactDetails : ProducerContact {
-                public override roleType? roleType => DomainModel.roleType.association;
-
-                [JsonIgnore]
-                public override String[] theContactDetailsInformationTypes => ["ContactDetails"];
-
-                public ProducerContact_theContactDetails() {
-                    base.AssociationConnectorTypeName = typeof(ProducerInformation).Name;
-                }
-            };
-            public class ProductionDetails_catalogueHeader : ProductionDetails {
-                public override roleType? roleType => DomainModel.roleType.association;
-
-                [JsonIgnore]
-                public override String[] catalogueHeaderInformationTypes => ["CatalogueSectionHeader"];
-
-                public ProductionDetails_catalogueHeader() {
-                    base.AssociationConnectorTypeName = typeof(ProducerInformation).Name;
-                }
-            };
             public ProducerInformation() {
                 agencyResponsibleForProduction = string.Empty;
             }
@@ -1527,32 +1379,30 @@ namespace S100Framework.DomainModel.S128 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class DistributorInformation : InformationNode {
+        public partial class DistributorInformation : InformationNode, IInformationBindingDefinition {
             public String distributorName { get; set; } = string.Empty;
 
             [JsonIgnore]
             public override string Code => nameof(DistributorInformation);
+            public informationBindingDefinition[] informationBindingDefinitions => DistributorInformation._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [new informationBindingDefinition
+            {
+                roleType = roleType.association,
+                lower = 0,
+                upper = default,
+                association = nameof(DistributionDetails),
+                role = Enum.GetName<Role>(Role.catalogueHeader)!,
+                informationTypes = [nameof(CatalogueSectionHeader)],
+            }, new informationBindingDefinition
+            {
+                roleType = roleType.association,
+                lower = 0,
+                upper = default,
+                association = nameof(DistributorContact),
+                role = Enum.GetName<Role>(Role.theContactDetails)!,
+                informationTypes = [nameof(ContactDetails)],
+            }, ];
 
-            public class DistributionDetails_catalogueHeader : DistributionDetails {
-                public override roleType? roleType => DomainModel.roleType.association;
-
-                [JsonIgnore]
-                public override String[] catalogueHeaderInformationTypes => ["CatalogueSectionHeader"];
-
-                public DistributionDetails_catalogueHeader() {
-                    base.AssociationConnectorTypeName = typeof(DistributorInformation).Name;
-                }
-            };
-            public class DistributorContact_theContactDetails : DistributorContact {
-                public override roleType? roleType => DomainModel.roleType.association;
-
-                [JsonIgnore]
-                public override String[] theContactDetailsInformationTypes => ["ContactDetails"];
-
-                public DistributorContact_theContactDetails() {
-                    base.AssociationConnectorTypeName = typeof(DistributorInformation).Name;
-                }
-            };
             public DistributorInformation() {
                 distributorName = string.Empty;
             }
@@ -1569,7 +1419,7 @@ namespace S100Framework.DomainModel.S128 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public abstract partial class CatalogueElement : FeatureNode {
+        public abstract partial class CatalogueElement : FeatureNode, IFeatureBindingDefinition {
             public String? agencyResponsibleForProduction { get; set; } = null;
 
             [Required()]
@@ -1589,55 +1439,52 @@ namespace S100Framework.DomainModel.S128 {
 
             [JsonIgnore]
             public override string Code => nameof(CatalogueElement);
+            public informationBindingDefinition[] informationBindingDefinitions => CatalogueElement._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [new informationBindingDefinition
+            {
+                roleType = roleType.association,
+                lower = 0,
+                upper = default,
+                association = nameof(CarriageRequirement),
+                role = Enum.GetName<Role>(Role.theRequirement)!,
+                informationTypes = [nameof(IndicationOfCarriageRequirement)],
+            }, new informationBindingDefinition
+            {
+                roleType = roleType.association,
+                lower = 0,
+                upper = default,
+                association = nameof(PriceOfElement),
+                role = Enum.GetName<Role>(Role.thePriceInformation)!,
+                informationTypes = [nameof(PriceInformation)],
+            }, new informationBindingDefinition
+            {
+                roleType = roleType.association,
+                lower = 1,
+                upper = default,
+                association = nameof(ProductPackage),
+                role = Enum.GetName<Role>(Role.elementContainer)!,
+                informationTypes = [nameof(CatalogueSectionHeader)],
+            }, ];
+            public featureBindingDefinition[] featureBindingDefinitions => CatalogueElement._featureBindingDefinitions;
+            public static featureBindingDefinition[] _featureBindingDefinitions => [new featureBindingDefinition
+            {
+                roleType = roleType.association,
+                lower = 0,
+                upper = default,
+                association = nameof(ProductMapping),
+                role = Enum.GetName<Role>(Role.theReference)!,
+                featureTypes = [nameof(CatalogueElement)],
+            }, ];
 
-            public class CarriageRequirement_theRequirement : CarriageRequirement {
-                public override roleType? roleType => DomainModel.roleType.association;
-
-                [JsonIgnore]
-                public override String[] theRequirementInformationTypes => ["IndicationOfCarriageRequirement"];
-
-                public CarriageRequirement_theRequirement() {
-                    base.AssociationConnectorTypeName = typeof(CatalogueElement).Name;
-                }
-            };
-            public class PriceOfElement_thePriceInformation : PriceOfElement {
-                public override roleType? roleType => DomainModel.roleType.association;
-
-                [JsonIgnore]
-                public override String[] thePriceInformationInformationTypes => ["PriceInformation"];
-
-                public PriceOfElement_thePriceInformation() {
-                    base.AssociationConnectorTypeName = typeof(CatalogueElement).Name;
-                }
-            };
-            public class ProductPackage_elementContainer : ProductPackage {
-                public override roleType? roleType => DomainModel.roleType.association;
-
-                [JsonIgnore]
-                public override String[] elementContainerInformationTypes => ["CatalogueSectionHeader"];
-
-                public ProductPackage_elementContainer() {
-                    base.AssociationConnectorTypeName = typeof(CatalogueElement).Name;
-                }
-            };
-            public class ProductMapping_theReference : ProductMapping {
-                public override roleType? roleType => DomainModel.roleType.association;
-
-                [JsonIgnore]
-                public override String[] theReferenceFeatureTypes => ["CatalogueElement"];
-
-                public ProductMapping_theReference() {
-                    base.AssociationConnectorTypeName = typeof(CatalogueElement).Name;
-                }
-            };
             public CatalogueElement() {
                 catalogueElementClassification = new();
+                ;
             }
         }
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public abstract partial class NavigationalProduct : CatalogueElement {
+        public abstract partial class NavigationalProduct : CatalogueElement, IFeatureBindingDefinition {
             public List<Decimal> approximateGridResolution { get; set; } = [];
             public List<Int32> compilationScale { get; set; } = [];
 
@@ -1717,24 +1564,26 @@ namespace S100Framework.DomainModel.S128 {
 
             [JsonIgnore]
             public override string Code => nameof(NavigationalProduct);
+            public informationBindingDefinition[] informationBindingDefinitions => NavigationalProduct._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [];
+            public featureBindingDefinition[] featureBindingDefinitions => NavigationalProduct._featureBindingDefinitions;
+            public static featureBindingDefinition[] _featureBindingDefinitions => [new featureBindingDefinition
+            {
+                roleType = roleType.association,
+                lower = 1,
+                upper = 1,
+                association = nameof(Correlated),
+                role = Enum.GetName<Role>(Role.main)!,
+                featureTypes = [nameof(NavigationalProduct)],
+            }, ];
 
-            public class Correlated_main : Correlated {
-                public override roleType? roleType => DomainModel.roleType.association;
-
-                [JsonIgnore]
-                public override String[] mainFeatureTypes => ["NavigationalProduct"];
-
-                public Correlated_main() {
-                    base.AssociationConnectorTypeName = typeof(NavigationalProduct).Name;
-                }
-            };
             public NavigationalProduct() {
             }
         }
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class ElectronicProduct : NavigationalProduct {
+        public partial class ElectronicProduct : NavigationalProduct, IFeatureBindingDefinition {
             public Boolean? compressionFlag { get; set; } = default;
             public String? datasetName { get; set; } = null;
 
@@ -1760,6 +1609,10 @@ namespace S100Framework.DomainModel.S128 {
 
             [JsonIgnore]
             public override string Code => nameof(ElectronicProduct);
+            public informationBindingDefinition[] informationBindingDefinitions => ElectronicProduct._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [];
+            public featureBindingDefinition[] featureBindingDefinitions => ElectronicProduct._featureBindingDefinitions;
+            public static featureBindingDefinition[] _featureBindingDefinitions => [];
 
             public ElectronicProduct() {
             }
@@ -1767,7 +1620,7 @@ namespace S100Framework.DomainModel.S128 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class PhysicalProduct : NavigationalProduct {
+        public partial class PhysicalProduct : NavigationalProduct, IFeatureBindingDefinition {
             [Required()]
             public DateTime editionDate { get; set; }
             public String? isbn { get; set; } = null;
@@ -1778,6 +1631,10 @@ namespace S100Framework.DomainModel.S128 {
 
             [JsonIgnore]
             public override string Code => nameof(PhysicalProduct);
+            public informationBindingDefinition[] informationBindingDefinitions => PhysicalProduct._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [];
+            public featureBindingDefinition[] featureBindingDefinitions => PhysicalProduct._featureBindingDefinitions;
+            public static featureBindingDefinition[] _featureBindingDefinitions => [];
 
             public PhysicalProduct() {
             }
@@ -1785,7 +1642,7 @@ namespace S100Framework.DomainModel.S128 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class S100Service : CatalogueElement {
+        public partial class S100Service : CatalogueElement, IFeatureBindingDefinition {
             public Boolean? compressionFlag { get; set; } = default;
             public String? serviceName { get; set; } = null;
 
@@ -1814,6 +1671,10 @@ namespace S100Framework.DomainModel.S128 {
 
             [JsonIgnore]
             public override string Code => nameof(S100Service);
+            public informationBindingDefinition[] informationBindingDefinitions => S100Service._informationBindingDefinitions;
+            public static informationBindingDefinition[] _informationBindingDefinitions => [];
+            public featureBindingDefinition[] featureBindingDefinitions => S100Service._featureBindingDefinitions;
+            public static featureBindingDefinition[] _featureBindingDefinitions => [];
 
             public S100Service() {
             }

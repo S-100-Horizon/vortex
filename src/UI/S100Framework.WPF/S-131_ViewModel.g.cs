@@ -14,2146 +14,291 @@ using Xceed.Wpf.Toolkit.PropertyGrid.Attributes;
 
 #nullable enable
 namespace S100Framework.WPF.ViewModel.S131 {
-    internal static class Preamble {
-        public static ImmutableDictionary<string, Func<ViewModelBase>> _creators => ImmutableDictionary.Create<string, Func<ViewModelBase>>().AddRange(new Dictionary<string, Func<ViewModelBase>> { { "Applicability", () =>
+    internal static class Bootstrap {
+        public static AssociationViewModel CreateInformationAssociation(string type, string? pid = default) => type switch
         {
-            return new ApplicabilityViewModel();
-        } }, { "Authority", () =>
-        {
-            return new AuthorityViewModel();
-        } }, { "AvailablePortServices", () =>
-        {
-            return new AvailablePortServicesViewModel();
-        } }, { "ContactDetails", () =>
-        {
-            return new ContactDetailsViewModel();
-        } }, { "Entrance", () =>
-        {
-            return new EntranceViewModel();
-        } }, { "NauticalInformation", () =>
-        {
-            return new NauticalInformationViewModel();
-        } }, { "NonStandardWorkingDay", () =>
-        {
-            return new NonStandardWorkingDayViewModel();
-        } }, { "Recommendations", () =>
-        {
-            return new RecommendationsViewModel();
-        } }, { "Regulations", () =>
-        {
-            return new RegulationsViewModel();
-        } }, { "Restrictions", () =>
-        {
-            return new RestrictionsViewModel();
-        } }, { "ServiceHours", () =>
-        {
-            return new ServiceHoursViewModel();
-        } }, { "SpatialQuality", () =>
-        {
-            return new SpatialQualityViewModel();
-        } }, { "AnchorBerth", () =>
-        {
-            return new AnchorBerthViewModel();
-        } }, { "AnchorageArea", () =>
-        {
-            return new AnchorageAreaViewModel();
-        } }, { "Berth", () =>
-        {
-            return new BerthViewModel();
-        } }, { "BerthPosition", () =>
-        {
-            return new BerthPositionViewModel();
-        } }, { "DockArea", () =>
-        {
-            return new DockAreaViewModel();
-        } }, { "DryDock", () =>
-        {
-            return new DryDockViewModel();
-        } }, { "DumpingGround", () =>
-        {
-            return new DumpingGroundViewModel();
-        } }, { "FloatingDock", () =>
-        {
-            return new FloatingDockViewModel();
-        } }, { "Gridiron", () =>
-        {
-            return new GridironViewModel();
-        } }, { "HarbourAreaAdministrative", () =>
-        {
-            return new HarbourAreaAdministrativeViewModel();
-        } }, { "HarbourAreaSection", () =>
-        {
-            return new HarbourAreaSectionViewModel();
-        } }, { "HarbourBasin", () =>
-        {
-            return new HarbourBasinViewModel();
-        } }, { "HarbourFacility", () =>
-        {
-            return new HarbourFacilityViewModel();
-        } }, { "MooringWarpingFacility", () =>
-        {
-            return new MooringWarpingFacilityViewModel();
-        } }, { "OuterLimit", () =>
-        {
-            return new OuterLimitViewModel();
-        } }, { "PilotBoardingPlace", () =>
-        {
-            return new PilotBoardingPlaceViewModel();
-        } }, { "SeaplaneLandingArea", () =>
-        {
-            return new SeaplaneLandingAreaViewModel();
-        } }, { "Terminal", () =>
-        {
-            return new TerminalViewModel();
-        } }, { "TurningBasin", () =>
-        {
-            return new TurningBasinViewModel();
-        } }, { "WaterwayArea", () =>
-        {
-            return new WaterwayAreaViewModel();
-        } }, { "DataCoverage", () =>
-        {
-            return new DataCoverageViewModel();
-        } }, { "QualityOfNonBathymetricData", () =>
-        {
-            return new QualityOfNonBathymetricDataViewModel();
-        } }, { "SoundingDatum", () =>
-        {
-            return new SoundingDatumViewModel();
-        } }, { "VerticalDatumOfData", () =>
-        {
-            return new VerticalDatumOfDataViewModel();
-        } }, { "TextPlacement", () =>
-        {
-            return new TextPlacementViewModel();
-        } }, { "TextAssociation", () =>
-        {
-            return new TextAssociationViewModel();
-        } }, { "Subsection", () =>
-        {
-            return new SubsectionViewModel();
-        } }, { "Infrastructure", () =>
-        {
-            return new InfrastructureViewModel();
-        } }, { "PrimaryAuxiliaryFacility", () =>
-        {
-            return new PrimaryAuxiliaryFacilityViewModel();
-        } }, { "Demarcation", () =>
-        {
-            return new DemarcationViewModel();
-        } }, { "JurisdictionalLimit", () =>
-        {
-            return new JurisdictionalLimitViewModel();
-        } }, { "LayoutDivision", () =>
-        {
-            return new LayoutDivisionViewModel();
-        } }, { "AdditionalInformation", () =>
-        {
-            return new AdditionalInformationViewModel();
-        } }, { "AuthorityContact", () =>
-        {
-            return new AuthorityContactViewModel();
-        } }, { "AuthorityHours", () =>
-        {
-            return new AuthorityHoursViewModel();
-        } }, { "AssociatedRxN", () =>
-        {
-            return new AssociatedRxNViewModel();
-        } }, { "ExceptionalWorkday", () =>
-        {
-            return new ExceptionalWorkdayViewModel();
-        } }, { "ServiceControl", () =>
-        {
-            return new ServiceControlViewModel();
-        } }, { "ServiceContact", () =>
-        {
-            return new ServiceContactViewModel();
-        } }, { "LocationHours", () =>
-        {
-            return new LocationHoursViewModel();
-        } }, { "RelatedOrganisation", () =>
-        {
-            return new RelatedOrganisationViewModel();
-        } }, { "InclusionType", () =>
-        {
-            return new InclusionTypeViewModel();
-        } }, { "PermissionType", () =>
-        {
-            return new PermissionTypeViewModel();
-        } }, { "SpatialAssociation", () =>
-        {
-            return new SpatialAssociationViewModel();
-        } }, { "LimitEntrance", () =>
-        {
-            return new LimitEntranceViewModel();
-        } }, { "ServiceAvailability", () =>
-        {
-            return new ServiceAvailabilityViewModel();
-        } }, });
-    }
-
-    public class Handles : iHandles {
-        public static IDictionary<Type, Func<InformationAssociationConnector[]>> AssociationConnectorInformations => new Dictionary<Type, Func<InformationAssociationConnector[]>>
-        {
+            "AdditionalInformation" => new AdditionalInformationViewModel
             {
-                typeof(ServiceAvailabilityViewModel),
-                () => [new InformationAssociationConnector<AnchorBerth>()
-                {
-                    roleType = roleType.association,
-                    role = "serviceDescriptionReference",
-                    Lower = 0,
-                    Upper = 1,
-                    AssociationTypes = ["AvailablePortServices"],
-                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<ServiceAvailabilityViewModel.serviceDescriptionReferenceAnchorBerthRefIdViewModel>("ServiceAvailability"),
-                    CreateLocalInformationBinding = () => new SingleInformationBindingViewModel<AnchorBerthViewModel.AnchorBerthRefIdViewModel>("AnchorBerth"),
-                }, new InformationAssociationConnector<Berth>()
-                {
-                    roleType = roleType.association,
-                    role = "serviceDescriptionReference",
-                    Lower = 0,
-                    Upper = 1,
-                    AssociationTypes = ["AvailablePortServices"],
-                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<ServiceAvailabilityViewModel.serviceDescriptionReferenceBerthRefIdViewModel>("ServiceAvailability"),
-                    CreateLocalInformationBinding = () => new SingleInformationBindingViewModel<BerthViewModel.BerthRefIdViewModel>("Berth"),
-                }, new InformationAssociationConnector<DockArea>()
-                {
-                    roleType = roleType.association,
-                    role = "serviceDescriptionReference",
-                    Lower = 0,
-                    Upper = 1,
-                    AssociationTypes = ["AvailablePortServices"],
-                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<ServiceAvailabilityViewModel.serviceDescriptionReferenceDockAreaRefIdViewModel>("ServiceAvailability"),
-                    CreateLocalInformationBinding = () => new SingleInformationBindingViewModel<DockAreaViewModel.DockAreaRefIdViewModel>("DockArea"),
-                }, new InformationAssociationConnector<HarbourAreaAdministrative>()
-                {
-                    roleType = roleType.association,
-                    role = "serviceDescriptionReference",
-                    Lower = 0,
-                    Upper = 1,
-                    AssociationTypes = ["AvailablePortServices"],
-                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<ServiceAvailabilityViewModel.serviceDescriptionReferenceHarbourAreaAdministrativeRefIdViewModel>("ServiceAvailability"),
-                    CreateLocalInformationBinding = () => new SingleInformationBindingViewModel<HarbourAreaAdministrativeViewModel.HarbourAreaAdministrativeRefIdViewModel>("HarbourAreaAdministrative"),
-                }, new InformationAssociationConnector<HarbourAreaSection>()
-                {
-                    roleType = roleType.association,
-                    role = "serviceDescriptionReference",
-                    Lower = 0,
-                    Upper = 1,
-                    AssociationTypes = ["AvailablePortServices"],
-                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<ServiceAvailabilityViewModel.serviceDescriptionReferenceHarbourAreaSectionRefIdViewModel>("ServiceAvailability"),
-                    CreateLocalInformationBinding = () => new SingleInformationBindingViewModel<HarbourAreaSectionViewModel.HarbourAreaSectionRefIdViewModel>("HarbourAreaSection"),
-                }, new InformationAssociationConnector<MooringWarpingFacility>()
-                {
-                    roleType = roleType.association,
-                    role = "serviceDescriptionReference",
-                    Lower = 0,
-                    Upper = 1,
-                    AssociationTypes = ["AvailablePortServices"],
-                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<ServiceAvailabilityViewModel.serviceDescriptionReferenceMooringWarpingFacilityRefIdViewModel>("ServiceAvailability"),
-                    CreateLocalInformationBinding = () => new SingleInformationBindingViewModel<MooringWarpingFacilityViewModel.MooringWarpingFacilityRefIdViewModel>("MooringWarpingFacility"),
-                }, new InformationAssociationConnector<Terminal>()
-                {
-                    roleType = roleType.association,
-                    role = "serviceDescriptionReference",
-                    Lower = 0,
-                    Upper = 1,
-                    AssociationTypes = ["AvailablePortServices"],
-                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<ServiceAvailabilityViewModel.serviceDescriptionReferenceTerminalRefIdViewModel>("ServiceAvailability"),
-                    CreateLocalInformationBinding = () => new SingleInformationBindingViewModel<TerminalViewModel.TerminalRefIdViewModel>("Terminal"),
-                }
-
-                ]
+                PID = pid
             },
+            "AuthorityContact" => new AuthorityContactViewModel
             {
-                typeof(LimitEntranceViewModel),
-                () => [new InformationAssociationConnector<OuterLimit>()
-                {
-                    roleType = roleType.association,
-                    role = "entranceReference",
-                    Lower = 0,
-                    Upper = 1,
-                    AssociationTypes = ["Entrance"],
-                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<LimitEntranceViewModel.entranceReferenceOuterLimitRefIdViewModel>("LimitEntrance"),
-                    CreateLocalInformationBinding = () => new SingleInformationBindingViewModel<OuterLimitViewModel.OuterLimitRefIdViewModel>("OuterLimit"),
-                }
-
-                ]
+                PID = pid
             },
+            "AuthorityHours" => new AuthorityHoursViewModel
             {
-                typeof(PermissionTypeViewModel),
-                () => [new InformationAssociationConnector<DryDock>()
-                {
-                    roleType = roleType.association,
-                    role = "permission",
-                    Lower = 0,
-                    Upper = default,
-                    AssociationTypes = ["Applicability"],
-                    CreateForeignInformationBinding = () => new MultiInformationBindingViewModel<PermissionTypeViewModel.permissionDryDockRefIdViewModel>("PermissionType"),
-                    CreateLocalInformationBinding = () => new SingleInformationBindingViewModel<DryDockViewModel.DryDockRefIdViewModel>("DryDock"),
-                }, new InformationAssociationConnector<FloatingDock>()
-                {
-                    roleType = roleType.association,
-                    role = "permission",
-                    Lower = 0,
-                    Upper = default,
-                    AssociationTypes = ["Applicability"],
-                    CreateForeignInformationBinding = () => new MultiInformationBindingViewModel<PermissionTypeViewModel.permissionFloatingDockRefIdViewModel>("PermissionType"),
-                    CreateLocalInformationBinding = () => new SingleInformationBindingViewModel<FloatingDockViewModel.FloatingDockRefIdViewModel>("FloatingDock"),
-                }, new InformationAssociationConnector<Gridiron>()
-                {
-                    roleType = roleType.association,
-                    role = "permission",
-                    Lower = 0,
-                    Upper = default,
-                    AssociationTypes = ["Applicability"],
-                    CreateForeignInformationBinding = () => new MultiInformationBindingViewModel<PermissionTypeViewModel.permissionGridironRefIdViewModel>("PermissionType"),
-                    CreateLocalInformationBinding = () => new SingleInformationBindingViewModel<GridironViewModel.GridironRefIdViewModel>("Gridiron"),
-                }, new InformationAssociationConnector<HarbourFacility>()
-                {
-                    roleType = roleType.association,
-                    role = "permission",
-                    Lower = 0,
-                    Upper = default,
-                    AssociationTypes = ["Applicability"],
-                    CreateForeignInformationBinding = () => new MultiInformationBindingViewModel<PermissionTypeViewModel.permissionHarbourFacilityRefIdViewModel>("PermissionType"),
-                    CreateLocalInformationBinding = () => new SingleInformationBindingViewModel<HarbourFacilityViewModel.HarbourFacilityRefIdViewModel>("HarbourFacility"),
-                }, new InformationAssociationConnector<AnchorBerth>()
-                {
-                    roleType = roleType.association,
-                    role = "permission",
-                    Lower = 0,
-                    Upper = default,
-                    AssociationTypes = ["Applicability"],
-                    CreateForeignInformationBinding = () => new MultiInformationBindingViewModel<PermissionTypeViewModel.permissionAnchorBerthRefIdViewModel>("PermissionType"),
-                    CreateLocalInformationBinding = () => new SingleInformationBindingViewModel<AnchorBerthViewModel.AnchorBerthRefIdViewModel>("AnchorBerth"),
-                }, new InformationAssociationConnector<AnchorageArea>()
-                {
-                    roleType = roleType.association,
-                    role = "permission",
-                    Lower = 0,
-                    Upper = default,
-                    AssociationTypes = ["Applicability"],
-                    CreateForeignInformationBinding = () => new MultiInformationBindingViewModel<PermissionTypeViewModel.permissionAnchorageAreaRefIdViewModel>("PermissionType"),
-                    CreateLocalInformationBinding = () => new SingleInformationBindingViewModel<AnchorageAreaViewModel.AnchorageAreaRefIdViewModel>("AnchorageArea"),
-                }, new InformationAssociationConnector<Berth>()
-                {
-                    roleType = roleType.association,
-                    role = "permission",
-                    Lower = 0,
-                    Upper = default,
-                    AssociationTypes = ["Applicability"],
-                    CreateForeignInformationBinding = () => new MultiInformationBindingViewModel<PermissionTypeViewModel.permissionBerthRefIdViewModel>("PermissionType"),
-                    CreateLocalInformationBinding = () => new SingleInformationBindingViewModel<BerthViewModel.BerthRefIdViewModel>("Berth"),
-                }, new InformationAssociationConnector<BerthPosition>()
-                {
-                    roleType = roleType.association,
-                    role = "permission",
-                    Lower = 0,
-                    Upper = default,
-                    AssociationTypes = ["Applicability"],
-                    CreateForeignInformationBinding = () => new MultiInformationBindingViewModel<PermissionTypeViewModel.permissionBerthPositionRefIdViewModel>("PermissionType"),
-                    CreateLocalInformationBinding = () => new SingleInformationBindingViewModel<BerthPositionViewModel.BerthPositionRefIdViewModel>("BerthPosition"),
-                }, new InformationAssociationConnector<DockArea>()
-                {
-                    roleType = roleType.association,
-                    role = "permission",
-                    Lower = 0,
-                    Upper = default,
-                    AssociationTypes = ["Applicability"],
-                    CreateForeignInformationBinding = () => new MultiInformationBindingViewModel<PermissionTypeViewModel.permissionDockAreaRefIdViewModel>("PermissionType"),
-                    CreateLocalInformationBinding = () => new SingleInformationBindingViewModel<DockAreaViewModel.DockAreaRefIdViewModel>("DockArea"),
-                }, new InformationAssociationConnector<DumpingGround>()
-                {
-                    roleType = roleType.association,
-                    role = "permission",
-                    Lower = 0,
-                    Upper = default,
-                    AssociationTypes = ["Applicability"],
-                    CreateForeignInformationBinding = () => new MultiInformationBindingViewModel<PermissionTypeViewModel.permissionDumpingGroundRefIdViewModel>("PermissionType"),
-                    CreateLocalInformationBinding = () => new SingleInformationBindingViewModel<DumpingGroundViewModel.DumpingGroundRefIdViewModel>("DumpingGround"),
-                }, new InformationAssociationConnector<HarbourAreaAdministrative>()
-                {
-                    roleType = roleType.association,
-                    role = "permission",
-                    Lower = 0,
-                    Upper = default,
-                    AssociationTypes = ["Applicability"],
-                    CreateForeignInformationBinding = () => new MultiInformationBindingViewModel<PermissionTypeViewModel.permissionHarbourAreaAdministrativeRefIdViewModel>("PermissionType"),
-                    CreateLocalInformationBinding = () => new SingleInformationBindingViewModel<HarbourAreaAdministrativeViewModel.HarbourAreaAdministrativeRefIdViewModel>("HarbourAreaAdministrative"),
-                }, new InformationAssociationConnector<HarbourAreaSection>()
-                {
-                    roleType = roleType.association,
-                    role = "permission",
-                    Lower = 0,
-                    Upper = default,
-                    AssociationTypes = ["Applicability"],
-                    CreateForeignInformationBinding = () => new MultiInformationBindingViewModel<PermissionTypeViewModel.permissionHarbourAreaSectionRefIdViewModel>("PermissionType"),
-                    CreateLocalInformationBinding = () => new SingleInformationBindingViewModel<HarbourAreaSectionViewModel.HarbourAreaSectionRefIdViewModel>("HarbourAreaSection"),
-                }, new InformationAssociationConnector<HarbourBasin>()
-                {
-                    roleType = roleType.association,
-                    role = "permission",
-                    Lower = 0,
-                    Upper = default,
-                    AssociationTypes = ["Applicability"],
-                    CreateForeignInformationBinding = () => new MultiInformationBindingViewModel<PermissionTypeViewModel.permissionHarbourBasinRefIdViewModel>("PermissionType"),
-                    CreateLocalInformationBinding = () => new SingleInformationBindingViewModel<HarbourBasinViewModel.HarbourBasinRefIdViewModel>("HarbourBasin"),
-                }, new InformationAssociationConnector<MooringWarpingFacility>()
-                {
-                    roleType = roleType.association,
-                    role = "permission",
-                    Lower = 0,
-                    Upper = default,
-                    AssociationTypes = ["Applicability"],
-                    CreateForeignInformationBinding = () => new MultiInformationBindingViewModel<PermissionTypeViewModel.permissionMooringWarpingFacilityRefIdViewModel>("PermissionType"),
-                    CreateLocalInformationBinding = () => new SingleInformationBindingViewModel<MooringWarpingFacilityViewModel.MooringWarpingFacilityRefIdViewModel>("MooringWarpingFacility"),
-                }, new InformationAssociationConnector<OuterLimit>()
-                {
-                    roleType = roleType.association,
-                    role = "permission",
-                    Lower = 0,
-                    Upper = default,
-                    AssociationTypes = ["Applicability"],
-                    CreateForeignInformationBinding = () => new MultiInformationBindingViewModel<PermissionTypeViewModel.permissionOuterLimitRefIdViewModel>("PermissionType"),
-                    CreateLocalInformationBinding = () => new SingleInformationBindingViewModel<OuterLimitViewModel.OuterLimitRefIdViewModel>("OuterLimit"),
-                }, new InformationAssociationConnector<PilotBoardingPlace>()
-                {
-                    roleType = roleType.association,
-                    role = "permission",
-                    Lower = 0,
-                    Upper = default,
-                    AssociationTypes = ["Applicability"],
-                    CreateForeignInformationBinding = () => new MultiInformationBindingViewModel<PermissionTypeViewModel.permissionPilotBoardingPlaceRefIdViewModel>("PermissionType"),
-                    CreateLocalInformationBinding = () => new SingleInformationBindingViewModel<PilotBoardingPlaceViewModel.PilotBoardingPlaceRefIdViewModel>("PilotBoardingPlace"),
-                }, new InformationAssociationConnector<SeaplaneLandingArea>()
-                {
-                    roleType = roleType.association,
-                    role = "permission",
-                    Lower = 0,
-                    Upper = default,
-                    AssociationTypes = ["Applicability"],
-                    CreateForeignInformationBinding = () => new MultiInformationBindingViewModel<PermissionTypeViewModel.permissionSeaplaneLandingAreaRefIdViewModel>("PermissionType"),
-                    CreateLocalInformationBinding = () => new SingleInformationBindingViewModel<SeaplaneLandingAreaViewModel.SeaplaneLandingAreaRefIdViewModel>("SeaplaneLandingArea"),
-                }, new InformationAssociationConnector<Terminal>()
-                {
-                    roleType = roleType.association,
-                    role = "permission",
-                    Lower = 0,
-                    Upper = default,
-                    AssociationTypes = ["Applicability"],
-                    CreateForeignInformationBinding = () => new MultiInformationBindingViewModel<PermissionTypeViewModel.permissionTerminalRefIdViewModel>("PermissionType"),
-                    CreateLocalInformationBinding = () => new SingleInformationBindingViewModel<TerminalViewModel.TerminalRefIdViewModel>("Terminal"),
-                }, new InformationAssociationConnector<TurningBasin>()
-                {
-                    roleType = roleType.association,
-                    role = "permission",
-                    Lower = 0,
-                    Upper = default,
-                    AssociationTypes = ["Applicability"],
-                    CreateForeignInformationBinding = () => new MultiInformationBindingViewModel<PermissionTypeViewModel.permissionTurningBasinRefIdViewModel>("PermissionType"),
-                    CreateLocalInformationBinding = () => new SingleInformationBindingViewModel<TurningBasinViewModel.TurningBasinRefIdViewModel>("TurningBasin"),
-                }, new InformationAssociationConnector<WaterwayArea>()
-                {
-                    roleType = roleType.association,
-                    role = "permission",
-                    Lower = 0,
-                    Upper = default,
-                    AssociationTypes = ["Applicability"],
-                    CreateForeignInformationBinding = () => new MultiInformationBindingViewModel<PermissionTypeViewModel.permissionWaterwayAreaRefIdViewModel>("PermissionType"),
-                    CreateLocalInformationBinding = () => new SingleInformationBindingViewModel<WaterwayAreaViewModel.WaterwayAreaRefIdViewModel>("WaterwayArea"),
-                }, new InformationAssociationConnector<Applicability>()
-                {
-                    roleType = roleType.association,
-                    role = "vslLocation",
-                    Lower = 0,
-                    Upper = default,
-                    AssociationTypes = ["NauticalInformation", "Recommendations", "Regulations", "Restrictions", "Applicability", "Authority", "AvailablePortServices", "ContactDetails", "Entrance", "NonStandardWorkingDay", "ServiceHours"],
-                    CreateForeignInformationBinding = () => new MultiInformationBindingViewModel<PermissionTypeViewModel.vslLocationApplicabilityRefIdViewModel>("PermissionType"),
-                    CreateLocalInformationBinding = () => new SingleInformationBindingViewModel<ApplicabilityViewModel.ApplicabilityRefIdViewModel>("Applicability"),
-                }
-
-                ]
+                PID = pid
             },
+            "AssociatedRxN" => new AssociatedRxNViewModel
             {
-                typeof(InclusionTypeViewModel),
-                () => [new InformationAssociationConnector<NauticalInformation>()
-                {
-                    roleType = roleType.association,
-                    role = "isApplicableTo",
-                    Lower = 0,
-                    Upper = default,
-                    AssociationTypes = ["Applicability"],
-                    CreateForeignInformationBinding = () => new MultiInformationBindingViewModel<InclusionTypeViewModel.isApplicableToNauticalInformationRefIdViewModel>("InclusionType"),
-                    CreateLocalInformationBinding = () => new SingleInformationBindingViewModel<NauticalInformationViewModel.NauticalInformationRefIdViewModel>("NauticalInformation"),
-                }, new InformationAssociationConnector<Recommendations>()
-                {
-                    roleType = roleType.association,
-                    role = "isApplicableTo",
-                    Lower = 0,
-                    Upper = default,
-                    AssociationTypes = ["Applicability"],
-                    CreateForeignInformationBinding = () => new MultiInformationBindingViewModel<InclusionTypeViewModel.isApplicableToRecommendationsRefIdViewModel>("InclusionType"),
-                    CreateLocalInformationBinding = () => new SingleInformationBindingViewModel<RecommendationsViewModel.RecommendationsRefIdViewModel>("Recommendations"),
-                }, new InformationAssociationConnector<Regulations>()
-                {
-                    roleType = roleType.association,
-                    role = "isApplicableTo",
-                    Lower = 0,
-                    Upper = default,
-                    AssociationTypes = ["Applicability"],
-                    CreateForeignInformationBinding = () => new MultiInformationBindingViewModel<InclusionTypeViewModel.isApplicableToRegulationsRefIdViewModel>("InclusionType"),
-                    CreateLocalInformationBinding = () => new SingleInformationBindingViewModel<RegulationsViewModel.RegulationsRefIdViewModel>("Regulations"),
-                }, new InformationAssociationConnector<Restrictions>()
-                {
-                    roleType = roleType.association,
-                    role = "isApplicableTo",
-                    Lower = 0,
-                    Upper = default,
-                    AssociationTypes = ["Applicability"],
-                    CreateForeignInformationBinding = () => new MultiInformationBindingViewModel<InclusionTypeViewModel.isApplicableToRestrictionsRefIdViewModel>("InclusionType"),
-                    CreateLocalInformationBinding = () => new SingleInformationBindingViewModel<RestrictionsViewModel.RestrictionsRefIdViewModel>("Restrictions"),
-                }, new InformationAssociationConnector<Applicability>()
-                {
-                    roleType = roleType.association,
-                    role = "theApplicableRxN",
-                    Lower = 0,
-                    Upper = default,
-                    AssociationTypes = ["NauticalInformation", "Recommendations", "Regulations", "Restrictions"],
-                    CreateForeignInformationBinding = () => new MultiInformationBindingViewModel<InclusionTypeViewModel.theApplicableRxNApplicabilityRefIdViewModel>("InclusionType"),
-                    CreateLocalInformationBinding = () => new SingleInformationBindingViewModel<ApplicabilityViewModel.ApplicabilityRefIdViewModel>("Applicability"),
-                }
-
-                ]
+                PID = pid
             },
+            "ExceptionalWorkday" => new ExceptionalWorkdayViewModel
             {
-                typeof(RelatedOrganisationViewModel),
-                () => [new InformationAssociationConnector<Authority>()
-                {
-                    roleType = roleType.association,
-                    role = "theInformation",
-                    Lower = 0,
-                    Upper = default,
-                    AssociationTypes = ["NauticalInformation", "Recommendations", "Regulations", "Restrictions"],
-                    CreateForeignInformationBinding = () => new MultiInformationBindingViewModel<RelatedOrganisationViewModel.theInformationAuthorityRefIdViewModel>("RelatedOrganisation"),
-                    CreateLocalInformationBinding = () => new SingleInformationBindingViewModel<AuthorityViewModel.AuthorityRefIdViewModel>("Authority"),
-                }, new InformationAssociationConnector<NauticalInformation>()
-                {
-                    roleType = roleType.association,
-                    role = "theOrganisation",
-                    Lower = 0,
-                    Upper = default,
-                    AssociationTypes = ["Authority"],
-                    CreateForeignInformationBinding = () => new MultiInformationBindingViewModel<RelatedOrganisationViewModel.theOrganisationNauticalInformationRefIdViewModel>("RelatedOrganisation"),
-                    CreateLocalInformationBinding = () => new SingleInformationBindingViewModel<NauticalInformationViewModel.NauticalInformationRefIdViewModel>("NauticalInformation"),
-                }, new InformationAssociationConnector<Recommendations>()
-                {
-                    roleType = roleType.association,
-                    role = "theOrganisation",
-                    Lower = 0,
-                    Upper = default,
-                    AssociationTypes = ["Authority"],
-                    CreateForeignInformationBinding = () => new MultiInformationBindingViewModel<RelatedOrganisationViewModel.theOrganisationRecommendationsRefIdViewModel>("RelatedOrganisation"),
-                    CreateLocalInformationBinding = () => new SingleInformationBindingViewModel<RecommendationsViewModel.RecommendationsRefIdViewModel>("Recommendations"),
-                }, new InformationAssociationConnector<Regulations>()
-                {
-                    roleType = roleType.association,
-                    role = "theOrganisation",
-                    Lower = 0,
-                    Upper = default,
-                    AssociationTypes = ["Authority"],
-                    CreateForeignInformationBinding = () => new MultiInformationBindingViewModel<RelatedOrganisationViewModel.theOrganisationRegulationsRefIdViewModel>("RelatedOrganisation"),
-                    CreateLocalInformationBinding = () => new SingleInformationBindingViewModel<RegulationsViewModel.RegulationsRefIdViewModel>("Regulations"),
-                }, new InformationAssociationConnector<Restrictions>()
-                {
-                    roleType = roleType.association,
-                    role = "theOrganisation",
-                    Lower = 0,
-                    Upper = default,
-                    AssociationTypes = ["Authority"],
-                    CreateForeignInformationBinding = () => new MultiInformationBindingViewModel<RelatedOrganisationViewModel.theOrganisationRestrictionsRefIdViewModel>("RelatedOrganisation"),
-                    CreateLocalInformationBinding = () => new SingleInformationBindingViewModel<RestrictionsViewModel.RestrictionsRefIdViewModel>("Restrictions"),
-                }
-
-                ]
+                PID = pid
             },
+            "ServiceControl" => new ServiceControlViewModel
             {
-                typeof(LocationHoursViewModel),
-                () => [new InformationAssociationConnector<AnchorageArea>()
-                {
-                    roleType = roleType.association,
-                    role = "location_srvHrs",
-                    Lower = 0,
-                    Upper = 1,
-                    AssociationTypes = ["ServiceHours"],
-                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<LocationHoursViewModel.location_srvHrsAnchorageAreaRefIdViewModel>("LocationHours"),
-                    CreateLocalInformationBinding = () => new SingleInformationBindingViewModel<AnchorageAreaViewModel.AnchorageAreaRefIdViewModel>("AnchorageArea"),
-                }, new InformationAssociationConnector<AnchorBerth>()
-                {
-                    roleType = roleType.association,
-                    role = "location_srvHrs",
-                    Lower = 0,
-                    Upper = 1,
-                    AssociationTypes = ["ServiceHours"],
-                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<LocationHoursViewModel.location_srvHrsAnchorBerthRefIdViewModel>("LocationHours"),
-                    CreateLocalInformationBinding = () => new SingleInformationBindingViewModel<AnchorBerthViewModel.AnchorBerthRefIdViewModel>("AnchorBerth"),
-                }, new InformationAssociationConnector<Berth>()
-                {
-                    roleType = roleType.association,
-                    role = "location_srvHrs",
-                    Lower = 0,
-                    Upper = 1,
-                    AssociationTypes = ["ServiceHours"],
-                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<LocationHoursViewModel.location_srvHrsBerthRefIdViewModel>("LocationHours"),
-                    CreateLocalInformationBinding = () => new SingleInformationBindingViewModel<BerthViewModel.BerthRefIdViewModel>("Berth"),
-                }, new InformationAssociationConnector<DockArea>()
-                {
-                    roleType = roleType.association,
-                    role = "location_srvHrs",
-                    Lower = 0,
-                    Upper = 1,
-                    AssociationTypes = ["ServiceHours"],
-                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<LocationHoursViewModel.location_srvHrsDockAreaRefIdViewModel>("LocationHours"),
-                    CreateLocalInformationBinding = () => new SingleInformationBindingViewModel<DockAreaViewModel.DockAreaRefIdViewModel>("DockArea"),
-                }, new InformationAssociationConnector<DryDock>()
-                {
-                    roleType = roleType.association,
-                    role = "location_srvHrs",
-                    Lower = 0,
-                    Upper = 1,
-                    AssociationTypes = ["ServiceHours"],
-                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<LocationHoursViewModel.location_srvHrsDryDockRefIdViewModel>("LocationHours"),
-                    CreateLocalInformationBinding = () => new SingleInformationBindingViewModel<DryDockViewModel.DryDockRefIdViewModel>("DryDock"),
-                }, new InformationAssociationConnector<DumpingGround>()
-                {
-                    roleType = roleType.association,
-                    role = "location_srvHrs",
-                    Lower = 0,
-                    Upper = 1,
-                    AssociationTypes = ["ServiceHours"],
-                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<LocationHoursViewModel.location_srvHrsDumpingGroundRefIdViewModel>("LocationHours"),
-                    CreateLocalInformationBinding = () => new SingleInformationBindingViewModel<DumpingGroundViewModel.DumpingGroundRefIdViewModel>("DumpingGround"),
-                }, new InformationAssociationConnector<FloatingDock>()
-                {
-                    roleType = roleType.association,
-                    role = "location_srvHrs",
-                    Lower = 0,
-                    Upper = 1,
-                    AssociationTypes = ["ServiceHours"],
-                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<LocationHoursViewModel.location_srvHrsFloatingDockRefIdViewModel>("LocationHours"),
-                    CreateLocalInformationBinding = () => new SingleInformationBindingViewModel<FloatingDockViewModel.FloatingDockRefIdViewModel>("FloatingDock"),
-                }, new InformationAssociationConnector<Gridiron>()
-                {
-                    roleType = roleType.association,
-                    role = "location_srvHrs",
-                    Lower = 0,
-                    Upper = 1,
-                    AssociationTypes = ["ServiceHours"],
-                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<LocationHoursViewModel.location_srvHrsGridironRefIdViewModel>("LocationHours"),
-                    CreateLocalInformationBinding = () => new SingleInformationBindingViewModel<GridironViewModel.GridironRefIdViewModel>("Gridiron"),
-                }, new InformationAssociationConnector<HarbourAreaAdministrative>()
-                {
-                    roleType = roleType.association,
-                    role = "location_srvHrs",
-                    Lower = 0,
-                    Upper = 1,
-                    AssociationTypes = ["ServiceHours"],
-                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<LocationHoursViewModel.location_srvHrsHarbourAreaAdministrativeRefIdViewModel>("LocationHours"),
-                    CreateLocalInformationBinding = () => new SingleInformationBindingViewModel<HarbourAreaAdministrativeViewModel.HarbourAreaAdministrativeRefIdViewModel>("HarbourAreaAdministrative"),
-                }, new InformationAssociationConnector<HarbourAreaSection>()
-                {
-                    roleType = roleType.association,
-                    role = "location_srvHrs",
-                    Lower = 0,
-                    Upper = 1,
-                    AssociationTypes = ["ServiceHours"],
-                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<LocationHoursViewModel.location_srvHrsHarbourAreaSectionRefIdViewModel>("LocationHours"),
-                    CreateLocalInformationBinding = () => new SingleInformationBindingViewModel<HarbourAreaSectionViewModel.HarbourAreaSectionRefIdViewModel>("HarbourAreaSection"),
-                }, new InformationAssociationConnector<HarbourBasin>()
-                {
-                    roleType = roleType.association,
-                    role = "location_srvHrs",
-                    Lower = 0,
-                    Upper = 1,
-                    AssociationTypes = ["ServiceHours"],
-                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<LocationHoursViewModel.location_srvHrsHarbourBasinRefIdViewModel>("LocationHours"),
-                    CreateLocalInformationBinding = () => new SingleInformationBindingViewModel<HarbourBasinViewModel.HarbourBasinRefIdViewModel>("HarbourBasin"),
-                }, new InformationAssociationConnector<HarbourFacility>()
-                {
-                    roleType = roleType.association,
-                    role = "location_srvHrs",
-                    Lower = 0,
-                    Upper = 1,
-                    AssociationTypes = ["ServiceHours"],
-                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<LocationHoursViewModel.location_srvHrsHarbourFacilityRefIdViewModel>("LocationHours"),
-                    CreateLocalInformationBinding = () => new SingleInformationBindingViewModel<HarbourFacilityViewModel.HarbourFacilityRefIdViewModel>("HarbourFacility"),
-                }, new InformationAssociationConnector<MooringWarpingFacility>()
-                {
-                    roleType = roleType.association,
-                    role = "location_srvHrs",
-                    Lower = 0,
-                    Upper = 1,
-                    AssociationTypes = ["ServiceHours"],
-                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<LocationHoursViewModel.location_srvHrsMooringWarpingFacilityRefIdViewModel>("LocationHours"),
-                    CreateLocalInformationBinding = () => new SingleInformationBindingViewModel<MooringWarpingFacilityViewModel.MooringWarpingFacilityRefIdViewModel>("MooringWarpingFacility"),
-                }, new InformationAssociationConnector<PilotBoardingPlace>()
-                {
-                    roleType = roleType.association,
-                    role = "location_srvHrs",
-                    Lower = 0,
-                    Upper = 1,
-                    AssociationTypes = ["ServiceHours"],
-                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<LocationHoursViewModel.location_srvHrsPilotBoardingPlaceRefIdViewModel>("LocationHours"),
-                    CreateLocalInformationBinding = () => new SingleInformationBindingViewModel<PilotBoardingPlaceViewModel.PilotBoardingPlaceRefIdViewModel>("PilotBoardingPlace"),
-                }, new InformationAssociationConnector<SeaplaneLandingArea>()
-                {
-                    roleType = roleType.association,
-                    role = "location_srvHrs",
-                    Lower = 0,
-                    Upper = 1,
-                    AssociationTypes = ["ServiceHours"],
-                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<LocationHoursViewModel.location_srvHrsSeaplaneLandingAreaRefIdViewModel>("LocationHours"),
-                    CreateLocalInformationBinding = () => new SingleInformationBindingViewModel<SeaplaneLandingAreaViewModel.SeaplaneLandingAreaRefIdViewModel>("SeaplaneLandingArea"),
-                }, new InformationAssociationConnector<Terminal>()
-                {
-                    roleType = roleType.association,
-                    role = "location_srvHrs",
-                    Lower = 0,
-                    Upper = 1,
-                    AssociationTypes = ["ServiceHours"],
-                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<LocationHoursViewModel.location_srvHrsTerminalRefIdViewModel>("LocationHours"),
-                    CreateLocalInformationBinding = () => new SingleInformationBindingViewModel<TerminalViewModel.TerminalRefIdViewModel>("Terminal"),
-                }, new InformationAssociationConnector<TurningBasin>()
-                {
-                    roleType = roleType.association,
-                    role = "location_srvHrs",
-                    Lower = 0,
-                    Upper = 1,
-                    AssociationTypes = ["ServiceHours"],
-                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<LocationHoursViewModel.location_srvHrsTurningBasinRefIdViewModel>("LocationHours"),
-                    CreateLocalInformationBinding = () => new SingleInformationBindingViewModel<TurningBasinViewModel.TurningBasinRefIdViewModel>("TurningBasin"),
-                }, new InformationAssociationConnector<WaterwayArea>()
-                {
-                    roleType = roleType.association,
-                    role = "location_srvHrs",
-                    Lower = 0,
-                    Upper = 1,
-                    AssociationTypes = ["ServiceHours"],
-                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<LocationHoursViewModel.location_srvHrsWaterwayAreaRefIdViewModel>("LocationHours"),
-                    CreateLocalInformationBinding = () => new SingleInformationBindingViewModel<WaterwayAreaViewModel.WaterwayAreaRefIdViewModel>("WaterwayArea"),
-                }
-
-                ]
+                PID = pid
             },
+            "ServiceContact" => new ServiceContactViewModel
             {
-                typeof(ServiceContactViewModel),
-                () => [new InformationAssociationConnector<DryDock>()
-                {
-                    roleType = roleType.association,
-                    role = "theContactDetails",
-                    Lower = 0,
-                    Upper = default,
-                    AssociationTypes = ["ContactDetails"],
-                    CreateForeignInformationBinding = () => new MultiInformationBindingViewModel<ServiceContactViewModel.theContactDetailsDryDockRefIdViewModel>("ServiceContact"),
-                    CreateLocalInformationBinding = () => new SingleInformationBindingViewModel<DryDockViewModel.DryDockRefIdViewModel>("DryDock"),
-                }, new InformationAssociationConnector<FloatingDock>()
-                {
-                    roleType = roleType.association,
-                    role = "theContactDetails",
-                    Lower = 0,
-                    Upper = default,
-                    AssociationTypes = ["ContactDetails"],
-                    CreateForeignInformationBinding = () => new MultiInformationBindingViewModel<ServiceContactViewModel.theContactDetailsFloatingDockRefIdViewModel>("ServiceContact"),
-                    CreateLocalInformationBinding = () => new SingleInformationBindingViewModel<FloatingDockViewModel.FloatingDockRefIdViewModel>("FloatingDock"),
-                }, new InformationAssociationConnector<Gridiron>()
-                {
-                    roleType = roleType.association,
-                    role = "theContactDetails",
-                    Lower = 0,
-                    Upper = default,
-                    AssociationTypes = ["ContactDetails"],
-                    CreateForeignInformationBinding = () => new MultiInformationBindingViewModel<ServiceContactViewModel.theContactDetailsGridironRefIdViewModel>("ServiceContact"),
-                    CreateLocalInformationBinding = () => new SingleInformationBindingViewModel<GridironViewModel.GridironRefIdViewModel>("Gridiron"),
-                }, new InformationAssociationConnector<HarbourFacility>()
-                {
-                    roleType = roleType.association,
-                    role = "theContactDetails",
-                    Lower = 0,
-                    Upper = default,
-                    AssociationTypes = ["ContactDetails"],
-                    CreateForeignInformationBinding = () => new MultiInformationBindingViewModel<ServiceContactViewModel.theContactDetailsHarbourFacilityRefIdViewModel>("ServiceContact"),
-                    CreateLocalInformationBinding = () => new SingleInformationBindingViewModel<HarbourFacilityViewModel.HarbourFacilityRefIdViewModel>("HarbourFacility"),
-                }, new InformationAssociationConnector<AnchorBerth>()
-                {
-                    roleType = roleType.association,
-                    role = "theContactDetails",
-                    Lower = 0,
-                    Upper = default,
-                    AssociationTypes = ["ContactDetails"],
-                    CreateForeignInformationBinding = () => new MultiInformationBindingViewModel<ServiceContactViewModel.theContactDetailsAnchorBerthRefIdViewModel>("ServiceContact"),
-                    CreateLocalInformationBinding = () => new SingleInformationBindingViewModel<AnchorBerthViewModel.AnchorBerthRefIdViewModel>("AnchorBerth"),
-                }, new InformationAssociationConnector<AnchorageArea>()
-                {
-                    roleType = roleType.association,
-                    role = "theContactDetails",
-                    Lower = 0,
-                    Upper = default,
-                    AssociationTypes = ["ContactDetails"],
-                    CreateForeignInformationBinding = () => new MultiInformationBindingViewModel<ServiceContactViewModel.theContactDetailsAnchorageAreaRefIdViewModel>("ServiceContact"),
-                    CreateLocalInformationBinding = () => new SingleInformationBindingViewModel<AnchorageAreaViewModel.AnchorageAreaRefIdViewModel>("AnchorageArea"),
-                }, new InformationAssociationConnector<Berth>()
-                {
-                    roleType = roleType.association,
-                    role = "theContactDetails",
-                    Lower = 0,
-                    Upper = default,
-                    AssociationTypes = ["ContactDetails"],
-                    CreateForeignInformationBinding = () => new MultiInformationBindingViewModel<ServiceContactViewModel.theContactDetailsBerthRefIdViewModel>("ServiceContact"),
-                    CreateLocalInformationBinding = () => new SingleInformationBindingViewModel<BerthViewModel.BerthRefIdViewModel>("Berth"),
-                }, new InformationAssociationConnector<BerthPosition>()
-                {
-                    roleType = roleType.association,
-                    role = "theContactDetails",
-                    Lower = 0,
-                    Upper = default,
-                    AssociationTypes = ["ContactDetails"],
-                    CreateForeignInformationBinding = () => new MultiInformationBindingViewModel<ServiceContactViewModel.theContactDetailsBerthPositionRefIdViewModel>("ServiceContact"),
-                    CreateLocalInformationBinding = () => new SingleInformationBindingViewModel<BerthPositionViewModel.BerthPositionRefIdViewModel>("BerthPosition"),
-                }, new InformationAssociationConnector<DockArea>()
-                {
-                    roleType = roleType.association,
-                    role = "theContactDetails",
-                    Lower = 0,
-                    Upper = default,
-                    AssociationTypes = ["ContactDetails"],
-                    CreateForeignInformationBinding = () => new MultiInformationBindingViewModel<ServiceContactViewModel.theContactDetailsDockAreaRefIdViewModel>("ServiceContact"),
-                    CreateLocalInformationBinding = () => new SingleInformationBindingViewModel<DockAreaViewModel.DockAreaRefIdViewModel>("DockArea"),
-                }, new InformationAssociationConnector<DumpingGround>()
-                {
-                    roleType = roleType.association,
-                    role = "theContactDetails",
-                    Lower = 0,
-                    Upper = default,
-                    AssociationTypes = ["ContactDetails"],
-                    CreateForeignInformationBinding = () => new MultiInformationBindingViewModel<ServiceContactViewModel.theContactDetailsDumpingGroundRefIdViewModel>("ServiceContact"),
-                    CreateLocalInformationBinding = () => new SingleInformationBindingViewModel<DumpingGroundViewModel.DumpingGroundRefIdViewModel>("DumpingGround"),
-                }, new InformationAssociationConnector<HarbourAreaAdministrative>()
-                {
-                    roleType = roleType.association,
-                    role = "theContactDetails",
-                    Lower = 0,
-                    Upper = default,
-                    AssociationTypes = ["ContactDetails"],
-                    CreateForeignInformationBinding = () => new MultiInformationBindingViewModel<ServiceContactViewModel.theContactDetailsHarbourAreaAdministrativeRefIdViewModel>("ServiceContact"),
-                    CreateLocalInformationBinding = () => new SingleInformationBindingViewModel<HarbourAreaAdministrativeViewModel.HarbourAreaAdministrativeRefIdViewModel>("HarbourAreaAdministrative"),
-                }, new InformationAssociationConnector<HarbourAreaSection>()
-                {
-                    roleType = roleType.association,
-                    role = "theContactDetails",
-                    Lower = 0,
-                    Upper = default,
-                    AssociationTypes = ["ContactDetails"],
-                    CreateForeignInformationBinding = () => new MultiInformationBindingViewModel<ServiceContactViewModel.theContactDetailsHarbourAreaSectionRefIdViewModel>("ServiceContact"),
-                    CreateLocalInformationBinding = () => new SingleInformationBindingViewModel<HarbourAreaSectionViewModel.HarbourAreaSectionRefIdViewModel>("HarbourAreaSection"),
-                }, new InformationAssociationConnector<HarbourBasin>()
-                {
-                    roleType = roleType.association,
-                    role = "theContactDetails",
-                    Lower = 0,
-                    Upper = default,
-                    AssociationTypes = ["ContactDetails"],
-                    CreateForeignInformationBinding = () => new MultiInformationBindingViewModel<ServiceContactViewModel.theContactDetailsHarbourBasinRefIdViewModel>("ServiceContact"),
-                    CreateLocalInformationBinding = () => new SingleInformationBindingViewModel<HarbourBasinViewModel.HarbourBasinRefIdViewModel>("HarbourBasin"),
-                }, new InformationAssociationConnector<MooringWarpingFacility>()
-                {
-                    roleType = roleType.association,
-                    role = "theContactDetails",
-                    Lower = 0,
-                    Upper = default,
-                    AssociationTypes = ["ContactDetails"],
-                    CreateForeignInformationBinding = () => new MultiInformationBindingViewModel<ServiceContactViewModel.theContactDetailsMooringWarpingFacilityRefIdViewModel>("ServiceContact"),
-                    CreateLocalInformationBinding = () => new SingleInformationBindingViewModel<MooringWarpingFacilityViewModel.MooringWarpingFacilityRefIdViewModel>("MooringWarpingFacility"),
-                }, new InformationAssociationConnector<OuterLimit>()
-                {
-                    roleType = roleType.association,
-                    role = "theContactDetails",
-                    Lower = 0,
-                    Upper = default,
-                    AssociationTypes = ["ContactDetails"],
-                    CreateForeignInformationBinding = () => new MultiInformationBindingViewModel<ServiceContactViewModel.theContactDetailsOuterLimitRefIdViewModel>("ServiceContact"),
-                    CreateLocalInformationBinding = () => new SingleInformationBindingViewModel<OuterLimitViewModel.OuterLimitRefIdViewModel>("OuterLimit"),
-                }, new InformationAssociationConnector<PilotBoardingPlace>()
-                {
-                    roleType = roleType.association,
-                    role = "theContactDetails",
-                    Lower = 0,
-                    Upper = default,
-                    AssociationTypes = ["ContactDetails"],
-                    CreateForeignInformationBinding = () => new MultiInformationBindingViewModel<ServiceContactViewModel.theContactDetailsPilotBoardingPlaceRefIdViewModel>("ServiceContact"),
-                    CreateLocalInformationBinding = () => new SingleInformationBindingViewModel<PilotBoardingPlaceViewModel.PilotBoardingPlaceRefIdViewModel>("PilotBoardingPlace"),
-                }, new InformationAssociationConnector<SeaplaneLandingArea>()
-                {
-                    roleType = roleType.association,
-                    role = "theContactDetails",
-                    Lower = 0,
-                    Upper = default,
-                    AssociationTypes = ["ContactDetails"],
-                    CreateForeignInformationBinding = () => new MultiInformationBindingViewModel<ServiceContactViewModel.theContactDetailsSeaplaneLandingAreaRefIdViewModel>("ServiceContact"),
-                    CreateLocalInformationBinding = () => new SingleInformationBindingViewModel<SeaplaneLandingAreaViewModel.SeaplaneLandingAreaRefIdViewModel>("SeaplaneLandingArea"),
-                }, new InformationAssociationConnector<Terminal>()
-                {
-                    roleType = roleType.association,
-                    role = "theContactDetails",
-                    Lower = 0,
-                    Upper = default,
-                    AssociationTypes = ["ContactDetails"],
-                    CreateForeignInformationBinding = () => new MultiInformationBindingViewModel<ServiceContactViewModel.theContactDetailsTerminalRefIdViewModel>("ServiceContact"),
-                    CreateLocalInformationBinding = () => new SingleInformationBindingViewModel<TerminalViewModel.TerminalRefIdViewModel>("Terminal"),
-                }, new InformationAssociationConnector<TurningBasin>()
-                {
-                    roleType = roleType.association,
-                    role = "theContactDetails",
-                    Lower = 0,
-                    Upper = default,
-                    AssociationTypes = ["ContactDetails"],
-                    CreateForeignInformationBinding = () => new MultiInformationBindingViewModel<ServiceContactViewModel.theContactDetailsTurningBasinRefIdViewModel>("ServiceContact"),
-                    CreateLocalInformationBinding = () => new SingleInformationBindingViewModel<TurningBasinViewModel.TurningBasinRefIdViewModel>("TurningBasin"),
-                }, new InformationAssociationConnector<WaterwayArea>()
-                {
-                    roleType = roleType.association,
-                    role = "theContactDetails",
-                    Lower = 0,
-                    Upper = default,
-                    AssociationTypes = ["ContactDetails"],
-                    CreateForeignInformationBinding = () => new MultiInformationBindingViewModel<ServiceContactViewModel.theContactDetailsWaterwayAreaRefIdViewModel>("ServiceContact"),
-                    CreateLocalInformationBinding = () => new SingleInformationBindingViewModel<WaterwayAreaViewModel.WaterwayAreaRefIdViewModel>("WaterwayArea"),
-                }
-
-                ]
+                PID = pid
             },
+            "LocationHours" => new LocationHoursViewModel
             {
-                typeof(ServiceControlViewModel),
-                () => [new InformationAssociationConnector<DryDock>()
-                {
-                    roleType = roleType.association,
-                    role = "controlAuthority",
-                    Lower = 0,
-                    Upper = 1,
-                    AssociationTypes = ["Authority"],
-                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<ServiceControlViewModel.controlAuthorityDryDockRefIdViewModel>("ServiceControl"),
-                    CreateLocalInformationBinding = () => new SingleInformationBindingViewModel<DryDockViewModel.DryDockRefIdViewModel>("DryDock"),
-                }, new InformationAssociationConnector<FloatingDock>()
-                {
-                    roleType = roleType.association,
-                    role = "controlAuthority",
-                    Lower = 0,
-                    Upper = 1,
-                    AssociationTypes = ["Authority"],
-                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<ServiceControlViewModel.controlAuthorityFloatingDockRefIdViewModel>("ServiceControl"),
-                    CreateLocalInformationBinding = () => new SingleInformationBindingViewModel<FloatingDockViewModel.FloatingDockRefIdViewModel>("FloatingDock"),
-                }, new InformationAssociationConnector<Gridiron>()
-                {
-                    roleType = roleType.association,
-                    role = "controlAuthority",
-                    Lower = 0,
-                    Upper = 1,
-                    AssociationTypes = ["Authority"],
-                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<ServiceControlViewModel.controlAuthorityGridironRefIdViewModel>("ServiceControl"),
-                    CreateLocalInformationBinding = () => new SingleInformationBindingViewModel<GridironViewModel.GridironRefIdViewModel>("Gridiron"),
-                }, new InformationAssociationConnector<HarbourFacility>()
-                {
-                    roleType = roleType.association,
-                    role = "controlAuthority",
-                    Lower = 0,
-                    Upper = 1,
-                    AssociationTypes = ["Authority"],
-                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<ServiceControlViewModel.controlAuthorityHarbourFacilityRefIdViewModel>("ServiceControl"),
-                    CreateLocalInformationBinding = () => new SingleInformationBindingViewModel<HarbourFacilityViewModel.HarbourFacilityRefIdViewModel>("HarbourFacility"),
-                }, new InformationAssociationConnector<AnchorBerth>()
-                {
-                    roleType = roleType.association,
-                    role = "controlAuthority",
-                    Lower = 0,
-                    Upper = 1,
-                    AssociationTypes = ["Authority"],
-                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<ServiceControlViewModel.controlAuthorityAnchorBerthRefIdViewModel>("ServiceControl"),
-                    CreateLocalInformationBinding = () => new SingleInformationBindingViewModel<AnchorBerthViewModel.AnchorBerthRefIdViewModel>("AnchorBerth"),
-                }, new InformationAssociationConnector<AnchorageArea>()
-                {
-                    roleType = roleType.association,
-                    role = "controlAuthority",
-                    Lower = 0,
-                    Upper = 1,
-                    AssociationTypes = ["Authority"],
-                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<ServiceControlViewModel.controlAuthorityAnchorageAreaRefIdViewModel>("ServiceControl"),
-                    CreateLocalInformationBinding = () => new SingleInformationBindingViewModel<AnchorageAreaViewModel.AnchorageAreaRefIdViewModel>("AnchorageArea"),
-                }, new InformationAssociationConnector<Berth>()
-                {
-                    roleType = roleType.association,
-                    role = "controlAuthority",
-                    Lower = 0,
-                    Upper = 1,
-                    AssociationTypes = ["Authority"],
-                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<ServiceControlViewModel.controlAuthorityBerthRefIdViewModel>("ServiceControl"),
-                    CreateLocalInformationBinding = () => new SingleInformationBindingViewModel<BerthViewModel.BerthRefIdViewModel>("Berth"),
-                }, new InformationAssociationConnector<BerthPosition>()
-                {
-                    roleType = roleType.association,
-                    role = "controlAuthority",
-                    Lower = 0,
-                    Upper = 1,
-                    AssociationTypes = ["Authority"],
-                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<ServiceControlViewModel.controlAuthorityBerthPositionRefIdViewModel>("ServiceControl"),
-                    CreateLocalInformationBinding = () => new SingleInformationBindingViewModel<BerthPositionViewModel.BerthPositionRefIdViewModel>("BerthPosition"),
-                }, new InformationAssociationConnector<DockArea>()
-                {
-                    roleType = roleType.association,
-                    role = "controlAuthority",
-                    Lower = 0,
-                    Upper = 1,
-                    AssociationTypes = ["Authority"],
-                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<ServiceControlViewModel.controlAuthorityDockAreaRefIdViewModel>("ServiceControl"),
-                    CreateLocalInformationBinding = () => new SingleInformationBindingViewModel<DockAreaViewModel.DockAreaRefIdViewModel>("DockArea"),
-                }, new InformationAssociationConnector<DumpingGround>()
-                {
-                    roleType = roleType.association,
-                    role = "controlAuthority",
-                    Lower = 0,
-                    Upper = 1,
-                    AssociationTypes = ["Authority"],
-                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<ServiceControlViewModel.controlAuthorityDumpingGroundRefIdViewModel>("ServiceControl"),
-                    CreateLocalInformationBinding = () => new SingleInformationBindingViewModel<DumpingGroundViewModel.DumpingGroundRefIdViewModel>("DumpingGround"),
-                }, new InformationAssociationConnector<HarbourAreaAdministrative>()
-                {
-                    roleType = roleType.association,
-                    role = "controlAuthority",
-                    Lower = 0,
-                    Upper = 1,
-                    AssociationTypes = ["Authority"],
-                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<ServiceControlViewModel.controlAuthorityHarbourAreaAdministrativeRefIdViewModel>("ServiceControl"),
-                    CreateLocalInformationBinding = () => new SingleInformationBindingViewModel<HarbourAreaAdministrativeViewModel.HarbourAreaAdministrativeRefIdViewModel>("HarbourAreaAdministrative"),
-                }, new InformationAssociationConnector<HarbourAreaSection>()
-                {
-                    roleType = roleType.association,
-                    role = "controlAuthority",
-                    Lower = 0,
-                    Upper = 1,
-                    AssociationTypes = ["Authority"],
-                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<ServiceControlViewModel.controlAuthorityHarbourAreaSectionRefIdViewModel>("ServiceControl"),
-                    CreateLocalInformationBinding = () => new SingleInformationBindingViewModel<HarbourAreaSectionViewModel.HarbourAreaSectionRefIdViewModel>("HarbourAreaSection"),
-                }, new InformationAssociationConnector<HarbourBasin>()
-                {
-                    roleType = roleType.association,
-                    role = "controlAuthority",
-                    Lower = 0,
-                    Upper = 1,
-                    AssociationTypes = ["Authority"],
-                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<ServiceControlViewModel.controlAuthorityHarbourBasinRefIdViewModel>("ServiceControl"),
-                    CreateLocalInformationBinding = () => new SingleInformationBindingViewModel<HarbourBasinViewModel.HarbourBasinRefIdViewModel>("HarbourBasin"),
-                }, new InformationAssociationConnector<MooringWarpingFacility>()
-                {
-                    roleType = roleType.association,
-                    role = "controlAuthority",
-                    Lower = 0,
-                    Upper = 1,
-                    AssociationTypes = ["Authority"],
-                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<ServiceControlViewModel.controlAuthorityMooringWarpingFacilityRefIdViewModel>("ServiceControl"),
-                    CreateLocalInformationBinding = () => new SingleInformationBindingViewModel<MooringWarpingFacilityViewModel.MooringWarpingFacilityRefIdViewModel>("MooringWarpingFacility"),
-                }, new InformationAssociationConnector<OuterLimit>()
-                {
-                    roleType = roleType.association,
-                    role = "controlAuthority",
-                    Lower = 0,
-                    Upper = 1,
-                    AssociationTypes = ["Authority"],
-                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<ServiceControlViewModel.controlAuthorityOuterLimitRefIdViewModel>("ServiceControl"),
-                    CreateLocalInformationBinding = () => new SingleInformationBindingViewModel<OuterLimitViewModel.OuterLimitRefIdViewModel>("OuterLimit"),
-                }, new InformationAssociationConnector<PilotBoardingPlace>()
-                {
-                    roleType = roleType.association,
-                    role = "controlAuthority",
-                    Lower = 0,
-                    Upper = 1,
-                    AssociationTypes = ["Authority"],
-                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<ServiceControlViewModel.controlAuthorityPilotBoardingPlaceRefIdViewModel>("ServiceControl"),
-                    CreateLocalInformationBinding = () => new SingleInformationBindingViewModel<PilotBoardingPlaceViewModel.PilotBoardingPlaceRefIdViewModel>("PilotBoardingPlace"),
-                }, new InformationAssociationConnector<SeaplaneLandingArea>()
-                {
-                    roleType = roleType.association,
-                    role = "controlAuthority",
-                    Lower = 0,
-                    Upper = 1,
-                    AssociationTypes = ["Authority"],
-                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<ServiceControlViewModel.controlAuthoritySeaplaneLandingAreaRefIdViewModel>("ServiceControl"),
-                    CreateLocalInformationBinding = () => new SingleInformationBindingViewModel<SeaplaneLandingAreaViewModel.SeaplaneLandingAreaRefIdViewModel>("SeaplaneLandingArea"),
-                }, new InformationAssociationConnector<Terminal>()
-                {
-                    roleType = roleType.association,
-                    role = "controlAuthority",
-                    Lower = 0,
-                    Upper = 1,
-                    AssociationTypes = ["Authority"],
-                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<ServiceControlViewModel.controlAuthorityTerminalRefIdViewModel>("ServiceControl"),
-                    CreateLocalInformationBinding = () => new SingleInformationBindingViewModel<TerminalViewModel.TerminalRefIdViewModel>("Terminal"),
-                }, new InformationAssociationConnector<TurningBasin>()
-                {
-                    roleType = roleType.association,
-                    role = "controlAuthority",
-                    Lower = 0,
-                    Upper = 1,
-                    AssociationTypes = ["Authority"],
-                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<ServiceControlViewModel.controlAuthorityTurningBasinRefIdViewModel>("ServiceControl"),
-                    CreateLocalInformationBinding = () => new SingleInformationBindingViewModel<TurningBasinViewModel.TurningBasinRefIdViewModel>("TurningBasin"),
-                }, new InformationAssociationConnector<WaterwayArea>()
-                {
-                    roleType = roleType.association,
-                    role = "controlAuthority",
-                    Lower = 0,
-                    Upper = 1,
-                    AssociationTypes = ["Authority"],
-                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<ServiceControlViewModel.controlAuthorityWaterwayAreaRefIdViewModel>("ServiceControl"),
-                    CreateLocalInformationBinding = () => new SingleInformationBindingViewModel<WaterwayAreaViewModel.WaterwayAreaRefIdViewModel>("WaterwayArea"),
-                }
-
-                ]
+                PID = pid
             },
+            "RelatedOrganisation" => new RelatedOrganisationViewModel
             {
-                typeof(ExceptionalWorkdayViewModel),
-                () => [new InformationAssociationConnector<ServiceHours>()
-                {
-                    roleType = roleType.association,
-                    role = "partialWorkingDay",
-                    Lower = 0,
-                    Upper = default,
-                    AssociationTypes = ["NonStandardWorkingDay"],
-                    CreateForeignInformationBinding = () => new MultiInformationBindingViewModel<ExceptionalWorkdayViewModel.partialWorkingDayServiceHoursRefIdViewModel>("ExceptionalWorkday"),
-                    CreateLocalInformationBinding = () => new SingleInformationBindingViewModel<ServiceHoursViewModel.ServiceHoursRefIdViewModel>("ServiceHours"),
-                }
-
-                ]
+                PID = pid
             },
+            "InclusionType" => new InclusionTypeViewModel
             {
-                typeof(AssociatedRxNViewModel),
-                () => [new InformationAssociationConnector<DryDock>()
-                {
-                    roleType = roleType.association,
-                    role = "theRxN",
-                    Lower = 0,
-                    Upper = default,
-                    AssociationTypes = ["NauticalInformation", "Recommendations", "Regulations", "Restrictions"],
-                    CreateForeignInformationBinding = () => new MultiInformationBindingViewModel<AssociatedRxNViewModel.theRxNDryDockRefIdViewModel>("AssociatedRxN"),
-                    CreateLocalInformationBinding = () => new SingleInformationBindingViewModel<DryDockViewModel.DryDockRefIdViewModel>("DryDock"),
-                }, new InformationAssociationConnector<FloatingDock>()
-                {
-                    roleType = roleType.association,
-                    role = "theRxN",
-                    Lower = 0,
-                    Upper = default,
-                    AssociationTypes = ["NauticalInformation", "Recommendations", "Regulations", "Restrictions"],
-                    CreateForeignInformationBinding = () => new MultiInformationBindingViewModel<AssociatedRxNViewModel.theRxNFloatingDockRefIdViewModel>("AssociatedRxN"),
-                    CreateLocalInformationBinding = () => new SingleInformationBindingViewModel<FloatingDockViewModel.FloatingDockRefIdViewModel>("FloatingDock"),
-                }, new InformationAssociationConnector<Gridiron>()
-                {
-                    roleType = roleType.association,
-                    role = "theRxN",
-                    Lower = 0,
-                    Upper = default,
-                    AssociationTypes = ["NauticalInformation", "Recommendations", "Regulations", "Restrictions"],
-                    CreateForeignInformationBinding = () => new MultiInformationBindingViewModel<AssociatedRxNViewModel.theRxNGridironRefIdViewModel>("AssociatedRxN"),
-                    CreateLocalInformationBinding = () => new SingleInformationBindingViewModel<GridironViewModel.GridironRefIdViewModel>("Gridiron"),
-                }, new InformationAssociationConnector<HarbourFacility>()
-                {
-                    roleType = roleType.association,
-                    role = "theRxN",
-                    Lower = 0,
-                    Upper = default,
-                    AssociationTypes = ["NauticalInformation", "Recommendations", "Regulations", "Restrictions"],
-                    CreateForeignInformationBinding = () => new MultiInformationBindingViewModel<AssociatedRxNViewModel.theRxNHarbourFacilityRefIdViewModel>("AssociatedRxN"),
-                    CreateLocalInformationBinding = () => new SingleInformationBindingViewModel<HarbourFacilityViewModel.HarbourFacilityRefIdViewModel>("HarbourFacility"),
-                }, new InformationAssociationConnector<AnchorBerth>()
-                {
-                    roleType = roleType.association,
-                    role = "theRxN",
-                    Lower = 0,
-                    Upper = default,
-                    AssociationTypes = ["NauticalInformation", "Recommendations", "Regulations", "Restrictions"],
-                    CreateForeignInformationBinding = () => new MultiInformationBindingViewModel<AssociatedRxNViewModel.theRxNAnchorBerthRefIdViewModel>("AssociatedRxN"),
-                    CreateLocalInformationBinding = () => new SingleInformationBindingViewModel<AnchorBerthViewModel.AnchorBerthRefIdViewModel>("AnchorBerth"),
-                }, new InformationAssociationConnector<AnchorageArea>()
-                {
-                    roleType = roleType.association,
-                    role = "theRxN",
-                    Lower = 0,
-                    Upper = default,
-                    AssociationTypes = ["NauticalInformation", "Recommendations", "Regulations", "Restrictions"],
-                    CreateForeignInformationBinding = () => new MultiInformationBindingViewModel<AssociatedRxNViewModel.theRxNAnchorageAreaRefIdViewModel>("AssociatedRxN"),
-                    CreateLocalInformationBinding = () => new SingleInformationBindingViewModel<AnchorageAreaViewModel.AnchorageAreaRefIdViewModel>("AnchorageArea"),
-                }, new InformationAssociationConnector<Berth>()
-                {
-                    roleType = roleType.association,
-                    role = "theRxN",
-                    Lower = 0,
-                    Upper = default,
-                    AssociationTypes = ["NauticalInformation", "Recommendations", "Regulations", "Restrictions"],
-                    CreateForeignInformationBinding = () => new MultiInformationBindingViewModel<AssociatedRxNViewModel.theRxNBerthRefIdViewModel>("AssociatedRxN"),
-                    CreateLocalInformationBinding = () => new SingleInformationBindingViewModel<BerthViewModel.BerthRefIdViewModel>("Berth"),
-                }, new InformationAssociationConnector<BerthPosition>()
-                {
-                    roleType = roleType.association,
-                    role = "theRxN",
-                    Lower = 0,
-                    Upper = default,
-                    AssociationTypes = ["NauticalInformation", "Recommendations", "Regulations", "Restrictions"],
-                    CreateForeignInformationBinding = () => new MultiInformationBindingViewModel<AssociatedRxNViewModel.theRxNBerthPositionRefIdViewModel>("AssociatedRxN"),
-                    CreateLocalInformationBinding = () => new SingleInformationBindingViewModel<BerthPositionViewModel.BerthPositionRefIdViewModel>("BerthPosition"),
-                }, new InformationAssociationConnector<DockArea>()
-                {
-                    roleType = roleType.association,
-                    role = "theRxN",
-                    Lower = 0,
-                    Upper = default,
-                    AssociationTypes = ["NauticalInformation", "Recommendations", "Regulations", "Restrictions"],
-                    CreateForeignInformationBinding = () => new MultiInformationBindingViewModel<AssociatedRxNViewModel.theRxNDockAreaRefIdViewModel>("AssociatedRxN"),
-                    CreateLocalInformationBinding = () => new SingleInformationBindingViewModel<DockAreaViewModel.DockAreaRefIdViewModel>("DockArea"),
-                }, new InformationAssociationConnector<DumpingGround>()
-                {
-                    roleType = roleType.association,
-                    role = "theRxN",
-                    Lower = 0,
-                    Upper = default,
-                    AssociationTypes = ["NauticalInformation", "Recommendations", "Regulations", "Restrictions"],
-                    CreateForeignInformationBinding = () => new MultiInformationBindingViewModel<AssociatedRxNViewModel.theRxNDumpingGroundRefIdViewModel>("AssociatedRxN"),
-                    CreateLocalInformationBinding = () => new SingleInformationBindingViewModel<DumpingGroundViewModel.DumpingGroundRefIdViewModel>("DumpingGround"),
-                }, new InformationAssociationConnector<HarbourAreaAdministrative>()
-                {
-                    roleType = roleType.association,
-                    role = "theRxN",
-                    Lower = 0,
-                    Upper = default,
-                    AssociationTypes = ["NauticalInformation", "Recommendations", "Regulations", "Restrictions"],
-                    CreateForeignInformationBinding = () => new MultiInformationBindingViewModel<AssociatedRxNViewModel.theRxNHarbourAreaAdministrativeRefIdViewModel>("AssociatedRxN"),
-                    CreateLocalInformationBinding = () => new SingleInformationBindingViewModel<HarbourAreaAdministrativeViewModel.HarbourAreaAdministrativeRefIdViewModel>("HarbourAreaAdministrative"),
-                }, new InformationAssociationConnector<HarbourAreaSection>()
-                {
-                    roleType = roleType.association,
-                    role = "theRxN",
-                    Lower = 0,
-                    Upper = default,
-                    AssociationTypes = ["NauticalInformation", "Recommendations", "Regulations", "Restrictions"],
-                    CreateForeignInformationBinding = () => new MultiInformationBindingViewModel<AssociatedRxNViewModel.theRxNHarbourAreaSectionRefIdViewModel>("AssociatedRxN"),
-                    CreateLocalInformationBinding = () => new SingleInformationBindingViewModel<HarbourAreaSectionViewModel.HarbourAreaSectionRefIdViewModel>("HarbourAreaSection"),
-                }, new InformationAssociationConnector<HarbourBasin>()
-                {
-                    roleType = roleType.association,
-                    role = "theRxN",
-                    Lower = 0,
-                    Upper = default,
-                    AssociationTypes = ["NauticalInformation", "Recommendations", "Regulations", "Restrictions"],
-                    CreateForeignInformationBinding = () => new MultiInformationBindingViewModel<AssociatedRxNViewModel.theRxNHarbourBasinRefIdViewModel>("AssociatedRxN"),
-                    CreateLocalInformationBinding = () => new SingleInformationBindingViewModel<HarbourBasinViewModel.HarbourBasinRefIdViewModel>("HarbourBasin"),
-                }, new InformationAssociationConnector<MooringWarpingFacility>()
-                {
-                    roleType = roleType.association,
-                    role = "theRxN",
-                    Lower = 0,
-                    Upper = default,
-                    AssociationTypes = ["NauticalInformation", "Recommendations", "Regulations", "Restrictions"],
-                    CreateForeignInformationBinding = () => new MultiInformationBindingViewModel<AssociatedRxNViewModel.theRxNMooringWarpingFacilityRefIdViewModel>("AssociatedRxN"),
-                    CreateLocalInformationBinding = () => new SingleInformationBindingViewModel<MooringWarpingFacilityViewModel.MooringWarpingFacilityRefIdViewModel>("MooringWarpingFacility"),
-                }, new InformationAssociationConnector<OuterLimit>()
-                {
-                    roleType = roleType.association,
-                    role = "theRxN",
-                    Lower = 0,
-                    Upper = default,
-                    AssociationTypes = ["NauticalInformation", "Recommendations", "Regulations", "Restrictions"],
-                    CreateForeignInformationBinding = () => new MultiInformationBindingViewModel<AssociatedRxNViewModel.theRxNOuterLimitRefIdViewModel>("AssociatedRxN"),
-                    CreateLocalInformationBinding = () => new SingleInformationBindingViewModel<OuterLimitViewModel.OuterLimitRefIdViewModel>("OuterLimit"),
-                }, new InformationAssociationConnector<PilotBoardingPlace>()
-                {
-                    roleType = roleType.association,
-                    role = "theRxN",
-                    Lower = 0,
-                    Upper = default,
-                    AssociationTypes = ["NauticalInformation", "Recommendations", "Regulations", "Restrictions"],
-                    CreateForeignInformationBinding = () => new MultiInformationBindingViewModel<AssociatedRxNViewModel.theRxNPilotBoardingPlaceRefIdViewModel>("AssociatedRxN"),
-                    CreateLocalInformationBinding = () => new SingleInformationBindingViewModel<PilotBoardingPlaceViewModel.PilotBoardingPlaceRefIdViewModel>("PilotBoardingPlace"),
-                }, new InformationAssociationConnector<SeaplaneLandingArea>()
-                {
-                    roleType = roleType.association,
-                    role = "theRxN",
-                    Lower = 0,
-                    Upper = default,
-                    AssociationTypes = ["NauticalInformation", "Recommendations", "Regulations", "Restrictions"],
-                    CreateForeignInformationBinding = () => new MultiInformationBindingViewModel<AssociatedRxNViewModel.theRxNSeaplaneLandingAreaRefIdViewModel>("AssociatedRxN"),
-                    CreateLocalInformationBinding = () => new SingleInformationBindingViewModel<SeaplaneLandingAreaViewModel.SeaplaneLandingAreaRefIdViewModel>("SeaplaneLandingArea"),
-                }, new InformationAssociationConnector<Terminal>()
-                {
-                    roleType = roleType.association,
-                    role = "theRxN",
-                    Lower = 0,
-                    Upper = default,
-                    AssociationTypes = ["NauticalInformation", "Recommendations", "Regulations", "Restrictions"],
-                    CreateForeignInformationBinding = () => new MultiInformationBindingViewModel<AssociatedRxNViewModel.theRxNTerminalRefIdViewModel>("AssociatedRxN"),
-                    CreateLocalInformationBinding = () => new SingleInformationBindingViewModel<TerminalViewModel.TerminalRefIdViewModel>("Terminal"),
-                }, new InformationAssociationConnector<TurningBasin>()
-                {
-                    roleType = roleType.association,
-                    role = "theRxN",
-                    Lower = 0,
-                    Upper = default,
-                    AssociationTypes = ["NauticalInformation", "Recommendations", "Regulations", "Restrictions"],
-                    CreateForeignInformationBinding = () => new MultiInformationBindingViewModel<AssociatedRxNViewModel.theRxNTurningBasinRefIdViewModel>("AssociatedRxN"),
-                    CreateLocalInformationBinding = () => new SingleInformationBindingViewModel<TurningBasinViewModel.TurningBasinRefIdViewModel>("TurningBasin"),
-                }, new InformationAssociationConnector<WaterwayArea>()
-                {
-                    roleType = roleType.association,
-                    role = "theRxN",
-                    Lower = 0,
-                    Upper = default,
-                    AssociationTypes = ["NauticalInformation", "Recommendations", "Regulations", "Restrictions"],
-                    CreateForeignInformationBinding = () => new MultiInformationBindingViewModel<AssociatedRxNViewModel.theRxNWaterwayAreaRefIdViewModel>("AssociatedRxN"),
-                    CreateLocalInformationBinding = () => new SingleInformationBindingViewModel<WaterwayAreaViewModel.WaterwayAreaRefIdViewModel>("WaterwayArea"),
-                }
-
-                ]
+                PID = pid
             },
+            "PermissionType" => new PermissionTypeViewModel
             {
-                typeof(AuthorityHoursViewModel),
-                () => [new InformationAssociationConnector<ServiceHours>()
-                {
-                    roleType = roleType.association,
-                    role = "theAuthority_srvHrs",
-                    Lower = 0,
-                    Upper = default,
-                    AssociationTypes = ["Authority"],
-                    CreateForeignInformationBinding = () => new MultiInformationBindingViewModel<AuthorityHoursViewModel.theAuthority_srvHrsServiceHoursRefIdViewModel>("AuthorityHours"),
-                    CreateLocalInformationBinding = () => new SingleInformationBindingViewModel<ServiceHoursViewModel.ServiceHoursRefIdViewModel>("ServiceHours"),
-                }, new InformationAssociationConnector<Authority>()
-                {
-                    roleType = roleType.association,
-                    role = "theServiceHours",
-                    Lower = 0,
-                    Upper = default,
-                    AssociationTypes = ["ServiceHours"],
-                    CreateForeignInformationBinding = () => new MultiInformationBindingViewModel<AuthorityHoursViewModel.theServiceHoursAuthorityRefIdViewModel>("AuthorityHours"),
-                    CreateLocalInformationBinding = () => new SingleInformationBindingViewModel<AuthorityViewModel.AuthorityRefIdViewModel>("Authority"),
-                }
-
-                ]
+                PID = pid
             },
+            "LimitEntrance" => new LimitEntranceViewModel
             {
-                typeof(AuthorityContactViewModel),
-                () => [new InformationAssociationConnector<ContactDetails>()
-                {
-                    roleType = roleType.association,
-                    role = "theAuthority",
-                    Lower = 0,
-                    Upper = default,
-                    AssociationTypes = ["Authority"],
-                    CreateForeignInformationBinding = () => new MultiInformationBindingViewModel<AuthorityContactViewModel.theAuthorityContactDetailsRefIdViewModel>("AuthorityContact"),
-                    CreateLocalInformationBinding = () => new SingleInformationBindingViewModel<ContactDetailsViewModel.ContactDetailsRefIdViewModel>("ContactDetails"),
-                }, new InformationAssociationConnector<Authority>()
-                {
-                    roleType = roleType.association,
-                    role = "theContactDetails",
-                    Lower = 0,
-                    Upper = default,
-                    AssociationTypes = ["ContactDetails"],
-                    CreateForeignInformationBinding = () => new MultiInformationBindingViewModel<AuthorityContactViewModel.theContactDetailsAuthorityRefIdViewModel>("AuthorityContact"),
-                    CreateLocalInformationBinding = () => new SingleInformationBindingViewModel<AuthorityViewModel.AuthorityRefIdViewModel>("Authority"),
-                }
-
-                ]
+                PID = pid
             },
+            "ServiceAvailability" => new ServiceAvailabilityViewModel
             {
-                typeof(AdditionalInformationViewModel),
-                () => [new InformationAssociationConnector<NauticalInformation>()
-                {
-                    roleType = roleType.association,
-                    role = "informationProvidedFor",
-                    Lower = 0,
-                    Upper = default,
-                    AssociationTypes = ["NauticalInformation", "Recommendations", "Regulations", "Restrictions", "Applicability", "Authority", "AvailablePortServices", "ContactDetails", "Entrance", "NonStandardWorkingDay", "ServiceHours"],
-                    CreateForeignInformationBinding = () => new MultiInformationBindingViewModel<AdditionalInformationViewModel.informationProvidedForNauticalInformationRefIdViewModel>("AdditionalInformation"),
-                    CreateLocalInformationBinding = () => new SingleInformationBindingViewModel<NauticalInformationViewModel.NauticalInformationRefIdViewModel>("NauticalInformation"),
-                }, new InformationAssociationConnector<DryDock>()
-                {
-                    roleType = roleType.association,
-                    role = "providesInformation",
-                    Lower = 0,
-                    Upper = default,
-                    AssociationTypes = ["NauticalInformation"],
-                    CreateForeignInformationBinding = () => new MultiInformationBindingViewModel<AdditionalInformationViewModel.providesInformationDryDockRefIdViewModel>("AdditionalInformation"),
-                    CreateLocalInformationBinding = () => new SingleInformationBindingViewModel<DryDockViewModel.DryDockRefIdViewModel>("DryDock"),
-                }, new InformationAssociationConnector<FloatingDock>()
-                {
-                    roleType = roleType.association,
-                    role = "providesInformation",
-                    Lower = 0,
-                    Upper = default,
-                    AssociationTypes = ["NauticalInformation"],
-                    CreateForeignInformationBinding = () => new MultiInformationBindingViewModel<AdditionalInformationViewModel.providesInformationFloatingDockRefIdViewModel>("AdditionalInformation"),
-                    CreateLocalInformationBinding = () => new SingleInformationBindingViewModel<FloatingDockViewModel.FloatingDockRefIdViewModel>("FloatingDock"),
-                }, new InformationAssociationConnector<Gridiron>()
-                {
-                    roleType = roleType.association,
-                    role = "providesInformation",
-                    Lower = 0,
-                    Upper = default,
-                    AssociationTypes = ["NauticalInformation"],
-                    CreateForeignInformationBinding = () => new MultiInformationBindingViewModel<AdditionalInformationViewModel.providesInformationGridironRefIdViewModel>("AdditionalInformation"),
-                    CreateLocalInformationBinding = () => new SingleInformationBindingViewModel<GridironViewModel.GridironRefIdViewModel>("Gridiron"),
-                }, new InformationAssociationConnector<HarbourFacility>()
-                {
-                    roleType = roleType.association,
-                    role = "providesInformation",
-                    Lower = 0,
-                    Upper = default,
-                    AssociationTypes = ["NauticalInformation"],
-                    CreateForeignInformationBinding = () => new MultiInformationBindingViewModel<AdditionalInformationViewModel.providesInformationHarbourFacilityRefIdViewModel>("AdditionalInformation"),
-                    CreateLocalInformationBinding = () => new SingleInformationBindingViewModel<HarbourFacilityViewModel.HarbourFacilityRefIdViewModel>("HarbourFacility"),
-                }, new InformationAssociationConnector<AnchorBerth>()
-                {
-                    roleType = roleType.association,
-                    role = "providesInformation",
-                    Lower = 0,
-                    Upper = default,
-                    AssociationTypes = ["NauticalInformation"],
-                    CreateForeignInformationBinding = () => new MultiInformationBindingViewModel<AdditionalInformationViewModel.providesInformationAnchorBerthRefIdViewModel>("AdditionalInformation"),
-                    CreateLocalInformationBinding = () => new SingleInformationBindingViewModel<AnchorBerthViewModel.AnchorBerthRefIdViewModel>("AnchorBerth"),
-                }, new InformationAssociationConnector<AnchorageArea>()
-                {
-                    roleType = roleType.association,
-                    role = "providesInformation",
-                    Lower = 0,
-                    Upper = default,
-                    AssociationTypes = ["NauticalInformation"],
-                    CreateForeignInformationBinding = () => new MultiInformationBindingViewModel<AdditionalInformationViewModel.providesInformationAnchorageAreaRefIdViewModel>("AdditionalInformation"),
-                    CreateLocalInformationBinding = () => new SingleInformationBindingViewModel<AnchorageAreaViewModel.AnchorageAreaRefIdViewModel>("AnchorageArea"),
-                }, new InformationAssociationConnector<Berth>()
-                {
-                    roleType = roleType.association,
-                    role = "providesInformation",
-                    Lower = 0,
-                    Upper = default,
-                    AssociationTypes = ["NauticalInformation"],
-                    CreateForeignInformationBinding = () => new MultiInformationBindingViewModel<AdditionalInformationViewModel.providesInformationBerthRefIdViewModel>("AdditionalInformation"),
-                    CreateLocalInformationBinding = () => new SingleInformationBindingViewModel<BerthViewModel.BerthRefIdViewModel>("Berth"),
-                }, new InformationAssociationConnector<BerthPosition>()
-                {
-                    roleType = roleType.association,
-                    role = "providesInformation",
-                    Lower = 0,
-                    Upper = default,
-                    AssociationTypes = ["NauticalInformation"],
-                    CreateForeignInformationBinding = () => new MultiInformationBindingViewModel<AdditionalInformationViewModel.providesInformationBerthPositionRefIdViewModel>("AdditionalInformation"),
-                    CreateLocalInformationBinding = () => new SingleInformationBindingViewModel<BerthPositionViewModel.BerthPositionRefIdViewModel>("BerthPosition"),
-                }, new InformationAssociationConnector<DockArea>()
-                {
-                    roleType = roleType.association,
-                    role = "providesInformation",
-                    Lower = 0,
-                    Upper = default,
-                    AssociationTypes = ["NauticalInformation"],
-                    CreateForeignInformationBinding = () => new MultiInformationBindingViewModel<AdditionalInformationViewModel.providesInformationDockAreaRefIdViewModel>("AdditionalInformation"),
-                    CreateLocalInformationBinding = () => new SingleInformationBindingViewModel<DockAreaViewModel.DockAreaRefIdViewModel>("DockArea"),
-                }, new InformationAssociationConnector<DumpingGround>()
-                {
-                    roleType = roleType.association,
-                    role = "providesInformation",
-                    Lower = 0,
-                    Upper = default,
-                    AssociationTypes = ["NauticalInformation"],
-                    CreateForeignInformationBinding = () => new MultiInformationBindingViewModel<AdditionalInformationViewModel.providesInformationDumpingGroundRefIdViewModel>("AdditionalInformation"),
-                    CreateLocalInformationBinding = () => new SingleInformationBindingViewModel<DumpingGroundViewModel.DumpingGroundRefIdViewModel>("DumpingGround"),
-                }, new InformationAssociationConnector<HarbourAreaAdministrative>()
-                {
-                    roleType = roleType.association,
-                    role = "providesInformation",
-                    Lower = 0,
-                    Upper = default,
-                    AssociationTypes = ["NauticalInformation"],
-                    CreateForeignInformationBinding = () => new MultiInformationBindingViewModel<AdditionalInformationViewModel.providesInformationHarbourAreaAdministrativeRefIdViewModel>("AdditionalInformation"),
-                    CreateLocalInformationBinding = () => new SingleInformationBindingViewModel<HarbourAreaAdministrativeViewModel.HarbourAreaAdministrativeRefIdViewModel>("HarbourAreaAdministrative"),
-                }, new InformationAssociationConnector<HarbourAreaSection>()
-                {
-                    roleType = roleType.association,
-                    role = "providesInformation",
-                    Lower = 0,
-                    Upper = default,
-                    AssociationTypes = ["NauticalInformation"],
-                    CreateForeignInformationBinding = () => new MultiInformationBindingViewModel<AdditionalInformationViewModel.providesInformationHarbourAreaSectionRefIdViewModel>("AdditionalInformation"),
-                    CreateLocalInformationBinding = () => new SingleInformationBindingViewModel<HarbourAreaSectionViewModel.HarbourAreaSectionRefIdViewModel>("HarbourAreaSection"),
-                }, new InformationAssociationConnector<HarbourBasin>()
-                {
-                    roleType = roleType.association,
-                    role = "providesInformation",
-                    Lower = 0,
-                    Upper = default,
-                    AssociationTypes = ["NauticalInformation"],
-                    CreateForeignInformationBinding = () => new MultiInformationBindingViewModel<AdditionalInformationViewModel.providesInformationHarbourBasinRefIdViewModel>("AdditionalInformation"),
-                    CreateLocalInformationBinding = () => new SingleInformationBindingViewModel<HarbourBasinViewModel.HarbourBasinRefIdViewModel>("HarbourBasin"),
-                }, new InformationAssociationConnector<MooringWarpingFacility>()
-                {
-                    roleType = roleType.association,
-                    role = "providesInformation",
-                    Lower = 0,
-                    Upper = default,
-                    AssociationTypes = ["NauticalInformation"],
-                    CreateForeignInformationBinding = () => new MultiInformationBindingViewModel<AdditionalInformationViewModel.providesInformationMooringWarpingFacilityRefIdViewModel>("AdditionalInformation"),
-                    CreateLocalInformationBinding = () => new SingleInformationBindingViewModel<MooringWarpingFacilityViewModel.MooringWarpingFacilityRefIdViewModel>("MooringWarpingFacility"),
-                }, new InformationAssociationConnector<OuterLimit>()
-                {
-                    roleType = roleType.association,
-                    role = "providesInformation",
-                    Lower = 0,
-                    Upper = default,
-                    AssociationTypes = ["NauticalInformation"],
-                    CreateForeignInformationBinding = () => new MultiInformationBindingViewModel<AdditionalInformationViewModel.providesInformationOuterLimitRefIdViewModel>("AdditionalInformation"),
-                    CreateLocalInformationBinding = () => new SingleInformationBindingViewModel<OuterLimitViewModel.OuterLimitRefIdViewModel>("OuterLimit"),
-                }, new InformationAssociationConnector<PilotBoardingPlace>()
-                {
-                    roleType = roleType.association,
-                    role = "providesInformation",
-                    Lower = 0,
-                    Upper = default,
-                    AssociationTypes = ["NauticalInformation"],
-                    CreateForeignInformationBinding = () => new MultiInformationBindingViewModel<AdditionalInformationViewModel.providesInformationPilotBoardingPlaceRefIdViewModel>("AdditionalInformation"),
-                    CreateLocalInformationBinding = () => new SingleInformationBindingViewModel<PilotBoardingPlaceViewModel.PilotBoardingPlaceRefIdViewModel>("PilotBoardingPlace"),
-                }, new InformationAssociationConnector<SeaplaneLandingArea>()
-                {
-                    roleType = roleType.association,
-                    role = "providesInformation",
-                    Lower = 0,
-                    Upper = default,
-                    AssociationTypes = ["NauticalInformation"],
-                    CreateForeignInformationBinding = () => new MultiInformationBindingViewModel<AdditionalInformationViewModel.providesInformationSeaplaneLandingAreaRefIdViewModel>("AdditionalInformation"),
-                    CreateLocalInformationBinding = () => new SingleInformationBindingViewModel<SeaplaneLandingAreaViewModel.SeaplaneLandingAreaRefIdViewModel>("SeaplaneLandingArea"),
-                }, new InformationAssociationConnector<Terminal>()
-                {
-                    roleType = roleType.association,
-                    role = "providesInformation",
-                    Lower = 0,
-                    Upper = default,
-                    AssociationTypes = ["NauticalInformation"],
-                    CreateForeignInformationBinding = () => new MultiInformationBindingViewModel<AdditionalInformationViewModel.providesInformationTerminalRefIdViewModel>("AdditionalInformation"),
-                    CreateLocalInformationBinding = () => new SingleInformationBindingViewModel<TerminalViewModel.TerminalRefIdViewModel>("Terminal"),
-                }, new InformationAssociationConnector<TurningBasin>()
-                {
-                    roleType = roleType.association,
-                    role = "providesInformation",
-                    Lower = 0,
-                    Upper = default,
-                    AssociationTypes = ["NauticalInformation"],
-                    CreateForeignInformationBinding = () => new MultiInformationBindingViewModel<AdditionalInformationViewModel.providesInformationTurningBasinRefIdViewModel>("AdditionalInformation"),
-                    CreateLocalInformationBinding = () => new SingleInformationBindingViewModel<TurningBasinViewModel.TurningBasinRefIdViewModel>("TurningBasin"),
-                }, new InformationAssociationConnector<WaterwayArea>()
-                {
-                    roleType = roleType.association,
-                    role = "providesInformation",
-                    Lower = 0,
-                    Upper = default,
-                    AssociationTypes = ["NauticalInformation"],
-                    CreateForeignInformationBinding = () => new MultiInformationBindingViewModel<AdditionalInformationViewModel.providesInformationWaterwayAreaRefIdViewModel>("AdditionalInformation"),
-                    CreateLocalInformationBinding = () => new SingleInformationBindingViewModel<WaterwayAreaViewModel.WaterwayAreaRefIdViewModel>("WaterwayArea"),
-                }, new InformationAssociationConnector<NauticalInformation>()
-                {
-                    roleType = roleType.association,
-                    role = "providesInformation",
-                    Lower = 0,
-                    Upper = default,
-                    AssociationTypes = ["NauticalInformation"],
-                    CreateForeignInformationBinding = () => new MultiInformationBindingViewModel<AdditionalInformationViewModel.providesInformationNauticalInformationRefIdViewModel>("AdditionalInformation"),
-                    CreateLocalInformationBinding = () => new SingleInformationBindingViewModel<NauticalInformationViewModel.NauticalInformationRefIdViewModel>("NauticalInformation"),
-                }, new InformationAssociationConnector<Recommendations>()
-                {
-                    roleType = roleType.association,
-                    role = "providesInformation",
-                    Lower = 0,
-                    Upper = default,
-                    AssociationTypes = ["NauticalInformation"],
-                    CreateForeignInformationBinding = () => new MultiInformationBindingViewModel<AdditionalInformationViewModel.providesInformationRecommendationsRefIdViewModel>("AdditionalInformation"),
-                    CreateLocalInformationBinding = () => new SingleInformationBindingViewModel<RecommendationsViewModel.RecommendationsRefIdViewModel>("Recommendations"),
-                }, new InformationAssociationConnector<Regulations>()
-                {
-                    roleType = roleType.association,
-                    role = "providesInformation",
-                    Lower = 0,
-                    Upper = default,
-                    AssociationTypes = ["NauticalInformation"],
-                    CreateForeignInformationBinding = () => new MultiInformationBindingViewModel<AdditionalInformationViewModel.providesInformationRegulationsRefIdViewModel>("AdditionalInformation"),
-                    CreateLocalInformationBinding = () => new SingleInformationBindingViewModel<RegulationsViewModel.RegulationsRefIdViewModel>("Regulations"),
-                }, new InformationAssociationConnector<Restrictions>()
-                {
-                    roleType = roleType.association,
-                    role = "providesInformation",
-                    Lower = 0,
-                    Upper = default,
-                    AssociationTypes = ["NauticalInformation"],
-                    CreateForeignInformationBinding = () => new MultiInformationBindingViewModel<AdditionalInformationViewModel.providesInformationRestrictionsRefIdViewModel>("AdditionalInformation"),
-                    CreateLocalInformationBinding = () => new SingleInformationBindingViewModel<RestrictionsViewModel.RestrictionsRefIdViewModel>("Restrictions"),
-                }, new InformationAssociationConnector<Applicability>()
-                {
-                    roleType = roleType.association,
-                    role = "providesInformation",
-                    Lower = 0,
-                    Upper = default,
-                    AssociationTypes = ["NauticalInformation"],
-                    CreateForeignInformationBinding = () => new MultiInformationBindingViewModel<AdditionalInformationViewModel.providesInformationApplicabilityRefIdViewModel>("AdditionalInformation"),
-                    CreateLocalInformationBinding = () => new SingleInformationBindingViewModel<ApplicabilityViewModel.ApplicabilityRefIdViewModel>("Applicability"),
-                }, new InformationAssociationConnector<Authority>()
-                {
-                    roleType = roleType.association,
-                    role = "providesInformation",
-                    Lower = 0,
-                    Upper = default,
-                    AssociationTypes = ["NauticalInformation"],
-                    CreateForeignInformationBinding = () => new MultiInformationBindingViewModel<AdditionalInformationViewModel.providesInformationAuthorityRefIdViewModel>("AdditionalInformation"),
-                    CreateLocalInformationBinding = () => new SingleInformationBindingViewModel<AuthorityViewModel.AuthorityRefIdViewModel>("Authority"),
-                }, new InformationAssociationConnector<AvailablePortServices>()
-                {
-                    roleType = roleType.association,
-                    role = "providesInformation",
-                    Lower = 0,
-                    Upper = default,
-                    AssociationTypes = ["NauticalInformation"],
-                    CreateForeignInformationBinding = () => new MultiInformationBindingViewModel<AdditionalInformationViewModel.providesInformationAvailablePortServicesRefIdViewModel>("AdditionalInformation"),
-                    CreateLocalInformationBinding = () => new SingleInformationBindingViewModel<AvailablePortServicesViewModel.AvailablePortServicesRefIdViewModel>("AvailablePortServices"),
-                }, new InformationAssociationConnector<ContactDetails>()
-                {
-                    roleType = roleType.association,
-                    role = "providesInformation",
-                    Lower = 0,
-                    Upper = default,
-                    AssociationTypes = ["NauticalInformation"],
-                    CreateForeignInformationBinding = () => new MultiInformationBindingViewModel<AdditionalInformationViewModel.providesInformationContactDetailsRefIdViewModel>("AdditionalInformation"),
-                    CreateLocalInformationBinding = () => new SingleInformationBindingViewModel<ContactDetailsViewModel.ContactDetailsRefIdViewModel>("ContactDetails"),
-                }, new InformationAssociationConnector<Entrance>()
-                {
-                    roleType = roleType.association,
-                    role = "providesInformation",
-                    Lower = 0,
-                    Upper = default,
-                    AssociationTypes = ["NauticalInformation"],
-                    CreateForeignInformationBinding = () => new MultiInformationBindingViewModel<AdditionalInformationViewModel.providesInformationEntranceRefIdViewModel>("AdditionalInformation"),
-                    CreateLocalInformationBinding = () => new SingleInformationBindingViewModel<EntranceViewModel.EntranceRefIdViewModel>("Entrance"),
-                }, new InformationAssociationConnector<NonStandardWorkingDay>()
-                {
-                    roleType = roleType.association,
-                    role = "providesInformation",
-                    Lower = 0,
-                    Upper = default,
-                    AssociationTypes = ["NauticalInformation"],
-                    CreateForeignInformationBinding = () => new MultiInformationBindingViewModel<AdditionalInformationViewModel.providesInformationNonStandardWorkingDayRefIdViewModel>("AdditionalInformation"),
-                    CreateLocalInformationBinding = () => new SingleInformationBindingViewModel<NonStandardWorkingDayViewModel.NonStandardWorkingDayRefIdViewModel>("NonStandardWorkingDay"),
-                }, new InformationAssociationConnector<ServiceHours>()
-                {
-                    roleType = roleType.association,
-                    role = "providesInformation",
-                    Lower = 0,
-                    Upper = default,
-                    AssociationTypes = ["NauticalInformation"],
-                    CreateForeignInformationBinding = () => new MultiInformationBindingViewModel<AdditionalInformationViewModel.providesInformationServiceHoursRefIdViewModel>("AdditionalInformation"),
-                    CreateLocalInformationBinding = () => new SingleInformationBindingViewModel<ServiceHoursViewModel.ServiceHoursRefIdViewModel>("ServiceHours"),
-                }
-
-                ]
+                PID = pid
             },
+            _ => throw new InvalidOperationException(),
         };
-        public static IDictionary<Type, Func<FeatureAssociationConnector[]>> AssociationConnectorFeatures => new Dictionary<Type, Func<FeatureAssociationConnector[]>>
+        public static AssociationViewModel CreateFeatureAssociation(string type, string? pid = default) => type switch
         {
+            "TextAssociation" => new TextAssociationViewModel
             {
-                typeof(LayoutDivisionViewModel),
-                () => [new FeatureAssociationConnector<AnchorageArea>()
-                {
-                    roleType = roleType.aggregation,
-                    role = "componentOf",
-                    Lower = 1,
-                    Upper = 1,
-                    AssociationTypes = ["HarbourAreaSection"],
-                    CreateForeignFeatureBinding = () => new SingleFeatureBindingViewModel<LayoutDivisionViewModel.componentOfAnchorageAreaRefIdViewModel>("LayoutDivision"),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<AnchorageAreaViewModel.AnchorageAreaRefIdViewModel>("AnchorageArea"),
-                }, new FeatureAssociationConnector<Berth>()
-                {
-                    roleType = roleType.aggregation,
-                    role = "componentOf",
-                    Lower = 1,
-                    Upper = 1,
-                    AssociationTypes = ["HarbourAreaSection", "Terminal"],
-                    CreateForeignFeatureBinding = () => new SingleFeatureBindingViewModel<LayoutDivisionViewModel.componentOfBerthRefIdViewModel>("LayoutDivision"),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<BerthViewModel.BerthRefIdViewModel>("Berth"),
-                }, new FeatureAssociationConnector<DockArea>()
-                {
-                    roleType = roleType.aggregation,
-                    role = "componentOf",
-                    Lower = 1,
-                    Upper = 1,
-                    AssociationTypes = ["HarbourAreaSection"],
-                    CreateForeignFeatureBinding = () => new SingleFeatureBindingViewModel<LayoutDivisionViewModel.componentOfDockAreaRefIdViewModel>("LayoutDivision"),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<DockAreaViewModel.DockAreaRefIdViewModel>("DockArea"),
-                }, new FeatureAssociationConnector<DumpingGround>()
-                {
-                    roleType = roleType.aggregation,
-                    role = "componentOf",
-                    Lower = 1,
-                    Upper = 1,
-                    AssociationTypes = ["HarbourAreaSection"],
-                    CreateForeignFeatureBinding = () => new SingleFeatureBindingViewModel<LayoutDivisionViewModel.componentOfDumpingGroundRefIdViewModel>("LayoutDivision"),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<DumpingGroundViewModel.DumpingGroundRefIdViewModel>("DumpingGround"),
-                }, new FeatureAssociationConnector<HarbourAreaSection>()
-                {
-                    roleType = roleType.aggregation,
-                    role = "componentOf",
-                    Lower = 1,
-                    Upper = 1,
-                    AssociationTypes = ["HarbourAreaAdministrative"],
-                    CreateForeignFeatureBinding = () => new SingleFeatureBindingViewModel<LayoutDivisionViewModel.componentOfHarbourAreaSectionRefIdViewModel>("LayoutDivision"),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<HarbourAreaSectionViewModel.HarbourAreaSectionRefIdViewModel>("HarbourAreaSection"),
-                }, new FeatureAssociationConnector<HarbourBasin>()
-                {
-                    roleType = roleType.aggregation,
-                    role = "componentOf",
-                    Lower = 1,
-                    Upper = 1,
-                    AssociationTypes = ["HarbourAreaSection"],
-                    CreateForeignFeatureBinding = () => new SingleFeatureBindingViewModel<LayoutDivisionViewModel.componentOfHarbourBasinRefIdViewModel>("LayoutDivision"),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<HarbourBasinViewModel.HarbourBasinRefIdViewModel>("HarbourBasin"),
-                }, new FeatureAssociationConnector<PilotBoardingPlace>()
-                {
-                    roleType = roleType.aggregation,
-                    role = "componentOf",
-                    Lower = 1,
-                    Upper = 1,
-                    AssociationTypes = ["HarbourAreaSection"],
-                    CreateForeignFeatureBinding = () => new SingleFeatureBindingViewModel<LayoutDivisionViewModel.componentOfPilotBoardingPlaceRefIdViewModel>("LayoutDivision"),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<PilotBoardingPlaceViewModel.PilotBoardingPlaceRefIdViewModel>("PilotBoardingPlace"),
-                }, new FeatureAssociationConnector<SeaplaneLandingArea>()
-                {
-                    roleType = roleType.aggregation,
-                    role = "componentOf",
-                    Lower = 1,
-                    Upper = 1,
-                    AssociationTypes = ["HarbourAreaSection"],
-                    CreateForeignFeatureBinding = () => new SingleFeatureBindingViewModel<LayoutDivisionViewModel.componentOfSeaplaneLandingAreaRefIdViewModel>("LayoutDivision"),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<SeaplaneLandingAreaViewModel.SeaplaneLandingAreaRefIdViewModel>("SeaplaneLandingArea"),
-                }, new FeatureAssociationConnector<Terminal>()
-                {
-                    roleType = roleType.aggregation,
-                    role = "componentOf",
-                    Lower = 1,
-                    Upper = 1,
-                    AssociationTypes = ["HarbourAreaSection"],
-                    CreateForeignFeatureBinding = () => new SingleFeatureBindingViewModel<LayoutDivisionViewModel.componentOfTerminalRefIdViewModel>("LayoutDivision"),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<TerminalViewModel.TerminalRefIdViewModel>("Terminal"),
-                }, new FeatureAssociationConnector<TurningBasin>()
-                {
-                    roleType = roleType.aggregation,
-                    role = "componentOf",
-                    Lower = 1,
-                    Upper = 1,
-                    AssociationTypes = ["HarbourAreaSection"],
-                    CreateForeignFeatureBinding = () => new SingleFeatureBindingViewModel<LayoutDivisionViewModel.componentOfTurningBasinRefIdViewModel>("LayoutDivision"),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<TurningBasinViewModel.TurningBasinRefIdViewModel>("TurningBasin"),
-                }, new FeatureAssociationConnector<WaterwayArea>()
-                {
-                    roleType = roleType.aggregation,
-                    role = "componentOf",
-                    Lower = 1,
-                    Upper = 1,
-                    AssociationTypes = ["HarbourAreaSection"],
-                    CreateForeignFeatureBinding = () => new SingleFeatureBindingViewModel<LayoutDivisionViewModel.componentOfWaterwayAreaRefIdViewModel>("LayoutDivision"),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<WaterwayAreaViewModel.WaterwayAreaRefIdViewModel>("WaterwayArea"),
-                }, new FeatureAssociationConnector<HarbourAreaAdministrative>()
-                {
-                    roleType = roleType.association,
-                    role = "layoutUnit",
-                    Lower = 0,
-                    Upper = default,
-                    AssociationTypes = ["HarbourAreaSection"],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<LayoutDivisionViewModel.layoutUnitHarbourAreaAdministrativeRefIdViewModel>("LayoutDivision"),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<HarbourAreaAdministrativeViewModel.HarbourAreaAdministrativeRefIdViewModel>("HarbourAreaAdministrative"),
-                }, new FeatureAssociationConnector<HarbourAreaSection>()
-                {
-                    roleType = roleType.association,
-                    role = "layoutUnit",
-                    Lower = 0,
-                    Upper = default,
-                    AssociationTypes = ["AnchorageArea", "Berth", "DockArea", "DumpingGround", "HarbourBasin", "PilotBoardingPlace", "SeaplaneLandingArea", "Terminal", "TurningBasin", "WaterwayArea"],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<LayoutDivisionViewModel.layoutUnitHarbourAreaSectionRefIdViewModel>("LayoutDivision"),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<HarbourAreaSectionViewModel.HarbourAreaSectionRefIdViewModel>("HarbourAreaSection"),
-                }, new FeatureAssociationConnector<Terminal>()
-                {
-                    roleType = roleType.association,
-                    role = "layoutUnit",
-                    Lower = 0,
-                    Upper = default,
-                    AssociationTypes = ["Berth"],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<LayoutDivisionViewModel.layoutUnitTerminalRefIdViewModel>("LayoutDivision"),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<TerminalViewModel.TerminalRefIdViewModel>("Terminal"),
-                }
-
-                ]
+                PID = pid
             },
+            "Subsection" => new SubsectionViewModel
             {
-                typeof(JurisdictionalLimitViewModel),
-                () => [new FeatureAssociationConnector<HarbourAreaAdministrative>()
-                {
-                    roleType = roleType.association,
-                    role = "limitExtent",
-                    Lower = 0,
-                    Upper = 1,
-                    AssociationTypes = ["OuterLimit"],
-                    CreateForeignFeatureBinding = () => new OptionalFeatureBindingViewModel<JurisdictionalLimitViewModel.limitExtentHarbourAreaAdministrativeRefIdViewModel>("JurisdictionalLimit"),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<HarbourAreaAdministrativeViewModel.HarbourAreaAdministrativeRefIdViewModel>("HarbourAreaAdministrative"),
-                }, new FeatureAssociationConnector<OuterLimit>()
-                {
-                    roleType = roleType.association,
-                    role = "limitReference",
-                    Lower = 1,
-                    Upper = 1,
-                    AssociationTypes = ["HarbourAreaAdministrative"],
-                    CreateForeignFeatureBinding = () => new SingleFeatureBindingViewModel<JurisdictionalLimitViewModel.limitReferenceOuterLimitRefIdViewModel>("JurisdictionalLimit"),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<OuterLimitViewModel.OuterLimitRefIdViewModel>("OuterLimit"),
-                }
-
-                ]
+                PID = pid
             },
+            "Infrastructure" => new InfrastructureViewModel
             {
-                typeof(DemarcationViewModel),
-                () => [new FeatureAssociationConnector<BerthPosition>()
-                {
-                    roleType = roleType.composition,
-                    role = "demarcatedFeature",
-                    Lower = 1,
-                    Upper = 1,
-                    AssociationTypes = ["Berth"],
-                    CreateForeignFeatureBinding = () => new SingleFeatureBindingViewModel<DemarcationViewModel.demarcatedFeatureBerthPositionRefIdViewModel>("Demarcation"),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<BerthPositionViewModel.BerthPositionRefIdViewModel>("BerthPosition"),
-                }, new FeatureAssociationConnector<Berth>()
-                {
-                    roleType = roleType.association,
-                    role = "demarcationIndicator",
-                    Lower = 0,
-                    Upper = default,
-                    AssociationTypes = ["BerthPosition"],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<DemarcationViewModel.demarcationIndicatorBerthRefIdViewModel>("Demarcation"),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<BerthViewModel.BerthRefIdViewModel>("Berth"),
-                }
-
-                ]
+                PID = pid
             },
+            "PrimaryAuxiliaryFacility" => new PrimaryAuxiliaryFacilityViewModel
             {
-                typeof(PrimaryAuxiliaryFacilityViewModel),
-                () => [new FeatureAssociationConnector<AnchorBerth>()
-                {
-                    roleType = roleType.association,
-                    role = "auxiliaryFacility",
-                    Lower = 0,
-                    Upper = default,
-                    AssociationTypes = ["MooringWarpingFacility"],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<PrimaryAuxiliaryFacilityViewModel.auxiliaryFacilityAnchorBerthRefIdViewModel>("PrimaryAuxiliaryFacility"),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<AnchorBerthViewModel.AnchorBerthRefIdViewModel>("AnchorBerth"),
-                }, new FeatureAssociationConnector<BerthPosition>()
-                {
-                    roleType = roleType.association,
-                    role = "auxiliaryFacility",
-                    Lower = 0,
-                    Upper = default,
-                    AssociationTypes = ["MooringWarpingFacility"],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<PrimaryAuxiliaryFacilityViewModel.auxiliaryFacilityBerthPositionRefIdViewModel>("PrimaryAuxiliaryFacility"),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<BerthPositionViewModel.BerthPositionRefIdViewModel>("BerthPosition"),
-                }, new FeatureAssociationConnector<MooringWarpingFacility>()
-                {
-                    roleType = roleType.association,
-                    role = "primaryFacility",
-                    Lower = 0,
-                    Upper = 1,
-                    AssociationTypes = ["AnchorBerth", "BerthPosition"],
-                    CreateForeignFeatureBinding = () => new OptionalFeatureBindingViewModel<PrimaryAuxiliaryFacilityViewModel.primaryFacilityMooringWarpingFacilityRefIdViewModel>("PrimaryAuxiliaryFacility"),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<MooringWarpingFacilityViewModel.MooringWarpingFacilityRefIdViewModel>("MooringWarpingFacility"),
-                }
-
-                ]
+                PID = pid
             },
+            "Demarcation" => new DemarcationViewModel
             {
-                typeof(InfrastructureViewModel),
-                () => [new FeatureAssociationConnector<HarbourAreaSection>()
-                {
-                    roleType = roleType.association,
-                    role = "hasInfrastructure",
-                    Lower = 0,
-                    Upper = default,
-                    AssociationTypes = ["DryDock", "FloatingDock", "Gridiron", "HarbourFacility"],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<InfrastructureViewModel.hasInfrastructureHarbourAreaSectionRefIdViewModel>("Infrastructure"),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<HarbourAreaSectionViewModel.HarbourAreaSectionRefIdViewModel>("HarbourAreaSection"),
-                }, new FeatureAssociationConnector<Terminal>()
-                {
-                    roleType = roleType.association,
-                    role = "hasInfrastructure",
-                    Lower = 0,
-                    Upper = default,
-                    AssociationTypes = ["DryDock", "FloatingDock", "Gridiron", "HarbourFacility"],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<InfrastructureViewModel.hasInfrastructureTerminalRefIdViewModel>("Infrastructure"),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<TerminalViewModel.TerminalRefIdViewModel>("Terminal"),
-                }, new FeatureAssociationConnector<DryDock>()
-                {
-                    roleType = roleType.association,
-                    role = "infrastructureLocation",
-                    Lower = 0,
-                    Upper = 1,
-                    AssociationTypes = ["HarbourAreaSection", "Terminal"],
-                    CreateForeignFeatureBinding = () => new OptionalFeatureBindingViewModel<InfrastructureViewModel.infrastructureLocationDryDockRefIdViewModel>("Infrastructure"),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<DryDockViewModel.DryDockRefIdViewModel>("DryDock"),
-                }, new FeatureAssociationConnector<FloatingDock>()
-                {
-                    roleType = roleType.association,
-                    role = "infrastructureLocation",
-                    Lower = 0,
-                    Upper = 1,
-                    AssociationTypes = ["HarbourAreaSection", "Terminal"],
-                    CreateForeignFeatureBinding = () => new OptionalFeatureBindingViewModel<InfrastructureViewModel.infrastructureLocationFloatingDockRefIdViewModel>("Infrastructure"),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<FloatingDockViewModel.FloatingDockRefIdViewModel>("FloatingDock"),
-                }, new FeatureAssociationConnector<Gridiron>()
-                {
-                    roleType = roleType.association,
-                    role = "infrastructureLocation",
-                    Lower = 0,
-                    Upper = 1,
-                    AssociationTypes = ["HarbourAreaSection", "Terminal"],
-                    CreateForeignFeatureBinding = () => new OptionalFeatureBindingViewModel<InfrastructureViewModel.infrastructureLocationGridironRefIdViewModel>("Infrastructure"),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<GridironViewModel.GridironRefIdViewModel>("Gridiron"),
-                }, new FeatureAssociationConnector<HarbourFacility>()
-                {
-                    roleType = roleType.association,
-                    role = "infrastructureLocation",
-                    Lower = 0,
-                    Upper = 1,
-                    AssociationTypes = ["HarbourAreaSection", "Terminal"],
-                    CreateForeignFeatureBinding = () => new OptionalFeatureBindingViewModel<InfrastructureViewModel.infrastructureLocationHarbourFacilityRefIdViewModel>("Infrastructure"),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<HarbourFacilityViewModel.HarbourFacilityRefIdViewModel>("HarbourFacility"),
-                }
-
-                ]
+                PID = pid
             },
+            "JurisdictionalLimit" => new JurisdictionalLimitViewModel
             {
-                typeof(SubsectionViewModel),
-                () => [new FeatureAssociationConnector<HarbourAreaSection>()
-                {
-                    roleType = roleType.aggregation,
-                    role = "constitute",
-                    Lower = 0,
-                    Upper = 1,
-                    AssociationTypes = ["HarbourAreaSection"],
-                    CreateForeignFeatureBinding = () => new OptionalFeatureBindingViewModel<SubsectionViewModel.constituteHarbourAreaSectionRefIdViewModel>("Subsection"),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<HarbourAreaSectionViewModel.HarbourAreaSectionRefIdViewModel>("HarbourAreaSection"),
-                }, new FeatureAssociationConnector<HarbourAreaSection>()
-                {
-                    roleType = roleType.association,
-                    role = "subUnit",
-                    Lower = 0,
-                    Upper = default,
-                    AssociationTypes = ["HarbourAreaSection"],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<SubsectionViewModel.subUnitHarbourAreaSectionRefIdViewModel>("Subsection"),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<HarbourAreaSectionViewModel.HarbourAreaSectionRefIdViewModel>("HarbourAreaSection"),
-                }
-
-                ]
+                PID = pid
             },
+            "LayoutDivision" => new LayoutDivisionViewModel
             {
-                typeof(TextAssociationViewModel),
-                () => [new FeatureAssociationConnector<TextPlacement>()
-                {
-                    roleType = roleType.association,
-                    role = "identifies",
-                    Lower = 1,
-                    Upper = 1,
-                    AssociationTypes = ["DryDock", "FloatingDock", "Gridiron", "HarbourFacility", "AnchorBerth", "AnchorageArea", "Berth", "BerthPosition", "DockArea", "DumpingGround", "HarbourAreaAdministrative", "HarbourAreaSection", "HarbourBasin", "MooringWarpingFacility", "OuterLimit", "PilotBoardingPlace", "SeaplaneLandingArea", "Terminal", "TurningBasin", "WaterwayArea"],
-                    CreateForeignFeatureBinding = () => new SingleFeatureBindingViewModel<TextAssociationViewModel.identifiesTextPlacementRefIdViewModel>("TextAssociation"),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<TextPlacementViewModel.TextPlacementRefIdViewModel>("TextPlacement"),
-                }, new FeatureAssociationConnector<DryDock>()
-                {
-                    roleType = roleType.association,
-                    role = "positions",
-                    Lower = 0,
-                    Upper = 1,
-                    AssociationTypes = ["TextPlacement"],
-                    CreateForeignFeatureBinding = () => new OptionalFeatureBindingViewModel<TextAssociationViewModel.positionsDryDockRefIdViewModel>("TextAssociation"),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<DryDockViewModel.DryDockRefIdViewModel>("DryDock"),
-                }, new FeatureAssociationConnector<FloatingDock>()
-                {
-                    roleType = roleType.association,
-                    role = "positions",
-                    Lower = 0,
-                    Upper = 1,
-                    AssociationTypes = ["TextPlacement"],
-                    CreateForeignFeatureBinding = () => new OptionalFeatureBindingViewModel<TextAssociationViewModel.positionsFloatingDockRefIdViewModel>("TextAssociation"),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<FloatingDockViewModel.FloatingDockRefIdViewModel>("FloatingDock"),
-                }, new FeatureAssociationConnector<Gridiron>()
-                {
-                    roleType = roleType.association,
-                    role = "positions",
-                    Lower = 0,
-                    Upper = 1,
-                    AssociationTypes = ["TextPlacement"],
-                    CreateForeignFeatureBinding = () => new OptionalFeatureBindingViewModel<TextAssociationViewModel.positionsGridironRefIdViewModel>("TextAssociation"),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<GridironViewModel.GridironRefIdViewModel>("Gridiron"),
-                }, new FeatureAssociationConnector<HarbourFacility>()
-                {
-                    roleType = roleType.association,
-                    role = "positions",
-                    Lower = 0,
-                    Upper = 1,
-                    AssociationTypes = ["TextPlacement"],
-                    CreateForeignFeatureBinding = () => new OptionalFeatureBindingViewModel<TextAssociationViewModel.positionsHarbourFacilityRefIdViewModel>("TextAssociation"),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<HarbourFacilityViewModel.HarbourFacilityRefIdViewModel>("HarbourFacility"),
-                }, new FeatureAssociationConnector<AnchorBerth>()
-                {
-                    roleType = roleType.association,
-                    role = "positions",
-                    Lower = 0,
-                    Upper = 1,
-                    AssociationTypes = ["TextPlacement"],
-                    CreateForeignFeatureBinding = () => new OptionalFeatureBindingViewModel<TextAssociationViewModel.positionsAnchorBerthRefIdViewModel>("TextAssociation"),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<AnchorBerthViewModel.AnchorBerthRefIdViewModel>("AnchorBerth"),
-                }, new FeatureAssociationConnector<AnchorageArea>()
-                {
-                    roleType = roleType.association,
-                    role = "positions",
-                    Lower = 0,
-                    Upper = 1,
-                    AssociationTypes = ["TextPlacement"],
-                    CreateForeignFeatureBinding = () => new OptionalFeatureBindingViewModel<TextAssociationViewModel.positionsAnchorageAreaRefIdViewModel>("TextAssociation"),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<AnchorageAreaViewModel.AnchorageAreaRefIdViewModel>("AnchorageArea"),
-                }, new FeatureAssociationConnector<Berth>()
-                {
-                    roleType = roleType.association,
-                    role = "positions",
-                    Lower = 0,
-                    Upper = 1,
-                    AssociationTypes = ["TextPlacement"],
-                    CreateForeignFeatureBinding = () => new OptionalFeatureBindingViewModel<TextAssociationViewModel.positionsBerthRefIdViewModel>("TextAssociation"),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<BerthViewModel.BerthRefIdViewModel>("Berth"),
-                }, new FeatureAssociationConnector<BerthPosition>()
-                {
-                    roleType = roleType.association,
-                    role = "positions",
-                    Lower = 0,
-                    Upper = 1,
-                    AssociationTypes = ["TextPlacement"],
-                    CreateForeignFeatureBinding = () => new OptionalFeatureBindingViewModel<TextAssociationViewModel.positionsBerthPositionRefIdViewModel>("TextAssociation"),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<BerthPositionViewModel.BerthPositionRefIdViewModel>("BerthPosition"),
-                }, new FeatureAssociationConnector<DockArea>()
-                {
-                    roleType = roleType.association,
-                    role = "positions",
-                    Lower = 0,
-                    Upper = 1,
-                    AssociationTypes = ["TextPlacement"],
-                    CreateForeignFeatureBinding = () => new OptionalFeatureBindingViewModel<TextAssociationViewModel.positionsDockAreaRefIdViewModel>("TextAssociation"),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<DockAreaViewModel.DockAreaRefIdViewModel>("DockArea"),
-                }, new FeatureAssociationConnector<DumpingGround>()
-                {
-                    roleType = roleType.association,
-                    role = "positions",
-                    Lower = 0,
-                    Upper = 1,
-                    AssociationTypes = ["TextPlacement"],
-                    CreateForeignFeatureBinding = () => new OptionalFeatureBindingViewModel<TextAssociationViewModel.positionsDumpingGroundRefIdViewModel>("TextAssociation"),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<DumpingGroundViewModel.DumpingGroundRefIdViewModel>("DumpingGround"),
-                }, new FeatureAssociationConnector<HarbourAreaAdministrative>()
-                {
-                    roleType = roleType.association,
-                    role = "positions",
-                    Lower = 0,
-                    Upper = 1,
-                    AssociationTypes = ["TextPlacement"],
-                    CreateForeignFeatureBinding = () => new OptionalFeatureBindingViewModel<TextAssociationViewModel.positionsHarbourAreaAdministrativeRefIdViewModel>("TextAssociation"),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<HarbourAreaAdministrativeViewModel.HarbourAreaAdministrativeRefIdViewModel>("HarbourAreaAdministrative"),
-                }, new FeatureAssociationConnector<HarbourAreaSection>()
-                {
-                    roleType = roleType.association,
-                    role = "positions",
-                    Lower = 0,
-                    Upper = 1,
-                    AssociationTypes = ["TextPlacement"],
-                    CreateForeignFeatureBinding = () => new OptionalFeatureBindingViewModel<TextAssociationViewModel.positionsHarbourAreaSectionRefIdViewModel>("TextAssociation"),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<HarbourAreaSectionViewModel.HarbourAreaSectionRefIdViewModel>("HarbourAreaSection"),
-                }, new FeatureAssociationConnector<HarbourBasin>()
-                {
-                    roleType = roleType.association,
-                    role = "positions",
-                    Lower = 0,
-                    Upper = 1,
-                    AssociationTypes = ["TextPlacement"],
-                    CreateForeignFeatureBinding = () => new OptionalFeatureBindingViewModel<TextAssociationViewModel.positionsHarbourBasinRefIdViewModel>("TextAssociation"),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<HarbourBasinViewModel.HarbourBasinRefIdViewModel>("HarbourBasin"),
-                }, new FeatureAssociationConnector<MooringWarpingFacility>()
-                {
-                    roleType = roleType.association,
-                    role = "positions",
-                    Lower = 0,
-                    Upper = 1,
-                    AssociationTypes = ["TextPlacement"],
-                    CreateForeignFeatureBinding = () => new OptionalFeatureBindingViewModel<TextAssociationViewModel.positionsMooringWarpingFacilityRefIdViewModel>("TextAssociation"),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<MooringWarpingFacilityViewModel.MooringWarpingFacilityRefIdViewModel>("MooringWarpingFacility"),
-                }, new FeatureAssociationConnector<OuterLimit>()
-                {
-                    roleType = roleType.association,
-                    role = "positions",
-                    Lower = 0,
-                    Upper = 1,
-                    AssociationTypes = ["TextPlacement"],
-                    CreateForeignFeatureBinding = () => new OptionalFeatureBindingViewModel<TextAssociationViewModel.positionsOuterLimitRefIdViewModel>("TextAssociation"),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<OuterLimitViewModel.OuterLimitRefIdViewModel>("OuterLimit"),
-                }, new FeatureAssociationConnector<PilotBoardingPlace>()
-                {
-                    roleType = roleType.association,
-                    role = "positions",
-                    Lower = 0,
-                    Upper = 1,
-                    AssociationTypes = ["TextPlacement"],
-                    CreateForeignFeatureBinding = () => new OptionalFeatureBindingViewModel<TextAssociationViewModel.positionsPilotBoardingPlaceRefIdViewModel>("TextAssociation"),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<PilotBoardingPlaceViewModel.PilotBoardingPlaceRefIdViewModel>("PilotBoardingPlace"),
-                }, new FeatureAssociationConnector<SeaplaneLandingArea>()
-                {
-                    roleType = roleType.association,
-                    role = "positions",
-                    Lower = 0,
-                    Upper = 1,
-                    AssociationTypes = ["TextPlacement"],
-                    CreateForeignFeatureBinding = () => new OptionalFeatureBindingViewModel<TextAssociationViewModel.positionsSeaplaneLandingAreaRefIdViewModel>("TextAssociation"),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<SeaplaneLandingAreaViewModel.SeaplaneLandingAreaRefIdViewModel>("SeaplaneLandingArea"),
-                }, new FeatureAssociationConnector<Terminal>()
-                {
-                    roleType = roleType.association,
-                    role = "positions",
-                    Lower = 0,
-                    Upper = 1,
-                    AssociationTypes = ["TextPlacement"],
-                    CreateForeignFeatureBinding = () => new OptionalFeatureBindingViewModel<TextAssociationViewModel.positionsTerminalRefIdViewModel>("TextAssociation"),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<TerminalViewModel.TerminalRefIdViewModel>("Terminal"),
-                }, new FeatureAssociationConnector<TurningBasin>()
-                {
-                    roleType = roleType.association,
-                    role = "positions",
-                    Lower = 0,
-                    Upper = 1,
-                    AssociationTypes = ["TextPlacement"],
-                    CreateForeignFeatureBinding = () => new OptionalFeatureBindingViewModel<TextAssociationViewModel.positionsTurningBasinRefIdViewModel>("TextAssociation"),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<TurningBasinViewModel.TurningBasinRefIdViewModel>("TurningBasin"),
-                }, new FeatureAssociationConnector<WaterwayArea>()
-                {
-                    roleType = roleType.association,
-                    role = "positions",
-                    Lower = 0,
-                    Upper = 1,
-                    AssociationTypes = ["TextPlacement"],
-                    CreateForeignFeatureBinding = () => new OptionalFeatureBindingViewModel<TextAssociationViewModel.positionsWaterwayAreaRefIdViewModel>("TextAssociation"),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<WaterwayAreaViewModel.WaterwayAreaRefIdViewModel>("WaterwayArea"),
-                }
-
-                ]
+                PID = pid
             },
+            _ => throw new InvalidOperationException(),
+        };
+        public static InformationViewModel CreateInformationType(string type, string? pid = default) => type switch
+        {
+            "Applicability" => new ApplicabilityViewModel
+            {
+                PID = pid
+            },
+            "Authority" => new AuthorityViewModel
+            {
+                PID = pid
+            },
+            "AvailablePortServices" => new AvailablePortServicesViewModel
+            {
+                PID = pid
+            },
+            "ContactDetails" => new ContactDetailsViewModel
+            {
+                PID = pid
+            },
+            "Entrance" => new EntranceViewModel
+            {
+                PID = pid
+            },
+            "NauticalInformation" => new NauticalInformationViewModel
+            {
+                PID = pid
+            },
+            "NonStandardWorkingDay" => new NonStandardWorkingDayViewModel
+            {
+                PID = pid
+            },
+            "Recommendations" => new RecommendationsViewModel
+            {
+                PID = pid
+            },
+            "Regulations" => new RegulationsViewModel
+            {
+                PID = pid
+            },
+            "Restrictions" => new RestrictionsViewModel
+            {
+                PID = pid
+            },
+            "ServiceHours" => new ServiceHoursViewModel
+            {
+                PID = pid
+            },
+            "SpatialQuality" => new SpatialQualityViewModel
+            {
+                PID = pid
+            },
+            _ => throw new InvalidOperationException(),
+        };
+        public static FeatureViewModel CreateFeatureType(string type, string? pid = default) => type switch
+        {
+            "AnchorBerth" => new AnchorBerthViewModel
+            {
+                PID = pid
+            },
+            "AnchorageArea" => new AnchorageAreaViewModel
+            {
+                PID = pid
+            },
+            "Berth" => new BerthViewModel
+            {
+                PID = pid
+            },
+            "BerthPosition" => new BerthPositionViewModel
+            {
+                PID = pid
+            },
+            "DockArea" => new DockAreaViewModel
+            {
+                PID = pid
+            },
+            "DryDock" => new DryDockViewModel
+            {
+                PID = pid
+            },
+            "DumpingGround" => new DumpingGroundViewModel
+            {
+                PID = pid
+            },
+            "FloatingDock" => new FloatingDockViewModel
+            {
+                PID = pid
+            },
+            "Gridiron" => new GridironViewModel
+            {
+                PID = pid
+            },
+            "HarbourAreaAdministrative" => new HarbourAreaAdministrativeViewModel
+            {
+                PID = pid
+            },
+            "HarbourAreaSection" => new HarbourAreaSectionViewModel
+            {
+                PID = pid
+            },
+            "HarbourBasin" => new HarbourBasinViewModel
+            {
+                PID = pid
+            },
+            "HarbourFacility" => new HarbourFacilityViewModel
+            {
+                PID = pid
+            },
+            "MooringWarpingFacility" => new MooringWarpingFacilityViewModel
+            {
+                PID = pid
+            },
+            "OuterLimit" => new OuterLimitViewModel
+            {
+                PID = pid
+            },
+            "PilotBoardingPlace" => new PilotBoardingPlaceViewModel
+            {
+                PID = pid
+            },
+            "SeaplaneLandingArea" => new SeaplaneLandingAreaViewModel
+            {
+                PID = pid
+            },
+            "Terminal" => new TerminalViewModel
+            {
+                PID = pid
+            },
+            "TurningBasin" => new TurningBasinViewModel
+            {
+                PID = pid
+            },
+            "WaterwayArea" => new WaterwayAreaViewModel
+            {
+                PID = pid
+            },
+            "DataCoverage" => new DataCoverageViewModel
+            {
+                PID = pid
+            },
+            "QualityOfNonBathymetricData" => new QualityOfNonBathymetricDataViewModel
+            {
+                PID = pid
+            },
+            "SoundingDatum" => new SoundingDatumViewModel
+            {
+                PID = pid
+            },
+            "VerticalDatumOfData" => new VerticalDatumOfDataViewModel
+            {
+                PID = pid
+            },
+            "TextPlacement" => new TextPlacementViewModel
+            {
+                PID = pid
+            },
+            _ => throw new InvalidOperationException(),
+        };
+        public static ICollection<string> InformationAssociationBindings(string association, string role) => (association, role) switch
+        {
+            ("AdditionalInformation", "providesInformation") => ["NauticalInformation"],
+            ("InclusionType", "isApplicableTo") => ["Applicability"],
+            ("RelatedOrganisation", "theOrganisation") => ["Authority"],
+            ("InclusionType", "theApplicableRxN") => ["AbstractRxN"],
+            ("PermissionType", "vslLocation") => ["InformationType"],
+            ("AuthorityContact", "theContactDetails") => ["ContactDetails"],
+            ("RelatedOrganisation", "theInformation") => ["AbstractRxN"],
+            ("AuthorityHours", "theServiceHours") => ["ServiceHours"],
+            ("AuthorityContact", "theAuthority") => ["Authority"],
+            ("AdditionalInformation", "informationProvidedFor") => ["InformationType"],
+            ("ExceptionalWorkday", "partialWorkingDay") => ["NonStandardWorkingDay"],
+            ("AuthorityHours", "theAuthority_srvHrs") => ["Authority"],
+            ("PermissionType", "permission") => ["Applicability"],
+            ("AssociatedRxN", "theRxN") => ["AbstractRxN"],
+            ("ServiceContact", "theContactDetails") => ["ContactDetails"],
+            ("ServiceControl", "controlAuthority") => ["Authority"],
+            ("ServiceAvailability", "serviceDescriptionReference") => ["AvailablePortServices"],
+            ("LocationHours", "location_srvHrs") => ["ServiceHours"],
+            ("LimitEntrance", "entranceReference") => ["Entrance"],
+            _ => throw new InvalidOperationException(),
+        };
+        public static ICollection<string> FeatureAssociationBindings(string association, string role) => (association, role) switch
+        {
+            ("TextAssociation", "positions") => ["TextPlacement"],
+            ("Infrastructure", "infrastructureLocation") => ["HarbourAreaSection", "Terminal"],
+            ("PrimaryAuxiliaryFacility", "auxiliaryFacility") => ["MooringWarpingFacility"],
+            ("LayoutDivision", "componentOf") => ["HarbourAreaSection", "Terminal", "HarbourAreaAdministrative"],
+            ("Demarcation", "demarcationIndicator") => ["BerthPosition"],
+            ("Demarcation", "demarcatedFeature") => ["Berth"],
+            ("JurisdictionalLimit", "limitExtent") => ["OuterLimit"],
+            ("LayoutDivision", "layoutUnit") => ["HarbourAreaSection", "AnchorageArea", "Berth", "DockArea", "DumpingGround", "HarbourBasin", "PilotBoardingPlace", "SeaplaneLandingArea", "Terminal", "TurningBasin", "WaterwayArea"],
+            ("Subsection", "constitute") => ["HarbourAreaSection"],
+            ("Subsection", "subUnit") => ["HarbourAreaSection"],
+            ("Infrastructure", "hasInfrastructure") => ["HarbourPhysicalInfrastructure"],
+            ("PrimaryAuxiliaryFacility", "primaryFacility") => ["AnchorBerth", "BerthPosition"],
+            ("JurisdictionalLimit", "limitReference") => ["HarbourAreaAdministrative"],
+            ("TextAssociation", "identifies") => ["FeatureType"],
+            _ => throw new InvalidOperationException(),
         };
     }
 
@@ -4552,10 +2697,550 @@ namespace S100Framework.WPF.ViewModel.S131 {
         public override string? ToString() => $"General Harbour Information";
     }
 
+    [CategoryOrder("AdditionalInformation", 0)]
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
+    public partial class AdditionalInformationViewModel : AssociationViewModel {
+        public void Load(DomainModel.S131.Associations.InformationAssociations.AdditionalInformation instance) {
+        }
+
+        public override string Serialize() {
+            var instance = new DomainModel.S131.Associations.InformationAssociations.AdditionalInformation
+            {
+            };
+            return System.Text.Json.JsonSerializer.Serialize(instance);
+        }
+
+        [Browsable(false)]
+        public DomainModel.S131.Associations.InformationAssociations.AdditionalInformation Model => new()
+        {
+        };
+
+        public AdditionalInformationViewModel() : base() {
+        }
+
+        public override string? ToString() => $"Additional information";
+    }
+
+    [CategoryOrder("AuthorityContact", 0)]
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
+    public partial class AuthorityContactViewModel : AssociationViewModel {
+        public void Load(DomainModel.S131.Associations.InformationAssociations.AuthorityContact instance) {
+        }
+
+        public override string Serialize() {
+            var instance = new DomainModel.S131.Associations.InformationAssociations.AuthorityContact
+            {
+            };
+            return System.Text.Json.JsonSerializer.Serialize(instance);
+        }
+
+        [Browsable(false)]
+        public DomainModel.S131.Associations.InformationAssociations.AuthorityContact Model => new()
+        {
+        };
+
+        public AuthorityContactViewModel() : base() {
+        }
+
+        public override string? ToString() => $"Authority contact";
+    }
+
+    [CategoryOrder("AuthorityHours", 0)]
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
+    public partial class AuthorityHoursViewModel : AssociationViewModel {
+        public void Load(DomainModel.S131.Associations.InformationAssociations.AuthorityHours instance) {
+        }
+
+        public override string Serialize() {
+            var instance = new DomainModel.S131.Associations.InformationAssociations.AuthorityHours
+            {
+            };
+            return System.Text.Json.JsonSerializer.Serialize(instance);
+        }
+
+        [Browsable(false)]
+        public DomainModel.S131.Associations.InformationAssociations.AuthorityHours Model => new()
+        {
+        };
+
+        public AuthorityHoursViewModel() : base() {
+        }
+
+        public override string? ToString() => $"Authority hours";
+    }
+
+    [CategoryOrder("AssociatedRxN", 0)]
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
+    public partial class AssociatedRxNViewModel : AssociationViewModel {
+        public void Load(DomainModel.S131.Associations.InformationAssociations.AssociatedRxN instance) {
+        }
+
+        public override string Serialize() {
+            var instance = new DomainModel.S131.Associations.InformationAssociations.AssociatedRxN
+            {
+            };
+            return System.Text.Json.JsonSerializer.Serialize(instance);
+        }
+
+        [Browsable(false)]
+        public DomainModel.S131.Associations.InformationAssociations.AssociatedRxN Model => new()
+        {
+        };
+
+        public AssociatedRxNViewModel() : base() {
+        }
+
+        public override string? ToString() => $"Associated RxN";
+    }
+
+    [CategoryOrder("ExceptionalWorkday", 0)]
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
+    public partial class ExceptionalWorkdayViewModel : AssociationViewModel {
+        public void Load(DomainModel.S131.Associations.InformationAssociations.ExceptionalWorkday instance) {
+        }
+
+        public override string Serialize() {
+            var instance = new DomainModel.S131.Associations.InformationAssociations.ExceptionalWorkday
+            {
+            };
+            return System.Text.Json.JsonSerializer.Serialize(instance);
+        }
+
+        [Browsable(false)]
+        public DomainModel.S131.Associations.InformationAssociations.ExceptionalWorkday Model => new()
+        {
+        };
+
+        public ExceptionalWorkdayViewModel() : base() {
+        }
+
+        public override string? ToString() => $"Exceptional workday";
+    }
+
+    [CategoryOrder("ServiceControl", 0)]
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
+    public partial class ServiceControlViewModel : AssociationViewModel {
+        public void Load(DomainModel.S131.Associations.InformationAssociations.ServiceControl instance) {
+        }
+
+        public override string Serialize() {
+            var instance = new DomainModel.S131.Associations.InformationAssociations.ServiceControl
+            {
+            };
+            return System.Text.Json.JsonSerializer.Serialize(instance);
+        }
+
+        [Browsable(false)]
+        public DomainModel.S131.Associations.InformationAssociations.ServiceControl Model => new()
+        {
+        };
+
+        public ServiceControlViewModel() : base() {
+        }
+
+        public override string? ToString() => $"Service control";
+    }
+
+    [CategoryOrder("ServiceContact", 0)]
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
+    public partial class ServiceContactViewModel : AssociationViewModel {
+        public void Load(DomainModel.S131.Associations.InformationAssociations.ServiceContact instance) {
+        }
+
+        public override string Serialize() {
+            var instance = new DomainModel.S131.Associations.InformationAssociations.ServiceContact
+            {
+            };
+            return System.Text.Json.JsonSerializer.Serialize(instance);
+        }
+
+        [Browsable(false)]
+        public DomainModel.S131.Associations.InformationAssociations.ServiceContact Model => new()
+        {
+        };
+
+        public ServiceContactViewModel() : base() {
+        }
+
+        public override string? ToString() => $"Service contact";
+    }
+
+    [CategoryOrder("LocationHours", 0)]
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
+    public partial class LocationHoursViewModel : AssociationViewModel {
+        public void Load(DomainModel.S131.Associations.InformationAssociations.LocationHours instance) {
+        }
+
+        public override string Serialize() {
+            var instance = new DomainModel.S131.Associations.InformationAssociations.LocationHours
+            {
+            };
+            return System.Text.Json.JsonSerializer.Serialize(instance);
+        }
+
+        [Browsable(false)]
+        public DomainModel.S131.Associations.InformationAssociations.LocationHours Model => new()
+        {
+        };
+
+        public LocationHoursViewModel() : base() {
+        }
+
+        public override string? ToString() => $"Location hours";
+    }
+
+    [CategoryOrder("RelatedOrganisation", 0)]
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
+    public partial class RelatedOrganisationViewModel : AssociationViewModel {
+        public void Load(DomainModel.S131.Associations.InformationAssociations.RelatedOrganisation instance) {
+        }
+
+        public override string Serialize() {
+            var instance = new DomainModel.S131.Associations.InformationAssociations.RelatedOrganisation
+            {
+            };
+            return System.Text.Json.JsonSerializer.Serialize(instance);
+        }
+
+        [Browsable(false)]
+        public DomainModel.S131.Associations.InformationAssociations.RelatedOrganisation Model => new()
+        {
+        };
+
+        public RelatedOrganisationViewModel() : base() {
+        }
+
+        public override string? ToString() => $"Related organisation";
+    }
+
+    [CategoryOrder("InclusionType", 0)]
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
+    public partial class InclusionTypeViewModel : AssociationViewModel {
+        private membership _membership;
+        [DomainModel.EnumerationAttribute(nameof(membershipList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
+        [Category("InclusionType")]
+        public membership membership {
+            get {
+                return _membership;
+            }
+
+            set {
+                SetValue(ref _membership, value);
+            }
+        }
+
+        [Browsable(false)]
+        public membership[] membershipList => [(membership)1, (membership)2];
+
+        public void Load(DomainModel.S131.Associations.InformationAssociations.InclusionType instance) {
+            membership = instance.membership;
+        }
+
+        public override string Serialize() {
+            var instance = new DomainModel.S131.Associations.InformationAssociations.InclusionType
+            {
+                membership = this.membership,
+            };
+            return System.Text.Json.JsonSerializer.Serialize(instance);
+        }
+
+        [Browsable(false)]
+        public DomainModel.S131.Associations.InformationAssociations.InclusionType Model => new()
+        {
+            membership = this._membership,
+        };
+
+        public InclusionTypeViewModel() : base() {
+        }
+
+        public override string? ToString() => $"InclusionType";
+    }
+
+    [CategoryOrder("PermissionType", 0)]
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
+    public partial class PermissionTypeViewModel : AssociationViewModel {
+        private categoryOfRelationship _categoryOfRelationship;
+        [DomainModel.EnumerationAttribute(nameof(categoryOfRelationshipList))]
+        [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
+        [Category("PermissionType")]
+        public categoryOfRelationship categoryOfRelationship {
+            get {
+                return _categoryOfRelationship;
+            }
+
+            set {
+                SetValue(ref _categoryOfRelationship, value);
+            }
+        }
+
+        [Browsable(false)]
+        public categoryOfRelationship[] categoryOfRelationshipList => [(categoryOfRelationship)1, (categoryOfRelationship)2, (categoryOfRelationship)3, (categoryOfRelationship)4, (categoryOfRelationship)5, (categoryOfRelationship)6];
+
+        public void Load(DomainModel.S131.Associations.InformationAssociations.PermissionType instance) {
+            categoryOfRelationship = instance.categoryOfRelationship;
+        }
+
+        public override string Serialize() {
+            var instance = new DomainModel.S131.Associations.InformationAssociations.PermissionType
+            {
+                categoryOfRelationship = this.categoryOfRelationship,
+            };
+            return System.Text.Json.JsonSerializer.Serialize(instance);
+        }
+
+        [Browsable(false)]
+        public DomainModel.S131.Associations.InformationAssociations.PermissionType Model => new()
+        {
+            categoryOfRelationship = this._categoryOfRelationship,
+        };
+
+        public PermissionTypeViewModel() : base() {
+        }
+
+        public override string? ToString() => $"Permission Type";
+    }
+
+    [CategoryOrder("LimitEntrance", 0)]
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
+    public partial class LimitEntranceViewModel : AssociationViewModel {
+        public void Load(DomainModel.S131.Associations.InformationAssociations.LimitEntrance instance) {
+        }
+
+        public override string Serialize() {
+            var instance = new DomainModel.S131.Associations.InformationAssociations.LimitEntrance
+            {
+            };
+            return System.Text.Json.JsonSerializer.Serialize(instance);
+        }
+
+        [Browsable(false)]
+        public DomainModel.S131.Associations.InformationAssociations.LimitEntrance Model => new()
+        {
+        };
+
+        public LimitEntranceViewModel() : base() {
+        }
+
+        public override string? ToString() => $"Limit Entrance";
+    }
+
+    [CategoryOrder("ServiceAvailability", 0)]
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
+    public partial class ServiceAvailabilityViewModel : AssociationViewModel {
+        public void Load(DomainModel.S131.Associations.InformationAssociations.ServiceAvailability instance) {
+        }
+
+        public override string Serialize() {
+            var instance = new DomainModel.S131.Associations.InformationAssociations.ServiceAvailability
+            {
+            };
+            return System.Text.Json.JsonSerializer.Serialize(instance);
+        }
+
+        [Browsable(false)]
+        public DomainModel.S131.Associations.InformationAssociations.ServiceAvailability Model => new()
+        {
+        };
+
+        public ServiceAvailabilityViewModel() : base() {
+        }
+
+        public override string? ToString() => $"Service Availability";
+    }
+
+    [CategoryOrder("TextAssociation", 0)]
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
+    public partial class TextAssociationViewModel : AssociationViewModel {
+        public void Load(DomainModel.S131.Associations.FeatureAssociations.TextAssociation instance) {
+        }
+
+        public override string Serialize() {
+            var instance = new DomainModel.S131.Associations.FeatureAssociations.TextAssociation
+            {
+            };
+            return System.Text.Json.JsonSerializer.Serialize(instance);
+        }
+
+        [Browsable(false)]
+        public DomainModel.S131.Associations.FeatureAssociations.TextAssociation Model => new()
+        {
+        };
+
+        public TextAssociationViewModel() : base() {
+        }
+
+        public override string? ToString() => $"Text association";
+    }
+
+    [CategoryOrder("Subsection", 0)]
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
+    public partial class SubsectionViewModel : AssociationViewModel {
+        public void Load(DomainModel.S131.Associations.FeatureAssociations.Subsection instance) {
+        }
+
+        public override string Serialize() {
+            var instance = new DomainModel.S131.Associations.FeatureAssociations.Subsection
+            {
+            };
+            return System.Text.Json.JsonSerializer.Serialize(instance);
+        }
+
+        [Browsable(false)]
+        public DomainModel.S131.Associations.FeatureAssociations.Subsection Model => new()
+        {
+        };
+
+        public SubsectionViewModel() : base() {
+        }
+
+        public override string? ToString() => $"Subsection";
+    }
+
+    [CategoryOrder("Infrastructure", 0)]
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
+    public partial class InfrastructureViewModel : AssociationViewModel {
+        public void Load(DomainModel.S131.Associations.FeatureAssociations.Infrastructure instance) {
+        }
+
+        public override string Serialize() {
+            var instance = new DomainModel.S131.Associations.FeatureAssociations.Infrastructure
+            {
+            };
+            return System.Text.Json.JsonSerializer.Serialize(instance);
+        }
+
+        [Browsable(false)]
+        public DomainModel.S131.Associations.FeatureAssociations.Infrastructure Model => new()
+        {
+        };
+
+        public InfrastructureViewModel() : base() {
+        }
+
+        public override string? ToString() => $"Infrastructure";
+    }
+
+    [CategoryOrder("PrimaryAuxiliaryFacility", 0)]
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
+    public partial class PrimaryAuxiliaryFacilityViewModel : AssociationViewModel {
+        public void Load(DomainModel.S131.Associations.FeatureAssociations.PrimaryAuxiliaryFacility instance) {
+        }
+
+        public override string Serialize() {
+            var instance = new DomainModel.S131.Associations.FeatureAssociations.PrimaryAuxiliaryFacility
+            {
+            };
+            return System.Text.Json.JsonSerializer.Serialize(instance);
+        }
+
+        [Browsable(false)]
+        public DomainModel.S131.Associations.FeatureAssociations.PrimaryAuxiliaryFacility Model => new()
+        {
+        };
+
+        public PrimaryAuxiliaryFacilityViewModel() : base() {
+        }
+
+        public override string? ToString() => $"Primary/Auxiliary Facility";
+    }
+
+    [CategoryOrder("Demarcation", 0)]
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
+    public partial class DemarcationViewModel : AssociationViewModel {
+        public void Load(DomainModel.S131.Associations.FeatureAssociations.Demarcation instance) {
+        }
+
+        public override string Serialize() {
+            var instance = new DomainModel.S131.Associations.FeatureAssociations.Demarcation
+            {
+            };
+            return System.Text.Json.JsonSerializer.Serialize(instance);
+        }
+
+        [Browsable(false)]
+        public DomainModel.S131.Associations.FeatureAssociations.Demarcation Model => new()
+        {
+        };
+
+        public DemarcationViewModel() : base() {
+        }
+
+        public override string? ToString() => $"Demarcation";
+    }
+
+    [CategoryOrder("JurisdictionalLimit", 0)]
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
+    public partial class JurisdictionalLimitViewModel : AssociationViewModel {
+        public void Load(DomainModel.S131.Associations.FeatureAssociations.JurisdictionalLimit instance) {
+        }
+
+        public override string Serialize() {
+            var instance = new DomainModel.S131.Associations.FeatureAssociations.JurisdictionalLimit
+            {
+            };
+            return System.Text.Json.JsonSerializer.Serialize(instance);
+        }
+
+        [Browsable(false)]
+        public DomainModel.S131.Associations.FeatureAssociations.JurisdictionalLimit Model => new()
+        {
+        };
+
+        public JurisdictionalLimitViewModel() : base() {
+        }
+
+        public override string? ToString() => $"Jurisdictional Limit";
+    }
+
+    [CategoryOrder("LayoutDivision", 0)]
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
+    public partial class LayoutDivisionViewModel : AssociationViewModel {
+        public void Load(DomainModel.S131.Associations.FeatureAssociations.LayoutDivision instance) {
+        }
+
+        public override string Serialize() {
+            var instance = new DomainModel.S131.Associations.FeatureAssociations.LayoutDivision
+            {
+            };
+            return System.Text.Json.JsonSerializer.Serialize(instance);
+        }
+
+        [Browsable(false)]
+        public DomainModel.S131.Associations.FeatureAssociations.LayoutDivision Model => new()
+        {
+        };
+
+        public LayoutDivisionViewModel() : base() {
+        }
+
+        public override string? ToString() => $"Layout Division";
+    }
+
     [CategoryOrder("Applicability", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class ApplicabilityViewModel : ViewModelBase {
+    public partial class ApplicabilityViewModel : InformationViewModel<Applicability> {
         private Boolean? _inBallast = default;
         [Category("Applicability")]
         public Boolean? inBallast {
@@ -4710,9 +3395,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
             }
         }
 
-        public class ApplicabilityRefIdViewModel : InformationRefIdViewModel {
-            public override string[] AssociationTypes => ["Applicability"];
-        }
+        public override informationBindingDefinition[] informationBindingDefinitions => Applicability._informationBindingDefinitions;
 
         [Browsable(false)]
         public categoryOfVessel[] categoryOfVesselList => CodeList.categoryOfVessels.ToArray();
@@ -4732,7 +3415,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
         [Browsable(false)]
         public sourceType[] sourceTypeList => [(sourceType)1, (sourceType)2, (sourceType)7, (sourceType)8, (sourceType)9, (sourceType)10, (sourceType)11, (sourceType)12, (sourceType)13, (sourceType)14];
 
-        public void Load(DomainModel.S131.InformationTypes.Applicability instance) {
+        public override InformationViewModel<Applicability> Load(DomainModel.S131.InformationTypes.Applicability instance) {
             inBallast = instance.inBallast;
             categoryOfCargo.Clear();
             if (instance.categoryOfCargo is not null)
@@ -4776,6 +3459,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
             source = instance.source;
             sourceType = instance.sourceType;
             reportedDate = instance.reportedDate;
+            return this;
         }
 
         public override string Serialize() {
@@ -4854,7 +3538,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
     [CategoryOrder("Authority", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class AuthorityViewModel : ViewModelBase {
+    public partial class AuthorityViewModel : InformationViewModel<Authority> {
         private categoryOfAuthority _categoryOfAuthority;
         [DomainModel.EnumerationAttribute(nameof(categoryOfAuthorityList))]
         [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
@@ -4942,9 +3626,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
             }
         }
 
-        public class AuthorityRefIdViewModel : InformationRefIdViewModel {
-            public override string[] AssociationTypes => ["Authority"];
-        }
+        public override informationBindingDefinition[] informationBindingDefinitions => Authority._informationBindingDefinitions;
 
         [Browsable(false)]
         public categoryOfAuthority[] categoryOfAuthorityList => [(categoryOfAuthority)2, (categoryOfAuthority)3, (categoryOfAuthority)4, (categoryOfAuthority)5, (categoryOfAuthority)6, (categoryOfAuthority)7, (categoryOfAuthority)8, (categoryOfAuthority)9, (categoryOfAuthority)10, (categoryOfAuthority)11, (categoryOfAuthority)12, (categoryOfAuthority)13, (categoryOfAuthority)14, (categoryOfAuthority)15, (categoryOfAuthority)16];
@@ -4952,7 +3634,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
         [Browsable(false)]
         public sourceType[] sourceTypeList => [(sourceType)1, (sourceType)2, (sourceType)7, (sourceType)8, (sourceType)9, (sourceType)10, (sourceType)11, (sourceType)12, (sourceType)13, (sourceType)14];
 
-        public void Load(DomainModel.S131.InformationTypes.Authority instance) {
+        public override InformationViewModel<Authority> Load(DomainModel.S131.InformationTypes.Authority instance) {
             categoryOfAuthority = instance.categoryOfAuthority;
             textContent = new();
             if (instance.textContent != null) {
@@ -4981,6 +3663,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
             source = instance.source;
             sourceType = instance.sourceType;
             reportedDate = instance.reportedDate;
+            return this;
         }
 
         public override string Serialize() {
@@ -5031,7 +3714,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
     [CategoryOrder("AvailablePortServices", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class AvailablePortServicesViewModel : ViewModelBase {
+    public partial class AvailablePortServicesViewModel : InformationViewModel<AvailablePortServices> {
         [DomainModel.EnumerationAttribute(nameof(firefightingServiceList))]
         [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("AvailablePortServices")]
@@ -5162,9 +3845,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
             }
         }
 
-        public class AvailablePortServicesRefIdViewModel : InformationRefIdViewModel {
-            public override string[] AssociationTypes => ["AvailablePortServices"];
-        }
+        public override informationBindingDefinition[] informationBindingDefinitions => AvailablePortServices._informationBindingDefinitions;
 
         [Browsable(false)]
         public transportConnection[] transportConnectionList => CodeList.transportConnections.ToArray();
@@ -5202,7 +3883,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
         [Browsable(false)]
         public sourceType[] sourceTypeList => [(sourceType)1, (sourceType)2, (sourceType)7, (sourceType)8, (sourceType)9, (sourceType)10, (sourceType)11, (sourceType)12, (sourceType)13, (sourceType)14];
 
-        public void Load(DomainModel.S131.InformationTypes.AvailablePortServices instance) {
+        public override InformationViewModel<AvailablePortServices> Load(DomainModel.S131.InformationTypes.AvailablePortServices instance) {
             firefightingService.Clear();
             if (instance.firefightingService is not null)
                 foreach (var e in instance.firefightingService)
@@ -5273,6 +3954,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
             source = instance.source;
             sourceType = instance.sourceType;
             reportedDate = instance.reportedDate;
+            return this;
         }
 
         public override string Serialize() {
@@ -5381,7 +4063,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
     [CategoryOrder("ContactDetails", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class ContactDetailsViewModel : ViewModelBase {
+    public partial class ContactDetailsViewModel : InformationViewModel<ContactDetails> {
         private String _callName = string.Empty;
         [Category("ContactDetails")]
         public String callName {
@@ -5525,9 +4207,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
             }
         }
 
-        public class ContactDetailsRefIdViewModel : InformationRefIdViewModel {
-            public override string[] AssociationTypes => ["ContactDetails"];
-        }
+        public override informationBindingDefinition[] informationBindingDefinitions => ContactDetails._informationBindingDefinitions;
 
         [Browsable(false)]
         public categoryOfCommunicationPreference[] categoryOfCommunicationPreferenceList => [(categoryOfCommunicationPreference)1, (categoryOfCommunicationPreference)2, (categoryOfCommunicationPreference)3, (categoryOfCommunicationPreference)4];
@@ -5535,7 +4215,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
         [Browsable(false)]
         public sourceType[] sourceTypeList => [(sourceType)1, (sourceType)2, (sourceType)7, (sourceType)8, (sourceType)9, (sourceType)10, (sourceType)11, (sourceType)12, (sourceType)13, (sourceType)14];
 
-        public void Load(DomainModel.S131.InformationTypes.ContactDetails instance) {
+        public override InformationViewModel<ContactDetails> Load(DomainModel.S131.InformationTypes.ContactDetails instance) {
             callName = instance.callName;
             callSign = instance.callSign;
             categoryOfCommunicationPreference = instance.categoryOfCommunicationPreference;
@@ -5590,6 +4270,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
             source = instance.source;
             sourceType = instance.sourceType;
             reportedDate = instance.reportedDate;
+            return this;
         }
 
         public override string Serialize() {
@@ -5681,7 +4362,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
     [CategoryOrder("Entrance", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class EntranceViewModel : ViewModelBase {
+    public partial class EntranceViewModel : InformationViewModel<Entrance> {
         private String _entranceDescription = string.Empty;
         [Category("Entrance")]
         public String entranceDescription {
@@ -5799,14 +4480,12 @@ namespace S100Framework.WPF.ViewModel.S131 {
             }
         }
 
-        public class EntranceRefIdViewModel : InformationRefIdViewModel {
-            public override string[] AssociationTypes => ["Entrance"];
-        }
+        public override informationBindingDefinition[] informationBindingDefinitions => Entrance._informationBindingDefinitions;
 
         [Browsable(false)]
         public sourceType[] sourceTypeList => [(sourceType)1, (sourceType)2, (sourceType)7, (sourceType)8, (sourceType)9, (sourceType)10, (sourceType)11, (sourceType)12, (sourceType)13, (sourceType)14];
 
-        public void Load(DomainModel.S131.InformationTypes.Entrance instance) {
+        public override InformationViewModel<Entrance> Load(DomainModel.S131.InformationTypes.Entrance instance) {
             entranceDescription = instance.entranceDescription;
             associatedFeatureName.Clear();
             if (instance.associatedFeatureName is not null)
@@ -5859,6 +4538,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
             source = instance.source;
             sourceType = instance.sourceType;
             reportedDate = instance.reportedDate;
+            return this;
         }
 
         public override string Serialize() {
@@ -5946,7 +4626,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
     [CategoryOrder("NauticalInformation", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class NauticalInformationViewModel : ViewModelBase {
+    public partial class NauticalInformationViewModel : InformationViewModel<NauticalInformation> {
         private categoryOfAuthority? _categoryOfAuthority = default;
         [DomainModel.EnumerationAttribute(nameof(categoryOfAuthorityList))]
         [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
@@ -6027,9 +4707,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
             }
         }
 
-        public class NauticalInformationRefIdViewModel : InformationRefIdViewModel {
-            public override string[] AssociationTypes => ["NauticalInformation"];
-        }
+        public override informationBindingDefinition[] informationBindingDefinitions => NauticalInformation._informationBindingDefinitions;
 
         [Browsable(false)]
         public categoryOfAuthority[] categoryOfAuthorityList => [(categoryOfAuthority)2, (categoryOfAuthority)3, (categoryOfAuthority)4, (categoryOfAuthority)5, (categoryOfAuthority)6, (categoryOfAuthority)7, (categoryOfAuthority)8, (categoryOfAuthority)9, (categoryOfAuthority)10, (categoryOfAuthority)11, (categoryOfAuthority)12, (categoryOfAuthority)13, (categoryOfAuthority)14, (categoryOfAuthority)15, (categoryOfAuthority)16];
@@ -6037,7 +4715,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
         [Browsable(false)]
         public sourceType[] sourceTypeList => [(sourceType)1, (sourceType)2, (sourceType)7, (sourceType)8, (sourceType)9, (sourceType)10, (sourceType)11, (sourceType)12, (sourceType)13, (sourceType)14];
 
-        public void Load(DomainModel.S131.InformationTypes.NauticalInformation instance) {
+        public override InformationViewModel<NauticalInformation> Load(DomainModel.S131.InformationTypes.NauticalInformation instance) {
             categoryOfAuthority = instance.categoryOfAuthority;
             rxNCode.Clear();
             if (instance.rxNCode is not null)
@@ -6068,6 +4746,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
             source = instance.source;
             sourceType = instance.sourceType;
             reportedDate = instance.reportedDate;
+            return this;
         }
 
         public override string Serialize() {
@@ -6126,7 +4805,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
     [CategoryOrder("NonStandardWorkingDay", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class NonStandardWorkingDayViewModel : ViewModelBase {
+    public partial class NonStandardWorkingDayViewModel : InformationViewModel<NonStandardWorkingDay> {
         [Category("NonStandardWorkingDay")]
         public ObservableCollection<DateOnly> dateFixed { get; set; } = new();
 
@@ -6196,14 +4875,12 @@ namespace S100Framework.WPF.ViewModel.S131 {
             }
         }
 
-        public class NonStandardWorkingDayRefIdViewModel : InformationRefIdViewModel {
-            public override string[] AssociationTypes => ["NonStandardWorkingDay"];
-        }
+        public override informationBindingDefinition[] informationBindingDefinitions => NonStandardWorkingDay._informationBindingDefinitions;
 
         [Browsable(false)]
         public sourceType[] sourceTypeList => [(sourceType)1, (sourceType)2, (sourceType)7, (sourceType)8, (sourceType)9, (sourceType)10, (sourceType)11, (sourceType)12, (sourceType)13, (sourceType)14];
 
-        public void Load(DomainModel.S131.InformationTypes.NonStandardWorkingDay instance) {
+        public override InformationViewModel<NonStandardWorkingDay> Load(DomainModel.S131.InformationTypes.NonStandardWorkingDay instance) {
             dateFixed.Clear();
             if (instance.dateFixed is not null)
                 foreach (var e in instance.dateFixed)
@@ -6237,6 +4914,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
             source = instance.source;
             sourceType = instance.sourceType;
             reportedDate = instance.reportedDate;
+            return this;
         }
 
         public override string Serialize() {
@@ -6298,7 +4976,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
     [CategoryOrder("Recommendations", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class RecommendationsViewModel : ViewModelBase {
+    public partial class RecommendationsViewModel : InformationViewModel<Recommendations> {
         private categoryOfAuthority? _categoryOfAuthority = default;
         [DomainModel.EnumerationAttribute(nameof(categoryOfAuthorityList))]
         [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
@@ -6379,9 +5057,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
             }
         }
 
-        public class RecommendationsRefIdViewModel : InformationRefIdViewModel {
-            public override string[] AssociationTypes => ["Recommendations"];
-        }
+        public override informationBindingDefinition[] informationBindingDefinitions => Recommendations._informationBindingDefinitions;
 
         [Browsable(false)]
         public categoryOfAuthority[] categoryOfAuthorityList => [(categoryOfAuthority)2, (categoryOfAuthority)3, (categoryOfAuthority)4, (categoryOfAuthority)5, (categoryOfAuthority)6, (categoryOfAuthority)7, (categoryOfAuthority)8, (categoryOfAuthority)9, (categoryOfAuthority)10, (categoryOfAuthority)11, (categoryOfAuthority)12, (categoryOfAuthority)13, (categoryOfAuthority)14, (categoryOfAuthority)15, (categoryOfAuthority)16];
@@ -6389,7 +5065,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
         [Browsable(false)]
         public sourceType[] sourceTypeList => [(sourceType)1, (sourceType)2, (sourceType)7, (sourceType)8, (sourceType)9, (sourceType)10, (sourceType)11, (sourceType)12, (sourceType)13, (sourceType)14];
 
-        public void Load(DomainModel.S131.InformationTypes.Recommendations instance) {
+        public override InformationViewModel<Recommendations> Load(DomainModel.S131.InformationTypes.Recommendations instance) {
             categoryOfAuthority = instance.categoryOfAuthority;
             rxNCode.Clear();
             if (instance.rxNCode is not null)
@@ -6420,6 +5096,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
             source = instance.source;
             sourceType = instance.sourceType;
             reportedDate = instance.reportedDate;
+            return this;
         }
 
         public override string Serialize() {
@@ -6478,7 +5155,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
     [CategoryOrder("Regulations", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class RegulationsViewModel : ViewModelBase {
+    public partial class RegulationsViewModel : InformationViewModel<Regulations> {
         private categoryOfAuthority? _categoryOfAuthority = default;
         [DomainModel.EnumerationAttribute(nameof(categoryOfAuthorityList))]
         [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
@@ -6559,9 +5236,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
             }
         }
 
-        public class RegulationsRefIdViewModel : InformationRefIdViewModel {
-            public override string[] AssociationTypes => ["Regulations"];
-        }
+        public override informationBindingDefinition[] informationBindingDefinitions => Regulations._informationBindingDefinitions;
 
         [Browsable(false)]
         public categoryOfAuthority[] categoryOfAuthorityList => [(categoryOfAuthority)2, (categoryOfAuthority)3, (categoryOfAuthority)4, (categoryOfAuthority)5, (categoryOfAuthority)6, (categoryOfAuthority)7, (categoryOfAuthority)8, (categoryOfAuthority)9, (categoryOfAuthority)10, (categoryOfAuthority)11, (categoryOfAuthority)12, (categoryOfAuthority)13, (categoryOfAuthority)14, (categoryOfAuthority)15, (categoryOfAuthority)16];
@@ -6569,7 +5244,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
         [Browsable(false)]
         public sourceType[] sourceTypeList => [(sourceType)1, (sourceType)2, (sourceType)7, (sourceType)8, (sourceType)9, (sourceType)10, (sourceType)11, (sourceType)12, (sourceType)13, (sourceType)14];
 
-        public void Load(DomainModel.S131.InformationTypes.Regulations instance) {
+        public override InformationViewModel<Regulations> Load(DomainModel.S131.InformationTypes.Regulations instance) {
             categoryOfAuthority = instance.categoryOfAuthority;
             rxNCode.Clear();
             if (instance.rxNCode is not null)
@@ -6600,6 +5275,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
             source = instance.source;
             sourceType = instance.sourceType;
             reportedDate = instance.reportedDate;
+            return this;
         }
 
         public override string Serialize() {
@@ -6658,7 +5334,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
     [CategoryOrder("Restrictions", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class RestrictionsViewModel : ViewModelBase {
+    public partial class RestrictionsViewModel : InformationViewModel<Restrictions> {
         private categoryOfAuthority? _categoryOfAuthority = default;
         [DomainModel.EnumerationAttribute(nameof(categoryOfAuthorityList))]
         [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
@@ -6739,9 +5415,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
             }
         }
 
-        public class RestrictionsRefIdViewModel : InformationRefIdViewModel {
-            public override string[] AssociationTypes => ["Restrictions"];
-        }
+        public override informationBindingDefinition[] informationBindingDefinitions => Restrictions._informationBindingDefinitions;
 
         [Browsable(false)]
         public categoryOfAuthority[] categoryOfAuthorityList => [(categoryOfAuthority)2, (categoryOfAuthority)3, (categoryOfAuthority)4, (categoryOfAuthority)5, (categoryOfAuthority)6, (categoryOfAuthority)7, (categoryOfAuthority)8, (categoryOfAuthority)9, (categoryOfAuthority)10, (categoryOfAuthority)11, (categoryOfAuthority)12, (categoryOfAuthority)13, (categoryOfAuthority)14, (categoryOfAuthority)15, (categoryOfAuthority)16];
@@ -6749,7 +5423,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
         [Browsable(false)]
         public sourceType[] sourceTypeList => [(sourceType)1, (sourceType)2, (sourceType)7, (sourceType)8, (sourceType)9, (sourceType)10, (sourceType)11, (sourceType)12, (sourceType)13, (sourceType)14];
 
-        public void Load(DomainModel.S131.InformationTypes.Restrictions instance) {
+        public override InformationViewModel<Restrictions> Load(DomainModel.S131.InformationTypes.Restrictions instance) {
             categoryOfAuthority = instance.categoryOfAuthority;
             rxNCode.Clear();
             if (instance.rxNCode is not null)
@@ -6780,6 +5454,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
             source = instance.source;
             sourceType = instance.sourceType;
             reportedDate = instance.reportedDate;
+            return this;
         }
 
         public override string Serialize() {
@@ -6838,7 +5513,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
     [CategoryOrder("ServiceHours", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class ServiceHoursViewModel : ViewModelBase {
+    public partial class ServiceHoursViewModel : InformationViewModel<ServiceHours> {
         [Category("ServiceHours")]
         public ObservableCollection<scheduleByDayOfWeek> scheduleByDayOfWeek { get; set; } = new();
 
@@ -6905,14 +5580,12 @@ namespace S100Framework.WPF.ViewModel.S131 {
             }
         }
 
-        public class ServiceHoursRefIdViewModel : InformationRefIdViewModel {
-            public override string[] AssociationTypes => ["ServiceHours"];
-        }
+        public override informationBindingDefinition[] informationBindingDefinitions => ServiceHours._informationBindingDefinitions;
 
         [Browsable(false)]
         public sourceType[] sourceTypeList => [(sourceType)1, (sourceType)2, (sourceType)7, (sourceType)8, (sourceType)9, (sourceType)10, (sourceType)11, (sourceType)12, (sourceType)13, (sourceType)14];
 
-        public void Load(DomainModel.S131.InformationTypes.ServiceHours instance) {
+        public override InformationViewModel<ServiceHours> Load(DomainModel.S131.InformationTypes.ServiceHours instance) {
             scheduleByDayOfWeek.Clear();
             if (instance.scheduleByDayOfWeek is not null)
                 foreach (var e in instance.scheduleByDayOfWeek)
@@ -6942,6 +5615,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
             source = instance.source;
             sourceType = instance.sourceType;
             reportedDate = instance.reportedDate;
+            return this;
         }
 
         public override string Serialize() {
@@ -6998,7 +5672,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
     [CategoryOrder("SpatialQuality", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class SpatialQualityViewModel : ViewModelBase {
+    public partial class SpatialQualityViewModel : InformationViewModel<SpatialQuality> {
         private qualityOfHorizontalMeasurement? _qualityOfHorizontalMeasurement = default;
         [DomainModel.EnumerationAttribute(nameof(qualityOfHorizontalMeasurementList))]
         [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
@@ -7015,20 +5689,18 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
         [Category("SpatialQuality")]
         public ObservableCollection<spatialAccuracy> spatialAccuracy { get; set; } = new();
-
-        public class SpatialQualityRefIdViewModel : InformationRefIdViewModel {
-            public override string[] AssociationTypes => ["SpatialQuality"];
-        }
+        public override informationBindingDefinition[] informationBindingDefinitions => SpatialQuality._informationBindingDefinitions;
 
         [Browsable(false)]
         public qualityOfHorizontalMeasurement[] qualityOfHorizontalMeasurementList => [(qualityOfHorizontalMeasurement)1, (qualityOfHorizontalMeasurement)2, (qualityOfHorizontalMeasurement)3, (qualityOfHorizontalMeasurement)4, (qualityOfHorizontalMeasurement)5, (qualityOfHorizontalMeasurement)6, (qualityOfHorizontalMeasurement)7, (qualityOfHorizontalMeasurement)8, (qualityOfHorizontalMeasurement)9, (qualityOfHorizontalMeasurement)10, (qualityOfHorizontalMeasurement)11];
 
-        public void Load(DomainModel.S131.InformationTypes.SpatialQuality instance) {
+        public override InformationViewModel<SpatialQuality> Load(DomainModel.S131.InformationTypes.SpatialQuality instance) {
             qualityOfHorizontalMeasurement = instance.qualityOfHorizontalMeasurement;
             spatialAccuracy.Clear();
             if (instance.spatialAccuracy is not null)
                 foreach (var e in instance.spatialAccuracy)
                     spatialAccuracy.Add(e);
+            return this;
         }
 
         public override string Serialize() {
@@ -7059,7 +5731,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
     [CategoryOrder("AnchorBerth", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class AnchorBerthViewModel : ViewModelBase {
+    public partial class AnchorBerthViewModel : FeatureViewModel<AnchorBerth> {
         private String _locationMRN = string.Empty;
         [Category("FeatureType")]
         public String locationMRN {
@@ -7149,15 +5821,13 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
         [Category("FeatureType")]
         public ObservableCollection<textContent> textContent { get; set; } = new();
-
-        public class AnchorBerthRefIdViewModel : FeatureRefIdViewModel {
-            public override string[] AssociationTypes => ["AnchorBerth"];
-        }
+        public override informationBindingDefinition[] informationBindingDefinitions => AnchorBerth._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => AnchorBerth._featureBindingDefinitions;
 
         [Browsable(false)]
         public sourceType[] sourceTypeList => [(sourceType)1, (sourceType)2, (sourceType)7, (sourceType)8, (sourceType)9, (sourceType)10, (sourceType)11, (sourceType)12, (sourceType)13, (sourceType)14];
 
-        public void Load(DomainModel.S131.FeatureTypes.AnchorBerth instance) {
+        public override FeatureViewModel<AnchorBerth> Load(DomainModel.S131.FeatureTypes.AnchorBerth instance) {
             locationMRN = instance.locationMRN;
             globalLocationNumber = instance.globalLocationNumber;
             featureName.Clear();
@@ -7189,6 +5859,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
             if (instance.textContent is not null)
                 foreach (var e in instance.textContent)
                     textContent.Add(e);
+            return this;
         }
 
         public override string Serialize() {
@@ -7249,7 +5920,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
     [CategoryOrder("AnchorageArea", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class AnchorageAreaViewModel : ViewModelBase {
+    public partial class AnchorageAreaViewModel : FeatureViewModel<AnchorageArea> {
         private depthsDescriptionViewModel? _depthsDescription;
         [Category("AnchorageArea")]
         [Xceed.Wpf.Toolkit.PropertyGrid.Attributes.ExpandableObject]
@@ -7391,10 +6062,8 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
         [Category("FeatureType")]
         public ObservableCollection<textContent> textContent { get; set; } = new();
-
-        public class AnchorageAreaRefIdViewModel : FeatureRefIdViewModel {
-            public override string[] AssociationTypes => ["AnchorageArea"];
-        }
+        public override informationBindingDefinition[] informationBindingDefinitions => AnchorageArea._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => AnchorageArea._featureBindingDefinitions;
 
         [Browsable(false)]
         public iSPSLevel[] iSPSLevelList => [(iSPSLevel)1, (iSPSLevel)2, (iSPSLevel)3];
@@ -7402,7 +6071,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
         [Browsable(false)]
         public sourceType[] sourceTypeList => [(sourceType)1, (sourceType)2, (sourceType)7, (sourceType)8, (sourceType)9, (sourceType)10, (sourceType)11, (sourceType)12, (sourceType)13, (sourceType)14];
 
-        public void Load(DomainModel.S131.FeatureTypes.AnchorageArea instance) {
+        public override FeatureViewModel<AnchorageArea> Load(DomainModel.S131.FeatureTypes.AnchorageArea instance) {
             depthsDescription = new();
             if (instance.depthsDescription != null) {
                 depthsDescription = new();
@@ -7448,6 +6117,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
             if (instance.textContent is not null)
                 foreach (var e in instance.textContent)
                     textContent.Add(e);
+            return this;
         }
 
         public override string Serialize() {
@@ -7516,7 +6186,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
     [CategoryOrder("Berth", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class BerthViewModel : ViewModelBase {
+    public partial class BerthViewModel : FeatureViewModel<Berth> {
         private Decimal? _availableBerthingLength = default;
         [Category("Berth")]
         public Decimal? availableBerthingLength {
@@ -7787,10 +6457,8 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
         [Category("FeatureType")]
         public ObservableCollection<textContent> textContent { get; set; } = new();
-
-        public class BerthRefIdViewModel : FeatureRefIdViewModel {
-            public override string[] AssociationTypes => ["Berth"];
-        }
+        public override informationBindingDefinition[] informationBindingDefinitions => Berth._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => Berth._featureBindingDefinitions;
 
         [Browsable(false)]
         public categoryOfBerthLocation[] categoryOfBerthLocationList => [(categoryOfBerthLocation)1, (categoryOfBerthLocation)2, (categoryOfBerthLocation)3, (categoryOfBerthLocation)4];
@@ -7801,7 +6469,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
         [Browsable(false)]
         public sourceType[] sourceTypeList => [(sourceType)1, (sourceType)2, (sourceType)7, (sourceType)8, (sourceType)9, (sourceType)10, (sourceType)11, (sourceType)12, (sourceType)13, (sourceType)14];
 
-        public void Load(DomainModel.S131.FeatureTypes.Berth instance) {
+        public override FeatureViewModel<Berth> Load(DomainModel.S131.FeatureTypes.Berth instance) {
             availableBerthingLength = instance.availableBerthingLength;
             bollardDescription = instance.bollardDescription;
             bollardPull = instance.bollardPull;
@@ -7859,6 +6527,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
             if (instance.textContent is not null)
                 foreach (var e in instance.textContent)
                     textContent.Add(e);
+            return this;
         }
 
         public override string Serialize() {
@@ -7962,7 +6631,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
     [CategoryOrder("BerthPosition", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class BerthPositionViewModel : ViewModelBase {
+    public partial class BerthPositionViewModel : FeatureViewModel<BerthPosition> {
         private Decimal? _availableBerthingLength = default;
         [Category("BerthPosition")]
         public Decimal? availableBerthingLength {
@@ -8133,15 +6802,13 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
         [Category("FeatureType")]
         public ObservableCollection<textContent> textContent { get; set; } = new();
-
-        public class BerthPositionRefIdViewModel : FeatureRefIdViewModel {
-            public override string[] AssociationTypes => ["BerthPosition"];
-        }
+        public override informationBindingDefinition[] informationBindingDefinitions => BerthPosition._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => BerthPosition._featureBindingDefinitions;
 
         [Browsable(false)]
         public sourceType[] sourceTypeList => [(sourceType)1, (sourceType)2, (sourceType)7, (sourceType)8, (sourceType)9, (sourceType)10, (sourceType)11, (sourceType)12, (sourceType)13, (sourceType)14];
 
-        public void Load(DomainModel.S131.FeatureTypes.BerthPosition instance) {
+        public override FeatureViewModel<BerthPosition> Load(DomainModel.S131.FeatureTypes.BerthPosition instance) {
             availableBerthingLength = instance.availableBerthingLength;
             bollardDescription = instance.bollardDescription;
             bollardPull = instance.bollardPull;
@@ -8191,6 +6858,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
             if (instance.textContent is not null)
                 foreach (var e in instance.textContent)
                     textContent.Add(e);
+            return this;
         }
 
         public override string Serialize() {
@@ -8278,7 +6946,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
     [CategoryOrder("DockArea", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class DockAreaViewModel : ViewModelBase {
+    public partial class DockAreaViewModel : FeatureViewModel<DockArea> {
         private depthsDescriptionViewModel? _depthsDescription;
         [Category("DockArea")]
         [Xceed.Wpf.Toolkit.PropertyGrid.Attributes.ExpandableObject]
@@ -8420,10 +7088,8 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
         [Category("FeatureType")]
         public ObservableCollection<textContent> textContent { get; set; } = new();
-
-        public class DockAreaRefIdViewModel : FeatureRefIdViewModel {
-            public override string[] AssociationTypes => ["DockArea"];
-        }
+        public override informationBindingDefinition[] informationBindingDefinitions => DockArea._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => DockArea._featureBindingDefinitions;
 
         [Browsable(false)]
         public iSPSLevel[] iSPSLevelList => [(iSPSLevel)1, (iSPSLevel)2, (iSPSLevel)3];
@@ -8431,7 +7097,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
         [Browsable(false)]
         public sourceType[] sourceTypeList => [(sourceType)1, (sourceType)2, (sourceType)7, (sourceType)8, (sourceType)9, (sourceType)10, (sourceType)11, (sourceType)12, (sourceType)13, (sourceType)14];
 
-        public void Load(DomainModel.S131.FeatureTypes.DockArea instance) {
+        public override FeatureViewModel<DockArea> Load(DomainModel.S131.FeatureTypes.DockArea instance) {
             depthsDescription = new();
             if (instance.depthsDescription != null) {
                 depthsDescription = new();
@@ -8477,6 +7143,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
             if (instance.textContent is not null)
                 foreach (var e in instance.textContent)
                     textContent.Add(e);
+            return this;
         }
 
         public override string Serialize() {
@@ -8545,7 +7212,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
     [CategoryOrder("DryDock", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class DryDockViewModel : ViewModelBase {
+    public partial class DryDockViewModel : FeatureViewModel<DryDock> {
         private Decimal? _sillDepth = default;
         [Category("DryDock")]
         public Decimal? sillDepth {
@@ -8659,15 +7326,13 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
         [Category("FeatureType")]
         public ObservableCollection<textContent> textContent { get; set; } = new();
-
-        public class DryDockRefIdViewModel : FeatureRefIdViewModel {
-            public override string[] AssociationTypes => ["DryDock"];
-        }
+        public override informationBindingDefinition[] informationBindingDefinitions => DryDock._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => DryDock._featureBindingDefinitions;
 
         [Browsable(false)]
         public sourceType[] sourceTypeList => [(sourceType)1, (sourceType)2, (sourceType)7, (sourceType)8, (sourceType)9, (sourceType)10, (sourceType)11, (sourceType)12, (sourceType)13, (sourceType)14];
 
-        public void Load(DomainModel.S131.FeatureTypes.DryDock instance) {
+        public override FeatureViewModel<DryDock> Load(DomainModel.S131.FeatureTypes.DryDock instance) {
             sillDepth = instance.sillDepth;
             verticalClearanceValue = instance.verticalClearanceValue;
             locationMRN = instance.locationMRN;
@@ -8701,6 +7366,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
             if (instance.textContent is not null)
                 foreach (var e in instance.textContent)
                     textContent.Add(e);
+            return this;
         }
 
         public override string Serialize() {
@@ -8765,7 +7431,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
     [CategoryOrder("DumpingGround", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class DumpingGroundViewModel : ViewModelBase {
+    public partial class DumpingGroundViewModel : FeatureViewModel<DumpingGround> {
         private depthsDescriptionViewModel? _depthsDescription;
         [Category("DumpingGround")]
         [Xceed.Wpf.Toolkit.PropertyGrid.Attributes.ExpandableObject]
@@ -8907,10 +7573,8 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
         [Category("FeatureType")]
         public ObservableCollection<textContent> textContent { get; set; } = new();
-
-        public class DumpingGroundRefIdViewModel : FeatureRefIdViewModel {
-            public override string[] AssociationTypes => ["DumpingGround"];
-        }
+        public override informationBindingDefinition[] informationBindingDefinitions => DumpingGround._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => DumpingGround._featureBindingDefinitions;
 
         [Browsable(false)]
         public iSPSLevel[] iSPSLevelList => [(iSPSLevel)1, (iSPSLevel)2, (iSPSLevel)3];
@@ -8918,7 +7582,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
         [Browsable(false)]
         public sourceType[] sourceTypeList => [(sourceType)1, (sourceType)2, (sourceType)7, (sourceType)8, (sourceType)9, (sourceType)10, (sourceType)11, (sourceType)12, (sourceType)13, (sourceType)14];
 
-        public void Load(DomainModel.S131.FeatureTypes.DumpingGround instance) {
+        public override FeatureViewModel<DumpingGround> Load(DomainModel.S131.FeatureTypes.DumpingGround instance) {
             depthsDescription = new();
             if (instance.depthsDescription != null) {
                 depthsDescription = new();
@@ -8964,6 +7628,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
             if (instance.textContent is not null)
                 foreach (var e in instance.textContent)
                     textContent.Add(e);
+            return this;
         }
 
         public override string Serialize() {
@@ -9032,7 +7697,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
     [CategoryOrder("FloatingDock", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class FloatingDockViewModel : ViewModelBase {
+    public partial class FloatingDockViewModel : FeatureViewModel<FloatingDock> {
         private Decimal? _sillDepth = default;
         [Category("FloatingDock")]
         public Decimal? sillDepth {
@@ -9146,15 +7811,13 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
         [Category("FeatureType")]
         public ObservableCollection<textContent> textContent { get; set; } = new();
-
-        public class FloatingDockRefIdViewModel : FeatureRefIdViewModel {
-            public override string[] AssociationTypes => ["FloatingDock"];
-        }
+        public override informationBindingDefinition[] informationBindingDefinitions => FloatingDock._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => FloatingDock._featureBindingDefinitions;
 
         [Browsable(false)]
         public sourceType[] sourceTypeList => [(sourceType)1, (sourceType)2, (sourceType)7, (sourceType)8, (sourceType)9, (sourceType)10, (sourceType)11, (sourceType)12, (sourceType)13, (sourceType)14];
 
-        public void Load(DomainModel.S131.FeatureTypes.FloatingDock instance) {
+        public override FeatureViewModel<FloatingDock> Load(DomainModel.S131.FeatureTypes.FloatingDock instance) {
             sillDepth = instance.sillDepth;
             verticalClearanceValue = instance.verticalClearanceValue;
             locationMRN = instance.locationMRN;
@@ -9188,6 +7851,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
             if (instance.textContent is not null)
                 foreach (var e in instance.textContent)
                     textContent.Add(e);
+            return this;
         }
 
         public override string Serialize() {
@@ -9252,7 +7916,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
     [CategoryOrder("Gridiron", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class GridironViewModel : ViewModelBase {
+    public partial class GridironViewModel : FeatureViewModel<Gridiron> {
         private Decimal? _sillDepth = default;
         [Category("Gridiron")]
         public Decimal? sillDepth {
@@ -9366,15 +8030,13 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
         [Category("FeatureType")]
         public ObservableCollection<textContent> textContent { get; set; } = new();
-
-        public class GridironRefIdViewModel : FeatureRefIdViewModel {
-            public override string[] AssociationTypes => ["Gridiron"];
-        }
+        public override informationBindingDefinition[] informationBindingDefinitions => Gridiron._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => Gridiron._featureBindingDefinitions;
 
         [Browsable(false)]
         public sourceType[] sourceTypeList => [(sourceType)1, (sourceType)2, (sourceType)7, (sourceType)8, (sourceType)9, (sourceType)10, (sourceType)11, (sourceType)12, (sourceType)13, (sourceType)14];
 
-        public void Load(DomainModel.S131.FeatureTypes.Gridiron instance) {
+        public override FeatureViewModel<Gridiron> Load(DomainModel.S131.FeatureTypes.Gridiron instance) {
             sillDepth = instance.sillDepth;
             verticalClearanceValue = instance.verticalClearanceValue;
             locationMRN = instance.locationMRN;
@@ -9408,6 +8070,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
             if (instance.textContent is not null)
                 foreach (var e in instance.textContent)
                     textContent.Add(e);
+            return this;
         }
 
         public override string Serialize() {
@@ -9472,7 +8135,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
     [CategoryOrder("HarbourAreaAdministrative", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class HarbourAreaAdministrativeViewModel : ViewModelBase {
+    public partial class HarbourAreaAdministrativeViewModel : FeatureViewModel<HarbourAreaAdministrative> {
         private String _uNLocationCode = string.Empty;
         [Category("HarbourAreaAdministrative")]
         public String uNLocationCode {
@@ -9630,10 +8293,8 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
         [Category("FeatureType")]
         public ObservableCollection<textContent> textContent { get; set; } = new();
-
-        public class HarbourAreaAdministrativeRefIdViewModel : FeatureRefIdViewModel {
-            public override string[] AssociationTypes => ["HarbourAreaAdministrative"];
-        }
+        public override informationBindingDefinition[] informationBindingDefinitions => HarbourAreaAdministrative._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => HarbourAreaAdministrative._featureBindingDefinitions;
 
         [Browsable(false)]
         public iSPSLevel[] iSPSLevelList => [(iSPSLevel)1, (iSPSLevel)2, (iSPSLevel)3];
@@ -9644,7 +8305,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
         [Browsable(false)]
         public sourceType[] sourceTypeList => [(sourceType)1, (sourceType)2, (sourceType)7, (sourceType)8, (sourceType)9, (sourceType)10, (sourceType)11, (sourceType)12, (sourceType)13, (sourceType)14];
 
-        public void Load(DomainModel.S131.FeatureTypes.HarbourAreaAdministrative instance) {
+        public override FeatureViewModel<HarbourAreaAdministrative> Load(DomainModel.S131.FeatureTypes.HarbourAreaAdministrative instance) {
             uNLocationCode = instance.uNLocationCode;
             nationality = instance.nationality;
             applicableLoadLineZone = instance.applicableLoadLineZone;
@@ -9690,6 +8351,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
             if (instance.textContent is not null)
                 foreach (var e in instance.textContent)
                     textContent.Add(e);
+            return this;
         }
 
         public override string Serialize() {
@@ -9765,7 +8427,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
     [CategoryOrder("HarbourAreaSection", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class HarbourAreaSectionViewModel : ViewModelBase {
+    public partial class HarbourAreaSectionViewModel : FeatureViewModel<HarbourAreaSection> {
         private categoryOfPortSection? _categoryOfPortSection = default;
         [DomainModel.EnumerationAttribute(nameof(categoryOfPortSectionList))]
         [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
@@ -9901,10 +8563,8 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
         [Category("FeatureType")]
         public ObservableCollection<textContent> textContent { get; set; } = new();
-
-        public class HarbourAreaSectionRefIdViewModel : FeatureRefIdViewModel {
-            public override string[] AssociationTypes => ["HarbourAreaSection"];
-        }
+        public override informationBindingDefinition[] informationBindingDefinitions => HarbourAreaSection._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => HarbourAreaSection._featureBindingDefinitions;
 
         [Browsable(false)]
         public categoryOfPortSection[] categoryOfPortSectionList => [(categoryOfPortSection)1, (categoryOfPortSection)3, (categoryOfPortSection)8, (categoryOfPortSection)9, (categoryOfPortSection)11, (categoryOfPortSection)12];
@@ -9918,7 +8578,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
         [Browsable(false)]
         public sourceType[] sourceTypeList => [(sourceType)1, (sourceType)2, (sourceType)7, (sourceType)8, (sourceType)9, (sourceType)10, (sourceType)11, (sourceType)12, (sourceType)13, (sourceType)14];
 
-        public void Load(DomainModel.S131.FeatureTypes.HarbourAreaSection instance) {
+        public override FeatureViewModel<HarbourAreaSection> Load(DomainModel.S131.FeatureTypes.HarbourAreaSection instance) {
             categoryOfPortSection = instance.categoryOfPortSection;
             categoryOfHarbourFacility.Clear();
             if (instance.categoryOfHarbourFacility is not null)
@@ -9962,6 +8622,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
             if (instance.textContent is not null)
                 foreach (var e in instance.textContent)
                     textContent.Add(e);
+            return this;
         }
 
         public override string Serialize() {
@@ -10033,7 +8694,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
     [CategoryOrder("HarbourBasin", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class HarbourBasinViewModel : ViewModelBase {
+    public partial class HarbourBasinViewModel : FeatureViewModel<HarbourBasin> {
         private depthsDescriptionViewModel? _depthsDescription;
         [Category("HarbourBasin")]
         [Xceed.Wpf.Toolkit.PropertyGrid.Attributes.ExpandableObject]
@@ -10175,10 +8836,8 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
         [Category("FeatureType")]
         public ObservableCollection<textContent> textContent { get; set; } = new();
-
-        public class HarbourBasinRefIdViewModel : FeatureRefIdViewModel {
-            public override string[] AssociationTypes => ["HarbourBasin"];
-        }
+        public override informationBindingDefinition[] informationBindingDefinitions => HarbourBasin._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => HarbourBasin._featureBindingDefinitions;
 
         [Browsable(false)]
         public iSPSLevel[] iSPSLevelList => [(iSPSLevel)1, (iSPSLevel)2, (iSPSLevel)3];
@@ -10186,7 +8845,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
         [Browsable(false)]
         public sourceType[] sourceTypeList => [(sourceType)1, (sourceType)2, (sourceType)7, (sourceType)8, (sourceType)9, (sourceType)10, (sourceType)11, (sourceType)12, (sourceType)13, (sourceType)14];
 
-        public void Load(DomainModel.S131.FeatureTypes.HarbourBasin instance) {
+        public override FeatureViewModel<HarbourBasin> Load(DomainModel.S131.FeatureTypes.HarbourBasin instance) {
             depthsDescription = new();
             if (instance.depthsDescription != null) {
                 depthsDescription = new();
@@ -10232,6 +8891,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
             if (instance.textContent is not null)
                 foreach (var e in instance.textContent)
                     textContent.Add(e);
+            return this;
         }
 
         public override string Serialize() {
@@ -10300,7 +8960,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
     [CategoryOrder("HarbourFacility", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class HarbourFacilityViewModel : ViewModelBase {
+    public partial class HarbourFacilityViewModel : FeatureViewModel<HarbourFacility> {
         [DomainModel.EnumerationAttribute(nameof(categoryOfHarbourFacilityList))]
         [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
         [Category("HarbourFacility")]
@@ -10407,10 +9067,8 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
         [Category("FeatureType")]
         public ObservableCollection<textContent> textContent { get; set; } = new();
-
-        public class HarbourFacilityRefIdViewModel : FeatureRefIdViewModel {
-            public override string[] AssociationTypes => ["HarbourFacility"];
-        }
+        public override informationBindingDefinition[] informationBindingDefinitions => HarbourFacility._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => HarbourFacility._featureBindingDefinitions;
 
         [Browsable(false)]
         public categoryOfHarbourFacility[] categoryOfHarbourFacilityList => [(categoryOfHarbourFacility)12, (categoryOfHarbourFacility)13];
@@ -10418,7 +9076,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
         [Browsable(false)]
         public sourceType[] sourceTypeList => [(sourceType)1, (sourceType)2, (sourceType)7, (sourceType)8, (sourceType)9, (sourceType)10, (sourceType)11, (sourceType)12, (sourceType)13, (sourceType)14];
 
-        public void Load(DomainModel.S131.FeatureTypes.HarbourFacility instance) {
+        public override FeatureViewModel<HarbourFacility> Load(DomainModel.S131.FeatureTypes.HarbourFacility instance) {
             categoryOfHarbourFacility.Clear();
             if (instance.categoryOfHarbourFacility is not null)
                 foreach (var e in instance.categoryOfHarbourFacility)
@@ -10455,6 +9113,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
             if (instance.textContent is not null)
                 foreach (var e in instance.textContent)
                     textContent.Add(e);
+            return this;
         }
 
         public override string Serialize() {
@@ -10522,7 +9181,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
     [CategoryOrder("MooringWarpingFacility", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class MooringWarpingFacilityViewModel : ViewModelBase {
+    public partial class MooringWarpingFacilityViewModel : FeatureViewModel<MooringWarpingFacility> {
         private categoryOfMooringWarpingFacility _categoryOfMooringWarpingFacility;
         [DomainModel.EnumerationAttribute(nameof(categoryOfMooringWarpingFacilityList))]
         [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
@@ -10674,10 +9333,8 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
         [Category("FeatureType")]
         public ObservableCollection<textContent> textContent { get; set; } = new();
-
-        public class MooringWarpingFacilityRefIdViewModel : FeatureRefIdViewModel {
-            public override string[] AssociationTypes => ["MooringWarpingFacility"];
-        }
+        public override informationBindingDefinition[] informationBindingDefinitions => MooringWarpingFacility._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => MooringWarpingFacility._featureBindingDefinitions;
 
         [Browsable(false)]
         public categoryOfMooringWarpingFacility[] categoryOfMooringWarpingFacilityList => [(categoryOfMooringWarpingFacility)1, (categoryOfMooringWarpingFacility)2, (categoryOfMooringWarpingFacility)3, (categoryOfMooringWarpingFacility)4, (categoryOfMooringWarpingFacility)5, (categoryOfMooringWarpingFacility)6, (categoryOfMooringWarpingFacility)7];
@@ -10685,7 +9342,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
         [Browsable(false)]
         public sourceType[] sourceTypeList => [(sourceType)1, (sourceType)2, (sourceType)7, (sourceType)8, (sourceType)9, (sourceType)10, (sourceType)11, (sourceType)12, (sourceType)13, (sourceType)14];
 
-        public void Load(DomainModel.S131.FeatureTypes.MooringWarpingFacility instance) {
+        public override FeatureViewModel<MooringWarpingFacility> Load(DomainModel.S131.FeatureTypes.MooringWarpingFacility instance) {
             categoryOfMooringWarpingFacility = instance.categoryOfMooringWarpingFacility;
             iDCode = instance.iDCode;
             bollardDescription = instance.bollardDescription;
@@ -10722,6 +9379,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
             if (instance.textContent is not null)
                 foreach (var e in instance.textContent)
                     textContent.Add(e);
+            return this;
         }
 
         public override string Serialize() {
@@ -10792,7 +9450,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
     [CategoryOrder("OuterLimit", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class OuterLimitViewModel : ViewModelBase {
+    public partial class OuterLimitViewModel : FeatureViewModel<OuterLimit> {
         private limitsDescriptionViewModel? _limitsDescription;
         [Category("OuterLimit")]
         [Xceed.Wpf.Toolkit.PropertyGrid.Attributes.ExpandableObject]
@@ -10910,15 +9568,13 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
         [Category("FeatureType")]
         public ObservableCollection<textContent> textContent { get; set; } = new();
-
-        public class OuterLimitRefIdViewModel : FeatureRefIdViewModel {
-            public override string[] AssociationTypes => ["OuterLimit"];
-        }
+        public override informationBindingDefinition[] informationBindingDefinitions => OuterLimit._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => OuterLimit._featureBindingDefinitions;
 
         [Browsable(false)]
         public sourceType[] sourceTypeList => [(sourceType)1, (sourceType)2, (sourceType)7, (sourceType)8, (sourceType)9, (sourceType)10, (sourceType)11, (sourceType)12, (sourceType)13, (sourceType)14];
 
-        public void Load(DomainModel.S131.FeatureTypes.OuterLimit instance) {
+        public override FeatureViewModel<OuterLimit> Load(DomainModel.S131.FeatureTypes.OuterLimit instance) {
             limitsDescription = new();
             if (instance.limitsDescription != null) {
                 limitsDescription = new();
@@ -10976,6 +9632,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
             if (instance.textContent is not null)
                 foreach (var e in instance.textContent)
                     textContent.Add(e);
+            return this;
         }
 
         public override string Serialize() {
@@ -11063,7 +9720,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
     [CategoryOrder("PilotBoardingPlace", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class PilotBoardingPlaceViewModel : ViewModelBase {
+    public partial class PilotBoardingPlaceViewModel : FeatureViewModel<PilotBoardingPlace> {
         private depthsDescriptionViewModel? _depthsDescription;
         [Category("PilotBoardingPlace")]
         [Xceed.Wpf.Toolkit.PropertyGrid.Attributes.ExpandableObject]
@@ -11205,10 +9862,8 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
         [Category("FeatureType")]
         public ObservableCollection<textContent> textContent { get; set; } = new();
-
-        public class PilotBoardingPlaceRefIdViewModel : FeatureRefIdViewModel {
-            public override string[] AssociationTypes => ["PilotBoardingPlace"];
-        }
+        public override informationBindingDefinition[] informationBindingDefinitions => PilotBoardingPlace._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => PilotBoardingPlace._featureBindingDefinitions;
 
         [Browsable(false)]
         public iSPSLevel[] iSPSLevelList => [(iSPSLevel)1, (iSPSLevel)2, (iSPSLevel)3];
@@ -11216,7 +9871,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
         [Browsable(false)]
         public sourceType[] sourceTypeList => [(sourceType)1, (sourceType)2, (sourceType)7, (sourceType)8, (sourceType)9, (sourceType)10, (sourceType)11, (sourceType)12, (sourceType)13, (sourceType)14];
 
-        public void Load(DomainModel.S131.FeatureTypes.PilotBoardingPlace instance) {
+        public override FeatureViewModel<PilotBoardingPlace> Load(DomainModel.S131.FeatureTypes.PilotBoardingPlace instance) {
             depthsDescription = new();
             if (instance.depthsDescription != null) {
                 depthsDescription = new();
@@ -11262,6 +9917,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
             if (instance.textContent is not null)
                 foreach (var e in instance.textContent)
                     textContent.Add(e);
+            return this;
         }
 
         public override string Serialize() {
@@ -11330,7 +9986,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
     [CategoryOrder("SeaplaneLandingArea", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class SeaplaneLandingAreaViewModel : ViewModelBase {
+    public partial class SeaplaneLandingAreaViewModel : FeatureViewModel<SeaplaneLandingArea> {
         private depthsDescriptionViewModel? _depthsDescription;
         [Category("SeaplaneLandingArea")]
         [Xceed.Wpf.Toolkit.PropertyGrid.Attributes.ExpandableObject]
@@ -11472,10 +10128,8 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
         [Category("FeatureType")]
         public ObservableCollection<textContent> textContent { get; set; } = new();
-
-        public class SeaplaneLandingAreaRefIdViewModel : FeatureRefIdViewModel {
-            public override string[] AssociationTypes => ["SeaplaneLandingArea"];
-        }
+        public override informationBindingDefinition[] informationBindingDefinitions => SeaplaneLandingArea._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => SeaplaneLandingArea._featureBindingDefinitions;
 
         [Browsable(false)]
         public iSPSLevel[] iSPSLevelList => [(iSPSLevel)1, (iSPSLevel)2, (iSPSLevel)3];
@@ -11483,7 +10137,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
         [Browsable(false)]
         public sourceType[] sourceTypeList => [(sourceType)1, (sourceType)2, (sourceType)7, (sourceType)8, (sourceType)9, (sourceType)10, (sourceType)11, (sourceType)12, (sourceType)13, (sourceType)14];
 
-        public void Load(DomainModel.S131.FeatureTypes.SeaplaneLandingArea instance) {
+        public override FeatureViewModel<SeaplaneLandingArea> Load(DomainModel.S131.FeatureTypes.SeaplaneLandingArea instance) {
             depthsDescription = new();
             if (instance.depthsDescription != null) {
                 depthsDescription = new();
@@ -11529,6 +10183,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
             if (instance.textContent is not null)
                 foreach (var e in instance.textContent)
                     textContent.Add(e);
+            return this;
         }
 
         public override string Serialize() {
@@ -11597,7 +10252,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
     [CategoryOrder("Terminal", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class TerminalViewModel : ViewModelBase {
+    public partial class TerminalViewModel : FeatureViewModel<Terminal> {
         private String _portFacilityNumber = string.Empty;
         [Category("Terminal")]
         public String portFacilityNumber {
@@ -11759,10 +10414,8 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
         [Category("FeatureType")]
         public ObservableCollection<textContent> textContent { get; set; } = new();
-
-        public class TerminalRefIdViewModel : FeatureRefIdViewModel {
-            public override string[] AssociationTypes => ["Terminal"];
-        }
+        public override informationBindingDefinition[] informationBindingDefinitions => Terminal._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => Terminal._featureBindingDefinitions;
 
         [Browsable(false)]
         public categoryOfHarbourFacility[] categoryOfHarbourFacilityList => [(categoryOfHarbourFacility)1, (categoryOfHarbourFacility)3, (categoryOfHarbourFacility)5, (categoryOfHarbourFacility)7, (categoryOfHarbourFacility)8, (categoryOfHarbourFacility)10, (categoryOfHarbourFacility)11];
@@ -11776,7 +10429,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
         [Browsable(false)]
         public sourceType[] sourceTypeList => [(sourceType)1, (sourceType)2, (sourceType)7, (sourceType)8, (sourceType)9, (sourceType)10, (sourceType)11, (sourceType)12, (sourceType)13, (sourceType)14];
 
-        public void Load(DomainModel.S131.FeatureTypes.Terminal instance) {
+        public override FeatureViewModel<Terminal> Load(DomainModel.S131.FeatureTypes.Terminal instance) {
             portFacilityNumber = instance.portFacilityNumber;
             categoryOfHarbourFacility = instance.categoryOfHarbourFacility;
             categoryOfCargo.Clear();
@@ -11821,6 +10474,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
             if (instance.textContent is not null)
                 foreach (var e in instance.textContent)
                     textContent.Add(e);
+            return this;
         }
 
         public override string Serialize() {
@@ -11901,7 +10555,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
     [CategoryOrder("TurningBasin", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class TurningBasinViewModel : ViewModelBase {
+    public partial class TurningBasinViewModel : FeatureViewModel<TurningBasin> {
         private depthsDescriptionViewModel? _depthsDescription;
         [Category("TurningBasin")]
         [Xceed.Wpf.Toolkit.PropertyGrid.Attributes.ExpandableObject]
@@ -12043,10 +10697,8 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
         [Category("FeatureType")]
         public ObservableCollection<textContent> textContent { get; set; } = new();
-
-        public class TurningBasinRefIdViewModel : FeatureRefIdViewModel {
-            public override string[] AssociationTypes => ["TurningBasin"];
-        }
+        public override informationBindingDefinition[] informationBindingDefinitions => TurningBasin._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => TurningBasin._featureBindingDefinitions;
 
         [Browsable(false)]
         public iSPSLevel[] iSPSLevelList => [(iSPSLevel)1, (iSPSLevel)2, (iSPSLevel)3];
@@ -12054,7 +10706,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
         [Browsable(false)]
         public sourceType[] sourceTypeList => [(sourceType)1, (sourceType)2, (sourceType)7, (sourceType)8, (sourceType)9, (sourceType)10, (sourceType)11, (sourceType)12, (sourceType)13, (sourceType)14];
 
-        public void Load(DomainModel.S131.FeatureTypes.TurningBasin instance) {
+        public override FeatureViewModel<TurningBasin> Load(DomainModel.S131.FeatureTypes.TurningBasin instance) {
             depthsDescription = new();
             if (instance.depthsDescription != null) {
                 depthsDescription = new();
@@ -12100,6 +10752,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
             if (instance.textContent is not null)
                 foreach (var e in instance.textContent)
                     textContent.Add(e);
+            return this;
         }
 
         public override string Serialize() {
@@ -12168,7 +10821,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
     [CategoryOrder("WaterwayArea", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class WaterwayAreaViewModel : ViewModelBase {
+    public partial class WaterwayAreaViewModel : FeatureViewModel<WaterwayArea> {
         private categoryOfPortSection _categoryOfPortSection;
         [DomainModel.EnumerationAttribute(nameof(categoryOfPortSectionList))]
         [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
@@ -12310,10 +10963,8 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
         [Category("FeatureType")]
         public ObservableCollection<textContent> textContent { get; set; } = new();
-
-        public class WaterwayAreaRefIdViewModel : FeatureRefIdViewModel {
-            public override string[] AssociationTypes => ["WaterwayArea"];
-        }
+        public override informationBindingDefinition[] informationBindingDefinitions => WaterwayArea._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => WaterwayArea._featureBindingDefinitions;
 
         [Browsable(false)]
         public categoryOfPortSection[] categoryOfPortSectionList => [(categoryOfPortSection)1, (categoryOfPortSection)3, (categoryOfPortSection)8, (categoryOfPortSection)9, (categoryOfPortSection)11, (categoryOfPortSection)12];
@@ -12321,7 +10972,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
         [Browsable(false)]
         public sourceType[] sourceTypeList => [(sourceType)1, (sourceType)2, (sourceType)7, (sourceType)8, (sourceType)9, (sourceType)10, (sourceType)11, (sourceType)12, (sourceType)13, (sourceType)14];
 
-        public void Load(DomainModel.S131.FeatureTypes.WaterwayArea instance) {
+        public override FeatureViewModel<WaterwayArea> Load(DomainModel.S131.FeatureTypes.WaterwayArea instance) {
             categoryOfPortSection = instance.categoryOfPortSection;
             depthsDescription = new();
             if (instance.depthsDescription != null) {
@@ -12367,6 +11018,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
             if (instance.textContent is not null)
                 foreach (var e in instance.textContent)
                     textContent.Add(e);
+            return this;
         }
 
         public override string Serialize() {
@@ -12435,7 +11087,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
     [CategoryOrder("DataCoverage", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class DataCoverageViewModel : ViewModelBase {
+    public partial class DataCoverageViewModel : FeatureViewModel<DataCoverage> {
         private Int32 _maximumDisplayScale;
         [Category("DataCoverage")]
         public Int32 maximumDisplayScale {
@@ -12460,13 +11112,13 @@ namespace S100Framework.WPF.ViewModel.S131 {
             }
         }
 
-        public class DataCoverageRefIdViewModel : FeatureRefIdViewModel {
-            public override string[] AssociationTypes => ["DataCoverage"];
-        }
+        public override informationBindingDefinition[] informationBindingDefinitions => DataCoverage._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => DataCoverage._featureBindingDefinitions;
 
-        public void Load(DomainModel.S131.FeatureTypes.DataCoverage instance) {
+        public override FeatureViewModel<DataCoverage> Load(DomainModel.S131.FeatureTypes.DataCoverage instance) {
             maximumDisplayScale = instance.maximumDisplayScale;
             minimumDisplayScale = instance.minimumDisplayScale;
+            return this;
         }
 
         public override string Serialize() {
@@ -12494,7 +11146,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
     [CategoryOrder("QualityOfNonBathymetricData", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class QualityOfNonBathymetricDataViewModel : ViewModelBase {
+    public partial class QualityOfNonBathymetricDataViewModel : FeatureViewModel<QualityOfNonBathymetricData> {
         private categoryOfTemporalVariation? _categoryOfTemporalVariation = default;
         [DomainModel.EnumerationAttribute(nameof(categoryOfTemporalVariationList))]
         [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
@@ -12574,15 +11226,13 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
         [Category("QualityOfNonBathymetricData")]
         public ObservableCollection<information> information { get; set; } = new();
-
-        public class QualityOfNonBathymetricDataRefIdViewModel : FeatureRefIdViewModel {
-            public override string[] AssociationTypes => ["QualityOfNonBathymetricData"];
-        }
+        public override informationBindingDefinition[] informationBindingDefinitions => QualityOfNonBathymetricData._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => QualityOfNonBathymetricData._featureBindingDefinitions;
 
         [Browsable(false)]
         public categoryOfTemporalVariation[] categoryOfTemporalVariationList => [(categoryOfTemporalVariation)1, (categoryOfTemporalVariation)2, (categoryOfTemporalVariation)3, (categoryOfTemporalVariation)4, (categoryOfTemporalVariation)5, (categoryOfTemporalVariation)6];
 
-        public void Load(DomainModel.S131.FeatureTypes.QualityOfNonBathymetricData instance) {
+        public override FeatureViewModel<QualityOfNonBathymetricData> Load(DomainModel.S131.FeatureTypes.QualityOfNonBathymetricData instance) {
             categoryOfTemporalVariation = instance.categoryOfTemporalVariation;
             horizontalDistanceUncertainty = instance.horizontalDistanceUncertainty;
             horizontalPositionUncertainty = new();
@@ -12608,6 +11258,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
             if (instance.information is not null)
                 foreach (var e in instance.information)
                     information.Add(e);
+            return this;
         }
 
         public override string Serialize() {
@@ -12648,7 +11299,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
     [CategoryOrder("SoundingDatum", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class SoundingDatumViewModel : ViewModelBase {
+    public partial class SoundingDatumViewModel : FeatureViewModel<SoundingDatum> {
         private verticalDatum _verticalDatum;
         [DomainModel.EnumerationAttribute(nameof(verticalDatumList))]
         [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
@@ -12665,20 +11316,19 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
         [Category("SoundingDatum")]
         public ObservableCollection<information> information { get; set; } = new();
-
-        public class SoundingDatumRefIdViewModel : FeatureRefIdViewModel {
-            public override string[] AssociationTypes => ["SoundingDatum"];
-        }
+        public override informationBindingDefinition[] informationBindingDefinitions => SoundingDatum._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => SoundingDatum._featureBindingDefinitions;
 
         [Browsable(false)]
         public verticalDatum[] verticalDatumList => [(verticalDatum)1, (verticalDatum)2, (verticalDatum)3, (verticalDatum)4, (verticalDatum)5, (verticalDatum)6, (verticalDatum)7, (verticalDatum)8, (verticalDatum)9, (verticalDatum)10, (verticalDatum)11, (verticalDatum)12, (verticalDatum)13, (verticalDatum)14, (verticalDatum)15, (verticalDatum)19, (verticalDatum)22, (verticalDatum)23, (verticalDatum)24, (verticalDatum)25, (verticalDatum)26, (verticalDatum)27, (verticalDatum)44];
 
-        public void Load(DomainModel.S131.FeatureTypes.SoundingDatum instance) {
+        public override FeatureViewModel<SoundingDatum> Load(DomainModel.S131.FeatureTypes.SoundingDatum instance) {
             verticalDatum = instance.verticalDatum;
             information.Clear();
             if (instance.information is not null)
                 foreach (var e in instance.information)
                     information.Add(e);
+            return this;
         }
 
         public override string Serialize() {
@@ -12709,7 +11359,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
     [CategoryOrder("VerticalDatumOfData", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class VerticalDatumOfDataViewModel : ViewModelBase {
+    public partial class VerticalDatumOfDataViewModel : FeatureViewModel<VerticalDatumOfData> {
         private verticalDatum _verticalDatum;
         [DomainModel.EnumerationAttribute(nameof(verticalDatumList))]
         [Editor(typeof(Editors.EnumCheckComboEditor), typeof(Editors.EnumCheckComboEditor))]
@@ -12726,20 +11376,19 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
         [Category("VerticalDatumOfData")]
         public ObservableCollection<information> information { get; set; } = new();
-
-        public class VerticalDatumOfDataRefIdViewModel : FeatureRefIdViewModel {
-            public override string[] AssociationTypes => ["VerticalDatumOfData"];
-        }
+        public override informationBindingDefinition[] informationBindingDefinitions => VerticalDatumOfData._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => VerticalDatumOfData._featureBindingDefinitions;
 
         [Browsable(false)]
         public verticalDatum[] verticalDatumList => [(verticalDatum)3, (verticalDatum)16, (verticalDatum)17, (verticalDatum)18, (verticalDatum)19, (verticalDatum)20, (verticalDatum)21, (verticalDatum)24, (verticalDatum)25, (verticalDatum)26, (verticalDatum)28, (verticalDatum)29, (verticalDatum)30, (verticalDatum)44];
 
-        public void Load(DomainModel.S131.FeatureTypes.VerticalDatumOfData instance) {
+        public override FeatureViewModel<VerticalDatumOfData> Load(DomainModel.S131.FeatureTypes.VerticalDatumOfData instance) {
             verticalDatum = instance.verticalDatum;
             information.Clear();
             if (instance.information is not null)
                 foreach (var e in instance.information)
                     information.Add(e);
+            return this;
         }
 
         public override string Serialize() {
@@ -12770,7 +11419,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
     [CategoryOrder("TextPlacement", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class TextPlacementViewModel : ViewModelBase {
+    public partial class TextPlacementViewModel : FeatureViewModel<TextPlacement> {
         private Decimal _orientationValue;
         [Category("TextPlacement")]
         public Decimal orientationValue {
@@ -12833,19 +11482,19 @@ namespace S100Framework.WPF.ViewModel.S131 {
             }
         }
 
-        public class TextPlacementRefIdViewModel : FeatureRefIdViewModel {
-            public override string[] AssociationTypes => ["TextPlacement"];
-        }
+        public override informationBindingDefinition[] informationBindingDefinitions => TextPlacement._informationBindingDefinitions;
+        public override featureBindingDefinition[] featureBindingDefinitions => TextPlacement._featureBindingDefinitions;
 
         [Browsable(false)]
         public textType[] textTypeList => [(textType)1];
 
-        public void Load(DomainModel.S131.FeatureTypes.TextPlacement instance) {
+        public override FeatureViewModel<TextPlacement> Load(DomainModel.S131.FeatureTypes.TextPlacement instance) {
             orientationValue = instance.orientationValue;
             text = instance.text;
             textOffsetMm = instance.textOffsetMm;
             textType = instance.textType;
             scaleMinimum = instance.scaleMinimum;
+            return this;
         }
 
         public override string Serialize() {
@@ -12874,2521 +11523,5 @@ namespace S100Framework.WPF.ViewModel.S131 {
         }
 
         public override string? ToString() => $"Text Placement";
-    }
-
-    public class TextAssociationViewModel : FeatureAssociationViewModel {
-        public override string Code => "TextAssociation";
-        public override string[] Roles => ["identifies", "positions"];
-
-        private FeatureBindingViewModel? _identifies;
-        [ExpandableObject]
-        public FeatureBindingViewModel? identifies {
-            get {
-                return _identifies;
-            }
-
-            set {
-                this.SetValue(ref _identifies, value);
-            }
-        }
-
-        private FeatureBindingViewModel? _positions;
-        [ExpandableObject]
-        public FeatureBindingViewModel? positions {
-            get {
-                return _positions;
-            }
-
-            set {
-                this.SetValue(ref _positions, value);
-            }
-        }
-
-        public override FeatureAssociationConnector? association {
-            get {
-                return _associationConnector;
-            }
-
-            set {
-                this.SetValue(ref _associationConnector, value);
-                if (value is not null) {
-                    identifies = value?.role switch
-                    {
-                        "positions" => value.CreateForeignFeatureBinding(),
-                        _ => value!.CreateLocalFeatureBinding(),
-                    };
-                }
-                else {
-                    identifies = null;
-                }
-
-                if (value is not null) {
-                    positions = value?.role switch
-                    {
-                        "identifies" => value.CreateForeignFeatureBinding(),
-                        _ => value!.CreateLocalFeatureBinding(),
-                    };
-                }
-                else {
-                    positions = null;
-                }
-            }
-        }
-
-        public override void Load(S100Framework.DomainModel.FeatureAssociation featureAssociation) {
-            association = associationConnectorFeatures.SingleOrDefault(e => e.FeatureType.Equals(featureAssociation.AssociationConnectorTypeName));
-            identifies?.Load(featureAssociation, "identifies");
-            positions?.Load(featureAssociation, "positions");
-        }
-
-        public override string Serialize() {
-            var instance = new FeatureAssociation
-            {
-                Code = this.Code,
-                AssociationConnectorTypeName = association!.FeatureType,
-            };
-            identifies?.Save(instance, "identifies");
-            positions?.Save(instance, "positions");
-            return System.Text.Json.JsonSerializer.Serialize(instance);
-        }
-
-        public override FeatureAssociationConnector[] associationConnectorFeatures => TextAssociationViewModel._associationConnectorFeatures;
-
-        public class identifiesTextPlacementRefIdViewModel : FeatureRefIdViewModel {
-            public override string[] AssociationTypes => ["DryDock", "FloatingDock", "Gridiron", "HarbourFacility", "AnchorBerth", "AnchorageArea", "Berth", "BerthPosition", "DockArea", "DumpingGround", "HarbourAreaAdministrative", "HarbourAreaSection", "HarbourBasin", "MooringWarpingFacility", "OuterLimit", "PilotBoardingPlace", "SeaplaneLandingArea", "Terminal", "TurningBasin", "WaterwayArea"];
-        }
-
-        public class positionsDryDockRefIdViewModel : FeatureRefIdViewModel {
-            public override string[] AssociationTypes => ["TextPlacement"];
-        }
-
-        public class positionsFloatingDockRefIdViewModel : FeatureRefIdViewModel {
-            public override string[] AssociationTypes => ["TextPlacement"];
-        }
-
-        public class positionsGridironRefIdViewModel : FeatureRefIdViewModel {
-            public override string[] AssociationTypes => ["TextPlacement"];
-        }
-
-        public class positionsHarbourFacilityRefIdViewModel : FeatureRefIdViewModel {
-            public override string[] AssociationTypes => ["TextPlacement"];
-        }
-
-        public class positionsAnchorBerthRefIdViewModel : FeatureRefIdViewModel {
-            public override string[] AssociationTypes => ["TextPlacement"];
-        }
-
-        public class positionsAnchorageAreaRefIdViewModel : FeatureRefIdViewModel {
-            public override string[] AssociationTypes => ["TextPlacement"];
-        }
-
-        public class positionsBerthRefIdViewModel : FeatureRefIdViewModel {
-            public override string[] AssociationTypes => ["TextPlacement"];
-        }
-
-        public class positionsBerthPositionRefIdViewModel : FeatureRefIdViewModel {
-            public override string[] AssociationTypes => ["TextPlacement"];
-        }
-
-        public class positionsDockAreaRefIdViewModel : FeatureRefIdViewModel {
-            public override string[] AssociationTypes => ["TextPlacement"];
-        }
-
-        public class positionsDumpingGroundRefIdViewModel : FeatureRefIdViewModel {
-            public override string[] AssociationTypes => ["TextPlacement"];
-        }
-
-        public class positionsHarbourAreaAdministrativeRefIdViewModel : FeatureRefIdViewModel {
-            public override string[] AssociationTypes => ["TextPlacement"];
-        }
-
-        public class positionsHarbourAreaSectionRefIdViewModel : FeatureRefIdViewModel {
-            public override string[] AssociationTypes => ["TextPlacement"];
-        }
-
-        public class positionsHarbourBasinRefIdViewModel : FeatureRefIdViewModel {
-            public override string[] AssociationTypes => ["TextPlacement"];
-        }
-
-        public class positionsMooringWarpingFacilityRefIdViewModel : FeatureRefIdViewModel {
-            public override string[] AssociationTypes => ["TextPlacement"];
-        }
-
-        public class positionsOuterLimitRefIdViewModel : FeatureRefIdViewModel {
-            public override string[] AssociationTypes => ["TextPlacement"];
-        }
-
-        public class positionsPilotBoardingPlaceRefIdViewModel : FeatureRefIdViewModel {
-            public override string[] AssociationTypes => ["TextPlacement"];
-        }
-
-        public class positionsSeaplaneLandingAreaRefIdViewModel : FeatureRefIdViewModel {
-            public override string[] AssociationTypes => ["TextPlacement"];
-        }
-
-        public class positionsTerminalRefIdViewModel : FeatureRefIdViewModel {
-            public override string[] AssociationTypes => ["TextPlacement"];
-        }
-
-        public class positionsTurningBasinRefIdViewModel : FeatureRefIdViewModel {
-            public override string[] AssociationTypes => ["TextPlacement"];
-        }
-
-        public class positionsWaterwayAreaRefIdViewModel : FeatureRefIdViewModel {
-            public override string[] AssociationTypes => ["TextPlacement"];
-        }
-
-        public static FeatureAssociationConnector[] _associationConnectorFeatures => Handles.AssociationConnectorFeatures[typeof(TextAssociationViewModel)]();
-    }
-
-    public class SubsectionViewModel : FeatureAssociationViewModel {
-        public override string Code => "Subsection";
-        public override string[] Roles => ["subUnit", "constitute"];
-
-        private FeatureBindingViewModel? _subUnit;
-        [ExpandableObject]
-        public FeatureBindingViewModel? subUnit {
-            get {
-                return _subUnit;
-            }
-
-            set {
-                this.SetValue(ref _subUnit, value);
-            }
-        }
-
-        private FeatureBindingViewModel? _constitute;
-        [ExpandableObject]
-        public FeatureBindingViewModel? constitute {
-            get {
-                return _constitute;
-            }
-
-            set {
-                this.SetValue(ref _constitute, value);
-            }
-        }
-
-        public override FeatureAssociationConnector? association {
-            get {
-                return _associationConnector;
-            }
-
-            set {
-                this.SetValue(ref _associationConnector, value);
-                if (value is not null) {
-                    subUnit = value?.role switch
-                    {
-                        "constitute" => value.CreateForeignFeatureBinding(),
-                        _ => value!.CreateLocalFeatureBinding(),
-                    };
-                }
-                else {
-                    subUnit = null;
-                }
-
-                if (value is not null) {
-                    constitute = value?.role switch
-                    {
-                        "subUnit" => value.CreateForeignFeatureBinding(),
-                        _ => value!.CreateLocalFeatureBinding(),
-                    };
-                }
-                else {
-                    constitute = null;
-                }
-            }
-        }
-
-        public override void Load(S100Framework.DomainModel.FeatureAssociation featureAssociation) {
-            association = associationConnectorFeatures.SingleOrDefault(e => e.FeatureType.Equals(featureAssociation.AssociationConnectorTypeName));
-            subUnit?.Load(featureAssociation, "subUnit");
-            constitute?.Load(featureAssociation, "constitute");
-        }
-
-        public override string Serialize() {
-            var instance = new FeatureAssociation
-            {
-                Code = this.Code,
-                AssociationConnectorTypeName = association!.FeatureType,
-            };
-            subUnit?.Save(instance, "subUnit");
-            constitute?.Save(instance, "constitute");
-            return System.Text.Json.JsonSerializer.Serialize(instance);
-        }
-
-        public override FeatureAssociationConnector[] associationConnectorFeatures => SubsectionViewModel._associationConnectorFeatures;
-
-        public class constituteHarbourAreaSectionRefIdViewModel : FeatureRefIdViewModel {
-            public override string[] AssociationTypes => ["HarbourAreaSection"];
-        }
-
-        public class subUnitHarbourAreaSectionRefIdViewModel : FeatureRefIdViewModel {
-            public override string[] AssociationTypes => ["HarbourAreaSection"];
-        }
-
-        public static FeatureAssociationConnector[] _associationConnectorFeatures => Handles.AssociationConnectorFeatures[typeof(SubsectionViewModel)]();
-    }
-
-    public class InfrastructureViewModel : FeatureAssociationViewModel {
-        public override string Code => "Infrastructure";
-        public override string[] Roles => ["infrastructureLocation", "hasInfrastructure"];
-
-        private FeatureBindingViewModel? _infrastructureLocation;
-        [ExpandableObject]
-        public FeatureBindingViewModel? infrastructureLocation {
-            get {
-                return _infrastructureLocation;
-            }
-
-            set {
-                this.SetValue(ref _infrastructureLocation, value);
-            }
-        }
-
-        private FeatureBindingViewModel? _hasInfrastructure;
-        [ExpandableObject]
-        public FeatureBindingViewModel? hasInfrastructure {
-            get {
-                return _hasInfrastructure;
-            }
-
-            set {
-                this.SetValue(ref _hasInfrastructure, value);
-            }
-        }
-
-        public override FeatureAssociationConnector? association {
-            get {
-                return _associationConnector;
-            }
-
-            set {
-                this.SetValue(ref _associationConnector, value);
-                if (value is not null) {
-                    infrastructureLocation = value?.role switch
-                    {
-                        "hasInfrastructure" => value.CreateForeignFeatureBinding(),
-                        _ => value!.CreateLocalFeatureBinding(),
-                    };
-                }
-                else {
-                    infrastructureLocation = null;
-                }
-
-                if (value is not null) {
-                    hasInfrastructure = value?.role switch
-                    {
-                        "infrastructureLocation" => value.CreateForeignFeatureBinding(),
-                        _ => value!.CreateLocalFeatureBinding(),
-                    };
-                }
-                else {
-                    hasInfrastructure = null;
-                }
-            }
-        }
-
-        public override void Load(S100Framework.DomainModel.FeatureAssociation featureAssociation) {
-            association = associationConnectorFeatures.SingleOrDefault(e => e.FeatureType.Equals(featureAssociation.AssociationConnectorTypeName));
-            infrastructureLocation?.Load(featureAssociation, "infrastructureLocation");
-            hasInfrastructure?.Load(featureAssociation, "hasInfrastructure");
-        }
-
-        public override string Serialize() {
-            var instance = new FeatureAssociation
-            {
-                Code = this.Code,
-                AssociationConnectorTypeName = association!.FeatureType,
-            };
-            infrastructureLocation?.Save(instance, "infrastructureLocation");
-            hasInfrastructure?.Save(instance, "hasInfrastructure");
-            return System.Text.Json.JsonSerializer.Serialize(instance);
-        }
-
-        public override FeatureAssociationConnector[] associationConnectorFeatures => InfrastructureViewModel._associationConnectorFeatures;
-
-        public class hasInfrastructureHarbourAreaSectionRefIdViewModel : FeatureRefIdViewModel {
-            public override string[] AssociationTypes => ["DryDock", "FloatingDock", "Gridiron", "HarbourFacility"];
-        }
-
-        public class hasInfrastructureTerminalRefIdViewModel : FeatureRefIdViewModel {
-            public override string[] AssociationTypes => ["DryDock", "FloatingDock", "Gridiron", "HarbourFacility"];
-        }
-
-        public class infrastructureLocationDryDockRefIdViewModel : FeatureRefIdViewModel {
-            public override string[] AssociationTypes => ["HarbourAreaSection", "Terminal"];
-        }
-
-        public class infrastructureLocationFloatingDockRefIdViewModel : FeatureRefIdViewModel {
-            public override string[] AssociationTypes => ["HarbourAreaSection", "Terminal"];
-        }
-
-        public class infrastructureLocationGridironRefIdViewModel : FeatureRefIdViewModel {
-            public override string[] AssociationTypes => ["HarbourAreaSection", "Terminal"];
-        }
-
-        public class infrastructureLocationHarbourFacilityRefIdViewModel : FeatureRefIdViewModel {
-            public override string[] AssociationTypes => ["HarbourAreaSection", "Terminal"];
-        }
-
-        public static FeatureAssociationConnector[] _associationConnectorFeatures => Handles.AssociationConnectorFeatures[typeof(InfrastructureViewModel)]();
-    }
-
-    public class PrimaryAuxiliaryFacilityViewModel : FeatureAssociationViewModel {
-        public override string Code => "PrimaryAuxiliaryFacility";
-        public override string[] Roles => ["primaryFacility", "auxiliaryFacility"];
-
-        private FeatureBindingViewModel? _primaryFacility;
-        [ExpandableObject]
-        public FeatureBindingViewModel? primaryFacility {
-            get {
-                return _primaryFacility;
-            }
-
-            set {
-                this.SetValue(ref _primaryFacility, value);
-            }
-        }
-
-        private FeatureBindingViewModel? _auxiliaryFacility;
-        [ExpandableObject]
-        public FeatureBindingViewModel? auxiliaryFacility {
-            get {
-                return _auxiliaryFacility;
-            }
-
-            set {
-                this.SetValue(ref _auxiliaryFacility, value);
-            }
-        }
-
-        public override FeatureAssociationConnector? association {
-            get {
-                return _associationConnector;
-            }
-
-            set {
-                this.SetValue(ref _associationConnector, value);
-                if (value is not null) {
-                    primaryFacility = value?.role switch
-                    {
-                        "auxiliaryFacility" => value.CreateForeignFeatureBinding(),
-                        _ => value!.CreateLocalFeatureBinding(),
-                    };
-                }
-                else {
-                    primaryFacility = null;
-                }
-
-                if (value is not null) {
-                    auxiliaryFacility = value?.role switch
-                    {
-                        "primaryFacility" => value.CreateForeignFeatureBinding(),
-                        _ => value!.CreateLocalFeatureBinding(),
-                    };
-                }
-                else {
-                    auxiliaryFacility = null;
-                }
-            }
-        }
-
-        public override void Load(S100Framework.DomainModel.FeatureAssociation featureAssociation) {
-            association = associationConnectorFeatures.SingleOrDefault(e => e.FeatureType.Equals(featureAssociation.AssociationConnectorTypeName));
-            primaryFacility?.Load(featureAssociation, "primaryFacility");
-            auxiliaryFacility?.Load(featureAssociation, "auxiliaryFacility");
-        }
-
-        public override string Serialize() {
-            var instance = new FeatureAssociation
-            {
-                Code = this.Code,
-                AssociationConnectorTypeName = association!.FeatureType,
-            };
-            primaryFacility?.Save(instance, "primaryFacility");
-            auxiliaryFacility?.Save(instance, "auxiliaryFacility");
-            return System.Text.Json.JsonSerializer.Serialize(instance);
-        }
-
-        public override FeatureAssociationConnector[] associationConnectorFeatures => PrimaryAuxiliaryFacilityViewModel._associationConnectorFeatures;
-
-        public class auxiliaryFacilityAnchorBerthRefIdViewModel : FeatureRefIdViewModel {
-            public override string[] AssociationTypes => ["MooringWarpingFacility"];
-        }
-
-        public class auxiliaryFacilityBerthPositionRefIdViewModel : FeatureRefIdViewModel {
-            public override string[] AssociationTypes => ["MooringWarpingFacility"];
-        }
-
-        public class primaryFacilityMooringWarpingFacilityRefIdViewModel : FeatureRefIdViewModel {
-            public override string[] AssociationTypes => ["AnchorBerth", "BerthPosition"];
-        }
-
-        public static FeatureAssociationConnector[] _associationConnectorFeatures => Handles.AssociationConnectorFeatures[typeof(PrimaryAuxiliaryFacilityViewModel)]();
-    }
-
-    public class DemarcationViewModel : FeatureAssociationViewModel {
-        public override string Code => "Demarcation";
-        public override string[] Roles => ["demarcationIndicator", "demarcatedFeature"];
-
-        private FeatureBindingViewModel? _demarcationIndicator;
-        [ExpandableObject]
-        public FeatureBindingViewModel? demarcationIndicator {
-            get {
-                return _demarcationIndicator;
-            }
-
-            set {
-                this.SetValue(ref _demarcationIndicator, value);
-            }
-        }
-
-        private FeatureBindingViewModel? _demarcatedFeature;
-        [ExpandableObject]
-        public FeatureBindingViewModel? demarcatedFeature {
-            get {
-                return _demarcatedFeature;
-            }
-
-            set {
-                this.SetValue(ref _demarcatedFeature, value);
-            }
-        }
-
-        public override FeatureAssociationConnector? association {
-            get {
-                return _associationConnector;
-            }
-
-            set {
-                this.SetValue(ref _associationConnector, value);
-                if (value is not null) {
-                    demarcationIndicator = value?.role switch
-                    {
-                        "demarcatedFeature" => value.CreateForeignFeatureBinding(),
-                        _ => value!.CreateLocalFeatureBinding(),
-                    };
-                }
-                else {
-                    demarcationIndicator = null;
-                }
-
-                if (value is not null) {
-                    demarcatedFeature = value?.role switch
-                    {
-                        "demarcationIndicator" => value.CreateForeignFeatureBinding(),
-                        _ => value!.CreateLocalFeatureBinding(),
-                    };
-                }
-                else {
-                    demarcatedFeature = null;
-                }
-            }
-        }
-
-        public override void Load(S100Framework.DomainModel.FeatureAssociation featureAssociation) {
-            association = associationConnectorFeatures.SingleOrDefault(e => e.FeatureType.Equals(featureAssociation.AssociationConnectorTypeName));
-            demarcationIndicator?.Load(featureAssociation, "demarcationIndicator");
-            demarcatedFeature?.Load(featureAssociation, "demarcatedFeature");
-        }
-
-        public override string Serialize() {
-            var instance = new FeatureAssociation
-            {
-                Code = this.Code,
-                AssociationConnectorTypeName = association!.FeatureType,
-            };
-            demarcationIndicator?.Save(instance, "demarcationIndicator");
-            demarcatedFeature?.Save(instance, "demarcatedFeature");
-            return System.Text.Json.JsonSerializer.Serialize(instance);
-        }
-
-        public override FeatureAssociationConnector[] associationConnectorFeatures => DemarcationViewModel._associationConnectorFeatures;
-
-        public class demarcatedFeatureBerthPositionRefIdViewModel : FeatureRefIdViewModel {
-            public override string[] AssociationTypes => ["Berth"];
-        }
-
-        public class demarcationIndicatorBerthRefIdViewModel : FeatureRefIdViewModel {
-            public override string[] AssociationTypes => ["BerthPosition"];
-        }
-
-        public static FeatureAssociationConnector[] _associationConnectorFeatures => Handles.AssociationConnectorFeatures[typeof(DemarcationViewModel)]();
-    }
-
-    public class JurisdictionalLimitViewModel : FeatureAssociationViewModel {
-        public override string Code => "JurisdictionalLimit";
-        public override string[] Roles => ["limitReference", "limitExtent"];
-
-        private FeatureBindingViewModel? _limitReference;
-        [ExpandableObject]
-        public FeatureBindingViewModel? limitReference {
-            get {
-                return _limitReference;
-            }
-
-            set {
-                this.SetValue(ref _limitReference, value);
-            }
-        }
-
-        private FeatureBindingViewModel? _limitExtent;
-        [ExpandableObject]
-        public FeatureBindingViewModel? limitExtent {
-            get {
-                return _limitExtent;
-            }
-
-            set {
-                this.SetValue(ref _limitExtent, value);
-            }
-        }
-
-        public override FeatureAssociationConnector? association {
-            get {
-                return _associationConnector;
-            }
-
-            set {
-                this.SetValue(ref _associationConnector, value);
-                if (value is not null) {
-                    limitReference = value?.role switch
-                    {
-                        "limitExtent" => value.CreateForeignFeatureBinding(),
-                        _ => value!.CreateLocalFeatureBinding(),
-                    };
-                }
-                else {
-                    limitReference = null;
-                }
-
-                if (value is not null) {
-                    limitExtent = value?.role switch
-                    {
-                        "limitReference" => value.CreateForeignFeatureBinding(),
-                        _ => value!.CreateLocalFeatureBinding(),
-                    };
-                }
-                else {
-                    limitExtent = null;
-                }
-            }
-        }
-
-        public override void Load(S100Framework.DomainModel.FeatureAssociation featureAssociation) {
-            association = associationConnectorFeatures.SingleOrDefault(e => e.FeatureType.Equals(featureAssociation.AssociationConnectorTypeName));
-            limitReference?.Load(featureAssociation, "limitReference");
-            limitExtent?.Load(featureAssociation, "limitExtent");
-        }
-
-        public override string Serialize() {
-            var instance = new FeatureAssociation
-            {
-                Code = this.Code,
-                AssociationConnectorTypeName = association!.FeatureType,
-            };
-            limitReference?.Save(instance, "limitReference");
-            limitExtent?.Save(instance, "limitExtent");
-            return System.Text.Json.JsonSerializer.Serialize(instance);
-        }
-
-        public override FeatureAssociationConnector[] associationConnectorFeatures => JurisdictionalLimitViewModel._associationConnectorFeatures;
-
-        public class limitExtentHarbourAreaAdministrativeRefIdViewModel : FeatureRefIdViewModel {
-            public override string[] AssociationTypes => ["OuterLimit"];
-        }
-
-        public class limitReferenceOuterLimitRefIdViewModel : FeatureRefIdViewModel {
-            public override string[] AssociationTypes => ["HarbourAreaAdministrative"];
-        }
-
-        public static FeatureAssociationConnector[] _associationConnectorFeatures => Handles.AssociationConnectorFeatures[typeof(JurisdictionalLimitViewModel)]();
-    }
-
-    public class LayoutDivisionViewModel : FeatureAssociationViewModel {
-        public override string Code => "LayoutDivision";
-        public override string[] Roles => ["layoutUnit", "componentOf"];
-
-        private FeatureBindingViewModel? _layoutUnit;
-        [ExpandableObject]
-        public FeatureBindingViewModel? layoutUnit {
-            get {
-                return _layoutUnit;
-            }
-
-            set {
-                this.SetValue(ref _layoutUnit, value);
-            }
-        }
-
-        private FeatureBindingViewModel? _componentOf;
-        [ExpandableObject]
-        public FeatureBindingViewModel? componentOf {
-            get {
-                return _componentOf;
-            }
-
-            set {
-                this.SetValue(ref _componentOf, value);
-            }
-        }
-
-        public override FeatureAssociationConnector? association {
-            get {
-                return _associationConnector;
-            }
-
-            set {
-                this.SetValue(ref _associationConnector, value);
-                if (value is not null) {
-                    layoutUnit = value?.role switch
-                    {
-                        "componentOf" => value.CreateForeignFeatureBinding(),
-                        _ => value!.CreateLocalFeatureBinding(),
-                    };
-                }
-                else {
-                    layoutUnit = null;
-                }
-
-                if (value is not null) {
-                    componentOf = value?.role switch
-                    {
-                        "layoutUnit" => value.CreateForeignFeatureBinding(),
-                        _ => value!.CreateLocalFeatureBinding(),
-                    };
-                }
-                else {
-                    componentOf = null;
-                }
-            }
-        }
-
-        public override void Load(S100Framework.DomainModel.FeatureAssociation featureAssociation) {
-            association = associationConnectorFeatures.SingleOrDefault(e => e.FeatureType.Equals(featureAssociation.AssociationConnectorTypeName));
-            layoutUnit?.Load(featureAssociation, "layoutUnit");
-            componentOf?.Load(featureAssociation, "componentOf");
-        }
-
-        public override string Serialize() {
-            var instance = new FeatureAssociation
-            {
-                Code = this.Code,
-                AssociationConnectorTypeName = association!.FeatureType,
-            };
-            layoutUnit?.Save(instance, "layoutUnit");
-            componentOf?.Save(instance, "componentOf");
-            return System.Text.Json.JsonSerializer.Serialize(instance);
-        }
-
-        public override FeatureAssociationConnector[] associationConnectorFeatures => LayoutDivisionViewModel._associationConnectorFeatures;
-
-        public class componentOfAnchorageAreaRefIdViewModel : FeatureRefIdViewModel {
-            public override string[] AssociationTypes => ["HarbourAreaSection"];
-        }
-
-        public class componentOfBerthRefIdViewModel : FeatureRefIdViewModel {
-            public override string[] AssociationTypes => ["HarbourAreaSection", "Terminal"];
-        }
-
-        public class componentOfDockAreaRefIdViewModel : FeatureRefIdViewModel {
-            public override string[] AssociationTypes => ["HarbourAreaSection"];
-        }
-
-        public class componentOfDumpingGroundRefIdViewModel : FeatureRefIdViewModel {
-            public override string[] AssociationTypes => ["HarbourAreaSection"];
-        }
-
-        public class componentOfHarbourAreaSectionRefIdViewModel : FeatureRefIdViewModel {
-            public override string[] AssociationTypes => ["HarbourAreaAdministrative"];
-        }
-
-        public class componentOfHarbourBasinRefIdViewModel : FeatureRefIdViewModel {
-            public override string[] AssociationTypes => ["HarbourAreaSection"];
-        }
-
-        public class componentOfPilotBoardingPlaceRefIdViewModel : FeatureRefIdViewModel {
-            public override string[] AssociationTypes => ["HarbourAreaSection"];
-        }
-
-        public class componentOfSeaplaneLandingAreaRefIdViewModel : FeatureRefIdViewModel {
-            public override string[] AssociationTypes => ["HarbourAreaSection"];
-        }
-
-        public class componentOfTerminalRefIdViewModel : FeatureRefIdViewModel {
-            public override string[] AssociationTypes => ["HarbourAreaSection"];
-        }
-
-        public class componentOfTurningBasinRefIdViewModel : FeatureRefIdViewModel {
-            public override string[] AssociationTypes => ["HarbourAreaSection"];
-        }
-
-        public class componentOfWaterwayAreaRefIdViewModel : FeatureRefIdViewModel {
-            public override string[] AssociationTypes => ["HarbourAreaSection"];
-        }
-
-        public class layoutUnitHarbourAreaAdministrativeRefIdViewModel : FeatureRefIdViewModel {
-            public override string[] AssociationTypes => ["HarbourAreaSection"];
-        }
-
-        public class layoutUnitHarbourAreaSectionRefIdViewModel : FeatureRefIdViewModel {
-            public override string[] AssociationTypes => ["AnchorageArea", "Berth", "DockArea", "DumpingGround", "HarbourBasin", "PilotBoardingPlace", "SeaplaneLandingArea", "Terminal", "TurningBasin", "WaterwayArea"];
-        }
-
-        public class layoutUnitTerminalRefIdViewModel : FeatureRefIdViewModel {
-            public override string[] AssociationTypes => ["Berth"];
-        }
-
-        public static FeatureAssociationConnector[] _associationConnectorFeatures => Handles.AssociationConnectorFeatures[typeof(LayoutDivisionViewModel)]();
-    }
-
-    public class AdditionalInformationViewModel : InformationAssociationViewModel {
-        public override string Code => "AdditionalInformation";
-        public override string[] Roles => ["providesInformation", "informationProvidedFor"];
-
-        private InformationBindingViewModel? _providesInformation;
-        [ExpandableObject]
-        public InformationBindingViewModel? providesInformation {
-            get {
-                return _providesInformation;
-            }
-
-            set {
-                this.SetValue(ref _providesInformation, value);
-            }
-        }
-
-        private InformationBindingViewModel? _informationProvidedFor;
-        [ExpandableObject]
-        public InformationBindingViewModel? informationProvidedFor {
-            get {
-                return _informationProvidedFor;
-            }
-
-            set {
-                this.SetValue(ref _informationProvidedFor, value);
-            }
-        }
-
-        public override InformationAssociationConnector? association {
-            get {
-                return _associationConnector;
-            }
-
-            set {
-                this.SetValue(ref _associationConnector, value);
-                if (value is not null) {
-                    providesInformation = value?.role switch
-                    {
-                        "informationProvidedFor" => value.CreateForeignInformationBinding(),
-                        _ => value!.CreateLocalInformationBinding(),
-                    };
-                }
-                else {
-                    providesInformation = null;
-                }
-
-                if (value is not null) {
-                    informationProvidedFor = value?.role switch
-                    {
-                        "providesInformation" => value.CreateForeignInformationBinding(),
-                        _ => value!.CreateLocalInformationBinding(),
-                    };
-                }
-                else {
-                    informationProvidedFor = null;
-                }
-            }
-        }
-
-        public override void Load(S100Framework.DomainModel.InformationAssociation informationAssociation) {
-            association = associationConnectorInformations.SingleOrDefault(e => e.InformationType.Equals(informationAssociation.AssociationConnectorTypeName));
-            providesInformation?.Load(informationAssociation, "providesInformation");
-            informationProvidedFor?.Load(informationAssociation, "informationProvidedFor");
-        }
-
-        public override string Serialize() {
-            var instance = new InformationAssociation
-            {
-                Code = this.Code,
-                AssociationConnectorTypeName = association!.InformationType,
-            };
-            providesInformation?.Save(instance, "providesInformation");
-            informationProvidedFor?.Save(instance, "informationProvidedFor");
-            return System.Text.Json.JsonSerializer.Serialize(instance);
-        }
-
-        public override InformationAssociationConnector[] associationConnectorInformations => AdditionalInformationViewModel._associationConnectorInformations;
-
-        public class informationProvidedForNauticalInformationRefIdViewModel : InformationRefIdViewModel {
-            public override string[] AssociationTypes => ["NauticalInformation", "Recommendations", "Regulations", "Restrictions", "Applicability", "Authority", "AvailablePortServices", "ContactDetails", "Entrance", "NonStandardWorkingDay", "ServiceHours"];
-        }
-
-        public class providesInformationDryDockRefIdViewModel : InformationRefIdViewModel {
-            public override string[] AssociationTypes => ["NauticalInformation"];
-        }
-
-        public class providesInformationFloatingDockRefIdViewModel : InformationRefIdViewModel {
-            public override string[] AssociationTypes => ["NauticalInformation"];
-        }
-
-        public class providesInformationGridironRefIdViewModel : InformationRefIdViewModel {
-            public override string[] AssociationTypes => ["NauticalInformation"];
-        }
-
-        public class providesInformationHarbourFacilityRefIdViewModel : InformationRefIdViewModel {
-            public override string[] AssociationTypes => ["NauticalInformation"];
-        }
-
-        public class providesInformationAnchorBerthRefIdViewModel : InformationRefIdViewModel {
-            public override string[] AssociationTypes => ["NauticalInformation"];
-        }
-
-        public class providesInformationAnchorageAreaRefIdViewModel : InformationRefIdViewModel {
-            public override string[] AssociationTypes => ["NauticalInformation"];
-        }
-
-        public class providesInformationBerthRefIdViewModel : InformationRefIdViewModel {
-            public override string[] AssociationTypes => ["NauticalInformation"];
-        }
-
-        public class providesInformationBerthPositionRefIdViewModel : InformationRefIdViewModel {
-            public override string[] AssociationTypes => ["NauticalInformation"];
-        }
-
-        public class providesInformationDockAreaRefIdViewModel : InformationRefIdViewModel {
-            public override string[] AssociationTypes => ["NauticalInformation"];
-        }
-
-        public class providesInformationDumpingGroundRefIdViewModel : InformationRefIdViewModel {
-            public override string[] AssociationTypes => ["NauticalInformation"];
-        }
-
-        public class providesInformationHarbourAreaAdministrativeRefIdViewModel : InformationRefIdViewModel {
-            public override string[] AssociationTypes => ["NauticalInformation"];
-        }
-
-        public class providesInformationHarbourAreaSectionRefIdViewModel : InformationRefIdViewModel {
-            public override string[] AssociationTypes => ["NauticalInformation"];
-        }
-
-        public class providesInformationHarbourBasinRefIdViewModel : InformationRefIdViewModel {
-            public override string[] AssociationTypes => ["NauticalInformation"];
-        }
-
-        public class providesInformationMooringWarpingFacilityRefIdViewModel : InformationRefIdViewModel {
-            public override string[] AssociationTypes => ["NauticalInformation"];
-        }
-
-        public class providesInformationOuterLimitRefIdViewModel : InformationRefIdViewModel {
-            public override string[] AssociationTypes => ["NauticalInformation"];
-        }
-
-        public class providesInformationPilotBoardingPlaceRefIdViewModel : InformationRefIdViewModel {
-            public override string[] AssociationTypes => ["NauticalInformation"];
-        }
-
-        public class providesInformationSeaplaneLandingAreaRefIdViewModel : InformationRefIdViewModel {
-            public override string[] AssociationTypes => ["NauticalInformation"];
-        }
-
-        public class providesInformationTerminalRefIdViewModel : InformationRefIdViewModel {
-            public override string[] AssociationTypes => ["NauticalInformation"];
-        }
-
-        public class providesInformationTurningBasinRefIdViewModel : InformationRefIdViewModel {
-            public override string[] AssociationTypes => ["NauticalInformation"];
-        }
-
-        public class providesInformationWaterwayAreaRefIdViewModel : InformationRefIdViewModel {
-            public override string[] AssociationTypes => ["NauticalInformation"];
-        }
-
-        public class providesInformationNauticalInformationRefIdViewModel : InformationRefIdViewModel {
-            public override string[] AssociationTypes => ["NauticalInformation"];
-        }
-
-        public class providesInformationRecommendationsRefIdViewModel : InformationRefIdViewModel {
-            public override string[] AssociationTypes => ["NauticalInformation"];
-        }
-
-        public class providesInformationRegulationsRefIdViewModel : InformationRefIdViewModel {
-            public override string[] AssociationTypes => ["NauticalInformation"];
-        }
-
-        public class providesInformationRestrictionsRefIdViewModel : InformationRefIdViewModel {
-            public override string[] AssociationTypes => ["NauticalInformation"];
-        }
-
-        public class providesInformationApplicabilityRefIdViewModel : InformationRefIdViewModel {
-            public override string[] AssociationTypes => ["NauticalInformation"];
-        }
-
-        public class providesInformationAuthorityRefIdViewModel : InformationRefIdViewModel {
-            public override string[] AssociationTypes => ["NauticalInformation"];
-        }
-
-        public class providesInformationAvailablePortServicesRefIdViewModel : InformationRefIdViewModel {
-            public override string[] AssociationTypes => ["NauticalInformation"];
-        }
-
-        public class providesInformationContactDetailsRefIdViewModel : InformationRefIdViewModel {
-            public override string[] AssociationTypes => ["NauticalInformation"];
-        }
-
-        public class providesInformationEntranceRefIdViewModel : InformationRefIdViewModel {
-            public override string[] AssociationTypes => ["NauticalInformation"];
-        }
-
-        public class providesInformationNonStandardWorkingDayRefIdViewModel : InformationRefIdViewModel {
-            public override string[] AssociationTypes => ["NauticalInformation"];
-        }
-
-        public class providesInformationServiceHoursRefIdViewModel : InformationRefIdViewModel {
-            public override string[] AssociationTypes => ["NauticalInformation"];
-        }
-
-        public static InformationAssociationConnector[] _associationConnectorInformations => Handles.AssociationConnectorInformations[typeof(AdditionalInformationViewModel)]();
-    }
-
-    public class AuthorityContactViewModel : InformationAssociationViewModel {
-        public override string Code => "AuthorityContact";
-        public override string[] Roles => ["theAuthority", "theContactDetails"];
-
-        private InformationBindingViewModel? _theAuthority;
-        [ExpandableObject]
-        public InformationBindingViewModel? theAuthority {
-            get {
-                return _theAuthority;
-            }
-
-            set {
-                this.SetValue(ref _theAuthority, value);
-            }
-        }
-
-        private InformationBindingViewModel? _theContactDetails;
-        [ExpandableObject]
-        public InformationBindingViewModel? theContactDetails {
-            get {
-                return _theContactDetails;
-            }
-
-            set {
-                this.SetValue(ref _theContactDetails, value);
-            }
-        }
-
-        public override InformationAssociationConnector? association {
-            get {
-                return _associationConnector;
-            }
-
-            set {
-                this.SetValue(ref _associationConnector, value);
-                if (value is not null) {
-                    theAuthority = value?.role switch
-                    {
-                        "theContactDetails" => value.CreateForeignInformationBinding(),
-                        _ => value!.CreateLocalInformationBinding(),
-                    };
-                }
-                else {
-                    theAuthority = null;
-                }
-
-                if (value is not null) {
-                    theContactDetails = value?.role switch
-                    {
-                        "theAuthority" => value.CreateForeignInformationBinding(),
-                        _ => value!.CreateLocalInformationBinding(),
-                    };
-                }
-                else {
-                    theContactDetails = null;
-                }
-            }
-        }
-
-        public override void Load(S100Framework.DomainModel.InformationAssociation informationAssociation) {
-            association = associationConnectorInformations.SingleOrDefault(e => e.InformationType.Equals(informationAssociation.AssociationConnectorTypeName));
-            theAuthority?.Load(informationAssociation, "theAuthority");
-            theContactDetails?.Load(informationAssociation, "theContactDetails");
-        }
-
-        public override string Serialize() {
-            var instance = new InformationAssociation
-            {
-                Code = this.Code,
-                AssociationConnectorTypeName = association!.InformationType,
-            };
-            theAuthority?.Save(instance, "theAuthority");
-            theContactDetails?.Save(instance, "theContactDetails");
-            return System.Text.Json.JsonSerializer.Serialize(instance);
-        }
-
-        public override InformationAssociationConnector[] associationConnectorInformations => AuthorityContactViewModel._associationConnectorInformations;
-
-        public class theAuthorityContactDetailsRefIdViewModel : InformationRefIdViewModel {
-            public override string[] AssociationTypes => ["Authority"];
-        }
-
-        public class theContactDetailsAuthorityRefIdViewModel : InformationRefIdViewModel {
-            public override string[] AssociationTypes => ["ContactDetails"];
-        }
-
-        public static InformationAssociationConnector[] _associationConnectorInformations => Handles.AssociationConnectorInformations[typeof(AuthorityContactViewModel)]();
-    }
-
-    public class AuthorityHoursViewModel : InformationAssociationViewModel {
-        public override string Code => "AuthorityHours";
-        public override string[] Roles => ["theAuthority_srvHrs", "theServiceHours"];
-
-        private InformationBindingViewModel? _theAuthority_srvHrs;
-        [ExpandableObject]
-        public InformationBindingViewModel? theAuthority_srvHrs {
-            get {
-                return _theAuthority_srvHrs;
-            }
-
-            set {
-                this.SetValue(ref _theAuthority_srvHrs, value);
-            }
-        }
-
-        private InformationBindingViewModel? _theServiceHours;
-        [ExpandableObject]
-        public InformationBindingViewModel? theServiceHours {
-            get {
-                return _theServiceHours;
-            }
-
-            set {
-                this.SetValue(ref _theServiceHours, value);
-            }
-        }
-
-        public override InformationAssociationConnector? association {
-            get {
-                return _associationConnector;
-            }
-
-            set {
-                this.SetValue(ref _associationConnector, value);
-                if (value is not null) {
-                    theAuthority_srvHrs = value?.role switch
-                    {
-                        "theServiceHours" => value.CreateForeignInformationBinding(),
-                        _ => value!.CreateLocalInformationBinding(),
-                    };
-                }
-                else {
-                    theAuthority_srvHrs = null;
-                }
-
-                if (value is not null) {
-                    theServiceHours = value?.role switch
-                    {
-                        "theAuthority_srvHrs" => value.CreateForeignInformationBinding(),
-                        _ => value!.CreateLocalInformationBinding(),
-                    };
-                }
-                else {
-                    theServiceHours = null;
-                }
-            }
-        }
-
-        public override void Load(S100Framework.DomainModel.InformationAssociation informationAssociation) {
-            association = associationConnectorInformations.SingleOrDefault(e => e.InformationType.Equals(informationAssociation.AssociationConnectorTypeName));
-            theAuthority_srvHrs?.Load(informationAssociation, "theAuthority_srvHrs");
-            theServiceHours?.Load(informationAssociation, "theServiceHours");
-        }
-
-        public override string Serialize() {
-            var instance = new InformationAssociation
-            {
-                Code = this.Code,
-                AssociationConnectorTypeName = association!.InformationType,
-            };
-            theAuthority_srvHrs?.Save(instance, "theAuthority_srvHrs");
-            theServiceHours?.Save(instance, "theServiceHours");
-            return System.Text.Json.JsonSerializer.Serialize(instance);
-        }
-
-        public override InformationAssociationConnector[] associationConnectorInformations => AuthorityHoursViewModel._associationConnectorInformations;
-
-        public class theAuthority_srvHrsServiceHoursRefIdViewModel : InformationRefIdViewModel {
-            public override string[] AssociationTypes => ["Authority"];
-        }
-
-        public class theServiceHoursAuthorityRefIdViewModel : InformationRefIdViewModel {
-            public override string[] AssociationTypes => ["ServiceHours"];
-        }
-
-        public static InformationAssociationConnector[] _associationConnectorInformations => Handles.AssociationConnectorInformations[typeof(AuthorityHoursViewModel)]();
-    }
-
-    public class AssociatedRxNViewModel : InformationAssociationViewModel {
-        public override string Code => "AssociatedRxN";
-        public override string[] Roles => ["appliesInLocation", "theRxN"];
-
-        private InformationBindingViewModel? _appliesInLocation;
-        [ExpandableObject]
-        public InformationBindingViewModel? appliesInLocation {
-            get {
-                return _appliesInLocation;
-            }
-
-            set {
-                this.SetValue(ref _appliesInLocation, value);
-            }
-        }
-
-        private InformationBindingViewModel? _theRxN;
-        [ExpandableObject]
-        public InformationBindingViewModel? theRxN {
-            get {
-                return _theRxN;
-            }
-
-            set {
-                this.SetValue(ref _theRxN, value);
-            }
-        }
-
-        public override InformationAssociationConnector? association {
-            get {
-                return _associationConnector;
-            }
-
-            set {
-                this.SetValue(ref _associationConnector, value);
-                if (value is not null) {
-                    appliesInLocation = value?.role switch
-                    {
-                        "theRxN" => value.CreateForeignInformationBinding(),
-                        _ => value!.CreateLocalInformationBinding(),
-                    };
-                }
-                else {
-                    appliesInLocation = null;
-                }
-
-                if (value is not null) {
-                    theRxN = value?.role switch
-                    {
-                        "appliesInLocation" => value.CreateForeignInformationBinding(),
-                        _ => value!.CreateLocalInformationBinding(),
-                    };
-                }
-                else {
-                    theRxN = null;
-                }
-            }
-        }
-
-        public override void Load(S100Framework.DomainModel.InformationAssociation informationAssociation) {
-            association = associationConnectorInformations.SingleOrDefault(e => e.InformationType.Equals(informationAssociation.AssociationConnectorTypeName));
-            appliesInLocation?.Load(informationAssociation, "appliesInLocation");
-            theRxN?.Load(informationAssociation, "theRxN");
-        }
-
-        public override string Serialize() {
-            var instance = new InformationAssociation
-            {
-                Code = this.Code,
-                AssociationConnectorTypeName = association!.InformationType,
-            };
-            appliesInLocation?.Save(instance, "appliesInLocation");
-            theRxN?.Save(instance, "theRxN");
-            return System.Text.Json.JsonSerializer.Serialize(instance);
-        }
-
-        public override InformationAssociationConnector[] associationConnectorInformations => AssociatedRxNViewModel._associationConnectorInformations;
-
-        public class theRxNDryDockRefIdViewModel : InformationRefIdViewModel {
-            public override string[] AssociationTypes => ["NauticalInformation", "Recommendations", "Regulations", "Restrictions"];
-        }
-
-        public class theRxNFloatingDockRefIdViewModel : InformationRefIdViewModel {
-            public override string[] AssociationTypes => ["NauticalInformation", "Recommendations", "Regulations", "Restrictions"];
-        }
-
-        public class theRxNGridironRefIdViewModel : InformationRefIdViewModel {
-            public override string[] AssociationTypes => ["NauticalInformation", "Recommendations", "Regulations", "Restrictions"];
-        }
-
-        public class theRxNHarbourFacilityRefIdViewModel : InformationRefIdViewModel {
-            public override string[] AssociationTypes => ["NauticalInformation", "Recommendations", "Regulations", "Restrictions"];
-        }
-
-        public class theRxNAnchorBerthRefIdViewModel : InformationRefIdViewModel {
-            public override string[] AssociationTypes => ["NauticalInformation", "Recommendations", "Regulations", "Restrictions"];
-        }
-
-        public class theRxNAnchorageAreaRefIdViewModel : InformationRefIdViewModel {
-            public override string[] AssociationTypes => ["NauticalInformation", "Recommendations", "Regulations", "Restrictions"];
-        }
-
-        public class theRxNBerthRefIdViewModel : InformationRefIdViewModel {
-            public override string[] AssociationTypes => ["NauticalInformation", "Recommendations", "Regulations", "Restrictions"];
-        }
-
-        public class theRxNBerthPositionRefIdViewModel : InformationRefIdViewModel {
-            public override string[] AssociationTypes => ["NauticalInformation", "Recommendations", "Regulations", "Restrictions"];
-        }
-
-        public class theRxNDockAreaRefIdViewModel : InformationRefIdViewModel {
-            public override string[] AssociationTypes => ["NauticalInformation", "Recommendations", "Regulations", "Restrictions"];
-        }
-
-        public class theRxNDumpingGroundRefIdViewModel : InformationRefIdViewModel {
-            public override string[] AssociationTypes => ["NauticalInformation", "Recommendations", "Regulations", "Restrictions"];
-        }
-
-        public class theRxNHarbourAreaAdministrativeRefIdViewModel : InformationRefIdViewModel {
-            public override string[] AssociationTypes => ["NauticalInformation", "Recommendations", "Regulations", "Restrictions"];
-        }
-
-        public class theRxNHarbourAreaSectionRefIdViewModel : InformationRefIdViewModel {
-            public override string[] AssociationTypes => ["NauticalInformation", "Recommendations", "Regulations", "Restrictions"];
-        }
-
-        public class theRxNHarbourBasinRefIdViewModel : InformationRefIdViewModel {
-            public override string[] AssociationTypes => ["NauticalInformation", "Recommendations", "Regulations", "Restrictions"];
-        }
-
-        public class theRxNMooringWarpingFacilityRefIdViewModel : InformationRefIdViewModel {
-            public override string[] AssociationTypes => ["NauticalInformation", "Recommendations", "Regulations", "Restrictions"];
-        }
-
-        public class theRxNOuterLimitRefIdViewModel : InformationRefIdViewModel {
-            public override string[] AssociationTypes => ["NauticalInformation", "Recommendations", "Regulations", "Restrictions"];
-        }
-
-        public class theRxNPilotBoardingPlaceRefIdViewModel : InformationRefIdViewModel {
-            public override string[] AssociationTypes => ["NauticalInformation", "Recommendations", "Regulations", "Restrictions"];
-        }
-
-        public class theRxNSeaplaneLandingAreaRefIdViewModel : InformationRefIdViewModel {
-            public override string[] AssociationTypes => ["NauticalInformation", "Recommendations", "Regulations", "Restrictions"];
-        }
-
-        public class theRxNTerminalRefIdViewModel : InformationRefIdViewModel {
-            public override string[] AssociationTypes => ["NauticalInformation", "Recommendations", "Regulations", "Restrictions"];
-        }
-
-        public class theRxNTurningBasinRefIdViewModel : InformationRefIdViewModel {
-            public override string[] AssociationTypes => ["NauticalInformation", "Recommendations", "Regulations", "Restrictions"];
-        }
-
-        public class theRxNWaterwayAreaRefIdViewModel : InformationRefIdViewModel {
-            public override string[] AssociationTypes => ["NauticalInformation", "Recommendations", "Regulations", "Restrictions"];
-        }
-
-        public static InformationAssociationConnector[] _associationConnectorInformations => Handles.AssociationConnectorInformations[typeof(AssociatedRxNViewModel)]();
-    }
-
-    public class ExceptionalWorkdayViewModel : InformationAssociationViewModel {
-        public override string Code => "ExceptionalWorkday";
-        public override string[] Roles => ["theServiceHours_nsdy", "partialWorkingDay"];
-
-        private InformationBindingViewModel? _theServiceHours_nsdy;
-        [ExpandableObject]
-        public InformationBindingViewModel? theServiceHours_nsdy {
-            get {
-                return _theServiceHours_nsdy;
-            }
-
-            set {
-                this.SetValue(ref _theServiceHours_nsdy, value);
-            }
-        }
-
-        private InformationBindingViewModel? _partialWorkingDay;
-        [ExpandableObject]
-        public InformationBindingViewModel? partialWorkingDay {
-            get {
-                return _partialWorkingDay;
-            }
-
-            set {
-                this.SetValue(ref _partialWorkingDay, value);
-            }
-        }
-
-        public override InformationAssociationConnector? association {
-            get {
-                return _associationConnector;
-            }
-
-            set {
-                this.SetValue(ref _associationConnector, value);
-                if (value is not null) {
-                    theServiceHours_nsdy = value?.role switch
-                    {
-                        "partialWorkingDay" => value.CreateForeignInformationBinding(),
-                        _ => value!.CreateLocalInformationBinding(),
-                    };
-                }
-                else {
-                    theServiceHours_nsdy = null;
-                }
-
-                if (value is not null) {
-                    partialWorkingDay = value?.role switch
-                    {
-                        "theServiceHours_nsdy" => value.CreateForeignInformationBinding(),
-                        _ => value!.CreateLocalInformationBinding(),
-                    };
-                }
-                else {
-                    partialWorkingDay = null;
-                }
-            }
-        }
-
-        public override void Load(S100Framework.DomainModel.InformationAssociation informationAssociation) {
-            association = associationConnectorInformations.SingleOrDefault(e => e.InformationType.Equals(informationAssociation.AssociationConnectorTypeName));
-            theServiceHours_nsdy?.Load(informationAssociation, "theServiceHours_nsdy");
-            partialWorkingDay?.Load(informationAssociation, "partialWorkingDay");
-        }
-
-        public override string Serialize() {
-            var instance = new InformationAssociation
-            {
-                Code = this.Code,
-                AssociationConnectorTypeName = association!.InformationType,
-            };
-            theServiceHours_nsdy?.Save(instance, "theServiceHours_nsdy");
-            partialWorkingDay?.Save(instance, "partialWorkingDay");
-            return System.Text.Json.JsonSerializer.Serialize(instance);
-        }
-
-        public override InformationAssociationConnector[] associationConnectorInformations => ExceptionalWorkdayViewModel._associationConnectorInformations;
-
-        public class partialWorkingDayServiceHoursRefIdViewModel : InformationRefIdViewModel {
-            public override string[] AssociationTypes => ["NonStandardWorkingDay"];
-        }
-
-        public static InformationAssociationConnector[] _associationConnectorInformations => Handles.AssociationConnectorInformations[typeof(ExceptionalWorkdayViewModel)]();
-    }
-
-    public class ServiceControlViewModel : InformationAssociationViewModel {
-        public override string Code => "ServiceControl";
-        public override string[] Roles => ["controlledService", "controlAuthority"];
-
-        private InformationBindingViewModel? _controlledService;
-        [ExpandableObject]
-        public InformationBindingViewModel? controlledService {
-            get {
-                return _controlledService;
-            }
-
-            set {
-                this.SetValue(ref _controlledService, value);
-            }
-        }
-
-        private InformationBindingViewModel? _controlAuthority;
-        [ExpandableObject]
-        public InformationBindingViewModel? controlAuthority {
-            get {
-                return _controlAuthority;
-            }
-
-            set {
-                this.SetValue(ref _controlAuthority, value);
-            }
-        }
-
-        public override InformationAssociationConnector? association {
-            get {
-                return _associationConnector;
-            }
-
-            set {
-                this.SetValue(ref _associationConnector, value);
-                if (value is not null) {
-                    controlledService = value?.role switch
-                    {
-                        "controlAuthority" => value.CreateForeignInformationBinding(),
-                        _ => value!.CreateLocalInformationBinding(),
-                    };
-                }
-                else {
-                    controlledService = null;
-                }
-
-                if (value is not null) {
-                    controlAuthority = value?.role switch
-                    {
-                        "controlledService" => value.CreateForeignInformationBinding(),
-                        _ => value!.CreateLocalInformationBinding(),
-                    };
-                }
-                else {
-                    controlAuthority = null;
-                }
-            }
-        }
-
-        public override void Load(S100Framework.DomainModel.InformationAssociation informationAssociation) {
-            association = associationConnectorInformations.SingleOrDefault(e => e.InformationType.Equals(informationAssociation.AssociationConnectorTypeName));
-            controlledService?.Load(informationAssociation, "controlledService");
-            controlAuthority?.Load(informationAssociation, "controlAuthority");
-        }
-
-        public override string Serialize() {
-            var instance = new InformationAssociation
-            {
-                Code = this.Code,
-                AssociationConnectorTypeName = association!.InformationType,
-            };
-            controlledService?.Save(instance, "controlledService");
-            controlAuthority?.Save(instance, "controlAuthority");
-            return System.Text.Json.JsonSerializer.Serialize(instance);
-        }
-
-        public override InformationAssociationConnector[] associationConnectorInformations => ServiceControlViewModel._associationConnectorInformations;
-
-        public class controlAuthorityDryDockRefIdViewModel : InformationRefIdViewModel {
-            public override string[] AssociationTypes => ["Authority"];
-        }
-
-        public class controlAuthorityFloatingDockRefIdViewModel : InformationRefIdViewModel {
-            public override string[] AssociationTypes => ["Authority"];
-        }
-
-        public class controlAuthorityGridironRefIdViewModel : InformationRefIdViewModel {
-            public override string[] AssociationTypes => ["Authority"];
-        }
-
-        public class controlAuthorityHarbourFacilityRefIdViewModel : InformationRefIdViewModel {
-            public override string[] AssociationTypes => ["Authority"];
-        }
-
-        public class controlAuthorityAnchorBerthRefIdViewModel : InformationRefIdViewModel {
-            public override string[] AssociationTypes => ["Authority"];
-        }
-
-        public class controlAuthorityAnchorageAreaRefIdViewModel : InformationRefIdViewModel {
-            public override string[] AssociationTypes => ["Authority"];
-        }
-
-        public class controlAuthorityBerthRefIdViewModel : InformationRefIdViewModel {
-            public override string[] AssociationTypes => ["Authority"];
-        }
-
-        public class controlAuthorityBerthPositionRefIdViewModel : InformationRefIdViewModel {
-            public override string[] AssociationTypes => ["Authority"];
-        }
-
-        public class controlAuthorityDockAreaRefIdViewModel : InformationRefIdViewModel {
-            public override string[] AssociationTypes => ["Authority"];
-        }
-
-        public class controlAuthorityDumpingGroundRefIdViewModel : InformationRefIdViewModel {
-            public override string[] AssociationTypes => ["Authority"];
-        }
-
-        public class controlAuthorityHarbourAreaAdministrativeRefIdViewModel : InformationRefIdViewModel {
-            public override string[] AssociationTypes => ["Authority"];
-        }
-
-        public class controlAuthorityHarbourAreaSectionRefIdViewModel : InformationRefIdViewModel {
-            public override string[] AssociationTypes => ["Authority"];
-        }
-
-        public class controlAuthorityHarbourBasinRefIdViewModel : InformationRefIdViewModel {
-            public override string[] AssociationTypes => ["Authority"];
-        }
-
-        public class controlAuthorityMooringWarpingFacilityRefIdViewModel : InformationRefIdViewModel {
-            public override string[] AssociationTypes => ["Authority"];
-        }
-
-        public class controlAuthorityOuterLimitRefIdViewModel : InformationRefIdViewModel {
-            public override string[] AssociationTypes => ["Authority"];
-        }
-
-        public class controlAuthorityPilotBoardingPlaceRefIdViewModel : InformationRefIdViewModel {
-            public override string[] AssociationTypes => ["Authority"];
-        }
-
-        public class controlAuthoritySeaplaneLandingAreaRefIdViewModel : InformationRefIdViewModel {
-            public override string[] AssociationTypes => ["Authority"];
-        }
-
-        public class controlAuthorityTerminalRefIdViewModel : InformationRefIdViewModel {
-            public override string[] AssociationTypes => ["Authority"];
-        }
-
-        public class controlAuthorityTurningBasinRefIdViewModel : InformationRefIdViewModel {
-            public override string[] AssociationTypes => ["Authority"];
-        }
-
-        public class controlAuthorityWaterwayAreaRefIdViewModel : InformationRefIdViewModel {
-            public override string[] AssociationTypes => ["Authority"];
-        }
-
-        public static InformationAssociationConnector[] _associationConnectorInformations => Handles.AssociationConnectorInformations[typeof(ServiceControlViewModel)]();
-    }
-
-    public class ServiceContactViewModel : InformationAssociationViewModel {
-        public override string Code => "ServiceContact";
-        public override string[] Roles => ["servicePlace", "theContactDetails"];
-
-        private InformationBindingViewModel? _servicePlace;
-        [ExpandableObject]
-        public InformationBindingViewModel? servicePlace {
-            get {
-                return _servicePlace;
-            }
-
-            set {
-                this.SetValue(ref _servicePlace, value);
-            }
-        }
-
-        private InformationBindingViewModel? _theContactDetails;
-        [ExpandableObject]
-        public InformationBindingViewModel? theContactDetails {
-            get {
-                return _theContactDetails;
-            }
-
-            set {
-                this.SetValue(ref _theContactDetails, value);
-            }
-        }
-
-        public override InformationAssociationConnector? association {
-            get {
-                return _associationConnector;
-            }
-
-            set {
-                this.SetValue(ref _associationConnector, value);
-                if (value is not null) {
-                    servicePlace = value?.role switch
-                    {
-                        "theContactDetails" => value.CreateForeignInformationBinding(),
-                        _ => value!.CreateLocalInformationBinding(),
-                    };
-                }
-                else {
-                    servicePlace = null;
-                }
-
-                if (value is not null) {
-                    theContactDetails = value?.role switch
-                    {
-                        "servicePlace" => value.CreateForeignInformationBinding(),
-                        _ => value!.CreateLocalInformationBinding(),
-                    };
-                }
-                else {
-                    theContactDetails = null;
-                }
-            }
-        }
-
-        public override void Load(S100Framework.DomainModel.InformationAssociation informationAssociation) {
-            association = associationConnectorInformations.SingleOrDefault(e => e.InformationType.Equals(informationAssociation.AssociationConnectorTypeName));
-            servicePlace?.Load(informationAssociation, "servicePlace");
-            theContactDetails?.Load(informationAssociation, "theContactDetails");
-        }
-
-        public override string Serialize() {
-            var instance = new InformationAssociation
-            {
-                Code = this.Code,
-                AssociationConnectorTypeName = association!.InformationType,
-            };
-            servicePlace?.Save(instance, "servicePlace");
-            theContactDetails?.Save(instance, "theContactDetails");
-            return System.Text.Json.JsonSerializer.Serialize(instance);
-        }
-
-        public override InformationAssociationConnector[] associationConnectorInformations => ServiceContactViewModel._associationConnectorInformations;
-
-        public class theContactDetailsDryDockRefIdViewModel : InformationRefIdViewModel {
-            public override string[] AssociationTypes => ["ContactDetails"];
-        }
-
-        public class theContactDetailsFloatingDockRefIdViewModel : InformationRefIdViewModel {
-            public override string[] AssociationTypes => ["ContactDetails"];
-        }
-
-        public class theContactDetailsGridironRefIdViewModel : InformationRefIdViewModel {
-            public override string[] AssociationTypes => ["ContactDetails"];
-        }
-
-        public class theContactDetailsHarbourFacilityRefIdViewModel : InformationRefIdViewModel {
-            public override string[] AssociationTypes => ["ContactDetails"];
-        }
-
-        public class theContactDetailsAnchorBerthRefIdViewModel : InformationRefIdViewModel {
-            public override string[] AssociationTypes => ["ContactDetails"];
-        }
-
-        public class theContactDetailsAnchorageAreaRefIdViewModel : InformationRefIdViewModel {
-            public override string[] AssociationTypes => ["ContactDetails"];
-        }
-
-        public class theContactDetailsBerthRefIdViewModel : InformationRefIdViewModel {
-            public override string[] AssociationTypes => ["ContactDetails"];
-        }
-
-        public class theContactDetailsBerthPositionRefIdViewModel : InformationRefIdViewModel {
-            public override string[] AssociationTypes => ["ContactDetails"];
-        }
-
-        public class theContactDetailsDockAreaRefIdViewModel : InformationRefIdViewModel {
-            public override string[] AssociationTypes => ["ContactDetails"];
-        }
-
-        public class theContactDetailsDumpingGroundRefIdViewModel : InformationRefIdViewModel {
-            public override string[] AssociationTypes => ["ContactDetails"];
-        }
-
-        public class theContactDetailsHarbourAreaAdministrativeRefIdViewModel : InformationRefIdViewModel {
-            public override string[] AssociationTypes => ["ContactDetails"];
-        }
-
-        public class theContactDetailsHarbourAreaSectionRefIdViewModel : InformationRefIdViewModel {
-            public override string[] AssociationTypes => ["ContactDetails"];
-        }
-
-        public class theContactDetailsHarbourBasinRefIdViewModel : InformationRefIdViewModel {
-            public override string[] AssociationTypes => ["ContactDetails"];
-        }
-
-        public class theContactDetailsMooringWarpingFacilityRefIdViewModel : InformationRefIdViewModel {
-            public override string[] AssociationTypes => ["ContactDetails"];
-        }
-
-        public class theContactDetailsOuterLimitRefIdViewModel : InformationRefIdViewModel {
-            public override string[] AssociationTypes => ["ContactDetails"];
-        }
-
-        public class theContactDetailsPilotBoardingPlaceRefIdViewModel : InformationRefIdViewModel {
-            public override string[] AssociationTypes => ["ContactDetails"];
-        }
-
-        public class theContactDetailsSeaplaneLandingAreaRefIdViewModel : InformationRefIdViewModel {
-            public override string[] AssociationTypes => ["ContactDetails"];
-        }
-
-        public class theContactDetailsTerminalRefIdViewModel : InformationRefIdViewModel {
-            public override string[] AssociationTypes => ["ContactDetails"];
-        }
-
-        public class theContactDetailsTurningBasinRefIdViewModel : InformationRefIdViewModel {
-            public override string[] AssociationTypes => ["ContactDetails"];
-        }
-
-        public class theContactDetailsWaterwayAreaRefIdViewModel : InformationRefIdViewModel {
-            public override string[] AssociationTypes => ["ContactDetails"];
-        }
-
-        public static InformationAssociationConnector[] _associationConnectorInformations => Handles.AssociationConnectorInformations[typeof(ServiceContactViewModel)]();
-    }
-
-    public class LocationHoursViewModel : InformationAssociationViewModel {
-        public override string Code => "LocationHours";
-        public override string[] Roles => ["location_srvHrs", "facilityOperatingHours"];
-
-        private InformationBindingViewModel? _location_srvHrs;
-        [ExpandableObject]
-        public InformationBindingViewModel? location_srvHrs {
-            get {
-                return _location_srvHrs;
-            }
-
-            set {
-                this.SetValue(ref _location_srvHrs, value);
-            }
-        }
-
-        private InformationBindingViewModel? _facilityOperatingHours;
-        [ExpandableObject]
-        public InformationBindingViewModel? facilityOperatingHours {
-            get {
-                return _facilityOperatingHours;
-            }
-
-            set {
-                this.SetValue(ref _facilityOperatingHours, value);
-            }
-        }
-
-        public override InformationAssociationConnector? association {
-            get {
-                return _associationConnector;
-            }
-
-            set {
-                this.SetValue(ref _associationConnector, value);
-                if (value is not null) {
-                    location_srvHrs = value?.role switch
-                    {
-                        "facilityOperatingHours" => value.CreateForeignInformationBinding(),
-                        _ => value!.CreateLocalInformationBinding(),
-                    };
-                }
-                else {
-                    location_srvHrs = null;
-                }
-
-                if (value is not null) {
-                    facilityOperatingHours = value?.role switch
-                    {
-                        "location_srvHrs" => value.CreateForeignInformationBinding(),
-                        _ => value!.CreateLocalInformationBinding(),
-                    };
-                }
-                else {
-                    facilityOperatingHours = null;
-                }
-            }
-        }
-
-        public override void Load(S100Framework.DomainModel.InformationAssociation informationAssociation) {
-            association = associationConnectorInformations.SingleOrDefault(e => e.InformationType.Equals(informationAssociation.AssociationConnectorTypeName));
-            location_srvHrs?.Load(informationAssociation, "location_srvHrs");
-            facilityOperatingHours?.Load(informationAssociation, "facilityOperatingHours");
-        }
-
-        public override string Serialize() {
-            var instance = new InformationAssociation
-            {
-                Code = this.Code,
-                AssociationConnectorTypeName = association!.InformationType,
-            };
-            location_srvHrs?.Save(instance, "location_srvHrs");
-            facilityOperatingHours?.Save(instance, "facilityOperatingHours");
-            return System.Text.Json.JsonSerializer.Serialize(instance);
-        }
-
-        public override InformationAssociationConnector[] associationConnectorInformations => LocationHoursViewModel._associationConnectorInformations;
-
-        public class location_srvHrsAnchorageAreaRefIdViewModel : InformationRefIdViewModel {
-            public override string[] AssociationTypes => ["ServiceHours"];
-        }
-
-        public class location_srvHrsAnchorBerthRefIdViewModel : InformationRefIdViewModel {
-            public override string[] AssociationTypes => ["ServiceHours"];
-        }
-
-        public class location_srvHrsBerthRefIdViewModel : InformationRefIdViewModel {
-            public override string[] AssociationTypes => ["ServiceHours"];
-        }
-
-        public class location_srvHrsDockAreaRefIdViewModel : InformationRefIdViewModel {
-            public override string[] AssociationTypes => ["ServiceHours"];
-        }
-
-        public class location_srvHrsDryDockRefIdViewModel : InformationRefIdViewModel {
-            public override string[] AssociationTypes => ["ServiceHours"];
-        }
-
-        public class location_srvHrsDumpingGroundRefIdViewModel : InformationRefIdViewModel {
-            public override string[] AssociationTypes => ["ServiceHours"];
-        }
-
-        public class location_srvHrsFloatingDockRefIdViewModel : InformationRefIdViewModel {
-            public override string[] AssociationTypes => ["ServiceHours"];
-        }
-
-        public class location_srvHrsGridironRefIdViewModel : InformationRefIdViewModel {
-            public override string[] AssociationTypes => ["ServiceHours"];
-        }
-
-        public class location_srvHrsHarbourAreaAdministrativeRefIdViewModel : InformationRefIdViewModel {
-            public override string[] AssociationTypes => ["ServiceHours"];
-        }
-
-        public class location_srvHrsHarbourAreaSectionRefIdViewModel : InformationRefIdViewModel {
-            public override string[] AssociationTypes => ["ServiceHours"];
-        }
-
-        public class location_srvHrsHarbourBasinRefIdViewModel : InformationRefIdViewModel {
-            public override string[] AssociationTypes => ["ServiceHours"];
-        }
-
-        public class location_srvHrsHarbourFacilityRefIdViewModel : InformationRefIdViewModel {
-            public override string[] AssociationTypes => ["ServiceHours"];
-        }
-
-        public class location_srvHrsMooringWarpingFacilityRefIdViewModel : InformationRefIdViewModel {
-            public override string[] AssociationTypes => ["ServiceHours"];
-        }
-
-        public class location_srvHrsPilotBoardingPlaceRefIdViewModel : InformationRefIdViewModel {
-            public override string[] AssociationTypes => ["ServiceHours"];
-        }
-
-        public class location_srvHrsSeaplaneLandingAreaRefIdViewModel : InformationRefIdViewModel {
-            public override string[] AssociationTypes => ["ServiceHours"];
-        }
-
-        public class location_srvHrsTerminalRefIdViewModel : InformationRefIdViewModel {
-            public override string[] AssociationTypes => ["ServiceHours"];
-        }
-
-        public class location_srvHrsTurningBasinRefIdViewModel : InformationRefIdViewModel {
-            public override string[] AssociationTypes => ["ServiceHours"];
-        }
-
-        public class location_srvHrsWaterwayAreaRefIdViewModel : InformationRefIdViewModel {
-            public override string[] AssociationTypes => ["ServiceHours"];
-        }
-
-        public static InformationAssociationConnector[] _associationConnectorInformations => Handles.AssociationConnectorInformations[typeof(LocationHoursViewModel)]();
-    }
-
-    public class RelatedOrganisationViewModel : InformationAssociationViewModel {
-        public override string Code => "RelatedOrganisation";
-        public override string[] Roles => ["theInformation", "theOrganisation"];
-
-        private InformationBindingViewModel? _theInformation;
-        [ExpandableObject]
-        public InformationBindingViewModel? theInformation {
-            get {
-                return _theInformation;
-            }
-
-            set {
-                this.SetValue(ref _theInformation, value);
-            }
-        }
-
-        private InformationBindingViewModel? _theOrganisation;
-        [ExpandableObject]
-        public InformationBindingViewModel? theOrganisation {
-            get {
-                return _theOrganisation;
-            }
-
-            set {
-                this.SetValue(ref _theOrganisation, value);
-            }
-        }
-
-        public override InformationAssociationConnector? association {
-            get {
-                return _associationConnector;
-            }
-
-            set {
-                this.SetValue(ref _associationConnector, value);
-                if (value is not null) {
-                    theInformation = value?.role switch
-                    {
-                        "theOrganisation" => value.CreateForeignInformationBinding(),
-                        _ => value!.CreateLocalInformationBinding(),
-                    };
-                }
-                else {
-                    theInformation = null;
-                }
-
-                if (value is not null) {
-                    theOrganisation = value?.role switch
-                    {
-                        "theInformation" => value.CreateForeignInformationBinding(),
-                        _ => value!.CreateLocalInformationBinding(),
-                    };
-                }
-                else {
-                    theOrganisation = null;
-                }
-            }
-        }
-
-        public override void Load(S100Framework.DomainModel.InformationAssociation informationAssociation) {
-            association = associationConnectorInformations.SingleOrDefault(e => e.InformationType.Equals(informationAssociation.AssociationConnectorTypeName));
-            theInformation?.Load(informationAssociation, "theInformation");
-            theOrganisation?.Load(informationAssociation, "theOrganisation");
-        }
-
-        public override string Serialize() {
-            var instance = new InformationAssociation
-            {
-                Code = this.Code,
-                AssociationConnectorTypeName = association!.InformationType,
-            };
-            theInformation?.Save(instance, "theInformation");
-            theOrganisation?.Save(instance, "theOrganisation");
-            return System.Text.Json.JsonSerializer.Serialize(instance);
-        }
-
-        public override InformationAssociationConnector[] associationConnectorInformations => RelatedOrganisationViewModel._associationConnectorInformations;
-
-        public class theInformationAuthorityRefIdViewModel : InformationRefIdViewModel {
-            public override string[] AssociationTypes => ["NauticalInformation", "Recommendations", "Regulations", "Restrictions"];
-        }
-
-        public class theOrganisationNauticalInformationRefIdViewModel : InformationRefIdViewModel {
-            public override string[] AssociationTypes => ["Authority"];
-        }
-
-        public class theOrganisationRecommendationsRefIdViewModel : InformationRefIdViewModel {
-            public override string[] AssociationTypes => ["Authority"];
-        }
-
-        public class theOrganisationRegulationsRefIdViewModel : InformationRefIdViewModel {
-            public override string[] AssociationTypes => ["Authority"];
-        }
-
-        public class theOrganisationRestrictionsRefIdViewModel : InformationRefIdViewModel {
-            public override string[] AssociationTypes => ["Authority"];
-        }
-
-        public static InformationAssociationConnector[] _associationConnectorInformations => Handles.AssociationConnectorInformations[typeof(RelatedOrganisationViewModel)]();
-    }
-
-    public class InclusionTypeViewModel : InformationAssociationViewModel {
-        public override string Code => "InclusionType";
-        public override string[] Roles => ["theApplicableRxN", "isApplicableTo"];
-
-        private InformationBindingViewModel? _theApplicableRxN;
-        [ExpandableObject]
-        public InformationBindingViewModel? theApplicableRxN {
-            get {
-                return _theApplicableRxN;
-            }
-
-            set {
-                this.SetValue(ref _theApplicableRxN, value);
-            }
-        }
-
-        private InformationBindingViewModel? _isApplicableTo;
-        [ExpandableObject]
-        public InformationBindingViewModel? isApplicableTo {
-            get {
-                return _isApplicableTo;
-            }
-
-            set {
-                this.SetValue(ref _isApplicableTo, value);
-            }
-        }
-
-        public override InformationAssociationConnector? association {
-            get {
-                return _associationConnector;
-            }
-
-            set {
-                this.SetValue(ref _associationConnector, value);
-                if (value is not null) {
-                    theApplicableRxN = value?.role switch
-                    {
-                        "isApplicableTo" => value.CreateForeignInformationBinding(),
-                        _ => value!.CreateLocalInformationBinding(),
-                    };
-                }
-                else {
-                    theApplicableRxN = null;
-                }
-
-                if (value is not null) {
-                    isApplicableTo = value?.role switch
-                    {
-                        "theApplicableRxN" => value.CreateForeignInformationBinding(),
-                        _ => value!.CreateLocalInformationBinding(),
-                    };
-                }
-                else {
-                    isApplicableTo = null;
-                }
-            }
-        }
-
-        public override void Load(S100Framework.DomainModel.InformationAssociation informationAssociation) {
-            association = associationConnectorInformations.SingleOrDefault(e => e.InformationType.Equals(informationAssociation.AssociationConnectorTypeName));
-            theApplicableRxN?.Load(informationAssociation, "theApplicableRxN");
-            isApplicableTo?.Load(informationAssociation, "isApplicableTo");
-        }
-
-        public override string Serialize() {
-            var instance = new InformationAssociation
-            {
-                Code = this.Code,
-                AssociationConnectorTypeName = association!.InformationType,
-            };
-            theApplicableRxN?.Save(instance, "theApplicableRxN");
-            isApplicableTo?.Save(instance, "isApplicableTo");
-            return System.Text.Json.JsonSerializer.Serialize(instance);
-        }
-
-        public override InformationAssociationConnector[] associationConnectorInformations => InclusionTypeViewModel._associationConnectorInformations;
-
-        public class isApplicableToNauticalInformationRefIdViewModel : InformationRefIdViewModel {
-            public override string[] AssociationTypes => ["Applicability"];
-        }
-
-        public class isApplicableToRecommendationsRefIdViewModel : InformationRefIdViewModel {
-            public override string[] AssociationTypes => ["Applicability"];
-        }
-
-        public class isApplicableToRegulationsRefIdViewModel : InformationRefIdViewModel {
-            public override string[] AssociationTypes => ["Applicability"];
-        }
-
-        public class isApplicableToRestrictionsRefIdViewModel : InformationRefIdViewModel {
-            public override string[] AssociationTypes => ["Applicability"];
-        }
-
-        public class theApplicableRxNApplicabilityRefIdViewModel : InformationRefIdViewModel {
-            public override string[] AssociationTypes => ["NauticalInformation", "Recommendations", "Regulations", "Restrictions"];
-        }
-
-        public static InformationAssociationConnector[] _associationConnectorInformations => Handles.AssociationConnectorInformations[typeof(InclusionTypeViewModel)]();
-    }
-
-    public class PermissionTypeViewModel : InformationAssociationViewModel {
-        public override string Code => "PermissionType";
-        public override string[] Roles => ["vslLocation", "permission"];
-
-        private InformationBindingViewModel? _vslLocation;
-        [ExpandableObject]
-        public InformationBindingViewModel? vslLocation {
-            get {
-                return _vslLocation;
-            }
-
-            set {
-                this.SetValue(ref _vslLocation, value);
-            }
-        }
-
-        private InformationBindingViewModel? _permission;
-        [ExpandableObject]
-        public InformationBindingViewModel? permission {
-            get {
-                return _permission;
-            }
-
-            set {
-                this.SetValue(ref _permission, value);
-            }
-        }
-
-        public override InformationAssociationConnector? association {
-            get {
-                return _associationConnector;
-            }
-
-            set {
-                this.SetValue(ref _associationConnector, value);
-                if (value is not null) {
-                    vslLocation = value?.role switch
-                    {
-                        "permission" => value.CreateForeignInformationBinding(),
-                        _ => value!.CreateLocalInformationBinding(),
-                    };
-                }
-                else {
-                    vslLocation = null;
-                }
-
-                if (value is not null) {
-                    permission = value?.role switch
-                    {
-                        "vslLocation" => value.CreateForeignInformationBinding(),
-                        _ => value!.CreateLocalInformationBinding(),
-                    };
-                }
-                else {
-                    permission = null;
-                }
-            }
-        }
-
-        public override void Load(S100Framework.DomainModel.InformationAssociation informationAssociation) {
-            association = associationConnectorInformations.SingleOrDefault(e => e.InformationType.Equals(informationAssociation.AssociationConnectorTypeName));
-            vslLocation?.Load(informationAssociation, "vslLocation");
-            permission?.Load(informationAssociation, "permission");
-        }
-
-        public override string Serialize() {
-            var instance = new InformationAssociation
-            {
-                Code = this.Code,
-                AssociationConnectorTypeName = association!.InformationType,
-            };
-            vslLocation?.Save(instance, "vslLocation");
-            permission?.Save(instance, "permission");
-            return System.Text.Json.JsonSerializer.Serialize(instance);
-        }
-
-        public override InformationAssociationConnector[] associationConnectorInformations => PermissionTypeViewModel._associationConnectorInformations;
-
-        public class permissionDryDockRefIdViewModel : InformationRefIdViewModel {
-            public override string[] AssociationTypes => ["Applicability"];
-        }
-
-        public class permissionFloatingDockRefIdViewModel : InformationRefIdViewModel {
-            public override string[] AssociationTypes => ["Applicability"];
-        }
-
-        public class permissionGridironRefIdViewModel : InformationRefIdViewModel {
-            public override string[] AssociationTypes => ["Applicability"];
-        }
-
-        public class permissionHarbourFacilityRefIdViewModel : InformationRefIdViewModel {
-            public override string[] AssociationTypes => ["Applicability"];
-        }
-
-        public class permissionAnchorBerthRefIdViewModel : InformationRefIdViewModel {
-            public override string[] AssociationTypes => ["Applicability"];
-        }
-
-        public class permissionAnchorageAreaRefIdViewModel : InformationRefIdViewModel {
-            public override string[] AssociationTypes => ["Applicability"];
-        }
-
-        public class permissionBerthRefIdViewModel : InformationRefIdViewModel {
-            public override string[] AssociationTypes => ["Applicability"];
-        }
-
-        public class permissionBerthPositionRefIdViewModel : InformationRefIdViewModel {
-            public override string[] AssociationTypes => ["Applicability"];
-        }
-
-        public class permissionDockAreaRefIdViewModel : InformationRefIdViewModel {
-            public override string[] AssociationTypes => ["Applicability"];
-        }
-
-        public class permissionDumpingGroundRefIdViewModel : InformationRefIdViewModel {
-            public override string[] AssociationTypes => ["Applicability"];
-        }
-
-        public class permissionHarbourAreaAdministrativeRefIdViewModel : InformationRefIdViewModel {
-            public override string[] AssociationTypes => ["Applicability"];
-        }
-
-        public class permissionHarbourAreaSectionRefIdViewModel : InformationRefIdViewModel {
-            public override string[] AssociationTypes => ["Applicability"];
-        }
-
-        public class permissionHarbourBasinRefIdViewModel : InformationRefIdViewModel {
-            public override string[] AssociationTypes => ["Applicability"];
-        }
-
-        public class permissionMooringWarpingFacilityRefIdViewModel : InformationRefIdViewModel {
-            public override string[] AssociationTypes => ["Applicability"];
-        }
-
-        public class permissionOuterLimitRefIdViewModel : InformationRefIdViewModel {
-            public override string[] AssociationTypes => ["Applicability"];
-        }
-
-        public class permissionPilotBoardingPlaceRefIdViewModel : InformationRefIdViewModel {
-            public override string[] AssociationTypes => ["Applicability"];
-        }
-
-        public class permissionSeaplaneLandingAreaRefIdViewModel : InformationRefIdViewModel {
-            public override string[] AssociationTypes => ["Applicability"];
-        }
-
-        public class permissionTerminalRefIdViewModel : InformationRefIdViewModel {
-            public override string[] AssociationTypes => ["Applicability"];
-        }
-
-        public class permissionTurningBasinRefIdViewModel : InformationRefIdViewModel {
-            public override string[] AssociationTypes => ["Applicability"];
-        }
-
-        public class permissionWaterwayAreaRefIdViewModel : InformationRefIdViewModel {
-            public override string[] AssociationTypes => ["Applicability"];
-        }
-
-        public class vslLocationApplicabilityRefIdViewModel : InformationRefIdViewModel {
-            public override string[] AssociationTypes => ["NauticalInformation", "Recommendations", "Regulations", "Restrictions", "Applicability", "Authority", "AvailablePortServices", "ContactDetails", "Entrance", "NonStandardWorkingDay", "ServiceHours"];
-        }
-
-        public static InformationAssociationConnector[] _associationConnectorInformations => Handles.AssociationConnectorInformations[typeof(PermissionTypeViewModel)]();
-    }
-
-    public class SpatialAssociationViewModel : InformationAssociationViewModel {
-        public override string Code => "SpatialAssociation";
-        public override string[] Roles => ["defines", "definedFor"];
-
-        private InformationBindingViewModel? _defines;
-        [ExpandableObject]
-        public InformationBindingViewModel? defines {
-            get {
-                return _defines;
-            }
-
-            set {
-                this.SetValue(ref _defines, value);
-            }
-        }
-
-        private InformationBindingViewModel? _definedFor;
-        [ExpandableObject]
-        public InformationBindingViewModel? definedFor {
-            get {
-                return _definedFor;
-            }
-
-            set {
-                this.SetValue(ref _definedFor, value);
-            }
-        }
-
-        public override InformationAssociationConnector? association {
-            get {
-                return _associationConnector;
-            }
-
-            set {
-                this.SetValue(ref _associationConnector, value);
-                if (value is not null) {
-                    defines = value?.role switch
-                    {
-                        "definedFor" => value.CreateForeignInformationBinding(),
-                        _ => value!.CreateLocalInformationBinding(),
-                    };
-                }
-                else {
-                    defines = null;
-                }
-
-                if (value is not null) {
-                    definedFor = value?.role switch
-                    {
-                        "defines" => value.CreateForeignInformationBinding(),
-                        _ => value!.CreateLocalInformationBinding(),
-                    };
-                }
-                else {
-                    definedFor = null;
-                }
-            }
-        }
-
-        public override void Load(S100Framework.DomainModel.InformationAssociation informationAssociation) {
-            association = associationConnectorInformations.SingleOrDefault(e => e.InformationType.Equals(informationAssociation.AssociationConnectorTypeName));
-            defines?.Load(informationAssociation, "defines");
-            definedFor?.Load(informationAssociation, "definedFor");
-        }
-
-        public override string Serialize() {
-            var instance = new InformationAssociation
-            {
-                Code = this.Code,
-                AssociationConnectorTypeName = association!.InformationType,
-            };
-            defines?.Save(instance, "defines");
-            definedFor?.Save(instance, "definedFor");
-            return System.Text.Json.JsonSerializer.Serialize(instance);
-        }
-
-        public override InformationAssociationConnector[] associationConnectorInformations => SpatialAssociationViewModel._associationConnectorInformations;
-        public static InformationAssociationConnector[] _associationConnectorInformations => Handles.AssociationConnectorInformations[typeof(SpatialAssociationViewModel)]();
-    }
-
-    public class LimitEntranceViewModel : InformationAssociationViewModel {
-        public override string Code => "LimitEntrance";
-        public override string[] Roles => ["entranceTo", "entranceReference"];
-
-        private InformationBindingViewModel? _entranceTo;
-        [ExpandableObject]
-        public InformationBindingViewModel? entranceTo {
-            get {
-                return _entranceTo;
-            }
-
-            set {
-                this.SetValue(ref _entranceTo, value);
-            }
-        }
-
-        private InformationBindingViewModel? _entranceReference;
-        [ExpandableObject]
-        public InformationBindingViewModel? entranceReference {
-            get {
-                return _entranceReference;
-            }
-
-            set {
-                this.SetValue(ref _entranceReference, value);
-            }
-        }
-
-        public override InformationAssociationConnector? association {
-            get {
-                return _associationConnector;
-            }
-
-            set {
-                this.SetValue(ref _associationConnector, value);
-                if (value is not null) {
-                    entranceTo = value?.role switch
-                    {
-                        "entranceReference" => value.CreateForeignInformationBinding(),
-                        _ => value!.CreateLocalInformationBinding(),
-                    };
-                }
-                else {
-                    entranceTo = null;
-                }
-
-                if (value is not null) {
-                    entranceReference = value?.role switch
-                    {
-                        "entranceTo" => value.CreateForeignInformationBinding(),
-                        _ => value!.CreateLocalInformationBinding(),
-                    };
-                }
-                else {
-                    entranceReference = null;
-                }
-            }
-        }
-
-        public override void Load(S100Framework.DomainModel.InformationAssociation informationAssociation) {
-            association = associationConnectorInformations.SingleOrDefault(e => e.InformationType.Equals(informationAssociation.AssociationConnectorTypeName));
-            entranceTo?.Load(informationAssociation, "entranceTo");
-            entranceReference?.Load(informationAssociation, "entranceReference");
-        }
-
-        public override string Serialize() {
-            var instance = new InformationAssociation
-            {
-                Code = this.Code,
-                AssociationConnectorTypeName = association!.InformationType,
-            };
-            entranceTo?.Save(instance, "entranceTo");
-            entranceReference?.Save(instance, "entranceReference");
-            return System.Text.Json.JsonSerializer.Serialize(instance);
-        }
-
-        public override InformationAssociationConnector[] associationConnectorInformations => LimitEntranceViewModel._associationConnectorInformations;
-
-        public class entranceReferenceOuterLimitRefIdViewModel : InformationRefIdViewModel {
-            public override string[] AssociationTypes => ["Entrance"];
-        }
-
-        public static InformationAssociationConnector[] _associationConnectorInformations => Handles.AssociationConnectorInformations[typeof(LimitEntranceViewModel)]();
-    }
-
-    public class ServiceAvailabilityViewModel : InformationAssociationViewModel {
-        public override string Code => "ServiceAvailability";
-        public override string[] Roles => ["locationServed", "serviceDescriptionReference"];
-
-        private InformationBindingViewModel? _locationServed;
-        [ExpandableObject]
-        public InformationBindingViewModel? locationServed {
-            get {
-                return _locationServed;
-            }
-
-            set {
-                this.SetValue(ref _locationServed, value);
-            }
-        }
-
-        private InformationBindingViewModel? _serviceDescriptionReference;
-        [ExpandableObject]
-        public InformationBindingViewModel? serviceDescriptionReference {
-            get {
-                return _serviceDescriptionReference;
-            }
-
-            set {
-                this.SetValue(ref _serviceDescriptionReference, value);
-            }
-        }
-
-        public override InformationAssociationConnector? association {
-            get {
-                return _associationConnector;
-            }
-
-            set {
-                this.SetValue(ref _associationConnector, value);
-                if (value is not null) {
-                    locationServed = value?.role switch
-                    {
-                        "serviceDescriptionReference" => value.CreateForeignInformationBinding(),
-                        _ => value!.CreateLocalInformationBinding(),
-                    };
-                }
-                else {
-                    locationServed = null;
-                }
-
-                if (value is not null) {
-                    serviceDescriptionReference = value?.role switch
-                    {
-                        "locationServed" => value.CreateForeignInformationBinding(),
-                        _ => value!.CreateLocalInformationBinding(),
-                    };
-                }
-                else {
-                    serviceDescriptionReference = null;
-                }
-            }
-        }
-
-        public override void Load(S100Framework.DomainModel.InformationAssociation informationAssociation) {
-            association = associationConnectorInformations.SingleOrDefault(e => e.InformationType.Equals(informationAssociation.AssociationConnectorTypeName));
-            locationServed?.Load(informationAssociation, "locationServed");
-            serviceDescriptionReference?.Load(informationAssociation, "serviceDescriptionReference");
-        }
-
-        public override string Serialize() {
-            var instance = new InformationAssociation
-            {
-                Code = this.Code,
-                AssociationConnectorTypeName = association!.InformationType,
-            };
-            locationServed?.Save(instance, "locationServed");
-            serviceDescriptionReference?.Save(instance, "serviceDescriptionReference");
-            return System.Text.Json.JsonSerializer.Serialize(instance);
-        }
-
-        public override InformationAssociationConnector[] associationConnectorInformations => ServiceAvailabilityViewModel._associationConnectorInformations;
-
-        public class serviceDescriptionReferenceAnchorBerthRefIdViewModel : InformationRefIdViewModel {
-            public override string[] AssociationTypes => ["AvailablePortServices"];
-        }
-
-        public class serviceDescriptionReferenceBerthRefIdViewModel : InformationRefIdViewModel {
-            public override string[] AssociationTypes => ["AvailablePortServices"];
-        }
-
-        public class serviceDescriptionReferenceDockAreaRefIdViewModel : InformationRefIdViewModel {
-            public override string[] AssociationTypes => ["AvailablePortServices"];
-        }
-
-        public class serviceDescriptionReferenceHarbourAreaAdministrativeRefIdViewModel : InformationRefIdViewModel {
-            public override string[] AssociationTypes => ["AvailablePortServices"];
-        }
-
-        public class serviceDescriptionReferenceHarbourAreaSectionRefIdViewModel : InformationRefIdViewModel {
-            public override string[] AssociationTypes => ["AvailablePortServices"];
-        }
-
-        public class serviceDescriptionReferenceMooringWarpingFacilityRefIdViewModel : InformationRefIdViewModel {
-            public override string[] AssociationTypes => ["AvailablePortServices"];
-        }
-
-        public class serviceDescriptionReferenceTerminalRefIdViewModel : InformationRefIdViewModel {
-            public override string[] AssociationTypes => ["AvailablePortServices"];
-        }
-
-        public static InformationAssociationConnector[] _associationConnectorInformations => Handles.AssociationConnectorInformations[typeof(ServiceAvailabilityViewModel)]();
     }
 }

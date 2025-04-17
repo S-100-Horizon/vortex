@@ -1,4 +1,5 @@
-﻿using Serilog;
+﻿using S100Framework.WPF;
+using Serilog;
 using System;
 using System.Reflection;
 using System.Windows.Controls;
@@ -61,6 +62,15 @@ namespace VortexProAppModule.Views
 
         private void _propertyGrid_SelectedObjectChanged(object sender, System.Windows.RoutedPropertyChangedEventArgs<object> e) {
             //_logger.Verbose("SelectedObjectChanged:");
+        }
+
+        private void S100AttributeEditor_Loaded(object sender, System.Windows.RoutedEventArgs e) {
+            var viewModel = (S100AttributeTabViewModel)this.DataContext;
+            var control = (S100AttributeEditorControl)sender;
+
+            control.QueryAssociations += viewModel.S100AttributeEditor_QueryAssociations;
+            control.QueryInformations += viewModel.S100AttributeEditor_QueryInformations;
+            control.QueryFeatures += viewModel.S100AttributeEditor_QueryFeatures;
         }
     }
 }

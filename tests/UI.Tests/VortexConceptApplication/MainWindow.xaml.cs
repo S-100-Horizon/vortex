@@ -3,7 +3,9 @@
 using S100Framework.DomainModel;
 using S100Framework.DomainModel.S101.FeatureTypes;
 using S100Framework.DomainModel.S124;
+using S100Framework.WPF;
 using S100Framework.WPF.ViewModel;
+using S100Framework.WPF.ViewModel.S101;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Reflection;
@@ -41,6 +43,14 @@ namespace VortexConceptApplication
             set => SetProperty(ref _selectedProperty, value);
         }
 
+        //private S100AttributeEditorViewModel? _viewModel = default;
+
+        //public S100AttributeEditorViewModel? S100AttributeEditorViewModel {
+        //    get => _viewModel;
+        //    set => SetProperty(ref _viewModel, value);
+        //}
+
+
         public ObservableCollection<navwarnTypeDetails> Items { get; init; } = new ObservableCollection<navwarnTypeDetails>(CodeList.navwarnTypeDetails);
 
         protected bool SetProperty<T>(ref T backingField, T value, [CallerMemberName] string name = "") {
@@ -74,7 +84,7 @@ namespace VortexConceptApplication
             dataTemplate.Seal();
             editorTemplateDefinition.EditingTemplate = dataTemplate;
 
-            this._propertyGrid.EditorDefinitions.Add(editorTemplateDefinition);
+            //            this._propertyGrid.EditorDefinitions.Add(editorTemplateDefinition);
 
             var random = new Random();
 
@@ -108,128 +118,79 @@ namespace VortexConceptApplication
                 return Task.FromResult(objectid.ToArray());
             };
 
-#if S124
-            var viewModel = new S100Framework.WPF.ViewModel.S924.NAVWARNPartViewModel {
-            };
 
-            viewModel.Load(new S100Framework.DomainModel.S124.FeatureTypes.NAVWARNPart {
-                warningInformation = new S100Framework.DomainModel.S124.ComplexAttributes.warningInformation {
-                },
-            });
-#elif S101
-            var domainModelQualityOfBathymetricDataCustom = new S100Framework.DomainModel.S901.FeatureTypes.QualityOfBathymetricDataCustom() {
-                categoryOfTemporalVariation = S100Framework.DomainModel.S101.categoryOfTemporalVariation.LikelyToChangeButSignificantShoalingNotExpected,
-                dataAssessment = S100Framework.DomainModel.S101.dataAssessment.Assessed,
-                featuresDetected = new S100Framework.DomainModel.S101.ComplexAttributes.featuresDetected {
-                    leastDepthOfDetectedFeaturesMeasured = true,
-                    significantFeaturesDetected = true,
-                },
-                fullSeafloorCoverageAchieved = true,
-                zoneOfConfidence = new List<S100Framework.DomainModel.S101.ComplexAttributes.zoneOfConfidence> {
-                    new S100Framework.DomainModel.S101.ComplexAttributes.zoneOfConfidence {
-                        categoryOfZoneOfConfidenceInData = S100Framework.DomainModel.S101.categoryOfZoneOfConfidenceInData.ZoneOfConfidenceA1
-                    }
-                },
-            };
+            //this._s100PropertyGrid.OnFeatureAssociationsChanged = (roleType roleType, string association) => {
+            //    var r = new Random(DateTime.Now.Microsecond);
 
-            var domainModelUpdateInformation = new S100Framework.DomainModel.S101.FeatureTypes.UpdateInformation() {
-            };
-
-            var domainModelVesselTrafficServiceArea = new S100Framework.DomainModel.S122.FeatureTypes.VesselTrafficServiceArea() {
-            };
-
-            var domainModelElectronicProduct = new S100Framework.DomainModel.S128.FeatureTypes.ElectronicProduct() {
-            };
-
-            //var viewModel = new S100Framework.WPF.ViewModel.S901.QualityOfBathymetricDataViewModel((IViewModelHost)this) {
+            //    return Task.FromResult<IEnumerable<AssociationId>>([new AssociationId($"B{r.Next(1, 1000):0000}"), new AssociationId($"A{r.Next(1, 1000):0000}")]);
             //};
 
-            //var viewModel = new S100Framework.WPF.ViewModel.S901.UpdateInformationViewModel((IViewModelHost)this) {
+
+
+            //var viewModel101 = new S100Framework.WPF.ViewModel.S101.StructureEquipmentViewModel();
+
+            //var viewModel = viewModel101;
+
+            //var fromJson = new Building.StructureEquipment_theEquipment()!;
+
+            ////  TEST
+            //fromJson.RefIds = [new RefId {
+            //    Role = "theStructure",
+            //    Type = "Daymark",
+            //    Value = "S202600"
+            //}];
+
+            //var json = System.Text.Json.JsonSerializer.Serialize(fromJson);            
+
+            //var viewModel = new S100Framework.WPF.ViewModel.S101.LateralBuoyViewModel();            
+            var model = new TwoWayRoutePart() { };
+
+            var viewModel = new TwoWayRoutePartViewModel() {
+                PID = "S202600",
+            }.Load(model);
+
+            //viewModel.PropertyChanged += (object sender, PropertyChangedEventArgs e) => {
+            //    Logger.Current.Verbose("PropertyChanged = {propertyName}", e.PropertyName);
             //};
 
-            //viewModel.Load(domainModelUpdateInformation);
-
-            //var viewModel = new S100Framework.WPF.ViewModel.S922.VesselTrafficServiceAreaViewModel((IViewModelHost)this) {
-            //};
-
-            //viewModel.Load(domainModelVesselTrafficServiceArea);
-
-            var viewModel = new S100Framework.WPF.ViewModel.S128.ElectronicProductViewModel((IViewModelHost)this) {
-                //  Testing associations with attributes
-            };
-
-            viewModel.Load(domainModelElectronicProduct);
-#elif S902
-            var domainModel = new S100Framework.WPF.ViewModel.S902.S131_FeatureTypeTest() {
-            };
-
-            var viewModel = new S131_FeatureTypeTestViewModel() {
-            };
-
-            viewModel.Load(domainModel);
-#elif S903
-            var domainModel = new S100Framework.WPF.ViewModel.S903.S101_PileTest() {
-            };
-
-            var attributes = typeof(S100Framework.WPF.ViewModel.S903.S101_PileTest).GetProperty("theCollectionOfAidsToNavigationAssociationTest")!.GetCustomAttributes<FeatureTypeAttribute>();
-
-            var viewModel = new S101_PileTestViewModel() {
-            };
-
-            viewModel.Load(domainModel);
-#else
-            //var viewModel = IslandAggregation.TestIslandGroup;
-
-            var viewModel101 = new S100Framework.WPF.ViewModel.S101.StructureEquipmentViewModel();
-
-            //var viewModel131 = new S100Framework.WPF.ViewModel.S131.TextAssociationViewModel();
-
-            var viewModel = viewModel101;
-
-
-            //var fromJson = new S100Framework.DomainModel.FeatureAssociation {
-            //    Code = "UpdatedInformation",
-            //    AssociationConnectorTypeName = "AdministrationArea",
-            //    RefIds = new[] {
-            //        new S100Framework.DomainModel.RefId {
-            //            Type = "AdministrationArea",
-            //            Role = "theUpdate",
-            //            Value = "Hello",
-            //        },
-            //        new S100Framework.DomainModel.RefId {
-            //            Type = "UpdateInformation",
-            //            Role = "theUpdatedObject",
-            //            Value = "World (1)",
-            //        },
-            //        new S100Framework.DomainModel.RefId {
-            //            Type = "UpdateInformation",
-            //            Role = "theUpdatedObject",
-            //            Value = "World (2)",
-            //        }
-            //    },
-            //};
-
-            var fromJson = new Building.StructureEquipment_theEquipment()!;
-
-
-            //  TEST
-            fromJson.RefIds = [new RefId {
-                Role = "theStructure",
-                Type = "Daymark",
-                Value = "S202600"
-            }];
-
-            var json = System.Text.Json.JsonSerializer.Serialize(fromJson);
-
-
-            viewModel.Load(fromJson);
-
-            viewModel.PropertyChanged += (object sender, PropertyChangedEventArgs e) => {
-                Logger.Current.Verbose("PropertyChanged = {propertyName}", e.PropertyName);
-            };
-#endif           
 
             SelectedProperty = viewModel;
+
+            var selectedFeature = new SelectedFeatureObjectViewModel(viewModel, model);
+
+
+            selectedFeature!.PropertyChanged += (object? sender, PropertyChangedEventArgs e) => {
+                System.Diagnostics.Debugger.Break();
+            };
+
+            selectedFeature!.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+                System.Diagnostics.Debugger.Break();
+
+                if (e.Action == System.Collections.Specialized.NotifyCollectionChangedAction.Add) {
+                    if (e.NewItems != null) {
+                        foreach (var binding in e.NewItems) {
+                            if (sender is ICollection<InformationBindingViewModel>) {
+                                ((InformationBindingViewModel)binding).UID = Guid.NewGuid();
+                            }
+                            else {
+                                ((FeatureBindingViewModel)binding).UID = Guid.NewGuid();
+                            }
+                        }
+                    }
+                }
+                if (e.Action == System.Collections.Specialized.NotifyCollectionChangedAction.Remove) {
+
+                }
+            };
+
+            S100AttributeEditor.SelectedFeatureObject = selectedFeature;
+
+            Task.Run(() => {
+                Thread.Sleep(2000);
+                System.Windows.Application.Current.Dispatcher.Invoke(() => {
+                    S100AttributeEditor.IsEditingEnabled = true;
+                });
+            });
         }
 
         private void _propertyGrid_PreparePropertyItem(object sender, PropertyItemEventArgs e) {
@@ -279,6 +240,30 @@ namespace VortexConceptApplication
 
             System.Diagnostics.Debugger.Break();
         }
+
+        private void S100AttributeEditor_QueryAssociations(object sender, QueryAssociationsEventArgs e) {
+            var r = new Random(DateTime.Now.Microsecond);
+            foreach (var i in Enumerable.Range(0, r.Next(1, 8))) {
+                e.associations.Add(new AssociationId($"A{r.Next(1, 1000):0000}"));
+            }
+        }
+
+        static Dictionary<int, string[]> featureTypes = new Dictionary<int, string[]> {
+            { 0, ["LandArea", "Sounding"] },
+            { 1, ["Coastline"] },
+            { 2, ["LandArea", "Lake"] },
+        };
+
+        private void S100AttributeEditor_QueryFeatures(object sender, QueryFeaturesEventArgs e) {
+            var r = new Random(DateTime.Now.Microsecond);
+            foreach (var i in Enumerable.Range(0, r.Next(1, 8))) {
+                e.features.Add(r.Next(0, 2) switch {
+                    0 => new FeatureId(featureTypes[0][r.Next(0, featureTypes[0].Count() - 1)], $"P{r.Next(1, 1000):0000}"),
+                    1 => new FeatureId(featureTypes[1][r.Next(0, featureTypes[1].Count() - 1)], $"C{r.Next(1, 1000):0000}"),
+                    2 => new FeatureId(featureTypes[2][r.Next(0, featureTypes[2].Count() - 1)], $"S{r.Next(1, 1000):0000}"),
+                });
+            }
+        }
     }
 
     public class CodeListComboEditor : Xceed.Wpf.Toolkit.PropertyGrid.Editors.ITypeEditor
@@ -295,6 +280,74 @@ namespace VortexConceptApplication
             BindingOperations.SetBinding(comboBox, ComboBox.SelectedItemProperty, bindingSelectedItemProperty);
 
             return comboBox;
+        }
+    }
+
+
+
+}
+
+namespace VortexConceptApplication
+{
+    using S100Framework.DomainModel.S101;
+    using Xceed.Wpf.Toolkit;
+    using Xceed.Wpf.Toolkit.PropertyGrid.Attributes;
+
+    public class Person
+    {
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+    }
+
+    public partial class TestLateralBuoyViewModel
+    {
+        private int? _buoyShape;
+        [EnumerationAttribute(nameof(buoyShapeIntList))]
+        [Editor(typeof(TestEnumCheckComboEditor), typeof(TestEnumCheckComboEditor))]
+        [Category("LateralBuoy")]
+        public int? buoyShape {
+            get {
+                return _buoyShape;
+            }
+
+            set {
+                _buoyShape = value;
+                //SetValue(ref _buoyShape, value);
+            }
+        }
+
+        [ExpandableObject]
+        public ObservableCollection<Person> Persons { get; set; } = new ObservableCollection<Person>();
+
+        [Browsable(false)]
+        public int[] buoyShapeIntList => [1, 2, 3, 4, 5, 6, 7, 8];
+
+
+
+        [Browsable(false)]
+        public buoyShape[] buoyShapeList => [(buoyShape)1, (buoyShape)2, (buoyShape)3, (buoyShape)4, (buoyShape)5, (buoyShape)6, (buoyShape)7, (buoyShape)8];
+
+    }
+
+    public class TestEnumCheckComboEditor : Xceed.Wpf.Toolkit.PropertyGrid.Editors.ITypeEditor
+    {
+        public FrameworkElement ResolveEditor(Xceed.Wpf.Toolkit.PropertyGrid.PropertyItem propertyItem) {
+            var checkComboBox = new CheckComboBox {
+                Name = $"_checkComboBox{Guid.NewGuid():N}",
+                IsEditable = false,
+                IsSelectAllActive = true,
+                IsDropDownOpen = false,
+            };
+
+            var attribute = (EnumerationAttribute)propertyItem.Instance.GetType().GetProperty(propertyItem.DisplayName)!.GetCustomAttributes(typeof(EnumerationAttribute), true)[0];
+
+            var bindingItemsSourceProperty = new Binding(attribute.PropertyName) { Source = propertyItem.Instance, Mode = BindingMode.OneWay };
+            BindingOperations.SetBinding(checkComboBox, CheckComboBox.ItemsSourceProperty, bindingItemsSourceProperty);
+
+            var bindingSelectedItemProperty = new Binding(propertyItem.DisplayName) { Source = propertyItem.Instance, Mode = propertyItem.IsReadOnly ? BindingMode.OneWay : BindingMode.TwoWay };
+            BindingOperations.SetBinding(checkComboBox, CheckComboBox.SelectedItemProperty, bindingSelectedItemProperty);
+
+            return checkComboBox;
         }
     }
 }
