@@ -40,6 +40,18 @@ namespace S100Framework.Applications
                 return -2;
             }
 
+            var mapping = new Mapping();
+
+            mapping.Features.Add(new Mapping.Feature("LandRegion", "Natural features"));
+            mapping.Features.Add(new Mapping.Feature("LandElevation", "Natural features"));
+            mapping.Features.Add(new Mapping.Feature("SlopingGround", "Natural features"));
+            mapping.Features.Add(new Mapping.Feature("SlopeTopline", "Natural features"));
+            mapping.Features.Add(new Mapping.Feature("River", "Natural features"));
+            mapping.Features.Add(new Mapping.Feature("Rapids", "Natural features"));
+            mapping.Features.Add(new Mapping.Feature("Waterfall", "Natural features"));            
+            mapping.Features.Add(new Mapping.Feature("Vegetation", "Natural features"));
+
+
             var productSpecification = XDocument.Load(fileInfo.FullName);
 
             var navigator = productSpecification.CreateNavigator();
@@ -143,7 +155,13 @@ namespace S100Framework.Applications
 
                 var b = new StringBuilder();
                 foreach (var e in listFeatures) {
-                    var key = "cat1";
+                    //var key = "General";
+
+                    var key = mapping.Features.FirstOrDefault(f => f.Code == e.Key)?.Category;
+                    if(key == default) {
+                        key = "General";
+                    }
+
                     if (!featureCategories.ContainsKey(key))
                         featureCategories.Add(key, new List<string>());
                     featureCategories[key].Add(e.Key);
@@ -152,10 +170,18 @@ namespace S100Framework.Applications
                     b.AppendLine(e.Value);
                     b.AppendLine("},");
                 }
-
-                html = html.Replace("###featureCategoriesCat1###", string.Join(',', featureCategories["cat1"].Select(e => $"\"{e}\"")));
-
                 html = html.Replace("###features###", b.ToString().TrimEnd(','));
+
+                b.Clear();
+                int id = 1;
+                foreach (var e in featureCategories) {
+                    b.AppendLine($"{{ id: \"cat{id++}\", name: \"{e.Key}\", features: [{string.Join(',', e.Value.Select(f=> $"\"{f}\""))}] }},");
+                }
+
+                html = html.Replace("###featureCategories###", b.ToString().TrimEnd(','));
+                //html = html.Replace("###featureCategoriesCat1###", string.Join(',', featureCategories["cat1"].Select(e => $"\"{e}\"")));
+
+
             }
 
             File.WriteAllText(@"c:\temp\test.html", html);
@@ -164,5 +190,11 @@ namespace S100Framework.Applications
 
             return 0;
         }
+    }
+
+    public class Mapping {
+        public record Feature(string Code, string Category);
+
+        public ICollection<Feature> Features { get; private set; } = new List<Feature>();
     }
 }
