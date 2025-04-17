@@ -733,7 +733,7 @@ namespace S100Framework.WPF
         private void QueryFeaturesContent(object sender, ExecutedRoutedEventArgs e) {
             _featuresDropdown.Clear();
 
-            var model = (FeatureBindingViewModel)((ListViewItem)e.Parameter).Content;            
+            var model = (FeatureBindingViewModel)((ListViewItem)e.Parameter).Content;
 
             var eventArgs = new QueryFeaturesEventArgs(model.roleType, model.association, model.role, _featuresDropdown, QueryFeaturesEvent, this);
             RaiseEvent(eventArgs);
