@@ -156,7 +156,7 @@ namespace VortexConceptApplication
 
             SelectedProperty = viewModel;
 
-            var selectedFeature = new SelectedFeatureObjectViewModel(viewModel, model);
+            var selectedFeature = new SelectedFeatureTypeObjectViewModel(viewModel, model);
 
 
             selectedFeature!.PropertyChanged += (object? sender, PropertyChangedEventArgs e) => {
@@ -254,13 +254,13 @@ namespace VortexConceptApplication
             { 2, ["LandArea", "Lake"] },
         };
 
-        private void S100AttributeEditor_QueryFeatures(object sender, QueryFeaturesEventArgs e) {
+        private void S100AttributeEditor_QueryFeatures(object sender, QueryFeatureTypesEventArgs e) {
             var r = new Random(DateTime.Now.Microsecond);
             foreach (var i in Enumerable.Range(0, r.Next(1, 8))) {
                 e.features.Add(r.Next(0, 2) switch {
-                    0 => new FeatureId(featureTypes[0][r.Next(0, featureTypes[0].Count() - 1)], $"P{r.Next(1, 1000):0000}"),
-                    1 => new FeatureId(featureTypes[1][r.Next(0, featureTypes[1].Count() - 1)], $"C{r.Next(1, 1000):0000}"),
-                    2 => new FeatureId(featureTypes[2][r.Next(0, featureTypes[2].Count() - 1)], $"S{r.Next(1, 1000):0000}"),
+                    0 => new FeatureTypeId(featureTypes[0][r.Next(0, featureTypes[0].Count() - 1)], $"P{r.Next(1, 1000):0000}"),
+                    1 => new FeatureTypeId(featureTypes[1][r.Next(0, featureTypes[1].Count() - 1)], $"C{r.Next(1, 1000):0000}"),
+                    2 => new FeatureTypeId(featureTypes[2][r.Next(0, featureTypes[2].Count() - 1)], $"S{r.Next(1, 1000):0000}"),
                 });
             }
         }

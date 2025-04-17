@@ -105,9 +105,9 @@ namespace VortexProAppModule
 
         private SelectedAssociationObjectViewModel _selectedAssociationProperty = default;
 
-        private SelectedInformationObjectViewModel _selectedInformationProperty = default;
+        private SelectedInformationTypeObjectViewModel _selectedInformationProperty = default;
 
-        private SelectedFeatureObjectViewModel _selectedFeatureProperty = default;
+        private SelectedFeatureTypeObjectViewModel _selectedFeatureProperty = default;
 
         private Boolean _isEditingEnabled = false;
 
@@ -386,7 +386,7 @@ namespace VortexProAppModule
                     if (instance is IInformationBindingDefinition) {
                         var informationViewModel = (InformationViewModel)viewmodel;
 
-                        this.SelectedInformationProperty = new SelectedInformationObjectViewModel(informationViewModel, (IInformationBindingDefinition)instance);
+                        this.SelectedInformationProperty = new SelectedInformationTypeObjectViewModel(informationViewModel, (IInformationBindingDefinition)instance);
                         selectedObjectViewModel = this.SelectedInformationProperty;
 
                         using var table = inspector.OpenDataset<Table>("associationbinding");
@@ -414,7 +414,7 @@ namespace VortexProAppModule
                         var featureViewModel = (FeatureViewModel)viewmodel;
 
 
-                        this.SelectedFeatureProperty = new SelectedFeatureObjectViewModel(featureViewModel, (IFeatureBindingDefinition)instance);
+                        this.SelectedFeatureProperty = new SelectedFeatureTypeObjectViewModel(featureViewModel, (IFeatureBindingDefinition)instance);
                         selectedObjectViewModel = this.SelectedFeatureProperty;
 
                         //  informationBinding
@@ -776,12 +776,12 @@ namespace VortexProAppModule
             set => SetProperty(ref _selectedAssociationProperty, value);
         }
 
-        public SelectedInformationObjectViewModel SelectedInformationProperty {
+        public SelectedInformationTypeObjectViewModel SelectedInformationProperty {
             get => _selectedInformationProperty;
             set => SetProperty(ref _selectedInformationProperty, value);
         }
 
-        public SelectedFeatureObjectViewModel SelectedFeatureProperty {
+        public SelectedFeatureTypeObjectViewModel SelectedFeatureProperty {
             get => _selectedFeatureProperty;
             set => SetProperty(ref _selectedFeatureProperty, value);
         }
@@ -842,14 +842,14 @@ namespace VortexProAppModule
             }
         }
 
-        public async void S100AttributeEditor_QueryInformations(object sender, QueryInformationsEventArgs e) {
+        public async void S100AttributeEditor_QueryInformations(object sender, QueryInformationTypesEventArgs e) {
             var informationtypes = S100Framework.WPF.Helper.InformationAssociationBindings(SelectedSchema, e.association!, e.role!);
 
             if (!informationtypes.Any())
                 return;
 
             var rows = await QueuedTask.Run(() => {
-                var ids = new List<InformationId>();
+                var ids = new List<InformationTypeId>();
 
                 var mapView = MapView.Active?.Map;
                 if (mapView is not null) {
@@ -873,7 +873,7 @@ namespace VortexProAppModule
                             if (!informationtypes.Contains(code))
                                 continue;
 
-                            ids.Add(new InformationId(code, Convert.ToString(local["name"])));
+                            ids.Add(new InformationTypeId(code, Convert.ToString(local["name"])));
                         }
                     }
 
@@ -895,7 +895,7 @@ namespace VortexProAppModule
                     using var cursor = r.Search(q, true);
                     while (cursor.MoveNext() && top > 0) {
                         var row = cursor.Current;
-                        ids.Add(new InformationId(Convert.ToString(row["code"]), Convert.ToString(row["name"])));
+                        ids.Add(new InformationTypeId(Convert.ToString(row["code"]), Convert.ToString(row["name"])));
 
                         top -= 1;
                     }
@@ -911,14 +911,14 @@ namespace VortexProAppModule
             }
         }
 
-        public async void S100AttributeEditor_QueryFeatures(object sender, QueryFeaturesEventArgs e) {
+        public async void S100AttributeEditor_QueryFeatures(object sender, QueryFeatureTypesEventArgs e) {
             var features = S100Framework.WPF.Helper.FeatureAssociationBindings(SelectedSchema, e.association!, e.role!);
 
             if (!features.Any())
                 return;
 
             var rows = await QueuedTask.Run(() => {
-                var ids = new List<FeatureId>();
+                var ids = new List<FeatureTypeId>();
 
                 var mapView = MapView.Active?.Map;
                 if (mapView is not null) {
@@ -942,7 +942,7 @@ namespace VortexProAppModule
                             if (!features.Contains(code))
                                 continue;
 
-                            ids.Add(new FeatureId(code, Convert.ToString(local["name"])));
+                            ids.Add(new FeatureTypeId(code, Convert.ToString(local["name"])));
                         }
                     }
 
@@ -964,7 +964,7 @@ namespace VortexProAppModule
                     using var cursor = f.Search(q, true);
                     while (cursor.MoveNext() && top > 0) {
                         var feature = cursor.Current;
-                        ids.Add(new FeatureId(Convert.ToString(feature["code"]), Convert.ToString(feature["name"])));
+                        ids.Add(new FeatureTypeId(Convert.ToString(feature["code"]), Convert.ToString(feature["name"])));
 
                         top -= 1;
                     }

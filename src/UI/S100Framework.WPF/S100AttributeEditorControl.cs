@@ -13,8 +13,8 @@ using Xceed.Wpf.Toolkit.PropertyGrid;
 namespace S100Framework.WPF
 {
     public record AssociationId(string Id);
-    public record InformationId(string Code, string Id);
-    public record FeatureId(string Code, string Id);
+    public record InformationTypeId(string Code, string Id);
+    public record FeatureTypeId(string Code, string Id);
 
     #region EventArgs
 
@@ -41,9 +41,9 @@ namespace S100Framework.WPF
         public ICollection<AssociationId> associations { get; }
     }
 
-    public class QueryInformationsEventArgs : RoutedEventArgs
+    public class QueryInformationTypesEventArgs : RoutedEventArgs
     {
-        public QueryInformationsEventArgs(roleType? roleType, string? association, string? role, ICollection<InformationId> informations, RoutedEvent routedEvent, object source) : base(routedEvent, source) {
+        public QueryInformationTypesEventArgs(roleType? roleType, string? association, string? role, ICollection<InformationTypeId> informations, RoutedEvent routedEvent, object source) : base(routedEvent, source) {
             this.roleType = roleType ?? S100Framework.DomainModel.roleType.association;
             this.association = association ?? string.Empty;
             this.role = role ?? string.Empty;
@@ -53,12 +53,12 @@ namespace S100Framework.WPF
         public roleType? roleType { get; }
         public string? association { get; }
         public string? role { get; }
-        public ICollection<InformationId> informations { get; }
+        public ICollection<InformationTypeId> informations { get; }
     }
 
-    public class QueryFeaturesEventArgs : RoutedEventArgs
+    public class QueryFeatureTypesEventArgs : RoutedEventArgs
     {
-        public QueryFeaturesEventArgs(roleType? roleType, string? association, string? role, ICollection<FeatureId> features, RoutedEvent routedEvent, object source) : base(routedEvent, source) {
+        public QueryFeatureTypesEventArgs(roleType? roleType, string? association, string? role, ICollection<FeatureTypeId> features, RoutedEvent routedEvent, object source) : base(routedEvent, source) {
             this.roleType = roleType ?? S100Framework.DomainModel.roleType.association;
             this.association = association ?? string.Empty;
             this.role = role ?? string.Empty;
@@ -68,16 +68,16 @@ namespace S100Framework.WPF
         public roleType? roleType { get; }
         public string? association { get; }
         public string? role { get; }
-        public ICollection<FeatureId> features { get; }
+        public ICollection<FeatureTypeId> features { get; }
     }
 
     #endregion
 
     public delegate void QueryAssociationsEventHandler(object sender, QueryAssociationsEventArgs e);
 
-    public delegate void QueryInformationsEventHandler(object sender, QueryInformationsEventArgs e);
+    public delegate void QueryInformationTypessEventHandler(object sender, QueryInformationTypesEventArgs e);
 
-    public delegate void QueryFeaturesEventHandler(object sender, QueryFeaturesEventArgs e);
+    public delegate void QueryFeatureTypesEventHandler(object sender, QueryFeatureTypesEventArgs e);
 
     public abstract class SelectedObjectViewModel : INotifyPropertyChanged, INotifyCollectionChanged
     {
@@ -94,9 +94,9 @@ namespace S100Framework.WPF
         }
     }
 
-    public class SelectedInformationObjectViewModel : SelectedObjectViewModel
+    public class SelectedInformationTypeObjectViewModel : SelectedObjectViewModel
     {
-        public SelectedInformationObjectViewModel(InformationViewModel informationObject, IInformationBindingDefinition informationBinding) {
+        public SelectedInformationTypeObjectViewModel(InformationViewModel informationObject, IInformationBindingDefinition informationBinding) {
             this.InformationObject = informationObject;
             this.InformationBinding = informationBinding;
 
@@ -126,9 +126,9 @@ namespace S100Framework.WPF
         }
     }
 
-    public class SelectedFeatureObjectViewModel : SelectedObjectViewModel
+    public class SelectedFeatureTypeObjectViewModel : SelectedObjectViewModel
     {
-        public SelectedFeatureObjectViewModel(FeatureViewModel featureObject, IFeatureBindingDefinition featureBinding) {
+        public SelectedFeatureTypeObjectViewModel(FeatureViewModel featureObject, IFeatureBindingDefinition featureBinding) {
             this.FeatureObject = featureObject;
             this.FeatureBinding = featureBinding;
 
@@ -350,11 +350,11 @@ namespace S100Framework.WPF
         }
 
         public static readonly DependencyProperty SelectedInformationObjectProperty =
-            DependencyProperty.Register("SelectedInformationObject", typeof(SelectedInformationObjectViewModel), typeof(S100AttributeEditorControl), new UIPropertyMetadata(null, OnSelectedInformationChanged));
+            DependencyProperty.Register("SelectedInformationObject", typeof(SelectedInformationTypeObjectViewModel), typeof(S100AttributeEditorControl), new UIPropertyMetadata(null, OnSelectedInformationChanged));
 
-        public SelectedInformationObjectViewModel SelectedInformationObject {
+        public SelectedInformationTypeObjectViewModel SelectedInformationObject {
             get {
-                return (SelectedInformationObjectViewModel)GetValue(SelectedInformationObjectProperty);
+                return (SelectedInformationTypeObjectViewModel)GetValue(SelectedInformationObjectProperty);
             }
             set {
                 if (SelectedFeatureObject != null) {
@@ -386,21 +386,18 @@ namespace S100Framework.WPF
                 control.SelectedInformationObject.InformationObject.PropertyChanged += control.SelectedObject_PropertyChanged;
             }
             if (control.SelectedInformationObject.InformationBinding != null) {
+                informationStackPanel = Visibility.Visible;
+
                 if (control.InformationBindingDefinitionsCheckComboBox != null) {
                     control.InformationBindingDefinitionsCheckComboBox.ItemsSource = control.SelectedInformationObject.InformationBinding.informationBindingDefinitions;
 
                     if (!control.SelectedInformationObject.InformationBinding.informationBindingDefinitions.Any()) {
-                        if (control.InformationBindingsStackPanel != null)
-                            informationStackPanel = Visibility.Collapsed;
+                        informationStackPanel = Visibility.Collapsed;
                     }
                 }
 
                 if (control.InformationBindingsListView != null) {
                     control.InformationBindingsListView.ItemsSource = control.SelectedInformationObject.InformationBindings;
-                }
-
-                if (control.FeatureBindingsStackPanel != null) {
-                    informationStackPanel = Visibility.Collapsed;
                 }
             }
 
@@ -413,11 +410,11 @@ namespace S100Framework.WPF
         }
 
         public static readonly DependencyProperty SelectedFeatureObjectProperty =
-            DependencyProperty.Register("SelectedFeatureObject", typeof(SelectedFeatureObjectViewModel), typeof(S100AttributeEditorControl), new UIPropertyMetadata(null, OnSelectedFeatureChanged));
+            DependencyProperty.Register("SelectedFeatureObject", typeof(SelectedFeatureTypeObjectViewModel), typeof(S100AttributeEditorControl), new UIPropertyMetadata(null, OnSelectedFeatureChanged));
 
-        public SelectedFeatureObjectViewModel SelectedFeatureObject {
+        public SelectedFeatureTypeObjectViewModel SelectedFeatureObject {
             get {
-                return (SelectedFeatureObjectViewModel)GetValue(SelectedFeatureObjectProperty);
+                return (SelectedFeatureTypeObjectViewModel)GetValue(SelectedFeatureObjectProperty);
             }
             set {
                 if (SelectedFeatureObject != null) {
@@ -450,32 +447,32 @@ namespace S100Framework.WPF
             if (control.SelectedFeatureObject.FeatureObject != null) {
                 control.SelectedFeatureObject.FeatureObject.PropertyChanged += control.SelectedObject_PropertyChanged;
             }
-            if (control.SelectedFeatureObject.FeatureBinding != null) {
+            if (control.SelectedFeatureObject.InformationBindings != null) {
+                informationStackPanel = Visibility.Visible;
+
                 if (control.InformationBindingDefinitionsCheckComboBox != null) {
                     control.InformationBindingDefinitionsCheckComboBox.ItemsSource = control.SelectedFeatureObject.FeatureBinding.informationBindingDefinitions;
 
                     if (!control.SelectedFeatureObject.FeatureBinding.informationBindingDefinitions.Any()) {
-                        if (control.InformationBindingsStackPanel != null)
-                            informationStackPanel = Visibility.Collapsed;
-                    }
-                }
-
-                if (control.FeatureBindingsStackPanel != null) {
-                    featureStackPanel = Visibility.Visible;
-                }
-
-                if (control.FeatureBindingDefinitionsCheckComboBox != null) {
-                    control.FeatureBindingDefinitionsCheckComboBox.ItemsSource = control.SelectedFeatureObject.FeatureBinding.featureBindingDefinitions;
-
-                    if (!control.SelectedFeatureObject.FeatureBinding.featureBindingDefinitions.Any()) {
-                        if (control.FeatureBindingsStackPanel != null)
-                            featureStackPanel = Visibility.Collapsed;
+                        informationStackPanel = Visibility.Collapsed;
                     }
                 }
 
                 if (control.InformationBindingsListView != null) {
                     control.InformationBindingsListView.ItemsSource = control.SelectedFeatureObject.InformationBindings;
                 }
+            }
+            if (control.SelectedFeatureObject.FeatureBindings != null) {
+                featureStackPanel = Visibility.Visible;
+
+                if (control.FeatureBindingDefinitionsCheckComboBox != null) {
+                    control.FeatureBindingDefinitionsCheckComboBox.ItemsSource = control.SelectedFeatureObject.FeatureBinding.featureBindingDefinitions;
+
+                    if (!control.SelectedFeatureObject.FeatureBinding.featureBindingDefinitions.Any()) {
+                        featureStackPanel = Visibility.Collapsed;
+                    }
+                }
+
                 if (control.FeatureBindingsListView != null) {
                     control.FeatureBindingsListView.ItemsSource = control.SelectedFeatureObject.FeatureBindings;
                 }
@@ -638,9 +635,9 @@ namespace S100Framework.WPF
         private void InformationAssociationSelectedContent(object sender, ExecutedRoutedEventArgs e) {
         }
 
-        public static readonly RoutedEvent QueryInformationsEvent = EventManager.RegisterRoutedEvent("QueryInformations", RoutingStrategy.Bubble, typeof(QueryInformationsEventHandler), typeof(S100AttributeEditorControl));
+        public static readonly RoutedEvent QueryInformationsEvent = EventManager.RegisterRoutedEvent("QueryInformations", RoutingStrategy.Bubble, typeof(QueryInformationTypessEventHandler), typeof(S100AttributeEditorControl));
 
-        public event QueryInformationsEventHandler QueryInformations {
+        public event QueryInformationTypessEventHandler QueryInformations {
             add {
                 this.AddHandler(S100AttributeEditorControl.QueryInformationsEvent, value);
             }
@@ -656,7 +653,7 @@ namespace S100Framework.WPF
 
             var model = (InformationBindingViewModel)((ListViewItem)e.Parameter).Content;
 
-            var eventArgs = new QueryInformationsEventArgs(model.roleType, model.association, model.role, _informationsDropdown, QueryInformationsEvent, this);
+            var eventArgs = new QueryInformationTypesEventArgs(model.roleType, model.association, model.role, _informationsDropdown, QueryInformationsEvent, this);
             RaiseEvent(eventArgs);
         }
 
@@ -674,7 +671,7 @@ namespace S100Framework.WPF
         private void InformationIdDoubleClickContent(object sender, ExecutedRoutedEventArgs e) {
             var control = e.Parameter as ListView;
             if (control != null) {
-                var selectedItem = (InformationId)control.SelectedItem;
+                var selectedItem = (InformationTypeId)control.SelectedItem;
 
                 if (selectedItem != null) {
                     var informationBinding = InformationBindingsListView?.SelectedItem as InformationBindingViewModel;
@@ -689,7 +686,7 @@ namespace S100Framework.WPF
             }
         }
 
-        private ObservableCollection<InformationId> _informationsDropdown = new ObservableCollection<InformationId>();
+        private ObservableCollection<InformationTypeId> _informationsDropdown = new ObservableCollection<InformationTypeId>();
 
         public static RoutedUICommand AddInformationBindingCommand = new("Add information binding.", "AddInformationBindingCommandContent", typeof(S100AttributeEditorControl));
 
@@ -717,9 +714,9 @@ namespace S100Framework.WPF
         private void FeatureAssociationSelectedContent(object sender, ExecutedRoutedEventArgs e) {
         }
 
-        public static readonly RoutedEvent QueryFeaturesEvent = EventManager.RegisterRoutedEvent("QueryFeatures", RoutingStrategy.Bubble, typeof(QueryFeaturesEventHandler), typeof(S100AttributeEditorControl));
+        public static readonly RoutedEvent QueryFeaturesEvent = EventManager.RegisterRoutedEvent("QueryFeatures", RoutingStrategy.Bubble, typeof(QueryFeatureTypesEventHandler), typeof(S100AttributeEditorControl));
 
-        public event QueryFeaturesEventHandler QueryFeatures {
+        public event QueryFeatureTypesEventHandler QueryFeatures {
             add {
                 this.AddHandler(S100AttributeEditorControl.QueryFeaturesEvent, value);
             }
@@ -735,7 +732,7 @@ namespace S100Framework.WPF
 
             var model = (FeatureBindingViewModel)((ListViewItem)e.Parameter).Content;
 
-            var eventArgs = new QueryFeaturesEventArgs(model.roleType, model.association, model.role, _featuresDropdown, QueryFeaturesEvent, this);
+            var eventArgs = new QueryFeatureTypesEventArgs(model.roleType, model.association, model.role, _featuresDropdown, QueryFeaturesEvent, this);
             RaiseEvent(eventArgs);
         }
 
@@ -753,7 +750,7 @@ namespace S100Framework.WPF
         private void FeatureIdDoubleClickContent(object sender, ExecutedRoutedEventArgs e) {
             var control = e.Parameter as ListView;
             if (control != null) {
-                var selectedItem = (FeatureId)control.SelectedItem;
+                var selectedItem = (FeatureTypeId)control.SelectedItem;
 
                 if (selectedItem != null) {
                     var featureBinding = FeatureBindingsListView?.SelectedItem as FeatureBindingViewModel;
@@ -768,7 +765,7 @@ namespace S100Framework.WPF
             }
         }
 
-        private ObservableCollection<FeatureId> _featuresDropdown = new ObservableCollection<FeatureId>();
+        private ObservableCollection<FeatureTypeId> _featuresDropdown = new ObservableCollection<FeatureTypeId>();
 
         public static RoutedUICommand AddFeatureBindingCommand = new("Add feature binding.", "AddFeatureBindingCommandContent", typeof(S100AttributeEditorControl));
 
