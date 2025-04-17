@@ -61,6 +61,7 @@ BenchmarkDotNet.Artifacts/
 project.lock.json
 project.fragment.lock.json
 # artifacts/
+**/Properties/launchSettings.json
 
 # ASP.NET Scaffolding
 ScaffoldingReadMe.txt
@@ -413,4 +414,3 @@ FodyWeavers.xsd
 /tests/Core.Tests/TestS100Framework.Roslyn/S-201_FC.cs
 /tests/Core.Tests/TestS100Framework.Roslyn/S-201_ViewModel.cs
 /src/Application/VortexLoader/Properties/launchSettings.json
-/src/Application/VortexDCEGBuilder/Properties/launchSettings.json

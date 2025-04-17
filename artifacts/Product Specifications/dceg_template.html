@@ -1,0 +1,1114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>S-101 Feature Catalog and DCEG Explorer</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.0.0/css/all.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/d3@7/dist/d3.min.js"></script>
+    <style>
+        .relationship-diagram {
+            border: 1px solid #e2e8f0;
+            border-radius: 0.375rem;
+            height: 400px;
+            overflow: hidden;
+        }
+        .relationship-diagram svg {
+            width: 100%;
+            height: 100%;
+        }
+        .node circle {
+            fill: #69b3a2;
+            stroke: #fff;
+            stroke-width: 2px;
+        }
+        .node text {
+            font-size: 12px;
+        }
+        .link {
+            fill: none;
+            stroke: #ccc;
+            stroke-width: 1px;
+        }
+        .sidebar-item.active {
+            background-color: #4299e1;
+            color: white;
+        }
+        .tab-button.active {
+            background-color: #4299e1;
+            color: white;
+        }
+        @media (max-width: 768px) {
+            .sidebar {
+                transform: translateX(-100%);
+                transition: transform 0.3s ease-in-out;
+            }
+            .sidebar.open {
+                transform: translateX(0);
+            }
+        }
+    </style>
+</head>
+<body class="font-sans bg-gray-100 text-gray-900 h-screen flex flex-col">
+    <!-- Header -->
+    <header class="bg-blue-600 text-white shadow-md">
+        <div class="container mx-auto px-4 py-3 flex flex-col md:flex-row justify-between items-center">
+            <div class="flex items-center">
+                <button id="menu-toggle" class="md:hidden mr-4 text-white focus:outline-none">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
+                <h1 class="text-xl font-bold">S-101 Feature Catalog and DCEG Explorer</h1>
+            </div>
+            <div class="mt-2 md:mt-0 w-full md:w-1/3">
+                <div class="relative">
+                    <input type="text" id="search-input" placeholder="Search features, attributes..." 
+                           class="bg-white text-gray-900 rounded-full py-2 px-4 w-full pl-10 focus:outline-none focus:ring-2 focus:ring-blue-400">
+                    <div class="absolute left-3 top-2.5 text-gray-500">
+                        <i class="fas fa-search"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <div class="flex flex-1 overflow-hidden">
+        <!-- Sidebar -->
+        <aside id="sidebar" class="sidebar bg-gray-800 text-white w-64 md:w-72 p-4 overflow-y-auto flex-shrink-0 fixed md:static h-full md:h-auto z-10">
+            <div class="mb-6">
+                <h2 class="text-lg font-semibold mb-2">Feature Categories</h2>
+                <div id="feature-categories" class="space-y-1">
+                    <!-- Feature categories will be populated here -->
+                </div>
+            </div>
+            <div class="mb-6">
+                <h2 class="text-lg font-semibold mb-2">Information Types</h2>
+                <div id="info-types" class="space-y-1">
+                    <!-- Information types will be populated here -->
+                </div>
+            </div>
+            <div>
+                <h2 class="text-lg font-semibold mb-2">Attributes</h2>
+                <div id="attributes-list" class="space-y-1">
+                    <!-- Attributes will be populated here -->
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content Area -->
+        <main class="flex-1 p-4 overflow-y-auto">
+            <div id="breadcrumb" class="mb-4 text-sm text-gray-600">
+                Home > <span id="current-path">Features</span>
+            </div>
+
+            <!-- Search Results -->
+            <div id="search-results" class="bg-white rounded-lg shadow-md p-4 mb-4 hidden">
+                <h2 class="text-lg font-semibold mb-2">Search Results</h2>
+                <div id="results-container" class="space-y-2">
+                    <!-- Search results will be populated here -->
+                </div>
+            </div>
+
+            <!-- Content Panel -->
+            <div id="content-panel" class="bg-white rounded-lg shadow-md">
+                <!-- Tabs -->
+                <div class="flex border-b">
+                    <button id="tab-details" class="tab-button active py-3 px-4 font-medium focus:outline-none">
+                        Details
+                    </button>
+                    <button id="tab-relationships" class="tab-button py-3 px-4 font-medium focus:outline-none">
+                        Relationships
+                    </button>
+                    <button id="tab-dceg" class="tab-button py-3 px-4 font-medium focus:outline-none">
+                        DCEG Guidance
+                    </button>
+                </div>
+
+                <!-- Tab Content -->
+                <div id="tab-content" class="p-4">
+                    <!-- Initial content -->
+                    <div id="content-details" class="tab-content">
+                        <div class="text-center py-8 text-gray-500">
+                            <i class="fas fa-info-circle text-4xl mb-2"></i>
+                            <p>Select a feature, information type, or attribute from the sidebar to view details.</p>
+                        </div>
+                    </div>
+                    
+                    <div id="content-relationships" class="tab-content hidden">
+                        <div class="relationship-diagram" id="relationship-diagram"></div>
+                    </div>
+                    
+                    <div id="content-dceg" class="tab-content hidden">
+                        <div id="dceg-content">
+                            <div class="text-center py-8 text-gray-500">
+                                <i class="fas fa-book text-4xl mb-2"></i>
+                                <p>Select a feature to view DCEG guidance.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        // Sample data representing the S-101 Feature Catalog structure
+        const featureCategories = [
+            { id: "cat1", name: "Cultural Features", features: ["landmark", "building", "fortifiedStructure"] },
+            { id: "cat2", name: "Geo Features", features: ["land", "depthArea", "seaArea"] },
+            { id: "cat3", name: "Navigational Aids", features: ["beacon", "buoy", "lightAllAround"] },
+            { id: "cat4", name: "Obstructions", features: ["obstruction", "underwater_awash_rock", "wreck"] },
+            { id: "cat5", name: "Topography", features: ["slopeTopline", "coastline"] }
+        ];
+
+        const informationTypes = [
+            { id: "info1", name: "Contact Details" },
+            { id: "info2", name: "Navigation Information" },
+            { id: "info3", name: "Nautical Information" },
+            { id: "info4", name: "Service Hours" }
+        ];
+
+        const attributes = [
+            { id: "attr1", name: "categoryOfLandmark", type: "enumeration" },
+            { id: "attr2", name: "colour", type: "enumeration" },
+            { id: "attr3", name: "height", type: "real" },
+            { id: "attr4", name: "objectName", type: "text" },
+            { id: "attr5", name: "status", type: "enumeration" },
+            { id: "attr6", name: "valueOfSounding", type: "real" },
+            { id: "attr7", name: "waterLevelEffect", type: "enumeration" }
+        ];
+
+        const features = {
+            "landmark": {
+                id: "landmark",
+                name: "Landmark",
+                definition: "A prominent object at a fixed location which can be used in determining a location or a direction.",
+                category: "Cultural Features",
+                attributes: ["categoryOfLandmark", "colour", "height", "objectName", "status"],
+                associations: ["navigationInformation"],
+                dceg: {
+                    description: "Landmarks are conspicuous objects, either natural or man-made, which can be used in determining a location or a direction. They are generally distinct from other features in their vicinity. They are intended for use in passage planning and monitoring, and are chosen for their conspicuousness.",
+                    encoding: [
+                        "Landmark objects must be encoded as points, except for certain man-made features like towers or chimneys which may be encoded as areas.",
+                        "Natural features should only be encoded as Landmark objects if they are distinct from their surroundings."
+                    ],
+                    remarks: [
+                        "For landmarks that have navigational significance, it is recommended to encode the attribute 'categoryOfLandmark'.",
+                        "If the landmark has a light, it should be encoded as a separate Light feature."
+                    ]
+                }
+            },
+            "building": {
+                id: "building",
+                name: "Building",
+                definition: "A permanent walled and roofed construction.",
+                category: "Cultural Features",
+                attributes: ["colour", "height", "objectName", "status"],
+                associations: ["contactDetails"],
+                dceg: {
+                    description: "Buildings are permanent walled and roofed constructions. They are generally distinct from other features in their vicinity. In the maritime context, buildings are encoded when they are conspicuous from seaward or have some significance for navigation.",
+                    encoding: [
+                        "Buildings must be encoded as areas when the real-world feature is an area.",
+                        "Buildings that are significant for navigation should include appropriate attributes to indicate their purpose or appearance."
+                    ],
+                    remarks: [
+                        "Only buildings that are visible from seaward or have significance to navigation should be encoded.",
+                        "For buildings with navigational significance, consider encoding related features such as Landmark or Light features."
+                    ]
+                }
+            },
+            "fortifiedStructure": {
+                id: "fortifiedStructure",
+                name: "Fortified Structure",
+                definition: "A structure that has been specifically designed or modified to provide defense.",
+                category: "Cultural Features",
+                attributes: ["categoryOfLandmark", "colour", "height", "objectName", "status"],
+                associations: [],
+                dceg: {
+                    description: "A structure that has been specifically designed or modified to provide defense. These structures are often historic and can be significant landmarks for navigation.",
+                    encoding: [
+                        "Fortified structures must be encoded as areas when the real-world feature is an area.",
+                        "When a fortified structure is a landmark, the attribute 'categoryOfLandmark' must be populated."
+                    ],
+                    remarks: [
+                        "Historic fortifications often maintain a conspicuous profile and may be important for visual navigation.",
+                        "If a fortified structure contains a light, it should be encoded as a separate Light feature."
+                    ]
+                }
+            },
+            "land": {
+                id: "land",
+                name: "Land Area",
+                definition: "The solid portion of the Earth's surface, as opposed to sea or water.",
+                category: "Geo Features",
+                attributes: ["objectName", "status"],
+                associations: [],
+                dceg: {
+                    description: "The solid portion of the Earth's surface, as opposed to sea, lakes, or other bodies of water. Land areas define the extent of terrestrial features in the data.",
+                    encoding: [
+                        "Land areas must be encoded as areas.",
+                        "The coastline must be consistent with the high water line indicated by the land area."
+                    ],
+                    remarks: [
+                        "Land areas should be consistent with the coastline and should not overlap with water areas.",
+                        "Small islands should be encoded individually when they are significant for navigation."
+                    ]
+                }
+            },
+            "depthArea": {
+                id: "depthArea",
+                name: "Depth Area",
+                definition: "A water area whose depth is within a defined range of values.",
+                category: "Geo Features",
+                attributes: ["valueOfSounding", "waterLevelEffect"],
+                associations: ["navigationInformation"],
+                dceg: {
+                    description: "A water area whose depth is within a defined range of values. Depth areas are used to indicate areas of specific depth ranges relevant to navigation safety.",
+                    encoding: [
+                        "Depth areas must be encoded as areas.",
+                        "Depth ranges must be defined according to the standard depth contours.",
+                        "All depth areas collectively must cover all navigable water areas in the dataset."
+                    ],
+                    remarks: [
+                        "Depth area boundaries must coincide with depth contours where they exist.",
+                        "Care should be taken to ensure that depth areas are properly encoded in relation to the safety contour."
+                    ]
+                }
+            },
+            "seaArea": {
+                id: "seaArea",
+                name: "Sea Area",
+                definition: "A named water area using a specific type.",
+                category: "Geo Features",
+                attributes: ["objectName", "status"],
+                associations: ["nauticalInformation"],
+                dceg: {
+                    description: "A named water area using a specific type. Sea areas provide information about named regions of the sea that may be important for navigation and orientation.",
+                    encoding: [
+                        "Sea areas must be encoded as areas.",
+                        "The name of the sea area must be encoded using the attribute 'objectName'."
+                    ],
+                    remarks: [
+                        "Sea areas often overlap and multiple sea areas can exist in the same location.",
+                        "Sea areas should be encoded when they provide important orientation information for the mariner."
+                    ]
+                }
+            },
+            "beacon": {
+                id: "beacon",
+                name: "Beacon",
+                definition: "A fixed artificial navigation mark that can be recognized by its shape, color, pattern, topmark, or light character.",
+                category: "Navigational Aids",
+                attributes: ["categoryOfLandmark", "colour", "status"],
+                associations: ["navigationInformation"],
+                dceg: {
+                    description: "A fixed artificial navigation mark that can be recognized by its shape, color, pattern, topmark, or light character. Beacons are important aids to navigation that mark channels, hazards, or special areas.",
+                    encoding: [
+                        "Beacons must be encoded as points.",
+                        "The attributes colour, shape, and pattern should be populated as appropriate.",
+                        "If the beacon has a light, a separate Light feature must be encoded."
+                    ],
+                    remarks: [
+                        "Beacons should be encoded in their actual positions.",
+                        "The relationship between beacons and any associated light features should be maintained."
+                    ]
+                }
+            },
+            "buoy": {
+                id: "buoy",
+                name: "Buoy",
+                definition: "A floating artificial navigation mark that is moored to the seabed by a chain or cable and which has a specific shape or color.",
+                category: "Navigational Aids",
+                attributes: ["colour", "status", "waterLevelEffect"],
+                associations: ["navigationInformation"],
+                dceg: {
+                    description: "A floating artificial navigation mark that is moored to the seabed by a chain or cable and which has a specific shape or color. Buoys are critical aids to navigation that mark channels, hazards, or special areas.",
+                    encoding: [
+                        "Buoys must be encoded as points at their charted position.",
+                        "The attributes colour, shape, and pattern should be populated as appropriate.",
+                        "If the buoy has a light, a separate Light feature must be encoded."
+                    ],
+                    remarks: [
+                        "Care should be taken to encode buoys in their charted positions rather than their physical locations, which may vary with tide and weather.",
+                        "The relationship between buoys and any associated light features should be maintained."
+                    ]
+                }
+            },
+            "lightAllAround": {
+                id: "lightAllAround",
+                name: "All-around Light",
+                definition: "A light that is visible from all directions.",
+                category: "Navigational Aids",
+                attributes: ["colour", "height", "status"],
+                associations: ["navigationInformation"],
+                dceg: {
+                    description: "A light that is visible from all directions. All-around lights are important aids to navigation that provide visual guidance to mariners at night.",
+                    encoding: [
+                        "All-around lights must be encoded as points.",
+                        "The attributes colour, rhythm, and period should be populated as appropriate.",
+                        "The vertical height of the light must be encoded using the attribute 'height'."
+                    ],
+                    remarks: [
+                        "All-around lights should be encoded in their actual positions.",
+                        "If the light is exhibited from a physical structure, that structure should be encoded as a separate feature."
+                    ]
+                }
+            },
+            "obstruction": {
+                id: "obstruction",
+                name: "Obstruction",
+                definition: "An object that hinders free movement of vessels.",
+                category: "Obstructions",
+                attributes: ["waterLevelEffect", "status"],
+                associations: ["navigationInformation"],
+                dceg: {
+                    description: "An object that hinders free movement of vessels. Obstructions are critical safety features that indicate hazards to navigation.",
+                    encoding: [
+                        "Obstructions must be encoded as points, lines, or areas depending on their extent.",
+                        "The attribute 'waterLevelEffect' must be populated to indicate the relationship of the obstruction to the water surface.",
+                        "The minimum known depth over the obstruction should be encoded where known."
+                    ],
+                    remarks: [
+                        "Care should be taken to encode all known obstructions that pose a risk to navigation.",
+                        "If the exact position or extent of an obstruction is uncertain, this should be indicated using appropriate metadata."
+                    ]
+                }
+            },
+            "underwater_awash_rock": {
+                id: "underwater_awash_rock",
+                name: "Underwater/Awash Rock",
+                definition: "A concreted mass of stony material that dries, is awash, or is below the water surface.",
+                category: "Obstructions",
+                attributes: ["waterLevelEffect", "valueOfSounding"],
+                associations: ["navigationInformation"],
+                dceg: {
+                    description: "A concreted mass of stony material that dries, is awash, or is below the water surface. Underwater rocks are significant hazards to navigation.",
+                    encoding: [
+                        "Underwater rocks must be encoded as points.",
+                        "The attribute 'waterLevelEffect' must be populated to indicate the relationship of the rock to the water surface.",
+                        "The minimum known depth over the rock should be encoded where known using the attribute 'valueOfSounding'."
+                    ],
+                    remarks: [
+                        "When encoding underwater rocks, the most accurate depth information available should be used.",
+                        "Rocks that are surrounded by deep water and can pose hazards to deep-draft vessels should be highlighted using appropriate feature relationships."
+                    ]
+                }
+            },
+            "wreck": {
+                id: "wreck",
+                name: "Wreck",
+                definition: "The ruined remains of a stranded or sunken vessel which has been rendered useless.",
+                category: "Obstructions",
+                attributes: ["waterLevelEffect", "status", "valueOfSounding"],
+                associations: ["navigationInformation"],
+                dceg: {
+                    description: "The ruined remains of a stranded or sunken vessel which has been rendered useless. Wrecks are significant hazards to navigation and also may have historical or cultural significance.",
+                    encoding: [
+                        "Wrecks must be encoded as points or areas depending on their extent.",
+                        "The attribute 'waterLevelEffect' must be populated to indicate the relationship of the wreck to the water surface.",
+                        "The minimum known depth over the wreck should be encoded where known using the attribute 'valueOfSounding'."
+                    ],
+                    remarks: [
+                        "The most accurate information known about the wreck should be encoded.",
+                        "Historic wrecks or wrecks with archaeological significance should be indicated using appropriate attributes."
+                    ]
+                }
+            },
+            "slopeTopline": {
+                id: "slopeTopline",
+                name: "Slope Topline",
+                definition: "The line of maximum elevation of a slope, such as the edge of a cutting or embankment.",
+                category: "Topography",
+                attributes: ["objectName", "status"],
+                associations: [],
+                dceg: {
+                    description: "The line of maximum elevation of a slope, such as the edge of a cutting or embankment. Slope toplines can be important landmarks for visual navigation.",
+                    encoding: [
+                        "Slope toplines must be encoded as lines.",
+                        "Slope toplines should only be encoded when they are conspicuous from seaward or have navigational significance."
+                    ],
+                    remarks: [
+                        "Slope toplines should be encoded when they form prominent features visible from seaward.",
+                        "Care should be taken to ensure that slope toplines are consistent with any encoded elevation data."
+                    ]
+                }
+            },
+            "coastline": {
+                id: "coastline",
+                name: "Coastline",
+                definition: "The line where shore and water meet.",
+                category: "Topography",
+                attributes: ["waterLevelEffect", "status"],
+                associations: [],
+                dceg: {
+                    description: "The line where shore and water meet. The coastline is a fundamental feature that defines the boundary between land and water areas.",
+                    encoding: [
+                        "Coastlines must be encoded as lines.",
+                        "The attribute 'waterLevelEffect' must be populated to indicate the water level used for the coastline definition.",
+                        "Coastlines must form complete loops or must be connected to national boundaries."
+                    ],
+                    remarks: [
+                        "The coastline must be consistent with the boundaries of any encoded land areas.",
+                        "Artificial coastlines, such as those formed by breakwaters or reclaimed land, should be encoded as coastline features with appropriate attributes."
+                    ]
+                }
+            }
+        };
+
+        const associations = {
+            "navigationInformation": {
+                id: "navigationInformation",
+                name: "Navigation Information",
+                relatedTo: ["beacon", "buoy", "lightAllAround", "obstruction", "underwater_awash_rock", "wreck", "landmark", "depthArea"]
+            },
+            "nauticalInformation": {
+                id: "nauticalInformation",
+                name: "Nautical Information",
+                relatedTo: ["seaArea"]
+            },
+            "contactDetails": {
+                id: "contactDetails",
+                name: "Contact Details",
+                relatedTo: ["building"]
+            }
+        };
+
+        // DOM Elements
+        const featureCategoriesEl = document.getElementById('feature-categories');
+        const infoTypesEl = document.getElementById('info-types');
+        const attributesListEl = document.getElementById('attributes-list');
+        const searchInput = document.getElementById('search-input');
+        const searchResults = document.getElementById('search-results');
+        const resultsContainer = document.getElementById('results-container');
+        const contentDetailsEl = document.getElementById('content-details');
+        const contentRelationshipsEl = document.getElementById('content-relationships');
+        const contentDcegEl = document.getElementById('content-dceg');
+        const currentPathEl = document.getElementById('current-path');
+        const tabDetails = document.getElementById('tab-details');
+        const tabRelationships = document.getElementById('tab-relationships');
+        const tabDceg = document.getElementById('tab-dceg');
+        const menuToggle = document.getElementById('menu-toggle');
+        const sidebar = document.getElementById('sidebar');
+
+        // Populate sidebar
+        function populateSidebar() {
+            // Populate Feature Categories
+            featureCategories.forEach(category => {
+                const categoryItem = document.createElement('div');
+                categoryItem.className = 'mb-2';
+                categoryItem.innerHTML = `
+                    <div class="flex items-center cursor-pointer hover:bg-gray-700 px-2 py-1 rounded">
+                        <i class="fas fa-folder mr-2"></i>
+                        <span>${category.name}</span>
+                    </div>
+                    <div class="ml-4 mt-1 space-y-1 category-features hidden">
+                        ${category.features.map(featureId => `
+                            <div class="sidebar-item cursor-pointer hover:bg-gray-700 px-2 py-1 rounded flex items-center" data-id="${featureId}" data-type="feature">
+                                <i class="fas fa-map-marker-alt mr-2 text-blue-300"></i>
+                                <span>${features[featureId].name}</span>
+                            </div>
+                        `).join('')}
+                    </div>
+                `;
+                featureCategoriesEl.appendChild(categoryItem);
+
+                // Add click event to expand/collapse category
+                const categoryHeader = categoryItem.querySelector('.flex.items-center');
+                const categoryFeatures = categoryItem.querySelector('.category-features');
+                categoryHeader.addEventListener('click', () => {
+                    categoryFeatures.classList.toggle('hidden');
+                    const icon = categoryHeader.querySelector('i');
+                    if (categoryFeatures.classList.contains('hidden')) {
+                        icon.className = 'fas fa-folder mr-2';
+                    } else {
+                        icon.className = 'fas fa-folder-open mr-2';
+                    }
+                });
+            });
+
+            // Populate Information Types
+            informationTypes.forEach(infoType => {
+                const infoItem = document.createElement('div');
+                infoItem.className = 'sidebar-item cursor-pointer hover:bg-gray-700 px-2 py-1 rounded flex items-center';
+                infoItem.setAttribute('data-id', infoType.id);
+                infoItem.setAttribute('data-type', 'infoType');
+                infoItem.innerHTML = `
+                    <i class="fas fa-info-circle mr-2 text-green-300"></i>
+                    <span>${infoType.name}</span>
+                `;
+                infoTypesEl.appendChild(infoItem);
+            });
+
+            // Populate Attributes
+            attributes.forEach(attr => {
+                const attrItem = document.createElement('div');
+                attrItem.className = 'sidebar-item cursor-pointer hover:bg-gray-700 px-2 py-1 rounded flex items-center';
+                attrItem.setAttribute('data-id', attr.id);
+                attrItem.setAttribute('data-type', 'attribute');
+                attrItem.innerHTML = `
+                    <i class="fas fa-tag mr-2 text-yellow-300"></i>
+                    <span>${attr.name}</span>
+                `;
+                attributesListEl.appendChild(attrItem);
+            });
+
+            // Add click event to all sidebar items
+            document.querySelectorAll('.sidebar-item').forEach(item => {
+                item.addEventListener('click', () => {
+                    const id = item.getAttribute('data-id');
+                    const type = item.getAttribute('data-type');
+                    
+                    // Remove active class from all items
+                    document.querySelectorAll('.sidebar-item').forEach(i => i.classList.remove('active'));
+                    
+                    // Add active class to clicked item
+                    item.classList.add('active');
+                    
+                    // Show details for selected item
+                    if (type === 'feature') {
+                        showFeatureDetails(id);
+                    } else if (type === 'infoType') {
+                        showInfoTypeDetails(id);
+                    } else if (type === 'attribute') {
+                        showAttributeDetails(id);
+                    }
+
+                    // Close sidebar on mobile after selection
+                    if (window.innerWidth < 768) {
+                        sidebar.classList.remove('open');
+                    }
+                });
+            });
+        }
+
+        // Function to show feature details
+        function showFeatureDetails(featureId) {
+            const feature = features[featureId];
+            currentPathEl.textContent = `Features > ${feature.category} > ${feature.name}`;
+            
+            // Show feature details
+            contentDetailsEl.innerHTML = `
+                <h2 class="text-xl font-semibold mb-2">${feature.name}</h2>
+                <div class="bg-blue-50 p-3 rounded mb-4">
+                    <p class="text-gray-800">${feature.definition}</p>
+                </div>
+                
+                <h3 class="font-medium text-lg mb-2">Attributes</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-2 mb-4">
+                    ${feature.attributes.map(attrId => {
+                        const attr = attributes.find(a => a.name === attrId);
+                        return attr ? `
+                            <div class="bg-gray-100 p-2 rounded flex items-center">
+                                <i class="fas fa-tag text-yellow-500 mr-2"></i>
+                                <span>${attr.name}</span>
+                                <span class="ml-auto text-sm text-gray-500">${attr.type}</span>
+                            </div>
+                        ` : '';
+                    }).join('')}
+                </div>
+                
+                <h3 class="font-medium text-lg mb-2">Associations</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-2">
+                    ${feature.associations.length > 0 ? feature.associations.map(assocId => {
+                        const assoc = associations[assocId];
+                        return assoc ? `
+                            <div class="bg-gray-100 p-2 rounded flex items-center">
+                                <i class="fas fa-link text-purple-500 mr-2"></i>
+                                <span>${assoc.name}</span>
+                            </div>
+                        ` : '';
+                    }).join('') : '<p class="text-gray-500">No associations defined</p>'}
+                </div>
+            `;
+
+            // Prepare relationship data
+            createRelationshipDiagram(featureId);
+
+            // Show DCEG content
+            if (feature.dceg) {
+                document.getElementById('content-dceg').innerHTML = `
+                    <h2 class="text-xl font-semibold mb-4">${feature.name} - DCEG Guidance</h2>
+                    
+                    <div class="mb-4">
+                        <h3 class="font-medium text-lg mb-2">Description</h3>
+                        <p class="text-gray-800">${feature.dceg.description}</p>
+                    </div>
+                    
+                    <div class="mb-4">
+                        <h3 class="font-medium text-lg mb-2">Encoding Instructions</h3>
+                        <ul class="list-disc pl-5 space-y-1">
+                            ${feature.dceg.encoding.map(instruction => `<li>${instruction}</li>`).join('')}
+                        </ul>
+                    </div>
+                    
+                    <div>
+                        <h3 class="font-medium text-lg mb-2">Remarks</h3>
+                        <ul class="list-disc pl-5 space-y-1">
+                            ${feature.dceg.remarks.map(remark => `<li>${remark}</li>`).join('')}
+                        </ul>
+                    </div>
+                `;
+            } else {
+                document.getElementById('content-dceg').innerHTML = `
+                    <div class="text-center py-8 text-gray-500">
+                        <i class="fas fa-exclamation-circle text-4xl mb-2"></i>
+                        <p>No DCEG guidance available for this feature.</p>
+                    </div>
+                `;
+            }
+
+            // Activate details tab
+            activateTab('tab-details');
+        }
+
+        // Function to show information type details
+        function showInfoTypeDetails(infoTypeId) {
+            const infoType = informationTypes.find(info => info.id === infoTypeId);
+            currentPathEl.textContent = `Information Types > ${infoType.name}`;
+            
+            contentDetailsEl.innerHTML = `
+                <h2 class="text-xl font-semibold mb-2">${infoType.name}</h2>
+                <div class="bg-green-50 p-3 rounded mb-4">
+                    <p class="text-gray-800">An information type that provides additional details for features.</p>
+                </div>
+                
+                <h3 class="font-medium text-lg mb-2">Related Features</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-2">
+                    ${associations[infoTypeId] ? 
+                        associations[infoTypeId].relatedTo.map(featureId => `
+                            <div class="bg-gray-100 p-2 rounded flex items-center">
+                                <i class="fas fa-map-marker-alt text-blue-500 mr-2"></i>
+                                <span>${features[featureId].name}</span>
+                            </div>
+                        `).join('') : 
+                        '<p class="text-gray-500">No related features defined</p>'
+                    }
+                </div>
+            `;
+
+            // Create relationship diagram
+            createInfoTypeRelationshipDiagram(infoTypeId);
+
+            // Clear DCEG content
+            document.getElementById('content-dceg').innerHTML = `
+                <div class="text-center py-8 text-gray-500">
+                    <i class="fas fa-exclamation-circle text-4xl mb-2"></i>
+                    <p>DCEG guidance is not applicable to information types.</p>
+                </div>
+            `;
+
+            // Activate details tab
+            activateTab('tab-details');
+        }
+
+        // Function to show attribute details
+        function showAttributeDetails(attrId) {
+            const attr = attributes.find(a => a.id === attrId);
+            currentPathEl.textContent = `Attributes > ${attr.name}`;
+            
+            contentDetailsEl.innerHTML = `
+                <h2 class="text-xl font-semibold mb-2">${attr.name}</h2>
+                <div class="bg-yellow-50 p-3 rounded mb-4">
+                    <p class="text-gray-800">A ${attr.type} attribute used to describe properties of features.</p>
+                </div>
+                
+                <h3 class="font-medium text-lg mb-2">Used By Features</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-2">
+                    ${Object.values(features)
+                        .filter(feature => feature.attributes.includes(attr.name))
+                        .map(feature => `
+                            <div class="bg-gray-100 p-2 rounded flex items-center">
+                                <i class="fas fa-map-marker-alt text-blue-500 mr-2"></i>
+                                <span>${feature.name}</span>
+                            </div>
+                        `).join('')
+                    }
+                </div>
+            `;
+
+            // Create relationship diagram
+            createAttributeRelationshipDiagram(attr.name);
+
+            // Clear DCEG content
+            document.getElementById('content-dceg').innerHTML = `
+                <div class="text-center py-8 text-gray-500">
+                    <i class="fas fa-exclamation-circle text-4xl mb-2"></i>
+                    <p>DCEG guidance specific to attributes is not available.</p>
+                </div>
+            `;
+
+            // Activate details tab
+            activateTab('tab-details');
+        }
+
+        // Function to create feature relationship diagram
+        function createRelationshipDiagram(featureId) {
+            const feature = features[featureId];
+            
+            // Create nodes and links for the diagram
+            const nodes = [
+                { id: feature.id, name: feature.name, type: "feature", group: 1 }
+            ];
+            
+            const links = [];
+            
+            // Add attribute nodes and links
+            feature.attributes.forEach(attrName => {
+                const attr = attributes.find(a => a.name === attrName);
+                if (attr) {
+                    nodes.push({ id: attr.name, name: attr.name, type: "attribute", group: 2 });
+                    links.push({ source: feature.id, target: attr.name, value: 1, type: "has attribute" });
+                }
+            });
+            
+            // Add association nodes and links
+            feature.associations.forEach(assocId => {
+                const assoc = associations[assocId];
+                if (assoc) {
+                    nodes.push({ id: assoc.id, name: assoc.name, type: "association", group: 3 });
+                    links.push({ source: feature.id, target: assoc.id, value: 1, type: "has association" });
+                }
+            });
+            
+            // Render diagram
+            renderForceDirectedGraph(nodes, links);
+        }
+
+        // Function to create information type relationship diagram
+        function createInfoTypeRelationshipDiagram(infoTypeId) {
+            const infoType = informationTypes.find(info => info.id === infoTypeId);
+            const association = associations[infoTypeId];
+            
+            // Create nodes and links for the diagram
+            const nodes = [
+                { id: infoType.id, name: infoType.name, type: "infoType", group: 3 }
+            ];
+            
+            const links = [];
+            
+            // Add related feature nodes and links
+            if (association) {
+                association.relatedTo.forEach(featureId => {
+                    const feature = features[featureId];
+                    if (feature) {
+                        nodes.push({ id: feature.id, name: feature.name, type: "feature", group: 1 });
+                        links.push({ source: infoType.id, target: feature.id, value: 1, type: "related to" });
+                    }
+                });
+            }
+            
+            // Render diagram
+            renderForceDirectedGraph(nodes, links);
+        }
+
+        // Function to create attribute relationship diagram
+        function createAttributeRelationshipDiagram(attrName) {
+            // Create nodes and links for the diagram
+            const nodes = [
+                { id: attrName, name: attrName, type: "attribute", group: 2 }
+            ];
+            
+            const links = [];
+            
+            // Add feature nodes and links for features that use this attribute
+            Object.values(features).forEach(feature => {
+                if (feature.attributes.includes(attrName)) {
+                    nodes.push({ id: feature.id, name: feature.name, type: "feature", group: 1 });
+                    links.push({ source: attrName, target: feature.id, value: 1, type: "used by" });
+                }
+            });
+            
+            // Render diagram
+            renderForceDirectedGraph(nodes, links);
+        }
+
+        // Function to render force-directed graph using D3.js
+        function renderForceDirectedGraph(nodes, links) {
+            // Clear previous diagram
+            d3.select("#relationship-diagram").select("svg").remove();
+            
+            // Create SVG
+            const svg = d3.select("#relationship-diagram")
+                .append("svg")
+                .attr("width", "100%")
+                .attr("height", "100%");
+                
+            const width = document.getElementById("relationship-diagram").clientWidth;
+            const height = document.getElementById("relationship-diagram").clientHeight;
+            
+            // Define colors for node types
+            const colors = {
+                "feature": "#4299e1", // blue
+                "attribute": "#ecc94b", // yellow
+                "association": "#9f7aea", // purple
+                "infoType": "#48bb78" // green
+            };
+            
+            // Create force simulation
+            const simulation = d3.forceSimulation(nodes)
+                .force("link", d3.forceLink(links).id(d => d.id).distance(100))
+                .force("charge", d3.forceManyBody().strength(-300))
+                .force("center", d3.forceCenter(width / 2, height / 2));
+            
+            // Create links
+            const link = svg.append("g")
+                .selectAll("line")
+                .data(links)
+                .enter().append("line")
+                .attr("class", "link")
+                .attr("stroke-width", d => Math.sqrt(d.value))
+                .attr("stroke", "#999");
+                
+            // Create link labels
+            const linkText = svg.append("g")
+                .selectAll("text")
+                .data(links)
+                .enter().append("text")
+                .attr("class", "link-label")
+                .attr("dy", -5)
+                .attr("text-anchor", "middle")
+                .attr("fill", "#666")
+                .attr("font-size", "10px")
+                .text(d => d.type);
+                
+            // Create nodes
+            const node = svg.append("g")
+                .selectAll("g")
+                .data(nodes)
+                .enter().append("g")
+                .call(d3.drag()
+                    .on("start", dragstarted)
+                    .on("drag", dragged)
+                    .on("end", dragended));
+                    
+            // Add circles to nodes
+            node.append("circle")
+                .attr("r", d => d.type === "feature" ? 15 : 10)
+                .attr("fill", d => colors[d.type])
+                .attr("stroke", "#fff")
+                .attr("stroke-width", 2);
+                
+            // Add text to nodes
+            node.append("text")
+                .attr("dx", d => d.type === "feature" ? 20 : 15)
+                .attr("dy", ".35em")
+                .attr("font-size", "12px")
+                .text(d => d.name);
+                
+            // Add type icons to nodes
+            node.append("text")
+                .attr("text-anchor", "middle")
+                .attr("dy", ".35em")
+                .attr("font-family", "FontAwesome")
+                .attr("font-size", "10px")
+                .attr("fill", "white")
+                .text(d => {
+                    switch(d.type) {
+                        case "feature": return "\uf041"; // map-marker
+                        case "attribute": return "\uf02b"; // tag
+                        case "association": return "\uf0c1"; // link
+                        case "infoType": return "\uf129"; // info
+                        default: return "";
+                    }
+                });
+                
+            // Update positions on each tick
+            simulation.on("tick", () => {
+                link
+                    .attr("x1", d => d.source.x)
+                    .attr("y1", d => d.source.y)
+                    .attr("x2", d => d.target.x)
+                    .attr("y2", d => d.target.y);
+                    
+                linkText
+                    .attr("x", d => (d.source.x + d.target.x) / 2)
+                    .attr("y", d => (d.source.y + d.target.y) / 2);
+                    
+                node
+                    .attr("transform", d => `translate(${d.x},${d.y})`);
+            });
+            
+            // Drag functions
+            function dragstarted(event, d) {
+                if (!event.active) simulation.alphaTarget(0.3).restart();
+                d.fx = d.x;
+                d.fy = d.y;
+            }
+            
+            function dragged(event, d) {
+                d.fx = event.x;
+                d.fy = event.y;
+            }
+            
+            function dragended(event, d) {
+                if (!event.active) simulation.alphaTarget(0);
+                d.fx = null;
+                d.fy = null;
+            }
+        }
+
+        // Function to activate a tab
+        function activateTab(tabId) {
+            // Hide all tab content
+            document.querySelectorAll('.tab-content').forEach(content => {
+                content.classList.add('hidden');
+            });
+            
+            // Remove active class from all tab buttons
+            document.querySelectorAll('.tab-button').forEach(button => {
+                button.classList.remove('active');
+            });
+            
+            // Show selected tab content
+            let contentId;
+            if (tabId === 'tab-details') {
+                contentId = 'content-details';
+                document.getElementById('tab-details').classList.add('active');
+            } else if (tabId === 'tab-relationships') {
+                contentId = 'content-relationships';
+                document.getElementById('tab-relationships').classList.add('active');
+            } else if (tabId === 'tab-dceg') {
+                contentId = 'content-dceg';
+                document.getElementById('tab-dceg').classList.add('active');
+            }
+            
+            document.getElementById(contentId).classList.remove('hidden');
+        }
+
+        // Function to handle search
+        function handleSearch() {
+            const query = searchInput.value.toLowerCase().trim();
+            
+            if (query.length < 2) {
+                searchResults.classList.add('hidden');
+                return;
+            }
+            
+            // Search in features
+            const matchingFeatures = Object.values(features).filter(feature => 
+                feature.name.toLowerCase().includes(query) || 
+                feature.definition.toLowerCase().includes(query)
+            );
+            
+            // Search in attributes
+            const matchingAttributes = attributes.filter(attr => 
+                attr.name.toLowerCase().includes(query)
+            );
+            
+            // Search in information types
+            const matchingInfoTypes = informationTypes.filter(info => 
+                info.name.toLowerCase().includes(query)
+            );
+            
+            // Display results
+            if (matchingFeatures.length > 0 || matchingAttributes.length > 0 || matchingInfoTypes.length > 0) {
+                resultsContainer.innerHTML = '';
+                
+                // Add feature results
+                if (matchingFeatures.length > 0) {
+                    matchingFeatures.forEach(feature => {
+                        const resultItem = document.createElement('div');
+                        resultItem.className = 'p-2 hover:bg-gray-100 rounded cursor-pointer flex items-center';
+                        resultItem.innerHTML = `
+                            <i class="fas fa-map-marker-alt text-blue-500 mr-2"></i>
+                            <div>
+                                <div class="font-medium">${feature.name}</div>
+                                <div class="text-sm text-gray-600">${feature.category}</div>
+                            </div>
+                        `;
+                        resultItem.addEventListener('click', () => {
+                            showFeatureDetails(feature.id);
+                            searchResults.classList.add('hidden');
+                            searchInput.value = '';
+                        });
+                        resultsContainer.appendChild(resultItem);
+                    });
+                }
+                
+                // Add attribute results
+                if (matchingAttributes.length > 0) {
+                    matchingAttributes.forEach(attr => {
+                        const resultItem = document.createElement('div');
+                        resultItem.className = 'p-2 hover:bg-gray-100 rounded cursor-pointer flex items-center';
+                        resultItem.innerHTML = `
+                            <i class="fas fa-tag text-yellow-500 mr-2"></i>
+                            <div>
+                                <div class="font-medium">${attr.name}</div>
+                                <div class="text-sm text-gray-600">Attribute (${attr.type})</div>
+                            </div>
+                        `;
+                        resultItem.addEventListener('click', () => {
+                            showAttributeDetails(attr.id);
+                            searchResults.classList.add('hidden');
+                            searchInput.value = '';
+                        });
+                        resultsContainer.appendChild(resultItem);
+                    });
+                }
+                
+                // Add information type results
+                if (matchingInfoTypes.length > 0) {
+                    matchingInfoTypes.forEach(info => {
+                        const resultItem = document.createElement('div');
+                        resultItem.className = 'p-2 hover:bg-gray-100 rounded cursor-pointer flex items-center';
+                        resultItem.innerHTML = `
+                            <i class="fas fa-info-circle text-green-500 mr-2"></i>
+                            <div>
+                                <div class="font-medium">${info.name}</div>
+                                <div class="text-sm text-gray-600">Information Type</div>
+                            </div>
+                        `;
+                        resultItem.addEventListener('click', () => {
+                            showInfoTypeDetails(info.id);
+                            searchResults.classList.add('hidden');
+                            searchInput.value = '';
+                        });
+                        resultsContainer.appendChild(resultItem);
+                    });
+                }
+                
+                searchResults.classList.remove('hidden');
+            } else {
+                resultsContainer.innerHTML = '<div class="p-2 text-gray-500">No matching items found</div>';
+                searchResults.classList.remove('hidden');
+            }
+        }
+
+        // Initialize the application
+        function init() {
+            // Populate sidebar
+            populateSidebar();
+            
+            // Add event listeners for tabs
+            tabDetails.addEventListener('click', () => activateTab('tab-details'));
+            tabRelationships.addEventListener('click', () => activateTab('tab-relationships'));
+            tabDceg.addEventListener('click', () => activateTab('tab-dceg'));
+            
+            // Add search functionality
+            searchInput.addEventListener('input', handleSearch);
+            searchInput.addEventListener('blur', () => {
+                // Delay hiding results to allow for clicking
+                setTimeout(() => {
+                    searchResults.classList.add('hidden');
+                }, 200);
+            });
+            
+            // Mobile menu toggle
+            menuToggle.addEventListener('click', () => {
+                sidebar.classList.toggle('open');
+            });
+            
+            // Handle resize to adjust sidebar on desktop
+            window.addEventListener('resize', () => {
+                if (window.innerWidth >= 768) {
+                    sidebar.classList.remove('open');
+                }
+            });
+        }
+
+        // Initialize on page load
+        window.addEventListener('load', init);
+    </script>
+</body>
+</html>
