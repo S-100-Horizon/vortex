@@ -117,9 +117,6 @@
                     <button id="tab-details" class="tab-button active py-3 px-4 font-medium focus:outline-none">
                         Details
                     </button>
-                    <button id="tab-relationships" class="tab-button py-3 px-4 font-medium focus:outline-none">
-                        Relationships
-                    </button>
                     <button id="tab-dceg" class="tab-button py-3 px-4 font-medium focus:outline-none">
                         DCEG Guidance
                     </button>
@@ -134,11 +131,7 @@
                             <p>Select a feature, information type, or attribute from the sidebar to view details.</p>
                         </div>
                     </div>
-                    
-                    <div id="content-relationships" class="tab-content hidden">
-                        <div class="relationship-diagram" id="relationship-diagram"></div>
-                    </div>
-                    
+                                       
                     <div id="content-dceg" class="tab-content hidden">
                         <div id="dceg-content">
                             <div class="text-center py-8 text-gray-500">
@@ -155,19 +148,19 @@
     <script>
         // Sample data representing the S-101 Feature Catalog structure
         const featureCategories = [
-            { id: "cat1", name: "Cultural Features", features: ["landmark", "building", "fortifiedStructure"] },
-            { id: "cat2", name: "Geo Features", features: ["land", "depthArea", "seaArea"] },
-            { id: "cat3", name: "Navigational Aids", features: ["beacon", "buoy", "lightAllAround"] },
-            { id: "cat4", name: "Obstructions", features: ["obstruction", "underwater_awash_rock", "wreck"] },
-            { id: "cat5", name: "Topography", features: ["slopeTopline", "coastline"] }
+            { id: "cat1", name: "Cultural Features", features: [###featureCategoriesCat1###] },
+            //{ id: "cat2", name: "Geo Features", features: ["land", "depthArea", "seaArea"] },
+            //{ id: "cat3", name: "Navigational Aids", features: ["beacon", "buoy", "lightAllAround"] },
+            //{ id: "cat4", name: "Obstructions", features: ["obstruction", "underwater_awash_rock", "wreck"] },
+            //{ id: "cat5", name: "Topography", features: ["slopeTopline", "coastline"] }
         ];
 
-        const informationTypes = [
-            { id: "info1", name: "Contact Details" },
-            { id: "info2", name: "Navigation Information" },
-            { id: "info3", name: "Nautical Information" },
-            { id: "info4", name: "Service Hours" }
-        ];
+        const informationTypes = [###informations###];
+        //    { id: "info1", name: "Contact Details" },
+        //    { id: "info2", name: "Navigation Information" },
+        //    { id: "info3", name: "Nautical Information" },
+        //    { id: "info4", name: "Service Hours" }
+        //];
 
         const attributes = [
             { id: "attr1", name: "categoryOfLandmark", type: "enumeration" },
@@ -179,282 +172,282 @@
             { id: "attr7", name: "waterLevelEffect", type: "enumeration" }
         ];
 
-        const features = {
-            "landmark": {
-                id: "landmark",
-                name: "Landmark",
-                definition: "A prominent object at a fixed location which can be used in determining a location or a direction.",
-                category: "Cultural Features",
-                attributes: ["categoryOfLandmark", "colour", "height", "objectName", "status"],
-                associations: ["navigationInformation"],
-                dceg: {
-                    description: "Landmarks are conspicuous objects, either natural or man-made, which can be used in determining a location or a direction. They are generally distinct from other features in their vicinity. They are intended for use in passage planning and monitoring, and are chosen for their conspicuousness.",
-                    encoding: [
-                        "Landmark objects must be encoded as points, except for certain man-made features like towers or chimneys which may be encoded as areas.",
-                        "Natural features should only be encoded as Landmark objects if they are distinct from their surroundings."
-                    ],
-                    remarks: [
-                        "For landmarks that have navigational significance, it is recommended to encode the attribute 'categoryOfLandmark'.",
-                        "If the landmark has a light, it should be encoded as a separate Light feature."
-                    ]
-                }
-            },
-            "building": {
-                id: "building",
-                name: "Building",
-                definition: "A permanent walled and roofed construction.",
-                category: "Cultural Features",
-                attributes: ["colour", "height", "objectName", "status"],
-                associations: ["contactDetails"],
-                dceg: {
-                    description: "Buildings are permanent walled and roofed constructions. They are generally distinct from other features in their vicinity. In the maritime context, buildings are encoded when they are conspicuous from seaward or have some significance for navigation.",
-                    encoding: [
-                        "Buildings must be encoded as areas when the real-world feature is an area.",
-                        "Buildings that are significant for navigation should include appropriate attributes to indicate their purpose or appearance."
-                    ],
-                    remarks: [
-                        "Only buildings that are visible from seaward or have significance to navigation should be encoded.",
-                        "For buildings with navigational significance, consider encoding related features such as Landmark or Light features."
-                    ]
-                }
-            },
-            "fortifiedStructure": {
-                id: "fortifiedStructure",
-                name: "Fortified Structure",
-                definition: "A structure that has been specifically designed or modified to provide defense.",
-                category: "Cultural Features",
-                attributes: ["categoryOfLandmark", "colour", "height", "objectName", "status"],
-                associations: [],
-                dceg: {
-                    description: "A structure that has been specifically designed or modified to provide defense. These structures are often historic and can be significant landmarks for navigation.",
-                    encoding: [
-                        "Fortified structures must be encoded as areas when the real-world feature is an area.",
-                        "When a fortified structure is a landmark, the attribute 'categoryOfLandmark' must be populated."
-                    ],
-                    remarks: [
-                        "Historic fortifications often maintain a conspicuous profile and may be important for visual navigation.",
-                        "If a fortified structure contains a light, it should be encoded as a separate Light feature."
-                    ]
-                }
-            },
-            "land": {
-                id: "land",
-                name: "Land Area",
-                definition: "The solid portion of the Earth's surface, as opposed to sea or water.",
-                category: "Geo Features",
-                attributes: ["objectName", "status"],
-                associations: [],
-                dceg: {
-                    description: "The solid portion of the Earth's surface, as opposed to sea, lakes, or other bodies of water. Land areas define the extent of terrestrial features in the data.",
-                    encoding: [
-                        "Land areas must be encoded as areas.",
-                        "The coastline must be consistent with the high water line indicated by the land area."
-                    ],
-                    remarks: [
-                        "Land areas should be consistent with the coastline and should not overlap with water areas.",
-                        "Small islands should be encoded individually when they are significant for navigation."
-                    ]
-                }
-            },
-            "depthArea": {
-                id: "depthArea",
-                name: "Depth Area",
-                definition: "A water area whose depth is within a defined range of values.",
-                category: "Geo Features",
-                attributes: ["valueOfSounding", "waterLevelEffect"],
-                associations: ["navigationInformation"],
-                dceg: {
-                    description: "A water area whose depth is within a defined range of values. Depth areas are used to indicate areas of specific depth ranges relevant to navigation safety.",
-                    encoding: [
-                        "Depth areas must be encoded as areas.",
-                        "Depth ranges must be defined according to the standard depth contours.",
-                        "All depth areas collectively must cover all navigable water areas in the dataset."
-                    ],
-                    remarks: [
-                        "Depth area boundaries must coincide with depth contours where they exist.",
-                        "Care should be taken to ensure that depth areas are properly encoded in relation to the safety contour."
-                    ]
-                }
-            },
-            "seaArea": {
-                id: "seaArea",
-                name: "Sea Area",
-                definition: "A named water area using a specific type.",
-                category: "Geo Features",
-                attributes: ["objectName", "status"],
-                associations: ["nauticalInformation"],
-                dceg: {
-                    description: "A named water area using a specific type. Sea areas provide information about named regions of the sea that may be important for navigation and orientation.",
-                    encoding: [
-                        "Sea areas must be encoded as areas.",
-                        "The name of the sea area must be encoded using the attribute 'objectName'."
-                    ],
-                    remarks: [
-                        "Sea areas often overlap and multiple sea areas can exist in the same location.",
-                        "Sea areas should be encoded when they provide important orientation information for the mariner."
-                    ]
-                }
-            },
-            "beacon": {
-                id: "beacon",
-                name: "Beacon",
-                definition: "A fixed artificial navigation mark that can be recognized by its shape, color, pattern, topmark, or light character.",
-                category: "Navigational Aids",
-                attributes: ["categoryOfLandmark", "colour", "status"],
-                associations: ["navigationInformation"],
-                dceg: {
-                    description: "A fixed artificial navigation mark that can be recognized by its shape, color, pattern, topmark, or light character. Beacons are important aids to navigation that mark channels, hazards, or special areas.",
-                    encoding: [
-                        "Beacons must be encoded as points.",
-                        "The attributes colour, shape, and pattern should be populated as appropriate.",
-                        "If the beacon has a light, a separate Light feature must be encoded."
-                    ],
-                    remarks: [
-                        "Beacons should be encoded in their actual positions.",
-                        "The relationship between beacons and any associated light features should be maintained."
-                    ]
-                }
-            },
-            "buoy": {
-                id: "buoy",
-                name: "Buoy",
-                definition: "A floating artificial navigation mark that is moored to the seabed by a chain or cable and which has a specific shape or color.",
-                category: "Navigational Aids",
-                attributes: ["colour", "status", "waterLevelEffect"],
-                associations: ["navigationInformation"],
-                dceg: {
-                    description: "A floating artificial navigation mark that is moored to the seabed by a chain or cable and which has a specific shape or color. Buoys are critical aids to navigation that mark channels, hazards, or special areas.",
-                    encoding: [
-                        "Buoys must be encoded as points at their charted position.",
-                        "The attributes colour, shape, and pattern should be populated as appropriate.",
-                        "If the buoy has a light, a separate Light feature must be encoded."
-                    ],
-                    remarks: [
-                        "Care should be taken to encode buoys in their charted positions rather than their physical locations, which may vary with tide and weather.",
-                        "The relationship between buoys and any associated light features should be maintained."
-                    ]
-                }
-            },
-            "lightAllAround": {
-                id: "lightAllAround",
-                name: "All-around Light",
-                definition: "A light that is visible from all directions.",
-                category: "Navigational Aids",
-                attributes: ["colour", "height", "status"],
-                associations: ["navigationInformation"],
-                dceg: {
-                    description: "A light that is visible from all directions. All-around lights are important aids to navigation that provide visual guidance to mariners at night.",
-                    encoding: [
-                        "All-around lights must be encoded as points.",
-                        "The attributes colour, rhythm, and period should be populated as appropriate.",
-                        "The vertical height of the light must be encoded using the attribute 'height'."
-                    ],
-                    remarks: [
-                        "All-around lights should be encoded in their actual positions.",
-                        "If the light is exhibited from a physical structure, that structure should be encoded as a separate feature."
-                    ]
-                }
-            },
-            "obstruction": {
-                id: "obstruction",
-                name: "Obstruction",
-                definition: "An object that hinders free movement of vessels.",
-                category: "Obstructions",
-                attributes: ["waterLevelEffect", "status"],
-                associations: ["navigationInformation"],
-                dceg: {
-                    description: "An object that hinders free movement of vessels. Obstructions are critical safety features that indicate hazards to navigation.",
-                    encoding: [
-                        "Obstructions must be encoded as points, lines, or areas depending on their extent.",
-                        "The attribute 'waterLevelEffect' must be populated to indicate the relationship of the obstruction to the water surface.",
-                        "The minimum known depth over the obstruction should be encoded where known."
-                    ],
-                    remarks: [
-                        "Care should be taken to encode all known obstructions that pose a risk to navigation.",
-                        "If the exact position or extent of an obstruction is uncertain, this should be indicated using appropriate metadata."
-                    ]
-                }
-            },
-            "underwater_awash_rock": {
-                id: "underwater_awash_rock",
-                name: "Underwater/Awash Rock",
-                definition: "A concreted mass of stony material that dries, is awash, or is below the water surface.",
-                category: "Obstructions",
-                attributes: ["waterLevelEffect", "valueOfSounding"],
-                associations: ["navigationInformation"],
-                dceg: {
-                    description: "A concreted mass of stony material that dries, is awash, or is below the water surface. Underwater rocks are significant hazards to navigation.",
-                    encoding: [
-                        "Underwater rocks must be encoded as points.",
-                        "The attribute 'waterLevelEffect' must be populated to indicate the relationship of the rock to the water surface.",
-                        "The minimum known depth over the rock should be encoded where known using the attribute 'valueOfSounding'."
-                    ],
-                    remarks: [
-                        "When encoding underwater rocks, the most accurate depth information available should be used.",
-                        "Rocks that are surrounded by deep water and can pose hazards to deep-draft vessels should be highlighted using appropriate feature relationships."
-                    ]
-                }
-            },
-            "wreck": {
-                id: "wreck",
-                name: "Wreck",
-                definition: "The ruined remains of a stranded or sunken vessel which has been rendered useless.",
-                category: "Obstructions",
-                attributes: ["waterLevelEffect", "status", "valueOfSounding"],
-                associations: ["navigationInformation"],
-                dceg: {
-                    description: "The ruined remains of a stranded or sunken vessel which has been rendered useless. Wrecks are significant hazards to navigation and also may have historical or cultural significance.",
-                    encoding: [
-                        "Wrecks must be encoded as points or areas depending on their extent.",
-                        "The attribute 'waterLevelEffect' must be populated to indicate the relationship of the wreck to the water surface.",
-                        "The minimum known depth over the wreck should be encoded where known using the attribute 'valueOfSounding'."
-                    ],
-                    remarks: [
-                        "The most accurate information known about the wreck should be encoded.",
-                        "Historic wrecks or wrecks with archaeological significance should be indicated using appropriate attributes."
-                    ]
-                }
-            },
-            "slopeTopline": {
-                id: "slopeTopline",
-                name: "Slope Topline",
-                definition: "The line of maximum elevation of a slope, such as the edge of a cutting or embankment.",
-                category: "Topography",
-                attributes: ["objectName", "status"],
-                associations: [],
-                dceg: {
-                    description: "The line of maximum elevation of a slope, such as the edge of a cutting or embankment. Slope toplines can be important landmarks for visual navigation.",
-                    encoding: [
-                        "Slope toplines must be encoded as lines.",
-                        "Slope toplines should only be encoded when they are conspicuous from seaward or have navigational significance."
-                    ],
-                    remarks: [
-                        "Slope toplines should be encoded when they form prominent features visible from seaward.",
-                        "Care should be taken to ensure that slope toplines are consistent with any encoded elevation data."
-                    ]
-                }
-            },
-            "coastline": {
-                id: "coastline",
-                name: "Coastline",
-                definition: "The line where shore and water meet.",
-                category: "Topography",
-                attributes: ["waterLevelEffect", "status"],
-                associations: [],
-                dceg: {
-                    description: "The line where shore and water meet. The coastline is a fundamental feature that defines the boundary between land and water areas.",
-                    encoding: [
-                        "Coastlines must be encoded as lines.",
-                        "The attribute 'waterLevelEffect' must be populated to indicate the water level used for the coastline definition.",
-                        "Coastlines must form complete loops or must be connected to national boundaries."
-                    ],
-                    remarks: [
-                        "The coastline must be consistent with the boundaries of any encoded land areas.",
-                        "Artificial coastlines, such as those formed by breakwaters or reclaimed land, should be encoded as coastline features with appropriate attributes."
-                    ]
-                }
-            }
-        };
+        const features = { ###features### };
+
+        //"landmark": {
+        //    id: "landmark",
+        //        name: "Landmark",
+        //            definition: "A prominent object at a fixed location which can be used in determining a location or a direction.",
+        //                category: "Cultural Features",
+        //                    attributes: ["categoryOfLandmark", "colour", "height", "objectName", "status"],
+        //                        associations: ["navigationInformation"],
+        //                            dceg: {
+        //        description: "Landmarks are conspicuous objects, either natural or man-made, which can be used in determining a location or a direction. They are generally distinct from other features in their vicinity. They are intended for use in passage planning and monitoring, and are chosen for their conspicuousness.",
+        //            encoding: [
+        //                "Landmark objects must be encoded as points, except for certain man-made features like towers or chimneys which may be encoded as areas.",
+        //                "Natural features should only be encoded as Landmark objects if they are distinct from their surroundings."
+        //            ],
+        //                remarks: [
+        //                    "For landmarks that have navigational significance, it is recommended to encode the attribute 'categoryOfLandmark'.",
+        //                    "If the landmark has a light, it should be encoded as a separate Light feature."
+        //                ]
+        //    }
+        //},
+        //"building": {
+        //    id: "building",
+        //        name: "Building",
+        //            definition: "A permanent walled and roofed construction.",
+        //                category: "Cultural Features",
+        //                    attributes: ["colour", "height", "objectName", "status"],
+        //                        associations: ["contactDetails"],
+        //                            dceg: {
+        //        description: "Buildings are permanent walled and roofed constructions. They are generally distinct from other features in their vicinity. In the maritime context, buildings are encoded when they are conspicuous from seaward or have some significance for navigation.",
+        //            encoding: [
+        //                "Buildings must be encoded as areas when the real-world feature is an area.",
+        //                "Buildings that are significant for navigation should include appropriate attributes to indicate their purpose or appearance."
+        //            ],
+        //                remarks: [
+        //                    "Only buildings that are visible from seaward or have significance to navigation should be encoded.",
+        //                    "For buildings with navigational significance, consider encoding related features such as Landmark or Light features."
+        //                ]
+        //    }
+        //},
+        //"fortifiedStructure": {
+        //    id: "fortifiedStructure",
+        //        name: "Fortified Structure",
+        //            definition: "A structure that has been specifically designed or modified to provide defense.",
+        //                category: "Cultural Features",
+        //                    attributes: ["categoryOfLandmark", "colour", "height", "objectName", "status"],
+        //                        associations: [],
+        //                            dceg: {
+        //        description: "A structure that has been specifically designed or modified to provide defense. These structures are often historic and can be significant landmarks for navigation.",
+        //            encoding: [
+        //                "Fortified structures must be encoded as areas when the real-world feature is an area.",
+        //                "When a fortified structure is a landmark, the attribute 'categoryOfLandmark' must be populated."
+        //            ],
+        //                remarks: [
+        //                    "Historic fortifications often maintain a conspicuous profile and may be important for visual navigation.",
+        //                    "If a fortified structure contains a light, it should be encoded as a separate Light feature."
+        //                ]
+        //    }
+        //},
+        //"land": {
+        //    id: "land",
+        //        name: "Land Area",
+        //            definition: "The solid portion of the Earth's surface, as opposed to sea or water.",
+        //                category: "Geo Features",
+        //                    attributes: ["objectName", "status"],
+        //                        associations: [],
+        //                            dceg: {
+        //        description: "The solid portion of the Earth's surface, as opposed to sea, lakes, or other bodies of water. Land areas define the extent of terrestrial features in the data.",
+        //            encoding: [
+        //                "Land areas must be encoded as areas.",
+        //                "The coastline must be consistent with the high water line indicated by the land area."
+        //            ],
+        //                remarks: [
+        //                    "Land areas should be consistent with the coastline and should not overlap with water areas.",
+        //                    "Small islands should be encoded individually when they are significant for navigation."
+        //                ]
+        //    }
+        //},
+        //"depthArea": {
+        //    id: "depthArea",
+        //        name: "Depth Area",
+        //            definition: "A water area whose depth is within a defined range of values.",
+        //                category: "Geo Features",
+        //                    attributes: ["valueOfSounding", "waterLevelEffect"],
+        //                        associations: ["navigationInformation"],
+        //                            dceg: {
+        //        description: "A water area whose depth is within a defined range of values. Depth areas are used to indicate areas of specific depth ranges relevant to navigation safety.",
+        //            encoding: [
+        //                "Depth areas must be encoded as areas.",
+        //                "Depth ranges must be defined according to the standard depth contours.",
+        //                "All depth areas collectively must cover all navigable water areas in the dataset."
+        //            ],
+        //                remarks: [
+        //                    "Depth area boundaries must coincide with depth contours where they exist.",
+        //                    "Care should be taken to ensure that depth areas are properly encoded in relation to the safety contour."
+        //                ]
+        //    }
+        //},
+        //"seaArea": {
+        //    id: "seaArea",
+        //        name: "Sea Area",
+        //            definition: "A named water area using a specific type.",
+        //                category: "Geo Features",
+        //                    attributes: ["objectName", "status"],
+        //                        associations: ["nauticalInformation"],
+        //                            dceg: {
+        //        description: "A named water area using a specific type. Sea areas provide information about named regions of the sea that may be important for navigation and orientation.",
+        //            encoding: [
+        //                "Sea areas must be encoded as areas.",
+        //                "The name of the sea area must be encoded using the attribute 'objectName'."
+        //            ],
+        //                remarks: [
+        //                    "Sea areas often overlap and multiple sea areas can exist in the same location.",
+        //                    "Sea areas should be encoded when they provide important orientation information for the mariner."
+        //                ]
+        //    }
+        //},
+        //"beacon": {
+        //    id: "beacon",
+        //        name: "Beacon",
+        //            definition: "A fixed artificial navigation mark that can be recognized by its shape, color, pattern, topmark, or light character.",
+        //                category: "Navigational Aids",
+        //                    attributes: ["categoryOfLandmark", "colour", "status"],
+        //                        associations: ["navigationInformation"],
+        //                            dceg: {
+        //        description: "A fixed artificial navigation mark that can be recognized by its shape, color, pattern, topmark, or light character. Beacons are important aids to navigation that mark channels, hazards, or special areas.",
+        //            encoding: [
+        //                "Beacons must be encoded as points.",
+        //                "The attributes colour, shape, and pattern should be populated as appropriate.",
+        //                "If the beacon has a light, a separate Light feature must be encoded."
+        //            ],
+        //                remarks: [
+        //                    "Beacons should be encoded in their actual positions.",
+        //                    "The relationship between beacons and any associated light features should be maintained."
+        //                ]
+        //    }
+        //},
+        //"buoy": {
+        //    id: "buoy",
+        //        name: "Buoy",
+        //            definition: "A floating artificial navigation mark that is moored to the seabed by a chain or cable and which has a specific shape or color.",
+        //                category: "Navigational Aids",
+        //                    attributes: ["colour", "status", "waterLevelEffect"],
+        //                        associations: ["navigationInformation"],
+        //                            dceg: {
+        //        description: "A floating artificial navigation mark that is moored to the seabed by a chain or cable and which has a specific shape or color. Buoys are critical aids to navigation that mark channels, hazards, or special areas.",
+        //            encoding: [
+        //                "Buoys must be encoded as points at their charted position.",
+        //                "The attributes colour, shape, and pattern should be populated as appropriate.",
+        //                "If the buoy has a light, a separate Light feature must be encoded."
+        //            ],
+        //                remarks: [
+        //                    "Care should be taken to encode buoys in their charted positions rather than their physical locations, which may vary with tide and weather.",
+        //                    "The relationship between buoys and any associated light features should be maintained."
+        //                ]
+        //    }
+        //},
+        //"lightAllAround": {
+        //    id: "lightAllAround",
+        //        name: "All-around Light",
+        //            definition: "A light that is visible from all directions.",
+        //                category: "Navigational Aids",
+        //                    attributes: ["colour", "height", "status"],
+        //                        associations: ["navigationInformation"],
+        //                            dceg: {
+        //        description: "A light that is visible from all directions. All-around lights are important aids to navigation that provide visual guidance to mariners at night.",
+        //            encoding: [
+        //                "All-around lights must be encoded as points.",
+        //                "The attributes colour, rhythm, and period should be populated as appropriate.",
+        //                "The vertical height of the light must be encoded using the attribute 'height'."
+        //            ],
+        //                remarks: [
+        //                    "All-around lights should be encoded in their actual positions.",
+        //                    "If the light is exhibited from a physical structure, that structure should be encoded as a separate feature."
+        //                ]
+        //    }
+        //},
+        //"obstruction": {
+        //    id: "obstruction",
+        //        name: "Obstruction",
+        //            definition: "An object that hinders free movement of vessels.",
+        //                category: "Obstructions",
+        //                    attributes: ["waterLevelEffect", "status"],
+        //                        associations: ["navigationInformation"],
+        //                            dceg: {
+        //        description: "An object that hinders free movement of vessels. Obstructions are critical safety features that indicate hazards to navigation.",
+        //            encoding: [
+        //                "Obstructions must be encoded as points, lines, or areas depending on their extent.",
+        //                "The attribute 'waterLevelEffect' must be populated to indicate the relationship of the obstruction to the water surface.",
+        //                "The minimum known depth over the obstruction should be encoded where known."
+        //            ],
+        //                remarks: [
+        //                    "Care should be taken to encode all known obstructions that pose a risk to navigation.",
+        //                    "If the exact position or extent of an obstruction is uncertain, this should be indicated using appropriate metadata."
+        //                ]
+        //    }
+        //},
+        //"underwater_awash_rock": {
+        //    id: "underwater_awash_rock",
+        //        name: "Underwater/Awash Rock",
+        //            definition: "A concreted mass of stony material that dries, is awash, or is below the water surface.",
+        //                category: "Obstructions",
+        //                    attributes: ["waterLevelEffect", "valueOfSounding"],
+        //                        associations: ["navigationInformation"],
+        //                            dceg: {
+        //        description: "A concreted mass of stony material that dries, is awash, or is below the water surface. Underwater rocks are significant hazards to navigation.",
+        //            encoding: [
+        //                "Underwater rocks must be encoded as points.",
+        //                "The attribute 'waterLevelEffect' must be populated to indicate the relationship of the rock to the water surface.",
+        //                "The minimum known depth over the rock should be encoded where known using the attribute 'valueOfSounding'."
+        //            ],
+        //                remarks: [
+        //                    "When encoding underwater rocks, the most accurate depth information available should be used.",
+        //                    "Rocks that are surrounded by deep water and can pose hazards to deep-draft vessels should be highlighted using appropriate feature relationships."
+        //                ]
+        //    }
+        //},
+        //"wreck": {
+        //    id: "wreck",
+        //        name: "Wreck",
+        //            definition: "The ruined remains of a stranded or sunken vessel which has been rendered useless.",
+        //                category: "Obstructions",
+        //                    attributes: ["waterLevelEffect", "status", "valueOfSounding"],
+        //                        associations: ["navigationInformation"],
+        //                            dceg: {
+        //        description: "The ruined remains of a stranded or sunken vessel which has been rendered useless. Wrecks are significant hazards to navigation and also may have historical or cultural significance.",
+        //            encoding: [
+        //                "Wrecks must be encoded as points or areas depending on their extent.",
+        //                "The attribute 'waterLevelEffect' must be populated to indicate the relationship of the wreck to the water surface.",
+        //                "The minimum known depth over the wreck should be encoded where known using the attribute 'valueOfSounding'."
+        //            ],
+        //                remarks: [
+        //                    "The most accurate information known about the wreck should be encoded.",
+        //                    "Historic wrecks or wrecks with archaeological significance should be indicated using appropriate attributes."
+        //                ]
+        //    }
+        //},
+        //"slopeTopline": {
+        //    id: "slopeTopline",
+        //        name: "Slope Topline",
+        //            definition: "The line of maximum elevation of a slope, such as the edge of a cutting or embankment.",
+        //                category: "Topography",
+        //                    attributes: ["objectName", "status"],
+        //                        associations: [],
+        //                            dceg: {
+        //        description: "The line of maximum elevation of a slope, such as the edge of a cutting or embankment. Slope toplines can be important landmarks for visual navigation.",
+        //            encoding: [
+        //                "Slope toplines must be encoded as lines.",
+        //                "Slope toplines should only be encoded when they are conspicuous from seaward or have navigational significance."
+        //            ],
+        //                remarks: [
+        //                    "Slope toplines should be encoded when they form prominent features visible from seaward.",
+        //                    "Care should be taken to ensure that slope toplines are consistent with any encoded elevation data."
+        //                ]
+        //    }
+        //},
+        //"coastline": {
+        //    id: "coastline",
+        //        name: "Coastline",
+        //            definition: "The line where shore and water meet.",
+        //                category: "Topography",
+        //                    attributes: ["waterLevelEffect", "status"],
+        //                        associations: [],
+        //                            dceg: {
+        //        description: "The line where shore and water meet. The coastline is a fundamental feature that defines the boundary between land and water areas.",
+        //            encoding: [
+        //                "Coastlines must be encoded as lines.",
+        //                "The attribute 'waterLevelEffect' must be populated to indicate the water level used for the coastline definition.",
+        //                "Coastlines must form complete loops or must be connected to national boundaries."
+        //            ],
+        //                remarks: [
+        //                    "The coastline must be consistent with the boundaries of any encoded land areas.",
+        //                    "Artificial coastlines, such as those formed by breakwaters or reclaimed land, should be encoded as coastline features with appropriate attributes."
+        //                ]
+        //    }
+        //}            
 
         const associations = {
             "navigationInformation": {
@@ -622,9 +615,6 @@
                 </div>
             `;
 
-            // Prepare relationship data
-            createRelationshipDiagram(featureId);
-
             // Show DCEG content
             if (feature.dceg) {
                 document.getElementById('content-dceg').innerHTML = `
@@ -687,9 +677,6 @@
                 </div>
             `;
 
-            // Create relationship diagram
-            createInfoTypeRelationshipDiagram(infoTypeId);
-
             // Clear DCEG content
             document.getElementById('content-dceg').innerHTML = `
                 <div class="text-center py-8 text-gray-500">
@@ -727,8 +714,6 @@
                 </div>
             `;
 
-            // Create relationship diagram
-            createAttributeRelationshipDiagram(attr.name);
 
             // Clear DCEG content
             document.getElementById('content-dceg').innerHTML = `
@@ -742,211 +727,6 @@
             activateTab('tab-details');
         }
 
-        // Function to create feature relationship diagram
-        function createRelationshipDiagram(featureId) {
-            const feature = features[featureId];
-            
-            // Create nodes and links for the diagram
-            const nodes = [
-                { id: feature.id, name: feature.name, type: "feature", group: 1 }
-            ];
-            
-            const links = [];
-            
-            // Add attribute nodes and links
-            feature.attributes.forEach(attrName => {
-                const attr = attributes.find(a => a.name === attrName);
-                if (attr) {
-                    nodes.push({ id: attr.name, name: attr.name, type: "attribute", group: 2 });
-                    links.push({ source: feature.id, target: attr.name, value: 1, type: "has attribute" });
-                }
-            });
-            
-            // Add association nodes and links
-            feature.associations.forEach(assocId => {
-                const assoc = associations[assocId];
-                if (assoc) {
-                    nodes.push({ id: assoc.id, name: assoc.name, type: "association", group: 3 });
-                    links.push({ source: feature.id, target: assoc.id, value: 1, type: "has association" });
-                }
-            });
-            
-            // Render diagram
-            renderForceDirectedGraph(nodes, links);
-        }
-
-        // Function to create information type relationship diagram
-        function createInfoTypeRelationshipDiagram(infoTypeId) {
-            const infoType = informationTypes.find(info => info.id === infoTypeId);
-            const association = associations[infoTypeId];
-            
-            // Create nodes and links for the diagram
-            const nodes = [
-                { id: infoType.id, name: infoType.name, type: "infoType", group: 3 }
-            ];
-            
-            const links = [];
-            
-            // Add related feature nodes and links
-            if (association) {
-                association.relatedTo.forEach(featureId => {
-                    const feature = features[featureId];
-                    if (feature) {
-                        nodes.push({ id: feature.id, name: feature.name, type: "feature", group: 1 });
-                        links.push({ source: infoType.id, target: feature.id, value: 1, type: "related to" });
-                    }
-                });
-            }
-            
-            // Render diagram
-            renderForceDirectedGraph(nodes, links);
-        }
-
-        // Function to create attribute relationship diagram
-        function createAttributeRelationshipDiagram(attrName) {
-            // Create nodes and links for the diagram
-            const nodes = [
-                { id: attrName, name: attrName, type: "attribute", group: 2 }
-            ];
-            
-            const links = [];
-            
-            // Add feature nodes and links for features that use this attribute
-            Object.values(features).forEach(feature => {
-                if (feature.attributes.includes(attrName)) {
-                    nodes.push({ id: feature.id, name: feature.name, type: "feature", group: 1 });
-                    links.push({ source: attrName, target: feature.id, value: 1, type: "used by" });
-                }
-            });
-            
-            // Render diagram
-            renderForceDirectedGraph(nodes, links);
-        }
-
-        // Function to render force-directed graph using D3.js
-        function renderForceDirectedGraph(nodes, links) {
-            // Clear previous diagram
-            d3.select("#relationship-diagram").select("svg").remove();
-            
-            // Create SVG
-            const svg = d3.select("#relationship-diagram")
-                .append("svg")
-                .attr("width", "100%")
-                .attr("height", "100%");
-                
-            const width = document.getElementById("relationship-diagram").clientWidth;
-            const height = document.getElementById("relationship-diagram").clientHeight;
-            
-            // Define colors for node types
-            const colors = {
-                "feature": "#4299e1", // blue
-                "attribute": "#ecc94b", // yellow
-                "association": "#9f7aea", // purple
-                "infoType": "#48bb78" // green
-            };
-            
-            // Create force simulation
-            const simulation = d3.forceSimulation(nodes)
-                .force("link", d3.forceLink(links).id(d => d.id).distance(100))
-                .force("charge", d3.forceManyBody().strength(-300))
-                .force("center", d3.forceCenter(width / 2, height / 2));
-            
-            // Create links
-            const link = svg.append("g")
-                .selectAll("line")
-                .data(links)
-                .enter().append("line")
-                .attr("class", "link")
-                .attr("stroke-width", d => Math.sqrt(d.value))
-                .attr("stroke", "#999");
-                
-            // Create link labels
-            const linkText = svg.append("g")
-                .selectAll("text")
-                .data(links)
-                .enter().append("text")
-                .attr("class", "link-label")
-                .attr("dy", -5)
-                .attr("text-anchor", "middle")
-                .attr("fill", "#666")
-                .attr("font-size", "10px")
-                .text(d => d.type);
-                
-            // Create nodes
-            const node = svg.append("g")
-                .selectAll("g")
-                .data(nodes)
-                .enter().append("g")
-                .call(d3.drag()
-                    .on("start", dragstarted)
-                    .on("drag", dragged)
-                    .on("end", dragended));
-                    
-            // Add circles to nodes
-            node.append("circle")
-                .attr("r", d => d.type === "feature" ? 15 : 10)
-                .attr("fill", d => colors[d.type])
-                .attr("stroke", "#fff")
-                .attr("stroke-width", 2);
-                
-            // Add text to nodes
-            node.append("text")
-                .attr("dx", d => d.type === "feature" ? 20 : 15)
-                .attr("dy", ".35em")
-                .attr("font-size", "12px")
-                .text(d => d.name);
-                
-            // Add type icons to nodes
-            node.append("text")
-                .attr("text-anchor", "middle")
-                .attr("dy", ".35em")
-                .attr("font-family", "FontAwesome")
-                .attr("font-size", "10px")
-                .attr("fill", "white")
-                .text(d => {
-                    switch(d.type) {
-                        case "feature": return "\uf041"; // map-marker
-                        case "attribute": return "\uf02b"; // tag
-                        case "association": return "\uf0c1"; // link
-                        case "infoType": return "\uf129"; // info
-                        default: return "";
-                    }
-                });
-                
-            // Update positions on each tick
-            simulation.on("tick", () => {
-                link
-                    .attr("x1", d => d.source.x)
-                    .attr("y1", d => d.source.y)
-                    .attr("x2", d => d.target.x)
-                    .attr("y2", d => d.target.y);
-                    
-                linkText
-                    .attr("x", d => (d.source.x + d.target.x) / 2)
-                    .attr("y", d => (d.source.y + d.target.y) / 2);
-                    
-                node
-                    .attr("transform", d => `translate(${d.x},${d.y})`);
-            });
-            
-            // Drag functions
-            function dragstarted(event, d) {
-                if (!event.active) simulation.alphaTarget(0.3).restart();
-                d.fx = d.x;
-                d.fy = d.y;
-            }
-            
-            function dragged(event, d) {
-                d.fx = event.x;
-                d.fy = event.y;
-            }
-            
-            function dragended(event, d) {
-                if (!event.active) simulation.alphaTarget(0);
-                d.fx = null;
-                d.fy = null;
-            }
-        }
 
         // Function to activate a tab
         function activateTab(tabId) {
@@ -1082,7 +862,6 @@
             
             // Add event listeners for tabs
             tabDetails.addEventListener('click', () => activateTab('tab-details'));
-            tabRelationships.addEventListener('click', () => activateTab('tab-relationships'));
             tabDceg.addEventListener('click', () => activateTab('tab-dceg'));
             
             // Add search functionality
