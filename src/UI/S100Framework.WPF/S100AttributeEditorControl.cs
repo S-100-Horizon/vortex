@@ -386,21 +386,18 @@ namespace S100Framework.WPF
                 control.SelectedInformationObject.InformationObject.PropertyChanged += control.SelectedObject_PropertyChanged;
             }
             if (control.SelectedInformationObject.InformationBinding != null) {
+                informationStackPanel = Visibility.Visible;
+
                 if (control.InformationBindingDefinitionsCheckComboBox != null) {
                     control.InformationBindingDefinitionsCheckComboBox.ItemsSource = control.SelectedInformationObject.InformationBinding.informationBindingDefinitions;
 
                     if (!control.SelectedInformationObject.InformationBinding.informationBindingDefinitions.Any()) {
-                        if (control.InformationBindingsStackPanel != null)
-                            informationStackPanel = Visibility.Collapsed;
+                        informationStackPanel = Visibility.Collapsed;
                     }
                 }
 
                 if (control.InformationBindingsListView != null) {
                     control.InformationBindingsListView.ItemsSource = control.SelectedInformationObject.InformationBindings;
-                }
-
-                if (control.FeatureBindingsStackPanel != null) {
-                    informationStackPanel = Visibility.Collapsed;
                 }
             }
 
@@ -450,32 +447,32 @@ namespace S100Framework.WPF
             if (control.SelectedFeatureObject.FeatureObject != null) {
                 control.SelectedFeatureObject.FeatureObject.PropertyChanged += control.SelectedObject_PropertyChanged;
             }
-            if (control.SelectedFeatureObject.FeatureBinding != null) {
+            if (control.SelectedFeatureObject.InformationBindings != null) {
+                informationStackPanel = Visibility.Visible;
+
                 if (control.InformationBindingDefinitionsCheckComboBox != null) {
                     control.InformationBindingDefinitionsCheckComboBox.ItemsSource = control.SelectedFeatureObject.FeatureBinding.informationBindingDefinitions;
 
                     if (!control.SelectedFeatureObject.FeatureBinding.informationBindingDefinitions.Any()) {
-                        if (control.InformationBindingsStackPanel != null)
-                            informationStackPanel = Visibility.Collapsed;
-                    }
-                }
-
-                if (control.FeatureBindingsStackPanel != null) {
-                    featureStackPanel = Visibility.Visible;
-                }
-
-                if (control.FeatureBindingDefinitionsCheckComboBox != null) {
-                    control.FeatureBindingDefinitionsCheckComboBox.ItemsSource = control.SelectedFeatureObject.FeatureBinding.featureBindingDefinitions;
-
-                    if (!control.SelectedFeatureObject.FeatureBinding.featureBindingDefinitions.Any()) {
-                        if (control.FeatureBindingsStackPanel != null)
-                            featureStackPanel = Visibility.Collapsed;
+                        informationStackPanel = Visibility.Collapsed;
                     }
                 }
 
                 if (control.InformationBindingsListView != null) {
                     control.InformationBindingsListView.ItemsSource = control.SelectedFeatureObject.InformationBindings;
                 }
+            }
+            if (control.SelectedFeatureObject.FeatureBindings != null) {
+                featureStackPanel = Visibility.Visible;
+
+                if (control.FeatureBindingDefinitionsCheckComboBox != null) {
+                    control.FeatureBindingDefinitionsCheckComboBox.ItemsSource = control.SelectedFeatureObject.FeatureBinding.featureBindingDefinitions;
+
+                    if (!control.SelectedFeatureObject.FeatureBinding.featureBindingDefinitions.Any()) {
+                        featureStackPanel = Visibility.Collapsed;
+                    }
+                }
+
                 if (control.FeatureBindingsListView != null) {
                     control.FeatureBindingsListView.ItemsSource = control.SelectedFeatureObject.FeatureBindings;
                 }
