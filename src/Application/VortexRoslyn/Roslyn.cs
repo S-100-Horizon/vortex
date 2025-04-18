@@ -300,6 +300,8 @@ namespace S100Framework.Applications
 
                         var literalName = RemoveSpecialChars(definition); // definition.TrimEnd(new char[] { '\r', '\n', '\t', ' ' });
 
+                        definition = definition.Replace("\"", "\\\"").Replace(Environment.NewLine, " ").Replace("\n", " ").TrimEnd('\t').TrimEnd(' ');
+
                         builderDomainModel.AppendLine($"\t\t[System.ComponentModel.Description(\"{definition}\")]");
                         builderDomainModel.AppendLine($"\t\t{code},");
                     }
@@ -396,7 +398,8 @@ namespace S100Framework.Applications
 
             builderDomainModel.AppendLine($"namespace S100Framework.DomainModel.{productId} {{");
             builderDomainModel.AppendLine("\tusing ComplexAttributes;");
-            builderDomainModel.AppendLine("\tusing InformationAssociations;");
+            if (productSpecification.XPathSelectElements("//S100FC:S100_FC_InformationAssociation", xmlNamespaceManager).Any())
+                builderDomainModel.AppendLine("\tusing InformationAssociations;");
             builderDomainModel.AppendLine();
 
             //  --- S100_FC_InformationType -----------------------------------------------------
@@ -695,6 +698,9 @@ namespace S100Framework.Applications
             }
 
             text = string.Join(string.Empty, words);
+
+            text = text.Replace(Environment.NewLine, " ").Replace("\n", " ");
+            text = text.TrimEnd('\t').TrimEnd(' ');
 
             var match = Regex.Match(text, @"\d");
             foreach (var m in match.Captures) {
