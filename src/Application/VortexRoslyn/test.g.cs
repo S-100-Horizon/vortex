@@ -8,2545 +8,224 @@ using System.Text.Json.Serialization;
 #pragma warning disable CS8981 // The type name only contains lower-cased ascii characters. Such names may become reserved for the language.
 
 
-namespace S100Framework.DomainModel.S101 {
+namespace S100Framework.DomainModel.S122 {
 	public static class Information
 	{
-		public static Version Version => new Version("2.0.0");
-	}
-
-	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-	[System.Serializable()]
-	public enum beaconShape : int {
-		[System.ComponentModel.Description("An elongated wood or metal pole, driven into the ground or seabed, which serves as a navigational aid or a support for a navigational aid.")]
-		[EnumMember(Value = "Stake, Pole, Perch, Post")] 
-		StakePolePerchPost = 1,
-		[System.ComponentModel.Description("A tree without roots stuck or spoiled into the bottom of the sea to serve as a navigational aid.")]
-		[EnumMember(Value = "Withy")] 
-		Withy = 2,
-		[System.ComponentModel.Description("A solid structure of the order of 10 metres in height used as a navigational aid.")]
-		[EnumMember(Value = "Beacon Tower")] 
-		BeaconTower = 3,
-		[System.ComponentModel.Description("A structure consisting of strips of metal or wood crossed or interlaced to form a structure to serve as an aid to navigation or as a support for an aid to navigation.")]
-		[EnumMember(Value = "Lattice Beacon")] 
-		LatticeBeacon = 4,
-		[System.ComponentModel.Description("A long heavy timber(s) or section(s) of steel, wood, concrete, etc., forced into the seabed to serve as an aid to navigation or as a support for an aid to navigation.")]
-		[EnumMember(Value = "Pile Beacon")] 
-		PileBeacon = 5,
-		[System.ComponentModel.Description("A mound of stones, usually conical or pyramidal, raised as a landmark or to designate a point of importance in surveying.")]
-		[EnumMember(Value = "Cairn")] 
-		Cairn = 6,
-		[System.ComponentModel.Description("A tall spar-like beacon fitted with a permanently submerged buoyancy chamber, the lower end of the body is secured to seabed sinker either by a flexible joint or by a cable under tension.")]
-		[EnumMember(Value = "Buoyant Beacon")] 
-		BuoyantBeacon = 7,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
-	}
-
-	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-	[System.Serializable()]
-	public enum bridgeConstruction : int {
-		[System.ComponentModel.Description("A typically curved structural member spanning an opening and serving as a support (as for the wall or other weight above the opening).")]
-		[EnumMember(Value = "Arch")] 
-		Arch = 1,
-		[System.ComponentModel.Description("A structure consisting of a series of arches or towers supporting a roadway, waterway, etc., across a depression, etc.")]
-		[EnumMember(Value = "Viaduct")] 
-		Viaduct = 2,
-		[System.ComponentModel.Description("A fixed floating bridge supported by pontoons.")]
-		[EnumMember(Value = "Pontoon Bridge")] 
-		PontoonBridge = 3,
-		[System.ComponentModel.Description("A fixed bridge consisting of either a roadway or a truss suspended from two or more cables which pass over towers and are anchored by backstays to a firm foundation.")]
-		[EnumMember(Value = "Suspension Bridge")] 
-		SuspensionBridge = 4,
-		[System.ComponentModel.Description("Consists of towers on each side of the watercourse connected by a system of girders on which a carriage runs.")]
-		[EnumMember(Value = "Transporter Bridge")] 
-		TransporterBridge = 5,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
-	}
-
-	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-	[System.Serializable()]
-	public enum bridgeFunction : int {
-		[System.ComponentModel.Description("Of, relating to, or designed for vehicles and especially motor vehicles.")]
-		[EnumMember(Value = "Vehicular")] 
-		Vehicular = 1,
-		[System.ComponentModel.Description("Of, relating to, or designed for vehicles that run on a guiding track(s), especially trains.")]
-		[EnumMember(Value = "Rail")] 
-		Rail = 2,
-		[System.ComponentModel.Description("Of, relating to, or designed for walking.")]
-		[EnumMember(Value = "Pedestrian")] 
-		Pedestrian = 3,
-		[System.ComponentModel.Description("A bridge supporting an artificially elevated channel, for the conveyance of water.")]
-		[EnumMember(Value = "Aqueduct")] 
-		Aqueduct = 4,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
-	}
-
-	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-	[System.Serializable()]
-	public enum buildingShape : int {
-		[System.ComponentModel.Description("A building having many storeys.")]
-		[EnumMember(Value = "High-Rise Building")] 
-		HighRiseBuilding = 5,
-		[System.ComponentModel.Description("A polyhedron of which one face is a polygon of any number of sides, and the other faces are triangles with a common vertex.")]
-		[EnumMember(Value = "Pyramid")] 
-		Pyramid = 6,
-		[System.ComponentModel.Description("Shaped like a cylinder, which is a solid geometrical figure generated by straight lines fixed in direction and describing with one of its points a closed curve, especially a circle.")]
-		[EnumMember(Value = "Cylindrical")] 
-		Cylindrical = 7,
-		[System.ComponentModel.Description("Shaped like a sphere, which is a body the surface of which is at all points equidistant from the centre.")]
-		[EnumMember(Value = "Spherical")] 
-		Spherical = 8,
-		[System.ComponentModel.Description("A shape the sides of which are six equal squares; a regular hexahedron.")]
-		[EnumMember(Value = "Cubic")] 
-		Cubic = 9,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
-	}
-
-	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-	[System.Serializable()]
-	public enum buoyShape : int {
-		[System.ComponentModel.Description("The upper part of the body above the water-line, or the greater part of the superstructure, has approximately the shape or the appearance of a pointed cone with the point upwards.")]
-		[EnumMember(Value = "Conical")] 
-		Conical = 1,
-		[System.ComponentModel.Description("The upper part of the body above the water-line, or the greater part of the superstructure, has the shape of a cylinder, or a truncated cone that approximates to a cylinder, with a flat end uppermost.")]
-		[EnumMember(Value = "Can")] 
-		Can = 2,
-		[System.ComponentModel.Description("Shaped like a sphere, which is a body the surface of which is at all points equidistant from the centre.")]
-		[EnumMember(Value = "Spherical")] 
-		Spherical = 3,
-		[System.ComponentModel.Description("The upper part of the body above the water-line, or the greater part of the superstructure is a narrow vertical structure, pillar or lattice tower.")]
-		[EnumMember(Value = "Pillar")] 
-		Pillar = 4,
-		[System.ComponentModel.Description("The upper part of the body above the water-line, or the greater part of the superstructure, has the form of a pole, or of a very long cylinder, floating upright.")]
-		[EnumMember(Value = "Spar")] 
-		Spar = 5,
-		[System.ComponentModel.Description("The upper part of the body above the water-line, or the greater part of the superstructure, has the form of a barrel or cylinder floating horizontally.")]
-		[EnumMember(Value = "Barrel")] 
-		Barrel = 6,
-		[System.ComponentModel.Description("A very large buoy designed to carry a signal light of high luminous intensity at a high elevation.")]
-		[EnumMember(Value = "Superbuoy")] 
-		Superbuoy = 7,
-		[System.ComponentModel.Description("A specially constructed shuttle shaped buoy which is used in ice conditions.")]
-		[EnumMember(Value = "Ice Buoy")] 
-		IceBuoy = 8,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
-	}
-
-	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-	[System.Serializable()]
-	public enum categoryOfAirportAirfield : int {
-		[System.ComponentModel.Description("A large military airfield usually equipped with a control tower, hangars and accommodation for the receiving and discharging of passengers or cargo.")]
-		[EnumMember(Value = "Military Aeroplane Airport")] 
-		MilitaryAeroplaneAirport = 1,
-		[System.ComponentModel.Description("A large airfield usually equipped with a control tower, hangars and accommodation for the receiving and discharging of passengers or cargo.")]
-		[EnumMember(Value = "Civil Aeroplane Airport")] 
-		CivilAeroplaneAirport = 2,
-		[System.ComponentModel.Description("A landing place for helicopters controlled by the military.")]
-		[EnumMember(Value = "Military Heliport")] 
-		MilitaryHeliport = 3,
-		[System.ComponentModel.Description("A landing place for helicopters, often the roof of a building.")]
-		[EnumMember(Value = "Civil Heliport")] 
-		CivilHeliport = 4,
-		[System.ComponentModel.Description("An area of land set aside for the take-off and landing of gliders.")]
-		[EnumMember(Value = "Glider Airfield")] 
-		GliderAirfield = 5,
-		[System.ComponentModel.Description("An area of land set aside for the take-off and landing of small aeroplanes.")]
-		[EnumMember(Value = "Small Planes Airfield")] 
-		SmallPlanesAirfield = 6,
-		[System.ComponentModel.Description("An area of land set aside for the take-off and landing of aeroplanes or helicopters in times of emergency.")]
-		[EnumMember(Value = "Emergency Airfield")] 
-		EmergencyAirfield = 8,
-		[System.ComponentModel.Description("An area of land set aside for the take-off and landing of aeroplanes or helicopters in times of search and rescue.")]
-		[EnumMember(Value = "Search and Rescue Airfield")] 
-		SearchAndRescueAirfield = 9,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
-	}
-
-	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-	[System.Serializable()]
-	public enum categoryOfAnchorage : int {
-		[System.ComponentModel.Description("An area in which vessels anchor or may anchor.")]
-		[EnumMember(Value = "Unrestricted Anchorage")] 
-		UnrestrictedAnchorage = 1,
-		[System.ComponentModel.Description("An area in which vessels of deep draught anchor or may anchor.")]
-		[EnumMember(Value = "Deep Water Anchorage")] 
-		DeepWaterAnchorage = 2,
-		[System.ComponentModel.Description("An area in which tankers anchor or may anchor.")]
-		[EnumMember(Value = "Tanker Anchorage")] 
-		TankerAnchorage = 3,
-		[System.ComponentModel.Description("An area where a vessel anchors when satisfying quarantine regulations.")]
-		[EnumMember(Value = "Quarantine Anchorage")] 
-		QuarantineAnchorage = 5,
-		[System.ComponentModel.Description("An area in which seaplanes anchor or may anchor.")]
-		[EnumMember(Value = "Seaplane Anchorage")] 
-		SeaplaneAnchorage = 6,
-		[System.ComponentModel.Description("An area in which yachts and small boats anchor or may anchor.")]
-		[EnumMember(Value = "Small Craft Anchorage")] 
-		SmallCraftAnchorage = 7,
-		[System.ComponentModel.Description("An area in which vessels anchor or may anchor for periods of up to 24 hours.")]
-		[EnumMember(Value = "Anchorage for Periods Up To 24 Hours")] 
-		AnchorageForPeriodsUpTo24Hours = 9,
-		[System.ComponentModel.Description("An area in which vessels may anchor for a period of time not to exceed a specific limit.")]
-		[EnumMember(Value = "Anchorage for a Limited Period of Time")] 
-		AnchorageForALimitedPeriodOfTime = 10,
-		[System.ComponentModel.Description("An area in which vessels anchor or may anchor while waiting, for example, for access to a port or berth.")]
-		[EnumMember(Value = "Waiting Anchorage")] 
-		WaitingAnchorage = 14,
-		[System.ComponentModel.Description("A location not defined by a regulatory authority that has been reported to be suitable and safe for anchoring.")]
-		[EnumMember(Value = "Reported Anchorage")] 
-		ReportedAnchorage = 15,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
-	}
-
-	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-	[System.Serializable()]
-	public enum categoryOfBuiltUpArea : int {
-		[System.ComponentModel.Description("An area predominantly occupied by man-made structures used for residential, commercial, and industrial purposes.")]
-		[EnumMember(Value = "Urban Area")] 
-		UrbanArea = 1,
-		[System.ComponentModel.Description("A continuously occupied concentration of tents or lightweight fixed structures (for example: huts) serving as residences.")]
-		[EnumMember(Value = "Settlement")] 
-		Settlement = 2,
-		[System.ComponentModel.Description("A self-contained group of houses and associated buildings, usually in a country area.")]
-		[EnumMember(Value = "Village")] 
-		Village = 3,
-		[System.ComponentModel.Description("An inhabited place larger and more regularly built and with more complete and independent local government than a village but not incorporated as a city.")]
-		[EnumMember(Value = "Town")] 
-		Town = 4,
-		[System.ComponentModel.Description("A major town inhabited by a large permanent community with all essential services.")]
-		[EnumMember(Value = "City")] 
-		City = 5,
-		[System.ComponentModel.Description("A complex for holiday-makers with cottages, shops, and entertainment, on site, which is mainly populated on a seasonal basis.")]
-		[EnumMember(Value = "Holiday Village")] 
-		HolidayVillage = 6,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
-	}
-
-	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-	[System.Serializable()]
-	public enum categoryOfCable : int {
-		[System.ComponentModel.Description("A cable that transmits or distributes electrical power.")]
-		[EnumMember(Value = "Power Line")] 
-		PowerLine = 1,
-		[System.ComponentModel.Description("Multiple un-insulated cables usually supported by steel lattice towers. Such features are generally more prominent than normal power lines.")]
-		[EnumMember(Value = "Transmission Line")] 
-		TransmissionLine = 3,
-		[System.ComponentModel.Description("A chain or very strong fibre or wire rope used to anchor or moor vessels or buoys.")]
-		[EnumMember(Value = "Mooring Cable")] 
-		MooringCable = 6,
-		[System.ComponentModel.Description("A vessel for transporting passengers, vehicles, and/or goods across a stretch of water, especially as a regular service.")]
-		[EnumMember(Value = "Ferry")] 
-		Ferry = 7,
-		[System.ComponentModel.Description("A cable used for joining components of complex marine structures, for example mooring trots.")]
-		[EnumMember(Value = "Junction Cable")] 
-		JunctionCable = 9,
-		[System.ComponentModel.Description("A cable used for the transmission and reception of modulated communication waves/signals.")]
-		[EnumMember(Value = "Telecommunications Cable")] 
-		TelecommunicationsCable = 10,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
-	}
-
-	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-	[System.Serializable()]
-	public enum categoryOfCanal : int {
-		[System.ComponentModel.Description("A canal used for navigation as part of a transport system.")]
-		[EnumMember(Value = "Transportation")] 
-		Transportation = 1,
-		[System.ComponentModel.Description("A canal used to drain excess water from surrounding land.")]
-		[EnumMember(Value = "Drainage")] 
-		Drainage = 2,
-		[System.ComponentModel.Description("A canal used to supply water for the purpose of irrigation.")]
-		[EnumMember(Value = "Irrigation")] 
-		Irrigation = 3,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
-	}
-
-	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-	[System.Serializable()]
-	public enum categoryOfCardinalMark : int {
-		[System.ComponentModel.Description("Quadrant bounded by the true bearing NW-NE taken from the point of interest; it should be passed to the north side of the mark.")]
-		[EnumMember(Value = "North Cardinal Mark")] 
-		NorthCardinalMark = 1,
-		[System.ComponentModel.Description("Quadrant bounded by the true bearing NE-SE taken from the point of interest. It should be passed to the east side of the mark.")]
-		[EnumMember(Value = "East Cardinal Mark")] 
-		EastCardinalMark = 2,
-		[System.ComponentModel.Description("Quadrant bounded by the true bearing SE-SW taken from the point of interest; it should be passed to the south side of the mark.")]
-		[EnumMember(Value = "South Cardinal Mark")] 
-		SouthCardinalMark = 3,
-		[System.ComponentModel.Description("Quadrant bounded by the true bearing SW-NW taken from the point of interest; it should be passed to the west side of the mark.")]
-		[EnumMember(Value = "West Cardinal Mark")] 
-		WestCardinalMark = 4,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
-	}
-
-	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-	[System.Serializable()]
-	public enum categoryOfCheckpoint : int {
-		[System.ComponentModel.Description("Serves as a government checkpoint where customs duties are collected, the flow of goods are regulated and restrictions enforced, and shipments or vehicles are cleared for entering or leaving a country.")]
-		[EnumMember(Value = "Custom")] 
-		Custom = 1,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
-	}
-
-	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-	[System.Serializable()]
-	public enum categoryOfCoastline : int {
-		[System.ComponentModel.Description("A coast backed by rock or earth cliffs, gives a good radar return and is useful for visual identification from a considerable distance off, where cliffs alternate with low lying coast along the shoreline.")]
-		[EnumMember(Value = "Steep Coast")] 
-		SteepCoast = 1,
-		[System.ComponentModel.Description("A level coast with no obvious topographic features.")]
-		[EnumMember(Value = "Flat Coast")] 
-		FlatCoast = 2,
-		[System.ComponentModel.Description("Projecting seaward extension of glacier, usually afloat.")]
-		[EnumMember(Value = "Glacier, Seaward End")] 
-		GlacierSeawardEnd = 6,
-		[System.ComponentModel.Description("One of several genera of tropical trees or shrubs which produce many prop roots and grow along low-lying coasts into shallow water.")]
-		[EnumMember(Value = "Mangrove")] 
-		Mangrove = 7,
-		[System.ComponentModel.Description("A shoreline area made up of spongy land saturated with water. It may have a shallow covering of water, usually with a considerable amount of vegetation appearing above the surface.")]
-		[EnumMember(Value = "Marshy Shore")] 
-		MarshyShore = 8,
-		[System.ComponentModel.Description("A vertical cliff forming the seaward edge of an ice shelf, ranging in height from 2 metres to 50 metres or more above sea level.")]
-		[EnumMember(Value = "Ice Coast")] 
-		IceCoast = 10,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
-	}
-
-	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-	[System.Serializable()]
-	public enum categoryOfConveyor : int {
-		[System.ComponentModel.Description("A transportation system consisting of load cables strung between pylons on which carrier units (for example: cars or buckets intended to transport people, material, and/or equipment) are suspended.")]
-		[EnumMember(Value = "Aerial Cableway")] 
-		AerialCableway = 1,
-		[System.ComponentModel.Description("A conveyor along which material or people are transported by means of a moving belt.")]
-		[EnumMember(Value = "Belt Conveyor")] 
-		BeltConveyor = 2,
-		[System.ComponentModel.Description("An artificial channel, usually an inclined chute or trough, for carrying water to furnish power, transport logs down a mountainside, etc.")]
-		[EnumMember(Value = "Flume")] 
-		Flume = 3,
-		[System.ComponentModel.Description("Any of various mechanical devices for raising objects or materials.")]
-		[EnumMember(Value = "Lift/Elevator")] 
-		LiftElevator = 4,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
-	}
-
-	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-	[System.Serializable()]
-	public enum categoryOfCrane : int {
-		[System.ComponentModel.Description("A high speed, shore-based crane used in the lift-on/lift-off operation of specially constructed containers.")]
-		[EnumMember(Value = "Container Crane/Gantry")] 
-		ContainerCraneGantry = 2,
-		[System.ComponentModel.Description("A tripodal structure used in dockyards and harbours for stepping masts or lifting loads in to and out of vessels.")]
-		[EnumMember(Value = "Sheerlegs")] 
-		Sheerlegs = 3,
-		[System.ComponentModel.Description("A crane mounted on rails (track) that can move (usually parallel to the wharf face) in order to load and unload cargo vessels.")]
-		[EnumMember(Value = "Travelling Crane")] 
-		TravellingCrane = 4,
-		[System.ComponentModel.Description("A type of crane shaped like the letter 'A'.")]
-		[EnumMember(Value = "A-Frame")] 
-		AFrame = 5,
-		[System.ComponentModel.Description("A powerful travelling crane mounted on a movable gantry of large span.")]
-		[EnumMember(Value = "Goliath Crane")] 
-		GoliathCrane = 6,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
-	}
-
-	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-	[System.Serializable()]
-	public enum categoryOfDam : int {
-		[System.ComponentModel.Description("A dam erected across a river to raise the level of the water. A fence of stakes set in a river or along the shore as a trap for fish. The word is now restricted to smaller works, the larger are called dams.")]
-		[EnumMember(Value = "Weir")] 
-		Weir = 1,
-		[System.ComponentModel.Description("A barrier to check or confine anything in motion; particularly one constructed to hold back water and raise its level to form a reservoir, or to prevent flooding.")]
-		[EnumMember(Value = "Dam")] 
-		Dam = 2,
-		[System.ComponentModel.Description("An opening dam across a channel which, when required, is closed to control flood waters.")]
-		[EnumMember(Value = "Flood Barrage")] 
-		FloodBarrage = 3,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
-	}
-
-	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-	[System.Serializable()]
-	public enum categoryOfDock : int {
-		[System.ComponentModel.Description("A dock which is open to the sea and in which the water level is affected by tides.")]
-		[EnumMember(Value = "Tidal")] 
-		Tidal = 1,
-		[System.ComponentModel.Description("A dock in which water can be maintained at any level by closing a gate when the water is at the desired level.")]
-		[EnumMember(Value = "Wet Dock")] 
-		WetDock = 2,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
-	}
-
-	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-	[System.Serializable()]
-	public enum categoryOfDolphin : int {
-		[System.ComponentModel.Description("A post or group of posts driven into the seabed or riverbed, used as a mooring point for vessels.")]
-		[EnumMember(Value = "Mooring Dolphin")] 
-		MooringDolphin = 1,
-		[System.ComponentModel.Description("A post or group of posts, which a vessel may swing around for compass adjustment.")]
-		[EnumMember(Value = "Deviation Dolphin")] 
-		DeviationDolphin = 2,
-		[System.ComponentModel.Description("A post or group of posts driven into the seabed or riverbed, used to extend the berth of a vessel by providing extra mooring points.")]
-		[EnumMember(Value = "Berthing Dolphin")] 
-		BerthingDolphin = 3,
-		[System.ComponentModel.Description("A post or group of posts driven into the seabed or riverbed, used to assist in berthing of vessels by taking up some berthing loads; keep vessels from pressing against the pier structure; or to protect structures from possible impact by ships.")]
-		[EnumMember(Value = "Fender or Breasting Dolphin")] 
-		FenderOrBreastingDolphin = 4,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
-	}
-
-	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-	[System.Serializable()]
-	public enum categoryOfDumpingGround : int {
-		[System.ComponentModel.Description("An area at sea where chemical waste is dumped.")]
-		[EnumMember(Value = "Chemical Waste Dumping Ground")] 
-		ChemicalWasteDumpingGround = 2,
-		[System.ComponentModel.Description("An area at sea where nuclear waste is dumped.")]
-		[EnumMember(Value = "Nuclear Waste Dumping Ground")] 
-		NuclearWasteDumpingGround = 3,
-		[System.ComponentModel.Description("An area at sea where explosives are dumped.")]
-		[EnumMember(Value = "Explosives Dumping Ground")] 
-		ExplosivesDumpingGround = 4,
-		[System.ComponentModel.Description("A sea area where dredged material is deposited.")]
-		[EnumMember(Value = "Spoil Ground")] 
-		SpoilGround = 5,
-		[System.ComponentModel.Description("An area at sea where disused vessels are scuttled.")]
-		[EnumMember(Value = "Vessel Dumping Ground")] 
-		VesselDumpingGround = 6,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
-	}
-
-	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-	[System.Serializable()]
-	public enum categoryOfFence : int {
-		[System.ComponentModel.Description("A man-made barrier of relatively light structure used as an enclosure or boundary.")]
-		[EnumMember(Value = "Fence")] 
-		Fence = 1,
-		[System.ComponentModel.Description("A continuous growth of shrubbery planted as a fence, a boundary or a wind break.")]
-		[EnumMember(Value = "Hedge")] 
-		Hedge = 3,
-		[System.ComponentModel.Description("A solid man-made barrier of generally heavy material used as an enclosure, boundary, or for protection.")]
-		[EnumMember(Value = "Wall")] 
-		Wall = 4,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
-	}
-
-	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-	[System.Serializable()]
-	public enum categoryOfFerry : int {
-		[System.ComponentModel.Description("A ferry which may have routes that vary with weather, tide and traffic.")]
-		[EnumMember(Value = "Free Moving Ferry")] 
-		FreeMovingFerry = 1,
-		[System.ComponentModel.Description("A ferry that follows a fixed route guided by a cable.")]
-		[EnumMember(Value = "Cable Ferry")] 
-		CableFerry = 2,
-		[System.ComponentModel.Description("A winter-time ferry which crosses a lead.")]
-		[EnumMember(Value = "Ice Ferry")] 
-		IceFerry = 3,
-		[System.ComponentModel.Description("A high speed water vessel for civilian use.")]
-		[EnumMember(Value = "High Speed Ferry")] 
-		HighSpeedFerry = 5,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
-	}
-
-	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-	[System.Serializable()]
-	public enum categoryOfFishingFacility : int {
-		[System.ComponentModel.Description("Poles or stakes placed in shallow water to outline a fishing ground or to catch fish.")]
-		[EnumMember(Value = "Fishing Stake")] 
-		FishingStake = 1,
-		[System.ComponentModel.Description("A structure (usually portable) for catching fish.")]
-		[EnumMember(Value = "Fish Trap")] 
-		FishTrap = 2,
-		[System.ComponentModel.Description("A fence of stakes or stones set in a river or along the shore to trap fish.")]
-		[EnumMember(Value = "Fish Weir")] 
-		FishWeir = 3,
-		[System.ComponentModel.Description("A net built at sea for catching tunny.")]
-		[EnumMember(Value = "Tunny Net")] 
-		TunnyNet = 4,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
-	}
-
-	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-	[System.Serializable()]
-	public enum categoryOfFogSignal : int {
-		[System.ComponentModel.Description("A signal produced by the firing of explosive charges.")]
-		[EnumMember(Value = "Explosive")] 
-		Explosive = 1,
-		[System.ComponentModel.Description("A diaphone uses compressed air and generally emits a powerful low-pitched sound, which often concludes with a brief sound of suddenly lowered pitch, termed the 'grunt'.")]
-		[EnumMember(Value = "Diaphone")] 
-		Diaphone = 2,
-		[System.ComponentModel.Description("A type of fog signal apparatus which produces sound by virtue of the passage of air through slots or holes in a revolving disk.")]
-		[EnumMember(Value = "Siren")] 
-		Siren = 3,
-		[System.ComponentModel.Description("A horn having a diaphragm oscillated by electricity.")]
-		[EnumMember(Value = "Nautophone")] 
-		Nautophone = 4,
-		[System.ComponentModel.Description("A reed uses compressed air and emits a weak, high pitched sound.")]
-		[EnumMember(Value = "Reed")] 
-		Reed = 5,
-		[System.ComponentModel.Description("A diaphragm horn which operates under the influence of compressed air or steam.")]
-		[EnumMember(Value = "Tyfon")] 
-		Tyfon = 6,
-		[System.ComponentModel.Description("A ringing sound with a short range.")]
-		[EnumMember(Value = "Bell")] 
-		Bell = 7,
-		[System.ComponentModel.Description("A distinctive sound made by a jet of air passing through an orifice. The apparatus may be operated automatically, by hand or by air being forced up a tube by waves acting on a buoy.")]
-		[EnumMember(Value = "Whistle")] 
-		Whistle = 8,
-		[System.ComponentModel.Description("A sound produced by vibration of a disc when struck.")]
-		[EnumMember(Value = "Gong")] 
-		Gong = 9,
-		[System.ComponentModel.Description("A horn uses compressed air or electricity to vibrate a diaphragm and exists in a variety of types which differ greatly in their sound and power.")]
-		[EnumMember(Value = "Horn")] 
-		Horn = 10,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
-	}
-
-	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-	[System.Serializable()]
-	public enum categoryOfFortifiedStructure : int {
-		[System.ComponentModel.Description("A large fortified building or structure.")]
-		[EnumMember(Value = "Castle")] 
-		Castle = 1,
-		[System.ComponentModel.Description("A fortified enclosure, building, or position able to be defended against an enemy.")]
-		[EnumMember(Value = "Fort")] 
-		Fort = 2,
-		[System.ComponentModel.Description("A fortified structure on which artillery is mounted.")]
-		[EnumMember(Value = "Battery")] 
-		Battery = 3,
-		[System.ComponentModel.Description("A concrete structure strengthened to give protection against enemy fire, with apertures to allow defensive gunfire.")]
-		[EnumMember(Value = "Blockhouse")] 
-		Blockhouse = 4,
-		[System.ComponentModel.Description("A small circular fort with very thick walls (for example Martello tower).")]
-		[EnumMember(Value = "Fortified Tower")] 
-		FortifiedTower = 5,
-		[System.ComponentModel.Description("An outwork or fieldwork usually square or polygonal and without flanking defences.")]
-		[EnumMember(Value = "Redoubt")] 
-		Redoubt = 6,
-		[System.ComponentModel.Description("A fortified pen to hold submarines.")]
-		[EnumMember(Value = "Fortified Submarine Shelter")] 
-		FortifiedSubmarineShelter = 8,
-		[System.ComponentModel.Description("Anything serving as a bulwark or defence.")]
-		[EnumMember(Value = "Rampart")] 
-		Rampart = 9,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
-	}
-
-	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-	[System.Serializable()]
-	public enum categoryOfGate : int {
-		[System.ComponentModel.Description("An opening gate used to control flood water.")]
-		[EnumMember(Value = "Flood Barrage Gate")] 
-		FloodBarrageGate = 2,
-		[System.ComponentModel.Description("A steel structure used for closing the entrance of locks, wet and dry docks.")]
-		[EnumMember(Value = "Caisson")] 
-		Caisson = 3,
-		[System.ComponentModel.Description("Pair of massive hinged doors at each end of a lock.")]
-		[EnumMember(Value = "Lock Gate")] 
-		LockGate = 4,
-		[System.ComponentModel.Description("An opening gate in a dyke.")]
-		[EnumMember(Value = "Dyke Gate")] 
-		DykeGate = 5,
-		[System.ComponentModel.Description("A sliding gate or other contrivance for changing the level of a body of water by controlling the flow into or out of it.")]
-		[EnumMember(Value = "Sluice")] 
-		Sluice = 6,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
-	}
-
-	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-	[System.Serializable()]
-	public enum categoryOfHarbourFacility : int {
-		[System.ComponentModel.Description("A terminal for roll-on roll-off ferries.")]
-		[EnumMember(Value = "RoRo Terminal")] 
-		RoroTerminal = 1,
-		[System.ComponentModel.Description("A terminal for passenger and vehicle ferries.")]
-		[EnumMember(Value = "Ferry Terminal")] 
-		FerryTerminal = 3,
-		[System.ComponentModel.Description("A harbour with facilities for fishing boats.")]
-		[EnumMember(Value = "Fishing Harbour")] 
-		FishingHarbour = 4,
-		[System.ComponentModel.Description("A harbour facility for small boats, yachts, etc., where supplies, repairs, and various services are available.")]
-		[EnumMember(Value = "Yacht Harbour/Marina")] 
-		YachtHarbourMarina = 5,
-		[System.ComponentModel.Description("A centre of operations for naval vessels.")]
-		[EnumMember(Value = "Naval Base")] 
-		NavalBase = 6,
-		[System.ComponentModel.Description("A terminal for the bulk handling of liquid cargoes.")]
-		[EnumMember(Value = "Tanker Terminal")] 
-		TankerTerminal = 7,
-		[System.ComponentModel.Description("A terminal for the loading and unloading of passengers.")]
-		[EnumMember(Value = "Passenger Terminal")] 
-		PassengerTerminal = 8,
-		[System.ComponentModel.Description("A place where ships are built or repaired.")]
-		[EnumMember(Value = "Shipyard")] 
-		Shipyard = 9,
-		[System.ComponentModel.Description("A terminal with facilities to load/unload or store shipping containers.")]
-		[EnumMember(Value = "Container Terminal")] 
-		ContainerTerminal = 10,
-		[System.ComponentModel.Description("A terminal for the handling of bulk materials such as iron ore, coal, etc.")]
-		[EnumMember(Value = "Bulk Terminal")] 
-		BulkTerminal = 11,
-		[System.ComponentModel.Description("A platform powered by synchronous electric motors (for example syncrolift) used to lift vessels (larger than boats) in and out of the water.")]
-		[EnumMember(Value = "Ship Lift")] 
-		ShipLift = 12,
-		[System.ComponentModel.Description("A wheeled vehicle designed to lift and carry containers or vessels within its own framework. It is used for moving, and sometimes stacking, shipping containers and vessels.")]
-		[EnumMember(Value = "Straddle Carrier")] 
-		StraddleCarrier = 13,
-		[System.ComponentModel.Description("A harbour within which the floating equipment (dredges, tugs ...) of harbour services are stationed.")]
-		[EnumMember(Value = "Service Harbour")] 
-		ServiceHarbour = 14,
-		[System.ComponentModel.Description("The services of a person who directs the movements of a vessel through pilot waters, usually a person who has demonstrated extensive knowledge of channels, aids to navigation, dangers to navigation, etc., in a particular area and is licensed for that area, are available.")]
-		[EnumMember(Value = "Pilotage Service")] 
-		PilotageService = 15,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
-	}
-
-	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-	[System.Serializable()]
-	public enum categoryOfHulk : int {
-		[System.ComponentModel.Description("A permanently moored floating structure (for example: an old ship) that is used as a restaurant.")]
-		[EnumMember(Value = "Floating Restaurant")] 
-		FloatingRestaurant = 1,
-		[System.ComponentModel.Description("A ship of historical interest permanently moored as a tourist attraction.")]
-		[EnumMember(Value = "Historic Ship")] 
-		HistoricShip = 2,
-		[System.ComponentModel.Description("A permanently moored floating structure (for example: an old ship) that is used as a museum.")]
-		[EnumMember(Value = "Floating Museum")] 
-		FloatingMuseum = 3,
-		[System.ComponentModel.Description("A permanently moored floating structure (for example: an old ship) that is used for accommodation.")]
-		[EnumMember(Value = "Floating Accommodation")] 
-		FloatingAccommodation = 4,
-		[System.ComponentModel.Description("A permanently moored floating structure, often constructed from old ships, used as a breakwater.")]
-		[EnumMember(Value = "Floating Breakwater")] 
-		FloatingBreakwater = 5,
-		[System.ComponentModel.Description("A permanently moored floating structure, such as an old ship, used as a casino boat.")]
-		[EnumMember(Value = "Casino")] 
-		Casino = 6,
-		[System.ComponentModel.Description("A permanently moored floating structure, often constructed from old ships, used for training purposes.")]
-		[EnumMember(Value = "Training Vessel")] 
-		TrainingVessel = 7,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
-	}
-
-	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-	[System.Serializable()]
-	public enum categoryOfIce : int {
-		[System.ComponentModel.Description("Sea ice which remains fast, generally in the position where originally formed, and which may attain a considerable thickness. It is found along coasts, where it is attached to the shore, or over shoals, where it may be held in position by islands, grounded icebergs or grounded polar ice.")]
-		[EnumMember(Value = "Fast Ice")] 
-		FastIce = 1,
-		[System.ComponentModel.Description("A mass of snow and ice continuously moving from higher to lower ground or, if afloat, continuously spreading.")]
-		[EnumMember(Value = "Glacier")] 
-		Glacier = 5,
-		[System.ComponentModel.Description("Sea ice that is more than one year old (in contrast to winter ice). The WMO code defines polar ice as any sea ice more than one year old and more than 3 metres thick.")]
-		[EnumMember(Value = "Polar Ice")] 
-		PolarIce = 8,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
-	}
-
-	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-	[System.Serializable()]
-	public enum categoryOfInstallationBuoy : int {
-		[System.ComponentModel.Description("Incorporates a large buoy which remains on the surface at all times and is moored by 4 or more anchors. Mooring hawsers and cargo hoses lead from a turntable on top of the buoy, so that the buoy does not turn as the ship swings to wind and stream.")]
-		[EnumMember(Value = "Catenary Anchor Leg Mooring")] 
-		CatenaryAnchorLegMooring = 1,
-		[System.ComponentModel.Description("A large mooring buoy used by tankers to load and unload in port approaches or in offshore oil and gas fields.")]
-		[EnumMember(Value = "Single Buoy Mooring")] 
-		SingleBuoyMooring = 2,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
-	}
-
-	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-	[System.Serializable()]
-	public enum categoryOfLandRegion : int {
-		[System.ComponentModel.Description("A type of bog, especially a low-lying area, wholly or partly covered with water and dominated by grass-like plants, grasses, sedges and reeds.")]
-		[EnumMember(Value = "Fen")] 
-		Fen = 1,
-		[System.ComponentModel.Description("An area of wet, often spongy ground that is subject to frequent flooding or tidal inundations, but not considered to be continually under water. It is characterized by the growth of non woody plants and by the lack of trees.")]
-		[EnumMember(Value = "Marsh")] 
-		Marsh = 2,
-		[System.ComponentModel.Description("Wet spongy ground consisting of decaying vegetation, which retains stagnant water, too soft to bear the weight of any heavy body.")]
-		[EnumMember(Value = "Bog")] 
-		Bog = 3,
-		[System.ComponentModel.Description("A tract of wasteland peat bog, usually covered by a low scrubby growth, but may have scattered small open water holes.")]
-		[EnumMember(Value = "Heathland")] 
-		Heathland = 4,
-		[System.ComponentModel.Description("A series of connected and aligned mountains or mountain ridges.")]
-		[EnumMember(Value = "Mountain Range")] 
-		MountainRange = 5,
-		[System.ComponentModel.Description("Low and relatively level land at a lower elevation than adjoining areas.")]
-		[EnumMember(Value = "Lowlands")] 
-		Lowlands = 6,
-		[System.ComponentModel.Description("A relatively narrow, deep depression with steep sides, the bottom of which generally has a continuous slope.")]
-		[EnumMember(Value = "Canyon Lands")] 
-		CanyonLands = 7,
-		[System.ComponentModel.Description("A piece of land set aside for crops which are periodically flooded (for example rice paddy).")]
-		[EnumMember(Value = "Paddy Field")] 
-		PaddyField = 8,
-		[System.ComponentModel.Description("Of or pertaining to the science or practice of cultivating the soil and rearing animals.")]
-		[EnumMember(Value = "Agricultural Land")] 
-		AgriculturalLand = 9,
-		[System.ComponentModel.Description("An open grassy plain with few or no trees in a tropical or subtropical region; a tract covered mainly by grasses that have little or no woody tissue.")]
-		[EnumMember(Value = "Savanna/Grassland")] 
-		SavannaGrassland = 10,
-		[System.ComponentModel.Description("A piece of ground kept for ornament and/or recreation or maintained in its natural state as a public property or area.")]
-		[EnumMember(Value = "Parkland")] 
-		Parkland = 11,
-		[System.ComponentModel.Description("An area of spongy land saturated with water. It may have a shallow covering of water, usually with a considerable amount of vegetation appearing above the surface.")]
-		[EnumMember(Value = "Swamp")] 
-		Swamp = 12,
-		[System.ComponentModel.Description("The sliding down of a mass of land on a mountain or cliff-side; land which has so fallen.")]
-		[EnumMember(Value = "Landslide")] 
-		Landslide = 13,
-		[System.ComponentModel.Description("The substance that results from the cooling of molten rock.")]
-		[EnumMember(Value = "Lava Flow")] 
-		LavaFlow = 14,
-		[System.ComponentModel.Description("Shallow pools of brackish water used for the natural evaporation of sea water to obtain salt.")]
-		[EnumMember(Value = "Salt Pan")] 
-		SaltPan = 15,
-		[System.ComponentModel.Description("Any accumulation of loose material deposited by a glacier.")]
-		[EnumMember(Value = "Moraine")] 
-		Moraine = 16,
-		[System.ComponentModel.Description("Bowl-shaped cavity, at the summit or on the side of a volcano.")]
-		[EnumMember(Value = "Crater")] 
-		Crater = 17,
-		[System.ComponentModel.Description("A natural subterranean chamber or series of chambers open to the earth's surface.")]
-		[EnumMember(Value = "Cave")] 
-		Cave = 18,
-		[System.ComponentModel.Description("Any high tower or spire-shaped pillar of rock, alone or cresting a summit.")]
-		[EnumMember(Value = "Rock Column or Pinnacle")] 
-		RockColumnOrPinnacle = 19,
-		[System.ComponentModel.Description("A small insular feature usually with scant vegetation; usually of sand or coral. Often applied to smaller coral shoals.")]
-		[EnumMember(Value = "Cay")] 
-		Cay = 20,
-		[System.ComponentModel.Description("A watercourse that is permanently dry or dry except for the rainy season.")]
-		[EnumMember(Value = "Wadi")] 
-		Wadi = 21,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
-	}
-
-	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-	[System.Serializable()]
-	public enum categoryOfLandmark : int {
-		[System.ComponentModel.Description("A mound of stones, usually conical or pyramidal, raised as a landmark or to designate a point of importance in surveying.")]
-		[EnumMember(Value = "Cairn")] 
-		Cairn = 1,
-		[System.ComponentModel.Description("A site and associated structures devoted to the burial of the dead.")]
-		[EnumMember(Value = "Cemetery")] 
-		Cemetery = 2,
-		[System.ComponentModel.Description("A vertical structure containing a passage or flue for discharging smoke and gases of combustion.")]
-		[EnumMember(Value = "Chimney")] 
-		Chimney = 3,
-		[System.ComponentModel.Description("A parabolic aerial for the receipt and transmission of high frequency radio signals.")]
-		[EnumMember(Value = "Dish Aerial")] 
-		DishAerial = 4,
-		[System.ComponentModel.Description("A staff or pole on which flags are raised.")]
-		[EnumMember(Value = "Flagstaff")] 
-		Flagstaff = 5,
-		[System.ComponentModel.Description("A tall structure used for burning-off waste oil or gas.")]
-		[EnumMember(Value = "Flare Stack")] 
-		FlareStack = 6,
-		[System.ComponentModel.Description("A relatively tall structure usually held vertical by guy lines.")]
-		[EnumMember(Value = "Mast")] 
-		Mast = 7,
-		[System.ComponentModel.Description("A tapered fabric sleeve mounted so as to catch and swing with the wind, thus indicating the wind direction.")]
-		[EnumMember(Value = "Windsock")] 
-		Windsock = 8,
-		[System.ComponentModel.Description("A structure erected and/or maintained as a memorial to a person and/or event.")]
-		[EnumMember(Value = "Monument")] 
-		Monument = 9,
-		[System.ComponentModel.Description("A cylindrical or slightly tapering body of considerably greater length than diameter erected vertically.")]
-		[EnumMember(Value = "Column/Pillar")] 
-		ColumnPillar = 10,
-		[System.ComponentModel.Description("A slab of metal, usually ornamented, erected as a memorial to a person or event.")]
-		[EnumMember(Value = "Memorial Plaque")] 
-		MemorialPlaque = 11,
-		[System.ComponentModel.Description("A tapering shaft usually of stone or concrete, square or rectangular in section, with a pyramidal apex.")]
-		[EnumMember(Value = "Obelisk")] 
-		Obelisk = 12,
-		[System.ComponentModel.Description("A representation of a living being, sculptured, moulded, or cast in a variety of materials (for example: marble, metal, or plaster).")]
-		[EnumMember(Value = "Statue")] 
-		Statue = 13,
-		[System.ComponentModel.Description("A monument, or other structure in form of a cross.")]
-		[EnumMember(Value = "Cross")] 
-		Cross = 14,
-		[System.ComponentModel.Description("A landmark comprising a hemispherical or spheroidal shaped structure.")]
-		[EnumMember(Value = "Dome")] 
-		Dome = 15,
-		[System.ComponentModel.Description("A device used for directing a radar beam through a search pattern.")]
-		[EnumMember(Value = "Radar Scanner")] 
-		RadarScanner = 16,
-		[System.ComponentModel.Description("A relatively tall, narrow structure that may either stand alone or may form part of another structure.")]
-		[EnumMember(Value = "Tower")] 
-		Tower = 17,
-		[System.ComponentModel.Description("A system of vanes attached to a tower and driven by wind (excluding wind turbines).")]
-		[EnumMember(Value = "Windmill")] 
-		Windmill = 18,
-		[System.ComponentModel.Description("A tall conical or pyramid-shaped structure often built on the roof or tower of a building, especially a church or mosque.")]
-		[EnumMember(Value = "Spire/Minaret")] 
-		SpireMinaret = 20,
-		[System.ComponentModel.Description("An isolated rocky formation or a single large stone.")]
-		[EnumMember(Value = "Large Rock or Boulder on Land")] 
-		LargeRockOrBoulderOnLand = 21,
-		[System.ComponentModel.Description("A recoverable point on the earth, whose geographic position has been determined by angular methods with geodetic instruments. A triangulation point is a selected point, which has been marked with a station mark, or it is a conspicuous natural or artificial feature.")]
-		[EnumMember(Value = "Triangulation Mark")] 
-		TriangulationMark = 22,
-		[System.ComponentModel.Description("A marker identifying the location of a surveyed boundary line.")]
-		[EnumMember(Value = "Boundary Mark")] 
-		BoundaryMark = 23,
-		[System.ComponentModel.Description("Wheels with passenger cars mounted external to the rim and independently rotated by electric motors.")]
-		[EnumMember(Value = "Observation Wheel")] 
-		ObservationWheel = 24,
-		[System.ComponentModel.Description("A form of decorative gateway or portal, consisting of two upright wooden posts connected at the top by two horizontal crosspieces, commonly found at the entrance to Shinto temples.")]
-		[EnumMember(Value = "Torii")] 
-		Torii = 25,
-		[System.ComponentModel.Description("A structure erected over a depression or an obstacle such as a body of water, railroad, etc., to provide a roadway for vehicles or pedestrians.")]
-		[EnumMember(Value = "Bridge")] 
-		Bridge = 26,
-		[System.ComponentModel.Description("A barrier to check or confine anything in motion; particularly one constructed to hold back water and raise its level to form a reservoir, or to prevent flooding.")]
-		[EnumMember(Value = "Dam")] 
-		Dam = 27,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
-	}
-
-	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-	[System.Serializable()]
-	public enum categoryOfLateralMark : int {
-		[System.ComponentModel.Description("Indicates the port boundary of a navigational channel or suggested route when proceeding in the \"conventional direction of buoyage\".")]
-		[EnumMember(Value = "Port-Hand Lateral Mark")] 
-		PortHandLateralMark = 1,
-		[System.ComponentModel.Description("Indicates the starboard boundary of a navigational channel or suggested route when proceeding in the \"conventional direction of buoyage\".")]
-		[EnumMember(Value = "Starboard-Hand Lateral Mark")] 
-		StarboardHandLateralMark = 2,
-		[System.ComponentModel.Description("At a point where a channel divides, when proceeding in the \"conventional direction of buoyage\", the preferred channel (or primary route) is indicated by a modified port-hand lateral mark.")]
-		[EnumMember(Value = "Preferred Channel to Starboard Lateral Mark")] 
-		PreferredChannelToStarboardLateralMark = 3,
-		[System.ComponentModel.Description("At a point where a channel divides, when proceeding in the \"conventional direction of buoyage\", the preferred channel (or primary route) is indicated by a modified starboard-hand lateral mark.")]
-		[EnumMember(Value = "Preferred Channel to Port Lateral Mark")] 
-		PreferredChannelToPortLateralMark = 4,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
-	}
-
-	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-	[System.Serializable()]
-	public enum categoryOfLight : int {
-		[System.ComponentModel.Description("A light associated with other lights so as to form a leading line to be followed.")]
-		[EnumMember(Value = "Leading Light")] 
-		LeadingLight = 4,
-		[System.ComponentModel.Description("An aero light is established for aeronautical navigation and may be of higher power than marine lights and visible from well offshore.")]
-		[EnumMember(Value = "Aero Light")] 
-		AeroLight = 5,
-		[System.ComponentModel.Description("A broad beam light used to illuminate a structure or area.")]
-		[EnumMember(Value = "Flood Light")] 
-		FloodLight = 8,
-		[System.ComponentModel.Description("A light whose source has a linear form generally horizontal, which can reach a length of several metres.")]
-		[EnumMember(Value = "Strip Light")] 
-		StripLight = 9,
-		[System.ComponentModel.Description("A light placed on or near the support of a main light and having a special use in navigation.")]
-		[EnumMember(Value = "Subsidiary Light")] 
-		SubsidiaryLight = 10,
-		[System.ComponentModel.Description("A powerful light focused so as to illuminate a small area.")]
-		[EnumMember(Value = "Spotlight")] 
-		Spotlight = 11,
-		[System.ComponentModel.Description("Term used with leading lights to describe the position of the light on the lead as viewed from seaward.")]
-		[EnumMember(Value = "Front")] 
-		Front = 12,
-		[System.ComponentModel.Description("Term used with leading lights to describe the position of the light on the lead as viewed from seaward.")]
-		[EnumMember(Value = "Rear")] 
-		Rear = 13,
-		[System.ComponentModel.Description("Term used with leading lights to describe the position of the light on the lead as viewed from seaward.")]
-		[EnumMember(Value = "Lower")] 
-		Lower = 14,
-		[System.ComponentModel.Description("Term used with leading lights to describe the position of the light on the lead as viewed from seaward.")]
-		[EnumMember(Value = "Upper")] 
-		Upper = 15,
-		[System.ComponentModel.Description("A light available as a backup to a main light which will be illuminated should the main light fail.")]
-		[EnumMember(Value = "Emergency")] 
-		Emergency = 17,
-		[System.ComponentModel.Description("A light which enables its approximate bearing to be obtained without the use of a compass.")]
-		[EnumMember(Value = "Bearing Light")] 
-		BearingLight = 18,
-		[System.ComponentModel.Description("A group of lights of identical character and almost identical position, that are disposed horizontally.")]
-		[EnumMember(Value = "Horizontally Disposed")] 
-		HorizontallyDisposed = 19,
-		[System.ComponentModel.Description("A group of lights of identical character and almost identical position, that are disposed vertically.")]
-		[EnumMember(Value = "Vertically Disposed")] 
-		VerticallyDisposed = 20,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
-	}
-
-	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-	[System.Serializable()]
-	public enum categoryOfMarineFarmCulture : int {
-		[System.ComponentModel.Description("Hard shelled animals, for example crabs or lobsters.")]
-		[EnumMember(Value = "Crustaceans")] 
-		Crustaceans = 1,
-		[System.ComponentModel.Description("A two-part hinged external shell covering that contains a soft-bodied invertebrate.")]
-		[EnumMember(Value = "Edible Bivalve Molluscs")] 
-		EdibleBivalveMolluscs = 2,
-		[System.ComponentModel.Description("Vertebrate cold blooded animal with gills, living in water.")]
-		[EnumMember(Value = "Fish")] 
-		Fish = 3,
-		[System.ComponentModel.Description("The general name for marine plants of the Algae class which grow in long narrow ribbons.")]
-		[EnumMember(Value = "Seaweed")] 
-		Seaweed = 4,
-		[System.ComponentModel.Description("An area where pearls are artificially cultivated.")]
-		[EnumMember(Value = "Pearl Culture Farm")] 
-		PearlCultureFarm = 5,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
-	}
-
-	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-	[System.Serializable()]
-	public enum categoryOfMilitaryPracticeArea : int {
-		[System.ComponentModel.Description("An area within which exercises are carried out with torpedoes.")]
-		[EnumMember(Value = "Torpedo Exercise Area")] 
-		TorpedoExerciseArea = 2,
-		[System.ComponentModel.Description("An area within which submarine exercises are carried out.")]
-		[EnumMember(Value = "Submarine Exercise Area")] 
-		SubmarineExerciseArea = 3,
-		[System.ComponentModel.Description("Areas for bombing and missile exercises.")]
-		[EnumMember(Value = "Firing Danger Area")] 
-		FiringDangerArea = 4,
-		[System.ComponentModel.Description("An area within which mine laying exercises are carried out.")]
-		[EnumMember(Value = "Mine-Laying Practice Area")] 
-		MineLayingPracticeArea = 5,
-		[System.ComponentModel.Description("An area for shooting pistols, rifles and machine guns etc. at a target.")]
-		[EnumMember(Value = "Small Arms Firing Range")] 
-		SmallArmsFiringRange = 6,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
-	}
-
-	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-	[System.Serializable()]
-	public enum categoryOfMooringArea : int {
-		[System.ComponentModel.Description("An area in which yachts and small boats moor.")]
-		[EnumMember(Value = "Small Craft Mooring Area")] 
-		SmallCraftMooringArea = 1,
-		[System.ComponentModel.Description("An area set aside for the mooring of visiting vessels.")]
-		[EnumMember(Value = "Mooring Area for Visitors")] 
-		MooringAreaForVisitors = 2,
-		[System.ComponentModel.Description("An area set aside for the mooring of tankers.")]
-		[EnumMember(Value = "Mooring Area for Tankers")] 
-		MooringAreaForTankers = 3,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
-	}
-
-	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-	[System.Serializable()]
-	public enum categoryOfNavigationLine : int {
-		[System.ComponentModel.Description("A straight line that marks the boundary between a safe and a dangerous area or that passes clear of a navigational danger.")]
-		[EnumMember(Value = "Clearing Line")] 
-		ClearingLine = 1,
-		[System.ComponentModel.Description("A line passing through one or more fixed marks.")]
-		[EnumMember(Value = "Transit Line")] 
-		TransitLine = 2,
-		[System.ComponentModel.Description("A line passing through one or more clearly defined objects, along the path of which a vessel can approach safely up to a certain distance off.")]
-		[EnumMember(Value = "Leading Line Bearing a Recommended Track")] 
-		LeadingLineBearingARecommendedTrack = 3,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
-	}
-
-	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-	[System.Serializable()]
-	public enum categoryOfObstruction : int {
-		[System.ComponentModel.Description("A tree, branch or broken pile embedded in the ocean floor, river or lake bottom and not visible on the surface, forming thereby a hazard to vessels.")]
-		[EnumMember(Value = "Snag/Stump")] 
-		SnagStump = 1,
-		[System.ComponentModel.Description("A submarine structure projecting some distance above the seabed and capping a temporarily abandoned or suspended oil or gas well.")]
-		[EnumMember(Value = "Wellhead")] 
-		Wellhead = 2,
-		[System.ComponentModel.Description("A structure on an outfall through which liquids are discharged. The structure will usually project above the level of the outfall and can be an obstruction to navigation.")]
-		[EnumMember(Value = "Diffuser")] 
-		Diffuser = 3,
-		[System.ComponentModel.Description("A permanent marine structure usually designed to support or elevate pipelines; especially a structure enclosing a screening device at the offshore end of a potable water intake pipe. The structure is commonly a heavy timber enclosure that has been sunken with rocks or other debris.")]
-		[EnumMember(Value = "Crib")] 
-		Crib = 4,
-		[System.ComponentModel.Description("Areas established by private interests, usually sport fishermen, to simulate natural reefs and wrecks that attract fish. The reefs are constructed by dumping assorted junk in areas which may be of very small extent or may stretch a considerable distance along a depth contour.")]
-		[EnumMember(Value = "Fish Haven")] 
-		FishHaven = 5,
-		[System.ComponentModel.Description("An area of numerous unidentified dangers to navigation. The area serves as a warning to the mariner that all dangers are not identified individually and that navigation through the area may be hazardous.")]
-		[EnumMember(Value = "Foul Area")] 
-		FoulArea = 6,
-		[System.ComponentModel.Description("Floating barriers, anchored to the bottom, used to deflect the path of floating ice in order to prevent the obstruction of locks, intakes, etc., and to prevent damage to bridge piers and other structures.")]
-		[EnumMember(Value = "Ice Boom")] 
-		IceBoom = 8,
-		[System.ComponentModel.Description("Equipment such as anchors, concrete blocks, chains and cables, etc., used to position floating structures such as trot and mooring buoys etc.")]
-		[EnumMember(Value = "Ground Tackle")] 
-		GroundTackle = 9,
-		[System.ComponentModel.Description("A floating barrier used to protect a river or harbour mouth or to create a sheltered area for storage purposes.")]
-		[EnumMember(Value = "Boom")] 
-		Boom = 10,
-		[System.ComponentModel.Description("A device to extract energy from the surface motion of ocean waves or from pressure fluctuations below the surface.")]
-		[EnumMember(Value = "Wave Energy Device")] 
-		WaveEnergyDevice = 12,
-		[System.ComponentModel.Description("A submerged device, not being a ship, together with its appurtenant equipment, deployed at sea essentially for the purpose of collecting, storing or transmitting samples or data relating to the marine environment.")]
-		[EnumMember(Value = "Subsurface Ocean Data Acquisition System")] 
-		SubsurfaceOceanDataAcquisitionSystem = 13,
-		[System.ComponentModel.Description("A man-made structure that may mimic some of the characteristics of a natural reef, intended to attract sea life.")]
-		[EnumMember(Value = "Artificial Reef")] 
-		ArtificialReef = 14,
-		[System.ComponentModel.Description("A structure placed on the seafloor below a drilling rig to guide the drill.")]
-		[EnumMember(Value = "Template")] 
-		Template = 15,
-		[System.ComponentModel.Description("A large steel structure up to 20 metres in height above the seafloor, or a steel frame secured to the seafloor with piles to anchor the end of a submarine pipeline, for delivery to a production platform.")]
-		[EnumMember(Value = "Manifold")] 
-		Manifold = 16,
-		[System.ComponentModel.Description("A hill of soil-covered ice pushed up by hydrostatic pressure in an area of permafrost that is located underwater.")]
-		[EnumMember(Value = "Submerged Pingo")] 
-		SubmergedPingo = 17,
-		[System.ComponentModel.Description("The distributed remains of a platform.")]
-		[EnumMember(Value = "Remains of Platform")] 
-		RemainsOfPlatform = 18,
-		[System.ComponentModel.Description("An instrument used for scientific purposes.")]
-		[EnumMember(Value = "Scientific Instrument")] 
-		ScientificInstrument = 19,
-		[System.ComponentModel.Description("Any of various machines having a rotor, usually with vanes or blades, driven by the pressure, momentum, or reactive thrust of a moving fluid, as steam, water, hot gases, or air, either occurring in the form of free jets or as a fluid passing through and entirely filling a housing around the rotor and is located underwater.")]
-		[EnumMember(Value = "Underwater Turbine")] 
-		UnderwaterTurbine = 20,
-		[System.ComponentModel.Description("An active seabed volcano, which may be submerged or projecting above the water at the chart sounding datum.")]
-		[EnumMember(Value = "Active Submarine Volcano")] 
-		ActiveSubmarineVolcano = 21,
-		[System.ComponentModel.Description("A submerged net placed around beaches to reduce shark attacks on swimmers.")]
-		[EnumMember(Value = "Shark Net")] 
-		SharkNet = 22,
-		[System.ComponentModel.Description("One of several genera of tropical trees or shrubs which produce many prop roots and grow along low-lying coasts into shallow water.")]
-		[EnumMember(Value = "Mangrove")] 
-		Mangrove = 23,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
-	}
-
-	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-	[System.Serializable()]
-	public enum categoryOfOffshorePlatform : int {
-		[System.ComponentModel.Description("A temporary mobile structure, either fixed or floating, used in the exploration stages of oil and gas fields.")]
-		[EnumMember(Value = "Oil Rig")] 
-		OilRig = 1,
-		[System.ComponentModel.Description("A term used to indicate a permanent offshore structure equipped to control the flow of oil or gas. It does not include entirely submarine structures.")]
-		[EnumMember(Value = "Production Platform")] 
-		ProductionPlatform = 2,
-		[System.ComponentModel.Description("A platform from which one's surroundings or events can be observed, noted or recorded such as for scientific study.")]
-		[EnumMember(Value = "Observation/Research Platform")] 
-		ObservationResearchPlatform = 3,
-		[System.ComponentModel.Description("A metal lattice tower, buoyant at one end and attached at the other by a universal joint to a concrete filled base on the seabed. The platform may be fitted with a helicopter platform, emergency accommodation and hawser/hose retrieval.")]
-		[EnumMember(Value = "Articulated Loading Platform")] 
-		ArticulatedLoadingPlatform = 4,
-		[System.ComponentModel.Description("A rigid frame or tube with a buoyancy device at its upper end, secured at its lower end to a universal joint on a large steel or concrete base resting on the seabed, and at its upper end to a mooring buoy by a chain or wire.")]
-		[EnumMember(Value = "Single Anchor Leg Mooring")] 
-		SingleAnchorLegMooring = 5,
-		[System.ComponentModel.Description("A platform secured to the seabed and surmounted by a turntable to which ships moor.")]
-		[EnumMember(Value = "Mooring Tower")] 
-		MooringTower = 6,
-		[System.ComponentModel.Description("A man-made structure usually built for the exploration or exploitation of marine resources, marine scientific research, tidal observations, etc.")]
-		[EnumMember(Value = "Artificial Island")] 
-		ArtificialIsland = 7,
-		[System.ComponentModel.Description("An offshore facility consisting of a moored tanker/barge by which the product is extracted, stored and exported.")]
-		[EnumMember(Value = "Floating Production, Storage and Off-Loading Vessel")] 
-		FloatingProductionStorageAndOffLoadingVessel = 8,
-		[System.ComponentModel.Description("A platform used primarily for eating, sleeping and recreation purposes.")]
-		[EnumMember(Value = "Accommodation Platform")] 
-		AccommodationPlatform = 9,
-		[System.ComponentModel.Description("A floating structure with control room, power and storage facilities, attached to the seabed by a flexible pipeline and cables.")]
-		[EnumMember(Value = "Navigation, Communication and Control Buoy")] 
-		NavigationCommunicationAndControlBuoy = 10,
-		[System.ComponentModel.Description("A floating structure, anchored to the seabed, for storing oil.")]
-		[EnumMember(Value = "Floating Oil Tank")] 
-		FloatingOilTank = 11,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
-	}
-
-	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-	[System.Serializable()]
-	public enum categoryOfOffshoreProductionArea : int {
-		[System.ComponentModel.Description("A collection of wind turbines that are collocated and are organized as a single power generation unit.")]
-		[EnumMember(Value = "Wind Farm")] 
-		WindFarm = 1,
-		[System.ComponentModel.Description("A collection of collocated devices which harness wave energy and are organized as a single power generation unit.")]
-		[EnumMember(Value = "Wave Farm")] 
-		WaveFarm = 2,
-		[System.ComponentModel.Description("A collection of collocated devices which harness current (for example tidal) energy and are organized as a single power generation unit.")]
-		[EnumMember(Value = "Current Farm")] 
-		CurrentFarm = 3,
-		[System.ComponentModel.Description("A collection of collocated large-capacity tanks in which petroleum, natural gas, or liquid petrochemicals are stored.")]
-		[EnumMember(Value = "Tank Farm")] 
-		TankFarm = 4,
-		[System.ComponentModel.Description("An area in which materials forming, or under, the seabed are removed.")]
-		[EnumMember(Value = "Seabed Material Extraction Area")] 
-		SeabedMaterialExtractionArea = 5,
-		[System.ComponentModel.Description("A large-scale photovoltaic system (PV system) designed for the supply of merchant power into the electricity grid. They are differentiated from most building-mounted and other decentralised solar power applications because they supply power at the utility level, rather than to a local user or users. The generic expression utility-scale solar is sometimes used to describe this type of project.")]
-		[EnumMember(Value = "Solar Farm")] 
-		SolarFarm = 6,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
-	}
-
-	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-	[System.Serializable()]
-	public enum categoryOfOilBarrier : int {
-		[System.ComponentModel.Description("A pipe with holes from which air blows. When the air bubbles reach the surface they form a barrier which prevents the spread of oil.")]
-		[EnumMember(Value = "Oil Retention (High Pressure Pipe)")] 
-		OilRetentionHighPressurePipe = 1,
-		[System.ComponentModel.Description("A floating tube shaped structure, with a curtain (2 metre) hanging under it, below the surface, which prevents the spread of oil.")]
-		[EnumMember(Value = "Floating Oil Barrier")] 
-		FloatingOilBarrier = 2,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
-	}
-
-	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-	[System.Serializable()]
-	public enum categoryOfOpeningBridge : int {
-		[System.ComponentModel.Description("A movable bridge (or span thereof) which rotates in a horizontal plane about a vertical pivot to allow the passage of vessels.")]
-		[EnumMember(Value = "Swing Bridge")] 
-		SwingBridge = 3,
-		[System.ComponentModel.Description("A movable bridge (or span thereof) which is capable of being lifted vertically to allow vessels to pass beneath.")]
-		[EnumMember(Value = "Lifting Bridge")] 
-		LiftingBridge = 4,
-		[System.ComponentModel.Description("A counterpoise bridge rotated in a vertical plane about an axis at one or both ends.")]
-		[EnumMember(Value = "Bascule Bridge")] 
-		BasculeBridge = 5,
-		[System.ComponentModel.Description("A general name for bridges of which part or the entire span of the bridge may be raised or drawn aside to allow ships to pass through.")]
-		[EnumMember(Value = "Drawbridge")] 
-		Drawbridge = 7,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
-	}
-
-	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-	[System.Serializable()]
-	public enum categoryOfPile : int {
-		[System.ComponentModel.Description("An elongated wood or metal pole embedded in the seabed to serve as a marker or support.")]
-		[EnumMember(Value = "Stake")] 
-		Stake = 1,
-		[System.ComponentModel.Description("A vertical piece of timber, metal or concrete forced into the earth or seabed.")]
-		[EnumMember(Value = "Post")] 
-		Post = 3,
-		[System.ComponentModel.Description("A single structure comprising 3 or more piles held together (sections of heavy timber, steel or concrete), and forced into the earth or seabed.")]
-		[EnumMember(Value = "Tripodal")] 
-		Tripodal = 4,
-		[System.ComponentModel.Description("A number of piles, usually in a straight line, and usually connected or bolted together.")]
-		[EnumMember(Value = "Piling")] 
-		Piling = 5,
-		[System.ComponentModel.Description("A number of piles, usually in a straight line, but not connected by structural members.")]
-		[EnumMember(Value = "Area of Piles")] 
-		AreaOfPiles = 6,
-		[System.ComponentModel.Description("A vertical hollow cylinder of metal, wood, or other material forced into the earth or seabed.")]
-		[EnumMember(Value = "Pipe")] 
-		Pipe = 7,
-		[System.ComponentModel.Description("A post where to which something (such as a craft) can be moored.")]
-		[EnumMember(Value = "Mooring Post")] 
-		MooringPost = 8,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
-	}
-
-	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-	[System.Serializable()]
-	public enum categoryOfPilotBoardingPlace : int {
-		[System.ComponentModel.Description("Pilot boards from a cruising vessel.")]
-		[EnumMember(Value = "Boarding by Pilot-Cruising Vessel")] 
-		BoardingByPilotCruisingVessel = 1,
-		[System.ComponentModel.Description("Pilot boards by helicopter which comes out from the shore.")]
-		[EnumMember(Value = "Boarding by Helicopter")] 
-		BoardingByHelicopter = 2,
-		[System.ComponentModel.Description("Pilot embarks from a vessel or disembarks to a vessel which comes out from the shore on request.")]
-		[EnumMember(Value = "Pilot Comes Out from Shore")] 
-		PilotComesOutFromShore = 3,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
-	}
-
-	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-	[System.Serializable()]
-	public enum categoryOfPipelinePipe : int {
-		[System.ComponentModel.Description("A pipe (generally a sewer or drainage pipe) discharging into the sea or a river.")]
-		[EnumMember(Value = "Outfall Pipe")] 
-		OutfallPipe = 2,
-		[System.ComponentModel.Description("A pipe taking water from a river or other body of water, to drive a mill or supply a canal, waterworks, etc.")]
-		[EnumMember(Value = "Intake Pipe")] 
-		IntakePipe = 3,
-		[System.ComponentModel.Description("A pipe in a sewage system for carrying water or sewage to a disposal area.")]
-		[EnumMember(Value = "Sewer")] 
-		Sewer = 4,
-		[System.ComponentModel.Description("A submerged pipe from which warm water bubbles, preventing the surrounding water from freezing.")]
-		[EnumMember(Value = "Bubbler System")] 
-		BubblerSystem = 5,
-		[System.ComponentModel.Description("A pipe used for transport (supply) of gas or liquid product.")]
-		[EnumMember(Value = "Supply Pipe")] 
-		SupplyPipe = 6,
-		[System.ComponentModel.Description("A high pressure sub-surface pipeline (usually on the seafloor) with holes emitting a curtain of air bubbles. Its uses include: the prevention of acoustic transmission through the water; preventing the spread of surface debris or floating liquids; controlling the movement of fish.")]
-		[EnumMember(Value = "Bubble Curtain")] 
-		BubbleCurtain = 7,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
-	}
-
-	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-	[System.Serializable()]
-	public enum categoryOfPreference : int {
-		[System.ComponentModel.Description("The preferred first choice used in normal conditions.")]
-		[EnumMember(Value = "Primary")] 
-		Primary = 1,
-		[System.ComponentModel.Description("The preferred choice in extraordinary conditions.")]
-		[EnumMember(Value = "Alternate")] 
-		Alternate = 2,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
-	}
-
-	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-	[System.Serializable()]
-	public enum categoryOfProductionArea : int {
-		[System.ComponentModel.Description("An open-air excavation for the extraction of stone intended principally for use in construction.")]
-		[EnumMember(Value = "Quarry")] 
-		Quarry = 1,
-		[System.ComponentModel.Description("An excavation made in the terrain for the purpose of extracting and/or exploiting natural resources.")]
-		[EnumMember(Value = "Mine")] 
-		Mine = 2,
-		[System.ComponentModel.Description("A reserve stock of material, equipment or other supplies.")]
-		[EnumMember(Value = "Stockpile")] 
-		Stockpile = 3,
-		[System.ComponentModel.Description("A facility including one or more buildings and equipment used for power generation.")]
-		[EnumMember(Value = "Power Station Area")] 
-		PowerStationArea = 4,
-		[System.ComponentModel.Description("A facility where petroleum and/or petroleum products are refined.")]
-		[EnumMember(Value = "Refinery Area")] 
-		RefineryArea = 5,
-		[System.ComponentModel.Description("An open tract for the storage of wooden lumber and timbers.")]
-		[EnumMember(Value = "Timber Yard")] 
-		TimberYard = 6,
-		[System.ComponentModel.Description("A group of buildings where goods are manufactured.")]
-		[EnumMember(Value = "Factory Area")] 
-		FactoryArea = 7,
-		[System.ComponentModel.Description("A collection of collocated large-capacity tanks in which petroleum, natural gas, or liquid petrochemicals are stored.")]
-		[EnumMember(Value = "Tank Farm")] 
-		TankFarm = 8,
-		[System.ComponentModel.Description("A collection of wind turbines that are collocated and are organized as a single power generation unit.")]
-		[EnumMember(Value = "Wind Farm")] 
-		WindFarm = 9,
-		[System.ComponentModel.Description("Hill of refuse from a mine, industrial plant etc. on land.")]
-		[EnumMember(Value = "Slag Heap/Spoil Heap")] 
-		SlagHeapSpoilHeap = 10,
-		[System.ComponentModel.Description("A plant where production takes place.")]
-		[EnumMember(Value = "Production Plant")] 
-		ProductionPlant = 11,
-		[System.ComponentModel.Description("A large-scale photovoltaic system (PV system) designed for the supply of merchant power into the electricity grid. They are differentiated from most building-mounted and other decentralised solar power applications because they supply power at the utility level, rather than to a local user or users. The generic expression utility-scale solar is sometimes used to describe this type of project.")]
-		[EnumMember(Value = "Solar Farm")] 
-		SolarFarm = 12,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
-	}
-
-	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-	[System.Serializable()]
-	public enum categoryOfPylon : int {
-		[System.ComponentModel.Description("A pylon or pole that supports one or more power lines.")]
-		[EnumMember(Value = "Power Transmission Pylon/Pole")] 
-		PowerTransmissionPylonPole = 1,
-		[System.ComponentModel.Description("A pylon or pole that supports one or more communication lines.")]
-		[EnumMember(Value = "Telephone/Telegraph Pylon/Pole")] 
-		TelephoneTelegraphPylonPole = 2,
-		[System.ComponentModel.Description("A tower or pylon supporting steel cables which convey cars, buckets, or other suspended carrier units.")]
-		[EnumMember(Value = "Aerial Cableway Pylon")] 
-		AerialCablewayPylon = 3,
-		[System.ComponentModel.Description("A tower and/or pylon from which the deck of a bridge is suspended.")]
-		[EnumMember(Value = "Bridge Pylon/Tower")] 
-		BridgePylonTower = 4,
-		[System.ComponentModel.Description("A pillar or abutment that supports a bridge span.")]
-		[EnumMember(Value = "Bridge Pier")] 
-		BridgePier = 5,
-		[System.ComponentModel.Description("A tower or pylon supporting a suspended pipeline or pipelines.")]
-		[EnumMember(Value = "Pipeline Pylon")] 
-		PipelinePylon = 6,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
-	}
-
-	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-	[System.Serializable()]
-	public enum categoryOfRadarStation : int {
-		[System.ComponentModel.Description("A radar station established for traffic surveillance.")]
-		[EnumMember(Value = "Radar Surveillance Station")] 
-		RadarSurveillanceStation = 1,
-		[System.ComponentModel.Description("A shore-based station which the mariner can contact by radio to obtain a position.")]
-		[EnumMember(Value = "Coast Radar Station")] 
-		CoastRadarStation = 2,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
-	}
-
-	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-	[System.Serializable()]
-	public enum categoryOfRadarTransponderBeacon : int {
-		[System.ComponentModel.Description("A radar marker beacon which continuously transmits a signal appearing as a radial line on a radar screen, the line indicating the direction of the beacon. Ramarks are intended primarily for marine use. The name 'ramark' is derived from the words radar marker.")]
-		[EnumMember(Value = "Ramark, Radar Beacon Transmitting Continuously")] 
-		RamarkRadarBeaconTransmittingContinuously = 1,
-		[System.ComponentModel.Description("A radar beacon which returns a coded signal which provides identification of the beacon, as well as range and bearing. The range and bearing are indicated by the location of the first character received on the radar screen. The name 'racon' is derived from the words radar beacon.")]
-		[EnumMember(Value = "Racon, Radar Transponder Beacon")] 
-		RaconRadarTransponderBeacon = 2,
-		[System.ComponentModel.Description("A radar beacon that may be used (in conjunction with at least one other radar beacon) to indicate a leading line.")]
-		[EnumMember(Value = "Leading Racon/Radar Transponder Beacon")] 
-		LeadingRaconRadarTransponderBeacon = 3,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
-	}
-
-	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-	[System.Serializable()]
-	public enum categoryOfRadioStation : int {
-		[System.ComponentModel.Description("A radio station intended to determine only the direction of other stations by means of transmission from the latter.")]
-		[EnumMember(Value = "Radio Direction-Finding Station")] 
-		RadioDirectionFindingStation = 5,
-		[System.ComponentModel.Description("Differential GNSS is implemented by placing a GNSS monitor receiver at a precisely known location. Instead of computing a navigation fix, the monitor determines the range error to every GNSS satellite it can track. These ranging errors are then transmitted to local users where they are applied as corrections before computing the navigation result.")]
-		[EnumMember(Value = "Differential GNSS")] 
-		DifferentialGnss = 10,
-		[System.ComponentModel.Description("An electronic position fixing system used mainly by aircraft.")]
-		[EnumMember(Value = "Toran")] 
-		Toran = 11,
-		[System.ComponentModel.Description("A low frequency electronic position fixing system using pulsed transmissions at 100 Khz.")]
-		[EnumMember(Value = "Chaika")] 
-		Chaika = 14,
-		[System.ComponentModel.Description("The equipment needed at one station to carry on two way voice communication by radio waves only.")]
-		[EnumMember(Value = "Radio Telephone Station")] 
-		RadioTelephoneStation = 19,
-		[System.ComponentModel.Description("An AIS shore station for use by competent authorities to provide AIS service, manage the data link and enable effective ship to shore / shore to ship transmission of information.")]
-		[EnumMember(Value = "AIS Base Station")] 
-		AisBaseStation = 20,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
-	}
-
-	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-	[System.Serializable()]
-	public enum categoryOfRescueStation : int {
-		[System.ComponentModel.Description("A place where equipment for saving life at sea is maintained; the type of lifeboat may vary from fast, long distance boats to inflatable inshore boats.")]
-		[EnumMember(Value = "Rescue Station with Lifeboat")] 
-		RescueStationWithLifeboat = 1,
-		[System.ComponentModel.Description("A life saving station equipped with line-carrying rocket apparatus.")]
-		[EnumMember(Value = "Rescue Station with Rocket")] 
-		RescueStationWithRocket = 2,
-		[System.ComponentModel.Description("Shelter or protection from danger or distress at sea.")]
-		[EnumMember(Value = "Refuge for Shipwrecked Mariners")] 
-		RefugeForShipwreckedMariners = 4,
-		[System.ComponentModel.Description("Shelter or protection from danger in areas exposed to extreme and sudden tides or tidal streams.")]
-		[EnumMember(Value = "Refuge for Intertidal Area Walkers")] 
-		RefugeForIntertidalAreaWalkers = 5,
-		[System.ComponentModel.Description("A place where a lifeboat is moored ready for use.")]
-		[EnumMember(Value = "Lifeboat Lying at a Mooring")] 
-		LifeboatLyingAtAMooring = 6,
-		[System.ComponentModel.Description("A radio station reserved for emergency situations; might also be a public telephone.")]
-		[EnumMember(Value = "Aid Radio Station")] 
-		AidRadioStation = 7,
-		[System.ComponentModel.Description("A place where first aid equipment is available.")]
-		[EnumMember(Value = "First Aid Equipment")] 
-		FirstAidEquipment = 8,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
-	}
-
-	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-	[System.Serializable()]
-	public enum categoryOfRestrictedArea : int {
-		[System.ComponentModel.Description("The area around an offshore installation within which vessels are prohibited from entering without permission. Special regulations protect installations within a safety zone and vessels of all nationalities are required to respect the zone.")]
-		[EnumMember(Value = "Offshore Safety Zone")] 
-		OffshoreSafetyZone = 1,
-		[System.ComponentModel.Description("A tract of land or water managed so as to preserve its flora, fauna, physical features, etc.")]
-		[EnumMember(Value = "Nature Reserve")] 
-		NatureReserve = 4,
-		[System.ComponentModel.Description("A place where birds are bred and protected.")]
-		[EnumMember(Value = "Bird Sanctuary")] 
-		BirdSanctuary = 5,
-		[System.ComponentModel.Description("A place where wild animals or birds hunted for sport or food are kept undisturbed for private use.")]
-		[EnumMember(Value = "Game Reserve")] 
-		GameReserve = 6,
-		[System.ComponentModel.Description("A place where seals are protected.")]
-		[EnumMember(Value = "Seal Sanctuary")] 
-		SealSanctuary = 7,
-		[System.ComponentModel.Description("An area, usually about two cables diameter, within which ships' magnetic fields may be measured; sensing instruments and cables are installed on the seabed in the range and there are cables leading from the range to a control position ashore.")]
-		[EnumMember(Value = "Degaussing Range")] 
-		DegaussingRange = 8,
-		[System.ComponentModel.Description("An area controlled by the military in which restrictions may apply.")]
-		[EnumMember(Value = "Military Area")] 
-		MilitaryArea = 9,
-		[System.ComponentModel.Description("An area around certain wrecks of historical importance to protect the wrecks from unauthorized interference by diving, salvage or deposition (including anchoring).")]
-		[EnumMember(Value = "Historic Wreck Area")] 
-		HistoricWreckArea = 10,
-		[System.ComponentModel.Description("An area around a navigational aid which vessels are prohibited from entering.")]
-		[EnumMember(Value = "Navigational Aid Safety Zone")] 
-		NavigationalAidSafetyZone = 12,
-		[System.ComponentModel.Description("An area laid and maintained with explosive mines for defence or practice purposes.")]
-		[EnumMember(Value = "Minefield")] 
-		Minefield = 14,
-		[System.ComponentModel.Description("An area in which people may swim and therefore vessel movement may be restricted.")]
-		[EnumMember(Value = "Swimming Area")] 
-		SwimmingArea = 18,
-		[System.ComponentModel.Description("An area reserved for vessels waiting to enter a harbour.")]
-		[EnumMember(Value = "Waiting Area")] 
-		WaitingArea = 19,
-		[System.ComponentModel.Description("An area where marine research takes place.")]
-		[EnumMember(Value = "Research Area")] 
-		ResearchArea = 20,
-		[System.ComponentModel.Description("An area where dredging is taking place.")]
-		[EnumMember(Value = "Dredging Area")] 
-		DredgingArea = 21,
-		[System.ComponentModel.Description("A place where fish (including shellfish and crustaceans) are protected.")]
-		[EnumMember(Value = "Fish Sanctuary")] 
-		FishSanctuary = 22,
-		[System.ComponentModel.Description("A tract of land or water managed so as to preserve the relation of plants and living creatures to each other and to their surroundings.")]
-		[EnumMember(Value = "Ecological Reserve")] 
-		EcologicalReserve = 23,
-		[System.ComponentModel.Description("An area in which a vessels' speed must be reduced in order to reduce the size of the wake it produces.")]
-		[EnumMember(Value = "No Wake Area")] 
-		NoWakeArea = 24,
-		[System.ComponentModel.Description("An area where vessels turn.")]
-		[EnumMember(Value = "Swinging Area")] 
-		SwingingArea = 25,
-		[System.ComponentModel.Description("A generic term which may be used to describe a wide range of areas, considered sensitive for a variety of environmental reasons.")]
-		[EnumMember(Value = "Environmentally Sensitive Sea Area")] 
-		EnvironmentallySensitiveSeaArea = 27,
-		[System.ComponentModel.Description("An area that needs special protection through action by IMO because of its significance for regional ecological, socio-economic or scientific reasons and because it may be vulnerable to damage by international shipping activities.")]
-		[EnumMember(Value = "Particularly Sensitive Sea Area")] 
-		ParticularlySensitiveSeaArea = 28,
-		[System.ComponentModel.Description("An area near a fairway where vessels can go to clear the way or make an about turn and possibly return to a waiting area when nautical conditions impose it.")]
-		[EnumMember(Value = "Disengagement Area")] 
-		DisengagementArea = 29,
-		[System.ComponentModel.Description("An area in which defence, law and treaty enforcement, and counter-terrorism activities that fall within the port and maritime domain apply.")]
-		[EnumMember(Value = "Port Security Area")] 
-		PortSecurityArea = 30,
-		[System.ComponentModel.Description("A place where coral is protected.")]
-		[EnumMember(Value = "Coral Sanctuary")] 
-		CoralSanctuary = 31,
-		[System.ComponentModel.Description("An area within which recreational activities regularly take place and therefore vessel movement may be restricted.")]
-		[EnumMember(Value = "Recreation Area")] 
-		RecreationArea = 32,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
-	}
-
-	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-	[System.Serializable()]
-	public enum categoryOfRoad : int {
-		[System.ComponentModel.Description("A limited access dual carriageway road specially designed for fast long-distance traffic and subject to special regulations concerning its use. It may have more than two lanes.")]
-		[EnumMember(Value = "Motorway")] 
-		Motorway = 1,
-		[System.ComponentModel.Description("A hard surfaced (metalled) road; a main through route.")]
-		[EnumMember(Value = "Major Road")] 
-		MajorRoad = 2,
-		[System.ComponentModel.Description("A secondary road for local traffic.")]
-		[EnumMember(Value = "Minor Road")] 
-		MinorRoad = 3,
-		[System.ComponentModel.Description("Track - a rough path or way formed by use. Path - a way or track laid down for walking or made by continual treading.")]
-		[EnumMember(Value = "Track/Path")] 
-		TrackPath = 4,
-		[System.ComponentModel.Description("A main road, in an urban area, for through traffic.")]
-		[EnumMember(Value = "Major Street")] 
-		MajorStreet = 5,
-		[System.ComponentModel.Description("A secondary road, in an urban area, for local traffic.")]
-		[EnumMember(Value = "Minor Street")] 
-		MinorStreet = 6,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
-	}
-
-	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-	[System.Serializable()]
-	public enum categoryOfSchedule : int {
-		[System.ComponentModel.Description("The service, office, is open, fully manned, and operating normally, or the area is accessible as usual.")]
-		[EnumMember(Value = "Normal Operation")] 
-		NormalOperation = 1,
-		[System.ComponentModel.Description("The service, office, or area is closed.")]
-		[EnumMember(Value = "Closure")] 
-		Closure = 2,
-		[System.ComponentModel.Description("The service is available but not manned.")]
-		[EnumMember(Value = "Unmanned Operation")] 
-		UnmannedOperation = 3,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
-	}
-
-	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-	[System.Serializable()]
-	public enum categoryOfSeaArea : int {
-		[System.ComponentModel.Description("A natural or artificial passage or channel through shoals or steep banks, or across a line of banks lying between two channels.")]
-		[EnumMember(Value = "Gat")] 
-		Gat = 2,
-		[System.ComponentModel.Description("An elevation of the seafloor, at depths generally less than 200 m, but sufficient for safe surface navigation, commonly found on the continental shelf or near an island.")]
-		[EnumMember(Value = "Bank")] 
-		Bank = 3,
-		[System.ComponentModel.Description("In oceanography, an obsolete term which was generally restricted to depths greater than 6,000 m.")]
-		[EnumMember(Value = "Deep")] 
-		Deep = 4,
-		[System.ComponentModel.Description("A wide indentation in the coastline generally smaller than a gulf and larger than a cove. For the purposes of the United Nations Convention on the Law of the Sea, a bay is a well-marked indentation whose penetration is in such proportion to the width of its mouth as to contain land locked waters and constitute more than a mere curvature of the coast.")]
-		[EnumMember(Value = "Bay")] 
-		Bay = 5,
-		[System.ComponentModel.Description("A long, deep, asymmetrical depression with relatively steep sides, that is associated with subduction.")]
-		[EnumMember(Value = "Trench")] 
-		Trench = 6,
-		[System.ComponentModel.Description("A depression of the seafloor more or less equidimensional in plan and of variable extent.")]
-		[EnumMember(Value = "Basin")] 
-		Basin = 7,
-		[System.ComponentModel.Description("A level tract of land, as the bed of a dry lake or an area frequently uncovered at low tide. Usually in plural.")]
-		[EnumMember(Value = "Mud Flats")] 
-		MudFlats = 8,
-		[System.ComponentModel.Description("A shallow elevation composed of consolidated material that may constitute a hazard to surface navigation.")]
-		[EnumMember(Value = "Reef")] 
-		Reef = 9,
-		[System.ComponentModel.Description("A rocky formation continuous with and fringing the shore.")]
-		[EnumMember(Value = "Ledge")] 
-		Ledge = 10,
-		[System.ComponentModel.Description("An elongated, narrow, steep-sided depression that generally deepens down-slope.")]
-		[EnumMember(Value = "Canyon")] 
-		Canyon = 11,
-		[System.ComponentModel.Description("A navigable narrow part of a bay, strait, river, etc.")]
-		[EnumMember(Value = "Narrows")] 
-		Narrows = 12,
-		[System.ComponentModel.Description("A shallow elevation composed of unconsolidated material that may constitute a hazard to surface navigation.")]
-		[EnumMember(Value = "Shoal")] 
-		Shoal = 13,
-		[System.ComponentModel.Description("A distinct elevation with a rounded profile less than 1000m above the surrounding relief as measured from the deepest isobath that surrounds most of the feature.")]
-		[EnumMember(Value = "Knoll")] 
-		Knoll = 14,
-		[System.ComponentModel.Description("An elongated elevation of varying complexity and size, generally having steep sides.")]
-		[EnumMember(Value = "Ridge")] 
-		Ridge = 15,
-		[System.ComponentModel.Description("A distinct generally equidimensional elevation greater than 1000m above the surrounding relief as measured from the deepest isobath that surrounds most of the feature.")]
-		[EnumMember(Value = "Seamount")] 
-		Seamount = 16,
-		[System.ComponentModel.Description("Any high tower or spire-shaped pillar or rock or coral, alone or cresting a summit. It may extend above the surface of the water. It may or may not be a hazard to surface navigation.")]
-		[EnumMember(Value = "Pinnacle")] 
-		Pinnacle = 17,
-		[System.ComponentModel.Description("An extensive, flat, gently sloping or nearly level region at abyssal depths.")]
-		[EnumMember(Value = "Abyssal Plain")] 
-		AbyssalPlain = 18,
-		[System.ComponentModel.Description("A large, relatively flat elevation that is higher than the surrounding relief with one or more relatively steep sides.")]
-		[EnumMember(Value = "Plateau")] 
-		Plateau = 19,
-		[System.ComponentModel.Description("A subordinate ridge protruding from a larger feature.")]
-		[EnumMember(Value = "Spur")] 
-		Spur = 20,
-		[System.ComponentModel.Description("The flat or gently sloping region adjacent to a continent or around an island that extends from the low water line to a depth, generally about 200m, where there is a marked increase in downward slope.")]
-		[EnumMember(Value = "Shelf")] 
-		Shelf = 21,
-		[System.ComponentModel.Description("A long depression generally wide and flat bottomed with symmetrical and parallel sides.")]
-		[EnumMember(Value = "Trough")] 
-		Trough = 22,
-		[System.ComponentModel.Description("A broad pass or col in a ridge, rise or other elevation.")]
-		[EnumMember(Value = "Saddle")] 
-		Saddle = 23,
-		[System.ComponentModel.Description("An isolated small elevation on the deep seafloor.")]
-		[EnumMember(Value = "Abyssal Hill")] 
-		AbyssalHill = 24,
-		[System.ComponentModel.Description("A gently dipping slope, with a smooth surface, commonly found around groups of islands and seamounts.")]
-		[EnumMember(Value = "Apron")] 
-		Apron = 25,
-		[System.ComponentModel.Description("A gentle slope with a generally smooth surface of the seafloor, characteristically found around groups of islands or seamounts.")]
-		[EnumMember(Value = "Archipelagic Apron")] 
-		ArchipelagicApron = 26,
-		[System.ComponentModel.Description("A region adjacent to a continent, normally occupied by or bordering a shelf and sometimes emerging as islands, that is irregular or blocky in plan or profile, with depths well in excess of those typical of a shelf.")]
-		[EnumMember(Value = "Borderland")] 
-		Borderland = 27,
-		[System.ComponentModel.Description("The zone, generally consisting of shelf, slope and continental rise, separating the continent from the deep seafloor or abyssal plain or plain. Occasionally a trench may be present in place of a continental rise.")]
-		[EnumMember(Value = "Continental Margin")] 
-		ContinentalMargin = 28,
-		[System.ComponentModel.Description("A gentle slope rising from the oceanic depths towards the foot of a continental slope.")]
-		[EnumMember(Value = "Continental Rise")] 
-		ContinentalRise = 29,
-		[System.ComponentModel.Description("An elongated, characteristically linear, steep slope separating horizontal or gently sloping areas of the seafloor.")]
-		[EnumMember(Value = "Escarpment")] 
-		Escarpment = 30,
-		[System.ComponentModel.Description("A relatively smooth, depositional feature continuously deepening away from a sediment source commonly located at the lower termination of a canyon or canyon system.")]
-		[EnumMember(Value = "Fan")] 
-		Fan = 31,
-		[System.ComponentModel.Description("A long narrow zone of irregular topography formed by the movement of tectonic plates associated with an offset of a spreading ridge axis, characterized by steep-sided and/or asymmetrical ridges, troughs or escarpments.")]
-		[EnumMember(Value = "Fracture Zone")] 
-		FractureZone = 32,
-		[System.ComponentModel.Description("A narrow break in a ridge, rise or other elevation.")]
-		[EnumMember(Value = "Gap")] 
-		Gap = 33,
-		[System.ComponentModel.Description("A seamount having a comparatively smooth flat top.")]
-		[EnumMember(Value = "Guyot")] 
-		Guyot = 34,
-		[System.ComponentModel.Description("A distinct elevation generally of irregular shape, less than 1000m above the surrounding relief as measured from the deepest isobath that surrounds most of the feature.")]
-		[EnumMember(Value = "Hill")] 
-		Hill = 35,
-		[System.ComponentModel.Description("A depression of limited extent with all sides rising steeply from a relatively flat bottom.")]
-		[EnumMember(Value = "Hole")] 
-		Hole = 36,
-		[System.ComponentModel.Description("A depositional embankment bordering a canyon, valley or sea channel.")]
-		[EnumMember(Value = "Levee")] 
-		Levee = 37,
-		[System.ComponentModel.Description("The axial depression of the mid-oceanic ridge system.")]
-		[EnumMember(Value = "Median Valley")] 
-		MedianValley = 38,
-		[System.ComponentModel.Description("An annular or partially annular depression commonly located at the base of seamounts, islands and other isolated elevations.")]
-		[EnumMember(Value = "Moat")] 
-		Moat = 39,
-		[System.ComponentModel.Description("A natural elevation of the earth's surface rising more or less abruptly from the surrounding level, and attaining an altitude which, relatively to adjacent elevations, is impressive or notable.")]
-		[EnumMember(Value = "Mountains")] 
-		Mountains = 40,
-		[System.ComponentModel.Description("A conical or pointed elevation on a larger feature such as a seamount.")]
-		[EnumMember(Value = "Peak")] 
-		Peak = 41,
-		[System.ComponentModel.Description("A geographically distinct region with a number of shared physiographic characteristics that contrast with those in the surrounding areas. This term should be modified with the generic term that best describes the majority of features in the region, for example \"Seamount\" in Baja California Seamount Province.")]
-		[EnumMember(Value = "Province")] 
-		Province = 42,
-		[System.ComponentModel.Description("A broad elevation that generally rises gently and smoothly from the surrounding relief.")]
-		[EnumMember(Value = "Rise")] 
-		Rise = 43,
-		[System.ComponentModel.Description("An elongated, meandering depression, usually occurring on a gently sloping plain or fan.")]
-		[EnumMember(Value = "Sea Channel")] 
-		SeaChannel = 44,
-		[System.ComponentModel.Description("Several seamounts in linear or arcuate alignment.")]
-		[EnumMember(Value = "Seamount Chain")] 
-		SeamountChain = 45,
-		[System.ComponentModel.Description("The line along which there is a marked increase in slope at the seaward margin of a shelf.")]
-		[EnumMember(Value = "Shelf-Edge")] 
-		ShelfEdge = 46,
-		[System.ComponentModel.Description("A relatively shallow barrier between BASINS that may inhibit water movement.")]
-		[EnumMember(Value = "Sill")] 
-		Sill = 47,
-		[System.ComponentModel.Description("The sloping region that deepens from a shelf to the point where there is a general decrease in gradient.")]
-		[EnumMember(Value = "Slope")] 
-		Slope = 48,
-		[System.ComponentModel.Description("A flat or gently sloping region, generally long and narrow, bounded along one edge by a steeper descending slope and along the other by a steeper ascending slope.")]
-		[EnumMember(Value = "Terrace")] 
-		Terrace = 49,
-		[System.ComponentModel.Description("An elongated depression that generally widens and deepens down-slope.")]
-		[EnumMember(Value = "Valley")] 
-		Valley = 50,
-		[System.ComponentModel.Description("An artificial waterway with no flow, or a controlled flow, used for navigation, or for draining or irrigating land (ditch).")]
-		[EnumMember(Value = "Canal")] 
-		Canal = 51,
-		[System.ComponentModel.Description("A large body of water entirely surrounded by land.")]
-		[EnumMember(Value = "Lake")] 
-		Lake = 52,
-		[System.ComponentModel.Description("A relatively large natural stream of water.")]
-		[EnumMember(Value = "River")] 
-		River = 53,
-		[System.ComponentModel.Description("A straight section of a river, especially a navigable river between two bends; or an arm of the sea extending into the land.")]
-		[EnumMember(Value = "Reach")] 
-		Reach = 54,
-		[System.ComponentModel.Description("A low, flat island of sand, coral, etc. awash or submerged at high water.")]
-		[EnumMember(Value = "Intertidal Cay")] 
-		IntertidalCay = 55,
-		[System.ComponentModel.Description("A seabed volcano, submerged at the chart sounding datum, which may or may not be active.")]
-		[EnumMember(Value = "Submarine Volcano")] 
-		SubmarineVolcano = 56,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
-	}
-
-	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-	[System.Serializable()]
-	public enum categoryOfShorelineConstruction : int {
-		[System.ComponentModel.Description("A structure protecting a shore area, harbour, anchorage, or basin from waves.")]
-		[EnumMember(Value = "Breakwater")] 
-		Breakwater = 1,
-		[System.ComponentModel.Description("A low artificial wall-like structure of durable material extending from the land to seaward for a particular purpose, such as to protect the coast or to force a current to scour a channel.")]
-		[EnumMember(Value = "Groyne")] 
-		Groyne = 2,
-		[System.ComponentModel.Description("A form of breakwater alongside which vessels may lie on the sheltered side only; in some cases it may lie entirely within an artificial harbour, permitting vessels to lie along both sides.")]
-		[EnumMember(Value = "Mole")] 
-		Mole = 3,
-		[System.ComponentModel.Description("A long, narrow structure extending into the water to afford a berthing place for vessels, to serve as a promenade, etc.")]
-		[EnumMember(Value = "Pier (Jetty)")] 
-		PierJetty = 4,
-		[System.ComponentModel.Description("A pier built only for recreational purposes.")]
-		[EnumMember(Value = "Promenade Pier")] 
-		PromenadePier = 5,
-		[System.ComponentModel.Description("A structure serving as a berthing place for vessels.")]
-		[EnumMember(Value = "Wharf")] 
-		Wharf = 6,
-		[System.ComponentModel.Description("A wall or bank, often submerged, built to direct or confine the flow of a river or tidal current, or to promote a scour action.")]
-		[EnumMember(Value = "Training Wall")] 
-		TrainingWall = 7,
-		[System.ComponentModel.Description("A layer of broken rock, cobbles, boulders, or fragments of sufficient size to resist the erosive forces of flowing water and wave action.")]
-		[EnumMember(Value = "Rip Rap")] 
-		RipRap = 8,
-		[System.ComponentModel.Description("Facing of stone or other material, either permanent or temporary, placed along the edge of a stream, river or canal to stabilize the bank and to protect it from the erosive action of the stream.")]
-		[EnumMember(Value = "Revetment")] 
-		Revetment = 9,
-		[System.ComponentModel.Description("An embankment or wall for protection against waves or tidal action along a shore or water front.")]
-		[EnumMember(Value = "Sea Wall")] 
-		SeaWall = 10,
-		[System.ComponentModel.Description("Steps at the shoreline as the connection between land and water on different levels.")]
-		[EnumMember(Value = "Landing Steps")] 
-		LandingSteps = 11,
-		[System.ComponentModel.Description("A sloping structure which may include rails that can either be used, as a landing place, at variable water levels, for small vessels, landing ships, or a ferry boat, or for hauling a cradle carrying a vessel.")]
-		[EnumMember(Value = "Ramp")] 
-		Ramp = 12,
-		[System.ComponentModel.Description("The prepared and usually reinforced inclined surface on which keel- and bilge-blocks are laid for supporting a vessel under construction.")]
-		[EnumMember(Value = "Slipway")] 
-		Slipway = 13,
-		[System.ComponentModel.Description("A protective structure designed to cushion the impact of a vessel and prevent damage.")]
-		[EnumMember(Value = "Fender")] 
-		Fender = 14,
-		[System.ComponentModel.Description("A wharf consisting of a solid wall of concrete, masonry, wood etc., such that the water cannot circulate freely under the wharf. The type of construction affects ship-handling; for example, a solid face wharf may give shelter from tidal streams, but under certain circumstances a cushion of water may build up between such a wharf and a ship attempting to berth at it, causing difficulties in ship handling.")]
-		[EnumMember(Value = "Solid Face Wharf")] 
-		SolidFaceWharf = 15,
-		[System.ComponentModel.Description("A wharf supported on piles or other structures which allow free circulation of water under the wharf.")]
-		[EnumMember(Value = "Open Face Wharf")] 
-		OpenFaceWharf = 16,
-		[System.ComponentModel.Description("An inclined plane used to dump logs into the water for transport, or to haul logs out of the water for processing.")]
-		[EnumMember(Value = "Log Ramp")] 
-		LogRamp = 17,
-		[System.ComponentModel.Description("An artificial pool or swimming enclosure, especially one in the open air, which may be constructed of wire mesh or heavy netting supported by cables, buoys or piles, for swimming in.")]
-		[EnumMember(Value = "Swimming Facility")] 
-		SwimmingFacility = 20,
-		[System.ComponentModel.Description("A wharf approximately parallel to the shoreline and accommodating ships on one side only, the other side being attached to the shore. It is usually of solid construction, as contrasted with the open pile construction usually used for piers.")]
-		[EnumMember(Value = "Quay")] 
-		Quay = 22,
-		[System.ComponentModel.Description("A section of wall designated for tying-up vessels awaiting transit. Bollards and mooring devices are available for both large and small ships.")]
-		[EnumMember(Value = "Tie-Up Wall")] 
-		TieUpWall = 23,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
-	}
-
-	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-	[System.Serializable()]
-	public enum categoryOfSignalStationTraffic : int {
-		[System.ComponentModel.Description("A signal station for the control of vessels within a port.")]
-		[EnumMember(Value = "Port Control")] 
-		PortControl = 1,
-		[System.ComponentModel.Description("A signal station for the control of vessels entering or leaving a port.")]
-		[EnumMember(Value = "Port Entry and Departure")] 
-		PortEntryAndDeparture = 2,
-		[System.ComponentModel.Description("A signal station displaying International Port Traffic signals.")]
-		[EnumMember(Value = "International Port Traffic")] 
-		InternationalPortTraffic = 3,
-		[System.ComponentModel.Description("A signal station for the control of vessels when berthing.")]
-		[EnumMember(Value = "Berthing Signal Station")] 
-		BerthingSignalStation = 4,
-		[System.ComponentModel.Description("A signal station for the control of vessels entering or leaving a dock.")]
-		[EnumMember(Value = "Dock")] 
-		Dock = 5,
-		[System.ComponentModel.Description("A signal station for the control of vessels entering or leaving a lock.")]
-		[EnumMember(Value = "Lock")] 
-		Lock = 6,
-		[System.ComponentModel.Description("A signal station for the control of vessels wishing to pass through a flood control barrage.")]
-		[EnumMember(Value = "Flood Barrage Station")] 
-		FloodBarrageStation = 7,
-		[System.ComponentModel.Description("A signal station for the control of vessels wishing to pass under a bridge.")]
-		[EnumMember(Value = "Bridge Passage")] 
-		BridgePassage = 8,
-		[System.ComponentModel.Description("A signal station indicating when dredging is in progress.")]
-		[EnumMember(Value = "Dredging")] 
-		Dredging = 9,
-		[System.ComponentModel.Description("Visual signal lights placed in a waterway to indicate to shipping the movements authorized at the time at which they are shown.")]
-		[EnumMember(Value = "Traffic Control Light")] 
-		TrafficControlLight = 10,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
-	}
-
-	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-	[System.Serializable()]
-	public enum categoryOfSignalStationWarning : int {
-		[System.ComponentModel.Description("A signal or message warning of the presence of a danger to navigation.")]
-		[EnumMember(Value = "Danger")] 
-		Danger = 1,
-		[System.ComponentModel.Description("A signal or message warning of the presence of a maritime obstruction.")]
-		[EnumMember(Value = "Maritime Obstruction")] 
-		MaritimeObstruction = 2,
-		[System.ComponentModel.Description("A signal or message warning of the presence of a cable.")]
-		[EnumMember(Value = "Cable")] 
-		Cable = 3,
-		[System.ComponentModel.Description("A signal or message warning of activity in a military practice area.")]
-		[EnumMember(Value = "Military Practice")] 
-		MilitaryPractice = 4,
-		[System.ComponentModel.Description("A station that may receive or transmit distress signals.")]
-		[EnumMember(Value = "Distress")] 
-		Distress = 5,
-		[System.ComponentModel.Description("A visual signal displayed to indicate a weather forecast.")]
-		[EnumMember(Value = "Weather")] 
-		Weather = 6,
-		[System.ComponentModel.Description("A signal or message conveying information about storm conditions.")]
-		[EnumMember(Value = "Storm")] 
-		Storm = 7,
-		[System.ComponentModel.Description("A signal or message conveying information about ice conditions.")]
-		[EnumMember(Value = "Ice Warning")] 
-		IceWarning = 8,
-		[System.ComponentModel.Description("An accurate signal marking a specified time or time interval. It is used primarily for determining errors of timepieces. Such signals are usually sent from an observatory by radio, but visual signals are used at some ports.")]
-		[EnumMember(Value = "Time")] 
-		Time = 9,
-		[System.ComponentModel.Description("A signal or message conveying information on tidal conditions in the area in question.")]
-		[EnumMember(Value = "Tide")] 
-		Tide = 10,
-		[System.ComponentModel.Description("A signal or message conveying information on condition of tidal currents in the area in question.")]
-		[EnumMember(Value = "Tidal Stream")] 
-		TidalStream = 11,
-		[System.ComponentModel.Description("A device for measuring the height of tide. A graduated staff in a sheltered area where visual observations can be made; or it may consist of an elaborate recording instrument making a continuous graphic record of tide height against time. Such an instrument is usually actuated by a float in a pipe communicating with the sea through a small hole which filters out shorter waves.")]
-		[EnumMember(Value = "Tide Gauge")] 
-		TideGauge = 12,
-		[System.ComponentModel.Description("A visual scale which directly shows the height of the water above chart datum or a local datum.")]
-		[EnumMember(Value = "Tide Scale")] 
-		TideScale = 13,
-		[System.ComponentModel.Description("A signal or message warning of diving activity.")]
-		[EnumMember(Value = "Diving")] 
-		Diving = 14,
-		[System.ComponentModel.Description("A device for measuring and conveying information about the water level (non-tidal) in the area in question.")]
-		[EnumMember(Value = "Water Level Gauge")] 
-		WaterLevelGauge = 15,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
-	}
-
-	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-	[System.Serializable()]
-	public enum categoryOfSiloTank : int {
-		[System.ComponentModel.Description("A large storage structure used for storing loose materials.")]
-		[EnumMember(Value = "Silo in General")] 
-		SiloInGeneral = 1,
-		[System.ComponentModel.Description("A fixed structure for storing liquids.")]
-		[EnumMember(Value = "Tank in General")] 
-		TankInGeneral = 2,
-		[System.ComponentModel.Description("A storage building for grain. Usually a tall frame, metal or concrete structure with an especially compartmented interior.")]
-		[EnumMember(Value = "Grain Elevator")] 
-		GrainElevator = 3,
-		[System.ComponentModel.Description("A tower supporting an elevated storage tank of water.")]
-		[EnumMember(Value = "Water Tower")] 
-		WaterTower = 4,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
-	}
-
-	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-	[System.Serializable()]
-	public enum categoryOfSlope : int {
-		[System.ComponentModel.Description("An excavation through high ground for a road, canal, etc.")]
-		[EnumMember(Value = "Cutting")] 
-		Cutting = 1,
-		[System.ComponentModel.Description("A man-made raised long mound of earth or other material.")]
-		[EnumMember(Value = "Embankment")] 
-		Embankment = 2,
-		[System.ComponentModel.Description("A mound, ridge or hill of drifted material on the sea coast or in a desert.")]
-		[EnumMember(Value = "Dune")] 
-		Dune = 3,
-		[System.ComponentModel.Description("A small isolated elevation, smaller than a mountain.")]
-		[EnumMember(Value = "Hill")] 
-		Hill = 4,
-		[System.ComponentModel.Description("A dome-shaped hill formed in a permafrost area when the hydrostatic pressure of freezing ground water causes the upheaval of a layer of frozen ground.")]
-		[EnumMember(Value = "Pingo")] 
-		Pingo = 5,
-		[System.ComponentModel.Description("Land rising abruptly for a considerable distance above the water or surrounding land.")]
-		[EnumMember(Value = "Cliff")] 
-		Cliff = 6,
-		[System.ComponentModel.Description("A mass of detritus, forming a precipitous, strong slope upon a mountain-side. Also the material composing such a slope.")]
-		[EnumMember(Value = "Scree")] 
-		Scree = 7,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
-	}
-
-	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-	[System.Serializable()]
-	public enum categoryOfSmallCraftFacility : int {
-		[System.ComponentModel.Description("A berth set aside for the use of visiting vessels.")]
-		[EnumMember(Value = "Visitors Berth")] 
-		VisitorsBerth = 1,
-		[System.ComponentModel.Description("A club for mariners generally associated with other small craft facilities.")]
-		[EnumMember(Value = "Nautical Club")] 
-		NauticalClub = 2,
-		[System.ComponentModel.Description("A hoist for lifting boats out of the water.")]
-		[EnumMember(Value = "Boat Hoist")] 
-		BoatHoist = 3,
-		[System.ComponentModel.Description("A place where sails are made or may be taken for repair.")]
-		[EnumMember(Value = "Sailmaker")] 
-		Sailmaker = 4,
-		[System.ComponentModel.Description("A place on shore where boats may be built, stored and repaired.")]
-		[EnumMember(Value = "Boatyard")] 
-		Boatyard = 5,
-		[System.ComponentModel.Description("A public house providing food, drink and accommodation.")]
-		[EnumMember(Value = "Public Inn")] 
-		PublicInn = 6,
-		[System.ComponentModel.Description("A commercial establishment serving food.")]
-		[EnumMember(Value = "Restaurant")] 
-		Restaurant = 7,
-		[System.ComponentModel.Description("A dealer in ships' supplies.")]
-		[EnumMember(Value = "Chandler")] 
-		Chandler = 8,
-		[System.ComponentModel.Description("A place where food and other such supplies are available.")]
-		[EnumMember(Value = "Provisions")] 
-		Provisions = 9,
-		[System.ComponentModel.Description("A place where a doctor is available to provide medical attention.")]
-		[EnumMember(Value = "Doctor")] 
-		Doctor = 10,
-		[System.ComponentModel.Description("A place where medical drugs are dispensed.")]
-		[EnumMember(Value = "Pharmacy")] 
-		Pharmacy = 11,
-		[System.ComponentModel.Description("A place where fresh water is available.")]
-		[EnumMember(Value = "Water Tap")] 
-		WaterTap = 12,
-		[System.ComponentModel.Description("A place where fuel is available.")]
-		[EnumMember(Value = "Fuel Station")] 
-		FuelStation = 13,
-		[System.ComponentModel.Description("A place where a connection to an electrical supply is available.")]
-		[EnumMember(Value = "Electricity Outlet")] 
-		ElectricityOutlet = 14,
-		[System.ComponentModel.Description("A place where bottled gas is available.")]
-		[EnumMember(Value = "Bottle Gas")] 
-		BottleGas = 15,
-		[System.ComponentModel.Description("A place where showers are available.")]
-		[EnumMember(Value = "Showers")] 
-		Showers = 16,
-		[System.ComponentModel.Description("A place where there are facilities for washing clothes.")]
-		[EnumMember(Value = "Launderette")] 
-		Launderette = 17,
-		[System.ComponentModel.Description("A place where toilets are available for public use.")]
-		[EnumMember(Value = "Public Toilets")] 
-		PublicToilets = 18,
-		[System.ComponentModel.Description("A place where mail may be posted.")]
-		[EnumMember(Value = "Post Box")] 
-		PostBox = 19,
-		[System.ComponentModel.Description("A place where a telephone is available for public use.")]
-		[EnumMember(Value = "Public Telephone")] 
-		PublicTelephone = 20,
-		[System.ComponentModel.Description("A place where refuse may be dumped.")]
-		[EnumMember(Value = "Refuse Bin")] 
-		RefuseBin = 21,
-		[System.ComponentModel.Description("A place where cars may be parked.")]
-		[EnumMember(Value = "Car Park")] 
-		CarPark = 22,
-		[System.ComponentModel.Description("A place on shore where boats and/or trailers may be parked.")]
-		[EnumMember(Value = "Parking for Boats and Trailers")] 
-		ParkingForBoatsAndTrailers = 23,
-		[System.ComponentModel.Description("A place where caravans may be parked or where caravan accommodation is provided.")]
-		[EnumMember(Value = "Caravan Site")] 
-		CaravanSite = 24,
-		[System.ComponentModel.Description("A place where visitors may pitch tents and camp.")]
-		[EnumMember(Value = "Camping Site")] 
-		CampingSite = 25,
-		[System.ComponentModel.Description("A place where sewage may be pumped off a vessel.")]
-		[EnumMember(Value = "Sewage Pump-Out Station")] 
-		SewagePumpOutStation = 26,
-		[System.ComponentModel.Description("A place where a telephone is available for emergency use only.")]
-		[EnumMember(Value = "Emergency Telephone")] 
-		EmergencyTelephone = 27,
-		[System.ComponentModel.Description("A place where boats may be landed or launched.")]
-		[EnumMember(Value = "Landing/Launching Place for Boats")] 
-		LandingLaunchingPlaceForBoats = 28,
-		[System.ComponentModel.Description("A place where vessels may berth for the purpose of careening.")]
-		[EnumMember(Value = "Scrubbing Berth")] 
-		ScrubbingBerth = 30,
-		[System.ComponentModel.Description("A place where people may go to eat a picnic.")]
-		[EnumMember(Value = "Picnic Area")] 
-		PicnicArea = 31,
-		[System.ComponentModel.Description("A place where mechanical repairs can be undertaken to engines or other vessel equipment.")]
-		[EnumMember(Value = "Mechanics Workshop")] 
-		MechanicsWorkshop = 32,
-		[System.ComponentModel.Description("A place where a vessel is patrolled by a security service or stored in a secure lockup.")]
-		[EnumMember(Value = "Guard and/or Security Service")] 
-		GuardAndOrSecurityService = 33,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
-	}
-
-	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-	[System.Serializable()]
-	public enum categoryOfSpecialPurposeMark : int {
-		[System.ComponentModel.Description("A mark used to indicate a firing danger area, usually at sea.")]
-		[EnumMember(Value = "Firing Danger Mark")] 
-		FiringDangerMark = 1,
-		[System.ComponentModel.Description("Any object toward which something is directed. The distinctive marking or instrumentation of a ground point to aid its identification on a photograph.")]
-		[EnumMember(Value = "Target Mark")] 
-		TargetMark = 2,
-		[System.ComponentModel.Description("A mark marking the position of a ship which is used as a target during some military exercise.")]
-		[EnumMember(Value = "Marker Ship Mark")] 
-		MarkerShipMark = 3,
-		[System.ComponentModel.Description("A mark used to indicate a degaussing range.")]
-		[EnumMember(Value = "Degaussing Range Mark")] 
-		DegaussingRangeMark = 4,
-		[System.ComponentModel.Description("A mark of relevance to barges.")]
-		[EnumMember(Value = "Barge Mark")] 
-		BargeMark = 5,
-		[System.ComponentModel.Description("A mark used to indicate the position of submarine cables or the point at which they run on to the land.")]
-		[EnumMember(Value = "Cable Mark")] 
-		CableMark = 6,
-		[System.ComponentModel.Description("A mark used to indicate the limit of a spoil ground.")]
-		[EnumMember(Value = "Spoil Ground Mark")] 
-		SpoilGroundMark = 7,
-		[System.ComponentModel.Description("A mark used to indicate the position of an outfall or the point at which it leaves the land.")]
-		[EnumMember(Value = "Outfall Mark")] 
-		OutfallMark = 8,
-		[System.ComponentModel.Description("Ocean Data Acquisition System.")]
-		[EnumMember(Value = "ODAS")] 
-		Odas = 9,
-		[System.ComponentModel.Description("A mark used to record data for scientific purposes.")]
-		[EnumMember(Value = "Recording Mark")] 
-		RecordingMark = 10,
-		[System.ComponentModel.Description("A mark used to indicate a seaplane anchorage.")]
-		[EnumMember(Value = "Seaplane Anchorage Mark")] 
-		SeaplaneAnchorageMark = 11,
-		[System.ComponentModel.Description("A mark used to indicate a recreation zone.")]
-		[EnumMember(Value = "Recreation Zone Mark")] 
-		RecreationZoneMark = 12,
-		[System.ComponentModel.Description("A mark indicating a mooring or moorings.")]
-		[EnumMember(Value = "Mooring Mark")] 
-		MooringMark = 14,
-		[System.ComponentModel.Description("A large buoy designed to take the place of a lightship where construction of an offshore light station is not feasible.")]
-		[EnumMember(Value = "LANBY")] 
-		Lanby = 15,
-		[System.ComponentModel.Description("Aids to navigation or other indicators so located as to indicate the path to be followed. Leading marks identify a leading line when they are in transit.")]
-		[EnumMember(Value = "Leading Mark")] 
-		LeadingMark = 16,
-		[System.ComponentModel.Description("A mark forming part of a transit indicating one end of a measured distance.")]
-		[EnumMember(Value = "Measured Distance Mark")] 
-		MeasuredDistanceMark = 17,
-		[System.ComponentModel.Description("A notice board or sign indicating information to the mariner.")]
-		[EnumMember(Value = "Notice Mark")] 
-		NoticeMark = 18,
-		[System.ComponentModel.Description("A mark indicating a Traffic Separation Scheme.")]
-		[EnumMember(Value = "TSS Mark")] 
-		TssMark = 19,
-		[System.ComponentModel.Description("A mark indicating an anchoring prohibited area.")]
-		[EnumMember(Value = "Anchoring Prohibited Mark")] 
-		AnchoringProhibitedMark = 20,
-		[System.ComponentModel.Description("A mark indicating that berthing is prohibited.")]
-		[EnumMember(Value = "Berthing Prohibited Mark")] 
-		BerthingProhibitedMark = 21,
-		[System.ComponentModel.Description("A mark indicating that overtaking is prohibited.")]
-		[EnumMember(Value = "Overtaking Prohibited Mark")] 
-		OvertakingProhibitedMark = 22,
-		[System.ComponentModel.Description("A mark indicating a one-way route.")]
-		[EnumMember(Value = "Two-Way Traffic Prohibited Mark")] 
-		TwoWayTrafficProhibitedMark = 23,
-		[System.ComponentModel.Description("A mark indicating that vessels must not generate excessive wake.")]
-		[EnumMember(Value = "Reduced Wake Mark")] 
-		ReducedWakeMark = 24,
-		[System.ComponentModel.Description("A mark indicating that a speed limit applies.")]
-		[EnumMember(Value = "Speed Limit Mark")] 
-		SpeedLimitMark = 25,
-		[System.ComponentModel.Description("A mark indicating the place where the bow of a ship must stop when traffic lights show red.")]
-		[EnumMember(Value = "Stop Mark")] 
-		StopMark = 26,
-		[System.ComponentModel.Description("A mark indicating that special caution must be exercised in the vicinity of the mark.")]
-		[EnumMember(Value = "General Warning Mark")] 
-		GeneralWarningMark = 27,
-		[System.ComponentModel.Description("A mark indicating that a ship should sound its siren or horn.")]
-		[EnumMember(Value = "Sound Ship's Siren Mark")] 
-		SoundShipSSirenMark = 28,
-		[System.ComponentModel.Description("A mark indicating the minimum vertical space available for passage.")]
-		[EnumMember(Value = "Restricted Vertical Clearance Mark")] 
-		RestrictedVerticalClearanceMark = 29,
-		[System.ComponentModel.Description("A mark indicating the maximum draught of vessel permitted.")]
-		[EnumMember(Value = "Maximum Vessel's Draught Mark")] 
-		MaximumVesselSDraughtMark = 30,
-		[System.ComponentModel.Description("A mark indicating the minimum horizontal space available for passage.")]
-		[EnumMember(Value = "Restricted Horizontal Clearance Mark")] 
-		RestrictedHorizontalClearanceMark = 31,
-		[System.ComponentModel.Description("A mark warning of strong currents.")]
-		[EnumMember(Value = "Strong Current Warning Mark")] 
-		StrongCurrentWarningMark = 32,
-		[System.ComponentModel.Description("A mark indicating that berthing is allowed.")]
-		[EnumMember(Value = "Berthing Permitted Mark")] 
-		BerthingPermittedMark = 33,
-		[System.ComponentModel.Description("A mark indicating an overhead power cable.")]
-		[EnumMember(Value = "Overhead Power Cable Mark")] 
-		OverheadPowerCableMark = 34,
-		[System.ComponentModel.Description("A mark indicating the gradient of the slope of a dredge channel edge.")]
-		[EnumMember(Value = "Channel Edge Gradient Mark")] 
-		ChannelEdgeGradientMark = 35,
-		[System.ComponentModel.Description("A mark indicating the presence of a telephone.")]
-		[EnumMember(Value = "Telephone Mark")] 
-		TelephoneMark = 36,
-		[System.ComponentModel.Description("A mark indicating that a ferry route crosses the ship route; often used with a 'sound ship's siren' mark.")]
-		[EnumMember(Value = "Ferry Crossing Mark")] 
-		FerryCrossingMark = 37,
-		[System.ComponentModel.Description("A mark used to indicate the position of submarine pipelines or the point at which they run on to the land.")]
-		[EnumMember(Value = "Pipeline Mark")] 
-		PipelineMark = 39,
-		[System.ComponentModel.Description("A mark indicating an anchorage area.")]
-		[EnumMember(Value = "Anchorage Mark")] 
-		AnchorageMark = 40,
-		[System.ComponentModel.Description("A mark used to indicate a clearing line.")]
-		[EnumMember(Value = "Clearing Mark")] 
-		ClearingMark = 41,
-		[System.ComponentModel.Description("A mark indicating the location at which a restriction or requirement exists.")]
-		[EnumMember(Value = "Control Mark")] 
-		ControlMark = 42,
-		[System.ComponentModel.Description("A mark indicating that diving may take place in the vicinity.")]
-		[EnumMember(Value = "Diving Mark")] 
-		DivingMark = 43,
-		[System.ComponentModel.Description("A mark providing or indicating a place of safety.")]
-		[EnumMember(Value = "Refuge Beacon")] 
-		RefugeBeacon = 44,
-		[System.ComponentModel.Description("A mark indicating a foul ground.")]
-		[EnumMember(Value = "Foul Ground Mark")] 
-		FoulGroundMark = 45,
-		[System.ComponentModel.Description("A mark installed for use by yachtsmen.")]
-		[EnumMember(Value = "Yachting Mark")] 
-		YachtingMark = 46,
-		[System.ComponentModel.Description("A mark indicating an area where helicopters may land.")]
-		[EnumMember(Value = "Heliport Mark")] 
-		HeliportMark = 47,
-		[System.ComponentModel.Description("A mark indicating a location at which a GNSS position has been accurately determined.")]
-		[EnumMember(Value = "GNSS Mark")] 
-		GnssMark = 48,
-		[System.ComponentModel.Description("A mark indicating an area where seaplanes land.")]
-		[EnumMember(Value = "Seaplane Landing Mark")] 
-		SeaplaneLandingMark = 49,
-		[System.ComponentModel.Description("A mark indicating that entry is prohibited.")]
-		[EnumMember(Value = "Entry Prohibited Mark")] 
-		EntryProhibitedMark = 50,
-		[System.ComponentModel.Description("A mark indicating that work (generally construction) is in progress.")]
-		[EnumMember(Value = "Work in Progress Mark")] 
-		WorkInProgressMark = 51,
-		[System.ComponentModel.Description("A mark whose detailed characteristics are unknown.")]
-		[EnumMember(Value = "Mark With Unknown Purpose")] 
-		MarkWithUnknownPurpose = 52,
-		[System.ComponentModel.Description("A mark indicating a borehole that produces or is capable of producing oil or natural gas.")]
-		[EnumMember(Value = "Wellhead Mark")] 
-		WellheadMark = 53,
-		[System.ComponentModel.Description("A mark indicating the point at which a channel divides separately into two channels.")]
-		[EnumMember(Value = "Channel Separation Mark")] 
-		ChannelSeparationMark = 54,
-		[System.ComponentModel.Description("A mark indicating the existence of a fish, mussel, oyster or pearl farm/culture.")]
-		[EnumMember(Value = "Marine Farm Mark")] 
-		MarineFarmMark = 55,
-		[System.ComponentModel.Description("A mark indicating the existence or the extent of an artificial reef.")]
-		[EnumMember(Value = "Artificial Reef Mark")] 
-		ArtificialReefMark = 56,
-		[System.ComponentModel.Description("A mark, used year round, that may be submerged when ice passes through the area.")]
-		[EnumMember(Value = "Ice Mark")] 
-		IceMark = 57,
-		[System.ComponentModel.Description("A mark used to define the boundary of a nature reserve.")]
-		[EnumMember(Value = "Nature Reserve Mark")] 
-		NatureReserveMark = 58,
-		[System.ComponentModel.Description("A fish aggregating (or aggregation) device (FAD) is a man-made object used to attract ocean going pelagic fish such as marlin, tuna and mahi-mahi (dolphin fish). They usually consist of buoys or floats tethered to the ocean floor with concrete blocks or adrift.")]
-		[EnumMember(Value = "Fish Aggregating Device")] 
-		FishAggregatingDevice = 59,
-		[System.ComponentModel.Description("A mark used to indicate the existence of a wreck.")]
-		[EnumMember(Value = "Wreck Mark")] 
-		WreckMark = 60,
-		[System.ComponentModel.Description("A mark used to indicate the existence of a customs checkpoint.")]
-		[EnumMember(Value = "Customs Mark")] 
-		CustomsMark = 61,
-		[System.ComponentModel.Description("A mark used to indicate the existence of a causeway.")]
-		[EnumMember(Value = "Causeway Mark")] 
-		CausewayMark = 62,
-		[System.ComponentModel.Description("A surface following buoy used to measure wave activity.")]
-		[EnumMember(Value = "Wave Recorder")] 
-		WaveRecorder = 63,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
-	}
-
-	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-	[System.Serializable()]
-	public enum categoryOfTemporalVariation : int {
-		[System.ComponentModel.Description("Indication of the possible impact of a significant event (for example hurricane, earthquake, volcanic eruption, landslide, etc), which is considered likely to have changed the seafloor or landscape significantly.")]
-		[EnumMember(Value = "Extreme Event")] 
-		ExtremeEvent = 1,
-		[System.ComponentModel.Description("Continuous or frequent change (for example river siltation, sand waves, seasonal storms, icebergs, etc) that is likely to result in new significant shoaling.")]
-		[EnumMember(Value = "Likely to Change and Significant Shoaling Expected")] 
-		LikelyToChangeAndSignificantShoalingExpected = 2,
-		[System.ComponentModel.Description("Continuous or frequent change (for example sand wave shift, seasonal storms, icebergs, etc) that is not likely to result in new significant shoaling.")]
-		[EnumMember(Value = "Likely to Change But Significant Shoaling Not Expected")] 
-		LikelyToChangeButSignificantShoalingNotExpected = 3,
-		[System.ComponentModel.Description("Continuous or frequent change to non-bathymetric features (for example river siltation, glacier creep/recession, sand dunes, buoys, marine farms, etc).")]
-		[EnumMember(Value = "Likely to Change")] 
-		LikelyToChange = 4,
-		[System.ComponentModel.Description("Significant change to the seafloor is not expected.")]
-		[EnumMember(Value = "Unlikely to Change")] 
-		UnlikelyToChange = 5,
-		[System.ComponentModel.Description("Not having been assessed.")]
-		[EnumMember(Value = "Unassessed")] 
-		Unassessed = 6,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
-	}
-
-	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-	[System.Serializable()]
-	public enum categoryOfStructure : int {
-		[System.ComponentModel.Description("A building or shed, usually built partly over water, for sheltering a boat or boats.")]
-		[EnumMember(Value = "Boathouse")] 
-		Boathouse = 1,
-		[System.ComponentModel.Description("A covered or partially covered terminal for the handling of bulk materials such as iron ore, coal, etc.")]
-		[EnumMember(Value = "Covered Bulk Terminal")] 
-		CoveredBulkTerminal = 2,
-		[System.ComponentModel.Description("A covered or partially covered structure serving as a berthing place for vessels.")]
-		[EnumMember(Value = "Covered Wharf")] 
-		CoveredWharf = 3,
-		[System.ComponentModel.Description("A covered or partially covered terminal within which the floating equipment (dredges, tugs …) of harbour services are berthed and serviced.")]
-		[EnumMember(Value = "Covered Service Terminal")] 
-		CoveredServiceTerminal = 4,
-		[System.ComponentModel.Description("A covered or partially covered terminal for the loading and unloading of passengers.")]
-		[EnumMember(Value = "Covered Passenger Terminal")] 
-		CoveredPassengerTerminal = 5,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
-	}
-
-	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-	[System.Serializable()]
-	public enum categoryOfTidalStream : int {
-		[System.ComponentModel.Description("The horizontal movement of water associated with the rising tide. Flood streams generally set towards the shore, or in the direction of the tide progression.")]
-		[EnumMember(Value = "Flood Stream")] 
-		FloodStream = 1,
-		[System.ComponentModel.Description("The horizontal movement of water associated with falling tide. Ebb streams generally set seaward, or in the opposite direction to the tide progression.")]
-		[EnumMember(Value = "Ebb Stream")] 
-		EbbStream = 2,
-		[System.ComponentModel.Description("Any other horizontal movement of water associated with tides, for example rotary flow.")]
-		[EnumMember(Value = "Other Tidal Flow")] 
-		OtherTidalFlow = 3,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
-	}
-
-	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-	[System.Serializable()]
-	public enum categoryOfVegetation : int {
-		[System.ComponentModel.Description("A shrub or clump of shrubs with stems of moderate length.")]
-		[EnumMember(Value = "Bush")] 
-		Bush = 3,
-		[System.ComponentModel.Description("A wood with trees that shed their leaves annually.")]
-		[EnumMember(Value = "Deciduous Wood")] 
-		DeciduousWood = 4,
-		[System.ComponentModel.Description("A wood with evergreen trees of a group usually bearing cones, including yews, cedars and redwoods.")]
-		[EnumMember(Value = "Coniferous Wood")] 
-		ConiferousWood = 5,
-		[System.ComponentModel.Description("Growing trees densely occupying a tract of land.")]
-		[EnumMember(Value = "Wood in General (inc Mixed Wood)")] 
-		WoodInGeneralIncMixedWood = 6,
-		[System.ComponentModel.Description("Any of various water or marsh plants with a firm stem. (Concise Oxford English Dictionary)")]
-		[EnumMember(Value = "Reed")] 
-		Reed = 11,
-		[System.ComponentModel.Description("An individual woody perennial plant, typically having a single stem or trunk growing to a considerable height and bearing lateral branches at some distance from the ground.")]
-		[EnumMember(Value = "Tree in General")] 
-		TreeInGeneral = 13,
-		[System.ComponentModel.Description("Having green foliage all the year round.")]
-		[EnumMember(Value = "Evergreen Tree")] 
-		EvergreenTree = 14,
-		[System.ComponentModel.Description("A cone-bearing, needle-leaved or scale-leaved evergreen tree.")]
-		[EnumMember(Value = "Coniferous Tree")] 
-		ConiferousTree = 15,
-		[System.ComponentModel.Description("A tropical or sub-tropical tree, shrub or vine having a tall, unbranched, columnar trunk. The trunk is crowned by a tuft or large, pleated fan or feather shaped leaves with stout sheathing and often prickly petioles (stalks), the persistent bases of which frequently clothe the trunk.")]
-		[EnumMember(Value = "Palm Tree")] 
-		PalmTree = 16,
-		[System.ComponentModel.Description("A rare palm tree with regular branching involving equal or sub-equal division of the apex that results in forking.")]
-		[EnumMember(Value = "Nipa Palm Tree")] 
-		NipaPalmTree = 17,
-		[System.ComponentModel.Description("A tree characterized by slender, green, often drooping branches that are deeply grooved and that bear, at intervals, whorls of tine leaves.")]
-		[EnumMember(Value = "Casuarina Tree")] 
-		CasuarinaTree = 18,
-		[System.ComponentModel.Description("An instance of a large genus of mostly very large trees (90 metres).")]
-		[EnumMember(Value = "Eucalypt Tree")] 
-		EucalyptTree = 19,
-		[System.ComponentModel.Description("Sheds its leaves each year at the end of the period of growth.")]
-		[EnumMember(Value = "Deciduous Tree")] 
-		DeciduousTree = 20,
-		[System.ComponentModel.Description("Casuarina equisetifolia, the most widespread and well-known member of the family Casuarinaceae.")]
-		[EnumMember(Value = "Filao Tree")] 
-		FilaoTree = 22,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
-	}
-
-	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-	[System.Serializable()]
-	public enum categoryOfWaterTurbulence : int {
-		[System.ComponentModel.Description("A wave breaking on the shore, over a reef, etc. Breakers may be roughly classified into three kinds, although the categories may overlap: spilling breakers break gradually over a considerable distance; plunging breakers tend to curl over and break with a crash; and surging breakers peak up, but then instead of spilling or plunging they surge up on the beach face. The French word 'brisant' is also used for the obstacle causing the breaking of the wave.")]
-		[EnumMember(Value = "Breakers")] 
-		Breakers = 1,
-		[System.ComponentModel.Description("Circular movements of water usually formed where currents pass obstructions, between two adjacent currents flowing counter to each other, or along the edge of a permanent current.")]
-		[EnumMember(Value = "Eddies")] 
-		Eddies = 2,
-		[System.ComponentModel.Description("Short, breaking waves occurring when a strong current passes over a shoal or other submarine obstruction or meets a contrary current or wind.")]
-		[EnumMember(Value = "Overfalls")] 
-		Overfalls = 3,
-		[System.ComponentModel.Description("Small waves formed on the surface of water by the meeting of opposing tidal currents or by a tidal current crossing an irregular bottom. Vertical oscillation, rather than progressive waves, is characteristic of tide rips.")]
-		[EnumMember(Value = "Tide Rips")] 
-		TideRips = 4,
-		[System.ComponentModel.Description("A wave that forms over a submerged offshore reef or rock, sometimes (in very calm weather or at high tide) nearly swelling but in other conditions breaking heavily and producing a dangerous stretch of broken water; the reef or rock itself.")]
-		[EnumMember(Value = "Bombora")] 
-		Bombora = 5,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
-	}
-
-	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-	[System.Serializable()]
-	public enum categoryOfWeedKelp : int {
-		[System.ComponentModel.Description("A giant plant sometimes 60 metres long with no roots, it is anchored by hold-fasts or tendrils up to 10 metres long, that cling to rock. Gas filled bubbles on fronds act as floats keeping the kelp just below the surface.")]
-		[EnumMember(Value = "Kelp")] 
-		Kelp = 1,
-		[System.ComponentModel.Description("The general name for marine plants of the Algae class which grow in long narrow ribbons.")]
-		[EnumMember(Value = "Seaweed")] 
-		Seaweed = 2,
-		[System.ComponentModel.Description("A certain type of seaweed, or more generally, a large floating mass of this seaweed.")]
-		[EnumMember(Value = "Sargasso")] 
-		Sargasso = 4,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
-	}
-
-	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-	[System.Serializable()]
-	public enum categoryOfWreck : int {
-		[System.ComponentModel.Description("A wreck which is not considered to be dangerous to surface navigation.")]
-		[EnumMember(Value = "Non-Dangerous Wreck")] 
-		NonDangerousWreck = 1,
-		[System.ComponentModel.Description("A wreck submerged at such a depth as to be considered dangerous to surface navigation.")]
-		[EnumMember(Value = "Dangerous Wreck")] 
-		DangerousWreck = 2,
-		[System.ComponentModel.Description("A substantively decayed wreck over which it is safe to navigate but which should be avoided for anchoring, taking the ground or ground fishing.")]
-		[EnumMember(Value = "Distributed Remains of Wreck")] 
-		DistributedRemainsOfWreck = 3,
-		[System.ComponentModel.Description("Wreck of which only the mast(s) is visible at the sounding datum indicated.")]
-		[EnumMember(Value = "Wreck Showing Mast/Masts")] 
-		WreckShowingMastMasts = 4,
-		[System.ComponentModel.Description("Wreck of which any portion of the hull or superstructure is visible at the sounding datum indicated.")]
-		[EnumMember(Value = "Wreck Showing Any Portion of Hull or Superstructure")] 
-		WreckShowingAnyPortionOfHullOrSuperstructure = 5,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
-	}
-
-	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-	[System.Serializable()]
-	public enum categoryOfZoneOfConfidenceInData : int {
-		[System.ComponentModel.Description("Positional Accuracy +/- 5 metres + 5% depth; Depth Accuracy 0.5 metre + 1% depth; Full area search undertaken. Significant seafloor features detected and depths measured; Controlled, systematic survey, high position and depth accuracy achieved using DGPS or a minimum three high quality lines of position (LOP) and a multibeam, channel or mechanical sweep system.")]
-		[EnumMember(Value = "Zone of Confidence A1")] 
-		ZoneOfConfidenceA1 = 1,
-		[System.ComponentModel.Description("Positional Accuracy +/- 20 metres; Depth Accuracy 1.0 metre + 2% depth; Full area search undertaken. Significant seafloor features detected and depths measured; Controlled, systematic survey achieving position and depth accuracy less than ZOC A1 and using a modern survey echosounder and a sonar or mechanical sweep system.")]
-		[EnumMember(Value = "Zone of Confidence A2")] 
-		ZoneOfConfidenceA2 = 2,
-		[System.ComponentModel.Description("Positional Accuracy +/- 50 metres; Depth Accuracy 1.0 metre + 2% depth; Full area search not achieved, uncharted features hazardous to surface navigation are not expected but may exist; Controlled, systematic survey achieving similar depth but lesser position accuracies than ZOCA2, using a modern survey echosounder, but no sonar or mechanical sweep system.")]
-		[EnumMember(Value = "Zone of Confidence B")] 
-		ZoneOfConfidenceB = 3,
-		[System.ComponentModel.Description("Positional Accuracy +/- 500 metres; Depth Accuracy 2.0 metre + 5% depth; Full area search not achieved, depth anomalies may be expected; Low accuracy survey or data collected on an opportunity basis such as soundings on passage.")]
-		[EnumMember(Value = "Zone of Confidence C")] 
-		ZoneOfConfidenceC = 4,
-		[System.ComponentModel.Description("Positional Accuracy worse than ZOC C; Depth Accuracy worse than ZOC C; Full area search not achieved, large depth anomalies may be expected; Poor quality data or data that cannot be quality assessed due to lack of information.")]
-		[EnumMember(Value = "Zone of Confidence D")] 
-		ZoneOfConfidenceD = 5,
-		[System.ComponentModel.Description("The quality of the bathymetric data has yet to be assessed.")]
-		[EnumMember(Value = "Zone of Confidence U")] 
-		ZoneOfConfidenceU = 6,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
-	}
-
-	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-	[System.Serializable()]
-	public enum colour : int {
-		[System.ComponentModel.Description("")]
-		[EnumMember(Value = "White")] 
-		White = 1,
-		[System.ComponentModel.Description("")]
-		[EnumMember(Value = "Black")] 
-		Black = 2,
-		[System.ComponentModel.Description("")]
-		[EnumMember(Value = "Red")] 
-		Red = 3,
-		[System.ComponentModel.Description("")]
-		[EnumMember(Value = "Green")] 
-		Green = 4,
-		[System.ComponentModel.Description("")]
-		[EnumMember(Value = "Blue")] 
-		Blue = 5,
-		[System.ComponentModel.Description("")]
-		[EnumMember(Value = "Yellow")] 
-		Yellow = 6,
-		[System.ComponentModel.Description("")]
-		[EnumMember(Value = "Grey")] 
-		Grey = 7,
-		[System.ComponentModel.Description("")]
-		[EnumMember(Value = "Brown")] 
-		Brown = 8,
-		[System.ComponentModel.Description("")]
-		[EnumMember(Value = "Amber")] 
-		Amber = 9,
-		[System.ComponentModel.Description("")]
-		[EnumMember(Value = "Violet")] 
-		Violet = 10,
-		[System.ComponentModel.Description("")]
-		[EnumMember(Value = "Orange")] 
-		Orange = 11,
-		[System.ComponentModel.Description("")]
-		[EnumMember(Value = "Magenta")] 
-		Magenta = 12,
-		[System.ComponentModel.Description("")]
-		[EnumMember(Value = "Pink")] 
-		Pink = 13,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
-	}
-
-	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-	[System.Serializable()]
-	public enum colourPattern : int {
-		[System.ComponentModel.Description("Straight bands or stripes of differing colours oriented horizontally.")]
-		[EnumMember(Value = "Horizontal Stripes")] 
-		HorizontalStripes = 1,
-		[System.ComponentModel.Description("Straight bands or stripes of differing colours oriented vertically.")]
-		[EnumMember(Value = "Vertical Stripes")] 
-		VerticalStripes = 2,
-		[System.ComponentModel.Description("Straight bands or stripes of differing colours oriented diagonally (that is, not horizontally or vertically).")]
-		[EnumMember(Value = "Diagonal Stripes")] 
-		DiagonalStripes = 3,
-		[System.ComponentModel.Description("Often referred to as checker plate, where alternate colours are used to create squares similar to a chess or draught board. The pattern may be straight or diagonal.")]
-		[EnumMember(Value = "Squared")] 
-		Squared = 4,
-		[System.ComponentModel.Description("Straight bands or stripes of differing colours oriented in an unknown direction.")]
-		[EnumMember(Value = "Stripes (Direction Unknown)")] 
-		StripesDirectionUnknown = 5,
-		[System.ComponentModel.Description("A band or stripe of colour which is displayed around the outer edge of the feature, which may also form a border to an inner pattern or plain colour.")]
-		[EnumMember(Value = "Border Stripe")] 
-		BorderStripe = 6,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
-	}
-
-	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-	[System.Serializable()]
-	public enum condition : int {
-		[System.ComponentModel.Description("Being built but not yet capable of function.")]
-		[EnumMember(Value = "Under Construction")] 
-		UnderConstruction = 1,
-		[System.ComponentModel.Description("A structure in a decayed or deteriorated condition resulting from neglect or disuse, or a damaged structure in need of repair.")]
-		[EnumMember(Value = "Ruined")] 
-		Ruined = 2,
-		[System.ComponentModel.Description("An area of the sea, a lake or the navigable part of a river that is being reclaimed as land, usually by the dumping of earth and other material.")]
-		[EnumMember(Value = "Under Reclamation")] 
-		UnderReclamation = 3,
-		[System.ComponentModel.Description("A windmill or wind turbine from which the vanes or turbine blades are missing.")]
-		[EnumMember(Value = "Wingless")] 
-		Wingless = 4,
-		[System.ComponentModel.Description("Detailed planning has been completed but construction has not been initiated.")]
-		[EnumMember(Value = "Planned Construction")] 
-		PlannedConstruction = 5,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
-	}
-
-	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+		public static Version Version => new Version("1.2.1");
+	}
+
+	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+	[System.Serializable()]
+	public enum cardinalDirection : int {
+		[System.ComponentModel.Description("North")]
+		[EnumMember(Value = "N")] 
+		N = 1,
+		[System.ComponentModel.Description("Northnortheast")]
+		[EnumMember(Value = "NNE")] 
+		Nne = 2,
+		[System.ComponentModel.Description("Northeast")]
+		[EnumMember(Value = "NE")] 
+		Ne = 3,
+		[System.ComponentModel.Description("Eastnortheast")]
+		[EnumMember(Value = "ENE")] 
+		Ene = 4,
+		[System.ComponentModel.Description("East")]
+		[EnumMember(Value = "E")] 
+		E = 5,
+		[System.ComponentModel.Description("Eastsoutheast")]
+		[EnumMember(Value = "ESE")] 
+		Ese = 6,
+		[System.ComponentModel.Description("Southeast")]
+		[EnumMember(Value = "SE")] 
+		Se = 7,
+		[System.ComponentModel.Description("Southsoutheast")]
+		[EnumMember(Value = "SSE")] 
+		Sse = 8,
+		[System.ComponentModel.Description("South")]
+		[EnumMember(Value = "S")] 
+		S = 9,
+		[System.ComponentModel.Description("Southsouthwest")]
+		[EnumMember(Value = "SSW")] 
+		Ssw = 10,
+		[System.ComponentModel.Description("Southwest")]
+		[EnumMember(Value = "SW")] 
+		Sw = 11,
+		[System.ComponentModel.Description("Westsouthwest")]
+		[EnumMember(Value = "WSW")] 
+		Wsw = 12,
+		[System.ComponentModel.Description("West")]
+		[EnumMember(Value = "W")] 
+		W = 13,
+		[System.ComponentModel.Description("Westnorthwest")]
+		[EnumMember(Value = "WNW")] 
+		Wnw = 14,
+		[System.ComponentModel.Description("Northwest")]
+		[EnumMember(Value = "NW")] 
+		Nw = 15,
+		[System.ComponentModel.Description("Northnorthwest")]
+		[EnumMember(Value = "NNW")] 
+		Nnw = 16,
+		[System.ComponentModel.Description("Unknown value.")]
+		[EnumMember(Value = "Unknown")]
+		Unknown = -1,
+	}
+
+	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+	[System.Serializable()]
+	public enum onlineFunction : int {
+		[System.ComponentModel.Description("OnlineInstructionsForTransferringDataFromOneStorageDeviceOrSystemToAnotherIso191152014")]
+		[EnumMember(Value = "Download")] 
+		Download = 1,
+		[System.ComponentModel.Description("OnlineInformationAboutTheResourceIso191152014")]
+		[EnumMember(Value = "Information")] 
+		Information = 2,
+		[System.ComponentModel.Description("OnlineInstructionsForRequestingTheResourceFromTheProviderIso191152014")]
+		[EnumMember(Value = "Offline Access")] 
+		OfflineAccess = 3,
+		[System.ComponentModel.Description("OnlineOrderProcessForObtainingTheResourceIso191152014")]
+		[EnumMember(Value = "Order")] 
+		Order = 4,
+		[System.ComponentModel.Description("OnlineSearchInterfaceForSeekingOutInformationAboutTheResourceIso191152014")]
+		[EnumMember(Value = "Search")] 
+		Search = 5,
+		[System.ComponentModel.Description("CompleteMetadataProvidedIso191152014")]
+		[EnumMember(Value = "Complete Metadata")] 
+		CompleteMetadata = 6,
+		[System.ComponentModel.Description("BrowseGraphicProvidedIso191152014")]
+		[EnumMember(Value = "Browse Graphic")] 
+		BrowseGraphic = 7,
+		[System.ComponentModel.Description("OnlineResourceUploadCapabilityProvidedIso191152014")]
+		[EnumMember(Value = "Upload")] 
+		Upload = 8,
+		[System.ComponentModel.Description("OnlineEmailServiceProvidedIso191152014")]
+		[EnumMember(Value = "Email Service")] 
+		EmailService = 9,
+		[System.ComponentModel.Description("OnlineBrowsingProvidedIso191152014")]
+		[EnumMember(Value = "Browsing")] 
+		Browsing = 10,
+		[System.ComponentModel.Description("OnlineFileAccessProvidedIso191152014")]
+		[EnumMember(Value = "File Access")] 
+		FileAccess = 11,
+		[System.ComponentModel.Description("Unknown value.")]
+		[EnumMember(Value = "Unknown")]
+		Unknown = -1,
+	}
+
+	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 	[System.Serializable()]
-	public enum dataAssessment : int {
-		[System.ComponentModel.Description("The quality of the bathymetric data has been assessed.")]
-		[EnumMember(Value = "Assessed")] 
-		Assessed = 1,
-		[System.ComponentModel.Description("The quality of oceanic bathymetric data (depths deeper than 200 metres) has been assessed, however details are not required.")]
-		[EnumMember(Value = "Assessed (Oceanic)")] 
-		AssessedOceanic = 2,
-		[System.ComponentModel.Description("Not having been assessed.")]
-		[EnumMember(Value = "Unassessed")] 
-		Unassessed = 3,
+	public enum vesselsCharacteristics : int {
+		[System.ComponentModel.Description("TheMaximumLengthOfTheShipLOAHttpEnWikipediaOrgWikiShip_measurements24July2010")]
+		[EnumMember(Value = "Length Overall")] 
+		LengthOverall = 1,
+		[System.ComponentModel.Description("TheShipSLengthMeasuredAtTheWaterlineLWLHttpEnWikipediaOrgWikiShip_measurements24July2010")]
+		[EnumMember(Value = "Length at waterline")] 
+		LengthAtWaterline = 2,
+		[System.ComponentModel.Description("TheWidthOrBeamOfTheVesselAdaptedFromHttpEnWikipediaOrgWikiShip_measurements24July2010")]
+		[EnumMember(Value = "Breadth")] 
+		Breadth = 3,
+		[System.ComponentModel.Description("TheDepthOfWaterNecessaryToFloatAVesselFullyLoadedHttpEnWikipediaOrgWikiShip_measurements24July2010")]
+		[EnumMember(Value = "Draught")] 
+		Draught = 4,
+		[System.ComponentModel.Description("TheHeightOfTheHighestPointOfAVesselSStructureEGRadarAerialFunnelCranesMastheadAboveHerWaterlineUkhoNp1002009")]
+		[EnumMember(Value = "Height")] 
+		Height = 5,
+		[System.ComponentModel.Description("AMeasurementOfTheWeightOfTheVesselUsuallyUsedForWarshipsMerchantShipsAreUsuallyMeasuredBasedOnTheVolumeOfCargoSpaceSeeTonnageDisplacementIsExpressedEitherInLongTonsOf2240PoundsOrMetricTonnesOf1000KgSinceTheTwoUnitsAreVeryCloseInSize2240Pounds1016KgAnd1000Kg2205PoundsItIsCommonNotToDistinguishBetweenThemToPreserveSecrecyNationsSometimesMisstateAWarshipSDisplacementHttpEnWikipediaOrgWikiShip_measurements24July2010")]
+		[EnumMember(Value = "Displacement Tonnage")] 
+		DisplacementTonnage = 6,
+		[System.ComponentModel.Description("TheWeightOfTheShipExcludingCargoFuelBallastStoresPassengersAndCrewButWithWaterInTheBoilersToSteamingLevelHttpEnWikipediaOrgWikiShip_measurements24July2010")]
+		[EnumMember(Value = "Displacement Tonnage, Light")] 
+		DisplacementTonnageLight = 7,
+		[System.ComponentModel.Description("TheWeightOfTheShipIncludingCargoPassengersFuelWaterStoresDunnageAndSuchOtherItemsNecessaryForUseOnAVoyageWhichBringsTheVesselDownToHerLoadDraftHttpEnWikipediaOrgWikiShip_measurements24July2010")]
+		[EnumMember(Value = "Displacement Tonnage, Loaded")] 
+		DisplacementTonnageLoaded = 8,
+		[System.ComponentModel.Description("TheDifferenceBetweenDisplacementLightAndDisplacementLoadedAMeasureOfTheShipSTotalCarryingCapacityHttpEnWikipediaOrgWikiShip_measurements24July2010")]
+		[EnumMember(Value = "Deadweight Tonnage")] 
+		DeadweightTonnage = 9,
+		[System.ComponentModel.Description("TheEntireInternalCubicCapacityOfTheShipExpressedInTonsOf100CubicFeetToTheTonExceptCertainSpacesWithAreExemptedSuchAsPeakAndOtherTanksForWaterBallastOpenForecastleBridgeAndPoopAccessOfHatchwaysCertainLightAndAirSpacesDomesOfSkylightsCondenserAnchorGearSteeringGearWheelHouseGalleyAndCabinForPassengersHttpEnWikipediaOrgWikiShip_measurements24July2010")]
+		[EnumMember(Value = "Gross Tonnage")] 
+		GrossTonnage = 10,
+		[System.ComponentModel.Description("ObtainedFromTheGrossTonnageByDeductingCrewAndNavigatingSpacesAndAllowancesForPropulsionMachineryHttpEnWikipediaOrgWikiShip_measurements24July2010")]
+		[EnumMember(Value = "Panama Canal/Universal Measurement System Net")] 
+		PanamaCanalUniversalMeasurementSystemNet = 11,
+		[System.ComponentModel.Description("ThePanamaCanalUniversalMeasurementSystemPcUmsIsBasedOnNetTonnageModifiedForPanamaCanalPurposesPcUmsIsBasedOnAMathematicalFormulaToCalculateAVesselSTotalVolumeAPcUmsNetTonIsEquivalentTo100CubicFeetOfCapacityAdaptedFromHttpEnWikipediaOrgWikiTonnage4Oct2010")]
+		[EnumMember(Value = "Tonnage")] 
+		Tonnage = 12,
+		[System.ComponentModel.Description("TheSuezCanalNetTonnageScntIsDerivedWithANumberOfModificationsFromTheFormerNetRegisterTonnageOfTheMoorsomSystemAndWasEstablishedByTheInternationalCommissionOfConstantinopleInItsProtocolOf18December1873ItIsStillInUseAsAmendedByTheRulesOfNavigationOfTheSuezCanalAuthorityAndIsRegisteredInTheSuezCanalTonnageCertificateAdaptedFromHttpEnWikipediaOrgWikiTonnage4Oct2010")]
+		[EnumMember(Value = "Suez Canal Net Tonnage")] 
+		SuezCanalNetTonnage = 13,
+		[System.ComponentModel.Description("SuezCanalGrossTonnageScgtIsDerivedWithANumberOfModificationsFromTheFormerNetRegisterTonnageOfTheMoorsomSystemAndWasEstablishedByTheInternationalCommissionOfConstantinopleInItsProtocolOf18December1873ItIsStillInUseAsAmendedByTheRulesOfNavigationOfTheSuezCanalAuthorityAndIsRegisteredInTheSuezCanalTonnageCertificate")]
+		[EnumMember(Value = "Suez Canal Gross Tonnage")] 
+		SuezCanalGrossTonnage = 14,
+		[System.ComponentModel.Description("Unknown value.")]
+		[EnumMember(Value = "Unknown")]
+		Unknown = -1,
+	}
+
+	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+	[System.Serializable()]
+	public enum vesselsCharacteristicsUnit : int {
+		[System.ComponentModel.Description("TheMetreOrMeterIsTheBaseUnitOfLengthInTheInternationalSystemOfUnitsSiItIsDefinedAsTheDistanceTravelledByLightInVacuumIn1299792458OfASecond")]
+		[EnumMember(Value = "Metre")] 
+		Metre = 1,
+		[System.ComponentModel.Description("AFootPluralFeetIsANonSiUnitOfLengthInANumberOfDifferentSystemsIncludingEnglishUnitsImperialUnitsAndUnitedStatesCustomaryUnitsTheMostCommonlyUsedFootTodayIsTheInternationalFootThereAreThreeFeetInAYardAnd12InchesInAFoot")]
+		[EnumMember(Value = "Foot")] 
+		Foot = 2,
+		[System.ComponentModel.Description("TheTonneOrMetricTonUSOftenRedundantlyReferredToAsAMetricTonneIsAUnitOfMassEqualTo1000Kg2205LbOrApproximatelyTheMassOfOneCubicMetreOfWaterAtFourDegreesCelsiusItIsSometimesAbbreviatedAsMtInTheUnitedStatesButThisConflictsWithOtherSiSymbolsTheTonneIsNotAUnitInTheInternationalSystemOfUnitsSiButIsAcceptedForUseWithTheSiInSiUnitsAndPrefixesTheTonneIsAMegagramMgTheImperialAndUsCustomaryUnitsComparableToTheTonneAreBothSpelledTonInEnglishThoughTheyDifferInMassPronunciationOfTonneTheWordUsedInTheUkAndTonIsUsuallyIdenticalButIsNotTooConfusingUnlessAccuracyIsImportantAsTheTonneAndUkLongTonDifferByOnly16")]
+		[EnumMember(Value = "Metric Ton")] 
+		MetricTon = 3,
+		[System.ComponentModel.Description("LongTonWeightTonOrImperialTonIsTheNameForTheUnitCalledTheTonInTheAvoirdupoisOrImperialSystemOfMeasurementsAsUsedInTheUnitedKingdomAndSeveralOtherCommonwealthCountriesItHasBeenMostlyReplacedByTheTonneAndInTheUnitedStatesByTheShortTonOneLongTonIsEqualTo2240Pounds1016KgOr35CubicFeet09911M3OfSaltWaterWithADensityOf64LbFt1025GMlItHasSomeLimitedUseInTheUnitedStatesMostCommonlyInMeasuringTheDisplacementOfShipsAndWasTheUnitPrescribedForWarshipsByTheWashingtonNavalTreatyForExampleBattleshipsWereLimitedToAMassOf35000LongTons36000T39000St")]
+		[EnumMember(Value = "Ton")] 
+		Ton = 4,
+		[System.ComponentModel.Description("TheShortTonIsAUnitOfWeightEqualTo2000Pounds90718474KgInTheUnitedStatesItIsOftenCalledSimplyTonWithoutDistinguishingItFromTheMetricTonTonne1000KilogramsOrTheLongTon2240Pounds10160469088KilogramsRatherTheOtherTwoAreSpecificallyNotedThereAreHoweverSomeUSApplicationsForWhichUnspecifiedTonsNormallyMeansLongTonsForExampleNavyShipsOrMetricTonsWorldGrainProductionFiguresBothTheLongAndShortTonAreDefinedAs20HundredweightsButAHundredweightIs100Pounds45359237KgInTheUSSystemShortOrNetHundredweightAnd112Pounds5080234544KgInTheImperialSystemLongOrGrossHundredweight")]
+		[EnumMember(Value = "Short Ton")] 
+		ShortTon = 5,
+		[System.ComponentModel.Description("GrossTonnageGtIsAFunctionOfTheVolumeOfAllShipSEnclosedSpacesFromKeelToFunnelMeasuredToTheOutsideOfTheHullFramingThereIsASlidingScaleFactorSoGtIsAKindOfCapacityDerivedIndexThatIsUsedToRankAShipForPurposesOfDeterminingManningSafetyAndOtherStatutoryRequirementsAndIsExpressedSimplyAsGtWhichIsAUnitlessEntityEvenThoughItsDerivationIsTiedToTheCubicMeterUnitOfVolumetricCapacityTonnageMeasurementsAreNowGovernedByAnImoConventionInternationalConventionOnTonnageMeasurementOfShips1969LondonRulesWhichAppliesToAllShipsBuiltAfterJuly1982InAccordanceWithTheConventionTheCorrectTermToUseNowIsGtWhichIsAFunctionOfTheMouldedVolumeOfAllEnclosedSpacesOfTheShip")]
+		[EnumMember(Value = "Gross ton")] 
+		GrossTon = 6,
+		[System.ComponentModel.Description("NetTonnageNtIsBasedOnACalculationOfTheVolumeOfAllCargoSpacesOfTheShipItIndicatesAVesselSEarningSpaceAndIsAFunctionOfTheMouldedVolumeOfAllCargoSpacesOfTheShip")]
+		[EnumMember(Value = "Net Ton")] 
+		NetTon = 7,
+		[System.ComponentModel.Description("ThePanamaCanalUniversalMeasurementSystemPcUmsIsBasedOnNetTonnageModifiedForPanamaCanalPurposesPcUmsIsBasedOnAMathematicalFormulaToCalculateAVesselSTotalVolumeAPcUmsNetTonIsEquivalentTo100CubicFeetOfCapacity")]
+		[EnumMember(Value = "Panama Canal/Universal Measurement System Net Tonnage")] 
+		PanamaCanalUniversalMeasurementSystemNetTonnage = 8,
+		[System.ComponentModel.Description("TheSuezCanalNetTonnageScntIsDerivedWithANumberOfModificationsFromTheFormerNetRegisterTonnageOfTheMoorsomSystemAndWasEstablishedByTheInternationalCommissionOfConstantinopleInItsProtocolOf18December1873ItIsStillInUseAsAmendedByTheRulesOfNavigationOfTheSuezCanalAuthorityAndIsRegisteredInTheSuezCanalTonnageCertificate")]
+		[EnumMember(Value = "Suez Canal Net Tonnage")] 
+		SuezCanalNetTonnage = 9,
+		[System.ComponentModel.Description("CanBeUsedForNetAndGrossTonnagesIncludingPanamaCanalUniversalMeasurementSystemNetTonnageAndTheSuezCanalNetTonnage")]
+		[EnumMember(Value = "None")] 
+		None = 10,
+		[System.ComponentModel.Description("CubicMetres")]
+		[EnumMember(Value = "Cubic Metres")] 
+		CubicMetres = 11,
+		[System.ComponentModel.Description("TheSuezCanalGrossTonnageScgtIsDerivedWithANumberOfModificationsFromTheFormerNetRegisterTonnageOfTheMoorsomSystemAndWasEstablishedByTheInternationalCommissionOfConstantinopleInItsProtocolOf18December1873ItIsStillInUseAsAmendedByTheRulesOfNavigationOfTheSuezCanalAuthorityAndIsRegisteredInTheSuezCanalTonnageCertificate")]
+		[EnumMember(Value = "Suez Canal Gross Tonnage")] 
+		SuezCanalGrossTonnage = 12,
+		[System.ComponentModel.Description("Unknown value.")]
+		[EnumMember(Value = "Unknown")]
+		Unknown = -1,
+	}
+
+	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+	[System.Serializable()]
+	public enum comparisonOperator : int {
+		[System.ComponentModel.Description("TheValueOfTheLeftValueIsGreaterThanThatOfTheRightHttpEnWikipediaOrgWikiLogical_connective")]
+		[EnumMember(Value = "Greater than")] 
+		GreaterThan = 1,
+		[System.ComponentModel.Description("TheValueOfTheLeftExpressionIsGreaterThanOrEqualToThatOfTheRightHttpEnWikipediaOrgWikiLogical_connective")]
+		[EnumMember(Value = "Greater than or equal to")] 
+		GreaterThanOrEqualTo = 2,
+		[System.ComponentModel.Description("TheValueOfTheLeftExpressionIsLessThanThatOfTheRightHttpEnWikipediaOrgWikiLogical_connective")]
+		[EnumMember(Value = "Less than")] 
+		LessThan = 3,
+		[System.ComponentModel.Description("TheValueOfTheLeftExpressionIsLessThanOrEqualToThatOfTheRightHttpEnWikipediaOrgWikiLogical_connective")]
+		[EnumMember(Value = "Less than or equal to")] 
+		LessThanOrEqualTo = 4,
+		[System.ComponentModel.Description("TheTwoValuesAreEquivalentAdaptedHttpEnWikipediaOrgWikiLogical_connective")]
+		[EnumMember(Value = "Equal to")] 
+		EqualTo = 5,
+		[System.ComponentModel.Description("TheTwoValuesAreNotEquivalentAdaptedHttpEnWikipediaOrgWikiLogical_connective")]
+		[EnumMember(Value = "Not equal to")] 
+		NotEqualTo = 6,
 		[System.ComponentModel.Description("Unknown value.")]
 		[EnumMember(Value = "Unknown")]
 		Unknown = -1,
@@ -2555,25 +234,25 @@ namespace S100Framework.DomainModel.S101 {
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 	[System.Serializable()]
 	public enum dayOfWeek : int {
-		[System.ComponentModel.Description("The day of the week following Saturday and preceding Monday.")]
+		[System.ComponentModel.Description("TheFirstDayOfTheWeek")]
 		[EnumMember(Value = "Sunday")] 
 		Sunday = 1,
-		[System.ComponentModel.Description("The day of the week following Sunday and preceding Tuesday.")]
+		[System.ComponentModel.Description("TheSecondDayOfTheWeek")]
 		[EnumMember(Value = "Monday")] 
 		Monday = 2,
-		[System.ComponentModel.Description("The day of the week following Monday and preceding Wednesday.")]
+		[System.ComponentModel.Description("TheThirdDayOfTheWeek")]
 		[EnumMember(Value = "Tuesday")] 
 		Tuesday = 3,
-		[System.ComponentModel.Description("The day of the week following Tuesday and preceding Thursday.")]
+		[System.ComponentModel.Description("TheFourthDayOfTheWeek")]
 		[EnumMember(Value = "Wednesday")] 
 		Wednesday = 4,
-		[System.ComponentModel.Description("The day of the week following Wednesday and preceding Friday.")]
+		[System.ComponentModel.Description("TheFifthDayOfTheWeek")]
 		[EnumMember(Value = "Thursday")] 
 		Thursday = 5,
-		[System.ComponentModel.Description("The day of the week following Thursday and preceding Saturday.")]
+		[System.ComponentModel.Description("TheSixthDayOfTheWeek")]
 		[EnumMember(Value = "Friday")] 
 		Friday = 6,
-		[System.ComponentModel.Description("The day of the week following Friday and preceding Sunday.")]
+		[System.ComponentModel.Description("TheSeventhDayOfTheWeek")]
 		[EnumMember(Value = "Saturday")] 
 		Saturday = 7,
 		[System.ComponentModel.Description("Unknown value.")]
@@ -2583,896 +262,25 @@ namespace S100Framework.DomainModel.S101 {
 
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 	[System.Serializable()]
-	public enum distanceUnitOfMeasurement : int {
-		[System.ComponentModel.Description("The basic unit of length in the International System of Units (SI) system.")]
-		[EnumMember(Value = "Metres")] 
-		Metres = 1,
-		[System.ComponentModel.Description("A common unit of linear measure in English-speaking countries, equal to 3 feet or 36 inches, and equivalent to 0.9144 metre.")]
-		[EnumMember(Value = "Yards")] 
-		Yards = 2,
-		[System.ComponentModel.Description("A unit of length, the common measure of distances equal to 1000 metres, and equivalent to 3280.8 feet or 0.621 mile.")]
-		[EnumMember(Value = "Kilometres")] 
-		Kilometres = 3,
-		[System.ComponentModel.Description("A unit equal to 5280 feet.")]
-		[EnumMember(Value = "Statute Miles")] 
-		StatuteMiles = 4,
-		[System.ComponentModel.Description("A unit of length equal to 1,852 metres. This value was approved by the International Hydrographic Conference of 1929 and has been adopted by nearly all maritime states.")]
-		[EnumMember(Value = "Nautical Miles")] 
-		NauticalMiles = 5,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
-	}
-
-	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-	[System.Serializable()]
-	public enum exhibitionConditionOfLight : int {
-		[System.ComponentModel.Description("A light shown throughout the 24 hours without change of character.")]
-		[EnumMember(Value = "Light Shown Without Change of Character")] 
-		LightShownWithoutChangeOfCharacter = 1,
-		[System.ComponentModel.Description("A light which is only exhibited by day.")]
-		[EnumMember(Value = "Daytime Light")] 
-		DaytimeLight = 2,
-		[System.ComponentModel.Description("A light which is exhibited in fog or conditions of reduced visibility.")]
-		[EnumMember(Value = "Fog Light")] 
-		FogLight = 3,
-		[System.ComponentModel.Description("A light which is only exhibited at night.")]
-		[EnumMember(Value = "Night Light")] 
-		NightLight = 4,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
-	}
-
-	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-	[System.Serializable()]
-	public enum expositionOfSounding : int {
-		[System.ComponentModel.Description("The depth corresponds to the depth range of the surrounding depth area; that is, the depth is not shoaler than the minimum depth of the surrounding depth area or deeper than the maximum depth of the surrounding depth area.")]
-		[EnumMember(Value = "Within the Range of Depth of the Surrounding Depth Area")] 
-		WithinTheRangeOfDepthOfTheSurroundingDepthArea = 1,
-		[System.ComponentModel.Description("The depth is shoaler than the minimum depth of the surrounding depth area.")]
-		[EnumMember(Value = "Shoaler Than the Range of Depth of the Surrounding Depth Area")] 
-		ShoalerThanTheRangeOfDepthOfTheSurroundingDepthArea = 2,
-		[System.ComponentModel.Description("The depth is deeper than the maximum depth of the surrounding depth area.")]
-		[EnumMember(Value = "Deeper Than the Range of Depth of the Surrounding Depth Area")] 
-		DeeperThanTheRangeOfDepthOfTheSurroundingDepthArea = 3,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
-	}
-
-	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-	[System.Serializable()]
-	public enum function : int {
-		[System.ComponentModel.Description("A local official who has charge of mooring and berthing of vessels, collecting harbour fees, etc.")]
-		[EnumMember(Value = "Harbour-Masters Office")] 
-		HarbourMastersOffice = 2,
-		[System.ComponentModel.Description("Serves as a government office where customs duties are collected, the flow of goods are regulated and restrictions enforced, and shipments or vehicles are cleared for entering or leaving a country.")]
-		[EnumMember(Value = "Customs Office")] 
-		CustomsOffice = 3,
-		[System.ComponentModel.Description("The office which is charged with the administration of health laws and sanitary inspections.")]
-		[EnumMember(Value = "Health Office")] 
-		HealthOffice = 4,
-		[System.ComponentModel.Description("An institution or establishment providing medical or surgical treatment for the ill or wounded.")]
-		[EnumMember(Value = "Hospital")] 
-		Hospital = 5,
-		[System.ComponentModel.Description("The public department, agency or organisation responsible primarily for the collection, transmission and distribution of mail.")]
-		[EnumMember(Value = "Post Office")] 
-		PostOffice = 6,
-		[System.ComponentModel.Description("An establishment, especially of a comfortable or luxurious kind, where paying visitors are provided with accommodation, meals and other services.")]
-		[EnumMember(Value = "Hotel")] 
-		Hotel = 7,
-		[System.ComponentModel.Description("A building with platforms where trains arrive, load, discharge and depart.")]
-		[EnumMember(Value = "Railway Station")] 
-		RailwayStation = 8,
-		[System.ComponentModel.Description("The headquarters of a local police force and that is where those under arrest are first charged.")]
-		[EnumMember(Value = "Police Station")] 
-		PoliceStation = 9,
-		[System.ComponentModel.Description("The headquarters of a local water-police force.")]
-		[EnumMember(Value = "Water-Police Station")] 
-		WaterPoliceStation = 10,
-		[System.ComponentModel.Description("The office or headquarters of pilots; the place where the services of a pilot may be obtained.")]
-		[EnumMember(Value = "Pilot Office")] 
-		PilotOffice = 11,
-		[System.ComponentModel.Description("A distinctive structure or place on shore from which personnel keep watch upon events at sea or along the coast.")]
-		[EnumMember(Value = "Pilot Lookout")] 
-		PilotLookout = 12,
-		[System.ComponentModel.Description("An office for custody, deposit, loan, exchange or issue of money.")]
-		[EnumMember(Value = "Bank Office")] 
-		BankOffice = 13,
-		[System.ComponentModel.Description("The quarters of an executive officer (director, manager, etc.) with responsibility for an administrative area.")]
-		[EnumMember(Value = "Headquarters for District Control")] 
-		HeadquartersForDistrictControl = 14,
-		[System.ComponentModel.Description("A building or part of a building for storage of wares or goods.")]
-		[EnumMember(Value = "Transit Shed/Warehouse")] 
-		TransitShedWarehouse = 15,
-		[System.ComponentModel.Description("A building or buildings with equipment for manufacturing; a workshop.")]
-		[EnumMember(Value = "Factory")] 
-		Factory = 16,
-		[System.ComponentModel.Description("A stationary plant containing apparatus for large scale conversion of some form of energy (such as hydraulic, steam, chemical or nuclear energy) into electrical energy.")]
-		[EnumMember(Value = "Power Station")] 
-		PowerStation = 17,
-		[System.ComponentModel.Description("A building for the management of affairs.")]
-		[EnumMember(Value = "Administrative")] 
-		Administrative = 18,
-		[System.ComponentModel.Description("An establishment for teaching and learning (for example school, college, university, etc).")]
-		[EnumMember(Value = "Educational Facility")] 
-		EducationalFacility = 19,
-		[System.ComponentModel.Description("A building for public Christian worship.")]
-		[EnumMember(Value = "Church")] 
-		Church = 20,
-		[System.ComponentModel.Description("A place for Christian worship other than a parish, cathedral or church, especially one attached to a private house or institution.")]
-		[EnumMember(Value = "Chapel")] 
-		Chapel = 21,
-		[System.ComponentModel.Description("A building for public Jewish worship.")]
-		[EnumMember(Value = "Temple")] 
-		Temple = 22,
-		[System.ComponentModel.Description("A Hindu or Buddhist temple or sacred building.")]
-		[EnumMember(Value = "Pagoda")] 
-		Pagoda = 23,
-		[System.ComponentModel.Description("A building for public Shinto worship.")]
-		[EnumMember(Value = "Shinto Shrine")] 
-		ShintoShrine = 24,
-		[System.ComponentModel.Description("A building for public Buddhist worship.")]
-		[EnumMember(Value = "Buddhist Temple")] 
-		BuddhistTemple = 25,
-		[System.ComponentModel.Description("A Muslim place of worship.")]
-		[EnumMember(Value = "Mosque")] 
-		Mosque = 26,
-		[System.ComponentModel.Description("A shrine marking the burial place of a Muslim holy man.")]
-		[EnumMember(Value = "Marabout")] 
-		Marabout = 27,
-		[System.ComponentModel.Description("Keeping a watch upon events at sea or along the coast.")]
-		[EnumMember(Value = "Lookout")] 
-		Lookout = 28,
-		[System.ComponentModel.Description("Transmitting and/or receiving electronic communication signals.")]
-		[EnumMember(Value = "Communication")] 
-		Communication = 29,
-		[System.ComponentModel.Description("A system for reproducing on a screen visual images transmitted (usually with sound) by radio signals.")]
-		[EnumMember(Value = "Television")] 
-		Television = 30,
-		[System.ComponentModel.Description("Transmitting and/or receiving radio-frequency electromagnetic waves as a means of communication.")]
-		[EnumMember(Value = "Radio")] 
-		Radio = 31,
-		[System.ComponentModel.Description("A method, system or technique of using beamed, reflected, and timed radio waves for detecting, locating, or tracking objects, and for measuring altitudes.")]
-		[EnumMember(Value = "Radar")] 
-		Radar = 32,
-		[System.ComponentModel.Description("A structure serving as a support for one or more lights.")]
-		[EnumMember(Value = "Light Support")] 
-		LightSupport = 33,
-		[System.ComponentModel.Description("Broadcasting and receiving signals using microwaves.")]
-		[EnumMember(Value = "Microwave")] 
-		Microwave = 34,
-		[System.ComponentModel.Description("Generation of chilled liquid and/or gas for cooling purposes.")]
-		[EnumMember(Value = "Cooling")] 
-		Cooling = 35,
-		[System.ComponentModel.Description("A place from which the surroundings can be observed but at which a watch is not habitually maintained.")]
-		[EnumMember(Value = "Observation")] 
-		Observation = 36,
-		[System.ComponentModel.Description("A visual time signal in the form of a ball.")]
-		[EnumMember(Value = "Timeball")] 
-		Timeball = 37,
-		[System.ComponentModel.Description("Instrument for measuring time and recording hours.")]
-		[EnumMember(Value = "Clock")] 
-		Clock = 38,
-		[System.ComponentModel.Description("Used to control the flow of traffic within a specified range of an installation.")]
-		[EnumMember(Value = "Control")] 
-		Control = 39,
-		[System.ComponentModel.Description("Equipment or structure to secure an airship.")]
-		[EnumMember(Value = "Airship Mooring")] 
-		AirshipMooring = 40,
-		[System.ComponentModel.Description("An arena for holding and viewing events.")]
-		[EnumMember(Value = "Stadium")] 
-		Stadium = 41,
-		[System.ComponentModel.Description("A building where buses and coaches regularly stop to take on and/or let off passengers, especially for long-distance travel.")]
-		[EnumMember(Value = "Bus Station")] 
-		BusStation = 42,
-		[System.ComponentModel.Description("A unit responsible for promoting efficient organization of search and rescue services and for coordinating the conduct of search and rescue operations within a search and rescue region.")]
-		[EnumMember(Value = "Sea Rescue Control")] 
-		SeaRescueControl = 44,
-		[System.ComponentModel.Description("A building designed and equipped for making observations of astronomical, meteorological, or other natural phenomena.")]
-		[EnumMember(Value = "Observatory")] 
-		Observatory = 45,
-		[System.ComponentModel.Description("A building or structure used to crush ore.")]
-		[EnumMember(Value = "Ore Crusher")] 
-		OreCrusher = 46,
-		[System.ComponentModel.Description("A building or shed, usually built partly over water, for sheltering a boat or boats.")]
-		[EnumMember(Value = "Boathouse")] 
-		Boathouse = 47,
-		[System.ComponentModel.Description("A facility to move solids, liquids or gases by means of pressure or suction.")]
-		[EnumMember(Value = "Pumping Station")] 
-		PumpingStation = 48,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
-	}
-
-	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-	[System.Serializable()]
-	public enum jurisdiction : int {
-		[System.ComponentModel.Description("Involving more than one country; covering more than one national area.")]
-		[EnumMember(Value = "International")] 
-		International = 1,
-		[System.ComponentModel.Description("An area administered or controlled by a single nation.")]
-		[EnumMember(Value = "National")] 
-		National = 2,
-		[System.ComponentModel.Description("An area smaller than the nation in which it lies.")]
-		[EnumMember(Value = "National Sub-Division")] 
-		NationalSubDivision = 3,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
-	}
-
-	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-	[System.Serializable()]
-	public enum lightCharacteristic : int {
-		[System.ComponentModel.Description("A signal light that shows continuously, in any given direction, with constant luminous intensity and colour.")]
-		[EnumMember(Value = "Fixed")] 
-		Fixed = 1,
-		[System.ComponentModel.Description("A rhythmic light in which the total duration of light in a period is clearly shorter than the total duration of darkness and all the appearances of light are of equal duration.")]
-		[EnumMember(Value = "Flashing")] 
-		Flashing = 2,
-		[System.ComponentModel.Description("A single-flashing light in which an appearance of light of not less than two seconds duration is regularly repeated.")]
-		[EnumMember(Value = "Long-Flashing")] 
-		LongFlashing = 3,
-		[System.ComponentModel.Description("A rhythmic light in which flashes are repeated at a rate of not less than 50 flashes per minutes but less than 80 flashes per minutes. It may be: - Continuous quick-flashing: A quick-flashing light in which a flash is regularly repeated. - Group quick-flashing: A quick-flashing light in which a group of two or more flashes, which are specified in number, is regularly repeated.")]
-		[EnumMember(Value = "Quick-Flashing")] 
-		QuickFlashing = 4,
-		[System.ComponentModel.Description("A rhythmic light in which flashes are repeated at a rate of not less than 80 flashes per minute but less than 160 flashes per minute. It may be:- Continuous very quick-flashing: A very quick-flashing light in which a flash is regularly repeated.- Group very quick-flashing: A very quick-flashing light in which a group of two or more flashes, which are specified in number, is regularly repeated.")]
-		[EnumMember(Value = "Very Quick-Flashing")] 
-		VeryQuickFlashing = 5,
-		[System.ComponentModel.Description("A rhythmic light in which flashes are regularly repeated at a rate of not less than 160 flashes per minute.")]
-		[EnumMember(Value = "Continuous Ultra Quick-Flashing")] 
-		ContinuousUltraQuickFlashing = 6,
-		[System.ComponentModel.Description("A light with all durations of light and darkness equal.")]
-		[EnumMember(Value = "Isophased")] 
-		Isophased = 7,
-		[System.ComponentModel.Description("A rhythmic light in which the total duration of light in a period is clearly longer than the total duration of darkness and all the eclipses are of equal duration. It may be:  - Single-occulting: An occulting light in which an eclipse is regularly repeated.  - Group-occulting: An occulting light in which a group of two or more eclipses, which are specified in number, is regularly repeated.  - Composite group-occulting: An occulting light in which a sequence of groups of one or more eclipses, which are specified in number, is regularly repeated, and the groups comprise different numbers of eclipses.")]
-		[EnumMember(Value = "Occulting")] 
-		Occulting = 8,
-		[System.ComponentModel.Description("A light in which the ultra quick flashes (160 or more per minute) are interrupted at regular intervals by eclipses of long duration.")]
-		[EnumMember(Value = "Interrupted Ultra Quick-Flashing")] 
-		InterruptedUltraQuickFlashing = 11,
-		[System.ComponentModel.Description("A rhythmic light in which appearances of light of two clearly different durations are grouped to represent a character or characters in the Morse code.")]
-		[EnumMember(Value = "Morse")] 
-		Morse = 12,
-		[System.ComponentModel.Description("A rhythmic light in which a fixed light is combined with a flashing light of higher luminous intensity.")]
-		[EnumMember(Value = "Fixed and Flash")] 
-		FixedAndFlash = 13,
-		[System.ComponentModel.Description("A rhythmic light in which a flashing light is combined with a long-flashing light of higher luminous intensity.")]
-		[EnumMember(Value = "Flash and Long-Flash")] 
-		FlashAndLongFlash = 14,
-		[System.ComponentModel.Description("A rhythmic light in which an occulting light is combined with a flashing light of higher luminous intensity.")]
-		[EnumMember(Value = "Occulting and Flash")] 
-		OccultingAndFlash = 15,
-		[System.ComponentModel.Description("A rhythmic light in which a fixed light is combined with a long-flashing light of higher luminous intensity.")]
-		[EnumMember(Value = "Fixed and Long-Flash")] 
-		FixedAndLongFlash = 16,
-		[System.ComponentModel.Description("An alternating light in which the total duration of light in each period is clearly longer than the total duration of darkness and in which the intervals of darkness (occultations) are all of equal duration.")]
-		[EnumMember(Value = "Occulting Alternating")] 
-		OccultingAlternating = 17,
-		[System.ComponentModel.Description("An alternating single-flashing light in which an appearance of light of not less than two seconds duration is regularly repeated.")]
-		[EnumMember(Value = "Long-Flash Alternating")] 
-		LongFlashAlternating = 18,
-		[System.ComponentModel.Description("An alternating rhythmic light in which the total duration of light in a period is clearly shorter than the total duration of darkness and all the appearances of light are of equal duration.")]
-		[EnumMember(Value = "Flash Alternating")] 
-		FlashAlternating = 19,
-		[System.ComponentModel.Description("A rhythmic light in which a group of quick flashes is followed by one or more long flashes in a regularly repeated sequence with a regular periodicity.")]
-		[EnumMember(Value = "Quick-Flash Plus Long-Flash")] 
-		QuickFlashPlusLongFlash = 25,
-		[System.ComponentModel.Description("A rhythmic light in which a group of very quick flashes is followed by one or more long flashes in a regularly repeated sequence with a regular periodicity.")]
-		[EnumMember(Value = "Very Quick-Flash Plus Long-Flash")] 
-		VeryQuickFlashPlusLongFlash = 26,
-		[System.ComponentModel.Description("A rhythmic light in which a group of ultra quick flashes is followed by one or more long flashes in a regularly repeated sequence with a regular periodicity.")]
-		[EnumMember(Value = "Ultra Quick-Flash Plus Long-Flash")] 
-		UltraQuickFlashPlusLongFlash = 27,
-		[System.ComponentModel.Description("A signal light that shows continuously, in any given direction, two or more colours in a regularly repeated sequence with a regular periodicity.")]
-		[EnumMember(Value = "Alternating")] 
-		Alternating = 28,
-		[System.ComponentModel.Description("A rhythmic light in which a fixed light is combined with a flashing light of higher luminous intensity and different colour.")]
-		[EnumMember(Value = "Fixed and Alternating Flashing")] 
-		FixedAndAlternatingFlashing = 29,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
-	}
-
-	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-	[System.Serializable()]
-	public enum lightVisibility : int {
-		[System.ComponentModel.Description("Non-marine lights with a higher power than marine lights and visible from well off shore (often 'Aero' lights).")]
-		[EnumMember(Value = "High Intensity")] 
-		HighIntensity = 1,
-		[System.ComponentModel.Description("Non-marine lights with lower power than marine lights.")]
-		[EnumMember(Value = "Low Intensity")] 
-		LowIntensity = 2,
-		[System.ComponentModel.Description("A decrease in the apparent intensity of a light which may occur in the case of partial obstructions.")]
-		[EnumMember(Value = "Faint")] 
-		Faint = 3,
-		[System.ComponentModel.Description("A light in a sector is intensified (that is, has longer range than other sectors).")]
-		[EnumMember(Value = "Intensified")] 
-		Intensified = 4,
-		[System.ComponentModel.Description("A light in a sector is unintensified (that is, has shorter range than other sectors).")]
-		[EnumMember(Value = "Unintensified")] 
-		Unintensified = 5,
-		[System.ComponentModel.Description("A light sector is deliberately reduced in intensity, for example to reduce its effect on a built-up area.")]
-		[EnumMember(Value = "Visibility Deliberately Restricted")] 
-		VisibilityDeliberatelyRestricted = 6,
-		[System.ComponentModel.Description("Said of the arc of a light sector designated by its limiting bearings in which the light is not visible from seaward.")]
-		[EnumMember(Value = "Obscured")] 
-		Obscured = 7,
-		[System.ComponentModel.Description("This value specifies that parts of the sector are obscured.")]
-		[EnumMember(Value = "Partially Obscured")] 
-		PartiallyObscured = 8,
-		[System.ComponentModel.Description("Lights that must be in line to be visible.")]
-		[EnumMember(Value = "Visible in Line of Range")] 
-		VisibleInLineOfRange = 9,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
-	}
-
-	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-	[System.Serializable()]
-	public enum referenceDirection : int {
-		[System.ComponentModel.Description("")]
-		[EnumMember(Value = "East")] 
-		East = 5,
-		[System.ComponentModel.Description("")]
-		[EnumMember(Value = "West")] 
-		West = 13,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
-	}
-
-	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-	[System.Serializable()]
-	public enum marksNavigationalSystemOf : int {
-		[System.ComponentModel.Description("Navigational aids conform to the International Association of Lighthouse Authorities - IALA A system.")]
-		[EnumMember(Value = "IALA A")] 
-		IalaA = 1,
-		[System.ComponentModel.Description("Navigational aids conform to the International Association of Lighthouse Authorities - IALA B system.")]
-		[EnumMember(Value = "IALA B")] 
-		IalaB = 2,
-		[System.ComponentModel.Description("Navigational aids do not conform to any defined system.")]
-		[EnumMember(Value = "no system")] 
-		NoSystem = 9,
-		[System.ComponentModel.Description("Navigational aids as required in international, national or regional regulations that contain the same navigational aids as the European Code for Inland Waterways of UNECE, or if there is no regulation for a waterway, navigational aids as recommended in the European Code for Inland Waterways of UNECE.")]
-		[EnumMember(Value = "main European inland waterway marking system")] 
-		MainEuropeanInlandWaterwayMarkingSystem = 11,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
-	}
-
-	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-	[System.Serializable()]
-	public enum nameUsage : int {
-		[System.ComponentModel.Description("The name is intended to be displayed when the end-user system is set to the default name/text display setting.")]
-		[EnumMember(Value = "Default Name Display")] 
-		DefaultNameDisplay = 1,
-		[System.ComponentModel.Description("The name is intended to be displayed when the end-user system is set to an alternate name/text display setting, for example an alternate language.")]
-		[EnumMember(Value = "Alternate Name Display")] 
-		AlternateNameDisplay = 2,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
-	}
-
-	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-	[System.Serializable()]
-	public enum natureOfConstruction : int {
-		[System.ComponentModel.Description("Constructed of stones or bricks, usually quarried, shaped, and mortared.")]
-		[EnumMember(Value = "Masonry")] 
-		Masonry = 1,
-		[System.ComponentModel.Description("Constructed of concrete, a material made of sand and gravel that is united by cement into a hardened mass used for roads, foundations, etc.")]
-		[EnumMember(Value = "Concreted")] 
-		Concreted = 2,
-		[System.ComponentModel.Description("Constructed from large stones or blocks of concrete, often placed loosely for protection against waves or water turbulence.")]
-		[EnumMember(Value = "Loose Boulders")] 
-		LooseBoulders = 3,
-		[System.ComponentModel.Description("Constructed with a surface of hard material, usually a term applied to roads surfaced with asphalt or concrete.")]
-		[EnumMember(Value = "Hard Surfaced")] 
-		HardSurfaced = 4,
-		[System.ComponentModel.Description("Constructed with no extra protection, usually a term applied to roads not surfaced with a hard material.")]
-		[EnumMember(Value = "Unsurfaced")] 
-		Unsurfaced = 5,
-		[System.ComponentModel.Description("Constructed from wood.")]
-		[EnumMember(Value = "Wooden")] 
-		Wooden = 6,
-		[System.ComponentModel.Description("Constructed from metal.")]
-		[EnumMember(Value = "Metal")] 
-		Metal = 7,
-		[System.ComponentModel.Description("Constructed from a plastic material strengthened with fibres of glass.")]
-		[EnumMember(Value = "Glass Reinforced Plastic")] 
-		GlassReinforcedPlastic = 8,
-		[System.ComponentModel.Description("A structure of crossed wooden or metal strips usually arranged to form a diagonal pattern of open spaces between the strips.")]
-		[EnumMember(Value = "Latticed")] 
-		Latticed = 11,
-		[System.ComponentModel.Description("[1] Any artificial or natural substance having similar properties and composition, as fused borax, obsidian, or the like.   [2] Something made of such a substance, as a windowpane.")]
-		[EnumMember(Value = "Glass")] 
-		Glass = 12,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
-	}
-
-	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-	[System.Serializable()]
-	public enum natureOfSurface : int {
-		[System.ComponentModel.Description("Soft, wet earth.")]
-		[EnumMember(Value = "Mud")] 
-		Mud = 1,
-		[System.ComponentModel.Description("(Particles of less than 0.002mm); stiff, sticky earth that becomes hard when baked.")]
-		[EnumMember(Value = "Clay")] 
-		Clay = 2,
-		[System.ComponentModel.Description("An unconsolidated sediment whose particles range in size from 0.0039 to 0.0625 millimetres in diameter (between clay and sand size).")]
-		[EnumMember(Value = "Silt")] 
-		Silt = 3,
-		[System.ComponentModel.Description("Loose material consisting of small but easily distinguishable, separate grains, between 0.0625 and 2.000 millimetres in diameter.")]
-		[EnumMember(Value = "Sand")] 
-		Sand = 4,
-		[System.ComponentModel.Description("A general term for rock and rock fragments ranging in size from pebbles and gravel to boulders or large rock masses.")]
-		[EnumMember(Value = "Stone")] 
-		Stone = 5,
-		[System.ComponentModel.Description("(Particles of 2.0 - 4.0mm); small stones with coarse sand.")]
-		[EnumMember(Value = "Gravel")] 
-		Gravel = 6,
-		[System.ComponentModel.Description("A small stone worn smooth and rounded by the action of water, sand, ice, etc. ranging in diameter between 4 and 64 millimetres.")]
-		[EnumMember(Value = "Pebbles")] 
-		Pebbles = 7,
-		[System.ComponentModel.Description("A naturally rounded stone larger than a pebble.")]
-		[EnumMember(Value = "Cobbles")] 
-		Cobbles = 8,
-		[System.ComponentModel.Description("Any formation of natural origin that constitutes an integral part of the lithosphere. The natural occurring material that forms firm, hard, and solid masses.")]
-		[EnumMember(Value = "Rock")] 
-		Rock = 9,
-		[System.ComponentModel.Description("The fluid or semi-fluid matter flowing from a volcano. The substance that results from the cooling of the molten rock. Part of the ocean bed is composed of lava.")]
-		[EnumMember(Value = "Lava")] 
-		Lava = 11,
-		[System.ComponentModel.Description("Hard calcareous skeletons of many tribes of marine polyps.")]
-		[EnumMember(Value = "Coral")] 
-		Coral = 14,
-		[System.ComponentModel.Description("The hard outside covering of an animal. Part of the ocean bed is composed of numerous shells of marine animals.")]
-		[EnumMember(Value = "Shells")] 
-		Shells = 17,
-		[System.ComponentModel.Description("A rounded rock with diameter of 256 millimetres or larger.")]
-		[EnumMember(Value = "Boulder")] 
-		Boulder = 18,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
-	}
-
-	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-	[System.Serializable()]
-	public enum natureOfSurfaceQualifyingTerms : int {
-		[System.ComponentModel.Description("Falls within the smallest size continuum for a particular nature of surface term.")]
-		[EnumMember(Value = "Fine")] 
-		Fine = 1,
-		[System.ComponentModel.Description("Falls within the moderate size continuum for a particular nature of surface term.")]
-		[EnumMember(Value = "Medium")] 
-		Medium = 2,
-		[System.ComponentModel.Description("Falls within the largest size continuum for a particular nature of surface term.")]
-		[EnumMember(Value = "Coarse")] 
-		Coarse = 3,
-		[System.ComponentModel.Description("Fractured or in pieces.")]
-		[EnumMember(Value = "Broken")] 
-		Broken = 4,
-		[System.ComponentModel.Description("Having an adhesive or glue like property.")]
-		[EnumMember(Value = "Sticky")] 
-		Sticky = 5,
-		[System.ComponentModel.Description("Not hard or firm.")]
-		[EnumMember(Value = "Soft")] 
-		Soft = 6,
-		[System.ComponentModel.Description("Not pliant; thick, resistant to flow.")]
-		[EnumMember(Value = "Stiff")] 
-		Stiff = 7,
-		[System.ComponentModel.Description("Composed of or containing material ejected from a volcano.")]
-		[EnumMember(Value = "Volcanic")] 
-		Volcanic = 8,
-		[System.ComponentModel.Description("Composed of or containing calcium or calcium carbonate.")]
-		[EnumMember(Value = "Calcareous")] 
-		Calcareous = 9,
-		[System.ComponentModel.Description("Firm; usually refers to an area of the seafloor not covered by unconsolidated sediment.")]
-		[EnumMember(Value = "Hard")] 
-		Hard = 10,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
-	}
-
-	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-	[System.Serializable()]
-	public enum pilotMovement : int {
-		[System.ComponentModel.Description("The place where vessels not being navigated according to a pilot's instructions pick up a pilot while in transit from sea to a port or constricted waters for future navigation under pilot instructions.")]
-		[EnumMember(Value = "Embarkation")] 
-		Embarkation = 1,
-		[System.ComponentModel.Description("The place where vessels being navigated under a pilot's instructions in transit from sea to a port or constricted waters drop the pilot and proceed without being subject to pilot instructions.")]
-		[EnumMember(Value = "Disembarkation")] 
-		Disembarkation = 2,
-		[System.ComponentModel.Description("The place where vessels being navigated under a pilot's instructions drop off the pilot and pick up a different pilot for future navigation under pilot's instructions.")]
-		[EnumMember(Value = "Pilot Change")] 
-		PilotChange = 3,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
-	}
-
-	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-	[System.Serializable()]
-	public enum product : int {
-		[System.ComponentModel.Description("A thick, slippery liquid that will not dissolve in water, usually petroleum based in the context of storage tanks.")]
-		[EnumMember(Value = "Oil")] 
-		Oil = 1,
-		[System.ComponentModel.Description("A substance with particles that can move freely, usually a fuel substance in the context of storage tanks.")]
-		[EnumMember(Value = "Gas")] 
-		Gas = 2,
-		[System.ComponentModel.Description("A colourless, odourless, tasteless liquid that is a compound of hydrogen and oxygen.")]
-		[EnumMember(Value = "Water")] 
-		Water = 3,
-		[System.ComponentModel.Description("A general term for rock and rock fragments ranging in size from pebbles and gravel to boulders or large rock masses.")]
-		[EnumMember(Value = "Stone")] 
-		Stone = 4,
-		[System.ComponentModel.Description("A hard black mineral that is burned as fuel.")]
-		[EnumMember(Value = "Coal")] 
-		Coal = 5,
-		[System.ComponentModel.Description("A solid rock or mineral from which metal is obtained.")]
-		[EnumMember(Value = "Ore")] 
-		Ore = 6,
-		[System.ComponentModel.Description("Any substance obtained by or used in a chemical process.")]
-		[EnumMember(Value = "Chemicals")] 
-		Chemicals = 7,
-		[System.ComponentModel.Description("Water that is suitable for human consumption.")]
-		[EnumMember(Value = "Drinking Water")] 
-		DrinkingWater = 8,
-		[System.ComponentModel.Description("A white fluid secreted by female mammals as food for their young.")]
-		[EnumMember(Value = "Milk")] 
-		Milk = 9,
-		[System.ComponentModel.Description("A mineral from which aluminum is obtained.")]
-		[EnumMember(Value = "Bauxite")] 
-		Bauxite = 10,
-		[System.ComponentModel.Description("A solid substance obtained after gas and tar have been extracted from coal, used as a fuel.")]
-		[EnumMember(Value = "Coke")] 
-		Coke = 11,
-		[System.ComponentModel.Description("An oblong lump of cast iron metal.")]
-		[EnumMember(Value = "Iron Ingots")] 
-		IronIngots = 12,
-		[System.ComponentModel.Description("Sodium chloride obtained from mines or by the evaporation of sea water.")]
-		[EnumMember(Value = "Salt")] 
-		Salt = 13,
-		[System.ComponentModel.Description("Loose material consisting of small but easily distinguishable, separate grains, between 0.0625 and 2.000 millimetres in diameter.")]
-		[EnumMember(Value = "Sand")] 
-		Sand = 14,
-		[System.ComponentModel.Description("Wood prepared for use in building or carpentry.")]
-		[EnumMember(Value = "Timber")] 
-		Timber = 15,
-		[System.ComponentModel.Description("Powdery fragments of wood made in sawing timber or coarse chips produced for use in manufacturing pressed board.")]
-		[EnumMember(Value = "Sawdust/Wood Chips")] 
-		SawdustWoodChips = 16,
-		[System.ComponentModel.Description("Discarded metal suitable for being reprocessed.")]
-		[EnumMember(Value = "Scrap Metal")] 
-		ScrapMetal = 17,
-		[System.ComponentModel.Description("Natural gas that has been liquefied for ease of transport by cooling the gas to -162 Celsius.")]
-		[EnumMember(Value = "Liquefied Natural Gas")] 
-		LiquefiedNaturalGas = 18,
-		[System.ComponentModel.Description("A compressed gas consisting of flammable light hydrocarbons and derived from petroleum.")]
-		[EnumMember(Value = "Liquefied Petroleum Gas")] 
-		LiquefiedPetroleumGas = 19,
-		[System.ComponentModel.Description("The fermented juice of grapes.")]
-		[EnumMember(Value = "Wine")] 
-		Wine = 20,
-		[System.ComponentModel.Description("A substance made of powdered lime and clay, mixed with water.")]
-		[EnumMember(Value = "Cement")] 
-		Cement = 21,
-		[System.ComponentModel.Description("A small hard seed, especially that of any cereal plant such as wheat, rice, corn, rye etc.")]
-		[EnumMember(Value = "Grain")] 
-		Grain = 22,
-		[System.ComponentModel.Description("Electric charge or current.")]
-		[EnumMember(Value = "Electricity")] 
-		Electricity = 23,
-		[System.ComponentModel.Description("The solid form of water.")]
-		[EnumMember(Value = "Ice")] 
-		Ice = 24,
-		[System.ComponentModel.Description("(Particles of less than 0.002mm); stiff, sticky earth that becomes hard when baked.")]
-		[EnumMember(Value = "Clay")] 
-		Clay = 25,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
-	}
-
-	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-	[System.Serializable()]
-	public enum qualityOfHorizontalMeasurement : int {
-		[System.ComponentModel.Description("A position that is considered to be less than third-order accuracy, but is generally considered to be within 30.5 metres of its correct geographic location. Also may apply to a feature whose position does not remain fixed.")]
-		[EnumMember(Value = "Approximate")] 
-		Approximate = 4,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
-	}
-
-	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-	[System.Serializable()]
-	public enum qualityOfVerticalMeasurement : int {
-		[System.ComponentModel.Description("The depth from the chart datum to the seabed (or to the top of a drying feature) is known.")]
-		[EnumMember(Value = "Depth Known")] 
-		DepthKnown = 1,
-		[System.ComponentModel.Description("The depth from chart datum to the seabed, or the shoalest depth of the feature is unknown.")]
-		[EnumMember(Value = "Depth or Least Depth Unknown")] 
-		DepthOrLeastDepthUnknown = 2,
-		[System.ComponentModel.Description("A depth that may be less than indicated.")]
-		[EnumMember(Value = "Doubtful Sounding")] 
-		DoubtfulSounding = 3,
-		[System.ComponentModel.Description("A depth that is considered to be an unreliable value.")]
-		[EnumMember(Value = "Unreliable Sounding")] 
-		UnreliableSounding = 4,
-		[System.ComponentModel.Description("The shoalest depth over a feature is of known value.")]
-		[EnumMember(Value = "Least Depth Known")] 
-		LeastDepthKnown = 6,
-		[System.ComponentModel.Description("The least depth over a feature is unknown, but there is considered to be safe clearance at this depth.")]
-		[EnumMember(Value = "Least Depth Unknown, Safe Clearance at Value Shown")] 
-		LeastDepthUnknownSafeClearanceAtValueShown = 7,
-		[System.ComponentModel.Description("Depth value obtained from a report, but not fully surveyed.")]
-		[EnumMember(Value = "Value Reported (Not Surveyed)")] 
-		ValueReportedNotSurveyed = 8,
-		[System.ComponentModel.Description("Depth value obtained from a report, which it has not been possible to confirm.")]
-		[EnumMember(Value = "Value Reported (Not Confirmed)")] 
-		ValueReportedNotConfirmed = 9,
-		[System.ComponentModel.Description("The depth at which a channel is kept by human influence, usually by dredging.")]
-		[EnumMember(Value = "Maintained Depth")] 
-		MaintainedDepth = 10,
-		[System.ComponentModel.Description("Depths may be altered by human influence, but will not be routinely maintained.")]
-		[EnumMember(Value = "Not Regularly Maintained")] 
-		NotRegularlyMaintained = 11,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
-	}
-
-	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-	[System.Serializable()]
-	public enum referenceTide : int {
-		[System.ComponentModel.Description("The highest level reached at a place by the water surface in one oscillation.")]
-		[EnumMember(Value = "High Water")] 
-		HighWater = 1,
-		[System.ComponentModel.Description("The lowest level reached at a place by the water surface in one oscillation.")]
-		[EnumMember(Value = "Low Water")] 
-		LowWater = 2,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
-	}
-
-	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-	[System.Serializable()]
-	public enum referenceTideType : int {
-		[System.ComponentModel.Description("The tides of increased range occurring near the times of full moon and new moon.")]
-		[EnumMember(Value = "Springs")] 
-		Springs = 1,
-		[System.ComponentModel.Description("The tides of decreased range occurring near the times of first and last quarter.")]
-		[EnumMember(Value = "Neaps")] 
-		Neaps = 2,
-		[System.ComponentModel.Description("The tides of mean range occurring between spring and neap tides.")]
-		[EnumMember(Value = "Mean")] 
-		Mean = 3,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
-	}
-
-	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-	[System.Serializable()]
-	public enum restriction : int {
-		[System.ComponentModel.Description("An area within which anchoring is not permitted.")]
-		[EnumMember(Value = "Anchoring Prohibited")] 
-		AnchoringProhibited = 1,
-		[System.ComponentModel.Description("A specified area designated by appropriate authority, within which anchoring is restricted in accordance with certain specified conditions.")]
-		[EnumMember(Value = "Anchoring Restricted")] 
-		AnchoringRestricted = 2,
-		[System.ComponentModel.Description("An area within which fishing is not permitted.")]
-		[EnumMember(Value = "Fishing Prohibited")] 
-		FishingProhibited = 3,
-		[System.ComponentModel.Description("A specified area designated by appropriate authority, within which fishing is restricted in accordance with certain specified conditions.")]
-		[EnumMember(Value = "Fishing Restricted")] 
-		FishingRestricted = 4,
-		[System.ComponentModel.Description("An area within which trawling is not permitted.")]
-		[EnumMember(Value = "Trawling Prohibited")] 
-		TrawlingProhibited = 5,
-		[System.ComponentModel.Description("A specified area designated by appropriate authority, within which trawling is restricted in accordance with certain specified conditions.")]
-		[EnumMember(Value = "Trawling Restricted")] 
-		TrawlingRestricted = 6,
-		[System.ComponentModel.Description("An area within which navigation and/or anchoring is prohibited.")]
-		[EnumMember(Value = "Entry Prohibited")] 
-		EntryProhibited = 7,
-		[System.ComponentModel.Description("A specified area designated by appropriate authority, within which navigation is restricted in accordance with certain specified conditions.")]
-		[EnumMember(Value = "Entry Restricted")] 
-		EntryRestricted = 8,
-		[System.ComponentModel.Description("An area within which dredging is not permitted.")]
-		[EnumMember(Value = "Dredging Prohibited")] 
-		DredgingProhibited = 9,
-		[System.ComponentModel.Description("A specified area designated by appropriate authority, within which dredging is restricted in accordance with certain specified conditions.")]
-		[EnumMember(Value = "Dredging Restricted")] 
-		DredgingRestricted = 10,
-		[System.ComponentModel.Description("An area within which diving is not permitted.")]
-		[EnumMember(Value = "Diving Prohibited")] 
-		DivingProhibited = 11,
-		[System.ComponentModel.Description("A specified area designated by appropriate authority, within which diving is restricted in accordance with certain specified conditions.")]
-		[EnumMember(Value = "Diving Restricted")] 
-		DivingRestricted = 12,
-		[System.ComponentModel.Description("Mariners must adjust the speed of their vessels to reduce the wave or wash which may cause erosion or disturb moored vessels.")]
-		[EnumMember(Value = "No Wake")] 
-		NoWake = 13,
-		[System.ComponentModel.Description("An IMO declared routeing measure comprising an area within defined limits in which either navigation is particularly hazardous or it is exceptionally important to avoid casualties and which should be avoided by all ships, or certain classes of ships.")]
-		[EnumMember(Value = "Area To Be Avoided")] 
-		AreaToBeAvoided = 14,
-		[System.ComponentModel.Description("The erection of permanent or temporary fixed structures or artificial islands is prohibited.")]
-		[EnumMember(Value = "Construction Prohibited")] 
-		ConstructionProhibited = 15,
-		[System.ComponentModel.Description("An area within which discharging or dumping is prohibited.")]
-		[EnumMember(Value = "Discharging Prohibited")] 
-		DischargingProhibited = 16,
-		[System.ComponentModel.Description("A specified area designated by an appropriate authority, within which discharging or dumping is restricted in accordance with specified conditions.")]
-		[EnumMember(Value = "Discharging Restricted")] 
-		DischargingRestricted = 17,
-		[System.ComponentModel.Description("An area within which industrial or mineral exploration and development are prohibited.")]
-		[EnumMember(Value = "Industrial or Mineral Exploration/Development Prohibited")] 
-		IndustrialOrMineralExplorationDevelopmentProhibited = 18,
-		[System.ComponentModel.Description("A specified area designated by an appropriate authority, within which industrial or mineral exploration and development is restricted in accordance with certain specified conditions.")]
-		[EnumMember(Value = "Industrial or Mineral Exploration/Development Restricted")] 
-		IndustrialOrMineralExplorationDevelopmentRestricted = 19,
-		[System.ComponentModel.Description("An area within which excavating a hole on the seabed with a drill is prohibited.")]
-		[EnumMember(Value = "Drilling Prohibited")] 
-		DrillingProhibited = 20,
-		[System.ComponentModel.Description("A specified area designated by an appropriate authority, within which excavating a hole on the seabed with a drill is restricted in accordance with certain specified conditions.")]
-		[EnumMember(Value = "Drilling Restricted")] 
-		DrillingRestricted = 21,
-		[System.ComponentModel.Description("An area within which the removal of historical artefacts is prohibited.")]
-		[EnumMember(Value = "Removal of Historical Artefacts Prohibited")] 
-		RemovalOfHistoricalArtefactsProhibited = 22,
-		[System.ComponentModel.Description("An area in which cargo transhipment (lightening) is prohibited.")]
-		[EnumMember(Value = "Cargo Transhipment (Lightening) Prohibited")] 
-		CargoTranshipmentLighteningProhibited = 23,
-		[System.ComponentModel.Description("An area in which the dragging of anything along the seabed, for example bottom trawling, is prohibited.")]
-		[EnumMember(Value = "Dragging Prohibited")] 
-		DraggingProhibited = 24,
-		[System.ComponentModel.Description("An area in which a vessel is prohibited from stopping.")]
-		[EnumMember(Value = "Stopping Prohibited")] 
-		StoppingProhibited = 25,
-		[System.ComponentModel.Description("An area in which landing is prohibited.")]
-		[EnumMember(Value = "Landing Prohibited")] 
-		LandingProhibited = 26,
-		[System.ComponentModel.Description("An area within which speed is restricted.")]
-		[EnumMember(Value = "Speed Restricted")] 
-		SpeedRestricted = 27,
-		[System.ComponentModel.Description("An area in which swimming is prohibited.")]
-		[EnumMember(Value = "Swimming Prohibited")] 
-		SwimmingProhibited = 39,
-		[System.ComponentModel.Description("An area within which any vessel propelled by machinery is prohibited.")]
-		[EnumMember(Value = "Power-Driven Vessels Prohibited")] 
-		PowerDrivenVesselsProhibited = 42,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
-	}
-
-	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-	[System.Serializable()]
-	public enum signalGeneration : int {
-		[System.ComponentModel.Description("Signal generation is initiated by a self regulating mechanism such as a timer or light sensor.")]
-		[EnumMember(Value = "Automatically")] 
-		Automatically = 1,
-		[System.ComponentModel.Description("The signal is generated by the motion of the sea surface such as a bell in a buoy.")]
-		[EnumMember(Value = "By Wave Action")] 
-		ByWaveAction = 2,
-		[System.ComponentModel.Description("The signal is generated by a manually operated mechanism such as a hand cranked siren.")]
-		[EnumMember(Value = "By Hand")] 
-		ByHand = 3,
-		[System.ComponentModel.Description("The signal is generated by the motion of air such as a wind driven whistle.")]
-		[EnumMember(Value = "By Wind")] 
-		ByWind = 4,
-		[System.ComponentModel.Description("Activated by radio signal.")]
-		[EnumMember(Value = "Radio Activated")] 
-		RadioActivated = 5,
-		[System.ComponentModel.Description("Activated by making a call to a manned station.")]
-		[EnumMember(Value = "Call Activated")] 
-		CallActivated = 6,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
-	}
-
-	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-	[System.Serializable()]
-	public enum signalStatus : int {
-		[System.ComponentModel.Description("The indication of an element of a signal sequence being a period of light or sound.")]
-		[EnumMember(Value = "Lit/Sound")] 
-		LitSound = 1,
-		[System.ComponentModel.Description("The indication of an element of a signal sequence being a period of eclipse or silence.")]
-		[EnumMember(Value = "Eclipsed/Silent")] 
-		EclipsedSilent = 2,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
-	}
-
-	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-	[System.Serializable()]
-	public enum speedUnits : int {
-		[System.ComponentModel.Description("A unit of speed, expressing the number of kilometres travelled in one hour.")]
-		[EnumMember(Value = "Kilometres Per Hour")] 
-		KilometresPerHour = 2,
-		[System.ComponentModel.Description("An imperial and United States customary unit of speed expressing the number of statute miles covered in one hour.")]
-		[EnumMember(Value = "Miles Per Hour")] 
-		MilesPerHour = 3,
-		[System.ComponentModel.Description("A nautical unit of speed. One knot is one nautical mile per hour. The name is derived from the knots in the log line.")]
-		[EnumMember(Value = "Knots")] 
-		Knots = 4,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
-	}
-
-	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-	[System.Serializable()]
-	public enum status : int {
-		[System.ComponentModel.Description("Intended to last or function indefinitely.")]
-		[EnumMember(Value = "Permanent")] 
-		Permanent = 1,
-		[System.ComponentModel.Description("Acting on special occasions; happening irregularly.")]
-		[EnumMember(Value = "Occasional")] 
-		Occasional = 2,
-		[System.ComponentModel.Description("Presented as worthy of confidence, acceptance, use, etc.")]
+	public enum categoryOfRelationship : int {
+		[System.ComponentModel.Description("UseOfFacilityWaterwayOrServiceIsForbidden")]
+		[EnumMember(Value = "Prohibited")] 
+		Prohibited = 1,
+		[System.ComponentModel.Description("UseOfFacilityWaterwayOrServiceIsNotRecommended")]
+		[EnumMember(Value = "Not Recommended")] 
+		NotRecommended = 2,
+		[System.ComponentModel.Description("UseOfFacilityWaterwayOrServiceIsPermittedButNotRequired")]
+		[EnumMember(Value = "Permitted")] 
+		Permitted = 3,
+		[System.ComponentModel.Description("UseOfFacilityWaterwayOrServiceIsRecommended")]
 		[EnumMember(Value = "Recommended")] 
-		Recommended = 3,
-		[System.ComponentModel.Description("Use has ceased, but the facility still exists intact; disused.")]
-		[EnumMember(Value = "Not in Use")] 
-		NotInUse = 4,
-		[System.ComponentModel.Description("Recurring at intervals.")]
-		[EnumMember(Value = "Periodic/Intermittent")] 
-		PeriodicIntermittent = 5,
-		[System.ComponentModel.Description("Set apart for some specific use.")]
-		[EnumMember(Value = "Reserved")] 
-		Reserved = 6,
-		[System.ComponentModel.Description("Meant to last only for a time.")]
-		[EnumMember(Value = "Temporary")] 
-		Temporary = 7,
-		[System.ComponentModel.Description("Administered by an individual or corporation, rather than a State or a public body.")]
-		[EnumMember(Value = "Private")] 
-		Private = 8,
-		[System.ComponentModel.Description("Compulsory; enforced.")]
-		[EnumMember(Value = "Mandatory")] 
-		Mandatory = 9,
-		[System.ComponentModel.Description("No longer lit.")]
-		[EnumMember(Value = "Extinguished")] 
-		Extinguished = 11,
-		[System.ComponentModel.Description("Lit by flood lights, strip lights, etc.")]
-		[EnumMember(Value = "Illuminated")] 
-		Illuminated = 12,
-		[System.ComponentModel.Description("Famous in history; of historical interest.")]
-		[EnumMember(Value = "Historic")] 
-		Historic = 13,
-		[System.ComponentModel.Description("Belonging to, available to, used or shared by, the community as a whole and not restricted to private use.")]
-		[EnumMember(Value = "Public")] 
-		Public = 14,
-		[System.ComponentModel.Description("Occur at a time, coincide in point of time, be contemporary or simultaneous.")]
-		[EnumMember(Value = "Synchronized")] 
-		Synchronized = 15,
-		[System.ComponentModel.Description("Looked at or observed over a period of time especially so as to be aware of any movement or change.")]
-		[EnumMember(Value = "Watched")] 
-		Watched = 16,
-		[System.ComponentModel.Description("Usually automatic in operation, without any permanently-stationed personnel to superintend it.")]
-		[EnumMember(Value = "Unwatched")] 
-		Unwatched = 17,
-		[System.ComponentModel.Description("A feature that has been reported but has not been definitely determined to exist.")]
-		[EnumMember(Value = "Existence Doubtful")] 
-		ExistenceDoubtful = 18,
-		[System.ComponentModel.Description("Marked by buoys.")]
-		[EnumMember(Value = "Buoyed")] 
-		Buoyed = 28,
+		Recommended = 4,
+		[System.ComponentModel.Description("UseOfFacilityWaterwayOrServiceIsRequired")]
+		[EnumMember(Value = "Required")] 
+		Required = 5,
+		[System.ComponentModel.Description("UseOfFacilityWaterwayOrServiceIsNotRequired")]
+		[EnumMember(Value = "Not Required")] 
+		NotRequired = 6,
 		[System.ComponentModel.Description("Unknown value.")]
 		[EnumMember(Value = "Unknown")]
 		Unknown = -1,
@@ -3480,116 +288,13 @@ namespace S100Framework.DomainModel.S101 {
 
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 	[System.Serializable()]
-	public enum surveyType : int {
-		[System.ComponentModel.Description("A survey made (due to lack of time or facilities) to a lower degree of accuracy and detail than the chosen scale would normally indicate.")]
-		[EnumMember(Value = "Reconnaissance/Sketch Survey")] 
-		ReconnaissanceSketchSurvey = 1,
-		[System.ComponentModel.Description("A thorough survey usually conducted with reference to guidelines.")]
-		[EnumMember(Value = "Controlled Survey")] 
-		ControlledSurvey = 2,
-		[System.ComponentModel.Description("A survey principally aimed at the investigation of underwater obstructions and dangers.")]
-		[EnumMember(Value = "Examination Survey")] 
-		ExaminationSurvey = 4,
-		[System.ComponentModel.Description("A survey where soundings are acquired by vessels on passage.")]
-		[EnumMember(Value = "Passage Survey")] 
-		PassageSurvey = 5,
-		[System.ComponentModel.Description("A survey where features have been positioned and delimited using remote sensing techniques.")]
-		[EnumMember(Value = "Remotely Sensed")] 
-		RemotelySensed = 6,
-		[System.ComponentModel.Description("A survey achieving 100% coverage using systematic, controlled techniques providing full seafloor coverage or full coverage to a defined depth and an investigation of all contacts.")]
-		[EnumMember(Value = "Full Coverage")] 
-		FullCoverage = 7,
-		[System.ComponentModel.Description("A controlled survey but full coverage may not have been achieved.")]
-		[EnumMember(Value = "Systematic Survey")] 
-		SystematicSurvey = 8,
-		[System.ComponentModel.Description("A survey of lower quality than a full coverage and systematic survey. Such surveys may be further categorized as reconnaissance, sketch, track, passage, remotely sensed and spot-sounding surveys.")]
-		[EnumMember(Value = "Non-Systematic Survey")] 
-		NonSystematicSurvey = 9,
-		[System.ComponentModel.Description("Not surveyed to modern standards; or due to its age, scale, or positional or vertical uncertainties is not suitable to the type of navigation expected in the area.")]
-		[EnumMember(Value = "Inadequately Surveyed")] 
-		InadequatelySurveyed = 10,
-		[System.ComponentModel.Description("A survey that uses a regular (for example grid) or irregular pattern of soundings obtained one at a time, and normally with very wide spacing.")]
-		[EnumMember(Value = "Spot-Sounding Survey")] 
-		SpotSoundingSurvey = 11,
-		[System.ComponentModel.Description("A controlled, systematic survey to standard accuracy; using modern survey echo sounder with sonar sweep.")]
-		[EnumMember(Value = "Acoustically Swept Survey")] 
-		AcousticallySweptSurvey = 12,
-		[System.ComponentModel.Description("Swept areas where the clearance depth is accurately known but the actual seabed depth is not accurately known.")]
-		[EnumMember(Value = "Mechanically Swept Survey")] 
-		MechanicallySweptSurvey = 13,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
-	}
-
-	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-	[System.Serializable()]
-	public enum updateType : int {
-		[System.ComponentModel.Description("To put or introduce into the body of something.")]
-		[EnumMember(Value = "Insert")] 
-		Insert = 1,
-		[System.ComponentModel.Description("To eliminate especially by removing, cutting out or erasing.")]
-		[EnumMember(Value = "Delete")] 
-		Delete = 2,
-		[System.ComponentModel.Description("To make basic or fundamental changes to the characteristics of something, often to give a new orientation to or to serve a new end.")]
-		[EnumMember(Value = "Modify")] 
-		Modify = 3,
-		[System.ComponentModel.Description("To change the place or position of something.")]
-		[EnumMember(Value = "Move")] 
-		Move = 4,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
-	}
-
-	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-	[System.Serializable()]
-	public enum techniqueOfVerticalMeasurement : int {
-		[System.ComponentModel.Description("The depth was measured by using an instrument that determines depth of water by measuring the time interval between emission of a sonic or ultrasonic signal and return of its echo from the bottom.")]
-		[EnumMember(Value = "Found by Echo Sounder")] 
-		FoundByEchoSounder = 1,
-		[System.ComponentModel.Description("The depth was computed from a record produced by active sonar in which fixed acoustic beams are directed into the water perpendicularly to the direction of travel to scan the seabed and generate a record of the seabed configuration.")]
-		[EnumMember(Value = "Found by Side Scan Sonar")] 
-		FoundBySideScanSonar = 2,
-		[System.ComponentModel.Description("The depth was measured by using a wide swath echo sounder that uses multiple beams to measure depths directly below and transverse to the ship's track.")]
-		[EnumMember(Value = "Found by Multi Beam")] 
-		FoundByMultiBeam = 3,
-		[System.ComponentModel.Description("The depth was determined by a person skilled in the practice of diving.")]
-		[EnumMember(Value = "Found by Diver")] 
-		FoundByDiver = 4,
-		[System.ComponentModel.Description("The depth was measured by using a line, graduated with attached marks and fastened to a sounding lead.")]
-		[EnumMember(Value = "Found by Lead Line")] 
-		FoundByLeadLine = 5,
-		[System.ComponentModel.Description("The given area has been swept using a system comprised of multiple echo sounder transducers attached to booms deployed from the survey vessel.")]
-		[EnumMember(Value = "Swept by Vertical Acoustic System")] 
-		SweptByVerticalAcousticSystem = 8,
-		[System.ComponentModel.Description("The depth was determined by using an instrument that compares electromagnetic signals.")]
-		[EnumMember(Value = "Found by Electromagnetic Sensor")] 
-		FoundByElectromagneticSensor = 9,
-		[System.ComponentModel.Description("The science or art of obtaining reliable measurements from photographs.")]
-		[EnumMember(Value = "Photogrammetry")] 
-		Photogrammetry = 10,
-		[System.ComponentModel.Description("The depth was determined by using instruments placed aboard an artificial satellite.")]
-		[EnumMember(Value = "Satellite Imagery")] 
-		SatelliteImagery = 11,
-		[System.ComponentModel.Description("The depth was determined by using levelling techniques to find the elevation of the point relative to a datum.")]
-		[EnumMember(Value = "Found by Levelling")] 
-		FoundByLevelling = 12,
-		[System.ComponentModel.Description("The given area was determined to be free from navigational dangers to a certain depth by towing a side scan sonar.")]
-		[EnumMember(Value = "Swept by Side Scan Sonar")] 
-		SweptBySideScanSonar = 13,
-		[System.ComponentModel.Description("The depth was measured by using an instrument that measures distance by emitting timed pulses of laser light and measuring the time between emission and reception of the reflected pulses.")]
-		[EnumMember(Value = "Found by LIDAR")] 
-		FoundByLidar = 15,
-		[System.ComponentModel.Description("A radar with a synthetic aperture antenna which is composed of a large number of elementary transducing elements. The signals are electronically combined into a resulting signal equivalent to that of a single antenna of a given aperture in a given direction.")]
-		[EnumMember(Value = "Synthetic Aperture Radar")] 
-		SyntheticApertureRadar = 16,
-		[System.ComponentModel.Description("Term used to describe the imagery derived from subdividing the electromagnetic spectrum into very narrow bandwidths. These narrow bandwidths may be combined with or subtracted from each other in various ways to form images useful in precise terrain or target analysis.")]
-		[EnumMember(Value = "Hyperspectral Imagery")] 
-		HyperspectralImagery = 17,
-		[System.ComponentModel.Description("The given area was determined to be free from navigational dangers to a certain depth by towing a line or object below the surface at the desired depth; or least depth(s) and position(s) within an area was identified using the same technique.")]
-		[EnumMember(Value = "Mechanically Swept")] 
-		MechanicallySwept = 18,
+	public enum membership : int {
+		[System.ComponentModel.Description("VesselsWithTheseCharacteristicsAreIncludedInTheRegulationRestrictionRecommendationNauticalInformation")]
+		[EnumMember(Value = "included")] 
+		Included = 1,
+		[System.ComponentModel.Description("VesselsWithTheseCharacteristicsAreExcludedFromTheRegulationRestrictionRecommendationNauticalInformation")]
+		[EnumMember(Value = "excluded")] 
+		Excluded = 2,
 		[System.ComponentModel.Description("Unknown value.")]
 		[EnumMember(Value = "Unknown")]
 		Unknown = -1,
@@ -3598,28 +303,28 @@ namespace S100Framework.DomainModel.S101 {
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 	[System.Serializable()]
 	public enum telecommunicationService : int {
-		[System.ComponentModel.Description("The transfer or exchange of information by using sounds that are being made by mouth and throat when speaking.")]
+		[System.ComponentModel.Description("TheTransferOrExchangeOfInformationByUsingSoundsThatAreBeingMadeByMouthAndThroatWhenSpeaking")]
 		[EnumMember(Value = "Voice")] 
 		Voice = 1,
-		[System.ComponentModel.Description("A system of transmitting and reproducing graphic matter (as printing or still pictures) by means of signals sent over telephone lines.")]
+		[System.ComponentModel.Description("ASystemOfTransmittingAndReproducingGraphicMatterAsPrintingOrStillPicturesByMeansOfSignalsSentOverTelephoneLines")]
 		[EnumMember(Value = "Facsimile")] 
 		Facsimile = 2,
-		[System.ComponentModel.Description("Short Message Service is a form of text messaging communication on phones and mobile phones.")]
+		[System.ComponentModel.Description("ShortMessageServiceIsAFormOfTextMessagingCommunicationOnPhonesAndMobilePhones")]
 		[EnumMember(Value = "SMS")] 
 		Sms = 3,
-		[System.ComponentModel.Description("A representation of facts, concepts or instructions in a formalised manner suitable for communication, interpretation or processing.")]
+		[System.ComponentModel.Description("ARepresentationOfFactsConceptsOrInstructionsInAFormalisedMannerSuitableForCommunicationInterpretationOrProcessing")]
 		[EnumMember(Value = "Data")] 
 		Data = 4,
-		[System.ComponentModel.Description("Data that is constantly received by and presented to an end-user while being delivered by a provider.")]
+		[System.ComponentModel.Description("DataThatIsConstantlyReceivedByAndPresentedToAnEndUserWhileBeingDeliveredByAProvider")]
 		[EnumMember(Value = "Streamed Data")] 
 		StreamedData = 5,
-		[System.ComponentModel.Description("A system of communication in which messages are sent over long distances by using a telephone system and are printed by using a special machine (called a teletypewriter).")]
+		[System.ComponentModel.Description("ASystemOfCommunicationInWhichMessagesAreSentOverLongDistancesByUsingATelephoneSystemAndArePrintedByUsingASpecialMachineCalledATeletypewriter")]
 		[EnumMember(Value = "Telex")] 
 		Telex = 6,
-		[System.ComponentModel.Description("An apparatus, system or process for communication at a distance by electric transmission over wire.")]
+		[System.ComponentModel.Description("AnApparatusSystemOrProcessForCommunicationAtADistanceByElectricTransmissionOverWire")]
 		[EnumMember(Value = "Telegraph")] 
 		Telegraph = 7,
-		[System.ComponentModel.Description("Messages and other data exchanged between individuals using computers in a network.")]
+		[System.ComponentModel.Description("MessagesAndOtherDataExchangedBetweenIndividualsUsingComputersInANetwork")]
 		[EnumMember(Value = "Email")] 
 		Email = 8,
 		[System.ComponentModel.Description("Unknown value.")]
@@ -3629,13 +334,16 @@ namespace S100Framework.DomainModel.S101 {
 
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 	[System.Serializable()]
-	public enum textType : int {
-		[System.ComponentModel.Description("The individual name of a feature.")]
-		[EnumMember(Value = "Name")] 
-		Name = 1,
-		[System.ComponentModel.Description("A distinguishing trait, quality, or property of a feature class.")]
-		[EnumMember(Value = "Feature Characteristic")] 
-		FeatureCharacteristic = 2,
+	public enum categoryOfSchedule : int {
+		[System.ComponentModel.Description("TheServiceOfficeIsOpenFullyMannedAndOperatingNormallyOrTheAreaIsAccessibleAsUsual")]
+		[EnumMember(Value = "Normal Operation")] 
+		NormalOperation = 1,
+		[System.ComponentModel.Description("TheServiceOfficeOrAreaIsClosed")]
+		[EnumMember(Value = "Closure")] 
+		Closure = 2,
+		[System.ComponentModel.Description("TheServiceIsAvailableButNotManned")]
+		[EnumMember(Value = "Unmanned Operation")] 
+		UnmannedOperation = 3,
 		[System.ComponentModel.Description("Unknown value.")]
 		[EnumMember(Value = "Unknown")]
 		Unknown = -1,
@@ -3643,317 +351,70 @@ namespace S100Framework.DomainModel.S101 {
 
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 	[System.Serializable()]
-	public enum topmarkDaymarkShape : int {
-		[System.ComponentModel.Description("Is where the vertex points up.")]
-		[EnumMember(Value = "Cone (Point Up)")] 
-		ConePointUp = 1,
-		[System.ComponentModel.Description("Is where the vertex points down.")]
-		[EnumMember(Value = "Cone (Point Down)")] 
-		ConePointDown = 2,
-		[System.ComponentModel.Description("A curved surface all points of which are equidistant from a fixed point within, called the centre.")]
-		[EnumMember(Value = "Sphere")] 
-		Sphere = 3,
-		[System.ComponentModel.Description("Two spheres, one above the other. Two black spheres are commonly used as an International Association of Lighthouse Authorities - IALA topmark (isolated danger).")]
-		[EnumMember(Value = "2 Spheres")] 
-		twoSpheres = 4,
-		[System.ComponentModel.Description("A solid geometrical figure generated by straight lines fixed in direction and describing with one of point a closed curve, especially a circle (in which case the figure is circular cylinder, its ends being parallel circles).")]
-		[EnumMember(Value = "Cylinder")] 
-		Cylinder = 5,
-		[System.ComponentModel.Description("Usually of rectangular shape, made from timber or metal and used to provide a contrast with the natural background of a daymark. The actual daymark is often painted on to this board.")]
-		[EnumMember(Value = "Board")] 
-		Board = 6,
-		[System.ComponentModel.Description("Having a shape or a cross-section like the capital letter X.")]
-		[EnumMember(Value = "X-Shaped")] 
-		XShaped = 7,
-		[System.ComponentModel.Description("A cross with one vertical member and one horizontal member; that is, similar in shape to the character '+'.")]
-		[EnumMember(Value = "Upright Cross")] 
-		UprightCross = 8,
-		[System.ComponentModel.Description("A cube standing on one of its vertexes. A cube is a solid contained by six equal squares, a regular hexahedron.")]
-		[EnumMember(Value = "Cube (Point Up)")] 
-		CubePointUp = 9,
-		[System.ComponentModel.Description("2 cones, one above the other, with their vertices together in the centre.")]
-		[EnumMember(Value = "2 Cones (Point to Point)")] 
-		twoConesPointToPoint = 10,
-		[System.ComponentModel.Description("2 cones, one above the other, with their bases together in the centre and their vertices pointing up and down.")]
-		[EnumMember(Value = "2 Cones (Base to Base)")] 
-		twoConesBaseToBase = 11,
-		[System.ComponentModel.Description("A plane figure having four equal sides and equal opposite angles (two acute and two obtuse); an oblique equilateral parallelogram.")]
-		[EnumMember(Value = "Rhombus")] 
-		Rhombus = 12,
-		[System.ComponentModel.Description("2 cones, one above the other, with their vertices pointing up.")]
-		[EnumMember(Value = "2 Cones (Points Upward)")] 
-		twoConesPointsUpward = 13,
-		[System.ComponentModel.Description("2 cones, one above the other, with their vertices pointing down.")]
-		[EnumMember(Value = "2 Cones (Points Downward)")] 
-		twoConesPointsDownward = 14,
-		[System.ComponentModel.Description("A bundle of rods or twigs. A besom, point up is where the thicker (untied) end of the besom is at the bottom.")]
-		[EnumMember(Value = "Besom (Point Up)")] 
-		BesomPointUp = 15,
-		[System.ComponentModel.Description("A bundle of rods or twigs. A besom, point down is where the thinner (tied) end of the besom is at the bottom.")]
-		[EnumMember(Value = "Besom (Point Down)")] 
-		BesomPointDown = 16,
-		[System.ComponentModel.Description("A flag mounted on a short pole.")]
-		[EnumMember(Value = "Flag")] 
-		Flag = 17,
-		[System.ComponentModel.Description("A sphere located above a rhombus.")]
-		[EnumMember(Value = "Sphere Over a Rhombus")] 
-		SphereOverARhombus = 18,
-		[System.ComponentModel.Description("A plane figure with four right angles and four equal straight sides.")]
-		[EnumMember(Value = "Square")] 
-		Square = 19,
-		[System.ComponentModel.Description("A horizontal rectangle is where the two longer opposite sides are standing horizontally.")]
-		[EnumMember(Value = "Rectangle (Horizontal)")] 
-		RectangleHorizontal = 20,
-		[System.ComponentModel.Description("A vertical rectangle is where the two longer opposite sides are standing vertically.")]
-		[EnumMember(Value = "Rectangle (Vertical)")] 
-		RectangleVertical = 21,
-		[System.ComponentModel.Description("A quadrilateral having one pair of opposite sides parallel, and which stands on its longer parallel side.")]
-		[EnumMember(Value = "Trapezium (Up)")] 
-		TrapeziumUp = 22,
-		[System.ComponentModel.Description("A quadrilateral having one pair of opposite sides parallel, and which stands on its shorter parallel side.")]
-		[EnumMember(Value = "Trapezium (Down)")] 
-		TrapeziumDown = 23,
-		[System.ComponentModel.Description("A figure having three angles and three sides, and which has a vertex at the top.")]
-		[EnumMember(Value = "Triangle (Point Up)")] 
-		TrianglePointUp = 24,
-		[System.ComponentModel.Description("A figure having three angles and three sides, and which has a side at the top.")]
-		[EnumMember(Value = "Triangle (Point Down)")] 
-		TrianglePointDown = 25,
-		[System.ComponentModel.Description("A perfectly round plane figure whose circumference is everywhere equidistant from its centre.")]
-		[EnumMember(Value = "Circle")] 
-		Circle = 26,
-		[System.ComponentModel.Description("Two upright crosses, generally vertically disposed one above the other.")]
-		[EnumMember(Value = "Two Upright Crosses (One Over the Other)")] 
-		TwoUprightCrossesOneOverTheOther = 27,
-		[System.ComponentModel.Description("Having a shape like the capital letter T.")]
-		[EnumMember(Value = "T-Shape")] 
-		TShape = 28,
-		[System.ComponentModel.Description("A triangle, vertex uppermost, located above a circle.")]
-		[EnumMember(Value = "Triangle Pointing Up Over a Circle")] 
-		TrianglePointingUpOverACircle = 29,
-		[System.ComponentModel.Description("An upright cross located above a circle.")]
-		[EnumMember(Value = "Upright Cross Over a Circle")] 
-		UprightCrossOverACircle = 30,
-		[System.ComponentModel.Description("A rhombus located above a circle.")]
-		[EnumMember(Value = "Rhombus Over a Circle")] 
-		RhombusOverACircle = 31,
-		[System.ComponentModel.Description("A circle located over a triangle, vertex uppermost.")]
-		[EnumMember(Value = "Circle Over a Triangle Pointing Up")] 
-		CircleOverATrianglePointingUp = 32,
-		[System.ComponentModel.Description("An uncommon and/or non-standardized shape as textually described using an associated attribute.")]
-		[EnumMember(Value = "Other Shape (See Shape Information)")] 
-		OtherShapeSeeShapeInformation = 33,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
-	}
-
-	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-	[System.Serializable()]
-	public enum trafficFlow : int {
-		[System.ComponentModel.Description("Traffic flow in a general direction toward a port or similar destination.")]
-		[EnumMember(Value = "Inbound")] 
-		Inbound = 1,
-		[System.ComponentModel.Description("Traffic flow in a general direction away from a port or similar point of origin.")]
-		[EnumMember(Value = "Outbound")] 
-		Outbound = 2,
-		[System.ComponentModel.Description("Traffic flow in one general direction only.")]
-		[EnumMember(Value = "One-Way")] 
-		OneWay = 3,
-		[System.ComponentModel.Description("Traffic flow in two generally opposite directions.")]
-		[EnumMember(Value = "Two-Way")] 
-		TwoWay = 4,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
-	}
-
-	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-	[System.Serializable()]
-	public enum verticalDatum : int {
-		[System.ComponentModel.Description("The average height of the low waters of spring tides. This level is used as a tidal datum in some areas.")]
-		[EnumMember(Value = "Mean Low Water Springs")] 
-		MeanLowWaterSprings = 1,
-		[System.ComponentModel.Description("The average height of lower low water springs at a place.")]
-		[EnumMember(Value = "Mean Lower Low Water Springs")] 
-		MeanLowerLowWaterSprings = 2,
-		[System.ComponentModel.Description("The average height of the surface of the sea at a tide station for all stages of the tide over a 19-year period, usually determined from hourly height readings measured from a fixed predetermined reference level.")]
-		[EnumMember(Value = "Mean Sea Level")] 
-		MeanSeaLevel = 3,
-		[System.ComponentModel.Description("An arbitrary level conforming to the lowest tide observed at a place, or somewhat lower.")]
-		[EnumMember(Value = "Lowest Low Water")] 
-		LowestLowWater = 4,
-		[System.ComponentModel.Description("The average height of all low waters at a place over a 19-year period.")]
-		[EnumMember(Value = "Mean Low Water")] 
-		MeanLowWater = 5,
-		[System.ComponentModel.Description("An arbitrary level conforming to the lowest water level observed at a place at spring tides during a period of time shorter than 19 years.")]
-		[EnumMember(Value = "Lowest Low Water Springs")] 
-		LowestLowWaterSprings = 6,
-		[System.ComponentModel.Description("An arbitrary level, usually within 0.3m from that of Mean Low Water Springs (MLWS).")]
-		[EnumMember(Value = "Approximate Mean Low Water Springs")] 
-		ApproximateMeanLowWaterSprings = 7,
-		[System.ComponentModel.Description("An arbitrary tidal datum approximating the level of the mean of the lower low water at spring tides. It was first used in waters surrounding India.")]
-		[EnumMember(Value = "Indian Spring Low Water")] 
-		IndianSpringLowWater = 8,
-		[System.ComponentModel.Description("An arbitrary level, approximating that of mean low water springs (MLWS).")]
-		[EnumMember(Value = "Low Water Springs")] 
-		LowWaterSprings = 9,
-		[System.ComponentModel.Description("An arbitrary level, usually within 0.3m from that of Lowest Astronomical Tide (LAT).")]
-		[EnumMember(Value = "Approximate Lowest Astronomical Tide")] 
-		ApproximateLowestAstronomicalTide = 10,
-		[System.ComponentModel.Description("An arbitrary level approximating the lowest water level observed at a place, usually equivalent to the Indian Spring Low Water (ISLW).")]
-		[EnumMember(Value = "Nearly Lowest Low Water")] 
-		NearlyLowestLowWater = 11,
-		[System.ComponentModel.Description("The average height of the lower low waters at a place over a 19-year period.")]
-		[EnumMember(Value = "Mean Lower Low Water")] 
-		MeanLowerLowWater = 12,
-		[System.ComponentModel.Description("The lowest level reached at a place by the water surface in one oscillation.")]
-		[EnumMember(Value = "Low Water")] 
-		LowWater = 13,
-		[System.ComponentModel.Description("An arbitrary level, usually within 0.3m from that of Mean Low Water (MLW).")]
-		[EnumMember(Value = "Approximate Mean Low Water")] 
-		ApproximateMeanLowWater = 14,
-		[System.ComponentModel.Description("An arbitrary level, usually within 0.3m from that of Mean Lower Low Water (MLLW).")]
-		[EnumMember(Value = "Approximate Mean Lower Low Water")] 
-		ApproximateMeanLowerLowWater = 15,
-		[System.ComponentModel.Description("The average height of all high waters at a place over a 19-year period.")]
-		[EnumMember(Value = "Mean High Water")] 
-		MeanHighWater = 16,
-		[System.ComponentModel.Description("The average height of the high waters of spring tides.")]
-		[EnumMember(Value = "Mean High Water Springs")] 
-		MeanHighWaterSprings = 17,
-		[System.ComponentModel.Description("The highest level reached at a place by the water surface in one oscillation.")]
-		[EnumMember(Value = "High Water")] 
-		HighWater = 18,
-		[System.ComponentModel.Description("An arbitrary level, usually within 0.3m from that of Mean Sea Level (MSL).")]
-		[EnumMember(Value = "Approximate Mean Sea Level")] 
-		ApproximateMeanSeaLevel = 19,
-		[System.ComponentModel.Description("An arbitrary level, approximating that of mean high water springs (MHWS).")]
-		[EnumMember(Value = "High Water Springs")] 
-		HighWaterSprings = 20,
-		[System.ComponentModel.Description("The average height of higher high waters at a place over a 19-year period.")]
-		[EnumMember(Value = "Mean Higher High Water")] 
-		MeanHigherHighWater = 21,
-		[System.ComponentModel.Description("The level of low water springs near the time of an equinox.")]
-		[EnumMember(Value = "Equinoctial Spring Low Water")] 
-		EquinoctialSpringLowWater = 22,
-		[System.ComponentModel.Description("The lowest tide level which can be predicted to occur under average meteorological conditions and under any combination of astronomical conditions.")]
-		[EnumMember(Value = "Lowest Astronomical Tide")] 
-		LowestAstronomicalTide = 23,
-		[System.ComponentModel.Description("An arbitrary datum defined by a local harbour authority, from which levels and tidal heights are measured by this authority.")]
-		[EnumMember(Value = "Local Datum")] 
-		LocalDatum = 24,
-		[System.ComponentModel.Description("A vertical reference system with its zero based on the mean water level at Rimouski/Pointe-au-Père, Quebec, over the period 1970 to 1988.")]
-		[EnumMember(Value = "International Great Lakes Datum 1985")] 
-		InternationalGreatLakesDatum1985 = 25,
-		[System.ComponentModel.Description("The average of all hourly water levels over the available period of record.")]
-		[EnumMember(Value = "Mean Water Level")] 
-		MeanWaterLevel = 26,
-		[System.ComponentModel.Description("The average of the lowest low waters, one from each of 19 years of observations.")]
-		[EnumMember(Value = "Lower Low Water Large Tide")] 
-		LowerLowWaterLargeTide = 27,
-		[System.ComponentModel.Description("The average of the highest high waters, one from each of 19 years of observations.")]
-		[EnumMember(Value = "Higher High Water Large Tide")] 
-		HigherHighWaterLargeTide = 28,
-		[System.ComponentModel.Description("An arbitrary level approximating the highest water level observed at a place, usually equivalent to the high water springs.")]
-		[EnumMember(Value = "Nearly Highest High Water")] 
-		NearlyHighestHighWater = 29,
-		[System.ComponentModel.Description("The highest tidal level which can be predicted to occur under average meteorological conditions and under any combination of astronomical conditions.")]
-		[EnumMember(Value = "Highest Astronomical Tide")] 
-		HighestAstronomicalTide = 30,
-		[System.ComponentModel.Description("The datum refers to each Baltic country's realization of the European Vertical Reference System (EVRS) with land-uplift epoch 2000, which is connected to the Normaal Amsterdams Peil (NAP).")]
-		[EnumMember(Value = "Baltic Sea Chart Datum 2000")] 
-		BalticSeaChartDatum2000 = 44,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
-	}
-
-	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-	[System.Serializable()]
-	public enum virtualAISAidToNavigationType : int {
-		[System.ComponentModel.Description("Indicates that it should be passed to the north side of the aid.")]
-		[EnumMember(Value = "North Cardinal")] 
-		NorthCardinal = 1,
-		[System.ComponentModel.Description("Indicates that it should be passed to the east side of the aid.")]
-		[EnumMember(Value = "East Cardinal")] 
-		EastCardinal = 2,
-		[System.ComponentModel.Description("Indicates that it should be passed to the south side of the aid.")]
-		[EnumMember(Value = "South Cardinal")] 
-		SouthCardinal = 3,
-		[System.ComponentModel.Description("Indicates that it should be passed to the west side of the aid.")]
-		[EnumMember(Value = "West Cardinal")] 
-		WestCardinal = 4,
-		[System.ComponentModel.Description("Indicates the port boundary of a navigational channel or suggested route when proceeding in the “conventional direction of buoyage” in the IALA A system.")]
-		[EnumMember(Value = "Port Lateral (IALA A)")] 
-		PortLateralIalaA = 5,
-		[System.ComponentModel.Description("Indicates the starboard boundary of a navigational channel or suggested route when proceeding in the “conventional direction of buoyage” in the IALA A system.")]
-		[EnumMember(Value = "Starboard Lateral (IALA A)")] 
-		StarboardLateralIalaA = 6,
-		[System.ComponentModel.Description("Indicates the port boundary of a navigational channel or suggested route when proceeding in the “conventional direction of buoyage” in the IALA B system.")]
-		[EnumMember(Value = "Port Lateral (IALA B)")] 
-		PortLateralIalaB = 7,
-		[System.ComponentModel.Description("Indicates the starboard boundary of a navigational channel or suggested route when proceeding in the “conventional direction of buoyage” in the IALA B system.")]
-		[EnumMember(Value = "Starboard Lateral (IALA B)")] 
-		StarboardLateralIalaB = 8,
-		[System.ComponentModel.Description("A mark used alone to indicate a dangerous reef or shoal. The mark may be passed on either hand.")]
-		[EnumMember(Value = "Isolated Danger")] 
-		IsolatedDanger = 9,
-		[System.ComponentModel.Description("Indicates that there is navigable water around the mark.")]
-		[EnumMember(Value = "Safe Water")] 
-		SafeWater = 10,
-		[System.ComponentModel.Description("A special purpose aid is primarily used to indicate an area or feature, the nature of which is apparent from reference to a chart, Sailing Directions or Notice to Mariners.")]
-		[EnumMember(Value = "Special Purpose")] 
-		SpecialPurpose = 11,
-		[System.ComponentModel.Description("A mark used to indicate the existence of a recent wreck.")]
-		[EnumMember(Value = "Emergency Wreck Marking")] 
-		EmergencyWreckMarking = 12,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
-	}
-
-	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-	[System.Serializable()]
-	public enum visualProminence : int {
-		[System.ComponentModel.Description("Term applied to an object either natural or artificial which is distinctly and notably visible from seaward.")]
-		[EnumMember(Value = "Visually Conspicuous")] 
-		VisuallyConspicuous = 1,
-		[System.ComponentModel.Description("An object that may be visible from seaward, but cannot be used as a fixing mark and is not conspicuous.")]
-		[EnumMember(Value = "Not Visually Conspicuous")] 
-		NotVisuallyConspicuous = 2,
-		[System.ComponentModel.Description("Objects which are easily identifiable, but do not justify being classed as conspicuous.")]
-		[EnumMember(Value = "Prominent")] 
-		Prominent = 3,
-		[System.ComponentModel.Description("Unknown value.")]
-		[EnumMember(Value = "Unknown")]
-		Unknown = -1,
-	}
-
-	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-	[System.Serializable()]
-	public enum waterLevelEffect : int {
-		[System.ComponentModel.Description("Partially covered and partially dry at high water.")]
-		[EnumMember(Value = "Partly Submerged at High Water")] 
-		PartlySubmergedAtHighWater = 1,
-		[System.ComponentModel.Description("Not covered at high water under average meteorological conditions.")]
-		[EnumMember(Value = "Always Dry")] 
-		AlwaysDry = 2,
-		[System.ComponentModel.Description("Remains covered by water at all times under average meteorological conditions.")]
-		[EnumMember(Value = "Always Under Water/Submerged")] 
-		AlwaysUnderWaterSubmerged = 3,
-		[System.ComponentModel.Description("Expression intended to indicate an area of a reef or other projection from the bottom of a body of water which periodically extends above and is submerged below the surface. Also referred to as dries or uncovers.")]
-		[EnumMember(Value = "Covers and Uncovers")] 
-		CoversAndUncovers = 4,
-		[System.ComponentModel.Description("Flush with, or washed by the waves at low water under average meteorological conditions.")]
-		[EnumMember(Value = "Awash")] 
-		Awash = 5,
-		[System.ComponentModel.Description("An area periodically covered by flood water, excluding tidal waters.")]
-		[EnumMember(Value = "Subject to Inundation or Flooding")] 
-		SubjectToInundationOrFlooding = 6,
-		[System.ComponentModel.Description("Resting or moving on the surface of a liquid without sinking.")]
-		[EnumMember(Value = "Floating")] 
-		Floating = 7,
+	public enum categoryOfDangerousOrHazardousCargo : int {
+		[System.ComponentModel.Description("ExplosivesDivision1SubstancesAndArticlesWhichHaveAMassExplosionHazard")]
+		[EnumMember(Value = "IMDG Code Class 1 Div. 1.1")] 
+		ImdgCodeClass1Div11 = 1,
+		[System.ComponentModel.Description("ExplosivesDivision2SubstancesAndArticlesWhichHaveAProjectionHazardButNotAMassExplosionHazard")]
+		[EnumMember(Value = "IMDG Code Class 1 Div. 1.2")] 
+		ImdgCodeClass1Div12 = 2,
+		[System.ComponentModel.Description("ExplosivesDivision3SubstancesAndArticlesWhichHaveAFireHazardAndEitherAMinorBlastHazardOrAMinorProjectionHazardOrBothButNotAMassExplosionHazard")]
+		[EnumMember(Value = "IMDG Code Class 1 Div. 1.3")] 
+		ImdgCodeClass1Div13 = 3,
+		[System.ComponentModel.Description("ExplosivesDivision4SubstancesAndArticlesWhichPresentNoSignificantHazard")]
+		[EnumMember(Value = "IMDG Code Class 1 Div. 1.4")] 
+		ImdgCodeClass1Div14 = 4,
+		[System.ComponentModel.Description("ExplosivesDivision5VeryInsensitiveSubstancesWhichHaveAMassExplosionHazard")]
+		[EnumMember(Value = "IMDG Code Class 1 Div. 1.5")] 
+		ImdgCodeClass1Div15 = 5,
+		[System.ComponentModel.Description("ExplosivesDivision6ExtremelyInsensitiveArticlesWhichDoNotHaveAMassExplosionHazard")]
+		[EnumMember(Value = "IMDG Code Class 1 Div. 1.6")] 
+		ImdgCodeClass1Div16 = 6,
+		[System.ComponentModel.Description("GasesFlammableGases")]
+		[EnumMember(Value = "IMDG Code Class 2 Div. 2.1")] 
+		ImdgCodeClass2Div21 = 7,
+		[System.ComponentModel.Description("GasesNonFlammableNonToxicGases")]
+		[EnumMember(Value = "IMDG Code Class 2 Div. 2.2")] 
+		ImdgCodeClass2Div22 = 8,
+		[System.ComponentModel.Description("GasesToxicGases")]
+		[EnumMember(Value = "IMDG Code Class 2 Div. 2.3")] 
+		ImdgCodeClass2Div23 = 9,
+		[System.ComponentModel.Description("FlammableLiquids")]
+		[EnumMember(Value = "IMDG Code Class 3")] 
+		ImdgCodeClass3 = 10,
+		[System.ComponentModel.Description("FlammableSolidsSelfReactiveSubstancesAndDesensitizedExplosives")]
+		[EnumMember(Value = "IMDG Code Class 4 Div. 4.1")] 
+		ImdgCodeClass4Div41 = 11,
+		[System.ComponentModel.Description("SubstancesLiableToSpontaneousCombustion")]
+		[EnumMember(Value = "IMDG Code Class 4 Div. 4.2")] 
+		ImdgCodeClass4Div42 = 12,
+		[System.ComponentModel.Description("SubstancesWhichInContactWithWaterEmitFlammableGases")]
+		[EnumMember(Value = "IMDG Code Class 4 Div. 4.3")] 
+		ImdgCodeClass4Div43 = 13,
+		[System.ComponentModel.Description("OxidizingSubstances")]
+		[EnumMember(Value = "IMDG Code Class 5 Div. 5.1")] 
+		ImdgCodeClass5Div51 = 14,
+		[System.ComponentModel.Description("OrganicPeroxides")]
+		[EnumMember(Value = "IMDG Code Class 5 Div. 5.2")] 
+		ImdgCodeClass5Div52 = 15,
+		[System.ComponentModel.Description("ToxicSubstances")]
+		[EnumMember(Value = "IMDG Code Class 6 Div. 6.1")] 
+		ImdgCodeClass6Div61 = 16,
+		[System.ComponentModel.Description("InfectiousSubstances")]
+		[EnumMember(Value = "IMDG Code Class 6 Div. 6.2")] 
+		ImdgCodeClass6Div62 = 17,
+		[System.ComponentModel.Description("RadioactiveMaterial")]
+		[EnumMember(Value = "IMDG Code Class 7")] 
+		ImdgCodeClass7 = 18,
+		[System.ComponentModel.Description("CorrosiveSubstances")]
+		[EnumMember(Value = "IMDG Code Class 8")] 
+		ImdgCodeClass8 = 19,
+		[System.ComponentModel.Description("MiscellaneousDangerousSubstancesAndArticles")]
+		[EnumMember(Value = "IMDG Code Class 9")] 
+		ImdgCodeClass9 = 20,
+		[System.ComponentModel.Description("HarmfulSubstancesAreThoseSubstancesWhichAreIdentifiedAsMarinePollutantsInTheInternationalMaritimeDangerousGoodsCodeImdgCodePackagedFormIsDefinedAsTheFormsOfContainmentSpecifiedForHarmfulSubstancesInTheImdgCode")]
+		[EnumMember(Value = "Harmful Substances in Packaged Form")] 
+		HarmfulSubstancesInPackagedForm = 21,
 		[System.ComponentModel.Description("Unknown value.")]
 		[EnumMember(Value = "Unknown")]
 		Unknown = -1,
@@ -3962,90 +423,924 @@ namespace S100Framework.DomainModel.S101 {
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 	[System.Serializable()]
 	public enum categoryOfCargo : int {
-		[System.ComponentModel.Description("Unpacked homogenous cargo poured loose in a certain space of a vessel, for example oil or grain.")]
+		[System.ComponentModel.Description("UnpackedHomogenousCargoPouredLooseInACertainSpaceOfAVesselEGOilOrGrain")]
 		[EnumMember(Value = "Bulk")] 
 		Bulk = 1,
-		[System.ComponentModel.Description("One of a number of standard sized cargo carrying units, secured using standard corner attachments and bar.")]
+		[System.ComponentModel.Description("OneOfANumberOfStandardSizedCargoCarryingUnitsSecuredUsingStandardCornerAttachmentsAndBar")]
 		[EnumMember(Value = "Container")] 
 		Container = 2,
-		[System.ComponentModel.Description("Break bulk cargo normally loaded by crane.")]
+		[System.ComponentModel.Description("BreakBulkCargoNormallyLoadedByCrane")]
 		[EnumMember(Value = "General")] 
 		General = 3,
-		[System.ComponentModel.Description("Any cargo loaded by pipeline.")]
+		[System.ComponentModel.Description("AnyCargoLoadedByPipeline")]
 		[EnumMember(Value = "Liquid")] 
 		Liquid = 4,
-		[System.ComponentModel.Description("A fee paying traveller.")]
+		[System.ComponentModel.Description("AFeePayingTraveller")]
 		[EnumMember(Value = "Passenger")] 
 		Passenger = 5,
-		[System.ComponentModel.Description("Live animals carried in bulk.")]
+		[System.ComponentModel.Description("LiveAnimalsCarriedInBulk")]
 		[EnumMember(Value = "Livestock")] 
 		Livestock = 6,
-		[System.ComponentModel.Description("Dangerous or hazardous cargo as described by the IMO International Maritime Dangerous Goods code.")]
+		[System.ComponentModel.Description("DangerousOrHazardousCargoAsDescribedByTheImoInternationalMaritimeDangerousGoodsCode")]
 		[EnumMember(Value = "Dangerous or Hazardous")] 
 		DangerousOrHazardous = 7,
-		[System.ComponentModel.Description("Indivisible heavy items of weight generally over 100 tons, and width or height greater than 100 metres.")]
+		[System.ComponentModel.Description("IndivisibleHeavyItemsOfWeightGenerallyOver100TonsAndWidthOrHeightGreaterThan100Metres")]
 		[EnumMember(Value = "Heavy Lift")] 
 		HeavyLift = 8,
-		[System.ComponentModel.Description("Material carried by a ship to ensure its stability.")]
+		[System.ComponentModel.Description("MaterialCarriedByAShipToEnsureItsStability")]
 		[EnumMember(Value = "Ballast")] 
 		Ballast = 9,
-		[System.ComponentModel.Description("Commodity cargo that is transported unpackaged in large quantities. These types of goods usually need to be kept dry during the whole transportation period.")]
-		[EnumMember(Value = "Dry Bulk Cargo")] 
-		DryBulkCargo = 10,
-		[System.ComponentModel.Description("Liquids or gases that are transported in bulk and carried unpackaged.")]
-		[EnumMember(Value = "Liquid Bulk Cargo")] 
-		LiquidBulkCargo = 11,
-		[System.ComponentModel.Description("Cargo transported in refrigerated containers, generally perishable commodities which require temperature-controlled transportation, such as fruit, meat, fish, vegetables, dairy products and other foods.")]
-		[EnumMember(Value = "Reefer Container Cargo")] 
-		ReeferContainerCargo = 12,
-		[System.ComponentModel.Description("Wheeled cargo, such as cars, busses, trucks, agricultural vehicles and cranes, that are driven on and off the ship on their own wheels or using a platform vehicle, such as a self-propelled modular transporter.")]
-		[EnumMember(Value = "Ro-Ro Cargo")] 
-		RoRoCargo = 13,
-		[System.ComponentModel.Description("Project cargo is a term used to broadly describe the national or international transportation of large, heavy, high value, or critical (to the project they are intended for) pieces of equipment. Also commonly referred to as heavy lift, this includes shipments made of various components which need disassembly for shipment and reassembly after delivery.")]
-		[EnumMember(Value = "Project Cargo")] 
-		ProjectCargo = 14,
-		[System.ComponentModel.Description("Goods that are stowed on board ship in individually counted units, and not in intermodal containers nor in bulk as with oil or grain.")]
-		[EnumMember(Value = "Break Bulk Cargo")] 
-		BreakBulkCargo = 15,
 		[System.ComponentModel.Description("Unknown value.")]
 		[EnumMember(Value = "Unknown")]
 		Unknown = -1,
 	}
 
+	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+	[System.Serializable()]
+	public enum categoryOfCommunicationPreference : int {
+		[System.ComponentModel.Description("TheFirstChoiceChannelOrFrequencyToBeUsedWhenCallingARadioStation")]
+		[EnumMember(Value = "Preferred Calling")] 
+		PreferredCalling = 1,
+		[System.ComponentModel.Description("AChannelOrFrequencyToBeUsedForCallingARadioStationWhenThePreferredChannelOrFrequencyIsBusyOrIsSufferingFromInterference")]
+		[EnumMember(Value = "Alternate Calling")] 
+		AlternateCalling = 2,
+		[System.ComponentModel.Description("TheFirstChoiceChannelOrFrequencyToBeUsedWhenWorkingWithARadioStation")]
+		[EnumMember(Value = "Preferred Working")] 
+		PreferredWorking = 3,
+		[System.ComponentModel.Description("AChannelOrFrequencyToBeUsedForWorkingWithARadioStationWhenThePreferredWorkingChannelOrFrequencyIsBusyOrIsSufferingFromInterference")]
+		[EnumMember(Value = "Alternate Working")] 
+		AlternateWorking = 4,
+		[System.ComponentModel.Description("Unknown value.")]
+		[EnumMember(Value = "Unknown")]
+		Unknown = -1,
+	}
+
+	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+	[System.Serializable()]
+	public enum categoryOfAuthority : int {
+		[System.ComponentModel.Description("TheAdministrationToPreventOrDetectAndProsecuteViolationsOfRulesAndRegulationsAtInternationalBoundaries")]
+		[EnumMember(Value = "Border Control")] 
+		BorderControl = 2,
+		[System.ComponentModel.Description("TheDepartmentOfGovernmentOrCivilForceChargedWithMaintainingPublicOrder")]
+		[EnumMember(Value = "Police")] 
+		Police = 3,
+		[System.ComponentModel.Description("PersonOrCorporationOwnersOfOrEntrustedWithOrInvestedWithThePowerOfManagingAPortMayBeCalledAHarbourBoardPortTrustPortCommissionHarbourCommissionMarineDepartment")]
+		[EnumMember(Value = "Port")] 
+		Port = 4,
+		[System.ComponentModel.Description("TheAuthorityControllingPeopleEnteringACountry")]
+		[EnumMember(Value = "Immigration")] 
+		Immigration = 5,
+		[System.ComponentModel.Description("TheAuthorityWithResponsibilityForCheckingTheValidityOfTheHealthDeclarationOfAVesselAndForDeclaringFreePratique")]
+		[EnumMember(Value = "Health")] 
+		Health = 6,
+		[System.ComponentModel.Description("OrganizationKeepingWatchOnShippingAndCoastalWatersAccordingToGovernmentalLawNormallyTheAuthorityWithResponsibilityForSearchAndRescue")]
+		[EnumMember(Value = "Coast Guard")] 
+		CoastGuard = 7,
+		[System.ComponentModel.Description("TheAuthorityWithResponsibilityForPreventingInfectionOfTheAgricultureOfACountryAndForTheProtectionOfTheAgriculturalInterestsOfACountry")]
+		[EnumMember(Value = "Agricultural")] 
+		Agricultural = 8,
+		[System.ComponentModel.Description("AMilitaryAuthorityWhichProvidesControlOfAccessToOrApprovalForTransitThroughDesignatedAreasOrAirspace")]
+		[EnumMember(Value = "Military")] 
+		Military = 9,
+		[System.ComponentModel.Description("APrivateOrPubliclyOwnedCompanyOrCommercialEnterpriseWhichExercisesControlOfFacilitiesForExampleACalibrationArea")]
+		[EnumMember(Value = "Private Company")] 
+		PrivateCompany = 10,
+		[System.ComponentModel.Description("AGovernmentalOrMilitaryForceWithJurisdictionInTerritorialWatersExamplesCouldIncludeGendarmerieMaritimeCarabinierieAndGuardiaCivil")]
+		[EnumMember(Value = "Maritime Police")] 
+		MaritimePolice = 11,
+		[System.ComponentModel.Description("AnAuthorityWithResponsibilityForTheProtectionOfTheEnvironment")]
+		[EnumMember(Value = "Environmental")] 
+		Environmental = 12,
+		[System.ComponentModel.Description("AnAuthorityWithResponsibilityForTheControlOfFisheries")]
+		[EnumMember(Value = "Fishery")] 
+		Fishery = 13,
+		[System.ComponentModel.Description("AnAuthorityWithResponsibilityForTheControlAndMovementOfMoney")]
+		[EnumMember(Value = "Finance")] 
+		Finance = 14,
+		[System.ComponentModel.Description("ANationalOrRegionalAuthorityChargedWithAdministrationOfMaritimeAffairs")]
+		[EnumMember(Value = "Maritime")] 
+		Maritime = 15,
+		[System.ComponentModel.Description("TheAgencyOrEstablishmentForCollectingDutiesTolls")]
+		[EnumMember(Value = "Customs")] 
+		Customs = 16,
+		[System.ComponentModel.Description("Unknown value.")]
+		[EnumMember(Value = "Unknown")]
+		Unknown = -1,
+	}
+
+	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+	[System.Serializable()]
+	public enum categoryOfVesselTrafficService : int {
+		[System.ComponentModel.Description("AServiceToEnsureThatEssentialInformationBecomesAvailableInTimeForOnBoardNavigationalDecisionMaking")]
+		[EnumMember(Value = "Information Service")] 
+		InformationService = 1,
+		[System.ComponentModel.Description("AServiceToAssistOnBoardNavigationalDecisionMakingAndToMonitorItsEffects")]
+		[EnumMember(Value = "Traffic Organization Service")] 
+		TrafficOrganizationService = 2,
+		[System.ComponentModel.Description("AServiceToPreventTheDevelopmentOfDangerousMaritimeTrafficSituationsAndToProvideForTheSafeAndEfficientMovementOfVesselTrafficWithinTheVtsArea")]
+		[EnumMember(Value = "Navigational Assistance Service")] 
+		NavigationalAssistanceService = 3,
+		[System.ComponentModel.Description("AServiceEstablishedByARelevantAuthorityConsistingOfOneOrMoreReportingPointsOrLinesAtWhichShipsAreRequiredToReportTheirIdentityCourseSpeedAndOtherDataToTheMonitoringAuthority")]
+		[EnumMember(Value = "Ship Reporting Service")] 
+		ShipReportingService = 4,
+		[System.ComponentModel.Description("AServiceEstablishedToProvidePortInformationWithoutInteractionBetweenTheCustomerAndTheServiceProviderThisInformationCouldBeInterAliaBerthingInformationAvailabilityOfPortServicesShippingSchedulesMeteorologicalAndHydrologicalData")]
+		[EnumMember(Value = "Local Port Service")] 
+		LocalPortService = 5,
+		[System.ComponentModel.Description("Unknown value.")]
+		[EnumMember(Value = "Unknown")]
+		Unknown = -1,
+	}
+
+	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+	[System.Serializable()]
+	public enum status : int {
+		[System.ComponentModel.Description("IntendedToLastOrFunctionIndefinitely")]
+		[EnumMember(Value = "Permanent")] 
+		Permanent = 1,
+		[System.ComponentModel.Description("ActingOnSpecialOccasionsHappeningIrregularly")]
+		[EnumMember(Value = "Occasional")] 
+		Occasional = 2,
+		[System.ComponentModel.Description("PresentedAsWorthyOfConfidenceAcceptanceUseEtc")]
+		[EnumMember(Value = "Recommended")] 
+		Recommended = 3,
+		[System.ComponentModel.Description("UseHasCeasedButTheFacilityStillExistsIntactDisused")]
+		[EnumMember(Value = "Not in Use")] 
+		NotInUse = 4,
+		[System.ComponentModel.Description("RecurringAtIntervals")]
+		[EnumMember(Value = "Periodic/Intermittent")] 
+		PeriodicIntermittent = 5,
+		[System.ComponentModel.Description("SetApartForSomeSpecificUse")]
+		[EnumMember(Value = "Reserved")] 
+		Reserved = 6,
+		[System.ComponentModel.Description("MeantToLastOnlyForATime")]
+		[EnumMember(Value = "Temporary")] 
+		Temporary = 7,
+		[System.ComponentModel.Description("AdministeredByAnIndividualOrCorporationRatherThanAStateOrAPublicBody")]
+		[EnumMember(Value = "Private")] 
+		Private = 8,
+		[System.ComponentModel.Description("CompulsoryEnforced")]
+		[EnumMember(Value = "Mandatory")] 
+		Mandatory = 9,
+		[System.ComponentModel.Description("NoLongerLit")]
+		[EnumMember(Value = "Extinguished")] 
+		Extinguished = 11,
+		[System.ComponentModel.Description("LitByFloodlightsStripLightsEtc")]
+		[EnumMember(Value = "Illuminated")] 
+		Illuminated = 12,
+		[System.ComponentModel.Description("FamousInHistoryOfHistoricalInterest")]
+		[EnumMember(Value = "Historic")] 
+		Historic = 13,
+		[System.ComponentModel.Description("BelongingToAvailableToUsedOrSharedByTheCommunityAsAWholeAndNotRestrictedToPrivateUse")]
+		[EnumMember(Value = "Public")] 
+		Public = 14,
+		[System.ComponentModel.Description("OccurAtATimeCoincideInPointOfTimeBeContemporaryOrSimultaneous")]
+		[EnumMember(Value = "Synchronized")] 
+		Synchronized = 15,
+		[System.ComponentModel.Description("LookedAtOrObservedOverAPeriodOfTimeEspeciallySoAsToBeAwareOfAnyMovementOrChange")]
+		[EnumMember(Value = "Watched")] 
+		Watched = 16,
+		[System.ComponentModel.Description("UsuallyAutomaticInOperationWithoutAnyPermanentlyStationedPersonnelToSuperintendIt")]
+		[EnumMember(Value = "Unwatched")] 
+		Unwatched = 17,
+		[System.ComponentModel.Description("AFeatureThatHasBeenReportedButHasNotBeenDefinitelyDeterminedToExist")]
+		[EnumMember(Value = "Existence Doubtful")] 
+		ExistenceDoubtful = 18,
+		[System.ComponentModel.Description("WhenYouAskForIt")]
+		[EnumMember(Value = "On Request")] 
+		OnRequest = 19,
+		[System.ComponentModel.Description("ToBecomeLowerInLevel")]
+		[EnumMember(Value = "Drop Away")] 
+		DropAway = 20,
+		[System.ComponentModel.Description("ToBecomeHigherInLevel")]
+		[EnumMember(Value = "Rising")] 
+		Rising = 21,
+		[System.ComponentModel.Description("BecomingLargerInMagnitude")]
+		[EnumMember(Value = "Increasing")] 
+		Increasing = 22,
+		[System.ComponentModel.Description("BecomingSmallerInMagnitude")]
+		[EnumMember(Value = "Decreasing")] 
+		Decreasing = 23,
+		[System.ComponentModel.Description("NotEasilyBrokenOrDestroyed")]
+		[EnumMember(Value = "Strong")] 
+		Strong = 24,
+		[System.ComponentModel.Description("InASatisfactoryConditionToUse")]
+		[EnumMember(Value = "Good")] 
+		Good = 25,
+		[System.ComponentModel.Description("FairlyButNotVery")]
+		[EnumMember(Value = "Moderately")] 
+		Moderately = 26,
+		[System.ComponentModel.Description("NotAsGoodAsItCouldBeOrShould")]
+		[EnumMember(Value = "Poor")] 
+		Poor = 27,
+		[System.ComponentModel.Description("MarkedByBuoys")]
+		[EnumMember(Value = "Buoyed")] 
+		Buoyed = 28,
+		[System.ComponentModel.Description("EntireObservationPlatformIsOperatingInAccordanceWithOrExceedingManufacturerSpecifications")]
+		[EnumMember(Value = "Fully Operational")] 
+		FullyOperational = 29,
+		[System.ComponentModel.Description("AtLeastOneInstrumentThatIsPartOfAnObservationPlatformIsNotOperatingToManufacturerSpecification")]
+		[EnumMember(Value = "Partially Operational")] 
+		PartiallyOperational = 30,
+		[System.ComponentModel.Description("FloatingPlatformAtTheMercyOfEnvironmentalElementsWhetherIntentionalOrNot")]
+		[EnumMember(Value = "Drifting")] 
+		Drifting = 31,
+		[System.ComponentModel.Description("FracturedOrInPieces")]
+		[EnumMember(Value = "Broken")] 
+		Broken = 32,
+		[System.ComponentModel.Description("ObservationPlatformIsIntentionallyNotReportingAnEnvironmentalObservation")]
+		[EnumMember(Value = "Offline")] 
+		Offline = 33,
+		[System.ComponentModel.Description("ObservationStationSuiteOfInstrumentsOrAnIndividualInstrumentForAParticularLocationHasBeenRemovedAndIsNoLongerAtTheParticularLocation")]
+		[EnumMember(Value = "Discontinued")] 
+		Discontinued = 34,
+		[System.ComponentModel.Description("ObservationsMadeByAHumanObserver")]
+		[EnumMember(Value = "Manual Observation")] 
+		ManualObservation = 35,
+		[System.ComponentModel.Description("StatusOfAnObservationPlatformSuiteOfInstrumentsOrIndividualInstrumentIsNotKnownOrUnspecified")]
+		[EnumMember(Value = "Unknown Status")] 
+		UnknownStatus = 36,
+		[System.ComponentModel.Description("MadeCertainAsToTruthAccuracyValidityAvailabilityEtc")]
+		[EnumMember(Value = "Confirmed")] 
+		Confirmed = 37,
+		[System.ComponentModel.Description("ItemSelectedForAnAction")]
+		[EnumMember(Value = "Candidate")] 
+		Candidate = 38,
+		[System.ComponentModel.Description("ItemThatIsInTheProcessOfBeingModified")]
+		[EnumMember(Value = "Under Modification")] 
+		UnderModification = 39,
+		[System.ComponentModel.Description("ItemInTheProcessOfBeingRemovedOrDeleted")]
+		[EnumMember(Value = "Under Removal / Deletion")] 
+		UnderRemovalDeletion = 41,
+		[System.ComponentModel.Description("ItemThatHasBeenRemovedOrDeleted")]
+		[EnumMember(Value = "Removed / Deleted")] 
+		RemovedDeleted = 42,
+		[System.ComponentModel.Description("ItemSelectedForModification")]
+		[EnumMember(Value = "Candidate for Modification")] 
+		CandidateForModification = 43,
+		[System.ComponentModel.Description("Unknown value.")]
+		[EnumMember(Value = "Unknown")]
+		Unknown = -1,
+	}
+
+	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+	[System.Serializable()]
+	public enum restriction : int {
+		[System.ComponentModel.Description("AnAreaWithinWhichAnchoringIsNotPermitted")]
+		[EnumMember(Value = "Anchoring Prohibited")] 
+		AnchoringProhibited = 1,
+		[System.ComponentModel.Description("ASpecifiedAreaDesignatedByAppropriateAuthorityWithinWhichAnchoringIsRestrictedInAccordanceWithCertainSpecifiedConditions")]
+		[EnumMember(Value = "Anchoring Restricted")] 
+		AnchoringRestricted = 2,
+		[System.ComponentModel.Description("AnAreaWithinWhichFishingIsNotPermitted")]
+		[EnumMember(Value = "Fishing Prohibited")] 
+		FishingProhibited = 3,
+		[System.ComponentModel.Description("ASpecifiedAreaDesignatedByAppropriateAuthorityWithinWhichFishingIsRestrictedInAccordanceWithCertainSpecifiedConditions")]
+		[EnumMember(Value = "Fishing Restricted")] 
+		FishingRestricted = 4,
+		[System.ComponentModel.Description("AnAreaWithinWhichTrawlingIsNotPermitted")]
+		[EnumMember(Value = "Trawling Prohibited")] 
+		TrawlingProhibited = 5,
+		[System.ComponentModel.Description("ASpecifiedAreaDesignatedByAppropriateAuthorityWithinWhichTrawlingIsRestrictedInAccordanceWithCertainSpecifiedConditions")]
+		[EnumMember(Value = "Trawling Restricted")] 
+		TrawlingRestricted = 6,
+		[System.ComponentModel.Description("AnAreaWithinWhichNavigationAndOrAnchoringIsProhibited")]
+		[EnumMember(Value = "Entry Prohibited")] 
+		EntryProhibited = 7,
+		[System.ComponentModel.Description("ASpecifiedAreaDesignatedByAppropriateAuthorityWithinWhichNavigationIsRestrictedInAccordanceWithCertainSpecifiedConditions")]
+		[EnumMember(Value = "Entry Restricted")] 
+		EntryRestricted = 8,
+		[System.ComponentModel.Description("AnAreaWithinWhichDredgingIsNotPermitted")]
+		[EnumMember(Value = "Dredging Prohibited")] 
+		DredgingProhibited = 9,
+		[System.ComponentModel.Description("ASpecifiedAreaDesignatedByAppropriateAuthorityWithinWhichDredgingIsRestrictedInAccordanceWithCertainSpecifiedConditions")]
+		[EnumMember(Value = "Dredging Restricted")] 
+		DredgingRestricted = 10,
+		[System.ComponentModel.Description("AnAreaWithinWhichDivingIsNotPermitted")]
+		[EnumMember(Value = "Diving Prohibited")] 
+		DivingProhibited = 11,
+		[System.ComponentModel.Description("ASpecifiedAreaDesignatedByAppropriateAuthorityWithinWhichDivingIsRestrictedInAccordanceWithCertainSpecifiedConditions")]
+		[EnumMember(Value = "Diving Restricted")] 
+		DivingRestricted = 12,
+		[System.ComponentModel.Description("MarinersMustAdjustTheSpeedOfTheirVesselsToReduceTheWaveOrWashWhichMayCauseErosionOrDisturbMooredVessels")]
+		[EnumMember(Value = "No Wake")] 
+		NoWake = 13,
+		[System.ComponentModel.Description("AnImoDeclaredRouteingMeasureComprisingAnAreaWithinDefinedLimitsInWhichEitherNavigationIsParticularlyHazardousOrItIsExceptionallyImportantToAvoidCasualtiesAndWhichShouldBeAvoidedByAllShipsOrCertainClassesOfShips")]
+		[EnumMember(Value = "Area To Be Avoided")] 
+		AreaToBeAvoided = 14,
+		[System.ComponentModel.Description("TheErectionOfPermanentOrTemporaryFixedStructuresOrArtificialIslandsIsProhibited")]
+		[EnumMember(Value = "Construction Prohibited")] 
+		ConstructionProhibited = 15,
+		[System.ComponentModel.Description("AnAreaWithinWhichDischargingOrDumpingIsProhibited")]
+		[EnumMember(Value = "Discharging Prohibited")] 
+		DischargingProhibited = 16,
+		[System.ComponentModel.Description("ASpecifiedAreaDesignatedByAnAppropriateAuthorityWithinWhichDischargingOrDumpingIsRestrictedInAccordanceWithSpecifiedConditions")]
+		[EnumMember(Value = "Discharging Restricted")] 
+		DischargingRestricted = 17,
+		[System.ComponentModel.Description("AnAreaWithinWhichIndustrialOrMineralExplorationAndDevelopmentAreProhibited")]
+		[EnumMember(Value = "Industrial or Mineral Exploration/Development Prohibited")] 
+		IndustrialOrMineralExplorationDevelopmentProhibited = 18,
+		[System.ComponentModel.Description("ASpecifiedAreaDesignatedByAnAppropriateAuthorityWithinWhichIndustrialOrMineralExplorationAndDevelopmentIsRestrictedInAccordanceWithCertainSpecifiedConditions")]
+		[EnumMember(Value = "Industrial or Mineral Exploration/Development Restricted")] 
+		IndustrialOrMineralExplorationDevelopmentRestricted = 19,
+		[System.ComponentModel.Description("AnAreaWithinWhichExcavatingAHoleOnTheSeaBottomWithADrillIsProhibited")]
+		[EnumMember(Value = "Drilling Prohibited")] 
+		DrillingProhibited = 20,
+		[System.ComponentModel.Description("ASpecifiedAreaDesignatedByAnAppropriateAuthorityWithinWhichExcavatingAHoleOnTheSeaBottomWithADrillIsRestrictedInAccordanceWithCertainSpecifiedConditions")]
+		[EnumMember(Value = "Drilling Restricted")] 
+		DrillingRestricted = 21,
+		[System.ComponentModel.Description("AnAreaWithinWhichTheRemovalOfHistoricalArtefactsIsProhibited")]
+		[EnumMember(Value = "Removal of Historical Artefacts Prohibited")] 
+		RemovalOfHistoricalArtefactsProhibited = 22,
+		[System.ComponentModel.Description("AnAreaInWhichCargoTranshipmentLighteningIsProhibited")]
+		[EnumMember(Value = "Cargo Transhipment (Lightening) Prohibited")] 
+		CargoTranshipmentLighteningProhibited = 23,
+		[System.ComponentModel.Description("AnAreaInWhichTheDraggingOfAnythingAlongTheBottomEGBottomTrawlingIsProhibited")]
+		[EnumMember(Value = "Dragging Prohibited")] 
+		DraggingProhibited = 24,
+		[System.ComponentModel.Description("AnAreaInWhichAVesselIsProhibitedFromStopping")]
+		[EnumMember(Value = "Stopping Prohibited")] 
+		StoppingProhibited = 25,
+		[System.ComponentModel.Description("AnAreaInWhichLandingIsProhibited")]
+		[EnumMember(Value = "Landing Prohibited")] 
+		LandingProhibited = 26,
+		[System.ComponentModel.Description("AnAreaWithinWhichSpeedIsRestricted")]
+		[EnumMember(Value = "Speed Restricted")] 
+		SpeedRestricted = 27,
+		[System.ComponentModel.Description("ASpecifiedAreaDesignatedByAppropriateAuthorityWithinWhichOvertakingIsGenerallyProhibited")]
+		[EnumMember(Value = "Overtaking Prohibited")] 
+		OvertakingProhibited = 28,
+		[System.ComponentModel.Description("ASpecifiedAreaDesignatedByAppropriateAuthorityWithinWhichOvertakingBetweenConvoysIsProhibited")]
+		[EnumMember(Value = "Overtaking of Convoys by Convoys Prohibited")] 
+		OvertakingOfConvoysByConvoysProhibited = 29,
+		[System.ComponentModel.Description("ASpecifiedAreaDesignatedByAppropriateAuthorityWithinWhichPassingOrOvertakingIsGenerallyProhibited")]
+		[EnumMember(Value = "Passing or Overtaking Prohibited")] 
+		PassingOrOvertakingProhibited = 30,
+		[System.ComponentModel.Description("ASpecifiedAreaDesignatedByAppropriateAuthorityWithinWhichVesselsAssembliesOfFloatingMaterialOrFloatingEstablishmentsMayNotBerth")]
+		[EnumMember(Value = "Berthing Prohibited")] 
+		BerthingProhibited = 31,
+		[System.ComponentModel.Description("ASpecifiedAreaDesignatedByAppropriateAuthorityWithinWhichBerthingIsRestricted")]
+		[EnumMember(Value = "Berthing Restricted")] 
+		BerthingRestricted = 32,
+		[System.ComponentModel.Description("ASpecifiedAreaDesignatedByAppropriateAuthorityWithinWhichVesselsAssembliesOfFloatingMaterialOrFloatingEstablishmentsMayNotMakeFastToTheBank")]
+		[EnumMember(Value = "Making Fast Prohibited")] 
+		MakingFastProhibited = 33,
+		[System.ComponentModel.Description("ASpecifiedAreaDesignatedByAppropriateAuthorityWithinWhichMakingFastToTheBankIsRestricted")]
+		[EnumMember(Value = "Making Fast Restricted")] 
+		MakingFastRestricted = 34,
+		[System.ComponentModel.Description("ASpecifiedAreaDesignatedByAppropriateAuthorityWithinWhichAllTurningIsGenerallyProhibited")]
+		[EnumMember(Value = "Turning Prohibited")] 
+		TurningProhibited = 35,
+		[System.ComponentModel.Description("AnAreaWithinWhichTheFairwayDepthIsRestricted")]
+		[EnumMember(Value = "Restricted Fairway Depth")] 
+		RestrictedFairwayDepth = 36,
+		[System.ComponentModel.Description("AnAreaWithinWhichTheFairwayWidthIsRestricted")]
+		[EnumMember(Value = "Restricted Fairway Width")] 
+		RestrictedFairwayWidth = 37,
+		[System.ComponentModel.Description("TheUseOfAnchoringSpudsTelescopicPilesIsProhibited")]
+		[EnumMember(Value = "Use of Spuds Prohibited")] 
+		UseOfSpudsProhibited = 38,
+		[System.ComponentModel.Description("AnAreaInWhichSwimmingIsProhibited")]
+		[EnumMember(Value = "Swimming Prohibited")] 
+		SwimmingProhibited = 39,
+		[System.ComponentModel.Description("AnAreaWithinWhichTheEmissionOfSoxIsRestricted")]
+		[EnumMember(Value = "SOx Emission Restricted")] 
+		SoxEmissionRestricted = 40,
+		[System.ComponentModel.Description("AnAreaWithinWhichTheEmissionOfNoxIsRestricted")]
+		[EnumMember(Value = "NOx Emission Restricted")] 
+		NoxEmissionRestricted = 41,
+		[System.ComponentModel.Description("Unknown value.")]
+		[EnumMember(Value = "Unknown")]
+		Unknown = -1,
+	}
+
+	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+	[System.Serializable()]
+	public enum jurisdiction : int {
+		[System.ComponentModel.Description("InvolvingMoreThanOneCountryCoveringMoreThanOneNationalArea")]
+		[EnumMember(Value = "International")] 
+		International = 1,
+		[System.ComponentModel.Description("AnAreaAdministeredOrControlledByASingleNation")]
+		[EnumMember(Value = "National")] 
+		National = 2,
+		[System.ComponentModel.Description("AnAreaSmallerThanTheNationInWhichItLies")]
+		[EnumMember(Value = "National Sub-Division")] 
+		NationalSubDivision = 3,
+		[System.ComponentModel.Description("Unknown value.")]
+		[EnumMember(Value = "Unknown")]
+		Unknown = -1,
+	}
+
+	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+	[System.Serializable()]
+	public enum categoryOfRestrictedArea : int {
+		[System.ComponentModel.Description("TheAreaAroundAnOffshoreInstallationWithinWhichVesselsAreProhibitedFromEnteringWithoutPermissionSpecialRegulationsProtectInstallationsWithinASafetyZoneAndVesselsOfAllNationalitiesAreRequiredToRespectTheZone")]
+		[EnumMember(Value = "Offshore Safety Zone")] 
+		OffshoreSafetyZone = 1,
+		[System.ComponentModel.Description("ATractOfLandOrWaterManagedSoAsToPreserveItsFloraFaunaPhysicalFeaturesEtc")]
+		[EnumMember(Value = "Nature Reserve")] 
+		NatureReserve = 4,
+		[System.ComponentModel.Description("APlaceWhereBirdsAreBredAndProtected")]
+		[EnumMember(Value = "Bird Sanctuary")] 
+		BirdSanctuary = 5,
+		[System.ComponentModel.Description("APlaceWhereWildAnimalsOrBirdsHuntedForSportOrFoodAreKeptUndisturbedForPrivateUse")]
+		[EnumMember(Value = "Game Reserve")] 
+		GameReserve = 6,
+		[System.ComponentModel.Description("APlaceWhereSealsAreProtected")]
+		[EnumMember(Value = "Seal Sanctuary")] 
+		SealSanctuary = 7,
+		[System.ComponentModel.Description("AnAreaUsuallyAboutTwoCablesDiameterWithinWhichShipsMagneticFieldsMayBeMeasuredSensingInstrumentsAndCablesAreInstalledOnTheSeaBedInTheRangeAndThereAreCablesLeadingFromTheRangeToAControlPositionAshore")]
+		[EnumMember(Value = "Degaussing Range")] 
+		DegaussingRange = 8,
+		[System.ComponentModel.Description("AnAreaControlledByTheMilitaryInWhichRestrictionsMayApply")]
+		[EnumMember(Value = "Military Area")] 
+		MilitaryArea = 9,
+		[System.ComponentModel.Description("AnAreaAroundCertainWrecksOfHistoricalImportanceToProtectTheWrecksFromUnauthorizedInterferenceByDivingSalvageOrDepositionIncludingAnchoring")]
+		[EnumMember(Value = "Historic Wreck Area")] 
+		HistoricWreckArea = 10,
+		[System.ComponentModel.Description("AnAreaAroundANavigationalAidWhichVesselsAreProhibitedFromEntering")]
+		[EnumMember(Value = "Navigational Aid Safety Zone")] 
+		NavigationalAidSafetyZone = 12,
+		[System.ComponentModel.Description("AnAreaLaidAndMaintainedWithExplosiveMinesForDefenceOrPracticePurposes")]
+		[EnumMember(Value = "Minefield")] 
+		Minefield = 14,
+		[System.ComponentModel.Description("AnAreaInWhichPeopleMaySwimAndThereforeVesselMovementMayBeRestricted")]
+		[EnumMember(Value = "Swimming Area")] 
+		SwimmingArea = 18,
+		[System.ComponentModel.Description("AnAreaReservedForVesselsWaitingToEnterAHarbour")]
+		[EnumMember(Value = "Waiting Area")] 
+		WaitingArea = 19,
+		[System.ComponentModel.Description("AnAreaWhereMarineResearchTakesPlace")]
+		[EnumMember(Value = "Research Area")] 
+		ResearchArea = 20,
+		[System.ComponentModel.Description("AnAreaWhereDredgingIsTakingPlace")]
+		[EnumMember(Value = "Dredging Area")] 
+		DredgingArea = 21,
+		[System.ComponentModel.Description("APlaceWhereFishIncludingShellfishAndCrustaceansAreProtected")]
+		[EnumMember(Value = "Fish Sanctuary")] 
+		FishSanctuary = 22,
+		[System.ComponentModel.Description("ATractOfLandManagedSoAsToPreserveTheRelationOfPlantsAndLivingCreaturesToEachOtherAndToTheirSurroundings")]
+		[EnumMember(Value = "Ecological Reserve")] 
+		EcologicalReserve = 23,
+		[System.ComponentModel.Description("AnAreaInWhichAVesselsSpeedMustBeReducedInOrderToReduceTheSizeOfTheWakeItProduces")]
+		[EnumMember(Value = "No Wake Area")] 
+		NoWakeArea = 24,
+		[System.ComponentModel.Description("AnAreaWhereVesselsTurn")]
+		[EnumMember(Value = "Swinging Area")] 
+		SwingingArea = 25,
+		[System.ComponentModel.Description("AnAreaWithinWhichPeopleMayWaterSkiAndThereforeVesselMovementMayBeRestricted")]
+		[EnumMember(Value = "Water Skiing Area")] 
+		WaterSkiingArea = 26,
+		[System.ComponentModel.Description("AGenericTermWhichMayBeUsedToDescribeAWideRangeOfAreasConsideredSensitiveForAVarietyOfEnvironmentalReasons")]
+		[EnumMember(Value = "Environmentally Sensitive Sea Area")] 
+		EnvironmentallySensitiveSeaArea = 27,
+		[System.ComponentModel.Description("AnAreaThatNeedsSpecialProtectionThroughActionByImoBecauseOfItsSignificanceForRegionalEcologicalSocioEconomicOrScientificReasonsAndBecauseItMayBeVulnerableToDamageByInternationalShippingActivities")]
+		[EnumMember(Value = "Particularly Sensitive Sea Area")] 
+		ParticularlySensitiveSeaArea = 28,
+		[System.ComponentModel.Description("AnAreaNearAFairwayWhereVesselsCanGoToClearTheWayOrMakeAnAboutTurnAndPossiblyReturnToAWaitingAreaWhenNauticalConditionsImposeIt")]
+		[EnumMember(Value = "Disengagement Area")] 
+		DisengagementArea = 29,
+		[System.ComponentModel.Description("AnAreaInWhichDefenceLawAndTreatyEnforcementAndCounterTerrorismActivitiesThatFallWithinThePortAndMaritimeDomainApply")]
+		[EnumMember(Value = "Port Security Area")] 
+		PortSecurityArea = 30,
+		[System.ComponentModel.Description("APlaceWhereCoralIsProtected")]
+		[EnumMember(Value = "Coral Sanctuary")] 
+		CoralSanctuary = 31,
+		[System.ComponentModel.Description("AnAreaWithinWhichRecreationalActivitiesRegularlyTakePlaceAndThereforeVesselMovementMayBeRestricted")]
+		[EnumMember(Value = "Recreation Area")] 
+		RecreationArea = 32,
+		[System.ComponentModel.Description("AnAreaWithinWhichTheShipPollutionEmissionIsControlled")]
+		[EnumMember(Value = "Ship Pollution Emission Control")] 
+		ShipPollutionEmissionControl = 33,
+		[System.ComponentModel.Description("Unknown value.")]
+		[EnumMember(Value = "Unknown")]
+		Unknown = -1,
+	}
+
+	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+	[System.Serializable()]
+	public enum sourceType : int {
+		[System.ComponentModel.Description("TreatyConventionOrInternationalAgreementLawOrRegulationIssuedByANationalOrOtherAuthority")]
+		[EnumMember(Value = "Law or Regulation")] 
+		LawOrRegulation = 1,
+		[System.ComponentModel.Description("PublicationNotHavingTheForceOfLawIssuedByAnInternationalOrganisationOrANationalOrLocalAdministration")]
+		[EnumMember(Value = "Official Publication")] 
+		OfficialPublication = 2,
+		[System.ComponentModel.Description("ReportedByMarinerSAndConfirmedByAnotherSource")]
+		[EnumMember(Value = "Mariner Report, Confirmed")] 
+		MarinerReportConfirmed = 7,
+		[System.ComponentModel.Description("ReportedByMarinerSButNotConfirmed")]
+		[EnumMember(Value = "Mariner Report, Not Confirmed")] 
+		MarinerReportNotConfirmed = 8,
+		[System.ComponentModel.Description("ShippingAndOtherIndustryPublicationsIncludingGraphicsChartsAndWebSites")]
+		[EnumMember(Value = "Industry Publications and Reports")] 
+		IndustryPublicationsAndReports = 9,
+		[System.ComponentModel.Description("InformationObtainedFromSatelliteImages")]
+		[EnumMember(Value = "Remotely Sensed Images")] 
+		RemotelySensedImages = 10,
+		[System.ComponentModel.Description("InformationObtainedFromPhotographs")]
+		[EnumMember(Value = "Photographs")] 
+		Photographs = 11,
+		[System.ComponentModel.Description("InformationObtainedFromProductsIssuedByHydrographicOffices")]
+		[EnumMember(Value = "Products Issued by HO Services")] 
+		ProductsIssuedByHoServices = 12,
+		[System.ComponentModel.Description("InformationObtainedFromNewsMedia")]
+		[EnumMember(Value = "News Media")] 
+		NewsMedia = 13,
+		[System.ComponentModel.Description("InformationObtainedFromTheAnalysisOfTrafficData")]
+		[EnumMember(Value = "Traffic Data")] 
+		TrafficData = 14,
+		[System.ComponentModel.Description("Unknown value.")]
+		[EnumMember(Value = "Unknown")]
+		Unknown = -1,
+	}
+
+	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+	[System.Serializable()]
+	public enum categoryOfText : int {
+		[System.ComponentModel.Description("AStatementSummarizingTheImportantPointsOfAText")]
+		[EnumMember(Value = "Abstract or Summary")] 
+		AbstractOrSummary = 1,
+		[System.ComponentModel.Description("AnExcerptOrExcerptsFromAText")]
+		[EnumMember(Value = "Extract")] 
+		Extract = 2,
+		[System.ComponentModel.Description("TheWholeText")]
+		[EnumMember(Value = "Full Text")] 
+		FullText = 3,
+		[System.ComponentModel.Description("Unknown value.")]
+		[EnumMember(Value = "Unknown")]
+		Unknown = -1,
+	}
+
+	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+	[System.Serializable()]
+	public enum categoryOfVesselRegistry : int {
+		[System.ComponentModel.Description("TheVesselIsRegisteredOrEnrolledUnderTheSameNationalFlagAsThePortHarbourTerritorialSeaExclusiveEconomicZoneOrAdministrativeAreaInWhichTheObjectThatPossessesThisAttributeAppliesOrIsLocated")]
+		[EnumMember(Value = "Domestic")] 
+		Domestic = 1,
+		[System.ComponentModel.Description("TheVesselIsRegisteredOrEnrolledUnderANationalFlagDifferentFromThePortHarbourTerritorialSeaExclusiveEconomicZoneOrOtherAdministrativeAreaInWhichTheObjectThatPossessesThisAttributeAppliesOrIsLocated")]
+		[EnumMember(Value = "Foreign")] 
+		Foreign = 2,
+		[System.ComponentModel.Description("Unknown value.")]
+		[EnumMember(Value = "Unknown")]
+		Unknown = -1,
+	}
+
+	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+	[System.Serializable()]
+	public enum logicalConnectives : int {
+		[System.ComponentModel.Description("AllTheConditionsDescribedByTheOtherAttributesOfTheObjectOrSubAttributesOfTheSameComplexAttributeAreTrue")]
+		[EnumMember(Value = "Logical Conjunction")] 
+		LogicalConjunction = 1,
+		[System.ComponentModel.Description("AtLeastOneOfTheConditionsDescribedByTheOtherAttributesOfTheObjectOrSubAttributesOfTheSameComplexAttributesIsTrue")]
+		[EnumMember(Value = "Logical Disjunction")] 
+		LogicalDisjunction = 2,
+		[System.ComponentModel.Description("Unknown value.")]
+		[EnumMember(Value = "Unknown")]
+		Unknown = -1,
+	}
+
+	[System.Serializable()]
+	public class categoryOfMarineProtectedArea
+	{
+		public required string label { get; set; }
+		public required string definition { get; set; }
+		public required int code { get; set; }
+	}
+
+	[System.Serializable()]
+	public class categoryOfVessel
+	{
+		public required string label { get; set; }
+		public required string definition { get; set; }
+		public required int code { get; set; }
+	}
+
+	[System.Serializable()]
+	public class actionOrActivity
+	{
+		public required string label { get; set; }
+		public required string definition { get; set; }
+		public required int code { get; set; }
+	}
+
+	[System.Serializable()]
+	public class categoryOfRxN
+	{
+		public required string label { get; set; }
+		public required string definition { get; set; }
+		public required int code { get; set; }
+	}
+
 	public static class CodeList
 	{
+		public static ImmutableArray<categoryOfMarineProtectedArea> categoryOfMarineProtectedAreas => ImmutableArray.Create<categoryOfMarineProtectedArea>(new categoryOfMarineProtectedArea[]{
+			new() {
+				code = 1,
+				definition = "-",
+				label = "IUCN Category Ia",
+			},
+			new() {
+				code = 2,
+				definition = "-",
+				label = "IUCN Category Ib",
+			},
+			new() {
+				code = 3,
+				definition = "-",
+				label = "IUCN Category II",
+			},
+			new() {
+				code = 4,
+				definition = "-",
+				label = "IUCN Category III",
+			},
+			new() {
+				code = 5,
+				definition = "-",
+				label = "IUCN Category IV",
+			},
+			new() {
+				code = 6,
+				definition = "-",
+				label = "IUCN Category V",
+			},
+			new() {
+				code = 7,
+				definition = "-",
+				label = "IUCN Category VI",
+			},
+		});
+
+		public static ImmutableArray<categoryOfVessel> categoryOfVessels => ImmutableArray.Create<categoryOfVessel>(new categoryOfVessel[]{
+			new() {
+				code = 1,
+				definition = "-",
+				label = "General Cargo Vessel",
+			},
+			new() {
+				code = 2,
+				definition = "-",
+				label = "Container Carrier",
+			},
+			new() {
+				code = 3,
+				definition = "-",
+				label = "Tanker",
+			},
+			new() {
+				code = 4,
+				definition = "-",
+				label = "Bulk Carrier",
+			},
+			new() {
+				code = 5,
+				definition = "-",
+				label = "Passenger Vessel",
+			},
+			new() {
+				code = 6,
+				definition = "-",
+				label = "Roll-On Roll-Off",
+			},
+			new() {
+				code = 7,
+				definition = "-",
+				label = "Refrigerated Cargo Vessel",
+			},
+			new() {
+				code = 8,
+				definition = "-",
+				label = "Fishing Vessel",
+			},
+			new() {
+				code = 9,
+				definition = "-",
+				label = "Service",
+			},
+			new() {
+				code = 10,
+				definition = "-",
+				label = "Warship",
+			},
+			new() {
+				code = 11,
+				definition = "-",
+				label = "Towed or Pushed Composite Unit",
+			},
+			new() {
+				code = 12,
+				definition = "-",
+				label = "Tug and Tow",
+			},
+			new() {
+				code = 13,
+				definition = "-",
+				label = "Light Recreational",
+			},
+			new() {
+				code = 14,
+				definition = "-",
+				label = "Semi-Submersible Offshore Installation",
+			},
+			new() {
+				code = 15,
+				definition = "-",
+				label = "Jack-Up Exploration or Project Installation",
+			},
+			new() {
+				code = 16,
+				definition = "-",
+				label = "Livestock Carrier",
+			},
+			new() {
+				code = 17,
+				definition = "-",
+				label = "Sport Fishing",
+			},
+		});
+
+		public static ImmutableArray<actionOrActivity> actionOrActivities => ImmutableArray.Create<actionOrActivity>(new actionOrActivity[]{
+			new() {
+				code = 1,
+				definition = "Carrying a qualified pilot as part of the vessel navigation team.",
+				label = "Navigating With a Pilot",
+			},
+			new() {
+				code = 2,
+				definition = "Navigating a vessel into a port.",
+				label = "Entering Port",
+			},
+			new() {
+				code = 3,
+				definition = "Navigating a vessel out of a port.",
+				label = "Leaving Port",
+			},
+			new() {
+				code = 4,
+				definition = "A signal station for the control of vessels when berthing.",
+				label = "Berthing",
+			},
+			new() {
+				code = 5,
+				definition = "Detaching a vessel from a wharf or jetty.",
+				label = "Slipping",
+			},
+			new() {
+				code = 6,
+				definition = "Attaching a vessel to the seabed by means of an anchor and cable.",
+				label = "Anchoring",
+			},
+			new() {
+				code = 7,
+				definition = "Detaching a vessel from the seabed by recovering an anchor and cable.",
+				label = "Weighing Anchor",
+			},
+			new() {
+				code = 8,
+				definition = "Navigating a vessel along a route or through a narrow gap, such as under a bridge or through a lock.",
+				label = "Transiting",
+			},
+			new() {
+				code = 9,
+				definition = "Navigating a vessel past another traveling broadly in the same direction.",
+				label = "Overtaking",
+			},
+			new() {
+				code = 10,
+				definition = "Providing details such as the name, location or intentions of a vessel.",
+				label = "Reporting",
+			},
+			new() {
+				code = 11,
+				definition = "Loading or unloading cargo.",
+				label = "Working Cargo",
+			},
+			new() {
+				code = 12,
+				definition = "Placing crew or passengers on shore.",
+				label = "Landing",
+			},
+			new() {
+				code = 13,
+				definition = "A signal or message warning of diving activity.",
+				label = "Diving",
+			},
+			new() {
+				code = 14,
+				definition = "Hunting or catching fish.",
+				label = "Fishing",
+			},
+			new() {
+				code = 15,
+				definition = "Releasing anything into the sea; often ballast water; or spoil from dredging elsewhere.",
+				label = "Discharging Overboard",
+			},
+			new() {
+				code = 16,
+				definition = "Navigating a vessel past another travelling broadly in the opposite direction.",
+				label = "Passing",
+			},
+		});
+
+		public static ImmutableArray<categoryOfRxN> categoryOfRxNS => ImmutableArray.Create<categoryOfRxN>(new categoryOfRxN[]{
+			new() {
+				code = 1,
+				definition = "The process of directing the movement of a craft from one point to another.",
+				label = "Navigation",
+			},
+			new() {
+				code = 2,
+				definition = "Transmitting and/or receiving electronic communication signals.",
+				label = "Communication",
+			},
+			new() {
+				code = 3,
+				definition = "Pertaining to environmental protection.",
+				label = "Environmental Protection",
+			},
+			new() {
+				code = 4,
+				definition = "Pertaining to wildlife protection.",
+				label = "Wildlife Protection",
+			},
+			new() {
+				code = 5,
+				definition = "Pertaining to security.",
+				label = "Security",
+			},
+			new() {
+				code = 6,
+				definition = "The agency or establishment for collecting duties, tolls.",
+				label = "Customs",
+			},
+			new() {
+				code = 7,
+				definition = "Pertaining to cargo operations.",
+				label = "Cargo Operation",
+			},
+			new() {
+				code = 8,
+				definition = "Pertaining to a place of safety or refuge.",
+				label = "Refuge",
+			},
+			new() {
+				code = 9,
+				definition = "The authority with responsibility for checking the validity of the health declaration of a vessel and for declaring free pratique.",
+				label = "Health",
+			},
+			new() {
+				code = 10,
+				definition = "Pertaining to natural resources or exploitation.",
+				label = "Natural Resources or Exploitation",
+			},
+			new() {
+				code = 11,
+				definition = "Person or corporation, owners of, or entrusted with or invested with the power of managing a port. May be called a Harbour Board, Port Trust, Port Commission, Harbour Commission, Marine Department.",
+				label = "Port",
+			},
+			new() {
+				code = 12,
+				definition = "An authority with responsibility for the control and movement of money.",
+				label = "Finance",
+			},
+			new() {
+				code = 13,
+				definition = "The science, art, or practice of cultivating the soil, producing crops, and raising livestock and in varying degrees the preparation and marketing of the resulting products.",
+				label = "Agriculture",
+			},
+		});
 	}
 	namespace ComplexAttributes {
 	[System.Serializable()]
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-	public class featureName {
-			public String language {get;set;} = string.Empty;
+	public class contactAddress {
+			public String? deliveryPoint {get;set;} = default;
 
-			public String name {get;set;} = string.Empty;
+			public String? cityName {get;set;} = default;
 
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			public nameUsage? nameUsage {get;set;} = default;
+			public String? administrativeDivision {get;set;} = default;
+
+			public String? countryName {get;set;} = default;
+
+			public String? postalCode {get;set;} = default;
 		}
 
 	[System.Serializable()]
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-	public class featuresDetected {
-			[Required()]
-			public Boolean leastDepthOfDetectedFeaturesMeasured {get;set;} = false;
+	public class featureName {
+			public Boolean? displayName {get;set;} = default;
 
-			[Required()]
-			public Boolean significantFeaturesDetected {get;set;} = false;
+			public String language {get;set;} = string.Empty;
 
-			public decimal? sizeOfFeaturesDetected {get;set;} = default;
+			public String name {get;set;} = string.Empty;
 		}
 
 	[System.Serializable()]
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 	public class fixedDateRange {
-			public DateOnly? dateEnd {get;set;} = default;
-
 			public DateOnly? dateStart {get;set;} = default;
+
+			public DateOnly? dateEnd {get;set;} = default;
 		}
 
 	[System.Serializable()]
@@ -4053,35 +1348,7 @@ namespace S100Framework.DomainModel.S101 {
 	public class frequencyPair {
 			public int? frequencyShoreStationReceives {get;set;} = default;
 
-			[Required()]
-			public int frequencyShoreStationTransmits {get;set;}
-		}
-
-	[System.Serializable()]
-	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-	public class horizontalClearanceFixed {
-			[Required()]
-			public decimal horizontalClearanceValue {get;set;}
-
-			public decimal? horizontalDistanceUncertainty {get;set;} = default;
-		}
-
-	[System.Serializable()]
-	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-	public class horizontalClearanceOpen {
-			[Required()]
-			public decimal horizontalClearanceValue {get;set;}
-
-			public decimal? horizontalDistanceUncertainty {get;set;} = default;
-		}
-
-	[System.Serializable()]
-	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-	public class horizontalPositionUncertainty {
-			[Required()]
-			public decimal uncertaintyFixed {get;set;}
-
-			public decimal? uncertaintyVariableFactor {get;set;} = default;
+			public int? frequencyShoreStationTransmits {get;set;} = default;
 		}
 
 	[System.Serializable()]
@@ -4093,45 +1360,27 @@ namespace S100Framework.DomainModel.S101 {
 
 			public String? headline {get;set;} = default;
 
-			public String language {get;set;} = string.Empty;
+			public String? language {get;set;} = default;
 
 			public String? text {get;set;} = default;
 		}
 
 	[System.Serializable()]
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-	public class measuredDistanceValue {
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[Required()]
-			public distanceUnitOfMeasurement distanceUnitOfMeasurement {get;set;}
-
-			public String? referenceLocation {get;set;} = default;
-
-			[Required()]
-			public decimal waterwayDistance {get;set;}
-		}
-
-	[System.Serializable()]
-	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-	public class multiplicityOfFeatures {
-			[Required()]
-			public Boolean multiplicityKnown {get;set;} = false;
-
-			public int? numberOfFeatures {get;set;} = default;
-		}
-
-	[System.Serializable()]
-	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 	public class onlineResource {
-			public String? headline {get;set;} = default;
+			public String onlineResourceLinkageURL {get;set;} = string.Empty;
 
-			public String linkage {get;set;} = string.Empty;
+			public String? protocol {get;set;} = default;
+
+			public String? applicationProfile {get;set;} = default;
 
 			public String? nameOfResource {get;set;} = default;
+
+			public String? onlineResourceDescription {get;set;} = default;
+
+			public String? protocolRequest {get;set;} = default;
+
+			public onlineFunction? onlineFunction {get;set;} = default;
 		}
 
 	[System.Serializable()]
@@ -4147,27 +1396,20 @@ namespace S100Framework.DomainModel.S101 {
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 	public class periodicDateRange {
 			[Required()]
-			public DateOnly dateEnd {get;set;}
-
-			[Required()]
 			public DateOnly dateStart {get;set;}
-		}
-
-	[System.Serializable()]
-	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-	public class radarWaveLength {
-			public String radarBand {get;set;} = string.Empty;
 
 			[Required()]
-			public decimal waveLengthValue {get;set;}
+			public DateOnly dateEnd {get;set;}
 		}
 
 	[System.Serializable()]
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-	public class sectorInformation {
-			public String? language {get;set;} = default;
+	public class rxNCode {
+			public categoryOfRxN? categoryOfRxN {get;set;} = default;
 
-			public String text {get;set;} = string.Empty;
+			public actionOrActivity? actionOrActivity {get;set;} = default;
+
+			public String? headline {get;set;} = default;
 		}
 
 	[System.Serializable()]
@@ -4176,7 +1418,7 @@ namespace S100Framework.DomainModel.S101 {
 			[Required()]
 			public decimal sectorBearing {get;set;}
 
-			public decimal? sectorLineLength {get;set;} = default;
+			public int? sectorLineLength {get;set;} = default;
 		}
 
 	[System.Serializable()]
@@ -4185,109 +1427,32 @@ namespace S100Framework.DomainModel.S101 {
 			[Required()]
 			public decimal sectorBearing {get;set;}
 
-			public decimal? sectorLineLength {get;set;} = default;
+			public int? sectorLineLength {get;set;} = default;
 		}
 
 	[System.Serializable()]
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-	public class shapeInformation {
-			public String? language {get;set;} = default;
-
-			public String text {get;set;} = string.Empty;
-		}
-
-	[System.Serializable()]
-	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-	public class signalSequence {
-			[Required()]
-			public decimal signalDuration {get;set;}
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[Required()]
-			public signalStatus signalStatus {get;set;}
-		}
-
-	[System.Serializable()]
-	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-	public class speed {
-			[Required()]
-			public decimal speedMaximum {get;set;}
-
-			public decimal? speedMinimum {get;set;} = default;
-		}
-
-	[System.Serializable()]
-	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-	public class surfaceCharacteristics {
+	public class textContent {
 			[EnumerationValue(1)]
 			[EnumerationValue(2)]
 			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
-			[EnumerationValue(9)]
-			[EnumerationValue(11)]
-			[EnumerationValue(14)]
-			[EnumerationValue(17)]
-			[EnumerationValue(18)]
-			public natureOfSurface? natureOfSurface {get;set;} = default;
+			public categoryOfText? categoryOfText {get;set;} = default;
+
+			public String? source {get;set;} = default;
 
 			[EnumerationValue(1)]
 			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
 			[EnumerationValue(7)]
 			[EnumerationValue(8)]
 			[EnumerationValue(9)]
 			[EnumerationValue(10)]
-			public List<natureOfSurfaceQualifyingTerms> natureOfSurfaceQualifyingTerms {get;set;} = [];
+			[EnumerationValue(11)]
+			[EnumerationValue(12)]
+			[EnumerationValue(13)]
+			[EnumerationValue(14)]
+			public sourceType? sourceType {get;set;} = default;
 
-			public int? underlyingLayer {get;set;} = default;
-		}
-
-	[System.Serializable()]
-	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-	public class surveyDateRange {
-			[Required()]
-			public DateOnly dateEnd {get;set;}
-
-			public DateOnly? dateStart {get;set;} = default;
-		}
-
-	[System.Serializable()]
-	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-	public class telecommunications {
-			public String? contactInstructions {get;set;} = default;
-
-			public String telecommunicationIdentifier {get;set;} = string.Empty;
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
-			public telecommunicationService? telecommunicationService {get;set;} = default;
-		}
-
-	[System.Serializable()]
-	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-	public class tidalStreamValue {
-			[Required()]
-			public orientation orientation {get;set;}
-
-			[Required()]
-			public decimal speedMaximum {get;set;}
-
-			[Required()]
-			public decimal timeRelativeToTide {get;set;}
+			public DateOnly? reportedDate {get;set;} = default;
 		}
 
 	[System.Serializable()]
@@ -4304,19 +1469,18 @@ namespace S100Framework.DomainModel.S101 {
 
 			public Boolean? dayOfWeekIsRange {get;set;} = default;
 
-			public List<TimeOnly> timeOfDayStart {get;set;} = [];
-
 			public List<TimeOnly> timeOfDayEnd {get;set;} = [];
+
+			public List<TimeOnly> timeOfDayStart {get;set;} = [];
 		}
 
 	[System.Serializable()]
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-	public class topmark {
+	public class vesselsMeasurements {
 			[EnumerationValue(1)]
 			[EnumerationValue(2)]
 			[EnumerationValue(3)]
 			[EnumerationValue(4)]
-			[EnumerationValue(5)]
 			[EnumerationValue(6)]
 			[EnumerationValue(7)]
 			[EnumerationValue(8)]
@@ -4325,93 +1489,21 @@ namespace S100Framework.DomainModel.S101 {
 			[EnumerationValue(11)]
 			[EnumerationValue(12)]
 			[EnumerationValue(13)]
-			public List<colour> colour {get;set;} = [];
+			[Required()]
+			public vesselsCharacteristics vesselsCharacteristics {get;set;}
 
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			public colourPattern? colourPattern {get;set;} = default;
+			[Required()]
+			public decimal vesselsCharacteristicsValue {get;set;}
 
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
 			[EnumerationValue(3)]
 			[EnumerationValue(4)]
 			[EnumerationValue(5)]
 			[EnumerationValue(6)]
 			[EnumerationValue(7)]
-			[EnumerationValue(8)]
 			[EnumerationValue(9)]
-			[EnumerationValue(10)]
-			[EnumerationValue(11)]
-			[EnumerationValue(12)]
-			[EnumerationValue(13)]
-			[EnumerationValue(14)]
-			[EnumerationValue(15)]
-			[EnumerationValue(16)]
-			[EnumerationValue(17)]
-			[EnumerationValue(18)]
-			[EnumerationValue(19)]
-			[EnumerationValue(20)]
-			[EnumerationValue(21)]
-			[EnumerationValue(22)]
-			[EnumerationValue(23)]
-			[EnumerationValue(24)]
-			[EnumerationValue(25)]
-			[EnumerationValue(26)]
-			[EnumerationValue(27)]
-			[EnumerationValue(28)]
-			[EnumerationValue(29)]
-			[EnumerationValue(30)]
-			[EnumerationValue(31)]
-			[EnumerationValue(32)]
-			[EnumerationValue(33)]
 			[Required()]
-			public topmarkDaymarkShape topmarkDaymarkShape {get;set;}
+			public vesselsCharacteristicsUnit vesselsCharacteristicsUnit {get;set;}
 
-			public List<shapeInformation> shapeInformation {get;set;} = [];
-		}
-
-	[System.Serializable()]
-	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-	public class valueOfLocalMagneticAnomaly {
-			[Required()]
-			public decimal magneticAnomalyValue {get;set;}
-
-			[EnumerationValue(5)]
-			[EnumerationValue(13)]
-			public referenceDirection? referenceDirection {get;set;} = default;
-		}
-
-	[System.Serializable()]
-	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-	public class verticalUncertainty {
-			[Required()]
-			public decimal uncertaintyFixed {get;set;}
-
-			public decimal? uncertaintyVariableFactor {get;set;} = default;
-		}
-
-	[System.Serializable()]
-	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-	public class vesselSpeedLimit {
-			[Required()]
-			public decimal speedLimit {get;set;}
-
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[Required()]
-			public speedUnits speedUnits {get;set;}
-
-			public String? vesselClass {get;set;} = default;
-		}
-
-	[System.Serializable()]
-	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-	public class zoneOfConfidence {
 			[EnumerationValue(1)]
 			[EnumerationValue(2)]
 			[EnumerationValue(3)]
@@ -4419,57 +1511,47 @@ namespace S100Framework.DomainModel.S101 {
 			[EnumerationValue(5)]
 			[EnumerationValue(6)]
 			[Required()]
-			public categoryOfZoneOfConfidenceInData categoryOfZoneOfConfidenceInData {get;set;}
-
-			public fixedDateRange? fixedDateRange {get;set;} = default;
-
-			public horizontalPositionUncertainty? horizontalPositionUncertainty {get;set;} = default;
-
-			public verticalUncertainty? verticalUncertainty {get;set;} = default;
+			public comparisonOperator comparisonOperator {get;set;}
 		}
 
 	[System.Serializable()]
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-	public class directionalCharacter {
-			public Boolean? moireEffect {get;set;} = default;
+	public class designation {
+			public String? designationScheme {get;set;} = default;
 
-			[Required()]
-			public orientation orientation {get;set;}
+			public String? designationIdentifier {get;set;} = default;
+
+			public jurisdiction? jurisdiction {get;set;} = default;
+
+			public String? text {get;set;} = default;
 		}
 
 	[System.Serializable()]
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-	public class rhythmOfLight {
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
-			[EnumerationValue(11)]
-			[EnumerationValue(12)]
-			[EnumerationValue(13)]
-			[EnumerationValue(14)]
-			[EnumerationValue(15)]
-			[EnumerationValue(16)]
-			[EnumerationValue(17)]
-			[EnumerationValue(18)]
-			[EnumerationValue(19)]
-			[EnumerationValue(25)]
-			[EnumerationValue(26)]
-			[EnumerationValue(27)]
-			[EnumerationValue(28)]
-			[EnumerationValue(29)]
-			[Required()]
-			public lightCharacteristic lightCharacteristic {get;set;}
+	public class bearingInformation {
+			public cardinalDirection? cardinalDirection {get;set;} = default;
 
-			public List<String> signalGroup {get;set;} = [];
+			public decimal? distance {get;set;} = default;
 
-			public decimal? signalPeriod {get;set;} = default;
+			public List<decimal> sectorBearing {get;set;} = [];
 
-			public List<signalSequence> signalSequence {get;set;} = [];
+			public List<information> information {get;set;} = [];
+
+			public orientation? orientation {get;set;} = default;
+		}
+
+	[System.Serializable()]
+	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+	public class graphic {
+			public List<String> pictorialRepresentation {get;set;} = [];
+
+			public String? pictureCaption {get;set;} = default;
+
+			public DateOnly? sourceDate {get;set;} = default;
+
+			public String? pictureInformation {get;set;} = default;
+
+			public bearingInformation? bearingInformation {get;set;} = default;
 		}
 
 	[System.Serializable()]
@@ -4495,108 +1577,19 @@ namespace S100Framework.DomainModel.S101 {
 
 	[System.Serializable()]
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-	public class spatialAccuracy {
-			public fixedDateRange? fixedDateRange {get;set;} = default;
-
-			public horizontalPositionUncertainty? horizontalPositionUncertainty {get;set;} = default;
-
-			public verticalUncertainty? verticalUncertainty {get;set;} = default;
-		}
-
-	[System.Serializable()]
-	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-	public class tidalStreamPanelValues {
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[Required()]
-			public referenceTide referenceTide {get;set;}
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[Required()]
-			public referenceTideType referenceTideType {get;set;}
-
-			public decimal? streamDepth {get;set;} = default;
-
-			public List<tidalStreamValue> tidalStreamValue {get;set;} = [];
-		}
-
-	[System.Serializable()]
-	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-	public class verticalClearanceClosed {
-			[Required()]
-			public decimal verticalClearanceValue {get;set;}
-
-			public verticalUncertainty? verticalUncertainty {get;set;} = default;
-		}
-
-	[System.Serializable()]
-	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-	public class verticalClearanceFixed {
-			[Required()]
-			public decimal verticalClearanceValue {get;set;}
-
-			public verticalUncertainty? verticalUncertainty {get;set;} = default;
-		}
-
-	[System.Serializable()]
-	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-	public class verticalClearanceOpen {
-			[Required()]
-			public Boolean verticalClearanceUnlimited {get;set;} = false;
-
-			public decimal? verticalClearanceValue {get;set;} = default;
-
-			public verticalUncertainty? verticalUncertainty {get;set;} = default;
-		}
-
-	[System.Serializable()]
-	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-	public class verticalClearanceSafe {
-			[Required()]
-			public decimal verticalClearanceValue {get;set;}
-
-			public verticalUncertainty? verticalUncertainty {get;set;} = default;
-		}
-
-	[System.Serializable()]
-	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-	public class lightSector {
-			[EnumerationValue(1)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			[EnumerationValue(9)]
-			[EnumerationValue(10)]
-			[EnumerationValue(11)]
-			public List<colour> colour {get;set;} = [];
-
-			public directionalCharacter? directionalCharacter {get;set;} = default;
-
+	public class telecommunications {
 			[EnumerationValue(1)]
 			[EnumerationValue(2)]
 			[EnumerationValue(3)]
 			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			[EnumerationValue(8)]
-			[EnumerationValue(9)]
-			public List<lightVisibility> lightVisibility {get;set;} = [];
+			public categoryOfCommunicationPreference? categoryOfCommunicationPreference {get;set;} = default;
 
-			public sectorLimit? sectorLimit {get;set;} = default;
+			public String? contactInstructions {get;set;} = default;
 
-			public decimal? valueOfNominalRange {get;set;} = default;
+			public String? telecomCarrier {get;set;} = default;
 
-			public List<sectorInformation> sectorInformation {get;set;} = [];
+			public String telecommunicationIdentifier {get;set;} = string.Empty;
 
-			public Boolean? sectorArcExtension {get;set;} = default;
-		}
-
-	[System.Serializable()]
-	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-	public class sectorCharacteristics {
 			[EnumerationValue(1)]
 			[EnumerationValue(2)]
 			[EnumerationValue(3)]
@@ -4605,6 +1598,400 @@ namespace S100Framework.DomainModel.S101 {
 			[EnumerationValue(6)]
 			[EnumerationValue(7)]
 			[EnumerationValue(8)]
+			public telecommunicationService? telecommunicationService {get;set;} = default;
+
+			public scheduleByDayOfWeek? scheduleByDayOfWeek {get;set;} = default;
+		}
+
+	}
+	public enum Role {
+		[System.ComponentModel.Description("The location in which the information item applies")]
+		appliesInLocation,
+		[System.ComponentModel.Description("The controlling organization or authority for a geographically located service")]
+		controlAuthority,
+		[System.ComponentModel.Description("The service controlled by an organisation or authority")]
+		controlledService,
+		[System.ComponentModel.Description("The regulation, restriction, recommendation, or nautical information")]
+		theRxN,
+		[System.ComponentModel.Description("The usual service hours to which an exception applies")]
+		theServiceHours_nsdy,
+		[System.ComponentModel.Description("The work hours for a non-standard workday")]
+		partialWorkingDay,
+		[System.ComponentModel.Description("The responsible authority")]
+		responsibleAuthority,
+		[System.ComponentModel.Description("The marine protected area for which the authority is responsible")]
+		theMarineProtectedArea,
+		[System.ComponentModel.Description("The organisation to which information relates")]
+		theOrganisation,
+		[System.ComponentModel.Description("The information")]
+		theInformation,
+		[System.ComponentModel.Description("-")]
+		permission,
+		[System.ComponentModel.Description("-")]
+		vslLocation,
+		[System.ComponentModel.Description("-")]
+		theApplicationRXN,
+		[System.ComponentModel.Description("-")]
+		isApplicableTo,
+		[System.ComponentModel.Description("-")]
+		theAuthority,
+		[System.ComponentModel.Description("-")]
+		theContactDetails,
+		[System.ComponentModel.Description("-")]
+		theAuthority_srvHrs,
+		[System.ComponentModel.Description("-")]
+		theServiceHours,
+		[System.ComponentModel.Description("-")]
+		informationProvidedFor,
+		[System.ComponentModel.Description("-")]
+		providesInformation,
+	}
+
+	namespace InformationAssociations {
+		[System.Serializable()]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
+		public partial class AssociatedRxN : InformationAssociation {
+			[JsonIgnore]
+			public override string Code => nameof(AssociatedRxN);
+		}
+
+		[System.Serializable()]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
+		public partial class ExceptionalWorkday : InformationAssociation {
+			[JsonIgnore]
+			public override string Code => nameof(ExceptionalWorkday);
+		}
+
+		[System.Serializable()]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
+		public partial class ProtectedAreaAuthority : InformationAssociation {
+			[JsonIgnore]
+			public override string Code => nameof(ProtectedAreaAuthority);
+		}
+
+		[System.Serializable()]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
+		public partial class ServiceControl : InformationAssociation {
+			[JsonIgnore]
+			public override string Code => nameof(ServiceControl);
+		}
+
+		[System.Serializable()]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
+		public partial class RelatedOrganisation : InformationAssociation {
+			[JsonIgnore]
+			public override string Code => nameof(RelatedOrganisation);
+		}
+
+		[System.Serializable()]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
+		public partial class PermissionType : InformationAssociation {
+			[Required()]
+			public categoryOfRelationship categoryOfRelationship {get;set;}
+
+			[JsonIgnore]
+			public override string Code => nameof(PermissionType);
+		}
+
+		[System.Serializable()]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
+		public partial class InclusionType : InformationAssociation {
+			[Required()]
+			public membership membership {get;set;}
+
+			[JsonIgnore]
+			public override string Code => nameof(InclusionType);
+		}
+
+		[System.Serializable()]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
+		public partial class AuthorityContact : InformationAssociation {
+			[JsonIgnore]
+			public override string Code => nameof(AuthorityContact);
+		}
+
+		[System.Serializable()]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
+		public partial class AuthorityHours : InformationAssociation {
+			[JsonIgnore]
+			public override string Code => nameof(AuthorityHours);
+		}
+
+		[System.Serializable()]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
+		public partial class additionalInformation : InformationAssociation {
+			[JsonIgnore]
+			public override string Code => nameof(additionalInformation);
+		}
+	}
+
+}
+
+namespace S100Framework.DomainModel.S122 {
+	using ComplexAttributes;
+	using InformationAssociations;
+
+	namespace InformationTypes {
+		[System.Serializable()]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
+		public partial class InformationType : InformationNode, IInformationBindingDefinition {
+			public List<featureName> featureName {get;set;} = [];
+
+			public fixedDateRange? fixedDateRange {get;set;} = default;
+
+			public List<periodicDateRange> periodicDateRange {get;set;} = [];
+
+			public List<graphic> graphic {get;set;} = [];
+
+			public String? source {get;set;} = default;
+
+			[EnumerationValue(1)]
+			[EnumerationValue(2)]
+			[EnumerationValue(7)]
+			[EnumerationValue(8)]
+			[EnumerationValue(9)]
+			[EnumerationValue(10)]
+			[EnumerationValue(11)]
+			[EnumerationValue(12)]
+			[EnumerationValue(13)]
+			[EnumerationValue(14)]
+			public sourceType? sourceType {get;set;} = default;
+
+			public DateOnly? reportedDate {get;set;} = default;
+
+			[JsonIgnore]
+			public override string Code => nameof(InformationType);
+
+			public informationBindingDefinition[] informationBindingDefinitions => InformationType._informationBindingDefinitions;
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			];
+		}
+
+		[System.Serializable()]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
+		public partial class AbstractRxN : InformationType {
+			[EnumerationValue(2)]
+			[EnumerationValue(3)]
+			[EnumerationValue(4)]
+			[EnumerationValue(5)]
+			[EnumerationValue(6)]
+			[EnumerationValue(7)]
+			[EnumerationValue(8)]
+			[EnumerationValue(9)]
+			[EnumerationValue(10)]
+			[EnumerationValue(11)]
+			[EnumerationValue(12)]
+			[EnumerationValue(13)]
+			[EnumerationValue(14)]
+			[EnumerationValue(15)]
+			[EnumerationValue(16)]
+			public categoryOfAuthority? categoryOfAuthority {get;set;} = default;
+
+			public textContent? textContent {get;set;} = default;
+
+			public List<rxNCode> rxNCode {get;set;} = [];
+
+			[JsonIgnore]
+			public override string Code => nameof(AbstractRxN);
+
+			public informationBindingDefinition[] informationBindingDefinitions => AbstractRxN._informationBindingDefinitions;
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(RelatedOrganisation),
+					role = Enum.GetName<Role>(Role.theOrganisation)!,
+					informationTypes = [nameof(Authority)],
+				},
+			];
+		}
+
+		[System.Serializable()]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
+		public partial class Authority : InformationType {
+			[EnumerationValue(2)]
+			[EnumerationValue(3)]
+			[EnumerationValue(4)]
+			[EnumerationValue(5)]
+			[EnumerationValue(6)]
+			[EnumerationValue(7)]
+			[EnumerationValue(8)]
+			[EnumerationValue(9)]
+			[EnumerationValue(10)]
+			[EnumerationValue(11)]
+			[EnumerationValue(12)]
+			[EnumerationValue(13)]
+			[EnumerationValue(14)]
+			[EnumerationValue(15)]
+			[EnumerationValue(16)]
+			[Required()]
+			public categoryOfAuthority categoryOfAuthority {get;set;}
+
+			public List<textContent> textContent {get;set;} = [];
+
+			[JsonIgnore]
+			public override string Code => nameof(Authority);
+
+			public informationBindingDefinition[] informationBindingDefinitions => Authority._informationBindingDefinitions;
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(RelatedOrganisation),
+					role = Enum.GetName<Role>(Role.theInformation)!,
+					informationTypes = [nameof(AbstractRxN)],
+				},
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(AuthorityContact),
+					role = Enum.GetName<Role>(Role.theContactDetails)!,
+					informationTypes = [nameof(ContactDetails)],
+				},
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(AuthorityHours),
+					role = Enum.GetName<Role>(Role.theServiceHours)!,
+					informationTypes = [nameof(ServiceHours)],
+				},
+			];
+		}
+
+		[System.Serializable()]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
+		public partial class ContactDetails : AbstractRxN {
+			public String? callName {get;set;} = default;
+
+			public String? callSign {get;set;} = default;
+
+			[EnumerationValue(1)]
+			[EnumerationValue(2)]
+			[EnumerationValue(3)]
+			[EnumerationValue(4)]
+			public categoryOfCommunicationPreference? categoryOfCommunicationPreference {get;set;} = default;
+
+			public List<String> communicationChannel {get;set;} = [];
+
+			public String? contactInstructions {get;set;} = default;
+
+			public String? mMSICode {get;set;} = default;
+
+			public List<int> signalFrequency {get;set;} = [];
+
+			public List<contactAddress> contactAddress {get;set;} = [];
+
+			public List<frequencyPair> frequencyPair {get;set;} = [];
+
+			public List<onlineResource> onlineResource {get;set;} = [];
+
+			public List<telecommunications> telecommunications {get;set;} = [];
+
+			public List<information> information {get;set;} = [];
+
+			[JsonIgnore]
+			public override string Code => nameof(ContactDetails);
+
+			public informationBindingDefinition[] informationBindingDefinitions => ContactDetails._informationBindingDefinitions;
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(AuthorityContact),
+					role = Enum.GetName<Role>(Role.theAuthority)!,
+					informationTypes = [nameof(Authority)],
+				},
+			];
+		}
+
+		[System.Serializable()]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
+		public partial class NonStandardWorkingDay : InformationType {
+			public List<DateOnly> dateFixed {get;set;} = [];
+
+			public List<String> dateVariable {get;set;} = [];
+
+			public List<information> information {get;set;} = [];
+
+			[JsonIgnore]
+			public override string Code => nameof(NonStandardWorkingDay);
+
+			public informationBindingDefinition[] informationBindingDefinitions => NonStandardWorkingDay._informationBindingDefinitions;
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(ExceptionalWorkday),
+					role = Enum.GetName<Role>(Role.theServiceHours_nsdy)!,
+					informationTypes = [nameof(ServiceHours)],
+				},
+			];
+		}
+
+		[System.Serializable()]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
+		public partial class ServiceHours : InformationType {
+			public List<scheduleByDayOfWeek> scheduleByDayOfWeek {get;set;} = [];
+
+			[Required()]
+			public information information {get;set;}
+
+			[JsonIgnore]
+			public override string Code => nameof(ServiceHours);
+
+			public informationBindingDefinition[] informationBindingDefinitions => ServiceHours._informationBindingDefinitions;
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(AuthorityHours),
+					role = Enum.GetName<Role>(Role.theAuthority_srvHrs)!,
+					informationTypes = [nameof(Authority)],
+				},
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(ExceptionalWorkday),
+					role = Enum.GetName<Role>(Role.partialWorkingDay)!,
+					informationTypes = [nameof(NonStandardWorkingDay)],
+				},
+			];
+		}
+
+		[System.Serializable()]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
+		public partial class Applicability : InformationType {
+			public Boolean? inBallast {get;set;} = default;
+
+			[EnumerationValue(1)]
+			[EnumerationValue(2)]
+			[EnumerationValue(3)]
+			[EnumerationValue(4)]
+			[EnumerationValue(5)]
+			[EnumerationValue(6)]
+			[EnumerationValue(7)]
+			[EnumerationValue(8)]
+			[EnumerationValue(9)]
+			public List<categoryOfCargo> categoryOfCargo {get;set;} = [];
+
+			[EnumerationValue(1)]
+			[EnumerationValue(2)]
+			[EnumerationValue(3)]
+			[EnumerationValue(4)]
+			[EnumerationValue(5)]
+			[EnumerationValue(6)]
+			[EnumerationValue(7)]
+			[EnumerationValue(8)]
+			[EnumerationValue(9)]
+			[EnumerationValue(10)]
 			[EnumerationValue(11)]
 			[EnumerationValue(12)]
 			[EnumerationValue(13)]
@@ -4614,372 +2001,482 @@ namespace S100Framework.DomainModel.S101 {
 			[EnumerationValue(17)]
 			[EnumerationValue(18)]
 			[EnumerationValue(19)]
-			[EnumerationValue(25)]
-			[EnumerationValue(26)]
-			[EnumerationValue(27)]
-			[EnumerationValue(28)]
-			[EnumerationValue(29)]
-			[Required()]
-			public lightCharacteristic lightCharacteristic {get;set;}
+			[EnumerationValue(20)]
+			[EnumerationValue(21)]
+			public List<categoryOfDangerousOrHazardousCargo> categoryOfDangerousOrHazardousCargo {get;set;} = [];
 
-			public List<lightSector> lightSector {get;set;} = [];
+			[EnumerationValue(1)]
+			[EnumerationValue(2)]
+			[EnumerationValue(3)]
+			[EnumerationValue(4)]
+			[EnumerationValue(5)]
+			[EnumerationValue(6)]
+			[EnumerationValue(7)]
+			[EnumerationValue(8)]
+			[EnumerationValue(9)]
+			[EnumerationValue(10)]
+			[EnumerationValue(11)]
+			[EnumerationValue(12)]
+			[EnumerationValue(13)]
+			[EnumerationValue(14)]
+			[EnumerationValue(15)]
+			[EnumerationValue(16)]
+			[EnumerationValue(17)]
+			public categoryOfVessel? categoryOfVessel {get;set;} = default;
 
-			public List<String> signalGroup {get;set;} = [];
+			[EnumerationValue(1)]
+			[EnumerationValue(2)]
+			public categoryOfVesselRegistry? categoryOfVesselRegistry {get;set;} = default;
 
-			public decimal? signalPeriod {get;set;} = default;
+			[EnumerationValue(1)]
+			[EnumerationValue(2)]
+			public logicalConnectives? logicalConnectives {get;set;} = default;
 
-			public List<signalSequence> signalSequence {get;set;} = [];
-		}
+			public int? thicknessOfIceCapability {get;set;} = default;
 
-	}
-	public enum Role {
-		[System.ComponentModel.Description("A pointer to incidental, secondary or supplementary features related to the referenced feature.")]
-		theAuxiliaryFeature,
-		[System.ComponentModel.Description("A pointer to a specific cartographically positioned location for text.")]
-		theCartographicText,
-		[System.ComponentModel.Description("A pointer to the aggregate in a whole-part relationship.")]
-		theCollection,
-		[System.ComponentModel.Description("A pointer to a part in a whole-part relationship.")]
-		theComponent,
-		[System.ComponentModel.Description("A pointer to the feature(s) supported by a structure feature.")]
-		theEquipment,
-		[System.ComponentModel.Description("A pointer to an object that provides more information about the referencing feature or information type.")]
-		theInformation,
-		[System.ComponentModel.Description("A pointer to a specific feature(s).")]
-		thePositionProvider,
-		[System.ComponentModel.Description("A pointer to a feature to which incidental, secondary or supplementary features are related.")]
-		thePrimaryFeature,
-		[System.ComponentModel.Description("A pointer to an information type providing spatial quality information.")]
-		theQualityInformation,
-		[System.ComponentModel.Description("A pointer to a supported roofed structure.")]
-		theRoofedStructure,
-		[System.ComponentModel.Description("A pointer to the feature that equipment feature(s) are supported by.")]
-		theStructure,
-		[System.ComponentModel.Description("A pointer to the feature(s) that support a structure.")]
-		theSupport,
-		[System.ComponentModel.Description("A pointer to a feature that describes changes made to a dataset.")]
-		theUpdate,
-		[System.ComponentModel.Description("A pointer to a feature that has been updated.")]
-		theUpdatedObject,
-	}
-
-	namespace InformationAssociations {
-		[System.Serializable()]
-		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class AdditionalInformation : InformationAssociation {
-			[JsonIgnore]
-			public override string Code => nameof(AdditionalInformation);
-		}
-
-		[System.Serializable()]
-		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class QualityOfBathymetricDataComposition : InformationAssociation {
-			[JsonIgnore]
-			public override string Code => nameof(QualityOfBathymetricDataComposition);
-		}
-	}
-
-	namespace FeatureAssociations {
-		[System.Serializable()]
-		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class AidsToNavigationAssociation : FeatureAssociation {
-			[JsonIgnore]
-			public override string Code => nameof(AidsToNavigationAssociation);
-		}
-
-		[System.Serializable()]
-		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class ASLAggregation : FeatureAssociation {
-			[JsonIgnore]
-			public override string Code => nameof(ASLAggregation);
-		}
-
-		[System.Serializable()]
-		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class BridgeAggregation : FeatureAssociation {
-			[JsonIgnore]
-			public override string Code => nameof(BridgeAggregation);
-		}
-
-		[System.Serializable()]
-		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class CautionAreaAssociation : FeatureAssociation {
-			[JsonIgnore]
-			public override string Code => nameof(CautionAreaAssociation);
-		}
-
-		[System.Serializable()]
-		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class DeepWaterRouteAggregation : FeatureAssociation {
-			[JsonIgnore]
-			public override string Code => nameof(DeepWaterRouteAggregation);
-		}
-
-		[System.Serializable()]
-		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class FairwayAggregation : FeatureAssociation {
-			[JsonIgnore]
-			public override string Code => nameof(FairwayAggregation);
-		}
-
-		[System.Serializable()]
-		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class FairwayAuxiliary : FeatureAssociation {
-			[JsonIgnore]
-			public override string Code => nameof(FairwayAuxiliary);
-		}
-
-		[System.Serializable()]
-		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class IslandAggregation : FeatureAssociation {
-			[JsonIgnore]
-			public override string Code => nameof(IslandAggregation);
-		}
-
-		[System.Serializable()]
-		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class MooringTrotAggregation : FeatureAssociation {
-			[JsonIgnore]
-			public override string Code => nameof(MooringTrotAggregation);
-		}
-
-		[System.Serializable()]
-		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class PilotageDistrictAssociation : FeatureAssociation {
-			[JsonIgnore]
-			public override string Code => nameof(PilotageDistrictAssociation);
-		}
-
-		[System.Serializable()]
-		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class RangeSystemAggregation : FeatureAssociation {
-			[JsonIgnore]
-			public override string Code => nameof(RangeSystemAggregation);
-		}
-
-		[System.Serializable()]
-		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class RoofedStructureAggregation : FeatureAssociation {
-			[JsonIgnore]
-			public override string Code => nameof(RoofedStructureAggregation);
-		}
-
-		[System.Serializable()]
-		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class StructureEquipment : FeatureAssociation {
-			[JsonIgnore]
-			public override string Code => nameof(StructureEquipment);
-		}
-
-		[System.Serializable()]
-		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class TextAssociation : FeatureAssociation {
-			[JsonIgnore]
-			public override string Code => nameof(TextAssociation);
-		}
-
-		[System.Serializable()]
-		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class TrafficSeparationSchemeAggregation : FeatureAssociation {
-			[JsonIgnore]
-			public override string Code => nameof(TrafficSeparationSchemeAggregation);
-		}
-
-		[System.Serializable()]
-		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class TwoWayRouteAggregation : FeatureAssociation {
-			[JsonIgnore]
-			public override string Code => nameof(TwoWayRouteAggregation);
-		}
-
-		[System.Serializable()]
-		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class UpdateAggregation : FeatureAssociation {
-			[JsonIgnore]
-			public override string Code => nameof(UpdateAggregation);
-		}
-
-		[System.Serializable()]
-		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class UpdatedInformation : FeatureAssociation {
-			[JsonIgnore]
-			public override string Code => nameof(UpdatedInformation);
-		}
-	}
-
-}
-
-namespace S100Framework.DomainModel.S101 {
-	using ComplexAttributes;
-	using InformationAssociations;
-
-	namespace InformationTypes {
-		[System.Serializable()]
-		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class ContactDetails : InformationNode, IInformationBindingDefinition {
-			public String? callSign {get;set;} = default;
-
-			public List<String> communicationChannel {get;set;} = [];
-
-			public String? contactInstructions {get;set;} = default;
-
-			public fixedDateRange? fixedDateRange {get;set;} = default;
-
-			public List<frequencyPair> frequencyPair {get;set;} = [];
-
-			public String? mMSICode {get;set;} = default;
-
-			public List<onlineResource> onlineResource {get;set;} = [];
-
-			public List<telecommunications> telecommunications {get;set;} = [];
-
-			[JsonIgnore]
-			public override string Code => nameof(ContactDetails);
-
-			public informationBindingDefinition[] informationBindingDefinitions => ContactDetails._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-			];
-		}
-
-		[System.Serializable()]
-		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class ServiceHours : InformationNode, IInformationBindingDefinition {
-			public fixedDateRange? fixedDateRange {get;set;} = default;
-
-			public List<periodicDateRange> periodicDateRange {get;set;} = [];
-
-			public List<scheduleByDayOfWeek> scheduleByDayOfWeek {get;set;} = [];
+			public String? vesselPerformance {get;set;} = default;
 
 			public List<information> information {get;set;} = [];
 
-			[JsonIgnore]
-			public override string Code => nameof(ServiceHours);
+			public List<vesselsMeasurements> vesselsMeasurements {get;set;} = [];
 
-			public informationBindingDefinition[] informationBindingDefinitions => ServiceHours._informationBindingDefinitions;
+			[JsonIgnore]
+			public override string Code => nameof(Applicability);
+
+			public informationBindingDefinition[] informationBindingDefinitions => Applicability._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 			];
 		}
-
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class NonStandardWorkingDay : InformationNode, IInformationBindingDefinition {
-			public List<DateOnly> dateFixed {get;set;} = [];
-
-			public List<String> dateVariable {get;set;} = [];
-
-			public fixedDateRange? fixedDateRange {get;set;} = default;
-
-			public List<periodicDateRange> periodicDateRange {get;set;} = [];
-
-			public List<information> information {get;set;} = [];
-
-			[JsonIgnore]
-			public override string Code => nameof(NonStandardWorkingDay);
-
-			public informationBindingDefinition[] informationBindingDefinitions => NonStandardWorkingDay._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-			];
-		}
-
-		[System.Serializable()]
-		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class NauticalInformation : InformationNode, IInformationBindingDefinition {
-			public fixedDateRange? fixedDateRange {get;set;} = default;
-
-			public List<periodicDateRange> periodicDateRange {get;set;} = [];
-
-			public List<information> information {get;set;} = [];
-
-			public String? pictorialRepresentation {get;set;} = default;
-
+		public partial class NauticalInformation : AbstractRxN {
 			[JsonIgnore]
 			public override string Code => nameof(NauticalInformation);
 
 			public informationBindingDefinition[] informationBindingDefinitions => NauticalInformation._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
-			];
-		}
-
-		[System.Serializable()]
-		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class SpatialQuality : InformationNode, IInformationBindingDefinition {
-			[EnumerationValue(4)]
-			public qualityOfHorizontalMeasurement? qualityOfHorizontalMeasurement {get;set;} = default;
-
-			public List<spatialAccuracy> spatialAccuracy {get;set;} = [];
-
-			[JsonIgnore]
-			public override string Code => nameof(SpatialQuality);
-
-			public informationBindingDefinition[] informationBindingDefinitions => SpatialQuality._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-			];
-		}
-	}
-	namespace FeatureTypes {
-		using FeatureAssociations;
-		using InformationTypes;
-
-		[System.Serializable()]
-		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class QualityOfNonBathymetricData : FeatureNode, IFeatureBindingDefinition {
-			[EnumerationValue(1)]
-			[EnumerationValue(4)]
-			public categoryOfTemporalVariation? categoryOfTemporalVariation {get;set;} = default;
-
-			public decimal? horizontalDistanceUncertainty {get;set;} = default;
-
-			[Required()]
-			public horizontalPositionUncertainty horizontalPositionUncertainty {get;set;}
-
-			public String? interoperabilityIdentifier {get;set;} = default;
-
-			public decimal? orientationUncertainty {get;set;} = default;
-
-			public surveyDateRange? surveyDateRange {get;set;} = default;
-
-			public verticalUncertainty? verticalUncertainty {get;set;} = default;
-
-			public List<information> information {get;set;} = [];
-
-			[JsonIgnore]
-			public override string Code => nameof(QualityOfNonBathymetricData);
-
-			public informationBindingDefinition[] informationBindingDefinitions => QualityOfNonBathymetricData._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-			];
-
-			public featureBindingDefinition[] featureBindingDefinitions => QualityOfNonBathymetricData._featureBindingDefinitions;
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
+				new informationBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
 					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
+					association = nameof(RelatedOrganisation),
+					role = Enum.GetName<Role>(Role.theOrganisation)!,
+					informationTypes = [nameof(Authority)],
 				},
 			];
 		}
 
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
+		public partial class Regulations : AbstractRxN {
+			[JsonIgnore]
+			public override string Code => nameof(Regulations);
+
+			public informationBindingDefinition[] informationBindingDefinitions => Regulations._informationBindingDefinitions;
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			];
+		}
+
+		[System.Serializable()]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
+		public partial class Restrictions : AbstractRxN {
+			[JsonIgnore]
+			public override string Code => nameof(Restrictions);
+
+			public informationBindingDefinition[] informationBindingDefinitions => Restrictions._informationBindingDefinitions;
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			];
+		}
+
+		[System.Serializable()]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
+		public partial class Recommendations : AbstractRxN {
+			[JsonIgnore]
+			public override string Code => nameof(Recommendations);
+
+			public informationBindingDefinition[] informationBindingDefinitions => Recommendations._informationBindingDefinitions;
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			];
+		}
+	}
+	namespace FeatureTypes {
+		using InformationTypes;
+
+		[System.Serializable()]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
+		public abstract class FeatureType : FeatureNode, IFeatureBindingDefinition {
+			public List<featureName> featureName {get;set;} = [];
+
+			public fixedDateRange? fixedDateRange {get;set;} = default;
+
+			public List<periodicDateRange> periodicDateRange {get;set;} = [];
+
+			public List<textContent> textContent {get;set;} = [];
+
+			public String interoperabilityIdentifier {get;set;} = string.Empty;
+
+			public String? source {get;set;} = default;
+
+			[EnumerationValue(1)]
+			[EnumerationValue(2)]
+			[EnumerationValue(7)]
+			[EnumerationValue(8)]
+			[EnumerationValue(9)]
+			[EnumerationValue(10)]
+			[EnumerationValue(11)]
+			[EnumerationValue(12)]
+			[EnumerationValue(13)]
+			[EnumerationValue(14)]
+			public sourceType? sourceType {get;set;} = default;
+
+			public DateOnly? reportedDate {get;set;} = default;
+
+			[JsonIgnore]
+			public override string Code => nameof(FeatureType);
+
+			public informationBindingDefinition[] informationBindingDefinitions => FeatureType._informationBindingDefinitions;
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(AssociatedRxN),
+					role = Enum.GetName<Role>(Role.theRxN)!,
+					informationTypes = [nameof(AbstractRxN)],
+				},
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(additionalInformation),
+					role = Enum.GetName<Role>(Role.providesInformation)!,
+					informationTypes = [nameof(NauticalInformation)],
+				},
+			];
+
+			public featureBindingDefinition[] featureBindingDefinitions => FeatureType._featureBindingDefinitions;
+			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			];
+		}
+
+		[System.Serializable()]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
+		public partial class RestrictedArea : FeatureType {
+			[EnumerationValue(1)]
+			[EnumerationValue(4)]
+			[EnumerationValue(5)]
+			[EnumerationValue(6)]
+			[EnumerationValue(7)]
+			[EnumerationValue(8)]
+			[EnumerationValue(9)]
+			[EnumerationValue(10)]
+			[EnumerationValue(12)]
+			[EnumerationValue(14)]
+			[EnumerationValue(18)]
+			[EnumerationValue(19)]
+			[EnumerationValue(20)]
+			[EnumerationValue(21)]
+			[EnumerationValue(22)]
+			[EnumerationValue(23)]
+			[EnumerationValue(24)]
+			[EnumerationValue(25)]
+			[EnumerationValue(26)]
+			[EnumerationValue(27)]
+			[EnumerationValue(28)]
+			[EnumerationValue(29)]
+			[EnumerationValue(30)]
+			[EnumerationValue(31)]
+			[EnumerationValue(32)]
+			[EnumerationValue(33)]
+			public List<categoryOfRestrictedArea> categoryOfRestrictedArea {get;set;} = [];
+
+			[EnumerationValue(1)]
+			[EnumerationValue(2)]
+			[EnumerationValue(3)]
+			[EnumerationValue(4)]
+			[EnumerationValue(5)]
+			[EnumerationValue(6)]
+			[EnumerationValue(7)]
+			[EnumerationValue(8)]
+			[EnumerationValue(9)]
+			[EnumerationValue(10)]
+			[EnumerationValue(11)]
+			[EnumerationValue(12)]
+			[EnumerationValue(13)]
+			[EnumerationValue(14)]
+			[EnumerationValue(15)]
+			[EnumerationValue(16)]
+			[EnumerationValue(17)]
+			[EnumerationValue(18)]
+			[EnumerationValue(19)]
+			[EnumerationValue(20)]
+			[EnumerationValue(21)]
+			[EnumerationValue(22)]
+			[EnumerationValue(23)]
+			[EnumerationValue(24)]
+			[EnumerationValue(25)]
+			[EnumerationValue(26)]
+			[EnumerationValue(27)]
+			[EnumerationValue(28)]
+			[EnumerationValue(29)]
+			[EnumerationValue(30)]
+			[EnumerationValue(31)]
+			[EnumerationValue(32)]
+			[EnumerationValue(33)]
+			[EnumerationValue(34)]
+			[EnumerationValue(35)]
+			[EnumerationValue(36)]
+			[EnumerationValue(37)]
+			[EnumerationValue(38)]
+			[EnumerationValue(39)]
+			[EnumerationValue(40)]
+			[EnumerationValue(41)]
+			public List<restriction> restriction {get;set;} = [];
+
+			[EnumerationValue(1)]
+			[EnumerationValue(2)]
+			[EnumerationValue(3)]
+			[EnumerationValue(4)]
+			[EnumerationValue(5)]
+			[EnumerationValue(6)]
+			[EnumerationValue(7)]
+			[EnumerationValue(8)]
+			[EnumerationValue(9)]
+			[EnumerationValue(11)]
+			[EnumerationValue(12)]
+			[EnumerationValue(13)]
+			[EnumerationValue(14)]
+			[EnumerationValue(15)]
+			[EnumerationValue(16)]
+			[EnumerationValue(17)]
+			[EnumerationValue(18)]
+			[EnumerationValue(19)]
+			[EnumerationValue(20)]
+			[EnumerationValue(21)]
+			[EnumerationValue(22)]
+			[EnumerationValue(23)]
+			[EnumerationValue(24)]
+			[EnumerationValue(25)]
+			[EnumerationValue(26)]
+			[EnumerationValue(27)]
+			[EnumerationValue(28)]
+			[EnumerationValue(29)]
+			[EnumerationValue(30)]
+			[EnumerationValue(31)]
+			[EnumerationValue(32)]
+			[EnumerationValue(33)]
+			[EnumerationValue(34)]
+			[EnumerationValue(35)]
+			[EnumerationValue(36)]
+			[EnumerationValue(37)]
+			[EnumerationValue(38)]
+			[EnumerationValue(39)]
+			[EnumerationValue(41)]
+			[EnumerationValue(42)]
+			[EnumerationValue(43)]
+			public List<status> status {get;set;} = [];
+
+			[JsonIgnore]
+			public override string Code => nameof(RestrictedArea);
+
+			public informationBindingDefinition[] informationBindingDefinitions => RestrictedArea._informationBindingDefinitions;
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+			];
+
+			public featureBindingDefinition[] featureBindingDefinitions => RestrictedArea._featureBindingDefinitions;
+			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			];
+		}
+
+		[System.Serializable()]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
+		public partial class MarineProtectedArea : FeatureType {
+			[EnumerationValue(1)]
+			[EnumerationValue(2)]
+			[EnumerationValue(3)]
+			[EnumerationValue(4)]
+			[EnumerationValue(5)]
+			[EnumerationValue(6)]
+			[EnumerationValue(7)]
+			[Required()]
+			public categoryOfMarineProtectedArea categoryOfMarineProtectedArea {get;set;}
+
+			[EnumerationValue(1)]
+			[EnumerationValue(4)]
+			[EnumerationValue(5)]
+			[EnumerationValue(6)]
+			[EnumerationValue(7)]
+			[EnumerationValue(8)]
+			[EnumerationValue(9)]
+			[EnumerationValue(10)]
+			[EnumerationValue(12)]
+			[EnumerationValue(14)]
+			[EnumerationValue(18)]
+			[EnumerationValue(19)]
+			[EnumerationValue(20)]
+			[EnumerationValue(21)]
+			[EnumerationValue(22)]
+			[EnumerationValue(23)]
+			[EnumerationValue(24)]
+			[EnumerationValue(25)]
+			[EnumerationValue(26)]
+			[EnumerationValue(27)]
+			[EnumerationValue(28)]
+			[EnumerationValue(29)]
+			[EnumerationValue(30)]
+			[EnumerationValue(31)]
+			[EnumerationValue(32)]
+			[EnumerationValue(33)]
+			public List<categoryOfRestrictedArea> categoryOfRestrictedArea {get;set;} = [];
+
+			[EnumerationValue(1)]
+			[EnumerationValue(2)]
+			[EnumerationValue(3)]
+			[Required()]
+			public jurisdiction jurisdiction {get;set;}
+
+			[EnumerationValue(1)]
+			[EnumerationValue(2)]
+			[EnumerationValue(3)]
+			[EnumerationValue(4)]
+			[EnumerationValue(5)]
+			[EnumerationValue(6)]
+			[EnumerationValue(7)]
+			[EnumerationValue(8)]
+			[EnumerationValue(9)]
+			[EnumerationValue(10)]
+			[EnumerationValue(11)]
+			[EnumerationValue(12)]
+			[EnumerationValue(13)]
+			[EnumerationValue(14)]
+			[EnumerationValue(15)]
+			[EnumerationValue(16)]
+			[EnumerationValue(17)]
+			[EnumerationValue(18)]
+			[EnumerationValue(19)]
+			[EnumerationValue(20)]
+			[EnumerationValue(21)]
+			[EnumerationValue(22)]
+			[EnumerationValue(23)]
+			[EnumerationValue(24)]
+			[EnumerationValue(25)]
+			[EnumerationValue(26)]
+			[EnumerationValue(27)]
+			[EnumerationValue(28)]
+			[EnumerationValue(29)]
+			[EnumerationValue(30)]
+			[EnumerationValue(31)]
+			[EnumerationValue(32)]
+			[EnumerationValue(33)]
+			[EnumerationValue(34)]
+			[EnumerationValue(35)]
+			[EnumerationValue(36)]
+			[EnumerationValue(37)]
+			[EnumerationValue(38)]
+			[EnumerationValue(39)]
+			[EnumerationValue(40)]
+			[EnumerationValue(41)]
+			public List<restriction> restriction {get;set;} = [];
+
+			[EnumerationValue(1)]
+			[EnumerationValue(2)]
+			[EnumerationValue(3)]
+			[EnumerationValue(4)]
+			[EnumerationValue(5)]
+			[EnumerationValue(6)]
+			[EnumerationValue(7)]
+			[EnumerationValue(8)]
+			[EnumerationValue(9)]
+			[EnumerationValue(11)]
+			[EnumerationValue(12)]
+			[EnumerationValue(13)]
+			[EnumerationValue(14)]
+			[EnumerationValue(15)]
+			[EnumerationValue(16)]
+			[EnumerationValue(17)]
+			[EnumerationValue(18)]
+			[EnumerationValue(19)]
+			[EnumerationValue(20)]
+			[EnumerationValue(21)]
+			[EnumerationValue(22)]
+			[EnumerationValue(23)]
+			[EnumerationValue(24)]
+			[EnumerationValue(25)]
+			[EnumerationValue(26)]
+			[EnumerationValue(27)]
+			[EnumerationValue(28)]
+			[EnumerationValue(29)]
+			[EnumerationValue(30)]
+			[EnumerationValue(31)]
+			[EnumerationValue(32)]
+			[EnumerationValue(33)]
+			[EnumerationValue(34)]
+			[EnumerationValue(35)]
+			[EnumerationValue(36)]
+			[EnumerationValue(37)]
+			[EnumerationValue(38)]
+			[EnumerationValue(39)]
+			[EnumerationValue(41)]
+			[EnumerationValue(42)]
+			[EnumerationValue(43)]
+			public List<status> status {get;set;} = [];
+
+			public List<designation> designation {get;set;} = [];
+
+			[JsonIgnore]
+			public override string Code => nameof(MarineProtectedArea);
+
+			public informationBindingDefinition[] informationBindingDefinitions => MarineProtectedArea._informationBindingDefinitions;
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  default,
+					association = nameof(ProtectedAreaAuthority),
+					role = Enum.GetName<Role>(Role.responsibleAuthority)!,
+					informationTypes = [nameof(Authority)],
+				},
+			];
+
+			public featureBindingDefinition[] featureBindingDefinitions => MarineProtectedArea._featureBindingDefinitions;
+			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			];
+		}
+
+		[System.Serializable()]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
+		public partial class VesselTrafficServiceArea : FeatureType {
+			[EnumerationValue(1)]
+			[EnumerationValue(2)]
+			[EnumerationValue(3)]
+			[EnumerationValue(4)]
+			[EnumerationValue(5)]
+			[Required()]
+			public categoryOfVesselTrafficService categoryOfVesselTrafficService {get;set;}
+
+			[JsonIgnore]
+			public override string Code => nameof(VesselTrafficServiceArea);
+
+			public informationBindingDefinition[] informationBindingDefinitions => VesselTrafficServiceArea._informationBindingDefinitions;
+			public static informationBindingDefinition[] _informationBindingDefinitions => [
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(ServiceControl),
+					role = Enum.GetName<Role>(Role.controlAuthority)!,
+					informationTypes = [nameof(Authority)],
+				},
+			];
+
+			public featureBindingDefinition[] featureBindingDefinitions => VesselTrafficServiceArea._featureBindingDefinitions;
+			public static featureBindingDefinition[] _featureBindingDefinitions => [
+			];
+		}
+
+		[System.Serializable()]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class DataCoverage : FeatureNode, IFeatureBindingDefinition {
-			public int? drawingIndex {get;set;} = default;
-
-			public String? interoperabilityIdentifier {get;set;} = default;
-
-			[Required()]
-			public int maximumDisplayScale {get;set;}
-
-			[Required()]
-			public int minimumDisplayScale {get;set;}
-
-			[Required()]
-			public int optimumDisplayScale {get;set;}
-
-			public List<information> information {get;set;} = [];
-
 			[JsonIgnore]
 			public override string Code => nameof(DataCoverage);
 
@@ -4994,16955 +2491,7 @@ namespace S100Framework.DomainModel.S101 {
 
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class NavigationalSystemOfMarks : FeatureNode, IFeatureBindingDefinition {
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(9)]
-			[EnumerationValue(11)]
-			[Required()]
-			public marksNavigationalSystemOf marksNavigationalSystemOf {get;set;}
-
-			public String? interoperabilityIdentifier {get;set;} = default;
-
-			public List<information> information {get;set;} = [];
-
-			[JsonIgnore]
-			public override string Code => nameof(NavigationalSystemOfMarks);
-
-			public informationBindingDefinition[] informationBindingDefinitions => NavigationalSystemOfMarks._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-			];
-
-			public featureBindingDefinition[] featureBindingDefinitions => NavigationalSystemOfMarks._featureBindingDefinitions;
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-			];
-		}
-
-		[System.Serializable()]
-		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class LocalDirectionOfBuoyage : FeatureNode, IFeatureBindingDefinition {
-			public String? interoperabilityIdentifier {get;set;} = default;
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(9)]
-			[EnumerationValue(11)]
-			[Required()]
-			public marksNavigationalSystemOf marksNavigationalSystemOf {get;set;}
-
-			[Required()]
-			public decimal orientationValue {get;set;}
-
-			public int? scaleMinimum {get;set;} = default;
-
-			public List<information> information {get;set;} = [];
-
-			[JsonIgnore]
-			public override string Code => nameof(LocalDirectionOfBuoyage);
-
-			public informationBindingDefinition[] informationBindingDefinitions => LocalDirectionOfBuoyage._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-			];
-
-			public featureBindingDefinition[] featureBindingDefinitions => LocalDirectionOfBuoyage._featureBindingDefinitions;
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-			];
-		}
-
-		[System.Serializable()]
-		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class QualityOfBathymetricData : FeatureNode, IFeatureBindingDefinition {
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			[Required()]
-			public categoryOfTemporalVariation categoryOfTemporalVariation {get;set;}
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[Required()]
-			public dataAssessment dataAssessment {get;set;}
-
-			public decimal? depthRangeMaximumValue {get;set;} = default;
-
-			public decimal? depthRangeMinimumValue {get;set;} = default;
-
-			[Required()]
-			public featuresDetected featuresDetected {get;set;}
-
-			[Required()]
-			public Boolean fullSeafloorCoverageAchieved {get;set;} = false;
-
-			public String? interoperabilityIdentifier {get;set;} = default;
-
-			public surveyDateRange? surveyDateRange {get;set;} = default;
-
-			public List<zoneOfConfidence> zoneOfConfidence {get;set;} = [];
-
-			public List<information> information {get;set;} = [];
-
-			[JsonIgnore]
-			public override string Code => nameof(QualityOfBathymetricData);
-
-			public informationBindingDefinition[] informationBindingDefinitions => QualityOfBathymetricData._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(QualityOfBathymetricDataComposition),
-					role = Enum.GetName<Role>(Role.theQualityInformation)!,
-					informationTypes = [nameof(SpatialQuality)],
-				},
-			];
-
-			public featureBindingDefinition[] featureBindingDefinitions => QualityOfBathymetricData._featureBindingDefinitions;
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-			];
-		}
-
-		[System.Serializable()]
-		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class SoundingDatum : FeatureNode, IFeatureBindingDefinition {
-			public String? interoperabilityIdentifier {get;set;} = default;
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
-			[EnumerationValue(9)]
-			[EnumerationValue(10)]
-			[EnumerationValue(11)]
-			[EnumerationValue(12)]
-			[EnumerationValue(13)]
-			[EnumerationValue(14)]
-			[EnumerationValue(15)]
-			[EnumerationValue(19)]
-			[EnumerationValue(22)]
-			[EnumerationValue(23)]
-			[EnumerationValue(24)]
-			[EnumerationValue(25)]
-			[EnumerationValue(26)]
-			[EnumerationValue(27)]
-			[EnumerationValue(44)]
-			[Required()]
-			public verticalDatum verticalDatum {get;set;}
-
-			public List<information> information {get;set;} = [];
-
-			[JsonIgnore]
-			public override string Code => nameof(SoundingDatum);
-
-			public informationBindingDefinition[] informationBindingDefinitions => SoundingDatum._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-			];
-
-			public featureBindingDefinition[] featureBindingDefinitions => SoundingDatum._featureBindingDefinitions;
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-			];
-		}
-
-		[System.Serializable()]
-		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class VerticalDatumOfData : FeatureNode, IFeatureBindingDefinition {
-			public String? interoperabilityIdentifier {get;set;} = default;
-
-			[EnumerationValue(3)]
-			[EnumerationValue(13)]
-			[EnumerationValue(16)]
-			[EnumerationValue(17)]
-			[EnumerationValue(18)]
-			[EnumerationValue(19)]
-			[EnumerationValue(20)]
-			[EnumerationValue(21)]
-			[EnumerationValue(24)]
-			[EnumerationValue(25)]
-			[EnumerationValue(26)]
-			[EnumerationValue(28)]
-			[EnumerationValue(29)]
-			[EnumerationValue(30)]
-			[EnumerationValue(44)]
-			[Required()]
-			public verticalDatum verticalDatum {get;set;}
-
-			public List<information> information {get;set;} = [];
-
-			[JsonIgnore]
-			public override string Code => nameof(VerticalDatumOfData);
-
-			public informationBindingDefinition[] informationBindingDefinitions => VerticalDatumOfData._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-			];
-
-			public featureBindingDefinition[] featureBindingDefinitions => VerticalDatumOfData._featureBindingDefinitions;
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-			];
-		}
-
-		[System.Serializable()]
-		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class QualityOfSurvey : FeatureNode, IFeatureBindingDefinition {
-			public decimal? depthRangeMaximumValue {get;set;} = default;
-
-			public decimal? depthRangeMinimumValue {get;set;} = default;
-
-			public featuresDetected? featuresDetected {get;set;} = default;
-
-			public Boolean? fullSeafloorCoverageAchieved {get;set;} = default;
-
-			public String? interoperabilityIdentifier {get;set;} = default;
-
-			public int? lineSpacingMaximum {get;set;} = default;
-
-			public int? lineSpacingMinimum {get;set;} = default;
-
-			public int? measurementDistanceMaximum {get;set;} = default;
-
-			public int? measurementDistanceMinimum {get;set;} = default;
-
-			[EnumerationValue(4)]
-			public qualityOfHorizontalMeasurement? qualityOfHorizontalMeasurement {get;set;} = default;
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
-			[EnumerationValue(9)]
-			[EnumerationValue(10)]
-			[EnumerationValue(11)]
-			public List<qualityOfVerticalMeasurement> qualityOfVerticalMeasurement {get;set;} = [];
-
-			public int? scaleValueMaximum {get;set;} = default;
-
-			public int? scaleValueMinimum {get;set;} = default;
-
-			public String surveyAuthority {get;set;} = string.Empty;
-
-			[Required()]
-			public surveyDateRange surveyDateRange {get;set;}
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
-			[EnumerationValue(9)]
-			[EnumerationValue(10)]
-			[EnumerationValue(11)]
-			[EnumerationValue(12)]
-			[EnumerationValue(13)]
-			public List<surveyType> surveyType {get;set;} = [];
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(8)]
-			[EnumerationValue(9)]
-			[EnumerationValue(10)]
-			[EnumerationValue(11)]
-			[EnumerationValue(12)]
-			[EnumerationValue(13)]
-			[EnumerationValue(15)]
-			[EnumerationValue(16)]
-			[EnumerationValue(17)]
-			[EnumerationValue(18)]
-			public List<techniqueOfVerticalMeasurement> techniqueOfVerticalMeasurement {get;set;} = [];
-
-			public List<information> information {get;set;} = [];
-
-			[JsonIgnore]
-			public override string Code => nameof(QualityOfSurvey);
-
-			public informationBindingDefinition[] informationBindingDefinitions => QualityOfSurvey._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-			];
-
-			public featureBindingDefinition[] featureBindingDefinitions => QualityOfSurvey._featureBindingDefinitions;
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-			];
-		}
-
-		[System.Serializable()]
-		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class UpdateInformation : FeatureNode, IFeatureBindingDefinition {
-			public fixedDateRange? fixedDateRange {get;set;} = default;
-
-			public String? interoperabilityIdentifier {get;set;} = default;
-
-			[Required()]
-			public int updateNumber {get;set;}
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[Required()]
-			public updateType updateType {get;set;}
-
-			public int? scaleMinimum {get;set;} = default;
-
-			public String? source {get;set;} = default;
-
-			public List<information> information {get;set;} = [];
-
-			[JsonIgnore]
-			public override string Code => nameof(UpdateInformation);
-
-			public informationBindingDefinition[] informationBindingDefinitions => UpdateInformation._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-			];
-
-			public featureBindingDefinition[] featureBindingDefinitions => UpdateInformation._featureBindingDefinitions;
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdateAggregation),
-					role = Enum.GetName<Role>(Role.theComponent)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.aggregation,
-					lower = 0,
-					upper =  1,
-					association = nameof(UpdateAggregation),
-					role = Enum.GetName<Role>(Role.theCollection)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdatedObject)!,
-					featureTypes = [nameof(AdministrationArea),nameof(AirportAirfield),nameof(AnchorBerth),nameof(AnchorageArea),nameof(ArchipelagicSeaLane),nameof(ArchipelagicSeaLaneArea),nameof(ArchipelagicSeaLaneAxis),nameof(Berth),nameof(Bollard),nameof(Bridge),nameof(Building),nameof(BuiltUpArea),nameof(CableArea),nameof(CableOverhead),nameof(CableSubmarine),nameof(Canal),nameof(CardinalBeacon),nameof(CardinalBuoy),nameof(CargoTranshipmentArea),nameof(Causeway),nameof(CautionArea),nameof(Checkpoint),nameof(CoastGuardStation),nameof(Coastline),nameof(CollisionRegulationsLimit),nameof(ContiguousZone),nameof(ContinentalShelfArea),nameof(Conveyor),nameof(Crane),nameof(CurrentNonGravitational),nameof(CustomZone),nameof(Dam),nameof(Daymark),nameof(DeepWaterRoute),nameof(DeepWaterRouteCentreline),nameof(DeepWaterRoutePart),nameof(DepthArea),nameof(DepthContour),nameof(DepthNoBottomFound),nameof(DiscolouredWater),nameof(DistanceMark),nameof(DockArea),nameof(Dolphin),nameof(DredgedArea),nameof(DryDock),nameof(DumpingGround),nameof(Dyke),nameof(EmergencyWreckMarkingBuoy),nameof(ExclusiveEconomicZone),nameof(Fairway),nameof(FairwaySystem),nameof(FenceWall),nameof(FerryRoute),nameof(FisheryZone),nameof(FishingFacility),nameof(FishingGround),nameof(FloatingDock),nameof(FogSignal),nameof(FortifiedStructure),nameof(FoulGround),nameof(FreePortArea),nameof(Gate),nameof(Gridiron),nameof(HarbourAreaAdministrative),nameof(HarbourFacility),nameof(Helipad),nameof(Hulk),nameof(IceArea),nameof(InformationArea),nameof(InshoreTrafficZone),nameof(InstallationBuoy),nameof(IslandGroup),nameof(IsolatedDangerBeacon),nameof(IsolatedDangerBuoy),nameof(Lake),nameof(LandArea),nameof(LandElevation),nameof(LandRegion),nameof(Landmark),nameof(LateralBeacon),nameof(LateralBuoy),nameof(LightAirObstruction),nameof(LightAllAround),nameof(LightFloat),nameof(LightFogDetector),nameof(LightSectored),nameof(LightVessel),nameof(LocalDirectionOfBuoyage),nameof(LocalMagneticAnomaly),nameof(LockBasin),nameof(LogPond),nameof(MagneticVariation),nameof(MarineFarmCulture),nameof(MarinePollutionRegulationsArea),nameof(MilitaryPracticeArea),nameof(MooringArea),nameof(MooringBuoy),nameof(MooringTrot),nameof(NavigationLine),nameof(NavigationalSystemOfMarks),nameof(Obstruction),nameof(OffshorePlatform),nameof(OffshoreProductionArea),nameof(OilBarrier),nameof(PhysicalAISAidToNavigation),nameof(Pile),nameof(PilotBoardingPlace),nameof(PilotageDistrict),nameof(PipelineOverhead),nameof(PipelineSubmarineOnLand),nameof(Pontoon),nameof(PrecautionaryArea),nameof(ProductionStorageArea),nameof(PylonBridgeSupport),nameof(QualityOfBathymetricData),nameof(QualityOfNonBathymetricData),nameof(QualityOfSurvey),nameof(RadarLine),nameof(RadarRange),nameof(RadarReflector),nameof(RadarStation),nameof(RadarTransponderBeacon),nameof(RadioCallingInPoint),nameof(RadioStation),nameof(Railway),nameof(RangeSystem),nameof(Rapids),nameof(RecommendedRouteCentreline),nameof(RecommendedTrack),nameof(RecommendedTrafficLanePart),nameof(RescueStation),nameof(RestrictedArea),nameof(Retroreflector),nameof(River),nameof(Road),nameof(Runway),nameof(SafeWaterBeacon),nameof(SafeWaterBuoy),nameof(Sandwave),nameof(SeaAreaNamedWaterArea),nameof(SeabedArea),nameof(Seagrass),nameof(SeaplaneLandingArea),nameof(SeparationZoneOrLine),nameof(ShorelineConstruction),nameof(SignalStationTraffic),nameof(SignalStationWarning),nameof(SiloTank),nameof(SmallCraftFacility),nameof(SlopeTopline),nameof(SlopingGround),nameof(Sounding),nameof(SoundingDatum),nameof(SpanFixed),nameof(SpanOpening),nameof(SpecialPurposeGeneralBeacon),nameof(SpecialPurposeGeneralBuoy),nameof(Spring),nameof(StraightTerritorialSeaBaseline),nameof(StructureOverNavigableWater),nameof(SubmarinePipelineArea),nameof(SubmarineTransitLane),nameof(SweptArea),nameof(TerritorialSeaArea),nameof(TidalStreamPanelData),nameof(TidalStreamFloodEbb),nameof(Tideway),nameof(TrafficSeparationScheme),nameof(TrafficSeparationSchemeBoundary),nameof(TrafficSeparationSchemeCrossing),nameof(TrafficSeparationSchemeLanePart),nameof(TrafficSeparationSchemeRoundabout),nameof(Tunnel),nameof(TwoWayRoute),nameof(TwoWayRoutePart),nameof(UnderwaterAwashRock),nameof(UnsurveyedArea),nameof(UpdateInformation),nameof(Vegetation),nameof(VerticalDatumOfData),nameof(VesselTrafficServiceArea),nameof(VirtualAISAidToNavigation),nameof(WaterTurbulence),nameof(Waterfall),nameof(WeedKelp),nameof(WindTurbine),nameof(Wreck)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-			];
-		}
-
-		[System.Serializable()]
-		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class MagneticVariation : FeatureNode, IFeatureBindingDefinition {
-			public String? interoperabilityIdentifier {get;set;} = default;
-
-			[Required()]
-			public DateOnly referenceYearForMagneticVariation {get;set;}
-
-			[Required()]
-			public decimal valueOfAnnualChangeInMagneticVariation {get;set;}
-
-			[Required()]
-			public decimal valueOfMagneticVariation {get;set;}
-
-			public int? scaleMinimum {get;set;} = default;
-
-			public List<information> information {get;set;} = [];
-
-			[JsonIgnore]
-			public override string Code => nameof(MagneticVariation);
-
-			public informationBindingDefinition[] informationBindingDefinitions => MagneticVariation._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(NauticalInformation)],
-				},
-			];
-
-			public featureBindingDefinition[] featureBindingDefinitions => MagneticVariation._featureBindingDefinitions;
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-			];
-		}
-
-		[System.Serializable()]
-		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class LocalMagneticAnomaly : FeatureNode, IFeatureBindingDefinition {
-			public List<featureName> featureName {get;set;} = [];
-
-			public String? interoperabilityIdentifier {get;set;} = default;
-
-			public DateOnly? reportedDate {get;set;} = default;
-
-			public List<valueOfLocalMagneticAnomaly> valueOfLocalMagneticAnomaly {get;set;} = [];
-
-			public int? scaleMinimum {get;set;} = default;
-
-			public List<information> information {get;set;} = [];
-
-			[JsonIgnore]
-			public override string Code => nameof(LocalMagneticAnomaly);
-
-			public informationBindingDefinition[] informationBindingDefinitions => LocalMagneticAnomaly._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(NauticalInformation)],
-				},
-			];
-
-			public featureBindingDefinition[] featureBindingDefinitions => LocalMagneticAnomaly._featureBindingDefinitions;
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  2,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-			];
-		}
-
-		[System.Serializable()]
-		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class Coastline : FeatureNode, IFeatureBindingDefinition {
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
-			[EnumerationValue(10)]
-			public categoryOfCoastline? categoryOfCoastline {get;set;} = default;
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
-			[EnumerationValue(11)]
-			[EnumerationValue(13)]
-			public List<colour> colour {get;set;} = [];
-
-			public decimal? elevation {get;set;} = default;
-
-			public List<featureName> featureName {get;set;} = [];
-
-			public String? interoperabilityIdentifier {get;set;} = default;
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
-			[EnumerationValue(9)]
-			[EnumerationValue(11)]
-			[EnumerationValue(14)]
-			[EnumerationValue(17)]
-			public List<natureOfSurface> natureOfSurface {get;set;} = [];
-
-			public Boolean? radarConspicuous {get;set;} = default;
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			public visualProminence? visualProminence {get;set;} = default;
-
-			public List<information> information {get;set;} = [];
-
-			public String? pictorialRepresentation {get;set;} = default;
-
-			[JsonIgnore]
-			public override string Code => nameof(Coastline);
-
-			public informationBindingDefinition[] informationBindingDefinitions => Coastline._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(NauticalInformation)],
-				},
-			];
-
-			public featureBindingDefinition[] featureBindingDefinitions => Coastline._featureBindingDefinitions;
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  2,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-			];
-		}
-
-		[System.Serializable()]
-		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class LandArea : FeatureNode, IFeatureBindingDefinition {
-			[EnumerationValue(1)]
-			[EnumerationValue(3)]
-			[EnumerationValue(5)]
-			public condition? condition {get;set;} = default;
-
-			public List<featureName> featureName {get;set;} = [];
-
-			public String? interoperabilityIdentifier {get;set;} = default;
-
-			public DateOnly? reportedDate {get;set;} = default;
-
-			[EnumerationValue(18)]
-			public status? status {get;set;} = default;
-
-			public int? scaleMinimum {get;set;} = default;
-
-			public List<information> information {get;set;} = [];
-
-			[JsonIgnore]
-			public override string Code => nameof(LandArea);
-
-			public informationBindingDefinition[] informationBindingDefinitions => LandArea._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(NauticalInformation)],
-				},
-			];
-
-			public featureBindingDefinition[] featureBindingDefinitions => LandArea._featureBindingDefinitions;
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.aggregation,
-					lower = 0,
-					upper =  1,
-					association = nameof(IslandAggregation),
-					role = Enum.GetName<Role>(Role.theCollection)!,
-					featureTypes = [nameof(IslandGroup)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  2,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-			];
-		}
-
-		[System.Serializable()]
-		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class IslandGroup : FeatureNode, IFeatureBindingDefinition {
-			public List<featureName> featureName {get;set;} = [];
-
-			public String? interoperabilityIdentifier {get;set;} = default;
-
-			public int? scaleMinimum {get;set;} = default;
-
-			public List<information> information {get;set;} = [];
-
-			[JsonIgnore]
-			public override string Code => nameof(IslandGroup);
-
-			public informationBindingDefinition[] informationBindingDefinitions => IslandGroup._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(NauticalInformation)],
-				},
-			];
-
-			public featureBindingDefinition[] featureBindingDefinitions => IslandGroup._featureBindingDefinitions;
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(IslandAggregation),
-					role = Enum.GetName<Role>(Role.theComponent)!,
-					featureTypes = [nameof(LandArea),nameof(IslandGroup)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.aggregation,
-					lower = 0,
-					upper =  1,
-					association = nameof(IslandAggregation),
-					role = Enum.GetName<Role>(Role.theCollection)!,
-					featureTypes = [nameof(IslandGroup)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  2,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-			];
-		}
-
-		[System.Serializable()]
-		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class LandElevation : FeatureNode, IFeatureBindingDefinition {
-			[Required()]
-			public decimal elevation {get;set;}
-
-			public List<featureName> featureName {get;set;} = [];
-
-			public String? interoperabilityIdentifier {get;set;} = default;
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			public visualProminence? visualProminence {get;set;} = default;
-
-			public int? scaleMinimum {get;set;} = default;
-
-			public List<information> information {get;set;} = [];
-
-			[JsonIgnore]
-			public override string Code => nameof(LandElevation);
-
-			public informationBindingDefinition[] informationBindingDefinitions => LandElevation._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(NauticalInformation)],
-				},
-			];
-
-			public featureBindingDefinition[] featureBindingDefinitions => LandElevation._featureBindingDefinitions;
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  2,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-			];
-		}
-
-		[System.Serializable()]
-		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class River : FeatureNode, IFeatureBindingDefinition {
-			public List<featureName> featureName {get;set;} = [];
-
-			public String? interoperabilityIdentifier {get;set;} = default;
-
-			[EnumerationValue(5)]
-			public status? status {get;set;} = default;
-
-			public int? scaleMinimum {get;set;} = default;
-
-			public List<information> information {get;set;} = [];
-
-			[JsonIgnore]
-			public override string Code => nameof(River);
-
-			public informationBindingDefinition[] informationBindingDefinitions => River._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(NauticalInformation)],
-				},
-			];
-
-			public featureBindingDefinition[] featureBindingDefinitions => River._featureBindingDefinitions;
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  2,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-			];
-		}
-
-		[System.Serializable()]
-		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class Rapids : FeatureNode, IFeatureBindingDefinition {
-			public List<featureName> featureName {get;set;} = [];
-
-			public String? interoperabilityIdentifier {get;set;} = default;
-
-			public decimal? verticalLength {get;set;} = default;
-
-			public int? scaleMinimum {get;set;} = default;
-
-			public List<information> information {get;set;} = [];
-
-			[JsonIgnore]
-			public override string Code => nameof(Rapids);
-
-			public informationBindingDefinition[] informationBindingDefinitions => Rapids._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(NauticalInformation)],
-				},
-			];
-
-			public featureBindingDefinition[] featureBindingDefinitions => Rapids._featureBindingDefinitions;
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  2,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-			];
-		}
-
-		[System.Serializable()]
-		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class Waterfall : FeatureNode, IFeatureBindingDefinition {
-			public List<featureName> featureName {get;set;} = [];
-
-			public String? interoperabilityIdentifier {get;set;} = default;
-
-			public decimal? verticalLength {get;set;} = default;
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			public visualProminence? visualProminence {get;set;} = default;
-
-			public int? scaleMinimum {get;set;} = default;
-
-			public List<information> information {get;set;} = [];
-
-			[JsonIgnore]
-			public override string Code => nameof(Waterfall);
-
-			public informationBindingDefinition[] informationBindingDefinitions => Waterfall._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(NauticalInformation)],
-				},
-			];
-
-			public featureBindingDefinition[] featureBindingDefinitions => Waterfall._featureBindingDefinitions;
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  2,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-			];
-		}
-
-		[System.Serializable()]
-		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class Lake : FeatureNode, IFeatureBindingDefinition {
-			public decimal? elevation {get;set;} = default;
-
-			public List<featureName> featureName {get;set;} = [];
-
-			public String? interoperabilityIdentifier {get;set;} = default;
-
-			[EnumerationValue(5)]
-			public status? status {get;set;} = default;
-
-			public int? scaleMinimum {get;set;} = default;
-
-			public List<information> information {get;set;} = [];
-
-			[JsonIgnore]
-			public override string Code => nameof(Lake);
-
-			public informationBindingDefinition[] informationBindingDefinitions => Lake._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(NauticalInformation)],
-				},
-			];
-
-			public featureBindingDefinition[] featureBindingDefinitions => Lake._featureBindingDefinitions;
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  2,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-			];
-		}
-
-		[System.Serializable()]
-		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class LandRegion : FeatureNode, IFeatureBindingDefinition {
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
-			[EnumerationValue(9)]
-			[EnumerationValue(10)]
-			[EnumerationValue(11)]
-			[EnumerationValue(12)]
-			[EnumerationValue(13)]
-			[EnumerationValue(14)]
-			[EnumerationValue(15)]
-			[EnumerationValue(16)]
-			[EnumerationValue(17)]
-			[EnumerationValue(18)]
-			[EnumerationValue(19)]
-			[EnumerationValue(20)]
-			[EnumerationValue(21)]
-			public List<categoryOfLandRegion> categoryOfLandRegion {get;set;} = [];
-
-			public List<featureName> featureName {get;set;} = [];
-
-			public String? interoperabilityIdentifier {get;set;} = default;
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
-			[EnumerationValue(9)]
-			[EnumerationValue(11)]
-			[EnumerationValue(14)]
-			[EnumerationValue(17)]
-			[EnumerationValue(18)]
-			public List<natureOfSurface> natureOfSurface {get;set;} = [];
-
-			[EnumerationValue(1)]
-			[EnumerationValue(6)]
-			public waterLevelEffect? waterLevelEffect {get;set;} = default;
-
-			public int? scaleMinimum {get;set;} = default;
-
-			public List<information> information {get;set;} = [];
-
-			[JsonIgnore]
-			public override string Code => nameof(LandRegion);
-
-			public informationBindingDefinition[] informationBindingDefinitions => LandRegion._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation)],
-				},
-			];
-
-			public featureBindingDefinition[] featureBindingDefinitions => LandRegion._featureBindingDefinitions;
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  2,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-			];
-		}
-
-		[System.Serializable()]
-		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class Vegetation : FeatureNode, IFeatureBindingDefinition {
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			[EnumerationValue(11)]
-			[EnumerationValue(13)]
-			[EnumerationValue(14)]
-			[EnumerationValue(15)]
-			[EnumerationValue(16)]
-			[EnumerationValue(17)]
-			[EnumerationValue(18)]
-			[EnumerationValue(19)]
-			[EnumerationValue(20)]
-			[EnumerationValue(22)]
-			[Required()]
-			public categoryOfVegetation categoryOfVegetation {get;set;}
-
-			public decimal? elevation {get;set;} = default;
-
-			public List<featureName> featureName {get;set;} = [];
-
-			public decimal? height {get;set;} = default;
-
-			public String? interoperabilityIdentifier {get;set;} = default;
-
-			public decimal? verticalLength {get;set;} = default;
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			public visualProminence? visualProminence {get;set;} = default;
-
-			public int? scaleMinimum {get;set;} = default;
-
-			public List<information> information {get;set;} = [];
-
-			[JsonIgnore]
-			public override string Code => nameof(Vegetation);
-
-			public informationBindingDefinition[] informationBindingDefinitions => Vegetation._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(NauticalInformation)],
-				},
-			];
-
-			public featureBindingDefinition[] featureBindingDefinitions => Vegetation._featureBindingDefinitions;
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  2,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-			];
-		}
-
-		[System.Serializable()]
-		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class IceArea : FeatureNode, IFeatureBindingDefinition {
-			[EnumerationValue(1)]
-			[EnumerationValue(5)]
-			[EnumerationValue(8)]
-			[Required()]
-			public categoryOfIce categoryOfIce {get;set;}
-
-			public decimal? elevation {get;set;} = default;
-
-			public List<featureName> featureName {get;set;} = [];
-
-			public decimal? height {get;set;} = default;
-
-			public String? interoperabilityIdentifier {get;set;} = default;
-
-			public List<periodicDateRange> periodicDateRange {get;set;} = [];
-
-			public DateOnly? reportedDate {get;set;} = default;
-
-			[EnumerationValue(1)]
-			[EnumerationValue(5)]
-			[EnumerationValue(18)]
-			public List<status> status {get;set;} = [];
-
-			public decimal? verticalLength {get;set;} = default;
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			public visualProminence? visualProminence {get;set;} = default;
-
-			public int? scaleMinimum {get;set;} = default;
-
-			public List<information> information {get;set;} = [];
-
-			[JsonIgnore]
-			public override string Code => nameof(IceArea);
-
-			public informationBindingDefinition[] informationBindingDefinitions => IceArea._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(NauticalInformation)],
-				},
-			];
-
-			public featureBindingDefinition[] featureBindingDefinitions => IceArea._featureBindingDefinitions;
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  2,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-			];
-		}
-
-		[System.Serializable()]
-		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class SlopingGround : FeatureNode, IFeatureBindingDefinition {
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
-			public categoryOfSlope? categoryOfSlope {get;set;} = default;
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
-			[EnumerationValue(11)]
-			[EnumerationValue(13)]
-			public List<colour> colour {get;set;} = [];
-
-			public List<featureName> featureName {get;set;} = [];
-
-			public String? interoperabilityIdentifier {get;set;} = default;
-
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
-			[EnumerationValue(9)]
-			[EnumerationValue(11)]
-			public List<natureOfSurface> natureOfSurface {get;set;} = [];
-
-			public Boolean? radarConspicuous {get;set;} = default;
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			public visualProminence? visualProminence {get;set;} = default;
-
-			public int? scaleMinimum {get;set;} = default;
-
-			public List<information> information {get;set;} = [];
-
-			[JsonIgnore]
-			public override string Code => nameof(SlopingGround);
-
-			public informationBindingDefinition[] informationBindingDefinitions => SlopingGround._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(NauticalInformation)],
-				},
-			];
-
-			public featureBindingDefinition[] featureBindingDefinitions => SlopingGround._featureBindingDefinitions;
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  2,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-			];
-		}
-
-		[System.Serializable()]
-		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class SlopeTopline : FeatureNode, IFeatureBindingDefinition {
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(6)]
-			public categoryOfSlope? categoryOfSlope {get;set;} = default;
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
-			[EnumerationValue(11)]
-			[EnumerationValue(13)]
-			public List<colour> colour {get;set;} = [];
-
-			public decimal? elevation {get;set;} = default;
-
-			public List<featureName> featureName {get;set;} = [];
-
-			public String? interoperabilityIdentifier {get;set;} = default;
-
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
-			[EnumerationValue(9)]
-			[EnumerationValue(11)]
-			public List<natureOfSurface> natureOfSurface {get;set;} = [];
-
-			public Boolean? radarConspicuous {get;set;} = default;
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			public visualProminence? visualProminence {get;set;} = default;
-
-			public int? scaleMinimum {get;set;} = default;
-
-			public List<information> information {get;set;} = [];
-
-			[JsonIgnore]
-			public override string Code => nameof(SlopeTopline);
-
-			public informationBindingDefinition[] informationBindingDefinitions => SlopeTopline._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(NauticalInformation)],
-				},
-			];
-
-			public featureBindingDefinition[] featureBindingDefinitions => SlopeTopline._featureBindingDefinitions;
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  2,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-			];
-		}
-
-		[System.Serializable()]
-		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class Tideway : FeatureNode, IFeatureBindingDefinition {
-			public List<featureName> featureName {get;set;} = [];
-
-			public String? interoperabilityIdentifier {get;set;} = default;
-
-			public int? scaleMinimum {get;set;} = default;
-
-			public List<information> information {get;set;} = [];
-
-			[JsonIgnore]
-			public override string Code => nameof(Tideway);
-
-			public informationBindingDefinition[] informationBindingDefinitions => Tideway._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(NauticalInformation)],
-				},
-			];
-
-			public featureBindingDefinition[] featureBindingDefinitions => Tideway._featureBindingDefinitions;
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  2,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-			];
-		}
-
-		[System.Serializable()]
-		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class BuiltUpArea : FeatureNode, IFeatureBindingDefinition {
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			public categoryOfBuiltUpArea? categoryOfBuiltUpArea {get;set;} = default;
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(5)]
-			public condition? condition {get;set;} = default;
-
-			public List<featureName> featureName {get;set;} = [];
-
-			public decimal? height {get;set;} = default;
-
-			public String? interoperabilityIdentifier {get;set;} = default;
-
-			public Boolean? radarConspicuous {get;set;} = default;
-
-			public DateOnly? reportedDate {get;set;} = default;
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			public visualProminence? visualProminence {get;set;} = default;
-
-			public int? scaleMinimum {get;set;} = default;
-
-			public List<information> information {get;set;} = [];
-
-			public String? pictorialRepresentation {get;set;} = default;
-
-			public Boolean? inTheWater {get;set;} = default;
-
-			[JsonIgnore]
-			public override string Code => nameof(BuiltUpArea);
-
-			public informationBindingDefinition[] informationBindingDefinitions => BuiltUpArea._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(NauticalInformation)],
-				},
-			];
-
-			public featureBindingDefinition[] featureBindingDefinitions => BuiltUpArea._featureBindingDefinitions;
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  2,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-			];
-		}
-
-		[System.Serializable()]
-		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class Building : FeatureNode, IFeatureBindingDefinition {
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
-			[EnumerationValue(9)]
-			public buildingShape? buildingShape {get;set;} = default;
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
-			[EnumerationValue(9)]
-			[EnumerationValue(10)]
-			[EnumerationValue(11)]
-			[EnumerationValue(12)]
-			[EnumerationValue(13)]
-			public List<colour> colour {get;set;} = [];
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			public colourPattern? colourPattern {get;set;} = default;
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(5)]
-			public condition? condition {get;set;} = default;
-
-			public decimal? elevation {get;set;} = default;
-
-			public List<featureName> featureName {get;set;} = [];
-
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
-			[EnumerationValue(9)]
-			[EnumerationValue(10)]
-			[EnumerationValue(11)]
-			[EnumerationValue(12)]
-			[EnumerationValue(13)]
-			[EnumerationValue(14)]
-			[EnumerationValue(15)]
-			[EnumerationValue(16)]
-			[EnumerationValue(17)]
-			[EnumerationValue(18)]
-			[EnumerationValue(19)]
-			[EnumerationValue(20)]
-			[EnumerationValue(21)]
-			[EnumerationValue(22)]
-			[EnumerationValue(23)]
-			[EnumerationValue(24)]
-			[EnumerationValue(25)]
-			[EnumerationValue(26)]
-			[EnumerationValue(27)]
-			[EnumerationValue(28)]
-			[EnumerationValue(29)]
-			[EnumerationValue(30)]
-			[EnumerationValue(31)]
-			[EnumerationValue(32)]
-			[EnumerationValue(33)]
-			[EnumerationValue(34)]
-			[EnumerationValue(35)]
-			[EnumerationValue(36)]
-			[EnumerationValue(37)]
-			[EnumerationValue(38)]
-			[EnumerationValue(39)]
-			[EnumerationValue(40)]
-			[EnumerationValue(41)]
-			[EnumerationValue(42)]
-			[EnumerationValue(44)]
-			[EnumerationValue(45)]
-			[EnumerationValue(46)]
-			[EnumerationValue(47)]
-			[EnumerationValue(48)]
-			public List<function> function {get;set;} = [];
-
-			public decimal? height {get;set;} = default;
-
-			public String? interoperabilityIdentifier {get;set;} = default;
-
-			public multiplicityOfFeatures? multiplicityOfFeatures {get;set;} = default;
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
-			[EnumerationValue(12)]
-			public List<natureOfConstruction> natureOfConstruction {get;set;} = [];
-
-			public Boolean? radarConspicuous {get;set;} = default;
-
-			public DateOnly? reportedDate {get;set;} = default;
-
-			[EnumerationValue(4)]
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
-			[EnumerationValue(12)]
-			[EnumerationValue(13)]
-			[EnumerationValue(14)]
-			public List<status> status {get;set;} = [];
-
-			public decimal? verticalLength {get;set;} = default;
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			public visualProminence? visualProminence {get;set;} = default;
-
-			public int? scaleMinimum {get;set;} = default;
-
-			public List<information> information {get;set;} = [];
-
-			public String? pictorialRepresentation {get;set;} = default;
-
-			public Boolean? inTheWater {get;set;} = default;
-
-			[JsonIgnore]
-			public override string Code => nameof(Building);
-
-			public informationBindingDefinition[] informationBindingDefinitions => Building._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation),nameof(NonStandardWorkingDay),nameof(ServiceHours)],
-				},
-			];
-
-			public featureBindingDefinition[] featureBindingDefinitions => Building._featureBindingDefinitions;
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(StructureEquipment),
-					role = Enum.GetName<Role>(Role.theEquipment)!,
-					featureTypes = [nameof(Daymark),nameof(DistanceMark),nameof(FogSignal),nameof(Helipad),nameof(LightAllAround),nameof(LightFogDetector),nameof(PhysicalAISAidToNavigation),nameof(RadarTransponderBeacon),nameof(Retroreflector),nameof(SignalStationTraffic),nameof(SignalStationWarning),nameof(LightSectored),nameof(LightAirObstruction)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.aggregation,
-					lower = 0,
-					upper =  1,
-					association = nameof(AidsToNavigationAssociation),
-					role = Enum.GetName<Role>(Role.theCollection)!,
-					featureTypes = [nameof(DeepWaterRoute),nameof(FairwaySystem),nameof(TrafficSeparationScheme),nameof(TwoWayRoute)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.aggregation,
-					lower = 0,
-					upper =  1,
-					association = nameof(RangeSystemAggregation),
-					role = Enum.GetName<Role>(Role.theCollection)!,
-					featureTypes = [nameof(RangeSystem)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  2,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-			];
-		}
-
-		[System.Serializable()]
-		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class AirportAirfield : FeatureNode, IFeatureBindingDefinition {
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			[EnumerationValue(8)]
-			[EnumerationValue(9)]
-			public List<categoryOfAirportAirfield> categoryOfAirportAirfield {get;set;} = [];
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(5)]
-			public condition? condition {get;set;} = default;
-
-			public List<featureName> featureName {get;set;} = [];
-
-			public String? interoperabilityIdentifier {get;set;} = default;
-
-			public DateOnly? reportedDate {get;set;} = default;
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
-			[EnumerationValue(12)]
-			[EnumerationValue(14)]
-			public List<status> status {get;set;} = [];
-
-			public int? scaleMinimum {get;set;} = default;
-
-			public List<information> information {get;set;} = [];
-
-			public String? pictorialRepresentation {get;set;} = default;
-
-			[JsonIgnore]
-			public override string Code => nameof(AirportAirfield);
-
-			public informationBindingDefinition[] informationBindingDefinitions => AirportAirfield._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation),nameof(NonStandardWorkingDay),nameof(ServiceHours)],
-				},
-			];
-
-			public featureBindingDefinition[] featureBindingDefinitions => AirportAirfield._featureBindingDefinitions;
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  2,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-			];
-		}
-
-		[System.Serializable()]
-		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class Runway : FeatureNode, IFeatureBindingDefinition {
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(5)]
-			public condition? condition {get;set;} = default;
-
-			public List<featureName> featureName {get;set;} = [];
-
-			public String? interoperabilityIdentifier {get;set;} = default;
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
-			public List<natureOfConstruction> natureOfConstruction {get;set;} = [];
-
-			public List<periodicDateRange> periodicDateRange {get;set;} = [];
-
-			public DateOnly? reportedDate {get;set;} = default;
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
-			[EnumerationValue(12)]
-			[EnumerationValue(14)]
-			public List<status> status {get;set;} = [];
-
-			public int? scaleMinimum {get;set;} = default;
-
-			public List<information> information {get;set;} = [];
-
-			[JsonIgnore]
-			public override string Code => nameof(Runway);
-
-			public informationBindingDefinition[] informationBindingDefinitions => Runway._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation),nameof(NonStandardWorkingDay),nameof(ServiceHours)],
-				},
-			];
-
-			public featureBindingDefinition[] featureBindingDefinitions => Runway._featureBindingDefinitions;
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  2,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-			];
-		}
-
-		[System.Serializable()]
-		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class Helipad : FeatureNode, IFeatureBindingDefinition {
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(5)]
-			public condition? condition {get;set;} = default;
-
-			public List<featureName> featureName {get;set;} = [];
-
-			public String? interoperabilityIdentifier {get;set;} = default;
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
-			public List<natureOfConstruction> natureOfConstruction {get;set;} = [];
-
-			public List<periodicDateRange> periodicDateRange {get;set;} = [];
-
-			public DateOnly? reportedDate {get;set;} = default;
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
-			[EnumerationValue(12)]
-			[EnumerationValue(14)]
-			public List<status> status {get;set;} = [];
-
-			public int? scaleMinimum {get;set;} = default;
-
-			public List<information> information {get;set;} = [];
-
-			[JsonIgnore]
-			public override string Code => nameof(Helipad);
-
-			public informationBindingDefinition[] informationBindingDefinitions => Helipad._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation),nameof(NonStandardWorkingDay),nameof(ServiceHours)],
-				},
-			];
-
-			public featureBindingDefinition[] featureBindingDefinitions => Helipad._featureBindingDefinitions;
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.composition,
-					lower = 0,
-					upper =  1,
-					association = nameof(StructureEquipment),
-					role = Enum.GetName<Role>(Role.theStructure)!,
-					featureTypes = [nameof(Building),nameof(Landmark),nameof(OffshorePlatform)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  2,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-			];
-		}
-
-		[System.Serializable()]
-		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class Bridge : FeatureNode, IFeatureBindingDefinition {
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			public bridgeConstruction? bridgeConstruction {get;set;} = default;
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			public List<bridgeFunction> bridgeFunction {get;set;} = [];
-
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(7)]
-			public categoryOfOpeningBridge? categoryOfOpeningBridge {get;set;} = default;
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
-			[EnumerationValue(9)]
-			[EnumerationValue(10)]
-			[EnumerationValue(11)]
-			[EnumerationValue(12)]
-			[EnumerationValue(13)]
-			public List<colour> colour {get;set;} = [];
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			public colourPattern? colourPattern {get;set;} = default;
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(5)]
-			public condition? condition {get;set;} = default;
-
-			public List<featureName> featureName {get;set;} = [];
-
-			public fixedDateRange? fixedDateRange {get;set;} = default;
-
-			public decimal? height {get;set;} = default;
-
-			public String? interoperabilityIdentifier {get;set;} = default;
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
-			[EnumerationValue(11)]
-			public List<natureOfConstruction> natureOfConstruction {get;set;} = [];
-
-			public Boolean? openingBridge {get;set;} = default;
-
-			public Boolean? radarConspicuous {get;set;} = default;
-
-			public DateOnly? reportedDate {get;set;} = default;
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(7)]
-			[EnumerationValue(12)]
-			public List<status> status {get;set;} = [];
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			public visualProminence? visualProminence {get;set;} = default;
-
-			public int? scaleMinimum {get;set;} = default;
-
-			public List<information> information {get;set;} = [];
-
-			public String? pictorialRepresentation {get;set;} = default;
-
-			[JsonIgnore]
-			public override string Code => nameof(Bridge);
-
-			public informationBindingDefinition[] informationBindingDefinitions => Bridge._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation),nameof(NonStandardWorkingDay),nameof(ServiceHours)],
-				},
-			];
-
-			public featureBindingDefinition[] featureBindingDefinitions => Bridge._featureBindingDefinitions;
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(BridgeAggregation),
-					role = Enum.GetName<Role>(Role.theComponent)!,
-					featureTypes = [nameof(SpanFixed),nameof(SpanOpening),nameof(Pontoon),nameof(PylonBridgeSupport)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(StructureEquipment),
-					role = Enum.GetName<Role>(Role.theEquipment)!,
-					featureTypes = [nameof(Daymark),nameof(DistanceMark),nameof(FogSignal),nameof(LightAllAround),nameof(LightFogDetector),nameof(PhysicalAISAidToNavigation),nameof(RadarTransponderBeacon),nameof(Retroreflector),nameof(SignalStationTraffic),nameof(SignalStationWarning),nameof(LightSectored),nameof(LightAirObstruction)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.aggregation,
-					lower = 0,
-					upper =  1,
-					association = nameof(AidsToNavigationAssociation),
-					role = Enum.GetName<Role>(Role.theCollection)!,
-					featureTypes = [nameof(FairwaySystem),nameof(TrafficSeparationScheme),nameof(TwoWayRoute)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  2,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-			];
-		}
-
-		[System.Serializable()]
-		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class SpanFixed : FeatureNode, IFeatureBindingDefinition {
-			public fixedDateRange? fixedDateRange {get;set;} = default;
-
-			public horizontalClearanceFixed? horizontalClearanceFixed {get;set;} = default;
-
-			public String? interoperabilityIdentifier {get;set;} = default;
-
-			[Required()]
-			public verticalClearanceFixed verticalClearanceFixed {get;set;}
-
-			[EnumerationValue(3)]
-			[EnumerationValue(13)]
-			[EnumerationValue(16)]
-			[EnumerationValue(17)]
-			[EnumerationValue(18)]
-			[EnumerationValue(19)]
-			[EnumerationValue(20)]
-			[EnumerationValue(21)]
-			[EnumerationValue(24)]
-			[EnumerationValue(25)]
-			[EnumerationValue(26)]
-			[EnumerationValue(28)]
-			[EnumerationValue(29)]
-			[EnumerationValue(30)]
-			[EnumerationValue(44)]
-			public verticalDatum? verticalDatum {get;set;} = default;
-
-			public int? scaleMinimum {get;set;} = default;
-
-			public List<information> information {get;set;} = [];
-
-			public String? pictorialRepresentation {get;set;} = default;
-
-			[JsonIgnore]
-			public override string Code => nameof(SpanFixed);
-
-			public informationBindingDefinition[] informationBindingDefinitions => SpanFixed._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation),nameof(NonStandardWorkingDay),nameof(ServiceHours)],
-				},
-			];
-
-			public featureBindingDefinition[] featureBindingDefinitions => SpanFixed._featureBindingDefinitions;
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.aggregation,
-					lower = 0,
-					upper =  1,
-					association = nameof(BridgeAggregation),
-					role = Enum.GetName<Role>(Role.theCollection)!,
-					featureTypes = [nameof(Bridge)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(StructureEquipment),
-					role = Enum.GetName<Role>(Role.theEquipment)!,
-					featureTypes = [nameof(Daymark),nameof(DistanceMark),nameof(FogSignal),nameof(LightAllAround),nameof(LightFogDetector),nameof(PhysicalAISAidToNavigation),nameof(RadarTransponderBeacon),nameof(Retroreflector),nameof(SignalStationTraffic),nameof(SignalStationWarning),nameof(LightSectored),nameof(LightAirObstruction)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.aggregation,
-					lower = 0,
-					upper =  1,
-					association = nameof(AidsToNavigationAssociation),
-					role = Enum.GetName<Role>(Role.theCollection)!,
-					featureTypes = [nameof(FairwaySystem),nameof(TrafficSeparationScheme),nameof(TwoWayRoute)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  2,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-			];
-		}
-
-		[System.Serializable()]
-		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class SpanOpening : FeatureNode, IFeatureBindingDefinition {
-			public fixedDateRange? fixedDateRange {get;set;} = default;
-
-			public horizontalClearanceFixed? horizontalClearanceFixed {get;set;} = default;
-
-			public String? interoperabilityIdentifier {get;set;} = default;
-
-			[Required()]
-			public verticalClearanceClosed verticalClearanceClosed {get;set;}
-
-			[Required()]
-			public verticalClearanceOpen verticalClearanceOpen {get;set;}
-
-			[EnumerationValue(3)]
-			[EnumerationValue(13)]
-			[EnumerationValue(16)]
-			[EnumerationValue(17)]
-			[EnumerationValue(18)]
-			[EnumerationValue(19)]
-			[EnumerationValue(20)]
-			[EnumerationValue(21)]
-			[EnumerationValue(24)]
-			[EnumerationValue(25)]
-			[EnumerationValue(26)]
-			[EnumerationValue(28)]
-			[EnumerationValue(29)]
-			[EnumerationValue(30)]
-			[EnumerationValue(44)]
-			public verticalDatum? verticalDatum {get;set;} = default;
-
-			public int? scaleMinimum {get;set;} = default;
-
-			public List<information> information {get;set;} = [];
-
-			public String? pictorialRepresentation {get;set;} = default;
-
-			[JsonIgnore]
-			public override string Code => nameof(SpanOpening);
-
-			public informationBindingDefinition[] informationBindingDefinitions => SpanOpening._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation),nameof(NonStandardWorkingDay),nameof(ServiceHours)],
-				},
-			];
-
-			public featureBindingDefinition[] featureBindingDefinitions => SpanOpening._featureBindingDefinitions;
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.aggregation,
-					lower = 0,
-					upper =  1,
-					association = nameof(BridgeAggregation),
-					role = Enum.GetName<Role>(Role.theCollection)!,
-					featureTypes = [nameof(Bridge)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(StructureEquipment),
-					role = Enum.GetName<Role>(Role.theEquipment)!,
-					featureTypes = [nameof(Daymark),nameof(DistanceMark),nameof(FogSignal),nameof(LightAllAround),nameof(LightFogDetector),nameof(PhysicalAISAidToNavigation),nameof(RadarTransponderBeacon),nameof(Retroreflector),nameof(SignalStationTraffic),nameof(SignalStationWarning),nameof(LightSectored),nameof(LightAirObstruction)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.aggregation,
-					lower = 0,
-					upper =  1,
-					association = nameof(AidsToNavigationAssociation),
-					role = Enum.GetName<Role>(Role.theCollection)!,
-					featureTypes = [nameof(FairwaySystem),nameof(TrafficSeparationScheme),nameof(TwoWayRoute)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  2,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-			];
-		}
-
-		[System.Serializable()]
-		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class Conveyor : FeatureNode, IFeatureBindingDefinition {
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			public categoryOfConveyor? categoryOfConveyor {get;set;} = default;
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
-			[EnumerationValue(9)]
-			[EnumerationValue(10)]
-			[EnumerationValue(11)]
-			[EnumerationValue(12)]
-			[EnumerationValue(13)]
-			public List<colour> colour {get;set;} = [];
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			public colourPattern? colourPattern {get;set;} = default;
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(5)]
-			public condition? condition {get;set;} = default;
-
-			public List<featureName> featureName {get;set;} = [];
-
-			public fixedDateRange? fixedDateRange {get;set;} = default;
-
-			public decimal? height {get;set;} = default;
-
-			public String? interoperabilityIdentifier {get;set;} = default;
-
-			public decimal? liftingCapacity {get;set;} = default;
-
-			public multiplicityOfFeatures? multiplicityOfFeatures {get;set;} = default;
-
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			[EnumerationValue(10)]
-			[EnumerationValue(11)]
-			[EnumerationValue(12)]
-			[EnumerationValue(13)]
-			[EnumerationValue(14)]
-			[EnumerationValue(15)]
-			[EnumerationValue(16)]
-			[EnumerationValue(17)]
-			[EnumerationValue(21)]
-			[EnumerationValue(22)]
-			[EnumerationValue(25)]
-			public List<product> product {get;set;} = [];
-
-			public Boolean? radarConspicuous {get;set;} = default;
-
-			public DateOnly? reportedDate {get;set;} = default;
-
-			[EnumerationValue(4)]
-			[EnumerationValue(12)]
-			public List<status> status {get;set;} = [];
-
-			public verticalClearanceFixed? verticalClearanceFixed {get;set;} = default;
-
-			[EnumerationValue(3)]
-			[EnumerationValue(13)]
-			[EnumerationValue(16)]
-			[EnumerationValue(17)]
-			[EnumerationValue(18)]
-			[EnumerationValue(19)]
-			[EnumerationValue(20)]
-			[EnumerationValue(21)]
-			[EnumerationValue(24)]
-			[EnumerationValue(25)]
-			[EnumerationValue(26)]
-			[EnumerationValue(28)]
-			[EnumerationValue(29)]
-			[EnumerationValue(30)]
-			[EnumerationValue(44)]
-			public verticalDatum? verticalDatum {get;set;} = default;
-
-			public decimal? verticalLength {get;set;} = default;
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			public visualProminence? visualProminence {get;set;} = default;
-
-			public int? scaleMinimum {get;set;} = default;
-
-			public List<information> information {get;set;} = [];
-
-			public String? pictorialRepresentation {get;set;} = default;
-
-			[JsonIgnore]
-			public override string Code => nameof(Conveyor);
-
-			public informationBindingDefinition[] informationBindingDefinitions => Conveyor._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation),nameof(NonStandardWorkingDay),nameof(ServiceHours)],
-				},
-			];
-
-			public featureBindingDefinition[] featureBindingDefinitions => Conveyor._featureBindingDefinitions;
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(StructureEquipment),
-					role = Enum.GetName<Role>(Role.theEquipment)!,
-					featureTypes = [nameof(Daymark),nameof(DistanceMark),nameof(FogSignal),nameof(LightAllAround),nameof(LightFogDetector),nameof(PhysicalAISAidToNavigation),nameof(RadarTransponderBeacon),nameof(Retroreflector),nameof(SignalStationTraffic),nameof(SignalStationWarning),nameof(LightSectored),nameof(LightAirObstruction)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.aggregation,
-					lower = 0,
-					upper =  1,
-					association = nameof(AidsToNavigationAssociation),
-					role = Enum.GetName<Role>(Role.theCollection)!,
-					featureTypes = [nameof(FairwaySystem),nameof(TrafficSeparationScheme),nameof(TwoWayRoute)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  2,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-			];
-		}
-
-		[System.Serializable()]
-		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class CableOverhead : FeatureNode, IFeatureBindingDefinition {
-			[EnumerationValue(1)]
-			[EnumerationValue(3)]
-			[EnumerationValue(10)]
-			public categoryOfCable? categoryOfCable {get;set;} = default;
-
-			[EnumerationValue(1)]
-			[EnumerationValue(5)]
-			public condition? condition {get;set;} = default;
-
-			public fixedDateRange? fixedDateRange {get;set;} = default;
-
-			public decimal? iceFactor {get;set;} = default;
-
-			public List<featureName> featureName {get;set;} = [];
-
-			public String? interoperabilityIdentifier {get;set;} = default;
-
-			public multiplicityOfFeatures? multiplicityOfFeatures {get;set;} = default;
-
-			public Boolean? radarConspicuous {get;set;} = default;
-
-			public DateOnly? reportedDate {get;set;} = default;
-
-			[EnumerationValue(1)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(7)]
-			[EnumerationValue(12)]
-			[EnumerationValue(28)]
-			public List<status> status {get;set;} = [];
-
-			public verticalClearanceFixed? verticalClearanceFixed {get;set;} = default;
-
-			public verticalClearanceSafe? verticalClearanceSafe {get;set;} = default;
-
-			[EnumerationValue(3)]
-			[EnumerationValue(13)]
-			[EnumerationValue(16)]
-			[EnumerationValue(17)]
-			[EnumerationValue(18)]
-			[EnumerationValue(19)]
-			[EnumerationValue(20)]
-			[EnumerationValue(21)]
-			[EnumerationValue(24)]
-			[EnumerationValue(25)]
-			[EnumerationValue(26)]
-			[EnumerationValue(28)]
-			[EnumerationValue(29)]
-			[EnumerationValue(30)]
-			[EnumerationValue(44)]
-			public verticalDatum? verticalDatum {get;set;} = default;
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			public visualProminence? visualProminence {get;set;} = default;
-
-			public int? scaleMinimum {get;set;} = default;
-
-			public List<information> information {get;set;} = [];
-
-			[JsonIgnore]
-			public override string Code => nameof(CableOverhead);
-
-			public informationBindingDefinition[] informationBindingDefinitions => CableOverhead._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation)],
-				},
-			];
-
-			public featureBindingDefinition[] featureBindingDefinitions => CableOverhead._featureBindingDefinitions;
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(StructureEquipment),
-					role = Enum.GetName<Role>(Role.theEquipment)!,
-					featureTypes = [nameof(RadarReflector)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  2,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-			];
-		}
-
-		[System.Serializable()]
-		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class PipelineOverhead : FeatureNode, IFeatureBindingDefinition {
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(6)]
-			public categoryOfPipelinePipe? categoryOfPipelinePipe {get;set;} = default;
-
-			[EnumerationValue(1)]
-			[EnumerationValue(5)]
-			public condition? condition {get;set;} = default;
-
-			public List<featureName> featureName {get;set;} = [];
-
-			public fixedDateRange? fixedDateRange {get;set;} = default;
-
-			public String? interoperabilityIdentifier {get;set;} = default;
-
-			public multiplicityOfFeatures? multiplicityOfFeatures {get;set;} = default;
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
-			[EnumerationValue(9)]
-			[EnumerationValue(18)]
-			[EnumerationValue(19)]
-			[EnumerationValue(20)]
-			[EnumerationValue(22)]
-			public List<product> product {get;set;} = [];
-
-			public Boolean? radarConspicuous {get;set;} = default;
-
-			public DateOnly? reportedDate {get;set;} = default;
-
-			[EnumerationValue(1)]
-			[EnumerationValue(4)]
-			[EnumerationValue(7)]
-			[EnumerationValue(12)]
-			public List<status> status {get;set;} = [];
-
-			public verticalClearanceFixed? verticalClearanceFixed {get;set;} = default;
-
-			[EnumerationValue(3)]
-			[EnumerationValue(13)]
-			[EnumerationValue(16)]
-			[EnumerationValue(17)]
-			[EnumerationValue(18)]
-			[EnumerationValue(19)]
-			[EnumerationValue(20)]
-			[EnumerationValue(21)]
-			[EnumerationValue(24)]
-			[EnumerationValue(25)]
-			[EnumerationValue(26)]
-			[EnumerationValue(28)]
-			[EnumerationValue(29)]
-			[EnumerationValue(30)]
-			[EnumerationValue(44)]
-			public verticalDatum? verticalDatum {get;set;} = default;
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			public visualProminence? visualProminence {get;set;} = default;
-
-			public int? scaleMinimum {get;set;} = default;
-
-			public List<information> information {get;set;} = [];
-
-			[JsonIgnore]
-			public override string Code => nameof(PipelineOverhead);
-
-			public informationBindingDefinition[] informationBindingDefinitions => PipelineOverhead._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation)],
-				},
-			];
-
-			public featureBindingDefinition[] featureBindingDefinitions => PipelineOverhead._featureBindingDefinitions;
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(StructureEquipment),
-					role = Enum.GetName<Role>(Role.theEquipment)!,
-					featureTypes = [nameof(Daymark),nameof(DistanceMark),nameof(FogSignal),nameof(LightAllAround),nameof(LightFogDetector),nameof(PhysicalAISAidToNavigation),nameof(RadarTransponderBeacon),nameof(Retroreflector),nameof(SignalStationTraffic),nameof(SignalStationWarning),nameof(LightSectored),nameof(RadarReflector)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.aggregation,
-					lower = 0,
-					upper =  1,
-					association = nameof(AidsToNavigationAssociation),
-					role = Enum.GetName<Role>(Role.theCollection)!,
-					featureTypes = [nameof(FairwaySystem),nameof(TrafficSeparationScheme),nameof(TwoWayRoute)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  2,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-			];
-		}
-
-		[System.Serializable()]
-		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class PylonBridgeSupport : FeatureNode, IFeatureBindingDefinition {
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			[Required()]
-			public categoryOfPylon categoryOfPylon {get;set;}
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
-			[EnumerationValue(9)]
-			[EnumerationValue(10)]
-			[EnumerationValue(11)]
-			[EnumerationValue(12)]
-			[EnumerationValue(13)]
-			public List<colour> colour {get;set;} = [];
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			public colourPattern? colourPattern {get;set;} = default;
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(5)]
-			public condition? condition {get;set;} = default;
-
-			public List<featureName> featureName {get;set;} = [];
-
-			public fixedDateRange? fixedDateRange {get;set;} = default;
-
-			public decimal? height {get;set;} = default;
-
-			public String? interoperabilityIdentifier {get;set;} = default;
-
-			public multiplicityOfFeatures? multiplicityOfFeatures {get;set;} = default;
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
-			[EnumerationValue(11)]
-			public List<natureOfConstruction> natureOfConstruction {get;set;} = [];
-
-			public Boolean? radarConspicuous {get;set;} = default;
-
-			public DateOnly? reportedDate {get;set;} = default;
-
-			[EnumerationValue(4)]
-			[EnumerationValue(12)]
-			public List<status> status {get;set;} = [];
-
-			public decimal? verticalLength {get;set;} = default;
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			public visualProminence? visualProminence {get;set;} = default;
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			public waterLevelEffect? waterLevelEffect {get;set;} = default;
-
-			public int? scaleMinimum {get;set;} = default;
-
-			public List<information> information {get;set;} = [];
-
-			public String? pictorialRepresentation {get;set;} = default;
-
-			[JsonIgnore]
-			public override string Code => nameof(PylonBridgeSupport);
-
-			public informationBindingDefinition[] informationBindingDefinitions => PylonBridgeSupport._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(NauticalInformation)],
-				},
-			];
-
-			public featureBindingDefinition[] featureBindingDefinitions => PylonBridgeSupport._featureBindingDefinitions;
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.aggregation,
-					lower = 0,
-					upper =  1,
-					association = nameof(BridgeAggregation),
-					role = Enum.GetName<Role>(Role.theCollection)!,
-					featureTypes = [nameof(Bridge)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.aggregation,
-					lower = 0,
-					upper =  1,
-					association = nameof(RoofedStructureAggregation),
-					role = Enum.GetName<Role>(Role.theRoofedStructure)!,
-					featureTypes = [nameof(StructureOverNavigableWater)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(StructureEquipment),
-					role = Enum.GetName<Role>(Role.theEquipment)!,
-					featureTypes = [nameof(Daymark),nameof(DistanceMark),nameof(FogSignal),nameof(LightAllAround),nameof(LightFogDetector),nameof(PhysicalAISAidToNavigation),nameof(RadarTransponderBeacon),nameof(Retroreflector),nameof(SignalStationTraffic),nameof(SignalStationWarning),nameof(LightSectored),nameof(Bollard),nameof(LightAirObstruction)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.aggregation,
-					lower = 0,
-					upper =  1,
-					association = nameof(AidsToNavigationAssociation),
-					role = Enum.GetName<Role>(Role.theCollection)!,
-					featureTypes = [nameof(FairwaySystem),nameof(TrafficSeparationScheme),nameof(TwoWayRoute)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  2,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-			];
-		}
-
-		[System.Serializable()]
-		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class FenceWall : FeatureNode, IFeatureBindingDefinition {
-			[EnumerationValue(1)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			public categoryOfFence? categoryOfFence {get;set;} = default;
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
-			[EnumerationValue(9)]
-			[EnumerationValue(10)]
-			[EnumerationValue(11)]
-			[EnumerationValue(12)]
-			[EnumerationValue(13)]
-			public List<colour> colour {get;set;} = [];
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			public colourPattern? colourPattern {get;set;} = default;
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(5)]
-			public condition? condition {get;set;} = default;
-
-			public decimal? elevation {get;set;} = default;
-
-			public List<featureName> featureName {get;set;} = [];
-
-			public decimal? height {get;set;} = default;
-
-			public String? interoperabilityIdentifier {get;set;} = default;
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
-			[EnumerationValue(11)]
-			public List<natureOfConstruction> natureOfConstruction {get;set;} = [];
-
-			public Boolean? radarConspicuous {get;set;} = default;
-
-			public DateOnly? reportedDate {get;set;} = default;
-
-			[EnumerationValue(1)]
-			[EnumerationValue(7)]
-			[EnumerationValue(12)]
-			[EnumerationValue(13)]
-			public List<status> status {get;set;} = [];
-
-			public decimal? verticalLength {get;set;} = default;
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			public visualProminence? visualProminence {get;set;} = default;
-
-			public int? scaleMinimum {get;set;} = default;
-
-			public List<information> information {get;set;} = [];
-
-			[JsonIgnore]
-			public override string Code => nameof(FenceWall);
-
-			public informationBindingDefinition[] informationBindingDefinitions => FenceWall._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(NauticalInformation)],
-				},
-			];
-
-			public featureBindingDefinition[] featureBindingDefinitions => FenceWall._featureBindingDefinitions;
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  2,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-			];
-		}
-
-		[System.Serializable()]
-		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class Railway : FeatureNode, IFeatureBindingDefinition {
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(5)]
-			public condition? condition {get;set;} = default;
-
-			public List<featureName> featureName {get;set;} = [];
-
-			public decimal? height {get;set;} = default;
-
-			public String? interoperabilityIdentifier {get;set;} = default;
-
-			public DateOnly? reportedDate {get;set;} = default;
-
-			[EnumerationValue(1)]
-			[EnumerationValue(4)]
-			[EnumerationValue(6)]
-			[EnumerationValue(12)]
-			[EnumerationValue(13)]
-			[EnumerationValue(14)]
-			public List<status> status {get;set;} = [];
-
-			public int? scaleMinimum {get;set;} = default;
-
-			public List<information> information {get;set;} = [];
-
-			[JsonIgnore]
-			public override string Code => nameof(Railway);
-
-			public informationBindingDefinition[] informationBindingDefinitions => Railway._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation)],
-				},
-			];
-
-			public featureBindingDefinition[] featureBindingDefinitions => Railway._featureBindingDefinitions;
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  2,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-			];
-		}
-
-		[System.Serializable()]
-		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class Road : FeatureNode, IFeatureBindingDefinition {
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			public categoryOfRoad? categoryOfRoad {get;set;} = default;
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(5)]
-			public condition? condition {get;set;} = default;
-
-			public List<featureName> featureName {get;set;} = [];
-
-			public String? interoperabilityIdentifier {get;set;} = default;
-
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			public List<natureOfConstruction> natureOfConstruction {get;set;} = [];
-
-			public DateOnly? reportedDate {get;set;} = default;
-
-			[EnumerationValue(1)]
-			[EnumerationValue(4)]
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
-			[EnumerationValue(12)]
-			[EnumerationValue(13)]
-			[EnumerationValue(14)]
-			public List<status> status {get;set;} = [];
-
-			public int? scaleMinimum {get;set;} = default;
-
-			public List<information> information {get;set;} = [];
-
-			[JsonIgnore]
-			public override string Code => nameof(Road);
-
-			public informationBindingDefinition[] informationBindingDefinitions => Road._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(NauticalInformation)],
-				},
-			];
-
-			public featureBindingDefinition[] featureBindingDefinitions => Road._featureBindingDefinitions;
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  2,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-			];
-		}
-
-		[System.Serializable()]
-		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class Tunnel : FeatureNode, IFeatureBindingDefinition {
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(5)]
-			public condition? condition {get;set;} = default;
-
-			public List<featureName> featureName {get;set;} = [];
-
-			public horizontalClearanceFixed? horizontalClearanceFixed {get;set;} = default;
-
-			public String? interoperabilityIdentifier {get;set;} = default;
-
-			public DateOnly? reportedDate {get;set;} = default;
-
-			[EnumerationValue(1)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(6)]
-			[EnumerationValue(8)]
-			[EnumerationValue(14)]
-			public List<status> status {get;set;} = [];
-
-			public verticalClearanceFixed? verticalClearanceFixed {get;set;} = default;
-
-			[EnumerationValue(3)]
-			[EnumerationValue(13)]
-			[EnumerationValue(16)]
-			[EnumerationValue(17)]
-			[EnumerationValue(18)]
-			[EnumerationValue(19)]
-			[EnumerationValue(20)]
-			[EnumerationValue(21)]
-			[EnumerationValue(24)]
-			[EnumerationValue(25)]
-			[EnumerationValue(26)]
-			[EnumerationValue(28)]
-			[EnumerationValue(29)]
-			[EnumerationValue(30)]
-			[EnumerationValue(44)]
-			public verticalDatum? verticalDatum {get;set;} = default;
-
-			public int? scaleMinimum {get;set;} = default;
-
-			public List<information> information {get;set;} = [];
-
-			public String? pictorialRepresentation {get;set;} = default;
-
-			[JsonIgnore]
-			public override string Code => nameof(Tunnel);
-
-			public informationBindingDefinition[] informationBindingDefinitions => Tunnel._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation)],
-				},
-			];
-
-			public featureBindingDefinition[] featureBindingDefinitions => Tunnel._featureBindingDefinitions;
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  2,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-			];
-		}
-
-		[System.Serializable()]
-		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class Landmark : FeatureNode, IFeatureBindingDefinition {
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
-			[EnumerationValue(9)]
-			[EnumerationValue(10)]
-			[EnumerationValue(11)]
-			[EnumerationValue(12)]
-			[EnumerationValue(13)]
-			[EnumerationValue(14)]
-			[EnumerationValue(15)]
-			[EnumerationValue(16)]
-			[EnumerationValue(17)]
-			[EnumerationValue(18)]
-			[EnumerationValue(20)]
-			[EnumerationValue(21)]
-			[EnumerationValue(22)]
-			[EnumerationValue(23)]
-			[EnumerationValue(24)]
-			[EnumerationValue(25)]
-			[EnumerationValue(26)]
-			[EnumerationValue(27)]
-			public List<categoryOfLandmark> categoryOfLandmark {get;set;} = [];
-
-			[EnumerationValue(16)]
-			[EnumerationValue(17)]
-			[EnumerationValue(41)]
-			public List<categoryOfSpecialPurposeMark> categoryOfSpecialPurposeMark {get;set;} = [];
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
-			[EnumerationValue(9)]
-			[EnumerationValue(10)]
-			[EnumerationValue(11)]
-			[EnumerationValue(12)]
-			[EnumerationValue(13)]
-			public List<colour> colour {get;set;} = [];
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			public colourPattern? colourPattern {get;set;} = default;
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			public condition? condition {get;set;} = default;
-
-			public decimal? elevation {get;set;} = default;
-
-			public List<featureName> featureName {get;set;} = [];
-
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
-			[EnumerationValue(9)]
-			[EnumerationValue(10)]
-			[EnumerationValue(11)]
-			[EnumerationValue(12)]
-			[EnumerationValue(13)]
-			[EnumerationValue(14)]
-			[EnumerationValue(15)]
-			[EnumerationValue(16)]
-			[EnumerationValue(17)]
-			[EnumerationValue(18)]
-			[EnumerationValue(19)]
-			[EnumerationValue(20)]
-			[EnumerationValue(21)]
-			[EnumerationValue(22)]
-			[EnumerationValue(23)]
-			[EnumerationValue(24)]
-			[EnumerationValue(25)]
-			[EnumerationValue(26)]
-			[EnumerationValue(27)]
-			[EnumerationValue(28)]
-			[EnumerationValue(29)]
-			[EnumerationValue(30)]
-			[EnumerationValue(31)]
-			[EnumerationValue(32)]
-			[EnumerationValue(33)]
-			[EnumerationValue(34)]
-			[EnumerationValue(35)]
-			[EnumerationValue(36)]
-			[EnumerationValue(37)]
-			[EnumerationValue(38)]
-			[EnumerationValue(39)]
-			[EnumerationValue(40)]
-			[EnumerationValue(41)]
-			[EnumerationValue(42)]
-			[EnumerationValue(44)]
-			[EnumerationValue(45)]
-			[EnumerationValue(46)]
-			[EnumerationValue(47)]
-			[EnumerationValue(48)]
-			public List<function> function {get;set;} = [];
-
-			public decimal? height {get;set;} = default;
-
-			public String? interoperabilityIdentifier {get;set;} = default;
-
-			public multiplicityOfFeatures? multiplicityOfFeatures {get;set;} = default;
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
-			[EnumerationValue(11)]
-			[EnumerationValue(12)]
-			public List<natureOfConstruction> natureOfConstruction {get;set;} = [];
-
-			public Boolean? radarConspicuous {get;set;} = default;
-
-			public DateOnly? reportedDate {get;set;} = default;
-
-			[EnumerationValue(2)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
-			[EnumerationValue(12)]
-			[EnumerationValue(13)]
-			[EnumerationValue(14)]
-			public List<status> status {get;set;} = [];
-
-			public decimal? verticalLength {get;set;} = default;
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[Required()]
-			public visualProminence visualProminence {get;set;}
-
-			public int? scaleMinimum {get;set;} = default;
-
-			public List<information> information {get;set;} = [];
-
-			public String? pictorialRepresentation {get;set;} = default;
-
-			public Boolean? inTheWater {get;set;} = default;
-
-			[JsonIgnore]
-			public override string Code => nameof(Landmark);
-
-			public informationBindingDefinition[] informationBindingDefinitions => Landmark._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation),nameof(NonStandardWorkingDay),nameof(ServiceHours)],
-				},
-			];
-
-			public featureBindingDefinition[] featureBindingDefinitions => Landmark._featureBindingDefinitions;
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(StructureEquipment),
-					role = Enum.GetName<Role>(Role.theEquipment)!,
-					featureTypes = [nameof(Daymark),nameof(DistanceMark),nameof(FogSignal),nameof(Helipad),nameof(LightAllAround),nameof(LightFogDetector),nameof(PhysicalAISAidToNavigation),nameof(RadarTransponderBeacon),nameof(Retroreflector),nameof(SignalStationTraffic),nameof(SignalStationWarning),nameof(LightSectored),nameof(Bollard),nameof(LightAirObstruction)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.aggregation,
-					lower = 0,
-					upper =  1,
-					association = nameof(AidsToNavigationAssociation),
-					role = Enum.GetName<Role>(Role.theCollection)!,
-					featureTypes = [nameof(DeepWaterRoute),nameof(FairwaySystem),nameof(TrafficSeparationScheme),nameof(TwoWayRoute)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.aggregation,
-					lower = 0,
-					upper =  1,
-					association = nameof(RangeSystemAggregation),
-					role = Enum.GetName<Role>(Role.theCollection)!,
-					featureTypes = [nameof(RangeSystem)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.aggregation,
-					lower = 0,
-					upper =  1,
-					association = nameof(FairwayAuxiliary),
-					role = Enum.GetName<Role>(Role.thePrimaryFeature)!,
-					featureTypes = [nameof(Fairway)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  2,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-			];
-		}
-
-		[System.Serializable()]
-		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class SiloTank : FeatureNode, IFeatureBindingDefinition {
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
-			[EnumerationValue(9)]
-			public buildingShape? buildingShape {get;set;} = default;
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			public categoryOfSiloTank? categoryOfSiloTank {get;set;} = default;
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
-			[EnumerationValue(9)]
-			[EnumerationValue(10)]
-			[EnumerationValue(11)]
-			[EnumerationValue(12)]
-			[EnumerationValue(13)]
-			public List<colour> colour {get;set;} = [];
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			public colourPattern? colourPattern {get;set;} = default;
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(5)]
-			public condition? condition {get;set;} = default;
-
-			public decimal? elevation {get;set;} = default;
-
-			public List<featureName> featureName {get;set;} = [];
-
-			public decimal? height {get;set;} = default;
-
-			public String? interoperabilityIdentifier {get;set;} = default;
-
-			public multiplicityOfFeatures? multiplicityOfFeatures {get;set;} = default;
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
-			public List<natureOfConstruction> natureOfConstruction {get;set;} = [];
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(5)]
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
-			[EnumerationValue(9)]
-			[EnumerationValue(13)]
-			[EnumerationValue(14)]
-			[EnumerationValue(16)]
-			[EnumerationValue(18)]
-			[EnumerationValue(19)]
-			[EnumerationValue(20)]
-			[EnumerationValue(21)]
-			[EnumerationValue(22)]
-			[EnumerationValue(24)]
-			public List<product> product {get;set;} = [];
-
-			public Boolean? radarConspicuous {get;set;} = default;
-
-			public DateOnly? reportedDate {get;set;} = default;
-
-			[EnumerationValue(4)]
-			[EnumerationValue(12)]
-			[EnumerationValue(13)]
-			public List<status> status {get;set;} = [];
-
-			public decimal? verticalLength {get;set;} = default;
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			public visualProminence? visualProminence {get;set;} = default;
-
-			public int? scaleMinimum {get;set;} = default;
-
-			public List<information> information {get;set;} = [];
-
-			public String? pictorialRepresentation {get;set;} = default;
-
-			public Boolean? inTheWater {get;set;} = default;
-
-			[JsonIgnore]
-			public override string Code => nameof(SiloTank);
-
-			public informationBindingDefinition[] informationBindingDefinitions => SiloTank._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation)],
-				},
-			];
-
-			public featureBindingDefinition[] featureBindingDefinitions => SiloTank._featureBindingDefinitions;
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(StructureEquipment),
-					role = Enum.GetName<Role>(Role.theEquipment)!,
-					featureTypes = [nameof(Daymark),nameof(DistanceMark),nameof(FogSignal),nameof(LightAllAround),nameof(LightFogDetector),nameof(PhysicalAISAidToNavigation),nameof(RadarTransponderBeacon),nameof(Retroreflector),nameof(SignalStationTraffic),nameof(SignalStationWarning),nameof(LightSectored)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.aggregation,
-					lower = 0,
-					upper =  1,
-					association = nameof(AidsToNavigationAssociation),
-					role = Enum.GetName<Role>(Role.theCollection)!,
-					featureTypes = [nameof(DeepWaterRoute),nameof(FairwaySystem),nameof(TrafficSeparationScheme),nameof(TwoWayRoute)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.aggregation,
-					lower = 0,
-					upper =  1,
-					association = nameof(RangeSystemAggregation),
-					role = Enum.GetName<Role>(Role.theCollection)!,
-					featureTypes = [nameof(RangeSystem)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  2,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-			];
-		}
-
-		[System.Serializable()]
-		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class WindTurbine : FeatureNode, IFeatureBindingDefinition {
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
-			[EnumerationValue(9)]
-			[EnumerationValue(10)]
-			[EnumerationValue(11)]
-			[EnumerationValue(12)]
-			[EnumerationValue(13)]
-			public List<colour> colour {get;set;} = [];
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			public colourPattern? colourPattern {get;set;} = default;
-
-			[EnumerationValue(1)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			public condition? condition {get;set;} = default;
-
-			public decimal? elevation {get;set;} = default;
-
-			public List<featureName> featureName {get;set;} = [];
-
-			public fixedDateRange? fixedDateRange {get;set;} = default;
-
-			public decimal? height {get;set;} = default;
-
-			public String? interoperabilityIdentifier {get;set;} = default;
-
-			public multiplicityOfFeatures? multiplicityOfFeatures {get;set;} = default;
-
-			[EnumerationValue(2)]
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
-			[EnumerationValue(11)]
-			public List<natureOfConstruction> natureOfConstruction {get;set;} = [];
-
-			public Boolean? radarConspicuous {get;set;} = default;
-
-			public DateOnly? reportedDate {get;set;} = default;
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
-			[EnumerationValue(12)]
-			[EnumerationValue(13)]
-			[EnumerationValue(14)]
-			[EnumerationValue(28)]
-			public List<status> status {get;set;} = [];
-
-			public verticalClearanceFixed? verticalClearanceFixed {get;set;} = default;
-
-			[EnumerationValue(3)]
-			[EnumerationValue(13)]
-			[EnumerationValue(16)]
-			[EnumerationValue(17)]
-			[EnumerationValue(18)]
-			[EnumerationValue(19)]
-			[EnumerationValue(20)]
-			[EnumerationValue(21)]
-			[EnumerationValue(24)]
-			[EnumerationValue(25)]
-			[EnumerationValue(26)]
-			[EnumerationValue(28)]
-			[EnumerationValue(29)]
-			[EnumerationValue(30)]
-			[EnumerationValue(44)]
-			public verticalDatum? verticalDatum {get;set;} = default;
-
-			public decimal? verticalLength {get;set;} = default;
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			public visualProminence? visualProminence {get;set;} = default;
-
-			[EnumerationValue(2)]
-			[EnumerationValue(7)]
-			public waterLevelEffect? waterLevelEffect {get;set;} = default;
-
-			public int? scaleMinimum {get;set;} = default;
-
-			public List<information> information {get;set;} = [];
-
-			public String? pictorialRepresentation {get;set;} = default;
-
-			public Boolean? inTheWater {get;set;} = default;
-
-			[JsonIgnore]
-			public override string Code => nameof(WindTurbine);
-
-			public informationBindingDefinition[] informationBindingDefinitions => WindTurbine._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation)],
-				},
-			];
-
-			public featureBindingDefinition[] featureBindingDefinitions => WindTurbine._featureBindingDefinitions;
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(StructureEquipment),
-					role = Enum.GetName<Role>(Role.theEquipment)!,
-					featureTypes = [nameof(Daymark),nameof(DistanceMark),nameof(FogSignal),nameof(LightAllAround),nameof(LightFogDetector),nameof(PhysicalAISAidToNavigation),nameof(RadarTransponderBeacon),nameof(Retroreflector),nameof(SignalStationTraffic),nameof(SignalStationWarning),nameof(LightSectored),nameof(LightAirObstruction)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.aggregation,
-					lower = 0,
-					upper =  1,
-					association = nameof(AidsToNavigationAssociation),
-					role = Enum.GetName<Role>(Role.theCollection)!,
-					featureTypes = [nameof(DeepWaterRoute),nameof(FairwaySystem),nameof(TrafficSeparationScheme),nameof(TwoWayRoute)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  2,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-			];
-		}
-
-		[System.Serializable()]
-		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class FortifiedStructure : FeatureNode, IFeatureBindingDefinition {
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			[EnumerationValue(8)]
-			[EnumerationValue(9)]
-			public categoryOfFortifiedStructure? categoryOfFortifiedStructure {get;set;} = default;
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			public condition? condition {get;set;} = default;
-
-			public List<featureName> featureName {get;set;} = [];
-
-			public decimal? height {get;set;} = default;
-
-			public String? interoperabilityIdentifier {get;set;} = default;
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
-			public List<natureOfConstruction> natureOfConstruction {get;set;} = [];
-
-			public Boolean? radarConspicuous {get;set;} = default;
-
-			public DateOnly? reportedDate {get;set;} = default;
-
-			[EnumerationValue(4)]
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
-			[EnumerationValue(12)]
-			[EnumerationValue(13)]
-			[EnumerationValue(14)]
-			[EnumerationValue(28)]
-			public List<status> status {get;set;} = [];
-
-			public decimal? verticalLength {get;set;} = default;
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			public visualProminence? visualProminence {get;set;} = default;
-
-			public int? scaleMinimum {get;set;} = default;
-
-			public List<information> information {get;set;} = [];
-
-			public String? pictorialRepresentation {get;set;} = default;
-
-			public Boolean? inTheWater {get;set;} = default;
-
-			[JsonIgnore]
-			public override string Code => nameof(FortifiedStructure);
-
-			public informationBindingDefinition[] informationBindingDefinitions => FortifiedStructure._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(NauticalInformation)],
-				},
-			];
-
-			public featureBindingDefinition[] featureBindingDefinitions => FortifiedStructure._featureBindingDefinitions;
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(StructureEquipment),
-					role = Enum.GetName<Role>(Role.theEquipment)!,
-					featureTypes = [nameof(Daymark),nameof(DistanceMark),nameof(FogSignal),nameof(LightAllAround),nameof(LightFogDetector),nameof(PhysicalAISAidToNavigation),nameof(RadarTransponderBeacon),nameof(Retroreflector),nameof(SignalStationTraffic),nameof(SignalStationWarning),nameof(LightSectored),nameof(Bollard)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.aggregation,
-					lower = 0,
-					upper =  1,
-					association = nameof(AidsToNavigationAssociation),
-					role = Enum.GetName<Role>(Role.theCollection)!,
-					featureTypes = [nameof(DeepWaterRoute),nameof(FairwaySystem),nameof(TrafficSeparationScheme),nameof(TwoWayRoute)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.aggregation,
-					lower = 0,
-					upper =  1,
-					association = nameof(RangeSystemAggregation),
-					role = Enum.GetName<Role>(Role.theCollection)!,
-					featureTypes = [nameof(RangeSystem)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  2,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-			];
-		}
-
-		[System.Serializable()]
-		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class ProductionStorageArea : FeatureNode, IFeatureBindingDefinition {
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
-			[EnumerationValue(9)]
-			[EnumerationValue(10)]
-			[EnumerationValue(11)]
-			[EnumerationValue(12)]
-			[Required()]
-			public categoryOfProductionArea categoryOfProductionArea {get;set;}
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(5)]
-			public condition? condition {get;set;} = default;
-
-			public decimal? elevation {get;set;} = default;
-
-			public List<featureName> featureName {get;set;} = [];
-
-			public fixedDateRange? fixedDateRange {get;set;} = default;
-
-			public decimal? height {get;set;} = default;
-
-			public String? interoperabilityIdentifier {get;set;} = default;
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
-			[EnumerationValue(9)]
-			[EnumerationValue(10)]
-			[EnumerationValue(11)]
-			[EnumerationValue(12)]
-			[EnumerationValue(13)]
-			[EnumerationValue(14)]
-			[EnumerationValue(15)]
-			[EnumerationValue(16)]
-			[EnumerationValue(17)]
-			[EnumerationValue(18)]
-			[EnumerationValue(19)]
-			[EnumerationValue(20)]
-			[EnumerationValue(21)]
-			[EnumerationValue(22)]
-			[EnumerationValue(23)]
-			[EnumerationValue(25)]
-			public List<product> product {get;set;} = [];
-
-			public Boolean? radarConspicuous {get;set;} = default;
-
-			public DateOnly? reportedDate {get;set;} = default;
-
-			[EnumerationValue(4)]
-			[EnumerationValue(12)]
-			public List<status> status {get;set;} = [];
-
-			public decimal? verticalLength {get;set;} = default;
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			public visualProminence? visualProminence {get;set;} = default;
-
-			public int? scaleMinimum {get;set;} = default;
-
-			public List<information> information {get;set;} = [];
-
-			public String? pictorialRepresentation {get;set;} = default;
-
-			[JsonIgnore]
-			public override string Code => nameof(ProductionStorageArea);
-
-			public informationBindingDefinition[] informationBindingDefinitions => ProductionStorageArea._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation),nameof(NonStandardWorkingDay),nameof(ServiceHours)],
-				},
-			];
-
-			public featureBindingDefinition[] featureBindingDefinitions => ProductionStorageArea._featureBindingDefinitions;
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  2,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-			];
-		}
-
-		[System.Serializable()]
-		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class Checkpoint : FeatureNode, IFeatureBindingDefinition {
-			[EnumerationValue(1)]
-			public categoryOfCheckpoint? categoryOfCheckpoint {get;set;} = default;
-
-			public List<featureName> featureName {get;set;} = [];
-
-			public String? interoperabilityIdentifier {get;set;} = default;
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(5)]
-			[EnumerationValue(7)]
-			[EnumerationValue(9)]
-			[EnumerationValue(12)]
-			public List<status> status {get;set;} = [];
-
-			public int? scaleMinimum {get;set;} = default;
-
-			public List<information> information {get;set;} = [];
-
-			[JsonIgnore]
-			public override string Code => nameof(Checkpoint);
-
-			public informationBindingDefinition[] informationBindingDefinitions => Checkpoint._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation),nameof(NonStandardWorkingDay),nameof(ServiceHours)],
-				},
-			];
-
-			public featureBindingDefinition[] featureBindingDefinitions => Checkpoint._featureBindingDefinitions;
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  2,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-			];
-		}
-
-		[System.Serializable()]
-		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class Hulk : FeatureNode, IFeatureBindingDefinition {
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
-			public List<categoryOfHulk> categoryOfHulk {get;set;} = [];
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
-			[EnumerationValue(9)]
-			[EnumerationValue(10)]
-			[EnumerationValue(11)]
-			[EnumerationValue(12)]
-			[EnumerationValue(13)]
-			public List<colour> colour {get;set;} = [];
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			public colourPattern? colourPattern {get;set;} = default;
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(5)]
-			public condition? condition {get;set;} = default;
-
-			public List<featureName> featureName {get;set;} = [];
-
-			public fixedDateRange? fixedDateRange {get;set;} = default;
-
-			public decimal? horizontalLength {get;set;} = default;
-
-			public decimal? horizontalWidth {get;set;} = default;
-
-			public String? interoperabilityIdentifier {get;set;} = default;
-
-			public List<periodicDateRange> periodicDateRange {get;set;} = [];
-
-			public Boolean? radarConspicuous {get;set;} = default;
-
-			public DateOnly? reportedDate {get;set;} = default;
-
-			public decimal? verticalLength {get;set;} = default;
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			public visualProminence? visualProminence {get;set;} = default;
-
-			public int? scaleMinimum {get;set;} = default;
-
-			public List<information> information {get;set;} = [];
-
-			public String? pictorialRepresentation {get;set;} = default;
-
-			[JsonIgnore]
-			public override string Code => nameof(Hulk);
-
-			public informationBindingDefinition[] informationBindingDefinitions => Hulk._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(NauticalInformation)],
-				},
-			];
-
-			public featureBindingDefinition[] featureBindingDefinitions => Hulk._featureBindingDefinitions;
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(StructureEquipment),
-					role = Enum.GetName<Role>(Role.theEquipment)!,
-					featureTypes = [nameof(Daymark),nameof(DistanceMark),nameof(FogSignal),nameof(LightAllAround),nameof(LightFogDetector),nameof(PhysicalAISAidToNavigation),nameof(RadarTransponderBeacon),nameof(Retroreflector),nameof(SignalStationTraffic),nameof(SignalStationWarning),nameof(Bollard)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.aggregation,
-					lower = 0,
-					upper =  1,
-					association = nameof(AidsToNavigationAssociation),
-					role = Enum.GetName<Role>(Role.theCollection)!,
-					featureTypes = [nameof(FairwaySystem),nameof(TrafficSeparationScheme),nameof(TwoWayRoute)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  2,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-			];
-		}
-
-		[System.Serializable()]
-		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class Pile : FeatureNode, IFeatureBindingDefinition {
-			[EnumerationValue(1)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
-			public categoryOfPile? categoryOfPile {get;set;} = default;
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
-			[EnumerationValue(9)]
-			[EnumerationValue(10)]
-			[EnumerationValue(11)]
-			[EnumerationValue(12)]
-			[EnumerationValue(13)]
-			public List<colour> colour {get;set;} = [];
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			public colourPattern? colourPattern {get;set;} = default;
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(5)]
-			public condition? condition {get;set;} = default;
-
-			public List<featureName> featureName {get;set;} = [];
-
-			public fixedDateRange? fixedDateRange {get;set;} = default;
-
-			public decimal? height {get;set;} = default;
-
-			public String? interoperabilityIdentifier {get;set;} = default;
-
-			public Boolean? radarConspicuous {get;set;} = default;
-
-			public DateOnly? reportedDate {get;set;} = default;
-
-			[EnumerationValue(1)]
-			[EnumerationValue(4)]
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
-			[EnumerationValue(12)]
-			[EnumerationValue(14)]
-			public List<status> status {get;set;} = [];
-
-			public decimal? verticalLength {get;set;} = default;
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			public visualProminence? visualProminence {get;set;} = default;
-
-			public int? scaleMinimum {get;set;} = default;
-
-			public List<information> information {get;set;} = [];
-
-			public String? pictorialRepresentation {get;set;} = default;
-
-			[JsonIgnore]
-			public override string Code => nameof(Pile);
-
-			public informationBindingDefinition[] informationBindingDefinitions => Pile._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(NauticalInformation)],
-				},
-			];
-
-			public featureBindingDefinition[] featureBindingDefinitions => Pile._featureBindingDefinitions;
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(StructureEquipment),
-					role = Enum.GetName<Role>(Role.theEquipment)!,
-					featureTypes = [nameof(Daymark),nameof(DistanceMark),nameof(FogSignal),nameof(LightAllAround),nameof(LightFogDetector),nameof(PhysicalAISAidToNavigation),nameof(RadarTransponderBeacon),nameof(Retroreflector),nameof(SignalStationTraffic),nameof(SignalStationWarning),nameof(LightSectored),nameof(Bollard)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.aggregation,
-					lower = 0,
-					upper =  1,
-					association = nameof(AidsToNavigationAssociation),
-					role = Enum.GetName<Role>(Role.theCollection)!,
-					featureTypes = [nameof(ArchipelagicSeaLane),nameof(DeepWaterRoute),nameof(FairwaySystem),nameof(TrafficSeparationScheme),nameof(TwoWayRoute)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.aggregation,
-					lower = 0,
-					upper =  1,
-					association = nameof(RangeSystemAggregation),
-					role = Enum.GetName<Role>(Role.theCollection)!,
-					featureTypes = [nameof(RangeSystem)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.aggregation,
-					lower = 0,
-					upper =  1,
-					association = nameof(FairwayAuxiliary),
-					role = Enum.GetName<Role>(Role.thePrimaryFeature)!,
-					featureTypes = [nameof(Fairway)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  2,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-			];
-		}
-
-		[System.Serializable()]
-		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class Dyke : FeatureNode, IFeatureBindingDefinition {
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(5)]
-			public condition? condition {get;set;} = default;
-
-			public List<featureName> featureName {get;set;} = [];
-
-			public fixedDateRange? fixedDateRange {get;set;} = default;
-
-			public decimal? height {get;set;} = default;
-
-			public String? interoperabilityIdentifier {get;set;} = default;
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
-			public List<natureOfConstruction> natureOfConstruction {get;set;} = [];
-
-			public Boolean? radarConspicuous {get;set;} = default;
-
-			public DateOnly? reportedDate {get;set;} = default;
-
-			public decimal? verticalLength {get;set;} = default;
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			public visualProminence? visualProminence {get;set;} = default;
-
-			public int? scaleMinimum {get;set;} = default;
-
-			public List<information> information {get;set;} = [];
-
-			[JsonIgnore]
-			public override string Code => nameof(Dyke);
-
-			public informationBindingDefinition[] informationBindingDefinitions => Dyke._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(NauticalInformation)],
-				},
-			];
-
-			public featureBindingDefinition[] featureBindingDefinitions => Dyke._featureBindingDefinitions;
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  2,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-			];
-		}
-
-		[System.Serializable()]
-		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class ShorelineConstruction : FeatureNode, IFeatureBindingDefinition {
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
-			[EnumerationValue(9)]
-			[EnumerationValue(10)]
-			[EnumerationValue(11)]
-			[EnumerationValue(12)]
-			[EnumerationValue(13)]
-			[EnumerationValue(14)]
-			[EnumerationValue(15)]
-			[EnumerationValue(16)]
-			[EnumerationValue(17)]
-			[EnumerationValue(20)]
-			[EnumerationValue(22)]
-			[EnumerationValue(23)]
-			public categoryOfShorelineConstruction? categoryOfShorelineConstruction {get;set;} = default;
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
-			[EnumerationValue(9)]
-			[EnumerationValue(10)]
-			[EnumerationValue(11)]
-			[EnumerationValue(12)]
-			[EnumerationValue(13)]
-			public List<colour> colour {get;set;} = [];
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			public colourPattern? colourPattern {get;set;} = default;
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(5)]
-			public condition? condition {get;set;} = default;
-
-			public List<featureName> featureName {get;set;} = [];
-
-			public fixedDateRange? fixedDateRange {get;set;} = default;
-
-			public decimal? height {get;set;} = default;
-
-			public horizontalClearanceFixed? horizontalClearanceFixed {get;set;} = default;
-
-			public decimal? horizontalLength {get;set;} = default;
-
-			public decimal? horizontalWidth {get;set;} = default;
-
-			public String? interoperabilityIdentifier {get;set;} = default;
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
-			[EnumerationValue(11)]
-			public List<natureOfConstruction> natureOfConstruction {get;set;} = [];
-
-			public Boolean? radarConspicuous {get;set;} = default;
-
-			public DateOnly? reportedDate {get;set;} = default;
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
-			[EnumerationValue(12)]
-			[EnumerationValue(13)]
-			[EnumerationValue(14)]
-			[EnumerationValue(28)]
-			public List<status> status {get;set;} = [];
-
-			public decimal? verticalLength {get;set;} = default;
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			public visualProminence? visualProminence {get;set;} = default;
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
-			public waterLevelEffect? waterLevelEffect {get;set;} = default;
-
-			public int? scaleMinimum {get;set;} = default;
-
-			public List<information> information {get;set;} = [];
-
-			[JsonIgnore]
-			public override string Code => nameof(ShorelineConstruction);
-
-			public informationBindingDefinition[] informationBindingDefinitions => ShorelineConstruction._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(NauticalInformation)],
-				},
-			];
-
-			public featureBindingDefinition[] featureBindingDefinitions => ShorelineConstruction._featureBindingDefinitions;
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(StructureEquipment),
-					role = Enum.GetName<Role>(Role.theEquipment)!,
-					featureTypes = [nameof(Daymark),nameof(DistanceMark),nameof(FogSignal),nameof(LightAllAround),nameof(LightFogDetector),nameof(PhysicalAISAidToNavigation),nameof(RadarTransponderBeacon),nameof(Retroreflector),nameof(SignalStationTraffic),nameof(SignalStationWarning),nameof(LightSectored),nameof(Bollard)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.aggregation,
-					lower = 0,
-					upper =  1,
-					association = nameof(AidsToNavigationAssociation),
-					role = Enum.GetName<Role>(Role.theCollection)!,
-					featureTypes = [nameof(FairwaySystem),nameof(TrafficSeparationScheme),nameof(TwoWayRoute)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  2,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-			];
-		}
-
-		[System.Serializable()]
-		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class StructureOverNavigableWater : FeatureNode, IFeatureBindingDefinition {
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			public List<categoryOfStructure> categoryOfStructure {get;set;} = [];
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
-			[EnumerationValue(9)]
-			[EnumerationValue(10)]
-			[EnumerationValue(11)]
-			[EnumerationValue(12)]
-			[EnumerationValue(13)]
-			public List<colour> colour {get;set;} = [];
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			public colourPattern? colourPattern {get;set;} = default;
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(5)]
-			public condition? condition {get;set;} = default;
-
-			public List<featureName> featureName {get;set;} = [];
-
-			public fixedDateRange? fixedDateRange {get;set;} = default;
-
-			public decimal? height {get;set;} = default;
-
-			[Required()]
-			public horizontalClearanceFixed horizontalClearanceFixed {get;set;}
-
-			public decimal? horizontalLength {get;set;} = default;
-
-			public decimal? horizontalWidth {get;set;} = default;
-
-			public String? interoperabilityIdentifier {get;set;} = default;
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
-			[EnumerationValue(11)]
-			[EnumerationValue(12)]
-			public List<natureOfConstruction> natureOfConstruction {get;set;} = [];
-
-			public List<periodicDateRange> periodicDateRange {get;set;} = [];
-
-			[EnumerationValue(7)]
-			[EnumerationValue(12)]
-			[EnumerationValue(13)]
-			[EnumerationValue(21)]
-			[EnumerationValue(22)]
-			[EnumerationValue(25)]
-			public product? product {get;set;} = default;
-
-			public Boolean? radarConspicuous {get;set;} = default;
-
-			public DateOnly? reportedDate {get;set;} = default;
-
-			[EnumerationValue(1)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
-			[EnumerationValue(12)]
-			[EnumerationValue(14)]
-			public List<status> status {get;set;} = [];
-
-			[Required()]
-			public verticalClearanceFixed verticalClearanceFixed {get;set;}
-
-			[EnumerationValue(3)]
-			[EnumerationValue(13)]
-			[EnumerationValue(16)]
-			[EnumerationValue(17)]
-			[EnumerationValue(18)]
-			[EnumerationValue(19)]
-			[EnumerationValue(20)]
-			[EnumerationValue(21)]
-			[EnumerationValue(24)]
-			[EnumerationValue(25)]
-			[EnumerationValue(26)]
-			[EnumerationValue(28)]
-			[EnumerationValue(29)]
-			[EnumerationValue(30)]
-			[EnumerationValue(44)]
-			public verticalDatum? verticalDatum {get;set;} = default;
-
-			public decimal? verticalLength {get;set;} = default;
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			public visualProminence? visualProminence {get;set;} = default;
-
-			public int? scaleMinimum {get;set;} = default;
-
-			public List<information> information {get;set;} = [];
-
-			public String? pictorialRepresentation {get;set;} = default;
-
-			[JsonIgnore]
-			public override string Code => nameof(StructureOverNavigableWater);
-
-			public informationBindingDefinition[] informationBindingDefinitions => StructureOverNavigableWater._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(NauticalInformation)],
-				},
-			];
-
-			public featureBindingDefinition[] featureBindingDefinitions => StructureOverNavigableWater._featureBindingDefinitions;
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.aggregation,
-					lower = 0,
-					upper =  1,
-					association = nameof(AidsToNavigationAssociation),
-					role = Enum.GetName<Role>(Role.theCollection)!,
-					featureTypes = [nameof(FairwaySystem),nameof(TrafficSeparationScheme),nameof(TwoWayRoute)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(RoofedStructureAggregation),
-					role = Enum.GetName<Role>(Role.theSupport)!,
-					featureTypes = [nameof(PylonBridgeSupport)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(StructureEquipment),
-					role = Enum.GetName<Role>(Role.theEquipment)!,
-					featureTypes = [nameof(Daymark),nameof(DistanceMark),nameof(FogSignal),nameof(LightAllAround),nameof(LightFogDetector),nameof(PhysicalAISAidToNavigation),nameof(RadarTransponderBeacon),nameof(Retroreflector),nameof(SignalStationTraffic),nameof(SignalStationWarning),nameof(LightSectored)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  2,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-			];
-		}
-
-		[System.Serializable()]
-		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class Causeway : FeatureNode, IFeatureBindingDefinition {
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(5)]
-			public condition? condition {get;set;} = default;
-
-			public List<featureName> featureName {get;set;} = [];
-
-			public String? interoperabilityIdentifier {get;set;} = default;
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
-			public List<natureOfConstruction> natureOfConstruction {get;set;} = [];
-
-			public DateOnly? reportedDate {get;set;} = default;
-
-			[EnumerationValue(1)]
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
-			[EnumerationValue(12)]
-			[EnumerationValue(14)]
-			public List<status> status {get;set;} = [];
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			public waterLevelEffect? waterLevelEffect {get;set;} = default;
-
-			public int? scaleMinimum {get;set;} = default;
-
-			public List<information> information {get;set;} = [];
-
-			[JsonIgnore]
-			public override string Code => nameof(Causeway);
-
-			public informationBindingDefinition[] informationBindingDefinitions => Causeway._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(NauticalInformation)],
-				},
-			];
-
-			public featureBindingDefinition[] featureBindingDefinitions => Causeway._featureBindingDefinitions;
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  2,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-			];
-		}
-
-		[System.Serializable()]
-		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class Canal : FeatureNode, IFeatureBindingDefinition {
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			public categoryOfCanal? categoryOfCanal {get;set;} = default;
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(5)]
-			public condition? condition {get;set;} = default;
-
-			public List<featureName> featureName {get;set;} = [];
-
-			public fixedDateRange? fixedDateRange {get;set;} = default;
-
-			public horizontalClearanceFixed? horizontalClearanceFixed {get;set;} = default;
-
-			public decimal? horizontalWidth {get;set;} = default;
-
-			public String? interoperabilityIdentifier {get;set;} = default;
-
-			public DateOnly? reportedDate {get;set;} = default;
-
-			[EnumerationValue(1)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			[EnumerationValue(8)]
-			[EnumerationValue(14)]
-			public List<status> status {get;set;} = [];
-
-			public int? scaleMinimum {get;set;} = default;
-
-			public List<information> information {get;set;} = [];
-
-			[JsonIgnore]
-			public override string Code => nameof(Canal);
-
-			public informationBindingDefinition[] informationBindingDefinitions => Canal._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(NauticalInformation)],
-				},
-			];
-
-			public featureBindingDefinition[] featureBindingDefinitions => Canal._featureBindingDefinitions;
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  2,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-			];
-		}
-
-		[System.Serializable()]
-		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class DistanceMark : FeatureNode, IFeatureBindingDefinition {
-			[Required()]
-			public Boolean distanceMarkVisible {get;set;} = false;
-
-			public List<featureName> featureName {get;set;} = [];
-
-			public fixedDateRange? fixedDateRange {get;set;} = default;
-
-			public String? interoperabilityIdentifier {get;set;} = default;
-
-			[Required()]
-			public measuredDistanceValue measuredDistanceValue {get;set;}
-
-			public int? scaleMinimum {get;set;} = default;
-
-			public List<information> information {get;set;} = [];
-
-			[JsonIgnore]
-			public override string Code => nameof(DistanceMark);
-
-			public informationBindingDefinition[] informationBindingDefinitions => DistanceMark._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(NauticalInformation)],
-				},
-			];
-
-			public featureBindingDefinition[] featureBindingDefinitions => DistanceMark._featureBindingDefinitions;
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.composition,
-					lower = 0,
-					upper =  1,
-					association = nameof(StructureEquipment),
-					role = Enum.GetName<Role>(Role.theStructure)!,
-					featureTypes = [nameof(Bridge),nameof(Building),nameof(Crane),nameof(CardinalBeacon),nameof(CardinalBuoy),nameof(Conveyor),nameof(Dolphin),nameof(EmergencyWreckMarkingBuoy),nameof(FishingFacility),nameof(FloatingDock),nameof(FortifiedStructure),nameof(Hulk),nameof(InstallationBuoy),nameof(IsolatedDangerBeacon),nameof(IsolatedDangerBuoy),nameof(Landmark),nameof(LateralBeacon),nameof(LateralBuoy),nameof(LightFloat),nameof(LightVessel),nameof(MooringBuoy),nameof(OffshorePlatform),nameof(Pile),nameof(PipelineOverhead),nameof(Pontoon),nameof(PylonBridgeSupport),nameof(SafeWaterBeacon),nameof(SafeWaterBuoy),nameof(ShorelineConstruction),nameof(SiloTank),nameof(SpanFixed),nameof(SpanOpening),nameof(SpecialPurposeGeneralBeacon),nameof(SpecialPurposeGeneralBuoy),nameof(StructureOverNavigableWater),nameof(WindTurbine),nameof(Wreck),nameof(Daymark)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  2,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-			];
-		}
-
-		[System.Serializable()]
-		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class Gate : FeatureNode, IFeatureBindingDefinition {
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			public categoryOfGate? categoryOfGate {get;set;} = default;
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(5)]
-			public condition? condition {get;set;} = default;
-
-			public decimal? depthRangeMinimumValue {get;set;} = default;
-
-			public List<featureName> featureName {get;set;} = [];
-
-			public horizontalClearanceOpen? horizontalClearanceOpen {get;set;} = default;
-
-			public String? interoperabilityIdentifier {get;set;} = default;
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
-			public List<natureOfConstruction> natureOfConstruction {get;set;} = [];
-
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
-			public List<qualityOfVerticalMeasurement> qualityOfVerticalMeasurement {get;set;} = [];
-
-			[EnumerationValue(1)]
-			[EnumerationValue(4)]
-			[EnumerationValue(6)]
-			[EnumerationValue(16)]
-			[EnumerationValue(17)]
-			public List<status> status {get;set;} = [];
-
-			public verticalClearanceOpen? verticalClearanceOpen {get;set;} = default;
-
-			[EnumerationValue(3)]
-			[EnumerationValue(13)]
-			[EnumerationValue(16)]
-			[EnumerationValue(17)]
-			[EnumerationValue(18)]
-			[EnumerationValue(19)]
-			[EnumerationValue(20)]
-			[EnumerationValue(21)]
-			[EnumerationValue(24)]
-			[EnumerationValue(25)]
-			[EnumerationValue(26)]
-			[EnumerationValue(28)]
-			[EnumerationValue(29)]
-			[EnumerationValue(30)]
-			[EnumerationValue(44)]
-			public verticalDatum? verticalDatum {get;set;} = default;
-
-			public verticalUncertainty? verticalUncertainty {get;set;} = default;
-
-			public int? scaleMinimum {get;set;} = default;
-
-			public List<information> information {get;set;} = [];
-
-			[JsonIgnore]
-			public override string Code => nameof(Gate);
-
-			public informationBindingDefinition[] informationBindingDefinitions => Gate._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation),nameof(NonStandardWorkingDay),nameof(ServiceHours)],
-				},
-			];
-
-			public featureBindingDefinition[] featureBindingDefinitions => Gate._featureBindingDefinitions;
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  2,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-			];
-		}
-
-		[System.Serializable()]
-		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class Dam : FeatureNode, IFeatureBindingDefinition {
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			public categoryOfDam? categoryOfDam {get;set;} = default;
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
-			[EnumerationValue(9)]
-			[EnumerationValue(10)]
-			[EnumerationValue(11)]
-			[EnumerationValue(12)]
-			[EnumerationValue(13)]
-			public List<colour> colour {get;set;} = [];
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			public colourPattern? colourPattern {get;set;} = default;
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(5)]
-			public condition? condition {get;set;} = default;
-
-			public List<featureName> featureName {get;set;} = [];
-
-			public fixedDateRange? fixedDateRange {get;set;} = default;
-
-			public decimal? height {get;set;} = default;
-
-			public String? interoperabilityIdentifier {get;set;} = default;
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
-			public List<natureOfConstruction> natureOfConstruction {get;set;} = [];
-
-			public Boolean? radarConspicuous {get;set;} = default;
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
-			[EnumerationValue(14)]
-			[EnumerationValue(28)]
-			public List<status> status {get;set;} = [];
-
-			public decimal? verticalLength {get;set;} = default;
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			public visualProminence? visualProminence {get;set;} = default;
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(6)]
-			public waterLevelEffect? waterLevelEffect {get;set;} = default;
-
-			public int? scaleMinimum {get;set;} = default;
-
-			public List<information> information {get;set;} = [];
-
-			[JsonIgnore]
-			public override string Code => nameof(Dam);
-
-			public informationBindingDefinition[] informationBindingDefinitions => Dam._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(NauticalInformation)],
-				},
-			];
-
-			public featureBindingDefinition[] featureBindingDefinitions => Dam._featureBindingDefinitions;
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  2,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-			];
-		}
-
-		[System.Serializable()]
-		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class Crane : FeatureNode, IFeatureBindingDefinition {
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			public categoryOfCrane? categoryOfCrane {get;set;} = default;
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
-			[EnumerationValue(9)]
-			[EnumerationValue(10)]
-			[EnumerationValue(11)]
-			[EnumerationValue(12)]
-			[EnumerationValue(13)]
-			public List<colour> colour {get;set;} = [];
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			public colourPattern? colourPattern {get;set;} = default;
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(5)]
-			public condition? condition {get;set;} = default;
-
-			public List<featureName> featureName {get;set;} = [];
-
-			public decimal? height {get;set;} = default;
-
-			public String? interoperabilityIdentifier {get;set;} = default;
-
-			public decimal? liftingCapacity {get;set;} = default;
-
-			public orientation? orientation {get;set;} = default;
-
-			public Boolean? radarConspicuous {get;set;} = default;
-
-			public decimal? radius {get;set;} = default;
-
-			[EnumerationValue(1)]
-			[EnumerationValue(4)]
-			[EnumerationValue(6)]
-			[EnumerationValue(12)]
-			public List<status> status {get;set;} = [];
-
-			public verticalClearanceFixed? verticalClearanceFixed {get;set;} = default;
-
-			[EnumerationValue(3)]
-			[EnumerationValue(13)]
-			[EnumerationValue(16)]
-			[EnumerationValue(17)]
-			[EnumerationValue(18)]
-			[EnumerationValue(19)]
-			[EnumerationValue(20)]
-			[EnumerationValue(21)]
-			[EnumerationValue(24)]
-			[EnumerationValue(25)]
-			[EnumerationValue(26)]
-			[EnumerationValue(28)]
-			[EnumerationValue(29)]
-			[EnumerationValue(30)]
-			[EnumerationValue(44)]
-			public verticalDatum? verticalDatum {get;set;} = default;
-
-			public decimal? verticalLength {get;set;} = default;
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			public visualProminence? visualProminence {get;set;} = default;
-
-			public int? scaleMinimum {get;set;} = default;
-
-			public List<information> information {get;set;} = [];
-
-			public String? pictorialRepresentation {get;set;} = default;
-
-			public Boolean? inTheWater {get;set;} = default;
-
-			[JsonIgnore]
-			public override string Code => nameof(Crane);
-
-			public informationBindingDefinition[] informationBindingDefinitions => Crane._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation),nameof(NonStandardWorkingDay),nameof(ServiceHours)],
-				},
-			];
-
-			public featureBindingDefinition[] featureBindingDefinitions => Crane._featureBindingDefinitions;
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(StructureEquipment),
-					role = Enum.GetName<Role>(Role.theEquipment)!,
-					featureTypes = [nameof(Daymark),nameof(DistanceMark),nameof(FogSignal),nameof(LightAllAround),nameof(LightFogDetector),nameof(PhysicalAISAidToNavigation),nameof(RadarTransponderBeacon),nameof(Retroreflector),nameof(SignalStationTraffic),nameof(SignalStationWarning),nameof(LightSectored),nameof(LightAirObstruction)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.aggregation,
-					lower = 0,
-					upper =  1,
-					association = nameof(AidsToNavigationAssociation),
-					role = Enum.GetName<Role>(Role.theCollection)!,
-					featureTypes = [nameof(DeepWaterRoute),nameof(FairwaySystem),nameof(TrafficSeparationScheme),nameof(TwoWayRoute)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  2,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-			];
-		}
-
-		[System.Serializable()]
-		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class Berth : FeatureNode, IFeatureBindingDefinition {
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
-			[EnumerationValue(9)]
-			[EnumerationValue(10)]
-			[EnumerationValue(11)]
-			[EnumerationValue(12)]
-			[EnumerationValue(13)]
-			[EnumerationValue(14)]
-			[EnumerationValue(15)]
-			public List<categoryOfCargo> categoryOfCargo {get;set;} = [];
-
-			public List<featureName> featureName {get;set;} = [];
-
-			public fixedDateRange? fixedDateRange {get;set;} = default;
-
-			public decimal? horizontalClearanceLength {get;set;} = default;
-
-			public decimal? horizontalClearanceWidth {get;set;} = default;
-
-			public String? interoperabilityIdentifier {get;set;} = default;
-
-			public decimal? maximumPermittedDraught {get;set;} = default;
-
-			public decimal? minimumBerthDepth {get;set;} = default;
-
-			public List<periodicDateRange> periodicDateRange {get;set;} = [];
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			public List<qualityOfVerticalMeasurement> qualityOfVerticalMeasurement {get;set;} = [];
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(5)]
-			[EnumerationValue(7)]
-			[EnumerationValue(9)]
-			[EnumerationValue(12)]
-			public List<status> status {get;set;} = [];
-
-			public verticalUncertainty? verticalUncertainty {get;set;} = default;
-
-			public int? scaleMinimum {get;set;} = default;
-
-			public List<information> information {get;set;} = [];
-
-			[JsonIgnore]
-			public override string Code => nameof(Berth);
-
-			public informationBindingDefinition[] informationBindingDefinitions => Berth._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation),nameof(NonStandardWorkingDay),nameof(ServiceHours)],
-				},
-			];
-
-			public featureBindingDefinition[] featureBindingDefinitions => Berth._featureBindingDefinitions;
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.aggregation,
-					lower = 0,
-					upper =  1,
-					association = nameof(MooringTrotAggregation),
-					role = Enum.GetName<Role>(Role.theCollection)!,
-					featureTypes = [nameof(MooringTrot)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  2,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-			];
-		}
-
-		[System.Serializable()]
-		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class Dolphin : FeatureNode, IFeatureBindingDefinition {
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			public List<categoryOfDolphin> categoryOfDolphin {get;set;} = [];
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
-			[EnumerationValue(9)]
-			[EnumerationValue(10)]
-			[EnumerationValue(11)]
-			[EnumerationValue(12)]
-			[EnumerationValue(13)]
-			public List<colour> colour {get;set;} = [];
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			public colourPattern? colourPattern {get;set;} = default;
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(5)]
-			public condition? condition {get;set;} = default;
-
-			public decimal? elevation {get;set;} = default;
-
-			public List<featureName> featureName {get;set;} = [];
-
-			public fixedDateRange? fixedDateRange {get;set;} = default;
-
-			public decimal? height {get;set;} = default;
-
-			public String? interoperabilityIdentifier {get;set;} = default;
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
-			public List<natureOfConstruction> natureOfConstruction {get;set;} = [];
-
-			public List<periodicDateRange> periodicDateRange {get;set;} = [];
-
-			public Boolean? radarConspicuous {get;set;} = default;
-
-			public DateOnly? reportedDate {get;set;} = default;
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
-			[EnumerationValue(12)]
-			[EnumerationValue(14)]
-			[EnumerationValue(18)]
-			public List<status> status {get;set;} = [];
-
-			public decimal? verticalLength {get;set;} = default;
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			public visualProminence? visualProminence {get;set;} = default;
-
-			public int? scaleMinimum {get;set;} = default;
-
-			public List<information> information {get;set;} = [];
-
-			public String? pictorialRepresentation {get;set;} = default;
-
-			[JsonIgnore]
-			public override string Code => nameof(Dolphin);
-
-			public informationBindingDefinition[] informationBindingDefinitions => Dolphin._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation)],
-				},
-			];
-
-			public featureBindingDefinition[] featureBindingDefinitions => Dolphin._featureBindingDefinitions;
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(StructureEquipment),
-					role = Enum.GetName<Role>(Role.theEquipment)!,
-					featureTypes = [nameof(Daymark),nameof(DistanceMark),nameof(FogSignal),nameof(LightAllAround),nameof(LightFogDetector),nameof(PhysicalAISAidToNavigation),nameof(RadarTransponderBeacon),nameof(Retroreflector),nameof(SignalStationTraffic),nameof(SignalStationWarning),nameof(LightSectored),nameof(Bollard)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.aggregation,
-					lower = 0,
-					upper =  1,
-					association = nameof(AidsToNavigationAssociation),
-					role = Enum.GetName<Role>(Role.theCollection)!,
-					featureTypes = [nameof(DeepWaterRoute),nameof(FairwaySystem),nameof(TrafficSeparationScheme),nameof(TwoWayRoute)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.aggregation,
-					lower = 0,
-					upper =  1,
-					association = nameof(RangeSystemAggregation),
-					role = Enum.GetName<Role>(Role.theCollection)!,
-					featureTypes = [nameof(RangeSystem)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  2,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-			];
-		}
-
-		[System.Serializable()]
-		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class Bollard : FeatureNode, IFeatureBindingDefinition {
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(5)]
-			public condition? condition {get;set;} = default;
-
-			public List<featureName> featureName {get;set;} = [];
-
-			public fixedDateRange? fixedDateRange {get;set;} = default;
-
-			public String? interoperabilityIdentifier {get;set;} = default;
-
-			public List<periodicDateRange> periodicDateRange {get;set;} = [];
-
-			public DateOnly? reportedDate {get;set;} = default;
-
-			[EnumerationValue(1)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
-			[EnumerationValue(12)]
-			[EnumerationValue(14)]
-			public List<status> status {get;set;} = [];
-
-			public int? scaleMinimum {get;set;} = default;
-
-			public List<information> information {get;set;} = [];
-
-			public String? pictorialRepresentation {get;set;} = default;
-
-			[JsonIgnore]
-			public override string Code => nameof(Bollard);
-
-			public informationBindingDefinition[] informationBindingDefinitions => Bollard._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(NauticalInformation)],
-				},
-			];
-
-			public featureBindingDefinition[] featureBindingDefinitions => Bollard._featureBindingDefinitions;
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.composition,
-					lower = 0,
-					upper =  1,
-					association = nameof(StructureEquipment),
-					role = Enum.GetName<Role>(Role.theStructure)!,
-					featureTypes = [nameof(Dolphin),nameof(FortifiedStructure),nameof(Hulk),nameof(Landmark),nameof(OffshorePlatform),nameof(Pile),nameof(PylonBridgeSupport),nameof(ShorelineConstruction)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  2,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-			];
-		}
-
-		[System.Serializable()]
-		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class DryDock : FeatureNode, IFeatureBindingDefinition {
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(5)]
-			public condition? condition {get;set;} = default;
-
-			public decimal? depthRangeMinimumValue {get;set;} = default;
-
-			public decimal? elevation {get;set;} = default;
-
-			public List<featureName> featureName {get;set;} = [];
-
-			public fixedDateRange? fixedDateRange {get;set;} = default;
-
-			public decimal? horizontalClearanceLength {get;set;} = default;
-
-			public decimal? horizontalClearanceWidth {get;set;} = default;
-
-			public String? interoperabilityIdentifier {get;set;} = default;
-
-			public decimal? horizontalLength {get;set;} = default;
-
-			public decimal? horizontalWidth {get;set;} = default;
-
-			public decimal? maximumPermittedDraught {get;set;} = default;
-
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
-			[EnumerationValue(9)]
-			public List<qualityOfVerticalMeasurement> qualityOfVerticalMeasurement {get;set;} = [];
-
-			[EnumerationValue(1)]
-			[EnumerationValue(4)]
-			[EnumerationValue(6)]
-			[EnumerationValue(8)]
-			[EnumerationValue(12)]
-			[EnumerationValue(14)]
-			public List<status> status {get;set;} = [];
-
-			public verticalUncertainty? verticalUncertainty {get;set;} = default;
-
-			public int? scaleMinimum {get;set;} = default;
-
-			public List<information> information {get;set;} = [];
-
-			[JsonIgnore]
-			public override string Code => nameof(DryDock);
-
-			public informationBindingDefinition[] informationBindingDefinitions => DryDock._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation),nameof(NonStandardWorkingDay),nameof(ServiceHours)],
-				},
-			];
-
-			public featureBindingDefinition[] featureBindingDefinitions => DryDock._featureBindingDefinitions;
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  2,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-			];
-		}
-
-		[System.Serializable()]
-		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class FloatingDock : FeatureNode, IFeatureBindingDefinition {
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
-			[EnumerationValue(9)]
-			[EnumerationValue(10)]
-			[EnumerationValue(11)]
-			[EnumerationValue(12)]
-			[EnumerationValue(13)]
-			public List<colour> colour {get;set;} = [];
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			public colourPattern? colourPattern {get;set;} = default;
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(5)]
-			public condition? condition {get;set;} = default;
-
-			public decimal? depthRangeMinimumValue {get;set;} = default;
-
-			public List<featureName> featureName {get;set;} = [];
-
-			public fixedDateRange? fixedDateRange {get;set;} = default;
-
-			public decimal? horizontalClearanceLength {get;set;} = default;
-
-			public decimal? horizontalClearanceWidth {get;set;} = default;
-
-			public decimal? horizontalLength {get;set;} = default;
-
-			public decimal? horizontalWidth {get;set;} = default;
-
-			public String? interoperabilityIdentifier {get;set;} = default;
-
-			public decimal? liftingCapacity {get;set;} = default;
-
-			public decimal? maximumPermittedDraught {get;set;} = default;
-
-			public Boolean? radarConspicuous {get;set;} = default;
-
-			[EnumerationValue(1)]
-			[EnumerationValue(4)]
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
-			[EnumerationValue(12)]
-			public List<status> status {get;set;} = [];
-
-			public decimal? verticalLength {get;set;} = default;
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			public visualProminence? visualProminence {get;set;} = default;
-
-			public int? scaleMinimum {get;set;} = default;
-
-			public List<information> information {get;set;} = [];
-
-			public String? pictorialRepresentation {get;set;} = default;
-
-			[JsonIgnore]
-			public override string Code => nameof(FloatingDock);
-
-			public informationBindingDefinition[] informationBindingDefinitions => FloatingDock._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation),nameof(NonStandardWorkingDay),nameof(ServiceHours)],
-				},
-			];
-
-			public featureBindingDefinition[] featureBindingDefinitions => FloatingDock._featureBindingDefinitions;
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(StructureEquipment),
-					role = Enum.GetName<Role>(Role.theEquipment)!,
-					featureTypes = [nameof(Daymark),nameof(DistanceMark),nameof(FogSignal),nameof(LightAllAround),nameof(LightFogDetector),nameof(PhysicalAISAidToNavigation),nameof(RadarTransponderBeacon),nameof(Retroreflector),nameof(SignalStationTraffic),nameof(SignalStationWarning)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.aggregation,
-					lower = 0,
-					upper =  1,
-					association = nameof(AidsToNavigationAssociation),
-					role = Enum.GetName<Role>(Role.theCollection)!,
-					featureTypes = [nameof(FairwaySystem),nameof(TrafficSeparationScheme),nameof(TwoWayRoute)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  2,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-			];
-		}
-
-		[System.Serializable()]
-		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class Pontoon : FeatureNode, IFeatureBindingDefinition {
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(5)]
-			public condition? condition {get;set;} = default;
-
-			public List<featureName> featureName {get;set;} = [];
-
-			public fixedDateRange? fixedDateRange {get;set;} = default;
-
-			public String? interoperabilityIdentifier {get;set;} = default;
-
-			public List<periodicDateRange> periodicDateRange {get;set;} = [];
-
-			public Boolean? radarConspicuous {get;set;} = default;
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
-			[EnumerationValue(12)]
-			[EnumerationValue(14)]
-			public List<status> status {get;set;} = [];
-
-			public decimal? verticalLength {get;set;} = default;
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			public visualProminence? visualProminence {get;set;} = default;
-
-			public int? scaleMinimum {get;set;} = default;
-
-			public List<information> information {get;set;} = [];
-
-			public String? pictorialRepresentation {get;set;} = default;
-
-			[JsonIgnore]
-			public override string Code => nameof(Pontoon);
-
-			public informationBindingDefinition[] informationBindingDefinitions => Pontoon._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(NauticalInformation)],
-				},
-			];
-
-			public featureBindingDefinition[] featureBindingDefinitions => Pontoon._featureBindingDefinitions;
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.aggregation,
-					lower = 0,
-					upper =  1,
-					association = nameof(BridgeAggregation),
-					role = Enum.GetName<Role>(Role.theCollection)!,
-					featureTypes = [nameof(Bridge)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(StructureEquipment),
-					role = Enum.GetName<Role>(Role.theEquipment)!,
-					featureTypes = [nameof(Daymark),nameof(DistanceMark),nameof(FogSignal),nameof(LightAllAround),nameof(LightFogDetector),nameof(PhysicalAISAidToNavigation),nameof(RadarTransponderBeacon),nameof(Retroreflector),nameof(SignalStationTraffic),nameof(SignalStationWarning)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.aggregation,
-					lower = 0,
-					upper =  1,
-					association = nameof(AidsToNavigationAssociation),
-					role = Enum.GetName<Role>(Role.theCollection)!,
-					featureTypes = [nameof(FairwaySystem),nameof(TrafficSeparationScheme),nameof(TwoWayRoute)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  2,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-			];
-		}
-
-		[System.Serializable()]
-		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class DockArea : FeatureNode, IFeatureBindingDefinition {
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			public categoryOfDock? categoryOfDock {get;set;} = default;
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(5)]
-			public condition? condition {get;set;} = default;
-
-			public List<featureName> featureName {get;set;} = [];
-
-			public fixedDateRange? fixedDateRange {get;set;} = default;
-
-			public List<periodicDateRange> periodicDateRange {get;set;} = [];
-
-			public horizontalClearanceFixed? horizontalClearanceFixed {get;set;} = default;
-
-			public decimal? horizontalClearanceLength {get;set;} = default;
-
-			public decimal? horizontalClearanceWidth {get;set;} = default;
-
-			public String? interoperabilityIdentifier {get;set;} = default;
-
-			public decimal? maximumPermittedDraught {get;set;} = default;
-
-			[EnumerationValue(1)]
-			[EnumerationValue(4)]
-			[EnumerationValue(6)]
-			[EnumerationValue(8)]
-			[EnumerationValue(14)]
-			public List<status> status {get;set;} = [];
-
-			public int? scaleMinimum {get;set;} = default;
-
-			public List<information> information {get;set;} = [];
-
-			[JsonIgnore]
-			public override string Code => nameof(DockArea);
-
-			public informationBindingDefinition[] informationBindingDefinitions => DockArea._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation),nameof(NonStandardWorkingDay),nameof(ServiceHours)],
-				},
-			];
-
-			public featureBindingDefinition[] featureBindingDefinitions => DockArea._featureBindingDefinitions;
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  2,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-			];
-		}
-
-		[System.Serializable()]
-		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class Gridiron : FeatureNode, IFeatureBindingDefinition {
-			public List<featureName> featureName {get;set;} = [];
-
-			public decimal? horizontalLength {get;set;} = default;
-
-			public decimal? horizontalWidth {get;set;} = default;
-
-			public String? interoperabilityIdentifier {get;set;} = default;
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
-			[EnumerationValue(11)]
-			public List<natureOfConstruction> natureOfConstruction {get;set;} = [];
-
-			[EnumerationValue(1)]
-			[EnumerationValue(4)]
-			[EnumerationValue(6)]
-			[EnumerationValue(8)]
-			[EnumerationValue(14)]
-			[EnumerationValue(28)]
-			public List<status> status {get;set;} = [];
-
-			public decimal? verticalLength {get;set;} = default;
-
-			[EnumerationValue(1)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			public waterLevelEffect? waterLevelEffect {get;set;} = default;
-
-			public int? scaleMinimum {get;set;} = default;
-
-			public List<information> information {get;set;} = [];
-
-			[JsonIgnore]
-			public override string Code => nameof(Gridiron);
-
-			public informationBindingDefinition[] informationBindingDefinitions => Gridiron._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(NauticalInformation)],
-				},
-			];
-
-			public featureBindingDefinition[] featureBindingDefinitions => Gridiron._featureBindingDefinitions;
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  2,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-			];
-		}
-
-		[System.Serializable()]
-		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class LockBasin : FeatureNode, IFeatureBindingDefinition {
-			public List<featureName> featureName {get;set;} = [];
-
-			public fixedDateRange? fixedDateRange {get;set;} = default;
-
-			public List<periodicDateRange> periodicDateRange {get;set;} = [];
-
-			public horizontalClearanceFixed? horizontalClearanceFixed {get;set;} = default;
-
-			public decimal? horizontalLength {get;set;} = default;
-
-			public decimal? horizontalWidth {get;set;} = default;
-
-			public String? interoperabilityIdentifier {get;set;} = default;
-
-			[EnumerationValue(1)]
-			[EnumerationValue(4)]
-			[EnumerationValue(6)]
-			[EnumerationValue(8)]
-			[EnumerationValue(13)]
-			[EnumerationValue(14)]
-			[EnumerationValue(16)]
-			[EnumerationValue(17)]
-			public List<status> status {get;set;} = [];
-
-			public int? scaleMinimum {get;set;} = default;
-
-			public List<information> information {get;set;} = [];
-
-			[JsonIgnore]
-			public override string Code => nameof(LockBasin);
-
-			public informationBindingDefinition[] informationBindingDefinitions => LockBasin._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation),nameof(NonStandardWorkingDay),nameof(ServiceHours)],
-				},
-			];
-
-			public featureBindingDefinition[] featureBindingDefinitions => LockBasin._featureBindingDefinitions;
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  2,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-			];
-		}
-
-		[System.Serializable()]
-		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class MooringTrot : FeatureNode, IFeatureBindingDefinition {
-			public List<featureName> featureName {get;set;} = [];
-
-			public fixedDateRange? fixedDateRange {get;set;} = default;
-
-			public String? interoperabilityIdentifier {get;set;} = default;
-
-			public int? scaleMinimum {get;set;} = default;
-
-			public List<information> information {get;set;} = [];
-
-			[JsonIgnore]
-			public override string Code => nameof(MooringTrot);
-
-			public informationBindingDefinition[] informationBindingDefinitions => MooringTrot._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation)],
-				},
-			];
-
-			public featureBindingDefinition[] featureBindingDefinitions => MooringTrot._featureBindingDefinitions;
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(MooringTrotAggregation),
-					role = Enum.GetName<Role>(Role.theComponent)!,
-					featureTypes = [nameof(Berth),nameof(CableSubmarine),nameof(MooringBuoy),nameof(Obstruction)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  2,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-			];
-		}
-
-		[System.Serializable()]
-		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class SeaAreaNamedWaterArea : FeatureNode, IFeatureBindingDefinition {
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
-			[EnumerationValue(9)]
-			[EnumerationValue(10)]
-			[EnumerationValue(11)]
-			[EnumerationValue(12)]
-			[EnumerationValue(13)]
-			[EnumerationValue(14)]
-			[EnumerationValue(15)]
-			[EnumerationValue(16)]
-			[EnumerationValue(17)]
-			[EnumerationValue(18)]
-			[EnumerationValue(19)]
-			[EnumerationValue(20)]
-			[EnumerationValue(21)]
-			[EnumerationValue(22)]
-			[EnumerationValue(23)]
-			[EnumerationValue(24)]
-			[EnumerationValue(25)]
-			[EnumerationValue(26)]
-			[EnumerationValue(27)]
-			[EnumerationValue(28)]
-			[EnumerationValue(29)]
-			[EnumerationValue(30)]
-			[EnumerationValue(31)]
-			[EnumerationValue(32)]
-			[EnumerationValue(33)]
-			[EnumerationValue(34)]
-			[EnumerationValue(35)]
-			[EnumerationValue(36)]
-			[EnumerationValue(37)]
-			[EnumerationValue(38)]
-			[EnumerationValue(39)]
-			[EnumerationValue(40)]
-			[EnumerationValue(41)]
-			[EnumerationValue(42)]
-			[EnumerationValue(43)]
-			[EnumerationValue(44)]
-			[EnumerationValue(45)]
-			[EnumerationValue(46)]
-			[EnumerationValue(47)]
-			[EnumerationValue(48)]
-			[EnumerationValue(49)]
-			[EnumerationValue(50)]
-			[EnumerationValue(51)]
-			[EnumerationValue(52)]
-			[EnumerationValue(53)]
-			[EnumerationValue(54)]
-			[EnumerationValue(55)]
-			[EnumerationValue(56)]
-			public categoryOfSeaArea? categoryOfSeaArea {get;set;} = default;
-
-			public List<featureName> featureName {get;set;} = [];
-
-			public String? interoperabilityIdentifier {get;set;} = default;
-
-			public int? scaleMinimum {get;set;} = default;
-
-			public List<information> information {get;set;} = [];
-
-			[JsonIgnore]
-			public override string Code => nameof(SeaAreaNamedWaterArea);
-
-			public informationBindingDefinition[] informationBindingDefinitions => SeaAreaNamedWaterArea._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(NauticalInformation)],
-				},
-			];
-
-			public featureBindingDefinition[] featureBindingDefinitions => SeaAreaNamedWaterArea._featureBindingDefinitions;
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  2,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-			];
-		}
-
-		[System.Serializable()]
-		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class TidalStreamFloodEbb : FeatureNode, IFeatureBindingDefinition {
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[Required()]
-			public categoryOfTidalStream categoryOfTidalStream {get;set;}
-
-			public List<featureName> featureName {get;set;} = [];
-
-			public fixedDateRange? fixedDateRange {get;set;} = default;
-
-			public String? interoperabilityIdentifier {get;set;} = default;
-
-			[Required()]
-			public orientation orientation {get;set;}
-
-			[Required()]
-			public speed speed {get;set;}
-
-			public int? scaleMinimum {get;set;} = default;
-
-			public List<information> information {get;set;} = [];
-
-			[JsonIgnore]
-			public override string Code => nameof(TidalStreamFloodEbb);
-
-			public informationBindingDefinition[] informationBindingDefinitions => TidalStreamFloodEbb._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(NauticalInformation)],
-				},
-			];
-
-			public featureBindingDefinition[] featureBindingDefinitions => TidalStreamFloodEbb._featureBindingDefinitions;
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  2,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-			];
-		}
-
-		[System.Serializable()]
-		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class CurrentNonGravitational : FeatureNode, IFeatureBindingDefinition {
-			public List<featureName> featureName {get;set;} = [];
-
-			public fixedDateRange? fixedDateRange {get;set;} = default;
-
-			public String? interoperabilityIdentifier {get;set;} = default;
-
-			[Required()]
-			public orientation orientation {get;set;}
-
-			public List<periodicDateRange> periodicDateRange {get;set;} = [];
-
-			[Required()]
-			public speed speed {get;set;}
-
-			[EnumerationValue(5)]
-			public status? status {get;set;} = default;
-
-			public int? scaleMinimum {get;set;} = default;
-
-			public List<information> information {get;set;} = [];
-
-			[JsonIgnore]
-			public override string Code => nameof(CurrentNonGravitational);
-
-			public informationBindingDefinition[] informationBindingDefinitions => CurrentNonGravitational._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(NauticalInformation)],
-				},
-			];
-
-			public featureBindingDefinition[] featureBindingDefinitions => CurrentNonGravitational._featureBindingDefinitions;
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  2,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-			];
-		}
-
-		[System.Serializable()]
-		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class WaterTurbulence : FeatureNode, IFeatureBindingDefinition {
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[Required()]
-			public categoryOfWaterTurbulence categoryOfWaterTurbulence {get;set;}
-
-			public List<featureName> featureName {get;set;} = [];
-
-			public String? interoperabilityIdentifier {get;set;} = default;
-
-			public int? scaleMinimum {get;set;} = default;
-
-			public List<information> information {get;set;} = [];
-
-			[JsonIgnore]
-			public override string Code => nameof(WaterTurbulence);
-
-			public informationBindingDefinition[] informationBindingDefinitions => WaterTurbulence._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(NauticalInformation)],
-				},
-			];
-
-			public featureBindingDefinition[] featureBindingDefinitions => WaterTurbulence._featureBindingDefinitions;
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  2,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-			];
-		}
-
-		[System.Serializable()]
-		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class TidalStreamPanelData : FeatureNode, IFeatureBindingDefinition {
-			public List<featureName> featureName {get;set;} = [];
-
-			public String? interoperabilityIdentifier {get;set;} = default;
-
-			public String stationName {get;set;} = string.Empty;
-
-			public String? stationNumber {get;set;} = default;
-
-			public List<tidalStreamPanelValues> tidalStreamPanelValues {get;set;} = [];
-
-			public int? scaleMinimum {get;set;} = default;
-
-			public List<information> information {get;set;} = [];
-
-			[JsonIgnore]
-			public override string Code => nameof(TidalStreamPanelData);
-
-			public informationBindingDefinition[] informationBindingDefinitions => TidalStreamPanelData._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(NauticalInformation)],
-				},
-			];
-
-			public featureBindingDefinition[] featureBindingDefinitions => TidalStreamPanelData._featureBindingDefinitions;
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  2,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-			];
-		}
-
-		[System.Serializable()]
-		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class Sounding : FeatureNode, IFeatureBindingDefinition {
-			public List<featureName> featureName {get;set;} = [];
-
-			public String? interoperabilityIdentifier {get;set;} = default;
-
-			[EnumerationValue(1)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(8)]
-			[EnumerationValue(9)]
-			public List<qualityOfVerticalMeasurement> qualityOfVerticalMeasurement {get;set;} = [];
-
-			public DateOnly? reportedDate {get;set;} = default;
-
-			[EnumerationValue(18)]
-			public status? status {get;set;} = default;
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(8)]
-			[EnumerationValue(9)]
-			[EnumerationValue(10)]
-			[EnumerationValue(11)]
-			[EnumerationValue(12)]
-			[EnumerationValue(13)]
-			[EnumerationValue(15)]
-			[EnumerationValue(16)]
-			[EnumerationValue(17)]
-			[EnumerationValue(18)]
-			public List<techniqueOfVerticalMeasurement> techniqueOfVerticalMeasurement {get;set;} = [];
-
-			public int? scaleMinimum {get;set;} = default;
-
-			public List<information> information {get;set;} = [];
-
-			[JsonIgnore]
-			public override string Code => nameof(Sounding);
-
-			public informationBindingDefinition[] informationBindingDefinitions => Sounding._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(NauticalInformation)],
-				},
-			];
-
-			public featureBindingDefinition[] featureBindingDefinitions => Sounding._featureBindingDefinitions;
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  2,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-			];
-		}
-
-		[System.Serializable()]
-		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class DredgedArea : FeatureNode, IFeatureBindingDefinition {
-			[Required()]
-			public decimal depthRangeMinimumValue {get;set;}
-
-			public decimal? depthRangeMaximumValue {get;set;} = default;
-
-			public DateOnly? dredgedDate {get;set;} = default;
-
-			public List<featureName> featureName {get;set;} = [];
-
-			public String? interoperabilityIdentifier {get;set;} = default;
-
-			public decimal? maximumPermittedDraught {get;set;} = default;
-
-			[EnumerationValue(10)]
-			[EnumerationValue(11)]
-			public qualityOfVerticalMeasurement? qualityOfVerticalMeasurement {get;set;} = default;
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			[EnumerationValue(8)]
-			[EnumerationValue(11)]
-			[EnumerationValue(12)]
-			[EnumerationValue(13)]
-			[EnumerationValue(16)]
-			[EnumerationValue(17)]
-			[EnumerationValue(18)]
-			[EnumerationValue(19)]
-			[EnumerationValue(20)]
-			[EnumerationValue(21)]
-			[EnumerationValue(23)]
-			[EnumerationValue(25)]
-			[EnumerationValue(27)]
-			[EnumerationValue(39)]
-			public List<restriction> restriction {get;set;} = [];
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(8)]
-			[EnumerationValue(9)]
-			[EnumerationValue(13)]
-			[EnumerationValue(15)]
-			[EnumerationValue(16)]
-			[EnumerationValue(17)]
-			[EnumerationValue(18)]
-			public List<techniqueOfVerticalMeasurement> techniqueOfVerticalMeasurement {get;set;} = [];
-
-			public verticalUncertainty? verticalUncertainty {get;set;} = default;
-
-			public List<vesselSpeedLimit> vesselSpeedLimit {get;set;} = [];
-
-			public List<information> information {get;set;} = [];
-
-			[JsonIgnore]
-			public override string Code => nameof(DredgedArea);
-
-			public informationBindingDefinition[] informationBindingDefinitions => DredgedArea._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(NauticalInformation)],
-				},
-			];
-
-			public featureBindingDefinition[] featureBindingDefinitions => DredgedArea._featureBindingDefinitions;
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.aggregation,
-					lower = 0,
-					upper =  1,
-					association = nameof(FairwayAuxiliary),
-					role = Enum.GetName<Role>(Role.thePrimaryFeature)!,
-					featureTypes = [nameof(Fairway)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  2,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-			];
-		}
-
-		[System.Serializable()]
-		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class SweptArea : FeatureNode, IFeatureBindingDefinition {
-			[Required()]
-			public decimal depthRangeMinimumValue {get;set;}
-
-			public String? interoperabilityIdentifier {get;set;} = default;
-
-			public DateOnly? sweptDate {get;set;} = default;
-
-			public int? scaleMinimum {get;set;} = default;
-
-			public List<information> information {get;set;} = [];
-
-			[JsonIgnore]
-			public override string Code => nameof(SweptArea);
-
-			public informationBindingDefinition[] informationBindingDefinitions => SweptArea._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(NauticalInformation)],
-				},
-			];
-
-			public featureBindingDefinition[] featureBindingDefinitions => SweptArea._featureBindingDefinitions;
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.aggregation,
-					lower = 0,
-					upper =  1,
-					association = nameof(FairwayAuxiliary),
-					role = Enum.GetName<Role>(Role.thePrimaryFeature)!,
-					featureTypes = [nameof(Fairway)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  2,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-			];
-		}
-
-		[System.Serializable()]
-		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class DepthContour : FeatureNode, IFeatureBindingDefinition {
-			public String? interoperabilityIdentifier {get;set;} = default;
-
-			[Required()]
-			public decimal valueOfDepthContour {get;set;}
-
-			public int? scaleMinimum {get;set;} = default;
-
-			public List<information> information {get;set;} = [];
-
-			[JsonIgnore]
-			public override string Code => nameof(DepthContour);
-
-			public informationBindingDefinition[] informationBindingDefinitions => DepthContour._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(NauticalInformation)],
-				},
-			];
-
-			public featureBindingDefinition[] featureBindingDefinitions => DepthContour._featureBindingDefinitions;
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-			];
-		}
-
-		[System.Serializable()]
-		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class DepthArea : FeatureNode, IFeatureBindingDefinition {
-			[Required()]
-			public decimal depthRangeMinimumValue {get;set;}
-
-			[Required()]
-			public decimal depthRangeMaximumValue {get;set;}
-
-			public String? interoperabilityIdentifier {get;set;} = default;
-
-			public List<information> information {get;set;} = [];
-
-			[JsonIgnore]
-			public override string Code => nameof(DepthArea);
-
-			public informationBindingDefinition[] informationBindingDefinitions => DepthArea._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(NauticalInformation)],
-				},
-			];
-
-			public featureBindingDefinition[] featureBindingDefinitions => DepthArea._featureBindingDefinitions;
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-			];
-		}
-
-		[System.Serializable()]
-		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class DepthNoBottomFound : FeatureNode, IFeatureBindingDefinition {
-			public String? interoperabilityIdentifier {get;set;} = default;
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(5)]
-			[EnumerationValue(8)]
-			[EnumerationValue(9)]
-			[EnumerationValue(13)]
-			[EnumerationValue(15)]
-			[EnumerationValue(16)]
-			[EnumerationValue(17)]
-			[EnumerationValue(18)]
-			public List<techniqueOfVerticalMeasurement> techniqueOfVerticalMeasurement {get;set;} = [];
-
-			public int? scaleMinimum {get;set;} = default;
-
-			public List<information> information {get;set;} = [];
-
-			[JsonIgnore]
-			public override string Code => nameof(DepthNoBottomFound);
-
-			public informationBindingDefinition[] informationBindingDefinitions => DepthNoBottomFound._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(NauticalInformation)],
-				},
-			];
-
-			public featureBindingDefinition[] featureBindingDefinitions => DepthNoBottomFound._featureBindingDefinitions;
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-			];
-		}
-
-		[System.Serializable()]
-		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class UnsurveyedArea : FeatureNode, IFeatureBindingDefinition {
-			public String? interoperabilityIdentifier {get;set;} = default;
-
-			public List<information> information {get;set;} = [];
-
-			[JsonIgnore]
-			public override string Code => nameof(UnsurveyedArea);
-
-			public informationBindingDefinition[] informationBindingDefinitions => UnsurveyedArea._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(NauticalInformation)],
-				},
-			];
-
-			public featureBindingDefinition[] featureBindingDefinitions => UnsurveyedArea._featureBindingDefinitions;
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-			];
-		}
-
-		[System.Serializable()]
-		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class SeabedArea : FeatureNode, IFeatureBindingDefinition {
-			public List<featureName> featureName {get;set;} = [];
-
-			public String? interoperabilityIdentifier {get;set;} = default;
-
-			public List<surfaceCharacteristics> surfaceCharacteristics {get;set;} = [];
-
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			public waterLevelEffect? waterLevelEffect {get;set;} = default;
-
-			public int? scaleMinimum {get;set;} = default;
-
-			public List<information> information {get;set;} = [];
-
-			[JsonIgnore]
-			public override string Code => nameof(SeabedArea);
-
-			public informationBindingDefinition[] informationBindingDefinitions => SeabedArea._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(NauticalInformation)],
-				},
-			];
-
-			public featureBindingDefinition[] featureBindingDefinitions => SeabedArea._featureBindingDefinitions;
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  2,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-			];
-		}
-
-		[System.Serializable()]
-		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class WeedKelp : FeatureNode, IFeatureBindingDefinition {
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(4)]
-			public categoryOfWeedKelp? categoryOfWeedKelp {get;set;} = default;
-
-			public List<featureName> featureName {get;set;} = [];
-
-			public String? interoperabilityIdentifier {get;set;} = default;
-
-			public int? scaleMinimum {get;set;} = default;
-
-			public List<information> information {get;set;} = [];
-
-			[JsonIgnore]
-			public override string Code => nameof(WeedKelp);
-
-			public informationBindingDefinition[] informationBindingDefinitions => WeedKelp._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(NauticalInformation)],
-				},
-			];
-
-			public featureBindingDefinition[] featureBindingDefinitions => WeedKelp._featureBindingDefinitions;
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  2,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-			];
-		}
-
-		[System.Serializable()]
-		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class Seagrass : FeatureNode, IFeatureBindingDefinition {
-			public List<featureName> featureName {get;set;} = [];
-
-			public String? interoperabilityIdentifier {get;set;} = default;
-
-			public int? scaleMinimum {get;set;} = default;
-
-			public List<information> information {get;set;} = [];
-
-			[JsonIgnore]
-			public override string Code => nameof(Seagrass);
-
-			public informationBindingDefinition[] informationBindingDefinitions => Seagrass._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(NauticalInformation)],
-				},
-			];
-
-			public featureBindingDefinition[] featureBindingDefinitions => Seagrass._featureBindingDefinitions;
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  2,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-			];
-		}
-
-		[System.Serializable()]
-		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class Sandwave : FeatureNode, IFeatureBindingDefinition {
-			public String? interoperabilityIdentifier {get;set;} = default;
-
-			public decimal? verticalLength {get;set;} = default;
-
-			public int? scaleMinimum {get;set;} = default;
-
-			public List<information> information {get;set;} = [];
-
-			[JsonIgnore]
-			public override string Code => nameof(Sandwave);
-
-			public informationBindingDefinition[] informationBindingDefinitions => Sandwave._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(NauticalInformation)],
-				},
-			];
-
-			public featureBindingDefinition[] featureBindingDefinitions => Sandwave._featureBindingDefinitions;
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-			];
-		}
-
-		[System.Serializable()]
-		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class Spring : FeatureNode, IFeatureBindingDefinition {
-			public List<featureName> featureName {get;set;} = [];
-
-			public String? interoperabilityIdentifier {get;set;} = default;
-
-			public int? scaleMinimum {get;set;} = default;
-
-			public List<information> information {get;set;} = [];
-
-			[JsonIgnore]
-			public override string Code => nameof(Spring);
-
-			public informationBindingDefinition[] informationBindingDefinitions => Spring._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(NauticalInformation)],
-				},
-			];
-
-			public featureBindingDefinition[] featureBindingDefinitions => Spring._featureBindingDefinitions;
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  2,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-			];
-		}
-
-		[System.Serializable()]
-		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class UnderwaterAwashRock : FeatureNode, IFeatureBindingDefinition {
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			public expositionOfSounding? expositionOfSounding {get;set;} = default;
-
-			public List<featureName> featureName {get;set;} = [];
-
-			public String? interoperabilityIdentifier {get;set;} = default;
-
-			[EnumerationValue(14)]
-			public natureOfSurface? natureOfSurface {get;set;} = default;
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
-			[EnumerationValue(9)]
-			public List<qualityOfVerticalMeasurement> qualityOfVerticalMeasurement {get;set;} = [];
-
-			public DateOnly? reportedDate {get;set;} = default;
-
-			[EnumerationValue(18)]
-			public status? status {get;set;} = default;
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(8)]
-			[EnumerationValue(9)]
-			[EnumerationValue(10)]
-			[EnumerationValue(11)]
-			[EnumerationValue(12)]
-			[EnumerationValue(13)]
-			[EnumerationValue(15)]
-			[EnumerationValue(16)]
-			[EnumerationValue(17)]
-			[EnumerationValue(18)]
-			public List<techniqueOfVerticalMeasurement> techniqueOfVerticalMeasurement {get;set;} = [];
-
-			[Required()]
-			public decimal valueOfSounding {get;set;}
-
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[Required()]
-			public waterLevelEffect waterLevelEffect {get;set;}
-
-			public int? scaleMinimum {get;set;} = default;
-
-			public List<information> information {get;set;} = [];
-
-			public decimal? defaultClearanceDepth {get;set;} = default;
-
-			[Required()]
-			public decimal surroundingDepth {get;set;}
-
-			[JsonIgnore]
-			public override string Code => nameof(UnderwaterAwashRock);
-
-			public informationBindingDefinition[] informationBindingDefinitions => UnderwaterAwashRock._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(NauticalInformation)],
-				},
-			];
-
-			public featureBindingDefinition[] featureBindingDefinitions => UnderwaterAwashRock._featureBindingDefinitions;
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  2,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-			];
-		}
-
-		[System.Serializable()]
-		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class Wreck : FeatureNode, IFeatureBindingDefinition {
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			public categoryOfWreck? categoryOfWreck {get;set;} = default;
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			public expositionOfSounding? expositionOfSounding {get;set;} = default;
-
-			public List<featureName> featureName {get;set;} = [];
-
-			public decimal? height {get;set;} = default;
-
-			public String? interoperabilityIdentifier {get;set;} = default;
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
-			[EnumerationValue(9)]
-			public List<qualityOfVerticalMeasurement> qualityOfVerticalMeasurement {get;set;} = [];
-
-			public Boolean? radarConspicuous {get;set;} = default;
-
-			public DateOnly? reportedDate {get;set;} = default;
-
-			[EnumerationValue(7)]
-			[EnumerationValue(13)]
-			[EnumerationValue(18)]
-			public List<status> status {get;set;} = [];
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(8)]
-			[EnumerationValue(9)]
-			[EnumerationValue(10)]
-			[EnumerationValue(11)]
-			[EnumerationValue(12)]
-			[EnumerationValue(13)]
-			[EnumerationValue(15)]
-			[EnumerationValue(16)]
-			[EnumerationValue(17)]
-			[EnumerationValue(18)]
-			public List<techniqueOfVerticalMeasurement> techniqueOfVerticalMeasurement {get;set;} = [];
-
-			public decimal? valueOfSounding {get;set;} = default;
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			public visualProminence? visualProminence {get;set;} = default;
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[Required()]
-			public waterLevelEffect waterLevelEffect {get;set;}
-
-			public int? scaleMinimum {get;set;} = default;
-
-			public List<information> information {get;set;} = [];
-
-			public String? pictorialRepresentation {get;set;} = default;
-
-			public decimal? defaultClearanceDepth {get;set;} = default;
-
-			[Required()]
-			public decimal surroundingDepth {get;set;}
-
-			[JsonIgnore]
-			public override string Code => nameof(Wreck);
-
-			public informationBindingDefinition[] informationBindingDefinitions => Wreck._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(NauticalInformation)],
-				},
-			];
-
-			public featureBindingDefinition[] featureBindingDefinitions => Wreck._featureBindingDefinitions;
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(StructureEquipment),
-					role = Enum.GetName<Role>(Role.theEquipment)!,
-					featureTypes = [nameof(Daymark),nameof(DistanceMark),nameof(FogSignal),nameof(LightAllAround),nameof(LightFogDetector),nameof(PhysicalAISAidToNavigation),nameof(RadarTransponderBeacon),nameof(Retroreflector),nameof(SignalStationTraffic),nameof(SignalStationWarning),nameof(LightSectored)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  2,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-			];
-		}
-
-		[System.Serializable()]
-		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class Obstruction : FeatureNode, IFeatureBindingDefinition {
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			[EnumerationValue(8)]
-			[EnumerationValue(9)]
-			[EnumerationValue(10)]
-			[EnumerationValue(12)]
-			[EnumerationValue(13)]
-			[EnumerationValue(14)]
-			[EnumerationValue(15)]
-			[EnumerationValue(16)]
-			[EnumerationValue(17)]
-			[EnumerationValue(18)]
-			[EnumerationValue(19)]
-			[EnumerationValue(20)]
-			[EnumerationValue(21)]
-			[EnumerationValue(22)]
-			[EnumerationValue(23)]
-			public categoryOfObstruction? categoryOfObstruction {get;set;} = default;
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(5)]
-			public condition? condition {get;set;} = default;
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			public expositionOfSounding? expositionOfSounding {get;set;} = default;
-
-			public List<featureName> featureName {get;set;} = [];
-
-			public decimal? height {get;set;} = default;
-
-			public String? interoperabilityIdentifier {get;set;} = default;
-
-			public decimal? maximumPermittedDraught {get;set;} = default;
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
-			[EnumerationValue(9)]
-			[EnumerationValue(11)]
-			[EnumerationValue(14)]
-			[EnumerationValue(17)]
-			[EnumerationValue(18)]
-			public List<natureOfSurface> natureOfSurface {get;set;} = [];
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(8)]
-			[EnumerationValue(23)]
-			public List<product> product {get;set;} = [];
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
-			[EnumerationValue(9)]
-			public List<qualityOfVerticalMeasurement> qualityOfVerticalMeasurement {get;set;} = [];
-
-			public DateOnly? reportedDate {get;set;} = default;
-
-			[EnumerationValue(1)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
-			[EnumerationValue(13)]
-			[EnumerationValue(18)]
-			[EnumerationValue(28)]
-			public List<status> status {get;set;} = [];
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(8)]
-			[EnumerationValue(9)]
-			[EnumerationValue(10)]
-			[EnumerationValue(11)]
-			[EnumerationValue(12)]
-			[EnumerationValue(13)]
-			[EnumerationValue(15)]
-			[EnumerationValue(16)]
-			[EnumerationValue(17)]
-			[EnumerationValue(18)]
-			public List<techniqueOfVerticalMeasurement> techniqueOfVerticalMeasurement {get;set;} = [];
-
-			public decimal? valueOfSounding {get;set;} = default;
-
-			public decimal? verticalLength {get;set;} = default;
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(7)]
-			[Required()]
-			public waterLevelEffect waterLevelEffect {get;set;}
-
-			public int? scaleMinimum {get;set;} = default;
-
-			public List<information> information {get;set;} = [];
-
-			public decimal? defaultClearanceDepth {get;set;} = default;
-
-			[Required()]
-			public decimal surroundingDepth {get;set;}
-
-			[JsonIgnore]
-			public override string Code => nameof(Obstruction);
-
-			public informationBindingDefinition[] informationBindingDefinitions => Obstruction._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(NauticalInformation)],
-				},
-			];
-
-			public featureBindingDefinition[] featureBindingDefinitions => Obstruction._featureBindingDefinitions;
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.aggregation,
-					lower = 0,
-					upper =  1,
-					association = nameof(MooringTrotAggregation),
-					role = Enum.GetName<Role>(Role.theCollection)!,
-					featureTypes = [nameof(MooringTrot)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  2,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-			];
-		}
-
-		[System.Serializable()]
-		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class FoulGround : FeatureNode, IFeatureBindingDefinition {
-			public List<featureName> featureName {get;set;} = [];
-
-			public String? interoperabilityIdentifier {get;set;} = default;
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
-			[EnumerationValue(9)]
-			public List<qualityOfVerticalMeasurement> qualityOfVerticalMeasurement {get;set;} = [];
-
-			public DateOnly? reportedDate {get;set;} = default;
-
-			[EnumerationValue(13)]
-			[EnumerationValue(18)]
-			[EnumerationValue(28)]
-			public List<status> status {get;set;} = [];
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(8)]
-			[EnumerationValue(9)]
-			[EnumerationValue(10)]
-			[EnumerationValue(11)]
-			[EnumerationValue(12)]
-			[EnumerationValue(13)]
-			[EnumerationValue(15)]
-			[EnumerationValue(16)]
-			[EnumerationValue(17)]
-			[EnumerationValue(18)]
-			public List<techniqueOfVerticalMeasurement> techniqueOfVerticalMeasurement {get;set;} = [];
-
-			public decimal? valueOfSounding {get;set;} = default;
-
-			public verticalUncertainty? verticalUncertainty {get;set;} = default;
-
-			public int? scaleMinimum {get;set;} = default;
-
-			public List<information> information {get;set;} = [];
-
-			[JsonIgnore]
-			public override string Code => nameof(FoulGround);
-
-			public informationBindingDefinition[] informationBindingDefinitions => FoulGround._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(NauticalInformation)],
-				},
-			];
-
-			public featureBindingDefinition[] featureBindingDefinitions => FoulGround._featureBindingDefinitions;
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  2,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-			];
-		}
-
-		[System.Serializable()]
-		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class DiscolouredWater : FeatureNode, IFeatureBindingDefinition {
-			public String? interoperabilityIdentifier {get;set;} = default;
-
-			public DateOnly? reportedDate {get;set;} = default;
-
-			public int? scaleMinimum {get;set;} = default;
-
-			public List<information> information {get;set;} = [];
-
-			[JsonIgnore]
-			public override string Code => nameof(DiscolouredWater);
-
-			public informationBindingDefinition[] informationBindingDefinitions => DiscolouredWater._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(NauticalInformation)],
-				},
-			];
-
-			public featureBindingDefinition[] featureBindingDefinitions => DiscolouredWater._featureBindingDefinitions;
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-			];
-		}
-
-		[System.Serializable()]
-		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class FishingFacility : FeatureNode, IFeatureBindingDefinition {
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			public categoryOfFishingFacility? categoryOfFishingFacility {get;set;} = default;
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(5)]
-			public condition? condition {get;set;} = default;
-
-			public List<featureName> featureName {get;set;} = [];
-
-			public String? interoperabilityIdentifier {get;set;} = default;
-
-			public List<periodicDateRange> periodicDateRange {get;set;} = [];
-
-			public DateOnly? reportedDate {get;set;} = default;
-
-			[EnumerationValue(1)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
-			[EnumerationValue(12)]
-			[EnumerationValue(18)]
-			[EnumerationValue(28)]
-			public List<status> status {get;set;} = [];
-
-			public decimal? verticalLength {get;set;} = default;
-
-			public int? scaleMinimum {get;set;} = default;
-
-			public List<information> information {get;set;} = [];
-
-			[JsonIgnore]
-			public override string Code => nameof(FishingFacility);
-
-			public informationBindingDefinition[] informationBindingDefinitions => FishingFacility._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation)],
-				},
-			];
-
-			public featureBindingDefinition[] featureBindingDefinitions => FishingFacility._featureBindingDefinitions;
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(StructureEquipment),
-					role = Enum.GetName<Role>(Role.theEquipment)!,
-					featureTypes = [nameof(Daymark),nameof(DistanceMark),nameof(FogSignal),nameof(LightAllAround),nameof(LightFogDetector),nameof(PhysicalAISAidToNavigation),nameof(RadarTransponderBeacon),nameof(Retroreflector),nameof(SignalStationTraffic),nameof(SignalStationWarning),nameof(LightSectored)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.aggregation,
-					lower = 0,
-					upper =  1,
-					association = nameof(AidsToNavigationAssociation),
-					role = Enum.GetName<Role>(Role.theCollection)!,
-					featureTypes = [nameof(DeepWaterRoute),nameof(FairwaySystem),nameof(TrafficSeparationScheme),nameof(TwoWayRoute)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  2,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-			];
-		}
-
-		[System.Serializable()]
-		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class MarineFarmCulture : FeatureNode, IFeatureBindingDefinition {
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			public categoryOfMarineFarmCulture? categoryOfMarineFarmCulture {get;set;} = default;
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			public expositionOfSounding? expositionOfSounding {get;set;} = default;
-
-			public List<featureName> featureName {get;set;} = [];
-
-			public fixedDateRange? fixedDateRange {get;set;} = default;
-
-			public decimal? height {get;set;} = default;
-
-			public String? interoperabilityIdentifier {get;set;} = default;
-
-			public List<periodicDateRange> periodicDateRange {get;set;} = [];
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
-			[EnumerationValue(9)]
-			public List<qualityOfVerticalMeasurement> qualityOfVerticalMeasurement {get;set;} = [];
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
-			[EnumerationValue(9)]
-			[EnumerationValue(10)]
-			[EnumerationValue(11)]
-			[EnumerationValue(12)]
-			[EnumerationValue(13)]
-			[EnumerationValue(14)]
-			[EnumerationValue(15)]
-			[EnumerationValue(16)]
-			[EnumerationValue(17)]
-			[EnumerationValue(18)]
-			[EnumerationValue(19)]
-			[EnumerationValue(20)]
-			[EnumerationValue(21)]
-			[EnumerationValue(22)]
-			[EnumerationValue(23)]
-			[EnumerationValue(24)]
-			[EnumerationValue(25)]
-			[EnumerationValue(26)]
-			[EnumerationValue(27)]
-			[EnumerationValue(39)]
-			public List<restriction> restriction {get;set;} = [];
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
-			[EnumerationValue(14)]
-			[EnumerationValue(16)]
-			[EnumerationValue(17)]
-			[EnumerationValue(28)]
-			public List<status> status {get;set;} = [];
-
-			public decimal? valueOfSounding {get;set;} = default;
-
-			public decimal? verticalLength {get;set;} = default;
-
-			public verticalUncertainty? verticalUncertainty {get;set;} = default;
-
-			public List<vesselSpeedLimit> vesselSpeedLimit {get;set;} = [];
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(7)]
-			[Required()]
-			public waterLevelEffect waterLevelEffect {get;set;}
-
-			public int? scaleMinimum {get;set;} = default;
-
-			public List<information> information {get;set;} = [];
-
-			[JsonIgnore]
-			public override string Code => nameof(MarineFarmCulture);
-
-			public informationBindingDefinition[] informationBindingDefinitions => MarineFarmCulture._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation)],
-				},
-			];
-
-			public featureBindingDefinition[] featureBindingDefinitions => MarineFarmCulture._featureBindingDefinitions;
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  2,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-			];
-		}
-
-		[System.Serializable()]
-		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class OffshorePlatform : FeatureNode, IFeatureBindingDefinition {
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
-			[EnumerationValue(9)]
-			[EnumerationValue(10)]
-			[EnumerationValue(11)]
-			public categoryOfOffshorePlatform? categoryOfOffshorePlatform {get;set;} = default;
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
-			[EnumerationValue(9)]
-			[EnumerationValue(10)]
-			[EnumerationValue(11)]
-			[EnumerationValue(12)]
-			[EnumerationValue(13)]
-			public List<colour> colour {get;set;} = [];
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			public colourPattern? colourPattern {get;set;} = default;
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(5)]
-			public condition? condition {get;set;} = default;
-
-			public List<featureName> featureName {get;set;} = [];
-
-			public fixedDateRange? fixedDateRange {get;set;} = default;
-
-			public Boolean? flareStack {get;set;} = default;
-
-			public decimal? height {get;set;} = default;
-
-			public String? interoperabilityIdentifier {get;set;} = default;
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(18)]
-			[EnumerationValue(19)]
-			[EnumerationValue(23)]
-			public List<product> product {get;set;} = [];
-
-			public Boolean? radarConspicuous {get;set;} = default;
-
-			public DateOnly? reportedDate {get;set;} = default;
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(4)]
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
-			[EnumerationValue(12)]
-			[EnumerationValue(28)]
-			public List<status> status {get;set;} = [];
-
-			public decimal? verticalLength {get;set;} = default;
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			public visualProminence? visualProminence {get;set;} = default;
-
-			public int? scaleMinimum {get;set;} = default;
-
-			public List<information> information {get;set;} = [];
-
-			public String? pictorialRepresentation {get;set;} = default;
-
-			[JsonIgnore]
-			public override string Code => nameof(OffshorePlatform);
-
-			public informationBindingDefinition[] informationBindingDefinitions => OffshorePlatform._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation)],
-				},
-			];
-
-			public featureBindingDefinition[] featureBindingDefinitions => OffshorePlatform._featureBindingDefinitions;
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(StructureEquipment),
-					role = Enum.GetName<Role>(Role.theEquipment)!,
-					featureTypes = [nameof(Daymark),nameof(DistanceMark),nameof(FogSignal),nameof(Helipad),nameof(LightAllAround),nameof(LightFogDetector),nameof(PhysicalAISAidToNavigation),nameof(RadarTransponderBeacon),nameof(Retroreflector),nameof(SignalStationTraffic),nameof(SignalStationWarning),nameof(LightSectored),nameof(Bollard),nameof(LightAirObstruction)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.aggregation,
-					lower = 0,
-					upper =  1,
-					association = nameof(AidsToNavigationAssociation),
-					role = Enum.GetName<Role>(Role.theCollection)!,
-					featureTypes = [nameof(DeepWaterRoute),nameof(FairwaySystem),nameof(TrafficSeparationScheme),nameof(TwoWayRoute)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  2,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-			];
-		}
-
-		[System.Serializable()]
-		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class CableSubmarine : FeatureNode, IFeatureBindingDefinition {
-			public decimal? buriedDepth {get;set;} = default;
-
-			[EnumerationValue(1)]
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
-			[EnumerationValue(9)]
-			[EnumerationValue(10)]
-			public categoryOfCable? categoryOfCable {get;set;} = default;
-
-			[EnumerationValue(1)]
-			[EnumerationValue(5)]
-			public condition? condition {get;set;} = default;
-
-			public List<featureName> featureName {get;set;} = [];
-
-			public fixedDateRange? fixedDateRange {get;set;} = default;
-
-			public String? interoperabilityIdentifier {get;set;} = default;
-
-			[EnumerationValue(1)]
-			[EnumerationValue(4)]
-			[EnumerationValue(13)]
-			[EnumerationValue(18)]
-			public List<status> status {get;set;} = [];
-
-			public int? scaleMinimum {get;set;} = default;
-
-			public List<information> information {get;set;} = [];
-
-			[JsonIgnore]
-			public override string Code => nameof(CableSubmarine);
-
-			public informationBindingDefinition[] informationBindingDefinitions => CableSubmarine._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation)],
-				},
-			];
-
-			public featureBindingDefinition[] featureBindingDefinitions => CableSubmarine._featureBindingDefinitions;
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.aggregation,
-					lower = 0,
-					upper =  1,
-					association = nameof(MooringTrotAggregation),
-					role = Enum.GetName<Role>(Role.theCollection)!,
-					featureTypes = [nameof(MooringTrot)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  2,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-			];
-		}
-
-		[System.Serializable()]
-		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class CableArea : FeatureNode, IFeatureBindingDefinition {
-			[EnumerationValue(1)]
-			[EnumerationValue(7)]
-			[EnumerationValue(10)]
-			public List<categoryOfCable> categoryOfCable {get;set;} = [];
-
-			public List<featureName> featureName {get;set;} = [];
-
-			public fixedDateRange? fixedDateRange {get;set;} = default;
-
-			public String? interoperabilityIdentifier {get;set;} = default;
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
-			[EnumerationValue(9)]
-			[EnumerationValue(11)]
-			[EnumerationValue(12)]
-			[EnumerationValue(13)]
-			[EnumerationValue(14)]
-			[EnumerationValue(16)]
-			[EnumerationValue(17)]
-			[EnumerationValue(18)]
-			[EnumerationValue(20)]
-			[EnumerationValue(23)]
-			[EnumerationValue(24)]
-			[EnumerationValue(25)]
-			[EnumerationValue(27)]
-			[EnumerationValue(39)]
-			public List<restriction> restriction {get;set;} = [];
-
-			[EnumerationValue(1)]
-			[EnumerationValue(7)]
-			[EnumerationValue(13)]
-			public List<status> status {get;set;} = [];
-
-			public List<vesselSpeedLimit> vesselSpeedLimit {get;set;} = [];
-
-			public int? scaleMinimum {get;set;} = default;
-
-			public List<information> information {get;set;} = [];
-
-			[JsonIgnore]
-			public override string Code => nameof(CableArea);
-
-			public informationBindingDefinition[] informationBindingDefinitions => CableArea._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation)],
-				},
-			];
-
-			public featureBindingDefinition[] featureBindingDefinitions => CableArea._featureBindingDefinitions;
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  2,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-			];
-		}
-
-		[System.Serializable()]
-		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class PipelineSubmarineOnLand : FeatureNode, IFeatureBindingDefinition {
-			public decimal? buriedDepth {get;set;} = default;
-
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
-			public List<categoryOfPipelinePipe> categoryOfPipelinePipe {get;set;} = [];
-
-			[EnumerationValue(1)]
-			[EnumerationValue(5)]
-			public condition? condition {get;set;} = default;
-
-			public decimal? depthRangeMinimumValue {get;set;} = default;
-
-			public decimal? depthRangeMaximumValue {get;set;} = default;
-
-			public List<featureName> featureName {get;set;} = [];
-
-			public fixedDateRange? fixedDateRange {get;set;} = default;
-
-			public String? interoperabilityIdentifier {get;set;} = default;
-
-			public multiplicityOfFeatures? multiplicityOfFeatures {get;set;} = default;
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
-			[EnumerationValue(9)]
-			[EnumerationValue(18)]
-			[EnumerationValue(19)]
-			public List<product> product {get;set;} = [];
-
-			public DateOnly? reportedDate {get;set;} = default;
-
-			[EnumerationValue(1)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(8)]
-			[EnumerationValue(9)]
-			[EnumerationValue(11)]
-			[EnumerationValue(12)]
-			[EnumerationValue(13)]
-			[EnumerationValue(14)]
-			[EnumerationValue(16)]
-			[EnumerationValue(17)]
-			[EnumerationValue(18)]
-			[EnumerationValue(20)]
-			[EnumerationValue(23)]
-			[EnumerationValue(24)]
-			[EnumerationValue(25)]
-			[EnumerationValue(26)]
-			[EnumerationValue(39)]
-			public List<restriction> restriction {get;set;} = [];
-
-			[EnumerationValue(1)]
-			[EnumerationValue(4)]
-			[EnumerationValue(7)]
-			[EnumerationValue(12)]
-			public List<status> status {get;set;} = [];
-
-			public int? scaleMinimum {get;set;} = default;
-
-			public List<information> information {get;set;} = [];
-
-			public String? pictorialRepresentation {get;set;} = default;
-
-			[JsonIgnore]
-			public override string Code => nameof(PipelineSubmarineOnLand);
-
-			public informationBindingDefinition[] informationBindingDefinitions => PipelineSubmarineOnLand._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation)],
-				},
-			];
-
-			public featureBindingDefinition[] featureBindingDefinitions => PipelineSubmarineOnLand._featureBindingDefinitions;
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  2,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-			];
-		}
-
-		[System.Serializable()]
-		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class SubmarinePipelineArea : FeatureNode, IFeatureBindingDefinition {
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			public List<categoryOfPipelinePipe> categoryOfPipelinePipe {get;set;} = [];
-
-			public List<featureName> featureName {get;set;} = [];
-
-			public fixedDateRange? fixedDateRange {get;set;} = default;
-
-			public String? interoperabilityIdentifier {get;set;} = default;
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
-			[EnumerationValue(18)]
-			[EnumerationValue(19)]
-			public List<product> product {get;set;} = [];
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
-			[EnumerationValue(9)]
-			[EnumerationValue(10)]
-			[EnumerationValue(11)]
-			[EnumerationValue(12)]
-			[EnumerationValue(13)]
-			[EnumerationValue(14)]
-			[EnumerationValue(15)]
-			[EnumerationValue(16)]
-			[EnumerationValue(17)]
-			[EnumerationValue(18)]
-			[EnumerationValue(19)]
-			[EnumerationValue(20)]
-			[EnumerationValue(21)]
-			[EnumerationValue(22)]
-			[EnumerationValue(23)]
-			[EnumerationValue(24)]
-			[EnumerationValue(25)]
-			[EnumerationValue(26)]
-			[EnumerationValue(27)]
-			[EnumerationValue(39)]
-			public List<restriction> restriction {get;set;} = [];
-
-			[EnumerationValue(1)]
-			[EnumerationValue(4)]
-			[EnumerationValue(7)]
-			public List<status> status {get;set;} = [];
-
-			public List<vesselSpeedLimit> vesselSpeedLimit {get;set;} = [];
-
-			public int? scaleMinimum {get;set;} = default;
-
-			public List<information> information {get;set;} = [];
-
-			[JsonIgnore]
-			public override string Code => nameof(SubmarinePipelineArea);
-
-			public informationBindingDefinition[] informationBindingDefinitions => SubmarinePipelineArea._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation)],
-				},
-			];
-
-			public featureBindingDefinition[] featureBindingDefinitions => SubmarinePipelineArea._featureBindingDefinitions;
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  2,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-			];
-		}
-
-		[System.Serializable()]
-		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class OffshoreProductionArea : FeatureNode, IFeatureBindingDefinition {
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			public categoryOfOffshoreProductionArea? categoryOfOffshoreProductionArea {get;set;} = default;
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			public condition? condition {get;set;} = default;
-
-			public List<featureName> featureName {get;set;} = [];
-
-			public fixedDateRange? fixedDateRange {get;set;} = default;
-
-			public decimal? height {get;set;} = default;
-
-			public String? interoperabilityIdentifier {get;set;} = default;
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(4)]
-			[EnumerationValue(6)]
-			[EnumerationValue(10)]
-			[EnumerationValue(14)]
-			[EnumerationValue(23)]
-			public List<product> product {get;set;} = [];
-
-			public Boolean? radarConspicuous {get;set;} = default;
-
-			public DateOnly? reportedDate {get;set;} = default;
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
-			[EnumerationValue(9)]
-			[EnumerationValue(10)]
-			[EnumerationValue(11)]
-			[EnumerationValue(12)]
-			[EnumerationValue(13)]
-			[EnumerationValue(14)]
-			[EnumerationValue(15)]
-			[EnumerationValue(16)]
-			[EnumerationValue(17)]
-			[EnumerationValue(18)]
-			[EnumerationValue(19)]
-			[EnumerationValue(20)]
-			[EnumerationValue(21)]
-			[EnumerationValue(22)]
-			[EnumerationValue(23)]
-			[EnumerationValue(24)]
-			[EnumerationValue(25)]
-			[EnumerationValue(26)]
-			[EnumerationValue(27)]
-			[EnumerationValue(39)]
-			public List<restriction> restriction {get;set;} = [];
-
-			[EnumerationValue(1)]
-			[EnumerationValue(4)]
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
-			[EnumerationValue(12)]
-			[EnumerationValue(28)]
-			public List<status> status {get;set;} = [];
-
-			public decimal? verticalLength {get;set;} = default;
-
-			public List<vesselSpeedLimit> vesselSpeedLimit {get;set;} = [];
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			public visualProminence? visualProminence {get;set;} = default;
-
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(7)]
-			public waterLevelEffect? waterLevelEffect {get;set;} = default;
-
-			public int? scaleMinimum {get;set;} = default;
-
-			public List<information> information {get;set;} = [];
-
-			[JsonIgnore]
-			public override string Code => nameof(OffshoreProductionArea);
-
-			public informationBindingDefinition[] informationBindingDefinitions => OffshoreProductionArea._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation)],
-				},
-			];
-
-			public featureBindingDefinition[] featureBindingDefinitions => OffshoreProductionArea._featureBindingDefinitions;
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  2,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-			];
-		}
-
-		[System.Serializable()]
-		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class NavigationLine : FeatureNode, IFeatureBindingDefinition {
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[Required()]
-			public categoryOfNavigationLine categoryOfNavigationLine {get;set;}
-
-			public fixedDateRange? fixedDateRange {get;set;} = default;
-
-			public String? interoperabilityIdentifier {get;set;} = default;
-
-			public int? measuredDistance {get;set;} = default;
-
-			[Required()]
-			public orientation orientation {get;set;}
-
-			public List<periodicDateRange> periodicDateRange {get;set;} = [];
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(5)]
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
-			[EnumerationValue(14)]
-			public List<status> status {get;set;} = [];
-
-			public int? scaleMinimum {get;set;} = default;
-
-			public List<information> information {get;set;} = [];
-
-			[JsonIgnore]
-			public override string Code => nameof(NavigationLine);
-
-			public informationBindingDefinition[] informationBindingDefinitions => NavigationLine._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(NauticalInformation)],
-				},
-			];
-
-			public featureBindingDefinition[] featureBindingDefinitions => NavigationLine._featureBindingDefinitions;
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.aggregation,
-					lower = 0,
-					upper =  1,
-					association = nameof(RangeSystemAggregation),
-					role = Enum.GetName<Role>(Role.theCollection)!,
-					featureTypes = [nameof(RangeSystem)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-			];
-		}
-
-		[System.Serializable()]
-		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class RecommendedTrack : FeatureNode, IFeatureBindingDefinition {
-			[Required()]
-			public Boolean basedOnFixedMarks {get;set;} = false;
-
-			public decimal? depthRangeMinimumValue {get;set;} = default;
-
-			public List<featureName> featureName {get;set;} = [];
-
-			public fixedDateRange? fixedDateRange {get;set;} = default;
-
-			public String? interoperabilityIdentifier {get;set;} = default;
-
-			public decimal? maximumPermittedDraught {get;set;} = default;
-
-			[Required()]
-			public decimal orientationValue {get;set;}
-
-			public List<periodicDateRange> periodicDateRange {get;set;} = [];
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(6)]
-			public List<qualityOfVerticalMeasurement> qualityOfVerticalMeasurement {get;set;} = [];
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			[EnumerationValue(8)]
-			[EnumerationValue(9)]
-			[EnumerationValue(14)]
-			public List<status> status {get;set;} = [];
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(8)]
-			[EnumerationValue(9)]
-			[EnumerationValue(13)]
-			[EnumerationValue(15)]
-			[EnumerationValue(16)]
-			[EnumerationValue(17)]
-			[EnumerationValue(18)]
-			public List<techniqueOfVerticalMeasurement> techniqueOfVerticalMeasurement {get;set;} = [];
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[Required()]
-			public trafficFlow trafficFlow {get;set;}
-
-			public verticalUncertainty? verticalUncertainty {get;set;} = default;
-
-			public int? scaleMinimum {get;set;} = default;
-
-			public List<information> information {get;set;} = [];
-
-			[JsonIgnore]
-			public override string Code => nameof(RecommendedTrack);
-
-			public informationBindingDefinition[] informationBindingDefinitions => RecommendedTrack._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(NauticalInformation)],
-				},
-			];
-
-			public featureBindingDefinition[] featureBindingDefinitions => RecommendedTrack._featureBindingDefinitions;
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.aggregation,
-					lower = 0,
-					upper =  1,
-					association = nameof(RangeSystemAggregation),
-					role = Enum.GetName<Role>(Role.theCollection)!,
-					featureTypes = [nameof(RangeSystem)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  2,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.aggregation,
-					lower = 0,
-					upper =  1,
-					association = nameof(FairwayAuxiliary),
-					role = Enum.GetName<Role>(Role.thePrimaryFeature)!,
-					featureTypes = [nameof(Fairway)],
-				},
-			];
-		}
-
-		[System.Serializable()]
-		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class RangeSystem : FeatureNode, IFeatureBindingDefinition {
-			public List<featureName> featureName {get;set;} = [];
-
-			public fixedDateRange? fixedDateRange {get;set;} = default;
-
-			public String? interoperabilityIdentifier {get;set;} = default;
-
-			public decimal? maximumPermittedDraught {get;set;} = default;
-
-			public int? scaleMinimum {get;set;} = default;
-
-			public List<information> information {get;set;} = [];
-
-			[JsonIgnore]
-			public override string Code => nameof(RangeSystem);
-
-			public informationBindingDefinition[] informationBindingDefinitions => RangeSystem._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(NauticalInformation)],
-				},
-			];
-
-			public featureBindingDefinition[] featureBindingDefinitions => RangeSystem._featureBindingDefinitions;
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(RangeSystemAggregation),
-					role = Enum.GetName<Role>(Role.theComponent)!,
-					featureTypes = [nameof(CardinalBeacon),nameof(Building),nameof(Daymark),nameof(Dolphin),nameof(FortifiedStructure),nameof(IsolatedDangerBeacon),nameof(Landmark),nameof(LateralBeacon),nameof(LightAllAround),nameof(LightSectored),nameof(NavigationLine),nameof(Pile),nameof(RadarTransponderBeacon),nameof(RangeSystem),nameof(RecommendedRouteCentreline),nameof(RecommendedTrack),nameof(SafeWaterBeacon),nameof(SiloTank),nameof(SpecialPurposeGeneralBeacon)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.aggregation,
-					lower = 0,
-					upper =  1,
-					association = nameof(RangeSystemAggregation),
-					role = Enum.GetName<Role>(Role.theCollection)!,
-					featureTypes = [nameof(RangeSystem)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.aggregation,
-					lower = 0,
-					upper =  1,
-					association = nameof(FairwayAuxiliary),
-					role = Enum.GetName<Role>(Role.thePrimaryFeature)!,
-					featureTypes = [nameof(Fairway)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  2,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-			];
-		}
-
-		[System.Serializable()]
-		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class Fairway : FeatureNode, IFeatureBindingDefinition {
-			public decimal? depthRangeMinimumValue {get;set;} = default;
-
-			public List<featureName> featureName {get;set;} = [];
-
-			public fixedDateRange? fixedDateRange {get;set;} = default;
-
-			public String? interoperabilityIdentifier {get;set;} = default;
-
-			public decimal? maximumPermittedDraught {get;set;} = default;
-
-			public decimal? orientationValue {get;set;} = default;
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(6)]
-			public List<qualityOfVerticalMeasurement> qualityOfVerticalMeasurement {get;set;} = [];
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			[EnumerationValue(8)]
-			[EnumerationValue(9)]
-			[EnumerationValue(10)]
-			[EnumerationValue(11)]
-			[EnumerationValue(12)]
-			[EnumerationValue(13)]
-			[EnumerationValue(15)]
-			[EnumerationValue(16)]
-			[EnumerationValue(17)]
-			[EnumerationValue(18)]
-			[EnumerationValue(19)]
-			[EnumerationValue(20)]
-			[EnumerationValue(21)]
-			[EnumerationValue(22)]
-			[EnumerationValue(23)]
-			[EnumerationValue(24)]
-			[EnumerationValue(25)]
-			[EnumerationValue(27)]
-			[EnumerationValue(39)]
-			public List<restriction> restriction {get;set;} = [];
-
-			[EnumerationValue(1)]
-			[EnumerationValue(3)]
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
-			[EnumerationValue(9)]
-			[EnumerationValue(28)]
-			public List<status> status {get;set;} = [];
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			public trafficFlow? trafficFlow {get;set;} = default;
-
-			public verticalUncertainty? verticalUncertainty {get;set;} = default;
-
-			public List<vesselSpeedLimit> vesselSpeedLimit {get;set;} = [];
-
-			public int? scaleMinimum {get;set;} = default;
-
-			public List<information> information {get;set;} = [];
-
-			[JsonIgnore]
-			public override string Code => nameof(Fairway);
-
-			public informationBindingDefinition[] informationBindingDefinitions => Fairway._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(NauticalInformation)],
-				},
-			];
-
-			public featureBindingDefinition[] featureBindingDefinitions => Fairway._featureBindingDefinitions;
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.aggregation,
-					lower = 0,
-					upper =  1,
-					association = nameof(FairwayAggregation),
-					role = Enum.GetName<Role>(Role.theCollection)!,
-					featureTypes = [nameof(FairwaySystem)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(FairwayAuxiliary),
-					role = Enum.GetName<Role>(Role.theAuxiliaryFeature)!,
-					featureTypes = [nameof(CardinalBeacon),nameof(CardinalBuoy),nameof(CautionArea),nameof(Daymark),nameof(DredgedArea),nameof(IsolatedDangerBeacon),nameof(IsolatedDangerBuoy),nameof(LateralBeacon),nameof(LateralBuoy),nameof(LightFloat),nameof(LightVessel),nameof(Landmark),nameof(Pile),nameof(RangeSystem),nameof(RecommendedRouteCentreline),nameof(RecommendedTrack),nameof(RestrictedArea),nameof(SafeWaterBeacon),nameof(SafeWaterBuoy),nameof(SpecialPurposeGeneralBeacon),nameof(SpecialPurposeGeneralBuoy),nameof(SweptArea)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  2,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-			];
-		}
-
-		[System.Serializable()]
-		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class FairwaySystem : FeatureNode, IFeatureBindingDefinition {
-			public List<featureName> featureName {get;set;} = [];
-
-			public fixedDateRange? fixedDateRange {get;set;} = default;
-
-			public String? interoperabilityIdentifier {get;set;} = default;
-
-			public decimal? maximumPermittedDraught {get;set;} = default;
-
-			public List<periodicDateRange> periodicDateRange {get;set;} = [];
-
-			public int? scaleMinimum {get;set;} = default;
-
-			public List<information> information {get;set;} = [];
-
-			[JsonIgnore]
-			public override string Code => nameof(FairwaySystem);
-
-			public informationBindingDefinition[] informationBindingDefinitions => FairwaySystem._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(NauticalInformation)],
-				},
-			];
-
-			public featureBindingDefinition[] featureBindingDefinitions => FairwaySystem._featureBindingDefinitions;
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(AidsToNavigationAssociation),
-					role = Enum.GetName<Role>(Role.theComponent)!,
-					featureTypes = [nameof(CardinalBeacon),nameof(CardinalBuoy),nameof(Daymark),nameof(EmergencyWreckMarkingBuoy),nameof(IsolatedDangerBeacon),nameof(IsolatedDangerBuoy),nameof(LateralBeacon),nameof(LateralBuoy),nameof(LightFloat),nameof(LightVessel),nameof(Pile),nameof(SafeWaterBeacon),nameof(SafeWaterBuoy),nameof(SpecialPurposeGeneralBeacon),nameof(SpecialPurposeGeneralBuoy),nameof(Building),nameof(Crane),nameof(Dolphin),nameof(FishingFacility),nameof(FortifiedStructure),nameof(Landmark),nameof(MooringBuoy),nameof(OffshorePlatform),nameof(SiloTank),nameof(WindTurbine),nameof(Bridge),nameof(Conveyor),nameof(FloatingDock),nameof(Hulk),nameof(PipelineOverhead),nameof(Pontoon),nameof(PylonBridgeSupport),nameof(ShorelineConstruction),nameof(SpanFixed),nameof(SpanOpening),nameof(StructureOverNavigableWater)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(FairwayAggregation),
-					role = Enum.GetName<Role>(Role.theComponent)!,
-					featureTypes = [nameof(Fairway)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  2,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-			];
-		}
-
-		[System.Serializable()]
-		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class RecommendedRouteCentreline : FeatureNode, IFeatureBindingDefinition {
-			[Required()]
-			public Boolean basedOnFixedMarks {get;set;} = false;
-
-			public decimal? depthRangeMinimumValue {get;set;} = default;
-
-			public List<featureName> featureName {get;set;} = [];
-
-			public fixedDateRange? fixedDateRange {get;set;} = default;
-
-			public String? interoperabilityIdentifier {get;set;} = default;
-
-			public decimal? orientationValue {get;set;} = default;
-
-			public List<periodicDateRange> periodicDateRange {get;set;} = [];
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(6)]
-			public List<qualityOfVerticalMeasurement> qualityOfVerticalMeasurement {get;set;} = [];
-
-			[EnumerationValue(1)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			[EnumerationValue(9)]
-			public List<status> status {get;set;} = [];
-
-			[EnumerationValue(1)]
-			[EnumerationValue(3)]
-			[EnumerationValue(8)]
-			[EnumerationValue(9)]
-			[EnumerationValue(13)]
-			[EnumerationValue(15)]
-			[EnumerationValue(16)]
-			[EnumerationValue(17)]
-			[EnumerationValue(18)]
-			public List<techniqueOfVerticalMeasurement> techniqueOfVerticalMeasurement {get;set;} = [];
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			public trafficFlow? trafficFlow {get;set;} = default;
-
-			public verticalUncertainty? verticalUncertainty {get;set;} = default;
-
-			public int? scaleMinimum {get;set;} = default;
-
-			public List<information> information {get;set;} = [];
-
-			[JsonIgnore]
-			public override string Code => nameof(RecommendedRouteCentreline);
-
-			public informationBindingDefinition[] informationBindingDefinitions => RecommendedRouteCentreline._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(NauticalInformation)],
-				},
-			];
-
-			public featureBindingDefinition[] featureBindingDefinitions => RecommendedRouteCentreline._featureBindingDefinitions;
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.aggregation,
-					lower = 0,
-					upper =  1,
-					association = nameof(RangeSystemAggregation),
-					role = Enum.GetName<Role>(Role.theCollection)!,
-					featureTypes = [nameof(RangeSystem)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.aggregation,
-					lower = 0,
-					upper =  1,
-					association = nameof(FairwayAuxiliary),
-					role = Enum.GetName<Role>(Role.thePrimaryFeature)!,
-					featureTypes = [nameof(Fairway)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  2,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-			];
-		}
-
-		[System.Serializable()]
-		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class TwoWayRoutePart : FeatureNode, IFeatureBindingDefinition {
-			public Boolean? basedOnFixedMarks {get;set;} = default;
-
-			public decimal? depthRangeMinimumValue {get;set;} = default;
-
-			public fixedDateRange? fixedDateRange {get;set;} = default;
-
-			public String? interoperabilityIdentifier {get;set;} = default;
-
-			[Required()]
-			public decimal orientationValue {get;set;}
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(6)]
-			public List<qualityOfVerticalMeasurement> qualityOfVerticalMeasurement {get;set;} = [];
-
-			[EnumerationValue(1)]
-			[EnumerationValue(3)]
-			[EnumerationValue(6)]
-			[EnumerationValue(9)]
-			public List<status> status {get;set;} = [];
-
-			[EnumerationValue(1)]
-			[EnumerationValue(3)]
-			[EnumerationValue(5)]
-			[EnumerationValue(8)]
-			[EnumerationValue(9)]
-			[EnumerationValue(13)]
-			[EnumerationValue(15)]
-			[EnumerationValue(16)]
-			[EnumerationValue(17)]
-			[EnumerationValue(18)]
-			public List<techniqueOfVerticalMeasurement> techniqueOfVerticalMeasurement {get;set;} = [];
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[Required()]
-			public trafficFlow trafficFlow {get;set;}
-
-			public verticalUncertainty? verticalUncertainty {get;set;} = default;
-
-			public int? scaleMinimum {get;set;} = default;
-
-			public List<information> information {get;set;} = [];
-
-			[JsonIgnore]
-			public override string Code => nameof(TwoWayRoutePart);
-
-			public informationBindingDefinition[] informationBindingDefinitions => TwoWayRoutePart._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(NauticalInformation)],
-				},
-			];
-
-			public featureBindingDefinition[] featureBindingDefinitions => TwoWayRoutePart._featureBindingDefinitions;
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.aggregation,
-					lower = 0,
-					upper =  1,
-					association = nameof(TwoWayRouteAggregation),
-					role = Enum.GetName<Role>(Role.theCollection)!,
-					featureTypes = [nameof(TwoWayRoute)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.aggregation,
-					lower = 0,
-					upper =  1,
-					association = nameof(TrafficSeparationSchemeAggregation),
-					role = Enum.GetName<Role>(Role.theCollection)!,
-					featureTypes = [nameof(TrafficSeparationScheme)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-			];
-		}
-
-		[System.Serializable()]
-		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class TwoWayRoute : FeatureNode, IFeatureBindingDefinition {
-			public List<featureName> featureName {get;set;} = [];
-
-			public fixedDateRange? fixedDateRange {get;set;} = default;
-
-			public String? interoperabilityIdentifier {get;set;} = default;
-
-			public decimal? maximumPermittedDraught {get;set;} = default;
-
-			public int? scaleMinimum {get;set;} = default;
-
-			public List<information> information {get;set;} = [];
-
-			[JsonIgnore]
-			public override string Code => nameof(TwoWayRoute);
-
-			public informationBindingDefinition[] informationBindingDefinitions => TwoWayRoute._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(NauticalInformation)],
-				},
-			];
-
-			public featureBindingDefinition[] featureBindingDefinitions => TwoWayRoute._featureBindingDefinitions;
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(AidsToNavigationAssociation),
-					role = Enum.GetName<Role>(Role.theComponent)!,
-					featureTypes = [nameof(CardinalBeacon),nameof(CardinalBuoy),nameof(Daymark),nameof(EmergencyWreckMarkingBuoy),nameof(IsolatedDangerBeacon),nameof(IsolatedDangerBuoy),nameof(LateralBeacon),nameof(LateralBuoy),nameof(LightFloat),nameof(LightVessel),nameof(Pile),nameof(SafeWaterBeacon),nameof(SafeWaterBuoy),nameof(SpecialPurposeGeneralBeacon),nameof(SpecialPurposeGeneralBuoy),nameof(Building),nameof(Crane),nameof(Dolphin),nameof(FishingFacility),nameof(FortifiedStructure),nameof(Landmark),nameof(MooringBuoy),nameof(OffshorePlatform),nameof(SiloTank),nameof(WindTurbine),nameof(Bridge),nameof(Conveyor),nameof(FloatingDock),nameof(Hulk),nameof(PipelineOverhead),nameof(Pontoon),nameof(PylonBridgeSupport),nameof(ShorelineConstruction),nameof(SpanFixed),nameof(SpanOpening),nameof(StructureOverNavigableWater)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(TwoWayRouteAggregation),
-					role = Enum.GetName<Role>(Role.theComponent)!,
-					featureTypes = [nameof(TwoWayRoutePart)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.aggregation,
-					lower = 0,
-					upper =  1,
-					association = nameof(TrafficSeparationSchemeAggregation),
-					role = Enum.GetName<Role>(Role.theCollection)!,
-					featureTypes = [nameof(TrafficSeparationScheme)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  2,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-			];
-		}
-
-		[System.Serializable()]
-		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class RecommendedTrafficLanePart : FeatureNode, IFeatureBindingDefinition {
-			public fixedDateRange? fixedDateRange {get;set;} = default;
-
-			public String? interoperabilityIdentifier {get;set;} = default;
-
-			[Required()]
-			public decimal orientationValue {get;set;}
-
-			[EnumerationValue(1)]
-			[EnumerationValue(6)]
-			[EnumerationValue(9)]
-			public List<status> status {get;set;} = [];
-
-			public int? scaleMinimum {get;set;} = default;
-
-			public List<information> information {get;set;} = [];
-
-			[JsonIgnore]
-			public override string Code => nameof(RecommendedTrafficLanePart);
-
-			public informationBindingDefinition[] informationBindingDefinitions => RecommendedTrafficLanePart._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(NauticalInformation)],
-				},
-			];
-
-			public featureBindingDefinition[] featureBindingDefinitions => RecommendedTrafficLanePart._featureBindingDefinitions;
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-			];
-		}
-
-		[System.Serializable()]
-		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class DeepWaterRouteCentreline : FeatureNode, IFeatureBindingDefinition {
-			[Required()]
-			public Boolean basedOnFixedMarks {get;set;} = false;
-
-			public decimal? depthRangeMinimumValue {get;set;} = default;
-
-			public List<featureName> featureName {get;set;} = [];
-
-			public fixedDateRange? fixedDateRange {get;set;} = default;
-
-			public Boolean? iMOAdopted {get;set;} = default;
-
-			public String? interoperabilityIdentifier {get;set;} = default;
-
-			[Required()]
-			public decimal orientationValue {get;set;}
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
-			public List<qualityOfVerticalMeasurement> qualityOfVerticalMeasurement {get;set;} = [];
-
-			[EnumerationValue(1)]
-			[EnumerationValue(3)]
-			[EnumerationValue(6)]
-			[EnumerationValue(9)]
-			public List<status> status {get;set;} = [];
-
-			[EnumerationValue(1)]
-			[EnumerationValue(3)]
-			[EnumerationValue(5)]
-			[EnumerationValue(8)]
-			[EnumerationValue(9)]
-			[EnumerationValue(13)]
-			[EnumerationValue(15)]
-			[EnumerationValue(16)]
-			[EnumerationValue(17)]
-			[EnumerationValue(18)]
-			public List<techniqueOfVerticalMeasurement> techniqueOfVerticalMeasurement {get;set;} = [];
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[Required()]
-			public trafficFlow trafficFlow {get;set;}
-
-			public verticalUncertainty? verticalUncertainty {get;set;} = default;
-
-			public int? scaleMinimum {get;set;} = default;
-
-			public List<information> information {get;set;} = [];
-
-			[JsonIgnore]
-			public override string Code => nameof(DeepWaterRouteCentreline);
-
-			public informationBindingDefinition[] informationBindingDefinitions => DeepWaterRouteCentreline._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(NauticalInformation)],
-				},
-			];
-
-			public featureBindingDefinition[] featureBindingDefinitions => DeepWaterRouteCentreline._featureBindingDefinitions;
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.aggregation,
-					lower = 0,
-					upper =  1,
-					association = nameof(DeepWaterRouteAggregation),
-					role = Enum.GetName<Role>(Role.theCollection)!,
-					featureTypes = [nameof(DeepWaterRoute)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.aggregation,
-					lower = 0,
-					upper =  1,
-					association = nameof(TrafficSeparationSchemeAggregation),
-					role = Enum.GetName<Role>(Role.theCollection)!,
-					featureTypes = [nameof(TrafficSeparationScheme)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  2,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-			];
-		}
-
-		[System.Serializable()]
-		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class DeepWaterRoutePart : FeatureNode, IFeatureBindingDefinition {
-			[Required()]
-			public decimal depthRangeMinimumValue {get;set;}
-
-			public List<featureName> featureName {get;set;} = [];
-
-			public fixedDateRange? fixedDateRange {get;set;} = default;
-
-			public Boolean? iMOAdopted {get;set;} = default;
-
-			public String? interoperabilityIdentifier {get;set;} = default;
-
-			[Required()]
-			public decimal orientationValue {get;set;}
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
-			public List<qualityOfVerticalMeasurement> qualityOfVerticalMeasurement {get;set;} = [];
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			[EnumerationValue(8)]
-			[EnumerationValue(9)]
-			[EnumerationValue(10)]
-			[EnumerationValue(11)]
-			[EnumerationValue(12)]
-			[EnumerationValue(13)]
-			[EnumerationValue(16)]
-			[EnumerationValue(17)]
-			[EnumerationValue(18)]
-			[EnumerationValue(19)]
-			[EnumerationValue(20)]
-			[EnumerationValue(21)]
-			[EnumerationValue(22)]
-			[EnumerationValue(23)]
-			[EnumerationValue(24)]
-			[EnumerationValue(25)]
-			[EnumerationValue(27)]
-			public List<restriction> restriction {get;set;} = [];
-
-			[EnumerationValue(1)]
-			[EnumerationValue(3)]
-			[EnumerationValue(6)]
-			[EnumerationValue(9)]
-			[EnumerationValue(28)]
-			public List<status> status {get;set;} = [];
-
-			[EnumerationValue(1)]
-			[EnumerationValue(3)]
-			[EnumerationValue(5)]
-			[EnumerationValue(8)]
-			[EnumerationValue(9)]
-			[EnumerationValue(13)]
-			[EnumerationValue(15)]
-			[EnumerationValue(16)]
-			[EnumerationValue(17)]
-			[EnumerationValue(18)]
-			public List<techniqueOfVerticalMeasurement> techniqueOfVerticalMeasurement {get;set;} = [];
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[Required()]
-			public trafficFlow trafficFlow {get;set;}
-
-			public verticalUncertainty? verticalUncertainty {get;set;} = default;
-
-			public List<vesselSpeedLimit> vesselSpeedLimit {get;set;} = [];
-
-			public int? scaleMinimum {get;set;} = default;
-
-			public List<information> information {get;set;} = [];
-
-			[JsonIgnore]
-			public override string Code => nameof(DeepWaterRoutePart);
-
-			public informationBindingDefinition[] informationBindingDefinitions => DeepWaterRoutePart._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(NauticalInformation)],
-				},
-			];
-
-			public featureBindingDefinition[] featureBindingDefinitions => DeepWaterRoutePart._featureBindingDefinitions;
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.aggregation,
-					lower = 0,
-					upper =  1,
-					association = nameof(DeepWaterRouteAggregation),
-					role = Enum.GetName<Role>(Role.theCollection)!,
-					featureTypes = [nameof(DeepWaterRoute)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.aggregation,
-					lower = 0,
-					upper =  1,
-					association = nameof(TrafficSeparationSchemeAggregation),
-					role = Enum.GetName<Role>(Role.theCollection)!,
-					featureTypes = [nameof(TrafficSeparationScheme)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  2,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-			];
-		}
-
-		[System.Serializable()]
-		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class DeepWaterRoute : FeatureNode, IFeatureBindingDefinition {
-			public List<featureName> featureName {get;set;} = [];
-
-			public fixedDateRange? fixedDateRange {get;set;} = default;
-
-			public Boolean? iMOAdopted {get;set;} = default;
-
-			public String? interoperabilityIdentifier {get;set;} = default;
-
-			public int? scaleMinimum {get;set;} = default;
-
-			public List<information> information {get;set;} = [];
-
-			[JsonIgnore]
-			public override string Code => nameof(DeepWaterRoute);
-
-			public informationBindingDefinition[] informationBindingDefinitions => DeepWaterRoute._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(NauticalInformation)],
-				},
-			];
-
-			public featureBindingDefinition[] featureBindingDefinitions => DeepWaterRoute._featureBindingDefinitions;
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(AidsToNavigationAssociation),
-					role = Enum.GetName<Role>(Role.theComponent)!,
-					featureTypes = [nameof(CardinalBeacon),nameof(CardinalBuoy),nameof(Daymark),nameof(EmergencyWreckMarkingBuoy),nameof(IsolatedDangerBeacon),nameof(IsolatedDangerBuoy),nameof(LateralBeacon),nameof(LateralBuoy),nameof(LightFloat),nameof(LightVessel),nameof(Pile),nameof(SafeWaterBeacon),nameof(SafeWaterBuoy),nameof(SpecialPurposeGeneralBeacon),nameof(SpecialPurposeGeneralBuoy),nameof(Building),nameof(Crane),nameof(Dolphin),nameof(FishingFacility),nameof(FortifiedStructure),nameof(Landmark),nameof(MooringBuoy),nameof(OffshorePlatform),nameof(SiloTank),nameof(WindTurbine)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(DeepWaterRouteAggregation),
-					role = Enum.GetName<Role>(Role.theComponent)!,
-					featureTypes = [nameof(DeepWaterRouteCentreline),nameof(DeepWaterRoutePart)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.aggregation,
-					lower = 0,
-					upper =  1,
-					association = nameof(TrafficSeparationSchemeAggregation),
-					role = Enum.GetName<Role>(Role.theCollection)!,
-					featureTypes = [nameof(TrafficSeparationScheme)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  2,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-			];
-		}
-
-		[System.Serializable()]
-		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class InshoreTrafficZone : FeatureNode, IFeatureBindingDefinition {
-			public fixedDateRange? fixedDateRange {get;set;} = default;
-
-			public String? interoperabilityIdentifier {get;set;} = default;
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			[EnumerationValue(8)]
-			[EnumerationValue(9)]
-			[EnumerationValue(10)]
-			[EnumerationValue(11)]
-			[EnumerationValue(12)]
-			[EnumerationValue(13)]
-			[EnumerationValue(16)]
-			[EnumerationValue(17)]
-			[EnumerationValue(18)]
-			[EnumerationValue(19)]
-			[EnumerationValue(20)]
-			[EnumerationValue(21)]
-			[EnumerationValue(22)]
-			[EnumerationValue(23)]
-			[EnumerationValue(24)]
-			[EnumerationValue(25)]
-			[EnumerationValue(27)]
-			public List<restriction> restriction {get;set;} = [];
-
-			[EnumerationValue(1)]
-			[EnumerationValue(3)]
-			[EnumerationValue(6)]
-			[EnumerationValue(9)]
-			[EnumerationValue(16)]
-			[EnumerationValue(17)]
-			public List<status> status {get;set;} = [];
-
-			public List<vesselSpeedLimit> vesselSpeedLimit {get;set;} = [];
-
-			public int? scaleMinimum {get;set;} = default;
-
-			public List<information> information {get;set;} = [];
-
-			[JsonIgnore]
-			public override string Code => nameof(InshoreTrafficZone);
-
-			public informationBindingDefinition[] informationBindingDefinitions => InshoreTrafficZone._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(NauticalInformation)],
-				},
-			];
-
-			public featureBindingDefinition[] featureBindingDefinitions => InshoreTrafficZone._featureBindingDefinitions;
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.aggregation,
-					lower = 0,
-					upper =  1,
-					association = nameof(TrafficSeparationSchemeAggregation),
-					role = Enum.GetName<Role>(Role.theCollection)!,
-					featureTypes = [nameof(TrafficSeparationScheme)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-			];
-		}
-
-		[System.Serializable()]
-		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class PrecautionaryArea : FeatureNode, IFeatureBindingDefinition {
-			public List<featureName> featureName {get;set;} = [];
-
-			public fixedDateRange? fixedDateRange {get;set;} = default;
-
-			public Boolean? iMOAdopted {get;set;} = default;
-
-			public String? interoperabilityIdentifier {get;set;} = default;
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			[EnumerationValue(8)]
-			[EnumerationValue(9)]
-			[EnumerationValue(10)]
-			[EnumerationValue(11)]
-			[EnumerationValue(12)]
-			[EnumerationValue(13)]
-			[EnumerationValue(14)]
-			[EnumerationValue(16)]
-			[EnumerationValue(17)]
-			[EnumerationValue(18)]
-			[EnumerationValue(19)]
-			[EnumerationValue(20)]
-			[EnumerationValue(21)]
-			[EnumerationValue(22)]
-			[EnumerationValue(23)]
-			[EnumerationValue(24)]
-			[EnumerationValue(25)]
-			[EnumerationValue(27)]
-			public List<restriction> restriction {get;set;} = [];
-
-			[EnumerationValue(1)]
-			[EnumerationValue(9)]
-			[EnumerationValue(28)]
-			public List<status> status {get;set;} = [];
-
-			public List<vesselSpeedLimit> vesselSpeedLimit {get;set;} = [];
-
-			public int? scaleMinimum {get;set;} = default;
-
-			public List<information> information {get;set;} = [];
-
-			[JsonIgnore]
-			public override string Code => nameof(PrecautionaryArea);
-
-			public informationBindingDefinition[] informationBindingDefinitions => PrecautionaryArea._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(NauticalInformation)],
-				},
-			];
-
-			public featureBindingDefinition[] featureBindingDefinitions => PrecautionaryArea._featureBindingDefinitions;
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.aggregation,
-					lower = 0,
-					upper =  1,
-					association = nameof(TrafficSeparationSchemeAggregation),
-					role = Enum.GetName<Role>(Role.theCollection)!,
-					featureTypes = [nameof(TrafficSeparationScheme)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  2,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-			];
-		}
-
-		[System.Serializable()]
-		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class TrafficSeparationSchemeLanePart : FeatureNode, IFeatureBindingDefinition {
-			public fixedDateRange? fixedDateRange {get;set;} = default;
-
-			public String? interoperabilityIdentifier {get;set;} = default;
-
-			public decimal? orientationValue {get;set;} = default;
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			[EnumerationValue(8)]
-			[EnumerationValue(9)]
-			[EnumerationValue(10)]
-			[EnumerationValue(11)]
-			[EnumerationValue(12)]
-			[EnumerationValue(13)]
-			[EnumerationValue(16)]
-			[EnumerationValue(17)]
-			[EnumerationValue(18)]
-			[EnumerationValue(19)]
-			[EnumerationValue(20)]
-			[EnumerationValue(21)]
-			[EnumerationValue(22)]
-			[EnumerationValue(23)]
-			[EnumerationValue(24)]
-			[EnumerationValue(25)]
-			[EnumerationValue(27)]
-			public List<restriction> restriction {get;set;} = [];
-
-			[EnumerationValue(1)]
-			[EnumerationValue(3)]
-			[EnumerationValue(6)]
-			[EnumerationValue(9)]
-			[EnumerationValue(28)]
-			public List<status> status {get;set;} = [];
-
-			public List<vesselSpeedLimit> vesselSpeedLimit {get;set;} = [];
-
-			public int? scaleMinimum {get;set;} = default;
-
-			public List<information> information {get;set;} = [];
-
-			[JsonIgnore]
-			public override string Code => nameof(TrafficSeparationSchemeLanePart);
-
-			public informationBindingDefinition[] informationBindingDefinitions => TrafficSeparationSchemeLanePart._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(NauticalInformation)],
-				},
-			];
-
-			public featureBindingDefinition[] featureBindingDefinitions => TrafficSeparationSchemeLanePart._featureBindingDefinitions;
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.aggregation,
-					lower = 0,
-					upper =  1,
-					association = nameof(TrafficSeparationSchemeAggregation),
-					role = Enum.GetName<Role>(Role.theCollection)!,
-					featureTypes = [nameof(TrafficSeparationScheme)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-			];
-		}
-
-		[System.Serializable()]
-		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class SeparationZoneOrLine : FeatureNode, IFeatureBindingDefinition {
-			public fixedDateRange? fixedDateRange {get;set;} = default;
-
-			public String? interoperabilityIdentifier {get;set;} = default;
-
-			[EnumerationValue(1)]
-			[EnumerationValue(3)]
-			[EnumerationValue(9)]
-			[EnumerationValue(28)]
-			public List<status> status {get;set;} = [];
-
-			public int? scaleMinimum {get;set;} = default;
-
-			public List<information> information {get;set;} = [];
-
-			[JsonIgnore]
-			public override string Code => nameof(SeparationZoneOrLine);
-
-			public informationBindingDefinition[] informationBindingDefinitions => SeparationZoneOrLine._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(NauticalInformation)],
-				},
-			];
-
-			public featureBindingDefinition[] featureBindingDefinitions => SeparationZoneOrLine._featureBindingDefinitions;
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.aggregation,
-					lower = 0,
-					upper =  1,
-					association = nameof(TrafficSeparationSchemeAggregation),
-					role = Enum.GetName<Role>(Role.theCollection)!,
-					featureTypes = [nameof(TrafficSeparationScheme)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-			];
-		}
-
-		[System.Serializable()]
-		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class TrafficSeparationSchemeBoundary : FeatureNode, IFeatureBindingDefinition {
-			public fixedDateRange? fixedDateRange {get;set;} = default;
-
-			public String? interoperabilityIdentifier {get;set;} = default;
-
-			[EnumerationValue(1)]
-			[EnumerationValue(3)]
-			[EnumerationValue(9)]
-			[EnumerationValue(28)]
-			public List<status> status {get;set;} = [];
-
-			public int? scaleMinimum {get;set;} = default;
-
-			public List<information> information {get;set;} = [];
-
-			[JsonIgnore]
-			public override string Code => nameof(TrafficSeparationSchemeBoundary);
-
-			public informationBindingDefinition[] informationBindingDefinitions => TrafficSeparationSchemeBoundary._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(NauticalInformation)],
-				},
-			];
-
-			public featureBindingDefinition[] featureBindingDefinitions => TrafficSeparationSchemeBoundary._featureBindingDefinitions;
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.aggregation,
-					lower = 0,
-					upper =  1,
-					association = nameof(TrafficSeparationSchemeAggregation),
-					role = Enum.GetName<Role>(Role.theCollection)!,
-					featureTypes = [nameof(TrafficSeparationScheme)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-			];
-		}
-
-		[System.Serializable()]
-		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class TrafficSeparationSchemeCrossing : FeatureNode, IFeatureBindingDefinition {
-			public fixedDateRange? fixedDateRange {get;set;} = default;
-
-			public String? interoperabilityIdentifier {get;set;} = default;
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			[EnumerationValue(8)]
-			[EnumerationValue(9)]
-			[EnumerationValue(10)]
-			[EnumerationValue(11)]
-			[EnumerationValue(12)]
-			[EnumerationValue(13)]
-			[EnumerationValue(16)]
-			[EnumerationValue(17)]
-			[EnumerationValue(18)]
-			[EnumerationValue(19)]
-			[EnumerationValue(20)]
-			[EnumerationValue(21)]
-			[EnumerationValue(22)]
-			[EnumerationValue(23)]
-			[EnumerationValue(24)]
-			[EnumerationValue(25)]
-			[EnumerationValue(27)]
-			public List<restriction> restriction {get;set;} = [];
-
-			[EnumerationValue(1)]
-			[EnumerationValue(3)]
-			[EnumerationValue(6)]
-			[EnumerationValue(9)]
-			public List<status> status {get;set;} = [];
-
-			public List<vesselSpeedLimit> vesselSpeedLimit {get;set;} = [];
-
-			public int? scaleMinimum {get;set;} = default;
-
-			public List<information> information {get;set;} = [];
-
-			[JsonIgnore]
-			public override string Code => nameof(TrafficSeparationSchemeCrossing);
-
-			public informationBindingDefinition[] informationBindingDefinitions => TrafficSeparationSchemeCrossing._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(NauticalInformation)],
-				},
-			];
-
-			public featureBindingDefinition[] featureBindingDefinitions => TrafficSeparationSchemeCrossing._featureBindingDefinitions;
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.aggregation,
-					lower = 0,
-					upper =  1,
-					association = nameof(TrafficSeparationSchemeAggregation),
-					role = Enum.GetName<Role>(Role.theCollection)!,
-					featureTypes = [nameof(TrafficSeparationScheme)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-			];
-		}
-
-		[System.Serializable()]
-		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class TrafficSeparationSchemeRoundabout : FeatureNode, IFeatureBindingDefinition {
-			public fixedDateRange? fixedDateRange {get;set;} = default;
-
-			public String? interoperabilityIdentifier {get;set;} = default;
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			[EnumerationValue(8)]
-			[EnumerationValue(9)]
-			[EnumerationValue(10)]
-			[EnumerationValue(11)]
-			[EnumerationValue(12)]
-			[EnumerationValue(13)]
-			[EnumerationValue(16)]
-			[EnumerationValue(17)]
-			[EnumerationValue(18)]
-			[EnumerationValue(19)]
-			[EnumerationValue(20)]
-			[EnumerationValue(21)]
-			[EnumerationValue(22)]
-			[EnumerationValue(23)]
-			[EnumerationValue(24)]
-			[EnumerationValue(25)]
-			[EnumerationValue(27)]
-			public List<restriction> restriction {get;set;} = [];
-
-			[EnumerationValue(1)]
-			[EnumerationValue(3)]
-			[EnumerationValue(6)]
-			[EnumerationValue(9)]
-			public List<status> status {get;set;} = [];
-
-			public List<vesselSpeedLimit> vesselSpeedLimit {get;set;} = [];
-
-			public int? scaleMinimum {get;set;} = default;
-
-			public List<information> information {get;set;} = [];
-
-			[JsonIgnore]
-			public override string Code => nameof(TrafficSeparationSchemeRoundabout);
-
-			public informationBindingDefinition[] informationBindingDefinitions => TrafficSeparationSchemeRoundabout._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(NauticalInformation)],
-				},
-			];
-
-			public featureBindingDefinition[] featureBindingDefinitions => TrafficSeparationSchemeRoundabout._featureBindingDefinitions;
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.aggregation,
-					lower = 0,
-					upper =  1,
-					association = nameof(TrafficSeparationSchemeAggregation),
-					role = Enum.GetName<Role>(Role.theCollection)!,
-					featureTypes = [nameof(TrafficSeparationScheme)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-			];
-		}
-
-		[System.Serializable()]
-		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class TrafficSeparationScheme : FeatureNode, IFeatureBindingDefinition {
-			public List<featureName> featureName {get;set;} = [];
-
-			public fixedDateRange? fixedDateRange {get;set;} = default;
-
-			public Boolean? iMOAdopted {get;set;} = default;
-
-			public String? interoperabilityIdentifier {get;set;} = default;
-
-			public decimal? maximumPermittedDraught {get;set;} = default;
-
-			public int? scaleMinimum {get;set;} = default;
-
-			public List<information> information {get;set;} = [];
-
-			[JsonIgnore]
-			public override string Code => nameof(TrafficSeparationScheme);
-
-			public informationBindingDefinition[] informationBindingDefinitions => TrafficSeparationScheme._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(NauticalInformation)],
-				},
-			];
-
-			public featureBindingDefinition[] featureBindingDefinitions => TrafficSeparationScheme._featureBindingDefinitions;
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(AidsToNavigationAssociation),
-					role = Enum.GetName<Role>(Role.theComponent)!,
-					featureTypes = [nameof(CardinalBeacon),nameof(CardinalBuoy),nameof(Daymark),nameof(EmergencyWreckMarkingBuoy),nameof(IsolatedDangerBeacon),nameof(IsolatedDangerBuoy),nameof(LateralBeacon),nameof(LateralBuoy),nameof(LightFloat),nameof(LightVessel),nameof(Pile),nameof(SafeWaterBeacon),nameof(SafeWaterBuoy),nameof(SpecialPurposeGeneralBeacon),nameof(SpecialPurposeGeneralBuoy),nameof(Building),nameof(Crane),nameof(Dolphin),nameof(FishingFacility),nameof(FortifiedStructure),nameof(Landmark),nameof(MooringBuoy),nameof(OffshorePlatform),nameof(SiloTank),nameof(WindTurbine),nameof(Bridge),nameof(Conveyor),nameof(FloatingDock),nameof(Hulk),nameof(PipelineOverhead),nameof(Pontoon),nameof(PylonBridgeSupport),nameof(ShorelineConstruction),nameof(SpanFixed),nameof(SpanOpening),nameof(StructureOverNavigableWater)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(TrafficSeparationSchemeAggregation),
-					role = Enum.GetName<Role>(Role.theComponent)!,
-					featureTypes = [nameof(DeepWaterRoute),nameof(DeepWaterRouteCentreline),nameof(DeepWaterRoutePart),nameof(InshoreTrafficZone),nameof(PrecautionaryArea),nameof(RestrictedArea),nameof(SeparationZoneOrLine),nameof(TrafficSeparationScheme),nameof(TrafficSeparationSchemeBoundary),nameof(TrafficSeparationSchemeCrossing),nameof(TrafficSeparationSchemeLanePart),nameof(TrafficSeparationSchemeRoundabout),nameof(TwoWayRoute),nameof(TwoWayRoutePart)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.aggregation,
-					lower = 0,
-					upper =  1,
-					association = nameof(TrafficSeparationSchemeAggregation),
-					role = Enum.GetName<Role>(Role.theCollection)!,
-					featureTypes = [nameof(TrafficSeparationScheme)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.aggregation,
-					lower = 0,
-					upper =  1,
-					association = nameof(CautionAreaAssociation),
-					role = Enum.GetName<Role>(Role.theCollection)!,
-					featureTypes = [nameof(CautionArea)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  2,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-			];
-		}
-
-		[System.Serializable()]
-		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class ArchipelagicSeaLaneArea : FeatureNode, IFeatureBindingDefinition {
-			public List<featureName> featureName {get;set;} = [];
-
-			public fixedDateRange? fixedDateRange {get;set;} = default;
-
-			public String? interoperabilityIdentifier {get;set;} = default;
-
-			public String? nationality {get;set;} = default;
-
-			public int? scaleMinimum {get;set;} = default;
-
-			public List<information> information {get;set;} = [];
-
-			[JsonIgnore]
-			public override string Code => nameof(ArchipelagicSeaLaneArea);
-
-			public informationBindingDefinition[] informationBindingDefinitions => ArchipelagicSeaLaneArea._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(NauticalInformation)],
-				},
-			];
-
-			public featureBindingDefinition[] featureBindingDefinitions => ArchipelagicSeaLaneArea._featureBindingDefinitions;
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.aggregation,
-					lower = 0,
-					upper =  1,
-					association = nameof(ASLAggregation),
-					role = Enum.GetName<Role>(Role.theCollection)!,
-					featureTypes = [nameof(ArchipelagicSeaLane)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  2,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-			];
-		}
-
-		[System.Serializable()]
-		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class ArchipelagicSeaLaneAxis : FeatureNode, IFeatureBindingDefinition {
-			public List<featureName> featureName {get;set;} = [];
-
-			public fixedDateRange? fixedDateRange {get;set;} = default;
-
-			public String? interoperabilityIdentifier {get;set;} = default;
-
-			public String? nationality {get;set;} = default;
-
-			public int? scaleMinimum {get;set;} = default;
-
-			public List<information> information {get;set;} = [];
-
-			[JsonIgnore]
-			public override string Code => nameof(ArchipelagicSeaLaneAxis);
-
-			public informationBindingDefinition[] informationBindingDefinitions => ArchipelagicSeaLaneAxis._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(NauticalInformation)],
-				},
-			];
-
-			public featureBindingDefinition[] featureBindingDefinitions => ArchipelagicSeaLaneAxis._featureBindingDefinitions;
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.aggregation,
-					lower = 0,
-					upper =  1,
-					association = nameof(ASLAggregation),
-					role = Enum.GetName<Role>(Role.theCollection)!,
-					featureTypes = [nameof(ArchipelagicSeaLane)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  2,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-			];
-		}
-
-		[System.Serializable()]
-		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class ArchipelagicSeaLane : FeatureNode, IFeatureBindingDefinition {
-			public List<featureName> featureName {get;set;} = [];
-
-			public fixedDateRange? fixedDateRange {get;set;} = default;
-
-			public String? interoperabilityIdentifier {get;set;} = default;
-
-			public String nationality {get;set;} = string.Empty;
-
-			public int? scaleMinimum {get;set;} = default;
-
-			public List<information> information {get;set;} = [];
-
-			[JsonIgnore]
-			public override string Code => nameof(ArchipelagicSeaLane);
-
-			public informationBindingDefinition[] informationBindingDefinitions => ArchipelagicSeaLane._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(NauticalInformation)],
-				},
-			];
-
-			public featureBindingDefinition[] featureBindingDefinitions => ArchipelagicSeaLane._featureBindingDefinitions;
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(AidsToNavigationAssociation),
-					role = Enum.GetName<Role>(Role.theComponent)!,
-					featureTypes = [nameof(CardinalBeacon),nameof(CardinalBuoy),nameof(Daymark),nameof(EmergencyWreckMarkingBuoy),nameof(IsolatedDangerBeacon),nameof(IsolatedDangerBuoy),nameof(LateralBeacon),nameof(LateralBuoy),nameof(LightFloat),nameof(LightVessel),nameof(Pile),nameof(SafeWaterBeacon),nameof(SafeWaterBuoy),nameof(SpecialPurposeGeneralBeacon),nameof(SpecialPurposeGeneralBuoy)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(ASLAggregation),
-					role = Enum.GetName<Role>(Role.theComponent)!,
-					featureTypes = [nameof(ArchipelagicSeaLaneArea),nameof(ArchipelagicSeaLaneAxis)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.aggregation,
-					lower = 0,
-					upper =  1,
-					association = nameof(CautionAreaAssociation),
-					role = Enum.GetName<Role>(Role.theCollection)!,
-					featureTypes = [nameof(CautionArea)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  2,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-			];
-		}
-
-		[System.Serializable()]
-		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class RadioCallingInPoint : FeatureNode, IFeatureBindingDefinition {
-			public List<String> communicationChannel {get;set;} = [];
-
-			public List<featureName> featureName {get;set;} = [];
-
-			public fixedDateRange? fixedDateRange {get;set;} = default;
-
-			public String? interoperabilityIdentifier {get;set;} = default;
-
-			public List<decimal> orientationValue {get;set;} = [];
-
-			public List<periodicDateRange> periodicDateRange {get;set;} = [];
-
-			[EnumerationValue(1)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
-			[EnumerationValue(9)]
-			public List<status> status {get;set;} = [];
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[Required()]
-			public trafficFlow trafficFlow {get;set;}
-
-			public int? scaleMinimum {get;set;} = default;
-
-			public List<information> information {get;set;} = [];
-
-			[JsonIgnore]
-			public override string Code => nameof(RadioCallingInPoint);
-
-			public informationBindingDefinition[] informationBindingDefinitions => RadioCallingInPoint._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation),nameof(NonStandardWorkingDay),nameof(ServiceHours)],
-				},
-			];
-
-			public featureBindingDefinition[] featureBindingDefinitions => RadioCallingInPoint._featureBindingDefinitions;
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  2,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-			];
-		}
-
-		[System.Serializable()]
-		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class FerryRoute : FeatureNode, IFeatureBindingDefinition {
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(5)]
-			public List<categoryOfFerry> categoryOfFerry {get;set;} = [];
-
-			public List<featureName> featureName {get;set;} = [];
-
-			public fixedDateRange? fixedDateRange {get;set;} = default;
-
-			public String? interoperabilityIdentifier {get;set;} = default;
-
-			public List<periodicDateRange> periodicDateRange {get;set;} = [];
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
-			[EnumerationValue(9)]
-			[EnumerationValue(14)]
-			public List<status> status {get;set;} = [];
-
-			public int? scaleMinimum {get;set;} = default;
-
-			public List<information> information {get;set;} = [];
-
-			[JsonIgnore]
-			public override string Code => nameof(FerryRoute);
-
-			public informationBindingDefinition[] informationBindingDefinitions => FerryRoute._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(NauticalInformation)],
-				},
-			];
-
-			public featureBindingDefinition[] featureBindingDefinitions => FerryRoute._featureBindingDefinitions;
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  2,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-			];
-		}
-
-		[System.Serializable()]
-		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class RadarLine : FeatureNode, IFeatureBindingDefinition {
-			public List<featureName> featureName {get;set;} = [];
-
-			public String? interoperabilityIdentifier {get;set;} = default;
-
-			[Required()]
-			public decimal orientationValue {get;set;}
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(7)]
-			public List<status> status {get;set;} = [];
-
-			public int? scaleMinimum {get;set;} = default;
-
-			public List<information> information {get;set;} = [];
-
-			[JsonIgnore]
-			public override string Code => nameof(RadarLine);
-
-			public informationBindingDefinition[] informationBindingDefinitions => RadarLine._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(NauticalInformation)],
-				},
-			];
-
-			public featureBindingDefinition[] featureBindingDefinitions => RadarLine._featureBindingDefinitions;
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  2,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-			];
-		}
-
-		[System.Serializable()]
-		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class RadarRange : FeatureNode, IFeatureBindingDefinition {
-			public List<String> communicationChannel {get;set;} = [];
-
-			public List<featureName> featureName {get;set;} = [];
-
-			public fixedDateRange? fixedDateRange {get;set;} = default;
-
-			public String? interoperabilityIdentifier {get;set;} = default;
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(4)]
-			[EnumerationValue(7)]
-			public List<status> status {get;set;} = [];
-
-			public int? scaleMinimum {get;set;} = default;
-
-			public List<information> information {get;set;} = [];
-
-			[JsonIgnore]
-			public override string Code => nameof(RadarRange);
-
-			public informationBindingDefinition[] informationBindingDefinitions => RadarRange._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation)],
-				},
-			];
-
-			public featureBindingDefinition[] featureBindingDefinitions => RadarRange._featureBindingDefinitions;
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  2,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-			];
-		}
-
-		[System.Serializable()]
-		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class RadarStation : FeatureNode, IFeatureBindingDefinition {
-			public String? callSign {get;set;} = default;
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			public List<categoryOfRadarStation> categoryOfRadarStation {get;set;} = [];
-
-			public List<String> communicationChannel {get;set;} = [];
-
-			public List<featureName> featureName {get;set;} = [];
-
-			public decimal? height {get;set;} = default;
-
-			public String? interoperabilityIdentifier {get;set;} = default;
-
-			public List<periodicDateRange> periodicDateRange {get;set;} = [];
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(4)]
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
-			public List<status> status {get;set;} = [];
-
-			public decimal? valueOfMaximumRange {get;set;} = default;
-
-			public int? scaleMinimum {get;set;} = default;
-
-			public List<information> information {get;set;} = [];
-
-			[JsonIgnore]
-			public override string Code => nameof(RadarStation);
-
-			public informationBindingDefinition[] informationBindingDefinitions => RadarStation._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation)],
-				},
-			];
-
-			public featureBindingDefinition[] featureBindingDefinitions => RadarStation._featureBindingDefinitions;
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  2,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-			];
-		}
-
-		[System.Serializable()]
-		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class AnchorageArea : FeatureNode, IFeatureBindingDefinition {
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
-			[EnumerationValue(9)]
-			[EnumerationValue(10)]
-			[EnumerationValue(14)]
-			[EnumerationValue(15)]
-			public List<categoryOfAnchorage> categoryOfAnchorage {get;set;} = [];
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
-			[EnumerationValue(9)]
-			[EnumerationValue(10)]
-			[EnumerationValue(11)]
-			[EnumerationValue(12)]
-			[EnumerationValue(13)]
-			[EnumerationValue(14)]
-			[EnumerationValue(15)]
-			public List<categoryOfCargo> categoryOfCargo {get;set;} = [];
-
-			public List<featureName> featureName {get;set;} = [];
-
-			public fixedDateRange? fixedDateRange {get;set;} = default;
-
-			public String? interoperabilityIdentifier {get;set;} = default;
-
-			public List<periodicDateRange> periodicDateRange {get;set;} = [];
-
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			[EnumerationValue(8)]
-			[EnumerationValue(9)]
-			[EnumerationValue(10)]
-			[EnumerationValue(11)]
-			[EnumerationValue(12)]
-			[EnumerationValue(13)]
-			[EnumerationValue(15)]
-			[EnumerationValue(16)]
-			[EnumerationValue(17)]
-			[EnumerationValue(18)]
-			[EnumerationValue(19)]
-			[EnumerationValue(20)]
-			[EnumerationValue(21)]
-			[EnumerationValue(23)]
-			[EnumerationValue(24)]
-			[EnumerationValue(27)]
-			[EnumerationValue(39)]
-			public List<restriction> restriction {get;set;} = [];
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
-			[EnumerationValue(9)]
-			[EnumerationValue(14)]
-			public List<status> status {get;set;} = [];
-
-			public List<vesselSpeedLimit> vesselSpeedLimit {get;set;} = [];
-
-			public int? scaleMinimum {get;set;} = default;
-
-			public List<information> information {get;set;} = [];
-
-			[JsonIgnore]
-			public override string Code => nameof(AnchorageArea);
-
-			public informationBindingDefinition[] informationBindingDefinitions => AnchorageArea._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation),nameof(NonStandardWorkingDay),nameof(ServiceHours)],
-				},
-			];
-
-			public featureBindingDefinition[] featureBindingDefinitions => AnchorageArea._featureBindingDefinitions;
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  2,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-			];
-		}
-
-		[System.Serializable()]
-		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class MooringArea : FeatureNode, IFeatureBindingDefinition {
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			public List<categoryOfMooringArea> categoryOfMooringArea {get;set;} = [];
-
-			public List<featureName> featureName {get;set;} = [];
-
-			public fixedDateRange? fixedDateRange {get;set;} = default;
-
-			public String? interoperabilityIdentifier {get;set;} = default;
-
-			public decimal? maximumPermittedDraught {get;set;} = default;
-
-			public decimal? maximumPermittedVesselLength {get;set;} = default;
-
-			public List<periodicDateRange> periodicDateRange {get;set;} = [];
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			[EnumerationValue(8)]
-			[EnumerationValue(9)]
-			[EnumerationValue(10)]
-			[EnumerationValue(11)]
-			[EnumerationValue(12)]
-			[EnumerationValue(13)]
-			[EnumerationValue(15)]
-			[EnumerationValue(16)]
-			[EnumerationValue(17)]
-			[EnumerationValue(18)]
-			[EnumerationValue(19)]
-			[EnumerationValue(20)]
-			[EnumerationValue(21)]
-			[EnumerationValue(23)]
-			[EnumerationValue(24)]
-			[EnumerationValue(25)]
-			[EnumerationValue(27)]
-			[EnumerationValue(39)]
-			[EnumerationValue(42)]
-			public List<restriction> restriction {get;set;} = [];
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
-			[EnumerationValue(9)]
-			[EnumerationValue(14)]
-			public List<status> status {get;set;} = [];
-
-			public int? scaleMinimum {get;set;} = default;
-
-			public List<information> information {get;set;} = [];
-
-			public List<vesselSpeedLimit> vesselSpeedLimit {get;set;} = [];
-
-			[JsonIgnore]
-			public override string Code => nameof(MooringArea);
-
-			public informationBindingDefinition[] informationBindingDefinitions => MooringArea._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation),nameof(NonStandardWorkingDay),nameof(ServiceHours)],
-				},
-			];
-
-			public featureBindingDefinition[] featureBindingDefinitions => MooringArea._featureBindingDefinitions;
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  2,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-			];
-		}
-
-		[System.Serializable()]
-		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class AnchorBerth : FeatureNode, IFeatureBindingDefinition {
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
-			[EnumerationValue(9)]
-			[EnumerationValue(10)]
-			[EnumerationValue(14)]
-			public List<categoryOfAnchorage> categoryOfAnchorage {get;set;} = [];
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
-			[EnumerationValue(9)]
-			[EnumerationValue(10)]
-			[EnumerationValue(11)]
-			[EnumerationValue(12)]
-			[EnumerationValue(13)]
-			[EnumerationValue(14)]
-			[EnumerationValue(15)]
-			public List<categoryOfCargo> categoryOfCargo {get;set;} = [];
-
-			public List<featureName> featureName {get;set;} = [];
-
-			public fixedDateRange? fixedDateRange {get;set;} = default;
-
-			public String? interoperabilityIdentifier {get;set;} = default;
-
-			public List<periodicDateRange> periodicDateRange {get;set;} = [];
-
-			public decimal? radius {get;set;} = default;
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
-			[EnumerationValue(9)]
-			[EnumerationValue(14)]
-			public List<status> status {get;set;} = [];
-
-			public int? scaleMinimum {get;set;} = default;
-
-			public List<information> information {get;set;} = [];
-
-			[JsonIgnore]
-			public override string Code => nameof(AnchorBerth);
-
-			public informationBindingDefinition[] informationBindingDefinitions => AnchorBerth._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation),nameof(NonStandardWorkingDay),nameof(ServiceHours)],
-				},
-			];
-
-			public featureBindingDefinition[] featureBindingDefinitions => AnchorBerth._featureBindingDefinitions;
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  2,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-			];
-		}
-
-		[System.Serializable()]
-		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class SeaplaneLandingArea : FeatureNode, IFeatureBindingDefinition {
-			public List<featureName> featureName {get;set;} = [];
-
-			public String? interoperabilityIdentifier {get;set;} = default;
-
-			public List<periodicDateRange> periodicDateRange {get;set;} = [];
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
-			[EnumerationValue(9)]
-			[EnumerationValue(10)]
-			[EnumerationValue(11)]
-			[EnumerationValue(12)]
-			[EnumerationValue(13)]
-			[EnumerationValue(15)]
-			[EnumerationValue(16)]
-			[EnumerationValue(17)]
-			[EnumerationValue(18)]
-			[EnumerationValue(19)]
-			[EnumerationValue(20)]
-			[EnumerationValue(21)]
-			[EnumerationValue(22)]
-			[EnumerationValue(23)]
-			[EnumerationValue(24)]
-			[EnumerationValue(25)]
-			[EnumerationValue(27)]
-			[EnumerationValue(39)]
-			public List<restriction> restriction {get;set;} = [];
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
-			[EnumerationValue(9)]
-			[EnumerationValue(14)]
-			public List<status> status {get;set;} = [];
-
-			public List<vesselSpeedLimit> vesselSpeedLimit {get;set;} = [];
-
-			public int? scaleMinimum {get;set;} = default;
-
-			public List<information> information {get;set;} = [];
-
-			[JsonIgnore]
-			public override string Code => nameof(SeaplaneLandingArea);
-
-			public informationBindingDefinition[] informationBindingDefinitions => SeaplaneLandingArea._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation),nameof(NonStandardWorkingDay),nameof(ServiceHours)],
-				},
-			];
-
-			public featureBindingDefinition[] featureBindingDefinitions => SeaplaneLandingArea._featureBindingDefinitions;
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  2,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-			];
-		}
-
-		[System.Serializable()]
-		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class DumpingGround : FeatureNode, IFeatureBindingDefinition {
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			public List<categoryOfDumpingGround> categoryOfDumpingGround {get;set;} = [];
-
-			public DateOnly? dateDisused {get;set;} = default;
-
-			public List<featureName> featureName {get;set;} = [];
-
-			public String? interoperabilityIdentifier {get;set;} = default;
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
-			[EnumerationValue(9)]
-			[EnumerationValue(10)]
-			[EnumerationValue(11)]
-			[EnumerationValue(12)]
-			[EnumerationValue(13)]
-			[EnumerationValue(17)]
-			[EnumerationValue(18)]
-			[EnumerationValue(19)]
-			[EnumerationValue(20)]
-			[EnumerationValue(21)]
-			[EnumerationValue(22)]
-			[EnumerationValue(23)]
-			[EnumerationValue(24)]
-			[EnumerationValue(25)]
-			[EnumerationValue(27)]
-			public List<restriction> restriction {get;set;} = [];
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(4)]
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
-			public List<status> status {get;set;} = [];
-
-			public List<vesselSpeedLimit> vesselSpeedLimit {get;set;} = [];
-
-			public int? scaleMinimum {get;set;} = default;
-
-			public List<information> information {get;set;} = [];
-
-			[JsonIgnore]
-			public override string Code => nameof(DumpingGround);
-
-			public informationBindingDefinition[] informationBindingDefinitions => DumpingGround._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(NauticalInformation)],
-				},
-			];
-
-			public featureBindingDefinition[] featureBindingDefinitions => DumpingGround._featureBindingDefinitions;
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  2,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-			];
-		}
-
-		[System.Serializable()]
-		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class MilitaryPracticeArea : FeatureNode, IFeatureBindingDefinition {
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			public List<categoryOfMilitaryPracticeArea> categoryOfMilitaryPracticeArea {get;set;} = [];
-
-			public List<featureName> featureName {get;set;} = [];
-
-			public fixedDateRange? fixedDateRange {get;set;} = default;
-
-			public String? interoperabilityIdentifier {get;set;} = default;
-
-			public String? nationality {get;set;} = default;
-
-			public List<periodicDateRange> periodicDateRange {get;set;} = [];
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
-			[EnumerationValue(9)]
-			[EnumerationValue(10)]
-			[EnumerationValue(11)]
-			[EnumerationValue(12)]
-			[EnumerationValue(13)]
-			[EnumerationValue(15)]
-			[EnumerationValue(16)]
-			[EnumerationValue(17)]
-			[EnumerationValue(18)]
-			[EnumerationValue(19)]
-			[EnumerationValue(20)]
-			[EnumerationValue(21)]
-			[EnumerationValue(22)]
-			[EnumerationValue(23)]
-			[EnumerationValue(24)]
-			[EnumerationValue(25)]
-			[EnumerationValue(26)]
-			[EnumerationValue(27)]
-			[EnumerationValue(39)]
-			public List<restriction> restriction {get;set;} = [];
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
-			[EnumerationValue(16)]
-			[EnumerationValue(17)]
-			public List<status> status {get;set;} = [];
-
-			public List<vesselSpeedLimit> vesselSpeedLimit {get;set;} = [];
-
-			public int? scaleMinimum {get;set;} = default;
-
-			public List<information> information {get;set;} = [];
-
-			[JsonIgnore]
-			public override string Code => nameof(MilitaryPracticeArea);
-
-			public informationBindingDefinition[] informationBindingDefinitions => MilitaryPracticeArea._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(NauticalInformation)],
-				},
-			];
-
-			public featureBindingDefinition[] featureBindingDefinitions => MilitaryPracticeArea._featureBindingDefinitions;
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  2,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-			];
-		}
-
-		[System.Serializable()]
-		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class AdministrationArea : FeatureNode, IFeatureBindingDefinition {
-			public Boolean? inDispute {get;set;} = default;
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[Required()]
-			public jurisdiction jurisdiction {get;set;}
-
-			public List<featureName> featureName {get;set;} = [];
-
-			public String? interoperabilityIdentifier {get;set;} = default;
-
-			public List<String> nationality {get;set;} = [];
-
-			public int? scaleMinimum {get;set;} = default;
-
-			public List<information> information {get;set;} = [];
-
-			public String? pictorialRepresentation {get;set;} = default;
-
-			[JsonIgnore]
-			public override string Code => nameof(AdministrationArea);
-
-			public informationBindingDefinition[] informationBindingDefinitions => AdministrationArea._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation)],
-				},
-			];
-
-			public featureBindingDefinition[] featureBindingDefinitions => AdministrationArea._featureBindingDefinitions;
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  2,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-			];
-		}
-
-		[System.Serializable()]
-		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class CargoTranshipmentArea : FeatureNode, IFeatureBindingDefinition {
-			public List<featureName> featureName {get;set;} = [];
-
-			public fixedDateRange? fixedDateRange {get;set;} = default;
-
-			public String? interoperabilityIdentifier {get;set;} = default;
-
-			public List<periodicDateRange> periodicDateRange {get;set;} = [];
-
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			[EnumerationValue(8)]
-			[EnumerationValue(9)]
-			[EnumerationValue(10)]
-			[EnumerationValue(11)]
-			[EnumerationValue(12)]
-			[EnumerationValue(13)]
-			[EnumerationValue(15)]
-			[EnumerationValue(16)]
-			[EnumerationValue(17)]
-			[EnumerationValue(18)]
-			[EnumerationValue(19)]
-			[EnumerationValue(20)]
-			[EnumerationValue(21)]
-			[EnumerationValue(22)]
-			[EnumerationValue(24)]
-			[EnumerationValue(27)]
-			[EnumerationValue(39)]
-			public List<restriction> restriction {get;set;} = [];
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
-			[EnumerationValue(9)]
-			public List<status> status {get;set;} = [];
-
-			public List<vesselSpeedLimit> vesselSpeedLimit {get;set;} = [];
-
-			public int? scaleMinimum {get;set;} = default;
-
-			public List<information> information {get;set;} = [];
-
-			[JsonIgnore]
-			public override string Code => nameof(CargoTranshipmentArea);
-
-			public informationBindingDefinition[] informationBindingDefinitions => CargoTranshipmentArea._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(NauticalInformation)],
-				},
-			];
-
-			public featureBindingDefinition[] featureBindingDefinitions => CargoTranshipmentArea._featureBindingDefinitions;
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  2,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-			];
-		}
-
-		[System.Serializable()]
-		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class CautionArea : FeatureNode, IFeatureBindingDefinition {
-			[EnumerationValue(1)]
-			[EnumerationValue(3)]
-			[EnumerationValue(5)]
-			public condition? condition {get;set;} = default;
-
-			public fixedDateRange? fixedDateRange {get;set;} = default;
-
-			public String? interoperabilityIdentifier {get;set;} = default;
-
-			public List<periodicDateRange> periodicDateRange {get;set;} = [];
-
-			public DateOnly? reportedDate {get;set;} = default;
-
-			[EnumerationValue(5)]
-			[EnumerationValue(7)]
-			public status? status {get;set;} = default;
-
-			public int? scaleMinimum {get;set;} = default;
-
-			public List<information> information {get;set;} = [];
-
-			public String? pictorialRepresentation {get;set;} = default;
-
-			[JsonIgnore]
-			public override string Code => nameof(CautionArea);
-
-			public informationBindingDefinition[] informationBindingDefinitions => CautionArea._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(NauticalInformation)],
-				},
-			];
-
-			public featureBindingDefinition[] featureBindingDefinitions => CautionArea._featureBindingDefinitions;
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(CautionAreaAssociation),
-					role = Enum.GetName<Role>(Role.theComponent)!,
-					featureTypes = [nameof(ArchipelagicSeaLane),nameof(TrafficSeparationScheme)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.aggregation,
-					lower = 0,
-					upper =  1,
-					association = nameof(FairwayAuxiliary),
-					role = Enum.GetName<Role>(Role.thePrimaryFeature)!,
-					featureTypes = [nameof(Fairway)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-			];
-		}
-
-		[System.Serializable()]
-		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class InformationArea : FeatureNode, IFeatureBindingDefinition {
-			public List<featureName> featureName {get;set;} = [];
-
-			public fixedDateRange? fixedDateRange {get;set;} = default;
-
-			public String? interoperabilityIdentifier {get;set;} = default;
-
-			public List<periodicDateRange> periodicDateRange {get;set;} = [];
-
-			public DateOnly? reportedDate {get;set;} = default;
-
-			public int? scaleMinimum {get;set;} = default;
-
-			public List<information> information {get;set;} = [];
-
-			public String? pictorialRepresentation {get;set;} = default;
-
-			[JsonIgnore]
-			public override string Code => nameof(InformationArea);
-
-			public informationBindingDefinition[] informationBindingDefinitions => InformationArea._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(NauticalInformation)],
-				},
-			];
-
-			public featureBindingDefinition[] featureBindingDefinitions => InformationArea._featureBindingDefinitions;
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  2,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-			];
-		}
-
-		[System.Serializable()]
-		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class ContiguousZone : FeatureNode, IFeatureBindingDefinition {
-			public fixedDateRange? fixedDateRange {get;set;} = default;
-
-			public Boolean? inDispute {get;set;} = default;
-
-			public String? interoperabilityIdentifier {get;set;} = default;
-
-			public List<String> nationality {get;set;} = [];
-
-			public int? scaleMinimum {get;set;} = default;
-
-			public List<information> information {get;set;} = [];
-
-			[JsonIgnore]
-			public override string Code => nameof(ContiguousZone);
-
-			public informationBindingDefinition[] informationBindingDefinitions => ContiguousZone._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(NauticalInformation)],
-				},
-			];
-
-			public featureBindingDefinition[] featureBindingDefinitions => ContiguousZone._featureBindingDefinitions;
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-			];
-		}
-
-		[System.Serializable()]
-		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class ContinentalShelfArea : FeatureNode, IFeatureBindingDefinition {
-			public List<featureName> featureName {get;set;} = [];
-
-			public String? interoperabilityIdentifier {get;set;} = default;
-
-			public List<String> nationality {get;set;} = [];
-
-			public int? scaleMinimum {get;set;} = default;
-
-			public List<information> information {get;set;} = [];
-
-			[JsonIgnore]
-			public override string Code => nameof(ContinentalShelfArea);
-
-			public informationBindingDefinition[] informationBindingDefinitions => ContinentalShelfArea._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(NauticalInformation)],
-				},
-			];
-
-			public featureBindingDefinition[] featureBindingDefinitions => ContinentalShelfArea._featureBindingDefinitions;
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  2,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-			];
-		}
-
-		[System.Serializable()]
-		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class CustomZone : FeatureNode, IFeatureBindingDefinition {
-			public String? interoperabilityIdentifier {get;set;} = default;
-
-			public String nationality {get;set;} = string.Empty;
-
-			public int? scaleMinimum {get;set;} = default;
-
-			public List<information> information {get;set;} = [];
-
-			[JsonIgnore]
-			public override string Code => nameof(CustomZone);
-
-			public informationBindingDefinition[] informationBindingDefinitions => CustomZone._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(NauticalInformation)],
-				},
-			];
-
-			public featureBindingDefinition[] featureBindingDefinitions => CustomZone._featureBindingDefinitions;
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-			];
-		}
-
-		[System.Serializable()]
-		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class ExclusiveEconomicZone : FeatureNode, IFeatureBindingDefinition {
-			public Boolean? inDispute {get;set;} = default;
-
-			public String? interoperabilityIdentifier {get;set;} = default;
-
-			public List<String> nationality {get;set;} = [];
-
-			public int? scaleMinimum {get;set;} = default;
-
-			public List<information> information {get;set;} = [];
-
-			[JsonIgnore]
-			public override string Code => nameof(ExclusiveEconomicZone);
-
-			public informationBindingDefinition[] informationBindingDefinitions => ExclusiveEconomicZone._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(NauticalInformation)],
-				},
-			];
-
-			public featureBindingDefinition[] featureBindingDefinitions => ExclusiveEconomicZone._featureBindingDefinitions;
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-			];
-		}
-
-		[System.Serializable()]
-		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class FisheryZone : FeatureNode, IFeatureBindingDefinition {
-			public List<featureName> featureName {get;set;} = [];
-
-			public String? interoperabilityIdentifier {get;set;} = default;
-
-			public String nationality {get;set;} = string.Empty;
-
-			[EnumerationValue(1)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
-			public List<status> status {get;set;} = [];
-
-			public int? scaleMinimum {get;set;} = default;
-
-			public List<information> information {get;set;} = [];
-
-			[JsonIgnore]
-			public override string Code => nameof(FisheryZone);
-
-			public informationBindingDefinition[] informationBindingDefinitions => FisheryZone._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(NauticalInformation)],
-				},
-			];
-
-			public featureBindingDefinition[] featureBindingDefinitions => FisheryZone._featureBindingDefinitions;
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  2,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-			];
-		}
-
-		[System.Serializable()]
-		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class FishingGround : FeatureNode, IFeatureBindingDefinition {
-			public List<featureName> featureName {get;set;} = [];
-
-			public String? interoperabilityIdentifier {get;set;} = default;
-
-			public List<periodicDateRange> periodicDateRange {get;set;} = [];
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			[EnumerationValue(8)]
-			[EnumerationValue(9)]
-			[EnumerationValue(10)]
-			[EnumerationValue(11)]
-			[EnumerationValue(12)]
-			[EnumerationValue(15)]
-			[EnumerationValue(16)]
-			[EnumerationValue(17)]
-			[EnumerationValue(18)]
-			[EnumerationValue(19)]
-			[EnumerationValue(20)]
-			[EnumerationValue(21)]
-			[EnumerationValue(22)]
-			[EnumerationValue(23)]
-			[EnumerationValue(24)]
-			[EnumerationValue(25)]
-			[EnumerationValue(26)]
-			[EnumerationValue(27)]
-			[EnumerationValue(39)]
-			public List<restriction> restriction {get;set;} = [];
-
-			[EnumerationValue(1)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
-			[EnumerationValue(14)]
-			[EnumerationValue(16)]
-			[EnumerationValue(17)]
-			[EnumerationValue(28)]
-			public List<status> status {get;set;} = [];
-
-			public List<vesselSpeedLimit> vesselSpeedLimit {get;set;} = [];
-
-			public int? scaleMinimum {get;set;} = default;
-
-			public List<information> information {get;set;} = [];
-
-			[JsonIgnore]
-			public override string Code => nameof(FishingGround);
-
-			public informationBindingDefinition[] informationBindingDefinitions => FishingGround._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(NauticalInformation)],
-				},
-			];
-
-			public featureBindingDefinition[] featureBindingDefinitions => FishingGround._featureBindingDefinitions;
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  2,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-			];
-		}
-
-		[System.Serializable()]
-		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class FreePortArea : FeatureNode, IFeatureBindingDefinition {
-			public List<featureName> featureName {get;set;} = [];
-
-			public String? interoperabilityIdentifier {get;set;} = default;
-
-			[EnumerationValue(1)]
-			[EnumerationValue(6)]
-			[EnumerationValue(8)]
-			[EnumerationValue(14)]
-			public List<status> status {get;set;} = [];
-
-			public int? scaleMinimum {get;set;} = default;
-
-			public List<information> information {get;set;} = [];
-
-			[JsonIgnore]
-			public override string Code => nameof(FreePortArea);
-
-			public informationBindingDefinition[] informationBindingDefinitions => FreePortArea._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(NauticalInformation)],
-				},
-			];
-
-			public featureBindingDefinition[] featureBindingDefinitions => FreePortArea._featureBindingDefinitions;
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  2,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-			];
-		}
-
-		[System.Serializable()]
-		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class HarbourAreaAdministrative : FeatureNode, IFeatureBindingDefinition {
-			public List<featureName> featureName {get;set;} = [];
-
-			public String? interoperabilityIdentifier {get;set;} = default;
-
-			[EnumerationValue(1)]
-			[EnumerationValue(4)]
-			[EnumerationValue(6)]
-			[EnumerationValue(8)]
-			[EnumerationValue(14)]
-			public List<status> status {get;set;} = [];
-
-			public int? scaleMinimum {get;set;} = default;
-
-			public List<information> information {get;set;} = [];
-
-			[JsonIgnore]
-			public override string Code => nameof(HarbourAreaAdministrative);
-
-			public informationBindingDefinition[] informationBindingDefinitions => HarbourAreaAdministrative._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation)],
-				},
-			];
-
-			public featureBindingDefinition[] featureBindingDefinitions => HarbourAreaAdministrative._featureBindingDefinitions;
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  2,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-			];
-		}
-
-		[System.Serializable()]
-		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class LogPond : FeatureNode, IFeatureBindingDefinition {
-			public List<featureName> featureName {get;set;} = [];
-
-			public String? interoperabilityIdentifier {get;set;} = default;
-
-			public List<periodicDateRange> periodicDateRange {get;set;} = [];
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
-			public List<status> status {get;set;} = [];
-
-			public int? scaleMinimum {get;set;} = default;
-
-			public List<information> information {get;set;} = [];
-
-			[JsonIgnore]
-			public override string Code => nameof(LogPond);
-
-			public informationBindingDefinition[] informationBindingDefinitions => LogPond._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(NauticalInformation)],
-				},
-			];
-
-			public featureBindingDefinition[] featureBindingDefinitions => LogPond._featureBindingDefinitions;
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  2,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-			];
-		}
-
-		[System.Serializable()]
-		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class OilBarrier : FeatureNode, IFeatureBindingDefinition {
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			public categoryOfOilBarrier? categoryOfOilBarrier {get;set;} = default;
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(5)]
-			public condition? condition {get;set;} = default;
-
-			public List<featureName> featureName {get;set;} = [];
-
-			public fixedDateRange? fixedDateRange {get;set;} = default;
-
-			public String? interoperabilityIdentifier {get;set;} = default;
-
-			public DateOnly? reportedDate {get;set;} = default;
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
-			public List<status> status {get;set;} = [];
-
-			public int? scaleMinimum {get;set;} = default;
-
-			public List<information> information {get;set;} = [];
-
-			[JsonIgnore]
-			public override string Code => nameof(OilBarrier);
-
-			public informationBindingDefinition[] informationBindingDefinitions => OilBarrier._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(NauticalInformation)],
-				},
-			];
-
-			public featureBindingDefinition[] featureBindingDefinitions => OilBarrier._featureBindingDefinitions;
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  2,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-			];
-		}
-
-		[System.Serializable()]
-		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class StraightTerritorialSeaBaseline : FeatureNode, IFeatureBindingDefinition {
-			public String? interoperabilityIdentifier {get;set;} = default;
-
-			public String nationality {get;set;} = string.Empty;
-
-			public int? scaleMinimum {get;set;} = default;
-
-			public List<information> information {get;set;} = [];
-
-			[JsonIgnore]
-			public override string Code => nameof(StraightTerritorialSeaBaseline);
-
-			public informationBindingDefinition[] informationBindingDefinitions => StraightTerritorialSeaBaseline._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(NauticalInformation)],
-				},
-			];
-
-			public featureBindingDefinition[] featureBindingDefinitions => StraightTerritorialSeaBaseline._featureBindingDefinitions;
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-			];
-		}
-
-		[System.Serializable()]
-		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class TerritorialSeaArea : FeatureNode, IFeatureBindingDefinition {
-			public Boolean? inDispute {get;set;} = default;
-
-			public String? interoperabilityIdentifier {get;set;} = default;
-
-			public List<String> nationality {get;set;} = [];
-
-			[EnumerationValue(2)]
-			[EnumerationValue(4)]
-			[EnumerationValue(6)]
-			[EnumerationValue(8)]
-			[EnumerationValue(9)]
-			[EnumerationValue(10)]
-			[EnumerationValue(12)]
-			[EnumerationValue(17)]
-			[EnumerationValue(18)]
-			[EnumerationValue(19)]
-			[EnumerationValue(20)]
-			[EnumerationValue(21)]
-			[EnumerationValue(22)]
-			[EnumerationValue(23)]
-			[EnumerationValue(24)]
-			[EnumerationValue(27)]
-			public List<restriction> restriction {get;set;} = [];
-
-			public List<vesselSpeedLimit> vesselSpeedLimit {get;set;} = [];
-
-			public int? scaleMinimum {get;set;} = default;
-
-			public List<information> information {get;set;} = [];
-
-			[JsonIgnore]
-			public override string Code => nameof(TerritorialSeaArea);
-
-			public informationBindingDefinition[] informationBindingDefinitions => TerritorialSeaArea._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(NauticalInformation)],
-				},
-			];
-
-			public featureBindingDefinition[] featureBindingDefinitions => TerritorialSeaArea._featureBindingDefinitions;
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-			];
-		}
-
-		[System.Serializable()]
-		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class SubmarineTransitLane : FeatureNode, IFeatureBindingDefinition {
-			public List<featureName> featureName {get;set;} = [];
-
-			public String? interoperabilityIdentifier {get;set;} = default;
-
-			public String? nationality {get;set;} = default;
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
-			[EnumerationValue(9)]
-			[EnumerationValue(10)]
-			[EnumerationValue(11)]
-			[EnumerationValue(12)]
-			[EnumerationValue(13)]
-			[EnumerationValue(16)]
-			[EnumerationValue(17)]
-			[EnumerationValue(18)]
-			[EnumerationValue(19)]
-			[EnumerationValue(20)]
-			[EnumerationValue(21)]
-			[EnumerationValue(22)]
-			[EnumerationValue(23)]
-			[EnumerationValue(24)]
-			[EnumerationValue(25)]
-			[EnumerationValue(27)]
-			public List<restriction> restriction {get;set;} = [];
-
-			public List<vesselSpeedLimit> vesselSpeedLimit {get;set;} = [];
-
-			public int? scaleMinimum {get;set;} = default;
-
-			public List<information> information {get;set;} = [];
-
-			[JsonIgnore]
-			public override string Code => nameof(SubmarineTransitLane);
-
-			public informationBindingDefinition[] informationBindingDefinitions => SubmarineTransitLane._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(NauticalInformation)],
-				},
-			];
-
-			public featureBindingDefinition[] featureBindingDefinitions => SubmarineTransitLane._featureBindingDefinitions;
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  2,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-			];
-		}
-
-		[System.Serializable()]
-		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class PilotageDistrict : FeatureNode, IFeatureBindingDefinition {
-			public List<String> communicationChannel {get;set;} = [];
-
-			public List<featureName> featureName {get;set;} = [];
-
-			public String? interoperabilityIdentifier {get;set;} = default;
-
-			public int? scaleMinimum {get;set;} = default;
-
-			public List<information> information {get;set;} = [];
-
-			[JsonIgnore]
-			public override string Code => nameof(PilotageDistrict);
-
-			public informationBindingDefinition[] informationBindingDefinitions => PilotageDistrict._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation)],
-				},
-			];
-
-			public featureBindingDefinition[] featureBindingDefinitions => PilotageDistrict._featureBindingDefinitions;
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(PilotageDistrictAssociation),
-					role = Enum.GetName<Role>(Role.theComponent)!,
-					featureTypes = [nameof(PilotBoardingPlace)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  2,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-			];
-		}
-
-		[System.Serializable()]
-		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class CollisionRegulationsLimit : FeatureNode, IFeatureBindingDefinition {
-			public List<featureName> featureName {get;set;} = [];
-
-			public fixedDateRange? fixedDateRange {get;set;} = default;
-
-			public String? interoperabilityIdentifier {get;set;} = default;
-
-			public List<periodicDateRange> periodicDateRange {get;set;} = [];
-
-			public String? regulationCitation {get;set;} = default;
-
-			public int? scaleMinimum {get;set;} = default;
-
-			public List<information> information {get;set;} = [];
-
-			[JsonIgnore]
-			public override string Code => nameof(CollisionRegulationsLimit);
-
-			public informationBindingDefinition[] informationBindingDefinitions => CollisionRegulationsLimit._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(NauticalInformation)],
-				},
-			];
-
-			public featureBindingDefinition[] featureBindingDefinitions => CollisionRegulationsLimit._featureBindingDefinitions;
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  2,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-			];
-		}
-
-		[System.Serializable()]
-		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class MarinePollutionRegulationsArea : FeatureNode, IFeatureBindingDefinition {
-			public List<featureName> featureName {get;set;} = [];
-
-			public String? interoperabilityIdentifier {get;set;} = default;
-
-			public String? regulationCitation {get;set;} = default;
-
-			public int? scaleMinimum {get;set;} = default;
-
-			public List<information> information {get;set;} = [];
-
-			[JsonIgnore]
-			public override string Code => nameof(MarinePollutionRegulationsArea);
-
-			public informationBindingDefinition[] informationBindingDefinitions => MarinePollutionRegulationsArea._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(NauticalInformation)],
-				},
-			];
-
-			public featureBindingDefinition[] featureBindingDefinitions => MarinePollutionRegulationsArea._featureBindingDefinitions;
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  2,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-			];
-		}
-
-		[System.Serializable()]
-		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class RestrictedArea : FeatureNode, IFeatureBindingDefinition {
-			[EnumerationValue(1)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
-			[EnumerationValue(9)]
-			[EnumerationValue(10)]
-			[EnumerationValue(12)]
-			[EnumerationValue(14)]
-			[EnumerationValue(18)]
-			[EnumerationValue(19)]
-			[EnumerationValue(20)]
-			[EnumerationValue(21)]
-			[EnumerationValue(22)]
-			[EnumerationValue(23)]
-			[EnumerationValue(24)]
-			[EnumerationValue(25)]
-			[EnumerationValue(27)]
-			[EnumerationValue(28)]
-			[EnumerationValue(29)]
-			[EnumerationValue(30)]
-			[EnumerationValue(31)]
-			[EnumerationValue(32)]
-			public List<categoryOfRestrictedArea> categoryOfRestrictedArea {get;set;} = [];
-
-			public List<featureName> featureName {get;set;} = [];
-
-			public fixedDateRange? fixedDateRange {get;set;} = default;
-
-			public String? interoperabilityIdentifier {get;set;} = default;
-
-			public List<periodicDateRange> periodicDateRange {get;set;} = [];
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
-			[EnumerationValue(9)]
-			[EnumerationValue(10)]
-			[EnumerationValue(11)]
-			[EnumerationValue(12)]
-			[EnumerationValue(13)]
-			[EnumerationValue(14)]
-			[EnumerationValue(15)]
-			[EnumerationValue(16)]
-			[EnumerationValue(17)]
-			[EnumerationValue(18)]
-			[EnumerationValue(19)]
-			[EnumerationValue(20)]
-			[EnumerationValue(21)]
-			[EnumerationValue(22)]
-			[EnumerationValue(23)]
-			[EnumerationValue(24)]
-			[EnumerationValue(25)]
-			[EnumerationValue(26)]
-			[EnumerationValue(27)]
-			[EnumerationValue(39)]
-			[EnumerationValue(42)]
-			public List<restriction> restriction {get;set;} = [];
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
-			[EnumerationValue(9)]
-			[EnumerationValue(18)]
-			[EnumerationValue(28)]
-			public List<status> status {get;set;} = [];
-
-			public List<vesselSpeedLimit> vesselSpeedLimit {get;set;} = [];
-
-			public int? scaleMinimum {get;set;} = default;
-
-			public List<information> information {get;set;} = [];
-
-			[JsonIgnore]
-			public override string Code => nameof(RestrictedArea);
-
-			public informationBindingDefinition[] informationBindingDefinitions => RestrictedArea._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(NauticalInformation)],
-				},
-			];
-
-			public featureBindingDefinition[] featureBindingDefinitions => RestrictedArea._featureBindingDefinitions;
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.aggregation,
-					lower = 0,
-					upper =  1,
-					association = nameof(FairwayAuxiliary),
-					role = Enum.GetName<Role>(Role.thePrimaryFeature)!,
-					featureTypes = [nameof(Fairway)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.aggregation,
-					lower = 0,
-					upper =  1,
-					association = nameof(TrafficSeparationSchemeAggregation),
-					role = Enum.GetName<Role>(Role.theCollection)!,
-					featureTypes = [nameof(TrafficSeparationScheme)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  2,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-			];
-		}
-
-		[System.Serializable()]
-		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class LightAllAround : FeatureNode, IFeatureBindingDefinition {
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(8)]
-			[EnumerationValue(9)]
-			[EnumerationValue(10)]
-			[EnumerationValue(11)]
-			[EnumerationValue(12)]
-			[EnumerationValue(13)]
-			[EnumerationValue(14)]
-			[EnumerationValue(15)]
-			[EnumerationValue(17)]
-			[EnumerationValue(18)]
-			[EnumerationValue(19)]
-			[EnumerationValue(20)]
-			public List<categoryOfLight> categoryOfLight {get;set;} = [];
-
-			[EnumerationValue(1)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			[EnumerationValue(9)]
-			[EnumerationValue(10)]
-			[EnumerationValue(11)]
-			public List<colour> colour {get;set;} = [];
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			public exhibitionConditionOfLight? exhibitionConditionOfLight {get;set;} = default;
-
-			public List<featureName> featureName {get;set;} = [];
-
-			public fixedDateRange? fixedDateRange {get;set;} = default;
-
-			public int? flareBearing {get;set;} = default;
-
-			public decimal? height {get;set;} = default;
-
-			public String? interoperabilityIdentifier {get;set;} = default;
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			public lightVisibility? lightVisibility {get;set;} = default;
-
-			public Boolean? majorLight {get;set;} = default;
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(9)]
-			[EnumerationValue(11)]
-			public marksNavigationalSystemOf? marksNavigationalSystemOf {get;set;} = default;
-
-			public multiplicityOfFeatures? multiplicityOfFeatures {get;set;} = default;
-
-			public List<periodicDateRange> periodicDateRange {get;set;} = [];
-
-			[Required()]
-			public rhythmOfLight rhythmOfLight {get;set;}
-
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			public signalGeneration? signalGeneration {get;set;} = default;
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
-			[EnumerationValue(11)]
-			[EnumerationValue(14)]
-			[EnumerationValue(15)]
-			[EnumerationValue(16)]
-			[EnumerationValue(17)]
-			public List<status> status {get;set;} = [];
-
-			public decimal? valueOfNominalRange {get;set;} = default;
-
-			[EnumerationValue(3)]
-			[EnumerationValue(13)]
-			[EnumerationValue(16)]
-			[EnumerationValue(17)]
-			[EnumerationValue(18)]
-			[EnumerationValue(19)]
-			[EnumerationValue(20)]
-			[EnumerationValue(21)]
-			[EnumerationValue(24)]
-			[EnumerationValue(25)]
-			[EnumerationValue(26)]
-			[EnumerationValue(28)]
-			[EnumerationValue(29)]
-			[EnumerationValue(30)]
-			[EnumerationValue(44)]
-			public verticalDatum? verticalDatum {get;set;} = default;
-
-			public decimal? verticalLength {get;set;} = default;
-
-			public int? scaleMinimum {get;set;} = default;
-
-			public List<information> information {get;set;} = [];
-
-			[JsonIgnore]
-			public override string Code => nameof(LightAllAround);
-
-			public informationBindingDefinition[] informationBindingDefinitions => LightAllAround._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation)],
-				},
-			];
-
-			public featureBindingDefinition[] featureBindingDefinitions => LightAllAround._featureBindingDefinitions;
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.composition,
-					lower = 0,
-					upper =  1,
-					association = nameof(StructureEquipment),
-					role = Enum.GetName<Role>(Role.theStructure)!,
-					featureTypes = [nameof(Bridge),nameof(Building),nameof(Crane),nameof(CardinalBeacon),nameof(CardinalBuoy),nameof(Conveyor),nameof(Dolphin),nameof(EmergencyWreckMarkingBuoy),nameof(FishingFacility),nameof(FloatingDock),nameof(FortifiedStructure),nameof(Hulk),nameof(InstallationBuoy),nameof(IsolatedDangerBeacon),nameof(IsolatedDangerBuoy),nameof(Landmark),nameof(LateralBeacon),nameof(LateralBuoy),nameof(LightFloat),nameof(LightVessel),nameof(MooringBuoy),nameof(OffshorePlatform),nameof(Pile),nameof(PipelineOverhead),nameof(Pontoon),nameof(PylonBridgeSupport),nameof(SafeWaterBeacon),nameof(SafeWaterBuoy),nameof(ShorelineConstruction),nameof(SiloTank),nameof(SpanFixed),nameof(SpanOpening),nameof(SpecialPurposeGeneralBeacon),nameof(SpecialPurposeGeneralBuoy),nameof(StructureOverNavigableWater),nameof(WindTurbine),nameof(Wreck),nameof(LightAllAround),nameof(LightSectored),nameof(Daymark)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(StructureEquipment),
-					role = Enum.GetName<Role>(Role.theEquipment)!,
-					featureTypes = [nameof(FogSignal),nameof(LightAirObstruction),nameof(LightAllAround),nameof(LightFogDetector),nameof(LightSectored),nameof(RadarTransponderBeacon),nameof(Retroreflector)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.aggregation,
-					lower = 0,
-					upper =  1,
-					association = nameof(RangeSystemAggregation),
-					role = Enum.GetName<Role>(Role.theCollection)!,
-					featureTypes = [nameof(RangeSystem)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  2,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-			];
-		}
-
-		[System.Serializable()]
-		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class LightSectored : FeatureNode, IFeatureBindingDefinition {
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(8)]
-			[EnumerationValue(9)]
-			[EnumerationValue(10)]
-			[EnumerationValue(11)]
-			[EnumerationValue(12)]
-			[EnumerationValue(13)]
-			[EnumerationValue(14)]
-			[EnumerationValue(15)]
-			[EnumerationValue(17)]
-			[EnumerationValue(18)]
-			[EnumerationValue(19)]
-			[EnumerationValue(20)]
-			public List<categoryOfLight> categoryOfLight {get;set;} = [];
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			public exhibitionConditionOfLight? exhibitionConditionOfLight {get;set;} = default;
-
-			public List<featureName> featureName {get;set;} = [];
-
-			public fixedDateRange? fixedDateRange {get;set;} = default;
-
-			public decimal? height {get;set;} = default;
-
-			public String? interoperabilityIdentifier {get;set;} = default;
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(9)]
-			[EnumerationValue(11)]
-			public marksNavigationalSystemOf? marksNavigationalSystemOf {get;set;} = default;
-
-			public multiplicityOfFeatures? multiplicityOfFeatures {get;set;} = default;
-
-			public List<periodicDateRange> periodicDateRange {get;set;} = [];
-
-			public List<sectorCharacteristics> sectorCharacteristics {get;set;} = [];
-
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			public signalGeneration? signalGeneration {get;set;} = default;
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
-			[EnumerationValue(11)]
-			[EnumerationValue(14)]
-			[EnumerationValue(15)]
-			[EnumerationValue(16)]
-			[EnumerationValue(17)]
-			public List<status> status {get;set;} = [];
-
-			[EnumerationValue(3)]
-			[EnumerationValue(13)]
-			[EnumerationValue(16)]
-			[EnumerationValue(17)]
-			[EnumerationValue(18)]
-			[EnumerationValue(19)]
-			[EnumerationValue(20)]
-			[EnumerationValue(21)]
-			[EnumerationValue(24)]
-			[EnumerationValue(25)]
-			[EnumerationValue(26)]
-			[EnumerationValue(28)]
-			[EnumerationValue(29)]
-			[EnumerationValue(30)]
-			[EnumerationValue(44)]
-			public verticalDatum? verticalDatum {get;set;} = default;
-
-			public int? scaleMinimum {get;set;} = default;
-
-			public List<information> information {get;set;} = [];
-
-			[JsonIgnore]
-			public override string Code => nameof(LightSectored);
-
-			public informationBindingDefinition[] informationBindingDefinitions => LightSectored._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation)],
-				},
-			];
-
-			public featureBindingDefinition[] featureBindingDefinitions => LightSectored._featureBindingDefinitions;
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(StructureEquipment),
-					role = Enum.GetName<Role>(Role.theEquipment)!,
-					featureTypes = [nameof(FogSignal),nameof(LightAirObstruction),nameof(LightAllAround),nameof(LightFogDetector),nameof(LightSectored),nameof(RadarTransponderBeacon),nameof(Retroreflector)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.composition,
-					lower = 0,
-					upper =  1,
-					association = nameof(StructureEquipment),
-					role = Enum.GetName<Role>(Role.theStructure)!,
-					featureTypes = [nameof(Bridge),nameof(Building),nameof(Crane),nameof(CardinalBeacon),nameof(Conveyor),nameof(Dolphin),nameof(FishingFacility),nameof(FortifiedStructure),nameof(IsolatedDangerBeacon),nameof(Landmark),nameof(LateralBeacon),nameof(OffshorePlatform),nameof(Pile),nameof(PipelineOverhead),nameof(PylonBridgeSupport),nameof(SafeWaterBeacon),nameof(ShorelineConstruction),nameof(SiloTank),nameof(SpanFixed),nameof(SpanOpening),nameof(SpecialPurposeGeneralBeacon),nameof(StructureOverNavigableWater),nameof(WindTurbine),nameof(Wreck),nameof(LightAllAround),nameof(LightSectored),nameof(Daymark)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.aggregation,
-					lower = 0,
-					upper =  1,
-					association = nameof(RangeSystemAggregation),
-					role = Enum.GetName<Role>(Role.theCollection)!,
-					featureTypes = [nameof(RangeSystem)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  2,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-			];
-		}
-
-		[System.Serializable()]
-		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class LightFogDetector : FeatureNode, IFeatureBindingDefinition {
-			[EnumerationValue(1)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			[EnumerationValue(9)]
-			[EnumerationValue(10)]
-			[EnumerationValue(11)]
-			public List<colour> colour {get;set;} = [];
-
-			public List<featureName> featureName {get;set;} = [];
-
-			public fixedDateRange? fixedDateRange {get;set;} = default;
-
-			public int? flareBearing {get;set;} = default;
-
-			public decimal? height {get;set;} = default;
-
-			public String? interoperabilityIdentifier {get;set;} = default;
-
-			public List<periodicDateRange> periodicDateRange {get;set;} = [];
-
-			public rhythmOfLight? rhythmOfLight {get;set;} = default;
-
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			public signalGeneration? signalGeneration {get;set;} = default;
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
-			[EnumerationValue(11)]
-			[EnumerationValue(14)]
-			[EnumerationValue(15)]
-			[EnumerationValue(16)]
-			[EnumerationValue(17)]
-			public List<status> status {get;set;} = [];
-
-			[EnumerationValue(3)]
-			[EnumerationValue(13)]
-			[EnumerationValue(16)]
-			[EnumerationValue(17)]
-			[EnumerationValue(18)]
-			[EnumerationValue(19)]
-			[EnumerationValue(20)]
-			[EnumerationValue(21)]
-			[EnumerationValue(24)]
-			[EnumerationValue(25)]
-			[EnumerationValue(26)]
-			[EnumerationValue(28)]
-			[EnumerationValue(29)]
-			[EnumerationValue(30)]
-			[EnumerationValue(44)]
-			public verticalDatum? verticalDatum {get;set;} = default;
-
-			public decimal? verticalLength {get;set;} = default;
-
-			public int? scaleMinimum {get;set;} = default;
-
-			public List<information> information {get;set;} = [];
-
-			[JsonIgnore]
-			public override string Code => nameof(LightFogDetector);
-
-			public informationBindingDefinition[] informationBindingDefinitions => LightFogDetector._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(NauticalInformation)],
-				},
-			];
-
-			public featureBindingDefinition[] featureBindingDefinitions => LightFogDetector._featureBindingDefinitions;
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.composition,
-					lower = 0,
-					upper =  1,
-					association = nameof(StructureEquipment),
-					role = Enum.GetName<Role>(Role.theStructure)!,
-					featureTypes = [nameof(Bridge),nameof(Building),nameof(Crane),nameof(CardinalBeacon),nameof(CardinalBuoy),nameof(Conveyor),nameof(Dolphin),nameof(EmergencyWreckMarkingBuoy),nameof(FishingFacility),nameof(FloatingDock),nameof(FortifiedStructure),nameof(Hulk),nameof(InstallationBuoy),nameof(IsolatedDangerBeacon),nameof(IsolatedDangerBuoy),nameof(Landmark),nameof(LateralBeacon),nameof(LateralBuoy),nameof(LightFloat),nameof(LightVessel),nameof(MooringBuoy),nameof(OffshorePlatform),nameof(Pile),nameof(PipelineOverhead),nameof(Pontoon),nameof(PylonBridgeSupport),nameof(SafeWaterBeacon),nameof(SafeWaterBuoy),nameof(ShorelineConstruction),nameof(SiloTank),nameof(SpanFixed),nameof(SpanOpening),nameof(SpecialPurposeGeneralBeacon),nameof(SpecialPurposeGeneralBuoy),nameof(StructureOverNavigableWater),nameof(WindTurbine),nameof(Wreck),nameof(LightAllAround),nameof(LightSectored),nameof(Daymark)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  2,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-			];
-		}
-
-		[System.Serializable()]
-		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class LightAirObstruction : FeatureNode, IFeatureBindingDefinition {
-			[EnumerationValue(1)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			[EnumerationValue(9)]
-			[EnumerationValue(10)]
-			[EnumerationValue(11)]
-			public List<colour> colour {get;set;} = [];
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			public exhibitionConditionOfLight? exhibitionConditionOfLight {get;set;} = default;
-
-			public List<featureName> featureName {get;set;} = [];
-
-			public fixedDateRange? fixedDateRange {get;set;} = default;
-
-			public int? flareBearing {get;set;} = default;
-
-			public String? interoperabilityIdentifier {get;set;} = default;
-
-			public decimal? height {get;set;} = default;
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
-			[EnumerationValue(9)]
-			public List<lightVisibility> lightVisibility {get;set;} = [];
-
-			public multiplicityOfFeatures? multiplicityOfFeatures {get;set;} = default;
-
-			public List<periodicDateRange> periodicDateRange {get;set;} = [];
-
-			public rhythmOfLight? rhythmOfLight {get;set;} = default;
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
-			[EnumerationValue(11)]
-			[EnumerationValue(14)]
-			[EnumerationValue(15)]
-			[EnumerationValue(16)]
-			[EnumerationValue(17)]
-			public List<status> status {get;set;} = [];
-
-			public decimal? valueOfNominalRange {get;set;} = default;
-
-			[EnumerationValue(3)]
-			[EnumerationValue(13)]
-			[EnumerationValue(16)]
-			[EnumerationValue(17)]
-			[EnumerationValue(18)]
-			[EnumerationValue(19)]
-			[EnumerationValue(20)]
-			[EnumerationValue(21)]
-			[EnumerationValue(24)]
-			[EnumerationValue(25)]
-			[EnumerationValue(26)]
-			[EnumerationValue(28)]
-			[EnumerationValue(29)]
-			[EnumerationValue(30)]
-			[EnumerationValue(44)]
-			public verticalDatum? verticalDatum {get;set;} = default;
-
-			public int? scaleMinimum {get;set;} = default;
-
-			public List<information> information {get;set;} = [];
-
-			[JsonIgnore]
-			public override string Code => nameof(LightAirObstruction);
-
-			public informationBindingDefinition[] informationBindingDefinitions => LightAirObstruction._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(NauticalInformation)],
-				},
-			];
-
-			public featureBindingDefinition[] featureBindingDefinitions => LightAirObstruction._featureBindingDefinitions;
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.composition,
-					lower = 0,
-					upper =  1,
-					association = nameof(StructureEquipment),
-					role = Enum.GetName<Role>(Role.theStructure)!,
-					featureTypes = [nameof(Bridge),nameof(Building),nameof(Crane),nameof(Conveyor),nameof(Landmark),nameof(OffshorePlatform),nameof(PylonBridgeSupport),nameof(SpanFixed),nameof(SpanOpening),nameof(WindTurbine),nameof(LightAllAround),nameof(LightSectored)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  2,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-			];
-		}
-
-		[System.Serializable()]
-		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class LateralBuoy : FeatureNode, IFeatureBindingDefinition {
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
-			[Required()]
-			public buoyShape buoyShape {get;set;}
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[Required()]
-			public categoryOfLateralMark categoryOfLateralMark {get;set;}
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
-			[EnumerationValue(9)]
-			[EnumerationValue(10)]
-			[EnumerationValue(11)]
-			[EnumerationValue(12)]
-			[EnumerationValue(13)]
-			public List<colour> colour {get;set;} = [];
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			public colourPattern? colourPattern {get;set;} = default;
-
-			public List<featureName> featureName {get;set;} = [];
-
-			public fixedDateRange? fixedDateRange {get;set;} = default;
-
-			public String? interoperabilityIdentifier {get;set;} = default;
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(9)]
-			[EnumerationValue(11)]
-			public marksNavigationalSystemOf? marksNavigationalSystemOf {get;set;} = default;
-
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
-			[EnumerationValue(11)]
-			public List<natureOfConstruction> natureOfConstruction {get;set;} = [];
-
-			public List<periodicDateRange> periodicDateRange {get;set;} = [];
-
-			public Boolean? radarConspicuous {get;set;} = default;
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(5)]
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
-			[EnumerationValue(18)]
-			public List<status> status {get;set;} = [];
-
-			public topmark? topmark {get;set;} = default;
-
-			public decimal? verticalLength {get;set;} = default;
-
-			public int? scaleMinimum {get;set;} = default;
-
-			public List<information> information {get;set;} = [];
-
-			public String? pictorialRepresentation {get;set;} = default;
-
-			[JsonIgnore]
-			public override string Code => nameof(LateralBuoy);
-
-			public informationBindingDefinition[] informationBindingDefinitions => LateralBuoy._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation)],
-				},
-			];
-
-			public featureBindingDefinition[] featureBindingDefinitions => LateralBuoy._featureBindingDefinitions;
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(StructureEquipment),
-					role = Enum.GetName<Role>(Role.theEquipment)!,
-					featureTypes = [nameof(Daymark),nameof(DistanceMark),nameof(FogSignal),nameof(LightAllAround),nameof(LightFogDetector),nameof(PhysicalAISAidToNavigation),nameof(RadarTransponderBeacon),nameof(Retroreflector),nameof(SignalStationTraffic),nameof(SignalStationWarning)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.aggregation,
-					lower = 0,
-					upper =  1,
-					association = nameof(AidsToNavigationAssociation),
-					role = Enum.GetName<Role>(Role.theCollection)!,
-					featureTypes = [nameof(ArchipelagicSeaLane),nameof(DeepWaterRoute),nameof(FairwaySystem),nameof(TrafficSeparationScheme),nameof(TwoWayRoute)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.aggregation,
-					lower = 0,
-					upper =  1,
-					association = nameof(FairwayAuxiliary),
-					role = Enum.GetName<Role>(Role.thePrimaryFeature)!,
-					featureTypes = [nameof(Fairway)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  2,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-			];
-		}
-
-		[System.Serializable()]
-		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class CardinalBuoy : FeatureNode, IFeatureBindingDefinition {
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
-			[Required()]
-			public buoyShape buoyShape {get;set;}
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[Required()]
-			public categoryOfCardinalMark categoryOfCardinalMark {get;set;}
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
-			[EnumerationValue(9)]
-			[EnumerationValue(10)]
-			[EnumerationValue(11)]
-			[EnumerationValue(12)]
-			[EnumerationValue(13)]
-			public List<colour> colour {get;set;} = [];
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			public colourPattern? colourPattern {get;set;} = default;
-
-			public List<featureName> featureName {get;set;} = [];
-
-			public fixedDateRange? fixedDateRange {get;set;} = default;
-
-			public String? interoperabilityIdentifier {get;set;} = default;
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(9)]
-			[EnumerationValue(11)]
-			public marksNavigationalSystemOf? marksNavigationalSystemOf {get;set;} = default;
-
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
-			[EnumerationValue(11)]
-			public List<natureOfConstruction> natureOfConstruction {get;set;} = [];
-
-			public List<periodicDateRange> periodicDateRange {get;set;} = [];
-
-			public Boolean? radarConspicuous {get;set;} = default;
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(5)]
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
-			[EnumerationValue(18)]
-			public List<status> status {get;set;} = [];
-
-			public topmark? topmark {get;set;} = default;
-
-			public decimal? verticalLength {get;set;} = default;
-
-			public int? scaleMinimum {get;set;} = default;
-
-			public List<information> information {get;set;} = [];
-
-			public String? pictorialRepresentation {get;set;} = default;
-
-			[JsonIgnore]
-			public override string Code => nameof(CardinalBuoy);
-
-			public informationBindingDefinition[] informationBindingDefinitions => CardinalBuoy._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation)],
-				},
-			];
-
-			public featureBindingDefinition[] featureBindingDefinitions => CardinalBuoy._featureBindingDefinitions;
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(StructureEquipment),
-					role = Enum.GetName<Role>(Role.theEquipment)!,
-					featureTypes = [nameof(Daymark),nameof(DistanceMark),nameof(FogSignal),nameof(LightAllAround),nameof(LightFogDetector),nameof(PhysicalAISAidToNavigation),nameof(RadarTransponderBeacon),nameof(Retroreflector),nameof(SignalStationTraffic),nameof(SignalStationWarning)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.aggregation,
-					lower = 0,
-					upper =  1,
-					association = nameof(AidsToNavigationAssociation),
-					role = Enum.GetName<Role>(Role.theCollection)!,
-					featureTypes = [nameof(ArchipelagicSeaLane),nameof(DeepWaterRoute),nameof(FairwaySystem),nameof(TrafficSeparationScheme),nameof(TwoWayRoute)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.aggregation,
-					lower = 0,
-					upper =  1,
-					association = nameof(FairwayAuxiliary),
-					role = Enum.GetName<Role>(Role.thePrimaryFeature)!,
-					featureTypes = [nameof(Fairway)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  2,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-			];
-		}
-
-		[System.Serializable()]
-		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class IsolatedDangerBuoy : FeatureNode, IFeatureBindingDefinition {
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
-			[Required()]
-			public buoyShape buoyShape {get;set;}
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
-			[EnumerationValue(9)]
-			[EnumerationValue(10)]
-			[EnumerationValue(11)]
-			[EnumerationValue(12)]
-			[EnumerationValue(13)]
-			public List<colour> colour {get;set;} = [];
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			public colourPattern? colourPattern {get;set;} = default;
-
-			public List<featureName> featureName {get;set;} = [];
-
-			public fixedDateRange? fixedDateRange {get;set;} = default;
-
-			public String? interoperabilityIdentifier {get;set;} = default;
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(9)]
-			[EnumerationValue(11)]
-			public marksNavigationalSystemOf? marksNavigationalSystemOf {get;set;} = default;
-
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
-			[EnumerationValue(11)]
-			public List<natureOfConstruction> natureOfConstruction {get;set;} = [];
-
-			public List<periodicDateRange> periodicDateRange {get;set;} = [];
-
-			public Boolean? radarConspicuous {get;set;} = default;
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(5)]
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
-			[EnumerationValue(18)]
-			public List<status> status {get;set;} = [];
-
-			public topmark? topmark {get;set;} = default;
-
-			public decimal? verticalLength {get;set;} = default;
-
-			public int? scaleMinimum {get;set;} = default;
-
-			public List<information> information {get;set;} = [];
-
-			public String? pictorialRepresentation {get;set;} = default;
-
-			[JsonIgnore]
-			public override string Code => nameof(IsolatedDangerBuoy);
-
-			public informationBindingDefinition[] informationBindingDefinitions => IsolatedDangerBuoy._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation)],
-				},
-			];
-
-			public featureBindingDefinition[] featureBindingDefinitions => IsolatedDangerBuoy._featureBindingDefinitions;
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(StructureEquipment),
-					role = Enum.GetName<Role>(Role.theEquipment)!,
-					featureTypes = [nameof(Daymark),nameof(DistanceMark),nameof(FogSignal),nameof(LightAllAround),nameof(LightFogDetector),nameof(PhysicalAISAidToNavigation),nameof(RadarTransponderBeacon),nameof(Retroreflector),nameof(SignalStationTraffic),nameof(SignalStationWarning)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.aggregation,
-					lower = 0,
-					upper =  1,
-					association = nameof(AidsToNavigationAssociation),
-					role = Enum.GetName<Role>(Role.theCollection)!,
-					featureTypes = [nameof(ArchipelagicSeaLane),nameof(DeepWaterRoute),nameof(FairwaySystem),nameof(TrafficSeparationScheme),nameof(TwoWayRoute)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.aggregation,
-					lower = 0,
-					upper =  1,
-					association = nameof(FairwayAuxiliary),
-					role = Enum.GetName<Role>(Role.thePrimaryFeature)!,
-					featureTypes = [nameof(Fairway)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  2,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-			];
-		}
-
-		[System.Serializable()]
-		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class SafeWaterBuoy : FeatureNode, IFeatureBindingDefinition {
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
-			[Required()]
-			public buoyShape buoyShape {get;set;}
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
-			[EnumerationValue(9)]
-			[EnumerationValue(10)]
-			[EnumerationValue(11)]
-			[EnumerationValue(12)]
-			[EnumerationValue(13)]
-			public List<colour> colour {get;set;} = [];
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			public colourPattern? colourPattern {get;set;} = default;
-
-			public List<featureName> featureName {get;set;} = [];
-
-			public fixedDateRange? fixedDateRange {get;set;} = default;
-
-			public String? interoperabilityIdentifier {get;set;} = default;
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(9)]
-			[EnumerationValue(11)]
-			public marksNavigationalSystemOf? marksNavigationalSystemOf {get;set;} = default;
-
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
-			[EnumerationValue(11)]
-			public List<natureOfConstruction> natureOfConstruction {get;set;} = [];
-
-			public List<periodicDateRange> periodicDateRange {get;set;} = [];
-
-			public Boolean? radarConspicuous {get;set;} = default;
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(5)]
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
-			[EnumerationValue(18)]
-			public List<status> status {get;set;} = [];
-
-			public topmark? topmark {get;set;} = default;
-
-			public decimal? verticalLength {get;set;} = default;
-
-			public int? scaleMinimum {get;set;} = default;
-
-			public List<information> information {get;set;} = [];
-
-			public String? pictorialRepresentation {get;set;} = default;
-
-			[JsonIgnore]
-			public override string Code => nameof(SafeWaterBuoy);
-
-			public informationBindingDefinition[] informationBindingDefinitions => SafeWaterBuoy._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation)],
-				},
-			];
-
-			public featureBindingDefinition[] featureBindingDefinitions => SafeWaterBuoy._featureBindingDefinitions;
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(StructureEquipment),
-					role = Enum.GetName<Role>(Role.theEquipment)!,
-					featureTypes = [nameof(Daymark),nameof(DistanceMark),nameof(FogSignal),nameof(LightAllAround),nameof(LightFogDetector),nameof(PhysicalAISAidToNavigation),nameof(RadarTransponderBeacon),nameof(Retroreflector),nameof(SignalStationTraffic),nameof(SignalStationWarning)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.aggregation,
-					lower = 0,
-					upper =  1,
-					association = nameof(AidsToNavigationAssociation),
-					role = Enum.GetName<Role>(Role.theCollection)!,
-					featureTypes = [nameof(ArchipelagicSeaLane),nameof(DeepWaterRoute),nameof(FairwaySystem),nameof(TrafficSeparationScheme),nameof(TwoWayRoute)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.aggregation,
-					lower = 0,
-					upper =  1,
-					association = nameof(FairwayAuxiliary),
-					role = Enum.GetName<Role>(Role.thePrimaryFeature)!,
-					featureTypes = [nameof(Fairway)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  2,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-			];
-		}
-
-		[System.Serializable()]
-		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class SpecialPurposeGeneralBuoy : FeatureNode, IFeatureBindingDefinition {
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
-			[Required()]
-			public buoyShape buoyShape {get;set;}
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
-			[EnumerationValue(9)]
-			[EnumerationValue(10)]
-			[EnumerationValue(11)]
-			[EnumerationValue(12)]
-			[EnumerationValue(14)]
-			[EnumerationValue(15)]
-			[EnumerationValue(17)]
-			[EnumerationValue(18)]
-			[EnumerationValue(19)]
-			[EnumerationValue(20)]
-			[EnumerationValue(21)]
-			[EnumerationValue(22)]
-			[EnumerationValue(23)]
-			[EnumerationValue(24)]
-			[EnumerationValue(25)]
-			[EnumerationValue(26)]
-			[EnumerationValue(27)]
-			[EnumerationValue(28)]
-			[EnumerationValue(29)]
-			[EnumerationValue(30)]
-			[EnumerationValue(31)]
-			[EnumerationValue(32)]
-			[EnumerationValue(33)]
-			[EnumerationValue(34)]
-			[EnumerationValue(35)]
-			[EnumerationValue(36)]
-			[EnumerationValue(37)]
-			[EnumerationValue(39)]
-			[EnumerationValue(40)]
-			[EnumerationValue(42)]
-			[EnumerationValue(43)]
-			[EnumerationValue(45)]
-			[EnumerationValue(46)]
-			[EnumerationValue(47)]
-			[EnumerationValue(48)]
-			[EnumerationValue(49)]
-			[EnumerationValue(50)]
-			[EnumerationValue(51)]
-			[EnumerationValue(52)]
-			[EnumerationValue(53)]
-			[EnumerationValue(54)]
-			[EnumerationValue(55)]
-			[EnumerationValue(56)]
-			[EnumerationValue(57)]
-			[EnumerationValue(58)]
-			[EnumerationValue(59)]
-			[EnumerationValue(60)]
-			[EnumerationValue(61)]
-			[EnumerationValue(62)]
-			[EnumerationValue(63)]
-			public List<categoryOfSpecialPurposeMark> categoryOfSpecialPurposeMark {get;set;} = [];
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
-			[EnumerationValue(9)]
-			[EnumerationValue(10)]
-			[EnumerationValue(11)]
-			[EnumerationValue(12)]
-			[EnumerationValue(13)]
-			public List<colour> colour {get;set;} = [];
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			public colourPattern? colourPattern {get;set;} = default;
-
-			public List<featureName> featureName {get;set;} = [];
-
-			public fixedDateRange? fixedDateRange {get;set;} = default;
-
-			public String? interoperabilityIdentifier {get;set;} = default;
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(9)]
-			[EnumerationValue(11)]
-			public marksNavigationalSystemOf? marksNavigationalSystemOf {get;set;} = default;
-
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
-			[EnumerationValue(11)]
-			public List<natureOfConstruction> natureOfConstruction {get;set;} = [];
-
-			public List<periodicDateRange> periodicDateRange {get;set;} = [];
-
-			public Boolean? radarConspicuous {get;set;} = default;
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(5)]
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
-			[EnumerationValue(18)]
-			public List<status> status {get;set;} = [];
-
-			public topmark? topmark {get;set;} = default;
-
-			public decimal? verticalLength {get;set;} = default;
-
-			public int? scaleMinimum {get;set;} = default;
-
-			public List<information> information {get;set;} = [];
-
-			public String? pictorialRepresentation {get;set;} = default;
-
-			[JsonIgnore]
-			public override string Code => nameof(SpecialPurposeGeneralBuoy);
-
-			public informationBindingDefinition[] informationBindingDefinitions => SpecialPurposeGeneralBuoy._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation)],
-				},
-			];
-
-			public featureBindingDefinition[] featureBindingDefinitions => SpecialPurposeGeneralBuoy._featureBindingDefinitions;
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(StructureEquipment),
-					role = Enum.GetName<Role>(Role.theEquipment)!,
-					featureTypes = [nameof(Daymark),nameof(DistanceMark),nameof(FogSignal),nameof(LightAllAround),nameof(LightFogDetector),nameof(PhysicalAISAidToNavigation),nameof(RadarTransponderBeacon),nameof(Retroreflector),nameof(SignalStationTraffic),nameof(SignalStationWarning)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.aggregation,
-					lower = 0,
-					upper =  1,
-					association = nameof(AidsToNavigationAssociation),
-					role = Enum.GetName<Role>(Role.theCollection)!,
-					featureTypes = [nameof(ArchipelagicSeaLane),nameof(DeepWaterRoute),nameof(FairwaySystem),nameof(TrafficSeparationScheme),nameof(TwoWayRoute)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.aggregation,
-					lower = 0,
-					upper =  1,
-					association = nameof(FairwayAuxiliary),
-					role = Enum.GetName<Role>(Role.thePrimaryFeature)!,
-					featureTypes = [nameof(Fairway)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  2,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-			];
-		}
-
-		[System.Serializable()]
-		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class EmergencyWreckMarkingBuoy : FeatureNode, IFeatureBindingDefinition {
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			[Required()]
-			public buoyShape buoyShape {get;set;}
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
-			[EnumerationValue(9)]
-			[EnumerationValue(10)]
-			[EnumerationValue(11)]
-			[EnumerationValue(12)]
-			[EnumerationValue(13)]
-			public List<colour> colour {get;set;} = [];
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			public colourPattern? colourPattern {get;set;} = default;
-
-			public List<featureName> featureName {get;set;} = [];
-
-			public fixedDateRange? fixedDateRange {get;set;} = default;
-
-			public String? interoperabilityIdentifier {get;set;} = default;
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(9)]
-			[EnumerationValue(11)]
-			public marksNavigationalSystemOf? marksNavigationalSystemOf {get;set;} = default;
-
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
-			[EnumerationValue(11)]
-			public List<natureOfConstruction> natureOfConstruction {get;set;} = [];
-
-			public Boolean? radarConspicuous {get;set;} = default;
-
-			public topmark? topmark {get;set;} = default;
-
-			public decimal? verticalLength {get;set;} = default;
-
-			public int? scaleMinimum {get;set;} = default;
-
-			public List<information> information {get;set;} = [];
-
-			public String? pictorialRepresentation {get;set;} = default;
-
-			[JsonIgnore]
-			public override string Code => nameof(EmergencyWreckMarkingBuoy);
-
-			public informationBindingDefinition[] informationBindingDefinitions => EmergencyWreckMarkingBuoy._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation)],
-				},
-			];
-
-			public featureBindingDefinition[] featureBindingDefinitions => EmergencyWreckMarkingBuoy._featureBindingDefinitions;
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.aggregation,
-					lower = 0,
-					upper =  1,
-					association = nameof(AidsToNavigationAssociation),
-					role = Enum.GetName<Role>(Role.theCollection)!,
-					featureTypes = [nameof(ArchipelagicSeaLane),nameof(DeepWaterRoute),nameof(FairwaySystem),nameof(TrafficSeparationScheme),nameof(TwoWayRoute)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(StructureEquipment),
-					role = Enum.GetName<Role>(Role.theEquipment)!,
-					featureTypes = [nameof(Daymark),nameof(DistanceMark),nameof(FogSignal),nameof(LightAllAround),nameof(LightFogDetector),nameof(PhysicalAISAidToNavigation),nameof(RadarTransponderBeacon),nameof(Retroreflector),nameof(SignalStationTraffic),nameof(SignalStationWarning)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  2,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-			];
-		}
-
-		[System.Serializable()]
-		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class InstallationBuoy : FeatureNode, IFeatureBindingDefinition {
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
-			[Required()]
-			public buoyShape buoyShape {get;set;}
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			public categoryOfInstallationBuoy? categoryOfInstallationBuoy {get;set;} = default;
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
-			[EnumerationValue(9)]
-			[EnumerationValue(10)]
-			[EnumerationValue(11)]
-			[EnumerationValue(12)]
-			[EnumerationValue(13)]
-			public List<colour> colour {get;set;} = [];
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			public colourPattern? colourPattern {get;set;} = default;
-
-			public List<featureName> featureName {get;set;} = [];
-
-			public fixedDateRange? fixedDateRange {get;set;} = default;
-
-			public String? interoperabilityIdentifier {get;set;} = default;
-
-			[EnumerationValue(7)]
-			[EnumerationValue(11)]
-			public List<natureOfConstruction> natureOfConstruction {get;set;} = [];
-
-			public List<periodicDateRange> periodicDateRange {get;set;} = [];
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(18)]
-			[EnumerationValue(19)]
-			public List<product> product {get;set;} = [];
-
-			public Boolean? radarConspicuous {get;set;} = default;
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
-			[EnumerationValue(18)]
-			public List<status> status {get;set;} = [];
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			public visualProminence? visualProminence {get;set;} = default;
-
-			public int? scaleMinimum {get;set;} = default;
-
-			public List<information> information {get;set;} = [];
-
-			public String? pictorialRepresentation {get;set;} = default;
-
-			[JsonIgnore]
-			public override string Code => nameof(InstallationBuoy);
-
-			public informationBindingDefinition[] informationBindingDefinitions => InstallationBuoy._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation)],
-				},
-			];
-
-			public featureBindingDefinition[] featureBindingDefinitions => InstallationBuoy._featureBindingDefinitions;
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(StructureEquipment),
-					role = Enum.GetName<Role>(Role.theEquipment)!,
-					featureTypes = [nameof(Daymark),nameof(DistanceMark),nameof(FogSignal),nameof(LightAllAround),nameof(LightFogDetector),nameof(PhysicalAISAidToNavigation),nameof(RadarTransponderBeacon),nameof(Retroreflector),nameof(SignalStationTraffic),nameof(SignalStationWarning)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  2,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-			];
-		}
-
-		[System.Serializable()]
-		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class MooringBuoy : FeatureNode, IFeatureBindingDefinition {
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
-			[Required()]
-			public buoyShape buoyShape {get;set;}
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
-			[EnumerationValue(9)]
-			[EnumerationValue(10)]
-			[EnumerationValue(11)]
-			[EnumerationValue(12)]
-			[EnumerationValue(13)]
-			public List<colour> colour {get;set;} = [];
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			public colourPattern? colourPattern {get;set;} = default;
-
-			public List<featureName> featureName {get;set;} = [];
-
-			public fixedDateRange? fixedDateRange {get;set;} = default;
-
-			public String? interoperabilityIdentifier {get;set;} = default;
-
-			public decimal? maximumPermittedDraught {get;set;} = default;
-
-			public decimal? maximumPermittedVesselLength {get;set;} = default;
-
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
-			[EnumerationValue(11)]
-			public List<natureOfConstruction> natureOfConstruction {get;set;} = [];
-
-			public List<periodicDateRange> periodicDateRange {get;set;} = [];
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
-			[EnumerationValue(18)]
-			public List<status> status {get;set;} = [];
-
-			public decimal? verticalLength {get;set;} = default;
-
-			public Boolean? visitorsMooring {get;set;} = default;
-
-			public int? scaleMinimum {get;set;} = default;
-
-			public List<information> information {get;set;} = [];
-
-			public String? pictorialRepresentation {get;set;} = default;
-
-			[JsonIgnore]
-			public override string Code => nameof(MooringBuoy);
-
-			public informationBindingDefinition[] informationBindingDefinitions => MooringBuoy._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation)],
-				},
-			];
-
-			public featureBindingDefinition[] featureBindingDefinitions => MooringBuoy._featureBindingDefinitions;
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.aggregation,
-					lower = 0,
-					upper =  1,
-					association = nameof(AidsToNavigationAssociation),
-					role = Enum.GetName<Role>(Role.theCollection)!,
-					featureTypes = [nameof(DeepWaterRoute),nameof(FairwaySystem),nameof(TrafficSeparationScheme),nameof(TwoWayRoute)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(StructureEquipment),
-					role = Enum.GetName<Role>(Role.theEquipment)!,
-					featureTypes = [nameof(Daymark),nameof(DistanceMark),nameof(FogSignal),nameof(LightAllAround),nameof(LightFogDetector),nameof(PhysicalAISAidToNavigation),nameof(RadarTransponderBeacon),nameof(Retroreflector),nameof(SignalStationTraffic),nameof(SignalStationWarning)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.aggregation,
-					lower = 0,
-					upper =  1,
-					association = nameof(MooringTrotAggregation),
-					role = Enum.GetName<Role>(Role.theCollection)!,
-					featureTypes = [nameof(MooringTrot)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  2,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-			];
-		}
-
-		[System.Serializable()]
-		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class LateralBeacon : FeatureNode, IFeatureBindingDefinition {
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
-			[Required()]
-			public beaconShape beaconShape {get;set;}
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[Required()]
-			public categoryOfLateralMark categoryOfLateralMark {get;set;}
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
-			[EnumerationValue(9)]
-			[EnumerationValue(10)]
-			[EnumerationValue(11)]
-			[EnumerationValue(12)]
-			[EnumerationValue(13)]
-			public List<colour> colour {get;set;} = [];
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			public colourPattern? colourPattern {get;set;} = default;
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(5)]
-			public condition? condition {get;set;} = default;
-
-			public decimal? elevation {get;set;} = default;
-
-			public List<featureName> featureName {get;set;} = [];
-
-			public fixedDateRange? fixedDateRange {get;set;} = default;
-
-			public String? interoperabilityIdentifier {get;set;} = default;
-
-			public decimal? height {get;set;} = default;
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(9)]
-			[EnumerationValue(11)]
-			public marksNavigationalSystemOf? marksNavigationalSystemOf {get;set;} = default;
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
-			public List<natureOfConstruction> natureOfConstruction {get;set;} = [];
-
-			public List<periodicDateRange> periodicDateRange {get;set;} = [];
-
-			public Boolean? radarConspicuous {get;set;} = default;
-
-			public DateOnly? reportedDate {get;set;} = default;
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
-			[EnumerationValue(12)]
-			[EnumerationValue(18)]
-			public List<status> status {get;set;} = [];
-
-			public topmark? topmark {get;set;} = default;
-
-			public decimal? verticalLength {get;set;} = default;
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			public visualProminence? visualProminence {get;set;} = default;
-
-			public int? scaleMinimum {get;set;} = default;
-
-			public List<information> information {get;set;} = [];
-
-			public String? pictorialRepresentation {get;set;} = default;
-
-			[JsonIgnore]
-			public override string Code => nameof(LateralBeacon);
-
-			public informationBindingDefinition[] informationBindingDefinitions => LateralBeacon._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation)],
-				},
-			];
-
-			public featureBindingDefinition[] featureBindingDefinitions => LateralBeacon._featureBindingDefinitions;
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(StructureEquipment),
-					role = Enum.GetName<Role>(Role.theEquipment)!,
-					featureTypes = [nameof(Daymark),nameof(DistanceMark),nameof(FogSignal),nameof(LightAllAround),nameof(LightFogDetector),nameof(PhysicalAISAidToNavigation),nameof(RadarTransponderBeacon),nameof(Retroreflector),nameof(SignalStationTraffic),nameof(SignalStationWarning),nameof(LightSectored)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.aggregation,
-					lower = 0,
-					upper =  1,
-					association = nameof(AidsToNavigationAssociation),
-					role = Enum.GetName<Role>(Role.theCollection)!,
-					featureTypes = [nameof(ArchipelagicSeaLane),nameof(DeepWaterRoute),nameof(FairwaySystem),nameof(TrafficSeparationScheme),nameof(TwoWayRoute)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.aggregation,
-					lower = 0,
-					upper =  1,
-					association = nameof(RangeSystemAggregation),
-					role = Enum.GetName<Role>(Role.theCollection)!,
-					featureTypes = [nameof(RangeSystem)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.aggregation,
-					lower = 0,
-					upper =  1,
-					association = nameof(FairwayAuxiliary),
-					role = Enum.GetName<Role>(Role.thePrimaryFeature)!,
-					featureTypes = [nameof(Fairway)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  2,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-			];
-		}
-
-		[System.Serializable()]
-		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class CardinalBeacon : FeatureNode, IFeatureBindingDefinition {
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
-			[Required()]
-			public beaconShape beaconShape {get;set;}
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[Required()]
-			public categoryOfCardinalMark categoryOfCardinalMark {get;set;}
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
-			[EnumerationValue(9)]
-			[EnumerationValue(10)]
-			[EnumerationValue(11)]
-			[EnumerationValue(12)]
-			[EnumerationValue(13)]
-			public List<colour> colour {get;set;} = [];
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			public colourPattern? colourPattern {get;set;} = default;
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(5)]
-			public condition? condition {get;set;} = default;
-
-			public decimal? elevation {get;set;} = default;
-
-			public List<featureName> featureName {get;set;} = [];
-
-			public fixedDateRange? fixedDateRange {get;set;} = default;
-
-			public decimal? height {get;set;} = default;
-
-			public String? interoperabilityIdentifier {get;set;} = default;
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(9)]
-			[EnumerationValue(11)]
-			public marksNavigationalSystemOf? marksNavigationalSystemOf {get;set;} = default;
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
-			public List<natureOfConstruction> natureOfConstruction {get;set;} = [];
-
-			public List<periodicDateRange> periodicDateRange {get;set;} = [];
-
-			public Boolean? radarConspicuous {get;set;} = default;
-
-			public DateOnly? reportedDate {get;set;} = default;
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
-			[EnumerationValue(12)]
-			[EnumerationValue(18)]
-			public List<status> status {get;set;} = [];
-
-			public topmark? topmark {get;set;} = default;
-
-			public decimal? verticalLength {get;set;} = default;
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			public visualProminence? visualProminence {get;set;} = default;
-
-			public int? scaleMinimum {get;set;} = default;
-
-			public List<information> information {get;set;} = [];
-
-			public String? pictorialRepresentation {get;set;} = default;
-
-			[JsonIgnore]
-			public override string Code => nameof(CardinalBeacon);
-
-			public informationBindingDefinition[] informationBindingDefinitions => CardinalBeacon._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation)],
-				},
-			];
-
-			public featureBindingDefinition[] featureBindingDefinitions => CardinalBeacon._featureBindingDefinitions;
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(StructureEquipment),
-					role = Enum.GetName<Role>(Role.theEquipment)!,
-					featureTypes = [nameof(Daymark),nameof(DistanceMark),nameof(FogSignal),nameof(LightAllAround),nameof(LightFogDetector),nameof(PhysicalAISAidToNavigation),nameof(RadarTransponderBeacon),nameof(Retroreflector),nameof(SignalStationTraffic),nameof(SignalStationWarning),nameof(LightSectored)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.aggregation,
-					lower = 0,
-					upper =  1,
-					association = nameof(AidsToNavigationAssociation),
-					role = Enum.GetName<Role>(Role.theCollection)!,
-					featureTypes = [nameof(ArchipelagicSeaLane),nameof(DeepWaterRoute),nameof(FairwaySystem),nameof(TrafficSeparationScheme),nameof(TwoWayRoute)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.aggregation,
-					lower = 0,
-					upper =  1,
-					association = nameof(RangeSystemAggregation),
-					role = Enum.GetName<Role>(Role.theCollection)!,
-					featureTypes = [nameof(RangeSystem)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.aggregation,
-					lower = 0,
-					upper =  1,
-					association = nameof(FairwayAuxiliary),
-					role = Enum.GetName<Role>(Role.thePrimaryFeature)!,
-					featureTypes = [nameof(Fairway)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  2,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-			];
-		}
-
-		[System.Serializable()]
-		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class IsolatedDangerBeacon : FeatureNode, IFeatureBindingDefinition {
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
-			[Required()]
-			public beaconShape beaconShape {get;set;}
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
-			[EnumerationValue(9)]
-			[EnumerationValue(10)]
-			[EnumerationValue(11)]
-			[EnumerationValue(12)]
-			[EnumerationValue(13)]
-			public List<colour> colour {get;set;} = [];
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			public colourPattern? colourPattern {get;set;} = default;
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(5)]
-			public condition? condition {get;set;} = default;
-
-			public decimal? elevation {get;set;} = default;
-
-			public List<featureName> featureName {get;set;} = [];
-
-			public fixedDateRange? fixedDateRange {get;set;} = default;
-
-			public decimal? height {get;set;} = default;
-
-			public String? interoperabilityIdentifier {get;set;} = default;
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(9)]
-			[EnumerationValue(11)]
-			public marksNavigationalSystemOf? marksNavigationalSystemOf {get;set;} = default;
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
-			public List<natureOfConstruction> natureOfConstruction {get;set;} = [];
-
-			public List<periodicDateRange> periodicDateRange {get;set;} = [];
-
-			public Boolean? radarConspicuous {get;set;} = default;
-
-			public DateOnly? reportedDate {get;set;} = default;
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
-			[EnumerationValue(12)]
-			[EnumerationValue(18)]
-			public List<status> status {get;set;} = [];
-
-			public topmark? topmark {get;set;} = default;
-
-			public decimal? verticalLength {get;set;} = default;
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			public visualProminence? visualProminence {get;set;} = default;
-
-			public int? scaleMinimum {get;set;} = default;
-
-			public List<information> information {get;set;} = [];
-
-			public String? pictorialRepresentation {get;set;} = default;
-
-			[JsonIgnore]
-			public override string Code => nameof(IsolatedDangerBeacon);
-
-			public informationBindingDefinition[] informationBindingDefinitions => IsolatedDangerBeacon._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation)],
-				},
-			];
-
-			public featureBindingDefinition[] featureBindingDefinitions => IsolatedDangerBeacon._featureBindingDefinitions;
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(StructureEquipment),
-					role = Enum.GetName<Role>(Role.theEquipment)!,
-					featureTypes = [nameof(Daymark),nameof(DistanceMark),nameof(FogSignal),nameof(LightAllAround),nameof(LightFogDetector),nameof(PhysicalAISAidToNavigation),nameof(RadarTransponderBeacon),nameof(Retroreflector),nameof(SignalStationTraffic),nameof(SignalStationWarning),nameof(LightSectored)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.aggregation,
-					lower = 0,
-					upper =  1,
-					association = nameof(AidsToNavigationAssociation),
-					role = Enum.GetName<Role>(Role.theCollection)!,
-					featureTypes = [nameof(ArchipelagicSeaLane),nameof(DeepWaterRoute),nameof(FairwaySystem),nameof(TrafficSeparationScheme),nameof(TwoWayRoute)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.aggregation,
-					lower = 0,
-					upper =  1,
-					association = nameof(RangeSystemAggregation),
-					role = Enum.GetName<Role>(Role.theCollection)!,
-					featureTypes = [nameof(RangeSystem)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.aggregation,
-					lower = 0,
-					upper =  1,
-					association = nameof(FairwayAuxiliary),
-					role = Enum.GetName<Role>(Role.thePrimaryFeature)!,
-					featureTypes = [nameof(Fairway)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  2,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-			];
-		}
-
-		[System.Serializable()]
-		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class SafeWaterBeacon : FeatureNode, IFeatureBindingDefinition {
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
-			[Required()]
-			public beaconShape beaconShape {get;set;}
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
-			[EnumerationValue(9)]
-			[EnumerationValue(10)]
-			[EnumerationValue(11)]
-			[EnumerationValue(12)]
-			[EnumerationValue(13)]
-			public List<colour> colour {get;set;} = [];
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			public colourPattern? colourPattern {get;set;} = default;
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(5)]
-			public condition? condition {get;set;} = default;
-
-			public decimal? elevation {get;set;} = default;
-
-			public List<featureName> featureName {get;set;} = [];
-
-			public fixedDateRange? fixedDateRange {get;set;} = default;
-
-			public decimal? height {get;set;} = default;
-
-			public String? interoperabilityIdentifier {get;set;} = default;
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(9)]
-			[EnumerationValue(11)]
-			public marksNavigationalSystemOf? marksNavigationalSystemOf {get;set;} = default;
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
-			public List<natureOfConstruction> natureOfConstruction {get;set;} = [];
-
-			public List<periodicDateRange> periodicDateRange {get;set;} = [];
-
-			public Boolean? radarConspicuous {get;set;} = default;
-
-			public DateOnly? reportedDate {get;set;} = default;
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
-			[EnumerationValue(12)]
-			[EnumerationValue(18)]
-			public List<status> status {get;set;} = [];
-
-			public topmark? topmark {get;set;} = default;
-
-			public decimal? verticalLength {get;set;} = default;
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			public visualProminence? visualProminence {get;set;} = default;
-
-			public int? scaleMinimum {get;set;} = default;
-
-			public List<information> information {get;set;} = [];
-
-			public String? pictorialRepresentation {get;set;} = default;
-
-			[JsonIgnore]
-			public override string Code => nameof(SafeWaterBeacon);
-
-			public informationBindingDefinition[] informationBindingDefinitions => SafeWaterBeacon._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation)],
-				},
-			];
-
-			public featureBindingDefinition[] featureBindingDefinitions => SafeWaterBeacon._featureBindingDefinitions;
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(StructureEquipment),
-					role = Enum.GetName<Role>(Role.theEquipment)!,
-					featureTypes = [nameof(Daymark),nameof(DistanceMark),nameof(FogSignal),nameof(LightAllAround),nameof(LightFogDetector),nameof(PhysicalAISAidToNavigation),nameof(RadarTransponderBeacon),nameof(Retroreflector),nameof(SignalStationTraffic),nameof(SignalStationWarning),nameof(LightSectored)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.aggregation,
-					lower = 0,
-					upper =  1,
-					association = nameof(AidsToNavigationAssociation),
-					role = Enum.GetName<Role>(Role.theCollection)!,
-					featureTypes = [nameof(ArchipelagicSeaLane),nameof(DeepWaterRoute),nameof(FairwaySystem),nameof(TrafficSeparationScheme),nameof(TwoWayRoute)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.aggregation,
-					lower = 0,
-					upper =  1,
-					association = nameof(RangeSystemAggregation),
-					role = Enum.GetName<Role>(Role.theCollection)!,
-					featureTypes = [nameof(RangeSystem)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.aggregation,
-					lower = 0,
-					upper =  1,
-					association = nameof(FairwayAuxiliary),
-					role = Enum.GetName<Role>(Role.thePrimaryFeature)!,
-					featureTypes = [nameof(Fairway)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  2,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-			];
-		}
-
-		[System.Serializable()]
-		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class SpecialPurposeGeneralBeacon : FeatureNode, IFeatureBindingDefinition {
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
-			[Required()]
-			public beaconShape beaconShape {get;set;}
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
-			[EnumerationValue(10)]
-			[EnumerationValue(11)]
-			[EnumerationValue(12)]
-			[EnumerationValue(14)]
-			[EnumerationValue(16)]
-			[EnumerationValue(17)]
-			[EnumerationValue(18)]
-			[EnumerationValue(19)]
-			[EnumerationValue(20)]
-			[EnumerationValue(21)]
-			[EnumerationValue(22)]
-			[EnumerationValue(23)]
-			[EnumerationValue(24)]
-			[EnumerationValue(25)]
-			[EnumerationValue(26)]
-			[EnumerationValue(27)]
-			[EnumerationValue(28)]
-			[EnumerationValue(29)]
-			[EnumerationValue(30)]
-			[EnumerationValue(31)]
-			[EnumerationValue(32)]
-			[EnumerationValue(33)]
-			[EnumerationValue(34)]
-			[EnumerationValue(35)]
-			[EnumerationValue(36)]
-			[EnumerationValue(37)]
-			[EnumerationValue(39)]
-			[EnumerationValue(40)]
-			[EnumerationValue(41)]
-			[EnumerationValue(42)]
-			[EnumerationValue(43)]
-			[EnumerationValue(44)]
-			[EnumerationValue(45)]
-			[EnumerationValue(46)]
-			[EnumerationValue(47)]
-			[EnumerationValue(48)]
-			[EnumerationValue(49)]
-			[EnumerationValue(50)]
-			[EnumerationValue(51)]
-			[EnumerationValue(52)]
-			[EnumerationValue(53)]
-			[EnumerationValue(54)]
-			[EnumerationValue(55)]
-			[EnumerationValue(56)]
-			[EnumerationValue(57)]
-			[EnumerationValue(58)]
-			[EnumerationValue(60)]
-			[EnumerationValue(61)]
-			[EnumerationValue(62)]
-			[EnumerationValue(63)]
-			public List<categoryOfSpecialPurposeMark> categoryOfSpecialPurposeMark {get;set;} = [];
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
-			[EnumerationValue(9)]
-			[EnumerationValue(10)]
-			[EnumerationValue(11)]
-			[EnumerationValue(12)]
-			[EnumerationValue(13)]
-			public List<colour> colour {get;set;} = [];
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			public colourPattern? colourPattern {get;set;} = default;
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(5)]
-			public condition? condition {get;set;} = default;
-
-			public decimal? elevation {get;set;} = default;
-
-			public List<featureName> featureName {get;set;} = [];
-
-			public fixedDateRange? fixedDateRange {get;set;} = default;
-
-			public decimal? height {get;set;} = default;
-
-			public String? interoperabilityIdentifier {get;set;} = default;
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(9)]
-			[EnumerationValue(11)]
-			public marksNavigationalSystemOf? marksNavigationalSystemOf {get;set;} = default;
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
-			public List<natureOfConstruction> natureOfConstruction {get;set;} = [];
-
-			public List<periodicDateRange> periodicDateRange {get;set;} = [];
-
-			public Boolean? radarConspicuous {get;set;} = default;
-
-			public DateOnly? reportedDate {get;set;} = default;
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
-			[EnumerationValue(12)]
-			[EnumerationValue(18)]
-			public List<status> status {get;set;} = [];
-
-			public topmark? topmark {get;set;} = default;
-
-			public decimal? verticalLength {get;set;} = default;
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			public visualProminence? visualProminence {get;set;} = default;
-
-			public int? scaleMinimum {get;set;} = default;
-
-			public List<information> information {get;set;} = [];
-
-			public String? pictorialRepresentation {get;set;} = default;
-
-			[JsonIgnore]
-			public override string Code => nameof(SpecialPurposeGeneralBeacon);
-
-			public informationBindingDefinition[] informationBindingDefinitions => SpecialPurposeGeneralBeacon._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation)],
-				},
-			];
-
-			public featureBindingDefinition[] featureBindingDefinitions => SpecialPurposeGeneralBeacon._featureBindingDefinitions;
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(StructureEquipment),
-					role = Enum.GetName<Role>(Role.theEquipment)!,
-					featureTypes = [nameof(Daymark),nameof(DistanceMark),nameof(FogSignal),nameof(LightAllAround),nameof(LightFogDetector),nameof(PhysicalAISAidToNavigation),nameof(RadarTransponderBeacon),nameof(Retroreflector),nameof(SignalStationTraffic),nameof(SignalStationWarning),nameof(LightSectored)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.aggregation,
-					lower = 0,
-					upper =  1,
-					association = nameof(AidsToNavigationAssociation),
-					role = Enum.GetName<Role>(Role.theCollection)!,
-					featureTypes = [nameof(ArchipelagicSeaLane),nameof(DeepWaterRoute),nameof(FairwaySystem),nameof(TrafficSeparationScheme),nameof(TwoWayRoute)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.aggregation,
-					lower = 0,
-					upper =  1,
-					association = nameof(RangeSystemAggregation),
-					role = Enum.GetName<Role>(Role.theCollection)!,
-					featureTypes = [nameof(RangeSystem)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.aggregation,
-					lower = 0,
-					upper =  1,
-					association = nameof(FairwayAuxiliary),
-					role = Enum.GetName<Role>(Role.thePrimaryFeature)!,
-					featureTypes = [nameof(Fairway)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  2,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-			];
-		}
-
-		[System.Serializable()]
-		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class Daymark : FeatureNode, IFeatureBindingDefinition {
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
-			[EnumerationValue(10)]
-			[EnumerationValue(11)]
-			[EnumerationValue(12)]
-			[EnumerationValue(14)]
-			[EnumerationValue(15)]
-			[EnumerationValue(16)]
-			[EnumerationValue(17)]
-			[EnumerationValue(18)]
-			[EnumerationValue(19)]
-			[EnumerationValue(20)]
-			[EnumerationValue(21)]
-			[EnumerationValue(22)]
-			[EnumerationValue(23)]
-			[EnumerationValue(24)]
-			[EnumerationValue(25)]
-			[EnumerationValue(26)]
-			[EnumerationValue(27)]
-			[EnumerationValue(28)]
-			[EnumerationValue(29)]
-			[EnumerationValue(30)]
-			[EnumerationValue(31)]
-			[EnumerationValue(32)]
-			[EnumerationValue(33)]
-			[EnumerationValue(34)]
-			[EnumerationValue(35)]
-			[EnumerationValue(36)]
-			[EnumerationValue(37)]
-			[EnumerationValue(39)]
-			[EnumerationValue(40)]
-			[EnumerationValue(41)]
-			[EnumerationValue(42)]
-			[EnumerationValue(43)]
-			[EnumerationValue(44)]
-			[EnumerationValue(45)]
-			[EnumerationValue(46)]
-			[EnumerationValue(47)]
-			[EnumerationValue(48)]
-			[EnumerationValue(49)]
-			[EnumerationValue(50)]
-			[EnumerationValue(51)]
-			[EnumerationValue(52)]
-			[EnumerationValue(53)]
-			[EnumerationValue(54)]
-			[EnumerationValue(55)]
-			[EnumerationValue(56)]
-			[EnumerationValue(57)]
-			[EnumerationValue(58)]
-			[EnumerationValue(60)]
-			[EnumerationValue(61)]
-			[EnumerationValue(62)]
-			[EnumerationValue(63)]
-			public List<categoryOfSpecialPurposeMark> categoryOfSpecialPurposeMark {get;set;} = [];
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
-			[EnumerationValue(9)]
-			[EnumerationValue(10)]
-			[EnumerationValue(11)]
-			[EnumerationValue(12)]
-			[EnumerationValue(13)]
-			public List<colour> colour {get;set;} = [];
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			public colourPattern? colourPattern {get;set;} = default;
-
-			public decimal? elevation {get;set;} = default;
-
-			public List<featureName> featureName {get;set;} = [];
-
-			public fixedDateRange? fixedDateRange {get;set;} = default;
-
-			public decimal? height {get;set;} = default;
-
-			public String? interoperabilityIdentifier {get;set;} = default;
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(4)]
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
-			[EnumerationValue(11)]
-			public List<natureOfConstruction> natureOfConstruction {get;set;} = [];
-
-			public List<periodicDateRange> periodicDateRange {get;set;} = [];
-
-			public Boolean? radarConspicuous {get;set;} = default;
-
-			[EnumerationValue(1)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
-			[EnumerationValue(12)]
-			public List<status> status {get;set;} = [];
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
-			[EnumerationValue(9)]
-			[EnumerationValue(10)]
-			[EnumerationValue(11)]
-			[EnumerationValue(12)]
-			[EnumerationValue(13)]
-			[EnumerationValue(14)]
-			[EnumerationValue(15)]
-			[EnumerationValue(16)]
-			[EnumerationValue(17)]
-			[EnumerationValue(18)]
-			[EnumerationValue(19)]
-			[EnumerationValue(20)]
-			[EnumerationValue(21)]
-			[EnumerationValue(22)]
-			[EnumerationValue(23)]
-			[EnumerationValue(24)]
-			[EnumerationValue(25)]
-			[EnumerationValue(26)]
-			[EnumerationValue(27)]
-			[EnumerationValue(28)]
-			[EnumerationValue(29)]
-			[EnumerationValue(30)]
-			[EnumerationValue(31)]
-			[EnumerationValue(32)]
-			[EnumerationValue(33)]
-			[Required()]
-			public topmarkDaymarkShape topmarkDaymarkShape {get;set;}
-
-			public decimal? verticalLength {get;set;} = default;
-
-			public List<shapeInformation> shapeInformation {get;set;} = [];
-
-			public int? scaleMinimum {get;set;} = default;
-
-			public List<information> information {get;set;} = [];
-
-			public String? pictorialRepresentation {get;set;} = default;
-
-			[JsonIgnore]
-			public override string Code => nameof(Daymark);
-
-			public informationBindingDefinition[] informationBindingDefinitions => Daymark._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation)],
-				},
-			];
-
-			public featureBindingDefinition[] featureBindingDefinitions => Daymark._featureBindingDefinitions;
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(StructureEquipment),
-					role = Enum.GetName<Role>(Role.theEquipment)!,
-					featureTypes = [nameof(DistanceMark),nameof(FogSignal),nameof(LightAllAround),nameof(LightFogDetector),nameof(LightSectored),nameof(PhysicalAISAidToNavigation),nameof(RadarTransponderBeacon),nameof(Retroreflector),nameof(SignalStationTraffic),nameof(SignalStationWarning)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.composition,
-					lower = 0,
-					upper =  1,
-					association = nameof(StructureEquipment),
-					role = Enum.GetName<Role>(Role.theStructure)!,
-					featureTypes = [nameof(Bridge),nameof(Building),nameof(Crane),nameof(CardinalBeacon),nameof(CardinalBuoy),nameof(Conveyor),nameof(Dolphin),nameof(EmergencyWreckMarkingBuoy),nameof(FishingFacility),nameof(FloatingDock),nameof(FortifiedStructure),nameof(Hulk),nameof(InstallationBuoy),nameof(IsolatedDangerBeacon),nameof(IsolatedDangerBuoy),nameof(Landmark),nameof(LateralBeacon),nameof(LateralBuoy),nameof(LightFloat),nameof(LightVessel),nameof(MooringBuoy),nameof(OffshorePlatform),nameof(Pile),nameof(PipelineOverhead),nameof(Pontoon),nameof(PylonBridgeSupport),nameof(SafeWaterBeacon),nameof(SafeWaterBuoy),nameof(ShorelineConstruction),nameof(SiloTank),nameof(SpanFixed),nameof(SpanOpening),nameof(SpecialPurposeGeneralBeacon),nameof(SpecialPurposeGeneralBuoy),nameof(StructureOverNavigableWater),nameof(WindTurbine),nameof(Wreck)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.aggregation,
-					lower = 0,
-					upper =  1,
-					association = nameof(AidsToNavigationAssociation),
-					role = Enum.GetName<Role>(Role.theCollection)!,
-					featureTypes = [nameof(ArchipelagicSeaLane),nameof(DeepWaterRoute),nameof(FairwaySystem),nameof(TrafficSeparationScheme),nameof(TwoWayRoute)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.aggregation,
-					lower = 0,
-					upper =  1,
-					association = nameof(RangeSystemAggregation),
-					role = Enum.GetName<Role>(Role.theCollection)!,
-					featureTypes = [nameof(RangeSystem)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.aggregation,
-					lower = 0,
-					upper =  1,
-					association = nameof(FairwayAuxiliary),
-					role = Enum.GetName<Role>(Role.thePrimaryFeature)!,
-					featureTypes = [nameof(Fairway)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  2,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-			];
-		}
-
-		[System.Serializable()]
-		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class LightFloat : FeatureNode, IFeatureBindingDefinition {
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
-			[EnumerationValue(9)]
-			[EnumerationValue(10)]
-			[EnumerationValue(11)]
-			[EnumerationValue(12)]
-			[EnumerationValue(13)]
-			public List<colour> colour {get;set;} = [];
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			public colourPattern? colourPattern {get;set;} = default;
-
-			public List<featureName> featureName {get;set;} = [];
-
-			public fixedDateRange? fixedDateRange {get;set;} = default;
-
-			public decimal? horizontalLength {get;set;} = default;
-
-			public decimal? horizontalWidth {get;set;} = default;
-
-			public String? interoperabilityIdentifier {get;set;} = default;
-
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
-			[EnumerationValue(11)]
-			public List<natureOfConstruction> natureOfConstruction {get;set;} = [];
-
-			public List<periodicDateRange> periodicDateRange {get;set;} = [];
-
-			public Boolean? radarConspicuous {get;set;} = default;
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
-			[EnumerationValue(14)]
-			[EnumerationValue(16)]
-			[EnumerationValue(17)]
-			public List<status> status {get;set;} = [];
-
-			public topmark? topmark {get;set;} = default;
-
-			public decimal? verticalLength {get;set;} = default;
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			public visualProminence? visualProminence {get;set;} = default;
-
-			public int? scaleMinimum {get;set;} = default;
-
-			public List<information> information {get;set;} = [];
-
-			public String? pictorialRepresentation {get;set;} = default;
-
-			[JsonIgnore]
-			public override string Code => nameof(LightFloat);
-
-			public informationBindingDefinition[] informationBindingDefinitions => LightFloat._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation)],
-				},
-			];
-
-			public featureBindingDefinition[] featureBindingDefinitions => LightFloat._featureBindingDefinitions;
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(StructureEquipment),
-					role = Enum.GetName<Role>(Role.theEquipment)!,
-					featureTypes = [nameof(Daymark),nameof(DistanceMark),nameof(FogSignal),nameof(LightAllAround),nameof(LightFogDetector),nameof(PhysicalAISAidToNavigation),nameof(RadarTransponderBeacon),nameof(Retroreflector),nameof(SignalStationTraffic),nameof(SignalStationWarning)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.aggregation,
-					lower = 0,
-					upper =  1,
-					association = nameof(AidsToNavigationAssociation),
-					role = Enum.GetName<Role>(Role.theCollection)!,
-					featureTypes = [nameof(ArchipelagicSeaLane),nameof(DeepWaterRoute),nameof(FairwaySystem),nameof(TrafficSeparationScheme),nameof(TwoWayRoute)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.aggregation,
-					lower = 0,
-					upper =  1,
-					association = nameof(FairwayAuxiliary),
-					role = Enum.GetName<Role>(Role.thePrimaryFeature)!,
-					featureTypes = [nameof(Fairway)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  2,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-			];
-		}
-
-		[System.Serializable()]
-		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class LightVessel : FeatureNode, IFeatureBindingDefinition {
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
-			[EnumerationValue(9)]
-			[EnumerationValue(10)]
-			[EnumerationValue(11)]
-			[EnumerationValue(12)]
-			[EnumerationValue(13)]
-			public List<colour> colour {get;set;} = [];
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			public colourPattern? colourPattern {get;set;} = default;
-
-			public List<featureName> featureName {get;set;} = [];
-
-			public fixedDateRange? fixedDateRange {get;set;} = default;
-
-			public decimal? horizontalLength {get;set;} = default;
-
-			public decimal? horizontalWidth {get;set;} = default;
-
-			public String? interoperabilityIdentifier {get;set;} = default;
-
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
-			public List<natureOfConstruction> natureOfConstruction {get;set;} = [];
-
-			public List<periodicDateRange> periodicDateRange {get;set;} = [];
-
-			public Boolean? radarConspicuous {get;set;} = default;
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
-			[EnumerationValue(14)]
-			[EnumerationValue(16)]
-			[EnumerationValue(17)]
-			public List<status> status {get;set;} = [];
-
-			public decimal? verticalLength {get;set;} = default;
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			public visualProminence? visualProminence {get;set;} = default;
-
-			public int? scaleMinimum {get;set;} = default;
-
-			public List<information> information {get;set;} = [];
-
-			public String? pictorialRepresentation {get;set;} = default;
-
-			[JsonIgnore]
-			public override string Code => nameof(LightVessel);
-
-			public informationBindingDefinition[] informationBindingDefinitions => LightVessel._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation)],
-				},
-			];
-
-			public featureBindingDefinition[] featureBindingDefinitions => LightVessel._featureBindingDefinitions;
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(StructureEquipment),
-					role = Enum.GetName<Role>(Role.theEquipment)!,
-					featureTypes = [nameof(Daymark),nameof(DistanceMark),nameof(FogSignal),nameof(LightAllAround),nameof(LightFogDetector),nameof(PhysicalAISAidToNavigation),nameof(RadarTransponderBeacon),nameof(Retroreflector),nameof(SignalStationTraffic),nameof(SignalStationWarning)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.aggregation,
-					lower = 0,
-					upper =  1,
-					association = nameof(AidsToNavigationAssociation),
-					role = Enum.GetName<Role>(Role.theCollection)!,
-					featureTypes = [nameof(ArchipelagicSeaLane),nameof(DeepWaterRoute),nameof(FairwaySystem),nameof(TrafficSeparationScheme),nameof(TwoWayRoute)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.aggregation,
-					lower = 0,
-					upper =  1,
-					association = nameof(FairwayAuxiliary),
-					role = Enum.GetName<Role>(Role.thePrimaryFeature)!,
-					featureTypes = [nameof(Fairway)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  2,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-			];
-		}
-
-		[System.Serializable()]
-		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class Retroreflector : FeatureNode, IFeatureBindingDefinition {
-			[EnumerationValue(1)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
-			[EnumerationValue(9)]
-			[EnumerationValue(10)]
-			[EnumerationValue(11)]
-			[EnumerationValue(12)]
-			[EnumerationValue(13)]
-			public List<colour> colour {get;set;} = [];
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			public colourPattern? colourPattern {get;set;} = default;
-
-			public fixedDateRange? fixedDateRange {get;set;} = default;
-
-			public decimal? height {get;set;} = default;
-
-			public String? interoperabilityIdentifier {get;set;} = default;
-
-			public List<periodicDateRange> periodicDateRange {get;set;} = [];
-
-			[EnumerationValue(1)]
-			[EnumerationValue(4)]
-			[EnumerationValue(8)]
-			public List<status> status {get;set;} = [];
-
-			public int? scaleMinimum {get;set;} = default;
-
-			public List<information> information {get;set;} = [];
-
-			[JsonIgnore]
-			public override string Code => nameof(Retroreflector);
-
-			public informationBindingDefinition[] informationBindingDefinitions => Retroreflector._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(NauticalInformation)],
-				},
-			];
-
-			public featureBindingDefinition[] featureBindingDefinitions => Retroreflector._featureBindingDefinitions;
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.composition,
-					lower = 0,
-					upper =  1,
-					association = nameof(StructureEquipment),
-					role = Enum.GetName<Role>(Role.theStructure)!,
-					featureTypes = [nameof(Bridge),nameof(Building),nameof(Crane),nameof(CardinalBeacon),nameof(CardinalBuoy),nameof(Conveyor),nameof(Dolphin),nameof(EmergencyWreckMarkingBuoy),nameof(FishingFacility),nameof(FloatingDock),nameof(FortifiedStructure),nameof(Hulk),nameof(InstallationBuoy),nameof(IsolatedDangerBeacon),nameof(IsolatedDangerBuoy),nameof(Landmark),nameof(LateralBeacon),nameof(LateralBuoy),nameof(LightFloat),nameof(LightVessel),nameof(MooringBuoy),nameof(OffshorePlatform),nameof(Pile),nameof(PipelineOverhead),nameof(Pontoon),nameof(PylonBridgeSupport),nameof(SafeWaterBeacon),nameof(SafeWaterBuoy),nameof(ShorelineConstruction),nameof(SiloTank),nameof(SpanFixed),nameof(SpanOpening),nameof(SpecialPurposeGeneralBeacon),nameof(SpecialPurposeGeneralBuoy),nameof(StructureOverNavigableWater),nameof(WindTurbine),nameof(Wreck),nameof(LightAllAround),nameof(LightSectored),nameof(Daymark)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-			];
-		}
-
-		[System.Serializable()]
-		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class RadarReflector : FeatureNode, IFeatureBindingDefinition {
-			public fixedDateRange? fixedDateRange {get;set;} = default;
-
-			public decimal? height {get;set;} = default;
-
-			public String? interoperabilityIdentifier {get;set;} = default;
-
-			public List<periodicDateRange> periodicDateRange {get;set;} = [];
-
-			[EnumerationValue(1)]
-			[EnumerationValue(4)]
-			[EnumerationValue(8)]
-			public List<status> status {get;set;} = [];
-
-			public int? scaleMinimum {get;set;} = default;
-
-			public List<information> information {get;set;} = [];
-
-			[JsonIgnore]
-			public override string Code => nameof(RadarReflector);
-
-			public informationBindingDefinition[] informationBindingDefinitions => RadarReflector._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(NauticalInformation)],
-				},
-			];
-
-			public featureBindingDefinition[] featureBindingDefinitions => RadarReflector._featureBindingDefinitions;
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.composition,
-					lower = 0,
-					upper =  1,
-					association = nameof(StructureEquipment),
-					role = Enum.GetName<Role>(Role.theStructure)!,
-					featureTypes = [nameof(CableOverhead),nameof(PipelineOverhead)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-			];
-		}
-
-		[System.Serializable()]
-		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class FogSignal : FeatureNode, IFeatureBindingDefinition {
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
-			[EnumerationValue(9)]
-			[EnumerationValue(10)]
-			[Required()]
-			public categoryOfFogSignal categoryOfFogSignal {get;set;}
-
-			public List<featureName> featureName {get;set;} = [];
-
-			public fixedDateRange? fixedDateRange {get;set;} = default;
-
-			public String? interoperabilityIdentifier {get;set;} = default;
-
-			public List<periodicDateRange> periodicDateRange {get;set;} = [];
-
-			public int? signalFrequency {get;set;} = default;
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			public signalGeneration? signalGeneration {get;set;} = default;
-
-			public String? signalGroup {get;set;} = default;
-
-			public decimal? signalPeriod {get;set;} = default;
-
-			public List<signalSequence> signalSequence {get;set;} = [];
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
-			[EnumerationValue(15)]
-			public List<status> status {get;set;} = [];
-
-			public decimal? valueOfMaximumRange {get;set;} = default;
-
-			public int? scaleMinimum {get;set;} = default;
-
-			public List<information> information {get;set;} = [];
-
-			[JsonIgnore]
-			public override string Code => nameof(FogSignal);
-
-			public informationBindingDefinition[] informationBindingDefinitions => FogSignal._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation)],
-				},
-			];
-
-			public featureBindingDefinition[] featureBindingDefinitions => FogSignal._featureBindingDefinitions;
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.composition,
-					lower = 0,
-					upper =  1,
-					association = nameof(StructureEquipment),
-					role = Enum.GetName<Role>(Role.theStructure)!,
-					featureTypes = [nameof(Bridge),nameof(Building),nameof(Crane),nameof(CardinalBeacon),nameof(CardinalBuoy),nameof(Conveyor),nameof(Dolphin),nameof(EmergencyWreckMarkingBuoy),nameof(FishingFacility),nameof(FloatingDock),nameof(FortifiedStructure),nameof(Hulk),nameof(InstallationBuoy),nameof(IsolatedDangerBeacon),nameof(IsolatedDangerBuoy),nameof(Landmark),nameof(LateralBeacon),nameof(LateralBuoy),nameof(LightFloat),nameof(LightVessel),nameof(MooringBuoy),nameof(OffshorePlatform),nameof(Pile),nameof(PipelineOverhead),nameof(Pontoon),nameof(PylonBridgeSupport),nameof(SafeWaterBeacon),nameof(SafeWaterBuoy),nameof(ShorelineConstruction),nameof(SiloTank),nameof(SpanFixed),nameof(SpanOpening),nameof(SpecialPurposeGeneralBeacon),nameof(SpecialPurposeGeneralBuoy),nameof(StructureOverNavigableWater),nameof(WindTurbine),nameof(Wreck),nameof(LightAllAround),nameof(LightSectored),nameof(Daymark)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  2,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-			];
-		}
-
-		[System.Serializable()]
-		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class PhysicalAISAidToNavigation : FeatureNode, IFeatureBindingDefinition {
-			public decimal? estimatedRangeOfTransmission {get;set;} = default;
-
-			public List<featureName> featureName {get;set;} = [];
-
-			public fixedDateRange? fixedDateRange {get;set;} = default;
-
-			public String? interoperabilityIdentifier {get;set;} = default;
-
-			public String? mMSICode {get;set;} = default;
-
-			public List<periodicDateRange> periodicDateRange {get;set;} = [];
-
-			[EnumerationValue(1)]
-			[EnumerationValue(5)]
-			[EnumerationValue(7)]
-			public status? status {get;set;} = default;
-
-			public int? scaleMinimum {get;set;} = default;
-
-			public List<information> information {get;set;} = [];
-
-			[JsonIgnore]
-			public override string Code => nameof(PhysicalAISAidToNavigation);
-
-			public informationBindingDefinition[] informationBindingDefinitions => PhysicalAISAidToNavigation._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(NauticalInformation)],
-				},
-			];
-
-			public featureBindingDefinition[] featureBindingDefinitions => PhysicalAISAidToNavigation._featureBindingDefinitions;
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.composition,
-					lower = 0,
-					upper =  1,
-					association = nameof(StructureEquipment),
-					role = Enum.GetName<Role>(Role.theStructure)!,
-					featureTypes = [nameof(Bridge),nameof(Building),nameof(Crane),nameof(CardinalBeacon),nameof(CardinalBuoy),nameof(Conveyor),nameof(Dolphin),nameof(EmergencyWreckMarkingBuoy),nameof(FishingFacility),nameof(FloatingDock),nameof(FortifiedStructure),nameof(Hulk),nameof(InstallationBuoy),nameof(IsolatedDangerBeacon),nameof(IsolatedDangerBuoy),nameof(Landmark),nameof(LateralBeacon),nameof(LateralBuoy),nameof(LightFloat),nameof(LightVessel),nameof(MooringBuoy),nameof(OffshorePlatform),nameof(Pile),nameof(PipelineOverhead),nameof(Pontoon),nameof(PylonBridgeSupport),nameof(SafeWaterBeacon),nameof(SafeWaterBuoy),nameof(ShorelineConstruction),nameof(SiloTank),nameof(SpanFixed),nameof(SpanOpening),nameof(SpecialPurposeGeneralBeacon),nameof(SpecialPurposeGeneralBuoy),nameof(StructureOverNavigableWater),nameof(WindTurbine),nameof(Wreck),nameof(Daymark)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  2,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-			];
-		}
-
-		[System.Serializable()]
-		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class VirtualAISAidToNavigation : FeatureNode, IFeatureBindingDefinition {
-			public decimal? estimatedRangeOfTransmission {get;set;} = default;
-
-			public List<featureName> featureName {get;set;} = [];
-
-			public fixedDateRange? fixedDateRange {get;set;} = default;
-
-			public String? interoperabilityIdentifier {get;set;} = default;
-
-			public String? mMSICode {get;set;} = default;
-
-			public List<periodicDateRange> periodicDateRange {get;set;} = [];
-
-			[EnumerationValue(1)]
-			[EnumerationValue(5)]
-			[EnumerationValue(7)]
-			public status? status {get;set;} = default;
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
-			[EnumerationValue(9)]
-			[EnumerationValue(10)]
-			[EnumerationValue(11)]
-			[EnumerationValue(12)]
-			[Required()]
-			public virtualAISAidToNavigationType virtualAISAidToNavigationType {get;set;}
-
-			public int? scaleMinimum {get;set;} = default;
-
-			public List<information> information {get;set;} = [];
-
-			[JsonIgnore]
-			public override string Code => nameof(VirtualAISAidToNavigation);
-
-			public informationBindingDefinition[] informationBindingDefinitions => VirtualAISAidToNavigation._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(NauticalInformation)],
-				},
-			];
-
-			public featureBindingDefinition[] featureBindingDefinitions => VirtualAISAidToNavigation._featureBindingDefinitions;
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  2,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-			];
-		}
-
-		[System.Serializable()]
-		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class RadioStation : FeatureNode, IFeatureBindingDefinition {
-			public String? callSign {get;set;} = default;
-
-			[EnumerationValue(5)]
-			[EnumerationValue(10)]
-			[EnumerationValue(11)]
-			[EnumerationValue(14)]
-			[EnumerationValue(19)]
-			[EnumerationValue(20)]
-			public List<categoryOfRadioStation> categoryOfRadioStation {get;set;} = [];
-
-			public List<String> communicationChannel {get;set;} = [];
-
-			public decimal? estimatedRangeOfTransmission {get;set;} = default;
-
-			public List<featureName> featureName {get;set;} = [];
-
-			public fixedDateRange? fixedDateRange {get;set;} = default;
-
-			public frequencyPair? frequencyPair {get;set;} = default;
-
-			public String? interoperabilityIdentifier {get;set;} = default;
-
-			public List<periodicDateRange> periodicDateRange {get;set;} = [];
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
-			public List<status> status {get;set;} = [];
-
-			public int? scaleMinimum {get;set;} = default;
-
-			public List<information> information {get;set;} = [];
-
-			[JsonIgnore]
-			public override string Code => nameof(RadioStation);
-
-			public informationBindingDefinition[] informationBindingDefinitions => RadioStation._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation)],
-				},
-			];
-
-			public featureBindingDefinition[] featureBindingDefinitions => RadioStation._featureBindingDefinitions;
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  2,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-			];
-		}
-
-		[System.Serializable()]
-		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class RadarTransponderBeacon : FeatureNode, IFeatureBindingDefinition {
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[Required()]
-			public categoryOfRadarTransponderBeacon categoryOfRadarTransponderBeacon {get;set;}
-
-			public List<featureName> featureName {get;set;} = [];
-
-			public fixedDateRange? fixedDateRange {get;set;} = default;
-
-			public String? interoperabilityIdentifier {get;set;} = default;
-
-			public List<periodicDateRange> periodicDateRange {get;set;} = [];
-
-			public List<radarWaveLength> radarWaveLength {get;set;} = [];
-
-			public sectorLimit? sectorLimit {get;set;} = default;
-
-			public String? signalGroup {get;set;} = default;
-
-			public List<signalSequence> signalSequence {get;set;} = [];
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
-			public List<status> status {get;set;} = [];
-
-			public decimal? valueOfMaximumRange {get;set;} = default;
-
-			public int? scaleMinimum {get;set;} = default;
-
-			public List<information> information {get;set;} = [];
-
-			[JsonIgnore]
-			public override string Code => nameof(RadarTransponderBeacon);
-
-			public informationBindingDefinition[] informationBindingDefinitions => RadarTransponderBeacon._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(NauticalInformation)],
-				},
-			];
-
-			public featureBindingDefinition[] featureBindingDefinitions => RadarTransponderBeacon._featureBindingDefinitions;
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.composition,
-					lower = 0,
-					upper =  1,
-					association = nameof(StructureEquipment),
-					role = Enum.GetName<Role>(Role.theStructure)!,
-					featureTypes = [nameof(Bridge),nameof(Building),nameof(Crane),nameof(CardinalBeacon),nameof(CardinalBuoy),nameof(Conveyor),nameof(Dolphin),nameof(EmergencyWreckMarkingBuoy),nameof(FishingFacility),nameof(FloatingDock),nameof(FortifiedStructure),nameof(Hulk),nameof(InstallationBuoy),nameof(IsolatedDangerBeacon),nameof(IsolatedDangerBuoy),nameof(Landmark),nameof(LateralBeacon),nameof(LateralBuoy),nameof(LightFloat),nameof(LightVessel),nameof(MooringBuoy),nameof(OffshorePlatform),nameof(Pile),nameof(PipelineOverhead),nameof(Pontoon),nameof(PylonBridgeSupport),nameof(SafeWaterBeacon),nameof(SafeWaterBuoy),nameof(ShorelineConstruction),nameof(SiloTank),nameof(SpanFixed),nameof(SpanOpening),nameof(SpecialPurposeGeneralBeacon),nameof(SpecialPurposeGeneralBuoy),nameof(StructureOverNavigableWater),nameof(WindTurbine),nameof(Wreck),nameof(LightAllAround),nameof(LightSectored),nameof(Daymark)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  2,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.aggregation,
-					lower = 0,
-					upper =  1,
-					association = nameof(RangeSystemAggregation),
-					role = Enum.GetName<Role>(Role.theCollection)!,
-					featureTypes = [nameof(RangeSystem)],
-				},
-			];
-		}
-
-		[System.Serializable()]
-		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class PilotBoardingPlace : FeatureNode, IFeatureBindingDefinition {
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			public categoryOfPilotBoardingPlace? categoryOfPilotBoardingPlace {get;set;} = default;
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			public categoryOfPreference? categoryOfPreference {get;set;} = default;
-
-			public List<String> communicationChannel {get;set;} = [];
-
-			public List<String> destination {get;set;} = [];
-
-			public List<featureName> featureName {get;set;} = [];
-
-			public fixedDateRange? fixedDateRange {get;set;} = default;
-
-			public String? interoperabilityIdentifier {get;set;} = default;
-
-			public List<periodicDateRange> periodicDateRange {get;set;} = [];
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			public List<pilotMovement> pilotMovement {get;set;} = [];
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			[EnumerationValue(9)]
-			[EnumerationValue(16)]
-			[EnumerationValue(17)]
-			[EnumerationValue(28)]
-			public List<status> status {get;set;} = [];
-
-			public int? scaleMinimum {get;set;} = default;
-
-			public List<information> information {get;set;} = [];
-
-			[JsonIgnore]
-			public override string Code => nameof(PilotBoardingPlace);
-
-			public informationBindingDefinition[] informationBindingDefinitions => PilotBoardingPlace._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation)],
-				},
-			];
-
-			public featureBindingDefinition[] featureBindingDefinitions => PilotBoardingPlace._featureBindingDefinitions;
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.aggregation,
-					lower = 0,
-					upper =  1,
-					association = nameof(PilotageDistrictAssociation),
-					role = Enum.GetName<Role>(Role.theCollection)!,
-					featureTypes = [nameof(PilotageDistrict)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  2,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-			];
-		}
-
-		[System.Serializable()]
-		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class VesselTrafficServiceArea : FeatureNode, IFeatureBindingDefinition {
-			public List<featureName> featureName {get;set;} = [];
-
-			public String? interoperabilityIdentifier {get;set;} = default;
-
-			public int? scaleMinimum {get;set;} = default;
-
-			public List<information> information {get;set;} = [];
-
-			[JsonIgnore]
-			public override string Code => nameof(VesselTrafficServiceArea);
-
-			public informationBindingDefinition[] informationBindingDefinitions => VesselTrafficServiceArea._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation)],
-				},
-			];
-
-			public featureBindingDefinition[] featureBindingDefinitions => VesselTrafficServiceArea._featureBindingDefinitions;
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  2,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-			];
-		}
-
-		[System.Serializable()]
-		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class CoastGuardStation : FeatureNode, IFeatureBindingDefinition {
-			public List<String> communicationChannel {get;set;} = [];
-
-			public List<featureName> featureName {get;set;} = [];
-
-			public fixedDateRange? fixedDateRange {get;set;} = default;
-
-			public String? interoperabilityIdentifier {get;set;} = default;
-
-			public Boolean? isMRCC {get;set;} = default;
-
-			public List<periodicDateRange> periodicDateRange {get;set;} = [];
-
-			[EnumerationValue(1)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(16)]
-			[EnumerationValue(17)]
-			public List<status> status {get;set;} = [];
-
-			public int? scaleMinimum {get;set;} = default;
-
-			public List<information> information {get;set;} = [];
-
-			[JsonIgnore]
-			public override string Code => nameof(CoastGuardStation);
-
-			public informationBindingDefinition[] informationBindingDefinitions => CoastGuardStation._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation),nameof(NonStandardWorkingDay),nameof(ServiceHours)],
-				},
-			];
-
-			public featureBindingDefinition[] featureBindingDefinitions => CoastGuardStation._featureBindingDefinitions;
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  2,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-			];
-		}
-
-		[System.Serializable()]
-		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class SignalStationWarning : FeatureNode, IFeatureBindingDefinition {
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
-			[EnumerationValue(9)]
-			[EnumerationValue(10)]
-			[EnumerationValue(11)]
-			[EnumerationValue(12)]
-			[EnumerationValue(13)]
-			[EnumerationValue(14)]
-			[EnumerationValue(15)]
-			public List<categoryOfSignalStationWarning> categoryOfSignalStationWarning {get;set;} = [];
-
-			public List<String> communicationChannel {get;set;} = [];
-
-			public List<featureName> featureName {get;set;} = [];
-
-			public fixedDateRange? fixedDateRange {get;set;} = default;
-
-			public String? interoperabilityIdentifier {get;set;} = default;
-
-			public List<periodicDateRange> periodicDateRange {get;set;} = [];
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
-			[EnumerationValue(12)]
-			[EnumerationValue(14)]
-			[EnumerationValue(15)]
-			[EnumerationValue(16)]
-			[EnumerationValue(17)]
-			public List<status> status {get;set;} = [];
-
-			public int? scaleMinimum {get;set;} = default;
-
-			public List<information> information {get;set;} = [];
-
-			[JsonIgnore]
-			public override string Code => nameof(SignalStationWarning);
-
-			public informationBindingDefinition[] informationBindingDefinitions => SignalStationWarning._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation)],
-				},
-			];
-
-			public featureBindingDefinition[] featureBindingDefinitions => SignalStationWarning._featureBindingDefinitions;
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.composition,
-					lower = 0,
-					upper =  1,
-					association = nameof(StructureEquipment),
-					role = Enum.GetName<Role>(Role.theStructure)!,
-					featureTypes = [nameof(Bridge),nameof(Building),nameof(Crane),nameof(CardinalBeacon),nameof(CardinalBuoy),nameof(Conveyor),nameof(Dolphin),nameof(EmergencyWreckMarkingBuoy),nameof(FishingFacility),nameof(FloatingDock),nameof(FortifiedStructure),nameof(Hulk),nameof(InstallationBuoy),nameof(IsolatedDangerBeacon),nameof(IsolatedDangerBuoy),nameof(Landmark),nameof(LateralBeacon),nameof(LateralBuoy),nameof(LightFloat),nameof(LightVessel),nameof(MooringBuoy),nameof(OffshorePlatform),nameof(Pile),nameof(PipelineOverhead),nameof(Pontoon),nameof(PylonBridgeSupport),nameof(SafeWaterBeacon),nameof(SafeWaterBuoy),nameof(ShorelineConstruction),nameof(SiloTank),nameof(SpanFixed),nameof(SpanOpening),nameof(SpecialPurposeGeneralBeacon),nameof(SpecialPurposeGeneralBuoy),nameof(StructureOverNavigableWater),nameof(WindTurbine),nameof(Wreck),nameof(Daymark)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  2,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-			];
-		}
-
-		[System.Serializable()]
-		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class SignalStationTraffic : FeatureNode, IFeatureBindingDefinition {
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
-			[EnumerationValue(9)]
-			[EnumerationValue(10)]
-			public List<categoryOfSignalStationTraffic> categoryOfSignalStationTraffic {get;set;} = [];
-
-			public List<String> communicationChannel {get;set;} = [];
-
-			public List<featureName> featureName {get;set;} = [];
-
-			public fixedDateRange? fixedDateRange {get;set;} = default;
-
-			public String? interoperabilityIdentifier {get;set;} = default;
-
-			public List<periodicDateRange> periodicDateRange {get;set;} = [];
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
-			[EnumerationValue(12)]
-			[EnumerationValue(14)]
-			[EnumerationValue(15)]
-			[EnumerationValue(16)]
-			[EnumerationValue(17)]
-			public List<status> status {get;set;} = [];
-
-			public int? scaleMinimum {get;set;} = default;
-
-			public List<information> information {get;set;} = [];
-
-			[JsonIgnore]
-			public override string Code => nameof(SignalStationTraffic);
-
-			public informationBindingDefinition[] informationBindingDefinitions => SignalStationTraffic._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation)],
-				},
-			];
-
-			public featureBindingDefinition[] featureBindingDefinitions => SignalStationTraffic._featureBindingDefinitions;
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.composition,
-					lower = 0,
-					upper =  1,
-					association = nameof(StructureEquipment),
-					role = Enum.GetName<Role>(Role.theStructure)!,
-					featureTypes = [nameof(Bridge),nameof(Building),nameof(Crane),nameof(CardinalBeacon),nameof(CardinalBuoy),nameof(Conveyor),nameof(Dolphin),nameof(EmergencyWreckMarkingBuoy),nameof(FishingFacility),nameof(FloatingDock),nameof(FortifiedStructure),nameof(Hulk),nameof(InstallationBuoy),nameof(IsolatedDangerBeacon),nameof(IsolatedDangerBuoy),nameof(Landmark),nameof(LateralBeacon),nameof(LateralBuoy),nameof(LightFloat),nameof(LightVessel),nameof(MooringBuoy),nameof(OffshorePlatform),nameof(Pile),nameof(PipelineOverhead),nameof(Pontoon),nameof(PylonBridgeSupport),nameof(SafeWaterBeacon),nameof(SafeWaterBuoy),nameof(ShorelineConstruction),nameof(SiloTank),nameof(SpanFixed),nameof(SpanOpening),nameof(SpecialPurposeGeneralBeacon),nameof(SpecialPurposeGeneralBuoy),nameof(StructureOverNavigableWater),nameof(WindTurbine),nameof(Wreck),nameof(Daymark)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  2,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-			];
-		}
-
-		[System.Serializable()]
-		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class RescueStation : FeatureNode, IFeatureBindingDefinition {
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
-			public List<categoryOfRescueStation> categoryOfRescueStation {get;set;} = [];
-
-			public List<String> communicationChannel {get;set;} = [];
-
-			public List<featureName> featureName {get;set;} = [];
-
-			public fixedDateRange? fixedDateRange {get;set;} = default;
-
-			public String? interoperabilityIdentifier {get;set;} = default;
-
-			public List<periodicDateRange> periodicDateRange {get;set;} = [];
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
-			[EnumerationValue(14)]
-			[EnumerationValue(16)]
-			[EnumerationValue(17)]
-			public List<status> status {get;set;} = [];
-
-			public int? scaleMinimum {get;set;} = default;
-
-			public List<information> information {get;set;} = [];
-
-			[JsonIgnore]
-			public override string Code => nameof(RescueStation);
-
-			public informationBindingDefinition[] informationBindingDefinitions => RescueStation._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation)],
-				},
-			];
-
-			public featureBindingDefinition[] featureBindingDefinitions => RescueStation._featureBindingDefinitions;
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  2,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-			];
-		}
-
-		[System.Serializable()]
-		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class HarbourFacility : FeatureNode, IFeatureBindingDefinition {
-			[EnumerationValue(1)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
-			[EnumerationValue(9)]
-			[EnumerationValue(10)]
-			[EnumerationValue(11)]
-			[EnumerationValue(12)]
-			[EnumerationValue(13)]
-			[EnumerationValue(14)]
-			[EnumerationValue(15)]
-			public List<categoryOfHarbourFacility> categoryOfHarbourFacility {get;set;} = [];
-
-			public List<String> communicationChannel {get;set;} = [];
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(5)]
-			public condition? condition {get;set;} = default;
-
-			public List<featureName> featureName {get;set;} = [];
-
-			public fixedDateRange? fixedDateRange {get;set;} = default;
-
-			public String? interoperabilityIdentifier {get;set;} = default;
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
-			public List<natureOfConstruction> natureOfConstruction {get;set;} = [];
-
-			public List<periodicDateRange> periodicDateRange {get;set;} = [];
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
-			[EnumerationValue(9)]
-			[EnumerationValue(10)]
-			[EnumerationValue(11)]
-			[EnumerationValue(12)]
-			[EnumerationValue(13)]
-			[EnumerationValue(14)]
-			[EnumerationValue(15)]
-			[EnumerationValue(16)]
-			[EnumerationValue(17)]
-			[EnumerationValue(18)]
-			[EnumerationValue(19)]
-			[EnumerationValue(20)]
-			[EnumerationValue(21)]
-			[EnumerationValue(22)]
-			[EnumerationValue(25)]
-			public product? product {get;set;} = default;
-
-			public DateOnly? reportedDate {get;set;} = default;
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			[EnumerationValue(8)]
-			[EnumerationValue(9)]
-			[EnumerationValue(10)]
-			[EnumerationValue(11)]
-			[EnumerationValue(12)]
-			[EnumerationValue(13)]
-			[EnumerationValue(15)]
-			[EnumerationValue(16)]
-			[EnumerationValue(17)]
-			[EnumerationValue(18)]
-			[EnumerationValue(19)]
-			[EnumerationValue(20)]
-			[EnumerationValue(21)]
-			[EnumerationValue(23)]
-			[EnumerationValue(24)]
-			[EnumerationValue(27)]
-			public List<restriction> restriction {get;set;} = [];
-
-			[EnumerationValue(1)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
-			[EnumerationValue(9)]
-			[EnumerationValue(12)]
-			[EnumerationValue(13)]
-			[EnumerationValue(14)]
-			[EnumerationValue(16)]
-			[EnumerationValue(17)]
-			public List<status> status {get;set;} = [];
-
-			public List<vesselSpeedLimit> vesselSpeedLimit {get;set;} = [];
-
-			public int? scaleMinimum {get;set;} = default;
-
-			public List<information> information {get;set;} = [];
-
-			public String? pictorialRepresentation {get;set;} = default;
-
-			[JsonIgnore]
-			public override string Code => nameof(HarbourFacility);
-
-			public informationBindingDefinition[] informationBindingDefinitions => HarbourFacility._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation)],
-				},
-			];
-
-			public featureBindingDefinition[] featureBindingDefinitions => HarbourFacility._featureBindingDefinitions;
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  2,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-			];
-		}
-
-		[System.Serializable()]
-		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class SmallCraftFacility : FeatureNode, IFeatureBindingDefinition {
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
-			[EnumerationValue(9)]
-			[EnumerationValue(10)]
-			[EnumerationValue(11)]
-			[EnumerationValue(12)]
-			[EnumerationValue(13)]
-			[EnumerationValue(14)]
-			[EnumerationValue(15)]
-			[EnumerationValue(16)]
-			[EnumerationValue(17)]
-			[EnumerationValue(18)]
-			[EnumerationValue(19)]
-			[EnumerationValue(20)]
-			[EnumerationValue(21)]
-			[EnumerationValue(22)]
-			[EnumerationValue(23)]
-			[EnumerationValue(24)]
-			[EnumerationValue(25)]
-			[EnumerationValue(26)]
-			[EnumerationValue(27)]
-			[EnumerationValue(28)]
-			[EnumerationValue(30)]
-			[EnumerationValue(31)]
-			[EnumerationValue(32)]
-			[EnumerationValue(33)]
-			public List<categoryOfSmallCraftFacility> categoryOfSmallCraftFacility {get;set;} = [];
-
-			public List<featureName> featureName {get;set;} = [];
-
-			public String? interoperabilityIdentifier {get;set;} = default;
-
-			public List<periodicDateRange> periodicDateRange {get;set;} = [];
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			[EnumerationValue(3)]
-			[EnumerationValue(4)]
-			[EnumerationValue(5)]
-			[EnumerationValue(6)]
-			[EnumerationValue(7)]
-			[EnumerationValue(8)]
-			[EnumerationValue(9)]
-			[EnumerationValue(12)]
-			[EnumerationValue(14)]
-			[EnumerationValue(16)]
-			[EnumerationValue(17)]
-			public List<status> status {get;set;} = [];
-
-			public int? scaleMinimum {get;set;} = default;
-
-			public List<information> information {get;set;} = [];
-
-			public String? pictorialRepresentation {get;set;} = default;
-
-			[JsonIgnore]
-			public override string Code => nameof(SmallCraftFacility);
-
-			public informationBindingDefinition[] informationBindingDefinitions => SmallCraftFacility._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  1,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
-					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation)],
-				},
-			];
-
-			public featureBindingDefinition[] featureBindingDefinitions => SmallCraftFacility._featureBindingDefinitions;
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(UpdatedInformation),
-					role = Enum.GetName<Role>(Role.theUpdate)!,
-					featureTypes = [nameof(UpdateInformation)],
-				},
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  2,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
-			];
-		}
-
-		[System.Serializable()]
-		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class TextPlacement : FeatureNode, IFeatureBindingDefinition {
-			[Required()]
-			public int textOffsetBearing {get;set;}
-
-			[Required()]
-			public int textOffsetDistance {get;set;}
-
-			public Boolean? textRotation {get;set;} = default;
-
-			[EnumerationValue(1)]
-			[EnumerationValue(2)]
-			public List<textType> textType {get;set;} = [];
-
-			public int? scaleMinimum {get;set;} = default;
-
 			[JsonIgnore]
 			public override string Code => nameof(TextPlacement);
 
@@ -21952,41 +2501,6 @@ namespace S100Framework.DomainModel.S101 {
 
 			public featureBindingDefinition[] featureBindingDefinitions => TextPlacement._featureBindingDefinitions;
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.composition,
-					lower = 0,
-					upper =  1,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.thePositionProvider)!,
-					featureTypes = [nameof(AdministrationArea),nameof(AirportAirfield),nameof(AnchorBerth),nameof(AnchorageArea),nameof(ArchipelagicSeaLane),nameof(ArchipelagicSeaLaneArea),nameof(ArchipelagicSeaLaneAxis),nameof(Berth),nameof(Bollard),nameof(Bridge),nameof(Building),nameof(BuiltUpArea),nameof(CableArea),nameof(CableOverhead),nameof(CableSubmarine),nameof(Canal),nameof(CardinalBuoy),nameof(CardinalBeacon),nameof(CargoTranshipmentArea),nameof(Causeway),nameof(Chart1Feature),nameof(Checkpoint),nameof(CoastGuardStation),nameof(Coastline),nameof(CollisionRegulationsLimit),nameof(ContinentalShelfArea),nameof(Conveyor),nameof(Crane),nameof(CurrentNonGravitational),nameof(Dam),nameof(Daymark),nameof(DeepWaterRoute),nameof(DeepWaterRouteCentreline),nameof(DeepWaterRoutePart),nameof(DistanceMark),nameof(DockArea),nameof(Dolphin),nameof(DredgedArea),nameof(DryDock),nameof(DumpingGround),nameof(Dyke),nameof(EmergencyWreckMarkingBuoy),nameof(Fairway),nameof(FairwaySystem),nameof(FenceWall),nameof(FerryRoute),nameof(FisheryZone),nameof(FishingFacility),nameof(FishingGround),nameof(FloatingDock),nameof(FogSignal),nameof(FortifiedStructure),nameof(FoulGround),nameof(FreePortArea),nameof(Gate),nameof(Gridiron),nameof(HarbourAreaAdministrative),nameof(HarbourFacility),nameof(Helipad),nameof(Hulk),nameof(IceArea),nameof(InformationArea),nameof(InstallationBuoy),nameof(IslandGroup),nameof(IsolatedDangerBeacon),nameof(IsolatedDangerBuoy),nameof(Lake),nameof(LandArea),nameof(LandElevation),nameof(LandRegion),nameof(Landmark),nameof(LateralBeacon),nameof(LateralBuoy),nameof(LightAirObstruction),nameof(LightAllAround),nameof(LightFloat),nameof(LightFogDetector),nameof(LightSectored),nameof(LightVessel),nameof(LocalMagneticAnomaly),nameof(LockBasin),nameof(LogPond),nameof(MarineFarmCulture),nameof(MarinePollutionRegulationsArea),nameof(MilitaryPracticeArea),nameof(MooringArea),nameof(MooringBuoy),nameof(MooringTrot),nameof(Obstruction),nameof(OffshorePlatform),nameof(OffshoreProductionArea),nameof(OilBarrier),nameof(PhysicalAISAidToNavigation),nameof(Pile),nameof(PilotBoardingPlace),nameof(PilotageDistrict),nameof(PipelineOverhead),nameof(PipelineSubmarineOnLand),nameof(Pontoon),nameof(PrecautionaryArea),nameof(ProductionStorageArea),nameof(PylonBridgeSupport),nameof(RadarLine),nameof(RadarRange),nameof(RadarStation),nameof(RadarTransponderBeacon),nameof(RadioCallingInPoint),nameof(RadioStation),nameof(Railway),nameof(RangeSystem),nameof(Rapids),nameof(RecommendedRouteCentreline),nameof(RecommendedTrack),nameof(RescueStation),nameof(RestrictedArea),nameof(River),nameof(Road),nameof(Runway),nameof(SafeWaterBeacon),nameof(SafeWaterBuoy),nameof(SeaAreaNamedWaterArea),nameof(SeabedArea),nameof(Seagrass),nameof(SeaplaneLandingArea),nameof(ShorelineConstruction),nameof(SignalStationTraffic),nameof(SignalStationWarning),nameof(SiloTank),nameof(SlopeTopline),nameof(SlopingGround),nameof(SmallCraftFacility),nameof(Sounding),nameof(SpanFixed),nameof(SpanOpening),nameof(SpecialPurposeGeneralBeacon),nameof(SpecialPurposeGeneralBuoy),nameof(Spring),nameof(StructureOverNavigableWater),nameof(SubmarinePipelineArea),nameof(SubmarineTransitLane),nameof(SweptArea),nameof(TidalStreamFloodEbb),nameof(TidalStreamPanelData),nameof(Tideway),nameof(TrafficSeparationScheme),nameof(Tunnel),nameof(TwoWayRoute),nameof(UnderwaterAwashRock),nameof(Vegetation),nameof(VesselTrafficServiceArea),nameof(VirtualAISAidToNavigation),nameof(WaterTurbulence),nameof(Waterfall),nameof(WeedKelp),nameof(WindTurbine),nameof(Wreck)],
-				},
-			];
-		}
-
-		[System.Serializable()]
-		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class Chart1Feature : FeatureNode, IFeatureBindingDefinition {
-			public List<String> drawingInstruction {get;set;} = [];
-
-			public List<featureName> featureName {get;set;} = [];
-
-			[JsonIgnore]
-			public override string Code => nameof(Chart1Feature);
-
-			public informationBindingDefinition[] informationBindingDefinitions => Chart1Feature._informationBindingDefinitions;
-			public static informationBindingDefinition[] _informationBindingDefinitions => [
-			];
-
-			public featureBindingDefinition[] featureBindingDefinitions => Chart1Feature._featureBindingDefinitions;
-			public static featureBindingDefinition[] _featureBindingDefinitions => [
-				new featureBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  2,
-					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.theCartographicText)!,
-					featureTypes = [nameof(TextPlacement)],
-				},
 			];
 		}
 	}

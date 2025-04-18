@@ -5,8 +5,10 @@ using System.Runtime.Serialization;
 using System.Text.Json.Serialization;
 
 #nullable enable
-namespace S100Framework.DomainModel.S122 {
-    public static class Information {
+namespace S100Framework.DomainModel.S122
+{
+    public static class Information
+    {
         public static Version Version => new Version("1.2.1");
         public static string[] ComplexTypes => ["contactAddress", "featureName", "fixedDateRange", "frequencyPair", "information", "onlineResource", "orientation", "periodicDateRange", "rxNCode", "sectorLimitOne", "sectorLimitTwo", "textContent", "timeIntervalsByDayOfWeek", "vesselsMeasurements", "designation", "bearingInformation", "graphic", "scheduleByDayOfWeek", "sectorLimit", "telecommunications",];
         public static string[] SpatialAssociationTypes => [];
@@ -18,7 +20,8 @@ namespace S100Framework.DomainModel.S122 {
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
     [System.Serializable()]
-    public enum cardinalDirection : int {
+    public enum cardinalDirection : int
+    {
         [System.ComponentModel.Description("North")]
         [EnumMember(Value = "N")]
         N = 1,
@@ -74,7 +77,8 @@ namespace S100Framework.DomainModel.S122 {
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
     [System.Serializable()]
-    public enum onlineFunction : int {
+    public enum onlineFunction : int
+    {
         [System.ComponentModel.Description("Online instructions for transferring data from one storage device or system to another. (ISO 19115:2014)")]
         [EnumMember(Value = "Download")]
         Download = 1,
@@ -115,7 +119,8 @@ namespace S100Framework.DomainModel.S122 {
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
     [System.Serializable()]
-    public enum vesselsCharacteristics : int {
+    public enum vesselsCharacteristics : int
+    {
         [System.ComponentModel.Description("The maximum length of the ship (L.O.A.). (http://en.wikipedia.org/wiki/Ship_measurements; 24 July 2010)")]
         [EnumMember(Value = "Length Overall")]
         LengthOverall = 1,
@@ -165,7 +170,8 @@ namespace S100Framework.DomainModel.S122 {
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
     [System.Serializable()]
-    public enum vesselsCharacteristicsUnit : int {
+    public enum vesselsCharacteristicsUnit : int
+    {
         [System.ComponentModel.Description("The metre (or meter) is the base unit of length in the International System of Units (SI). It is defined as the distance travelled by light in vacuum in 1/299,792,458 of a second.")]
         [EnumMember(Value = "Metre")]
         Metre = 1,
@@ -209,7 +215,8 @@ namespace S100Framework.DomainModel.S122 {
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
     [System.Serializable()]
-    public enum comparisonOperator : int {
+    public enum comparisonOperator : int
+    {
         [System.ComponentModel.Description("The value of the left value is greater than that of the right.(http://en.wikipedia.org/wiki/Logical_connective)")]
         [EnumMember(Value = "Greater than")]
         GreaterThan = 1,
@@ -235,7 +242,8 @@ namespace S100Framework.DomainModel.S122 {
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
     [System.Serializable()]
-    public enum dayOfWeek : int {
+    public enum dayOfWeek : int
+    {
         [System.ComponentModel.Description("The first day of the week.")]
         [EnumMember(Value = "Sunday")]
         Sunday = 1,
@@ -264,7 +272,8 @@ namespace S100Framework.DomainModel.S122 {
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
     [System.Serializable()]
-    public enum categoryOfRelationship : int {
+    public enum categoryOfRelationship : int
+    {
         [System.ComponentModel.Description("use of facility, waterway or service is forbidden")]
         [EnumMember(Value = "Prohibited")]
         Prohibited = 1,
@@ -308,7 +317,8 @@ namespace S100Framework.DomainModel.S122 {
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
     [System.Serializable()]
-    public enum telecommunicationService : int {
+    public enum telecommunicationService : int
+    {
         [System.ComponentModel.Description("The transfer or exchange of information by using sounds that are being made by mouth and throat when speaking.")]
         [EnumMember(Value = "Voice")]
         Voice = 1,
@@ -340,7 +350,8 @@ namespace S100Framework.DomainModel.S122 {
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
     [System.Serializable()]
-    public enum categoryOfSchedule : int {
+    public enum categoryOfSchedule : int
+    {
         [System.ComponentModel.Description("The service, office, is open, fully manned, and operating normally, or the area is accessible as usual.")]
         [EnumMember(Value = "Normal Operation")]
         NormalOperation = 1,
@@ -357,7 +368,8 @@ namespace S100Framework.DomainModel.S122 {
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
     [System.Serializable()]
-    public enum categoryOfDangerousOrHazardousCargo : int {
+    public enum categoryOfDangerousOrHazardousCargo : int
+    {
         [System.ComponentModel.Description("Explosives, Division 1: Substances and articles which have a mass explosion hazard.")]
         [EnumMember(Value = "IMDG Code Class 1 Div. 1.1")]
         ImdgCodeClass1Div11 = 1,
@@ -428,7 +440,8 @@ namespace S100Framework.DomainModel.S122 {
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
     [System.Serializable()]
-    public enum categoryOfCargo : int {
+    public enum categoryOfCargo : int
+    {
         [System.ComponentModel.Description("Unpacked homogenous cargo poured loose in a certain space of a vessel e.g. oil or grain.")]
         [EnumMember(Value = "Bulk")]
         Bulk = 1,
@@ -463,7 +476,8 @@ namespace S100Framework.DomainModel.S122 {
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
     [System.Serializable()]
-    public enum categoryOfCommunicationPreference : int {
+    public enum categoryOfCommunicationPreference : int
+    {
         [System.ComponentModel.Description("The first choice channel or frequency to be used when calling a radio station.")]
         [EnumMember(Value = "Preferred Calling")]
         PreferredCalling = 1,
@@ -483,7 +497,8 @@ namespace S100Framework.DomainModel.S122 {
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
     [System.Serializable()]
-    public enum categoryOfAuthority : int {
+    public enum categoryOfAuthority : int
+    {
         [System.ComponentModel.Description("The administration to prevent or detect and prosecute violations of rules and regulations at international boundaries.")]
         [EnumMember(Value = "Border Control")]
         BorderControl = 2,
@@ -536,7 +551,8 @@ namespace S100Framework.DomainModel.S122 {
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
     [System.Serializable()]
-    public enum categoryOfVesselTrafficService : int {
+    public enum categoryOfVesselTrafficService : int
+    {
         [System.ComponentModel.Description("A service to ensure that essential information becomes available in time for on-board navigational decision-making.")]
         [EnumMember(Value = "Information Service")]
         InformationService = 1,
@@ -850,7 +866,8 @@ namespace S100Framework.DomainModel.S122 {
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
     [System.Serializable()]
-    public enum categoryOfRestrictedArea : int {
+    public enum categoryOfRestrictedArea : int
+    {
         [System.ComponentModel.Description("The area around an offshore installation within which vessels are prohibited from entering without permission. Special regulations protect installations within a safety zone and vessels of all nationalities are required to respect the zone.")]
         [EnumMember(Value = "Offshore Safety Zone")]
         OffshoreSafetyZone = 1,
@@ -936,7 +953,8 @@ namespace S100Framework.DomainModel.S122 {
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
     [System.Serializable()]
-    public enum sourceType : int {
+    public enum sourceType : int
+    {
         [System.ComponentModel.Description("Treaty, convention, or international agreement; law or regulation issued by a national or other authority.")]
         [EnumMember(Value = "Law or Regulation")]
         LawOrRegulation = 1,
@@ -974,7 +992,8 @@ namespace S100Framework.DomainModel.S122 {
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
     [System.Serializable()]
-    public enum categoryOfText : int {
+    public enum categoryOfText : int
+    {
         [System.ComponentModel.Description("A statement summarizing the important points of a text.")]
         [EnumMember(Value = "Abstract or Summary")]
         AbstractOrSummary = 1,
@@ -991,7 +1010,8 @@ namespace S100Framework.DomainModel.S122 {
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
     [System.Serializable()]
-    public enum categoryOfVesselRegistry : int {
+    public enum categoryOfVesselRegistry : int
+    {
         [System.ComponentModel.Description("The vessel is registered or enrolled under the same national flag as the port, harbour, territorial sea, exclusive economic zone, or administrative area in which the object that possesses this attribute applies or is located.")]
         [EnumMember(Value = "Domestic")]
         Domestic = 1,
@@ -1005,7 +1025,8 @@ namespace S100Framework.DomainModel.S122 {
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
     [System.Serializable()]
-    public enum logicalConnectives : int {
+    public enum logicalConnectives : int
+    {
         [System.ComponentModel.Description("All the conditions described by the other attributes of the object, or sub-attributes of the same complex attribute, are true.")]
         [EnumMember(Value = "Logical Conjunction")]
         LogicalConjunction = 1,
@@ -1018,44 +1039,51 @@ namespace S100Framework.DomainModel.S122 {
     }
 
     [System.Serializable()]
-    public class categoryOfMarineProtectedArea {
+    public class categoryOfMarineProtectedArea
+    {
         public string label { get; set; }
         public string definition { get; set; }
         public int code { get; set; }
     }
 
     [System.Serializable()]
-    public class categoryOfVessel {
+    public class categoryOfVessel
+    {
         public string label { get; set; }
         public string definition { get; set; }
         public int code { get; set; }
     }
 
     [System.Serializable()]
-    public class actionOrActivity {
+    public class actionOrActivity
+    {
         public string label { get; set; }
         public string definition { get; set; }
         public int code { get; set; }
     }
 
     [System.Serializable()]
-    public class categoryOfRxN {
+    public class categoryOfRxN
+    {
         public string label { get; set; }
         public string definition { get; set; }
         public int code { get; set; }
     }
 
-    public static class CodeList {
+    public static class CodeList
+    {
         public static ImmutableArray<categoryOfMarineProtectedArea> categoryOfMarineProtectedAreas => ImmutableArray.Create<categoryOfMarineProtectedArea>(new categoryOfMarineProtectedArea[] { new() { code = 1, definition = "-", label = "IUCN Category Ia", }, new() { code = 2, definition = "-", label = "IUCN Category Ib", }, new() { code = 3, definition = "-", label = "IUCN Category II", }, new() { code = 4, definition = "-", label = "IUCN Category III", }, new() { code = 5, definition = "-", label = "IUCN Category IV", }, new() { code = 6, definition = "-", label = "IUCN Category V", }, new() { code = 7, definition = "-", label = "IUCN Category VI", }, });
         public static ImmutableArray<categoryOfVessel> categoryOfVessels => ImmutableArray.Create<categoryOfVessel>(new categoryOfVessel[] { new() { code = 1, definition = "-", label = "General Cargo Vessel", }, new() { code = 2, definition = "-", label = "Container Carrier", }, new() { code = 3, definition = "-", label = "Tanker", }, new() { code = 4, definition = "-", label = "Bulk Carrier", }, new() { code = 5, definition = "-", label = "Passenger Vessel", }, new() { code = 6, definition = "-", label = "Roll-On Roll-Off", }, new() { code = 7, definition = "-", label = "Refrigerated Cargo Vessel", }, new() { code = 8, definition = "-", label = "Fishing Vessel", }, new() { code = 9, definition = "-", label = "Service", }, new() { code = 10, definition = "-", label = "Warship", }, new() { code = 11, definition = "-", label = "Towed or Pushed Composite Unit", }, new() { code = 12, definition = "-", label = "Tug and Tow", }, new() { code = 13, definition = "-", label = "Light Recreational", }, new() { code = 14, definition = "-", label = "Semi-Submersible Offshore Installation", }, new() { code = 15, definition = "-", label = "Jack-Up Exploration or Project Installation", }, new() { code = 16, definition = "-", label = "Livestock Carrier", }, new() { code = 17, definition = "-", label = "Sport Fishing", }, });
         public static ImmutableArray<actionOrActivity> actionOrActivities => ImmutableArray.Create<actionOrActivity>(new actionOrActivity[] { new() { code = 1, definition = "Carrying a qualified pilot as part of the vessel navigation team.", label = "Navigating With a Pilot", }, new() { code = 2, definition = "Navigating a vessel into a port.", label = "Entering Port", }, new() { code = 3, definition = "Navigating a vessel out of a port.", label = "Leaving Port", }, new() { code = 4, definition = "A signal station for the control of vessels when berthing.", label = "Berthing", }, new() { code = 5, definition = "Detaching a vessel from a wharf or jetty.", label = "Slipping", }, new() { code = 6, definition = "Attaching a vessel to the seabed by means of an anchor and cable.", label = "Anchoring", }, new() { code = 7, definition = "Detaching a vessel from the seabed by recovering an anchor and cable.", label = "Weighing Anchor", }, new() { code = 8, definition = "Navigating a vessel along a route or through a narrow gap, such as under a bridge or through a lock.", label = "Transiting", }, new() { code = 9, definition = "Navigating a vessel past another traveling broadly in the same direction.", label = "Overtaking", }, new() { code = 10, definition = "Providing details such as the name, location or intentions of a vessel.", label = "Reporting", }, new() { code = 11, definition = "Loading or unloading cargo.", label = "Working Cargo", }, new() { code = 12, definition = "Placing crew or passengers on shore.", label = "Landing", }, new() { code = 13, definition = "A signal or message warning of diving activity.", label = "Diving", }, new() { code = 14, definition = "Hunting or catching fish.", label = "Fishing", }, new() { code = 15, definition = "Releasing anything into the sea; often ballast water; or spoil from dredging elsewhere.", label = "Discharging Overboard", }, new() { code = 16, definition = "Navigating a vessel past another travelling broadly in the opposite direction.", label = "Passing", }, });
         public static ImmutableArray<categoryOfRxN> categoryOfRxNS => ImmutableArray.Create<categoryOfRxN>(new categoryOfRxN[] { new() { code = 1, definition = "The process of directing the movement of a craft from one point to another.", label = "Navigation", }, new() { code = 2, definition = "Transmitting and/or receiving electronic communication signals.", label = "Communication", }, new() { code = 3, definition = "Pertaining to environmental protection.", label = "Environmental Protection", }, new() { code = 4, definition = "Pertaining to wildlife protection.", label = "Wildlife Protection", }, new() { code = 5, definition = "Pertaining to security.", label = "Security", }, new() { code = 6, definition = "The agency or establishment for collecting duties, tolls.", label = "Customs", }, new() { code = 7, definition = "Pertaining to cargo operations.", label = "Cargo Operation", }, new() { code = 8, definition = "Pertaining to a place of safety or refuge.", label = "Refuge", }, new() { code = 9, definition = "The authority with responsibility for checking the validity of the health declaration of a vessel and for declaring free pratique.", label = "Health", }, new() { code = 10, definition = "Pertaining to natural resources or exploitation.", label = "Natural Resources or Exploitation", }, new() { code = 11, definition = "Person or corporation, owners of, or entrusted with or invested with the power of managing a port. May be called a Harbour Board, Port Trust, Port Commission, Harbour Commission, Marine Department.", label = "Port", }, new() { code = 12, definition = "An authority with responsibility for the control and movement of money.", label = "Finance", }, new() { code = 13, definition = "The science, art, or practice of cultivating the soil, producing crops, and raising livestock and in varying degrees the preparation and marketing of the resulting products.", label = "Agriculture", }, });
     }
 
-    namespace ComplexAttributes {
+    namespace ComplexAttributes
+    {
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class contactAddress {
+        public partial class contactAddress
+        {
             public String? deliveryPoint { get; set; } = null;
             public String? cityName { get; set; } = null;
             public String? administrativeDivision { get; set; } = null;
@@ -1068,7 +1096,8 @@ namespace S100Framework.DomainModel.S122 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class featureName {
+        public partial class featureName
+        {
             public Boolean? displayName { get; set; } = default;
             public String language { get; set; } = string.Empty;
             public String name { get; set; } = string.Empty;
@@ -1081,7 +1110,8 @@ namespace S100Framework.DomainModel.S122 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class fixedDateRange {
+        public partial class fixedDateRange
+        {
             public DateOnly? dateStart { get; set; } = default;
             public DateOnly? dateEnd { get; set; } = default;
 
@@ -1091,7 +1121,8 @@ namespace S100Framework.DomainModel.S122 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class frequencyPair {
+        public partial class frequencyPair
+        {
             public Int32? frequencyShoreStationReceives { get; set; } = default;
             public Int32? frequencyShoreStationTransmits { get; set; } = default;
 
@@ -1118,7 +1149,8 @@ namespace S100Framework.DomainModel.S122 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class onlineResource {
+        public partial class onlineResource
+        {
             public String onlineResourceLinkageURL { get; set; } = string.Empty;
             public String? protocol { get; set; } = null;
             public String? applicationProfile { get; set; } = null;
@@ -1150,7 +1182,8 @@ namespace S100Framework.DomainModel.S122 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class periodicDateRange {
+        public partial class periodicDateRange
+        {
             [Required()]
             public DateOnly dateStart { get; set; }
 
@@ -1163,7 +1196,8 @@ namespace S100Framework.DomainModel.S122 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class rxNCode {
+        public partial class rxNCode
+        {
             public categoryOfRxN? categoryOfRxN { get; set; }
             public actionOrActivity? actionOrActivity { get; set; }
             public String? headline { get; set; } = null;
@@ -1174,7 +1208,8 @@ namespace S100Framework.DomainModel.S122 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class sectorLimitOne {
+        public partial class sectorLimitOne
+        {
             [Required()]
             public Decimal sectorBearing { get; set; }
             public Int32? sectorLineLength { get; set; } = default;
@@ -1185,7 +1220,8 @@ namespace S100Framework.DomainModel.S122 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class sectorLimitTwo {
+        public partial class sectorLimitTwo
+        {
             [Required()]
             public Decimal sectorBearing { get; set; }
             public Int32? sectorLineLength { get; set; } = default;
@@ -1196,7 +1232,8 @@ namespace S100Framework.DomainModel.S122 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class textContent {
+        public partial class textContent
+        {
             [EnumerationValue(1)]
             [EnumerationValue(2)]
             [EnumerationValue(3)]
@@ -1222,7 +1259,8 @@ namespace S100Framework.DomainModel.S122 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class timeIntervalsByDayOfWeek {
+        public partial class timeIntervalsByDayOfWeek
+        {
             [EnumerationValue(1)]
             [EnumerationValue(2)]
             [EnumerationValue(3)]
@@ -1241,7 +1279,8 @@ namespace S100Framework.DomainModel.S122 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class vesselsMeasurements {
+        public partial class vesselsMeasurements
+        {
             [EnumerationValue(1)]
             [EnumerationValue(2)]
             [EnumerationValue(3)]
@@ -1300,7 +1339,8 @@ namespace S100Framework.DomainModel.S122 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class bearingInformation {
+        public partial class bearingInformation
+        {
             public cardinalDirection? cardinalDirection { get; set; } = default;
             public Decimal? distance { get; set; } = default;
             public List<Decimal> sectorBearing { get; set; } = [];
@@ -1333,7 +1373,8 @@ namespace S100Framework.DomainModel.S122 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class scheduleByDayOfWeek {
+        public partial class scheduleByDayOfWeek
+        {
             [EnumerationValue(1)]
             [EnumerationValue(2)]
             [EnumerationValue(3)]
@@ -1350,7 +1391,8 @@ namespace S100Framework.DomainModel.S122 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class sectorLimit {
+        public partial class sectorLimit
+        {
             [Required()]
             public sectorLimitOne sectorLimitOne { get; set; }
 
@@ -1358,12 +1400,10 @@ namespace S100Framework.DomainModel.S122 {
             public sectorLimitTwo sectorLimitTwo { get; set; }
 
             public sectorLimit() {
-                sectorLimitOne = new sectorLimitOne()
-                {
+                sectorLimitOne = new sectorLimitOne() {
                     sectorBearing = default(Decimal),
                 };
-                sectorLimitTwo = new sectorLimitTwo()
-                {
+                sectorLimitTwo = new sectorLimitTwo() {
                     sectorBearing = default(Decimal),
                 };
             }
@@ -1403,8 +1443,10 @@ namespace S100Framework.DomainModel.S122 {
     }
 }
 
-namespace S100Framework.DomainModel.S122 {
-    public enum Role {
+namespace S100Framework.DomainModel.S122
+{
+    public enum Role
+    {
         [System.ComponentModel.Description("The location in which the information item applies")]
         appliesInLocation,
         [System.ComponentModel.Description("The controlling organization or authority for a geographically located service")]
@@ -1447,16 +1489,20 @@ namespace S100Framework.DomainModel.S122 {
         providesInformation,
     }
 
-    namespace Associations {
-        namespace SpatialAssociations {
+    namespace Associations
+    {
+        namespace SpatialAssociations
+        {
         }
 
-        namespace InformationAssociations {
+        namespace InformationAssociations
+        {
             using S100Framework.DomainModel.S122.InformationTypes;
 
             [System.Serializable()]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-            public partial class AssociatedRxN : InformationAssociation {
+            public partial class AssociatedRxN : InformationAssociation
+            {
                 public string Code => nameof(AssociatedRxN);
 
                 public AssociatedRxN() {
@@ -1465,7 +1511,8 @@ namespace S100Framework.DomainModel.S122 {
 
             [System.Serializable()]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-            public partial class ExceptionalWorkday : InformationAssociation {
+            public partial class ExceptionalWorkday : InformationAssociation
+            {
                 public string Code => nameof(ExceptionalWorkday);
 
                 public ExceptionalWorkday() {
@@ -1474,7 +1521,8 @@ namespace S100Framework.DomainModel.S122 {
 
             [System.Serializable()]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-            public partial class ProtectedAreaAuthority : InformationAssociation {
+            public partial class ProtectedAreaAuthority : InformationAssociation
+            {
                 public string Code => nameof(ProtectedAreaAuthority);
 
                 public ProtectedAreaAuthority() {
@@ -1483,7 +1531,8 @@ namespace S100Framework.DomainModel.S122 {
 
             [System.Serializable()]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-            public partial class ServiceControl : InformationAssociation {
+            public partial class ServiceControl : InformationAssociation
+            {
                 public string Code => nameof(ServiceControl);
 
                 public ServiceControl() {
@@ -1492,7 +1541,8 @@ namespace S100Framework.DomainModel.S122 {
 
             [System.Serializable()]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-            public partial class RelatedOrganisation : InformationAssociation {
+            public partial class RelatedOrganisation : InformationAssociation
+            {
                 public string Code => nameof(RelatedOrganisation);
 
                 public RelatedOrganisation() {
@@ -1501,7 +1551,8 @@ namespace S100Framework.DomainModel.S122 {
 
             [System.Serializable()]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-            public partial class PermissionType : InformationAssociation {
+            public partial class PermissionType : InformationAssociation
+            {
                 [Required()]
                 public categoryOfRelationship categoryOfRelationship { get; set; }
                 public string Code => nameof(PermissionType);
@@ -1512,7 +1563,8 @@ namespace S100Framework.DomainModel.S122 {
 
             [System.Serializable()]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-            public partial class InclusionType : InformationAssociation {
+            public partial class InclusionType : InformationAssociation
+            {
                 [Required()]
                 public membership membership { get; set; }
                 public string Code => nameof(InclusionType);
@@ -1523,7 +1575,8 @@ namespace S100Framework.DomainModel.S122 {
 
             [System.Serializable()]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-            public partial class AuthorityContact : InformationAssociation {
+            public partial class AuthorityContact : InformationAssociation
+            {
                 public string Code => nameof(AuthorityContact);
 
                 public AuthorityContact() {
@@ -1532,7 +1585,8 @@ namespace S100Framework.DomainModel.S122 {
 
             [System.Serializable()]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-            public partial class AuthorityHours : InformationAssociation {
+            public partial class AuthorityHours : InformationAssociation
+            {
                 public string Code => nameof(AuthorityHours);
 
                 public AuthorityHours() {
@@ -1541,7 +1595,8 @@ namespace S100Framework.DomainModel.S122 {
 
             [System.Serializable()]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-            public partial class additionalInformation : InformationAssociation {
+            public partial class additionalInformation : InformationAssociation
+            {
                 public string Code => nameof(additionalInformation);
 
                 public additionalInformation() {
@@ -1549,24 +1604,29 @@ namespace S100Framework.DomainModel.S122 {
             }
         }
 
-        namespace FeatureAssociations {
+        namespace FeatureAssociations
+        {
             using S100Framework.DomainModel.S122.FeatureTypes;
         }
     }
 
-    namespace Bindings {
+    namespace Bindings
+    {
     }
 }
 
-namespace S100Framework.DomainModel.S122 {
-    namespace InformationTypes {
+namespace S100Framework.DomainModel.S122
+{
+    namespace InformationTypes
+    {
         using ComplexAttributes;
         using DomainModel;
         using S100Framework.DomainModel.S122.Associations.InformationAssociations;
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class InformationType : InformationNode, IInformationBindingDefinition {
+        public partial class InformationType : InformationNode, IInformationBindingDefinition
+        {
             public List<featureName> featureName { get; set; } = [];
             public fixedDateRange? fixedDateRange { get; set; }
             public List<periodicDateRange> periodicDateRange { get; set; } = [];
@@ -1597,7 +1657,8 @@ namespace S100Framework.DomainModel.S122 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class AbstractRxN : InformationType, IInformationBindingDefinition {
+        public partial class AbstractRxN : InformationType, IInformationBindingDefinition
+        {
             [EnumerationValue(2)]
             [EnumerationValue(3)]
             [EnumerationValue(4)]
@@ -1636,7 +1697,8 @@ namespace S100Framework.DomainModel.S122 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class NauticalInformation : AbstractRxN, IInformationBindingDefinition {
+        public partial class NauticalInformation : AbstractRxN, IInformationBindingDefinition
+        {
             [JsonIgnore]
             public override string Code => nameof(NauticalInformation);
             public informationBindingDefinition[] informationBindingDefinitions => NauticalInformation._informationBindingDefinitions;
@@ -1656,7 +1718,8 @@ namespace S100Framework.DomainModel.S122 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class Regulations : AbstractRxN, IInformationBindingDefinition {
+        public partial class Regulations : AbstractRxN, IInformationBindingDefinition
+        {
             [JsonIgnore]
             public override string Code => nameof(Regulations);
             public informationBindingDefinition[] informationBindingDefinitions => Regulations._informationBindingDefinitions;
@@ -1668,7 +1731,8 @@ namespace S100Framework.DomainModel.S122 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class Restrictions : AbstractRxN, IInformationBindingDefinition {
+        public partial class Restrictions : AbstractRxN, IInformationBindingDefinition
+        {
             [JsonIgnore]
             public override string Code => nameof(Restrictions);
             public informationBindingDefinition[] informationBindingDefinitions => Restrictions._informationBindingDefinitions;
@@ -1680,7 +1744,8 @@ namespace S100Framework.DomainModel.S122 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class Recommendations : AbstractRxN, IInformationBindingDefinition {
+        public partial class Recommendations : AbstractRxN, IInformationBindingDefinition
+        {
             [JsonIgnore]
             public override string Code => nameof(Recommendations);
             public informationBindingDefinition[] informationBindingDefinitions => Recommendations._informationBindingDefinitions;
@@ -1692,7 +1757,8 @@ namespace S100Framework.DomainModel.S122 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class Authority : InformationType, IInformationBindingDefinition {
+        public partial class Authority : InformationType, IInformationBindingDefinition
+        {
             [EnumerationValue(2)]
             [EnumerationValue(3)]
             [EnumerationValue(4)]
@@ -1747,7 +1813,8 @@ namespace S100Framework.DomainModel.S122 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class ContactDetails : AbstractRxN, IInformationBindingDefinition {
+        public partial class ContactDetails : AbstractRxN, IInformationBindingDefinition
+        {
             public String? callName { get; set; } = null;
             public String? callSign { get; set; } = null;
 
@@ -1785,7 +1852,8 @@ namespace S100Framework.DomainModel.S122 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class NonStandardWorkingDay : InformationType, IInformationBindingDefinition {
+        public partial class NonStandardWorkingDay : InformationType, IInformationBindingDefinition
+        {
             public List<DateOnly> dateFixed { get; set; } = [];
             public List<String> dateVariable { get; set; } = [];
             public List<information> information { get; set; } = [];
@@ -1809,7 +1877,8 @@ namespace S100Framework.DomainModel.S122 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class ServiceHours : InformationType, IInformationBindingDefinition {
+        public partial class ServiceHours : InformationType, IInformationBindingDefinition
+        {
             [Required()]
             public List<scheduleByDayOfWeek> scheduleByDayOfWeek { get; set; }
 
@@ -1840,15 +1909,15 @@ namespace S100Framework.DomainModel.S122 {
             public ServiceHours() {
                 scheduleByDayOfWeek = new();
                 ;
-                information = new information()
-                {
+                information = new information() {
                 };
             }
         }
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class Applicability : InformationType, IInformationBindingDefinition {
+        public partial class Applicability : InformationType, IInformationBindingDefinition
+        {
             public Boolean? inBallast { get; set; } = default;
 
             [EnumerationValue(1)]
@@ -1926,7 +1995,8 @@ namespace S100Framework.DomainModel.S122 {
         }
     }
 
-    namespace FeatureTypes {
+    namespace FeatureTypes
+    {
         using ComplexAttributes;
         using InformationTypes;
         using DomainModel;
@@ -1936,7 +2006,8 @@ namespace S100Framework.DomainModel.S122 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public abstract partial class FeatureType : FeatureNode, IFeatureBindingDefinition {
+        public abstract partial class FeatureType : FeatureNode, IFeatureBindingDefinition
+        {
             public List<featureName> featureName { get; set; } = [];
             public fixedDateRange? fixedDateRange { get; set; }
             public List<periodicDateRange> periodicDateRange { get; set; } = [];
@@ -1987,7 +2058,8 @@ namespace S100Framework.DomainModel.S122 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class RestrictedArea : FeatureType, IFeatureBindingDefinition {
+        public partial class RestrictedArea : FeatureType, IFeatureBindingDefinition
+        {
             [EnumerationValue(1)]
             [EnumerationValue(4)]
             [EnumerationValue(5)]
@@ -2118,7 +2190,8 @@ namespace S100Framework.DomainModel.S122 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class MarineProtectedArea : FeatureType, IFeatureBindingDefinition {
+        public partial class MarineProtectedArea : FeatureType, IFeatureBindingDefinition
+        {
             [EnumerationValue(1)]
             [EnumerationValue(2)]
             [EnumerationValue(3)]
@@ -2266,15 +2339,15 @@ namespace S100Framework.DomainModel.S122 {
             public static featureBindingDefinition[] _featureBindingDefinitions => [];
 
             public MarineProtectedArea() {
-                categoryOfMarineProtectedArea = new categoryOfMarineProtectedArea()
-                {
+                categoryOfMarineProtectedArea = new categoryOfMarineProtectedArea() {
                 };
             }
         }
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class VesselTrafficServiceArea : FeatureType, IFeatureBindingDefinition {
+        public partial class VesselTrafficServiceArea : FeatureType, IFeatureBindingDefinition
+        {
             [EnumerationValue(1)]
             [EnumerationValue(2)]
             [EnumerationValue(3)]
@@ -2304,7 +2377,8 @@ namespace S100Framework.DomainModel.S122 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class DataCoverage : FeatureNode, IFeatureBindingDefinition {
+        public partial class DataCoverage : FeatureNode, IFeatureBindingDefinition
+        {
             [JsonIgnore]
             public override string Code => nameof(DataCoverage);
             public informationBindingDefinition[] informationBindingDefinitions => DataCoverage._informationBindingDefinitions;
@@ -2318,7 +2392,8 @@ namespace S100Framework.DomainModel.S122 {
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class TextPlacement : FeatureNode, IFeatureBindingDefinition {
+        public partial class TextPlacement : FeatureNode, IFeatureBindingDefinition
+        {
             [JsonIgnore]
             public override string Code => nameof(TextPlacement);
             public informationBindingDefinition[] informationBindingDefinitions => TextPlacement._informationBindingDefinitions;

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Pluralize.NET.Core;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Numerics;
@@ -15,6 +16,8 @@ namespace S100Framework.Applications
 {
     public static class Roslyn
     {
+        private static Pluralizer pluralizer = new();
+
         public static (string DomainModel, string ViewModel) Build(XDocument productSpecification) {
             var navigator = productSpecification.CreateNavigator();
             navigator.MoveToFollowing(XPathNodeType.Element);
@@ -82,7 +85,7 @@ namespace S100Framework.Applications
 
                         var literalName = RemoveSpecialChars(listedValueLabel);
 
-                        listedValueDefinition = listedValueDefinition.Replace("\"", "\\\"");
+                        listedValueDefinition = RemoveSpecialChars(listedValueDefinition).Replace("\"", "\\\"");
 
                         builderDomainModel.AppendLine($"\t\t[System.ComponentModel.Description(\"{listedValueDefinition}\")]");
                         builderDomainModel.AppendLine($"\t\t[EnumMember(Value = \"{listedValueLabel}\")] ");
@@ -100,10 +103,58 @@ namespace S100Framework.Applications
                 }
 
                 //  CodeLists
-                //TODO
-                builderDomainModel.AppendLine("\tpublic static class CodeList");
-                builderDomainModel.AppendLine("\t{");
-                builderDomainModel.AppendLine("\t}");
+                {
+                    foreach (var e in elements.Where(e => e.Element(XName.Get("valueType", scope_S100))!.Value.Equals("S100_CodeList"))) {
+                        var name = e.Element(XName.Get("name", scope_S100))!.Value;
+                        var code = e.Element(XName.Get("code", scope_S100))!.Value;
+
+                        builderDomainModel.AppendLine("\t[System.Serializable()]");
+                        builderDomainModel.AppendLine($"\tpublic class {code}");
+                        builderDomainModel.AppendLine("\t{");
+                        builderDomainModel.AppendLine("\t\tpublic required string label { get; set; }");
+                        builderDomainModel.AppendLine("\t\tpublic required string definition { get; set; }");
+                        builderDomainModel.AppendLine("\t\tpublic required int code { get; set; }");
+                        builderDomainModel.AppendLine("\t}");
+                        builderDomainModel.AppendLine();
+                    }
+
+                    builderDomainModel.AppendLine("\tpublic static class CodeList");
+                    builderDomainModel.AppendLine("\t{");
+
+                    var isFirst = true;
+                    foreach (var e in elements.Where(e => e.Element(XName.Get("valueType", scope_S100))!.Value.Equals("S100_CodeList"))) {
+                        if (!isFirst)
+                            builderDomainModel.AppendLine();
+                        isFirst = false;
+
+                        var name = e.Element(XName.Get("name", scope_S100))!.Value;
+                        var code = e.Element(XName.Get("code", scope_S100))!.Value;
+
+                        var pluralize = pluralizer.Pluralize(code);
+                        builderDomainModel.AppendLine($"\t\tpublic static ImmutableArray<{code}> {pluralize} => ImmutableArray.Create<{code}>(new {code}[]{{");
+
+                        var values = e.Element(XName.Get("listedValues", scope_S100))!.Elements();
+                        foreach (var v in values) {
+                            var valueLabel = v.Element(XName.Get("label", scope_S100))!.Value;
+                            var valueCode = v.Element(XName.Get("code", scope_S100))!.Value;
+                            var valueDefinition = v.Element(XName.Get("definition", scope_S100))!.Value;
+
+                            valueDefinition = Regex.Replace(valueDefinition, "\\n{2,}\\s*", "\n");
+
+                            var lines = valueDefinition.Split("\n", StringSplitOptions.RemoveEmptyEntries);
+                            valueDefinition = string.Join("\" + Environment.NewLine +" + Environment.NewLine + "\"", lines);
+
+                            builderDomainModel.AppendLine($"\t\t\tnew() {{");
+                            builderDomainModel.AppendLine($"\t\t\t\tcode = {valueCode},");
+                            builderDomainModel.AppendLine($"\t\t\t\tdefinition = \"{valueDefinition}\",");
+                            builderDomainModel.AppendLine($"\t\t\t\tlabel = \"{valueLabel}\",");
+                            builderDomainModel.AppendLine("\t\t\t},");
+                        }
+
+                        builderDomainModel.AppendLine("\t\t});");
+                    }
+                    builderDomainModel.AppendLine("\t}");
+                }
 
                 //  SimpleAttributes
                 foreach (var e in elements.Where(e => !e.Element(XName.Get("valueType", scope_S100))!.Value.Equals("enumeration"))) {
@@ -112,25 +163,26 @@ namespace S100Framework.Applications
 
                     knownTypes.Add(code);
 
-                    var prefix = e.Element(XName.Get("valueType", scope_S100))!.Value switch {
+                    var prefix = e.Element(XName.Get("valueType", scope_S100))!.Value.ToLowerInvariant() switch {
                         "boolean" => "Boolean",
                         "enumeration" => code,
                         "real" => "decimal",
                         "text" => "String",
-                        "S100_TruncatedDate" => "DateOnly",
+                        "s100_truncateddate" => "DateOnly",
                         "date" => "DateOnly",
-                        "dateTime" => "DateTime",
+                        "dateonly" => "DateOnly",
+                        "datetime" => "DateTime",
                         "time" => "TimeOnly",
                         "integer" => "int",
-                        "URN" => "String",
-                        //"S100_CodeList" => codelistTypes[code],
-                        "URL" => "String",
-                        "URI" => "String",
+                        "urn" => "String",
+                        "s100_codelist" => code,
+                        "url" => "String",
+                        "uri" => "String",
                         _ => throw new InvalidDataException(),
                     };
                     knowTypesPrefix.Add(code, prefix);
 
-                    var psotfix = e.Element(XName.Get("valueType", scope_S100))!.Value switch {
+                    var postfix = e.Element(XName.Get("valueType", scope_S100))!.Value.ToLowerInvariant() switch {
                         "boolean" => "false",
                         //"enumeration" => code,
                         //"real" => "decimal",
@@ -140,14 +192,14 @@ namespace S100Framework.Applications
                         //"dateTime" => "DateTime",
                         //"time" => "TimeOnly",
                         //"integer" => "int",
-                        "URN" => "string.Empty",
+                        "urn" => "string.Empty",
                         //"S100_CodeList" => codelistTypes[code],
-                        "URL" => "string.Empty",
-                        "URI" => "string.Empty",
+                        "url" => "string.Empty",
+                        "uri" => "string.Empty",
                         _ => null,
                     };
-                    if (psotfix != null) {
-                        knowTypesPostfix.Add(code, psotfix);
+                    if (postfix != null) {
+                        knowTypesPostfix.Add(code, postfix);
                     }
                 }
             }
@@ -409,8 +461,10 @@ namespace S100Framework.Applications
 
                 if (elements.Any()) {
                     builderDomainModel.AppendLine("\tnamespace FeatureTypes {");
-                    builderDomainModel.AppendLine("\t\tusing FeatureAssociations;");
-                    builderDomainModel.AppendLine("\t\tusing InformationTypes;");
+                    if(productSpecification.XPathSelectElements("//S100FC:S100_FC_FeatureAssociation", xmlNamespaceManager).Any())
+                        builderDomainModel.AppendLine("\t\tusing FeatureAssociations;");
+                    if (productSpecification.XPathSelectElements("//S100FC:S100_FC_InformationAssociation", xmlNamespaceManager).Any())
+                        builderDomainModel.AppendLine("\t\tusing InformationTypes;");
                     builderDomainModel.AppendLine();
                 }
 
@@ -509,7 +563,7 @@ namespace S100Framework.Applications
 
             var superType = e.Elements(XName.Get("superType", scope_S100)).FirstOrDefault();
             if (superType != null) {
-                inheritance = $"{superType.Attribute("ref")!.Value}";
+                inheritance = $"{superType!.Value}";
             }
 
             builder.AppendLine("\t\t[System.Serializable()]");
@@ -590,7 +644,7 @@ namespace S100Framework.Applications
                 informationBindings.AppendLine("\t\t\t];");
                 builder.AppendLine(informationBindings.ToString().TrimEnd(Environment.NewLine.ToArray()));
             }
-            
+
             if (new string[] { "S100_FC_FeatureType" }.Contains(e.Name.LocalName)) {
                 builder.AppendLine();
                 builder.AppendLine($"\t\t\tpublic featureBindingDefinition[] featureBindingDefinitions => {code}._featureBindingDefinitions;");
