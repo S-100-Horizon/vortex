@@ -326,7 +326,8 @@ namespace S100Framework.Applications
 
                     roles = roles.Where(r => productSpecification.XPathSelectElements($"//S100FC:informationBinding[S100FC:association[@ref=\"{code}\"] and S100FC:role[@ref=\"{r}\"]]", xmlNamespaceManager).Any());
 
-                    if (!spatialAssociationTypes.Contains(code)) {
+                    //if (!spatialAssociationTypes.Contains(code)) 
+                    {
                         if (!isFirst)
                             builderDomainModel.AppendLine();
                         isFirst = false;
@@ -461,7 +462,7 @@ namespace S100Framework.Applications
 
                 if (elements.Any()) {
                     builderDomainModel.AppendLine("\tnamespace FeatureTypes {");
-                    if(productSpecification.XPathSelectElements("//S100FC:S100_FC_FeatureAssociation", xmlNamespaceManager).Any())
+                    if (productSpecification.XPathSelectElements("//S100FC:S100_FC_FeatureAssociation", xmlNamespaceManager).Any())
                         builderDomainModel.AppendLine("\t\tusing FeatureAssociations;");
                     if (productSpecification.XPathSelectElements("//S100FC:S100_FC_InformationAssociation", xmlNamespaceManager).Any())
                         builderDomainModel.AppendLine("\t\tusing InformationTypes;");
